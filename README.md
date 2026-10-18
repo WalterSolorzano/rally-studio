@@ -135,4 +135,4 @@ Como **Ingeniero Industrial de la Universidad Nacional de Ingeniería (UNI, Nica
 
 ---
 
-Desarrollado con rigor de ingeniería industrial para equipos de alto rendimiento en el **Rally Latinoamericano de Innovación** y **Rally Nacional Nicaragua Innova**.
+> *"Las grandes soluciones no nacen de la suerte, sino del orden, el coraje y la pasión de quienes se atreven a construir bajo presión. Confíen en su talento, mantengan la calma en la hora 20 y dejen en alto a su universidad y a su país. ¡Mucho éxito en la jornada y que gane la mejor innovación!"* 🚀💡🏆
