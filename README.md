@@ -1,7 +1,19 @@
+<div align="center">
+
 # RALLY STUDIO · ERP & WORKBENCH DE INNOVACIÓN
+
+[![Licence](https://img.shields.io/badge/Licencia-MIT-0866F5.svg)](LICENSE)
+[![Rally Latam](https://img.shields.io/badge/Rally%20Latam-28%20Horas-0D1B35.svg)](https://rallydeinnovacion.org)
+[![Nicaragua Innova](https://img.shields.io/badge/Nicaragua%20Innova-24%20Horas-0866F5.svg)](https://nicaraguainnova.gob.ni)
+[![Multi-AI Ready](https://img.shields.io/badge/Multi--IA-Ready-10b981.svg)](#-guía-para-agentes-de-ia-trae-este-proyecto-y-trabaja)
+[![DOCX Direct Compile](https://img.shields.io/badge/DOCX-Auto--Compile-blue.svg)](#-compilación-y-exportación-directa-a-word-docx)
 
 > **Plataforma Integral de Gestión, Colaboración Multi-IA y Despacho Rápido para Rallies de Innovación (Rally Latinoamericano 28h & Rally Nacional Nicaragua Innova 24h).**  
 > Diseñada para competir y ganar: Cero fricción, colaboración multi-usuario sin registro basada en mascotas, selección estratégica de retos con Top 3 recomendados, matrices oficiales duales (Nacional CNU / LATAM SIRLI), compilación en un clic a la plantilla Word (`.docx`) y tokens ultra-optimizados.
+
+`#rally-latinoamericano` `#rally-innovacion` `#nicaragua-innova` `#cnu` `#innovacion-abierta` `#multi-ai` `#hackathon` `#pitch-120s` `#word-docx` `#erp`
+
+</div>
 
 ---
 
