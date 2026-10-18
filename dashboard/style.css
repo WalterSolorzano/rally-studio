@@ -757,3 +757,115 @@ textarea {
   background: var(--bg-subtle);
   color: var(--text-main);
 }
+
+/* ── HUB MULTI-IA & DESPACHADOR DE MEGA-PROMPTS ──────────────────── */
+.task-dispatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.task-dispatch-card {
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 140ms ease;
+}
+
+.task-dispatch-card:hover {
+  border-color: var(--border-strong);
+}
+
+.task-dispatch-card.in-progress {
+  border-color: #f59e0b;
+  background: #fffdfa;
+}
+
+.task-dispatch-card.completed {
+  border-color: #10b981;
+  background: #fafdfb;
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.task-ai-tag {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-light);
+  color: var(--text-muted);
+}
+
+.task-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+.task-desc {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.prompt-snippet-box {
+  background: #f8fafc;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-body);
+  max-height: 65px;
+  overflow-y: auto;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+.landing-paste-area {
+  width: 100%;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: 8px;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  background: #ffffff;
+  box-sizing: border-box;
+  min-height: 60px;
+}
+
+.landing-paste-area:focus {
+  border-style: solid;
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+/* Sincronización Segura para Wi-Fi Universitario */
+.wifi-bypass-card {
+  background: #f8fafc;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
