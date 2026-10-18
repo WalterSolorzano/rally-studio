@@ -23,6 +23,7 @@ const SVG = {
   copy: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`,
   spark: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>`,
   arrowRight: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>`,
+  arrowLeft: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>`,
   plus: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>`,
   refresh: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>`,
   dotsVertical: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1.5"></circle><circle cx="12" cy="5" r="1.5"></circle><circle cx="12" cy="19" r="1.5"></circle></svg>`,
@@ -914,7 +915,10 @@ function renderViewTeam() {
             <div class="stepper-bar-segment"></div>
           </div>
         </div>
-        <button class="btn-pill-light" style="font-size:11px; padding:4px 10px;" onclick="switchTab('certamen')">← Cambiar Certamen (${certLabel})</button>
+        <button class="btn-minimal-back" onclick="switchTab('certamen')" title="Volver a selección de certamen">
+          ${SVG.arrowLeft}
+          <span>Cambiar certamen</span>
+        </button>
       </div>
 
       <h1 class="wizard-hero-title" style="margin-bottom:24px;">Identidad del <span class="title-accent">Equipo</span></h1>
@@ -963,7 +967,10 @@ function renderViewTeam() {
             </div>
 
             <div style="display:flex; justify-content:space-between; align-items:center; margin-top:32px; border-top:1px solid #f1f5f9; padding-top:18px;">
-              <button class="btn-pill-light" onclick="switchTab('certamen')">← Regresar</button>
+              <button class="btn-minimal-back" onclick="switchTab('certamen')">
+                ${SVG.arrowLeft}
+                <span>Regresar</span>
+              </button>
               <button class="btn-select-card filled" style="padding:11px 24px; font-size:13px;" onclick="saveTeamAndProceed()">
                 Continuar a Selección de Reto ${SVG.arrowRight}
               </button>
@@ -1099,8 +1106,11 @@ function renderViewChallenges() {
             <div class="stepper-bar-segment active"></div>
           </div>
         </div>
-        <div style="display:flex; gap:8px;">
-          <button class="btn-pill-light" style="font-size:11px; padding:5px 12px;" onclick="switchTab('team')">← Editar Equipo (${state.team_name || 'Sin Nombre'})</button>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <button class="btn-minimal-back" onclick="switchTab('team')" title="Volver a identidad de equipo">
+            ${SVG.arrowLeft}
+            <span>Editar equipo</span>
+          </button>
           <a href="/docs/Matriz_Seleccion_Desafios_2026.docx" download class="btn-pill-light" style="font-size:11px; padding:5px 12px; text-decoration:none;">
             ${SVG.download} Matriz Word (.docx)
           </a>
