@@ -25,50 +25,54 @@ const SVG = {
   arrowRight: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>`,
   plus: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>`,
   refresh: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>`,
+  dotsVertical: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1.5"></circle><circle cx="12" cy="5" r="1.5"></circle><circle cx="12" cy="19" r="1.5"></circle></svg>`,
+
+  rallyLatamEmblem: `<svg width="26" height="26" viewBox="0 0 32 32" fill="none" style="vertical-align:middle;" title="Rally Latinoamericano de Innovación"><circle cx="16" cy="16" r="14" fill="#FFF1F2" stroke="#FECDD3" stroke-width="1.5"/><path d="M12 9C14 11 16 13 15 16C14 19 18 23 20 22C22 20 23 16 21 13C19 10 17 8 13 8Z" fill="#E11D48"/><ellipse cx="16" cy="16" rx="14" ry="5.5" stroke="#E11D48" stroke-width="1.2" stroke-dasharray="3 2" transform="rotate(-25 16 16)"/><circle cx="21" cy="12" r="1.8" fill="#F43F5E"/></svg>`,
+  rallyNacEmblem: `<svg width="26" height="26" viewBox="0 0 32 32" fill="none" style="vertical-align:middle;" title="Rally Nacional Nicaragua Innova"><circle cx="16" cy="16" r="14" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="1.5"/><path d="M16 8L10.5 22H21.5L16 8Z" fill="#7C3AED"/><circle cx="21" cy="11" r="2.8" fill="#F59E0B"/><path d="M9 22C12 20.5 20 20.5 23 22" stroke="#38BDF8" stroke-width="1.5"/></svg>`,
+  uniCrestEmblem: `<svg width="26" height="26" viewBox="0 0 32 32" fill="none" style="vertical-align:middle;" title="Universidad Nacional de Ingeniería (UNI)"><circle cx="16" cy="16" r="14" fill="#003366"/><circle cx="16" cy="16" r="12.5" stroke="#FFB800" stroke-width="1.2"/><path d="M16 7L23 11V18C23 22 16 26 16 26C16 26 9 22 9 18V11L16 7Z" fill="#002244" stroke="#FFB800" stroke-width="1.2"/><path d="M16 11L18.5 16H13.5L16 11Z" fill="#FFB800"/><path d="M13 18H19" stroke="#FFB800" stroke-width="1.5"/></svg>`,
 
   latinAmericaIllustration: `
 <svg width="290" height="170" viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width:100%; height:auto;">
   <defs>
-    <linearGradient id="laGrad" x1="120" y1="10" x2="220" y2="190" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#38BDF8"/>
-      <stop offset="25%" stop-color="#0066FF"/>
-      <stop offset="70%" stop-color="#1D4ED8"/>
-      <stop offset="100%" stop-color="#1E3A8A"/>
+    <!-- Paleta oficial Latam: Grises de precisión técnica y Rosa/Magenta vibrante -->
+    <linearGradient id="latamGrayLand" x1="120" y1="10" x2="220" y2="190" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#64748B"/>
+      <stop offset="40%" stop-color="#475569"/>
+      <stop offset="85%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#1E293B"/>
     </linearGradient>
-    <linearGradient id="laAndes" x1="150" y1="70" x2="190" y2="190" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#93C5FD"/>
-      <stop offset="100%" stop-color="#60A5FA"/>
+    <linearGradient id="latamRoseOrbit" x1="30" y1="90" x2="290" y2="110" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FDA4AF" stop-opacity="0.25"/>
+      <stop offset="50%" stop-color="#E11D48" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#FDA4AF" stop-opacity="0.25"/>
     </linearGradient>
-    <linearGradient id="orbitGlow" x1="30" y1="90" x2="290" y2="110" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#BFDBFE" stop-opacity="0.2"/>
-      <stop offset="50%" stop-color="#3B82F6" stop-opacity="0.85"/>
-      <stop offset="100%" stop-color="#BFDBFE" stop-opacity="0.2"/>
-    </linearGradient>
-    <filter id="softShadow" x="60" y="10" width="220" height="190" filterUnits="userSpaceOnUse">
-      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#0066FF" flood-opacity="0.16"/>
+    <filter id="latamSoftShadow" x="60" y="10" width="220" height="190" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#E11D48" flood-opacity="0.2"/>
     </filter>
   </defs>
 
-  <!-- Anillos Orbitales -->
-  <ellipse cx="160" cy="104" rx="120" ry="42" stroke="url(#orbitGlow)" stroke-width="1.8" stroke-dasharray="6 4" transform="rotate(-16 160 104)"/>
-  <ellipse cx="160" cy="106" rx="132" ry="30" stroke="#93C5FD" stroke-width="1.2" stroke-opacity="0.55" transform="rotate(22 160 106)"/>
+  <!-- Anillos Orbitales con micro-animación CSS -->
+  <g class="anim-orbit">
+    <ellipse cx="160" cy="104" rx="122" ry="42" stroke="url(#latamRoseOrbit)" stroke-width="2" stroke-dasharray="6 4" transform="rotate(-16 160 104)"/>
+    <ellipse cx="160" cy="106" rx="134" ry="32" stroke="#FDA4AF" stroke-width="1.2" stroke-opacity="0.6" transform="rotate(22 160 106)"/>
+  </g>
 
-  <g filter="url(#softShadow)">
+  <g filter="url(#latamSoftShadow)">
     <!-- Península de Baja California -->
-    <path d="M84 24 C82 32, 86 42, 92 50 C94 54, 96 52, 94 44 C92 36, 88 28, 86 22 Z" fill="#2563EB"/>
+    <path d="M84 24 C82 32, 86 42, 92 50 C94 54, 96 52, 94 44 C92 36, 88 28, 86 22 Z" fill="#64748B"/>
 
     <!-- México continental y Península de Yucatán -->
-    <path d="M88 22 C96 22, 108 26, 116 32 C124 38, 130 36, 134 44 C138 48, 148 44, 154 44 C158 44, 160 48, 156 52 C152 56, 146 54, 142 58 C138 62, 134 68, 130 70 C124 68, 118 64, 112 56 C106 48, 98 42, 90 32 Z" fill="url(#laGrad)"/>
+    <path d="M88 22 C96 22, 108 26, 116 32 C124 38, 130 36, 134 44 C138 48, 148 44, 154 44 C158 44, 160 48, 156 52 C152 56, 146 54, 142 58 C138 62, 134 68, 130 70 C124 68, 118 64, 112 56 C106 48, 98 42, 90 32 Z" fill="url(#latamGrayLand)"/>
 
-    <!-- Istmo de Centroamérica (Guatemala a Panamá) -->
-    <path d="M130 70 C136 70, 142 74, 148 78 C154 82, 160 84, 166 84 C172 84, 176 80, 182 82 C184 84, 184 88, 180 88 C174 88, 166 88, 160 86 C152 84, 144 80, 138 74 Z" fill="#0066FF"/>
+    <!-- Istmo de Centroamérica -->
+    <path d="M130 70 C136 70, 142 74, 148 78 C154 82, 160 84, 166 84 C172 84, 176 80, 182 82 C184 84, 184 88, 180 88 C174 88, 166 88, 160 86 C152 84, 144 80, 138 74 Z" fill="#475569"/>
 
-    <!-- Islas del Caribe (Cuba, La Española, Puerto Rico) -->
-    <path d="M148 50 C156 52, 168 56, 176 60 C174 62, 164 58, 152 54 Z" fill="#60A5FA"/>
-    <ellipse cx="184" cy="64" rx="4" ry="2" fill="#3B82F6"/>
-    <ellipse cx="194" cy="67" rx="2.5" ry="1.5" fill="#60A5FA"/>
+    <!-- Islas del Caribe -->
+    <path d="M148 50 C156 52, 168 56, 176 60 C174 62, 164 58, 152 54 Z" fill="#94A3B8"/>
+    <ellipse cx="184" cy="64" rx="4" ry="2" fill="#E11D48"/>
+    <ellipse cx="194" cy="67" rx="2.5" ry="1.5" fill="#FDA4AF"/>
 
-    <!-- Sudamérica: Contorno Geográfico Realista -->
+    <!-- Masa Continental de Sudamérica -->
     <path d="M178 82 
              C186 78, 198 76, 210 80 
              C222 84, 234 88, 244 96 
@@ -79,121 +83,134 @@ const SVG = {
              C206 204, 204 198, 204 190 
              C204 178, 198 162, 194 148 
              C190 138, 182 126, 180 114 
-             C178 102, 174 92, 178 82 Z" fill="url(#laGrad)"/>
+             C178 102, 174 92, 178 82 Z" fill="url(#latamGrayLand)"/>
 
-    <!-- Cordillera de los Andes Flanco Pacífico -->
+    <!-- Cordillera Andina con acento plateado-rosa -->
     <path d="M180 84 
              C184 96, 188 112, 190 126 
              C192 140, 196 156, 202 172 
              C206 182, 208 194, 210 202 
              C208 202, 204 196, 204 188 
              C204 176, 198 162, 194 148 
-             C190 138, 182 126, 180 114 Z" fill="url(#laAndes)" fill-opacity="0.6"/>
+             C190 138, 182 126, 180 114 Z" fill="#CBD5E1" fill-opacity="0.65"/>
 
-    <!-- Saliente de Brasil Relieve 3D -->
+    <!-- Relieve este Brasil -->
     <path d="M210 82 
              C228 88, 246 98, 258 114 
              C262 120, 256 134, 246 148 
              C254 136, 258 124, 256 116 
-             C250 104, 236 94, 218 86 Z" fill="#60A5FA" fill-opacity="0.45"/>
+             C250 104, 236 94, 218 86 Z" fill="#94A3B8" fill-opacity="0.45"/>
   </g>
 
-  <!-- Nodos satelitales -->
-  <circle cx="216" cy="80" r="3.5" fill="#0066FF"/>
-  <circle cx="216" cy="80" r="6" stroke="#93C5FD" stroke-width="1.2" stroke-opacity="0.8"/>
-  <circle cx="140" cy="116" r="2.5" fill="#38BDF8"/>
-  <circle cx="240" cy="140" r="2.5" fill="#60A5FA"/>
+  <!-- Nodos satelitales Rosa/Magenta con animación -->
+  <g class="anim-beacon">
+    <circle cx="216" cy="80" r="4" fill="#E11D48"/>
+    <circle cx="216" cy="80" r="7" stroke="#FDA4AF" stroke-width="1.4" stroke-opacity="0.8"/>
+  </g>
+  <circle cx="140" cy="116" r="3" fill="#F43F5E" class="anim-beacon"/>
+  <circle cx="240" cy="140" r="2.8" fill="#FB7185" class="anim-beacon"/>
 </svg>`,
 
+  // RÉPLICA EXACTA DE LA IMAGEN RECORTADA DE NICARAGUA
   momotomboIllustration: `
-<svg width="290" height="170" viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width:100%; height:auto;">
+<svg width="290" height="170" viewBox="0 0 340 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width:100%; height:auto;">
   <defs>
-    <linearGradient id="nicSky" x1="160" y1="0" x2="160" y2="120" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#E0F2FE" stop-opacity="0.8"/>
-      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
-    </linearGradient>
-    <linearGradient id="volcanoLeft" x1="170" y1="45" x2="110" y2="135" gradientUnits="userSpaceOnUse">
+    <!-- Degradados idénticos a la imagen de referencia -->
+    <linearGradient id="volcanoFlankLeft" x1="165" y1="46" x2="85" y2="120" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#1E3A8A"/>
-      <stop offset="40%" stop-color="#1E40AF"/>
-      <stop offset="85%" stop-color="#047857"/>
-      <stop offset="100%" stop-color="#064E3B"/>
+      <stop offset="60%" stop-color="#1D4ED8"/>
+      <stop offset="100%" stop-color="#2563EB"/>
     </linearGradient>
-    <linearGradient id="volcanoRight" x1="170" y1="45" x2="230" y2="135" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#2563EB"/>
-      <stop offset="35%" stop-color="#0284C7"/>
-      <stop offset="80%" stop-color="#059669"/>
-      <stop offset="100%" stop-color="#10B981"/>
-    </linearGradient>
-    <linearGradient id="lakeWater" x1="160" y1="130" x2="160" y2="195" gradientUnits="userSpaceOnUse">
+    <linearGradient id="volcanoFlankRight" x1="165" y1="46" x2="245" y2="120" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#0284C7"/>
-      <stop offset="40%" stop-color="#0369A1"/>
-      <stop offset="100%" stop-color="#075985"/>
+      <stop offset="45%" stop-color="#0369A1"/>
+      <stop offset="100%" stop-color="#0284C7"/>
     </linearGradient>
-    <linearGradient id="sunGold" x1="240" y1="40" x2="265" y2="65" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#FDE047"/>
+    <linearGradient id="lavaStripeGrad" x1="168" y1="48" x2="210" y2="105" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="50%" stop-color="#EA580C"/>
       <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="lakeWaterRef" x1="170" y1="114" x2="170" y2="160" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="60%" stop-color="#0369A1"/>
+      <stop offset="100%" stop-color="#075985"/>
     </linearGradient>
   </defs>
 
-  <!-- Cielo suave -->
-  <rect x="0" y="0" width="320" height="135" fill="url(#nicSky)" rx="14"/>
+  <!-- Nubes a la izquierda (idénticas a la imagen) -->
+  <g class="anim-cloud">
+    <path d="M60 72 C60 62, 70 54, 80 54 C85 46, 95 44, 105 46 C115 44, 125 50, 128 58 C135 58, 142 66, 142 74 C142 80, 136 86, 130 86 L65 86 C60 86, 60 78, 60 72 Z" fill="#93C5FD" fill-opacity="0.85"/>
+    <path d="M42 90 C42 84, 48 80, 54 80 C58 76, 64 76, 68 78 C72 78, 76 82, 76 86 L42 90 Z" fill="#BFDBFE" fill-opacity="0.75"/>
+  </g>
 
-  <!-- Sol Tropical -->
-  <circle cx="252" cy="52" r="14" fill="url(#sunGold)"/>
+  <!-- Sol dorado a la derecha -->
+  <circle cx="235" cy="52" r="14" fill="#F59E0B" class="anim-sun"/>
 
-  <!-- Nubes tropicales -->
-  <path d="M50 78 C50 70, 58 64, 66 64 C70 58, 78 56, 86 58 C94 56, 102 60, 104 66 C110 66, 116 72, 116 78 Z" fill="#E2E8F0" fill-opacity="0.85"/>
-  <path d="M230 84 C230 78, 236 74, 242 74 C246 68, 254 68, 260 70 C266 68, 272 72, 274 76 C280 76, 284 80, 284 84 Z" fill="#E2E8F0" fill-opacity="0.8"/>
+  <!-- Nube pequeña detrás de las colinas de la derecha -->
+  <path d="M260 76 C260 70, 266 66, 272 66 C276 62, 284 62, 290 64 C296 64, 300 68, 302 72 L260 76 Z" fill="#BFDBFE" fill-opacity="0.75" class="anim-cloud"/>
 
-  <!-- Cordillera lejana de los Maribios -->
-  <path d="M20 126 Q75 106 130 114 Q190 102 245 112 T305 118 L305 138 L20 138 Z" fill="#93C5FD" fill-opacity="0.45"/>
+  <!-- Colinas distantes a ambos lados -->
+  <path d="M25 124 Q70 102 120 112 L120 126 L25 126 Z" fill="#0D9488" fill-opacity="0.6"/>
+  <path d="M230 114 Q280 100 325 116 L325 126 L230 126 Z" fill="#2563EB" fill-opacity="0.55"/>
 
-  <!-- Fumarola / Penacho de humo blanco del cráter del Momotombo -->
-  <path d="M168 44 C166 36, 172 30, 178 26 C184 22, 194 20, 202 24 C198 28, 190 32, 184 36 C180 40, 174 42, 170 45 Z" fill="#FFFFFF" fill-opacity="0.75"/>
-  <path d="M174 38 C178 32, 186 28, 194 30 C190 34, 184 38, 178 42 Z" fill="#E2E8F0" fill-opacity="0.6"/>
+  <!-- VOLCÁN MOMOTOMBO (Silueta cónica amplia y masiva) -->
+  <!-- Flanco izquierdo (azul oscuro/índigo) -->
+  <path d="M158 46 
+           C148 58, 134 78, 120 98 
+           C110 110, 98 120, 84 126 
+           L165 126 
+           L158 46 Z" fill="url(#volcanoFlankLeft)"/>
 
-  <!-- Cono del Volcán Momotombo (silueta cónica hiperbólica auténtica) -->
-  <path d="M166 46 
-           C158 56, 146 76, 134 98 
-           C124 114, 112 128, 96 138 
-           L170 138 
-           L166 46 Z" fill="url(#volcanoLeft)"/>
+  <!-- Flanco derecho (azul celeste/turquesa) -->
+  <path d="M165 46 
+           L165 126 
+           L246 126 
+           C232 120, 220 110, 210 98 
+           C196 78, 182 58, 172 46 Z" fill="url(#volcanoFlankRight)"/>
 
-  <path d="M166 46 
-           L170 138 
-           L244 138 
-           C228 128, 216 114, 206 98 
-           C194 76, 182 56, 174 46 Z" fill="url(#volcanoRight)"/>
+  <!-- Cráter somital con muesca -->
+  <path d="M158 46 C162 48, 168 48, 172 46 L165 52 Z" fill="#EA580C"/>
+  <ellipse cx="165" cy="46" rx="7" ry="2.5" fill="#F59E0B"/>
 
-  <!-- Cráter somital con destello de azufre -->
-  <ellipse cx="170" cy="46" rx="5" ry="2" fill="#F59E0B"/>
+  <!-- VETA / GRIETA NARANJA Y DORADA (Exacta al recorte) -->
+  <g class="anim-lava">
+    <path d="M168 48 Q182 72 208 104" stroke="url(#lavaStripeGrad)" stroke-width="4" stroke-linecap="round"/>
+    <path d="M168 48 Q182 72 208 104" stroke="#FEF08A" stroke-width="1.8" stroke-linecap="round"/>
+    <!-- Veta secundaria -->
+    <path d="M172 60 Q188 82 216 112" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
 
-  <!-- Barrancos y estrías volcánicas naturales -->
-  <path d="M168 47 L164 138" stroke="#1E3A8A" stroke-width="1.5" stroke-opacity="0.5"/>
-  <path d="M172 47 L178 138" stroke="#38BDF8" stroke-width="1.2" stroke-opacity="0.5"/>
-  <path d="M166 60 Q156 90 142 138" stroke="#065F46" stroke-width="1.5" stroke-opacity="0.6"/>
-  <path d="M174 60 Q186 90 200 138" stroke="#34D399" stroke-width="1.2" stroke-opacity="0.5"/>
+  <!-- Estrías y pliegues en flanco izquierdo -->
+  <path d="M160 52 Q144 86 126 126" stroke="#1E3A8A" stroke-width="2" stroke-linecap="round" stroke-opacity="0.6"/>
+  <path d="M164 56 Q156 88 146 126" stroke="#1E40AF" stroke-width="1.5" stroke-linecap="round" stroke-opacity="0.5"/>
 
-  <!-- Isla Momotombito (cono gemelo en el Lago Xolotlán) -->
-  <path d="M72 138 C80 126, 88 116, 94 116 C100 116, 108 126, 116 138 Z" fill="#047857"/>
-  <path d="M94 116 L105 138 L94 138 Z" fill="#10B981" fill-opacity="0.6"/>
+  <!-- FRANJA DE VEGETACIÓN VERDE EN LA BASE DEL VOLCÁN -->
+  <path d="M80 120 C100 114, 130 116, 165 114 C200 114, 230 116, 250 120 L250 126 L80 126 Z" fill="#047857"/>
 
-  <!-- Costas y laderas verdes del lago -->
-  <path d="M10 138 C50 132, 90 134, 130 132 C180 130, 240 134, 310 138 L310 146 L10 146 Z" fill="#065F46"/>
+  <!-- PLAYA ARENOSA DORADA A LO LARGO DE LA ORILLA (Visible en el recorte) -->
+  <path d="M130 124 L240 124 L240 128 L130 128 Z" fill="#FDE68A"/>
 
-  <!-- Aguas del Lago Xolotlán (Lago de Managua) -->
-  <rect x="0" y="138" width="320" height="62" fill="url(#lakeWater)"/>
+  <!-- CADENA DE COLINAS Y PROMONTORIOS VERDES A LA IZQUIERDA -->
+  <path d="M20 134 C40 116, 65 120, 95 126 C125 132, 145 122, 175 130 L175 142 L20 142 Z" fill="#0D9488"/>
+  <path d="M40 136 C65 122, 90 126, 120 132 C140 136, 160 128, 180 136 L180 146 L40 146 Z" fill="#059669"/>
+  <path d="M60 142 C85 130, 110 132, 135 138 C155 142, 175 136, 195 144 L195 152 L60 152 Z" fill="#10B981"/>
 
-  <!-- Reflejo del volcán en las aguas del lago -->
-  <ellipse cx="170" cy="144" rx="35" ry="4" fill="#0369A1" fill-opacity="0.5"/>
-  <ellipse cx="170" cy="154" rx="25" ry="3" fill="#0369A1" fill-opacity="0.4"/>
+  <!-- AGUAS DEL LAGO XOLOTLÁN A LA DERECHA Y FRENTE -->
+  <path d="M140 128 C200 126, 260 128, 335 128 L335 158 C260 162, 180 160, 140 158 Z" fill="url(#lakeWaterRef)"/>
 
-  <!-- Olas y ondas de agua características del lago -->
-  <path d="M30 146 Q80 149 130 146 T230 146 T300 146" stroke="#BAE6FD" stroke-width="1.8" stroke-linecap="round"/>
-  <path d="M60 156 Q110 159 160 156 T260 156" stroke="#E0F2FE" stroke-width="2.2" stroke-linecap="round"/>
-  <path d="M90 166 Q140 169 190 166 T270 166" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
-  <path d="M120 176 Q160 179 200 176 T250 176" stroke="#E0F2FE" stroke-width="1.8" stroke-linecap="round"/>
-  <path d="M140 186 Q175 188 210 186" stroke="#BAE6FD" stroke-width="1.4" stroke-linecap="round"/>
+  <!-- Ondas y reflejos horizontales del agua (con animación fluida) -->
+  <g class="anim-water">
+    <!-- Reflejo del sol en el agua -->
+    <ellipse cx="235" cy="138" rx="14" ry="2.5" fill="#FEF08A" fill-opacity="0.6"/>
+    <ellipse cx="235" cy="146" rx="20" ry="3" fill="#FFFFFF" fill-opacity="0.5"/>
+
+    <!-- Ondas curvas idénticas al recorte -->
+    <path d="M160 132 Q210 136, 260 132 T330 132" stroke="#BAE6FD" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M180 140 Q235 144, 290 140 T335 140" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M210 148 Q250 152, 295 148 T325 148" stroke="#E0F2FE" stroke-width="2" stroke-linecap="round"/>
+    <path d="M230 154 Q265 157, 305 154" stroke="#BAE6FD" stroke-width="1.8" stroke-linecap="round"/>
+  </g>
 </svg>`,
 
   landscapeBg: `
@@ -205,38 +222,16 @@ const SVG = {
     </svg>
   </div>
   <svg width="340" height="175" viewBox="0 0 340 175" fill="none" style="position:absolute; right:0; top:0;">
-    <defs>
-      <linearGradient id="topVolcanoLeft" x1="250" y1="40" x2="190" y2="135" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stop-color="#1E3A8A"/>
-        <stop offset="50%" stop-color="#1D4ED8"/>
-        <stop offset="100%" stop-color="#064E3B"/>
-      </linearGradient>
-      <linearGradient id="topVolcanoRight" x1="250" y1="40" x2="310" y2="135" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stop-color="#2563EB"/>
-        <stop offset="50%" stop-color="#0284C7"/>
-        <stop offset="100%" stop-color="#10B981"/>
-      </linearGradient>
-    </defs>
-    <!-- Sol dorado -->
-    <circle cx="280" cy="46" r="13" fill="#F59E0B"/>
-    <!-- Nubes -->
-    <path d="M210 68 C210 62, 216 57, 223 57 C227 52, 234 50, 241 52 C248 50, 255 53, 257 58 C262 58, 267 63, 267 68 Z" fill="#E2E8F0" fill-opacity="0.85"/>
-    <path d="M285 76 C285 71, 290 67, 295 67 C299 64, 305 64, 309 66 C313 64, 317 67, 319 69 C323 69, 326 72, 326 76 Z" fill="#E2E8F0" fill-opacity="0.75"/>
-    <!-- Fumarola del Momotombo -->
-    <path d="M248 42 C246 34, 252 28, 258 24 C264 20, 274 18, 282 22 C278 26, 270 30, 264 34 C260 38, 254 40, 250 43 Z" fill="#FFFFFF" fill-opacity="0.75"/>
-    <!-- Volcán Momotombo -->
-    <path d="M246 44 C238 54, 226 74, 214 96 C204 112, 192 126, 178 136 L250 136 Z" fill="url(#topVolcanoLeft)"/>
-    <path d="M246 44 L250 136 L322 136 C308 126, 296 112, 286 96 C274 74, 262 54, 254 44 Z" fill="url(#topVolcanoRight)"/>
-    <ellipse cx="250" cy="44" rx="4.5" ry="2" fill="#F59E0B"/>
-    <!-- Momotombito isla -->
-    <path d="M165 136 C171 126, 177 118, 182 118 C187 118, 193 126, 199 136 Z" fill="#047857"/>
-    <!-- Costas verdes y Lago Xolotlán -->
-    <path d="M140 136 C180 132, 240 134, 340 136 L340 144 L140 144 Z" fill="#065F46"/>
-    <rect x="130" y="136" width="210" height="38" fill="#0284C7"/>
-    <!-- Ondas de agua del lago -->
-    <path d="M160 144 Q220 148 290 144 T340 144" stroke="#BAE6FD" stroke-width="1.8" stroke-linecap="round"/>
-    <path d="M185 152 Q235 156 315 152" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
-    <path d="M210 160 Q250 163 320 160" stroke="#E0F2FE" stroke-width="1.6" stroke-linecap="round"/>
+    <circle cx="260" cy="46" r="12" fill="#F59E0B" class="anim-sun"/>
+    <path d="M205 70 C205 64, 210 59, 217 59 C221 54, 228 52, 235 54 C242 52, 249 55, 251 60 C256 60, 261 65, 261 70 Z" fill="#E2E8F0" fill-opacity="0.8" class="anim-cloud"/>
+    <!-- Volcán con veta naranja -->
+    <path d="M245 44 L180 134 L310 134 Z" fill="#1D4ED8"/>
+    <path d="M245 44 L245 134 L310 134 Z" fill="#0284C7"/>
+    <path d="M247 46 Q260 75 285 110" stroke="#F59E0B" stroke-width="3.5" stroke-linecap="round" class="anim-lava"/>
+    <!-- Colinas y lago -->
+    <path d="M150 132 C180 120, 220 126, 260 132 L260 146 L150 146 Z" fill="#0D9488"/>
+    <rect x="220" y="132" width="120" height="32" fill="#0284C7"/>
+    <path d="M240 140 Q280 144, 330 140" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" class="anim-water"/>
   </svg>
 </div>`
 };
@@ -406,9 +401,10 @@ function getInitialState() {
     hours_total: 28,
     hours_remaining: 28,
     team_name: "",
-    university: "",
+    university: "Universidad Nacional de Ingeniería (UNI)",
     city: "",
     team_logo: "shield",
+    team_logo_img: "",
     project_name: "",
     category: "Innovación",
     challenge_id: "",
@@ -671,18 +667,22 @@ function renderTopbar() {
         <span class="brand-text-navy">RALLY</span>
         <span class="brand-text-blue">STUDIO</span>
       </div>
-      ${state.rally_type ? `<span class="mode-tag-pill">${certamen}</span>` : ""}
+      ${state.rally_type ? `
+        <div class="topbar-emblems-group" title="${certamen}">
+          ${state.rally_type === "latam" ? SVG.rallyLatamEmblem : SVG.rallyNacEmblem}
+          ${SVG.uniCrestEmblem}
+          ${state.team_logo_img ? `<img src="${state.team_logo_img}" class="topbar-team-avatar" alt="Team Logo" title="${state.team_name || 'Equipo'}">` : ""}
+        </div>
+      ` : ""}
       ${pName ? `<span class="project-title-crumb">/ ${pName}</span>` : ""}
       ${state.challenge_id ? `<span class="challenge-title-crumb">Reto #${state.challenge_id}</span>` : ""}
     </div>
     <div class="topbar-actions">
       <div class="dropdown-wrapper">
-        <button class="btn-pill-light" onclick="toggleProjectMenu(event)" id="btn-project-menu">
-          ${SVG.folder}
-          <span>Nuevo proyecto</span>
-          ${SVG.chevronDown}
+        <button class="btn-icon-discreet" onclick="toggleProjectMenu(event)" id="btn-project-menu" title="Opciones de proyecto">
+          ${SVG.dotsVertical}
         </button>
-        <div id="project-dropdown" class="dropdown-menu-box" style="display:none;">
+        <div id="project-dropdown" class="dropdown-menu-box" style="display:none; right:0; left:auto;">
           <a href="#" onclick="resetProject(); return false;">Reiniciar Certamen (T=0)</a>
           <a href="#" onclick="exportProjectJson(); return false;">${SVG.download} Exportar Proyecto (.json)</a>
           <label style="cursor:pointer; display:flex; align-items:center; gap:8px; padding:9px 14px; font-size:12px; color:#1e293b;">
@@ -789,6 +789,9 @@ function renderViewCertamen() {
   const isLatam = state.rally_type === 'latam';
   const isNac = state.rally_type === 'nacional';
 
+  const checkCircleRose = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#E11D48"/><path d="M7 12.5l3.5 3.5 7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  const checkCirclePurple = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#7C3AED"/><path d="M7 12.5l3.5 3.5 7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
   return `
     <div class="wizard-canvas">
       ${SVG.landscapeBg}
@@ -810,14 +813,14 @@ function renderViewCertamen() {
 
       <div class="certamen-grid">
         <!-- Tarjeta 1: Rally Latinoamericano de Innovación -->
-        <div class="certamen-card ${isLatam ? 'selected' : ''}" onclick="selectCertamen('latam', event)">
+        <div class="certamen-card latam-card ${isLatam ? 'selected' : ''}" onclick="selectCertamen('latam', event)">
           <div>
             <div class="certamen-card-header">
               <span class="certamen-badge-pill latam">
                 ${SVG.clock}
                 <span>28 HORAS</span>
               </span>
-              <div>${isLatam ? SVG.checkedCircle : SVG.uncheckedCircle}</div>
+              <div>${isLatam ? checkCircleRose : SVG.uncheckedCircle}</div>
             </div>
 
             <div class="certamen-illustration-wrap">
@@ -834,21 +837,21 @@ function renderViewCertamen() {
               ${SVG.globe}
               <span>Régimen: <strong>Latinoamérica</strong></span>
             </div>
-            <button class="btn-select-card ${isLatam ? 'filled' : 'outline'}" onclick="selectCertamen('latam', event)">
+            <button class="btn-select-card ${isLatam ? 'filled-rose' : 'outline-rose'}" onclick="selectCertamen('latam', event)">
               Seleccionar ${SVG.arrowRight}
             </button>
           </div>
         </div>
 
         <!-- Tarjeta 2: Rally Nacional Nicaragua Innova -->
-        <div class="certamen-card ${isNac ? 'selected' : ''}" onclick="selectCertamen('nacional', event)">
+        <div class="certamen-card nacional-card ${isNac ? 'selected' : ''}" onclick="selectCertamen('nacional', event)">
           <div>
             <div class="certamen-card-header">
               <span class="certamen-badge-pill nacional">
                 ${SVG.clock}
                 <span>24 HORAS</span>
               </span>
-              <div>${isNac ? SVG.checkedCircle : SVG.uncheckedCircle}</div>
+              <div>${isNac ? checkCirclePurple : SVG.uncheckedCircle}</div>
             </div>
 
             <div class="certamen-illustration-wrap">
@@ -865,7 +868,7 @@ function renderViewCertamen() {
               ${SVG.pin}
               <span>Régimen: <strong>Nacional</strong></span>
             </div>
-            <button class="btn-select-card ${isNac ? 'filled' : 'outline'}" onclick="selectCertamen('nacional', event)">
+            <button class="btn-select-card ${isNac ? 'filled-purple' : 'outline-purple'}" onclick="selectCertamen('nacional', event)">
               Seleccionar ${SVG.arrowRight}
             </button>
           </div>
@@ -894,6 +897,7 @@ function selectCertamen(type, ev) {
 // ═════════════════════════════════════════════════════════════════════════════
 function renderViewTeam() {
   const certLabel = state.rally_type === "latam" ? "Rally Latinoamericano (28h)" : "Rally Nacional (24h)";
+  const currentUni = state.university || "Universidad Nacional de Ingeniería (UNI)";
 
   return `
     <div class="wizard-canvas">
@@ -911,47 +915,60 @@ function renderViewTeam() {
 
       <h1 class="wizard-hero-title">Identidad del <span class="title-accent">Equipo</span></h1>
       <p class="wizard-hero-desc">
-        Ingresa el nombre oficial y la sede académica universitaria registrada en la plataforma de competencia.
+        Configura el nombre oficial del equipo y sube su logo para personalizar carátulas, entregables y pautado.
       </p>
 
-      <div class="workbench-card" style="box-shadow:0 4px 20px rgba(9, 30, 66, 0.04); border:1px solid #e2e8f0; border-radius:18px; padding:28px 24px; background:#fff;">
-        <div class="form-grid">
+      <div class="workbench-card" style="box-shadow:0 4px 20px rgba(9, 30, 66, 0.04); border:1px solid #e2e8f0; border-radius:18px; padding:28px 24px; background:#fff; max-width:680px; margin:0 auto;">
+        <div class="form-grid" style="display:grid; grid-template-columns:1fr; gap:20px;">
           <div class="form-group full">
-            <label style="font-weight:700; color:#091e42; font-size:12.5px;">Nombre Oficial del Equipo en la Competencia</label>
-            <input type="text" id="tm-name" placeholder="Ej: Pinoleros Tech, Mentes Volcánicas, InnovaUNI" value="${state.team_name}"
-              style="padding:10px 14px; border:1.5px solid #e2e8f0; border-radius:8px; font-size:13px; font-weight:600; color:#091e42;">
-          </div>
-
-          <div class="form-group">
-            <label style="font-weight:700; color:#091e42; font-size:12.5px;">Universidad o Sede Académica</label>
-            <input type="text" id="tm-uni" placeholder="Ej: Universidad Nacional de Ingeniería (UNI)" value="${state.university}"
-              style="padding:10px 14px; border:1.5px solid #e2e8f0; border-radius:8px; font-size:13px; font-weight:600; color:#091e42;">
-          </div>
-
-          <div class="form-group">
-            <label style="font-weight:700; color:#091e42; font-size:12.5px;">Ciudad o Municipio Piloto</label>
-            <input type="text" id="tm-city" placeholder="Ej: Managua, Estelí, León" value="${state.city}"
-              style="padding:10px 14px; border:1.5px solid #e2e8f0; border-radius:8px; font-size:13px; font-weight:600; color:#091e42;">
+            <label style="font-weight:700; color:#091e42; font-size:12.5px; display:block; margin-bottom:6px;">Nombre Oficial del Equipo</label>
+            <input type="text" id="tm-name" placeholder="Ej: Pinoleros Tech, Mentes Volcánicas, InnovaUNI" value="${state.team_name || ''}"
+              style="width:100%; box-sizing:border-box; padding:11px 14px; border:1.5px solid #cbd5e1; border-radius:8px; font-size:14px; font-weight:600; color:#091e42;"
+              oninput="state.team_name=this.value; saveState();">
           </div>
 
           <div class="form-group full">
-            <label style="font-weight:700; color:#091e42; font-size:12.5px;">Emblema / Identificador Visual del Equipo</label>
-            <div style="display:flex; gap:14px; align-items:center; margin-top:8px;">
-              <div style="display:flex; gap:10px;">
-                ${['shield', 'globe', 'spark'].map(ic => `
-                  <button type="button" class="btn-pill-light" style="${state.team_logo === ic ? 'border-color:#0066ff; background:#eff6ff; color:#0066ff;' : ''} padding:10px 18px;" onclick="state.team_logo='${ic}'; saveState(); renderTab('team');">
-                    ${SVG[ic]}
-                  </button>
-                `).join("")}
+            <label style="font-weight:700; color:#091e42; font-size:12.5px; display:block; margin-bottom:6px;">Universidad o Sede Académica</label>
+            <input type="text" id="tm-uni" value="${currentUni}"
+              style="width:100%; box-sizing:border-box; padding:11px 14px; border:1.5px solid #cbd5e1; border-radius:8px; font-size:13px; font-weight:600; color:#091e42;"
+              oninput="state.university=this.value; saveState();">
+            <span style="font-size:11px; color:#64748b; margin-top:4px; display:block;">Asignado por defecto a la UNI. Puedes ajustarlo a tu recinto o facultad.</span>
+          </div>
+
+          <div class="form-group full">
+            <label style="font-weight:700; color:#091e42; font-size:12.5px; display:block; margin-bottom:6px;">Logo Oficial del Equipo (Imagen PNG / JPG / SVG / WebP)</label>
+            ${state.team_logo_img ? `
+              <div class="logo-preview-box">
+                <img src="${state.team_logo_img}" alt="Logo de Equipo" style="max-height:56px; max-width:90px; object-fit:contain; border-radius:6px; border:1px solid #e2e8f0; background:#fff; padding:4px;">
+                <div style="flex:1;">
+                  <div style="font-size:13px; font-weight:700; color:#0f172a;">Logo Cargado Exitosamente</div>
+                  <div style="font-size:11px; color:#64748b;">Aparece en el topbar, carátulas y documento pautado oficial.</div>
+                </div>
+                <button type="button" class="btn-pill-light" style="font-size:11px; color:#ef4444;" onclick="removeTeamLogo()">Quitar</button>
+                <label class="btn-pill-light" style="font-size:11px; cursor:pointer;">
+                  Cambiar
+                  <input type="file" accept="image/png, image/jpeg, image/svg+xml, image/webp" style="display:none;" onchange="handleTeamLogoUpload(event)">
+                </label>
               </div>
-              <span style="font-size:11.5px; color:#64748b;">Distintivo vectorial sobrio para carátulas técnicas, pautado y video.</span>
-            </div>
+            ` : `
+              <label class="logo-dropzone" for="team-logo-file-input"
+                ondragover="event.preventDefault(); this.style.borderColor='#0066ff'; this.style.background='#eff6ff';"
+                ondragleave="this.style.borderColor='#cbd5e1'; this.style.background='#f8fafc';"
+                ondrop="event.preventDefault(); this.style.borderColor='#cbd5e1'; this.style.background='#f8fafc'; handleTeamLogoUpload({target:{files:event.dataTransfer.files}});">
+                <input type="file" id="team-logo-file-input" accept="image/png, image/jpeg, image/svg+xml, image/webp" style="display:none;" onchange="handleTeamLogoUpload(event)">
+                <div style="width:42px; height:42px; border-radius:50%; background:#eff6ff; display:flex; align-items:center; justify-content:center; color:#0066ff;">
+                  ${SVG.upload}
+                </div>
+                <div style="font-size:13px; font-weight:700; color:#1e293b;">Haz clic o arrastra aquí el logo oficial del equipo</div>
+                <div style="font-size:11px; color:#64748b;">Formatos admitidos: PNG, JPG, SVG o WebP (alta resolución)</div>
+              </label>
+            `}
           </div>
         </div>
 
         <div style="display:flex; justify-content:space-between; align-items:center; margin-top:28px; border-top:1px solid #f1f5f9; padding-top:18px;">
           <button class="btn-pill-light" onclick="switchTab('certamen')">← Regresar</button>
-          <button class="btn-select-card filled" style="padding:10px 22px; font-size:13px;" onclick="saveTeamAndProceed()">
+          <button class="btn-select-card filled" style="padding:10px 24px; font-size:13px;" onclick="saveTeamAndProceed()">
             Continuar a Selección de Reto ${SVG.arrowRight}
           </button>
         </div>
@@ -960,19 +977,40 @@ function renderViewTeam() {
   `;
 }
 
-function saveTeamAndProceed() {
-  const name = document.getElementById("tm-name").value.trim();
-  const uni = document.getElementById("tm-uni").value.trim();
-  const city = document.getElementById("tm-city").value.trim();
+function handleTeamLogoUpload(event) {
+  const file = event.target && event.target.files && event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    state.team_logo_img = e.target.result;
+    saveState();
+    renderTab('team');
+    renderTopbar();
+  };
+  reader.readAsDataURL(file);
+}
 
-  if (!name || !uni) {
-    alert("Por favor ingresa al menos el Nombre del Equipo y la Universidad.");
+function removeTeamLogo() {
+  state.team_logo_img = "";
+  saveState();
+  renderTab('team');
+  renderTopbar();
+}
+
+function saveTeamAndProceed() {
+  const nameInput = document.getElementById("tm-name");
+  const uniInput = document.getElementById("tm-uni");
+  const name = nameInput ? nameInput.value.trim() : (state.team_name || "");
+  const uni = uniInput ? uniInput.value.trim() : (state.university || "Universidad Nacional de Ingeniería (UNI)");
+
+  if (!name) {
+    alert("Por favor ingresa el Nombre Oficial de tu Equipo.");
+    if (nameInput) nameInput.focus();
     return;
   }
 
   state.team_name = name;
   state.university = uni;
-  state.city = city;
   saveState();
   activeTab = "challenges";
   syncUI();
@@ -1787,24 +1825,25 @@ function renderViewResources() {
       <h3 style="margin-bottom:12px;">Logos Oficiales para el Video Pitch (Acto 2 al 4)</h3>
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:12px;">
         <div style="border:1px solid var(--border-light); padding:12px; border-radius:6px; background:#f8fafc; text-align:center;">
-          <div style="height:48px; display:flex; align-items:center; justify-content:center; color:var(--color-primary); font-weight:800; font-size:14px;">
-            ${SVG.shield} UNI
+          <div style="height:48px; display:flex; align-items:center; justify-content:center; gap:8px; color:var(--color-primary); font-weight:800; font-size:14px;">
+            ${SVG.uniCrestEmblem} <span>UNI</span>
           </div>
           <strong style="font-size:11px; display:block;">Logo Institucional Sede</strong>
           <span style="font-size:10px; color:var(--text-muted);">${state.university || 'Universidad Nacional de Ingeniería'}</span>
         </div>
 
         <div style="border:1px solid var(--border-light); padding:12px; border-radius:6px; background:#f8fafc; text-align:center;">
-          <div style="height:48px; display:flex; align-items:center; justify-content:center; color:#d97706; font-weight:800; font-size:14px;">
-            ${SVG.globe} ${state.rally_type === 'latam' ? 'RALLY LATAM' : 'NICARAGUA INNOVA'}
+          <div style="height:48px; display:flex; align-items:center; justify-content:center; gap:8px; font-weight:800; font-size:13px; color:${state.rally_type === 'latam' ? '#e11d48' : '#7c3aed'};">
+            ${state.rally_type === 'latam' ? SVG.rallyLatamEmblem : SVG.rallyNacEmblem}
+            <span>${state.rally_type === 'latam' ? 'RALLY LATAM' : 'NICARAGUA INNOVA'}</span>
           </div>
           <strong style="font-size:11px; display:block;">Logo Oficial del Evento</strong>
-          <span style="font-size:10px; color:var(--text-muted);">${state.rally_type === 'latam' ? 'Edición Continental 2026' : 'Nacional 2026'}</span>
+          <span style="font-size:10px; color:var(--text-muted);">${state.rally_type === 'latam' ? 'Edición Continental (28h)' : 'Nacional Innova (24h)'}</span>
         </div>
 
         <div style="border:1px solid var(--border-light); padding:12px; border-radius:6px; background:#f8fafc; text-align:center;">
           <div style="height:48px; display:flex; align-items:center; justify-content:center; color:var(--text-main); font-weight:800; font-size:14px;">
-            ${SVG[state.team_logo] || SVG.spark} ${state.team_name || 'EQUIPO'}
+            ${state.team_logo_img ? `<img src="${state.team_logo_img}" style="max-height:44px; max-width:120px; object-fit:contain;" alt="Logo Equipo">` : `${SVG.spark} ${state.team_name || 'EQUIPO'}`}
           </div>
           <strong style="font-size:11px; display:block;">Emblema de Equipo</strong>
           <span style="font-size:10px; color:var(--text-muted);">${state.team_name || 'Nombre de Equipo'}</span>

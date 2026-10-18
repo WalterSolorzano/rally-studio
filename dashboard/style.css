@@ -143,39 +143,47 @@ body.sidebar-collapsed.panel-collapsed #panel {
   color: #0066ff;
 }
 
-.mode-tag-pill {
-  font-size: 11px;
-  font-weight: 800;
-  text-transform: uppercase;
-  background: #eff6ff;
-  border: 1px solid #dbeafe;
-  color: #0066ff;
-  padding: 3px 10px;
-  border-radius: 9999px;
-  font-family: var(--font-mono);
+.topbar-emblems-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 10px;
+  padding-left: 14px;
+  border-left: 1.5px solid #e2e8f0;
 }
 
-.project-title-crumb {
-  font-size: 13px;
-  font-weight: 700;
-  color: #64748b;
-}
-
-.challenge-title-crumb {
-  font-size: 11px;
-  font-weight: 700;
-  color: #0066ff;
-  background: #f0fdf4;
-  border: 1px solid #bbf7d0;
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-family: var(--font-mono);
+.topbar-team-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid #0066ff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 }
 
 .topbar-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+}
+
+.btn-icon-discreet {
+  background: transparent;
+  border: 1px solid transparent;
+  color: #64748b;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 120ms ease;
+}
+.btn-icon-discreet:hover {
+  background: #f1f5f9;
+  border-color: #e2e8f0;
+  color: #091e42;
 }
 
 .btn-pill-light {
@@ -724,6 +732,66 @@ textarea {
   z-index: 2;
 }
 
+/* ── ANIMACIONES DE FASE & TRANSICIONES SUAVES ──────────────────── */
+@keyframes phaseEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.995);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.wizard-canvas, .content-wrapper {
+  animation: phaseEnter 220ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Micro-animaciones para SVGs */
+@keyframes orbitRotateSlow {
+  0% { transform: rotate(-16deg) scale(1); }
+  50% { transform: rotate(-12deg) scale(1.02); }
+  100% { transform: rotate(-16deg) scale(1); }
+}
+@keyframes beaconPulseGlow {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+@keyframes cloudDriftSlow {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(5px); }
+}
+@keyframes sunAuraPulse {
+  0%, 100% { opacity: 0.92; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+@keyframes waterRipplesFlow {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(4px); }
+}
+@keyframes lavaFissureGlow {
+  0%, 100% { opacity: 0.85; filter: drop-shadow(0 0 1px #F59E0B); }
+  50% { opacity: 1; filter: drop-shadow(0 0 4px #EA580C); }
+}
+
+.anim-orbit { animation: orbitRotateSlow 8s ease-in-out infinite; transform-origin: 160px 104px; }
+.anim-beacon { animation: beaconPulseGlow 2.5s ease-in-out infinite; transform-origin: center; }
+.anim-cloud { animation: cloudDriftSlow 7s ease-in-out infinite; }
+.anim-sun { animation: sunAuraPulse 4s ease-in-out infinite; transform-origin: 235px 52px; }
+.anim-water { animation: waterRipplesFlow 4s ease-in-out infinite; }
+.anim-lava { animation: lavaFissureGlow 3s ease-in-out infinite; }
+
+/* Certamen Grid & Cards */
+.certamen-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 980px;
+  position: relative;
+  z-index: 2;
+}
+
 .certamen-card {
   background: #ffffff;
   border: 1.5px solid #e2e8f0;
@@ -739,15 +807,27 @@ textarea {
   box-shadow: 0 2px 8px rgba(9, 30, 66, 0.02);
 }
 
-.certamen-card:hover {
-  border-color: #93c5fd;
+/* PALETA RALLY LATAM: Grises técnicos y Rosa/Magenta */
+.certamen-card.latam-card:hover {
+  border-color: #fda4af;
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px -6px rgba(0, 102, 255, 0.09);
+  box-shadow: 0 12px 28px -6px rgba(225, 29, 72, 0.12);
+}
+.certamen-card.latam-card.selected {
+  border: 2px solid #e11d48;
+  box-shadow: 0 12px 30px -4px rgba(225, 29, 72, 0.16);
+  background: #ffffff;
 }
 
-.certamen-card.selected {
-  border: 2px solid #0066ff;
-  box-shadow: 0 12px 30px -4px rgba(0, 102, 255, 0.12);
+/* PALETA RALLY NACIONAL: Púrpura/Morado de innovación (CERO amarillo/naranja) */
+.certamen-card.nacional-card:hover {
+  border-color: #ddd6fe;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -6px rgba(124, 58, 237, 0.12);
+}
+.certamen-card.nacional-card.selected {
+  border: 2px solid #7c3aed;
+  box-shadow: 0 12px 30px -4px rgba(124, 58, 237, 0.16);
   background: #ffffff;
 }
 
@@ -772,13 +852,15 @@ textarea {
 }
 
 .certamen-badge-pill.latam {
-  background: #0066ff;
-  color: #ffffff;
+  background: #fff1f2;
+  color: #e11d48;
+  border: 1px solid #fecdd3;
 }
 
 .certamen-badge-pill.nacional {
-  background: #fef3c7;
-  color: #b45309;
+  background: #f5f3ff;
+  color: #7c3aed;
+  border: 1px solid #ddd6fe;
 }
 
 .certamen-illustration-wrap {
@@ -799,11 +881,11 @@ textarea {
 }
 
 .certamen-meta-tag.latam {
-  color: #0066ff;
+  color: #e11d48;
 }
 
 .certamen-meta-tag.nacional {
-  color: #d97706;
+  color: #7c3aed;
 }
 
 .certamen-card-title {
@@ -854,26 +936,72 @@ textarea {
   transition: all 120ms ease;
 }
 
-.btn-select-card.filled {
-  background: #0066ff;
+.btn-select-card.filled-rose {
+  background: #e11d48;
   color: #ffffff;
-  border: 1px solid #0066ff;
+  border: 1px solid #e11d48;
+}
+.btn-select-card.filled-rose:hover {
+  background: #be185d;
+  border-color: #be185d;
 }
 
-.btn-select-card.filled:hover {
-  background: #0052cc;
-  border-color: #0052cc;
-}
-
-.btn-select-card.outline {
+.btn-select-card.outline-rose {
   background: #ffffff;
-  color: #0066ff;
-  border: 1.5px solid #bfdbfe;
+  color: #e11d48;
+  border: 1.5px solid #fecdd3;
+}
+.btn-select-card.outline-rose:hover {
+  background: #fff1f2;
+  border-color: #e11d48;
 }
 
-.btn-select-card.outline:hover {
-  background: #eff6ff;
+.btn-select-card.filled-purple {
+  background: #7c3aed;
+  color: #ffffff;
+  border: 1px solid #7c3aed;
+}
+.btn-select-card.filled-purple:hover {
+  background: #6d28d9;
+  border-color: #6d28d9;
+}
+
+.btn-select-card.outline-purple {
+  background: #ffffff;
+  color: #7c3aed;
+  border: 1.5px solid #ddd6fe;
+}
+.btn-select-card.outline-purple:hover {
+  background: #f5f3ff;
+  border-color: #7c3aed;
+}
+
+/* ── ZONA DE CARGA DE LOGO DE EQUIPO (IMAGEN REAL) ──────────────── */
+.logo-dropzone {
+  border: 2px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  background: #f8fafc;
+  cursor: pointer;
+  transition: all 140ms ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.logo-dropzone:hover {
   border-color: #0066ff;
+  background: #eff6ff;
+}
+.logo-preview-box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
 }
 
 /* ── COMPARATIVA DE RETOS (OFICIAL VS PROPUESTA WOW) ──────────────── */
