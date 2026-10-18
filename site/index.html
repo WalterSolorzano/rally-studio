@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Telemetría & Monitoreo Territorial | Demostración</title>
+  <link rel="stylesheet" href="../brand/tokens.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo-area">
+      <!-- Icono SVG propio del proyecto -->
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+      </svg>
+      <div>
+        <h1 class="nav-title">RALLY STUDIO · MONITOR TERRITORIAL</h1>
+        <p class="nav-subtitle">Red de Telemetría Hiperlocal en Tiempo Real <span class="badge-sim">[DATOS SIMULADOS EN CAMPO]</span></p>
+      </div>
+    </div>
+    <div class="status-badge">
+      <span class="live-dot"></span> RED LoRaWAN ACTIVA (15 NODOS)
+    </div>
+  </header>
+
+  <main class="grid-container">
+    <!-- Fila 1: Indicadores Críticos -->
+    <section class="stat-banner">
+      <div class="stat-col">
+        <span class="stat-label">Nivel de Alerta Cuenca</span>
+        <span class="stat-val alert-ok">MODERADO (1.42 m)</span>
+        <span class="stat-sub">Umbral de evacuación: 2.50 m</span>
+      </div>
+      <div class="stat-col">
+        <span class="stat-label">Tiempo de Respuesta</span>
+        <span class="stat-val">1.2 s</span>
+        <span class="stat-sub">Latencia media nodo-gateway</span>
+      </div>
+      <div class="stat-col">
+        <span class="stat-label">Autonomía Fotovoltaica</span>
+        <span class="stat-val">98.4%</span>
+        <span class="stat-sub">LiFePO4 12V / 15 días sin sol</span>
+      </div>
+      <div class="stat-col">
+        <span class="stat-label">Población Protegida</span>
+        <span class="stat-val">12,450 hab</span>
+        <span class="stat-sub">Sectores 1 al 4 de Managua</span>
+      </div>
+    </section>
+
+    <!-- Fila 2: Visualización Gráfica y Mapa de Nodos -->
+    <section class="panel-left">
+      <h2 class="section-title">Comportamiento Hidrométrico Últimas 12 Horas</h2>
+      <div class="chart-container">
+        <!-- SVG reactivo con diseño sobrio y técnico -->
+        <svg class="telemetry-chart" viewBox="0 0 600 220">
+          <line x1="50" y1="20" x2="580" y2="20" stroke="#eee" stroke-dasharray="4"/>
+          <line x1="50" y1="70" x2="580" y2="70" stroke="#eee" stroke-dasharray="4"/>
+          <line x1="50" y1="120" x2="580" y2="120" stroke="#eee" stroke-dasharray="4"/>
+          <line x1="50" y1="170" x2="580" y2="170" stroke="#eee"/>
+          
+          <!-- Eje Y -->
+          <text x="15" y="25" class="axis-txt">2.5m (Crítico)</text>
+          <text x="15" y="75" class="axis-txt">1.8m (Alerta)</text>
+          <text x="15" y="125" class="axis-txt">1.2m (Normal)</text>
+          <text x="15" y="175" class="axis-txt">0.0m</text>
+
+          <!-- Curva de telemetria -->
+          <polyline fill="none" stroke="var(--color-primary, #1d45b9)" stroke-width="3"
+            points="50,160 100,155 150,148 200,140 250,115 300,95 350,105 400,120 450,135 500,130 550,122 580,118" />
+          
+          <!-- Puntos sensores -->
+          <circle cx="300" cy="95" r="5" fill="var(--color-accent, #e3953d)"/>
+          <text x="310" y="90" class="point-txt">Pico 1.62m (14:32h)</text>
+          <circle cx="580" cy="118" r="5" fill="var(--color-primary, #1d45b9)"/>
+        </svg>
+      </div>
+      <div class="telemetry-footer">
+        <span>Frecuencia de telemetría: <strong>Cada 60 segundos</strong></span>
+        <span>Protocolo: <strong>LoRaWAN EU868 / US915</strong></span>
+      </div>
+    </section>
+
+    <!-- Fila 2 Derecha: Estado de Nodos y Alertas -->
+    <section class="panel-right">
+      <h2 class="section-title">Nodos de Monitoreo Territorial</h2>
+      <div class="node-list">
+        <div class="node-row">
+          <span class="node-dot dot-active"></span>
+          <div class="node-info">
+            <span class="node-name">NODO-01 · Puente Río El Chiquito</span>
+            <span class="node-telemetry">Nivel: 1.18m | Bat: 99% | RSSI: -84 dBm</span>
+          </div>
+          <span class="node-tag">ESTABLE</span>
+        </div>
+        <div class="node-row">
+          <span class="node-dot dot-active"></span>
+          <div class="node-info">
+            <span class="node-name">NODO-02 · Vado Barrio Los Pescadores</span>
+            <span class="node-telemetry">Nivel: 1.42m | Bat: 96% | RSSI: -91 dBm</span>
+          </div>
+          <span class="node-tag tag-warn">ALERTA 1</span>
+        </div>
+        <div class="node-row">
+          <span class="node-dot dot-active"></span>
+          <div class="node-info">
+            <span class="node-name">NODO-03 · Colector Pluvial Central</span>
+            <span class="node-telemetry">Nivel: 0.85m | Bat: 100% | RSSI: -78 dBm</span>
+          </div>
+          <span class="node-tag">ESTABLE</span>
+        </div>
+        <div class="node-row">
+          <span class="node-dot dot-active"></span>
+          <div class="node-info">
+            <span class="node-name">NODO-04 · Desembocadura Lago Xolotlán</span>
+            <span class="node-telemetry">Nivel: 0.92m | Bat: 94% | RSSI: -88 dBm</span>
+          </div>
+          <span class="node-tag">ESTABLE</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>Prototipo funcional de demostración para video pitch · Rally de Innovación 2026</span>
+    <span>Arquitectura abierta bajo licencia MIT · Datos de campo [SIMULADOS]</span>
+  </footer>
+</body>
+</html>

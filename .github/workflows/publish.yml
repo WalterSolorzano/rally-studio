@@ -1,0 +1,24 @@
+name: Despliegue Automatico de Web Demo a GitHub Pages
+
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - 'site/**'
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar Repositorio
+        uses: actions/checkout@v4
+
+      - name: Publicar en rama gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          force_orphan: true
