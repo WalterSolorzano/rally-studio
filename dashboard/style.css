@@ -1,0 +1,294 @@
+/* dashboard/style.css — Rally Studio Dashboard
+   Diseño: blanco minimalista. Sin cards. Jerarquía por tipografía y líneas finas.
+   Cero colores morados. Paleta del proyecto inyectada via --color-primary. */
+
+:root {
+  /* Tokens base — se sobreescriben con brand/tokens.css al elegir paleta */
+  --bg:       #ffffff;
+  --text:     #111111;
+  --muted:    #666666;
+  --line:     #e2e2e2;
+  --surface:  #f8f8f8;
+  --accent:   var(--color-primary, #1a1a1a);
+
+  /* Estado */
+  --ok:   #1a7f4b;
+  --warn: #b45309;
+  --err:  #b91c1c;
+
+  /* Tipografía */
+  --font:  'Inter', 'Segoe UI', system-ui, sans-serif;
+  --mono:  'JetBrains Mono', 'Consolas', 'Courier New', monospace;
+
+  --sz-xs:   11px;
+  --sz-sm:   13px;
+  --sz-base: 15px;
+  --sz-lg:   18px;
+  --sz-xl:   22px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font);
+  font-size: var(--sz-base);
+  background: var(--bg);
+  color: var(--text);
+  display: grid;
+  grid-template-columns: 200px 1fr 260px;
+  grid-template-rows: 48px 1fr;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ── TOPBAR ─────────────────────────────────────── */
+#topbar {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+}
+#topbar .brand {
+  font-size: var(--sz-sm);
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  flex: 0 0 auto;
+}
+#topbar .project-name {
+  font-size: var(--sz-sm);
+  color: var(--muted);
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#topbar .clock-display {
+  font-family: var(--mono);
+  font-size: var(--sz-lg);
+  font-weight: 700;
+  color: var(--accent);
+  flex: 0 0 auto;
+}
+#topbar .rally-badge {
+  font-size: var(--sz-xs);
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  background: var(--accent);
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 2px;
+}
+
+/* ── SIDEBAR ─────────────────────────────────────── */
+#sidebar {
+  border-right: 1px solid var(--line);
+  padding: 16px 0;
+  overflow-y: auto;
+  background: var(--bg);
+}
+#sidebar nav a {
+  display: block;
+  font-size: var(--sz-sm);
+  padding: 7px 16px;
+  text-decoration: none;
+  color: var(--text);
+  border-left: 3px solid transparent;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#sidebar nav a:hover { background: var(--surface); }
+#sidebar nav a.active {
+  border-left-color: var(--accent);
+  background: var(--surface);
+  font-weight: 600;
+}
+
+/* ── MAIN ────────────────────────────────────────── */
+#main {
+  padding: 28px 36px;
+  overflow-y: auto;
+}
+#main h2 {
+  font-size: var(--sz-xl);
+  font-weight: 700;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 12px;
+  margin-bottom: 22px;
+}
+#main h3 {
+  font-size: var(--sz-base);
+  font-weight: 600;
+  margin: 20px 0 10px;
+}
+#main p { font-size: var(--sz-sm); color: var(--muted); margin-bottom: 10px; line-height: 1.6; }
+
+/* ── RIGHT PANEL ─────────────────────────────────── */
+#panel {
+  border-left: 1px solid var(--line);
+  padding: 16px;
+  overflow-y: auto;
+  background: var(--bg);
+}
+#panel .panel-section { margin-bottom: 20px; }
+#panel .panel-title {
+  font-size: var(--sz-xs);
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.status-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--sz-sm);
+  padding: 5px 0;
+  border-bottom: 1px solid var(--line);
+}
+.status-item:last-child { border-bottom: none; }
+
+/* Estado dots */
+.dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
+.dot-ok   { background: var(--ok); }
+.dot-wip  { background: var(--warn); }
+.dot-todo { background: var(--line); border: 1px solid var(--muted); }
+.dot-err  { background: var(--err); }
+
+/* ── ALERTS ──────────────────────────────────────── */
+.alert-box {
+  background: #fef3c7;
+  border-left: 3px solid var(--warn);
+  padding: 8px 10px;
+  font-size: var(--sz-xs);
+  margin-top: 8px;
+  border-radius: 0 2px 2px 0;
+  line-height: 1.5;
+}
+.err-box {
+  background: #fee2e2;
+  border-left: 3px solid var(--err);
+  padding: 8px 10px;
+  font-size: var(--sz-xs);
+  margin-top: 8px;
+  border-radius: 0 2px 2px 0;
+  line-height: 1.5;
+}
+.info-box {
+  background: var(--surface);
+  border-left: 3px solid var(--line);
+  padding: 8px 10px;
+  font-size: var(--sz-xs);
+  margin-top: 8px;
+  border-radius: 0 2px 2px 0;
+  line-height: 1.5;
+}
+
+/* ── TABLE ────────────────────────────────────────── */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--sz-sm);
+  margin-bottom: 16px;
+}
+th {
+  text-align: left;
+  padding: 8px 12px;
+  background: var(--surface);
+  border-bottom: 2px solid var(--line);
+  font-size: var(--sz-xs);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 700;
+}
+td { padding: 8px 12px; border-bottom: 1px solid var(--line); }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--surface); }
+td.mono { font-family: var(--mono); font-size: var(--sz-xs); }
+
+/* ── INPUTS ────────────────────────────────────────── */
+input[type=text], textarea, select {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 7px 10px;
+  font-family: var(--font);
+  font-size: var(--sz-sm);
+  background: var(--bg);
+  color: var(--text);
+}
+input[type=text]:focus, textarea:focus, select:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 0;
+}
+
+/* ── BUTTONS ───────────────────────────────────────── */
+button.primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 2px;
+  padding: 8px 18px;
+  font-size: var(--sz-sm);
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: .02em;
+}
+button.primary:hover { opacity: .85; }
+button.secondary {
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 7px 16px;
+  font-size: var(--sz-sm);
+  cursor: pointer;
+}
+button.secondary:hover { background: var(--surface); }
+
+/* ── PALETA SWATCHES ──────────────────────────────── */
+.palette-row { display: flex; gap: 10px; margin: 12px 0; flex-wrap: wrap; }
+.swatch-group { display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; }
+.swatch {
+  width: 40px; height: 40px;
+  border-radius: 2px;
+  border: 2px solid transparent;
+  transition: border-color .15s;
+}
+.swatch:hover, .swatch.selected { border-color: var(--accent); }
+.swatch-label { font-size: var(--sz-xs); color: var(--muted); font-family: var(--mono); }
+
+/* ── CHAR COUNTER ─────────────────────────────────── */
+.char-counter { font-family: var(--mono); font-size: var(--sz-xs); color: var(--muted); }
+.char-counter.over { color: var(--err); font-weight: 700; }
+.char-counter.near { color: var(--warn); }
+
+/* ── CODE BLOCK ───────────────────────────────────── */
+code, pre {
+  font-family: var(--mono);
+  font-size: var(--sz-xs);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 1px 4px;
+}
+pre { padding: 10px 12px; overflow-x: auto; }
+
+/* ── TYPOGRAPHY PREVIEW ──────────────────────────── */
+.type-preview h1 { font-size: 32px; font-weight: 800; line-height: 1.2; }
+.type-preview h2 { font-size: 22px; font-weight: 700; }
+.type-preview h3 { font-size: 16px; font-weight: 600; }
+.type-preview p  { font-size: 14px; line-height: 1.7; color: var(--muted); }
+
+/* ── LABEL ────────────────────────────────────────── */
+label { font-size: var(--sz-xs); font-weight: 700; text-transform: uppercase;
+        letter-spacing: .06em; color: var(--muted); display: block; margin-bottom: 4px; }
+.field-group { margin-bottom: 14px; }
