@@ -29,6 +29,8 @@ const SVG = {
   plus: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>`,
   refresh: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>`,
   dotsVertical: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1.5"></circle><circle cx="12" cy="5" r="1.5"></circle><circle cx="12" cy="19" r="1.5"></circle></svg>`,
+  shieldCheck: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>`,
+  network: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>`,
 
   rallyLatamEmblem: `<svg width="26" height="26" viewBox="0 0 32 32" fill="none" style="vertical-align:middle;" title="Rally Latinoamericano de Innovación"><circle cx="16" cy="16" r="14" fill="#FFF1F2" stroke="#FECDD3" stroke-width="1.5"/><path d="M12 9C14 11 16 13 15 16C14 19 18 23 20 22C22 20 23 16 21 13C19 10 17 8 13 8Z" fill="#E11D48"/><ellipse cx="16" cy="16" rx="14" ry="5.5" stroke="#E11D48" stroke-width="1.2" stroke-dasharray="3 2" transform="rotate(-25 16 16)"/><circle cx="21" cy="12" r="1.8" fill="#F43F5E"/></svg>`,
   rallyNacEmblem: `<svg width="26" height="26" viewBox="0 0 32 32" fill="none" style="vertical-align:middle;" title="Rally Nacional Nicaragua Innova"><circle cx="16" cy="16" r="14" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="1.5"/><path d="M16 8L10.5 22H21.5L16 8Z" fill="#7C3AED"/><circle cx="21" cy="11" r="2.8" fill="#F59E0B"/><path d="M9 22C12 20.5 20 20.5 23 22" stroke="#38BDF8" stroke-width="1.5"/></svg>`,
@@ -447,15 +449,8 @@ function getInitialState() {
       impacto: ""
     },
 
-    // Presupuesto Sustentado
-    budget: [
-      { element: "Unidad Central MCU + Módulo de Comunicaciones", units: 10, unit_cost: 14.50, url: "https://alibaba.com" },
-      { element: "Sensores Industriales de Entrada / Detección", units: 10, unit_cost: 45.00, url: "https://alibaba.com" },
-      { element: "Sistema de Energía Autónomo + Baterías LiFePO4", units: 8, unit_cost: 120.00, url: "https://alibaba.com" },
-      { element: "Carcasas de Protección Estancas IP67", units: 10, unit_cost: 32.00, url: "https://alibaba.com" },
-      { element: "Módulo Concentrador / Estación Central", units: 2, unit_cost: 295.00, url: "https://alibaba.com" },
-      { element: "Flete Internacional y Aranceles de Importación (18%)", units: 1, unit_cost: 650.00, url: "https://dhl.com" }
-    ],
+    // Presupuesto Sustentado (vacío hasta ser configurado por el equipo)
+    budget: [],
 
     // Guion 120 segundos
     script: {
@@ -510,7 +505,7 @@ const NAV_TABS = [
   { id: "canvas",     label: "08 Modelo Canvas",        level: 4, check: () => state.solution_approved },
   { id: "script",     label: "09 Guion 120s (4 Actos)", level: 5, check: () => isPautadoComplete() && isBudgetValid() },
   { id: "webdemo",    label: "10 Prototipo para Video", level: 5, check: () => isPautadoComplete() && isBudgetValid() },
-  { id: "timeline",   label: "11 Hitos & Nomenclatura SIRLI", level: 1, check: () => !!state.rally_type }
+  { id: "timeline",   label: "11 Checklist de Entrega", level: 1, check: () => !!state.rally_type }
 ];
 
 function isPautadoComplete() {
@@ -521,8 +516,9 @@ function isPautadoComplete() {
 }
 
 function isBudgetValid() {
+  if (!state.budget || state.budget.length === 0) return false;
   const total = state.budget.reduce((acc, it) => acc + (it.units * it.unit_cost), 0);
-  return total >= 3000 && total <= 6500;
+  return total >= 500 && total <= 15000;
 }
 
 function isScriptComplete() {
@@ -563,6 +559,9 @@ function loadSavedState() {
     if (saved) {
       state = Object.assign(getInitialState(), JSON.parse(saved));
       if (!state.tasks || !state.tasks.length) state.tasks = getDefaultMultiAITasks();
+      if (state.budget && state.budget.length === 6 && state.budget[0].element && state.budget[0].element.includes("MCU")) {
+        state.budget = [];
+      }
       const stage = getWorkflowStage();
       if (stage === 0) activeTab = "certamen";
       else if (stage === 1) activeTab = "team";
@@ -715,7 +714,7 @@ function getCurrentDeadlineAlert() {
     return { label: "STANDBY", time: "--:--", desc: "Selecciona el certamen para activar el cronograma" };
   }
   if (!state.rally_started) {
-    return { label: "Kickoff Oficial", time: "08:00 AM (Viernes)", desc: "Apertura oficial de retos en plataforma SIRLI" };
+    return { label: "Inicio Oficial", time: "08:00 AM (Viernes)", desc: "Apertura oficial de retos en plataforma de competencia" };
   }
   const now = Date.now();
   const start = state.start_timestamp || now;
@@ -729,9 +728,9 @@ function getCurrentDeadlineAlert() {
     const rh = Math.floor(remainToReg / 3600);
     const rm = Math.floor((remainToReg % 3600) / 60);
     return { 
-      label: "Inscripción SIRLI", 
+      label: "Inscripción Oficial", 
       time: `12:00 PM (${rh}h ${rm}m)`, 
-      desc: "Límite fatal de registro de integrantes y sede UNI en plataforma" 
+      desc: "Límite de registro de integrantes y sede UNI en plataforma oficial" 
     };
   }
   if (elapsedHours < 12) {
@@ -774,7 +773,7 @@ function getCurrentDeadlineAlert() {
   }
   if (remainSec > 0) {
     return { 
-      label: "CIERRE FINAL SIRLI", 
+      label: "CIERRE DE PLATAFORMA", 
       time: "T-0 Inmutable", 
       desc: "Cierre definitivo de plataforma. Ningún certamen otorga prórroga" 
     };
@@ -898,7 +897,7 @@ function renderTopbar() {
           ${SVG.dotsVertical}
         </button>
         <div id="project-dropdown" class="dropdown-menu-box" style="display:none; right:0; left:auto;">
-          <a href="#" onclick="startOfficialRallyTimer(); return false;">${SVG.spark} Iniciar Cronómetro (Kickoff 08:00 AM)</a>
+          <a href="#" onclick="startOfficialRallyTimer(); return false;">${SVG.spark} Iniciar Cronómetro (Inicio Oficial 08:00 AM)</a>
           <a href="#" onclick="state.rally_started=false; state.start_timestamp=null; saveState(); startTimer(); return false;">Pausar / Standby</a>
           <a href="#" onclick="resetProject(); return false;">Reiniciar Certamen (T=0)</a>
           <a href="#" onclick="exportProjectJson(); return false;">${SVG.download} Exportar Proyecto (.json)</a>
@@ -909,9 +908,13 @@ function renderTopbar() {
         </div>
       </div>
 
-      ${stage >= 2 ? `<button class="btn-pill-ghost" onclick="togglePanel()" title="Panel de Auditoría">${SVG.spark} Auditoría</button>` : ""}
+      <a href="graph.html" target="_blank" class="btn-pill-ghost" title="Explorar Grafo de Conocimiento (177 nodos, rúbricas y ganadores)" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+        ${SVG.network} <span>Grafo</span>
+      </a>
 
-      <div class="timer-pill-navy" id="timer-pill" title="Cronómetro oficial: calibrado a las 08:00 AM">
+      ${stage >= 2 ? `<button class="btn-pill-ghost btn-panel-toggle" onclick="togglePanel()" title="Alternar Panel de Auditoría">${SVG.shieldCheck} <span>Auditoría</span></button>` : ""}
+
+      <div class="timer-pill-navy" id="timer-pill" onclick="openTimerSettingsModal()" style="cursor:pointer;" title="Clic para calibrar o ajustar cronómetro">
         ${SVG.clock}
         <span id="clock-timer">${timerData.time}</span>
         <span id="clock-status-tag" style="font-size:9.5px; opacity:0.75; font-weight:700; margin-left:4px;">${timerData.status}</span>
@@ -931,6 +934,99 @@ document.addEventListener("click", () => {
   const menu = document.getElementById("project-dropdown");
   if (menu) menu.style.display = "none";
 });
+
+// ── CALIBRACIÓN INTERACTIVA DE CRONÓMETRO ─────────────────────────────────────
+function openTimerSettingsModal() {
+  let modal = document.getElementById("timer-modal-overlay");
+  if (!modal) {
+    modal = document.createElement("div");
+    modal.id = "timer-modal-overlay";
+    modal.className = "modal-overlay";
+    document.body.appendChild(modal);
+  }
+  
+  const currentTotal = state.hours_total || (state.rally_type === "latam" ? 28 : 24);
+  
+  modal.innerHTML = `
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <div class="modal-header" style="margin-bottom:12px;">
+        <div style="display:flex; align-items:center; gap:8px;">
+          ${SVG.clock}
+          <h3 class="modal-title" style="margin:0; font-size:16px; font-weight:800; color:#0D1B35;">Ajustar Cronómetro Oficial</h3>
+        </div>
+        <button class="btn-icon-discreet" onclick="closeTimerSettingsModal()" style="font-size:18px; line-height:1;">&times;</button>
+      </div>
+      
+      <p style="font-size:12px; color:#5C7193; margin-bottom:16px; line-height:1.45;">
+        Calibra las horas oficiales de competencia o ajusta el tiempo según la hora de inicio de tu sede universitaria.
+      </p>
+
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-bottom:16px;">
+        <div>
+          <label style="font-size:11px; font-weight:700; color:#13213A; display:block; margin-bottom:4px;">Régimen Total (Horas)</label>
+          <input type="number" id="timer-input-hours-total" value="${currentTotal}" min="1" max="72" style="width:100%; padding:8px 10px; border:1px solid #DCE7F5; border-radius:8px; font-size:13px; font-weight:700; font-family:var(--font-mono); background:#F8FAFD;">
+        </div>
+        <div>
+          <label style="font-size:11px; font-weight:700; color:#13213A; display:block; margin-bottom:4px;">Estado Actual</label>
+          <div style="padding:8px 10px; background:#F0F6FF; border:1px solid #DCE7F5; border-radius:8px; font-size:12px; font-weight:700; color:#0866F5; text-align:center;">
+            ${state.rally_started ? 'EN CURSO' : 'STANDBY / PAUSA'}
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:8px; margin-bottom:18px;">
+        <button type="button" class="btn-pill-light" style="flex:1; font-size:11.5px; padding:6px;" onclick="setTimerPreset(24)">24h (Nacional)</button>
+        <button type="button" class="btn-pill-light" style="flex:1; font-size:11.5px; padding:6px;" onclick="setTimerPreset(28)">28h (Latam)</button>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; padding-top:14px; border-top:1px solid #DCE7F5;">
+        <button type="button" class="btn-pill-ghost" style="color:#DC2626; font-size:12px; font-weight:700;" onclick="toggleTimerRunning()">
+          ${state.rally_started ? 'Pausar Reloj' : 'Iniciar Reloj'}
+        </button>
+        <div style="display:flex; gap:8px;">
+          <button type="button" class="btn-pill-light" style="font-size:12px;" onclick="closeTimerSettingsModal()">Cancelar</button>
+          <button type="button" class="btn-select-card filled" style="padding:7px 16px; font-size:12px; font-weight:700;" onclick="applyTimerSettings()">Aplicar Ajuste</button>
+        </div>
+      </div>
+    </div>
+  `;
+  modal.style.display = "flex";
+}
+
+function closeTimerSettingsModal() {
+  const modal = document.getElementById("timer-modal-overlay");
+  if (modal) modal.style.display = "none";
+}
+
+function setTimerPreset(hours) {
+  const inp = document.getElementById("timer-input-hours-total");
+  if (inp) inp.value = hours;
+}
+
+function toggleTimerRunning() {
+  if (state.rally_started) {
+    state.rally_started = false;
+  } else {
+    state.rally_started = true;
+    if (!state.start_timestamp) state.start_timestamp = Date.now();
+  }
+  saveState();
+  startTimer();
+  openTimerSettingsModal();
+}
+
+function applyTimerSettings() {
+  const inp = document.getElementById("timer-input-hours-total");
+  if (inp) {
+    const val = parseInt(inp.value, 10);
+    if (!isNaN(val) && val > 0) {
+      state.hours_total = val;
+    }
+  }
+  saveState();
+  startTimer();
+  closeTimerSettingsModal();
+}
 
 // ── NAVEGACIÓN LATERAL POR DEPENDENCIAS ───────────────────────────────────────
 function renderNavigation() {
@@ -1303,114 +1399,153 @@ function renderViewChallenges() {
     return (ch.category || "").toLowerCase().includes(challengeFilter.toLowerCase());
   });
 
+  const selectedChallengeObj = state.challenge_id ? list.find(c => c.id === state.challenge_id) || OFFICIAL_CHALLENGES_2026.find(c => c.id === state.challenge_id) : null;
+
   return `
-    <div class="wizard-canvas" style="max-width:1080px;">
-      <div class="stepper-header" style="justify-content:space-between;">
+    <div class="wizard-canvas" style="max-width:1040px; margin:0 auto; padding-bottom:60px;">
+      <div class="stepper-header" style="justify-content:space-between; margin-bottom:18px;">
         <div style="display:flex; align-items:center; gap:14px;">
-          <span class="stepper-pill">PASO 03 DE 03</span>
-          <div class="stepper-bars">
-            <div class="stepper-bar-segment completed"></div>
-            <div class="stepper-bar-segment completed"></div>
-            <div class="stepper-bar-segment active"></div>
-          </div>
+          <span class="stepper-pill">PASO 03 DE 11 · RETOS DEL COMITÉ</span>
         </div>
         <div style="display:flex; align-items:center; gap:8px;">
           <button class="btn-minimal-back" onclick="switchTab('team')" title="Volver a identidad de equipo">
             ${SVG.arrowLeft}
             <span>Editar equipo</span>
           </button>
-          <a href="/docs/Matriz_Seleccion_Desafios_2026.docx" download class="btn-pill-light" style="font-size:11px; padding:5px 12px; text-decoration:none;">
+          <a href="/docs/Matriz_Seleccion_Desafios_2026.docx" download class="btn-pill-light" style="font-size:11.5px; padding:6px 14px; text-decoration:none;">
             ${SVG.download} Matriz Word (.docx)
           </a>
         </div>
       </div>
 
-      <h1 class="wizard-hero-title">Selección del <span class="title-accent">Reto</span> Oficial</h1>
-      <p class="wizard-hero-desc">
-        Pega el listado oficial anunciado por el comité evaluador a las 8:00 AM para cargar los retos en el radar y deliberar la propuesta ganadora.
-      </p>
+      <div class="phase-header" style="margin-bottom:24px;">
+        <h1 class="phase-title" style="font-size:28px; font-weight:900; color:#0D1B35; margin-bottom:6px; letter-spacing:-0.02em;">
+          Selección del <span class="phase-title-accent" style="color:#0866F5;">Reto Oficial</span>
+        </h1>
+        <p class="phase-subtitle" style="font-size:13.5px; color:#5C7193; line-height:1.45;">
+          Explora las demandas oficiales del comité y propuestas de vanguardia (WOW) para fijar el desafío de tu equipo.
+        </p>
+      </div>
 
-      <!-- Caja Principal de Ingesta de Retos Oficiales del Comité -->
-      <div class="workbench-card" style="box-shadow:0 4px 20px rgba(9, 30, 66, 0.04); border:1.5px solid #bfdbfe; background:#fcfdfe; border-radius:18px; padding:22px; margin-bottom:24px;">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-          <strong style="font-size:13px; color:#0066ff;">Pega aquí el texto de los retos anunciado por el comité (WhatsApp / PDF / Web):</strong>
-          <span style="font-size:11px; color:#64748b; font-family:var(--font-mono);">Formato libre o numerado</span>
-        </div>
-        <textarea id="raw-committee-challenges" rows="3" style="width:100%; border:1px solid #cbd5e1; border-radius:8px; padding:12px; font-size:12px; font-family:var(--font-mono); box-sizing:border-box; background:#fff;"
-          placeholder="Ej: RETO 01: Reconversión de motores en desuso...&#10;RETO 02: Redes de sensores de inundación...&#10;RETO 03: Protección de polinizadores nativos..."></textarea>
-        
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:12px;">
-          <span style="font-size:11.5px; color:#64748b;">El sistema estructurará cada reto y contrastará la demanda oficial contra la propuesta WOW.</span>
+      ${state.challenge_id && selectedChallengeObj ? `
+        <!-- Banner de Reto Seleccionado con opción de cambiarlo libremente -->
+        <div style="background:#F0F6FF; border:1.5px solid #BFDBFE; border-radius:14px; padding:16px 20px; margin-bottom:22px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <span style="background:#0866F5; color:#ffffff; font-family:var(--font-mono); font-size:12px; font-weight:800; padding:4px 10px; border-radius:8px;">
+              RETO SELECCIONADO #${selectedChallengeObj.id}
+            </span>
+            <div>
+              <div style="font-size:14px; font-weight:800; color:#0D1B35;">${selectedChallengeObj.title}</div>
+              <div style="font-size:12px; color:#5C7193;">${selectedChallengeObj.category} · Probabilidad estimada: ${selectedChallengeObj.winRate || 90}%</div>
+            </div>
+          </div>
           <div style="display:flex; gap:8px;">
-            <button class="btn-pill-light" style="font-size:11.5px;" onclick="loadReferenceChallenges()">
-              ${SVG.refresh} Cargar Catálogo de Referencia (9 Retos)
+            <button class="btn-pill-light" onclick="clearSelectedChallenge()" style="font-size:12px; font-weight:700;">
+              Cambiar de Reto
             </button>
-            <button class="btn-select-card filled" style="padding:8px 16px; font-size:12px;" onclick="processCommitteeChallengesInput()">
-              Procesar y Cargar al Radar ${SVG.arrowRight}
+            <button class="btn-select-card filled" style="padding:8px 18px; font-size:12px; font-weight:800;" onclick="switchTab('solution')">
+              Continuar a Taller de Solución ${SVG.arrowRight}
+            </button>
+          </div>
+        </div>
+      ` : ""}
+
+      <!-- Barra de Acción Rápida y Carga de Retos (Sin cajas anidadas) -->
+      <div style="background:#FFFFFF; border:1px solid #DCE7F5; border-radius:14px; padding:18px 22px; margin-bottom:22px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+          <div>
+            <div style="font-size:13.5px; font-weight:800; color:#0D1B35;">Catálogo de Desafíos de Competencia</div>
+            <div style="font-size:12px; color:#5C7193; margin-top:2px;">Disponibles para análisis comparativo y selección estratégica.</div>
+          </div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="btn-pill-light" style="font-size:12px; padding:7px 14px;" onclick="loadReferenceChallenges()">
+              ${SVG.refresh} Cargar 9 Retos Oficiales 2026
+            </button>
+            <button class="btn-pill-ghost" style="font-size:12px; padding:7px 14px;" onclick="toggleCustomChallengeInput()">
+              ${SVG.plus} Pegar Comunicado del Comité
+            </button>
+          </div>
+        </div>
+
+        <div id="custom-challenge-input-box" style="display:none; margin-top:16px; padding-top:16px; border-top:1px solid #DCE7F5;">
+          <textarea id="raw-committee-challenges" rows="3" style="width:100%; border:1px solid #CBD5E1; border-radius:8px; padding:12px; font-size:12px; font-family:var(--font-mono); box-sizing:border-box; background:#F8FAFD;"
+            placeholder="Pega aquí el texto: RETO 01: Reconversión de motores..."></textarea>
+          <div style="display:flex; justify-content:flex-end; margin-top:10px;">
+            <button class="btn-select-card filled" style="padding:7px 18px; font-size:12px; font-weight:700;" onclick="processCommitteeChallengesInput()">
+              Procesar y Cargar al Radar
             </button>
           </div>
         </div>
       </div>
 
       ${!hasChallenges ? `
-        <div class="workbench-card" style="text-align:center; padding:40px 24px; background:#f8fafc; border:1px dashed #cbd5e1; border-radius:18px;">
-          <p style="font-size:14px; font-weight:700; color:#091e42; margin-bottom:6px;">No hay retos cargados en el radar todavía.</p>
-          <p style="font-size:12.5px; color:#64748b; margin-bottom:18px;">Pega los retos comunicados por el comité arriba o carga el banco histórico de referencia.</p>
-          <button class="btn-select-card filled" onclick="loadReferenceChallenges()">Cargar Catálogo Histórico de Referencia (9 Retos 2026)</button>
+        <div style="text-align:center; padding:48px 24px; background:#F8FAFD; border:1px solid #DCE7F5; border-radius:16px;">
+          <h3 style="font-size:16px; font-weight:800; color:#0D1B35; margin-bottom:6px;">No hay retos en el radar todavía</h3>
+          <p style="font-size:13px; color:#5C7193; margin-bottom:20px; max-width:480px; margin-left:auto; margin-right:auto;">
+            Carga el banco de 9 retos oficiales del Rally 2026 para explorar las demandas oficiales y propuestas WOW.
+          </p>
+          <button class="btn-select-card filled" style="padding:10px 24px; font-size:13px;" onclick="loadReferenceChallenges()">
+            Cargar 9 Retos Oficiales 2026
+          </button>
         </div>
       ` : `
         <!-- Filtros de Categoría -->
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
           <div style="display:flex; gap:8px;">
-            <button class="btn-pill-light" style="${challengeFilter === 'all' ? 'background:#0066ff; color:#fff; border-color:#0066ff;' : ''} padding:5px 12px; font-size:11.5px;" onclick="challengeFilter='all'; renderTab('challenges');">
-              Todos los Retos (${list.length})
+            <button class="btn-pill-light" style="${challengeFilter === 'all' ? 'background:#0866F5; color:#fff; border-color:#0866F5;' : ''} padding:6px 14px; font-size:12px; font-weight:700;" onclick="challengeFilter='all'; renderTab('challenges');">
+              Todos (${list.length})
             </button>
-            <button class="btn-pill-light" style="${challengeFilter === 'innovación' ? 'background:#0066ff; color:#fff; border-color:#0066ff;' : ''} padding:5px 12px; font-size:11.5px;" onclick="challengeFilter='innovación'; renderTab('challenges');">
+            <button class="btn-pill-light" style="${challengeFilter === 'innovación' ? 'background:#0866F5; color:#fff; border-color:#0866F5;' : ''} padding:6px 14px; font-size:12px; font-weight:700;" onclick="challengeFilter='innovación'; renderTab('challenges');">
               Innovación
             </button>
-            <button class="btn-pill-light" style="${challengeFilter === 'impacto social' ? 'background:#0066ff; color:#fff; border-color:#0066ff;' : ''} padding:5px 12px; font-size:11.5px;" onclick="challengeFilter='impacto social'; renderTab('challenges');">
+            <button class="btn-pill-light" style="${challengeFilter === 'impacto social' ? 'background:#0866F5; color:#fff; border-color:#0866F5;' : ''} padding:6px 14px; font-size:12px; font-weight:700;" onclick="challengeFilter='impacto social'; renderTab('challenges');">
               Impacto Social
             </button>
           </div>
-          <span style="font-size:12px; font-weight:700; color:#64748b; font-family:var(--font-mono);">${list.length} Retos Listos para Deliberación</span>
+          <span style="font-size:12px; font-weight:700; color:#5C7193; font-family:var(--font-mono);">${filtered.length} Retos Disponibles</span>
         </div>
 
-        <!-- Lista Comparativa de Retos -->
-        <div style="display:flex; flex-direction:column; gap:16px;">
+        <!-- Lista Plana y Limpia de Retos -->
+        <div style="display:flex; flex-direction:column; gap:14px;">
           ${filtered.map(ch => {
             const isSelected = state.challenge_id === ch.id;
             const odsStr = Array.isArray(ch.ods) ? ch.ods.join(", ") : (ch.ods || "ODS 9");
             return `
-              <div class="challenge-box ${isSelected ? 'active' : ''}" style="border-radius:14px; border:1.5px solid ${isSelected ? '#0066ff' : '#e2e8f0'}; box-shadow:0 2px 10px rgba(9, 30, 66, 0.03);">
-                <div class="challenge-box-header" style="background:#ffffff; padding:16px 20px; border-bottom:1px solid #f1f5f9;">
-                  <div style="display:flex; align-items:center; gap:10px;">
-                    <span class="badge-status ${isSelected ? 'badge-ok' : 'badge-pending'}" style="font-family:var(--font-mono); font-size:10px;">RETO #${ch.id}</span>
-                    <span style="font-size:11px; font-weight:700; color:#64748b;">${ch.category} · ${odsStr}</span>
-                    ${isSelected ? `<span style="font-size:10px; font-weight:800; color:#047857; background:#ecfdf5; border:1px solid #a7f3d0; padding:2px 8px; border-radius:9999px;">RETO ELEGIDO</span>` : ""}
+              <div style="background:#FFFFFF; border:1.5px solid ${isSelected ? '#0866F5' : '#DCE7F5'}; border-radius:14px; padding:18px 22px; transition:all 120ms ease; box-shadow:0 1px 4px rgba(13, 27, 53, 0.03);">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:8px;">
+                  <div style="display:flex; align-items:center; gap:8px;">
+                    <span style="font-family:var(--font-mono); font-size:11px; font-weight:800; background:#F0F6FF; color:#0866F5; padding:3px 8px; border-radius:6px; border:1px solid #DCE7F5;">
+                      RETO #${ch.id}
+                    </span>
+                    <span style="font-size:11.5px; font-weight:700; color:#5C7193;">${ch.category} · ${odsStr}</span>
+                    ${isSelected ? `<span style="font-size:10.5px; font-weight:800; color:#059669; background:#ECFDF5; border:1px solid #A7F3D0; padding:2px 8px; border-radius:9999px;">SELECCIONADO</span>` : ""}
                   </div>
-                  <div style="display:flex; align-items:center; gap:14px;">
+                  <div style="display:flex; align-items:center; gap:12px;">
                     <div style="text-align:right;">
-                      <span style="font-family:var(--font-mono); font-size:14px; font-weight:800; color:${ch.winRate >= 90 ? '#047857' : '#0066ff'};">${ch.winRate || 88}%</span>
-                      <span style="font-size:10px; color:#64748b; display:block;">Prob. Victoria</span>
+                      <span style="font-family:var(--font-mono); font-size:14px; font-weight:900; color:${ch.winRate >= 90 ? '#059669' : '#0866F5'};">${ch.winRate || 88}%</span>
+                      <span style="font-size:10px; color:#5C7193; display:block;">Prob. Victoria</span>
                     </div>
-                    <button class="btn-select-card ${isSelected ? 'outline' : 'filled'}" style="padding:6px 14px; font-size:11.5px;" onclick="selectChallenge('${ch.id}')">
-                      ${isSelected ? 'Seleccionado ✓' : 'Seleccionar este Reto →'}
+                    <button class="btn-select-card ${isSelected ? 'filled' : 'outline'}" style="padding:7px 16px; font-size:12px; font-weight:700;" onclick="selectChallenge('${ch.id}', ${isSelected ? 'true' : 'false'})">
+                      ${isSelected ? 'Continuar con este Reto →' : 'Elegir este Reto'}
                     </button>
                   </div>
                 </div>
 
-                <div style="padding:14px 20px 4px 20px; background:#fff;">
-                  <h3 style="font-size:15px; font-weight:800; color:#091e42; margin-bottom:12px; line-height:1.35;">${ch.title}</h3>
-                </div>
+                <h3 style="font-size:16px; font-weight:800; color:#0D1B35; line-height:1.35; margin-bottom:14px;">${ch.title}</h3>
 
-                <div class="challenge-split" style="border-top:1px solid #f1f5f9;">
-                  <div class="challenge-col req" style="padding:16px 20px;">
-                    <span class="col-label" style="color:#64748b;">${SVG.shield} Demanda Oficial del Comité</span>
-                    <p style="font-size:12.5px; color:#334155; line-height:1.55;">${ch.officialExpectation || 'Demanda técnica y comunitaria oficial.'}</p>
+                <!-- Comparativa limpia en 2 columnas planas sobre fondo suave -->
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; background:#F8FAFD; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px;">
+                  <div>
+                    <div style="font-size:11px; font-weight:800; color:#5C7193; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:4px; display:flex; align-items:center; gap:5px;">
+                      ${SVG.shield} Demanda Oficial del Comité
+                    </div>
+                    <p style="font-size:12.5px; color:#334155; line-height:1.5;">${ch.officialExpectation || 'Demanda técnica y comunitaria oficial.'}</p>
                   </div>
-                  <div class="challenge-col wow" style="padding:16px 20px; background:#f8fafc; border-left:1px solid #f1f5f9;">
-                    <span class="col-label" style="color:#0066ff;">${SVG.spark} Propuesta de Vanguardia (WOW)</span>
-                    <p style="font-size:12.5px; color:#091e42; font-weight:600; line-height:1.55;">${ch.wowProposal || 'Enfoque de solución disruptivo con tecnología de vanguardia.'}</p>
+                  <div style="border-left:1px solid #E2E8F0; padding-left:14px;">
+                    <div style="font-size:11px; font-weight:800; color:#0866F5; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:4px; display:flex; align-items:center; gap:5px;">
+                      ${SVG.spark} Propuesta de Vanguardia (WOW)
+                    </div>
+                    <p style="font-size:12.5px; color:#0D1B35; font-weight:600; line-height:1.5;">${ch.wowProposal || 'Enfoque de solución disruptivo con tecnología de vanguardia.'}</p>
                   </div>
                 </div>
               </div>
@@ -1426,7 +1561,13 @@ function loadReferenceChallenges() {
   state.challenges = JSON.parse(JSON.stringify(OFFICIAL_CHALLENGES_2026));
   saveState();
   renderTab("challenges");
-  alert("✓ Catálogo histórico de referencia cargado (9 retos oficiales).");
+}
+
+function toggleCustomChallengeInput() {
+  const el = document.getElementById("custom-challenge-input-box");
+  if (el) {
+    el.style.display = el.style.display === "none" ? "block" : "none";
+  }
 }
 
 function processCommitteeChallengesInput() {
@@ -1436,7 +1577,6 @@ function processCommitteeChallengesInput() {
     return;
   }
 
-  // Parser inteligente por patrones de número/título
   const lines = txt.split("\n").map(l => l.trim()).filter(Boolean);
   const parsed = [];
   let current = null;
@@ -1465,9 +1605,7 @@ function processCommitteeChallengesInput() {
     state.challenges = parsed;
     saveState();
     renderTab("challenges");
-    alert(`✓ ${parsed.length} retos del comité procesados y cargados al radar.`);
   } else {
-    // Si no detectó números, crear 1 reto con todo el texto
     state.challenges = [{
       id: "01",
       title: lines[0],
@@ -1480,11 +1618,10 @@ function processCommitteeChallengesInput() {
     }];
     saveState();
     renderTab("challenges");
-    alert("✓ Reto procesado y cargado al radar.");
   }
 }
 
-function selectChallenge(id) {
+function selectChallenge(id, proceedImmediately = false) {
   const ch = (state.challenges || []).find(c => c.id === id) || OFFICIAL_CHALLENGES_2026.find(c => c.id === id);
   if (!ch) return;
 
@@ -1498,8 +1635,21 @@ function selectChallenge(id) {
   }
 
   saveState();
-  activeTab = "solution";
-  syncUI();
+  if (proceedImmediately) {
+    activeTab = "solution";
+    syncUI();
+  } else {
+    renderTab("challenges");
+    renderNavigation();
+  }
+}
+
+function clearSelectedChallenge() {
+  state.challenge_id = "";
+  state.challenge_title = "";
+  saveState();
+  renderTab("challenges");
+  renderNavigation();
 }
 
 // ═════════════════════════════════════════════════════════════════════════════
@@ -1507,17 +1657,22 @@ function selectChallenge(id) {
 // ═════════════════════════════════════════════════════════════════════════════
 function renderViewSolution() {
   return `
-    <div class="page-header">
+    <div class="phase-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:14px; margin-bottom:24px; padding-bottom:14px; border-bottom:1px solid var(--border-light);">
       <div>
-        <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
-          <span class="badge-status badge-ok" style="font-family:var(--font-mono); font-size:10px;">RETO ACTIVO #${state.challenge_id}</span>
-          <span style="font-size:11px; font-weight:700; color:var(--text-muted);">${state.category}</span>
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+          <span class="badge-status badge-ok" style="font-family:var(--font-mono); font-size:10px; font-weight:800;">RETO ACTIVO #${state.challenge_id}</span>
+          <span style="font-size:11.5px; font-weight:700; color:var(--text-muted);">${state.category}</span>
         </div>
-        <h1 class="page-title" style="font-size:24px;">03 · Taller "Describe tu Solución" & Tesis Oficial</h1>
-        <div class="page-desc">${state.challenge_title}</div>
+        <h1 class="phase-title">
+          03 · Taller <span class="phase-title-accent">Describe tu Solución</span>
+        </h1>
+        <p class="phase-subtitle">${state.challenge_title}</p>
       </div>
-      <div>
-        <button class="btn-primary" onclick="approveSolutionAndUnlock()">
+      <div style="display:flex; gap:10px; align-items:center;">
+        <button class="btn-pill-light" onclick="switchTab('challenges')" style="font-size:12px; padding:8px 14px; display:inline-flex; align-items:center; gap:6px;">
+          ← Cambiar Reto
+        </button>
+        <button class="btn-primary" onclick="approveSolutionAndUnlock()" style="padding:8px 16px; font-size:12px;">
           ${state.solution_approved ? 'Actualizar Tesis ✓' : 'Aprobar Solución & Desbloquear Espacio →'}
         </button>
       </div>
@@ -1685,10 +1840,10 @@ function renderViewMultiAI() {
   const tasks = state.tasks || getDefaultMultiAITasks();
 
   return `
-    <div class="page-header">
+    <div class="phase-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:14px; margin-bottom:24px; padding-bottom:14px; border-bottom:1px solid var(--border-light);">
       <div>
-        <h1 class="page-title">04 · Despacho Multi-IA & Coordinación en Paralelo</h1>
-        <div class="page-desc">Coordina OpenCode, Antigravity y modelos externos gratuitos (Gemini, Perplexity, Alibaba) sin duplicar trabajo.</div>
+        <h1 class="phase-title">04 · Despacho Multi-IA <span class="phase-title-accent">& Coordinación en Paralelo</span></h1>
+        <p class="phase-subtitle">Coordina OpenCode, Antigravity y modelos externos gratuitos (Gemini, Perplexity, Alibaba) sin duplicar trabajo.</p>
       </div>
       <div style="display:flex; gap:8px;">
         <button class="btn-primary" onclick="copySyncToken()">${SVG.copy} Copiar Token para WhatsApp</button>
@@ -1907,10 +2062,10 @@ function injectTaskResult(taskId) {
 // ═════════════════════════════════════════════════════════════════════════════
 function renderViewPautado() {
   return `
-    <div class="page-header">
+    <div class="phase-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:14px; margin-bottom:24px; padding-bottom:14px; border-bottom:1px solid var(--border-light);">
       <div>
-        <h1 class="page-title">05 · Documento Pautado Oficial</h1>
-        <div class="page-desc">5 secciones evaluadas por el jurado con conteo estricto de caracteres (incluyendo espacios).</div>
+        <h1 class="phase-title">05 · Documento <span class="phase-title-accent">Pautado Oficial</span></h1>
+        <p class="phase-subtitle">5 secciones evaluadas por el jurado con conteo estricto de caracteres (incluyendo espacios).</p>
       </div>
       <div style="display:flex; gap:8px;">
         <button class="btn-primary" onclick="savePautado()">Guardar Pautado</button>
@@ -1972,10 +2127,10 @@ function renderViewBudget() {
   const hasNotice = isTooLow || isTooHigh;
 
   return `
-    <div class="page-header">
+    <div class="phase-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:14px; margin-bottom:24px; padding-bottom:14px; border-bottom:1px solid var(--border-light);">
       <div>
-        <h1 class="page-title">06 · Presupuesto de Puesta en Marcha</h1>
-        <div class="page-desc">Insumos mayoristas para el prototipo inicial o lote piloto verificables con proveedores reales.</div>
+        <h1 class="phase-title">06 · Presupuesto de <span class="phase-title-accent">Puesta en Marcha</span></h1>
+        <p class="phase-subtitle">Insumos mayoristas para el prototipo inicial o lote piloto verificables con proveedores reales.</p>
       </div>
       <div style="display:flex; gap:8px;">
         <button class="btn-primary" onclick="addBudgetItem()">+ Agregar Partida</button>
@@ -2071,10 +2226,10 @@ function removeBudgetItem(idx) {
 // ═════════════════════════════════════════════════════════════════════════════
 function renderViewResources() {
   return `
-    <div class="page-header">
+    <div class="phase-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:14px; margin-bottom:24px; padding-bottom:14px; border-bottom:1px solid var(--border-light);">
       <div>
-        <h1 class="page-title">07 · Bóveda de Recursos, Logos & Entregables</h1>
-        <div class="page-desc">Repositorio unificado de archivos para video pitch, enlaces de equipo y entregables oficiales.</div>
+        <h1 class="phase-title">07 · Bóveda de Recursos, <span class="phase-title-accent">Logos & Entregables</span></h1>
+        <p class="phase-subtitle">Repositorio unificado de archivos para video pitch, enlaces de equipo y entregables oficiales.</p>
       </div>
       <button class="btn-primary" onclick="saveTeamHubLinks()">Guardar Enlaces de Equipo</button>
     </div>
@@ -2190,10 +2345,10 @@ function saveTeamHubLinks() {
 // ═════════════════════════════════════════════════════════════════════════════
 function renderViewCanvas() {
   return `
-    <div class="page-header">
+    <div class="phase-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:14px; margin-bottom:24px; padding-bottom:14px; border-bottom:1px solid var(--border-light);">
       <div>
-        <h1 class="page-title">08 · Matriz de Negocio Canvas</h1>
-        <div class="page-desc">9 cuadrantes estratégicos sincronizados con la tesis del proyecto y el pautado.</div>
+        <h1 class="phase-title">08 · Matriz de Negocio <span class="phase-title-accent">Canvas</span></h1>
+        <p class="phase-subtitle">9 cuadrantes estratégicos sincronizados con la tesis del proyecto y el pautado.</p>
       </div>
       <a href="/docs/canvas.md" download class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
         ${SVG.download} Descargar Markdown (.md)
@@ -2223,10 +2378,10 @@ function renderViewScript() {
   const estSeconds = Math.round((words / 135) * 60);
 
   return `
-    <div class="page-header">
+    <div class="phase-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:14px; margin-bottom:24px; padding-bottom:14px; border-bottom:1px solid var(--border-light);">
       <div>
-        <h1 class="page-title">09 · Guion Audiovisual de 120 Segundos (4 Actos)</h1>
-        <div class="page-desc">Estructura estricta para video pitch: ${words} palabras (~${estSeconds} segundos a 135 ppm).</div>
+        <h1 class="phase-title">09 · Guion Audiovisual <span class="phase-title-accent">120 Segundos</span></h1>
+        <p class="phase-subtitle">Estructura estricta para video pitch: ${words} palabras (~${estSeconds} segundos a 135 ppm).</p>
       </div>
       <div style="display:flex; gap:8px;">
         <button class="btn-primary" onclick="saveScript()">Guardar Guion</button>
@@ -2302,10 +2457,10 @@ function renderViewWebDemo() {
   const isSocial = state.category === "Impacto Social";
 
   return `
-    <div class="page-header">
+    <div class="phase-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:14px; margin-bottom:24px; padding-bottom:14px; border-bottom:1px solid var(--border-light);">
       <div>
-        <h1 class="page-title">10 · Prototipo Digital para Tomas de Video</h1>
-        <div class="page-desc">Interfaz operativa reactiva para grabar planos de pantalla de alto impacto para el video pitch.</div>
+        <h1 class="phase-title">10 · Prototipo Digital <span class="phase-title-accent">para Tomas de Video</span></h1>
+        <p class="phase-subtitle">Interfaz operativa reactiva para grabar planos de pantalla de alto impacto para el video pitch.</p>
       </div>
       <a href="/site/" target="_blank" class="btn-primary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
         Abrir Prototipo en Pestaña Completa ${SVG.external}
@@ -2356,12 +2511,12 @@ function renderViewWebDemo() {
 }
 
 // ═════════════════════════════════════════════════════════════════════════════
-// 11 CRONOGRAMA DE ENTREGA SIRLI, NOMENCLATURAS Y GUARDARRAÍLES
+// 11 CRONOGRAMA DE ENTREGA, NOMENCLATURAS Y REQUISITOS CRÍTICOS
 // ═════════════════════════════════════════════════════════════════════════════
 const GUARDRAILS_DEFINITIONS = [
   {
     key: "team_sirli_registered",
-    title: "1. Registro del Equipo en Plataforma SIRLI (Límite: 12:00 PM)",
+    title: "1. Registro del Equipo en Plataforma Oficial (Límite: 12:00 PM)",
     desc: "Todos los integrantes y la sede Universidad Nacional de Ingeniería (UNI) deben estar confirmados en la plataforma antes de mediodía.",
     risk: "Equipos no validados a las 12:00 PM quedan inhabilitados por el sistema central."
   },
@@ -2393,7 +2548,7 @@ const GUARDRAILS_DEFINITIONS = [
     key: "pautado_chars_ok",
     title: "6. Respeto Estricto de Caracteres en el Documento Pautado",
     desc: "Problema (≤1000), Solución (≤1500), Prefactibilidad (≤1500), Innovación (≤1000), Impacto (≤1000).",
-    risk: "El sistema SIRLI trunca o rechaza textos que excedan el límite oficial de caracteres con espacios."
+    risk: "La plataforma de entrega trunca o rechaza textos que excedan el límite oficial de caracteres con espacios."
   }
 ];
 
@@ -2463,10 +2618,10 @@ function renderViewTimeline() {
   const currentDeadline = getCurrentDeadlineAlert();
 
   return `
-    <div class="page-header" style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:14px;">
+    <div class="phase-header" style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:14px; margin-bottom:20px;">
       <div>
-        <h1 class="page-title">11 · Cronograma Oficial SIRLI & Guardarraíles Antidescalificación</h1>
-        <div class="page-desc">Horarios oficiales de Nicaragua (UTC-6), nomenclaturas reglamentarias y directrices innegociables de entrega.</div>
+        <h1 class="phase-title">11 · Cronograma de Entrega <span class="phase-title-accent">& Requisitos Críticos</span></h1>
+        <p class="phase-subtitle">Horarios oficiales de Nicaragua (UTC-6), nomenclaturas reglamentarias y directrices innegociables de entrega.</p>
       </div>
       <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
         <span class="stepper-pill" style="background:#eff6ff; color:#003366; border:1px solid #bfdbfe; font-weight:700;">
@@ -2573,12 +2728,12 @@ function renderViewTimeline() {
           <tbody>
             <tr>
               <td><strong>08:00 AM (Viernes)</strong></td>
-              <td>Apertura oficial de retos en plataforma SIRLI. Descarga de matrices y conformación de tesis.</td>
+              <td>Apertura oficial de retos en plataforma central. Descarga de matrices y conformación de tesis.</td>
               <td>Elegir reto sin analizar precedentes satura la fase de investigación.</td>
             </tr>
             <tr style="background:#fdf4ff;">
               <td><strong style="color:#a21caf;">12:00 PM (Viernes)</strong></td>
-              <td><strong>Límite fatal de inscripción en SIRLI.</strong> Todos los integrantes validados con sede UNI.</td>
+              <td><strong>Límite fatal de inscripción de equipo.</strong> Todos los integrantes validados con sede UNI.</td>
               <td><span style="color:#a21caf; font-weight:700;">Descalificación automática:</span> el sistema no permite concursar a equipos sin registro al mediodía.</td>
             </tr>
             <tr>
@@ -2603,7 +2758,7 @@ function renderViewTimeline() {
             </tr>
             <tr>
               <td><strong>T-1 Hora</strong></td>
-              <td>Probar enlace en ventana de incógnito y cargar archivo PDF del pautado en SIRLI.</td>
+              <td>Probar enlace en ventana de incógnito y cargar archivo PDF del pautado en la plataforma oficial.</td>
               <td>Un video configurado en 'Privado' recibe calificación de 0 puntos del jurado.</td>
             </tr>
             <tr style="background:#f8fafc; font-weight:700;">
@@ -2615,11 +2770,11 @@ function renderViewTimeline() {
         </table>
       </div>
 
-      <!-- BLOQUE 4: CHECKLIST ANTIDESCALIFICACIÓN (GUARDARRAÍLES) -->
+      <!-- BLOQUE 4: CHECKLIST DE ENTREGA OFICIAL (REQUISITOS CRÍTICOS) -->
       <div class="naming-box-card">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; border-bottom:1px solid #f1f5f9; padding-bottom:10px;">
           <div>
-            <h3 style="font-size:13.5px; font-weight:800; color:#091e42; margin:0 0 2px 0;">Checklist Antidescalificación (Guardarraíles)</h3>
+            <h3 style="font-size:13.5px; font-weight:800; color:#091e42; margin:0 0 2px 0;">Checklist de Entrega Oficial (Requisitos Críticos)</h3>
             <p style="font-size:11.5px; color:#64748b; margin:0;">Marca cada casilla antes del envío definitivo para proteger la elegibilidad del equipo.</p>
           </div>
           <span style="font-size:11.5px; font-weight:800; color:#003366;">
@@ -2672,47 +2827,48 @@ function updateInspector() {
   if (isScriptComplete()) points += 10;
   if (guardrailsCount >= 5) points += 15;
 
-  const totalBudget = state.budget.reduce((a, b) => a + (b.units * b.unit_cost), 0);
+  const hasBudgetItems = Array.isArray(state.budget) && state.budget.length > 0;
+  const totalBudget = hasBudgetItems ? state.budget.reduce((a, b) => a + (Number(b.units || 0) * Number(b.unit_cost || 0)), 0) : 0;
 
   panel.innerHTML = `
     <div>
-      <div class="panel-block-title">Índice de Preparación SIRLI</div>
+      <div class="panel-block-title">Preparación Oficial</div>
       <div class="score-meter">
         <div class="score-number">${points}%</div>
-        <div class="score-label">${points === 100 ? 'Listo para Entrega' : 'En Configuración'}</div>
+        <div class="score-label">${points >= 90 ? 'Listo para Entrega' : points >= 50 ? 'En Progreso' : 'Fase Inicial'}</div>
       </div>
     </div>
 
     <div>
       <div class="panel-block-title">Auditoría en Tiempo Real</div>
       <div class="audit-list">
-        <div class="audit-item ${state.team_name ? 'ok' : 'pending'}">
+        <div class="audit-item ${state.team_name ? 'ok' : 'pending'}" onclick="switchTab('identity')" style="cursor:pointer;" title="Identidad del Equipo">
           <span>Equipo & Sede</span>
           <strong>${state.team_name ? 'OK' : 'Incompleto'}</strong>
         </div>
-        <div class="audit-item ${state.challenge_id ? 'ok' : 'pending'}">
+        <div class="audit-item ${state.challenge_id ? 'ok' : 'pending'}" onclick="switchTab('challenges')" style="cursor:pointer;" title="Selección de Reto">
           <span>Reto Seleccionado</span>
-          <strong>${state.challenge_id ? `#${state.challenge_id}` : 'Sin elegir'}</strong>
+          <strong>${state.challenge_id ? '#' + state.challenge_id : 'Sin elegir'}</strong>
         </div>
-        <div class="audit-item ${state.solution_approved ? 'ok' : 'pending'}">
+        <div class="audit-item ${state.solution_approved ? 'ok' : 'pending'}" onclick="switchTab('solution')" style="cursor:pointer;" title="Taller de Solución">
           <span>Taller de Solución</span>
-          <strong>${state.solution_approved ? 'Aprobada' : 'Pendiente'}</strong>
+          <strong>${state.solution_approved ? 'Aprobada' : (stage >= 3 ? 'Borrador' : 'Pendiente')}</strong>
         </div>
-        <div class="audit-item ${isPautadoComplete() ? 'ok' : 'pending'}">
+        <div class="audit-item ${isPautadoComplete() ? 'ok' : 'pending'}" onclick="switchTab('pautado')" style="cursor:pointer;" title="Documento Pautado">
           <span>Pautado Oficial</span>
-          <strong>${isPautadoComplete() ? 'Auditado' : 'Revisar'}</strong>
+          <strong>${isPautadoComplete() ? 'Auditado' : (stage >= 5 ? 'Revisar' : 'Pendiente')}</strong>
         </div>
-        <div class="audit-item ${isBudgetValid() ? 'ok' : 'warn'}">
+        <div class="audit-item ${hasBudgetItems ? (isBudgetValid() ? 'ok' : 'warn') : 'pending'}" onclick="switchTab('budget')" style="cursor:pointer;" title="Presupuesto">
           <span>Presupuesto</span>
-          <strong>$${totalBudget.toFixed(0)} USD</strong>
+          <strong>${hasBudgetItems ? '$' + Math.round(totalBudget).toLocaleString() + ' USD' : 'Sin cotizar'}</strong>
         </div>
-        <div class="audit-item ${isScriptComplete() ? 'ok' : 'pending'}">
+        <div class="audit-item ${isScriptComplete() ? 'ok' : 'pending'}" onclick="switchTab('script')" style="cursor:pointer;" title="Guion de Video">
           <span>Guion (120 Segundos)</span>
-          <strong>${isScriptComplete() ? 'OK' : 'Pendiente'}</strong>
+          <strong>${isScriptComplete() ? '120s OK' : (stage >= 9 ? 'En redacción' : 'Pendiente')}</strong>
         </div>
-        <div class="audit-item ${guardrailsOk ? 'ok' : 'pending'}" onclick="switchTab('timeline')" style="cursor:pointer;" title="Clic para revisar guardarraíles">
-          <span>Guardarraíles SIRLI</span>
-          <strong>${guardrailsCount}/${guardrailsTotal} OK</strong>
+        <div class="audit-item ${guardrailsOk ? 'ok' : (guardrailsCount > 0 ? 'warn' : 'pending')}" onclick="switchTab('timeline')" style="cursor:pointer;" title="Clic para revisar requisitos de entrega">
+          <span>Requisitos de Entrega</span>
+          <strong>${guardrailsCount}/${guardrailsTotal} Verificados</strong>
         </div>
       </div>
     </div>
