@@ -35,8 +35,8 @@
   --status-err-border: #fecaca;
 
   /* Tipografía & Escala */
-  --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  --font-ui: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
   --radius-sm: 4px;
   --radius-md: 6px;
@@ -60,6 +60,38 @@ body {
   height: 100vh;
   overflow: hidden;
   -webkit-font-smoothing: antialiased;
+  transition: grid-template-columns 180ms ease;
+}
+
+/* Modos de visualización progresiva */
+body.setup-mode {
+  grid-template-columns: 1fr;
+}
+body.setup-mode #sidebar,
+body.setup-mode #panel {
+  display: none !important;
+}
+
+body.sidebar-collapsed {
+  grid-template-columns: 0px 1fr 310px;
+}
+body.sidebar-collapsed #sidebar {
+  display: none !important;
+}
+
+body.panel-collapsed {
+  grid-template-columns: 240px 1fr 0px;
+}
+body.panel-collapsed #panel {
+  display: none !important;
+}
+
+body.sidebar-collapsed.panel-collapsed {
+  grid-template-columns: 0px 1fr 0px;
+}
+body.sidebar-collapsed.panel-collapsed #sidebar,
+body.sidebar-collapsed.panel-collapsed #panel {
+  display: none !important;
 }
 
 /* ── TOPBAR ────────────────────────────────────────────────────────── */
@@ -458,4 +490,270 @@ textarea {
   display: flex;
   align-items: center;
   gap: 4px;
+}
+
+/* ── FLUJO PROGRESIVO & WIZARD LIMPIO ────────────────────────────── */
+.wizard-canvas {
+  max-width: 860px;
+  margin: 32px auto;
+  padding: 0 24px;
+}
+
+.wizard-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-primary);
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 12px;
+}
+
+.wizard-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.wizard-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 32px;
+}
+
+.certamen-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.certamen-card {
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  cursor: pointer;
+  transition: all 140ms ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.certamen-card:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  transform: translateY(-1px);
+}
+
+.certamen-card.selected {
+  border-color: var(--color-primary);
+  background: #f8fafc;
+  box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+.certamen-badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  display: inline-block;
+  margin-bottom: 14px;
+}
+
+.certamen-badge.latam {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.certamen-badge.nacional {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.certamen-name {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.certamen-detail {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+/* ── COMPARATIVA DE RETOS (OFICIAL VS PROPUESTA WOW) ──────────────── */
+.challenge-box {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  margin-bottom: 16px;
+  overflow: hidden;
+  transition: border-color 140ms ease;
+}
+
+.challenge-box.active {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1.5px var(--color-primary);
+}
+
+.challenge-box-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-subtle);
+}
+
+.challenge-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.challenge-col {
+  padding: 18px 20px;
+}
+
+.challenge-col.req {
+  background: #ffffff;
+}
+
+.challenge-col.wow {
+  background: #fcfdfd;
+  border-left: 1px solid var(--border-light);
+}
+
+.col-label {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ── TALLER "DESCRIBE TU SOLUCIÓN" & BOOSTER MATRIX ───────────────── */
+.solution-split {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 20px;
+  margin-top: 16px;
+}
+
+.booster-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.booster-card {
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  background: var(--bg-surface);
+  cursor: pointer;
+  transition: all 120ms ease;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.booster-card:hover {
+  background: var(--bg-subtle);
+  border-color: var(--border-strong);
+}
+
+.booster-card.active {
+  background: #f0fdf4;
+  border-color: #86efac;
+}
+
+.booster-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 2px;
+}
+
+.booster-desc {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* ── COMMAND CENTER BARRA SUPERIOR ───────────────────────────────── */
+.command-strip {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 16px;
+}
+
+.brand-logos {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand-logo-pill {
+  height: 38px;
+  padding: 0 12px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  background: var(--bg-subtle);
+  display: flex;
+  align-items: center;
+  font-weight: 800;
+  font-size: 12px;
+  color: var(--text-main);
+  gap: 8px;
+}
+
+.timer-large {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: 0.05em;
+  background: #f1f5f9;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-light);
+}
+
+/* Botón colapsador */
+.btn-toggle-sidebar {
+  background: transparent;
+  border: 1px solid var(--border-light);
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.btn-toggle-sidebar:hover {
+  background: var(--bg-subtle);
+  color: var(--text-main);
 }

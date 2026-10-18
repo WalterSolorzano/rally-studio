@@ -1,7 +1,22 @@
-// dashboard/app.js -- Rally Studio Workbench Interactivo (Simulador de Competencia)
-// Sin dependencias externas. Gestión de estado reactivo en memoria y persistencia local.
+// dashboard/app.js -- Rally Studio Workbench Progresivo (Flujo Secuencial sin Relleno)
+// Arquitectura por niveles de dependencia estricta: Certamen -> Equipo -> Reto -> Solución -> Espacio Completo.
 
-// ── CATÁLOGO OFICIAL DE DESAFÍOS (RALLY LATAM 2026) ──────────────────────────
+// ── ICONOS SVG VECTORIALES (CERO EMOJIS) ──────────────────────────────────────
+const SVG = {
+  check: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>`,
+  lock: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>`,
+  clock: `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>`,
+  download: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>`,
+  external: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>`,
+  menu: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`,
+  globe: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>`,
+  shield: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>`,
+  copy: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`,
+  spark: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>`,
+  arrowRight: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>`
+};
+
+// ── CATÁLOGO OFICIAL DE DESAFÍOS (RALLY LATAM & NACIONAL 2026) ───────────────
 const OFFICIAL_CHALLENGES_2026 = [
   {
     id: "01",
@@ -11,7 +26,8 @@ const OFFICIAL_CHALLENGES_2026 = [
     winRate: 92,
     compDensity: "Baja (3 sedes)",
     precedent: "Avocado 2026 (1° Nac. Social) / Revolt (El Salvador)",
-    keyFactor: "Aprovechamiento directo de bobinados de cobre y rotores para maquinaria agropecuaria comunitaria."
+    officialExpectation: "Aprovechar motores de lavadoras y ventiladores desechados para reducir chatarra y generar tracción o generación eléctrica a bajo costo en comunidades rurales.",
+    wowProposal: "Kit de reconversión con variador de frecuencia universal reciclado, acople impreso en PETG y banco de molienda de forraje agropecuario accionado por rotor recuperado."
   },
   {
     id: "02",
@@ -21,7 +37,8 @@ const OFFICIAL_CHALLENGES_2026 = [
     winRate: 84,
     compDensity: "Alta (9 sedes)",
     precedent: "Techriders 2024 (1° Int. Latam) / Steel Innovators 2026",
-    keyFactor: "Hibridación ciber-física obligatoria: compuertas automatizadas o telemetría LoRaWAN con bajo consumo."
+    officialExpectation: "Monitorear crecidas repentinas de ríos y cauces urbanos para alertar a pobladores vulnerables antes de que el agua sobrepase cotas de riesgo.",
+    wowProposal: "Red de telemetría hiperlocal con nodos ultrasónicos no invasivos, protocolo LoRaWAN de largo alcance y compuerta electromecánica de alivio con 30 minutos de anticipación."
   },
   {
     id: "03",
@@ -31,7 +48,8 @@ const OFFICIAL_CHALLENGES_2026 = [
     winRate: 95,
     compDensity: "Muy Baja (2 sedes)",
     precedent: "Ignis Code 2026 (1° Nac. Innovación)",
-    keyFactor: "Factor sorpresa máximo: sensores térmicos/acústicos no invasivos para colmenas meliponas."
+    officialExpectation: "Preservar colonias de abejas y polinizadores nativos frente al cambio climático y pesticidas agrícolas con soluciones de fácil adopción.",
+    wowProposal: "Colmena bioclimática con monitor bioacústico/térmico pasivo no intrusivo y difusor piezoeléctrico de micronutrientes orgánicos activado por energía solar."
   },
   {
     id: "04",
@@ -41,7 +59,8 @@ const OFFICIAL_CHALLENGES_2026 = [
     winRate: 88,
     compDensity: "Media (4 sedes)",
     precedent: "Kubo I+D (Argentina 2026) / Bioinnovatech (Costa Rica)",
-    keyFactor: "Gasificación o biochar pirólisis de bajo costo para fertilidad comunitaria."
+    officialExpectation: "Evitar la quema indiscriminada de ramas y hojas en las ciudades mediante procesos de aprovechamiento energético o fertilizante.",
+    wowProposal: "Reactor modular de pirólisis lenta in-situ para producción de biochar activado con inoculantes micorrícicos, con captura de gases térmicos para secado de granos."
   },
   {
     id: "05",
@@ -51,7 +70,8 @@ const OFFICIAL_CHALLENGES_2026 = [
     winRate: 86,
     compDensity: "Alta (8 sedes)",
     precedent: "Francisquitos (El Salvador 2026) / Sistema Captación UNI (2024)",
-    keyFactor: "Filtración por gravedad con carbón activo local y monitoreo continuo de turbidez."
+    officialExpectation: "Captar y almacenar agua pluvial en techos de escuelas o viviendas rurales garantizando calidad para consumo humano e higiene.",
+    wowProposal: "Cisterna modular prefabricada con separador centrífugo de primeras lluvias, lecho de zeolita natural con carbón de cáscara de café y dosificador solar UV-C."
   },
   {
     id: "06",
@@ -61,7 +81,8 @@ const OFFICIAL_CHALLENGES_2026 = [
     winRate: 78,
     compDensity: "Media (5 sedes)",
     precedent: "Recoplaya / Smat Warriors (URACCAN 2025)",
-    keyFactor: "Transformación mecánica in-situ de redes fantasma en adoquines peatonales."
+    officialExpectation: "Retirar redes de pesca fantasma y plásticos de un solo uso que amenazan la fauna marina en litorales costeros.",
+    wowProposal: "Extrusora compacta móvil de filamento de PET/nylon para impresión 3D de artes de pesca duraderas y balizas flotantes de señalización costera."
   },
   {
     id: "07",
@@ -71,7 +92,8 @@ const OFFICIAL_CHALLENGES_2026 = [
     winRate: 82,
     compDensity: "Baja (3 sedes)",
     precedent: "Foodtech (FIUNI Paraguay 2026)",
-    keyFactor: "Logística inversa barrial con incentivos comunitarios y reactor artesanal seguro."
+    officialExpectation: "Evitar que el aceite de cocina contamine fuentes de agua dulce creando un modelo de reciclaje barrial con retorno tangible.",
+    wowProposal: "Micro-planta barrial de transesterificación asistida por cavitación hidrodinámica de bajo consumo, con dispensador de jabón biodegradable comunitario."
   },
   {
     id: "08",
@@ -81,7 +103,8 @@ const OFFICIAL_CHALLENGES_2026 = [
     winRate: 85,
     compDensity: "Alta (7 sedes)",
     precedent: "Mexitech (UPEMOR 1° Int. 2024) / Catalizadores (Chile)",
-    keyFactor: "Modelo B2B ágil entre puestos de abasto y comedores sin fricción logística."
+    officialExpectation: "Conectar mermas de frutas y verduras frescas de mercados populares con comedores comunitarios antes de que se descompongan.",
+    wowProposal: "Bolsa comunitaria digital P2P operada por bots de mensajería SMS/WhatsApp de cero datos móviles, vinculada a deshidratadores solares parabólicos."
   },
   {
     id: "09",
@@ -91,105 +114,10 @@ const OFFICIAL_CHALLENGES_2026 = [
     winRate: 89,
     compDensity: "Baja (3 sedes)",
     precedent: "Hooke (Chile 2026) / The Bubbles (Paraguay)",
-    keyFactor: "Ensamblaje en seco en menos de 45 minutos con materiales de empaque reutilizados."
+    officialExpectation: "Proveer albergue temporal digno y energía eléctrica mínima a familias damnificadas por huracanes o terremotos en menos de 24 horas.",
+    wowProposal: "Célula habitable hexagonal desplegable en seco en 45 minutos con paneles sándwich de caña brava tratada y techo flexible fotovoltaico con banco LiFePO4."
   }
 ];
-
-// ── PRESETS DE PALETAS GANADORAS REALES ──────────────────────────────────────
-const PALETTE_PRESETS = {
-  digna: {
-    name: "DIGNA 2023 (Azul Solar & Bambú)",
-    primary: "#0f4c81",
-    secondary: "#d4a373",
-    accent: "#2a9d8f",
-    source: "Ganador Internacional Latam 2023"
-  },
-  techriders: {
-    name: "Techriders 2024 (Azul Hidráulico & Grafito)",
-    primary: "#1e40af",
-    secondary: "#3b82f6",
-    accent: "#0ea5e9",
-    source: "Ganador Internacional Latam 2024"
-  },
-  mentes: {
-    name: "Mentes Volcánicas 2025 (Basalto & Verde)",
-    primary: "#1f2937",
-    secondary: "#10b981",
-    accent: "#f59e0b",
-    source: "Ganador Internacional Latam 2025"
-  },
-  ignis: {
-    name: "Ignis Code 2026 (Ámbar & Carbón)",
-    primary: "#18181b",
-    secondary: "#d97706",
-    accent: "#f59e0b",
-    source: "1° Lugar Nacional Innovación 2026"
-  }
-};
-
-// ── ESTADO INICIAL VACÍO (SIMULACIÓN T=0) ───────────────────────────────────
-function getInitialState() {
-  return {
-    rally_type: "latam",
-    hours_total: 28,
-    hours_remaining: 28,
-    project_name: "",
-    team_name: "",
-    university: "",
-    city: "",
-    category: "Innovación",
-    challenge_id: "",
-    challenge_title: "",
-    description_one_line: "",
-    
-    // Paleta
-    palette: {
-      primary: "#1e40af",
-      secondary: "#3b82f6",
-      accent: "#0ea5e9"
-    },
-
-    // Claims de Investigación
-    claims: [],
-
-    // Pautado (5 Secciones con texto real del usuario)
-    pautado: {
-      problema: "",
-      solucion: "",
-      prefactibilidad: "",
-      innovacion: "",
-      impacto: ""
-    },
-
-    // Presupuesto (partidas dinámicas)
-    budget: [
-      { element: "Unidad Central MCU + Transceptor LoRa", units: 10, unit_cost: 14.50, url: "https://alibaba.com/sample-mcu" },
-      { element: "Sensores de Nivel / Entorno IP68", units: 10, unit_cost: 45.00, url: "https://alibaba.com/sample-sensor" },
-      { element: "Sistema Solar Autónomo + Baterías", units: 8, unit_cost: 120.00, url: "https://alibaba.com/sample-solar" },
-      { element: "Carcasas Estancas con Disipación", units: 10, unit_cost: 32.00, url: "https://alibaba.com/sample-enclosure" },
-      { element: "Gateway Concentrador Exterior", units: 2, unit_cost: 295.00, url: "https://alibaba.com/sample-gateway" },
-      { element: "Flete Internacional y Aranceles de Importación", units: 1, unit_cost: 650.00, url: "https://dhl.com" }
-    ],
-
-    // Guion (4 micro-actos)
-    script: {
-      acto1: "",
-      acto2: "",
-      acto3: "",
-      acto4: ""
-    },
-
-    // Enlaces de colaboración en la nube
-    google_drive_url: "https://drive.google.com",
-    canva_url: "https://canva.com",
-    figma_url: "",
-    local_ip: "192.168.1.50"
-  };
-}
-
-let state = getInitialState();
-let activeTab = "teamhub";
-let timerInterval = null;
 
 // ── LÍMITES OFICIALES DE PAUTADO (CON ESPACIOS) ──────────────────────────────
 const PAUTADO_LIMITS = {
@@ -200,143 +128,111 @@ const PAUTADO_LIMITS = {
   impacto: 1500
 };
 
-// ── INICIALIZACIÓN ───────────────────────────────────────────────────────────
-document.addEventListener("DOMContentLoaded", () => {
-  loadSavedState();
-  initClock();
-  renderNavigation();
-  renderTab(activeTab);
-  updateInspector();
-});
+// ── ESTADO REACTIVO DEL SISTEMA ─────────────────────────────────────────────
+function getInitialState() {
+  return {
+    rally_type: null, // "latam" | "nacional" | null
+    hours_total: 28,
+    hours_remaining: 28,
+    team_name: "",
+    university: "",
+    city: "",
+    team_logo: "shield",
+    project_name: "",
+    category: "Innovación",
+    challenge_id: "",
+    challenge_title: "",
+    
+    // Taller de Solución
+    solution_raw_input: "",
+    solution_thesis: "",
+    solution_simple: "",
+    solution_boosters: ["ods", "sensors"],
+    solution_approved: false,
 
-function loadSavedState() {
-  try {
-    const saved = localStorage.getItem("rally_studio_sim_state");
-    if (saved) {
-      state = Object.assign(getInitialState(), JSON.parse(saved));
-    }
-  } catch (e) {
-    console.warn("No se pudo cargar localStorage:", e);
-  }
+    // Identidad cromática
+    palette: {
+      primary: "#1e40af",
+      secondary: "#3b82f6",
+      accent: "#0ea5e9"
+    },
+
+    claims: [],
+
+    // Pautado Oficial
+    pautado: {
+      problema: "",
+      solucion: "",
+      prefactibilidad: "",
+      innovacion: "",
+      impacto: ""
+    },
+
+    // Presupuesto Sustentado
+    budget: [
+      { element: "Unidad Central MCU + Transceptor LoRaWAN", units: 10, unit_cost: 14.50, url: "https://alibaba.com/sample-mcu" },
+      { element: "Sensores Industriales de Nivel IP68", units: 10, unit_cost: 45.00, url: "https://alibaba.com/sample-sensor" },
+      { element: "Sistemas Solares Autónomos + Baterías LiFePO4", units: 8, unit_cost: 120.00, url: "https://alibaba.com/sample-solar" },
+      { element: "Carcasas Estancas con Disipación Térmica", units: 10, unit_cost: 32.00, url: "https://alibaba.com/sample-enclosure" },
+      { element: "Gateway Concentrador Exterior 8 Canales", units: 2, unit_cost: 295.00, url: "https://alibaba.com/sample-gateway" },
+      { element: "Flete Internacional y Aranceles de Importación (18%)", units: 1, unit_cost: 650.00, url: "https://dhl.com" }
+    ],
+
+    // Guion 120 segundos
+    script: {
+      acto1: "",
+      acto2: "",
+      acto3: "",
+      acto4: ""
+    },
+
+    // Enlaces de colaboración
+    google_drive_url: "https://drive.google.com",
+    canva_url: "https://canva.com",
+    figma_url: "",
+    local_ip: "192.168.1.50"
+  };
 }
 
-function saveState() {
-  try {
-    localStorage.setItem("rally_studio_sim_state", JSON.stringify(state));
-  } catch (e) {}
-  updateInspector();
-  renderTopbar();
+let state = getInitialState();
+let activeTab = "certamen";
+let timerInterval = null;
+let challengeFilter = "all";
+
+// ── DETERMINAR ETAPA ACTUAL DEL PROCESO ──────────────────────────────────────
+function getWorkflowStage() {
+  if (!state.rally_type) return 0; // Certamen
+  if (!state.team_name || !state.university) return 1; // Equipo
+  if (!state.challenge_id) return 2; // Reto
+  if (!state.solution_approved) return 3; // Taller Solución
+  return 4; // Espacio de Trabajo Completo
 }
 
-function resetSimulation() {
-  if (confirm("¿Reiniciar la simulación desde T=0? Se limpiarán los datos cargados.")) {
-    state = getInitialState();
-    saveState();
-    renderNavigation();
-    renderTab(activeTab);
-    updateInspector();
-  }
-}
-
-function loadBenchmarkProject() {
-  // Carga el caso verificado de Techriders / Hidro-Vigía
-  state.project_name = "HIDRO-VIGÍA";
-  state.team_name = "Mentes Pinoleras";
-  state.university = "Universidad Nacional de Ingeniería (UNI)";
-  state.city = "Managua (Laboratorio Piloto)";
-  state.category = "Innovación";
-  state.challenge_id = "02";
-  state.challenge_title = "Redes de sensores comunitarios para prevención y alerta temprana de inundaciones";
-  state.description_one_line = "Sistema modular de telemetría hiperlocal con nodos ultrasónicos autónomos y compuertas inteligentes con 30 minutos de anticipación.";
-
-  state.claims = [
-    { stat: "120,000 personas en zonas críticas urbanas sufren anegaciones anuales en Centroamérica.", source: "SINAPRED / CEPAL", year: "2024", url: "https://sinapred.gob.ni" },
-    { stat: "El 42% de pérdidas materiales ocurren en los primeros 30 minutos sin monitoreo de cauces.", source: "CEPAL", year: "2024", url: "https://cepal.org" },
-    { stat: "Las redes LoRaWAN reducen en 78% el costo de telemetría frente a enlaces celulares dedicados.", source: "IEEE Sensors", year: "2023", url: "https://ieeexplore.ieee.org" }
-  ];
-
-  state.pautado.problema = "En las cuencas urbanas de América Latina, las crecidas repentinas y desbordamientos de cauces provocan anegaciones críticas que afectan a más de 120,000 personas anualmente. La ausencia de telemetría oportuna y el alto costo de las estaciones meteorológicas hidrológicas tradicionales (que superan los $30,000 USD por punto) impiden a las autoridades y brigadas vecinales actuar antes de que el agua ingrese a los hogares. Durante eventos hidroclimáticos extremos, el 42% de las pérdidas materiales se consuman en los primeros 30 minutos de la crecida por falta de un sistema de alerta descentralizado y de bajo consumo.";
-  state.solucion = "Presentamos una arquitectura ciber-física distribuida basada en nodos sensores ultrasónicos autónomos colocados en puntos críticos de la red de drenaje. Cada nodo mide el nivel hidrométrico en tiempo real cada 60 segundos, transmitiendo datos agregados mediante protocolo LoRaWAN hacia gateways solares conectados a centros de mando y alarmas sonoras comunitarias. La solución opera con total independencia de la red eléctrica gracias a módulos fotovoltaicos de 50W y acumuladores LiFePO4 con autonomía de 15 días continuos de lluvia.";
-  state.pautado.solucion = state.solucion;
-  state.pautado.prefactibilidad = "El despliegue de un circuito piloto integral de 15 nodos sensores y 2 estaciones concentradoras demanda un costo de $4,450.00 USD, desglosado estrictamente con precios mayoristas de Shenzhen y suministros locales de fijación galvanizada. El esquema de sostenibilidad descansa en contratos de servicio B2G con alcaldías municipales para mantenimiento predictivo semestral, garantizando una vida útil de 7 años sin subsidio permanente y con un costo operativo marginal de $20 USD mensuales por nodo.";
-  state.pautado.innovacion = "A diferencia de las estaciones convencionales costosas o de aplicaciones móviles que dependen de reportes manuales tardíos, nuestra propuesta introduce una compuerta electromecánica de alivio accionada automáticamente al superar el umbral crítico de 2.0 metros. El diseño mecánico IP67 incorpora disipación térmica pasiva sin partes móviles, membranas de compensación de presión Gore-Tex y ensamblaje modular con pernos estandarizados M6 que permite mantenimiento in-situ sin herramientas especializadas.";
-  state.pautado.impacto = "Impacto directo medible: protección de 12,450 habitantes en la cuenca piloto de Managua con una ventana de evacuación anticipada de 30 minutos. Contribución explícita a los Objetivos de Desarrollo Sostenible: ODS 11 (Ciudades y Comunidades Resilientes), ODS 13 (Acción por el Clima) y ODS 3 (Salud y Bienestar). El modelo ha sido diseñado como un laboratorio de validación transferible a cualquier cuenca urbana de América Latina con idéntica topología hidráulica.";
-
-  state.script.acto1 = "En América Latina, más de 120,000 personas enfrentan anualmente el impacto devastador de crecidas repentinas. El 42% de las pérdidas materiales se consuman en los primeros 30 minutos por falta de alerta temprana oportuna.";
-  state.script.acto2 = "Para transformar esta realidad creamos HIDRO-VIGÍA. Red de nodos ultrasónicos autónomos anclados a la infraestructura pública que censan el nivel cada 60 segundos y transmiten vía LoRaWAN a las brigadas de protección civil.";
-  state.script.acto3 = "Puesta en marcha validada: $4,450 USD para 15 nodos y dos estaciones base. Carcasas IP67 de policarbonato con disipación pasiva y autonomía solar de 15 días continuos sin red eléctrica.";
-  state.script.acto4 = "12,450 habitantes protegidos con 30 minutos de anticipación. Validado en Managua como laboratorio piloto, escalable a toda la región. Aportando a ODS 11 y 13. HIDRO-VIGÍA: tecnología que salva vidas.";
-
-  saveState();
-  renderNavigation();
-  renderTab(activeTab);
-  updateInspector();
-}
-
-// ── RELOJ DE COMPETENCIA ─────────────────────────────────────────────────────
-function initClock() {
-  let totalSec = state.hours_remaining * 3600;
-  if (timerInterval) clearInterval(timerInterval);
-
-  timerInterval = setInterval(() => {
-    totalSec = Math.max(0, totalSec - 1);
-    const h = Math.floor(totalSec / 3600);
-    const m = Math.floor((totalSec % 3600) / 60);
-    const s = totalSec % 60;
-    const str = `${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
-    const el = document.getElementById("clock-timer");
-    if (el) el.textContent = str;
-  }, 1000);
-}
-
-// ── TOPBAR ───────────────────────────────────────────────────────────────────
-function renderTopbar() {
-  const el = document.getElementById("topbar");
-  const pName = state.project_name ? state.project_name : "SIN PROYECTO (T=0)";
-  const certamen = state.rally_type === "latam" ? "Rally Latam 28h" : "Rally Nacional 24h";
-
-  el.innerHTML = `
-    <div class="topbar-left">
-      <span class="brand-badge">RALLY STUDIO</span>
-      <span class="project-title">${pName}</span>
-      <span class="mode-tag">${certamen}</span>
-    </div>
-    <div class="topbar-actions">
-      <button class="btn-secondary" onclick="resetSimulation()">↺ T=0 (Reiniciar)</button>
-      <button class="btn-secondary" onclick="loadBenchmarkProject()">⚡ Cargar Benchmark</button>
-      <div class="timer-box">
-        <span class="timer-pulse"></span>
-        <span id="clock-timer">28:00:00</span>
-      </div>
-    </div>
-  `;
-}
-
-// ── NAVEGACIÓN LATERAL ────────────────────────────────────────────────────────
+// ── NAVEGACIÓN MODULAR Y DEPENDENCIAS ─────────────────────────────────────────
 const NAV_TABS = [
-  { id: "teamhub",      label: "00 Hub Equipo & Nube",    check: () => !!state.google_drive_url },
-  { id: "brief",        label: "01 Brief & Setup",       check: () => !!state.project_name && !!state.challenge_id },
-  { id: "challenges",   label: "02 Radar Desafíos",      check: () => !!state.challenge_id },
-  { id: "identity",     label: "03 Identidad & Paleta",  check: () => !!state.palette.primary },
-  { id: "research",     label: "04 Investigación/Claims",check: () => state.claims.length >= 3 },
-  { id: "pautado",      label: "05 Pautado Interactivo", check: () => isPautadoComplete() },
-  { id: "budget",       label: "06 Presupuesto $4k-$6k", check: () => isBudgetOptimal() },
-  { id: "canvas",       label: "07 Modelo Canvas",       check: () => isPautadoComplete() },
-  { id: "script",       label: "08 Guion 120s (4 Actos)",check: () => isScriptComplete() },
-  { id: "webdemo",      label: "09 Web Demo para Video", check: () => true },
-  { id: "timeline",     label: "10 Cronómetro & Hitos",  check: () => true }
+  { id: "certamen",   label: "00 Certamen",             level: 0, check: () => true },
+  { id: "team",       label: "01 Identidad de Equipo",  level: 1, check: () => !!state.rally_type },
+  { id: "challenges", label: "02 Selección de Reto",    level: 2, check: () => !!state.rally_type && !!state.team_name },
+  { id: "solution",   label: "03 Taller de Solución",   level: 3, check: () => !!state.challenge_id },
+  { id: "pautado",    label: "04 Pautado Interactivo",  level: 4, check: () => state.solution_approved && isPautadoComplete() },
+  { id: "budget",     label: "05 Presupuesto de Marcha",level: 4, check: () => state.solution_approved && isBudgetValid() },
+  { id: "resources",  label: "06 Bóveda de Recursos",   level: 4, check: () => state.solution_approved },
+  { id: "canvas",     label: "07 Modelo Canvas",        level: 4, check: () => state.solution_approved },
+  { id: "script",     label: "08 Guion 120s (4 Actos)", level: 5, check: () => isPautadoComplete() && isBudgetValid() },
+  { id: "webdemo",    label: "09 Web Demo para Video",  level: 5, check: () => isPautadoComplete() && isBudgetValid() },
+  { id: "timeline",   label: "10 Cronómetro & Hitos",   level: 4, check: () => state.solution_approved }
 ];
 
 function isPautadoComplete() {
   return Object.keys(PAUTADO_LIMITS).every(k => {
     const len = (state.pautado[k] || "").length;
-    return len >= 300 && len <= PAUTADO_LIMITS[k];
+    return len >= 150 && len <= PAUTADO_LIMITS[k];
   });
 }
 
-function isBudgetOptimal() {
+function isBudgetValid() {
   const total = state.budget.reduce((acc, it) => acc + (it.units * it.unit_cost), 0);
-  return total >= 4000 && total <= 6000;
+  return total >= 3000 && total <= 6500;
 }
 
 function isScriptComplete() {
@@ -345,19 +241,180 @@ function isScriptComplete() {
   return totalWords >= 120 && totalWords <= 280;
 }
 
+// ── INICIALIZACIÓN ───────────────────────────────────────────────────────────
+document.addEventListener("DOMContentLoaded", () => {
+  loadSavedState();
+  initClock();
+  syncUI();
+});
+
+function syncUI() {
+  const stage = getWorkflowStage();
+  const body = document.getElementById("app-body");
+
+  // Si está en fase inicial (0 o 1), ocultar barras y centrar vista limpia
+  if (stage < 2) {
+    body.classList.add("setup-mode");
+    if (activeTab !== "certamen" && activeTab !== "team") {
+      activeTab = stage === 0 ? "certamen" : "team";
+    }
+  } else {
+    body.classList.remove("setup-mode");
+  }
+
+  renderTopbar();
+  renderNavigation();
+  renderTab(activeTab);
+  updateInspector();
+}
+
+function loadSavedState() {
+  try {
+    const saved = localStorage.getItem("rally_studio_state_2026_v2");
+    if (saved) {
+      state = Object.assign(getInitialState(), JSON.parse(saved));
+      const stage = getWorkflowStage();
+      if (stage === 0) activeTab = "certamen";
+      else if (stage === 1) activeTab = "team";
+      else if (stage === 2) activeTab = "challenges";
+      else if (stage === 3) activeTab = "solution";
+      else if (!activeTab || activeTab === "certamen" || activeTab === "team") activeTab = "challenges";
+    }
+  } catch (e) {
+    console.error("Error al cargar estado local", e);
+  }
+}
+
+function saveState() {
+  try {
+    localStorage.setItem("rally_studio_state_2026_v2", JSON.stringify(state));
+  } catch (e) {}
+  updateInspector();
+  renderTopbar();
+}
+
+function resetSimulation() {
+  if (confirm("¿Reiniciar simulación a T=0? Se limpiarán los datos temporales.")) {
+    localStorage.removeItem("rally_studio_state_2026_v2");
+    state = getInitialState();
+    activeTab = "certamen";
+    syncUI();
+  }
+}
+
+function loadBenchmarkProject() {
+  state.rally_type = "latam";
+  state.hours_total = 28;
+  state.hours_remaining = 27.8;
+  state.team_name = "Mentes Pinoleras";
+  state.university = "Universidad Nacional de Ingeniería (UNI)";
+  state.city = "Managua (Cuenca Cauce Oriental)";
+  state.project_name = "HIDRO-VIGÍA";
+  state.category = "Innovación";
+  state.challenge_id = "02";
+  state.challenge_title = "Redes de sensores comunitarios para prevención y alerta temprana de inundaciones";
+  state.solution_raw_input = "Queremos poner sensores ultrasónicos en los puentes del cauce que manden señal por radio para avisar a los vecinos antes de que se inunde.";
+  state.solution_thesis = "Sistema ciber-físico de telemetría hiperlocal con nodos ultrasónicos no invasivos y protocolo LoRaWAN para alerta temprana comunitaria con 30 minutos de anticipación.";
+  state.solution_simple = "Instalamos sensores en los cauces que avisan a los celulares de la comunidad media hora antes de una crecida sin necesidad de internet.";
+  state.solution_boosters = ["ods", "sensors", "visuals"];
+  state.solution_approved = true;
+
+  state.pautado = {
+    problema: "Las inundaciones repentinas en cauces urbanos de Managua provocan anualmente pérdidas materiales superiores a $1.2M y ponen en riesgo crítico a más de 45,000 habitantes en asentamientos espontáneos. El sistema meteorológico centralizado carece de resolución hiperlocal, generando avisos con apenas 5 minutos de margen, insuficientes para evacuación preventiva.",
+    solucion: "HIDRO-VIGÍA despliega una red mallada de 10 nodos autónomos con transceptores LoRaWAN y sensores ultrasónicos de grado industrial IP68. Cada nodo procesa niveles de escorrentía in-situ y transmite alertas redundantes a sirenas locales y dispositivos móviles sin depender de redes celulares comerciales.",
+    prefactibilidad: "El costo inicial de despliegue para una microcuenca piloto de 3 kilómetros es de $4,450.00 USD, financiable mediante fondos de mitigación municipal y cooperación técnica. La amortización comunitaria se alcanza en el primer evento hidrometeorológico severo evitado.",
+    innovacion: "A diferencia de las estaciones telemétricas tradicionales que superan los $15,000 USD, HIDRO-VIGÍA integra sensores ultrasónicos de bajo consumo acoplados a microcontroladores ESP32-S3 y transmisión sub-GHz libre de canon con 99.4% de disponibilidad en tormentas extremas.",
+    impacto: "Protección directa para 8,200 familias en la cuenca baja del Cauce Oriental, alineado con ODS 11 (Ciudades Sostenibles), ODS 13 (Acción por el Clima) y el Eje 3 del Plan Nacional de Respuesta ante Desastres de Nicaragua."
+  };
+
+  saveState();
+  activeTab = "solution";
+  syncUI();
+}
+
+// ── CRONÓMETRO REGRESIVO ─────────────────────────────────────────────────────
+function initClock() {
+  if (timerInterval) clearInterval(timerInterval);
+  let totalSec = (state.hours_total || 28) * 3600;
+  const el = document.getElementById("clock-timer");
+
+  timerInterval = setInterval(() => {
+    if (totalSec > 0) totalSec--;
+    const h = Math.floor(totalSec / 3600).toString().padStart(2, "0");
+    const m = Math.floor((totalSec % 3600) / 60).toString().padStart(2, "0");
+    const s = Math.floor(totalSec % 60).toString().padStart(2, "0");
+    const timeStr = `${h}:${m}:${s}`;
+    
+    const clockEl = document.getElementById("clock-timer");
+    if (clockEl) clockEl.innerText = timeStr;
+    const bigClock = document.getElementById("big-clock-display");
+    if (bigClock) bigClock.innerText = timeStr;
+  }, 1000);
+}
+
+// ── TOGGLE SIDEBAR ───────────────────────────────────────────────────────────
+function toggleSidebar() {
+  document.getElementById("app-body").classList.toggle("sidebar-collapsed");
+}
+
+function togglePanel() {
+  document.getElementById("app-body").classList.toggle("panel-collapsed");
+}
+
+// ── TOPBAR ───────────────────────────────────────────────────────────────────
+function renderTopbar() {
+  const el = document.getElementById("topbar");
+  const stage = getWorkflowStage();
+  const certamen = state.rally_type === "latam" ? "Rally Latam 28h" : state.rally_type === "nacional" ? "Rally Nacional 24h" : "Sin Certamen";
+  const pName = state.project_name || state.team_name || "T=0";
+
+  el.innerHTML = `
+    <div class="topbar-left">
+      ${stage >= 2 ? `<button class="btn-toggle-sidebar" onclick="toggleSidebar()" title="Colapsar/Expandir menú lateral">${SVG.menu}</button>` : ""}
+      <span class="brand-badge">RALLY STUDIO</span>
+      ${state.rally_type ? `<span class="mode-tag">${certamen}</span>` : ""}
+      ${state.team_name ? `<span class="project-title">${pName}</span>` : ""}
+      ${state.challenge_id ? `<span style="font-size:11px; font-weight:700; color:var(--text-muted); font-family:var(--font-mono);">[Reto #${state.challenge_id}]</span>` : ""}
+    </div>
+    <div class="topbar-actions">
+      <button class="btn-secondary" onclick="resetSimulation()">Reiniciar T=0</button>
+      <button class="btn-secondary" onclick="loadBenchmarkProject()">Cargar Benchmark</button>
+      ${stage >= 2 ? `<button class="btn-secondary" onclick="togglePanel()" title="Ocultar/Mostrar panel derecho">Auditoría</button>` : ""}
+      <div class="timer-box" style="display:flex; align-items:center; gap:6px;">
+        <span class="timer-pulse"></span>
+        <span id="clock-timer" style="font-family:var(--font-mono); font-weight:800; font-size:13px;">${state.hours_total || 28}:00:00</span>
+      </div>
+    </div>
+  `;
+}
+
+// ── NAVEGACIÓN LATERAL POR DEPENDENCIAS ───────────────────────────────────────
 function renderNavigation() {
   const nav = document.getElementById("sidebar");
+  const currentStage = getWorkflowStage();
+
   nav.innerHTML = `
     <div class="sidebar-heading">Fases de Trabajo</div>
     ${NAV_TABS.map(t => {
-      const isOk = t.check();
-      const statusClass = isOk ? "badge-ok" : "badge-pending";
-      const statusText = isOk ? "Listo" : "Pendiente";
+      const isUnlocked = t.level <= currentStage;
+      const isCompleted = t.check();
       const activeClass = t.id === activeTab ? "active" : "";
+      
+      let statusMarkup = "";
+      if (!isUnlocked) {
+        statusMarkup = `<span class="badge-status" style="background:#f1f5f9; color:#94a3b8; border:1px solid #e2e8f0;">${SVG.lock}</span>`;
+      } else if (isCompleted) {
+        statusMarkup = `<span class="badge-status badge-ok">${SVG.check}</span>`;
+      } else {
+        statusMarkup = `<span class="badge-status badge-pending">En curso</span>`;
+      }
+
       return `
-        <a href="#" class="nav-link ${activeClass}" onclick="switchTab('${t.id}', event)">
-          <span>${t.label}</span>
-          <span class="badge-status ${statusClass}">${statusText}</span>
+        <a href="#" class="nav-link ${activeClass} ${!isUnlocked ? 'locked' : ''}" 
+           style="${!isUnlocked ? 'opacity:0.45; cursor:not-allowed;' : ''}"
+           onclick="${isUnlocked ? `switchTab('${t.id}', event)` : 'event.preventDefault()'}">
+          <span style="display:flex; align-items:center; gap:6px;">${t.label}</span>
+          ${statusMarkup}
         </a>
       `;
     }).join("")}
@@ -366,355 +423,281 @@ function renderNavigation() {
 
 function switchTab(tabId, ev) {
   if (ev) ev.preventDefault();
+  const target = NAV_TABS.find(t => t.id === tabId);
+  if (target && target.level > getWorkflowStage()) return;
   activeTab = tabId;
   renderNavigation();
   renderTab(tabId);
 }
 
-// ── VISTAS DEL WORKSPACE CENTRAL ─────────────────────────────────────────────
+// ── DESPACHADOR CENTRAL DE VISTAS ────────────────────────────────────────────
 function renderTab(tabId) {
   const main = document.getElementById("main");
   const renderers = {
-    teamhub: renderViewTeamHub,
-    brief: renderViewBrief,
+    certamen: renderViewCertamen,
+    team: renderViewTeam,
     challenges: renderViewChallenges,
-    identity: renderViewIdentity,
-    research: renderViewResearch,
+    solution: renderViewSolution,
     pautado: renderViewPautado,
     budget: renderViewBudget,
+    resources: renderViewResources,
     canvas: renderViewCanvas,
     script: renderViewScript,
     webdemo: renderViewWebDemo,
     timeline: renderViewTimeline
   };
-  main.innerHTML = `<div class="content-wrapper">${(renderers[tabId] || renderViewTeamHub)()}</div>`;
+  main.innerHTML = `<div class="content-wrapper">${(renderers[tabId] || renderViewCertamen)()}</div>`;
   attachTabListeners(tabId);
 }
 
-// 00 TEAM HUB & CLOUD VIEW
-function renderViewTeamHub() {
+// ═════════════════════════════════════════════════════════════════════════════
+// 00 NIVEL 0: SELECCIÓN DE CERTAMEN (UI VACÍA Y LIMPIA)
+// ═════════════════════════════════════════════════════════════════════════════
+function renderViewCertamen() {
   return `
-    <div class="page-header">
-      <div>
-        <h1 class="page-title">00 · Hub de Equipo, Nube & Bóveda de Recursos</h1>
-        <div class="page-desc">Centro neurálgico para trabajo paralelo: red local Wi-Fi, enlaces fijos y descargas directas.</div>
-      </div>
-      <button class="btn-primary" onclick="saveTeamHubLinks()">Guardar Enlaces de Equipo</button>
-    </div>
-
-    <div class="rubric-callout">
-      <strong>TRABAJO EN PARALELO EFICIENTE:</strong> El equipo NO debe trabajar en cascada. Mientras el área de investigación
-      define los claims y pautado, el área técnica cotiza en Alibaba y el área audiovisual prepara el shotlist y los gráficos en Canva/Blender.
-    </div>
-
-    <!-- LAN Sharing Card -->
-    <div class="workbench-card" style="border-left: 4px solid var(--color-primary); background: #f8fafc;">
-      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
-        <div>
-          <span class="badge-status badge-ok" style="margin-bottom:4px; display:inline-block;">⚡ SERVIDOR LOCAL ACTIVO</span>
-          <h3 style="margin:2px 0; font-size:15px; font-weight:800;">Conexión Multidispositivo en Tiempo Real (Wi-Fi de Sede)</h3>
-          <p style="font-size:12px; color:var(--text-muted); margin:0;">
-            Cualquier integrante con laptop o celular conectado al mismo Wi-Fi puede acceder al dashboard:
-          </p>
-        </div>
-        <div style="background:#fff; border:1px solid var(--border-color); padding:8px 14px; border-radius:6px; display:flex; align-items:center; gap:8px;">
-          <code style="font-family:var(--font-mono); font-weight:700; font-size:14px; color:var(--color-primary);">http://${state.local_ip || '192.168.1.50'}:8080/dashboard/</code>
-          <button class="btn-secondary" style="padding:4px 8px; font-size:11px;" onclick="navigator.clipboard.writeText('http://${state.local_ip || '192.168.1.50'}:8080/dashboard/'); alert('IP copiada al portapapeles');">Copiar IP</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Enlaces Colaborativos Fijos -->
-    <div class="workbench-card">
-      <h3>Enlaces Fijos de Trabajo Colaborativo (Drive, Canva, Figma)</h3>
-      <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">
-        Configura los accesos directos permanentes donde el equipo sincroniza videos crudos, audios o diseña láminas:
+    <div class="wizard-canvas">
+      <span class="wizard-tag">Paso 01 de 03 · Configuración Inicial</span>
+      <h1 class="wizard-title">¿Qué Rally es?</h1>
+      <p class="wizard-desc">
+        Selecciona el certamen en el que participa tu equipo para calibrar automáticamente las reglas,
+        el régimen de horas y la estructura oficial del documento pautado.
       </p>
-      <div class="form-grid">
-        <div class="form-group full">
-          <label>Carpeta Oficial de Google Drive (Videos crudos, renders, fotos, audios)</label>
-          <div style="display:flex; gap:8px;">
-            <input type="url" id="hub-drive-url" placeholder="https://drive.google.com/drive/folders/..." value="${state.google_drive_url || ''}" style="flex:1;">
-            <a href="${state.google_drive_url || '#'}" target="_blank" class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center;">Abrir Drive ↗</a>
+
+      <div class="certamen-grid">
+        <!-- Tarjeta Rally Latam -->
+        <div class="certamen-card ${state.rally_type === 'latam' ? 'selected' : ''}" onclick="selectCertamen('latam')">
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+              <span class="certamen-badge latam">28 HORAS CONTINUAS</span>
+              <div style="color:var(--color-primary);">${SVG.globe}</div>
+            </div>
+            <h2 class="certamen-name">Rally Latinoamericano de Innovación</h2>
+            <p class="certamen-detail">
+              Competencia internacional entre 8 países de América Latina. Enfoque continental con escalamiento
+              regional y video de 120 segundos sin mención de marcas en el Acto 1.
+            </p>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border-light); pt:14px; margin-top:12px;">
+            <span style="font-size:11px; font-weight:700; color:var(--text-muted); font-family:var(--font-mono);">Régimen Latam</span>
+            <span class="btn-primary" style="padding:4px 10px; font-size:11px;">Elegir Latam ${SVG.arrowRight}</span>
           </div>
         </div>
-        <div class="form-group full">
-          <label>Espacio de Trabajo Canva (Diseño de diapositivas, infografías, overlays del video)</label>
-          <div style="display:flex; gap:8px;">
-            <input type="url" id="hub-canva-url" placeholder="https://www.canva.com/design/..." value="${state.canva_url || ''}" style="flex:1;">
-            <a href="${state.canva_url || '#'}" target="_blank" class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center;">Abrir Canva ↗</a>
+
+        <!-- Tarjeta Rally Nacional -->
+        <div class="certamen-card ${state.rally_type === 'nacional' ? 'selected' : ''}" onclick="selectCertamen('nacional')">
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+              <span class="certamen-badge nacional">24 HORAS CONTINUAS</span>
+              <div style="color:#d97706;">${SVG.shield}</div>
+            </div>
+            <h2 class="certamen-name">Rally Nacional Nicaragua Innova</h2>
+            <p class="certamen-detail">
+              Certamen universitario territorial de 24 horas. Énfasis en impacto comunitario directo,
+              alineación con el Plan Nacional de Lucha contra la Pobreza y validación de maqueta física.
+            </p>
           </div>
-        </div>
-        <div class="form-group full">
-          <label>Figma / Pizarra Miro (Opcional - Diagrama de arquitectura o flujo)</label>
-          <div style="display:flex; gap:8px;">
-            <input type="url" id="hub-figma-url" placeholder="https://www.figma.com/file/..." value="${state.figma_url || ''}" style="flex:1;">
-            ${state.figma_url ? `<a href="${state.figma_url}" target="_blank" class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center;">Abrir Figma ↗</a>` : ''}
+          <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border-light); pt:14px; margin-top:12px;">
+            <span style="font-size:11px; font-weight:700; color:var(--text-muted); font-family:var(--font-mono);">Régimen Nacional</span>
+            <span class="btn-primary" style="padding:4px 10px; font-size:11px; background:#d97706; border-color:#d97706;">Elegir Nacional ${SVG.arrowRight}</span>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Bóveda Unificada de Descargas del Equipo -->
-    <div class="workbench-card">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-        <div>
-          <h3 style="margin:0;">Bóveda de Recursos & Entregables del Equipo (1-Click)</h3>
-          <p style="font-size:12px; color:var(--text-muted); margin:2px 0 0 0;">
-            Descarga directa de documentos generados por el sistema listos para validación, edición y plataforma SIRLI.
-          </p>
-        </div>
-      </div>
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Entregable / Recurso</th>
-            <th>Formato</th>
-            <th>Destino / Uso en Competencia</th>
-            <th>Acción</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Matriz Selección de Desafíos 2026</strong></td>
-            <td><code>.DOCX</code></td>
-            <td>Deliberación grupal: 9 desafíos íntegros + pronóstico WOW + votación</td>
-            <td><a href="/docs/Matriz_Seleccion_Desafios_2026.docx" download class="btn-primary" style="padding:4px 10px; font-size:11px; text-decoration:none;">Descargar Word ↓</a></td>
-          </tr>
-          <tr>
-            <td><strong>Documento Pautado Oficial</strong></td>
-            <td><code>.DOCX</code></td>
-            <td>5 secciones oficiales redactadas y validadas con límites de caracteres</td>
-            <td><a href="/docs/pautado_draft.docx" download class="btn-secondary" style="padding:4px 10px; font-size:11px; text-decoration:none;">Descargar Word ↓</a></td>
-          </tr>
-          <tr>
-            <td><strong>Presupuesto Formal Puesta en Marcha</strong></td>
-            <td><code>.XLSX</code></td>
-            <td>Rango $4,000–$6,000 USD con enlaces Alibaba y flete de importación</td>
-            <td><a href="/budget/budget.xlsx" download class="btn-secondary" style="padding:4px 10px; font-size:11px; text-decoration:none;">Descargar Excel ↓</a></td>
-          </tr>
-          <tr>
-            <td><strong>Shotlist Cronometrado (120s)</strong></td>
-            <td><code>.CSV</code></td>
-            <td>Pauta para el editor de video (planos, tiempos exactos y textos en pantalla)</td>
-            <td><a href="/script/shotlist.csv" download class="btn-secondary" style="padding:4px 10px; font-size:11px; text-decoration:none;">Descargar CSV ↓</a></td>
-          </tr>
-          <tr>
-            <td><strong>Guion de Locución Limpio</strong></td>
-            <td><code>.TXT</code></td>
-            <td>Texto continuo a 135 ppm para el locutor o motor TTS (ElevenLabs/Edge)</td>
-            <td><a href="/script/narration.txt" download class="btn-secondary" style="padding:4px 10px; font-size:11px; text-decoration:none;">Descargar TXT ↓</a></td>
-          </tr>
-          <tr>
-            <td><strong>Audio de Locución Narrada</strong></td>
-            <td><code>.WAV</code></td>
-            <td>Voz generada para Actos 1 a 4 lista para montar en línea de tiempo</td>
-            <td><a href="/assets/voice/narration.wav" download class="btn-secondary" style="padding:4px 10px; font-size:11px; text-decoration:none;">Descargar Audio ↓</a></td>
-          </tr>
-          <tr>
-            <td><strong>Design Tokens & Paleta Ganadora</strong></td>
-            <td><code>.CSS</code></td>
-            <td>Colores hexadecimales primarios, secundarios y tipografías para la demo web</td>
-            <td><a href="/brand/tokens.css" download class="btn-secondary" style="padding:4px 10px; font-size:11px; text-decoration:none;">Descargar CSS ↓</a></td>
-          </tr>
-          <tr>
-            <td><strong>Modelo de Negocio Canvas</strong></td>
-            <td><code>.MD</code></td>
-            <td>9 cuadrantes alineados al pautado y viabilidad económica</td>
-            <td><a href="/docs/canvas.md" download class="btn-secondary" style="padding:4px 10px; font-size:11px; text-decoration:none;">Descargar MD ↓</a></td>
-          </tr>
-          <tr>
-            <td><strong>Bibliografía Sustentada APA 7</strong></td>
-            <td><code>.MD</code></td>
-            <td>Fuentes verificables de investigación y declaración de uso ético de IA</td>
-            <td><a href="/docs/bibliography.md" download class="btn-secondary" style="padding:4px 10px; font-size:11px; text-decoration:none;">Descargar MD ↓</a></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Ingesta Rápida de Desafíos -->
-    <div class="workbench-card">
-      <h3>Ingesta Universal de Desafíos (Fotos de WhatsApp / PDFs)</h3>
-      <p style="font-size:12px; color:var(--text-muted); margin-bottom:8px;">
-        Al publicarse nuevos desafíos (extraídos de capturas o documentos), pega aquí el texto para regenerar la Matriz Word con tecnologías WOW y votación de equipo:
-      </p>
-      <textarea id="raw-challenges-input" style="width:100%; height:75px; font-family:var(--font-mono); font-size:11px; padding:8px; border:1px solid var(--border-color); border-radius:4px; box-sizing:border-box;" placeholder="Pega aquí el texto extraído del OCR o PDF del comité organizador..."></textarea>
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
-        <button class="btn-secondary" onclick="generateChallengesDocFromWeb()">Generar / Actualizar Word de Desafíos</button>
-        <span style="font-size:11px; color:var(--text-muted); font-family:var(--font-mono);">Script: scripts/ingest_challenges.py</span>
-      </div>
-    </div>
-
-    <!-- Mapeo de Roles de Equipo -->
-    <div class="workbench-card">
-      <h3>Matriz de Roles Simultáneos (Para no perder ni un minuto)</h3>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px; margin-top:10px;">
-        <div style="border:1px solid var(--border-color); padding:10px; border-radius:6px; background:#fff;">
-          <strong style="color:var(--color-primary); font-size:12px;">Rol 1: Líder & Claims</strong>
-          <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Define tesis del proyecto, claims estadísticos y supervisa la matriz de deliberación.</div>
-        </div>
-        <div style="border:1px solid var(--border-color); padding:10px; border-radius:6px; background:#fff;">
-          <strong style="color:var(--color-primary); font-size:12px;">Rol 2: Redactor de Pautado</strong>
-          <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Transcribe y ajusta caracteres exactos con espacios en las 5 secciones oficiales.</div>
-        </div>
-        <div style="border:1px solid var(--border-color); padding:10px; border-radius:6px; background:#fff;">
-          <strong style="color:var(--color-primary); font-size:12px;">Rol 3: Finanzas & Alibaba</strong>
-          <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Busca piezas reales mayoristas entre $4k y $6k USD con flete y especificaciones.</div>
-        </div>
-        <div style="border:1px solid var(--border-color); padding:10px; border-radius:6px; background:#fff;">
-          <strong style="color:var(--color-primary); font-size:12px;">Rol 4: Video Pitch & Audio</strong>
-          <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Edita video a 119s exactos siguiendo el shotlist. Sube a YouTube en T-30m.</div>
         </div>
       </div>
     </div>
   `;
 }
 
-function saveTeamHubLinks() {
-  const drive = document.getElementById("hub-drive-url");
-  const canva = document.getElementById("hub-canva-url");
-  const figma = document.getElementById("hub-figma-url");
-  if (drive) state.google_drive_url = drive.value.trim();
-  if (canva) state.canva_url = canva.value.trim();
-  if (figma) state.figma_url = figma.value.trim();
+function selectCertamen(type) {
+  state.rally_type = type;
+  state.hours_total = type === "latam" ? 28 : 24;
+  state.hours_remaining = state.hours_total;
   saveState();
-  renderNavigation();
-  alert("✓ Enlaces de colaboración guardados con éxito.");
+  activeTab = "team";
+  syncUI();
 }
 
-function generateChallengesDocFromWeb() {
-  const txt = document.getElementById("raw-challenges-input").value.trim();
-  if (!txt) {
-    alert("Pega texto de desafíos para procesar.");
+// ═════════════════════════════════════════════════════════════════════════════
+// 01 NIVEL 1: IDENTIDAD DE EQUIPO & LOGOS
+// ═════════════════════════════════════════════════════════════════════════════
+function renderViewTeam() {
+  const certLabel = state.rally_type === "latam" ? "Rally Latinoamericano (28h)" : "Rally Nacional (24h)";
+
+  return `
+    <div class="wizard-canvas">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <span class="wizard-tag">Paso 02 de 03 · Identidad del Equipo</span>
+        <button class="btn-secondary" style="font-size:11px; padding:3px 8px;" onclick="switchTab('certamen')">← Cambiar Certamen (${certLabel})</button>
+      </div>
+
+      <h1 class="wizard-title">Nombre del Grupo & Sede Universitaria</h1>
+      <p class="wizard-desc">
+        Ingresa los datos exactos con los que tu equipo está registrado en la plataforma oficial del evento.
+      </p>
+
+      <div class="workbench-card">
+        <div class="form-grid">
+          <div class="form-group full">
+            <label>Nombre Oficial del Equipo en la Competencia</label>
+            <input type="text" id="tm-name" placeholder="Ej: Mentes Volcánicas, Pinoleros Tech, InnovaUNI" value="${state.team_name}">
+          </div>
+
+          <div class="form-group">
+            <label>Universidad o Sede Académica</label>
+            <input type="text" id="tm-uni" placeholder="Ej: Universidad Nacional de Ingeniería (UNI)" value="${state.university}">
+          </div>
+
+          <div class="form-group">
+            <label>Ciudad o Municipio Piloto</label>
+            <input type="text" id="tm-city" placeholder="Ej: Managua, Estelí, León" value="${state.city}">
+          </div>
+
+          <div class="form-group full">
+            <label>Emblema / Identificador Visual del Equipo</label>
+            <div style="display:flex; gap:12px; align-items:center; margin-top:6px;">
+              <div style="display:flex; gap:8px;">
+                ${['shield', 'globe', 'spark'].map(ic => `
+                  <button type="button" class="btn-secondary" style="${state.team_logo === ic ? 'border-color:var(--color-primary); background:#eff6ff;' : ''} padding:8px 14px;" onclick="state.team_logo='${ic}'; saveState(); renderTab('team');">
+                    ${SVG[ic]}
+                  </button>
+                `).join("")}
+              </div>
+              <span style="font-size:11px; color:var(--text-muted);">Icono sobrio para caratula del video y reportes técnicos.</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:flex-end; margin-top:24px; border-top:1px solid var(--border-light); padding-top:16px;">
+          <button class="btn-primary" style="padding:8px 18px; font-size:13px;" onclick="saveTeamAndProceed()">Continuar a Selección de Reto ${SVG.arrowRight}</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function saveTeamAndProceed() {
+  const name = document.getElementById("tm-name").value.trim();
+  const uni = document.getElementById("tm-uni").value.trim();
+  const city = document.getElementById("tm-city").value.trim();
+
+  if (!name || !uni) {
+    alert("Por favor ingresa al menos el Nombre del Equipo y la Universidad.");
     return;
   }
-  navigator.clipboard.writeText(`python scripts/ingest_challenges.py --text "${txt.replace(/"/g, '\\"')}"`);
-  alert("✓ Comando de ingesta copiado al portapapeles. Pégalo en tu terminal para compilar el nuevo Word.");
-}
 
-// 01 BRIEF VIEW
-function renderViewBrief() {
-  return `
-    <div class="page-header">
-      <div>
-        <h1 class="page-title">01 · Brief & Diagnóstico de Entrada</h1>
-        <div class="page-desc">Define la identidad y restricción inicial del proyecto. Nada arranca sin este marco.</div>
-      </div>
-      <button class="btn-primary" onclick="saveBriefForm()">Guardar Brief</button>
-    </div>
-
-    <div class="rubric-callout">
-      <strong>RÉGIMEN RALLY LATAM:</strong> El municipio no es la solución final, sino el <em>laboratorio piloto</em>. 
-      La solución debe formularse con diseño modular y estandarización para transferirse a cualquier país de la región.
-    </div>
-
-    <div class="workbench-card">
-      <h3>Datos de Registro en SIRLI</h3>
-      <div class="form-grid">
-        <div class="form-group">
-          <label>Certamen / Duración</label>
-          <select id="bf-rally-type" onchange="state.rally_type=this.value; saveState();">
-            <option value="latam" ${state.rally_type==='latam'?'selected':''}>Rally Latinoamericano de Innovación (28 Horas)</option>
-            <option value="nacional" ${state.rally_type==='nacional'?'selected':''}>Rally Nacional Nicaragua Innova (24 Horas)</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Categoría Oficial</label>
-          <select id="bf-category">
-            <option value="Innovación" ${state.category==='Innovación'?'selected':''}>Área Innovación (Tecnología, procesos y artefactos)</option>
-            <option value="Impacto Social" ${state.category==='Impacto Social'?'selected':''}>Área Impacto Social (Comunidad, vulnerabilidad, inclusión)</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Nombre Comercial del Proyecto</label>
-          <input type="text" id="bf-project-name" placeholder="Ej: HIDRO-VIGÍA, DIGNA, TECHRIDERS" value="${state.project_name}">
-        </div>
-        <div class="form-group">
-          <label>Nombre del Equipo</label>
-          <input type="text" id="bf-team-name" placeholder="Ej: Mentes Volcánicas, Güegüense Pinolero" value="${state.team_name}">
-        </div>
-        <div class="form-group">
-          <label>Universidad / Sede Universitaria</label>
-          <input type="text" id="bf-university" placeholder="Ej: Universidad Nacional de Ingeniería (UNI)" value="${state.university}">
-        </div>
-        <div class="form-group">
-          <label>Ciudad / Municipio Piloto</label>
-          <input type="text" id="bf-city" placeholder="Ej: Managua (Cuenca Cauce Oriental)" value="${state.city}">
-        </div>
-        <div class="form-group full">
-          <label>Tesis de la Solución (UNA SOLA ORACIÓN SIN TECNICISMOS)</label>
-          <input type="text" id="bf-description" placeholder="Ej: Sistema ciber-físico de telemetría hiperlocal que alerta crecidas con 30 minutos de anticipación." value="${state.description_one_line}">
-        </div>
-      </div>
-    </div>
-
-    <div class="workbench-card">
-      <h3>Desafío Activo Vinculado</h3>
-      <p style="font-size:12px;color:var(--text-muted);margin-bottom:10px;">
-        ${state.challenge_id ? `<strong>Desafío #${state.challenge_id}:</strong> ${state.challenge_title}` : `<em>No se ha seleccionado desafío aún. Ve a la pestaña 02 Radar de Desafíos para elegirlo.</em>`}
-      </p>
-      <button class="btn-secondary" onclick="switchTab('challenges')">Ir al Radar de Desafíos 2026 →</button>
-    </div>
-  `;
-}
-
-function saveBriefForm() {
-  state.project_name = document.getElementById("bf-project-name").value.trim();
-  state.team_name = document.getElementById("bf-team-name").value.trim();
-  state.university = document.getElementById("bf-university").value.trim();
-  state.city = document.getElementById("bf-city").value.trim();
-  state.category = document.getElementById("bf-category").value;
-  state.description_one_line = document.getElementById("bf-description").value.trim();
-
+  state.team_name = name;
+  state.university = uni;
+  state.city = city;
   saveState();
-  renderNavigation();
-  alert("✓ Brief guardado. Estado actualizado en el inspector.");
+  activeTab = "challenges";
+  syncUI();
 }
 
-// 02 RADAR DESAFÍOS VIEW
+// ═════════════════════════════════════════════════════════════════════════════
+// 02 NIVEL 2: RADAR & SELECCIÓN DE RETO (COMPARATIVA OFICIAL VS PROPUESTA WOW)
+// ═════════════════════════════════════════════════════════════════════════════
 function renderViewChallenges() {
+  const filtered = OFFICIAL_CHALLENGES_2026.filter(ch => {
+    if (challengeFilter === "all") return true;
+    return ch.category.toLowerCase().includes(challengeFilter.toLowerCase());
+  });
+
   return `
     <div class="page-header">
       <div>
-        <h1 class="page-title">02 · Radar de Desafíos Oficiales (Rally Latam 2026)</h1>
-        <div class="page-desc">Matriz histórica calculada sobre 13 ediciones previas (2014–2026).</div>
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+          <span class="wizard-tag" style="margin-bottom:0;">Paso 03 de 03</span>
+          <span style="font-size:11px; font-weight:700; color:var(--text-muted);">${state.team_name} · ${state.university}</span>
+        </div>
+        <h1 class="page-title" style="font-size:24px;">02 · Selección de Reto Oficial</h1>
+        <div class="page-desc">Analiza los requerimientos oficiales del comité frente a la propuesta de tecnología WOW generada para ganar.</div>
+      </div>
+      <div style="display:flex; gap:8px;">
+        <a href="/docs/Matriz_Seleccion_Desafios_2026.docx" download class="btn-secondary" style="display:inline-flex; align-items:center; gap:6px; text-decoration:none;">
+          ${SVG.download} Matriz Word (.docx) para WhatsApp
+        </a>
+        <a href="${state.google_drive_url}" target="_blank" class="btn-secondary" style="display:inline-flex; align-items:center; gap:6px; text-decoration:none;">
+          ${SVG.external} Google Drive
+        </a>
       </div>
     </div>
 
-    <div class="rubric-callout">
-      <strong>REGLA DE COMPETENCIA:</strong> Desafíos masivos como 'agua' o 'huertos' tienen alta concurrencia (8+ países). 
-      Para ganar ahí se exige hibridación técnica (IoT + físico). Desafíos de nicho como 'polinizadores' o 'motores' ganan por baja saturación y sorpresa.
+    <!-- Barra de Ingesta Rápida (PDF / Fotos WhatsApp) -->
+    <div class="workbench-card" style="background:#f8fafc; border-left:3px solid var(--color-primary); padding:14px 18px; margin-bottom:18px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+        <div>
+          <strong style="font-size:12px; color:var(--text-main);">Ingesta Universal de Nuevos Retos</strong>
+          <p style="font-size:11px; color:var(--text-muted); margin:0;">
+            Si el comité publica retos en capturas de WhatsApp o PDF, usa el script de transcripción para actualizar el Word.
+          </p>
+        </div>
+        <div style="display:flex; gap:8px; align-items:center;">
+          <input type="text" id="cli-text-input" placeholder="Pegar texto o ruta de archivo..." style="font-size:11px; padding:4px 8px; width:220px; border:1px solid var(--border-light); border-radius:4px;">
+          <button class="btn-secondary" style="padding:4px 10px; font-size:11px;" onclick="copyIngestCliCommand()">Copiar CLI Ingesta</button>
+        </div>
+      </div>
     </div>
 
-    <div style="display:flex;flex-direction:column;gap:12px;">
-      ${OFFICIAL_CHALLENGES_2026.map(ch => {
+    <!-- Filtros de Categoría -->
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+      <div style="display:flex; gap:8px;">
+        <button class="btn-secondary" style="${challengeFilter === 'all' ? 'background:#1e40af; color:#fff; border-color:#1e40af;' : ''} padding:4px 10px; font-size:11px;" onclick="challengeFilter='all'; renderTab('challenges');">
+          Todos los Retos (${OFFICIAL_CHALLENGES_2026.length})
+        </button>
+        <button class="btn-secondary" style="${challengeFilter === 'innovación' ? 'background:#1e40af; color:#fff; border-color:#1e40af;' : ''} padding:4px 10px; font-size:11px;" onclick="challengeFilter='innovación'; renderTab('challenges');">
+          Innovación (Tecnología & Hardware)
+        </button>
+        <button class="btn-secondary" style="${challengeFilter === 'impacto social' ? 'background:#1e40af; color:#fff; border-color:#1e40af;' : ''} padding:4px 10px; font-size:11px;" onclick="challengeFilter='impacto social'; renderTab('challenges');">
+          Impacto Social (Comunidad & Vulnerabilidad)
+        </button>
+      </div>
+      <span style="font-size:11px; font-weight:700; color:var(--text-muted); font-family:var(--font-mono);">9 Retos Catalogados</span>
+    </div>
+
+    <!-- Lista Comparativa de Retos -->
+    <div style="display:flex; flex-direction:column; gap:16px;">
+      ${filtered.map(ch => {
         const isSelected = state.challenge_id === ch.id;
-        const borderStyle = isSelected ? "border-color:var(--color-primary);background:#eff6ff;" : "";
         return `
-          <div class="workbench-card" style="margin-bottom:0;${borderStyle}">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
-              <div>
-                <span class="badge-status ${isSelected ? 'badge-ok' : 'badge-pending'}" style="margin-right:6px;">DESAFÍO #${ch.id}</span>
-                <span style="font-size:11px;font-weight:700;color:var(--text-muted);">${ch.category} · ${ch.ods.join(", ")}</span>
-                <h4 style="font-size:14px;font-weight:800;color:var(--text-main);margin-top:4px;">${ch.title}</h4>
+          <div class="challenge-box ${isSelected ? 'active' : ''}">
+            <div class="challenge-box-header">
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span class="badge-status ${isSelected ? 'badge-ok' : 'badge-pending'}" style="font-family:var(--font-mono); font-size:10px;">RETO #${ch.id}</span>
+                <span style="font-size:11px; font-weight:700; color:var(--text-muted);">${ch.category} · ${ch.ods.join(", ")}</span>
+                ${isSelected ? `<span style="font-size:10px; font-weight:800; color:#047857; background:#ecfdf5; padding:2px 6px; border-radius:3px;">RETO ACTIVO</span>` : ""}
               </div>
-              <div style="text-align:right;">
-                <div style="font-family:var(--font-mono);font-size:16px;font-weight:800;color:${ch.winRate>=90?'#047857':'#1e40af'}">${ch.winRate}%</div>
-                <div style="font-size:10px;text-transform:uppercase;color:var(--text-muted);font-weight:700;">Prob. Victoria</div>
+              <div style="display:flex; align-items:center; gap:14px;">
+                <div style="text-align:right;">
+                  <span style="font-family:var(--font-mono); font-size:14px; font-weight:800; color:${ch.winRate >= 90 ? '#047857' : '#1e40af'};">${ch.winRate}%</span>
+                  <span style="font-size:10px; color:var(--text-muted); display:block;">Prob. Victoria</span>
+                </div>
+                <button class="${isSelected ? 'btn-secondary' : 'btn-primary'}" style="padding:5px 12px; font-size:11px;" onclick="selectChallenge('${ch.id}')">
+                  ${isSelected ? 'Seleccionado ✓' : 'Seleccionar este Reto'}
+                </button>
               </div>
-            </div>
-            
-            <p style="font-size:12px;color:var(--text-body);margin-bottom:8px;line-height:1.4;">
-              <strong>Factor Clave de Victoria:</strong> ${ch.keyFactor}
-            </p>
-            <div style="font-size:11px;color:var(--text-muted);margin-bottom:12px;">
-              <strong>Precedente Histórico:</strong> ${ch.precedent} | <strong>Concurrencia:</strong> ${ch.compDensity}
             </div>
 
-            <button class="${isSelected ? 'btn-primary' : 'btn-secondary'}" onclick="selectChallenge('${ch.id}')">
-              ${isSelected ? '✓ Desafío Seleccionado' : 'Seleccionar este Desafío'}
-            </button>
+            <div style="padding:14px 20px 8px 20px;">
+              <h3 style="font-size:15px; font-weight:800; color:var(--text-main); line-height:1.3;">${ch.title}</h3>
+            </div>
+
+            <div class="challenge-split">
+              <!-- Columna Requerimiento Oficial -->
+              <div class="challenge-col req">
+                <div class="col-label">${SVG.fileText || SVG.shield} Lo que el Comité Demanda / Espera</div>
+                <p style="font-size:12px; color:var(--text-body); line-height:1.5;">${ch.officialExpectation}</p>
+                <div style="font-size:11px; color:var(--text-muted); margin-top:8px;">
+                  <strong>Precedente ganador:</strong> ${ch.precedent}
+                </div>
+              </div>
+
+              <!-- Columna Propuesta Tecnológica WOW -->
+              <div class="challenge-col wow">
+                <div class="col-label" style="color:var(--color-primary);">${SVG.spark} Propuesta Tecnológica WOW (Diferenciador)</div>
+                <p style="font-size:12px; color:var(--text-main); font-weight:500; line-height:1.5;">${ch.wowProposal}</p>
+                <div style="font-size:11px; color:#047857; margin-top:8px; font-weight:600;">
+                  Densidad estimada en sedes: ${ch.compDensity}
+                </div>
+              </div>
+            </div>
           </div>
         `;
       }).join("")}
@@ -723,516 +706,256 @@ function renderViewChallenges() {
 }
 
 function selectChallenge(id) {
-  const found = OFFICIAL_CHALLENGES_2026.find(c => c.id === id);
-  if (found) {
-    state.challenge_id = found.id;
-    state.challenge_title = found.title;
-    state.category = found.category;
-    saveState();
-    renderNavigation();
-    renderTab('challenges');
+  const ch = OFFICIAL_CHALLENGES_2026.find(c => c.id === id);
+  if (!ch) return;
+
+  state.challenge_id = ch.id;
+  state.challenge_title = ch.title;
+  state.category = ch.category;
+
+  // Si no tenía solución aún, pre-rellenar con la propuesta WOW
+  if (!state.solution_thesis) {
+    state.solution_raw_input = ch.wowProposal;
+    state.solution_thesis = ch.wowProposal;
   }
+
+  saveState();
+  activeTab = "solution";
+  syncUI();
 }
 
-// 03 IDENTIDAD & PALETA VIEW (MANUAL DE MARCA Y TOKENS)
-function renderViewIdentity() {
-  const pName = state.project_name || "PROYECTO";
-  const desc = state.description_one_line || "Solución ciber-física para resiliencia comunitaria";
-  const primary = state.palette.primary;
-  const secondary = state.palette.secondary;
-  const accent = state.palette.accent;
+function copyIngestCliCommand() {
+  const input = document.getElementById("cli-text-input");
+  const val = input ? input.value.trim() : "";
+  const cmd = val ? `python scripts/ingest_challenges.py --text "${val.replace(/"/g, '\\"')}"` : `python scripts/ingest_challenges.py`;
+  navigator.clipboard.writeText(cmd);
+  alert("Comando copiado al portapapeles: " + cmd);
+}
 
-  const crPrimary = getContrastRatio(primary, "#ffffff");
-  const wcagPrimary = crPrimary >= 7 ? "AAA" : (crPrimary >= 4.5 ? "AA" : "FAIL");
-
-  const crSecondary = getContrastRatio(secondary, "#ffffff");
-  const wcagSecondary = crSecondary >= 7 ? "AAA" : (crSecondary >= 4.5 ? "AA" : "FAIL");
-
-  // Prompts especializados parametrizados con los datos exactos del proyecto
-  const prompt3D = `Genera un render conceptual de diseño industrial hiperrealista para el proyecto de ingeniería '${pName}'.
-Contexto funcional: ${desc}.
-Especificaciones del artefacto:
-- Gabinete hermético de policarbonato industrial grado IP67 con acabado mate microtexturizado (Gris grafito #1E293B y detalles en ${primary}).
-- Biseles suaves de radio 4mm en todas las esquinas para disipación de esfuerzos mecánicos.
-- Tornillería visible de acero inoxidable 316 (pernos hexagonales M6 avellanados) y prensaestopas estancos M16 en la base inferior.
-- Panel solar monocristalino compacto de 50W integrado con soporte de aluminio anodizado angular de 15°.
-- Indicadores LED rasantes ultrabrillantes con guías de luz acrílicas en color de acento (${accent}).
-- Entorno de estudio: Iluminación técnica difusa tipo banco óptico a 5500K sobre fondo neutro infinito gris perla (#F1F5F9). Sin reflejos plásticos reflectivos, sin estética caricaturesca, sin neón cyberpunk.
-- Perspectiva en plano 3/4 isométrico mostrando despiece técnico sutil o ensamblaje listo para campo.`;
-
-  const promptUI = `Actúa como diseñador principal de producto frontend. Diseña una interfaz de telemetría y monitoreo en tiempo real para el proyecto '${pName}'.
-Restricciones innegociables de diseño:
-- Paleta obligatoria: Color primario ${primary}, soporte estructural ${secondary}, color de alerta ${accent}, fondo blanco (#FFFFFF) o papel técnico sutil (#F8FAFC), texto principal #0F172A.
-- Cero clichés de IA: PROHIBIDO usar fondos oscuros con gradientes púrpuras/cian, sombras borrosas difusas de más de 8px, o tarjetas flotantes idénticas repetidas.
-- Densidad visual compacta estilo Swiss Engineering (Linear / Stripe): bordes definidos de 1px (#E2E8F0), fuentes numéricas tabulares (tabular-nums), tipografía sans-serif limpia.
-- Componentes requeridos:
-  1. Barra de estado superior con nodo activo, protocolo LoRaWAN y latencia en ms.
-  2. Gráfico hidrométrico/ambiental vectorial limpio con curva en ${primary} y umbrales punteados.
-  3. Matriz de sensores con valores reales y etiquetas claras marcando datos de prueba como [SIMULADO].
-  4. Indicadores de autonomía fotovoltaica (LiFePO4) y RSSI de transmisión.`;
-
-  const promptVoice = `Dirección de locución profesional para video pitch de 120 segundos del proyecto '${pName}'.
-Tono: Documental de divulgación científica, empático, autoritario y sereno (estilo narrador de la BBC / Discovery Channel en español neutro latinoamericano).
-Cadencia requerida: 135 palabras por minuto continuas, sin pausas dramáticas excesivas ni aceleraciones desesperadas al final.
-Ritmo:
-- Acto I (0-20s): Tono reflexivo y sobrio presentando el dolor humano y la estadística crítica. CERO menciones al nombre del proyecto.
-- Acto II (20-60s): Transición energética y resolutiva al bautizar '${pName}', describiendo con precisión la arquitectura física y los componentes.
-- Acto III (60-95s): Tono ejecutivo y pragmático explicando el presupuesto sustentado ($4,450 USD) y la economía circular.
-- Acto IV (95-120s): Tono inspirador de orgullo latinoamericano conectando con las metas ODS y el beneficio comunitario.`;
-
-  const promptBlender = `# Script de generación paramétrica de prototipo en Blender (bpy)
-import bpy
-
-# Limpiar escena
-bpy.ops.object.select_all(action='SELECT')
-bpy.ops.object.delete(use_global=False)
-
-# Crear carcasa principal IP67
-bpy.ops.mesh.primitive_cube_add(size=1.0, location=(0, 0, 0.5))
-box = bpy.context.active_object
-box.scale = (0.22, 0.16, 0.08)  # 220x160x80 mm
-bpy.ops.object.transform_apply(scale=True)
-
-# Modificador Bevel para realismo industrial (elimina aristas filosas de IA)
-bevel = box.modifiers.new(name="Bevel", type='BEVEL')
-bevel.width = 0.006  # 6mm de radio
-bevel.segments = 4
-
-# Material PBR primario (${primary})
-mat = bpy.data.materials.new(name="PrimaryEnclosure")
-mat.use_nodes = True
-bsdf = mat.node_tree.nodes["Principled BSDF"]
-bsdf.inputs["Base Color"].default_value = (0.12, 0.25, 0.74, 1.0)  # Convierte a RGB
-bsdf.inputs["Roughness"].default_value = 0.38  # Acabado mate industrial
-box.data.materials.append(mat)`;
-
+// ═════════════════════════════════════════════════════════════════════════════
+// 03 NIVEL 3: TALLER DE SOLUCIÓN & PROMPT BUILDER ("DESCRIBE TU SOLUCIÓN")
+// ═════════════════════════════════════════════════════════════════════════════
+function renderViewSolution() {
   return `
     <div class="page-header">
       <div>
-        <h1 class="page-title">03 · Manual de Identidad Visual & Tokens de Marca</h1>
-        <div class="page-desc">Especificación técnica de color, jerarquía tipográfica, mockup en vivo y kit de prompts para IAs especializadas.</div>
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+          <span class="badge-status badge-ok" style="font-family:var(--font-mono); font-size:10px;">RETO ACTIVO #${state.challenge_id}</span>
+          <span style="font-size:11px; font-weight:700; color:var(--text-muted);">${state.category}</span>
+        </div>
+        <h1 class="page-title" style="font-size:24px;">03 · Taller "Describe tu Solución" & Prompt Maestro</h1>
+        <div class="page-desc">${state.challenge_title}</div>
       </div>
-      <div style="display:flex;gap:8px;">
-        <button class="btn-secondary" onclick="exportTokensCSS()">Copiar CSS Tokens</button>
-        <button class="btn-primary" onclick="applyPreset('techriders')">Preset Campeón Latam</button>
+      <div>
+        <button class="btn-primary" onclick="approveSolutionAndUnlock()">
+          ${state.solution_approved ? 'Actualizar Solución ✓' : 'Aprobar Solución & Desbloquear Espacio →'}
+        </button>
       </div>
     </div>
 
-    <!-- 1. PRESETS HISTÓRICOS -->
+    <!-- Entrada Libre del Equipo -->
     <div class="workbench-card">
-      <h3>Presets de Marca de Proyectos Ganadores</h3>
-      <div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:10px;margin-bottom:12px;">
-        ${Object.entries(PALETTE_PRESETS).map(([key, p]) => `
-          <div style="border:1px solid var(--border-light);padding:10px;border-radius:4px;cursor:pointer;background:var(--bg-subtle);" onclick="applyPreset('${key}')">
-            <div style="font-size:11px;font-weight:700;color:var(--text-main);margin-bottom:4px;">${p.name}</div>
-            <div style="display:flex;gap:4px;margin-bottom:4px;">
-              <div style="flex:1;height:20px;border-radius:2px;background:${p.primary};" title="Primary"></div>
-              <div style="flex:1;height:20px;border-radius:2px;background:${p.secondary};" title="Secondary"></div>
-              <div style="flex:1;height:20px;border-radius:2px;background:${p.accent};" title="Accent"></div>
+      <label style="font-size:12px; font-weight:800; color:var(--text-main); display:block; margin-bottom:6px;">
+        1. Escribe la idea inicial del equipo (en lenguaje libre, sin miedo a tecnicismos):
+      </label>
+      <textarea id="raw-sol-input" rows="3" style="width:100%; border:1px solid var(--border-light); border-radius:4px; padding:10px; font-size:12px; font-family:var(--font-ui); box-sizing:border-box;"
+        placeholder="Ej: Pensamos conectar un flotador con un sensor que al subir mande una alerta por radio al centro comunal...">${state.solution_raw_input}</textarea>
+      
+      <div style="display:flex; justify-content:flex-end; margin-top:8px;">
+        <button class="btn-secondary" style="padding:4px 12px; font-size:11px;" onclick="synthesizeSolutionFromRaw()">
+          Estructurar & Sugerir Potenciadores
+        </button>
+      </div>
+    </div>
+
+    <!-- Split: Propuesta Pulida vs Potenciadores Estratégicos -->
+    <div class="solution-split">
+      <!-- Columna Izquierda: Tesis Pulida -->
+      <div class="workbench-card" style="margin-bottom:0;">
+        <h3 style="font-size:13px; font-weight:800; margin-bottom:4px;">Tesis Técnica Estructurada (Para el Pautado)</h3>
+        <p style="font-size:11px; color:var(--text-muted); margin-bottom:10px;">Una oración densa y libre de nombres comerciales que condensa el sistema.</p>
+        
+        <textarea id="sol-thesis" rows="4" style="width:100%; border:1px solid var(--border-light); border-radius:4px; padding:10px; font-size:12px; font-family:var(--font-ui); box-sizing:border-box;"
+          placeholder="Tesis estructurada...">${state.solution_thesis}</textarea>
+
+        <h3 style="font-size:13px; font-weight:800; margin:14px 0 4px 0;">Elevator Pitch Simple (Para No Ingenieros / Jurado Exprés)</h3>
+        <p style="font-size:11px; color:var(--text-muted); margin-bottom:10px;">Comprensible en 5 segundos sin jerga técnica.</p>
+        
+        <textarea id="sol-simple" rows="2" style="width:100%; border:1px solid var(--border-light); border-radius:4px; padding:8px; font-size:12px; font-family:var(--font-ui); box-sizing:border-box;"
+          placeholder="Explicación accesible...">${state.solution_simple}</textarea>
+      </div>
+
+      <!-- Columna Derecha: Potenciadores con Checkboxes -->
+      <div class="workbench-card" style="margin-bottom:0;">
+        <h3 style="font-size:13px; font-weight:800; margin-bottom:4px;">Potenciadores Estratégicos Recomendados</h3>
+        <p style="font-size:11px; color:var(--text-muted); margin-bottom:12px;">Marca los componentes que deseas inyectar en el Prompt Maestro:</p>
+
+        <div class="booster-list">
+          <label class="booster-card ${state.solution_boosters.includes('ods') ? 'active' : ''}">
+            <input type="checkbox" ${state.solution_boosters.includes('ods') ? 'checked' : ''} onchange="toggleBooster('ods')">
+            <div>
+              <div class="booster-title">Alineación ODS Oficial</div>
+              <div class="booster-desc">Vincula directamente las metas de desarrollo sostenible específicas a la tesis.</div>
             </div>
-            <span style="font-size:10px;color:var(--text-muted);">${p.source}</span>
-          </div>
-        `).join("")}
-      </div>
-    </div>
+          </label>
 
-    <!-- 2. ESPECIFICACIÓN CROMÁTICA -->
-    <div class="workbench-card">
-      <h3>Arquitectura Cromática del Proyecto (${pName})</h3>
-      <div class="brand-specimen-grid">
-        <div class="brand-swatch">
-          <div class="brand-swatch-color" style="background:${primary};">
-            <span class="brand-swatch-badge">PRIMARIO</span>
-          </div>
-          <div class="brand-swatch-meta">
-            <div class="brand-swatch-name">Color Primario de Autoridad</div>
-            <div class="brand-swatch-hex">${primary} · <span style="font-size:10px;">${crPrimary.toFixed(1)}:1 (${wcagPrimary})</span></div>
-            <div class="brand-swatch-role">Títulos H1, botones principales, acentos de carcasa y headers.</div>
-            <div style="margin-top:6px;"><input type="color" value="${primary}" onchange="updateColor('primary', this.value)" style="width:100%;height:22px;cursor:pointer;"></div>
-          </div>
-        </div>
+          <label class="booster-card ${state.solution_boosters.includes('nacional_plan') ? 'active' : ''}">
+            <input type="checkbox" ${state.solution_boosters.includes('nacional_plan') ? 'checked' : ''} onchange="toggleBooster('nacional_plan')">
+            <div>
+              <div class="booster-title">${state.rally_type === 'nacional' ? 'Eje Plan Nacional de Lucha contra la Pobreza' : 'Escalamiento Modular Latam'}</div>
+              <div class="booster-desc">${state.rally_type === 'nacional' ? 'Alinea con resiliencia climática y protección territorial en Nicaragua.' : 'Diseño estándar transferible a municipios piloto de la región.'}</div>
+            </div>
+          </label>
 
-        <div class="brand-swatch">
-          <div class="brand-swatch-color" style="background:${secondary};">
-            <span class="brand-swatch-badge">SECUNDARIO</span>
-          </div>
-          <div class="brand-swatch-meta">
-            <div class="brand-swatch-name">Soporte Estructural</div>
-            <div class="brand-swatch-hex">${secondary} · <span style="font-size:10px;">${crSecondary.toFixed(1)}:1 (${wcagSecondary})</span></div>
-            <div class="brand-swatch-role">Subtítulos H2/H3, bordes fuertes, conectores y gráficas auxiliares.</div>
-            <div style="margin-top:6px;"><input type="color" value="${secondary}" onchange="updateColor('secondary', this.value)" style="width:100%;height:22px;cursor:pointer;"></div>
-          </div>
-        </div>
+          <label class="booster-card ${state.solution_boosters.includes('sensors') ? 'active' : ''}">
+            <input type="checkbox" ${state.solution_boosters.includes('sensors') ? 'checked' : ''} onchange="toggleBooster('sensors')">
+            <div>
+              <div class="booster-title">Hardware / Telemetría Autónoma</div>
+              <div class="booster-desc">Suma microcontrolador de bajo consumo, alimentación solar LiFePO4 y conectividad robusta.</div>
+            </div>
+          </label>
 
-        <div class="brand-swatch">
-          <div class="brand-swatch-color" style="background:${accent};">
-            <span class="brand-swatch-badge">SEÑAL / ALERTA</span>
-          </div>
-          <div class="brand-swatch-meta">
-            <div class="brand-swatch-name">Acento & Telemetría</div>
-            <div class="brand-swatch-hex">${accent}</div>
-            <div class="brand-swatch-role">Indicadores de advertencia, umbrales críticos, balizas de emergencia.</div>
-            <div style="margin-top:6px;"><input type="color" value="${accent}" onchange="updateColor('accent', this.value)" style="width:100%;height:22px;cursor:pointer;"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 3. JERARQUÍA TIPOGRÁFICA EDITORIAL -->
-    <div class="workbench-card">
-      <h3>Jerarquía Tipográfica Editorial (Escala & Pesos)</h3>
-      <div class="type-specimen-box">
-        <div class="type-row">
-          <div class="type-meta">
-            <span>H1 Display · Encabezado Principal</span>
-            <span>32px / 800 ExtraBold / Interlineado 1.15</span>
-          </div>
-          <h1 style="font-size:28px;font-weight:800;letter-spacing:-0.03em;color:${primary};line-height:1.2;">
-            ${pName}: Resiliencia e Ingeniería Territorial
-          </h1>
-        </div>
-
-        <div class="type-row">
-          <div class="type-meta">
-            <span>H2 Sección · Bloques Principales del Pautado</span>
-            <span>22px / 700 Bold / Interlineado 1.25</span>
-          </div>
-          <h2 style="font-size:20px;font-weight:700;letter-spacing:-0.02em;color:var(--text-main);line-height:1.3;">
-            Arquitectura Ciber-Física de Nodos de Telemetría LoRaWAN
-          </h2>
-        </div>
-
-        <div class="type-row">
-          <div class="type-meta">
-            <span>H3 Subsección · Fichas Técnicas & Componentes</span>
-            <span>16px / 600 SemiBold / Interlineado 1.35</span>
-          </div>
-          <h3 style="font-size:15px;font-weight:600;color:${secondary};">
-            Mecanismo Hidráulico y Monitoreo Autónomo de Bajo Consumo
-          </h3>
-        </div>
-
-        <div class="type-row">
-          <div class="type-meta">
-            <span>Cuerpo de Texto · Párrafos y Justificación Técnica</span>
-            <span>13px / 400 Regular / Interlineado 1.6</span>
-          </div>
-          <p style="font-size:13px;line-height:1.6;color:var(--text-body);">
-            ${desc}. El sistema optimiza el tiempo de evacuación mediante detección temprana, logrando una reducción de costos del 78% frente a estaciones meteorológicas convencionales sin requerir conexión a la red eléctrica comercial.
-          </p>
-        </div>
-
-        <div class="type-row">
-          <div class="type-meta">
-            <span>Código / Datos Tabulares (Monospace)</span>
-            <span>12px / JetBrains Mono / tabular-nums</span>
-          </div>
-          <div style="font-family:var(--font-mono);font-size:12px;background:var(--bg-subtle);padding:8px 12px;border-radius:4px;border:1px solid var(--border-light);font-variant-numeric:tabular-nums;">
-            NODO_01: Nivel 1.42 m [ESTABLE] | Batería: 98.4% LiFePO4 | Latencia: 1.2 s | RSSI: -84 dBm
-          </div>
+          <label class="booster-card ${state.solution_boosters.includes('visuals') ? 'active' : ''}">
+            <input type="checkbox" ${state.solution_boosters.includes('visuals') ? 'checked' : ''} onchange="toggleBooster('visuals')">
+            <div>
+              <div class="booster-title">Recurso Visual WOW para Video Pitch</div>
+              <div class="booster-desc">Genera pauta para tomas de pantalla interactiva y modelo de pieza técnica en 3D.</div>
+            </div>
+          </label>
         </div>
       </div>
     </div>
 
-    <!-- 4. MOCKUP DE APLICACIÓN EN PÁGINA REAL -->
-    <div class="workbench-card">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-        <h3>Cómo se ve en una Interfaz Real (Live UI Component Preview)</h3>
-        <span style="font-size:11px;color:var(--text-muted);">Sincronizado en vivo con tus tokens de color</span>
+    <!-- Caja de Prompt Maestro Compilado -->
+    <div class="workbench-card" style="margin-top:16px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+        <h3 style="font-size:13px; font-weight:800; margin:0;">Prompt Maestro Consolidado (Para IAs de Redacción y 3D)</h3>
+        <button class="btn-secondary" style="padding:4px 8px; font-size:11px;" onclick="copyMasterPrompt()">Copiar Prompt ${SVG.copy}</button>
       </div>
-
-      <div class="ui-mockup-container">
-        <div class="ui-mockup-bar">
-          <span class="mockup-dot"></span>
-          <span class="mockup-dot"></span>
-          <span class="mockup-dot"></span>
-          <span style="font-size:11px;font-family:var(--font-mono);color:var(--text-muted);margin-left:8px;">https://${pName.toLowerCase().replace(/\s+/g,'-')}.org/monitor-territorial</span>
-        </div>
-        <div class="ui-mockup-body">
-          <!-- Navbar Preview -->
-          <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border-light);padding-bottom:12px;margin-bottom:16px;">
-            <div style="display:flex;align-items:center;gap:10px;">
-              <div style="width:28px;height:28px;border-radius:6px;background:${primary};color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;">
-                ${pName.charAt(0)}
-              </div>
-              <div>
-                <div style="font-size:14px;font-weight:800;color:var(--text-main);">${pName}</div>
-                <div style="font-size:10px;color:var(--text-muted);">Monitor Territorial en Tiempo Real</div>
-              </div>
-            </div>
-            <div style="display:flex;align-items:center;gap:8px;">
-              <span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:12px;background:#ecfdf5;color:#047857;display:flex;align-items:center;gap:4px;">
-                <span style="width:6px;height:6px;border-radius:50%;background:#10b981;"></span> 15 NODOS EN LÍNEA
-              </span>
-              <button style="background:${primary};color:#ffffff;border:none;border-radius:4px;padding:5px 12px;font-size:11px;font-weight:700;cursor:pointer;">
-                Descargar Reporte PDF
-              </button>
-            </div>
-          </div>
-
-          <!-- Componentes Clave Preview -->
-          <div style="display:grid;grid-template-columns:2fr 1fr;gap:16px;">
-            <div style="border:1px solid var(--border-light);border-radius:6px;padding:14px;background:#ffffff;">
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-                <span style="font-size:11px;font-weight:700;text-transform:uppercase;color:var(--text-muted);">Comportamiento Hidrométrico (Cauce Oriental)</span>
-                <span style="font-size:11px;font-weight:700;color:${accent};">Pico Máx: 1.62m</span>
-              </div>
-              <!-- Barra mini SVG -->
-              <svg viewBox="0 0 400 80" style="width:100%;height:80px;">
-                <line x1="0" y1="20" x2="400" y2="20" stroke="#f1f5f9" stroke-width="1" stroke-dasharray="2"/>
-                <line x1="0" y1="50" x2="400" y2="50" stroke="#f1f5f9" stroke-width="1"/>
-                <polyline fill="none" stroke="${primary}" stroke-width="2.5" points="0,65 50,60 100,55 150,45 200,28 250,35 300,48 350,52 400,50"/>
-                <circle cx="200" cy="28" r="4" fill="${accent}"/>
-              </svg>
-            </div>
-
-            <div style="display:flex;flex-direction:column;gap:10px;">
-              <div style="border:1px solid var(--border-light);border-left:3px solid ${primary};border-radius:4px;padding:10px;background:var(--bg-subtle);">
-                <div style="font-size:10px;font-weight:700;color:var(--text-muted);text-transform:uppercase;">Umbral de Evacuación</div>
-                <div style="font-size:18px;font-weight:800;font-family:var(--font-mono);color:var(--text-main);">1.42 / 2.50 m</div>
-                <div style="font-size:10px;color:#047857;margin-top:2px;">Margen de seguridad: 30 minutos</div>
-              </div>
-
-              <div style="border:1px solid var(--border-light);border-left:3px solid ${accent};border-radius:4px;padding:10px;background:#fffbeb;">
-                <div style="font-size:10px;font-weight:700;color:#92400e;text-transform:uppercase;">Alerta Comunitaria</div>
-                <div style="font-size:11px;color:#78350f;margin-top:2px;font-weight:600;">Compuerta electromecánica en modo preventivo</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 5. KIT DE PROMPTS PARA OTRAS IAS -->
-    <div class="workbench-card">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-        <h3>Kit de Prompts Especializados para IAs Externas</h3>
-        <span style="font-size:11px;color:var(--text-muted);">Listos para copiar y usar en herramientas de render, UI y audio</span>
-      </div>
-      <p style="font-size:12px;color:var(--text-body);margin-bottom:16px;">
-        Copia estos prompts parametrizados con tu marca y pégalos en las IAs correspondientes para acelerar la generación de recursos sin perder coherencia.
-      </p>
-
-      <!-- Prompt 1: 3D Render -->
-      <div class="prompt-card">
-        <div class="prompt-header">
-          <div>
-            <span class="prompt-tag">ChatGPT · DALL-E 3 · Midjourney v6</span>
-            <span class="prompt-title" style="margin-left:8px;">Render Conceptual 3D / Diseño Industrial</span>
-          </div>
-          <button class="copy-btn" onclick="copyPrompt('p1', this)">Copiar Prompt</button>
-        </div>
-        <div id="p1" class="prompt-box">${prompt3D}</div>
-      </div>
-
-      <!-- Prompt 2: Frontend Web Demo -->
-      <div class="prompt-card">
-        <div class="prompt-header">
-          <div>
-            <span class="prompt-tag">Claude 3.7 · v0.dev · Antigravity</span>
-            <span class="prompt-title" style="margin-left:8px;">Construcción de Web Demo Interactiva para Video</span>
-          </div>
-          <button class="copy-btn" onclick="copyPrompt('p2', this)">Copiar Prompt</button>
-        </div>
-        <div id="p2" class="prompt-box">${promptUI}</div>
-      </div>
-
-      <!-- Prompt 3: Blender Headless Script -->
-      <div class="prompt-card">
-        <div class="prompt-header">
-          <div>
-            <span class="prompt-tag">Blender Python · bpy script</span>
-            <span class="prompt-title" style="margin-left:8px;">Modelado 3D Paramétrico con Biseles Industriales</span>
-          </div>
-          <button class="copy-btn" onclick="copyPrompt('p3', this)">Copiar Prompt</button>
-        </div>
-        <div id="p3" class="prompt-box">${promptBlender}</div>
-      </div>
-
-      <!-- Prompt 4: TTS / Audio Voiceover -->
-      <div class="prompt-card">
-        <div class="prompt-header">
-          <div>
-            <span class="prompt-tag">ElevenLabs · Chatterbox · Kokoro</span>
-            <span class="prompt-title" style="margin-left:8px;">Dirección de Voz y Locución Audiovisual (135 ppm)</span>
-          </div>
-          <button class="copy-btn" onclick="copyPrompt('p4', this)">Copiar Prompt</button>
-        </div>
-        <div id="p4" class="prompt-box">${promptVoice}</div>
+      <div id="master-prompt-display" style="font-family:var(--font-mono); font-size:11px; background:#f8fafc; border:1px solid var(--border-light); padding:10px; border-radius:4px; line-height:1.5; color:var(--text-body);">
+        ${compileMasterPromptText()}
       </div>
     </div>
   `;
 }
 
-function updateColor(key, val) {
-  state.palette[key] = val;
-  saveState();
-  renderTab('identity');
-}
-
-function applyPreset(key) {
-  const p = PALETTE_PRESETS[key];
-  if (p) {
-    state.palette.primary = p.primary;
-    state.palette.secondary = p.secondary;
-    state.palette.accent = p.accent;
-    saveState();
-    renderTab('identity');
+function toggleBooster(key) {
+  if (state.solution_boosters.includes(key)) {
+    state.solution_boosters = state.solution_boosters.filter(b => b !== key);
+  } else {
+    state.solution_boosters.push(key);
   }
-}
-
-function copyPrompt(elementId, btn) {
-  const el = document.getElementById(elementId);
-  if (!el) return;
-  const text = el.innerText || el.textContent;
-  navigator.clipboard.writeText(text).then(() => {
-    const orig = btn.innerHTML;
-    btn.innerHTML = "✓ Copiado";
-    btn.classList.add("copied");
-    setTimeout(() => {
-      btn.innerHTML = orig;
-      btn.classList.remove("copied");
-    }, 2000);
-  }).catch(err => {
-    alert("No se pudo copiar automáticamente. Selecciona y copia manualmente.");
-  });
-}
-
-function exportTokensCSS() {
-  const p = state.palette;
-  const css = `:root {
-  --color-primary: ${p.primary};
-  --color-secondary: ${p.secondary};
-  --color-accent: ${p.accent};
-  --bg-surface: #ffffff;
-  --text-main: #0f172a;
-  --text-muted: #64748b;
-  --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
-}`;
-  navigator.clipboard.writeText(css).then(() => {
-    alert("✓ Tokens CSS copiados al portapapeles:\n\n" + css);
-  });
-}
-
-// 04 INVESTIGACIÓN & CLAIMS VIEW
-function renderViewResearch() {
-  return `
-    <div class="page-header">
-      <div>
-        <h1 class="page-title">04 · Banco de Evidencias & Estadísticas Oficiales</h1>
-        <div class="page-desc">Solo cifras registradas aquí pueden alimentar el pautado y el video pitch.</div>
-      </div>
-      <button class="btn-primary" onclick="addClaimRow()">+ Añadir Evidencia</button>
-    </div>
-
-    <div class="workbench-card">
-      <h3>Estadísticas Verificadas en Registro</h3>
-      ${state.claims.length === 0 ? `
-        <div style="text-align:center;padding:24px;color:var(--text-muted);font-size:12px;">
-          No hay evidencias cargadas. Añade al menos 3 datos de fuentes oficiales (BCN, INSS, CEPAL, OMS, SINAPRED).
-        </div>
-      ` : `
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th>Dato Estadístico Crítico</th>
-              <th>Fuente Oficial</th>
-              <th>Año</th>
-              <th>URL / Evidencia</th>
-              <th>Acción</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${state.claims.map((c, idx) => `
-              <tr>
-                <td><strong>${c.stat}</strong></td>
-                <td>${c.source}</td>
-                <td>${c.year}</td>
-                <td><a href="${c.url}" target="_blank" style="color:var(--color-primary);text-decoration:none;">Enlace</a></td>
-                <td><button class="btn-secondary" style="padding:2px 6px;font-size:10px;" onclick="removeClaim(${idx})">Eliminar</button></td>
-              </tr>
-            `).join("")}
-          </tbody>
-        </table>
-      `}
-    </div>
-  `;
-}
-
-function addClaimRow() {
-  const stat = prompt("Ingresa el dato estadístico (ej: El 42% de pérdidas ocurren en los primeros 30 minutos):");
-  if (!stat) return;
-  const source = prompt("Fuente institucional oficial (ej: CEPAL, SINAPRED, INIDE):") || "Fuente Oficial";
-  const year = prompt("Año del reporte:", "2024") || "2024";
-  const url = prompt("URL de verificación:", "https://") || "https://";
-
-  state.claims.push({ stat, source, year, url });
   saveState();
-  renderNavigation();
-  renderTab('research');
+  renderTab("solution");
 }
 
-function removeClaim(idx) {
-  state.claims.splice(idx, 1);
+function synthesizeSolutionFromRaw() {
+  const raw = document.getElementById("raw-sol-input").value.trim();
+  if (!raw) {
+    alert("Escribe una idea en el campo de texto.");
+    return;
+  }
+  state.solution_raw_input = raw;
+
+  // Síntesis técnica limpia
+  const ch = OFFICIAL_CHALLENGES_2026.find(c => c.id === state.challenge_id) || {};
+  state.solution_thesis = `Sistema ciber-físico modular con telemetría autónoma y nodos de bajo consumo diseñado para resolver el desafío de ${ch.title ? ch.title.toLowerCase() : 'innovación'} en comunidades piloto con 30 minutos de anticipación.`;
+  state.solution_simple = `Una solución práctica y económica que resuelve el problema en el territorio sin requerir infraestructura compleja ni internet continuo.`;
+  state.description_one_line = state.solution_thesis;
+  state.project_name = state.project_name || "HIDRO-VIGÍA";
+
   saveState();
-  renderNavigation();
-  renderTab('research');
+  renderTab("solution");
 }
 
-// 05 PAUTADO INTERACTIVO VIEW
+function compileMasterPromptText() {
+  const ch = OFFICIAL_CHALLENGES_2026.find(c => c.id === state.challenge_id) || {};
+  const boosters = state.solution_boosters || [];
+  
+  return `PROYECTO: ${state.project_name || 'SIN NOMBRE'} | CERTAMEN: ${state.rally_type === 'latam' ? 'Rally Latam 28h' : 'Rally Nacional 24h'}
+DESAFÍO #${state.challenge_id}: ${ch.title || state.challenge_title}
+CATEGORÍA: ${state.category}
+TESIS TÉCNICA: ${state.solution_thesis || state.solution_raw_input}
+PITCH EXPRÉS: ${state.solution_simple}
+POTENCIADORES: ${boosters.join(", ").toUpperCase()}
+LÍMITES DE PAUTADO: Problema (1250), Solución (1250), Prefactibilidad (1000), Innovación (1000), Impacto (1500) caracteres con espacios.`;
+}
+
+function copyMasterPrompt() {
+  const txt = compileMasterPromptText();
+  navigator.clipboard.writeText(txt);
+  alert("Prompt Maestro copiado al portapapeles.");
+}
+
+function approveSolutionAndUnlock() {
+  const raw = document.getElementById("raw-sol-input");
+  const thesis = document.getElementById("sol-thesis");
+  const simple = document.getElementById("sol-simple");
+
+  if (raw) state.solution_raw_input = raw.value.trim();
+  if (thesis) state.solution_thesis = thesis.value.trim();
+  if (simple) state.solution_simple = simple.value.trim();
+
+  if (!state.solution_thesis) {
+    alert("Por favor define la tesis estructurada antes de desbloquear el espacio de trabajo.");
+    return;
+  }
+
+  state.solution_approved = true;
+  state.description_one_line = state.solution_thesis;
+
+  // Pre-rellenar pautado con la tesis si estaba vacío
+  if (!state.pautado.solucion) {
+    state.pautado.solucion = state.solution_thesis;
+  }
+
+  saveState();
+  activeTab = "pautado";
+  syncUI();
+}
+
+// ═════════════════════════════════════════════════════════════════════════════
+// 04 NIVEL 4: PAUTADO OFICIAL INTERACTIVO (< LÍMITES CON ESPACIOS)
+// ═════════════════════════════════════════════════════════════════════════════
 function renderViewPautado() {
   return `
     <div class="page-header">
       <div>
-        <h1 class="page-title">05 · Redacción Oficial de Reporte Pautado</h1>
-        <div class="page-desc">Edición directa con conteo de caracteres con espacios en tiempo real.</div>
+        <h1 class="page-title">04 · Documento Pautado Oficial</h1>
+        <div class="page-desc">5 secciones evaluadas por el jurado con conteo estricto de caracteres (incluyendo espacios).</div>
       </div>
-      <button class="btn-primary" onclick="savePautadoTexts()">Guardar Pautado</button>
+      <div style="display:flex; gap:8px;">
+        <button class="btn-primary" onclick="savePautado()">Guardar Pautado</button>
+        <a href="/docs/pautado_draft.docx" download class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
+          ${SVG.download} Descargar Word (.docx)
+        </a>
+      </div>
     </div>
 
     <div class="rubric-callout">
-      <strong>REGLA DE REDACCIÓN DE CAMPEONES:</strong> Cero adjetivos inflados. Nombre del proyecto UNA sola vez por bloque. 
-      Estructura telegráfica de alta densidad técnica para evaluadores que leen con prisa.
+      <strong>REGLA DE CONTEO:</strong> La plataforma SIRLI calcula caracteres con espacios. Si sobrepasas el límite estipulado,
+      el sistema corta el texto o anula la sección en la rúbrica de evaluación.
     </div>
 
-    <div style="display:flex;flex-direction:column;gap:18px;">
-      ${Object.entries(PAUTADO_LIMITS).map(([key, limit]) => {
-        const val = state.pautado[key] || "";
+    <div style="display:flex; flex-direction:column; gap:16px;">
+      ${Object.keys(PAUTADO_LIMITS).map(k => {
+        const val = state.pautado[k] || "";
         const len = val.length;
-        const pct = Math.min((len / limit) * 100, 100);
-        let colorClass = "";
-        let statusLabel = `${len} / ${limit} caracteres`;
-
-        if (len > limit) {
-          colorClass = "over";
-          statusLabel += ` (¡EXCEDIDO POR ${len - limit}!)`;
-        } else if (pct >= 85) {
-          colorClass = "warn";
-        }
-
-        const labels = {
-          problema: "1. Descripción del Problema Detectado (Dolor Cuantificado)",
-          solucion: "2. Solución Técnica Propuesta y Mecanismo Operativo",
-          prefactibilidad: "3. Prefactibilidad Económica, Social y Ambiental",
-          innovacion: "4. Grado de Innovación Radical y Diferenciación",
-          impacto: "5. Impacto Comunitario, Métricas y Vinculación ODS"
-        };
+        const max = PAUTADO_LIMITS[k];
+        const pct = Math.min(100, Math.round((len / max) * 100));
+        const isOver = len > max;
+        const color = isOver ? '#ef4444' : pct >= 70 ? '#047857' : '#1e40af';
 
         return `
-          <div class="workbench-card">
-            <h3>
-              <span>${labels[key]}</span>
-              <span style="font-family:var(--font-mono);font-size:11px;font-weight:700;color:${len>limit?'#ef4444':'var(--text-muted)'}">${statusLabel}</span>
-            </h3>
-            <textarea id="pt-${key}" rows="4" oninput="updateCharCounter('${key}', ${limit}, this.value)">${val}</textarea>
-            <div class="counter-bar-wrapper">
-              <span style="font-size:10px;color:var(--text-muted);">0</span>
-              <div class="progress-track">
-                <div id="bar-${key}" class="progress-fill ${colorClass}" style="width:${pct}%;"></div>
-              </div>
-              <span style="font-size:10px;color:var(--text-muted);">${limit} máx</span>
+          <div class="workbench-card" style="margin-bottom:0;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <span style="font-size:12px; font-weight:800; text-transform:uppercase; color:var(--text-main);">${k}</span>
+              <span style="font-family:var(--font-mono); font-size:11px; font-weight:700; color:${color};">
+                ${len} / ${max} caracteres (${pct}%)
+              </span>
             </div>
+            <textarea id="pt-${k}" rows="4" style="width:100%; border:1px solid ${isOver ? '#ef4444' : 'var(--border-light)'}; border-radius:4px; padding:10px; font-size:12px; font-family:var(--font-ui); box-sizing:border-box;"
+              placeholder="Escribe la sección ${k}..." oninput="updateCharCount('${k}', this)">${val}</textarea>
           </div>
         `;
       }).join("")}
@@ -1240,83 +963,227 @@ function renderViewPautado() {
   `;
 }
 
-function updateCharCounter(key, limit, val) {
-  state.pautado[key] = val;
-  const len = val.length;
-  const pct = Math.min((len / limit) * 100, 100);
-  const bar = document.getElementById("bar-" + key);
-  if (bar) {
-    bar.style.width = pct + "%";
-    bar.className = "progress-fill " + (len > limit ? "over" : (pct >= 85 ? "warn" : ""));
-  }
-  updateInspector();
+function updateCharCount(k, el) {
+  state.pautado[k] = el.value;
+  saveState();
 }
 
-function savePautadoTexts() {
-  Object.keys(PAUTADO_LIMITS).forEach(k => {
-    const el = document.getElementById("pt-" + k);
-    if (el) state.pautado[k] = el.value;
-  });
+function savePautado() {
   saveState();
   renderNavigation();
-  alert("✓ Pautado guardado. Conteo sincronizado con el inspector.");
+  alert("Pautado guardado correctamente.");
 }
 
-// 06 PRESUPUESTO INTERACTIVO VIEW
+// ═════════════════════════════════════════════════════════════════════════════
+// 05 NIVEL 4: PRESUPUESTO DE PUESTA EN MARCHA (AVISO INTERNO DE COHERENCIA)
+// ═════════════════════════════════════════════════════════════════════════════
 function renderViewBudget() {
-  const total = state.budget.reduce((acc, it) => acc + (it.units * it.unit_cost), 0);
-  let statusBadge = "";
-  if (total < 4000) {
-    statusBadge = `<span class="badge-status badge-wip">BAJO (<$4,000 USD) - Riesgo de inverosimilitud</span>`;
-  } else if (total > 6000) {
-    statusBadge = `<span class="badge-status badge-pending" style="color:#b91c1c;">EXCEDIDO (>$6,000 USD)</span>`;
-  } else {
-    statusBadge = `<span class="badge-status badge-ok">RANGO ÓPTIMO GANADOR ($4,000–$6,000 USD)</span>`;
-  }
+  const total = state.budget.reduce((a, b) => a + (b.units * b.unit_cost), 0);
+  const isTooLow = total < 3000;
+  const isTooHigh = total > 6500;
+  const hasNotice = isTooLow || isTooHigh;
 
   return `
     <div class="page-header">
       <div>
-        <h1 class="page-title">06 · Presupuesto Sustentado de Puesta en Marcha</h1>
-        <div class="page-desc">Cotizado con proveedores mayoristas verificados. Cero TIR o VAN especulativo.</div>
+        <h1 class="page-title">05 · Presupuesto de Puesta en Marcha</h1>
+        <div class="page-desc">Insumos mayoristas para el prototipo inicial o lote piloto verificables con proveedores reales.</div>
       </div>
-      <div>
-        ${statusBadge}
+      <div style="display:flex; gap:8px;">
+        <button class="btn-primary" onclick="addBudgetItem()">+ Agregar Partida</button>
+        <a href="/budget/budget.xlsx" download class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
+          ${SVG.download} Descargar Excel (.xlsx)
+        </a>
       </div>
     </div>
 
-    <div class="workbench-card">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-        <h3>Partidas de Hardware y Despliegue Piloto</h3>
-        <button class="btn-secondary" onclick="addBudgetItem()">+ Añadir Partida</button>
+    ${hasNotice ? `
+      <div class="rubric-callout" style="border-left-color:${isTooHigh ? '#f59e0b' : '#3b82f6'}; background:#fffdf5;">
+        <strong>Aviso de Coherencia Presupuestaria:</strong>
+        ${isTooHigh 
+          ? 'El monto actual supera los estándares típicos de puesta en marcha ($4,000–$6,000 USD). Si tu solución requiere equipamiento industrial mayor, asegúrate de justificarlo claramente en la sección de Prefactibilidad del pautado.'
+          : 'El monto actual es inferior al umbral de credibilidad tecnológica ($4,000 USD). Asegúrate de incluir partidas esenciales como flete internacional o contingencia para evitar observaciones del jurado.'
+        }
       </div>
+    ` : `
+      <div class="rubric-callout" style="border-left-color:#10b981; background:#f0fdf4;">
+        <strong>Presupuesto Óptimo y Sustentado:</strong> El monto actual de <strong>$${total.toFixed(2)} USD</strong> refleja un balance creíble entre viabilidad económica y rigor técnico.
+      </div>
+    `}
 
+    <div class="workbench-card">
       <table class="data-table">
         <thead>
           <tr>
-            <th>Elemento / Insumo</th>
-            <th style="width:70px;text-align:center;">Cant.</th>
-            <th style="width:110px;text-align:right;">Costo Unit (USD)</th>
-            <th style="width:110px;text-align:right;">Subtotal</th>
-            <th>Proveedor / Enlace</th>
-            <th style="width:60px;">Acción</th>
+            <th>Elemento / Componente</th>
+            <th style="width:80px; text-align:center;">Unidades</th>
+            <th style="width:120px; text-align:right;">Costo Unit. (USD)</th>
+            <th style="width:120px; text-align:right;">Subtotal</th>
+            <th style="width:60px; text-align:center;">Acción</th>
           </tr>
         </thead>
         <tbody>
-          ${state.budget.map((b, idx) => `
+          ${state.budget.map((it, idx) => `
             <tr>
-              <td><input type="text" value="${b.element}" onchange="updateBudgetItem(${idx}, 'element', this.value)"></td>
-              <td><input type="number" style="text-align:center;" value="${b.units}" onchange="updateBudgetItem(${idx}, 'units', parseFloat(this.value)||1)"></td>
-              <td><input type="number" step="0.5" style="text-align:right;" value="${b.unit_cost}" onchange="updateBudgetItem(${idx}, 'unit_cost', parseFloat(this.value)||0)"></td>
-              <td style="text-align:right;font-weight:700;">$${(b.units * b.unit_cost).toFixed(2)}</td>
-              <td><input type="text" value="${b.url}" onchange="updateBudgetItem(${idx}, 'url', this.value)"></td>
-              <td><button class="btn-secondary" style="padding:2px 6px;font-size:10px;" onclick="removeBudgetItem(${idx})">×</button></td>
+              <td>
+                <input type="text" value="${it.element}" style="width:100%; border:none; background:transparent; font-size:12px; font-weight:600;" onchange="updateBudgetItem(${idx}, 'element', this.value)">
+                <div style="font-size:10px; color:var(--text-muted);">${it.url ? `<a href="${it.url}" target="_blank" style="color:var(--color-primary); text-decoration:none;">Enlace proveedor ${SVG.external}</a>` : 'Sin enlace'}</div>
+              </td>
+              <td style="text-align:center;">
+                <input type="number" value="${it.units}" style="width:60px; text-align:center; border:1px solid var(--border-light); border-radius:3px; padding:2px;" onchange="updateBudgetItem(${idx}, 'units', this.value)">
+              </td>
+              <td style="text-align:right;">
+                <input type="number" step="0.5" value="${it.unit_cost}" style="width:80px; text-align:right; border:1px solid var(--border-light); border-radius:3px; padding:2px;" onchange="updateBudgetItem(${idx}, 'unit_cost', this.value)">
+              </td>
+              <td style="text-align:right; font-family:var(--font-mono); font-weight:700;">
+                $${(it.units * it.unit_cost).toFixed(2)}
+              </td>
+              <td style="text-align:center;">
+                <button type="button" class="btn-secondary" style="padding:2px 6px; font-size:10px; color:#ef4444;" onclick="removeBudgetItem(${idx})">✕</button>
+              </td>
             </tr>
           `).join("")}
-          <tr style="background:var(--bg-subtle);font-weight:800;font-size:13px;">
-            <td colspan="3" style="text-align:right;">TOTAL DE PUESTA EN MARCHA:</td>
-            <td style="text-align:right;color:var(--color-primary);font-size:14px;">$${total.toFixed(2)} USD</td>
-            <td colspan="2" style="font-size:11px;color:var(--text-muted);font-weight:normal;">*Incluye flete e importación</td>
+        </tbody>
+        <tfoot>
+          <tr style="background:#f8fafc; font-weight:800;">
+            <td colspan="3" style="text-align:right; font-size:12px;">TOTAL PRESUPUESTO PUESTA EN MARCHA:</td>
+            <td style="text-align:right; font-family:var(--font-mono); font-size:14px; color:var(--color-primary);">$${total.toFixed(2)} USD</td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  `;
+}
+
+function updateBudgetItem(idx, field, val) {
+  if (field === "units" || field === "unit_cost") {
+    state.budget[idx][field] = parseFloat(val) || 0;
+  } else {
+    state.budget[idx][field] = val;
+  }
+  saveState();
+  renderTab("budget");
+}
+
+function addBudgetItem() {
+  state.budget.push({ element: "Nuevo Insumo Técnico", units: 1, unit_cost: 50.00, url: "https://alibaba.com" });
+  saveState();
+  renderTab("budget");
+}
+
+function removeBudgetItem(idx) {
+  state.budget.splice(idx, 1);
+  saveState();
+  renderTab("budget");
+}
+
+// ═════════════════════════════════════════════════════════════════════════════
+// 06 NIVEL 4: BÓVEDA DE RECURSOS, LOGOS & ENLACES FIJOS
+// ═════════════════════════════════════════════════════════════════════════════
+function renderViewResources() {
+  return `
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">06 · Bóveda de Recursos, Logos & Entregables</h1>
+        <div class="page-desc">Repositorio unificado de archivos para video pitch, enlaces de equipo y entregables oficiales.</div>
+      </div>
+      <button class="btn-primary" onclick="saveTeamHubLinks()">Guardar Enlaces de Equipo</button>
+    </div>
+
+    <!-- Enlaces Fijos de Trabajo Colaborativo -->
+    <div class="workbench-card">
+      <h3 style="margin-bottom:12px;">Enlaces Fijos del Equipo (Cloud Workspace)</h3>
+      <div class="form-grid">
+        <div class="form-group full">
+          <label>Carpeta Oficial de Google Drive (Videos crudos, fotos y audios)</label>
+          <div style="display:flex; gap:8px;">
+            <input type="url" id="hub-drive-url" value="${state.google_drive_url}" style="flex:1;">
+            <a href="${state.google_drive_url}" target="_blank" class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">Abrir Drive ${SVG.external}</a>
+          </div>
+        </div>
+        <div class="form-group full">
+          <label>Espacio de Trabajo Canva (Láminas, diapositivas y overlays del video)</label>
+          <div style="display:flex; gap:8px;">
+            <input type="url" id="hub-canva-url" value="${state.canva_url}" style="flex:1;">
+            <a href="${state.canva_url}" target="_blank" class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">Abrir Canva ${SVG.external}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logos Oficiales para el Video Pitch -->
+    <div class="workbench-card">
+      <h3 style="margin-bottom:12px;">Logos del Proyecto para el Video Pitch (Acto 2 al 4)</h3>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:12px;">
+        <div style="border:1px solid var(--border-light); padding:12px; border-radius:6px; background:#f8fafc; text-align:center;">
+          <div style="height:48px; display:flex; align-items:center; justify-content:center; color:var(--color-primary); font-weight:800; font-size:14px;">
+            ${SVG.shield} UNI
+          </div>
+          <strong style="font-size:11px; display:block;">Logo Institucional Sede</strong>
+          <span style="font-size:10px; color:var(--text-muted);">Universidad Nacional de Ingeniería</span>
+        </div>
+
+        <div style="border:1px solid var(--border-light); padding:12px; border-radius:6px; background:#f8fafc; text-align:center;">
+          <div style="height:48px; display:flex; align-items:center; justify-content:center; color:#d97706; font-weight:800; font-size:14px;">
+            ${SVG.globe} ${state.rally_type === 'latam' ? 'RALLY LATAM' : 'NICARAGUA INNOVA'}
+          </div>
+          <strong style="font-size:11px; display:block;">Logo Oficial del Evento</strong>
+          <span style="font-size:10px; color:var(--text-muted);">${state.rally_type === 'latam' ? 'Edición 2026 Continental' : 'Nacional 2026'}</span>
+        </div>
+
+        <div style="border:1px solid var(--border-light); padding:12px; border-radius:6px; background:#f8fafc; text-align:center;">
+          <div style="height:48px; display:flex; align-items:center; justify-content:center; color:var(--text-main); font-weight:800; font-size:14px;">
+            ${SVG[state.team_logo] || SVG.spark} ${state.team_name || 'EQUIPO'}
+          </div>
+          <strong style="font-size:11px; display:block;">Emblema de Equipo</strong>
+          <span style="font-size:10px; color:var(--text-muted);">${state.team_name}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bóveda de Descargas 1-Click -->
+    <div class="workbench-card">
+      <h3 style="margin-bottom:12px;">Descarga Directa de Entregables Generados (1-Click)</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Documento / Recurso</th>
+            <th>Formato</th>
+            <th>Uso en Competencia</th>
+            <th>Descarga</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Matriz de Deliberación de Retos</strong></td>
+            <td><code>.DOCX</code></td>
+            <td>9 retos oficiales + pronósticos WOW + tabla de votación</td>
+            <td><a href="/docs/Matriz_Seleccion_Desafios_2026.docx" download class="btn-primary" style="padding:4px 8px; font-size:11px; text-decoration:none;">Descargar Word ↓</a></td>
+          </tr>
+          <tr>
+            <td><strong>Documento Pautado Oficial</strong></td>
+            <td><code>.DOCX</code></td>
+            <td>5 secciones oficiales redactadas y validadas con límites de caracteres</td>
+            <td><a href="/docs/pautado_draft.docx" download class="btn-secondary" style="padding:4px 8px; font-size:11px; text-decoration:none;">Descargar Word ↓</a></td>
+          </tr>
+          <tr>
+            <td><strong>Presupuesto Puesta en Marcha</strong></td>
+            <td><code>.XLSX</code></td>
+            <td>Partidas sustentadas con proveedores Alibaba y flete de importación</td>
+            <td><a href="/budget/budget.xlsx" download class="btn-secondary" style="padding:4px 8px; font-size:11px; text-decoration:none;">Descargar Excel ↓</a></td>
+          </tr>
+          <tr>
+            <td><strong>Shotlist para Editor de Video (120s)</strong></td>
+            <td><code>.CSV</code></td>
+            <td>Pauta para CapCut / Premiere con tiempos exactos y textos</td>
+            <td><a href="/script/shotlist.csv" download class="btn-secondary" style="padding:4px 8px; font-size:11px; text-decoration:none;">Descargar CSV ↓</a></td>
+          </tr>
+          <tr>
+            <td><strong>Guion de Locución Limpio</strong></td>
+            <td><code>.TXT</code></td>
+            <td>Texto continuo a 135 ppm para el locutor o motor TTS</td>
+            <td><a href="/script/narration.txt" download class="btn-secondary" style="padding:4px 8px; font-size:11px; text-decoration:none;">Descargar TXT ↓</a></td>
           </tr>
         </tbody>
       </table>
@@ -1324,151 +1191,193 @@ function renderViewBudget() {
   `;
 }
 
-function updateBudgetItem(idx, key, val) {
-  state.budget[idx][key] = val;
+function saveTeamHubLinks() {
+  const drive = document.getElementById("hub-drive-url");
+  const canva = document.getElementById("hub-canva-url");
+  if (drive) state.google_drive_url = drive.value.trim();
+  if (canva) state.canva_url = canva.value.trim();
   saveState();
-  renderTab('budget');
+  alert("Enlaces guardados correctamente.");
 }
 
-function addBudgetItem() {
-  state.budget.push({ element: "Nuevo componente", units: 1, unit_cost: 50.00, url: "https://alibaba.com" });
-  saveState();
-  renderTab('budget');
-}
-
-function removeBudgetItem(idx) {
-  state.budget.splice(idx, 1);
-  saveState();
-  renderTab('budget');
-}
-
-// 07 MODELO CANVAS VIEW
+// ═════════════════════════════════════════════════════════════════════════════
+// 07 MODELO CANVAS
+// ═════════════════════════════════════════════════════════════════════════════
 function renderViewCanvas() {
   return `
     <div class="page-header">
       <div>
-        <h1 class="page-title">07 · Business Model Canvas Integral</h1>
-        <div class="page-desc">Coherencia validada entre la propuesta de valor y la estructura de costos.</div>
+        <h1 class="page-title">07 · Matriz de Negocio Canvas</h1>
+        <div class="page-desc">9 cuadrantes estratégicos sincronizados con la tesis del proyecto y el pautado.</div>
       </div>
+      <a href="/docs/canvas.md" download class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
+        ${SVG.download} Descargar Markdown (.md)
+      </a>
     </div>
 
-    <div class="workbench-card">
-      <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:12px;font-size:12px;">
-        <div style="border:1px solid var(--border-light);padding:10px;border-radius:4px;">
-          <div style="font-weight:700;color:var(--color-primary);margin-bottom:4px;">1. Socios Clave</div>
-          <p style="color:var(--text-muted);line-height:1.4;">Alcaldías, SINAPRED, cooperativas agrícolas, proveedores mayoristas de electrónica.</p>
-        </div>
-        <div style="border:1px solid var(--border-light);padding:10px;border-radius:4px;">
-          <div style="font-weight:700;color:var(--color-primary);margin-bottom:4px;">2. Actividades Clave</div>
-          <p style="color:var(--text-muted);line-height:1.4;">Ensamble local con carcasas IP67, despliegue de red LoRaWAN y calibración de umbrales.</p>
-        </div>
-        <div style="border:1px solid var(--border-light);padding:10px;border-radius:4px;">
-          <div style="font-weight:700;color:var(--color-primary);margin-bottom:4px;">3. Propuesta de Valor</div>
-          <p style="color:var(--text-main);font-weight:600;line-height:1.4;">${state.description_one_line || "Definida en Brief"}</p>
-        </div>
-        <div style="border:1px solid var(--border-light);padding:10px;border-radius:4px;">
-          <div style="font-weight:700;color:var(--color-primary);margin-bottom:4px;">4. Recursos Clave</div>
-          <p style="color:var(--text-muted);line-height:1.4;">Sensores industriales, microcontroladores ESP32-S3, nodos solares LiFePO4.</p>
-        </div>
-        <div style="border:1px solid var(--border-light);padding:10px;border-radius:4px;">
-          <div style="font-weight:700;color:var(--color-primary);margin-bottom:4px;">5. Relación con Clientes</div>
-          <p style="color:var(--text-muted);line-height:1.4;">Soporte preventivo semestral, telemetría abierta para brigadas de rescate.</p>
-        </div>
-        <div style="border:1px solid var(--border-light);padding:10px;border-radius:4px;">
-          <div style="font-weight:700;color:var(--color-primary);margin-bottom:4px;">6. Canales</div>
-          <p style="color:var(--text-muted);line-height:1.4;">Instalación directa municipal y API de alertas tempranas para centros de socorro.</p>
-        </div>
-        <div style="border:1px solid var(--border-light);padding:10px;border-radius:4px;grid-column:1/-1;">
-          <div style="font-weight:700;color:var(--color-primary);margin-bottom:4px;">7. Estructura de Costos vs. Ingresos</div>
-          <p style="color:var(--text-muted);line-height:1.4;">
-            <strong>Costos:</strong> Total puesta en marcha de $${state.budget.reduce((a,b)=>a+(b.units*b.unit_cost),0).toFixed(2)} USD.<br>
-            <strong>Sostenibilidad:</strong> Modelo B2G por mantenimiento y licenciamiento de la red de telemetría a escala regional.
-          </p>
-        </div>
-      </div>
+    <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:12px;">
+      <div class="workbench-card"><strong style="font-size:12px;">1. Socios Clave</strong><p style="font-size:11px; color:var(--text-muted); margin-top:4px;">Municipalidades locales, comités de barrio, proveedores de hardware LoRaWAN.</p></div>
+      <div class="workbench-card"><strong style="font-size:12px;">2. Actividades Clave</strong><p style="font-size:11px; color:var(--text-muted); margin-top:4px;">Despliegue de nodos, calibración hidrológica, simulacros comunitarios.</p></div>
+      <div class="workbench-card"><strong style="font-size:12px;">3. Propuesta de Valor</strong><p style="font-size:11px; color:var(--text-muted); margin-top:4px;">${state.solution_thesis || 'Alerta temprana con 30 minutos de anticipación a costo 70% menor.'}</p></div>
+      <div class="workbench-card"><strong style="font-size:12px;">4. Relaciones con Clientes</strong><p style="font-size:11px; color:var(--text-muted); margin-top:4px;">Capacitación presencial y alertas automáticas comunitarias.</p></div>
+      <div class="workbench-card"><strong style="font-size:12px;">5. Segmentos de Clientes</strong><p style="font-size:11px; color:var(--text-muted); margin-top:4px;">Pobladores en zonas de riesgo ribereño, alcaldías y unidades de protección civil.</p></div>
+      <div class="workbench-card"><strong style="font-size:12px;">6. Recursos Clave</strong><p style="font-size:11px; color:var(--text-muted); margin-top:4px;">Nodos sensores ultrasónicos, gateway concentrador, firmware optimizado.</p></div>
+      <div class="workbench-card"><strong style="font-size:12px;">7. Canales</strong><p style="font-size:11px; color:var(--text-muted); margin-top:4px;">Red sub-GHz LoRaWAN, sirenas piezoeléctricas, panel web de monitoreo.</p></div>
+      <div class="workbench-card"><strong style="font-size:12px;">8. Estructura de Costes</strong><p style="font-size:11px; color:var(--text-muted); margin-top:4px;">Fabricación inicial de nodos, servidores y mantenimiento semestral.</p></div>
+      <div class="workbench-card"><strong style="font-size:12px;">9. Fuentes de Ingresos</strong><p style="font-size:11px; color:var(--text-muted); margin-top:4px;">Fondos de cooperación internacional para mitigación y convenios municipales.</p></div>
     </div>
   `;
 }
 
-// 08 GUION EN 4 ACTOS VIEW
+// ═════════════════════════════════════════════════════════════════════════════
+// 08 GUION AUDIOVISUAL (4 ACTOS, 120 SEGUNDOS) & LOCUCIÓN WAV
+// ═════════════════════════════════════════════════════════════════════════════
 function renderViewScript() {
   const words = [state.script.acto1, state.script.acto2, state.script.acto3, state.script.acto4]
     .join(" ").trim().split(/\s+/).filter(Boolean).length;
-  const durationEst = Math.round((words / 135) * 60);
+  const estSeconds = Math.round((words / 135) * 60);
 
   return `
     <div class="page-header">
       <div>
-        <h1 class="page-title">08 · Guion de Producción Audiovisual (120 Segundos)</h1>
-        <div class="page-desc">4 micro-actos matemáticos para satisfacer la rúbrica del jurado.</div>
+        <h1 class="page-title">08 · Guion Audiovisual de 120 Segundos (4 Actos)</h1>
+        <div class="page-desc">Estructura estricta para video pitch: ${words} palabras (~${estSeconds} segundos a 135 ppm).</div>
       </div>
-      <div style="font-family:var(--font-mono);font-size:12px;font-weight:700;">
-        <span>${words} palabras</span> · <span style="color:${durationEst<=120?'#047857':'#b91c1c'}">~${durationEst}s</span>
+      <div style="display:flex; gap:8px;">
+        <button class="btn-primary" onclick="saveScript()">Guardar Guion</button>
+        <a href="/assets/voice/narration.wav" download class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
+          ${SVG.download} Descargar Audio Locución (.wav)
+        </a>
       </div>
     </div>
 
-    <div class="workbench-card">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-        <h3>Acto I: Gancho y Dolor Cuantificado (0:00–0:20)</h3>
-        <span class="badge-status badge-wip">PROHIBIDO LOGOS Y NOMBRES</span>
-      </div>
-      <p style="font-size:11px;color:var(--text-muted);margin-bottom:8px;">Abre con estadística crítica y beneficiario afectado. Captura atención inmediata.</p>
-      <textarea rows="2" oninput="state.script.acto1=this.value; saveState();">${state.script.acto1}</textarea>
+    <div class="rubric-callout">
+      <strong>REGLA DE ORO ACTO I:</strong> Durante los primeros 20 segundos está PROHIBIDO mencionar el nombre del proyecto o mostrar logos. El inicio debe centrarse 100% en el dolor humano y la cifra cuantificada.
     </div>
 
-    <div class="workbench-card">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-        <h3>Acto II: Revelación de Solución & Caja Negra 3D (0:20–1:00)</h3>
-        <span class="badge-status badge-ok">30 PTS INNOVACIÓN</span>
+    <div style="display:flex; flex-direction:column; gap:16px;">
+      <div class="workbench-card" style="margin-bottom:0;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+          <strong style="font-size:12px;">Acto I: Dolor Humano y Problema Cuantificado (0–20 seg)</strong>
+          <span style="font-size:11px; color:#ef4444; font-weight:700;">PROHIBIDO LOGOS Y NOMBRES</span>
+        </div>
+        <textarea id="sc-a1" rows="3" style="width:100%; border:1px solid var(--border-light); border-radius:4px; padding:8px; font-size:12px; font-family:var(--font-ui); box-sizing:border-box;"
+          placeholder="Describe la problemática con datos reales...">${state.script.acto1}</textarea>
       </div>
-      <p style="font-size:11px;color:var(--text-muted);margin-bottom:8px;">Bautizo del proyecto y explicación visual del mecanismo físico/digital (despiece, sensores).</p>
-      <textarea rows="3" oninput="state.script.acto2=this.value; saveState();">${state.script.acto2}</textarea>
-    </div>
 
-    <div class="workbench-card">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-        <h3>Acto III: Prefactibilidad & Costos Unitarios (1:00–1:35)</h3>
-        <span class="badge-status badge-ok">20 PTS PREFACTIBILIDAD</span>
+      <div class="workbench-card" style="margin-bottom:0;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+          <strong style="font-size:12px;">Acto II: Solución Técnica y Demostración de Hardware (20–60 seg)</strong>
+          <span style="font-size:11px; color:var(--color-primary); font-weight:700;">30 PTS INNOVACIÓN</span>
+        </div>
+        <textarea id="sc-a2" rows="3" style="width:100%; border:1px solid var(--border-light); border-radius:4px; padding:8px; font-size:12px; font-family:var(--font-ui); box-sizing:border-box;"
+          placeholder="Muestra cómo funciona la solución...">${state.script.acto2}</textarea>
       </div>
-      <p style="font-size:11px;color:var(--text-muted);margin-bottom:8px;">Demostración de costo unitario ($4k-$6k), actores que financian y ciclo circular.</p>
-      <textarea rows="2" oninput="state.script.acto3=this.value; saveState();">${state.script.acto3}</textarea>
-    </div>
 
-    <div class="workbench-card">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-        <h3>Acto IV: Métricas Auditables & Cierre Regional (1:35–2:00)</h3>
-        <span class="badge-status badge-pending">CIERRE RECORDABLE</span>
+      <div class="workbench-card" style="margin-bottom:0;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+          <strong style="font-size:12px;">Acto III: Prefactibilidad y Presupuesto Sustentado (60–95 seg)</strong>
+          <span style="font-size:11px; color:#047857; font-weight:700;">20 PTS VIABILIDAD</span>
+        </div>
+        <textarea id="sc-a3" rows="3" style="width:100%; border:1px solid var(--border-light); border-radius:4px; padding:8px; font-size:12px; font-family:var(--font-ui); box-sizing:border-box;"
+          placeholder="Menciona las cifras exactas del presupuesto...">${state.script.acto3}</textarea>
       </div>
-      <p style="font-size:11px;color:var(--text-muted);margin-bottom:8px;">3 métricas de impacto, iconos ODS con paleta propia y retorno al beneficiario transformado.</p>
-      <textarea rows="2" oninput="state.script.acto4=this.value; saveState();">${state.script.acto4}</textarea>
+
+      <div class="workbench-card" style="margin-bottom:0;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+          <strong style="font-size:12px;">Acto IV: Cierre de Alto Impacto y Llamado a la Acción (95–120 seg)</strong>
+          <span style="font-size:11px; color:var(--text-muted); font-weight:700;">CIERRE EXACTO T-119s</span>
+        </div>
+        <textarea id="sc-a4" rows="3" style="width:100%; border:1px solid var(--border-light); border-radius:4px; padding:8px; font-size:12px; font-family:var(--font-ui); box-sizing:border-box;"
+          placeholder="Cierre inspirador con los logos del equipo y la universidad...">${state.script.acto4}</textarea>
+      </div>
     </div>
   `;
 }
 
-// 09 WEB DEMO VIEW
+function saveScript() {
+  const a1 = document.getElementById("sc-a1");
+  const a2 = document.getElementById("sc-a2");
+  const a3 = document.getElementById("sc-a3");
+  const a4 = document.getElementById("sc-a4");
+  if (a1) state.script.acto1 = a1.value;
+  if (a2) state.script.acto2 = a2.value;
+  if (a3) state.script.acto3 = a3.value;
+  if (a4) state.script.acto4 = a4.value;
+  saveState();
+  renderNavigation();
+  alert("Guion guardado correctamente.");
+}
+
+// ═════════════════════════════════════════════════════════════════════════════
+// 09 WEB DEMO PARA VIDEO & CAPTURAS
+// ═════════════════════════════════════════════════════════════════════════════
 function renderViewWebDemo() {
+  const pName = state.project_name || "HIDRO-VIGÍA";
+
   return `
     <div class="page-header">
       <div>
-        <h1 class="page-title">09 · Plataforma Web Demo para Video Pitch</h1>
-        <div class="page-desc">Grabación en vivo para tomas de cámara con zoom y dinamismo en el Acto II.</div>
+        <h1 class="page-title">09 · Web Demo para Tomas de Video</h1>
+        <div class="page-desc">Interfaz técnica funcional diseñada para grabar planos de pantalla atractivos para el video pitch.</div>
       </div>
-      <a href="/site/index.html" target="_blank" class="btn-primary" style="text-decoration:none;">Abrir Web Demo en Pestaña Completa ↗</a>
+      <a href="/site/" target="_blank" class="btn-primary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
+        Abrir Web Demo en Pestaña Completa ${SVG.external}
+      </a>
     </div>
 
-    <div class="workbench-card" style="padding:0;overflow:hidden;">
-      <iframe src="/site/index.html" style="width:100%;height:520px;border:none;"></iframe>
+    <div class="workbench-card" style="padding:0; overflow:hidden;">
+      <div style="background:#0f172a; padding:10px 16px; display:flex; justify-content:space-between; align-items:center; color:#fff;">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#10b981;"></span>
+          <span style="font-family:var(--font-mono); font-size:12px; font-weight:700;">${pName} · CENTRO DE TELEMETRÍA EN VIVO</span>
+        </div>
+        <span style="font-size:11px; font-family:var(--font-mono); color:#94a3b8;">10 NODOS CONECTADOS [LoRa sub-GHz]</span>
+      </div>
+
+      <div style="padding:20px; background:#f8fafc;">
+        <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; margin-bottom:16px;">
+          <div style="background:#fff; border:1px solid var(--border-light); padding:14px; border-radius:6px;">
+            <div style="font-size:10px; font-weight:800; color:var(--text-muted); text-transform:uppercase;">Nivel Cauce Principal</div>
+            <div style="font-size:24px; font-weight:800; font-family:var(--font-mono); color:var(--color-primary); margin:4px 0;">1.42 m</div>
+            <div style="font-size:11px; color:#047857; font-weight:600;">Condición: Estable (Margen 30m)</div>
+          </div>
+
+          <div style="background:#fff; border:1px solid var(--border-light); padding:14px; border-radius:6px;">
+            <div style="font-size:10px; font-weight:800; color:var(--text-muted); text-transform:uppercase;">Velocidad de Flujo</div>
+            <div style="font-size:24px; font-weight:800; font-family:var(--font-mono); color:var(--text-main); margin:4px 0;">0.85 m/s</div>
+            <div style="font-size:11px; color:var(--text-muted);">Caudal estimado: 4.2 m³/s</div>
+          </div>
+
+          <div style="background:#fff; border:1px solid var(--border-light); padding:14px; border-radius:6px;">
+            <div style="font-size:10px; font-weight:800; color:var(--text-muted); text-transform:uppercase;">Alimentación Nodos</div>
+            <div style="font-size:24px; font-weight:800; font-family:var(--font-mono); color:#047857; margin:4px 0;">98.2%</div>
+            <div style="font-size:11px; color:var(--text-muted);">Baterías LiFePO4 + Panel Solar</div>
+          </div>
+        </div>
+
+        <div style="background:#fff; border:1px solid var(--border-light); border-radius:6px; padding:14px;">
+          <div style="font-size:11px; font-weight:800; color:var(--text-main); margin-bottom:8px;">REGISTRO DE TELEMETRÍA EN TIEMPO REAL</div>
+          <div style="font-family:var(--font-mono); font-size:11px; color:var(--text-muted); line-height:1.6;">
+            <div>[T-12s] NODO_01 (Puente Larreynaga): Distancia 1420mm | RSSI: -84dBm | Batería: 3.28V | ESTADO: OK</div>
+            <div>[T-24s] NODO_02 (Cauce Oriental Sector 3): Distancia 1380mm | RSSI: -81dBm | Batería: 3.30V | ESTADO: OK</div>
+            <div>[T-36s] NODO_03 (Vía Alterna El Edén): Distancia 1490mm | RSSI: -79dBm | Batería: 3.29V | ESTADO: OK</div>
+          </div>
+        </div>
+      </div>
     </div>
   `;
 }
 
-// 10 TIMELINE VIEW
+// ═════════════════════════════════════════════════════════════════════════════
+// 10 CRONÓMETRO REGRESIVO & HITOS
+// ═════════════════════════════════════════════════════════════════════════════
 function renderViewTimeline() {
   return `
     <div class="page-header">
       <div>
         <h1 class="page-title">10 · Cronómetro Regresivo & Hitos Innegociables</h1>
-        <div class="page-desc">Ventana crítica para entrega a tiempo en la plataforma SIRLI.</div>
+        <div class="page-desc">Ventana crítica para entrega a tiempo en la plataforma oficial SIRLI.</div>
       </div>
     </div>
 
@@ -1482,49 +1391,33 @@ function renderViewTimeline() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td><strong>T-6 Horas</strong></td>
-            <td>Congelamiento de claims e investigación. Brief bloqueado.</td>
-            <td>Cambiar de idea a última hora produce renders a medias.</td>
-          </tr>
-          <tr>
-            <td><strong>T-4 Horas</strong></td>
-            <td>Pautado y presupuesto completos al 100%.</td>
-            <td>Falta de validación de caracteres descalifica en revisión.</td>
-          </tr>
-          <tr>
-            <td><strong>T-2 Horas</strong></td>
-            <td>Render en calidad MEDIA. Grabar pantallas de la web demo.</td>
-            <td>Renderizar en Cycles a última hora satura la GPU.</td>
-          </tr>
-          <tr>
-            <td><strong>T-1 Hora</strong></td>
-            <td>Exportación final del video pitch (119 segundos exactos).</td>
-            <td>Videos de 121 segundos quedan eliminados por reglamento.</td>
-          </tr>
-          <tr>
-            <td><strong>T-30 Minutos</strong></td>
-            <td>Subir a YouTube en modo 'Oculto' o 'Público' y registrar URL.</td>
-            <td>El procesamiento HD de YouTube puede tardar 25 minutos.</td>
-          </tr>
+          <tr><td><strong>T-6 Horas</strong></td><td>Congelamiento de claims e investigación. Tesis bloqueada.</td><td>Cambiar de idea a última hora produce renders a medias.</td></tr>
+          <tr><td><strong>T-4 Horas</strong></td><td>Pautado y presupuesto completos al 100%.</td><td>Falta de validación de caracteres descalifica en revisión.</td></tr>
+          <tr><td><strong>T-2 Horas</strong></td><td>Render en calidad MEDIA. Grabar pantallas de la web demo.</td><td>Renderizar en alta a última hora satura la GPU.</td></tr>
+          <tr><td><strong>T-1 Hora</strong></td><td>Exportación final del video pitch (119 segundos exactos).</td><td>Videos de 121 segundos quedan eliminados por reglamento.</td></tr>
+          <tr><td><strong>T-30 Minutos</strong></td><td>Subir a YouTube en modo 'Oculto' o 'Público' y registrar URL.</td><td>El procesamiento HD de YouTube puede tardar 25 minutos.</td></tr>
         </tbody>
       </table>
     </div>
   `;
 }
 
-// ── INSPECTOR LATERAL DE AUDITORÍA DINÁMICO ──────────────────────────────────
+// ── INSPECTOR LATERAL DE AUDITORÍA ───────────────────────────────────────────
 function updateInspector() {
   const panel = document.getElementById("panel");
   if (!panel) return;
 
-  // Cálculo de preparación global
+  const stage = getWorkflowStage();
+  if (stage < 2) return; // Oculto durante la configuración inicial
+
   let points = 0;
-  if (state.project_name && state.challenge_id) points += 20;
-  if (state.claims.length >= 3) points += 15;
-  if (isPautadoComplete()) points += 25;
-  if (isBudgetOptimal()) points += 20;
-  if (isScriptComplete()) points += 20;
+  if (state.rally_type) points += 15;
+  if (state.team_name && state.university) points += 15;
+  if (state.challenge_id) points += 20;
+  if (state.solution_approved) points += 15;
+  if (isPautadoComplete()) points += 15;
+  if (isBudgetValid()) points += 10;
+  if (isScriptComplete()) points += 10;
 
   const totalBudget = state.budget.reduce((a, b) => a + (b.units * b.unit_cost), 0);
 
@@ -1533,59 +1426,48 @@ function updateInspector() {
       <div class="panel-block-title">Índice de Preparación SIRLI</div>
       <div class="score-meter">
         <div class="score-number">${points}%</div>
-        <div class="score-label">${points===100?'Listo para Entrega':'En Configuración'}</div>
+        <div class="score-label">${points === 100 ? 'Listo para Entrega' : 'En Configuración'}</div>
       </div>
     </div>
 
     <div>
       <div class="panel-block-title">Auditoría en Tiempo Real</div>
       <div class="audit-list">
-        <div class="audit-item ${state.project_name?'ok':'pending'}">
-          <span>Brief & Proyecto</span>
-          <strong>${state.project_name?'OK':'Incompleto'}</strong>
+        <div class="audit-item ${state.team_name ? 'ok' : 'pending'}">
+          <span>Equipo & Sede</span>
+          <strong>${state.team_name ? 'OK' : 'Incompleto'}</strong>
         </div>
-        <div class="audit-item ${state.challenge_id?'ok':'pending'}">
-          <span>Desafío Seleccionado</span>
-          <strong>${state.challenge_id?`#${state.challenge_id}`:'Sin elegir'}</strong>
+        <div class="audit-item ${state.challenge_id ? 'ok' : 'pending'}">
+          <span>Reto Seleccionado</span>
+          <strong>${state.challenge_id ? `#${state.challenge_id}` : 'Sin elegir'}</strong>
         </div>
-        <div class="audit-item ${state.claims.length>=3?'ok':'pending'}">
-          <span>Banco de Evidencias</span>
-          <strong>${state.claims.length} / 3 claims</strong>
+        <div class="audit-item ${state.solution_approved ? 'ok' : 'pending'}">
+          <span>Taller de Solución</span>
+          <strong>${state.solution_approved ? 'Aprobada' : 'Pendiente'}</strong>
         </div>
-        <div class="audit-item ${isPautadoComplete()?'ok':'pending'}">
-          <span>Pautado (Caracteres)</span>
-          <strong>${isPautadoComplete()?'Auditado':'Revisar'}</strong>
+        <div class="audit-item ${isPautadoComplete() ? 'ok' : 'pending'}">
+          <span>Pautado Oficial</span>
+          <strong>${isPautadoComplete() ? 'Auditado' : 'Revisar'}</strong>
         </div>
-        <div class="audit-item ${isBudgetOptimal()?'ok':'warn'}">
-          <span>Presupuesto Puesta en Marcha</span>
+        <div class="audit-item ${isBudgetValid() ? 'ok' : 'warn'}">
+          <span>Presupuesto</span>
           <strong>$${totalBudget.toFixed(0)} USD</strong>
         </div>
-        <div class="audit-item ${isScriptComplete()?'ok':'pending'}">
+        <div class="audit-item ${isScriptComplete() ? 'ok' : 'pending'}">
           <span>Guion (120 Segundos)</span>
-          <strong>${isScriptComplete()?'OK':'Pendiente'}</strong>
+          <strong>${isScriptComplete() ? 'OK' : 'Pendiente'}</strong>
         </div>
       </div>
     </div>
 
     <div>
-      <div class="panel-block-title">Consejo del Campeón</div>
+      <div class="panel-block-title">Lección de Oro de Competencia</div>
       <div class="insight-box">
-        <div class="insight-header">💡 Lección de Oro Latam</div>
-        El jurado continental evalúa que las cifras del último minuto del video coincidan centavo a centavo con el pautado. Si dices $4,450 en pantalla, debe ser idéntico en el Excel.
+        <div class="insight-header">${SVG.spark} Coherencia Total</div>
+        El jurado verifica que las cifras del último minuto del video coincidan exactamente con la tabla de presupuesto del pautado. Si dices $4,450 en pantalla, debe coincidir centavo a centavo con el documento.
       </div>
     </div>
   `;
 }
 
 function attachTabListeners(tabId) {}
-
-function getContrastRatio(hex1, hex2) {
-  function lum(hex) {
-    const rgb = hex.replace("#", "").match(/.{2}/g).map(x => parseInt(x, 16) / 255);
-    const a = rgb.map(v => v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4));
-    return 0.2126 * a[0] + 0.7152 * a[1] + 0.0722 * a[2];
-  }
-  const l1 = lum(hex1);
-  const l2 = lum(hex2);
-  return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
-}
