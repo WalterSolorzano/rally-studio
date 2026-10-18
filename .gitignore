@@ -1,0 +1,25 @@
+node_modules/
+.env
+__pycache__/
+*.pyc
+*.pyo
+*.blend1
+*.blend2
+dist/
+*.log
+.netlify/
+.superpowers/
+
+# Archivos pesados → Git LFS o fuera del repo
+assets/video/*.mp4
+assets/video/*.mov
+assets/3d/*.blend
+assets/voice/*.wav
+
+# Capturas de presupuesto (pueden ser grandes)
+budget/screenshots/*.png
+budget/screenshots/*.jpg
+
+# Secrets
+*.key
+*.pem
