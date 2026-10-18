@@ -947,27 +947,27 @@ textarea {
   box-shadow: 0 2px 8px rgba(9, 30, 66, 0.02);
 }
 
-/* PALETA RALLY LATAM: Grises técnicos y Magenta vibrante (CERO rojo) */
+/* PALETA RALLY LATAM: Navy internacional y Azul Precisión */
 .certamen-card.latam-card:hover {
-  border-color: #f0abfc;
+  border-color: #93C5FD;
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px -6px rgba(192, 38, 211, 0.12);
+  box-shadow: 0 12px 28px -6px rgba(8, 102, 245, 0.12);
 }
 .certamen-card.latam-card.selected {
-  border: 2px solid #c026d3;
-  box-shadow: 0 12px 30px -4px rgba(192, 38, 211, 0.18);
+  border: 1.5px solid var(--color-primary);
+  box-shadow: 0 10px 24px -4px rgba(8, 102, 245, 0.16);
   background: #ffffff;
 }
 
-/* PALETA RALLY NACIONAL: Púrpura/Morado de innovación (CERO amarillo/naranja) */
+/* PALETA RALLY NACIONAL: Azul Marino Oficial (UNI / Nicaragua) */
 .certamen-card.nacional-card:hover {
-  border-color: #ddd6fe;
+  border-color: #CBD5E1;
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px -6px rgba(124, 58, 237, 0.12);
+  box-shadow: 0 12px 28px -6px rgba(13, 27, 53, 0.10);
 }
 .certamen-card.nacional-card.selected {
-  border: 2px solid #7c3aed;
-  box-shadow: 0 12px 30px -4px rgba(124, 58, 237, 0.16);
+  border: 1.5px solid var(--color-navy);
+  box-shadow: 0 10px 24px -4px rgba(13, 27, 53, 0.14);
   background: #ffffff;
 }
 
@@ -990,19 +990,20 @@ textarea {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 .hours-badge.latam {
-  background: #fdf4ff;
-  border: 1.5px solid #f0abfc;
-  color: #c026d3;
+  background: var(--bg-secondary);
+  border: 1px solid #BFDBFE;
+  color: var(--color-primary);
 }
 .hours-badge.nacional {
-  background: #f5f3ff;
-  border: 1.5px solid #ddd6fe;
-  color: #7c3aed;
+  background: var(--bg-muted);
+  border: 1px solid var(--border-strong);
+  color: var(--color-navy);
 }
 .hours-badge .hours-num {
   font-size: 22px;
   font-weight: 900;
   font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
   letter-spacing: -0.04em;
 }
 .hours-badge .hours-unit {
@@ -1036,11 +1037,11 @@ textarea {
 }
 
 .certamen-meta-tag.latam {
-  color: #c026d3;
+  color: var(--color-primary);
 }
 
 .certamen-meta-tag.nacional {
-  color: #7c3aed;
+  color: var(--color-navy);
 }
 
 .certamen-card-title {
@@ -1080,43 +1081,43 @@ textarea {
 }
 
 .btn-select-card.filled-magenta, .btn-select-card.filled-rose {
-  background: #c026d3;
+  background: var(--color-primary);
   color: #ffffff;
-  border: 1px solid #c026d3;
+  border: 1px solid var(--color-primary);
 }
 .btn-select-card.filled-magenta:hover, .btn-select-card.filled-rose:hover {
-  background: #a21caf;
-  border-color: #a21caf;
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
 }
 
 .btn-select-card.outline-magenta, .btn-select-card.outline-rose {
-  background: #fdf4ff;
-  color: #c026d3;
-  border: 1.5px solid #f0abfc;
+  background: var(--bg-secondary);
+  color: var(--color-primary);
+  border: 1px solid #BFDBFE;
 }
 .btn-select-card.outline-magenta:hover, .btn-select-card.outline-rose:hover {
-  background: #fae8ff;
-  border-color: #c026d3;
+  background: #DBEAFE;
+  border-color: var(--color-primary);
 }
 
 .btn-select-card.filled-purple {
-  background: #7c3aed;
+  background: var(--color-navy);
   color: #ffffff;
-  border: 1px solid #7c3aed;
+  border: 1px solid var(--color-navy);
 }
 .btn-select-card.filled-purple:hover {
-  background: #6d28d9;
-  border-color: #6d28d9;
+  background: var(--color-navy-dark);
+  border-color: var(--color-navy-dark);
 }
 
 .btn-select-card.outline-purple {
   background: #ffffff;
-  color: #7c3aed;
-  border: 1.5px solid #ddd6fe;
+  color: var(--color-navy);
+  border: 1px solid var(--border-strong);
 }
 .btn-select-card.outline-purple:hover {
-  background: #f5f3ff;
-  border-color: #7c3aed;
+  background: var(--bg-muted);
+  border-color: var(--color-navy);
 }
 
 /* ── ZONA DE CARGA DE LOGO DE EQUIPO (IMAGEN REAL) ──────────────── */
@@ -1698,6 +1699,88 @@ textarea {
   justify-content: space-between;
 }
 
+/* ── WIDGET DE TELEMETRÍA EN TIEMPO REAL ────────────────────────── */
+.telemetry-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-light);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 11px;
+  color: var(--text-body);
+  user-select: none;
+}
+.telemetry-chip strong {
+  color: var(--text-main);
+  font-weight: 700;
+}
+.telemetry-pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.6);
+  animation: telemetryPulseAnim 2s infinite ease-in-out;
+}
+@keyframes telemetryPulseAnim {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+/* ── MULTI-USUARIO & MASCOTAS COLABORATIVAS (SIN LOGIN) ────────── */
+.collaborator-avatar-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 700;
+  border: 1px solid var(--border-light);
+  background: #ffffff;
+  color: var(--text-main);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  user-select: none;
+}
+.collaborator-avatar-icon {
+  font-size: 13px;
+  line-height: 1;
+}
+.collaborator-stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid var(--border-light);
+  background: var(--bg-subtle);
+  color: var(--text-muted);
+}
+
+/* ── BLOQUEO VISUAL SUAVE (SOFT LOCK EN VIVO) ──────────────────── */
+.soft-lock-active {
+  border-color: #93C5FD !important;
+  box-shadow: 0 0 0 2px rgba(8, 102, 245, 0.15) !important;
+}
+.soft-lock-tag {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: #EFF6FF;
+  border: 1px solid #BFDBFE;
+  color: var(--color-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
 /* ── RESPONSIVE ADAPTATION ─────────────────────────────────────────── */
 @media (max-width: 1120px) {
   body {
@@ -1711,7 +1794,7 @@ textarea {
   body.sidebar-open-mobile {
     grid-template-columns: 240px minmax(0, 1fr) 0px;
   }
-  .topbar-emblems-group {
+  .topbar-emblems-group, .telemetry-chip {
     display: none !important;
   }
 }

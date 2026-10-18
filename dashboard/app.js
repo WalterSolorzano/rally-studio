@@ -470,6 +470,14 @@ function getInitialState() {
       pautado_chars_ok: false
     },
 
+    // Autoría de componentes por mascota y bloqueos suaves en tiempo real
+    authorship: {
+      pautado: {},
+      script: {},
+      solution: null
+    },
+    active_locks: {},
+
     // Enlaces de colaboración y nube (Bypass para Wi-Fi universitario)
     google_drive_url: "https://drive.google.com",
     canva_url: "https://canva.com",
@@ -482,6 +490,98 @@ let state = getInitialState();
 let activeTab = "certamen";
 let timerInterval = null;
 let challengeFilter = "all";
+
+// ── MASCOTAS COLABORATIVAS AUTOMÁTICAS (MULTI-USUARIO SIN LOGIN) ─────────────
+const TEAM_MASCOTS = [
+  { id: "jaguar", name: "Jaguar Ágil", icon: "🐆", color: "#0866F5" },
+  { id: "quetzal", name: "Quetzal Guía", icon: "🪶", color: "#059669" },
+  { id: "armadillo", name: "Armadillo Blindado", icon: "🛡️", color: "#D97706" },
+  { id: "colibri", name: "Colibrí Veloz", icon: "⚡", color: "#0284C7" },
+  { id: "ocelote", name: "Ocelote Creativo", icon: "🐾", color: "#EA580C" },
+  { id: "halcon", name: "Halcón Vigía", icon: "🦅", color: "#475569" }
+];
+
+function getClientMascot() {
+  let stored = null;
+  try { stored = localStorage.getItem("rally_user_mascot_id"); } catch(e) {}
+  if (stored) {
+    const found = TEAM_MASCOTS.find(m => m.id === stored);
+    if (found) return found;
+  }
+  const picked = TEAM_MASCOTS[Math.floor(Math.random() * TEAM_MASCOTS.length)];
+  try { localStorage.setItem("rally_user_mascot_id", picked.id); } catch(e) {}
+  return picked;
+}
+
+const currentClientMascot = getClientMascot();
+
+// Canal de presencia y soft-locks
+let collaborationChannel = null;
+try {
+  collaborationChannel = new BroadcastChannel("rally_collab_channel_2026");
+  collaborationChannel.onmessage = (ev) => {
+    const data = ev.data;
+    if (data && data.type === "SOFT_LOCK") {
+      state.active_locks = state.active_locks || {};
+      state.active_locks[data.fieldId] = { mascot: data.mascot, timestamp: Date.now() };
+      updateSoftLockUI();
+    } else if (data && data.type === "RELEASE_LOCK") {
+      if (state.active_locks) delete state.active_locks[data.fieldId];
+      updateSoftLockUI();
+    } else if (data && data.type === "FIELD_UPDATE") {
+      if (data.category === "pautado") {
+        state.pautado[data.key] = data.value;
+        state.authorship.pautado[data.key] = data.mascot;
+        const el = document.getElementById(`pt-${data.key}`);
+        if (el && document.activeElement !== el) el.value = data.value;
+      } else if (data.category === "script") {
+        state.script[data.key] = data.value;
+        state.authorship.script[data.key] = data.mascot;
+        const el = document.getElementById(`sc-${data.key}`);
+        if (el && document.activeElement !== el) el.value = data.value;
+      }
+      saveState();
+    }
+  };
+} catch(e) {}
+
+function broadcastLock(fieldId) {
+  if (collaborationChannel) {
+    collaborationChannel.postMessage({ type: "SOFT_LOCK", fieldId, mascot: currentClientMascot });
+  }
+}
+
+function broadcastRelease(fieldId) {
+  if (collaborationChannel) {
+    collaborationChannel.postMessage({ type: "RELEASE_LOCK", fieldId });
+  }
+}
+
+function broadcastFieldChange(category, key, value) {
+  state.authorship = state.authorship || { pautado: {}, script: {} };
+  if (!state.authorship[category]) state.authorship[category] = {};
+  state.authorship[category][key] = currentClientMascot;
+  if (collaborationChannel) {
+    collaborationChannel.postMessage({ type: "FIELD_UPDATE", category, key, value, mascot: currentClientMascot });
+  }
+}
+
+function updateSoftLockUI() {
+  document.querySelectorAll("[data-lockable]").forEach(el => {
+    const fId = el.getAttribute("data-lockable");
+    const lock = state.active_locks ? state.active_locks[fId] : null;
+    const tagEl = document.getElementById(`lock-tag-${fId}`);
+    if (lock && Date.now() - lock.timestamp < 30000 && lock.mascot.id !== currentClientMascot.id) {
+      el.classList.add("soft-lock-active");
+      if (tagEl) {
+        tagEl.innerHTML = `<span class="soft-lock-tag">${lock.mascot.icon} ${lock.mascot.name} editando...</span>`;
+      }
+    } else {
+      el.classList.remove("soft-lock-active");
+      if (tagEl) tagEl.innerHTML = "";
+    }
+  });
+}
 
 // ── DETERMINAR ETAPA ACTUAL DEL PROCESO ──────────────────────────────────────
 function getWorkflowStage() {
@@ -825,8 +925,29 @@ function startTimer() {
     }
   }
 
+  // Sondeo periódico de telemetría de hardware
+  let telemetryTick = 0;
+  function pollTelemetry() {
+    fetch("/api/telemetry")
+      .then(r => r.json())
+      .then(data => {
+        const cpuEl = document.getElementById("telemetry-cpu-val");
+        const ramEl = document.getElementById("telemetry-ram-val");
+        if (cpuEl) cpuEl.innerText = `${data.cpu_percent}%`;
+        if (ramEl) ramEl.innerText = `${data.ram_percent}%`;
+      })
+      .catch(() => {});
+  }
+
   updateClockDisplay();
-  timerInterval = setInterval(updateClockDisplay, 1000);
+  pollTelemetry();
+  timerInterval = setInterval(() => {
+    updateClockDisplay();
+    telemetryTick++;
+    if (telemetryTick % 4 === 0) {
+      pollTelemetry();
+    }
+  }, 1000);
 }
 
 function startOfficialRallyTimer() {
@@ -891,6 +1012,19 @@ function renderTopbar() {
           <span class="deadline-pill-time">${deadlineData.time}</span>
         </div>
       ` : ""}
+
+      <!-- Avatar de Mascota Colaborativa Asignada (Sin Registro) -->
+      <div class="collaborator-avatar-badge" title="Tu avatar asignado automáticamente para editar en simultáneo sin pisarse">
+        <span class="collaborator-avatar-icon">${currentClientMascot.icon}</span>
+        <span>${currentClientMascot.name}</span>
+      </div>
+
+      <!-- Telemetría del Sistema en Tiempo Real -->
+      <div class="telemetry-chip" id="topbar-telemetry-chip" title="Métricas de hardware y estado del motor en tiempo real">
+        <span class="telemetry-pulse"></span>
+        <span>CPU <strong id="telemetry-cpu-val">--%</strong></span>
+        <span>RAM <strong id="telemetry-ram-val">--%</strong></span>
+      </div>
 
       <div class="dropdown-wrapper">
         <button class="btn-icon-discreet" onclick="toggleProjectMenu(event)" id="btn-project-menu" title="Opciones de proyecto">
@@ -1098,8 +1232,8 @@ function renderViewCertamen() {
   const isLatam = state.rally_type === 'latam';
   const isNac = state.rally_type === 'nacional';
 
-  const checkCircleMagenta = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#C026D3"/><path d="M7 12.5l3.5 3.5 7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-  const checkCirclePurple = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#7C3AED"/><path d="M7 12.5l3.5 3.5 7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  const checkCircleMagenta = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#0866F5"/><path d="M7 12.5l3.5 3.5 7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  const checkCirclePurple = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#0D1B35"/><path d="M7 12.5l3.5 3.5 7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
   return `
     <div class="wizard-canvas">
@@ -1944,33 +2078,36 @@ function generateSpecificMegaPrompt(taskId) {
   const cert = state.rally_type === "latam" ? "Rally Latinoamericano de Innovación (28h)" : "Rally Nacional Nicaragua Innova (24h)";
 
   if (taskId === "stats_poverty") {
-    return `Actúa como Investigador Principal para el ${cert}.
+    return `Actúa como Investigador Principal y Analista Cuantitativo para el ${cert}.
 Proyecto: "${pName}" enfocado en el reto: "${chTitle}".
 Tesis: "${thesis}".
-Instrucción estricta:
-1. Extrae 3 estadísticas cuantitativas verificables con fuente real (ej: pérdidas en USD, personas afectadas, hectáreas).
-2. Vincula directamente 2 metas oficiales de los ODS aplicables.
-3. ${state.rally_type === 'nacional' ? 'Alinea con un Eje específico del Plan Nacional de Lucha contra la Pobreza de Nicaragua.' : 'Describe el modelo de transferencia y escalamiento modular para municipios de América Latina.'}
-4. Proporciona las citas en formato APA 7 y una síntesis de 1 párrafo para la sección Problema del pautado (máximo 700 caracteres con espacios).`;
+Criterio Rúbrica Oficial: Impacto Positivo en la Sociedad (20 Puntos).
+Patrón de Ganadores Latam/Nacional:
+1. Extrae 3 estadísticas cuantitativas auditables (fuentes oficiales: CEPAL, UNDRR, UNICEF, Banco Central o entes técnicos).
+2. Vincula directamente 2 metas específicas de los ODS aplicables con su indicador numérico.
+3. ${state.rally_type === 'nacional' ? 'Alinea con un Eje específico del Plan Nacional de Lucha contra la Pobreza de Nicaragua (2022-2026) y el municipio piloto.' : 'Describe el modelo de transferencia y escalamiento modular para municipios de América Latina (laboratorio piloto a escala continental).'}
+4. Proporciona citas en formato APA 7 y una síntesis de 1 párrafo para la sección Problema del pautado (estrictamente menor a 1,250 caracteres con espacios, sin adjetivos vacíos).`;
   }
 
   if (taskId === "patents_art") {
-    return `Actúa como Especialista en Propiedad Intelectual y Patentes para el ${cert}.
+    return `Actúa como Especialista en Propiedad Intelectual, Estado del Arte y Patentes para el ${cert}.
 Proyecto: "${pName}" enfocado en: "${chTitle}".
 Tesis técnica: "${thesis}".
-Instrucción estricta:
-1. Busca 2 patentes o antecedentes técnicos en Google Patents / WIPO / Lens relacionados con esta temática.
-2. Identifica los números de publicación y explica exactamente en qué se diferencia nuestra solución técnica (qué hace única nuestra arquitectura).
-3. Redacta el bloque de 'Innovación y Diferenciación' para el documento pautado (máximo 800 caracteres con espacios, sin adjetivos vacíos, puramente técnico).`;
+Criterio Rúbrica Oficial: Grado de Innovación (30 Puntos) y Viabilidad Técnica (20 Puntos).
+Patrón de Ganadores Latam/Nacional:
+1. Identifica 2 patentes o antecedentes técnicos en Google Patents / WIPO / Lens sobre tecnologías similares.
+2. Cita números de publicación oficiales y detalla exactamente la diferenciación arquitectónica (hibridación ciber-física, telemetría o materiales locales).
+3. Redacta el bloque de 'Innovación y Diferenciación' para el documento pautado (máximo 1,000 caracteres con espacios, puramente técnico y medible).`;
   }
 
   if (taskId === "blender_3d") {
-    return `Actúa como Ingeniero Mecánico y Programador de Blender Python (bpy).
+    return `Actúa como Diseñador Industrial y Programador de Blender Python (bpy).
 Proyecto: "${pName}" (${chTitle}).
 Tesis: "${thesis}".
-Instrucción estricta:
+Criterio Rúbrica Oficial: Calidad de la Presentación y Viabilidad Técnica (30 Puntos combinados).
+Patrón de Ganadores:
 Genera un script de Python ejecutable en Blender 3.6+ / 4.x para modelar de forma paramétrica el prototipo del dispositivo.
-Reglas:
+Reglas técnicas:
 - Carcasa estanca con esquinas biseladas (bevels), puertos IP67 o entradas de cable, y pernos métricos realistas.
 - Materiales definidos mediante nodos PBR (plástico industrial rugoso, partes metálicas y panel translúcido).
 - Cámara y luz tipo estudio configuradas para renderizar una imagen de alta resolución o rotación de 360 grados.
@@ -1981,30 +2118,31 @@ Reglas:
     return `Actúa como Ingeniero de Costos y Abastecimiento Internacional para el ${cert}.
 Proyecto: "${pName}" (${chTitle}).
 Tesis: "${thesis}".
-Instrucción estricta:
+Criterio Rúbrica Oficial: Prefactibilidad Económica y Sustentabilidad (20 Puntos).
+Patrón de Ganadores Latam/Nacional:
 Elabora el Presupuesto de Puesta en Marcha para el lote piloto de 10 unidades.
-Reglas:
-1. Cotiza 5 a 6 insumos reales de sitios mayoristas (Alibaba / distribuidores electrónicos).
+Reglas estrictas de evaluación:
+1. Cotiza 5 a 6 insumos reales de distribuidores mayoristas (Alibaba / componentes de escala comercial).
 2. Proporciona: Elemento, Unidades requeridas, Costo unitario en USD y Enlace de búsqueda real.
 3. Incluye una partida obligatoria para Flete Internacional y Aranceles de Importación (18%).
-4. El monto total final debe situarse estrictamente en el rango óptimo de $4,000 a $6,000 USD.`;
+4. El monto total final debe situarse estrictamente en el rango óptimo de $4,000 a $6,000 USD (ni inflando ni omitiendo costos críticos).`;
   }
 
   if (taskId === "voice_audio") {
-    return `Actúa como Locutor Profesional de Pitch de Innovación.
+    return `Actúa como Locutor Profesional y Guionista de Pitch de Innovación para el ${cert}.
 Proyecto: "${pName}" (${chTitle}).
 Tesis: "${thesis}".
-Instrucción estricta:
-Genera el texto de locución limpio para los 4 actos de 120 segundos (cadencia estricta de 135 palabras por minuto, total 250 a 270 palabras).
-Reglas:
+Criterio Rúbrica Oficial: Calidad de la Presentación y Estructura Audiovisual (10 Puntos).
+Patrón de Ganadores (Anatomía de 120 segundos):
+Genera el texto de locución continuo para los 4 actos (cadencia estricta de 135 palabras por minuto, total 250 a 270 palabras):
 - Acto 1 (0–20s): Dolor humano y cifras cuantificadas. PROHIBIDO mencionar el nombre del proyecto o mostrar logos.
-- Acto 2 (20–60s): Explicación técnica de la solución.
-- Acto 3 (60–95s): Prefactibilidad y desglose de presupuesto en USD.
-- Acto 4 (95–120s): Cierre de impacto y llamado a la acción.
-- Entrega solo el texto continuo para sintetizador TTS, sin acotaciones ni corchetes.`;
+- Acto 2 (20–60s): Explicación técnica de la solución y mecanismo funcional.
+- Acto 3 (60–95s): Prefactibilidad y desglose del presupuesto en USD coincidente con el documento pautado.
+- Acto 4 (95–120s): Cierre de impacto, métricas auditables y proyección regional.
+Entrega solo el texto continuo para el locutor o sintetizador TTS, sin acotaciones teatrales ni corchetes.`;
   }
 
-  return `Mega-Prompt especializado para ${pName} (${cert}).`;
+  return `Mega-Prompt calibrado con Rúbrica 100 Pts para ${pName} (${cert}).`;
 }
 
 function copySpecificMegaPrompt(taskId) {
@@ -2050,33 +2188,52 @@ function injectTaskResult(taskId) {
         };
       });
     }
+  } else if (taskId === "voice_audio") {
+    // Si contiene división de actos, mapear a los 4 actos
+    if (val.includes("Acto 1") || val.includes("Acto I")) {
+      const parts = val.split(/Acto\s+[1-4I|V]+/i).map(p => p.trim()).filter(Boolean);
+      if (parts.length >= 4) {
+        state.script.acto1 = parts[0];
+        state.script.acto2 = parts[1];
+        state.script.acto3 = parts[2];
+        state.script.acto4 = parts[3];
+      } else {
+        state.script.acto1 = val.slice(0, 300);
+      }
+    } else {
+      state.script.acto1 = val.slice(0, 300);
+    }
   }
 
   saveState();
   renderTab("multi_ai");
-  alert(`✓ Datos inyectados al proyecto y tarea marcada como 'Completado'.`);
+  showToast(`✓ Datos inyectados al proyecto desde ${task ? task.ai : 'IA'} exitosamente`);
 }
 
 // ═════════════════════════════════════════════════════════════════════════════
 // 05 NIVEL 4: PAUTADO OFICIAL (< LÍMITES CON ESPACIOS)
 // ═════════════════════════════════════════════════════════════════════════════
 function renderViewPautado() {
+  const authorship = (state.authorship && state.authorship.pautado) || {};
+
   return `
     <div class="phase-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:14px; margin-bottom:24px; padding-bottom:14px; border-bottom:1px solid var(--border-light);">
       <div>
         <h1 class="phase-title">05 · Documento <span class="phase-title-accent">Pautado Oficial</span></h1>
-        <p class="phase-subtitle">5 secciones evaluadas por el jurado con conteo estricto de caracteres (incluyendo espacios).</p>
+        <p class="phase-subtitle">5 secciones evaluadas por el jurado con conteo estricto de caracteres y compilación directa en la plantilla oficial.</p>
       </div>
       <div style="display:flex; gap:8px;">
-        <button class="btn-primary" onclick="savePautado()">Guardar Pautado</button>
-        <a href="/docs/pautado_draft.docx" download class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
+        <button class="btn-primary" onclick="compileAndDownloadDocx()" id="btn-compile-docx">
+          ${SVG.spark} Compilar en Plantilla Word (.docx)
+        </button>
+        <a href="/docs/pautado_draft.docx" id="direct-docx-link" download class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
           ${SVG.download} Descargar Word (.docx)
         </a>
       </div>
     </div>
 
     <div class="rubric-callout">
-      <strong>REGLA DE CONTEO:</strong> La plataforma oficial calcula caracteres con espacios. Si sobrepasas el límite estipulado,
+      <strong>CONTEO ESTRICTO DE CARACTERES:</strong> Evaluado con la matriz oficial (100 pts). Si sobrepasas el límite estipulado,
       el sistema corta el texto o anula la sección en la rúbrica de evaluación.
     </div>
 
@@ -2087,18 +2244,31 @@ function renderViewPautado() {
         const max = PAUTADO_LIMITS[k];
         const pct = Math.min(100, Math.round((len / max) * 100));
         const isOver = len > max;
-        const color = isOver ? '#ef4444' : pct >= 70 ? '#047857' : '#1e40af';
+        const color = isOver ? '#ef4444' : pct >= 70 ? '#059669' : '#0866F5';
+        const authorMascot = authorship[k] || null;
 
         return `
-          <div class="workbench-card" style="margin-bottom:0;">
+          <div class="workbench-card" style="margin-bottom:0;" data-lockable="pautado-${k}">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-              <span style="font-size:12px; font-weight:800; text-transform:uppercase; color:var(--text-main);">${k}</span>
-              <span style="font-family:var(--font-mono); font-size:11px; font-weight:700; color:${color};">
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span style="font-size:12px; font-weight:800; text-transform:uppercase; color:var(--text-main);">${k}</span>
+                ${authorMascot ? `
+                  <span class="collaborator-stamp" title="Última edición por ${authorMascot.name}">
+                    ${authorMascot.icon} ${authorMascot.name}
+                  </span>
+                ` : ""}
+                <span id="lock-tag-pautado-${k}"></span>
+              </div>
+              <span style="font-family:var(--font-mono); font-size:11px; font-weight:700; color:${color}; font-variant-numeric:tabular-nums;">
                 ${len} / ${max} caracteres (${pct}%)
               </span>
             </div>
-            <textarea id="pt-${k}" rows="4" style="width:100%; border:1px solid ${isOver ? '#ef4444' : 'var(--border-light)'}; border-radius:4px; padding:10px; font-size:12px; font-family:var(--font-ui); box-sizing:border-box;"
-              placeholder="Escribe la sección ${k}..." oninput="updateCharCount('${k}', this)">${val}</textarea>
+            <textarea id="pt-${k}" rows="4" 
+              style="width:100%; border:1px solid ${isOver ? '#ef4444' : 'var(--border-light)'}; border-radius:4px; padding:10px; font-size:12px; font-family:var(--font-ui); box-sizing:border-box;"
+              placeholder="Escribe la sección ${k}..." 
+              onfocus="broadcastLock('pautado-${k}')"
+              onblur="broadcastRelease('pautado-${k}')"
+              oninput="updateCharCount('${k}', this)">${val}</textarea>
           </div>
         `;
       }).join("")}
@@ -2108,13 +2278,61 @@ function renderViewPautado() {
 
 function updateCharCount(k, el) {
   state.pautado[k] = el.value;
+  broadcastFieldChange("pautado", k, el.value);
   saveState();
+  const max = PAUTADO_LIMITS[k];
+  const len = el.value.length;
+  const pct = Math.min(100, Math.round((len / max) * 100));
+  const isOver = len > max;
+  const color = isOver ? '#ef4444' : pct >= 70 ? '#059669' : '#0866F5';
+  const labelEl = el.previousElementSibling ? el.previousElementSibling.querySelector("span:last-child") : null;
+  if (labelEl) {
+    labelEl.innerText = `${len} / ${max} caracteres (${pct}%)`;
+    labelEl.style.color = color;
+  }
+}
+
+function compileAndDownloadDocx() {
+  const btn = document.getElementById("btn-compile-docx");
+  if (btn) btn.innerHTML = `Compilando en plantilla oficial...`;
+  
+  fetch("/api/compile-docx", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      rally_type: state.rally_type || "latam",
+      team_name: state.team_name || "EQUIPO",
+      university: state.university || "UNIVERSIDAD",
+      project_name: state.project_name || "PROYECTO",
+      challenge_title: state.challenge_title || "DESAFÍO",
+      pautado: state.pautado
+    })
+  })
+  .then(r => r.json())
+  .then(res => {
+    if (btn) btn.innerHTML = `${SVG.spark} Compilar en Plantilla Word (.docx)`;
+    if (res.status === "ok") {
+      showToast("Documento pautado compilado exitosamente dentro de la plantilla oficial");
+      const a = document.createElement("a");
+      a.href = res.file;
+      a.download = `Pautado_${(state.project_name || 'Rally').replace(/\s+/g, '_')}_Oficial.docx`;
+      a.click();
+    } else {
+      alert("Error al compilar documento: " + (res.message || "desconocido"));
+    }
+  })
+  .catch(err => {
+    if (btn) btn.innerHTML = `${SVG.spark} Compilar en Plantilla Word (.docx)`;
+    showToast("Compilado en modo local: descargando borrador.");
+    const link = document.getElementById("direct-docx-link");
+    if (link) link.click();
+  });
 }
 
 function savePautado() {
   saveState();
   renderNavigation();
-  alert("Pautado guardado correctamente.");
+  showToast("Pautado guardado correctamente.");
 }
 
 // ═════════════════════════════════════════════════════════════════════════════
@@ -2235,6 +2453,23 @@ function renderViewResources() {
     </div>
 
     <div class="workbench-card">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <div>
+          <h3 style="margin:0;">Ingesta Automática por Carpeta Fuente</h3>
+          <p style="font-size:11px; color:var(--text-muted); margin:2px 0 0 0;">
+            Documentos, patentes, actas previas e imágenes detectadas automáticamente en el directorio de trabajo.
+          </p>
+        </div>
+        <button class="btn-secondary" onclick="scanFolderSources()" id="btn-scan-sources" style="font-size:11px;">
+          ${SVG.sync} Escanear Fuentes
+        </button>
+      </div>
+      <div id="sources-scan-container" style="max-height:180px; overflow-y:auto; border:1px solid var(--border-light); border-radius:6px; padding:8px; background:#f8fafc;">
+        <span style="font-size:11px; color:var(--text-muted);">Cargando catálogo de archivos fuente...</span>
+      </div>
+    </div>
+
+    <div class="workbench-card">
       <h3 style="margin-bottom:12px;">Enlaces Fijos del Equipo (Cloud Workspace)</h3>
       <div class="form-grid">
         <div class="form-group full">
@@ -2337,7 +2572,43 @@ function saveTeamHubLinks() {
   if (drive) state.google_drive_url = drive.value.trim();
   if (canva) state.canva_url = canva.value.trim();
   saveState();
-  alert("Enlaces guardados correctamente.");
+  showToast("Enlaces de equipo guardados correctamente");
+}
+
+function scanFolderSources() {
+  const cont = document.getElementById("sources-scan-container");
+  if (cont) cont.innerHTML = `<span style="font-size:11px; color:var(--color-primary);">Escaneando directorio de proyecto y boveda...</span>`;
+  
+  fetch("/api/scan-sources")
+    .then(r => r.json())
+    .then(data => {
+      if (!cont) return;
+      if (!data.sources || data.sources.length === 0) {
+        cont.innerHTML = `<span style="font-size:11px; color:var(--text-muted);">No se detectaron archivos fuente adicionales en la carpeta.</span>`;
+        return;
+      }
+      cont.innerHTML = `
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          ${data.sources.map(s => `
+            <div style="display:flex; justify-content:space-between; align-items:center; background:#ffffff; padding:6px 10px; border-radius:4px; border:1px solid var(--border-light);">
+              <div style="display:flex; align-items:center; gap:6px; overflow:hidden;">
+                <span class="badge-status badge-ok" style="font-size:9px;">${s.category.toUpperCase()}</span>
+                <span style="font-size:11px; font-weight:600; color:var(--text-main); white-space:nowrap; text-overflow:ellipsis; overflow:hidden;" title="${s.path}">
+                  ${s.name}
+                </span>
+              </div>
+              <span style="font-family:var(--font-mono); font-size:10px; color:var(--text-muted); font-variant-numeric:tabular-nums;">
+                ${(s.size / 1024).toFixed(1)} KB
+              </span>
+            </div>
+          `).join("")}
+        </div>
+      `;
+      showToast(`Escaneo completado: ${data.total} recursos detectados`);
+    })
+    .catch(() => {
+      if (cont) cont.innerHTML = `<span style="font-size:11px; color:#ef4444;">No fue posible contactar el servicio de escaneo local.</span>`;
+    });
 }
 
 // ═════════════════════════════════════════════════════════════════════════════
@@ -2376,12 +2647,13 @@ function renderViewScript() {
   const words = [state.script.acto1, state.script.acto2, state.script.acto3, state.script.acto4]
     .join(" ").trim().split(/\s+/).filter(Boolean).length;
   const estSeconds = Math.round((words / 135) * 60);
+  const authorship = (state.authorship && state.authorship.script) || {};
 
   return `
     <div class="phase-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:14px; margin-bottom:24px; padding-bottom:14px; border-bottom:1px solid var(--border-light);">
       <div>
         <h1 class="phase-title">09 · Guion Audiovisual <span class="phase-title-accent">120 Segundos</span></h1>
-        <p class="phase-subtitle">Estructura estricta para video pitch: ${words} palabras (~${estSeconds} segundos a 135 ppm).</p>
+        <p class="phase-subtitle">Estructura estricta para video pitch colaborativo: ${words} palabras (~${estSeconds} segundos a 135 ppm).</p>
       </div>
       <div style="display:flex; gap:8px;">
         <button class="btn-primary" onclick="saveScript()">Guardar Guion</button>
@@ -2396,57 +2668,83 @@ function renderViewScript() {
     </div>
 
     <div style="display:flex; flex-direction:column; gap:16px;">
-      <div class="workbench-card" style="margin-bottom:0;">
-        <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
-          <strong style="font-size:12px;">Acto I: Dolor Humano y Problema Cuantificado (0–20 seg)</strong>
+      <div class="workbench-card" style="margin-bottom:0;" data-lockable="script-acto1">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <strong style="font-size:12px;">Acto I: Dolor Humano y Problema Cuantificado (0–20 seg)</strong>
+            ${authorship.acto1 ? `<span class="collaborator-stamp">${authorship.acto1.icon} ${authorship.acto1.name}</span>` : ""}
+            <span id="lock-tag-script-acto1"></span>
+          </div>
           <span style="font-size:11px; color:#ef4444; font-weight:700;">PROHIBIDO LOGOS Y NOMBRES</span>
         </div>
         <textarea id="sc-a1" rows="3" style="width:100%; border:1px solid var(--border-light); border-radius:4px; padding:8px; font-size:12px; font-family:var(--font-ui); box-sizing:border-box;"
-          placeholder="Describe la problemática con datos y personas afectadas...">${state.script.acto1}</textarea>
+          placeholder="Describe la problemática con datos y personas afectadas..."
+          onfocus="broadcastLock('script-acto1')"
+          onblur="broadcastRelease('script-acto1')"
+          oninput="handleScriptInput('acto1', this)">${state.script.acto1}</textarea>
       </div>
 
-      <div class="workbench-card" style="margin-bottom:0;">
-        <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
-          <strong style="font-size:12px;">Acto II: Solución Técnica y Demostración de Hardware (20–60 seg)</strong>
+      <div class="workbench-card" style="margin-bottom:0;" data-lockable="script-acto2">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <strong style="font-size:12px;">Acto II: Solución Técnica y Demostración de Hardware (20–60 seg)</strong>
+            ${authorship.acto2 ? `<span class="collaborator-stamp">${authorship.acto2.icon} ${authorship.acto2.name}</span>` : ""}
+            <span id="lock-tag-script-acto2"></span>
+          </div>
           <span style="font-size:11px; color:var(--color-primary); font-weight:700;">30 PTS INNOVACIÓN</span>
         </div>
         <textarea id="sc-a2" rows="3" style="width:100%; border:1px solid var(--border-light); border-radius:4px; padding:8px; font-size:12px; font-family:var(--font-ui); box-sizing:border-box;"
-          placeholder="Muestra cómo funciona la solución tecnológica...">${state.script.acto2}</textarea>
+          placeholder="Muestra cómo funciona la solución tecnológica..."
+          onfocus="broadcastLock('script-acto2')"
+          onblur="broadcastRelease('script-acto2')"
+          oninput="handleScriptInput('acto2', this)">${state.script.acto2}</textarea>
       </div>
 
-      <div class="workbench-card" style="margin-bottom:0;">
-        <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
-          <strong style="font-size:12px;">Acto III: Prefactibilidad y Presupuesto Sustentado (60–95 seg)</strong>
+      <div class="workbench-card" style="margin-bottom:0;" data-lockable="script-acto3">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <strong style="font-size:12px;">Acto III: Prefactibilidad y Presupuesto Sustentado (60–95 seg)</strong>
+            ${authorship.acto3 ? `<span class="collaborator-stamp">${authorship.acto3.icon} ${authorship.acto3.name}</span>` : ""}
+            <span id="lock-tag-script-acto3"></span>
+          </div>
           <span style="font-size:11px; color:#047857; font-weight:700;">20 PTS VIABILIDAD</span>
         </div>
         <textarea id="sc-a3" rows="3" style="width:100%; border:1px solid var(--border-light); border-radius:4px; padding:8px; font-size:12px; font-family:var(--font-ui); box-sizing:border-box;"
-          placeholder="Menciona las cifras exactas del presupuesto de marcha...">${state.script.acto3}</textarea>
+          placeholder="Menciona las cifras exactas del presupuesto de marcha..."
+          onfocus="broadcastLock('script-acto3')"
+          onblur="broadcastRelease('script-acto3')"
+          oninput="handleScriptInput('acto3', this)">${state.script.acto3}</textarea>
       </div>
 
-      <div class="workbench-card" style="margin-bottom:0;">
-        <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
-          <strong style="font-size:12px;">Acto IV: Cierre de Alto Impacto y Llamado a la Acción (95–120 seg)</strong>
+      <div class="workbench-card" style="margin-bottom:0;" data-lockable="script-acto4">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <strong style="font-size:12px;">Acto IV: Cierre de Alto Impacto y Llamado a la Acción (95–120 seg)</strong>
+            ${authorship.acto4 ? `<span class="collaborator-stamp">${authorship.acto4.icon} ${authorship.acto4.name}</span>` : ""}
+            <span id="lock-tag-script-acto4"></span>
+          </div>
           <span style="font-size:11px; color:var(--text-muted); font-weight:700;">CIERRE EXACTO T-119s</span>
         </div>
         <textarea id="sc-a4" rows="3" style="width:100%; border:1px solid var(--border-light); border-radius:4px; padding:8px; font-size:12px; font-family:var(--font-ui); box-sizing:border-box;"
-          placeholder="Cierre inspirador con los logos del equipo y la universidad...">${state.script.acto4}</textarea>
+          placeholder="Cierre inspirador con los logos del equipo y la universidad..."
+          onfocus="broadcastLock('script-acto4')"
+          onblur="broadcastRelease('script-acto4')"
+          oninput="handleScriptInput('acto4', this)">${state.script.acto4}</textarea>
       </div>
     </div>
   `;
 }
 
+function handleScriptInput(key, el) {
+  state.script[key] = el.value;
+  broadcastFieldChange("script", key, el.value);
+  saveState();
+}
+
 function saveScript() {
-  const a1 = document.getElementById("sc-a1");
-  const a2 = document.getElementById("sc-a2");
-  const a3 = document.getElementById("sc-a3");
-  const a4 = document.getElementById("sc-a4");
-  if (a1) state.script.acto1 = a1.value;
-  if (a2) state.script.acto2 = a2.value;
-  if (a3) state.script.acto3 = a3.value;
-  if (a4) state.script.acto4 = a4.value;
   saveState();
   renderNavigation();
-  alert("Guion guardado correctamente.");
+  showToast("Guion guardado correctamente.");
 }
 
 // ═════════════════════════════════════════════════════════════════════════════

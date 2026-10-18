@@ -1,73 +1,95 @@
-# HIDRO-VIGIA -- Mentes Pinoleras
+# RALLY STUDIO · ERP & WORKBENCH DE INNOVACIÓN
 
-> **Certamen:** Rally NACIONAL (24 horas continuas)  
-> **Sede / Universidad:** Universidad Nacional de Ingenieria (UNI - RUSB) (Managua (Cuenca Cauce Oriental), Nicaragua)  
-> **Categoria:** Tecnologica | **Desafio #02:** Redes de sensores comunitarios para prevencion y alerta temprana de inundaciones  
-> **Alineacion Estrategica:** ODS 11, ODS 13, ODS 3 | **Eje Plan Nacional:** Eje 3: Proteccion de la Vida y Resiliencia ante el Cambio Climatico  
-> **Ultima sincronizacion:** 18/10/2026 (generado automaticamente por Rally Studio)
+> **Plataforma Integral de Gestión, Colaboración Multi-IA y Despacho Rápido para Rallies de Innovación (Rally Latinoamericano 28h & Rally Nacional 24h).**  
+> Diseñada para competir y ganar: Cero fricción, colaboración multi-usuario sin registro basada en mascotas, ingesta contextual automática, compilación en un clic a la plantilla oficial Word (`.docx`) y tokens ultra-optimizados.
 
 ---
 
-## 1. Tesis y Resumen Ejecutivo
-**Sistema ciber-fisico de telemetria hiperlocal con sensores de nivel ultrasonicos y red LoRaWAN para alerta temprana comunitaria con 30 minutos de anticipacion.**
+## ⚡ Guía para Agentes de IA ("Trae este proyecto y trabaja")
 
-Este repositorio contiene la arquitectura completa de ingenieria, documentacion pautada oficial, estudio de prefactibilidad economica sustentada, matriz Canvas, guion audiovisual de 120 segundos y recursos multimedia requeridos por el sistema de evaluacion SIRLI.
+Si eres un modelo de Inteligencia Artificial (ChatGPT, Claude, Gemini, DeepSeek, OpenCode o Antigravity) y el usuario te ha dado este repositorio con la orden *"trabaja aquí"*, lee estas **4 reglas fundamentales** para no desperdiciar tokens:
 
----
-
-## 2. Estado de Entregables Oficiales (Auditoria en Vivo)
-
-- [x] **Fuente Unica de Verdad:** `brief.json` configurado y validado.
-- [x] **Identidad y Tokens:** `brand/palette.json` y `brand/tokens.css` (Contraste WCAG AA).
-- [x] **Evidencia e Investigacion:** `research/claims.json` con fuentes verificables.
-- [x] **Reporte Pautado Oficial:** `docs/pautado_draft.docx` (limite estricto de caracteres).
-- [x] **Presupuesto Mayorista:** `budget/budget.xlsx` ($4,000 - $6,000 USD con enlaces y flete).
-- [x] **Modelo Canvas:** `docs/canvas.md` coherente con costos y propuesta de valor.
-- [x] **Referencias APA 7:** `docs/bibliography.md` con declaracion etica de uso de IA.
-- [x] **Guion de Produccion:** `script/script.md` estructurado en 4 actos (120s exactos).
-- [x] **Pista Guia de Locucion:** `assets/voice/narration.wav` o `.mp3`.
-- [x] **Plataforma Web Demo:** Desplegada en `site/` (GitHub Pages / Netlify).
+1. **Tu Fuente Única de Verdad es `brief.json`**:
+   - Lee exclusivamente `brief.json` al iniciar. Contiene el nombre del proyecto, el reto seleccionado, la categoría, la universidad y la sede. No inventes nombres nuevos.
+2. **Mapa de Archivos & Dónde Editar**:
+   - **Documento Pautado Oficial**: Edita `docs/pautado_draft.docx` o actualiza `state.pautado` vía el dashboard. *Límites estrictos de caracteres con espacios: Problema (1,250), Solución (1,250), Prefactibilidad (1,000), Innovación (1,000), Impacto (1,500).*
+   - **Presupuesto**: `budget/budget.xlsx` (debe situarse estrictamente entre $4,000 y $6,000 USD para lote piloto de 10 unidades, incluyendo flete del 18%).
+   - **Guion Pitch 120s**: `script/script.md` o `dashboard/app.js` (estricto en 4 actos a 135 ppm, total 250 a 270 palabras). Acto 1 tiene **prohibido** mencionar el nombre del proyecto o logos.
+   - **Demostración Web**: `site/index.html` y `site/style.css` (interfaz de prototipo territorial para capturar en video).
+3. **No leas archivos innecesarios**:
+   - Para consultar rúbricas oficiales y pesos evaluables: lee `knowledge/rubric_latam.md` (33 líneas).
+   - Para entender errores comunes descalificantes: lee `knowledge/winners_analysis.md`.
+4. **Respeto Estricto de Diseño**:
+   - Cero gradientes genéricos violetas/morados (`#7c3aed`), cero cards translúcidas flotantes. Usa únicamente la paleta corporativa: **Azul Cobalto (`#0866F5`)**, **Azul Marino Oficial (`#0D1B35`)** y grises neutros de 1px.
 
 ---
 
-## 3. Toolkit de Comandos de Automatizacion
+## 🚀 Arquitectura del Sistema (ERP Rally Studio)
 
-Todos los scripts operan de manera sincronizada y alimentan el dashboard local:
-
-```bash
-# Entrevista y Validacion de Brief
-python scripts/init_brief.py            # Entrevista inicial guiada
-python scripts/validate_brief.py        # Validador previo a generacion
-
-# Identidad Visual y Scoring
-python scripts/gen_palette.py brand/logo.png  # Extraccion de paleta y tokens CSS
-python scripts/score_challenges.py      # Ranking predictivo de desafios 2014-2026
-
-# Documentos Ejecutivos
-python scripts/gen_pautado.py --clean   # Generador de pautado Word oficial
-python scripts/validate_pautado.py      # Conteo auditado de caracteres con espacios
-python scripts/gen_budget.py            # Generador de hoja Excel formal
-python scripts/validate_budget.py       # Auditoria de URLs y coherencia de costos
-python scripts/gen_canvas.py            # Generador de Business Model Canvas
-python scripts/gen_bibliography.py      # Generador de bibliografia APA 7
-
-# Produccion Audiovisual y Narrativa
-python scripts/gen_script.py            # Guion 4 actos + shotlist.csv + locucion
-python scripts/gen_voice.py             # Sintesis de voz adaptativa (Chatterbox / Kokoro)
-
-# Monitor y Control de Tiempo
-python scripts/render_watch.py          # Monitor de RAM/CPU para prevenir cuelgues
-python scripts/rally_clock.py           # Cronometro regresivo y alertas criticas
-
-# Publicacion y Despliegue
-python scripts/gen_readme.py            # Actualizar esta biblia del proyecto
-python scripts/publish_site.py          # Despliegue de demo a Netlify / Pages
+```
+rally-studio/
+├── AGENTS.md                  # Reglas de oro para agentes LLM (contexto en <100 líneas)
+├── brief.json                 # Fuente de verdad compartida por todo el certamen
+├── brand/
+│   ├── palette.json           # Paleta cromática calibrada AAA
+│   └── tokens.css             # Variables CSS del sistema de diseño
+├── dashboard/                 # ERP & Workbench Web de Competencia
+│   ├── index.html             # Shell de aplicación líquida
+│   ├── style.css              # Sistema de diseño sobrio (Linear / Swiss)
+│   ├── app.js                 # Núcleo reactivo, colaboración, soft-locks y despacho IA
+│   ├── graph.html             # Explorador visual de conocimiento
+│   └── docs/                  # Carpeta de entregables generados
+├── site/                      # Prototipo / Landing interactiva para el video pitch
+├── knowledge/                 # Bóveda de rúbricas oficiales y análisis de ganadores
+│   ├── rubric_latam.md        # Matriz 100 pts oficial (Innovación 30, Impacto 20...)
+│   ├── pautado_latam_ref.docx # Plantilla oficial Word Rally Latam
+│   └── pautado_nacional_ref.docx # Plantilla oficial Word Rally Nacional
+└── scripts/
+    ├── rally_service.py       # Micro-backend HTTP: Telemetría, Ingesta & Compilador DOCX
+    ├── gen_pautado.py         # Generador del documento oficial Word
+    ├── gen_budget.py          # Generador de cotización y presupuesto Excel
+    └── gen_script.py          # Generador de guion en 4 actos para locución
 ```
 
 ---
 
-## 4. Reglas Innegociables para Agentes de IA (`AGENTS.md`)
-1. **Unica Fuente:** Ningun modulo ni redactor hardcodea datos; todo se lee de `brief.json` y `claims.json`.
-2. **Cero Clichés de IA:** Prohibido el uso de gradientes morados, cards repetidas, sombras difusas o texto inflado.
-3. **Puntuacion Estrategica:** Los ultimos 25 segundos del video y el pautado deben coincidir al 100% en costos unitarios y métricas.
-4. **Respeto de Tiempos:** Subir el video a YouTube al menos 45 minutos antes del cierre de SIRLI.
+## 🛠️ Puesta en Marcha Rápida (1 Comando)
+
+Inicia el servicio autónomo local (Dashboard + Telemetría + Compilador Word):
+
+```bash
+python scripts/rally_service.py
+```
+
+Abre en tu navegador:
+- **ERP Workbench Oficial:** `http://localhost:8000/`
+- **Prototipo Territorial para Video:** `http://localhost:8000/site/index.html`
+
+---
+
+## 👥 Colaboración Multi-Usuario sin Login & Soft-Locks en Tiempo Real
+
+- **Cero formularios de registro**: Cada miembro del equipo que ingresa al dashboard recibe automáticamente una mascota emblemática única (🐆 Jaguar Ágil, 🪶 Quetzal Guía, 🛡️ Armadillo Blindado, ⚡ Colibrí Veloz, 🐾 Ocelote Creativo, 🦅 Halcón Vigía).
+- **Estampado de autoría**: Cada sección editada en el pautado o en el guion audiovisual refleja el sello de la mascota autora.
+- **Soft-Locks visuales**: Prevención de colisiones en tiempo real mediante `BroadcastChannel`. Si un compañero está redactando una sección, se resalta visualmente indicando quién está activo.
+- **Bypass para Wi-Fi Universitario**: Si la red del certamen aísla terminales locales, la sincronización se realiza en 1 clic copiando el **Token de Estado** para compartirlo vía WhatsApp o sincronizando el JSON central en Google Drive.
+
+---
+
+## 🏆 Matriz Oficial de Evaluación Rally (100 Puntos)
+
+| Criterio | Peso | Foco de Evaluación |
+| :--- | :---: | :--- |
+| **a. Grado de Innovación** | **30 pts** | Hibridación ciber-física, tecnología apropiada, novedad verificable. |
+| **b. Impacto Social** | **20 pts** | Problemática específica, valor social sobre mercado, beneficiarios reales. |
+| **c. Prefactibilidad** | **20 pts** | Presupuesto sustentado ($4,000–$6,000 USD), eficiencia energética, insumos comerciales. |
+| **d. Viabilidad Técnica** | **20 pts** | Base teórica documentada, componentes accesibles, factibilidad operativa probada. |
+| **e. Presentación (Pitch)**| **10 pts** | Capacidad de síntesis, 120s exactos, claridad visual y solidez argumental. |
+
+---
+
+## 📄 Compilación y Exportación Directa a Word (.docx)
+
+Haz clic en el botón **"Compilar en Plantilla Word (.docx)"** en la fase de Pautado. El backend inyecta los textos validados directamente en los campos correspondientes de la plantilla oficial de la competencia, conservando encabezados institucionales, márgenes y tipografías oficiales.
+
+Desarrollado con rigor de ingeniería para equipos de alto rendimiento en el **Rally Latinoamericano de Innovación** y **Rally Nacional Nicaragua Innova**.
