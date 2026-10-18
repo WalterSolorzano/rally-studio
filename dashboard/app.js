@@ -4,6 +4,13 @@
 
 // ── ICONOS SVG VECTORIALES (CERO EMOJIS) ──────────────────────────────────────
 const SVG = {
+  logo: `<svg width="24" height="22" viewBox="0 0 24 22" fill="none" style="vertical-align:middle;"><line x1="5" y1="20" x2="13" y2="2" stroke="#0066FF" stroke-width="4.5" stroke-linecap="round"/><line x1="13" y1="20" x2="21" y2="2" stroke="#0066FF" stroke-width="4.5" stroke-linecap="round"/></svg>`,
+  folder: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>`,
+  sync: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>`,
+  chevronDown: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>`,
+  pin: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>`,
+  checkedCircle: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#0066FF"/><path d="M7 12.5l3.5 3.5 7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  uncheckedCircle: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" stroke="#CBD5E1" stroke-width="2"/></svg>`,
   check: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>`,
   lock: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>`,
   clock: `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>`,
@@ -11,13 +18,106 @@ const SVG = {
   upload: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>`,
   external: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>`,
   menu: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`,
-  globe: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>`,
-  shield: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>`,
+  globe: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>`,
+  shield: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>`,
   copy: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`,
   spark: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>`,
   arrowRight: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>`,
   plus: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>`,
-  refresh: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>`
+  refresh: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>`,
+
+  latinAmericaIllustration: `
+<svg width="280" height="165" viewBox="0 0 300 180" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width:100%; height:auto;">
+  <defs>
+    <linearGradient id="laGradMain" x1="100" y1="20" x2="220" y2="170" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="35%" stop-color="#0066FF"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+    <linearGradient id="laGradNorth" x1="80" y1="30" x2="160" y2="80" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#93C5FD"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+    <linearGradient id="laOrbitGlow" x1="40" y1="80" x2="260" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#BFDBFE" stop-opacity="0.3"/>
+      <stop offset="50%" stop-color="#3B82F6" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#BFDBFE" stop-opacity="0.3"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="150" cy="95" rx="110" ry="38" stroke="url(#laOrbitGlow)" stroke-width="1.8" stroke-dasharray="5 4" transform="rotate(-14 150 95)"/>
+  <ellipse cx="150" cy="97" rx="120" ry="28" stroke="#93C5FD" stroke-width="1.2" stroke-opacity="0.55" transform="rotate(22 150 97)"/>
+  <path d="M85 36 C92 32, 102 34, 110 42 C118 50, 122 46, 130 54 C134 58, 140 66, 144 72 C146 76, 150 77, 156 80 C162 82, 168 81, 174 86 C169 89, 162 86, 156 88 C151 89, 144 82, 138 78 C132 74, 126 64, 120 60 C114 56, 106 53, 98 46 C92 42, 86 40, 85 36 Z" fill="url(#laGradNorth)"/>
+  <circle cx="172" cy="60" r="2.5" fill="#3B82F6"/>
+  <circle cx="184" cy="64" r="2" fill="#60A5FA"/>
+  <path d="M152 84 C160 82, 176 80, 194 86 C210 92, 224 106, 222 124 C220 136, 208 150, 200 162 C192 174, 184 186, 179 196 C176 197, 172 192, 172 184 C172 172, 162 158, 158 146 C154 136, 146 128, 146 116 C146 104, 144 96, 152 84 Z" fill="url(#laGradMain)"/>
+  <path d="M174 86 C182 104, 188 126, 180 152 C176 166, 172 180, 176 194 C174 194, 170 186, 170 176 C170 162, 160 148, 156 136 C152 124, 152 110, 158 96 Z" fill="#1D4ED8" fill-opacity="0.38"/>
+  <path d="M180 88 C196 96, 212 112, 210 126 C208 138, 198 152, 190 164 C198 148, 206 134, 204 122 C202 110, 192 98, 180 88 Z" fill="#60A5FA" fill-opacity="0.45"/>
+  <circle cx="204" cy="80" r="3.5" fill="#0066FF"/>
+  <circle cx="204" cy="80" r="6" stroke="#93C5FD" stroke-width="1.2" stroke-opacity="0.8"/>
+  <circle cx="122" cy="112" r="2.5" fill="#38BDF8"/>
+</svg>`,
+
+  momotomboIllustration: `
+<svg width="280" height="165" viewBox="0 0 300 180" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width:100%; height:auto;">
+  <defs>
+    <linearGradient id="coneGradM" x1="150" y1="50" x2="150" y2="135" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="40%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+    <linearGradient id="hillsGradM" x1="150" y1="100" x2="150" y2="145" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0D9488"/>
+      <stop offset="100%" stop-color="#065F46"/>
+    </linearGradient>
+    <linearGradient id="lakeGradM" x1="150" y1="135" x2="150" y2="175" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#0369A1"/>
+    </linearGradient>
+    <linearGradient id="sunGradM" x1="220" y1="60" x2="240" y2="80" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FDE047"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+  <circle cx="228" cy="72" r="13" fill="url(#sunGradM)"/>
+  <path d="M60 92 C60 85, 67 79, 74 79 C78 74, 85 72, 92 74 C99 72, 106 76, 108 81 C113 81, 118 86, 118 92 Z" fill="#E2E8F0" fill-opacity="0.85"/>
+  <path d="M218 96 C218 90, 224 86, 230 86 C234 81, 241 81, 246 83 C251 81, 257 85, 259 88 C264 88, 268 92, 268 96 Z" fill="#E2E8F0" fill-opacity="0.75"/>
+  <path d="M20 128 Q80 114 140 120 T280 118 L280 136 L20 136 Z" fill="#93C5FD" fill-opacity="0.55"/>
+  <path d="M150 56 L124 130 L176 130 Z" fill="url(#coneGradM)"/>
+  <path d="M143 58 C147 55, 153 55, 157 58 L150 68 Z" fill="#F59E0B"/>
+  <path d="M150 56 L142 130 L150 130 Z" fill="#1E40AF" fill-opacity="0.45"/>
+  <path d="M150 56 L158 130 L150 130 Z" fill="#60A5FA" fill-opacity="0.35"/>
+  <path d="M35 132 Q70 112 110 125 Q140 116 175 124 Q220 114 265 132 L265 142 L35 142 Z" fill="url(#hillsGradM)"/>
+  <path d="M65 134 Q100 118 130 130 Q160 120 195 128 Q230 122 250 136 L250 144 L65 144 Z" fill="#047857" fill-opacity="0.85"/>
+  <path d="M15 138 C75 136, 155 140, 285 138 L285 170 C205 174, 95 170, 15 170 Z" fill="url(#lakeGradM)"/>
+  <path d="M75 144 Q145 148 215 144" stroke="#E0F2FE" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M105 153 Q145 156 185 153" stroke="#BAE6FD" stroke-width="2" stroke-linecap="round"/>
+  <path d="M125 161 Q145 163 165 161" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
+</svg>`,
+
+  landscapeBg: `
+<div class="wizard-scenery-wrap">
+  <div class="handwritten-script script-top">
+    Dos caminos,<br>un mismo reto.
+    <svg class="script-underline-svg" width="90" height="12" viewBox="0 0 90 12" fill="none">
+      <path d="M3 8 C25 3, 60 4, 87 9" stroke="#0066FF" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <svg width="340" height="170" viewBox="0 0 340 170" fill="none" style="position:absolute; right:0; top:0;">
+    <circle cx="260" cy="46" r="12" fill="#F59E0B"/>
+    <path d="M205 70 C205 64, 210 59, 217 59 C221 54, 228 52, 235 54 C242 52, 249 55, 251 60 C256 60, 261 65, 261 70 Z" fill="#E2E8F0" fill-opacity="0.8"/>
+    <path d="M270 78 C270 74, 274 70, 279 70 C283 67, 289 67, 293 69 C297 67, 301 70, 303 72 C307 72, 310 75, 310 78 Z" fill="#E2E8F0" fill-opacity="0.7"/>
+    <path d="M170 118 C215 95, 270 108, 330 116 L330 150 L170 150 Z" fill="#93C5FD" fill-opacity="0.45"/>
+    <path d="M245 52 L185 132 L305 132 Z" fill="#1D4ED8"/>
+    <path d="M245 52 L218 132 L245 132 Z" fill="#1E3A8A"/>
+    <path d="M245 52 L272 132 L245 132 Z" fill="#3B82F6"/>
+    <ellipse cx="245" cy="54" rx="7" ry="2.5" fill="#F59E0B"/>
+    <path d="M155 130 C185 116, 215 124, 240 120 C270 116, 300 122, 330 132 L330 150 L155 150 Z" fill="#0D9488"/>
+    <path d="M145 138 C195 134, 275 140, 340 136 L340 165 L145 165 Z" fill="#38BDF8" fill-opacity="0.85"/>
+    <path d="M185 144 Q235 148 295 144" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+    <path d="M210 152 Q250 155 310 152" stroke="#BAE6FD" stroke-width="1.8" stroke-linecap="round"/>
+  </svg>
+</div>`
 };
 
 // ── CATÁLOGO HISTÓRICO DE REFERENCIA (RALLY 2026) ────────────────────────────
@@ -439,30 +539,64 @@ function togglePanel() {
 function renderTopbar() {
   const el = document.getElementById("topbar");
   const stage = getWorkflowStage();
-  const certamen = state.rally_type === "latam" ? "Rally Latam 28h" : state.rally_type === "nacional" ? "Rally Nacional 24h" : "Sin Certamen";
-  const pName = state.project_name || state.team_name || "T=0";
+  const certamen = state.rally_type === "latam" ? "Rally Latam 28h" : state.rally_type === "nacional" ? "Rally Nacional 24h" : "";
+  const pName = state.team_name || state.project_name || "";
 
   el.innerHTML = `
     <div class="topbar-left">
       ${stage >= 2 ? `<button class="btn-toggle-sidebar" onclick="toggleSidebar()" title="Colapsar/Expandir menú lateral">${SVG.menu}</button>` : ""}
-      <span class="brand-badge">RALLY STUDIO</span>
-      ${state.rally_type ? `<span class="mode-tag">${certamen}</span>` : ""}
-      ${state.team_name ? `<span class="project-title">${pName}</span>` : ""}
-      ${state.challenge_id ? `<span style="font-size:11px; font-weight:700; color:var(--text-muted); font-family:var(--font-mono);">[Reto #${state.challenge_id}]</span>` : ""}
+      <div class="brand-group" onclick="activeTab='certamen'; syncUI();" title="Ir al inicio de Rally Studio">
+        ${SVG.logo}
+        <span class="brand-text-navy">RALLY</span>
+        <span class="brand-text-blue">STUDIO</span>
+      </div>
+      ${state.rally_type ? `<span class="mode-tag-pill">${certamen}</span>` : ""}
+      ${pName ? `<span class="project-title-crumb">/ ${pName}</span>` : ""}
+      ${state.challenge_id ? `<span class="challenge-title-crumb">Reto #${state.challenge_id}</span>` : ""}
     </div>
     <div class="topbar-actions">
-      <button class="btn-secondary" onclick="resetProject()">Nuevo Proyecto (T=0)</button>
-      <button class="btn-secondary" onclick="copySyncToken()" title="Copiar estado para compartir por WhatsApp">${SVG.copy} Sincronizar Token</button>
-      <button class="btn-secondary" onclick="exportProjectJson()" title="Descargar copia del proyecto en JSON">${SVG.download} Exportar</button>
-      <label class="btn-secondary" style="margin:0; cursor:pointer;" title="Cargar proyecto guardado">${SVG.upload} Importar<input type="file" accept=".json" style="display:none;" onchange="importProjectJson(event)"></label>
-      ${stage >= 2 ? `<button class="btn-secondary" onclick="togglePanel()" title="Ocultar/Mostrar panel derecho">Auditoría</button>` : ""}
-      <div class="timer-box" style="display:flex; align-items:center; gap:6px;">
-        <span class="timer-pulse"></span>
-        <span id="clock-timer" style="font-family:var(--font-mono); font-weight:800; font-size:13px;">${state.hours_total || 28}:00:00</span>
+      <div class="dropdown-wrapper">
+        <button class="btn-pill-light" onclick="toggleProjectMenu(event)" id="btn-project-menu">
+          ${SVG.folder}
+          <span>Nuevo proyecto</span>
+          ${SVG.chevronDown}
+        </button>
+        <div id="project-dropdown" class="dropdown-menu-box" style="display:none;">
+          <a href="#" onclick="resetProject(); return false;">Reiniciar Certamen (T=0)</a>
+          <a href="#" onclick="exportProjectJson(); return false;">${SVG.download} Exportar Proyecto (.json)</a>
+          <label style="cursor:pointer; display:flex; align-items:center; gap:8px; padding:9px 14px; font-size:12px; color:#1e293b;">
+            ${SVG.upload} Importar Proyecto (.json)
+            <input type="file" accept=".json" style="display:none;" onchange="importProjectJson(event)">
+          </label>
+        </div>
+      </div>
+
+      <button class="btn-pill-ghost" onclick="copySyncToken()" title="Copiar token base64 para compartir por WhatsApp">
+        ${SVG.sync}
+        <span>Sincronizar</span>
+      </button>
+
+      ${stage >= 2 ? `<button class="btn-pill-ghost" onclick="togglePanel()" title="Panel de Auditoría">${SVG.spark} Auditoría</button>` : ""}
+
+      <div class="timer-pill-navy">
+        ${SVG.clock}
+        <span id="clock-timer">${state.hours_total || 28}:00:00</span>
       </div>
     </div>
   `;
 }
+
+function toggleProjectMenu(event) {
+  if (event) event.stopPropagation();
+  const menu = document.getElementById("project-dropdown");
+  if (!menu) return;
+  menu.style.display = menu.style.display === "none" ? "block" : "none";
+}
+
+document.addEventListener("click", () => {
+  const menu = document.getElementById("project-dropdown");
+  if (menu) menu.style.display = "none";
+});
 
 // ── NAVEGACIÓN LATERAL POR DEPENDENCIAS ───────────────────────────────────────
 function renderNavigation() {
@@ -528,60 +662,104 @@ function renderTab(tabId) {
 }
 
 // ═════════════════════════════════════════════════════════════════════════════
-// 00 NIVEL 0: SELECCIÓN DE CERTAMEN (UI LIMPIA DE ENTRADA)
+// 00 NIVEL 0: SELECCIÓN DE CERTAMEN (RÉPLICA EXACTA DE LA IMAGEN)
 // ═════════════════════════════════════════════════════════════════════════════
 function renderViewCertamen() {
+  const isLatam = state.rally_type === 'latam';
+  const isNac = state.rally_type === 'nacional';
+
   return `
     <div class="wizard-canvas">
-      <span class="wizard-tag">Paso 01 de 03 · Configuración Inicial</span>
-      <h1 class="wizard-title">¿Qué Rally es?</h1>
-      <p class="wizard-desc">
-        Selecciona el certamen en el que participa tu equipo para calibrar automáticamente las reglas,
+      ${SVG.landscapeBg}
+
+      <div class="stepper-header">
+        <span class="stepper-pill">PASO 01 DE 03</span>
+        <div class="stepper-bars">
+          <div class="stepper-bar-segment active"></div>
+          <div class="stepper-bar-segment"></div>
+          <div class="stepper-bar-segment"></div>
+        </div>
+      </div>
+
+      <h1 class="wizard-hero-title">¿Qué <span class="title-accent">Rally</span> es?</h1>
+      <p class="wizard-hero-desc">
+        Selecciona el certamen en el que participará tu equipo para calibrar automáticamente las reglas,
         el régimen de horas y la estructura oficial del documento pautado.
       </p>
 
       <div class="certamen-grid">
-        <div class="certamen-card ${state.rally_type === 'latam' ? 'selected' : ''}" onclick="selectCertamen('latam')">
+        <!-- Tarjeta 1: Rally Latinoamericano de Innovación -->
+        <div class="certamen-card ${isLatam ? 'selected' : ''}" onclick="selectCertamen('latam', event)">
           <div>
-            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-              <span class="certamen-badge latam">28 HORAS CONTINUAS</span>
-              <div style="color:var(--color-primary);">${SVG.globe}</div>
+            <div class="certamen-card-header">
+              <span class="certamen-badge-pill latam">
+                ${SVG.clock}
+                <span>28 HORAS</span>
+              </span>
+              <div>${isLatam ? SVG.checkedCircle : SVG.uncheckedCircle}</div>
             </div>
-            <h2 class="certamen-name">Rally Latinoamericano de Innovación</h2>
-            <p class="certamen-detail">
-              Competencia internacional entre 8 países de América Latina. Enfoque continental con escalamiento
-              regional y video de 120 segundos sin mención de marcas en el Acto 1.
-            </p>
+
+            <div class="certamen-illustration-wrap">
+              ${SVG.latinAmericaIllustration}
+            </div>
+
+            <div class="certamen-meta-tag latam">RALLY LATINOAMERICANO</div>
+            <h2 class="certamen-card-title">Rally Latinoamericano<br>de Innovación</h2>
+            <p class="certamen-card-desc">Competencia internacional entre 8 países de América Latina.</p>
           </div>
-          <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border-light); pt:14px; margin-top:12px;">
-            <span style="font-size:11px; font-weight:700; color:var(--text-muted); font-family:var(--font-mono);">Régimen Latam</span>
-            <span class="btn-primary" style="padding:4px 10px; font-size:11px;">Elegir Latam ${SVG.arrowRight}</span>
+
+          <div class="certamen-card-footer">
+            <div class="certamen-regimen-info">
+              ${SVG.globe}
+              <span>Régimen: <strong>Latinoamérica</strong></span>
+            </div>
+            <button class="btn-select-card ${isLatam ? 'filled' : 'outline'}" onclick="selectCertamen('latam', event)">
+              Seleccionar ${SVG.arrowRight}
+            </button>
           </div>
         </div>
 
-        <div class="certamen-card ${state.rally_type === 'nacional' ? 'selected' : ''}" onclick="selectCertamen('nacional')">
+        <!-- Tarjeta 2: Rally Nacional Nicaragua Innova -->
+        <div class="certamen-card ${isNac ? 'selected' : ''}" onclick="selectCertamen('nacional', event)">
           <div>
-            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-              <span class="certamen-badge nacional">24 HORAS CONTINUAS</span>
-              <div style="color:#d97706;">${SVG.shield}</div>
+            <div class="certamen-card-header">
+              <span class="certamen-badge-pill nacional">
+                ${SVG.clock}
+                <span>24 HORAS</span>
+              </span>
+              <div>${isNac ? SVG.checkedCircle : SVG.uncheckedCircle}</div>
             </div>
-            <h2 class="certamen-name">Rally Nacional Nicaragua Innova</h2>
-            <p class="certamen-detail">
-              Certamen universitario territorial de 24 horas. Énfasis en impacto comunitario directo,
-              alineación con el Plan Nacional de Lucha contra la Pobreza y validación de maqueta física.
-            </p>
+
+            <div class="certamen-illustration-wrap">
+              ${SVG.momotomboIllustration}
+            </div>
+
+            <div class="certamen-meta-tag nacional">RALLY NACIONAL</div>
+            <h2 class="certamen-card-title">Rally Nacional Nicaragua<br>Innova</h2>
+            <p class="certamen-card-desc">Certamen universitario territorial de 24 horas.</p>
           </div>
-          <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border-light); pt:14px; margin-top:12px;">
-            <span style="font-size:11px; font-weight:700; color:var(--text-muted); font-family:var(--font-mono);">Régimen Nacional</span>
-            <span class="btn-primary" style="padding:4px 10px; font-size:11px; background:#d97706; border-color:#d97706;">Elegir Nacional ${SVG.arrowRight}</span>
+
+          <div class="certamen-card-footer">
+            <div class="certamen-regimen-info">
+              ${SVG.pin}
+              <span>Régimen: <strong>Nacional</strong></span>
+            </div>
+            <button class="btn-select-card ${isNac ? 'filled' : 'outline'}" onclick="selectCertamen('nacional', event)">
+              Seleccionar ${SVG.arrowRight}
+            </button>
           </div>
         </div>
+      </div>
+
+      <div class="handwritten-script script-bottom">
+        Ideas que<br>compiten.
       </div>
     </div>
   `;
 }
 
-function selectCertamen(type) {
+function selectCertamen(type, ev) {
+  if (ev) ev.stopPropagation();
   state.rally_type = type;
   state.hours_total = type === "latam" ? 28 : 24;
   state.hours_remaining = state.hours_total;
@@ -598,50 +776,63 @@ function renderViewTeam() {
 
   return `
     <div class="wizard-canvas">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-        <span class="wizard-tag">Paso 02 de 03 · Identidad del Equipo</span>
-        <button class="btn-secondary" style="font-size:11px; padding:3px 8px;" onclick="switchTab('certamen')">← Cambiar Certamen (${certLabel})</button>
+      <div class="stepper-header" style="justify-content:space-between;">
+        <div style="display:flex; align-items:center; gap:14px;">
+          <span class="stepper-pill">PASO 02 DE 03</span>
+          <div class="stepper-bars">
+            <div class="stepper-bar-segment completed"></div>
+            <div class="stepper-bar-segment active"></div>
+            <div class="stepper-bar-segment"></div>
+          </div>
+        </div>
+        <button class="btn-pill-light" style="font-size:11px; padding:4px 10px;" onclick="switchTab('certamen')">← Cambiar Certamen (${certLabel})</button>
       </div>
 
-      <h1 class="wizard-title">Nombre del Grupo & Sede Universitaria</h1>
-      <p class="wizard-desc">
-        Ingresa los datos exactos con los que tu equipo está registrado en la plataforma oficial del evento.
+      <h1 class="wizard-hero-title">Identidad del <span class="title-accent">Equipo</span></h1>
+      <p class="wizard-hero-desc">
+        Ingresa el nombre oficial y la sede académica universitaria registrada en la plataforma de competencia.
       </p>
 
-      <div class="workbench-card">
+      <div class="workbench-card" style="box-shadow:0 4px 20px rgba(9, 30, 66, 0.04); border:1px solid #e2e8f0; border-radius:18px; padding:28px 24px; background:#fff;">
         <div class="form-grid">
           <div class="form-group full">
-            <label>Nombre Oficial del Equipo en la Competencia</label>
-            <input type="text" id="tm-name" placeholder="Ej: Mentes Volcánicas, Pinoleros Tech, InnovaUNI" value="${state.team_name}">
+            <label style="font-weight:700; color:#091e42; font-size:12.5px;">Nombre Oficial del Equipo en la Competencia</label>
+            <input type="text" id="tm-name" placeholder="Ej: Pinoleros Tech, Mentes Volcánicas, InnovaUNI" value="${state.team_name}"
+              style="padding:10px 14px; border:1.5px solid #e2e8f0; border-radius:8px; font-size:13px; font-weight:600; color:#091e42;">
           </div>
 
           <div class="form-group">
-            <label>Universidad o Sede Académica</label>
-            <input type="text" id="tm-uni" placeholder="Ej: Universidad Nacional de Ingeniería (UNI)" value="${state.university}">
+            <label style="font-weight:700; color:#091e42; font-size:12.5px;">Universidad o Sede Académica</label>
+            <input type="text" id="tm-uni" placeholder="Ej: Universidad Nacional de Ingeniería (UNI)" value="${state.university}"
+              style="padding:10px 14px; border:1.5px solid #e2e8f0; border-radius:8px; font-size:13px; font-weight:600; color:#091e42;">
           </div>
 
           <div class="form-group">
-            <label>Ciudad o Municipio Piloto</label>
-            <input type="text" id="tm-city" placeholder="Ej: Managua, Estelí, León" value="${state.city}">
+            <label style="font-weight:700; color:#091e42; font-size:12.5px;">Ciudad o Municipio Piloto</label>
+            <input type="text" id="tm-city" placeholder="Ej: Managua, Estelí, León" value="${state.city}"
+              style="padding:10px 14px; border:1.5px solid #e2e8f0; border-radius:8px; font-size:13px; font-weight:600; color:#091e42;">
           </div>
 
           <div class="form-group full">
-            <label>Emblema / Identificador Visual del Equipo</label>
-            <div style="display:flex; gap:12px; align-items:center; margin-top:6px;">
-              <div style="display:flex; gap:8px;">
+            <label style="font-weight:700; color:#091e42; font-size:12.5px;">Emblema / Identificador Visual del Equipo</label>
+            <div style="display:flex; gap:14px; align-items:center; margin-top:8px;">
+              <div style="display:flex; gap:10px;">
                 ${['shield', 'globe', 'spark'].map(ic => `
-                  <button type="button" class="btn-secondary" style="${state.team_logo === ic ? 'border-color:var(--color-primary); background:#eff6ff;' : ''} padding:8px 14px;" onclick="state.team_logo='${ic}'; saveState(); renderTab('team');">
+                  <button type="button" class="btn-pill-light" style="${state.team_logo === ic ? 'border-color:#0066ff; background:#eff6ff; color:#0066ff;' : ''} padding:10px 18px;" onclick="state.team_logo='${ic}'; saveState(); renderTab('team');">
                     ${SVG[ic]}
                   </button>
                 `).join("")}
               </div>
-              <span style="font-size:11px; color:var(--text-muted);">Icono sobrio para carátula del video y reportes técnicos.</span>
+              <span style="font-size:11.5px; color:#64748b;">Distintivo vectorial sobrio para carátulas técnicas, pautado y video.</span>
             </div>
           </div>
         </div>
 
-        <div style="display:flex; justify-content:flex-end; margin-top:24px; border-top:1px solid var(--border-light); padding-top:16px;">
-          <button class="btn-primary" style="padding:8px 18px; font-size:13px;" onclick="saveTeamAndProceed()">Continuar a Selección de Reto ${SVG.arrowRight}</button>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:28px; border-top:1px solid #f1f5f9; padding-top:18px;">
+          <button class="btn-pill-light" onclick="switchTab('certamen')">← Regresar</button>
+          <button class="btn-select-card filled" style="padding:10px 22px; font-size:13px;" onclick="saveTeamAndProceed()">
+            Continuar a Selección de Reto ${SVG.arrowRight}
+          </button>
         </div>
       </div>
     </div>
@@ -679,111 +870,118 @@ function renderViewChallenges() {
   });
 
   return `
-    <div class="page-header">
-      <div>
-        <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
-          <span class="wizard-tag" style="margin-bottom:0;">Paso 03 de 03</span>
-          <span style="font-size:11px; font-weight:700; color:var(--text-muted);">${state.team_name} · ${state.university}</span>
+    <div class="wizard-canvas" style="max-width:1080px;">
+      <div class="stepper-header" style="justify-content:space-between;">
+        <div style="display:flex; align-items:center; gap:14px;">
+          <span class="stepper-pill">PASO 03 DE 03</span>
+          <div class="stepper-bars">
+            <div class="stepper-bar-segment completed"></div>
+            <div class="stepper-bar-segment completed"></div>
+            <div class="stepper-bar-segment active"></div>
+          </div>
         </div>
-        <h1 class="page-title" style="font-size:24px;">02 · Retos Oficiales del Comité Organizador</h1>
-        <div class="page-desc">Pega el texto anunciado por el comité oficial a las 8:00 AM para cargar los retos y generar las propuestas de victoria.</div>
-      </div>
-      <div style="display:flex; gap:8px;">
-        <button class="btn-secondary" style="display:inline-flex; align-items:center; gap:4px; font-size:11px;" onclick="loadReferenceChallenges()">
-          ${SVG.refresh} Cargar Catálogo de Referencia (9 Retos)
-        </button>
-        <a href="/docs/Matriz_Seleccion_Desafios_2026.docx" download class="btn-secondary" style="display:inline-flex; align-items:center; gap:6px; text-decoration:none; font-size:11px;">
-          ${SVG.download} Matriz Word (.docx)
-        </a>
-      </div>
-    </div>
-
-    <!-- Caja Principal de Ingesta de Retos Oficiales del Comité -->
-    <div class="workbench-card" style="border:1.5px solid var(--color-primary); background:#fcfdfe; margin-bottom:20px;">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-        <strong style="font-size:13px; color:var(--color-primary);">Pega aquí el texto de los retos anunciado por el comité (WhatsApp / PDF / Web):</strong>
-        <span style="font-size:11px; color:var(--text-muted); font-family:var(--font-mono);">Formato libre o numerado</span>
-      </div>
-      <textarea id="raw-committee-challenges" rows="4" style="width:100%; border:1px solid var(--border-light); border-radius:4px; padding:10px; font-size:11px; font-family:var(--font-mono); box-sizing:border-box;"
-        placeholder="Ej: RETO 01: Reconversión de motores en desuso...&#10;RETO 02: Redes de sensores de inundación...&#10;RETO 03: Protección de polinizadores nativos..."></textarea>
-      
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px;">
-        <span style="font-size:11px; color:var(--text-muted);">El sistema estructurará cada reto y calculará su propuesta de tecnología WOW.</span>
-        <button class="btn-primary" style="padding:6px 14px; font-size:12px;" onclick="processCommitteeChallengesInput()">
-          Procesar y Cargar Retos al Radar ${SVG.arrowRight}
-        </button>
-      </div>
-    </div>
-
-    ${!hasChallenges ? `
-      <div class="workbench-card" style="text-align:center; padding:36px 20px; background:#f8fafc;">
-        <p style="font-size:13px; font-weight:700; color:var(--text-main); margin-bottom:4px;">No hay retos cargados en el radar todavía.</p>
-        <p style="font-size:12px; color:var(--text-muted); margin-bottom:16px;">Pega los retos arriba cuando el comité los publique o carga el catálogo de referencia.</p>
-        <button class="btn-secondary" onclick="loadReferenceChallenges()">Cargar Catálogo Histórico de Referencia (9 Retos 2026)</button>
-      </div>
-    ` : `
-      <!-- Filtros de Categoría -->
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
         <div style="display:flex; gap:8px;">
-          <button class="btn-secondary" style="${challengeFilter === 'all' ? 'background:#1e40af; color:#fff; border-color:#1e40af;' : ''} padding:4px 10px; font-size:11px;" onclick="challengeFilter='all'; renderTab('challenges');">
-            Todos los Retos (${list.length})
-          </button>
-          <button class="btn-secondary" style="${challengeFilter === 'innovación' ? 'background:#1e40af; color:#fff; border-color:#1e40af;' : ''} padding:4px 10px; font-size:11px;" onclick="challengeFilter='innovación'; renderTab('challenges');">
-            Innovación
-          </button>
-          <button class="btn-secondary" style="${challengeFilter === 'impacto social' ? 'background:#1e40af; color:#fff; border-color:#1e40af;' : ''} padding:4px 10px; font-size:11px;" onclick="challengeFilter='impacto social'; renderTab('challenges');">
-            Impacto Social
-          </button>
+          <button class="btn-pill-light" style="font-size:11px; padding:5px 12px;" onclick="switchTab('team')">← Editar Equipo (${state.team_name || 'Sin Nombre'})</button>
+          <a href="/docs/Matriz_Seleccion_Desafios_2026.docx" download class="btn-pill-light" style="font-size:11px; padding:5px 12px; text-decoration:none;">
+            ${SVG.download} Matriz Word (.docx)
+          </a>
         </div>
-        <span style="font-size:11px; font-weight:700; color:var(--text-muted); font-family:var(--font-mono);">${list.length} Retos Listos para Deliberación</span>
       </div>
 
-      <!-- Lista Comparativa de Retos -->
-      <div style="display:flex; flex-direction:column; gap:16px;">
-        ${filtered.map(ch => {
-          const isSelected = state.challenge_id === ch.id;
-          const odsStr = Array.isArray(ch.ods) ? ch.ods.join(", ") : (ch.ods || "ODS 9");
-          return `
-            <div class="challenge-box ${isSelected ? 'active' : ''}">
-              <div class="challenge-box-header">
-                <div style="display:flex; align-items:center; gap:8px;">
-                  <span class="badge-status ${isSelected ? 'badge-ok' : 'badge-pending'}" style="font-family:var(--font-mono); font-size:10px;">RETO #${ch.id}</span>
-                  <span style="font-size:11px; font-weight:700; color:var(--text-muted);">${ch.category} · ${odsStr}</span>
-                  ${isSelected ? `<span style="font-size:10px; font-weight:800; color:#047857; background:#ecfdf5; padding:2px 6px; border-radius:3px;">RETO ELEGIDO</span>` : ""}
-                </div>
-                <div style="display:flex; align-items:center; gap:14px;">
-                  <div style="text-align:right;">
-                    <span style="font-family:var(--font-mono); font-size:14px; font-weight:800; color:${ch.winRate >= 90 ? '#047857' : '#1e40af'};">${ch.winRate || 88}%</span>
-                    <span style="font-size:10px; color:var(--text-muted); display:block;">Prob. Victoria</span>
+      <h1 class="wizard-hero-title">Selección del <span class="title-accent">Reto</span> Oficial</h1>
+      <p class="wizard-hero-desc">
+        Pega el listado oficial anunciado por el comité evaluador a las 8:00 AM para cargar los retos en el radar y deliberar la propuesta ganadora.
+      </p>
+
+      <!-- Caja Principal de Ingesta de Retos Oficiales del Comité -->
+      <div class="workbench-card" style="box-shadow:0 4px 20px rgba(9, 30, 66, 0.04); border:1.5px solid #bfdbfe; background:#fcfdfe; border-radius:18px; padding:22px; margin-bottom:24px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+          <strong style="font-size:13px; color:#0066ff;">Pega aquí el texto de los retos anunciado por el comité (WhatsApp / PDF / Web):</strong>
+          <span style="font-size:11px; color:#64748b; font-family:var(--font-mono);">Formato libre o numerado</span>
+        </div>
+        <textarea id="raw-committee-challenges" rows="3" style="width:100%; border:1px solid #cbd5e1; border-radius:8px; padding:12px; font-size:12px; font-family:var(--font-mono); box-sizing:border-box; background:#fff;"
+          placeholder="Ej: RETO 01: Reconversión de motores en desuso...&#10;RETO 02: Redes de sensores de inundación...&#10;RETO 03: Protección de polinizadores nativos..."></textarea>
+        
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:12px;">
+          <span style="font-size:11.5px; color:#64748b;">El sistema estructurará cada reto y contrastará la demanda oficial contra la propuesta WOW.</span>
+          <div style="display:flex; gap:8px;">
+            <button class="btn-pill-light" style="font-size:11.5px;" onclick="loadReferenceChallenges()">
+              ${SVG.refresh} Cargar Catálogo de Referencia (9 Retos)
+            </button>
+            <button class="btn-select-card filled" style="padding:8px 16px; font-size:12px;" onclick="processCommitteeChallengesInput()">
+              Procesar y Cargar al Radar ${SVG.arrowRight}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      ${!hasChallenges ? `
+        <div class="workbench-card" style="text-align:center; padding:40px 24px; background:#f8fafc; border:1px dashed #cbd5e1; border-radius:18px;">
+          <p style="font-size:14px; font-weight:700; color:#091e42; margin-bottom:6px;">No hay retos cargados en el radar todavía.</p>
+          <p style="font-size:12.5px; color:#64748b; margin-bottom:18px;">Pega los retos comunicados por el comité arriba o carga el banco histórico de referencia.</p>
+          <button class="btn-select-card filled" onclick="loadReferenceChallenges()">Cargar Catálogo Histórico de Referencia (9 Retos 2026)</button>
+        </div>
+      ` : `
+        <!-- Filtros de Categoría -->
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+          <div style="display:flex; gap:8px;">
+            <button class="btn-pill-light" style="${challengeFilter === 'all' ? 'background:#0066ff; color:#fff; border-color:#0066ff;' : ''} padding:5px 12px; font-size:11.5px;" onclick="challengeFilter='all'; renderTab('challenges');">
+              Todos los Retos (${list.length})
+            </button>
+            <button class="btn-pill-light" style="${challengeFilter === 'innovación' ? 'background:#0066ff; color:#fff; border-color:#0066ff;' : ''} padding:5px 12px; font-size:11.5px;" onclick="challengeFilter='innovación'; renderTab('challenges');">
+              Innovación
+            </button>
+            <button class="btn-pill-light" style="${challengeFilter === 'impacto social' ? 'background:#0066ff; color:#fff; border-color:#0066ff;' : ''} padding:5px 12px; font-size:11.5px;" onclick="challengeFilter='impacto social'; renderTab('challenges');">
+              Impacto Social
+            </button>
+          </div>
+          <span style="font-size:12px; font-weight:700; color:#64748b; font-family:var(--font-mono);">${list.length} Retos Listos para Deliberación</span>
+        </div>
+
+        <!-- Lista Comparativa de Retos -->
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          ${filtered.map(ch => {
+            const isSelected = state.challenge_id === ch.id;
+            const odsStr = Array.isArray(ch.ods) ? ch.ods.join(", ") : (ch.ods || "ODS 9");
+            return `
+              <div class="challenge-box ${isSelected ? 'active' : ''}" style="border-radius:14px; border:1.5px solid ${isSelected ? '#0066ff' : '#e2e8f0'}; box-shadow:0 2px 10px rgba(9, 30, 66, 0.03);">
+                <div class="challenge-box-header" style="background:#ffffff; padding:16px 20px; border-bottom:1px solid #f1f5f9;">
+                  <div style="display:flex; align-items:center; gap:10px;">
+                    <span class="badge-status ${isSelected ? 'badge-ok' : 'badge-pending'}" style="font-family:var(--font-mono); font-size:10px;">RETO #${ch.id}</span>
+                    <span style="font-size:11px; font-weight:700; color:#64748b;">${ch.category} · ${odsStr}</span>
+                    ${isSelected ? `<span style="font-size:10px; font-weight:800; color:#047857; background:#ecfdf5; border:1px solid #a7f3d0; padding:2px 8px; border-radius:9999px;">RETO ELEGIDO</span>` : ""}
                   </div>
-                  <button class="${isSelected ? 'btn-secondary' : 'btn-primary'}" style="padding:5px 12px; font-size:11px;" onclick="selectChallenge('${ch.id}')">
-                    ${isSelected ? 'Seleccionado ✓' : 'Seleccionar este Reto'}
-                  </button>
-                </div>
-              </div>
-
-              <div style="padding:14px 20px 8px 20px;">
-                <h3 style="font-size:15px; font-weight:800; color:var(--text-main); line-height:1.3;">${ch.title}</h3>
-              </div>
-
-              <div class="challenge-split">
-                <!-- Columna Demanda Oficial del Comité -->
-                <div class="challenge-col req">
-                  <div class="col-label">${SVG.shield} Lo que el Comité Demanda / Espera</div>
-                  <p style="font-size:12px; color:var(--text-body); line-height:1.5;">${ch.officialExpectation || 'Desarrollar una propuesta factible con validación técnica y económica.'}</p>
+                  <div style="display:flex; align-items:center; gap:14px;">
+                    <div style="text-align:right;">
+                      <span style="font-family:var(--font-mono); font-size:14px; font-weight:800; color:${ch.winRate >= 90 ? '#047857' : '#0066ff'};">${ch.winRate || 88}%</span>
+                      <span style="font-size:10px; color:#64748b; display:block;">Prob. Victoria</span>
+                    </div>
+                    <button class="btn-select-card ${isSelected ? 'outline' : 'filled'}" style="padding:6px 14px; font-size:11.5px;" onclick="selectChallenge('${ch.id}')">
+                      ${isSelected ? 'Seleccionado ✓' : 'Seleccionar este Reto →'}
+                    </button>
+                  </div>
                 </div>
 
-                <!-- Columna Propuesta Tecnológica WOW -->
-                <div class="challenge-col wow">
-                  <div class="col-label" style="color:var(--color-primary);">${SVG.spark} Propuesta Tecnológica WOW (Para Ganar)</div>
-                  <p style="font-size:12px; color:var(--text-main); font-weight:500; line-height:1.5;">${ch.wowProposal}</p>
+                <div style="padding:14px 20px 4px 20px; background:#fff;">
+                  <h3 style="font-size:15px; font-weight:800; color:#091e42; margin-bottom:12px; line-height:1.35;">${ch.title}</h3>
+                </div>
+
+                <div class="challenge-split" style="border-top:1px solid #f1f5f9;">
+                  <div class="challenge-col req" style="padding:16px 20px;">
+                    <span class="col-label" style="color:#64748b;">${SVG.shield} Demanda Oficial del Comité</span>
+                    <p style="font-size:12.5px; color:#334155; line-height:1.55;">${ch.officialExpectation || 'Demanda técnica y comunitaria oficial.'}</p>
+                  </div>
+                  <div class="challenge-col wow" style="padding:16px 20px; background:#f8fafc; border-left:1px solid #f1f5f9;">
+                    <span class="col-label" style="color:#0066ff;">${SVG.spark} Propuesta de Vanguardia (WOW)</span>
+                    <p style="font-size:12.5px; color:#091e42; font-weight:600; line-height:1.55;">${ch.wowProposal || 'Enfoque de solución disruptivo con tecnología de vanguardia.'}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          `;
-        }).join("")}
-      </div>
-    `}
+            `;
+          }).join("")}
+        </div>
+      `}
+    </div>
   `;
 }
 
