@@ -242,6 +242,7 @@ const SVG = {
 };
 
 // ── CATÁLOGO HISTÓRICO DE REFERENCIA (RALLY 2026) ────────────────────────────
+// ── CATÁLOGO HISTÓRICO DE REFERENCIA (RALLY 2026) ────────────────────────────
 const OFFICIAL_CHALLENGES_2026 = [
   {
     id: "01",
@@ -252,7 +253,10 @@ const OFFICIAL_CHALLENGES_2026 = [
     compDensity: "Baja (3 sedes)",
     precedent: "Avocado 2026 (1° Nac. Social) / Revolt (El Salvador)",
     officialExpectation: "Aprovechar motores de lavadoras y ventiladores desechados para reducir chatarra y generar tracción o generación eléctrica a bajo costo en comunidades rurales.",
-    wowProposal: "Kit de reconversión con variador de frecuencia universal reciclado, acople impreso en PETG y banco de molienda de forraje agropecuario accionado por rotor recuperado."
+    wowProposal: "Kit de reconversión con variador de frecuencia universal reciclado, acople impreso en PETG y banco de molienda de forraje agropecuario accionado por rotor recuperado.",
+    nicaraguaAdaptation: "Anclaje directo en cooperativas lecheras y avícolas de Chontales, Matagalpa y Boaco, sustituyendo motores diésel caros por motores de lavadora reacondicionados para picadoras de pasto y bombas de agua.",
+    noveltyReason: "Rompe la trampa del reciclaje pasivo creando máquinas productivas de tracción mecánica directa con coste inferior a $65 USD por unidad.",
+    winnerPattern: "Alineación estricta con el Eje de Economía Creativa del Plan Nacional y modelo B2B cooperativo sin dependencia de subsidios continuos."
   },
   {
     id: "02",
@@ -263,7 +267,10 @@ const OFFICIAL_CHALLENGES_2026 = [
     compDensity: "Alta (9 sedes)",
     precedent: "Techriders 2024 (1° Int. Latam) / Steel Innovators 2026",
     officialExpectation: "Monitorear crecidas repentinas de ríos y cauces urbanos para alertar a pobladores vulnerables antes de que el agua sobrepase cotas de riesgo.",
-    wowProposal: "Red de telemetría hiperlocal con nodos ultrasónicos no invasivos, protocolo LoRaWAN de largo alcance y compuerta electromecánica de alivio con 30 minutos de anticipación."
+    wowProposal: "Red de telemetría hiperlocal con nodos ultrasónicos no invasivos, protocolo LoRaWAN de largo alcance y compuerta electromecánica de alivio con 30 minutos de anticipación.",
+    nicaraguaAdaptation: "Despliegue prioritario en los cauces críticos de Managua (Cauce Oriental / Domitila Lugo) y cuencas del Río Grande de Matagalpa en coordinación directa con SINAPRED y COMUPRED.",
+    noveltyReason: "No depende de antenas de celular ni de internet; opera con baterías solares LiFePO4 y radiofrecuencia mallada comunitaria.",
+    winnerPattern: "Arquitectura ciber-física con hardware validado (ESP32 + LoRa) y simulación hidrométrica en tiempo real."
   },
   {
     id: "03",
@@ -274,7 +281,10 @@ const OFFICIAL_CHALLENGES_2026 = [
     compDensity: "Muy Baja (2 sedes)",
     precedent: "Ignis Code 2026 (1° Nac. Innovación)",
     officialExpectation: "Preservar colonias de abejas y polinizadores nativos frente al cambio climático y pesticidas agrícolas con soluciones de fácil adopción.",
-    wowProposal: "Colmena bioclimática con monitor bioacústico/térmico pasivo no intrusivo y difusor piezoeléctrico de micronutrientes orgánicos activado por energía solar."
+    wowProposal: "Colmena bioclimática con monitor bioacústico/térmico pasivo no intrusivo y difusor piezoeléctrico de micronutrientes orgánicos activado por energía solar.",
+    nicaraguaAdaptation: "Protección de abejas nativas meliponas (sin aguijón) en cafetales de Jinotega y corredores biológicos de Río San Juan, impulsando miel medicinal con denominación de origen.",
+    noveltyReason: "Diferenciación radical: casi ningún equipo elige este reto; combina acústica de frecuencia espectral con bioprotección sin perturbar el panal.",
+    winnerPattern: "El factor sorpresa en la deliberación del jurado genera puntuaciones máximas en 'Capacidad Creativa' (30 pts)."
   },
   {
     id: "04",
@@ -285,7 +295,10 @@ const OFFICIAL_CHALLENGES_2026 = [
     compDensity: "Media (4 sedes)",
     precedent: "Kubo I+D (Argentina 2026) / Bioinnovatech (Costa Rica)",
     officialExpectation: "Evitar la quema indiscriminada de ramas y hojas en las ciudades mediante procesos de aprovechamiento energético o fertilizante.",
-    wowProposal: "Reactor modular de pirólisis lenta in-situ para producción de biochar activado con inoculantes micorrícicos, con captura de gases térmicos para secado de granos."
+    wowProposal: "Reactor modular de pirólisis lenta in-situ para producción de biochar activado con inoculantes micorrícicos, con captura de gases térmicos para secado de granos.",
+    nicaraguaAdaptation: "Erradicación de quemas en vertederos municipales de León y Masaya, generando biochar para regenerar suelos volcánicos degradados.",
+    noveltyReason: "Evita el transporte masivo de biomasa procesando en el propio punto de acopio con balance térmico autosuficiente.",
+    winnerPattern: "Sustentabilidad ambiental con créditos de carbono simulados y métricas tangibles de retención de humedad en suelo."
   },
   {
     id: "05",
@@ -296,7 +309,10 @@ const OFFICIAL_CHALLENGES_2026 = [
     compDensity: "Alta (8 sedes)",
     precedent: "Francisquitos (El Salvador 2026) / Sistema Captación UNI (2024)",
     officialExpectation: "Captar y almacenar agua pluvial en techos de escuelas o viviendas rurales garantizando calidad para consumo humano e higiene.",
-    wowProposal: "Cisterna modular prefabricada con separador centrífugo de primeras lluvias, lecho de zeolita natural con carbón de cáscara de café y dosificador solar UV-C."
+    wowProposal: "Cisterna modular prefabricada con separador centrífugo de primeras lluvias, lecho de zeolita natural con carbón de cáscara de café y dosificador solar UV-C.",
+    nicaraguaAdaptation: "Escuelas públicas y comunidades del Corredor Seco nicaragüense (Madriz, Estelí, Nueva Segovia) garantizando 180 días de reserva escolar.",
+    noveltyReason: "Filtro autóctono con subproductos de café nicaragüense y zeolita regional, abatiendo el costo del filtro comercial en un 78%.",
+    winnerPattern: "Alineación estricta con indicadores de salud pública infantil y presupuesto de marcha inferior a $4,500 USD."
   },
   {
     id: "06",
@@ -307,7 +323,10 @@ const OFFICIAL_CHALLENGES_2026 = [
     compDensity: "Media (5 sedes)",
     precedent: "Recoplaya / Smat Warriors (URACCAN 2025)",
     officialExpectation: "Retirar redes de pesca fantasma y plásticos de un solo uso que amenazan la fauna marina en litorales costeros.",
-    wowProposal: "Extrusora compacta móvil de filamento de PET/nylon para impresión 3D de artes de pesca duraderas y balizas flotantes de señalización costera."
+    wowProposal: "Extrusora compacta móvil de filamento de PET/nylon para impresión 3D de artes de pesca duraderas y balizas flotantes de señalización costera.",
+    nicaraguaAdaptation: "San Juan del Sur, Poneloya y comunidades de pescadores artesanales del Caribe nicaragüense (Bluefields / Bilwi).",
+    noveltyReason: "Transformación de residuo in-situ en herramientas de trabajo marino sin intermediación industrial pesada.",
+    winnerPattern: "Integración de cooperativas de pescadores y certificación de economía azul."
   },
   {
     id: "07",
@@ -318,7 +337,10 @@ const OFFICIAL_CHALLENGES_2026 = [
     compDensity: "Baja (3 sedes)",
     precedent: "Foodtech (FIUNI Paraguay 2026)",
     officialExpectation: "Evitar que el aceite de cocina contamine fuentes de agua dulce creando un modelo de reciclaje barrial con retorno tangible.",
-    wowProposal: "Micro-planta barrial de transesterificación asistida por cavitación hidrodinámica de bajo consumo, con dispensador de jabón biodegradable comunitario."
+    wowProposal: "Micro-planta barrial de transesterificación asistida por cavitación hidrodinámica de bajo consumo, con dispensador de jabón biodegradable comunitario.",
+    nicaraguaAdaptation: "Comiderías populares del Mercado Oriental y fritangas tradicionales de Managua, canjeando aceite usado por jabón desengrasante institucional.",
+    noveltyReason: "Reactor de cavitación que reduce el tiempo de reacción química de 4 horas a solo 18 minutos sin químicos peligrosos.",
+    winnerPattern: "Aceptabilidad social masiva mediante incentivo directo al comerciante popular."
   },
   {
     id: "08",
@@ -329,7 +351,10 @@ const OFFICIAL_CHALLENGES_2026 = [
     compDensity: "Alta (7 sedes)",
     precedent: "Mexitech (UPEMOR 1° Int. 2024) / Catalizadores (Chile)",
     officialExpectation: "Conectar mermas de frutas y verduras frescas de mercados populares con comedores comunitarios antes de que se descompongan.",
-    wowProposal: "Bolsa comunitaria digital P2P operada por bots de mensajería SMS/WhatsApp de cero datos móviles, vinculada a deshidratadores solares parabólicos."
+    wowProposal: "Bolsa comunitaria digital P2P operada por bots de mensajería SMS/WhatsApp de cero datos móviles, vinculada a deshidratadores solares parabólicos.",
+    nicaraguaAdaptation: "Mercado Mayoreo y Mercado Huembes de Managua, salvando frutas perecederas para el programa de merienda escolar comunitaria.",
+    noveltyReason: "Uso de deshidratadores solares directos para convertir el excedente no rescatado a tiempo en harina frutal rica en nutrientes.",
+    winnerPattern: "Impacto social cuantificable en kilogramos de comida salvada por día y cero barrera tecnológica para las vivanderas."
   },
   {
     id: "09",
@@ -340,7 +365,10 @@ const OFFICIAL_CHALLENGES_2026 = [
     compDensity: "Baja (3 sedes)",
     precedent: "Hooke (Chile 2026) / The Bubbles (Paraguay)",
     officialExpectation: "Proveer albergue temporal digno y energía eléctrica mínima a familias damnificadas por huracanes o terremotos en menos de 24 horas.",
-    wowProposal: "Célula habitable hexagonal desplegable en seco en 45 minutos con paneles sándwich de caña brava tratada y techo flexible fotovoltaico con banco LiFePO4."
+    wowProposal: "Célula habitable hexagonal desplegable en seco en 45 minutos con paneles sándwich de caña brava tratada y techo flexible fotovoltaico con banco LiFePO4.",
+    nicaraguaAdaptation: "Triángulo Minero y Costa Caribe Norte ante embates recurrentes de huracanes categoría 4 y 5 (Iota, Eta, Julia), transportable en botes fluviales.",
+    noveltyReason: "Montaje 100% sin herramientas mecánicas por la propia familia damnificada con autonomía energética inmediata.",
+    winnerPattern: "Cumple la regla de oro: resuelve refugio + energía + dignidad humana en un solo activo de prefactibilidad."
   }
 ];
 
@@ -1612,6 +1640,55 @@ function renderViewChallenges() {
         </div>
       </div>
 
+      <!-- TOP 3 RETOS QUE MÁS SE ADAPTAN (RECOMENDACIÓN ESTRATÉGICA RALLY) -->
+      ${hasChallenges ? (() => {
+        const sorted = [...list].sort((a, b) => (b.winRate || 80) - (a.winRate || 80)).slice(0, 3);
+        return `
+          <div style="background:#FFFFFF; border:1px solid #BFDBFE; border-radius:16px; padding:20px 24px; margin-bottom:24px; box-shadow:0 4px 16px -2px rgba(8, 102, 245, 0.06);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span class="rank-badge-pill rank-top1">TOP RECOMENDADOS</span>
+                <h2 style="font-size:16px; font-weight:800; color:#0D1B35; margin:0;">
+                  Retos con Mayor Potencial de Victoria (Rúbrica 100 Pts)
+                </h2>
+              </div>
+              <span style="font-size:11.5px; color:#5C7193; font-weight:600;">Calibrado con historial de ganadores 2023–2026</span>
+            </div>
+
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(290px, 1fr)); gap:14px;">
+              ${sorted.map((topCh, idx) => {
+                const rankClass = idx === 0 ? 'rank-top1' : idx === 1 ? 'rank-top2' : 'rank-top3';
+                const rankLabel = idx === 0 ? '🏆 #1 MÁS VIABLE' : idx === 1 ? '🥈 #2 ALTO IMPACTO' : '🥉 #3 DIFERENCIADO';
+                return `
+                  <div style="background:#F8FAFD; border:1px solid #DCE7F5; border-radius:12px; padding:16px; display:flex; flex-direction:column; justify-content:space-between;">
+                    <div>
+                      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                        <span class="rank-badge-pill ${rankClass}">${rankLabel}</span>
+                        <span style="font-family:var(--font-mono); font-size:13px; font-weight:900; color:#0866F5;">${topCh.winRate || 90}% WOW</span>
+                      </div>
+                      <h4 style="font-size:13.5px; font-weight:800; color:#0D1B35; line-height:1.35; margin-bottom:8px;">
+                        #${topCh.id} · ${topCh.title}
+                      </h4>
+                      <p style="font-size:11.5px; color:#5C7193; line-height:1.45; margin-bottom:12px;">
+                        <strong>Por qué se adapta:</strong> ${topCh.noveltyReason ? topCh.noveltyReason.slice(0, 110) + '...' : topCh.wowProposal.slice(0, 110) + '...'}
+                      </p>
+                    </div>
+                    <div style="display:flex; gap:6px; padding-top:8px; border-top:1px solid #E2E8F0;">
+                      <button class="btn-pill-ghost" style="flex:1; font-size:11px; padding:6px;" onclick="openChallengeDetailModal('${topCh.id}')">
+                        Analizar Detalles 🔍
+                      </button>
+                      <button class="btn-select-card filled" style="font-size:11px; padding:6px 12px;" onclick="selectChallenge('${topCh.id}', false)">
+                        Seleccionar
+                      </button>
+                    </div>
+                  </div>
+                `;
+              }).join("")}
+            </div>
+          </div>
+        `;
+      })() : ""}
+
       ${!hasChallenges ? `
         <div style="text-align:center; padding:48px 24px; background:#F8FAFD; border:1px solid #DCE7F5; border-radius:16px;">
           <h3 style="font-size:16px; font-weight:800; color:#0D1B35; margin-bottom:6px;">No hay retos en el radar todavía</h3>
@@ -1654,20 +1731,25 @@ function renderViewChallenges() {
                     <span style="font-size:11.5px; font-weight:700; color:#5C7193;">${ch.category} · ${odsStr}</span>
                     ${isSelected ? `<span style="font-size:10.5px; font-weight:800; color:#059669; background:#ECFDF5; border:1px solid #A7F3D0; padding:2px 8px; border-radius:9999px;">SELECCIONADO</span>` : ""}
                   </div>
-                  <div style="display:flex; align-items:center; gap:12px;">
+                  <div style="display:flex; align-items:center; gap:10px;">
                     <div style="text-align:right;">
                       <span style="font-family:var(--font-mono); font-size:14px; font-weight:900; color:${ch.winRate >= 90 ? '#059669' : '#0866F5'};">${ch.winRate || 88}%</span>
                       <span style="font-size:10px; color:#5C7193; display:block;">Prob. Victoria</span>
                     </div>
+                    <button class="btn-pill-ghost" style="font-size:11.5px; padding:6px 12px;" onclick="openChallengeDetailModal('${ch.id}')" title="Ver ideas sugeridas, adaptación a Nicaragua y precedentes ganadores">
+                      Ver Ideas Sugeridas 🔍
+                    </button>
                     <button class="btn-select-card ${isSelected ? 'filled' : 'outline'}" style="padding:7px 16px; font-size:12px; font-weight:700;" onclick="selectChallenge('${ch.id}', ${isSelected ? 'true' : 'false'})">
                       ${isSelected ? 'Continuar con este Reto →' : 'Elegir este Reto'}
                     </button>
                   </div>
                 </div>
 
-                <h3 style="font-size:16px; font-weight:800; color:#0D1B35; line-height:1.35; margin-bottom:14px;">${ch.title}</h3>
+                <h3 style="font-size:16px; font-weight:800; color:#0D1B35; line-height:1.35; margin-bottom:14px; cursor:pointer;" onclick="openChallengeDetailModal('${ch.id}')">
+                  ${ch.title}
+                </h3>
 
-                <!-- Comparativa limpia en 2 columnas planas sobre fondo suave -->
+                <!-- Comparativa limpia en 2 columnas -->
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; background:#F8FAFD; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px;">
                   <div>
                     <div style="font-size:11px; font-weight:800; color:#5C7193; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:4px; display:flex; align-items:center; gap:5px;">
@@ -1784,6 +1866,100 @@ function clearSelectedChallenge() {
   saveState();
   renderTab("challenges");
   renderNavigation();
+}
+
+// ── MODAL ESTRATÉGICO DE ANÁLISIS DE RETO Y GANADORES ────────────────────────
+function openChallengeDetailModal(chId) {
+  const ch = (state.challenges || []).find(c => c.id === chId) || OFFICIAL_CHALLENGES_2026.find(c => c.id === chId);
+  if (!ch) return;
+
+  let modal = document.getElementById("challenge-detail-modal-overlay");
+  if (!modal) {
+    modal = document.createElement("div");
+    modal.id = "challenge-detail-modal-overlay";
+    modal.className = "modal-overlay";
+    document.body.appendChild(modal);
+  }
+
+  const odsStr = Array.isArray(ch.ods) ? ch.ods.join(", ") : (ch.ods || "ODS 9, ODS 12");
+  const isSelected = state.challenge_id === ch.id;
+
+  modal.innerHTML = `
+    <div class="challenge-detail-modal-card">
+      <div class="modal-header" style="margin-bottom:18px; padding-bottom:14px; border-bottom:1px solid #DCE7F5;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span style="background:#F0F6FF; color:#0866F5; border:1px solid #BFDBFE; font-family:var(--font-mono); font-size:12px; font-weight:800; padding:4px 10px; border-radius:8px;">
+            RETO #${ch.id}
+          </span>
+          <span style="font-size:12px; font-weight:700; color:#5C7193;">${ch.category} · ${odsStr}</span>
+        </div>
+        <button class="btn-icon-discreet" onclick="closeChallengeDetailModal()" style="font-size:18px; line-height:1;">✕</button>
+      </div>
+
+      <h2 style="font-size:20px; font-weight:800; color:#0D1B35; line-height:1.3; margin-bottom:16px;">
+        ${ch.title}
+      </h2>
+
+      <!-- Tarjeta 1: Propuesta WOW de Vanguardia -->
+      <div class="strategy-breakdown-box" style="border-left:4px solid #0866F5;">
+        <div class="strategy-breakdown-title" style="color:#0866F5;">
+          ${SVG.spark} Enfoque WOW Sugerido por el Motor de Innovación
+        </div>
+        <p style="font-size:13px; color:#0D1B35; font-weight:600; line-height:1.55; margin:0;">
+          ${ch.wowProposal || 'Arquitectura técnica modular con hardware comercial de bajo costo y telemetría autónoma.'}
+        </p>
+      </div>
+
+      <!-- Tarjeta 2: Adaptación Territorial a Nicaragua -->
+      <div class="strategy-breakdown-box" style="border-left:4px solid #059669;">
+        <div class="strategy-breakdown-title" style="color:#059669;">
+          🇳🇮 ¿Cómo se adapta a Nicaragua y por qué es factible?
+        </div>
+        <p style="font-size:12.5px; color:#334155; line-height:1.5; margin:0;">
+          ${ch.nicaraguaAdaptation || 'Alineado a las necesidades de municipios y cooperativas locales, reduciendo costos con insumos accesibles en el mercado nacional.'}
+        </p>
+      </div>
+
+      <!-- Tarjeta 3: Por qué es Novedoso y Rompe Clichés -->
+      <div class="strategy-breakdown-box" style="border-left:4px solid #D97706;">
+        <div class="strategy-breakdown-title" style="color:#D97706;">
+          💡 Factor de Novedad & Diferenciación ante el Jurado
+        </div>
+        <p style="font-size:12.5px; color:#334155; line-height:1.5; margin:0;">
+          ${ch.noveltyReason || 'Diseño modular parametrizado que elimina la complejidad excesiva y permite una puesta en marcha real de $4,000 a $6,000 USD.'}
+        </p>
+      </div>
+
+      <!-- Tarjeta 4: Patrón de Ganadores Históricos -->
+      <div class="strategy-breakdown-box" style="border-left:4px solid #475569;">
+        <div class="strategy-breakdown-title" style="color:#475569;">
+          🏆 Patrón de Ganadores Históricos Latam / Nacional
+        </div>
+        <p style="font-size:12px; color:#475569; line-height:1.5; margin:0 0 6px 0;">
+          ${ch.winnerPattern || 'Soluciones ganadoras previas combinaron hardware tangible con métricas de impacto verificables en campo.'}
+        </p>
+        <span style="font-size:11px; font-weight:700; color:#5C7193; font-family:var(--font-mono);">
+          Precedente de referencia: ${ch.precedent || 'Casos de éxito Rally 2023-2026'}
+        </span>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:24px; padding-top:16px; border-top:1px solid #DCE7F5;">
+        <button class="btn-secondary" onclick="closeChallengeDetailModal()" style="font-size:12px; padding:8px 16px;">
+          Cerrar Análisis
+        </button>
+        <button class="btn-select-card filled" style="padding:9px 22px; font-size:13px; font-weight:800;" onclick="selectChallenge('${ch.id}', true); closeChallengeDetailModal();">
+          ${isSelected ? 'Continuar al Taller de Solución →' : 'Elegir este Reto y Comenzar →'}
+        </button>
+      </div>
+    </div>
+  `;
+
+  modal.style.display = "flex";
+}
+
+function closeChallengeDetailModal() {
+  const modal = document.getElementById("challenge-detail-modal-overlay");
+  if (modal) modal.style.display = "none";
 }
 
 // ═════════════════════════════════════════════════════════════════════════════
