@@ -575,9 +575,38 @@ function loadSavedState() {
   }
 }
 
+// ── SINCRONIZACIÓN AUTOMÁTICA EN SEGUNDO PLANO (MULTI-TAB / MULTI-DISPOSITIVO) ──
+let syncBroadcastChannel = null;
+if (typeof BroadcastChannel !== "undefined") {
+  try {
+    syncBroadcastChannel = new BroadcastChannel("rally_studio_auto_sync");
+    syncBroadcastChannel.onmessage = function(event) {
+      if (event.data && event.data.type === "AUTO_SYNC_STATE" && event.data.state) {
+        state = Object.assign(getInitialState(), event.data.state);
+        syncUI();
+      }
+    };
+  } catch (e) {}
+}
+
+if (typeof window !== "undefined" && window.addEventListener) {
+  window.addEventListener("storage", function(event) {
+    if (event.key === "rally_studio_production_state_2026_v3" && event.newValue) {
+      try {
+        const remoteState = JSON.parse(event.newValue);
+        state = Object.assign(getInitialState(), remoteState);
+        syncUI();
+      } catch (e) {}
+    }
+  });
+}
+
 function saveState() {
   try {
     localStorage.setItem("rally_studio_production_state_2026_v3", JSON.stringify(state));
+    if (syncBroadcastChannel) {
+      syncBroadcastChannel.postMessage({ type: "AUTO_SYNC_STATE", state });
+    }
   } catch (e) {}
   updateInspector();
   renderTopbar();
@@ -839,10 +868,14 @@ function renderTopbar() {
           <img src="${state.rally_type === 'latam' ? 'assets/logo_rally_latam.png' : 'assets/logo_rally_nacional.png'}" 
                class="topbar-emblem-img" 
                alt="${state.rally_type === 'latam' ? 'Rally Latinoamericano' : 'Rally Nacional Innova'}">
+          <span class="topbar-emblem-divider"></span>
           <img src="assets/logo_uni_official.png" 
                class="topbar-uni-img" 
                alt="Universidad Nacional de Ingeniería (UNI)">
-          ${state.team_logo_img ? `<img src="${state.team_logo_img}" class="topbar-team-avatar" alt="Team Logo" title="${state.team_name || 'Equipo'}">` : ""}
+          ${state.team_logo_img ? `
+            <span class="topbar-emblem-divider"></span>
+            <img src="${state.team_logo_img}" class="topbar-team-avatar" alt="Team Logo" title="${state.team_name || 'Equipo'}">
+          ` : ""}
         </div>
       ` : ""}
       ${pName ? `<span class="project-title-crumb">/ ${pName}</span>` : ""}
@@ -875,11 +908,6 @@ function renderTopbar() {
           </label>
         </div>
       </div>
-
-      <button class="btn-pill-ghost" onclick="copySyncToken()" title="Copiar token base64 para compartir por WhatsApp">
-        ${SVG.sync}
-        <span>Sincronizar</span>
-      </button>
 
       ${stage >= 2 ? `<button class="btn-pill-ghost" onclick="togglePanel()" title="Panel de Auditoría">${SVG.spark} Auditoría</button>` : ""}
 

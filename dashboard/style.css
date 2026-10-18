@@ -109,7 +109,7 @@ body.sidebar-collapsed.panel-collapsed #panel {
   align-items: center;
   justify-content: space-between;
   padding: 0 24px;
-  height: 56px;
+  height: 60px;
   z-index: 50;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
 }
@@ -117,7 +117,7 @@ body.sidebar-collapsed.panel-collapsed #panel {
 .topbar-left {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
 .brand-group {
@@ -146,37 +146,49 @@ body.sidebar-collapsed.panel-collapsed #panel {
 .topbar-emblems-group {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-left: 12px;
-  padding-left: 14px;
-  border-left: 1.5px solid #e2e8f0;
+  gap: 16px;
+  margin-left: 20px;
+  padding: 5px 16px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.topbar-emblem-divider {
+  width: 1px;
+  height: 24px;
+  background: #cbd5e1;
+  opacity: 0.75;
 }
 
 .topbar-emblem-img {
-  height: 36px;
+  height: 40px;
+  width: auto;
+  max-width: 125px;
+  object-fit: contain;
+  vertical-align: middle;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.04));
+  transition: transform 140ms ease;
+}
+
+.topbar-uni-img {
+  height: 38px;
   width: auto;
   max-width: 90px;
   object-fit: contain;
   vertical-align: middle;
-  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.08));
-}
-
-.topbar-uni-img {
-  height: 34px;
-  width: auto;
-  max-width: 80px;
-  object-fit: contain;
-  vertical-align: middle;
-  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.08));
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.04));
+  transition: transform 140ms ease;
 }
 
 .topbar-team-avatar {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: 8px;
   object-fit: cover;
-  border: 1.5px solid #0066ff;
-  box-shadow: 0 2px 6px rgba(0, 102, 255, 0.15);
+  border: 1.5px solid #003366;
+  box-shadow: 0 1px 3px rgba(0, 51, 102, 0.1);
 }
 
 .topbar-actions {
