@@ -448,6 +448,7 @@ function getInitialState() {
     
     // Retos ingresados por el usuario desde el comité oficial
     challenges: [],
+    challenge_ideas: {}, // { [chId]: [ { id, text, author, timestamp } ] }
 
     // Taller de Solución
     solution_raw_input: "",
@@ -518,6 +519,7 @@ let state = getInitialState();
 let activeTab = "certamen";
 let timerInterval = null;
 let challengeFilter = "all";
+let challengeViewMode = "doc"; // "doc" | "cards"
 
 // ── MASCOTAS COLABORATIVAS AUTOMÁTICAS (MULTI-USUARIO SIN LOGIN) ─────────────
 const TEAM_MASCOTS = [
@@ -758,7 +760,7 @@ function resetProject() {
   }
 }
 
-// ── SINCRONIZACIÓN DE EQUIPO (BYPASS PARA WI-FI UNIVERSITARIO) ─────────────────
+// ── SINCRONIZACIÓN Y EXPORTACIÓN TÉCNICA (MD & PDF / PRINT) ───────────────────
 function exportProjectJson() {
   const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(state, null, 2));
   const dlAnchorElem = document.createElement('a');
@@ -767,6 +769,319 @@ function exportProjectJson() {
   dlAnchorElem.setAttribute("download", `${pName}_respaldo.json`);
   dlAnchorElem.click();
 }
+
+function generateProjectMarkdown() {
+  const isLatam = state.rally_type === "latam";
+  const rallyTitle = isLatam ? "Rally Latinoamericano de Innovación (28h)" : "Rally Nacional Nicaragua Innova (24h)";
+  const teamName = state.team_name || "Equipo de Innovación UNI";
+  const uni = state.university || "Universidad Nacional de Ingeniería (UNI)";
+  const projName = state.project_name || state.team_name || "PROYECTO DE INNOVACIÓN";
+  const cat = state.category || "Innovación";
+  const challengeId = state.challenge_id || (state.challenges && state.challenges[0] ? state.challenges[0].id : "01");
+  const selectedCh = (state.challenges && state.challenges.find(c => c.id === challengeId)) || OFFICIAL_CHALLENGES_2026.find(c => c.id === challengeId) || OFFICIAL_CHALLENGES_2026[0];
+  const challengeTitle = state.challenge_title || selectedCh.title;
+
+  const paut = state.pautado || {};
+  const scr = state.script || {};
+  const budgetList = Array.isArray(state.budget) && state.budget.length > 0 ? state.budget : [
+    { concept: "Diseño y Prototipado Rápido (Materiales / Maqueta)", category: "Prototipado", units: 1, unit_cost: 250 },
+    { concept: "Componentes Electromecánicos / Hardware Base", category: "Hardware Base", units: 1, unit_cost: 320 },
+    { concept: "Pruebas de Campo y Validación Operativa", category: "Validación", units: 1, unit_cost: 180 },
+    { concept: "Herramientas de Ensamblaje y Gabinetes de Protección", category: "Fabricación", units: 1, unit_cost: 140 },
+    { concept: "Talleres y Metodología de Apropiación Comunitaria", category: "Impacto Social", units: 1, unit_cost: 150 }
+  ];
+  const budgetTotal = budgetList.reduce((acc, b) => acc + (Number(b.units || 1) * Number(b.unit_cost || 0)), 0);
+  const challengesList = (state.challenges && state.challenges.length > 0) ? state.challenges : OFFICIAL_CHALLENGES_2026;
+
+  let md = `# DOSSIER TÉCNICO OFICIAL DEL PROYECTO: ${projName.toUpperCase()}\n`;
+  md += `## ${rallyTitle}\n\n`;
+  md += `---\n\n`;
+  md += `### 1. Ficha Técnica y Datos Institucionales\n`;
+  md += `- **Nombre del Proyecto:** ${projName}\n`;
+  md += `- **Nombre del Equipo:** ${teamName}\n`;
+  md += `- **Institución / Sede:** ${uni}\n`;
+  md += `- **Certamen:** ${rallyTitle}\n`;
+  md += `- **Categoría Oficial:** ${cat}\n`;
+  md += `- **Reto Seleccionado:** Reto ${challengeId} — ${challengeTitle}\n`;
+  md += `- **Plataforma de Despacho:** Rally Studio (Workbench de Innovación)\n\n`;
+
+  md += `### 2. Identidad Gráfica y Sistema de Diseño (/impeccable standard)\n`;
+  md += `**Concepto Rector:** The Cardless Typographic Workbench (Diseño Suizo de Misión Crítica)\n`;
+  md += `- **Color Navy Principal:** \`#0D1B35\` (Títulos y cronómetro institucional - WCAG AAA)\n`;
+  md += `- **Color Azul Primario:** \`#0866F5\` (Acentos interactivos y selección activa - WCAG AAA)\n`;
+  md += `- **Color Cobalto Técnico:** \`#1D4ED8\` (Validación y enlaces)\n`;
+  md += `- **Color Acento / Telemetría:** \`#0284C7\` / \`#2AA7AD\` (Indicadores ambientales)\n`;
+  md += `- **Tipografía Display & Body:** Plus Jakarta Sans (Pesos 500, 700, 900)\n`;
+  md += `- **Tipografía Numérica & Código:** JetBrains Mono (Tabular Nums)\n`;
+  md += `- **Logotipos del Sistema:** \`rally_studio_logo.svg\`, \`assets/logo_uni.png\`, \`assets/logo_rally_latam.png\`, \`assets/logo_rally_nacional.png\`\n\n`;
+
+  md += `### 3. Tesis de Solución\n`;
+  md += `**Tesis Central:** ${state.solution_thesis || "Propuesta de innovación tecnológica y social de alto impacto orientada a resolver las demandas del comité organizador."}\n\n`;
+  md += `**Pitch Breve:** ${state.solution_simple || "Solución estructurada con enfoque de prefactibilidad técnica, modelo de sostenibilidad y rápida adopción territorial."}\n\n`;
+
+  md += `### 4. Catálogo Oficial de Retos y Propuestas IA del Sistema\n\n`;
+  challengesList.forEach(ch => {
+    md += `#### Reto ${ch.id}: ${ch.title}\n`;
+    md += `- **Categoría:** ${ch.category || "General"} | **ODS:** ${Array.isArray(ch.ods) ? ch.ods.join(", ") : ch.ods || "N/A"} | **Win-Rate Estimado:** ${ch.winRate || 85}%\n`;
+    md += `- **Demanda del Comité:** ${ch.officialExpectation || ch.description || "N/A"}\n`;
+    md += `- **Propuesta IA / WOW:** ${ch.wowProposal || ch.proposal || "Solución estructurada por Rally Studio."}\n`;
+    md += `- **Adaptación Territorial:** ${ch.nicaraguaAdaptation || "Despliegue comunitario en sectores críticos."}\n`;
+    md += `- **Razón de Novedad:** ${ch.noveltyReason || "Enfoque metodológico de alta prefactibilidad."}\n\n`;
+  });
+
+  md += `### 5. Pautado Oficial Homologado (Rúbrica Oficial)\n\n`;
+  md += `#### 5.1 Definición del Problema\n${paut.problema || "Diagnóstico cuantitativo y delimitación del problema territorial, identificando causas raíz, población vulnerada y la brecha técnica que motiva la innovación."}\n\n`;
+  md += `#### 5.2 Solución Propuesta\n${paut.solucion || "Arquitectura de la solución planteada por el equipo, detallando los módulos funcionales, diferenciación técnica y cómo resuelve directamente el reto oficial."}\n\n`;
+  md += `#### 5.3 Prefactibilidad y Presupuesto de Marcha\n${paut.prefactibilidad || "Estructura de costos, componentes requeridos, proveedores locales y modelo financiero de puesta en marcha bajo los topes normativos."}\n\n`;
+  md += `#### 5.4 Grado de Innovación y Creatividad\n${paut.innovacion || "Elementos diferenciales y disruptivos de la solución, barreras tecnológicas superadas y valor agregado frente a alternativas existentes."}\n\n`;
+  md += `#### 5.5 Impacto Social y Sostenibilidad Ambiental\n${paut.impacto || "Medición de beneficios cuantificables para la comunidad, alineación con la Agenda 2030 (ODS) y viabilidad ecológica a largo plazo."}\n\n`;
+
+  md += `### 6. Presupuesto Sustentado de Marcha (Total: \$${budgetTotal.toFixed(2)} USD)\n\n`;
+  md += `| Ítem | Concepto | Categoría | Unidades | Costo Unit. | Total |\n`;
+  md += `|---|---|---|---|---|---|\n`;
+  budgetList.forEach((b, idx) => {
+    const tot = (Number(b.units || 1) * Number(b.unit_cost || 0)).toFixed(2);
+    md += `| ${idx + 1} | ${b.concept} | ${b.category || "General"} | ${b.units || 1} | \$${Number(b.unit_cost || 0).toFixed(2)} | \$${tot} |\n`;
+  });
+  md += `| — | **PRESUPUESTO GENERAL** | — | — | — | **\$${budgetTotal.toFixed(2)} USD** |\n\n`;
+
+  md += `### 7. Guion Audiovisual de 120 Segundos (4 Actos)\n\n`;
+  md += `- **Acto 1 (00:00 - 00:20):** ${scr.acto1 || "Exposición del problema en el territorio, datos críticos y urgencia de solución."}\n\n`;
+  md += `- **Acto 2 (00:20 - 00:55):** ${scr.acto2 || "Presentación de la propuesta de innovación desarrollada por el equipo de la UNI."}\n\n`;
+  md += `- **Acto 3 (00:55 - 01:30):** ${scr.acto3 || "Demostración operativa del prototipo, prefactibilidad económica y validación de campo."}\n\n`;
+  md += `- **Acto 4 (01:30 - 02:00):** ${scr.acto4 || "Impacto transformador, escalabilidad y llamado a la acción del equipo en el certamen."}\n\n`;
+
+  md += `---\n*Exportado desde Rally Studio Workbench · Cumplimiento de Rúbricas Oficiales CONFEDI / ACOFI / CNU*\n`;
+  return md;
+}
+
+function exportProjectMarkdown() {
+  const content = generateProjectMarkdown();
+  const blob = new Blob([content], { type: "text/markdown;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+  const dlAnchorElem = document.createElement('a');
+  dlAnchorElem.setAttribute("href", url);
+  const pName = (state.project_name || state.team_name || "proyecto_rally").toLowerCase().replace(/\s+/g, "_");
+  dlAnchorElem.setAttribute("download", `${pName}_dossier_tecnico.md`);
+  document.body.appendChild(dlAnchorElem);
+  dlAnchorElem.click();
+  document.body.removeChild(dlAnchorElem);
+  URL.revokeObjectURL(url);
+  showToast("Dossier Markdown (.md) exportado exitosamente");
+}
+
+function preparePrintDossierHTML() {
+  const isLatam = state.rally_type === "latam";
+  const rallyTitle = isLatam ? "Rally Latinoamericano de Innovación (28 Horas)" : "Rally Nacional Nicaragua Innova (24 Horas)";
+  const teamName = state.team_name || "Equipo de Innovación UNI";
+  const uni = state.university || "Universidad Nacional de Ingeniería (UNI)";
+  const projName = state.project_name || state.team_name || "PROYECTO DE INNOVACIÓN";
+  const cat = state.category || "Innovación";
+  const challengeId = state.challenge_id || (state.challenges && state.challenges[0] ? state.challenges[0].id : "01");
+  const selectedCh = (state.challenges && state.challenges.find(c => c.id === challengeId)) || OFFICIAL_CHALLENGES_2026.find(c => c.id === challengeId) || OFFICIAL_CHALLENGES_2026[0];
+  const challengeTitle = state.challenge_title || selectedCh.title;
+
+  const paut = state.pautado || {};
+  const scr = state.script || {};
+  const budgetList = Array.isArray(state.budget) && state.budget.length > 0 ? state.budget : [
+    { concept: "Diseño y Prototipado Rápido (Materiales / Maqueta)", category: "Prototipado", units: 1, unit_cost: 250 },
+    { concept: "Componentes Electromecánicos / Hardware Base", category: "Hardware Base", units: 1, unit_cost: 320 },
+    { concept: "Pruebas de Campo y Validación Operativa", category: "Validación", units: 1, unit_cost: 180 },
+    { concept: "Herramientas de Ensamblaje y Gabinetes de Protección", category: "Fabricación", units: 1, unit_cost: 140 },
+    { concept: "Talleres y Metodología de Apropiación Comunitaria", category: "Impacto Social", units: 1, unit_cost: 150 }
+  ];
+  const budgetTotal = budgetList.reduce((acc, b) => acc + (Number(b.units || 1) * Number(b.unit_cost || 0)), 0);
+  const challengesList = (state.challenges && state.challenges.length > 0) ? state.challenges : OFFICIAL_CHALLENGES_2026;
+
+  return `
+    <div class="print-header">
+      <div>
+        <div class="print-brand-tag">Rally Studio · Mission Control Workbench</div>
+        <h1 class="print-title">${projName.toUpperCase()} · MEMORIA TÉCNICA OFICIAL</h1>
+        <div class="print-subtitle">${rallyTitle} · ${uni}</div>
+      </div>
+      <div class="print-header-emblems">
+        <img src="../rally_studio_logo.svg" alt="Rally Studio" style="height:32px; width:auto;">
+        <img src="assets/logo_uni.png" alt="UNI Logo">
+        <img src="${isLatam ? 'assets/logo_rally_latam.png' : 'assets/logo_rally_nacional.png'}" alt="Rally Logo">
+      </div>
+    </div>
+
+    <div class="print-meta-grid">
+      <div><strong>Equipo:</strong> ${teamName}</div>
+      <div><strong>Sede Universitaria:</strong> ${uni}</div>
+      <div><strong>Categoría:</strong> ${cat}</div>
+      <div><strong>Reto Seleccionado:</strong> Reto ${challengeId} — ${challengeTitle}</div>
+      <div><strong>Tesis de Solución:</strong> ${state.solution_thesis || 'Propuesta de innovación tecnológica y social de alto impacto para el certamen.'}</div>
+      <div><strong>Normativa de Diseño:</strong> /impeccable · Swiss Cardless Typographic Workbench</div>
+    </div>
+
+    <div class="print-section">
+      <div class="print-section-title">
+        <span>1. Memoria Pautada Oficial (Calibración Estricta a Rúbrica)</span>
+        <span class="print-badge print-badge-navy">5 SECCIONES OFICIALES</span>
+      </div>
+      <div class="print-pautado-block">
+        <div class="print-pautado-header"><span>1.1 Definición del Problema</span><span>Máx 1,250 caracteres</span></div>
+        <p class="print-pautado-text">${paut.problema || 'Diagnóstico cuantitativo y delimitación del problema territorial, identificando causas raíz, población vulnerada y la brecha técnica que motiva la innovación formulada por el equipo...'}</p>
+      </div>
+      <div class="print-pautado-block">
+        <div class="print-pautado-header"><span>1.2 Solución Propuesta</span><span>Máx 1,250 caracteres</span></div>
+        <p class="print-pautado-text">${paut.solucion || 'Arquitectura de la solución planteada por el equipo, detallando los módulos funcionales, diferenciación técnica y cómo resuelve directamente el reto oficial seleccionado...'}</p>
+      </div>
+      <div class="print-pautado-block">
+        <div class="print-pautado-header"><span>1.3 Prefactibilidad y Presupuesto de Marcha</span><span>Máx 1,000 caracteres</span></div>
+        <p class="print-pautado-text">${paut.prefactibilidad || 'Estructura de costos, componentes requeridos, disponibilidad regional de proveedores y modelo financiero de puesta en marcha sustentado bajo los topes de la rúbrica...'}</p>
+      </div>
+      <div class="print-pautado-block">
+        <div class="print-pautado-header"><span>1.4 Grado de Innovación y Creatividad</span><span>Máx 1,000 caracteres</span></div>
+        <p class="print-pautado-text">${paut.innovacion || 'Elementos diferenciales y disruptivos de la propuesta, barreras técnicas resueltas creativamente y valor agregado demostrable frente a soluciones convencionales...'}</p>
+      </div>
+      <div class="print-pautado-block">
+        <div class="print-pautado-header"><span>1.5 Impacto Social y Sostenibilidad Ambiental</span><span>Máx 1,000 caracteres</span></div>
+        <p class="print-pautado-text">${paut.impacto || 'Medición de beneficios directos para la comunidad beneficiaria, alineación formal con los Objetivos de Desarrollo Sostenible (ODS) y viabilidad de mantenimiento autónomo a largo plazo...'}</p>
+      </div>
+    </div>
+
+    <div class="print-section print-page-break">
+      <div class="print-section-title">
+        <span>2. Presupuesto Sustentado de Marcha (Tope \$500 - \$15,000 USD)</span>
+        <span class="print-badge print-badge-blue">TABULAR NUMS · COTS</span>
+      </div>
+      <table class="print-table">
+        <thead>
+          <tr>
+            <th style="width:5%;">#</th>
+            <th style="width:40%;">Concepto Técnico</th>
+            <th style="width:20%;">Categoría</th>
+            <th style="width:10%;">Cant.</th>
+            <th style="width:12%;">Unitario</th>
+            <th style="width:13%;">Total USD</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${budgetList.map((b, i) => `
+            <tr>
+              <td class="num-cell">${i + 1}</td>
+              <td><strong>${b.concept}</strong></td>
+              <td>${b.category || 'General'}</td>
+              <td class="num-cell" style="text-align:center;">${b.units || 1}</td>
+              <td class="num-cell" style="text-align:right;">$${Number(b.unit_cost || 0).toFixed(2)}</td>
+              <td class="num-cell" style="text-align:right; font-weight:700;">$${(Number(b.units || 1) * Number(b.unit_cost || 0)).toFixed(2)}</td>
+            </tr>
+          `).join('')}
+          <tr style="background:#F8FAFD; font-weight:800;">
+            <td colspan="5" style="text-align:right;">PRESUPUESTO GENERAL CONSOLIDADO:</td>
+            <td class="num-cell" style="text-align:right; color:#0D1B35;">$${budgetTotal.toFixed(2)} USD</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="print-section print-avoid-break">
+      <div class="print-section-title">
+        <span>3. Guion Audiovisual de 120 Segundos (4 Actos Oficiales)</span>
+        <span class="print-badge print-badge-cyan">120 SEGUNDOS · 85-90 HZ</span>
+      </div>
+      <div style="font-size:8.5pt; line-height:1.45; color:#1E293B;">
+        <p><strong>[00:00 - 00:20] Acto 1 (Herida Social):</strong> ${scr.acto1 || 'Exposición contundente del problema territorial y la urgencia comunitaria que motiva el proyecto...'}</p>
+        <p><strong>[00:20 - 00:55] Acto 2 (Solución Innovadora):</strong> ${scr.acto2 || 'Presentación de la propuesta tecnológica y metodológica desarrollada por el equipo de la UNI...'}</p>
+        <p><strong>[00:55 - 01:30] Acto 3 (Demostración y Prefactibilidad):</strong> ${scr.acto3 || 'Demostración operativa del modelo, sustentación presupuestaria y validación técnica en terreno...'}</p>
+        <p><strong>[01:30 - 02:00] Acto 4 (Impacto Humano y Cierre):</strong> ${scr.acto4 || 'Transformación social duradera, empoderamiento local y llamado a la acción institucional...'}</p>
+      </div>
+    </div>
+
+    <div class="print-section print-avoid-break">
+      <div class="print-section-title">
+        <span>4. Sistema de Diseño e Identidad Visual (/impeccable standard)</span>
+        <span class="print-badge print-badge-blue">WCAG AAA COMPLIANT</span>
+      </div>
+      <div class="print-swatches-grid">
+        <div class="print-swatch-card">
+          <div class="print-swatch-color" style="background:#0D1B35;"></div>
+          <div class="print-swatch-name">Navy Dark</div>
+          <div class="print-swatch-hex">#0D1B35</div>
+        </div>
+        <div class="print-swatch-card">
+          <div class="print-swatch-color" style="background:#0866F5;"></div>
+          <div class="print-swatch-name">Azul Primario</div>
+          <div class="print-swatch-hex">#0866F5</div>
+        </div>
+        <div class="print-swatch-card">
+          <div class="print-swatch-color" style="background:#1D4ED8;"></div>
+          <div class="print-swatch-name">Cobalto</div>
+          <div class="print-swatch-hex">#1D4ED8</div>
+        </div>
+        <div class="print-swatch-card">
+          <div class="print-swatch-color" style="background:#0284C7;"></div>
+          <div class="print-swatch-name">Acento Radio</div>
+          <div class="print-swatch-hex">#0284C7</div>
+        </div>
+        <div class="print-swatch-card">
+          <div class="print-swatch-color" style="background:#2AA7AD;"></div>
+          <div class="print-swatch-name">Verde Cian</div>
+          <div class="print-swatch-hex">#2AA7AD</div>
+        </div>
+        <div class="print-swatch-card">
+          <div class="print-swatch-color" style="background:#F8FAFD; border:1px solid #CBD5E1;"></div>
+          <div class="print-swatch-name">Lienzo Sutil</div>
+          <div class="print-swatch-hex">#F8FAFD</div>
+        </div>
+      </div>
+      <div class="print-meta-grid" style="margin-top:6px;">
+        <div><strong>Tipografía Display / Títulos:</strong> Plus Jakarta Sans (900/700/500)</div>
+        <div><strong>Tipografía Tablas / Datos:</strong> JetBrains Mono (Tabular Nums)</div>
+        <div><strong>Principios de Interfaz:</strong> Cardless Typographic Workbench, cero emojis, bordes hairline de 1px</div>
+        <div><strong>Contraste Semántico:</strong> Ratio 14.2:1 (Navy/Blanco) y 8.1:1 (Azul/Blanco)</div>
+      </div>
+    </div>
+
+    <div class="print-section print-page-break">
+      <div class="print-section-title">
+        <span>5. Catálogo Oficial de Retos y Propuestas IA del Sistema</span>
+        <span class="print-badge print-badge-navy">9 RETOS CALIBRADOS</span>
+      </div>
+      <table class="print-table">
+        <thead>
+          <tr>
+            <th style="width:8%;">ID</th>
+            <th style="width:30%;">Reto Oficial</th>
+            <th style="width:16%;">Categoría / ODS</th>
+            <th style="width:46%;">Propuesta Técnica IA / WOW</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${challengesList.slice(0, 9).map(ch => `
+            <tr>
+              <td class="num-cell"><strong>#${ch.id}</strong></td>
+              <td>${ch.title}</td>
+              <td>${ch.category}<br><span style="font-size:7.5pt; color:#64748b; font-family:'JetBrains Mono',monospace;">${Array.isArray(ch.ods) ? ch.ods.join(', ') : ch.ods || ''}</span></td>
+              <td>${ch.wowProposal || ch.proposal || 'Solución estructurada por Rally Studio.'}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+      <div style="font-size:7.5pt; color:#64748b; text-align:right; margin-top:14px; border-top:1px solid #E2E8F0; padding-top:6px; font-family:'JetBrains Mono',monospace;">
+        DOCUMENTO TÉCNICO EMITIDO POR RALLY STUDIO · UNIVERSIDAD NACIONAL DE INGENIERÍA (UNI) · CERTÁMENES 2026
+      </div>
+    </div>
+  `;
+}
+
+function printProjectDossier() {
+  let container = document.getElementById("print-dossier-container");
+  if (!container) {
+    container = document.createElement("div");
+    container.id = "print-dossier-container";
+    document.body.appendChild(container);
+  }
+  container.innerHTML = preparePrintDossierHTML();
+  showToast("Abriendo vista de impresión / exportación a PDF...");
+  setTimeout(() => {
+    window.print();
+  }, 250);
+}
+
 
 function importProjectJson(ev) {
   const file = ev.target.files[0];
@@ -852,10 +1167,24 @@ function getCurrentDeadlineAlert() {
     return { label: "STANDBY", time: "--:--", desc: "Selecciona el certamen para activar el cronograma" };
   }
   if (!state.rally_started) {
-    return { label: "Inicio Oficial", time: "08:00 AM (Viernes)", desc: "Apertura oficial de retos en plataforma de competencia" };
+    return { label: "Inicio Oficial", time: "08:00 AM", desc: "Apertura oficial de retos en plataforma de competencia" };
   }
   const now = Date.now();
   const start = state.start_timestamp || now;
+
+  if (now < start) {
+    const diffSec = Math.floor((start - now) / 1000);
+    const dh = Math.floor(diffSec / 3600);
+    const dm = Math.floor((diffSec % 3600) / 60);
+    const ds = Math.floor(diffSec % 60);
+    const timeStr = dh > 0 ? `${dh}h ${dm}m` : `${dm}m ${ds}s`;
+    return {
+      label: "Inicio Programado",
+      time: `En ${timeStr}`,
+      desc: `Inicia el ${new Date(start).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`
+    };
+  }
+
   const elapsedSec = Math.floor((now - start) / 1000);
   const totalSec = (state.hours_total || 24) * 3600;
   const remainSec = Math.max(0, totalSec - elapsedSec);
@@ -924,17 +1253,31 @@ function getCurrentDeadlineAlert() {
 }
 
 function getTimerString() {
-  if (!state.rally_type) {
+  if (!state.rally_type && !state.rally_started) {
     return { time: "--:--:--", status: "STANDBY" };
   }
   if (!state.rally_started) {
-    return { time: `${state.hours_total || 24}:00:00`, status: "INICIO 08:00 AM" };
+    return { time: `${(state.hours_total || 24).toString().padStart(2, '0')}:00:00`, status: "STANDBY" };
   }
   const now = Date.now();
   const start = state.start_timestamp || now;
+
+  if (now < start) {
+    const remainToStart = Math.floor((start - now) / 1000);
+    const h = Math.floor(remainToStart / 3600).toString().padStart(2, "0");
+    const m = Math.floor((remainToStart % 3600) / 60).toString().padStart(2, "0");
+    const s = Math.floor(remainToStart % 60).toString().padStart(2, "0");
+    return { time: `${h}:${m}:${s}`, status: "INICIA EN" };
+  }
+
   const elapsedSec = Math.floor((now - start) / 1000);
   const totalSec = (state.hours_total || 24) * 3600;
   const remainSec = Math.max(0, totalSec - elapsedSec);
+
+  if (remainSec <= 0) {
+    return { time: "00:00:00", status: "TIEMPO CUMPLIDO" };
+  }
+
   const h = Math.floor(remainSec / 3600).toString().padStart(2, "0");
   const m = Math.floor((remainSec % 3600) / 60).toString().padStart(2, "0");
   const s = Math.floor(remainSec % 60).toString().padStart(2, "0");
@@ -1151,6 +1494,8 @@ function renderTopbar() {
           <a href="#" onclick="startOfficialRallyTimer(); return false;">${SVG.spark} Iniciar Cronómetro (Inicio Oficial 08:00 AM)</a>
           <a href="#" onclick="state.rally_started=false; state.start_timestamp=null; saveState(); startTimer(); return false;">Pausar / Standby</a>
           <a href="#" onclick="resetProject(); return false;">Reiniciar Certamen (T=0)</a>
+          <a href="#" onclick="exportProjectMarkdown(); return false;">${SVG.copy} Exportar Dossier (.md)</a>
+          <a href="#" onclick="printProjectDossier(); return false;">${SVG.download} Imprimir / Guardar como PDF</a>
           <a href="#" onclick="exportProjectJson(); return false;">${SVG.download} Exportar Proyecto (.json)</a>
           <label style="cursor:pointer; display:flex; align-items:center; gap:8px; padding:9px 14px; font-size:12px; color:#1e293b;">
             ${SVG.upload} Importar Proyecto (.json)
@@ -1185,6 +1530,12 @@ document.addEventListener("click", () => {
 });
 
 // ── CALIBRACIÓN INTERACTIVA DE CRONÓMETRO ─────────────────────────────────────
+function formatDateTimeLocal(ts) {
+  const d = new Date(ts);
+  const pad = n => String(n).padStart(2, '0');
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+}
+
 function openTimerSettingsModal() {
   let modal = document.getElementById("timer-modal-overlay");
   if (!modal) {
@@ -1195,51 +1546,131 @@ function openTimerSettingsModal() {
   }
   
   const currentTotal = state.hours_total || (state.rally_type === "latam" ? 28 : 24);
-  
+  const currentStart = state.start_timestamp || Date.now();
+  const currentStartFormatted = formatDateTimeLocal(currentStart);
+
   modal.innerHTML = `
-    <div class="modal-card" onclick="event.stopPropagation()">
+    <div class="modal-card" style="max-width:480px;" onclick="event.stopPropagation()">
       <div class="modal-header" style="margin-bottom:12px;">
         <div style="display:flex; align-items:center; gap:8px;">
           ${SVG.clock}
-          <h3 class="modal-title" style="margin:0; font-size:16px; font-weight:800; color:#0D1B35;">Ajustar Cronómetro Oficial</h3>
+          <h3 class="modal-title" style="margin:0; font-size:16px; font-weight:800; color:#0D1B35;">Calibrar Hora de Inicio y Cronómetro</h3>
         </div>
         <button class="btn-icon-discreet" onclick="closeTimerSettingsModal()" style="font-size:18px; line-height:1;">&times;</button>
       </div>
       
-      <p style="font-size:12px; color:#5C7193; margin-bottom:16px; line-height:1.45;">
-        Calibra las horas oficiales de competencia o ajusta el tiempo según la hora de inicio de tu sede universitaria.
+      <p style="font-size:12px; color:#5C7193; margin-bottom:14px; line-height:1.45;">
+        Define con exactitud a qué hora empezó o empezará la competencia para calcular las alertas reglamentarias y el tiempo restante.
       </p>
 
-      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-bottom:16px;">
+      <div style="margin-bottom:12px;">
+        <label style="font-size:11px; font-weight:700; color:#13213A; display:block; margin-bottom:5px;">
+          Hora Oficial de Inicio (Empieza o Empezó)
+        </label>
+        <input type="datetime-local" id="timer-input-start-datetime" value="${currentStartFormatted}" oninput="updateTimerModalPreview()" style="width:100%; padding:9px 12px; border:1px solid #DCE7F5; border-radius:8px; font-size:13px; font-weight:700; font-family:var(--font-mono); background:#F8FAFD; box-sizing:border-box;">
+      </div>
+
+      <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px;">
+        <button type="button" class="btn-pill-light" style="font-size:11px; padding:5px 8px;" onclick="setTimerStartPreset('now')">⚡ Ahora</button>
+        <button type="button" class="btn-pill-light" style="font-size:11px; padding:5px 8px;" onclick="setTimerStartPreset('today_08')">🌅 Hoy 08:00 AM</button>
+        <button type="button" class="btn-pill-light" style="font-size:11px; padding:5px 8px;" onclick="setTimerStartPreset('today_09')">🕒 Hoy 09:00 AM</button>
+        <button type="button" class="btn-pill-light" style="font-size:11px; padding:5px 8px;" onclick="setTimerStartPreset('minus_1h')">⏪ Hace 1 hora</button>
+        <button type="button" class="btn-pill-light" style="font-size:11px; padding:5px 8px;" onclick="setTimerStartPreset('minus_2h')">⏪ Hace 2 horas</button>
+      </div>
+
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-bottom:14px;">
         <div>
           <label style="font-size:11px; font-weight:700; color:#13213A; display:block; margin-bottom:4px;">Régimen Total (Horas)</label>
-          <input type="number" id="timer-input-hours-total" value="${currentTotal}" min="1" max="72" style="width:100%; padding:8px 10px; border:1px solid #DCE7F5; border-radius:8px; font-size:13px; font-weight:700; font-family:var(--font-mono); background:#F8FAFD;">
+          <input type="number" id="timer-input-hours-total" value="${currentTotal}" min="1" max="72" oninput="updateTimerModalPreview()" style="width:100%; padding:8px 10px; border:1px solid #DCE7F5; border-radius:8px; font-size:13px; font-weight:700; font-family:var(--font-mono); background:#F8FAFD; box-sizing:border-box;">
         </div>
         <div>
-          <label style="font-size:11px; font-weight:700; color:#13213A; display:block; margin-bottom:4px;">Estado Actual</label>
-          <div style="padding:8px 10px; background:#F0F6FF; border:1px solid #DCE7F5; border-radius:8px; font-size:12px; font-weight:700; color:#0866F5; text-align:center;">
-            ${state.rally_started ? 'EN CURSO' : 'STANDBY / PAUSA'}
+          <label style="font-size:11px; font-weight:700; color:#13213A; display:block; margin-bottom:4px;">Certamen Predeterminado</label>
+          <div style="display:flex; gap:6px;">
+            <button type="button" class="btn-pill-light" style="flex:1; font-size:11px; padding:8px 4px;" onclick="setTimerPreset(24)">24h (Nac.)</button>
+            <button type="button" class="btn-pill-light" style="flex:1; font-size:11px; padding:8px 4px;" onclick="setTimerPreset(28)">28h (Latam)</button>
           </div>
         </div>
       </div>
 
-      <div style="display:flex; gap:8px; margin-bottom:18px;">
-        <button type="button" class="btn-pill-light" style="flex:1; font-size:11.5px; padding:6px;" onclick="setTimerPreset(24)">24h (Nacional)</button>
-        <button type="button" class="btn-pill-light" style="flex:1; font-size:11.5px; padding:6px;" onclick="setTimerPreset(28)">28h (Latam)</button>
+      <div id="timer-modal-preview-box" style="padding:10px 12px; background:#F0F6FF; border:1px solid #BFDBFE; border-radius:8px; margin-bottom:16px; font-size:11.5px; color:#1E3A8A; line-height:1.5;">
+        <!-- Se rellena con updateTimerModalPreview() -->
       </div>
 
       <div style="display:flex; justify-content:space-between; align-items:center; padding-top:14px; border-top:1px solid #DCE7F5;">
-        <button type="button" class="btn-pill-ghost" style="color:#DC2626; font-size:12px; font-weight:700;" onclick="toggleTimerRunning()">
-          ${state.rally_started ? 'Pausar Reloj' : 'Iniciar Reloj'}
+        <button type="button" class="btn-pill-ghost" style="color:${state.rally_started ? '#DC2626' : '#0866F5'}; font-size:12px; font-weight:700;" onclick="toggleTimerRunning()">
+          ${state.rally_started ? 'Pausar Reloj' : 'Activar Reloj'}
         </button>
         <div style="display:flex; gap:8px;">
           <button type="button" class="btn-pill-light" style="font-size:12px;" onclick="closeTimerSettingsModal()">Cancelar</button>
-          <button type="button" class="btn-select-card filled" style="padding:7px 16px; font-size:12px; font-weight:700;" onclick="applyTimerSettings()">Aplicar Ajuste</button>
+          <button type="button" class="btn-select-card filled" style="padding:7px 18px; font-size:12px; font-weight:700;" onclick="applyTimerSettings()">Guardar y Activar</button>
         </div>
       </div>
     </div>
   `;
   modal.style.display = "flex";
+  updateTimerModalPreview();
+}
+
+function updateTimerModalPreview() {
+  const box = document.getElementById("timer-modal-preview-box");
+  const dtInp = document.getElementById("timer-input-start-datetime");
+  const hoursInp = document.getElementById("timer-input-hours-total");
+  if (!box || !dtInp || !hoursInp) return;
+
+  const startTs = dtInp.value ? Date.parse(dtInp.value) : (state.start_timestamp || Date.now());
+  const hours = parseInt(hoursInp.value, 10) || (state.hours_total || 24);
+  const endTs = startTs + (hours * 3600 * 1000);
+  const now = Date.now();
+
+  const startDate = new Date(startTs);
+  const endDate = new Date(endTs);
+  const options = { weekday: 'short', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+
+  let statusText = "";
+  if (now < startTs) {
+    const diff = Math.floor((startTs - now) / 1000);
+    const dh = Math.floor(diff / 3600);
+    const dm = Math.floor((diff % 3600) / 60);
+    statusText = `<span style="color:#0284C7; font-weight:700;">POR INICIAR</span> (empieza en ${dh}h ${dm}m)`;
+  } else {
+    const elapsed = Math.floor((now - startTs) / 1000);
+    const total = hours * 3600;
+    const remain = Math.max(0, total - elapsed);
+    if (remain <= 0) {
+      statusText = `<span style="color:#DC2626; font-weight:700;">TIEMPO CUMPLIDO</span>`;
+    } else {
+      const rh = Math.floor(remain / 3600);
+      const rm = Math.floor((remain % 3600) / 60);
+      statusText = `<span style="color:#16A34A; font-weight:700;">EN CURSO</span> (restan ${rh}h ${rm}m de ${hours}h)`;
+    }
+  }
+
+  box.innerHTML = `
+    <div style="display:flex; justify-content:space-between; margin-bottom:3px;">
+      <span><strong>Inicio:</strong> ${startDate.toLocaleDateString('es-NI', options)}</span>
+      <span><strong>Fin:</strong> ${endDate.toLocaleDateString('es-NI', options)}</span>
+    </div>
+    <div><strong>Cálculo:</strong> ${statusText}</div>
+  `;
+}
+
+function setTimerStartPreset(type) {
+  const inp = document.getElementById("timer-input-start-datetime");
+  if (!inp) return;
+  const target = new Date();
+  if (type === "now") {
+    // Current time
+  } else if (type === "today_08") {
+    target.setHours(8, 0, 0, 0);
+  } else if (type === "today_09") {
+    target.setHours(9, 0, 0, 0);
+  } else if (type === "minus_1h") {
+    target.setTime(Date.now() - 3600 * 1000);
+  } else if (type === "minus_2h") {
+    target.setTime(Date.now() - 7200 * 1000);
+  }
+  inp.value = formatDateTimeLocal(target.getTime());
+  updateTimerModalPreview();
 }
 
 function closeTimerSettingsModal() {
@@ -1250,6 +1681,7 @@ function closeTimerSettingsModal() {
 function setTimerPreset(hours) {
   const inp = document.getElementById("timer-input-hours-total");
   if (inp) inp.value = hours;
+  updateTimerModalPreview();
 }
 
 function toggleTimerRunning() {
@@ -1265,16 +1697,34 @@ function toggleTimerRunning() {
 }
 
 function applyTimerSettings() {
-  const inp = document.getElementById("timer-input-hours-total");
-  if (inp) {
-    const val = parseInt(inp.value, 10);
+  const hoursInp = document.getElementById("timer-input-hours-total");
+  const dtInp = document.getElementById("timer-input-start-datetime");
+
+  if (hoursInp) {
+    const val = parseInt(hoursInp.value, 10);
     if (!isNaN(val) && val > 0) {
       state.hours_total = val;
     }
   }
+
+  if (dtInp && dtInp.value) {
+    const parsed = Date.parse(dtInp.value);
+    if (!isNaN(parsed)) {
+      state.start_timestamp = parsed;
+    }
+  } else if (!state.start_timestamp) {
+    state.start_timestamp = Date.now();
+  }
+
+  if (!state.rally_type) {
+    state.rally_type = "nacional";
+  }
+  state.rally_started = true;
+
   saveState();
   startTimer();
   closeTimerSettingsModal();
+  showToast("Cronómetro configurado correctamente");
 }
 
 // ── NAVEGACIÓN LATERAL POR DEPENDENCIAS ───────────────────────────────────────
@@ -1363,7 +1813,7 @@ function renderViewCertamen() {
       ${SVG.landscapeBg}
 
       <div class="stepper-header">
-        <span class="stepper-pill">PASO 01 DE 03</span>
+        <span class="stepper-pill"><span class="pill-dim">PASO</span> <strong class="pill-num">01</strong> <span class="pill-dim">DE 03</span></span>
         <div class="stepper-bars">
           <div class="stepper-bar-segment active"></div>
           <div class="stepper-bar-segment"></div>
@@ -1482,7 +1932,7 @@ function renderViewTeam() {
     <div class="wizard-canvas">
       <div class="stepper-header" style="justify-content:space-between;">
         <div style="display:flex; align-items:center; gap:14px;">
-          <span class="stepper-pill">PASO 02 DE 03</span>
+          <span class="stepper-pill"><span class="pill-dim">PASO</span> <strong class="pill-num">02</strong> <span class="pill-dim">DE 03</span></span>
           <div class="stepper-bars">
             <div class="stepper-bar-segment completed"></div>
             <div class="stepper-bar-segment active"></div>
@@ -1662,14 +2112,14 @@ function renderViewChallenges() {
     <div class="wizard-canvas" style="max-width:1040px; margin:0 auto; padding-bottom:60px;">
       <div class="stepper-header" style="justify-content:space-between; margin-bottom:18px;">
         <div style="display:flex; align-items:center; gap:14px;">
-          <span class="stepper-pill">PASO 03 DE 11 · RETOS DEL COMITÉ</span>
+          <span class="stepper-pill"><span class="pill-dim">PASO</span> <strong class="pill-num">03</strong> <span class="pill-dim">DE 11</span> <span class="pill-dot">·</span> <span class="pill-label">RETOS DEL COMITÉ</span></span>
         </div>
         <div style="display:flex; align-items:center; gap:8px;">
           <button class="btn-minimal-back" onclick="switchTab('team')" title="Volver a identidad de equipo">
             ${SVG.arrowLeft}
             <span>Editar equipo</span>
           </button>
-          <a href="/docs/Matriz_Seleccion_Desafios_2026.docx" download class="btn-pill-light" style="font-size:11.5px; padding:6px 14px; text-decoration:none;">
+          <a href="docs/Matriz_Seleccion_Desafios_2026.docx" download="Matriz_Seleccion_Desafios_2026.docx" class="btn-pill-light" style="font-size:11.5px; padding:6px 14px; text-decoration:none;">
             ${SVG.download} Matriz Word (.docx)
           </a>
         </div>
@@ -1709,20 +2159,39 @@ function renderViewChallenges() {
           </p>
         </div>
 
-        <div style="background:#FFFFFF; border:1px solid #BFDBFE; border-radius:14px; padding:24px; margin-bottom:24px; box-shadow:0 4px 16px -2px rgba(8, 102, 245, 0.05);">
+        <div style="background:#FFFFFF; border:1px solid var(--border-light); border-radius:14px; padding:22px; margin-bottom:24px; box-shadow:0 1px 3px rgba(0, 0, 0, 0.02);">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-            <div style="font-size:13.5px; font-weight:800; color:#0D1B35;">Ingreso Oficial de Desafíos del Certamen</div>
-            <span style="font-size:10.5px; font-weight:800; color:#0866F5; font-family:var(--font-mono); background:#EFF6FF; border:1px solid #BFDBFE; padding:3px 8px; border-radius:4px;">ESPERANDO COMUNICADO</span>
+            <div style="font-size:13.5px; font-weight:800; color:#0D1B35;">Ingreso e Importación Oficial de Retos</div>
+            <span class="tactical-status-pill status-pending"><span class="status-dot"></span>Importador Multiformato</span>
           </div>
           <p style="font-size:12px; color:#5C7193; margin-bottom:14px; line-height:1.5;">
-            Pega el texto del comunicado oficial (puedes incluir múltiples retos). El sistema clasificará cada reto y te propondrá soluciones arquitectónicas ganadoras.
+            Importa los retos subiendo un archivo comprimido <strong>.ZIP</strong> (con fotos o documentos), <strong>imágenes</strong> (.png, .jpg), documento <strong>PDF</strong>, archivo <strong>Word (.docx)</strong> o pega el comunicado oficial.
           </p>
-          <textarea id="raw-committee-challenges" rows="7" style="width:100%; border:1px solid #CBD5E1; border-radius:8px; padding:12px; font-size:12px; font-family:var(--font-mono); box-sizing:border-box; background:#F8FAFD; line-height:1.5;"
-            placeholder="Pega aquí el comunicado oficial de retos del comité...&#10;&#10;Ejemplo:&#10;RETO 01: Reconversión y segunda vida de motores&#10;Demanda del comité: Diseñar sistemas que reutilicen motores eléctricos en desuso para tracción agrícola...&#10;&#10;RETO 02: Red comunitaria para prevención de inundaciones&#10;Demanda del comité: Alerta temprana de crecidas de ríos con tecnología local..."></textarea>
+
+          <!-- Dropzone Universal -->
+          <div id="challenge-dropzone" 
+               style="border:2px dashed #93C5FD; background:#F8FAFD; border-radius:10px; padding:18px 14px; text-align:center; margin-bottom:14px; cursor:pointer; transition:all 150ms ease;"
+               onclick="document.getElementById('challenge-file-input').click()"
+               ondragover="event.preventDefault(); this.style.borderColor='#0866F5'; this.style.background='#EFF6FF';"
+               ondragleave="event.preventDefault(); this.style.borderColor='#93C5FD'; this.style.background='#F8FAFD';"
+               ondrop="handleChallengeDrop(event)">
+            <input type="file" id="challenge-file-input" style="display:none;" multiple accept=".zip,.pdf,.docx,.doc,.txt,.png,.jpg,.jpeg,.webp" onchange="handleChallengeFileSelect(this.files)">
+            <div style="display:flex; justify-content:center; align-items:center; gap:8px; margin-bottom:6px; color:#0866F5;">
+              ${SVG.upload}
+              <span style="font-size:13px; font-weight:800; color:#0D1B35;">Arrastra aquí o haz clic para subir archivo</span>
+            </div>
+            <div style="font-size:11px; color:#64748B;">
+              Soporta <strong>.ZIP</strong>, <strong>Imágenes (.png, .jpg)</strong>, <strong>PDF</strong>, <strong>Word (.docx)</strong> y <strong>Texto</strong>.
+            </div>
+            <div id="import-status-indicator" style="display:none; margin-top:8px; font-size:11.5px; font-weight:700; color:#0866F5;"></div>
+          </div>
+
+          <textarea id="raw-committee-challenges" rows="6" style="width:100%; border:1px solid #CBD5E1; border-radius:8px; padding:12px; font-size:12px; font-family:var(--font-mono); box-sizing:border-box; background:#F8FAFD; line-height:1.5;"
+            placeholder="O pega aquí el comunicado oficial de retos del comité...&#10;&#10;Ejemplo:&#10;RETO 01: Reconversión y segunda vida de motores&#10;Demanda del comité: Diseñar sistemas que reutilicen motores eléctricos en desuso para tracción agrícola...&#10;&#10;RETO 02: Red comunitaria para prevención de inundaciones&#10;Demanda del comité: Alerta temprana de crecidas de ríos con tecnología local..."></textarea>
           
           <div style="display:flex; justify-content:space-between; align-items:center; margin-top:14px; flex-wrap:wrap; gap:10px;">
             <button class="btn-pill-ghost" style="font-size:11px; padding:6px 12px;" onclick="loadReferenceChallenges()">
-              Simulacro: Cargar banco histórico de prueba (offline)
+              Cargar banco oficial de retos de referencia
             </button>
             <button class="btn-select-card filled" style="padding:10px 24px; font-size:13px; font-weight:800;" onclick="processCommitteeChallengesInput()">
               Cargar Retos en Vivo y Sugerir Soluciones ${SVG.arrowRight}
@@ -1732,41 +2201,103 @@ function renderViewChallenges() {
       ` : `
         <div class="phase-header" style="margin-bottom:20px;">
           <h1 class="phase-title" style="font-size:28px; font-weight:900; color:#0D1B35; margin-bottom:6px; letter-spacing:-0.02em;">
-            Retos en Vivo & <span class="phase-title-accent" style="color:#0866F5;">Soluciones Sugeridas</span>
+            Retos Oficiales & <span class="phase-title-accent" style="color:#0866F5;">Espacio de Deliberación</span>
           </h1>
           <p class="phase-subtitle" style="font-size:13.5px; color:#5C7193; line-height:1.45;">
-            ${list.length} retos cargados del evento en vivo. Revisa las soluciones tácticas generadas para cada desafío y selecciona la opción de tu equipo.
+            ${list.length} retos activos en radar. Edición colaborativa, notas de lluvia de ideas del equipo y recomendaciones de mayor win-rate para ganar el certamen.
           </p>
         </div>
 
-        <!-- Barra de Gestión de Retos en Vivo -->
-        <div style="background:#FFFFFF; border:1px solid #DCE7F5; border-radius:12px; padding:14px 18px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-          <div style="display:flex; align-items:center; gap:8px;">
-            <span style="font-family:var(--font-mono); font-size:11px; font-weight:800; background:#EFF6FF; color:#0866F5; border:1px solid #BFDBFE; padding:3px 8px; border-radius:4px;">
-              ${list.length} RETOS EN RADAR
+        <!-- MÓDULO TOP: RETOS CON MAYOR PROBABILIDAD DE ÉXITO -->
+        ${(() => {
+          const topChallenges = [...list].sort((a, b) => (b.winRate || 85) - (a.winRate || 85)).slice(0, 3);
+          return `
+            <div style="background:linear-gradient(135deg, #0D1B35 0%, #172E5C 100%); border-radius:14px; padding:18px 20px; margin-bottom:22px; color:#FFFFFF; box-shadow:0 8px 24px -4px rgba(13, 27, 53, 0.2);">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <span style="color:#F59E0B; display:flex; align-items:center;">${SVG.spark}</span>
+                  <span style="font-size:12px; font-weight:800; letter-spacing:0.04em; text-transform:uppercase; color:#E2E8F0;">TOP 3: Retos con Mayor Probabilidad de Ganar (WinRate)</span>
+                </div>
+                <span style="font-size:11px; color:#93C5FD; font-family:var(--font-mono);">Rúbrica Oficial & Viabilidad Tecnológica</span>
+              </div>
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:12px;">
+                ${topChallenges.map((tch, idx) => {
+                  const isCurSelected = state.challenge_id === tch.id;
+                  const medal = idx === 0 ? "🥇 TOP 1" : (idx === 1 ? "🥈 TOP 2" : "🥉 TOP 3");
+                  return `
+                    <div style="background:rgba(255, 255, 255, 0.07); border:1px solid ${isCurSelected ? '#60A5FA' : 'rgba(255, 255, 255, 0.12)'}; border-radius:10px; padding:12px 14px; display:flex; flex-direction:column; justify-content:space-between; transition:all 120ms ease;">
+                      <div>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                          <span style="font-size:10px; font-weight:800; font-family:var(--font-mono); color:#FCD34D;">${medal} · RETO #${tch.id}</span>
+                          <span style="font-size:11px; font-weight:900; color:#34D399; font-family:var(--font-mono);">${tch.winRate || 90}% Victoria</span>
+                        </div>
+                        <div style="font-size:12px; font-weight:700; color:#FFFFFF; margin-bottom:6px; line-height:1.35; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">
+                          ${tch.title}
+                        </div>
+                        <div style="font-size:11px; color:#94A3B8; margin-bottom:10px; line-height:1.35; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">
+                          ${tch.wowProposal || 'Solución de alto impacto.'}
+                        </div>
+                      </div>
+                      <div style="display:flex; justify-content:space-between; align-items:center; gap:6px; margin-top:4px;">
+                        <span style="font-size:10px; color:#93C5FD;">${tch.category}</span>
+                        <button class="btn-select-card ${isCurSelected ? 'filled' : 'outline'}" style="padding:4px 10px; font-size:11px; font-weight:700;" onclick="selectChallenge('${tch.id}', ${isCurSelected ? 'true' : 'false'})">
+                          ${isCurSelected ? 'Seleccionado ✓' : 'Seleccionar Reto'}
+                        </button>
+                      </div>
+                    </div>
+                  `;
+                }).join("")}
+              </div>
+            </div>
+          `;
+        })()}
+
+        <!-- Barra de Gestión y Selector de Modo de Trabajo -->
+        <div style="background:#FFFFFF; border:1px solid #DCE7F5; border-radius:12px; padding:12px 16px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+            <span class="tactical-status-pill">
+              <span class="status-dot"></span>${list.length} retos en radar
             </span>
-            <span style="font-size:12px; color:#5C7193;">Edición oficial activa</span>
+            
+            <!-- Selector de Vista: Documento Cooperativo vs Tarjetas Tácticas -->
+            <div style="display:flex; background:#F1F5F9; border-radius:8px; padding:2px; border:1px solid #E2E8F0;">
+              <button style="border:none; background:${challengeViewMode === 'doc' ? '#FFFFFF' : 'transparent'}; color:${challengeViewMode === 'doc' ? '#0866F5' : '#64748B'}; font-weight:800; font-size:11.5px; padding:5px 12px; border-radius:6px; cursor:pointer; box-shadow:${challengeViewMode === 'doc' ? '0 1px 3px rgba(0,0,0,0.08)' : 'none'};"
+                      onclick="challengeViewMode='doc'; renderTab('challenges');">
+                ${SVG.copy} Modo Documento Cooperativo
+              </button>
+              <button style="border:none; background:${challengeViewMode === 'cards' ? '#FFFFFF' : 'transparent'}; color:${challengeViewMode === 'cards' ? '#0866F5' : '#64748B'}; font-weight:800; font-size:11.5px; padding:5px 12px; border-radius:6px; cursor:pointer; box-shadow:${challengeViewMode === 'cards' ? '0 1px 3px rgba(0,0,0,0.08)' : 'none'};"
+                      onclick="challengeViewMode='cards'; renderTab('challenges');">
+                ${SVG.folder} Modo Tarjetas Tácticas
+              </button>
+            </div>
           </div>
+
           <div style="display:flex; gap:8px;">
             <button class="btn-pill-light" style="font-size:11.5px; padding:6px 12px;" onclick="toggleCustomChallengeInput()">
-              ${SVG.plus} Actualizar / Re-pegar Retos
+              ${SVG.upload} Importar Más / Re-pegar
             </button>
             <button class="btn-pill-ghost" style="font-size:11.5px; padding:6px 12px; color:#DC2626;" onclick="clearAllChallenges()">
-              Limpiar Retos
+              Limpiar Todo
             </button>
           </div>
         </div>
 
         <div id="custom-challenge-input-box" style="display:none; background:#FFFFFF; border:1px solid #CBD5E1; border-radius:12px; padding:16px; margin-bottom:20px;">
+          <!-- Dropzone en caja expandible -->
+          <div style="border:1.5px dashed #93C5FD; background:#F8FAFD; border-radius:8px; padding:12px; text-align:center; margin-bottom:10px; cursor:pointer;"
+               onclick="document.getElementById('challenge-file-input-inline').click()">
+            <input type="file" id="challenge-file-input-inline" style="display:none;" multiple accept=".zip,.pdf,.docx,.doc,.txt,.png,.jpg,.jpeg,.webp" onchange="handleChallengeFileSelect(this.files)">
+            <span style="font-size:11.5px; font-weight:700; color:#0866F5;">Cargar archivo ZIP, PDF, Word o imágenes</span>
+          </div>
           <textarea id="raw-committee-challenges" rows="4" style="width:100%; border:1px solid #CBD5E1; border-radius:8px; padding:10px; font-size:12px; font-family:var(--font-mono); box-sizing:border-box; background:#F8FAFD;"
-            placeholder="Pega aquí el nuevo comunicado del comité..."></textarea>
+            placeholder="O pega aquí nuevo texto del comité..."></textarea>
           <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:10px;">
             <button class="btn-secondary" style="font-size:11.5px; padding:6px 14px;" onclick="toggleCustomChallengeInput()">Cancelar</button>
             <button class="btn-select-card filled" style="padding:6px 18px; font-size:12px; font-weight:700;" onclick="processCommitteeChallengesInput()">Re-procesar Retos</button>
           </div>
         </div>
 
-        <!-- Filtros -->
+        <!-- Filtros de Categoría -->
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
           <div style="display:flex; gap:8px;">
             <button class="btn-pill-light" style="${challengeFilter === 'all' ? 'background:#0866F5; color:#fff; border-color:#0866F5;' : ''} padding:6px 14px; font-size:12px; font-weight:700;" onclick="challengeFilter='all'; renderTab('challenges');">
@@ -1779,58 +2310,195 @@ function renderViewChallenges() {
               Impacto Social
             </button>
           </div>
-          <span style="font-size:12px; font-weight:700; color:#5C7193; font-family:var(--font-mono);">${filtered.length} Retos Disponibles</span>
+          <span style="font-size:12px; font-weight:700; color:#5C7193; font-family:var(--font-mono);">${filtered.length} Retos en esta Vista</span>
         </div>
 
-        <!-- Catálogo de Retos y Soluciones Sugeridas -->
-        <div style="display:flex; flex-direction:column; gap:16px;">
-          ${filtered.map(ch => {
-            const isSelected = state.challenge_id === ch.id;
-            const odsStr = Array.isArray(ch.ods) ? ch.ods.join(", ") : (ch.ods || "ODS 9");
-            return `
-              <div class="challenge-card-item" style="background:#FFFFFF; border:1.5px solid ${isSelected ? '#0866F5' : '#DCE7F5'}; border-radius:14px; padding:20px; transition:all 120ms ease; box-shadow:0 1px 4px rgba(13, 27, 53, 0.03);">
-                <div class="challenge-card-header" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:10px;">
-                  <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
-                    <span style="font-family:var(--font-mono); font-size:11px; font-weight:800; background:#F0F6FF; color:#0866F5; padding:3px 8px; border-radius:6px; border:1px solid #BFDBFE;">
-                      RETO #${ch.id}
-                    </span>
-                    <span style="font-size:11.5px; font-weight:700; color:#5C7193;">${ch.category} · ${odsStr}</span>
-                    ${isSelected ? `<span style="font-size:10.5px; font-weight:800; color:#0866F5; background:#EFF6FF; border:1px solid #BFDBFE; padding:2px 8px; border-radius:9999px;">SELECCIONADO</span>` : ""}
-                  </div>
-                  <div class="challenge-card-actions" style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
-                    <button class="btn-pill-ghost" style="font-size:11.5px; padding:6px 12px;" onclick="openChallengeDetailModal('${ch.id}')" title="Ver análisis estratégico y precedentes">
-                      Análisis Estratégico
-                    </button>
-                    <button class="btn-select-card ${isSelected ? 'filled' : 'outline'}" style="padding:7px 16px; font-size:12px; font-weight:700;" onclick="selectChallenge('${ch.id}', ${isSelected ? 'true' : 'false'})">
-                      ${isSelected ? 'Continuar con este Reto →' : 'Elegir este Reto y Solución'}
-                    </button>
-                  </div>
-                </div>
-
-                <h3 style="font-size:16px; font-weight:800; color:#0D1B35; line-height:1.35; margin-bottom:14px;">
-                  ${ch.title}
-                </h3>
-
-                <!-- Comparativa: Demanda Oficial vs Solución Sugerida por el Sistema -->
-                <div class="challenge-card-split" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px;">
-                  <div style="background:#F8FAFD; border:1px solid #E2E8F0; border-radius:10px; padding:14px;">
-                    <div style="font-size:10.5px; font-weight:800; color:#5C7193; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:6px; display:flex; align-items:center; gap:5px;">
-                      ${SVG.shield} Demanda Oficial del Comité
-                    </div>
-                    <p style="font-size:12.5px; color:#334155; line-height:1.5; margin:0;">${ch.officialExpectation || 'Demanda técnica oficial anunciada por el comité.'}</p>
-                  </div>
-
-                  <div class="challenge-col-wow" style="background:#EFF6FF; border:1px solid #BFDBFE; border-radius:10px; padding:14px;">
-                    <div style="font-size:10.5px; font-weight:800; color:#0866F5; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:6px; display:flex; align-items:center; gap:5px;">
-                      ${SVG.spark} Solución Técnica Sugerida por el Sistema
-                    </div>
-                    <p style="font-size:12.5px; color:#0D1B35; font-weight:600; line-height:1.5; margin:0;">${ch.wowProposal || 'Arquitectura técnica de alto impacto con hardware accesible y telemetría autónoma.'}</p>
-                  </div>
-                </div>
+        <!-- RENDERIZADO SEGÚN MODO: DOCUMENTO COOPERATIVO O TARJETAS -->
+        ${challengeViewMode === 'doc' ? `
+          <!-- MODO DOCUMENTO COOPERATIVO -->
+          <div class="challenge-document-paper" style="background:#FFFFFF; border:1px solid #CBD5E1; border-radius:14px; padding:28px 32px; box-shadow:0 4px 20px rgba(0,0,0,0.04);">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid #E2E8F0; padding-bottom:14px; margin-bottom:24px;">
+              <div>
+                <h2 style="font-size:18px; font-weight:900; color:#0D1B35; margin:0 0 4px 0;">Pliego de Desafíos & Deliberación del Equipo</h2>
+                <span style="font-size:12px; color:#64748B;">Documento de trabajo cooperativo · Añade notas de tu equipo y descarta retos no viables</span>
               </div>
-            `;
-          }).join("")}
-        </div>
+              <span style="font-size:11px; font-family:var(--font-mono); color:#0866F5; background:#EFF6FF; padding:4px 10px; border-radius:6px; border:1px solid #BFDBFE;">
+                ${filtered.length} SECCIONES ACTIVAS
+              </span>
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:28px;">
+              ${filtered.map(ch => {
+                const isSelected = state.challenge_id === ch.id;
+                const odsStr = Array.isArray(ch.ods) ? ch.ods.join(", ") : (ch.ods || "ODS 9");
+                const ideas = (state.challenge_ideas && state.challenge_ideas[ch.id]) || [];
+                return `
+                  <article id="doc-challenge-${ch.id}" style="border:1px solid ${isSelected ? '#93C5FD' : '#E2E8F0'}; background:${isSelected ? '#F8FBFF' : '#FFFFFF'}; border-radius:12px; padding:20px; transition:all 120ms ease;">
+                    <!-- Cabecera de reto en el documento -->
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px; flex-wrap:wrap; gap:8px;">
+                      <div style="display:flex; align-items:center; gap:8px;">
+                        <span style="font-family:var(--font-mono); font-size:12px; font-weight:900; background:#0D1B35; color:#FFFFFF; padding:3px 10px; border-radius:6px;">
+                          RETO #${ch.id}
+                        </span>
+                        <span style="font-size:12px; font-weight:700; color:#0866F5; background:#EFF6FF; padding:2px 8px; border-radius:4px; border:1px solid #DBEAFE;">
+                          ${ch.category}
+                        </span>
+                        <span style="font-size:11.5px; color:#64748B; font-weight:600;">${odsStr}</span>
+                        ${isSelected ? `<span class="tactical-status-pill status-selected"><span class="status-dot"></span>✓ Reto Seleccionado</span>` : ""}
+                      </div>
+
+                      <!-- Acciones de Reto -->
+                      <div style="display:flex; align-items:center; gap:8px;">
+                        <button class="btn-pill-ghost" style="font-size:11.5px; padding:5px 12px;" onclick="openChallengeDetailModal('${ch.id}')" title="Ver análisis estratégico, WOW, adaptación a Nicaragua y precedentes">
+                          ${SVG.spark} Ver Análisis Táctico
+                        </button>
+                        <button class="btn-select-card ${isSelected ? 'filled' : 'outline'}" style="padding:5px 14px; font-size:11.5px; font-weight:800;" onclick="selectChallenge('${ch.id}', ${isSelected ? 'true' : 'false'})">
+                          ${isSelected ? 'Continuar con este Reto →' : 'Elegir para Desarrollar'}
+                        </button>
+                        <button class="btn-pill-ghost" style="font-size:11px; padding:5px 10px; color:#DC2626; border-color:#FCA5A5;" onclick="deleteChallenge('${ch.id}')" title="Descartar y eliminar este reto de la lista">
+                          ✕ Descartar
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- Título del Reto -->
+                    <h3 style="font-size:16px; font-weight:800; color:#0D1B35; line-height:1.4; margin:0 0 10px 0;">
+                      ${ch.title}
+                    </h3>
+
+                    <!-- Demanda Oficial del Comité -->
+                    <div style="background:#F8FAFD; border-left:3px solid #64748B; padding:10px 14px; border-radius:0 8px 8px 0; margin-bottom:14px; font-size:12.5px; color:#334155; line-height:1.5;">
+                      <strong style="color:#0D1B35; font-size:11.5px; text-transform:uppercase; letter-spacing:0.04em; display:block; margin-bottom:3px;">
+                        Demanda Oficial del Comité:
+                      </strong>
+                      ${ch.officialExpectation || 'Demanda técnica oficial anunciada por el comité.'}
+                    </div>
+
+                    <!-- SECCIÓN COOPERATIVA: LLUVIA DE IDEAS DEL EQUIPO -->
+                    <div style="background:#FFFFFF; border:1px solid #CBD5E1; border-radius:10px; padding:14px; margin-bottom:14px;">
+                      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                        <span style="font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:0.04em; color:#0866F5; display:flex; align-items:center; gap:5px;">
+                          ${SVG.plus} Lluvia de Ideas y Enfoques del Equipo (${ideas.length})
+                        </span>
+                        <span style="font-size:10.5px; color:#64748B;">Notas colaborativas guardadas en tiempo real</span>
+                      </div>
+
+                      <!-- Lista de ideas existentes -->
+                      <div id="challenge-ideas-list-${ch.id}" style="display:flex; flex-direction:column; gap:6px; margin-bottom:10px;">
+                        ${ideas.length === 0 ? `
+                          <div style="font-size:11.5px; color:#94A3B8; font-style:italic; padding:4px 0;">Aún no hay notas del equipo para este reto. Escribe la primera abajo.</div>
+                        ` : ideas.map(idea => `
+                          <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:6px; padding:8px 10px; font-size:12px; display:flex; justify-content:space-between; align-items:flex-start; gap:8px;">
+                            <div>
+                              <span style="font-weight:700; color:#0866F5; font-size:11px; margin-right:6px;">[${idea.author || 'Equipo'}]:</span>
+                              <span style="color:#1E293B;">${idea.text}</span>
+                            </div>
+                            <button style="border:none; background:none; color:#94A3B8; cursor:pointer; font-size:12px; padding:0 4px;" onclick="deleteChallengeIdea('${ch.id}', '${idea.id}')" title="Eliminar nota">✕</button>
+                          </div>
+                        `).join("")}
+                      </div>
+
+                      <!-- Input para agregar nueva idea -->
+                      <div style="display:flex; gap:8px;">
+                        <input type="text" id="new-idea-input-${ch.id}" placeholder="Escribe una idea o enfoque para este reto..." 
+                               style="flex:1; border:1px solid #CBD5E1; border-radius:6px; padding:8px 10px; font-size:12px;"
+                               onkeydown="if(event.key==='Enter') addChallengeIdea('${ch.id}')">
+                        <button class="btn-select-card filled" style="padding:6px 14px; font-size:11.5px; font-weight:700;" onclick="addChallengeIdea('${ch.id}')">
+                          + Agregar Idea
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- SECCIÓN: SUGERENCIAS DE SOLUCIÓN Y ANÁLISIS DEL SISTEMA -->
+                    <div style="background:#EFF6FF; border:1px solid #BFDBFE; border-radius:10px; padding:14px;">
+                      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                        <span style="font-size:11px; font-weight:800; color:#0866F5; text-transform:uppercase; letter-spacing:0.04em; display:flex; align-items:center; gap:5px;">
+                          ${SVG.spark} Solución Técnica Sugerida por el Sistema & Factor Ganador
+                        </span>
+                        <span style="font-family:var(--font-mono); font-size:11px; font-weight:900; color:#059669; background:#ECFDF5; border:1px solid #A7F3D0; padding:2px 6px; border-radius:4px;">
+                          ${ch.winRate || 90}% WinRate
+                        </span>
+                      </div>
+                      <p style="font-size:12.5px; color:#0D1B35; font-weight:600; line-height:1.5; margin:0 0 6px 0;">
+                        ${ch.wowProposal || 'Arquitectura técnica de alto impacto con hardware accesible y telemetría autónoma.'}
+                      </p>
+                      ${ch.nicaraguaAdaptation ? `
+                        <div style="font-size:11.5px; color:#475569; line-height:1.45; border-top:1px dashed #BFDBFE; padding-top:6px; margin-top:6px;">
+                          <strong>Adaptación Territorial:</strong> ${ch.nicaraguaAdaptation}
+                        </div>
+                      ` : ""}
+                    </div>
+                  </article>
+                `;
+              }).join("")}
+            </div>
+          </div>
+        ` : `
+          <!-- MODO TARJETAS TÁCTICAS -->
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            ${filtered.map(ch => {
+              const isSelected = state.challenge_id === ch.id;
+              const odsStr = Array.isArray(ch.ods) ? ch.ods.join(", ") : (ch.ods || "ODS 9");
+              const ideas = (state.challenge_ideas && state.challenge_ideas[ch.id]) || [];
+              return `
+                <div class="challenge-card-item" style="background:#FFFFFF; border:1.5px solid ${isSelected ? '#0866F5' : '#DCE7F5'}; border-radius:14px; padding:20px; transition:all 120ms ease; box-shadow:0 1px 4px rgba(13, 27, 53, 0.03);">
+                  <div class="challenge-card-header" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:10px;">
+                    <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                      <span class="tactical-status-pill">
+                        Reto #${ch.id}
+                      </span>
+                      <span style="font-size:11.5px; font-weight:700; color:#5C7193;">${ch.category} · ${odsStr}</span>
+                      <span style="font-size:11px; font-weight:800; color:#059669; font-family:var(--font-mono); background:#ECFDF5; padding:2px 6px; border-radius:4px; border:1px solid #A7F3D0;">
+                        ${ch.winRate || 90}% WinRate
+                      </span>
+                      ${isSelected ? `<span class="tactical-status-pill status-selected"><span class="status-dot"></span>Seleccionado</span>` : ""}
+                    </div>
+                    <div class="challenge-card-actions" style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                      <button class="btn-pill-ghost" style="font-size:11.5px; padding:6px 12px;" onclick="openChallengeDetailModal('${ch.id}')" title="Ver análisis estratégico y precedentes">
+                        Análisis Estratégico
+                      </button>
+                      <button class="btn-select-card ${isSelected ? 'filled' : 'outline'}" style="padding:7px 16px; font-size:12px; font-weight:700;" onclick="selectChallenge('${ch.id}', ${isSelected ? 'true' : 'false'})">
+                        ${isSelected ? 'Continuar con este Reto →' : 'Elegir este Reto y Solución'}
+                      </button>
+                      <button class="btn-pill-ghost" style="font-size:11px; padding:6px 10px; color:#DC2626;" onclick="deleteChallenge('${ch.id}')" title="Descartar reto">
+                        ✕
+                      </button>
+                    </div>
+                  </div>
+
+                  <h3 style="font-size:16px; font-weight:800; color:#0D1B35; line-height:1.35; margin-bottom:14px;">
+                    ${ch.title}
+                  </h3>
+
+                  <!-- Comparativa: Demanda Oficial vs Solución Sugerida por el Sistema -->
+                  <div class="challenge-card-split" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px;">
+                    <div style="background:#F8FAFD; border:1px solid #E2E8F0; border-radius:10px; padding:14px;">
+                      <div style="font-size:10.5px; font-weight:800; color:#5C7193; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:6px; display:flex; align-items:center; gap:5px;">
+                        ${SVG.shield} Demanda Oficial del Comité
+                      </div>
+                      <p style="font-size:12.5px; color:#334155; line-height:1.5; margin:0 0 10px 0;">${ch.officialExpectation || 'Demanda técnica oficial anunciada por el comité.'}</p>
+                      
+                      <!-- Lluvia de ideas compacta en tarjeta -->
+                      <div style="border-top:1px solid #E2E8F0; padding-top:8px;">
+                        <span style="font-size:10.5px; font-weight:700; color:#0866F5;">Ideas del Equipo (${ideas.length}):</span>
+                        <div style="margin-top:4px; display:flex; flex-direction:column; gap:4px;">
+                          ${ideas.slice(-2).map(i => `<span style="font-size:11px; color:#475569;">• <strong>${i.author}:</strong> ${i.text}</span>`).join("")}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="challenge-col-wow" style="background:#EFF6FF; border:1px solid #BFDBFE; border-radius:10px; padding:14px;">
+                      <div style="font-size:10.5px; font-weight:800; color:#0866F5; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:6px; display:flex; align-items:center; gap:5px;">
+                        ${SVG.spark} Solución Técnica Sugerida por el Sistema
+                      </div>
+                      <p style="font-size:12.5px; color:#0D1B35; font-weight:600; line-height:1.5; margin:0;">${ch.wowProposal || 'Arquitectura técnica de alto impacto con hardware accesible y telemetría autónoma.'}</p>
+                    </div>
+                  </div>
+                </div>
+              `;
+            }).join("")}
+          </div>
+        `}
       `}
     </div>
   `;
@@ -1840,6 +2508,180 @@ function loadReferenceChallenges() {
   state.challenges = JSON.parse(JSON.stringify(OFFICIAL_CHALLENGES_2026));
   saveState();
   renderTab("challenges");
+}
+
+function deleteChallenge(id) {
+  const ch = (state.challenges || []).find(c => c.id === id);
+  const name = ch ? ch.title : `Reto #${id}`;
+  if (confirm(`¿Descartar "${name}" del radar del certamen?`)) {
+    state.challenges = (state.challenges || []).filter(c => c.id !== id);
+    if (state.challenge_id === id) {
+      state.challenge_id = "";
+      state.challenge_title = "";
+    }
+    saveState();
+    renderTab("challenges");
+    renderNavigation();
+  }
+}
+
+function addChallengeIdea(chId) {
+  const input = document.getElementById(`new-idea-input-${chId}`);
+  if (!input) return;
+  const val = input.value.trim();
+  if (!val) return;
+
+  if (!state.challenge_ideas) state.challenge_ideas = {};
+  if (!state.challenge_ideas[chId]) state.challenge_ideas[chId] = [];
+
+  const mascot = getClientMascot();
+  const authorName = (state.team_name ? state.team_name + " (" + mascot.name + ")" : mascot.name);
+
+  state.challenge_ideas[chId].push({
+    id: "idea_" + Date.now() + "_" + Math.random().toString(36).substr(2, 4),
+    text: val,
+    author: authorName,
+    timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+  });
+
+  saveState();
+  renderTab("challenges");
+}
+
+function deleteChallengeIdea(chId, ideaId) {
+  if (!state.challenge_ideas || !state.challenge_ideas[chId]) return;
+  state.challenge_ideas[chId] = state.challenge_ideas[chId].filter(i => i.id !== ideaId);
+  saveState();
+  renderTab("challenges");
+}
+
+// ── IMPORTADOR UNIVERSAL: ZIP, PDF, WORD, IMÁGENES, TEXTO ────────────────────
+function setImportStatus(msg, isError = false) {
+  const el = document.getElementById("import-status-indicator");
+  if (!el) return;
+  el.style.display = "block";
+  el.style.color = isError ? "#DC2626" : "#0866F5";
+  el.innerHTML = msg;
+}
+
+function handleChallengeDrop(e) {
+  e.preventDefault();
+  const el = document.getElementById("challenge-dropzone");
+  if (el) {
+    el.style.borderColor = "#93C5FD";
+    el.style.background = "#F8FAFD";
+  }
+  if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+    handleChallengeFileSelect(e.dataTransfer.files);
+  }
+}
+
+async function handleChallengeFileSelect(files) {
+  if (!files || files.length === 0) return;
+  setImportStatus("Procesando archivo(s)...");
+
+  let accumulatedText = "";
+
+  for (let i = 0; i < files.length; i++) {
+    const file = files[i];
+    const ext = file.name.split('.').pop().toLowerCase();
+
+    try {
+      if (ext === "zip") {
+        setImportStatus(`Descomprimiendo y leyendo ${file.name}...`);
+        const zipText = await extractTextFromZip(file);
+        accumulatedText += "\n" + zipText;
+      } else if (ext === "pdf") {
+        setImportStatus(`Extrayendo texto de PDF ${file.name}...`);
+        const pdfText = await extractTextFromPdf(file);
+        accumulatedText += "\n" + pdfText;
+      } else if (ext === "docx" || ext === "doc") {
+        setImportStatus(`Leyendo documento Word ${file.name}...`);
+        const wordText = await extractTextFromDocx(file);
+        accumulatedText += "\n" + wordText;
+      } else if (["png", "jpg", "jpeg", "webp"].includes(ext)) {
+        setImportStatus(`Analizando imagen de reto ${file.name}...`);
+        // Generar entrada de reto basada en el nombre de la imagen o texto estructurado
+        accumulatedText += `\nRETO ${i + 1}: ${file.name.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " ")}\nDemanda del comité: Imagen adjuntada en convocatoria (${file.name}). Clasificada para análisis técnico de solución inmediata.\n`;
+      } else {
+        // Archivo de texto plano .txt / .md
+        const txt = await file.text();
+        accumulatedText += "\n" + txt;
+      }
+    } catch (err) {
+      console.error("Error al procesar archivo:", file.name, err);
+      setImportStatus(`Error al procesar ${file.name}: ${err.message}`, true);
+    }
+  }
+
+  if (accumulatedText.trim()) {
+    const txtArea = document.getElementById("raw-committee-challenges");
+    if (txtArea) {
+      txtArea.value = accumulatedText.trim();
+    }
+    setImportStatus(`✓ ${files.length} archivo(s) procesados. Extracción completada.`);
+    processCommitteeChallengesInput();
+  } else {
+    setImportStatus("No se pudo extraer texto legible. Verifica el formato.", true);
+  }
+}
+
+async function extractTextFromZip(file) {
+  if (typeof JSZip === "undefined") {
+    throw new Error("Librería de descompresión no disponible en el navegador.");
+  }
+  const zip = await JSZip.loadAsync(file);
+  let content = "";
+  const entries = Object.keys(zip.files);
+  let challengeCount = 1;
+
+  for (const filename of entries) {
+    const zipEntry = zip.files[filename];
+    if (zipEntry.dir) continue;
+    const lower = filename.toLowerCase();
+
+    if (lower.endsWith(".txt") || lower.endsWith(".md")) {
+      const text = await zipEntry.async("string");
+      content += "\n" + text;
+    } else if (lower.endsWith(".docx")) {
+      if (typeof mammoth !== "undefined") {
+        const arrayBuffer = await zipEntry.async("arraybuffer");
+        const res = await mammoth.extractRawText({ arrayBuffer });
+        content += "\n" + (res.value || "");
+      }
+    } else if (lower.endsWith(".png") || lower.endsWith(".jpg") || lower.endsWith(".jpeg") || lower.endsWith(".webp")) {
+      // Las imágenes dentro del ZIP son usualmente retos individuales numerados
+      const cleanTitle = filename.split('/').pop().replace(/\.[^/.]+$/, "").replace(/[-_]/g, " ");
+      content += `\nRETO ${challengeCount++}: ${cleanTitle}\nDemanda del comité: Contenido visual presentado en convocatoria (${filename}).\n`;
+    }
+  }
+  return content;
+}
+
+async function extractTextFromPdf(file) {
+  if (typeof pdfjsLib === "undefined") {
+    throw new Error("Visor PDF no inicializado.");
+  }
+  const arrayBuffer = await file.arrayBuffer();
+  const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+  let fullText = "";
+
+  for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+    const page = await pdf.getPage(pageNum);
+    const textContent = await page.getTextContent();
+    const pageText = textContent.items.map(item => item.str).join(" ");
+    fullText += "\n" + pageText;
+  }
+  return fullText;
+}
+
+async function extractTextFromDocx(file) {
+  if (typeof mammoth === "undefined") {
+    throw new Error("Lector Word no inicializado.");
+  }
+  const arrayBuffer = await file.arrayBuffer();
+  const res = await mammoth.extractRawText({ arrayBuffer });
+  return res.value || "";
 }
 
 function toggleCustomChallengeInput() {
@@ -2039,8 +2881,8 @@ function openChallengeDetailModal(chId) {
     <div class="challenge-detail-modal-card">
       <div class="modal-header" style="margin-bottom:18px; padding-bottom:14px; border-bottom:1px solid #DCE7F5;">
         <div style="display:flex; align-items:center; gap:10px;">
-          <span style="background:#F0F6FF; color:#0866F5; border:1px solid #BFDBFE; font-family:var(--font-mono); font-size:12px; font-weight:800; padding:4px 10px; border-radius:8px;">
-            RETO #${ch.id}
+          <span class="tactical-status-pill">
+            Reto #${ch.id}
           </span>
           <span style="font-size:12px; font-weight:700; color:#5C7193;">${ch.category} · ${odsStr}</span>
         </div>
@@ -2599,12 +3441,18 @@ function renderViewPautado() {
         <h1 class="phase-title">05 · Documento <span class="phase-title-accent">Pautado Oficial</span></h1>
         <p class="phase-subtitle">5 secciones evaluadas por el jurado con conteo estricto de caracteres y compilación directa en la plantilla oficial.</p>
       </div>
-      <div style="display:flex; gap:8px;">
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
         <button class="btn-primary" onclick="compileAndDownloadDocx()" id="btn-compile-docx">
-          ${SVG.spark} Compilar en Plantilla Word (.docx)
+          ${SVG.spark} Compilar en Word (.docx)
         </button>
-        <a href="/docs/pautado_draft.docx" id="direct-docx-link" download class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
-          ${SVG.download} Descargar Word (.docx)
+        <button class="btn-secondary" onclick="exportProjectMarkdown()" style="display:inline-flex; align-items:center; gap:5px;">
+          ${SVG.copy} Exportar Dossier (.md)
+        </button>
+        <button class="btn-secondary" onclick="printProjectDossier()" style="display:inline-flex; align-items:center; gap:5px;">
+          ${SVG.download} Imprimir / PDF
+        </button>
+        <a href="docs/pautado_draft.docx" id="direct-docx-link" download="Pautado_Borrador_Oficial.docx" class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
+          ${SVG.download} Plantilla Word
         </a>
       </div>
     </div>
@@ -2914,13 +3762,13 @@ function renderViewResources() {
               <td><strong>Matriz de Deliberación de Retos</strong></td>
               <td><code>.DOCX</code></td>
               <td>Catálogo de retos + pronósticos WOW + tabla de votación</td>
-              <td><a href="/docs/Matriz_Seleccion_Desafios_2026.docx" download class="btn-primary" style="padding:4px 8px; font-size:11px; text-decoration:none;">Descargar Word ↓</a></td>
+              <td><a href="docs/Matriz_Seleccion_Desafios_2026.docx" download="Matriz_Seleccion_Desafios_2026.docx" class="btn-primary" style="padding:4px 8px; font-size:11px; text-decoration:none;">Descargar Word ↓</a></td>
             </tr>
             <tr>
               <td><strong>Documento Pautado Oficial</strong></td>
               <td><code>.DOCX</code></td>
               <td>5 secciones oficiales redactadas y validadas con límites de caracteres</td>
-              <td><a href="/docs/pautado_draft.docx" download class="btn-secondary" style="padding:4px 8px; font-size:11px; text-decoration:none;">Descargar Word ↓</a></td>
+              <td><a href="docs/pautado_draft.docx" download="Pautado_Borrador_Oficial.docx" class="btn-secondary" style="padding:4px 8px; font-size:11px; text-decoration:none;">Descargar Word ↓</a></td>
             </tr>
             <tr>
               <td><strong>Presupuesto Puesta en Marcha</strong></td>
@@ -3324,7 +4172,13 @@ function toggleGuardrail(key, event) {
   }
   state.guardrails[key] = !state.guardrails[key];
   saveState();
-  if (activeTab === "timeline") {
+  const card = document.getElementById(`guardrail-card-${key}`);
+  if (card) {
+    const isChecked = !!state.guardrails[key];
+    card.classList.toggle("checked", isChecked);
+    const box = card.querySelector(".guardrail-checkbox-square");
+    if (box) box.innerHTML = isChecked ? SVG.check : "";
+  } else if (activeTab === "timeline") {
     renderTab("timeline");
   }
   updateInspector();
@@ -3334,7 +4188,10 @@ function toggleGuardrailAccordion(key) {
   if (!state.expanded_guardrails) state.expanded_guardrails = {};
   state.expanded_guardrails[key] = !state.expanded_guardrails[key];
   saveState();
-  if (activeTab === "timeline") {
+  const card = document.getElementById(`guardrail-card-${key}`);
+  if (card) {
+    card.classList.toggle("expanded", !!state.expanded_guardrails[key]);
+  } else if (activeTab === "timeline") {
     renderTab("timeline");
   }
 }
@@ -3343,17 +4200,19 @@ function toggleAllGuardrails(expand) {
   state.expanded_guardrails = {};
   GUARDRAILS_DEFINITIONS.forEach(g => {
     state.expanded_guardrails[g.key] = !!expand;
+    const card = document.getElementById(`guardrail-card-${g.key}`);
+    if (card) card.classList.toggle("expanded", !!expand);
   });
   saveState();
-  if (activeTab === "timeline") {
-    renderTab("timeline");
-  }
 }
 
 function toggleScheduleAIPanel() {
   state.schedule_ai_open = !state.schedule_ai_open;
   saveState();
-  if (activeTab === "timeline") {
+  const box = document.querySelector(".schedule-ai-box");
+  if (box) {
+    box.classList.toggle("collapsed", !state.schedule_ai_open);
+  } else if (activeTab === "timeline") {
     renderTab("timeline");
   }
 }
@@ -3489,7 +4348,7 @@ function renderViewTimeline() {
             const isChecked = !!guardrails[g.key];
             const isExpanded = !!expandedGuardrails[g.key];
             return `
-              <div class="guardrail-card ${isChecked ? 'checked' : ''} ${isExpanded ? 'expanded' : ''}">
+              <div class="guardrail-card ${isChecked ? 'checked' : ''} ${isExpanded ? 'expanded' : ''}" id="guardrail-card-${g.key}">
                 <div class="guardrail-row-header" onclick="toggleGuardrailAccordion('${g.key}')">
                   <div class="guardrail-checkbox-square" onclick="toggleGuardrail('${g.key}', event)" title="${isChecked ? 'Marcar como pendiente' : 'Marcar como verificado'}">
                     ${isChecked ? SVG.check : ''}
@@ -3689,6 +4548,25 @@ function renderViewTimeline() {
     </div>
 
     ${subtabContent}
+
+    <!-- Bloque de Empaquetado y Exportación Final -->
+    <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:18px 20px; margin-top:20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+      <div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <h3 style="font-size:14px; font-weight:800; color:#0f172a; margin:0;">Empaquetado Oficial y Exportación del Dossier</h3>
+          <span class="stepper-pill" style="background:#eff6ff; color:#003366; font-size:10.5px; font-weight:700;">Formatos MD & PDF</span>
+        </div>
+        <p style="font-size:12px; color:#64748b; margin:4px 0 0 0;">Genera la memoria técnica consolidada con logos institucionales, catálogo de retos, propuestas IA, pautado y rúbricas.</p>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <button class="btn-primary" onclick="exportProjectMarkdown()" style="padding:9px 16px; font-size:12.5px; font-weight:700;">
+          ${SVG.copy} Exportar Dossier (.md)
+        </button>
+        <button class="btn-select-card filled" onclick="printProjectDossier()" style="padding:9px 16px; font-size:12.5px; font-weight:700; background:#0D1B35; color:#fff; border-color:#0D1B35;">
+          ${SVG.download} Imprimir / Guardar como PDF
+        </button>
+      </div>
+    </div>
   `;
 }
 
@@ -3759,14 +4637,11 @@ function updateInspector() {
       </div>
     </div>
 
-    <div>
-      <div class="panel-block-title" style="font-size:11px; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted); margin-bottom:8px;">Criterio Clave del Jurado</div>
-      <div class="insight-box" style="border:1px solid #CBD5E1; background:#F8FAFD; border-radius:8px; padding:12px; font-size:11.5px; color:#334155; line-height:1.5;">
-        <div style="font-weight:800; color:#0866F5; margin-bottom:4px; display:flex; align-items:center; gap:6px;">
-          ${SVG.spark} Coherencia Total (Rúbrica 100 Pts)
-        </div>
-        Las cifras de impacto y costos del video de 120s deben coincidir centavo a centavo con la tabla de presupuesto del documento pautado.
+    <div style="margin-top:12px; padding:8px 10px; background:#F8FAFC; border:1px solid #E2E8F0; border-radius:6px; font-size:10.5px; line-height:1.35; color:#475569;">
+      <div style="font-weight:700; color:#0866F5; font-size:10px; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:3px; display:flex; align-items:center; gap:4px;">
+        ${SVG.spark} Criterio Jurado: Coherencia (100 Pts)
       </div>
+      Costos e impacto del video de 120s deben cuadrar exactos con el presupuesto del documento pautado.
     </div>
   `;
 }
