@@ -29,58 +29,121 @@ SOURCES_DIR = BASE_DIR.parent / "rallysistem"
 
 START_TIME = time.time()
 
-# Matriz Oficial de Rúbrica Rally (100 Puntos)
-RALLY_RUBRIC_SPEC = {
-    "innovacion": {
-        "title": "Grado de innovación de la solución propuesta",
-        "weight": 30,
-        "items": [
-            "La solución es innovadora (arquitectura no trivial)",
-            "El equipo mostró capacidad creativa y diferenciación",
-            "El equipo utiliza tecnologías apropiadas para el desafío",
-            "Grado de usabilidad y ergonomía de la solución propuesta"
-        ]
+# Matrices Oficiales de Rúbrica: Nacional (Nicaragua Innova) y LATAM (100 Puntos)
+RALLY_RUBRICS = {
+    "latam": {
+        "title": "Rúbrica Internacional Oficial (Rally LATAM - 28H)",
+        "total_points": 100,
+        "criteria": {
+            "innovacion": {
+                "title": "Grado de innovación de la solución propuesta",
+                "weight": 30,
+                "items": [
+                    "La solución es innovadora (arquitectura no trivial y disrupción frente al estado del arte)",
+                    "El equipo mostró capacidad creativa y diferenciación radical (Efecto Wow)",
+                    "El equipo utiliza tecnologías apropiadas para el desafío",
+                    "Grado de usabilidad y ergonomía de la solución propuesta"
+                ]
+            },
+            "impacto": {
+                "title": "Impacto positivo de la propuesta en la sociedad",
+                "weight": 20,
+                "items": [
+                    "La propuesta da solución a una problemática específica regional",
+                    "La propuesta tiene un valor social por encima de su valor de mercado",
+                    "La propuesta mejora la calidad de vida de los ciudadanos a escala"
+                ]
+            },
+            "prefactibilidad": {
+                "title": "Prefactibilidad económica y social y sustentabilidad ambiental",
+                "weight": 20,
+                "items": [
+                    "La propuesta es sustentable desde el punto de vista económico ($4,000 - $6,000 USD lote piloto sin subsidio permanente)",
+                    "La propuesta contempla la eficiencia energética y apela a fuentes renovables",
+                    "La propuesta optimiza el uso de recursos y principios de economía circular",
+                    "La propuesta presenta alternativas de mejora a una problemática ambiental específica"
+                ]
+            },
+            "viabilidad": {
+                "title": "Viabilidad técnica de la propuesta",
+                "weight": 20,
+                "items": [
+                    "Base teórica sólida y documentada con citas técnicas / patentes internacionales",
+                    "El concepto utiliza recursos y componentes de fácil obtención regional",
+                    "La propuesta es acorde a las necesidades de los potenciales usuarios",
+                    "La solución está técnicamente validada (sin suposiciones energéticas o térmicas inviables)"
+                ]
+            },
+            "presentacion": {
+                "title": "Calidad de la presentación (Pitch 120s & Pautado SIRLI)",
+                "weight": 10,
+                "items": [
+                    "La presentación demuestra capacidad de síntesis (conteo estricto de caracteres con espacios)",
+                    "La presentación transmite con claridad la solución propuesta en 120s exactos",
+                    "La propuesta de valor es clara y se ajusta rigurosamente al desafío",
+                    "Las ilustraciones / diagramas / CAD 3D son claros y pertinentes"
+                ]
+            }
+        }
     },
-    "impacto": {
-        "title": "Impacto positivo de la propuesta en la sociedad",
-        "weight": 20,
-        "items": [
-            "La propuesta da solución a una problemática específica",
-            "La propuesta tiene un valor social por encima de su valor de mercado",
-            "La propuesta mejora la calidad de vida de los ciudadanos"
-        ]
-    },
-    "prefactibilidad": {
-        "title": "Prefactibilidad económica y social y sustentabilidad ambiental",
-        "weight": 20,
-        "items": [
-            "La propuesta es sustentable desde el punto de vista económico ($4,000 - $6,000 USD lote piloto)",
-            "La propuesta contempla la eficiencia energética y apela a fuentes renovables",
-            "La propuesta optimiza el uso de recursos e insumos comerciales",
-            "La propuesta presenta alternativas de mejora a una problemática ambiental específica"
-        ]
-    },
-    "viabilidad": {
-        "title": "Viabilidad técnica de la propuesta",
-        "weight": 20,
-        "items": [
-            "Base teórica sólida y documentada con citas técnicas / patentes",
-            "El concepto utiliza recursos y componentes de fácil obtención",
-            "La propuesta es acorde a las necesidades de los potenciales usuarios",
-            "La solución está técnicamente validada (sin suposiciones energéticas o térmicas inviables)"
-        ]
-    },
-    "presentacion": {
-        "title": "Calidad de la presentación (Pitch 120s & Pautado)",
-        "weight": 10,
-        "items": [
-            "La presentación demuestra capacidad de síntesis (conteo estricto con espacios)",
-            "La presentación transmite con claridad la solución propuesta",
-            "La propuesta de valor es clara y se ajusta rigurosamente al desafío",
-            "Las ilustraciones / diagramas son claros y pertinentes"
-        ]
+    "nacional": {
+        "title": "Rúbrica Oficial Jurado Nacional (Nicaragua Innova - 24H)",
+        "total_points": 100,
+        "criteria": {
+            "innovacion_nac": {
+                "title": "Grado de Innovación, Creatividad y Hibridación Tecnológica",
+                "weight": 25,
+                "items": [
+                    "Originalidad y diferenciación frente a soluciones convencionales en el entorno local",
+                    "Hibridación tecnológica accesible (IoT ESP32/LoRa, gemelos digitales, IA, bio-materiales locales)",
+                    "Capacidad creativa y prototipo conceptual/físico presentado",
+                    "Adaptabilidad de la tecnología a la infraestructura y conectividad nacional"
+                ]
+            },
+            "impacto_territorial": {
+                "title": "Impacto Social, Territorial y Alineación con Políticas Públicas (PNDH)",
+                "weight": 25,
+                "items": [
+                    "Alineación explícita con el Plan Nacional de Lucha contra la Pobreza y Desarrollo Humano 2022-2026",
+                    "Articulación con programas nacionales (Ciudades Creativas, Soberanía Alimentaria, Ley 763)",
+                    "Anclaje territorial específico (municipios reales, microparques, zonas vulnerables)",
+                    "Cuantificación del impacto social (familias, cooperativas, empleos directos beneficiados)"
+                ]
+            },
+            "viabilidad_local": {
+                "title": "Viabilidad Técnica, Operativa y Uso de Recursos Locales",
+                "weight": 20,
+                "items": [
+                    "Factibilidad de implementación en talleres locales, centros tecnológicos INATEC o laboratorios CNU",
+                    "Aprovechamiento de materias primas o pasivos ambientales locales (residuos autóctonos)",
+                    "Sustentación teórica y técnica del diseño con rigor metodológico",
+                    "Claridad operativa y rol de los beneficiarios en el mantenimiento de la solución"
+                ]
+            },
+            "prefactibilidad_canvas": {
+                "title": "Prefactibilidad Económica, Sostenibilidad y Modelo Comunitario / Canvas",
+                "weight": 15,
+                "items": [
+                    "Presupuesto de inversión aterrizado a la economía nacional (desglose unitario en C$ y USD)",
+                    "Modelo de sostenibilidad financiera viable (cooperativas, alcaldías municipales, MEFCCA)",
+                    "Eficiencia en la relación costo-beneficio para pequeños productores o entidades públicas",
+                    "Plan de implementación por fases a 12 meses con indicadores de cumplimiento medibles"
+                ]
+            },
+            "calidad_entregables": {
+                "title": "Calidad del Documento Técnico (hasta 10 págs.), Video Pitch y Naming Dual",
+                "weight": 15,
+                "items": [
+                    "Documento técnico estructurado con normas APA y fuentes oficiales (BCN, INIDE, ministerios)",
+                    "Video pitch de 2 minutos claro, persuasivo, con dicción fluida y calidad audiovisual",
+                    "Naming dual efectivo (nombre de squad cultural/patriótico + marca registrable de la solución)",
+                    "Identidad cultural y comunicación empática con el jurado interinstitucional"
+                ]
+            }
+        }
     }
 }
+RALLY_RUBRIC_SPEC = RALLY_RUBRICS["latam"]["criteria"]
 
 class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
@@ -134,7 +197,20 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
         self.send_json_response(200, payload)
 
     def send_rubric(self):
-        self.send_json_response(200, RALLY_RUBRIC_SPEC)
+        query = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
+        rubric_type = query.get("type", ["latam"])[0].lower()
+        if rubric_type in RALLY_RUBRICS:
+            self.send_json_response(200, {
+                "active_type": rubric_type,
+                "rubric": RALLY_RUBRICS[rubric_type],
+                "all_rubrics": RALLY_RUBRICS
+            })
+        else:
+            self.send_json_response(200, {
+                "active_type": "latam",
+                "rubric": RALLY_RUBRICS["latam"],
+                "all_rubrics": RALLY_RUBRICS
+            })
 
     def send_sources(self):
         scan_results = []

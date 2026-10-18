@@ -2251,26 +2251,50 @@ function generateSpecificMegaPrompt(taskId) {
   const ch = (state.challenges || []).find(c => c.id === state.challenge_id) || {};
   const chTitle = ch.title || state.challenge_title || "Innovación";
   const thesis = state.solution_thesis || state.solution_raw_input || "";
-  const cert = state.rally_type === "latam" ? "Rally Latinoamericano de Innovación (28h)" : "Rally Nacional Nicaragua Innova (24h)";
+  const isNac = state.rally_type === "nacional";
+  const cert = isNac ? "Rally Nacional Nicaragua Innova (24h - CNU / Economía Creativa)" : "Rally Latinoamericano de Innovación (28h - CONFEDI / ACOFI / SIRLI)";
 
   if (taskId === "stats_poverty") {
+    if (isNac) {
+      return `Actúa como Investigador Principal y Analista Cuantitativo para el ${cert}.
+Proyecto: "${pName}" enfocado en el reto: "${chTitle}".
+Tesis: "${thesis}".
+Criterio Rúbrica Oficial Jurado Nacional: Impacto Social, Territorial y Alineación con Políticas Públicas (25 Puntos).
+Patrón de Ganadores Nacionales (Nicaragua Innova):
+1. Extrae 3 estadísticas cuantitativas auditables de fuentes oficiales nicaragüenses y regionales (Banco Central de Nicaragua BCN, INIDE, CEPAL, MINSA o alcaldías).
+2. Vincula directamente con un Eje específico del Plan Nacional de Lucha contra la Pobreza y Desarrollo Humano 2022–2026 (PNDH), Ciudades Creativas o Restitución de Derechos (Ley 763).
+3. Especifica el anclaje territorial concreto en Nicaragua (municipio, comunidad vulnerable o zona productiva: ej. Waslala, San Juan de Oriente, Monimbó, Estelí, Bilwi).
+4. Cuantifica los beneficiarios directos (familias nicaragüenses, cooperativas de base, empleos directos e indirectos).
+5. Proporciona citas en formato APA 7 y una síntesis para el Documento Técnico de Solución (máximo 1,250 caracteres con espacios, sin retórica vacía).`;
+    }
     return `Actúa como Investigador Principal y Analista Cuantitativo para el ${cert}.
 Proyecto: "${pName}" enfocado en el reto: "${chTitle}".
 Tesis: "${thesis}".
-Criterio Rúbrica Oficial: Impacto Positivo en la Sociedad (20 Puntos).
-Patrón de Ganadores Latam/Nacional:
+Criterio Rúbrica Oficial Internacional: Impacto Positivo en la Sociedad (20 Puntos).
+Patrón de Ganadores Latam:
 1. Extrae 3 estadísticas cuantitativas auditables (fuentes oficiales: CEPAL, UNDRR, UNICEF, Banco Central o entes técnicos).
 2. Vincula directamente 2 metas específicas de los ODS aplicables con su indicador numérico.
-3. ${state.rally_type === 'nacional' ? 'Alinea con un Eje específico del Plan Nacional de Lucha contra la Pobreza de Nicaragua (2022-2026) y el municipio piloto.' : 'Describe el modelo de transferencia y escalamiento modular para municipios de América Latina (laboratorio piloto a escala continental).'}
+3. Describe el modelo de transferencia y escalamiento modular para municipios de América Latina (laboratorio piloto a escala continental).
 4. Proporciona citas en formato APA 7 y una síntesis de 1 párrafo para la sección Problema del pautado (estrictamente menor a 1,250 caracteres con espacios, sin adjetivos vacíos).`;
   }
 
   if (taskId === "patents_art") {
+    if (isNac) {
+      return `Actúa como Especialista en Propiedad Intelectual e Innovación Abierta para el ${cert}.
+Proyecto: "${pName}" enfocado en: "${chTitle}".
+Tesis técnica: "${thesis}".
+Criterio Rúbrica Oficial Jurado Nacional: Grado de Innovación, Creatividad y Hibridación Tecnológica (25 Puntos) y Viabilidad Técnica Local (20 Puntos).
+Patrón de Ganadores Nacionales:
+1. Identifica 2 patentes o antecedentes técnicos en Google Patents / WIPO / RPI-MIFIC de tecnologías similares.
+2. Detalla la hibridación tecnológica accesible (ej. microcontroladores ESP32/LoRa, gemelos digitales, IA de bajo consumo) combinada con el aprovechamiento de recursos o materia prima autóctona de Nicaragua (biomasa, residuos de café, cacao, empaques, etc.).
+3. Demuestra la factibilidad de implementación física en talleres locales, centros tecnológicos INATEC o laboratorios CNU (sin depender de componentes exóticos inalcanzables).
+4. Redacta la sección de 'Innovación y Diferenciación' para el documento técnico (máximo 1,000 caracteres con espacios, puramente auditable).`;
+    }
     return `Actúa como Especialista en Propiedad Intelectual, Estado del Arte y Patentes para el ${cert}.
 Proyecto: "${pName}" enfocado en: "${chTitle}".
 Tesis técnica: "${thesis}".
-Criterio Rúbrica Oficial: Grado de Innovación (30 Puntos) y Viabilidad Técnica (20 Puntos).
-Patrón de Ganadores Latam/Nacional:
+Criterio Rúbrica Oficial Internacional: Grado de Innovación (30 Puntos) y Viabilidad Técnica (20 Puntos).
+Patrón de Ganadores Latam:
 1. Identifica 2 patentes o antecedentes técnicos en Google Patents / WIPO / Lens sobre tecnologías similares.
 2. Cita números de publicación oficiales y detalla exactamente la diferenciación arquitectónica (hibridación ciber-física, telemetría o materiales locales).
 3. Redacta el bloque de 'Innovación y Diferenciación' para el documento pautado (máximo 1,000 caracteres con espacios, puramente técnico y medible).`;
@@ -2291,6 +2315,19 @@ Reglas técnicas:
   }
 
   if (taskId === "budget_alibaba") {
+    if (isNac) {
+      return `Actúa como Ingeniero de Costos y Modelo de Negocio Canvas para el ${cert}.
+Proyecto: "${pName}" (${chTitle}).
+Tesis: "${thesis}".
+Criterio Rúbrica Oficial Jurado Nacional: Prefactibilidad Económica, Sostenibilidad y Modelo Comunitario/Canvas (15 Puntos).
+Patrón de Ganadores Nacionales:
+Elabora la Estructura Presupuestaria y Plan de Inversión para el piloto operativo y escala a 12 meses.
+Reglas estrictas de evaluación nacional:
+1. Cotiza en Córdobas (C$) y equivalente en USD ($4,000 - $6,000 USD de referencia para el piloto).
+2. Detalla insumos obtenibles en el mercado nicaragüense o mayoristas internacionales de fácil desaduanaje.
+3. Especifica el modelo de sostenibilidad financiera viable (convenio con alcaldías municipales, cooperativas, programas MEFCCA o venta de servicios).
+4. Incluye desglose por fases a 12 meses (Fase 1: Prototipo y Pruebas M1-M3; Fase 2: Despliegue Piloto M4-M7; Fase 3: Escalamiento M8-M12).`;
+    }
     return `Actúa como Ingeniero de Costos y Abastecimiento Internacional para el ${cert}.
 Proyecto: "${pName}" (${chTitle}).
 Tesis: "${thesis}".
@@ -2305,6 +2342,19 @@ Reglas estrictas de evaluación:
   }
 
   if (taskId === "voice_audio") {
+    if (isNac) {
+      return `Actúa como Locutor Profesional y Guionista de Pitch de Innovación para el ${cert}.
+Proyecto: "${pName}" (${chTitle}).
+Tesis: "${thesis}".
+Criterio Rúbrica Oficial Jurado Nacional: Calidad del Video Pitch (15 Puntos) e Identidad Territorial.
+Patrón de Ganadores Nacionales (Fórmula 120 Segundos):
+Genera el texto de locución continuo para los 4 actos (cadencia de 135 ppm, total 250 a 270 palabras):
+- Acto 1 (0–20s): Apertura empática en territorio real de Nicaragua con cifra contundente. PROHIBIDO nombre del proyecto o logos.
+- Acto 2 (20–60s): Explicación técnica de la solución, nombre identitario/marca registrable y demostración del mecanismo funcional/prototipo.
+- Acto 3 (60–95s): Prefactibilidad económica y sostenibilidad con actores del entorno local (alcaldías, cooperativas, MEFCCA).
+- Acto 4 (95–120s): Cierre memorable de impacto humano, empleo y orgullo del talento nicaragüense.
+Entrega solo el texto continuo para el locutor o sintetizador TTS, sin acotaciones teatrales ni corchetes.`;
+    }
     return `Actúa como Locutor Profesional y Guionista de Pitch de Innovación para el ${cert}.
 Proyecto: "${pName}" (${chTitle}).
 Tesis: "${thesis}".
@@ -2318,7 +2368,7 @@ Genera el texto de locución continuo para los 4 actos (cadencia estricta de 135
 Entrega solo el texto continuo para el locutor o sintetizador TTS, sin acotaciones teatrales ni corchetes.`;
   }
 
-  return `Mega-Prompt calibrado con Rúbrica 100 Pts para ${pName} (${cert}).`;
+  return `Mega-Prompt calibrado con Rúbrica Oficial (100 Pts) para ${pName} (${cert}).`;
 }
 
 function copySpecificMegaPrompt(taskId) {
