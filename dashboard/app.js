@@ -1025,54 +1025,41 @@ function renderViewTeam() {
             </div>
           </div>
 
-          <!-- Columna Derecha: Previsualización de Credencial / Carátula -->
-          <div class="team-preview-card">
-            <div>
-              <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #e2e8f0; padding-bottom:12px; margin-bottom:16px;">
-                <span style="font-size:10px; font-weight:800; letter-spacing:0.08em; color:#64748b; text-transform:uppercase;">Previsualización de Identidad</span>
-                <span style="font-size:10.5px; font-weight:700; color:#003594; background:#eff6ff; padding:3px 10px; border-radius:9999px; border:1px solid #bfdbfe;">
-                  Sede Oficial UNI
-                </span>
-              </div>
-
-              <!-- Encabezado con logos institucionales grandes -->
-              <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:20px; padding:12px 16px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; box-shadow:0 1px 4px rgba(0,0,0,0.03);">
-                <img src="assets/logo_uni_official.png" style="height:44px; width:auto; max-width:85px; object-fit:contain;" alt="Universidad Nacional de Ingeniería">
-                <div style="height:26px; width:1px; background:#e2e8f0;"></div>
-                <img src="${rallyLogoSrc}" style="height:40px; width:auto; max-width:140px; object-fit:contain;" alt="Rally Oficial">
-              </div>
-
-              <!-- Centro: Logo del equipo en grande y nombre -->
-              <div style="text-align:center; padding:12px 0;">
-                <div style="width:110px; height:110px; margin:0 auto 12px auto; border-radius:18px; border:2px ${state.team_logo_img ? 'solid #0066ff' : 'dashed #cbd5e1'}; background:#ffffff; display:flex; align-items:center; justify-content:center; overflow:hidden; box-shadow:0 4px 12px rgba(9,30,66,0.06);">
-                  ${state.team_logo_img 
-                    ? `<img id="preview-team-logo" src="${state.team_logo_img}" style="width:100%; height:100%; object-fit:contain; padding:8px;" alt="Logo Equipo">`
-                    : `<div style="text-align:center; color:#94a3b8; font-size:11px; padding:8px;">
-                         <div style="margin-bottom:4px; opacity:0.6;">${SVG.upload}</div>
-                         <div style="font-weight:600;">Logo pendiente</div>
-                       </div>`
-                  }
-                </div>
-
-                <h2 id="preview-team-name" style="font-size:20px; font-weight:900; color:#091e42; margin-bottom:4px; letter-spacing:-0.02em; word-break:break-word;">
-                  ${state.team_name || 'NOMBRE DEL EQUIPO'}
-                </h2>
-                <div style="font-size:12px; font-weight:700; color:#003594; text-transform:uppercase; letter-spacing:0.04em;">
-                  Universidad Nacional de Ingeniería
-                </div>
-                <div style="font-size:11px; color:#64748b; margin-top:2px;">
-                  Sede Central / Recintos Universitarios UNI
-                </div>
-              </div>
+          <!-- Columna Derecha: Previsualización de Identidad -->
+          <div class="team-preview-panel">
+            <div style="font-size:11px; font-weight:800; letter-spacing:0.08em; color:#64748b; text-transform:uppercase; margin-bottom:22px;">
+              Previsualización de Identidad
             </div>
 
-            <div style="border-top:1px dashed #cbd5e1; padding-top:14px; margin-top:14px; display:flex; justify-content:space-between; align-items:center;">
-              <span style="font-size:11px; font-weight:700; color:#475569;">
-                ${state.rally_type === 'latam' ? 'Rally Latam 28h Continental' : 'Rally Nacional Innova 24h'}
-              </span>
-              <span style="font-size:10px; color:#059669; font-weight:700; background:#dcfce7; padding:3px 9px; border-radius:9999px;">
-                Listo para Pautado
-              </span>
+            <!-- 1. Logo del grupo en grande -->
+            <div style="width:130px; height:130px; margin:0 auto; border-radius:18px; border:2px ${state.team_logo_img ? 'solid #003366' : 'dashed #cbd5e1'}; background:#ffffff; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+              ${state.team_logo_img 
+                ? `<img id="preview-team-logo" src="${state.team_logo_img}" style="width:100%; height:100%; object-fit:contain; padding:10px;" alt="Logo Equipo">`
+                : `<div style="text-align:center; color:#94a3b8; font-size:11px; padding:8px;">
+                     <div style="margin-bottom:6px; opacity:0.6;">${SVG.upload}</div>
+                     <div style="font-weight:700;">Logo del Equipo</div>
+                   </div>`
+              }
+            </div>
+
+            <!-- 2. Abajo los 2 logos UNI y Rally en más pequeño -->
+            <div style="display:flex; align-items:center; justify-content:center; gap:16px; margin-top:20px;">
+              <img src="assets/logo_uni_official.png" style="height:32px; width:auto; max-width:75px; object-fit:contain;" alt="Universidad Nacional de Ingeniería">
+              <span style="color:#cbd5e1; font-weight:300; font-size:16px;">|</span>
+              <img src="${rallyLogoSrc}" style="height:28px; width:auto; max-width:125px; object-fit:contain;" alt="Rally Oficial">
+            </div>
+
+            <!-- 3. Nombre del grupo en grande ahí abajo -->
+            <div style="margin-top:22px; text-align:center;">
+              <h2 id="preview-team-name" style="font-family:var(--font-sans); font-size:24px; font-weight:900; color:#091e42; margin-bottom:6px; letter-spacing:-0.03em; word-break:break-word; text-transform:uppercase;">
+                ${state.team_name || 'NOMBRE DEL EQUIPO'}
+              </h2>
+              <div style="font-family:var(--font-sans); font-size:12px; font-weight:800; color:#003366; text-transform:uppercase; letter-spacing:0.05em;">
+                Universidad Nacional de Ingeniería
+              </div>
+              <div style="font-family:var(--font-sans); font-size:11px; font-weight:600; color:#64748b; margin-top:4px;">
+                ${state.rally_type === 'latam' ? 'Rally Latinoamericano de Innovación 28h' : 'Rally Nacional Nicaragua Innova 24h'}
+              </div>
             </div>
           </div>
         </div>

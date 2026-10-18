@@ -1067,27 +1067,18 @@ textarea {
   }
 }
 
-.team-preview-card {
-  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-  border: 1.5px solid #e2e8f0;
-  border-radius: 18px;
-  padding: 24px;
+.team-preview-card,
+.team-preview-panel {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 36px 24px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 0 4px 20px -2px rgba(9, 30, 66, 0.05);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   position: relative;
-  overflow: hidden;
-}
-
-.team-preview-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #003594, #0066ff, #e11d48);
 }
 
 /* ── COMPARATIVA DE RETOS (OFICIAL VS PROPUESTA WOW) ──────────────── */
