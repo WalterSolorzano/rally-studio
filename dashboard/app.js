@@ -27,72 +27,173 @@ const SVG = {
   refresh: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>`,
 
   latinAmericaIllustration: `
-<svg width="280" height="165" viewBox="0 0 300 180" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width:100%; height:auto;">
+<svg width="290" height="170" viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width:100%; height:auto;">
   <defs>
-    <linearGradient id="laGradMain" x1="100" y1="20" x2="220" y2="170" gradientUnits="userSpaceOnUse">
+    <linearGradient id="laGrad" x1="120" y1="10" x2="220" y2="190" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#38BDF8"/>
-      <stop offset="35%" stop-color="#0066FF"/>
-      <stop offset="100%" stop-color="#1D4ED8"/>
+      <stop offset="25%" stop-color="#0066FF"/>
+      <stop offset="70%" stop-color="#1D4ED8"/>
+      <stop offset="100%" stop-color="#1E3A8A"/>
     </linearGradient>
-    <linearGradient id="laGradNorth" x1="80" y1="30" x2="160" y2="80" gradientUnits="userSpaceOnUse">
+    <linearGradient id="laAndes" x1="150" y1="70" x2="190" y2="190" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#93C5FD"/>
-      <stop offset="100%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#60A5FA"/>
     </linearGradient>
-    <linearGradient id="laOrbitGlow" x1="40" y1="80" x2="260" y2="100" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#BFDBFE" stop-opacity="0.3"/>
-      <stop offset="50%" stop-color="#3B82F6" stop-opacity="0.9"/>
-      <stop offset="100%" stop-color="#BFDBFE" stop-opacity="0.3"/>
+    <linearGradient id="orbitGlow" x1="30" y1="90" x2="290" y2="110" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#BFDBFE" stop-opacity="0.2"/>
+      <stop offset="50%" stop-color="#3B82F6" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#BFDBFE" stop-opacity="0.2"/>
     </linearGradient>
+    <filter id="softShadow" x="60" y="10" width="220" height="190" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#0066FF" flood-opacity="0.16"/>
+    </filter>
   </defs>
-  <ellipse cx="150" cy="95" rx="110" ry="38" stroke="url(#laOrbitGlow)" stroke-width="1.8" stroke-dasharray="5 4" transform="rotate(-14 150 95)"/>
-  <ellipse cx="150" cy="97" rx="120" ry="28" stroke="#93C5FD" stroke-width="1.2" stroke-opacity="0.55" transform="rotate(22 150 97)"/>
-  <path d="M85 36 C92 32, 102 34, 110 42 C118 50, 122 46, 130 54 C134 58, 140 66, 144 72 C146 76, 150 77, 156 80 C162 82, 168 81, 174 86 C169 89, 162 86, 156 88 C151 89, 144 82, 138 78 C132 74, 126 64, 120 60 C114 56, 106 53, 98 46 C92 42, 86 40, 85 36 Z" fill="url(#laGradNorth)"/>
-  <circle cx="172" cy="60" r="2.5" fill="#3B82F6"/>
-  <circle cx="184" cy="64" r="2" fill="#60A5FA"/>
-  <path d="M152 84 C160 82, 176 80, 194 86 C210 92, 224 106, 222 124 C220 136, 208 150, 200 162 C192 174, 184 186, 179 196 C176 197, 172 192, 172 184 C172 172, 162 158, 158 146 C154 136, 146 128, 146 116 C146 104, 144 96, 152 84 Z" fill="url(#laGradMain)"/>
-  <path d="M174 86 C182 104, 188 126, 180 152 C176 166, 172 180, 176 194 C174 194, 170 186, 170 176 C170 162, 160 148, 156 136 C152 124, 152 110, 158 96 Z" fill="#1D4ED8" fill-opacity="0.38"/>
-  <path d="M180 88 C196 96, 212 112, 210 126 C208 138, 198 152, 190 164 C198 148, 206 134, 204 122 C202 110, 192 98, 180 88 Z" fill="#60A5FA" fill-opacity="0.45"/>
-  <circle cx="204" cy="80" r="3.5" fill="#0066FF"/>
-  <circle cx="204" cy="80" r="6" stroke="#93C5FD" stroke-width="1.2" stroke-opacity="0.8"/>
-  <circle cx="122" cy="112" r="2.5" fill="#38BDF8"/>
+
+  <!-- Anillos Orbitales -->
+  <ellipse cx="160" cy="104" rx="120" ry="42" stroke="url(#orbitGlow)" stroke-width="1.8" stroke-dasharray="6 4" transform="rotate(-16 160 104)"/>
+  <ellipse cx="160" cy="106" rx="132" ry="30" stroke="#93C5FD" stroke-width="1.2" stroke-opacity="0.55" transform="rotate(22 160 106)"/>
+
+  <g filter="url(#softShadow)">
+    <!-- Península de Baja California -->
+    <path d="M84 24 C82 32, 86 42, 92 50 C94 54, 96 52, 94 44 C92 36, 88 28, 86 22 Z" fill="#2563EB"/>
+
+    <!-- México continental y Península de Yucatán -->
+    <path d="M88 22 C96 22, 108 26, 116 32 C124 38, 130 36, 134 44 C138 48, 148 44, 154 44 C158 44, 160 48, 156 52 C152 56, 146 54, 142 58 C138 62, 134 68, 130 70 C124 68, 118 64, 112 56 C106 48, 98 42, 90 32 Z" fill="url(#laGrad)"/>
+
+    <!-- Istmo de Centroamérica (Guatemala a Panamá) -->
+    <path d="M130 70 C136 70, 142 74, 148 78 C154 82, 160 84, 166 84 C172 84, 176 80, 182 82 C184 84, 184 88, 180 88 C174 88, 166 88, 160 86 C152 84, 144 80, 138 74 Z" fill="#0066FF"/>
+
+    <!-- Islas del Caribe (Cuba, La Española, Puerto Rico) -->
+    <path d="M148 50 C156 52, 168 56, 176 60 C174 62, 164 58, 152 54 Z" fill="#60A5FA"/>
+    <ellipse cx="184" cy="64" rx="4" ry="2" fill="#3B82F6"/>
+    <ellipse cx="194" cy="67" rx="2.5" ry="1.5" fill="#60A5FA"/>
+
+    <!-- Sudamérica: Contorno Geográfico Realista -->
+    <path d="M178 82 
+             C186 78, 198 76, 210 80 
+             C222 84, 234 88, 244 96 
+             C254 104, 264 114, 260 126 
+             C256 138, 246 150, 238 162 
+             C232 172, 226 182, 220 196 
+             C218 200, 214 204, 210 204 
+             C206 204, 204 198, 204 190 
+             C204 178, 198 162, 194 148 
+             C190 138, 182 126, 180 114 
+             C178 102, 174 92, 178 82 Z" fill="url(#laGrad)"/>
+
+    <!-- Cordillera de los Andes Flanco Pacífico -->
+    <path d="M180 84 
+             C184 96, 188 112, 190 126 
+             C192 140, 196 156, 202 172 
+             C206 182, 208 194, 210 202 
+             C208 202, 204 196, 204 188 
+             C204 176, 198 162, 194 148 
+             C190 138, 182 126, 180 114 Z" fill="url(#laAndes)" fill-opacity="0.6"/>
+
+    <!-- Saliente de Brasil Relieve 3D -->
+    <path d="M210 82 
+             C228 88, 246 98, 258 114 
+             C262 120, 256 134, 246 148 
+             C254 136, 258 124, 256 116 
+             C250 104, 236 94, 218 86 Z" fill="#60A5FA" fill-opacity="0.45"/>
+  </g>
+
+  <!-- Nodos satelitales -->
+  <circle cx="216" cy="80" r="3.5" fill="#0066FF"/>
+  <circle cx="216" cy="80" r="6" stroke="#93C5FD" stroke-width="1.2" stroke-opacity="0.8"/>
+  <circle cx="140" cy="116" r="2.5" fill="#38BDF8"/>
+  <circle cx="240" cy="140" r="2.5" fill="#60A5FA"/>
 </svg>`,
 
   momotomboIllustration: `
-<svg width="280" height="165" viewBox="0 0 300 180" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width:100%; height:auto;">
+<svg width="290" height="170" viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width:100%; height:auto;">
   <defs>
-    <linearGradient id="coneGradM" x1="150" y1="50" x2="150" y2="135" gradientUnits="userSpaceOnUse">
+    <linearGradient id="nicSky" x1="160" y1="0" x2="160" y2="120" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#E0F2FE" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="volcanoLeft" x1="170" y1="45" x2="110" y2="135" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#1E3A8A"/>
-      <stop offset="40%" stop-color="#2563EB"/>
-      <stop offset="100%" stop-color="#0284C7"/>
+      <stop offset="40%" stop-color="#1E40AF"/>
+      <stop offset="85%" stop-color="#047857"/>
+      <stop offset="100%" stop-color="#064E3B"/>
     </linearGradient>
-    <linearGradient id="hillsGradM" x1="150" y1="100" x2="150" y2="145" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#0D9488"/>
-      <stop offset="100%" stop-color="#065F46"/>
+    <linearGradient id="volcanoRight" x1="170" y1="45" x2="230" y2="135" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="35%" stop-color="#0284C7"/>
+      <stop offset="80%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
     </linearGradient>
-    <linearGradient id="lakeGradM" x1="150" y1="135" x2="150" y2="175" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#38BDF8"/>
-      <stop offset="50%" stop-color="#0284C7"/>
-      <stop offset="100%" stop-color="#0369A1"/>
+    <linearGradient id="lakeWater" x1="160" y1="130" x2="160" y2="195" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="40%" stop-color="#0369A1"/>
+      <stop offset="100%" stop-color="#075985"/>
     </linearGradient>
-    <linearGradient id="sunGradM" x1="220" y1="60" x2="240" y2="80" gradientUnits="userSpaceOnUse">
+    <linearGradient id="sunGold" x1="240" y1="40" x2="265" y2="65" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#FDE047"/>
       <stop offset="100%" stop-color="#F59E0B"/>
     </linearGradient>
   </defs>
-  <circle cx="228" cy="72" r="13" fill="url(#sunGradM)"/>
-  <path d="M60 92 C60 85, 67 79, 74 79 C78 74, 85 72, 92 74 C99 72, 106 76, 108 81 C113 81, 118 86, 118 92 Z" fill="#E2E8F0" fill-opacity="0.85"/>
-  <path d="M218 96 C218 90, 224 86, 230 86 C234 81, 241 81, 246 83 C251 81, 257 85, 259 88 C264 88, 268 92, 268 96 Z" fill="#E2E8F0" fill-opacity="0.75"/>
-  <path d="M20 128 Q80 114 140 120 T280 118 L280 136 L20 136 Z" fill="#93C5FD" fill-opacity="0.55"/>
-  <path d="M150 56 L124 130 L176 130 Z" fill="url(#coneGradM)"/>
-  <path d="M143 58 C147 55, 153 55, 157 58 L150 68 Z" fill="#F59E0B"/>
-  <path d="M150 56 L142 130 L150 130 Z" fill="#1E40AF" fill-opacity="0.45"/>
-  <path d="M150 56 L158 130 L150 130 Z" fill="#60A5FA" fill-opacity="0.35"/>
-  <path d="M35 132 Q70 112 110 125 Q140 116 175 124 Q220 114 265 132 L265 142 L35 142 Z" fill="url(#hillsGradM)"/>
-  <path d="M65 134 Q100 118 130 130 Q160 120 195 128 Q230 122 250 136 L250 144 L65 144 Z" fill="#047857" fill-opacity="0.85"/>
-  <path d="M15 138 C75 136, 155 140, 285 138 L285 170 C205 174, 95 170, 15 170 Z" fill="url(#lakeGradM)"/>
-  <path d="M75 144 Q145 148 215 144" stroke="#E0F2FE" stroke-width="2.5" stroke-linecap="round"/>
-  <path d="M105 153 Q145 156 185 153" stroke="#BAE6FD" stroke-width="2" stroke-linecap="round"/>
-  <path d="M125 161 Q145 163 165 161" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
+
+  <!-- Cielo suave -->
+  <rect x="0" y="0" width="320" height="135" fill="url(#nicSky)" rx="14"/>
+
+  <!-- Sol Tropical -->
+  <circle cx="252" cy="52" r="14" fill="url(#sunGold)"/>
+
+  <!-- Nubes tropicales -->
+  <path d="M50 78 C50 70, 58 64, 66 64 C70 58, 78 56, 86 58 C94 56, 102 60, 104 66 C110 66, 116 72, 116 78 Z" fill="#E2E8F0" fill-opacity="0.85"/>
+  <path d="M230 84 C230 78, 236 74, 242 74 C246 68, 254 68, 260 70 C266 68, 272 72, 274 76 C280 76, 284 80, 284 84 Z" fill="#E2E8F0" fill-opacity="0.8"/>
+
+  <!-- Cordillera lejana de los Maribios -->
+  <path d="M20 126 Q75 106 130 114 Q190 102 245 112 T305 118 L305 138 L20 138 Z" fill="#93C5FD" fill-opacity="0.45"/>
+
+  <!-- Fumarola / Penacho de humo blanco del cráter del Momotombo -->
+  <path d="M168 44 C166 36, 172 30, 178 26 C184 22, 194 20, 202 24 C198 28, 190 32, 184 36 C180 40, 174 42, 170 45 Z" fill="#FFFFFF" fill-opacity="0.75"/>
+  <path d="M174 38 C178 32, 186 28, 194 30 C190 34, 184 38, 178 42 Z" fill="#E2E8F0" fill-opacity="0.6"/>
+
+  <!-- Cono del Volcán Momotombo (silueta cónica hiperbólica auténtica) -->
+  <path d="M166 46 
+           C158 56, 146 76, 134 98 
+           C124 114, 112 128, 96 138 
+           L170 138 
+           L166 46 Z" fill="url(#volcanoLeft)"/>
+
+  <path d="M166 46 
+           L170 138 
+           L244 138 
+           C228 128, 216 114, 206 98 
+           C194 76, 182 56, 174 46 Z" fill="url(#volcanoRight)"/>
+
+  <!-- Cráter somital con destello de azufre -->
+  <ellipse cx="170" cy="46" rx="5" ry="2" fill="#F59E0B"/>
+
+  <!-- Barrancos y estrías volcánicas naturales -->
+  <path d="M168 47 L164 138" stroke="#1E3A8A" stroke-width="1.5" stroke-opacity="0.5"/>
+  <path d="M172 47 L178 138" stroke="#38BDF8" stroke-width="1.2" stroke-opacity="0.5"/>
+  <path d="M166 60 Q156 90 142 138" stroke="#065F46" stroke-width="1.5" stroke-opacity="0.6"/>
+  <path d="M174 60 Q186 90 200 138" stroke="#34D399" stroke-width="1.2" stroke-opacity="0.5"/>
+
+  <!-- Isla Momotombito (cono gemelo en el Lago Xolotlán) -->
+  <path d="M72 138 C80 126, 88 116, 94 116 C100 116, 108 126, 116 138 Z" fill="#047857"/>
+  <path d="M94 116 L105 138 L94 138 Z" fill="#10B981" fill-opacity="0.6"/>
+
+  <!-- Costas y laderas verdes del lago -->
+  <path d="M10 138 C50 132, 90 134, 130 132 C180 130, 240 134, 310 138 L310 146 L10 146 Z" fill="#065F46"/>
+
+  <!-- Aguas del Lago Xolotlán (Lago de Managua) -->
+  <rect x="0" y="138" width="320" height="62" fill="url(#lakeWater)"/>
+
+  <!-- Reflejo del volcán en las aguas del lago -->
+  <ellipse cx="170" cy="144" rx="35" ry="4" fill="#0369A1" fill-opacity="0.5"/>
+  <ellipse cx="170" cy="154" rx="25" ry="3" fill="#0369A1" fill-opacity="0.4"/>
+
+  <!-- Olas y ondas de agua características del lago -->
+  <path d="M30 146 Q80 149 130 146 T230 146 T300 146" stroke="#BAE6FD" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M60 156 Q110 159 160 156 T260 156" stroke="#E0F2FE" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M90 166 Q140 169 190 166 T270 166" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+  <path d="M120 176 Q160 179 200 176 T250 176" stroke="#E0F2FE" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M140 186 Q175 188 210 186" stroke="#BAE6FD" stroke-width="1.4" stroke-linecap="round"/>
 </svg>`,
 
   landscapeBg: `
@@ -103,19 +204,39 @@ const SVG = {
       <path d="M3 8 C25 3, 60 4, 87 9" stroke="#0066FF" stroke-width="2" stroke-linecap="round"/>
     </svg>
   </div>
-  <svg width="340" height="170" viewBox="0 0 340 170" fill="none" style="position:absolute; right:0; top:0;">
-    <circle cx="260" cy="46" r="12" fill="#F59E0B"/>
-    <path d="M205 70 C205 64, 210 59, 217 59 C221 54, 228 52, 235 54 C242 52, 249 55, 251 60 C256 60, 261 65, 261 70 Z" fill="#E2E8F0" fill-opacity="0.8"/>
-    <path d="M270 78 C270 74, 274 70, 279 70 C283 67, 289 67, 293 69 C297 67, 301 70, 303 72 C307 72, 310 75, 310 78 Z" fill="#E2E8F0" fill-opacity="0.7"/>
-    <path d="M170 118 C215 95, 270 108, 330 116 L330 150 L170 150 Z" fill="#93C5FD" fill-opacity="0.45"/>
-    <path d="M245 52 L185 132 L305 132 Z" fill="#1D4ED8"/>
-    <path d="M245 52 L218 132 L245 132 Z" fill="#1E3A8A"/>
-    <path d="M245 52 L272 132 L245 132 Z" fill="#3B82F6"/>
-    <ellipse cx="245" cy="54" rx="7" ry="2.5" fill="#F59E0B"/>
-    <path d="M155 130 C185 116, 215 124, 240 120 C270 116, 300 122, 330 132 L330 150 L155 150 Z" fill="#0D9488"/>
-    <path d="M145 138 C195 134, 275 140, 340 136 L340 165 L145 165 Z" fill="#38BDF8" fill-opacity="0.85"/>
-    <path d="M185 144 Q235 148 295 144" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
-    <path d="M210 152 Q250 155 310 152" stroke="#BAE6FD" stroke-width="1.8" stroke-linecap="round"/>
+  <svg width="340" height="175" viewBox="0 0 340 175" fill="none" style="position:absolute; right:0; top:0;">
+    <defs>
+      <linearGradient id="topVolcanoLeft" x1="250" y1="40" x2="190" y2="135" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#1E3A8A"/>
+        <stop offset="50%" stop-color="#1D4ED8"/>
+        <stop offset="100%" stop-color="#064E3B"/>
+      </linearGradient>
+      <linearGradient id="topVolcanoRight" x1="250" y1="40" x2="310" y2="135" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#2563EB"/>
+        <stop offset="50%" stop-color="#0284C7"/>
+        <stop offset="100%" stop-color="#10B981"/>
+      </linearGradient>
+    </defs>
+    <!-- Sol dorado -->
+    <circle cx="280" cy="46" r="13" fill="#F59E0B"/>
+    <!-- Nubes -->
+    <path d="M210 68 C210 62, 216 57, 223 57 C227 52, 234 50, 241 52 C248 50, 255 53, 257 58 C262 58, 267 63, 267 68 Z" fill="#E2E8F0" fill-opacity="0.85"/>
+    <path d="M285 76 C285 71, 290 67, 295 67 C299 64, 305 64, 309 66 C313 64, 317 67, 319 69 C323 69, 326 72, 326 76 Z" fill="#E2E8F0" fill-opacity="0.75"/>
+    <!-- Fumarola del Momotombo -->
+    <path d="M248 42 C246 34, 252 28, 258 24 C264 20, 274 18, 282 22 C278 26, 270 30, 264 34 C260 38, 254 40, 250 43 Z" fill="#FFFFFF" fill-opacity="0.75"/>
+    <!-- Volcán Momotombo -->
+    <path d="M246 44 C238 54, 226 74, 214 96 C204 112, 192 126, 178 136 L250 136 Z" fill="url(#topVolcanoLeft)"/>
+    <path d="M246 44 L250 136 L322 136 C308 126, 296 112, 286 96 C274 74, 262 54, 254 44 Z" fill="url(#topVolcanoRight)"/>
+    <ellipse cx="250" cy="44" rx="4.5" ry="2" fill="#F59E0B"/>
+    <!-- Momotombito isla -->
+    <path d="M165 136 C171 126, 177 118, 182 118 C187 118, 193 126, 199 136 Z" fill="#047857"/>
+    <!-- Costas verdes y Lago Xolotlán -->
+    <path d="M140 136 C180 132, 240 134, 340 136 L340 144 L140 144 Z" fill="#065F46"/>
+    <rect x="130" y="136" width="210" height="38" fill="#0284C7"/>
+    <!-- Ondas de agua del lago -->
+    <path d="M160 144 Q220 148 290 144 T340 144" stroke="#BAE6FD" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M185 152 Q235 156 315 152" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+    <path d="M210 160 Q250 163 320 160" stroke="#E0F2FE" stroke-width="1.6" stroke-linecap="round"/>
   </svg>
 </div>`
 };
