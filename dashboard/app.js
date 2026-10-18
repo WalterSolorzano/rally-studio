@@ -22,6 +22,8 @@ const SVG = {
   shield: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>`,
   copy: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`,
   spark: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>`,
+  bell: `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>`,
+  check: `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`,
   arrowRight: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>`,
   arrowLeft: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>`,
   plus: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>`,
@@ -463,6 +465,16 @@ function getInitialState() {
       acto4: ""
     },
 
+    // Guardarraíles Antidescalificación
+    guardrails: {
+      team_sirli_registered: false,
+      video_duration_ok: true,
+      video_unlisted_or_public: false,
+      naming_pdf_ok: false,
+      hashtags_included: false,
+      pautado_chars_ok: false
+    },
+
     // Enlaces de colaboración y nube (Bypass para Wi-Fi universitario)
     google_drive_url: "https://drive.google.com",
     canva_url: "https://canva.com",
@@ -498,7 +510,7 @@ const NAV_TABS = [
   { id: "canvas",     label: "08 Modelo Canvas",        level: 4, check: () => state.solution_approved },
   { id: "script",     label: "09 Guion 120s (4 Actos)", level: 5, check: () => isPautadoComplete() && isBudgetValid() },
   { id: "webdemo",    label: "10 Prototipo para Video", level: 5, check: () => isPautadoComplete() && isBudgetValid() },
-  { id: "timeline",   label: "11 Cronograma SIRLI",     level: 4, check: () => state.solution_approved }
+  { id: "timeline",   label: "11 Hitos & Nomenclatura SIRLI", level: 1, check: () => !!state.rally_type }
 ];
 
 function isPautadoComplete() {
@@ -630,9 +642,119 @@ function pasteSyncToken() {
   }
 }
 
-// ── CRONÓMETRO REGRESIVO ─────────────────────────────────────────────────────
+// ── CRONÓMETRO REGRESIVO Y ALERTAS DE CRONOGRAMA ─────────────────────────────
 function initClock() {
   startTimer();
+}
+
+function showToast(msg) {
+  if (typeof document === "undefined") return;
+  const existing = document.querySelector(".toast-notice");
+  if (existing) existing.remove();
+  const el = document.createElement("div");
+  el.className = "toast-notice";
+  el.innerHTML = `${SVG.check} <span>${msg}</span>`;
+  document.body.appendChild(el);
+  setTimeout(() => { if (el.parentNode) el.remove(); }, 3200);
+}
+
+function copyToClipboardWithFeedback(text, successMsg) {
+  if (typeof navigator !== "undefined" && navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(() => {
+      showToast(successMsg || "Copiado al portapapeles");
+    }).catch(() => {
+      fallbackCopy(text, successMsg);
+    });
+  } else {
+    fallbackCopy(text, successMsg);
+  }
+}
+
+function fallbackCopy(text, successMsg) {
+  if (typeof document === "undefined") return;
+  const ta = document.createElement("textarea");
+  ta.value = text;
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand("copy"); } catch(e) {}
+  ta.remove();
+  showToast(successMsg || "Copiado al portapapeles");
+}
+
+function getCurrentDeadlineAlert() {
+  if (!state.rally_type) {
+    return { label: "STANDBY", time: "--:--", desc: "Selecciona el certamen para activar el cronograma" };
+  }
+  if (!state.rally_started) {
+    return { label: "Kickoff Oficial", time: "08:00 AM (Viernes)", desc: "Apertura oficial de retos en plataforma SIRLI" };
+  }
+  const now = Date.now();
+  const start = state.start_timestamp || now;
+  const elapsedSec = Math.floor((now - start) / 1000);
+  const totalSec = (state.hours_total || 24) * 3600;
+  const remainSec = Math.max(0, totalSec - elapsedSec);
+  const elapsedHours = elapsedSec / 3600;
+
+  if (elapsedHours < 4) {
+    const remainToReg = Math.max(0, 4 * 3600 - elapsedSec);
+    const rh = Math.floor(remainToReg / 3600);
+    const rm = Math.floor((remainToReg % 3600) / 60);
+    return { 
+      label: "Inscripción SIRLI", 
+      time: `12:00 PM (${rh}h ${rm}m)`, 
+      desc: "Límite fatal de registro de integrantes y sede UNI en plataforma" 
+    };
+  }
+  if (elapsedHours < 12) {
+    const remainToTikTok = Math.max(0, 12 * 3600 - elapsedSec);
+    const rh = Math.floor(remainToTikTok / 3600);
+    const rm = Math.floor((remainToTikTok % 3600) / 60);
+    return { 
+      label: "Ventana TikTok", 
+      time: `08:00 PM (${rh}h ${rm}m)`, 
+      desc: "Ventana óptima para subir interacción lúdica y captar interacciones" 
+    };
+  }
+  if (remainSec > 6 * 3600) {
+    return { 
+      label: "Tesis Técnica", 
+      time: "T-6 Horas", 
+      desc: "Congelamiento innegociable de solución y justificación técnica" 
+    };
+  }
+  if (remainSec > 4 * 3600) {
+    return { 
+      label: "Pautado y Presupuesto", 
+      time: "T-4 Horas", 
+      desc: "Límites de caracteres y cotizaciones de presupuesto cerradas al 100%" 
+    };
+  }
+  if (remainSec > 2 * 3600) {
+    return { 
+      label: "Render y YouTube", 
+      time: "T-2 Horas", 
+      desc: "Subir video en modo No listado (YouTube tarda 25m en procesar 1080p)" 
+    };
+  }
+  if (remainSec > 1 * 3600) {
+    return { 
+      label: "Verificar Links", 
+      time: "T-1 Hora", 
+      desc: "Comprobar link en incógnito (nunca privado) y cargar PDF pautado" 
+    };
+  }
+  if (remainSec > 0) {
+    return { 
+      label: "CIERRE FINAL SIRLI", 
+      time: "T-0 Inmutable", 
+      desc: "Cierre definitivo de plataforma. Ningún certamen otorga prórroga" 
+    };
+  }
+  return { 
+    label: "TIEMPO CUMPLIDO", 
+    time: "Cerrado", 
+    desc: "Certamen finalizado" 
+  };
 }
 
 function getTimerString() {
@@ -662,6 +784,17 @@ function startTimer() {
     const tData = getTimerString();
     if (clockEl) clockEl.innerText = tData.time;
     if (statusEl) statusEl.innerText = tData.status;
+
+    const deadlineEl = document.getElementById("topbar-deadline-pill");
+    if (deadlineEl) {
+      const dData = getCurrentDeadlineAlert();
+      deadlineEl.innerHTML = `
+        <span class="deadline-pill-dot"></span>
+        <span class="deadline-pill-label">${dData.label}</span>
+        <span class="deadline-pill-time">${dData.time}</span>
+      `;
+      deadlineEl.title = dData.desc;
+    }
   }
 
   updateClockDisplay();
@@ -691,6 +824,7 @@ function renderTopbar() {
   const certamen = state.rally_type === "latam" ? "Rally Latam 28h" : state.rally_type === "nacional" ? "Rally Nacional 24h" : "";
   const pName = state.team_name || state.project_name || "";
   const timerData = getTimerString();
+  const deadlineData = getCurrentDeadlineAlert();
 
   el.innerHTML = `
     <div class="topbar-left">
@@ -715,6 +849,17 @@ function renderTopbar() {
       ${state.challenge_id ? `<span class="challenge-title-crumb">Reto #${state.challenge_id}</span>` : ""}
     </div>
     <div class="topbar-actions">
+      ${state.rally_type ? `
+        <div id="topbar-deadline-pill" 
+             class="deadline-pill ${state.rally_type === 'latam' ? 'latam' : 'nacional'}" 
+             onclick="switchTab('timeline')" 
+             title="${deadlineData.desc}">
+          <span class="deadline-pill-dot"></span>
+          <span class="deadline-pill-label">${deadlineData.label}</span>
+          <span class="deadline-pill-time">${deadlineData.time}</span>
+        </div>
+      ` : ""}
+
       <div class="dropdown-wrapper">
         <button class="btn-icon-discreet" onclick="toggleProjectMenu(event)" id="btn-project-menu" title="Opciones de proyecto">
           ${SVG.dotsVertical}
@@ -2183,34 +2328,295 @@ function renderViewWebDemo() {
 }
 
 // ═════════════════════════════════════════════════════════════════════════════
-// 11 CRONOGRAMA DE ENTREGA SIRLI & HITOS
+// 11 CRONOGRAMA DE ENTREGA SIRLI, NOMENCLATURAS Y GUARDARRAÍLES
 // ═════════════════════════════════════════════════════════════════════════════
+const GUARDRAILS_DEFINITIONS = [
+  {
+    key: "team_sirli_registered",
+    title: "1. Registro del Equipo en Plataforma SIRLI (Límite: 12:00 PM)",
+    desc: "Todos los integrantes y la sede Universidad Nacional de Ingeniería (UNI) deben estar confirmados en la plataforma antes de mediodía.",
+    risk: "Equipos no validados a las 12:00 PM quedan inhabilitados por el sistema central."
+  },
+  {
+    key: "video_duration_ok",
+    title: "2. Duración del Video Pitch (Estrictamente ≤ 119 Segundos)",
+    desc: "El video no debe exceder los 2 minutos exactos (120s). Recomendado exportar a 1:55 - 1:58 min.",
+    risk: "Un video de 121 segundos (2:01 min) es descalificado automáticamente por el software evaluador sin revisión humana."
+  },
+  {
+    key: "video_unlisted_or_public",
+    title: "3. Privacidad de YouTube: 'No listado' (Oculto) o 'Público'",
+    desc: "Comprobar el enlace abriéndolo en una ventana de incógnito sin sesión de Google iniciada.",
+    risk: "Subir el video en 'Privado' impide al jurado calificador reproducirlo, otorgando 0 puntos en el pitch."
+  },
+  {
+    key: "naming_pdf_ok",
+    title: "4. Nomenclatura Oficial del Archivo PDF Pautado",
+    desc: "Nombrar el archivo exportado exactamente con el formato reglamentario generado en esta pantalla.",
+    risk: "Nombres genéricos (ej. 'documento_final.pdf' o 'tarea.pdf') sufren penalización en la etapa de auditoría documental."
+  },
+  {
+    key: "hashtags_included",
+    title: "5. Hashtags Oficiales en YouTube y TikTok",
+    desc: "Incluir en la descripción y título del video los tags oficiales requeridos para el certamen activo.",
+    risk: "La omisión de los hashtags reglamentarios o de la etiqueta de la sede UNI invalida los puntos de interacción y difusión."
+  },
+  {
+    key: "pautado_chars_ok",
+    title: "6. Respeto Estricto de Caracteres en el Documento Pautado",
+    desc: "Problema (≤1000), Solución (≤1500), Prefactibilidad (≤1500), Innovación (≤1000), Impacto (≤1000).",
+    risk: "El sistema SIRLI trunca o rechaza textos que excedan el límite oficial de caracteres con espacios."
+  }
+];
+
+function getOfficialNomenclatures() {
+  const isLatam = state.rally_type === "latam";
+  const rawTeam = state.team_name || "NOMBRE_EQUIPO";
+  const teamClean = rawTeam.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-zA-Z0-9_]/g, "_").replace(/_+/g, "_");
+  const chalId = (state.challenge_id || "01").toString().padStart(2, "0");
+  const chal = OFFICIAL_CHALLENGES_2026.find(c => c.id === chalId) || (state.challenges && state.challenges.find(c => c.id === chalId)) || { title: "Innovación Tecnológica" };
+  const shortTitle = chal.title.split(" ").slice(0, 6).join(" ");
+
+  if (isLatam) {
+    return {
+      pdfName: `UNI_Reto${chalId}_${teamClean}_PAUTADO.pdf`,
+      ytTitle: `Rally Latinoamericano de Innovación 2026 - Desafío ${chalId}: ${shortTitle} - Equipo ${teamClean}`,
+      hashtags: [
+        "#RallyLatinoamericano2026",
+        "#RallyLatam",
+        "#InnovacionLatam",
+        "#SedeUNI",
+        "#NicaraguaInnova"
+      ],
+      tiktokTip: "Subir video de interacción lúdica antes de las 08:00 PM (Viernes) para garantizar indexación en el feed y acumulación de métricas antes de la deliberación del jurado.",
+      regimenDesc: "Certamen internacional de 28 horas continuas. Exige estricta coincidencia de datos y link público/no listado."
+    };
+  } else {
+    return {
+      pdfName: `Innova2026_Desafio${chalId}_${teamClean}_PAUTADO.pdf`,
+      ytTitle: `Rally Nacional Nicaragua Innova 2026 - Reto ${chalId}: ${shortTitle} - ${teamClean}`,
+      hashtags: [
+        "#NicaraguaInnova2026",
+        "#RallyNacionalInnova",
+        "#UNI_Nicaragua",
+        "#JuventudInnovadora",
+        "#InnovacionUNI"
+      ],
+      tiktokTip: "Subir cápsula audiovisual de prototipo antes de las 08:00 PM para verificación temprana de los enlaces en la plataforma territorial.",
+      regimenDesc: "Certamen nacional territorial de 24 horas continuas con sede oficial UNI."
+    };
+  }
+}
+
+function toggleGuardrail(key) {
+  if (!state.guardrails) {
+    state.guardrails = {
+      team_sirli_registered: false,
+      video_duration_ok: true,
+      video_unlisted_or_public: false,
+      naming_pdf_ok: false,
+      hashtags_included: false,
+      pautado_chars_ok: false
+    };
+  }
+  state.guardrails[key] = !state.guardrails[key];
+  saveState();
+  if (activeTab === "timeline") {
+    renderTab("timeline");
+  }
+  updateInspector();
+}
+
 function renderViewTimeline() {
+  const isLatam = state.rally_type === "latam";
+  const nom = getOfficialNomenclatures();
+  const allHashtagsStr = nom.hashtags.join(" ");
+  const guardrails = state.guardrails || {};
+  const currentDeadline = getCurrentDeadlineAlert();
+
   return `
-    <div class="page-header">
+    <div class="page-header" style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:14px;">
       <div>
-        <h1 class="page-title">11 · Cronograma de Entrega SIRLI & Hitos Innegociables</h1>
-        <div class="page-desc">Ventana crítica para entrega a tiempo en la plataforma oficial del evento.</div>
+        <h1 class="page-title">11 · Cronograma Oficial SIRLI & Guardarraíles Antidescalificación</h1>
+        <div class="page-desc">Horarios oficiales de Nicaragua (UTC-6), nomenclaturas reglamentarias y directrices innegociables de entrega.</div>
+      </div>
+      <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+        <span class="stepper-pill" style="background:#eff6ff; color:#003366; border:1px solid #bfdbfe; font-weight:700;">
+          HORA NICARAGUA (UTC-6)
+        </span>
+        <span class="stepper-pill" style="${isLatam ? 'background:#fdf4ff; color:#a21caf; border:1px solid #f0abfc;' : 'background:#f5f3ff; color:#6d28d9; border:1px solid #ddd6fe;'} font-weight:700;">
+          ${isLatam ? 'Rally Latam (28 Horas)' : 'Rally Nacional (24 Horas)'}
+        </span>
       </div>
     </div>
 
-    <div class="workbench-card">
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Hito de Tiempo</th>
-            <th>Acción Crítica Obligatoria</th>
-            <th>Riesgo Asociado</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td><strong>T-6 Horas</strong></td><td>Congelamiento de claims e investigación. Tesis bloqueada.</td><td>Cambiar de idea a última hora produce renders a medias.</td></tr>
-          <tr><td><strong>T-4 Horas</strong></td><td>Pautado y presupuesto completos al 100%.</td><td>Falta de validación de caracteres descalifica en revisión.</td></tr>
-          <tr><td><strong>T-2 Horas</strong></td><td>Render en calidad MEDIA. Grabar pantallas del prototipo.</td><td>Renderizar en alta a última hora satura la GPU.</td></tr>
-          <tr><td><strong>T-1 Hora</strong></td><td>Exportación final del video pitch (119 segundos exactos).</td><td>Videos de 121 segundos quedan eliminados por reglamento.</td></tr>
-          <tr><td><strong>T-30 Minutos</strong></td><td>Subir a YouTube en modo 'Oculto' o 'Público' y registrar URL.</td><td>El procesamiento HD de YouTube puede tardar 25 minutos.</td></tr>
-        </tbody>
-      </table>
+    <!-- Banner Suave de Estado Actual del Cronograma -->
+    <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:16px 20px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; box-shadow:0 1px 3px rgba(0,0,0,0.02);">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div style="width:38px; height:38px; border-radius:10px; ${isLatam ? 'background:#fdf4ff; color:#c026d3; border:1px solid #f0abfc;' : 'background:#f5f3ff; color:#7c3aed; border:1px solid #ddd6fe;'} display:flex; align-items:center; justify-content:center;">
+          ${SVG.clock}
+        </div>
+        <div>
+          <div style="font-size:11px; font-weight:800; text-transform:uppercase; color:#64748b; letter-spacing:0.04em;">PRÓXIMO HITO CRÍTICO</div>
+          <div style="font-size:15px; font-weight:800; color:#091e42;">${currentDeadline.label} — <span style="color:#003366;">${currentDeadline.time}</span></div>
+        </div>
+      </div>
+      <div style="font-size:12px; color:#475569; max-width:440px; line-height:1.4;">
+        ${currentDeadline.desc}
+      </div>
+    </div>
+
+    <div class="timeline-grid">
+      <!-- BLOQUE 1: GENERADOR OFICIAL DE NOMENCLATURAS Y TÍTULOS -->
+      <div class="naming-box-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; border-bottom:1px solid #f1f5f9; padding-bottom:10px;">
+          <div>
+            <h3 style="font-size:13.5px; font-weight:800; color:#091e42; margin:0 0 2px 0;">Nomenclaturas Oficiales Reglamentarias</h3>
+            <p style="font-size:11.5px; color:#64748b; margin:0;">Copia y pega con 1 clic los nombres exactos para evitar penalizaciones por formato.</p>
+          </div>
+          <span style="font-size:10.5px; font-weight:700; background:#f8fafc; border:1px solid #e2e8f0; color:#475569; padding:4px 9px; border-radius:6px;">
+            Atención al Detalle
+          </span>
+        </div>
+
+        <div class="naming-field-group">
+          <div class="naming-field-label">
+            <span>Nombre Oficial del Archivo PDF (Pautado Oficial)</span>
+            <span style="font-size:10.5px; color:#64748b; text-transform:none; font-weight:600;">Máx 15 MB · Formato PDF</span>
+          </div>
+          <div class="naming-input-row">
+            <input type="text" class="naming-input-readonly" readonly value="${nom.pdfName}" id="input-pdf-name">
+            <button class="btn-copy-action" onclick="copyToClipboardWithFeedback('${nom.pdfName}', 'Nombre de archivo PDF copiado')">
+              ${SVG.copy} Copiar Nombre
+            </button>
+          </div>
+        </div>
+
+        <div class="naming-field-group">
+          <div class="naming-field-label">
+            <span>Título Reglamentario para el Video en YouTube</span>
+            <span style="font-size:10.5px; color:#64748b; text-transform:none; font-weight:600;">YouTube 1080p · Modo No Listado</span>
+          </div>
+          <div class="naming-input-row">
+            <input type="text" class="naming-input-readonly" readonly value="${nom.ytTitle}" id="input-yt-title">
+            <button class="btn-copy-action" onclick="copyToClipboardWithFeedback('${nom.ytTitle}', 'Título de YouTube copiado')">
+              ${SVG.copy} Copiar Título
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOQUE 2: BANCO DE HASHTAGS INNEGOCIABLES -->
+      <div class="naming-box-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; border-bottom:1px solid #f1f5f9; padding-bottom:10px;">
+          <div>
+            <h3 style="font-size:13.5px; font-weight:800; color:#091e42; margin:0 0 2px 0;">Hashtags Oficiales Obligatorios (YouTube & TikTok)</h3>
+            <p style="font-size:11.5px; color:#64748b; margin:0;">El reglamento exige incluir las etiquetas del certamen y la sede UNI.</p>
+          </div>
+          <button class="btn-copy-action" onclick="copyToClipboardWithFeedback('${allHashtagsStr}', 'Todos los hashtags oficiales copiados')">
+            ${SVG.copy} Copiar Todos los Hashtags
+          </button>
+        </div>
+
+        <div class="hashtag-cloud">
+          ${nom.hashtags.map(t => `<span class="hashtag-pill">${t}</span>`).join("")}
+        </div>
+
+        <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:12px 14px; font-size:11.5px; color:#475569; line-height:1.5;">
+          <strong>Directriz de Impacto en Redes:</strong> ${nom.tiktokTip}
+        </div>
+      </div>
+
+      <!-- BLOQUE 3: CRONOGRAMA DE HITOS HORA NICARAGUA -->
+      <div class="naming-box-card">
+        <div style="margin-bottom:14px;">
+          <h3 style="font-size:13.5px; font-weight:800; color:#091e42; margin:0 0 2px 0;">Cronograma de Hitos Innegociables (Hora Nicaragua UTC-6)</h3>
+          <p style="font-size:11.5px; color:#64748b; margin:0;">Secuencia crítica para asegurar la entrega sin saturación ni descalificaciones.</p>
+        </div>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th style="width:140px;">Hito / Hora</th>
+              <th>Acción Crítica Innegociable</th>
+              <th style="width:280px;">Riesgo / Penalización</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>08:00 AM (Viernes)</strong></td>
+              <td>Apertura oficial de retos en plataforma SIRLI. Descarga de matrices y conformación de tesis.</td>
+              <td>Elegir reto sin analizar precedentes satura la fase de investigación.</td>
+            </tr>
+            <tr style="background:#fdf4ff;">
+              <td><strong style="color:#a21caf;">12:00 PM (Viernes)</strong></td>
+              <td><strong>Límite fatal de inscripción en SIRLI.</strong> Todos los integrantes validados con sede UNI.</td>
+              <td><span style="color:#a21caf; font-weight:700;">Descalificación automática:</span> el sistema no permite concursar a equipos sin registro al mediodía.</td>
+            </tr>
+            <tr>
+              <td><strong>08:00 PM (Viernes)</strong></td>
+              <td><strong>Ventana óptima para video TikTok (Interacción lúdica).</strong> Subir con hashtags oficiales.</td>
+              <td>Subir tarde no permite ganar tracción en el algoritmo ni acumular votos antes del corte.</td>
+            </tr>
+            <tr>
+              <td><strong>T-6 Horas</strong></td>
+              <td>Congelamiento de claims y arquitectura técnica. Tesis bloqueada en el dashboard.</td>
+              <td>Cambiar el enfoque técnico a última hora produce renders y guiones a medias.</td>
+            </tr>
+            <tr>
+              <td><strong>T-4 Horas</strong></td>
+              <td>Pautado oficial auditado (5 bloques validados) y presupuesto sustentado con cotizaciones.</td>
+              <td>Exceder caracteres con espacios causa error de guardado en la plataforma.</td>
+            </tr>
+            <tr>
+              <td><strong>T-2 Horas</strong></td>
+              <td>Exportación final de video pitch (1080p, ≤119s) y subida a YouTube en modo 'No listado'.</td>
+              <td>YouTube tarda entre 20 y 30 minutos en procesar la versión HD de 1080p.</td>
+            </tr>
+            <tr>
+              <td><strong>T-1 Hora</strong></td>
+              <td>Probar enlace en ventana de incógnito y cargar archivo PDF del pautado en SIRLI.</td>
+              <td>Un video configurado en 'Privado' recibe calificación de 0 puntos del jurado.</td>
+            </tr>
+            <tr style="background:#f8fafc; font-weight:700;">
+              <td><strong style="color:#003366;">T-0 Inmutable</strong></td>
+              <td><strong>Cierre de plataforma.</strong> Confirmar comprobante de entrega en pantalla.</td>
+              <td>La plataforma se bloquea al segundo exacto. Cero tolerancia a entregas tardías.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- BLOQUE 4: CHECKLIST ANTIDESCALIFICACIÓN (GUARDARRAÍLES) -->
+      <div class="naming-box-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; border-bottom:1px solid #f1f5f9; padding-bottom:10px;">
+          <div>
+            <h3 style="font-size:13.5px; font-weight:800; color:#091e42; margin:0 0 2px 0;">Checklist Antidescalificación (Guardarraíles)</h3>
+            <p style="font-size:11.5px; color:#64748b; margin:0;">Marca cada casilla antes del envío definitivo para proteger la elegibilidad del equipo.</p>
+          </div>
+          <span style="font-size:11.5px; font-weight:800; color:#003366;">
+            ${Object.values(guardrails).filter(Boolean).length} de ${GUARDRAILS_DEFINITIONS.length} Verificados
+          </span>
+        </div>
+
+        <div class="guardrails-list">
+          ${GUARDRAILS_DEFINITIONS.map(g => {
+            const isChecked = !!guardrails[g.key];
+            return `
+              <div class="guardrail-item ${isChecked ? 'checked' : ''}" onclick="toggleGuardrail('${g.key}')">
+                <div class="guardrail-checkbox-square">
+                  ${isChecked ? SVG.check : ''}
+                </div>
+                <div style="flex:1;">
+                  <div class="guardrail-title" style="${isChecked ? 'color:#003366;' : ''}">${g.title}</div>
+                  <div class="guardrail-desc">${g.desc}</div>
+                  <div style="font-size:11px; color:#94a3b8; margin-top:2px; font-weight:600;">⚠️ ${g.risk}</div>
+                </div>
+              </div>
+            `;
+          }).join("")}
+        </div>
+      </div>
     </div>
   `;
 }
@@ -2223,14 +2629,20 @@ function updateInspector() {
   const stage = getWorkflowStage();
   if (stage < 2) return;
 
+  const guardrails = state.guardrails || {};
+  const guardrailsCount = Object.values(guardrails).filter(Boolean).length;
+  const guardrailsTotal = GUARDRAILS_DEFINITIONS.length;
+  const guardrailsOk = guardrailsCount === guardrailsTotal;
+
   let points = 0;
-  if (state.rally_type) points += 15;
-  if (state.team_name && state.university) points += 15;
-  if (state.challenge_id) points += 20;
+  if (state.rally_type) points += 10;
+  if (state.team_name && state.university) points += 10;
+  if (state.challenge_id) points += 15;
   if (state.solution_approved) points += 15;
   if (isPautadoComplete()) points += 15;
   if (isBudgetValid()) points += 10;
   if (isScriptComplete()) points += 10;
+  if (guardrailsCount >= 5) points += 15;
 
   const totalBudget = state.budget.reduce((a, b) => a + (b.units * b.unit_cost), 0);
 
@@ -2269,6 +2681,10 @@ function updateInspector() {
         <div class="audit-item ${isScriptComplete() ? 'ok' : 'pending'}">
           <span>Guion (120 Segundos)</span>
           <strong>${isScriptComplete() ? 'OK' : 'Pendiente'}</strong>
+        </div>
+        <div class="audit-item ${guardrailsOk ? 'ok' : 'pending'}" onclick="switchTab('timeline')" style="cursor:pointer;" title="Clic para revisar guardarraíles">
+          <span>Guardarraíles SIRLI</span>
+          <strong>${guardrailsCount}/${guardrailsTotal} OK</strong>
         </div>
       </div>
     </div>
