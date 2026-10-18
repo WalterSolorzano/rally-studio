@@ -1,7 +1,7 @@
 # RALLY STUDIO · ERP & WORKBENCH DE INNOVACIÓN
 
-> **Plataforma Integral de Gestión, Colaboración Multi-IA y Despacho Rápido para Rallies de Innovación (Rally Latinoamericano 28h & Rally Nacional 24h).**  
-> Diseñada para competir y ganar: Cero fricción, colaboración multi-usuario sin registro basada en mascotas, ingesta contextual automática, compilación en un clic a la plantilla oficial Word (`.docx`) y tokens ultra-optimizados.
+> **Plataforma Integral de Gestión, Colaboración Multi-IA y Despacho Rápido para Rallies de Innovación (Rally Latinoamericano 28h & Rally Nacional Nicaragua Innova 24h).**  
+> Diseñada para competir y ganar: Cero fricción, colaboración multi-usuario sin registro basada en mascotas, selección estratégica de retos con Top 3 recomendados, matrices oficiales duales (Nacional CNU / LATAM SIRLI), compilación en un clic a la plantilla Word (`.docx`) y tokens ultra-optimizados.
 
 ---
 
@@ -16,11 +16,11 @@ Si eres un modelo de Inteligencia Artificial (ChatGPT, Claude, Gemini, DeepSeek,
    - **Presupuesto**: `budget/budget.xlsx` (debe situarse estrictamente entre $4,000 y $6,000 USD para lote piloto de 10 unidades, incluyendo flete del 18%).
    - **Guion Pitch 120s**: `script/script.md` o `dashboard/app.js` (estricto en 4 actos a 135 ppm, total 250 a 270 palabras). Acto 1 tiene **prohibido** mencionar el nombre del proyecto o logos.
    - **Demostración Web**: `site/index.html` y `site/style.css` (interfaz de prototipo territorial para capturar en video).
-3. **No leas archivos innecesarios**:
-   - Para consultar rúbricas oficiales y pesos evaluables: lee `knowledge/rubric_latam.md` (33 líneas).
-   - Para entender errores comunes descalificantes: lee `knowledge/winners_analysis.md`.
+3. **No leas archivos innecesarios ni consumas tokens de más**:
+   - Para consultar rúbricas oficiales y ponderaciones exactas: lee `knowledge/rubric_matrices.md` (ambas matrices detalladas: Jurado Nacional CNU vs. Jurado LATAM SIRLI).
+   - Para entender la fórmula de guion y errores críticos: lee `knowledge/rubric_latam.md` (33 líneas).
 4. **Respeto Estricto de Diseño**:
-   - Cero gradientes genéricos violetas/morados (`#7c3aed`), cero cards translúcidas flotantes. Usa únicamente la paleta corporativa: **Azul Cobalto (`#0866F5`)**, **Azul Marino Oficial (`#0D1B35`)** y grises neutros de 1px.
+   - Cero gradientes genéricos violetas/morados (`#7c3aed`), cero cards translúcidas flotantes. Usa únicamente la paleta corporativa: **Azul Cobalto (`#0866F5`)**, **Azul Marino Oficial (`#0D1B35`)** y grises neutros de 1px con tipografía de números tabulares.
 
 ---
 
@@ -36,20 +36,58 @@ rally-studio/
 ├── dashboard/                 # ERP & Workbench Web de Competencia
 │   ├── index.html             # Shell de aplicación líquida
 │   ├── style.css              # Sistema de diseño sobrio (Linear / Swiss)
-│   ├── app.js                 # Núcleo reactivo, colaboración, soft-locks y despacho IA
+│   ├── app.js                 # Núcleo reactivo, colaboración, soft-locks, Top retos y despacho IA
 │   ├── graph.html             # Explorador visual de conocimiento
 │   └── docs/                  # Carpeta de entregables generados
 ├── site/                      # Prototipo / Landing interactiva para el video pitch
 ├── knowledge/                 # Bóveda de rúbricas oficiales y análisis de ganadores
-│   ├── rubric_latam.md        # Matriz 100 pts oficial (Innovación 30, Impacto 20...)
+│   ├── rubric_matrices.md     # Especificación canónica: Jurado Nacional vs. Jurado LATAM
+│   ├── rubric_latam.md        # Rúbrica 100 pts oficial, cronología 120s y errores críticos
 │   ├── pautado_latam_ref.docx # Plantilla oficial Word Rally Latam
 │   └── pautado_nacional_ref.docx # Plantilla oficial Word Rally Nacional
 └── scripts/
-    ├── rally_service.py       # Micro-backend HTTP: Telemetría, Ingesta & Compilador DOCX
+    ├── rally_service.py       # Micro-backend HTTP: Telemetría, Ingesta, Rúbricas & Compilador DOCX
     ├── gen_pautado.py         # Generador del documento oficial Word
     ├── gen_budget.py          # Generador de cotización y presupuesto Excel
     └── gen_script.py          # Generador de guion en 4 actos para locución
 ```
+
+---
+
+## 🎯 UI Especializada de Selección de Reto
+
+Al cargar la biblioteca de retos oficiales, el sistema abre la vista especializada de selección estratégica:
+- **Top 3 Retos Recomendados**: Algoritmo de idoneidad que clasifica automáticamente los 3 desafíos con mayor probabilidad de victoria (`winRate`), destacando badges como `#1 MÁS VIABLE`, `#2 ALTO IMPACTO` y `#3 DIFERENCIADO`.
+- **Modal de Inteligencia Táctica**: Al inspeccionar cualquier reto, despliega:
+  1. *Enfoque WOW*: La fórmula de hibridación sistémica que rompe con las soluciones genéricas.
+  2. *Adaptación a Nicaragua*: Cómo aterrizar el desafío a la realidad territorial, comunidades y materias primas autóctonas (Waslala, San Juan de Oriente, Rivas, café, biomasa).
+  3. *Factor de Novedad*: Por qué el tribunal evaluador considerará la propuesta disruptiva.
+  4. *Patrón de Ganadores Históricos*: Casos de éxito comparables (Güegüense Pinolero, STEM Synergy, Techriders, Nexus Innova).
+
+---
+
+## ⚖️ Matrices de Calificación Oficiales: Nacional vs. LATAM (100 Puntos)
+
+El motor de IA y las auditorías calibran sus reglas según el certamen seleccionado en el Paso 01:
+
+| Criterio | Rally Internacional LATAM (28H) | Jurado Nacional Nicaragua Innova (24H) |
+| :--- | :---: | :---: |
+| **Grado de Innovación** | **30 pts** (Disrupción tecnológica, modularidad, diseño paramétrico) | **25 pts** (Hibridación accesible ESP32/LoRa, IA, materias locales) |
+| **Impacto Social / Territorial** | **20 pts** (Universalidad continental, beneficiarios ODS) | **25 pts** (Alineación con PNDH 2022-2026, Ciudades Creativas, municipios reales) |
+| **Viabilidad Técnica** | **20 pts** (Balances de masa/energía, despiece CAD, rigor) | **20 pts** (Factibilidad en laboratorios CNU/INATEC, uso de recursos locales) |
+| **Prefactibilidad Económica** | **20 pts** (Costos en USD, B2B/B2G autosostenible sin subsidios) | **15 pts** (Presupuesto C$/USD para piloto, modelo comunitario Canvas, plan 12 meses) |
+| **Presentación y Entregables** | **10 pts** (Pitch 120s exacto, pautado SIRLI con límites de caracteres) | **15 pts** (Documento técnico de hasta 10 páginas APA 7, Video 120s y Naming Dual) |
+| **Categorías Oficiales** | **2 Categorías:** Innovación e Impacto Social | **3 Categorías:** Innovación Tecnológica, Social y Procesos/Organizacional |
+| **Regla Clave de Persuasión** | **Deslocalización:** El caso local es un piloto; el sistema debe escalar a toda la región. | **Anclaje Territorial:** Debe nombrar municipios vulnerables y actores institucionales locales. |
+
+---
+
+## 👥 Colaboración Multi-Usuario sin Login & Soft-Locks en Tiempo Real
+
+- **Cero formularios de registro**: Cada miembro del equipo que ingresa al dashboard recibe automáticamente una mascota emblemática única (🐆 Jaguar Ágil, 🪶 Quetzal Guía, 🛡️ Armadillo Blindado, ⚡ Colibrí Veloz, 🐾 Ocelote Creativo, 🦅 Halcón Vigía).
+- **Estampado de autoría**: Cada sección editada en el pautado o en el guion audiovisual refleja el sello de la mascota autora.
+- **Soft-Locks visuales**: Prevención de colisiones en tiempo real mediante `BroadcastChannel`. Si un compañero está redactando una sección, se resalta visualmente indicando quién está activo.
+- **Bypass para Wi-Fi Universitario**: Si la red del certamen aísla terminales locales, la sincronización se realiza en 1 clic copiando el **Token de Estado** para compartirlo vía WhatsApp o sincronizando el JSON central en Google Drive.
 
 ---
 
@@ -64,27 +102,8 @@ python scripts/rally_service.py
 Abre en tu navegador:
 - **ERP Workbench Oficial:** `http://localhost:8000/`
 - **Prototipo Territorial para Video:** `http://localhost:8000/site/index.html`
-
----
-
-## 👥 Colaboración Multi-Usuario sin Login & Soft-Locks en Tiempo Real
-
-- **Cero formularios de registro**: Cada miembro del equipo que ingresa al dashboard recibe automáticamente una mascota emblemática única (🐆 Jaguar Ágil, 🪶 Quetzal Guía, 🛡️ Armadillo Blindado, ⚡ Colibrí Veloz, 🐾 Ocelote Creativo, 🦅 Halcón Vigía).
-- **Estampado de autoría**: Cada sección editada en el pautado o en el guion audiovisual refleja el sello de la mascota autora.
-- **Soft-Locks visuales**: Prevención de colisiones en tiempo real mediante `BroadcastChannel`. Si un compañero está redactando una sección, se resalta visualmente indicando quién está activo.
-- **Bypass para Wi-Fi Universitario**: Si la red del certamen aísla terminales locales, la sincronización se realiza en 1 clic copiando el **Token de Estado** para compartirlo vía WhatsApp o sincronizando el JSON central en Google Drive.
-
----
-
-## 🏆 Matriz Oficial de Evaluación Rally (100 Puntos)
-
-| Criterio | Peso | Foco de Evaluación |
-| :--- | :---: | :--- |
-| **a. Grado de Innovación** | **30 pts** | Hibridación ciber-física, tecnología apropiada, novedad verificable. |
-| **b. Impacto Social** | **20 pts** | Problemática específica, valor social sobre mercado, beneficiarios reales. |
-| **c. Prefactibilidad** | **20 pts** | Presupuesto sustentado ($4,000–$6,000 USD), eficiencia energética, insumos comerciales. |
-| **d. Viabilidad Técnica** | **20 pts** | Base teórica documentada, componentes accesibles, factibilidad operativa probada. |
-| **e. Presentación (Pitch)**| **10 pts** | Capacidad de síntesis, 120s exactos, claridad visual y solidez argumental. |
+- **Telemetría en Vivo:** `http://localhost:8000/api/telemetry`
+- **API Rúbricas Oficiales:** `http://localhost:8000/api/rubric?type=nacional` o `?type=latam`
 
 ---
 
