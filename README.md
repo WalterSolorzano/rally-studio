@@ -111,4 +111,16 @@ Abre en tu navegador:
 
 Haz clic en el botón **"Compilar en Plantilla Word (.docx)"** en la fase de Pautado. El backend inyecta los textos validados directamente en los campos correspondientes de la plantilla oficial de la competencia, conservando encabezados institucionales, márgenes y tipografías oficiales.
 
+---
+
+## ⚖️ Descargo de Responsabilidad y Propósito Metodológico
+
+> **Aviso Importante**: **Rally Studio** es una herramienta pedagógica y de orquestación de flujo de trabajo concebida exclusivamente como un soporte metodológico y organizativo para equipos multidisciplinarios.  
+> 
+> En competencias de alta intensidad como el Rally de Innovación (24 a 28 horas continuas), **donde no existe orden y control operativo se pierde la mayor parte del tiempo útil**: los equipos se dispersan en debates redundantes, descuidan los entregables obligatorios, no calibran el presupuesto y la idea más brillante o potencialmente ganadora termina descalificada o diluida por falta de ejecución formal.
+>
+> Esta suite proporciona el andamiaje técnico, la sincronización en vivo y la disciplina paramétrica para que el talento humano enfoque su energía creativa en la solución real. **No garantiza resultados ni reemplaza el criterio crítico, la ética, la originalidad de los participantes ni las decisiones soberanas de los comités evaluadores oficiales.** El equipo participante es el único responsable de la veracidad, autoría y rigurosidad de los datos presentados en su competencia.
+
+---
+
 Desarrollado con rigor de ingeniería para equipos de alto rendimiento en el **Rally Latinoamericano de Innovación** y **Rally Nacional Nicaragua Innova**.
