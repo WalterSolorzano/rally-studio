@@ -43,19 +43,19 @@ const SVG = {
       <stop offset="100%" stop-color="#1E293B"/>
     </linearGradient>
     <linearGradient id="latamRoseOrbit" x1="30" y1="90" x2="290" y2="110" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#FDA4AF" stop-opacity="0.25"/>
-      <stop offset="50%" stop-color="#E11D48" stop-opacity="0.95"/>
-      <stop offset="100%" stop-color="#FDA4AF" stop-opacity="0.25"/>
+      <stop offset="0%" stop-color="#F0ABFC" stop-opacity="0.25"/>
+      <stop offset="50%" stop-color="#C026D3" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#F0ABFC" stop-opacity="0.25"/>
     </linearGradient>
     <filter id="latamSoftShadow" x="60" y="10" width="220" height="190" filterUnits="userSpaceOnUse">
-      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#E11D48" flood-opacity="0.2"/>
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#C026D3" flood-opacity="0.2"/>
     </filter>
   </defs>
 
   <!-- Anillos Orbitales con micro-animación CSS -->
   <g class="anim-orbit">
     <ellipse cx="160" cy="104" rx="122" ry="42" stroke="url(#latamRoseOrbit)" stroke-width="2" stroke-dasharray="6 4" transform="rotate(-16 160 104)"/>
-    <ellipse cx="160" cy="106" rx="134" ry="32" stroke="#FDA4AF" stroke-width="1.2" stroke-opacity="0.6" transform="rotate(22 160 106)"/>
+    <ellipse cx="160" cy="106" rx="134" ry="32" stroke="#F0ABFC" stroke-width="1.2" stroke-opacity="0.6" transform="rotate(22 160 106)"/>
   </g>
 
   <g filter="url(#latamSoftShadow)">
@@ -70,8 +70,8 @@ const SVG = {
 
     <!-- Islas del Caribe -->
     <path d="M148 50 C156 52, 168 56, 176 60 C174 62, 164 58, 152 54 Z" fill="#94A3B8"/>
-    <ellipse cx="184" cy="64" rx="4" ry="2" fill="#E11D48"/>
-    <ellipse cx="194" cy="67" rx="2.5" ry="1.5" fill="#FDA4AF"/>
+    <ellipse cx="184" cy="64" rx="4" ry="2" fill="#C026D3"/>
+    <ellipse cx="194" cy="67" rx="2.5" ry="1.5" fill="#F0ABFC"/>
 
     <!-- Masa Continental de Sudamérica -->
     <path d="M178 82 
@@ -105,11 +105,11 @@ const SVG = {
 
   <!-- Nodos satelitales Rosa/Magenta con animación -->
   <g class="anim-beacon">
-    <circle cx="216" cy="80" r="4" fill="#E11D48"/>
-    <circle cx="216" cy="80" r="7" stroke="#FDA4AF" stroke-width="1.4" stroke-opacity="0.8"/>
+    <circle cx="216" cy="80" r="4" fill="#C026D3"/>
+    <circle cx="216" cy="80" r="7" stroke="#F0ABFC" stroke-width="1.4" stroke-opacity="0.8"/>
   </g>
-  <circle cx="140" cy="116" r="3" fill="#F43F5E" class="anim-beacon"/>
-  <circle cx="240" cy="140" r="2.8" fill="#FB7185" class="anim-beacon"/>
+  <circle cx="140" cy="116" r="3" fill="#D946EF" class="anim-beacon"/>
+  <circle cx="240" cy="140" r="2.8" fill="#E879F9" class="anim-beacon"/>
 </svg>`,
 
   // RÉPLICA EXACTA DE LA IMAGEN RECORTADA DE NICARAGUA
@@ -401,6 +401,9 @@ function getInitialState() {
     rally_type: null,
     hours_total: 28,
     hours_remaining: 28,
+    rally_started: false,
+    start_timestamp: null,
+    official_start_time: "08:00 AM",
     team_name: "",
     university: "Universidad Nacional de Ingeniería (UNI)",
     city: "",
@@ -629,19 +632,47 @@ function pasteSyncToken() {
 
 // ── CRONÓMETRO REGRESIVO ─────────────────────────────────────────────────────
 function initClock() {
-  if (timerInterval) clearInterval(timerInterval);
-  let totalSec = (state.hours_total || 28) * 3600;
+  startTimer();
+}
 
-  timerInterval = setInterval(() => {
-    if (totalSec > 0) totalSec--;
-    const h = Math.floor(totalSec / 3600).toString().padStart(2, "0");
-    const m = Math.floor((totalSec % 3600) / 60).toString().padStart(2, "0");
-    const s = Math.floor(totalSec % 60).toString().padStart(2, "0");
-    const timeStr = `${h}:${m}:${s}`;
-    
+function getTimerString() {
+  if (!state.rally_type) {
+    return { time: "--:--:--", status: "STANDBY" };
+  }
+  if (!state.rally_started) {
+    return { time: `${state.hours_total || 24}:00:00`, status: "INICIO 08:00 AM" };
+  }
+  const now = Date.now();
+  const start = state.start_timestamp || now;
+  const elapsedSec = Math.floor((now - start) / 1000);
+  const totalSec = (state.hours_total || 24) * 3600;
+  const remainSec = Math.max(0, totalSec - elapsedSec);
+  const h = Math.floor(remainSec / 3600).toString().padStart(2, "0");
+  const m = Math.floor((remainSec % 3600) / 60).toString().padStart(2, "0");
+  const s = Math.floor(remainSec % 60).toString().padStart(2, "0");
+  return { time: `${h}:${m}:${s}`, status: "EN CURSO" };
+}
+
+function startTimer() {
+  if (timerInterval) clearInterval(timerInterval);
+
+  function updateClockDisplay() {
     const clockEl = document.getElementById("clock-timer");
-    if (clockEl) clockEl.innerText = timeStr;
-  }, 1000);
+    const statusEl = document.getElementById("clock-status-tag");
+    const tData = getTimerString();
+    if (clockEl) clockEl.innerText = tData.time;
+    if (statusEl) statusEl.innerText = tData.status;
+  }
+
+  updateClockDisplay();
+  timerInterval = setInterval(updateClockDisplay, 1000);
+}
+
+function startOfficialRallyTimer() {
+  state.rally_started = true;
+  state.start_timestamp = Date.now();
+  saveState();
+  startTimer();
 }
 
 // ── TOGGLE SIDEBAR & PANEL ───────────────────────────────────────────────────
@@ -659,6 +690,7 @@ function renderTopbar() {
   const stage = getWorkflowStage();
   const certamen = state.rally_type === "latam" ? "Rally Latam 28h" : state.rally_type === "nacional" ? "Rally Nacional 24h" : "";
   const pName = state.team_name || state.project_name || "";
+  const timerData = getTimerString();
 
   el.innerHTML = `
     <div class="topbar-left">
@@ -688,6 +720,8 @@ function renderTopbar() {
           ${SVG.dotsVertical}
         </button>
         <div id="project-dropdown" class="dropdown-menu-box" style="display:none; right:0; left:auto;">
+          <a href="#" onclick="startOfficialRallyTimer(); return false;">${SVG.spark} Iniciar Cronómetro (Kickoff 08:00 AM)</a>
+          <a href="#" onclick="state.rally_started=false; state.start_timestamp=null; saveState(); startTimer(); return false;">Pausar / Standby</a>
           <a href="#" onclick="resetProject(); return false;">Reiniciar Certamen (T=0)</a>
           <a href="#" onclick="exportProjectJson(); return false;">${SVG.download} Exportar Proyecto (.json)</a>
           <label style="cursor:pointer; display:flex; align-items:center; gap:8px; padding:9px 14px; font-size:12px; color:#1e293b;">
@@ -704,9 +738,10 @@ function renderTopbar() {
 
       ${stage >= 2 ? `<button class="btn-pill-ghost" onclick="togglePanel()" title="Panel de Auditoría">${SVG.spark} Auditoría</button>` : ""}
 
-      <div class="timer-pill-navy">
+      <div class="timer-pill-navy" id="timer-pill" title="Cronómetro oficial: calibrado a las 08:00 AM">
         ${SVG.clock}
-        <span id="clock-timer">${state.hours_total || 28}:00:00</span>
+        <span id="clock-timer">${timerData.time}</span>
+        <span id="clock-status-tag" style="font-size:9.5px; opacity:0.75; font-weight:700; margin-left:4px;">${timerData.status}</span>
       </div>
     </div>
   `;
@@ -794,7 +829,7 @@ function renderViewCertamen() {
   const isLatam = state.rally_type === 'latam';
   const isNac = state.rally_type === 'nacional';
 
-  const checkCircleRose = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#E11D48"/><path d="M7 12.5l3.5 3.5 7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  const checkCircleMagenta = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#C026D3"/><path d="M7 12.5l3.5 3.5 7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
   const checkCirclePurple = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#7C3AED"/><path d="M7 12.5l3.5 3.5 7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
   return `
@@ -821,11 +856,11 @@ function renderViewCertamen() {
         <div class="certamen-card latam-card ${isLatam ? 'selected' : ''}" onclick="selectCertamen('latam', event)">
           <div>
             <div class="certamen-card-header">
-              <span class="certamen-badge-pill latam">
-                ${SVG.clock}
-                <span>28 HORAS</span>
-              </span>
-              <div>${isLatam ? checkCircleRose : SVG.uncheckedCircle}</div>
+              <div class="hours-badge latam" title="Régimen de 28 horas continuas">
+                <span class="hours-num">28</span><span class="hours-unit">H</span>
+              </div>
+              <img src="assets/logo_rally_latam.png" class="certamen-header-logo" alt="Rally Latinoamericano de Innovación">
+              <div>${isLatam ? checkCircleMagenta : SVG.uncheckedCircle}</div>
             </div>
 
             <div class="certamen-illustration-wrap">
@@ -838,11 +873,7 @@ function renderViewCertamen() {
           </div>
 
           <div class="certamen-card-footer">
-            <div class="certamen-regimen-info">
-              ${SVG.globe}
-              <span>Régimen: <strong>Latinoamérica</strong></span>
-            </div>
-            <button class="btn-select-card ${isLatam ? 'filled-rose' : 'outline-rose'}" onclick="selectCertamen('latam', event)">
+            <button class="btn-select-card ${isLatam ? 'filled-magenta' : 'outline-magenta'}" onclick="selectCertamen('latam', event)">
               Seleccionar ${SVG.arrowRight}
             </button>
           </div>
@@ -852,10 +883,10 @@ function renderViewCertamen() {
         <div class="certamen-card nacional-card ${isNac ? 'selected' : ''}" onclick="selectCertamen('nacional', event)">
           <div>
             <div class="certamen-card-header">
-              <span class="certamen-badge-pill nacional">
-                ${SVG.clock}
-                <span>24 HORAS</span>
-              </span>
+              <div class="hours-badge nacional" title="Régimen de 24 horas continuas">
+                <span class="hours-num">24</span><span class="hours-unit">H</span>
+              </div>
+              <img src="assets/logo_rally_nacional.png" class="certamen-header-logo" alt="Rally Nacional Nicaragua Innova">
               <div>${isNac ? checkCirclePurple : SVG.uncheckedCircle}</div>
             </div>
 
@@ -869,15 +900,20 @@ function renderViewCertamen() {
           </div>
 
           <div class="certamen-card-footer">
-            <div class="certamen-regimen-info">
-              ${SVG.pin}
-              <span>Régimen: <strong>Nacional</strong></span>
-            </div>
             <button class="btn-select-card ${isNac ? 'filled-purple' : 'outline-purple'}" onclick="selectCertamen('nacional', event)">
               Seleccionar ${SVG.arrowRight}
             </button>
           </div>
         </div>
+      </div>
+
+      <!-- Botón de Continuar Centrado (Exacto a la composición de usuario) -->
+      <div style="display:flex; justify-content:center; margin-top:32px;">
+        <button id="btnProceedCertamen" class="btn-select-card ${isLatam ? 'filled-magenta' : 'filled-purple'}" 
+                style="padding:14px 52px; font-size:14.5px; font-weight:800; border-radius:12px; box-shadow:0 8px 24px -4px ${isLatam ? 'rgba(192, 38, 211, 0.35)' : 'rgba(124, 58, 237, 0.35)'};" 
+                onclick="proceedFromCertamen()">
+          Continuar ${SVG.arrowRight}
+        </button>
       </div>
 
       <div class="handwritten-script script-bottom">
@@ -892,6 +928,18 @@ function selectCertamen(type, ev) {
   state.rally_type = type;
   state.hours_total = type === "latam" ? 28 : 24;
   state.hours_remaining = state.hours_total;
+  saveState();
+  renderTab("certamen");
+  renderTopbar();
+  startTimer();
+}
+
+function proceedFromCertamen() {
+  if (!state.rally_type) {
+    state.rally_type = "nacional";
+    state.hours_total = 24;
+    state.hours_remaining = 24;
+  }
   saveState();
   activeTab = "team";
   syncUI();

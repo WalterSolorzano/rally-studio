@@ -853,15 +853,15 @@ textarea {
   box-shadow: 0 2px 8px rgba(9, 30, 66, 0.02);
 }
 
-/* PALETA RALLY LATAM: Grises técnicos y Rosa/Magenta */
+/* PALETA RALLY LATAM: Grises técnicos y Magenta vibrante (CERO rojo) */
 .certamen-card.latam-card:hover {
-  border-color: #fda4af;
+  border-color: #f0abfc;
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px -6px rgba(225, 29, 72, 0.12);
+  box-shadow: 0 12px 28px -6px rgba(192, 38, 211, 0.12);
 }
 .certamen-card.latam-card.selected {
-  border: 2px solid #e11d48;
-  box-shadow: 0 12px 30px -4px rgba(225, 29, 72, 0.16);
+  border: 2px solid #c026d3;
+  box-shadow: 0 12px 30px -4px rgba(192, 38, 211, 0.18);
   background: #ffffff;
 }
 
@@ -884,29 +884,44 @@ textarea {
   margin-bottom: 8px;
 }
 
-.certamen-badge-pill {
+/* ── CUADRADITO DE HORAS (28H / 24H) CON FONDO DIFERENCIADO ──────── */
+.hours-badge {
   display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  padding: 5px 12px;
-  border-radius: 9999px;
-  font-family: var(--font-ui);
+  align-items: baseline;
+  justify-content: center;
+  gap: 2px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  line-height: 1;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
-
-.certamen-badge-pill.latam {
-  background: #fff1f2;
-  color: #e11d48;
-  border: 1px solid #fecdd3;
+.hours-badge.latam {
+  background: #fdf4ff;
+  border: 1.5px solid #f0abfc;
+  color: #c026d3;
 }
-
-.certamen-badge-pill.nacional {
+.hours-badge.nacional {
   background: #f5f3ff;
+  border: 1.5px solid #ddd6fe;
   color: #7c3aed;
-  border: 1px solid #ddd6fe;
+}
+.hours-badge .hours-num {
+  font-size: 22px;
+  font-weight: 900;
+  font-family: var(--font-mono);
+  letter-spacing: -0.04em;
+}
+.hours-badge .hours-unit {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.certamen-header-logo {
+  height: 40px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
 }
 
 .certamen-illustration-wrap {
@@ -927,7 +942,7 @@ textarea {
 }
 
 .certamen-meta-tag.latam {
-  color: #e11d48;
+  color: #c026d3;
 }
 
 .certamen-meta-tag.nacional {
@@ -952,22 +967,10 @@ textarea {
 
 .certamen-card-footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   padding-top: 14px;
   border-top: 1px solid #f1f5f9;
-}
-
-.certamen-regimen-info {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12.5px;
-  color: #64748b;
-}
-
-.certamen-regimen-info strong {
-  color: #091e42;
 }
 
 .btn-select-card {
@@ -982,24 +985,24 @@ textarea {
   transition: all 120ms ease;
 }
 
-.btn-select-card.filled-rose {
-  background: #e11d48;
+.btn-select-card.filled-magenta, .btn-select-card.filled-rose {
+  background: #c026d3;
   color: #ffffff;
-  border: 1px solid #e11d48;
+  border: 1px solid #c026d3;
 }
-.btn-select-card.filled-rose:hover {
-  background: #be185d;
-  border-color: #be185d;
+.btn-select-card.filled-magenta:hover, .btn-select-card.filled-rose:hover {
+  background: #a21caf;
+  border-color: #a21caf;
 }
 
-.btn-select-card.outline-rose {
-  background: #ffffff;
-  color: #e11d48;
-  border: 1.5px solid #fecdd3;
+.btn-select-card.outline-magenta, .btn-select-card.outline-rose {
+  background: #fdf4ff;
+  color: #c026d3;
+  border: 1.5px solid #f0abfc;
 }
-.btn-select-card.outline-rose:hover {
-  background: #fff1f2;
-  border-color: #e11d48;
+.btn-select-card.outline-magenta:hover, .btn-select-card.outline-rose:hover {
+  background: #fae8ff;
+  border-color: #c026d3;
 }
 
 .btn-select-card.filled-purple {
