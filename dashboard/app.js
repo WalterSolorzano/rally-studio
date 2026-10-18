@@ -669,8 +669,12 @@ function renderTopbar() {
       </div>
       ${state.rally_type ? `
         <div class="topbar-emblems-group" title="${certamen}">
-          ${state.rally_type === "latam" ? SVG.rallyLatamEmblem : SVG.rallyNacEmblem}
-          ${SVG.uniCrestEmblem}
+          <img src="${state.rally_type === 'latam' ? 'assets/logo_rally_latam.png' : 'assets/logo_rally_nacional.png'}" 
+               class="topbar-emblem-img" 
+               alt="${state.rally_type === 'latam' ? 'Rally Latinoamericano' : 'Rally Nacional Innova'}">
+          <img src="assets/logo_uni_official.png" 
+               class="topbar-uni-img" 
+               alt="Universidad Nacional de Ingeniería (UNI)">
           ${state.team_logo_img ? `<img src="${state.team_logo_img}" class="topbar-team-avatar" alt="Team Logo" title="${state.team_name || 'Equipo'}">` : ""}
         </div>
       ` : ""}
@@ -897,7 +901,7 @@ function selectCertamen(type, ev) {
 // ═════════════════════════════════════════════════════════════════════════════
 function renderViewTeam() {
   const certLabel = state.rally_type === "latam" ? "Rally Latinoamericano (28h)" : "Rally Nacional (24h)";
-  const currentUni = state.university || "Universidad Nacional de Ingeniería (UNI)";
+  const rallyLogoSrc = state.rally_type === "latam" ? "assets/logo_rally_latam.png" : "assets/logo_rally_nacional.png";
 
   return `
     <div class="wizard-canvas">
@@ -913,68 +917,126 @@ function renderViewTeam() {
         <button class="btn-pill-light" style="font-size:11px; padding:4px 10px;" onclick="switchTab('certamen')">← Cambiar Certamen (${certLabel})</button>
       </div>
 
-      <h1 class="wizard-hero-title">Identidad del <span class="title-accent">Equipo</span></h1>
-      <p class="wizard-hero-desc">
-        Configura el nombre oficial del equipo y sube su logo para personalizar carátulas, entregables y pautado.
-      </p>
+      <h1 class="wizard-hero-title" style="margin-bottom:24px;">Identidad del <span class="title-accent">Equipo</span></h1>
 
-      <div class="workbench-card" style="box-shadow:0 4px 20px rgba(9, 30, 66, 0.04); border:1px solid #e2e8f0; border-radius:18px; padding:28px 24px; background:#fff; max-width:680px; margin:0 auto;">
-        <div class="form-grid" style="display:grid; grid-template-columns:1fr; gap:20px;">
-          <div class="form-group full">
-            <label style="font-weight:700; color:#091e42; font-size:12.5px; display:block; margin-bottom:6px;">Nombre Oficial del Equipo</label>
-            <input type="text" id="tm-name" placeholder="Ej: Pinoleros Tech, Mentes Volcánicas, InnovaUNI" value="${state.team_name || ''}"
-              style="width:100%; box-sizing:border-box; padding:11px 14px; border:1.5px solid #cbd5e1; border-radius:8px; font-size:14px; font-weight:600; color:#091e42;"
-              oninput="state.team_name=this.value; saveState();">
-          </div>
-
-          <div class="form-group full">
-            <label style="font-weight:700; color:#091e42; font-size:12.5px; display:block; margin-bottom:6px;">Universidad o Sede Académica</label>
-            <input type="text" id="tm-uni" value="${currentUni}"
-              style="width:100%; box-sizing:border-box; padding:11px 14px; border:1.5px solid #cbd5e1; border-radius:8px; font-size:13px; font-weight:600; color:#091e42;"
-              oninput="state.university=this.value; saveState();">
-            <span style="font-size:11px; color:#64748b; margin-top:4px; display:block;">Asignado por defecto a la UNI. Puedes ajustarlo a tu recinto o facultad.</span>
-          </div>
-
-          <div class="form-group full">
-            <label style="font-weight:700; color:#091e42; font-size:12.5px; display:block; margin-bottom:6px;">Logo Oficial del Equipo (Imagen PNG / JPG / SVG / WebP)</label>
-            ${state.team_logo_img ? `
-              <div class="logo-preview-box">
-                <img src="${state.team_logo_img}" alt="Logo de Equipo" style="max-height:56px; max-width:90px; object-fit:contain; border-radius:6px; border:1px solid #e2e8f0; background:#fff; padding:4px;">
-                <div style="flex:1;">
-                  <div style="font-size:13px; font-weight:700; color:#0f172a;">Logo Cargado Exitosamente</div>
-                  <div style="font-size:11px; color:#64748b;">Aparece en el topbar, carátulas y documento pautado oficial.</div>
-                </div>
-                <button type="button" class="btn-pill-light" style="font-size:11px; color:#ef4444;" onclick="removeTeamLogo()">Quitar</button>
-                <label class="btn-pill-light" style="font-size:11px; cursor:pointer;">
-                  Cambiar
-                  <input type="file" accept="image/png, image/jpeg, image/svg+xml, image/webp" style="display:none;" onchange="handleTeamLogoUpload(event)">
-                </label>
+      <div class="workbench-card" style="box-shadow:0 4px 24px rgba(9, 30, 66, 0.04); border:1px solid #e2e8f0; border-radius:18px; padding:32px 28px; background:#fff; max-width:960px; margin:0 auto;">
+        <div class="team-step-grid">
+          <!-- Columna Izquierda: Formulario de Datos -->
+          <div style="display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+              <div class="form-group full" style="margin-bottom:22px;">
+                <label style="font-weight:700; color:#091e42; font-size:12.5px; display:block; margin-bottom:8px;">NOMBRE OFICIAL DEL EQUIPO</label>
+                <input type="text" id="tm-name" placeholder="Ej: Pinoleros Tech, Mentes Volcánicas, InnovaUNI" value="${state.team_name || ''}"
+                  style="width:100%; box-sizing:border-box; padding:12px 14px; border:1.5px solid #cbd5e1; border-radius:10px; font-size:14px; font-weight:600; color:#091e42;"
+                  oninput="updateTeamName(this.value)">
               </div>
-            ` : `
-              <label class="logo-dropzone" for="team-logo-file-input"
-                ondragover="event.preventDefault(); this.style.borderColor='#0066ff'; this.style.background='#eff6ff';"
-                ondragleave="this.style.borderColor='#cbd5e1'; this.style.background='#f8fafc';"
-                ondrop="event.preventDefault(); this.style.borderColor='#cbd5e1'; this.style.background='#f8fafc'; handleTeamLogoUpload({target:{files:event.dataTransfer.files}});">
-                <input type="file" id="team-logo-file-input" accept="image/png, image/jpeg, image/svg+xml, image/webp" style="display:none;" onchange="handleTeamLogoUpload(event)">
-                <div style="width:42px; height:42px; border-radius:50%; background:#eff6ff; display:flex; align-items:center; justify-content:center; color:#0066ff;">
-                  ${SVG.upload}
-                </div>
-                <div style="font-size:13px; font-weight:700; color:#1e293b;">Haz clic o arrastra aquí el logo oficial del equipo</div>
-                <div style="font-size:11px; color:#64748b;">Formatos admitidos: PNG, JPG, SVG o WebP (alta resolución)</div>
-              </label>
-            `}
-          </div>
-        </div>
 
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:28px; border-top:1px solid #f1f5f9; padding-top:18px;">
-          <button class="btn-pill-light" onclick="switchTab('certamen')">← Regresar</button>
-          <button class="btn-select-card filled" style="padding:10px 24px; font-size:13px;" onclick="saveTeamAndProceed()">
-            Continuar a Selección de Reto ${SVG.arrowRight}
-          </button>
+              <div class="form-group full">
+                <label style="font-weight:700; color:#091e42; font-size:12.5px; display:block; margin-bottom:8px;">LOGO OFICIAL DEL EQUIPO (IMAGEN PNG / JPG / SVG / WEBP)</label>
+                ${state.team_logo_img ? `
+                  <div class="logo-preview-box">
+                    <img src="${state.team_logo_img}" alt="Logo de Equipo" style="max-height:56px; max-width:90px; object-fit:contain; border-radius:6px; border:1px solid #e2e8f0; background:#fff; padding:4px;">
+                    <div style="flex:1;">
+                      <div style="font-size:13px; font-weight:700; color:#0f172a;">Logo Cargado Exitosamente</div>
+                      <div style="font-size:11px; color:#64748b;">Visible en la credencial y el topbar.</div>
+                    </div>
+                    <button type="button" class="btn-pill-light" style="font-size:11px; color:#ef4444;" onclick="removeTeamLogo()">Quitar</button>
+                    <label class="btn-pill-light" style="font-size:11px; cursor:pointer;">
+                      Cambiar
+                      <input type="file" accept="image/png, image/jpeg, image/svg+xml, image/webp" style="display:none;" onchange="handleTeamLogoUpload(event)">
+                    </label>
+                  </div>
+                ` : `
+                  <label class="logo-dropzone" for="team-logo-file-input"
+                    ondragover="event.preventDefault(); this.style.borderColor='#0066ff'; this.style.background='#eff6ff';"
+                    ondragleave="this.style.borderColor='#cbd5e1'; this.style.background='#f8fafc';"
+                    ondrop="event.preventDefault(); this.style.borderColor='#cbd5e1'; this.style.background='#f8fafc'; handleTeamLogoUpload({target:{files:event.dataTransfer.files}});">
+                    <input type="file" id="team-logo-file-input" accept="image/png, image/jpeg, image/svg+xml, image/webp" style="display:none;" onchange="handleTeamLogoUpload(event)">
+                    <div style="width:44px; height:44px; border-radius:50%; background:#eff6ff; display:flex; align-items:center; justify-content:center; color:#0066ff;">
+                      ${SVG.upload}
+                    </div>
+                    <div style="font-size:13px; font-weight:700; color:#1e293b;">Haz clic o arrastra aquí el logo oficial</div>
+                    <div style="font-size:11px; color:#64748b;">Formatos: PNG, JPG, SVG o WebP (alta resolución)</div>
+                  </label>
+                `}
+              </div>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:32px; border-top:1px solid #f1f5f9; padding-top:18px;">
+              <button class="btn-pill-light" onclick="switchTab('certamen')">← Regresar</button>
+              <button class="btn-select-card filled" style="padding:11px 24px; font-size:13px;" onclick="saveTeamAndProceed()">
+                Continuar a Selección de Reto ${SVG.arrowRight}
+              </button>
+            </div>
+          </div>
+
+          <!-- Columna Derecha: Previsualización de Credencial / Carátula -->
+          <div class="team-preview-card">
+            <div>
+              <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #e2e8f0; padding-bottom:12px; margin-bottom:16px;">
+                <span style="font-size:10px; font-weight:800; letter-spacing:0.08em; color:#64748b; text-transform:uppercase;">Previsualización de Identidad</span>
+                <span style="font-size:10.5px; font-weight:700; color:#003594; background:#eff6ff; padding:3px 10px; border-radius:9999px; border:1px solid #bfdbfe;">
+                  Sede Oficial UNI
+                </span>
+              </div>
+
+              <!-- Encabezado con logos institucionales grandes -->
+              <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:20px; padding:12px 16px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; box-shadow:0 1px 4px rgba(0,0,0,0.03);">
+                <img src="assets/logo_uni_official.png" style="height:44px; width:auto; max-width:85px; object-fit:contain;" alt="Universidad Nacional de Ingeniería">
+                <div style="height:26px; width:1px; background:#e2e8f0;"></div>
+                <img src="${rallyLogoSrc}" style="height:40px; width:auto; max-width:140px; object-fit:contain;" alt="Rally Oficial">
+              </div>
+
+              <!-- Centro: Logo del equipo en grande y nombre -->
+              <div style="text-align:center; padding:12px 0;">
+                <div style="width:110px; height:110px; margin:0 auto 12px auto; border-radius:18px; border:2px ${state.team_logo_img ? 'solid #0066ff' : 'dashed #cbd5e1'}; background:#ffffff; display:flex; align-items:center; justify-content:center; overflow:hidden; box-shadow:0 4px 12px rgba(9,30,66,0.06);">
+                  ${state.team_logo_img 
+                    ? `<img id="preview-team-logo" src="${state.team_logo_img}" style="width:100%; height:100%; object-fit:contain; padding:8px;" alt="Logo Equipo">`
+                    : `<div style="text-align:center; color:#94a3b8; font-size:11px; padding:8px;">
+                         <div style="margin-bottom:4px; opacity:0.6;">${SVG.upload}</div>
+                         <div style="font-weight:600;">Logo pendiente</div>
+                       </div>`
+                  }
+                </div>
+
+                <h2 id="preview-team-name" style="font-size:20px; font-weight:900; color:#091e42; margin-bottom:4px; letter-spacing:-0.02em; word-break:break-word;">
+                  ${state.team_name || 'NOMBRE DEL EQUIPO'}
+                </h2>
+                <div style="font-size:12px; font-weight:700; color:#003594; text-transform:uppercase; letter-spacing:0.04em;">
+                  Universidad Nacional de Ingeniería
+                </div>
+                <div style="font-size:11px; color:#64748b; margin-top:2px;">
+                  Sede Central / Recintos Universitarios UNI
+                </div>
+              </div>
+            </div>
+
+            <div style="border-top:1px dashed #cbd5e1; padding-top:14px; margin-top:14px; display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:11px; font-weight:700; color:#475569;">
+                ${state.rally_type === 'latam' ? 'Rally Latam 28h Continental' : 'Rally Nacional Innova 24h'}
+              </span>
+              <span style="font-size:10px; color:#059669; font-weight:700; background:#dcfce7; padding:3px 9px; border-radius:9999px;">
+                Listo para Pautado
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   `;
+}
+
+function updateTeamName(val) {
+  state.team_name = val;
+  saveState();
+  const el = document.getElementById("preview-team-name");
+  if (el) {
+    el.innerText = val.trim() || "NOMBRE DEL EQUIPO";
+  }
+  const topbarCrumb = document.querySelector(".project-title-crumb");
+  if (topbarCrumb) {
+    topbarCrumb.innerText = val.trim() ? `/ ${val.trim()}` : "";
+  }
 }
 
 function handleTeamLogoUpload(event) {
@@ -999,9 +1061,7 @@ function removeTeamLogo() {
 
 function saveTeamAndProceed() {
   const nameInput = document.getElementById("tm-name");
-  const uniInput = document.getElementById("tm-uni");
   const name = nameInput ? nameInput.value.trim() : (state.team_name || "");
-  const uni = uniInput ? uniInput.value.trim() : (state.university || "Universidad Nacional de Ingeniería (UNI)");
 
   if (!name) {
     alert("Por favor ingresa el Nombre Oficial de tu Equipo.");
@@ -1010,7 +1070,7 @@ function saveTeamAndProceed() {
   }
 
   state.team_name = name;
-  state.university = uni;
+  state.university = "Universidad Nacional de Ingeniería (UNI)";
   saveState();
   activeTab = "challenges";
   syncUI();
@@ -1825,17 +1885,16 @@ function renderViewResources() {
       <h3 style="margin-bottom:12px;">Logos Oficiales para el Video Pitch (Acto 2 al 4)</h3>
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:12px;">
         <div style="border:1px solid var(--border-light); padding:12px; border-radius:6px; background:#f8fafc; text-align:center;">
-          <div style="height:48px; display:flex; align-items:center; justify-content:center; gap:8px; color:var(--color-primary); font-weight:800; font-size:14px;">
-            ${SVG.uniCrestEmblem} <span>UNI</span>
+          <div style="height:48px; display:flex; align-items:center; justify-content:center; gap:8px;">
+            <img src="assets/logo_uni_official.png" style="max-height:44px; max-width:100px; object-fit:contain;" alt="Universidad Nacional de Ingeniería">
           </div>
           <strong style="font-size:11px; display:block;">Logo Institucional Sede</strong>
           <span style="font-size:10px; color:var(--text-muted);">${state.university || 'Universidad Nacional de Ingeniería'}</span>
         </div>
 
         <div style="border:1px solid var(--border-light); padding:12px; border-radius:6px; background:#f8fafc; text-align:center;">
-          <div style="height:48px; display:flex; align-items:center; justify-content:center; gap:8px; font-weight:800; font-size:13px; color:${state.rally_type === 'latam' ? '#e11d48' : '#7c3aed'};">
-            ${state.rally_type === 'latam' ? SVG.rallyLatamEmblem : SVG.rallyNacEmblem}
-            <span>${state.rally_type === 'latam' ? 'RALLY LATAM' : 'NICARAGUA INNOVA'}</span>
+          <div style="height:48px; display:flex; align-items:center; justify-content:center; gap:8px;">
+            <img src="${state.rally_type === 'latam' ? 'assets/logo_rally_latam.png' : 'assets/logo_rally_nacional.png'}" style="max-height:44px; max-width:140px; object-fit:contain;" alt="Rally Oficial">
           </div>
           <strong style="font-size:11px; display:block;">Logo Oficial del Evento</strong>
           <span style="font-size:10px; color:var(--text-muted);">${state.rally_type === 'latam' ? 'Edición Continental (28h)' : 'Nacional Innova (24h)'}</span>
