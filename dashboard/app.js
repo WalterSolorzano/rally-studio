@@ -177,12 +177,18 @@ function getInitialState() {
       acto2: "",
       acto3: "",
       acto4: ""
-    }
+    },
+
+    // Enlaces de colaboración en la nube
+    google_drive_url: "https://drive.google.com",
+    canva_url: "https://canva.com",
+    figma_url: "",
+    local_ip: "192.168.1.50"
   };
 }
 
 let state = getInitialState();
-let activeTab = "brief";
+let activeTab = "teamhub";
 let timerInterval = null;
 
 // ── LÍMITES OFICIALES DE PAUTADO (CON ESPACIOS) ──────────────────────────────
@@ -308,6 +314,7 @@ function renderTopbar() {
 
 // ── NAVEGACIÓN LATERAL ────────────────────────────────────────────────────────
 const NAV_TABS = [
+  { id: "teamhub",      label: "00 Hub Equipo & Nube",    check: () => !!state.google_drive_url },
   { id: "brief",        label: "01 Brief & Setup",       check: () => !!state.project_name && !!state.challenge_id },
   { id: "challenges",   label: "02 Radar Desafíos",      check: () => !!state.challenge_id },
   { id: "identity",     label: "03 Identidad & Paleta",  check: () => !!state.palette.primary },
@@ -368,6 +375,7 @@ function switchTab(tabId, ev) {
 function renderTab(tabId) {
   const main = document.getElementById("main");
   const renderers = {
+    teamhub: renderViewTeamHub,
     brief: renderViewBrief,
     challenges: renderViewChallenges,
     identity: renderViewIdentity,
@@ -379,8 +387,210 @@ function renderTab(tabId) {
     webdemo: renderViewWebDemo,
     timeline: renderViewTimeline
   };
-  main.innerHTML = `<div class="content-wrapper">${(renderers[tabId] || renderViewBrief)()}</div>`;
+  main.innerHTML = `<div class="content-wrapper">${(renderers[tabId] || renderViewTeamHub)()}</div>`;
   attachTabListeners(tabId);
+}
+
+// 00 TEAM HUB & CLOUD VIEW
+function renderViewTeamHub() {
+  return `
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">00 · Hub de Equipo, Nube & Bóveda de Recursos</h1>
+        <div class="page-desc">Centro neurálgico para trabajo paralelo: red local Wi-Fi, enlaces fijos y descargas directas.</div>
+      </div>
+      <button class="btn-primary" onclick="saveTeamHubLinks()">Guardar Enlaces de Equipo</button>
+    </div>
+
+    <div class="rubric-callout">
+      <strong>TRABAJO EN PARALELO EFICIENTE:</strong> El equipo NO debe trabajar en cascada. Mientras el área de investigación
+      define los claims y pautado, el área técnica cotiza en Alibaba y el área audiovisual prepara el shotlist y los gráficos en Canva/Blender.
+    </div>
+
+    <!-- LAN Sharing Card -->
+    <div class="workbench-card" style="border-left: 4px solid var(--color-primary); background: #f8fafc;">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+        <div>
+          <span class="badge-status badge-ok" style="margin-bottom:4px; display:inline-block;">⚡ SERVIDOR LOCAL ACTIVO</span>
+          <h3 style="margin:2px 0; font-size:15px; font-weight:800;">Conexión Multidispositivo en Tiempo Real (Wi-Fi de Sede)</h3>
+          <p style="font-size:12px; color:var(--text-muted); margin:0;">
+            Cualquier integrante con laptop o celular conectado al mismo Wi-Fi puede acceder al dashboard:
+          </p>
+        </div>
+        <div style="background:#fff; border:1px solid var(--border-color); padding:8px 14px; border-radius:6px; display:flex; align-items:center; gap:8px;">
+          <code style="font-family:var(--font-mono); font-weight:700; font-size:14px; color:var(--color-primary);">http://${state.local_ip || '192.168.1.50'}:8080/dashboard/</code>
+          <button class="btn-secondary" style="padding:4px 8px; font-size:11px;" onclick="navigator.clipboard.writeText('http://${state.local_ip || '192.168.1.50'}:8080/dashboard/'); alert('IP copiada al portapapeles');">Copiar IP</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Enlaces Colaborativos Fijos -->
+    <div class="workbench-card">
+      <h3>Enlaces Fijos de Trabajo Colaborativo (Drive, Canva, Figma)</h3>
+      <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">
+        Configura los accesos directos permanentes donde el equipo sincroniza videos crudos, audios o diseña láminas:
+      </p>
+      <div class="form-grid">
+        <div class="form-group full">
+          <label>Carpeta Oficial de Google Drive (Videos crudos, renders, fotos, audios)</label>
+          <div style="display:flex; gap:8px;">
+            <input type="url" id="hub-drive-url" placeholder="https://drive.google.com/drive/folders/..." value="${state.google_drive_url || ''}" style="flex:1;">
+            <a href="${state.google_drive_url || '#'}" target="_blank" class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center;">Abrir Drive ↗</a>
+          </div>
+        </div>
+        <div class="form-group full">
+          <label>Espacio de Trabajo Canva (Diseño de diapositivas, infografías, overlays del video)</label>
+          <div style="display:flex; gap:8px;">
+            <input type="url" id="hub-canva-url" placeholder="https://www.canva.com/design/..." value="${state.canva_url || ''}" style="flex:1;">
+            <a href="${state.canva_url || '#'}" target="_blank" class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center;">Abrir Canva ↗</a>
+          </div>
+        </div>
+        <div class="form-group full">
+          <label>Figma / Pizarra Miro (Opcional - Diagrama de arquitectura o flujo)</label>
+          <div style="display:flex; gap:8px;">
+            <input type="url" id="hub-figma-url" placeholder="https://www.figma.com/file/..." value="${state.figma_url || ''}" style="flex:1;">
+            ${state.figma_url ? `<a href="${state.figma_url}" target="_blank" class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center;">Abrir Figma ↗</a>` : ''}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bóveda Unificada de Descargas del Equipo -->
+    <div class="workbench-card">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <div>
+          <h3 style="margin:0;">Bóveda de Recursos & Entregables del Equipo (1-Click)</h3>
+          <p style="font-size:12px; color:var(--text-muted); margin:2px 0 0 0;">
+            Descarga directa de documentos generados por el sistema listos para validación, edición y plataforma SIRLI.
+          </p>
+        </div>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Entregable / Recurso</th>
+            <th>Formato</th>
+            <th>Destino / Uso en Competencia</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Matriz Selección de Desafíos 2026</strong></td>
+            <td><code>.DOCX</code></td>
+            <td>Deliberación grupal: 9 desafíos íntegros + pronóstico WOW + votación</td>
+            <td><a href="/docs/Matriz_Seleccion_Desafios_2026.docx" download class="btn-primary" style="padding:4px 10px; font-size:11px; text-decoration:none;">Descargar Word ↓</a></td>
+          </tr>
+          <tr>
+            <td><strong>Documento Pautado Oficial</strong></td>
+            <td><code>.DOCX</code></td>
+            <td>5 secciones oficiales redactadas y validadas con límites de caracteres</td>
+            <td><a href="/docs/pautado_draft.docx" download class="btn-secondary" style="padding:4px 10px; font-size:11px; text-decoration:none;">Descargar Word ↓</a></td>
+          </tr>
+          <tr>
+            <td><strong>Presupuesto Formal Puesta en Marcha</strong></td>
+            <td><code>.XLSX</code></td>
+            <td>Rango $4,000–$6,000 USD con enlaces Alibaba y flete de importación</td>
+            <td><a href="/budget/budget.xlsx" download class="btn-secondary" style="padding:4px 10px; font-size:11px; text-decoration:none;">Descargar Excel ↓</a></td>
+          </tr>
+          <tr>
+            <td><strong>Shotlist Cronometrado (120s)</strong></td>
+            <td><code>.CSV</code></td>
+            <td>Pauta para el editor de video (planos, tiempos exactos y textos en pantalla)</td>
+            <td><a href="/script/shotlist.csv" download class="btn-secondary" style="padding:4px 10px; font-size:11px; text-decoration:none;">Descargar CSV ↓</a></td>
+          </tr>
+          <tr>
+            <td><strong>Guion de Locución Limpio</strong></td>
+            <td><code>.TXT</code></td>
+            <td>Texto continuo a 135 ppm para el locutor o motor TTS (ElevenLabs/Edge)</td>
+            <td><a href="/script/narration.txt" download class="btn-secondary" style="padding:4px 10px; font-size:11px; text-decoration:none;">Descargar TXT ↓</a></td>
+          </tr>
+          <tr>
+            <td><strong>Audio de Locución Narrada</strong></td>
+            <td><code>.WAV</code></td>
+            <td>Voz generada para Actos 1 a 4 lista para montar en línea de tiempo</td>
+            <td><a href="/assets/voice/narration.wav" download class="btn-secondary" style="padding:4px 10px; font-size:11px; text-decoration:none;">Descargar Audio ↓</a></td>
+          </tr>
+          <tr>
+            <td><strong>Design Tokens & Paleta Ganadora</strong></td>
+            <td><code>.CSS</code></td>
+            <td>Colores hexadecimales primarios, secundarios y tipografías para la demo web</td>
+            <td><a href="/brand/tokens.css" download class="btn-secondary" style="padding:4px 10px; font-size:11px; text-decoration:none;">Descargar CSS ↓</a></td>
+          </tr>
+          <tr>
+            <td><strong>Modelo de Negocio Canvas</strong></td>
+            <td><code>.MD</code></td>
+            <td>9 cuadrantes alineados al pautado y viabilidad económica</td>
+            <td><a href="/docs/canvas.md" download class="btn-secondary" style="padding:4px 10px; font-size:11px; text-decoration:none;">Descargar MD ↓</a></td>
+          </tr>
+          <tr>
+            <td><strong>Bibliografía Sustentada APA 7</strong></td>
+            <td><code>.MD</code></td>
+            <td>Fuentes verificables de investigación y declaración de uso ético de IA</td>
+            <td><a href="/docs/bibliography.md" download class="btn-secondary" style="padding:4px 10px; font-size:11px; text-decoration:none;">Descargar MD ↓</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Ingesta Rápida de Desafíos -->
+    <div class="workbench-card">
+      <h3>Ingesta Universal de Desafíos (Fotos de WhatsApp / PDFs)</h3>
+      <p style="font-size:12px; color:var(--text-muted); margin-bottom:8px;">
+        Al publicarse nuevos desafíos (extraídos de capturas o documentos), pega aquí el texto para regenerar la Matriz Word con tecnologías WOW y votación de equipo:
+      </p>
+      <textarea id="raw-challenges-input" style="width:100%; height:75px; font-family:var(--font-mono); font-size:11px; padding:8px; border:1px solid var(--border-color); border-radius:4px; box-sizing:border-box;" placeholder="Pega aquí el texto extraído del OCR o PDF del comité organizador..."></textarea>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
+        <button class="btn-secondary" onclick="generateChallengesDocFromWeb()">Generar / Actualizar Word de Desafíos</button>
+        <span style="font-size:11px; color:var(--text-muted); font-family:var(--font-mono);">Script: scripts/ingest_challenges.py</span>
+      </div>
+    </div>
+
+    <!-- Mapeo de Roles de Equipo -->
+    <div class="workbench-card">
+      <h3>Matriz de Roles Simultáneos (Para no perder ni un minuto)</h3>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px; margin-top:10px;">
+        <div style="border:1px solid var(--border-color); padding:10px; border-radius:6px; background:#fff;">
+          <strong style="color:var(--color-primary); font-size:12px;">Rol 1: Líder & Claims</strong>
+          <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Define tesis del proyecto, claims estadísticos y supervisa la matriz de deliberación.</div>
+        </div>
+        <div style="border:1px solid var(--border-color); padding:10px; border-radius:6px; background:#fff;">
+          <strong style="color:var(--color-primary); font-size:12px;">Rol 2: Redactor de Pautado</strong>
+          <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Transcribe y ajusta caracteres exactos con espacios en las 5 secciones oficiales.</div>
+        </div>
+        <div style="border:1px solid var(--border-color); padding:10px; border-radius:6px; background:#fff;">
+          <strong style="color:var(--color-primary); font-size:12px;">Rol 3: Finanzas & Alibaba</strong>
+          <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Busca piezas reales mayoristas entre $4k y $6k USD con flete y especificaciones.</div>
+        </div>
+        <div style="border:1px solid var(--border-color); padding:10px; border-radius:6px; background:#fff;">
+          <strong style="color:var(--color-primary); font-size:12px;">Rol 4: Video Pitch & Audio</strong>
+          <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Edita video a 119s exactos siguiendo el shotlist. Sube a YouTube en T-30m.</div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function saveTeamHubLinks() {
+  const drive = document.getElementById("hub-drive-url");
+  const canva = document.getElementById("hub-canva-url");
+  const figma = document.getElementById("hub-figma-url");
+  if (drive) state.google_drive_url = drive.value.trim();
+  if (canva) state.canva_url = canva.value.trim();
+  if (figma) state.figma_url = figma.value.trim();
+  saveState();
+  renderNavigation();
+  alert("✓ Enlaces de colaboración guardados con éxito.");
+}
+
+function generateChallengesDocFromWeb() {
+  const txt = document.getElementById("raw-challenges-input").value.trim();
+  if (!txt) {
+    alert("Pega texto de desafíos para procesar.");
+    return;
+  }
+  navigator.clipboard.writeText(`python scripts/ingest_challenges.py --text "${txt.replace(/"/g, '\\"')}"`);
+  alert("✓ Comando de ingesta copiado al portapapeles. Pégalo en tu terminal para compilar el nuevo Word.");
 }
 
 // 01 BRIEF VIEW

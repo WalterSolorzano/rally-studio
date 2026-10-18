@@ -1,15 +1,15 @@
-# PROYECTO EJEMPLO -- EQUIPO EJEMPLO
+# HIDRO-VIGIA -- Mentes Pinoleras
 
 > **Certamen:** Rally NACIONAL (24 horas continuas)  
-> **Sede / Universidad:** Universidad de Ejemplo (Managua, Nicaragua)  
-> **Categoria:** Tecnologica | **Desafio #00:** Desafío de ejemplo  
-> **Alineacion Estrategica:** ODS11 | **Eje Plan Nacional:** Eje 1: Nicaragua Creativa  
+> **Sede / Universidad:** Universidad Nacional de Ingenieria (UNI - RUSB) (Managua (Cuenca Cauce Oriental), Nicaragua)  
+> **Categoria:** Tecnologica | **Desafio #02:** Redes de sensores comunitarios para prevencion y alerta temprana de inundaciones  
+> **Alineacion Estrategica:** ODS 11, ODS 13, ODS 3 | **Eje Plan Nacional:** Eje 3: Proteccion de la Vida y Resiliencia ante el Cambio Climatico  
 > **Ultima sincronizacion:** 18/10/2026 (generado automaticamente por Rally Studio)
 
 ---
 
 ## 1. Tesis y Resumen Ejecutivo
-**Sistema que resuelve el problema X usando tecnología Y para beneficiar a Z.**
+**Sistema ciber-fisico de telemetria hiperlocal con sensores de nivel ultrasonicos y red LoRaWAN para alerta temprana comunitaria con 30 minutos de anticipacion.**
 
 Este repositorio contiene la arquitectura completa de ingenieria, documentacion pautada oficial, estudio de prefactibilidad economica sustentada, matriz Canvas, guion audiovisual de 120 segundos y recursos multimedia requeridos por el sistema de evaluacion SIRLI.
 
