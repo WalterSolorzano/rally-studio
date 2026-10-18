@@ -521,12 +521,12 @@ let challengeFilter = "all";
 
 // ── MASCOTAS COLABORATIVAS AUTOMÁTICAS (MULTI-USUARIO SIN LOGIN) ─────────────
 const TEAM_MASCOTS = [
-  { id: "jaguar", name: "Jaguar Ágil", icon: "🐆", color: "#0866F5" },
-  { id: "quetzal", name: "Quetzal Guía", icon: "🪶", color: "#059669" },
-  { id: "armadillo", name: "Armadillo Blindado", icon: "🛡️", color: "#D97706" },
-  { id: "colibri", name: "Colibrí Veloz", icon: "⚡", color: "#0284C7" },
-  { id: "ocelote", name: "Ocelote Creativo", icon: "🐾", color: "#EA580C" },
-  { id: "halcon", name: "Halcón Vigía", icon: "🦅", color: "#475569" }
+  { id: "nodo_alfa", name: "Estación Alfa", icon: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:inline-block; vertical-align:middle;"><polygon points="12 2 2 22 22 22"/></svg>`, color: "#0866F5" },
+  { id: "nodo_beta", name: "Estación Beta", icon: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:inline-block; vertical-align:middle;"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>`, color: "#1D4ED8" },
+  { id: "nodo_gamma", name: "Estación Gamma", icon: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:inline-block; vertical-align:middle;"><circle cx="12" cy="12" r="10"/></svg>`, color: "#0D1B35" },
+  { id: "nodo_delta", name: "Estación Delta", icon: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:inline-block; vertical-align:middle;"><polygon points="12 2 22 12 12 22 2 12"/></svg>`, color: "#0284C7" },
+  { id: "nodo_epsilon", name: "Estación Epsilon", icon: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:inline-block; vertical-align:middle;"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>`, color: "#3B82F6" },
+  { id: "nodo_omega", name: "Estación Omega", icon: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:inline-block; vertical-align:middle;"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>`, color: "#475569" }
 ];
 
 function getClientMascot() {
@@ -679,6 +679,7 @@ function syncUI() {
   renderNavigation();
   renderTab(activeTab);
   updateInspector();
+  renderMobileBottomBar();
 }
 
 function loadSavedState() {
@@ -691,11 +692,20 @@ function loadSavedState() {
         state.budget = [];
       }
       const stage = getWorkflowStage();
-      if (stage === 0) activeTab = "certamen";
-      else if (stage === 1) activeTab = "team";
-      else if (stage === 2) activeTab = "challenges";
-      else if (stage === 3) activeTab = "solution";
-      else if (!activeTab || activeTab === "certamen" || activeTab === "team") activeTab = "challenges";
+      if (state.active_tab) {
+        const target = NAV_TABS.find(t => t.id === state.active_tab);
+        if (target && target.level <= stage) {
+          activeTab = state.active_tab;
+        } else {
+          activeTab = stage === 0 ? "certamen" : stage === 1 ? "team" : stage === 2 ? "challenges" : "solution";
+        }
+      } else {
+        if (stage === 0) activeTab = "certamen";
+        else if (stage === 1) activeTab = "team";
+        else if (stage === 2) activeTab = "challenges";
+        else if (stage === 3) activeTab = "solution";
+        else activeTab = "challenges";
+      }
     }
   } catch (e) {
     console.error("Error al cargar estado local", e);
@@ -986,12 +996,82 @@ function startOfficialRallyTimer() {
 }
 
 // ── TOGGLE SIDEBAR & PANEL ───────────────────────────────────────────────────
+function closeAllDrawers() {
+  const body = document.getElementById("app-body") || document.body;
+  body.classList.remove("sidebar-drawer-open", "panel-drawer-open");
+  renderMobileBottomBar();
+}
+
 function toggleSidebar() {
-  document.getElementById("app-body").classList.toggle("sidebar-collapsed");
+  const body = document.getElementById("app-body") || document.body;
+  if (window.innerWidth <= 1024) {
+    body.classList.remove("panel-drawer-open");
+    body.classList.toggle("sidebar-drawer-open");
+  } else {
+    body.classList.toggle("sidebar-collapsed");
+  }
+  renderMobileBottomBar();
 }
 
 function togglePanel() {
-  document.getElementById("app-body").classList.toggle("panel-collapsed");
+  const body = document.getElementById("app-body") || document.body;
+  if (window.innerWidth <= 1024) {
+    body.classList.remove("sidebar-drawer-open");
+    body.classList.toggle("panel-drawer-open");
+  } else {
+    body.classList.toggle("panel-collapsed");
+  }
+  renderMobileBottomBar();
+}
+
+function calculateAuditScore() {
+  let points = 0;
+  if (state.rally_type) points += 10;
+  if (state.team_name && state.university) points += 10;
+  if (state.challenge_id) points += 15;
+  if (state.solution_approved) points += 15;
+  if (typeof isPautadoComplete === "function" && isPautadoComplete()) points += 15;
+  if (typeof isBudgetValid === "function" && isBudgetValid()) points += 10;
+  if (typeof isScriptComplete === "function" && isScriptComplete()) points += 10;
+  const guardrails = state.guardrails || {};
+  const guardrailsCount = Object.values(guardrails).filter(Boolean).length;
+  if (guardrailsCount >= 5) points += 15;
+  return points;
+}
+
+// ── BARRA MÓVIL DE NAVEGACIÓN INFERIOR ───────────────────────────────────────
+function renderMobileBottomBar() {
+  const el = document.getElementById("mobile-bottom-bar");
+  if (!el) return;
+  const stage = getWorkflowStage();
+  if (stage < 2) {
+    el.style.display = "none";
+    return;
+  }
+  el.style.display = "";
+  const body = document.getElementById("app-body") || document.body;
+  const score = calculateAuditScore();
+  const isSidebarOpen = body.classList.contains("sidebar-drawer-open");
+  const isPanelOpen = body.classList.contains("panel-drawer-open");
+
+  el.innerHTML = `
+    <button class="mobile-bottom-tab ${isSidebarOpen ? 'active' : ''}" onclick="toggleSidebar()" title="Fases de trabajo">
+      ${SVG.menu}
+      <span>Fases</span>
+    </button>
+    <button class="mobile-bottom-tab ${isPanelOpen ? 'active' : ''}" onclick="togglePanel()" title="Auditoría">
+      ${SVG.shieldCheck}
+      <span>Auditoría (${score}%)</span>
+    </button>
+    <button class="mobile-bottom-tab ${activeTab === 'timeline' ? 'active' : ''}" onclick="switchTab('timeline')" title="Cronómetro">
+      ${SVG.clock}
+      <span>Tiempo</span>
+    </button>
+    <a href="graph.html" target="_blank" class="mobile-bottom-tab" title="Grafo">
+      ${SVG.network}
+      <span>Grafo</span>
+    </a>
+  `;
 }
 
 // ── TOPBAR ───────────────────────────────────────────────────────────────────
@@ -1002,6 +1082,7 @@ function renderTopbar() {
   const pName = state.team_name || state.project_name || "";
   const timerData = getTimerString();
   const deadlineData = getCurrentDeadlineAlert();
+  const auditPoints = calculateAuditScore();
 
   el.innerHTML = `
     <div class="topbar-left">
@@ -1026,10 +1107,18 @@ function renderTopbar() {
           ` : ""}
         </div>
       ` : ""}
-      ${pName ? `<span class="project-title-crumb">/ ${pName}</span>` : ""}
+      ${pName ? `<span class="project-title-crumb" title="${pName}">/ ${pName}</span>` : ""}
       ${state.challenge_id ? `<span class="challenge-title-crumb">Reto #${state.challenge_id}</span>` : ""}
     </div>
     <div class="topbar-actions">
+      ${stage >= 2 ? `
+        <button class="btn-toggle-panel" onclick="togglePanel()" title="Alternar Panel de Auditoría">
+          ${SVG.shieldCheck}
+          <span class="panel-toggle-label">Auditoría</span>
+          <span class="panel-toggle-badge" id="topbar-audit-badge">${auditPoints}%</span>
+        </button>
+      ` : ""}
+
       ${state.rally_type ? `
         <div id="topbar-deadline-pill" 
              class="deadline-pill ${state.rally_type === 'latam' ? 'latam' : 'nacional'}" 
@@ -1042,9 +1131,9 @@ function renderTopbar() {
       ` : ""}
 
       <!-- Avatar de Mascota Colaborativa Asignada (Sin Registro) -->
-      <div class="collaborator-avatar-badge" title="Tu avatar asignado automáticamente para editar en simultáneo sin pisarse">
+      <div class="collaborator-avatar-badge" title="Tu avatar asignado automáticamente para editar en simultáneo sin pisarse: ${currentClientMascot.name}">
         <span class="collaborator-avatar-icon">${currentClientMascot.icon}</span>
-        <span>${currentClientMascot.name}</span>
+        <span class="collaborator-name-label">${currentClientMascot.name}</span>
       </div>
 
       <!-- Telemetría del Sistema en Tiempo Real -->
@@ -1070,11 +1159,9 @@ function renderTopbar() {
         </div>
       </div>
 
-      <a href="graph.html" target="_blank" class="btn-pill-ghost" title="Explorar Grafo de Conocimiento (177 nodos, rúbricas y ganadores)" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
-        ${SVG.network} <span>Grafo</span>
+      <a href="graph.html" target="_blank" class="btn-pill-ghost btn-graph-link" title="Explorar Grafo de Conocimiento (177 nodos, rúbricas y ganadores)" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+        ${SVG.network} <span class="graph-btn-label">Grafo</span>
       </a>
-
-      ${stage >= 2 ? `<button class="btn-pill-ghost btn-panel-toggle" onclick="togglePanel()" title="Alternar Panel de Auditoría">${SVG.shieldCheck} <span>Auditoría</span></button>` : ""}
 
       <div class="timer-pill-navy" id="timer-pill" onclick="openTimerSettingsModal()" style="cursor:pointer;" title="Clic para calibrar o ajustar cronómetro">
         ${SVG.clock}
@@ -1196,6 +1283,10 @@ function renderNavigation() {
   const currentStage = getWorkflowStage();
 
   nav.innerHTML = `
+    <div class="drawer-header-mobile">
+      <span>Fases de Trabajo</span>
+      <button class="btn-close-drawer" onclick="closeAllDrawers()" aria-label="Cerrar menú lateral">✕</button>
+    </div>
     <div class="sidebar-heading">Fases de Trabajo</div>
     ${NAV_TABS.map(t => {
       const isUnlocked = t.level <= currentStage;
@@ -1228,8 +1319,12 @@ function switchTab(tabId, ev) {
   const target = NAV_TABS.find(t => t.id === tabId);
   if (target && target.level > getWorkflowStage()) return;
   activeTab = tabId;
+  state.active_tab = tabId;
+  saveState();
+  closeAllDrawers();
   renderNavigation();
   renderTab(tabId);
+  renderMobileBottomBar();
 }
 
 // ── DESPACHADOR CENTRAL DE VISTAS ────────────────────────────────────────────
@@ -1580,17 +1675,8 @@ function renderViewChallenges() {
         </div>
       </div>
 
-      <div class="phase-header" style="margin-bottom:24px;">
-        <h1 class="phase-title" style="font-size:28px; font-weight:900; color:#0D1B35; margin-bottom:6px; letter-spacing:-0.02em;">
-          Selección del <span class="phase-title-accent" style="color:#0866F5;">Reto Oficial</span>
-        </h1>
-        <p class="phase-subtitle" style="font-size:13.5px; color:#5C7193; line-height:1.45;">
-          Explora las demandas oficiales del comité y propuestas de vanguardia (WOW) para fijar el desafío de tu equipo.
-        </p>
-      </div>
-
       ${state.challenge_id && selectedChallengeObj ? `
-        <!-- Banner de Reto Seleccionado con opción de cambiarlo libremente -->
+        <!-- Banner de Reto Seleccionado -->
         <div style="background:#F0F6FF; border:1.5px solid #BFDBFE; border-radius:14px; padding:16px 20px; margin-bottom:22px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
           <div style="display:flex; align-items:center; gap:12px;">
             <span style="background:#0866F5; color:#ffffff; font-family:var(--font-mono); font-size:12px; font-weight:800; padding:4px 10px; border-radius:8px;">
@@ -1598,7 +1684,7 @@ function renderViewChallenges() {
             </span>
             <div>
               <div style="font-size:14px; font-weight:800; color:#0D1B35;">${selectedChallengeObj.title}</div>
-              <div style="font-size:12px; color:#5C7193;">${selectedChallengeObj.category} · Probabilidad estimada: ${selectedChallengeObj.winRate || 90}%</div>
+              <div style="font-size:12px; color:#5C7193;">${selectedChallengeObj.category} · Viabilidad estimada: ${selectedChallengeObj.winRate || 90}%</div>
             </div>
           </div>
           <div style="display:flex; gap:8px;">
@@ -1612,95 +1698,75 @@ function renderViewChallenges() {
         </div>
       ` : ""}
 
-      <!-- Barra de Acción Rápida y Carga de Retos (Sin cajas anidadas) -->
-      <div style="background:#FFFFFF; border:1px solid #DCE7F5; border-radius:14px; padding:18px 22px; margin-bottom:22px;">
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
-          <div>
-            <div style="font-size:13.5px; font-weight:800; color:#0D1B35;">Catálogo de Desafíos de Competencia</div>
-            <div style="font-size:12px; color:#5C7193; margin-top:2px;">Disponibles para análisis comparativo y selección estratégica.</div>
-          </div>
-          <div style="display:flex; gap:8px; flex-wrap:wrap;">
-            <button class="btn-pill-light" style="font-size:12px; padding:7px 14px;" onclick="loadReferenceChallenges()">
-              ${SVG.refresh} Cargar 9 Retos Oficiales 2026
-            </button>
-            <button class="btn-pill-ghost" style="font-size:12px; padding:7px 14px;" onclick="toggleCustomChallengeInput()">
-              ${SVG.plus} Pegar Comunicado del Comité
-            </button>
-          </div>
-        </div>
-
-        <div id="custom-challenge-input-box" style="display:none; margin-top:16px; padding-top:16px; border-top:1px solid #DCE7F5;">
-          <textarea id="raw-committee-challenges" rows="3" style="width:100%; border:1px solid #CBD5E1; border-radius:8px; padding:12px; font-size:12px; font-family:var(--font-mono); box-sizing:border-box; background:#F8FAFD;"
-            placeholder="Pega aquí el texto: RETO 01: Reconversión de motores..."></textarea>
-          <div style="display:flex; justify-content:flex-end; margin-top:10px;">
-            <button class="btn-select-card filled" style="padding:7px 18px; font-size:12px; font-weight:700;" onclick="processCommitteeChallengesInput()">
-              Procesar y Cargar al Radar
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- TOP 3 RETOS QUE MÁS SE ADAPTAN (RECOMENDACIÓN ESTRATÉGICA RALLY) -->
-      ${hasChallenges ? (() => {
-        const sorted = [...list].sort((a, b) => (b.winRate || 80) - (a.winRate || 80)).slice(0, 3);
-        return `
-          <div style="background:#FFFFFF; border:1px solid #BFDBFE; border-radius:16px; padding:20px 24px; margin-bottom:24px; box-shadow:0 4px 16px -2px rgba(8, 102, 245, 0.06);">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
-              <div style="display:flex; align-items:center; gap:8px;">
-                <span class="rank-badge-pill rank-top1">TOP RECOMENDADOS</span>
-                <h2 style="font-size:16px; font-weight:800; color:#0D1B35; margin:0;">
-                  Retos con Mayor Potencial de Victoria (Rúbrica 100 Pts)
-                </h2>
-              </div>
-              <span style="font-size:11.5px; color:#5C7193; font-weight:600;">Calibrado con historial de ganadores 2023–2026</span>
-            </div>
-
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(290px, 1fr)); gap:14px;">
-              ${sorted.map((topCh, idx) => {
-                const rankClass = idx === 0 ? 'rank-top1' : idx === 1 ? 'rank-top2' : 'rank-top3';
-                const rankLabel = idx === 0 ? '🏆 #1 MÁS VIABLE' : idx === 1 ? '🥈 #2 ALTO IMPACTO' : '🥉 #3 DIFERENCIADO';
-                return `
-                  <div style="background:#F8FAFD; border:1px solid #DCE7F5; border-radius:12px; padding:16px; display:flex; flex-direction:column; justify-content:space-between;">
-                    <div>
-                      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                        <span class="rank-badge-pill ${rankClass}">${rankLabel}</span>
-                        <span style="font-family:var(--font-mono); font-size:13px; font-weight:900; color:#0866F5;">${topCh.winRate || 90}% WOW</span>
-                      </div>
-                      <h4 style="font-size:13.5px; font-weight:800; color:#0D1B35; line-height:1.35; margin-bottom:8px;">
-                        #${topCh.id} · ${topCh.title}
-                      </h4>
-                      <p style="font-size:11.5px; color:#5C7193; line-height:1.45; margin-bottom:12px;">
-                        <strong>Por qué se adapta:</strong> ${topCh.noveltyReason ? topCh.noveltyReason.slice(0, 110) + '...' : topCh.wowProposal.slice(0, 110) + '...'}
-                      </p>
-                    </div>
-                    <div style="display:flex; gap:6px; padding-top:8px; border-top:1px solid #E2E8F0;">
-                      <button class="btn-pill-ghost" style="flex:1; font-size:11px; padding:6px;" onclick="openChallengeDetailModal('${topCh.id}')">
-                        Analizar Detalles 🔍
-                      </button>
-                      <button class="btn-select-card filled" style="font-size:11px; padding:6px 12px;" onclick="selectChallenge('${topCh.id}', false)">
-                        Seleccionar
-                      </button>
-                    </div>
-                  </div>
-                `;
-              }).join("")}
-            </div>
-          </div>
-        `;
-      })() : ""}
-
       ${!hasChallenges ? `
-        <div style="text-align:center; padding:48px 24px; background:#F8FAFD; border:1px solid #DCE7F5; border-radius:16px;">
-          <h3 style="font-size:16px; font-weight:800; color:#0D1B35; margin-bottom:6px;">No hay retos en el radar todavía</h3>
-          <p style="font-size:13px; color:#5C7193; margin-bottom:20px; max-width:480px; margin-left:auto; margin-right:auto;">
-            Carga el banco de 9 retos oficiales del Rally 2026 para explorar las demandas oficiales y propuestas WOW.
+        <!-- Estado Inicial: Espera de Retos del Evento en Vivo (Sin asumir retos ni inventar) -->
+        <div class="phase-header" style="margin-bottom:20px;">
+          <h1 class="phase-title" style="font-size:28px; font-weight:900; color:#0D1B35; margin-bottom:6px; letter-spacing:-0.02em;">
+            Retos del <span class="phase-title-accent" style="color:#0866F5;">Comité en Vivo</span>
+          </h1>
+          <p class="phase-subtitle" style="font-size:13.5px; color:#5C7193; line-height:1.45;">
+            El sistema no asume ni inventa retos por anticipado. Cuando el comité del certamen libere los desafíos de este año, pega el texto aquí para que el motor formule soluciones tácticas sugeridas para cada uno.
           </p>
-          <button class="btn-select-card filled" style="padding:10px 24px; font-size:13px;" onclick="loadReferenceChallenges()">
-            Cargar 9 Retos Oficiales 2026
-          </button>
+        </div>
+
+        <div style="background:#FFFFFF; border:1px solid #BFDBFE; border-radius:14px; padding:24px; margin-bottom:24px; box-shadow:0 4px 16px -2px rgba(8, 102, 245, 0.05);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+            <div style="font-size:13.5px; font-weight:800; color:#0D1B35;">Ingreso Oficial de Desafíos del Certamen</div>
+            <span style="font-size:10.5px; font-weight:800; color:#0866F5; font-family:var(--font-mono); background:#EFF6FF; border:1px solid #BFDBFE; padding:3px 8px; border-radius:4px;">ESPERANDO COMUNICADO</span>
+          </div>
+          <p style="font-size:12px; color:#5C7193; margin-bottom:14px; line-height:1.5;">
+            Pega el texto del comunicado oficial (puedes incluir múltiples retos). El sistema clasificará cada reto y te propondrá soluciones arquitectónicas ganadoras.
+          </p>
+          <textarea id="raw-committee-challenges" rows="7" style="width:100%; border:1px solid #CBD5E1; border-radius:8px; padding:12px; font-size:12px; font-family:var(--font-mono); box-sizing:border-box; background:#F8FAFD; line-height:1.5;"
+            placeholder="Pega aquí el comunicado oficial de retos del comité...&#10;&#10;Ejemplo:&#10;RETO 01: Reconversión y segunda vida de motores&#10;Demanda del comité: Diseñar sistemas que reutilicen motores eléctricos en desuso para tracción agrícola...&#10;&#10;RETO 02: Red comunitaria para prevención de inundaciones&#10;Demanda del comité: Alerta temprana de crecidas de ríos con tecnología local..."></textarea>
+          
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:14px; flex-wrap:wrap; gap:10px;">
+            <button class="btn-pill-ghost" style="font-size:11px; padding:6px 12px;" onclick="loadReferenceChallenges()">
+              Simulacro: Cargar banco histórico de prueba (offline)
+            </button>
+            <button class="btn-select-card filled" style="padding:10px 24px; font-size:13px; font-weight:800;" onclick="processCommitteeChallengesInput()">
+              Cargar Retos en Vivo y Sugerir Soluciones ${SVG.arrowRight}
+            </button>
+          </div>
         </div>
       ` : `
-        <!-- Filtros de Categoría -->
+        <div class="phase-header" style="margin-bottom:20px;">
+          <h1 class="phase-title" style="font-size:28px; font-weight:900; color:#0D1B35; margin-bottom:6px; letter-spacing:-0.02em;">
+            Retos en Vivo & <span class="phase-title-accent" style="color:#0866F5;">Soluciones Sugeridas</span>
+          </h1>
+          <p class="phase-subtitle" style="font-size:13.5px; color:#5C7193; line-height:1.45;">
+            ${list.length} retos cargados del evento en vivo. Revisa las soluciones tácticas generadas para cada desafío y selecciona la opción de tu equipo.
+          </p>
+        </div>
+
+        <!-- Barra de Gestión de Retos en Vivo -->
+        <div style="background:#FFFFFF; border:1px solid #DCE7F5; border-radius:12px; padding:14px 18px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span style="font-family:var(--font-mono); font-size:11px; font-weight:800; background:#EFF6FF; color:#0866F5; border:1px solid #BFDBFE; padding:3px 8px; border-radius:4px;">
+              ${list.length} RETOS EN RADAR
+            </span>
+            <span style="font-size:12px; color:#5C7193;">Edición oficial activa</span>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <button class="btn-pill-light" style="font-size:11.5px; padding:6px 12px;" onclick="toggleCustomChallengeInput()">
+              ${SVG.plus} Actualizar / Re-pegar Retos
+            </button>
+            <button class="btn-pill-ghost" style="font-size:11.5px; padding:6px 12px; color:#DC2626;" onclick="clearAllChallenges()">
+              Limpiar Retos
+            </button>
+          </div>
+        </div>
+
+        <div id="custom-challenge-input-box" style="display:none; background:#FFFFFF; border:1px solid #CBD5E1; border-radius:12px; padding:16px; margin-bottom:20px;">
+          <textarea id="raw-committee-challenges" rows="4" style="width:100%; border:1px solid #CBD5E1; border-radius:8px; padding:10px; font-size:12px; font-family:var(--font-mono); box-sizing:border-box; background:#F8FAFD;"
+            placeholder="Pega aquí el nuevo comunicado del comité..."></textarea>
+          <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:10px;">
+            <button class="btn-secondary" style="font-size:11.5px; padding:6px 14px;" onclick="toggleCustomChallengeInput()">Cancelar</button>
+            <button class="btn-select-card filled" style="padding:6px 18px; font-size:12px; font-weight:700;" onclick="processCommitteeChallengesInput()">Re-procesar Retos</button>
+          </div>
+        </div>
+
+        <!-- Filtros -->
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
           <div style="display:flex; gap:8px;">
             <button class="btn-pill-light" style="${challengeFilter === 'all' ? 'background:#0866F5; color:#fff; border-color:#0866F5;' : ''} padding:6px 14px; font-size:12px; font-weight:700;" onclick="challengeFilter='all'; renderTab('challenges');">
@@ -1716,52 +1782,49 @@ function renderViewChallenges() {
           <span style="font-size:12px; font-weight:700; color:#5C7193; font-family:var(--font-mono);">${filtered.length} Retos Disponibles</span>
         </div>
 
-        <!-- Lista Plana y Limpia de Retos -->
-        <div style="display:flex; flex-direction:column; gap:14px;">
+        <!-- Catálogo de Retos y Soluciones Sugeridas -->
+        <div style="display:flex; flex-direction:column; gap:16px;">
           ${filtered.map(ch => {
             const isSelected = state.challenge_id === ch.id;
             const odsStr = Array.isArray(ch.ods) ? ch.ods.join(", ") : (ch.ods || "ODS 9");
             return `
-              <div style="background:#FFFFFF; border:1.5px solid ${isSelected ? '#0866F5' : '#DCE7F5'}; border-radius:14px; padding:18px 22px; transition:all 120ms ease; box-shadow:0 1px 4px rgba(13, 27, 53, 0.03);">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:8px;">
-                  <div style="display:flex; align-items:center; gap:8px;">
-                    <span style="font-family:var(--font-mono); font-size:11px; font-weight:800; background:#F0F6FF; color:#0866F5; padding:3px 8px; border-radius:6px; border:1px solid #DCE7F5;">
+              <div class="challenge-card-item" style="background:#FFFFFF; border:1.5px solid ${isSelected ? '#0866F5' : '#DCE7F5'}; border-radius:14px; padding:20px; transition:all 120ms ease; box-shadow:0 1px 4px rgba(13, 27, 53, 0.03);">
+                <div class="challenge-card-header" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:10px;">
+                  <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                    <span style="font-family:var(--font-mono); font-size:11px; font-weight:800; background:#F0F6FF; color:#0866F5; padding:3px 8px; border-radius:6px; border:1px solid #BFDBFE;">
                       RETO #${ch.id}
                     </span>
                     <span style="font-size:11.5px; font-weight:700; color:#5C7193;">${ch.category} · ${odsStr}</span>
-                    ${isSelected ? `<span style="font-size:10.5px; font-weight:800; color:#059669; background:#ECFDF5; border:1px solid #A7F3D0; padding:2px 8px; border-radius:9999px;">SELECCIONADO</span>` : ""}
+                    ${isSelected ? `<span style="font-size:10.5px; font-weight:800; color:#0866F5; background:#EFF6FF; border:1px solid #BFDBFE; padding:2px 8px; border-radius:9999px;">SELECCIONADO</span>` : ""}
                   </div>
-                  <div style="display:flex; align-items:center; gap:10px;">
-                    <div style="text-align:right;">
-                      <span style="font-family:var(--font-mono); font-size:14px; font-weight:900; color:${ch.winRate >= 90 ? '#059669' : '#0866F5'};">${ch.winRate || 88}%</span>
-                      <span style="font-size:10px; color:#5C7193; display:block;">Prob. Victoria</span>
-                    </div>
-                    <button class="btn-pill-ghost" style="font-size:11.5px; padding:6px 12px;" onclick="openChallengeDetailModal('${ch.id}')" title="Ver ideas sugeridas, adaptación a Nicaragua y precedentes ganadores">
-                      Ver Ideas Sugeridas 🔍
+                  <div class="challenge-card-actions" style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                    <button class="btn-pill-ghost" style="font-size:11.5px; padding:6px 12px;" onclick="openChallengeDetailModal('${ch.id}')" title="Ver análisis estratégico y precedentes">
+                      Análisis Estratégico
                     </button>
                     <button class="btn-select-card ${isSelected ? 'filled' : 'outline'}" style="padding:7px 16px; font-size:12px; font-weight:700;" onclick="selectChallenge('${ch.id}', ${isSelected ? 'true' : 'false'})">
-                      ${isSelected ? 'Continuar con este Reto →' : 'Elegir este Reto'}
+                      ${isSelected ? 'Continuar con este Reto →' : 'Elegir este Reto y Solución'}
                     </button>
                   </div>
                 </div>
 
-                <h3 style="font-size:16px; font-weight:800; color:#0D1B35; line-height:1.35; margin-bottom:14px; cursor:pointer;" onclick="openChallengeDetailModal('${ch.id}')">
+                <h3 style="font-size:16px; font-weight:800; color:#0D1B35; line-height:1.35; margin-bottom:14px;">
                   ${ch.title}
                 </h3>
 
-                <!-- Comparativa limpia en 2 columnas -->
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; background:#F8FAFD; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px;">
-                  <div>
-                    <div style="font-size:11px; font-weight:800; color:#5C7193; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:4px; display:flex; align-items:center; gap:5px;">
+                <!-- Comparativa: Demanda Oficial vs Solución Sugerida por el Sistema -->
+                <div class="challenge-card-split" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px;">
+                  <div style="background:#F8FAFD; border:1px solid #E2E8F0; border-radius:10px; padding:14px;">
+                    <div style="font-size:10.5px; font-weight:800; color:#5C7193; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:6px; display:flex; align-items:center; gap:5px;">
                       ${SVG.shield} Demanda Oficial del Comité
                     </div>
-                    <p style="font-size:12.5px; color:#334155; line-height:1.5;">${ch.officialExpectation || 'Demanda técnica y comunitaria oficial.'}</p>
+                    <p style="font-size:12.5px; color:#334155; line-height:1.5; margin:0;">${ch.officialExpectation || 'Demanda técnica oficial anunciada por el comité.'}</p>
                   </div>
-                  <div style="border-left:1px solid #E2E8F0; padding-left:14px;">
-                    <div style="font-size:11px; font-weight:800; color:#0866F5; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:4px; display:flex; align-items:center; gap:5px;">
-                      ${SVG.spark} Propuesta de Vanguardia (WOW)
+
+                  <div class="challenge-col-wow" style="background:#EFF6FF; border:1px solid #BFDBFE; border-radius:10px; padding:14px;">
+                    <div style="font-size:10.5px; font-weight:800; color:#0866F5; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:6px; display:flex; align-items:center; gap:5px;">
+                      ${SVG.spark} Solución Técnica Sugerida por el Sistema
                     </div>
-                    <p style="font-size:12.5px; color:#0D1B35; font-weight:600; line-height:1.5;">${ch.wowProposal || 'Enfoque de solución disruptivo con tecnología de vanguardia.'}</p>
+                    <p style="font-size:12.5px; color:#0D1B35; font-weight:600; line-height:1.5; margin:0;">${ch.wowProposal || 'Arquitectura técnica de alto impacto con hardware accesible y telemetría autónoma.'}</p>
                   </div>
                 </div>
               </div>
@@ -1786,6 +1849,86 @@ function toggleCustomChallengeInput() {
   }
 }
 
+function clearAllChallenges() {
+  if (confirm("¿Limpiar todos los retos cargados para ingresar un nuevo comunicado oficial?")) {
+    state.challenges = [];
+    state.challenge_id = "";
+    state.challenge_title = "";
+    saveState();
+    renderTab("challenges");
+    renderNavigation();
+  }
+}
+
+// ── MOTOR GENERADOR DE SOLUCIONES TÁCTICAS PARA RETOS EN VIVO ────────────────
+function generateTacticalSolution(title, description, category) {
+  const t = (title + " " + description).toLowerCase();
+
+  if (t.includes("agua") || t.includes("inunda") || t.includes("rio") || t.includes("río") || t.includes("hidro") || t.includes("cauce") || t.includes("cuenca")) {
+    return {
+      wowProposal: "Red ciberfísica de telemetría hiperlocal con nodos ultrasónicos no invasivos, microcontroladores ESP32 de ultra bajo consumo, protocolo LoRaWAN de largo alcance y compuerta electromecánica de alivio con 30 minutos de anticipación comunitaria.",
+      nicaraguaAdaptation: "Anclaje prioritario en puntos críticos de cauces urbanos de Managua (Cauce Oriental) y cuencas vulnerables de Matagalpa o Rivas, con enlace directo a brigadistas comunitarios CODEPRED sin depender de red celular.",
+      noveltyReason: "Elimina la ceguera hidrométrica mediante hardware COTS inferior a $75 USD por nodo con respaldo fotovoltaico y telemetría garantizada sin luz solar.",
+      winnerPattern: "Patrón Techriders / HidroVigía: hardware tangible in situ con métricas verificables de mitigación de riesgo.",
+      ods: ["ODS 11", "ODS 13", "ODS 3"],
+      winRate: 94
+    };
+  }
+
+  if (t.includes("motor") || t.includes("electr") || t.includes("energ") || t.includes("bater") || t.includes("solar") || t.includes("potencia")) {
+    return {
+      wowProposal: "Kit de reconversión electromecánica con variador de frecuencia universal reciclado, acople manufacturado en PETG de ingeniería y banco de tracción de bajo consumo para maquinaria productiva rural.",
+      nicaraguaAdaptation: "Sustitución de motores diésel costosos por motores de lavadora y electrodomésticos reacondicionados en cooperativas agropecuarias de Boaco y Chontales.",
+      noveltyReason: "Transición de reciclaje pasivo a economía circular productiva de alto torque con costo total de reconversión menor a $65 USD por unidad.",
+      winnerPattern: "Patrón Avocado / Revolt: economía circular aplicada a cadenas de valor existentes.",
+      ods: ["ODS 12", "ODS 8", "ODS 9"],
+      winRate: 92
+    };
+  }
+
+  if (t.includes("agric") || t.includes("cultiv") || t.includes("suelo") || t.includes("abono") || t.includes("compost") || t.includes("alimento") || t.includes("plaga")) {
+    return {
+      wowProposal: "Biorreactor modular con matriz de sensado multiparamétrico (pH, humedad de lecho, NPK), acelerador térmico por convección solar pasiva y dosificador de bioinsumos automatizado para ciclos agrícolas cerrados.",
+      nicaraguaAdaptation: "Optimizado para pequeños productores de hortalizas y granos básicos en Sébaco y Estelí, reduciendo en 40% el gasto en fertilizantes químicos importados.",
+      noveltyReason: "Acelera el tiempo de biodegradación de 90 a 18 días mediante control térmico de bajo costo con insumos locales.",
+      winnerPattern: "Patrón AgroTech: validación agronómica directa con reducción de costos operacionales comprobables.",
+      ods: ["ODS 2", "ODS 12", "ODS 15"],
+      winRate: 91
+    };
+  }
+
+  if (t.includes("residu") || t.includes("plastic") || t.includes("plástic") || t.includes("basura") || t.includes("recicl") || t.includes("desecho")) {
+    return {
+      wowProposal: "Micro-planta modular de trituración, clasificación densimétrica y termocompresión de polímeros posconsumo para fabricación in-situ de adoquines ecológicos y perfiles estructurales de bajo costo.",
+      nicaraguaAdaptation: "Alianza con cooperativas de recicladores urbanos en Managua y León, transformando plásticos difíciles en mobiliario comunal y barreras de contención.",
+      noveltyReason: "Evita la logística cara de exportación de chatarra plástica al procesar y convertir el material en el mismo municipio con retorno de inversión en 8 meses.",
+      winnerPattern: "Patrón EcoLadrillo: producto final de construcción con prueba de resistencia de carga validada.",
+      ods: ["ODS 12", "ODS 11", "ODS 9"],
+      winRate: 89
+    };
+  }
+
+  if (t.includes("salud") || t.includes("medic") || t.includes("vacuna") || t.includes("frio") || t.includes("frío") || t.includes("hospital") || t.includes("enferm")) {
+    return {
+      wowProposal: "Contenedor isotérmico inteligente con módulo Peltier termoeléctrico autorregulado, telemetría de temperatura/humedad en tiempo real y registro inmutable para preservación de cadena de frío en transporte rural.",
+      nicaraguaAdaptation: "Rutas fluviales y terrestres del Caribe Norte y Sur (MINSA / SILAIS), garantizando la integridad de sueros antiofídicos y vacunas en zonas sin electrificación fija.",
+      noveltyReason: "Opera con banco LiFePO4 recargable por panel flexible de mochila manteniendo 2°C a 8°C durante 36 horas continuas.",
+      winnerPattern: "Patrón MediCold / SaludMóvil: impacto humanitario directo con tecnología biomédica accesible.",
+      ods: ["ODS 3", "ODS 10", "ODS 9"],
+      winRate: 93
+    };
+  }
+
+  return {
+    wowProposal: `Solución ciberfísica modular con telemetría autónoma, hardware COTS embebido de bajo consumo y arquitectura descentralizada optimizada para resolver ${title.toLowerCase()}.`,
+    nicaraguaAdaptation: "Arquitectura concebida con componentes comerciales de bajo costo disponibles localmente, integrable en planes municipales y cooperativas comunitarias.",
+    noveltyReason: "Rompe los enfoques convencionales al combinar sensado in-situ, cero dependencia de infraestructura costosa y despliegue rápido en 24 horas.",
+    winnerPattern: "Solución integral: hardware tangible, viabilidad económica demostrada y alineación con rúbrica oficial (100 Pts).",
+    ods: ["ODS 9", "ODS 12"],
+    winRate: 90
+  };
+}
+
 function processCommitteeChallengesInput() {
   const txt = (document.getElementById("raw-committee-challenges").value || "").trim();
   if (!txt) {
@@ -1800,37 +1943,47 @@ function processCommitteeChallengesInput() {
   lines.forEach(l => {
     const match = l.match(/^(?:reto|desaf[ií]o)?\s*#?\s*(\d+)[:\.\-\s]+(.*)/i);
     if (match) {
-      if (current) parsed.push(current);
+      if (current) {
+        const tactical = generateTacticalSolution(current.title, current.officialExpectation, current.category);
+        Object.assign(current, tactical);
+        parsed.push(current);
+      }
+      const title = match[2].trim();
+      const category = title.toLowerCase().includes("social") || title.toLowerCase().includes("comun") ? "Impacto Social" : "Innovación";
       current = {
         id: match[1].padStart(2, "0"),
-        title: match[2].trim(),
-        category: match[2].toLowerCase().includes("social") || match[2].toLowerCase().includes("comun") ? "Impacto Social" : "Innovación",
-        ods: ["ODS 9", "ODS 12"],
-        winRate: 90,
-        compDensity: "Baja (Nueva edición)",
+        title: title,
+        category: category,
         officialExpectation: "",
-        wowProposal: `Solución tecnológica modular asistida por telemetría autónoma y bajo consumo optimizada para resolver ${match[2].toLowerCase()}.`
+        compDensity: "Edición Oficial en Vivo"
       };
     } else if (current) {
       current.officialExpectation = (current.officialExpectation + " " + l).trim();
     }
   });
-  if (current) parsed.push(current);
+
+  if (current) {
+    const tactical = generateTacticalSolution(current.title, current.officialExpectation, current.category);
+    Object.assign(current, tactical);
+    parsed.push(current);
+  }
 
   if (parsed.length > 0) {
     state.challenges = parsed;
     saveState();
     renderTab("challenges");
   } else {
+    const title = lines[0];
+    const expectation = lines.slice(1).join(" ") || lines[0];
+    const category = title.toLowerCase().includes("social") ? "Impacto Social" : "Innovación";
+    const tactical = generateTacticalSolution(title, expectation, category);
     state.challenges = [{
       id: "01",
-      title: lines[0],
-      category: "Innovación",
-      ods: ["ODS 9", "ODS 12"],
-      winRate: 90,
-      compDensity: "Nueva edición",
-      officialExpectation: lines.slice(1).join(" ") || lines[0],
-      wowProposal: `Arquitectura técnica modular con sensores in-situ y bajo consumo para ${lines[0].toLowerCase()}.`
+      title: title,
+      category: category,
+      compDensity: "Edición Oficial en Vivo",
+      officialExpectation: expectation,
+      ...tactical
     }];
     saveState();
     renderTab("challenges");
@@ -1845,10 +1998,8 @@ function selectChallenge(id, proceedImmediately = false) {
   state.challenge_title = ch.title;
   state.category = ch.category;
 
-  if (!state.solution_thesis) {
-    state.solution_raw_input = ch.wowProposal;
-    state.solution_thesis = ch.wowProposal;
-  }
+  state.solution_raw_input = ch.wowProposal;
+  state.solution_thesis = ch.wowProposal;
 
   saveState();
   if (proceedImmediately) {
@@ -1900,46 +2051,46 @@ function openChallengeDetailModal(chId) {
         ${ch.title}
       </h2>
 
-      <!-- Tarjeta 1: Propuesta WOW de Vanguardia -->
-      <div class="strategy-breakdown-box" style="border-left:4px solid #0866F5;">
+      <!-- Tarjeta 1: Propuesta Técnica de Vanguardia -->
+      <div class="strategy-breakdown-box" style="border-left:4px solid #0866F5; background:#F8FAFD;">
         <div class="strategy-breakdown-title" style="color:#0866F5;">
-          ${SVG.spark} Enfoque WOW Sugerido por el Motor de Innovación
+          ${SVG.spark} Solución Técnica Sugerida por el Sistema
         </div>
         <p style="font-size:13px; color:#0D1B35; font-weight:600; line-height:1.55; margin:0;">
           ${ch.wowProposal || 'Arquitectura técnica modular con hardware comercial de bajo costo y telemetría autónoma.'}
         </p>
       </div>
 
-      <!-- Tarjeta 2: Adaptación Territorial a Nicaragua -->
-      <div class="strategy-breakdown-box" style="border-left:4px solid #059669;">
-        <div class="strategy-breakdown-title" style="color:#059669;">
-          🇳🇮 ¿Cómo se adapta a Nicaragua y por qué es factible?
+      <!-- Tarjeta 2: Adaptación Territorial y Factibilidad Local -->
+      <div class="strategy-breakdown-box" style="border-left:4px solid #1D4ED8; background:#F8FAFD;">
+        <div class="strategy-breakdown-title" style="color:#1D4ED8;">
+          ${SVG.shield} Factibilidad Territorial y Adaptación Local
         </div>
         <p style="font-size:12.5px; color:#334155; line-height:1.5; margin:0;">
           ${ch.nicaraguaAdaptation || 'Alineado a las necesidades de municipios y cooperativas locales, reduciendo costos con insumos accesibles en el mercado nacional.'}
         </p>
       </div>
 
-      <!-- Tarjeta 3: Por qué es Novedoso y Rompe Clichés -->
-      <div class="strategy-breakdown-box" style="border-left:4px solid #D97706;">
-        <div class="strategy-breakdown-title" style="color:#D97706;">
-          💡 Factor de Novedad & Diferenciación ante el Jurado
+      <!-- Tarjeta 3: Factor de Novedad y Diferenciación ante el Jurado -->
+      <div class="strategy-breakdown-box" style="border-left:4px solid #0284C7; background:#F8FAFD;">
+        <div class="strategy-breakdown-title" style="color:#0284C7;">
+          ${SVG.chevronRight} Factor de Novedad y Diferenciación Técnica
         </div>
         <p style="font-size:12.5px; color:#334155; line-height:1.5; margin:0;">
-          ${ch.noveltyReason || 'Diseño modular parametrizado que elimina la complejidad excesiva y permite una puesta en marcha real de $4,000 a $6,000 USD.'}
+          ${ch.noveltyReason || 'Diseño modular parametrizado que elimina la complejidad excesiva y permite una puesta en marcha real accesible.'}
         </p>
       </div>
 
       <!-- Tarjeta 4: Patrón de Ganadores Históricos -->
-      <div class="strategy-breakdown-box" style="border-left:4px solid #475569;">
-        <div class="strategy-breakdown-title" style="color:#475569;">
-          🏆 Patrón de Ganadores Históricos Latam / Nacional
+      <div class="strategy-breakdown-box" style="border-left:4px solid #334155; background:#F8FAFD;">
+        <div class="strategy-breakdown-title" style="color:#334155;">
+          ${SVG.info} Patrón Histórico de Victoria y Precedente
         </div>
         <p style="font-size:12px; color:#475569; line-height:1.5; margin:0 0 6px 0;">
           ${ch.winnerPattern || 'Soluciones ganadoras previas combinaron hardware tangible con métricas de impacto verificables en campo.'}
         </p>
         <span style="font-size:11px; font-weight:700; color:#5C7193; font-family:var(--font-mono);">
-          Precedente de referencia: ${ch.precedent || 'Casos de éxito Rally 2023-2026'}
+          Precedente de referencia: ${ch.precedent || 'Casos de éxito Rally'}
         </span>
       </div>
 
@@ -1979,7 +2130,7 @@ function renderViewSolution() {
         <p class="phase-subtitle">${state.challenge_title}</p>
       </div>
       <div style="display:flex; gap:10px; align-items:center;">
-        <button class="btn-pill-light" onclick="switchTab('challenges')" style="font-size:12px; padding:8px 14px; display:inline-flex; align-items:center; gap:6px;">
+        <button class="btn-pill-light" onclick="clearSelectedChallenge(); switchTab('challenges');" style="font-size:12px; padding:8px 14px; display:inline-flex; align-items:center; gap:6px;" title="Volver al catálogo para elegir o cambiar de reto">
           ← Cambiar Reto
         </button>
         <button class="btn-primary" onclick="approveSolutionAndUnlock()" style="padding:8px 16px; font-size:12px;">
@@ -2598,47 +2749,49 @@ function renderViewBudget() {
       </div>
     `}
 
-    <div class="workbench-card">
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Elemento / Componente</th>
-            <th style="width:80px; text-align:center;">Unidades</th>
-            <th style="width:120px; text-align:right;">Costo Unit. (USD)</th>
-            <th style="width:120px; text-align:right;">Subtotal</th>
-            <th style="width:60px; text-align:center;">Acción</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${state.budget.map((it, idx) => `
+    <div class="workbench-card" style="padding:0; overflow:hidden;">
+      <div class="table-responsive" style="margin-bottom:0;">
+        <table class="data-table">
+          <thead>
             <tr>
-              <td>
-                <input type="text" value="${it.element}" style="width:100%; border:none; background:transparent; font-size:12px; font-weight:600;" onchange="updateBudgetItem(${idx}, 'element', this.value)">
-                <div style="font-size:10px; color:var(--text-muted);">${it.url ? `<a href="${it.url}" target="_blank" style="color:var(--color-primary); text-decoration:none;">Enlace proveedor ${SVG.external}</a>` : 'Sin enlace'}</div>
-              </td>
-              <td style="text-align:center;">
-                <input type="number" value="${it.units}" style="width:60px; text-align:center; border:1px solid var(--border-light); border-radius:3px; padding:2px;" onchange="updateBudgetItem(${idx}, 'units', this.value)">
-              </td>
-              <td style="text-align:right;">
-                <input type="number" step="0.5" value="${it.unit_cost}" style="width:80px; text-align:right; border:1px solid var(--border-light); border-radius:3px; padding:2px;" onchange="updateBudgetItem(${idx}, 'unit_cost', this.value)">
-              </td>
-              <td style="text-align:right; font-family:var(--font-mono); font-weight:700;">
-                $${(it.units * it.unit_cost).toFixed(2)}
-              </td>
-              <td style="text-align:center;">
-                <button type="button" class="btn-secondary" style="padding:2px 6px; font-size:10px; color:#ef4444;" onclick="removeBudgetItem(${idx})">✕</button>
-              </td>
+              <th>Elemento / Componente</th>
+              <th style="width:80px; text-align:center;">Unidades</th>
+              <th style="width:120px; text-align:right;">Costo Unit. (USD)</th>
+              <th style="width:120px; text-align:right;">Subtotal</th>
+              <th style="width:60px; text-align:center;">Acción</th>
             </tr>
-          `).join("")}
-        </tbody>
-        <tfoot>
-          <tr style="background:#f8fafc; font-weight:800;">
-            <td colspan="3" style="text-align:right; font-size:12px;">TOTAL PRESUPUESTO PUESTA EN MARCHA:</td>
-            <td style="text-align:right; font-family:var(--font-mono); font-size:14px; color:var(--color-primary);">$${total.toFixed(2)} USD</td>
-            <td></td>
-          </tr>
-        </tfoot>
-      </table>
+          </thead>
+          <tbody>
+            ${state.budget.map((it, idx) => `
+              <tr>
+                <td>
+                  <input type="text" value="${it.element}" style="width:100%; border:none; background:transparent; font-size:12px; font-weight:600;" onchange="updateBudgetItem(${idx}, 'element', this.value)">
+                  <div style="font-size:10px; color:var(--text-muted);">${it.url ? `<a href="${it.url}" target="_blank" style="color:var(--color-primary); text-decoration:none;">Enlace proveedor ${SVG.external}</a>` : 'Sin enlace'}</div>
+                </td>
+                <td style="text-align:center;">
+                  <input type="number" value="${it.units}" style="width:60px; text-align:center; border:1px solid var(--border-light); border-radius:3px; padding:2px;" onchange="updateBudgetItem(${idx}, 'units', this.value)">
+                </td>
+                <td style="text-align:right;">
+                  <input type="number" step="0.5" value="${it.unit_cost}" style="width:80px; text-align:right; border:1px solid var(--border-light); border-radius:3px; padding:2px;" onchange="updateBudgetItem(${idx}, 'unit_cost', this.value)">
+                </td>
+                <td style="text-align:right; font-family:var(--font-mono); font-weight:700;">
+                  $${(it.units * it.unit_cost).toFixed(2)}
+                </td>
+                <td style="text-align:center;">
+                  <button type="button" class="btn-secondary" style="padding:2px 6px; font-size:10px; color:#ef4444;" onclick="removeBudgetItem(${idx})">✕</button>
+                </td>
+              </tr>
+            `).join("")}
+          </tbody>
+          <tfoot>
+            <tr style="background:#f8fafc; font-weight:800;">
+              <td colspan="3" style="text-align:right; font-size:12px;">TOTAL PRESUPUESTO PUESTA EN MARCHA:</td>
+              <td style="text-align:right; font-family:var(--font-mono); font-size:14px; color:var(--color-primary);">$${total.toFixed(2)} USD</td>
+              <td></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
     </div>
   `;
 }
@@ -2746,48 +2899,50 @@ function renderViewResources() {
 
     <div class="workbench-card">
       <h3 style="margin-bottom:12px;">Descarga Directa de Entregables Generados (1-Click)</h3>
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Documento / Recurso</th>
-            <th>Formato</th>
-            <th>Uso en Competencia</th>
-            <th>Descarga</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Matriz de Deliberación de Retos</strong></td>
-            <td><code>.DOCX</code></td>
-            <td>Catálogo de retos + pronósticos WOW + tabla de votación</td>
-            <td><a href="/docs/Matriz_Seleccion_Desafios_2026.docx" download class="btn-primary" style="padding:4px 8px; font-size:11px; text-decoration:none;">Descargar Word ↓</a></td>
-          </tr>
-          <tr>
-            <td><strong>Documento Pautado Oficial</strong></td>
-            <td><code>.DOCX</code></td>
-            <td>5 secciones oficiales redactadas y validadas con límites de caracteres</td>
-            <td><a href="/docs/pautado_draft.docx" download class="btn-secondary" style="padding:4px 8px; font-size:11px; text-decoration:none;">Descargar Word ↓</a></td>
-          </tr>
-          <tr>
-            <td><strong>Presupuesto Puesta en Marcha</strong></td>
-            <td><code>.XLSX</code></td>
-            <td>Partidas sustentadas con proveedores Alibaba y flete de importación</td>
-            <td><a href="/budget/budget.xlsx" download class="btn-secondary" style="padding:4px 8px; font-size:11px; text-decoration:none;">Descargar Excel ↓</a></td>
-          </tr>
-          <tr>
-            <td><strong>Shotlist para Editor de Video (120s)</strong></td>
-            <td><code>.CSV</code></td>
-            <td>Pauta para CapCut / Premiere con tiempos exactos y textos</td>
-            <td><a href="/script/shotlist.csv" download class="btn-secondary" style="padding:4px 8px; font-size:11px; text-decoration:none;">Descargar CSV ↓</a></td>
-          </tr>
-          <tr>
-            <td><strong>Guion de Locución Limpio</strong></td>
-            <td><code>.TXT</code></td>
-            <td>Texto continuo a 135 ppm para el locutor o motor TTS</td>
-            <td><a href="/script/narration.txt" download class="btn-secondary" style="padding:4px 8px; font-size:11px; text-decoration:none;">Descargar TXT ↓</a></td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-responsive" style="margin-bottom:0;">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Documento / Recurso</th>
+              <th>Formato</th>
+              <th>Uso en Competencia</th>
+              <th>Descarga</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Matriz de Deliberación de Retos</strong></td>
+              <td><code>.DOCX</code></td>
+              <td>Catálogo de retos + pronósticos WOW + tabla de votación</td>
+              <td><a href="/docs/Matriz_Seleccion_Desafios_2026.docx" download class="btn-primary" style="padding:4px 8px; font-size:11px; text-decoration:none;">Descargar Word ↓</a></td>
+            </tr>
+            <tr>
+              <td><strong>Documento Pautado Oficial</strong></td>
+              <td><code>.DOCX</code></td>
+              <td>5 secciones oficiales redactadas y validadas con límites de caracteres</td>
+              <td><a href="/docs/pautado_draft.docx" download class="btn-secondary" style="padding:4px 8px; font-size:11px; text-decoration:none;">Descargar Word ↓</a></td>
+            </tr>
+            <tr>
+              <td><strong>Presupuesto Puesta en Marcha</strong></td>
+              <td><code>.XLSX</code></td>
+              <td>Partidas sustentadas con proveedores Alibaba y flete de importación</td>
+              <td><a href="/budget/budget.xlsx" download class="btn-secondary" style="padding:4px 8px; font-size:11px; text-decoration:none;">Descargar Excel ↓</a></td>
+            </tr>
+            <tr>
+              <td><strong>Shotlist para Editor de Video (120s)</strong></td>
+              <td><code>.CSV</code></td>
+              <td>Pauta para CapCut / Premiere con tiempos exactos y textos</td>
+              <td><a href="/script/shotlist.csv" download class="btn-secondary" style="padding:4px 8px; font-size:11px; text-decoration:none;">Descargar CSV ↓</a></td>
+            </tr>
+            <tr>
+              <td><strong>Guion de Locución Limpio</strong></td>
+              <td><code>.TXT</code></td>
+              <td>Texto continuo a 135 ppm para el locutor o motor TTS</td>
+              <td><a href="/script/narration.txt" download class="btn-secondary" style="padding:4px 8px; font-size:11px; text-decoration:none;">Descargar TXT ↓</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   `;
 }
@@ -2852,7 +3007,7 @@ function renderViewCanvas() {
       </a>
     </div>
 
-    <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:12px;">
+    <div class="canvas-grid-responsive">
       <div class="workbench-card"><strong style="font-size:12px;">1. Socios Clave</strong><p style="font-size:11px; color:var(--text-muted); margin-top:4px;">Municipalidades locales, cooperativas de productores, proveedores de hardware.</p></div>
       <div class="workbench-card"><strong style="font-size:12px;">2. Actividades Clave</strong><p style="font-size:11px; color:var(--text-muted); margin-top:4px;">Fabricación modular, calibración en campo y talleres de adopción comunitaria.</p></div>
       <div class="workbench-card"><strong style="font-size:12px;">3. Propuesta de Valor</strong><p style="font-size:11px; color:var(--text-muted); margin-top:4px;">${state.solution_thesis || 'Solución modular autónoma de bajo costo para el territorio.'}</p></div>
@@ -3001,7 +3156,7 @@ function renderViewWebDemo() {
       </div>
 
       <div style="padding:20px; background:#f8fafc;">
-        <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; margin-bottom:16px;">
+        <div class="telemetry-kpi-grid">
           <div style="background:#fff; border:1px solid var(--border-light); padding:14px; border-radius:6px;">
             <div style="font-size:10px; font-weight:800; color:var(--text-muted); text-transform:uppercase;">${isSocial ? 'Índice de Rendimiento' : 'Parámetro Operativo'}</div>
             <div style="font-size:24px; font-weight:800; font-family:var(--font-mono); color:var(--color-primary); margin:4px 0;">94.2%</div>
@@ -3115,7 +3270,48 @@ function getOfficialNomenclatures() {
   }
 }
 
-function toggleGuardrail(key) {
+// Cronogramas por defecto (Nacional 24h y Latam 28h)
+const DEFAULT_SCHEDULES = {
+  nacional: [
+    { time: "08:00 AM (Vie)", action: "Apertura oficial de retos en plataforma central y descarga de matrices.", risk: "Elegir reto sin evaluar precedentes satura la ideación.", level: "info" },
+    { time: "12:00 PM (Vie)", action: "Límite fatal de inscripción de equipo y validación con sede UNI.", risk: "Descalificación automática si no hay registro al mediodía.", level: "critical" },
+    { time: "08:00 PM (Vie)", action: "Ventana óptima para video TikTok de interacción lúdica.", risk: "Subir tarde resta visibilidad antes de la deliberación.", level: "warning" },
+    { time: "T-6 Horas", action: "Congelamiento de claims y arquitectura técnica de la propuesta.", risk: "Cambiar arquitectura a última hora arruina guiones y renders.", level: "warning" },
+    { time: "T-4 Horas", action: "Pautado oficial auditado (5 bloques) y presupuesto verificado con cotizaciones.", risk: "Exceder caracteres con espacios trunca el guardado.", level: "warning" },
+    { time: "T-2 Horas", action: "Exportación final de video pitch (1080p, ≤119s) y carga en YouTube 'No listado'.", risk: "YouTube tarda 20-30 min en procesar versión Full HD.", level: "critical" },
+    { time: "T-1 Hora", action: "Verificar link en ventana de incógnito y subir PDF del pautado oficial.", risk: "Video en 'Privado' recibe calificación de 0 puntos.", level: "critical" },
+    { time: "T-0 Inmutable", action: "Cierre definitivo de plataforma y confirmación de comprobante en pantalla.", risk: "Cierre automático al segundo exacto sin prórroga.", level: "critical" }
+  ],
+  latam: [
+    { time: "08:00 AM (Vie)", action: "Apertura de retos internacionales y selección preliminar de problemática.", risk: "No validar pertinencia con la matriz continental retrasa el avance.", level: "info" },
+    { time: "12:00 PM (Vie)", action: "Confirmación obligatoria del equipo en el sistema SIRLI Latam.", risk: "Inhabilitación automática sin posibilidad de apelación.", level: "critical" },
+    { time: "07:00 PM (Vie)", action: "Publicación de video TikTok de integración y difusión regional.", risk: "Pérdida del puntaje de interacción social en la rúbrica.", level: "warning" },
+    { time: "T-8 Horas", action: "Bloqueo definitivo de la tesis técnica y modelo de negocio CANVAS.", risk: "Replantear la solución divide esfuerzos a horas del cierre.", level: "warning" },
+    { time: "T-5 Horas", action: "Cierre de memoria técnica pautada y cálculo de impacto socioeconómico.", risk: "Incongruencia entre pautado y video causa penalización severa.", level: "warning" },
+    { time: "T-2 Horas", action: "Subida de video pitch reglamentario (≤120s, YouTube no listado o público).", risk: "Demoras de transcodificación en YouTube dejan el link inaccesible.", level: "critical" },
+    { time: "T-1 Hora", action: "Carga final del reporte PDF oficial con nomenclatura Continental.", risk: "Fallo de red a última hora impide emitir el hash de entrega.", level: "critical" },
+    { time: "T-0 Inmutable (12:00 PM Sáb)", action: "Cierre fatal del certamen de 28 horas continuas.", risk: "El servidor rechaza solicitudes al milisegundo exacto.", level: "critical" }
+  ]
+};
+
+function getActiveSchedule() {
+  if (Array.isArray(state.custom_schedule) && state.custom_schedule.length > 0) {
+    return state.custom_schedule;
+  }
+  const type = state.rally_type === "latam" ? "latam" : "nacional";
+  return DEFAULT_SCHEDULES[type];
+}
+
+function switchTimelineSubtab(subtab) {
+  state.timeline_subtab = subtab;
+  saveState();
+  if (activeTab === "timeline") {
+    renderTab("timeline");
+  }
+}
+
+function toggleGuardrail(key, event) {
+  if (event) event.stopPropagation();
   if (!state.guardrails) {
     state.guardrails = {
       team_sirli_registered: false,
@@ -3134,20 +3330,324 @@ function toggleGuardrail(key) {
   updateInspector();
 }
 
+function toggleGuardrailAccordion(key) {
+  if (!state.expanded_guardrails) state.expanded_guardrails = {};
+  state.expanded_guardrails[key] = !state.expanded_guardrails[key];
+  saveState();
+  if (activeTab === "timeline") {
+    renderTab("timeline");
+  }
+}
+
+function toggleAllGuardrails(expand) {
+  state.expanded_guardrails = {};
+  GUARDRAILS_DEFINITIONS.forEach(g => {
+    state.expanded_guardrails[g.key] = !!expand;
+  });
+  saveState();
+  if (activeTab === "timeline") {
+    renderTab("timeline");
+  }
+}
+
+function toggleScheduleAIPanel() {
+  state.schedule_ai_open = !state.schedule_ai_open;
+  saveState();
+  if (activeTab === "timeline") {
+    renderTab("timeline");
+  }
+}
+
+function parseScheduleWithAI() {
+  const textarea = document.getElementById("input-schedule-raw");
+  const rawText = textarea ? textarea.value.trim() : "";
+  if (!rawText) {
+    showToast("Pega primero el texto del cronograma");
+    return;
+  }
+
+  const lines = rawText.split(/\r?\n/).map(l => l.trim()).filter(l => l.length > 0);
+  const parsed = [];
+  const timeRegex = /(?:\b(?:T[-–]\s*\d+\s*(?:horas?|hrs?|h)?|\d{1,2}[:.]\d{2}\s*(?:AM|PM|am|pm|hrs?|h)?|\d{1,2}\s*(?:AM|PM|am|pm)|Hito\s*\d+|Viernes|Sábado|Domingo)[^:–—\-,]*)/i;
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    if (/^(cronograma|agenda|horario|calendario|programa)\b/i.test(line) && line.length < 30) continue;
+
+    let time = "";
+    let action = "";
+    let risk = "";
+
+    const match = line.match(timeRegex);
+    if (match) {
+      time = match[0].trim().replace(/^[-*•\d+.)\s]+/, "");
+      action = line.replace(match[0], "").replace(/^[:–—\-,\s]+/, "").trim();
+    } else {
+      const parts = line.split(/[:–—]/);
+      if (parts.length > 1 && parts[0].length < 25) {
+        time = parts[0].replace(/^[-*•\d+.)\s]+/, "").trim();
+        action = parts.slice(1).join(" - ").trim();
+      } else {
+        time = `Hito ${parsed.length + 1}`;
+        action = line.replace(/^[-*•\d+.)\s]+/, "").trim();
+      }
+    }
+
+    if (!action) action = line;
+
+    const lower = (line + " " + action).toLowerCase();
+    let level = "info";
+    if (/cierre|descalificaci[oó]n|l[ií]mite|fatal|inmutable|0 puntos|privad[oa]|penalizaci[oó]n|estricto/.test(lower)) {
+      level = "critical";
+      risk = "Riesgo crítico de descalificación o bloqueo si no se cumple a tiempo.";
+    } else if (/alerta|advertencia|tarde|cuidado|[oó]ptim[oa]|riesgo|trunca|retraso/.test(lower)) {
+      level = "warning";
+      risk = "Posible impacto negativo en evaluación o saturación en plataforma.";
+    } else {
+      level = "info";
+      risk = "Requisito operativo de seguimiento y sincronización del equipo.";
+    }
+
+    parsed.push({ time, action, risk, level });
+  }
+
+  if (parsed.length === 0) {
+    showToast("No se detectaron hitos claros en el texto");
+    return;
+  }
+
+  state.custom_schedule = parsed;
+  state.schedule_ai_open = false;
+  state.schedule_raw_text = rawText;
+  saveState();
+  showToast(`✨ Cronograma procesado: ${parsed.length} hitos estructurados`);
+  if (activeTab === "timeline") {
+    renderTab("timeline");
+  }
+}
+
+function resetScheduleToDefault() {
+  state.custom_schedule = null;
+  state.schedule_raw_text = "";
+  saveState();
+  showToast("Cronograma restablecido al formato oficial");
+  if (activeTab === "timeline") {
+    renderTab("timeline");
+  }
+}
+
+function removeScheduleMilestone(idx) {
+  const current = getActiveSchedule();
+  const next = [...current];
+  next.splice(idx, 1);
+  state.custom_schedule = next;
+  saveState();
+  if (activeTab === "timeline") {
+    renderTab("timeline");
+  }
+}
+
 function renderViewTimeline() {
   const isLatam = state.rally_type === "latam";
   const nom = getOfficialNomenclatures();
   const allHashtagsStr = nom.hashtags.join(" ");
   const guardrails = state.guardrails || {};
   const currentDeadline = getCurrentDeadlineAlert();
+  const currentSubtab = state.timeline_subtab || "checklist";
+  const expandedGuardrails = state.expanded_guardrails || {};
+  const verifiedCount = Object.values(guardrails).filter(Boolean).length;
+  const milestones = getActiveSchedule();
+  const isCustomSchedule = Array.isArray(state.custom_schedule) && state.custom_schedule.length > 0;
+
+  let subtabContent = "";
+
+  if (currentSubtab === "checklist") {
+    subtabContent = `
+      <div class="naming-box-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px; border-bottom:1px solid #f1f5f9; padding-bottom:12px;">
+          <div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <h3 style="font-size:14px; font-weight:700; color:#0f172a; margin:0;">Checklist de Entrega Oficial</h3>
+              <span class="timeline-subnav-count" style="background:${verifiedCount === GUARDRAILS_DEFINITIONS.length ? '#dcfce7; color:#166534;' : '#eff6ff; color:#003366;'}">
+                ${verifiedCount} / ${GUARDRAILS_DEFINITIONS.length} Verificados
+              </span>
+            </div>
+            <p style="font-size:12px; color:#64748b; margin:3px 0 0 0;">Haz clic en cada fila para desplegar detalles normativos y evitar descalificaciones.</p>
+          </div>
+          <div style="display:flex; gap:6px;">
+            <button class="btn-secondary-action" onclick="toggleAllGuardrails(true)" style="padding:6px 10px; font-size:11.5px;">
+              Desplegar todo
+            </button>
+            <button class="btn-secondary-action" onclick="toggleAllGuardrails(false)" style="padding:6px 10px; font-size:11.5px;">
+              Colapsar todo
+            </button>
+          </div>
+        </div>
+
+        <div class="guardrail-accordion">
+          ${GUARDRAILS_DEFINITIONS.map(g => {
+            const isChecked = !!guardrails[g.key];
+            const isExpanded = !!expandedGuardrails[g.key];
+            return `
+              <div class="guardrail-card ${isChecked ? 'checked' : ''} ${isExpanded ? 'expanded' : ''}">
+                <div class="guardrail-row-header" onclick="toggleGuardrailAccordion('${g.key}')">
+                  <div class="guardrail-checkbox-square" onclick="toggleGuardrail('${g.key}', event)" title="${isChecked ? 'Marcar como pendiente' : 'Marcar como verificado'}">
+                    ${isChecked ? SVG.check : ''}
+                  </div>
+                  <div class="guardrail-row-title">${g.title}</div>
+                  <span class="guardrail-badge-risk">Riesgo Alto</span>
+                  <div class="guardrail-chevron">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </div>
+                </div>
+                <div class="guardrail-expand-body">
+                  <div>${g.desc}</div>
+                  <div class="guardrail-risk-notice">
+                    <span>⚠️</span>
+                    <span>${g.risk}</span>
+                  </div>
+                </div>
+              </div>
+            `;
+          }).join("")}
+        </div>
+      </div>
+    `;
+  } else if (currentSubtab === "schedule") {
+    subtabContent = `
+      <div class="schedule-panel">
+        <div class="schedule-toolbar">
+          <div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <h3 style="font-size:14px; font-weight:700; color:#0f172a; margin:0;">Cronograma de Hitos y Tiempos Críticos</h3>
+              <span class="timeline-subnav-count">
+                ${milestones.length} hitos ${isCustomSchedule ? '(Personalizado IA)' : '(Oficial)'}
+              </span>
+            </div>
+            <p style="font-size:12px; color:#64748b; margin:3px 0 0 0;">Secuencia temporal para coordinar el trabajo en equipo sin saturación.</p>
+          </div>
+          <div style="display:flex; gap:8px; align-items:center;">
+            <button class="btn-ai-action" onclick="toggleScheduleAIPanel()">
+              ✨ ${state.schedule_ai_open ? 'Cerrar Pegador IA' : 'Pegar Cronograma / IA'}
+            </button>
+            ${isCustomSchedule ? `
+              <button class="btn-secondary-action" onclick="resetScheduleToDefault()" title="Volver al cronograma oficial del certamen">
+                Restablecer a Oficial
+              </button>
+            ` : ''}
+          </div>
+        </div>
+
+        <div class="schedule-ai-box ${state.schedule_ai_open ? '' : 'collapsed'}">
+          <div style="font-size:12px; font-weight:700; color:#0f172a; margin-bottom:4px; display:flex; align-items:center; gap:6px;">
+            ${SVG.upload} Pegar Texto de Cronograma (Circular Oficial, WhatsApp, PDF o Boletín)
+          </div>
+          <div style="font-size:11.5px; color:#64748b; margin-bottom:8px;">
+            Pega el itinerario tal como te lo compartieron. La IA extraerá automáticamente las horas, acciones y niveles de riesgo:
+          </div>
+          <textarea id="input-schedule-raw" class="schedule-textarea" placeholder="Ejemplo:&#10;08:00 AM Apertura y selección de retos&#10;12:00 PM Límite fatal de registro de equipo&#10;T-4 Horas Entrega de pautado y presupuesto&#10;T-0 Cierre definitivo">${state.schedule_raw_text || ""}</textarea>
+          <div style="display:flex; justify-content:flex-end; gap:8px;">
+            <button class="btn-secondary-action" onclick="toggleScheduleAIPanel()">Cancelar</button>
+            <button class="btn-ai-action" onclick="parseScheduleWithAI()">
+              ${SVG.spark} Procesar con IA y Actualizar Cronograma
+            </button>
+          </div>
+        </div>
+
+        <div style="border:1px solid #e2e8f0; border-radius:10px; overflow:hidden;">
+          ${milestones.map((m, idx) => {
+            const isCrit = m.level === "critical" || /descalificaci|fatal|cierre|0 puntos/i.test(m.risk || "");
+            return `
+              <div class="schedule-item-row" style="${isCrit ? 'background:#fffafa;' : ''}">
+                <span class="schedule-tag-time" style="${isCrit ? 'background:#fef2f2; border-color:#fee2e2; color:#991b1b;' : ''}">
+                  ${m.time}
+                </span>
+                <div class="schedule-item-content">
+                  <div class="schedule-item-title">${m.action}</div>
+                  <div class="schedule-item-risk" style="${isCrit ? 'color:#b91c1c; font-weight:600;' : ''}">
+                    ${isCrit ? '⚠️ ' : 'ℹ️ '}${m.risk}
+                  </div>
+                </div>
+                ${isCustomSchedule ? `
+                  <button class="btn-icon-del" onclick="removeScheduleMilestone(${idx})" title="Eliminar hito">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                  </button>
+                ` : ''}
+              </div>
+            `;
+          }).join("")}
+        </div>
+      </div>
+    `;
+  } else if (currentSubtab === "naming") {
+    subtabContent = `
+      <div class="timeline-grid" style="margin-top:0;">
+        <div class="naming-box-card">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; border-bottom:1px solid #f1f5f9; padding-bottom:8px;">
+            <div>
+              <h3 style="font-size:14px; font-weight:700; color:#0f172a; margin:0;">Nomenclaturas Oficiales Reglamentarias</h3>
+              <p style="font-size:12px; color:#64748b; margin:2px 0 0 0;">Copia y pega los nombres reglamentarios con 1 clic para evitar penalizaciones por formato.</p>
+            </div>
+            <span class="timeline-subnav-count">Reglamento UNI</span>
+          </div>
+
+          <div class="naming-field-group">
+            <div class="naming-field-label">
+              <span>Nombre Oficial del Archivo PDF (Pautado Oficial)</span>
+              <span style="font-size:10.5px; color:#64748b; text-transform:none; font-weight:600;">Máx 15 MB · PDF</span>
+            </div>
+            <div class="naming-input-row">
+              <input type="text" class="naming-input-readonly" readonly value="${nom.pdfName}" id="input-pdf-name">
+              <button class="btn-copy-action" onclick="copyToClipboardWithFeedback('${nom.pdfName}', 'Nombre de PDF copiado')">
+                ${SVG.copy} Copiar
+              </button>
+            </div>
+          </div>
+
+          <div class="naming-field-group">
+            <div class="naming-field-label">
+              <span>Título Reglamentario para YouTube (Pitch 120s)</span>
+              <span style="font-size:10.5px; color:#64748b; text-transform:none; font-weight:600;">1080p · No Listado</span>
+            </div>
+            <div class="naming-input-row">
+              <input type="text" class="naming-input-readonly" readonly value="${nom.ytTitle}" id="input-yt-title">
+              <button class="btn-copy-action" onclick="copyToClipboardWithFeedback('${nom.ytTitle}', 'Título de YouTube copiado')">
+                ${SVG.copy} Copiar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="naming-box-card">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; border-bottom:1px solid #f1f5f9; padding-bottom:8px;">
+            <div>
+              <h3 style="font-size:14px; font-weight:700; color:#0f172a; margin:0;">Hashtags Obligatorios (YouTube & TikTok)</h3>
+              <p style="font-size:12px; color:#64748b; margin:2px 0 0 0;">Etiquetas exigidas por la rúbrica oficial del certamen.</p>
+            </div>
+            <button class="btn-copy-action" onclick="copyToClipboardWithFeedback('${allHashtagsStr}', 'Todos los hashtags copiados')">
+              ${SVG.copy} Copiar Todos
+            </button>
+          </div>
+
+          <div class="hashtag-cloud">
+            ${nom.hashtags.map(t => `<span class="hashtag-pill">${t}</span>`).join("")}
+          </div>
+
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 12px; font-size:11.5px; color:#475569; line-height:1.45;">
+            <strong>Directriz de Impacto en Redes:</strong> ${nom.tiktokTip}
+          </div>
+        </div>
+      </div>
+    `;
+  }
 
   return `
-    <div class="phase-header" style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:14px; margin-bottom:20px;">
+    <div class="phase-header" style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:14px; margin-bottom:16px;">
       <div>
         <h1 class="phase-title">11 · Cronograma de Entrega <span class="phase-title-accent">& Requisitos Críticos</span></h1>
-        <p class="phase-subtitle">Horarios oficiales de Nicaragua (UTC-6), nomenclaturas reglamentarias y directrices innegociables de entrega.</p>
+        <p class="phase-subtitle">Horarios oficiales de Nicaragua (UTC-6), checklist desplegable y nomenclaturas reglamentarias.</p>
       </div>
-      <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+      <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
         <span class="stepper-pill" style="background:#eff6ff; color:#003366; border:1px solid #bfdbfe; font-weight:700;">
           HORA NICARAGUA (UTC-6)
         </span>
@@ -3157,15 +3657,15 @@ function renderViewTimeline() {
       </div>
     </div>
 
-    <!-- Banner Suave de Estado Actual del Cronograma -->
-    <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:16px 20px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; box-shadow:0 1px 3px rgba(0,0,0,0.02);">
+    <!-- Banner Suave y Limpio de Próximo Hito -->
+    <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:10px; padding:12px 18px; margin-bottom:16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
       <div style="display:flex; align-items:center; gap:12px;">
-        <div style="width:38px; height:38px; border-radius:10px; ${isLatam ? 'background:#fdf4ff; color:#c026d3; border:1px solid #f0abfc;' : 'background:#f5f3ff; color:#7c3aed; border:1px solid #ddd6fe;'} display:flex; align-items:center; justify-content:center;">
+        <div style="width:34px; height:34px; border-radius:8px; ${isLatam ? 'background:#fdf4ff; color:#c026d3; border:1px solid #f0abfc;' : 'background:#f5f3ff; color:#7c3aed; border:1px solid #ddd6fe;'} display:flex; align-items:center; justify-content:center;">
           ${SVG.clock}
         </div>
         <div>
-          <div style="font-size:11px; font-weight:800; text-transform:uppercase; color:#64748b; letter-spacing:0.04em;">PRÓXIMO HITO CRÍTICO</div>
-          <div style="font-size:15px; font-weight:800; color:#091e42;">${currentDeadline.label} — <span style="color:#003366;">${currentDeadline.time}</span></div>
+          <div style="font-size:10.5px; font-weight:700; text-transform:uppercase; color:#64748b; letter-spacing:0.04em;">PRÓXIMO HITO CRÍTICO</div>
+          <div style="font-size:13.5px; font-weight:700; color:#091e42;">${currentDeadline.label} — <span style="color:#003366; font-family:var(--font-mono);">${currentDeadline.time}</span></div>
         </div>
       </div>
       <div style="font-size:12px; color:#475569; max-width:440px; line-height:1.4;">
@@ -3173,158 +3673,22 @@ function renderViewTimeline() {
       </div>
     </div>
 
-    <div class="timeline-grid">
-      <!-- BLOQUE 1: GENERADOR OFICIAL DE NOMENCLATURAS Y TÍTULOS -->
-      <div class="naming-box-card">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; border-bottom:1px solid #f1f5f9; padding-bottom:10px;">
-          <div>
-            <h3 style="font-size:13.5px; font-weight:800; color:#091e42; margin:0 0 2px 0;">Nomenclaturas Oficiales Reglamentarias</h3>
-            <p style="font-size:11.5px; color:#64748b; margin:0;">Copia y pega con 1 clic los nombres exactos para evitar penalizaciones por formato.</p>
-          </div>
-          <span style="font-size:10.5px; font-weight:700; background:#f8fafc; border:1px solid #e2e8f0; color:#475569; padding:4px 9px; border-radius:6px;">
-            Atención al Detalle
-          </span>
-        </div>
-
-        <div class="naming-field-group">
-          <div class="naming-field-label">
-            <span>Nombre Oficial del Archivo PDF (Pautado Oficial)</span>
-            <span style="font-size:10.5px; color:#64748b; text-transform:none; font-weight:600;">Máx 15 MB · Formato PDF</span>
-          </div>
-          <div class="naming-input-row">
-            <input type="text" class="naming-input-readonly" readonly value="${nom.pdfName}" id="input-pdf-name">
-            <button class="btn-copy-action" onclick="copyToClipboardWithFeedback('${nom.pdfName}', 'Nombre de archivo PDF copiado')">
-              ${SVG.copy} Copiar Nombre
-            </button>
-          </div>
-        </div>
-
-        <div class="naming-field-group">
-          <div class="naming-field-label">
-            <span>Título Reglamentario para el Video en YouTube</span>
-            <span style="font-size:10.5px; color:#64748b; text-transform:none; font-weight:600;">YouTube 1080p · Modo No Listado</span>
-          </div>
-          <div class="naming-input-row">
-            <input type="text" class="naming-input-readonly" readonly value="${nom.ytTitle}" id="input-yt-title">
-            <button class="btn-copy-action" onclick="copyToClipboardWithFeedback('${nom.ytTitle}', 'Título de YouTube copiado')">
-              ${SVG.copy} Copiar Título
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- BLOQUE 2: BANCO DE HASHTAGS INNEGOCIABLES -->
-      <div class="naming-box-card">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; border-bottom:1px solid #f1f5f9; padding-bottom:10px;">
-          <div>
-            <h3 style="font-size:13.5px; font-weight:800; color:#091e42; margin:0 0 2px 0;">Hashtags Oficiales Obligatorios (YouTube & TikTok)</h3>
-            <p style="font-size:11.5px; color:#64748b; margin:0;">El reglamento exige incluir las etiquetas del certamen y la sede UNI.</p>
-          </div>
-          <button class="btn-copy-action" onclick="copyToClipboardWithFeedback('${allHashtagsStr}', 'Todos los hashtags oficiales copiados')">
-            ${SVG.copy} Copiar Todos los Hashtags
-          </button>
-        </div>
-
-        <div class="hashtag-cloud">
-          ${nom.hashtags.map(t => `<span class="hashtag-pill">${t}</span>`).join("")}
-        </div>
-
-        <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:12px 14px; font-size:11.5px; color:#475569; line-height:1.5;">
-          <strong>Directriz de Impacto en Redes:</strong> ${nom.tiktokTip}
-        </div>
-      </div>
-
-      <!-- BLOQUE 3: CRONOGRAMA DE HITOS HORA NICARAGUA -->
-      <div class="naming-box-card">
-        <div style="margin-bottom:14px;">
-          <h3 style="font-size:13.5px; font-weight:800; color:#091e42; margin:0 0 2px 0;">Cronograma de Hitos Innegociables (Hora Nicaragua UTC-6)</h3>
-          <p style="font-size:11.5px; color:#64748b; margin:0;">Secuencia crítica para asegurar la entrega sin saturación ni descalificaciones.</p>
-        </div>
-
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th style="width:140px;">Hito / Hora</th>
-              <th>Acción Crítica Innegociable</th>
-              <th style="width:280px;">Riesgo / Penalización</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>08:00 AM (Viernes)</strong></td>
-              <td>Apertura oficial de retos en plataforma central. Descarga de matrices y conformación de tesis.</td>
-              <td>Elegir reto sin analizar precedentes satura la fase de investigación.</td>
-            </tr>
-            <tr style="background:#fdf4ff;">
-              <td><strong style="color:#a21caf;">12:00 PM (Viernes)</strong></td>
-              <td><strong>Límite fatal de inscripción de equipo.</strong> Todos los integrantes validados con sede UNI.</td>
-              <td><span style="color:#a21caf; font-weight:700;">Descalificación automática:</span> el sistema no permite concursar a equipos sin registro al mediodía.</td>
-            </tr>
-            <tr>
-              <td><strong>08:00 PM (Viernes)</strong></td>
-              <td><strong>Ventana óptima para video TikTok (Interacción lúdica).</strong> Subir con hashtags oficiales.</td>
-              <td>Subir tarde no permite ganar tracción en el algoritmo ni acumular votos antes del corte.</td>
-            </tr>
-            <tr>
-              <td><strong>T-6 Horas</strong></td>
-              <td>Congelamiento de claims y arquitectura técnica. Tesis bloqueada en el dashboard.</td>
-              <td>Cambiar el enfoque técnico a última hora produce renders y guiones a medias.</td>
-            </tr>
-            <tr>
-              <td><strong>T-4 Horas</strong></td>
-              <td>Pautado oficial auditado (5 bloques validados) y presupuesto sustentado con cotizaciones.</td>
-              <td>Exceder caracteres con espacios causa error de guardado en la plataforma.</td>
-            </tr>
-            <tr>
-              <td><strong>T-2 Horas</strong></td>
-              <td>Exportación final de video pitch (1080p, ≤119s) y subida a YouTube en modo 'No listado'.</td>
-              <td>YouTube tarda entre 20 y 30 minutos en procesar la versión HD de 1080p.</td>
-            </tr>
-            <tr>
-              <td><strong>T-1 Hora</strong></td>
-              <td>Probar enlace en ventana de incógnito y cargar archivo PDF del pautado en la plataforma oficial.</td>
-              <td>Un video configurado en 'Privado' recibe calificación de 0 puntos del jurado.</td>
-            </tr>
-            <tr style="background:#f8fafc; font-weight:700;">
-              <td><strong style="color:#003366;">T-0 Inmutable</strong></td>
-              <td><strong>Cierre de plataforma.</strong> Confirmar comprobante de entrega en pantalla.</td>
-              <td>La plataforma se bloquea al segundo exacto. Cero tolerancia a entregas tardías.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- BLOQUE 4: CHECKLIST DE ENTREGA OFICIAL (REQUISITOS CRÍTICOS) -->
-      <div class="naming-box-card">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; border-bottom:1px solid #f1f5f9; padding-bottom:10px;">
-          <div>
-            <h3 style="font-size:13.5px; font-weight:800; color:#091e42; margin:0 0 2px 0;">Checklist de Entrega Oficial (Requisitos Críticos)</h3>
-            <p style="font-size:11.5px; color:#64748b; margin:0;">Marca cada casilla antes del envío definitivo para proteger la elegibilidad del equipo.</p>
-          </div>
-          <span style="font-size:11.5px; font-weight:800; color:#003366;">
-            ${Object.values(guardrails).filter(Boolean).length} de ${GUARDRAILS_DEFINITIONS.length} Verificados
-          </span>
-        </div>
-
-        <div class="guardrails-list">
-          ${GUARDRAILS_DEFINITIONS.map(g => {
-            const isChecked = !!guardrails[g.key];
-            return `
-              <div class="guardrail-item ${isChecked ? 'checked' : ''}" onclick="toggleGuardrail('${g.key}')">
-                <div class="guardrail-checkbox-square">
-                  ${isChecked ? SVG.check : ''}
-                </div>
-                <div style="flex:1;">
-                  <div class="guardrail-title" style="${isChecked ? 'color:#003366;' : ''}">${g.title}</div>
-                  <div class="guardrail-desc">${g.desc}</div>
-                  <div style="font-size:11px; color:#94a3b8; margin-top:2px; font-weight:600;">⚠️ ${g.risk}</div>
-                </div>
-              </div>
-            `;
-          }).join("")}
-        </div>
-      </div>
+    <!-- Sub-navegación Limpia y Cohesiva -->
+    <div class="timeline-subnav">
+      <button class="timeline-subnav-btn ${currentSubtab === 'checklist' ? 'active' : ''}" onclick="switchTimelineSubtab('checklist')">
+        <span>Checklist de Requisitos</span>
+        <span class="timeline-subnav-count">${verifiedCount}/${GUARDRAILS_DEFINITIONS.length}</span>
+      </button>
+      <button class="timeline-subnav-btn ${currentSubtab === 'schedule' ? 'active' : ''}" onclick="switchTimelineSubtab('schedule')">
+        <span>Cronograma & IA</span>
+        <span class="timeline-subnav-count">${milestones.length}</span>
+      </button>
+      <button class="timeline-subnav-btn ${currentSubtab === 'naming' ? 'active' : ''}" onclick="switchTimelineSubtab('naming')">
+        <span>Nomenclaturas & Tags</span>
+      </button>
     </div>
+
+    ${subtabContent}
   `;
 }
 
@@ -3341,67 +3705,67 @@ function updateInspector() {
   const guardrailsTotal = GUARDRAILS_DEFINITIONS.length;
   const guardrailsOk = guardrailsCount === guardrailsTotal;
 
-  let points = 0;
-  if (state.rally_type) points += 10;
-  if (state.team_name && state.university) points += 10;
-  if (state.challenge_id) points += 15;
-  if (state.solution_approved) points += 15;
-  if (isPautadoComplete()) points += 15;
-  if (isBudgetValid()) points += 10;
-  if (isScriptComplete()) points += 10;
-  if (guardrailsCount >= 5) points += 15;
+  const points = calculateAuditScore();
+  const topbarBadge = document.getElementById("topbar-audit-badge");
+  if (topbarBadge) topbarBadge.textContent = `${points}%`;
 
   const hasBudgetItems = Array.isArray(state.budget) && state.budget.length > 0;
   const totalBudget = hasBudgetItems ? state.budget.reduce((a, b) => a + (Number(b.units || 0) * Number(b.unit_cost || 0)), 0) : 0;
 
   panel.innerHTML = `
-    <div>
-      <div class="panel-block-title">Preparación Oficial</div>
-      <div class="score-meter">
-        <div class="score-number">${points}%</div>
-        <div class="score-label">${points >= 90 ? 'Listo para Entrega' : points >= 50 ? 'En Progreso' : 'Fase Inicial'}</div>
+    <div class="drawer-header-mobile">
+      <span>Preparación Oficial</span>
+      <button class="btn-close-drawer" onclick="closeAllDrawers()" aria-label="Cerrar panel de auditoría">✕</button>
+    </div>
+
+    <div class="prep-console">
+      <div class="prep-console-header">
+        <span class="prep-console-title">Preparación Oficial</span>
+        <span class="prep-console-pct">${points}%</span>
+      </div>
+      <div class="prep-progress-track">
+        <div class="prep-progress-bar" style="width:${points}%;"></div>
+      </div>
+
+      <div class="prep-table">
+        <div class="prep-row ${state.team_name ? 'is-complete' : ''}" onclick="switchTab('team')" title="Identidad del Equipo">
+          <span class="prep-col-name">01. Equipo y Sede</span>
+          <span class="prep-col-status">${state.team_name ? 'CONFIRMADO' : 'INCOMPLETO'}</span>
+        </div>
+        <div class="prep-row ${state.challenge_id ? 'is-complete' : ''}" onclick="switchTab('challenges')" title="Selección de Reto">
+          <span class="prep-col-name">02. Reto en Vivo</span>
+          <span class="prep-col-status">${state.challenge_id ? '#' + state.challenge_id : 'SIN ELEGIR'}</span>
+        </div>
+        <div class="prep-row ${state.solution_approved ? 'is-complete' : ''}" onclick="switchTab('solution')" title="Taller de Solución">
+          <span class="prep-col-name">03. Solución Técnica</span>
+          <span class="prep-col-status">${state.solution_approved ? 'APROBADA' : (stage >= 3 ? 'BORRADOR' : 'PENDIENTE')}</span>
+        </div>
+        <div class="prep-row ${isPautadoComplete() ? 'is-complete' : ''}" onclick="switchTab('pautado')" title="Documento Pautado">
+          <span class="prep-col-name">04. Pautado Oficial</span>
+          <span class="prep-col-status">${isPautadoComplete() ? 'AUDITADO' : (stage >= 5 ? 'REVISAR' : 'PENDIENTE')}</span>
+        </div>
+        <div class="prep-row ${hasBudgetItems && isBudgetValid() ? 'is-complete' : ''}" onclick="switchTab('budget')" title="Presupuesto">
+          <span class="prep-col-name">05. Presupuesto</span>
+          <span class="prep-col-status">${hasBudgetItems ? '$' + Math.round(totalBudget).toLocaleString() + ' USD' : 'SIN COTIZAR'}</span>
+        </div>
+        <div class="prep-row ${isScriptComplete() ? 'is-complete' : ''}" onclick="switchTab('script')" title="Guion de Video">
+          <span class="prep-col-name">06. Guion 120s</span>
+          <span class="prep-col-status">${isScriptComplete() ? '120s OK' : (stage >= 9 ? 'EN CURSO' : 'PENDIENTE')}</span>
+        </div>
+        <div class="prep-row ${guardrailsOk ? 'is-complete' : ''}" onclick="switchTab('timeline')" title="Requisitos de Entrega">
+          <span class="prep-col-name">07. Checklist de Entrega</span>
+          <span class="prep-col-status">${guardrailsCount}/${guardrailsTotal} VERIFICADOS</span>
+        </div>
       </div>
     </div>
 
     <div>
-      <div class="panel-block-title">Auditoría en Tiempo Real</div>
-      <div class="audit-list">
-        <div class="audit-item ${state.team_name ? 'ok' : 'pending'}" onclick="switchTab('identity')" style="cursor:pointer;" title="Identidad del Equipo">
-          <span>Equipo & Sede</span>
-          <strong>${state.team_name ? 'OK' : 'Incompleto'}</strong>
+      <div class="panel-block-title" style="font-size:11px; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted); margin-bottom:8px;">Criterio Clave del Jurado</div>
+      <div class="insight-box" style="border:1px solid #CBD5E1; background:#F8FAFD; border-radius:8px; padding:12px; font-size:11.5px; color:#334155; line-height:1.5;">
+        <div style="font-weight:800; color:#0866F5; margin-bottom:4px; display:flex; align-items:center; gap:6px;">
+          ${SVG.spark} Coherencia Total (Rúbrica 100 Pts)
         </div>
-        <div class="audit-item ${state.challenge_id ? 'ok' : 'pending'}" onclick="switchTab('challenges')" style="cursor:pointer;" title="Selección de Reto">
-          <span>Reto Seleccionado</span>
-          <strong>${state.challenge_id ? '#' + state.challenge_id : 'Sin elegir'}</strong>
-        </div>
-        <div class="audit-item ${state.solution_approved ? 'ok' : 'pending'}" onclick="switchTab('solution')" style="cursor:pointer;" title="Taller de Solución">
-          <span>Taller de Solución</span>
-          <strong>${state.solution_approved ? 'Aprobada' : (stage >= 3 ? 'Borrador' : 'Pendiente')}</strong>
-        </div>
-        <div class="audit-item ${isPautadoComplete() ? 'ok' : 'pending'}" onclick="switchTab('pautado')" style="cursor:pointer;" title="Documento Pautado">
-          <span>Pautado Oficial</span>
-          <strong>${isPautadoComplete() ? 'Auditado' : (stage >= 5 ? 'Revisar' : 'Pendiente')}</strong>
-        </div>
-        <div class="audit-item ${hasBudgetItems ? (isBudgetValid() ? 'ok' : 'warn') : 'pending'}" onclick="switchTab('budget')" style="cursor:pointer;" title="Presupuesto">
-          <span>Presupuesto</span>
-          <strong>${hasBudgetItems ? '$' + Math.round(totalBudget).toLocaleString() + ' USD' : 'Sin cotizar'}</strong>
-        </div>
-        <div class="audit-item ${isScriptComplete() ? 'ok' : 'pending'}" onclick="switchTab('script')" style="cursor:pointer;" title="Guion de Video">
-          <span>Guion (120 Segundos)</span>
-          <strong>${isScriptComplete() ? '120s OK' : (stage >= 9 ? 'En redacción' : 'Pendiente')}</strong>
-        </div>
-        <div class="audit-item ${guardrailsOk ? 'ok' : (guardrailsCount > 0 ? 'warn' : 'pending')}" onclick="switchTab('timeline')" style="cursor:pointer;" title="Clic para revisar requisitos de entrega">
-          <span>Requisitos de Entrega</span>
-          <strong>${guardrailsCount}/${guardrailsTotal} Verificados</strong>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <div class="panel-block-title">Lección de Oro de Competencia</div>
-      <div class="insight-box">
-        <div class="insight-header">${SVG.spark} Coherencia Total</div>
-        El jurado verifica que las cifras del último minuto del video coincidan exactamente con la tabla de presupuesto del pautado. Si dices un monto en pantalla, debe coincidir centavo a centavo con el documento.
+        Las cifras de impacto y costos del video de 120s deben coincidir centavo a centavo con la tabla de presupuesto del documento pautado.
       </div>
     </div>
   `;

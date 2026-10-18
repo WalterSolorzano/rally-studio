@@ -261,3 +261,35 @@ body {
   margin-top: 32px;
   padding-top: 16px;
 }
+
+/* ── RESPONSIVE ADAPTATION ── */
+@media (max-width: 900px) {
+  .stat-banner {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .grid-container {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 12px 14px;
+  }
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .stat-banner {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .site-footer {
+    flex-direction: column;
+    gap: 8px;
+    font-size: 11px;
+  }
+}
