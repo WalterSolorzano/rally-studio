@@ -524,64 +524,331 @@ function selectChallenge(id) {
   }
 }
 
-// 03 IDENTIDAD & PALETA VIEW
+// 03 IDENTIDAD & PALETA VIEW (MANUAL DE MARCA Y TOKENS)
 function renderViewIdentity() {
-  const cr = getContrastRatio(state.palette.primary, "#ffffff");
-  const wcag = cr >= 7 ? "AAA" : (cr >= 4.5 ? "AA" : "FAIL (Bajo)");
+  const pName = state.project_name || "PROYECTO";
+  const desc = state.description_one_line || "Solución ciber-física para resiliencia comunitaria";
+  const primary = state.palette.primary;
+  const secondary = state.palette.secondary;
+  const accent = state.palette.accent;
+
+  const crPrimary = getContrastRatio(primary, "#ffffff");
+  const wcagPrimary = crPrimary >= 7 ? "AAA" : (crPrimary >= 4.5 ? "AA" : "FAIL");
+
+  const crSecondary = getContrastRatio(secondary, "#ffffff");
+  const wcagSecondary = crSecondary >= 7 ? "AAA" : (crSecondary >= 4.5 ? "AA" : "FAIL");
+
+  // Prompts especializados parametrizados con los datos exactos del proyecto
+  const prompt3D = `Genera un render conceptual de diseño industrial hiperrealista para el proyecto de ingeniería '${pName}'.
+Contexto funcional: ${desc}.
+Especificaciones del artefacto:
+- Gabinete hermético de policarbonato industrial grado IP67 con acabado mate microtexturizado (Gris grafito #1E293B y detalles en ${primary}).
+- Biseles suaves de radio 4mm en todas las esquinas para disipación de esfuerzos mecánicos.
+- Tornillería visible de acero inoxidable 316 (pernos hexagonales M6 avellanados) y prensaestopas estancos M16 en la base inferior.
+- Panel solar monocristalino compacto de 50W integrado con soporte de aluminio anodizado angular de 15°.
+- Indicadores LED rasantes ultrabrillantes con guías de luz acrílicas en color de acento (${accent}).
+- Entorno de estudio: Iluminación técnica difusa tipo banco óptico a 5500K sobre fondo neutro infinito gris perla (#F1F5F9). Sin reflejos plásticos reflectivos, sin estética caricaturesca, sin neón cyberpunk.
+- Perspectiva en plano 3/4 isométrico mostrando despiece técnico sutil o ensamblaje listo para campo.`;
+
+  const promptUI = `Actúa como diseñador principal de producto frontend. Diseña una interfaz de telemetría y monitoreo en tiempo real para el proyecto '${pName}'.
+Restricciones innegociables de diseño:
+- Paleta obligatoria: Color primario ${primary}, soporte estructural ${secondary}, color de alerta ${accent}, fondo blanco (#FFFFFF) o papel técnico sutil (#F8FAFC), texto principal #0F172A.
+- Cero clichés de IA: PROHIBIDO usar fondos oscuros con gradientes púrpuras/cian, sombras borrosas difusas de más de 8px, o tarjetas flotantes idénticas repetidas.
+- Densidad visual compacta estilo Swiss Engineering (Linear / Stripe): bordes definidos de 1px (#E2E8F0), fuentes numéricas tabulares (tabular-nums), tipografía sans-serif limpia.
+- Componentes requeridos:
+  1. Barra de estado superior con nodo activo, protocolo LoRaWAN y latencia en ms.
+  2. Gráfico hidrométrico/ambiental vectorial limpio con curva en ${primary} y umbrales punteados.
+  3. Matriz de sensores con valores reales y etiquetas claras marcando datos de prueba como [SIMULADO].
+  4. Indicadores de autonomía fotovoltaica (LiFePO4) y RSSI de transmisión.`;
+
+  const promptVoice = `Dirección de locución profesional para video pitch de 120 segundos del proyecto '${pName}'.
+Tono: Documental de divulgación científica, empático, autoritario y sereno (estilo narrador de la BBC / Discovery Channel en español neutro latinoamericano).
+Cadencia requerida: 135 palabras por minuto continuas, sin pausas dramáticas excesivas ni aceleraciones desesperadas al final.
+Ritmo:
+- Acto I (0-20s): Tono reflexivo y sobrio presentando el dolor humano y la estadística crítica. CERO menciones al nombre del proyecto.
+- Acto II (20-60s): Transición energética y resolutiva al bautizar '${pName}', describiendo con precisión la arquitectura física y los componentes.
+- Acto III (60-95s): Tono ejecutivo y pragmático explicando el presupuesto sustentado ($4,450 USD) y la economía circular.
+- Acto IV (95-120s): Tono inspirador de orgullo latinoamericano conectando con las metas ODS y el beneficio comunitario.`;
+
+  const promptBlender = `# Script de generación paramétrica de prototipo en Blender (bpy)
+import bpy
+
+# Limpiar escena
+bpy.ops.object.select_all(action='SELECT')
+bpy.ops.object.delete(use_global=False)
+
+# Crear carcasa principal IP67
+bpy.ops.mesh.primitive_cube_add(size=1.0, location=(0, 0, 0.5))
+box = bpy.context.active_object
+box.scale = (0.22, 0.16, 0.08)  # 220x160x80 mm
+bpy.ops.object.transform_apply(scale=True)
+
+# Modificador Bevel para realismo industrial (elimina aristas filosas de IA)
+bevel = box.modifiers.new(name="Bevel", type='BEVEL')
+bevel.width = 0.006  # 6mm de radio
+bevel.segments = 4
+
+# Material PBR primario (${primary})
+mat = bpy.data.materials.new(name="PrimaryEnclosure")
+mat.use_nodes = True
+bsdf = mat.node_tree.nodes["Principled BSDF"]
+bsdf.inputs["Base Color"].default_value = (0.12, 0.25, 0.74, 1.0)  # Convierte a RGB
+bsdf.inputs["Roughness"].default_value = 0.38  # Acabado mate industrial
+box.data.materials.append(mat)`;
 
   return `
     <div class="page-header">
       <div>
-        <h1 class="page-title">03 · Identidad Visual & Tokens de Color</h1>
-        <div class="page-desc">Paleta de alto contraste para UI web, animación 3D y placas del video pitch.</div>
+        <h1 class="page-title">03 · Manual de Identidad Visual & Tokens de Marca</h1>
+        <div class="page-desc">Especificación técnica de color, jerarquía tipográfica, mockup en vivo y kit de prompts para IAs especializadas.</div>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <button class="btn-secondary" onclick="exportTokensCSS()">Copiar CSS Tokens</button>
+        <button class="btn-primary" onclick="applyPreset('techriders')">Preset Campeón Latam</button>
       </div>
     </div>
 
+    <!-- 1. PRESETS HISTÓRICOS -->
     <div class="workbench-card">
-      <h3>Presets Históricos de Equipos Campeones</h3>
-      <div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:10px;margin-bottom:18px;">
+      <h3>Presets de Marca de Proyectos Ganadores</h3>
+      <div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:10px;margin-bottom:12px;">
         ${Object.entries(PALETTE_PRESETS).map(([key, p]) => `
           <div style="border:1px solid var(--border-light);padding:10px;border-radius:4px;cursor:pointer;background:var(--bg-subtle);" onclick="applyPreset('${key}')">
-            <div style="font-size:11px;font-weight:700;color:var(--text-main);margin-bottom:6px;">${p.name}</div>
-            <div style="display:flex;gap:6px;">
-              <div style="width:24px;height:24px;border-radius:3px;background:${p.primary};" title="Primary"></div>
-              <div style="width:24px;height:24px;border-radius:3px;background:${p.secondary};" title="Secondary"></div>
-              <div style="width:24px;height:24px;border-radius:3px;background:${p.accent};" title="Accent"></div>
-              <span style="font-size:10px;color:var(--text-muted);align-self:center;margin-left:4px;">${p.source}</span>
+            <div style="font-size:11px;font-weight:700;color:var(--text-main);margin-bottom:4px;">${p.name}</div>
+            <div style="display:flex;gap:4px;margin-bottom:4px;">
+              <div style="flex:1;height:20px;border-radius:2px;background:${p.primary};" title="Primary"></div>
+              <div style="flex:1;height:20px;border-radius:2px;background:${p.secondary};" title="Secondary"></div>
+              <div style="flex:1;height:20px;border-radius:2px;background:${p.accent};" title="Accent"></div>
             </div>
+            <span style="font-size:10px;color:var(--text-muted);">${p.source}</span>
           </div>
         `).join("")}
       </div>
+    </div>
 
-      <h3>Personalización Manual & Contraste WCAG</h3>
-      <div class="form-grid">
-        <div class="form-group">
-          <label>Color Primario (Autoridad / Títulos)</label>
-          <div style="display:flex;gap:8px;">
-            <input type="color" value="${state.palette.primary}" onchange="updateColor('primary', this.value)" style="width:40px;height:32px;padding:0;cursor:pointer;">
-            <input type="text" value="${state.palette.primary}" onchange="updateColor('primary', this.value)">
+    <!-- 2. ESPECIFICACIÓN CROMÁTICA -->
+    <div class="workbench-card">
+      <h3>Arquitectura Cromática del Proyecto (${pName})</h3>
+      <div class="brand-specimen-grid">
+        <div class="brand-swatch">
+          <div class="brand-swatch-color" style="background:${primary};">
+            <span class="brand-swatch-badge">PRIMARIO</span>
+          </div>
+          <div class="brand-swatch-meta">
+            <div class="brand-swatch-name">Color Primario de Autoridad</div>
+            <div class="brand-swatch-hex">${primary} · <span style="font-size:10px;">${crPrimary.toFixed(1)}:1 (${wcagPrimary})</span></div>
+            <div class="brand-swatch-role">Títulos H1, botones principales, acentos de carcasa y headers.</div>
+            <div style="margin-top:6px;"><input type="color" value="${primary}" onchange="updateColor('primary', this.value)" style="width:100%;height:22px;cursor:pointer;"></div>
           </div>
         </div>
-        <div class="form-group">
-          <label>Color Secundario (Fondos / Estructura)</label>
-          <div style="display:flex;gap:8px;">
-            <input type="color" value="${state.palette.secondary}" onchange="updateColor('secondary', this.value)" style="width:40px;height:32px;padding:0;cursor:pointer;">
-            <input type="text" value="${state.palette.secondary}" onchange="updateColor('secondary', this.value)">
+
+        <div class="brand-swatch">
+          <div class="brand-swatch-color" style="background:${secondary};">
+            <span class="brand-swatch-badge">SECUNDARIO</span>
+          </div>
+          <div class="brand-swatch-meta">
+            <div class="brand-swatch-name">Soporte Estructural</div>
+            <div class="brand-swatch-hex">${secondary} · <span style="font-size:10px;">${crSecondary.toFixed(1)}:1 (${wcagSecondary})</span></div>
+            <div class="brand-swatch-role">Subtítulos H2/H3, bordes fuertes, conectores y gráficas auxiliares.</div>
+            <div style="margin-top:6px;"><input type="color" value="${secondary}" onchange="updateColor('secondary', this.value)" style="width:100%;height:22px;cursor:pointer;"></div>
           </div>
         </div>
-        <div class="form-group">
-          <label>Color de Acento (Alertas / Telemetría)</label>
-          <div style="display:flex;gap:8px;">
-            <input type="color" value="${state.palette.accent}" onchange="updateColor('accent', this.value)" style="width:40px;height:32px;padding:0;cursor:pointer;">
-            <input type="text" value="${state.palette.accent}" onchange="updateColor('accent', this.value)">
+
+        <div class="brand-swatch">
+          <div class="brand-swatch-color" style="background:${accent};">
+            <span class="brand-swatch-badge">SEÑAL / ALERTA</span>
+          </div>
+          <div class="brand-swatch-meta">
+            <div class="brand-swatch-name">Acento & Telemetría</div>
+            <div class="brand-swatch-hex">${accent}</div>
+            <div class="brand-swatch-role">Indicadores de advertencia, umbrales críticos, balizas de emergencia.</div>
+            <div style="margin-top:6px;"><input type="color" value="${accent}" onchange="updateColor('accent', this.value)" style="width:100%;height:22px;cursor:pointer;"></div>
           </div>
         </div>
-        <div class="form-group">
-          <label>Contraste sobre Blanco</label>
-          <div style="padding:7px 11px;background:var(--bg-subtle);border:1px solid var(--border-light);border-radius:4px;font-family:var(--font-mono);font-size:12px;font-weight:700;">
-            ${cr.toFixed(2)}:1 · <span style="color:${cr>=4.5?'#047857':'#b91c1c'}">${wcag}</span>
+      </div>
+    </div>
+
+    <!-- 3. JERARQUÍA TIPOGRÁFICA EDITORIAL -->
+    <div class="workbench-card">
+      <h3>Jerarquía Tipográfica Editorial (Escala & Pesos)</h3>
+      <div class="type-specimen-box">
+        <div class="type-row">
+          <div class="type-meta">
+            <span>H1 Display · Encabezado Principal</span>
+            <span>32px / 800 ExtraBold / Interlineado 1.15</span>
+          </div>
+          <h1 style="font-size:28px;font-weight:800;letter-spacing:-0.03em;color:${primary};line-height:1.2;">
+            ${pName}: Resiliencia e Ingeniería Territorial
+          </h1>
+        </div>
+
+        <div class="type-row">
+          <div class="type-meta">
+            <span>H2 Sección · Bloques Principales del Pautado</span>
+            <span>22px / 700 Bold / Interlineado 1.25</span>
+          </div>
+          <h2 style="font-size:20px;font-weight:700;letter-spacing:-0.02em;color:var(--text-main);line-height:1.3;">
+            Arquitectura Ciber-Física de Nodos de Telemetría LoRaWAN
+          </h2>
+        </div>
+
+        <div class="type-row">
+          <div class="type-meta">
+            <span>H3 Subsección · Fichas Técnicas & Componentes</span>
+            <span>16px / 600 SemiBold / Interlineado 1.35</span>
+          </div>
+          <h3 style="font-size:15px;font-weight:600;color:${secondary};">
+            Mecanismo Hidráulico y Monitoreo Autónomo de Bajo Consumo
+          </h3>
+        </div>
+
+        <div class="type-row">
+          <div class="type-meta">
+            <span>Cuerpo de Texto · Párrafos y Justificación Técnica</span>
+            <span>13px / 400 Regular / Interlineado 1.6</span>
+          </div>
+          <p style="font-size:13px;line-height:1.6;color:var(--text-body);">
+            ${desc}. El sistema optimiza el tiempo de evacuación mediante detección temprana, logrando una reducción de costos del 78% frente a estaciones meteorológicas convencionales sin requerir conexión a la red eléctrica comercial.
+          </p>
+        </div>
+
+        <div class="type-row">
+          <div class="type-meta">
+            <span>Código / Datos Tabulares (Monospace)</span>
+            <span>12px / JetBrains Mono / tabular-nums</span>
+          </div>
+          <div style="font-family:var(--font-mono);font-size:12px;background:var(--bg-subtle);padding:8px 12px;border-radius:4px;border:1px solid var(--border-light);font-variant-numeric:tabular-nums;">
+            NODO_01: Nivel 1.42 m [ESTABLE] | Batería: 98.4% LiFePO4 | Latencia: 1.2 s | RSSI: -84 dBm
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- 4. MOCKUP DE APLICACIÓN EN PÁGINA REAL -->
+    <div class="workbench-card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+        <h3>Cómo se ve en una Interfaz Real (Live UI Component Preview)</h3>
+        <span style="font-size:11px;color:var(--text-muted);">Sincronizado en vivo con tus tokens de color</span>
+      </div>
+
+      <div class="ui-mockup-container">
+        <div class="ui-mockup-bar">
+          <span class="mockup-dot"></span>
+          <span class="mockup-dot"></span>
+          <span class="mockup-dot"></span>
+          <span style="font-size:11px;font-family:var(--font-mono);color:var(--text-muted);margin-left:8px;">https://${pName.toLowerCase().replace(/\s+/g,'-')}.org/monitor-territorial</span>
+        </div>
+        <div class="ui-mockup-body">
+          <!-- Navbar Preview -->
+          <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border-light);padding-bottom:12px;margin-bottom:16px;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <div style="width:28px;height:28px;border-radius:6px;background:${primary};color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;">
+                ${pName.charAt(0)}
+              </div>
+              <div>
+                <div style="font-size:14px;font-weight:800;color:var(--text-main);">${pName}</div>
+                <div style="font-size:10px;color:var(--text-muted);">Monitor Territorial en Tiempo Real</div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:12px;background:#ecfdf5;color:#047857;display:flex;align-items:center;gap:4px;">
+                <span style="width:6px;height:6px;border-radius:50%;background:#10b981;"></span> 15 NODOS EN LÍNEA
+              </span>
+              <button style="background:${primary};color:#ffffff;border:none;border-radius:4px;padding:5px 12px;font-size:11px;font-weight:700;cursor:pointer;">
+                Descargar Reporte PDF
+              </button>
+            </div>
+          </div>
+
+          <!-- Componentes Clave Preview -->
+          <div style="display:grid;grid-template-columns:2fr 1fr;gap:16px;">
+            <div style="border:1px solid var(--border-light);border-radius:6px;padding:14px;background:#ffffff;">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+                <span style="font-size:11px;font-weight:700;text-transform:uppercase;color:var(--text-muted);">Comportamiento Hidrométrico (Cauce Oriental)</span>
+                <span style="font-size:11px;font-weight:700;color:${accent};">Pico Máx: 1.62m</span>
+              </div>
+              <!-- Barra mini SVG -->
+              <svg viewBox="0 0 400 80" style="width:100%;height:80px;">
+                <line x1="0" y1="20" x2="400" y2="20" stroke="#f1f5f9" stroke-width="1" stroke-dasharray="2"/>
+                <line x1="0" y1="50" x2="400" y2="50" stroke="#f1f5f9" stroke-width="1"/>
+                <polyline fill="none" stroke="${primary}" stroke-width="2.5" points="0,65 50,60 100,55 150,45 200,28 250,35 300,48 350,52 400,50"/>
+                <circle cx="200" cy="28" r="4" fill="${accent}"/>
+              </svg>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div style="border:1px solid var(--border-light);border-left:3px solid ${primary};border-radius:4px;padding:10px;background:var(--bg-subtle);">
+                <div style="font-size:10px;font-weight:700;color:var(--text-muted);text-transform:uppercase;">Umbral de Evacuación</div>
+                <div style="font-size:18px;font-weight:800;font-family:var(--font-mono);color:var(--text-main);">1.42 / 2.50 m</div>
+                <div style="font-size:10px;color:#047857;margin-top:2px;">Margen de seguridad: 30 minutos</div>
+              </div>
+
+              <div style="border:1px solid var(--border-light);border-left:3px solid ${accent};border-radius:4px;padding:10px;background:#fffbeb;">
+                <div style="font-size:10px;font-weight:700;color:#92400e;text-transform:uppercase;">Alerta Comunitaria</div>
+                <div style="font-size:11px;color:#78350f;margin-top:2px;font-weight:600;">Compuerta electromecánica en modo preventivo</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. KIT DE PROMPTS PARA OTRAS IAS -->
+    <div class="workbench-card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+        <h3>Kit de Prompts Especializados para IAs Externas</h3>
+        <span style="font-size:11px;color:var(--text-muted);">Listos para copiar y usar en herramientas de render, UI y audio</span>
+      </div>
+      <p style="font-size:12px;color:var(--text-body);margin-bottom:16px;">
+        Copia estos prompts parametrizados con tu marca y pégalos en las IAs correspondientes para acelerar la generación de recursos sin perder coherencia.
+      </p>
+
+      <!-- Prompt 1: 3D Render -->
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <div>
+            <span class="prompt-tag">ChatGPT · DALL-E 3 · Midjourney v6</span>
+            <span class="prompt-title" style="margin-left:8px;">Render Conceptual 3D / Diseño Industrial</span>
+          </div>
+          <button class="copy-btn" onclick="copyPrompt('p1', this)">Copiar Prompt</button>
+        </div>
+        <div id="p1" class="prompt-box">${prompt3D}</div>
+      </div>
+
+      <!-- Prompt 2: Frontend Web Demo -->
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <div>
+            <span class="prompt-tag">Claude 3.7 · v0.dev · Antigravity</span>
+            <span class="prompt-title" style="margin-left:8px;">Construcción de Web Demo Interactiva para Video</span>
+          </div>
+          <button class="copy-btn" onclick="copyPrompt('p2', this)">Copiar Prompt</button>
+        </div>
+        <div id="p2" class="prompt-box">${promptUI}</div>
+      </div>
+
+      <!-- Prompt 3: Blender Headless Script -->
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <div>
+            <span class="prompt-tag">Blender Python · bpy script</span>
+            <span class="prompt-title" style="margin-left:8px;">Modelado 3D Paramétrico con Biseles Industriales</span>
+          </div>
+          <button class="copy-btn" onclick="copyPrompt('p3', this)">Copiar Prompt</button>
+        </div>
+        <div id="p3" class="prompt-box">${promptBlender}</div>
+      </div>
+
+      <!-- Prompt 4: TTS / Audio Voiceover -->
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <div>
+            <span class="prompt-tag">ElevenLabs · Chatterbox · Kokoro</span>
+            <span class="prompt-title" style="margin-left:8px;">Dirección de Voz y Locución Audiovisual (135 ppm)</span>
+          </div>
+          <button class="copy-btn" onclick="copyPrompt('p4', this)">Copiar Prompt</button>
+        </div>
+        <div id="p4" class="prompt-box">${promptVoice}</div>
       </div>
     </div>
   `;
@@ -602,6 +869,40 @@ function applyPreset(key) {
     saveState();
     renderTab('identity');
   }
+}
+
+function copyPrompt(elementId, btn) {
+  const el = document.getElementById(elementId);
+  if (!el) return;
+  const text = el.innerText || el.textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const orig = btn.innerHTML;
+    btn.innerHTML = "✓ Copiado";
+    btn.classList.add("copied");
+    setTimeout(() => {
+      btn.innerHTML = orig;
+      btn.classList.remove("copied");
+    }, 2000);
+  }).catch(err => {
+    alert("No se pudo copiar automáticamente. Selecciona y copia manualmente.");
+  });
+}
+
+function exportTokensCSS() {
+  const p = state.palette;
+  const css = `:root {
+  --color-primary: ${p.primary};
+  --color-secondary: ${p.secondary};
+  --color-accent: ${p.accent};
+  --bg-surface: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+}`;
+  navigator.clipboard.writeText(css).then(() => {
+    alert("✓ Tokens CSS copiados al portapapeles:\n\n" + css);
+  });
 }
 
 // 04 INVESTIGACIÓN & CLAIMS VIEW
