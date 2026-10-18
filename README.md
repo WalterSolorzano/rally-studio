@@ -123,4 +123,16 @@ Haz clic en el botón **"Compilar en Plantilla Word (.docx)"** en la fase de Pau
 
 ---
 
-Desarrollado con rigor de ingeniería para equipos de alto rendimiento en el **Rally Latinoamericano de Innovación** y **Rally Nacional Nicaragua Innova**.
+## 👨‍💻 Autoría, Experiencia y Filosofía Abierta
+
+Este sistema fue concebido y desarrollado a partir de **3 años consecutivos de experiencia directa en el terreno competitivo** de ambos certámenes (Rally Latinoamericano de Innovación y Rally Nacional de Innovación «Nicaragua Innova»), habiendo alcanzado la distinción de **Ganador del 1.er Lugar Nacional**.
+
+Como **Ingeniero Industrial de la Universidad Nacional de Ingeniería (UNI, Nicaragua)**, entiendo de primera mano los cuellos de botella que enfrentan los equipos bajo presión extrema: fricción comunicativa, dispersión de tiempo, descuido del costeo real y la falta de un control de calidad riguroso que traduzca una gran idea en un entregable técnicamente ganador.
+
+**Rally Studio es un proyecto vivo y está completamente abierto a mejoras**:
+- Pull Requests, optimizaciones algorítmicas y nuevas plantillas son bienvenidas.
+- Diseñado por y para la comunidad de innovadores, docentes tutores y estudiantes de ingeniería de América Latina.
+
+---
+
+Desarrollado con rigor de ingeniería industrial para equipos de alto rendimiento en el **Rally Latinoamericano de Innovación** y **Rally Nacional Nicaragua Innova**.
