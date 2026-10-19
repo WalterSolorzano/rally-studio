@@ -21,6 +21,10 @@ __pycache__/
 # Recursos subidos por el equipo en el Estudio de Video (datos de usuario, pesados)
 dashboard/assets_uploads/
 
+# Buzón de propuestas del agente y espejo de estado (datos del usuario, efímeros)
+dashboard/data/content/
+dashboard/data/state.json
+
 # Capturas de pantalla de revisión/QA (no son parte del producto)
 dashboard/shots/
 dash-*.png
