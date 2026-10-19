@@ -1,0 +1,226 @@
+# Rally Studio · Workbench de Innovación
+
+[![Plataforma](https://img.shields.io/badge/Plataforma-Web%20Local%20%7C%20Zero%20Dependency-0866F5.svg)](#)
+[![Certámenes](https://img.shields.io/badge/Certamen-Rally%20Latam%20%2828h%29%20%7C%20Nicaragua%20Innova%20%2824h%29-1D4ED8.svg)](#)
+[![Graphify Brain](https://img.shields.io/badge/Cerebro%20Graphify-177%20Nodos%20%7C%20205%20Aristas-6366F1.svg)](#cerebro-de-conocimiento-graphify-knowledge-graph)
+[![Diseño](https://img.shields.io/badge/Diseño-Precisión%20Táctica%20%7C%20Zero%20Emojis-0D1B35.svg)](#)
+
+> **Workbench interactivo secuencial para guiar, estructurar y optimizar el desempeño metodológico de equipos universitarios en maratones de innovación de 24 y 28 horas continuas (Rally Latinoamericano de Innovación y Rally Nacional Nicaragua Innova).**
+
+---
+
+<p align="center">
+  <img src="rally_studio_logo.jpg" alt="Rally Studio Workbench - Misión de Innovación" width="900" />
+</p>
+<p align="center"><em>Figura 1: Rally Studio — Workbench de Innovación: Sistema de dirección táctica, deliberación colaborativa y calibración de rúbricas para certámenes oficiales.</em></p>
+
+---
+
+## Índice
+- [Instalación, uso y despliegue](#instalación-uso-y-despliegue)
+- [¿Qué es Rally Studio?](#qué-es-rally-studio)
+- [Cerebro de Conocimiento: En qué se basa el sistema](#cerebro-de-conocimiento-en-qué-se-basa-el-sistema)
+- [¿Cómo funciona Rally Studio? (Arquitectura y Flujo)](#cómo-funciona-rally-studio-arquitectura-y-flujo)
+- [Módulos Principales del Workbench](#módulos-principales-del-workbench)
+- [Calibración Matemática de Rúbricas Oficiales](#calibración-matemática-de-rúbricas-oficiales)
+- [Resiliencia en Redes Universitarias Hostiles](#resiliencia-en-redes-universitarias-hostiles)
+- [Instalación y Uso Rápido (Windows)](#instalación-y-uso-rápido-windows)
+- [IA Gratis Local (Opcional, Recomendado)](#ia-gratis-local-opcional-recomendado)
+
+---
+
+## Instalación, uso y despliegue
+
+**Guía completa: [`docs/INSTALACION_Y_DESPLIEGUE.md`](docs/INSTALACION_Y_DESPLIEGUE.md)**
+
+| Quiero… | Atajo |
+|---|---|
+| Instalar y correr en mi PC (completo) | `pip install -r requirements.txt` → doble clic en **`Iniciar Rally.bat`** → <http://localhost:8000/dashboard/> |
+| Conectar IA gratis | Instala OpenCode (`npm i -g opencode-ai` + `opencode auth login`) o usa un endpoint OpenAI-compatible ([`AUTO_IA.md`](AUTO_IA.md)) |
+| Publicar la interfaz en GitHub Pages | Activar **Settings → Pages → Source: GitHub Actions** (workflow `.github/workflows/pages.yml` incluido) |
+| Desplegar el sistema completo (con IA) en un servidor | [`docs/INSTALACION_Y_DESPLIEGUE.md` §9](docs/INSTALACION_Y_DESPLIEGUE.md) |
+| Subir esto a GitHub | [`docs/INSTALACION_Y_DESPLIEGUE.md` §10](docs/INSTALACION_Y_DESPLIEGUE.md) |
+
+> **Dos modos:** en local tienes todo (telemetría, OCR, IA automática, colaboración en vivo).
+> En GitHub Pages solo la interfaz (los datos se guardan en tu navegador).
+
+---
+
+## ¿Qué es Rally Studio?
+
+Rally Studio es una herramienta de ingeniería metodológica desarrollada desde la experiencia de competidores y ganadores de la **Universidad Nacional de Ingeniería (UNI)**. 
+
+En un certamen de 28 horas continuas, la causa principal de derrota no es la falta de creatividad, sino la **fatiga cognitiva**, la pérdida de tiempo estructurando documentos pautados a última hora, la incongruencia entre el presupuesto y el video pitch (120 s), y el desconocimiento de las rúbricas evaluadoras.
+
+Rally Studio sustituye la improvisación por un **flujo estricto guiado** que lleva al equipo paso a paso desde el análisis de las bases hasta la entrega final verificada.
+
+---
+
+## Cerebro de Conocimiento: En qué se basa el sistema
+
+<p align="center">
+  <img src="graphify_knowledge_graph.png" alt="Grafo de Conocimiento Graphify — Rally System" width="900" />
+</p>
+<p align="center"><em>Figura 2: Cerebro de Conocimiento Real (Graphify) — Captura del visualizador interactivo (graph.html) mostrando los 177 nodos, 205 aristas y 15 comunidades (criterios de rúbricas, banco de ganadores 2019–2026 y patrones técnicos).</em></p>
+
+El motor analítico de Rally Studio opera sobre un grafo de conocimiento estructurado con **Graphify** (`graphify-out/`), compilando **177 nodos, 205 aristas y 15 comunidades de conocimiento**.
+
+### ¿Qué es Graphify en este sistema?
+Es el cerebro de datos relacionales del sistema. En lugar de procesar documentos como texto plano, Graphify convierte investigaciones, reportes de jurados, memorias oficiales y bases históricas en una red de entidades interconectadas. Permite consultar al instante:
+- **God Nodes (Nodos de Máxima Influencia):** Los conceptos centrales que más pesan en la deliberación (`Rally Nacional de Innovación`, `Rally Latam`, `UNI`, `Grado de Innovación 30 pts`, `Impacto Positivo 20 pts`, `Viabilidad Técnica 20 pts`).
+- **Conexiones Semánticas Ocultas:** Relaciones entre la narrativa del pitch de 120 segundos y la asignación de puntajes por segundo de exposición.
+
+### Investigaciones en las que se basa el Grafo:
+Graphify fue construido a partir del procesamiento y auditoría de 6 fuentes de investigación primaria del repositorio:
+1. **Auditoría Histórica de Proyectos Campeones (`Proyectos Ganadores de Rally Latam.md` y `Rally_Innovacion_Nicaragua_Analisis.pdf`):** Análisis de más de 50 iniciativas premiadas entre 2019 y 2026 (LexoStop, MT Soluciones, Güegüense Pinolero, STEM Synergy, Mentes Volcánicas). Se extrajo el principio de **Hibridación Ciberfísica** (hardware tangible COTS + software) con 30% más probabilidad de podio.
+2. **Ingeniería Inversa de Rúbricas Oficiales (`WhatsApp Image 2026-10-16 at 9.06.52 PM.jpeg` y `rubrica_oficial_latam.jpeg`):** Mapeo de los 5 criterios continentales (100 puntos) y las 3 categorías nacionales (CNU/Comisión Creativa).
+3. **Análisis de Dispersión y Sesgo de Evaluación (`Análisis del Rally de Innovación.txt`):** Identificación del patrón de **doble codificación**: cómo satisfacer simultáneamente el filtro del jurado nacional (anclaje territorial y políticas públicas) y el del jurado internacional (escalabilidad regional y novedad).
+4. **Documentos Pautados de Referencia (`Operación Titan_UNI_Documento pautado_2025.docx` y `Reporte_Pautado_Rally_2026.docx`):** Desglose de conteo de caracteres, prefactibilidad económica y coherencia de costos.
+5. **Reporte de Investigación Profunda (`chatgptdeep-research-report.md`):** Estudio de cronometría audiovisual (fórmula PAS-V en 4 actos de 120 segundos) y errores frecuentes de descalificación en la plataforma SIRLI.
+
+- **Visualizador interactivo del grafo:** [`graphify-out/graph.html`](graphify-out/graph.html)
+- **Informe de auditoría de nodos y comunidades:** [`graphify-out/GRAPH_REPORT.md`](graphify-out/GRAPH_REPORT.md)
+- **Base relacional JSON:** [`graphify-out/graph.json`](graphify-out/graph.json)
+
+---
+
+## ¿Cómo funciona Rally Studio? (Arquitectura y Flujo)
+
+El workbench canaliza las 28 horas de competencia a través de una secuencia de fases interdependientes:
+
+```
++---------------------------------------------------------------------------------------+
+|                                FLUJO TÁCTICO RALLY STUDIO                             |
++---------------------------------------------------------------------------------------+
+|  01. CERTAMEN        --> Configuración de reglas (Latam 28h vs Nacional 24h).          |
+|  02. EQUIPO          --> Conformación multidisciplinaria y asignación de roles.       |
+|  03. RETOS (COMITÉ)  --> Importador multiformato + Deliberación cooperativa + TOP 3.  |
+|  04. TALLER SOLUCIÓN --> Formulación del WOW Factor y tesis arquitectónica.           |
+|  05. DESPACHO IA     --> Generador de mega-prompts técnicos de ingeniería y canvas.   |
+|  06. PAUTADO OFICIAL --> Redacción asistida de la memoria técnica de 5 secciones.     |
+|  07. PRESUPUESTO     --> Tabla económica sustentada y cuadratura de costos.           |
+|  08. GUION PITCH     --> Cronometría estricta de 120 segundos para YouTube.          |
+|  09. CHECKLIST       --> Guardarraíles antidescalificación antes de la subida a SIRLI.|
++---------------------------------------------------------------------------------------+
+```
+
+```mermaid
+flowchart TD
+    subgraph Input ["1. Ingesta Oficial de Retos"]
+        Docs["Archivos: .ZIP, PDF, Word .docx, Imágenes, Texto"] --> Importer["Importador Universal en Navegador"]
+        Importer --> Parser["Extracción y Clasificación Automática"]
+    end
+
+    subgraph Deliberation ["2. Espacio de Deliberación Cooperativa"]
+        Parser --> DocView["Pliego Tipo Documento Cooperativo"]
+        DocView --> Ideas["Notas de Lluvia de Ideas por Integrante"]
+        DocView --> Discard["Descarte de Retos No Viables"]
+        Parser --> Top["Módulo TOP 3: Mayor Win-Rate según Rúbrica"]
+    end
+
+    subgraph CoreEngine ["3. Motor de Formulación y Rúbrica"]
+        Top --> Selection["Elección del Reto Oficial"]
+        Selection --> Thesis["Taller de Formulación de Solución"]
+        Thesis --> MultiIA["Despacho de Mega-Prompts Especializados"]
+    end
+
+    subgraph Deliverables ["4. Ensamblaje y Entrega"]
+        MultiIA --> Pautado["Memoria Técnica Pautada (5 Criterios)"]
+        MultiIA --> Script["Guion Técnico de Video (120 Segundos)"]
+        Pautado --> Guard["Guardarraíles Antidescalificación"]
+        Script --> Guard
+        Guard --> SIRLI["Entrega Verificada en Plataforma Oficial"]
+    end
+```
+
+---
+
+## Módulos Principales del Workbench
+
+### 1. Importador Multiformato & Espacio Cooperativo
+- **Carga universal:** Acepta comunicados oficiales en `.zip` (carpetas de fotos/documentos), `.pdf` (vía PDF.js), `.docx` (vía Mammoth.js), imágenes (`.png, .jpg`) y texto plano sin requerir backend ni conexión externa.
+- **Vista Dual de Trabajo:**
+  - **Modo Documento Cooperativo:** Permite leer todos los retos en formato continuo, registrar lluvia de ideas por integrante del equipo y descartar opciones inviables con 1 click.
+  - **Modo Tarjetas Tácticas:** Vista condensada con indicadores de win-rate y accesos rápidos a análisis estratégico.
+- **Ranking TOP 3 en Radar:** Algoritmo que clasifica los 3 retos con mayor probabilidad de victoria evaluando viabilidad técnica, potencial de novedad y alineación con ODS.
+
+### 2. Taller de Solución y WOW Factor
+Formulación de la tesis de impacto, diferenciación de la competencia y anclaje a las necesidades reales del certamen.
+
+### 3. Despacho Multi-IA Especializado
+Generador de mega-prompts pre-configurados (con rol, contexto del reto, restricciones de caracteres y formato oficial de salida) para consultar cualquier modelo de lenguaje sin perder tiempo redactando prompts desde cero.
+
+### 4. Guardarraíles Antidescalificación
+Checklist crítico que valida antes del cierre:
+- Duración del video menor o igual a 120 segundos exactos.
+- Privacidad del video en YouTube (Público u Oculto, **nunca Privado**).
+- Nomenclatura del archivo PDF según el estándar exigido por el comité.
+- Coherencia matemática: los costos mencionados en el video deben cuadrar al centavo con la tabla de presupuesto.
+
+---
+
+## Calibración Matemática de Rúbricas Oficiales
+
+Rally Studio adapta su interfaz según el certamen activo seleccionado en la Fase 01:
+
+| Certamen | Duración | Categorías | Foco de Evaluación |
+|---|:---:|---|---|
+| **Rally Latinoamericano de Innovación** | **28 Horas** | 1. Innovación<br>2. Impacto Social | Escalabilidad internacional, originalidad tecnológica y rigor técnico-financiero (100 pts). |
+| **Rally Nacional Nicaragua Innova** | **24 Horas** | 1. Innovación Tecnológica<br>2. Innovación Social<br>3. Procesos y Organización | Articulación territorial, viabilidad local con actores institucionales e impacto comunitario. |
+
+---
+
+## Resiliencia en Redes Universitarias Hostiles
+
+El sistema está diseñado bajo el principio de **cero fricción en entornos de red universitarios**:
+- **100% Client-Side:** Toda la lógica, almacenamiento de estado, extracción de documentos (.docx, .pdf, .zip) y renderizado ocurren localmente en el navegador.
+- **Persistencia en LocalStorage:** El progreso se conserva intacto ante cierres accidentales de pestaña o reinicios del equipo.
+- **Exportación e Importación JSON:** Posibilidad de descargar el estado completo del proyecto en un archivo ligero (`.json`) para transferirlo por memoria USB o compartirlo entre integrantes sin depender de internet.
+- **Diseño Sobrio y Profesional:** Cero distracciones, sin emojis, tipografía optimizada para lectura en ambientes oscuros y largas jornadas de trabajo continuo.
+
+---
+
+## Instalación y Uso Rápido (Windows)
+
+Requisitos: **Python 3.10+** y, para el puente de IA automático, **OpenCode** (`npm i -g opencode-ai`) o cualquier endpoint OpenAI-compatible. El tablero en sí es 100% client-side y funciona sin nada de esto.
+
+```powershell
+pip install -r requirements.txt
+
+# Doble clic en "Iniciar Rally.bat", o:
+powershell -ExecutionPolicy Bypass -File .\iniciar_rally.ps1
+```
+
+El lanzador arranca el servicio local desacoplado (sobrevive al cierre de la consola), guarda su registro en `%TEMP%\rally_service.log` y abre el panel en <http://localhost:8000/dashboard/>.
+
+| Escenario | Comando |
+|---|---|
+| Arranque normal (puerto 8000) | `.\iniciar_rally.ps1` |
+| Segunda sesión de pruebas | `.\iniciar_rally.ps1 -Puerto 8080` |
+| Sin tocar nada de IA | `.\iniciar_rally.ps1 -SinIA` |
+
+## IA Gratis Local (Opcional, Recomendado)
+
+El OCR por IA visual, el botón **Pulir** y el copiloto automático necesitan un endpoint de IA. La vía recomendada y gratuita es **[FreeLLMAPI](https://github.com/tashfeenahmed/freellmapi)**: ~34 proveedores gratis (Gemini, Groq, Cerebras, Mistral, OpenRouter, Cloudflare, Cohere, NVIDIA...) detrás de **un solo endpoint OpenAI-compatible** con routing y failover.
+
+Rally Studio trae el instalador automatizado:
+
+```powershell
+# App portable (sin admin, queda en %LOCALAPPDATA%\Programs\FreeLLMAPI)
+powershell -ExecutionPolicy Bypass -File .\scripts\setup_ia_gratis.ps1
+
+# O el instalador oficial con asistente
+powershell -ExecutionPolicy Bypass -File .\scripts\setup_ia_gratis.ps1 -Modo instalador
+```
+
+El script baja la última Release de GitHub, **verifica el sha256 publicado** contra el archivo descargado y deja la app lista.
+
+Después:
+
+1. Abre FreeLLMAPI y copia tu **unified key** (`freellm-...`).
+2. Guárdala en `scripts\freellmapi.key` (una línea; está en `.gitignore`, nunca se sube).
+3. Ejecuta `.\Iniciar Rally.bat`: el lanzador detecta la IA, la arranca si está apagada y exporta por ti `RALLY_AI_URL=http://127.0.0.1:31415/v1` y `RALLY_AI_KEY`.
+
+Verificación: `http://localhost:8000/api/ai/status` debe reportar el endpoint activo, y al re-escanear una imagen el OCR debe responder `source:"ai"` con los retos ya jerarquizados.
+
+**Sin FreeLLMAPI no se rompe nada:** el OCR cae a EasyOCR local (red de seguridad), el copiloto usa la CLI de OpenCode si está instalada y, si no, quedan los chips de chats web gratis. El detalle completo del puente, la cascada de OCR y las variables de entorno está en [`AUTO_IA.md`](AUTO_IA.md).

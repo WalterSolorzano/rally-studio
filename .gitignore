@@ -1,0 +1,51 @@
+# Claves locales: nunca al repositorio
+scripts/freellmapi.key
+*.key
+.env
+.env.*
+
+# Descargas y artefactos del instalador de IA gratis
+tools/freellmapi/
+*.blockmap
+
+# Registros y temporales
+*.log
+*.err
+narrativa/audio/*.wav
+
+# Salidas generadas localmente
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Recursos subidos por el equipo en el Estudio de Video (datos de usuario, pesados)
+dashboard/assets_uploads/
+
+# Capturas de pantalla de revisión/QA (no son parte del producto)
+dashboard/shots/
+dash-*.png
+dash2-*.png
+tab-*.png
+tab2-*.png
+tab3-*.png
+mob-*.png
+f390-*.png
+m2-*.png
+m3-*.png
+m4-*.png
+q-*.png
+r2-*.png
+r3-*.png
+fix*.png
+final-*.png
+site-landing.png
+graph.png
+
+# Herramientas de agentes / andamios locales
+.playwright-mcp/
+.superpowers/
+node_modules/
+
+# Sistema operativo
+Thumbs.db
+desktop.ini

@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-18T17:31:40.000Z",
+  "title": "Design System: Rally Studio",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Cobalt Mission Blue",
+        "canonical": "#0866F5",
+        "tonalRamp": ["#EFF6FF", "#BFDBFE", "#60A5FA", "#0866F5", "#0057E7", "#1D4ED8"]
+      },
+      "navy": {
+        "role": "primary",
+        "displayName": "Deep Academic Navy",
+        "canonical": "#0D1B35",
+        "tonalRamp": ["#F1F5F9", "#94A3B8", "#334155", "#13213A", "#0D1B35", "#091E42"]
+      },
+      "accent": {
+        "role": "accent",
+        "displayName": "Precision Cyan Accent",
+        "canonical": "#0284C7",
+        "tonalRamp": ["#E0F2FE", "#7DD3FC", "#0284C7", "#0369A1"]
+      },
+      "bg-app": {
+        "role": "neutral",
+        "displayName": "Crisp Daylight White",
+        "canonical": "#FFFFFF",
+        "tonalRamp": ["#FFFFFF", "#F8FAFD", "#F0F6FF", "#F1F5F9"]
+      },
+      "border-light": {
+        "role": "neutral",
+        "displayName": "Technical Slate Border",
+        "canonical": "#DCE7F5",
+        "tonalRamp": ["#F1F5F9", "#DCE7F5", "#CBD5E1", "#94A3B8"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Puesto de mando topbar y títulos de certamen."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Títulos de fase y nombres de retos."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Secciones de formularios y encabezados modales."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Instrucciones operativas y contenido general."
+      },
+      "label": {
+        "displayName": "Label / Monospace",
+        "purpose": "Cronómetros, métricas de rúbrica, tokens y prompts."
+      }
+    },
+    "shadows": [
+      {
+        "name": "layer-drop",
+        "value": "0 1px 3px rgba(0, 0, 0, 0.02)",
+        "purpose": "Sombra técnica sutil de reposo en barra y tarjetas."
+      },
+      {
+        "name": "interactive-lift",
+        "value": "0 4px 12px rgba(0, 0, 0, 0.05)",
+        "purpose": "Elevación táctil en hover sobre elementos interactivos."
+      },
+      {
+        "name": "modal-float",
+        "value": "0 12px 36px rgba(13, 27, 53, 0.08)",
+        "purpose": "Modales flotantes y paneles contextuales sobre el workbench."
+      }
+    ],
+    "motion": [
+      {
+        "name": "quick-tactile",
+        "value": "120ms ease",
+        "purpose": "Transición rápida para botones e interacción táctil."
+      },
+      {
+        "name": "layout-drawer",
+        "value": "200ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Colapso y expansión fluida de paneles y cajones laterales."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "mobile",
+        "value": "768px"
+      },
+      {
+        "name": "desktop",
+        "value": "1200px"
+      }
+    ],
+    "rules": [
+      {
+        "name": "The Cardless Interface Doctrine",
+        "doctrine": "Prohibido el uso de tarjetas (cards) flotantes como contenedor por defecto. La estructura de interfaz se construye mediante tipografía con autoridad, líneas divisorias hairline (1px solid var(--border-light)), filas tabulares abiertas y espaciado rítmico intencional. Identidad anclada en el símbolo vectorial // y la palabra bicromática RALLY STUDIO (#091E42 + #0066FF)."
+      },
+      {
+        "name": "The Anti-Toy Badge Rule",
+        "doctrine": "Prohibido el uso de píldoras celestes pastel con bordes saturados (#BFDBFE) y texto gritón en mayúsculas negritas forzadas (font-weight: 800). Todo estado debe usar .tactical-status-pill con micro-dot luminoso de 6px y tipografía sobria con tracking refinado."
+      },
+      {
+        "name": "The Focused Accent Rule",
+        "doctrine": "El acento primario se reserva para acciones clave y estados activos (≤ 10% de superficie)."
+      }
+    ]
+  }
+}
