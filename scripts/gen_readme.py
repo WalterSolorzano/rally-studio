@@ -67,7 +67,7 @@ Este repositorio contiene la arquitectura completa de ingenieria, documentacion 
 - {check_file_status("docs/canvas.md")} **Modelo Canvas:** `docs/canvas.md` coherente con costos y propuesta de valor.
 - {check_file_status("docs/bibliography.md")} **Referencias APA 7:** `docs/bibliography.md` con declaracion etica de uso de IA.
 - {check_file_status("script/script.md")} **Guion de Produccion:** `script/script.md` estructurado en 4 actos (120s exactos).
-- {check_file_status("assets/voice/narration.mp3") if pathlib.Path("assets/voice/narration.mp3").exists() else check_file_status("assets/voice/narration.wav")} **Pista Guia de Locucion:** `assets/voice/narration.wav` o `.mp3`.
+- {check_file_status("assets/voice/narration.mp4")} **Locucion Oficial:** `assets/voice/narration.mp4` (MP4 con audio AAC, sin video).
 - {check_file_status("site/index.html")} **Plataforma Web Demo:** Desplegada en `site/` (GitHub Pages / Netlify).
 
 ---
