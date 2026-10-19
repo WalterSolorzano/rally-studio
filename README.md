@@ -10,7 +10,7 @@
 ---
 
 <p align="center">
-  <img src="rally_studio_logo.jpg" alt="Rally Studio Workbench - Misión de Innovación" width="900" />
+  <img src="site/rally_studio_logo.svg" alt="Rally Studio Workbench - Misión de Innovación" width="420" />
 </p>
 <p align="center"><em>Figura 1: Rally Studio — Workbench de Innovación: Sistema de dirección táctica, deliberación colaborativa y calibración de rúbricas para certámenes oficiales.</em></p>
 
@@ -97,6 +97,8 @@ Graphify fue construido a partir del procesamiento y auditoría de las 16 fuente
 Si quieres saber **de dónde sale cada afirmación** del sistema —y cuáles todavía no están probadas—, lee el informe de sustento:
 
 **[`docs/INFORME_INVESTIGACION.md`](docs/INFORME_INVESTIGACION.md)** · [versión PDF](docs/INFORME_INVESTIGACION.pdf)
+
+La versión PDF está maquetada con los tokens de marca del proyecto e incluye ocho figuras vectoriales: escala del Rally Nacional, podios de Nicaragua en el Rally Latinoamericano, rúbricas, pautado, guion PAS-V, presupuesto, grafo y erratas.
 
 Audita el corpus completo contra fuentes primarias y clasifica cada dato en cuatro niveles: **[A]** primaria verificada, **[B]** secundaria consistente, **[C]** heurística interna y **[D]** no verificada. Incluye el registro de ganadores 2016–2026, las rúbricas de ambos certámenes, la estructura PAS-V, la auditoría de los tres *claims* de `research/claims.json` y una tabla de **14 erratas detectadas** con su corrección.
 

@@ -107,7 +107,7 @@ Este informe responde cuatro preguntas:
 
 **Lectura de la serie.** La competencia creció de 7 países y 74 sedes (2016) a 11 países y más de 200 sedes (2026). Nicaragua pasó de participar con pocas sedes a ser **el segundo país con más sedes después de México** en 2026. [A]
 
-**Implicación para el equipo:** el jurado internacional no evalúa su propio país; el mismo material pasa primero por un filtro nacional y luego por uno continental. Esto no es una opinión: es el diseño del certamen y explica el patrón de «doble filtro» descrito en §7.2. [B]
+**Implicación para el equipo:** el jurado internacional no evalúa su propio país; el mismo material pasa primero por un filtro nacional y luego por uno continental. Esto no es una opinión: es el diseño del certamen y explica el patrón de «doble filtro» descrito en §6.2. [B]
 
 ### 4.2 Rally Nacional de Innovación Nicaragua Innova
 
@@ -128,6 +128,8 @@ Este informe responde cuatro preguntas:
 **Dotación humana 2026:** 783 mentores, 337 jurados de sede, 9 jurados nacionales, 37 centros tecnológicos y 28 universidades, 12 desafíos. [A]
 
 **Lectura de la serie.** En tres años el certamen multiplicó por 2,2 los participantes y por 2 los equipos, y casi duplicó las sedes. La paridad de género se mantiene en torno al 46–49 %, por encima del promedio regional del Rally Latinoamericano (23 %). [A]
+
+![Figura 1. Escala verificada del Rally Nacional: estudiantes, equipos y sedes en 2023, 2025 y 2026. La edición 2024 no tiene cifras públicas localizadas. La barra en color destaca la edición más reciente.](figures/fig01_escala_nacional.svg)
 
 **Implicación para el equipo:** el Rally Nacional es **masivo y territorial**. El jurado valora que la solución se ancle a un municipio real, a un programa público existente y a un problema reconocible por la comunidad. La escala no impresiona; la pertinencia sí.
 
@@ -195,6 +197,8 @@ Fuente: Nicaragua Creativa, 31 de agosto de 2026. [A]
 Fuentes: ANFEI 2016 [A]; Nicaragua Creativa 2025 y 2026 [A]; CONFEDI 2024 [A]; asignación de universidad [B].
 
 > **Corrección:** `investigacion_pitch.md` atribuye Techriders a UNI-RUPAP. La fuente del equipo y los registros del repo apuntan a **UNI-RUSB**.
+
+![Figura 2. Podios nicaragüenses en el Rally Latinoamericano, 2016–2026. Solo aparecen los años con premio verificado; los casilleros vacíos no implican ausencia de participación. 2026 corresponde a la fase nacional, con resultado internacional pendiente.](figures/fig02_podios_latam.svg)
 
 ### 5.6 Rally Latinoamericano 2024 — podio internacional
 
@@ -306,6 +310,8 @@ Verificada contra `brain/corpus/rubrica_oficial.jpeg` (imagen oficial) y `knowle
 
 **Estado:** reconstrucción a partir de `knowledge/rubric_matrices.md` y del manual maestro. **No hay imagen ni PDF oficial de esta rúbrica en el repositorio.** Debe presentarse como aproximación y confirmarse con la base de cada edición.
 
+![Figura 3. Peso de cada criterio sobre 100 puntos. El Rally Latinoamericano está verificado contra la imagen oficial; la rúbrica nacional es una reconstrucción y se muestra en tono claro.](figures/fig03_rubricas.svg)
+
 ### 7.3 Reglas de equipo y deliberación [B]
 
 - Equipos de **4 a 10** integrantes.
@@ -337,6 +343,8 @@ Cinco secciones con límites de caracteres verificados en `pautado_latam_ref.md`
 El corpus repetía «1.000» para prefactibilidad. Es un error: el límite real es **1.500**.
 
 Además, el reporte de referencia incluye **propuestas descartadas** y **referencias APA**. No son secciones con límite propio, pero suman credibilidad.
+
+![Figura 4. Límites de caracteres del pautado latinoamericano. Prefactibilidad es la sección más extensa y el total es de 6.000 caracteres, no de 5.500 como sugería el corpus.](figures/fig04_pautado.svg)
 
 ### 8.2 Rally Nacional [B]
 
@@ -374,6 +382,8 @@ El pautado nacional se organiza en cinco bloques equivalentes, con énfasis en:
 **Total:** 120 segundos, 240–270 palabras, ~135 palabras por minuto.
 
 Las dos fuentes del corpus describen los mismos cortes con distinta notación (0:20–1:00 = 20–60 s; 1:00–1:35 = 60–95 s; 1:35–2:00 = 95–120 s). Son consistentes. [B]
+
+![Figura 5. Arquitectura PAS-V en 120 segundos. Cada acto indica su ventana temporal y el objetivo de palabras, calibrado a 135 palabras por minuto.](figures/fig05_pasv.svg)
 
 ### 9.2 Reglas narrativas
 
@@ -432,16 +442,18 @@ Es material de ejemplo, pero demuestra exactamente el error que el sistema debe 
 `budget/budget.json` tiene 8 filas y suma **USD 4.450,00**:
 
 | # | Elemento | Total (USD) |
-|---|---|---|
-| 1 | 192,00 |
-| 2 | 727,50 |
-| 3 | 1.150,00 |
-| 4 | 510,00 |
-| 5 | 580,00 |
-| 6 | 240,00 |
-| 7 | 380,00 |
-| 8 | 670,50 |
-| **Total** | **4.450,00** |
+|---:|:---|---:|
+| 1 | Unidad ESP32-S3 + LoRa SX1262 | 192,00 |
+| 2 | Arreglo de sensores multivariables | 727,50 |
+| 3 | Alimentación fotovoltaica autónoma | 1.150,00 |
+| 4 | Carcasas IP67 con disipación pasiva | 510,00 |
+| 5 | Gateway LoRaWAN de 8 canales | 580,00 |
+| 6 | Servidor cloud demo y telemetría | 240,00 |
+| 7 | Herramental y cableado marino | 380,00 |
+| 8 | Flete, aranceles y seguro (18 %) | 670,50 |
+| **Total** | | **4.450,00** |
+
+![Figura 6. Composición del presupuesto de ejemplo. La aritmética cierra en USD 4.450, dentro del rango 4.000–6.000, pero las URLs de proveedor no pudieron confirmarse.](figures/fig06_presupuesto.svg)
 
 **Estado de verificación:** las URLs de proveedor **no se pudieron confirmar** en la sesión (bloqueos 502/ERR de Alibaba, DigitalOcean, DHL y una ferretería local). Las capturas `screenshot_*.png` no están en la raíz del repositorio. Por tanto, el presupuesto es **aritméticamente correcto pero documentalmente incompleto**. [C]
 
@@ -493,6 +505,8 @@ Si falta una de estas cinco, la sección no está completa.
 
 Confianza media de las aristas inferidas: **0,81**.
 
+![Figura 7. Composición del grafo. La mayoría de las relaciones se extrajeron del texto; 142 fueron inferidas por el modelo y no equivalen a hechos verificados.](figures/fig07_grafo.svg)
+
 ### 13.2 Nodos de mayor influencia
 
 | Nodo | Aristas |
@@ -539,6 +553,8 @@ Confianza media de las aristas inferidas: **0,81**.
 | 12 | `claims.json` | 3 claims con URL | 3 claims no verificados (1 URL 404) | Alta |
 | 13 | `winners_database.json` | Mezcla Rally Nacional con fase nacional Latam | Separar por certamen y fecha | Media |
 | 14 | `dashboard/data/stats.generated.json` | Estado del proyecto actual | Datos de AquaNica, otro proyecto | Media |
+
+![Figura 8. Distribución de las 14 erratas por gravedad. Ocho son de gravedad alta y afectan cifras, atribuciones o reglas que pueden terminar en un entregable.](figures/fig08_erratas.svg)
 
 ---
 
