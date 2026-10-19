@@ -50,6 +50,10 @@ graph.png
 .superpowers/
 node_modules/
 
+# Reflejos de skills que crea scripts/setup_agente.ps1 (la fuente es skills/)
+.opencode/skills/
+.agents/skills/
+
 # Sistema operativo
 Thumbs.db
 desktop.ini
