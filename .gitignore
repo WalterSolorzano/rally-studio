@@ -24,6 +24,8 @@ dashboard/assets_uploads/
 # Buzón de propuestas del agente y espejo de estado (datos del usuario, efímeros)
 dashboard/data/content/
 dashboard/data/state.json
+dashboard/data/applied/
+dashboard/data/discarded/
 
 # Capturas de pantalla de revisión/QA (no son parte del producto)
 dashboard/shots/

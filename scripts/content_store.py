@@ -121,7 +121,7 @@ class ContentStore:
             return None
         try:
             env = json.loads(path.read_text(encoding="utf-8-sig"))
-        except (OSError, ValueError):
+        except (OSError, ValueError, RecursionError):
             return None
         if not isinstance(env, dict):
             return None
@@ -132,16 +132,23 @@ class ContentStore:
         return env
 
     @staticmethod
-    def _summary(env: dict) -> dict:
+    def _texto(valor) -> str:
+        """Normaliza a texto: un created_at numérico de otra IA no rompe el orden."""
+        if valor is None:
+            return ""
+        return valor if isinstance(valor, str) else str(valor)
+
+    @classmethod
+    def _summary(cls, env: dict) -> dict:
         return {
             "id": env["id"],
             "tab": env["tab"],
             "slot": env["slot"],
             "kind": env["kind"],
-            "title": env.get("title", ""),
-            "source": env.get("source", ""),
-            "created_at": env.get("created_at", ""),
-            "confidence": env.get("confidence", ""),
+            "title": cls._texto(env.get("title")),
+            "source": cls._texto(env.get("source")),
+            "created_at": cls._texto(env.get("created_at")),
+            "confidence": cls._texto(env.get("confidence")),
             "simulated": bool(env.get("simulated", False)),
         }
 
@@ -183,9 +190,13 @@ class ContentStore:
         src = self._item_path(item_id)
         target_dir.mkdir(parents=True, exist_ok=True)
         dst = target_dir / src.name
-        if src.is_file():
-            src.replace(dst)
-        # Si el origen ya no está, no hacemos nada: la operación es idempotente.
+        try:
+            if src.is_file():
+                src.replace(dst)
+        except FileNotFoundError:
+            # Otra pestaña la movió entre la comprobación y el reemplazo:
+            # el resultado deseado (ya no está en el buzón) se cumple igual.
+            pass
 
     def apply(self, item_id: str) -> None:
         self._move(item_id, self.applied_dir)
@@ -200,7 +211,7 @@ class ContentStore:
             return None
         try:
             data = json.loads(self.state_path.read_text(encoding="utf-8-sig"))
-        except (OSError, ValueError):
+        except (OSError, ValueError, RecursionError):
             return None
         return data if isinstance(data, dict) else None
 

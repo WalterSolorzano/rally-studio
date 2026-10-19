@@ -65,7 +65,8 @@ python scripts/servir_propuesta.py --tab pautado --slot problema --kind text \
   `problema|solucion|impacto|innovacion|prefactibilidad`; `budget` → `costos`; `script` →
   `acto1|acto2|acto3|acto4`; el resto → `main`.
 - `--payload` es un JSON con el contenido. En `pautado` y `script`: `{"text": "..."}`. En
-  `budget`: `{"items": [{concept, category, units, unit_cost, url}]}`.
+  `budget`: `{"items": [{element, category, units, unit_cost, url}]}` (la tabla lee
+  `element`; el puente también acepta `concept` y escribe los dos).
 - Marca `--simulated` cuando el contenido no sea real. La ventana lo muestra con distintivo.
 
 ## Instalación, skills y MCPs

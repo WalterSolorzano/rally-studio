@@ -98,6 +98,39 @@ def test_large_utf8_payload_roundtrip(tmp_path):
     assert "ñandú" in leido["payload"]["text"]
 
 
+def test_manifest_survives_deeply_nested_json(tmp_path):
+    d = tmp_path / "content"
+    d.mkdir(parents=True)
+    (d / "hondo.json").write_text("[" * 20000 + "]" * 20000, encoding="utf-8")
+    assert ContentStore(tmp_path).manifest()["items"] == []
+
+
+def test_manifest_survives_non_string_created_at(tmp_path):
+    primero = envelope("p1")
+    primero["created_at"] = 1750000000
+    seed(tmp_path, primero)
+    seed(tmp_path, envelope("p2"))
+    items = ContentStore(tmp_path).manifest()["items"]
+    assert {i["id"] for i in items} == {"p1", "p2"}
+
+
+def test_move_tolerates_source_vanishing(tmp_path, monkeypatch):
+    store = ContentStore(tmp_path)
+    src = tmp_path / "content" / "p1.json"
+    src.parent.mkdir(parents=True)
+
+    original = Path.is_file
+
+    def mentiroso(self):
+        if self == src:
+            return True  # la comprobación miente: el archivo ya no está
+        return original(self)
+
+    monkeypatch.setattr(Path, "is_file", mentiroso)
+    store.apply("p1")  # no debe lanzar FileNotFoundError
+    assert not (store.applied_dir / "p1.json").exists()
+
+
 def test_read_tolerates_utf8_bom(tmp_path):
     env = envelope(text="bom")
     d = tmp_path / "content"

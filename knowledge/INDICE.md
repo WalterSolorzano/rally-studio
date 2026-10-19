@@ -6,7 +6,7 @@ si falta un archivo o su descripción, se corrige en `DESCRIPCIONES`.
 Regla de uso: leer primero este índice y abrir solo lo que la tarea pida.
 Si un archivo no está aquí, no es corpus: es código o artefacto.
 
-Archivos indexados: 39
+Archivos indexados: 40
 
 | Ruta | Qué es | Cuándo sí | Cuándo no |
 |---|---|---|---|
@@ -41,6 +41,7 @@ Archivos indexados: 39
 | `docs/MANUAL_MAESTRO_RALLY_INNOVACION_2026.pdf` | Manual maestro del Rally de Innovación (versión PDF). | Compartir o imprimir el manual. | Para consulta del agente: usar el .md, pesa menos. |
 | `docs/MANUAL_MAESTRO_RALLY_LATAM_Y_NICARAGUA_INNOVA_2026.md` | Manual maestro combinado: Rally Latam y Nicaragua Innova (texto). | Reglas y entregables de ambos certámenes en un solo lugar. | Si solo se necesita el certamen activo: usar su sección. |
 | `docs/MANUAL_MAESTRO_RALLY_LATAM_Y_NICARAGUA_INNOVA_2026.pdf` | Manual maestro combinado (PDF). | Compartir o imprimir. | Para consulta del agente: usar el .md. |
+| `docs/paso-03-mesa-contrato.md` | (sin describir — añadir a DESCRIPCIONES) | — | — |
 | `docs/pautado_template.docx` | Plantilla DOCX del documento pautado. | Compilar el entregable con el formato oficial. | Para redactar: el contenido va en brief y pautado. |
 | `brand/palette.json` | Paleta del proyecto (primario, secundario, acento, fondo, texto). | Generar tokens, gráficos o piezas visuales. | Para tipografías: ver tokens.css. |
 | `graphify-out/.graphify_labels.json` | Etiquetas de las comunidades del grafo. | Nombrar comunidades al procesar el grafo. | Para trabajo normal del agente. |

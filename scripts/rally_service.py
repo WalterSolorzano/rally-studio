@@ -269,11 +269,11 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
                 "message": job.get("message"),
             })
         elif req_path == "/api/state":
-            self.send_json_response(200, {"state": CONTENT_STORE.read_state()})
+            self.send_json_response(200, {"state": CONTENT_STORE.read_state()}, cors=False)
         elif req_path == "/api/content/schema":
-            self.send_json_response(200, CONTENT_STORE.schema())
+            self.send_json_response(200, CONTENT_STORE.schema(), cors=False)
         elif req_path == "/api/content/manifest":
-            self.send_json_response(200, CONTENT_STORE.manifest())
+            self.send_json_response(200, CONTENT_STORE.manifest(), cors=False)
         elif req_path.startswith("/api/content/"):
             self.serve_content_item(req_path[len("/api/content/"):])
         else:
@@ -456,38 +456,44 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
         try:
             env = CONTENT_STORE.read(item_id)
         except KeyError:
-            self.send_json_response(404, {"ok": False, "error": "no-encontrado"})
+            self.send_json_response(404, {"ok": False, "error": "no-encontrado"}, cors=False)
             return
         except Exception:
-            self.send_json_response(500, {"ok": False, "error": "error-interno"})
+            self.send_json_response(500, {"ok": False, "error": "error-interno"}, cors=False)
             return
-        self.send_json_response(200, env)
+        self.send_json_response(200, env, cors=False)
 
     def handle_post_state(self):
+        if not self.origen_permitido():
+            self.send_json_response(403, {"ok": False, "error": "origen-no-permitido"}, cors=False)
+            return
         length = int(self.headers.get("Content-Length", 0))
         body = self.rfile.read(length).decode("utf-8", errors="replace")
         try:
             data = json.loads(body)
         except ValueError:
-            self.send_json_response(400, {"ok": False, "error": "json-invalido"})
+            self.send_json_response(400, {"ok": False, "error": "json-invalido"}, cors=False)
             return
         state = data.get("state") if isinstance(data, dict) else None
         if not isinstance(state, dict):
-            self.send_json_response(400, {"ok": False, "error": "state-invalido"})
+            self.send_json_response(400, {"ok": False, "error": "state-invalido"}, cors=False)
             return
         try:
             CONTENT_STORE.write_state(state)
         except Exception as exc:
             print(f"[content] no se pudo escribir el estado: {exc}", flush=True)
-            self.send_json_response(500, {"ok": False, "error": "error-interno"})
+            self.send_json_response(500, {"ok": False, "error": "error-interno"}, cors=False)
             return
-        self.send_json_response(200, {"ok": True})
+        self.send_json_response(200, {"ok": True}, cors=False)
 
     def handle_post_content(self, path):
+        if not self.origen_permitido():
+            self.send_json_response(403, {"ok": False, "error": "origen-no-permitido"}, cors=False)
+            return
         rest = path[len("/api/content/"):]
         parts = rest.split("/")
         if len(parts) != 2 or parts[1] not in ("apply", "discard") or not parts[0]:
-            self.send_json_response(404, {"ok": False, "error": "no-encontrado"})
+            self.send_json_response(404, {"ok": False, "error": "no-encontrado"}, cors=False)
             return
         item_id, action = parts
         try:
@@ -496,13 +502,13 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
             else:
                 CONTENT_STORE.discard(item_id)
         except KeyError:
-            self.send_json_response(404, {"ok": False, "error": "no-encontrado"})
+            self.send_json_response(404, {"ok": False, "error": "no-encontrado"}, cors=False)
             return
         except Exception as exc:
             print(f"[content] fallo al {action} {item_id!r}: {exc}", flush=True)
-            self.send_json_response(500, {"ok": False, "error": "error-interno"})
+            self.send_json_response(500, {"ok": False, "error": "error-interno"}, cors=False)
             return
-        self.send_json_response(200, {"ok": True})
+        self.send_json_response(200, {"ok": True}, cors=False)
 
     def send_telemetry(self):
         cpu = psutil.cpu_percent(interval=None)
@@ -589,14 +595,26 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(content)
 
-    def send_json_response(self, code, obj):
+    def send_json_response(self, code, obj, cors=True):
         body = json.dumps(obj).encode("utf-8")
         self.send_response(code)
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Content-Length", str(len(body)))
-        self.send_header("Access-Control-Allow-Origin", "*")
+        # Las rutas del buzón y del espejo no se anuncian a otros orígenes:
+        # el puente es del mismo origen y el estado del proyecto es privado.
+        if cors:
+            self.send_header("Access-Control-Allow-Origin", "*")
         self.end_headers()
         self.wfile.write(body)
+
+    def origen_permitido(self):
+        """Solo el propio servidor puede mutar estado o mover propuestas."""
+        origin = self.headers.get("Origin")
+        if not origin:
+            return True
+        port = self.server.server_address[1]
+        permitidos = {f"http://localhost:{port}", f"http://127.0.0.1:{port}"}
+        return origin in permitidos
 
 # ── PLANTILLA PAUTADO OFICIAL: secciones, reglas y anclajes por evento ───────
 # Cada evento trae su propio documento y sus propias reglas.

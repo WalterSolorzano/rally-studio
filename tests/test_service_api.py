@@ -154,3 +154,32 @@ def test_content_schema_lists_tabs(servidor):
     assert status == 200
     assert "pautado" in body["tabs"]
     assert "problema" in body["slots"]["pautado"]
+
+
+def _request(base, path, metodo="GET", cuerpo=None, cabeceras=None):
+    data = json.dumps(cuerpo).encode("utf-8") if cuerpo is not None else None
+    req = urllib.request.Request(base + path, data=data, method=metodo)
+    req.add_header("Content-Type", "application/json")
+    for clave, valor in (cabeceras or {}).items():
+        req.add_header(clave, valor)
+    try:
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            return resp.status, dict(resp.headers), resp.read().decode("utf-8")
+    except urllib.error.HTTPError as e:
+        return e.code, dict(e.headers), e.read().decode("utf-8")
+
+
+def test_new_routes_do_not_advertise_cross_origin(servidor):
+    base, _ = servidor
+    estado, cabeceras, _ = _request(base, "/api/state")
+    assert estado == 200
+    assert "Access-Control-Allow-Origin" not in cabeceras
+
+
+def test_post_from_foreign_origin_is_rejected(servidor):
+    base, _ = servidor
+    estado, _, _ = _request(base, "/api/state", "POST", {"state": {"a": 1}}, {"Origin": "http://malo.example"})
+    assert estado == 403
+    estado_propio, _, _ = _request(base, "/api/state", "POST", {"state": {"a": 1}}, {"Origin": base})
+    assert estado_propio == 200
+

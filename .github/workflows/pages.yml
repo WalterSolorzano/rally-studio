@@ -39,7 +39,7 @@ jobs:
           cp -r dashboard/. public/dashboard/
           rm -rf public/dashboard/shots public/dashboard/assets_uploads
           # El buzón de propuestas y el espejo de estado son datos del usuario: no se publican
-          rm -rf public/dashboard/data/content public/dashboard/data/state.json
+          rm -rf public/dashboard/data/content public/dashboard/data/state.json public/dashboard/data/applied public/dashboard/data/discarded
           # Identidad de marca (tokens, paleta, logos)
           [ -d brand ] && cp -r brand public/brand || true
           # Repositorio de datos que el tablero consulta en runtime

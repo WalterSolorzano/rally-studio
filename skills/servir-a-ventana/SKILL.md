@@ -15,7 +15,8 @@ description: Entrega una propuesta a la interfaz para que el usuario la acepte o
 
 1. Escribe el payload en un archivo JSON temporal. Formatos:
    - `pautado` y `script`: `{"text": "..."}`
-   - `budget`: `{"items": [{"concept": "...", "category": "...", "units": 1, "unit_cost": 0, "url": "..."}]}`
+   - `budget`: `{"items": [{"element": "...", "category": "...", "units": 1, "unit_cost": 0, "url": "..."}]}`
+  (la tabla y los exports leen `element`; el puente también acepta `concept` y escribe ambos).
    - Otras pestañas: el objeto que tenga sentido para esa pestaña.
 2. Elige `--tab` (una de las 13) y `--slot`:
    - `pautado` → `problema | solucion | impacto | innovacion | prefactibilidad`

@@ -17,6 +17,29 @@
   var SEEN_KEY = "rally_content_seen";
   var DOCK_ID = "rally-content-dock";
 
+  // Pestañas cuyo contenido va a un campo concreto del estado. Las que no
+  // están aquí (canvas, timeline) todavía no tienen destino: no se aceptan.
+  var CAMPOS_POR_TAB = {
+    certamen: ["rally_type", "category", "hours_total"],
+    team: ["team_name", "university", "city", "project_name", "team_logo_img"],
+    challenges: ["challenge_id", "challenge_title"],
+    solution: ["solution_raw_input", "solution_thesis", "solution_simple", "solution_approved"],
+    impact: ["ods_ids", "national_plan_axis"],
+    multi_ai: ["tasks"],
+    resources: ["team_logo_img"],
+    webdemo: ["site_url"]
+  };
+
+  var SUBIR_MS = 800;
+  var MAX_FALLOS = 2;
+  var REPOSO_MS = 10000;
+
+  var fallos = 0;
+  var salud = "ok";
+  var proximoPoll = 0;
+  var subidaPendiente = null;
+  var suprimirSubida = 0;
+
   var rendered = Object.create(null);
   var busy = Object.create(null);
   var dock = null;
@@ -74,8 +97,12 @@
       var unitCost = Number(it.unit_cost);
       if (!isFinite(units)) units = 1;
       if (!isFinite(unitCost)) unitCost = 0;
+      var texto = String(it.element || it.concept || it.name || it.description || "");
       var fila = {
-        concept: String(it.concept || it.name || it.description || ""),
+        // La tabla y los exports de app.js leen `element`; el dossier lee
+        // `concept`. Se escriben los dos con el mismo valor.
+        element: texto,
+        concept: texto,
         category: String(it.category || "General"),
         units: units,
         unit_cost: unitCost
@@ -113,8 +140,9 @@
     return st;
   }
 
-  function escribirEstado(st) {
+  function escribirEstado(st, esRemoto) {
     // `active_tab` no se toca nunca: el puente no cambia de pestaña.
+    if (!esRemoto) st._sync_ts = Date.now();
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(st));
     } catch (e) {
@@ -139,28 +167,80 @@
         /* nada */
       }
     }
+
+    // Espejo en el servidor: así (b) y los demás navegadores ven el mismo
+    // estado. El que aplica un cambio remoto no lo re-sube (evita el eco).
+    if (!esRemoto && Date.now() >= suprimirSubida) subirEstado(st);
+  }
+
+  function subirEstado(st) {
+    if (subidaPendiente && typeof clearTimeout === "function") clearTimeout(subidaPendiente);
+    subidaPendiente = setTimeout(function () {
+      subidaPendiente = null;
+      try {
+        fetch("/api/state", {
+          method: "POST",
+          cache: "no-store",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ state: st })
+        }).catch(function () {
+          /* sin red: el estado local sigue siendo la verdad */
+        });
+      } catch (e) {
+        /* fetch ausente: nada que subir */
+      }
+    }, SUBIR_MS);
+  }
+
+  function sincronizarRemoto() {
+    return pedirJSON("/api/state")
+      .then(function (r) {
+        var remoto = r && r.state;
+        if (!remoto || typeof remoto !== "object") return;
+        var local = leerEstado();
+        if (Number(remoto._sync_ts || 0) <= Number(local._sync_ts || 0)) return;
+        suprimirSubida = Date.now() + 2000;
+        escribirEstado(asegurarForma(remoto), true);
+      })
+      .catch(function () {
+        /* sin espejo: seguimos con el estado local */
+      });
   }
 
   function fusionar(env) {
-    if (!env || typeof env !== "object") return;
+    if (!env || typeof env !== "object") return false;
     var st = asegurarForma(leerEstado());
     var tab = env.tab;
     var slot = env.slot;
     var payload = env.payload;
+    var cambio = false;
 
     if (tab === "pautado" && typeof st.pautado[slot] === "string") {
       st.pautado[slot] = textoDe(payload);
+      cambio = true;
     } else if (tab === "script" && typeof st.script[slot] === "string") {
       st.script[slot] = textoDe(payload);
+      cambio = true;
     } else if (tab === "budget") {
       var filas = filasDePresupuesto(payload);
-      if (filas && filas.length) st.budget = filas;
-    } else {
-      if (!st.propuestas || typeof st.propuestas !== "object") st.propuestas = {};
-      st.propuestas[tab + ":" + slot] = payload;
+      if (filas && filas.length) {
+        st.budget = filas;
+        cambio = true;
+      }
+    } else if (CAMPOS_POR_TAB[tab] && payload && typeof payload === "object") {
+      var campos = CAMPOS_POR_TAB[tab];
+      for (var i = 0; i < campos.length; i++) {
+        var campo = campos[i];
+        if (Object.prototype.hasOwnProperty.call(payload, campo)) {
+          st[campo] = payload[campo];
+          cambio = true;
+        }
+      }
     }
 
+    if (!cambio) return false;
     escribirEstado(st);
+    return true;
   }
 
   // -- red --------------------------------------------------------------
@@ -212,6 +292,9 @@
       "#" + DOCK_ID + " .rcc-badge{font-size:9px;letter-spacing:.08em;text-transform:uppercase;" +
       "background:#fde68a;color:#7c4a03;border-radius:3px;padding:2px 5px;white-space:nowrap}" +
       "#" + DOCK_ID + " .rcc-meta{font-size:11px;color:#5b6478;margin-top:4px;line-height:1.35}" +
+      "#" + DOCK_ID + " .rcc-status{font-size:10px;color:#5b6478;background:#f6f7fb;" +
+      "border:1px dashed #c7cede;border-radius:4px;padding:6px 8px;text-align:center}" +
+      "#" + DOCK_ID + " .rcc-note{font-size:10px;color:#7c4a03;margin-top:8px}" +
       "#" + DOCK_ID + " .rcc-actions{display:flex;gap:8px;margin-top:10px}" +
       "#" + DOCK_ID + " button{font:inherit;font-size:11px;font-weight:600;cursor:pointer;" +
       "border-radius:4px;padding:5px 10px;border:1px solid #c7cede;background:#f6f7fb;color:#1f2937}" +
@@ -222,6 +305,11 @@
     style.id = DOCK_ID + "-styles";
     style.textContent = css;
     document.head.appendChild(style);
+  }
+
+  function puedeAceptar(tab) {
+    if (tab === "pautado" || tab === "script" || tab === "budget") return true;
+    return !!CAMPOS_POR_TAB[tab];
   }
 
   function crearTarjeta(item) {
@@ -254,23 +342,48 @@
     var actions = document.createElement("div");
     actions.className = "rcc-actions";
 
-    var apply = document.createElement("button");
-    apply.type = "button";
-    apply.setAttribute("data-action", "apply");
-    apply.textContent = "Aceptar";
+    if (puedeAceptar(item.tab)) {
+      var apply = document.createElement("button");
+      apply.type = "button";
+      apply.setAttribute("data-action", "apply");
+      apply.textContent = "Aceptar";
+      actions.appendChild(apply);
+    }
 
     var discard = document.createElement("button");
     discard.type = "button";
     discard.setAttribute("data-action", "discard");
     discard.textContent = "Descartar";
 
-    actions.appendChild(apply);
     actions.appendChild(discard);
 
     card.appendChild(head);
     card.appendChild(meta);
     card.appendChild(actions);
+
+    if (!puedeAceptar(item.tab)) {
+      var nota = document.createElement("div");
+      nota.className = "rcc-note";
+      nota.textContent = "Esta pestaña todavía no tiene un campo donde mostrarla.";
+      card.appendChild(nota);
+    }
     return card;
+  }
+
+  function actualizarSalud() {
+    var cont = asegurarDock();
+    if (!cont) return;
+    var nodo = cont.querySelector(".rcc-status");
+    if (salud === "apagado") {
+      if (!nodo) {
+        nodo = document.createElement("div");
+        nodo.className = "rcc-status";
+        nodo.textContent = "Buzón local apagado — sin propuestas en vivo";
+        cont.appendChild(nodo);
+      }
+    } else if (nodo && nodo.parentNode) {
+      nodo.parentNode.removeChild(nodo);
+    }
   }
 
   function quitarTarjeta(id) {
@@ -301,9 +414,10 @@
 
   // -- acciones ---------------------------------------------------------
 
-  function aceptar(id) {
-    if (busy[id]) return Promise.resolve();
+  function aceptar(id, boton) {
+    if (busy[id]) return Promise.resolve(false);
     busy[id] = true;
+    var ok = false;
 
     return pedirJSON("/api/content/" + encodeURIComponent(id))
       .catch(function () {
@@ -314,30 +428,39 @@
           if (env) fusionar(env);
           marcarVisto(id);
           quitarTarjeta(id);
+          ok = true;
         });
       })
       .catch(function () {
-        /* fallo de red: silencio, se reintenta en el próximo ciclo */
+        // Fallo de red: el botón vuelve a estar vivo y la tarjeta se
+        // re-dibuja en el próximo ciclo.
+        if (boton) boton.disabled = false;
+        delete rendered[id];
       })
       .then(function () {
         delete busy[id];
+        return ok;
       });
   }
 
-  function descartar(id) {
-    if (busy[id]) return Promise.resolve();
+  function descartar(id, boton) {
+    if (busy[id]) return Promise.resolve(false);
     busy[id] = true;
+    var ok = false;
 
     return postear("/api/content/" + encodeURIComponent(id) + "/discard")
       .then(function () {
         marcarVisto(id);
         quitarTarjeta(id);
+        ok = true;
       })
       .catch(function () {
-        /* fallo de red: silencio */
+        if (boton) boton.disabled = false;
+        delete rendered[id];
       })
       .then(function () {
         delete busy[id];
+        return ok;
       });
   }
 
@@ -351,28 +474,57 @@
     var accion = boton.getAttribute("data-action");
     boton.disabled = true;
 
-    if (accion === "apply") aceptar(id);
-    else if (accion === "discard") descartar(id);
+    if (accion === "apply") aceptar(id, boton);
+    else if (accion === "discard") descartar(id, boton);
   }
 
   // -- ciclo ------------------------------------------------------------
 
   function poll() {
     if (!soportado()) return Promise.resolve();
+    if (salud === "apagado" && Date.now() < proximoPoll) return Promise.resolve();
     return pedirJSON("/api/content/manifest")
       .then(function (m) {
+        fallos = 0;
+        if (salud !== "ok") {
+          salud = "ok";
+          actualizarSalud();
+        }
         var items = m && Array.isArray(m.items) ? m.items : [];
         render(items);
+        return sincronizarRemoto();
       })
       .catch(function () {
-        /* servicio apagado: la ventana sigue funcionando igual */
+        fallos += 1;
+        if (fallos >= MAX_FALLOS) {
+          salud = "apagado";
+          proximoPoll = Date.now() + REPOSO_MS;
+          actualizarSalud();
+        }
       });
+  }
+
+  function escucharCambios() {
+    // app.js avisa cada vez que el usuario guarda: ese estado se sube al
+    // espejo para que (b) y los demás navegadores lo vean.
+    try {
+      if (typeof BroadcastChannel !== "function") return;
+      var bc = new BroadcastChannel(CHANNEL_NAME);
+      bc.onmessage = function (ev) {
+        if (!ev || !ev.data || ev.data.type !== "AUTO_SYNC_STATE") return;
+        if (Date.now() < suprimirSubida) return;
+        if (ev.data.state) subirEstado(ev.data.state);
+      };
+    } catch (e) {
+      /* sin canal: solo se sube lo que el puente fusiona */
+    }
   }
 
   function iniciar() {
     if (!soportado()) return;
     asegurarDock();
     if (dock) dock.addEventListener("click", alPulsar);
+    escucharCambios();
     poll();
     setInterval(poll, POLL_MS);
   }
@@ -380,7 +532,14 @@
   window.RallyContentBridge = {
     poll: poll,
     apply: aceptar,
-    discard: descartar
+    discard: descartar,
+    _filas: filasDePresupuesto,
+    _fusionar: fusionar,
+    _salud: function () {
+      return salud;
+    },
+    _subirEstado: subirEstado,
+    _puedeAceptar: puedeAceptar
   };
 
   if (document.readyState === "loading") {
