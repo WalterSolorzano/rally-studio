@@ -303,8 +303,8 @@ function getDefaultMultiAITasks() {
     {
       id: "voice_audio",
       title: "Locución y Síntesis de Voz Emotiva",
-      ai: "ElevenLabs / Chatterbox / Edge-TTS",
-      desc: "Genera el archivo de audio para los 4 actos (120s exactos) con entonación empática latinoamericana.",
+      ai: "Chatterbox LatAm / Kokoro / Edge-TTS",
+      desc: "Escribe la locución, instala si hace falta un motor TTS y entrega el MP4 (AAC) con la guía de Guion > Motor de voz.",
       status: "pending",
       result: ""
     },
@@ -356,6 +356,14 @@ function getInitialState() {
     challenges: [],
     challenge_ideas: {}, // { [chId]: [ { id, text, author, timestamp } ] }
 
+    // Identidad real del equipo: cada persona define su nombre (único) en su dispositivo.
+    // [{ id, name, joined_at }]
+    team_roster: [],
+
+    // Entregables: estado manual, responsables e historial de quién trabajó.
+    // { [deliverableId]: { status, assignees, history, updated_at } }
+    deliverables: {},
+
     // Taller de Solución
     solution_raw_input: "",
     solution_thesis: "",
@@ -365,6 +373,9 @@ function getInitialState() {
 
     // Tareas Multi-IA coordinadas
     tasks: getDefaultMultiAITasks(),
+
+    // Motor TTS elegido para la guía de locución
+    voice_engine: "chatterbox",
 
     // Identidad cromática
     palette: {
@@ -453,7 +464,87 @@ function getClientMascot() {
   return picked;
 }
 
-const currentClientMascot = getClientMascot();
+function getStoredUserName() {
+  try { return String(localStorage.getItem("rally_user_name") || "").trim(); } catch(e) { return ""; }
+}
+
+// El ícono/color sigue siendo estable por dispositivo (mascota), pero el nombre
+// lo define la persona. Sin nombre definido, la identidad queda en "Sin nombre".
+function makeClientIdentity() {
+  const mascot = getClientMascot();
+  const stored = getStoredUserName();
+  return Object.assign({}, mascot, { name: stored || "Sin nombre" });
+}
+
+const currentClientMascot = makeClientIdentity();
+const EQUIPO_LEGADO_NOMBRES = ["Estación Alfa", "Estación Beta", "Estación Gamma", "Estación Delta", "Estación Epsilon", "Estación Omega"];
+
+function normalizePersonName(raw) {
+  return String(raw || "").replace(/\s+/g, " ").trim().slice(0, 28);
+}
+function personNameKey(name) {
+  return normalizePersonName(name).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+function getRoster() {
+  if (!Array.isArray(state.team_roster)) state.team_roster = [];
+  return state.team_roster;
+}
+function rosterNameInUse(name, exceptId) {
+  const key = personNameKey(name);
+  return getRoster().find(m => personNameKey(m.name) === key && m.id !== exceptId) || null;
+}
+function amINamed() {
+  return !!getStoredUserName() && currentClientMascot.name !== "Sin nombre";
+}
+
+// Nombre legible: convierte identidades viejas (mascotas) a algo humano.
+function displayPersonName(name) {
+  if (!name) return "Sin nombre";
+  if (EQUIPO_LEGADO_NOMBRES.includes(name)) {
+    const m = getRoster().find(x => x.name === name);
+    return m ? m.name : "Integrante anterior";
+  }
+  return name;
+}
+
+// Define (o cambia) el nombre de esta persona en este dispositivo. Único en el equipo.
+function setMyDisplayName(raw) {
+  const name = normalizePersonName(raw);
+  if (name.length < 2) return { ok: false, error: "Escribe al menos 2 caracteres." };
+  if (name === "Sin nombre") return { ok: false, error: "Ese nombre está reservado." };
+  const roster = getRoster();
+  const dup = rosterNameInUse(name, currentClientMascot.id);
+  if (dup) return { ok: false, error: `"${dup.name}" ya está en uso. Los nombres deben ser únicos.` };
+
+  let me = roster.find(m => m.id === currentClientMascot.id);
+  if (!me) {
+    me = { id: currentClientMascot.id, name, joined_at: Date.now() };
+    roster.push(me);
+  } else {
+    me.name = name;
+  }
+  currentClientMascot.name = name;
+  try { localStorage.setItem("rally_user_name", name); } catch(e) {}
+  saveState();
+  if (collaborationChannel) {
+    collaborationChannel.postMessage({ type: "ROSTER_UPDATE", roster });
+  }
+  return { ok: true };
+}
+
+// Adopta un nombre existente del roster en este dispositivo (equipo compartiendo laptop).
+function adoptRosterName(id) {
+  const member = getRoster().find(m => m.id === id);
+  if (!member) return false;
+  currentClientMascot.name = member.name;
+  currentClientMascot.id = member.id;
+  try {
+    localStorage.setItem("rally_user_name", member.name);
+    localStorage.setItem("rally_user_mascot_id", member.id);
+  } catch(e) {}
+  renderTopbar();
+  return true;
+}
 
 // Canal de presencia y soft-locks
 let collaborationChannel = null;
@@ -468,6 +559,13 @@ try {
     } else if (data && data.type === "RELEASE_LOCK") {
       if (state.active_locks) delete state.active_locks[data.fieldId];
       updateSoftLockUI();
+    } else if (data && data.type === "ROSTER_UPDATE") {
+      state.team_roster = Array.isArray(data.roster) ? data.roster : [];
+      if (activeTab === "resumen") renderTab("resumen");
+      renderTopbar();
+    } else if (data && data.type === "DELIVERABLES_UPDATE") {
+      state.deliverables = data.value || {};
+      if (activeTab === "resumen") renderTab("resumen");
     } else if (data && data.type === "FIELD_UPDATE") {
       if (data.category === "pautado") {
         state.pautado[data.key] = data.value;
@@ -554,6 +652,7 @@ function getWorkflowStage() {
 
 // ── NAVEGACIÓN MODULAR Y DEPENDENCIAS ─────────────────────────────────────────
 const NAV_TABS = [
+  { id: "resumen",    label: "Resumen del Rally",        level: 0, check: () => true, summary: true },
   { id: "certamen",   label: "00 Certamen",             level: 0, check: () => true },
   { id: "team",       label: "01 Identidad de Equipo",  level: 1, check: () => !!state.rally_type },
   { id: "challenges", label: "02 Retos del Comité",     level: 2, check: () => !!state.rally_type && !!state.team_name },
@@ -626,6 +725,19 @@ function loadSavedState() {
     const saved = localStorage.getItem("rally_studio_production_state_2026_v3");
     if (saved) {
       state = Object.assign(getInitialState(), JSON.parse(saved));
+      // Migra metadatos de tareas sin perder resultados ya pegados por el equipo.
+      const defaultTasks = getDefaultMultiAITasks();
+      if (Array.isArray(state.tasks)) {
+        state.tasks = state.tasks.map(task => {
+          const fresh = defaultTasks.find(d => d.id === task.id);
+          return fresh ? { ...task, title: fresh.title, ai: fresh.ai, desc: fresh.desc } : task;
+        });
+        defaultTasks.forEach(fresh => {
+          if (!state.tasks.some(task => task.id === fresh.id)) state.tasks.push(fresh);
+        });
+      } else {
+        state.tasks = defaultTasks;
+      }
       if (Array.isArray(state.challenges)) {
         state.challenges.forEach(ch => {
           if (ch.title && (ch.title.toLowerCase().includes("whatsapp image") || ch.title.toLowerCase().includes(".jpeg") || ch.title.toLowerCase().includes(".png") || ch.title.toLowerCase().includes(".jpg"))) {
@@ -663,6 +775,11 @@ function loadSavedState() {
         else if (stage === 2) activeTab = "challenges";
         else if (stage === 3) activeTab = "solution";
         else activeTab = "challenges";
+      }
+      // Con el reto ya elegido, la primera pantalla es el resumen: las fases de
+      // setup (certamen, equipo, retos) dejan de ocupar el campo de trabajo.
+      if (stage >= 3 && ["certamen", "team", "challenges"].includes(activeTab)) {
+        activeTab = "resumen";
       }
     }
   } catch (e) {
@@ -1686,6 +1803,10 @@ function renderMobileBottomBar() {
   const isPanelOpen = body.classList.contains("panel-drawer-open");
 
   el.innerHTML = `
+    <button class="mobile-bottom-tab ${activeTab === 'resumen' ? 'active' : ''}" onclick="switchTab('resumen')" title="Resumen del rally">
+      ${SVG.network}
+      <span>Resumen</span>
+    </button>
     <button class="mobile-bottom-tab ${isSidebarOpen ? 'active' : ''}" onclick="toggleSidebar()" title="Fases de trabajo">
       ${SVG.menu}
       <span>Fases</span>
@@ -1718,7 +1839,7 @@ function renderTopbar() {
   el.innerHTML = `
     <div class="topbar-left">
       ${stage >= 2 ? `<button class="btn-toggle-sidebar" onclick="toggleSidebar()" title="Colapsar/Expandir menú lateral">${SVG.menu}</button>` : ""}
-      <div class="brand-group" onclick="activeTab='certamen'; syncUI();" title="Ir al inicio de Rally Studio">
+      <div class="brand-group" onclick="goHome()" title="Ir al inicio de Rally Studio">
         ${SVG.logo}
         <span class="brand-text-navy">RALLY</span>
         <span class="brand-text-blue">STUDIO</span>
@@ -1765,11 +1886,11 @@ function renderTopbar() {
         </div>
       ` : ""}
 
-      <!-- Avatar de Mascota Colaborativa Asignada (Sin Registro) -->
-      <div class="collaborator-avatar-badge" title="Tu avatar asignado automáticamente para editar en simultáneo sin pisarse: ${currentClientMascot.name}">
+      <!-- Identidad de esta persona: nombre real, definido por ella misma -->
+      <button class="collaborator-avatar-badge" onclick="openIdentityModal()" title="${amINamed() ? `Trabajas como ${currentClientMascot.name}. Clic para cambiar de persona.` : 'Define tu nombre para que el equipo sepa quién eres.'}">
         <span class="collaborator-avatar-icon">${currentClientMascot.icon}</span>
-        <span class="collaborator-name-label">${currentClientMascot.name}</span>
-      </div>
+        <span class="collaborator-name-label ${amINamed() ? '' : 'is-unset'}">${escapeHtml(currentClientMascot.name)}</span>
+      </button>
 
       <!-- Telemetría del Sistema en Tiempo Real -->
       <div class="telemetry-chip" id="topbar-telemetry-chip" title="Métricas de hardware y estado del motor en tiempo real">
@@ -2024,6 +2145,39 @@ function applyTimerSettings() {
 function renderNavigation() {
   const nav = document.getElementById("sidebar");
   const currentStage = getWorkflowStage();
+  const map = rsDefMap();
+
+  const linkFor = (t, isUnlocked) => {
+    const isCompleted = t.summary ? false : rsPhaseState(t.id, map).code === "done";
+    const activeClass = t.id === activeTab ? "active" : "";
+    let statusMarkup = "";
+    if (t.summary) {
+      statusMarkup = "";
+    } else if (!isUnlocked) {
+      statusMarkup = `<span class="badge-status" style="background:#f1f5f9; color:#94a3b8; border:1px solid #e2e8f0;">${SVG.lock}</span>`;
+    } else if (isCompleted) {
+      statusMarkup = `<span class="badge-status badge-ok">${SVG.check}</span>`;
+    } else if (rsPhaseState(t.id, map).code === "waiting") {
+      statusMarkup = `<span class="badge-status badge-wait">En espera</span>`;
+    } else {
+      statusMarkup = `<span class="badge-status badge-pending">En curso</span>`;
+    }
+    return `
+      <a href="#" class="nav-link ${activeClass} ${!isUnlocked ? 'locked' : ''}"
+         style="${!isUnlocked ? 'opacity:0.45; cursor:not-allowed;' : ''}"
+         onclick="${isUnlocked ? `switchTab('${t.id}', event)` : 'event.preventDefault()'}">
+        <span style="display:flex; align-items:center; gap:6px;">${t.label}</span>
+        ${statusMarkup}
+      </a>
+    `;
+  };
+
+  // Las fases ya cerradas no estorban: se pliegan al final, pero siguen accesibles.
+  // El resumen aparece cuando el equipo ya terminó la puesta en marcha.
+  const tabs = NAV_TABS.filter(t => !t.summary || currentStage >= 2);
+  const closed = tabs.filter(t => !t.summary && t.level <= currentStage && t.id !== activeTab && rsPhaseState(t.id, map).code === "done");
+  const mainTabs = tabs.filter(t => !closed.includes(t));
+  const lockedCount = tabs.filter(t => t.level > currentStage).length;
 
   nav.innerHTML = `
     <div class="drawer-header-mobile">
@@ -2031,30 +2185,22 @@ function renderNavigation() {
       <button class="btn-close-drawer" onclick="closeAllDrawers()" aria-label="Cerrar menú lateral">${SVG.close}</button>
     </div>
     <div class="sidebar-heading">Fases de Trabajo</div>
-    ${NAV_TABS.map(t => {
-      const isUnlocked = t.level <= currentStage;
-      const isCompleted = t.check();
-      const activeClass = t.id === activeTab ? "active" : "";
-      
-      let statusMarkup = "";
-      if (!isUnlocked) {
-        statusMarkup = `<span class="badge-status" style="background:#f1f5f9; color:#94a3b8; border:1px solid #e2e8f0;">${SVG.lock}</span>`;
-      } else if (isCompleted) {
-        statusMarkup = `<span class="badge-status badge-ok">${SVG.check}</span>`;
-      } else {
-        statusMarkup = `<span class="badge-status badge-pending">En curso</span>`;
-      }
-
-      return `
-        <a href="#" class="nav-link ${activeClass} ${!isUnlocked ? 'locked' : ''}" 
-           style="${!isUnlocked ? 'opacity:0.45; cursor:not-allowed;' : ''}"
-           onclick="${isUnlocked ? `switchTab('${t.id}', event)` : 'event.preventDefault()'}">
-          <span style="display:flex; align-items:center; gap:6px;">${t.label}</span>
-          ${statusMarkup}
-        </a>
-      `;
-    }).join("")}
+    ${mainTabs.map(t => linkFor(t, t.level <= currentStage)).join("")}
+    ${closed.length ? `
+      <details class="nav-closed-group">
+        <summary>Fases cerradas (${closed.length})</summary>
+        ${closed.map(t => linkFor(t, true)).join("")}
+      </details>
+    ` : ""}
+    ${lockedCount ? `<div class="nav-locked-hint">${lockedCount} fases se abren al avanzar</div>` : ""}
   `;
+}
+
+function goHome() {
+  const stage = getWorkflowStage();
+  activeTab = stage >= 3 ? "resumen" : stage === 2 ? "challenges" : stage === 1 ? "team" : "certamen";
+  state.active_tab = activeTab;
+  syncUI();
 }
 
 function switchTab(tabId, ev) {
@@ -2079,6 +2225,7 @@ function switchTab(tabId, ev) {
 function renderTab(tabId) {
   const main = document.getElementById("main");
   const renderers = {
+    resumen: renderViewResumen,
     certamen: renderViewCertamen,
     team: renderViewTeam,
     challenges: renderViewChallenges,
@@ -2098,8 +2245,485 @@ function renderTab(tabId) {
 }
 
 // ═════════════════════════════════════════════════════════════════════════════
+// CENTRO DE MANDO: RESUMEN ADAPTATIVO, ENTREGABLES Y RESPONSABLES
+// Capa aditiva: no reemplaza ninguna fase ni dato existente.
+// ═════════════════════════════════════════════════════════════════════════════
+
+let rsFilter = "all";
+
+function rsWordCount(text) {
+  return String(text || "").trim().split(/\s+/).filter(Boolean).length;
+}
+
+function rsPautadoSectionDone(key) {
+  const len = (state.pautado[key] || "").length;
+  const limit = getPautadoLimit(key);
+  return limit === null ? len > 0 : (len >= 150 && len <= limit);
+}
+
+function rsCanvasFilledCount() {
+  const canvas = (state.model_canvas && typeof state.model_canvas === "object") ? state.model_canvas : {};
+  return ["socios","actividades","propuesta","relaciones","segmentos","recursos","canales","costes","ingresos"]
+    .filter(k => String(canvas[k] || "").trim() !== "").length;
+}
+
+// Definición única de entregables. `auto()` detecta lo ya hecho; `requires` marca espera.
+function getDeliverableDefs() {
+  return [
+    { id: "certamen", phase: "certamen", title: "Certamen y reglas", needs: "Elegir Rally Latam 28h o Nacional 24h.", requires: [], auto: () => !!state.rally_type },
+    { id: "equipo", phase: "team", title: "Nombre, sede y marca", needs: "Nombre del equipo, universidad y ciudad.", requires: ["certamen"], auto: () => !!state.team_name && !!state.university },
+    { id: "reto", phase: "challenges", title: "Reto del comité seleccionado", needs: "Elegir un reto con su número y categoría.", requires: ["equipo"], auto: () => !!state.challenge_id },
+    { id: "solucion", phase: "solution", title: "Solución aprobada por el equipo", needs: "Tesis y versión simple, aprobadas en el taller.", requires: ["reto"], auto: () => !!state.solution_approved },
+    { id: "ods", phase: "impact", title: "ODS y eje del Plan País", needs: "Elegir ODS y justificar el eje (solo Nacional).", requires: ["reto"], auto: () => ((state.impact_alignment && state.impact_alignment.selected_ods) || []).length > 0 },
+    { id: "despacho", phase: "multi_ai", title: "Despacho a IAs externas", needs: "Al menos 3 encargos cerrados con resultado.", requires: ["solucion"], auto: () => (state.tasks || []).filter(t => t.status === "completed").length >= 3 },
+    { id: "pautado_problema", phase: "pautado", title: "Pautado · Problema", needs: "150–1250 caracteres en Latam.", requires: ["solucion"], auto: () => rsPautadoSectionDone("problema") },
+    { id: "pautado_solucion", phase: "pautado", title: "Pautado · Solución", needs: "150–1250 caracteres en Latam.", requires: ["solucion"], auto: () => rsPautadoSectionDone("solucion") },
+    { id: "pautado_impacto", phase: "pautado", title: "Pautado · Impacto", needs: "150–1000 caracteres en Latam.", requires: ["solucion"], auto: () => rsPautadoSectionDone("impacto") },
+    { id: "pautado_innovacion", phase: "pautado", title: "Pautado · Innovación", needs: "150–1000 caracteres en Latam.", requires: ["solucion"], auto: () => rsPautadoSectionDone("innovacion") },
+    { id: "pautado_prefactibilidad", phase: "pautado", title: "Pautado · Prefactibilidad", needs: "150–1500 caracteres en Latam.", requires: ["solucion"], auto: () => rsPautadoSectionDone("prefactibilidad") },
+    { id: "presupuesto", phase: "budget", title: "Tabla de costos con respaldo", needs: "Partidas con unidades, costo unitario y URL.", requires: ["solucion"], auto: () => isBudgetValid() },
+    { id: "canvas", phase: "canvas", title: "Modelo Canvas", needs: "9 cuadrantes coherentes con el presupuesto.", requires: ["solucion"], auto: () => rsCanvasFilledCount() >= 7 },
+    { id: "recursos", phase: "resources", title: "Bóveda de recursos", needs: "Logos, fotos y tomas subidas al plan.", requires: ["solucion"], auto: () => ((state.video_assets && state.video_assets.items) || []).length > 0 },
+    { id: "guion_acto1", phase: "script", title: "Guion · Acto I", needs: "Gancho y problema en voz alta.", requires: ["presupuesto"], auto: () => rsWordCount(state.script.acto1) > 0 },
+    { id: "guion_acto2", phase: "script", title: "Guion · Acto II", needs: "Solución y demostración.", requires: ["presupuesto"], auto: () => rsWordCount(state.script.acto2) > 0 },
+    { id: "guion_acto3", phase: "script", title: "Guion · Acto III", needs: "Impacto y validación.", requires: ["presupuesto"], auto: () => rsWordCount(state.script.acto3) > 0 },
+    { id: "guion_acto4", phase: "script", title: "Guion · Acto IV", needs: "Cierre, llamado y réplica Latam.", requires: ["presupuesto"], auto: () => rsWordCount(state.script.acto4) > 0 },
+    { id: "webdemo", phase: "webdemo", title: "Prototipo web para el video", needs: "Sitio publicado con URL para grabar.", requires: ["presupuesto"], auto: () => !!state.site_url },
+    { id: "checklist", phase: "timeline", title: "Checklist de entrega verificado", needs: "Todos los guardarraíles en verde.", requires: ["guion_acto4", "webdemo", "presupuesto"], auto: () => {
+      const g = state.guardrails || {};
+      const keys = ["team_sirli_registered","video_duration_ok","video_unlisted_or_public","naming_pdf_ok","hashtags_included","pautado_chars_ok","pdf_video_numbers_synced","youtube_channel_brand","tiktok_submitted","loser_patterns_checked"];
+      return keys.every(k => !!g[k]);
+    } }
+  ];
+}
+
+function rsDefMap() {
+  const map = {};
+  getDeliverableDefs().forEach(d => { map[d.id] = d; });
+  return map;
+}
+
+function rsStore() {
+  if (!state.deliverables || typeof state.deliverables !== "object") state.deliverables = {};
+  return state.deliverables;
+}
+
+function rsRecord(id) {
+  const store = rsStore();
+  const rec = store[id];
+  if (!rec || typeof rec !== "object") return { assignees: [], history: [] };
+  if (!Array.isArray(rec.assignees)) rec.assignees = [];
+  if (!Array.isArray(rec.history)) rec.history = [];
+  return rec;
+}
+
+function rsEnsureRecord(id) {
+  const store = rsStore();
+  if (!store[id] || typeof store[id] !== "object") store[id] = {};
+  const rec = store[id];
+  if (!Array.isArray(rec.assignees)) rec.assignees = [];
+  if (!Array.isArray(rec.history)) rec.history = [];
+  return rec;
+}
+
+// Estado real: terminado (auto o manual) · en espera (dependencia) · en progreso · pendiente.
+function rsDefState(def, map, seen) {
+  if (!def) return { code: "pending" };
+  map = map || rsDefMap();
+  seen = seen || {};
+  if (seen[def.id]) return { code: "pending" };
+  seen[def.id] = true;
+  const rec = rsRecord(def.id);
+  const autoDone = typeof def.auto === "function" ? !!def.auto() : false;
+  if (autoDone || rec.status === "done") return { code: "done", record: rec, auto: autoDone };
+  const missing = (def.requires || []).filter(id => rsDefState(map[id], map, seen).code !== "done");
+  if (missing.length) {
+    const names = missing.map(id => (map[id] && map[id].title) || id);
+    return { code: "waiting", record: rec, missing: names };
+  }
+  if ((rec.assignees || []).length > 0 || rec.status === "in_progress") return { code: "working", record: rec };
+  return { code: "pending", record: rec };
+}
+
+const RS_STATUS = {
+  done:    { label: "Terminado",  cls: "is-done",    icon: "check" },
+  working: { label: "En progreso", cls: "is-working", icon: "dot" },
+  waiting: { label: "En espera",   cls: "is-waiting", icon: "lock" },
+  pending: { label: "Pendiente",   cls: "is-pending", icon: "circle" }
+};
+
+function rsPhaseDefs(phase, map) {
+  map = map || rsDefMap();
+  return Object.values(map).filter(d => d.phase === phase);
+}
+
+function rsPhaseState(phase, map) {
+  map = map || rsDefMap();
+  const defs = rsPhaseDefs(phase, map);
+  if (!defs.length) return { code: "pending", done: 0, total: 0 };
+  const states = defs.map(d => rsDefState(d, map));
+  const done = states.filter(s => s.code === "done").length;
+  if (done === defs.length) return { code: "done", done, total: defs.length };
+  if (states.some(s => s.code === "working" || s.code === "done")) return { code: "working", done, total: defs.length };
+  if (states.every(s => s.code === "waiting")) return { code: "waiting", done, total: defs.length };
+  return { code: "pending", done, total: defs.length };
+}
+
+function rsRelativeTime(ts) {
+  if (!ts) return "";
+  const mins = Math.max(0, Math.round((Date.now() - ts) / 60000));
+  if (mins < 1) return "ahora mismo";
+  if (mins < 60) return `hace ${mins} min`;
+  const hrs = Math.round(mins / 60);
+  if (hrs < 24) return `hace ${hrs} h`;
+  return `hace ${Math.round(hrs / 24)} d`;
+}
+
+function rsLog(id, action, who) {
+  const rec = rsEnsureRecord(id);
+  rec.history.unshift({ name: who || currentClientMascot.name, action, at: Date.now() });
+  rec.history = rec.history.slice(0, 12);
+  rec.updated_at = Date.now();
+}
+
+function rsPersist() {
+  saveState();
+  if (collaborationChannel) {
+    collaborationChannel.postMessage({ type: "DELIVERABLES_UPDATE", value: state.deliverables });
+  }
+  if (activeTab === "resumen") renderTab("resumen");
+}
+
+function rsRequireName() {
+  if (amINamed()) return true;
+  showToast("Primero define tu nombre para que el equipo sepa quién eres.");
+  openIdentityModal();
+  return false;
+}
+
+function rsTakeDeliverable(id) {
+  if (!rsRequireName()) return;
+  const rec = rsEnsureRecord(id);
+  const me = currentClientMascot.name;
+  const idx = rec.assignees.indexOf(me);
+  if (idx >= 0) {
+    rec.assignees.splice(idx, 1);
+    if (!rec.assignees.length && rec.status === "in_progress") rec.status = "";
+    rsLog(id, "salió del entregable", me);
+  } else {
+    rec.assignees.push(me);
+    rec.status = "in_progress";
+    rsLog(id, "tomó el entregable", me);
+  }
+  rsPersist();
+}
+
+function rsAssignDeliverable(id, name) {
+  if (!name) return;
+  const rec = rsEnsureRecord(id);
+  if (!rec.assignees.includes(name)) {
+    rec.assignees.push(name);
+    if (rec.status !== "done") rec.status = "in_progress";
+    rsLog(id, "se sumó al entregable", name);
+    rsPersist();
+    showToast(`${name} quedó a cargo de "${(rsDefMap()[id] || {}).title || id}".`);
+  }
+}
+
+function rsRemoveAssignee(id, name) {
+  const rec = rsEnsureRecord(id);
+  rec.assignees = rec.assignees.filter(n => n !== name);
+  if (!rec.assignees.length && rec.status === "in_progress") rec.status = "";
+  rsLog(id, "salió del entregable", name);
+  rsPersist();
+}
+
+function rsFinishDeliverable(id) {
+  if (!rsRequireName()) return;
+  const rec = rsEnsureRecord(id);
+  rec.status = rec.status === "done" ? "" : "done";
+  rsLog(id, rec.status === "done" ? "marcó terminado" : "reabrió el entregable", currentClientMascot.name);
+  rsPersist();
+}
+
+function rsSetFilter(filter) {
+  rsFilter = filter;
+  renderTab("resumen");
+}
+
+function rsGoTab(tab, ev) {
+  if (ev) ev.preventDefault();
+  switchTab(tab, ev);
+}
+
+// ── VISTA: RESUMEN DEL RALLY ────────────────────────────────────────────────
+function renderViewResumen() {
+  const map = rsDefMap();
+  const stage = getWorkflowStage();
+  const defs = Object.values(map);
+  const states = defs.map(d => rsDefState(d, map));
+  const doneCount = states.filter(s => s.code === "done").length;
+  const pct = defs.length ? Math.round((doneCount / defs.length) * 100) : 0;
+  const workingDefs = defs.filter(d => rsDefState(d, map).code === "working");
+
+  const ch = (state.challenges || []).find(c => c.id === state.challenge_id)
+    || (typeof OFFICIAL_CHALLENGES_2026 !== "undefined" && (OFFICIAL_CHALLENGES_2026 || []).find(c => c.id === state.challenge_id))
+    || null;
+  const challengeTitle = (ch && ch.title) || state.challenge_title || "Sin reto seleccionado";
+  const challengeNum = state.challenge_id || (ch && ch.id) || "—";
+  const category = (ch && ch.category) || state.category || "Sin categoría";
+  const solution = state.solution_thesis || state.solution_simple || "";
+  const timer = getTimerString();
+  const roster = getRoster();
+
+  const filterMatch = (def, st) => {
+    if (rsFilter === "mine") return st.record && (st.record.assignees || []).includes(currentClientMascot.name);
+    if (rsFilter === "waiting") return st.code === "waiting";
+    if (rsFilter === "working") return st.code === "working";
+    if (rsFilter === "done") return st.code === "done";
+    return true;
+  };
+
+  const visiblePhases = NAV_TABS.filter(t => !t.summary && t.level <= stage);
+
+  const phaseCards = visiblePhases.map(t => {
+    const ps = rsPhaseState(t.id, map);
+    const meta = RS_STATUS[ps.code] || RS_STATUS.pending;
+    return `
+      <button class="rs-phase ${meta.cls}" onclick="rsGoTab('${t.id}', event)" title="Abrir ${escapeHtml(t.label)}">
+        <span class="rs-phase-top">
+          <span class="rs-phase-dot"></span>
+          <span class="rs-phase-name">${escapeHtml(t.label)}</span>
+        </span>
+        <span class="rs-phase-meta">${ps.total ? `${ps.done}/${ps.total}` : "—"} · ${meta.label}</span>
+        <span class="rs-phase-bar"><i style="width:${ps.total ? Math.round((ps.done / ps.total) * 100) : 0}%"></i></span>
+      </button>
+    `;
+  }).join("");
+
+  const deliverableCards = defs.filter(d => {
+    const st = rsDefState(d, map);
+    const s = Object.assign({}, st, { record: st.record });
+    return filterMatch(d, s);
+  }).map(d => {
+    const st = rsDefState(d, map);
+    const meta = RS_STATUS[st.code] || RS_STATUS.pending;
+    const rec = st.record || {};
+    const assignees = (rec.assignees || []).filter(Boolean);
+    const mine = assignees.includes(currentClientMascot.name);
+    const last = (rec.history || [])[0];
+    const phaseTab = NAV_TABS.find(t => t.id === d.phase);
+    const assignOptions = roster.map(m => `<option value="${escapeHtml(m.name)}" ${assignees.includes(m.name) ? "disabled" : ""}>${escapeHtml(m.name)}${assignees.includes(m.name) ? " (ya está)" : ""}</option>`).join("");
+    const needsText = st.code === "waiting" && st.missing && st.missing.length
+      ? `Espera: ${st.missing.join(" · ")}`
+      : d.needs;
+
+    return `
+      <article class="rs-deliv ${meta.cls}">
+        <div class="rs-deliv-head">
+          <div>
+            <span class="rs-deliv-phase">${escapeHtml(phaseTab ? phaseTab.label : d.phase)}</span>
+            <h3 class="rs-deliv-title">${escapeHtml(d.title)}</h3>
+          </div>
+          <span class="rs-status ${meta.cls}">
+            ${meta.icon === "check" ? SVG.check : meta.icon === "lock" ? SVG.lock : `<span class="rs-status-dot"></span>`}
+            ${meta.label}
+          </span>
+        </div>
+        <p class="rs-deliv-needs">${escapeHtml(needsText)}</p>
+        <div class="rs-deliv-people">
+          ${assignees.length
+            ? assignees.map(n => `<span class="rs-person" style="--person-color:${_userColor(n)}">
+                 <span class="rs-person-dot"></span>${escapeHtml(n)}
+                 <button class="rs-person-x" onclick="rsRemoveAssignee('${d.id}','${escapeHtml(n)}')" title="Quitar a ${escapeHtml(n)}" aria-label="Quitar a ${escapeHtml(n)}">×</button>
+               </span>`).join("")
+            : `<span class="rs-muted">Nadie asignado todavía</span>`}
+        </div>
+        ${last ? `<p class="rs-deliv-history">${escapeHtml(last.name)} ${escapeHtml(last.action)} · ${rsRelativeTime(last.at)}</p>` : `<p class="rs-deliv-history rs-muted">Sin actividad registrada</p>`}
+        <div class="rs-deliv-actions">
+          ${st.code === "done" && st.auto
+            ? `<span class="rs-auto-tag">Completado automáticamente</span>`
+            : `<button class="rs-btn ${mine ? "is-ghost" : "is-primary"}" onclick="rsTakeDeliverable('${d.id}')">${mine ? "Soltar" : "Tomar yo"}</button>
+               <button class="rs-btn is-ghost" onclick="rsFinishDeliverable('${d.id}')">${rec.status === "done" ? "Reabrir" : "Marcar terminado"}</button>`}
+          ${st.code !== "done" && roster.length
+            ? `<select class="rs-select" onchange="rsAssignDeliverable('${d.id}', this.value)" title="Asignar a alguien del equipo">
+                 <option value="">Asignar a…</option>
+                 ${assignOptions}
+               </select>`
+            : ""}
+        </div>
+      </article>
+    `;
+  }).join("");
+
+  const closedPhases = NAV_TABS.filter(t => !t.summary && t.level <= stage && rsPhaseState(t.id, map).code === "done");
+  const pendingPhases = NAV_TABS.filter(t => !t.summary && t.level > stage);
+
+  const rosterStrip = roster.length
+    ? roster.map(m => {
+        const load = defs.filter(d => (rsRecord(d.id).assignees || []).includes(m.name) && rsDefState(d, map).code !== "done").length;
+        return `<span class="rs-member" style="--person-color:${_userColor(m.name)}">
+          <span class="rs-member-avatar">${escapeHtml((m.name || "?").trim().charAt(0).toUpperCase())}</span>
+          <span class="rs-member-name">${escapeHtml(m.name)}${m.id === currentClientMascot.id ? " (tú)" : ""}</span>
+          <span class="rs-member-load">${load} activo${load === 1 ? "" : "s"}</span>
+        </span>`;
+      }).join("")
+    : `<span class="rs-muted">Todavía nadie ha definido su nombre. Cada persona debe poner el suyo una vez.</span>`;
+
+  return `
+    <div class="rs-summary">
+      <section class="rs-hero">
+        <div class="rs-hero-main">
+          <span class="rs-eyebrow">Centro de mando · ${state.rally_type === "latam" ? "Rally Latinoamericano 28h" : state.rally_type === "nacional" ? "Rally Nacional 24h" : "Certamen por definir"}</span>
+          <div class="rs-challenge-row">
+            <span class="rs-challenge-num">#${escapeHtml(String(challengeNum))}</span>
+            <div>
+              <h1 class="rs-challenge-title">${escapeHtml(challengeTitle)}</h1>
+              <span class="rs-challenge-cat">${escapeHtml(category)}</span>
+            </div>
+          </div>
+          <div class="rs-solution ${state.solution_approved ? "is-approved" : ""}">
+            <span class="rs-solution-label">${state.solution_approved ? "Solución aprobada" : "Solución en construcción"}</span>
+            <p>${solution ? escapeHtml(solution) : "Aún no hay tesis de solución. Se define en el Taller de Solución (fase 03)."}</p>
+            <button class="rs-link" onclick="rsGoTab('solution', event)">Abrir taller de solución →</button>
+          </div>
+        </div>
+        <div class="rs-hero-stats">
+          <div class="rs-kpi">
+            <span class="rs-kpi-num">${pct}%</span>
+            <span class="rs-kpi-label">avance de entregables</span>
+            <span class="rs-kpi-bar"><i style="width:${pct}%"></i></span>
+          </div>
+          <div class="rs-kpi-row">
+            <div class="rs-kpi-mini"><strong>${timer.time}</strong><span>${escapeHtml(timer.status || "tiempo restante")}</span></div>
+            <div class="rs-kpi-mini"><strong>${doneCount}/${defs.length}</strong><span>entregables cerrados</span></div>
+            <div class="rs-kpi-mini"><strong>${workingDefs.length}</strong><span>en progreso ahora</span></div>
+            <div class="rs-kpi-mini"><strong>${closedPhases.length}</strong><span>fases cerradas</span></div>
+          </div>
+          <button class="rs-btn is-primary rs-identity-cta" onclick="openIdentityModal()">
+            ${amINamed() ? `Trabajando como ${escapeHtml(currentClientMascot.name)}` : "Definir mi nombre para trabajar"}
+          </button>
+        </div>
+      </section>
+
+      <section class="rs-section">
+        <div class="rs-section-head">
+          <h2>Fases del rally</h2>
+          <span class="rs-section-sub">${visiblePhases.length + pendingPhases.length} fases · ${closedPhases.length} cerradas · ${pendingPhases.length} bloqueadas</span>
+        </div>
+        <div class="rs-phases">${phaseCards}</div>
+        ${closedPhases.length ? `
+          <details class="rs-closed">
+            <summary>Fases ya cerradas (${closedPhases.length}) — ocultas para no estorbar</summary>
+            <div class="rs-closed-list">
+              ${closedPhases.map(t => `<button class="rs-closed-chip" onclick="rsGoTab('${t.id}', event)">${SVG.check} ${escapeHtml(t.label)}</button>`).join("")}
+            </div>
+          </details>` : ""}
+      </section>
+
+      <section class="rs-section">
+        <div class="rs-section-head">
+          <h2>Entregables y responsables</h2>
+          <div class="rs-filters">
+            <button class="rs-filter ${rsFilter === "all" ? "is-active" : ""}" onclick="rsSetFilter('all')">Todos</button>
+            <button class="rs-filter ${rsFilter === "mine" ? "is-active" : ""}" onclick="rsSetFilter('mine')">Míos</button>
+            <button class="rs-filter ${rsFilter === "working" ? "is-active" : ""}" onclick="rsSetFilter('working')">En progreso</button>
+            <button class="rs-filter ${rsFilter === "waiting" ? "is-active" : ""}" onclick="rsSetFilter('waiting')">En espera</button>
+            <button class="rs-filter ${rsFilter === "done" ? "is-active" : ""}" onclick="rsSetFilter('done')">Terminados</button>
+          </div>
+        </div>
+        <div class="rs-deliv-grid">
+          ${deliverableCards || `<p class="rs-empty">No hay entregables en este filtro.</p>`}
+        </div>
+      </section>
+
+      <section class="rs-section">
+        <div class="rs-section-head">
+          <h2>Quién está en qué</h2>
+          <button class="rs-btn is-ghost" onclick="openIdentityModal()">Cambiar mi nombre</button>
+        </div>
+        <div class="rs-roster">${rosterStrip}</div>
+      </section>
+    </div>
+  `;
+}
+
+// ── IDENTIDAD: NOMBRE ÚNICO POR PERSONA ─────────────────────────────────────
+function openIdentityModal() {
+  closeIdentityModal();
+  const roster = getRoster();
+  const modal = document.createElement("div");
+  modal.id = "rs-identity-modal";
+  modal.className = "rs-modal-backdrop";
+  modal.innerHTML = `
+    <div class="rs-modal" role="dialog" aria-modal="true" aria-labelledby="rs-identity-title">
+      <div class="rs-modal-head">
+        <div>
+          <span class="rs-eyebrow">Identidad en el equipo</span>
+          <h2 id="rs-identity-title">¿Quién eres?</h2>
+        </div>
+        <button class="rs-modal-close" onclick="closeIdentityModal()" aria-label="Cerrar">×</button>
+      </div>
+      <p class="rs-modal-help">Tu nombre se guarda en este dispositivo y aparece junto a los entregables que tomes. Debe ser único: nada de nombres aleatorios.</p>
+      <label class="rs-field">
+        <span>Mi nombre</span>
+        <input id="rs-identity-input" type="text" maxlength="28" autocomplete="off" placeholder="Ej. María López" value="${amINamed() ? escapeHtml(currentClientMascot.name) : ""}">
+      </label>
+      <p class="rs-modal-error" id="rs-identity-error" role="alert"></p>
+      <div class="rs-modal-actions">
+        <button class="rs-btn is-primary" onclick="saveIdentityFromModal()">Guardar nombre</button>
+        <button class="rs-btn is-ghost" onclick="closeIdentityModal()">Cancelar</button>
+      </div>
+      ${roster.length ? `
+        <div class="rs-modal-existing">
+          <span class="rs-modal-existing-title">¿Ya estás en la lista? Usa tu nombre en este dispositivo</span>
+          <div class="rs-roster-pick">
+            ${roster.map(m => `<button class="rs-roster-pick-item ${m.id === currentClientMascot.id ? "is-me" : ""}" onclick="adoptIdentityFromModal('${m.id}')">
+              <span class="rs-member-avatar" style="--person-color:${_userColor(m.name)}">${escapeHtml((m.name || "?").charAt(0).toUpperCase())}</span>
+              ${escapeHtml(m.name)}
+            </button>`).join("")}
+          </div>
+        </div>` : ""}
+    </div>
+  `;
+  document.body.appendChild(modal);
+  const input = document.getElementById("rs-identity-input");
+  if (input) { input.focus(); input.select(); }
+}
+
+function closeIdentityModal() {
+  const el = document.getElementById("rs-identity-modal");
+  if (el) el.remove();
+}
+
+function saveIdentityFromModal() {
+  const input = document.getElementById("rs-identity-input");
+  const errorEl = document.getElementById("rs-identity-error");
+  const result = setMyDisplayName(input ? input.value : "");
+  if (!result.ok) {
+    if (errorEl) errorEl.textContent = result.error;
+    return;
+  }
+  closeIdentityModal();
+  showToast(`Listo, ${currentClientMascot.name}. Tu nombre ya es parte del equipo.`);
+  renderTopbar();
+  if (activeTab === "resumen") renderTab("resumen");
+  else renderNavigation();
+}
+
+function adoptIdentityFromModal(id) {
+  if (adoptRosterName(id)) {
+    closeIdentityModal();
+    showToast(`Ahora trabajas como ${currentClientMascot.name}.`);
+    if (activeTab === "resumen") renderTab("resumen");
+  }
+}
+
+// ═════════════════════════════════════════════════════════════════════════════
 // 00 NIVEL 0: SELECCIÓN DE CERTAMEN (RÉPLICA EXACTA DE LA IMAGEN)
 // ═════════════════════════════════════════════════════════════════════════════
+
+
 function renderViewCertamen() {
   const isLatam = state.rally_type === 'latam';
   const isNac = state.rally_type === 'nacional';
@@ -3213,7 +3837,7 @@ function renderViewChallenges() {
         </div>
       ` : `
         <div class="phase-header" style="margin-bottom:16px;">
-          <h1 class="phase-title" style="font-size:24px; font-weight:900; color:#0F172A; margin-bottom:4px; letter-spacing:-0.02em;">
+          <h1 class="phase-title" style="font-size:28px; font-weight:900; color:#0F172A; margin-bottom:4px; letter-spacing:-0.02em;">
             Retos Oficiales & <span class="phase-title-accent">Mesa de Decisión</span>
           </h1>
           <p class="phase-subtitle" style="font-size:13px; color:#475569; line-height:1.45;">
@@ -3271,7 +3895,7 @@ function renderViewChallenges() {
              ondrop="handleChallengeDrop(event)">
           <div style="border:1.5px dashed #CBD5E1; background:#F8FAFC; border-radius:6px; padding:14px; text-align:center; margin-bottom:10px; cursor:pointer;"
                onclick="document.getElementById('challenge-file-input-inline').click()">
-            <input type="file" id="challenge-file-input-inline" style="display:none;" multiple accept=".zip,.pdf,.docx,.doc,.txt,.png,.jpg,.jpeg,.webp" onchange="handleChallengeFileSelect(this.files)">
+            <input type="file" id="challenge-file-input-inline" aria-label="Subir archivos de retos" style="display:none;" multiple accept=".zip,.pdf,.docx,.doc,.txt,.png,.jpg,.jpeg,.webp" onchange="handleChallengeFileSelect(this.files)">
             <div style="font-size:12.5px; font-weight:700; color:#0F172A;">Arrastra aquí o haz clic para subir archivo ZIP, imágenes, PDF o Word</div>
             <div style="font-size:11px; color:#64748B; margin-top:2px;">La IA visual jerarquizará automáticamente todos los retos contenidos (EasyOCR local como red de seguridad).</div>
           </div>
@@ -3800,7 +4424,7 @@ Entrega formato sin relleno, con citas verificables tipo APA.`;
               ${SVG.check} Generar con IA Automática
             </button>
             <button type="button" class="copilot-paste-btn" onclick="polishLandingWithAI()" id="copilot-polish-btn" title="Corrige redacción, ortografía y jerarquía del texto con una IA rápida (no agrega contenido)">
-              ${SVG.sparkles || ""} Pulir ✨
+              ${SVG.sparkles || ""} Pulir
             </button>
             <button type="button" class="copilot-paste-btn" onclick="pasteToAIThesisResult()">
               ${SVG.upload} Pegar desde Portapapeles
@@ -5843,16 +6467,16 @@ function renderViewImpact() {
     <!-- Submenú de Navegación Temática Impeccable -->
     <div class="impact-subnav">
       <button class="impact-subnav-btn ${impactActiveSubTab === 'ods' ? 'active' : ''}" onclick="switchImpactSubTab('ods')">
-        🎯 ODS · Agenda 2030 (ONU)
+        ODS · Agenda 2030 (ONU)
       </button>
       <button class="impact-subnav-btn ${impactActiveSubTab === 'plan' ? 'active' : ''}" onclick="switchImpactSubTab('plan')">
-        🏛️ Plan de Lucha contra la Pobreza (2022-2026)
+        Plan de Lucha contra la Pobreza (2022-2026)
       </button>
       <button class="impact-subnav-btn ${impactActiveSubTab === 'leyes' ? 'active' : ''}" onclick="switchImpactSubTab('leyes')">
-        📜 Leyes & Programas Nacionales ("Otros")
+        Leyes & Programas Nacionales ("Otros")
       </button>
       <button class="impact-subnav-btn ${impactActiveSubTab === 'sintesis' ? 'active' : ''}" onclick="switchImpactSubTab('sintesis')">
-        📝 Síntesis para Pautado & Pitch
+        Síntesis para Pautado & Pitch
       </button>
     </div>
 
@@ -6564,7 +7188,13 @@ Genera el texto de locución continuo para los 4 actos (cadencia de 135 ppm, tot
 - Acto 3 (60–95s): Prefactibilidad económica y sostenibilidad con actores del entorno local (alcaldías, cooperativas, MEFCCA) y cifras exactas del pautado.
 - Acto 4 (95–120s): Cierre memorable de impacto humano, empleo y orgullo del talento nicaragüense (identidad cultural real, no retórica vacía).
 Distribución objetiva de palabras: Acto 1 ≤45, Acto 2 ≤90, Acto 3 ≤75, Acto 4 ≤55 (total 250-270).
-Entrega solo el texto continuo para el locutor o sintetizador TTS, sin acotaciones teatrales ni corchetes.`;
+Entrega solo el texto continuo para el locutor o sintetizador TTS, sin acotaciones teatrales ni corchetes.
+
+MOTOR Y ENTREGABLE DE AUDIO (si tu entorno tiene acceso al equipo):
+No basta con escribir el texto. Instala o usa un motor TTS y genera assets/voice/narration.mp4: MP4 con audio AAC, sin video, mono, 48 kHz, máximo 120 segundos.
+Recomendado: Chatterbox Multilingual es-MX/LatAm (MIT, clonación y control de emoción). Respaldo en CPU: Kokoro 82M. Edge-TTS solo si hay internet.
+La guía completa con pasos, modelo y parámetros está en la pestaña Guion > Motor de voz > Copiar prompt para mi IA.
+Si no puedes ejecutar el motor, entrega el texto y las instrucciones exactas para que el equipo lo haga.`;
     }
     return `Actúa como Locutor Profesional y Guionista de Pitch de Innovación para el ${cert}.
 Proyecto: "${pName}" (${chTitle}).
@@ -6577,7 +7207,13 @@ Genera el texto de locución continuo para los 4 actos (cadencia estricta de 135
 - Acto 3 (60–95s): Prefactibilidad y desglose del presupuesto en USD coincidente con el documento pautado.
 - Acto 4 (95–120s): Cierre de impacto, métricas auditables y proyección regional, con identidad nicaragüense (símbolo o cifra de orgullo local) como en los videos ganadores.
 Distribución objetiva de palabras: Acto 1 ≤45, Acto 2 ≤90, Acto 3 ≤75, Acto 4 ≤55 (total 250-270).
-Entrega solo el texto continuo para el locutor o sintetizador TTS, sin acotaciones teatrales ni corchetes.`;
+Entrega solo el texto continuo para el locutor o sintetizador TTS, sin acotaciones teatrales ni corchetes.
+
+MOTOR Y ENTREGABLE DE AUDIO (si tu entorno tiene acceso al equipo):
+No basta con escribir el texto. Instala o usa un motor TTS y genera assets/voice/narration.mp4: MP4 con audio AAC, sin video, mono, 48 kHz, máximo 120 segundos.
+Recomendado: Chatterbox Multilingual es-MX/LatAm (MIT, clonación y control de emoción). Respaldo en CPU: Kokoro 82M. Edge-TTS solo si hay internet.
+La guía completa con pasos, modelo y parámetros está en la pestaña Guion > Motor de voz > Copiar prompt para mi IA.
+Si no puedes ejecutar el motor, entrega el texto y las instrucciones exactas para que el equipo lo haga.`;
   }
 
   if (taskId === "cross_audit") {
@@ -6735,8 +7371,8 @@ function renderViewPautado() {
         <button class="btn-secondary" onclick="printProjectDossier()" style="display:inline-flex; align-items:center; gap:5px;">
           ${SVG.download} Imprimir / PDF
         </button>
-        <a href="docs/pautado_draft.docx" id="direct-docx-link" download="Pautado_Borrador_Oficial.docx" class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
-          ${SVG.download} Plantilla Word
+        <a href="/docs/pautado_template.docx" id="direct-docx-link" download="Plantilla_Pautado_Oficial.docx" class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;" title="Descarga la plantilla oficial vacía para revisarla antes de compilar">
+          ${SVG.download} Plantilla Word (vacía)
         </a>
       </div>
     </div>
@@ -6756,7 +7392,7 @@ function renderViewPautado() {
           <button class="btn-secondary" type="button" onclick="clearPautadoTemplate()">Quitar</button>
         </div>
       </div>
-      <input type="file" id="pautado-template-input" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" style="display:none;" onchange="handlePautadoTemplateUpload(event)">
+      <input type="file" id="pautado-template-input" aria-label="Subir plantilla Word del evento" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" style="display:none;" onchange="handlePautadoTemplateUpload(event)">
     </div>
 
     <div class="rubric-callout">
@@ -7015,20 +7651,20 @@ function renderViewBudget() {
             ${state.budget.map((it, idx) => `
               <tr>
                 <td>
-                  <input type="text" value="${it.element}" style="width:100%; border:none; background:transparent; font-size:12px; font-weight:600;" onchange="updateBudgetItem(${idx}, 'element', this.value)">
+                  <input type="text" value="${it.element}" aria-label="Concepto de la partida ${idx + 1}" style="width:100%; border:none; background:transparent; font-size:12px; font-weight:600;" onchange="updateBudgetItem(${idx}, 'element', this.value)">
                   <div style="font-size:10px; color:var(--text-muted);">${it.url ? `<a href="${it.url}" target="_blank" style="color:var(--color-primary); text-decoration:none;">Enlace proveedor ${SVG.external}</a>` : 'Sin enlace'}</div>
                 </td>
                 <td style="text-align:center;">
-                  <input type="number" value="${it.units}" style="width:60px; text-align:center; border:1px solid var(--border-light); border-radius:3px; padding:2px;" onchange="updateBudgetItem(${idx}, 'units', this.value)">
+                  <input type="number" value="${it.units}" aria-label="Unidades de la partida ${idx + 1}" style="width:60px; text-align:center; border:1px solid var(--border-light); border-radius:3px; padding:2px;" onchange="updateBudgetItem(${idx}, 'units', this.value)">
                 </td>
                 <td style="text-align:right;">
-                  <input type="number" step="0.5" value="${it.unit_cost}" style="width:80px; text-align:right; border:1px solid var(--border-light); border-radius:3px; padding:2px;" onchange="updateBudgetItem(${idx}, 'unit_cost', this.value)">
+                  <input type="number" step="0.5" value="${it.unit_cost}" aria-label="Costo unitario en USD de la partida ${idx + 1}" style="width:80px; text-align:right; border:1px solid var(--border-light); border-radius:3px; padding:2px;" onchange="updateBudgetItem(${idx}, 'unit_cost', this.value)">
                 </td>
                 <td style="text-align:right; font-family:var(--font-mono); font-weight:700;">
                   $${(it.units * it.unit_cost).toFixed(2)}
                 </td>
                 <td style="text-align:center;">
-                  <button type="button" class="btn-secondary" style="padding:2px 6px; font-size:10px; color:#ef4444;" onclick="removeBudgetItem(${idx})">${SVG.close}</button>
+                  <button type="button" class="btn-secondary" style="padding:2px 6px; font-size:10px; color:#ef4444;" aria-label="Eliminar partida ${idx + 1}" title="Eliminar partida ${idx + 1}" onclick="removeBudgetItem(${idx})">${SVG.close}</button>
                 </td>
               </tr>
             `).join("")}
@@ -7080,7 +7716,7 @@ const DEFAULT_SHOT_PLAN = [
   { id: "a3_par", acto: "Acto III", label: "Pivotes y toma de proveedor con costo real" },
   { id: "a4_crew", acto: "Acto IV", label: "Cierre con equipo completo en la entrada del campus" },
   { id: "branding", acto: "Extras", label: "Emblema y logos oficiales en máxima resolución" },
-  { id: "audio_vo", acto: "Extras", label: "Locución de respaldo o pista de voz (WAV/MP3)" },
+  { id: "audio_vo", acto: "Extras", label: "Locución de respaldo o pista de voz (MP4 con audio AAC)" },
   { id: "proto", acto: "Extras", label: "Prototipo web generado (captura en vivo del HTML)" }
 ];
 
@@ -7229,7 +7865,7 @@ function renderVideoStudio() {
             ${SVG.upload} Subir toma / recurso
             <input type="file" multiple accept="video/*,image/*,audio/*" style="display:none;" onchange="uploadVideoAssets(this)">
           </label>
-          <select id="video-upload-acto" onchange="setAssetUploadActo(this.value)" style="font-size:11px; padding:4px 8px; border:1px solid var(--border-light); border-radius:5px;">
+          <select id="video-upload-acto" aria-label="Acto del video al que pertenece el recurso" onchange="setAssetUploadActo(this.value)" style="font-size:11px; padding:4px 8px; border:1px solid var(--border-light); border-radius:5px;">
             ${[... new Set(DEFAULT_SHOT_PLAN.map(p => p.acto))].map(a => `<option value="${a}" ${a === _assetUploadActo ? "selected" : ""}>${a}</option>`).join("")}
           </select>
           <span style="font-size:10.5px; color:var(--text-muted);">Sube original sin recortar; la editora lo exporta a CapCut.</span>
@@ -7285,14 +7921,14 @@ function renderViewResources() {  return `
         <div class="form-group full">
           <label>Carpeta Oficial de Google Drive (Videos crudos, fotos y audios)</label>
           <div style="display:flex; gap:8px;">
-            <input type="url" id="hub-drive-url" value="${state.google_drive_url}" style="flex:1;">
+            <input type="url" id="hub-drive-url" aria-label="URL de la carpeta oficial de Google Drive" value="${state.google_drive_url}" style="flex:1;">
             <a href="${state.google_drive_url}" target="_blank" class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">Abrir Drive ${SVG.external}</a>
           </div>
         </div>
         <div class="form-group full">
           <label>Espacio de Trabajo Canva (Láminas, diapositivas y overlays del video)</label>
           <div style="display:flex; gap:8px;">
-            <input type="url" id="hub-canva-url" value="${state.canva_url}" style="flex:1;">
+            <input type="url" id="hub-canva-url" aria-label="URL del espacio de trabajo Canva" value="${state.canva_url}" style="flex:1;">
             <a href="${state.canva_url}" target="_blank" class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">Abrir Canva ${SVG.external}</a>
           </div>
         </div>
@@ -7351,7 +7987,7 @@ function renderViewResources() {  return `
               <td><strong>Documento Pautado Oficial</strong></td>
               <td><code>.DOCX</code></td>
               <td>5 secciones oficiales redactadas y validadas con límites de caracteres</td>
-              <td><a href="docs/pautado_draft.docx" download="Pautado_Borrador_Oficial.docx" class="btn-secondary" style="padding:4px 8px; font-size:11px; text-decoration:none;">Descargar Word ↓</a></td>
+              <td><button type="button" class="btn-secondary" style="padding:4px 8px; font-size:11px;" onclick="compileAndDownloadDocx()">Compilar y descargar</button></td>
             </tr>
             <tr>
               <td><strong>Presupuesto Puesta en Marcha</strong></td>
@@ -7364,6 +8000,12 @@ function renderViewResources() {  return `
               <td><code>.CSV</code></td>
               <td>Pauta para CapCut / Premiere con tiempos exactos y textos</td>
               <td><a href="/script/shotlist.csv" download class="btn-secondary" style="padding:4px 8px; font-size:11px; text-decoration:none;">Descargar CSV ↓</a></td>
+            </tr>
+            <tr>
+              <td><strong>Locución Oficial</strong></td>
+              <td><code>.MP4</code></td>
+              <td>Pista de voz en MP4 con audio AAC, sin video, ≤120 segundos</td>
+              <td><button type="button" class="btn-secondary" style="padding:4px 8px; font-size:11px;" onclick="handleNarrationDownload(event)">Descargar MP4 ↓</button></td>
             </tr>
             <tr>
               <td><strong>Guion de Locución Limpio</strong></td>
@@ -7552,7 +8194,7 @@ function renderViewCanvas() {
       </div>
       <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
         <label style="font-size:10.5px; color:var(--text-muted); font-family:var(--font-mono); font-weight:700;">PLANTILLA</label>
-        <select onchange="canvasPresetChanged(this.value)" class="ai-model-select" style="display:inline-block; min-width:200px;">
+        <select onchange="canvasPresetChanged(this.value)" class="ai-model-select" aria-label="Plantilla de Modelo Canvas" style="display:inline-block; min-width:200px;">
           ${CANVAS_PRESETS.map(p => `<option value="${p.id}" ${p.id === getCurrentCanvasPresetId() ? "selected" : ""}>${p.name}</option>`).join("")}
         </select>
         <button class="btn-secondary" style="font-size:11px; padding:4px 10px;" onclick="resetCanvasToBase()">Restablecer</button>
@@ -7581,8 +8223,275 @@ function renderViewCanvas() {
 }
 
 // ═════════════════════════════════════════════════════════════════════════════
-// 09 GUION AUDIOVISUAL (4 ACTOS, 120 SEGUNDOS) & LOCUCIÓN WAV
+// 09 GUION AUDIOVISUAL (4 ACTOS, 120 SEGUNDOS) & LOCUCIÓN MP4
 // ═════════════════════════════════════════════════════════════════════════════
+const VOICE_ENGINE_OPTIONS = {
+  chatterbox: {
+    label: "Chatterbox LatAm (recomendado)",
+    tag: "MIT · clonación · local",
+    summary: "<strong>La mejor opción para este proyecto.</strong> Es el motor de la voz que escuchaste: licencia MIT, clonación desde 5–12 s, control de emoción y un finetune oficial para español latinoamericano. Corre sin internet en CPU; en una laptop sin GPU tarda unas 7 veces el tiempo real.",
+    url: "https://huggingface.co/ResembleAI/Chatterbox-Multilingual-es-mx-latam",
+    prompt: `Actúa como ingeniero de audio de este proyecto de Rally de Innovación.
+
+OBJETIVO
+Instala y deja funcionando un motor TTS local para narrar el guion de 120 segundos en español latinoamericano. Genera el entregable final en assets/voice/narration.mp4: MP4 con audio AAC, sin video, mono, 48 kHz, 192 kbps y máximo 120 segundos.
+
+MOTOR ELEGIDO
+Chatterbox Multilingual V3, finetune oficial es-MX/LatAm de Resemble AI.
+Modelo: https://huggingface.co/ResembleAI/Chatterbox-Multilingual-es-mx-latam
+Código: https://github.com/resemble-ai/chatterbox
+Licencia: MIT.
+Por qué: acento latino, clonación zero-shot y control de emoción. En CPU tarda aproximadamente 7 veces el tiempo real; si hay GPU NVIDIA, úsala.
+
+PASOS
+1. Verifica Python 3.11, ffmpeg y al menos 4 GB libres. El modelo pesa cerca de 3 GB.
+2. Crea un entorno aislado: python -m venv .venv-voz
+3. Instala: pip install chatterbox-tts soundfile numpy torch torchaudio
+4. Descarga el finetune completo en una sola carpeta:
+   huggingface-cli download ResembleAI/Chatterbox-Multilingual-es-mx-latam --local-dir models/latam
+   Deben quedar t3_es_mx_latam.safetensors (2.14 GB), s3gen_v3.pt (1.06 GB), grapheme_mtl_merged_expanded_v1.json, ve.pt y conds.pt. Si falta alguno, bájalo del mismo repo con --include.
+5. Carga el finetune con language_id="es". Si el loader estándar no acepta el checkpoint V3, usa este patrón: safe_open tensor por tensor para el T3, S3Gen con strict=False, MTLTokenizer y VoiceEncoder. En Windows, evita safetensors.load_file con el archivo de 2 GB; usa safe_open.
+6. Para reproducir la voz interna que escuché, no pases audio_prompt_path: carga conds.pt del pack. Para una voz propia, usa una referencia de 12 s, 24 kHz, mono, limpia y con permiso.
+7. Parámetros de la muestra que me gustó: exaggeration=0.8, cfg_weight=0.45, temperature=0.8, repetition_penalty=2.0.
+8. Une los párrafos con 0.65 s de silencio y masteriza a -16 LUFS.
+9. Convierte a MP4 AAC:
+ffmpeg -i narracion.wav -vn -c:a aac -b:a 192k -ar 48000 -ac 1 -movflags +faststart assets/voice/narration.mp4
+10. Verifica que la duración sea <=120 s y que el archivo exista.
+
+ENTREGABLE
+- assets/voice/narration.mp4
+- assets/voice/narration.wav como master de respaldo
+- un README breve con versiones, semilla y parámetros usados
+
+NO HAGAS
+- No clones la voz de una persona real sin permiso escrito.
+- No subas los pesos del modelo al repositorio.
+- No entregues MP3 ni WAV como archivo oficial.
+- No uses una voz en inglés.`
+  },
+  kokoro: {
+    label: "Kokoro 82M (CPU rápida)",
+    tag: "Apache 2.0 · sin clonación",
+    summary: "<strong>Respaldo para laptops lentas.</strong> 82 millones de parámetros, licencia Apache 2.0 y voz española aceptable. No clona voces y tiene menos control emocional, pero genera mucho más rápido que Chatterbox y casi no consume RAM.",
+    url: "https://huggingface.co/hexgrad/Kokoro-82M",
+    prompt: `Actúa como ingeniero de audio de este proyecto de Rally de Innovación.
+
+OBJETIVO
+Instala Kokoro-82M y genera la locución de 120 segundos en español latinoamericano. Entrega assets/voice/narration.mp4 (MP4 AAC, sin video, mono, 48 kHz, máximo 120 s).
+
+MOTOR
+Kokoro-82M, licencia Apache 2.0. Es el respaldo cuando el equipo no puede correr Chatterbox por RAM, CPU o tiempo.
+
+PASOS
+1. Verifica Python 3.10+ y ffmpeg.
+2. python -m venv .venv-voz
+3. pip install kokoro soundfile
+4. Genera por párrafos con:
+from kokoro import KPipeline
+pipe = KPipeline(lang_code="e")
+for _, _, audio in pipe(texto, voice="em_alex", speed=0.95):
+    guardar(audio)
+5. Voces españolas disponibles: em_alex (masculina), ef_dora (femenina), em_santa (masculina). Elige una y mantén la misma en todo el video.
+6. Une los bloques con 0.5 s de silencio, normaliza a -16 LUFS y convierte:
+ffmpeg -i narracion.wav -vn -c:a aac -b:a 192k -ar 48000 -ac 1 -movflags +faststart assets/voice/narration.mp4
+7. Verifica duración <=120 s.
+
+LIMITACIONES
+Kokoro no clona voces. Si el equipo exige una voz propia, usa Chatterbox.
+No inventes una voz de una persona real.`
+  },
+  edge: {
+    label: "Edge-TTS (nube)",
+    tag: "Gratis · requiere internet",
+    summary: "<strong>La salida más rápida si hay internet.</strong> Voces neuronales de Microsoft en español de México y Colombia. No clona, no controla emoción y envía el guion a un servicio externo; úsalo solo como respaldo o para una primera maqueta.",
+    url: "https://github.com/rany2/edge-tts",
+    prompt: `Actúa como ingeniero de audio de este proyecto de Rally de Innovación.
+
+OBJETIVO
+Genera una locución provisional en español latinoamericano con Edge-TTS y entrega assets/voice/narration.mp4 (MP4 AAC, sin video, mono, 48 kHz, máximo 120 s).
+
+ADVERTENCIA
+Edge-TTS usa un servicio en la nube de Microsoft. Requiere internet y envía el texto fuera del equipo. Úsalo como maqueta o respaldo, no como opción principal si el guion es confidencial.
+
+PASOS
+1. Verifica Python y ffmpeg.
+2. python -m venv .venv-voz
+3. pip install edge-tts
+4. Voces recomendadas: es-MX-JorgeNeural (masculina) o es-MX-DaliaNeural (femenina). También puedes probar es-CO-GonzaloNeural.
+5. Genera:
+edge-tts --voice es-MX-JorgeNeural --file script/narration.txt --write-media narration.mp3
+6. Ajusta la velocidad si hace falta con --rate=-4%.
+7. Convierte:
+ffmpeg -i narration.mp3 -vn -c:a aac -b:a 192k -ar 48000 -ac 1 -movflags +faststart assets/voice/narration.mp4
+8. Verifica duración <=120 s y que la voz elegida se mantenga en todo el video.
+
+LIMITACIONES
+Sin clonación, sin control fino de emoción y dependencia de internet. No uses una voz que imite a una persona real.`
+  },
+  xtts: {
+    label: "XTTS-v2 (no comercial)",
+    tag: "No comercial · legado",
+    summary: "<strong>Solo si aceptas su licencia.</strong> Clona con 6 s de audio y entiende español, pero la Coqui Public Model License prohíbe uso comercial. Para un rally académico puede servir; para un emprendimiento, Chatterbox es la ruta limpia.",
+    url: "https://huggingface.co/coqui/XTTS-v2",
+    prompt: `Actúa como ingeniero de audio de este proyecto de Rally de Innovación.
+
+OBJETIVO
+Evalúa XTTS-v2 como motor de locución y, si el equipo acepta su licencia, genera assets/voice/narration.mp4 (MP4 AAC, sin video, mono, 48 kHz, máximo 120 s).
+
+LICENCIA
+XTTS-v2 usa la Coqui Public Model License. No permite uso comercial. Si el proyecto puede convertirse en empresa, no lo uses: elige Chatterbox (MIT). Documenta la decisión.
+
+PASOS
+1. Verifica Python 3.10–3.11, ffmpeg y 4 GB libres.
+2. python -m venv .venv-voz
+3. pip install TTS
+4. Descarga el modelo:
+from TTS.api import TTS
+tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2")
+5. Genera con una referencia de 6–12 s, limpia y con permiso:
+tts.tts_to_file(text=texto, speaker_wav="referencia.wav", language="es", file_path="narracion.wav")
+6. Une párrafos con 0.5 s de silencio, normaliza a -16 LUFS y convierte:
+ffmpeg -i narracion.wav -vn -c:a aac -b:a 192k -ar 48000 -ac 1 -movflags +faststart assets/voice/narration.mp4
+7. Verifica duración <=120 s.
+
+NO HAGAS
+- No clones una voz real sin permiso.
+- No uses XTTS-v2 en un producto comercial.
+- No entregues MP3 como archivo oficial.`
+  }
+};
+
+function renderVoiceEnginePanel() {
+  const first = VOICE_ENGINE_OPTIONS.chatterbox;
+  const selectedId = VOICE_ENGINE_OPTIONS[state.voice_engine] ? state.voice_engine : "chatterbox";
+  const selected = VOICE_ENGINE_OPTIONS[selectedId];
+  const options = Object.entries(VOICE_ENGINE_OPTIONS)
+    .map(([id, data]) => `<option value="${id}" ${id === selectedId ? "selected" : ""}>${data.label}</option>`)
+    .join("");
+
+  return `
+    <section class="voice-engine" aria-labelledby="voice-engine-title">
+      <div class="voice-engine-head">
+        <div>
+          <h2 id="voice-engine-title">Motor de voz para la locución</h2>
+          <p>La voz que escuchaste es <strong>Chatterbox Multilingual es-MX/LatAm</strong>. Estas son muestras reales del motor; si te gustan, copia el prompt y pásaselo a tu IA para que lo instale. El entregable oficial sigue siendo MP4 con audio AAC.</p>
+        </div>
+        <span class="rubric-tag" id="voice-engine-tag">${selected.tag}</span>
+      </div>
+
+      <div class="voice-preview-grid">
+        <div class="voice-preview">
+          <div class="voice-preview-label">Voz interna · narración completa</div>
+          <audio controls preload="metadata" src="/assets/voice/previews/chatterbox_interna.mp3"></audio>
+          <div class="voice-preview-meta">62 s · MP3 64 kbps · voz de fábrica, sin clonar</div>
+        </div>
+        <div class="voice-preview">
+          <div class="voice-preview-label">Voz interna · énfasis 0.80 / ritmo 0.45</div>
+          <audio controls preload="metadata" src="/assets/voice/previews/chatterbox_interna_e080_c045.mp3"></audio>
+          <div class="voice-preview-meta">9 s · MP3 64 kbps · la variante más expresiva</div>
+        </div>
+      </div>
+
+      <div class="voice-engine-controls">
+        <label for="voice-engine-select">
+          <span>Motor para tu IA</span>
+          <select id="voice-engine-select" onchange="updateVoiceEngineUI()">${options}</select>
+        </label>
+        <button type="button" class="btn-primary" onclick="copyVoiceEnginePrompt()">Copiar prompt para mi IA</button>
+        <button type="button" class="btn-secondary" onclick="downloadVoiceEngineGuide()">Descargar guía .md</button>
+      </div>
+
+      <div class="voice-engine-summary" id="voice-engine-summary">${selected.summary}</div>
+      <p class="voice-engine-summary" style="margin-top:6px;">
+        <a href="${selected.url}" target="_blank" rel="noopener" id="voice-engine-link">Ver modelo y licencia</a>
+      </p>
+
+      <details class="voice-engine-details">
+        <summary>Ver el prompt completo que recibirá tu IA</summary>
+        <pre id="voice-engine-prompt-preview">${escapeHtml(selected.prompt)}</pre>
+      </details>
+
+      <p class="voice-engine-note">Las muestras son MP3 de vista previa. El archivo que se entrega al jurado es <strong>assets/voice/narration.mp4</strong> (MP4 con audio AAC, sin video).</p>
+    </section>
+  `;
+}
+
+function getVoiceEngineData() {
+  const select = document.getElementById("voice-engine-select");
+  return VOICE_ENGINE_OPTIONS[(select && select.value) || "chatterbox"] || VOICE_ENGINE_OPTIONS.chatterbox;
+}
+
+function updateVoiceEngineUI() {
+  const data = getVoiceEngineData();
+  const summary = document.getElementById("voice-engine-summary");
+  const tag = document.getElementById("voice-engine-tag");
+  const link = document.getElementById("voice-engine-link");
+  const prompt = document.getElementById("voice-engine-prompt-preview");
+  const select = document.getElementById("voice-engine-select");
+
+  if (select && state.voice_engine !== select.value) {
+    state.voice_engine = select.value;
+    saveState();
+  }
+  if (summary) summary.innerHTML = data.summary;
+  if (tag) tag.textContent = data.tag;
+  if (link) link.href = data.url;
+  if (prompt) prompt.textContent = data.prompt;
+}
+
+function copyVoiceEnginePrompt() {
+  const data = getVoiceEngineData();
+  const done = () => showToast("Prompt copiado. Pégalo en tu IA y pídele que instale el motor y genere assets/voice/narration.mp4.");
+  const fail = () => showToast("No se pudo copiar automáticamente. Abre el prompt completo y cópialo a mano.");
+
+  const fallback = () => {
+    const area = document.createElement("textarea");
+    area.value = data.prompt;
+    area.setAttribute("readonly", "");
+    area.style.position = "fixed";
+    area.style.opacity = "0";
+    document.body.appendChild(area);
+    area.select();
+    let copied = false;
+    try { copied = document.execCommand("copy"); } catch (e) {}
+    area.remove();
+    copied ? done() : fail();
+  };
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(data.prompt).then(done).catch(fallback);
+  } else {
+    fallback();
+  }
+}
+
+function downloadVoiceEngineGuide() {
+  const data = getVoiceEngineData();
+  const header = `# Instalar el motor de voz · ${data.label}
+
+${data.tag}
+
+${data.summary.replace(/<[^>]+>/g, "")}
+
+El entregable oficial es \`assets/voice/narration.mp4\`: MP4 con audio AAC, sin video, mono, 48 kHz y máximo 120 segundos. Las muestras MP3 del panel son solo vista previa.
+
+---
+
+## Prompt para tu IA
+
+`;
+  const blob = new Blob([header + data.prompt], { type: "text/markdown;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "instalar_motor_de_voz.md";
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  showToast("Guía descargada. Pásasela a tu IA junto con el guion.");
+}
+
 function renderViewScript() {
   const wordsA1 = (state.script.acto1 || "").trim().split(/\s+/).filter(Boolean).length;
   const wordsA2 = (state.script.acto2 || "").trim().split(/\s+/).filter(Boolean).length;
@@ -7596,27 +8505,28 @@ function renderViewScript() {
     <div class="phase-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:14px; margin-bottom:24px; padding-bottom:14px; border-bottom:1px solid var(--border-light);">
       <div>
         <h1 class="phase-title">10 · Guion Audiovisual <span class="phase-title-accent">120 Segundos (PAS-V)</span></h1>
-        <p class="phase-subtitle">Calibración oral a 135 ppm: ${words} palabras (~${estSeconds} segundos / 120s reglamentarios).</p>
+        <p class="phase-subtitle" id="script-subtitle">Calibración oral a 135 ppm: ${words} palabras (~${estSeconds} segundos / 120s reglamentarios).</p>
       </div>
       <div style="display:flex; gap:8px;">
         <button class="btn-primary" onclick="saveScript()">Guardar Guion</button>
-        <a href="/assets/voice/narration.wav" download class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
-          ${SVG.download} Descargar Audio Locución (.wav)
+        <button class="btn-secondary" onclick="document.getElementById('voice-engine-title').scrollIntoView({behavior:'smooth',block:'start'})" title="Elige el motor de voz y copia el prompt de instalación para tu IA">Motor de voz</button>
+        <a href="/assets/voice/narration.mp4" download id="narration-download-link" onclick="return handleNarrationDownload(event)" class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;" title="Descarga la locución en MP4 (AAC) si ya fue generada para este proyecto">
+          ${SVG.download} Descargar Locución (.mp4)
         </a>
       </div>
     </div>
 
     <!-- Medidor PAS-V Global -->
-    <div style="background:${words > 280 ? '#FEF2F2' : words >= 230 ? '#F0FDF4' : '#F8FAFC'}; border:1px solid ${words > 280 ? '#FCA5A5' : words >= 230 ? '#86EFAC' : '#E2E8F0'}; border-radius:8px; padding:10px 14px; margin-bottom:16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+    <div id="script-global-meter" style="background:${words > 280 ? '#FEF2F2' : words >= 230 ? '#F0FDF4' : '#F8FAFC'}; border:1px solid ${words > 280 ? '#FCA5A5' : words >= 230 ? '#86EFAC' : '#E2E8F0'}; border-radius:8px; padding:10px 14px; margin-bottom:16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
       <div>
-        <div style="font-weight:800; font-size:12.5px; color:${words > 280 ? '#DC2626' : words >= 230 ? '#15803D' : '#0F172A'};">
+        <div id="script-global-copy" style="font-weight:800; font-size:12.5px; color:${words > 280 ? '#DC2626' : words >= 230 ? '#15803D' : '#0F172A'};">
           ${words > 280 ? `[EXCESO DE PALABRAS] ${words}/280 máx (~${estSeconds}s). Riesgo de superar 120s o dicción ininteligible.` : words >= 230 ? `[CADENCIA PAS-V ÓPTIMA] ${words}/280 palabras (~${estSeconds}s a 135 ppm).` : `[GUION EN CONSTRUCCIÓN] ${words}/280 palabras (Aceptación: 120–280 palabras totales).`}
         </div>
         <div style="font-size:11px; color:#64748B; margin-top:2px;">
           Cuotas recomendadas: Acto I (45 pal.) + Acto II (90 pal.) + Acto III (75 pal.) + Acto IV (55 pal.) = ~265 palabras totales.
         </div>
       </div>
-      <span style="font-family:var(--font-mono); font-size:12px; font-weight:900; background:#0F172A; color:#FFF; padding:4px 10px; border-radius:6px;">
+      <span id="script-global-seconds" style="font-family:var(--font-mono); font-size:12px; font-weight:900; background:#0F172A; color:#FFF; padding:4px 10px; border-radius:6px;">
         ${estSeconds}s / 120s
       </span>
     </div>
@@ -7635,7 +8545,7 @@ function renderViewScript() {
             <span id="lock-tag-script-acto1"></span>
           </div>
           <div style="display:flex; align-items:center; gap:8px;">
-            <span style="font-family:var(--font-mono); font-size:11px; font-weight:800; color:${wordsA1 > 55 ? '#DC2626' : wordsA1 > 0 ? '#059669' : '#64748B'};">${wordsA1}/45 pal.</span>
+            <span id="script-counter-acto1" style="font-family:var(--font-mono); font-size:11px; font-weight:800; color:${wordsA1 > 55 ? '#DC2626' : wordsA1 > 0 ? '#059669' : '#64748B'};">${wordsA1}/45 pal.</span>
             <span class="rubric-tag">IMPACTO SOCIAL + PITCH</span>
             <span style="font-size:10.5px; color:${wordsA1 > 0 ? '#ef4444' : '#64748B'}; font-weight:700;">PROHIBIDO LOGOS</span>
           </div>
@@ -7657,7 +8567,7 @@ function renderViewScript() {
             <span id="lock-tag-script-acto2"></span>
           </div>
           <div style="display:flex; align-items:center; gap:8px;">
-            <span style="font-family:var(--font-mono); font-size:11px; font-weight:800; color:${wordsA2 > 105 ? '#DC2626' : wordsA2 > 0 ? '#059669' : '#64748B'};">${wordsA2}/90 pal.</span>
+            <span id="script-counter-acto2" style="font-family:var(--font-mono); font-size:11px; font-weight:800; color:${wordsA2 > 105 ? '#DC2626' : wordsA2 > 0 ? '#059669' : '#64748B'};">${wordsA2}/90 pal.</span>
             <span class="rubric-tag">30 PTS INNOVACIÓN + VIABILIDAD</span>
           </div>
         </div>
@@ -7678,7 +8588,7 @@ function renderViewScript() {
             <span id="lock-tag-script-acto3"></span>
           </div>
           <div style="display:flex; align-items:center; gap:8px;">
-            <span style="font-family:var(--font-mono); font-size:11px; font-weight:800; color:${wordsA3 > 85 ? '#DC2626' : wordsA3 > 0 ? '#059669' : '#64748B'};">${wordsA3}/75 pal.</span>
+            <span id="script-counter-acto3" style="font-family:var(--font-mono); font-size:11px; font-weight:800; color:${wordsA3 > 85 ? '#DC2626' : wordsA3 > 0 ? '#059669' : '#64748B'};">${wordsA3}/75 pal.</span>
             <span class="rubric-tag">20 PTS PREFACTIBILIDAD (CAUSA #1 DESCARTE)</span>
           </div>
         </div>
@@ -7699,7 +8609,7 @@ function renderViewScript() {
             <span id="lock-tag-script-acto4"></span>
           </div>
           <div style="display:flex; align-items:center; gap:8px;">
-            <span style="font-family:var(--font-mono); font-size:11px; font-weight:800; color:${wordsA4 > 65 ? '#DC2626' : wordsA4 > 0 ? '#059669' : '#64748B'};">${wordsA4}/55 pal.</span>
+            <span id="script-counter-acto4" style="font-family:var(--font-mono); font-size:11px; font-weight:800; color:${wordsA4 > 65 ? '#DC2626' : wordsA4 > 0 ? '#059669' : '#64748B'};">${wordsA4}/55 pal.</span>
             <span class="rubric-tag">INTEGRACIÓN 5 CRITERIOS + ODS</span>
           </div>
         </div>
@@ -7711,6 +8621,8 @@ function renderViewScript() {
           oninput="handleScriptInput('acto4', this)">${state.script.acto4 || ""}</textarea>
       </div>
     </div>
+
+    ${renderVoiceEnginePanel()}
     </div>
   `;
 }
@@ -7719,6 +8631,70 @@ function handleScriptInput(key, el) {
   state.script[key] = el.value;
   broadcastFieldChange("script", key, el.value);
   saveState();
+  updateScriptMeters();
+}
+
+function updateScriptMeters() {
+  const quotas = { acto1: 45, acto2: 90, acto3: 75, acto4: 55 };
+  const redLines = { acto1: 55, acto2: 105, acto3: 85, acto4: 65 };
+  let words = 0;
+
+  Object.keys(quotas).forEach(key => {
+    const n = (state.script[key] || "").trim().split(/\s+/).filter(Boolean).length;
+    words += n;
+    const el = document.getElementById(`script-counter-${key}`);
+    if (el) {
+      el.textContent = `${n}/${quotas[key]} pal.`;
+      el.style.color = n > redLines[key] ? "#DC2626" : n > 0 ? "#059669" : "#64748B";
+    }
+  });
+
+  const seconds = Math.round((words / 135) * 60);
+  const over = words > 280;
+  const good = words >= 230;
+
+  const subtitle = document.getElementById("script-subtitle");
+  if (subtitle) {
+    subtitle.textContent = `Calibración oral a 135 ppm: ${words} palabras (~${seconds} segundos / 120s reglamentarios).`;
+  }
+
+  const meter = document.getElementById("script-global-meter");
+  if (meter) {
+    meter.style.background = over ? "#FEF2F2" : good ? "#F0FDF4" : "#F8FAFC";
+    meter.style.borderColor = over ? "#FCA5A5" : good ? "#86EFAC" : "#E2E8F0";
+  }
+
+  const copy = document.getElementById("script-global-copy");
+  if (copy) {
+    copy.style.color = over ? "#DC2626" : good ? "#15803D" : "#0F172A";
+    copy.textContent = over
+      ? `[EXCESO DE PALABRAS] ${words}/280 máx (~${seconds}s). Riesgo de superar 120s o dicción ininteligible.`
+      : good
+        ? `[CADENCIA PAS-V ÓPTIMA] ${words}/280 palabras (~${seconds}s a 135 ppm).`
+        : `[GUION EN CONSTRUCCIÓN] ${words}/280 palabras (Aceptación: 120–280 palabras totales).`;
+  }
+
+  const secondsEl = document.getElementById("script-global-seconds");
+  if (secondsEl) secondsEl.textContent = `${seconds}s / 120s`;
+}
+
+function handleNarrationDownload(event) {
+  if (event) event.preventDefault();
+  const url = "/assets/voice/narration.mp4";
+  fetch(url, { cache: "no-store" })
+    .then(res => {
+      if (!res.ok) throw new Error("missing");
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "narration.mp4";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    })
+    .catch(() => {
+      showToast("Aún no hay locución generada. Genera la tarea de voz en Despacho Multi-IA y guarda el audio como /assets/voice/narration.mp4 (MP4 con audio AAC).");
+    });
+  return false;
 }
 
 function saveScript() {
@@ -7956,6 +8932,18 @@ function toggleGuardrail(key, event) {
   } else if (activeTab === "timeline") {
     renderTab("timeline");
   }
+
+  const verified = Object.values(state.guardrails || {}).filter(Boolean).length;
+  const total = GUARDRAILS_DEFINITIONS.length;
+  const counter = document.getElementById("guardrail-verified-count");
+  if (counter) {
+    counter.textContent = `${verified} / ${total} Verificados`;
+    counter.style.background = verified === total ? "#dcfce7" : "#eff6ff";
+    counter.style.color = verified === total ? "#166534" : "#003366";
+  }
+  const subnavCounter = document.getElementById("timeline-subnav-verified");
+  if (subnavCounter) subnavCounter.textContent = `${verified}/${total}`;
+
   updateInspector();
 }
 
@@ -8102,7 +9090,7 @@ function renderViewTimeline() {
           <div>
             <div style="display:flex; align-items:center; gap:8px;">
               <h3 style="font-size:14px; font-weight:700; color:#0f172a; margin:0;">Checklist de Entrega Oficial</h3>
-              <span class="timeline-subnav-count" style="background:${verifiedCount === GUARDRAILS_DEFINITIONS.length ? '#dcfce7; color:#166534;' : '#eff6ff; color:#003366;'}">
+              <span id="guardrail-verified-count" class="timeline-subnav-count" style="background:${verifiedCount === GUARDRAILS_DEFINITIONS.length ? '#dcfce7; color:#166534;' : '#eff6ff; color:#003366;'}">
                 ${verifiedCount} / ${GUARDRAILS_DEFINITIONS.length} Verificados
               </span>
             </div>
@@ -8311,7 +9299,7 @@ function renderViewTimeline() {
     <div class="timeline-subnav">
       <button class="timeline-subnav-btn ${currentSubtab === 'checklist' ? 'active' : ''}" onclick="switchTimelineSubtab('checklist')">
         <span>Checklist de Requisitos</span>
-        <span class="timeline-subnav-count">${verifiedCount}/${GUARDRAILS_DEFINITIONS.length}</span>
+        <span id="timeline-subnav-verified" class="timeline-subnav-count">${verifiedCount}/${GUARDRAILS_DEFINITIONS.length}</span>
       </button>
       <button class="timeline-subnav-btn ${currentSubtab === 'schedule' ? 'active' : ''}" onclick="switchTimelineSubtab('schedule')">
         <span>Cronograma & IA</span>
