@@ -20,6 +20,7 @@
 - [Instalación, uso y despliegue](#instalación-uso-y-despliegue)
 - [¿Qué es Rally Studio?](#qué-es-rally-studio)
 - [Cerebro de Conocimiento: En qué se basa el sistema](#cerebro-de-conocimiento-en-qué-se-basa-el-sistema)
+- [Informe de investigación completo](#informe-de-investigación-completo)
 - [¿Cómo funciona Rally Studio? (Arquitectura y Flujo)](#cómo-funciona-rally-studio-arquitectura-y-flujo)
 - [Módulos Principales del Workbench](#módulos-principales-del-workbench)
 - [Calibración Matemática de Rúbricas Oficiales](#calibración-matemática-de-rúbricas-oficiales)
@@ -90,6 +91,16 @@ Graphify fue construido a partir del procesamiento y auditoría de las 16 fuente
 - **Visualizador interactivo del grafo:** [`graphify-out/graph.html`](graphify-out/graph.html)
 - **Informe de auditoría de nodos y comunidades:** [`graphify-out/GRAPH_REPORT.md`](graphify-out/GRAPH_REPORT.md)
 - **Base relacional JSON:** [`graphify-out/graph.json`](graphify-out/graph.json)
+
+### Informe de investigación completo
+
+Si quieres saber **de dónde sale cada afirmación** del sistema —y cuáles todavía no están probadas—, lee el informe de sustento:
+
+**[`docs/INFORME_INVESTIGACION.md`](docs/INFORME_INVESTIGACION.md)** · [versión PDF](docs/INFORME_INVESTIGACION.pdf)
+
+Audita el corpus completo contra fuentes primarias y clasifica cada dato en cuatro niveles: **[A]** primaria verificada, **[B]** secundaria consistente, **[C]** heurística interna y **[D]** no verificada. Incluye el registro de ganadores 2016–2026, las rúbricas de ambos certámenes, la estructura PAS-V, la auditoría de los tres *claims* de `research/claims.json` y una tabla de **14 erratas detectadas** con su corrección.
+
+> Lectura recomendada antes de usar cualquier cifra del repositorio en un pautado o en un video.
 
 ---
 
