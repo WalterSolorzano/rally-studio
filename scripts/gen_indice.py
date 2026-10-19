@@ -173,6 +173,21 @@ DESCRIPCIONES: dict[str, tuple[str, str, str]] = {
         "Instalar, arrancar o publicar el sistema.",
         "Para contenido del certamen.",
     ),
+    "docs/MANUAL_IA.md": (
+        "Manual extenso de las IAs: qué instalar, cómo configurar OpenCode y Antigravity, MCPs, dependencias y problemas frecuentes.",
+        "Cuando el humano pregunta cómo montar o configurar la IA, o algo del entorno no funciona.",
+        "Para producir contenido del rally: no aporta datos del certamen.",
+    ),
+    "docs/INSTALACION_AGENTE.md": (
+        "Detalle técnico de la capa de agente: skills, reglas, MCP y límites de Antigravity.",
+        "Depurar la instalación del agente o añadir skills y MCPs.",
+        "Para el flujo de trabajo diario: basta MANUAL_IA.md.",
+    ),
+    "docs/DESCARGA.md": (
+        "Qué trae el paquete de descarga y cómo empezar en cinco pasos.",
+        "Primera sesión tras clonar o descargar el ZIP.",
+        "Para trabajo avanzado: usar el manual de IA o el de despliegue.",
+    ),
     "docs/canvas.md": (
         "Modelo Canvas del proyecto en curso.",
         "Completar o revisar el modelo de negocio.",

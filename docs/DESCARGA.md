@@ -19,7 +19,7 @@ ganadores, manuales y banco de retos) y las reglas del agente.
 | `.agents/rules/` | Reglas profundas por tema (frontera, modos de rally, rúbricas, pautado/guion) |
 | `knowledge/` | Corpus de conocimiento + `INDICE.md` (mapa de todo lo investigado) |
 | `research/` | Banco de retos, análisis y claims con fuente |
-| `docs/` | Instalación, manuales maestros, plantillas e `INSTALACION_AGENTE.md` |
+| `docs/` | Instalación, manuales maestros, plantillas, `MANUAL_IA.md` e `INSTALACION_AGENTE.md` |
 | `brand/` | Tokens y paleta base |
 | `site/` | Web demo (se publica en Pages o Netlify) |
 | `AGENTS.md` | El contrato: quién es el agente, el flujo de 13 etapas y la frontera dura |
@@ -79,7 +79,8 @@ ganadores, manuales y banco de retos) y las reglas del agente.
 - Si le traes un PDF de investigación externa, lo procesa, lo contrasta con la rúbrica y lo
   sirve como propuesta editable.
 
-Detalle completo: `docs/INSTALACION_AGENTE.md`.
+Detalle completo: `docs/MANUAL_IA.md` (configuración de las IAs) y
+`docs/INSTALACION_AGENTE.md` (skills, reglas y MCP).
 
 ---
 

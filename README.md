@@ -32,9 +32,11 @@
 ## Instalación, uso y despliegue
 
 **Guía completa: [`docs/INSTALACION_Y_DESPLIEGUE.md`](docs/INSTALACION_Y_DESPLIEGUE.md)**
+**Manual de las IAs (OpenCode, Antigravity, MCPs, configuración): [`docs/MANUAL_IA.md`](docs/MANUAL_IA.md)**
 
 | Quiero… | Atajo |
 |---|---|
+| Configurar OpenCode o Antigravity paso a paso | [`docs/MANUAL_IA.md`](docs/MANUAL_IA.md) |
 | Instalar y correr en mi PC (completo) | `pip install -r requirements.txt` → doble clic en **`Iniciar Rally.bat`** → <http://localhost:8000/dashboard/> |
 | Conectar IA gratis | Instala OpenCode (`npm i -g opencode-ai` + `opencode auth login`) o usa un endpoint OpenAI-compatible ([`AUTO_IA.md`](AUTO_IA.md)) |
 | Publicar la interfaz en GitHub Pages | Activar **Settings → Pages → Source: GitHub Actions** (workflow `.github/workflows/pages.yml` incluido) |

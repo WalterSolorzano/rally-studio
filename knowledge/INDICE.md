@@ -6,7 +6,7 @@ si falta un archivo o su descripción, se corrige en `DESCRIPCIONES`.
 Regla de uso: leer primero este índice y abrir solo lo que la tarea pida.
 Si un archivo no está aquí, no es corpus: es código o artefacto.
 
-Archivos indexados: 40
+Archivos indexados: 41
 
 | Ruta | Qué es | Cuándo sí | Cuándo no |
 |---|---|---|---|
@@ -33,10 +33,11 @@ Archivos indexados: 40
 | `knowledge/winners_latam.md` | Fichas de ganadores latinoamericanos. | Buscar referentes por sector o país. | Para el certamen nacional. |
 | `docs/bibliography.md` | Bibliografía del proyecto en curso. | Citar fuentes o revisar respaldos del pautado. | Para cifras nuevas: usar research/claims.json. |
 | `docs/canvas.md` | Modelo Canvas del proyecto en curso. | Completar o revisar el modelo de negocio. | Para el pautado técnico. |
-| `docs/DESCARGA.md` | (sin describir — añadir a DESCRIPCIONES) | — | — |
-| `docs/INSTALACION_AGENTE.md` | (sin describir — añadir a DESCRIPCIONES) | — | — |
+| `docs/DESCARGA.md` | Qué trae el paquete de descarga y cómo empezar en cinco pasos. | Primera sesión tras clonar o descargar el ZIP. | Para trabajo avanzado: usar el manual de IA o el de despliegue. |
+| `docs/INSTALACION_AGENTE.md` | Detalle técnico de la capa de agente: skills, reglas, MCP y límites de Antigravity. | Depurar la instalación del agente o añadir skills y MCPs. | Para el flujo de trabajo diario: basta MANUAL_IA.md. |
 | `docs/INSTALACION_Y_DESPLIEGUE.md` | Guía de instalación, ejecución y despliegue del sistema. | Instalar, arrancar o publicar el sistema. | Para contenido del certamen. |
 | `docs/KNOWLEDGE_GRAPH.md` | Explicación del cerebro Graphify y sus comunidades de conocimiento. | Entender cómo se relacionan certamen, rúbricas y ganadores. | Para redactar contenido del proyecto. |
+| `docs/MANUAL_IA.md` | Manual extenso de las IAs: qué instalar, cómo configurar OpenCode y Antigravity, MCPs, dependencias y problemas frecuentes. | Cuando el humano pregunta cómo montar o configurar la IA, o algo del entorno no funciona. | Para producir contenido del rally: no aporta datos del certamen. |
 | `docs/MANUAL_MAESTRO_RALLY_INNOVACION_2026.md` | Manual maestro del Rally de Innovación (versión texto). | Reglamento, fases y entregables del certamen. | Si ya se consultó el manual del certamen activo. |
 | `docs/MANUAL_MAESTRO_RALLY_INNOVACION_2026.pdf` | Manual maestro del Rally de Innovación (versión PDF). | Compartir o imprimir el manual. | Para consulta del agente: usar el .md, pesa menos. |
 | `docs/MANUAL_MAESTRO_RALLY_LATAM_Y_NICARAGUA_INNOVA_2026.md` | Manual maestro combinado: Rally Latam y Nicaragua Innova (texto). | Reglas y entregables de ambos certámenes en un solo lugar. | Si solo se necesita el certamen activo: usar su sección. |
