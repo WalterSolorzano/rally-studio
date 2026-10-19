@@ -44,7 +44,7 @@ function Escribir($texto, $color = "Gray") {
   Write-Host $texto -ForegroundColor $color
 }
 
-Escribir "Rally Studio · IA gratis local (FreeLLMAPI)" "Cyan"
+Escribir "Rally Studio - IA gratis local (FreeLLMAPI)" "Cyan"
 Escribir "Modo: $Modo" "DarkGray"
 
 # ── 1. Ultima version publicada ─────────────────────────────────────────────
@@ -180,7 +180,7 @@ if ($Modo -eq "instalador") {
 $clave = Join-Path (Split-Path -Parent $MyInvocation.MyCommand.Path) "freellmapi.key"
 
 Escribir ""
-Escribir "── Siguiente paso ──────────────────────────────────────────────" "Cyan"
+Escribir "--- Siguiente paso ---------------------------------------------" "Cyan"
 Escribir "1) Abre FreeLLMAPI y copia tu 'unified key' (empieza con freellm-)." "White"
 Escribir "2) Pegala en este archivo (una sola linea):" "White"
 Escribir "   $clave" "DarkGray"

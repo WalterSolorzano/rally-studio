@@ -248,14 +248,22 @@ function loadChallengeBank() {
 }
 loadChallengeBank();
 
-// ── LÍMITES OFICIALES DE PAUTADO (CON ESPACIOS) ──────────────────────────────
+// ── SECCIONES Y LÍMITES OFICIALES DE PAUTADO (CON ESPACIOS) ──────────────────
+// Orden y topes del documento oficial SIRLI (Rally Latinoamericano).
+// El Rally Nacional no fija tope por sección: entrega un documento de hasta 10 páginas.
 const PAUTADO_LIMITS = {
   problema: 1250,
   solucion: 1250,
-  prefactibilidad: 1000,
+  impacto: 1000,
   innovacion: 1000,
-  impacto: 1500
+  prefactibilidad: 1500
 };
+
+// Tope efectivo de una sección según el certamen activo (null = sin tope por sección).
+function getPautadoLimit(key) {
+  if (state.rally_type === "nacional") return null;
+  return PAUTADO_LIMITS[key] || null;
+}
 
 // ── TAREAS MULTI-IA POR DEFECTO ──────────────────────────────────────────────
 function getDefaultMultiAITasks() {
@@ -564,7 +572,9 @@ const NAV_TABS = [
 function isPautadoComplete() {
   return Object.keys(PAUTADO_LIMITS).every(k => {
     const len = (state.pautado[k] || "").length;
-    return len >= 150 && len <= PAUTADO_LIMITS[k];
+    const limit = getPautadoLimit(k);
+    if (limit === null) return len > 0;
+    return len >= 150 && len <= limit;
   });
 }
 
@@ -6629,19 +6639,40 @@ function renderViewPautado() {
       </div>
     </div>
 
+    <div class="workbench-card" style="margin-bottom:16px;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px; flex-wrap:wrap;">
+        <div style="min-width:0;">
+          <div style="font-size:12.5px; font-weight:800; text-transform:uppercase; letter-spacing:0.02em; color:var(--text-main);">Plantilla oficial del evento</div>
+          <p style="font-size:11.5px; color:#94A3B8; margin:4px 0 0 0; max-width:660px; line-height:1.45;">
+            Sube el Word (.docx) que entrega el evento (${state.rally_type === 'nacional' ? 'Rally Nacional Nicaragua Innova' : 'Rally Latinoamericano'}).
+            Al compilar, los textos de abajo se insertan automáticamente bajo cada encabezado oficial, respetando las reglas de la rúbrica.
+          </p>
+          <div id="pautado-template-status" style="font-size:11.5px; font-weight:700; color:#64748B; margin-top:6px;">Consultando plantilla…</div>
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button class="btn-secondary" type="button" onclick="document.getElementById('pautado-template-input').click()">${SVG.upload} Subir plantilla Word (.docx)</button>
+          <button class="btn-secondary" type="button" onclick="clearPautadoTemplate()">Quitar</button>
+        </div>
+      </div>
+      <input type="file" id="pautado-template-input" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" style="display:none;" onchange="handlePautadoTemplateUpload(event)">
+    </div>
+
     <div class="rubric-callout">
-      <strong>CONTEO ESTRICTO DE CARACTERES:</strong> Evaluado con la matriz oficial (100 pts). Si sobrepasas el límite estipulado,
-      el sistema corta el texto o anula la sección en la rúbrica de evaluación.
+      <strong>${getPautadoLimit("problema") === null ? "DOCUMENTO OFICIAL DEL EVENTO:" : "CONTEO ESTRICTO DE CARACTERES:"}</strong>
+      ${getPautadoLimit("problema") === null
+        ? "El Rally Nacional evalúa un documento técnico de hasta 10 páginas; el sistema inserta cada sección bajo su encabezado oficial sin recortar texto."
+        : "Evaluado con la matriz oficial (100 pts). Si sobrepasas el límite estipulado, el sistema corta el texto al límite o anula la sección en la rúbrica de evaluación."}
     </div>
 
     <div style="display:flex; flex-direction:column; gap:16px;">
       ${Object.keys(PAUTADO_LIMITS).map(k => {
         const val = state.pautado[k] || "";
         const len = val.length;
-        const max = PAUTADO_LIMITS[k];
-        const pct = Math.min(100, Math.round((len / max) * 100));
-        const isOver = len > max;
-        const color = isOver ? '#b42318' : pct >= 92 ? '#0D1B35' : '#64748B';
+        const max = getPautadoLimit(k);
+        const pct = max ? Math.min(100, Math.round((len / max) * 100)) : null;
+        const isOver = max ? len > max : false;
+        const color = isOver ? '#b42318' : (pct !== null && pct >= 92) ? '#0D1B35' : '#64748B';
+        const counter = max ? `${len} / ${max} caracteres (${pct}%)` : `${len} caracteres`;
         const authorMascot = authorship[k] || null;
 
         return `
@@ -6656,8 +6687,8 @@ function renderViewPautado() {
                 ` : ""}
                 <span id="lock-tag-pautado-${k}"></span>
               </div>
-              <span style="font-family:var(--font-mono); font-size:11px; font-weight:700; color:${color}; font-variant-numeric:tabular-nums;">
-                ${len} / ${max} caracteres (${pct}%)
+              <span class="pautado-counter" style="font-family:var(--font-mono); font-size:11px; font-weight:700; color:${color}; font-variant-numeric:tabular-nums;">
+                ${counter}
               </span>
             </div>
             <p style="font-size:11px; color:#94A3B8; line-height:1.45; margin:0 0 6px 0;">${PAUTADO_HINTS[k] || ""}</p>
@@ -6678,16 +6709,102 @@ function updateCharCount(k, el) {
   state.pautado[k] = el.value;
   broadcastFieldChange("pautado", k, el.value);
   saveState();
-  const max = PAUTADO_LIMITS[k];
+  const max = getPautadoLimit(k);
   const len = el.value.length;
-  const pct = Math.min(100, Math.round((len / max) * 100));
-  const isOver = len > max;
-  const color = isOver ? '#b42318' : pct >= 92 ? '#0D1B35' : '#64748B';
-  const labelEl = el.previousElementSibling ? el.previousElementSibling.querySelector("span:last-child") : null;
+  const pct = max ? Math.min(100, Math.round((len / max) * 100)) : null;
+  const isOver = max ? len > max : false;
+  const color = isOver ? '#b42318' : (pct !== null && pct >= 92) ? '#0D1B35' : '#64748B';
+  const labelEl = el.closest(".workbench-card") ? el.closest(".workbench-card").querySelector(".pautado-counter") : null;
   if (labelEl) {
-    labelEl.innerText = `${len} / ${max} caracteres (${pct}%)`;
+    labelEl.innerText = max ? `${len} / ${max} caracteres (${pct}%)` : `${len} caracteres`;
     labelEl.style.color = color;
   }
+  el.style.borderColor = isOver ? '#b42318' : 'var(--border-light)';
+}
+
+// ── Plantilla .docx del evento: se guarda en el servidor y se cachea en memoria ──
+let _pautadoTemplateB64 = {}; // { latam: "<base64>", nacional: "<base64>" }
+
+function _pautadoRallyType() {
+  return state.rally_type === "nacional" ? "nacional" : "latam";
+}
+
+function _setPautadoTemplateStatus(html, color) {
+  const el = document.getElementById("pautado-template-status");
+  if (el) { el.innerHTML = html; el.style.color = color || "#64748B"; }
+}
+
+function _readFileAsBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result).split(",", 2)[1] || "");
+    reader.onerror = () => reject(reader.error);
+    reader.readAsDataURL(file);
+  });
+}
+
+async function refreshPautadoTemplateStatus() {
+  const rallyType = _pautadoRallyType();
+  const hasLocal = !!_pautadoTemplateB64[rallyType];
+  try {
+    const res = await fetch("/api/template-status");
+    const data = await res.json();
+    const info = (data.templates || {})[rallyType] || {};
+    if (info.user) {
+      _setPautadoTemplateStatus(`${SVG.check} Cargada: ${info.user.name} · ${Math.round(info.user.size / 1024)} KB${hasLocal ? " (en esta sesión)" : ""}`, "#0D1B35");
+    } else if (hasLocal) {
+      _setPautadoTemplateStatus("Plantilla cargada en esta sesión (aún sin guardar en el servidor).", "#0D1B35");
+    } else if (info.reference) {
+      _setPautadoTemplateStatus(`Sin subir: se usará la plantilla de referencia del evento (${info.reference}).`, "#64748B");
+    } else {
+      _setPautadoTemplateStatus("Sin subir y sin plantilla de referencia disponible.", "#b42318");
+    }
+  } catch (e) {
+    _setPautadoTemplateStatus(
+      hasLocal ? "Plantilla cargada en esta sesión (servicio local no disponible)." : "Servicio local no disponible: activa el servidor para guardar/compilar la plantilla.",
+      hasLocal ? "#0D1B35" : "#b42318"
+    );
+  }
+}
+
+async function handlePautadoTemplateUpload(event) {
+  const file = event.target.files && event.target.files[0];
+  if (!file) return;
+  if (!/\.docx$/i.test(file.name)) { showToast("La plantilla debe ser un archivo Word (.docx)."); return; }
+  const rallyType = _pautadoRallyType();
+  let b64 = "";
+  try { b64 = await _readFileAsBase64(file); } catch (e) { showToast("No se pudo leer el archivo."); return; }
+  _pautadoTemplateB64[rallyType] = b64;
+  _setPautadoTemplateStatus(`${SVG.check} Cargada: ${file.name} · ${Math.round(file.size / 1024)} KB`, "#0D1B35");
+  try {
+    const res = await fetch("/api/template-upload", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ rally_type: rallyType, name: file.name, data: b64 })
+    });
+    const data = await res.json();
+    if (data.status === "ok") { showToast("Plantilla del evento guardada correctamente."); refreshPautadoTemplateStatus(); }
+    else { showToast("Plantilla cargada en esta sesión: " + (data.message || "no se pudo guardar en el servidor.")); }
+  } catch (e) {
+    showToast("Plantilla cargada en esta sesión. El servicio local no está disponible.");
+  }
+  if (event.target.value !== undefined) event.target.value = "";
+}
+
+async function clearPautadoTemplate() {
+  const rallyType = _pautadoRallyType();
+  delete _pautadoTemplateB64[rallyType];
+  try {
+    await fetch("/api/template-upload", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ rally_type: rallyType, clear: true })
+    });
+    showToast("Plantilla quitada. Se usará la de referencia del evento.");
+  } catch (e) {
+    showToast("Plantilla quitada de esta sesión.");
+  }
+  refreshPautadoTemplateStatus();
 }
 
 function compileAndDownloadDocx() {

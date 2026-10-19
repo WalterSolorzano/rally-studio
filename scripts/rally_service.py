@@ -29,6 +29,8 @@ import psutil
 import docx
 
 import base64
+import unicodedata
+import zipfile
 
 _easyocr_reader = None
 
@@ -224,6 +226,8 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
             self.send_sources()
         elif req_path == "/api/rubric":
             self.send_rubric()
+        elif req_path == "/api/template-status":
+            self.send_json_response(200, pautado_template_status())
         elif req_path == "/api/ai/status":
             result = ai_provider_summary()
             self.send_json_response(200, result)
@@ -324,6 +328,15 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
                 data = json.loads(body)
                 result = compile_pautado_docx(data)
                 self.send_json_response(200, result)
+            except Exception as e:
+                self.send_json_response(500, {"status": "error", "message": str(e)})
+        elif url.path == "/api/template-upload":
+            length = int(self.headers.get("Content-Length", 0))
+            body = self.rfile.read(length).decode("utf-8", errors="replace")
+            try:
+                data = json.loads(body)
+                result = save_pautado_template(data)
+                self.send_json_response(200 if result.get("status") == "ok" else 400, result)
             except Exception as e:
                 self.send_json_response(500, {"status": "error", "message": str(e)})
         elif url.path == "/api/asset-upload":
@@ -509,73 +522,298 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(body)
 
-def compile_pautado_docx(data):
-    rally_type = data.get("rally_type", "latam")
-    pautado = data.get("pautado", {})
-    team = data.get("team_name", "EQUIPO").upper()
-    sede = data.get("university", "SEDE").upper()
-    challenge = data.get("challenge_title", "DESAFÍO").strip()
-    proj = data.get("project_name", "PROYECTO").upper()
+# ── PLANTILLA PAUTADO OFICIAL: secciones, reglas y anclajes por evento ───────
+# Cada evento trae su propio documento y sus propias reglas.
+#   limit   = tope de caracteres CON espacios (None = el evento no fija tope por sección).
+#   anchors = encabezados que identifican la sección (comparados sin acentos).
+PAUTADO_SECTIONS = {
+    "latam": {
+        "problema":        {"label": "Definición del Problema", "limit": 1250,
+                            "anchors": ["DESCRIPCION DE LA PROBLEMATICA", "PROBLEMATICA"]},
+        "solucion":        {"label": "Solución Propuesta", "limit": 1250,
+                            "anchors": ["DESCRIPCION DE LA SOLUCION", "SOLUCION PROPUESTA", "SOLUCION"]},
+        "impacto":         {"label": "Impacto Social y Ambiental", "limit": 1000,
+                            "anchors": ["IMPACTO"]},
+        "innovacion":      {"label": "Grado de Innovación", "limit": 1000,
+                            "anchors": ["INNOVACION"]},
+        "prefactibilidad": {"label": "Prefactibilidad y Sostenibilidad", "limit": 1500,
+                            "anchors": ["PRE FACTIBILIDAD", "PREFACTIBILIDAD", "FACTIBILIDAD"]},
+    },
+    "nacional": {
+        "problema":        {"label": "Planteamiento del Problema", "limit": None,
+                            "anchors": ["PLANTEAMIENTO DEL PROBLEMA", "IDENTIFICACION DEL PROBLEMA", "DEFINICION DEL PROBLEMA"]},
+        "solucion":        {"label": "Propuesta de Valor", "limit": None,
+                            "anchors": ["PROPUESTA DE VALOR", "DESCRIPCION DE LA SOLUCION"]},
+        "innovacion":      {"label": "Contribución Innovadora", "limit": None,
+                            "anchors": ["CONTRIBUCION INNOVADORA", "GRADO DE INNOVACION", "INNOVACION"]},
+        "impacto":         {"label": "Evaluación de Impacto", "limit": None,
+                            "anchors": ["EVALUACION DE IMPACTO", "IMPACTO"]},
+        "prefactibilidad": {"label": "Prefactibilidad y Sostenibilidad", "limit": None,
+                            "anchors": ["PRESUPUESTO", "PLAN DE IMPLEMENTACION", "PREFACTIBILIDAD"]},
+    },
+}
 
-    template_path = BASE_DIR / "knowledge" / ("pautado_latam_ref.docx" if rally_type == "latam" else "pautado_nacional_ref.docx")
-    out_path = DASHBOARD_DIR / "docs" / "pautado_draft.docx"
-    out_path.parent.mkdir(exist_ok=True)
+# Orden de las 5 secciones tal como se escriben en la plataforma.
+PAUTADO_ORDER = ["problema", "solucion", "impacto", "innovacion", "prefactibilidad"]
+
+# Palabras que delatan un párrafo de instrucciones (no es la respuesta del equipo).
+_PAUTADO_INSTRUCTION_MARKERS = ("DESCRIBA", "FUNDAMENTE", "ENUMERE", "ESCRIBA", "MENCIONE", "JUSTIFIQUE")
+
+
+def _plain(text):
+    """Normaliza a MAYÚSCULAS sin acentos para comparar encabezados."""
+    decomposed = unicodedata.normalize("NFKD", text or "")
+    return "".join(c for c in decomposed if not unicodedata.combining(c)).upper().strip()
+
+
+def _looks_like_heading(paragraph):
+    """Detecta encabezados en MAYÚSCULAS (p. ej. PROPUESTAS, REFERENCIAS, BIBLIOGRAFÍA)."""
+    txt = (paragraph.text or "").strip()
+    if not txt or len(txt) > 110 or txt.endswith("."):
+        return False
+    letters = [c for c in txt if c.isalpha()]
+    if not letters:
+        return False
+    return sum(1 for c in letters if c.isupper()) / len(letters) >= 0.7
+
+
+def _user_template_path(rally_type):
+    tpl_type = rally_type if rally_type in ("latam", "nacional") else "latam"
+    return BASE_DIR / "knowledge" / f"user_template_{tpl_type}.docx"
+
+
+def _reference_template_path(rally_type):
+    name = "pautado_latam_ref.docx" if rally_type == "latam" else "pautado_nacional_ref.docx"
+    return BASE_DIR / "knowledge" / name
+
+
+def _event_sections(rally_type):
+    return PAUTADO_SECTIONS.get(rally_type, PAUTADO_SECTIONS["latam"])
+
+
+def _event_anchors(rally_type):
+    anchors = []
+    for spec in _event_sections(rally_type).values():
+        anchors.extend(spec["anchors"])
+    return anchors
+
+
+def pautado_template_status():
+    """Estado de plantillas: la subida por el usuario y la de referencia del evento."""
+    templates = {}
+    for tpl_type in ("latam", "nacional"):
+        user = _user_template_path(tpl_type)
+        ref = _reference_template_path(tpl_type)
+        templates[tpl_type] = {
+            "user": ({"name": user.name, "size": user.stat().st_size} if user.exists() else None),
+            "reference": (ref.name if ref.exists() else None),
+        }
+    return {"status": "ok", "templates": templates}
+
+
+def save_pautado_template(data):
+    """Guarda o borra la plantilla .docx del evento que sube el equipo."""
+    rally_type = (data.get("rally_type") or "latam").lower()
+    if rally_type not in ("latam", "nacional"):
+        rally_type = "latam"
+    user = _user_template_path(rally_type)
+
+    if data.get("clear"):
+        if user.exists():
+            user.unlink()
+        return {"status": "ok", "cleared": True, "rally_type": rally_type}
+
+    b64 = (data.get("data") or "").strip()
+    if b64.lower().startswith("data:") and "," in b64:
+        b64 = b64.split(",", 1)[1]
+    if not b64:
+        return {"status": "error", "message": "No se recibió ningún archivo."}
+    try:
+        raw = base64.b64decode(b64)
+    except Exception as exc:
+        return {"status": "error", "message": f"Archivo dañado (base64 inválido): {exc}"}
+    if raw[:2] != b"PK":
+        return {"status": "error", "message": "El archivo no es un .docx válido (no es un paquete ZIP)."}
+    try:
+        with zipfile.ZipFile(io.BytesIO(raw)) as zf:
+            if "word/document.xml" not in zf.namelist():
+                return {"status": "error", "message": "El .docx no contiene word/document.xml."}
+    except Exception as exc:
+        return {"status": "error", "message": f"No se pudo abrir el .docx: {exc}"}
+
+    user.parent.mkdir(parents=True, exist_ok=True)
+    user.write_bytes(raw)
+    safe_name = re.sub(r"[^A-Za-z0-9._ -]", "_", str(data.get("name") or user.name))[:80]
+    return {"status": "ok", "rally_type": rally_type, "name": safe_name,
+            "size": len(raw), "saved_as": user.name}
+
+
+def _is_heading(paragraph, anchor):
+    norm = _plain(paragraph.text)
+    if anchor not in norm:
+        return False
+    return not any(marker in norm for marker in _PAUTADO_INSTRUCTION_MARKERS)
+
+
+def _section_heading_index(paragraphs, key, rally_type):
+    """Devuelve el índice del encabezado de la sección `key`, o -1."""
+    anchors = _event_sections(rally_type).get(key, {}).get("anchors", [])
+    # 1ª pasada: encabezado que menciona explícitamente los caracteres de la rúbrica.
+    for idx, para in enumerate(paragraphs):
+        norm = _plain(para.text)
+        if any(a in norm for a in anchors) and "CARACTERES" in norm:
+            return idx
+    # 2ª pasada: cualquier bloque con el anclaje y sin texto de instrucciones.
+    for idx, para in enumerate(paragraphs):
+        if any(_is_heading(para, a) for a in anchors):
+            return idx
+    return -1
+
+
+def _region_end(paragraphs, start, rally_type):
+    """Primer encabezado (de cualquier sección) tras `start`: delimita el casillero."""
+    anchors = _event_anchors(rally_type)
+    for idx in range(start + 1, len(paragraphs)):
+        para = paragraphs[idx]
+        if any(_is_heading(para, a) for a in anchors) or _looks_like_heading(para):
+            return idx
+    return len(paragraphs)
+
+
+def _fill_section(paragraphs, key, value, rally_type, warnings):
+    """Escribe `value` en el casillero de la sección `key` del documento."""
+    start = _section_heading_index(paragraphs, key, rally_type)
+    if start < 0:
+        warnings.append(f"No se encontró el encabezado de '{key}' en la plantilla; se adjuntó al final.")
+        return False
+
+    end = _region_end(paragraphs, start, rally_type)
+    region = paragraphs[start + 1:end]
+    content_slots = [p for p in region if not any(m in _plain(p.text) for m in _PAUTADO_INSTRUCTION_MARKERS)]
+
+    # 1) Reemplazar la respuesta previa (el párrafo de contenido existente).
+    long_slots = sorted(content_slots, key=lambda p: len(p.text.strip()), reverse=True)
+    if long_slots and len(long_slots[0].text.strip()) >= 40:
+        long_slots[0].text = value
+        # Limpiar respuestas sobrantes de la misma sección (plantillas ya rellenadas).
+        for extra in long_slots[1:]:
+            if len(extra.text.strip()) >= 40:
+                extra.text = ""
+        return True
+
+    # 2) Usar el primer casillero vacío que dejó la plantilla en blanco.
+    for p in content_slots:
+        if not p.text.strip():
+            p.text = value
+            return True
+
+    # 3) Insertar un párrafo nuevo justo después del encabezado.
+    try:
+        from docx.oxml.ns import qn
+        from docx.text.paragraph import Paragraph
+        new_el = paragraphs[start]._p.makeelement(qn("w:p"), {})
+        paragraphs[start]._p.addnext(new_el)
+        Paragraph(new_el, paragraphs[start]._parent).text = value
+        return True
+    except Exception as exc:
+        warnings.append(f"No se pudo insertar '{key}' en la plantilla: {exc}")
+        return False
+
+
+def compile_pautado_docx(data):
+    rally_type = (data.get("rally_type") or "latam").lower()
+    if rally_type not in ("latam", "nacional"):
+        rally_type = "latam"
+    pautado = data.get("pautado") or {}
+    team = (data.get("team_name") or "EQUIPO").upper()
+    sede = (data.get("university") or "SEDE").upper()
+    challenge = (data.get("challenge_title") or "DESAFÍO").strip()
+    proj = (data.get("project_name") or "PROYECTO").upper()
+
+    warnings = []
+    counts = {}
+
+    # ── Reglas de rúbrica: conteo estricto de caracteres CON espacios ──────────
+    clean = {}
+    sections = _event_sections(rally_type)
+    for key in PAUTADO_ORDER:
+        spec = sections.get(key)
+        if not spec:
+            continue
+        limit = spec.get("limit")
+        val = (pautado.get(key) or "").strip()
+        raw_len = len(val)
+        if limit and raw_len > limit:
+            val = val[:limit].rstrip()
+            warnings.append(f"'{key}' excedía {limit} caracteres y fue recortada al límite oficial.")
+        if not val:
+            warnings.append(f"'{key}' está vacía: el jurado la evaluará como no entregada.")
+        clean[key] = val
+        counts[key] = {"chars": raw_len, "limit": limit,
+                       "ok": raw_len > 0 and (limit is None or raw_len <= limit)}
+
+    # ── Plantilla: la subida en el request > la guardada por el usuario > referencia ──
+    user_tpl = _user_template_path(rally_type)
+    uploaded = (data.get("template_b64") or "").strip()
+    if uploaded:
+        try:
+            payload = uploaded.split(",", 1)[1] if uploaded.lower().startswith("data:") else uploaded
+            raw = base64.b64decode(payload)
+            if raw[:2] == b"PK":
+                user_tpl.parent.mkdir(parents=True, exist_ok=True)
+                user_tpl.write_bytes(raw)
+            else:
+                warnings.append("La plantilla enviada no es un .docx válido; se usará la de referencia.")
+        except Exception as exc:
+            warnings.append(f"No se pudo leer la plantilla enviada ({exc}); se usará la de referencia.")
+
+    if user_tpl.exists():
+        template_path, template_source = user_tpl, "usuario"
+    else:
+        template_path, template_source = _reference_template_path(rally_type), "referencia"
 
     if template_path.exists():
-        doc = docx.Document(template_path)
+        doc = docx.Document(str(template_path))
     else:
         doc = docx.Document()
+        warnings.append("No hay plantilla del evento disponible: se generó un documento base.")
 
-    # Reemplazo inteligente de campos
+    # ── Metadatos de cabecera ─────────────────────────────────────────────────
     for p in doc.paragraphs:
         txt = p.text
         if "EQUIPO:" in txt:
             p.text = f"EQUIPO: \t{team}"
         elif "SEDE:" in txt:
             p.text = f"SEDE: \t{sede}"
-        elif "DESAFÍO SELECCIONADO:" in txt:
+        elif "DESAFÍO SELECCIONADO:" in txt or "DESAFIO SELECCIONADO:" in txt:
             p.text = f"DESAFÍO SELECCIONADO: \t{challenge}"
 
-    # Inyección de párrafos de contenido en los slots correspondientes
-    inserted = False
-    for i, p in enumerate(doc.paragraphs):
-        t = p.text.upper()
-        if "DESCRIPCIÓN DE LA PROBLEMÁTICA" in t and pautado.get("problema"):
-            if i + 2 < len(doc.paragraphs):
-                doc.paragraphs[i+2].text = pautado["problema"]
-                inserted = True
-        elif "DESCRIPCIÓN DE LA SOLUCIÓN" in t and pautado.get("solucion"):
-            if i + 2 < len(doc.paragraphs):
-                doc.paragraphs[i+2].text = pautado["solucion"]
-                inserted = True
-        elif "IMPACTO" in t and "1000" in t and pautado.get("impacto"):
-            if i + 2 < len(doc.paragraphs):
-                doc.paragraphs[i+2].text = pautado["impacto"]
-                inserted = True
-        elif "INNOVACIÓN" in t and "1000" in t and pautado.get("innovacion"):
-            if i + 2 < len(doc.paragraphs):
-                doc.paragraphs[i+2].text = pautado["innovacion"]
-                inserted = True
-        elif "PRE FACTIBILIDAD" in t and pautado.get("prefactibilidad"):
-            if i + 2 < len(doc.paragraphs):
-                doc.paragraphs[i+2].text = pautado["prefactibilidad"]
-                inserted = True
+    # ── Inyección de las 5 secciones oficiales en su casillero ─────────────────
+    filled = 0
+    for key in PAUTADO_ORDER:
+        if clean.get(key) and _fill_section(doc.paragraphs, key, clean[key], rally_type, warnings):
+            filled += 1
 
-    if not inserted:
-        # Fallback si no hubieron slots directos
+    if filled == 0:
         doc.add_heading(f"PROYECTO: {proj}", level=0)
         doc.add_paragraph(f"Equipo: {team} | Sede: {sede}\nDesafío: {challenge}")
-        for k in ["problema", "solucion", "impacto", "innovacion", "prefactibilidad"]:
-            if pautado.get(k):
-                doc.add_heading(k.upper(), level=1)
-                doc.add_paragraph(pautado[k])
+        for key in PAUTADO_ORDER:
+            if clean.get(key):
+                doc.add_heading(sections[key]["label"], level=1)
+                doc.add_paragraph(clean[key])
 
-    doc.save(out_path)
+    out_path = DASHBOARD_DIR / "docs" / "pautado_draft.docx"
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    doc.save(str(out_path))
     return {
         "status": "ok",
         "file": "/docs/pautado_draft.docx",
+        "template_source": template_source,
+        "filled_sections": filled,
+        "counts": counts,
+        "warnings": warnings,
         "size": out_path.stat().st_size,
-        "timestamp": int(time.time())
+        "timestamp": int(time.time()),
     }
 
 # ── PUENTE DE IA AUTOMATICO (sin copy-paste, sin hardcode) ─────────────────

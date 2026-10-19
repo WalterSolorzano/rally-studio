@@ -23,8 +23,8 @@
 }
 .piz-toolbar-left, .piz-toolbar-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .piz-eyebrow {
-  font-family: var(--font-mono); font-size: 10.5px; font-weight: 700;
-  letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted);
+  font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-muted);
 }
 .piz-presence { display: inline-flex; align-items: center; gap: -4px; }
 .piz-avatar {
@@ -36,8 +36,10 @@
 .piz-avatar:first-child { margin-left: 0; }
 .piz-avatar.is-you { border-color: var(--color-primary); color: var(--color-primary); }
 
+.piz-board-wrap { overflow-x: auto; overflow-y: hidden; }
 .piz-board {
-  position: relative; height: 820px; border: 1px solid var(--border-light);
+  min-width: 820px;
+  position: relative; height: 900px; border: 1px solid var(--border-light);
   border-radius: var(--radius-md); background-color: #FFFFFF;
   background-image: radial-gradient(rgba(13, 27, 53, 0.10) 1px, transparent 1px);
   background-size: 18px 18px; background-position: -1px -1px; overflow: hidden;
@@ -46,6 +48,10 @@
 .piz-arrow-layer path { fill: none; stroke: rgba(13, 27, 53, 0.38); stroke-width: 1.4; stroke-linecap: round; }
 .piz-arrow-layer .piz-arrow-note {
   font-family: var(--font-hand); font-size: 17px; fill: rgba(13, 27, 53, 0.55);
+}
+.piz-hand-label {
+  position: absolute; font-family: var(--font-hand); font-size: 19px;
+  line-height: 1.2; color: rgba(13, 27, 53, 0.55); pointer-events: none;
 }
 
 .piz-note {
@@ -63,8 +69,8 @@
 
 .piz-note-head {
   display: flex; align-items: center; justify-content: space-between; gap: 8px;
-  font-family: var(--font-mono); font-size: 9.5px; font-weight: 700;
-  letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-faint);
+  font-family: var(--font-mono); font-size: 10.5px; font-weight: 700;
+  letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-faint);
   margin-bottom: 6px;
 }
 .piz-note-head .piz-who { display: inline-flex; align-items: center; gap: 5px; color: var(--text-muted); }
@@ -74,17 +80,17 @@
 }
 .piz-note-text { font-size: 12.5px; line-height: 1.55; color: var(--text-body); }
 .piz-note-text.is-quote { color: var(--text-main); }
-.piz-note-hand { font-family: var(--font-hand); font-size: 19px; line-height: 1.25; color: var(--text-title); }
+.piz-note-hand { font-family: var(--font-hand); font-size: 20px; line-height: 1.32; color: var(--text-title); }
 .piz-note-actions { display: flex; align-items: center; gap: 8px; margin-top: 9px; flex-wrap: wrap; }
 .piz-mono {
-  font-family: var(--font-mono); font-size: 9.5px; font-weight: 700;
-  letter-spacing: 0.05em; color: var(--text-faint); font-variant-numeric: tabular-nums;
+  font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.03em; color: var(--text-muted); font-variant-numeric: tabular-nums;
 }
 .piz-chip {
   display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-mono);
-  font-size: 9.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
-  color: var(--text-muted); border: 1px solid var(--border-light); border-radius: 4px;
-  padding: 1px 6px; background: transparent;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.03em;
+  color: var(--text-muted); border: 1px solid var(--border-light); border-radius: 6px;
+  padding: 1px 7px; background: transparent;
 }
 .piz-chip.is-link { color: var(--color-primary); border-color: #BFDBFE; text-decoration: none; cursor: pointer; }
 
@@ -116,7 +122,7 @@
   flex: 1; border: 0; outline: 0; font-family: var(--font-ui); font-size: 12.5px;
   color: var(--text-body); background: transparent;
 }
-.piz-compose input::placeholder { color: var(--text-faint); }
+.piz-compose input::placeholder { color: var(--text-muted); }
 
 .piz-lane {
   position: absolute; left: 0; right: 0; bottom: 0; height: 62px;
@@ -135,9 +141,9 @@
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px;
 }
 .piz-lane-recover {
-  font-family: var(--font-mono); font-size: 9.5px; font-weight: 700; letter-spacing: 0.05em;
+  font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.04em;
   color: var(--color-primary); background: transparent; border: 1px solid var(--border-light);
-  border-radius: 4px; padding: 2px 6px; cursor: pointer;
+  border-radius: 6px; padding: 3px 8px; cursor: pointer; white-space: nowrap;
 }
 
 .piz-legend {
@@ -146,8 +152,8 @@
 }
 .piz-legend-item { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--text-muted); }
 .piz-legend-key {
-  font-family: var(--font-mono); font-size: 9.5px; font-weight: 800; letter-spacing: 0.05em;
-  text-transform: uppercase; color: var(--text-title);
+  font-family: var(--font-mono); font-size: 11px; font-weight: 800; letter-spacing: 0.04em;
+  color: var(--text-title);
 }
 .piz-votebar { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
 .piz-vote-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
@@ -357,7 +363,7 @@
   </section>
 
   <!-- ── DELIBERACIÓN (real) → catálogo | MESA (nuevo) | ángulo ganador (real) ── -->
-  <div class="deliberation-container has-winner-rail">
+  <div class="deliberation-container">
 
     <aside class="deliberation-nav">
       <div class="deliberation-nav-header">
@@ -497,6 +503,26 @@
         Segunda vida y reconversión de motores eléctricos de electrodomésticos en desuso
       </h2>
 
+      <!-- Ángulo ganador: mismo componente real (.winner-angle-box), ahora en línea sobre la mesa -->
+      <div class="winner-angle-box winner-angle-inline" style="margin-bottom:16px;">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
+          <span style="font-size:11px; font-weight:800; letter-spacing:0.06em; text-transform:uppercase; color:#64748B;">Ángulo ganador del asesor</span>
+          <span style="font-family:var(--font-mono); font-size:11.5px; font-weight:800; color:#0866F5;">100/100</span>
+        </div>
+        <ul class="winner-angle-list" style="columns:2; column-gap:28px;">
+          <li>Prototipable en la ventana 24/28 h con materiales de recuperador</li>
+          <li>Aprovecha desechos locales <strong>(+18 pts en matriz)</strong></li>
+          <li>Anclaje territorial fuerte: cooperativas lecheras <strong>(+10)</strong></li>
+          <li>Cubre 3 ODS <strong>(+10.5)</strong></li>
+          <li>Precedente ganador: Avocado 2026 (1° Nac. Social) / Revolt (El Salvador)</li>
+          <li>Anclaje listo: cooperativas lecheras y avícolas de Chontales, Matagalpa y Boaco</li>
+        </ul>
+        <div style="border-top:1px solid var(--border-light); margin-top:10px; padding-top:10px; display:flex; align-items:center; gap:10px;">
+          <button class="btn-pill-light" style="font-size:11.5px; padding:5px 12px;">Pedir otro ángulo al asesor</button>
+          <span class="piz-mono">el asesor propone aparte; el equipo escribe en la mesa</span>
+        </div>
+      </div>
+
       <!-- ══════════ NUEVO: LA MESA ══════════ -->
       <div class="piz-toolbar">
         <div class="piz-toolbar-left">
@@ -515,33 +541,33 @@
         </div>
       </div>
 
+      <div class="piz-board-wrap">
       <div class="piz-board" id="piz-board">
-        <svg class="piz-arrow-layer" viewBox="0 0 760 820" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M300 118 C 350 128, 365 140, 392 156"/>
-          <path d="M470 300 C 500 330, 505 360, 500 392"/>
-          <path d="M470 430 C 510 452, 530 470, 548 486"/>
-          <path d="M200 300 C 250 360, 320 420, 430 470"/>
-          <path d="M620 240 C 640 300, 620 380, 566 430"/>
-          <path d="M120 470 C 200 520, 320 545, 470 552"/>
-          <text class="piz-arrow-note" x="316" y="132">lo que pide el comité</text>
-          <text class="piz-arrow-note" x="486" y="352">sumar uso</text>
-          <text class="piz-arrow-note" x="352" y="428">madura aquí</text>
+        <svg class="piz-arrow-layer" viewBox="0 0 1000 900" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M250 120 C 270 130, 282 140, 300 150"/>
+          <path d="M377 516 C 377 524, 377 530, 377 538"/>
+          <path d="M530 405 C 490 450, 450 500, 430 540"/>
+          <path d="M530 160 C 512 150, 506 144, 500 138"/>
+          <path d="M150 196 C 200 340, 290 470, 380 536"/>
         </svg>
 
+        <span class="piz-hand-label" style="left:32%; top:1%;">lo que pide el comité</span>
+        <span class="piz-hand-label" style="left:1%; top:52%;">madura aquí</span>
+
         <!-- 01 · Fuente oficial -->
-        <article class="piz-note is-source" style="left:1.5%; top:3%; width:290px;" tabindex="0">
+        <article class="piz-note is-source" style="left:1%; top:3%; width:clamp(240px, 26%, 300px);" tabindex="0">
           <div class="piz-note-head"><span class="piz-who">01 · demanda oficial</span><span>COMITÉ</span></div>
           <div class="piz-note-text is-quote">Aprovechar motores de lavadoras y ventiladores desechados para reducir chatarra y generar tracción o generación eléctrica a bajo costo en comunidades rurales.</div>
           <div class="piz-note-actions"><span class="piz-mono">fuente bloqueada</span><span class="piz-chip">no editable</span></div>
         </article>
 
         <!-- Marco dibujado a mano -->
-        <div class="piz-marco" style="left:25%; top:5%; width:360px; height:470px;">
+        <div class="piz-marco" style="left:29%; top:4%; width:34%; height:56%;">
           <span class="piz-marco-label">kit de reconversión</span>
         </div>
 
         <!-- 02 · Propuesta del asesor (IA) -->
-        <article class="piz-note is-asesor" id="piz-asesor" style="left:27%; top:10%; width:315px;" tabindex="0">
+        <article class="piz-note is-asesor" id="piz-asesor" style="left:31%; top:6%; width:clamp(250px, 31%, 330px);" tabindex="0">
           <div class="piz-note-head"><span class="piz-who">02 · tesis del motor</span><span>ASESOR</span></div>
           <div class="piz-note-title">Tesis de solución de alto impacto (100 pts rúbrica)</div>
           <div class="piz-note-text">Kit de reconversión con variador de frecuencia universal reciclado, acople impreso en PETG y banco de molienda de forraje agropecuario accionado por rotor recuperado.</div>
@@ -552,14 +578,14 @@
         </article>
 
         <!-- 02b · Factibilidad -->
-        <article class="piz-note is-asesor" style="left:27%; top:44%; width:315px;" tabindex="0">
+        <article class="piz-note is-asesor" style="left:31%; top:33%; width:clamp(250px, 31%, 330px);" tabindex="0">
           <div class="piz-note-head"><span class="piz-who">02b · factibilidad</span><span>ASESOR</span></div>
           <div class="piz-note-text">Anclaje directo en cooperativas lecheras y avícolas de Chontales, Matagalpa y Boaco, sustituyendo motores diésel caros por motores de lavadora reacondicionados para picadoras de pasto y bombas de agua.</div>
           <div class="piz-note-actions"><span class="piz-mono">precedente: Revolt (El Salvador)</span></div>
         </article>
 
         <!-- Ideas del equipo -->
-        <article class="piz-note" style="left:59%; top:3%; width:250px;" tabindex="0">
+        <article class="piz-note" style="left:65%; top:3%; width:clamp(210px, 33%, 290px);" tabindex="0">
           <div class="piz-note-head"><span class="piz-who">MR · 12:41</span><span>EQUIPO</span></div>
           <div class="piz-note-hand">Variador reciclado + rotor de lavadora: prototipo en 6 h con desarmadero del mercado.</div>
           <div class="piz-note-actions">
@@ -568,7 +594,7 @@
           </div>
         </article>
 
-        <article class="piz-note" style="left:60.5%; top:24%; width:250px;" tabindex="0">
+        <article class="piz-note" style="left:65%; top:32%; width:clamp(210px, 33%, 290px);" tabindex="0">
           <div class="piz-note-head"><span class="piz-who">JC · 12:58</span><span>EQUIPO</span></div>
           <div class="piz-note-hand">Doble uso: molino de forraje + bomba de agua con el mismo motor.</div>
           <div class="piz-note-actions">
@@ -578,7 +604,7 @@
           </div>
         </article>
 
-        <article class="piz-note is-voted" style="left:58.5%; top:46%; width:265px;" tabindex="0">
+        <article class="piz-note is-voted" style="left:65%; top:55%; width:clamp(210px, 33%, 290px);" tabindex="0">
           <div class="piz-note-head"><span class="piz-who">LP · 13:10</span><span>EQUIPO</span></div>
           <div class="piz-note-hand">Piloto real: cooperativa de Chontales, 3 picadoras de pasto para medir ahorro de diésel.</div>
           <div class="piz-note-actions">
@@ -588,7 +614,7 @@
         </article>
 
         <!-- 05 · Rincón de decisión -->
-        <article class="piz-note is-decision" style="right:1.5%; top:58%; width:262px;" tabindex="0">
+        <article class="piz-note is-decision" style="left:31%; top:60%; width:clamp(250px, 31%, 330px);" tabindex="0">
           <div class="piz-note-head"><span class="piz-who">05 · decisión</span><span>CORONA PRIMERO</span></div>
           <div class="piz-note-title">Solo corona el reto que el equipo levanta la mano</div>
           <div class="piz-votebar">
@@ -602,7 +628,7 @@
         </article>
 
         <!-- Trazo de descarte sobre una idea -->
-        <div class="piz-strike" style="left:60.5%; top:24%; width:250px; height:96px;" aria-hidden="true">
+        <div class="piz-strike" style="left:65%; top:32%; width:33%; height:96px;" aria-hidden="true">
           <svg viewBox="0 0 250 96" preserveAspectRatio="none"><path d="M6 74 C 60 40, 190 46, 244 18"/></svg>
         </div>
 
@@ -615,7 +641,7 @@
 
         <!-- Carril del embudo: retos votados para borrar -->
         <div class="piz-lane">
-          <span class="piz-eyebrow" style="white-space:nowrap;">Embudo · descartados (2)</span>
+          <span class="piz-mono" style="white-space:nowrap; font-weight:800; color:var(--text-title);">EMBUDO · DESCARTADOS <span style="color:var(--text-muted);">2</span></span>
           <span class="piz-lane-chip">
             <span class="piz-lane-title">Reservorios pluviales con microfiltración</span>
             <span class="piz-mono">2/2 voces</span>
@@ -631,6 +657,7 @@
             <button class="piz-lane-recover">ESCUCHAR CASO</button>
           </span>
         </div>
+      </div>
       </div>
 
       <!-- Cómo se usa -->
@@ -664,24 +691,6 @@
       </div>
     </section>
 
-    <!-- Ángulo ganador real -->
-    <aside class="winner-rail">
-      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;">
-        <span style="font-size:10.5px; font-weight:800; letter-spacing:0.06em; text-transform:uppercase; color:#64748B;">Ángulo ganador</span>
-        <span style="font-family:var(--font-mono); font-size:11.5px; font-weight:800; color:#0866F5;">100/100</span>
-      </div>
-      <ul class="winner-angle-list">
-        <li>Prototipable en la ventana 24/28 h con materiales de recuperador</li>
-        <li>Aprovecha desechos locales <strong>(+18 pts en matriz)</strong></li>
-        <li>Anclaje territorial fuerte: cooperativas lecheras <strong>(+10)</strong></li>
-        <li>Cubre 3 ODS <strong>(+10.5)</strong></li>
-        <li>Precedente ganador: Avocado 2026 (1° Nac. Social) / Revolt (El Salvador)</li>
-        <li>Anclaje territorial listo: cooperativas lecheras y avícolas de Chontales, Matagalpa y Boaco</li>
-      </ul>
-      <div style="border-top:1px solid var(--border-light); margin-top:12px; padding-top:10px;">
-        <button class="btn-pill-light" style="font-size:11.5px; padding:5px 12px; width:100%; justify-content:center;">Pedir otro ángulo al asesor</button>
-      </div>
-    </aside>
   </div>
 
 </div>
