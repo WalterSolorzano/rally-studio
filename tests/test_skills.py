@@ -10,8 +10,18 @@ NUCLEO = [
     "auditar-entregable",
 ]
 
+PRODUCCION = [
+    "proponer-retos",
+    "sugerir-por-fase",
+    "propuesta-diseno",
+    "modelo-3d-blender",
+    "publicar-sitio",
+]
 
-@pytest.mark.parametrize("nombre", NUCLEO)
+TODAS = NUCLEO + PRODUCCION
+
+
+@pytest.mark.parametrize("nombre", TODAS)
 def test_skill_has_valid_frontmatter(nombre):
     texto = Path(f"skills/{nombre}/SKILL.md").read_text(encoding="utf-8")
     assert texto.startswith("---")
@@ -19,6 +29,6 @@ def test_skill_has_valid_frontmatter(nombre):
     assert "name:" in cabecera and "description:" in cabecera
 
 
-@pytest.mark.parametrize("nombre", NUCLEO)
+@pytest.mark.parametrize("nombre", TODAS)
 def test_skill_is_short(nombre):
     assert len(Path(f"skills/{nombre}/SKILL.md").read_bytes()) <= 8_000
