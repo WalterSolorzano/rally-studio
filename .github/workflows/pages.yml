@@ -42,6 +42,8 @@ jobs:
           rm -rf public/dashboard/data/content public/dashboard/data/state.json public/dashboard/data/applied public/dashboard/data/discarded
           # Identidad de marca (tokens, paleta, logos)
           [ -d brand ] && cp -r brand public/brand || true
+          # Locución y muestras de voz referenciadas por el dashboard
+          [ -d assets ] && cp -r assets public/assets || true
           # Repositorio de datos que el tablero consulta en runtime
           [ -d research ] && cp -r research public/research || true
           # Evita que Jekyll procese los archivos
