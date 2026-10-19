@@ -2604,6 +2604,412 @@ function winnerAngleFor(ch) {
   return { score: info.score, bullets: bullets.slice(0, 6), criteria: info.criteria, isHighComp: info.isHighComp };
 }
 
+// ── MESA DE RETOS · decisión por mayoría (≥50 % del equipo, sin quórum) ─────
+// Estado: { size, votes: { [chId]: {yes,no,res,at} }, renews: { [chId]: [{by,at,removed}] } }
+function getMesa() {
+  if (!state.challenge_mesa || typeof state.challenge_mesa !== "object") {
+    state.challenge_mesa = { size: 0, votes: {}, renews: {} };
+  }
+  const m = state.challenge_mesa;
+  if (!m.votes) m.votes = {};
+  if (!m.renews) m.renews = {};
+  if (!m.size) m.size = Math.min(10, Math.max(6, Number(state.team_members_count) || 6));
+  return m;
+}
+
+const MESA_EXTRA_SEATS = ["Integrante 7", "Integrante 8", "Integrante 9", "Integrante 10"];
+
+function mesaSeats() {
+  const m = getMesa();
+  const size = Math.min(10, Math.max(6, m.size));
+  const seats = TEAM_MASCOTS.slice(0, Math.min(6, size)).map(x => ({ id: x.id, label: x.name, color: x.color }));
+  for (let i = seats.length; i < size; i++) {
+    seats.push({ id: "seat_" + (i + 1), label: MESA_EXTRA_SEATS[i - 6] || ("Integrante " + (i + 1)), color: "#64748B" });
+  }
+  return seats;
+}
+
+function mesaMe() {
+  return (currentClientMascot && currentClientMascot.id) || (TEAM_MASCOTS[0] && TEAM_MASCOTS[0].id) || "seat_1";
+}
+
+function mesaSeatName(seatId) {
+  const s = mesaSeats().find(x => x.id === seatId);
+  return s ? s.label : String(seatId);
+}
+
+function mesaBallot(chId) {
+  const m = getMesa();
+  if (!m.votes[chId] || typeof m.votes[chId] !== "object") m.votes[chId] = { yes: [], no: [], res: [], at: {} };
+  const b = m.votes[chId];
+  if (!Array.isArray(b.yes)) b.yes = [];
+  if (!Array.isArray(b.no)) b.no = [];
+  if (!Array.isArray(b.res)) b.res = [];
+  if (!b.at || typeof b.at !== "object") b.at = {};
+  return b;
+}
+
+function mesaTally(chId) {
+  const b = mesaBallot(chId);
+  const size = mesaSeats().length;
+  const yes = b.yes.length;
+  const no = b.no.length;
+  const res = b.res.length;
+  const need = Math.ceil(size / 2);
+  return {
+    size, yes, no, res,
+    wait: Math.max(0, size - yes - no - res),
+    need,
+    approved: yes >= need,
+    discarded: no >= need
+  };
+}
+
+function _mesaTime() {
+  const d = new Date();
+  return String(d.getHours()).padStart(2, "0") + ":" + String(d.getMinutes()).padStart(2, "0");
+}
+
+function mesaVote(chId, seatId) {
+  const b = mesaBallot(chId);
+  const cur = b.yes.includes(seatId) ? "yes" : b.no.includes(seatId) ? "no" : b.res.includes(seatId) ? "res" : null;
+  b.yes = b.yes.filter(x => x !== seatId);
+  b.no = b.no.filter(x => x !== seatId);
+  b.res = b.res.filter(x => x !== seatId);
+  const next = cur === null ? "yes" : cur === "yes" ? "no" : cur === "no" ? "res" : null;
+  if (next === "yes") b.yes.push(seatId);
+  if (next === "no") b.no.push(seatId);
+  if (next === "res") b.res.push(seatId);
+  if (next) b.at[seatId] = _mesaTime(); else delete b.at[seatId];
+
+  const t = mesaTally(chId);
+  const trib = getTribunal();
+  if (t.discarded) trib.team[chId] = true; else delete trib.team[chId];
+
+  saveState();
+  broadcastFieldChange("tribunal", "state", state.challenge_tribunal);
+
+  const label = next === "yes" ? "aprueba" : next === "no" ? "pide descartar" : next === "res" ? "pide reserva" : "queda sin decidir";
+  showToast((t.discarded ? "Mitad a descarte: el sistema movió el Reto #" + chId + " al embudo. " : "") + mesaSeatName(seatId) + " " + label + " el Reto #" + chId + ".");
+  renderTab("challenges");
+}
+
+function mesaRenew(chId) {
+  const m = getMesa();
+  const b = mesaBallot(chId);
+  const removed = b.no.slice();
+  b.no = [];
+  Object.keys(b.at).forEach(k => { if (!b.yes.includes(k) && !b.res.includes(k)) delete b.at[k]; });
+  const trib = getTribunal();
+  delete trib.team[chId];
+  if (!m.renews[chId]) m.renews[chId] = [];
+  m.renews[chId].push({ by: mesaSeatName(mesaMe()), at: _mesaTime(), removed: removed.map(mesaSeatName) });
+  saveState();
+  broadcastFieldChange("tribunal", "state", state.challenge_tribunal);
+  showToast("Reto #" + chId + " renovado: vuelve a la mesa sin los votos de descarte.");
+  renderTab("challenges");
+}
+
+function mesaSetSize(n) {
+  const size = Math.min(10, Math.max(6, Number(n) || 6));
+  const m = getMesa();
+  m.size = size;
+  state.team_members_count = size;
+  const ids = mesaSeats().map(s => s.id);
+  Object.keys(m.votes).forEach(chId => {
+    const b = m.votes[chId];
+    b.yes = b.yes.filter(x => ids.includes(x));
+    b.no = b.no.filter(x => ids.includes(x));
+    b.res = b.res.filter(x => ids.includes(x));
+  });
+  saveState();
+  renderTab("challenges");
+}
+
+function mesaGo(chId) {
+  state.active_deliberation_challenge_id = chId;
+  renderTab("challenges");
+}
+
+function renderMesaNav(list, activeId) {
+  return `
+    <aside class="deliberation-nav">
+      <div class="deliberation-nav-header">
+        <span>CATÁLOGO DE RETOS</span>
+        <span style="font-family:var(--font-mono); font-size:11px; color:#5C7193;">${list.length} ACTIVOS</span>
+      </div>
+      <div class="deliberation-nav-list">
+        ${list.map(ch => {
+          const t = mesaTally(ch.id);
+          const isCur = ch.id === activeId;
+          const isSel = state.challenge_id === ch.id;
+          const ideas = (state.challenge_ideas && state.challenge_ideas[ch.id]) || [];
+          const chip = t.discarded
+            ? `<span class="cr-chip is-out">descartado ${t.no}/${t.size}</span>`
+            : t.approved
+              ? `<span class="cr-chip is-keep">aprobado ${t.yes}/${t.size}</span>`
+              : t.res
+                ? `<span class="cr-chip">reserva ${t.res}/${t.size}</span>`
+                : `<span class="cr-chip">en debate ${t.yes}/${t.size}</span>`;
+          return `
+            <div class="deliberation-nav-item ${isCur ? 'active' : ''}" role="button" tabindex="0" aria-current="${isCur ? "page" : "false"}" aria-label="Reto ${ch.id}: ${ch.title}. ${t.discarded ? "descartado" : t.approved ? "aprobado" : "en debate"}, ${t.yes} a favor de ${t.size}." onclick="mesaGo('${ch.id}')">
+              <div style="min-width:0; flex:1; padding-right:6px;">
+                <div class="cr-nav-meta">
+                  <span class="nav-item-num cr-nav-num">#${ch.id}</span>
+                  <span class="nav-item-cat">${categoryBadge(ch.category)}</span>
+                  ${isSel ? `<span class="cr-chip is-sel">ELEGIDO</span>` : ""}
+                  ${chip}
+                </div>
+                <div class="nav-item-title">${ch.title}</div>
+              </div>
+              <div class="cr-nav-right">
+                <span class="cr-nav-via">${ch.winRate || 90}%</span>
+                <span class="cr-nav-notes">Notas: ${ideas.length}</span>
+              </div>
+            </div>
+          `;
+        }).join("")}
+      </div>
+    </aside>
+  `;
+}
+
+function renderMesaBar(list, ch, idx) {
+  const t = mesaTally(ch.id);
+  const prev = idx > 0 ? list[idx - 1] : null;
+  const next = idx < list.length - 1 ? list[idx + 1] : null;
+  return `
+    <div class="cr-bar">
+      <div class="cr-bar-nav">
+        <button class="cr-arrow" ${prev ? `onclick="mesaGo('${prev.id}')"` : "disabled"} title="Reto anterior" aria-label="Reto anterior">←</button>
+        <span class="cr-count">RETO #${ch.id} <span class="cr-count-dim">/ ${String(idx + 1).padStart(2, "0")} de ${String(list.length).padStart(2, "0")}</span></span>
+        <button class="cr-arrow" ${next ? `onclick="mesaGo('${next.id}')"` : "disabled"} title="Reto siguiente" aria-label="Reto siguiente">→</button>
+      </div>
+
+      <div class="cr-bar-team">
+        <span class="cr-bar-k">en la mesa</span>
+        <button class="cr-step" onclick="mesaSetSize(${t.size - 1})" ${t.size <= 6 ? "disabled" : ""} title="Un integrante menos" aria-label="Un integrante menos">−</button>
+        <span class="cr-size">${t.size}</span>
+        <button class="cr-step" onclick="mesaSetSize(${t.size + 1})" ${t.size >= 10 ? "disabled" : ""} title="Un integrante más" aria-label="Un integrante más">+</button>
+        <span class="cr-need">${t.need} votos para aprobar · ${t.need} para descartar</span>
+      </div>
+
+      <div class="cr-map">
+        ${list.map((c, i) => {
+          const ct = mesaTally(c.id);
+          const cls = [
+            "cr-pip",
+            c.id === ch.id ? "is-current" : "",
+            ct.discarded ? "is-out" : "",
+            ct.approved ? "is-in" : "",
+            !ct.approved && !ct.discarded && ct.res ? "is-res" : "",
+            state.challenge_id === c.id ? "is-sel" : ""
+          ].filter(Boolean).join(" ");
+          return `<button class="${cls}" onclick="mesaGo('${c.id}')" title="Reto #${c.id} · ${ct.yes}/${ct.size} a favor${ct.discarded ? " · descartado" : ""}">${String(i + 1).padStart(2, "0")}</button>`;
+        }).join("")}
+      </div>
+
+      <div class="cr-rule">Se aprueba con <b>la mitad a favor</b>; se descarta con <b>la mitad a descarte</b> — el sistema lo mueve al embudo y se puede renovar. La IA propone, no vota.</div>
+    </div>
+  `;
+}
+
+function renderMesaNotes(ch) {
+  const ideas = (state.challenge_ideas && state.challenge_ideas[ch.id]) || [];
+  const others = (state.challenges || []).filter(c => c.id !== ch.id);
+  return `
+    <section class="cr-panel cr-notes">
+      <div class="cr-block"><span class="cr-num">03</span> Nuestras redacciones <span class="cr-count-chip">${ideas.length}</span><span class="cr-tag">se guarda solo</span></div>
+      <div class="cr-note-grid">
+        ${ideas.length === 0 ? `<p class="cr-pending">Todavía no hay redacciones para este reto. La primera la escribe cualquiera.</p>` : ideas.map(idea => `
+          <article class="cr-note ${idea.merged_to ? "is-merged" : ""}">
+            <header class="cr-note-head">
+              <span class="cr-dot" style="background:${_userColor(idea.author)}"></span>
+              <span class="cr-note-author" style="color:${_userColor(idea.author)}">${idea.author || "Equipo"}</span>
+              <span class="cr-note-time">#${ch.id} · ${idea.timestamp || ""}</span>
+            </header>
+            <p class="cr-note-text">${idea.text}</p>
+            <footer class="cr-note-foot">
+              ${idea.merged_to ? `<span class="cr-note-fusion">fusionada → #${idea.merged_to}</span><button class="cr-link" onclick="unmergeChallengeIdea('${ch.id}', '${idea.id}')" title="Traer la nota de vuelta">↺ traer</button>` : others.length ? `
+                <select class="cr-note-merge" onchange="if(this.value) mergeChallengeIdea('${ch.id}', '${idea.id}', this.value)">
+                  <option value="">fusionar ↗</option>
+                  ${others.map(c => `<option value="${c.id}">#${c.id} ${(c.title || '').slice(0, 26)}</option>`).join("")}
+                </select>` : ""}
+              <button class="cr-link is-quiet" onclick="deleteChallengeIdea('${ch.id}', '${idea.id}')" title="Eliminar redacción">borrar</button>
+            </footer>
+          </article>
+        `).join("")}
+      </div>
+      <div class="cr-compose">
+        <span class="cr-dot" style="background:${_userColor(_me())}"></span>
+        <input type="text" id="new-idea-input-${ch.id}" placeholder="Escribe la idea, el pro o el contra y queda pegada a este reto…" onkeydown="if(event.key==='Enter') addChallengeIdea('${ch.id}')">
+        <button class="btn-select-card filled" style="padding:6px 14px; font-size:11.5px; font-weight:700;" onclick="addChallengeIdea('${ch.id}')">+ pegar redacción</button>
+      </div>
+    </section>
+  `;
+}
+
+function renderMesaVote(ch) {
+  const t = mesaTally(ch.id);
+  const b = mesaBallot(ch.id);
+  const seats = mesaSeats();
+  const meId = mesaMe();
+  const pct = n => Math.round((n / Math.max(1, t.size)) * 100);
+  const stance = seatId => b.yes.includes(seatId) ? "yes" : b.no.includes(seatId) ? "no" : b.res.includes(seatId) ? "res" : "wait";
+  const stanceLabel = s => s === "yes" ? "aprueba" : s === "no" ? "descarta" : s === "res" ? "reserva" : "sin decidir";
+  const verdict = t.discarded
+    ? `<span class="cr-verdict-main is-out">DESCARTADO</span> <span class="cr-verdict-sub">${t.no} de ${t.size} a descarte · el sistema lo movió al embudo</span>`
+    : t.approved
+      ? `<span class="cr-verdict-main is-in">APROBADO</span> <span class="cr-verdict-sub">${t.yes} de ${t.size} a favor (necesitaba ${t.need})</span>`
+      : `<span class="cr-verdict-main">EN DEBATE</span> <span class="cr-verdict-sub">${t.yes} de ${t.size} a favor · faltan ${Math.max(0, t.need - t.yes)} para ${t.need}</span>`;
+  const group = (arr, label, cls) => arr.length ? `<span class="cr-rec ${cls}"><span class="cr-rec-k">${label} <b>${arr.length}</b></span>${arr.map(id => `<span class="cr-rec-name">${mesaSeatName(id)} <span class="cr-rec-at">${b.at[id] || ""}</span></span>`).join("")}</span>` : "";
+  const renews = (getMesa().renews[ch.id] || []);
+  return `
+    <section class="cr-panel cr-vote" id="mesa-vote-${ch.id}">
+      <div class="cr-block"><span class="cr-num">04</span> La mesa vota <span class="cr-tag">${t.size} en la mesa · mayoría: ${t.need}</span></div>
+
+      <div class="cr-verdict">${verdict}</div>
+
+      <div class="cr-bars">
+        <div class="cr-bar-row">
+          <span class="cr-bar-label">a favor</span>
+          <span class="cr-bar-track"><span class="cr-bar-fill" style="width:${pct(t.yes)}%"></span><span class="cr-bar-mark" style="left:50%"></span></span>
+          <span class="cr-bar-n">${t.yes}/${t.size}</span>
+        </div>
+        <div class="cr-bar-row">
+          <span class="cr-bar-label">a descarte</span>
+          <span class="cr-bar-track"><span class="cr-bar-fill is-no" style="width:${pct(t.no)}%"></span><span class="cr-bar-mark" style="left:50%"></span></span>
+          <span class="cr-bar-n">${t.no}/${t.size}</span>
+        </div>
+      </div>
+
+      <div class="cr-voters">
+        ${seats.map(seat => {
+          const s = stance(seat.id);
+          const isMe = seat.id === meId;
+          return `
+            <button class="cr-voter is-${s} ${isMe ? "is-you" : ""}" aria-label="${seat.label}: ${stanceLabel(s)}${b.at[seat.id] ? " a las " + b.at[seat.id] : ""}. Toca para cambiar el voto." onclick="mesaVote('${ch.id}', '${seat.id}')" title="Toca para cambiar el voto de ${seat.label}">
+              <span class="cr-dot" style="background:${seat.color}"></span>
+              <span class="cr-voter-name">${seat.label}${isMe ? " · tú" : ""}</span>
+              <span class="cr-voter-stance">${stanceLabel(s)}</span>
+              <span class="cr-voter-at">${b.at[seat.id] || "—"}</span>
+            </button>
+          `;
+        }).join("")}
+      </div>
+
+      <div class="cr-record">
+        <span class="cr-rec-tag">constancia</span>
+        ${group(b.no, "lo tiran", "is-no")}
+        ${group(b.yes, "lo salvan", "is-yes")}
+        ${group(b.res, "en reserva", "is-res")}
+        ${group(seats.map(s => s.id).filter(id => stance(id) === "wait"), "sin decidir", "is-wait")}
+      </div>
+
+      ${renews.map(r => `<div class="cr-rec-log">renovado por ${r.by} · ${r.at} — se borraron los votos de descarte${r.removed && r.removed.length ? " de " + r.removed.join(", ") : ""}</div>`).join("")}
+
+      <div class="cr-vote-actions">
+        ${t.discarded ? `<button class="btn-pill-light cr-renew-btn" onclick="mesaRenew('${ch.id}')">Renovar este reto</button>` : ""}
+        ${state.challenge_id !== ch.id
+          ? `<button class="btn-select-card filled" style="padding:8px 18px; font-size:12px; font-weight:800;" onclick="selectChallenge('${ch.id}', false)">Elegir Reto #${ch.id}</button>`
+          : `<span class="cr-held">Reto #${ch.id} está elegido</span>`}
+        <button class="btn-pill-light" style="font-size:11.5px; padding:5px 12px;" onclick="showToast('Escucha de 2 minutos abierta para el Reto #${ch.id}.')">Pedir 2 min de escucha</button>
+      </div>
+
+      <p class="cr-consequence">Sin quórum: vota quien quiera. Con <b>≥50 %</b> del equipo a favor entra; con <b>≥50 %</b> a descarte el sistema lo mueve al embudo y se puede renovar cuando quieran. Equipo impar: pasa el voto que cruza la mitad (${t.need} de ${t.size}). La IA no vota: solo propone arriba.</p>
+    </section>
+  `;
+}
+
+function renderMesaSlide(ch, list, idx) {
+  const info = challengeRankFor(ch);
+  const ideas = (state.challenge_ideas && state.challenge_ideas[ch.id]) || [];
+  const rows = list.map(c => ({ id: c.id, score: challengeRankFor(c).score })).sort((a, b) => b.score - a.score || (a.id > b.id ? 1 : -1));
+  const rank = rows.findIndex(r => r.id === ch.id) + 1;
+  const isSel = state.challenge_id === ch.id;
+  const isSat = (ch.compDensity || "").toLowerCase().includes("alta") || (ch.winRate && ch.winRate < 86);
+  const odsList = Array.isArray(ch.ods) ? ch.ods : String(ch.ods || "").split(/,\s*/).filter(Boolean);
+  const sourceText = ch.officialExpectation || ch.demandaComite || ch.description || "";
+  const ang = winnerAngleFor(ch);
+  const reasonLines = info.reasonLines || [];
+
+  return `
+    <div class="cr-slide-head">
+      <div class="cr-head-meta">
+        <div class="cr-head-row">
+          ${categoryBadge(ch.category)}
+          <span class="cr-desafio">DESAFÍO #${ch.id}</span>
+          ${isSel ? `<span class="cr-chip is-sel">ELEGIDO</span>` : ""}
+        </div>
+        <div class="cr-ods">
+          ${odsList.map(o => {
+            const num = String(o).replace(/[^\d]/g, "");
+            const odsObj = (typeof ODS_CATALOG !== "undefined" ? ODS_CATALOG : []).find(x => String(x.id) === num);
+            return `<button class="btn-pill-light cr-ods-pill" onclick="openImpactDetailModal('ods', ${num || 12})" title="Ver por qué y cómo cumple este ODS">${odsObj && odsObj.icon ? `<svg width="10" height="10" viewBox="0 0 12 12" fill="${odsObj.color}">${odsObj.icon}</svg>` : ""}${o}</button>`;
+          }).join("")}
+        </div>
+        <div class="cr-head-note">
+          <span class="cr-mono">viabilidad ${ch.winRate || 90}%</span>
+          <span class="cr-niche">${isSat ? "ALTA CONCURRENCIA" : "NICHO TÉCNICO"}</span>
+          <span class="cr-niche-why">${isSat ? "Exige ≥2 capas tecnológicas para superar la saturación de sedes." : "Baja rivalidad de sedes: ventaja directa si la factibilidad es sólida."}</span>
+        </div>
+      </div>
+      <div class="cr-head-actions">
+        <button class="btn-pill-light" style="font-size:11.5px; padding:5px 12px;" onclick="openEditChallengeModal('${ch.id}')" title="Modificar título, demanda u ODS">${SVG.edit} Editar Reto</button>
+        <button class="btn-select-card ${isSel ? "filled" : "outline"}" style="padding:6px 14px; font-size:12px; font-weight:700;" onclick="selectChallenge('${ch.id}', ${isSel ? "true" : "false"})">${isSel ? "Reto Seleccionado" : "Elegir para Desarrollar"}</button>
+        <button class="btn-pill-ghost" style="font-size:11px; padding:5px 10px; color:#DC2626;" onclick="deleteChallenge('${ch.id}')" title="Quitar del radar">${SVG.close}</button>
+      </div>
+    </div>
+
+    <h2 class="cr-title">${ch.title}</h2>
+
+    <div class="cr-metrics">
+      <span class="cr-metric"><b>${info.score}</b> <span class="cr-metric-k">pts del motor</span></span>
+      <span class="cr-metric"><b>#${rank}</b> <span class="cr-metric-k">de ${list.length}</span></span>
+      <span class="cr-metric-reason">${(reasonLines[0] || "Delibera en equipo: el motor no tiene una razón dominante para este reto.").replace(/\(\s*[+-]?[\d.]+\s*pts\s*\)/i, "").trim()}</span>
+    </div>
+
+    <div class="cr-body">
+      <section class="cr-panel is-src">
+        <div class="cr-block"><span class="cr-num">01</span> Lo que pide el comité <span class="cr-tag is-lock">fuente bloqueada · no editable</span></div>
+        ${ch.imageUrl ? `<button class="cr-thumb" onclick="openLightbox('${ch.imageUrl}')" title="Ampliar el cartel oficial"><img src="${ch.imageUrl}" alt="Cartel oficial del reto ${ch.id}"></button>` : ""}
+        ${sourceText
+          ? `<p class="cr-quote">${sourceText}</p>`
+          : `<p class="cr-pending">Descripción oficial pendiente de transcribir. Pega el texto del comité para que quede como fuente.</p>`}
+        ${ch.ods && !odsList.length ? `<p class="cr-tag is-lock">ODS por transcribir</p>` : ""}
+      </section>
+
+      <section class="cr-panel">
+        <div class="cr-block"><span class="cr-num">02</span> Lo que propone la IA <span class="cr-tag">propone · no vota</span></div>
+        ${ch.wowProposal
+          ? `<p class="cr-thesis">${ch.wowProposal}</p>`
+          : `<p class="cr-pending">Sin tesis formulada todavía. Usa <button class="cr-link" onclick="openAIThesisFormulatorModal('${ch.id}')">IA Copilot</button> para estructurarla contra la rúbrica.</p>`}
+        ${ch.nicaraguaAdaptation ? `<p class="cr-fact"><b>Factibilidad & despliegue:</b> ${ch.nicaraguaAdaptation}</p>` : ""}
+        ${(ch.winnerPattern || ch.precedent) ? `<p class="cr-precedent"><b>Precedente:</b> ${ch.winnerPattern || ch.precedent}</p>` : ""}
+        ${reasonLines.length ? `
+          <div class="cr-pts">
+            ${reasonLines.map(line => {
+              const m = line.match(/\(\s*([+-]?\d+(?:\.\d+)?)\s*pts\s*\)/i);
+              const val = m ? parseFloat(m[1]) : 0;
+              const label = line.replace(/\(\s*[+-]?\d+(?:\.\d+)?\s*pts\s*\)/i, "").trim();
+              const w = Math.min(100, Math.round((Math.abs(val) / 20) * 100));
+              return `<div class="cr-pt ${val < 0 ? "is-neg" : "is-pos"}">
+                <span class="cr-pt-k">${label}</span>
+                <span class="cr-pt-track"><span class="cr-pt-fill" style="width:${w}%"></span></span>
+                <span class="cr-pt-v">${val > 0 ? "+" : ""}${val}</span>
+              </div>`;
+            }).join("")}
+          </div>
+        ` : ""}
+        <p class="cr-angle">${ang.bullets.slice(0, 2).map(b => `<span class="cr-angle-i">${b}</span>`).join("")}</p>
+      </section>
+    </div>
+
+    ${renderMesaNotes(ch)}
+    ${renderMesaVote(ch)}
+  `;
+}
+
 function renderTribunalSubnav() {
   const t = getTribunal();
   const kept = (state.challenges || []).filter(c => hasAnyKeep(c.id) && !isTeamDiscarded(c.id)).length;
@@ -2641,6 +3047,11 @@ function renderViewChallenges() {
   }
 
   const selectedChallengeObj = state.challenge_id ? list.find(c => c.id === state.challenge_id) || OFFICIAL_CHALLENGES_2026.find(c => c.id === state.challenge_id) : null;
+
+  // Mesa: reto activo del carrusel (uno a la vez)
+  const mesaList = filtered;
+  const mesaActive = mesaList.find(c => c.id === (state.active_deliberation_challenge_id || state.challenge_id)) || mesaList[0];
+  const mesaIndex = mesaActive ? mesaList.indexOf(mesaActive) : 0;
 
   return `
     <div class="wizard-canvas" style="max-width:min(1760px, 98vw); width:100%; margin:0 auto; padding-bottom:60px; box-sizing:border-box;">
@@ -2803,18 +3214,22 @@ function renderViewChallenges() {
       ` : `
         <div class="phase-header" style="margin-bottom:16px;">
           <h1 class="phase-title" style="font-size:24px; font-weight:900; color:#0F172A; margin-bottom:4px; letter-spacing:-0.02em;">
-            Retos Oficiales & Espacio de Deliberación
+            Retos Oficiales & <span class="phase-title-accent">Mesa de Decisión</span>
           </h1>
           <p class="phase-subtitle" style="font-size:13px; color:#475569; line-height:1.45;">
-            ${list.length} retos activos en radar. Navega el catálogo táctico y delibera en la hoja técnica oficial con tu equipo.
+            ${list.length} retos en radar. Pasan uno a uno: lo que pide el comité, lo que propone la IA, lo que redacta el equipo y cómo vota la mesa.
           </p>
         </div>
 
-        <!-- MINIFASES DEL EMBUDO DE DECISIÓN -->
-        ${renderTribunalSubnav()}
-
-        <!-- RANKING DE RETOS (visible de inmediato; oculto en fase de voto para calma visual) -->
-        ${tri.step === "read" ? renderChallengeRanking() : ""}
+        <details class="rk-fold">
+          <summary>
+            <span class="rk-fold-k">Ranking de retos</span>
+            <span class="rk-fold-n">· ${list.length} evaluados</span>
+            <span class="rk-fold-h">el pronóstico del motor, por si quieren comparar antes de votar</span>
+            <span class="rk-fold-go">ver ▾</span>
+          </summary>
+          ${renderChallengeRanking()}
+        </details>
 
         <!-- Barra de Control y Filtros (Estilo Editorial Sobrio) -->
         ${tri.step !== "vote" ? `
@@ -2869,342 +3284,29 @@ function renderViewChallenges() {
           </div>
         </div>
 
-        <!-- Deliberation Studio Master-Detail Container -->
-        ${(() => {
-          const activeId = state.active_deliberation_challenge_id || state.challenge_id || (filtered[0] ? filtered[0].id : "");
-          const activeCh = filtered.find(c => c.id === activeId) || filtered[0];
-          if (!activeCh) return `<div style="padding:30px; text-align:center; color:#64748B;">No hay retos en esta categoría.</div>`;
+        ${mesaActive ? `
+          <div class="deliberation-container">
+            ${renderMesaNav(mesaList, mesaActive.id)}
+            <section class="deliberation-sheet cr-sheet">
+              ${renderMesaBar(mesaList, mesaActive, mesaIndex)}
+              ${renderMesaSlide(mesaActive, mesaList, mesaIndex)}
 
-          const isSelected = state.challenge_id === activeCh.id;
-          const odsStr = Array.isArray(activeCh.ods) ? activeCh.ods.join(", ") : (activeCh.ods || "ODS 9, ODS 12");
-          const ideas = (state.challenge_ideas && state.challenge_ideas[activeCh.id]) || [];
-          const curIndex = filtered.findIndex(c => c.id === activeCh.id);
-          const prevCh = curIndex > 0 ? filtered[curIndex - 1] : null;
-          const nextCh = curIndex < filtered.length - 1 ? filtered[curIndex + 1] : null;
-
-          return `
-            <div class="deliberation-container ${tri.step === 'read' ? 'has-winner-rail' : ''}">
-              <!-- Columna Izquierda: Índice Catálogo Táctico -->
-              <aside class="deliberation-nav">
-                <div class="deliberation-nav-header">
-                  <span>CATÁLOGO DE RETOS</span>
-                  <span style="font-family:var(--font-mono); font-size:11px; color:#64748B;">${filtered.length} ACTIVOS</span>
+              <div class="cr-cta">
+                <div>
+                  ${mesaIndex > 0 ? `<button class="btn-pill-light" style="font-size:12px; font-weight:700; padding:6px 14px;" onclick="mesaGo('${mesaList[mesaIndex - 1].id}')">← Reto #${mesaList[mesaIndex - 1].id}</button>` : `<span style="width:80px; display:inline-block;"></span>`}
                 </div>
-                <div class="deliberation-nav-list">
-                  ${filtered.map(ch => {
-                    const isCur = ch.id === activeCh.id;
-                    const isSel = state.challenge_id === ch.id;
-                    const chIdeas = (state.challenge_ideas && state.challenge_ideas[ch.id]) || [];
-                    return `
-                      <div class="deliberation-nav-item ${isCur ? 'active' : ''}" 
-                           onclick="state.active_deliberation_challenge_id='${ch.id}'; renderTab('challenges');">
-                        <div style="min-width:0; flex:1; padding-right:6px;">
-                          <div style="display:flex; align-items:center; gap:6px; margin-bottom:2px;">
-                            <span class="nav-item-num" style="font-family:var(--font-mono); font-size:11px; font-weight:800; padding:1px 6px; border-radius:4px; background:${isCur ? '#334155' : '#E2E8F0'}; color:${isCur ? '#F8FAFC' : '#0F172A'};">
-                              #${ch.id}
-                            </span>
-                            <span class="nav-item-cat" style="font-size:10.5px; font-weight:700;">${categoryBadge(ch.category)}</span>
-                            ${isSel ? `<span style="font-size:9.5px; font-weight:800; color:#0866F5; background:var(--bg-subtle); border:1px solid var(--border-light); padding:1px 5px; border-radius:3px;">ELEGIDO</span>` : ""}
-                            ${(() => {
-                            if (isTeamDiscarded(ch.id)) return `<span style="font-size:9.5px; font-weight:700; color:#94A3B8; padding:1px 5px; border-radius:3px;">descartado${discardCount(ch.id) ? ` en consenso (${discardCount(ch.id)})` : ""}</span>`;
-                            const mine = personDisposition(ch.id);
-                            return mine === "keep"
-                              ? `<span style="font-size:9.5px; font-weight:800; color:#0D1B35; background:#EFF6FF; border:1px solid var(--border-light); padding:1px 5px; border-radius:3px;">ME INTERESA</span>`
-                              : mine === "discard"
-                                ? `<span style="font-size:9.5px; font-weight:700; color:#94A3B8; padding:1px 5px; border-radius:3px;">descarté</span>`
-                                : discardCount(ch.id) ? `<span style="font-size:9.5px; font-weight:700; color:#94A3B8; padding:1px 5px; border-radius:3px;">(${discardCount(ch.id)} piden descartar)</span>` : "";
-                          })()}
-                            ${(tri.votes[ch.id] || []).length ? `<span style="font-family:var(--font-mono); font-size:9.5px; font-weight:800; color:#0866F5;">● ${tri.votes[ch.id].length}</span>` : ""}
-                          </div>
-                          <div class="nav-item-title" style="font-size:12px; font-weight:700; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; text-overflow:ellipsis; line-height:1.35;">
-                            ${ch.title}
-                          </div>
-                        </div>
-                        <div style="text-align:right; flex-shrink:0;">
-                          ${tri.step !== "read" ? `<div style="font-family:var(--font-mono); font-size:11.5px; font-weight:900; color:${isCur ? '#60A5FA' : '#64748B'};">${ch.winRate || 90}%</div>` : ""}
-                          ${chIdeas.length > 0 ? `<div style="font-size:9.5px; color:${isCur ? '#94A3B8' : '#64748B'};">Notas: ${chIdeas.length}</div>` : ''}
-                        </div>
-                      </div>
-                    `;
-                  }).join("")}
+                <button class="btn-select-card filled" style="padding:10px 22px; font-size:13px; font-weight:800;" onclick="selectChallenge('${mesaActive.id}', true)">
+                  Elegir Reto #${mesaActive.id} e Ir a Solución →
+                </button>
+                <div>
+                  ${mesaIndex < mesaList.length - 1 ? `<button class="btn-pill-light" style="font-size:12px; font-weight:700; padding:6px 14px;" onclick="mesaGo('${mesaList[mesaIndex + 1].id}')">Reto #${mesaList[mesaIndex + 1].id} →</button>` : `<span style="width:80px; display:inline-block;"></span>`}
                 </div>
-              </aside>
-
-              <!-- Columna Derecha: Hoja de Deliberación Técnica Oficial (Formato PDF) -->
-              <section class="deliberation-sheet">
-                <!-- Metadatos y Acciones Superiores -->
-                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px; padding-bottom:14px; border-bottom:1.5px solid #0F172A; flex-wrap:wrap; gap:10px;">
-                  <div>
-                    <div style="display:flex; align-items:center; gap:6px; margin-bottom:6px;">
-                      ${categoryBadge(activeCh.category)}
-                      <span style="font-family:var(--font-mono); font-size:11px; font-weight:900; color:#0D1B35; letter-spacing:0.04em;">
-                        DESAFÍO #${activeCh.id}
-                      </span>
-                    </div>
-                    <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
-                      ${(Array.isArray(activeCh.ods) ? activeCh.ods : (activeCh.ods || "ODS 12").split(/,\s*/)).map(o => {
-                        const num = String(o).replace(/[^\d]/g, '');
-                        const odsObj = ODS_CATALOG.find(x => String(x.id) === num);
-                        return `<button class="btn-pill-light" style="padding:2px 8px; font-size:10px; font-weight:800; background:transparent; color:#334F7D; border:1px solid var(--border-light); cursor:pointer; display:inline-flex; align-items:center; gap:4px;" onclick="openImpactDetailModal('ods', ${num || 12})" title="Ver por qué y cómo cumple este ODS">${odsObj && odsObj.icon ? `<svg width="10" height="10" viewBox="0 0 12 12" fill="${odsObj.color}">${odsObj.icon}</svg>` : ''}${o}</button>`;
-                      }).join("")}
-                    </div>
-                    <div style="font-size:11px; font-family:var(--font-mono); color:#475569; font-weight:700;">
-                      VIABILIDAD ESTIMADA: ${activeCh.winRate || 90}%
-                    </div>
-                    ${(() => {
-                      const isSat = (activeCh.compDensity || "").toLowerCase().includes("alta") || (activeCh.winRate && activeCh.winRate < 86);
-                      return `
-                        <div style="display:flex; align-items:center; gap:8px; margin-top:4px;">
-                          <span style="font-size:10px; font-weight:800; padding:2px 7px; border-radius:4px; letter-spacing:0.03em; background:transparent; color:#64748B; border:1px solid var(--border-light); font-family:var(--font-mono);">
-                            ${isSat ? 'ALTA CONCURRENCIA' : 'NICHO TÉCNICO'}
-                          </span>
-                          <span style="font-size:11px; color:#64748B;">
-                            ${isSat ? 'Exige ≥2 capas tecnológicas para superar la saturación de sedes.' : 'Baja rivalidad de sedes: ventaja competitiva directa si la factibilidad es sólida.'}
-                          </span>
-                        </div>
-                      `;
-                    })()}
-                  </div>
-
-                  <div style="display:flex; align-items:center; gap:6px;">
-                    <button class="btn-pill-light" style="font-size:11.5px; padding:5px 12px;" onclick="openEditChallengeModal('${activeCh.id}')" title="Modificar título, demanda u ODS">
-                      ${SVG.edit} Editar Reto
-                    </button>
-                    <button class="btn-select-card ${isSelected ? 'filled' : 'outline'}" style="padding:6px 14px; font-size:12px; font-weight:700;" onclick="selectChallenge('${activeCh.id}', ${isSelected ? 'true' : 'false'})">
-                      ${isSelected ? 'Reto Seleccionado' : 'Elegir para Desarrollar'}
-                    </button>
-                    <button class="btn-pill-ghost" style="font-size:11px; padding:5px 10px; color:#DC2626;" onclick="deleteChallenge('${activeCh.id}')" title="Descartar del radar">
-                      ${SVG.close}
-                    </button>
-                  </div>
-                </div>
-
-                <!-- FASE ACTUAL DEL TRIBUNAL: acción embudo / votación / decisión -->
-                ${(() => {
-                  const disp = funnelStateOf(activeCh.id);
-                  const discarded = isTeamDiscarded(activeCh.id);
-                  const myDisc = personDisposition(activeCh.id) === "discard";
-                  const discN = discardCount(activeCh.id);
-                  const resN = reserveCount(activeCh.id);
-                  const votes = tri.votes[activeCh.id] || [];
-                  const voteTally = Object.entries(tri.votes).filter(([id, v]) => v.length).map(([id, v]) => ({ id, n: v.length, who: v }));
-
-                  if (tri.step === "discard") {
-                    const quedan = list.filter(c => !isTeamDiscarded(c.id)).length;
-                    return `
-                      <div class="tribunal-action-strip" style="margin-bottom:18px;">
-                        <div class="tribunal-action-info">
-                          <strong>${discarded ? "DESCARTADO POR EL EQUIPO" : disp === "keep" ? "ME INTERESA" : myDisc ? "TU VOZ: DESCARTAR" : "EN ESPERA"}</strong>
-                          <span>${discarded
-                            ? `Salió del embudo por consenso de ${discN || 2} voces. Quedan ${quedan - 1} de ${list.length}.`
-                            : resN ? `Hay ${resN} RESERVA${resN > 1 ? "S" : ""} activa${resN > 1 ? "S" : ""}: escuchen el caso (2 min) antes de descartar. Quedan ${quedan} de ${list.length}.`
-                            : myDisc
-                              ? discN >= 2
-                                ? `${discN} voces piden descartarlo. Quedan ${quedan} de ${list.length}.`
-                                : ` Esperando 1 voz más para descartarlo en consenso. Quedan ${quedan} de ${list.length}.`
-                              : ` Embudo: quedan ${quedan} de ${list.length} retos. Segundo clic = tu voz vuelve a "en espera".`}</span>
-                        </div>
-                        <div class="tribunal-action-btns">
-                          ${discarded ? "" : `
-                            ${discN >= 2
-                              ? `<button class="trib-btn on-keep" onclick="discardChallengeTogether('${activeCh.id}')" title="Califica el descarte para todo el equipo">Descartarlo juntos (${discN})</button>`
-                              : `<button class="trib-btn ${disp === "keep" ? "on-keep" : ""}" onclick="setChallengeDisposition('${activeCh.id}','keep')">Me interesa</button>
-                                 <button class="trib-btn ${myDisc ? "on-discard" : ""}" onclick="setChallengeDisposition('${activeCh.id}','discard')">Descartar</button>`}
-                            <button class="trib-btn ${resN ? "on-keep" : ""}" onclick="setChallengeReserve('${activeCh.id}')" title="${resN ? "Retira tu reserva" : "Una voz puede frenar el descarte y pedir 2 min de escucha"}">RESERVA${resN ? ` (${resN})` : ""}</button>`}
-                        </div>
-                      </div>
-                    `;
-                  }
-                  if (tri.step === "vote") {
-                    const me = _me();
-                    const mine = votes.filter(v => v === me).length;
-                    return `
-                      <div class="tribunal-action-strip" style="margin-bottom:18px;">
-                        <div class="tribunal-action-info">
-                          <strong>${discarded ? "NO PASÓ EL EMBUDO" : hasAnyKeep(activeCh.id) ? "VOTACIÓN" : "NO PASÓ EL EMBUDO"}</strong>
-                          <span>${discarded
-                            ? "Este reto quedó descartado por el equipo; no entra a votación."
-                            : hasAnyKeep(activeCh.id)
-                              ? `Puntos: ${votes.length} del equipo. Tienes ${mine} de 3 puestos — clic para dar un punto; al llegar a 3, otro clic los quita todos.`
-                              : 'Este reto no recibió ningún "Me interesa"; en la votación solo cuentan los que pasaron el embudo.'}</span>
-                          ${votes.length ? `<div class="vote-owner-list">${votes.map(v => `<span class="vote-owner-chip" style="color:${_userColor(v)};"><span style="width:7px; height:7px; border-radius:50%; background:${_userColor(v)}; display:inline-block;"></span>${v}</span>`).join("")}</div>` : ""}
-                        </div>
-                        ${!discarded && hasAnyKeep(activeCh.id) ? `<button class="trib-btn ${mine > 0 ? "on-keep" : ""}" onclick="toggleChallengeVote('${activeCh.id}')">${mine > 0 ? `Quitar puntos (${mine}/3)` : "+ Dar 1 punto"}</button>` : ""}
-                      </div>
-                    `;
-                  }
-                  if (tri.step === "decide") {
-                    const tally = voteTally.sort((a, b) => b.n - a.n);
-                    return `
-                      <div class="tribunal-action-strip" style="margin-bottom:18px;">
-                        <div class="tribunal-action-info">
-                          <strong>DECISIÓN FINAL</strong>
-                          <span>Resultado del embudo + votación: ${tally.length ? tally.map(t2 => `#${t2.id} (${t2.n} pts)`).join(" · ") : "sin votos registrados"}.</span>
-                        </div>
-                        <div class="tribunal-action-btns">
-                          ${state.challenge_id !== activeCh.id ? `<button class="trib-btn on-keep" onclick="selectChallenge('${activeCh.id}', false)">Elegir Reto #${activeCh.id}</button>` : `<span class="hold-chosen">Reto #${activeCh.id} está elegido. Continúa al Taller de Solución.</span>`}
-                        </div>
-                      </div>
-                    `;
-                  }
-                  return ""; // fase lectura: sin strip extra
-                })()}
-
-                <!-- Título Oficial -->
-                <h2 style="font-size:27px; font-weight:900; color:#0D1B35; line-height:1.22; margin:2px 0 6px 0; letter-spacing:-0.02em;">
-                  ${activeCh.title}
-                </h2>
-                <div style="font-size:11px; font-family:var(--font-mono); color:#94A3B8; letter-spacing:0.04em; margin-bottom:20px;">
-                  RETO OFICIAL DEL COMITÉ · LÉELO COMPLETO ANTES DE DELIBERAR
-                </div>
-
-                <!-- 01. Demanda Oficial del Comité -->
-                <div style="margin-bottom:22px;">
-                  <div class="delib-section-title">01. DEMANDA OFICIAL DEL COMITÉ EVALUADOR</div>
-                  ${activeCh.imageUrl ? `
-                    <div style="background:#0F172A; border:1px solid #334155; border-radius:8px; padding:12px; margin-bottom:16px;">
-                      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                        <span style="font-size:11px; font-weight:800; color:#94A3B8; text-transform:uppercase; letter-spacing:0.04em;">
-                          Documento Visual de Convocatoria (Fuente Oficial)
-                        </span>
-                        <button class="btn-pill-light" style="font-size:10.5px; padding:3px 10px; background:rgba(255,255,255,0.1); color:#fff; border-color:rgba(255,255,255,0.2);" onclick="openLightbox('${activeCh.imageUrl}')">
-                          Ampliar en Alta Definición
-                        </button>
-                      </div>
-                      <img src="${activeCh.imageUrl}" alt="Cartel Convocatoria Reto ${activeCh.id}" class="delib-image-preview" style="max-height:480px; width:100%; object-fit:contain; border-radius:6px; cursor:zoom-in;" onclick="openLightbox('${activeCh.imageUrl}')">
-                    </div>
-                  ` : ""}
-                  <div style="background:#F8FAFC; border:1px solid #E2E8F0; padding:12px 16px; border-radius:6px; font-size:13px; color:#1E293B; line-height:1.6;">
-                    ${activeCh.officialExpectation || 'Demanda técnica oficial anunciada por el comité.'}
-                  </div>
-                </div>
-
-                <!-- 02. La Propuesta en Palabras Simples -->
-                <div class="delib-section">
-                  <div class="delib-section-title">02. LA PROPUESTA DEL MOTOR, EN PALABRAS SIMPLES</div>
-                  
-                  <div style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:6px; padding:14px 16px; margin-bottom:12px;">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap; gap:8px;">
-                      <div style="font-size:11px; font-weight:800; color:#0F172A; text-transform:uppercase; letter-spacing:0.04em;">
-                        Lo que harías, explicado sin jerga (Tesis 100 Pts Rúbrica)
-                      </div>
-                      <button class="btn-pill-light" style="font-size:11px; font-weight:700; color:#0866F5; border:1px solid var(--border-light); background:var(--bg-subtle); padding:4px 12px; border-radius:4px; cursor:pointer; display:inline-flex; align-items:center; gap:5px;" onclick="openAIThesisFormulatorModal('${activeCh.id}')">
-                        ${SVG.spark} IA Copilot / Prompts de Razonamiento
-                      </button>
-                    </div>
-                    <p style="font-size:13px; color:#0F172A; font-weight:600; line-height:1.55; margin:0;">
-                      ${activeCh.wowProposal || 'Presiona "IA Copilot / Prompts de Razonamiento" para estructurar la solución.'}
-                    </p>
-                  </div>
-
-                  ${activeCh.nicaraguaAdaptation ? `
-                    <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:6px; padding:12px 14px; margin-bottom:12px; font-size:12px; line-height:1.5; color:#334155;">
-                      <strong style="color:#0F172A; font-size:11px; text-transform:uppercase;">Factibilidad & Despliegue Territorial:</strong> ${activeCh.nicaraguaAdaptation}
-                    </div>
-                  ` : ""}
-
-                  ${(activeCh.winnerPattern || activeCh.precedent) ? `
-                    <div style="font-size:11.5px; color:#64748B; font-family:var(--font-mono); margin-bottom:10px;">
-                      <strong>Precedente Histórico:</strong> ${activeCh.winnerPattern || activeCh.precedent}
-                    </div>
-                  ` : ""}
-                </div>
-
-                <!-- Ángulo ganador (fase de lectura): sugerencias del motor basado en ganadores -->
-                ${(() => {
-                  if (tri.step !== "read") return "";
-                  const ang = winnerAngleFor(activeCh);
-                  return `
-                    <div class="winner-angle-box winner-angle-inline">
-                      <div class="delib-section-title" style="margin-bottom:8px;">ÁNGULO GANADOR · MOTOR 2019–2026 · <span class="wa-score">${ang.score}/100</span></div>
-                      <ul class="winner-angle-list">${ang.bullets.map(b => `<li>${b}</li>`).join("")}</ul>
-                    </div>
-                  `;
-                })()}
-
-                <!-- 03. Deliberación y Lluvia de Ideas del Equipo -->
-                <div class="delib-section">
-                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                    <div class="delib-section-title" style="margin-bottom:0;">03. APUNTES Y DELIBERACIÓN DEL EQUIPO (${ideas.length})</div>
-                    <span style="font-size:11px; color:#64748B;">Guardado automático colaborativo</span>
-                  </div>
-
-                  <div id="challenge-ideas-list-${activeCh.id}" style="display:flex; flex-direction:column; gap:6px; margin-bottom:12px;">
-                    ${ideas.length === 0 ? `
-                      <div style="font-size:12px; color:#94A3B8; font-style:italic; padding:6px 0;">No hay notas del equipo para este reto. Escribe la primera abajo.</div>
-                    ` : ideas.map(idea => {
-                      const others = state.challenges.filter(c => c.id !== activeCh.id);
-                      return `
-                      <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:6px; padding:8px 12px; font-size:12px; display:flex; justify-content:space-between; align-items:center; gap:8px; ${idea.merged_to ? 'opacity:0.62;' : ''}">
-                        <div>
-                          <strong style="color:${_userColor(idea.author)}; font-size:11px; margin-right:6px; display:inline-flex; align-items:center; gap:4px;">
-                            <span style="width:8px; height:8px; border-radius:50%; background:${_userColor(idea.author)}; display:inline-block; flex-shrink:0;"></span>${idea.author || 'Equipo'}:
-                          </strong>
-                          <span style="color:#1E293B;">${idea.text}</span>
-                          ${idea.merged_to ? `<span style="font-size:10px; font-family:var(--font-mono); color:#0866F5; border:1px solid rgba(8,102,245,0.25); border-radius:4px; padding:1px 6px; margin-left:6px; white-space:nowrap;">fusionada → #${idea.merged_to}</span>` : ""}
-                        </div>
-                        <div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">
-                          ${idea.merged_to ? `
-                            <button style="border:none; background:none; color:#0866F5; cursor:pointer; font-size:10.5px; font-weight:700; padding:0 4px;" onclick="unmergeChallengeIdea('${activeCh.id}', '${idea.id}')" title="Traer la nota de vuelta">↺</button>
-                          ` : others.length ? `
-                            <select style="border:1px solid #CBD5E1; border-radius:4px; font-size:10.5px; padding:2px 4px; color:#475569; max-width:150px;" onchange="if(this.value) mergeChallengeIdea('${activeCh.id}', '${idea.id}', this.value)">
-                              <option value="">Fusionar ↗</option>
-                              ${others.map(c => `<option value="${c.id}">#${c.id} ${(c.title || '').slice(0, 28)}</option>`).join("")}
-                            </select>
-                          ` : ""}
-                          <button style="border:none; background:none; color:#94A3B8; cursor:pointer; font-size:13px; padding:0 4px;" onclick="deleteChallengeIdea('${activeCh.id}', '${idea.id}')" title="Eliminar nota">${SVG.close}</button>
-                        </div>
-                      </div>
-                    `; }).join("")}
-                  </div>
-
-                  <!-- Input para agregar nueva nota -->
-                  <div style="display:flex; gap:8px;">
-                    <input type="text" id="new-idea-input-${activeCh.id}" placeholder="Escribe un punto clave, pro o contra para este reto..." 
-                           style="flex:1; border:1px solid #CBD5E1; border-radius:6px; padding:8px 12px; font-size:12px;"
-                           onkeydown="if(event.key==='Enter') addChallengeIdea('${activeCh.id}')">
-                    <button class="btn-select-card filled" style="padding:6px 16px; font-size:11.5px; font-weight:700;" onclick="addChallengeIdea('${activeCh.id}')">
-                      + Agregar Nota
-                    </button>
-                  </div>
-                </div>
-
-                <!-- Barra de Navegación y Decisión Final -->
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:28px; padding-top:18px; border-top:1px solid #E2E8F0; flex-wrap:wrap; gap:10px;">
-                  <div>
-                    ${prevCh ? `
-                      <button class="btn-pill-light" style="font-size:12px; font-weight:700; padding:6px 14px;" 
-                              onclick="state.active_deliberation_challenge_id='${prevCh.id}'; renderTab('challenges');">
-                        ← Reto #${prevCh.id}
-                      </button>
-                    ` : '<span style="width:80px;"></span>'}
-                  </div>
-
-                  <div style="display:flex; gap:8px;">
-                    <button class="btn-select-card filled" style="padding:10px 22px; font-size:13px; font-weight:800;" onclick="selectChallenge('${activeCh.id}', true)">
-                      Elegir Reto #${activeCh.id} e Ir a Solución →
-                    </button>
-                  </div>
-
-                  <div>
-                    ${nextCh ? `
-                      <button class="btn-pill-light" style="font-size:12px; font-weight:700; padding:6px 14px;" 
-                              onclick="state.active_deliberation_challenge_id='${nextCh.id}'; renderTab('challenges');">
-                        Reto #${nextCh.id} →
-                      </button>
-                    ` : '<span style="width:80px;"></span>'}
-                  </div>
-                </div>
-              </section>
-               ${tri.step === 'read' && activeCh ? `
-                 <aside class="winner-rail">
-                   <div class="delib-section-title" style="margin-bottom:8px;">ÁNGULO GANADOR · <span class="wa-score">${winnerAngleFor(activeCh).score}/100</span></div>
-                   <ul class="winner-angle-list">${winnerAngleFor(activeCh).bullets.map(b => `<li>${b}</li>`).join("")}</ul>
-                 </aside>
-               ` : ""}
-            </div>
-          `;
-        })()}
+              </div>
+            </section>
+          </div>
+        ` : `
+          <div style="padding:30px; text-align:center; color:#64748B;">No hay retos en esta categoría.</div>
+        `}
       `}
     </div>
   `;
