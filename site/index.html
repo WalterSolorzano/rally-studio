@@ -4,28 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Telemetría & Monitoreo Territorial | Demostración</title>
-  <link rel="stylesheet" href="../brand/tokens.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="navbar">
     <div class="logo-area">
-      <!-- Icono SVG propio del proyecto -->
-      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-      </svg>
+      <div class="brand-logo">
+        <span class="brand-slash">//</span><span class="brand-rally">RALLY</span><span class="brand-studio">STUDIO</span>
+      </div>
+      <div class="brand-divider"></div>
       <div>
-        <h1 class="nav-title">RALLY STUDIO · MONITOR TERRITORIAL</h1>
-        <p class="nav-subtitle">Red de Telemetría Hiperlocal en Tiempo Real <span class="badge-sim">[TELEMETRÍA EN VIVO]</span></p>
+        <h1 class="nav-title">MONITOR TERRITORIAL</h1>
+        <p class="nav-subtitle">Red de Telemetría Hiperlocal en Tiempo Real</p>
       </div>
     </div>
-    <div class="status-badge">
-      <span class="live-dot"></span> RED LoRaWAN ACTIVA (15 NODOS)
+    <div class="tactical-status-pill">
+      <span class="status-dot"></span>
+      <span class="status-text">red lorawan activa (15 nodos)</span>
     </div>
   </header>
 
   <main class="grid-container">
-    <!-- Fila 1: Indicadores Críticos -->
+    <!-- Fila 1: Indicadores Críticos (Cardless Banner) -->
     <section class="stat-banner">
       <div class="stat-col">
         <span class="stat-label">Nivel de Alerta Cuenca</span>
@@ -53,12 +57,11 @@
     <section class="panel-left">
       <h2 class="section-title">Comportamiento Hidrométrico Últimas 12 Horas</h2>
       <div class="chart-container">
-        <!-- SVG reactivo con diseño sobrio y técnico -->
         <svg class="telemetry-chart" viewBox="0 0 600 220">
-          <line x1="50" y1="20" x2="580" y2="20" stroke="#eee" stroke-dasharray="4"/>
-          <line x1="50" y1="70" x2="580" y2="70" stroke="#eee" stroke-dasharray="4"/>
-          <line x1="50" y1="120" x2="580" y2="120" stroke="#eee" stroke-dasharray="4"/>
-          <line x1="50" y1="170" x2="580" y2="170" stroke="#eee"/>
+          <line x1="50" y1="20" x2="580" y2="20" stroke="#E2E8F0" stroke-dasharray="4"/>
+          <line x1="50" y1="70" x2="580" y2="70" stroke="#E2E8F0" stroke-dasharray="4"/>
+          <line x1="50" y1="120" x2="580" y2="120" stroke="#E2E8F0" stroke-dasharray="4"/>
+          <line x1="50" y1="170" x2="580" y2="170" stroke="#E2E8F0"/>
           
           <!-- Eje Y -->
           <text x="15" y="25" class="axis-txt">2.5m (Crítico)</text>
@@ -67,13 +70,13 @@
           <text x="15" y="175" class="axis-txt">0.0m</text>
 
           <!-- Curva de telemetria -->
-          <polyline fill="none" stroke="var(--color-primary, #1d45b9)" stroke-width="3"
+          <polyline fill="none" stroke="#0866F5" stroke-width="2.5"
             points="50,160 100,155 150,148 200,140 250,115 300,95 350,105 400,120 450,135 500,130 550,122 580,118" />
           
           <!-- Puntos sensores -->
-          <circle cx="300" cy="95" r="5" fill="var(--color-accent, #e3953d)"/>
-          <text x="310" y="90" class="point-txt">Pico 1.62m (14:32h)</text>
-          <circle cx="580" cy="118" r="5" fill="var(--color-primary, #1d45b9)"/>
+          <circle cx="300" cy="95" r="4.5" fill="#D97706"/>
+          <text x="312" y="92" class="point-txt">Pico 1.62m (14:32h)</text>
+          <circle cx="580" cy="118" r="4.5" fill="#0866F5"/>
         </svg>
       </div>
       <div class="telemetry-footer">
@@ -87,36 +90,44 @@
       <h2 class="section-title">Nodos de Monitoreo Territorial</h2>
       <div class="node-list">
         <div class="node-row">
-          <span class="node-dot dot-active"></span>
           <div class="node-info">
             <span class="node-name">NODO-01 · Puente Río El Chiquito</span>
             <span class="node-telemetry">Nivel: 1.18m | Bat: 99% | RSSI: -84 dBm</span>
           </div>
-          <span class="node-tag">ESTABLE</span>
+          <span class="tactical-status-pill">
+            <span class="status-dot"></span>
+            <span class="status-text">estable</span>
+          </span>
         </div>
         <div class="node-row">
-          <span class="node-dot dot-active"></span>
           <div class="node-info">
             <span class="node-name">NODO-02 · Vado Barrio Los Pescadores</span>
             <span class="node-telemetry">Nivel: 1.42m | Bat: 96% | RSSI: -91 dBm</span>
           </div>
-          <span class="node-tag tag-warn">ALERTA 1</span>
+          <span class="tactical-status-pill">
+            <span class="status-dot dot-alert"></span>
+            <span class="status-text">alerta 1</span>
+          </span>
         </div>
         <div class="node-row">
-          <span class="node-dot dot-active"></span>
           <div class="node-info">
             <span class="node-name">NODO-03 · Colector Pluvial Central</span>
             <span class="node-telemetry">Nivel: 0.85m | Bat: 100% | RSSI: -78 dBm</span>
           </div>
-          <span class="node-tag">ESTABLE</span>
+          <span class="tactical-status-pill">
+            <span class="status-dot"></span>
+            <span class="status-text">estable</span>
+          </span>
         </div>
         <div class="node-row">
-          <span class="node-dot dot-active"></span>
           <div class="node-info">
             <span class="node-name">NODO-04 · Desembocadura Lago Xolotlán</span>
             <span class="node-telemetry">Nivel: 0.92m | Bat: 94% | RSSI: -88 dBm</span>
           </div>
-          <span class="node-tag">ESTABLE</span>
+          <span class="tactical-status-pill">
+            <span class="status-dot"></span>
+            <span class="status-text">estable</span>
+          </span>
         </div>
       </div>
     </section>

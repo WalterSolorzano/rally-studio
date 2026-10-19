@@ -23,3 +23,8 @@ budget/screenshots/*.jpg
 # Secrets
 *.key
 *.pem
+
+# IA gratis local (FreeLLMAPI): clave unificada y app portable
+scripts/freellmapi.key
+tools/freellmapi/
+*.blockmap

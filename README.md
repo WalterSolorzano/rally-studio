@@ -111,11 +111,44 @@ Inicia el servicio autónomo local (Dashboard + Telemetría + Compilador Word):
 python scripts/rally_service.py
 ```
 
+En Windows hay un lanzador desacoplado (sobrevive al cierre de la consola y escribe su registro en `%TEMP%\rally_service.log`):
+
+```powershell
+# Doble clic en "Iniciar Rally.bat", o:
+powershell -ExecutionPolicy Bypass -File .\iniciar_rally.ps1
+```
+
 Abre en tu navegador:
 - **ERP Workbench Oficial:** `http://localhost:8000/`
 - **Prototipo Territorial para Video:** `http://localhost:8000/site/index.html`
 - **Telemetría en Vivo:** `http://localhost:8000/api/telemetry`
 - **API Rúbricas Oficiales:** `http://localhost:8000/api/rubric?type=nacional` o `?type=latam`
+
+---
+
+## 🤖 IA Gratis Local (Opcional, Recomendado)
+
+El OCR por IA visual, el botón **Pulir** y el copiloto automático funcionan mejor con un endpoint de IA. La vía gratuita recomendada es **[FreeLLMAPI](https://github.com/tashfeenahmed/freellmapi)**: ~34 proveedores gratis (Gemini, Groq, Cerebras, Mistral, OpenRouter, Cloudflare, Cohere, NVIDIA...) detrás de **un solo endpoint OpenAI-compatible**, con routing y failover.
+
+Rally Studio trae el instalador automatizado (baja la última Release, **verifica el sha256 publicado** y extrae la app portable sin permisos de administrador):
+
+```powershell
+# App portable → %LOCALAPPDATA%\Programs\FreeLLMAPI
+powershell -ExecutionPolicy Bypass -File .\scripts\setup_ia_gratis.ps1
+
+# O el instalador oficial con asistente (-Silencioso para /S)
+powershell -ExecutionPolicy Bypass -File .\scripts\setup_ia_gratis.ps1 -Modo instalador
+```
+
+Configuración en 3 pasos:
+
+1. Abre FreeLLMAPI y copia tu **unified key** (`freellm-...`).
+2. Guárdala en `scripts\freellmapi.key` (una línea; el `.gitignore` ya excluye `*.key`).
+3. Ejecuta `.\Iniciar Rally.bat`: el lanzador detecta la IA, la arranca si está apagada y exporta por ti `RALLY_AI_URL=http://127.0.0.1:31415/v1` y `RALLY_AI_KEY`.
+
+Verifica el puente en `http://localhost:8000/api/ai/status`. Al re-escanear una imagen, el OCR debe responder `source:"ai"` con los retos ya jerarquizados (título, demanda, ODS, categoría).
+
+**Sin FreeLLMAPI no se rompe nada:** el OCR cae a EasyOCR local como red de seguridad, el copiloto usa la CLI de OpenCode si está instalada y, si no, quedan los chips de chats web gratis. Detalle completo del puente, la cascada de OCR y las variables de entorno en [`AUTO_IA.md`](AUTO_IA.md).
 
 ---
 

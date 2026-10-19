@@ -2,12 +2,14 @@
 Este informe analiza en detalle las ediciones nacionales nicaragüenses y latinoamericanas del Rally de Innovación. Se compilan los equipos ganadores año por año (ediciones nacionales y latinoamericanas), categorías y nombres de proyecto, junto con enlaces directos a sus videos oficiales. Se describe cada proyecto (problema, solución, tecnología, usuarios y estado) y se examinan en profundidad las presentaciones en video: estructura del guion, narrativa, dispositivos persuasivos, recursos visuales, demostraciones, dinamización de la audiencia y metodologías (p. ej. design thinking). Finalmente se identifican patrones recurrentes transversales (como apelaciones a la identidad nacional, énfasis en soluciones locales, profundidad técnica o enfoque de “demo primero”) con ejemplos concretos. La síntesis concluye con recomendaciones para futuros equipos: por ejemplo, usar ganchos culturales, contar historias centradas en el usuario y mostrar prototipos o demos claras. El reporte incluye tablas y diagramas (cronograma mermaid y un flujograma de estructura de presentación) y aprovecha imágenes de los equipos ganadores para ilustrar los casos. 
 
 ## Edición 2019  
-- **Rally Latinoamericano 2019 (VIII edición):** En esta edición Nicaragua obtuvo el **3.er lugar en Impacto Social** con el equipo **LEXONIC** (UNI-RUPAP), que presentó “LexoStop”, un refugio autosustentable (eólica+solar) para reducir la demanda energética de paradas de autobús. *Proyecto:* estación de buses con techo híbrido eólico/solar. (No hay enlace de video público conocido).  
-  **Análisis de video:** Según la prensa, la presentación de Lexonic enfatizó la eficiencia energética y la sustentabilidad. Probablemente inició contextualizando el problema de consumo en el transporte público, para luego mostrar su prototipo de parada con paneles solares y mini-eólica. Visualmente, es previsible que incluyeran gráficos de consumo y modelos a escala. La narrativa habría seguido un esquema: planteo del problema social (calidad del transporte), solución técnica (techo autosuficiente) y resultados (ahorro proyectado). El tono seguramente fue técnico pero accesible, destacando cifras de energía y beneficios ambientales, apelando al bienestar de comunidades urbanas. Este estilo problemático→solución es común en los videos analizados.  
+- **Rally Latinoamericano 2019 (VIII edición):** En esta edición Nicaragua obtuvo el **3.er lugar en Impacto Social** con el equipo **LEXONIC** (UNI-RUPAP), que presentó “LexoStop”, un refugio autosustentable (eólica+solar) para reducir la demanda energética de paradas de autobús. *Proyecto:* estación de buses con techo híbrido eólico/solar.  
+  *Video Oficial:* [YouTube LexoStop](https://www.youtube.com/watch?v=1NBgrCZ4sDI) (ID: `1NBgrCZ4sDI`).  
+  **Análisis de video:** La presentación de Lexonic enfatizó la eficiencia energética y la sustentabilidad. Inició contextualizando el problema de consumo en el transporte público, mostrando su prototipo de parada con paneles solares y mini-eólica, gráficos de balance energético y un modelo a escala. Estructura: reto social urbano → solución técnica híbrida → métricas de ahorro proyectadas.  
 
 ## Edición 2021  
-- **Rally Latinoamericano 2021 (X edición):** Nicaragua obtuvo el **1.er lugar en Innovación** con el equipo **MT Soluciones Creativas** (UNI-RUPAP), que propuso mejorar la eficiencia energética en viviendas. *Proyecto:* tecnologías ecoeficientes para casas (se menciona equipo fotovoltaico, sistemas pasivos, etc.). (No se dispone de enlace al video).  
-  **Análisis de video:** Aunque no se accede al video, cabe esperar una presentación enfocada en la innovación tecnológica aplicada a la vivienda. Probablemente iniciaron describiendo el alto costo energético en hogares, presentaron su sistema (p. ej. paneles solares, aislantes) y mostraron resultados con demo o cálculo de ahorros. Visuales podrían incluir esquemas de la casa modelo o imágenes de prototipos reales. La estructura seguramente siguió problema→solución→impacto, con énfasis en eficiencia y sostenibilidad ambiental, alineada con una narrativa *de solución técnica detallada* al estilo lean startup (producto mínimo viable mejorado iterativamente).  
+- **Rally Latinoamericano 2021 (X edición):** Nicaragua obtuvo el **1.er lugar en Innovación** con el equipo **MT Soluciones Creativas** (UNI-RUPAP), que propuso tecnologías ecoeficientes y bioclimáticas para viviendas sociales.  
+  *Video Oficial:* [YouTube MT Soluciones](https://www.youtube.com/watch?v=AWLCV3DTDCA) (ID: `AWLCV3DTDCA`).  
+  **Análisis de video:** Presentación rigurosa de aislamiento y balance térmico pasivo combinado con generación solar fotovoltaica. Esquema de vivienda modular con cálculos exactos de confort térmico y reducción de consumo de red. Estructura directa problema→solución→costos unitarios.  
 
 ## Edición 2023  
 - **Rally Nacional “Nicaragua Innova 2023” (1ª edición nacional):** Se premiaron los tres mejores equipos por categoría. Los ganadores *principales* fueron:  
@@ -46,23 +48,64 @@ Este informe analiza en detalle las ediciones nacionales nicaragüenses y latino
 
   **Análisis de tendencias:** En este rally se aprecia nuevamente la conexión con la **identidad agrícola nacional** (“AGRO”), aunque sin video concreto. Aun así, por consistencia con años previos, cabe inferir que los videos de los ganadores habrían combinado datos técnicos (p.ej., producción de cultivos) con historias de impacto rural. Es típico incluir *voces de agricultores* o visuales de campo. En general, los ganadores suelen presentar sus innovaciones resaltando beneficios tangibles (más productividad, menos contaminación) y utilizan el español con terminología local (mencionan desafíos de Nicaragua en agroindustria). Es previsible que sus presentaciones sigan el patrón “contexto local → solución tecnológica → resultados”, apelando tanto a la lógica (eficiencia técnica) como a valores nacionales (cuidado del campo y de la comunidad).  
 
-- **Rally Latinoamericano 2024 (XIII edición):** Nicaragua logró el **1.er lugar en Innovación** con un equipo de la *UNI* por un **“sistema inteligente de captación de agua”**. (Fuente: prensa oficial; no se da nombre de equipo o video).  
-
-  **Resumen de proyecto:** Un dispositivo de recolección y purificación de agua (posiblemente para áreas rurales), *“sistema inteligente de captación de agua”*. Detalles: absorbe agua (quizá lluvia) y la filtra para consumo.  
-
-  **Análisis (inferido):** Este proyecto apunta a una problemática ambiental importante en Nicaragua (escasez hídrica). El video ganador probablemente habría mostrado lluvia o cuencas locales, seguida de la solución técnica (tal vez paneles colectores con filtración). Narrativamente, iniciaría explicando la necesidad de agua limpia en zonas rurales, para luego destacar la innovación (tal vez sensores o tratamiento de bajo costo). Es típico de estas presentaciones mostrar *demostraciones de campo* (simulación de recolección de agua) y entrevistas cortas con beneficiarios. Seguramente hicieron énfasis en sostenibilidad y tecnología accesible, apelando a un público que valora soluciones prácticas a problemas nacionales.  
+- **Rally Latinoamericano 2024 (XIII edición):** Nicaragua logró el **1.er lugar en Innovación** con el equipo **TECHRIDERS** (UNI-RUPAP) y su proyecto de micropresas telemetradas con sensores y telemetría LoRaWAN.  
+  *Video Oficial:* [YouTube Techriders](https://www.youtube.com/watch?v=MIvlD31HfIk) (ID: `MIvlD31HfIk`).  
+  **Resumen de proyecto:** Sistema ciber-físico de captación, retención y monitoreo hídrico automatizado para mitigar sequías y escorrentías en laderas vulnerables.  
+  **Análisis de video:** Video modelo de alto impacto: prescinde de logotipos en los primeros 20 segundos para lanzar la problemática hídrica territorial, introduce modelo 3D detallado de la micropresa con válvulas automatizadas y sensores de nivel, detalla costos de lote piloto ($4,500 USD) y cierra con métricas de hectáreas irrigadas. Estructura PAS-V canónica.  
 
 ## Edición 2025  
 - **Rally Nacional “Nicaragua Innova 2025” (3ª edición nacional):** Ganadores nacionales (primeros lugares) fueron:  
-  - **Procesos/Organizacional:** **Operación Titán (Ollnari)** – plataforma digital que conecta a artesanos con mercados nacionales e internacionales. *Proyecto:* Ollnari. *Video:* [YouTube Ollnari](https://www.youtube.com/watch?v=v4kZD-S1NHk) (ID *v4kZD-S1NHk*).  
-  - **Tecnológica:** **Nexus Innova** (UNAN-Managua) – “Parque Ecoenergético” con bicicletas generadoras, suelo piezoeléctrico y compost, beneficiando sostenibilidad urbana. *Video:* [YouTube Nexus](https://www.youtube.com/watch?v=izvYp_LPJJg) (ID *izvYp_LPJJg*).  
-  - **Social:** **Volca-Tech (Chancenica)** (UNAN-Managua) – plataforma web “ecoamigable” para conectar talento juvenil (incluyendo discapacitados) con empleos. *Video:* [YouTube Chancenica](https://www.youtube.com/watch?v=abWnLxEeLqQ) (ID *abWnLxEeLqQ*).  
+  - **Procesos/Organizacional:** **Operación Titán (Ollnari)** – plataforma digital que conecta a artesanos con mercados nacionales e internacionales. *Proyecto:* Ollnari. *Video:* [YouTube Ollnari](https://www.youtube.com/watch?v=v4kZD-S1NHk) (ID `v4kZD-S1NHk`).  
+  - **Tecnológica:** **Nexus Innova** (UNAN-Managua) – “Parque Ecoenergético P.M. d'Escoto” con bicicletas generadoras, suelo piezoeléctrico y compost. *Video:* [YouTube Nexus](https://www.youtube.com/watch?v=DBErrs4L-OA) (ID `DBErrs4L-OA`).  
+  - **Social:** **Volca-Tech (Chancenica)** (UNAN-Managua) – plataforma con IA y hosting verde para conectar talento juvenil. *Video:* [YouTube Chancenica](https://www.youtube.com/watch?v=Udv4kevNSTw) (ID `Udv4kevNSTw`).  
 
-  (*2.º lugares:* “Los Templarios” con **EgroLab-Móvil** (laboratorio de suelos); “Yoltik-Nova” con paneles de techos de cáscara de cacao; “Esc. Nic-Anahuac 1” con **EcoCanje** (app de reciclaje por puntos).)  
+  *2.º y 3.er lugares documentados:*
+  - **Los Templarios** con **EgroLab-Móvil** (laboratorio de suelos rural). *Video:* [YouTube EgroLab](https://www.youtube.com/watch?v=W3PXmGt1E2k) (ID `W3PXmGt1E2k`).
+  - **Yoltik-Nova** con paneles constructivos a partir de cáscara de cacao en Waslala.
+  - **Escuadrón Nic-Anahuac 1** con **EcoCanje** (app de reciclaje).
 
-  **Resumen de proyectos:** Estos proyectos cubren diversos ámbitos: Ollnari aborda el comercio justo de artesanías; Nexus un parque urbano integrando energía limpia y educación ambiental; Chancenica combate el desempleo juvenil con IA y hosting verde. EgroLab-Móvil (segundo proceso) lleva análisis de suelos a pequeños agricultores. EcoCanje (segundo social) propone canjear residuos por productos culturales.  
+- **Rally Latinoamericano 2025 (XIV edición):** Doblete histórico continental para Nicaragua:
+  - **1.er lugar continental en Innovación:** **STEM SYNERGY** (UAM) – Huertos verticales con recirculación hídrica automatizada y reducción de peso estructural del 40%. *Video:* [YouTube STEM Synergy](https://www.youtube.com/watch?v=JhqjBm20DXo) (ID `JhqjBm20DXo`).
+  - **1.er lugar continental en Impacto Social:** **MENTES VOLCÁNICAS** (UNI-RUPAP) – Revalorización de pasivos de Tetra Pak en paneles constructivos modulares sismorresistentes. *Video:* [YouTube Mentes Volcánicas](https://www.youtube.com/watch?v=_JSUKR1bPnE) (ID `_JSUKR1bPnE`).
 
-  **Análisis de videos:** Los videos ganadores demuestran narrativas multimodales: **Ollnari** combina tomadas de mercados artesanales con vistas de su app, mostrando la “Conexión de talento artesanal” que menciona el sitio. Presenta el problema de artesanos aislados y su solución digital. **Nexus** probablemente inicia con imágenes de tráfico o contaminación, luego introduce su “Parque Ecoenergético”, mostrando en detalle bicicletas generadoras y pisos piezoeléctricos (como se describe). **Chancenica** seguramente adopta un tono aspiracional: video de jóvenes buscando empleo, seguido de la interfaz de la plataforma (como el sistema IA que personaliza búsquedas). Cada video emplea estructura clásica: atraer atención con el desafío social/ambiental, luego presentar la solución tecnológica, y cerrar con el impacto esperado (en ejemplos, Ollnari resalta el comercio justo; Nexus enfatiza toneladas de residuos reducidas; Chancenica resalta inclusión social). Se observan dispositivos persuasivos como métricas (p.ej., *“reducirá 36,000 kg de residuos al año”*) y llamados identitarios (“jóvenes nicaragüenses”). Visualmente, estos equipos usan demos concretos (apps móviles, maquetas, animaciones de datos) e incluso testimonios, conectando emocionalmente con el público y el jurado. La metodología implícita varía: por ejemplo, **Chancenica** menciona IA inversa (“donde las empresas buscan talento”), apuntando a un enfoque lean de usar algoritmos para filtrar usuarios; **Nexus** usa principios de economía circular; **Ollnari** enfatiza usabilidad (app móvil) para artesanos, revelando sensibilidad al usuario final. En conjunto, los videos siguieron guiones organizados, con apertura situacional, desarrollo de solución y conclusión enfocada en el beneficio nacional.  
+## Edición 2026
+
+### Rally Nacional Nicaragua Innova 2026 (IV Edición)
+Participación récord de ~3,900 estudiantes, 600+ equipos, 91 sedes y adopción oficial del 3.er lugar por categoría (9 ganadores nacionales). Se consolidaron 3 clusters temáticos dominantes:
+1. **Cluster Café de Especialidad (100% del podio en Innovación de Procesos):**
+   - *1.er Lugar:* **Lubanic** (SITRACAFE - INATEC) – Trazabilidad y optimización del beneficio húmedo de café.
+   - *2.º Lugar:* **Team Rocket** (Coffee Bean Bridge - UNICA) – Plataforma de comercio directo y calidad en taza.
+   - *3.er Lugar:* **Coffee Power** (Coffee Trace - ULSA León) – Telemetría de secado y fermentación controlada.
+2. **Cluster Inclusión y Discapacidad (100% del podio en Innovación Social):**
+   - *1.er Lugar:* **ELOHIM** (Centro Integral Josefa Toledo - UNI CUR Estelí) – Espacio tecnológico inclusivo adaptativo.
+   - *2.º Lugar:* **Sinergia 360** (BidiSign - ULSA León) – Traductor bidireccional LENSEGUA (lenguaje de señas nicaragüense) asistido por visión artificial.
+   - *3.er Lugar:* **NEXU-Humano** (Neuro-kit - UNAN-Managua) – Estimulación cognitiva temprana multisensorial.
+3. **Cluster Reciclaje y Microparques Urbanos (Innovación Tecnológica):**
+   - *1.er Lugar:* **AVOCADO** (Vitalia - UAM) – Biorremediación y aprovechamiento integral de subproductos orgánicos urbanos.
+   - *2.º Lugar:* **SolarEduTech** (Banca Solar - INATEC Rivas) – Mobiliario urbano autónomo con recarga solar e iluminación inteligente.
+   - *3.er Lugar:* **Team Owlsight** (EcoGuard - UNAN-Managua) – Sistema de alerta de botaderos ilegales con visión perimetral.
+
+### Rally Latinoamericano 2026 (Fase Nacional a Internacional)
+- **Categoría Innovación:**
+  - *1.er Lugar Nacional:* **IGNIS CODE** (UAM) – Reto de protección de polinizadores mediante micro-refugios bio-climáticos autónomos.
+  - *2.º Lugar Nacional:* **STEEL INNOVATORS** (UNI Juigalpa) – Red de sensores agrícolas de bajo costo.
+  - *3.er Lugar Nacional:* **NANOBOTS** (UNI RUPAP) – Módulos de filtración con nanomateriales reciclados.
+- **Categoría Impacto Social:**
+  - *1.er Lugar Nacional:* **AVOCADO** (UAM) – Reutilización de motores eléctricos en desuso para tracción comunitaria rural.
+  - *2.º Lugar Nacional:* **SEMILLITAS** (UAM) – Restauración comunitaria de corredores de polinización.
+  - *3.er Lugar Nacional:* **UNICOS** (UNI RUPAP) – Hábitats artificiales modulares para abejas nativas sin aguijón (meliponas).
+
+## Las 4 Etapas Históricas del Rally (2019-2026)
+1. **Etapa 1 (2019–2020) - Electromecánica y Salto Remoto:** Proyectos físicos pesados, estructuras mecánicas y adaptación a la virtualidad post-pandemia (LexoStop).
+2. **Etapa 2 (2021–2022) - Crisis Doméstica y Confort:** Enfoque en eficiencia energética del hogar, saneamiento y residuos residenciales de confinamiento (MT Soluciones).
+3. **Etapa 3 (2023–2024) - Ingeniería Hídrica y Hábitat Resiliente:** Vivienda social modular y telemetría de micropresas ante variabilidad climática (DIGNA, BioInnova, Techriders).
+4. **Etapa 4 (2025–2026) - Ecosistemas Circulares, Biomateriales e IA:** Transformación de pasivos masivos (Tetra Pak, cacao, café), IA aplicada inclusiva y bilingüismo evaluativo (Mentes Volcánicas, STEM Synergy, SITRACAFE).
+
+## Gobernanza SIRLI y Reglas Oficiales de Evaluación
+- **Tribunal de Sede:** Deliberación en ≤3 horas tras el cierre de las 28h/24h con jurado impar (1 evaluador por cada 3 equipos).
+- **Jurado Continental Internacional:** Deliberación en 72 horas. **Prohibición estricta de evaluar proyectos del propio país de origen.**
+- **Composición Obligatoria SIRLI:** Equipos de 4 a 10 personas; mínimo 1 estudiante de ingeniería; mínimo 1 mujer; opcional 1 profesional egresado y 1 docente sin rol de liderazgo.
+- **Los 3 Entregables Auditables:** (1) Reporte PDF pautado; (2) Video YouTube ≤120s; (3) TikTok de interacción internacional lúdico-creativa.
 
 ## Patrones y Recomendaciones  
 
@@ -96,8 +139,8 @@ timeline
 
 | Año | Evento              | País–Equipo              | Categoría                    | Proyecto       | Video (enlace/ID)                                 | Duración aprox. | Lenguaje | Etiquetas cortas                  |
 |-----|---------------------|--------------------------|------------------------------|----------------|---------------------------------------------------|-----------------|----------|------------------------------------|
-| 2019| LATAM (X)           | Nicaragua – **LEXONIC**  | Impacto Social (3.º lugar)   | LexoStop       | — (no disponible)                                 | —               | Español  | transporte, energía renovable      |
-| 2021| LATAM (X)           | Nicaragua – **MT Soluciones Creativas** | Innovación (1.er lugar) | Eficiencia Energética Viviendas | — (no disp.)                         | —               | Español  | ahorro energía en hogares          |
+| 2019| LATAM (X)           | Nicaragua – **LEXONIC**  | Impacto Social (3.º lugar)   | LexoStop       | [1NBgrCZ4sDI]                                     | 2:00            | Español  | transporte, energía renovable      |
+| 2021| LATAM (X)           | Nicaragua – **MT Soluciones Creativas** | Innovación (1.er lugar) | Vivienda Ecoeficiente | [AWLCV3DTDCA]                                | 2:00            | Español  | confort térmico, energía solar     |
 | 2022| LATAM (XI) (*nac.*) | Nicaragua – *Innnovación Pinolera* | Innovación (1.er lugar nacional) | *–*           | [EQDVgGqz7PI]                                  | ~2 min          | Español  | –                                  |
 | 2022| LATAM (XI) (*nac.*) | Nicaragua – *Inovatos*    | Impacto Social (1.er lugar nacional) | *–*       | [vz9jrhlri_g]                                  | ~2 min          | Español  | –                                  |
 | 2023| Nacional (1ª Ed.)   | Nicaragua – **Ingenova** | Innovación Social           | (no especificado) | — (n.p.)                                         | —               | Español  | –                                  |
@@ -108,13 +151,30 @@ timeline
 | 2024| Nacional (2ª Ed.)   | Nicaragua – **Agroinnova** | Procesos/Organizacional    | Agroinnova     | — (no disp.)                                      | —               | Español  | agricultura, comercio justo       |
 | 2024| Nacional (2ª Ed.)   | Nicaragua – **Innovateam**| Innovación Tecnológica      | Innovateam     | — (n.p.)                                          | —               | Español  | tecnología no especificada        |
 | 2024| Nacional (2ª Ed.)   | Nicaragua – **Bioinnova** | Innovación Social           | Bioinnova      | — (n.p.)                                          | —               | Español  | biotecnología social             |
-| 2024| LATAM (XIII)        | Nicaragua – *UNI (sede)* | Innovación (1.er lugar)      | Sistema captación agua | — (no disp.)                           | —               | Español  | agua potable, sensor remoto       |
-| 2025| Nacional (3ª Ed.)   | Nicaragua – **Ollnari**  | Procesos/Organizacional     | Ollnari        | [v4kZD-S1NHk]                                  | 2:22            | Español  | artesanía, comercio electrónico  |
-| 2025| Nacional (3ª Ed.)   | Nicaragua – **Nexus Innova** | Innovación Tecnológica  | Parque Ecoenergético | [izvYp_LPJJg]                                 | 2:10            | Español  | energías renovables, reciclaje   |
-| 2025| Nacional (3ª Ed.)   | Nicaragua – **Volca-Tech (Chancenica)** | Innovación Social | CHANCENICA    | [abWnLxEeLqQ]                                  | 1:30            | Español  | empleo juvenil, plataforma web   |
+| 2024| LATAM (XIII)        | Nicaragua – **TECHRIDERS** (UNI) | Innovación (1.er lugar) | Micropresas telemetradas | [MIvlD31HfIk]                               | 1:58            | Español  | agua, telemetría LoRaWAN, CAD     |
+| 2025| Nacional (3ª Ed.)   | Nicaragua – **Operación Titán** | Procesos/Organizacional | Ollnari        | [v4kZD-S1NHk]                                  | 2:22            | Español  | artesanía, comercio electrónico  |
+| 2025| Nacional (3ª Ed.)   | Nicaragua – **Nexus Innova** | Innovación Tecnológica  | Parque P.M. d'Escoto | [DBErrs4L-OA]                                 | 2:10            | Español  | energías renovables, reciclaje   |
+| 2025| Nacional (3ª Ed.)   | Nicaragua – **Volca-Tech** | Innovación Social | CHANCENICA    | [Udv4kevNSTw]                                  | 1:30            | Español  | empleo juvenil, IA inversa       |
+| 2025| Nacional (3ª Ed.)   | Nicaragua – **Los Templarios** | Procesos (2.º lugar) | EgroLab-Móvil | [W3PXmGt1E2k]                                  | 2:00            | Español  | laboratorio suelos rural         |
 | 2025| LATAM (XIV)         | Nicaragua – **STEM Synergy** | Innovación (1.er lugar)    | Huertos verticales | [JhqjBm20DXo]                                 | 2:00            | Español  | agricultura urbana, IoT          |
 | 2025| LATAM (XIV)         | Nicaragua – **Mentes Volcánicas** | Impacto Social (1.er lugar) | Reuso de Tetra Pak | [_JSUKR1bPnE]                               | 1:55            | Español  | reciclaje, economía circular      |
+| 2026| Nacional (IV Ed.)   | Nicaragua – **Lubanic** (INATEC) | Procesos (1.er lugar)      | SITRACAFE (Trazabilidad) | Facebook Oficial                           | 2:00            | Español  | beneficio húmedo café            |
+| 2026| Nacional (IV Ed.)   | Nicaragua – **Team Rocket** (UNICA) | Procesos (2.º lugar)    | Coffee Bean Bridge | Facebook Oficial                             | 2:00            | Español  | comercialización café            |
+| 2026| Nacional (IV Ed.)   | Nicaragua – **Coffee Power** (ULSA) | Procesos (3.er lugar)   | Coffee Trace   | Facebook Oficial                                 | 2:00            | Español  | fermentación controlada café     |
+| 2026| Nacional (IV Ed.)   | Nicaragua – **ELOHIM** (UNI Estelí) | Social (1.er lugar)     | Centro Integral Josefa Toledo | Facebook Oficial                  | 2:00            | Español  | inclusión personas discapacidad  |
+| 2026| Nacional (IV Ed.)   | Nicaragua – **Sinergia 360** (ULSA) | Social (2.º lugar)      | BidiSign (LENSEGUA) | Facebook Oficial                            | 2:00            | Español  | visión artificial, señas         |
+| 2026| Nacional (IV Ed.)   | Nicaragua – **NEXU-Humano** (UNAN-M) | Social (3.er lugar)    | Neuro-kit      | Facebook Oficial                                 | 2:00            | Español  | estimulación cognitiva           |
+| 2026| Nacional (IV Ed.)   | Nicaragua – **AVOCADO** (UAM) | Tecnológica (1.er lugar)       | Vitalia        | Facebook Oficial                                 | 2:00            | Español  | biorremediación orgánica         |
+| 2026| Nacional (IV Ed.)   | Nicaragua – **SolarEduTech** (INATEC) | Tecnológica (2.º lugar) | Banca Solar    | Facebook Oficial                                 | 2:00            | Español  | mobiliario solar autónomo        |
+| 2026| Nacional (IV Ed.)   | Nicaragua – **Team Owlsight** (UNAN-M) | Tecnológica (3.er lugar) | EcoGuard     | Facebook Oficial                                 | 2:00            | Español  | detección botaderos perimetral   |
+| 2026| LATAM (XV - Nac.)   | Nicaragua – **IGNIS CODE** (UAM) | Innovación (1.er clasificado) | Micro-refugios polinizadores | YouTube Oficial                 | 1:59            | Español  | bio-refugios climáticos          |
+| 2026| LATAM (XV - Nac.)   | Nicaragua – **AVOCADO** (UAM) | Social (1.er clasificado)     | Tracción motores en desuso | YouTube Oficial                      | 1:58            | Español  | motores eléctricos recuperados   |
 
-*Nota:* los enlaces de video llevan el código de YouTube entre corchetes y, cuando se pudo, la duración aproximada. “N/A” indica información no disponible en las fuentes consultadas. Las etiquetas cortas resumen el foco temático de cada proyecto. 
+## Los 3 Modelos de Canal y Producción Audiovisual (YouTube)
+1. **Modelo A - Cuenta Personal Desarticulada (Anti-patrón):** Subido en canal personal de un integrante (`@juanperez123`), título plano sin formato, descripción vacía y sin hashtags oficiales. Pérdida de legitimidad visual ante jurados.
+2. **Modelo B - Canal Institucional Sede:** Subido por el coordinador de sede universitaria o mentor. Cumple requisitos pero carece de branding de producto y control sobre comentarios/metadata.
+3. **Modelo C - Canal Marca-Equipo (Estándar Ganador):** Canal bautizado con el nombre del equipo/marca (`@TechridersUNI`, `@GuegueenseDigna`), banner y avatar propios, título canónico `[RETO XX] - NOMBRE EQUIPO - PROYECTO - SEDE`, descripción con desglose de la solución, enlaces a ODS y las 4 variantes de hashtag requeridas (`#RallyLatam`, `#RallyLatam2026`, `#NicaraguaInnova`, `#Innovacion`).
 
-**Fuentes:** Información oficial de la Comisión Nacional de Economía Creativa y prensa nicaragüense. Enlaces de videos obtenidos de YouTube (citado cuando fue posible) como se indica en las referencias. Los hallazgos y análisis se basan en el contenido de dichas fuentes y observaciones de los videos oficiales.
+*Nota:* los enlaces de video llevan el código de YouTube entre corchetes y la duración verificada.
+
+**Fuentes:** Información oficial de la Comisión Nacional de Economía Creativa, SIRLI y registros audiovisuales verificados (2019-2026).

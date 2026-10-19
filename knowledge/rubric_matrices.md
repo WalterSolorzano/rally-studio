@@ -178,3 +178,26 @@ Documento normativo del motor de auditoría e IA de **Rally Studio**. Define las
 2. **Cero Dependencia de Subsidios Locales**: El modelo económico debe formularse en USD con retornos B2B/B2G autosostenibles que un decano de México, Colombia o Argentina califique de factible.
 3. **Ponderación 30-20-20-20-10**: Aplicar la rúbrica oficial SIRLI (30% Innovación, 20% Impacto, 20% Prefactibilidad, 20% Viabilidad Técnica, 10% Pitch).
 4. **Formato**: Respetar límites estrictos de caracteres por sección (1250 / 1000 / 1500 caracteres con espacios).
+
+---
+
+## 5. Mapeo Temporal PAS-V del Video Pitch (120 Segundos / 240-270 Palabras)
+
+Cadencia oral óptima: **135 palabras por minuto** (máximo 270 palabras en guion total). Superar 270 palabras causa dicción ininteligible o descalificación por tiempo (>120s).
+
+| Acto Narrativo | Intervalo | Palabras Guía | Criterios Oficiales Activados en la Rúbrica | Contenido Crítico Obligatorio |
+| :--- | :--- | :--- | :--- | :--- |
+| **Acto I: Problema** | `0:00 - 0:20` | ~45 palabras | **Impacto Social + Calidad de Presentación** | Gancho estadístico contundente + rostro humano y territorio nombrado. *Prohibido gastar segundos en logotipos o saludo del equipo.* |
+| **Acto II: Acción & Solución** | `0:20 - 1:00` | ~90 palabras | **Grado de Innovación + Viabilidad Técnica** | Bautismo de la solución (Marca) + mecanismo físico/químico inédito + despiece o render CAD 3D en pantalla. |
+| **Acto III: Factibilidad** | `1:00 - 1:35` | ~75 palabras | **Prefactibilidad Económica, Social y Ambiental** | Costo unitario, ROI estimado, modelo de ingresos y revalorización de residuo/pasivo. *(Causa #1 de eliminación si se omite).* |
+| **Acto IV: Verificación** | `1:35 - 2:00` | ~55 palabras | **Integración de los 5 Criterios + Cierre Memorable** | Métricas proyectadas cuantificadas, alineación ODS, escalabilidad regional y frase de cierre memorable. |
+
+---
+
+## 6. Gobernanza Oficial SIRLI y Guardrails de Descalificación
+
+1. **Tribunal de Sede:** Deliberación en $\le 3$ horas tras el cierre de las 28h/24h con tribunal impar ($\ge 3$ jurados, 1 por cada 3 equipos).
+2. **Jurado Internacional:** Deliberación a 72 horas. **Incompatibilidad estricta: ningún jurado evalúa propuestas de su propio país.**
+3. **Composición de Equipo SIRLI:** 4 a 10 integrantes; mínimo 1 estudiante de ingeniería; mínimo 1 mujer; opcional 1 egresado y 1 docente sin rol de liderazgo ni vocería principal.
+4. **Alerta de Discrepancia Numérica:** Toda métrica enunciada en el video pitch (costo, beneficiarios, capacidad) debe coincidir con exactitud matemática con los datos del reporte PDF pautado y el Canvas.
+
