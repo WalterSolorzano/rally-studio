@@ -376,6 +376,8 @@ function getInitialState() {
 
     // Motor TTS elegido para la guía de locución
     voice_engine: "chatterbox",
+    // Preset de voz audible incluido en el proyecto
+    voice_preset: "proyecto",
 
     // Identidad cromática
     palette: {
@@ -8244,9 +8246,9 @@ Licencia: MIT.
 Por qué: acento latino, clonación zero-shot y control de emoción. En CPU tarda aproximadamente 7 veces el tiempo real; si hay GPU NVIDIA, úsala.
 
 PASOS
-1. Verifica Python 3.11, ffmpeg y al menos 4 GB libres. El modelo pesa cerca de 3 GB.
-2. Crea un entorno aislado: python -m venv .venv-voz
-3. Instala: pip install chatterbox-tts soundfile numpy torch torchaudio
+1. Verifica Python 3.11, ffmpeg y al menos 4 GB libres. El modelo pesa cerca de 3 GB. Si falta ffmpeg en Windows: winget install Gyan.FFmpeg (o descarga una build estática) y comprueba ffmpeg -version.
+2. Crea y activa un entorno aislado: python -m venv .venv-voz; en PowerShell: .venv-voz\Scripts\Activate.ps1
+3. Instala: python -m pip install --upgrade pip; pip install chatterbox-tts soundfile numpy torch torchaudio
 4. Descarga el finetune completo en una sola carpeta:
    huggingface-cli download ResembleAI/Chatterbox-Multilingual-es-mx-latam --local-dir models/latam
    Deben quedar t3_es_mx_latam.safetensors (2.14 GB), s3gen_v3.pt (1.06 GB), grapheme_mtl_merged_expanded_v1.json, ve.pt y conds.pt. Si falta alguno, bájalo del mismo repo con --include.
@@ -8361,36 +8363,79 @@ NO HAGAS
   }
 };
 
+const VOICE_PRESETS = {
+  proyecto: {
+    label: "Hidro Vigía · locución final",
+    short: "Locución del proyecto",
+    src: "/assets/voice/narration.mp4",
+    meta: "77.8 s · MP4 AAC · voz interna · énfasis 0.80 / ritmo 0.45 · semilla 7",
+    params: "exaggeration=0.8, cfg_weight=0.45, temperature=0.8, repetition_penalty=2.0, seed=7"
+  },
+  interna: {
+    label: "Voz interna · muestra completa",
+    short: "Voz interna estándar",
+    src: "/assets/voice/previews/chatterbox_interna.mp3",
+    meta: "62 s · MP3 64 kbps · voz de fábrica, sin clonar",
+    params: "exaggeration=0.8, cfg_weight=0.45, temperature=0.8, repetition_penalty=2.0, seed=7"
+  },
+  expresiva: {
+    label: "Voz interna · muestra expresiva",
+    short: "Voz interna expresiva",
+    src: "/assets/voice/previews/chatterbox_interna_e080_c045.mp3",
+    meta: "9 s · MP3 64 kbps · la variante más expresiva",
+    params: "exaggeration=0.8, cfg_weight=0.45, temperature=0.8, repetition_penalty=2.0, seed=7"
+  }
+};
+
+function getVoicePresetData() {
+  const select = document.getElementById("voice-preset-select");
+  return VOICE_PRESETS[(select && select.value) || state.voice_preset] || VOICE_PRESETS.proyecto;
+}
+
 function renderVoiceEnginePanel() {
-  const first = VOICE_ENGINE_OPTIONS.chatterbox;
   const selectedId = VOICE_ENGINE_OPTIONS[state.voice_engine] ? state.voice_engine : "chatterbox";
   const selected = VOICE_ENGINE_OPTIONS[selectedId];
   const options = Object.entries(VOICE_ENGINE_OPTIONS)
     .map(([id, data]) => `<option value="${id}" ${id === selectedId ? "selected" : ""}>${data.label}</option>`)
+    .join("");
+  const presetId = VOICE_PRESETS[state.voice_preset] ? state.voice_preset : "proyecto";
+  const preset = VOICE_PRESETS[presetId];
+  const presetOptions = Object.entries(VOICE_PRESETS)
+    .map(([id, data]) => `<option value="${id}" ${id === presetId ? "selected" : ""}>${data.label}</option>`)
     .join("");
 
   return `
     <section class="voice-engine" aria-labelledby="voice-engine-title">
       <div class="voice-engine-head">
         <div>
-          <h2 id="voice-engine-title">Motor de voz para la locución</h2>
-          <p>La voz que escuchaste es <strong>Chatterbox Multilingual es-MX/LatAm</strong>. Estas son muestras reales del motor; si te gustan, copia el prompt y pásaselo a tu IA para que lo instale. El entregable oficial sigue siendo MP4 con audio AAC.</p>
+          <h2 id="voice-engine-title">Motor y preset de voz</h2>
+          <p>Este proyecto ya incluye una locución real en <strong>Chatterbox Multilingual es-MX/LatAm</strong>. Escúchala, guárdala como preset y, si te gusta, instala el mismo motor con un clic. El entregable oficial es MP4 con audio AAC.</p>
         </div>
-        <span class="rubric-tag" id="voice-engine-tag">${selected.tag}</span>
+        <span class="rubric-tag">Preset incluido · MP4 AAC</span>
       </div>
 
-      <div class="voice-preview-grid">
-        <div class="voice-preview">
-          <div class="voice-preview-label">Voz interna · narración completa</div>
-          <audio controls preload="metadata" src="/assets/voice/previews/chatterbox_interna.mp3"></audio>
-          <div class="voice-preview-meta">62 s · MP3 64 kbps · voz de fábrica, sin clonar</div>
+      <div class="voice-preset">
+        <div class="voice-preset-copy">
+          <span class="voice-preview-label">Preset de voz</span>
+          <strong id="voice-preset-name">${preset.label}</strong>
+          <p id="voice-preset-meta">${preset.meta}</p>
         </div>
-        <div class="voice-preview">
-          <div class="voice-preview-label">Voz interna · énfasis 0.80 / ritmo 0.45</div>
-          <audio controls preload="metadata" src="/assets/voice/previews/chatterbox_interna_e080_c045.mp3"></audio>
-          <div class="voice-preview-meta">9 s · MP3 64 kbps · la variante más expresiva</div>
+        <div class="voice-preset-controls">
+          <label for="voice-preset-select">
+            <span>Escuchar preset</span>
+            <select id="voice-preset-select" onchange="updateVoicePresetUI()">${presetOptions}</select>
+          </label>
+          <button type="button" class="btn-primary" onclick="copyVoicePresetInstall()">Instalar todo con mi IA</button>
+          <button type="button" class="btn-secondary" onclick="downloadVoicePreset()">Descargar preset .json</button>
         </div>
+        <audio id="voice-preset-audio" controls preload="metadata" src="${preset.src}"></audio>
       </div>
+
+      <details class="voice-engine-details voice-own-voice">
+        <summary>¿Quieres poner tu propia voz? Tu IA te explica cómo</summary>
+        <p>Sí. Puedes clonar tu voz con 10–20 segundos de audio limpio, o afinar el modelo con varias muestras para un resultado más estable. La clonación es rápida; el entrenamiento fino requiere más audio y tiempo. Pídele a tu IA que te explique cuál te conviene y que ejecute los pasos contigo.</p>
+        <button type="button" class="btn-secondary" onclick="copyOwnVoiceGuide()">Copiar guía para usar mi voz</button>
+      </details>
 
       <div class="voice-engine-controls">
         <label for="voice-engine-select">
@@ -8400,6 +8445,8 @@ function renderVoiceEnginePanel() {
         <button type="button" class="btn-primary" onclick="copyVoiceEnginePrompt()">Copiar prompt para mi IA</button>
         <button type="button" class="btn-secondary" onclick="downloadVoiceEngineGuide()">Descargar guía .md</button>
       </div>
+
+      <div class="voice-engine-tagline"><span class="rubric-tag" id="voice-engine-tag">${selected.tag}</span></div>
 
       <div class="voice-engine-summary" id="voice-engine-summary">${selected.summary}</div>
       <p class="voice-engine-summary" style="margin-top:6px;">
@@ -8411,7 +8458,7 @@ function renderVoiceEnginePanel() {
         <pre id="voice-engine-prompt-preview">${escapeHtml(selected.prompt)}</pre>
       </details>
 
-      <p class="voice-engine-note">Las muestras son MP3 de vista previa. El archivo que se entrega al jurado es <strong>assets/voice/narration.mp4</strong> (MP4 con audio AAC, sin video).</p>
+      <p class="voice-engine-note">El preset del proyecto ya está generado y se reproduce aquí. Las otras dos muestras son MP3 de referencia. El archivo que se entrega al jurado es <strong>assets/voice/narration.mp4</strong> (MP4 con audio AAC, sin video). “Instalar todo” copia un prompt: la instalación la ejecuta tu IA en tu equipo.</p>
     </section>
   `;
 }
@@ -8437,6 +8484,156 @@ function updateVoiceEngineUI() {
   if (tag) tag.textContent = data.tag;
   if (link) link.href = data.url;
   if (prompt) prompt.textContent = data.prompt;
+}
+
+function updateVoicePresetUI() {
+  const data = getVoicePresetData();
+  const select = document.getElementById("voice-preset-select");
+  const name = document.getElementById("voice-preset-name");
+  const meta = document.getElementById("voice-preset-meta");
+  const audio = document.getElementById("voice-preset-audio");
+
+  if (select && state.voice_preset !== select.value) {
+    state.voice_preset = select.value;
+    saveState();
+  }
+  if (name) name.textContent = data.label;
+  if (meta) meta.textContent = data.meta;
+  if (audio && audio.getAttribute("src") !== data.src) {
+    audio.pause();
+    audio.setAttribute("src", data.src);
+    audio.load();
+  }
+}
+
+function buildVoicePresetInstallPrompt() {
+  const preset = getVoicePresetData();
+  return `Actúa como ingeniero de audio de este proyecto de Rally de Innovación.
+
+Quiero dejar instalado y reproducible el mismo preset de voz que ya trae el proyecto "${state.project_name || "actual"}".
+
+${VOICE_ENGINE_OPTIONS.chatterbox.prompt}
+
+PRESET EXACTO A REPRODUCIR
+- Voz: interna del finetune, sin audio_prompt_path; carga conds.pt del pack.
+- Parámetros: ${preset.params}.
+- Pausas: 0.75 s entre párrafos.
+- Master: -16 LUFS integrado, pico real -1.5 dBFS.
+- Referencia audible incluida: ${preset.src} (${preset.meta}).
+- Texto de referencia: script/narration.txt.
+- Entregable: assets/voice/narration.mp4 (MP4 AAC, sin video, mono, 48 kHz, 192 kbps, ≤120 s).
+
+Compara la referencia audible con tu resultado: mismo timbre, misma velocidad y pausas similares. Si no puedes igualar la voz interna, entrega el audio más cercano y documenta la diferencia.`;
+}
+
+function copyVoiceText(text, done, fail) {
+  const fallback = () => {
+    const area = document.createElement("textarea");
+    area.value = text;
+    area.setAttribute("readonly", "");
+    area.style.position = "fixed";
+    area.style.opacity = "0";
+    document.body.appendChild(area);
+    area.select();
+    let copied = false;
+    try { copied = document.execCommand("copy"); } catch (e) {}
+    area.remove();
+    copied ? done() : fail();
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(done).catch(fallback);
+  } else {
+    fallback();
+  }
+}
+
+function copyVoicePresetInstall() {
+  copyVoiceText(
+    buildVoicePresetInstallPrompt(),
+    () => showToast("Instalación completa copiada. Pégala en tu IA: instalará el motor y reproducirá este mismo preset."),
+    () => showToast("No se pudo copiar automáticamente. Descarga el preset .json y pásalo a tu IA.")
+  );
+}
+
+function buildOwnVoicePrompt() {
+  return `Actúa como ingeniero de audio y entrenador de voz para el proyecto "${state.project_name || "actual"}".
+
+OBJETIVO
+Explícame y ejecuta, paso a paso, cómo poner mi propia voz en la locución del proyecto. Quiero entender la diferencia entre clonar y entrenar, y elegir la ruta correcta según el tiempo y el equipo disponible.
+
+1. CONSENTIMIENTO Y LÍMITES
+- La voz debe ser mía o tener permiso escrito de la persona.
+- No imites voces de terceros, famosos ni menores.
+- Explícame qué se guarda, dónde y cómo borrarlo.
+
+2. GRABACIÓN
+- Para clonación zero-shot: 10–20 s limpios, una sola persona, sin música, eco ni ruido, 24 kHz o más, mono.
+- Para afinar el modelo: 5–30 min de audio con transcripciones exactas, misma micrófono y tono.
+- Dame un guion de grabación y una lista de verificación.
+
+3. LIMPIEZA
+- Normaliza a -16 LUFS, elimina silencios largos y revisa que no haya clipping.
+- Si hace falta, recomienda una herramienta local y explica el comando.
+
+4. CLONACIÓN CON CHATTERBOX (RÁPIDA)
+- Usa el finetune ResembleAI/Chatterbox-Multilingual-es-mx-latam y language_id="es".
+- Pasa mi muestra como audio_prompt_path.
+- Parámetros de partida: exaggeration=0.8, cfg_weight=0.45, temperature=0.8, repetition_penalty=2.0.
+- Genera una prueba corta y compárala con mi voz real.
+
+5. ENTRENAMIENTO O AFINADO (OPCIONAL, MÁS TRABAJO)
+- Explícame si de verdad hace falta afinar o si la clonación basta.
+- Si conviene, describe el dataset, las transcripciones, el tiempo estimado, los requisitos de GPU y cómo evaluar el resultado.
+- No prometas calidad de estudio sin datos suficientes.
+
+6. ENTREGABLE
+- Genera assets/voice/narration.mp4 (MP4 AAC, sin video, mono, 48 kHz, 192 kbps, ≤120 s).
+- Masteriza a -16 LUFS y pico real -1.5 dBFS.
+- Deja el texto en script/narration.txt y documenta la muestra usada.
+
+Empieza preguntándome qué ruta quiero: clonar rápido o entrenar. Luego guíame con comandos concretos para Windows.`;
+}
+
+function copyOwnVoiceGuide() {
+  copyVoiceText(
+    buildOwnVoicePrompt(),
+    () => showToast("Guía de voz propia copiada. Tu IA te explicará cómo grabarla, clonarla o entrenarla."),
+    () => showToast("No se pudo copiar automáticamente. Abre el prompt y cópialo a mano.")
+  );
+}
+
+function downloadVoicePreset() {
+  const preset = getVoicePresetData();
+  const slug = String(state.project_name || "proyecto")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "") || "proyecto";
+  const payload = {
+    name: preset.label,
+    project: state.project_name || "",
+    engine: "Chatterbox Multilingual V3 · finetune es-MX/LatAm",
+    model: "ResembleAI/Chatterbox-Multilingual-es-mx-latam",
+    license: "MIT",
+    voice: "interna (conds.pt, sin audio_prompt_path)",
+    params: preset.params,
+    sample: preset.src,
+    text_reference: "script/narration.txt",
+    deliverable: "assets/voice/narration.mp4",
+    format: "MP4 con audio AAC, sin video, mono, 48 kHz, 192 kbps, ≤120 s",
+    generated_at: new Date().toISOString()
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `preset_voz_${slug}.json`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  showToast("Preset descargado. Tu IA puede instalarlo y reproducirlo.");
 }
 
 function copyVoiceEnginePrompt() {
@@ -8473,7 +8670,7 @@ ${data.tag}
 
 ${data.summary.replace(/<[^>]+>/g, "")}
 
-El entregable oficial es \`assets/voice/narration.mp4\`: MP4 con audio AAC, sin video, mono, 48 kHz y máximo 120 segundos. Las muestras MP3 del panel son solo vista previa.
+El entregable oficial es \`assets/voice/narration.mp4\`: MP4 con audio AAC, sin video, mono, 48 kHz y máximo 120 segundos. El preset del proyecto ya está generado en ese archivo; las otras dos muestras del panel son MP3 de referencia.
 
 ---
 
