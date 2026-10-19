@@ -2938,3 +2938,20 @@ body.js-anim .reveal.is-visible {
     animation: riseOnly .65s var(--ease-out) both;
   }
 }
+
+@media screen {
+  .critical-empty {
+    grid-column: 1 / -1;
+    padding: 28px 0 8px;
+    border-top: 1px dashed var(--line-strong);
+    color: var(--muted);
+    font-size: 14px;
+    list-style: none;
+  }
+  .roster-empty {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 13px;
+  }
+}

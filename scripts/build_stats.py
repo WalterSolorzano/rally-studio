@@ -44,11 +44,18 @@ DELIVERABLE_LABELS = {
     "despacho": "Despacho",
 }
 PAUTADO_KEYS = ["problema", "solucion", "impacto", "innovacion", "prefactibilidad"]
+PAUTADO_LABELS = {
+    "problema": "Problema",
+    "solucion": "Solución",
+    "impacto": "Impacto",
+    "innovacion": "Innovación",
+    "prefactibilidad": "Prefactibilidad",
+}
 SCRIPT_KEYS = ["acto1", "acto2", "acto3", "acto4"]
 AVATARS = [
-    "assets/stats/avatar-camila.svg",
-    "assets/stats/avatar-marcos.svg",
-    "assets/stats/avatar-sofia.svg",
+    "assets/stats/avatar-1.svg",
+    "assets/stats/avatar-2.svg",
+    "assets/stats/avatar-3.svg",
 ]
 ACCENTS = ["#0866F5", "#0284C7", "#1D4ED8"]
 
@@ -125,6 +132,31 @@ def clamp(value: float, low: float = 0, high: float = 100) -> float:
     return max(low, min(high, value))
 
 
+def detect_artifact_project(*texts: str) -> str:
+    """Read a project name from a document heading, never from a hardcoded name."""
+    for text in texts:
+        if not text:
+            continue
+        for line in text.splitlines():
+            line = line.strip()
+            if not line.startswith("#"):
+                continue
+            match = re.search(r"(?:--|—|–)\s*(.+?)\s*$", line)
+            if match:
+                return clean(match.group(1))
+            match = re.search(
+                r"^#\s+(?:Guion|Canvas|Proyecto|Dossier|Resumen)[^:—–-]*[:\-—–]\s*(.+)$",
+                line,
+                re.IGNORECASE,
+            )
+            if match:
+                return clean(match.group(1))
+        match = re.search(r"(?im)^\*\*Proyecto:\*\*\s*(.+)$", text)
+        if match:
+            return clean(match.group(1))
+    return ""
+
+
 def main(phase_override: str | None = None) -> None:
     state = read_json(STATE_PATH, {}) or {}
     brief = read_json(ROOT / "brief.json", {}) or {}
@@ -143,21 +175,19 @@ def main(phase_override: str | None = None) -> None:
     site_text = read_text(SITE_PATH)
     dossier_text = read_text(DOSSIER_PATH)
 
-    starters = " ".join([script_text, narration_text, canvas_text, site_text, dossier_text]).upper()
-    artifact_project = "HIDRO-VIGIA" if "HIDRO-VIGIA" in starters else ""
+    project_declared = clean(state.get("project_name"))
+    artifact_project = detect_artifact_project(script_text, canvas_text, dossier_text) if project_declared else ""
 
-    team_name = clean(state.get("team_name")) or "Equipo sin nombre"
-    project_name = clean(state.get("project_name")) or "Proyecto sin nombre"
+    team_name = clean(state.get("team_name")) or "Tu equipo"
+    project_name = project_declared or "Tu proyecto"
     university = clean(state.get("university")) or "Universidad sin registrar"
     city = clean(state.get("city")) or "Ciudad sin registrar"
     challenge_title = clean(state.get("challenge_title")) or "Reto sin registrar"
     challenge_id = clean(state.get("challenge_id"))
-    category = clean(state.get("category")) or "Categoría sin registrar"
-    rally_type = clean(state.get("rally_type")) or "latam"
-    duration_h = float(state.get("hours_total") or 0) or 28.0
+    category = clean(state.get("category")) or "Sin categoría"
+    rally_type = clean(state.get("rally_type")) or "general"
+    duration_h = float(state.get("hours_total") or 0)
     hours_remaining = float(state.get("hours_remaining") or 0)
-    if hours_remaining <= 0:
-        hours_remaining = max(0.0, duration_h - 6.5)
     elapsed_h = round(max(0.0, duration_h - hours_remaining), 1)
     elapsed_pct = pct(elapsed_h, duration_h)
 
@@ -171,6 +201,7 @@ def main(phase_override: str | None = None) -> None:
     done_keys = [k for k, v in deliverables.items() if clean((v or {}).get("status")).lower() in {"done", "completed"}]
     progress_keys = [k for k, v in deliverables.items() if clean((v or {}).get("status")).lower() in {"in_progress", "doing"}]
     deliverable_total = len(deliverables)
+    has_project_context = bool(project_declared or roster or deliverables)
 
     pautado = state.get("pautado") or {}
     pautado_sections = [k for k in PAUTADO_KEYS if len(clean(pautado.get(k))) > 0]
@@ -337,55 +368,111 @@ def main(phase_override: str | None = None) -> None:
     ]
     readiness = round(sum(part["points"] for part in readiness_parts))
 
-    # Critical gaps: what is actually open in the live session.
-    critical = [
-        {
-            "time": f"{len(state_budget)} / {len(budget)}",
+    identity_conflict = bool(project_declared and artifact_project) and artifact_project.casefold() != project_name.casefold()
+    budget_conflict = has_project_context and bool(budget) and len(state_budget) != len(budget)
+    claims_conflict = has_project_context and bool(claims) and len(state_claims) != len(claims)
+    team_gap = has_project_context and len(roster) < team_declared
+    brief_gap = has_project_context and not any(clean(brief.get(key)) for key in ("project_name", "team_name", "university", "city"))
+    budget_total = sum(float(row.get("total") or 0) for row in budget)
+
+    # Critical gaps: only what is actually open in the live session.
+    critical_all = []
+    if not state_budget:
+        budget_desc = f"La sesión tiene 0 filas de presupuesto."
+        if budget:
+            budget_desc += f" En disco hay {len(budget)} filas por USD {budget_total:,.0f}"
+            budget_desc += (
+                ", pero el material en disco pertenece a otra versión y no se mezcla."
+                if identity_conflict
+                else ", pero no están cargadas en la sesión."
+            )
+        critical_all.append({
+            "time": f"0 / {len(budget)}",
             "severity": "alta",
             "title": "Presupuesto sin filas en la sesión",
-            "desc": (
-                f"La sesión tiene {len(state_budget)} filas de presupuesto. "
-                f"En disco hay {len(budget)} filas por USD {sum(float(row.get('total') or 0) for row in budget):,.0f}, "
-                "pero el material pertenece a otro proyecto."
-            ),
+            "desc": budget_desc,
             "status": "abierto",
             "action": "Cargar o reemplazar el presupuesto de este proyecto.",
-        },
-        {
+        })
+
+    if len(script_acts) < 4:
+        script_desc = f"La sesión tiene {len(script_acts)} de 4 actos escritos."
+        if script_words:
+            script_desc += f" script.md tiene {script_words} palabras"
+            script_desc += (
+                ", pero el archivo en disco pertenece a otra versión."
+                if identity_conflict
+                else ", pero la sesión no las tiene cargadas."
+            )
+        critical_all.append({
             "time": f"{len(script_acts)} / 4",
             "severity": "alta",
             "title": "Guion sin actos",
-            "desc": (
-                f"La sesión tiene {len(script_acts)} de 4 actos escritos. "
-                f"El archivo script.md contiene {script_words} palabras, pero es de otro proyecto."
-            ),
+            "desc": script_desc,
             "status": "abierto",
-            "action": "Escribir los cuatro actos del guion y asignar el narrador.",
-        },
-        {
+            "action": "Escribir los actos que faltan y asignar el narrador.",
+        })
+
+    if len(pautado_sections) < 5:
+        missing_sections = [
+            PAUTADO_LABELS.get(key, key.title())
+            for key in PAUTADO_KEYS
+            if key not in pautado_sections
+        ]
+        critical_all.append({
             "time": f"{len(pautado_sections)} / 5",
             "severity": "media",
             "title": "Pautado a medias",
-            "desc": (
-                f"Faltan {5 - len(pautado_sections)} secciones: "
-                + ", ".join(k for k in PAUTADO_KEYS if k not in pautado_sections)
-                + "."
-            ),
+            "desc": f"Faltan {len(missing_sections)} secciones: {', '.join(missing_sections)}.",
             "status": "abierto",
-            "action": "Cerrar impacto, innovación y prefactibilidad.",
-        },
-        {
-            "time": f"{len(roster)} / {team_declared}",
+            "action": f"Cerrar {', '.join(missing_sections)}.",
+        })
+
+    if len(state_claims) < 3:
+        claims_desc = f"La sesión tiene {len(state_claims)} de 3 fuentes cargadas."
+        if claims:
+            claims_desc += f" En disco hay {len(claims)} claims con URL"
+            claims_desc += (
+                ", pero el material en disco pertenece a otra versión y no se mezcla."
+                if identity_conflict
+                else ", pero no están cargadas en la sesión."
+            )
+        critical_all.append({
+            "time": f"{len(state_claims)} / 3",
             "severity": "media",
-            "title": "Identidad partida",
-            "desc": (
-                f"La sesión dice {project_name}; el material en disco dice {artifact_project or 'otro proyecto'}. "
-                f"Además, hay {len(roster)} personas con nombre de {team_declared} declaradas."
-            ),
+            "title": "Fuentes sin cargar",
+            "desc": claims_desc,
             "status": "abierto",
-            "action": "Decidir qué proyecto es el vigente y alinear los archivos.",
-        },
-    ]
+            "action": "Cargar al menos tres fuentes con URL y año.",
+        })
+
+    if identity_conflict or team_gap:
+        identity_desc = []
+        if identity_conflict:
+            identity_desc.append(
+                "La sesión y los artefactos en disco no coinciden."
+            )
+        if team_gap:
+            identity_desc.append(
+                f"Hay {len(roster)} personas con nombre de {team_declared} declaradas."
+            )
+        critical_all.append({
+            "time": f"{len(roster)} / {team_declared}" if team_gap else "—",
+            "severity": "alta" if identity_conflict else "media",
+            "title": "Identidad y equipo" if (identity_conflict and team_gap) else "Identidad del proyecto" if identity_conflict else "Equipo incompleto",
+            "desc": " ".join(identity_desc),
+            "status": "abierto",
+            "action": (
+                "Decidir qué proyecto es el vigente y alinear los archivos."
+                if identity_conflict
+                else "Registrar a los integrantes que faltan o ajustar el número declarado."
+            ),
+        })
+
+    if not has_project_context:
+        critical_all = []
+    critical_all.sort(key=lambda item: 0 if item["severity"] == "alta" else 1)
+    critical = critical_all[:4]
 
     # Distribution of registered frentes, not invented hours.
     split_groups = [
@@ -406,66 +493,102 @@ def main(phase_override: str | None = None) -> None:
         if total_pct != 100:
             split[-1]["pct"] += 100 - total_pct
 
-    reto_done_at = None
+    reto_event = None
     for event in (deliverables.get("reto") or {}).get("history") or []:
         if clean(event.get("action")).lower().startswith("marcó terminado"):
-            reto_done_at = dt_from_ms(event.get("at"))
-    reto_done_label = hhmm(reto_done_at) if reto_done_at else "sin hora"
-    achievements = [
-        {
+            reto_event = event
+            break
+    reto_done_at = dt_from_ms(reto_event.get("at")) if reto_event else None
+    reto_done_label = hhmm(reto_done_at) if reto_done_at else ""
+    reto_done_name = clean(reto_event.get("name")) if reto_event else "El equipo"
+    solution_text = clean(state.get("solution_thesis")) or clean(state.get("solution_simple"))
+
+    achievements = []
+    if reto_done_at:
+        achievements.append({
             "icon": "shield",
             "title": "Reto cerrado",
-            "desc": f"Carlos marcó terminado el reto a las {reto_done_label}. Es el único entregable con estado done.",
-        },
-        {
+            "desc": f"{reto_done_name} marcó terminado el reto a las {reto_done_label}. {len(done_keys)} de {deliverable_total} entregables están cerrados.",
+        })
+    elif done_keys:
+        achievements.append({
+            "icon": "shield",
+            "title": "Entregables en marcha",
+            "desc": f"{len(done_keys)} de {deliverable_total} entregables están cerrados.",
+        })
+
+    if state.get("solution_approved") and solution_text:
+        achievements.append({
             "icon": "leaf",
             "title": "Solución aprobada",
-            "desc": f"La tesis de {project_name} está aprobada y el pautado ya tiene problema y solución.",
-        },
-        {
+            "desc": f"La tesis de {project_name} está aprobada y el pautado tiene {len(pautado_sections)} de 5 secciones.",
+        })
+
+    if pautado_sections:
+        missing = 5 - len(pautado_sections)
+        achievements.append({
             "icon": "spark",
             "title": "Pautado con base",
-            "desc": f"{len(pautado_sections)} de 5 secciones tienen texto; faltan las tres de cierre.",
-        },
-        {
+            "desc": (
+                f"{len(pautado_sections)} de 5 secciones tienen texto."
+                if missing <= 0
+                else f"{len(pautado_sections)} de 5 secciones tienen texto; faltan {missing}."
+            ),
+        })
+
+    if (claims or budget or shotlist) and has_project_context:
+        material_desc = f"{len(claims)} claims, {len(budget)} filas de presupuesto y {len(shotlist)} shots en disco."
+        material_desc += (
+            " Puede ser material de otra versión; no se mezcla."
+            if identity_conflict
+            else " Disponible para reutilizar."
+        )
+        achievements.append({
             "icon": "clock",
             "title": "Material en disco",
-            "desc": f"{len(claims)} claims, {len(budget)} filas de presupuesto y {len(shotlist)} shots. Etiquetado como material heredado.",
-        },
-        {
+            "desc": material_desc,
+        })
+
+    if roster:
+        achievements.append({
             "icon": "shield",
             "title": "Equipo registrado",
             "desc": f"{len(roster)} de {team_declared} integrantes tienen nombre y señal en la sesión.",
-        },
-    ]
+        })
 
-    conflicts = [
-        {
+    conflicts = []
+    if identity_conflict:
+        conflicts.append({
             "title": "Identidad del proyecto",
-            "detail": f"state.json: {project_name}. Artefactos en disco: {artifact_project or 'sin proyecto detectable'}.",
+            "detail": "La sesión y los artefactos en disco no coinciden. No se mezclan; revisa cuál es la versión vigente.",
             "severity": "alta",
-        },
-        {
+        })
+    if budget_conflict:
+        conflicts.append({
             "title": "Presupuesto",
-            "detail": f"state.json: {len(state_budget)} filas. budget/budget.json: {len(budget)} filas por USD {sum(float(row.get('total') or 0) for row in budget):,.0f}.",
+            "detail": f"state.json: {len(state_budget)} filas. budget/budget.json: {len(budget)} filas por USD {budget_total:,.0f}.",
             "severity": "alta",
-        },
-        {
+        })
+    if claims_conflict:
+        conflicts.append({
             "title": "Fuentes",
             "detail": f"state.json: {len(state_claims)} claims. research/claims.json: {len(claims)} claims con URL.",
             "severity": "alta",
-        },
-        {
+        })
+    if team_gap:
+        conflicts.append({
             "title": "Equipo",
             "detail": f"state.json declara {team_declared} integrantes; team_roster tiene {len(roster)}.",
             "severity": "media",
-        },
-        {
+        })
+    if brief_gap:
+        conflicts.append({
             "title": "Brief",
-            "detail": "brief.json está vacío; la identidad vive solo en state.json.",
+            "detail": "brief.json está incompleto; la identidad vive solo en state.json.",
             "severity": "media",
-        },
-    ]
+        })
+    if not has_project_context:
+        conflicts = []
 
     source_specs = [
         ("Sesión", STATE_PATH),
@@ -501,7 +624,17 @@ def main(phase_override: str | None = None) -> None:
         f"{len(pautado_sections)}/5 secciones de pautado y {len(critical)} frentes abiertos."
     )
 
-    phase = phase_override or ("final" if hours_remaining <= 0 else "t-1h" if hours_remaining <= 1 else "mid")
+    started = bool(state.get("rally_started"))
+    if phase_override:
+        phase = phase_override
+    elif not started:
+        phase = "idle"
+    elif hours_remaining <= 0:
+        phase = "final"
+    elif hours_remaining <= 1:
+        phase = "t-1h"
+    else:
+        phase = "mid"
     data = {
         "_meta": {
             "kind": "project_recap_generated",
@@ -551,7 +684,8 @@ def main(phase_override: str | None = None) -> None:
             "pautado_total": 5,
             "script_acts": len(script_acts),
             "script_total": 4,
-            "critical_count": len(critical),
+            "critical_count": len(critical_all),
+            "critical_shown": len(critical),
             "signals": len(signals),
             "readiness": readiness,
             "readiness_parts": readiness_parts,
@@ -569,19 +703,19 @@ def main(phase_override: str | None = None) -> None:
             "hours": hour_slots,
         },
         "critical": critical,
-        "mvp": {
-            "id": mvp["id"] if mvp else "",
-            "name": mvp["name"] if mvp else "Sin persona destacada",
-            "role": mvp["role"] if mvp else "Sin frentes registrados",
-            "avatar": mvp["avatar"] if mvp else "assets/stats/avatar-empty.svg",
-            "frentes": mvp["frentes"] if mvp else 0,
-            "signals": mvp["signals"] if mvp else 0,
-            "coverage": mvp["coverage"] if mvp else 0,
+        "mvp": None if not mvp else {
+            "id": mvp["id"],
+            "name": mvp["name"],
+            "role": mvp["role"],
+            "avatar": mvp["avatar"],
+            "frentes": mvp["frentes"],
+            "signals": mvp["signals"],
+            "coverage": mvp["coverage"],
             "badge": "MVP operativo",
             "reason": (
                 f"Asumió {mvp['frentes']} de los {deliverable_total} frentes registrados. "
                 "Es la mayor carga operativa, no una medida de valor personal."
-            ) if mvp else "Todavía no hay frentes asignados.",
+            ),
         },
         "people": people,
         "placeholders": placeholders,

@@ -25,8 +25,8 @@ El índice de preparación es una fórmula explícita:
 35% entregables + 20% pautado + 15% guion + 15% presupuesto + 10% fuentes + 5% guardrails
 ```
 
-Solo cuenta la sesión viva. El material de HIDRO-VIGIA que está en disco no se mezcla con
-AquaNica: se muestra como conflicto.
+Solo cuenta la sesión viva. El material de otra versión del proyecto que esté en disco no se
+mezcla con la sesión: se muestra como conflicto.
 
 ## Generación automática
 

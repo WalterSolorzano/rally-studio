@@ -3,7 +3,7 @@
     "kind": "project_recap_generated",
     "simulated": false,
     "schema_version": 2,
-    "generated_at": "2026-10-19T15:33:47-06:00",
+    "generated_at": "2026-10-19T16:18:17-06:00",
     "generator": "scripts/build_stats.py",
     "phase": "mid",
     "note": "Todos los números se derivan de state.json y de los archivos del proyecto. Los avatares son ilustrativos.",
@@ -50,7 +50,8 @@
     "pautado_total": 5,
     "script_acts": 0,
     "script_total": 4,
-    "critical_count": 4,
+    "critical_count": 5,
+    "critical_shown": 4,
     "signals": 11,
     "readiness": 13,
     "readiness_parts": [
@@ -373,7 +374,7 @@
       "time": "0 / 8",
       "severity": "alta",
       "title": "Presupuesto sin filas en la sesión",
-      "desc": "La sesión tiene 0 filas de presupuesto. En disco hay 8 filas por USD 4,450, pero el material pertenece a otro proyecto.",
+      "desc": "La sesión tiene 0 filas de presupuesto. En disco hay 8 filas por USD 4,450, pero el material en disco pertenece a otra versión y no se mezcla.",
       "status": "abierto",
       "action": "Cargar o reemplazar el presupuesto de este proyecto."
     },
@@ -381,32 +382,32 @@
       "time": "0 / 4",
       "severity": "alta",
       "title": "Guion sin actos",
-      "desc": "La sesión tiene 0 de 4 actos escritos. El archivo script.md contiene 572 palabras, pero es de otro proyecto.",
+      "desc": "La sesión tiene 0 de 4 actos escritos. script.md tiene 572 palabras, pero el archivo en disco pertenece a otra versión.",
       "status": "abierto",
-      "action": "Escribir los cuatro actos del guion y asignar el narrador."
+      "action": "Escribir los actos que faltan y asignar el narrador."
+    },
+    {
+      "time": "3 / 6",
+      "severity": "alta",
+      "title": "Identidad y equipo",
+      "desc": "La sesión y los artefactos en disco no coinciden. Hay 3 personas con nombre de 6 declaradas.",
+      "status": "abierto",
+      "action": "Decidir qué proyecto es el vigente y alinear los archivos."
     },
     {
       "time": "2 / 5",
       "severity": "media",
       "title": "Pautado a medias",
-      "desc": "Faltan 3 secciones: impacto, innovacion, prefactibilidad.",
+      "desc": "Faltan 3 secciones: Impacto, Innovación, Prefactibilidad.",
       "status": "abierto",
-      "action": "Cerrar impacto, innovación y prefactibilidad."
-    },
-    {
-      "time": "3 / 6",
-      "severity": "media",
-      "title": "Identidad partida",
-      "desc": "La sesión dice AquaNica; el material en disco dice HIDRO-VIGIA. Además, hay 3 personas con nombre de 6 declaradas.",
-      "status": "abierto",
-      "action": "Decidir qué proyecto es el vigente y alinear los archivos."
+      "action": "Cerrar Impacto, Innovación, Prefactibilidad."
     }
   ],
   "mvp": {
     "id": "maria-lopez",
     "name": "María López",
     "role": "Pautado y despacho",
-    "avatar": "assets/stats/avatar-camila.svg",
+    "avatar": "assets/stats/avatar-1.svg",
     "frentes": 3,
     "signals": 4,
     "coverage": 43,
@@ -419,7 +420,7 @@
       "name": "María López",
       "initials": "ML",
       "role": "Pautado y despacho",
-      "avatar": "assets/stats/avatar-camila.svg",
+      "avatar": "assets/stats/avatar-1.svg",
       "frentes": 3,
       "signals": 4,
       "coverage": 43,
@@ -433,7 +434,7 @@
       "name": "Ana Ruiz",
       "initials": "AR",
       "role": "Impacto y canvas",
-      "avatar": "assets/stats/avatar-sofia.svg",
+      "avatar": "assets/stats/avatar-3.svg",
       "frentes": 2,
       "signals": 3,
       "coverage": 29,
@@ -447,7 +448,7 @@
       "name": "Carlos Méndez",
       "initials": "CM",
       "role": "Reto y presupuesto",
-      "avatar": "assets/stats/avatar-marcos.svg",
+      "avatar": "assets/stats/avatar-2.svg",
       "frentes": 2,
       "signals": 3,
       "coverage": 29,
@@ -519,22 +520,22 @@
     {
       "icon": "shield",
       "title": "Reto cerrado",
-      "desc": "Carlos marcó terminado el reto a las 13:16. Es el único entregable con estado done."
+      "desc": "Carlos Méndez marcó terminado el reto a las 13:16. 1 de 7 entregables están cerrados."
     },
     {
       "icon": "leaf",
       "title": "Solución aprobada",
-      "desc": "La tesis de AquaNica está aprobada y el pautado ya tiene problema y solución."
+      "desc": "La tesis de AquaNica está aprobada y el pautado tiene 2 de 5 secciones."
     },
     {
       "icon": "spark",
       "title": "Pautado con base",
-      "desc": "2 de 5 secciones tienen texto; faltan las tres de cierre."
+      "desc": "2 de 5 secciones tienen texto; faltan 3."
     },
     {
       "icon": "clock",
       "title": "Material en disco",
-      "desc": "3 claims, 8 filas de presupuesto y 4 shots. Etiquetado como material heredado."
+      "desc": "3 claims, 8 filas de presupuesto y 4 shots en disco. Puede ser material de otra versión; no se mezcla."
     },
     {
       "icon": "shield",
@@ -545,7 +546,7 @@
   "conflicts": [
     {
       "title": "Identidad del proyecto",
-      "detail": "state.json: AquaNica. Artefactos en disco: HIDRO-VIGIA.",
+      "detail": "La sesión y los artefactos en disco no coinciden. No se mezclan; revisa cuál es la versión vigente.",
       "severity": "alta"
     },
     {
@@ -565,7 +566,7 @@
     },
     {
       "title": "Brief",
-      "detail": "brief.json está vacío; la identidad vive solo en state.json.",
+      "detail": "brief.json está incompleto; la identidad vive solo en state.json.",
       "severity": "media"
     }
   ],

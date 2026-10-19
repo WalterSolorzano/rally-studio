@@ -92,22 +92,37 @@
   function renderIdentity() {
     const s = data.session;
     const h = data.headline;
-    const rally = s.rally_type === "nacional" ? "Rally Nacional 2026" : "Rally Latam 2026";
-    const project = s.project_name || "La partida";
-    const team = s.team_name || "Equipo sin nombre";
+    const rally = s.rally_type === "nacional"
+      ? "Rally Nacional 2026"
+      : s.rally_type === "latam"
+        ? "Rally Latam 2026"
+        : "Rally Studio";
+    const project = s.project_name || "Tu proyecto";
+    const team = s.team_name || "Tu equipo";
     const challenge = s.challenge_title || "Reto sin registrar";
 
+    const idle = data.phase === "idle";
     document.title = `${project} · Resumen de partida — Rally Studio`;
     const meta = $("#meta-description");
     if (meta) {
-      meta.setAttribute("content", `${project} — ${team}: ${nf(h.elapsed_h, 1)} h transcurridas, ${nf(h.deliverables_done)} de ${nf(h.deliverables_total)} entregables, ${nf(h.critical_count)} frentes abiertos.`);
+      meta.setAttribute("content", idle
+        ? `${project} — ${team}: sin sesión activa.`
+        : `${project} — ${team}: ${nf(h.elapsed_h, 1)} h transcurridas, ${nf(h.deliverables_done)} de ${nf(h.deliverables_total)} entregables, ${nf(h.critical_count)} frentes abiertos.`);
     }
 
-    setText("hero-meta", `${rally} · ${nf(s.duration_h)} h · ${s.city || "Nicaragua"}`);
+    setText("hero-meta", `${rally} · ${idle ? "sin sesión" : `${nf(s.duration_h)} h`} · ${s.city || "Ciudad sin registrar"}`);
     const hero = $(".hero");
     if (hero) hero.dataset.duration = nf(s.duration_h);
     setHTML("hero-title", `${esc(project)},<br>en datos.`);
-    setText("hero-lede", `Reto ${s.challenge_id || "—"} · ${challenge}. ${nf(h.elapsed_h, 1)} h transcurridas de ${nf(s.duration_h)}; ${nf(h.deliverables_done)} de ${nf(h.deliverables_total)} entregables cerrados.`);
+    const challengeLine = s.challenge_title
+      ? `Reto ${s.challenge_id || "—"} · ${challenge}.`
+      : "Reto sin registrar.";
+    const progressLine = idle
+      ? "La partida todavía no ha arrancado."
+      : Number(s.duration_h) > 0
+        ? `${nf(h.elapsed_h, 1)} h transcurridas de ${nf(s.duration_h)}; ${nf(h.deliverables_done)} de ${nf(h.deliverables_total)} entregables cerrados.`
+        : "La sesión todavía no tiene una ventana de horas.";
+    setText("hero-lede", `${challengeLine} ${progressLine}`);
     setText("hero-solution", s.solution_simple || s.solution || "La solución todavía no está escrita en la sesión.");
     setText("footer-date", s.date_label || "—");
 
@@ -126,7 +141,9 @@
       scoreEl.dataset.target = String(score);
     }
     setText("score-label", "índice de preparación");
-    setText("score-note-text", `${score}/100 · ${nf(h.deliverables_done)}/${nf(h.deliverables_total)} entregables`);
+    setText("score-note-text", idle
+      ? "sin sesión · 0/100"
+      : `${score}/100 · ${nf(h.deliverables_done)}/${nf(h.deliverables_total)} entregables`);
     setText("score-note-tag", "calculado");
     const scoreBox = $("#hero-score");
     if (scoreBox) {
@@ -186,7 +203,11 @@
         </li>
       `)
     ].join("");
-    setText("parade-note", `${nf((data.roster_gap || {}).registered || people.length)} de ${nf((data.roster_gap || {}).declared || people.length + placeholders.length)} con registro`);
+    const registered = Number((data.roster_gap || {}).registered ?? people.length);
+    const declared = Number((data.roster_gap || {}).declared ?? people.length + placeholders.length);
+    setText("parade-note", registered
+      ? `${nf(registered)} de ${nf(declared)} con registro`
+      : "Sin integrantes registrados");
   }
 
   function peakSummary() {
@@ -217,7 +238,7 @@
     setText("rhythm-copy", `${nf((data.headline || {}).signals)} señales en ${nf((data.session || {}).duration_h)} h. El pico es ${rhythm.peak_hour || "—"}, calculado con los movimientos registrados.`);
     setText("peak-hour", peak[0] || "—");
     setText("peak-minute", peak[1] || "—");
-    setText("peak-note", summary.text);
+    setText("peak-note", hours.length ? summary.text : "Todavía no hay señales registradas.");
     setText("peak-people", `${summary.names.length || (data.people || []).length} personas con señal`);
     setText("peak-frentes", `${nf(rhythm.peak_count)} señales`);
     setText("chart-caption", `Señales registradas por hora · ${(data.session || {}).date_label || "—"}`);
@@ -269,7 +290,9 @@
       chart.setAttribute("aria-label", `Gráfico de ${hours.length} horas, de ${hours[0] ? hours[0].label : "—"}:00 del ${hours[0] ? hours[0].date : "—"} a ${hours[hours.length - 1] ? hours[hours.length - 1].label : "—"}:00 del ${hours[hours.length - 1] ? hours[hours.length - 1].date : "—"}. Pico a las ${rhythm.peak_hour || "—"} con ${nf(rhythm.peak_count)} señales. ${active} horas con señal y ${future} por delante. Usa las flechas izquierda y derecha para recorrer las horas.`);
     }
 
-    setText("chart-foot", `${active} horas con señal · ${future} horas por delante. Cada barra es una hora; las horas futuras quedan en línea base.`);
+    setText("chart-foot", hours.length
+      ? `${active} horas con señal · ${future} horas por delante. Cada barra es una hora; las horas futuras quedan en línea base.`
+      : "Todavía no hay horas registradas para este proyecto.");
 
     setHTML("chart-table", `
       <table class="chart-table">
@@ -413,8 +436,23 @@
     const list = $("#critical-list");
     if (!list) return;
     const critical = Array.isArray(data.critical) ? data.critical : [];
+    const total = Number((data.headline || {}).critical_count || critical.length);
+    if (!critical.length) {
+      const idle = data.phase === "idle";
+      setText("critical-title", idle ? "Sin sesión activa" : "Sin frentes críticos abiertos");
+      setText("critical-copy", idle
+        ? "Cuando arranque la partida, este espacio muestra las brechas reales de la sesión."
+        : "La sesión no tiene brechas registradas en este momento. Sigue así y vuelve a generar el resumen al cierre.");
+      list.innerHTML = `<li class="critical-empty">${idle ? "Todavía no hay una partida en curso." : "No hay nada bloqueando la partida ahora mismo."}</li>`;
+      return;
+    }
     setText("critical-title", "Los frentes que siguen abiertos");
-    setText("critical-copy", `${nf(critical.length)} frentes requieren una decisión. No son una derrota: son el mapa de la siguiente hora.`);
+    setText(
+      "critical-copy",
+      critical.length < total
+        ? `${nf(critical.length)} de ${nf(total)} frentes requieren una decisión. No son una derrota: son el mapa de la siguiente hora.`
+        : `${nf(total)} frentes requieren una decisión. No son una derrota: son el mapa de la siguiente hora.`
+    );
     list.innerHTML = critical.map((item, index) => `
       <li class="critical-item">
         <span class="critical-burst">${burstSvg(index)}</span>
@@ -432,7 +470,7 @@
   function renderMvp() {
     const band = $(".mvp-band");
     if (!band) return;
-    if (!data.mvp) {
+    if (!data.mvp || !data.mvp.name) {
       band.hidden = true;
       return;
     }
@@ -466,6 +504,13 @@
       ...people.map((person, index) => ({ ...person, kind: "person", index })),
       ...placeholders.map((person, index) => ({ ...person, kind: "placeholder", index: people.length + index }))
     ];
+
+    if (!rows.length) {
+      body.innerHTML = `<div class="roster-empty" role="row"><span role="cell">Todavía no hay integrantes registrados en esta sesión.</span></div>`;
+      table.setAttribute("aria-rowcount", "2");
+      table.setAttribute("aria-colcount", "5");
+      return;
+    }
 
     body.innerHTML = rows.map((person, index) => {
       const isPlaceholder = person.kind === "placeholder";
@@ -525,15 +570,17 @@
     `).join("");
 
     const list = Array.isArray(data.achievements) ? data.achievements : [];
-    achievements.innerHTML = list.map((item) => `
-      <li class="achievement">
-        <span class="achievement-icon" aria-hidden="true">${svgUse(iconMap[item.icon] || "i-spark")}</span>
-        <div>
-          <h3>${esc(item.title)}</h3>
-          <p>${esc(item.desc)}</p>
-        </div>
-      </li>
-    `).join("");
+    achievements.innerHTML = list.length
+      ? list.map((item) => `
+        <li class="achievement">
+          <span class="achievement-icon" aria-hidden="true">${svgUse(iconMap[item.icon] || "i-spark")}</span>
+          <div>
+            <h3>${esc(item.title)}</h3>
+            <p>${esc(item.desc)}</p>
+          </div>
+        </li>
+      `).join("")
+      : `<li class="achievement"><span class="achievement-icon" aria-hidden="true">${svgUse("i-spark")}</span><div><h3>Sin logros registrados</h3><p>Cuando la sesión registre entregables o material, aparecerán aquí.</p></div></li>`;
   }
 
   function renderClosing() {
@@ -541,10 +588,16 @@
     const hours = Number(h.hours_remaining || 0);
     const critical = Array.isArray(data.critical) ? data.critical : [];
     const next = critical[0] && critical[0].action ? critical[0].action : "Cerrar los frentes abiertos y congelar lo que ya está listo.";
+    const idle = data.phase === "idle" || !Number(h.duration_h);
     const final = data.phase === "final" || hours <= 0;
-    const line = final
-      ? `La sesión cerró. <span id="closing-sub">El resumen queda como evidencia de lo que se movió y lo que sigue abierto.</span>`
-      : `Quedan ${nf(hours, 1)} h. <span id="closing-sub">Siguiente frente: ${esc(next)}</span>`;
+    let line;
+    if (idle) {
+      line = `Sin sesión activa. <span id="closing-sub">Cuando arranque la partida, este resumen se llena solo.</span>`;
+    } else if (final) {
+      line = `La sesión cerró. <span id="closing-sub">El resumen queda como evidencia de lo que se movió y lo que sigue abierto.</span>`;
+    } else {
+      line = `Quedan ${nf(hours, 1)} h. <span id="closing-sub">Siguiente frente: ${esc(next)}</span>`;
+    }
     setHTML("closing-line", line);
   }
 
