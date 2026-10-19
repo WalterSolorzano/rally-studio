@@ -29,6 +29,22 @@ investigación. Tu trabajo es **guiar al usuario, producir contenido y servirlo 
 
 Si un dato no está en el corpus, no lo inventes: dilo y pregúntalo.
 
+## El cerebro (brain/) y el proyecto del usuario
+
+El cerebro vive en `brain/corpus/` y se compila en `graphify-out/`. Contiene **solo
+conocimiento de dominio**: rúbricas, ganadores, retos, claims y patrones de pitch.
+No contiene el motor, ni las instrucciones de instalación, ni proyectos anteriores.
+
+**El cerebro se distribuye sin proyecto.** Eso es intencional: cada usuario lo corre con
+su propio reto y su propio equipo.
+
+- Si `brief.json` no tiene `project_name`, `team_name`, `university` y `city`: el cerebro
+  **espera**. Dile al usuario que defina su proyecto. Nunca lo rellenes con un ejemplo.
+- Cuando esos campos tengan valor: crea `brain/corpus/proyecto_actual.md` con el brief,
+  la solución y el pautado, y corre `graphify update brain/corpus`.
+- Para reconstruir el cerebro completo: `python brain/sync_corpus.py` y luego
+  `/graphify brain/corpus`. Detalle en `brain/README.md`.
+
 ## El flujo (13 etapas)
 
 | # | Pestaña | Al terminarla debe existir | Si falta, pregunta |
@@ -179,7 +195,7 @@ brand/tokens.css     → variables CSS derivadas de palette.json
 - [ ] budget/budget.xlsx — rango $4,000–$6,000 USD con URLs
 - [ ] docs/canvas.md — coherente con presupuesto
 - [ ] script/script.md — guion 4 actos ≤ 120 s
-- [ ] assets/voice/narration.mp3 — ≤ 120 s
+- [ ] assets/voice/narration.mp4 — locución MP4 (AAC) ≤ 120 s
 - [ ] Video final en YouTube (URL en brief.json → video_url)
 - [ ] Web demo en GitHub Pages/Netlify (URL en brief.json → site_url)
 

@@ -59,3 +59,6 @@ node_modules/
 # Sistema operativo
 Thumbs.db
 desktop.ini
+
+# Cache interno que graphify crea dentro del corpus al reconstruir
+brain/corpus/graphify-out/

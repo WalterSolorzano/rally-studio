@@ -51,3 +51,7 @@ Archivos indexados: 41
 | `graphify-out/graph.json` | Grafo de conocimiento en crudo. | Procesar relaciones con código. | Para lectura humana: usar GRAPH_REPORT.md. |
 | `graphify-out/GRAPH_REPORT.md` | Informe del cerebro Graphify: nodos, aristas, comunidades y hallazgos. | Entender el mapa de conocimiento sin abrir el grafo. | Para editar el grafo. |
 | `graphify-out/manifest.json` | Manifiesto de archivos procesados por Graphify. | Saber qué fuentes entraron al grafo. | Para redactar contenido. |
+| `brain/README.md` | Cómo se construye el cerebro: qué entra, qué no y cómo reconstruirlo. | Reconstruir el grafo o explicar por qué no incluye el motor. | Para consultar el grafo ya construido: usar GRAPH_REPORT.md. |
+| `brain/corpus/` | Corpus del cerebro, normalizado (16 archivos: rúbricas, ganadores, retos, claims, pautados). | Auditar qué aprende la IA. No se edita a mano. | Para contenido nuevo: editar `knowledge/` y resincronizar. |
+| `brain/sync_corpus.py` | Sincroniza `brain/corpus/` desde las fuentes canónicas y deduplica. | Reconstruir el corpus antes de rearmar el grafo. | Para trabajo de contenido normal. |
+| `brain/corpus/proyecto_actual.md` | (cuando exista) el proyecto real del usuario dentro del cerebro. | Insertar el reto y la solución elegidos en el grafo. | Mientras no exista, el cerebro espera: ver brain/README.md. |

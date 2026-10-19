@@ -2,7 +2,7 @@
 
 [![Plataforma](https://img.shields.io/badge/Plataforma-Web%20Local%20%7C%20Zero%20Dependency-0866F5.svg)](#)
 [![Certámenes](https://img.shields.io/badge/Certamen-Rally%20Latam%20%2828h%29%20%7C%20Nicaragua%20Innova%20%2824h%29-1D4ED8.svg)](#)
-[![Graphify Brain](https://img.shields.io/badge/Cerebro%20Graphify-177%20Nodos%20%7C%20205%20Aristas-6366F1.svg)](#cerebro-de-conocimiento-graphify-knowledge-graph)
+[![Graphify Brain](https://img.shields.io/badge/Cerebro%20Graphify-420%20Nodos%20%7C%20732%20Aristas-6366F1.svg)](#cerebro-de-conocimiento-en-qué-se-basa-el-sistema)
 [![Diseño](https://img.shields.io/badge/Diseño-Precisión%20Táctica%20%7C%20Zero%20Emojis-0D1B35.svg)](#)
 
 > **Workbench interactivo secuencial para guiar, estructurar y optimizar el desempeño metodológico de equipos universitarios en maratones de innovación de 24 y 28 horas continuas (Rally Latinoamericano de Innovación y Rally Nacional Nicaragua Innova).**
@@ -63,22 +63,29 @@ Rally Studio sustituye la improvisación por un **flujo estricto guiado** que ll
 <p align="center">
   <img src="graphify_knowledge_graph.png" alt="Grafo de Conocimiento Graphify — Rally System" width="900" />
 </p>
-<p align="center"><em>Figura 2: Cerebro de Conocimiento Real (Graphify) — Captura del visualizador interactivo (graph.html) mostrando los 177 nodos, 205 aristas y 15 comunidades (criterios de rúbricas, banco de ganadores 2019–2026 y patrones técnicos).</em></p>
+<p align="center"><em>Figura 2: Cerebro de Conocimiento Real (Graphify) — Captura del visualizador interactivo (graph.html) mostrando los 420 nodos, 732 aristas y 29 comunidades (criterios de rúbricas, banco de ganadores 2014–2026 y patrones técnicos).</em></p>
 
-El motor analítico de Rally Studio opera sobre un grafo de conocimiento estructurado con **Graphify** (`graphify-out/`), compilando **177 nodos, 205 aristas y 15 comunidades de conocimiento**.
+El motor analítico de Rally Studio opera sobre un grafo de conocimiento estructurado con **Graphify** (`graphify-out/`), compilando **420 nodos, 732 aristas y 29 comunidades de conocimiento**.
 
 ### ¿Qué es Graphify en este sistema?
 Es el cerebro de datos relacionales del sistema. En lugar de procesar documentos como texto plano, Graphify convierte investigaciones, reportes de jurados, memorias oficiales y bases históricas en una red de entidades interconectadas. Permite consultar al instante:
-- **God Nodes (Nodos de Máxima Influencia):** Los conceptos centrales que más pesan en la deliberación (`Rally Nacional de Innovación`, `Rally Latam`, `UNI`, `Grado de Innovación 30 pts`, `Impacto Positivo 20 pts`, `Viabilidad Técnica 20 pts`).
+- **God Nodes (Nodos de Máxima Influencia):** Los conceptos centrales que más pesan en la deliberación (`Rally Latinoamericano de Innovación`, `Nicaragua`, `Rally Nacional de Innovación Nicaragua Innova`, `Jurado Nacional del Rally`, `Área Innovación`).
 - **Conexiones Semánticas Ocultas:** Relaciones entre la narrativa del pitch de 120 segundos y la asignación de puntajes por segundo de exposición.
 
+### Qué entra al cerebro y qué no
+
+El cerebro aprende **solo conocimiento de dominio**. No lee el motor (`scripts/`, `dashboard/`, `site/`), ni las instrucciones de instalación, ni los pautados de ediciones anteriores. Eso es deliberado: el equipo no necesita que la IA sepa programar el sistema, necesita que sepa ganar el certamen.
+
+El detalle del corpus y de cómo reconstruirlo está en [`brain/README.md`](brain/README.md).
+
 ### Investigaciones en las que se basa el Grafo:
-Graphify fue construido a partir del procesamiento y auditoría de 6 fuentes de investigación primaria del repositorio:
-1. **Auditoría Histórica de Proyectos Campeones (`Proyectos Ganadores de Rally Latam.md` y `Rally_Innovacion_Nicaragua_Analisis.pdf`):** Análisis de más de 50 iniciativas premiadas entre 2019 y 2026 (LexoStop, MT Soluciones, Güegüense Pinolero, STEM Synergy, Mentes Volcánicas). Se extrajo el principio de **Hibridación Ciberfísica** (hardware tangible COTS + software) con 30% más probabilidad de podio.
-2. **Ingeniería Inversa de Rúbricas Oficiales (`WhatsApp Image 2026-10-16 at 9.06.52 PM.jpeg` y `rubrica_oficial_latam.jpeg`):** Mapeo de los 5 criterios continentales (100 puntos) y las 3 categorías nacionales (CNU/Comisión Creativa).
-3. **Análisis de Dispersión y Sesgo de Evaluación (`Análisis del Rally de Innovación.txt`):** Identificación del patrón de **doble codificación**: cómo satisfacer simultáneamente el filtro del jurado nacional (anclaje territorial y políticas públicas) y el del jurado internacional (escalabilidad regional y novedad).
-4. **Documentos Pautados de Referencia** (análisis interno, no incluido en el paquete): desglose de conteo de caracteres, prefactibilidad económica y coherencia de costos, destilado en `knowledge/pautado_nacional_ref.docx` y `knowledge/pautado_latam_ref.docx`.
+Graphify fue construido a partir del procesamiento y auditoría de las 16 fuentes del corpus (`brain/corpus/`):
+1. **Auditoría Histórica de Proyectos Campeones (`knowledge/winners_latam.md` y `brain/corpus/analisis_nicaragua.pdf`):** Análisis de más de 50 iniciativas premiadas entre 2014 y 2026 (LexoStop, MT Soluciones, Güegüense Pinolero, STEM Synergy, Mentes Volcánicas). Se extrajo el principio de **Hibridación Ciberfísica** (hardware tangible COTS + software) con 30% más probabilidad de podio.
+2. **Ingeniería Inversa de Rúbricas Oficiales (`rubrica_oficial_latam.jpeg`, `knowledge/rubric_matrices.md` y `knowledge/rubric_latam.md`):** Mapeo de los 5 criterios continentales (100 puntos) y las 3 categorías nacionales (CNU/Comisión Creativa), transcritos desde la imagen oficial.
+3. **Análisis de Dispersión y Sesgo de Evaluación (`knowledge/rally_analysis.txt`):** Identificación del patrón de **doble codificación**: cómo satisfacer simultáneamente el filtro del jurado nacional (anclaje territorial y políticas públicas) y el del jurado internacional (escalabilidad regional y novedad).
+4. **Documentos Pautados de Referencia (`knowledge/pautado_nacional_ref.docx` y `knowledge/pautado_latam_ref.docx`):** desglose de conteo de caracteres, prefactibilidad económica y coherencia de costos.
 5. **Reporte de Investigación Profunda (`chatgptdeep-research-report.md`):** Estudio de cronometría audiovisual (fórmula PAS-V en 4 actos de 120 segundos) y errores frecuentes de descalificación en la plataforma SIRLI.
+6. **Banco de retos y claims verificables (`research/`):** los 5 desafíos priorizados con su puntaje, y las estadísticas con fuente, año y URL.
 
 - **Visualizador interactivo del grafo:** [`graphify-out/graph.html`](graphify-out/graph.html)
 - **Informe de auditoría de nodos y comunidades:** [`graphify-out/GRAPH_REPORT.md`](graphify-out/GRAPH_REPORT.md)
