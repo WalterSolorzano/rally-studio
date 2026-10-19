@@ -32,6 +32,11 @@ import base64
 import unicodedata
 import zipfile
 
+try:
+    from content_store import ContentStore, validate_envelope
+except ImportError:  # cuando se importa como paquete (tests)
+    from scripts.content_store import ContentStore, validate_envelope
+
 _easyocr_reader = None
 
 def get_easyocr_reader():
@@ -79,6 +84,11 @@ BASE_DIR = pathlib.Path(__file__).resolve().parent.parent
 DASHBOARD_DIR = BASE_DIR / "dashboard"
 SITE_DIR = BASE_DIR / "site"
 SOURCES_DIR = BASE_DIR
+
+# Datos del usuario (buzón de propuestas + espejo de estado). Va aparte del
+# código para poder excluirlo del despliegue y para que las pruebas usen tmp.
+DATA_DIR = pathlib.Path(os.environ.get("RALLY_DATA_DIR", str(DASHBOARD_DIR / "data")))
+CONTENT_STORE = ContentStore(DATA_DIR)
 
 START_TIME = time.time()
 
@@ -258,6 +268,14 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
                 "done": job.get("status") in ("done", "error"),
                 "message": job.get("message"),
             })
+        elif req_path == "/api/state":
+            self.send_json_response(200, {"state": CONTENT_STORE.read_state()})
+        elif req_path == "/api/content/schema":
+            self.send_json_response(200, CONTENT_STORE.schema())
+        elif req_path == "/api/content/manifest":
+            self.send_json_response(200, CONTENT_STORE.manifest())
+        elif req_path.startswith("/api/content/"):
+            self.serve_content_item(req_path[len("/api/content/"):])
         else:
             # Normalizar ruta dashboard
             clean_path = req_path
@@ -425,8 +443,66 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
                 self.send_json_response(200, ai_quick_task(task, text))
             except Exception as e:
                 self.send_json_response(500, {"status": "error", "message": str(e)})
+        elif url.path == "/api/state":
+            self.handle_post_state()
+        elif url.path.startswith("/api/content/"):
+            self.handle_post_content(url.path)
         else:
             self.send_error(404, "Endpoint no encontrado")
+
+    # ── Buzón de contenido y espejo de estado ───────────────────────────
+
+    def serve_content_item(self, item_id):
+        try:
+            env = CONTENT_STORE.read(item_id)
+        except KeyError:
+            self.send_json_response(404, {"ok": False, "error": "no-encontrado"})
+            return
+        except Exception:
+            self.send_json_response(500, {"ok": False, "error": "error-interno"})
+            return
+        self.send_json_response(200, env)
+
+    def handle_post_state(self):
+        length = int(self.headers.get("Content-Length", 0))
+        body = self.rfile.read(length).decode("utf-8", errors="replace")
+        try:
+            data = json.loads(body)
+        except ValueError:
+            self.send_json_response(400, {"ok": False, "error": "json-invalido"})
+            return
+        state = data.get("state") if isinstance(data, dict) else None
+        if not isinstance(state, dict):
+            self.send_json_response(400, {"ok": False, "error": "state-invalido"})
+            return
+        try:
+            CONTENT_STORE.write_state(state)
+        except Exception as exc:
+            print(f"[content] no se pudo escribir el estado: {exc}", flush=True)
+            self.send_json_response(500, {"ok": False, "error": "error-interno"})
+            return
+        self.send_json_response(200, {"ok": True})
+
+    def handle_post_content(self, path):
+        rest = path[len("/api/content/"):]
+        parts = rest.split("/")
+        if len(parts) != 2 or parts[1] not in ("apply", "discard") or not parts[0]:
+            self.send_json_response(404, {"ok": False, "error": "no-encontrado"})
+            return
+        item_id, action = parts
+        try:
+            if action == "apply":
+                CONTENT_STORE.apply(item_id)
+            else:
+                CONTENT_STORE.discard(item_id)
+        except KeyError:
+            self.send_json_response(404, {"ok": False, "error": "no-encontrado"})
+            return
+        except Exception as exc:
+            print(f"[content] fallo al {action} {item_id!r}: {exc}", flush=True)
+            self.send_json_response(500, {"ok": False, "error": "error-interno"})
+            return
+        self.send_json_response(200, {"ok": True})
 
     def send_telemetry(self):
         cpu = psutil.cpu_percent(interval=None)

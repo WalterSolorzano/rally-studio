@@ -120,7 +120,7 @@ class ContentStore:
         except OSError:
             return None
         try:
-            env = json.loads(path.read_text(encoding="utf-8"))
+            env = json.loads(path.read_text(encoding="utf-8-sig"))
         except (OSError, ValueError):
             return None
         if not isinstance(env, dict):
@@ -199,7 +199,7 @@ class ContentStore:
         if not self.state_path.is_file():
             return None
         try:
-            data = json.loads(self.state_path.read_text(encoding="utf-8"))
+            data = json.loads(self.state_path.read_text(encoding="utf-8-sig"))
         except (OSError, ValueError):
             return None
         return data if isinstance(data, dict) else None

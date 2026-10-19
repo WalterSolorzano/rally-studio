@@ -96,3 +96,13 @@ def test_large_utf8_payload_roundtrip(tmp_path):
     leido = ContentStore(tmp_path).read("p1")
     assert leido["payload"]["text"] == env["payload"]["text"]
     assert "ñandú" in leido["payload"]["text"]
+
+
+def test_read_tolerates_utf8_bom(tmp_path):
+    env = envelope(text="bom")
+    d = tmp_path / "content"
+    d.mkdir(parents=True)
+    (d / "p1.json").write_text(json.dumps(env), encoding="utf-8-sig")
+    assert ContentStore(tmp_path).read("p1")["payload"]["text"] == "bom"
+    assert [i["id"] for i in ContentStore(tmp_path).manifest()["items"]] == ["p1"]
+
