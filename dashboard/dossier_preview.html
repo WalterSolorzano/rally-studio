@@ -92,6 +92,53 @@
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
       margin-bottom: 24px;
     }
+    /* En pantallas angostas la hoja A4 se lee como documento, no se recorta */
+    @media screen and (max-width: 860px) {
+      body {
+        padding: 12px 10px;
+        align-items: stretch;
+      }
+      .preview-toolbar {
+        position: static;
+        flex-wrap: wrap;
+        gap: 8px 10px;
+        padding: 10px 12px;
+        border-radius: 6px;
+        margin-bottom: 12px;
+      }
+      .toolbar-brand {
+        flex: 1 1 100%;
+      }
+      .toolbar-title {
+        border-left: 0;
+        padding-left: 0;
+        margin-left: 8px;
+      }
+      .preview-toolbar button {
+        min-height: 44px;
+        padding: 8px 16px;
+      }
+      .toolbar-back-link {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 0 4px;
+      }
+      .a4-sheet {
+        width: 100%;
+        min-height: 0;
+        padding: 22px 18px;
+        border-radius: 4px;
+        overflow-wrap: anywhere;
+      }
+      .a4-sheet img {
+        max-width: 100%;
+        height: auto;
+      }
+      .a4-sheet table {
+        max-width: 100%;
+      }
+    }
     @media print {
       body {
         background: #FFFFFF !important;
@@ -128,17 +175,29 @@
     <!-- Contenido inyectado dinámicamente con estilos de la app -->
   </div>
 
-  <script src="app.js"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
+    // app.js se carga después de "load" para reutilizar el generador del dossier
+    // sin disparar la inicialización completa del workbench en esta página aislada.
+    window.addEventListener("load", () => {
       const root = document.getElementById("print-sheet-root");
-      if (typeof preparePrintDossierHTML === "function") {
-        root.innerHTML = preparePrintDossierHTML();
-      } else if (typeof generatePrintSheetHTML === "function") {
-        root.innerHTML = generatePrintSheetHTML();
-      } else {
-        root.innerHTML = "<p>Cargando previsualización...</p>";
-      }
+      const script = document.createElement("script");
+      script.src = "app.js";
+      script.onload = () => {
+        try {
+          if (typeof loadSavedState === "function") loadSavedState();
+          const html = typeof preparePrintDossierHTML === "function"
+            ? preparePrintDossierHTML()
+            : generatePrintSheetHTML();
+          root.innerHTML = html;
+        } catch (error) {
+          root.innerHTML = "<p>No se pudo preparar el dossier. Vuelve al workbench e inténtalo de nuevo.</p>";
+          console.error(error);
+        }
+      };
+      script.onerror = () => {
+        root.innerHTML = "<p>No se pudo cargar el generador del dossier.</p>";
+      };
+      document.head.appendChild(script);
     });
   </script>
 </body>
