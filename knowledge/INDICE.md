@@ -6,7 +6,7 @@ si falta un archivo o su descripción, se corrige en `DESCRIPCIONES`.
 Regla de uso: leer primero este índice y abrir solo lo que la tarea pida.
 Si un archivo no está aquí, no es corpus: es código o artefacto.
 
-Archivos indexados: 41
+Archivos indexados: 39
 
 | Ruta | Qué es | Cuándo sí | Cuándo no |
 |---|---|---|---|
@@ -15,8 +15,6 @@ Archivos indexados: 41
 | `Rally_Innovacion_Nicaragua_Analisis.pdf` | Investigación en PDF sobre el Rally Nacional de Nicaragua. | Cuando se necesita contexto del certamen nacional y su ecosistema. | Si ya está cubierto por el manual maestro nacional. |
 | `Proyectos Ganadores de Rally Latam.md` | Catálogo extenso de proyectos premiados en Latinoamérica. | Buscar patrones de lo que gana (hibridación ciberfísica, enfoque territorial). | Para detalles de un proyecto puntual: usar winners_database.json. |
 | `chatgptdeep-research-report.md` | Informe de investigación profunda: fórmula PAS-V de 120 s y errores de descalificación. | Diseñar o auditar el guion del video. | Para presupuesto o pauta técnica. |
-| `Operación Titan_UNI_Documento pautado_2025.docx` | Documento pautado real de un equipo de la UNI (referencia de formato y tono). | Calibrar longitud, estructura y registro del pautado. | Para copiar contenido: es de otro proyecto. |
-| `Reporte_Pautado_Rally_2026.docx` | Reporte pautado de referencia del ciclo 2026. | Comparar estructura y nivel de detalle esperado. | Como fuente de datos: no es evidencia. |
 | `rubrica_oficial_latam.jpeg` | Imagen de la rúbrica oficial del Rally Latam (criterios y puntajes). | Verificar ponderaciones exactas antes de auditar un entregable. | Si ya se consultó rubric_latam.md en esta sesión. |
 | `PRODUCT.md` | Definición de producto: usuarios, propósito, posicionamiento, marca, accesibilidad. | Cambiar la interfaz, el tono o la identidad visual. | Para contenido del certamen. |
 | `DESIGN.md` | Decisiones de diseño visual y sistema de componentes. | Tocar presentación, layout o estilos. | Para lógica o datos. |
@@ -35,14 +33,14 @@ Archivos indexados: 41
 | `knowledge/winners_latam.md` | Fichas de ganadores latinoamericanos. | Buscar referentes por sector o país. | Para el certamen nacional. |
 | `docs/bibliography.md` | Bibliografía del proyecto en curso. | Citar fuentes o revisar respaldos del pautado. | Para cifras nuevas: usar research/claims.json. |
 | `docs/canvas.md` | Modelo Canvas del proyecto en curso. | Completar o revisar el modelo de negocio. | Para el pautado técnico. |
+| `docs/DESCARGA.md` | (sin describir — añadir a DESCRIPCIONES) | — | — |
+| `docs/INSTALACION_AGENTE.md` | (sin describir — añadir a DESCRIPCIONES) | — | — |
 | `docs/INSTALACION_Y_DESPLIEGUE.md` | Guía de instalación, ejecución y despliegue del sistema. | Instalar, arrancar o publicar el sistema. | Para contenido del certamen. |
 | `docs/KNOWLEDGE_GRAPH.md` | Explicación del cerebro Graphify y sus comunidades de conocimiento. | Entender cómo se relacionan certamen, rúbricas y ganadores. | Para redactar contenido del proyecto. |
 | `docs/MANUAL_MAESTRO_RALLY_INNOVACION_2026.md` | Manual maestro del Rally de Innovación (versión texto). | Reglamento, fases y entregables del certamen. | Si ya se consultó el manual del certamen activo. |
 | `docs/MANUAL_MAESTRO_RALLY_INNOVACION_2026.pdf` | Manual maestro del Rally de Innovación (versión PDF). | Compartir o imprimir el manual. | Para consulta del agente: usar el .md, pesa menos. |
 | `docs/MANUAL_MAESTRO_RALLY_LATAM_Y_NICARAGUA_INNOVA_2026.md` | Manual maestro combinado: Rally Latam y Nicaragua Innova (texto). | Reglas y entregables de ambos certámenes en un solo lugar. | Si solo se necesita el certamen activo: usar su sección. |
 | `docs/MANUAL_MAESTRO_RALLY_LATAM_Y_NICARAGUA_INNOVA_2026.pdf` | Manual maestro combinado (PDF). | Compartir o imprimir. | Para consulta del agente: usar el .md. |
-| `docs/Matriz_Seleccion_Desafios_2026.docx` | Matriz oficial de selección de desafíos. | Elegir reto con criterios del comité. | Si el reto ya está fijado. |
-| `docs/pautado_draft.docx` | Borrador del documento pautado. | Revisar avance o compilar el entregable. | Como fuente de verdad: usar brief.json. |
 | `docs/pautado_template.docx` | Plantilla DOCX del documento pautado. | Compilar el entregable con el formato oficial. | Para redactar: el contenido va en brief y pautado. |
 | `brand/palette.json` | Paleta del proyecto (primario, secundario, acento, fondo, texto). | Generar tokens, gráficos o piezas visuales. | Para tipografías: ver tokens.css. |
 | `graphify-out/.graphify_labels.json` | Etiquetas de las comunidades del grafo. | Nombrar comunidades al procesar el grafo. | Para trabajo normal del agente. |
