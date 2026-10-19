@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dossier Técnico Oficial · Rally Studio (Vista Imprimible A4)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Vista interactiva de previsualización en pantalla */
+    body {
+      background: #F1F5F9;
+      padding: 30px 15px;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #0D1B35;
+    }
+    .preview-toolbar {
+      position: sticky;
+      top: 15px;
+      z-index: 999;
+      background: #0D1B35;
+      color: #FFFFFF;
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: 1px solid #1E293B;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+    .toolbar-brand {
+      display: flex;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+    .toolbar-slash {
+      color: #0066FF;
+      font-family: 'JetBrains Mono', monospace;
+      margin-right: 5px;
+    }
+    .toolbar-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #DCE7F5;
+      border-left: 1px solid #334155;
+      padding-left: 12px;
+      margin-left: 12px;
+    }
+    .preview-toolbar button {
+      background: #0866F5;
+      color: #FFFFFF;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 120ms ease;
+    }
+    .preview-toolbar button:hover {
+      background: #0057E7;
+    }
+    .toolbar-back-link {
+      color: #DCE7F5;
+      font-size: 12px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 120ms;
+    }
+    .toolbar-back-link:hover {
+      color: #FFFFFF;
+    }
+    .a4-sheet {
+      background: #FFFFFF;
+      width: 210mm;
+      min-height: 297mm;
+      padding: 14mm 16mm;
+      box-sizing: border-box;
+      border: 1px solid #DCE7F5;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+      margin-bottom: 24px;
+    }
+    @media print {
+      body {
+        background: #FFFFFF !important;
+        padding: 0 !important;
+      }
+      .preview-toolbar {
+        display: none !important;
+      }
+      .a4-sheet {
+        width: 100% !important;
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="preview-toolbar">
+    <div class="toolbar-brand">
+      <span class="toolbar-slash">//</span><span>RALLY STUDIO</span>
+      <span class="toolbar-title">Dossier Técnico A4</span>
+    </div>
+    <button onclick="window.print()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      Imprimir / PDF
+    </button>
+    <a href="index.html" class="toolbar-back-link">Volver al Workbench</a>
+  </div>
+
+  <div class="a4-sheet" id="print-sheet-root">
+    <!-- Contenido inyectado dinámicamente con estilos de la app -->
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const root = document.getElementById("print-sheet-root");
+      if (typeof preparePrintDossierHTML === "function") {
+        root.innerHTML = preparePrintDossierHTML();
+      } else if (typeof generatePrintSheetHTML === "function") {
+        root.innerHTML = generatePrintSheetHTML();
+      } else {
+        root.innerHTML = "<p>Cargando previsualización...</p>";
+      }
+    });
+  </script>
+</body>
+</html>
