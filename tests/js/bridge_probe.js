@@ -85,6 +85,13 @@ async function main() {
     return;
   }
 
+  if (comando === "filas-con-estado") {
+    const datos = JSON.parse(arg);
+    store[KEY] = JSON.stringify(datos.estado || {});
+    salir({ filas: puente._filas(datos.payload) });
+    return;
+  }
+
   if (comando === "fusionar") {
     const ok = puente._fusionar(JSON.parse(arg));
     salir({ ok, estado: JSON.parse(store[KEY] || "{}"), llamadas: calls });

@@ -27,6 +27,32 @@ def test_budget_rows_fill_element_and_concept():
     assert fila["concept"] == "Cable UTP"
 
 
+def test_budget_rows_convert_cordobas_to_usd_with_bcn_rate():
+    datos = correr(
+        "filas-con-estado",
+        {
+            "estado": {"rally_type": "nacional", "exchange_rate_bcn": 36.5},
+            "payload": {
+                "currency": "NIO",
+                "items": [{"element": "Sensor", "units": 2, "unit_cost": 365}],
+            },
+        },
+    )
+    fila = datos["filas"][0]
+    assert fila["unit_cost"] == 10
+
+
+def test_budget_rows_keep_usd_without_currency():
+    datos = correr(
+        "filas-con-estado",
+        {
+            "estado": {"rally_type": "nacional", "exchange_rate_bcn": 36.5},
+            "payload": {"items": [{"element": "Sensor", "units": 1, "unit_cost": 10}]},
+        },
+    )
+    assert datos["filas"][0]["unit_cost"] == 10
+
+
 def test_merge_team_fields_from_team_tab():
     datos = correr(
         "fusionar",

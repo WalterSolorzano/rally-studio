@@ -331,6 +331,7 @@ function getDefaultMultiAITasks() {
 function getInitialState() {
   return {
     rally_type: null,
+    exchange_rate_bcn: 0,
     hours_total: 28,
     hours_remaining: 28,
     rally_started: false,
@@ -866,6 +867,7 @@ function generateProjectMarkdown() {
     { concept: "Talleres y Metodología de Apropiación Comunitaria", category: "Impacto Social", units: 1, unit_cost: 150 }
   ];
   const budgetTotal = budgetList.reduce((acc, b) => acc + (Number(b.units || 1) * Number(b.unit_cost || 0)), 0);
+  const bctx = budgetCurrency();
   const challengesList = (state.challenges && state.challenges.length > 0) ? state.challenges : OFFICIAL_CHALLENGES_2026;
 
   let md = `# DOSSIER TÉCNICO OFICIAL DEL PROYECTO: ${projName.toUpperCase()}\n`;
@@ -911,14 +913,13 @@ function generateProjectMarkdown() {
   md += `#### 5.4 Grado de Innovación y Creatividad\n${paut.innovacion || "Elementos diferenciales y disruptivos de la solución, barreras tecnológicas superadas y valor agregado frente a alternativas existentes."}\n\n`;
   md += `#### 5.5 Impacto Social y Sostenibilidad Ambiental\n${paut.impacto || "Medición de beneficios cuantificables para la comunidad, alineación con la Agenda 2030 (ODS) y viabilidad ecológica a largo plazo."}\n\n`;
 
-  md += `### 6. Presupuesto Sustentado de Marcha (Total: \$${budgetTotal.toFixed(2)} USD)\n\n`;
-  md += `| Ítem | Concepto | Categoría | Unidades | Costo Unit. | Total |\n`;
+  md += `### 6. Presupuesto Sustentado de Marcha (Total: ${budgetFmt(budgetTotal, bctx, true)})\n\n`;
+  md += `| Ítem | Concepto | Categoría | Unidades | Costo Unit. (${bctx.rotulo}) | Total (${bctx.rotulo}) |\n`;
   md += `|---|---|---|---|---|---|\n`;
   budgetList.forEach((b, idx) => {
-    const tot = (Number(b.units || 1) * Number(b.unit_cost || 0)).toFixed(2);
-    md += `| ${idx + 1} | ${b.concept} | ${b.category || "General"} | ${b.units || 1} | \$${Number(b.unit_cost || 0).toFixed(2)} | \$${tot} |\n`;
+    md += `| ${idx + 1} | ${b.concept || b.element || "Partida"} | ${b.category || "General"} | ${b.units || 1} | ${budgetFmt(Number(b.unit_cost || 0), bctx)} | ${budgetFmt(Number(b.units || 1) * Number(b.unit_cost || 0), bctx)} |\n`;
   });
-  md += `| — | **PRESUPUESTO GENERAL** | — | — | — | **\$${budgetTotal.toFixed(2)} USD** |\n\n`;
+  md += `| — | **PRESUPUESTO GENERAL** | — | — | — | **${budgetFmt(budgetTotal, bctx, true)}** |\n\n`;
 
   md += `### 7. Guion Audiovisual de 120 Segundos (4 Actos)\n\n`;
   md += `- **Acto 1 (00:00 - 00:20):** ${scr.acto1 || "Exposición del problema en el territorio, datos críticos y urgencia de solución."}\n\n`;
@@ -971,6 +972,7 @@ function preparePrintDossierHTML() {
     { concept: "Talleres y Metodología de Apropiación Comunitaria", category: "Impacto Social", units: 1, unit_cost: 150, url: "Comités Locales" }
   ];
   const budgetTotal = budgetList.reduce((acc, b) => acc + (Number(b.units || 1) * Number(b.unit_cost || 0)), 0);
+  const bctx = budgetCurrency();
   const budgetInRange = budgetTotal >= 500 && budgetTotal <= 15000;
 
   // Claims de Respaldo Fáctico / Propiedad Intelectual
@@ -1198,7 +1200,7 @@ function preparePrintDossierHTML() {
     <!-- SECCIÓN 5: PRESUPUESTO SUSTENTADO DE MARCHA -->
     <div class="print-section print-page-break">
       <div class="print-section-title">
-        <span>5. Presupuesto Sustentado de Marcha (Tope \$500 - \$15,000 USD)</span>
+        <span>5. Presupuesto Sustentado de Marcha (${budgetFmt(500, bctx)} - ${budgetFmt(15000, bctx)})</span>
         <span class="print-badge ${budgetInRange ? 'print-badge-green' : 'print-badge-amber'}">${budgetInRange ? 'DENTRO DE RANGO SIRLI' : 'REVISAR TOPE RÚBRICA'}</span>
       </div>
       <table class="print-table">
@@ -1208,8 +1210,8 @@ function preparePrintDossierHTML() {
             <th style="width:36%;">Concepto Técnico / Insumo</th>
             <th style="width:18%;">Categoría</th>
             <th style="width:8%; text-align:center;">Cant.</th>
-            <th style="width:12%; text-align:right;">Unit. USD</th>
-            <th style="width:12%; text-align:right;">Total USD</th>
+            <th style="width:12%; text-align:right;">Unit. ${bctx.rotulo}</th>
+            <th style="width:12%; text-align:right;">Total ${bctx.rotulo}</th>
             <th style="width:10%;">Cotización</th>
           </tr>
         </thead>
@@ -1226,15 +1228,15 @@ function preparePrintDossierHTML() {
                 <td><strong>${concept}</strong></td>
                 <td>${catItem}</td>
                 <td class="num-cell" style="text-align:center;">${units}</td>
-                <td class="num-cell" style="text-align:right;">$${unitCost.toFixed(2)}</td>
-                <td class="num-cell" style="text-align:right; font-weight:700;">$${lineTotal.toFixed(2)}</td>
+                <td class="num-cell" style="text-align:right;">${budgetFmt(unitCost, bctx)}</td>
+                <td class="num-cell" style="text-align:right; font-weight:700;">${budgetFmt(lineTotal, bctx)}</td>
                 <td style="font-size:7.5pt; color:#64748B;">${b.url ? 'Cotizado' : 'COTS Local'}</td>
               </tr>
             `;
           }).join('')}
           <tr style="background:#F8FAFD; font-weight:800;">
             <td colspan="5" style="text-align:right;">PRESUPUESTO GENERAL CONSOLIDADO:</td>
-            <td class="num-cell" style="text-align:right; color:#0D1B35; font-size:9.5pt;">$${budgetTotal.toFixed(2)} USD</td>
+            <td class="num-cell" style="text-align:right; color:#0D1B35; font-size:9.5pt;">${budgetFmt(budgetTotal, bctx, true)}</td>
             <td style="font-size:7.5pt; color:#047857; font-weight:700;">✓ Rango Apto</td>
           </tr>
         </tbody>
@@ -7206,7 +7208,7 @@ Patrón de Ganadores (Anatomía de 120 segundos):
 Genera el texto de locución continuo para los 4 actos (cadencia estricta de 135 palabras por minuto, total 250 a 270 palabras):
 - Acto 1 (0–20s): Dolor humano y cifras cuantificadas. PROHIBIDO mencionar el nombre del proyecto o mostrar logos.
 - Acto 2 (20–60s): Explicación técnica de la solución y mecanismo funcional; los ganadores Latam muestran la demo visual de forma temprana y usualen un nombre memorable de identidad regional.
-- Acto 3 (60–95s): Prefactibilidad y desglose del presupuesto en USD coincidente con el documento pautado.
+- Acto 3 (60–95s): Prefactibilidad y desglose del presupuesto en ${isNac ? "córdobas (C$)" : "USD"} coincidente con el documento pautado.
 - Acto 4 (95–120s): Cierre de impacto, métricas auditables y proyección regional, con identidad nicaragüense (símbolo o cifra de orgullo local) como en los videos ganadores.
 Distribución objetiva de palabras: Acto 1 ≤45, Acto 2 ≤90, Acto 3 ≤75, Acto 4 ≤55 (total 250-270).
 Entrega solo el texto continuo para el locutor o sintetizador TTS, sin acotaciones teatrales ni corchetes.
@@ -7243,7 +7245,8 @@ Entrega tu veredicto en viñetas directas: [APROBADO / RIESGOS DETECTADOS / CORR
   }
 
   if (taskId === "web_prototype") {
-    const budgetLines = (state.budget || []).map(it => `${it.element} ×${it.units} — $${(it.units * it.unit_cost).toFixed(2)}`).join("; ") || "(sin partidas aún)";
+    const pctx = budgetCurrency();
+    const budgetLines = (state.budget || []).map(it => `${it.element} ×${it.units} — ${budgetFmt(it.units * it.unit_cost, pctx)}`).join("; ") || "(sin partidas aún)";
     return `Actúa como Desarrollador Web Frontend Senior especializado en dashboards televisivos.
 Proyecto: "${pName}" (${chTitle}).
 Tesis: "${thesis}".
@@ -7253,7 +7256,7 @@ Misión: genera UN SOLO archivo HTML autocontenido (con <style> y <script> incru
 Requisitos estrictos:
 1. Hero con nombre del proyecto, la tesis condensada y 3 métricas grandes en tipografía mono (ej. unidades del piloto, cobertura, ahorro estimado) tomadas de la tesis y del presupuesto.
 2. Panel "Telemetría en Vivo" con datos simulados en JS (setInterval) que cambien cada 2s: señal, batería, nivel, temperatura — números plausibles para el hardware de la tesis.
-3. Tabla de partidas mayoristas con los datos de presupuesto dados (elemento, unidades, costo) + total calculado en USD.
+3. Tabla de partidas mayoristas con los datos de presupuesto dados (elemento, unidades, costo) + total calculado en ${pctx.rotulo}.
 4. Barra inferior con pulso de "Registro Territorial" y estado del gateway LoRaWAN.
 5. Estética: fondo blanco, 1 línea de acento cobalto, sin gradientes chillones, sin emojis, sin imágenes externas; texto legible en 4K (para grabar a 1080p/4K).
 6. Todo debe correr en un solo archivo, responsive, sin errores de consola.
@@ -7593,8 +7596,40 @@ function savePautado() {
 // ═════════════════════════════════════════════════════════════════════════════
 // 06 NIVEL 4: PRESUPUESTO DE PUESTA EN MARCHA
 // ═════════════════════════════════════════════════════════════════════════════
+function budgetCurrency() {
+  const nacional = state.rally_type === "nacional";
+  const rate = Number(state.exchange_rate_bcn) || 0;
+  const enCordobas = nacional && rate > 0;
+  return {
+    nacional,
+    rate,
+    listo: !nacional || rate > 0,
+    code: enCordobas ? "NIO" : "USD",
+    simbolo: enCordobas ? "C$" : "$",
+    rotulo: enCordobas ? "C$" : "USD",
+  };
+}
+
+function budgetConvert(usd, ctx) {
+  return ctx.code === "NIO" ? usd * ctx.rate : usd;
+}
+
+function budgetFmt(usd, ctx, conCodigo) {
+  const valor = budgetConvert(usd, ctx);
+  const numero = valor.toLocaleString("es-NI", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  return `${ctx.simbolo}${numero}${conCodigo ? ` ${ctx.code}` : ""}`;
+}
+
+function updateExchangeRate(val) {
+  const rate = parseFloat(val) || 0;
+  state.exchange_rate_bcn = rate > 0 ? rate : 0;
+  saveState();
+  renderTab("budget");
+}
+
 function renderViewBudget() {
   const total = state.budget.reduce((a, b) => a + (b.units * b.unit_cost), 0);
+  const ctx = budgetCurrency();
   const isTooLow = total < 3000;
   const isTooHigh = total > 6500;
   const hasNotice = isTooLow || isTooHigh;
@@ -7604,6 +7639,15 @@ function renderViewBudget() {
       <div>
         <h1 class="phase-title">07 · Presupuesto de <span class="phase-title-accent">Puesta en Marcha</span></h1>
         <p class="phase-subtitle">Insumos mayoristas para el prototipo inicial o lote piloto verificables con proveedores reales.</p>
+        ${ctx.nacional ? `
+          <label style="display:inline-flex; align-items:center; gap:6px; margin-top:8px; font-size:11px; font-weight:700; color:var(--text-muted);">
+            Tasa BCN (C$ por USD)
+            <input type="number" min="1" step="0.01" value="${ctx.rate || ""}" placeholder="36.50"
+                   aria-label="Tasa de cambio del BCN en córdobas por dólar"
+                   style="width:90px; text-align:right; border:1px solid var(--border-light); border-radius:3px; padding:3px 6px;"
+                   onchange="updateExchangeRate(this.value)">
+          </label>
+        ` : ""}
       </div>
       <div style="display:flex; gap:8px;">
         <button class="btn-primary" onclick="addBudgetItem()">+ Agregar Partida</button>
@@ -7612,6 +7656,13 @@ function renderViewBudget() {
         </a>
       </div>
     </div>
+
+    ${!ctx.listo ? `
+      <div class="rubric-callout" style="border-left-color:#f59e0b; background:#fffdf5;">
+        <strong>Falta la tasa del BCN:</strong> el Rally Nacional exige el presupuesto en córdobas.
+        Escribe la tasa oficial vigente arriba para convertir las partidas. Mientras tanto se muestran en USD.
+      </div>
+    ` : ""}
 
     ${hasNotice ? `
       <div class="rubric-callout" style="border-left-color:${isTooHigh ? '#f59e0b' : '#3b82f6'}; background:#fffdf5;">
@@ -7623,7 +7674,7 @@ function renderViewBudget() {
       </div>
     ` : `
       <div class="rubric-callout" style="border-left-color:#10b981; background:#f0fdf4;">
-        <strong>Presupuesto Equilibrado y Sustentado:</strong> El monto actual de <strong>$${total.toFixed(2)} USD</strong> refleja un balance creíble entre viabilidad económica y rigor técnico.
+        <strong>Presupuesto Equilibrado y Sustentado:</strong> El monto actual de <strong>${budgetFmt(total, ctx, true)}</strong> refleja un balance creíble entre viabilidad económica y rigor técnico.${ctx.nacional && ctx.rate ? ` Equivale a $${total.toFixed(2)} USD a la tasa declarada.` : ""}
       </div>
     `}
 
@@ -7634,7 +7685,7 @@ function renderViewBudget() {
             <tr>
               <th>Elemento / Componente</th>
               <th style="width:80px; text-align:center;">Unidades</th>
-              <th style="width:120px; text-align:right;">Costo Unit. (USD)</th>
+              <th style="width:120px; text-align:right;">Costo Unit. (${ctx.rotulo})</th>
               <th style="width:120px; text-align:right;">Subtotal</th>
               <th style="width:60px; text-align:center;">Acción</th>
             </tr>
@@ -7660,10 +7711,10 @@ function renderViewBudget() {
                   <input type="number" value="${it.units}" aria-label="Unidades de la partida ${idx + 1}" style="width:60px; text-align:center; border:1px solid var(--border-light); border-radius:3px; padding:2px;" onchange="updateBudgetItem(${idx}, 'units', this.value)">
                 </td>
                 <td style="text-align:right;">
-                  <input type="number" step="0.5" value="${it.unit_cost}" aria-label="Costo unitario en USD de la partida ${idx + 1}" style="width:80px; text-align:right; border:1px solid var(--border-light); border-radius:3px; padding:2px;" onchange="updateBudgetItem(${idx}, 'unit_cost', this.value)">
+                  <input type="number" step="0.5" value="${budgetConvert(Number(it.unit_cost) || 0, ctx).toFixed(2)}" aria-label="Costo unitario en ${ctx.rotulo} de la partida ${idx + 1}" style="width:80px; text-align:right; border:1px solid var(--border-light); border-radius:3px; padding:2px;" onchange="updateBudgetItem(${idx}, 'unit_cost', this.value)">
                 </td>
                 <td style="text-align:right; font-family:var(--font-mono); font-weight:700;">
-                  $${(it.units * it.unit_cost).toFixed(2)}
+                  ${budgetFmt(it.units * it.unit_cost, ctx)}
                 </td>
                 <td style="text-align:center;">
                   <button type="button" class="btn-secondary" style="padding:2px 6px; font-size:10px; color:#ef4444;" aria-label="Eliminar partida ${idx + 1}" title="Eliminar partida ${idx + 1}" onclick="removeBudgetItem(${idx})">${SVG.close}</button>
@@ -7674,7 +7725,7 @@ function renderViewBudget() {
           <tfoot>
             <tr style="background:#f8fafc; font-weight:800;">
               <td colspan="3" style="text-align:right; font-size:12px;">TOTAL PRESUPUESTO PUESTA EN MARCHA:</td>
-              <td style="text-align:right; font-family:var(--font-mono); font-size:14px; color:var(--color-primary);">$${total.toFixed(2)} USD</td>
+              <td style="text-align:right; font-family:var(--font-mono); font-size:14px; color:var(--color-primary);">${budgetFmt(total, ctx, true)}</td>
               <td></td>
             </tr>
           </tfoot>
@@ -7686,7 +7737,12 @@ function renderViewBudget() {
 
 function updateBudgetItem(idx, field, val) {
   if (field === "units" || field === "unit_cost") {
-    state.budget[idx][field] = parseFloat(val) || 0;
+    let numero = parseFloat(val) || 0;
+    const ctx = budgetCurrency();
+    if (field === "unit_cost" && ctx.code === "NIO" && ctx.rate > 0) {
+      numero = numero / ctx.rate;
+    }
+    state.budget[idx][field] = numero;
   } else {
     state.budget[idx][field] = val;
   }
