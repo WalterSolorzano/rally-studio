@@ -20,7 +20,7 @@
 - [Instalación, uso y despliegue](#instalación-uso-y-despliegue)
 - [¿Qué es Rally Studio?](#qué-es-rally-studio)
 - [Cerebro de Conocimiento: En qué se basa el sistema](#cerebro-de-conocimiento-en-qué-se-basa-el-sistema)
-- [Informe de investigación completo](#informe-de-investigación-completo)
+- [Informe de sustento de la investigación](#informe-de-sustento-de-la-investigación)
 - [¿Cómo funciona Rally Studio? (Arquitectura y Flujo)](#cómo-funciona-rally-studio-arquitectura-y-flujo)
 - [Módulos Principales del Workbench](#módulos-principales-del-workbench)
 - [Calibración Matemática de Rúbricas Oficiales](#calibración-matemática-de-rúbricas-oficiales)
@@ -92,15 +92,15 @@ Graphify fue construido a partir del procesamiento y auditoría de las 16 fuente
 - **Informe de auditoría de nodos y comunidades:** [`graphify-out/GRAPH_REPORT.md`](graphify-out/GRAPH_REPORT.md)
 - **Base relacional JSON:** [`graphify-out/graph.json`](graphify-out/graph.json)
 
-### Informe de investigación completo
+### Informe de sustento de la investigación
 
-Si quieres saber **de dónde sale cada afirmación** del sistema —y cuáles todavía no están probadas—, lee el informe de sustento:
+Si quieres saber **en qué se basa el sistema, qué encontramos y por qué gana quien gana**, lee el informe completo:
 
 **[`docs/INFORME_INVESTIGACION.md`](docs/INFORME_INVESTIGACION.md)** · [versión PDF](docs/INFORME_INVESTIGACION.pdf)
 
-La versión PDF está maquetada con los tokens de marca del proyecto e incluye ocho figuras vectoriales: escala del Rally Nacional, podios de Nicaragua en el Rally Latinoamericano, rúbricas, pautado, guion PAS-V, presupuesto, grafo y erratas.
+La versión PDF está maquetada con los tokens de marca e incluye doce figuras vectoriales: escala del Rally Nacional, podios de Nicaragua en el Rally Latinoamericano, rúbricas, pautado, guion PAS-V, presupuesto, evolución del naming y de la complejidad técnica, clusters temáticos, podios por universidad, cambio de capacidades con intervalos de confianza y el índice de preparación competitiva.
 
-Audita el corpus completo contra fuentes primarias y clasifica cada dato en cuatro niveles: **[A]** primaria verificada, **[B]** secundaria consistente, **[C]** heurística interna y **[D]** no verificada. Incluye el registro de ganadores 2016–2026, las rúbricas de ambos certámenes, la estructura PAS-V, la auditoría de los tres *claims* de `research/claims.json` y una tabla de **14 erratas detectadas** con su corrección.
+Analiza **evento por evento, categoría por categoría, equipo por equipo y video por video**: las cuatro ediciones del Rally Nacional, las trece del Rally Latinoamericano, los veintisiete ganadores nacionales, los diez podios internacionales y el catálogo audiovisual. Incluye un modelo cuantitativo propio (IPC) con pruebas estadísticas, intervalos de confianza y análisis de sensibilidad; las rúbricas de ambos certámenes; la anatomía del video de 120 segundos; y las diez reglas que sostienen el patrón de victoria.
 
 > Lectura recomendada antes de usar cualquier cifra del repositorio en un pautado o en un video.
 

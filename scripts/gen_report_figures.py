@@ -327,6 +327,195 @@ def fig08_erratas() -> None:
     save(fig, "fig08_erratas")
 
 
+# ---------------------------------------------------------------- figura 9
+def fig10_complejidad_tecnica() -> None:
+    years = ["2023", "2024", "2025", "2026"]
+    pct = [17, 0, 67, 78]
+    counts = ["1 de 6", "0 de 6", "4 de 6", "7 de 9"]
+    fig, ax = plt.subplots(figsize=(6.4, 2.3))
+    bars = ax.bar(years, pct, width=0.52, color=[TINT, TINT, PRIMARY, PRIMARY])
+    for bar, value, label in zip(bars, pct, counts):
+        ax.text(
+            bar.get_x() + bar.get_width() / 2,
+            value + 4,
+            f"{value} %",
+            ha="center",
+            va="bottom",
+            fontsize=9,
+            fontweight="bold",
+            color=INK,
+        )
+        ax.text(
+            bar.get_x() + bar.get_width() / 2,
+            value / 2,
+            label,
+            ha="center",
+            va="center",
+            fontsize=7.2,
+            color="white" if value > 20 else MUTED,
+        )
+    ax.set_ylim(0, 100)
+    ax.set_yticks([0, 25, 50, 75, 100])
+    ax.set_yticklabels(["0", "25", "50", "75", "100 %"])
+    ax.grid(axis="y", color=GRID, linewidth=0.8)
+    ax.set_axisbelow(True)
+    clean(ax)
+    ax.set_xlabel("Edición del Rally Nacional", labelpad=8)
+    save(fig, "fig10_complejidad_tecnica")
+
+
+# ---------------------------------------------------------------- figura 10
+def fig11_naming_dual() -> None:
+    years = ["2023", "2024", "2025", "2026"]
+    pct = [0, 0, 100, 100]
+    fig, ax = plt.subplots(figsize=(6.0, 2.0))
+    ax.plot(years, pct, color=PRIMARY, linewidth=2.4, marker="o", markersize=6, zorder=3)
+    ax.fill_between(years, pct, color=PRIMARY, alpha=0.10)
+    for x, y in zip(years, pct):
+        ax.annotate(
+            f"{y} %",
+            (x, y),
+            textcoords="offset points",
+            xytext=(0, 10 if y < 50 else -16),
+            ha="center",
+            fontsize=8.6,
+            fontweight="bold",
+            color=PRIMARY,
+        )
+    ax.set_ylim(-8, 112)
+    ax.set_yticks([0, 50, 100])
+    ax.set_yticklabels(["0", "50", "100 %"])
+    ax.grid(axis="y", color=GRID, linewidth=0.8)
+    ax.set_axisbelow(True)
+    clean(ax)
+    ax.set_xlabel("Naming dual (squad + marca) en el podio nacional", labelpad=8)
+    save(fig, "fig11_naming_dual")
+
+
+# ---------------------------------------------------------------- figura 11
+def fig12_clusters() -> None:
+    data = [
+        ("Café de especialidad", 3, True),
+        ("Inclusión y discapacidad", 3, True),
+        ("Soberanía alimentaria", 3, False),
+        ("Botaderos → parques", 2, True),
+        ("Energía + educación", 2, False),
+        ("Vivienda", 2, False),
+        ("Agua", 1, False),
+    ]
+    labels = [d[0] for d in data]
+    values = [d[1] for d in data]
+    colors = [ACCENT if d[2] else PRIMARY for d in data]
+    fig, ax = plt.subplots(figsize=(6.4, 2.4))
+    bars = ax.barh(labels[::-1], values[::-1], color=colors[::-1], height=0.58)
+    for bar, value in zip(bars, values[::-1]):
+        ax.text(
+            value + 0.08,
+            bar.get_y() + bar.get_height() / 2,
+            str(value),
+            va="center",
+            fontsize=9,
+            fontweight="bold",
+            color=INK,
+        )
+    ax.set_xlim(0, 3.8)
+    ax.set_xticks([0, 1, 2, 3])
+    ax.grid(axis="x", color=GRID, linewidth=0.8)
+    ax.set_axisbelow(True)
+    clean(ax)
+    ax.set_xlabel("Equipos del podio nacional por cluster (2023–2026)", labelpad=8)
+    save(fig, "fig12_clusters")
+
+
+# ---------------------------------------------------------------- figura 12
+def fig13_podios_universidad() -> None:
+    data = [
+        ("UNI (RUPAP 3 + RUSB 2)", 5),
+        ("UNAN-FAREM Estelí", 2),
+        ("UM-RMA", 1),
+        ("UAM", 1),
+        ("Sede no publicada", 1),
+    ]
+    labels = [d[0] for d in data]
+    values = [d[1] for d in data]
+    fig, ax = plt.subplots(figsize=(6.4, 2.2))
+    bars = ax.barh(labels[::-1], values[::-1], color=[TINT, TINT, MUTED, PRIMARY, PRIMARY], height=0.56)
+    for bar, value in zip(bars, values[::-1]):
+        ax.text(
+            value + 0.08,
+            bar.get_y() + bar.get_height() / 2,
+            str(value),
+            va="center",
+            fontsize=9,
+            fontweight="bold",
+            color=INK,
+        )
+    ax.set_xlim(0, 6)
+    ax.set_xticks([0, 1, 2, 3, 4, 5])
+    ax.grid(axis="x", color=GRID, linewidth=0.8)
+    ax.set_axisbelow(True)
+    clean(ax)
+    ax.set_xlabel("Podios internacionales de Nicaragua (2015–2025)", labelpad=8)
+    save(fig, "fig13_podios_universidad")
+
+
+# ---------------------------------------------------------------- figura 13
+def fig14_forest() -> None:
+    rows = [
+        ("Naming dual", 100.0, 68.3, 100.0, "< 0,0001"),
+        ("Tecnología emergente", 65.0, 28.0, 82.2, "0,0014"),
+        ("Métricas explícitas", 40.0, 8.5, 64.3, "0,020"),
+        ("Territorio específico", 5.0, -29.3, 37.2, "1,00"),
+    ]
+    fig, ax = plt.subplots(figsize=(6.4, 2.5))
+    ys = list(range(len(rows)))[::-1]
+    for y, (name, rd, lo, hi, p) in zip(ys, rows):
+        color = PRIMARY if lo > 0 else MUTED
+        ax.plot([lo, hi], [y, y], color=color, linewidth=2.6, solid_capstyle="round", zorder=2)
+        ax.scatter(rd, y, s=46, color=color, zorder=3)
+        ax.text(hi + 2.5, y, f"{rd:+.0f} pp  (p {p})", va="center", fontsize=7.6, color=INK)
+    ax.axvline(0, color=SECONDARY, linewidth=1.1, linestyle=(0, (4, 3)))
+    ax.set_yticks(ys)
+    ax.set_yticklabels([r[0] for r in rows], fontsize=8.2)
+    ax.set_xlim(-40, 170)
+    ax.set_xticks([-25, 0, 25, 50, 75, 100])
+    ax.set_xticklabels(["−25", "0", "+25", "+50", "+75", "+100 pp"])
+    ax.grid(axis="x", color=GRID, linewidth=0.8)
+    ax.set_axisbelow(True)
+    clean(ax, left=True)
+    ax.tick_params(axis="y", length=0)
+    ax.set_xlabel("Cambio 2025–26 frente a 2023–24 (diferencia de proporciones, IC 95 %)", labelpad=8)
+    save(fig, "fig14_forest")
+
+
+# ---------------------------------------------------------------- figura 14
+def fig15_ipc() -> None:
+    data = {
+        "2023": [0, 0, 0, 15, 15, 15],
+        "2024": [0, 0, 0, 0, 15, 15],
+        "2025": [25, 60, 60, 65, 85, 100],
+        "2026": [40, 40, 60, 60, 75, 75, 85, 85, 100],
+    }
+    fig, ax = plt.subplots(figsize=(6.4, 2.3))
+    offsets = {"2023": [-0.09, -0.03, 0.05, -0.08, 0.02, 0.1], "2024": [-0.1, -0.04, 0.03, 0.09, -0.02, 0.06]}
+    for i, (year, values) in enumerate(data.items()):
+        xs = [i + o for o in offsets.get(year, [-0.1, -0.06, -0.02, 0.02, 0.06, 0.1] * 2)[: len(values)]]
+        ax.scatter(xs, values, s=38, color=PRIMARY, alpha=0.55, edgecolor="white", linewidth=0.6, zorder=2)
+        mean = sum(values) / len(values)
+        ax.plot([i - 0.18, i + 0.18], [mean, mean], color=SECONDARY, linewidth=2.0, zorder=3)
+        ax.text(i + 0.21, mean + 4, f"{mean:.1f}", va="bottom", fontsize=8.0, color=SECONDARY, fontweight="bold")
+    ax.set_xticks(range(len(data)))
+    ax.set_xticklabels(list(data.keys()))
+    ax.set_ylim(-5, 108)
+    ax.set_yticks([0, 25, 50, 75, 100])
+    ax.set_yticklabels(["0", "25", "50", "75", "100"])
+    ax.grid(axis="y", color=GRID, linewidth=0.8)
+    ax.set_axisbelow(True)
+    clean(ax)
+    ax.set_xlabel("Índice de preparación competitiva por equipo del podio", labelpad=8)
+    save(fig, "fig15_ipc")
+
+
 if __name__ == "__main__":
     fig01_escala_nacional()
     fig02_podios_latam()
@@ -336,4 +525,10 @@ if __name__ == "__main__":
     fig06_presupuesto()
     fig07_grafo()
     fig08_erratas()
+    fig10_complejidad_tecnica()
+    fig11_naming_dual()
+    fig12_clusters()
+    fig13_podios_universidad()
+    fig14_forest()
+    fig15_ipc()
     print("figuras generadas en", OUT)

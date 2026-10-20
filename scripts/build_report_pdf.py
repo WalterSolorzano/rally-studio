@@ -26,14 +26,14 @@ CHROME_CANDIDATES = [
 ]
 
 META = {
-    "title": "Informe de investigación y sustento del corpus",
-    "subtitle": "Rally Studio — base documental, verificación de fuentes y estado de la evidencia",
-    "version": "1.0",
+    "title": "Informe de sustento de la investigación",
+    "subtitle": "Rally de Innovación: qué hemos encontrado, por qué gana quien gana",
+    "version": "2.0",
     "date": "19 de octubre de 2026",
     "scope": "Rally Latinoamericano de Innovación (28 h) y Rally Nacional Nicaragua Innova (24 h)",
-    "audience": "Integrantes del repositorio, jurados, docentes y cualquiera que quiera auditar las afirmaciones del sistema",
+    "audience": "Integrantes del repositorio, equipos concursantes, docentes y jurados",
     "footleft": "Rally Studio · Documento de sustento",
-    "footright": "8 figuras · 19 secciones · 4 niveles de evidencia",
+    "footright": "12 figuras · 17 secciones · 2 certámenes",
 }
 
 
@@ -108,7 +108,7 @@ def stamp(pdf: Path) -> None:
         page.draw_line(fitz.Point(left, y - 4), fitz.Point(right, y - 4), color=(0.886, 0.898, 0.933), width=0.5)
         page.insert_text(
             fitz.Point(left, y),
-            "Informe de investigación · Rally Studio",
+            "Informe de sustento · Rally Studio",
             fontname="helv",
             fontsize=7,
             color=(0.384, 0.416, 0.478),
