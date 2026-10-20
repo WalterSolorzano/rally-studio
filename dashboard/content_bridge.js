@@ -90,6 +90,13 @@
     else if (payload && Array.isArray(payload.budget)) fuente = payload.budget;
     if (!fuente) return null;
 
+    // El estado del tablero guarda el costo canónico en USD. Si la propuesta
+    // declara córdobas, se convierte con la tasa BCN del estado.
+    var estado = leerEstado();
+    var tasa = Number(estado.exchange_rate_bcn) || 0;
+    var moneda = String((payload && (payload.currency || payload.moneda)) || "").toUpperCase();
+    var enCordobas = moneda === "NIO" || moneda === "C$" || moneda === "CORDOBAS" || moneda === "CÓRDOBAS";
+
     var filas = [];
     for (var i = 0; i < fuente.length; i++) {
       var it = fuente[i] || {};
@@ -97,6 +104,11 @@
       var unitCost = Number(it.unit_cost);
       if (!isFinite(units)) units = 1;
       if (!isFinite(unitCost)) unitCost = 0;
+      var itemMoneda = String(it.currency || it.moneda || "").toUpperCase();
+      var itemEnCordobas = itemMoneda === "NIO" || itemMoneda === "C$" || itemMoneda === "CORDOBAS" || itemMoneda === "CÓRDOBAS";
+      if ((enCordobas || itemEnCordobas) && tasa > 0) {
+        unitCost = unitCost / tasa;
+      }
       var texto = String(it.element || it.concept || it.name || it.description || "");
       var fila = {
         // La tabla y los exports de app.js leen `element`; el dossier lee
@@ -168,43 +180,17 @@
       }
     }
 
-    // Espejo en el servidor: así (b) y los demás navegadores ven el mismo
-    // estado. El que aplica un cambio remoto no lo re-sube (evita el eco).
-    if (!esRemoto && Date.now() >= suprimirSubida) subirEstado(st);
+    // La sincronizacion del estado vive ahora en section_sync.js. Cada seccion
+    // viaja sola y con version; aqui solo queda el buzon de propuestas.
   }
 
-  function subirEstado(st) {
-    if (subidaPendiente && typeof clearTimeout === "function") clearTimeout(subidaPendiente);
-    subidaPendiente = setTimeout(function () {
-      subidaPendiente = null;
-      try {
-        fetch("/api/state", {
-          method: "POST",
-          cache: "no-store",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ state: st })
-        }).catch(function () {
-          /* sin red: el estado local sigue siendo la verdad */
-        });
-      } catch (e) {
-        /* fetch ausente: nada que subir */
-      }
-    }, SUBIR_MS);
+  function subirEstado() {
+    // Compatibilidad con la API publica del puente. Ya no sube el estado
+    // completo: section_sync.js manda solo las secciones que cambiaron.
   }
 
   function sincronizarRemoto() {
-    return pedirJSON("/api/state")
-      .then(function (r) {
-        var remoto = r && r.state;
-        if (!remoto || typeof remoto !== "object") return;
-        var local = leerEstado();
-        if (Number(remoto._sync_ts || 0) <= Number(local._sync_ts || 0)) return;
-        suprimirSubida = Date.now() + 2000;
-        escribirEstado(asegurarForma(remoto), true);
-      })
-      .catch(function () {
-        /* sin espejo: seguimos con el estado local */
-      });
+    return Promise.resolve();
   }
 
   function fusionar(env) {
@@ -246,19 +232,28 @@
   // -- red --------------------------------------------------------------
 
   function pedirJSON(url) {
-    return fetch(url, { cache: "no-store" }).then(function (res) {
+    return fetch(url, { cache: "no-store", headers: cabeceras() }).then(function (res) {
       if (!res.ok) throw new Error("http " + res.status);
       return res.json();
     });
   }
 
   function postear(url) {
-    return fetch(url, { method: "POST", cache: "no-store" }).then(function (res) {
+    return fetch(url, { method: "POST", cache: "no-store", headers: cabeceras() }).then(function (res) {
       if (!res.ok) throw new Error("http " + res.status);
       return res.json().catch(function () {
         return { ok: true };
       });
     });
+  }
+
+  function cabeceras() {
+    var headers = {};
+    try {
+      var token = localStorage.getItem("rally_session_token");
+      if (token) headers.Authorization = "Bearer " + token;
+    } catch (e) {}
+    return headers;
   }
 
   // -- interfaz ---------------------------------------------------------
@@ -492,7 +487,6 @@
         }
         var items = m && Array.isArray(m.items) ? m.items : [];
         render(items);
-        return sincronizarRemoto();
       })
       .catch(function () {
         fallos += 1;
@@ -505,26 +499,14 @@
   }
 
   function escucharCambios() {
-    // app.js avisa cada vez que el usuario guarda: ese estado se sube al
-    // espejo para que (b) y los demás navegadores lo vean.
-    try {
-      if (typeof BroadcastChannel !== "function") return;
-      var bc = new BroadcastChannel(CHANNEL_NAME);
-      bc.onmessage = function (ev) {
-        if (!ev || !ev.data || ev.data.type !== "AUTO_SYNC_STATE") return;
-        if (Date.now() < suprimirSubida) return;
-        if (ev.data.state) subirEstado(ev.data.state);
-      };
-    } catch (e) {
-      /* sin canal: solo se sube lo que el puente fusiona */
-    }
+    // La sincronizacion de estado vive en section_sync.js. El puente solo
+    // escucha propuestas del buzon; no sube el estado completo.
   }
 
   function iniciar() {
     if (!soportado()) return;
     asegurarDock();
     if (dock) dock.addEventListener("click", alPulsar);
-    escucharCambios();
     poll();
     setInterval(poll, POLL_MS);
   }

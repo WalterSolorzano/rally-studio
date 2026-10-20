@@ -11,3 +11,18 @@ def test_join_page_has_name_field_and_claim_endpoint():
     assert "/api/project/claim" in js
     assert "rally_session_token" in js
     assert "rally_project" in js
+
+
+def test_section_sync_sends_session_and_project():
+    js = (DASH / "section_sync.js").read_text(encoding="utf-8")
+    assert "Authorization" in js
+    assert "rally_session_token" in js
+    assert "rally_project" in js
+    assert "POLL_MS = 1000" in js
+    assert "accessRevoked" in js
+
+
+def test_section_sync_blocks_seeding_for_plain_members():
+    js = (DASH / "section_sync.js").read_text(encoding="utf-8")
+    assert '"operator"' in js and '"admin"' in js
+    assert "sections/import" in js
