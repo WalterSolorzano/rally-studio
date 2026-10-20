@@ -1,83 +1,60 @@
 #!/usr/bin/env python3
 """
 validate_pautado.py -- Valida y cuenta caracteres (con espacios) por seccion en docs/pautado_draft.docx.
-Regla innegociable: si alguna seccion excede el limite maximo, devuelve codigo de error 1.
+
+Delegado en checks/campo_chars.py: una sola fuente de verdad para los limites.
+Lee los limites de docs/pautado_template.docx cuando la plantilla los declara.
+Regla innegociable: si alguna seccion excede el maximo, devuelve codigo 1.
 """
-import sys
 import io
-import re
 import pathlib
-import docx
+import sys
 
 if sys.platform == "win32":
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
-DRAFT_PATH = pathlib.Path("docs/pautado_draft.docx")
+RAIZ = pathlib.Path(__file__).resolve().parent.parent
+if str(RAIZ) not in sys.path:
+    sys.path.insert(0, str(RAIZ))
 
-# Limites oficiales con espacios
-LIMITS = {
-    "problema": 1250,
-    "solucion": 1250,
-    "prefactibilidad": 1000,
-    "innovacion": 1000,
-    "impacto": 1500
-}
+from checks.campo_chars import LIMITS, revisar  # noqa: E402
+
+DRAFT_PATH = pathlib.Path("docs/pautado_draft.docx")
+TEMPLATE_PATH = pathlib.Path("docs/pautado_template.docx")
+
 
 def main():
     if not DRAFT_PATH.exists():
         print("ERROR: docs/pautado_draft.docx no existe. Ejecuta python scripts/gen_pautado.py primero.")
         sys.exit(1)
 
-    try:
-        doc = docx.Document(DRAFT_PATH)
-    except Exception as e:
-        print(f"ERROR: No se pudo abrir {DRAFT_PATH}: {e}")
-        sys.exit(1)
+    hallazgos, conteos = revisar(DRAFT_PATH, TEMPLATE_PATH)
 
-    full_text = "\n".join([p.text for p in doc.paragraphs])
-    tables_text = "\n".join([" ".join([c.text for c in row.cells]) for table in doc.tables for row in table.rows])
-    combined_text = full_text + "\n" + tables_text
-
-    print("\n" + "═" * 60)
+    print("\n" + "=" * 60)
     print("  AUDITORIA DE CARACTERES -- REPORTE PAUTADO (CON ESPACIOS)")
-    print("═" * 60)
+    print("=" * 60)
 
-    has_errors = False
-    found_any = False
-
-    for section, limit in LIMITS.items():
-        pattern = rf"\{{SEC_{section.upper()}\}}(.*?)\{{SEC_END\}}"
-        match = re.search(pattern, combined_text, re.DOTALL | re.IGNORECASE)
-        
-        if match:
-            found_any = True
-            content = match.group(1).strip()
-            count = len(content)
-            diff = limit - count
-            status = "OK" if diff >= 0 else "EXCEDIDO"
-            if diff < 0:
-                has_errors = True
-                print(f"  [X] {section.upper():<16}: {count:>5} / {limit:<5} ({diff} chars) -> {status}")
-            else:
-                pct = (count / limit) * 100
-                print(f"  [v] {section.upper():<16}: {count:>5} / {limit:<5} ({pct:5.1f}%) -> {status}")
+    for campo, limite in LIMITS.items():
+        cuenta = conteos.get(campo)
+        if cuenta is None:
+            print(f"  [?] {campo.upper():<16}: campo no encontrado.")
+            continue
+        faltante = limite - cuenta
+        if faltante < 0:
+            print(f"  [X] {campo.upper():<16}: {cuenta:>5} / {limite:<5} ({faltante} chars) -> EXCEDIDO")
         else:
-            # Buscar por encabezados de parrafos
-            print(f"  [?] {section.upper():<16}: Etiqueta {{SEC_{section.upper()}}} no encontrada directamente.")
+            pct = (cuenta / limite) * 100
+            print(f"  [v] {campo.upper():<16}: {cuenta:>5} / {limite:<5} ({pct:5.1f}%) -> OK")
 
-    if not found_any:
-        print("\n  NOTA: No se encontraron marcadores {SEC_...}. Evaluando longitud global del texto.")
-        total_len = len(combined_text.strip())
-        print(f"  Total caracteres detectados: {total_len} (Limite global recomendado: ~6,000)")
-        if total_len > 7000:
-            print("  WARN: El documento supera los 7,000 caracteres totales.")
-            has_errors = True
-
-    if has_errors:
+    if hallazgos:
+        print()
+        for hallazgo in hallazgos:
+            print(f"  -> {hallazgo.get('campo', 'general')}: {hallazgo['que']}. {hallazgo['hacer']}")
         print("\n  ERROR: Ajusta los textos antes de enviar a SIRLI.")
         sys.exit(1)
-    else:
-        print("\n  VALIDACION EXITOSA: Los campos analizados cumplen con la rubrica de caracteres.")
+
+    print("\n  VALIDACION EXITOSA: Los campos analizados cumplen la rubrica de caracteres.")
+
 
 if __name__ == "__main__":
     main()

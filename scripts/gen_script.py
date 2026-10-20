@@ -25,31 +25,73 @@ def load_data():
     claims = json.loads(CLAIMS_PATH.read_text(encoding="utf-8")) if CLAIMS_PATH.exists() else []
     return brief, claims
 
+def _costo_de_implementacion():
+    """Toma el total real del presupuesto. Devuelve None si aun no existe."""
+    ruta = pathlib.Path("budget/budget.json")
+    if not ruta.exists():
+        return None
+    try:
+        filas = json.loads(ruta.read_text(encoding="utf-8"))
+    except Exception:
+        return None
+    if not isinstance(filas, list) or not filas:
+        return None
+    total = 0.0
+    for fila in filas:
+        valor = fila.get("total")
+        if valor is None:
+            valor = float(fila.get("units", 0)) * float(fila.get("unit_cost_usd", fila.get("unit_cost", 0)))
+        try:
+            total += float(valor)
+        except (TypeError, ValueError):
+            continue
+    if total <= 0:
+        return None
+    return f"${total:,.0f} USD" if total >= 1000 else f"${total:,.2f} USD"
+
+
 def main():
     brief, claims = load_data()
     project = brief.get("project_name", "PROYECTO").upper()
     team = brief.get("team_name", "EQUIPO")
-    city = brief.get("city", "Managua")
     rally = brief.get("rally_type", "nacional").lower()
+    city = brief.get("city") or ("el municipio piloto" if rally == "latam" else "")
     challenge = brief.get("challenge_title", "Desafio Seleccionado")
     ods_list = ", ".join(brief.get("ods_ids", ["ODS 11", "ODS 13"]))
     desc = brief.get("description_one_line", "Solucion integral innovadora.")
     axis = brief.get("national_plan_axis", "Eje Estrategico Nacional")
 
-    # Obtener el claim principal si existe
-    lead_stat = claims[0]["stat"] if claims else "El 64% de las comunidades enfrentan vulnerabilidades criticas"
-    lead_source = f"({claims[0].get('source','Fuente')}, {claims[0].get('year','2024')})" if claims else "(INIDE, 2024)"
+    if not city:
+        print("ERROR: brief.json no tiene city. No se inventa el municipio: completalo primero.")
+        sys.exit(1)
+
+    # Sin claim no hay Acto I. Inventar una cifra herenda el guion completo.
+    if not claims:
+        print("ERROR: research/claims.json esta vacio. El guion no puede abrir con una cifra sin fuente.")
+        print("       Agrega al menos un claim con {stat, source, url, year} o usa una fuente propia.")
+        sys.exit(1)
+
+    lead_stat = claims[0]["stat"]
+    lead_source = f"({claims[0].get('source', 'Fuente')}, {claims[0].get('year', '')})".replace(", )", ")")
+    costo = _costo_de_implementacion()
 
     # Estructura 4 actos
+    if costo:
+        costo_latam = f"Con un costo de implementacion de {costo}"
+        costo_nacional = f"La puesta en marcha requiere {costo}"
+    else:
+        costo_latam = "Con un costo de implementacion superficial y verificable"
+        costo_nacional = "La puesta en marcha requiere un costo de implementacion superficial y verificable"
+
     if rally == "latam":
         act1_narration = f"{lead_stat} {lead_source}. En America Latina, familias enteras ven comprometido su futuro debido a esta falla estructural cotidiana."
         act2_narration = f"Para transformar esta realidad nace {project}. {desc} A traves de un sistema modular estandarizado, integramos instrumentacion y control de bajo consumo."
-        act3_narration = f"Con un costo unitario proyectado de puesta en marcha inferior a los $5,000 USD, el despliegue es sostenible mediante esquemas de economia circular e integracion B2B/B2G."
+        act3_narration = f"{costo_latam}, el despliegue es sostenible mediante esquemas de economia circular e integracion B2B/B2G."
         act4_narration = f"Validado en {city} como laboratorio piloto y transferible a toda la region. Aportando directamente a {ods_list}. {project}: ingenieria latinoamericana que transforma realidades."
     else:
         act1_narration = f"En {city}, {lead_stat.lower()} {lead_source}. Un desafio que impacta directamente la seguridad y el bienestar de nuestras familias nicaraguenses."
         act2_narration = f"Nace {project}, desarrollado por {team}. {desc} Nuestro mecanismo combina materia prima local con sensores y control de alta eficiencia."
-        act3_narration = f"La puesta en marcha requiere un costo superficial de $4,850 USD, articulable con programas de infraestructura municipal y cooperativas locales."
+        act3_narration = f"{costo_nacional}, articulable con programas de infraestructura municipal y cooperativas locales."
         act4_narration = f"Alineados con el Plan Nacional de Lucha Contra la Pobreza ({axis}) y los {ods_list}. {project}: innovacion y talento nicaraguense al servicio de la comunidad."
 
     acts = [

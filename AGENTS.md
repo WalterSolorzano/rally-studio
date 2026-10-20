@@ -172,6 +172,7 @@ Un proceso a la vez (bloquea GPU/CPU):
 - NO poner nombre del proyecto en los primeros 20 s del video.
 - NO repetir datos entre secciones del pautado.
 - NO enviar a SIRLI hasta que validate_brief.py, validate_budget.py y validate_pautado.py pasen sin errores.
+- Antes de SIRLI, ejecutar `python arsenal.py check-todo` (duracion <=120 s, coherencia de cifras, caracteres por campo).
 
 ---
 
