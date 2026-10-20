@@ -610,11 +610,17 @@ function broadcastLock(fieldId) {
   if (collaborationChannel) {
     collaborationChannel.postMessage({ type: "SOFT_LOCK", fieldId, mascot: currentClientMascot });
   }
+  if (window.RallySectionSync && typeof window.RallySectionSync.lock === "function") {
+    window.RallySectionSync.lock(fieldId);
+  }
 }
 
 function broadcastRelease(fieldId) {
   if (collaborationChannel) {
     collaborationChannel.postMessage({ type: "RELEASE_LOCK", fieldId });
+  }
+  if (window.RallySectionSync && typeof window.RallySectionSync.release === "function") {
+    window.RallySectionSync.release(fieldId);
   }
 }
 
@@ -821,6 +827,9 @@ function saveState() {
     localStorage.setItem("rally_studio_production_state_2026_v3", JSON.stringify(state));
     if (syncBroadcastChannel) {
       syncBroadcastChannel.postMessage({ type: "AUTO_SYNC_STATE", state });
+    }
+    if (window.RallySectionSync && typeof window.RallySectionSync.onLocalSave === "function") {
+      window.RallySectionSync.onLocalSave(state);
     }
   } catch (e) {}
   updateInspector();

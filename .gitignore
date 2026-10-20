@@ -24,6 +24,9 @@ dashboard/assets_uploads/
 # Buzón de propuestas del agente y espejo de estado (datos del usuario, efímeros)
 dashboard/data/content/
 dashboard/data/state.json
+dashboard/data/sections.db
+dashboard/data/sections.db-shm
+dashboard/data/sections.db-wal
 dashboard/data/applied/
 dashboard/data/discarded/
 

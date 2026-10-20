@@ -202,6 +202,27 @@ El sistema está diseñado bajo el principio de **cero fricción en entornos de 
 - **Exportación e Importación JSON:** posibilidad de descargar el estado completo del proyecto en un archivo ligero (`.json`) para transferirlo por memoria USB o compartirlo entre integrantes sin depender de internet.
 - **Diseño Sobrio y Profesional:** cero distracciones, sin emojis, tipografía optimizada para lectura en ambientes oscuros y largas jornadas de trabajo continuo.
 
+### Compartir el proyecto en tres pasos
+
+```powershell
+# 1. El operador crea el proyecto e imprime el token y un enlace por persona
+python scripts/crear_proyecto.py --project mi-grupo --name "Ana"
+
+# 2. Reparte un join_url por integrante (un solo uso, vence en 48 h)
+# 3. Administra el grupo en:
+#    http://localhost:8000/dashboard/admin.html  (pega el token de operador)
+```
+
+**Blindaje:** sin sesión válida no se lee ni se escribe; `state.json`, `members.db`,
+`sections.db` y el buzón no se sirven como archivos estáticos; las subidas exigen
+sesión; la revocación corta el acceso en ≤1 s y la cola offline de un revocado
+nunca se sube; un proyecto vacío no devuelve datos de otro.
+
+**Límite:** si el wifi del campus aísla clientes (AP isolation), los equipos no se
+ven entre sí y el modo local no funciona. El modo nube está diseñado en
+[`docs/superpowers/specs/2026-10-19-colaboracion-en-vivo-design.md`](docs/superpowers/specs/2026-10-19-colaboracion-en-vivo-design.md),
+pero todavía no está implementado.
+
 ---
 
 ## Instalación y Uso Rápido (Windows)
