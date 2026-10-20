@@ -47,9 +47,9 @@ def test_accept_failure_returns_false():
     assert datos["ok"] is False
 
 
-def test_state_is_posted_to_server():
+def test_content_bridge_does_not_post_full_state():
     datos = correr("subir-estado", {"team_name": "Ñandú"})
-    assert any(
+    assert not any(
         c.get("kind") == "fetch" and c.get("url") == "/api/state" and c.get("method") == "POST"
         for c in datos["llamadas"]
     )
