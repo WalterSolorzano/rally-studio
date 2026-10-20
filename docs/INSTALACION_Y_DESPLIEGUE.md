@@ -274,9 +274,10 @@ caduca en 48 h. La persona lo abre, escribe su nombre y entra al tablero; no
 instala Python ni configura nada. Todos pueden editar lo que la interfaz permite.
 
 **Paso 3 — administrar el grupo.** Abre
-`http://localhost:8000/dashboard/admin.html` con la sesión del operador para
-crear más invitaciones o revocar a alguien. La revocación corta el acceso en el
-siguiente sondeo (≤1 s).
+`http://localhost:8000/dashboard/admin.html`, pega el `token` que imprimió el
+CLI en **Sesión de operador** y pulsa *Usar sesión*. Desde ahí puedes crear más
+invitaciones o revocar a alguien. La revocación corta el acceso en el siguiente
+sondeo (≤1 s).
 
 Para que los enlaces funcionen, los demás equipos deben alcanzar la IP del
 operador en la misma red (`http://192.168.x.x:8000/dashboard/...`). Muchas redes

@@ -197,7 +197,7 @@ Rally Studio adapta su interfaz según el certamen activo seleccionado en la Fas
 
 El sistema está diseñado bajo el principio de **cero fricción en entornos de red universitarios**:
 - **Sincronización por secciones:** el tablero guarda en el servidor local solo lo que cambió, con versión y autor. Dos personas no se pisan: un conflicto muestra ambas versiones y nunca se fusiona solo.
-- **Invitaciones de un solo uso:** el operador crea el proyecto y reparte un enlace por persona (48 h por defecto). Cada miembro entra sin instalar nada; el acceso se revoca desde `dashboard/admin.html` y se corta en ≤1 s.
+- **Invitaciones de un solo uso:** el operador crea el proyecto y reparte un enlace por persona (48 h por defecto). Cada miembro entra sin instalar nada; el acceso se revoca desde `dashboard/admin.html` (pega allí el token de operador que imprime el CLI) y se corta en ≤1 s.
 - **Persistencia en LocalStorage:** el progreso se conserva intacto ante cierres accidentales de pestaña o reinicios del equipo, y sigue editable sin red.
 - **Exportación e Importación JSON:** posibilidad de descargar el estado completo del proyecto en un archivo ligero (`.json`) para transferirlo por memoria USB o compartirlo entre integrantes sin depender de internet.
 - **Diseño Sobrio y Profesional:** cero distracciones, sin emojis, tipografía optimizada para lectura en ambientes oscuros y largas jornadas de trabajo continuo.

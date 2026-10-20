@@ -6,6 +6,9 @@
   const inviteBtn = document.getElementById("create-invite");
   const copyBtn = document.getElementById("copy-invite");
   const inviteOut = document.getElementById("invite-url");
+  const tokenInput = document.getElementById("admin-token");
+  const saveTokenBtn = document.getElementById("save-token");
+  const sessionState = document.getElementById("session-state");
 
   function project() {
     const fromUrl = new URLSearchParams(location.search).get("project");
@@ -145,6 +148,46 @@
     }
   }
 
+  async function cargarSesion() {
+    if (!token()) {
+      sessionState.textContent = "Sin sesión: pega el token que imprimió crear_proyecto.py.";
+      return false;
+    }
+    try {
+      const res = await api("/api/session");
+      if (!res.ok) {
+        sessionState.textContent = "La sesión venció o no es válida. Pega un token nuevo.";
+        return false;
+      }
+      localStorage.setItem("rally_project", res.body.project || project());
+      localStorage.setItem("rally_member_id", res.body.member.id);
+      localStorage.setItem("rally_member_name", res.body.member.name);
+      localStorage.setItem("rally_member_role", res.body.member.role);
+      sessionState.textContent = "Sesión: " + res.body.member.name + " · " + res.body.member.role;
+      return true;
+    } catch (e) {
+      sessionState.textContent = "No se pudo contactar al servidor.";
+      return false;
+    }
+  }
+
+  async function guardarSesion() {
+    const value = (tokenInput.value || "").trim();
+    if (!value) {
+      status("Pega el token del operador.");
+      return;
+    }
+    localStorage.setItem("rally_session_token", value);
+    saveTokenBtn.disabled = true;
+    const ok = await cargarSesion();
+    saveTokenBtn.disabled = false;
+    tokenInput.value = "";
+    if (ok) {
+      status("");
+      cargarMiembros();
+    }
+  }
+
   copyBtn.addEventListener("click", async function () {
     const url = copyBtn.dataset.url || "";
     if (!url) return;
@@ -157,5 +200,6 @@
   });
 
   inviteBtn.addEventListener("click", crearInvitacion);
-  cargarMiembros();
+  saveTokenBtn.addEventListener("click", guardarSesion);
+  cargarSesion().then(function (ok) { if (ok) cargarMiembros(); });
 })();

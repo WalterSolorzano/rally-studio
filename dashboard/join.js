@@ -50,6 +50,11 @@
         button.disabled = false;
         return;
       }
+      const previous = localStorage.getItem("rally_project") || "main";
+      if (previous !== body.project) {
+        localStorage.removeItem("rally_studio_production_state_2026_v3");
+        localStorage.removeItem("rally_section_sync_meta_v1");
+      }
       localStorage.setItem("rally_session_token", body.session);
       localStorage.setItem("rally_project", body.project);
       localStorage.setItem("rally_member_id", body.member.id);

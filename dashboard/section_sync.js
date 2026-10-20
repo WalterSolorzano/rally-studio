@@ -95,6 +95,8 @@
 
   const actorId = () => {
     try {
+      const member = localStorage.getItem("rally_member_id");
+      if (member) return member;
       let id = localStorage.getItem("rally_sync_client_id");
       if (!id) {
         id = "cli_" + Math.random().toString(36).slice(2, 10) + Date.now().toString(36).slice(-5);
@@ -215,7 +217,7 @@
       const text = await res.text();
       let body = {};
       try { body = text ? JSON.parse(text) : {}; } catch (e) { body = {}; }
-      if (res.status === 401 || res.status === 403) {
+      if (res.status === 401) {
         accessRevoked = true;
         serverAvailable = false;
         setStatus("Acceso revocado · tus cambios quedan en este equipo", "offline");
@@ -442,6 +444,7 @@
           method: "POST",
           body: JSON.stringify({ actor: actor(), actor_id: actorId(), ttl_minutes: LOCK_TTL_MIN }),
         });
+        if (accessRevoked) { failed = true; break; }
         if (locked.status === 423) {
           blocked.add(key);
           setStatus((locked.body.lock && locked.body.lock.lock_owner ? locked.body.lock.lock_owner : "Otra persona") + " está editando " + labelFor(key), "locked");
@@ -457,6 +460,7 @@
             ttl_minutes: LOCK_TTL_MIN,
           }),
         });
+        if (accessRevoked) { failed = true; break; }
         if (res.status === 409) {
           blocked.add(key);
           queueConflict(key, data, res.body.current);
@@ -479,6 +483,12 @@
         blocked.delete(key);
         locks[key] = section;
         renderLockBadge(key, section);
+        if (!NO_LOCK.has(key)) {
+          api(sectionPath(key) + "/unlock", {
+            method: "POST",
+            body: JSON.stringify({ actor: actor(), actor_id: actorId() }),
+          }).catch(function () {});
+        }
       } catch (e) {
         failed = true;
         serverAvailable = false;

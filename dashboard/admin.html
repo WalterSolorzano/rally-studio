@@ -51,6 +51,16 @@
 
     <p id="admin-status" role="status" aria-live="polite"></p>
 
+    <section class="admin-panel" aria-labelledby="session-title">
+      <h2 id="session-title">Sesión de operador</h2>
+      <p class="admin-lead" style="margin-bottom:12px">Pega el token que imprimió <code>crear_proyecto.py</code>. Solo hace falta la primera vez en este navegador.</p>
+      <div class="admin-actions">
+        <input id="admin-token" type="password" autocomplete="off" placeholder="Token de operador" aria-label="Token de operador" style="min-height:42px;flex:1 1 260px;padding:0 12px;border:1px solid var(--line,#d9d4c8);border-radius:8px;font:inherit">
+        <button id="save-token" class="primary" type="button">Usar sesión</button>
+      </div>
+      <p id="session-state" class="admin-lead" style="margin:12px 0 0"></p>
+    </section>
+
     <section class="admin-panel" aria-labelledby="invite-title">
       <h2 id="invite-title">Invitar a una persona</h2>
       <div class="admin-actions">
@@ -65,6 +75,6 @@
       <div id="members-list"></div>
     </section>
   </main>
-  <script src="admin.js" defer></script>
+  <script src="admin.js?v=20261019_rev12" defer></script>
 </body>
 </html>

@@ -51,7 +51,11 @@ toca la terminal.
 - Con miembros creados, toda lectura y escritura exige
   `Authorization: Bearer <token>`; sin él la API responde **401**.
 - Las invitaciones caducan (48 h por defecto) y se pueden emitir más desde
-  `dashboard/admin.html`, donde también se revoca a alguien.
+  `dashboard/admin.html`, donde también se revoca a alguien. La primera vez,
+  pega allí el token de operador que imprimió `crear_proyecto.py`; el navegador
+  lo guarda como sesión.
+- `state.json`, las bases `members.db` y `sections.db` y el buzón no se
+  sirven como archivos estáticos: solo se leen por la API autenticada.
 - Un miembro revocado recibe **401** en el siguiente sondeo (≤1 s). Sus cambios
   sin subir se quedan en su navegador y se pueden exportar; **nunca se suben**.
 - Un proyecto sin miembros (por ejemplo `localhost:8000` recién instalado)

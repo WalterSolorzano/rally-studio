@@ -132,7 +132,13 @@ def ensure_section_migration() -> None:
 
 
 def mirror_state_to_disk(project_id: str = "main") -> None:
-    """Mantiene dashboard/data/state.json como espejo legible/exportable."""
+    """Mantiene dashboard/data/state.json como espejo legible/exportable.
+
+    Solo el proyecto `main` usa el espejo global: escribir el estado de otro
+    proyecto encima borraría la exportación de quien trabaja en local.
+    """
+    if project_id != "main":
+        return
     try:
         state = SECTION_STORE.read_state(project_id)
         if state:
@@ -266,11 +272,19 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
         self.send_header("Cache-Control", "no-cache, no-store, must-revalidate")
         self.send_header("Pragma", "no-cache")
         self.send_header("Expires", "0")
+        self.send_header("X-Content-Type-Options", "nosniff")
         super().end_headers()
+
+    def log_message(self, format, *args):
+        message = format % args
+        message = re.sub(r"([?&]t=)[^&\s\"]+", r"\1***", message)
+        super().log_message("%s", message)
 
     def do_GET(self):
         url = urllib.parse.urlparse(self.path)
         req_path = urllib.parse.unquote(url.path)
+        if not self.project_param_ok(url.query):
+            return
         if req_path == "/api/telemetry":
             self.send_telemetry()
         elif req_path in ("/health", "/api/health"):
@@ -324,7 +338,7 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
             if self.require_member(project) is None:
                 return
             state = SECTION_STORE.read_state(project)
-            if not state:
+            if not state and project == "main":
                 state = CONTENT_STORE.read_state() or {}
             self.send_json_response(200, {"state": state, "project": project}, cors=False)
         elif req_path == "/api/sections":
@@ -387,6 +401,9 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
                 clean_path = "/"
 
             rel = clean_path.lstrip("/")
+            if self.private_static(rel):
+                self.send_json_response(404, {"ok": False, "error": "no-encontrado"}, cors=False)
+                return
             if not rel or rel == "index.html":
                 target = DASHBOARD_DIR / "index.html"
                 if target.exists():
@@ -415,6 +432,8 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
 
     def do_POST(self):
         url = urllib.parse.urlparse(self.path)
+        if not self.project_param_ok(url.query):
+            return
         if url.path == "/api/ai":
             length = int(self.headers.get("Content-Length", 0))
             body = self.rfile.read(length).decode("utf-8", errors="replace")
@@ -460,6 +479,9 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
             except Exception as e:
                 self.send_json_response(500, {"status": "error", "message": str(e)})
         elif url.path == "/api/asset-upload":
+            project = self.project_id(url.query)
+            if self.require_member(project) is None:
+                return
             length = int(self.headers.get("Content-Length", 0))
             body = self.rfile.read(length)
             try:
@@ -582,6 +604,34 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
             return "main"
         return project
 
+    def project_param_ok(self, query: str = "") -> bool:
+        """Rechaza ids de proyecto inválidos en vez de caer en `main`."""
+        params = urllib.parse.parse_qs(query or "")
+        if "project" not in params:
+            return True
+        raw = (params.get("project", [""])[0] or "").strip()
+        if re.match(r"^[A-Za-z0-9_-]{1,64}$", raw):
+            return True
+        self.send_json_response(400, {"ok": False, "error": "proyecto-invalido"}, cors=True)
+        return False
+
+    def private_static(self, rel: str) -> bool:
+        """Nada privado del proyecto se sirve como archivo estático."""
+        rel = (rel or "").replace("\\", "/").lower()
+        if rel.startswith("data/"):
+            name = rel.rsplit("/", 1)[-1]
+            if rel.startswith("data/content/"):
+                return True
+            if name == "state.json" or name.startswith("state_") and name.endswith(".json"):
+                return True
+            if name.endswith((".db", ".db-wal", ".db-shm", ".sqlite")):
+                return True
+        if rel.startswith("assets_uploads/"):
+            ext = rel.rsplit(".", 1)[-1] if "." in rel.rsplit("/", 1)[-1] else ""
+            if ext in ("html", "htm", "svg", "xml"):
+                return True
+        return False
+
     def read_json_body(self) -> dict:
         length = int(self.headers.get("Content-Length", 0))
         raw = self.rfile.read(length).decode("utf-8", errors="replace") if length else "{}"
@@ -618,6 +668,9 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
             return None
         if member["id"] == "legacy":
             actor, actor_id = self.actor_from(data)
+            return actor, actor_id, member
+        actor, actor_id = self.actor_from(data)
+        if actor_id.lower() == "ia" or actor.upper().startswith("IA"):
             return actor, actor_id, member
         return member["name"], member["id"], member
 
@@ -920,6 +973,15 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
             return None
         if parsed.scheme not in ("http", "https") or not host:
             return None
+        host_header = (self.headers.get("Host") or "").strip().lower()
+        same_host = ""
+        if host_header:
+            try:
+                same_host = (urllib.parse.urlsplit("//" + host_header).hostname or "").strip().lower()
+            except Exception:
+                same_host = ""
+        if same_host and host == same_host:
+            return origin
         if host in ("localhost", "127.0.0.1", "::1"):
             return origin
         try:
