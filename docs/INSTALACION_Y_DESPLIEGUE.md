@@ -227,14 +227,14 @@ opencode auth login                 # opcional: IA gratis
 RALLY_SERVICE_PORT=8000 nohup python3 scripts/rally_service.py > rally.log 2>&1 &
 ```
 
-- **Varios equipos a la vez:** el tablero ya trae colaboración en vivo
-  (mismo navegador/origen, canal `BroadcastChannel`) para ideas, votos,
-  solución y recursos de video.
+- **Varios equipos a la vez:** un operador crea el proyecto y reparte un enlace
+  de un solo uso por persona. Todos editan secciones en vivo (≤3 s). Ver
+  [sección 9.1](#91-compartir-el-proyecto-con-el-equipo).
 - **Puertos:** `RALLY_SERVICE_PORT` (por defecto 8000; alterna a 8080/8001/8008
   si está ocupado).
 - **HTTPS/reverse proxy:** si lo expones fuera de la red local, ponlo detrás de
-  Nginx/Caddy con TLS. No hay login (por diseño): cada persona recibe una
-  mascota-identidad automática. **No lo expongas a Internet sin autenticación.**
+  Nginx/Caddy con TLS. Las invitaciones protegen el acceso, pero el tráfico sin
+  TLS viaja en claro: **no lo expongas a Internet sin HTTPS.**
 - **Arranque automático (systemd):**
 
 ```ini
@@ -257,6 +257,34 @@ WantedBy=multi-user.target
 ```bash
 sudo systemctl enable --now rally-studio
 ```
+
+### 9.1 Compartir el proyecto con el equipo
+
+**Paso 1 — crear el proyecto (solo el operador, una vez):**
+
+```powershell
+python scripts/crear_proyecto.py --project mi-grupo --name "Ana"
+```
+
+Guarda el `token` que imprime: es la sesión de operador. El comando también
+genera el primer `join_url`.
+
+**Paso 2 — repartir un enlace por persona.** Cada enlace es de un solo uso y
+caduca en 48 h. La persona lo abre, escribe su nombre y entra al tablero; no
+instala Python ni configura nada. Todos pueden editar lo que la interfaz permite.
+
+**Paso 3 — administrar el grupo.** Abre
+`http://localhost:8000/dashboard/admin.html` con la sesión del operador para
+crear más invitaciones o revocar a alguien. La revocación corta el acceso en el
+siguiente sondeo (≤1 s).
+
+Para que los enlaces funcionen, los demás equipos deben alcanzar la IP del
+operador en la misma red (`http://192.168.x.x:8000/dashboard/...`). Muchas redes
+universitarias aíslan a los clientes entre sí: si un compañero no abre el
+enlace, prueba con un hotspot del operador o publica el servidor en una máquina
+accesible. El modo nube (backend gestionado) está diseñado en
+[`superpowers/specs/2026-10-19-colaboracion-en-vivo-design.md`](superpowers/specs/2026-10-19-colaboracion-en-vivo-design.md),
+pero esta versión implementa el modo local.
 
 ---
 

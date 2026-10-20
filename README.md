@@ -38,13 +38,14 @@
 | Quiero… | Atajo |
 |---|---|
 | Configurar OpenCode o Antigravity paso a paso | [`docs/MANUAL_IA.md`](docs/MANUAL_IA.md) |
+| Compartir el proyecto en vivo con el equipo | `python scripts/crear_proyecto.py --project mi-grupo --name "Ana"` y repartir un enlace por persona ([§9.1](docs/INSTALACION_Y_DESPLIEGUE.md#91-compartir-el-proyecto-con-el-equipo)) |
 | Instalar y correr en mi PC (completo) | `pip install -r requirements.txt` → doble clic en **`Iniciar Rally.bat`** → <http://localhost:8000/dashboard/> |
 | Conectar IA gratis | Instala OpenCode (`npm i -g opencode-ai` + `opencode auth login`) o usa un endpoint OpenAI-compatible ([`AUTO_IA.md`](AUTO_IA.md)) |
 | Publicar la interfaz en GitHub Pages | Activar **Settings → Pages → Source: GitHub Actions** (workflow `.github/workflows/pages.yml` incluido) |
 | Desplegar el sistema completo (con IA) en un servidor | [`docs/INSTALACION_Y_DESPLIEGUE.md` §9](docs/INSTALACION_Y_DESPLIEGUE.md) |
 | Subir esto a GitHub | [`docs/INSTALACION_Y_DESPLIEGUE.md` §10](docs/INSTALACION_Y_DESPLIEGUE.md) |
 
-> **Dos modos:** en local tienes todo (telemetría, OCR, IA automática, colaboración en vivo).
+> **Dos modos:** en local tienes todo (telemetría, OCR, IA automática, colaboración en vivo con invitaciones).
 > En GitHub Pages solo la interfaz (los datos se guardan en tu navegador).
 
 ---
@@ -195,16 +196,17 @@ Rally Studio adapta su interfaz según el certamen activo seleccionado en la Fas
 ## Resiliencia en Redes Universitarias Hostiles
 
 El sistema está diseñado bajo el principio de **cero fricción en entornos de red universitarios**:
-- **100% Client-Side:** Toda la lógica, almacenamiento de estado, extracción de documentos (.docx, .pdf, .zip) y renderizado ocurren localmente en el navegador.
-- **Persistencia en LocalStorage:** El progreso se conserva intacto ante cierres accidentales de pestaña o reinicios del equipo.
-- **Exportación e Importación JSON:** Posibilidad de descargar el estado completo del proyecto en un archivo ligero (`.json`) para transferirlo por memoria USB o compartirlo entre integrantes sin depender de internet.
-- **Diseño Sobrio y Profesional:** Cero distracciones, sin emojis, tipografía optimizada para lectura en ambientes oscuros y largas jornadas de trabajo continuo.
+- **Sincronización por secciones:** el tablero guarda en el servidor local solo lo que cambió, con versión y autor. Dos personas no se pisan: un conflicto muestra ambas versiones y nunca se fusiona solo.
+- **Invitaciones de un solo uso:** el operador crea el proyecto y reparte un enlace por persona (48 h por defecto). Cada miembro entra sin instalar nada; el acceso se revoca desde `dashboard/admin.html` y se corta en ≤1 s.
+- **Persistencia en LocalStorage:** el progreso se conserva intacto ante cierres accidentales de pestaña o reinicios del equipo, y sigue editable sin red.
+- **Exportación e Importación JSON:** posibilidad de descargar el estado completo del proyecto en un archivo ligero (`.json`) para transferirlo por memoria USB o compartirlo entre integrantes sin depender de internet.
+- **Diseño Sobrio y Profesional:** cero distracciones, sin emojis, tipografía optimizada para lectura en ambientes oscuros y largas jornadas de trabajo continuo.
 
 ---
 
 ## Instalación y Uso Rápido (Windows)
 
-Requisitos: **Python 3.10+** y, para el puente de IA automático, **OpenCode** (`npm i -g opencode-ai`) o cualquier endpoint OpenAI-compatible. El tablero en sí es 100% client-side y funciona sin nada de esto.
+Requisitos: **Python 3.10+** y, para el puente de IA automático, **OpenCode** (`npm i -g opencode-ai`) o cualquier endpoint OpenAI-compatible. La interfaz funciona sin servidor, pero la colaboración en vivo y la IA requieren el servicio local.
 
 ```powershell
 pip install -r requirements.txt
