@@ -26,3 +26,13 @@ def test_section_sync_blocks_seeding_for_plain_members():
     js = (DASH / "section_sync.js").read_text(encoding="utf-8")
     assert '"operator"' in js and '"admin"' in js
     assert "sections/import" in js
+
+
+def test_admin_page_has_member_and_invite_controls():
+    html = (DASH / "admin.html").read_text(encoding="utf-8")
+    js = (DASH / "admin.js").read_text(encoding="utf-8")
+    assert 'id="members-list"' in html
+    assert 'id="create-invite"' in html
+    assert "/api/members" in js
+    assert "/api/invites" in js
+    assert "/revoke" in js
