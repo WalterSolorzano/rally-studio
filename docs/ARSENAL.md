@@ -74,7 +74,8 @@ verificadas. Esta en el registro como pendiente, no como opcion.
 
 `plantillas/contadores/index.html` es una pieza autocontenida para grabar con Playwright u
 OBS. Si `plantillas/gsap.min.js` no existe, muestra los valores finales sin animacion: nunca
-rompe la grabacion. Descarga GSAP desde el repo oficial y respeta su licencia.
+rompe la grabacion. GSAP 3.13.0 ya esta incluido en `plantillas/gsap.min.js` bajo la
+GSAP Standard License (no es MIT); el banner de licencia se conserva.
 
 ## Lo que no se trajo del kit
 

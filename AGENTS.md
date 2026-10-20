@@ -130,14 +130,14 @@ Tu contexto es: `brief.json` + este archivo. Nada más hasta que hayas leído am
 - Conectar con **Plan Nacional de Lucha contra la Pobreza y para el Desarrollo Humano 2022–2026**
 - Mencionar ODS relevantes animados con la paleta del proyecto
 - Citar **Ciudades Creativas** si el proyecto aplica
-- Presupuesto puede incluir C$ (córdobas) con tasa del BCN
+- Presupuesto **siempre en córdobas (C$)** con la tasa del BCN declarada en `brief.json` (`exchange_rate_bcn`); el USD puede ir como referencia, nunca como moneda principal
 
 ### Latam (28h)
 - Categorías: Innovación / Impacto Social
 - Jurado: académicos internacionales (NO nicaragüenses)
 - El municipio es el **"laboratorio piloto"** — no el único destino
 - La solución es **modular, paramétrica y replicable** en toda LATAM
-- Costos siempre en **USD**
+- Presupuesto **siempre en USD**; sin C$ ni tasas locales, aunque el piloto sea nicaragüense
 - Sin siglas gubernamentales locales que un evaluador extranjero no entienda
 - Cierre del video: "piloto en [ciudad], replicable en toda América Latina"
 
@@ -181,7 +181,9 @@ Un proceso a la vez (bloquea GPU/CPU):
 ```
 brief.json           → fuente única de verdad
 research/claims.json → [{stat, source, url, year, accessed}]
-budget/budget.json   → [{element, description, units, unit_cost_usd, total, url, screenshot, date}]
+budget/budget.json   → [{element, description, units, unit_cost_usd|unit_cost_nio, total, url, screenshot, date}]
+                       Nacional: unit_cost_nio (C$) + exchange_rate_bcn en brief.json
+                       Latam:    unit_cost_usd (USD), sin conversión local
 script/shotlist.csv  → [id, act, description, asset_id, asset_type, duration_s, status, notes]
 brand/palette.json   → {primary, secondary, accent, bg, text}
 brand/tokens.css     → variables CSS derivadas de palette.json

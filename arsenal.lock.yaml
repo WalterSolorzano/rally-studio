@@ -64,10 +64,10 @@ diseno:
   estado: instalado
 - nombre: gsap
   rol: Contadores y transiciones del Acto IV
-  licencia: MIT (uso comercial en plan gratuito con limites)
-  version: ''
-  estado: plantilla
-  notas: Solo para piezas HTML grabadas; no para el video completo en Blender.
+  licencia: GSAP Standard License (gratis; no es MIT ni OSI)
+  version: 3.13.0
+  estado: instalado
+  notas: Archivo local en plantillas/gsap.min.js con banner de licencia intacto. Revisar terminos antes de uso comercial.
 - nombre: color-palette
   rol: Extraer dominantes de una imagen
   licencia: MIT
