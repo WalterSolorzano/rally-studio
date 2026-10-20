@@ -1,3 +1,7 @@
+import json
+import subprocess
+import sys
+
 import pytest
 
 from scripts.member_store import MemberStore
@@ -63,3 +67,17 @@ def test_operator_can_invite_and_member_cannot(tmp_path):
         store.create_invite("main", luis["member"]["id"])
     store.set_role("main", luis["member"]["id"], "operator")
     assert store.create_invite("main", luis["member"]["id"])["token"]
+
+
+def test_bootstrap_cli_prints_join_url(tmp_path):
+    out = subprocess.run(
+        [sys.executable, "scripts/crear_proyecto.py",
+         "--project", "equipo01", "--name", "Ana",
+         "--data-dir", str(tmp_path)],
+        capture_output=True, text=True, encoding="utf-8", timeout=30,
+    )
+    assert out.returncode == 0, out.stderr
+    data = json.loads(out.stdout)
+    assert data["project"] == "equipo01"
+    assert data["join_url"].startswith("join.html?t=")
+    assert data["member"]["role"] == "admin"
