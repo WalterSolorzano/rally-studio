@@ -3,6 +3,8 @@ scripts/freellmapi.key
 *.key
 .env
 .env.*
+# ...salvo la plantilla sin valores
+!.env.example
 
 # Descargas y artefactos del instalador de IA gratis
 tools/freellmapi/
@@ -75,3 +77,12 @@ desktop.ini
 
 # Cache interno que graphify crea dentro del corpus al reconstruir
 brain/corpus/graphify-out/
+
+# Locks de recursos del orquestador: por maquina, nunca al repo
+locks/
+
+# Configuracion real de la maquina de trabajo (la plantilla es env.example.json)
+env.json
+
+# Basura de Blender y renders de prueba
+blender/tmp/

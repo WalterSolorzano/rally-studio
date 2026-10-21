@@ -4,6 +4,7 @@
 [![Certámenes](https://img.shields.io/badge/Certamen-Rally%20Latam%20%2828h%29%20%7C%20Nicaragua%20Innova%20%2824h%29-1D4ED8.svg)](#)
 [![Graphify Brain](https://img.shields.io/badge/Cerebro%20Graphify-420%20Nodos%20%7C%20732%20Aristas-6366F1.svg)](#cerebro-de-conocimiento-en-qué-se-basa-el-sistema)
 [![Diseño](https://img.shields.io/badge/Diseño-Precisión%20Táctica%20%7C%20Zero%20Emojis-0D1B35.svg)](#)
+[![Agentes](https://img.shields.io/badge/IA-Equipo%20de%20Especialistas%20%7C%20Guardia%20de%20GPU-16a34a.svg)](docs/EQUIPO_AGENTES.md)
 
 > **Workbench interactivo secuencial para guiar, estructurar y optimizar el desempeño metodológico de equipos universitarios en maratones de innovación de 24 y 28 horas continuas (Rally Latinoamericano de Innovación y Rally Nacional Nicaragua Innova).**
 
@@ -27,6 +28,7 @@
 - [Resiliencia en Redes Universitarias Hostiles](#resiliencia-en-redes-universitarias-hostiles)
 - [Instalación y Uso Rápido (Windows)](#instalación-y-uso-rápido-windows)
 - [IA Gratis Local (Opcional, Recomendado)](#ia-gratis-local-opcional-recomendado)
+- [Equipo de Agentes Especialistas (orquestación)](#equipo-de-agentes-especialistas-orquestación)
 
 ---
 
@@ -41,6 +43,7 @@
 | Compartir el proyecto en vivo con el equipo | `python scripts/crear_proyecto.py --project mi-grupo --name "Ana"` y repartir un enlace por persona ([§9.1](docs/INSTALACION_Y_DESPLIEGUE.md#91-compartir-el-proyecto-con-el-equipo)) |
 | Instalar y correr en mi PC (completo) | `pip install -r requirements.txt` → doble clic en **`Iniciar Rally.bat`** → <http://localhost:8000/dashboard/> |
 | Conectar IA gratis | Instala OpenCode (`npm i -g opencode-ai` + `opencode auth login`) o usa un endpoint OpenAI-compatible ([`AUTO_IA.md`](AUTO_IA.md)) |
+| Ver cómo el sistema monta un equipo de agentes especialistas | [`docs/EQUIPO_AGENTES.md`](docs/EQUIPO_AGENTES.md) |
 | Publicar la interfaz en GitHub Pages | Activar **Settings → Pages → Source: GitHub Actions** (workflow `.github/workflows/pages.yml` incluido) |
 | Desplegar el sistema completo (con IA) en un servidor | [`docs/INSTALACION_Y_DESPLIEGUE.md` §9](docs/INSTALACION_Y_DESPLIEGUE.md) |
 | Subir esto a GitHub | [`docs/INSTALACION_Y_DESPLIEGUE.md` §10](docs/INSTALACION_Y_DESPLIEGUE.md) |
@@ -57,6 +60,33 @@ Rally Studio es una herramienta de ingeniería metodológica desarrollada desde 
 En un certamen de 28 horas continuas, la causa principal de derrota no es la falta de creatividad, sino la **fatiga cognitiva**, la pérdida de tiempo estructurando documentos pautados a última hora, la incongruencia entre el presupuesto y el video pitch (120 s), y el desconocimiento de las rúbricas evaluadoras.
 
 Rally Studio sustituye la improvisación por un **flujo estricto guiado** que lleva al equipo paso a paso desde el análisis de las bases hasta la entrega final verificada.
+
+---
+
+## Equipo de Agentes Especialistas (orquestación)
+
+> **Rally Studio no es un asistente: es un equipo.** Un **director** despacha
+> especialistas que trabajan **a la vez** sobre los mismos contratos de
+> producción — y una **guardia técnica de GPU/CPU/RAM** garantiza que los
+> procesos pesados (Blender, ffmpeg, TTS, grabación) no choquen por recursos.
+
+- **Cada pieza se justifica sola**: existe una *toma* del video (contrato YAML)
+  que la pide **y** un criterio de la **rúbrica** que sostiene. Nada se produce
+  "porque sí"; nada de cubos hechos "sensor".
+- **Guionista y modeler se hablan por contrato**, no por memoria: la lista de
+  tomas (`shots/*.yaml` → `shotlist.csv`) dice qué pieza entra en cámara, en
+  qué acto y por cuántos segundos; la lista de materiales (`budget/bom.csv`)
+  da componentes reales, dimensiones en mm y precios con URL.
+- **Ficha técnica obligatoria antes de modelar**: materiales elegidos y
+  justificados antes de la geometría, espacio real para cables y tornillos,
+  diseño pensado para la cámara, validación física mínima y techo global de
+  horas 3D.
+- **Guardia de recursos con PID, prioridad y timeout**: creación y robo
+  atómicos, auto-limpieza de huérfanos, bloqueo de llamadas directas a
+  binarios pesados. La PC no se congela.
+- **Tablero en vivo del equipo**: `python scripts/orchestrate.py status`.
+
+Detalle completo, roles y comandos: **[`docs/EQUIPO_AGENTES.md`](docs/EQUIPO_AGENTES.md)**.
 
 ---
 
