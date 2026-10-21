@@ -101,8 +101,61 @@ switch (comando) {
     const n = sandbox.normalizeIdentity(id);
     salir({
       impact: n.impacto && n.impacto.odsOn && n.impacto.odsOn["12"] === false,
-     impactoCompleto: !!n.impacto && n.impacto.dur === 5 && !!n.impacto.anim,
+      impactoCompleto: !!n.impacto && n.impacto.dur === 5 && !!n.impacto.anim,
     });
+    break;
+  }
+  // --- Task 4: composicion y pintadores ---
+  case "ods-activos": {
+    const [ident, briefOds] = JSON.parse(process.argv[3]);
+    const filas = typeof sandbox.odsActivos === "function" ? sandbox.odsActivos(ident, briefOds) : null;
+    salir({ filas });
+    break;
+  }
+  case "modo": {
+    const [ident, brief] = JSON.parse(process.argv[3]);
+    const modo = typeof sandbox.modoEfectivo === "function" ? sandbox.modoEfectivo(ident, brief) : null;
+    salir({ modo });
+    break;
+  }
+  case "tinta": {
+    const hexa = JSON.parse(process.argv[3]);
+    const color = typeof sandbox.tintaSobre === "function" ? sandbox.tintaSobre(hexa) : null;
+    const ratio = color ? sandbox.contrastRatio(color, hexa) : null;
+    salir({ color, ratio });
+    break;
+  }
+  case "componer": {
+    const { tipo, estado, odsSel } = JSON.parse(process.argv[3]);
+    if (typeof sandbox.componerLamina !== "function") { salir({ error: "componerLamina ausente" }); break; }
+    const prims = sandbox.componerLamina(tipo, estado, odsSel);
+    salir({
+      n: prims.length,
+      ks: prims.map((p) => p.k),
+      rectColores: prims.filter((p) => p.k === "rect").map((p) => p.color),
+      textos: prims.filter((p) => p.k === "txt").map((p) => p.text),
+    });
+    break;
+  }
+  case "canvas": {
+    const { tipo, estado, odsSel, escala } = JSON.parse(process.argv[3]);
+    if (typeof sandbox.pintarCanvas !== "function") { salir({ error: "pintarCanvas ausente" }); break; }
+    const usados = new Set();
+    const reg = (k) => { usados.add(k); return () => { usados.add(k); }; };
+    const mock = {
+      save: reg("save"), restore: reg("restore"), scale: reg("scale"), translate: reg("translate"),
+      beginPath: reg("beginPath"), closePath: reg("closePath"),
+      rect: reg("rect"), roundRect: reg("roundRect"), arc: reg("arc"),
+      fill: reg("fill"), stroke: reg("stroke"), fillText: reg("fillText"), measureText: () => ({ width: 10 }),
+      setProperty: reg("x"),
+    };
+    let fillStyleVals = [];
+    Object.defineProperty(mock, "fillStyle", { set(v) { fillStyleVals.push(v); }, get() { return "#000"; } });
+    let fontVals = [];
+    Object.defineProperty(mock, "font", { set(v) { fontVals.push(v); }, get() { return ""; } });
+    sandbox.Path2D = function (d) { this.d = d; };
+    sandbox.pintarCanvas(mock, sandbox.componerLamina(tipo, estado, odsSel), escala || 1);
+    salir({ usados: Array.from(usados).sort(), fillStyleVals, fontVals });
     break;
   }
   default:
