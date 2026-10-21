@@ -38,7 +38,13 @@ const sandbox = {
   location: { protocol: "http:" },
   localStorage: memoria(store),
   sessionStorage: memoria(Object.create(null)),
-  document: { readyState: "complete" },
+  document: {
+    readyState: "complete",
+    addEventListener: () => {},
+    querySelector: () => null,
+    getElementById: () => null,
+    createElement: () => ({ style: {}, setAttribute() {}, appendChild() {} }),
+  },
   fetch: () => Promise.reject(new Error("sin red en la sonda")),
 };
 sandbox.window = sandbox;

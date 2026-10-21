@@ -1,0 +1,49 @@
+/* Impacto y Plan Pais — solo lo propio del modulo.
+   El chrome (tokens, layout, controles) vive en kit.css. */
+
+.lbl-div {
+  display: block;
+  font-family: var(--rs-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--rs-muted);
+  margin: 14px 0 6px;
+}
+
+/* Escenario 16:9 con lamina fija de 1920x1080 escalada por contenedor. */
+.preview-frame .thumb-stage { background: #fff; }
+
+.lamina-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 1080px;
+  transform: scale(var(--k, 1));
+  transform-origin: top left;
+  overflow: hidden;
+  font-family: var(--rs-sans);
+}
+
+/* Rango propio de la lamina 1920 (mas grande que el thumb de 1280). */
+@container (max-width:1150px){.lamina-canvas{--k:.56}}
+@container (max-width: 980px){.lamina-canvas{--k:.48}}
+@container (max-width: 800px){.lamina-canvas{--k:.38}}
+@container (max-width: 620px){.lamina-canvas{--k:.3}}
+@container (max-width: 460px){.lamina-canvas{--k:.22}}
+
+/* Primitivas del compositor (pintarDOM). */
+.lamina-canvas .p-rect { position: absolute; }
+.lamina-canvas .p-txt { position: absolute; margin: 0; white-space: pre-wrap; }
+.lamina-canvas .p-ico { position: absolute; display: block; }
+
+/* Chips ODS de la columna de controles. */
+#chipsOds label.check, #planProg label.check { display: inline-flex; gap: 6px; align-items: center; margin: 0 10px 6px 0; }
+#chipsOds .chipcolor { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+
+/* Marca de propuesta sin aplicar (IA). */
+.lamina-canvas .p-txt.propuesta, textarea.propuesta { outline: 2px dashed var(--rs-accent); }
+textarea.propuesta { border-radius: var(--rs-r-sm); }
+
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 10px 0 0; }
