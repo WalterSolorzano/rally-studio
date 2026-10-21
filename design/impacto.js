@@ -9,6 +9,8 @@ var IMP = loadIdentity();
 var IMP_TIPOS = ['mosaico', 'ficha', 'plan'];
 var IMP_ANCHO = 1920;
 var IMP_ALTO = 1080;
+var IMP_SELECCION = null;   // ODS elegido para la lámina ficha (runtime)
+var compositorListo = true; // flag de la tarea de composicion (stub legado)
 
 // Programas articulables del plan nacional (rutura: chips checkbox).
 var IMP_PROGRAMAS = [
@@ -307,8 +309,42 @@ var RALLY_IMPACTO_PRESETS = [
   { id: 'ficha', nombre: 'Ficha individual', tipo: 'ficha' }
 ];
 
-// PENDIENTE tareas 5–8: animacion (tamanosFase/faseEn), export PNG,
-// grabacion WebM con microfono y fallback ZIP, narration con IA.
+// ---------- Task 5: timeline de animacion ----------
+
+// Vocabulario cerrado: entrada fade|slide-izq|slide-arriba|wipe|banda,
+// enfasis none|pulso|pop, salida none|fade|slide.
+var IMP_ANIM_OPCIONES = {
+  entrada: ['fade', 'slide-izq', 'slide-arriba', 'wipe', 'banda'],
+  enfasis: ['none', 'pulso', 'pop'],
+  salida: ['none', 'fade', 'slide']
+};
+var IMP_ANIM_CLASES = {
+  'fade': 'impInFade', 'slide-izq': 'impInSlideIzq', 'slide-arriba': 'impInSlideArriba',
+  'wipe': 'impInWipe', 'banda': 'impInBanda',
+  'pulso': 'impEnfPulso', 'pop': 'impEnfPop',
+  'salida-fade': 'impOutFade', 'salida-slide': 'impOutSlide'
+};
+
+// Tamaios de fase en segundos: entrada 20% (min 0.6), enfasis 30% (si != none),
+// salida 20%, el resto hold. dur admitido: 3..10 s.
+function tamanosFase(entrada, enfasis, salida, dur) {
+  if (!(dur >= 3 && dur <= 10)) throw new RangeError('dur fuera de 3-10');
+  var tIn = Math.max(0.6, dur * 0.2);
+  var tEn = (enfasis && enfasis !== 'none') ? dur * 0.3 : 0;
+  var tOut = (salida && salida !== 'none') ? dur * 0.2 : 0;
+  return { tIn: tIn, tEn: tEn, tOut: tOut, dur: dur, entrada: entrada, enfasis: enfasis, salida: salida };
+}
+
+function faseEn(t, fases) {
+  var d = fases.dur;
+  if (t >= d) return 'fin';
+  if (t < fases.tIn) return 'in';
+  if (fases.tEn && t < fases.tIn + fases.tEn) return 'enf';
+  if (fases.tOut && t >= d - fases.tOut) return 'out';
+  return 'hold';
+}
+
+// ---------- reproductor DOM ----------
 
 // Escala exacta del escenario al ancho disponible (la del CSS es respaldo).
 function _escalarEscenario() {
@@ -319,34 +355,281 @@ function _escalarEscenario() {
   el.style.setProperty('--k', k);
 }
 
-// Estado global de la lamina actual para pintar (lleno por la UI en tareas 5+).
-var IMP_SELECCION = null;
-var compositorListo = true;
+var _impTimers = [];
+
+function _impSetAnim(hijos, clase, t) {
+  if (!clase) return;
+  hijos.forEach(function (h) {
+    h.style.animation = ''; void h.offsetWidth;
+    h.style.animation = clase + ' ' + t + 's cubic-bezier(.33,1,.68,1) both';
+  });
+}
+
+function reproducirAnimacion(tipo) {
+  var a = (IMP.impacto.anim && IMP.impacto.anim[tipo]) || {};
+  var dur = a.dur || IMP.impacto.dur || 5;
+  var fases = tamanosFase(a.entrada || 'fade', a.enfasis || 'none', a.salida || 'none', dur);
+  var el = document.getElementById('laminaImp');
+  if (!el) return fases;
+  var hijos = Array.prototype.slice.call(el.children);
+  var estado = document.getElementById('statusRepro');
+  _impClearTimers();
+  if (estado) estado.textContent = 'Reproduciendo (' + dur + ' s)…';
+  _impSetAnim(hijos, IMP_ANIM_CLASES[a.entrada || 'fade'], fases.tIn);
+  if (fases.tEn) {
+    _impTimers.push(setTimeout(function () {
+      _impSetAnim(hijos, IMP_ANIM_CLASES[a.enfasis || 'none'], fases.tEn);
+    }, fases.tIn * 1000));
+  }
+  if (fases.tOut) {
+    _impTimers.push(setTimeout(function () {
+      _impSetAnim(hijos, IMP_ANIM_CLASES['salida-' + (a.salida || 'fade')], fases.tOut);
+    }, (fases.dur - fases.tOut) * 1000));
+  }
+  _impTimers.push(setTimeout(function () {
+    hijos.forEach(function (h) { h.style.animation = ''; });
+    if (estado) estado.textContent = 'Reproducido. La lamina queda en su frame final.';
+  }, fases.dur * 1000 + 120));
+  return fases;
+}
+
+function _impClearTimers() {
+  _impTimers.forEach(clearTimeout);
+  _impTimers = [];
+}
+
+// ---------- guardado y cableado de UI ----------
+
+function _guardar() { saveIdentity(IMP); }
+
+function _estadoLamina() {
+  return {
+    imp: IMP.impacto, pal: IMP.pal, fonts: IMP.fonts, team: IMP.team,
+    modo: IMP.rallyType || '', brief: IMP._brief || {}
+  };
+}
+
+function _odsSelPara(tipo) {
+  var activos = odsActivos(IMP, (IMP._brief && IMP._brief.ods_ids) || []);
+  if (tipo === 'plan') return activos.filter(function (o) { return o.on; });
+  if (tipo === 'ficha') {
+    var sel = IMP_SELECCION;
+    var ods = sel && ODS_DATA[sel - 1] ? [{ id: sel, on: true }] : null;
+    if (ods) return ods;
+    var on = activos.filter(function (o) { return o.on; });
+    return on.length ? [on[0]] : [];
+  }
+  return activos.filter(function (o) { return o.on; });
+}
 
 function pintar() {
-  var tipo = (IMP_IDENT_TIPO && IMP_IDENT_TIPO()) || 'mosaico';
-  var estado = {
-    imp: IMP.impacto, pal: IMP.pal, fonts: IMP.fonts, team: IMP.team,
-    modo: (IMP.rallyType || ''), brief: IMP._brief || {}
-  };
-  var sel = IMP_SELECCION || odsActivos(IMP, (IMP._brief && IMP._brief.ods_ids) || []).filter(function (o) { return o.on; });
+  var tipo = IMP_IDENT_TIPO();
   var el = document.getElementById('laminaImp');
-  if (el) _escenario(el, componerLamina(tipo, estado, sel));
+  if (el) _escenario(el, componerLamina(tipo, _estadoLamina(), _odsSelPara(tipo)));
+  var w = document.getElementById('fichaOdsWrap');
+  if (w) w.style.display = tipo === 'ficha' ? '' : 'none';
 }
+
+var compositorListo = true;
 
 var IMP_IDENT_TIPO = function () {
   var s = document.getElementById('laminaSel');
   return s ? s.value : 'mosaico';
 };
 
+// Chips ODS del brief + override manual (persistente).
+function renderChips() {
+  var wrap = document.getElementById('chipsOds');
+  if (!wrap) return;
+  var activos = odsActivos(IMP, (IMP._brief && IMP._brief.ods_ids) || []);
+  wrap.innerHTML = '';
+  activos.forEach(function (o) {
+    var od = ODS_DATA[o.id - 1];
+    var l = document.createElement('label');
+    l.className = 'check';
+    var c = document.createElement('input');
+    c.type = 'checkbox';
+    c.checked = !!o.on;
+    c.addEventListener('change', function () {
+      IMP.impacto.odsOn[o.id] = c.checked;
+      _guardar();
+      renderChips();
+      pintar();
+    });
+    var sw = document.createElement('span');
+    sw.className = 'chipcolor';
+    sw.style.background = od.color;
+    l.appendChild(c);
+    l.appendChild(sw);
+    l.appendChild(document.createTextNode(od.code + ' · ' + od.name));
+    wrap.appendChild(l);
+  });
+}
+
+function renderFichaOds() {
+  var s = document.getElementById('fichaOds');
+  if (!s) return;
+  s.innerHTML = '';
+  var activos = odsActivos(IMP, (IMP._brief && IMP._brief.ods_ids) || []).filter(function (o) { return o.on; });
+  if (!IMP_SELECCION && activos.length) IMP_SELECCION = activos[0].id;
+  activos.forEach(function (o) {
+    var od = ODS_DATA[o.id - 1];
+    var op = document.createElement('option');
+    op.value = o.id;
+    op.textContent = od.code + ' · ' + od.name;
+    s.appendChild(op);
+  });
+  if (IMP_SELECCION) s.value = String(IMP_SELECCION);
+  s.addEventListener('change', function () {
+    IMP_SELECCION = +s.value;
+    pintar();
+  });
+}
+
+// Plan País: modo, programas, municipio, cifra, texto.
+function wirePlan() {
+  var p = IMP.impacto.plan;
+  var sel = document.getElementById('planModo');
+  if (sel) {
+    sel.value = p.modo || '';
+    sel.addEventListener('change', function () { p.modo = sel.value; _guardar(); dibujarChipsProgramas(); pintar(); });
+  }
+  ['planMuni', 'planCifra', 'planTexto'].forEach(function (id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    var campo = { planMuni: 'municipio', planCifra: 'cifra', planTexto: 'texto' }[id];
+    el.value = p[campo] || '';
+    el.addEventListener('input', function () { p[campo] = el.value; _guardar(); if (IMP_IDENT_TIPO() === 'plan') pintar(); });
+  });
+  dibujarChipsProgramas();
+}
+
+function dibujarChipsProgramas() {
+  var wrap = document.getElementById('planProg');
+  if (!wrap) return;
+  var p = IMP.impacto.plan;
+  var esLatam = modoEfectivo(IMP, IMP._brief) === 'latam';
+  wrap.innerHTML = '';
+  if (esLatam) {
+    var inp = document.createElement('input');
+    inp.type = 'text';
+    inp.placeholder = 'Alineamientos de agenda separados por coma';
+    inp.value = (p.programas || []).join(', ');
+    inp.addEventListener('input', function () {
+      p.programas = inp.value.split(',').map(function (x) { return x.trim(); }).filter(Boolean);
+      _guardar();
+      if (IMP_IDENT_TIPO() === 'plan') pintar();
+    });
+    wrap.className = '';
+    wrap.appendChild(inp);
+    return;
+  }
+  wrap.className = 'chip-row';
+  IMP_PROGRAMAS.forEach(function (nombre) {
+    var l = document.createElement('label');
+    l.className = 'check';
+    var c = document.createElement('input');
+    c.type = 'checkbox';
+    c.checked = (p.programas || []).indexOf(nombre) >= 0;
+    c.addEventListener('change', function () {
+      var arr = (p.programas || []).slice();
+      var i = arr.indexOf(nombre);
+      if (c.checked && i < 0) arr.push(nombre);
+      if (!c.checked && i >= 0) arr.splice(i, 1);
+      p.programas = arr;
+      _guardar();
+      pintar();
+    });
+    l.appendChild(c);
+    l.appendChild(document.createTextNode(nombre));
+    wrap.appendChild(l);
+  });
+}
+
+// Animación: selects por tipo + dur por tipo (override del dur global).
+var IMP_TIPO_ETIQUETA = { mosaico: 'Mosaico ODS', ficha: 'Ficha', plan: 'Plan País' };
+
+function renderAnimBody() {
+  var body = document.getElementById('animBody');
+  if (!body) return;
+  body.innerHTML = '';
+  IMP_TIPOS.forEach(function (tipo) {
+    var a = (IMP.impacto.anim[tipo] = IMP.impacto.anim[tipo] || impactoPorDefecto().anim[tipo]);
+    var tit = document.createElement('div');
+    tit.className = 'field';
+    tit.innerHTML = '<label>' + (IMP_TIPO_ETIQUETA[tipo] || tipo) + '</label>';
+    var grid = document.createElement('div');
+    grid.className = 'grid g2';
+    [['entrada', 'Entrada'], ['enfasis', 'Énfasis'], ['salida', 'Salida']].forEach(function (par) {
+      var campo = par[0], etiqueta = par[1];
+      var caja = document.createElement('div');
+      caja.innerHTML = '<label class="mini">' + etiqueta + '</label>';
+      var s = document.createElement('select');
+      IMP_ANIM_OPCIONES[campo].forEach(function (op) {
+        var o = document.createElement('option');
+        o.value = op;
+        o.textContent = op;
+        s.appendChild(o);
+      });
+      s.value = a[campo] || 'none';
+      s.addEventListener('change', function () {
+        a[campo] = s.value;
+        _guardar();
+      });
+      caja.appendChild(s);
+      grid.appendChild(caja);
+    });
+    var cajaDur = document.createElement('div');
+    cajaDur.innerHTML = '<label class="mini">Segundos (3–10)</label>';
+    var dur = document.createElement('input');
+    dur.type = 'number';
+    dur.min = 3; dur.max = 10; dur.step = 0.5;
+    dur.value = a.dur || IMP.impacto.dur || 5;
+    dur.addEventListener('change', function () {
+      var v = Math.min(10, Math.max(3, parseFloat(dur.value) || 5));
+      dur.value = v;
+      a.dur = v;
+      _guardar();
+    });
+    cajaDur.appendChild(dur);
+    grid.appendChild(cajaDur);
+    tit.appendChild(grid);
+    body.appendChild(tit);
+  });
+  var btn = document.createElement('button');
+  btn.className = 'sec';
+  btn.textContent = 'Ver animación de esta lámina';
+  btn.addEventListener('click', function () { reproducirAnimacion(IMP_IDENT_TIPO()); });
+  body.appendChild(btn);
+}
+
 function arranqueImpacto() {
   _escalarEscenario();
   window.addEventListener('resize', _escalarEscenario);
+  var sel = document.getElementById('laminaSel');
+  if (sel) sel.addEventListener('change', pintar);
+  var archivo = document.getElementById('archivo');
+  if (archivo && !archivo.value) archivo.value = _prefijoArchivo();
   cargarBrief(IMP, function (ok, b) {
     if (b) { IMP._brief = b; aplicarBrief(b, IMP); }
+    renderChips();
+    renderFichaOds();
+    wirePlan();
+    renderAnimBody();
     pintar();
   });
   pintar();
+}
+
+function _prefijoArchivo() {
+  var n = (IMP.team && IMP.team.name) || '';
+  return 'clip_' + String(n).toLowerCase().replace(/[^a-z0-9]+/g, '').slice(0, 12);
+}
+
+function _archivoDetalle(ext, tipo) {
+  var inp = document.getElementById('archivo');
+  var det = ((inp && inp.value) || '').replace(/[\\/:*?"<>|]+/g, '').trim() || tipo;
+  return 'clip_' + det + '.' + ext;
 }
 
 document.addEventListener('DOMContentLoaded', arranqueImpacto);

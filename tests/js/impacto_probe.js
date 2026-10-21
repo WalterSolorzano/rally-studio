@@ -158,6 +158,20 @@ switch (comando) {
     salir({ usados: Array.from(usados).sort(), fillStyleVals, fontVals });
     break;
   }
+  // --- Task 5: timeline ---
+  case "fases": {
+    const [entrada, enfasis, salida, dur, t] = JSON.parse(process.argv[3]);
+    if (typeof sandbox.tamanosFase !== "function") { salir({ error: "tamanosFase ausente" }); break; }
+    let err = null;
+    let fases = null;
+    try { fases = sandbox.tamanosFase(entrada, enfasis, salida, dur); } catch (e) { err = String(e && e.constructor ? e.constructor.name : "Error"); }
+    const res = { fases, err };
+    if (fases && t !== undefined) {
+      res.fase = typeof sandbox.faseEn === "function" ? sandbox.faseEn(t, fases) : null;
+    }
+    salir(res);
+    break;
+  }
   default:
     salir({ error: "comando desconocido: " + comando });
 }

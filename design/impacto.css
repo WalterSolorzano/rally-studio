@@ -47,3 +47,17 @@
 textarea.propuesta { border-radius: var(--rs-r-sm); }
 
 .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 10px 0 0; }
+
+/* --- vocabulario cerrado de animacion (Task 5) --- */
+@keyframes impInFade { from { opacity: 0 } to { opacity: 1 } }
+@keyframes impInSlideIzq { from { opacity: 0; transform: translateX(-48px) } to { opacity: 1; transform: none } }
+@keyframes impInSlideArriba { from { opacity: 0; transform: translateY(32px) } to { opacity: 1; transform: none } }
+@keyframes impInWipe { from { clip-path: inset(0 100% 0 0) } to { clip-path: inset(0 0 0 0) } }
+@keyframes impInBanda { from { clip-path: inset(0 0 100% 0) } to { clip-path: inset(0 0 0 0) } }
+@keyframes impEnfPulso { 0% { transform: none } 40% { transform: scale(1.035) } 100% { transform: none } }
+@keyframes impEnfPop { 0% { opacity: .85; transform: scale(.94) } 60% { opacity: 1; transform: scale(1.02) } 100% { transform: none } }
+@keyframes impOutFade { from { opacity: 1 } to { opacity: 0 } }
+@keyframes impOutSlide { from { opacity: 1; transform: none } to { opacity: 0; transform: translateX(40px) } }
+
+.lamina-canvas > * { will-change: opacity, transform, clip-path; }
+

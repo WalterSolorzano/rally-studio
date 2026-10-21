@@ -136,3 +136,33 @@ def test_pintarcanvas_con_mock_no_lanza():
         datos = correr("canvas", {"tipo": tipo, "estado": ESTADO, "odsSel": sel, "escala": 2})
         assert "fill" in datos["usados"], tipo
         assert "fillText" in datos["usados"], tipo
+
+
+# --- Task 5: timeline animada ---
+
+def test_tamanosfase_resto_hold():
+    datos = correr("fases", ["banda", "pulso", "fade", 5])["fases"]
+    assert round(datos["tIn"], 2) == 1.0
+    assert round(datos["tEn"], 2) == 1.5
+    assert round(datos["tOut"], 2) == 1.0
+
+
+def test_tamanosfase_sin_enfasis_ni_salida():
+    datos = correr("fases", ["fade", "none", "none", 5])["fases"]
+    assert round(datos["tIn"], 2) == 1.0
+    assert datos["tEn"] == 0
+    assert datos["tOut"] == 0
+
+
+def test_tamanosfase_duracion_fuera_de_rango():
+    datos = correr("fases", ["fade", "none", "none", 2])
+    assert datos["err"] == "RangeError"
+
+
+def test_faseen_por_tramos():
+    # tIn=1.0, tEn=1.5 ([1.0,2.5) enfasis), hold [2.5,4), salida [4,5), fin t>=5
+    assert correr("fases", ["banda", "pulso", "fade", 5, 0])["fase"] == "in"
+    assert correr("fases", ["banda", "pulso", "fade", 5, 2])["fase"] == "enf"
+    assert correr("fases", ["banda", "pulso", "fade", 5, 3])["fase"] == "hold"
+    assert correr("fases", ["banda", "pulso", "fade", 5, 5])["fase"] == "fin"
+    assert correr("fases", ["banda", "pulso", "fade", 5, 4.5])["fase"] == "out"
