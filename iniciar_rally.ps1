@@ -10,11 +10,17 @@
 #        .\iniciar_rally.ps1 -Puerto 8080   (para una segunda sesion de pruebas)
 #        .\iniciar_rally.ps1 -SinIA         (no tocar nada de IA)
 #        .\iniciar_rally.ps1 -IaPuerto 3001 (Docker/panel web en otro puerto)
+#        .\iniciar_rally.ps1 -ConNube       (ademas vigila y sube archivos a la isla)
+#  -ConNube arranca el puente scripts\sincronizar_nube.py en segundo plano:
+#  todo lo que edite el agente local viaja en vivo a la isla (y baja lo que
+#  editen en la web). Opcional: si existe scripts\sync.token se usa como
+#  RALLY_SYNC_TOKEN (en una isla publica es obligatorio).
 # ─────────────────────────────────────────────────────────────────────────────
 param(
   [int]$Puerto = 8000,
   [int]$IaPuerto = 31415,
-  [switch]$SinIA
+  [switch]$SinIA,
+  [switch]$ConNube
 )
 
 $ErrorActionPreference = "Stop"
@@ -106,4 +112,28 @@ if ($salud) {
   Write-Host "Estado:   http://localhost:$Puerto/health" -ForegroundColor DarkGray
 } else {
   Write-Host "No respondio en 2 segundos. Revisa el registro: $log" -ForegroundColor Red
+}
+
+# ── Puente de nube (sincronizacion en vivo) · opcional, nunca bloquea ────────
+if ($ConNube -and $salud) {
+  $puente = Join-Path $raiz "scripts\sincronizar_nube.py"
+  if (Test-Path $puente) {
+    # Token opcional: scripts\sync.token o la env RALLY_SYNC_TOKEN ya seteada
+    $tokenArchivo = Join-Path $raiz "scripts\sync.token"
+    if ((Test-Path $tokenArchivo) -and -not $env:RALLY_SYNC_TOKEN) {
+      $t = (Get-Content $tokenArchivo -Raw).Trim()
+      if ($t) { $env:RALLY_SYNC_TOKEN = $t }
+    }
+    $puenteLog = Join-Path $env:TEMP "rally_nube.log"
+    Start-Process -FilePath "python" `
+      -ArgumentList "`"$puente`"", "--watch", "--url", "http://127.0.0.1:$Puerto" `
+      -WorkingDirectory $raiz `
+      -WindowStyle Hidden `
+      -RedirectStandardOutput $puenteLog `
+      -RedirectStandardError "$puenteLog.err"
+    Start-Sleep -Seconds 1
+    Write-Host "Puente de nube vigilando http://127.0.0.1:$Puerto (registro: $puenteLog)" -ForegroundColor Cyan
+  } else {
+    Write-Host "No se encontro scripts\sincronizar_nube.py: sin puente de nube." -ForegroundColor Yellow
+  }
 }
