@@ -67,6 +67,6 @@ textarea.propuesta { border-radius: var(--rs-r-sm); }
   background: #F0F6FF;
   resize: vertical;
 }
-.contador { font-family: var(--font-mono, 'JetBrains Mono', monospace); font-variant-numeric: tabular-nums; color: #5C7193; font-size: 12px; min-width: 7ch; align-self: center; }
+.contador { font-family: var(--font-mono, 'JetBrains Mono', monospace); font-variant-numeric: tabular-nums; color: #5C7193; font-size: 13px; min-width: 7ch; align-self: center; }
 
 
