@@ -91,6 +91,16 @@ $env:RALLY_AI_KEY = "freellm-XXXX..."
 python scripts/rally_service.py
 ```
 
+**Verifica en qué estado quedó la IA (honesto, sin simular nada):**
+
+```powershell
+.\scripts\verificar_ia.ps1   # verde = listo; amarillo 3 = pega tus claves de proveedor en el panel Keys
+```
+
+Cada equipo pega SUS propias claves gratis de proveedor (Google AI Studio, Groq...)
+en el panel de la app; el sistema nunca las pide ni las guarda — solo la unified
+key local (`scripts\freellmapi.key`, ignorada por git).
+
 (Opcional) fuerza el modelo vision para el OCR:
 
 ```powershell
