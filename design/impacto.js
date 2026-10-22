@@ -171,10 +171,12 @@ function _laminaFicha(estado, odsSel) {
   if (!od) return prims;
   var dy = clean ? -136 : 0;
   var bx = 200, bw = 420, tam = 640;
-  var tinta = tintaSobre(od.color);
   prims.push({ k: 'rect', x: bx, y: 300 + dy, w: bw, h: tam, color: od.color });
-  prims.push({ k: 'ico', x: bx + 40, y: 340 + dy, s: 84, color: tinta, path: od.icon });
-  prims.push({ k: 'txt', x: bx + 40, y: 850 + dy, text: od.code, font: _fontDe(estado, 'l'), size: 34, weight: 700, color: tinta });
+  // Emblema: icono y codigo SIEMPRE blancos sobre franja navy (como el mosaico),
+  // nunca tinta navy sobre el color del ODS (se leia como negro).
+  prims.push({ k: 'ico', x: bx + 40, y: 340 + dy, s: 84, color: '#FFFFFF', path: od.icon });
+  prims.push({ k: 'rect', x: bx, y: 300 + dy + tam - 96, w: bw, h: 96, color: 'rgba(9,30,66,0.30)', r: 0 });
+  prims.push({ k: 'txt', x: bx + 40, y: 300 + dy + tam - 78, text: od.code, font: _fontDe(estado, 'l'), size: 34, weight: 700, color: '#FFFFFF' });
   prims.push({ k: 'txt', x: 700, y: 320 + dy, text: od.name, font: _fontDe(estado, 't'), size: 72, weight: 900, color: estado.pal.ink });
   prims.push({ k: 'txt', x: 700, y: 430 + dy, text: od.shortTarget, font: _fontDe(estado, 'b'), size: 34, weight: 600, color: estado.pal.ac });
   var conecta = (estado.imp.textos['conecta' + o.id]) || 'La solución atiende esta meta directamente en el territorio, con pruebas y costo bajo.';
@@ -607,7 +609,7 @@ function dibujarChipsProgramas() {
 }
 
 // Animación: selects por tipo + dur por tipo (override del dur global).
-var IMP_TIPO_ETIQUETA = { mosaico: 'Mosaico ODS', ficha: 'Ficha', plan: 'Plan País' };
+var IMP_TIPO_ETIQUETA = { mosaico: 'ODS (mosaico)', ficha: 'Ficha de un ODS', plan: 'Plan País (PNLCP)' };
 
 function renderAnimBody() {
   var body = document.getElementById('animBody');
@@ -672,32 +674,10 @@ function renderAnimBody() {
     });
     cajaDur.appendChild(dur);
     grid.appendChild(cajaDur);
-    // Solo mosaico: los cuadritos tienen su propia coreografía configurable.
+    // Solo mosaico: los cuadritos tienen su propia coreografía configurable,
+    // en chips visuales (lado a lado) en vez de una lista técnica hacia abajo.
     if (tipo === 'mosaico') {
-      [
-        ['tiles', 'Movimiento de cuadritos', [['ciclo', 'Ciclo: cambia por cuadro'], ['solo-pop', 'Siempre pop'], ['solo-arriba', 'Siempre desde abajo'], ['solo-izq', 'Siempre desde la izquierda'], ['solo-fade', 'Siempre desvanecido'], ['solo-wipe', 'Siempre cortinilla'], ['aleatorio', 'Mezcla al azar']]],
-        ['ritmo', 'Ritmo (lento = 1.35×)', [['rapido', 'Rápido'], ['normal', 'Normal'], ['lento', 'Lento']]],
-        ['orden', 'Orden de entrada', [['secuencial', 'Secuencial'], ['centro-fuera', 'Del centro hacia fuera'], ['aleatorio', 'Al azar']]],
-        ['cols', 'Columnas', [['auto', 'Auto'], ['2', '2'], ['3', '3'], ['4', '4']]]
-      ].forEach(function (def) {
-        var cajaOp = document.createElement('div');
-        cajaOp.innerHTML = '<label class="mini">' + def[1] + '</label>';
-        var sOp = document.createElement('select');
-        def[2].forEach(function (op) {
-          var o2 = document.createElement('option');
-          o2.value = op[0];
-          o2.textContent = op[1];
-          sOp.appendChild(o2);
-        });
-        sOp.value = a[def[0]] || ({ orden: 'secuencial', ritmo: 'normal', cols: 'auto', tiles: 'ciclo' }[def[0]]);
-        sOp.addEventListener('change', function () {
-          a[def[0]] = sOp.value;
-          _guardar();
-          if (def[0] === 'cols' || def[0] === 'orden') pintar(); // cambia la composición
-        });
-        cajaOp.appendChild(sOp);
-        grid.appendChild(cajaOp);
-      });
+      tit.appendChild(_coreografiaMosaico(a));
     }
     tit.appendChild(grid);
     body.appendChild(tit);
@@ -709,11 +689,131 @@ function renderAnimBody() {
   body.appendChild(btn);
 }
 
+// Coreografía de los cuadritos (solo mosaico): chips con mini-preview animado
+// (cada demo repite el movimiento real) en lugar de selects técnicos.
+function _coreografiaMosaico(a) {
+  var DEF = { orden: 'secuencial', ritmo: 'normal', cols: 'auto', tiles: 'ciclo' };
+  var caja = document.createElement('div');
+  caja.className = 'coreo';
+  caja.innerHTML = '<label class="mini lbl-mov">Movimiento de los cuadritos</label>';
+  function fila(clave, opciones) {
+    var f = document.createElement('div');
+    f.className = 'fila-chips';
+    var val = a[clave] || DEF[clave];
+    opciones.forEach(function (op) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'tilechip' + (op.val === val ? ' on' : '');
+      var demo = '';
+      if (op.demo) demo = '<span class="c-demo" data-a="' + op.demo + '" aria-hidden="true"></span>';
+      else if (op.dots) demo = '<span class="dotgrid" aria-hidden="true">' + _mosaicoDot(op.dots) + '</span>';
+      b.innerHTML = demo + '<span>' + op.txt + '</span>';
+      b.addEventListener('click', function () {
+        a[clave] = op.val;
+        _guardar();
+        if (clave === 'orden' || clave === 'cols') pintar(); // cambian la composición
+        Array.prototype.forEach.call(f.children, function (c) { c.classList.toggle('on', c === b); });
+      });
+      f.appendChild(b);
+    });
+    return f;
+  }
+  caja.appendChild(fila('tiles', [
+    { val: 'ciclo', txt: 'Ciclo', demo: 'ciclo' },
+    { val: 'solo-pop', txt: 'Pop', demo: 'pop' },
+    { val: 'solo-arriba', txt: 'Desde abajo', demo: 'arriba' },
+    { val: 'solo-izq', txt: 'Desde la izquierda', demo: 'izq' },
+    { val: 'solo-fade', txt: 'Desvanecer', demo: 'fade' },
+    { val: 'solo-wipe', txt: 'Cortina', demo: 'wipe' },
+    { val: 'aleatorio', txt: 'Al azar', demo: 'aleatorio' }
+  ]));
+  caja.appendChild(fila('ritmo', [
+    { val: 'rapido', txt: 'Rápido' }, { val: 'normal', txt: 'Normal' }, { val: 'lento', txt: 'Lento' }
+  ]));
+  caja.appendChild(fila('orden', [
+    { val: 'secuencial', txt: 'Uno tras otro', dots: [0] },
+    { val: 'centro-fuera', txt: 'Del centro afuera', dots: [1] },
+    { val: 'aleatorio', txt: 'Al azar', dots: [2, 4] }
+  ]));
+  caja.appendChild(fila('cols', [
+    { val: 'auto', txt: 'Auto' }, { val: '2', txt: 'En 2' }, { val: '3', txt: 'En 3' }, { val: '4', txt: 'En 4' }
+  ]));
+  return caja;
+}
+
+// Mini-grilla 3x2 de puntos: el primero que entra brilla en acento.
+function _mosaicoDot(activos) {
+  var s = '<svg width="28" height="21" viewBox="0 0 28 21">';
+  for (var i = 0; i < 6; i++) {
+    var x = 5 + (i % 3) * 9, y = 5 + Math.floor(i / 3) * 9;
+    var on = activos.indexOf(i) >= 0;
+    s += '<circle cx="' + x + '" cy="' + y + '" r="3" fill="' + (on ? '#0866F5' : '#CBD5E1') + '"/>';
+  }
+  return s + '</svg>';
+}
+
+// Tipo de lamina como TARJETAS con mini-vista (nada de lista): el select
+// #laminaSel sigue existiendo (oculto, accesible por teclado via tarjetas)
+// y las tarjetas lo gobiernan con change sintetico.
+function _thumbLamina(tipo) {
+  if (tipo === 'ficha') {
+    return '<svg viewBox="0 0 96 64">' +
+      '<rect x="8" y="8" width="34" height="48" rx="4" fill="' + (ODS_DATA[0] ? ODS_DATA[0].color : '#E5243B') + '"/>' +
+      '<rect x="10" y="44" width="30" height="10" rx="3" fill="rgba(9,30,66,0.30)"/>' +
+      '<rect x="50" y="12" width="38" height="9" rx="3" fill="#0D1B35"/>' +
+      '<rect x="50" y="28" width="30" height="6" rx="3" fill="#0866F5"/>' +
+      '<rect x="50" y="40" width="36" height="5" rx="2.5" fill="#5C7193"/>' +
+      '<rect x="50" y="50" width="28" height="5" rx="2.5" fill="#DCE7F5"/></svg>';
+  }
+  if (tipo === 'plan') {
+    return '<svg viewBox="0 0 96 64">' +
+      '<rect x="6" y="8" width="84" height="20" rx="4" fill="#0D1B35"/>' +
+      '<rect x="12" y="14" width="52" height="7" rx="3" fill="#FFFFFF"/>' +
+      '<rect x="10" y="36" width="22" height="11" rx="4" fill="#DCE7F5"/>' +
+      '<rect x="36" y="36" width="22" height="11" rx="4" fill="#DCE7F5"/>' +
+      '<rect x="62" y="36" width="22" height="11" rx="4" fill="#DCE7F5"/>' +
+      '<rect x="10" y="53" width="44" height="5" rx="2.5" fill="#0866F5"/></svg>';
+  }
+  var c = [1, 2, 3, 4, 5, 6].map(function (i) { return (ODS_DATA[i - 1] || {}).color || '#0866F5'; });
+  var s = '<svg viewBox="0 0 96 64"><rect x="4" y="4" width="88" height="56" rx="6" fill="#F0F6FF"/>';
+  [0, 1, 2].forEach(function (k) {
+    s += '<rect x="' + (10 + k * 27) + '" y="10" width="23" height="20" rx="3" fill="' + c[k] + '"/>';
+    s += '<rect x="' + (10 + k * 27) + '" y="34" width="23" height="20" rx="3" fill="' + c[k + 3] + '"/>';
+  });
+  return s + '</svg>';
+}
+
+function renderLaminaTapiz() {
+  var sel = document.getElementById('laminaSel');
+  var wrap = document.getElementById('laminaTapiz');
+  if (!sel || !wrap) return;
+  wrap.innerHTML = '';
+  IMP_TIPOS.forEach(function (tipo) {
+    var card = document.createElement('button');
+    card.type = 'button';
+    card.className = 'lamina-card' + (sel.value === tipo ? ' on' : '');
+    card.innerHTML = _thumbLamina(tipo);
+    var nm = document.createElement('span');
+    nm.className = 'lamina-name';
+    nm.textContent = IMP_TIPO_ETIQUETA[tipo] || tipo;
+    card.appendChild(nm);
+    card.addEventListener('click', function () {
+      if (sel.value !== tipo) {
+        sel.value = tipo;
+        sel.dispatchEvent(new Event('change'));
+      }
+      Array.prototype.forEach.call(wrap.children, function (c) { c.classList.toggle('on', c === card); });
+    });
+    wrap.appendChild(card);
+  });
+}
+
 function arranqueImpacto() {
   _escalarEscenario();
   window.addEventListener('resize', _escalarEscenario);
   var sel = document.getElementById('laminaSel');
   if (sel) sel.addEventListener('change', pintar);
+  renderLaminaTapiz();
   var archivo = document.getElementById('archivo');
   if (archivo && !archivo.value) archivo.value = _prefijoArchivo();
   var btnExport = document.getElementById('exportPng');

@@ -34,20 +34,53 @@
 @container (max-width: 620px){.lamina-canvas{--k:.3}}
 @container (max-width: 460px){.lamina-canvas{--k:.22}}
 
+/* Select de lamina oculto (el usuario usa las tarjetas #laminaTapiz). */
+#laminaSel.oculto, .oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
 /* Primitivas del compositor (pintarDOM). */
 .lamina-canvas .p-rect { position: absolute; }
 .lamina-canvas .p-txt { position: absolute; margin: 0; white-space: pre-wrap; }
 .lamina-canvas .p-ico { position: absolute; display: block; }
 
 /* Chips ODS de la columna de controles: como el grafico oficial de la ONU
-   (cuadrado de color casi recto, arte blanco grande y numero arriba). */
-#chipsOds label.check, #planProg label.check { display: inline-flex; gap: 6px; align-items: center; margin: 0 10px 6px 0; }
-#chipsOds label.odsrow { display: flex; align-items: center; gap: 10px; min-height: 46px; padding: 4px 6px; border-radius: var(--rs-r-sm, 8px); cursor: pointer; }
+   (cuadrado de color casi recto, arte blanco grande y numero arriba).
+   Aprovechan el ancho: dos columnas, nombre elipsizado. */
+#chipsOds { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 12px; }
+#chipsOds label.odsrow { display: flex; align-items: center; gap: 8px; min-height: 46px; min-width: 0; padding: 3px 4px; border-radius: var(--rs-r-sm, 8px); cursor: pointer; }
 #chipsOds label.odsrow:hover, #chipsOds label.odsrow:focus-within { background: var(--rs-bg-subtle, #F8FAFD); }
-.chip-ods { position: relative; width: 46px; height: 46px; flex: none; display: flex; align-items: center; justify-content: center; border-radius: 6px; color: #FFFFFF; box-shadow: 0 1px 3px rgba(13, 27, 53, 0.16); }
-.chip-ods svg { width: 34px; height: 34px; }
+.chip-ods { position: relative; width: 44px; height: 44px; flex: none; display: flex; align-items: center; justify-content: center; border-radius: 6px; color: #FFFFFF; box-shadow: 0 1px 3px rgba(13, 27, 53, 0.16); }
+.chip-ods svg { width: 32px; height: 32px; }
 .chip-ods .num { position: absolute; top: 3px; left: 5px; font: 800 10px/1.2 var(--rs-mono, 'JetBrains Mono', monospace); color: #FFFFFF; opacity: .95; text-shadow: 0 1px 2px rgba(9, 30, 66, 0.35); }
-.odsname { color: var(--rs-main, #0D1B35); }
+.odsname { color: var(--rs-main, #0D1B35); font-size: 12px; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* Tarjetas de tipo de lamina (previsualizacion en lugar de select). */
+.lamina-tapiz { display: flex; gap: 8px; margin: 4px 0 2px; }
+.lamina-card { flex: 1 1 0; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 8px 4px 7px; background: var(--rs-bg, #fff); border: 1px solid var(--rs-border-strong, #CBD5E1); border-radius: var(--rs-r-md, 12px); cursor: pointer; transition: border-color var(--rs-t, 120ms), background var(--rs-t, 120ms), box-shadow var(--rs-t, 120ms); }
+.lamina-card:hover { border-color: var(--rs-primary, #0866F5); }
+.lamina-card.on { border-color: var(--rs-primary, #0866F5); background: var(--rs-bg-secondary, #F0F6FF); box-shadow: 0 0 0 2px rgba(8, 102, 245, .18); }
+.lamina-card svg { width: 78px; height: 52px; display: block; border-radius: 4px; }
+.lamina-name { font: 700 10px/1.2 var(--rs-mono, 'JetBrains Mono', monospace); letter-spacing: .04em; text-transform: uppercase; color: var(--rs-main, #0D1B35); text-align: center; }
+
+/* Controles de coreografia (movimiento de cuadritos): chips con demo animada. */
+.coreo { margin-top: 6px; }
+.coreo .lbl-mov { margin-bottom: 4px; }
+.fila-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 8px; }
+.tilechip { display: inline-flex; align-items: center; gap: 7px; padding: 7px 10px; background: var(--rs-bg, #fff); border: 1px solid var(--rs-border-strong, #CBD5E1); border-radius: var(--rs-r-sm, 8px); cursor: pointer; font: 600 11px/1 var(--rs-sans, sans-serif); color: var(--rs-main, #0D1B35); transition: border-color var(--rs-t, 120ms), background var(--rs-t, 120ms); }
+.tilechip:hover { border-color: var(--rs-primary, #0866F5); }
+.tilechip.on { border-color: var(--rs-primary, #0866F5); background: var(--rs-bg-secondary, #F0F6FF); box-shadow: 0 0 0 1px var(--rs-primary, #0866F5) inset; }
+.c-demo { width: 16px; height: 16px; flex: none; border-radius: 4px; background: var(--rs-primary, #0866F5); animation: impPrevPop 1.05s cubic-bezier(.33, 1, .68, 1) infinite alternate; }
+.c-demo[data-a="arriba"] { animation-name: impPrevArriba; }
+.c-demo[data-a="izq"] { animation-name: impPrevIzq; }
+.c-demo[data-a="fade"] { animation-name: impPrevFade; }
+.c-demo[data-a="wipe"] { animation-name: impPrevWipe; }
+.c-demo[data-a="ciclo"] { animation: impPrevPop .55s cubic-bezier(.33, 1, .68, 1) infinite alternate; }
+.c-demo[data-a="aleatorio"] { animation: impPrevAzar 1.7s linear infinite; }
+.dotgrid { display: inline-flex; }
+@keyframes impPrevArriba { from { opacity: .25; transform: translateY(6px) } to { opacity: 1; transform: none } }
+@keyframes impPrevIzq { from { opacity: .25; transform: translateX(-8px) } to { opacity: 1; transform: none } }
+@keyframes impPrevFade { from { opacity: .15 } to { opacity: 1 } }
+@keyframes impPrevWipe { from { clip-path: inset(0 100% 0 0) } to { clip-path: inset(0 0 0 0) } }
+@keyframes impPrevAzar { 0% { opacity: .2; transform: scale(.7) } 20% { opacity: .85; transform: translateY(-5px) } 45% { opacity: .25; transform: translateY(3px) translateX(4px) } 70% { opacity: 1; transform: none } }
 
 /* Marca de propuesta sin aplicar (IA). */
 .lamina-canvas .p-txt.propuesta, textarea.propuesta { outline: 2px dashed var(--rs-accent); }
