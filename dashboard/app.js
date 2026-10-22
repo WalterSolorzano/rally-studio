@@ -2233,6 +2233,10 @@ function switchTab(tabId, ev) {
 }
 
 // ── DESPACHADOR CENTRAL DE VISTAS ────────────────────────────────────────────
+// Dirección de transición: comparar el índice de la fase previa con la nueva
+// (orden de NAV_TABS). Avanzar → entrada desde la derecha; retroceder → izquierda.
+let rsPrevTabId = null;
+
 function renderTab(tabId) {
   const main = document.getElementById("main");
   const renderers = {
@@ -2251,7 +2255,14 @@ function renderTab(tabId) {
     webdemo: renderViewWebDemo,
     timeline: renderViewTimeline
   };
-  main.innerHTML = `<div class="content-wrapper">${(renderers[tabId] || renderViewCertamen)()}</div>`;
+  const prevIdx = NAV_TABS.findIndex(t => t.id === rsPrevTabId);
+  const nextIdx = NAV_TABS.findIndex(t => t.id === tabId);
+  let dirCls = "";
+  if (prevIdx !== -1 && nextIdx !== -1 && prevIdx !== nextIdx) {
+    dirCls = nextIdx > prevIdx ? " rs-fwd" : " rs-back";
+  }
+  rsPrevTabId = tabId;
+  main.innerHTML = `<div class="content-wrapper rs-view${dirCls}">${(renderers[tabId] || renderViewCertamen)()}</div>`;
   attachTabListeners(tabId);
 }
 
@@ -3922,20 +3933,25 @@ function renderViewChallenges() {
             </button>
           </div>
 
-          <details class="rank-tools" style="position:relative;">
-            <summary class="btn-pill-light" style="font-size:11.5px; padding:5px 12px; cursor:pointer; list-style:none; display:inline-flex; align-items:center; gap:6px;">Herramientas ${SVG.chevronDown}</summary>
-            <div style="position:absolute; right:0; top:calc(100% + 6px); z-index:40; background:#fff; border:1px solid var(--border-light); border-radius:8px; box-shadow:0 8px 24px rgba(15,23,42,.08); padding:8px; display:flex; flex-direction:column; gap:6px; min-width:230px;">
-              <button class="btn-pill-light" style="font-size:11.5px; padding:6px 12px; text-align:left;" onclick="toggleCustomChallengeInput()">
-                ⬆ Importar / Re-pegar retos
+          <details class="rank-tools rs-tools">
+            <summary aria-label="Herramientas de retos">
+              ${SVG.dotsVertical}
+              <span>Herramientas</span>
+              <span class="rs-tools-chevron">${SVG.chevronDown}</span>
+            </summary>
+            <div class="rs-tools-menu" role="menu" aria-label="Herramientas de retos">
+              <button class="rs-tools-item" role="menuitem" onclick="toggleCustomChallengeInput()">
+                ${SVG.upload}<span>Importar o re-pegar retos</span>
               </button>
-              <button class="btn-pill-light" style="font-size:11.5px; padding:6px 12px; text-align:left;" onclick="reScanChallengesWithOCR()" title="Re-escanear imágenes adjuntas con IA visual (modelo vision gratuito); red de seguridad EasyOCR si no hay IA conectada">
-                Re-escanear OCR
+              <button class="rs-tools-item" role="menuitem" onclick="reScanChallengesWithOCR()" title="Re-escanear imágenes adjuntas con IA visual (modelo vision gratuito); red de seguridad EasyOCR si no hay IA conectada">
+                ${SVG.refresh}<span>Re-escanear OCR</span>
               </button>
-              <button class="btn-pill-light" style="font-size:11.5px; padding:6px 12px; text-align:left;" onclick="loadReferenceChallenges()" title="Cargar banco oficial de 9 retos de referencia">
-                Cargar Banco Oficial (9)
+              <button class="rs-tools-item" role="menuitem" onclick="loadReferenceChallenges()" title="Cargar banco oficial de 9 retos de referencia">
+                ${SVG.folder}<span>Cargar banco oficial (9)</span>
               </button>
-              <button class="btn-pill-light" style="font-size:11.5px; padding:6px 12px; text-align:left; color:#DC2626;" onclick="clearAllChallenges()">
-                Limpiar radar
+              <span class="rs-tools-sep" aria-hidden="true"></span>
+              <button class="rs-tools-item rs-tools-danger" role="menuitem" onclick="clearAllChallenges()">
+                ${SVG.trash}<span>Limpiar radar</span>
               </button>
             </div>
           </details>
