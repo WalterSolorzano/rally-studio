@@ -14,6 +14,14 @@
 /* Escenario 16:9 con lamina fija de 1920x1080 escalada por contenedor. */
 .preview-frame { flex-direction: column; }
 .preview-frame .thumb-stage { background: #fff; width: 100%; }
+/* Todo el ancho: los CAPS de kit.css achican la lámina; módulo los supera. */
+.preview-frame .kit-card,
+.preview-frame .thumb-stage { max-width: none; }
+.layout { grid-template-columns: minmax(0, 2.2fr) minmax(280px, 0.9fr); }
+details.avz { border: 1px solid var(--rs-border, #DCE7F5); border-radius: var(--rs-r-sm, 8px); padding: 8px 10px; margin: 8px 0 0; }
+details.avz summary { cursor: pointer; color: var(--rs-muted, #475569); font: 600 11px var(--rs-mono, monospace); letter-spacing: .08em; text-transform: uppercase; }
+details.avz summary::marker { content: ''; }
+details.avz[open] summary { margin-bottom: 8px; }
 
 .lamina-canvas {
   position: absolute;
@@ -51,11 +59,11 @@
 .chip-ods { position: relative; width: 44px; height: 44px; flex: none; display: flex; align-items: center; justify-content: center; border-radius: 6px; color: #FFFFFF; box-shadow: 0 1px 3px rgba(13, 27, 53, 0.16); }
 .chip-ods svg { width: 32px; height: 32px; }
 .chip-ods .num { position: absolute; top: 3px; left: 5px; font: 800 10px/1.2 var(--rs-mono, 'JetBrains Mono', monospace); color: #FFFFFF; opacity: .95; text-shadow: 0 1px 2px rgba(9, 30, 66, 0.35); }
-.odsname { color: var(--rs-main, #0D1B35); font-size: 12px; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.odsname { color: var(--rs-main, #0D1B35); font-size: 11px; line-height: 1.3; min-width: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
 /* Tarjetas de tipo de lamina (previsualizacion en lugar de select). */
-.lamina-tapiz { display: flex; gap: 8px; margin: 4px 0 2px; }
-.lamina-card { flex: 1 1 0; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 8px 4px 7px; background: var(--rs-bg, #fff); border: 1px solid var(--rs-border-strong, #CBD5E1); border-radius: var(--rs-r-md, 12px); cursor: pointer; transition: border-color var(--rs-t, 120ms), background var(--rs-t, 120ms), box-shadow var(--rs-t, 120ms); }
+.lamina-tapiz { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 2px; }
+.lamina-card { flex: 1 1 30%; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 8px 4px 7px; background: var(--rs-bg, #fff); border: 1px solid var(--rs-border-strong, #CBD5E1); border-radius: var(--rs-r-md, 12px); cursor: pointer; transition: border-color var(--rs-t, 120ms), background var(--rs-t, 120ms), box-shadow var(--rs-t, 120ms); }
 .lamina-card:hover { border-color: var(--rs-primary, #0866F5); }
 .lamina-card.on { border-color: var(--rs-primary, #0866F5); background: var(--rs-bg-secondary, #F0F6FF); box-shadow: 0 0 0 2px rgba(8, 102, 245, .18); }
 .lamina-card svg { width: 78px; height: 52px; display: block; border-radius: 4px; }
