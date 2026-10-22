@@ -446,7 +446,7 @@ function renderChips() {
   activos.forEach(function (o) {
     var od = ODS_DATA[o.id - 1];
     var l = document.createElement('label');
-    l.className = 'check';
+    l.className = 'check odsrow';
     var c = document.createElement('input');
     c.type = 'checkbox';
     c.checked = !!o.on;
@@ -456,12 +456,17 @@ function renderChips() {
       renderChips();
       pintar();
     });
+    // Emblema real del ODS: color oficial + arte del icono en blanco.
     var sw = document.createElement('span');
-    sw.className = 'chipcolor';
+    sw.className = 'chip-ods';
     sw.style.background = od.color;
+    sw.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" aria-hidden="true">' + od.icon + '</svg>';
+    var nm = document.createElement('span');
+    nm.className = 'odsname';
+    nm.textContent = od.code + ' · ' + od.name;
     l.appendChild(c);
     l.appendChild(sw);
-    l.appendChild(document.createTextNode(od.code + ' · ' + od.name));
+    l.appendChild(nm);
     wrap.appendChild(l);
   });
 }
