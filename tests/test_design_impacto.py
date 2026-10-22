@@ -191,3 +191,39 @@ def test_secuencia_fase_a_24fps():
     datos = correr("frames-fase", 5)
     assert datos["frames"] == 120
     assert datos["orden"] == ["in", "enf", "hold", "out", "fin"]
+
+
+# --- Task 8: narracion con IA ---
+
+def test_palabrasmax_a_135_wpm():
+    assert correr("palabras-max", 5)["n"] == 11
+    assert correr("palabras-max", 3)["n"] == 6
+
+
+def test_prompt_pulir_exige_formato():
+    prompt = correr("pulir", ["Borrador suelto.", "ODS 2 · Hambre Cero, Matagalpa", 11])["prompt"]
+    assert "solo el texto narrado" in prompt
+    assert "≤ 11 palabras" in prompt
+    assert "español neutro" in prompt
+    assert "Hambre Cero" in prompt
+
+
+def test_puede_aplicar_guard():
+    # textarea vacio sin confirmacion: NO aplica
+    assert correr("puede-aplicar", ["", False])["ok"] is False
+    # texto del usuario presente: aplica
+    assert correr("puede-aplicar", ["texto propio", False])["ok"] is True
+    # vacio pero confirmado por el boton Aplicar: aplica
+    assert correr("puede-aplicar", ["", True])["ok"] is True
+
+
+def test_truncar_palabras_con_aviso():
+    largo = " ".join("pal%d" % i for i in range(15))
+    datos = correr("truncar", [largo, 11])
+    assert datos["truncado"] is True
+    assert datos["aviso"]
+    assert len(datos["texto"].split()) <= 11
+    corto = "Una frase corta."
+    datos = correr("truncar", [corto, 11])
+    assert datos["truncado"] is False
+    assert datos["texto"] == corto

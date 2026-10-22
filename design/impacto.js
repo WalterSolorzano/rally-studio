@@ -483,6 +483,7 @@ function renderFichaOds() {
   s.addEventListener('change', function () {
     IMP_SELECCION = +s.value;
     pintar();
+    _narCargarFicha();
   });
 }
 
@@ -622,6 +623,7 @@ function arranqueImpacto() {
     renderFichaOds();
     wirePlan();
     renderAnimBody();
+    renderNar();
     pintar();
   });
   pintar();
@@ -839,6 +841,288 @@ function _grabarActual() {
       : 'La grabación falló: ' + (e && e.message ? e.message : 'error desconocido');
   });
   function avisoEstado(txt) { if (st) st.textContent = txt; }
+}
+
+// ---------- Task 8: narracion pulible con IA ----------
+
+// Ritmo locución: 135 palabras por minuto.
+function palabrasMax(segundos) {
+  return Math.floor((segundos || 0) * 2.25);
+}
+
+function promptPulir(texto, contexto, maxPalabras) {
+  return [
+    'Pule el siguiente borrador de narración para un clip de video institucional.',
+    contexto ? 'Contexto: ' + contexto + '.' : '',
+    'Devuelve solo el texto narrado, sin títulos ni explicaciones.',
+    'Límite estricto: ≤ ' + maxPalabras + ' palabras.',
+    'Redacción en español neutro, frases cortas, apto para locución.',
+    'No inventes datos ni cifras que no estén en el borrador o el contexto.',
+    '',
+    'Borrador:',
+    texto || ''
+  ].filter(Boolean).join('\n');
+}
+
+// Guard: sin borrador ni confirmación explícita, no se aplica nada.
+function puedeAplicar(original, confirmacion) {
+  return (original && original.trim().length > 0) || confirmacion === true;
+}
+
+// Trunca al límite de palabras y deja aviso (nada silencioso).
+function truncarPalabras(texto, max) {
+  var t = (texto || '').replace(/\s+/g, ' ').trim();
+  var p = t.split(' ').filter(Boolean);
+  if (p.length <= max) return { texto: t, truncado: false, aviso: '' };
+  var corto = p.slice(0, max).join(' ');
+  return {
+    texto: corto,
+    truncado: true,
+    aviso: 'La propuesta excede el límite (' + p.length + ' > ' + max + ' palabras); se recortó a ' + max + '.'
+  };
+}
+
+// Escribe la propuesta en el área real pero NUNCA solo: marcada editable.
+function aplicarPropuesta(area, texto, max) {
+  if (!area) return;
+  var r = max ? truncarPalabras(texto, max) : { texto: texto, truncado: false, aviso: '' };
+  area.value = r.texto;
+  area.classList.add('propuesta');
+  if (r.aviso && area.setCustomValidity) area.setCustomValidity('');
+  return r;
+}
+
+// ---------- Narración: UI (renderNar + IA) ----------
+
+// Clave de guardado por lámina: ficha se guarda POR ODS (ficha<id>).
+function _narClave(tipo) {
+  if (tipo !== 'ficha') return tipo;
+  return 'ficha' + (IMP_SELECCION || '');
+}
+
+function _narContexto(tipo) {
+  var n = IMP.impacto.narracion || {};
+  var lug = (IMP.impacto.plan && IMP.impacto.plan.municipio) || (IMP.team && IMP.team.city) || '';
+  if (tipo === 'ficha') {
+    var od = ODS_DATA[(IMP_SELECCION || 1) - 1];
+    return od ? (od.code + ' · ' + od.name + (lug ? ', ' + lug : '')) : '';
+  }
+  if (tipo === 'mosaico') {
+    var nombres = _odsSelPara('mosaico').map(function (o) { return 'ODS ' + o.id; }).join(', ');
+    return 'Solución y ODS (' + nombres + ')' + (lug ? ', ' + lug : '');
+  }
+  var nacional = modoEfectivo(IMP, IMP._brief) !== 'latam';
+  return nacional
+    ? ('Plan Nacional de Lucha contra la Pobreza 2022–2026' + (lug ? ', ' + lug : ''))
+    : ('Agenda sostenible para América Latina' + (lug ? ', ' + lug : ''));
+}
+
+var _narRefs = { areas: {}, paneles: {}, botones: {} };
+
+function _palabras(txt) { return (txt || '').split(/\s+/).filter(Boolean).length; }
+
+function renderNar() {
+  var body = document.getElementById('narBody');
+  if (!body) return;
+  IMP.impacto.narracion = IMP.impacto.narracion || {};
+  var nar = IMP.impacto.narracion;
+  body.innerHTML = '';
+  _narRefs = { areas: {}, paneles: {}, botones: {} };
+
+  var stIA = document.getElementById('statusIA');
+
+  function aviso(txt) { if (stIA) stIA.textContent = txt; }
+
+  // Resumen de la solución (input lodado a narracion.resumen).
+  var cajaRes = document.createElement('div');
+  cajaRes.innerHTML = '<label class="etiqueta" for="narResumen">Resumen de la solución</label>';
+  var inpRes = document.createElement('input');
+  inpRes.type = 'text';
+  inpRes.id = 'narResumen';
+  inpRes.value = nar.resumen || '';
+  inpRes.addEventListener('input', function () { nar.resumen = inpRes.value; _guardar(); });
+  cajaRes.appendChild(inpRes);
+  body.appendChild(cajaRes);
+
+  // Un borrador por lámina (ficha: del ODS activo).
+  IMP_TIPOS.forEach(function (tipo) {
+    var max = palabrasMax((IMP.impacto.anim[tipo] && IMP.impacto.anim[tipo].dur) || IMP.impacto.dur || 5);
+    var caja = document.createElement('div');
+    caja.className = 'field';
+    var titulo = document.createElement('label');
+    titulo.className = 'etiqueta';
+    titulo.textContent = (IMP_TIPO_ETIQUETA[tipo] || tipo);
+    var fila = document.createElement('div');
+    fila.className = 'fila-lamina';
+    var area = document.createElement('textarea');
+    area.rows = 3;
+    area.value = nar[_narClave(tipo)] || (tipo === 'ficha' ? (nar['ficha'] || '') : (nar[tipo] || ''));
+    area.dataset.tipo = tipo;
+    var conta = document.createElement('span');
+    conta.className = 'contador';
+    conta.textContent = _palabras(area.value) + ' / ' + max;
+    area.addEventListener('input', function () {
+      nar[_narClave(tipo)] = area.value;
+      conta.textContent = _palabras(area.value) + ' / ' + max;
+      _guardar();
+    });
+    fila.appendChild(area);
+    fila.appendChild(conta);
+    // IA de pulido: propuesta editable + aplicar; NUNCA sustituye sin confirmar.
+    var btn = document.createElement('button');
+    btn.className = 'sec';
+    btn.textContent = 'Pulir con IA';
+    btn.addEventListener('click', function () {
+      btn.disabled = true;
+      aviso('IA trabajando…');
+      var prompt = promptPulir(area.value, _narContexto(tipo), max);
+      RallyIA.job(prompt).then(function (r) {
+        btn.disabled = false;
+        if (r.status === 'ok') { _mostrarPropuesta(tipo, r.text, max); aviso('Pulido listo: revisa, edita y Aplica.'); }
+        else { aviso(r.message || 'IA no disponible.'); _mostrarPromptManual(prompt); }
+      });
+    });
+    fila.appendChild(btn);
+    caja.appendChild(titulo);
+    caja.appendChild(fila);
+    body.appendChild(caja);
+    _narRefs.areas[tipo] = area;
+  });
+
+  // Panel único de propuesta: rechazable y editable (no es destructive).
+  var panel = document.createElement('div');
+  panel.id = 'narPanel';
+  panel.hidden = true;
+  panel.innerHTML = '<label class="etiqueta">Propuesta IA (editable — no se aplica hasta que lo ordeno)</label>';
+  var tprop = document.createElement('textarea');
+  tprop.rows = 3;
+  tprop.className = 'propuesta';
+  var avisoTr = document.createElement('p');
+  avisoTr.className = 'status';
+  var filaBtn = document.createElement('div');
+  filaBtn.className = 'btn-row';
+  var aplicar = document.createElement('button');
+  aplicar.textContent = 'Aplicar';
+  var descartar = document.createElement('button');
+  descartar.className = 'sec';
+  descartar.textContent = 'Descartar';
+  panel.appendChild(tprop);
+  panel.appendChild(avisoTr);
+  filaBtn.appendChild(aplicar);
+  filaBtn.appendChild(descartar);
+  panel.appendChild(filaBtn);
+  body.appendChild(panel);
+
+  _narRefs.paneles = { panel: panel, tprop: tprop, avisoTr: avisoTr, tipo: null, max: null };
+
+  aplicar.addEventListener('click', function () {
+    var refs = _narRefs.paneles;
+    var area = _narRefs.areas[refs.tipo];
+    if (!area) return;
+    if (!puedeAplicar(area.value, true)) return;
+    var r = aplicarPropuesta(area, tprop.value, refs.max);
+    nar[_narClave(refs.tipo)] = r.texto;
+    _guardar();
+    refs.panel.hidden = true;
+    aviso(r.truncado ? r.aviso : 'Propuesta aplicada al borrador de ' + (IMP_TIPO_ETIQUETA[refs.tipo] || refs.tipo) + '.');
+  });
+  descartar.addEventListener('click', function () {
+    _narRefs.paneles.panel.hidden = true;
+    aviso('Propuesta descartada. El borrador queda como estaba.');
+  });
+  _narRefs.mostrar = function (tipo, texto, max) {
+    _narRefs.paneles.panel = panel;
+    _narRefs.paneles.tprop = tprop;
+    _narRefs.paneles.avisoTr = avisoTr;
+    panel.hidden = false;
+    panel.dataset.tipo = tipo;
+    _narRefs.paneles.tipo = tipo;
+    _narRefs.paneles.max = max;
+    var r = truncarPalabras(texto, max);
+    tprop.value = r.texto;
+    avisoTr.textContent = r.truncado ? r.aviso : '';
+  };
+  _narRefs.setAviso = aviso;
+
+  // Proponer conexiones: UN job para todos los ODS activos + resumen.
+  var btnConex = document.createElement('button');
+  btnConex.className = 'sec';
+  btnConex.textContent = 'Proponer conexiones (IA)';
+  btnConex.addEventListener('click', function () {
+    var sel = _odsSelPara('mosaico');
+    if (!sel.length) { aviso('Marca al menos un ODS activo para proponer conexiones.'); return; }
+    if (!canConex(sel)) return;
+    btnConex.disabled = true;
+    aviso('IA trabajando…');
+    var lista = sel.map(function (o) { var od = ODS_DATA[o.id - 1]; return 'ODS ' + o.id + ' · ' + (od ? od.name : ''); }).join('; ');
+    var prompt = [
+      'Para cada objetivo listado, escribe una línea con la conexión concreta de la solución.',
+      'Líneas exactamente con este formato: "ODS N: texto" (español neutro, ≤ 22 palabras por línea).',
+      'Resumen de la solución: ' + (nar.resumen || '(pendiente)') + '.',
+      'Contexto: ' + _narContexto('mosaico') + '.',
+      'No inventes datos; si algo no está, escribe la conexión cualitativa sin cifras.',
+      '',
+      'Objetivos: ' + lista
+    ].join('\n');
+    RallyIA.job(prompt).then(function (r) {
+      btnConex.disabled = false;
+      if (r.status !== 'ok') { aviso(r.message || 'IA no disponible.'); _mostrarPromptManual(prompt); return; }
+      var hechas = repartirConexiones(r.text || '');
+      aviso(hechas ? 'Conexiones propuestas para ' + hechas + ' ODS: entra a cada Ficha para pulir y Aplicar.' : 'La IA no devolvió líneas "ODS N: texto". Copia el prompt y prueba manual.');
+    });
+  });
+  body.appendChild(btnConex);
+
+  function canConex(sel) {
+    var sinRes = 'Sin resumen no hay conexión honesta. Escribe primero el resumen de la solución.';
+    if (!(nar.resumen && nar.resumen.trim())) { aviso(sinRes); return false; }
+    return true;
+  }
+
+  // Prompt visible para copia manual (o fallo de IA).
+  function _mostrarPropuesta(tipo, texto, max) { _narRefs.mostrar(tipo, texto, max); }
+  function _mostrarPromptManual(prompt) {
+    var refs = _narRefs.paneles;
+    refs.panel = panel;
+    refs.tprop = tprop;
+    refs.avisoTr = avisoTr;
+    panel.hidden = false;
+    panel.dataset.tipo = null;
+    refs.tipo = null;
+    refs.max = null;
+    tprop.value = prompt;
+    avisoTr.textContent = 'IA no disponible: abajo está el prompt para copiar a una IA externa.';
+  }
+  _narRefs.manual = _mostrarPromptManual;
+}
+
+// Reparto "ODS 12: texto" → claves narracion['ficha12'] (SOLO propuesta: queda
+// pendiente de Aplicar en la ficha respectiva, nada silencioso).
+function repartirConexiones(texto) {
+  var nar = IMP.impacto.narracion = IMP.impacto.narracion || {};
+  var lineas = String(texto || '').split(/\n+/);
+  var n = 0;
+  lineas.forEach(function (ln) {
+    var m = ln.match(/^\s*ODS\s*(\d{1,2})\s*[:—-]\s*(.+)$/i);
+    if (!m) return;
+    var id = +m[1];
+    if (!ODS_DATA[id - 1]) return;
+    nar['ficha' + id] = m[2].trim();
+    n++;
+  });
+  _guardar();
+  return n;
+}
+
+// Cambio de ficha ODS: el borrador del textarea debe seguir al ODS activo.
+function _narCargarFicha() {
+  var area = _narRefs.areas && _narRefs.areas.ficha;
+  if (!area) return;
+  var nar = IMP.impacto.narracion || {};
+  area.value = nar[_narClave('ficha')] || '';
+  var ev = document.createEvent('Event');
+  ev.initEvent('input', false, false);
+  area.dispatchEvent(ev);
 }
 
 document.addEventListener('DOMContentLoaded', arranqueImpacto);

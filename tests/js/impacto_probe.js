@@ -182,6 +182,27 @@ switch (comando) {
     salir({ frames, orden });
     break;
   }
+  // --- Task 8: narracion con IA ---
+  case "palabras-max": {
+    const seg = JSON.parse(process.argv[3]);
+    salir({ n: typeof sandbox.palabrasMax === "function" ? sandbox.palabrasMax(seg) : null });
+    break;
+  }
+  case "pulir": {
+    const [texto, contexto, max] = JSON.parse(process.argv[3]);
+    salir({ prompt: typeof sandbox.promptPulir === "function" ? sandbox.promptPulir(texto, contexto, max) : null });
+    break;
+  }
+  case "puede-aplicar": {
+    const [original, confirmacion] = JSON.parse(process.argv[3]);
+    salir({ ok: typeof sandbox.puedeAplicar === "function" ? sandbox.puedeAplicar(original, confirmacion) : null });
+    break;
+  }
+  case "truncar": {
+    const [texto, max] = JSON.parse(process.argv[3]);
+    salir(typeof sandbox.truncarPalabras === "function" ? sandbox.truncarPalabras(texto, max) : { error: "truncarPalabras ausente" });
+    break;
+  }
   // --- Task 5: timeline ---
   case "fases": {
     const [entrada, enfasis, salida, dur, t] = JSON.parse(process.argv[3]);

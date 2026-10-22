@@ -61,3 +61,12 @@ textarea.propuesta { border-radius: var(--rs-r-sm); }
 
 .lamina-canvas > * { will-change: opacity, transform, clip-path; }
 
+/* --- narracion IA (Task 8) --- */
+.propuesta {
+  border: 1px solid #0866F5;
+  background: #F0F6FF;
+  resize: vertical;
+}
+.contador { font-family: var(--font-mono, 'JetBrains Mono', monospace); font-variant-numeric: tabular-nums; color: #5C7193; font-size: 12px; min-width: 7ch; align-self: center; }
+
+
