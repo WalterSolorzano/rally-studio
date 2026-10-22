@@ -610,6 +610,10 @@ function arranqueImpacto() {
   if (sel) sel.addEventListener('change', pintar);
   var archivo = document.getElementById('archivo');
   if (archivo && !archivo.value) archivo.value = _prefijoArchivo();
+  var btnExport = document.getElementById('exportPng');
+  if (btnExport) btnExport.addEventListener('click', function () { exportarPNG(IMP_IDENT_TIPO()); });
+  var btnVer = document.getElementById('verAnim');
+  if (btnVer) btnVer.addEventListener('click', function () { reproducirAnimacion(IMP_IDENT_TIPO()); });
   cargarBrief(IMP, function (ok, b) {
     if (b) { IMP._brief = b; aplicarBrief(b, IMP); }
     renderChips();
@@ -623,13 +627,44 @@ function arranqueImpacto() {
 
 function _prefijoArchivo() {
   var n = (IMP.team && IMP.team.name) || '';
-  return 'clip_' + String(n).toLowerCase().replace(/[^a-z0-9]+/g, '').slice(0, 12);
+  return String(n).toLowerCase().replace(/[^a-z0-9]+/g, '').slice(0, 12);
 }
 
 function _archivoDetalle(ext, tipo) {
   var inp = document.getElementById('archivo');
   var det = ((inp && inp.value) || '').replace(/[\\/:*?"<>|]+/g, '').trim() || tipo;
   return 'clip_' + det + '.' + ext;
+}
+
+// ---------- Task 6: export PNG (frame final, escala 2) ----------
+
+function _descargar(blob, nombre) {
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = nombre;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(function () { URL.revokeObjectURL(a.href); }, 4000);
+}
+
+function exportarPNG(tipo) {
+  var estado = _estadoLamina();
+  var prims = componerLamina(tipo, estado, _odsSelPara(tipo));
+  var cv = document.createElement('canvas');
+  cv.width = IMP_ANCHO * 2;
+  cv.height = IMP_ALTO * 2;
+  var ctx = cv.getContext('2d');
+  ctx.fillStyle = (estado.pal && estado.pal.bg) || '#FFFFFF';
+  ctx.fillRect(0, 0, cv.width, cv.height);
+  pintarCanvas(ctx, prims, 2);
+  var st = document.getElementById('statusExport');
+  if (st) st.textContent = 'Renderizando PNG…';
+  cv.toBlob(function (blob) {
+    if (!blob) { if (st) st.textContent = 'El navegador rechazó el PNG (blob vacío).'; return; }
+    _descargar(blob, _archivoDetalle('png', tipo));
+    if (st) st.textContent = 'PNG exportado a 3840×2160.';
+  }, 'image/png');
 }
 
 document.addEventListener('DOMContentLoaded', arranqueImpacto);
