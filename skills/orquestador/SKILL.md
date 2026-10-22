@@ -110,11 +110,37 @@ por carpeta compartida; el equipo lo decide al abrir el proyecto.
 | Especialista | Produce | Lee | Coordina con |
 |---|---|---|---|
 | guionista | actos del guion | tomas (shots + shotlist), fichas `blender/ficha_*.md`, claims | modeler (piezas en cámara), investigador (números) |
-| modeler | ficha, `.blend`, scripts, renders | tomas (acto, duración, cámara), `budget/bom.csv` (dimensiones y materiales), `env.json` (tier) | guionista, director (`rubric_item`) |
+| modeler | ficha, `.blend`, scripts, renders | tomas (acto, duración, cámara), `budget/bom.csv` (dimensiones y materiales), `env.json` (tier) | guionista, presupuestador (la ficha alimenta los precios), director (`rubric_item`) |
 | investigador | claims con fuente, URL y año | fuentes citables | guionista, pautador |
 | pautador | secciones del pautado, canvas | brief, claims, budget | presupuestador |
-| presupuestador | `budget/budget.json` | `budget/bom.csv`, claims, proveedores con URL | pautador, director |
+| presupuestador | `budget/budget.json` | `budget/bom.csv`, fichas `blender/ficha_*.md` (lo que dijo el modeler), claims, proveedores con URL | modeler (lo que la pieza necesita de verdad), pautador, director |
 | grafista2d | piezas 2D si se despacha | tomas con owner grafista2d | guionista |
+
+## Cómo se ponen los precios (presupuestador)
+
+Reglas de sentido común, sin tecnicismos:
+
+1. **El precio se apoya en la ficha**. Cada línea del presupuesto sale de lo
+   que otro especialista dijo que se necesita: si el modeler escribió en su
+   ficha qué materiales y piezas lleva el modelo, los precios cubren exactamente
+   eso. Si es una app, el costo sale de lo que la app necesita para funcionar,
+   no de lo que a nadie se le ocurra. Nadie presupuesta en el aire.
+2. **Precios creíbles**: ni locos ni regalados. Si una cosa cuesta 5 cuando en
+   cualquier tienda cuesta 200, el precio está mal (demasiado barato = parece
+   inventado). Si cuesta 2 000 cuando el promedio real es 50, también está mal.
+   Antes de escribir un precio se busca la página del vendedor y se anota el
+   enlace en la fila. Sin enlace, la fila no pasa.
+3. **Pagar por usar, casi nunca construir**. Si ya existe un servicio que se
+   paga por uso (alojamiento, envío de mensajes, voz, cajas, transporte), se
+   contrata: es más barato, más rápido y más creíble que fabricarlo. Lo único
+   que el propio equipo construye con sus manos (el prototipo, el modelo, el
+   código propio) casi no cuesta dinero: ahí no se pone un precio grande. El
+   presupuesto real vive en los servicios que se contratan a terceros.
+4. **Gastos anuales para lo digital**. Si la solución es una app o una web,
+   pensar en membresías que se pagan por año y planes por uso, no solo en el
+   gasto del primer día. Siempre con el precio y el enlace real del plan.
+5. **Palabras normales**. La tabla la lee gente que no es ingeniera: nombre de
+   la cosa, para qué sirve y cuántas. Sin siglas raras ni jerga.
 
 ## Anti-objetivos (lo que el director NO hace)
 
