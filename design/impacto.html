@@ -47,11 +47,12 @@
         <summary>Preset y láminas</summary>
         <div class="body">
           <div class="field"><label>Tipo de lámina</label>
-            <select id="laminaSel">
+            <select id="laminaSel" class="oculto">
               <option value="mosaico">Mosaico ODS</option>
               <option value="ficha">Ficha por ODS</option>
               <option value="plan">Plan País</option>
             </select>
+            <div id="laminaTapiz" class="lamina-tapiz"></div>
           </div>
           <div class="field" id="fichaOdsWrap"><label>ODS de la ficha</label><select id="fichaOds"></select></div>
         </div>
@@ -79,7 +80,6 @@
             <div><label>Municipio / ciudad ancla</label><input type="text" id="planMuni" placeholder="Ej. Matagalpa"></div>
             <div><label>Eje del plan (opcional)</label><input type="text" id="planEje" placeholder="Ej. Criando Futures: familias en movimiento"></div>
           </div>
-          <div id="planProgWrap"><label class="lbl-div">Programas articulados</label><div class="chip-row" id="planProg"></div></div>
           <div class="field"><label>Cifra (a mano, nada autogenerado)</label><input type="text" id="planCifra" placeholder="Ej. 240 familias"></div>
           <div class="field"><label>Texto de apoyo</label><textarea id="planTexto" rows="3"></textarea></div>
         </div>

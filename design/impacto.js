@@ -101,12 +101,19 @@ function _pie(estado, ancho) {
 }
 
 // Preset demosaico: 'bloques' | 'bandas' | 'ficha' (grilla compacta).
+// Modo limpio (imp.limpio): el video queda SOLO con el mosaico ODS — sin
+// cabecera RALLY STUDIO, sin universidad ni pie; la zona crece y el grid respira.
 function _laminMosaico(estado, odsSel) {
-  var prims = _cabecera(estado, 'Impacto en ODS', 'Objetivos de Desarrollo Sostenible que atiende la solución');
+  var clean = !!estado.limpio;
+  var prims = clean ? [] : _cabecera(estado, 'Impacto en ODS', 'Objetivos de Desarrollo Sostenible que atiende la solución');
   var n = odsSel.length;
   var preset = estado.imp.preset || 'bloques';
   if (!n) return prims;
   var cols = n <= 1 ? 1 : n <= 4 ? 2 : n <= 9 ? 3 : n <= 12 ? 4 : 5;
+  var aM = (estado.imp.anim && estado.imp.anim.mosaico) || {};
+  if (aM.cols && aM.cols !== 'auto' && preset !== 'bandas') {
+    cols = Math.max(1, Math.min(parseInt(aM.cols, 10) || 0, n));
+  }
   var filas = Math.ceil(n / cols);
   var hueco = 22;
   if (preset === 'bandas') {
@@ -114,9 +121,14 @@ function _laminMosaico(estado, odsSel) {
     filas = n;
     hueco = 14;
   }
+  // Orden de entrada: se fija aqui para que canvas, DOM y video coincidan.
+  var rango = {};
+  _ordenMosaico(n, aM.orden || 'secuencial', preset === 'bandas' ? 1 : cols, filas)
+    .forEach(function (pos, rank) { rango[pos] = rank; });
   // Zona de mosaico: campo suave (bg2) con esquinas; la cuadrícula se centra
   // dentro y el sobrante se reparte, nada de agujeros sin sentido.
-  var zx = 84, zy = 228, zw = IMP_ANCHO - 168, zh = IMP_ALTO - 228 - 104;
+  var zx = 84, zy = clean ? 64 : 228;
+  var zw = IMP_ANCHO - 168, zh = (clean ? IMP_ALTO - 64 - 88 : IMP_ALTO - 228 - 104);
   prims.push({ k: 'rect', x: zx, y: zy, w: zw, h: zh, color: estado.pal.bg2 || '#F0F6FF', r: 24 });
   var pad = preset === 'bandas' ? 36 : 48;
   var gx = zx + pad, gy = zy + pad, gw = zw - pad * 2, gh = zh - pad * 2;
@@ -128,49 +140,57 @@ function _laminMosaico(estado, odsSel) {
     var col = i % cols, fil = Math.floor(i / cols);
     var x = gx + col * (cw + hueco);
     var y = gy + fil * (ch + hueco);
+    var g = rango[i] !== undefined ? rango[i] : i;
     var esBanda = preset === 'bandas';
     // Emblema oficial: cuadrado del color, icono blanco grande y nombre
     // SIEMPRE blanco sobre una franja sombreada (legible en cualquier ODS).
-    prims.push({ k: 'rect', x: x, y: y, w: cw, h: ch, color: od.color, r: 6, g: i });
-    prims.push({ k: 'txt', x: x + 24, y: y + 18, text: od.code, font: _fontDe(estado, 'l'), size: 28, weight: 800, color: '#FFFFFF', g: i });
+    prims.push({ k: 'rect', x: x, y: y, w: cw, h: ch, color: od.color, r: 6, g: g });
+    prims.push({ k: 'txt', x: x + 24, y: y + 18, text: od.code, font: _fontDe(estado, 'l'), size: 28, weight: 800, color: '#FFFFFF', g: g });
     if (esBanda) {
       var sB = Math.min(84, ch - 24);
-      prims.push({ k: 'ico', x: x + 24, y: y + (ch - sB) / 2, s: sB, color: '#FFFFFF', path: od.icon, g: i });
-      prims.push({ k: 'rect', x: x + cw * 0.22, y: y + ch - 86, w: cw * 0.78 - 24, h: 66, color: 'rgba(9,30,66,0.30)', r: 12, g: i });
-      prims.push({ k: 'txt', x: x + cw * 0.22 + 20, y: y + ch - 78, text: od.name, font: _fontDe(estado, 'b'), size: 34, weight: 700, color: '#FFFFFF', g: i });
+      prims.push({ k: 'ico', x: x + 24, y: y + (ch - sB) / 2, s: sB, color: '#FFFFFF', path: od.icon, g: g });
+      prims.push({ k: 'rect', x: x + cw * 0.22, y: y + ch - 86, w: cw * 0.78 - 24, h: 66, color: 'rgba(9,30,66,0.30)', r: 12, g: g });
+      prims.push({ k: 'txt', x: x + cw * 0.22 + 20, y: y + ch - 78, text: od.name, font: _fontDe(estado, 'b'), size: 34, weight: 700, color: '#FFFFFF', g: g });
     } else {
       var sIco = Math.min(Math.round(cw * 0.34), Math.round(ch * 0.42), 150);
-      prims.push({ k: 'ico', x: x + (cw - sIco) / 2, y: y + (ch - 96 - sIco) / 2 + 14, s: sIco, color: '#FFFFFF', path: od.icon, g: i });
-      prims.push({ k: 'rect', x: x, y: y + ch - 96, w: cw, h: 96, color: 'rgba(9,30,66,0.30)', r: 0, g: i });
-      prims.push({ k: 'txt', x: x + 24, y: y + ch - 78, text: od.name, font: _fontDe(estado, 'b'), size: 34, weight: 700, color: '#FFFFFF', g: i });
+      prims.push({ k: 'ico', x: x + (cw - sIco) / 2, y: y + (ch - 96 - sIco) / 2 + 14, s: sIco, color: '#FFFFFF', path: od.icon, g: g });
+      prims.push({ k: 'rect', x: x, y: y + ch - 96, w: cw, h: 96, color: 'rgba(9,30,66,0.30)', r: 0, g: g });
+      prims.push({ k: 'txt', x: x + 24, y: y + ch - 78, text: od.name, font: _fontDe(estado, 'b'), size: 34, weight: 700, color: '#FFFFFF', g: g });
     }
   });
-  return prims.concat(_pie(estado, IMP_ANCHO));
+  return prims.concat(clean ? [] : _pie(estado, IMP_ANCHO));
 }
 
 // Ficha de UN ODS: bloque de color a la izquierda + meta y conexión.
+// Modo limpio: sin cabecera de marca; el contenido sube a ocupar el alto.
 function _laminaFicha(estado, odsSel) {
+  var clean = !!estado.limpio;
   var o = odsSel[0];
   var od = o && ODS_DATA[o.id - 1];
-  var prims = _cabecera(estado, 'Ficha de impacto', 'Cómo la solución conecta con este ODS');
+  var prims = clean ? [] : _cabecera(estado, 'Ficha de impacto', 'Cómo la solución conecta con este ODS');
   if (!od) return prims;
+  var dy = clean ? -136 : 0;
   var bx = 200, bw = 420, tam = 640;
-  var tinta = tintaSobre(od.color);
-  prims.push({ k: 'rect', x: bx, y: 300, w: bw, h: tam, color: od.color });
-  prims.push({ k: 'ico', x: bx + 40, y: 340, s: 84, color: tinta, path: od.icon });
-  prims.push({ k: 'txt', x: bx + 40, y: 850, text: od.code, font: _fontDe(estado, 'l'), size: 34, weight: 700, color: tinta });
-  prims.push({ k: 'txt', x: 700, y: 320, text: od.name, font: _fontDe(estado, 't'), size: 72, weight: 900, color: estado.pal.ink });
-  prims.push({ k: 'txt', x: 700, y: 430, text: od.shortTarget, font: _fontDe(estado, 'b'), size: 34, weight: 600, color: estado.pal.ac });
+  prims.push({ k: 'rect', x: bx, y: 300 + dy, w: bw, h: tam, color: od.color });
+  // Emblema: icono y codigo SIEMPRE blancos sobre franja navy (como el mosaico),
+  // nunca tinta navy sobre el color del ODS (se leia como negro).
+  prims.push({ k: 'ico', x: bx + 40, y: 340 + dy, s: 84, color: '#FFFFFF', path: od.icon });
+  prims.push({ k: 'rect', x: bx, y: 300 + dy + tam - 96, w: bw, h: 96, color: 'rgba(9,30,66,0.30)', r: 0 });
+  prims.push({ k: 'txt', x: bx + 40, y: 300 + dy + tam - 78, text: od.code, font: _fontDe(estado, 'l'), size: 34, weight: 700, color: '#FFFFFF' });
+  prims.push({ k: 'txt', x: 700, y: 320 + dy, text: od.name, font: _fontDe(estado, 't'), size: 72, weight: 900, color: estado.pal.ink });
+  prims.push({ k: 'txt', x: 700, y: 430 + dy, text: od.shortTarget, font: _fontDe(estado, 'b'), size: 34, weight: 600, color: estado.pal.ac });
   var conecta = (estado.imp.textos['conecta' + o.id]) || 'La solución atiende esta meta directamente en el territorio, con pruebas y costo bajo.';
-  prims.push({ k: 'txt', x: 700, y: 520, text: conecta, font: _fontDe(estado, 'b'), size: 30, weight: 400, color: estado.pal.ink });
+  prims.push({ k: 'txt', x: 700, y: 520 + dy, text: conecta, font: _fontDe(estado, 'b'), size: 30, weight: 400, color: estado.pal.ink });
   return prims;
 }
 
 // Lámina plan: banda superior PNDH (nacional) o agenda sostenible (latam).
+// Modo limpio: sin pie de marca; la banda vuelve a empezar más arriba.
 function _laminaPlan(estado, odsSel, modo) {
+  var clean = !!estado.limpio;
   var prims = [];
   var nacional = modo !== 'latam';
-  var bandaY = 96, bandaH = 150;
+  var bandaY = clean ? 64 : 96, bandaH = clean ? 190 : 150;
   var banda = nacional ? estado.pal.ink : estado.pal.ac;
   var tintaBanda = tintaSobre(banda);
   var titulo = nacional ? 'Plan Nacional de Lucha contra la Pobreza y para el Desarrollo Humano 2022–2026' : 'Agenda sostenible para América Latina';
@@ -182,19 +202,22 @@ function _laminaPlan(estado, odsSel, modo) {
     prims.push({ k: 'txt', x: 124, y: bandaY + 88, text: 'Eje: ' + eje, font: _fontDe(estado, 'b'), size: 26, weight: 500, color: tintaBanda });
   }
   var y = bandaY + bandaH + 60;
-  prims.push({ k: 'txt', x: 84, y: y, text: nacional ? 'Programas articulados' : 'Alineamientos de agenda', font: _fontDe(estado, 'b'), size: 26, weight: 700, color: estado.pal.ac });
-  y += 52;
   var progs = (estado.imp.plan.programas || []).slice(0, 6);
-  var cx = 84, cy = y;
-  progs.forEach(function (p, i) {
-    var woaprox = 12 + p.length * 11.4;
-    var chipH = 52;
-    if (cx + woaprox > IMP_ANCHO - 84) { cx = 84; cy += chipH + 18; }
-    prims.push({ k: 'rect', x: cx, y: cy, w: woaprox, h: chipH, color: estado.pal.gl, r: 26 });
-    prims.push({ k: 'txt', x: cx + 20, y: cy + 13, text: p, font: _fontDe(estado, 'b'), size: 22, weight: 600, color: estado.pal.ink });
-    cx += woaprox + 18;
-  });
-  cy = Math.max(cy + 92, y + 92);
+  var cy = y;
+  if (progs.length) {
+    prims.push({ k: 'txt', x: 84, y: y, text: nacional ? 'Programas articulados' : 'Alineamientos de agenda', font: _fontDe(estado, 'b'), size: 26, weight: 700, color: estado.pal.ac });
+    y += 52;
+    var cx = 84;
+    progs.forEach(function (p, i) {
+      var woaprox = 12 + p.length * 11.4;
+      var chipH = 52;
+      if (cx + woaprox > IMP_ANCHO - 84) { cx = 84; cy += chipH + 18; }
+      prims.push({ k: 'rect', x: cx, y: cy, w: woaprox, h: chipH, color: estado.pal.gl, r: 26 });
+      prims.push({ k: 'txt', x: cx + 20, y: cy + 13, text: p, font: _fontDe(estado, 'b'), size: 22, weight: 600, color: estado.pal.ink });
+      cx += woaprox + 18;
+    });
+    cy = Math.max(cy + 92, y + 92);
+  }
   var muni = estado.imp.plan.municipio;
   if (muni) {
     prims.push({ k: 'txt', x: 84, y: cy, text: 'Anclaje territorial: ' + muni, font: _fontDe(estado, 'b'), size: 30, weight: 700, color: estado.pal.ink });
@@ -209,7 +232,7 @@ function _laminaPlan(estado, odsSel, modo) {
   if (texto) {
     prims.push({ k: 'txt', x: 84, y: cy, text: texto, font: _fontDe(estado, 'b'), size: 24, weight: 400, color: estado.pal.mu });
   }
-  prims = prims.concat(_pie(estado));
+  prims = prims.concat(clean ? [] : _pie(estado));
   return prims;
 }
 
@@ -396,16 +419,20 @@ function reproducirAnimacion(tipo) {
   if (estado) estado.textContent = 'Reproduciendo (' + dur + ' s)…';
   // Base (cabecera, fondo, pie): la entrada elegida, como siempre.
   _impSetAnim(base, IMP_ANIM_CLASES[a.entrada || 'fade'], fases.tIn);
-  // Cuadritos: uno por uno, lento (1.1 s cada uno), ciclando movimientos.
-  var paso = Math.max(0.42, (fases.dur - 1.6) / Math.max(1, listaTiles.length));
+  // Cuadritos: uno por uno, lento, con el movimiento y ritmo elegidos.
+  var aM = (IMP.impacto.anim && IMP.impacto.anim.mosaico) || {};
+  var ritmo = IMP_RITMO_TILE[aM.ritmo || 'normal'] || 1;
+  var plan = IMP_TILES_PLAN(Math.max(1, listaTiles.length), fases.dur, ritmo);
+  var paso = plan.paso;
   var CLASES_TILE = ['impInPop', 'impInSlideArriba', 'impInSlideIzq', 'impInFade', 'impInWipe'];
   listaTiles.forEach(function (grupo, idx) {
-    var clase = CLASES_TILE[idx % CLASES_TILE.length];
+    var tipo = IMP_TILE_TIPO(idx, aM.tiles || 'ciclo');
+    var clase = IMP_CLASES_TILE[tipo];
     var t0 = idx * paso;
     grupo.forEach(function (h) {
       h.style.animation = '';
       void h.offsetWidth;
-      h.style.animation = clase + ' 1.1s cubic-bezier(.33,1,.68,1) ' + t0.toFixed(2) + 's both';
+      h.style.animation = clase + ' ' + plan.tDur + 's cubic-bezier(.33,1,.68,1) ' + t0.toFixed(2) + 's both';
     });
   });
   if (fases.tEn && !listaTiles.length) {
@@ -437,7 +464,8 @@ function _guardar() { saveIdentity(IMP); }
 function _estadoLamina() {
   return {
     imp: IMP.impacto, pal: IMP.pal, fonts: IMP.fonts, team: IMP.team,
-    modo: IMP.rallyType || '', brief: IMP._brief || {}
+    modo: IMP.rallyType || '', brief: IMP._brief || {},
+    limpio: !!IMP.impacto.limpio
   };
 }
 
@@ -584,55 +612,81 @@ function dibujarChipsProgramas() {
 }
 
 // Animación: selects por tipo + dur por tipo (override del dur global).
-var IMP_TIPO_ETIQUETA = { mosaico: 'Mosaico ODS', ficha: 'Ficha', plan: 'Plan País' };
+var IMP_TIPO_ETIQUETA = { mosaico: 'ODS (mosaico)', ficha: 'Ficha de un ODS', plan: 'Plan País (PNLCP)' };
 
 function renderAnimBody() {
   var body = document.getElementById('animBody');
   if (!body) return;
   body.innerHTML = '';
-  IMP_TIPOS.forEach(function (tipo) {
-    var a = (IMP.impacto.anim[tipo] = IMP.impacto.anim[tipo] || impactoPorDefecto().anim[tipo]);
-    var tit = document.createElement('div');
-    tit.className = 'field';
-    tit.innerHTML = '<label>' + (IMP_TIPO_ETIQUETA[tipo] || tipo) + '</label>';
-    var grid = document.createElement('div');
-    grid.className = 'grid g2';
-    [['entrada', 'Entrada'], ['enfasis', 'Énfasis'], ['salida', 'Salida']].forEach(function (par) {
-      var campo = par[0], etiqueta = par[1];
-      var caja = document.createElement('div');
-      caja.innerHTML = '<label class="mini">' + etiqueta + '</label>';
-      var s = document.createElement('select');
-      IMP_ANIM_OPCIONES[campo].forEach(function (op) {
-        var o = document.createElement('option');
-        o.value = op;
-        o.textContent = op;
-        s.appendChild(o);
-      });
-      s.value = a[campo] || 'none';
-      s.addEventListener('change', function () {
-        a[campo] = s.value;
-        _guardar();
-      });
-      caja.appendChild(s);
-      grid.appendChild(caja);
+  var tipo = IMP_IDENT_TIPO();
+  IMP.impacto.limpio = !!IMP.impacto.limpio;
+  var a = (IMP.impacto.anim[tipo] = IMP.impacto.anim[tipo] || impactoPorDefecto().anim[tipo]);
+  // Video limpio: la lámina exportada/grabada se dibuja sin marca ni pie.
+  var cajaLimpio = document.createElement('div');
+  cajaLimpio.className = 'field';
+  var chk = document.createElement('label');
+  chk.className = 'check';
+  var inp = document.createElement('input');
+  inp.type = 'checkbox';
+  inp.id = 'chkLimpio';
+  inp.checked = !!IMP.impacto.limpio;
+  inp.addEventListener('change', function () {
+    IMP.impacto.limpio = inp.checked;
+    _guardar();
+    pintar();
+  });
+  chk.appendChild(inp);
+  chk.appendChild(document.createTextNode(' Video limpio: sin marca Rally Studio ni pie (solo ODS y plan)'));
+  cajaLimpio.appendChild(chk);
+  body.appendChild(cajaLimpio);
+  // Duración SOLO del tipo activo (panel compacto; los otros tipos
+  // aparecen al cambiar de lámina en el tapiz).
+  var cajaDur = document.createElement('div');
+  cajaDur.className = 'field';
+  cajaDur.innerHTML = '<label class="mini">Duración de ' + (IMP_TIPO_ETIQUETA[tipo] || tipo) + ' (segundos)</label>';
+  var dur = document.createElement('input');
+  dur.type = 'number';
+  dur.min = 3; dur.max = 10; dur.step = 0.5;
+  dur.value = a.dur || IMP.impacto.dur || 5;
+  dur.addEventListener('change', function () {
+    var v = Math.min(10, Math.max(3, parseFloat(dur.value) || 5));
+    dur.value = v;
+    a.dur = v;
+    _guardar();
+  });
+  cajaDur.appendChild(dur);
+  body.appendChild(cajaDur);
+  // Mosaico: coreografía en chips visuales ANTES de los avanzados.
+  if (tipo === 'mosaico') {
+    body.appendChild(_coreografiaMosaico(a));
+  }
+  // Avanzados plegados: entrada/énfasis/salida (menos técnica, fuera de golpe de vista).
+  var avz = document.createElement('details');
+  avz.className = 'avz';
+  avz.innerHTML = '<summary>Ajustes avanzados de animación (entrada, énfasis, salida)</summary>';
+  var grid = document.createElement('div');
+  grid.className = 'grid g2';
+  [['entrada', 'Entrada'], ['enfasis', 'Énfasis'], ['salida', 'Salida']].forEach(function (par) {
+    var campo = par[0], etiqueta = par[1];
+    var caja = document.createElement('div');
+    caja.innerHTML = '<label class="mini">' + etiqueta + '</label>';
+    var s = document.createElement('select');
+    IMP_ANIM_OPCIONES[campo].forEach(function (op) {
+      var o = document.createElement('option');
+      o.value = op;
+      o.textContent = op;
+      s.appendChild(o);
     });
-    var cajaDur = document.createElement('div');
-    cajaDur.innerHTML = '<label class="mini">Segundos (3–10)</label>';
-    var dur = document.createElement('input');
-    dur.type = 'number';
-    dur.min = 3; dur.max = 10; dur.step = 0.5;
-    dur.value = a.dur || IMP.impacto.dur || 5;
-    dur.addEventListener('change', function () {
-      var v = Math.min(10, Math.max(3, parseFloat(dur.value) || 5));
-      dur.value = v;
-      a.dur = v;
+    s.value = a[campo] || 'none';
+    s.addEventListener('change', function () {
+      a[campo] = s.value;
       _guardar();
     });
-    cajaDur.appendChild(dur);
-    grid.appendChild(cajaDur);
-    tit.appendChild(grid);
-    body.appendChild(tit);
+    caja.appendChild(s);
+    grid.appendChild(caja);
   });
+  avz.appendChild(grid);
+  body.appendChild(avz);
   var btn = document.createElement('button');
   btn.className = 'sec';
   btn.textContent = 'Ver animación de esta lámina';
@@ -640,11 +694,131 @@ function renderAnimBody() {
   body.appendChild(btn);
 }
 
+// Coreografía de los cuadritos (solo mosaico): chips con mini-preview animado
+// (cada demo repite el movimiento real) en lugar de selects técnicos.
+function _coreografiaMosaico(a) {
+  var DEF = { orden: 'secuencial', ritmo: 'normal', cols: 'auto', tiles: 'ciclo' };
+  var caja = document.createElement('div');
+  caja.className = 'coreo';
+  caja.innerHTML = '<label class="mini lbl-mov">Movimiento de los cuadritos</label>';
+  function fila(clave, opciones) {
+    var f = document.createElement('div');
+    f.className = 'fila-chips';
+    var val = a[clave] || DEF[clave];
+    opciones.forEach(function (op) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'tilechip' + (op.val === val ? ' on' : '');
+      var demo = '';
+      if (op.demo) demo = '<span class="c-demo" data-a="' + op.demo + '" aria-hidden="true"></span>';
+      else if (op.dots) demo = '<span class="dotgrid" aria-hidden="true">' + _mosaicoDot(op.dots) + '</span>';
+      b.innerHTML = demo + '<span>' + op.txt + '</span>';
+      b.addEventListener('click', function () {
+        a[clave] = op.val;
+        _guardar();
+        if (clave === 'orden' || clave === 'cols') pintar(); // cambian la composición
+        Array.prototype.forEach.call(f.children, function (c) { c.classList.toggle('on', c === b); });
+      });
+      f.appendChild(b);
+    });
+    return f;
+  }
+  caja.appendChild(fila('tiles', [
+    { val: 'ciclo', txt: 'Ciclo', demo: 'ciclo' },
+    { val: 'solo-pop', txt: 'Pop', demo: 'pop' },
+    { val: 'solo-arriba', txt: 'Desde abajo', demo: 'arriba' },
+    { val: 'solo-izq', txt: 'Desde la izquierda', demo: 'izq' },
+    { val: 'solo-fade', txt: 'Desvanecer', demo: 'fade' },
+    { val: 'solo-wipe', txt: 'Cortina', demo: 'wipe' },
+    { val: 'aleatorio', txt: 'Al azar', demo: 'aleatorio' }
+  ]));
+  caja.appendChild(fila('ritmo', [
+    { val: 'rapido', txt: 'Rápido' }, { val: 'normal', txt: 'Normal' }, { val: 'lento', txt: 'Lento' }
+  ]));
+  caja.appendChild(fila('orden', [
+    { val: 'secuencial', txt: 'Uno tras otro', dots: [0] },
+    { val: 'centro-fuera', txt: 'Del centro afuera', dots: [1] },
+    { val: 'aleatorio', txt: 'Al azar', dots: [2, 4] }
+  ]));
+  caja.appendChild(fila('cols', [
+    { val: 'auto', txt: 'Auto' }, { val: '2', txt: 'En 2' }, { val: '3', txt: 'En 3' }, { val: '4', txt: 'En 4' }
+  ]));
+  return caja;
+}
+
+// Mini-grilla 3x2 de puntos: el primero que entra brilla en acento.
+function _mosaicoDot(activos) {
+  var s = '<svg width="28" height="21" viewBox="0 0 28 21">';
+  for (var i = 0; i < 6; i++) {
+    var x = 5 + (i % 3) * 9, y = 5 + Math.floor(i / 3) * 9;
+    var on = activos.indexOf(i) >= 0;
+    s += '<circle cx="' + x + '" cy="' + y + '" r="3" fill="' + (on ? '#0866F5' : '#CBD5E1') + '"/>';
+  }
+  return s + '</svg>';
+}
+
+// Tipo de lamina como TARJETAS con mini-vista (nada de lista): el select
+// #laminaSel sigue existiendo (oculto, accesible por teclado via tarjetas)
+// y las tarjetas lo gobiernan con change sintetico.
+function _thumbLamina(tipo) {
+  if (tipo === 'ficha') {
+    return '<svg viewBox="0 0 96 64">' +
+      '<rect x="8" y="8" width="34" height="48" rx="4" fill="' + (ODS_DATA[0] ? ODS_DATA[0].color : '#E5243B') + '"/>' +
+      '<rect x="10" y="44" width="30" height="10" rx="3" fill="rgba(9,30,66,0.30)"/>' +
+      '<rect x="50" y="12" width="38" height="9" rx="3" fill="#0D1B35"/>' +
+      '<rect x="50" y="28" width="30" height="6" rx="3" fill="#0866F5"/>' +
+      '<rect x="50" y="40" width="36" height="5" rx="2.5" fill="#5C7193"/>' +
+      '<rect x="50" y="50" width="28" height="5" rx="2.5" fill="#DCE7F5"/></svg>';
+  }
+  if (tipo === 'plan') {
+    return '<svg viewBox="0 0 96 64">' +
+      '<rect x="6" y="8" width="84" height="20" rx="4" fill="#0D1B35"/>' +
+      '<rect x="12" y="14" width="52" height="7" rx="3" fill="#FFFFFF"/>' +
+      '<rect x="10" y="36" width="22" height="11" rx="4" fill="#DCE7F5"/>' +
+      '<rect x="36" y="36" width="22" height="11" rx="4" fill="#DCE7F5"/>' +
+      '<rect x="62" y="36" width="22" height="11" rx="4" fill="#DCE7F5"/>' +
+      '<rect x="10" y="53" width="44" height="5" rx="2.5" fill="#0866F5"/></svg>';
+  }
+  var c = [1, 2, 3, 4, 5, 6].map(function (i) { return (ODS_DATA[i - 1] || {}).color || '#0866F5'; });
+  var s = '<svg viewBox="0 0 96 64"><rect x="4" y="4" width="88" height="56" rx="6" fill="#F0F6FF"/>';
+  [0, 1, 2].forEach(function (k) {
+    s += '<rect x="' + (10 + k * 27) + '" y="10" width="23" height="20" rx="3" fill="' + c[k] + '"/>';
+    s += '<rect x="' + (10 + k * 27) + '" y="34" width="23" height="20" rx="3" fill="' + c[k + 3] + '"/>';
+  });
+  return s + '</svg>';
+}
+
+function renderLaminaTapiz() {
+  var sel = document.getElementById('laminaSel');
+  var wrap = document.getElementById('laminaTapiz');
+  if (!sel || !wrap) return;
+  wrap.innerHTML = '';
+  IMP_TIPOS.forEach(function (tipo) {
+    var card = document.createElement('button');
+    card.type = 'button';
+    card.className = 'lamina-card' + (sel.value === tipo ? ' on' : '');
+    card.innerHTML = _thumbLamina(tipo);
+    var nm = document.createElement('span');
+    nm.className = 'lamina-name';
+    nm.textContent = IMP_TIPO_ETIQUETA[tipo] || tipo;
+    card.appendChild(nm);
+    card.addEventListener('click', function () {
+      if (sel.value !== tipo) {
+        sel.value = tipo;
+        sel.dispatchEvent(new Event('change'));
+      }
+      Array.prototype.forEach.call(wrap.children, function (c) { c.classList.toggle('on', c === card); });
+    });
+    wrap.appendChild(card);
+  });
+}
+
 function arranqueImpacto() {
   _escalarEscenario();
   window.addEventListener('resize', _escalarEscenario);
   var sel = document.getElementById('laminaSel');
-  if (sel) sel.addEventListener('change', pintar);
+  if (sel) sel.addEventListener('change', function () { pintar(); renderAnimBody(); });
+  renderLaminaTapiz();
   var archivo = document.getElementById('archivo');
   if (archivo && !archivo.value) archivo.value = _prefijoArchivo();
   var btnExport = document.getElementById('exportPng');
@@ -720,6 +894,52 @@ function planificarGrabacion(segundos, hayRecorder) {
 // Entradas escalonadas por cuadrito: ciclan 5 movimientos y arrancan uno
 // tras otro (lento, ~1.1 s por ficha); la salida es un desvanecido común.
 var IMP_ENTRADAS_TILE = ['pop', 'arriba', 'izq', 'fade', 'wipe'];
+var IMP_RITMO_TILE = { rapido: 0.75, normal: 1, lento: 1.35 };
+var IMP_CLASES_TILE = { pop: 'impInPop', arriba: 'impInSlideArriba', izq: 'impInSlideIzq', fade: 'impInFade', wipe: 'impInWipe' };
+
+// ¿Que movimiento hace el cuadro de rango gIdx?: ciclo, uno fijo ('solo-pop')
+// o pseudo-aleatorio estable por rango (canvas, DOM y video ven lo mismo).
+function IMP_TILE_TIPO(gIdx, tiles) {
+  if (tiles === 'aleatorio') return IMP_ENTRADAS_TILE[(gIdx * 7 + 3) % IMP_ENTRADAS_TILE.length];
+  if (tiles && String(tiles).indexOf('solo-') === 0) {
+    var fijo = IMP_ENTRADAS_TILE.indexOf(String(tiles).slice(5));
+    return fijo >= 0 ? IMP_ENTRADAS_TILE[fijo] : 'pop';
+  }
+  return IMP_ENTRADAS_TILE[gIdx % IMP_ENTRADAS_TILE.length]; // ciclo
+}
+
+// Agenda del escalonado: duración de cada entrada y paso entre arranques.
+// El ritmo escala AMBOS (lento = entra menos cuadros por segundo).
+function IMP_TILES_PLAN(n, dur, ritmo) {
+  var tDur = 1.1 * ritmo;
+  var paso = Math.max(0.42 * ritmo, (dur - 1.6 - tDur) / Math.max(1, n));
+  return { tDur: tDur, paso: paso };
+}
+
+// Orden de entrada del mosaico (se fija al componer la lamina, así el canvas,
+// el DOM y el video grabado siempre coinciden): secuencial, centro-fuera o
+// barajado aleatorio (se recalcula en cada recomposición).
+function _ordenMosaico(n, orden, cols, filas) {
+  var ids = [], i, j, k, tmp;
+  for (i = 0; i < n; i++) ids.push(i);
+  if (orden === 'aleatorio') {
+    for (j = n - 1; j > 0; j--) {
+      k = Math.floor(Math.random() * (j + 1));
+      tmp = ids[j]; ids[j] = ids[k]; ids[k] = tmp;
+    }
+    return ids;
+  }
+  if (orden === 'centro-fuera') {
+    var cc = (cols - 1) / 2, cf = (filas - 1) / 2;
+    ids.sort(function (a, b) {
+      var da = Math.abs((a % cols) - cc) + Math.abs(Math.floor(a / cols) - cf);
+      var db = Math.abs((b % cols) - cc) + Math.abs(Math.floor(b / cols) - cf);
+      return da - db || a - b;
+    });
+    return ids;
+  }
+  return ids; // secuencial
+}
 
 function _easeOutCubic(p) { return 1 - Math.pow(1 - p, 3); }
 function _easeOutBack(p) {
@@ -786,16 +1006,19 @@ function _pintarCuadro(ctx, prims, t, fases, estado) {
   ctx.restore();
   if (!hay.length) return;
 
-  // Uno a la vez: cada cuadro arranca en t0 = indice * paso y tarda 1.1 s
-  // en instalarse; la tanda completa cabe antes de la salida (dur - 1.6).
-  var paso = Math.max(0.42, (fases.dur - 1.6) / hay.length);
+  // Uno a la vez: cada cuadro arranca en t0 = indice * paso y tarda tDur en
+  // instalarse; el ritmo (rapido/normal/lento) escala paso y duración juntos.
+  var aM = (estado.imp && estado.imp.anim && estado.imp.anim.mosaico) || {};
+  var ritmo = IMP_RITMO_TILE[aM.ritmo || 'normal'] || 1;
+  var plan = IMP_TILES_PLAN(hay.length, fases.dur, ritmo);
+  var paso = plan.paso;
   hay.forEach(function (grupo, idx) {
     var b = _bboxDe(grupo);
     var t0 = idx * paso;
     if (t < t0) return; // todavia no le toca
-    var p = Math.min(1, (t - t0) / 1.1);
+    var p = Math.min(1, (t - t0) / plan.tDur);
     var e = _easeOutCubic(p);
-    var tipo = IMP_ENTRADAS_TILE[idx % IMP_ENTRADAS_TILE.length];
+    var tipo = IMP_TILE_TIPO(idx, aM.tiles || 'ciclo');
     ctx.save();
     ctx.globalAlpha = alphaOut;
     if (deslOut) ctx.translate(deslOut, 0);
@@ -900,8 +1123,9 @@ function grabarClip(tipo, segundos, streamAudio) {
         if (streamAudio && streamAudio.getAudioTracks && streamAudio.getAudioTracks().length) {
           stream.addTrack(streamAudio.getAudioTracks()[0]);
         }
+        // MP4 primero (compatible con la mayoría de reproductores); WebM de respaldo.
         var mime = null;
-        ['video/webm;codecs=vp8,opus', 'video/webm'].forEach(function (m) {
+        ['video/mp4;codecs=avc1.42E01E,mp4a.40.2', 'video/mp4', 'video/webm;codecs=vp8,opus', 'video/webm'].forEach(function (m) {
           if (!mime) { try { if (MediaRecorder.isTypeSupported(m)) mime = m; } catch (e0) {} }
         });
         var rec = new MediaRecorder(stream, mime ? { mimeType: mime } : undefined);
@@ -909,8 +1133,9 @@ function grabarClip(tipo, segundos, streamAudio) {
         rec.ondataavailable = function (e) { if (e.data && e.data.size) pedazos.push(e.data); };
         rec.onstop = function () {
           if (!pedazos.length) return fallarAPNG({ message: 'grabación vacía' });
-          aviso('Clip WebM listo (' + segundos + ' s' + (streamAudio ? ', con audio' : '') + ').');
-          resolve(new Blob(pedazos, { type: 'video/webm' }));
+          var tipoClip = (mime && mime.indexOf('video/mp4') === 0) ? 'video/mp4' : 'video/webm';
+          aviso('Clip ' + (tipoClip === 'video/mp4' ? 'MP4' : 'WebM') + ' listo (' + segundos + ' s' + (streamAudio ? ', con audio' : '') + ').');
+          resolve(new Blob(pedazos, { type: tipoClip }));
         };
         _pintarCuadro(ctx, prims, 0, fases, estado);
         rec.start(200);
@@ -953,8 +1178,8 @@ function _grabarActual() {
   pedir.then(function (stream) {
     return grabarClip(tipo, dur, stream).then(function (blob) {
       detenerMic(stream);
-      if (blob && blob.type && blob.type.indexOf('video/webm') === 0) {
-        _descargar(blob, _archivoDetalle('webm', tipo));
+      if (blob && blob.type && blob.type.indexOf('video/') === 0) {
+        _descargar(blob, _archivoDetalle(blob.type.indexOf('video/mp4') === 0 ? 'mp4' : 'webm', tipo));
       } else if (blob && blob.zip) {
         avisoEstado('MediaRecorder no disponible: se exportó la secuencia PNG en ZIP.');
       } else if (blob && blob.png) {

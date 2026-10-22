@@ -456,6 +456,62 @@ body.sidebar-collapsed.panel-collapsed #panel {
   background: var(--color-primary);
 }
 
+/* Estados operativos unificados (toma: uno solo en todo el dashboard) */
+@keyframes statusPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(2, 132, 199, 0.35); }
+  70%  { box-shadow: 0 0 0 5px rgba(2, 132, 199, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(2, 132, 199, 0); }
+}
+@keyframes statusWaitPulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.4; }
+}
+.tactical-status-pill.rs-done { color: var(--color-primary); }
+.tactical-status-pill.rs-done .status-dot { background: var(--color-primary); }
+.tactical-status-pill.rs-working { color: #0284C7; }
+.tactical-status-pill.rs-working .status-dot {
+  background: #0284C7;
+  animation: statusPulse 2.2s ease-out infinite;
+}
+.tactical-status-pill.rs-waiting { color: var(--text-muted); }
+.tactical-status-pill.rs-waiting .status-dot {
+  background: #94A3B8;
+  animation: statusWaitPulse 2.4s ease-in-out infinite;
+}
+.tactical-status-pill.rs-pending { color: var(--text-muted); }
+.tactical-status-pill.rs-pending .status-dot {
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px #CBD5E1;
+}
+.tactical-status-pill.compact { padding: 3px 6px; gap: 0; }
+
+/* Secciones del pautado: identidad por color de paleta + icono, barra 1px tenue */
+.pautado-sec-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.pautado-sec-bar {
+  width: 3px;
+  height: 14px;
+  border-radius: 2px;
+  background: var(--sec, #64748B);
+  flex: 0 0 auto;
+}
+.pautado-sec-label svg {
+  width: 13px;
+  height: 13px;
+  color: var(--sec, #64748B);
+}
+.pautado-sec-label > span:last-child {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--sec, var(--text-main));
+}
+
 /* ── FILOSOFÍA SIN CARDS: ARQUITECTURA TABULAR Y DE FILAS ABIERTAS ──── */
 .cardless-container {
   display: flex;
@@ -559,19 +615,24 @@ body.sidebar-collapsed.panel-collapsed #panel {
   cursor: not-allowed;
 }
 
+/* Los badges heredan el lenguaje táctico: plano, mono, radio 8px, sin cápsulas de juguete. */
 .badge-status {
-  font-size: 10px;
-  font-weight: 700;
-  padding: 2px 7px;
-  border-radius: 9999px;
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
   font-family: var(--font-mono);
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
+  white-space: nowrap;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-light);
+  color: var(--text-body);
 }
-.badge-pending { background: #F1F5F9; color: var(--text-muted); border: 1px solid #E2E8F0; }
-.badge-wip { background: #F8FAFC; color: #475569; border: 1px solid #CBD5E1; }
-.badge-ok { background: #EFF6FF; color: #1D4ED8; border: 1px solid #BFDBFE; }
+.badge-pending { color: var(--text-muted); }
+.badge-wip { color: #475569; }
+.badge-ok { color: var(--color-primary); }
 
 /* ── MAIN WORKSPACE ─────────────────────────────────────────────────── */
 #main {
@@ -585,6 +646,26 @@ body.sidebar-collapsed.panel-collapsed #panel {
   width: 100%;
   margin: 0 auto;
   box-sizing: border-box;
+}
+
+/* Transición de fase: llegada con dirección. Avanzar en el flujo (fase
+   siguiente) entra desde la derecha; retroceder, desde la izquierda.
+   240ms, desaceleración exponencial, sin rebotes. */
+.content-wrapper.rs-view {
+  animation: rsViewIn 240ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.content-wrapper.rs-view.rs-fwd { --rs-view-shift: 14px; }
+.content-wrapper.rs-view.rs-back { --rs-view-shift: -14px; }
+@keyframes rsViewIn {
+  from { opacity: 0; transform: translateX(var(--rs-view-shift, 0)) translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .content-wrapper.rs-view { --rs-view-shift: 0; animation-duration: 120ms; }
+  @keyframes rsViewIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
 }
 
 .page-header {
@@ -856,8 +937,8 @@ textarea {
   overflow: hidden;
 }
 .prep-row {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 148px;
   align-items: center;
   padding: 7px 10px;
   font-size: 11.5px;
@@ -876,14 +957,16 @@ textarea {
   font-weight: 600;
 }
 .prep-col-status {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 700;
-  color: var(--text-muted);
-  font-variant-numeric: tabular-nums;
-  padding: 2px 6px;
-  border-radius: 4px;
-  background: var(--bg-subtle);
+  justify-self: stretch;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  min-width: 0;
+}
+.prep-col-status .tactical-status-pill {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .prep-row.is-complete .prep-col-name {
   color: var(--color-navy);
@@ -891,7 +974,6 @@ textarea {
 }
 .prep-row.is-complete .prep-col-status {
   color: var(--color-primary);
-  background: #EFF6FF;
 }
 
 .insight-box {
@@ -2371,6 +2453,20 @@ body.panel-drawer-open .drawer-backdrop {
   border-radius: 9999px;
 }
 
+/* Chips compactos del topbar: icono + dato en mono, sin texto ni rótulos largos */
+.topbar-chip {
+  padding: 5px 9px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-subtle);
+}
+.topbar-chip .topbar-chip-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-primary);
+  font-variant-numeric: tabular-nums;
+}
+
 .mobile-bottom-bar {
   display: none;
   position: fixed;
@@ -2883,6 +2979,77 @@ body.panel-drawer-open .drawer-backdrop {
 .rank-reasons-full li { margin-bottom: 2px; }
 .rank-tools summary::-webkit-details-marker { display: none; }
 .rank-tools summary::marker { content: ""; }
+
+/* Menú Herramientas (Retos): mismo lenguaje plano del tablero — hairline,
+   radio 8, sombra con desplazamiento suave, sin cápsulas ni glifos de texto. */
+.rs-tools { position: relative; }
+.rs-tools > summary {
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 6px 12px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  color: var(--color-navy);
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease;
+}
+.rs-tools > summary:hover { background: var(--bg-subtle); border-color: var(--border-strong); }
+.rs-tools[open] > summary { color: var(--color-primary); border-color: #BBD3FA; background: #F0F6FF; }
+.rs-tools-chevron { display: inline-flex; transition: transform 160ms ease; }
+.rs-tools[open] .rs-tools-chevron { transform: rotate(180deg); }
+.rs-tools-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  z-index: 40;
+  min-width: 248px;
+  padding: 6px;
+  background: #fff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 28px rgba(13, 27, 53, 0.10);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  animation: rsToolsIn 150ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes rsToolsIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: none; }
+}
+.rs-tools-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--text-body);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: left;
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+.rs-tools-item svg { flex: 0 0 auto; opacity: 0.75; }
+.rs-tools-item:hover { background: var(--bg-subtle); color: var(--color-navy); }
+.rs-tools-item:hover svg { opacity: 1; }
+.rs-tools-danger { color: #B42318; }
+.rs-tools-danger:hover { background: #FEF3F2; color: #912018; }
+.rs-tools-sep { height: 1px; background: var(--border-light); margin: 4px 6px; }
+@media (prefers-reduced-motion: reduce) {
+  .rs-tools-menu { animation-duration: 90ms; }
+  .rs-tools-chevron { transition: none; }
+}
 @media (max-width: 760px) {
   .rank-bar { width: 56px; }
   .rank-reason { display: none; }
@@ -4675,6 +4842,16 @@ body.panel-drawer-open .drawer-backdrop {
   letter-spacing: -0.02em;
   color: var(--text-title);
 }
+.rs-challenge-meta {
+  display: inline-block;
+  margin-top: 8px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
 .rs-challenge-cat {
   display: inline-block;
   margin-top: 8px;
@@ -4719,6 +4896,108 @@ body.panel-drawer-open .drawer-backdrop {
 .rs-link:hover { text-decoration: underline; }
 
 .rs-hero-stats { display: flex; flex-direction: column; gap: 14px; }
+
+/* Barra de 3 datos duros: tiempo · avance · fase actual (mono grande, filas de hairline) */
+.rs-hardbar {
+  display: grid;
+  grid-template-columns: minmax(96px, auto) minmax(64px, auto) minmax(150px, 1fr);
+  gap: 0;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+}
+.rs-hard {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 12px;
+  border-left: 1px solid var(--border-light);
+  min-width: 0;
+}
+.rs-hard:first-child { border-left: none; }
+.rs-hard-num {
+  font-family: var(--font-mono);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--color-navy);
+  font-variant-numeric: tabular-nums;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.rs-hard:last-child { min-width: 150px; }
+.rs-hard-label {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Accionables de ahora: filas tabulares abiertas, sin cards */
+.rs-action-list { display: flex; flex-direction: column; }
+.rs-action-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  align-items: center;
+  gap: 14px;
+  padding: 11px 4px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--border-light);
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+}
+.rs-action-row:last-child { border-bottom: none; }
+.rs-action-row:hover { background: var(--bg-subtle); }
+.rs-action-row:focus-visible { outline: 2px solid var(--color-primary); outline-offset: -2px; }
+.rs-action-title { font-size: 13px; font-weight: 700; color: var(--text-main); }
+.rs-action-phase {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+.rs-action-row.is-working .rs-action-title { color: var(--color-primary); }
+.rs-action-row svg { color: var(--text-muted); flex: 0 0 auto; }
+
+/* Colapsables del resumen (fases cerradas, entregables completos) */
+.rs-collapsible { border: none; }
+.rs-collapsible > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-title);
+}
+.rs-collapsible > summary::-webkit-details-marker { display: none; }
+.rs-collapsible > summary::before {
+  content: "▸";
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  transition: transform 140ms ease;
+}
+.rs-collapsible[open] > summary::before { content: "▾"; }
+.rs-mini-count {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
 .rs-kpi {
   padding: 16px;
   border: 1px solid var(--border-light);

@@ -250,3 +250,57 @@ def test_modos_plan_sin_impacto_no_lanza_typeerror(estado):
     datos = correr("modos-plan", estado)
     assert "error" not in datos
     assert "modo" in datos
+
+
+# --- video limpio y coreografia de cuadritos (pedido del usuario) ---
+
+def test_modo_limpio_quita_marca_marca_y_pie_del_mosaico():
+    sucio = correr("limpio", [False])
+    assert sucio["hayMarca"] is True and sucio["hayUni"] is True
+    # gs es por prim: cada tile lleva 5 prims con el mismo g (rank del tile).
+    assert sucio["gsUnicos"] == 6 and sucio["gs"][0] == 0 and sucio["gs"][5] == 1
+    limpio = correr("limpio", [True])
+    assert limpio["hayMarca"] is False
+    assert limpio["hayUni"] is False
+    assert limpio["zonaY"] == 64  # la zona crece al irse la cabecera
+    assert limpio["gsUnicos"] == 6
+
+
+def test_orden_mosaico_cy_posiciones_y_permutacion():
+    datos = correr("orden-mosaico", [5, "centro-fuera", 3, 2])
+    assert datos["completa"] is True
+    assert datos["orden"][0] == 1  # el del centro sale primero
+    datos = correr("orden-mosaico", [6, "aleatorio", 3, 2])
+    assert datos["completa"] is True  # permutación válida (0..5)
+    datos = correr("orden-mosaico", [6, "secuencial", 3, 2])
+    assert datos["orden"] == [0, 1, 2, 3, 4, 5]
+
+
+def test_tile_tipo_opciones_escogidas():
+    datos = correr("tile-tipo", [0, "ciclo"])
+    assert datos["tipo"] == "pop"
+    datos = correr("tile-tipo", [1, "ciclo"])
+    assert datos["tipo"] == "arriba"
+    assert correr("tile-tipo", [3, "solo-izq"])["tipo"] == "izq"
+    assert correr("tile-tipo", [0, "solo-wipe"])["tipo"] == "wipe"
+    datos = correr("tile-tipo", [0, "aleatorio"])
+    assert datos["tipo"] == "fade"  # (0*7+3) % 5 = 3
+
+
+def test_tiles_plan_ritmo_escalada_paso_y_duracion():
+    normal = correr("tiles-plan", [6, 6, 1])
+    lento = correr("tiles-plan", [6, 6, 1.35])
+    assert normal["tDur"] == 1.1
+    assert lento["tDur"] > normal["tDur"] and lento["paso"] >= normal["paso"]
+    assert normal["paso"] > 0 and normal["tDur"] <= 6
+
+
+def test_mosaico_config_cols_y_orden_aplican_en_composicion():
+    datos = correr("mosaico-config", {"cols": 2})
+    assert datos["gsUnicos"] == 6  # sin colisiones de rango
+    datos = correr("mosaico-config", {"orden": "centro-fuera", "cols": 3})
+    assert datos["gsUnicos"] == 6
+    # gs va por prim (5 prims por tile): gs[5..9] son los del tile id 1, el
+    # central del grid 3×2 (fila 0, col 1) que entra primero → rank 0.
+    assert datos["gs"][5] == 0
+

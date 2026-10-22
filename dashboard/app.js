@@ -1877,14 +1877,12 @@ function renderTopbar() {
     </div>
     <div class="topbar-actions">
       ${stage >= 2 ? `
-        <button class="btn-toggle-panel" onclick="openAIThesisFormulatorModal(state.challenge_id || '01')" title="Abrir Asistente IA Dual-Mode & Prompts de Razonamiento" style="border-color:var(--border-light); color:var(--color-primary); background:var(--bg-subtle);">
+        <button class="btn-toggle-panel topbar-chip" onclick="openAIThesisFormulatorModal(state.challenge_id || '01')" title="IA Copilot: asistente dual-mode y prompts de razonamiento" aria-label="IA Copilot">
           ${SVG.spark}
-          <span class="panel-toggle-label">IA Copilot</span>
         </button>
-        <button class="btn-toggle-panel" onclick="togglePanel()" title="Alternar Panel de Auditoría">
+        <button class="btn-toggle-panel topbar-chip" onclick="togglePanel()" title="Panel de Auditoría (${auditPoints}%)" aria-label="Auditoría: ${auditPoints}%">
           ${SVG.shieldCheck}
-          <span class="panel-toggle-label">Auditoría</span>
-          <span class="panel-toggle-badge" id="topbar-audit-badge">${auditPoints}%</span>
+          <span class="topbar-chip-num">${auditPoints}%</span>
         </button>
       ` : ""}
 
@@ -2067,7 +2065,7 @@ function updateTimerModalPreview() {
     } else {
       const rh = Math.floor(remain / 3600);
       const rm = Math.floor((remain % 3600) / 60);
-      statusText = `<span style="color:#16A34A; font-weight:700;">EN CURSO</span> (restan ${rh}h ${rm}m de ${hours}h)`;
+      statusText = `<span style="color:#0284C7; font-weight:700;">EN CURSO</span> (restan ${rh}h ${rm}m de ${hours}h)`;
     }
   }
 
@@ -2167,13 +2165,13 @@ function renderNavigation() {
     if (t.summary) {
       statusMarkup = "";
     } else if (!isUnlocked) {
-      statusMarkup = `<span class="badge-status" style="background:#f1f5f9; color:#94a3b8; border:1px solid #e2e8f0;">${SVG.lock}</span>`;
+      statusMarkup = rsPill("waiting", { compact: true, label: "En espera" });
     } else if (isCompleted) {
-      statusMarkup = `<span class="badge-status badge-ok">${SVG.check}</span>`;
+      statusMarkup = rsPill("done", { compact: true, label: "Terminado" });
     } else if (rsPhaseState(t.id, map).code === "waiting") {
-      statusMarkup = `<span class="badge-status badge-wait">En espera</span>`;
+      statusMarkup = rsPill("waiting", { compact: true, label: "En espera" });
     } else {
-      statusMarkup = `<span class="badge-status badge-pending">En curso</span>`;
+      statusMarkup = rsPill("working", { compact: true, label: "En progreso" });
     }
     return `
       <a href="#" class="nav-link ${activeClass} ${!isUnlocked ? 'locked' : ''}"
@@ -2235,6 +2233,10 @@ function switchTab(tabId, ev) {
 }
 
 // ── DESPACHADOR CENTRAL DE VISTAS ────────────────────────────────────────────
+// Dirección de transición: comparar el índice de la fase previa con la nueva
+// (orden de NAV_TABS). Avanzar → entrada desde la derecha; retroceder → izquierda.
+let rsPrevTabId = null;
+
 function renderTab(tabId) {
   const main = document.getElementById("main");
   const renderers = {
@@ -2253,7 +2255,14 @@ function renderTab(tabId) {
     webdemo: renderViewWebDemo,
     timeline: renderViewTimeline
   };
-  main.innerHTML = `<div class="content-wrapper">${(renderers[tabId] || renderViewCertamen)()}</div>`;
+  const prevIdx = NAV_TABS.findIndex(t => t.id === rsPrevTabId);
+  const nextIdx = NAV_TABS.findIndex(t => t.id === tabId);
+  let dirCls = "";
+  if (prevIdx !== -1 && nextIdx !== -1 && prevIdx !== nextIdx) {
+    dirCls = nextIdx > prevIdx ? " rs-fwd" : " rs-back";
+  }
+  rsPrevTabId = tabId;
+  main.innerHTML = `<div class="content-wrapper rs-view${dirCls}">${(renderers[tabId] || renderViewCertamen)()}</div>`;
   attachTabListeners(tabId);
 }
 
@@ -2364,6 +2373,19 @@ const RS_STATUS = {
   waiting: { label: "En espera",   cls: "is-waiting", icon: "lock" },
   pending: { label: "Pendiente",   cls: "is-pending", icon: "circle" }
 };
+
+// Señal visual única para cualquier estado del sistema (dot + texto mono).
+// `code`: done | working | waiting | pending. `compact`: solo dot (title con label).
+function rsPill(code, opts) {
+  opts = opts || {};
+  const s = RS_STATUS[code] || RS_STATUS.pending;
+  const cls = (s.cls || "").replace(/^is-/, "rs-");
+  const lbl = typeof opts.label === "string" ? opts.label : s.label;
+  if (opts.compact) {
+    return `<span class="tactical-status-pill compact ${cls}" title="${lbl}"><span class="status-dot"></span></span>`;
+  }
+  return `<span class="tactical-status-pill ${cls}" title="${opts.title || lbl}"><span class="status-dot"></span>${lbl}</span>`;
+}
 
 function rsPhaseDefs(phase, map) {
   map = map || rsDefMap();
@@ -2538,10 +2560,7 @@ function renderViewResumen() {
             <span class="rs-deliv-phase">${escapeHtml(phaseTab ? phaseTab.label : d.phase)}</span>
             <h3 class="rs-deliv-title">${escapeHtml(d.title)}</h3>
           </div>
-          <span class="rs-status ${meta.cls}">
-            ${meta.icon === "check" ? SVG.check : meta.icon === "lock" ? SVG.lock : `<span class="rs-status-dot"></span>`}
-            ${meta.label}
-          </span>
+          ${rsPill(st.code, { label: meta.label, title: meta.label })}
         </div>
         <p class="rs-deliv-needs">${escapeHtml(needsText)}</p>
         <div class="rs-deliv-people">
@@ -2572,6 +2591,16 @@ function renderViewResumen() {
   const closedPhases = NAV_TABS.filter(t => !t.summary && t.level <= stage && rsPhaseState(t.id, map).code === "done");
   const pendingPhases = NAV_TABS.filter(t => !t.summary && t.level > stage);
 
+  // Las 3 cosas accionables ahora: primero lo que está en progreso, luego esperas, luego pendientes.
+  const actionableRank = { working: 0, waiting: 1, pending: 2 };
+  const actionableNow = defs
+    .map(d => ({ d, st: rsDefState(d, map) }))
+    .filter(x => x.st.code !== "done")
+    .sort((a, b) => ((actionableRank[a.st.code] ?? 3) - (actionableRank[b.st.code] ?? 3)))
+    .slice(0, 3);
+  const currentPhase = visiblePhases.find(t => rsPhaseState(t.id, map).code !== "done");
+  const openCount = defs.length - doneCount;
+
   const rosterStrip = roster.length
     ? roster.map(m => {
         const load = defs.filter(d => (rsRecord(d.id).assignees || []).includes(m.name) && rsDefState(d, map).code !== "done").length;
@@ -2587,12 +2616,11 @@ function renderViewResumen() {
     <div class="rs-summary">
       <section class="rs-hero">
         <div class="rs-hero-main">
-          <span class="rs-eyebrow">Centro de mando · ${state.rally_type === "latam" ? "Rally Latinoamericano 28h" : state.rally_type === "nacional" ? "Rally Nacional 24h" : "Certamen por definir"}</span>
           <div class="rs-challenge-row">
             <span class="rs-challenge-num">#${escapeHtml(String(challengeNum))}</span>
             <div>
               <h1 class="rs-challenge-title">${escapeHtml(challengeTitle)}</h1>
-              <span class="rs-challenge-cat">${escapeHtml(category)}</span>
+              <span class="rs-challenge-meta">${escapeHtml(state.rally_type === "latam" ? "Rally Latinoamericano 28h" : state.rally_type === "nacional" ? "Rally Nacional 24h" : "Certamen por definir")} · ${escapeHtml(category)}</span>
             </div>
           </div>
           <div class="rs-solution ${state.solution_approved ? "is-approved" : ""}">
@@ -2602,14 +2630,14 @@ function renderViewResumen() {
           </div>
         </div>
         <div class="rs-hero-stats">
-          <div class="rs-kpi">
-            <span class="rs-kpi-num">${pct}%</span>
-            <span class="rs-kpi-label">avance de entregables</span>
-            <span class="rs-kpi-bar"><i style="width:${pct}%"></i></span>
+          <div class="rs-hardbar">
+            <div class="rs-hard"><span class="rs-hard-num">${timer.time}</span><span class="rs-hard-label">tiempo restante</span></div>
+            <div class="rs-hard"><span class="rs-hard-num">${pct}%</span><span class="rs-hard-label">avance de rúbrica</span></div>
+            <div class="rs-hard"><span class="rs-hard-num">${escapeHtml(currentPhase ? currentPhase.label : "—")}</span><span class="rs-hard-label">fase actual</span></div>
           </div>
           <div class="rs-kpi-row">
-            <div class="rs-kpi-mini"><strong>${timer.time}</strong><span>${escapeHtml(timer.status || "tiempo restante")}</span></div>
             <div class="rs-kpi-mini"><strong>${doneCount}/${defs.length}</strong><span>entregables cerrados</span></div>
+            <div class="rs-kpi-mini"><strong>${openCount}</strong><span>abiertos</span></div>
             <div class="rs-kpi-mini"><strong>${workingDefs.length}</strong><span>en progreso ahora</span></div>
             <div class="rs-kpi-mini"><strong>${closedPhases.length}</strong><span>fases cerradas</span></div>
           </div>
@@ -2636,7 +2664,28 @@ function renderViewResumen() {
 
       <section class="rs-section">
         <div class="rs-section-head">
-          <h2>Entregables y responsables</h2>
+          <h2>Accionables ahora</h2>
+          <span class="rs-section-sub">las 3 piezas que desbloquean más de inmediato</span>
+        </div>
+        <div class="rs-action-list">
+          ${actionableNow.length ? actionableNow.map(x => {
+            const phaseLabel = (NAV_TABS.find(t => t.id === x.d.phase) || { label: x.d.phase }).label;
+            const statusMeta = RS_STATUS[x.st.code] || RS_STATUS.pending;
+            return `
+            <button class="rs-action-row is-${x.st.code}" onclick="rsGoTab('${x.d.phase}', event)" title="Abrir ${escapeHtml(phaseLabel)}">
+              <span class="rs-action-title">${escapeHtml(x.d.title)}</span>
+              <span class="rs-action-phase">${escapeHtml(phaseLabel)}</span>
+              ${rsPill(x.st.code, { label: statusMeta.label, title: statusMeta.label })}
+              ${SVG.arrowRight}
+            </button>`;
+          }).join("") : `<p class="rs-empty">Nada pendiente. Todo el equipo hizo la tarea.</p>`}
+        </div>
+      </section>
+
+      <section class="rs-section">
+        <details class="rs-collapsible">
+          <summary>Entregables y responsables <span class="rs-mini-count">${openCount} abiertos · ${doneCount}/${defs.length} cerrados</span></summary>
+          <div class="rs-section-head" style="margin-top:14px;">
           <div class="rs-filters">
             <button class="rs-filter ${rsFilter === "all" ? "is-active" : ""}" onclick="rsSetFilter('all')">Todos</button>
             <button class="rs-filter ${rsFilter === "mine" ? "is-active" : ""}" onclick="rsSetFilter('mine')">Míos</button>
@@ -2648,6 +2697,7 @@ function renderViewResumen() {
         <div class="rs-deliv-grid">
           ${deliverableCards || `<p class="rs-empty">No hay entregables en este filtro.</p>`}
         </div>
+        </details>
       </section>
 
       <section class="rs-section">
@@ -3233,7 +3283,6 @@ function winnerAngleFor(ch) {
   const probes = [
     { ok: !!ch.precedent, text: ch.precedent ? `Precedente ganador: ${ch.precedent}` : "Sin precedente directo: apóyate en el patrón de ganador genérico (infra útil + dato en vivo)." },
     { ok: info.isHighComp, text: info.isHighComp ? "Concurrencia alta: exige ≥2 capas tecnológicas para no perder por saturación." : "Concurrencia baja: ventaja directa si la factibilidad es sólida." },
-    { ok: !!ch.nicaraguaAdaptation, text: ch.nicaraguaAdaptation ? `Anclaje territorial listo: ${String(ch.nicaraguaAdaptation).slice(0, 90)}` : "Redacta el anclaje territorial: ganadores citan comunidad y lugar." },
     { ok: true, text: "Juega las cifras exactas: presupuesto $4,000–$6,000 realista y demostrable en 28 h." },
     { ok: true, text: "Diseña la demostración temprana (Acto II): hardware visible antes del minuto 30 del video." }
   ];
@@ -3368,12 +3417,13 @@ function mesaGo(chId) {
   renderTab("challenges");
 }
 
-function renderMesaNav(list, activeId) {
+function renderMesaNav(list, activeId, total) {
+  const totalActivos = Number.isFinite(total) ? total : list.length;
   return `
     <aside class="deliberation-nav">
       <div class="deliberation-nav-header">
         <span>CATÁLOGO DE RETOS</span>
-        <span style="font-family:var(--font-mono); font-size:11px; color:#5C7193;">${list.length} ACTIVOS</span>
+        <span style="font-family:var(--font-mono); font-size:11px; color:#5C7193;">${totalActivos} ACTIVOS</span>
       </div>
       <div class="deliberation-nav-list">
         ${list.map(ch => {
@@ -3586,7 +3636,6 @@ function renderMesaSlide(ch, list, idx) {
           }).join("")}
         </div>
         <div class="cr-head-note">
-          <span class="cr-mono">viabilidad ${ch.winRate || 90}%</span>
           <span class="cr-niche">${isSat ? "ALTA CONCURRENCIA" : "NICHO TÉCNICO"}</span>
           <span class="cr-niche-why">${isSat ? "Exige ≥2 capas tecnológicas para superar la saturación de sedes." : "Baja rivalidad de sedes: ventaja directa si la factibilidad es sólida."}</span>
         </div>
@@ -3601,7 +3650,7 @@ function renderMesaSlide(ch, list, idx) {
     <h2 class="cr-title">${ch.title}</h2>
 
     <div class="cr-metrics">
-      <span class="cr-metric"><b>${info.score}</b> <span class="cr-metric-k">pts del motor</span></span>
+      <span class="cr-metric"><b>${info.score}</b> <span class="cr-metric-k">${info.scoreBasis === "historico" ? "pts del motor" : "pts por criterios"}</span></span>
       <span class="cr-metric"><b>#${rank}</b> <span class="cr-metric-k">de ${list.length}</span></span>
       <span class="cr-metric-reason">${(reasonLines[0] || "Delibera en equipo: el motor no tiene una razón dominante para este reto.").replace(/\(\s*[+-]?[\d.]+\s*pts\s*\)/i, "").trim()}</span>
     </div>
@@ -3765,7 +3814,7 @@ function renderViewChallenges() {
                  ondragover="event.preventDefault(); this.style.borderColor='#0866F5'; this.style.background='#EFF6FF';"
                  ondragleave="event.preventDefault(); this.style.borderColor='#93C5FD'; this.style.background='#F8FAFD';"
                  ondrop="handleChallengeDrop(event)">
-              <input type="file" id="challenge-file-input" style="display:none;" multiple accept=".zip,.pdf,.docx,.doc,.txt,.png,.jpg,.jpeg,.webp" onchange="handleChallengeFileSelect(this.files)">
+              <input type="file" id="challenge-file-input" style="display:none;" multiple accept=".zip,.pdf,.docx,.doc,.txt,.png,.jpg,.jpeg,.webp" onclick="event.stopPropagation()" onchange="handleChallengeFileSelect(this.files)">
               <div style="display:flex; justify-content:center; align-items:center; gap:8px; margin-bottom:4px; color:#0866F5;">
                 ${SVG.upload}
                 <span style="font-size:13px; font-weight:800; color:#0D1B35;">Arrastra aquí o haz clic para subir archivo</span>
@@ -3883,38 +3932,53 @@ function renderViewChallenges() {
             </button>
           </div>
 
-          <details class="rank-tools" style="position:relative;">
-            <summary class="btn-pill-light" style="font-size:11.5px; padding:5px 12px; cursor:pointer; list-style:none; display:inline-flex; align-items:center; gap:6px;">Herramientas ${SVG.chevronDown}</summary>
-            <div style="position:absolute; right:0; top:calc(100% + 6px); z-index:40; background:#fff; border:1px solid var(--border-light); border-radius:8px; box-shadow:0 8px 24px rgba(15,23,42,.08); padding:8px; display:flex; flex-direction:column; gap:6px; min-width:230px;">
-              <button class="btn-pill-light" style="font-size:11.5px; padding:6px 12px; text-align:left;" onclick="toggleCustomChallengeInput()">
-                ⬆ Importar / Re-pegar retos
+          <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+            <button class="btn-pill-light" style="padding:5px 12px; font-size:11.5px; font-weight:700; display:inline-flex; align-items:center; gap:6px;" onclick="openChallengeImportBox()" title="Ver los retos cargados e importar otros sin borrarlos">
+              ${SVG.upload}<span>Importar retos</span>
+            </button>
+          <details class="rank-tools rs-tools">
+            <summary aria-label="Herramientas de retos">
+              ${SVG.dotsVertical}
+              <span>Herramientas</span>
+              <span class="rs-tools-chevron">${SVG.chevronDown}</span>
+            </summary>
+            <div class="rs-tools-menu" role="menu" aria-label="Herramientas de retos">
+              <button class="rs-tools-item" role="menuitem" onclick="openChallengeImportBox()">
+                ${SVG.upload}<span>Importar o re-pegar retos</span>
               </button>
-              <button class="btn-pill-light" style="font-size:11.5px; padding:6px 12px; text-align:left;" onclick="reScanChallengesWithOCR()" title="Re-escanear imágenes adjuntas con IA visual (modelo vision gratuito); red de seguridad EasyOCR si no hay IA conectada">
-                Re-escanear OCR
+              <button class="rs-tools-item" role="menuitem" onclick="reScanChallengesWithOCR()" title="Re-escanear imágenes adjuntas con IA visual (modelo vision gratuito); red de seguridad EasyOCR si no hay IA conectada">
+                ${SVG.refresh}<span>Re-escanear OCR</span>
               </button>
-              <button class="btn-pill-light" style="font-size:11.5px; padding:6px 12px; text-align:left;" onclick="loadReferenceChallenges()" title="Cargar banco oficial de 9 retos de referencia">
-                Cargar Banco Oficial (9)
+              <button class="rs-tools-item" role="menuitem" onclick="loadReferenceChallenges()" title="Cargar banco oficial de 9 retos de referencia">
+                ${SVG.folder}<span>Cargar banco oficial (9)</span>
               </button>
-              <button class="btn-pill-light" style="font-size:11.5px; padding:6px 12px; text-align:left; color:#DC2626;" onclick="clearAllChallenges()">
-                Limpiar radar
+              <span class="rs-tools-sep" aria-hidden="true"></span>
+              <button class="rs-tools-item rs-tools-danger" role="menuitem" onclick="clearAllChallenges()">
+                ${SVG.trash}<span>Limpiar radar</span>
               </button>
             </div>
           </details>
+          </div>
         </div>
         ` : ""}
         <div id="custom-challenge-input-box" style="display:none; background:#FFFFFF; border:1px solid #CBD5E1; border-radius:8px; padding:14px; margin-bottom:14px;"
              ondragover="event.preventDefault(); this.style.borderColor='#0866F5';"
              ondragleave="event.preventDefault(); this.style.borderColor='#CBD5E1';"
              ondrop="handleChallengeDrop(event)">
+          <div id="challenge-import-current" style="margin-bottom:12px;"></div>
           <div style="border:1.5px dashed #CBD5E1; background:#F8FAFC; border-radius:6px; padding:14px; text-align:center; margin-bottom:10px; cursor:pointer;"
                onclick="document.getElementById('challenge-file-input-inline').click()">
-            <input type="file" id="challenge-file-input-inline" aria-label="Subir archivos de retos" style="display:none;" multiple accept=".zip,.pdf,.docx,.doc,.txt,.png,.jpg,.jpeg,.webp" onchange="handleChallengeFileSelect(this.files)">
+            <input type="file" id="challenge-file-input-inline" aria-label="Subir archivos de retos" style="display:none;" multiple accept=".zip,.pdf,.docx,.doc,.txt,.png,.jpg,.jpeg,.webp" onclick="event.stopPropagation()" onchange="handleChallengeFileSelect(this.files)">
             <div style="font-size:12.5px; font-weight:700; color:#0F172A;">Arrastra aquí o haz clic para subir archivo ZIP, imágenes, PDF o Word</div>
             <div style="font-size:11px; color:#64748B; margin-top:2px;">La IA visual jerarquizará automáticamente todos los retos contenidos (EasyOCR local como red de seguridad).</div>
           </div>
           <div id="custom-import-status-indicator" style="display:none; margin-bottom:10px; font-size:12px; font-weight:700; color:#0866F5;"></div>
           <textarea id="raw-committee-challenges" rows="4" style="width:100%; border:1px solid #CBD5E1; border-radius:6px; padding:10px; font-size:12px; font-family:var(--font-mono); box-sizing:border-box; background:#F8FAFC;"
             placeholder="O pega aquí el texto del comunicado oficial..."></textarea>
+          <label style="display:flex; align-items:center; gap:8px; margin-top:10px; font-size:12px; color:#334155; cursor:pointer;">
+            <input type="checkbox" id="challenge-append-mode" checked style="cursor:pointer;">
+            <span>Agregar a los retos cargados (si lo desmarcas, este comunicado <strong>reemplaza</strong> la lista actual)</span>
+          </label>
           <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:8px;">
             <button class="btn-secondary" style="font-size:11.5px; padding:5px 12px;" onclick="toggleCustomChallengeInput()">Cancelar</button>
             <button class="btn-select-card filled" style="padding:6px 16px; font-size:12px; font-weight:700;" onclick="processCommitteeChallengesInput()">Procesar Retos</button>
@@ -3923,7 +3987,7 @@ function renderViewChallenges() {
 
         ${mesaActive ? `
           <div class="deliberation-container">
-            ${renderMesaNav(mesaList, mesaActive.id)}
+            ${renderMesaNav(mesaList, mesaActive.id, list.length)}
             <section class="deliberation-sheet cr-sheet">
               ${renderMesaBar(mesaList, mesaActive, mesaIndex)}
               ${renderMesaSlide(mesaActive, mesaList, mesaIndex)}
@@ -3966,6 +4030,7 @@ function deleteChallenge(id) {
   const name = ch ? ch.title : `Reto #${id}`;
   if (confirm(`¿Descartar "${name}" del radar del certamen?`)) {
     state.challenges = (state.challenges || []).filter(c => c.id !== id);
+    purgeChallengeRefs([id]);
     if (state.challenge_id === id) {
       state.challenge_id = "";
       state.challenge_title = "";
@@ -4118,6 +4183,10 @@ function saveEditedChallenge(chId) {
   if (!ch) return;
 
   const t = document.getElementById("edit-ch-title").value.trim();
+  if (t && window.RallyChallengeParser && !window.RallyChallengeParser.isPlausibleTitle(t)) {
+    showToast("Ese título parece un encabezado de documento, no un reto. Escribe el problema del comité.", true);
+    return;
+  }
   const cat = document.getElementById("edit-ch-cat").value;
   const dem = document.getElementById("edit-ch-demand").value.trim();
   const wow = document.getElementById("edit-ch-wow").value.trim();
@@ -4145,10 +4214,17 @@ let CHALLENGE_RANKING_2026 = []; // datos externos (challenge_bank.json)
 
 function challengeRankFor(ch) {
   const t = (ch.title || "").toLowerCase();
-  const rank = CHALLENGE_RANKING_2026.find(r => t.includes(r.kw));
+  const rank = CHALLENGE_RANKING_2026.find(r => r.kw && t.includes(String(r.kw).toLowerCase()));
   const isHighComp = (ch.compDensity || "").toLowerCase().includes("alta");
-  const score = rank ? rank.score : Math.round((ch.winRate || 80) - (isHighComp ? 8 : 0));
   const odsLen = Array.isArray(ch.ods) ? ch.ods.length : (String(ch.ods || "").split(",").filter(Boolean).length || 3);
+  // Sin match histórico no se inventa un puntaje plano: se suma lo que de verdad tiene el reto.
+  const criteriaPoints = (isHighComp ? 0 : 18)
+    + (odsLen >= 3 ? 10.5 : 0)
+    + 14
+    + (ch.nicaraguaAdaptation ? 10 : 0)
+    + ((ch.precedent || ch.winnerPattern) ? 8 : 0)
+    + (ch.wowProposal ? 6 : 0);
+  const score = rank ? rank.score : Math.min(100, Math.round(criteriaPoints));
   const criteria = [
     { icon: "Rivalidad", ok: !isHighComp, text: isHighComp ? "Muchas sedes compiten el mismo reto" : (ch.compDensity ? "Poca rivalidad de sedes: " + ch.compDensity.toLowerCase() : "Poca rivalidad de sedes") },
     { icon: "ODS", ok: odsLen >= 3, text: `Cubre ${odsLen} ODS${odsLen >= 3 ? " (+10.5)" : ""}` },
@@ -4156,7 +4232,7 @@ function challengeRankFor(ch) {
     { icon: "Territorio", ok: !!ch.nicaraguaAdaptation, text: ch.nicaraguaAdaptation ? "Anclaje en comunidades de Nicaragua" : "Sin anclaje territorial redactado" },
     { icon: "Precedente", ok: !!ch.precedent, text: ch.precedent ? "Patrón de ganador: " + ch.precedent : "Sin precedente directo" }
   ];
-  return { score, reasonLines: rank ? rank.reasons : null, criteria, isHighComp };
+  return { score, reasonLines: rank ? rank.reasons : null, criteria, isHighComp, scoreBasis: rank ? "historico" : "criterios" };
 }
 
 function toggleRankingDetail(chId) {
@@ -4216,10 +4292,13 @@ function renderRankingChartSvg(rows) {
   return `<div class="rank-chart-wrap">${svg}</div>`;
 }
 
-function renderChallengeRanking() {  const list = (state.challenges && state.challenges.length ? state.challenges : OFFICIAL_CHALLENGES_2026).slice();
+function renderChallengeRanking() {
+  const list = (state.challenges && state.challenges.length ? state.challenges : OFFICIAL_CHALLENGES_2026).slice();
   const rows = list.map(ch => ({ ch, info: challengeRankFor(ch) }))
     .sort((a, b) => b.info.score - a.info.score || (a.ch.id > b.ch.id ? 1 : -1));
   const chosen = state.challenge_id ? rows.find(r => r.ch.id === state.challenge_id) : null;
+  // El ranking es pronóstico, no segunda papeleta: solo el podio; el resto vive en el catálogo de abajo.
+  const podium = rows.slice(0, Math.min(5, rows.length));
   return `
     <section class="ranking-panel">
       <div class="ranking-head">
@@ -4241,9 +4320,9 @@ function renderChallengeRanking() {  const list = (state.challenges && state.cha
           </div>
         `}
       </div>
-      ${renderRankingChartSvg(rows)}
+      ${renderRankingChartSvg(podium)}
       <div class="ranking-rows">
-        ${rows.map((r, i) => {
+        ${podium.map((r, i) => {
           const isSel = state.challenge_id === r.ch.id;
           const topReason = r.info.reasonLines
             ? r.info.reasonLines.find(rr => rr.includes("+")) || r.info.reasonLines[0]
@@ -4259,9 +4338,6 @@ function renderChallengeRanking() {  const list = (state.challenges && state.cha
                 <div class="rank-bar"><span style="width:${Math.max(6, Math.min(100, r.info.score))}%"></span></div>
                 <span class="rank-num">${r.info.score}</span>
               </div>
-              <button class="btn-secondary rank-pick ${isSel ? "rank-pick-sel" : ""}" onclick="event.stopPropagation(); selectChallenge('${r.ch.id}', ${isSel ? "true" : "false"});">
-                ${isSel ? "✔ Elegido" : "Elegir"}
-              </button>
             </div>
             <div class="rank-detail" id="rank-detail-${r.ch.id}" style="display:none;">
               <div class="rank-crit-grid">
@@ -4276,6 +4352,7 @@ function renderChallengeRanking() {  const list = (state.challenges && state.cha
           `;
         }).join("")}
       </div>
+      <p class="ranking-sub" style="margin-top:8px;">Podio de ${rows.length}: el resto se delibera en el catálogo de abajo. Aquí solo se pronostica; la decisión se toma en la mesa.</p>
     </section>
   `;
 }
@@ -5146,7 +5223,7 @@ function parseChallengesFromOcrText(ocrText, fileName) {
       return {
         title: title.length > 85 ? title.slice(0, 82) + "..." : title,
         demand: rest,
-        ods: odsMatch ? Array.from(new Set(odsMatch.map(o => o.toUpperCase()))) : (isSocial ? ["ODS 11"] : ["ODS 12", "ODS 9"]),
+        ods: odsMatch ? Array.from(new Set(odsMatch.map(o => o.toUpperCase()))) : [],
         category: isSocial ? "Impacto Social" : "Innovación"
       };
     });
@@ -5164,7 +5241,7 @@ function parseChallengesFromOcrText(ocrText, fileName) {
   return [{
     title: bestTitle.length > 90 ? bestTitle.slice(0, 87) + "..." : bestTitle,
     demand: demand,
-    ods: odsMatch ? Array.from(new Set(odsMatch.map(o => o.toUpperCase()))) : (isSocial ? ["ODS 11"] : ["ODS 12", "ODS 9"]),
+    ods: odsMatch ? Array.from(new Set(odsMatch.map(o => o.toUpperCase()))) : [],
     category: isSocial ? "Impacto Social" : "Innovación"
   }];
 }
@@ -5191,7 +5268,7 @@ function parseSingleChallengeChunk(chunk, label, fileName) {
   return {
     title: title,
     demand: demand,
-    ods: odsMatch ? Array.from(new Set(odsMatch.map(o => o.toUpperCase()))) : (isSocial ? ["ODS 11", "ODS 3"] : ["ODS 9", "ODS 12"]),
+    ods: odsMatch ? Array.from(new Set(odsMatch.map(o => o.toUpperCase()))) : [],
     category: isSocial ? "Impacto Social" : "Innovación"
   };
 }
@@ -5375,19 +5452,82 @@ async function extractTextFromDocx(file) {
 
 function toggleCustomChallengeInput() {
   const el = document.getElementById("custom-challenge-input-box");
-  if (el) {
-    el.style.display = el.style.display === "none" ? "block" : "none";
+  if (!el) return;
+  if (el.style.display === "none") openChallengeImportBox();
+  else el.style.display = "none";
+}
+
+// Abre la caja de importación mostrando PRIMERO lo que ya está cargado: el
+// equipo debe ver sus retos antes de importar o reemplazar nada.
+function openChallengeImportBox() {
+  const el = document.getElementById("custom-challenge-input-box");
+  if (!el) return;
+  renderChallengeImportBox();
+  el.style.display = "block";
+  const ta = document.getElementById("raw-committee-challenges");
+  if (ta) ta.focus({ preventScroll: true });
+}
+
+function renderChallengeImportBox() {
+  const box = document.getElementById("challenge-import-current");
+  if (!box) return;
+  const list = Array.isArray(state.challenges) ? state.challenges : [];
+  if (!list.length) {
+    box.innerHTML = '<div style="font-size:12px; color:#64748B; padding:8px 10px; background:#F8FAFC; border:1px solid #E2E8F0; border-radius:6px;">No hay retos cargados todavía.</div>';
+    return;
   }
+  const rows = list.map(ch => {
+    const id = String(ch.id || "");
+    const title = String(ch.title || "sin título");
+    return '<div style="display:flex; align-items:center; justify-content:space-between; gap:10px; padding:6px 2px; border-bottom:1px solid #F1F5F9;">' +
+      '<span style="font-size:12px; color:#0F172A; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">' +
+      '<strong style="font-family:var(--font-mono); color:#0866F5;">#' + escapeHtml(id) + '</strong> · ' + escapeHtml(title) +
+      '</span>' +
+      '<button class="btn-pill-light" data-challenge-remove="' + escapeHtml(id) + '" style="font-size:10.5px; padding:3px 10px; flex:none;">Borrar</button>' +
+      '</div>';
+  }).join("");
+  box.innerHTML =
+    '<div style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:4px;">' +
+    '<span style="font-size:11.5px; font-weight:800; color:#0F172A;">Retos cargados (' + list.length + ')</span>' +
+    '<button class="btn-pill-light" style="font-size:10.5px; padding:3px 10px;" onclick="clearAllChallenges()">Limpiar todos</button>' +
+    '</div>' + rows;
+  box.querySelectorAll("[data-challenge-remove]").forEach(function (btn) {
+    btn.addEventListener("click", function () { removeChallenge(btn.getAttribute("data-challenge-remove")); });
+  });
+}
+
+// Borra UN reto (no toda la lista) y limpia la selección si era el elegido.
+function removeChallenge(id) {
+  if (!id || !Array.isArray(state.challenges)) return;
+  const before = state.challenges.length;
+  state.challenges = state.challenges.filter(ch => String(ch.id) !== String(id));
+  if (state.challenges.length === before) return;
+  purgeChallengeRefs([id]);
+  if (String(state.active_deliberation_challenge_id) === String(id)) {
+    state.active_deliberation_challenge_id = state.challenges.length ? state.challenges[0].id : "";
+  }
+  if (String(state.challenge_id) === String(id)) {
+    state.challenge_id = "";
+    state.challenge_title = "";
+  }
+  saveState();
+  renderTab("challenges");
+  renderNavigation();
+  openChallengeImportBox();
 }
 
 function clearAllChallenges() {
   if (confirm("¿Limpiar todos los retos cargados para ingresar un nuevo comunicado oficial?")) {
+    const goneIds = (state.challenges || []).map(c => String(c.id));
     state.challenges = [];
+    purgeChallengeRefs(goneIds);
     state.challenge_id = "";
     state.challenge_title = "";
+    state.active_deliberation_challenge_id = "";
     saveState();
     renderTab("challenges");
     renderNavigation();
+    openChallengeImportBox(); // lista vacía visible, lista para pegar el comunicado nuevo
   }
 }
 
@@ -5469,107 +5609,56 @@ function processCommitteeChallengesInput() {
     return;
   }
 
-  const lines = txt.split("\n").map(l => l.trim()).filter(Boolean);
-  const parsed = [];
-  let current = null;
+  const parser = window.RallyChallengeParser;
+  if (!parser) {
+    alert("Falta cargar el validador de retos (challenge_parser.js). Recarga la página.");
+    return;
+  }
+  const parsed = parser.parse(txt);
 
-  lines.forEach(l => {
-    const imgMatch = l.match(/^\[IMAGEN_ORIGEN:\s*([^\]]+)\]/i);
-    if (imgMatch) {
-      if (current) current.imageKey = imgMatch[1].trim();
-      return;
-    }
-    const odsMatch = l.match(/^ODS:\s*(.+)/i);
-    if (odsMatch) {
-      if (current) current.ods = odsMatch[1].split(",").map(s => s.trim().toUpperCase());
-      return;
-    }
-
-    const match = l.match(/^(?:reto|desaf[ií]o)?\s*#?\s*(\d+)[:\.\-\s]+(.*)/i);
-    if (match) {
-      if (current) {
-        if (current.imageKey && window._challengeImageStore && window._challengeImageStore[current.imageKey]) {
-          current.imageUrl = window._challengeImageStore[current.imageKey];
-        } else if (window._challengeImageStore && window._challengeImageStore[current.id]) {
-          current.imageUrl = window._challengeImageStore[current.id];
-        }
-        const tactical = generateTacticalSolution(current.title, current.officialExpectation, current.category);
-        Object.assign(current, tactical);
-        parsed.push(current);
-      }
-      let title = match[2].trim();
-      const id = match[1].padStart(2, "0");
-      if (title.toLowerCase().includes("whatsapp image")) {
-        title = `Desafío Oficial #${id}`;
-      }
-      const category = title.toLowerCase().includes("social") || title.toLowerCase().includes("comun") ? "Impacto Social" : "Innovación";
-      current = {
-        id: id,
-        title: title,
-        category: category,
-        officialExpectation: "",
-        compDensity: "Edición Oficial en Vivo"
-      };
-    } else if (current) {
-      const cleanLine = l.replace(/^Demanda del comit[eé]:\s*/i, "").trim();
-      current.officialExpectation = (current.officialExpectation + " " + cleanLine).trim();
-    }
+  // Cartel oficial de cada reto, si vino en la importación.
+  const imageStore = window._challengeImageStore || {};
+  parsed.forEach(ch => {
+    ch.imageUrl = (ch.imageKey && imageStore[ch.imageKey]) || imageStore[ch.id] || "";
+    delete ch.imageKey;
   });
 
-  if (current) {
-    if (current.imageKey && window._challengeImageStore && window._challengeImageStore[current.imageKey]) {
-      current.imageUrl = window._challengeImageStore[current.imageKey];
-    } else if (window._challengeImageStore && window._challengeImageStore[current.id]) {
-      current.imageUrl = window._challengeImageStore[current.id];
-    }
-    const tactical = generateTacticalSolution(current.title, current.officialExpectation, current.category);
-    Object.assign(current, tactical);
-    parsed.push(current);
-  }
-
   if (parsed.length > 0) {
-    // Sanitizar titulos fragiles (placeholders OCR/whatsapp) y descartar duplicados ANTES de instalar.
-    const sanitized = parsed.map(ch => {
-      const generic = /^(desaf[ií]o|reto)\s*oficial\s*#?\d*$/i.test(ch.title || "") || !ch.title;
-      if (generic) {
-        ch.title = formatChallengeTitle({ ...ch, title: "" });
+    // Tesis táctica solo con demanda real del comité; sin demanda queda "pendiente".
+    const conDemanda = parsed.map(ch => {
+      if ((ch.officialExpectation || "").trim().length >= 40) {
+        Object.assign(ch, generateTacticalSolution(ch.title, ch.officialExpectation, ch.category));
       }
       return ch;
     });
-    const seen = [];
-    const deduped = sanitized.filter(ch => {
-      const sigTail = (ch.officialExpectation || ch.description || "").replace(/\s+/g, " ").toLowerCase().slice(0, 40);
-      const sig = (ch.imageUrl || "") + "|" + sigTail;
-      if (sigTail && seen.includes(sig)) return false;
-      if (sigTail) seen.push(sig);
-      return true;
-    });
-    state.challenges = deduped.length ? deduped : sanitized;
+    const appendBox = document.getElementById("challenge-append-mode");
+    const shouldAppend = !!(appendBox && appendBox.checked);
+    state.challenges = mergeIncomingChallenges(conDemanda, shouldAppend);
     state.active_deliberation_challenge_id = state.challenges[0].id;
     saveState();
     renderTab("challenges");
+    openChallengeImportBox(); // deja la lista visible con el resultado de la importación
   } else {
-    let title = lines[0];
-    if (title.toLowerCase().includes("whatsapp image") || title.toLowerCase().startsWith("image")) title = "Desafío Oficial #01";
-    let expectation = lines.slice(1).join(" ") || lines[0];
-    if (expectation.toLowerCase().includes("whatsapp image")) {
-      expectation = expectation.replace(/whatsapp image[^\.\n]*/gi, "cartel de convocatoria oficial");
-    }
-    const category = title.toLowerCase().includes("social") ? "Impacto Social" : "Innovación";
-    const tactical = generateTacticalSolution(title, expectation, category);
-    state.challenges = [{
-      id: "01",
-      title: title,
-      category: category,
-      compDensity: "Edición Oficial en Vivo",
-      officialExpectation: expectation,
-      imageUrl: (window._challengeImageStore && window._challengeImageStore["01"]) || "",
-      ...tactical
-    }];
-    state.active_deliberation_challenge_id = "01";
-    saveState();
-    renderTab("challenges");
+    // Ni un reto reconocible: no se inventa uno con el primer renglón (así entró el informe).
+    alert("Este texto no parece un comunicado de retos. Usa el formato \"RETO 01: título\" y una línea de demanda por reto.");
   }
+}
+
+// Importar con la lista ya cargada suma por defecto en vez de borrar todo.
+// Ids, deduplicado y purga en cascada viven en challenge_parser.js (probado en tests/js).
+function mergeIncomingChallenges(incoming, append) {
+  const parser = window.RallyChallengeParser;
+  if (!parser) return Array.isArray(incoming) ? incoming : [];
+  const existing = Array.isArray(state.challenges) ? state.challenges : [];
+  const res = parser.merge(existing, incoming, append);
+  if (res.removedIds && res.removedIds.length) purgeChallengeRefs(res.removedIds);
+  return res.list;
+}
+
+// Borra votos, redacciones y selección de retos que ya no existen.
+function purgeChallengeRefs(ids) {
+  const parser = window.RallyChallengeParser;
+  if (parser && parser.purgeRefs) parser.purgeRefs(state, ids);
 }
 
 function selectChallenge(id, proceedImmediately = false) {
@@ -7017,13 +7106,13 @@ function renderViewMultiAI() {
         let statusBadge = "";
         let cardClass = "";
         if (t.status === "in_progress") {
-          statusBadge = `<span class="badge-status badge-warn">EN CURSO (TRABAJANDO)</span>`;
+          statusBadge = rsPill("working", { label: "Trabajando" });
           cardClass = "in-progress";
         } else if (t.status === "completed") {
-          statusBadge = `<span class="badge-status badge-ok">${SVG.check} COMPLETADO</span>`;
+          statusBadge = rsPill("done", { label: "Completado", title: "Completado" });
           cardClass = "completed";
         } else {
-          statusBadge = `<span class="badge-status badge-pending">PENDIENTE</span>`;
+          statusBadge = rsPill("pending", { label: "Pendiente", title: "Pendiente" });
         }
 
         const promptText = generateSpecificMegaPrompt(t.id);
@@ -7389,6 +7478,7 @@ function renderViewPautado() {
           ${SVG.download} Plantilla Word (vacía)
         </a>
       </div>
+      ${onlineLinkRow("pautado", "Pega el enlace de Canva, Google Docs o Figma del pautado", "ENLACE AL PAUTADO EN LÍNEA")}
     </div>
 
     <div class="workbench-card" style="margin-bottom:16px;">
@@ -7426,12 +7516,23 @@ function renderViewPautado() {
         const color = isOver ? '#b42318' : (pct !== null && pct >= 92) ? '#0D1B35' : '#64748B';
         const counter = max ? `${len} / ${max} caracteres (${pct}%)` : `${len} caracteres`;
         const authorMascot = authorship[k] || null;
+        const secMeta = {
+          problema:        { icon: SVG.target,      color: "#0D1B35" },
+          solucion:        { icon: SVG.spark,       color: "#0866F5" },
+          impacto:         { icon: SVG.globe,       color: "#0284C7" },
+          innovacion:      { icon: SVG.network,     color: "#475569" },
+          prefactibilidad: { icon: SVG.shieldCheck, color: "#0D1B35" }
+        }[k] || { icon: "", color: "#64748B" };
 
         return `
           <div class="workbench-card" style="margin-bottom:0;" data-lockable="pautado-${k}">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
               <div style="display:flex; align-items:center; gap:8px;">
-                <span style="font-size:13px; font-weight:800; text-transform:uppercase; color:var(--text-main); letter-spacing:0.01em;">${k}</span>
+                <span class="pautado-sec-label" style="--sec:${secMeta.color};">
+                  <span class="pautado-sec-bar"></span>
+                  ${secMeta.icon}
+                  <span>${k}</span>
+                </span>
                 ${authorMascot ? `
                   <span class="collaborator-stamp" title="Última edición por ${authorMascot.name}">
                     ${authorMascot.icon} ${authorMascot.name}
@@ -7664,6 +7765,7 @@ function renderViewBudget() {
           ${SVG.download} Descargar Excel (.xlsx)
         </a>
       </div>
+      ${onlineLinkRow("budget", "Pega el enlace de Canva o Google Sheets del presupuesto", "ENLACE AL PRESUPUESTO EN LÍNEA")}
     </div>
 
     ${!ctx.listo ? `
@@ -8189,12 +8291,115 @@ const CANVAS_PRESETS = [
       costes: "Acto III: cifras de prefactibilidad ($4k-$6k USD piloto).",
       ingresos: "Acto IV: frase memorable de cierre inspirador."
     }
+  },
+  {
+    id: "uso",
+    name: "Infraestructura por uso (app / web)",
+    hints: {
+      socios: "¿Quién ofrece la infraestructura que alquilas? Proveedores de hosting, pasarelas de pago, servicios de mensajería.",
+      actividades: "¿Qué haces con tus propias manos? Código, diseño, capacitación. Lo que ya existe se contrata.",
+      propuesta: "Qué problema se resuelve en una oración, con precio de uso por año: tecnología + dolor + costo anual.",
+      relaciones: "Cómo se relaciona el usuario con la app: soporte dentro de la app, membresía, acompañamiento.",
+      segmentos: "¿Quién se suscribe? Nombre del segmento y cuánto paga hoy por resolverlo.",
+      recursos: "Mínimo propio: código, dominio, identidad. La infraestructura de cómputo se paga por uso.",
+      canales: "Dónde vive y a través de qué canal se suscribe (web, app store, WhatsApp).",
+      costes: "Gastos que se pagan cada año: membresías de servicios y planes por uso, no solo el día uno.",
+      ingresos: "Membresía anual o plan por uso. Precio creíble: ni de regalo ni inflado; anotar el plan real del proveedor."
+    }
+  },
+  {
+    id: "ods",
+    name: "Canvas de Impacto ODS",
+    hints: {
+      socios: "Socio institucional que pone el territorio, y aliado técnico que financia o acompaña.",
+      actividades: "Las 3 acciones que producen cambio visible en el territorio.",
+      propuesta: "Qué mejora, para quién, y por cuánto (cifra del problema). Un ODS protagonista.",
+      relaciones: "Cómo se apropia la comunidad: talleres, acompañamiento, lenguaje simple.",
+      segmentos: "Beneficiarios con nombre y lugar; cifra citable del segmento.",
+      recursos: "Equipo local, hardware real y alianzas. Sin listas de deseos.",
+      canales: "Con quién llega primero: gobierno local, escuela, centro comunal.",
+      costes: "Costos de implementación del piloto con enlace de respaldo por partida.",
+      ingresos: "Quién sostiene después del rally: presupuesto municipal, cooperación, tarifa simbólica."
+    }
   }
 ];
 
 function getCurrentCanvasPresetId() {
   const valid = CANVAS_PRESETS.map(p => p.id);
   return valid.includes(state.canvas_preset) ? state.canvas_preset : "sirli";
+}
+
+// Mega-prompt: arma el contexto completo (brief + reto + solución + presupuesto + formato)
+// para que otra IA haga su propuesta de canvas y el equipo la compare aquí.
+function buildCanvasExternalPrompt() {
+  const canvas = (state.model_canvas && typeof state.model_canvas === "object") ? state.model_canvas : {};
+  const bctxC = budgetCurrency();
+  const budgetLine = (Array.isArray(state.budget) && state.budget.length ? state.budget : [])
+    .slice(0, 12)
+    .map(b => `- ${b.concept || b.element || "?"}: ${b.units || 1} × ${b.unit_cost || 0} ${bctxC.symbol} (${b.url || "sin enlace"})`)
+    .join("\n") || "Sin partidas todavía.";
+  const claimsLine = (Array.isArray(state.claims) && state.claims.length ? state.claims : [])
+    .slice(0, 5)
+    .map(c => `- "${c.stat}" (${c.source}, ${c.year})`)
+    .join("\n") || "Sin cifras citables todavía.";
+  const preset = CANVAS_PRESETS.find(p => p.id === getCurrentCanvasPresetId()) || CANVAS_PRESETS[0];
+  return `Actúa como asesor de modelo de negocio para un proyecto de rally de innovación.
+
+CONTEXTO
+- Certamen: ${state.rally_type === "latam" ? "Rally Latinoamericano 28h (presupuesto en USD, replicable en LATAM)" : state.rally_type === "nacional" ? "Rally Nacional Nicaragüa 24h (presupuesto en córdobas, anclado al Plan Nacional)" : "certamen por definir"}
+- Equipo: ${state.team_name || "(por definir)"} · ${state.university || "(sin universidad)"} · ${state.city || "(sin ciudad)"}
+- Proyecto: ${state.project_name || "(sin nombre)"} — categoría ${state.category || "Innovación"}
+- Reto ${state.challenge_id || "?"}: ${state.challenge_title || "por elegir"}
+- Tesis de solución: ${state.solution_thesis || "por definir"}
+
+CIFRAS CITABLES
+${claimsLine}
+
+PRESUPUESTO ACTUAL
+${budgetLine}
+
+LO QUE QUIERO
+Propuesta para los 9 cuadrantes del Business Model Canvas (plantilla "${preset.name}"), en español simple, sin siglas y sin relleno:
+Socios Clave · Actividades Clave · Propuesta de Valor · Relaciones · Segmentos · Recursos · Canales · Estructura de Costes · Fuentes de Ingresos.
+
+REGLAS DE PRECIO
+- Nada se construye desde cero si ya existe: se contrata por uso.
+- Precios creíbles: ni locos ni regalados; si es digital, membresías anuales o planes por uso.
+- Coherencia total con el presupuesto de arriba (mismos números).
+
+Nuestro borrador (para que lo compares y lo mejores, no lo repitas):
+${JSON.stringify(canvas, null, 2)}`;
+}
+
+function copyCanvasExternalPrompt() {
+  copyToClipboardWithFeedback(buildCanvasExternalPrompt(), "Contexto copiado: pégalo en la otra IA y tráenos su propuesta.");
+}
+
+function canvasOnlineUrlChanged(val) {
+  state.canvas_online_url = String(val || "").trim();
+  saveState();
+  renderTab("canvas");
+}
+
+// Enlace de "trabajo en línea" (Canva/Figma/Slides) reutilizable por pestaña.
+function onlineUrlChanged(key, val) {
+  state.delivery_links = (state.delivery_links && typeof state.delivery_links === "object") ? state.delivery_links : {};
+  const v = String(val || "").trim();
+  if (v) state.delivery_links[key] = v; else delete state.delivery_links[key];
+  saveState();
+  renderTab(activeTab);
+}
+
+function onlineLinkRow(key, placeholder, title) {
+  const url = state.delivery_links && state.delivery_links[key] ? String(state.delivery_links[key]) : "";
+  return `
+    <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:10px; padding-top:10px; border-top:1px dashed var(--border-light);">
+      <label style="font-size:10.5px; color:var(--text-muted); font-family:var(--font-mono); font-weight:700;">${title}</label>
+      <input type="url" inputmode="url" placeholder="${escapeHtml(placeholder)}" value="${escapeHtml(url)}"
+             onchange="onlineUrlChanged('${key}', this.value)"
+             style="flex:1 1 260px; min-width:0; font-size:11.5px; padding:5px 9px; border:1px solid var(--border-light); border-radius:var(--radius-sm); background:var(--bg-surface); color:var(--text-body);">
+      ${url ? `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px; font-size:11px;">${SVG.external} Ver en línea</a>` : ""}
+    </div>`;
 }
 
 function canvasPresetChanged(val) {
@@ -8264,6 +8469,9 @@ function renderViewCanvas() {
         <select onchange="canvasPresetChanged(this.value)" class="ai-model-select" aria-label="Plantilla de Modelo Canvas" style="display:inline-block; min-width:200px;">
           ${CANVAS_PRESETS.map(p => `<option value="${p.id}" ${p.id === getCurrentCanvasPresetId() ? "selected" : ""}>${p.name}</option>`).join("")}
         </select>
+        <button class="btn-secondary" style="font-size:11px; padding:4px 10px; display:inline-flex; align-items:center; gap:4px;" onclick="copyCanvasExternalPrompt()" title="Arma el contexto completo (brief, reto, cifras, presupuesto) y lo copia para que otra IA prepare su propuesta de canvas">
+          ${SVG.copy} Copiar contexto para otra IA
+        </button>
         <button class="btn-secondary" style="font-size:11px; padding:4px 10px;" onclick="resetCanvasToBase()">Restablecer</button>
         <a href="/docs/canvas.md" download class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
           ${SVG.download} Markdown (.md)
@@ -8285,6 +8493,13 @@ function renderViewCanvas() {
 
     <div style="margin-top:14px; padding:10px 0; border-top:1px solid var(--border-light); font-size:12px; color:var(--text-muted);">
       <span id="canvas-filled-count">${filledCount} de 9 cuadrantes personalizados</span> — haz clic en cualquier cuadrante para escribir en él (se guarda solo, en vivo).
+      <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:10px; padding-top:10px; border-top:1px dashed var(--border-light);">
+        <label style="font-size:10.5px; color:var(--text-muted); font-family:var(--font-mono); font-weight:700;">ENLACE AL TRABAJO EN LÍNEA</label>
+        <input type="url" inputmode="url" placeholder="Pega el enlace de Canva, Figma, Lucid o Slides" value="${escapeHtml(String(state.canvas_online_url || ""))}"
+               onchange="canvasOnlineUrlChanged(this.value)"
+               style="flex:1 1 260px; min-width:0; font-size:11.5px; padding:5px 9px; border:1px solid var(--border-light); border-radius:var(--radius-sm); background:var(--bg-surface); color:var(--text-body);">
+        ${state.canvas_online_url ? `<a href="${escapeHtml(state.canvas_online_url)}" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px; font-size:11px;">${SVG.external} Ver en línea</a>` : ""}
+      </div>
     </div>
   `;
 }
@@ -9633,35 +9848,35 @@ function updateInspector() {
       <div class="prep-table">
         <div class="prep-row ${state.team_name ? 'is-complete' : ''}" onclick="switchTab('team')" title="Identidad del Equipo">
           <span class="prep-col-name">01. Equipo y Sede</span>
-          <span class="prep-col-status">${state.team_name ? 'CONFIRMADO' : 'INCOMPLETO'}</span>
+          <span class="prep-col-status">${rsPill(state.team_name ? "done" : "pending", state.team_name ? { label: "CONFIRMADO" } : { label: "INCOMPLETO" })}</span>
         </div>
         <div class="prep-row ${state.challenge_id ? 'is-complete' : ''}" onclick="switchTab('challenges')" title="Selección de Reto">
           <span class="prep-col-name">02. Reto en Vivo</span>
-          <span class="prep-col-status">${state.challenge_id ? '#' + state.challenge_id : 'SIN ELEGIR'}</span>
+          <span class="prep-col-status">${rsPill(state.challenge_id ? "done" : "pending", state.challenge_id ? { label: "#" + state.challenge_id, title: "Reto activo" } : { label: "SIN ELEGIR" })}</span>
         </div>
         <div class="prep-row ${state.solution_approved ? 'is-complete' : ''}" onclick="switchTab('solution')" title="Taller de Solución">
           <span class="prep-col-name">03. Solución Técnica</span>
-          <span class="prep-col-status">${state.solution_approved ? 'APROBADA' : (stage >= 3 ? 'BORRADOR' : 'PENDIENTE')}</span>
+          <span class="prep-col-status">${rsPill(state.solution_approved ? "done" : (stage >= 3 ? "working" : "pending"), { label: state.solution_approved ? "APROBADA" : (stage >= 3 ? "BORRADOR" : "PENDIENTE"), title: "Solución técnica" })}</span>
         </div>
         <div class="prep-row ${state.challenge_id && state.solution_approved ? 'is-complete' : ''}" onclick="switchTab('impact')" title="Impacto ODS y Políticas Nacionales">
-          <span class="prep-col-name">04. ODS & Plan País</span>
-          <span class="prep-col-status">${state.challenge_id ? (state.solution_approved ? 'ALINEADO' : 'CONFIGURAR') : 'PENDIENTE'}</span>
+          <span class="prep-col-name">04. ODS &amp; Plan País</span>
+          <span class="prep-col-status">${rsPill(state.challenge_id && state.solution_approved ? "done" : (state.challenge_id ? "working" : "pending"), { label: state.challenge_id ? (state.solution_approved ? "ALINEADO" : "CONFIGURAR") : "PENDIENTE", title: "Impacto ODS y Plan País" })}</span>
         </div>
         <div class="prep-row ${isPautadoComplete() ? 'is-complete' : ''}" onclick="switchTab('pautado')" title="Documento Pautado">
           <span class="prep-col-name">05. Pautado Oficial</span>
-          <span class="prep-col-status">${isPautadoComplete() ? 'AUDITADO' : (stage >= 5 ? 'REVISAR' : 'PENDIENTE')}</span>
+          <span class="prep-col-status">${rsPill(isPautadoComplete() ? "done" : (stage >= 5 ? "working" : "pending"), { label: isPautadoComplete() ? "AUDITADO" : (stage >= 5 ? "REVISAR" : "PENDIENTE"), title: "Documento Pautado" })}</span>
         </div>
         <div class="prep-row ${hasBudgetItems && isBudgetValid() ? 'is-complete' : ''}" onclick="switchTab('budget')" title="Presupuesto">
           <span class="prep-col-name">06. Presupuesto</span>
-          <span class="prep-col-status">${hasBudgetItems ? '$' + Math.round(totalBudget).toLocaleString() + ' USD' : 'SIN COTIZAR'}</span>
+          <span class="prep-col-status">${rsPill(hasBudgetItems && isBudgetValid() ? "done" : (hasBudgetItems ? "working" : "pending"), { label: hasBudgetItems ? "$" + Math.round(totalBudget).toLocaleString() + " USD" : "SIN COTIZAR", title: "Presupuesto" })}</span>
         </div>
         <div class="prep-row ${isScriptComplete() ? 'is-complete' : ''}" onclick="switchTab('script')" title="Guion de Video">
           <span class="prep-col-name">07. Guion 120s</span>
-          <span class="prep-col-status">${isScriptComplete() ? '120s OK' : (stage >= 9 ? 'EN CURSO' : 'PENDIENTE')}</span>
+          <span class="prep-col-status">${rsPill(isScriptComplete() ? "done" : (stage >= 9 ? "working" : "pending"), { label: isScriptComplete() ? "120s OK" : (stage >= 9 ? "EN CURSO" : "PENDIENTE"), title: "Guion de video" })}</span>
         </div>
         <div class="prep-row ${guardrailsOk ? 'is-complete' : ''}" onclick="switchTab('timeline')" title="Requisitos de Entrega">
           <span class="prep-col-name">08. Checklist de Entrega</span>
-          <span class="prep-col-status">${guardrailsCount}/${guardrailsTotal} VERIFICADOS</span>
+          <span class="prep-col-status">${rsPill(guardrailsOk ? "done" : (guardrailsCount > 0 ? "working" : "pending"), { label: `${guardrailsCount}/${guardrailsTotal} VERIFICADOS`, title: "Checklist de entrega" })}</span>
         </div>
       </div>
     </div>

@@ -25,10 +25,17 @@ dashboard/assets_uploads/
 
 # Buzón de propuestas del agente y espejo de estado (datos del usuario, efímeros)
 dashboard/data/content/
+.rally-nube.json
+.rally-nube/
 dashboard/data/state.json
 dashboard/data/sections.db
 dashboard/data/sections.db-shm
 dashboard/data/sections.db-wal
+dashboard/data/members.db
+dashboard/data/members.db-shm
+dashboard/data/members.db-wal
+dashboard/data/nube.db
+dashboard/data/content_decisiones/
 dashboard/data/applied/
 dashboard/data/discarded/
 
@@ -66,6 +73,9 @@ dashboard/data/stats.status.json
 .superpowers/
 .impeccable/
 node_modules/
+tmp/
+scripts/.cache/
+tools/parse_detect.py
 
 # Reflejos de skills que crea scripts/setup_agente.ps1 (la fuente es skills/)
 .opencode/skills/

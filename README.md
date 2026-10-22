@@ -195,7 +195,17 @@ flowchart TD
 - **Vista Dual de Trabajo:**
   - **Modo Documento Cooperativo:** Permite leer todos los retos en formato continuo, registrar lluvia de ideas por integrante del equipo y descartar opciones inviables con 1 click.
   - **Modo Tarjetas Tácticas:** Vista condensada con indicadores de win-rate y accesos rápidos a análisis estratégico.
-- **Ranking TOP 3 en Radar:** Algoritmo que clasifica los 3 retos con mayor probabilidad de victoria evaluando viabilidad técnica, potencial de novedad y alineación con ODS.
+- **Importar visible y lista editable:** el botón de importación queda siempre a la vista y la lista cargada muestra cada reto con su acción de borrado. Importar con la lista ya cargada **suma** por defecto; reemplazar es una decisión explícita.
+- **Ranking TOP 3 en Radar:** Algoritmo que clasifica los 3 retos con mayor probabilidad de victoria evaluando viabilidad técnica, potencial de novedad y alineación con ODS. Si no hay precedente histórico, el puntaje se calcula con los criterios reales del reto y se marca como `criterios`; no se inventa un win-rate plano.
+
+### 1.1 Guardas de ingesta de retos
+
+El parser vive en `dashboard/challenge_parser.js`, separado de `app.js` para poder probarlo sin DOM (`tests/test_challenges_parse.py`).
+
+- **Un informe no es un catálogo:** solo abre reto un encabezado `RETO n:` / `DESAFÍO n:`, o una lista numerada cuyo título sea plausible. Encabezados de sección («3 El reporte nacional», «La lógica común», «Anexos 17.1…») se rechazan.
+- **IDs sanos:** IDs repetidos se renumeran y al reemplazar la lista se renumera desde `01`.
+- **Sin duplicados:** al sumar retos se descarta el título ya existente y se continúa la numeración.
+- **Purga en cascada:** borrar un reto elimina sus votos, sus ideas de deliberación y la selección activa que lo apuntaba, para no dejar referencias huérfanas.
 
 ### 2. Taller de Solución y WOW Factor
 Formulación de la tesis de impacto, diferenciación de la competencia y anclaje a las necesidades reales del certamen.
@@ -209,6 +219,15 @@ Checklist crítico que valida antes del cierre:
 - Privacidad del video en YouTube (Público u Oculto, **nunca Privado**).
 - Nomenclatura del archivo PDF según el estándar exigido por el comité.
 - Coherencia matemática: los costos mencionados en el video deben cuadrar al centavo con la tabla de presupuesto.
+
+### 5. Super Agentes (Herramientas del topbar)
+El cuadrito **Herramientas** del topbar abre seis agentes especializados: Revisor de Guión, Analizador de Presupuesto, Analizador de Pautado, Analizador de Canvas, Analizador de Documentos y Guía de Editor de Video.
+
+- **Checks locales primero, sin IA:** cada panel valida al instante contra la rúbrica activa (duración y actos del guion, rango y filas del presupuesto, topes y datos repetidos del pautado, los 9 bloques del canvas, naming de assets). Funcionan incluso con el servicio apagado.
+- **Tres acciones por agente:** generar un prompt con todo el contexto del proyecto para llevarlo a cualquier IA; pegar la respuesta externa para contrastarla; o analizar el contenido actual con la IA local del servicio (`/api/ai`).
+- **La rúbrica va compilada y citada:** `dashboard/super_agents_rubrics.js` destila `knowledge/` y `.agents/rules/` con la referencia de cada regla; no inventa límites.
+- **Nunca sobrescribe:** veredictos, problemas y ajustes viven en el panel. Un ajuste se copia al portapapeles y salta a su pestaña; pegar y guardar es decisión del humano.
+- **Salida honesta:** si el servicio no tiene proveedor, está apagado o devuelve texto sin JSON, el panel lo dice tal cual y muestra la respuesta cruda etiquetada.
 
 ---
 

@@ -190,6 +190,18 @@ El servidor Python expone estas rutas (`scripts/rally_service.py`):
 Errores previstos devuelven códigos claros (`422` = imagen dañada, con mensaje
 en español para el usuario).
 
+### Pruebas de regresión
+
+```bash
+pip install -r requirements-dev.txt    # incluye pytest
+python -m pytest tests/test_challenges_parse.py -q
+```
+
+Cubren las guardas de ingesta de retos (`dashboard/challenge_parser.js`): un
+informe extenso no debe convertirse en catálogo, los IDs deben ser únicos y
+borrar un reto debe limpiar votos, ideas y selección. Requieren Node en el
+`PATH`; sin Node, esas pruebas se saltan.
+
 ---
 
 ## 8. Despliegue en GitHub Pages (vista pública)
@@ -338,11 +350,15 @@ Sin credenciales configuradas, usa un token de GitHub como contraseña
 rally-studio/
 ├─ dashboard/            Tablero (13 fases)
 │  ├─ index.html         Cáscara HTML
-│  ├─ app.js             Toda la lógica de la interfaz
+│  ├─ app.js             Lógica de la interfaz
+│  ├─ challenge_parser.js Guardas de ingesta de retos (IDs, dedupe, purga)
+│  ├─ super_agents.js    Paneles de revisión por rúbrica
+│  ├─ super_agents_rubrics.js Rúbrica compilada y citada
 │  ├─ style.css          Sistema de diseño (doctrina DESIGN.md)
 │  ├─ data/              Datos externos: banco de retos + ranking
 │  ├─ assets/            Logos, iconos
 │  └─ graph.html         Visualizador del grafo de conocimiento
+├─ tests/                Pruebas del parser y de los puentes del tablero
 ├─ site/                 Landing pública (telemetría territorial demo)
 ├─ scripts/
 │  └─ rally_service.py   Servidor local: estáticos, telemetría, OCR, IA, DOCX

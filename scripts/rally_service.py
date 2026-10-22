@@ -36,6 +36,13 @@ import zipfile
 try:
     from content_store import ContentStore, validate_envelope
     from member_store import MemberStore
+    from nube_store import (
+        NubeStore,
+        NubeConflict,
+        NubeError,
+        BUZON_PREFIX,
+        DECISIONES_PREFIX,
+    )
     from section_store import (
         SQLiteSectionStore,
         SectionConflict,
@@ -45,6 +52,13 @@ try:
 except ImportError:  # cuando se importa como paquete (tests)
     from scripts.content_store import ContentStore, validate_envelope
     from scripts.member_store import MemberStore
+    from scripts.nube_store import (
+        NubeStore,
+        NubeConflict,
+        NubeError,
+        BUZON_PREFIX,
+        DECISIONES_PREFIX,
+    )
     from scripts.section_store import (
         SQLiteSectionStore,
         SectionConflict,
@@ -104,8 +118,90 @@ SOURCES_DIR = BASE_DIR
 # código para poder excluirlo del despliegue y para que las pruebas usen tmp.
 DATA_DIR = pathlib.Path(os.environ.get("RALLY_DATA_DIR", str(DASHBOARD_DIR / "data")))
 CONTENT_STORE = ContentStore(DATA_DIR)
+NUBE_STORE = NubeStore(DATA_DIR / "nube.db")
 SECTION_STORE = SQLiteSectionStore(DATA_DIR / "sections.db")
 MEMBER_STORE = MemberStore(DATA_DIR / "members.db")
+
+# --- Presencia en vivo (Fase 2.2): quien esta en la pizarra y que edita ------
+_PRESENCE_LOCK = threading.Lock()
+_PRESENCE = {}  # actor -> {"actor", "tab", "editing", "ts"}
+PRESENCE_TTL_SEC = 20.0
+
+
+def presence_beat(actor: str, tab: str = "", editing: str = "", now: float | None = None) -> dict:
+    """Marca latido de un actor. Devuelve la fila normalizada."""
+    nombre = str(actor or "").strip()[:40] or "anonimo"
+    momento = time.time() if now is None else now
+    with _PRESENCE_LOCK:
+        _PRESENCE[nombre] = {
+            "actor": nombre,
+            "tab": str(tab or "").strip()[:40],
+            "editing": str(editing or "").strip()[:80],
+            "ts": momento,
+        }
+        return dict(_PRESENCE[nombre])
+
+
+def presence_list(now: float | None = None) -> dict:
+    """Actores con latido reciente, ordenados por nombre."""
+    momento = time.time() if now is None else now
+    with _PRESENCE_LOCK:
+        vivos = {k: v for k, v in _PRESENCE.items() if momento - v.get("ts", 0) <= PRESENCE_TTL_SEC}
+        _PRESENCE.clear()
+        _PRESENCE.update(vivos)
+    actores = sorted(
+        (
+            {
+                "actor": v["actor"],
+                "tab": v.get("tab", ""),
+                "editing": v.get("editing", ""),
+                "secs": max(0, int(momento - v.get("ts", momento))),
+            }
+            for v in vivos.values()
+        ),
+        key=lambda x: x["actor"],
+    )
+    return {"ok": True, "actors": actores}
+
+
+# --- Espejo de buzón de la nube en disco (Fase 2.3) --------------------------
+# Los sobres que llegan por /api/sync/push a content/<id>.json se escriben en el
+# content dir real para que /api/content/manifest los publique en la web sin
+# tocar la logica del ContentStore.
+
+
+def espejo_nube_contenido(rel_path: str, content: str | None) -> bool:
+    """Escribe (content≠None) o borra (content=None) el sobre espejado. Solo rutas del buzón."""
+    LIMPIO = str(rel_path or "").replace("\\", "/")
+    if LIMPIO.startswith(BUZON_PREFIX):
+        destino = DATA_DIR / LIMPIO
+        destino.parent.mkdir(parents=True, exist_ok=True)
+        if content is None:
+            try:
+                destino.unlink(missing_ok=True)
+            except OSError as exc:
+                print(f"[nube] no se borro el sobre {LIMPIO!r}: {exc}", flush=True)
+                return False
+            return True
+        try:
+            destino.write_text(str(content), encoding="utf-8")
+            return True
+        except OSError as exc:
+            print(f"[nube] no se espejo el sobre {LIMPIO!r}: {exc}", flush=True)
+            return False
+    if LIMPIO.startswith(DECISIONES_PREFIX):
+        if content is None:
+            # una decision borrada ya no aplica; no toca el local
+            return True
+        destino = DATA_DIR / LIMPIO
+        destino.parent.mkdir(parents=True, exist_ok=True)
+        try:
+            destino.write_text(str(content), encoding="utf-8")
+            return True
+        except OSError as exc:
+            print(f"[nube] no se espejo la decision {LIMPIO!r}: {exc}", flush=True)
+            return False
+    return False
 _SECTION_MIGRATION_LOCK = threading.Lock()
 _SECTION_MIGRATED = False
 
@@ -292,7 +388,7 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
                 "status": "ok",
                 "service": "rally_service",
                 "port": self.server.server_address[1],
-                "ai": ai_provider_summary().get("provider", "no-provider"),
+                "ai": ai_provider_label(),
                 "uptime_sec": int(time.time() - START_TIME),
                 "timestamp": int(time.time() * 1000),
             })
@@ -390,6 +486,45 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
             self.send_json_response(200, CONTENT_STORE.schema(), cors=False)
         elif req_path == "/api/content/manifest":
             self.send_json_response(200, CONTENT_STORE.manifest(), cors=False)
+        elif req_path == "/api/presence":
+            self.send_json_response(200, presence_list(), cors=True)
+        elif req_path == "/api/sync/files":
+            if not sync_authorized(self):
+                self.send_json_response(403, {"ok": False, "error": "sync-no-autorizado"})
+                return
+            project = self.project_id(url.query)
+            self.send_json_response(200, {
+                "ok": True, "project": project, "files": NUBE_STORE.list_files(project),
+            }, cors=True)
+        elif req_path == "/api/sync/file":
+            if not sync_authorized(self):
+                self.send_json_response(403, {"ok": False, "error": "sync-no-autorizado"})
+                return
+            project = self.project_id(url.query)
+            params = urllib.parse.parse_qs(url.query)
+            rel_path = (params.get("path", [""])[0] or "").strip()
+            try:
+                data = NUBE_STORE.read_file(project, rel_path)
+            except NubeError as exc:
+                self.send_json_response(400, {"ok": False, "error": str(exc)})
+                return
+            if data is None:
+                self.send_json_response(404, {"ok": False, "error": "archivo-vacio-en-nube"})
+                return
+            self.send_json_response(200, {"ok": True, "project": project, "file": data}, cors=True)
+        elif req_path == "/api/sync/changes":
+            if not sync_authorized(self):
+                self.send_json_response(403, {"ok": False, "error": "sync-no-autorizado"})
+                return
+            project = self.project_id(url.query)
+            params = urllib.parse.parse_qs(url.query)
+            try:
+                since = int(params.get("since", ["0"])[0] or 0)
+                limit = int(params.get("limit", ["200"])[0] or 200)
+            except ValueError:
+                since, limit = 0, 200
+            feed = NUBE_STORE.changes(project, since=since, limit=limit)
+            self.send_json_response(200, {"ok": True, "project": project, **feed}, cors=True)
         elif req_path.startswith("/api/content/"):
             self.serve_content_item(req_path[len("/api/content/"):])
         else:
@@ -435,6 +570,18 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
         if not self.project_param_ok(url.query):
             return
         if url.path == "/api/ai":
+            ok, extra, msg = ai_rate_check(self)
+            if not ok:
+                body = json.dumps({"status": "rate-limit", "message": msg}).encode("utf-8")
+                self.send_response(429)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.send_header("Content-Length", str(len(body)))
+                for k, v in extra.items():
+                    self.send_header(k, v)
+                self.send_cors_headers()
+                self.end_headers()
+                self.wfile.write(body)
+                return
             length = int(self.headers.get("Content-Length", 0))
             body = self.rfile.read(length).decode("utf-8", errors="replace")
             try:
@@ -460,6 +607,29 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
                 self.send_json_response(200, {"status": "started", "job": job_id, "model": model or summary.get("model", "auto")})
             except Exception as e:
                 self.send_json_response(500, {"status": "error", "message": str(e)})
+        elif url.path == "/api/ai/design":
+            ok, extra, msg = ai_rate_check(self)
+            if not ok:
+                body = json.dumps({"status": "rate-limit", "message": msg}).encode("utf-8")
+                self.send_response(429)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.send_header("Content-Length", str(len(body)))
+                for k, v in extra.items():
+                    self.send_header(k, v)
+                self.send_cors_headers()
+                self.end_headers()
+                self.wfile.write(body)
+                return
+            length = int(self.headers.get("Content-Length", 0))
+            body = self.rfile.read(length).decode("utf-8", errors="replace")
+            try:
+                data = json.loads(body) if body else {}
+                colors = data.get("colors") or []
+                image = data.get("image")
+                result = ai_design_suggest(colors, image=image)
+                self.send_json_response(200, result)
+            except Exception as e:
+                self.send_json_response(500, {"status": "error", "message": str(e)})
         elif url.path == "/api/compile-docx":
             length = int(self.headers.get("Content-Length", 0))
             body = self.rfile.read(length).decode("utf-8")
@@ -478,6 +648,62 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
                 self.send_json_response(200 if result.get("status") == "ok" else 400, result)
             except Exception as e:
                 self.send_json_response(500, {"status": "error", "message": str(e)})
+        elif url.path == "/api/presence":
+            length = int(self.headers.get("Content-Length", 0))
+            body = self.rfile.read(length).decode("utf-8", errors="replace")
+            try:
+                data = json.loads(body) if body else {}
+            except Exception:
+                data = {}
+            if not isinstance(data, dict):
+                data = {}
+            presence_beat(data.get("actor"), data.get("tab", ""), data.get("editing", ""))
+            self.send_json_response(200, {"ok": True}, cors=True)
+        elif url.path == "/api/sync/push":
+            if not sync_authorized(self):
+                self.send_json_response(403, {"ok": False, "error": "sync-no-autorizado"})
+                return
+            length = int(self.headers.get("Content-Length", 0))
+            body = self.rfile.read(length).decode("utf-8", errors="replace")
+            try:
+                data = json.loads(body) if body else {}
+            except Exception:
+                data = None
+            if not isinstance(data, dict) or not isinstance(data.get("files"), list) or not data["files"]:
+                self.send_json_response(400, {"ok": False, "error": "cuerpo-invalido",
+                                              "message": "Se espera {\"files\":[{path, content, old_hash}], actor}"})
+                return
+            project = self.project_id(url.query)
+            actor = str(data.get("actor") or "puente").strip()[:60]
+            results = []
+            any_error = False
+            for item in data["files"]:
+                if not isinstance(item, dict):
+                    results.append({"status": "error", "error": "item-invalido"})
+                    any_error = True
+                    continue
+                rel_path = item.get("path")
+                content = item.get("content")
+                old_hash = item.get("old_hash")
+                try:
+                    pushed = NUBE_STORE.push(project, rel_path, content, old_hash, actor)
+                    results.append({"path": pushed["path"], "status": "pushed",
+                                    "sha256": pushed["sha256"], "version": pushed["version"]})
+                    espejo_nube_contenido(pushed["path"], content)
+                except NubeConflict as cond:
+                    results.append({"path": rel_path, "status": "conflict",
+                                    "remote": cond.remote})
+                except NubeError as exc:
+                    results.append({"path": rel_path, "status": "error", "error": str(exc)})
+                    any_error = True
+                except Exception as exc:
+                    results.append({"path": rel_path, "status": "error",
+                                    "error": str(exc)[:200]})
+                    any_error = True
+            pushed_count = sum(1 for r in results if r.get("status") == "pushed")
+            code = 200 if not any_error and pushed_count == len(results) else 207
+            self.send_json_response(code, {"ok": True, "project": project, "actor": actor,
+                                           "results": results}, cors=True)
         elif url.path == "/api/asset-upload":
             project = self.project_id(url.query)
             if self.require_member(project) is None:
@@ -555,6 +781,18 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
             except Exception as e:
                 self.send_json_response(500, {"status": "error", "message": str(e)})
         elif url.path == "/api/ai/quick":
+            ok, extra, msg = ai_rate_check(self)
+            if not ok:
+                body = json.dumps({"status": "rate-limit", "message": msg}).encode("utf-8")
+                self.send_response(429)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.send_header("Content-Length", str(len(body)))
+                for k, v in extra.items():
+                    self.send_header(k, v)
+                self.send_cors_headers()
+                self.end_headers()
+                self.wfile.write(body)
+                return
             length = int(self.headers.get("Content-Length", 0))
             body = self.rfile.read(length).decode("utf-8", errors="replace")
             try:
@@ -867,6 +1105,31 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
             print(f"[content] fallo al {action} {item_id!r}: {exc}", flush=True)
             self.send_json_response(500, {"ok": False, "error": "error-interno"}, cors=False)
             return
+        # --- buzón cooperativo (Fase 2.3): publicar la decisión en la nube ----
+        # La web decidió; el host local (agente) se entera por el feed:
+        # 1) registra la decisión (content_decisiones/<id>.json, actor humano:web)
+        # 2) saca el sobre pendiente (content/<id>.json) para que el manifiesto
+        #    no lo vuelva a ofrecer en la pizarra.
+        try:
+            decision = {"action": action, "id": item_id, "decision_by": "humano:web"}
+            previa = NUBE_STORE.read_file("main", DECISIONES_PREFIX + item_id + ".json")
+            NUBE_STORE.push(
+                "main",
+                DECISIONES_PREFIX + item_id + ".json",
+                json.dumps(decision, ensure_ascii=False),
+                previa["sha256"] if previa else "",
+                actor="humano:web",
+            )
+        except Exception as exc:
+            print(f"[nube] decision {item_id!r} no se publico: {exc}", flush=True)
+        try:
+            sobra = NUBE_STORE.read_file("main", BUZON_PREFIX + item_id + ".json")
+            if sobra:
+                NUBE_STORE.delete_file(
+                    "main", BUZON_PREFIX + item_id + ".json", sobra["sha256"], actor="humano:web"
+                )
+        except Exception as exc:
+            print(f"[nube] sobre {item_id!r} no se retiro de la nube: {exc}", flush=True)
         self.send_json_response(200, {"ok": True}, cors=False)
 
     def send_telemetry(self):
@@ -1340,6 +1603,10 @@ AI_ARG_CHAR_LIMIT = 7000  # limite practico de argumentos en Windows
 
 AI_JOBS = {}
 AI_MODELS_CACHE = {"ts": 0.0, "models": [], "source": ""}
+# Etiqueta del proveedor de IA ya conocida. /health NO debe lanzar la CLI
+# `opencode models` (tarda y satura cuando hay varios servicios a la vez):
+# solo lee lo que el hilo de arranque ya cacheo.
+AI_PROVIDER_LABEL = {"value": "no-provider"}
 
 _ANSI_RE = re.compile(r"\x1b\[[0-9;]*m")
 
@@ -1369,11 +1636,152 @@ def _env_endpoint_config():
     url = os.environ.get("RALLY_AI_URL", "").strip()
     if not url:
         return None
+    # Rotacion de claves: RALLY_AI_KEYS (CSV) es la lista de respaldo.
+    # RALLY_AI_KEY sigue siendo la principal para no romper la config actual.
+    keys = []
+    for raw in (os.environ.get("RALLY_AI_KEYS", "") or "").split(","):
+        k = raw.strip()
+        if k and k not in keys:
+            keys.append(k)
+    main_key = os.environ.get("RALLY_AI_KEY", "").strip()
+    if main_key and main_key not in keys:
+        keys.insert(0, main_key)
     return {
         "url": url,
-        "key": os.environ.get("RALLY_AI_KEY", ""),
+        "key": main_key or (keys[0] if keys else ""),
+        "keys": keys or ([main_key] if main_key else []),
         "model": os.environ.get("RALLY_AI_MODEL", ""),
     }
+
+
+# ---------- LIMITE DE USO (cuota compartida de la isla) ----------
+# La isla es un unico servicio para todas las paginas publicadas. Sin este
+# limite, una sola pagina podria agotar la cuota gratuita del proveedor.
+# Configuracion por entorno:
+#   RALLY_AI_RATE_LIMIT  = peticiones de IA por ventana y por IP (0 = sin limite)
+#   RALLY_AI_RATE_WINDOW = segundos de la ventana (default 3600)
+AI_RATE_LIMIT = int(os.environ.get("RALLY_AI_RATE_LIMIT", "0") or 0)
+AI_RATE_WINDOW = int(os.environ.get("RALLY_AI_RATE_WINDOW", "3600") or 3600)
+AI_RATE_STATE = {}
+AI_RATE_LOCK = threading.Lock()
+# Capa por-USUARIO (identidad voluntaria del header X-Rally-Actor, la misma
+# identidad que usan los chips de presencia). Protege que un usuario muy
+# activo devore la cuota de la isla sin cotar al resto. 0 = sin limite.
+AI_USER_RATE_LIMIT = int(os.environ.get("RALLY_AI_USER_RATE_LIMIT", "0") or 0)
+AI_USER_RATE_STATE = {}
+
+
+def _client_ip(handler):
+    """IP del cliente: respeta X-Forwarded-For si hay proxy delante."""
+    try:
+        fwd = (handler.headers.get("X-Forwarded-For") or "").split(",")[0].strip()
+        if fwd:
+            return fwd
+    except Exception:
+        pass
+    try:
+        return handler.client_address[0]
+    except Exception:
+        return "desconocida"
+
+
+def sync_authorized(handler) -> bool:
+    """Autorizacion del puente de sincronizacion de archivos.
+
+    Reglas honestas:
+    - Si existe RALLY_SYNC_TOKEN (isla publicada), la peticion DEBE traer el
+      token en el header X-Rally-Sync-Token. Sin token, rechaza.
+    - Si no hay token configurado (modo local), solo pasa desde 127.0.0.1:
+      la nube de archivos no tiene abierta la puerta a la Internet abierta.
+    """
+    expected = (os.environ.get("RALLY_SYNC_TOKEN") or "").strip()
+    provided = (handler.headers.get("X-Rally-Sync-Token") or "").strip()
+    if expected:
+        return bool(provided) and provided == expected
+    return _client_ip(handler) in ("127.0.0.1", "::1", "localhost")
+
+
+def ai_rate_check(handler):
+    """Devuelve (ok, headers_extra, mensaje). Dos capas consecutivas:
+
+    1. Por usuario (X-Rally-Actor, identidad voluntaria): RALLY_AI_USER_RATE_LIMIT.
+    2. Por IP (compartida): RALLY_AI_RATE_LIMIT (0 = sin limite).
+
+    Ambos contadores viven solo en memoria (se reinician al reiniciar la isla)."""
+    headers = {}
+    if AI_USER_RATE_LIMIT > 0:
+        try:
+            actor = ((handler.headers.get("X-Rally-Actor") or "").strip())[:80]
+        except Exception:
+            actor = ""
+        if actor:
+            now = time.time()
+            with AI_RATE_LOCK:
+                if len(AI_USER_RATE_STATE) > 2048:
+                    for k in [k for k, v in AI_USER_RATE_STATE.items() if now - v[0] > AI_RATE_WINDOW]:
+                        AI_USER_RATE_STATE.pop(k, None)
+                uent = AI_USER_RATE_STATE.get(actor)
+                if not uent or now - uent[0] >= AI_RATE_WINDOW:
+                    uent = (now, 0)
+                ucount = uent[1]
+                if ucount >= AI_USER_RATE_LIMIT:
+                    reset = int(AI_RATE_WINDOW - (now - uent[0]))
+                    return False, {
+                        "Retry-After": str(max(1, reset)),
+                        "X-RateLimit-Limit": str(AI_USER_RATE_LIMIT),
+                        "X-RateLimit-Remaining": "0",
+                        "X-RateLimit-Scope": "usuario",
+                    }, (f"Limite de {AI_USER_RATE_LIMIT} peticiones de IA por {AI_RATE_WINDOW // 60} min alcanzado "
+                        f"para este usuario. Se restablece en {max(1, reset // 60 + 1)} min. "
+                        f"El equipo puede seguir editando a mano o usar los chats web gratis.")
+                AI_USER_RATE_STATE[actor] = (uent[0], ucount + 1)
+                headers.update({
+                    "X-RateLimit-Scope": "usuario",
+                    "X-RateLimit-Limit": str(AI_USER_RATE_LIMIT),
+                    "X-RateLimit-Remaining": str(max(0, AI_USER_RATE_LIMIT - ucount - 1)),
+                })
+    if AI_RATE_LIMIT <= 0:
+        return True, headers, ""
+    ip = _client_ip(handler)
+    now = time.time()
+    with AI_RATE_LOCK:
+        # Purga de ventanas vencidas (evita que la memoria crezca sin fin).
+        if len(AI_RATE_STATE) > 2048:
+            for k in [k for k, v in AI_RATE_STATE.items() if now - v[0] > AI_RATE_WINDOW]:
+                AI_RATE_STATE.pop(k, None)
+        ent = AI_RATE_STATE.get(ip)
+        if not ent or now - ent[0] >= AI_RATE_WINDOW:
+            ent = (now, 0)
+        count = ent[1]
+        if count >= AI_RATE_LIMIT:
+            reset = int(AI_RATE_WINDOW - (now - ent[0]))
+            return False, {
+                "Retry-After": str(max(1, reset)),
+                "X-RateLimit-Limit": str(AI_RATE_LIMIT),
+                "X-RateLimit-Remaining": "0",
+            }, (f"Limite de {AI_RATE_LIMIT} peticiones de IA por {AI_RATE_WINDOW // 60} min alcanzado "
+                f"para esta conexion. Se restablece en {max(1, reset // 60 + 1)} min. "
+                f"El equipo puede seguir editando a mano o usar los chats web gratis.")
+        AI_RATE_STATE[ip] = (ent[0], count + 1)
+        if headers:
+            # Ambas capas activas: los headers de IP mandan, se anexan los del usuario.
+            merged = dict(headers)
+            merged["X-RateLimit-Limit-IP"] = str(AI_RATE_LIMIT)
+            merged["X-RateLimit-Remaining-IP"] = str(max(0, AI_RATE_LIMIT - count - 1))
+            return True, merged, ""
+        return True, {
+            "X-RateLimit-Limit": str(AI_RATE_LIMIT),
+            "X-RateLimit-Remaining": str(max(0, AI_RATE_LIMIT - count - 1)),
+        }, ""
+
+
+def _ai_key_candidates(env):
+    """Claves a probar en orden: la principal y las de respaldo."""
+    keys = list((env or {}).get("keys") or [])
+    main = (env or {}).get("key", "")
+    if main and main not in keys:
+        keys.insert(0, main)
+    return keys or [""]
 
 def _list_opencode_models():
     """Descubre modelos de la CLI de OpenCode (cache TTL; sin nada hardcodeado)."""
@@ -1399,7 +1807,19 @@ def _list_opencode_models():
     except Exception:
         ids = []
     AI_MODELS_CACHE.update(ts=now, models=ids, source="opencode" if ids else "")
+    AI_PROVIDER_LABEL["value"] = "OpenCode" if ids else AI_PROVIDER_LABEL["value"]
     return ids
+
+
+def ai_provider_label():
+    """Nombre del proveedor de IA sin lanzar procesos (para /health)."""
+    cached = AI_MODELS_CACHE.get("models")
+    if cached:
+        return "OpenCode"
+    env = _env_endpoint_config()
+    if env and (env.get("model") or env.get("url")):
+        return "Endpoint configurado"
+    return AI_PROVIDER_LABEL.get("value", "no-provider")
 
 def ai_provider_summary():
     """Resumen barato del estado del puente (sin gastar cuota ni ejecutar llamadas de pago)."""
@@ -1506,30 +1926,41 @@ def _endpoint_chat_raw(messages, timeout, model=None, purpose=None):
     if not chosen:
         models = _probe_openai_models(env["url"])
         chosen = _pick_model_for(purpose or "", models)
-    try:
-        payload = {"model": chosen, "messages": messages, "stream": False}
+    payload = {"model": chosen, "messages": messages, "stream": False}
+    last_err = None
+    # Rotacion de claves: si una clave esta agotada o rechazada, se prueba la
+    # siguiente. Solo se rota ante errores de cuota/autenticacion.
+    for key in _ai_key_candidates(env):
         headers = {"Content-Type": "application/json"}
-        if env["key"]:
-            headers["Authorization"] = f"Bearer {env['key']}"
+        if key:
+            headers["Authorization"] = f"Bearer {key}"
         req = urllib.request.Request(
             env["url"].rstrip("/") + "/chat/completions",
             data=json.dumps(payload).encode("utf-8"),
             headers=headers,
             method="POST",
         )
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
-            data = json.loads(resp.read().decode("utf-8", errors="replace"))
-        text = ((data.get("choices") or [{}])[0].get("message", {}) or {}).get("content", "").strip()
-        return (text or None), None
-    except Exception as exc:
-        detail = ""
-        body = getattr(exc, "read", None)
-        if callable(body):
-            try:
-                detail = body().decode("utf-8", errors="replace")[:300]
-            except Exception:
-                detail = ""
-        return None, (detail or str(exc))
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                data = json.loads(resp.read().decode("utf-8", errors="replace"))
+            text = ((data.get("choices") or [{}])[0].get("message", {}) or {}).get("content", "").strip()
+            return (text or None), None
+        except Exception as exc:
+            detail = ""
+            body = getattr(exc, "read", None)
+            if callable(body):
+                try:
+                    detail = body().decode("utf-8", errors="replace")[:300]
+                except Exception:
+                    detail = ""
+            last_err = detail or str(exc)
+            low = last_err.lower()
+            rotable = any(k in low for k in ("401", "403", "429", "quota", "rate limit",
+                                             "rate-limit", "too many requests", "unauthorized",
+                                             "invalid api key", "forbidden"))
+            if not rotable:
+                break
+    return None, last_err
 
 
 def _endpoint_chat(messages, timeout, purpose=None, force_model=None):
@@ -1631,6 +2062,290 @@ def ai_quick_task(task, text):
     )
     return {"status": "error", "task": task, "reason": reason, "message": friendly,
             "detail": (last.splitlines()[-1] if last else "")[:300]}
+
+
+def _hex_to_rgb(c):
+    c = str(c or "").strip().lstrip("#")
+    if len(c) == 3:
+        c = "".join(ch * 2 for ch in c)
+    if len(c) != 6:
+        return None
+    try:
+        return (int(c[0:2], 16), int(c[2:4], 16), int(c[4:6], 16))
+    except ValueError:
+        return None
+
+
+def _rel_lum(rgb):
+    def ch(v):
+        v = v / 255.0
+        return v / 12.92 if v <= 0.03928 else ((v + 0.055) / 1.055) ** 2.4
+    r, g, b = rgb
+    return 0.2126 * ch(r) + 0.7152 * ch(g) + 0.0722 * ch(b)
+
+
+def _contrast(a, b):
+    la, lb = _rel_lum(a), _rel_lum(b)
+    hi, lo = max(la, lb), min(la, lb)
+    return (hi + 0.05) / (lo + 0.05)
+
+
+def _hue_of(rgb):
+    r, g, b = [v / 255.0 for v in rgb]
+    mx, mn = max(r, g, b), min(r, g, b)
+    if mx == mn:
+        return None
+    if mx == r:
+        h = ((g - b) / (mx - mn)) % 6
+    elif mx == g:
+        h = (b - r) / (mx - mn) + 2
+    else:
+        h = (r - g) / (mx - mn) + 4
+    h *= 60
+    return h + 360 if h < 0 else h
+
+
+def _is_purple(rgb):
+    h = _hue_of(rgb)
+    return h is not None and 258 <= h <= 345
+
+
+def _to_hex(rgb):
+    return "#" + "".join("%02X" % max(0, min(255, int(round(v)))) for v in rgb)
+
+
+def _darken(rgb, factor):
+    f = factor if factor is not None else 0.5
+    return tuple(v * f for v in rgb)
+
+
+def _lighten(rgb, factor):
+    f = factor if factor is not None else 0.4
+    return tuple(v + (255 - v) * f for v in rgb)
+
+
+def _rotate_hue(rgb, target):
+    """Rota el tono HSL a `target` conservando saturacion y luz."""
+    import colorsys
+    r, g, b = [v / 255.0 for v in rgb]
+    h, l, s = colorsys.rgb_to_hls(r, g, b)
+    nr, ng, nb = colorsys.hls_to_rgb(target / 360.0, l, s)
+    return (nr * 255, ng * 255, nb * 255)
+
+
+_TONOS_SEGUROS = ["#0866F5", "#0F766E", "#15803D", "#B45309", "#C2410C", "#B91C1C"]
+
+
+def _color_de_marca_seguro(primary, bg):
+    """Elige un color de marca con contraste real contra el fondo y la tinta."""
+    mejor = None
+    mejor_ratio = -1.0
+    for c in _TONOS_SEGUROS:
+        rgb = _hex_to_rgb(c)
+        if rgb is None or _is_purple(rgb):
+            continue
+        cr = _contrast(rgb, bg)
+        cp = _contrast(rgb, primary) if primary else 99.0
+        if cr >= 3 and cp >= 2:
+            return rgb
+        m = min(cr / 3.0, cp / 2.0)
+        if m > mejor_ratio:
+            mejor_ratio = m
+            mejor = rgb
+    return mejor or _hex_to_rgb("#0866F5")
+
+
+def _es_casi_negro(rgb):
+    """Negro o casi negro: el detalle de texto tipografico del logo."""
+    if rgb is None:
+        return False
+    mx, mn = max(rgb), min(rgb)
+    sat = 0.0 if mx == 0 else (mx - mn) / mx
+    return _rel_lum(rgb) <= 0.08 and sat <= 0.35
+
+
+def _saturacion(rgb):
+    mx, mn = max(rgb), min(rgb)
+    return 0.0 if mx == 0 else (mx - mn) / mx
+
+
+def sanitize_design_palette(pal):
+    """Convierte la paleta cruda de la IA en la paleta canonica de la marca.
+
+    Entrada (IA): {primary, secondary, accent, bg, text} - primary/secondary/
+    accent son colores de marca, text es el color del texto del logo.
+    Salida (canonica): {bg, primary(tinta), secondary(fondo 2), accent(marca)}.
+
+    Reglas: nada de morado/violeta, el negro del logo manda como tinta,
+    el color de marca debe contrastar con la tinta y con el fondo.
+    Devuelve (paleta_limpia, avisos).
+    """
+    pal = dict(pal or {})
+    notes = []
+
+    def leer(key):
+        v = pal.get(key)
+        return _hex_to_rgb(v) if v else None
+
+    # 1. Fondo: claro o blanco.
+    bg = leer("bg") or _hex_to_rgb("#FFFFFF")
+    if _rel_lum(bg) < 0.85:
+        bg = _hex_to_rgb("#FFFFFF")
+        notes.append("fondo forzado a blanco")
+
+    # 2. Candidatos de color de marca (los que la IA propuso).
+    crudos = [leer("primary"), leer("secondary"), leer("accent")]
+    crudos = [c for c in crudos if c is not None]
+
+    # 3. Tinta: primero el negro real (texto del logo), si no el mas oscuro.
+    texto = leer("text")
+    negros = [c for c in crudos if _es_casi_negro(c)]
+    if texto is not None and _es_casi_negro(texto):
+        tinta = texto
+        notes.append("tinta = negro del logo")
+    elif negros:
+        tinta = min(negros, key=_rel_lum)
+        notes.append("tinta = negro del logo")
+    elif crudos:
+        tinta = min(crudos, key=_rel_lum)
+    else:
+        tinta = _hex_to_rgb("#0D1B35")
+    if _is_purple(tinta):
+        tinta = _hex_to_rgb("#0D1B35")
+        notes.append("tinta morada -> tinta neutra")
+    if _rel_lum(tinta) > 0.30:
+        f = 0.6
+        while f > 0.05 and _rel_lum(_darken(tinta, f)) > 0.30:
+            f -= 0.05
+        tinta = _darken(tinta, f)
+        notes.append("tinta oscurecida para legibilidad")
+
+    # 4. Color de marca: el que mas contraste da con la tinta, sin morado.
+    # Se respeta la jerarquia de la IA (primary > secondary > accent).
+    marcas = [c for c in crudos if not _es_casi_negro(c) and not _is_purple(c)]
+    morados = [c for c in crudos if _is_purple(c)]
+    marca = None
+    for c in marcas:
+        if _contrast(c, tinta) >= 3:
+            marca = c
+            break
+    if marca is None and marcas:
+        marca = max(marcas, key=_saturacion)
+    elif marca is None and morados:
+        marca = _rotate_hue(morados[0], 214)
+        notes.append("marca morada -> azul")
+    elif marca is None:
+        marca = _color_de_marca_seguro(tinta, bg)
+        notes.append("marca de contraste real")
+    if _is_purple(marca):
+        marca = _rotate_hue(marca, 214)
+        notes.append("marca morada -> azul")
+    if _contrast(marca, tinta) < 2:
+        seguro = _color_de_marca_seguro(tinta, bg)
+        if _contrast(seguro, tinta) >= 2 and _contrast(seguro, bg) >= 3:
+            marca = seguro
+            notes.append("marca con contraste real")
+    # Legibilidad sobre el fondo: es dura (3:1).
+    if _contrast(marca, bg) < 3.0:
+        cand = marca
+        for f in [x / 100.0 for x in range(85, 4, -5)]:
+            cand = _darken(marca, f)
+            if _contrast(cand, bg) >= 3.0:
+                break
+        else:
+            cand = _lighten(marca, 0.5)
+        marca = cand
+
+    # 5. Fondo 2: tinte claro derivado de la marca.
+    fondo2 = _lighten(marca, 0.88)
+    if _rel_lum(fondo2) <= 0.85:
+        fondo2 = _lighten(marca, 0.93)
+
+    return {
+        "bg": _to_hex(bg),
+        "primary": _to_hex(tinta),
+        "secondary": _to_hex(fondo2),
+        "accent": _to_hex(marca),
+    }, notes
+
+
+def ai_design_suggest(colors, image=None):
+    """Sugiere paleta + fuentes desde colores dominantes del logo usando el endpoint de IA.
+    Si se pasa `image` (data URL base64), usa un modelo vision para analizar el logo real
+    (incluyendo tipografia aproximada) en vez de solo los colores."""
+    env = _env_endpoint_config()
+    if not (env and (env.get("base_url") or env.get("api_key"))):
+        return {"status": "no-provider", "message": "Sin IA conectada (RALLY_AI_URL)."}
+    if image:
+        messages = [{
+            "role": "user",
+            "content": [
+                {"type": "text", "text": (
+                    "Analiza este logo de un equipo de rally de innovacion. "
+                    "Identifica colores dominantes (incluyendo negro y blanco si aparecen), estilo visual y tipografia aproximada. "
+                    "Sugiere una paleta (primary, secondary, accent, bg, text) con buen contraste WCAG AA. "
+                    "REGLA 1 - NEGRO: si el logo tiene detalles negros o casi negros, "
+                    "el primary DEBE ser ese negro (por ejemplo #111111 o #0D1B35). "
+                    "No reemplaces el negro por el color de marca si el logo claramente usa negro para el texto. "
+                    "REGLA 2 - CONTRASTE: elige tambien colores de contraste, no solo el color dominante. "
+                    "El accent debe contrastar claramente con el primary (ratio >= 3:1) y ser legible sobre bg. "
+                    "REGLA 3 - SIN MORADO: PROHIBIDO morado, violeta, lila y magenta en cualquier rol, "
+                    "tambien prohibidos cream/beige sobre fondo blanco. "
+                    "Sugiere un par de fuentes de Google Fonts (title, body) coherentes con el estilo del logo. "
+                    'Responde SOLO JSON valido, sin markdown: '
+                    '{"palette":{"primary":"#hex","secondary":"#hex","accent":"#hex","bg":"#ffffff","text":"#111111"},'
+                    '"fonts":{"title":"NombreFuente","body":"NombreFuente"},"rationale":"texto breve"}'
+                )},
+                {"type": "image_url", "image_url": {"url": image}},
+            ],
+        }]
+        timeout = 60
+    else:
+        prompt = (
+            "Eres un disenador de identidad visual. Colores dominantes del logo: "
+            + str(colors) + ". "
+            "Sugiere una paleta (primary, secondary, accent, bg, text) con buen contraste WCAG AA. "
+            "REGLA 1 - NEGRO: si el logo tiene detalles negros o casi negros, "
+            "el primary DEBE ser ese negro (por ejemplo #111111 o #0D1B35). "
+            "No reemplaces el negro por el color de marca si el logo claramente usa negro para el texto. "
+            "REGLA 2 - CONTRASTE: elige tambien colores de contraste, no solo el color dominante. "
+            "El accent debe contrastar claramente con el primary (ratio >= 3:1) y ser legible sobre bg. "
+            "REGLA 3 - SIN MORADO: PROHIBIDO morado, violeta, lila y magenta en cualquier rol, "
+            "tambien prohibidos cream/beige sobre fondo blanco. "
+            "y un par de fuentes de Google Fonts (title, body) coherentes con el estilo. "
+            'Responde SOLO JSON valido, sin markdown: '
+            '{"palette":{"primary":"#hex","secondary":"#hex","accent":"#hex","bg":"#ffffff","text":"#111111"},'
+            '"fonts":{"title":"NombreFuente","body":"NombreFuente"},"rationale":"texto breve"}'
+        )
+        messages = [
+            {"role": "system", "content": "Responde exclusivamente JSON valido, sin bloques de codigo."},
+            {"role": "user", "content": prompt},
+        ]
+        timeout = 45
+    try:
+        if image:
+            env2 = _env_endpoint_config()
+            models = _probe_openai_models(env2["url"]) if env2 else []
+            chosen = _pick_model_for("vision", models) or (env2.get("model") if env2 else None)
+            text, err = _endpoint_chat_raw(messages, timeout=timeout, model=chosen, purpose="vision")
+        else:
+            text, err = _endpoint_chat_raw(messages, timeout=timeout, purpose="design")
+    except Exception as e:
+        return {"status": "error", "message": str(e)}
+    if err or not text:
+        return {"status": "error", "message": err or "sin respuesta"}
+    obj = _extract_json_object(text)
+    if not obj:
+        return {"status": "error", "message": "respuesta no JSON", "raw": text[:300]}
+    # Saneo del servidor: la paleta que sale de la IA nunca lleva morado
+    # ni colores sin contraste, aunque el modelo se lo pidan.
+    pal = obj.get("palette") or {}
+    if isinstance(pal, dict) and pal:
+        clean, notes = sanitize_design_palette(pal)
+        obj["palette"] = clean
+        if notes:
+            obj["palette_notes"] = notes
+    return {"status": "ok", **obj}
 
 
 # OCR semantico: la imagen viaja al modelo vision del endpoint de entorno y
