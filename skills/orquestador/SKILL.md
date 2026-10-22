@@ -59,6 +59,11 @@ Reglas completas y decisiones D1–D7 en
 6. **Informe obligatorio**: al terminar, diga qué produjo, en qué archivo exacto
    lo guardó y qué queda pendiente. Sin informe, la pieza no cuenta como
    terminada. El director marca el `status` de la fila.
+7. **Disciplina de commits**: nadie amenda sin antes comprobar qué commit es el
+   `HEAD` con `git log -1` (otros agentes pueden haber commiteado en la misma
+   rama). Cada commit se arma por rutas explícitas: `git add -- <archivo>`,
+   nunca un `add` suelto que arrastra el trabajo de otra zona. El director
+   integra los commits finales de zona.
 
 ## Protocolo del director (en orden)
 
