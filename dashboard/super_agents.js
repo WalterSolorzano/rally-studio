@@ -354,8 +354,366 @@
 
   globalThis.RSA = MOD;
 
-  // Arranque de UI: solo en navegador con topbar presente (Task 3).
-  if (typeof window !== "undefined" && window.document && document.getElementById("topbar")) {
-    // Boot de UI pendiente (Task 3 del plan).
+  // ── Arranque de UI (Tasks 3–5): navegador con #topbar presente ──────────
+  if (typeof window !== "undefined" && window.document) {
+    bootDashboardUI(MOD);
+  }
+
+  function bootDashboardUI(RSA) {
+    // — Iconos SVG inline monocromos (prohibido el emoji) —
+    const svgOf = function (inner) {
+      return '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" ' +
+        'stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + inner + "</svg>";
+    };
+    const ICONS = {
+      wrench: svgOf('<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.77 3.77z"/>'),
+      claqueta: svgOf('<path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.6-4c1.1-.3 2.2.3 2.5 1.3Z"/><path d="m6.2 5.3 3.1 3.9"/><path d="m12.4 3.4 3.1 4"/><path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/>'),
+      tabla: svgOf('<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M3 14h18"/><path d="M9 9v11"/>'),
+      folios: svgOf('<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/>'),
+      cuadricula: svgOf('<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>'),
+      documento: svgOf('<path d="M14 2H8a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2Z"/><circle cx="12" cy="11.5" r="2.5"/><path d="m14.6 14.1 1.9 1.9"/>'),
+      cortes: svgOf('<circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.12 15.88"/><path d="M14.47 14.48 20 20"/><path d="M8.12 8.12 12 12"/>')
+    };
+
+    // — Registro de los 6 agentes (Task 3): datos puros, sin handlers IA —
+    const AGENTS = [
+      {
+        id: "guion", nombre: "Revisor de Guión", icono: ICONS.claqueta, tab: "script",
+        checksFn: (st) => RSA.scriptChecks(st, st.project_name),
+        isEmpty: (st) => !(st.script && ["acto1", "acto2", "acto3", "acto4"].some((k) => String(st.script[k] || "").trim())),
+        emptyMsg: "tu guión está vacío — llénalo en la pestaña 10 (Guion 120s)"
+      },
+      {
+        id: "presupuesto", nombre: "Analizador de Presupuesto", icono: ICONS.tabla, tab: "budget",
+        checksFn: (st) => RSA.budgetChecks(st),
+        isEmpty: (st) => !(Array.isArray(st.budget) && st.budget.length),
+        emptyMsg: "tu presupuesto está vacío — llénalo en la pestaña 07 (Presupuesto de Marcha)"
+      },
+      {
+        id: "pautado", nombre: "Analizador de Pautado", icono: ICONS.folios, tab: "pautado",
+        checksFn: (st) => RSA.pautadoChecks(st),
+        isEmpty: (st) => {
+          const pa = st.pautado;
+          return !(pa && typeof pa === "object" && Object.keys(pa).length &&
+            Object.keys(pa).some((k) => String(pa[k] || "").trim()));
+        },
+        emptyMsg: "tu pautado está vacío — llénalo en la pestaña 06 (Pautado Oficial)"
+      },
+      {
+        id: "canvas", nombre: "Analizador de Canvas", icono: ICONS.cuadricula, tab: "canvas",
+        checksFn: (st) => RSA.canvasChecks(st),
+        isEmpty: (st) => {
+          const c = st.model_canvas;
+          return !(c && typeof c === "object" && Object.keys(c).some((k) => String(c[k] || "").trim()));
+        },
+        emptyMsg: "tu canvas está vacío — llénalo en la pestaña 09 (Modelo Canvas)"
+      },
+      {
+        id: "docs", nombre: "Analizador de Documentos", icono: ICONS.documento, tab: null,
+        checksFn: null, isEmpty: null, emptyMsg: null
+      },
+      {
+        id: "videoEditor", nombre: "Guía de Editor de Video", icono: ICONS.cortes, tab: "resources",
+        checksFn: (st) => ({ problems: RSA.scriptChecks(st, st.project_name).problems.concat(RSA.shotlistChecks(st).problems) }),
+        isEmpty: (st) => !((Array.isArray(st.shot_plan) && st.shot_plan.length) ||
+          (st.video_assets && Array.isArray(st.video_assets.items) && st.video_assets.items.length)),
+        emptyMsg: "sin plan de tomas ni materiales — levántalos en la pestaña 08 (Bóveda de Recursos)"
+      }
+    ];
+
+    function esc(s) {
+      return String(s == null ? "" : s)
+        .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+    }
+    function el(tag, cls, html) {
+      const n = document.createElement(tag);
+      if (cls) n.className = cls;
+      if (html != null) n.innerHTML = html;
+      return n;
+    }
+    function copyText(text, done) {
+      const fallback = function () {
+        const ta = el("textarea", "rsa-static-ta");
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand("copy"); } catch (e) { /* sin portapapeles */ }
+        document.body.removeChild(ta);
+        done && done(true);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () { done && done(true); }, fallback);
+      } else { fallback(); }
+    }
+    function jump(tab) {
+      // switchTab es la función pública de app.js (app.js:2219).
+      if (tab && typeof window.switchTab === "function") {
+        window.switchTab(tab);
+        closeOverlays();
+      }
+    }
+    // Rúbrica del agente: reglas propias + reglas del certamen activo.
+    function rubricFor(agentId, rallyType) {
+      const R = window.RSA_RUBRICS;
+      if (!R || !R[agentId]) return null;
+      const pt = (rallyType && R.porTipo && R.porTipo[rallyType]) || {};
+      return {
+        reglas: (R[agentId].reglas || []).concat(pt.reglas || []),
+        promptTarea: (pt.promptTarea && pt.promptTarea[agentId]) ?
+          Object.assign({}, R[agentId].promptTarea, pt.promptTarea[agentId]) : (R[agentId].promptTarea || {}),
+        salidaEsperada: (pt.salidaEsperada && pt.salidaEsperada[agentId]) ?
+          Object.assign({}, R[agentId].salidaEsperada, pt.salidaEsperada[agentId]) : (R[agentId].salidaEsperada || {})
+      };
+    }
+    // Carga dinámica de super_agents_rubrics.js (una sola vez). El módulo no
+    // está en index.html porque ahí solo se permiten 2 líneas nuevas.
+    function ensureRubrics(done) {
+      if (window.RSA_RUBRICS) { done && done(true); return; }
+      if (document.getElementById("rsa-rubrics-script")) { done && done(false); return; }
+      const s = document.createElement("script");
+      s.id = "rsa-rubrics-script";
+      s.src = "super_agents_rubrics.js";
+      s.onload = function () { done && done(true); };
+      s.onerror = function () { done && done(false); };
+      document.head.appendChild(s);
+    }
+
+    // — Overlays compartidos (menú + panel) —
+    let overlay = null;
+    function makeOverlay() {
+      overlay = el("div", "rsa-overlay");
+      overlay.addEventListener("mousedown", function (ev) {
+        if (ev.target === overlay) closeOverlays();
+      });
+      document.body.appendChild(overlay);
+      return overlay;
+    }
+    function closeOverlays() {
+      if (overlay) { overlay.parentNode.removeChild(overlay); overlay = null; }
+    }
+    document.addEventListener("keydown", function (ev) {
+      if (ev.key === "Escape") closeOverlays();
+    });
+
+    // — Cuadrito del topbar —
+    function makeSquare() {
+      const b = el("button", "rsa-tools-square");
+      b.id = "rsa-tools-btn";
+      b.title = "Herramientas";
+      b.setAttribute("aria-haspopup", "true");
+      b.innerHTML = ICONS.wrench;
+      b.addEventListener("click", openMenu);
+      return b;
+    }
+    function ensureSquare() {
+      const topbar = document.getElementById("topbar");
+      if (!topbar) return;
+      if (!document.getElementById("rsa-tools-btn")) topbar.appendChild(makeSquare());
+    }
+    // El topbar lo pinta app.js: observa hasta que exista y sigue vivo por si
+    // la carcasa lo re-renderiza (re-append idempotente por id).
+    const bootObs = new MutationObserver(ensureSquare);
+    bootObs.observe(document.documentElement, { childList: true, subtree: true });
+    ensureSquare();
+
+    // — Menú —
+    function openMenu() {
+      closeOverlays();
+      const ov = makeOverlay();
+      const menu = el("div", "rsa-menu");
+      menu.appendChild(el("div", "rsa-menu-title", "Herramientas"));
+      const grid = el("div", "rsa-menu-grid");
+      AGENTS.forEach(function (a) {
+        const item = el("button", "rsa-menu-item");
+        item.innerHTML = '<span class="rsa-menu-icon">' + a.icono + "</span>" +
+          '<span class="rsa-menu-label">' + esc(a.nombre) + "</span>";
+        item.addEventListener("click", function () { renderPanel(a.id); });
+        grid.appendChild(item);
+      });
+      menu.appendChild(grid);
+      ov.appendChild(menu);
+      ov.classList.add("is-open");
+    }
+
+    // — Panel —
+    function renderPanel(agentId) {
+      const agent = AGENTS.filter(function (a) { return a.id === agentId; })[0];
+      if (!agent) return;
+      ensureRubrics(function (rubricasOk) {
+        closeOverlays();
+        const ov = makeOverlay();
+        const panel = el("div", "rsa-panel");
+        // Re-lee el estado AHORA (cada apertura muestra el estado vivo).
+        const st = RSA.readState();
+
+        panel.appendChild(el("div", "rsa-panel-head",
+          "<div><h3 class='rsa-panel-title'>" + esc(agent.nombre) + "</h3>" +
+          "<span class='rsa-panel-sub'>" + (agent.tab ? "lee la pestaña " + esc(agent.tab) + " · solo lectura" : "analiza un documento tuyo · solo lectura") + "</span></div>" +
+          "<div class='rsa-panel-actions-head'>" +
+          "<button class='rsa-btn rsa-btn-ghost' data-rsa-back>Volver al menú</button>" +
+          "<button class='rsa-btn rsa-btn-ghost' data-rsa-close>Cerrar</button></div>"));
+
+        const rail = el("div", "rsa-provider-rail",
+          "IA local: <span class='rsa-provider-chip' data-rsa-provider>estado no verificado</span>");
+        panel.appendChild(rail);
+
+        // ── Aviso de proyecto sin definir / empty state (avesPA) ──
+        const avisos = el("div", "rsa-avisos");
+        if (agent.tab && !st.rally_type) {
+          const w = el("div", "rsa-notice", "<strong>define tu proyecto primero.</strong> Sin certamen activo no hay rúbrica contra la cual revisar.");
+          const jb = el("button", "rsa-btn rsa-btn-mini", "Ir a la pestaña 00 · Certamen");
+          jb.addEventListener("click", function () { jump("certamen"); });
+          w.appendChild(jb);
+          avisos.appendChild(w);
+        }
+        if (agent.isEmpty && st.rally_type && agent.isEmpty(st)) {
+          const w = el("div", "rsa-notice", esc(agent.emptyMsg));
+          const jb = el("button", "rsa-btn rsa-btn-mini", "Ir a la pestaña " + esc(agent.tab));
+          jb.addEventListener("click", function () { jump(agent.tab); });
+          w.appendChild(jb);
+          avisos.appendChild(w);
+        }
+        if (avisos.children.length) panel.appendChild(avisos);
+
+        // ── Zona (c) Checks locales, siempre, sin IA ──
+        const secChecks = el("div", "rsa-section");
+        secChecks.appendChild(el("h4", "rsa-section-title", "Checks locales (sin IA)"));
+        const chips = el("div", "rsa-chips");
+        if (agent.checksFn) {
+          const res = agent.checksFn(st);
+          const probs = (res && res.problems) || [];
+          if (!probs.length) {
+            chips.appendChild(el("span", "rsa-chip rsa-chip-ok", "Sin hallazgos locales"));
+          } else {
+            probs.forEach(function (pri) {
+              const sev = pri.severity === "Critico" ? "err" : (pri.severity === "Mejora" ? "warn" : "soft");
+              chips.appendChild(el("span", "rsa-chip rsa-chip-" + sev,
+                "<strong>" + esc(pri.severity) + "</strong> " + esc(pri.title)));
+            });
+          }
+        } else {
+          chips.appendChild(el("span", "rsa-chip rsa-chip-soft",
+            "Este agente revisa un documento que tú subes (PDF/DOCX) contra la rúbrica activa."));
+        }
+        secChecks.appendChild(chips);
+        panel.appendChild(secChecks);
+
+        // ── Zonas de decisión 4: (a) prompt lleva, (b) pegar respuesta, (c) directo ──
+        const resultado = el("div", "rsa-result");
+        const rub = rubricFor(agentId, st.rally_type);
+
+        const secA = el("div", "rsa-section");
+        secA.appendChild(el("h4", "rsa-section-title", "(a) Prompt para llevar — contexto completo para cualquier IA"));
+        if (!rub) {
+          secA.appendChild(el("div", "rsa-notice", "rúbricas no cargadas: no puedo armar el prompt. El check local de arriba sigue activo."));
+        }
+        const btnPrompt = el("button", "rsa-btn rsa-btn-primary", "Generar prompt para llevar");
+        btnPrompt.disabled = !rub;
+        const taPrompt = el("textarea", "rsa-prompt rsa-hidden");
+        taPrompt.readOnly = true;
+        const btnCopy = el("button", "rsa-btn rsa-btn-mini rsa-hidden", "Copiar");
+        btnPrompt.addEventListener("click", function () {
+          const stNow = RSA.readState(); // contexto fresco en cada acción
+          const rubNow = rubricFor(agentId, stNow.rally_type) || rub;
+          if (!rubNow) return;
+          const promptTxt = RSA.buildPrompt({ id: agent.id, name: agent.nombre, tab: agent.tab }, rubNow, stNow, "lleva");
+          taPrompt.value = promptTxt;
+          taPrompt.classList.remove("rsa-hidden");
+          btnCopy.classList.remove("rsa-hidden");
+        });
+        btnCopy.addEventListener("click", function () {
+          copyText(taPrompt.value, function (ok) {
+            btnCopy.textContent = ok ? "Copiado" : "Sin portapapeles";
+            setTimeout(function () { btnCopy.textContent = "Copiar"; }, 1500);
+          });
+        });
+        secA.appendChild(btnPrompt); secA.appendChild(taPrompt); secA.appendChild(btnCopy);
+        panel.appendChild(secA);
+
+        const secB = el("div", "rsa-section");
+        secB.appendChild(el("h4", "rsa-section-title", "(b) Pegar respuesta de la IA externa"));
+        const taExt = el("textarea", "rsa-externa");
+        taExt.placeholder = "Pega acá la respuesta que te dio la IA externa…";
+        const btnExt = el("button", "rsa-btn rsa-btn-primary", "Analizar respuesta");
+        btnExt.addEventListener("click", function () {
+          if (typeof RSA.analyzeExternal === "function") {
+            RSA.analyzeExternal({
+              agentId: agent.id, agentCfg: { id: agent.id, name: agent.nombre, tab: agent.tab },
+              state: RSA.readState(), externalText: taExt.value, resultEl: resultado
+            });
+          } else {
+            resultado.innerHTML = "";
+            resultado.appendChild(el("div", "rsa-note",
+              "El análisis IA va por el servicio local (rally_service). Sin proveedor conectado este análisis no puede correr — los checks locales de arriba siguen siendo válidos."));
+          }
+        });
+        secB.appendChild(taExt); secB.appendChild(btnExt);
+        panel.appendChild(secB);
+
+        const secC = el("div", "rsa-section");
+        secC.appendChild(el("h4", "rsa-section-title", "(c) Analizar aquí — la IA local revisa tu contenido"));
+        const btnDirecto = el("button", "rsa-btn rsa-btn-primary", "Analizar aquí");
+        btnDirecto.addEventListener("click", function () {
+          if (typeof RSA.analyzeDirect === "function") {
+            RSA.analyzeDirect({
+              agentId: agent.id, agentCfg: { id: agent.id, name: agent.nombre, tab: agent.tab },
+              state: RSA.readState(), resultEl: resultado
+            });
+          } else {
+            resultado.innerHTML = "";
+            resultado.appendChild(el("div", "rsa-note",
+              "El análisis IA va por el servicio local (rally_service). Sin proveedor conectado este análisis no puede correr — los checks locales de arriba siguen siendo válidos."));
+          }
+        });
+        secC.appendChild(btnDirecto);
+        panel.appendChild(secC);
+
+        panel.appendChild(resultado);
+
+        // ── Historial compacto (máx 10 por agente) ──
+        const hist = RSA.historyList(agent.id);
+        const secH = el("div", "rsa-section rsa-history-sec");
+        secH.appendChild(el("h4", "rsa-section-title", "Historial"));
+        const ol = el("ol", "rsa-history");
+        if (!hist.length) {
+          ol.appendChild(el("li", "rsa-history-empty", "Aún no hay análisis registrados."));
+        } else {
+          hist.forEach(function (h) {
+            const resumen = h.resumen || h.veredicto || h.mode || "";
+            ol.appendChild(el("li", null,
+              esc(new Date(h.ts).toLocaleString()) + " · " + esc(h.mode || "") + " · " + esc(resumen)));
+          });
+        }
+        secH.appendChild(ol);
+        panel.appendChild(secH);
+
+        // Acciones del header.
+        panel.querySelector("[data-rsa-close]").addEventListener("click", closeOverlays);
+        panel.querySelector("[data-rsa-back]").addEventListener("click", openMenu);
+
+        // Chip de proveedor: lo llena quien consuma el panel (Task 4 usa /api/ai/status).
+        const chip = panel.querySelector("[data-rsa-provider]");
+        if (chip && typeof RSA.UI_refreshProvider === "function") RSA.UI_refreshProvider(chip);
+
+        panel.dataset.rsaAgent = agent.id;
+      ov.appendChild(panel);
+        ov.classList.add("is-open");
+      });
+    }
+
+    // Superficie pública para Tasks 4–5.
+    globalThis.RSA_UI = {
+      AGENTS: AGENTS,
+      renderPanel: renderPanel,
+      openMenu: openMenu,
+      closeOverlays: closeOverlays,
+      jump: jump,
+      esc: esc,
+      el: el,
+      copyText: copyText,
+      rubricFor: rubricFor,
+      ensureRubrics: ensureRubrics
+    };
   }
 })();
