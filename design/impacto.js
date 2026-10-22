@@ -614,6 +614,8 @@ function arranqueImpacto() {
   if (btnExport) btnExport.addEventListener('click', function () { exportarPNG(IMP_IDENT_TIPO()); });
   var btnVer = document.getElementById('verAnim');
   if (btnVer) btnVer.addEventListener('click', function () { reproducirAnimacion(IMP_IDENT_TIPO()); });
+  var btnGrabar = document.getElementById('grabar');
+  if (btnGrabar) btnGrabar.addEventListener('click', function () { _grabarActual(); });
   cargarBrief(IMP, function (ok, b) {
     if (b) { IMP._brief = b; aplicarBrief(b, IMP); }
     renderChips();
@@ -665,6 +667,178 @@ function exportarPNG(tipo) {
     _descargar(blob, _archivoDetalle('png', tipo));
     if (st) st.textContent = 'PNG exportado a 3840×2160.';
   }, 'image/png');
+}
+
+// ---------- Task 7: grabar clip (WebM + audio opcional, fallback ZIP) ----------
+
+function planificarGrabacion(segundos, hayRecorder) {
+  if (!(segundos >= 3 && segundos <= 10)) throw new RangeError('dur fuera de 3-10');
+  return hayRecorder
+    ? { modo: 'webm', fps: 24 }
+    : { modo: 'png', fps: 24, frames: Math.round(24 * segundos) };
+}
+
+// Pinta el cuadro en tiempo t con los efectos de la animacion (canvas).
+function _pintarCuadro(ctx, prims, t, fases, estado) {
+  var W = IMP_ANCHO, H = IMP_ALTO;
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.fillStyle = (estado.pal && estado.pal.bg) || '#FFFFFF';
+  ctx.fillRect(0, 0, W, H);
+  var fase = faseEn(t, fases);
+  var a = (estado && estado.imp && estado.imp.anim) || {};
+  ctx.save();
+  if (fase === 'in') {
+    var p = fases.tIn ? Math.min(1, t / fases.tIn) : 1;
+    var eIn = 1 - Math.pow(1 - p, 3); // ease-out cubic
+    var ent = fases.entrada;
+    if (ent === 'slide-izq') ctx.translate((1 - eIn) * -48, 0);
+    else if (ent === 'slide-arriba') ctx.translate(0, (1 - eIn) * 32);
+    else if (ent === 'wipe') { ctx.beginPath(); ctx.rect(0, 0, eIn * W, H); ctx.clip(); }
+    else if (ent === 'banda') { ctx.beginPath(); ctx.rect(0, 0, W, eIn * H); ctx.clip(); }
+    else ctx.globalAlpha = eIn; // fade
+  } else if (fase === 'out') {
+    var po = fases.tOut ? Math.min(1, (t - (fases.dur - fases.tOut)) / fases.tOut) : 0;
+    ctx.globalAlpha = 1 - po;
+    if (fases.salida === 'slide') ctx.translate(po * 40, 0);
+  } else if (fase === 'enf') {
+    var pe = fases.tEn ? (t - fases.tIn) / fases.tEn : 0;
+    var s = 1 + 0.035 * Math.sin(pe * Math.PI);
+    ctx.translate(W / 2, H / 2);
+    ctx.scale(s, s);
+    ctx.translate(-W / 2, -H / 2);
+  }
+  pintarCanvas(ctx, prims, 1);
+  ctx.restore();
+}
+
+function _pintarCuenta(ctx, estado, n) {
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.fillStyle = (estado.pal && estado.pal.bg) || '#FFFFFF';
+  ctx.fillRect(0, 0, IMP_ANCHO, IMP_ALTO);
+  var tinta = (estado.pal && estado.pal.ink) || '#0D1B35';
+  ctx.fillStyle = tinta;
+  ctx.font = '900 340px ' + ((estado.fonts && estado.fonts.t) || 'Barlow');
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(String(n), IMP_ANCHO / 2, IMP_ALTO / 2);
+}
+
+function grabarClip(tipo, segundos, streamAudio) {
+  return new Promise(function (resolve, reject) {
+    var st = document.getElementById('statusExport');
+    var estado = _estadoLamina();
+    var prims = componerLamina(tipo, estado, _odsSelPara(tipo));
+    var an = (IMP.impacto.anim && IMP.impacto.anim[tipo]) || {};
+    var fases = tamanosFase(an.entrada || 'fade', an.enfasis || 'none', an.salida || 'none', segundos);
+    var cv = document.createElement('canvas');
+    cv.width = IMP_ANCHO;
+    cv.height = IMP_ALTO;
+    var ctx = cv.getContext('2d');
+    function aviso(txt) { if (st) st.textContent = txt; }
+
+    // Fallback: captura frame por frame a 24 fps y empaqueta en ZIP (o PNG suelto).
+    function fallarAPNG(origen) {
+      aviso('La grabación WebM falló (' + (origen && origen.message ? origen.message : 'error') + '); secuencia a PNG…');
+      var plan = planificarGrabacion(segundos, false);
+      var urls = [];
+      var i;
+      try {
+        for (i = 0; i < plan.frames; i++) {
+          _pintarCuadro(ctx, prims, i / plan.fps, fases, estado);
+          urls.push(cv.toDataURL('image/png'));
+        }
+      } catch (e1) { reject(e1); return; }
+      if (typeof JSZip === 'undefined') {
+        aviso('Sin JSZip: se baja el frame final como PNG.');
+        _pintarCuadro(ctx, prims, fases.dur, fases, estado);
+        cv.toBlob(function (blob) {
+          if (blob) _descargar(blob, _archivoDetalle('png', tipo));
+          resolve({ png: true });
+        }, 'image/png');
+        return;
+      }
+      var zip = new JSZip();
+      var carpeta = zip.folder('frames');
+      urls.forEach(function (u, k) { carpeta.file('f' + String(k).padStart(4, '0') + '.png', u.split(',')[1], { base64: true }); });
+      zip.generateAsync({ type: 'blob' }).then(function (blob) {
+        _descargar(blob, _archivoDetalle('zip', tipo));
+        aviso('MediaRecorder no disponible: se exportó la secuencia PNG (' + plan.frames + ' frames).');
+        resolve({ zip: true });
+      })['catch'](reject);
+    }
+
+    function empezarRec() {
+      try {
+        var stream = cv.captureStream(24);
+        if (streamAudio && streamAudio.getAudioTracks && streamAudio.getAudioTracks().length) {
+          stream.addTrack(streamAudio.getAudioTracks()[0]);
+        }
+        var mime = null;
+        ['video/webm;codecs=vp8,opus', 'video/webm'].forEach(function (m) {
+          if (!mime) { try { if (MediaRecorder.isTypeSupported(m)) mime = m; } catch (e0) {} }
+        });
+        var rec = new MediaRecorder(stream, mime ? { mimeType: mime } : undefined);
+        var pedazos = [];
+        rec.ondataavailable = function (e) { if (e.data && e.data.size) pedazos.push(e.data); };
+        rec.onstop = function () {
+          if (!pedazos.length) return fallarAPNG({ message: 'grabación vacía' });
+          aviso('Clip WebM listo (' + segundos + ' s' + (streamAudio ? ', con audio' : '') + ').');
+          resolve(new Blob(pedazos, { type: 'video/webm' }));
+        };
+        _pintarCuadro(ctx, prims, 0, fases, estado);
+        rec.start(200);
+        var t0 = performance.now();
+        (function ciclo() {
+          var t = (performance.now() - t0) / 1000;
+          _pintarCuadro(ctx, prims, Math.min(t, fases.dur), fases, estado);
+          aviso('Grabando… ' + Math.max(0, segundos - t).toFixed(1) + ' s');
+          if (t >= segundos) {
+            rec.stop();
+            setTimeout(function () { _pintarCuadro(ctx, prims, fases.dur, fases, estado); }, 30);
+          }
+          else requestAnimationFrame(ciclo);
+        })();
+      } catch (e2) { fallarAPNG(e2); }
+    }
+
+    // Cuenta regresiva 3-2-1 (visible, fuera de la grabación).
+    var cuenta = 3;
+    (function regresa() {
+      _pintarCuenta(ctx, estado, cuenta);
+      aviso(cuenta > 1 ? 'Preparado… comienza en ' + (cuenta - 1) : '¡Ya!');
+      if (cuenta === 0) return empezarRec();
+      cuenta--;
+      setTimeout(regresa, 800);
+    })();
+  });
+}
+
+// Orquestador del botón Grabar: micrófono opcional + duración del tipo + descarga.
+function _grabarActual() {
+  var tipo = IMP_IDENT_TIPO();
+  var an = (IMP.impacto.anim && IMP.impacto.anim[tipo]) || {};
+  var dur = an.dur || IMP.impacto.dur || 5;
+  var chkMico = document.getElementById('chkMico');
+  var st = document.getElementById('statusExport');
+  var pedir = (chkMico && chkMico.checked && navigator.mediaDevices && navigator.mediaDevices.getUserMedia)
+    ? navigator.mediaDevices.getUserMedia({ audio: true })
+    : Promise.resolve(null);
+  pedir.then(function (stream) {
+    return grabarClip(tipo, dur, stream).then(function (blob) {
+      if (blob && blob.type && blob.type.indexOf('video/webm') === 0) {
+        _descargar(blob, _archivoDetalle('webm', tipo));
+      } else if (blob && blob.zip) {
+        avisoEstado('MediaRecorder no disponible: se exportó la secuencia PNG en ZIP.');
+      } else if (blob && blob.png) {
+        avisoEstado('MediaRecorder no disponible y sin JSZip: se bajó el frame final en PNG.');
+      }
+    });
+  })['catch'](function (e) {
+    if (st) st.textContent = (e && e.name === 'NotAllowedError')
+      ? 'Permiso de micrófono denegado. Desmarca "con micrófono" o permite el acceso.'
+      : 'La grabación falló: ' + (e && e.message ? e.message : 'error desconocido');
+  });
+  function avisoEstado(txt) { if (st) st.textContent = txt; }
 }
 
 document.addEventListener('DOMContentLoaded', arranqueImpacto);

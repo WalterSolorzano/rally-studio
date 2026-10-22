@@ -158,6 +158,30 @@ switch (comando) {
     salir({ usados: Array.from(usados).sort(), fillStyleVals, fontVals });
     break;
   }
+  // --- Task 7: plan de grabacion ---
+  case "planificar": {
+    const [segundos, hayRecorder] = JSON.parse(process.argv[3]);
+    if (typeof sandbox.planificarGrabacion !== "function") { salir({ error: "planificarGrabacion ausente" }); break; }
+    let plan = null;
+    let err = null;
+    try { plan = sandbox.planificarGrabacion(segundos, hayRecorder); } catch (e) { err = String(e && e.constructor ? e.constructor.name : "Error"); }
+    salir({ plan, err });
+    break;
+  }
+  case "frames-fase": {
+    const segundos = JSON.parse(process.argv[3]);
+    if (typeof sandbox.tamanosFase !== "function" || typeof sandbox.faseEn !== "function") { salir({ error: "timeline ausente" }); break; }
+    const flec = sandbox.tamanosFase("banda", "pulso", "fade", segundos);
+    const fps = 24;
+    const frames = Math.round(fps * segundos);
+    const orden = [];
+    for (let i = 0; i <= frames; i++) {
+      const f = sandbox.faseEn(i / fps, flec);
+      if (orden[orden.length - 1] !== f) orden.push(f);
+    }
+    salir({ frames, orden });
+    break;
+  }
   // --- Task 5: timeline ---
   case "fases": {
     const [entrada, enfasis, salida, dur, t] = JSON.parse(process.argv[3]);

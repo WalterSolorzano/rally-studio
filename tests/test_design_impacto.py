@@ -166,3 +166,28 @@ def test_faseen_por_tramos():
     assert correr("fases", ["banda", "pulso", "fade", 5, 3])["fase"] == "hold"
     assert correr("fases", ["banda", "pulso", "fade", 5, 5])["fase"] == "fin"
     assert correr("fases", ["banda", "pulso", "fade", 5, 4.5])["fase"] == "out"
+
+
+# --- Task 7: grabacion ---
+
+def test_planificar_webm_cuando_hay_recorder():
+    datos = correr("planificar", [5, True])
+    assert datos["plan"] == {"modo": "webm", "fps": 24}
+
+
+def test_planificar_png_como_fallback():
+    datos = correr("planificar", [5, False])
+    assert datos["plan"]["modo"] == "png"
+    assert datos["plan"]["fps"] == 24
+    assert datos["plan"]["frames"] == 120
+
+
+def test_planificar_duracion_invalida():
+    datos = correr("planificar", [11, True])
+    assert datos["err"] == "RangeError"
+
+
+def test_secuencia_fase_a_24fps():
+    datos = correr("frames-fase", 5)
+    assert datos["frames"] == 120
+    assert datos["orden"] == ["in", "enf", "hold", "out", "fin"]
