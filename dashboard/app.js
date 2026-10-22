@@ -1877,14 +1877,12 @@ function renderTopbar() {
     </div>
     <div class="topbar-actions">
       ${stage >= 2 ? `
-        <button class="btn-toggle-panel" onclick="openAIThesisFormulatorModal(state.challenge_id || '01')" title="Abrir Asistente IA Dual-Mode & Prompts de Razonamiento" style="border-color:var(--border-light); color:var(--color-primary); background:var(--bg-subtle);">
+        <button class="btn-toggle-panel topbar-chip" onclick="openAIThesisFormulatorModal(state.challenge_id || '01')" title="IA Copilot: asistente dual-mode y prompts de razonamiento" aria-label="IA Copilot">
           ${SVG.spark}
-          <span class="panel-toggle-label">IA Copilot</span>
         </button>
-        <button class="btn-toggle-panel" onclick="togglePanel()" title="Alternar Panel de Auditoría">
+        <button class="btn-toggle-panel topbar-chip" onclick="togglePanel()" title="Panel de Auditoría (${auditPoints}%)" aria-label="Auditoría: ${auditPoints}%">
           ${SVG.shieldCheck}
-          <span class="panel-toggle-label">Auditoría</span>
-          <span class="panel-toggle-badge" id="topbar-audit-badge">${auditPoints}%</span>
+          <span class="topbar-chip-num">${auditPoints}%</span>
         </button>
       ` : ""}
 
@@ -2067,7 +2065,7 @@ function updateTimerModalPreview() {
     } else {
       const rh = Math.floor(remain / 3600);
       const rm = Math.floor((remain % 3600) / 60);
-      statusText = `<span style="color:#16A34A; font-weight:700;">EN CURSO</span> (restan ${rh}h ${rm}m de ${hours}h)`;
+      statusText = `<span style="color:#0284C7; font-weight:700;">EN CURSO</span> (restan ${rh}h ${rm}m de ${hours}h)`;
     }
   }
 
@@ -2167,13 +2165,13 @@ function renderNavigation() {
     if (t.summary) {
       statusMarkup = "";
     } else if (!isUnlocked) {
-      statusMarkup = `<span class="badge-status" style="background:#f1f5f9; color:#94a3b8; border:1px solid #e2e8f0;">${SVG.lock}</span>`;
+      statusMarkup = rsPill("waiting", { compact: true, label: "En espera" });
     } else if (isCompleted) {
-      statusMarkup = `<span class="badge-status badge-ok">${SVG.check}</span>`;
+      statusMarkup = rsPill("done", { compact: true, label: "Terminado" });
     } else if (rsPhaseState(t.id, map).code === "waiting") {
-      statusMarkup = `<span class="badge-status badge-wait">En espera</span>`;
+      statusMarkup = rsPill("waiting", { compact: true, label: "En espera" });
     } else {
-      statusMarkup = `<span class="badge-status badge-pending">En curso</span>`;
+      statusMarkup = rsPill("working", { compact: true, label: "En progreso" });
     }
     return `
       <a href="#" class="nav-link ${activeClass} ${!isUnlocked ? 'locked' : ''}"
@@ -2365,6 +2363,19 @@ const RS_STATUS = {
   pending: { label: "Pendiente",   cls: "is-pending", icon: "circle" }
 };
 
+// Señal visual única para cualquier estado del sistema (dot + texto mono).
+// `code`: done | working | waiting | pending. `compact`: solo dot (title con label).
+function rsPill(code, opts) {
+  opts = opts || {};
+  const s = RS_STATUS[code] || RS_STATUS.pending;
+  const cls = (s.cls || "").replace(/^is-/, "rs-");
+  const lbl = typeof opts.label === "string" ? opts.label : s.label;
+  if (opts.compact) {
+    return `<span class="tactical-status-pill compact ${cls}" title="${lbl}"><span class="status-dot"></span></span>`;
+  }
+  return `<span class="tactical-status-pill ${cls}" title="${opts.title || lbl}"><span class="status-dot"></span>${lbl}</span>`;
+}
+
 function rsPhaseDefs(phase, map) {
   map = map || rsDefMap();
   return Object.values(map).filter(d => d.phase === phase);
@@ -2538,10 +2549,7 @@ function renderViewResumen() {
             <span class="rs-deliv-phase">${escapeHtml(phaseTab ? phaseTab.label : d.phase)}</span>
             <h3 class="rs-deliv-title">${escapeHtml(d.title)}</h3>
           </div>
-          <span class="rs-status ${meta.cls}">
-            ${meta.icon === "check" ? SVG.check : meta.icon === "lock" ? SVG.lock : `<span class="rs-status-dot"></span>`}
-            ${meta.label}
-          </span>
+          ${rsPill(st.code, { label: meta.label, title: meta.label })}
         </div>
         <p class="rs-deliv-needs">${escapeHtml(needsText)}</p>
         <div class="rs-deliv-people">
@@ -2572,6 +2580,16 @@ function renderViewResumen() {
   const closedPhases = NAV_TABS.filter(t => !t.summary && t.level <= stage && rsPhaseState(t.id, map).code === "done");
   const pendingPhases = NAV_TABS.filter(t => !t.summary && t.level > stage);
 
+  // Las 3 cosas accionables ahora: primero lo que está en progreso, luego esperas, luego pendientes.
+  const actionableRank = { working: 0, waiting: 1, pending: 2 };
+  const actionableNow = defs
+    .map(d => ({ d, st: rsDefState(d, map) }))
+    .filter(x => x.st.code !== "done")
+    .sort((a, b) => ((actionableRank[a.st.code] ?? 3) - (actionableRank[b.st.code] ?? 3)))
+    .slice(0, 3);
+  const currentPhase = visiblePhases.find(t => rsPhaseState(t.id, map).code !== "done");
+  const openCount = defs.length - doneCount;
+
   const rosterStrip = roster.length
     ? roster.map(m => {
         const load = defs.filter(d => (rsRecord(d.id).assignees || []).includes(m.name) && rsDefState(d, map).code !== "done").length;
@@ -2587,12 +2605,11 @@ function renderViewResumen() {
     <div class="rs-summary">
       <section class="rs-hero">
         <div class="rs-hero-main">
-          <span class="rs-eyebrow">Centro de mando · ${state.rally_type === "latam" ? "Rally Latinoamericano 28h" : state.rally_type === "nacional" ? "Rally Nacional 24h" : "Certamen por definir"}</span>
           <div class="rs-challenge-row">
             <span class="rs-challenge-num">#${escapeHtml(String(challengeNum))}</span>
             <div>
               <h1 class="rs-challenge-title">${escapeHtml(challengeTitle)}</h1>
-              <span class="rs-challenge-cat">${escapeHtml(category)}</span>
+              <span class="rs-challenge-meta">${escapeHtml(state.rally_type === "latam" ? "Rally Latinoamericano 28h" : state.rally_type === "nacional" ? "Rally Nacional 24h" : "Certamen por definir")} · ${escapeHtml(category)}</span>
             </div>
           </div>
           <div class="rs-solution ${state.solution_approved ? "is-approved" : ""}">
@@ -2602,14 +2619,14 @@ function renderViewResumen() {
           </div>
         </div>
         <div class="rs-hero-stats">
-          <div class="rs-kpi">
-            <span class="rs-kpi-num">${pct}%</span>
-            <span class="rs-kpi-label">avance de entregables</span>
-            <span class="rs-kpi-bar"><i style="width:${pct}%"></i></span>
+          <div class="rs-hardbar">
+            <div class="rs-hard"><span class="rs-hard-num">${timer.time}</span><span class="rs-hard-label">tiempo restante</span></div>
+            <div class="rs-hard"><span class="rs-hard-num">${pct}%</span><span class="rs-hard-label">avance de rúbrica</span></div>
+            <div class="rs-hard"><span class="rs-hard-num">${escapeHtml(currentPhase ? currentPhase.label : "—")}</span><span class="rs-hard-label">fase actual</span></div>
           </div>
           <div class="rs-kpi-row">
-            <div class="rs-kpi-mini"><strong>${timer.time}</strong><span>${escapeHtml(timer.status || "tiempo restante")}</span></div>
             <div class="rs-kpi-mini"><strong>${doneCount}/${defs.length}</strong><span>entregables cerrados</span></div>
+            <div class="rs-kpi-mini"><strong>${openCount}</strong><span>abiertos</span></div>
             <div class="rs-kpi-mini"><strong>${workingDefs.length}</strong><span>en progreso ahora</span></div>
             <div class="rs-kpi-mini"><strong>${closedPhases.length}</strong><span>fases cerradas</span></div>
           </div>
@@ -2636,7 +2653,28 @@ function renderViewResumen() {
 
       <section class="rs-section">
         <div class="rs-section-head">
-          <h2>Entregables y responsables</h2>
+          <h2>Accionables ahora</h2>
+          <span class="rs-section-sub">las 3 piezas que desbloquean más de inmediato</span>
+        </div>
+        <div class="rs-action-list">
+          ${actionableNow.length ? actionableNow.map(x => {
+            const phaseLabel = (NAV_TABS.find(t => t.id === x.d.phase) || { label: x.d.phase }).label;
+            const statusMeta = RS_STATUS[x.st.code] || RS_STATUS.pending;
+            return `
+            <button class="rs-action-row is-${x.st.code}" onclick="rsGoTab('${x.d.phase}', event)" title="Abrir ${escapeHtml(phaseLabel)}">
+              <span class="rs-action-title">${escapeHtml(x.d.title)}</span>
+              <span class="rs-action-phase">${escapeHtml(phaseLabel)}</span>
+              ${rsPill(x.st.code, { label: statusMeta.label, title: statusMeta.label })}
+              ${SVG.arrowRight}
+            </button>`;
+          }).join("") : `<p class="rs-empty">Nada pendiente. Todo el equipo hizo la tarea.</p>`}
+        </div>
+      </section>
+
+      <section class="rs-section">
+        <details class="rs-collapsible">
+          <summary>Entregables y responsables <span class="rs-mini-count">${openCount} abiertos · ${doneCount}/${defs.length} cerrados</span></summary>
+          <div class="rs-section-head" style="margin-top:14px;">
           <div class="rs-filters">
             <button class="rs-filter ${rsFilter === "all" ? "is-active" : ""}" onclick="rsSetFilter('all')">Todos</button>
             <button class="rs-filter ${rsFilter === "mine" ? "is-active" : ""}" onclick="rsSetFilter('mine')">Míos</button>
@@ -2648,6 +2686,7 @@ function renderViewResumen() {
         <div class="rs-deliv-grid">
           ${deliverableCards || `<p class="rs-empty">No hay entregables en este filtro.</p>`}
         </div>
+        </details>
       </section>
 
       <section class="rs-section">
@@ -7017,13 +7056,13 @@ function renderViewMultiAI() {
         let statusBadge = "";
         let cardClass = "";
         if (t.status === "in_progress") {
-          statusBadge = `<span class="badge-status badge-warn">EN CURSO (TRABAJANDO)</span>`;
+          statusBadge = rsPill("working", { label: "Trabajando" });
           cardClass = "in-progress";
         } else if (t.status === "completed") {
-          statusBadge = `<span class="badge-status badge-ok">${SVG.check} COMPLETADO</span>`;
+          statusBadge = rsPill("done", { label: "Completado", title: "Completado" });
           cardClass = "completed";
         } else {
-          statusBadge = `<span class="badge-status badge-pending">PENDIENTE</span>`;
+          statusBadge = rsPill("pending", { label: "Pendiente", title: "Pendiente" });
         }
 
         const promptText = generateSpecificMegaPrompt(t.id);
@@ -7389,6 +7428,7 @@ function renderViewPautado() {
           ${SVG.download} Plantilla Word (vacía)
         </a>
       </div>
+      ${onlineLinkRow("pautado", "Pega el enlace de Canva, Google Docs o Figma del pautado", "ENLACE AL PAUTADO EN LÍNEA")}
     </div>
 
     <div class="workbench-card" style="margin-bottom:16px;">
@@ -7426,12 +7466,23 @@ function renderViewPautado() {
         const color = isOver ? '#b42318' : (pct !== null && pct >= 92) ? '#0D1B35' : '#64748B';
         const counter = max ? `${len} / ${max} caracteres (${pct}%)` : `${len} caracteres`;
         const authorMascot = authorship[k] || null;
+        const secMeta = {
+          problema:        { icon: SVG.target,      color: "#0D1B35" },
+          solucion:        { icon: SVG.spark,       color: "#0866F5" },
+          impacto:         { icon: SVG.globe,       color: "#0284C7" },
+          innovacion:      { icon: SVG.network,     color: "#475569" },
+          prefactibilidad: { icon: SVG.shieldCheck, color: "#0D1B35" }
+        }[k] || { icon: "", color: "#64748B" };
 
         return `
           <div class="workbench-card" style="margin-bottom:0;" data-lockable="pautado-${k}">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
               <div style="display:flex; align-items:center; gap:8px;">
-                <span style="font-size:13px; font-weight:800; text-transform:uppercase; color:var(--text-main); letter-spacing:0.01em;">${k}</span>
+                <span class="pautado-sec-label" style="--sec:${secMeta.color};">
+                  <span class="pautado-sec-bar"></span>
+                  ${secMeta.icon}
+                  <span>${k}</span>
+                </span>
                 ${authorMascot ? `
                   <span class="collaborator-stamp" title="Última edición por ${authorMascot.name}">
                     ${authorMascot.icon} ${authorMascot.name}
@@ -7664,6 +7715,7 @@ function renderViewBudget() {
           ${SVG.download} Descargar Excel (.xlsx)
         </a>
       </div>
+      ${onlineLinkRow("budget", "Pega el enlace de Canva o Google Sheets del presupuesto", "ENLACE AL PRESUPUESTO EN LÍNEA")}
     </div>
 
     ${!ctx.listo ? `
@@ -8189,12 +8241,115 @@ const CANVAS_PRESETS = [
       costes: "Acto III: cifras de prefactibilidad ($4k-$6k USD piloto).",
       ingresos: "Acto IV: frase memorable de cierre inspirador."
     }
+  },
+  {
+    id: "uso",
+    name: "Infraestructura por uso (app / web)",
+    hints: {
+      socios: "¿Quién ofrece la infraestructura que alquilas? Proveedores de hosting, pasarelas de pago, servicios de mensajería.",
+      actividades: "¿Qué haces con tus propias manos? Código, diseño, capacitación. Lo que ya existe se contrata.",
+      propuesta: "Qué problema se resuelve en una oración, con precio de uso por año: tecnología + dolor + costo anual.",
+      relaciones: "Cómo se relaciona el usuario con la app: soporte dentro de la app, membresía, acompañamiento.",
+      segmentos: "¿Quién se suscribe? Nombre del segmento y cuánto paga hoy por resolverlo.",
+      recursos: "Mínimo propio: código, dominio, identidad. La infraestructura de cómputo se paga por uso.",
+      canales: "Dónde vive y a través de qué canal se suscribe (web, app store, WhatsApp).",
+      costes: "Gastos que se pagan cada año: membresías de servicios y planes por uso, no solo el día uno.",
+      ingresos: "Membresía anual o plan por uso. Precio creíble: ni de regalo ni inflado; anotar el plan real del proveedor."
+    }
+  },
+  {
+    id: "ods",
+    name: "Canvas de Impacto ODS",
+    hints: {
+      socios: "Socio institucional que pone el territorio, y aliado técnico que financia o acompaña.",
+      actividades: "Las 3 acciones que producen cambio visible en el territorio.",
+      propuesta: "Qué mejora, para quién, y por cuánto (cifra del problema). Un ODS protagonista.",
+      relaciones: "Cómo se apropia la comunidad: talleres, acompañamiento, lenguaje simple.",
+      segmentos: "Beneficiarios con nombre y lugar; cifra citable del segmento.",
+      recursos: "Equipo local, hardware real y alianzas. Sin listas de deseos.",
+      canales: "Con quién llega primero: gobierno local, escuela, centro comunal.",
+      costes: "Costos de implementación del piloto con enlace de respaldo por partida.",
+      ingresos: "Quién sostiene después del rally: presupuesto municipal, cooperación, tarifa simbólica."
+    }
   }
 ];
 
 function getCurrentCanvasPresetId() {
   const valid = CANVAS_PRESETS.map(p => p.id);
   return valid.includes(state.canvas_preset) ? state.canvas_preset : "sirli";
+}
+
+// Mega-prompt: arma el contexto completo (brief + reto + solución + presupuesto + formato)
+// para que otra IA haga su propuesta de canvas y el equipo la compare aquí.
+function buildCanvasExternalPrompt() {
+  const canvas = (state.model_canvas && typeof state.model_canvas === "object") ? state.model_canvas : {};
+  const bctxC = budgetCurrency();
+  const budgetLine = (Array.isArray(state.budget) && state.budget.length ? state.budget : [])
+    .slice(0, 12)
+    .map(b => `- ${b.concept || b.element || "?"}: ${b.units || 1} × ${b.unit_cost || 0} ${bctxC.symbol} (${b.url || "sin enlace"})`)
+    .join("\n") || "Sin partidas todavía.";
+  const claimsLine = (Array.isArray(state.claims) && state.claims.length ? state.claims : [])
+    .slice(0, 5)
+    .map(c => `- "${c.stat}" (${c.source}, ${c.year})`)
+    .join("\n") || "Sin cifras citables todavía.";
+  const preset = CANVAS_PRESETS.find(p => p.id === getCurrentCanvasPresetId()) || CANVAS_PRESETS[0];
+  return `Actúa como asesor de modelo de negocio para un proyecto de rally de innovación.
+
+CONTEXTO
+- Certamen: ${state.rally_type === "latam" ? "Rally Latinoamericano 28h (presupuesto en USD, replicable en LATAM)" : state.rally_type === "nacional" ? "Rally Nacional Nicaragüa 24h (presupuesto en córdobas, anclado al Plan Nacional)" : "certamen por definir"}
+- Equipo: ${state.team_name || "(por definir)"} · ${state.university || "(sin universidad)"} · ${state.city || "(sin ciudad)"}
+- Proyecto: ${state.project_name || "(sin nombre)"} — categoría ${state.category || "Innovación"}
+- Reto ${state.challenge_id || "?"}: ${state.challenge_title || "por elegir"}
+- Tesis de solución: ${state.solution_thesis || "por definir"}
+
+CIFRAS CITABLES
+${claimsLine}
+
+PRESUPUESTO ACTUAL
+${budgetLine}
+
+LO QUE QUIERO
+Propuesta para los 9 cuadrantes del Business Model Canvas (plantilla "${preset.name}"), en español simple, sin siglas y sin relleno:
+Socios Clave · Actividades Clave · Propuesta de Valor · Relaciones · Segmentos · Recursos · Canales · Estructura de Costes · Fuentes de Ingresos.
+
+REGLAS DE PRECIO
+- Nada se construye desde cero si ya existe: se contrata por uso.
+- Precios creíbles: ni locos ni regalados; si es digital, membresías anuales o planes por uso.
+- Coherencia total con el presupuesto de arriba (mismos números).
+
+Nuestro borrador (para que lo compares y lo mejores, no lo repitas):
+${JSON.stringify(canvas, null, 2)}`;
+}
+
+function copyCanvasExternalPrompt() {
+  copyToClipboardWithFeedback(buildCanvasExternalPrompt(), "Contexto copiado: pégalo en la otra IA y tráenos su propuesta.");
+}
+
+function canvasOnlineUrlChanged(val) {
+  state.canvas_online_url = String(val || "").trim();
+  saveState();
+  renderTab("canvas");
+}
+
+// Enlace de "trabajo en línea" (Canva/Figma/Slides) reutilizable por pestaña.
+function onlineUrlChanged(key, val) {
+  state.delivery_links = (state.delivery_links && typeof state.delivery_links === "object") ? state.delivery_links : {};
+  const v = String(val || "").trim();
+  if (v) state.delivery_links[key] = v; else delete state.delivery_links[key];
+  saveState();
+  renderTab(activeTab);
+}
+
+function onlineLinkRow(key, placeholder, title) {
+  const url = state.delivery_links && state.delivery_links[key] ? String(state.delivery_links[key]) : "";
+  return `
+    <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:10px; padding-top:10px; border-top:1px dashed var(--border-light);">
+      <label style="font-size:10.5px; color:var(--text-muted); font-family:var(--font-mono); font-weight:700;">${title}</label>
+      <input type="url" inputmode="url" placeholder="${escapeHtml(placeholder)}" value="${escapeHtml(url)}"
+             onchange="onlineUrlChanged('${key}', this.value)"
+             style="flex:1 1 260px; min-width:0; font-size:11.5px; padding:5px 9px; border:1px solid var(--border-light); border-radius:var(--radius-sm); background:var(--bg-surface); color:var(--text-body);">
+      ${url ? `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px; font-size:11px;">${SVG.external} Ver en línea</a>` : ""}
+    </div>`;
 }
 
 function canvasPresetChanged(val) {
@@ -8264,6 +8419,9 @@ function renderViewCanvas() {
         <select onchange="canvasPresetChanged(this.value)" class="ai-model-select" aria-label="Plantilla de Modelo Canvas" style="display:inline-block; min-width:200px;">
           ${CANVAS_PRESETS.map(p => `<option value="${p.id}" ${p.id === getCurrentCanvasPresetId() ? "selected" : ""}>${p.name}</option>`).join("")}
         </select>
+        <button class="btn-secondary" style="font-size:11px; padding:4px 10px; display:inline-flex; align-items:center; gap:4px;" onclick="copyCanvasExternalPrompt()" title="Arma el contexto completo (brief, reto, cifras, presupuesto) y lo copia para que otra IA prepare su propuesta de canvas">
+          ${SVG.copy} Copiar contexto para otra IA
+        </button>
         <button class="btn-secondary" style="font-size:11px; padding:4px 10px;" onclick="resetCanvasToBase()">Restablecer</button>
         <a href="/docs/canvas.md" download class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
           ${SVG.download} Markdown (.md)
@@ -8285,6 +8443,13 @@ function renderViewCanvas() {
 
     <div style="margin-top:14px; padding:10px 0; border-top:1px solid var(--border-light); font-size:12px; color:var(--text-muted);">
       <span id="canvas-filled-count">${filledCount} de 9 cuadrantes personalizados</span> — haz clic en cualquier cuadrante para escribir en él (se guarda solo, en vivo).
+      <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:10px; padding-top:10px; border-top:1px dashed var(--border-light);">
+        <label style="font-size:10.5px; color:var(--text-muted); font-family:var(--font-mono); font-weight:700;">ENLACE AL TRABAJO EN LÍNEA</label>
+        <input type="url" inputmode="url" placeholder="Pega el enlace de Canva, Figma, Lucid o Slides" value="${escapeHtml(String(state.canvas_online_url || ""))}"
+               onchange="canvasOnlineUrlChanged(this.value)"
+               style="flex:1 1 260px; min-width:0; font-size:11.5px; padding:5px 9px; border:1px solid var(--border-light); border-radius:var(--radius-sm); background:var(--bg-surface); color:var(--text-body);">
+        ${state.canvas_online_url ? `<a href="${escapeHtml(state.canvas_online_url)}" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px; font-size:11px;">${SVG.external} Ver en línea</a>` : ""}
+      </div>
     </div>
   `;
 }
@@ -9633,35 +9798,35 @@ function updateInspector() {
       <div class="prep-table">
         <div class="prep-row ${state.team_name ? 'is-complete' : ''}" onclick="switchTab('team')" title="Identidad del Equipo">
           <span class="prep-col-name">01. Equipo y Sede</span>
-          <span class="prep-col-status">${state.team_name ? 'CONFIRMADO' : 'INCOMPLETO'}</span>
+          <span class="prep-col-status">${rsPill(state.team_name ? "done" : "pending", state.team_name ? { label: "CONFIRMADO" } : { label: "INCOMPLETO" })}</span>
         </div>
         <div class="prep-row ${state.challenge_id ? 'is-complete' : ''}" onclick="switchTab('challenges')" title="Selección de Reto">
           <span class="prep-col-name">02. Reto en Vivo</span>
-          <span class="prep-col-status">${state.challenge_id ? '#' + state.challenge_id : 'SIN ELEGIR'}</span>
+          <span class="prep-col-status">${rsPill(state.challenge_id ? "done" : "pending", state.challenge_id ? { label: "#" + state.challenge_id, title: "Reto activo" } : { label: "SIN ELEGIR" })}</span>
         </div>
         <div class="prep-row ${state.solution_approved ? 'is-complete' : ''}" onclick="switchTab('solution')" title="Taller de Solución">
           <span class="prep-col-name">03. Solución Técnica</span>
-          <span class="prep-col-status">${state.solution_approved ? 'APROBADA' : (stage >= 3 ? 'BORRADOR' : 'PENDIENTE')}</span>
+          <span class="prep-col-status">${rsPill(state.solution_approved ? "done" : (stage >= 3 ? "working" : "pending"), { label: state.solution_approved ? "APROBADA" : (stage >= 3 ? "BORRADOR" : "PENDIENTE"), title: "Solución técnica" })}</span>
         </div>
         <div class="prep-row ${state.challenge_id && state.solution_approved ? 'is-complete' : ''}" onclick="switchTab('impact')" title="Impacto ODS y Políticas Nacionales">
-          <span class="prep-col-name">04. ODS & Plan País</span>
-          <span class="prep-col-status">${state.challenge_id ? (state.solution_approved ? 'ALINEADO' : 'CONFIGURAR') : 'PENDIENTE'}</span>
+          <span class="prep-col-name">04. ODS &amp; Plan País</span>
+          <span class="prep-col-status">${rsPill(state.challenge_id && state.solution_approved ? "done" : (state.challenge_id ? "working" : "pending"), { label: state.challenge_id ? (state.solution_approved ? "ALINEADO" : "CONFIGURAR") : "PENDIENTE", title: "Impacto ODS y Plan País" })}</span>
         </div>
         <div class="prep-row ${isPautadoComplete() ? 'is-complete' : ''}" onclick="switchTab('pautado')" title="Documento Pautado">
           <span class="prep-col-name">05. Pautado Oficial</span>
-          <span class="prep-col-status">${isPautadoComplete() ? 'AUDITADO' : (stage >= 5 ? 'REVISAR' : 'PENDIENTE')}</span>
+          <span class="prep-col-status">${rsPill(isPautadoComplete() ? "done" : (stage >= 5 ? "working" : "pending"), { label: isPautadoComplete() ? "AUDITADO" : (stage >= 5 ? "REVISAR" : "PENDIENTE"), title: "Documento Pautado" })}</span>
         </div>
         <div class="prep-row ${hasBudgetItems && isBudgetValid() ? 'is-complete' : ''}" onclick="switchTab('budget')" title="Presupuesto">
           <span class="prep-col-name">06. Presupuesto</span>
-          <span class="prep-col-status">${hasBudgetItems ? '$' + Math.round(totalBudget).toLocaleString() + ' USD' : 'SIN COTIZAR'}</span>
+          <span class="prep-col-status">${rsPill(hasBudgetItems && isBudgetValid() ? "done" : (hasBudgetItems ? "working" : "pending"), { label: hasBudgetItems ? "$" + Math.round(totalBudget).toLocaleString() + " USD" : "SIN COTIZAR", title: "Presupuesto" })}</span>
         </div>
         <div class="prep-row ${isScriptComplete() ? 'is-complete' : ''}" onclick="switchTab('script')" title="Guion de Video">
           <span class="prep-col-name">07. Guion 120s</span>
-          <span class="prep-col-status">${isScriptComplete() ? '120s OK' : (stage >= 9 ? 'EN CURSO' : 'PENDIENTE')}</span>
+          <span class="prep-col-status">${rsPill(isScriptComplete() ? "done" : (stage >= 9 ? "working" : "pending"), { label: isScriptComplete() ? "120s OK" : (stage >= 9 ? "EN CURSO" : "PENDIENTE"), title: "Guion de video" })}</span>
         </div>
         <div class="prep-row ${guardrailsOk ? 'is-complete' : ''}" onclick="switchTab('timeline')" title="Requisitos de Entrega">
           <span class="prep-col-name">08. Checklist de Entrega</span>
-          <span class="prep-col-status">${guardrailsCount}/${guardrailsTotal} VERIFICADOS</span>
+          <span class="prep-col-status">${rsPill(guardrailsOk ? "done" : (guardrailsCount > 0 ? "working" : "pending"), { label: `${guardrailsCount}/${guardrailsTotal} VERIFICADOS`, title: "Checklist de entrega" })}</span>
         </div>
       </div>
     </div>
