@@ -3815,7 +3815,7 @@ function renderViewChallenges() {
                  ondragover="event.preventDefault(); this.style.borderColor='#0866F5'; this.style.background='#EFF6FF';"
                  ondragleave="event.preventDefault(); this.style.borderColor='#93C5FD'; this.style.background='#F8FAFD';"
                  ondrop="handleChallengeDrop(event)">
-              <input type="file" id="challenge-file-input" style="display:none;" multiple accept=".zip,.pdf,.docx,.doc,.txt,.png,.jpg,.jpeg,.webp" onchange="handleChallengeFileSelect(this.files)">
+              <input type="file" id="challenge-file-input" style="display:none;" multiple accept=".zip,.pdf,.docx,.doc,.txt,.png,.jpg,.jpeg,.webp" onclick="event.stopPropagation()" onchange="handleChallengeFileSelect(this.files)">
               <div style="display:flex; justify-content:center; align-items:center; gap:8px; margin-bottom:4px; color:#0866F5;">
                 ${SVG.upload}
                 <span style="font-size:13px; font-weight:800; color:#0D1B35;">Arrastra aquí o haz clic para subir archivo</span>
@@ -3933,6 +3933,10 @@ function renderViewChallenges() {
             </button>
           </div>
 
+          <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+            <button class="btn-pill-light" style="padding:5px 12px; font-size:11.5px; font-weight:700; display:inline-flex; align-items:center; gap:6px;" onclick="openChallengeImportBox()" title="Ver los retos cargados e importar otros sin borrarlos">
+              ${SVG.upload}<span>Importar retos</span>
+            </button>
           <details class="rank-tools rs-tools">
             <summary aria-label="Herramientas de retos">
               ${SVG.dotsVertical}
@@ -3940,7 +3944,7 @@ function renderViewChallenges() {
               <span class="rs-tools-chevron">${SVG.chevronDown}</span>
             </summary>
             <div class="rs-tools-menu" role="menu" aria-label="Herramientas de retos">
-              <button class="rs-tools-item" role="menuitem" onclick="toggleCustomChallengeInput()">
+              <button class="rs-tools-item" role="menuitem" onclick="openChallengeImportBox()">
                 ${SVG.upload}<span>Importar o re-pegar retos</span>
               </button>
               <button class="rs-tools-item" role="menuitem" onclick="reScanChallengesWithOCR()" title="Re-escanear imágenes adjuntas con IA visual (modelo vision gratuito); red de seguridad EasyOCR si no hay IA conectada">
@@ -3955,21 +3959,27 @@ function renderViewChallenges() {
               </button>
             </div>
           </details>
+          </div>
         </div>
         ` : ""}
         <div id="custom-challenge-input-box" style="display:none; background:#FFFFFF; border:1px solid #CBD5E1; border-radius:8px; padding:14px; margin-bottom:14px;"
              ondragover="event.preventDefault(); this.style.borderColor='#0866F5';"
              ondragleave="event.preventDefault(); this.style.borderColor='#CBD5E1';"
              ondrop="handleChallengeDrop(event)">
+          <div id="challenge-import-current" style="margin-bottom:12px;"></div>
           <div style="border:1.5px dashed #CBD5E1; background:#F8FAFC; border-radius:6px; padding:14px; text-align:center; margin-bottom:10px; cursor:pointer;"
                onclick="document.getElementById('challenge-file-input-inline').click()">
-            <input type="file" id="challenge-file-input-inline" aria-label="Subir archivos de retos" style="display:none;" multiple accept=".zip,.pdf,.docx,.doc,.txt,.png,.jpg,.jpeg,.webp" onchange="handleChallengeFileSelect(this.files)">
+            <input type="file" id="challenge-file-input-inline" aria-label="Subir archivos de retos" style="display:none;" multiple accept=".zip,.pdf,.docx,.doc,.txt,.png,.jpg,.jpeg,.webp" onclick="event.stopPropagation()" onchange="handleChallengeFileSelect(this.files)">
             <div style="font-size:12.5px; font-weight:700; color:#0F172A;">Arrastra aquí o haz clic para subir archivo ZIP, imágenes, PDF o Word</div>
             <div style="font-size:11px; color:#64748B; margin-top:2px;">La IA visual jerarquizará automáticamente todos los retos contenidos (EasyOCR local como red de seguridad).</div>
           </div>
           <div id="custom-import-status-indicator" style="display:none; margin-bottom:10px; font-size:12px; font-weight:700; color:#0866F5;"></div>
           <textarea id="raw-committee-challenges" rows="4" style="width:100%; border:1px solid #CBD5E1; border-radius:6px; padding:10px; font-size:12px; font-family:var(--font-mono); box-sizing:border-box; background:#F8FAFC;"
             placeholder="O pega aquí el texto del comunicado oficial..."></textarea>
+          <label style="display:flex; align-items:center; gap:8px; margin-top:10px; font-size:12px; color:#334155; cursor:pointer;">
+            <input type="checkbox" id="challenge-append-mode" checked style="cursor:pointer;">
+            <span>Agregar a los retos cargados (si lo desmarcas, este comunicado <strong>reemplaza</strong> la lista actual)</span>
+          </label>
           <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:8px;">
             <button class="btn-secondary" style="font-size:11.5px; padding:5px 12px;" onclick="toggleCustomChallengeInput()">Cancelar</button>
             <button class="btn-select-card filled" style="padding:6px 16px; font-size:12px; font-weight:700;" onclick="processCommitteeChallengesInput()">Procesar Retos</button>
@@ -5430,9 +5440,67 @@ async function extractTextFromDocx(file) {
 
 function toggleCustomChallengeInput() {
   const el = document.getElementById("custom-challenge-input-box");
-  if (el) {
-    el.style.display = el.style.display === "none" ? "block" : "none";
+  if (!el) return;
+  if (el.style.display === "none") openChallengeImportBox();
+  else el.style.display = "none";
+}
+
+// Abre la caja de importación mostrando PRIMERO lo que ya está cargado: el
+// equipo debe ver sus retos antes de importar o reemplazar nada.
+function openChallengeImportBox() {
+  const el = document.getElementById("custom-challenge-input-box");
+  if (!el) return;
+  renderChallengeImportBox();
+  el.style.display = "block";
+  const ta = document.getElementById("raw-committee-challenges");
+  if (ta) ta.focus({ preventScroll: true });
+}
+
+function renderChallengeImportBox() {
+  const box = document.getElementById("challenge-import-current");
+  if (!box) return;
+  const list = Array.isArray(state.challenges) ? state.challenges : [];
+  if (!list.length) {
+    box.innerHTML = '<div style="font-size:12px; color:#64748B; padding:8px 10px; background:#F8FAFC; border:1px solid #E2E8F0; border-radius:6px;">No hay retos cargados todavía.</div>';
+    return;
   }
+  const rows = list.map(ch => {
+    const id = String(ch.id || "");
+    const title = String(ch.title || "sin título");
+    return '<div style="display:flex; align-items:center; justify-content:space-between; gap:10px; padding:6px 2px; border-bottom:1px solid #F1F5F9;">' +
+      '<span style="font-size:12px; color:#0F172A; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">' +
+      '<strong style="font-family:var(--font-mono); color:#0866F5;">#' + escapeHtml(id) + '</strong> · ' + escapeHtml(title) +
+      '</span>' +
+      '<button class="btn-pill-light" data-challenge-remove="' + escapeHtml(id) + '" style="font-size:10.5px; padding:3px 10px; flex:none;">Borrar</button>' +
+      '</div>';
+  }).join("");
+  box.innerHTML =
+    '<div style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:4px;">' +
+    '<span style="font-size:11.5px; font-weight:800; color:#0F172A;">Retos cargados (' + list.length + ')</span>' +
+    '<button class="btn-pill-light" style="font-size:10.5px; padding:3px 10px;" onclick="clearAllChallenges()">Limpiar todos</button>' +
+    '</div>' + rows;
+  box.querySelectorAll("[data-challenge-remove]").forEach(function (btn) {
+    btn.addEventListener("click", function () { removeChallenge(btn.getAttribute("data-challenge-remove")); });
+  });
+}
+
+// Borra UN reto (no toda la lista) y limpia la selección si era el elegido.
+function removeChallenge(id) {
+  if (!id || !Array.isArray(state.challenges)) return;
+  const before = state.challenges.length;
+  state.challenges = state.challenges.filter(ch => String(ch.id) !== String(id));
+  if (state.challenges.length === before) return;
+  if (String(state.active_deliberation_challenge_id) === String(id)) {
+    state.active_deliberation_challenge_id = state.challenges.length ? state.challenges[0].id : "";
+  }
+  if (String(state.challenge_id) === String(id)) {
+    state.challenge_id = "";
+    state.challenge_title = "";
+  }
+  saveState();
+  renderTab("challenges");
+  renderNavigation();
+  openChallengeImportBox();
 }
 
 function clearAllChallenges() {
@@ -5440,9 +5508,11 @@ function clearAllChallenges() {
     state.challenges = [];
     state.challenge_id = "";
     state.challenge_title = "";
+    state.active_deliberation_challenge_id = "";
     saveState();
     renderTab("challenges");
     renderNavigation();
+    openChallengeImportBox(); // lista vacía visible, lista para pegar el comunicado nuevo
   }
 }
 
@@ -5599,10 +5669,13 @@ function processCommitteeChallengesInput() {
       if (sigTail) seen.push(sig);
       return true;
     });
-    state.challenges = deduped.length ? deduped : sanitized;
+    const appendBox = document.getElementById("challenge-append-mode");
+    const shouldAppend = !!(appendBox && appendBox.checked);
+    state.challenges = mergeIncomingChallenges(deduped.length ? deduped : sanitized, shouldAppend);
     state.active_deliberation_challenge_id = state.challenges[0].id;
     saveState();
     renderTab("challenges");
+    openChallengeImportBox(); // deja la lista visible con el resultado de la importación
   } else {
     let title = lines[0];
     if (title.toLowerCase().includes("whatsapp image") || title.toLowerCase().startsWith("image")) title = "Desafío Oficial #01";
@@ -5612,7 +5685,9 @@ function processCommitteeChallengesInput() {
     }
     const category = title.toLowerCase().includes("social") ? "Impacto Social" : "Innovación";
     const tactical = generateTacticalSolution(title, expectation, category);
-    state.challenges = [{
+    const appendBox2 = document.getElementById("challenge-append-mode");
+    const shouldAppend2 = !!(appendBox2 && appendBox2.checked);
+    state.challenges = mergeIncomingChallenges([{
       id: "01",
       title: title,
       category: category,
@@ -5620,11 +5695,39 @@ function processCommitteeChallengesInput() {
       officialExpectation: expectation,
       imageUrl: (window._challengeImageStore && window._challengeImageStore["01"]) || "",
       ...tactical
-    }];
-    state.active_deliberation_challenge_id = "01";
+    }], shouldAppend2);
+    state.active_deliberation_challenge_id = state.challenges[0].id;
     saveState();
     renderTab("challenges");
+    openChallengeImportBox();
   }
+}
+
+// Importar con la lista ya cargada suma por defecto en vez de borrar todo.
+// Los ids nuevos continúan la numeración y los títulos repetidos se descartan.
+function mergeIncomingChallenges(incoming, append) {
+  const list = Array.isArray(incoming) ? incoming : [];
+  if (!append || !Array.isArray(state.challenges) || !state.challenges.length) return list;
+  const sigOf = (ch) => String(ch.title || "").replace(/\s+/g, " ").toLowerCase().slice(0, 60);
+  const existing = state.challenges.slice();
+  const seen = new Set(existing.map(sigOf));
+  // Ids nuevos: correlativo libre desde (n+1), no "máximo numérico + 1" — los
+  // ids importados de un PDF traen años ("2018") y disparaban ids absurdos.
+  const taken = new Set(existing.map(ch => String(ch.id)));
+  let nextId = existing.length + 1;
+  const nextFreeId = () => {
+    let id;
+    do { id = String(nextId).padStart(2, "0"); nextId += 1; } while (taken.has(id));
+    taken.add(id);
+    return id;
+  };
+  const added = list.filter(ch => {
+    const sig = sigOf(ch);
+    if (!sig || seen.has(sig)) return false;
+    seen.add(sig);
+    return true;
+  }).map(ch => Object.assign({}, ch, { id: nextFreeId() }));
+  return existing.concat(added);
 }
 
 function selectChallenge(id, proceedImmediately = false) {
