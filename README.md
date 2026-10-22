@@ -210,6 +210,15 @@ Checklist crítico que valida antes del cierre:
 - Nomenclatura del archivo PDF según el estándar exigido por el comité.
 - Coherencia matemática: los costos mencionados en el video deben cuadrar al centavo con la tabla de presupuesto.
 
+### 5. Super Agentes (Herramientas del topbar)
+El cuadrito **Herramientas** del topbar abre seis agentes especializados: Revisor de Guión, Analizador de Presupuesto, Analizador de Pautado, Analizador de Canvas, Analizador de Documentos y Guía de Editor de Video.
+
+- **Checks locales primero, sin IA:** cada panel valida al instante contra la rúbrica activa (duración y actos del guion, rango y filas del presupuesto, topes y datos repetidos del pautado, los 9 bloques del canvas, naming de assets). Funcionan incluso con el servicio apagado.
+- **Tres acciones por agente:** generar un prompt con todo el contexto del proyecto para llevarlo a cualquier IA; pegar la respuesta externa para contrastarla; o analizar el contenido actual con la IA local del servicio (`/api/ai`).
+- **La rúbrica va compilada y citada:** `dashboard/super_agents_rubrics.js` destila `knowledge/` y `.agents/rules/` con la referencia de cada regla; no inventa límites.
+- **Nunca sobrescribe:** veredictos, problemas y ajustes viven en el panel. Un ajuste se copia al portapapeles y salta a su pestaña; pegar y guardar es decisión del humano.
+- **Salida honesta:** si el servicio no tiene proveedor, está apagado o devuelve texto sin JSON, el panel lo dice tal cual y muestra la respuesta cruda etiquetada.
+
 ---
 
 ## Calibración Matemática de Rúbricas Oficiales
