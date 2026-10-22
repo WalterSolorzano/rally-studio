@@ -46,6 +46,11 @@ Reglas completas y decisiones D1–D7 en
    OpenCode; especialistas lanzados fuera de la app no pasan por el hook:
    el guardia lo sostiene esta regla del skill.
    Desde código Python se usa la API de import de `gpu_lock`.
+   Para verificar que el guardia rechaza cuando el recurso está ocupado,
+   los dos holders deben CORRER A LA VEZ: dos `run` en procesos separados,
+   o un acquire contra un `run` vivo. Acquires temporizados uno tras otro
+   en el mismo shell nunca se solapan: el primero libera antes de que el
+   segundo corra, y la prueba miente con un OK falso.
    `release --resource <r> --force` lo usa SOLO el director, avisando al humano.
 5. **Nadie improvisa**: antes de producir, el especialista responde sobre su
    fila: qué toma, en qué acto, cuántos segundos en cámara, qué criterio de
