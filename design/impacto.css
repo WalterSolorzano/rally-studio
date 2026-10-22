@@ -12,7 +12,8 @@
 }
 
 /* Escenario 16:9 con lamina fija de 1920x1080 escalada por contenedor. */
-.preview-frame .thumb-stage { background: #fff; }
+.preview-frame { flex-direction: column; }
+.preview-frame .thumb-stage { background: #fff; width: 100%; }
 
 .lamina-canvas {
   position: absolute;
@@ -38,12 +39,14 @@
 .lamina-canvas .p-txt { position: absolute; margin: 0; white-space: pre-wrap; }
 .lamina-canvas .p-ico { position: absolute; display: block; }
 
-/* Chips ODS de la columna de controles: emblema real del ODS. */
+/* Chips ODS de la columna de controles: como el grafico oficial de la ONU
+   (cuadrado de color casi recto, arte blanco grande y numero arriba). */
 #chipsOds label.check, #planProg label.check { display: inline-flex; gap: 6px; align-items: center; margin: 0 10px 6px 0; }
-#chipsOds label.odsrow { display: flex; align-items: center; gap: 10px; min-height: 40px; padding: 4px 6px; border-radius: var(--rs-r-sm, 8px); cursor: pointer; }
+#chipsOds label.odsrow { display: flex; align-items: center; gap: 10px; min-height: 46px; padding: 4px 6px; border-radius: var(--rs-r-sm, 8px); cursor: pointer; }
 #chipsOds label.odsrow:hover, #chipsOds label.odsrow:focus-within { background: var(--rs-bg-subtle, #F8FAFD); }
-.chip-ods { position: relative; width: 40px; height: 40px; flex: none; display: grid; place-items: center; border-radius: var(--rs-r-sm, 8px); color: #FFFFFF; box-shadow: 0 1px 3px rgba(13, 27, 53, 0.18); }
-.chip-ods svg { width: 22px; height: 22px; filter: drop-shadow(0 0 0.5px rgba(13, 27, 53, 0.35)); }
+.chip-ods { position: relative; width: 46px; height: 46px; flex: none; display: flex; align-items: center; justify-content: center; border-radius: 6px; color: #FFFFFF; box-shadow: 0 1px 3px rgba(13, 27, 53, 0.16); }
+.chip-ods svg { width: 34px; height: 34px; }
+.chip-ods .num { position: absolute; top: 3px; left: 5px; font: 800 10px/1.2 var(--rs-mono, 'JetBrains Mono', monospace); color: #FFFFFF; opacity: .95; text-shadow: 0 1px 2px rgba(9, 30, 66, 0.35); }
 .odsname { color: var(--rs-main, #0D1B35); }
 
 /* Marca de propuesta sin aplicar (IA). */
@@ -58,6 +61,7 @@ textarea.propuesta { border-radius: var(--rs-r-sm); }
 @keyframes impInSlideArriba { from { opacity: 0; transform: translateY(32px) } to { opacity: 1; transform: none } }
 @keyframes impInWipe { from { clip-path: inset(0 100% 0 0) } to { clip-path: inset(0 0 0 0) } }
 @keyframes impInBanda { from { clip-path: inset(0 0 100% 0) } to { clip-path: inset(0 0 0 0) } }
+@keyframes impInPop { from { opacity: 0; transform: scale(.62) } 65% { opacity: 1 } to { opacity: 1; transform: none } }
 @keyframes impEnfPulso { 0% { transform: none } 40% { transform: scale(1.035) } 100% { transform: none } }
 @keyframes impEnfPop { 0% { opacity: .85; transform: scale(.94) } 60% { opacity: 1; transform: scale(1.02) } 100% { transform: none } }
 @keyframes impOutFade { from { opacity: 1 } to { opacity: 0 } }

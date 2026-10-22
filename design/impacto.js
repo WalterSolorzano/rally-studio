@@ -108,30 +108,41 @@ function _laminMosaico(estado, odsSel) {
   if (!n) return prims;
   var cols = n <= 1 ? 1 : n <= 4 ? 2 : n <= 9 ? 3 : n <= 12 ? 4 : 5;
   var filas = Math.ceil(n / cols);
-  var margenX = 84, margenY = 236, hueco = 22;
-  var abajo = 120;
-  var cw = (IMP_ANCHO - margenX * 2 - hueco * (cols - 1)) / cols;
-  var ch = (IMP_ALTO - margenY - abajo - hueco * (filas - 1)) / filas;
+  var hueco = 22;
   if (preset === 'bandas') {
     cols = 1;
     filas = n;
     hueco = 14;
-    cw = IMP_ANCHO - margenX * 2;
-    ch = (IMP_ALTO - margenY - abajo - hueco * (filas - 1)) / filas;
   }
+  // Zona de mosaico: campo suave (bg2) con esquinas; la cuadrícula se centra
+  // dentro y el sobrante se reparte, nada de agujeros sin sentido.
+  var zx = 84, zy = 228, zw = IMP_ANCHO - 168, zh = IMP_ALTO - 228 - 104;
+  prims.push({ k: 'rect', x: zx, y: zy, w: zw, h: zh, color: estado.pal.bg2 || '#F0F6FF', r: 24 });
+  var pad = preset === 'bandas' ? 36 : 48;
+  var gx = zx + pad, gy = zy + pad, gw = zw - pad * 2, gh = zh - pad * 2;
+  var cw = (gw - hueco * (cols - 1)) / cols;
+  var ch = (gh - hueco * (filas - 1)) / filas;
   odsSel.forEach(function (o, i) {
     var od = ODS_DATA[o.id - 1];
     if (!od) return;
     var col = i % cols, fil = Math.floor(i / cols);
-    var x = margenX + col * (cw + hueco);
-    var y = margenY + fil * (ch + hueco);
-    var tinta = tintaSobre(od.color);
-    prims.push({ k: 'rect', x: x, y: y, w: cw, h: ch, color: od.color });
-    prims.push({ k: 'ico', x: x + 26, y: y + 26, s: Math.min(64, ch * 0.3), color: tinta, path: od.icon });
-    prims.push({ k: 'txt', x: x + 26, y: y + ch - 96, text: od.code, font: _fontDe(estado, 'l'), size: 26, weight: 700, color: tinta });
-    prims.push({ k: 'txt', x: x + 26, y: y + ch - 64, text: od.name, font: _fontDe(estado, 'b'), size: 30, weight: 700, color: tinta });
-    if (preset !== 'bandas' && ch > 190) {
-      prims.push({ k: 'txt', x: x + 26, y: y + 104, text: od.shortTarget, font: _fontDe(estado, 'b'), size: 21, weight: 500, color: tinta });
+    var x = gx + col * (cw + hueco);
+    var y = gy + fil * (ch + hueco);
+    var esBanda = preset === 'bandas';
+    // Emblema oficial: cuadrado del color, icono blanco grande y nombre
+    // SIEMPRE blanco sobre una franja sombreada (legible en cualquier ODS).
+    prims.push({ k: 'rect', x: x, y: y, w: cw, h: ch, color: od.color, r: 6, g: i });
+    prims.push({ k: 'txt', x: x + 24, y: y + 18, text: od.code, font: _fontDe(estado, 'l'), size: 28, weight: 800, color: '#FFFFFF', g: i });
+    if (esBanda) {
+      var sB = Math.min(84, ch - 24);
+      prims.push({ k: 'ico', x: x + 24, y: y + (ch - sB) / 2, s: sB, color: '#FFFFFF', path: od.icon, g: i });
+      prims.push({ k: 'rect', x: x + cw * 0.22, y: y + ch - 86, w: cw * 0.78 - 24, h: 66, color: 'rgba(9,30,66,0.30)', r: 12, g: i });
+      prims.push({ k: 'txt', x: x + cw * 0.22 + 20, y: y + ch - 78, text: od.name, font: _fontDe(estado, 'b'), size: 34, weight: 700, color: '#FFFFFF', g: i });
+    } else {
+      var sIco = Math.min(Math.round(cw * 0.34), Math.round(ch * 0.42), 150);
+      prims.push({ k: 'ico', x: x + (cw - sIco) / 2, y: y + (ch - 96 - sIco) / 2 + 14, s: sIco, color: '#FFFFFF', path: od.icon, g: i });
+      prims.push({ k: 'rect', x: x, y: y + ch - 96, w: cw, h: 96, color: 'rgba(9,30,66,0.30)', r: 0, g: i });
+      prims.push({ k: 'txt', x: x + 24, y: y + ch - 78, text: od.name, font: _fontDe(estado, 'b'), size: 34, weight: 700, color: '#FFFFFF', g: i });
     }
   });
   return prims.concat(_pie(estado, IMP_ANCHO));
@@ -220,6 +231,7 @@ function pintarDOM(el, prims) {
       var d = document.createElement('div');
       d.className = 'p-rect';
       d.style.cssText = 'left:' + p.x + 'px;top:' + p.y + 'px;width:' + p.w + 'px;height:' + p.h + 'px;background:' + p.color + (p.r ? (';border-radius:' + p.r + 'px') : '');
+      if (p.g !== undefined) d.dataset.g = p.g;
       el.appendChild(d);
     } else if (p.k === 'txt') {
       var s = document.createElement('p');
@@ -230,12 +242,14 @@ function pintarDOM(el, prims) {
         (p.align === 'right' ? (';left:auto;right:' + (IMP_ANCHO - p.x) + 'px') : '') +
         (p.align === 'center' ? (';transform:translateX(-50%)') : '') + ';text-align:' + (p.align || 'left') + ';';
       s.textContent = p.text;
+      if (p.g !== undefined) s.dataset.g = p.g;
       el.appendChild(s);
     } else if (p.k === 'ico') {
       var g = document.createElement('div');
       g.className = 'p-ico';
       g.style.cssText = 'left:' + p.x + 'px;top:' + p.y + 'px;width:' + p.s + 'px;height:' + p.s + 'px;color:' + p.color + ';';
       g.innerHTML = '<svg viewBox="0 0 24 24" width="' + p.s + '" height="' + p.s + '" fill="currentColor" stroke="currentColor">' + p.path + '</svg>';
+      if (p.g !== undefined) g.dataset.g = p.g;
       el.appendChild(g);
     }
   });
@@ -369,13 +383,34 @@ function reproducirAnimacion(tipo) {
   var el = document.getElementById('laminaImp');
   if (!el) return fases;
   var hijos = Array.prototype.slice.call(el.children);
+  var base = [], tiles = {};
+  hijos.forEach(function (h) {
+    if (h.dataset && h.dataset.g !== undefined) {
+      var gi = +h.dataset.g;
+      (tiles[gi] = tiles[gi] || []).push(h);
+    } else base.push(h);
+  });
+  var listaTiles = Object.keys(tiles).map(Number).sort(function (a, b) { return a - b; }).map(function (k) { return tiles[k]; });
   var estado = document.getElementById('statusRepro');
   _impClearTimers();
   if (estado) estado.textContent = 'Reproduciendo (' + dur + ' s)…';
-  _impSetAnim(hijos, IMP_ANIM_CLASES[a.entrada || 'fade'], fases.tIn);
-  if (fases.tEn) {
+  // Base (cabecera, fondo, pie): la entrada elegida, como siempre.
+  _impSetAnim(base, IMP_ANIM_CLASES[a.entrada || 'fade'], fases.tIn);
+  // Cuadritos: uno por uno, lento (1.1 s cada uno), ciclando movimientos.
+  var paso = Math.max(0.42, (fases.dur - 1.6) / Math.max(1, listaTiles.length));
+  var CLASES_TILE = ['impInPop', 'impInSlideArriba', 'impInSlideIzq', 'impInFade', 'impInWipe'];
+  listaTiles.forEach(function (grupo, idx) {
+    var clase = CLASES_TILE[idx % CLASES_TILE.length];
+    var t0 = idx * paso;
+    grupo.forEach(function (h) {
+      h.style.animation = '';
+      void h.offsetWidth;
+      h.style.animation = clase + ' 1.1s cubic-bezier(.33,1,.68,1) ' + t0.toFixed(2) + 's both';
+    });
+  });
+  if (fases.tEn && !listaTiles.length) {
     _impTimers.push(setTimeout(function () {
-      _impSetAnim(hijos, IMP_ANIM_CLASES[a.enfasis || 'none'], fases.tEn);
+      _impSetAnim(base, IMP_ANIM_CLASES[a.enfasis || 'none'], fases.tEn);
     }, fases.tIn * 1000));
   }
   if (fases.tOut) {
@@ -451,11 +486,12 @@ function renderChips() {
       renderChips();
       pintar();
     });
-    // Emblema real del ODS: color oficial + arte del icono en blanco.
+    // Emblema real del ODS: color oficial + arte del icono en blanco + número.
     var sw = document.createElement('span');
     sw.className = 'chip-ods';
     sw.style.background = od.color;
-    sw.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" aria-hidden="true">' + od.icon + '</svg>';
+    sw.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" aria-hidden="true">' + od.icon + '</svg>' +
+      '<i class="num">' + o.id + '</i>';
     var nm = document.createElement('span');
     nm.className = 'odsname';
     nm.textContent = od.code + ' · ' + od.name;
@@ -681,36 +717,114 @@ function planificarGrabacion(segundos, hayRecorder) {
 }
 
 // Pinta el cuadro en tiempo t con los efectos de la animacion (canvas).
+// Entradas escalonadas por cuadrito: ciclan 5 movimientos y arrancan uno
+// tras otro (lento, ~1.1 s por ficha); la salida es un desvanecido común.
+var IMP_ENTRADAS_TILE = ['pop', 'arriba', 'izq', 'fade', 'wipe'];
+
+function _easeOutCubic(p) { return 1 - Math.pow(1 - p, 3); }
+function _easeOutBack(p) {
+  var c1 = 1.70158, c3 = c1 + 1;
+  return 1 + c3 * Math.pow(p - 1, 3) + c1 * Math.pow(p - 1, 2);
+}
+
+function _bboxDe(grupo) {
+  var b = { x: Infinity, y: Infinity, x2: -Infinity, y2: -Infinity };
+  grupo.forEach(function (p) {
+    b.x = Math.min(b.x, p.x);
+    b.y = Math.min(b.y, p.y);
+    b.x2 = Math.max(b.x2, p.x + (p.w || p.s || 40));
+    b.y2 = Math.max(b.y2, p.y + (p.h || p.s || 60));
+  });
+  b.w = b.x2 - b.x;
+  b.h = b.y2 - b.y;
+  return b;
+}
+
 function _pintarCuadro(ctx, prims, t, fases, estado) {
   var W = IMP_ANCHO, H = IMP_ALTO;
   ctx.setTransform(1, 0, 0, 1, 0, 0);
   ctx.fillStyle = (estado.pal && estado.pal.bg) || '#FFFFFF';
   ctx.fillRect(0, 0, W, H);
   var fase = faseEn(t, fases);
-  var a = (estado && estado.imp && estado.imp.anim) || {};
+  // Salida comun: desvanecido de TODO (y desplazo si la salida lo pide).
+  var alphaOut = 1, deslOut = 0;
+  if (fase === 'out') {
+    var po = fases.tOut ? Math.min(1, (t - (fases.dur - fases.tOut)) / fases.tOut) : 0;
+    alphaOut = 1 - po;
+    if (fases.salida === 'slide') deslOut = po * 40;
+  }
+  // Separar base (cabecera/fondo/pie) de los cuadritos del mosaico (con g).
+  var base = [], grupos = [];
+  prims.forEach(function (p) {
+    if (p.g === undefined) { base.push(p); return; }
+    (grupos[p.g] = grupos[p.g] || []).push(p);
+  });
+  var hay = grupos.filter(Boolean);
   ctx.save();
+  if (deslOut) ctx.translate(deslOut, 0);
+  ctx.globalAlpha = alphaOut;
   if (fase === 'in') {
     var p = fases.tIn ? Math.min(1, t / fases.tIn) : 1;
-    var eIn = 1 - Math.pow(1 - p, 3); // ease-out cubic
+    var eIn = 1 - Math.pow(1 - p, 3);
     var ent = fases.entrada;
     if (ent === 'slide-izq') ctx.translate((1 - eIn) * -48, 0);
     else if (ent === 'slide-arriba') ctx.translate(0, (1 - eIn) * 32);
     else if (ent === 'wipe') { ctx.beginPath(); ctx.rect(0, 0, eIn * W, H); ctx.clip(); }
     else if (ent === 'banda') { ctx.beginPath(); ctx.rect(0, 0, W, eIn * H); ctx.clip(); }
-    else ctx.globalAlpha = eIn; // fade
-  } else if (fase === 'out') {
-    var po = fases.tOut ? Math.min(1, (t - (fases.dur - fases.tOut)) / fases.tOut) : 0;
-    ctx.globalAlpha = 1 - po;
-    if (fases.salida === 'slide') ctx.translate(po * 40, 0);
-  } else if (fase === 'enf') {
+    else ctx.globalAlpha = alphaOut * eIn; // fade
+  }
+  // La enfasis (pulso/pop) sigue siendo global y solo toca a la base:
+  // los cuadritos ya tienen su propia coreografía.
+  if (fase === 'enf' && !hay.length) {
     var pe = fases.tEn ? (t - fases.tIn) / fases.tEn : 0;
     var s = 1 + 0.035 * Math.sin(pe * Math.PI);
     ctx.translate(W / 2, H / 2);
     ctx.scale(s, s);
     ctx.translate(-W / 2, -H / 2);
   }
-  pintarCanvas(ctx, prims, 1);
+  pintarCanvas(ctx, base, 1);
   ctx.restore();
+  if (!hay.length) return;
+
+  // Uno a la vez: cada cuadro arranca en t0 = indice * paso y tarda 1.1 s
+  // en instalarse; la tanda completa cabe antes de la salida (dur - 1.6).
+  var paso = Math.max(0.42, (fases.dur - 1.6) / hay.length);
+  hay.forEach(function (grupo, idx) {
+    var b = _bboxDe(grupo);
+    var t0 = idx * paso;
+    if (t < t0) return; // todavia no le toca
+    var p = Math.min(1, (t - t0) / 1.1);
+    var e = _easeOutCubic(p);
+    var tipo = IMP_ENTRADAS_TILE[idx % IMP_ENTRADAS_TILE.length];
+    ctx.save();
+    ctx.globalAlpha = alphaOut;
+    if (deslOut) ctx.translate(deslOut, 0);
+    var relay = fase === 'in' || fase === 'enf' || fase === 'hold' || fase === 'fin';
+    if (relay) {
+      ctx.translate(b.x + b.w / 2, b.y + b.h / 2);
+      if (tipo === 'pop') {
+        var sB = 0.6 + 0.4 * _easeOutBack(Math.max(0, (p - 0.05) * 1.05));
+        ctx.scale(sB, sB);
+      } else if (tipo === 'arriba') {
+        ctx.translate(0, (1 - e) * 110);
+      } else if (tipo === 'izq') {
+        ctx.translate((1 - e) * -170, 0);
+      }
+      if (tipo === 'fade' || tipo === 'arriba' || tipo === 'izq') ctx.globalAlpha = alphaOut * e;
+      ctx.translate(-b.x - b.w / 2, -b.y - b.h / 2);
+      if (tipo === 'wipe') {
+        var ew = _easeOutCubic(Math.min(1, p / 0.8));
+        ctx.beginPath();
+        ctx.rect(b.x, b.y, Math.max(1, ew * b.w), b.h);
+        ctx.clip();
+      }
+    } else if (fase === 'out') {
+      // En salida los cuadritos ya estan: solo el desvanecido comun.
+      if (alphaOut < 1) ctx.globalAlpha = alphaOut;
+    }
+    pintarCanvas(ctx, grupo, 1);
+    ctx.restore();
+  });
 }
 
 function _pintarCuenta(ctx, estado, n) {
