@@ -133,6 +133,63 @@ switch (comando) {
     salir({ modo: sandbox._modosPlan(estado) });
     break;
   }
+  // --- video limpio + coreografía de cuadritos ---
+  case "limpio": {
+    const [limpio] = JSON.parse(process.argv[3] || "[false]");
+    if (typeof sandbox.componerLamina !== "function") { salir({ error: "componerLamina ausente" }); break; }
+    const estado = {
+      limpio: !!limpio,
+      imp: { preset: "bloques", textos: {}, anim: {}, plan: {} },
+      pal: JSON.parse(JSON.stringify(sandbox.PAL_DEFAULT)),
+      team: { name: "Equipo Demo", university: "UNI", city: "Managua" },
+      fonts: null,
+    };
+    const sel = [1, 2, 3, 4, 5, 6].map((i) => ({ id: i, on: true }));
+    const prims = sandbox.componerLamina("mosaico", estado, sel);
+    const gs = prims.filter((p) => p.g !== undefined).map((p) => p.g);
+    const zonas = prims.filter((p) => p.k === "rect" && p.r === 24).map((p) => p.y);
+    salir({
+      hayMarca: prims.some((p) => p.k === "txt" && /RALLY STUDIO/i.test(String(p.text))),
+      hayUni: prims.some((p) => p.k === "txt" && p.text === "UNI · Managua"),
+      zonaY: zonas[0] ?? null,
+      gs,
+      gsUnicos: new Set(gs).size,
+    });
+    break;
+  }
+  case "tile-tipo": {
+    const [i, tiles] = JSON.parse(process.argv[3]);
+    salir({ tipo: sandbox.IMP_TILE_TIPO(i, tiles) });
+    break;
+  }
+  case "tiles-plan": {
+    const [n, dur, ritmo] = JSON.parse(process.argv[3]);
+    salir(sandbox.IMP_TILES_PLAN(n, dur, ritmo));
+    break;
+  }
+  case "orden-mosaico": {
+    const [n, orden, cols, filas] = JSON.parse(process.argv[3]);
+    const o = sandbox._ordenMosaico(n, orden, cols, filas);
+    salir({ orden: o, completa: o.length === n && new Set(o).size === n && o.every((x) => x >= 0 && x < n) });
+    break;
+  }
+  case "mosaico-config": {
+    const cfg = JSON.parse(process.argv[3] || "{}");
+    if (typeof sandbox.componerLamina !== "function") { salir({ error: "componerLamina ausente" }); break; }
+    const estado = {
+      limpio: true,
+      imp: { preset: "bloques", textos: {}, anim: { mosaico: cfg }, plan: {} },
+      pal: JSON.parse(JSON.stringify(sandbox.PAL_DEFAULT)),
+      team: { name: "E", university: "", city: "" },
+      fonts: null,
+    };
+    const sel = [1, 2, 3, 4, 5, 6].map((i) => ({ id: i, on: true }));
+    const prims = sandbox.componerLamina("mosaico", estado, sel);
+    const gs = prims.filter((p) => p.g !== undefined).map((p) => p.g);
+    const ts = prims.filter((p) => p.g === 0 && p.w !== undefined).map((p) => p.w);
+    salir({ gs, gsUnicos: new Set(gs).size, wTile0: ts[0] ?? null });
+    break;
+  }
   case "tinta": {
     const hexa = JSON.parse(process.argv[3]);
     const color = typeof sandbox.tintaSobre === "function" ? sandbox.tintaSobre(hexa) : null;

@@ -101,12 +101,19 @@ function _pie(estado, ancho) {
 }
 
 // Preset demosaico: 'bloques' | 'bandas' | 'ficha' (grilla compacta).
+// Modo limpio (imp.limpio): el video queda SOLO con el mosaico ODS — sin
+// cabecera RALLY STUDIO, sin universidad ni pie; la zona crece y el grid respira.
 function _laminMosaico(estado, odsSel) {
-  var prims = _cabecera(estado, 'Impacto en ODS', 'Objetivos de Desarrollo Sostenible que atiende la solución');
+  var clean = !!estado.limpio;
+  var prims = clean ? [] : _cabecera(estado, 'Impacto en ODS', 'Objetivos de Desarrollo Sostenible que atiende la solución');
   var n = odsSel.length;
   var preset = estado.imp.preset || 'bloques';
   if (!n) return prims;
   var cols = n <= 1 ? 1 : n <= 4 ? 2 : n <= 9 ? 3 : n <= 12 ? 4 : 5;
+  var aM = (estado.imp.anim && estado.imp.anim.mosaico) || {};
+  if (aM.cols && aM.cols !== 'auto' && preset !== 'bandas') {
+    cols = Math.max(1, Math.min(parseInt(aM.cols, 10) || 0, n));
+  }
   var filas = Math.ceil(n / cols);
   var hueco = 22;
   if (preset === 'bandas') {
@@ -114,9 +121,14 @@ function _laminMosaico(estado, odsSel) {
     filas = n;
     hueco = 14;
   }
+  // Orden de entrada: se fija aqui para que canvas, DOM y video coincidan.
+  var rango = {};
+  _ordenMosaico(n, aM.orden || 'secuencial', preset === 'bandas' ? 1 : cols, filas)
+    .forEach(function (pos, rank) { rango[pos] = rank; });
   // Zona de mosaico: campo suave (bg2) con esquinas; la cuadrícula se centra
   // dentro y el sobrante se reparte, nada de agujeros sin sentido.
-  var zx = 84, zy = 228, zw = IMP_ANCHO - 168, zh = IMP_ALTO - 228 - 104;
+  var zx = 84, zy = clean ? 64 : 228;
+  var zw = IMP_ANCHO - 168, zh = (clean ? IMP_ALTO - 64 - 88 : IMP_ALTO - 228 - 104);
   prims.push({ k: 'rect', x: zx, y: zy, w: zw, h: zh, color: estado.pal.bg2 || '#F0F6FF', r: 24 });
   var pad = preset === 'bandas' ? 36 : 48;
   var gx = zx + pad, gy = zy + pad, gw = zw - pad * 2, gh = zh - pad * 2;
@@ -128,49 +140,55 @@ function _laminMosaico(estado, odsSel) {
     var col = i % cols, fil = Math.floor(i / cols);
     var x = gx + col * (cw + hueco);
     var y = gy + fil * (ch + hueco);
+    var g = rango[i] !== undefined ? rango[i] : i;
     var esBanda = preset === 'bandas';
     // Emblema oficial: cuadrado del color, icono blanco grande y nombre
     // SIEMPRE blanco sobre una franja sombreada (legible en cualquier ODS).
-    prims.push({ k: 'rect', x: x, y: y, w: cw, h: ch, color: od.color, r: 6, g: i });
-    prims.push({ k: 'txt', x: x + 24, y: y + 18, text: od.code, font: _fontDe(estado, 'l'), size: 28, weight: 800, color: '#FFFFFF', g: i });
+    prims.push({ k: 'rect', x: x, y: y, w: cw, h: ch, color: od.color, r: 6, g: g });
+    prims.push({ k: 'txt', x: x + 24, y: y + 18, text: od.code, font: _fontDe(estado, 'l'), size: 28, weight: 800, color: '#FFFFFF', g: g });
     if (esBanda) {
       var sB = Math.min(84, ch - 24);
-      prims.push({ k: 'ico', x: x + 24, y: y + (ch - sB) / 2, s: sB, color: '#FFFFFF', path: od.icon, g: i });
-      prims.push({ k: 'rect', x: x + cw * 0.22, y: y + ch - 86, w: cw * 0.78 - 24, h: 66, color: 'rgba(9,30,66,0.30)', r: 12, g: i });
-      prims.push({ k: 'txt', x: x + cw * 0.22 + 20, y: y + ch - 78, text: od.name, font: _fontDe(estado, 'b'), size: 34, weight: 700, color: '#FFFFFF', g: i });
+      prims.push({ k: 'ico', x: x + 24, y: y + (ch - sB) / 2, s: sB, color: '#FFFFFF', path: od.icon, g: g });
+      prims.push({ k: 'rect', x: x + cw * 0.22, y: y + ch - 86, w: cw * 0.78 - 24, h: 66, color: 'rgba(9,30,66,0.30)', r: 12, g: g });
+      prims.push({ k: 'txt', x: x + cw * 0.22 + 20, y: y + ch - 78, text: od.name, font: _fontDe(estado, 'b'), size: 34, weight: 700, color: '#FFFFFF', g: g });
     } else {
       var sIco = Math.min(Math.round(cw * 0.34), Math.round(ch * 0.42), 150);
-      prims.push({ k: 'ico', x: x + (cw - sIco) / 2, y: y + (ch - 96 - sIco) / 2 + 14, s: sIco, color: '#FFFFFF', path: od.icon, g: i });
-      prims.push({ k: 'rect', x: x, y: y + ch - 96, w: cw, h: 96, color: 'rgba(9,30,66,0.30)', r: 0, g: i });
-      prims.push({ k: 'txt', x: x + 24, y: y + ch - 78, text: od.name, font: _fontDe(estado, 'b'), size: 34, weight: 700, color: '#FFFFFF', g: i });
+      prims.push({ k: 'ico', x: x + (cw - sIco) / 2, y: y + (ch - 96 - sIco) / 2 + 14, s: sIco, color: '#FFFFFF', path: od.icon, g: g });
+      prims.push({ k: 'rect', x: x, y: y + ch - 96, w: cw, h: 96, color: 'rgba(9,30,66,0.30)', r: 0, g: g });
+      prims.push({ k: 'txt', x: x + 24, y: y + ch - 78, text: od.name, font: _fontDe(estado, 'b'), size: 34, weight: 700, color: '#FFFFFF', g: g });
     }
   });
-  return prims.concat(_pie(estado, IMP_ANCHO));
+  return prims.concat(clean ? [] : _pie(estado, IMP_ANCHO));
 }
 
 // Ficha de UN ODS: bloque de color a la izquierda + meta y conexión.
+// Modo limpio: sin cabecera de marca; el contenido sube a ocupar el alto.
 function _laminaFicha(estado, odsSel) {
+  var clean = !!estado.limpio;
   var o = odsSel[0];
   var od = o && ODS_DATA[o.id - 1];
-  var prims = _cabecera(estado, 'Ficha de impacto', 'Cómo la solución conecta con este ODS');
+  var prims = clean ? [] : _cabecera(estado, 'Ficha de impacto', 'Cómo la solución conecta con este ODS');
   if (!od) return prims;
+  var dy = clean ? -136 : 0;
   var bx = 200, bw = 420, tam = 640;
   var tinta = tintaSobre(od.color);
-  prims.push({ k: 'rect', x: bx, y: 300, w: bw, h: tam, color: od.color });
-  prims.push({ k: 'ico', x: bx + 40, y: 340, s: 84, color: tinta, path: od.icon });
-  prims.push({ k: 'txt', x: bx + 40, y: 850, text: od.code, font: _fontDe(estado, 'l'), size: 34, weight: 700, color: tinta });
-  prims.push({ k: 'txt', x: 700, y: 320, text: od.name, font: _fontDe(estado, 't'), size: 72, weight: 900, color: estado.pal.ink });
-  prims.push({ k: 'txt', x: 700, y: 430, text: od.shortTarget, font: _fontDe(estado, 'b'), size: 34, weight: 600, color: estado.pal.ac });
+  prims.push({ k: 'rect', x: bx, y: 300 + dy, w: bw, h: tam, color: od.color });
+  prims.push({ k: 'ico', x: bx + 40, y: 340 + dy, s: 84, color: tinta, path: od.icon });
+  prims.push({ k: 'txt', x: bx + 40, y: 850 + dy, text: od.code, font: _fontDe(estado, 'l'), size: 34, weight: 700, color: tinta });
+  prims.push({ k: 'txt', x: 700, y: 320 + dy, text: od.name, font: _fontDe(estado, 't'), size: 72, weight: 900, color: estado.pal.ink });
+  prims.push({ k: 'txt', x: 700, y: 430 + dy, text: od.shortTarget, font: _fontDe(estado, 'b'), size: 34, weight: 600, color: estado.pal.ac });
   var conecta = (estado.imp.textos['conecta' + o.id]) || 'La solución atiende esta meta directamente en el territorio, con pruebas y costo bajo.';
-  prims.push({ k: 'txt', x: 700, y: 520, text: conecta, font: _fontDe(estado, 'b'), size: 30, weight: 400, color: estado.pal.ink });
+  prims.push({ k: 'txt', x: 700, y: 520 + dy, text: conecta, font: _fontDe(estado, 'b'), size: 30, weight: 400, color: estado.pal.ink });
   return prims;
 }
 
 // Lámina plan: banda superior PNDH (nacional) o agenda sostenible (latam).
+// Modo limpio: sin pie de marca; la banda vuelve a empezar más arriba.
 function _laminaPlan(estado, odsSel, modo) {
+  var clean = !!estado.limpio;
   var prims = [];
   var nacional = modo !== 'latam';
-  var bandaY = 96, bandaH = 150;
+  var bandaY = clean ? 64 : 96, bandaH = clean ? 190 : 150;
   var banda = nacional ? estado.pal.ink : estado.pal.ac;
   var tintaBanda = tintaSobre(banda);
   var titulo = nacional ? 'Plan Nacional de Lucha contra la Pobreza y para el Desarrollo Humano 2022–2026' : 'Agenda sostenible para América Latina';
@@ -209,7 +227,7 @@ function _laminaPlan(estado, odsSel, modo) {
   if (texto) {
     prims.push({ k: 'txt', x: 84, y: cy, text: texto, font: _fontDe(estado, 'b'), size: 24, weight: 400, color: estado.pal.mu });
   }
-  prims = prims.concat(_pie(estado));
+  prims = prims.concat(clean ? [] : _pie(estado));
   return prims;
 }
 
@@ -396,16 +414,20 @@ function reproducirAnimacion(tipo) {
   if (estado) estado.textContent = 'Reproduciendo (' + dur + ' s)…';
   // Base (cabecera, fondo, pie): la entrada elegida, como siempre.
   _impSetAnim(base, IMP_ANIM_CLASES[a.entrada || 'fade'], fases.tIn);
-  // Cuadritos: uno por uno, lento (1.1 s cada uno), ciclando movimientos.
-  var paso = Math.max(0.42, (fases.dur - 1.6) / Math.max(1, listaTiles.length));
+  // Cuadritos: uno por uno, lento, con el movimiento y ritmo elegidos.
+  var aM = (IMP.impacto.anim && IMP.impacto.anim.mosaico) || {};
+  var ritmo = IMP_RITMO_TILE[aM.ritmo || 'normal'] || 1;
+  var plan = IMP_TILES_PLAN(Math.max(1, listaTiles.length), fases.dur, ritmo);
+  var paso = plan.paso;
   var CLASES_TILE = ['impInPop', 'impInSlideArriba', 'impInSlideIzq', 'impInFade', 'impInWipe'];
   listaTiles.forEach(function (grupo, idx) {
-    var clase = CLASES_TILE[idx % CLASES_TILE.length];
+    var tipo = IMP_TILE_TIPO(idx, aM.tiles || 'ciclo');
+    var clase = IMP_CLASES_TILE[tipo];
     var t0 = idx * paso;
     grupo.forEach(function (h) {
       h.style.animation = '';
       void h.offsetWidth;
-      h.style.animation = clase + ' 1.1s cubic-bezier(.33,1,.68,1) ' + t0.toFixed(2) + 's both';
+      h.style.animation = clase + ' ' + plan.tDur + 's cubic-bezier(.33,1,.68,1) ' + t0.toFixed(2) + 's both';
     });
   });
   if (fases.tEn && !listaTiles.length) {
@@ -437,7 +459,8 @@ function _guardar() { saveIdentity(IMP); }
 function _estadoLamina() {
   return {
     imp: IMP.impacto, pal: IMP.pal, fonts: IMP.fonts, team: IMP.team,
-    modo: IMP.rallyType || '', brief: IMP._brief || {}
+    modo: IMP.rallyType || '', brief: IMP._brief || {},
+    limpio: !!IMP.impacto.limpio
   };
 }
 
@@ -590,6 +613,25 @@ function renderAnimBody() {
   var body = document.getElementById('animBody');
   if (!body) return;
   body.innerHTML = '';
+  IMP.impacto.limpio = !!IMP.impacto.limpio;
+  // Video limpio: la lámina exportada/grabada se dibuja sin marca ni pie.
+  var cajaLimpio = document.createElement('div');
+  cajaLimpio.className = 'field';
+  var chk = document.createElement('label');
+  chk.className = 'check';
+  var inp = document.createElement('input');
+  inp.type = 'checkbox';
+  inp.id = 'chkLimpio';
+  inp.checked = !!IMP.impacto.limpio;
+  inp.addEventListener('change', function () {
+    IMP.impacto.limpio = inp.checked;
+    _guardar();
+    pintar();
+  });
+  chk.appendChild(inp);
+  chk.appendChild(document.createTextNode(' Video limpio: sin marca Rally Studio ni pie (solo ODS y plan)'));
+  cajaLimpio.appendChild(chk);
+  body.appendChild(cajaLimpio);
   IMP_TIPOS.forEach(function (tipo) {
     var a = (IMP.impacto.anim[tipo] = IMP.impacto.anim[tipo] || impactoPorDefecto().anim[tipo]);
     var tit = document.createElement('div');
@@ -630,6 +672,33 @@ function renderAnimBody() {
     });
     cajaDur.appendChild(dur);
     grid.appendChild(cajaDur);
+    // Solo mosaico: los cuadritos tienen su propia coreografía configurable.
+    if (tipo === 'mosaico') {
+      [
+        ['tiles', 'Movimiento de cuadritos', [['ciclo', 'Ciclo: cambia por cuadro'], ['solo-pop', 'Siempre pop'], ['solo-arriba', 'Siempre desde abajo'], ['solo-izq', 'Siempre desde la izquierda'], ['solo-fade', 'Siempre desvanecido'], ['solo-wipe', 'Siempre cortinilla'], ['aleatorio', 'Mezcla al azar']]],
+        ['ritmo', 'Ritmo (lento = 1.35×)', [['rapido', 'Rápido'], ['normal', 'Normal'], ['lento', 'Lento']]],
+        ['orden', 'Orden de entrada', [['secuencial', 'Secuencial'], ['centro-fuera', 'Del centro hacia fuera'], ['aleatorio', 'Al azar']]],
+        ['cols', 'Columnas', [['auto', 'Auto'], ['2', '2'], ['3', '3'], ['4', '4']]]
+      ].forEach(function (def) {
+        var cajaOp = document.createElement('div');
+        cajaOp.innerHTML = '<label class="mini">' + def[1] + '</label>';
+        var sOp = document.createElement('select');
+        def[2].forEach(function (op) {
+          var o2 = document.createElement('option');
+          o2.value = op[0];
+          o2.textContent = op[1];
+          sOp.appendChild(o2);
+        });
+        sOp.value = a[def[0]] || ({ orden: 'secuencial', ritmo: 'normal', cols: 'auto', tiles: 'ciclo' }[def[0]]);
+        sOp.addEventListener('change', function () {
+          a[def[0]] = sOp.value;
+          _guardar();
+          if (def[0] === 'cols' || def[0] === 'orden') pintar(); // cambia la composición
+        });
+        cajaOp.appendChild(sOp);
+        grid.appendChild(cajaOp);
+      });
+    }
     tit.appendChild(grid);
     body.appendChild(tit);
   });
@@ -720,6 +789,52 @@ function planificarGrabacion(segundos, hayRecorder) {
 // Entradas escalonadas por cuadrito: ciclan 5 movimientos y arrancan uno
 // tras otro (lento, ~1.1 s por ficha); la salida es un desvanecido común.
 var IMP_ENTRADAS_TILE = ['pop', 'arriba', 'izq', 'fade', 'wipe'];
+var IMP_RITMO_TILE = { rapido: 0.75, normal: 1, lento: 1.35 };
+var IMP_CLASES_TILE = { pop: 'impInPop', arriba: 'impInSlideArriba', izq: 'impInSlideIzq', fade: 'impInFade', wipe: 'impInWipe' };
+
+// ¿Que movimiento hace el cuadro de rango gIdx?: ciclo, uno fijo ('solo-pop')
+// o pseudo-aleatorio estable por rango (canvas, DOM y video ven lo mismo).
+function IMP_TILE_TIPO(gIdx, tiles) {
+  if (tiles === 'aleatorio') return IMP_ENTRADAS_TILE[(gIdx * 7 + 3) % IMP_ENTRADAS_TILE.length];
+  if (tiles && String(tiles).indexOf('solo-') === 0) {
+    var fijo = IMP_ENTRADAS_TILE.indexOf(String(tiles).slice(5));
+    return fijo >= 0 ? IMP_ENTRADAS_TILE[fijo] : 'pop';
+  }
+  return IMP_ENTRADAS_TILE[gIdx % IMP_ENTRADAS_TILE.length]; // ciclo
+}
+
+// Agenda del escalonado: duración de cada entrada y paso entre arranques.
+// El ritmo escala AMBOS (lento = entra menos cuadros por segundo).
+function IMP_TILES_PLAN(n, dur, ritmo) {
+  var tDur = 1.1 * ritmo;
+  var paso = Math.max(0.42 * ritmo, (dur - 1.6 - tDur) / Math.max(1, n));
+  return { tDur: tDur, paso: paso };
+}
+
+// Orden de entrada del mosaico (se fija al componer la lamina, así el canvas,
+// el DOM y el video grabado siempre coinciden): secuencial, centro-fuera o
+// barajado aleatorio (se recalcula en cada recomposición).
+function _ordenMosaico(n, orden, cols, filas) {
+  var ids = [], i, j, k, tmp;
+  for (i = 0; i < n; i++) ids.push(i);
+  if (orden === 'aleatorio') {
+    for (j = n - 1; j > 0; j--) {
+      k = Math.floor(Math.random() * (j + 1));
+      tmp = ids[j]; ids[j] = ids[k]; ids[k] = tmp;
+    }
+    return ids;
+  }
+  if (orden === 'centro-fuera') {
+    var cc = (cols - 1) / 2, cf = (filas - 1) / 2;
+    ids.sort(function (a, b) {
+      var da = Math.abs((a % cols) - cc) + Math.abs(Math.floor(a / cols) - cf);
+      var db = Math.abs((b % cols) - cc) + Math.abs(Math.floor(b / cols) - cf);
+      return da - db || a - b;
+    });
+    return ids;
+  }
+  return ids; // secuencial
+}
 
 function _easeOutCubic(p) { return 1 - Math.pow(1 - p, 3); }
 function _easeOutBack(p) {
@@ -786,16 +901,19 @@ function _pintarCuadro(ctx, prims, t, fases, estado) {
   ctx.restore();
   if (!hay.length) return;
 
-  // Uno a la vez: cada cuadro arranca en t0 = indice * paso y tarda 1.1 s
-  // en instalarse; la tanda completa cabe antes de la salida (dur - 1.6).
-  var paso = Math.max(0.42, (fases.dur - 1.6) / hay.length);
+  // Uno a la vez: cada cuadro arranca en t0 = indice * paso y tarda tDur en
+  // instalarse; el ritmo (rapido/normal/lento) escala paso y duración juntos.
+  var aM = (estado.imp && estado.imp.anim && estado.imp.anim.mosaico) || {};
+  var ritmo = IMP_RITMO_TILE[aM.ritmo || 'normal'] || 1;
+  var plan = IMP_TILES_PLAN(hay.length, fases.dur, ritmo);
+  var paso = plan.paso;
   hay.forEach(function (grupo, idx) {
     var b = _bboxDe(grupo);
     var t0 = idx * paso;
     if (t < t0) return; // todavia no le toca
-    var p = Math.min(1, (t - t0) / 1.1);
+    var p = Math.min(1, (t - t0) / plan.tDur);
     var e = _easeOutCubic(p);
-    var tipo = IMP_ENTRADAS_TILE[idx % IMP_ENTRADAS_TILE.length];
+    var tipo = IMP_TILE_TIPO(idx, aM.tiles || 'ciclo');
     ctx.save();
     ctx.globalAlpha = alphaOut;
     if (deslOut) ctx.translate(deslOut, 0);
