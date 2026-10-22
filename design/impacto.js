@@ -10,7 +10,7 @@ var IMP_TIPOS = ['mosaico', 'ficha', 'plan'];
 var IMP_ANCHO = 1920;
 var IMP_ALTO = 1080;
 var IMP_SELECCION = null;   // ODS elegido para la lámina ficha (runtime)
-var compositorListo = true; // flag de la tarea de composicion (stub legado)
+var compositorListo = true; // flag de la tarea de composicion
 
 // Programas articulables del plan nacional (rutura: chips checkbox).
 var IMP_PROGRAMAS = [
@@ -77,7 +77,8 @@ function _fontDe(estado, rol) {
 }
 
 function _modosPlan(estado) {
-  return modoEfectivo({ impacto: { plan: { modo: estado.imp.plan.modo } }, rallyType: estado.modo }, estado.brief);
+  var plan = (estado.imp && estado.imp.plan) || {};
+  return modoEfectivo({ impacto: { plan: { modo: plan.modo } }, rallyType: estado.modo }, estado.brief);
 }
 
 // Encabezado comun a las tres laminas: marca + titulo del modulo.
@@ -151,12 +152,7 @@ function _laminaFicha(estado, odsSel) {
   prims.push({ k: 'txt', x: 700, y: 430, text: od.shortTarget, font: _fontDe(estado, 'b'), size: 34, weight: 600, color: estado.pal.ac });
   var conecta = (estado.imp.textos['conecta' + o.id]) || 'La solución atiende esta meta directamente en el territorio, con pruebas y costo bajo.';
   prims.push({ k: 'txt', x: 700, y: 520, text: conecta, font: _fontDe(estado, 'b'), size: 30, weight: 400, color: estado.pal.ink });
-  prims = prims.concat(_cabeceraQo(estado));
   return prims;
-}
-
-function _cabeceraQo(estado) {
-  return [];
 }
 
 // Lámina plan: banda superior PNDH (nacional) o agenda sostenible (latam).
@@ -166,8 +162,9 @@ function _laminaPlan(estado, odsSel, modo) {
   var bandaY = 96, bandaH = 150;
   var banda = nacional ? estado.pal.ink : estado.pal.ac;
   var tintaBanda = tintaSobre(banda);
-  var titulo = nacional ? 'Plan Nacional de Lucha contra la Pobreza 2022–2026' : 'Agenda sostenible para América Latina';
-  var eje = (estado.brief && estado.brief.national_plan_axis) || (nacional ? '' : 'Ejes replicables en todo el territorio');
+  var titulo = nacional ? 'Plan Nacional de Lucha contra la Pobreza y para el Desarrollo Humano 2022–2026' : 'Agenda sostenible para América Latina';
+  var planLi = (estado.imp && estado.imp.plan) || {};
+  var eje = planLi.eje || (estado.brief && estado.brief.national_plan_axis) || (nacional ? '' : 'Ejes replicables en todo el territorio');
   prims.push({ k: 'rect', x: 84, y: bandaY, w: IMP_ANCHO - 168, h: bandaH, color: banda });
   prims.push({ k: 'txt', x: 124, y: bandaY + 30, text: titulo, font: _fontDe(estado, 't'), size: 42, weight: 900, color: tintaBanda });
   if (eje) {
@@ -414,8 +411,8 @@ function _odsSelPara(tipo) {
   if (tipo === 'plan') return activos.filter(function (o) { return o.on; });
   if (tipo === 'ficha') {
     var sel = IMP_SELECCION;
-    var ods = sel && ODS_DATA[sel - 1] ? [{ id: sel, on: true }] : null;
-    if (ods) return ods;
+    var encendido = activos.filter(function (o) { return o.on && o.id === sel; });
+    if (encendido.length) return [{ id: sel, on: true }];
     var on = activos.filter(function (o) { return o.on; });
     return on.length ? [on[0]] : [];
   }
@@ -429,8 +426,6 @@ function pintar() {
   var w = document.getElementById('fichaOdsWrap');
   if (w) w.style.display = tipo === 'ficha' ? '' : 'none';
 }
-
-var compositorListo = true;
 
 var IMP_IDENT_TIPO = function () {
   var s = document.getElementById('laminaSel');
@@ -500,10 +495,10 @@ function wirePlan() {
     sel.value = p.modo || '';
     sel.addEventListener('change', function () { p.modo = sel.value; _guardar(); dibujarChipsProgramas(); pintar(); });
   }
-  ['planMuni', 'planCifra', 'planTexto'].forEach(function (id) {
+  ['planMuni', 'planEje', 'planCifra', 'planTexto'].forEach(function (id) {
     var el = document.getElementById(id);
     if (!el) return;
-    var campo = { planMuni: 'municipio', planCifra: 'cifra', planTexto: 'texto' }[id];
+    var campo = { planMuni: 'municipio', planEje: 'eje', planCifra: 'cifra', planTexto: 'texto' }[id];
     el.value = p[campo] || '';
     el.addEventListener('input', function () { p[campo] = el.value; _guardar(); if (IMP_IDENT_TIPO() === 'plan') pintar(); });
   });
@@ -744,34 +739,45 @@ function grabarClip(tipo, segundos, streamAudio) {
     function aviso(txt) { if (st) st.textContent = txt; }
 
     // Fallback: captura frame por frame a 24 fps y empaqueta en ZIP (o PNG suelto).
+    // Cada frame se captura con toBlob (asíncrono, sin base64) y con avance visible.
     function fallarAPNG(origen) {
       aviso('La grabación WebM falló (' + (origen && origen.message ? origen.message : 'error') + '); secuencia a PNG…');
       var plan = planificarGrabacion(segundos, false);
-      var urls = [];
-      var i;
-      try {
-        for (i = 0; i < plan.frames; i++) {
+      var blobs = [];
+      var i = 0;
+      function siguiente() {
+        if (i >= plan.frames) return empaquetar();
+        try {
           _pintarCuadro(ctx, prims, i / plan.fps, fases, estado);
-          urls.push(cv.toDataURL('image/png'));
-        }
-      } catch (e1) { reject(e1); return; }
-      if (typeof JSZip === 'undefined') {
-        aviso('Sin JSZip: se baja el frame final como PNG.');
-        _pintarCuadro(ctx, prims, fases.dur, fases, estado);
-        cv.toBlob(function (blob) {
-          if (blob) _descargar(blob, _archivoDetalle('png', tipo));
-          resolve({ png: true });
+        } catch (e1) { reject(e1); return; }
+        cv.toBlob(function (b) {
+          if (!b) { reject(new Error('El navegador no pudo capturar el frame ' + i + ' a PNG.')); return; }
+          blobs.push(b);
+          i++;
+          if (i % 12 === 0) aviso('Capturando secuencia PNG… ' + i + ' / ' + plan.frames + ' frames');
+          siguiente();
         }, 'image/png');
-        return;
       }
-      var zip = new JSZip();
-      var carpeta = zip.folder('frames');
-      urls.forEach(function (u, k) { carpeta.file('f' + String(k).padStart(4, '0') + '.png', u.split(',')[1], { base64: true }); });
-      zip.generateAsync({ type: 'blob' }).then(function (blob) {
-        _descargar(blob, _archivoDetalle('zip', tipo));
-        aviso('MediaRecorder no disponible: se exportó la secuencia PNG (' + plan.frames + ' frames).');
-        resolve({ zip: true });
-      })['catch'](reject);
+      function empaquetar() {
+        if (typeof JSZip === 'undefined') {
+          aviso('Sin JSZip: se baja el frame final como PNG.');
+          _pintarCuadro(ctx, prims, fases.dur, fases, estado);
+          cv.toBlob(function (blob) {
+            if (blob) _descargar(blob, _archivoDetalle('png', tipo));
+            resolve({ png: true });
+          }, 'image/png');
+          return;
+        }
+        var zip = new JSZip();
+        var carpeta = zip.folder('frames');
+        blobs.forEach(function (b, k) { carpeta.file('f' + String(k).padStart(4, '0') + '.png', b); });
+        zip.generateAsync({ type: 'blob' }).then(function (blob) {
+          _descargar(blob, _archivoDetalle('zip', tipo));
+          aviso('MediaRecorder no disponible: se exportó la secuencia PNG (' + plan.frames + ' frames).');
+          resolve({ zip: true });
+        })['catch'](reject);
+      }
+      siguiente();
     }
 
     function empezarRec() {
@@ -832,6 +838,7 @@ function _grabarActual() {
     : Promise.resolve(null);
   pedir.then(function (stream) {
     return grabarClip(tipo, dur, stream).then(function (blob) {
+      detenerMic(stream);
       if (blob && blob.type && blob.type.indexOf('video/webm') === 0) {
         _descargar(blob, _archivoDetalle('webm', tipo));
       } else if (blob && blob.zip) {
@@ -839,6 +846,9 @@ function _grabarActual() {
       } else if (blob && blob.png) {
         avisoEstado('MediaRecorder no disponible y sin JSZip: se bajó el frame final en PNG.');
       }
+    }, function (e) {
+      detenerMic(stream);
+      throw e;
     });
   })['catch'](function (e) {
     if (st) st.textContent = (e && e.name === 'NotAllowedError')
@@ -846,6 +856,9 @@ function _grabarActual() {
       : 'La grabación falló: ' + (e && e.message ? e.message : 'error desconocido');
   });
   function avisoEstado(txt) { if (st) st.textContent = txt; }
+  function detenerMic(stream) {
+    if (stream && stream.getTracks) stream.getTracks().forEach(function (t) { t.stop(); });
+  }
 }
 
 // ---------- Task 8: narracion pulible con IA ----------
@@ -918,7 +931,7 @@ function _narContexto(tipo) {
   }
   var nacional = modoEfectivo(IMP, IMP._brief) !== 'latam';
   return nacional
-    ? ('Plan Nacional de Lucha contra la Pobreza 2022–2026' + (lug ? ', ' + lug : ''))
+    ? ('Plan Nacional de Lucha contra la Pobreza y para el Desarrollo Humano 2022–2026' + (lug ? ', ' + lug : ''))
     : ('Agenda sostenible para América Latina' + (lug ? ', ' + lug : ''));
 }
 
@@ -1027,11 +1040,16 @@ function renderNar() {
     if (!puedeAplicar(area.value, true)) return;
     var r = aplicarPropuesta(area, tprop.value, refs.max);
     nar[_narClave(refs.tipo)] = r.texto;
+    if (nar.props) delete nar.props[_narClave(refs.tipo)];
     _guardar();
     refs.panel.hidden = true;
     aviso(r.truncado ? r.aviso : 'Propuesta aplicada al borrador de ' + (IMP_TIPO_ETIQUETA[refs.tipo] || refs.tipo) + '.');
   });
   descartar.addEventListener('click', function () {
+    var nar = IMP.impacto.narracion || {};
+    var tipoDsc = _narRefs.paneles.tipo;
+    if (tipoDsc && nar.props) delete nar.props[_narClave(tipoDsc)];
+    _guardar();
     _narRefs.paneles.panel.hidden = true;
     aviso('Propuesta descartada. El borrador queda como estaba.');
   });
@@ -1101,10 +1119,11 @@ function renderNar() {
   _narRefs.manual = _mostrarPromptManual;
 }
 
-// Reparto "ODS 12: texto" → claves narracion['ficha12'] (SOLO propuesta: queda
-// pendiente de Aplicar en la ficha respectiva, nada silencioso).
+// Reparto "ODS 12: texto" → claves de PROPUESTA nar.props['ficha12'] (nunca
+// sustituye el borrador: la ficha lo muestra con Aplicar o Descartar).
 function repartirConexiones(texto) {
   var nar = IMP.impacto.narracion = IMP.impacto.narracion || {};
+  nar.props = nar.props || {};
   var lineas = String(texto || '').split(/\n+/);
   var n = 0;
   lineas.forEach(function (ln) {
@@ -1112,22 +1131,28 @@ function repartirConexiones(texto) {
     if (!m) return;
     var id = +m[1];
     if (!ODS_DATA[id - 1]) return;
-    nar['ficha' + id] = m[2].trim();
+    nar.props['ficha' + id] = m[2].trim();
     n++;
   });
   _guardar();
   return n;
 }
 
-// Cambio de ficha ODS: el borrador del textarea debe seguir al ODS activo.
+// Cambio de ficha ODS: el borrador del textarea debe seguir al ODS activo
+// y, si la IA dejó una conexión pendiente para esa ficha, se muestra como
+// propuesta editable (Aplicar o Descartar), nunca reemplazo silencioso.
 function _narCargarFicha() {
   var area = _narRefs.areas && _narRefs.areas.ficha;
   if (!area) return;
   var nar = IMP.impacto.narracion || {};
   area.value = nar[_narClave('ficha')] || '';
-  var ev = document.createEvent('Event');
-  ev.initEvent('input', false, false);
-  area.dispatchEvent(ev);
+  area.dispatchEvent(new Event('input'));
+  var pend = nar.props && nar.props[_narClave('ficha')];
+  if (pend && _narRefs.mostrar) {
+    var dur = (IMP.impacto.anim.ficha && IMP.impacto.anim.ficha.dur) || IMP.impacto.dur || 5;
+    _narRefs.mostrar('ficha', pend, palabrasMax(dur));
+    if (_narRefs.setAviso) _narRefs.setAviso('La IA dejó una conexión propuesta para esta ficha: edítala y Aplica, o Descártala.');
+  }
 }
 
 document.addEventListener('DOMContentLoaded', arranqueImpacto);

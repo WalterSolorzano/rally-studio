@@ -67,10 +67,10 @@ textarea.propuesta { border-radius: var(--rs-r-sm); }
 
 /* --- narracion IA (Task 8) --- */
 .propuesta {
-  border: 1px solid #0866F5;
-  background: #F0F6FF;
+  border: 1px solid var(--rs-primary, #0866F5);
+  background: var(--rs-bg-secondary, #F0F6FF);
   resize: vertical;
 }
-.contador { font-family: var(--font-mono, 'JetBrains Mono', monospace); font-variant-numeric: tabular-nums; color: #5C7193; font-size: 13px; min-width: 7ch; align-self: center; }
+.contador { font-family: var(--font-mono, 'JetBrains Mono', monospace); font-variant-numeric: tabular-nums; color: var(--rs-muted, #475569); font-size: 13px; min-width: 7ch; align-self: center; }
 
 

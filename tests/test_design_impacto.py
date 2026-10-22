@@ -227,3 +227,26 @@ def test_truncar_palabras_con_aviso():
     datos = correr("truncar", [corto, 11])
     assert datos["truncado"] is False
     assert datos["texto"] == corto
+
+
+# --- fix-batch revisión: conexiones como propuesta y guard del modo plan ---
+
+def test_repartir_conexiones_va_a_propuestas_y_no_toca_el_borrador():
+    datos = correr("repartir", ["ODS 12: Iss + salud para barrio Zaragoza"])
+    assert datos["n"] == 1
+    assert datos["props"] and datos["props"]["ficha12"] == "Iss + salud para barrio Zaragoza"
+    assert "ficha12" not in datos["claves"]
+    datos = correr("repartir", ["ODS 105: fuera de rango"])
+    assert datos["n"] == 0
+    assert not datos["props"]
+
+
+@pytest.mark.parametrize("estado", [
+    {"imp": {}, "modo": "", "brief": {}},
+    {"modo": "latam", "brief": None},
+    {},
+])
+def test_modos_plan_sin_impacto_no_lanza_typeerror(estado):
+    datos = correr("modos-plan", estado)
+    assert "error" not in datos
+    assert "modo" in datos

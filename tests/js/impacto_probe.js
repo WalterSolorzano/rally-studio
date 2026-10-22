@@ -118,6 +118,21 @@ switch (comando) {
     salir({ modo });
     break;
   }
+  // --- fix-batch review: conexiones propuestas + guard _modosPlan ---
+  case "repartir": {
+    const texto = JSON.parse(process.argv[3] || '""');
+    sandbox.IMP = { impacto: { narracion: {} } };
+    const n = typeof sandbox.repartirConexiones === "function" ? sandbox.repartirConexiones(texto) : null;
+    const nar = sandbox.IMP.impacto.narracion;
+    salir({ n, props: nar.props || null, claves: Object.keys(nar) });
+    break;
+  }
+  case "modos-plan": {
+    const estado = JSON.parse(process.argv[3] || "{}");
+    if (typeof sandbox._modosPlan !== "function") { salir({ error: "_modosPlan ausente" }); break; }
+    salir({ modo: sandbox._modosPlan(estado) });
+    break;
+  }
   case "tinta": {
     const hexa = JSON.parse(process.argv[3]);
     const color = typeof sandbox.tintaSobre === "function" ? sandbox.tintaSobre(hexa) : null;
