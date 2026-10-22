@@ -253,4 +253,67 @@ assert.equal(RSA.truncateWithNotice("abc", 24000).truncated, false);
 assert.equal(RSA.truncateWithNotice("abc", 24000).text, "abc");
 assert.equal(RSA.truncateWithNotice("", 24000).text, "");
 
+// ── Fix pass (review whole-branch): regresiones ─────────────────────────────
+
+// (1) Critico: TODO campo de IA se escapa antes de innerHTML.
+const escOut = RSA.esc('<img src=x onerror=alert(1)>');
+assert.ok(escOut.includes("&lt;img"), "esc() debe neutralizar <");
+assert.equal(escOut.includes("<img"), false, "esc() no debe dejar HTML vivo");
+assert.equal(RSA.esc('a & "b" \'c\''), "a &amp; &quot;b&quot; &#39;c&#39;");
+
+// (2) Importante: modo externa pide tarea y formato (no un prompt vacío).
+["guion", "presupuesto", "pautado", "canvas", "docs", "videoEditor"].forEach((id) => {
+  const txt = RSA.buildPrompt({id: id, name: id}, RSA_RUBRICS[id],
+    {rally_type: "latam"}, "externa", {externalText: "RESP-EXT"});
+  const tarea = txt.split("[TAREA]\n")[1].split("\n\n")[0];
+  assert.ok(tarea.trim().length > 20, id + ": [TAREA] de modo externa no puede quedar vacía");
+  assert.ok(txt.includes('"veredictos"'), id + ": modo externa exige el JSON estructurado");
+});
+
+// (5) Importante: ids de shot_plan con metacaracteres no rompen el regex.
+const metaState = {
+  shot_plan: [{id: "a1("}, {id: "a2[.*+]"}, {id: "normal_id"}],
+  video_assets: {items: [{name: "asset_a1(_toma.mp4"}, {name: "asset_normal_id_toma.mp4"}]}
+};
+assert.doesNotThrow(() => RSA.shotlistChecks(metaState), "ids con metacaracteres no deben lanzar");
+// y un asset con id normal sigue validando bien (sin hallazgo)
+const okShot = RSA.shotlistChecks({
+  shot_plan: [{id: "a1_broll"}],
+  video_assets: {items: [{name: "asset_a1_broll_toma.mp4"}]}
+});
+eq(okShot, {problems: []});
+
+// (6) Importante: normalización de etiquetas de la IA (acentos/mayúsculas).
+assert.equal(RSA._labelClass("Crítico"), "err");
+assert.equal(RSA._labelClass("critico"), "err");
+assert.equal(RSA._labelClass("Cumple"), "ok");
+assert.equal(RSA._labelClass("cumple"), "ok");
+assert.equal(RSA._labelClass("Parcial"), "warn");
+assert.equal(RSA._labelClass("Falla"), "err");
+assert.equal(RSA._labelClass("Sugerencia"), "soft");
+assert.equal(RSA._labelClass(""), "soft");
+assert.equal(RSA._countCritical([{severidad: "Crítico"}, {severidade: "x"}, {severity: "Critico"}]), 2);
+
+// (7) Importante: canvas itemizado no produce falsos avisos si un monto es el total.
+const canvasItemized = {
+  rally_type: "latam",
+  budget: [{element: "x", category: "S", units: 1, unit_cost: 5000, url: "u"}],
+  model_canvas: {
+    socios: "s", actividades: "a", propuesta: "p", relaciones: "r", segmentos: "g",
+    recursos: "rec", canales: "c",
+    costes: "Sensores 2,000 + gateway 3,000 + instalación 0 = 5,000",
+    ingresos: "Total ingresos: 5,000"
+  }
+};
+eq(RSA.canvasChecks(canvasItemized), {problems: []});
+const canvasWrong = {
+  rally_type: "latam",
+  budget: [{element: "x", category: "S", units: 1, unit_cost: 5000, url: "u"}],
+  model_canvas: {
+    socios: "s", actividades: "a", propuesta: "p", relaciones: "r", segmentos: "g",
+    recursos: "rec", canales: "c", costes: "Total costo: 9000", ingresos: "x"
+  }
+};
+assert.equal(RSA.canvasChecks(canvasWrong).problems.some((p) => p.title.includes("9,000")), true);
+
 console.log("SUITE COMPLETA: todos los asserts de Task 2+4 pasan.");

@@ -52,6 +52,31 @@
       .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
       .replace(/[^a-z0-9\s]/g, " ").replace(/\s+/g, " ").trim();
   }
+  // Escapa TODO texto no controlado antes de innerHTML. El valor de la IA, el
+  // texto extraído de un documento y la respuesta externa son datos hostiles:
+  // un prompt-injection puede devolver <img onerror=…> dentro del JSON.
+  function esc(s) {
+    return String(s == null ? "" : s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+  }
+  MOD.esc = esc;
+  // Las rúbricas piden "Crítico"/"Cumple"; la IA puede devolver "critico" o
+  // "Cumple " — se compara normalizado, se muestra el texto original.
+  MOD._labelClass = function _labelClass(label) {
+    const s = normalize(label);
+    if (!s) return "soft";
+    if (s === "cumple") return "ok";
+    if (s === "parcial") return "warn";
+    if (s === "falla" || s === "critico") return "err";
+    if (s === "mejora") return "warn";
+    return "soft";
+  };
+  MOD._countCritical = function _countCritical(problemas) {
+    return (Array.isArray(problemas) ? problemas : []).filter(function (p) {
+      return normalize((p && (p.severidad || p.severity)) || "") === "critico";
+    }).length;
+  };
   function fmt(n) {
     return Number(n).toLocaleString("en-US");
   }
@@ -212,11 +237,14 @@
     const shown = Math.round(total);
     if (shown > 0) {
       ["costes", "ingresos"].forEach((k) => {
-        amountsOf(canvas[k] || "").forEach((n) => {
-          if (n !== shown) {
-            problems.push(p("Mejora", "Canvas '" + k + "' cita " + fmt(n) + " pero el presupuesto suma " + fmt(shown), "Monto en canvas = " + String(n) + "; presupuesto totalUsd = " + String(shown) + " USD (Alerta de Discrepancia Númérica)."));
-          }
-        });
+        const amounts = amountsOf(canvas[k] || "");
+        // Un canvas itemizado ("2,000 + 3,000 = 5,000") incluye componentes
+        // además del total: avisar solo si NINGÚN monto coincide.
+        if (!amounts.length || amounts.some((n) => n === shown)) return;
+        problems.push(p("Mejora",
+          "Canvas '" + k + "' no coincide con el presupuesto (cita " + amounts.map(fmt).join(", ") +
+            "; el presupuesto suma " + fmt(shown) + ")",
+          "Montos en canvas = " + amounts.join(", ") + "; presupuesto totalUsd = " + String(shown) + " USD (Alerta de Discrepancia Númérica)."));
       });
     }
     return { problems };
@@ -236,8 +264,11 @@
       seen.add(id);
     });
     const ids = Array.from(seen);
+    // Los ids vienen del estado (sincronizado/importado): escapar antes de
+    // meterlos en un RegExp o un id como "a1(" rompe el panel entero.
+    const escRe = (s) => String(s).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const re = ids.length
-      ? new RegExp("^asset_(" + ids.join("|") + ")_[a-z0-9_\\-]+\\.[a-z0-9]+$", "i")
+      ? new RegExp("^asset_(" + ids.map(escRe).join("|") + ")_[a-z0-9_\\-]+\\.[a-z0-9]+$", "i")
       : null;
     const items = state && state.video_assets && Array.isArray(state.video_assets.items) ? state.video_assets.items : [];
     items.forEach((it) => {
@@ -279,7 +310,9 @@
       return plan.map((r) => "- " + (r && r.id) + " (" + (r && r.acto) + "): " + (r && r.label)).join("\n");
     }
     if (agentId === "docs") {
-      return (state && state._rsa_doc_text) || vacio; // Task 5 lo alimenta
+      // El texto del documento llega por extra.docText (extracción del panel);
+      // no hay copia en el estado del proyecto.
+      return vacio;
     }
     return vacio;
   }
@@ -299,8 +332,12 @@
     if (st.exchange_rate_bcn) ctxLines.push("- Tasa BCN: " + st.exchange_rate_bcn + " C$/USD");
     parts.push("[CONTEXTO DEL PROYECTO]\n" + ctxLines.join("\n"));
     parts.push("[CONTENIDO ACTUAL]\n" + contentBlock(cfg.id, st));
-    const tarea = (rub.promptTarea && rub.promptTarea[mode]) || "";
-    parts.push("[TAREA]\n" + tarea);
+    const tarea = (rub.promptTarea && rub.promptTarea[mode]) ||
+      (mode === "externa" ? ((rub.promptTarea && rub.promptTarea.directo) || "") : "");
+    const tareaTxt = mode === "externa"
+      ? "Contrastá la RESPUESTA EXTERNA contra la rúbrica activa y el contenido actual: marcá qué sirve, qué falta y qué corregir.\n" + tarea
+      : tarea;
+    parts.push("[TAREA]\n" + tareaTxt);
     if (mode === "externa" && ext && ext.externalText) {
       parts.push("[RESPUESTA EXTERNA A CONTRASTAR]\n" +
         "Lo siguiente lo produjo otra IA fuera del proyecto. Contrastalo contra la r\u00fabrica activa:\n" +
@@ -309,9 +346,10 @@
     if (ext && ext.docText) {
       parts.push("[CONTENIDO DEL DOCUMENTO]\n" + String(ext.docText));
     }
-    const salida = (rub.salidaEsperada && rub.salidaEsperada[mode]) || "";
+    let salida = (rub.salidaEsperada && rub.salidaEsperada[mode]) ||
+      (mode === "externa" ? ((rub.salidaEsperada && rub.salidaEsperada.directo) || "") : "");
     let salidaTxt = salida;
-    if (mode === "directo") {
+    if (mode === "directo" || mode === "externa") {
       salidaTxt += (salidaTxt ? "\n" : "") +
         "Responde EXCLUSIVAMENTE con JSON válido:\n" +
         '{"veredictos":[{"criterio":"...","estado":"Cumple|Parcial|Falla"}],' +
@@ -363,8 +401,10 @@
 
   // ── Task 4: cliente IA local (solo el servicio :8000, sin claves ni fallback duplicado) ──
   const AI_BASE = "http://localhost:8000/api/ai";
-  const FETCH_TIMEOUT_MS = 5000;
+  const FETCH_TIMEOUT_MS = 10000;
+  const POST_TIMEOUT_MS = 45000; // POST /api/ai puede listar modelos del CLI (cold cache)
   const POLL_MS = 2000;
+  const MAX_POLLS = 150; // 5 min de techo: un job colgado no puede poll-ear para siempre
 
   MOD._classifyAIResponse = function _classifyAIResponse(res) {
     if (!res || typeof res !== "object" || !res.body || typeof res.body !== "object") {
@@ -387,50 +427,77 @@
     return { kind: "down", message: body.message || ("servicio respondi\u00f3 HTTP " + res.status) };
   };
 
-  function fetchWithTimeout(url, opts) {
+  function fetchWithTimeout(url, opts, timeoutMs) {
     const ctrl = new AbortController();
-    const t = setTimeout(function () { ctrl.abort(); }, FETCH_TIMEOUT_MS);
+    const t = setTimeout(function () { ctrl.abort(); }, timeoutMs || FETCH_TIMEOUT_MS);
     return fetch(url, Object.assign({}, opts, { signal: ctrl.signal })).finally(function () { clearTimeout(t); });
   }
 
+  // Un solo análisis activo: abrir/cerrar el panel o lanzar otro corta el poll
+  // (sin jobs huérfanos ni resultado de un run viejo pisando el panel nuevo).
+  let activeRun = null;
+  MOD.cancelAnalysis = function cancelAnalysis() {
+    if (activeRun) { activeRun.cancelled = true; activeRun = null; }
+  };
+
   // analyze(promptText, onProgress?) → Promise<{ok:true,text,provider} | {ok:false,status,message}>
   MOD.analyze = function analyze(promptText, onProgress) {
+    MOD.cancelAnalysis();
+    const run = { cancelled: false };
+    activeRun = run;
     return new Promise(function (resolve) {
       let p = typeof onProgress === "function" ? onProgress : function () {};
-      let res = null;
       fetchWithTimeout(AI_BASE, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ prompt: String(promptText || "") })
-      })
+      }, POST_TIMEOUT_MS)
         .then(function (r) { return r.json().then(function (b) { return { status: r.status, body: b }; }); })
-        .then(function (r) { res = r; return MOD._classifyAIResponse(r); })
+        .then(function (r) { return MOD._classifyAIResponse(r); })
         .then(function (cls) {
+          if (run.cancelled) { resolve({ ok: false, status: "cancelled", message: "análisis cancelado" }); return; }
           if (cls.kind !== "started") { p(cls); resolve(fail(cls)); return; }
-          pollJob(cls.job, p, resolve);
+          pollJob(cls.job, p, resolve, run, 0);
         })
-        .catch(function () {
-          p({ kind: "down", message: "buz\u00f3n local apagado: el servicio no respondi\u00f3" });
-          resolve(fail(MOD._classifyAIResponse(null)));
+        .catch(function (err) {
+          if (run.cancelled) { resolve({ ok: false, status: "cancelled", message: "análisis cancelado" }); return; }
+          const slow = err && err.name === "AbortError";
+          const cls = slow
+            ? { kind: "timeout", message: "el servicio tardó en responder (no está apagado): reintenta en unos segundos" }
+            : MOD._classifyAIResponse(null);
+          p(cls);
+          resolve(fail(cls));
         });
       function fail(cls) { return { ok: false, status: cls.kind, message: cls.message || "sin respuesta" }; }
     });
   };
 
-  function pollJob(job, p, resolve) {
+  function pollJob(job, p, resolve, run, count) {
+    if (run.cancelled) { resolve({ ok: false, status: "cancelled", message: "análisis cancelado" }); return; }
+    if (count >= MAX_POLLS) {
+      const cls = { kind: "timeout", message: "la IA lleva más de 5 minutos sin terminar; revisa el proveedor y vuelve a intentar" };
+      p(cls);
+      resolve({ ok: false, status: "timeout", message: cls.message });
+      return;
+    }
     fetchWithTimeout(AI_BASE + "/progress?job=" + encodeURIComponent(job))
       .then(function (r) { return r.json().then(function (b) { return { status: r.status, body: b }; }); })
       .then(function (r) {
+        if (run.cancelled) { resolve({ ok: false, status: "cancelled", message: "análisis cancelado" }); return; }
         const cls = MOD._classifyAIResponse(r);
         if (cls.kind === "done") { p(cls); resolve({ ok: true, text: cls.text, provider: cls.provider }); return; }
         if (cls.kind === "error") { p(cls); resolve({ ok: false, status: "error", message: cls.message }); return; }
         if (cls.kind === "down") { p(cls); resolve({ ok: false, status: "down", message: cls.message }); return; }
-        setTimeout(function () { pollJob(job, p, resolve); }, POLL_MS);
+        setTimeout(function () { pollJob(job, p, resolve, run, count + 1); }, POLL_MS);
       })
-      .catch(function () {
-        const cls = MOD._classifyAIResponse(null);
+      .catch(function (err) {
+        if (run.cancelled) { resolve({ ok: false, status: "cancelled", message: "análisis cancelado" }); return; }
+        const slow = err && err.name === "AbortError";
+        const cls = slow
+          ? { kind: "timeout", message: "el servicio tardó en responder al consultar el progreso" }
+          : MOD._classifyAIResponse(null);
         p(cls);
-        resolve({ ok: false, status: "down", message: cls.message });
+        resolve({ ok: false, status: cls.kind, message: cls.message });
       });
   }
 
@@ -439,7 +506,14 @@
     return fetchWithTimeout(AI_BASE + "/status")
       .then(function (r) { return r.json(); })
       .then(function (b) { return b && typeof b === "object" ? b : {}; })
-      .catch(function () { return { status: "down", message: "buz\u00f3n local apagado" }; });
+      .catch(function (err) {
+        return {
+          status: "down",
+          message: err && err.name === "AbortError"
+            ? "el servicio tardó en responder (¿está ocupado?)"
+            : "buzón local apagado"
+        };
+      });
   };
 
   MOD.POLL_MS = POLL_MS;
@@ -634,11 +708,7 @@
       }
     ];
 
-    function esc(s) {
-      return String(s == null ? "" : s)
-        .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
-    }
+    const esc = RSA.esc; // una sola implementación, testeada en el núcleo
     function el(tag, cls, html) {
       const n = document.createElement(tag);
       if (cls) n.className = cls;
@@ -703,6 +773,9 @@
       return overlay;
     }
     function closeOverlays() {
+      // Cerrar el panel corta el análisis en curso (un job huérfano sigue
+      // quemando cupo del proveedor y su resultado ya no tiene dónde ir).
+      if (typeof RSA.cancelAnalysis === "function") RSA.cancelAnalysis();
       if (overlay) { overlay.parentNode.removeChild(overlay); overlay = null; }
     }
     document.addEventListener("keydown", function (ev) {
@@ -722,7 +795,11 @@
     function ensureSquare() {
       const topbar = document.getElementById("topbar");
       if (!topbar) return;
-      if (!document.getElementById("rsa-tools-btn")) topbar.appendChild(makeSquare());
+      if (document.getElementById("rsa-tools-btn")) return;
+      // #topbar es flex space-between con 2 hijos: agregarlo como 3er hijo lo
+      // deja flotando al centro. Va dentro del bloque de acciones de la derecha.
+      const host = topbar.querySelector(".topbar-actions") || topbar;
+      host.appendChild(makeSquare());
     }
     // El topbar lo pinta app.js: observa hasta que exista y sigue vivo por si
     // la carcasa lo re-renderiza (re-append idempotente por id).
@@ -773,7 +850,7 @@
 
         // ── Aviso de proyecto sin definir / empty state (avesPA) ──
         const avisos = el("div", "rsa-avisos");
-        if (agent.tab && !st.rally_type) {
+        if (!st.rally_type) {
           const w = el("div", "rsa-notice", "<strong>define tu proyecto primero.</strong> Sin certamen activo no hay rúbrica contra la cual revisar.");
           const jb = el("button", "rsa-btn rsa-btn-mini", "Ir a la pestaña 00 · Certamen");
           jb.addEventListener("click", function () { jump("certamen"); });
@@ -813,6 +890,7 @@
         panel.appendChild(secChecks);
 
         // ── Task 5: zona del Analizador de Documentos (subir, extraer, confirmar) ──
+        let docTextRef = null; // textarea con el texto extraído; (c) lo envía como docText
         if (agent.id === "docs") {
           const secD = el("div", "rsa-section rsa-docs-zone");
           secD.appendChild(el("h4", "rsa-section-title", "Sube tu documento (PDF, DOCX, TXT o MD)"));
@@ -839,6 +917,7 @@
               if (ex.truncated) partes.push("TRUNCADO desde " + ex.originalLength + " caracteres (por límite de envío)");
               docChip.textContent = partes.join(" · ");
               taDoc.value = ex.text;
+              docTextRef = taDoc;
               btnDocSend.classList.remove("rsa-hidden");
             }).catch(function (e2) {
               docStage.textContent = "";
@@ -859,7 +938,7 @@
             if (!txt) { resultado.innerHTML = ""; resultado.appendChild(el("div", "rsa-note rsa-note-err", "Extrae primero el texto del documento.")); return; }
             RSA.analyzeDirect({
               agentId: agent.id, agentCfg: { id: agent.id, name: agent.nombre, tab: null },
-              state: st, docText: txt, resultEl: resultado
+              state: RSA.readState(), docText: txt, resultEl: resultado, btn: btnDocSend
             });
           });
           secD.appendChild(inDoc); secD.appendChild(btnExtract);
@@ -910,7 +989,7 @@
           if (typeof RSA.analyzeExternal === "function") {
             RSA.analyzeExternal({
               agentId: agent.id, agentCfg: { id: agent.id, name: agent.nombre, tab: agent.tab },
-              state: RSA.readState(), externalText: taExt.value, resultEl: resultado
+              state: RSA.readState(), externalText: taExt.value, resultEl: resultado, btn: btnExt
             });
           } else {
             resultado.innerHTML = "";
@@ -926,9 +1005,18 @@
         const btnDirecto = el("button", "rsa-btn rsa-btn-primary", "Analizar aquí");
         btnDirecto.addEventListener("click", function () {
           if (typeof RSA.analyzeDirect === "function") {
+            // El agente de Documentos analiza el texto extraído, no el estado.
+            const docText = (agent.id === "docs" && docTextRef && docTextRef.value)
+              ? docTextRef.value : null;
+            if (agent.id === "docs" && !docText) {
+              resultado.innerHTML = "";
+              resultado.appendChild(el("div", "rsa-note rsa-note-err",
+                "Extrae primero el texto del documento (arriba): sin documento no hay nada que analizar."));
+              return;
+            }
             RSA.analyzeDirect({
               agentId: agent.id, agentCfg: { id: agent.id, name: agent.nombre, tab: agent.tab },
-              state: RSA.readState(), resultEl: resultado
+              state: RSA.readState(), docText: docText, resultEl: resultado, btn: btnDirecto
             });
           } else {
             resultado.innerHTML = "";
@@ -981,6 +1069,8 @@
           "rate-limit": "El servicio alcanzó su límite de uso. Mensaje del servicio:",
           "no-provider": "No hay proveedor de IA conectado en el servicio local. Mensaje:",
           "error": "El servicio reportó un error. Mensaje:",
+          "timeout": "El servicio no terminó a tiempo. Detalle:",
+          "cancelled": "Análisis cancelado.",
           "down": "El buzón local (rally_service) no responde. Mensaje:"
         };
         const note = el("div", "rsa-note rsa-note-err");
@@ -1006,7 +1096,7 @@
         const vs = el("div", "rsa-verdicts");
         data.veredictos.forEach(function (v) {
           const estado = String(v.estado || "");
-          const cls = estado === "Cumple" ? "ok" : (estado === "Parcial" ? "warn" : (estado === "Falla" ? "err" : "soft"));
+          const cls = RSA._labelClass(estado);
           vs.appendChild(el("span", "rsa-chip rsa-chip-" + cls,
             "<strong>" + esc(estado) + "</strong> " + esc(v.criterio || "")));
         });
@@ -1016,9 +1106,11 @@
       if (Array.isArray(data.problemas) && data.problemas.length) {
         const ps = el("div", "rsa-problems");
         data.problemas.forEach(function (p) {
-          const sev = p.severity === "Critico" ? "err" : (p.severity === "Mejora" ? "warn" : "soft");
+          const sevLabel = p.severidad || p.severity || "Sugerencia";
+          const sev = RSA._labelClass(sevLabel);
           const row = el("div", "rsa-problem rsa-problem-" + sev);
-          row.appendChild(el("strong", null, esc(p.severity || "Sugerencia") + " · " + (p.titulo || p.title || "")));
+          // p.titulo es salida de IA (entrada hostil): esc() obligatorio.
+          row.appendChild(el("strong", null, esc(sevLabel) + " · " + esc(p.titulo || p.title || "")));
           if (p.evidencia) row.appendChild(el("div", "rsa-problem-evidence", esc(p.evidencia)));
           if (p.correccion) row.appendChild(el("div", "rsa-problem-fix", "Corrección: " + esc(p.correccion)));
           ps.appendChild(row);
@@ -1072,11 +1164,18 @@
     // Resumen de una salida para historial (≤ 120 chars).
     function resumenDe(parsed, result) {
       if (parsed && parsed.format === "json" && parsed.data && Array.isArray(parsed.data.problemas)) {
-        const crit = parsed.data.problemas.filter(function (p) { return p.severity === "Critico"; }).length;
+        const crit = RSA._countCritical(parsed.data.problemas);
         return crit + " crítico(s), " + parsed.data.problemas.length + " problema(s) marcados";
       }
       if (parsed && parsed.format === "raw") return String(result.text || "").slice(0, 120);
       return "sin problemas marcados";
+    }
+
+    // Un botón dispara un solo análisis: deshabilitado mientras corre (un
+    // doble clic abría dos jobs compitiendo por el mismo panel).
+    function busyBtn(btn, on) {
+      if (!btn) return;
+      btn.disabled = !!on;
     }
 
     // analyzeDirect(ctx): prompt directo → analyze → render → historial
@@ -1085,6 +1184,8 @@
       const RSAv = RSA;
       const st = ctx.state || RSAv.readState();
       const resultEl = ctx.resultEl;
+      if (ctx.btn && ctx.btn.disabled) return;
+      busyBtn(ctx.btn, true);
       resultEl.innerHTML = "";
       resultEl.appendChild(el("div", "rsa-note", "Analizando con la IA local… (poll cada 2 s)"));
       const rub = rubricFor(ctx.agentId, st.rally_type);
@@ -1092,11 +1193,13 @@
         resultEl.innerHTML = "";
         resultEl.appendChild(el("div", "rsa-note rsa-note-err",
           "rúbricas no cargadas: no puedo armar el prompt de análisis. Los checks locales siguen activos."));
+        busyBtn(ctx.btn, false);
         return;
       }
       const extra = ctx.docText ? { docText: ctx.docText } : null;
       const promptText = RSAv.buildPrompt(ctx.agentCfg || { id: ctx.agentId }, rub, st, "directo", extra);
       RSAv.analyze(promptText).then(function (res) {
+        busyBtn(ctx.btn, false);
         const parsed = RSA.renderAnalysis(resultEl, res);
         if (res.ok) {
           RSA.historyAdd(ctx.agentId, { mode: ctx.docText ? "documento" : "directo", resumen: resumenDe(parsed, res), veredicto: parsed && parsed.format });
@@ -1116,12 +1219,15 @@
           "Pega primero la respuesta de la IA externa en el cuadro de texto."));
         return;
       }
+      if (ctx.btn && ctx.btn.disabled) return;
+      busyBtn(ctx.btn, true);
       resultEl.appendChild(el("div", "rsa-note", "Contrastando tu respuesta externa con la IA local…"));
       const rub = rubricFor(ctx.agentId, st.rally_type);
       if (!rub) {
         resultEl.innerHTML = "";
         resultEl.appendChild(el("div", "rsa-note rsa-note-err",
           "rúbricas no cargadas: no puedo armar el prompt de contraste. Los checks locales siguen activos."));
+        busyBtn(ctx.btn, false);
         return;
       }
       const promptText = RSAv.buildPrompt(
@@ -1130,6 +1236,7 @@
         { externalText: ext }
       );
       RSAv.analyze(promptText).then(function (res) {
+        busyBtn(ctx.btn, false);
         const parsed = RSA.renderAnalysis(resultEl, res);
         if (res.ok) {
           RSA.historyAdd(ctx.agentId, { mode: "externa", resumen: resumenDe(parsed, res), veredicto: parsed && parsed.format });
