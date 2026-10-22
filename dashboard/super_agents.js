@@ -306,6 +306,9 @@
         "Lo siguiente lo produjo otra IA fuera del proyecto. Contrastalo contra la r\u00fabrica activa:\n" +
         "<<<RESPUESTA_EXTERNA\n" + String(ext.externalText) + "\nRESPUESTA_EXTERNA>>>");
     }
+    if (ext && ext.docText) {
+      parts.push("[CONTENIDO DEL DOCUMENTO]\n" + String(ext.docText));
+    }
     const salida = (rub.salidaEsperada && rub.salidaEsperada[mode]) || "";
     let salidaTxt = salida;
     if (mode === "directo") {
@@ -440,6 +443,127 @@
   };
 
   MOD.POLL_MS = POLL_MS;
+
+  // ── Task 5: Analizador de Documentos ─────────────────────────────────────
+  const DOC_MAX = 24000;
+  MOD.truncateWithNotice = function truncateWithNotice(text, max) {
+    const m = max || DOC_MAX;
+    const s = String(text == null ? "" : text);
+    return {
+      text: s.slice(0, m),
+      originalLength: s.length,
+      truncated: s.length > m
+    };
+  };
+  MOD.DOC_MAX = DOC_MAX;
+
+  // extractDoc(file, onStage) → {text, source:"pdf"|"docx"|"ocr", pages, truncated}
+  // Solo navegador: requiere FileReader / pdf.js / mammoth / tesseract.js (ya cargadas).
+  MOD.extractDoc = function extractDoc(file, onStage) {
+    const stage = (typeof onStage === "function") ? onStage : function () {};
+    return new Promise(function (resolve, reject) {
+      if (!file || !file.name) { reject(new Error("no se reconoció el archivo")); return; }
+      const ext = (file.name.split(".").pop() || "").toLowerCase();
+      const reader = new FileReader();
+      reader.onerror = function () { reject(new Error("no se pudo leer el archivo")); };
+      stage("Leyendo " + file.name + "…");
+
+      if (ext === "docx") {
+        reader.onload = function () {
+          const M = window.mammoth;
+          if (!M || !M.extractRawText) { reject(new Error("mammoth no está disponible en esta página")); return; }
+          stage("Extrayendo texto del DOCX…");
+          M.extractRawText({ arrayBuffer: reader.result })
+            .then(function (r) {
+              const t = RSA.truncateWithNotice(r.value || "", DOC_MAX);
+              resolve({ text: t.text, source: "docx", pages: null, truncated: t.truncated, originalLength: t.originalLength });
+            })
+            .catch(function (e) { reject(new Error("el DOCX no se pudo leer: " + (e && e.message || "error"))); });
+        };
+        reader.readAsArrayBuffer(file);
+        return;
+      }
+
+      if (ext === "pdf") {
+        reader.onload = function () {
+          const PDF = window.pdfjsLib;
+          if (!PDF || !PDF.getDocument) { reject(new Error("pdf.js no está disponible en esta página")); return; }
+          stage("Abriendo PDF…");
+          PDF.getDocument({ data: reader.result }).promise.then(function (pdf) {
+            const n = pdf.numPages;
+            const head = Math.min(n, 60);
+            const pages = [];
+            let p = 1;
+            function next() {
+              if (p > head) { finish(); return; }
+              pdf.getPage(p).then(function (page) {
+                return page.getTextContent();
+              }).then(function (tc) {
+                const txt = tc.items.map(function (i) { return i.str; }).join(" ").trim();
+                pages.push(txt);
+                stage("Página " + p + " de " + head + "…");
+                p += 1;
+                setTimeout(next, 0);
+              }).catch(function () { pages.push(""); p += 1; setTimeout(next, 0); });
+            }
+            function finish() {
+              const native = pages.filter(Boolean).length;
+              if (native > 0) {
+                stage("Texto nativo extraído (" + native + "/" + head + " páginas con texto).");
+                const all = pages.join("\n\n");
+                const t = RSA.truncateWithNotice(all, DOC_MAX);
+                resolve({ text: t.text, source: "pdf", pages: head, truncated: t.truncated, originalLength: t.originalLength });
+                return;
+              }
+              // PDF escaneado: OCR solo primeras páginas (aviso cuántas).
+              stage("Sin texto nativo — OCR con tesseract sobre las primeras 3 páginas…");
+              const ocrPages = Math.min(n, 3);
+              const ocrTexts = [];
+              let op = 1;
+              const T = window.Tesseract;
+              if (!T || !T.recognize) { reject(new Error("tesseract no está disponible para leer un PDF escaneado")); return; }
+              function ocrNext() {
+                if (op > ocrPages) {
+                  const all = ocrTexts.filter(Boolean).join("\n\n");
+                  const t = RSA.truncateWithNotice(all, DOC_MAX);
+                  resolve({ text: t.text, source: "ocr", pages: ocrPages, truncated: t.truncated, originalLength: t.originalLength });
+                  return;
+                }
+                pdf.getPage(op).then(function (page) {
+                  const vp = page.getViewport({ scale: 2 });
+                  const cv = document.createElement("canvas");
+                  cv.width = vp.width; cv.height = vp.height;
+                  return page.render({ canvasContext: cv.getContext("2d"), viewport: vp }).promise.then(function () {
+                    return T.recognize(cv);
+                  });
+                }).then(function (r) {
+                  ocrTexts.push((r && r.data && r.data.text || "").trim());
+                  stage("OCR página " + op + " de " + ocrPages + "…");
+                  op += 1;
+                  setTimeout(ocrNext, 0);
+                }).catch(function (e) { reject(new Error("el OCR falló: " + (e && e.message || "error"))); });
+              }
+              ocrNext();
+            }
+            next();
+          }).catch(function (e) { reject(new Error("el PDF se abrió pero no se pudo leer: " + (e && e.message || "error"))); });
+        };
+        reader.readAsArrayBuffer(file);
+        return;
+      }
+
+      if (ext === "txt" || ext === "md") {
+        reader.onload = function () {
+          const t = RSA.truncateWithNotice(String(reader.result || ""), DOC_MAX);
+          resolve({ text: t.text, source: "txt", pages: null, truncated: t.truncated, originalLength: t.originalLength });
+        };
+        reader.readAsText(file);
+        return;
+      }
+
+      reject(new Error("formato no soportado (" + (ext || "desconocido") + "). Sube PDF, DOCX, TXT o MD."));
+    });
+  };
 
   globalThis.RSA = MOD;
 
@@ -688,6 +812,63 @@
         secChecks.appendChild(chips);
         panel.appendChild(secChecks);
 
+        // ── Task 5: zona del Analizador de Documentos (subir, extraer, confirmar) ──
+        if (agent.id === "docs") {
+          const secD = el("div", "rsa-section rsa-docs-zone");
+          secD.appendChild(el("h4", "rsa-section-title", "Sube tu documento (PDF, DOCX, TXT o MD)"));
+          const inDoc = el("input", "rsa-file");
+          inDoc.type = "file"; inDoc.accept = ".pdf,.docx,.txt,.md";
+          const btnExtract = el("button", "rsa-btn rsa-btn-primary", "Extraer texto");
+          btnExtract.disabled = true;
+          const docStage = el("div", "rsa-doc-stage");
+          const docChip = el("div", "rsa-doc-chip");
+          const taDoc = el("textarea", "rsa-cfg-doc");
+          taDoc.readOnly = true;
+          taDoc.placeholder = "Aquí se verá el texto extraído (solo lectura, hasta 24,000 caracteres).";
+          inDoc.addEventListener("change", function () { btnExtract.disabled = !inDoc.files || !inDoc.files[0]; docStage.textContent = ""; docChip.textContent = ""; taDoc.value = ""; });
+          btnExtract.addEventListener("click", function () {
+            const f = inDoc.files && inDoc.files[0];
+            if (!f) return;
+            btnExtract.disabled = true;
+            docChip.textContent = ""; taDoc.value = ""; docStage.textContent = "Extrayendo…";
+            RSA.extractDoc(f, function (m) { docStage.textContent = m; }).then(function (ex) {
+              docStage.textContent = "Extracción lista.";
+              const partes = ["fuente: " + ex.source];
+              if (ex.pages) partes.push("páginas: " + ex.pages);
+              partes.push("caracteres enviados: " + ex.text.length);
+              if (ex.truncated) partes.push("TRUNCADO desde " + ex.originalLength + " caracteres (por límite de envío)");
+              docChip.textContent = partes.join(" · ");
+              taDoc.value = ex.text;
+              btnDocSend.classList.remove("rsa-hidden");
+            }).catch(function (e2) {
+              docStage.textContent = "";
+              docChip.textContent = "No pude extraer: " + (e2 && e2.message || "error");
+              btnDocSend.classList.add("rsa-hidden");
+            }).then(function () { btnExtract.disabled = false; });
+          });
+          // Confirmación explícita antes de la primera llamada (decisión 14 de la spec).
+          const confirmRow = el("div", "rsa-doc-confirm");
+          confirmRow.appendChild(el("span", "rsa-doc-confirm-text",
+            "El contenido del documento se enviará al proveedor configurado: "));
+          const provMini = el("span", "rsa-provider-chip", "estado no verificado");
+          RSA.UI_refreshProvider(provMini);
+          confirmRow.appendChild(provMini);
+          const btnDocSend = el("button", "rsa-btn rsa-btn-primary rsa-hidden", "Enviar a análisis");
+          btnDocSend.addEventListener("click", function () {
+            const txt = taDoc.value;
+            if (!txt) { resultado.innerHTML = ""; resultado.appendChild(el("div", "rsa-note rsa-note-err", "Extrae primero el texto del documento.")); return; }
+            RSA.analyzeDirect({
+              agentId: agent.id, agentCfg: { id: agent.id, name: agent.nombre, tab: null },
+              state: st, docText: txt, resultEl: resultado
+            });
+          });
+          secD.appendChild(inDoc); secD.appendChild(btnExtract);
+          secD.appendChild(docStage); secD.appendChild(docChip);
+          secD.appendChild(taDoc);
+          secD.appendChild(confirmRow); secD.appendChild(btnDocSend);
+          panel.appendChild(secD);
+        }
+
         // ── Zonas de decisión 4: (a) prompt lleva, (b) pegar respuesta, (c) directo ──
         const resultado = el("div", "rsa-result");
         const rub = rubricFor(agentId, st.rally_type);
@@ -899,6 +1080,7 @@
     }
 
     // analyzeDirect(ctx): prompt directo → analyze → render → historial
+    // ctx.docText opcional (Analizador de Documentos): analiza el texto extraído.
     RSA.analyzeDirect = function analyzeDirect(ctx) {
       const RSAv = RSA;
       const st = ctx.state || RSAv.readState();
@@ -912,11 +1094,12 @@
           "rúbricas no cargadas: no puedo armar el prompt de análisis. Los checks locales siguen activos."));
         return;
       }
-      const promptText = RSAv.buildPrompt(ctx.agentCfg || { id: ctx.agentId }, rub, st, "directo");
+      const extra = ctx.docText ? { docText: ctx.docText } : null;
+      const promptText = RSAv.buildPrompt(ctx.agentCfg || { id: ctx.agentId }, rub, st, "directo", extra);
       RSAv.analyze(promptText).then(function (res) {
         const parsed = RSA.renderAnalysis(resultEl, res);
         if (res.ok) {
-          RSA.historyAdd(ctx.agentId, { mode: "directo", resumen: resumenDe(parsed, res), veredicto: parsed && parsed.format });
+          RSA.historyAdd(ctx.agentId, { mode: ctx.docText ? "documento" : "directo", resumen: resumenDe(parsed, res), veredicto: parsed && parsed.format });
         }
       });
     };

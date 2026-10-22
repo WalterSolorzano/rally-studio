@@ -257,6 +257,61 @@
 .rsa-prompt:focus,
 .rsa-externa:focus { outline: none; border-color: var(--border-focus); }
 .rsa-hidden { display: none; }
+
+/* ── Task 5: Analizador de Documentos ─────────────────────────────────── */
+.rsa-docs-zone { display: flex; flex-direction: column; gap: 8px; }
+.rsa-file {
+  font-family: var(--font-ui);
+  font-size: 11.5px;
+  color: var(--text-body);
+  max-width: 420px;
+}
+.rsa-doc-stage {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-muted, var(--text-body));
+}
+.rsa-doc-chip {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--text-title);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  padding: 4px 8px;
+  display: inline-block;
+}
+.rsa-cfg-doc,
+.rsa-doc-text {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--border-strong);
+  border-radius: 7px;
+  padding: 9px 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--text-title);
+  background: var(--bg-subtle);
+  resize: vertical;
+  min-height: 150px;
+  max-height: 320px;
+  overflow-y: auto;
+}
+.rsa-doc-confirm {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 8px 10px;
+  border: 1px solid var(--border-strong);
+  border-left: 3px solid var(--color-primary);
+  border-radius: 6px;
+  background: var(--bg-subtle);
+}
+.rsa-doc-confirm-text { font-size: 11.5px; font-weight: 600; color: var(--text-title); }
 .rsa-static-ta {
   position: fixed;
   left: -9999px;

@@ -236,4 +236,21 @@ assert.ok(pExt.includes("DESDE-IA-EXTERNA-123"), "texto externo presente");
 assert.equal(RSA.buildPrompt({id: "guion"}, RSA_RUBRICS.guion, {rally_type: "latam"}, "directo")
   .includes("RESPUESTA EXTERNA"), false);
 
+// buildPrompt inyecta el texto del documento subido (Task 5)
+const pDoc = RSA.buildPrompt({id: "docs"}, RSA_RUBRICS.docs,
+  {rally_type: "nacional"}, "directo", {docText: "CONTENIDO-DOC-XYZ"});
+assert.ok(pDoc.includes("[CONTENIDO DEL DOCUMENTO]"), "secci\u00f3n documento");
+assert.ok(pDoc.includes("CONTENIDO-DOC-XYZ"), "texto del documento presente");
+assert.equal(RSA.buildPrompt({id: "docs"}, RSA_RUBRICS.docs, {rally_type: "nacional"}, "lleva")
+  .includes("[CONTENIDO DEL DOCUMENTO]"), false);
+
+// truncateWithNotice (Task 5)
+const big = RSA.truncateWithNotice("x".repeat(30000), 24000);
+assert.equal(big.text.length, 24000);
+assert.equal(big.truncated, true);
+assert.equal(big.originalLength, 30000);
+assert.equal(RSA.truncateWithNotice("abc", 24000).truncated, false);
+assert.equal(RSA.truncateWithNotice("abc", 24000).text, "abc");
+assert.equal(RSA.truncateWithNotice("", 24000).text, "");
+
 console.log("SUITE COMPLETA: todos los asserts de Task 2+4 pasan.");
