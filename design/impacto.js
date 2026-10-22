@@ -202,19 +202,22 @@ function _laminaPlan(estado, odsSel, modo) {
     prims.push({ k: 'txt', x: 124, y: bandaY + 88, text: 'Eje: ' + eje, font: _fontDe(estado, 'b'), size: 26, weight: 500, color: tintaBanda });
   }
   var y = bandaY + bandaH + 60;
-  prims.push({ k: 'txt', x: 84, y: y, text: nacional ? 'Programas articulados' : 'Alineamientos de agenda', font: _fontDe(estado, 'b'), size: 26, weight: 700, color: estado.pal.ac });
-  y += 52;
   var progs = (estado.imp.plan.programas || []).slice(0, 6);
-  var cx = 84, cy = y;
-  progs.forEach(function (p, i) {
-    var woaprox = 12 + p.length * 11.4;
-    var chipH = 52;
-    if (cx + woaprox > IMP_ANCHO - 84) { cx = 84; cy += chipH + 18; }
-    prims.push({ k: 'rect', x: cx, y: cy, w: woaprox, h: chipH, color: estado.pal.gl, r: 26 });
-    prims.push({ k: 'txt', x: cx + 20, y: cy + 13, text: p, font: _fontDe(estado, 'b'), size: 22, weight: 600, color: estado.pal.ink });
-    cx += woaprox + 18;
-  });
-  cy = Math.max(cy + 92, y + 92);
+  var cy = y;
+  if (progs.length) {
+    prims.push({ k: 'txt', x: 84, y: y, text: nacional ? 'Programas articulados' : 'Alineamientos de agenda', font: _fontDe(estado, 'b'), size: 26, weight: 700, color: estado.pal.ac });
+    y += 52;
+    var cx = 84;
+    progs.forEach(function (p, i) {
+      var woaprox = 12 + p.length * 11.4;
+      var chipH = 52;
+      if (cx + woaprox > IMP_ANCHO - 84) { cx = 84; cy += chipH + 18; }
+      prims.push({ k: 'rect', x: cx, y: cy, w: woaprox, h: chipH, color: estado.pal.gl, r: 26 });
+      prims.push({ k: 'txt', x: cx + 20, y: cy + 13, text: p, font: _fontDe(estado, 'b'), size: 22, weight: 600, color: estado.pal.ink });
+      cx += woaprox + 18;
+    });
+    cy = Math.max(cy + 92, y + 92);
+  }
   var muni = estado.imp.plan.municipio;
   if (muni) {
     prims.push({ k: 'txt', x: 84, y: cy, text: 'Anclaje territorial: ' + muni, font: _fontDe(estado, 'b'), size: 30, weight: 700, color: estado.pal.ink });
@@ -615,7 +618,9 @@ function renderAnimBody() {
   var body = document.getElementById('animBody');
   if (!body) return;
   body.innerHTML = '';
+  var tipo = IMP_IDENT_TIPO();
   IMP.impacto.limpio = !!IMP.impacto.limpio;
+  var a = (IMP.impacto.anim[tipo] = IMP.impacto.anim[tipo] || impactoPorDefecto().anim[tipo]);
   // Video limpio: la lámina exportada/grabada se dibuja sin marca ni pie.
   var cajaLimpio = document.createElement('div');
   cajaLimpio.className = 'field';
@@ -634,54 +639,54 @@ function renderAnimBody() {
   chk.appendChild(document.createTextNode(' Video limpio: sin marca Rally Studio ni pie (solo ODS y plan)'));
   cajaLimpio.appendChild(chk);
   body.appendChild(cajaLimpio);
-  IMP_TIPOS.forEach(function (tipo) {
-    var a = (IMP.impacto.anim[tipo] = IMP.impacto.anim[tipo] || impactoPorDefecto().anim[tipo]);
-    var tit = document.createElement('div');
-    tit.className = 'field';
-    tit.innerHTML = '<label>' + (IMP_TIPO_ETIQUETA[tipo] || tipo) + '</label>';
-    var grid = document.createElement('div');
-    grid.className = 'grid g2';
-    [['entrada', 'Entrada'], ['enfasis', 'Énfasis'], ['salida', 'Salida']].forEach(function (par) {
-      var campo = par[0], etiqueta = par[1];
-      var caja = document.createElement('div');
-      caja.innerHTML = '<label class="mini">' + etiqueta + '</label>';
-      var s = document.createElement('select');
-      IMP_ANIM_OPCIONES[campo].forEach(function (op) {
-        var o = document.createElement('option');
-        o.value = op;
-        o.textContent = op;
-        s.appendChild(o);
-      });
-      s.value = a[campo] || 'none';
-      s.addEventListener('change', function () {
-        a[campo] = s.value;
-        _guardar();
-      });
-      caja.appendChild(s);
-      grid.appendChild(caja);
+  // Duración SOLO del tipo activo (panel compacto; los otros tipos
+  // aparecen al cambiar de lámina en el tapiz).
+  var cajaDur = document.createElement('div');
+  cajaDur.className = 'field';
+  cajaDur.innerHTML = '<label class="mini">Duración de ' + (IMP_TIPO_ETIQUETA[tipo] || tipo) + ' (segundos)</label>';
+  var dur = document.createElement('input');
+  dur.type = 'number';
+  dur.min = 3; dur.max = 10; dur.step = 0.5;
+  dur.value = a.dur || IMP.impacto.dur || 5;
+  dur.addEventListener('change', function () {
+    var v = Math.min(10, Math.max(3, parseFloat(dur.value) || 5));
+    dur.value = v;
+    a.dur = v;
+    _guardar();
+  });
+  cajaDur.appendChild(dur);
+  body.appendChild(cajaDur);
+  // Mosaico: coreografía en chips visuales ANTES de los avanzados.
+  if (tipo === 'mosaico') {
+    body.appendChild(_coreografiaMosaico(a));
+  }
+  // Avanzados plegados: entrada/énfasis/salida (menos técnica, fuera de golpe de vista).
+  var avz = document.createElement('details');
+  avz.className = 'avz';
+  avz.innerHTML = '<summary>Ajustes avanzados de animación (entrada, énfasis, salida)</summary>';
+  var grid = document.createElement('div');
+  grid.className = 'grid g2';
+  [['entrada', 'Entrada'], ['enfasis', 'Énfasis'], ['salida', 'Salida']].forEach(function (par) {
+    var campo = par[0], etiqueta = par[1];
+    var caja = document.createElement('div');
+    caja.innerHTML = '<label class="mini">' + etiqueta + '</label>';
+    var s = document.createElement('select');
+    IMP_ANIM_OPCIONES[campo].forEach(function (op) {
+      var o = document.createElement('option');
+      o.value = op;
+      o.textContent = op;
+      s.appendChild(o);
     });
-    var cajaDur = document.createElement('div');
-    cajaDur.innerHTML = '<label class="mini">Segundos (3–10)</label>';
-    var dur = document.createElement('input');
-    dur.type = 'number';
-    dur.min = 3; dur.max = 10; dur.step = 0.5;
-    dur.value = a.dur || IMP.impacto.dur || 5;
-    dur.addEventListener('change', function () {
-      var v = Math.min(10, Math.max(3, parseFloat(dur.value) || 5));
-      dur.value = v;
-      a.dur = v;
+    s.value = a[campo] || 'none';
+    s.addEventListener('change', function () {
+      a[campo] = s.value;
       _guardar();
     });
-    cajaDur.appendChild(dur);
-    grid.appendChild(cajaDur);
-    // Solo mosaico: los cuadritos tienen su propia coreografía configurable,
-    // en chips visuales (lado a lado) en vez de una lista técnica hacia abajo.
-    if (tipo === 'mosaico') {
-      tit.appendChild(_coreografiaMosaico(a));
-    }
-    tit.appendChild(grid);
-    body.appendChild(tit);
+    caja.appendChild(s);
+    grid.appendChild(caja);
   });
+  avz.appendChild(grid);
+  body.appendChild(avz);
   var btn = document.createElement('button');
   btn.className = 'sec';
   btn.textContent = 'Ver animación de esta lámina';
@@ -812,7 +817,7 @@ function arranqueImpacto() {
   _escalarEscenario();
   window.addEventListener('resize', _escalarEscenario);
   var sel = document.getElementById('laminaSel');
-  if (sel) sel.addEventListener('change', pintar);
+  if (sel) sel.addEventListener('change', function () { pintar(); renderAnimBody(); });
   renderLaminaTapiz();
   var archivo = document.getElementById('archivo');
   if (archivo && !archivo.value) archivo.value = _prefijoArchivo();
@@ -1118,8 +1123,9 @@ function grabarClip(tipo, segundos, streamAudio) {
         if (streamAudio && streamAudio.getAudioTracks && streamAudio.getAudioTracks().length) {
           stream.addTrack(streamAudio.getAudioTracks()[0]);
         }
+        // MP4 primero (compatible con la mayoría de reproductores); WebM de respaldo.
         var mime = null;
-        ['video/webm;codecs=vp8,opus', 'video/webm'].forEach(function (m) {
+        ['video/mp4;codecs=avc1.42E01E,mp4a.40.2', 'video/mp4', 'video/webm;codecs=vp8,opus', 'video/webm'].forEach(function (m) {
           if (!mime) { try { if (MediaRecorder.isTypeSupported(m)) mime = m; } catch (e0) {} }
         });
         var rec = new MediaRecorder(stream, mime ? { mimeType: mime } : undefined);
@@ -1127,8 +1133,9 @@ function grabarClip(tipo, segundos, streamAudio) {
         rec.ondataavailable = function (e) { if (e.data && e.data.size) pedazos.push(e.data); };
         rec.onstop = function () {
           if (!pedazos.length) return fallarAPNG({ message: 'grabación vacía' });
-          aviso('Clip WebM listo (' + segundos + ' s' + (streamAudio ? ', con audio' : '') + ').');
-          resolve(new Blob(pedazos, { type: 'video/webm' }));
+          var tipoClip = (mime && mime.indexOf('video/mp4') === 0) ? 'video/mp4' : 'video/webm';
+          aviso('Clip ' + (tipoClip === 'video/mp4' ? 'MP4' : 'WebM') + ' listo (' + segundos + ' s' + (streamAudio ? ', con audio' : '') + ').');
+          resolve(new Blob(pedazos, { type: tipoClip }));
         };
         _pintarCuadro(ctx, prims, 0, fases, estado);
         rec.start(200);
@@ -1171,8 +1178,8 @@ function _grabarActual() {
   pedir.then(function (stream) {
     return grabarClip(tipo, dur, stream).then(function (blob) {
       detenerMic(stream);
-      if (blob && blob.type && blob.type.indexOf('video/webm') === 0) {
-        _descargar(blob, _archivoDetalle('webm', tipo));
+      if (blob && blob.type && blob.type.indexOf('video/') === 0) {
+        _descargar(blob, _archivoDetalle(blob.type.indexOf('video/mp4') === 0 ? 'mp4' : 'webm', tipo));
       } else if (blob && blob.zip) {
         avisoEstado('MediaRecorder no disponible: se exportó la secuencia PNG en ZIP.');
       } else if (blob && blob.png) {

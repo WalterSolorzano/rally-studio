@@ -622,12 +622,16 @@ function sanitizePalette(pal) {
     return !esCasiNegro(c) && !isPurpleHex(c);
   });
   var morados = crudos.filter(isPurpleHex);
+  // Un color de marca tiene que leerse sobre el fondo (>= 3:1). Por eso un
+  // tinte claro (el fondo 2) no puede ganar el puesto de marca.
+  var legibles = candidatos.filter(function (c) { return contrastRatio(c, bg) >= 3; });
+  var pool = legibles.length ? legibles : candidatos;
   var marca = null;
-  for (var i = 0; i < candidatos.length; i++) {
-    if (contrastRatio(candidatos[i], tinta) >= 3) { marca = candidatos[i]; break; }
+  for (var i = 0; i < pool.length; i++) {
+    if (contrastRatio(pool[i], tinta) >= 3) { marca = pool[i]; break; }
   }
-  if (!marca && candidatos.length) {
-    marca = candidatos.sort(function (a, b) { return satOf(b) - satOf(a); })[0];
+  if (!marca && pool.length) {
+    marca = pool.slice().sort(function (a, b) { return satOf(b) - satOf(a); })[0];
   }
   if (!marca && morados.length) {
     marca = rotateHue(morados[0], 214);

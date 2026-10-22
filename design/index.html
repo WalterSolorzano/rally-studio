@@ -134,6 +134,25 @@ button.thumb.on,button.thumb.on:hover{border-color:var(--rs-navy);box-shadow:0 0
 /* =========================================================
    RENDER DE LÁMINA — sistema de estilos
    ========================================================= */
+/* ===== PANEL PLEGABLE: bloques plegables, previsualizaciones y menos texto ===== */
+.ctrls .ctrl{border:1px solid #E3E9F2;border-radius:12px;background:#fff;margin-bottom:10px;overflow:hidden}
+.ctrls .ctrl>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 13px;font:700 13px/1.2 var(--rs-sans);color:var(--rs-navy,#0D1B35);user-select:none}
+.ctrls .ctrl>summary::-webkit-details-marker{display:none}
+.ctrls .ctrl>summary::after{content:"+";font:400 16px/1 var(--rs-sans);color:#93A6C0}
+.ctrls .ctrl[open]>summary::after{content:"–"}
+.ctrls .ctrl[open]>summary{border-bottom:1px solid #EDF1F7}
+.ctrls .ctrl>.body{padding:12px 13px 14px}
+.ctrls .ctrl .meta{font:600 11px/1 var(--rs-sans);letter-spacing:.05em;text-transform:uppercase;color:#93A6C0}
+.sub-h{font:700 11px/1 var(--rs-sans);letter-spacing:.08em;text-transform:uppercase;color:#93A6C0;margin:14px 0 8px}
+.photos{display:flex;flex-direction:column;gap:7px}
+.photo-row{display:flex;align-items:center;gap:10px;padding:6px 8px;border:1px solid #EDF1F7;border-radius:10px;background:#FBFCFE}
+.photo-row .ph-prev{width:38px;height:46px;border-radius:6px;background:#E9EEF6 center/cover no-repeat;flex:none;border:1px solid #E3E9F2}
+.photo-row b{flex:1;min-width:0;font:600 12px/1.2 var(--rs-sans);color:var(--rs-navy,#0D1B35);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.photo-row label{flex:none;font:600 11px/1 var(--rs-sans);padding:7px 10px;border-radius:8px;border:1px solid #D7E0EC;background:#fff;color:var(--rs-navy,#0D1B35);cursor:pointer}
+.logo-row{display:flex;align-items:center;gap:10px}
+.logo-prev{width:58px;height:34px;border:1px solid #EDF1F7;border-radius:8px;background:#F7FAFD center/contain no-repeat;flex:none}
+.logo-prev.wide{width:74px}
+
 .sl{container-type:inline-size;aspect-ratio:4/5;position:relative;overflow:hidden;background:var(--bg);color:var(--ink);font-family:var(--fb);width:100%;--tw:800;
 /* escala de tracking compartida: un mismo valor por nivel, no uno suelto por elemento */
 --tr1:.34em;--tr2:.2em;--tr3:.12em;--gut:7cqw;
@@ -143,13 +162,13 @@ button.thumb.on,button.thumb.on:hover{border-color:var(--rs-navy);box-shadow:0 0
 .trc-r{margin-right:calc(var(--tr, .2em) * -1)}
 .sl .k{font:600 2cqw/1.25 var(--fm);letter-spacing:var(--tr1);text-transform:uppercase;color:var(--ac)}
 .sl .tg{background:var(--ac);color:#fff;font:700 2.4cqw/1 var(--fd);padding:.7cqw 2.2cqw;transform:skewX(-12deg);display:inline-block}
-.sl .ti{font-weight:var(--tw);font-size:12cqw;line-height:1;font-family:var(--fd);letter-spacing:-.01em;margin:2.2cqw 0 0;text-transform:uppercase}
+.sl .ti{font-weight:var(--tw);font-size:12cqw;line-height:1.12;font-family:var(--fd);letter-spacing:-.01em;margin:2.2cqw 0 0;padding-bottom:.08em;text-transform:uppercase}
 .sl .head{overflow:hidden}
 .sl .head > *{flex:none}
 .sk-bold .ti{letter-spacing:-.025em}
 .sk-data .ti{--tw:700}
-.sk-pop .ti{--tw:700;line-height:1.02}
-.sk-comic .ti{--tw:400;letter-spacing:.01em;line-height:1.05}
+.sk-pop .ti{--tw:700;line-height:1.12}
+.sk-comic .ti{--tw:400;letter-spacing:.01em;line-height:1.12}
 .sk-pop .ti,.sk-comic .ti{text-transform:none}
 /* Pop: etiqueta adhesiva — relleno oscuro, sombra de acento, sin contorno */
 .sk-pop .ti-s{color:var(--ink);-webkit-text-stroke:0;text-shadow:.34cqw .34cqw 0 var(--ac)}
@@ -164,14 +183,14 @@ button.thumb.on,button.thumb.on:hover{border-color:var(--rs-navy);box-shadow:0 0
 .sl[data-deco=dots]::before{content:"";position:absolute;inset:0;background-image:radial-gradient(var(--ac) 12%,transparent 13%);background-size:3cqw 3cqw;opacity:.22}
 .sl[data-deco=grid]::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--gl) .14cqw,transparent .14cqw),linear-gradient(90deg,var(--gl) .14cqw,transparent .14cqw);background-size:12.5cqw 12.5cqw}
 .sl[data-deco=blob]::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 84% 16%,var(--gl) 0 22cqw,transparent 22.5cqw),radial-gradient(circle at 10% 90%,var(--gl) 0 16cqw,transparent 16.5cqw)}
-.ring{position:absolute;right:-15cqw;top:-9cqw;width:64cqw;aspect-ratio:1;border-radius:50%;border:7cqw solid var(--gl);opacity:.55;z-index:0}
+.ring{position:absolute;right:-13cqw;top:-6cqw;width:60cqw;aspect-ratio:1;border-radius:50%;border:7cqw solid var(--gl);opacity:.55;z-index:0}
 .cir{position:absolute;right:0;bottom:6cqw;width:48cqw;opacity:.28;z-index:0}
 .sld{position:absolute;inset:0;pointer-events:none;z-index:0}
 .sld svg{width:100%;height:100%}
 
 /* --- persona --- */
 .mb{display:flex;gap:2.2cqw;align-items:center;min-width:0}
-.mb i{flex:none;width:7.6cqw;height:7.6cqw;border-radius:50%;background:var(--bg2) center/cover;border:.3cqw solid var(--ac)}
+.mb i{flex:none;width:6.6cqw;height:6.6cqw;border-radius:50%;background:var(--bg2) center/cover;border:.3cqw solid var(--ac)}
 .mb > div{min-width:0}
 .mb b{display:block;font:700 3.3cqw/1.05 var(--fd);text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .mb small{display:block;font:400 2cqw/1.2 var(--fb);color:var(--mu);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:.4cqw;padding-left:.05em}
@@ -184,6 +203,8 @@ button.thumb.on,button.thumb.on:hover{border-color:var(--rs-navy);box-shadow:0 0
 /* logo de grupo: imagen del equipo o marca por defecto */
 .sl .lg{display:flex;align-items:center;gap:1.8cqw;min-width:0;color:var(--ink)}
 .sl .lg img,.sl .lg svg{width:4.6cqw;height:4.6cqw;object-fit:contain;flex:none;display:block}
+/* monograma neutro: sustituye a la marca placeholder */
+.sl .lg .mono{font:800 2.4cqw/1 var(--fd);letter-spacing:.04em;color:var(--ink);border:.28cqw solid var(--ac);border-radius:.6cqw;padding:.7cqw .9cqw;flex:none}
 .cov-a .hd .tg{flex:none}
 /* croquis de Nicaragua: elemento gráfico grande a la derecha */
 .sl .nmap{position:absolute;right:-7cqw;top:12cqw;width:64cqw;z-index:0}
@@ -212,10 +233,10 @@ button.thumb.on,button.thumb.on:hover{border-color:var(--rs-navy);box-shadow:0 0
 .cov-t .tbot{display:flex;flex-direction:column;gap:3.4cqw;flex:none;padding:0 7cqw;box-sizing:border-box}
 .cov-t .trow{margin-top:0}
 .cov-t .tk{font:600 2.1cqw/1.4 var(--fb);letter-spacing:var(--tr1);text-transform:uppercase;color:var(--ac)}
-.cov-t .tt{font:800 11.4cqw/.98 var(--fd);text-transform:uppercase;color:var(--ink);max-width:92%}
+.cov-t .tt{font:800 11.4cqw/1.22 var(--fd);text-transform:uppercase;color:var(--ink);max-width:92%}
 .cov-t .nmap{right:-9cqw;top:22cqw;width:44cqw}
 .cov-t .nmap svg{opacity:.1}
-.cov-t .tl{font:700 4.4cqw/1 var(--fd);letter-spacing:.2em;color:var(--ac)}
+.cov-t .tl{font:700 4.4cqw/1.25 var(--fd);letter-spacing:.2em;color:var(--ac)}
 .cov-t .trule{width:9cqw;height:.55cqw;background:var(--ac)}
 .cov-t .tst{display:flex;gap:5cqw;align-items:flex-start}
 .cov-t .tst div{display:flex;flex-direction:column}
@@ -244,18 +265,19 @@ button.thumb.on,button.thumb.on:hover{border-color:var(--rs-navy);box-shadow:0 0
 
 /* ---------- PORTADA B · editorial (Papel) ---------- */
 .cov-b{display:flex;flex-direction:column}
-.cov-b .hd{border-bottom:.15cqw solid var(--gl);padding-bottom:2.6cqw}
-.cov-b .head{flex:1;min-height:0;overflow:hidden;padding:6cqw 7cqw 0;display:flex;flex-direction:column;justify-content:center}
+.cov-b .hd{border-bottom:.15cqw solid var(--gl);padding-bottom:2.4cqw}
+.cov-b .head{flex:1;min-height:0;overflow:hidden;padding:4cqw 7cqw 0;display:flex;flex-direction:column;justify-content:center}
+.cov-b .head .k{margin-bottom:2.6cqw}
 .cov-b .lead{margin-top:3.4cqw;font:400 2.5cqw/1.5 var(--fb);color:var(--mu);max-width:78%}
-.cov-b .rule{width:9cqw;height:.4cqw;background:var(--ac);margin-top:4cqw}
-.cov-b .st{display:flex;gap:6cqw;margin-top:1.4cqw;padding:3cqw 7cqw 0;border-top:.15cqw solid var(--gl);flex:none}
-.cov-b .st b{font:400 5.4cqw/1 var(--fd);display:block}
+.cov-b .rule{width:9cqw;height:.4cqw;background:var(--ac);margin-top:3cqw}
+.cov-b .st{display:flex;gap:6cqw;margin-top:1.4cqw;padding:2.6cqw 7cqw 0;border-top:.15cqw solid var(--gl);flex:none}
+.cov-b .st b{font:400 4.4cqw/1 var(--fd);display:block}
 .cov-b .st span{font:500 1.5cqw/1 var(--fm);letter-spacing:var(--tr2);text-transform:uppercase;color:var(--mu);display:block;margin-top:.6cqw}
-.cov-b .people{padding:2.6cqw 7cqw 0;flex:none;display:flex;flex-direction:column;gap:1.6cqw}
-.cov-b .prow{display:flex;align-items:center;gap:2.4cqw;padding-bottom:1.5cqw;border-bottom:.15cqw solid var(--gl)}
-.cov-b .prow i{flex:none;width:5.4cqw;height:5.4cqw;border-radius:50%;background:var(--bg2) center/cover}
-.cov-b .prow b{font:700 2.8cqw/1 var(--fd);text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.cov-b .prow small{font:400 1.85cqw/1.2 var(--fb);color:var(--mu);margin-left:auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:42%}
+.cov-b .people{padding:2.4cqw 7cqw 0;flex:none;display:grid;grid-template-columns:1fr 1fr;gap:1.4cqw 4cqw}
+.cov-b .prow{display:flex;align-items:center;gap:2cqw;padding-bottom:1.2cqw;border-bottom:.15cqw solid var(--gl);min-width:0}
+.cov-b .prow i{flex:none;width:4.8cqw;height:4.8cqw;border-radius:50%;background:var(--bg2) center/cover}
+.cov-b .prow b{font:700 2.4cqw/1.05 var(--fd);text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.cov-b .prow small{font:400 1.7cqw/1.2 var(--fb);color:var(--mu);margin-left:auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:38%}
 
 /* ---------- PORTADA C · cartel (Cartel / Neón) ---------- */
 .cov-c{display:flex;flex-direction:column}
@@ -263,15 +285,15 @@ button.thumb.on,button.thumb.on:hover{border-color:var(--rs-navy);box-shadow:0 0
 .cov-c .head{position:relative;z-index:1;flex:0 0 auto;overflow:hidden;margin:0 7cqw;padding-top:4.5cqw;display:flex;flex-direction:column;justify-content:flex-start}
 .cov-c .ck{font:600 2cqw/1.25 var(--fm);letter-spacing:var(--tr1);text-transform:uppercase;color:var(--ac)}
 .cov-c .rule{height:.25cqw;background:var(--ac);margin-top:3.4cqw;width:9cqw}
-.cov-c .mid{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:flex-end;padding:0 7cqw;gap:5cqw}
+.cov-c .mid{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:space-between;padding:0 7cqw;gap:2.4cqw}
 .cov-c .st{display:flex;gap:4.4cqw;flex:none}
 .cov-c .st div{display:flex;flex-direction:column}
 .cov-c .st b{font:800 7.4cqw/1 var(--fd);display:block;color:var(--ac)}
 .cov-c .st span{font:600 1.5cqw/1 var(--fm);letter-spacing:var(--tr2);text-transform:uppercase;display:block;margin-top:.6cqw;color:var(--mu)}
-.cov-c .people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2.6cqw;flex:none}
-.cov-c .people .mb i{width:8.4cqw;height:8.4cqw}
-.cov-c .people .mb b{font-size:3.2cqw}
-.cov-c .people .mb small{font-size:2cqw;white-space:normal}
+.cov-c .people{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2.2cqw 3.4cqw;flex:none}
+.cov-c .people .mb i{width:6.6cqw;height:6.6cqw}
+.cov-c .people .mb b{font-size:2.5cqw;white-space:normal;overflow:visible;text-overflow:clip;line-height:1.05}
+.cov-c .people .mb small{font-size:1.7cqw;white-space:normal;overflow:visible;text-overflow:clip;line-height:1.2}
 .cov-c .cfoot{padding:0 7cqw 4cqw;font:700 2cqw/1 var(--fm);letter-spacing:var(--tr2);text-transform:uppercase;color:var(--mu);flex:none}
 
 /* ---------- PORTADA D · datos (Rejilla) ---------- */
@@ -302,9 +324,9 @@ button.thumb.on,button.thumb.on:hover{border-color:var(--rs-navy);box-shadow:0 0
 
 /* ---------- PORTADA F · cómic ---------- */
 .cov-f{display:flex;flex-direction:column}
-.cov-f .burst{position:absolute;right:-10cqw;bottom:-6cqw;width:40cqw;opacity:.09;z-index:0}
+.cov-f .burst{position:absolute;right:-4cqw;bottom:3cqw;width:32cqw;opacity:.09;z-index:0}
 .cov-f .head{flex:1;min-height:0;overflow:hidden;padding:5cqw 7cqw 0;display:flex;flex-direction:column;justify-content:center}
-.cov-f .bubble{position:relative;align-self:flex-start;background:var(--bg2);border:.45cqw solid var(--ink);border-radius:2.4cqw;padding:1.4cqw 2.6cqw;font:600 1.8cqw/1.2 var(--fm);letter-spacing:var(--tr3);text-transform:uppercase;box-shadow:.6cqw .6cqw 0 var(--ac);margin-bottom:3.4cqw;max-width:80%}
+.cov-f .bubble{position:relative;align-self:flex-start;width:92%;max-width:92%;background:var(--bg2);border:.45cqw solid var(--ink);border-radius:2.4cqw;padding:1.4cqw 2.6cqw;font:600 1.8cqw/1.3 var(--fm);letter-spacing:var(--tr3);text-transform:uppercase;box-shadow:.6cqw .6cqw 0 var(--ac);margin-bottom:3.4cqw}
 .cov-f .bubble::after{content:"";position:absolute;left:2.4cqw;bottom:-1.8cqw;width:2.6cqw;height:2.6cqw;background:var(--bg2);border-right:.45cqw solid var(--ink);border-bottom:.45cqw solid var(--ink);transform:skewX(35deg) rotate(45deg)}
 .cov-f .st{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.8cqw;margin-top:3.4cqw}
 .cov-f .st div{background:var(--ac);color:#fff;border:.45cqw solid var(--ink);padding:1.8cqw 1.8cqw;box-shadow:.55cqw .55cqw 0 var(--ink)}
@@ -314,12 +336,28 @@ button.thumb.on,button.thumb.on:hover{border-color:var(--rs-navy);box-shadow:0 0
 .cov-f .mb b{font-size:2.6cqw}
 .cov-f .mb i{width:6.2cqw;height:6.2cqw}
 
+/* ---------- PORTADA G · estudio (minimalista) ---------- */
+.cov-g{display:flex;flex-direction:column}
+.cov-g .head{flex:1;min-height:0;overflow:hidden;padding:4cqw 7cqw 0;display:flex;flex-direction:column;justify-content:center}
+.cov-g .head .k{margin-bottom:2.4cqw}
+.cov-g .ti{font-weight:800;letter-spacing:-.02em;line-height:1.02;text-transform:none}
+.cov-g .rule{width:10cqw;height:.45cqw;background:var(--ac);margin-top:3.2cqw}
+.cov-g .gst{display:flex;gap:5cqw;margin-top:3.4cqw}
+.cov-g .gst div{display:flex;flex-direction:column}
+.cov-g .gst b{font:800 4.6cqw/1 var(--fd);color:var(--ac)}
+.cov-g .gst span{font:600 1.5cqw/1 var(--fm);letter-spacing:var(--tr2);text-transform:uppercase;color:var(--mu);margin-top:.7cqw}
+.cov-g .grows{padding:2.4cqw 7cqw 0;flex:none;border-top:.15cqw solid var(--gl)}
+.cov-g .grow{display:flex;align-items:center;gap:2cqw;padding:1.5cqw 0;border-bottom:.15cqw solid var(--gl);min-width:0}
+.cov-g .grow .gin{flex:none;width:4.4cqw;height:4.4cqw;display:grid;place-items:center;border-radius:50%;background:var(--bg2);font:700 1.6cqw/1 var(--fd);color:var(--mu)}
+.cov-g .grow b{font:700 2.4cqw/1.05 var(--fd);text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cov-g .grow small{font:400 1.7cqw/1.2 var(--fb);color:var(--mu);margin-left:auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
 /* ---------- LÁMINAS DE INTEGRANTE ---------- */
 .sl .ph{position:absolute;background:linear-gradient(165deg,var(--ac) -60%,var(--bg) 75%) center/cover}
 .sl .ph em{position:absolute;inset:0;display:grid;place-items:center;font:600 2.4cqw var(--fb);letter-spacing:.3em;color:var(--mu);font-style:normal}
 .sl .rc{position:absolute;display:flex;flex-direction:column;overflow:hidden}
 .sl .rc .top{display:flex;align-items:center;gap:2cqw}
-.sl .nm{font-weight:var(--tw);font-size:var(--nm-size,8.4cqw);line-height:.92;font-family:var(--fd);text-transform:uppercase;margin-top:4cqw;overflow:hidden}
+.sl .nm{font-weight:var(--tw);font-size:var(--nm-size,8.4cqw);line-height:1.12;font-family:var(--fd);text-transform:uppercase;margin-top:4cqw;padding-bottom:.06em;overflow:hidden}
 .sl .nm em{display:block;font-style:normal;color:var(--ac)}
 .sl .rl{width:6cqw;height:.6cqw;background:var(--ac);margin:2.6cqw 0;flex:none}
 .sl .ir{display:flex;gap:2cqw;align-items:center;margin-bottom:2.2cqw;flex:none}
@@ -380,26 +418,36 @@ button.thumb.on,button.thumb.on:hover{border-color:var(--rs-navy);box-shadow:0 0
 .card-sticker .ex{border:.45cqw solid var(--ink);background:var(--bg);box-shadow:.8cqw .8cqw 0 var(--ac);padding:3.4cqw 2.6cqw 2.6cqw}
 .card-sticker .ex h5{position:static;background:var(--ac);color:#fff;border-radius:999px;padding:.7cqw 1.8cqw;display:inline-block;margin-bottom:1.2cqw;font-size:1.4cqw}
 
+/* card: recorte (foto sin círculo, borde inclinado) */
+.card-cutout .ph{left:0;top:0;bottom:0;width:44cqw;clip-path:polygon(10% 0,100% 0,90% 100%,0 100%);background:linear-gradient(200deg,var(--ac) -40%,var(--bg2) 80%) center/cover}
+.card-cutout .rc{left:50cqw;right:6cqw;top:8cqw;bottom:13cqw}
+.card-cutout .nm{text-transform:none;letter-spacing:-.01em}
+/* métricas: evita recortes de descendentes en cifras y titulares */
+.sl .st b,.sl .gst b{line-height:1.12}
+.card-cutout .rl{width:100%;height:.15cqw;background:var(--gl)}
+.card-cutout .ex{border:none;background:none;padding:2.4cqw 0 0;border-top:.2cqw solid var(--ac)}
+.card-cutout .ex h5{position:static;background:none;color:var(--ac);padding:0;display:block;margin-bottom:.7cqw}
+
 /* pop / comic: fotos y textos con contorno */
 .sk-pop .ph,.sk-comic .ph{border:.5cqw solid var(--ink)}
 .sk-pop .ex,.sk-comic .ex{border-color:var(--ink);background:var(--bg);box-shadow:.8cqw .8cqw 0 var(--ac)}
-.sk-pop .ex h5,.sk-comic .ex h5{background:var(--ac);color:#fff;border-radius:999px;top:auto;left:auto;position:static;display:inline-block;margin-bottom:1.2cqw}
+.sk-pop .ex h5,.sk-comic .ex h5{background:var(--ac);color:#fff;border-radius:999px;top:auto;left:auto;position:static;display:inline-block;margin-bottom:1.2cqw;font-size:1.7cqw;letter-spacing:.16em}
 .sk-pop .ir b,.sk-comic .ir b{font-weight:700}
 /* ===== IDENTIDAD COMÚN A TODAS LAS LÁMINAS =====
    Cabecera con marca + logos de institución, pie con croquis del país,
    logos y hashtag. Es lo que hace que un carrusel se vea de equipo
    profesional y no de plantilla suelta. */
-.sl .hd{display:flex;align-items:center;justify-content:space-between;gap:2.4cqw;padding:5.4cqw 7cqw 0;flex:none;position:relative;z-index:1}
+.sl .hd{display:flex;align-items:center;justify-content:space-between;gap:2.4cqw;padding:4.4cqw 7cqw 0;flex:none;position:relative;z-index:1}
 .sl .hd .lg{display:flex;align-items:center;gap:1.6cqw;min-width:0}
-.sl .hd .lg b{font:700 2.9cqw/1 var(--fb);letter-spacing:var(--tr3);text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sl .hd .lg b{font:700 2.9cqw/1.25 var(--fb);letter-spacing:var(--tr3);text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sl .hd .ptns{display:flex;align-items:center;gap:1.8cqw;flex:none}
 .sl .hd .ptns img{height:3.4cqw;width:auto;max-width:9cqw;object-fit:contain;opacity:.9}
 .sl .hd .tg{flex:none}
-.sl .ft{display:flex;align-items:center;justify-content:space-between;gap:2cqw;padding:0 7cqw 4.4cqw;flex:none;position:relative;z-index:1}
+.sl .ft{display:flex;align-items:center;justify-content:space-between;gap:2cqw;padding:0 7cqw 3.4cqw;flex:none;position:relative;z-index:1}
 .sl .ft .ni{display:flex;align-items:center;gap:1.2cqw;font:700 2.1cqw/1 var(--fb);letter-spacing:.28em;text-transform:uppercase;white-space:nowrap}
 .sl .ft .ni svg{width:var(--croquis,8.8cqw);height:var(--croquis,8.8cqw);fill:var(--mu);flex:none}
 .sl .ft .marks{display:flex;align-items:center;gap:1.6cqw;flex:none}
-.sl .ft .marks img{height:3.2cqw;width:auto;max-width:10cqw;object-fit:contain;opacity:.85}
+.sl .ft .marks img{height:2.9cqw;width:auto;max-width:16cqw;object-fit:contain;opacity:.9}
 .sl .ft .wv{display:flex;align-items:center;gap:1.4cqw;font:700 2.1cqw/1 var(--fb);letter-spacing:.28em;text-transform:uppercase;white-space:nowrap}
 .sl .ft .wv span{margin-right:-.28em}
 .sl .ft .wv svg{width:13cqw;height:auto;opacity:.75;flex:none}
@@ -454,109 +502,122 @@ main{margin-left:64px}
   </div>
 
   <div class="ctrls">
-    <section>
-      <div class="sec-h"><h2>Estilos</h2><span class="meta" id="preset-meta"></span></div>
-      <div class="thumbs" id="thumbs"></div>
-      <p class="note" id="preset-note"></p>
-    </section>
+    <details class="ctrl" open>
+      <summary>Estilos<span class="meta" id="preset-meta"></span></summary>
+      <div class="body">
+        <div class="thumbs" id="thumbs"></div>
+        <p class="note" id="preset-note"></p>
+      </div>
+    </details>
 
-    <section>
-      <div class="sec-h"><h2>Estilo con IA</h2><span class="meta" id="ia-meta">Cuota</span></div>
-      <p class="note">Describe el estilo que quieres y la IA propone paleta, tipografía y composición. El resultado entra como un estilo más, editable.</p>
-      <div class="field"><label>Instrucción de estilo</label><textarea id="ia-prompt" placeholder="Ej: editorial sobrio, fondo crema, acento ladrillo, titular en serifa, mucho aire"></textarea></div>
-      <div class="btn-row">
-        <button id="ia-go">Generar estilo</button>
-        <button class="sec" id="ia-logo">Analizar logo con IA</button>
-        <button class="sec" id="ia-copy">Copiar prompt</button>
+    <details class="ctrl" open>
+      <summary>Integrantes y retratos<span class="meta" id="mem-meta"></span></summary>
+      <div class="body">
+        <div class="chip-row" id="chips"></div>
+        <div class="rowset" id="ctl"></div>
+        <div class="sub-h">Retrato de cada integrante</div>
+        <div class="photos" id="photos"></div>
+        <div class="sub-h">Retrato con IA</div>
+        <div class="field"><div class="prompt" id="pr"></div></div>
+        <div class="btn-row">
+          <button id="cp">Copiar prompt</button>
+          <button class="sec" id="up">Subir foto generada</button>
+          <button class="sec" id="rm">Quitar foto</button>
+          <button class="sec" id="sg">Sugerir color</button>
+        </div>
+        <input type="file" id="fi" accept="image/*" hidden>
+        <p class="note">Usa solo fotos con consentimiento. Si la imagen es generada con IA, indícalo al publicarla.</p>
       </div>
-      <div class="field"><label>CSS extra de la lámina (opcional)</label><textarea id="ia-css" placeholder="Reglas CSS que se aplican solo dentro de la lámina"></textarea></div>
-      <p class="note" id="ia-msg"></p>
-    </section>
+    </details>
 
-    <section>
-      <div class="sec-h"><h2>Integrante</h2><span class="meta" id="mem-meta"></span></div>
-      <div class="chip-row" id="chips"></div>
-      <div class="rowset" id="ctl"></div>
-    </section>
+    <details class="ctrl">
+      <summary>Equipo y paleta<span class="meta">Ajustes finos</span></summary>
+      <div class="body">
+        <div class="grid g2">
+          <div><label>Nombre del equipo</label><input type="text" data-k="team.name"></div>
+          <div><label>Hashtag</label><input type="text" data-k="team.tag"></div>
+        </div>
+        <div class="field">
+          <label>Logotipo del equipo</label>
+          <div class="logo-row">
+            <span class="logo-prev" id="lg-prev"></span>
+            <div class="btn-row">
+              <button class="sec" id="lg-up">Subir logo</button>
+              <button class="sec" id="lg-rm">Quitar</button>
+              <input type="file" id="lg-fi" accept="image/*" hidden>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Logotipo de la universidad</label>
+          <div class="logo-row">
+            <span class="logo-prev" id="lu-prev"></span>
+            <div class="btn-row">
+              <button class="sec" id="lu-up">Subir logo</button>
+              <button class="sec" id="lu-rm">Quitar</button>
+              <input type="file" id="lu-fi" accept="image/*" hidden>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Logotipo del evento (rally)</label>
+          <div class="logo-row">
+            <span class="logo-prev" id="le-prev"></span>
+            <div class="btn-row">
+              <button class="sec" id="le-up">Subir logo</button>
+              <button class="sec" id="le-rm">Quitar</button>
+              <input type="file" id="le-fi" accept="image/*" hidden>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Imagen de portada del equipo</label>
+          <div class="logo-row">
+            <span class="logo-prev wide" id="hp-prev"></span>
+            <div class="btn-row">
+              <button class="sec" id="hp-up">Subir imagen</button>
+              <button class="sec" id="hp-rm">Quitar</button>
+              <input type="file" id="hp-fi" accept="image/*" hidden>
+            </div>
+          </div>
+        </div>
+        <div class="field"><label>Etiqueta superior</label><input type="text" data-k="team.kicker"></div>
+        <div class="field"><label>Título de portada</label><textarea data-k="team.title"></textarea></div>
+        <div class="grid g2 field">
+          <div><label>País</label><input type="text" data-k="team.paisNombre"></div>
+          <div><label>Nombre del evento</label><input type="text" data-k="team.evento"></div>
+        </div>
+        <div class="grid g2 field">
+          <div><label>Universidad</label><input type="text" data-k="team.university"></div>
+          <div><label>Ciudad</label><input type="text" data-k="team.city"></div>
+        </div>
+        <div class="grid g3 field">
+          <div><label>País (número)</label><input type="text" data-k="team.pais"></div>
+          <div><label>Reto (número)</label><input type="text" data-k="team.reto"></div>
+          <div><label>Pie</label><input type="text" data-k="team.foot"></div>
+        </div>
+        <div class="field"><label>Tipografía del titular</label><select data-k="fonts.t" id="ft"></select></div>
+        <div class="field">
+          <label>Paleta del grupo</label>
+          <div class="pal-row" id="pal"></div>
+        </div>
+        <div class="btn-row"><button class="sec" id="rs">Restablecer todo</button></div>
+      </div>
+    </details>
 
-    <section>
-      <div class="sec-h"><h2>Retrato con IA</h2><span class="meta">Prompt listo</span></div>
-      <p class="note">Pega este prompt en tu IA de imágenes junto con la foto real de la persona y sube aquí el resultado.</p>
-      <div class="field"><div class="prompt" id="pr"></div></div>
-      <div class="btn-row">
-        <button id="cp">Copiar prompt</button>
-        <button class="sec" id="up">Subir foto generada</button>
-        <button class="sec" id="rm">Quitar foto</button>
-        <button class="sec" id="sg">Sugerir color</button>
-      </div>
-      <input type="file" id="fi" accept="image/*" hidden>
-      <p class="note">Usa solo fotos con consentimiento de la persona. Si la imagen es retocada o generada con IA, indícalo al publicarla.</p>
-    </section>
-
-    <section>
-      <div class="sec-h"><h2>Equipo y paleta</h2><span class="meta">Ajustes finos</span></div>
-      <div class="grid g2">
-        <div><label>Nombre del equipo</label><input type="text" data-k="team.name"></div>
-        <div><label>Hashtag</label><input type="text" data-k="team.tag"></div>
-      </div>
-      <div class="field">
-        <label>Logotipo del equipo</label>
+    <details class="ctrl">
+      <summary>Estilo con IA<span class="meta" id="ia-meta">Cuota</span></summary>
+      <div class="body">
+        <div class="field"><label>Instrucción de estilo</label><textarea id="ia-prompt" placeholder="Ej: editorial sobrio, fondo crema, acento ladrillo, titular en serifa, mucho aire"></textarea></div>
         <div class="btn-row">
-          <button class="sec" id="lg-up">Subir logo</button>
-          <button class="sec" id="lg-rm">Quitar logo</button>
-          <input type="file" id="lg-fi" accept="image/*" hidden>
+          <button id="ia-go">Generar estilo</button>
+          <button class="sec" id="ia-logo">Analizar logo con IA</button>
+          <button class="sec" id="ia-copy">Copiar prompt</button>
         </div>
-        <p class="note">Se muestra arriba a la izquierda, junto al nombre. Si no subes ninguno se usa una marca orbital neutra.</p>
+        <div class="field"><label>CSS extra de la lámina (opcional)</label><textarea id="ia-css" placeholder="Reglas CSS que se aplican solo dentro de la lámina"></textarea></div>
+        <p class="note" id="ia-msg"></p>
       </div>
-      <div class="field">
-        <label>Logotipo de la universidad</label>
-        <div class="btn-row">
-          <button class="sec" id="lu-up">Subir logo</button>
-          <button class="sec" id="lu-rm">Quitar logo</button>
-          <input type="file" id="lu-fi" accept="image/*" hidden>
-        </div>
-        <p class="note">Aparece junto al logo del evento. Sirve para acreditar la institución en la que estudian los integrantes.</p>
-      </div>
-      <div class="field">
-        <label>Logotipo del evento</label>
-        <div class="btn-row">
-          <button class="sec" id="le-up">Subir logo</button>
-          <button class="sec" id="le-rm">Quitar logo</button>
-          <input type="file" id="le-fi" accept="image/*" hidden>
-        </div>
-        <p class="note">Marca del rally o convocatoria. Se imprime junto a la marca del equipo.</p>
-      </div>
-      <div class="field">
-        <label>Imagen de portada del equipo</label>
-        <div class="btn-row">
-          <button class="sec" id="hp-up">Subir imagen</button>
-          <button class="sec" id="hp-rm">Quitar imagen</button>
-          <input type="file" id="hp-fi" accept="image/*" hidden>
-        </div>
-        <p class="note">Foto o ilustración del equipo. Se usa como capa de fondo de la portada, atenuada para que el texto siga leyéndose.</p>
-      </div>
-      <div class="field"><label>Etiqueta superior</label><input type="text" data-k="team.kicker"></div>
-      <div class="field"><label>Título de portada</label><textarea data-k="team.title"></textarea></div>
-      <div class="grid g2 field">
-        <div><label>País</label><input type="text" data-k="team.paisNombre"></div>
-        <div><label>Nombre del evento</label><input type="text" data-k="team.evento"></div>
-      </div>
-      <div class="grid g2 field">
-        <div><label>Universidad</label><input type="text" data-k="team.university"></div>
-        <div><label>Ciudad</label><input type="text" data-k="team.city"></div>
-      </div>
-      <div class="grid g3 field">
-        <div><label>País (número)</label><input type="text" data-k="team.pais"></div>
-        <div><label>Reto (número)</label><input type="text" data-k="team.reto"></div>
-        <div><label>Pie</label><input type="text" data-k="team.foot"></div>
-      </div>
-      <div class="field"><label>Tipografía del titular</label><select data-k="fonts.t" id="ft"></select></div>
-      <div class="field">
-        <label>Paleta del grupo</label>
-        <div class="pal-row" id="pal"></div>
-      </div>
-      <div class="btn-row"><button class="sec" id="rs">Restablecer todo</button></div>
-    </section>
+    </details>
   </div>
 </div>
 </main>
@@ -595,21 +656,32 @@ function mapa(cls,extra){
   if(typeof MAPA_NI==='undefined')return '';
   return '<svg class="'+cls+'" viewBox="'+MAPA_NI.vb+'" preserveAspectRatio="xMidYMid meet" '+(extra||'')+'><path d="'+MAPA_NI.path+'"/></svg>';
 }
-/* marca de grupo: logo propio o marca orbital por defecto */
-var MARCA_DEF='<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="16" cy="16" r="6"/><circle cx="16" cy="16" r="12" stroke-dasharray="3.2 4" opacity=".5"/></svg>';
-function logoGrupo(){return S.team.logo?('<img src="'+S.team.logo+'" alt="">'):MARCA_DEF}
-function logoUni(){return S.team.logoUni?('<img src="'+S.team.logoUni+'" alt="">'):''}
-function logoEvento(){return S.team.logoEvento?('<img src="'+S.team.logoEvento+'" alt="">'):''}
-/* cabecera común: marca del equipo, logos de institución y contador de lámina */
-function cabecera(n,t){
-  var pt=logoUni()+logoEvento();
-  return '<div class="hd"><div class="lg">'+logoGrupo()+'<b>'+E(S.team.name)+'</b></div>'+(pt?'<div class="ptns">'+pt+'</div>':'')+'<span class="tg">'+pad(n)+' / '+pad(t)+'</span></div>';
+/* marca de grupo: logo propio o monograma neutro.
+   Nunca se dibuja una marca que parezca la de otro equipo. */
+function iniciales(){
+  var w=(S.team.name||'').trim().split(/\s+/).filter(Boolean);
+  if(!w.length)return '··';
+  if(w.length===1)return w[0].slice(0,2).toUpperCase();
+  return (w[0][0]+w[1][0]).toUpperCase();
 }
-/* pie común: croquis del país, logos de institución y hashtag */
+function logoGrupo(){return S.team.logo?('<img src="'+S.team.logo+'" alt="">'):('<span class="mono">'+E(iniciales())+'</span>')}
+function logoUni(){return S.team.logoUni?('<img src="'+S.team.logoUni+'" alt="">'):''}
+/* logo del rally: el que suba el equipo o, por defecto, el del evento activo */
+function logoEventoSrc(){
+  if(S.team.logoEvento)return S.team.logoEvento;
+  return (S.rallyType==='nacional')?'assets/logo_rally_nacional.png':'assets/logo_rally_latam.png';
+}
+function logoEvento(){return '<img src="'+logoEventoSrc()+'" alt="">'}
+/* cabecera común: marca del equipo y contador de lámina. Los logos no van aquí:
+   cada lámina muestra el del rally y el de la institución UNA sola vez, en el pie. */
+function cabecera(n,t){
+  return '<div class="hd"><div class="lg">'+logoGrupo()+'<b>'+E(S.team.name)+'</b></div><span class="tg">'+pad(n)+' / '+pad(t)+'</span></div>';
+}
+/* pie común: croquis del país, logos (rally + institución) y hashtag */
 function pie(){
-  var T=S.team,pt=logoUni()+logoEvento();
+  var T=S.team,marks=logoUni()+logoEvento();
   return '<div class="ft"><span class="ni">'+mapa('croquis')+'<span>'+E(T.paisNombre||T.foot)+'</span></span>'+
-  (pt?'<span class="marks">'+pt+'</span>':'')+
+  '<span class="marks">'+marks+'</span>'+
   '<span class="wv">'+ZZ+'<span>'+E(T.tag)+'</span></span></div>';
 }
 /* imagen de portada del equipo (capa inferior) */
@@ -635,7 +707,7 @@ function mbRow(m,max){
   return '<div class="mb" data-box>'+avat(m)+'<div><b data-fit data-fit-max="'+(max||3.3)+'" data-fit-min="1.9" title="'+E(nom)+'">'+E(nom)+'</b><small title="'+E(m.r)+'">'+E(m.r)+'</small></div></div>';
 }
 function teamSize(s){var l=(s||'').length;return l>26?5.6:l>18?6.6:l>12?7.6:l>8?8.6:9.6}
-function tiSize(s){var l=(s||'').length;return l>54?8.4:l>40?9.6:l>28?11:12.2}
+function tiSize(s){var l=(s||'').length;return l>54?8:l>40?9:l>28?10:10.8}
 function tiMax(s,mult){return (tiSize(s)*(mult||1)).toFixed(1)}
 function tiFit(s){return ' data-fit data-fit-max="'+tiSize(s)+'" data-fit-min="5"' }
 
@@ -662,15 +734,15 @@ function covB(close,n,t){var T=S.team;
   return '<div class="sl cov-b sk-'+S.style.skin+'" data-deco="'+S.style.deco+'" style="'+vars(S.pal,S.fonts)+'">'+hero()+
   '<div class="nmap">'+mapa('mapa-svg')+'</div>'+
   cabecera(n,t)+
-  '<div class="head" data-box><div class="ti" data-fit data-fit-max="'+tiSize(T.title)+'" data-fit-min="5">'+E(T.title).replace(/\n/g,'<br>')+'</div>'+
-  '<div class="lead">'+E(T.kicker)+'</div><div class="rule"></div></div>'+
+  '<div class="head" data-box><div class="k">'+E(T.kicker)+'</div><div class="ti" data-fit data-fit-max="'+tiSize(T.title)+'" data-fit-min="5">'+E(T.title).replace(/\n/g,'<br>')+'</div>'+
+  '<div class="rule"></div></div>'+
   '<div class="st">'+stBlock()+'</div><div class="people">'+rows+'</div>'+pie()+'</div>';
 }
 function covC(close,n,t){var T=S.team;
   var mb=S.mem.map(function(m){return mbRow(m,2.6)}).join('');
   return '<div class="sl cov-c sk-'+S.style.skin+'" data-deco="'+S.style.deco+'" style="'+vars(S.pal,S.fonts)+'"><div class="band"></div>'+hero()+
   '<div class="nmap">'+mapa('mapa-svg')+'</div>'+cabecera(n,t)+
-  '<div class="head" data-box><div class="ck">'+E(T.kicker)+'</div><div class="ti" data-fit data-fit-max="'+tiMax(T.title,1.35)+'" data-fit-min="5">'+E(T.title).replace(/\n/g,'<br>')+'</div><div class="rule"></div></div>'+
+  '<div class="head" data-box><div class="ck">'+E(T.kicker)+'</div><div class="ti" data-fit data-fit-max="'+tiMax(T.title,1.02)+'" data-fit-min="5">'+E(T.title).replace(/\n/g,'<br>')+'</div><div class="rule"></div></div>'+
   '<div class="mid"><div class="st">'+stBlock()+'</div><div class="people">'+mb+'</div></div>'+pie()+'</div>';
 }
 function covD(close,n,t){var T=S.team;
@@ -696,7 +768,24 @@ function covF(close,n,t){var T=S.team;
   '<div class="head" data-box><div class="bubble">'+E(T.kicker)+'</div><div class="ti ti-s" data-fit data-fit-max="'+tiSize(T.title)+'" data-fit-min="5">'+E(T.title).replace(/\n/g,'<br>')+'</div></div>'+
   '<div class="st">'+stBlock()+'</div><div class="people">'+mb+'</div>'+pie()+'</div>';
 }
-var COVERS={a:covA,b:covB,c:covC,d:covD,e:covE,f:covF};
+/* ---------- PORTADA G · estudio (minimalista, aire y una sola tinta) ---------- */
+function covG(close,n,t){var T=S.team;
+  var rows=S.mem.map(function(m){return '<div class="grow"><span class="gin">'+E(inicialesDe(m))+'</span><b>'+E(m.n)+' '+E(m.s)+'</b><small>'+E(m.r)+'</small></div>'}).join('');
+  return '<div class="sl cov-g sk-'+S.style.skin+'" data-deco="none" style="'+vars(S.pal,S.fonts)+'">'+
+  cabecera(n,t)+
+  '<div class="head" data-box><div class="k">'+E(T.kicker)+'</div>'+
+  '<div class="ti" data-fit data-fit-max="'+tiSize(T.title)+'" data-fit-min="5">'+E(T.title).replace(/\n/g,'<br>')+'</div>'+
+  '<div class="rule"></div>'+
+  '<div class="gst"><div><b>'+pad(S.mem.length)+'</b><span>Integrantes</span></div><div><b>'+E(T.pais)+'</b><span>País</span></div><div><b>'+E(T.reto)+'</b><span>Reto</span></div></div></div>'+
+  '<div class="grows">'+rows+'</div>'+pie()+'</div>';
+}
+function inicialesDe(m){
+  var w=((m.n||'')+' '+(m.s||'')).trim().split(/\s+/).filter(Boolean);
+  if(!w.length)return '··';
+  if(w.length===1)return w[0].slice(0,2).toUpperCase();
+  return (w[0][0]+w[1][0]).toUpperCase();
+}
+var COVERS={a:covA,b:covB,c:covC,d:covD,e:covE,f:covF,g:covG};
 
 /* ---------- LÁMINAS DE INTEGRANTE ---------- */
 function cardCore(i,n,t,cls,extra){var m=S.mem[i],T=S.team,ac=m.ac||S.pal.ac,bg=m.bg||S.pal.bg2;
@@ -707,7 +796,7 @@ function cardCore(i,n,t,cls,extra){var m=S.mem[i],T=S.team,ac=m.ac||S.pal.ac,bg=
   '<div class="ir"><span class="ic">'+ICON_R+'</span><div><small>Rol</small><b>'+E(m.r)+'</b></div></div>'+
   (m.e?'<div class="ex" data-box><h5>Lo que espera conseguir</h5><p data-fit data-fit-max="2.7" data-fit-min="1.7">'+E(m.e)+'</p></div>':'')+'</div>'+
   '<div class="cft"><span class="cni">'+mapa('croq')+'<span>'+E(T.paisNombre||T.foot)+'</span></span>'+
-  (logoUni()+logoEvento()?'<span class="cmk">'+(logoUni()+logoEvento())+'</span>':'')+
+  '<span class="cmk">'+logoUni()+logoEvento()+'</span>'+
   '<span class="crp">'+ZZ+'<span>'+E(T.name)+'</span></span></div></div>';
 }
 function cardDiagonal(i,n,t){return cardCore(i,n,t,'card-diagonal','<div class="dg"></div>')}
@@ -715,7 +804,9 @@ function cardRight(i,n,t){return cardCore(i,n,t,'card-right','')}
 function cardBand(i,n,t){return cardCore(i,n,t,'card-band','')}
 function cardCircle(i,n,t){return cardCore(i,n,t,'card-circle','')}
 function cardSticker(i,n,t){return cardCore(i,n,t,'card-sticker','')}
-var CARDS={diagonal:cardDiagonal,right:cardRight,band:cardBand,circle:cardCircle,sticker:cardSticker};
+/* recorte: la foto no va en círculo, va como un recorte con borde inclinado */
+function cardCutout(i,n,t){return cardCore(i,n,t,'card-cutout','')}
+var CARDS={diagonal:cardDiagonal,right:cardRight,band:cardBand,circle:cardCircle,sticker:cardSticker,cutout:cardCutout};
 
 /* ---------- AJUSTE AUTOMÁTICO ---------- */
 function fitBox(box){
@@ -723,7 +814,7 @@ function fitBox(box){
   if(!kids.length)return;
   kids.forEach(function(el){if(!el.style.fontSize)el.style.fontSize=el.getAttribute('data-fit-max')+'cqw'});
   var guard=0;
-  while(over(box)&&guard<70){
+  while((over(box)||kidOver(kids))&&guard<70){
     var cand=null;
     kids.forEach(function(el){
       var cur=parseFloat(el.style.fontSize)||+el.getAttribute('data-fit-max');
@@ -737,6 +828,9 @@ function fitBox(box){
   }
 }
 function over(box){return box.scrollHeight>box.clientHeight+1||box.scrollWidth>box.clientWidth+1}
+/* un texto se recorta cuando su propia caja no da la altura de la línea:
+   por eso el ajuste mira también el desbordamiento de cada hijo. */
+function kidOver(kids){for(var i=0;i<kids.length;i++){var k=kids[i];if(k.scrollHeight>k.clientHeight+3||k.scrollWidth>k.clientWidth+1)return true}return false}
 function fitAll(root){
   (root||document).querySelectorAll('[data-box]').forEach(fitBox);
 }
@@ -774,6 +868,20 @@ function renderCtl(){
   '<div><label>Fondo propio</label><input type="color" data-k="'+k+'bg" value="'+(m.bg||S.pal.bg2)+'"></div></div>'+
   '<div class="btn-row"><button class="sec" id="cl">Volver al color del grupo</button></div>';
   renderPrompt()}
+/* retratos: una foto por integrante, con previsualización */
+function renderPhotos(){
+  var box=document.getElementById('photos');if(!box)return;
+  box.innerHTML=S.mem.map(function(m,i){
+    return '<div class="photo-row"><span class="ph-prev" data-photo="'+i+'" style="'+(m.photo?'background-image:url('+m.photo+')':'')+'"></span>'+
+    '<b>'+E((m.n||'')+' '+(m.s||''))+'</b>'+
+    '<label data-photo="'+i+'">Foto<input type="file" accept="image/*" data-mf="'+i+'" hidden></label></div>';
+  }).join('');
+}
+/* previsualización de los logos y la imagen cargados */
+function renderLogos(){
+  var set=function(id,src){var e=document.getElementById(id);if(!e)return;e.style.backgroundImage=src?'url('+src+')':'none'};
+  set('lg-prev',S.team.logo);set('lu-prev',S.team.logoUni);set('le-prev',logoEventoSrc());set('hp-prev',S.team.hero);
+}
 function renderPal(){document.getElementById('pal').innerHTML=Object.keys(PL).map(function(x){return '<div><label>'+PL[x]+'</label><input type="color" data-k="pal.'+x+'" value="'+S.pal[x]+'"></div>'}).join('')}
 function renderFonts(){
   var sel=document.getElementById('ft');
@@ -801,21 +909,31 @@ function thumbHtml(p){
 }
 function setv(path,v){var p=path.split('.'),o=S;for(var i=0;i<p.length-1;i++)o=o[p[i]];o[p[p.length-1]]=v}
 function fillStatic(){document.querySelectorAll('[data-k^="team."]').forEach(function(el){var p=el.dataset.k.split('.');el.value=S.team[p[1]]})}
-function all(){fillStatic();renderPal();renderFonts();renderCtl();renderThumbs();renderSlide()}
+function all(){fillStatic();renderPal();renderFonts();renderCtl();renderPhotos();renderLogos();renderThumbs();renderSlide()}
 
 document.addEventListener('input',function(e){var k=e.target.dataset&&e.target.dataset.k;if(!k)return;
   if(k==='fonts.t'){S.fonts.t=e.target.value}
   else setv(k,e.target.value);
   save();renderSlide();renderThumbs();renderPrompt();
   if(k.indexOf('mem.')===0&&/\.n$/.test(k)){var c=document.querySelectorAll('#chips [data-m]')[sel];if(c)c.textContent=e.target.value}});
-document.addEventListener('change',function(e){if(e.target.id==='ft'){S.fonts.t=e.target.value;save();renderSlide();renderThumbs()}});
+document.addEventListener('change',function(e){
+  /* foto de un integrante: cada fila de la lista tiene su propio input */
+  var mf=e.target.dataset&&e.target.dataset.mf;
+  if(mf!==undefined){
+    var f=e.target.files[0];if(!f)return;
+    var r=new FileReader();
+    r.onload=function(){var im=new Image();im.onload=function(){var W=900,H=1125,c=document.createElement('canvas');c.width=W;c.height=H;var x=c.getContext('2d'),k=Math.max(W/im.width,H/im.height),w=im.width*k,h=im.height*k;x.drawImage(im,(W-w)/2,(H-h)/2,w,h);S.mem[+mf].photo=c.toDataURL('image/jpeg',.86);save();sel=+mf;renderPhotos();renderCtl();renderSlide();renderThumbs()};im.src=r.result};
+    r.readAsDataURL(f);e.target.value='';return;
+  }
+  if(e.target.id==='ft'){S.fonts.t=e.target.value;save();renderSlide();renderThumbs()}});
 document.addEventListener('click',function(e){
  /* Los controles viven dentro de botones (la miniatura de estilo es un <button>
     con la lámina dentro). Por eso se busca el ancestro con el atributo, no
     el elemento exacto sobre el que se hizo clic: si no, hacer clic sobre el
     arte de la miniatura no aplica el estilo. */
- var t=e.target.closest('[data-p],[data-m],[data-d],button,input,label')||e.target;
+ var t=e.target.closest('[data-p],[data-m],[data-d],[data-photo],button,input,label')||e.target;
  var d=(t.dataset)||{};
+ if(d.photo!==undefined){sel=+d.photo;renderCtl()}
  if(d.d!==undefined){cur=+d.d;var s=slides()[cur];if(s.k==='m'){sel=s.i;renderCtl()}renderSlide()}
  if(d.m!==undefined){sel=+d.m;cur=1+sel;renderCtl();renderSlide()}
  if(d.p!==undefined){applyPreset(d.p)}
