@@ -303,8 +303,8 @@ function getDefaultMultiAITasks() {
     {
       id: "voice_audio",
       title: "Locución y Síntesis de Voz Emotiva",
-      ai: "ElevenLabs / Chatterbox / Edge-TTS",
-      desc: "Genera el archivo de audio para los 4 actos (120s exactos) con entonación empática latinoamericana.",
+      ai: "Chatterbox LatAm / Kokoro / Edge-TTS",
+      desc: "Escribe la locución, instala si hace falta un motor TTS y entrega el MP4 (AAC) con la guía de Guion > Motor de voz.",
       status: "pending",
       result: ""
     },
@@ -331,6 +331,7 @@ function getDefaultMultiAITasks() {
 function getInitialState() {
   return {
     rally_type: null,
+    exchange_rate_bcn: 0,
     hours_total: 28,
     hours_remaining: 28,
     rally_started: false,
@@ -356,6 +357,14 @@ function getInitialState() {
     challenges: [],
     challenge_ideas: {}, // { [chId]: [ { id, text, author, timestamp } ] }
 
+    // Identidad real del equipo: cada persona define su nombre (único) en su dispositivo.
+    // [{ id, name, joined_at }]
+    team_roster: [],
+
+    // Entregables: estado manual, responsables e historial de quién trabajó.
+    // { [deliverableId]: { status, assignees, history, updated_at } }
+    deliverables: {},
+
     // Taller de Solución
     solution_raw_input: "",
     solution_thesis: "",
@@ -365,6 +374,11 @@ function getInitialState() {
 
     // Tareas Multi-IA coordinadas
     tasks: getDefaultMultiAITasks(),
+
+    // Motor TTS elegido para la guía de locución
+    voice_engine: "chatterbox",
+    // Preset de voz audible incluido en el proyecto
+    voice_preset: "proyecto",
 
     // Identidad cromática
     palette: {
@@ -453,7 +467,87 @@ function getClientMascot() {
   return picked;
 }
 
-const currentClientMascot = getClientMascot();
+function getStoredUserName() {
+  try { return String(localStorage.getItem("rally_user_name") || "").trim(); } catch(e) { return ""; }
+}
+
+// El ícono/color sigue siendo estable por dispositivo (mascota), pero el nombre
+// lo define la persona. Sin nombre definido, la identidad queda en "Sin nombre".
+function makeClientIdentity() {
+  const mascot = getClientMascot();
+  const stored = getStoredUserName();
+  return Object.assign({}, mascot, { name: stored || "Sin nombre" });
+}
+
+const currentClientMascot = makeClientIdentity();
+const EQUIPO_LEGADO_NOMBRES = ["Estación Alfa", "Estación Beta", "Estación Gamma", "Estación Delta", "Estación Epsilon", "Estación Omega"];
+
+function normalizePersonName(raw) {
+  return String(raw || "").replace(/\s+/g, " ").trim().slice(0, 28);
+}
+function personNameKey(name) {
+  return normalizePersonName(name).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+function getRoster() {
+  if (!Array.isArray(state.team_roster)) state.team_roster = [];
+  return state.team_roster;
+}
+function rosterNameInUse(name, exceptId) {
+  const key = personNameKey(name);
+  return getRoster().find(m => personNameKey(m.name) === key && m.id !== exceptId) || null;
+}
+function amINamed() {
+  return !!getStoredUserName() && currentClientMascot.name !== "Sin nombre";
+}
+
+// Nombre legible: convierte identidades viejas (mascotas) a algo humano.
+function displayPersonName(name) {
+  if (!name) return "Sin nombre";
+  if (EQUIPO_LEGADO_NOMBRES.includes(name)) {
+    const m = getRoster().find(x => x.name === name);
+    return m ? m.name : "Integrante anterior";
+  }
+  return name;
+}
+
+// Define (o cambia) el nombre de esta persona en este dispositivo. Único en el equipo.
+function setMyDisplayName(raw) {
+  const name = normalizePersonName(raw);
+  if (name.length < 2) return { ok: false, error: "Escribe al menos 2 caracteres." };
+  if (name === "Sin nombre") return { ok: false, error: "Ese nombre está reservado." };
+  const roster = getRoster();
+  const dup = rosterNameInUse(name, currentClientMascot.id);
+  if (dup) return { ok: false, error: `"${dup.name}" ya está en uso. Los nombres deben ser únicos.` };
+
+  let me = roster.find(m => m.id === currentClientMascot.id);
+  if (!me) {
+    me = { id: currentClientMascot.id, name, joined_at: Date.now() };
+    roster.push(me);
+  } else {
+    me.name = name;
+  }
+  currentClientMascot.name = name;
+  try { localStorage.setItem("rally_user_name", name); } catch(e) {}
+  saveState();
+  if (collaborationChannel) {
+    collaborationChannel.postMessage({ type: "ROSTER_UPDATE", roster });
+  }
+  return { ok: true };
+}
+
+// Adopta un nombre existente del roster en este dispositivo (equipo compartiendo laptop).
+function adoptRosterName(id) {
+  const member = getRoster().find(m => m.id === id);
+  if (!member) return false;
+  currentClientMascot.name = member.name;
+  currentClientMascot.id = member.id;
+  try {
+    localStorage.setItem("rally_user_name", member.name);
+    localStorage.setItem("rally_user_mascot_id", member.id);
+  } catch(e) {}
+  renderTopbar();
+  return true;
+}
 
 // Canal de presencia y soft-locks
 let collaborationChannel = null;
@@ -468,6 +562,13 @@ try {
     } else if (data && data.type === "RELEASE_LOCK") {
       if (state.active_locks) delete state.active_locks[data.fieldId];
       updateSoftLockUI();
+    } else if (data && data.type === "ROSTER_UPDATE") {
+      state.team_roster = Array.isArray(data.roster) ? data.roster : [];
+      if (activeTab === "resumen") renderTab("resumen");
+      renderTopbar();
+    } else if (data && data.type === "DELIVERABLES_UPDATE") {
+      state.deliverables = data.value || {};
+      if (activeTab === "resumen") renderTab("resumen");
     } else if (data && data.type === "FIELD_UPDATE") {
       if (data.category === "pautado") {
         state.pautado[data.key] = data.value;
@@ -509,11 +610,17 @@ function broadcastLock(fieldId) {
   if (collaborationChannel) {
     collaborationChannel.postMessage({ type: "SOFT_LOCK", fieldId, mascot: currentClientMascot });
   }
+  if (window.RallySectionSync && typeof window.RallySectionSync.lock === "function") {
+    window.RallySectionSync.lock(fieldId);
+  }
 }
 
 function broadcastRelease(fieldId) {
   if (collaborationChannel) {
     collaborationChannel.postMessage({ type: "RELEASE_LOCK", fieldId });
+  }
+  if (window.RallySectionSync && typeof window.RallySectionSync.release === "function") {
+    window.RallySectionSync.release(fieldId);
   }
 }
 
@@ -554,6 +661,7 @@ function getWorkflowStage() {
 
 // ── NAVEGACIÓN MODULAR Y DEPENDENCIAS ─────────────────────────────────────────
 const NAV_TABS = [
+  { id: "resumen",    label: "Resumen del Rally",        level: 0, check: () => true, summary: true },
   { id: "certamen",   label: "00 Certamen",             level: 0, check: () => true },
   { id: "team",       label: "01 Identidad de Equipo",  level: 1, check: () => !!state.rally_type },
   { id: "challenges", label: "02 Retos del Comité",     level: 2, check: () => !!state.rally_type && !!state.team_name },
@@ -626,6 +734,19 @@ function loadSavedState() {
     const saved = localStorage.getItem("rally_studio_production_state_2026_v3");
     if (saved) {
       state = Object.assign(getInitialState(), JSON.parse(saved));
+      // Migra metadatos de tareas sin perder resultados ya pegados por el equipo.
+      const defaultTasks = getDefaultMultiAITasks();
+      if (Array.isArray(state.tasks)) {
+        state.tasks = state.tasks.map(task => {
+          const fresh = defaultTasks.find(d => d.id === task.id);
+          return fresh ? { ...task, title: fresh.title, ai: fresh.ai, desc: fresh.desc } : task;
+        });
+        defaultTasks.forEach(fresh => {
+          if (!state.tasks.some(task => task.id === fresh.id)) state.tasks.push(fresh);
+        });
+      } else {
+        state.tasks = defaultTasks;
+      }
       if (Array.isArray(state.challenges)) {
         state.challenges.forEach(ch => {
           if (ch.title && (ch.title.toLowerCase().includes("whatsapp image") || ch.title.toLowerCase().includes(".jpeg") || ch.title.toLowerCase().includes(".png") || ch.title.toLowerCase().includes(".jpg"))) {
@@ -664,6 +785,11 @@ function loadSavedState() {
         else if (stage === 3) activeTab = "solution";
         else activeTab = "challenges";
       }
+      // Con el reto ya elegido, la primera pantalla es el resumen: las fases de
+      // setup (certamen, equipo, retos) dejan de ocupar el campo de trabajo.
+      if (stage >= 3 && ["certamen", "team", "challenges"].includes(activeTab)) {
+        activeTab = "resumen";
+      }
     }
   } catch (e) {
     console.error("Error al cargar estado local", e);
@@ -701,6 +827,9 @@ function saveState() {
     localStorage.setItem("rally_studio_production_state_2026_v3", JSON.stringify(state));
     if (syncBroadcastChannel) {
       syncBroadcastChannel.postMessage({ type: "AUTO_SYNC_STATE", state });
+    }
+    if (window.RallySectionSync && typeof window.RallySectionSync.onLocalSave === "function") {
+      window.RallySectionSync.onLocalSave(state);
     }
   } catch (e) {}
   updateInspector();
@@ -747,6 +876,7 @@ function generateProjectMarkdown() {
     { concept: "Talleres y Metodología de Apropiación Comunitaria", category: "Impacto Social", units: 1, unit_cost: 150 }
   ];
   const budgetTotal = budgetList.reduce((acc, b) => acc + (Number(b.units || 1) * Number(b.unit_cost || 0)), 0);
+  const bctx = budgetCurrency();
   const challengesList = (state.challenges && state.challenges.length > 0) ? state.challenges : OFFICIAL_CHALLENGES_2026;
 
   let md = `# DOSSIER TÉCNICO OFICIAL DEL PROYECTO: ${projName.toUpperCase()}\n`;
@@ -792,14 +922,13 @@ function generateProjectMarkdown() {
   md += `#### 5.4 Grado de Innovación y Creatividad\n${paut.innovacion || "Elementos diferenciales y disruptivos de la solución, barreras tecnológicas superadas y valor agregado frente a alternativas existentes."}\n\n`;
   md += `#### 5.5 Impacto Social y Sostenibilidad Ambiental\n${paut.impacto || "Medición de beneficios cuantificables para la comunidad, alineación con la Agenda 2030 (ODS) y viabilidad ecológica a largo plazo."}\n\n`;
 
-  md += `### 6. Presupuesto Sustentado de Marcha (Total: \$${budgetTotal.toFixed(2)} USD)\n\n`;
-  md += `| Ítem | Concepto | Categoría | Unidades | Costo Unit. | Total |\n`;
+  md += `### 6. Presupuesto Sustentado de Marcha (Total: ${budgetFmt(budgetTotal, bctx, true)})\n\n`;
+  md += `| Ítem | Concepto | Categoría | Unidades | Costo Unit. (${bctx.rotulo}) | Total (${bctx.rotulo}) |\n`;
   md += `|---|---|---|---|---|---|\n`;
   budgetList.forEach((b, idx) => {
-    const tot = (Number(b.units || 1) * Number(b.unit_cost || 0)).toFixed(2);
-    md += `| ${idx + 1} | ${b.concept} | ${b.category || "General"} | ${b.units || 1} | \$${Number(b.unit_cost || 0).toFixed(2)} | \$${tot} |\n`;
+    md += `| ${idx + 1} | ${b.concept || b.element || "Partida"} | ${b.category || "General"} | ${b.units || 1} | ${budgetFmt(Number(b.unit_cost || 0), bctx)} | ${budgetFmt(Number(b.units || 1) * Number(b.unit_cost || 0), bctx)} |\n`;
   });
-  md += `| — | **PRESUPUESTO GENERAL** | — | — | — | **\$${budgetTotal.toFixed(2)} USD** |\n\n`;
+  md += `| — | **PRESUPUESTO GENERAL** | — | — | — | **${budgetFmt(budgetTotal, bctx, true)}** |\n\n`;
 
   md += `### 7. Guion Audiovisual de 120 Segundos (4 Actos)\n\n`;
   md += `- **Acto 1 (00:00 - 00:20):** ${scr.acto1 || "Exposición del problema en el territorio, datos críticos y urgencia de solución."}\n\n`;
@@ -852,6 +981,7 @@ function preparePrintDossierHTML() {
     { concept: "Talleres y Metodología de Apropiación Comunitaria", category: "Impacto Social", units: 1, unit_cost: 150, url: "Comités Locales" }
   ];
   const budgetTotal = budgetList.reduce((acc, b) => acc + (Number(b.units || 1) * Number(b.unit_cost || 0)), 0);
+  const bctx = budgetCurrency();
   const budgetInRange = budgetTotal >= 500 && budgetTotal <= 15000;
 
   // Claims de Respaldo Fáctico / Propiedad Intelectual
@@ -1079,7 +1209,7 @@ function preparePrintDossierHTML() {
     <!-- SECCIÓN 5: PRESUPUESTO SUSTENTADO DE MARCHA -->
     <div class="print-section print-page-break">
       <div class="print-section-title">
-        <span>5. Presupuesto Sustentado de Marcha (Tope \$500 - \$15,000 USD)</span>
+        <span>5. Presupuesto Sustentado de Marcha (${budgetFmt(500, bctx)} - ${budgetFmt(15000, bctx)})</span>
         <span class="print-badge ${budgetInRange ? 'print-badge-green' : 'print-badge-amber'}">${budgetInRange ? 'DENTRO DE RANGO SIRLI' : 'REVISAR TOPE RÚBRICA'}</span>
       </div>
       <table class="print-table">
@@ -1089,8 +1219,8 @@ function preparePrintDossierHTML() {
             <th style="width:36%;">Concepto Técnico / Insumo</th>
             <th style="width:18%;">Categoría</th>
             <th style="width:8%; text-align:center;">Cant.</th>
-            <th style="width:12%; text-align:right;">Unit. USD</th>
-            <th style="width:12%; text-align:right;">Total USD</th>
+            <th style="width:12%; text-align:right;">Unit. ${bctx.rotulo}</th>
+            <th style="width:12%; text-align:right;">Total ${bctx.rotulo}</th>
             <th style="width:10%;">Cotización</th>
           </tr>
         </thead>
@@ -1107,15 +1237,15 @@ function preparePrintDossierHTML() {
                 <td><strong>${concept}</strong></td>
                 <td>${catItem}</td>
                 <td class="num-cell" style="text-align:center;">${units}</td>
-                <td class="num-cell" style="text-align:right;">$${unitCost.toFixed(2)}</td>
-                <td class="num-cell" style="text-align:right; font-weight:700;">$${lineTotal.toFixed(2)}</td>
+                <td class="num-cell" style="text-align:right;">${budgetFmt(unitCost, bctx)}</td>
+                <td class="num-cell" style="text-align:right; font-weight:700;">${budgetFmt(lineTotal, bctx)}</td>
                 <td style="font-size:7.5pt; color:#64748B;">${b.url ? 'Cotizado' : 'COTS Local'}</td>
               </tr>
             `;
           }).join('')}
           <tr style="background:#F8FAFD; font-weight:800;">
             <td colspan="5" style="text-align:right;">PRESUPUESTO GENERAL CONSOLIDADO:</td>
-            <td class="num-cell" style="text-align:right; color:#0D1B35; font-size:9.5pt;">$${budgetTotal.toFixed(2)} USD</td>
+            <td class="num-cell" style="text-align:right; color:#0D1B35; font-size:9.5pt;">${budgetFmt(budgetTotal, bctx, true)}</td>
             <td style="font-size:7.5pt; color:#047857; font-weight:700;">✓ Rango Apto</td>
           </tr>
         </tbody>
@@ -1686,6 +1816,10 @@ function renderMobileBottomBar() {
   const isPanelOpen = body.classList.contains("panel-drawer-open");
 
   el.innerHTML = `
+    <button class="mobile-bottom-tab ${activeTab === 'resumen' ? 'active' : ''}" onclick="switchTab('resumen')" title="Resumen del rally">
+      ${SVG.network}
+      <span>Resumen</span>
+    </button>
     <button class="mobile-bottom-tab ${isSidebarOpen ? 'active' : ''}" onclick="toggleSidebar()" title="Fases de trabajo">
       ${SVG.menu}
       <span>Fases</span>
@@ -1718,7 +1852,7 @@ function renderTopbar() {
   el.innerHTML = `
     <div class="topbar-left">
       ${stage >= 2 ? `<button class="btn-toggle-sidebar" onclick="toggleSidebar()" title="Colapsar/Expandir menú lateral">${SVG.menu}</button>` : ""}
-      <div class="brand-group" onclick="activeTab='certamen'; syncUI();" title="Ir al inicio de Rally Studio">
+      <div class="brand-group" onclick="goHome()" title="Ir al inicio de Rally Studio">
         ${SVG.logo}
         <span class="brand-text-navy">RALLY</span>
         <span class="brand-text-blue">STUDIO</span>
@@ -1765,11 +1899,11 @@ function renderTopbar() {
         </div>
       ` : ""}
 
-      <!-- Avatar de Mascota Colaborativa Asignada (Sin Registro) -->
-      <div class="collaborator-avatar-badge" title="Tu avatar asignado automáticamente para editar en simultáneo sin pisarse: ${currentClientMascot.name}">
+      <!-- Identidad de esta persona: nombre real, definido por ella misma -->
+      <button class="collaborator-avatar-badge" onclick="openIdentityModal()" title="${amINamed() ? `Trabajas como ${currentClientMascot.name}. Clic para cambiar de persona.` : 'Define tu nombre para que el equipo sepa quién eres.'}">
         <span class="collaborator-avatar-icon">${currentClientMascot.icon}</span>
-        <span class="collaborator-name-label">${currentClientMascot.name}</span>
-      </div>
+        <span class="collaborator-name-label ${amINamed() ? '' : 'is-unset'}">${escapeHtml(currentClientMascot.name)}</span>
+      </button>
 
       <!-- Telemetría del Sistema en Tiempo Real -->
       <div class="telemetry-chip" id="topbar-telemetry-chip" title="Métricas de hardware y estado del motor en tiempo real">
@@ -2024,6 +2158,39 @@ function applyTimerSettings() {
 function renderNavigation() {
   const nav = document.getElementById("sidebar");
   const currentStage = getWorkflowStage();
+  const map = rsDefMap();
+
+  const linkFor = (t, isUnlocked) => {
+    const isCompleted = t.summary ? false : rsPhaseState(t.id, map).code === "done";
+    const activeClass = t.id === activeTab ? "active" : "";
+    let statusMarkup = "";
+    if (t.summary) {
+      statusMarkup = "";
+    } else if (!isUnlocked) {
+      statusMarkup = `<span class="badge-status" style="background:#f1f5f9; color:#94a3b8; border:1px solid #e2e8f0;">${SVG.lock}</span>`;
+    } else if (isCompleted) {
+      statusMarkup = `<span class="badge-status badge-ok">${SVG.check}</span>`;
+    } else if (rsPhaseState(t.id, map).code === "waiting") {
+      statusMarkup = `<span class="badge-status badge-wait">En espera</span>`;
+    } else {
+      statusMarkup = `<span class="badge-status badge-pending">En curso</span>`;
+    }
+    return `
+      <a href="#" class="nav-link ${activeClass} ${!isUnlocked ? 'locked' : ''}"
+         style="${!isUnlocked ? 'opacity:0.45; cursor:not-allowed;' : ''}"
+         onclick="${isUnlocked ? `switchTab('${t.id}', event)` : 'event.preventDefault()'}">
+        <span style="display:flex; align-items:center; gap:6px;">${t.label}</span>
+        ${statusMarkup}
+      </a>
+    `;
+  };
+
+  // Las fases ya cerradas no estorban: se pliegan al final, pero siguen accesibles.
+  // El resumen aparece cuando el equipo ya terminó la puesta en marcha.
+  const tabs = NAV_TABS.filter(t => !t.summary || currentStage >= 2);
+  const closed = tabs.filter(t => !t.summary && t.level <= currentStage && t.id !== activeTab && rsPhaseState(t.id, map).code === "done");
+  const mainTabs = tabs.filter(t => !closed.includes(t));
+  const lockedCount = tabs.filter(t => t.level > currentStage).length;
 
   nav.innerHTML = `
     <div class="drawer-header-mobile">
@@ -2031,30 +2198,22 @@ function renderNavigation() {
       <button class="btn-close-drawer" onclick="closeAllDrawers()" aria-label="Cerrar menú lateral">${SVG.close}</button>
     </div>
     <div class="sidebar-heading">Fases de Trabajo</div>
-    ${NAV_TABS.map(t => {
-      const isUnlocked = t.level <= currentStage;
-      const isCompleted = t.check();
-      const activeClass = t.id === activeTab ? "active" : "";
-      
-      let statusMarkup = "";
-      if (!isUnlocked) {
-        statusMarkup = `<span class="badge-status" style="background:#f1f5f9; color:#94a3b8; border:1px solid #e2e8f0;">${SVG.lock}</span>`;
-      } else if (isCompleted) {
-        statusMarkup = `<span class="badge-status badge-ok">${SVG.check}</span>`;
-      } else {
-        statusMarkup = `<span class="badge-status badge-pending">En curso</span>`;
-      }
-
-      return `
-        <a href="#" class="nav-link ${activeClass} ${!isUnlocked ? 'locked' : ''}" 
-           style="${!isUnlocked ? 'opacity:0.45; cursor:not-allowed;' : ''}"
-           onclick="${isUnlocked ? `switchTab('${t.id}', event)` : 'event.preventDefault()'}">
-          <span style="display:flex; align-items:center; gap:6px;">${t.label}</span>
-          ${statusMarkup}
-        </a>
-      `;
-    }).join("")}
+    ${mainTabs.map(t => linkFor(t, t.level <= currentStage)).join("")}
+    ${closed.length ? `
+      <details class="nav-closed-group">
+        <summary>Fases cerradas (${closed.length})</summary>
+        ${closed.map(t => linkFor(t, true)).join("")}
+      </details>
+    ` : ""}
+    ${lockedCount ? `<div class="nav-locked-hint">${lockedCount} fases se abren al avanzar</div>` : ""}
   `;
+}
+
+function goHome() {
+  const stage = getWorkflowStage();
+  activeTab = stage >= 3 ? "resumen" : stage === 2 ? "challenges" : stage === 1 ? "team" : "certamen";
+  state.active_tab = activeTab;
+  syncUI();
 }
 
 function switchTab(tabId, ev) {
@@ -2079,6 +2238,7 @@ function switchTab(tabId, ev) {
 function renderTab(tabId) {
   const main = document.getElementById("main");
   const renderers = {
+    resumen: renderViewResumen,
     certamen: renderViewCertamen,
     team: renderViewTeam,
     challenges: renderViewChallenges,
@@ -2098,8 +2258,485 @@ function renderTab(tabId) {
 }
 
 // ═════════════════════════════════════════════════════════════════════════════
+// CENTRO DE MANDO: RESUMEN ADAPTATIVO, ENTREGABLES Y RESPONSABLES
+// Capa aditiva: no reemplaza ninguna fase ni dato existente.
+// ═════════════════════════════════════════════════════════════════════════════
+
+let rsFilter = "all";
+
+function rsWordCount(text) {
+  return String(text || "").trim().split(/\s+/).filter(Boolean).length;
+}
+
+function rsPautadoSectionDone(key) {
+  const len = (state.pautado[key] || "").length;
+  const limit = getPautadoLimit(key);
+  return limit === null ? len > 0 : (len >= 150 && len <= limit);
+}
+
+function rsCanvasFilledCount() {
+  const canvas = (state.model_canvas && typeof state.model_canvas === "object") ? state.model_canvas : {};
+  return ["socios","actividades","propuesta","relaciones","segmentos","recursos","canales","costes","ingresos"]
+    .filter(k => String(canvas[k] || "").trim() !== "").length;
+}
+
+// Definición única de entregables. `auto()` detecta lo ya hecho; `requires` marca espera.
+function getDeliverableDefs() {
+  return [
+    { id: "certamen", phase: "certamen", title: "Certamen y reglas", needs: "Elegir Rally Latam 28h o Nacional 24h.", requires: [], auto: () => !!state.rally_type },
+    { id: "equipo", phase: "team", title: "Nombre, sede y marca", needs: "Nombre del equipo, universidad y ciudad.", requires: ["certamen"], auto: () => !!state.team_name && !!state.university },
+    { id: "reto", phase: "challenges", title: "Reto del comité seleccionado", needs: "Elegir un reto con su número y categoría.", requires: ["equipo"], auto: () => !!state.challenge_id },
+    { id: "solucion", phase: "solution", title: "Solución aprobada por el equipo", needs: "Tesis y versión simple, aprobadas en el taller.", requires: ["reto"], auto: () => !!state.solution_approved },
+    { id: "ods", phase: "impact", title: "ODS y eje del Plan País", needs: "Elegir ODS y justificar el eje (solo Nacional).", requires: ["reto"], auto: () => ((state.impact_alignment && state.impact_alignment.selected_ods) || []).length > 0 },
+    { id: "despacho", phase: "multi_ai", title: "Despacho a IAs externas", needs: "Al menos 3 encargos cerrados con resultado.", requires: ["solucion"], auto: () => (state.tasks || []).filter(t => t.status === "completed").length >= 3 },
+    { id: "pautado_problema", phase: "pautado", title: "Pautado · Problema", needs: "150–1250 caracteres en Latam.", requires: ["solucion"], auto: () => rsPautadoSectionDone("problema") },
+    { id: "pautado_solucion", phase: "pautado", title: "Pautado · Solución", needs: "150–1250 caracteres en Latam.", requires: ["solucion"], auto: () => rsPautadoSectionDone("solucion") },
+    { id: "pautado_impacto", phase: "pautado", title: "Pautado · Impacto", needs: "150–1000 caracteres en Latam.", requires: ["solucion"], auto: () => rsPautadoSectionDone("impacto") },
+    { id: "pautado_innovacion", phase: "pautado", title: "Pautado · Innovación", needs: "150–1000 caracteres en Latam.", requires: ["solucion"], auto: () => rsPautadoSectionDone("innovacion") },
+    { id: "pautado_prefactibilidad", phase: "pautado", title: "Pautado · Prefactibilidad", needs: "150–1500 caracteres en Latam.", requires: ["solucion"], auto: () => rsPautadoSectionDone("prefactibilidad") },
+    { id: "presupuesto", phase: "budget", title: "Tabla de costos con respaldo", needs: "Partidas con unidades, costo unitario y URL.", requires: ["solucion"], auto: () => isBudgetValid() },
+    { id: "canvas", phase: "canvas", title: "Modelo Canvas", needs: "9 cuadrantes coherentes con el presupuesto.", requires: ["solucion"], auto: () => rsCanvasFilledCount() >= 7 },
+    { id: "recursos", phase: "resources", title: "Bóveda de recursos", needs: "Logos, fotos y tomas subidas al plan.", requires: ["solucion"], auto: () => ((state.video_assets && state.video_assets.items) || []).length > 0 },
+    { id: "guion_acto1", phase: "script", title: "Guion · Acto I", needs: "Gancho y problema en voz alta.", requires: ["presupuesto"], auto: () => rsWordCount(state.script.acto1) > 0 },
+    { id: "guion_acto2", phase: "script", title: "Guion · Acto II", needs: "Solución y demostración.", requires: ["presupuesto"], auto: () => rsWordCount(state.script.acto2) > 0 },
+    { id: "guion_acto3", phase: "script", title: "Guion · Acto III", needs: "Impacto y validación.", requires: ["presupuesto"], auto: () => rsWordCount(state.script.acto3) > 0 },
+    { id: "guion_acto4", phase: "script", title: "Guion · Acto IV", needs: "Cierre, llamado y réplica Latam.", requires: ["presupuesto"], auto: () => rsWordCount(state.script.acto4) > 0 },
+    { id: "webdemo", phase: "webdemo", title: "Prototipo web para el video", needs: "Sitio publicado con URL para grabar.", requires: ["presupuesto"], auto: () => !!state.site_url },
+    { id: "checklist", phase: "timeline", title: "Checklist de entrega verificado", needs: "Todos los guardarraíles en verde.", requires: ["guion_acto4", "webdemo", "presupuesto"], auto: () => {
+      const g = state.guardrails || {};
+      const keys = ["team_sirli_registered","video_duration_ok","video_unlisted_or_public","naming_pdf_ok","hashtags_included","pautado_chars_ok","pdf_video_numbers_synced","youtube_channel_brand","tiktok_submitted","loser_patterns_checked"];
+      return keys.every(k => !!g[k]);
+    } }
+  ];
+}
+
+function rsDefMap() {
+  const map = {};
+  getDeliverableDefs().forEach(d => { map[d.id] = d; });
+  return map;
+}
+
+function rsStore() {
+  if (!state.deliverables || typeof state.deliverables !== "object") state.deliverables = {};
+  return state.deliverables;
+}
+
+function rsRecord(id) {
+  const store = rsStore();
+  const rec = store[id];
+  if (!rec || typeof rec !== "object") return { assignees: [], history: [] };
+  if (!Array.isArray(rec.assignees)) rec.assignees = [];
+  if (!Array.isArray(rec.history)) rec.history = [];
+  return rec;
+}
+
+function rsEnsureRecord(id) {
+  const store = rsStore();
+  if (!store[id] || typeof store[id] !== "object") store[id] = {};
+  const rec = store[id];
+  if (!Array.isArray(rec.assignees)) rec.assignees = [];
+  if (!Array.isArray(rec.history)) rec.history = [];
+  return rec;
+}
+
+// Estado real: terminado (auto o manual) · en espera (dependencia) · en progreso · pendiente.
+function rsDefState(def, map, seen) {
+  if (!def) return { code: "pending" };
+  map = map || rsDefMap();
+  seen = seen || {};
+  if (seen[def.id]) return { code: "pending" };
+  seen[def.id] = true;
+  const rec = rsRecord(def.id);
+  const autoDone = typeof def.auto === "function" ? !!def.auto() : false;
+  if (autoDone || rec.status === "done") return { code: "done", record: rec, auto: autoDone };
+  const missing = (def.requires || []).filter(id => rsDefState(map[id], map, seen).code !== "done");
+  if (missing.length) {
+    const names = missing.map(id => (map[id] && map[id].title) || id);
+    return { code: "waiting", record: rec, missing: names };
+  }
+  if ((rec.assignees || []).length > 0 || rec.status === "in_progress") return { code: "working", record: rec };
+  return { code: "pending", record: rec };
+}
+
+const RS_STATUS = {
+  done:    { label: "Terminado",  cls: "is-done",    icon: "check" },
+  working: { label: "En progreso", cls: "is-working", icon: "dot" },
+  waiting: { label: "En espera",   cls: "is-waiting", icon: "lock" },
+  pending: { label: "Pendiente",   cls: "is-pending", icon: "circle" }
+};
+
+function rsPhaseDefs(phase, map) {
+  map = map || rsDefMap();
+  return Object.values(map).filter(d => d.phase === phase);
+}
+
+function rsPhaseState(phase, map) {
+  map = map || rsDefMap();
+  const defs = rsPhaseDefs(phase, map);
+  if (!defs.length) return { code: "pending", done: 0, total: 0 };
+  const states = defs.map(d => rsDefState(d, map));
+  const done = states.filter(s => s.code === "done").length;
+  if (done === defs.length) return { code: "done", done, total: defs.length };
+  if (states.some(s => s.code === "working" || s.code === "done")) return { code: "working", done, total: defs.length };
+  if (states.every(s => s.code === "waiting")) return { code: "waiting", done, total: defs.length };
+  return { code: "pending", done, total: defs.length };
+}
+
+function rsRelativeTime(ts) {
+  if (!ts) return "";
+  const mins = Math.max(0, Math.round((Date.now() - ts) / 60000));
+  if (mins < 1) return "ahora mismo";
+  if (mins < 60) return `hace ${mins} min`;
+  const hrs = Math.round(mins / 60);
+  if (hrs < 24) return `hace ${hrs} h`;
+  return `hace ${Math.round(hrs / 24)} d`;
+}
+
+function rsLog(id, action, who) {
+  const rec = rsEnsureRecord(id);
+  rec.history.unshift({ name: who || currentClientMascot.name, action, at: Date.now() });
+  rec.history = rec.history.slice(0, 12);
+  rec.updated_at = Date.now();
+}
+
+function rsPersist() {
+  saveState();
+  if (collaborationChannel) {
+    collaborationChannel.postMessage({ type: "DELIVERABLES_UPDATE", value: state.deliverables });
+  }
+  if (activeTab === "resumen") renderTab("resumen");
+}
+
+function rsRequireName() {
+  if (amINamed()) return true;
+  showToast("Primero define tu nombre para que el equipo sepa quién eres.");
+  openIdentityModal();
+  return false;
+}
+
+function rsTakeDeliverable(id) {
+  if (!rsRequireName()) return;
+  const rec = rsEnsureRecord(id);
+  const me = currentClientMascot.name;
+  const idx = rec.assignees.indexOf(me);
+  if (idx >= 0) {
+    rec.assignees.splice(idx, 1);
+    if (!rec.assignees.length && rec.status === "in_progress") rec.status = "";
+    rsLog(id, "salió del entregable", me);
+  } else {
+    rec.assignees.push(me);
+    rec.status = "in_progress";
+    rsLog(id, "tomó el entregable", me);
+  }
+  rsPersist();
+}
+
+function rsAssignDeliverable(id, name) {
+  if (!name) return;
+  const rec = rsEnsureRecord(id);
+  if (!rec.assignees.includes(name)) {
+    rec.assignees.push(name);
+    if (rec.status !== "done") rec.status = "in_progress";
+    rsLog(id, "se sumó al entregable", name);
+    rsPersist();
+    showToast(`${name} quedó a cargo de "${(rsDefMap()[id] || {}).title || id}".`);
+  }
+}
+
+function rsRemoveAssignee(id, name) {
+  const rec = rsEnsureRecord(id);
+  rec.assignees = rec.assignees.filter(n => n !== name);
+  if (!rec.assignees.length && rec.status === "in_progress") rec.status = "";
+  rsLog(id, "salió del entregable", name);
+  rsPersist();
+}
+
+function rsFinishDeliverable(id) {
+  if (!rsRequireName()) return;
+  const rec = rsEnsureRecord(id);
+  rec.status = rec.status === "done" ? "" : "done";
+  rsLog(id, rec.status === "done" ? "marcó terminado" : "reabrió el entregable", currentClientMascot.name);
+  rsPersist();
+}
+
+function rsSetFilter(filter) {
+  rsFilter = filter;
+  renderTab("resumen");
+}
+
+function rsGoTab(tab, ev) {
+  if (ev) ev.preventDefault();
+  switchTab(tab, ev);
+}
+
+// ── VISTA: RESUMEN DEL RALLY ────────────────────────────────────────────────
+function renderViewResumen() {
+  const map = rsDefMap();
+  const stage = getWorkflowStage();
+  const defs = Object.values(map);
+  const states = defs.map(d => rsDefState(d, map));
+  const doneCount = states.filter(s => s.code === "done").length;
+  const pct = defs.length ? Math.round((doneCount / defs.length) * 100) : 0;
+  const workingDefs = defs.filter(d => rsDefState(d, map).code === "working");
+
+  const ch = (state.challenges || []).find(c => c.id === state.challenge_id)
+    || (typeof OFFICIAL_CHALLENGES_2026 !== "undefined" && (OFFICIAL_CHALLENGES_2026 || []).find(c => c.id === state.challenge_id))
+    || null;
+  const challengeTitle = (ch && ch.title) || state.challenge_title || "Sin reto seleccionado";
+  const challengeNum = state.challenge_id || (ch && ch.id) || "—";
+  const category = (ch && ch.category) || state.category || "Sin categoría";
+  const solution = state.solution_thesis || state.solution_simple || "";
+  const timer = getTimerString();
+  const roster = getRoster();
+
+  const filterMatch = (def, st) => {
+    if (rsFilter === "mine") return st.record && (st.record.assignees || []).includes(currentClientMascot.name);
+    if (rsFilter === "waiting") return st.code === "waiting";
+    if (rsFilter === "working") return st.code === "working";
+    if (rsFilter === "done") return st.code === "done";
+    return true;
+  };
+
+  const visiblePhases = NAV_TABS.filter(t => !t.summary && t.level <= stage);
+
+  const phaseCards = visiblePhases.map(t => {
+    const ps = rsPhaseState(t.id, map);
+    const meta = RS_STATUS[ps.code] || RS_STATUS.pending;
+    return `
+      <button class="rs-phase ${meta.cls}" onclick="rsGoTab('${t.id}', event)" title="Abrir ${escapeHtml(t.label)}">
+        <span class="rs-phase-top">
+          <span class="rs-phase-dot"></span>
+          <span class="rs-phase-name">${escapeHtml(t.label)}</span>
+        </span>
+        <span class="rs-phase-meta">${ps.total ? `${ps.done}/${ps.total}` : "—"} · ${meta.label}</span>
+        <span class="rs-phase-bar"><i style="width:${ps.total ? Math.round((ps.done / ps.total) * 100) : 0}%"></i></span>
+      </button>
+    `;
+  }).join("");
+
+  const deliverableCards = defs.filter(d => {
+    const st = rsDefState(d, map);
+    const s = Object.assign({}, st, { record: st.record });
+    return filterMatch(d, s);
+  }).map(d => {
+    const st = rsDefState(d, map);
+    const meta = RS_STATUS[st.code] || RS_STATUS.pending;
+    const rec = st.record || {};
+    const assignees = (rec.assignees || []).filter(Boolean);
+    const mine = assignees.includes(currentClientMascot.name);
+    const last = (rec.history || [])[0];
+    const phaseTab = NAV_TABS.find(t => t.id === d.phase);
+    const assignOptions = roster.map(m => `<option value="${escapeHtml(m.name)}" ${assignees.includes(m.name) ? "disabled" : ""}>${escapeHtml(m.name)}${assignees.includes(m.name) ? " (ya está)" : ""}</option>`).join("");
+    const needsText = st.code === "waiting" && st.missing && st.missing.length
+      ? `Espera: ${st.missing.join(" · ")}`
+      : d.needs;
+
+    return `
+      <article class="rs-deliv ${meta.cls}">
+        <div class="rs-deliv-head">
+          <div>
+            <span class="rs-deliv-phase">${escapeHtml(phaseTab ? phaseTab.label : d.phase)}</span>
+            <h3 class="rs-deliv-title">${escapeHtml(d.title)}</h3>
+          </div>
+          <span class="rs-status ${meta.cls}">
+            ${meta.icon === "check" ? SVG.check : meta.icon === "lock" ? SVG.lock : `<span class="rs-status-dot"></span>`}
+            ${meta.label}
+          </span>
+        </div>
+        <p class="rs-deliv-needs">${escapeHtml(needsText)}</p>
+        <div class="rs-deliv-people">
+          ${assignees.length
+            ? assignees.map(n => `<span class="rs-person" style="--person-color:${_userColor(n)}">
+                 <span class="rs-person-dot"></span>${escapeHtml(n)}
+                 <button class="rs-person-x" onclick="rsRemoveAssignee('${d.id}','${escapeHtml(n)}')" title="Quitar a ${escapeHtml(n)}" aria-label="Quitar a ${escapeHtml(n)}">×</button>
+               </span>`).join("")
+            : `<span class="rs-muted">Nadie asignado todavía</span>`}
+        </div>
+        ${last ? `<p class="rs-deliv-history">${escapeHtml(last.name)} ${escapeHtml(last.action)} · ${rsRelativeTime(last.at)}</p>` : `<p class="rs-deliv-history rs-muted">Sin actividad registrada</p>`}
+        <div class="rs-deliv-actions">
+          ${st.code === "done" && st.auto
+            ? `<span class="rs-auto-tag">Completado automáticamente</span>`
+            : `<button class="rs-btn ${mine ? "is-ghost" : "is-primary"}" onclick="rsTakeDeliverable('${d.id}')">${mine ? "Soltar" : "Tomar yo"}</button>
+               <button class="rs-btn is-ghost" onclick="rsFinishDeliverable('${d.id}')">${rec.status === "done" ? "Reabrir" : "Marcar terminado"}</button>`}
+          ${st.code !== "done" && roster.length
+            ? `<select class="rs-select" onchange="rsAssignDeliverable('${d.id}', this.value)" title="Asignar a alguien del equipo">
+                 <option value="">Asignar a…</option>
+                 ${assignOptions}
+               </select>`
+            : ""}
+        </div>
+      </article>
+    `;
+  }).join("");
+
+  const closedPhases = NAV_TABS.filter(t => !t.summary && t.level <= stage && rsPhaseState(t.id, map).code === "done");
+  const pendingPhases = NAV_TABS.filter(t => !t.summary && t.level > stage);
+
+  const rosterStrip = roster.length
+    ? roster.map(m => {
+        const load = defs.filter(d => (rsRecord(d.id).assignees || []).includes(m.name) && rsDefState(d, map).code !== "done").length;
+        return `<span class="rs-member" style="--person-color:${_userColor(m.name)}">
+          <span class="rs-member-avatar">${escapeHtml((m.name || "?").trim().charAt(0).toUpperCase())}</span>
+          <span class="rs-member-name">${escapeHtml(m.name)}${m.id === currentClientMascot.id ? " (tú)" : ""}</span>
+          <span class="rs-member-load">${load} activo${load === 1 ? "" : "s"}</span>
+        </span>`;
+      }).join("")
+    : `<span class="rs-muted">Todavía nadie ha definido su nombre. Cada persona debe poner el suyo una vez.</span>`;
+
+  return `
+    <div class="rs-summary">
+      <section class="rs-hero">
+        <div class="rs-hero-main">
+          <span class="rs-eyebrow">Centro de mando · ${state.rally_type === "latam" ? "Rally Latinoamericano 28h" : state.rally_type === "nacional" ? "Rally Nacional 24h" : "Certamen por definir"}</span>
+          <div class="rs-challenge-row">
+            <span class="rs-challenge-num">#${escapeHtml(String(challengeNum))}</span>
+            <div>
+              <h1 class="rs-challenge-title">${escapeHtml(challengeTitle)}</h1>
+              <span class="rs-challenge-cat">${escapeHtml(category)}</span>
+            </div>
+          </div>
+          <div class="rs-solution ${state.solution_approved ? "is-approved" : ""}">
+            <span class="rs-solution-label">${state.solution_approved ? "Solución aprobada" : "Solución en construcción"}</span>
+            <p>${solution ? escapeHtml(solution) : "Aún no hay tesis de solución. Se define en el Taller de Solución (fase 03)."}</p>
+            <button class="rs-link" onclick="rsGoTab('solution', event)">Abrir taller de solución →</button>
+          </div>
+        </div>
+        <div class="rs-hero-stats">
+          <div class="rs-kpi">
+            <span class="rs-kpi-num">${pct}%</span>
+            <span class="rs-kpi-label">avance de entregables</span>
+            <span class="rs-kpi-bar"><i style="width:${pct}%"></i></span>
+          </div>
+          <div class="rs-kpi-row">
+            <div class="rs-kpi-mini"><strong>${timer.time}</strong><span>${escapeHtml(timer.status || "tiempo restante")}</span></div>
+            <div class="rs-kpi-mini"><strong>${doneCount}/${defs.length}</strong><span>entregables cerrados</span></div>
+            <div class="rs-kpi-mini"><strong>${workingDefs.length}</strong><span>en progreso ahora</span></div>
+            <div class="rs-kpi-mini"><strong>${closedPhases.length}</strong><span>fases cerradas</span></div>
+          </div>
+          <button class="rs-btn is-primary rs-identity-cta" onclick="openIdentityModal()">
+            ${amINamed() ? `Trabajando como ${escapeHtml(currentClientMascot.name)}` : "Definir mi nombre para trabajar"}
+          </button>
+        </div>
+      </section>
+
+      <section class="rs-section">
+        <div class="rs-section-head">
+          <h2>Fases del rally</h2>
+          <span class="rs-section-sub">${visiblePhases.length + pendingPhases.length} fases · ${closedPhases.length} cerradas · ${pendingPhases.length} bloqueadas</span>
+        </div>
+        <div class="rs-phases">${phaseCards}</div>
+        ${closedPhases.length ? `
+          <details class="rs-closed">
+            <summary>Fases ya cerradas (${closedPhases.length}) — ocultas para no estorbar</summary>
+            <div class="rs-closed-list">
+              ${closedPhases.map(t => `<button class="rs-closed-chip" onclick="rsGoTab('${t.id}', event)">${SVG.check} ${escapeHtml(t.label)}</button>`).join("")}
+            </div>
+          </details>` : ""}
+      </section>
+
+      <section class="rs-section">
+        <div class="rs-section-head">
+          <h2>Entregables y responsables</h2>
+          <div class="rs-filters">
+            <button class="rs-filter ${rsFilter === "all" ? "is-active" : ""}" onclick="rsSetFilter('all')">Todos</button>
+            <button class="rs-filter ${rsFilter === "mine" ? "is-active" : ""}" onclick="rsSetFilter('mine')">Míos</button>
+            <button class="rs-filter ${rsFilter === "working" ? "is-active" : ""}" onclick="rsSetFilter('working')">En progreso</button>
+            <button class="rs-filter ${rsFilter === "waiting" ? "is-active" : ""}" onclick="rsSetFilter('waiting')">En espera</button>
+            <button class="rs-filter ${rsFilter === "done" ? "is-active" : ""}" onclick="rsSetFilter('done')">Terminados</button>
+          </div>
+        </div>
+        <div class="rs-deliv-grid">
+          ${deliverableCards || `<p class="rs-empty">No hay entregables en este filtro.</p>`}
+        </div>
+      </section>
+
+      <section class="rs-section">
+        <div class="rs-section-head">
+          <h2>Quién está en qué</h2>
+          <button class="rs-btn is-ghost" onclick="openIdentityModal()">Cambiar mi nombre</button>
+        </div>
+        <div class="rs-roster">${rosterStrip}</div>
+      </section>
+    </div>
+  `;
+}
+
+// ── IDENTIDAD: NOMBRE ÚNICO POR PERSONA ─────────────────────────────────────
+function openIdentityModal() {
+  closeIdentityModal();
+  const roster = getRoster();
+  const modal = document.createElement("div");
+  modal.id = "rs-identity-modal";
+  modal.className = "rs-modal-backdrop";
+  modal.innerHTML = `
+    <div class="rs-modal" role="dialog" aria-modal="true" aria-labelledby="rs-identity-title">
+      <div class="rs-modal-head">
+        <div>
+          <span class="rs-eyebrow">Identidad en el equipo</span>
+          <h2 id="rs-identity-title">¿Quién eres?</h2>
+        </div>
+        <button class="rs-modal-close" onclick="closeIdentityModal()" aria-label="Cerrar">×</button>
+      </div>
+      <p class="rs-modal-help">Tu nombre se guarda en este dispositivo y aparece junto a los entregables que tomes. Debe ser único: nada de nombres aleatorios.</p>
+      <label class="rs-field">
+        <span>Mi nombre</span>
+        <input id="rs-identity-input" type="text" maxlength="28" autocomplete="off" placeholder="Ej. María López" value="${amINamed() ? escapeHtml(currentClientMascot.name) : ""}">
+      </label>
+      <p class="rs-modal-error" id="rs-identity-error" role="alert"></p>
+      <div class="rs-modal-actions">
+        <button class="rs-btn is-primary" onclick="saveIdentityFromModal()">Guardar nombre</button>
+        <button class="rs-btn is-ghost" onclick="closeIdentityModal()">Cancelar</button>
+      </div>
+      ${roster.length ? `
+        <div class="rs-modal-existing">
+          <span class="rs-modal-existing-title">¿Ya estás en la lista? Usa tu nombre en este dispositivo</span>
+          <div class="rs-roster-pick">
+            ${roster.map(m => `<button class="rs-roster-pick-item ${m.id === currentClientMascot.id ? "is-me" : ""}" onclick="adoptIdentityFromModal('${m.id}')">
+              <span class="rs-member-avatar" style="--person-color:${_userColor(m.name)}">${escapeHtml((m.name || "?").charAt(0).toUpperCase())}</span>
+              ${escapeHtml(m.name)}
+            </button>`).join("")}
+          </div>
+        </div>` : ""}
+    </div>
+  `;
+  document.body.appendChild(modal);
+  const input = document.getElementById("rs-identity-input");
+  if (input) { input.focus(); input.select(); }
+}
+
+function closeIdentityModal() {
+  const el = document.getElementById("rs-identity-modal");
+  if (el) el.remove();
+}
+
+function saveIdentityFromModal() {
+  const input = document.getElementById("rs-identity-input");
+  const errorEl = document.getElementById("rs-identity-error");
+  const result = setMyDisplayName(input ? input.value : "");
+  if (!result.ok) {
+    if (errorEl) errorEl.textContent = result.error;
+    return;
+  }
+  closeIdentityModal();
+  showToast(`Listo, ${currentClientMascot.name}. Tu nombre ya es parte del equipo.`);
+  renderTopbar();
+  if (activeTab === "resumen") renderTab("resumen");
+  else renderNavigation();
+}
+
+function adoptIdentityFromModal(id) {
+  if (adoptRosterName(id)) {
+    closeIdentityModal();
+    showToast(`Ahora trabajas como ${currentClientMascot.name}.`);
+    if (activeTab === "resumen") renderTab("resumen");
+  }
+}
+
+// ═════════════════════════════════════════════════════════════════════════════
 // 00 NIVEL 0: SELECCIÓN DE CERTAMEN (RÉPLICA EXACTA DE LA IMAGEN)
 // ═════════════════════════════════════════════════════════════════════════════
+
+
 function renderViewCertamen() {
   const isLatam = state.rally_type === 'latam';
   const isNac = state.rally_type === 'nacional';
@@ -2604,6 +3241,412 @@ function winnerAngleFor(ch) {
   return { score: info.score, bullets: bullets.slice(0, 6), criteria: info.criteria, isHighComp: info.isHighComp };
 }
 
+// ── MESA DE RETOS · decisión por mayoría (≥50 % del equipo, sin quórum) ─────
+// Estado: { size, votes: { [chId]: {yes,no,res,at} }, renews: { [chId]: [{by,at,removed}] } }
+function getMesa() {
+  if (!state.challenge_mesa || typeof state.challenge_mesa !== "object") {
+    state.challenge_mesa = { size: 0, votes: {}, renews: {} };
+  }
+  const m = state.challenge_mesa;
+  if (!m.votes) m.votes = {};
+  if (!m.renews) m.renews = {};
+  if (!m.size) m.size = Math.min(10, Math.max(6, Number(state.team_members_count) || 6));
+  return m;
+}
+
+const MESA_EXTRA_SEATS = ["Integrante 7", "Integrante 8", "Integrante 9", "Integrante 10"];
+
+function mesaSeats() {
+  const m = getMesa();
+  const size = Math.min(10, Math.max(6, m.size));
+  const seats = TEAM_MASCOTS.slice(0, Math.min(6, size)).map(x => ({ id: x.id, label: x.name, color: x.color }));
+  for (let i = seats.length; i < size; i++) {
+    seats.push({ id: "seat_" + (i + 1), label: MESA_EXTRA_SEATS[i - 6] || ("Integrante " + (i + 1)), color: "#64748B" });
+  }
+  return seats;
+}
+
+function mesaMe() {
+  return (currentClientMascot && currentClientMascot.id) || (TEAM_MASCOTS[0] && TEAM_MASCOTS[0].id) || "seat_1";
+}
+
+function mesaSeatName(seatId) {
+  const s = mesaSeats().find(x => x.id === seatId);
+  return s ? s.label : String(seatId);
+}
+
+function mesaBallot(chId) {
+  const m = getMesa();
+  if (!m.votes[chId] || typeof m.votes[chId] !== "object") m.votes[chId] = { yes: [], no: [], res: [], at: {} };
+  const b = m.votes[chId];
+  if (!Array.isArray(b.yes)) b.yes = [];
+  if (!Array.isArray(b.no)) b.no = [];
+  if (!Array.isArray(b.res)) b.res = [];
+  if (!b.at || typeof b.at !== "object") b.at = {};
+  return b;
+}
+
+function mesaTally(chId) {
+  const b = mesaBallot(chId);
+  const size = mesaSeats().length;
+  const yes = b.yes.length;
+  const no = b.no.length;
+  const res = b.res.length;
+  const need = Math.ceil(size / 2);
+  return {
+    size, yes, no, res,
+    wait: Math.max(0, size - yes - no - res),
+    need,
+    approved: yes >= need,
+    discarded: no >= need
+  };
+}
+
+function _mesaTime() {
+  const d = new Date();
+  return String(d.getHours()).padStart(2, "0") + ":" + String(d.getMinutes()).padStart(2, "0");
+}
+
+function mesaVote(chId, seatId) {
+  const b = mesaBallot(chId);
+  const cur = b.yes.includes(seatId) ? "yes" : b.no.includes(seatId) ? "no" : b.res.includes(seatId) ? "res" : null;
+  b.yes = b.yes.filter(x => x !== seatId);
+  b.no = b.no.filter(x => x !== seatId);
+  b.res = b.res.filter(x => x !== seatId);
+  const next = cur === null ? "yes" : cur === "yes" ? "no" : cur === "no" ? "res" : null;
+  if (next === "yes") b.yes.push(seatId);
+  if (next === "no") b.no.push(seatId);
+  if (next === "res") b.res.push(seatId);
+  if (next) b.at[seatId] = _mesaTime(); else delete b.at[seatId];
+
+  const t = mesaTally(chId);
+  const trib = getTribunal();
+  if (t.discarded) trib.team[chId] = true; else delete trib.team[chId];
+
+  saveState();
+  broadcastFieldChange("tribunal", "state", state.challenge_tribunal);
+
+  const label = next === "yes" ? "aprueba" : next === "no" ? "pide descartar" : next === "res" ? "pide reserva" : "queda sin decidir";
+  showToast((t.discarded ? "Mitad a descarte: el sistema movió el Reto #" + chId + " al embudo. " : "") + mesaSeatName(seatId) + " " + label + " el Reto #" + chId + ".");
+  renderTab("challenges");
+}
+
+function mesaRenew(chId) {
+  const m = getMesa();
+  const b = mesaBallot(chId);
+  const removed = b.no.slice();
+  b.no = [];
+  Object.keys(b.at).forEach(k => { if (!b.yes.includes(k) && !b.res.includes(k)) delete b.at[k]; });
+  const trib = getTribunal();
+  delete trib.team[chId];
+  if (!m.renews[chId]) m.renews[chId] = [];
+  m.renews[chId].push({ by: mesaSeatName(mesaMe()), at: _mesaTime(), removed: removed.map(mesaSeatName) });
+  saveState();
+  broadcastFieldChange("tribunal", "state", state.challenge_tribunal);
+  showToast("Reto #" + chId + " renovado: vuelve a la mesa sin los votos de descarte.");
+  renderTab("challenges");
+}
+
+function mesaSetSize(n) {
+  const size = Math.min(10, Math.max(6, Number(n) || 6));
+  const m = getMesa();
+  m.size = size;
+  state.team_members_count = size;
+  const ids = mesaSeats().map(s => s.id);
+  Object.keys(m.votes).forEach(chId => {
+    const b = m.votes[chId];
+    b.yes = b.yes.filter(x => ids.includes(x));
+    b.no = b.no.filter(x => ids.includes(x));
+    b.res = b.res.filter(x => ids.includes(x));
+  });
+  saveState();
+  renderTab("challenges");
+}
+
+function mesaGo(chId) {
+  state.active_deliberation_challenge_id = chId;
+  renderTab("challenges");
+}
+
+function renderMesaNav(list, activeId) {
+  return `
+    <aside class="deliberation-nav">
+      <div class="deliberation-nav-header">
+        <span>CATÁLOGO DE RETOS</span>
+        <span style="font-family:var(--font-mono); font-size:11px; color:#5C7193;">${list.length} ACTIVOS</span>
+      </div>
+      <div class="deliberation-nav-list">
+        ${list.map(ch => {
+          const t = mesaTally(ch.id);
+          const isCur = ch.id === activeId;
+          const isSel = state.challenge_id === ch.id;
+          const ideas = (state.challenge_ideas && state.challenge_ideas[ch.id]) || [];
+          const chip = t.discarded
+            ? `<span class="cr-chip is-out">descartado ${t.no}/${t.size}</span>`
+            : t.approved
+              ? `<span class="cr-chip is-keep">aprobado ${t.yes}/${t.size}</span>`
+              : t.res
+                ? `<span class="cr-chip">reserva ${t.res}/${t.size}</span>`
+                : `<span class="cr-chip">en debate ${t.yes}/${t.size}</span>`;
+          return `
+            <div class="deliberation-nav-item ${isCur ? 'active' : ''}" role="button" tabindex="0" aria-current="${isCur ? "page" : "false"}" aria-label="Reto ${ch.id}: ${ch.title}. ${t.discarded ? "descartado" : t.approved ? "aprobado" : "en debate"}, ${t.yes} a favor de ${t.size}." onclick="mesaGo('${ch.id}')">
+              <div style="min-width:0; flex:1; padding-right:6px;">
+                <div class="cr-nav-meta">
+                  <span class="nav-item-num cr-nav-num">#${ch.id}</span>
+                  <span class="nav-item-cat">${categoryBadge(ch.category)}</span>
+                  ${isSel ? `<span class="cr-chip is-sel">ELEGIDO</span>` : ""}
+                  ${chip}
+                </div>
+                <div class="nav-item-title">${ch.title}</div>
+              </div>
+              <div class="cr-nav-right">
+                <span class="cr-nav-via">${ch.winRate || 90}%</span>
+                <span class="cr-nav-notes">Notas: ${ideas.length}</span>
+              </div>
+            </div>
+          `;
+        }).join("")}
+      </div>
+    </aside>
+  `;
+}
+
+function renderMesaBar(list, ch, idx) {
+  const t = mesaTally(ch.id);
+  const prev = idx > 0 ? list[idx - 1] : null;
+  const next = idx < list.length - 1 ? list[idx + 1] : null;
+  return `
+    <div class="cr-bar">
+      <div class="cr-bar-nav">
+        <button class="cr-arrow" ${prev ? `onclick="mesaGo('${prev.id}')"` : "disabled"} title="Reto anterior" aria-label="Reto anterior">←</button>
+        <span class="cr-count">RETO #${ch.id} <span class="cr-count-dim">/ ${String(idx + 1).padStart(2, "0")} de ${String(list.length).padStart(2, "0")}</span></span>
+        <button class="cr-arrow" ${next ? `onclick="mesaGo('${next.id}')"` : "disabled"} title="Reto siguiente" aria-label="Reto siguiente">→</button>
+      </div>
+
+      <div class="cr-bar-team">
+        <span class="cr-bar-k">en la mesa</span>
+        <button class="cr-step" onclick="mesaSetSize(${t.size - 1})" ${t.size <= 6 ? "disabled" : ""} title="Un integrante menos" aria-label="Un integrante menos">−</button>
+        <span class="cr-size">${t.size}</span>
+        <button class="cr-step" onclick="mesaSetSize(${t.size + 1})" ${t.size >= 10 ? "disabled" : ""} title="Un integrante más" aria-label="Un integrante más">+</button>
+        <span class="cr-need">${t.need} votos para aprobar · ${t.need} para descartar</span>
+      </div>
+
+      <div class="cr-map">
+        ${list.map((c, i) => {
+          const ct = mesaTally(c.id);
+          const cls = [
+            "cr-pip",
+            c.id === ch.id ? "is-current" : "",
+            ct.discarded ? "is-out" : "",
+            ct.approved ? "is-in" : "",
+            !ct.approved && !ct.discarded && ct.res ? "is-res" : "",
+            state.challenge_id === c.id ? "is-sel" : ""
+          ].filter(Boolean).join(" ");
+          return `<button class="${cls}" onclick="mesaGo('${c.id}')" title="Reto #${c.id} · ${ct.yes}/${ct.size} a favor${ct.discarded ? " · descartado" : ""}">${String(i + 1).padStart(2, "0")}</button>`;
+        }).join("")}
+      </div>
+
+      <div class="cr-rule">Se aprueba con <b>la mitad a favor</b>; se descarta con <b>la mitad a descarte</b> — el sistema lo mueve al embudo y se puede renovar. La IA propone, no vota.</div>
+    </div>
+  `;
+}
+
+function renderMesaNotes(ch) {
+  const ideas = (state.challenge_ideas && state.challenge_ideas[ch.id]) || [];
+  const others = (state.challenges || []).filter(c => c.id !== ch.id);
+  return `
+    <section class="cr-panel cr-notes">
+      <div class="cr-block"><span class="cr-num">03</span> Nuestras redacciones <span class="cr-count-chip">${ideas.length}</span><span class="cr-tag">se guarda solo</span></div>
+      <div class="cr-note-grid">
+        ${ideas.length === 0 ? `<p class="cr-pending">Todavía no hay redacciones para este reto. La primera la escribe cualquiera.</p>` : ideas.map(idea => `
+          <article class="cr-note ${idea.merged_to ? "is-merged" : ""}">
+            <header class="cr-note-head">
+              <span class="cr-dot" style="background:${_userColor(idea.author)}"></span>
+              <span class="cr-note-author" style="color:${_userColor(idea.author)}">${idea.author || "Equipo"}</span>
+              <span class="cr-note-time">#${ch.id} · ${idea.timestamp || ""}</span>
+            </header>
+            <p class="cr-note-text">${idea.text}</p>
+            <footer class="cr-note-foot">
+              ${idea.merged_to ? `<span class="cr-note-fusion">fusionada → #${idea.merged_to}</span><button class="cr-link" onclick="unmergeChallengeIdea('${ch.id}', '${idea.id}')" title="Traer la nota de vuelta">↺ traer</button>` : others.length ? `
+                <select class="cr-note-merge" onchange="if(this.value) mergeChallengeIdea('${ch.id}', '${idea.id}', this.value)">
+                  <option value="">fusionar ↗</option>
+                  ${others.map(c => `<option value="${c.id}">#${c.id} ${(c.title || '').slice(0, 26)}</option>`).join("")}
+                </select>` : ""}
+              <button class="cr-link is-quiet" onclick="deleteChallengeIdea('${ch.id}', '${idea.id}')" title="Eliminar redacción">borrar</button>
+            </footer>
+          </article>
+        `).join("")}
+      </div>
+      <div class="cr-compose">
+        <span class="cr-dot" style="background:${_userColor(_me())}"></span>
+        <input type="text" id="new-idea-input-${ch.id}" placeholder="Escribe la idea, el pro o el contra y queda pegada a este reto…" onkeydown="if(event.key==='Enter') addChallengeIdea('${ch.id}')">
+        <button class="btn-select-card filled" style="padding:6px 14px; font-size:11.5px; font-weight:700;" onclick="addChallengeIdea('${ch.id}')">+ pegar redacción</button>
+      </div>
+    </section>
+  `;
+}
+
+function renderMesaVote(ch) {
+  const t = mesaTally(ch.id);
+  const b = mesaBallot(ch.id);
+  const seats = mesaSeats();
+  const meId = mesaMe();
+  const pct = n => Math.round((n / Math.max(1, t.size)) * 100);
+  const stance = seatId => b.yes.includes(seatId) ? "yes" : b.no.includes(seatId) ? "no" : b.res.includes(seatId) ? "res" : "wait";
+  const stanceLabel = s => s === "yes" ? "aprueba" : s === "no" ? "descarta" : s === "res" ? "reserva" : "sin decidir";
+  const verdict = t.discarded
+    ? `<span class="cr-verdict-main is-out">DESCARTADO</span> <span class="cr-verdict-sub">${t.no} de ${t.size} a descarte · el sistema lo movió al embudo</span>`
+    : t.approved
+      ? `<span class="cr-verdict-main is-in">APROBADO</span> <span class="cr-verdict-sub">${t.yes} de ${t.size} a favor (necesitaba ${t.need})</span>`
+      : `<span class="cr-verdict-main">EN DEBATE</span> <span class="cr-verdict-sub">${t.yes} de ${t.size} a favor · faltan ${Math.max(0, t.need - t.yes)} para ${t.need}</span>`;
+  const group = (arr, label, cls) => arr.length ? `<span class="cr-rec ${cls}"><span class="cr-rec-k">${label} <b>${arr.length}</b></span>${arr.map(id => `<span class="cr-rec-name">${mesaSeatName(id)} <span class="cr-rec-at">${b.at[id] || ""}</span></span>`).join("")}</span>` : "";
+  const renews = (getMesa().renews[ch.id] || []);
+  return `
+    <section class="cr-panel cr-vote" id="mesa-vote-${ch.id}">
+      <div class="cr-block"><span class="cr-num">04</span> La mesa vota <span class="cr-tag">${t.size} en la mesa · mayoría: ${t.need}</span></div>
+
+      <div class="cr-verdict">${verdict}</div>
+
+      <div class="cr-bars">
+        <div class="cr-bar-row">
+          <span class="cr-bar-label">a favor</span>
+          <span class="cr-bar-track"><span class="cr-bar-fill" style="width:${pct(t.yes)}%"></span><span class="cr-bar-mark" style="left:50%"></span></span>
+          <span class="cr-bar-n">${t.yes}/${t.size}</span>
+        </div>
+        <div class="cr-bar-row">
+          <span class="cr-bar-label">a descarte</span>
+          <span class="cr-bar-track"><span class="cr-bar-fill is-no" style="width:${pct(t.no)}%"></span><span class="cr-bar-mark" style="left:50%"></span></span>
+          <span class="cr-bar-n">${t.no}/${t.size}</span>
+        </div>
+      </div>
+
+      <div class="cr-voters">
+        ${seats.map(seat => {
+          const s = stance(seat.id);
+          const isMe = seat.id === meId;
+          return `
+            <button class="cr-voter is-${s} ${isMe ? "is-you" : ""}" aria-label="${seat.label}: ${stanceLabel(s)}${b.at[seat.id] ? " a las " + b.at[seat.id] : ""}. Toca para cambiar el voto." onclick="mesaVote('${ch.id}', '${seat.id}')" title="Toca para cambiar el voto de ${seat.label}">
+              <span class="cr-dot" style="background:${seat.color}"></span>
+              <span class="cr-voter-name">${seat.label}${isMe ? " · tú" : ""}</span>
+              <span class="cr-voter-stance">${stanceLabel(s)}</span>
+              <span class="cr-voter-at">${b.at[seat.id] || "—"}</span>
+            </button>
+          `;
+        }).join("")}
+      </div>
+
+      <div class="cr-record">
+        <span class="cr-rec-tag">constancia</span>
+        ${group(b.no, "lo tiran", "is-no")}
+        ${group(b.yes, "lo salvan", "is-yes")}
+        ${group(b.res, "en reserva", "is-res")}
+        ${group(seats.map(s => s.id).filter(id => stance(id) === "wait"), "sin decidir", "is-wait")}
+      </div>
+
+      ${renews.map(r => `<div class="cr-rec-log">renovado por ${r.by} · ${r.at} — se borraron los votos de descarte${r.removed && r.removed.length ? " de " + r.removed.join(", ") : ""}</div>`).join("")}
+
+      <div class="cr-vote-actions">
+        ${t.discarded ? `<button class="btn-pill-light cr-renew-btn" onclick="mesaRenew('${ch.id}')">Renovar este reto</button>` : ""}
+        ${state.challenge_id !== ch.id
+          ? `<button class="btn-select-card filled" style="padding:8px 18px; font-size:12px; font-weight:800;" onclick="selectChallenge('${ch.id}', false)">Elegir Reto #${ch.id}</button>`
+          : `<span class="cr-held">Reto #${ch.id} está elegido</span>`}
+        <button class="btn-pill-light" style="font-size:11.5px; padding:5px 12px;" onclick="showToast('Escucha de 2 minutos abierta para el Reto #${ch.id}.')">Pedir 2 min de escucha</button>
+      </div>
+
+      <p class="cr-consequence">Sin quórum: vota quien quiera. Con <b>≥50 %</b> del equipo a favor entra; con <b>≥50 %</b> a descarte el sistema lo mueve al embudo y se puede renovar cuando quieran. Equipo impar: pasa el voto que cruza la mitad (${t.need} de ${t.size}). La IA no vota: solo propone arriba.</p>
+    </section>
+  `;
+}
+
+function renderMesaSlide(ch, list, idx) {
+  const info = challengeRankFor(ch);
+  const ideas = (state.challenge_ideas && state.challenge_ideas[ch.id]) || [];
+  const rows = list.map(c => ({ id: c.id, score: challengeRankFor(c).score })).sort((a, b) => b.score - a.score || (a.id > b.id ? 1 : -1));
+  const rank = rows.findIndex(r => r.id === ch.id) + 1;
+  const isSel = state.challenge_id === ch.id;
+  const isSat = (ch.compDensity || "").toLowerCase().includes("alta") || (ch.winRate && ch.winRate < 86);
+  const odsList = Array.isArray(ch.ods) ? ch.ods : String(ch.ods || "").split(/,\s*/).filter(Boolean);
+  const sourceText = ch.officialExpectation || ch.demandaComite || ch.description || "";
+  const ang = winnerAngleFor(ch);
+  const reasonLines = info.reasonLines || [];
+
+  return `
+    <div class="cr-slide-head">
+      <div class="cr-head-meta">
+        <div class="cr-head-row">
+          ${categoryBadge(ch.category)}
+          <span class="cr-desafio">DESAFÍO #${ch.id}</span>
+          ${isSel ? `<span class="cr-chip is-sel">ELEGIDO</span>` : ""}
+        </div>
+        <div class="cr-ods">
+          ${odsList.map(o => {
+            const num = String(o).replace(/[^\d]/g, "");
+            const odsObj = (typeof ODS_CATALOG !== "undefined" ? ODS_CATALOG : []).find(x => String(x.id) === num);
+            return `<button class="btn-pill-light cr-ods-pill" onclick="openImpactDetailModal('ods', ${num || 12})" title="Ver por qué y cómo cumple este ODS">${odsObj && odsObj.icon ? `<svg width="10" height="10" viewBox="0 0 12 12" fill="${odsObj.color}">${odsObj.icon}</svg>` : ""}${o}</button>`;
+          }).join("")}
+        </div>
+        <div class="cr-head-note">
+          <span class="cr-mono">viabilidad ${ch.winRate || 90}%</span>
+          <span class="cr-niche">${isSat ? "ALTA CONCURRENCIA" : "NICHO TÉCNICO"}</span>
+          <span class="cr-niche-why">${isSat ? "Exige ≥2 capas tecnológicas para superar la saturación de sedes." : "Baja rivalidad de sedes: ventaja directa si la factibilidad es sólida."}</span>
+        </div>
+      </div>
+      <div class="cr-head-actions">
+        <button class="btn-pill-light" style="font-size:11.5px; padding:5px 12px;" onclick="openEditChallengeModal('${ch.id}')" title="Modificar título, demanda u ODS">${SVG.edit} Editar Reto</button>
+        <button class="btn-select-card ${isSel ? "filled" : "outline"}" style="padding:6px 14px; font-size:12px; font-weight:700;" onclick="selectChallenge('${ch.id}', ${isSel ? "true" : "false"})">${isSel ? "Reto Seleccionado" : "Elegir para Desarrollar"}</button>
+        <button class="btn-pill-ghost" style="font-size:11px; padding:5px 10px; color:#DC2626;" onclick="deleteChallenge('${ch.id}')" title="Quitar del radar">${SVG.close}</button>
+      </div>
+    </div>
+
+    <h2 class="cr-title">${ch.title}</h2>
+
+    <div class="cr-metrics">
+      <span class="cr-metric"><b>${info.score}</b> <span class="cr-metric-k">pts del motor</span></span>
+      <span class="cr-metric"><b>#${rank}</b> <span class="cr-metric-k">de ${list.length}</span></span>
+      <span class="cr-metric-reason">${(reasonLines[0] || "Delibera en equipo: el motor no tiene una razón dominante para este reto.").replace(/\(\s*[+-]?[\d.]+\s*pts\s*\)/i, "").trim()}</span>
+    </div>
+
+    <div class="cr-body">
+      <section class="cr-panel is-src">
+        <div class="cr-block"><span class="cr-num">01</span> Lo que pide el comité <span class="cr-tag is-lock">fuente bloqueada · no editable</span></div>
+        ${ch.imageUrl ? `<button class="cr-thumb" onclick="openLightbox('${ch.imageUrl}')" title="Ampliar el cartel oficial"><img src="${ch.imageUrl}" alt="Cartel oficial del reto ${ch.id}"></button>` : ""}
+        ${sourceText
+          ? `<p class="cr-quote">${sourceText}</p>`
+          : `<p class="cr-pending">Descripción oficial pendiente de transcribir. Pega el texto del comité para que quede como fuente.</p>`}
+        ${ch.ods && !odsList.length ? `<p class="cr-tag is-lock">ODS por transcribir</p>` : ""}
+      </section>
+
+      <section class="cr-panel">
+        <div class="cr-block"><span class="cr-num">02</span> Lo que propone la IA <span class="cr-tag">propone · no vota</span></div>
+        ${ch.wowProposal
+          ? `<p class="cr-thesis">${ch.wowProposal}</p>`
+          : `<p class="cr-pending">Sin tesis formulada todavía. Usa <button class="cr-link" onclick="openAIThesisFormulatorModal('${ch.id}')">IA Copilot</button> para estructurarla contra la rúbrica.</p>`}
+        ${ch.nicaraguaAdaptation ? `<p class="cr-fact"><b>Factibilidad & despliegue:</b> ${ch.nicaraguaAdaptation}</p>` : ""}
+        ${(ch.winnerPattern || ch.precedent) ? `<p class="cr-precedent"><b>Precedente:</b> ${ch.winnerPattern || ch.precedent}</p>` : ""}
+        ${reasonLines.length ? `
+          <div class="cr-pts">
+            ${reasonLines.map(line => {
+              const m = line.match(/\(\s*([+-]?\d+(?:\.\d+)?)\s*pts\s*\)/i);
+              const val = m ? parseFloat(m[1]) : 0;
+              const label = line.replace(/\(\s*[+-]?\d+(?:\.\d+)?\s*pts\s*\)/i, "").trim();
+              const w = Math.min(100, Math.round((Math.abs(val) / 20) * 100));
+              return `<div class="cr-pt ${val < 0 ? "is-neg" : "is-pos"}">
+                <span class="cr-pt-k">${label}</span>
+                <span class="cr-pt-track"><span class="cr-pt-fill" style="width:${w}%"></span></span>
+                <span class="cr-pt-v">${val > 0 ? "+" : ""}${val}</span>
+              </div>`;
+            }).join("")}
+          </div>
+        ` : ""}
+        <p class="cr-angle">${ang.bullets.slice(0, 2).map(b => `<span class="cr-angle-i">${b}</span>`).join("")}</p>
+      </section>
+    </div>
+
+    ${renderMesaNotes(ch)}
+    ${renderMesaVote(ch)}
+  `;
+}
+
 function renderTribunalSubnav() {
   const t = getTribunal();
   const kept = (state.challenges || []).filter(c => hasAnyKeep(c.id) && !isTeamDiscarded(c.id)).length;
@@ -2641,6 +3684,11 @@ function renderViewChallenges() {
   }
 
   const selectedChallengeObj = state.challenge_id ? list.find(c => c.id === state.challenge_id) || OFFICIAL_CHALLENGES_2026.find(c => c.id === state.challenge_id) : null;
+
+  // Mesa: reto activo del carrusel (uno a la vez)
+  const mesaList = filtered;
+  const mesaActive = mesaList.find(c => c.id === (state.active_deliberation_challenge_id || state.challenge_id)) || mesaList[0];
+  const mesaIndex = mesaActive ? mesaList.indexOf(mesaActive) : 0;
 
   return `
     <div class="wizard-canvas" style="max-width:min(1760px, 98vw); width:100%; margin:0 auto; padding-bottom:60px; box-sizing:border-box;">
@@ -2802,19 +3850,23 @@ function renderViewChallenges() {
         </div>
       ` : `
         <div class="phase-header" style="margin-bottom:16px;">
-          <h1 class="phase-title" style="font-size:24px; font-weight:900; color:#0F172A; margin-bottom:4px; letter-spacing:-0.02em;">
-            Retos Oficiales & Espacio de Deliberación
+          <h1 class="phase-title" style="font-size:28px; font-weight:900; color:#0F172A; margin-bottom:4px; letter-spacing:-0.02em;">
+            Retos Oficiales & <span class="phase-title-accent">Mesa de Decisión</span>
           </h1>
           <p class="phase-subtitle" style="font-size:13px; color:#475569; line-height:1.45;">
-            ${list.length} retos activos en radar. Navega el catálogo táctico y delibera en la hoja técnica oficial con tu equipo.
+            ${list.length} retos en radar. Pasan uno a uno: lo que pide el comité, lo que propone la IA, lo que redacta el equipo y cómo vota la mesa.
           </p>
         </div>
 
-        <!-- MINIFASES DEL EMBUDO DE DECISIÓN -->
-        ${renderTribunalSubnav()}
-
-        <!-- RANKING DE RETOS (visible de inmediato; oculto en fase de voto para calma visual) -->
-        ${tri.step === "read" ? renderChallengeRanking() : ""}
+        <details class="rk-fold">
+          <summary>
+            <span class="rk-fold-k">Ranking de retos</span>
+            <span class="rk-fold-n">· ${list.length} evaluados</span>
+            <span class="rk-fold-h">el pronóstico del motor, por si quieren comparar antes de votar</span>
+            <span class="rk-fold-go">ver ▾</span>
+          </summary>
+          ${renderChallengeRanking()}
+        </details>
 
         <!-- Barra de Control y Filtros (Estilo Editorial Sobrio) -->
         ${tri.step !== "vote" ? `
@@ -2856,7 +3908,7 @@ function renderViewChallenges() {
              ondrop="handleChallengeDrop(event)">
           <div style="border:1.5px dashed #CBD5E1; background:#F8FAFC; border-radius:6px; padding:14px; text-align:center; margin-bottom:10px; cursor:pointer;"
                onclick="document.getElementById('challenge-file-input-inline').click()">
-            <input type="file" id="challenge-file-input-inline" style="display:none;" multiple accept=".zip,.pdf,.docx,.doc,.txt,.png,.jpg,.jpeg,.webp" onchange="handleChallengeFileSelect(this.files)">
+            <input type="file" id="challenge-file-input-inline" aria-label="Subir archivos de retos" style="display:none;" multiple accept=".zip,.pdf,.docx,.doc,.txt,.png,.jpg,.jpeg,.webp" onchange="handleChallengeFileSelect(this.files)">
             <div style="font-size:12.5px; font-weight:700; color:#0F172A;">Arrastra aquí o haz clic para subir archivo ZIP, imágenes, PDF o Word</div>
             <div style="font-size:11px; color:#64748B; margin-top:2px;">La IA visual jerarquizará automáticamente todos los retos contenidos (EasyOCR local como red de seguridad).</div>
           </div>
@@ -2869,342 +3921,29 @@ function renderViewChallenges() {
           </div>
         </div>
 
-        <!-- Deliberation Studio Master-Detail Container -->
-        ${(() => {
-          const activeId = state.active_deliberation_challenge_id || state.challenge_id || (filtered[0] ? filtered[0].id : "");
-          const activeCh = filtered.find(c => c.id === activeId) || filtered[0];
-          if (!activeCh) return `<div style="padding:30px; text-align:center; color:#64748B;">No hay retos en esta categoría.</div>`;
+        ${mesaActive ? `
+          <div class="deliberation-container">
+            ${renderMesaNav(mesaList, mesaActive.id)}
+            <section class="deliberation-sheet cr-sheet">
+              ${renderMesaBar(mesaList, mesaActive, mesaIndex)}
+              ${renderMesaSlide(mesaActive, mesaList, mesaIndex)}
 
-          const isSelected = state.challenge_id === activeCh.id;
-          const odsStr = Array.isArray(activeCh.ods) ? activeCh.ods.join(", ") : (activeCh.ods || "ODS 9, ODS 12");
-          const ideas = (state.challenge_ideas && state.challenge_ideas[activeCh.id]) || [];
-          const curIndex = filtered.findIndex(c => c.id === activeCh.id);
-          const prevCh = curIndex > 0 ? filtered[curIndex - 1] : null;
-          const nextCh = curIndex < filtered.length - 1 ? filtered[curIndex + 1] : null;
-
-          return `
-            <div class="deliberation-container ${tri.step === 'read' ? 'has-winner-rail' : ''}">
-              <!-- Columna Izquierda: Índice Catálogo Táctico -->
-              <aside class="deliberation-nav">
-                <div class="deliberation-nav-header">
-                  <span>CATÁLOGO DE RETOS</span>
-                  <span style="font-family:var(--font-mono); font-size:11px; color:#64748B;">${filtered.length} ACTIVOS</span>
+              <div class="cr-cta">
+                <div>
+                  ${mesaIndex > 0 ? `<button class="btn-pill-light" style="font-size:12px; font-weight:700; padding:6px 14px;" onclick="mesaGo('${mesaList[mesaIndex - 1].id}')">← Reto #${mesaList[mesaIndex - 1].id}</button>` : `<span style="width:80px; display:inline-block;"></span>`}
                 </div>
-                <div class="deliberation-nav-list">
-                  ${filtered.map(ch => {
-                    const isCur = ch.id === activeCh.id;
-                    const isSel = state.challenge_id === ch.id;
-                    const chIdeas = (state.challenge_ideas && state.challenge_ideas[ch.id]) || [];
-                    return `
-                      <div class="deliberation-nav-item ${isCur ? 'active' : ''}" 
-                           onclick="state.active_deliberation_challenge_id='${ch.id}'; renderTab('challenges');">
-                        <div style="min-width:0; flex:1; padding-right:6px;">
-                          <div style="display:flex; align-items:center; gap:6px; margin-bottom:2px;">
-                            <span class="nav-item-num" style="font-family:var(--font-mono); font-size:11px; font-weight:800; padding:1px 6px; border-radius:4px; background:${isCur ? '#334155' : '#E2E8F0'}; color:${isCur ? '#F8FAFC' : '#0F172A'};">
-                              #${ch.id}
-                            </span>
-                            <span class="nav-item-cat" style="font-size:10.5px; font-weight:700;">${categoryBadge(ch.category)}</span>
-                            ${isSel ? `<span style="font-size:9.5px; font-weight:800; color:#0866F5; background:var(--bg-subtle); border:1px solid var(--border-light); padding:1px 5px; border-radius:3px;">ELEGIDO</span>` : ""}
-                            ${(() => {
-                            if (isTeamDiscarded(ch.id)) return `<span style="font-size:9.5px; font-weight:700; color:#94A3B8; padding:1px 5px; border-radius:3px;">descartado${discardCount(ch.id) ? ` en consenso (${discardCount(ch.id)})` : ""}</span>`;
-                            const mine = personDisposition(ch.id);
-                            return mine === "keep"
-                              ? `<span style="font-size:9.5px; font-weight:800; color:#0D1B35; background:#EFF6FF; border:1px solid var(--border-light); padding:1px 5px; border-radius:3px;">ME INTERESA</span>`
-                              : mine === "discard"
-                                ? `<span style="font-size:9.5px; font-weight:700; color:#94A3B8; padding:1px 5px; border-radius:3px;">descarté</span>`
-                                : discardCount(ch.id) ? `<span style="font-size:9.5px; font-weight:700; color:#94A3B8; padding:1px 5px; border-radius:3px;">(${discardCount(ch.id)} piden descartar)</span>` : "";
-                          })()}
-                            ${(tri.votes[ch.id] || []).length ? `<span style="font-family:var(--font-mono); font-size:9.5px; font-weight:800; color:#0866F5;">● ${tri.votes[ch.id].length}</span>` : ""}
-                          </div>
-                          <div class="nav-item-title" style="font-size:12px; font-weight:700; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; text-overflow:ellipsis; line-height:1.35;">
-                            ${ch.title}
-                          </div>
-                        </div>
-                        <div style="text-align:right; flex-shrink:0;">
-                          ${tri.step !== "read" ? `<div style="font-family:var(--font-mono); font-size:11.5px; font-weight:900; color:${isCur ? '#60A5FA' : '#64748B'};">${ch.winRate || 90}%</div>` : ""}
-                          ${chIdeas.length > 0 ? `<div style="font-size:9.5px; color:${isCur ? '#94A3B8' : '#64748B'};">Notas: ${chIdeas.length}</div>` : ''}
-                        </div>
-                      </div>
-                    `;
-                  }).join("")}
+                <button class="btn-select-card filled" style="padding:10px 22px; font-size:13px; font-weight:800;" onclick="selectChallenge('${mesaActive.id}', true)">
+                  Elegir Reto #${mesaActive.id} e Ir a Solución →
+                </button>
+                <div>
+                  ${mesaIndex < mesaList.length - 1 ? `<button class="btn-pill-light" style="font-size:12px; font-weight:700; padding:6px 14px;" onclick="mesaGo('${mesaList[mesaIndex + 1].id}')">Reto #${mesaList[mesaIndex + 1].id} →</button>` : `<span style="width:80px; display:inline-block;"></span>`}
                 </div>
-              </aside>
-
-              <!-- Columna Derecha: Hoja de Deliberación Técnica Oficial (Formato PDF) -->
-              <section class="deliberation-sheet">
-                <!-- Metadatos y Acciones Superiores -->
-                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px; padding-bottom:14px; border-bottom:1.5px solid #0F172A; flex-wrap:wrap; gap:10px;">
-                  <div>
-                    <div style="display:flex; align-items:center; gap:6px; margin-bottom:6px;">
-                      ${categoryBadge(activeCh.category)}
-                      <span style="font-family:var(--font-mono); font-size:11px; font-weight:900; color:#0D1B35; letter-spacing:0.04em;">
-                        DESAFÍO #${activeCh.id}
-                      </span>
-                    </div>
-                    <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
-                      ${(Array.isArray(activeCh.ods) ? activeCh.ods : (activeCh.ods || "ODS 12").split(/,\s*/)).map(o => {
-                        const num = String(o).replace(/[^\d]/g, '');
-                        const odsObj = ODS_CATALOG.find(x => String(x.id) === num);
-                        return `<button class="btn-pill-light" style="padding:2px 8px; font-size:10px; font-weight:800; background:transparent; color:#334F7D; border:1px solid var(--border-light); cursor:pointer; display:inline-flex; align-items:center; gap:4px;" onclick="openImpactDetailModal('ods', ${num || 12})" title="Ver por qué y cómo cumple este ODS">${odsObj && odsObj.icon ? `<svg width="10" height="10" viewBox="0 0 12 12" fill="${odsObj.color}">${odsObj.icon}</svg>` : ''}${o}</button>`;
-                      }).join("")}
-                    </div>
-                    <div style="font-size:11px; font-family:var(--font-mono); color:#475569; font-weight:700;">
-                      VIABILIDAD ESTIMADA: ${activeCh.winRate || 90}%
-                    </div>
-                    ${(() => {
-                      const isSat = (activeCh.compDensity || "").toLowerCase().includes("alta") || (activeCh.winRate && activeCh.winRate < 86);
-                      return `
-                        <div style="display:flex; align-items:center; gap:8px; margin-top:4px;">
-                          <span style="font-size:10px; font-weight:800; padding:2px 7px; border-radius:4px; letter-spacing:0.03em; background:transparent; color:#64748B; border:1px solid var(--border-light); font-family:var(--font-mono);">
-                            ${isSat ? 'ALTA CONCURRENCIA' : 'NICHO TÉCNICO'}
-                          </span>
-                          <span style="font-size:11px; color:#64748B;">
-                            ${isSat ? 'Exige ≥2 capas tecnológicas para superar la saturación de sedes.' : 'Baja rivalidad de sedes: ventaja competitiva directa si la factibilidad es sólida.'}
-                          </span>
-                        </div>
-                      `;
-                    })()}
-                  </div>
-
-                  <div style="display:flex; align-items:center; gap:6px;">
-                    <button class="btn-pill-light" style="font-size:11.5px; padding:5px 12px;" onclick="openEditChallengeModal('${activeCh.id}')" title="Modificar título, demanda u ODS">
-                      ${SVG.edit} Editar Reto
-                    </button>
-                    <button class="btn-select-card ${isSelected ? 'filled' : 'outline'}" style="padding:6px 14px; font-size:12px; font-weight:700;" onclick="selectChallenge('${activeCh.id}', ${isSelected ? 'true' : 'false'})">
-                      ${isSelected ? 'Reto Seleccionado' : 'Elegir para Desarrollar'}
-                    </button>
-                    <button class="btn-pill-ghost" style="font-size:11px; padding:5px 10px; color:#DC2626;" onclick="deleteChallenge('${activeCh.id}')" title="Descartar del radar">
-                      ${SVG.close}
-                    </button>
-                  </div>
-                </div>
-
-                <!-- FASE ACTUAL DEL TRIBUNAL: acción embudo / votación / decisión -->
-                ${(() => {
-                  const disp = funnelStateOf(activeCh.id);
-                  const discarded = isTeamDiscarded(activeCh.id);
-                  const myDisc = personDisposition(activeCh.id) === "discard";
-                  const discN = discardCount(activeCh.id);
-                  const resN = reserveCount(activeCh.id);
-                  const votes = tri.votes[activeCh.id] || [];
-                  const voteTally = Object.entries(tri.votes).filter(([id, v]) => v.length).map(([id, v]) => ({ id, n: v.length, who: v }));
-
-                  if (tri.step === "discard") {
-                    const quedan = list.filter(c => !isTeamDiscarded(c.id)).length;
-                    return `
-                      <div class="tribunal-action-strip" style="margin-bottom:18px;">
-                        <div class="tribunal-action-info">
-                          <strong>${discarded ? "DESCARTADO POR EL EQUIPO" : disp === "keep" ? "ME INTERESA" : myDisc ? "TU VOZ: DESCARTAR" : "EN ESPERA"}</strong>
-                          <span>${discarded
-                            ? `Salió del embudo por consenso de ${discN || 2} voces. Quedan ${quedan - 1} de ${list.length}.`
-                            : resN ? `Hay ${resN} RESERVA${resN > 1 ? "S" : ""} activa${resN > 1 ? "S" : ""}: escuchen el caso (2 min) antes de descartar. Quedan ${quedan} de ${list.length}.`
-                            : myDisc
-                              ? discN >= 2
-                                ? `${discN} voces piden descartarlo. Quedan ${quedan} de ${list.length}.`
-                                : ` Esperando 1 voz más para descartarlo en consenso. Quedan ${quedan} de ${list.length}.`
-                              : ` Embudo: quedan ${quedan} de ${list.length} retos. Segundo clic = tu voz vuelve a "en espera".`}</span>
-                        </div>
-                        <div class="tribunal-action-btns">
-                          ${discarded ? "" : `
-                            ${discN >= 2
-                              ? `<button class="trib-btn on-keep" onclick="discardChallengeTogether('${activeCh.id}')" title="Califica el descarte para todo el equipo">Descartarlo juntos (${discN})</button>`
-                              : `<button class="trib-btn ${disp === "keep" ? "on-keep" : ""}" onclick="setChallengeDisposition('${activeCh.id}','keep')">Me interesa</button>
-                                 <button class="trib-btn ${myDisc ? "on-discard" : ""}" onclick="setChallengeDisposition('${activeCh.id}','discard')">Descartar</button>`}
-                            <button class="trib-btn ${resN ? "on-keep" : ""}" onclick="setChallengeReserve('${activeCh.id}')" title="${resN ? "Retira tu reserva" : "Una voz puede frenar el descarte y pedir 2 min de escucha"}">RESERVA${resN ? ` (${resN})` : ""}</button>`}
-                        </div>
-                      </div>
-                    `;
-                  }
-                  if (tri.step === "vote") {
-                    const me = _me();
-                    const mine = votes.filter(v => v === me).length;
-                    return `
-                      <div class="tribunal-action-strip" style="margin-bottom:18px;">
-                        <div class="tribunal-action-info">
-                          <strong>${discarded ? "NO PASÓ EL EMBUDO" : hasAnyKeep(activeCh.id) ? "VOTACIÓN" : "NO PASÓ EL EMBUDO"}</strong>
-                          <span>${discarded
-                            ? "Este reto quedó descartado por el equipo; no entra a votación."
-                            : hasAnyKeep(activeCh.id)
-                              ? `Puntos: ${votes.length} del equipo. Tienes ${mine} de 3 puestos — clic para dar un punto; al llegar a 3, otro clic los quita todos.`
-                              : 'Este reto no recibió ningún "Me interesa"; en la votación solo cuentan los que pasaron el embudo.'}</span>
-                          ${votes.length ? `<div class="vote-owner-list">${votes.map(v => `<span class="vote-owner-chip" style="color:${_userColor(v)};"><span style="width:7px; height:7px; border-radius:50%; background:${_userColor(v)}; display:inline-block;"></span>${v}</span>`).join("")}</div>` : ""}
-                        </div>
-                        ${!discarded && hasAnyKeep(activeCh.id) ? `<button class="trib-btn ${mine > 0 ? "on-keep" : ""}" onclick="toggleChallengeVote('${activeCh.id}')">${mine > 0 ? `Quitar puntos (${mine}/3)` : "+ Dar 1 punto"}</button>` : ""}
-                      </div>
-                    `;
-                  }
-                  if (tri.step === "decide") {
-                    const tally = voteTally.sort((a, b) => b.n - a.n);
-                    return `
-                      <div class="tribunal-action-strip" style="margin-bottom:18px;">
-                        <div class="tribunal-action-info">
-                          <strong>DECISIÓN FINAL</strong>
-                          <span>Resultado del embudo + votación: ${tally.length ? tally.map(t2 => `#${t2.id} (${t2.n} pts)`).join(" · ") : "sin votos registrados"}.</span>
-                        </div>
-                        <div class="tribunal-action-btns">
-                          ${state.challenge_id !== activeCh.id ? `<button class="trib-btn on-keep" onclick="selectChallenge('${activeCh.id}', false)">Elegir Reto #${activeCh.id}</button>` : `<span class="hold-chosen">Reto #${activeCh.id} está elegido. Continúa al Taller de Solución.</span>`}
-                        </div>
-                      </div>
-                    `;
-                  }
-                  return ""; // fase lectura: sin strip extra
-                })()}
-
-                <!-- Título Oficial -->
-                <h2 style="font-size:27px; font-weight:900; color:#0D1B35; line-height:1.22; margin:2px 0 6px 0; letter-spacing:-0.02em;">
-                  ${activeCh.title}
-                </h2>
-                <div style="font-size:11px; font-family:var(--font-mono); color:#94A3B8; letter-spacing:0.04em; margin-bottom:20px;">
-                  RETO OFICIAL DEL COMITÉ · LÉELO COMPLETO ANTES DE DELIBERAR
-                </div>
-
-                <!-- 01. Demanda Oficial del Comité -->
-                <div style="margin-bottom:22px;">
-                  <div class="delib-section-title">01. DEMANDA OFICIAL DEL COMITÉ EVALUADOR</div>
-                  ${activeCh.imageUrl ? `
-                    <div style="background:#0F172A; border:1px solid #334155; border-radius:8px; padding:12px; margin-bottom:16px;">
-                      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                        <span style="font-size:11px; font-weight:800; color:#94A3B8; text-transform:uppercase; letter-spacing:0.04em;">
-                          Documento Visual de Convocatoria (Fuente Oficial)
-                        </span>
-                        <button class="btn-pill-light" style="font-size:10.5px; padding:3px 10px; background:rgba(255,255,255,0.1); color:#fff; border-color:rgba(255,255,255,0.2);" onclick="openLightbox('${activeCh.imageUrl}')">
-                          Ampliar en Alta Definición
-                        </button>
-                      </div>
-                      <img src="${activeCh.imageUrl}" alt="Cartel Convocatoria Reto ${activeCh.id}" class="delib-image-preview" style="max-height:480px; width:100%; object-fit:contain; border-radius:6px; cursor:zoom-in;" onclick="openLightbox('${activeCh.imageUrl}')">
-                    </div>
-                  ` : ""}
-                  <div style="background:#F8FAFC; border:1px solid #E2E8F0; padding:12px 16px; border-radius:6px; font-size:13px; color:#1E293B; line-height:1.6;">
-                    ${activeCh.officialExpectation || 'Demanda técnica oficial anunciada por el comité.'}
-                  </div>
-                </div>
-
-                <!-- 02. La Propuesta en Palabras Simples -->
-                <div class="delib-section">
-                  <div class="delib-section-title">02. LA PROPUESTA DEL MOTOR, EN PALABRAS SIMPLES</div>
-                  
-                  <div style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:6px; padding:14px 16px; margin-bottom:12px;">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap; gap:8px;">
-                      <div style="font-size:11px; font-weight:800; color:#0F172A; text-transform:uppercase; letter-spacing:0.04em;">
-                        Lo que harías, explicado sin jerga (Tesis 100 Pts Rúbrica)
-                      </div>
-                      <button class="btn-pill-light" style="font-size:11px; font-weight:700; color:#0866F5; border:1px solid var(--border-light); background:var(--bg-subtle); padding:4px 12px; border-radius:4px; cursor:pointer; display:inline-flex; align-items:center; gap:5px;" onclick="openAIThesisFormulatorModal('${activeCh.id}')">
-                        ${SVG.spark} IA Copilot / Prompts de Razonamiento
-                      </button>
-                    </div>
-                    <p style="font-size:13px; color:#0F172A; font-weight:600; line-height:1.55; margin:0;">
-                      ${activeCh.wowProposal || 'Presiona "IA Copilot / Prompts de Razonamiento" para estructurar la solución.'}
-                    </p>
-                  </div>
-
-                  ${activeCh.nicaraguaAdaptation ? `
-                    <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:6px; padding:12px 14px; margin-bottom:12px; font-size:12px; line-height:1.5; color:#334155;">
-                      <strong style="color:#0F172A; font-size:11px; text-transform:uppercase;">Factibilidad & Despliegue Territorial:</strong> ${activeCh.nicaraguaAdaptation}
-                    </div>
-                  ` : ""}
-
-                  ${(activeCh.winnerPattern || activeCh.precedent) ? `
-                    <div style="font-size:11.5px; color:#64748B; font-family:var(--font-mono); margin-bottom:10px;">
-                      <strong>Precedente Histórico:</strong> ${activeCh.winnerPattern || activeCh.precedent}
-                    </div>
-                  ` : ""}
-                </div>
-
-                <!-- Ángulo ganador (fase de lectura): sugerencias del motor basado en ganadores -->
-                ${(() => {
-                  if (tri.step !== "read") return "";
-                  const ang = winnerAngleFor(activeCh);
-                  return `
-                    <div class="winner-angle-box winner-angle-inline">
-                      <div class="delib-section-title" style="margin-bottom:8px;">ÁNGULO GANADOR · MOTOR 2019–2026 · <span class="wa-score">${ang.score}/100</span></div>
-                      <ul class="winner-angle-list">${ang.bullets.map(b => `<li>${b}</li>`).join("")}</ul>
-                    </div>
-                  `;
-                })()}
-
-                <!-- 03. Deliberación y Lluvia de Ideas del Equipo -->
-                <div class="delib-section">
-                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                    <div class="delib-section-title" style="margin-bottom:0;">03. APUNTES Y DELIBERACIÓN DEL EQUIPO (${ideas.length})</div>
-                    <span style="font-size:11px; color:#64748B;">Guardado automático colaborativo</span>
-                  </div>
-
-                  <div id="challenge-ideas-list-${activeCh.id}" style="display:flex; flex-direction:column; gap:6px; margin-bottom:12px;">
-                    ${ideas.length === 0 ? `
-                      <div style="font-size:12px; color:#94A3B8; font-style:italic; padding:6px 0;">No hay notas del equipo para este reto. Escribe la primera abajo.</div>
-                    ` : ideas.map(idea => {
-                      const others = state.challenges.filter(c => c.id !== activeCh.id);
-                      return `
-                      <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:6px; padding:8px 12px; font-size:12px; display:flex; justify-content:space-between; align-items:center; gap:8px; ${idea.merged_to ? 'opacity:0.62;' : ''}">
-                        <div>
-                          <strong style="color:${_userColor(idea.author)}; font-size:11px; margin-right:6px; display:inline-flex; align-items:center; gap:4px;">
-                            <span style="width:8px; height:8px; border-radius:50%; background:${_userColor(idea.author)}; display:inline-block; flex-shrink:0;"></span>${idea.author || 'Equipo'}:
-                          </strong>
-                          <span style="color:#1E293B;">${idea.text}</span>
-                          ${idea.merged_to ? `<span style="font-size:10px; font-family:var(--font-mono); color:#0866F5; border:1px solid rgba(8,102,245,0.25); border-radius:4px; padding:1px 6px; margin-left:6px; white-space:nowrap;">fusionada → #${idea.merged_to}</span>` : ""}
-                        </div>
-                        <div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">
-                          ${idea.merged_to ? `
-                            <button style="border:none; background:none; color:#0866F5; cursor:pointer; font-size:10.5px; font-weight:700; padding:0 4px;" onclick="unmergeChallengeIdea('${activeCh.id}', '${idea.id}')" title="Traer la nota de vuelta">↺</button>
-                          ` : others.length ? `
-                            <select style="border:1px solid #CBD5E1; border-radius:4px; font-size:10.5px; padding:2px 4px; color:#475569; max-width:150px;" onchange="if(this.value) mergeChallengeIdea('${activeCh.id}', '${idea.id}', this.value)">
-                              <option value="">Fusionar ↗</option>
-                              ${others.map(c => `<option value="${c.id}">#${c.id} ${(c.title || '').slice(0, 28)}</option>`).join("")}
-                            </select>
-                          ` : ""}
-                          <button style="border:none; background:none; color:#94A3B8; cursor:pointer; font-size:13px; padding:0 4px;" onclick="deleteChallengeIdea('${activeCh.id}', '${idea.id}')" title="Eliminar nota">${SVG.close}</button>
-                        </div>
-                      </div>
-                    `; }).join("")}
-                  </div>
-
-                  <!-- Input para agregar nueva nota -->
-                  <div style="display:flex; gap:8px;">
-                    <input type="text" id="new-idea-input-${activeCh.id}" placeholder="Escribe un punto clave, pro o contra para este reto..." 
-                           style="flex:1; border:1px solid #CBD5E1; border-radius:6px; padding:8px 12px; font-size:12px;"
-                           onkeydown="if(event.key==='Enter') addChallengeIdea('${activeCh.id}')">
-                    <button class="btn-select-card filled" style="padding:6px 16px; font-size:11.5px; font-weight:700;" onclick="addChallengeIdea('${activeCh.id}')">
-                      + Agregar Nota
-                    </button>
-                  </div>
-                </div>
-
-                <!-- Barra de Navegación y Decisión Final -->
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:28px; padding-top:18px; border-top:1px solid #E2E8F0; flex-wrap:wrap; gap:10px;">
-                  <div>
-                    ${prevCh ? `
-                      <button class="btn-pill-light" style="font-size:12px; font-weight:700; padding:6px 14px;" 
-                              onclick="state.active_deliberation_challenge_id='${prevCh.id}'; renderTab('challenges');">
-                        ← Reto #${prevCh.id}
-                      </button>
-                    ` : '<span style="width:80px;"></span>'}
-                  </div>
-
-                  <div style="display:flex; gap:8px;">
-                    <button class="btn-select-card filled" style="padding:10px 22px; font-size:13px; font-weight:800;" onclick="selectChallenge('${activeCh.id}', true)">
-                      Elegir Reto #${activeCh.id} e Ir a Solución →
-                    </button>
-                  </div>
-
-                  <div>
-                    ${nextCh ? `
-                      <button class="btn-pill-light" style="font-size:12px; font-weight:700; padding:6px 14px;" 
-                              onclick="state.active_deliberation_challenge_id='${nextCh.id}'; renderTab('challenges');">
-                        Reto #${nextCh.id} →
-                      </button>
-                    ` : '<span style="width:80px;"></span>'}
-                  </div>
-                </div>
-              </section>
-               ${tri.step === 'read' && activeCh ? `
-                 <aside class="winner-rail">
-                   <div class="delib-section-title" style="margin-bottom:8px;">ÁNGULO GANADOR · <span class="wa-score">${winnerAngleFor(activeCh).score}/100</span></div>
-                   <ul class="winner-angle-list">${winnerAngleFor(activeCh).bullets.map(b => `<li>${b}</li>`).join("")}</ul>
-                 </aside>
-               ` : ""}
-            </div>
-          `;
-        })()}
+              </div>
+            </section>
+          </div>
+        ` : `
+          <div style="padding:30px; text-align:center; color:#64748B;">No hay retos en esta categoría.</div>
+        `}
       `}
     </div>
   `;
@@ -3698,7 +4437,7 @@ Entrega formato sin relleno, con citas verificables tipo APA.`;
               ${SVG.check} Generar con IA Automática
             </button>
             <button type="button" class="copilot-paste-btn" onclick="polishLandingWithAI()" id="copilot-polish-btn" title="Corrige redacción, ortografía y jerarquía del texto con una IA rápida (no agrega contenido)">
-              ${SVG.sparkles || ""} Pulir ✨
+              ${SVG.sparkles || ""} Pulir
             </button>
             <button type="button" class="copilot-paste-btn" onclick="pasteToAIThesisResult()">
               ${SVG.upload} Pegar desde Portapapeles
@@ -5741,16 +6480,16 @@ function renderViewImpact() {
     <!-- Submenú de Navegación Temática Impeccable -->
     <div class="impact-subnav">
       <button class="impact-subnav-btn ${impactActiveSubTab === 'ods' ? 'active' : ''}" onclick="switchImpactSubTab('ods')">
-        🎯 ODS · Agenda 2030 (ONU)
+        ODS · Agenda 2030 (ONU)
       </button>
       <button class="impact-subnav-btn ${impactActiveSubTab === 'plan' ? 'active' : ''}" onclick="switchImpactSubTab('plan')">
-        🏛️ Plan de Lucha contra la Pobreza (2022-2026)
+        Plan de Lucha contra la Pobreza (2022-2026)
       </button>
       <button class="impact-subnav-btn ${impactActiveSubTab === 'leyes' ? 'active' : ''}" onclick="switchImpactSubTab('leyes')">
-        📜 Leyes & Programas Nacionales ("Otros")
+        Leyes & Programas Nacionales ("Otros")
       </button>
       <button class="impact-subnav-btn ${impactActiveSubTab === 'sintesis' ? 'active' : ''}" onclick="switchImpactSubTab('sintesis')">
-        📝 Síntesis para Pautado & Pitch
+        Síntesis para Pautado & Pitch
       </button>
     </div>
 
@@ -6462,7 +7201,13 @@ Genera el texto de locución continuo para los 4 actos (cadencia de 135 ppm, tot
 - Acto 3 (60–95s): Prefactibilidad económica y sostenibilidad con actores del entorno local (alcaldías, cooperativas, MEFCCA) y cifras exactas del pautado.
 - Acto 4 (95–120s): Cierre memorable de impacto humano, empleo y orgullo del talento nicaragüense (identidad cultural real, no retórica vacía).
 Distribución objetiva de palabras: Acto 1 ≤45, Acto 2 ≤90, Acto 3 ≤75, Acto 4 ≤55 (total 250-270).
-Entrega solo el texto continuo para el locutor o sintetizador TTS, sin acotaciones teatrales ni corchetes.`;
+Entrega solo el texto continuo para el locutor o sintetizador TTS, sin acotaciones teatrales ni corchetes.
+
+MOTOR Y ENTREGABLE DE AUDIO (si tu entorno tiene acceso al equipo):
+No basta con escribir el texto. Instala o usa un motor TTS y genera assets/voice/narration.mp4: MP4 con audio AAC, sin video, mono, 48 kHz, máximo 120 segundos.
+Recomendado: Chatterbox Multilingual es-MX/LatAm (MIT, clonación y control de emoción). Respaldo en CPU: Kokoro 82M. Edge-TTS solo si hay internet.
+La guía completa con pasos, modelo y parámetros está en la pestaña Guion > Motor de voz > Copiar prompt para mi IA.
+Si no puedes ejecutar el motor, entrega el texto y las instrucciones exactas para que el equipo lo haga.`;
     }
     return `Actúa como Locutor Profesional y Guionista de Pitch de Innovación para el ${cert}.
 Proyecto: "${pName}" (${chTitle}).
@@ -6472,10 +7217,16 @@ Patrón de Ganadores (Anatomía de 120 segundos):
 Genera el texto de locución continuo para los 4 actos (cadencia estricta de 135 palabras por minuto, total 250 a 270 palabras):
 - Acto 1 (0–20s): Dolor humano y cifras cuantificadas. PROHIBIDO mencionar el nombre del proyecto o mostrar logos.
 - Acto 2 (20–60s): Explicación técnica de la solución y mecanismo funcional; los ganadores Latam muestran la demo visual de forma temprana y usualen un nombre memorable de identidad regional.
-- Acto 3 (60–95s): Prefactibilidad y desglose del presupuesto en USD coincidente con el documento pautado.
+- Acto 3 (60–95s): Prefactibilidad y desglose del presupuesto en ${isNac ? "córdobas (C$)" : "USD"} coincidente con el documento pautado.
 - Acto 4 (95–120s): Cierre de impacto, métricas auditables y proyección regional, con identidad nicaragüense (símbolo o cifra de orgullo local) como en los videos ganadores.
 Distribución objetiva de palabras: Acto 1 ≤45, Acto 2 ≤90, Acto 3 ≤75, Acto 4 ≤55 (total 250-270).
-Entrega solo el texto continuo para el locutor o sintetizador TTS, sin acotaciones teatrales ni corchetes.`;
+Entrega solo el texto continuo para el locutor o sintetizador TTS, sin acotaciones teatrales ni corchetes.
+
+MOTOR Y ENTREGABLE DE AUDIO (si tu entorno tiene acceso al equipo):
+No basta con escribir el texto. Instala o usa un motor TTS y genera assets/voice/narration.mp4: MP4 con audio AAC, sin video, mono, 48 kHz, máximo 120 segundos.
+Recomendado: Chatterbox Multilingual es-MX/LatAm (MIT, clonación y control de emoción). Respaldo en CPU: Kokoro 82M. Edge-TTS solo si hay internet.
+La guía completa con pasos, modelo y parámetros está en la pestaña Guion > Motor de voz > Copiar prompt para mi IA.
+Si no puedes ejecutar el motor, entrega el texto y las instrucciones exactas para que el equipo lo haga.`;
   }
 
   if (taskId === "cross_audit") {
@@ -6503,7 +7254,8 @@ Entrega tu veredicto en viñetas directas: [APROBADO / RIESGOS DETECTADOS / CORR
   }
 
   if (taskId === "web_prototype") {
-    const budgetLines = (state.budget || []).map(it => `${it.element} ×${it.units} — $${(it.units * it.unit_cost).toFixed(2)}`).join("; ") || "(sin partidas aún)";
+    const pctx = budgetCurrency();
+    const budgetLines = (state.budget || []).map(it => `${it.element} ×${it.units} — ${budgetFmt(it.units * it.unit_cost, pctx)}`).join("; ") || "(sin partidas aún)";
     return `Actúa como Desarrollador Web Frontend Senior especializado en dashboards televisivos.
 Proyecto: "${pName}" (${chTitle}).
 Tesis: "${thesis}".
@@ -6513,7 +7265,7 @@ Misión: genera UN SOLO archivo HTML autocontenido (con <style> y <script> incru
 Requisitos estrictos:
 1. Hero con nombre del proyecto, la tesis condensada y 3 métricas grandes en tipografía mono (ej. unidades del piloto, cobertura, ahorro estimado) tomadas de la tesis y del presupuesto.
 2. Panel "Telemetría en Vivo" con datos simulados en JS (setInterval) que cambien cada 2s: señal, batería, nivel, temperatura — números plausibles para el hardware de la tesis.
-3. Tabla de partidas mayoristas con los datos de presupuesto dados (elemento, unidades, costo) + total calculado en USD.
+3. Tabla de partidas mayoristas con los datos de presupuesto dados (elemento, unidades, costo) + total calculado en ${pctx.rotulo}.
 4. Barra inferior con pulso de "Registro Territorial" y estado del gateway LoRaWAN.
 5. Estética: fondo blanco, 1 línea de acento cobalto, sin gradientes chillones, sin emojis, sin imágenes externas; texto legible en 4K (para grabar a 1080p/4K).
 6. Todo debe correr en un solo archivo, responsive, sin errores de consola.
@@ -6633,8 +7385,8 @@ function renderViewPautado() {
         <button class="btn-secondary" onclick="printProjectDossier()" style="display:inline-flex; align-items:center; gap:5px;">
           ${SVG.download} Imprimir / PDF
         </button>
-        <a href="docs/pautado_draft.docx" id="direct-docx-link" download="Pautado_Borrador_Oficial.docx" class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
-          ${SVG.download} Plantilla Word
+        <a href="/docs/pautado_template.docx" id="direct-docx-link" download="Plantilla_Pautado_Oficial.docx" class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;" title="Descarga la plantilla oficial vacía para revisarla antes de compilar">
+          ${SVG.download} Plantilla Word (vacía)
         </a>
       </div>
     </div>
@@ -6654,7 +7406,7 @@ function renderViewPautado() {
           <button class="btn-secondary" type="button" onclick="clearPautadoTemplate()">Quitar</button>
         </div>
       </div>
-      <input type="file" id="pautado-template-input" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" style="display:none;" onchange="handlePautadoTemplateUpload(event)">
+      <input type="file" id="pautado-template-input" aria-label="Subir plantilla Word del evento" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" style="display:none;" onchange="handlePautadoTemplateUpload(event)">
     </div>
 
     <div class="rubric-callout">
@@ -6853,8 +7605,40 @@ function savePautado() {
 // ═════════════════════════════════════════════════════════════════════════════
 // 06 NIVEL 4: PRESUPUESTO DE PUESTA EN MARCHA
 // ═════════════════════════════════════════════════════════════════════════════
+function budgetCurrency() {
+  const nacional = state.rally_type === "nacional";
+  const rate = Number(state.exchange_rate_bcn) || 0;
+  const enCordobas = nacional && rate > 0;
+  return {
+    nacional,
+    rate,
+    listo: !nacional || rate > 0,
+    code: enCordobas ? "NIO" : "USD",
+    simbolo: enCordobas ? "C$" : "$",
+    rotulo: enCordobas ? "C$" : "USD",
+  };
+}
+
+function budgetConvert(usd, ctx) {
+  return ctx.code === "NIO" ? usd * ctx.rate : usd;
+}
+
+function budgetFmt(usd, ctx, conCodigo) {
+  const valor = budgetConvert(usd, ctx);
+  const numero = valor.toLocaleString("es-NI", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  return `${ctx.simbolo}${numero}${conCodigo ? ` ${ctx.code}` : ""}`;
+}
+
+function updateExchangeRate(val) {
+  const rate = parseFloat(val) || 0;
+  state.exchange_rate_bcn = rate > 0 ? rate : 0;
+  saveState();
+  renderTab("budget");
+}
+
 function renderViewBudget() {
   const total = state.budget.reduce((a, b) => a + (b.units * b.unit_cost), 0);
+  const ctx = budgetCurrency();
   const isTooLow = total < 3000;
   const isTooHigh = total > 6500;
   const hasNotice = isTooLow || isTooHigh;
@@ -6864,6 +7648,15 @@ function renderViewBudget() {
       <div>
         <h1 class="phase-title">07 · Presupuesto de <span class="phase-title-accent">Puesta en Marcha</span></h1>
         <p class="phase-subtitle">Insumos mayoristas para el prototipo inicial o lote piloto verificables con proveedores reales.</p>
+        ${ctx.nacional ? `
+          <label style="display:inline-flex; align-items:center; gap:6px; margin-top:8px; font-size:11px; font-weight:700; color:var(--text-muted);">
+            Tasa BCN (C$ por USD)
+            <input type="number" min="1" step="0.01" value="${ctx.rate || ""}" placeholder="36.50"
+                   aria-label="Tasa de cambio del BCN en córdobas por dólar"
+                   style="width:90px; text-align:right; border:1px solid var(--border-light); border-radius:3px; padding:3px 6px;"
+                   onchange="updateExchangeRate(this.value)">
+          </label>
+        ` : ""}
       </div>
       <div style="display:flex; gap:8px;">
         <button class="btn-primary" onclick="addBudgetItem()">+ Agregar Partida</button>
@@ -6872,6 +7665,13 @@ function renderViewBudget() {
         </a>
       </div>
     </div>
+
+    ${!ctx.listo ? `
+      <div class="rubric-callout" style="border-left-color:#f59e0b; background:#fffdf5;">
+        <strong>Falta la tasa del BCN:</strong> el Rally Nacional exige el presupuesto en córdobas.
+        Escribe la tasa oficial vigente arriba para convertir las partidas. Mientras tanto se muestran en USD.
+      </div>
+    ` : ""}
 
     ${hasNotice ? `
       <div class="rubric-callout" style="border-left-color:${isTooHigh ? '#f59e0b' : '#3b82f6'}; background:#fffdf5;">
@@ -6883,7 +7683,7 @@ function renderViewBudget() {
       </div>
     ` : `
       <div class="rubric-callout" style="border-left-color:#10b981; background:#f0fdf4;">
-        <strong>Presupuesto Equilibrado y Sustentado:</strong> El monto actual de <strong>$${total.toFixed(2)} USD</strong> refleja un balance creíble entre viabilidad económica y rigor técnico.
+        <strong>Presupuesto Equilibrado y Sustentado:</strong> El monto actual de <strong>${budgetFmt(total, ctx, true)}</strong> refleja un balance creíble entre viabilidad económica y rigor técnico.${ctx.nacional && ctx.rate ? ` Equivale a $${total.toFixed(2)} USD a la tasa declarada.` : ""}
       </div>
     `}
 
@@ -6894,7 +7694,7 @@ function renderViewBudget() {
             <tr>
               <th>Elemento / Componente</th>
               <th style="width:80px; text-align:center;">Unidades</th>
-              <th style="width:120px; text-align:right;">Costo Unit. (USD)</th>
+              <th style="width:120px; text-align:right;">Costo Unit. (${ctx.rotulo})</th>
               <th style="width:120px; text-align:right;">Subtotal</th>
               <th style="width:60px; text-align:center;">Acción</th>
             </tr>
@@ -6913,20 +7713,20 @@ function renderViewBudget() {
             ${state.budget.map((it, idx) => `
               <tr>
                 <td>
-                  <input type="text" value="${it.element}" style="width:100%; border:none; background:transparent; font-size:12px; font-weight:600;" onchange="updateBudgetItem(${idx}, 'element', this.value)">
+                  <input type="text" value="${it.element}" aria-label="Concepto de la partida ${idx + 1}" style="width:100%; border:none; background:transparent; font-size:12px; font-weight:600;" onchange="updateBudgetItem(${idx}, 'element', this.value)">
                   <div style="font-size:10px; color:var(--text-muted);">${it.url ? `<a href="${it.url}" target="_blank" style="color:var(--color-primary); text-decoration:none;">Enlace proveedor ${SVG.external}</a>` : 'Sin enlace'}</div>
                 </td>
                 <td style="text-align:center;">
-                  <input type="number" value="${it.units}" style="width:60px; text-align:center; border:1px solid var(--border-light); border-radius:3px; padding:2px;" onchange="updateBudgetItem(${idx}, 'units', this.value)">
+                  <input type="number" value="${it.units}" aria-label="Unidades de la partida ${idx + 1}" style="width:60px; text-align:center; border:1px solid var(--border-light); border-radius:3px; padding:2px;" onchange="updateBudgetItem(${idx}, 'units', this.value)">
                 </td>
                 <td style="text-align:right;">
-                  <input type="number" step="0.5" value="${it.unit_cost}" style="width:80px; text-align:right; border:1px solid var(--border-light); border-radius:3px; padding:2px;" onchange="updateBudgetItem(${idx}, 'unit_cost', this.value)">
+                  <input type="number" step="0.5" value="${budgetConvert(Number(it.unit_cost) || 0, ctx).toFixed(2)}" aria-label="Costo unitario en ${ctx.rotulo} de la partida ${idx + 1}" style="width:80px; text-align:right; border:1px solid var(--border-light); border-radius:3px; padding:2px;" onchange="updateBudgetItem(${idx}, 'unit_cost', this.value)">
                 </td>
                 <td style="text-align:right; font-family:var(--font-mono); font-weight:700;">
-                  $${(it.units * it.unit_cost).toFixed(2)}
+                  ${budgetFmt(it.units * it.unit_cost, ctx)}
                 </td>
                 <td style="text-align:center;">
-                  <button type="button" class="btn-secondary" style="padding:2px 6px; font-size:10px; color:#ef4444;" onclick="removeBudgetItem(${idx})">${SVG.close}</button>
+                  <button type="button" class="btn-secondary" style="padding:2px 6px; font-size:10px; color:#ef4444;" aria-label="Eliminar partida ${idx + 1}" title="Eliminar partida ${idx + 1}" onclick="removeBudgetItem(${idx})">${SVG.close}</button>
                 </td>
               </tr>
             `).join("")}
@@ -6934,7 +7734,7 @@ function renderViewBudget() {
           <tfoot>
             <tr style="background:#f8fafc; font-weight:800;">
               <td colspan="3" style="text-align:right; font-size:12px;">TOTAL PRESUPUESTO PUESTA EN MARCHA:</td>
-              <td style="text-align:right; font-family:var(--font-mono); font-size:14px; color:var(--color-primary);">$${total.toFixed(2)} USD</td>
+              <td style="text-align:right; font-family:var(--font-mono); font-size:14px; color:var(--color-primary);">${budgetFmt(total, ctx, true)}</td>
               <td></td>
             </tr>
           </tfoot>
@@ -6946,7 +7746,12 @@ function renderViewBudget() {
 
 function updateBudgetItem(idx, field, val) {
   if (field === "units" || field === "unit_cost") {
-    state.budget[idx][field] = parseFloat(val) || 0;
+    let numero = parseFloat(val) || 0;
+    const ctx = budgetCurrency();
+    if (field === "unit_cost" && ctx.code === "NIO" && ctx.rate > 0) {
+      numero = numero / ctx.rate;
+    }
+    state.budget[idx][field] = numero;
   } else {
     state.budget[idx][field] = val;
   }
@@ -6978,7 +7783,7 @@ const DEFAULT_SHOT_PLAN = [
   { id: "a3_par", acto: "Acto III", label: "Pivotes y toma de proveedor con costo real" },
   { id: "a4_crew", acto: "Acto IV", label: "Cierre con equipo completo en la entrada del campus" },
   { id: "branding", acto: "Extras", label: "Emblema y logos oficiales en máxima resolución" },
-  { id: "audio_vo", acto: "Extras", label: "Locución de respaldo o pista de voz (WAV/MP3)" },
+  { id: "audio_vo", acto: "Extras", label: "Locución de respaldo o pista de voz (MP4 con audio AAC)" },
   { id: "proto", acto: "Extras", label: "Prototipo web generado (captura en vivo del HTML)" }
 ];
 
@@ -7127,7 +7932,7 @@ function renderVideoStudio() {
             ${SVG.upload} Subir toma / recurso
             <input type="file" multiple accept="video/*,image/*,audio/*" style="display:none;" onchange="uploadVideoAssets(this)">
           </label>
-          <select id="video-upload-acto" onchange="setAssetUploadActo(this.value)" style="font-size:11px; padding:4px 8px; border:1px solid var(--border-light); border-radius:5px;">
+          <select id="video-upload-acto" aria-label="Acto del video al que pertenece el recurso" onchange="setAssetUploadActo(this.value)" style="font-size:11px; padding:4px 8px; border:1px solid var(--border-light); border-radius:5px;">
             ${[... new Set(DEFAULT_SHOT_PLAN.map(p => p.acto))].map(a => `<option value="${a}" ${a === _assetUploadActo ? "selected" : ""}>${a}</option>`).join("")}
           </select>
           <span style="font-size:10.5px; color:var(--text-muted);">Sube original sin recortar; la editora lo exporta a CapCut.</span>
@@ -7183,14 +7988,14 @@ function renderViewResources() {  return `
         <div class="form-group full">
           <label>Carpeta Oficial de Google Drive (Videos crudos, fotos y audios)</label>
           <div style="display:flex; gap:8px;">
-            <input type="url" id="hub-drive-url" value="${state.google_drive_url}" style="flex:1;">
+            <input type="url" id="hub-drive-url" aria-label="URL de la carpeta oficial de Google Drive" value="${state.google_drive_url}" style="flex:1;">
             <a href="${state.google_drive_url}" target="_blank" class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">Abrir Drive ${SVG.external}</a>
           </div>
         </div>
         <div class="form-group full">
           <label>Espacio de Trabajo Canva (Láminas, diapositivas y overlays del video)</label>
           <div style="display:flex; gap:8px;">
-            <input type="url" id="hub-canva-url" value="${state.canva_url}" style="flex:1;">
+            <input type="url" id="hub-canva-url" aria-label="URL del espacio de trabajo Canva" value="${state.canva_url}" style="flex:1;">
             <a href="${state.canva_url}" target="_blank" class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">Abrir Canva ${SVG.external}</a>
           </div>
         </div>
@@ -7249,7 +8054,7 @@ function renderViewResources() {  return `
               <td><strong>Documento Pautado Oficial</strong></td>
               <td><code>.DOCX</code></td>
               <td>5 secciones oficiales redactadas y validadas con límites de caracteres</td>
-              <td><a href="docs/pautado_draft.docx" download="Pautado_Borrador_Oficial.docx" class="btn-secondary" style="padding:4px 8px; font-size:11px; text-decoration:none;">Descargar Word ↓</a></td>
+              <td><button type="button" class="btn-secondary" style="padding:4px 8px; font-size:11px;" onclick="compileAndDownloadDocx()">Compilar y descargar</button></td>
             </tr>
             <tr>
               <td><strong>Presupuesto Puesta en Marcha</strong></td>
@@ -7262,6 +8067,12 @@ function renderViewResources() {  return `
               <td><code>.CSV</code></td>
               <td>Pauta para CapCut / Premiere con tiempos exactos y textos</td>
               <td><a href="/script/shotlist.csv" download class="btn-secondary" style="padding:4px 8px; font-size:11px; text-decoration:none;">Descargar CSV ↓</a></td>
+            </tr>
+            <tr>
+              <td><strong>Locución Oficial</strong></td>
+              <td><code>.MP4</code></td>
+              <td>Pista de voz en MP4 con audio AAC, sin video, ≤120 segundos</td>
+              <td><button type="button" class="btn-secondary" style="padding:4px 8px; font-size:11px;" onclick="handleNarrationDownload(event)">Descargar MP4 ↓</button></td>
             </tr>
             <tr>
               <td><strong>Guion de Locución Limpio</strong></td>
@@ -7450,7 +8261,7 @@ function renderViewCanvas() {
       </div>
       <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
         <label style="font-size:10.5px; color:var(--text-muted); font-family:var(--font-mono); font-weight:700;">PLANTILLA</label>
-        <select onchange="canvasPresetChanged(this.value)" class="ai-model-select" style="display:inline-block; min-width:200px;">
+        <select onchange="canvasPresetChanged(this.value)" class="ai-model-select" aria-label="Plantilla de Modelo Canvas" style="display:inline-block; min-width:200px;">
           ${CANVAS_PRESETS.map(p => `<option value="${p.id}" ${p.id === getCurrentCanvasPresetId() ? "selected" : ""}>${p.name}</option>`).join("")}
         </select>
         <button class="btn-secondary" style="font-size:11px; padding:4px 10px;" onclick="resetCanvasToBase()">Restablecer</button>
@@ -7479,8 +8290,470 @@ function renderViewCanvas() {
 }
 
 // ═════════════════════════════════════════════════════════════════════════════
-// 09 GUION AUDIOVISUAL (4 ACTOS, 120 SEGUNDOS) & LOCUCIÓN WAV
+// 09 GUION AUDIOVISUAL (4 ACTOS, 120 SEGUNDOS) & LOCUCIÓN MP4
 // ═════════════════════════════════════════════════════════════════════════════
+const VOICE_ENGINE_OPTIONS = {
+  chatterbox: {
+    label: "Chatterbox LatAm (recomendado)",
+    tag: "MIT · clonación · local",
+    summary: "<strong>La mejor opción para este proyecto.</strong> Es el motor de la voz que escuchaste: licencia MIT, clonación desde 5–12 s, control de emoción y un finetune oficial para español latinoamericano. Corre sin internet en CPU; en una laptop sin GPU tarda unas 7 veces el tiempo real.",
+    url: "https://huggingface.co/ResembleAI/Chatterbox-Multilingual-es-mx-latam",
+    prompt: `Actúa como ingeniero de audio de este proyecto de Rally de Innovación.
+
+OBJETIVO
+Instala y deja funcionando un motor TTS local para narrar el guion de 120 segundos en español latinoamericano. Genera el entregable final en assets/voice/narration.mp4: MP4 con audio AAC, sin video, mono, 48 kHz, 192 kbps y máximo 120 segundos.
+
+MOTOR ELEGIDO
+Chatterbox Multilingual V3, finetune oficial es-MX/LatAm de Resemble AI.
+Modelo: https://huggingface.co/ResembleAI/Chatterbox-Multilingual-es-mx-latam
+Código: https://github.com/resemble-ai/chatterbox
+Licencia: MIT.
+Por qué: acento latino, clonación zero-shot y control de emoción. En CPU tarda aproximadamente 7 veces el tiempo real; si hay GPU NVIDIA, úsala.
+
+PASOS
+1. Verifica Python 3.11, ffmpeg y al menos 4 GB libres. El modelo pesa cerca de 3 GB. Si falta ffmpeg en Windows: winget install Gyan.FFmpeg (o descarga una build estática) y comprueba ffmpeg -version.
+2. Crea y activa un entorno aislado: python -m venv .venv-voz; en PowerShell: .venv-voz\Scripts\Activate.ps1
+3. Instala: python -m pip install --upgrade pip; pip install chatterbox-tts soundfile numpy torch torchaudio
+4. Descarga el finetune completo en una sola carpeta:
+   huggingface-cli download ResembleAI/Chatterbox-Multilingual-es-mx-latam --local-dir models/latam
+   Deben quedar t3_es_mx_latam.safetensors (2.14 GB), s3gen_v3.pt (1.06 GB), grapheme_mtl_merged_expanded_v1.json, ve.pt y conds.pt. Si falta alguno, bájalo del mismo repo con --include.
+5. Carga el finetune con language_id="es". Si el loader estándar no acepta el checkpoint V3, usa este patrón: safe_open tensor por tensor para el T3, S3Gen con strict=False, MTLTokenizer y VoiceEncoder. En Windows, evita safetensors.load_file con el archivo de 2 GB; usa safe_open.
+6. Para reproducir la voz interna que escuché, no pases audio_prompt_path: carga conds.pt del pack. Para una voz propia, usa una referencia de 12 s, 24 kHz, mono, limpia y con permiso.
+7. Parámetros de la muestra que me gustó: exaggeration=0.8, cfg_weight=0.45, temperature=0.8, repetition_penalty=2.0.
+8. Une los párrafos con 0.65 s de silencio y masteriza a -16 LUFS.
+9. Convierte a MP4 AAC:
+ffmpeg -i narracion.wav -vn -c:a aac -b:a 192k -ar 48000 -ac 1 -movflags +faststart assets/voice/narration.mp4
+10. Verifica que la duración sea <=120 s y que el archivo exista.
+
+ENTREGABLE
+- assets/voice/narration.mp4
+- assets/voice/narration.wav como master de respaldo
+- un README breve con versiones, semilla y parámetros usados
+
+NO HAGAS
+- No clones la voz de una persona real sin permiso escrito.
+- No subas los pesos del modelo al repositorio.
+- No entregues MP3 ni WAV como archivo oficial.
+- No uses una voz en inglés.`
+  },
+  kokoro: {
+    label: "Kokoro 82M (CPU rápida)",
+    tag: "Apache 2.0 · sin clonación",
+    summary: "<strong>Respaldo para laptops lentas.</strong> 82 millones de parámetros, licencia Apache 2.0 y voz española aceptable. No clona voces y tiene menos control emocional, pero genera mucho más rápido que Chatterbox y casi no consume RAM.",
+    url: "https://huggingface.co/hexgrad/Kokoro-82M",
+    prompt: `Actúa como ingeniero de audio de este proyecto de Rally de Innovación.
+
+OBJETIVO
+Instala Kokoro-82M y genera la locución de 120 segundos en español latinoamericano. Entrega assets/voice/narration.mp4 (MP4 AAC, sin video, mono, 48 kHz, máximo 120 s).
+
+MOTOR
+Kokoro-82M, licencia Apache 2.0. Es el respaldo cuando el equipo no puede correr Chatterbox por RAM, CPU o tiempo.
+
+PASOS
+1. Verifica Python 3.10+ y ffmpeg.
+2. python -m venv .venv-voz
+3. pip install kokoro soundfile
+4. Genera por párrafos con:
+from kokoro import KPipeline
+pipe = KPipeline(lang_code="e")
+for _, _, audio in pipe(texto, voice="em_alex", speed=0.95):
+    guardar(audio)
+5. Voces españolas disponibles: em_alex (masculina), ef_dora (femenina), em_santa (masculina). Elige una y mantén la misma en todo el video.
+6. Une los bloques con 0.5 s de silencio, normaliza a -16 LUFS y convierte:
+ffmpeg -i narracion.wav -vn -c:a aac -b:a 192k -ar 48000 -ac 1 -movflags +faststart assets/voice/narration.mp4
+7. Verifica duración <=120 s.
+
+LIMITACIONES
+Kokoro no clona voces. Si el equipo exige una voz propia, usa Chatterbox.
+No inventes una voz de una persona real.`
+  },
+  edge: {
+    label: "Edge-TTS (nube)",
+    tag: "Gratis · requiere internet",
+    summary: "<strong>La salida más rápida si hay internet.</strong> Voces neuronales de Microsoft en español de México y Colombia. No clona, no controla emoción y envía el guion a un servicio externo; úsalo solo como respaldo o para una primera maqueta.",
+    url: "https://github.com/rany2/edge-tts",
+    prompt: `Actúa como ingeniero de audio de este proyecto de Rally de Innovación.
+
+OBJETIVO
+Genera una locución provisional en español latinoamericano con Edge-TTS y entrega assets/voice/narration.mp4 (MP4 AAC, sin video, mono, 48 kHz, máximo 120 s).
+
+ADVERTENCIA
+Edge-TTS usa un servicio en la nube de Microsoft. Requiere internet y envía el texto fuera del equipo. Úsalo como maqueta o respaldo, no como opción principal si el guion es confidencial.
+
+PASOS
+1. Verifica Python y ffmpeg.
+2. python -m venv .venv-voz
+3. pip install edge-tts
+4. Voces recomendadas: es-MX-JorgeNeural (masculina) o es-MX-DaliaNeural (femenina). También puedes probar es-CO-GonzaloNeural.
+5. Genera:
+edge-tts --voice es-MX-JorgeNeural --file script/narration.txt --write-media narration.mp3
+6. Ajusta la velocidad si hace falta con --rate=-4%.
+7. Convierte:
+ffmpeg -i narration.mp3 -vn -c:a aac -b:a 192k -ar 48000 -ac 1 -movflags +faststart assets/voice/narration.mp4
+8. Verifica duración <=120 s y que la voz elegida se mantenga en todo el video.
+
+LIMITACIONES
+Sin clonación, sin control fino de emoción y dependencia de internet. No uses una voz que imite a una persona real.`
+  },
+  xtts: {
+    label: "XTTS-v2 (no comercial)",
+    tag: "No comercial · legado",
+    summary: "<strong>Solo si aceptas su licencia.</strong> Clona con 6 s de audio y entiende español, pero la Coqui Public Model License prohíbe uso comercial. Para un rally académico puede servir; para un emprendimiento, Chatterbox es la ruta limpia.",
+    url: "https://huggingface.co/coqui/XTTS-v2",
+    prompt: `Actúa como ingeniero de audio de este proyecto de Rally de Innovación.
+
+OBJETIVO
+Evalúa XTTS-v2 como motor de locución y, si el equipo acepta su licencia, genera assets/voice/narration.mp4 (MP4 AAC, sin video, mono, 48 kHz, máximo 120 s).
+
+LICENCIA
+XTTS-v2 usa la Coqui Public Model License. No permite uso comercial. Si el proyecto puede convertirse en empresa, no lo uses: elige Chatterbox (MIT). Documenta la decisión.
+
+PASOS
+1. Verifica Python 3.10–3.11, ffmpeg y 4 GB libres.
+2. python -m venv .venv-voz
+3. pip install TTS
+4. Descarga el modelo:
+from TTS.api import TTS
+tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2")
+5. Genera con una referencia de 6–12 s, limpia y con permiso:
+tts.tts_to_file(text=texto, speaker_wav="referencia.wav", language="es", file_path="narracion.wav")
+6. Une párrafos con 0.5 s de silencio, normaliza a -16 LUFS y convierte:
+ffmpeg -i narracion.wav -vn -c:a aac -b:a 192k -ar 48000 -ac 1 -movflags +faststart assets/voice/narration.mp4
+7. Verifica duración <=120 s.
+
+NO HAGAS
+- No clones una voz real sin permiso.
+- No uses XTTS-v2 en un producto comercial.
+- No entregues MP3 como archivo oficial.`
+  }
+};
+
+const VOICE_PRESETS = {
+  proyecto: {
+    label: "Hidro Vigía · locución final",
+    short: "Locución del proyecto",
+    src: "/assets/voice/narration.mp4",
+    meta: "77.8 s · MP4 AAC · voz interna · énfasis 0.80 / ritmo 0.45 · semilla 7",
+    params: "exaggeration=0.8, cfg_weight=0.45, temperature=0.8, repetition_penalty=2.0, seed=7"
+  },
+  interna: {
+    label: "Voz interna · muestra completa",
+    short: "Voz interna estándar",
+    src: "/assets/voice/previews/chatterbox_interna.mp3",
+    meta: "62 s · MP3 64 kbps · voz de fábrica, sin clonar",
+    params: "exaggeration=0.8, cfg_weight=0.45, temperature=0.8, repetition_penalty=2.0, seed=7"
+  },
+  expresiva: {
+    label: "Voz interna · muestra expresiva",
+    short: "Voz interna expresiva",
+    src: "/assets/voice/previews/chatterbox_interna_e080_c045.mp3",
+    meta: "9 s · MP3 64 kbps · la variante más expresiva",
+    params: "exaggeration=0.8, cfg_weight=0.45, temperature=0.8, repetition_penalty=2.0, seed=7"
+  }
+};
+
+function getVoicePresetData() {
+  const select = document.getElementById("voice-preset-select");
+  return VOICE_PRESETS[(select && select.value) || state.voice_preset] || VOICE_PRESETS.proyecto;
+}
+
+function renderVoiceEnginePanel() {
+  const selectedId = VOICE_ENGINE_OPTIONS[state.voice_engine] ? state.voice_engine : "chatterbox";
+  const selected = VOICE_ENGINE_OPTIONS[selectedId];
+  const options = Object.entries(VOICE_ENGINE_OPTIONS)
+    .map(([id, data]) => `<option value="${id}" ${id === selectedId ? "selected" : ""}>${data.label}</option>`)
+    .join("");
+  const presetId = VOICE_PRESETS[state.voice_preset] ? state.voice_preset : "proyecto";
+  const preset = VOICE_PRESETS[presetId];
+  const presetOptions = Object.entries(VOICE_PRESETS)
+    .map(([id, data]) => `<option value="${id}" ${id === presetId ? "selected" : ""}>${data.label}</option>`)
+    .join("");
+
+  return `
+    <section class="voice-engine" aria-labelledby="voice-engine-title">
+      <div class="voice-engine-head">
+        <div>
+          <h2 id="voice-engine-title">Motor y preset de voz</h2>
+          <p>Este proyecto ya incluye una locución real en <strong>Chatterbox Multilingual es-MX/LatAm</strong>. Escúchala, guárdala como preset y, si te gusta, instala el mismo motor con un clic. El entregable oficial es MP4 con audio AAC.</p>
+        </div>
+        <span class="rubric-tag">Preset incluido · MP4 AAC</span>
+      </div>
+
+      <div class="voice-preset">
+        <div class="voice-preset-copy">
+          <span class="voice-preview-label">Preset de voz</span>
+          <strong id="voice-preset-name">${preset.label}</strong>
+          <p id="voice-preset-meta">${preset.meta}</p>
+        </div>
+        <div class="voice-preset-controls">
+          <label for="voice-preset-select">
+            <span>Escuchar preset</span>
+            <select id="voice-preset-select" onchange="updateVoicePresetUI()">${presetOptions}</select>
+          </label>
+          <button type="button" class="btn-primary" onclick="copyVoicePresetInstall()">Instalar todo con mi IA</button>
+          <button type="button" class="btn-secondary" onclick="downloadVoicePreset()">Descargar preset .json</button>
+        </div>
+        <audio id="voice-preset-audio" controls preload="metadata" src="${preset.src}"></audio>
+      </div>
+
+      <details class="voice-engine-details voice-own-voice">
+        <summary>¿Quieres poner tu propia voz? Tu IA te explica cómo</summary>
+        <p>Sí. Puedes clonar tu voz con 10–20 segundos de audio limpio, o afinar el modelo con varias muestras para un resultado más estable. La clonación es rápida; el entrenamiento fino requiere más audio y tiempo. Pídele a tu IA que te explique cuál te conviene y que ejecute los pasos contigo.</p>
+        <button type="button" class="btn-secondary" onclick="copyOwnVoiceGuide()">Copiar guía para usar mi voz</button>
+      </details>
+
+      <div class="voice-engine-controls">
+        <label for="voice-engine-select">
+          <span>Motor para tu IA</span>
+          <select id="voice-engine-select" onchange="updateVoiceEngineUI()">${options}</select>
+        </label>
+        <button type="button" class="btn-primary" onclick="copyVoiceEnginePrompt()">Copiar prompt para mi IA</button>
+        <button type="button" class="btn-secondary" onclick="downloadVoiceEngineGuide()">Descargar guía .md</button>
+      </div>
+
+      <div class="voice-engine-tagline"><span class="rubric-tag" id="voice-engine-tag">${selected.tag}</span></div>
+
+      <div class="voice-engine-summary" id="voice-engine-summary">${selected.summary}</div>
+      <p class="voice-engine-summary" style="margin-top:6px;">
+        <a href="${selected.url}" target="_blank" rel="noopener" id="voice-engine-link">Ver modelo y licencia</a>
+      </p>
+
+      <details class="voice-engine-details">
+        <summary>Ver el prompt completo que recibirá tu IA</summary>
+        <pre id="voice-engine-prompt-preview">${escapeHtml(selected.prompt)}</pre>
+      </details>
+
+      <p class="voice-engine-note">El preset del proyecto ya está generado y se reproduce aquí. Las otras dos muestras son MP3 de referencia. El archivo que se entrega al jurado es <strong>assets/voice/narration.mp4</strong> (MP4 con audio AAC, sin video). “Instalar todo” copia un prompt: la instalación la ejecuta tu IA en tu equipo.</p>
+    </section>
+  `;
+}
+
+function getVoiceEngineData() {
+  const select = document.getElementById("voice-engine-select");
+  return VOICE_ENGINE_OPTIONS[(select && select.value) || "chatterbox"] || VOICE_ENGINE_OPTIONS.chatterbox;
+}
+
+function updateVoiceEngineUI() {
+  const data = getVoiceEngineData();
+  const summary = document.getElementById("voice-engine-summary");
+  const tag = document.getElementById("voice-engine-tag");
+  const link = document.getElementById("voice-engine-link");
+  const prompt = document.getElementById("voice-engine-prompt-preview");
+  const select = document.getElementById("voice-engine-select");
+
+  if (select && state.voice_engine !== select.value) {
+    state.voice_engine = select.value;
+    saveState();
+  }
+  if (summary) summary.innerHTML = data.summary;
+  if (tag) tag.textContent = data.tag;
+  if (link) link.href = data.url;
+  if (prompt) prompt.textContent = data.prompt;
+}
+
+function updateVoicePresetUI() {
+  const data = getVoicePresetData();
+  const select = document.getElementById("voice-preset-select");
+  const name = document.getElementById("voice-preset-name");
+  const meta = document.getElementById("voice-preset-meta");
+  const audio = document.getElementById("voice-preset-audio");
+
+  if (select && state.voice_preset !== select.value) {
+    state.voice_preset = select.value;
+    saveState();
+  }
+  if (name) name.textContent = data.label;
+  if (meta) meta.textContent = data.meta;
+  if (audio && audio.getAttribute("src") !== data.src) {
+    audio.pause();
+    audio.setAttribute("src", data.src);
+    audio.load();
+  }
+}
+
+function buildVoicePresetInstallPrompt() {
+  const preset = getVoicePresetData();
+  return `Actúa como ingeniero de audio de este proyecto de Rally de Innovación.
+
+Quiero dejar instalado y reproducible el mismo preset de voz que ya trae el proyecto "${state.project_name || "actual"}".
+
+${VOICE_ENGINE_OPTIONS.chatterbox.prompt}
+
+PRESET EXACTO A REPRODUCIR
+- Voz: interna del finetune, sin audio_prompt_path; carga conds.pt del pack.
+- Parámetros: ${preset.params}.
+- Pausas: 0.75 s entre párrafos.
+- Master: -16 LUFS integrado, pico real -1.5 dBFS.
+- Referencia audible incluida: ${preset.src} (${preset.meta}).
+- Texto de referencia: script/narration.txt.
+- Entregable: assets/voice/narration.mp4 (MP4 AAC, sin video, mono, 48 kHz, 192 kbps, ≤120 s).
+
+Compara la referencia audible con tu resultado: mismo timbre, misma velocidad y pausas similares. Si no puedes igualar la voz interna, entrega el audio más cercano y documenta la diferencia.`;
+}
+
+function copyVoiceText(text, done, fail) {
+  const fallback = () => {
+    const area = document.createElement("textarea");
+    area.value = text;
+    area.setAttribute("readonly", "");
+    area.style.position = "fixed";
+    area.style.opacity = "0";
+    document.body.appendChild(area);
+    area.select();
+    let copied = false;
+    try { copied = document.execCommand("copy"); } catch (e) {}
+    area.remove();
+    copied ? done() : fail();
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(done).catch(fallback);
+  } else {
+    fallback();
+  }
+}
+
+function copyVoicePresetInstall() {
+  copyVoiceText(
+    buildVoicePresetInstallPrompt(),
+    () => showToast("Instalación completa copiada. Pégala en tu IA: instalará el motor y reproducirá este mismo preset."),
+    () => showToast("No se pudo copiar automáticamente. Descarga el preset .json y pásalo a tu IA.")
+  );
+}
+
+function buildOwnVoicePrompt() {
+  return `Actúa como ingeniero de audio y entrenador de voz para el proyecto "${state.project_name || "actual"}".
+
+OBJETIVO
+Explícame y ejecuta, paso a paso, cómo poner mi propia voz en la locución del proyecto. Quiero entender la diferencia entre clonar y entrenar, y elegir la ruta correcta según el tiempo y el equipo disponible.
+
+1. CONSENTIMIENTO Y LÍMITES
+- La voz debe ser mía o tener permiso escrito de la persona.
+- No imites voces de terceros, famosos ni menores.
+- Explícame qué se guarda, dónde y cómo borrarlo.
+
+2. GRABACIÓN
+- Para clonación zero-shot: 10–20 s limpios, una sola persona, sin música, eco ni ruido, 24 kHz o más, mono.
+- Para afinar el modelo: 5–30 min de audio con transcripciones exactas, misma micrófono y tono.
+- Dame un guion de grabación y una lista de verificación.
+
+3. LIMPIEZA
+- Normaliza a -16 LUFS, elimina silencios largos y revisa que no haya clipping.
+- Si hace falta, recomienda una herramienta local y explica el comando.
+
+4. CLONACIÓN CON CHATTERBOX (RÁPIDA)
+- Usa el finetune ResembleAI/Chatterbox-Multilingual-es-mx-latam y language_id="es".
+- Pasa mi muestra como audio_prompt_path.
+- Parámetros de partida: exaggeration=0.8, cfg_weight=0.45, temperature=0.8, repetition_penalty=2.0.
+- Genera una prueba corta y compárala con mi voz real.
+
+5. ENTRENAMIENTO O AFINADO (OPCIONAL, MÁS TRABAJO)
+- Explícame si de verdad hace falta afinar o si la clonación basta.
+- Si conviene, describe el dataset, las transcripciones, el tiempo estimado, los requisitos de GPU y cómo evaluar el resultado.
+- No prometas calidad de estudio sin datos suficientes.
+
+6. ENTREGABLE
+- Genera assets/voice/narration.mp4 (MP4 AAC, sin video, mono, 48 kHz, 192 kbps, ≤120 s).
+- Masteriza a -16 LUFS y pico real -1.5 dBFS.
+- Deja el texto en script/narration.txt y documenta la muestra usada.
+
+Empieza preguntándome qué ruta quiero: clonar rápido o entrenar. Luego guíame con comandos concretos para Windows.`;
+}
+
+function copyOwnVoiceGuide() {
+  copyVoiceText(
+    buildOwnVoicePrompt(),
+    () => showToast("Guía de voz propia copiada. Tu IA te explicará cómo grabarla, clonarla o entrenarla."),
+    () => showToast("No se pudo copiar automáticamente. Abre el prompt y cópialo a mano.")
+  );
+}
+
+function downloadVoicePreset() {
+  const preset = getVoicePresetData();
+  const slug = String(state.project_name || "proyecto")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "") || "proyecto";
+  const payload = {
+    name: preset.label,
+    project: state.project_name || "",
+    engine: "Chatterbox Multilingual V3 · finetune es-MX/LatAm",
+    model: "ResembleAI/Chatterbox-Multilingual-es-mx-latam",
+    license: "MIT",
+    voice: "interna (conds.pt, sin audio_prompt_path)",
+    params: preset.params,
+    sample: preset.src,
+    text_reference: "script/narration.txt",
+    deliverable: "assets/voice/narration.mp4",
+    format: "MP4 con audio AAC, sin video, mono, 48 kHz, 192 kbps, ≤120 s",
+    generated_at: new Date().toISOString()
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `preset_voz_${slug}.json`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  showToast("Preset descargado. Tu IA puede instalarlo y reproducirlo.");
+}
+
+function copyVoiceEnginePrompt() {
+  const data = getVoiceEngineData();
+  const done = () => showToast("Prompt copiado. Pégalo en tu IA y pídele que instale el motor y genere assets/voice/narration.mp4.");
+  const fail = () => showToast("No se pudo copiar automáticamente. Abre el prompt completo y cópialo a mano.");
+
+  const fallback = () => {
+    const area = document.createElement("textarea");
+    area.value = data.prompt;
+    area.setAttribute("readonly", "");
+    area.style.position = "fixed";
+    area.style.opacity = "0";
+    document.body.appendChild(area);
+    area.select();
+    let copied = false;
+    try { copied = document.execCommand("copy"); } catch (e) {}
+    area.remove();
+    copied ? done() : fail();
+  };
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(data.prompt).then(done).catch(fallback);
+  } else {
+    fallback();
+  }
+}
+
+function downloadVoiceEngineGuide() {
+  const data = getVoiceEngineData();
+  const header = `# Instalar el motor de voz · ${data.label}
+
+${data.tag}
+
+${data.summary.replace(/<[^>]+>/g, "")}
+
+El entregable oficial es \`assets/voice/narration.mp4\`: MP4 con audio AAC, sin video, mono, 48 kHz y máximo 120 segundos. El preset del proyecto ya está generado en ese archivo; las otras dos muestras del panel son MP3 de referencia.
+
+---
+
+## Prompt para tu IA
+
+`;
+  const blob = new Blob([header + data.prompt], { type: "text/markdown;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "instalar_motor_de_voz.md";
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  showToast("Guía descargada. Pásasela a tu IA junto con el guion.");
+}
+
 function renderViewScript() {
   const wordsA1 = (state.script.acto1 || "").trim().split(/\s+/).filter(Boolean).length;
   const wordsA2 = (state.script.acto2 || "").trim().split(/\s+/).filter(Boolean).length;
@@ -7494,27 +8767,28 @@ function renderViewScript() {
     <div class="phase-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:14px; margin-bottom:24px; padding-bottom:14px; border-bottom:1px solid var(--border-light);">
       <div>
         <h1 class="phase-title">10 · Guion Audiovisual <span class="phase-title-accent">120 Segundos (PAS-V)</span></h1>
-        <p class="phase-subtitle">Calibración oral a 135 ppm: ${words} palabras (~${estSeconds} segundos / 120s reglamentarios).</p>
+        <p class="phase-subtitle" id="script-subtitle">Calibración oral a 135 ppm: ${words} palabras (~${estSeconds} segundos / 120s reglamentarios).</p>
       </div>
       <div style="display:flex; gap:8px;">
         <button class="btn-primary" onclick="saveScript()">Guardar Guion</button>
-        <a href="/assets/voice/narration.wav" download class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
-          ${SVG.download} Descargar Audio Locución (.wav)
+        <button class="btn-secondary" onclick="document.getElementById('voice-engine-title').scrollIntoView({behavior:'smooth',block:'start'})" title="Elige el motor de voz y copia el prompt de instalación para tu IA">Motor de voz</button>
+        <a href="/assets/voice/narration.mp4" download id="narration-download-link" onclick="return handleNarrationDownload(event)" class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;" title="Descarga la locución en MP4 (AAC) si ya fue generada para este proyecto">
+          ${SVG.download} Descargar Locución (.mp4)
         </a>
       </div>
     </div>
 
     <!-- Medidor PAS-V Global -->
-    <div style="background:${words > 280 ? '#FEF2F2' : words >= 230 ? '#F0FDF4' : '#F8FAFC'}; border:1px solid ${words > 280 ? '#FCA5A5' : words >= 230 ? '#86EFAC' : '#E2E8F0'}; border-radius:8px; padding:10px 14px; margin-bottom:16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+    <div id="script-global-meter" style="background:${words > 280 ? '#FEF2F2' : words >= 230 ? '#F0FDF4' : '#F8FAFC'}; border:1px solid ${words > 280 ? '#FCA5A5' : words >= 230 ? '#86EFAC' : '#E2E8F0'}; border-radius:8px; padding:10px 14px; margin-bottom:16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
       <div>
-        <div style="font-weight:800; font-size:12.5px; color:${words > 280 ? '#DC2626' : words >= 230 ? '#15803D' : '#0F172A'};">
+        <div id="script-global-copy" style="font-weight:800; font-size:12.5px; color:${words > 280 ? '#DC2626' : words >= 230 ? '#15803D' : '#0F172A'};">
           ${words > 280 ? `[EXCESO DE PALABRAS] ${words}/280 máx (~${estSeconds}s). Riesgo de superar 120s o dicción ininteligible.` : words >= 230 ? `[CADENCIA PAS-V ÓPTIMA] ${words}/280 palabras (~${estSeconds}s a 135 ppm).` : `[GUION EN CONSTRUCCIÓN] ${words}/280 palabras (Aceptación: 120–280 palabras totales).`}
         </div>
         <div style="font-size:11px; color:#64748B; margin-top:2px;">
           Cuotas recomendadas: Acto I (45 pal.) + Acto II (90 pal.) + Acto III (75 pal.) + Acto IV (55 pal.) = ~265 palabras totales.
         </div>
       </div>
-      <span style="font-family:var(--font-mono); font-size:12px; font-weight:900; background:#0F172A; color:#FFF; padding:4px 10px; border-radius:6px;">
+      <span id="script-global-seconds" style="font-family:var(--font-mono); font-size:12px; font-weight:900; background:#0F172A; color:#FFF; padding:4px 10px; border-radius:6px;">
         ${estSeconds}s / 120s
       </span>
     </div>
@@ -7533,7 +8807,7 @@ function renderViewScript() {
             <span id="lock-tag-script-acto1"></span>
           </div>
           <div style="display:flex; align-items:center; gap:8px;">
-            <span style="font-family:var(--font-mono); font-size:11px; font-weight:800; color:${wordsA1 > 55 ? '#DC2626' : wordsA1 > 0 ? '#059669' : '#64748B'};">${wordsA1}/45 pal.</span>
+            <span id="script-counter-acto1" style="font-family:var(--font-mono); font-size:11px; font-weight:800; color:${wordsA1 > 55 ? '#DC2626' : wordsA1 > 0 ? '#059669' : '#64748B'};">${wordsA1}/45 pal.</span>
             <span class="rubric-tag">IMPACTO SOCIAL + PITCH</span>
             <span style="font-size:10.5px; color:${wordsA1 > 0 ? '#ef4444' : '#64748B'}; font-weight:700;">PROHIBIDO LOGOS</span>
           </div>
@@ -7555,7 +8829,7 @@ function renderViewScript() {
             <span id="lock-tag-script-acto2"></span>
           </div>
           <div style="display:flex; align-items:center; gap:8px;">
-            <span style="font-family:var(--font-mono); font-size:11px; font-weight:800; color:${wordsA2 > 105 ? '#DC2626' : wordsA2 > 0 ? '#059669' : '#64748B'};">${wordsA2}/90 pal.</span>
+            <span id="script-counter-acto2" style="font-family:var(--font-mono); font-size:11px; font-weight:800; color:${wordsA2 > 105 ? '#DC2626' : wordsA2 > 0 ? '#059669' : '#64748B'};">${wordsA2}/90 pal.</span>
             <span class="rubric-tag">30 PTS INNOVACIÓN + VIABILIDAD</span>
           </div>
         </div>
@@ -7576,7 +8850,7 @@ function renderViewScript() {
             <span id="lock-tag-script-acto3"></span>
           </div>
           <div style="display:flex; align-items:center; gap:8px;">
-            <span style="font-family:var(--font-mono); font-size:11px; font-weight:800; color:${wordsA3 > 85 ? '#DC2626' : wordsA3 > 0 ? '#059669' : '#64748B'};">${wordsA3}/75 pal.</span>
+            <span id="script-counter-acto3" style="font-family:var(--font-mono); font-size:11px; font-weight:800; color:${wordsA3 > 85 ? '#DC2626' : wordsA3 > 0 ? '#059669' : '#64748B'};">${wordsA3}/75 pal.</span>
             <span class="rubric-tag">20 PTS PREFACTIBILIDAD (CAUSA #1 DESCARTE)</span>
           </div>
         </div>
@@ -7597,7 +8871,7 @@ function renderViewScript() {
             <span id="lock-tag-script-acto4"></span>
           </div>
           <div style="display:flex; align-items:center; gap:8px;">
-            <span style="font-family:var(--font-mono); font-size:11px; font-weight:800; color:${wordsA4 > 65 ? '#DC2626' : wordsA4 > 0 ? '#059669' : '#64748B'};">${wordsA4}/55 pal.</span>
+            <span id="script-counter-acto4" style="font-family:var(--font-mono); font-size:11px; font-weight:800; color:${wordsA4 > 65 ? '#DC2626' : wordsA4 > 0 ? '#059669' : '#64748B'};">${wordsA4}/55 pal.</span>
             <span class="rubric-tag">INTEGRACIÓN 5 CRITERIOS + ODS</span>
           </div>
         </div>
@@ -7609,6 +8883,8 @@ function renderViewScript() {
           oninput="handleScriptInput('acto4', this)">${state.script.acto4 || ""}</textarea>
       </div>
     </div>
+
+    ${renderVoiceEnginePanel()}
     </div>
   `;
 }
@@ -7617,6 +8893,70 @@ function handleScriptInput(key, el) {
   state.script[key] = el.value;
   broadcastFieldChange("script", key, el.value);
   saveState();
+  updateScriptMeters();
+}
+
+function updateScriptMeters() {
+  const quotas = { acto1: 45, acto2: 90, acto3: 75, acto4: 55 };
+  const redLines = { acto1: 55, acto2: 105, acto3: 85, acto4: 65 };
+  let words = 0;
+
+  Object.keys(quotas).forEach(key => {
+    const n = (state.script[key] || "").trim().split(/\s+/).filter(Boolean).length;
+    words += n;
+    const el = document.getElementById(`script-counter-${key}`);
+    if (el) {
+      el.textContent = `${n}/${quotas[key]} pal.`;
+      el.style.color = n > redLines[key] ? "#DC2626" : n > 0 ? "#059669" : "#64748B";
+    }
+  });
+
+  const seconds = Math.round((words / 135) * 60);
+  const over = words > 280;
+  const good = words >= 230;
+
+  const subtitle = document.getElementById("script-subtitle");
+  if (subtitle) {
+    subtitle.textContent = `Calibración oral a 135 ppm: ${words} palabras (~${seconds} segundos / 120s reglamentarios).`;
+  }
+
+  const meter = document.getElementById("script-global-meter");
+  if (meter) {
+    meter.style.background = over ? "#FEF2F2" : good ? "#F0FDF4" : "#F8FAFC";
+    meter.style.borderColor = over ? "#FCA5A5" : good ? "#86EFAC" : "#E2E8F0";
+  }
+
+  const copy = document.getElementById("script-global-copy");
+  if (copy) {
+    copy.style.color = over ? "#DC2626" : good ? "#15803D" : "#0F172A";
+    copy.textContent = over
+      ? `[EXCESO DE PALABRAS] ${words}/280 máx (~${seconds}s). Riesgo de superar 120s o dicción ininteligible.`
+      : good
+        ? `[CADENCIA PAS-V ÓPTIMA] ${words}/280 palabras (~${seconds}s a 135 ppm).`
+        : `[GUION EN CONSTRUCCIÓN] ${words}/280 palabras (Aceptación: 120–280 palabras totales).`;
+  }
+
+  const secondsEl = document.getElementById("script-global-seconds");
+  if (secondsEl) secondsEl.textContent = `${seconds}s / 120s`;
+}
+
+function handleNarrationDownload(event) {
+  if (event) event.preventDefault();
+  const url = "/assets/voice/narration.mp4";
+  fetch(url, { cache: "no-store" })
+    .then(res => {
+      if (!res.ok) throw new Error("missing");
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "narration.mp4";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    })
+    .catch(() => {
+      showToast("Aún no hay locución generada. Genera la tarea de voz en Despacho Multi-IA y guarda el audio como /assets/voice/narration.mp4 (MP4 con audio AAC).");
+    });
+  return false;
 }
 
 function saveScript() {
@@ -7854,6 +9194,18 @@ function toggleGuardrail(key, event) {
   } else if (activeTab === "timeline") {
     renderTab("timeline");
   }
+
+  const verified = Object.values(state.guardrails || {}).filter(Boolean).length;
+  const total = GUARDRAILS_DEFINITIONS.length;
+  const counter = document.getElementById("guardrail-verified-count");
+  if (counter) {
+    counter.textContent = `${verified} / ${total} Verificados`;
+    counter.style.background = verified === total ? "#dcfce7" : "#eff6ff";
+    counter.style.color = verified === total ? "#166534" : "#003366";
+  }
+  const subnavCounter = document.getElementById("timeline-subnav-verified");
+  if (subnavCounter) subnavCounter.textContent = `${verified}/${total}`;
+
   updateInspector();
 }
 
@@ -8000,7 +9352,7 @@ function renderViewTimeline() {
           <div>
             <div style="display:flex; align-items:center; gap:8px;">
               <h3 style="font-size:14px; font-weight:700; color:#0f172a; margin:0;">Checklist de Entrega Oficial</h3>
-              <span class="timeline-subnav-count" style="background:${verifiedCount === GUARDRAILS_DEFINITIONS.length ? '#dcfce7; color:#166534;' : '#eff6ff; color:#003366;'}">
+              <span id="guardrail-verified-count" class="timeline-subnav-count" style="background:${verifiedCount === GUARDRAILS_DEFINITIONS.length ? '#dcfce7; color:#166534;' : '#eff6ff; color:#003366;'}">
                 ${verifiedCount} / ${GUARDRAILS_DEFINITIONS.length} Verificados
               </span>
             </div>
@@ -8209,7 +9561,7 @@ function renderViewTimeline() {
     <div class="timeline-subnav">
       <button class="timeline-subnav-btn ${currentSubtab === 'checklist' ? 'active' : ''}" onclick="switchTimelineSubtab('checklist')">
         <span>Checklist de Requisitos</span>
-        <span class="timeline-subnav-count">${verifiedCount}/${GUARDRAILS_DEFINITIONS.length}</span>
+        <span id="timeline-subnav-verified" class="timeline-subnav-count">${verifiedCount}/${GUARDRAILS_DEFINITIONS.length}</span>
       </button>
       <button class="timeline-subnav-btn ${currentSubtab === 'schedule' ? 'active' : ''}" onclick="switchTimelineSubtab('schedule')">
         <span>Cronograma & IA</span>

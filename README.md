@@ -2,15 +2,16 @@
 
 [![Plataforma](https://img.shields.io/badge/Plataforma-Web%20Local%20%7C%20Zero%20Dependency-0866F5.svg)](#)
 [![Certámenes](https://img.shields.io/badge/Certamen-Rally%20Latam%20%2828h%29%20%7C%20Nicaragua%20Innova%20%2824h%29-1D4ED8.svg)](#)
-[![Graphify Brain](https://img.shields.io/badge/Cerebro%20Graphify-177%20Nodos%20%7C%20205%20Aristas-6366F1.svg)](#cerebro-de-conocimiento-graphify-knowledge-graph)
+[![Graphify Brain](https://img.shields.io/badge/Cerebro%20Graphify-420%20Nodos%20%7C%20732%20Aristas-6366F1.svg)](#cerebro-de-conocimiento-en-qué-se-basa-el-sistema)
 [![Diseño](https://img.shields.io/badge/Diseño-Precisión%20Táctica%20%7C%20Zero%20Emojis-0D1B35.svg)](#)
+[![Agentes](https://img.shields.io/badge/IA-Equipo%20de%20Especialistas%20%7C%20Guardia%20de%20GPU-16a34a.svg)](docs/EQUIPO_AGENTES.md)
 
 > **Workbench interactivo secuencial para guiar, estructurar y optimizar el desempeño metodológico de equipos universitarios en maratones de innovación de 24 y 28 horas continuas (Rally Latinoamericano de Innovación y Rally Nacional Nicaragua Innova).**
 
 ---
 
 <p align="center">
-  <img src="rally_studio_logo.jpg" alt="Rally Studio Workbench - Misión de Innovación" width="900" />
+  <img src="site/rally_studio_logo.svg" alt="Rally Studio Workbench - Misión de Innovación" width="420" />
 </p>
 <p align="center"><em>Figura 1: Rally Studio — Workbench de Innovación: Sistema de dirección táctica, deliberación colaborativa y calibración de rúbricas para certámenes oficiales.</em></p>
 
@@ -20,28 +21,34 @@
 - [Instalación, uso y despliegue](#instalación-uso-y-despliegue)
 - [¿Qué es Rally Studio?](#qué-es-rally-studio)
 - [Cerebro de Conocimiento: En qué se basa el sistema](#cerebro-de-conocimiento-en-qué-se-basa-el-sistema)
+- [Informe de sustento de la investigación](#informe-de-sustento-de-la-investigación)
 - [¿Cómo funciona Rally Studio? (Arquitectura y Flujo)](#cómo-funciona-rally-studio-arquitectura-y-flujo)
 - [Módulos Principales del Workbench](#módulos-principales-del-workbench)
 - [Calibración Matemática de Rúbricas Oficiales](#calibración-matemática-de-rúbricas-oficiales)
 - [Resiliencia en Redes Universitarias Hostiles](#resiliencia-en-redes-universitarias-hostiles)
 - [Instalación y Uso Rápido (Windows)](#instalación-y-uso-rápido-windows)
 - [IA Gratis Local (Opcional, Recomendado)](#ia-gratis-local-opcional-recomendado)
+- [Equipo de Agentes Especialistas (orquestación)](#equipo-de-agentes-especialistas-orquestación)
 
 ---
 
 ## Instalación, uso y despliegue
 
 **Guía completa: [`docs/INSTALACION_Y_DESPLIEGUE.md`](docs/INSTALACION_Y_DESPLIEGUE.md)**
+**Manual de las IAs (OpenCode, Antigravity, MCPs, configuración): [`docs/MANUAL_IA.md`](docs/MANUAL_IA.md)**
 
 | Quiero… | Atajo |
 |---|---|
+| Configurar OpenCode o Antigravity paso a paso | [`docs/MANUAL_IA.md`](docs/MANUAL_IA.md) |
+| Compartir el proyecto en vivo con el equipo | `python scripts/crear_proyecto.py --project mi-grupo --name "Ana"` y repartir un enlace por persona ([§9.1](docs/INSTALACION_Y_DESPLIEGUE.md#91-compartir-el-proyecto-con-el-equipo)) |
 | Instalar y correr en mi PC (completo) | `pip install -r requirements.txt` → doble clic en **`Iniciar Rally.bat`** → <http://localhost:8000/dashboard/> |
 | Conectar IA gratis | Instala OpenCode (`npm i -g opencode-ai` + `opencode auth login`) o usa un endpoint OpenAI-compatible ([`AUTO_IA.md`](AUTO_IA.md)) |
+| Ver cómo el sistema monta un equipo de agentes especialistas | [`docs/EQUIPO_AGENTES.md`](docs/EQUIPO_AGENTES.md) |
 | Publicar la interfaz en GitHub Pages | Activar **Settings → Pages → Source: GitHub Actions** (workflow `.github/workflows/pages.yml` incluido) |
 | Desplegar el sistema completo (con IA) en un servidor | [`docs/INSTALACION_Y_DESPLIEGUE.md` §9](docs/INSTALACION_Y_DESPLIEGUE.md) |
 | Subir esto a GitHub | [`docs/INSTALACION_Y_DESPLIEGUE.md` §10](docs/INSTALACION_Y_DESPLIEGUE.md) |
 
-> **Dos modos:** en local tienes todo (telemetría, OCR, IA automática, colaboración en vivo).
+> **Dos modos:** en local tienes todo (telemetría, OCR, IA automática, colaboración en vivo con invitaciones).
 > En GitHub Pages solo la interfaz (los datos se guardan en tu navegador).
 
 ---
@@ -56,31 +63,77 @@ Rally Studio sustituye la improvisación por un **flujo estricto guiado** que ll
 
 ---
 
+## Equipo de Agentes Especialistas (orquestación)
+
+> **Rally Studio no es un asistente: es un equipo.** Un **director** despacha
+> especialistas que trabajan **a la vez** sobre los mismos contratos de
+> producción — y una **guardia técnica de GPU/CPU/RAM** garantiza que los
+> procesos pesados (Blender, ffmpeg, TTS, grabación) no choquen por recursos.
+
+- **Cada pieza se justifica sola**: existe una *toma* del video (contrato YAML)
+  que la pide **y** un criterio de la **rúbrica** que sostiene. Nada se produce
+  "porque sí"; nada de cubos hechos "sensor".
+- **Guionista y modeler se hablan por contrato**, no por memoria: la lista de
+  tomas (`shots/*.yaml` → `shotlist.csv`) dice qué pieza entra en cámara, en
+  qué acto y por cuántos segundos; la lista de materiales (`budget/bom.csv`)
+  da componentes reales, dimensiones en mm y precios con URL.
+- **Ficha técnica obligatoria antes de modelar**: materiales elegidos y
+  justificados antes de la geometría, espacio real para cables y tornillos,
+  diseño pensado para la cámara, validación física mínima y techo global de
+  horas 3D.
+- **Guardia de recursos con PID, prioridad y timeout**: creación y robo
+  atómicos, auto-limpieza de huérfanos, bloqueo de llamadas directas a
+  binarios pesados. La PC no se congela.
+- **Tablero en vivo del equipo**: `python scripts/orchestrate.py status`.
+
+Detalle completo, roles y comandos: **[`docs/EQUIPO_AGENTES.md`](docs/EQUIPO_AGENTES.md)**.
+
+---
+
 ## Cerebro de Conocimiento: En qué se basa el sistema
 
 <p align="center">
   <img src="graphify_knowledge_graph.png" alt="Grafo de Conocimiento Graphify — Rally System" width="900" />
 </p>
-<p align="center"><em>Figura 2: Cerebro de Conocimiento Real (Graphify) — Captura del visualizador interactivo (graph.html) mostrando los 177 nodos, 205 aristas y 15 comunidades (criterios de rúbricas, banco de ganadores 2019–2026 y patrones técnicos).</em></p>
+<p align="center"><em>Figura 2: Cerebro de Conocimiento Real (Graphify) — Captura del visualizador interactivo (graph.html) mostrando los 420 nodos, 732 aristas y 29 comunidades (criterios de rúbricas, banco de ganadores 2014–2026 y patrones técnicos).</em></p>
 
-El motor analítico de Rally Studio opera sobre un grafo de conocimiento estructurado con **Graphify** (`graphify-out/`), compilando **177 nodos, 205 aristas y 15 comunidades de conocimiento**.
+El motor analítico de Rally Studio opera sobre un grafo de conocimiento estructurado con **Graphify** (`graphify-out/`), compilando **420 nodos, 732 aristas y 29 comunidades de conocimiento**.
 
 ### ¿Qué es Graphify en este sistema?
 Es el cerebro de datos relacionales del sistema. En lugar de procesar documentos como texto plano, Graphify convierte investigaciones, reportes de jurados, memorias oficiales y bases históricas en una red de entidades interconectadas. Permite consultar al instante:
-- **God Nodes (Nodos de Máxima Influencia):** Los conceptos centrales que más pesan en la deliberación (`Rally Nacional de Innovación`, `Rally Latam`, `UNI`, `Grado de Innovación 30 pts`, `Impacto Positivo 20 pts`, `Viabilidad Técnica 20 pts`).
+- **God Nodes (Nodos de Máxima Influencia):** Los conceptos centrales que más pesan en la deliberación (`Rally Latinoamericano de Innovación`, `Nicaragua`, `Rally Nacional de Innovación Nicaragua Innova`, `Jurado Nacional del Rally`, `Área Innovación`).
 - **Conexiones Semánticas Ocultas:** Relaciones entre la narrativa del pitch de 120 segundos y la asignación de puntajes por segundo de exposición.
 
+### Qué entra al cerebro y qué no
+
+El cerebro aprende **solo conocimiento de dominio**. No lee el motor (`scripts/`, `dashboard/`, `site/`), ni las instrucciones de instalación, ni los pautados de ediciones anteriores. Eso es deliberado: el equipo no necesita que la IA sepa programar el sistema, necesita que sepa ganar el certamen.
+
+El detalle del corpus y de cómo reconstruirlo está en [`brain/README.md`](brain/README.md).
+
 ### Investigaciones en las que se basa el Grafo:
-Graphify fue construido a partir del procesamiento y auditoría de 6 fuentes de investigación primaria del repositorio:
-1. **Auditoría Histórica de Proyectos Campeones (`Proyectos Ganadores de Rally Latam.md` y `Rally_Innovacion_Nicaragua_Analisis.pdf`):** Análisis de más de 50 iniciativas premiadas entre 2019 y 2026 (LexoStop, MT Soluciones, Güegüense Pinolero, STEM Synergy, Mentes Volcánicas). Se extrajo el principio de **Hibridación Ciberfísica** (hardware tangible COTS + software) con 30% más probabilidad de podio.
-2. **Ingeniería Inversa de Rúbricas Oficiales (`WhatsApp Image 2026-10-16 at 9.06.52 PM.jpeg` y `rubrica_oficial_latam.jpeg`):** Mapeo de los 5 criterios continentales (100 puntos) y las 3 categorías nacionales (CNU/Comisión Creativa).
-3. **Análisis de Dispersión y Sesgo de Evaluación (`Análisis del Rally de Innovación.txt`):** Identificación del patrón de **doble codificación**: cómo satisfacer simultáneamente el filtro del jurado nacional (anclaje territorial y políticas públicas) y el del jurado internacional (escalabilidad regional y novedad).
-4. **Documentos Pautados de Referencia (`Operación Titan_UNI_Documento pautado_2025.docx` y `Reporte_Pautado_Rally_2026.docx`):** Desglose de conteo de caracteres, prefactibilidad económica y coherencia de costos.
+Graphify fue construido a partir del procesamiento y auditoría de las 16 fuentes del corpus (`brain/corpus/`):
+1. **Auditoría Histórica de Proyectos Campeones (`knowledge/winners_latam.md` y `brain/corpus/analisis_nicaragua.pdf`):** Análisis de más de 50 iniciativas premiadas entre 2014 y 2026 (LexoStop, MT Soluciones, Güegüense Pinolero, STEM Synergy, Mentes Volcánicas). Se extrajo el principio de **Hibridación Ciberfísica** (hardware tangible COTS + software) con 30% más probabilidad de podio.
+2. **Ingeniería Inversa de Rúbricas Oficiales (`rubrica_oficial_latam.jpeg`, `knowledge/rubric_matrices.md` y `knowledge/rubric_latam.md`):** Mapeo de los 5 criterios continentales (100 puntos) y las 3 categorías nacionales (CNU/Comisión Creativa), transcritos desde la imagen oficial.
+3. **Análisis de Dispersión y Sesgo de Evaluación (`knowledge/rally_analysis.txt`):** Identificación del patrón de **doble codificación**: cómo satisfacer simultáneamente el filtro del jurado nacional (anclaje territorial y políticas públicas) y el del jurado internacional (escalabilidad regional y novedad).
+4. **Documentos Pautados de Referencia (`knowledge/pautado_nacional_ref.docx` y `knowledge/pautado_latam_ref.docx`):** desglose de conteo de caracteres, prefactibilidad económica y coherencia de costos.
 5. **Reporte de Investigación Profunda (`chatgptdeep-research-report.md`):** Estudio de cronometría audiovisual (fórmula PAS-V en 4 actos de 120 segundos) y errores frecuentes de descalificación en la plataforma SIRLI.
+6. **Banco de retos y claims verificables (`research/`):** los 5 desafíos priorizados con su puntaje, y las estadísticas con fuente, año y URL.
 
 - **Visualizador interactivo del grafo:** [`graphify-out/graph.html`](graphify-out/graph.html)
 - **Informe de auditoría de nodos y comunidades:** [`graphify-out/GRAPH_REPORT.md`](graphify-out/GRAPH_REPORT.md)
 - **Base relacional JSON:** [`graphify-out/graph.json`](graphify-out/graph.json)
+
+### Informe de sustento de la investigación
+
+Si quieres saber **en qué se basa el sistema, qué encontramos y por qué gana quien gana**, lee el informe completo:
+
+**[`docs/INFORME_INVESTIGACION.md`](docs/INFORME_INVESTIGACION.md)** · [versión PDF](docs/INFORME_INVESTIGACION.pdf)
+
+La versión PDF está maquetada con los tokens de marca e incluye doce figuras vectoriales: escala del Rally Nacional, podios de Nicaragua en el Rally Latinoamericano, rúbricas, pautado, guion PAS-V, presupuesto, evolución del naming y de la complejidad técnica, clusters temáticos, podios por universidad, cambio de capacidades con intervalos de confianza y el índice de preparación competitiva.
+
+Analiza **evento por evento, categoría por categoría, equipo por equipo y video por video**: las cuatro ediciones del Rally Nacional, las trece del Rally Latinoamericano, los veintisiete ganadores nacionales, los diez podios internacionales y el catálogo audiovisual. Incluye un modelo cuantitativo propio (IPC) con pruebas estadísticas, intervalos de confianza y análisis de sensibilidad; las rúbricas de ambos certámenes; la anatomía del video de 120 segundos; y las diez reglas que sostienen el patrón de victoria.
+
+> Lectura recomendada antes de usar cualquier cifra del repositorio en un pautado o en un video.
 
 ---
 
@@ -173,16 +226,38 @@ Rally Studio adapta su interfaz según el certamen activo seleccionado en la Fas
 ## Resiliencia en Redes Universitarias Hostiles
 
 El sistema está diseñado bajo el principio de **cero fricción en entornos de red universitarios**:
-- **100% Client-Side:** Toda la lógica, almacenamiento de estado, extracción de documentos (.docx, .pdf, .zip) y renderizado ocurren localmente en el navegador.
-- **Persistencia en LocalStorage:** El progreso se conserva intacto ante cierres accidentales de pestaña o reinicios del equipo.
-- **Exportación e Importación JSON:** Posibilidad de descargar el estado completo del proyecto en un archivo ligero (`.json`) para transferirlo por memoria USB o compartirlo entre integrantes sin depender de internet.
-- **Diseño Sobrio y Profesional:** Cero distracciones, sin emojis, tipografía optimizada para lectura en ambientes oscuros y largas jornadas de trabajo continuo.
+- **Sincronización por secciones:** el tablero guarda en el servidor local solo lo que cambió, con versión y autor. Dos personas no se pisan: un conflicto muestra ambas versiones y nunca se fusiona solo.
+- **Invitaciones de un solo uso:** el operador crea el proyecto y reparte un enlace por persona (48 h por defecto). Cada miembro entra sin instalar nada; el acceso se revoca desde `dashboard/admin.html` (pega allí el token de operador que imprime el CLI) y se corta en ≤1 s.
+- **Persistencia en LocalStorage:** el progreso se conserva intacto ante cierres accidentales de pestaña o reinicios del equipo, y sigue editable sin red.
+- **Exportación e Importación JSON:** posibilidad de descargar el estado completo del proyecto en un archivo ligero (`.json`) para transferirlo por memoria USB o compartirlo entre integrantes sin depender de internet.
+- **Diseño Sobrio y Profesional:** cero distracciones, sin emojis, tipografía optimizada para lectura en ambientes oscuros y largas jornadas de trabajo continuo.
+
+### Compartir el proyecto en tres pasos
+
+```powershell
+# 1. El operador crea el proyecto e imprime el token y un enlace por persona
+python scripts/crear_proyecto.py --project mi-grupo --name "Ana"
+
+# 2. Reparte un join_url por integrante (un solo uso, vence en 48 h)
+# 3. Administra el grupo en:
+#    http://localhost:8000/dashboard/admin.html  (pega el token de operador)
+```
+
+**Blindaje:** sin sesión válida no se lee ni se escribe; `state.json`, `members.db`,
+`sections.db` y el buzón no se sirven como archivos estáticos; las subidas exigen
+sesión; la revocación corta el acceso en ≤1 s y la cola offline de un revocado
+nunca se sube; un proyecto vacío no devuelve datos de otro.
+
+**Límite:** si el wifi del campus aísla clientes (AP isolation), los equipos no se
+ven entre sí y el modo local no funciona. El modo nube está diseñado en
+[`docs/superpowers/specs/2026-10-19-colaboracion-en-vivo-design.md`](docs/superpowers/specs/2026-10-19-colaboracion-en-vivo-design.md),
+pero todavía no está implementado.
 
 ---
 
 ## Instalación y Uso Rápido (Windows)
 
-Requisitos: **Python 3.10+** y, para el puente de IA automático, **OpenCode** (`npm i -g opencode-ai`) o cualquier endpoint OpenAI-compatible. El tablero en sí es 100% client-side y funciona sin nada de esto.
+Requisitos: **Python 3.10+** y, para el puente de IA automático, **OpenCode** (`npm i -g opencode-ai`) o cualquier endpoint OpenAI-compatible. La interfaz funciona sin servidor, pero la colaboración en vivo y la IA requieren el servicio local.
 
 ```powershell
 pip install -r requirements.txt

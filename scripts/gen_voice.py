@@ -1,17 +1,24 @@
 #!/usr/bin/env python3
 """
 gen_voice.py -- Sintetizador de voz adaptativo para el video pitch (<= 120s).
-Selecciona automaticamente entre los dos motores principales segun hardware:
+Selecciona automaticamente entre los motores disponibles segun hardware:
 1. Chatterbox TTS (si hay GPU VRAM >= 4GB con CUDA, control de emocion).
 2. Kokoro TTS (ligero, Apache 2.0, CPU o GPU modesta).
-Fallback de emergencia: edge-tts o generador de tono/guia WAV estandar.
+3. Piper TTS (CPU offline, requiere PIPER_MODEL; licencia de cada voz aparte).
+Fallback: edge-tts (necesita red) o pista guia WAV marcada como simulada.
+
+La entrega oficial es assets/voice/narration.mp4 (MP4 con audio AAC, sin video).
+Los motores generan WAV/MP3 temporales y se transcodifican con ffmpeg.
+Toda voz sintetica deja constancia en assets/voice/voice_manifest.json y en
+assets/voice/declaracion_ia.txt. El pautado debe declarar el uso de IA.
 """
 import json
 import pathlib
+import shutil
 import subprocess
 import sys
 import io
-import re
+import os
 
 if sys.platform == "win32":
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
@@ -19,8 +26,57 @@ if sys.platform == "win32":
 BRIEF_PATH = pathlib.Path("brief.json")
 NARRATION_PATH = pathlib.Path("script/narration.txt")
 OUT_DIR = pathlib.Path("assets/voice")
-OUT_MP3 = OUT_DIR / "narration.mp3"
-OUT_WAV = OUT_DIR / "narration.wav"
+OUT_MP4 = OUT_DIR / "narration.mp4"
+TMP_MP3 = OUT_DIR / "narration.tmp.mp3"
+TMP_WAV = OUT_DIR / "narration.tmp.wav"
+MANIFEST_PATH = OUT_DIR / "voice_manifest.json"
+DECLARACION_PATH = OUT_DIR / "declaracion_ia.txt"
+
+MOTOR_USADO = ""
+SIMULADO = False
+
+DECLARACION_PLANTILLA = (
+    "Declaracion de voz: la locucion de este video fue generada con sintesis de voz "
+    "por IA ({motor}). El guion, la investigacion y la edicion son del equipo. "
+    "La voz se declara por transparencia ante el jurado."
+)
+
+
+def find_ffmpeg():
+    """Localiza ffmpeg sin depender de que este en el PATH."""
+    candidates = [
+        os.environ.get("FFMPEG_BINARY"),
+        shutil.which("ffmpeg"),
+        r"C:\Program Files\Agent\dlls\x64\ffmpeg.exe",
+        r"C:\ffmpeg\bin\ffmpeg.exe",
+        str(pathlib.Path.home() / "AppData/Local/Microsoft/WinGet/Links/ffmpeg.exe"),
+    ]
+    for candidate in candidates:
+        if candidate and pathlib.Path(candidate).exists():
+            return candidate
+    return None
+
+
+def convert_to_mp4(source):
+    """Convierte WAV/MP3 a MP4 con audio AAC. Devuelve True si la entrega existe."""
+    ffmpeg = find_ffmpeg()
+    if not ffmpeg:
+        print("  ERROR: ffmpeg no esta instalado. Instala ffmpeg o define FFMPEG_BINARY.")
+        return False
+    if not pathlib.Path(source).exists():
+        print(f"  ERROR: no existe el audio temporal {source}.")
+        return False
+    cmd = [
+        ffmpeg, "-y", "-i", str(source), "-vn",
+        "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-ac", "1",
+        "-movflags", "+faststart", "-f", "mp4", str(OUT_MP4),
+    ]
+    result = subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
+    if result.returncode != 0 or not OUT_MP4.exists():
+        print("  ERROR: ffmpeg no pudo crear narration.mp4.")
+        print(result.stderr.decode("utf-8", errors="replace")[-600:])
+        return False
+    return True
 
 def get_clean_narration_text():
     if not NARRATION_PATH.exists():
@@ -37,6 +93,42 @@ def get_clean_narration_text():
             clean_lines.append(line)
     return " ".join(clean_lines)
 
+def _finalizar(motor, fuente):
+    """Transcodifica y, si la entrega existe, registra el motor real usado."""
+    global MOTOR_USADO
+    if convert_to_mp4(fuente):
+        MOTOR_USADO = motor
+        return True
+    return False
+
+
+def try_piper(text):
+    """Piper: TTS neuronal offline en CPU. Requiere PIPER_BINARY y PIPER_MODEL."""
+    print("  Intentando sintesis con Piper TTS (offline, CPU)...")
+    exe = os.environ.get("PIPER_BINARY") or shutil.which("piper") or shutil.which("piper.exe")
+    modelo = os.environ.get("PIPER_MODEL")
+    if not exe:
+        print("  INFO: Piper no esta instalado en este entorno.")
+        return False
+    if not modelo or not pathlib.Path(modelo).exists():
+        print("  INFO: Piper existe pero falta PIPER_MODEL (ruta al .onnx de la voz).")
+        return False
+    try:
+        result = subprocess.run(
+            [exe, "--model", modelo, "--output_file", str(TMP_WAV)],
+            input=text.encode("utf-8"),
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.PIPE,
+        )
+        if result.returncode != 0 or not TMP_WAV.exists():
+            print("  WARN: Piper no genero audio.")
+            return False
+        return _finalizar("piper", TMP_WAV)
+    except Exception as e:
+        print(f"  WARN: Piper fallo: {e}")
+        return False
+
+
 def try_chatterbox(text, vram):
     print("  Intentando sintesis con Chatterbox TTS (emocion y presencia)...")
     try:
@@ -46,9 +138,8 @@ def try_chatterbox(text, vram):
         device = "cuda" if (vram >= 4 and torch.cuda.is_available()) else "cpu"
         model = ChatterboxTTS.from_pretrained(device=device)
         wav = model.generate(text, exps=0.8, cfg_weight=0.45)
-        torchaudio.save(str(OUT_WAV), wav, model.sr)
-        convert_wav_to_mp3()
-        return True
+        torchaudio.save(str(TMP_WAV), wav, model.sr)
+        return _finalizar("chatterbox", TMP_WAV)
     except ImportError:
         print("  INFO: Chatterbox no esta instalado en este entorno.")
         return False
@@ -67,9 +158,8 @@ def try_kokoro(text):
         chunks = [audio for _, _, audio in generator]
         if chunks:
             full_audio = np.concatenate(chunks)
-            sf.write(str(OUT_WAV), full_audio, 24000)
-            convert_wav_to_mp3()
-            return True
+            sf.write(str(TMP_WAV), full_audio, 24000)
+            return _finalizar("kokoro", TMP_WAV)
         return False
     except ImportError:
         print("  INFO: Kokoro no esta instalado en este entorno.")
@@ -85,10 +175,10 @@ def try_edge_tts(text):
         import asyncio
         async def _run():
             communicate = edge_tts.Communicate(text, "es-NI-FedericoNeural")
-            await communicate.save(str(OUT_MP3))
+            await communicate.save(str(TMP_MP3))
         asyncio.run(_run())
-        if OUT_MP3.exists() and OUT_MP3.stat().st_size > 1000:
-            return True
+        if TMP_MP3.exists() and TMP_MP3.stat().st_size > 1000:
+            return _finalizar("edge-tts", TMP_MP3)
         return False
     except ImportError:
         print("  INFO: edge-tts no esta instalado.")
@@ -110,7 +200,7 @@ def generate_emergency_mock_wav(text):
         duration_s = min(max(int((words / 135) * 60), 20), 120)
         num_samples = duration_s * sample_rate
         
-        with wave.open(str(OUT_WAV), 'w') as f:
+        with wave.open(str(TMP_WAV), 'w') as f:
             f.setnchannels(1)
             f.setsampwidth(2)
             f.setframerate(sample_rate)
@@ -121,8 +211,11 @@ def generate_emergency_mock_wav(text):
                 if (i % sample_rate) < 1500: # bip breve al inicio de cada segundo
                     val = int(800 * math.sin(2 * math.pi * 440 * t))
                 f.writeframes(struct.pack('<h', val))
-        convert_wav_to_mp3()
-        print(f"  NOTA: Generada pista de referencia tecnica ({duration_s}s) para edicion en {OUT_MP3}.")
+        if not _finalizar("guia_simulada", TMP_WAV):
+            return False
+        global SIMULADO
+        SIMULADO = True
+        print(f"  NOTA: Generada pista de referencia tecnica ({duration_s}s) en {OUT_MP4}.")
         print("  Para habilitar voces neuronales humanas reales, instala:")
         print("    pip install kokoro soundfile numpy")
         print("    O bien: pip install edge-tts")
@@ -131,15 +224,38 @@ def generate_emergency_mock_wav(text):
         print(f"  ERROR al crear audio de emergencia: {e}")
         return False
 
-def convert_wav_to_mp3():
-    if not OUT_WAV.exists():
-        return
-    try:
-        subprocess.run(["ffmpeg", "-y", "-i", str(OUT_WAV), "-b:a", "192k", str(OUT_MP3)],
-                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
-    except Exception:
-        # Si no hay ffmpeg, dejamos el WAV accesible
-        pass
+def escribir_manifest(texto):
+    """Deja constancia del motor real. Sin esto no se puede declarar IA con honestidad."""
+    import datetime
+
+    motor = MOTOR_USADO or "desconocido"
+    sintetica = motor not in {"humano"}
+    datos = {
+        "generado": datetime.datetime.now().isoformat(timespec="seconds"),
+        "motor": motor,
+        "declarar_ia": sintetica,
+        "simulado": SIMULADO,
+        "watermark": "PerTh" if motor == "chatterbox" else None,
+        "palabras": len(texto.split()),
+        "archivo": str(OUT_MP4),
+        "nota": (
+            "Pista guia, NO es locucion final." if SIMULADO
+            else "Voz sintetica: declarar en el pautado." if sintetica
+            else "Voz humana grabada."
+        ),
+    }
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    MANIFEST_PATH.write_text(json.dumps(datos, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    if sintetica:
+        DECLARACION_PATH.write_text(
+            DECLARACION_PLANTILLA.format(motor=motor) + "\n", encoding="utf-8"
+        )
+    print(f"  Registro de voz: {MANIFEST_PATH} (motor: {motor})")
+    if sintetica and not SIMULADO:
+        print("  DECLARAR IA: copia la linea de assets/voice/declaracion_ia.txt al pautado.")
+    if SIMULADO:
+        print("  AVISO: la pista es guia. No la presentes como locucion final.")
+
 
 def main():
     OUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -156,18 +272,28 @@ def main():
 
     success = False
     if vram >= 4:
-        success = try_chatterbox(text, vram) or try_kokoro(text) or try_edge_tts(text)
+        success = (
+            try_chatterbox(text, vram) or try_kokoro(text)
+            or try_piper(text) or try_edge_tts(text)
+        )
     else:
-        success = try_kokoro(text) or try_edge_tts(text) or try_chatterbox(text, vram)
+        success = (
+            try_kokoro(text) or try_piper(text)
+            or try_edge_tts(text) or try_chatterbox(text, vram)
+        )
 
     if not success:
         generate_emergency_mock_wav(text)
 
-    if OUT_MP3.exists() or OUT_WAV.exists():
-        target = OUT_MP3 if OUT_MP3.exists() else OUT_WAV
-        print(f"\n  OK: Archivo de voz listo en {target}")
+    if OUT_MP4.exists():
+        escribir_manifest(text)
+        for temp in (TMP_WAV, TMP_MP3):
+            if temp.exists():
+                temp.unlink()
+        size_mb = OUT_MP4.stat().st_size / (1024 * 1024)
+        print(f"\n  OK: Locucion MP4 (AAC) lista en {OUT_MP4} ({size_mb:.2f} MB)")
     else:
-        print("\n  ERROR: No se pudo generar la pista de audio.")
+        print("\n  ERROR: No se pudo generar la locucion en MP4.")
         sys.exit(1)
 
 if __name__ == "__main__":

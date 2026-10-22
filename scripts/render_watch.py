@@ -13,6 +13,19 @@ if sys.platform == "win32":
 
 RAM_ALERT_THRESHOLD = 85.0  # 85% de RAM
 RAM_PANIC_THRESHOLD = 92.0  # 92% de RAM
+MAX_RENDER_MIN = 20.0       # si un render pasa de esto, no aporta: bajar calidad o cortar
+
+
+def presupuesto_excedido(inicio: float, max_min: float = MAX_RENDER_MIN) -> bool:
+    """True si el render ya consumio mas tiempo del que aporta al video."""
+    transcurrido_min = (time.time() - inicio) / 60.0
+    if transcurrido_min > max_min:
+        print(
+            f"\n[PRESUPUESTO] Render en {transcurrido_min:.0f} min (limite {max_min:.0f}). "
+            "Baja muestras/resolucion o elimina la pieza: no aporta comprension."
+        )
+        return True
+    return False
 
 def check_resources(task_name="Proceso Pesado"):
     """Llamable desde scripts de render para verificar si es seguro proceder."""

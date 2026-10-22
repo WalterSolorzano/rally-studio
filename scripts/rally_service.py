@@ -17,6 +17,7 @@ import sys
 import time
 import pathlib
 import io
+import ipaddress
 import re
 import urllib.parse
 import urllib.request
@@ -31,6 +32,25 @@ import docx
 import base64
 import unicodedata
 import zipfile
+
+try:
+    from content_store import ContentStore, validate_envelope
+    from member_store import MemberStore
+    from section_store import (
+        SQLiteSectionStore,
+        SectionConflict,
+        SectionLocked,
+        estado_a_secciones,
+    )
+except ImportError:  # cuando se importa como paquete (tests)
+    from scripts.content_store import ContentStore, validate_envelope
+    from scripts.member_store import MemberStore
+    from scripts.section_store import (
+        SQLiteSectionStore,
+        SectionConflict,
+        SectionLocked,
+        estado_a_secciones,
+    )
 
 _easyocr_reader = None
 
@@ -79,6 +99,52 @@ BASE_DIR = pathlib.Path(__file__).resolve().parent.parent
 DASHBOARD_DIR = BASE_DIR / "dashboard"
 SITE_DIR = BASE_DIR / "site"
 SOURCES_DIR = BASE_DIR
+
+# Datos del usuario (buzón de propuestas + espejo de estado). Va aparte del
+# código para poder excluirlo del despliegue y para que las pruebas usen tmp.
+DATA_DIR = pathlib.Path(os.environ.get("RALLY_DATA_DIR", str(DASHBOARD_DIR / "data")))
+CONTENT_STORE = ContentStore(DATA_DIR)
+SECTION_STORE = SQLiteSectionStore(DATA_DIR / "sections.db")
+MEMBER_STORE = MemberStore(DATA_DIR / "members.db")
+_SECTION_MIGRATION_LOCK = threading.Lock()
+_SECTION_MIGRATED = False
+
+
+def ensure_section_migration() -> None:
+    """Importa una sola vez el state.json legado, sin pisar secciones nuevas."""
+    global _SECTION_MIGRATED
+    if _SECTION_MIGRATED:
+        return
+    with _SECTION_MIGRATION_LOCK:
+        if _SECTION_MIGRATED:
+            return
+        try:
+            legacy = CONTENT_STORE.read_state()
+        except Exception as exc:
+            print(f"[secciones] no se pudo leer state.json legado: {exc}", flush=True)
+            legacy = None
+        if isinstance(legacy, dict) and legacy:
+            try:
+                SECTION_STORE.import_state("main", legacy, "migracion", "servidor")
+            except Exception as exc:
+                print(f"[secciones] migracion inicial fallo: {exc}", flush=True)
+        _SECTION_MIGRATED = True
+
+
+def mirror_state_to_disk(project_id: str = "main") -> None:
+    """Mantiene dashboard/data/state.json como espejo legible/exportable.
+
+    Solo el proyecto `main` usa el espejo global: escribir el estado de otro
+    proyecto encima borraría la exportación de quien trabaja en local.
+    """
+    if project_id != "main":
+        return
+    try:
+        state = SECTION_STORE.read_state(project_id)
+        if state:
+            CONTENT_STORE.write_state(state)
+    except Exception as exc:
+        print(f"[secciones] no se pudo actualizar el espejo state.json: {exc}", flush=True)
 
 START_TIME = time.time()
 
@@ -206,11 +272,19 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
         self.send_header("Cache-Control", "no-cache, no-store, must-revalidate")
         self.send_header("Pragma", "no-cache")
         self.send_header("Expires", "0")
+        self.send_header("X-Content-Type-Options", "nosniff")
         super().end_headers()
+
+    def log_message(self, format, *args):
+        message = format % args
+        message = re.sub(r"([?&]t=)[^&\s\"]+", r"\1***", message)
+        super().log_message("%s", message)
 
     def do_GET(self):
         url = urllib.parse.urlparse(self.path)
         req_path = urllib.parse.unquote(url.path)
+        if not self.project_param_ok(url.query):
+            return
         if req_path == "/api/telemetry":
             self.send_telemetry()
         elif req_path in ("/health", "/api/health"):
@@ -258,6 +332,66 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
                 "done": job.get("status") in ("done", "error"),
                 "message": job.get("message"),
             })
+        elif req_path == "/api/state":
+            ensure_section_migration()
+            project = self.project_id(url.query)
+            if self.require_member(project) is None:
+                return
+            state = SECTION_STORE.read_state(project)
+            if not state and project == "main":
+                state = CONTENT_STORE.read_state() or {}
+            self.send_json_response(200, {"state": state, "project": project}, cors=False)
+        elif req_path == "/api/sections":
+            ensure_section_migration()
+            project = self.project_id(url.query)
+            if self.require_member(project) is None:
+                return
+            params = urllib.parse.parse_qs(url.query)
+            try:
+                since = int(params.get("since", ["0"])[0] or 0)
+            except ValueError:
+                since = 0
+            seq, sections = SECTION_STORE.read_sections(project, since)
+            self.send_json_response(200, {
+                "ok": True, "project": project, "seq": seq, "sections": sections,
+            }, cors=True)
+        elif req_path == "/api/events":
+            ensure_section_migration()
+            project = self.project_id(url.query)
+            if self.require_member(project) is None:
+                return
+            params = urllib.parse.parse_qs(url.query)
+            try:
+                since = int(params.get("since", ["0"])[0] or 0)
+                limit = int(params.get("limit", ["100"])[0] or 100)
+            except ValueError:
+                since, limit = 0, 100
+            self.send_json_response(200, {
+                "ok": True, "project": project,
+                "events": SECTION_STORE.events(project, since, limit),
+            }, cors=True)
+        elif req_path == "/api/session":
+            project = self.project_id(url.query)
+            member = self.require_member(project)
+            if member is None:
+                return
+            self.send_json_response(200, {
+                "ok": True, "project": project, "member": member,
+            }, cors=True)
+        elif req_path == "/api/members":
+            project = self.project_id(url.query)
+            member = self.require_member(project, ("admin", "operator"))
+            if member is None:
+                return
+            self.send_json_response(200, {
+                "ok": True, "project": project, "members": MEMBER_STORE.list_members(project),
+            }, cors=True)
+        elif req_path == "/api/content/schema":
+            self.send_json_response(200, CONTENT_STORE.schema(), cors=False)
+        elif req_path == "/api/content/manifest":
+            self.send_json_response(200, CONTENT_STORE.manifest(), cors=False)
+        elif req_path.startswith("/api/content/"):
+            self.serve_content_item(req_path[len("/api/content/"):])
         else:
             # Normalizar ruta dashboard
             clean_path = req_path
@@ -267,6 +401,9 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
                 clean_path = "/"
 
             rel = clean_path.lstrip("/")
+            if self.private_static(rel):
+                self.send_json_response(404, {"ok": False, "error": "no-encontrado"}, cors=False)
+                return
             if not rel or rel == "index.html":
                 target = DASHBOARD_DIR / "index.html"
                 if target.exists():
@@ -295,6 +432,8 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
 
     def do_POST(self):
         url = urllib.parse.urlparse(self.path)
+        if not self.project_param_ok(url.query):
+            return
         if url.path == "/api/ai":
             length = int(self.headers.get("Content-Length", 0))
             body = self.rfile.read(length).decode("utf-8", errors="replace")
@@ -340,6 +479,9 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
             except Exception as e:
                 self.send_json_response(500, {"status": "error", "message": str(e)})
         elif url.path == "/api/asset-upload":
+            project = self.project_id(url.query)
+            if self.require_member(project) is None:
+                return
             length = int(self.headers.get("Content-Length", 0))
             body = self.rfile.read(length)
             try:
@@ -425,8 +567,307 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
                 self.send_json_response(200, ai_quick_task(task, text))
             except Exception as e:
                 self.send_json_response(500, {"status": "error", "message": str(e)})
+        elif url.path == "/api/project/claim":
+            self.handle_claim_invite()
+        elif url.path == "/api/invites":
+            self.handle_create_invite(url)
+        elif url.path.startswith("/api/members/") and url.path.endswith("/revoke"):
+            self.handle_revoke_member(url)
+        elif url.path == "/api/state":
+            self.handle_post_state()
+        elif url.path == "/api/sections/import":
+            self.handle_post_sections_import(url)
+        elif url.path.startswith("/api/sections/"):
+            self.handle_post_sections(url)
+        elif url.path.startswith("/api/content/"):
+            self.handle_post_content(url.path)
         else:
             self.send_error(404, "Endpoint no encontrado")
+
+    # ── Buzón de contenido y espejo de estado ───────────────────────────
+
+    def serve_content_item(self, item_id):
+        try:
+            env = CONTENT_STORE.read(item_id)
+        except KeyError:
+            self.send_json_response(404, {"ok": False, "error": "no-encontrado"}, cors=False)
+            return
+        except Exception:
+            self.send_json_response(500, {"ok": False, "error": "error-interno"}, cors=False)
+            return
+        self.send_json_response(200, env, cors=False)
+
+    def project_id(self, query: str = "") -> str:
+        params = urllib.parse.parse_qs(query or "")
+        project = (params.get("project", ["main"])[0] or "main").strip()
+        if not re.match(r"^[A-Za-z0-9_-]{1,64}$", project):
+            return "main"
+        return project
+
+    def project_param_ok(self, query: str = "") -> bool:
+        """Rechaza ids de proyecto inválidos en vez de caer en `main`."""
+        params = urllib.parse.parse_qs(query or "")
+        if "project" not in params:
+            return True
+        raw = (params.get("project", [""])[0] or "").strip()
+        if re.match(r"^[A-Za-z0-9_-]{1,64}$", raw):
+            return True
+        self.send_json_response(400, {"ok": False, "error": "proyecto-invalido"}, cors=True)
+        return False
+
+    def private_static(self, rel: str) -> bool:
+        """Nada privado del proyecto se sirve como archivo estático."""
+        rel = (rel or "").replace("\\", "/").lower()
+        if rel.startswith("data/"):
+            name = rel.rsplit("/", 1)[-1]
+            if rel.startswith("data/content/"):
+                return True
+            if name == "state.json" or name.startswith("state_") and name.endswith(".json"):
+                return True
+            if name.endswith((".db", ".db-wal", ".db-shm", ".sqlite")):
+                return True
+        if rel.startswith("assets_uploads/"):
+            ext = rel.rsplit(".", 1)[-1] if "." in rel.rsplit("/", 1)[-1] else ""
+            if ext in ("html", "htm", "svg", "xml"):
+                return True
+        return False
+
+    def read_json_body(self) -> dict:
+        length = int(self.headers.get("Content-Length", 0))
+        raw = self.rfile.read(length).decode("utf-8", errors="replace") if length else "{}"
+        try:
+            data = json.loads(raw)
+        except ValueError:
+            return {}
+        return data if isinstance(data, dict) else {}
+
+    def actor_from(self, data: dict) -> tuple[str, str]:
+        actor = str(data.get("actor") or self.headers.get("X-Rally-Actor") or "Invitado")[:80]
+        actor_id = str(data.get("actor_id") or self.headers.get("X-Rally-Actor-Id") or "")[:80]
+        return actor, actor_id
+
+    def bearer_token(self) -> str:
+        raw = (self.headers.get("Authorization") or "").strip()
+        return raw[7:].strip() if raw.lower().startswith("bearer ") else ""
+
+    def require_member(self, project: str, roles: tuple[str, ...] = ()) -> dict | None:
+        if not MEMBER_STORE.has_members(project):
+            return {"id": "legacy", "name": "Local", "role": "legacy"}
+        member = MEMBER_STORE.authenticate(project, self.bearer_token())
+        if member is None:
+            self.send_json_response(401, {"ok": False, "error": "no-autenticado"}, cors=True)
+            return None
+        if roles and member["role"] not in roles:
+            self.send_json_response(403, {"ok": False, "error": "sin-permiso"}, cors=True)
+            return None
+        return member
+
+    def member_or_actor(self, project: str, data: dict) -> tuple[str, str, dict] | None:
+        member = self.require_member(project)
+        if member is None:
+            return None
+        if member["id"] == "legacy":
+            actor, actor_id = self.actor_from(data)
+            return actor, actor_id, member
+        actor, actor_id = self.actor_from(data)
+        if actor_id.lower() == "ia" or actor.upper().startswith("IA"):
+            return actor, actor_id, member
+        return member["name"], member["id"], member
+
+    def handle_claim_invite(self):
+        if not self.origen_permitido():
+            self.send_json_response(403, {"ok": False, "error": "origen-no-permitido"}, cors=True)
+            return
+        data = self.read_json_body()
+        name = str(data.get("name") or "").strip()
+        if not 1 <= len(name) <= 40:
+            self.send_json_response(400, {"ok": False, "error": "nombre-invalido"}, cors=True)
+            return
+        try:
+            result = MEMBER_STORE.claim_invite(
+                str(data.get("token") or ""), name, str(data.get("device_id") or "")[:80]
+            )
+        except ValueError as exc:
+            self.send_json_response(400, {"ok": False, "error": str(exc)}, cors=True)
+            return
+        except Exception as exc:
+            print(f"[miembros] claim fallo: {exc}", flush=True)
+            self.send_json_response(500, {"ok": False, "error": "error-interno"}, cors=True)
+            return
+        self.send_json_response(200, {"ok": True, **result}, cors=True)
+
+    def handle_create_invite(self, url) -> None:
+        if not self.origen_permitido():
+            self.send_json_response(403, {"ok": False, "error": "origen-no-permitido"}, cors=True)
+            return
+        project = self.project_id(url.query)
+        member = self.require_member(project, ("admin", "operator"))
+        if member is None:
+            return
+        data = self.read_json_body()
+        try:
+            ttl_hours = int(data.get("ttl_hours", 48))
+        except (TypeError, ValueError):
+            ttl_hours = 48
+        ttl_hours = max(1, min(168, ttl_hours))
+        try:
+            result = MEMBER_STORE.create_invite(project, member["id"], ttl_hours)
+        except ValueError as exc:
+            self.send_json_response(400, {"ok": False, "error": str(exc)}, cors=True)
+            return
+        except Exception as exc:
+            print(f"[miembros] crear invitacion fallo: {exc}", flush=True)
+            self.send_json_response(500, {"ok": False, "error": "error-interno"}, cors=True)
+            return
+        self.send_json_response(200, {"ok": True, "project": project, **result}, cors=True)
+
+    def handle_revoke_member(self, url) -> None:
+        if not self.origen_permitido():
+            self.send_json_response(403, {"ok": False, "error": "origen-no-permitido"}, cors=True)
+            return
+        project = self.project_id(url.query)
+        member = self.require_member(project, ("admin", "operator"))
+        if member is None:
+            return
+        rest = urllib.parse.unquote(url.path[len("/api/members/"):])
+        member_id = rest[:-len("/revoke")].strip("/")
+        if not member_id:
+            self.send_json_response(400, {"ok": False, "error": "miembro-requerido"}, cors=True)
+            return
+        try:
+            result = MEMBER_STORE.revoke_member(project, member_id)
+        except ValueError as exc:
+            self.send_json_response(400, {"ok": False, "error": str(exc)}, cors=True)
+            return
+        except Exception as exc:
+            print(f"[miembros] revocar fallo: {exc}", flush=True)
+            self.send_json_response(500, {"ok": False, "error": "error-interno"}, cors=True)
+            return
+        self.send_json_response(200, {"ok": True, "project": project, "member": result}, cors=True)
+
+    def handle_post_state(self):
+        """Compatibilidad: un cliente viejo solo puede importar secciones faltantes."""
+        if not self.origen_permitido():
+            self.send_json_response(403, {"ok": False, "error": "origen-no-permitido"}, cors=True)
+            return
+        data = self.read_json_body()
+        state = data.get("state") if isinstance(data, dict) else None
+        if not isinstance(state, dict):
+            self.send_json_response(400, {"ok": False, "error": "state-invalido"}, cors=True)
+            return
+        project = self.project_id(urllib.parse.urlparse(self.path).query)
+        if self.require_member(project, ("admin", "operator")) is None:
+            return
+        try:
+            ensure_section_migration()
+            result = SECTION_STORE.import_state(project, state, "cliente-legado", "legacy")
+            mirror_state_to_disk(project)
+        except Exception as exc:
+            print(f"[secciones] no se pudo importar el estado legado: {exc}", flush=True)
+            self.send_json_response(500, {"ok": False, "error": "error-interno"}, cors=True)
+            return
+        self.send_json_response(200, {"ok": True, "mode": "legacy-import", **result}, cors=True)
+
+    def handle_post_sections_import(self, url) -> None:
+        if not self.origen_permitido():
+            self.send_json_response(403, {"ok": False, "error": "origen-no-permitido"}, cors=True)
+            return
+        data = self.read_json_body()
+        state = data.get("state")
+        if not isinstance(state, dict):
+            self.send_json_response(400, {"ok": False, "error": "state-invalido"}, cors=True)
+            return
+        project = self.project_id(url.query)
+        if self.require_member(project, ("admin", "operator")) is None:
+            return
+        actor, actor_id = self.actor_from(data)
+        try:
+            ensure_section_migration()
+            result = SECTION_STORE.import_state(project, state, actor, actor_id)
+            mirror_state_to_disk(project)
+        except Exception as exc:
+            print(f"[secciones] import fallo: {exc}", flush=True)
+            self.send_json_response(500, {"ok": False, "error": "error-interno"}, cors=True)
+            return
+        self.send_json_response(200, {"ok": True, "project": project, **result}, cors=True)
+
+    def handle_post_sections(self, url) -> None:
+        if not self.origen_permitido():
+            self.send_json_response(403, {"ok": False, "error": "origen-no-permitido"}, cors=True)
+            return
+        rest = urllib.parse.unquote(url.path[len("/api/sections/"):]).strip("/")
+        action = "write"
+        if rest.endswith("/lock"):
+            rest, action = rest[:-5].rstrip("/"), "lock"
+        elif rest.endswith("/unlock"):
+            rest, action = rest[:-7].rstrip("/"), "unlock"
+        if not rest:
+            self.send_json_response(404, {"ok": False, "error": "seccion-requerida"}, cors=True)
+            return
+        data = self.read_json_body()
+        project = self.project_id(url.query)
+        authorship = self.member_or_actor(project, data)
+        if authorship is None:
+            return
+        actor, actor_id, _member = authorship
+        try:
+            ensure_section_migration()
+            if action == "lock":
+                section = SECTION_STORE.lock(
+                    project, rest, actor, actor_id, data.get("ttl_minutes", 15)
+                )
+            elif action == "unlock":
+                section = SECTION_STORE.unlock(project, rest, actor_id)
+            else:
+                section = SECTION_STORE.write_section(
+                    project, rest, data.get("data"), data.get("base_version", 0),
+                    actor, actor_id, data.get("ttl_minutes", 15),
+                )
+                mirror_state_to_disk(project)
+        except SectionConflict as exc:
+            self.send_json_response(409, {
+                "ok": False, "error": "conflicto", "key": rest,
+                "base_version": exc.base_version, "current": exc.current,
+                "yours": {"data": data.get("data"), "base_version": data.get("base_version", 0)},
+            }, cors=True)
+            return
+        except SectionLocked as exc:
+            self.send_json_response(423, {
+                "ok": False, "error": "bloqueada", "key": rest, "lock": exc.lock,
+            }, cors=True)
+            return
+        except ValueError as exc:
+            self.send_json_response(400, {"ok": False, "error": str(exc)}, cors=True)
+            return
+        except Exception as exc:
+            print(f"[secciones] fallo {action} {rest!r}: {exc}", flush=True)
+            self.send_json_response(500, {"ok": False, "error": "error-interno"}, cors=True)
+            return
+        self.send_json_response(200, {"ok": True, "action": action, "section": section}, cors=True)
+
+    def handle_post_content(self, path):
+        if not self.origen_permitido():
+            self.send_json_response(403, {"ok": False, "error": "origen-no-permitido"}, cors=False)
+            return
+        rest = path[len("/api/content/"):]
+        parts = rest.split("/")
+        if len(parts) != 2 or parts[1] not in ("apply", "discard") or not parts[0]:
+            self.send_json_response(404, {"ok": False, "error": "no-encontrado"}, cors=False)
+            return
+        item_id, action = parts
+        try:
+            if action == "apply":
+                CONTENT_STORE.apply(item_id)
+            else:
+                CONTENT_STORE.discard(item_id)
+        except KeyError:
+            self.send_json_response(404, {"ok": False, "error": "no-encontrado"}, cors=False)
+            return
+        except Exception as exc:
+            print(f"[content] fallo al {action} {item_id!r}: {exc}", flush=True)
+            self.send_json_response(500, {"ok": False, "error": "error-interno"}, cors=False)
+            return
+        self.send_json_response(200, {"ok": True}, cors=False)
 
     def send_telemetry(self):
         cpu = psutil.cpu_percent(interval=None)
@@ -513,14 +954,81 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(content)
 
-    def send_json_response(self, code, obj):
+    def cors_origin(self) -> str | None:
+        """Devuelve el Origin exacto si es local o de una red privada.
+
+        No se usa comodin: el estado del proyecto puede viajar por la red del
+        campus, pero solo between equipos de la misma red privada.
+        """
+        origin = (self.headers.get("Origin") or "").strip()
+        if not origin:
+            return None
+        env = [x.strip().rstrip("/") for x in os.environ.get("RALLY_ALLOWED_ORIGINS", "").split(",") if x.strip()]
+        if env:
+            return origin if origin in env else None
+        try:
+            parsed = urllib.parse.urlparse(origin)
+            host = (parsed.hostname or "").strip().lower()
+        except Exception:
+            return None
+        if parsed.scheme not in ("http", "https") or not host:
+            return None
+        host_header = (self.headers.get("Host") or "").strip().lower()
+        same_host = ""
+        if host_header:
+            try:
+                same_host = (urllib.parse.urlsplit("//" + host_header).hostname or "").strip().lower()
+            except Exception:
+                same_host = ""
+        if same_host and host == same_host:
+            return origin
+        if host in ("localhost", "127.0.0.1", "::1"):
+            return origin
+        try:
+            ip = ipaddress.ip_address(host)
+        except ValueError:
+            return None
+        if ip.is_private or ip.is_loopback or ip.is_link_local:
+            return origin
+        return None
+
+    def send_cors_headers(self, origin: str | None = None) -> None:
+        origin = origin if origin is not None else self.cors_origin()
+        if not origin:
+            return
+        self.send_header("Access-Control-Allow-Origin", origin)
+        self.send_header("Vary", "Origin")
+        self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Rally-Actor, X-Rally-Actor-Id")
+        self.send_header("Access-Control-Max-Age", "600")
+
+    def do_OPTIONS(self):
+        if not self.origen_permitido():
+            self.send_response(403)
+            self.end_headers()
+            return
+        self.send_response(204)
+        self.send_cors_headers()
+        self.send_header("Content-Length", "0")
+        self.end_headers()
+
+    def send_json_response(self, code, obj, cors=True):
         body = json.dumps(obj).encode("utf-8")
         self.send_response(code)
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Content-Length", str(len(body)))
-        self.send_header("Access-Control-Allow-Origin", "*")
+        # Las rutas del buzon y del espejo no se anuncian a otros origenes.
+        if cors:
+            self.send_cors_headers()
         self.end_headers()
         self.wfile.write(body)
+
+    def origen_permitido(self):
+        """Solo el propio servidor o una IP privada pueden mutar estado."""
+        origin = self.headers.get("Origin")
+        if not origin:
+            return True
+        return self.cors_origin() == origin
 
 # ── PLANTILLA PAUTADO OFICIAL: secciones, reglas y anclajes por evento ───────
 # Cada evento trae su propio documento y sus propias reglas.

@@ -1,0 +1,80 @@
+/* Impacto y Plan Pais — solo lo propio del modulo.
+   El chrome (tokens, layout, controles) vive en kit.css. */
+
+.lbl-div {
+  display: block;
+  font-family: var(--rs-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--rs-muted);
+  margin: 14px 0 6px;
+}
+
+/* Escenario 16:9 con lamina fija de 1920x1080 escalada por contenedor. */
+.preview-frame { flex-direction: column; }
+.preview-frame .thumb-stage { background: #fff; width: 100%; }
+
+.lamina-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 1080px;
+  transform: scale(var(--k, 1));
+  transform-origin: top left;
+  overflow: hidden;
+  font-family: var(--rs-sans);
+}
+
+/* Rango propio de la lamina 1920 (mas grande que el thumb de 1280). */
+@container (max-width:1150px){.lamina-canvas{--k:.56}}
+@container (max-width: 980px){.lamina-canvas{--k:.48}}
+@container (max-width: 800px){.lamina-canvas{--k:.38}}
+@container (max-width: 620px){.lamina-canvas{--k:.3}}
+@container (max-width: 460px){.lamina-canvas{--k:.22}}
+
+/* Primitivas del compositor (pintarDOM). */
+.lamina-canvas .p-rect { position: absolute; }
+.lamina-canvas .p-txt { position: absolute; margin: 0; white-space: pre-wrap; }
+.lamina-canvas .p-ico { position: absolute; display: block; }
+
+/* Chips ODS de la columna de controles: como el grafico oficial de la ONU
+   (cuadrado de color casi recto, arte blanco grande y numero arriba). */
+#chipsOds label.check, #planProg label.check { display: inline-flex; gap: 6px; align-items: center; margin: 0 10px 6px 0; }
+#chipsOds label.odsrow { display: flex; align-items: center; gap: 10px; min-height: 46px; padding: 4px 6px; border-radius: var(--rs-r-sm, 8px); cursor: pointer; }
+#chipsOds label.odsrow:hover, #chipsOds label.odsrow:focus-within { background: var(--rs-bg-subtle, #F8FAFD); }
+.chip-ods { position: relative; width: 46px; height: 46px; flex: none; display: flex; align-items: center; justify-content: center; border-radius: 6px; color: #FFFFFF; box-shadow: 0 1px 3px rgba(13, 27, 53, 0.16); }
+.chip-ods svg { width: 34px; height: 34px; }
+.chip-ods .num { position: absolute; top: 3px; left: 5px; font: 800 10px/1.2 var(--rs-mono, 'JetBrains Mono', monospace); color: #FFFFFF; opacity: .95; text-shadow: 0 1px 2px rgba(9, 30, 66, 0.35); }
+.odsname { color: var(--rs-main, #0D1B35); }
+
+/* Marca de propuesta sin aplicar (IA). */
+.lamina-canvas .p-txt.propuesta, textarea.propuesta { outline: 2px dashed var(--rs-accent); }
+textarea.propuesta { border-radius: var(--rs-r-sm); }
+
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 10px 0 0; }
+
+/* --- vocabulario cerrado de animacion (Task 5) --- */
+@keyframes impInFade { from { opacity: 0 } to { opacity: 1 } }
+@keyframes impInSlideIzq { from { opacity: 0; transform: translateX(-48px) } to { opacity: 1; transform: none } }
+@keyframes impInSlideArriba { from { opacity: 0; transform: translateY(32px) } to { opacity: 1; transform: none } }
+@keyframes impInWipe { from { clip-path: inset(0 100% 0 0) } to { clip-path: inset(0 0 0 0) } }
+@keyframes impInBanda { from { clip-path: inset(0 0 100% 0) } to { clip-path: inset(0 0 0 0) } }
+@keyframes impInPop { from { opacity: 0; transform: scale(.62) } 65% { opacity: 1 } to { opacity: 1; transform: none } }
+@keyframes impEnfPulso { 0% { transform: none } 40% { transform: scale(1.035) } 100% { transform: none } }
+@keyframes impEnfPop { 0% { opacity: .85; transform: scale(.94) } 60% { opacity: 1; transform: scale(1.02) } 100% { transform: none } }
+@keyframes impOutFade { from { opacity: 1 } to { opacity: 0 } }
+@keyframes impOutSlide { from { opacity: 1; transform: none } to { opacity: 0; transform: translateX(40px) } }
+
+.lamina-canvas > * { will-change: opacity, transform, clip-path; }
+
+/* --- narracion IA (Task 8) --- */
+.propuesta {
+  border: 1px solid var(--rs-primary, #0866F5);
+  background: var(--rs-bg-secondary, #F0F6FF);
+  resize: vertical;
+}
+.contador { font-family: var(--font-mono, 'JetBrains Mono', monospace); font-variant-numeric: tabular-nums; color: var(--rs-muted, #475569); font-size: 13px; min-width: 7ch; align-self: center; }
+
+

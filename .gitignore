@@ -3,6 +3,8 @@ scripts/freellmapi.key
 *.key
 .env
 .env.*
+# ...salvo la plantilla sin valores
+!.env.example
 
 # Descargas y artefactos del instalador de IA gratis
 tools/freellmapi/
@@ -20,6 +22,15 @@ __pycache__/
 
 # Recursos subidos por el equipo en el Estudio de Video (datos de usuario, pesados)
 dashboard/assets_uploads/
+
+# Buzón de propuestas del agente y espejo de estado (datos del usuario, efímeros)
+dashboard/data/content/
+dashboard/data/state.json
+dashboard/data/sections.db
+dashboard/data/sections.db-shm
+dashboard/data/sections.db-wal
+dashboard/data/applied/
+dashboard/data/discarded/
 
 # Capturas de pantalla de revisión/QA (no son parte del producto)
 dashboard/shots/
@@ -40,12 +51,38 @@ fix*.png
 final-*.png
 site-landing.png
 graph.png
+# Auditoría móvil y de foco: capturas y volcados de detección
+audit/
+assessment-b-*.png
+
+# Pruebas de motores de voz: no son la locución entregable
+assets/voice/previews/
+
+# Estado efímero del watcher de estadísticas
+dashboard/data/stats.status.json
 
 # Herramientas de agentes / andamios locales
 .playwright-mcp/
 .superpowers/
+.impeccable/
 node_modules/
+
+# Reflejos de skills que crea scripts/setup_agente.ps1 (la fuente es skills/)
+.opencode/skills/
+.agents/skills/
 
 # Sistema operativo
 Thumbs.db
 desktop.ini
+
+# Cache interno que graphify crea dentro del corpus al reconstruir
+brain/corpus/graphify-out/
+
+# Locks de recursos del orquestador: por maquina, nunca al repo
+locks/
+
+# Configuracion real de la maquina de trabajo (la plantilla es env.example.json)
+env.json
+
+# Basura de Blender y renders de prueba
+blender/tmp/
