@@ -284,10 +284,11 @@
     return vacio;
   }
 
-  MOD.buildPrompt = function buildPrompt(agentCfg, rubricAgent, state, mode) {
+  MOD.buildPrompt = function buildPrompt(agentCfg, rubricAgent, state, mode, extra) {
     const st = state || {};
     const cfg = agentCfg || {};
     const rub = rubricAgent || { reglas: [], promptTarea: {}, salidaEsperada: {} };
+    const ext = extra || null;
     const parts = [];
     parts.push("[ROL]\nEres el Super Agente \"" + (cfg.name || cfg.id) + "\" del Rally Studio, asesor experto del certamen. Ayudas a un equipo de innovación a ganar evaluación perfecta.");
     parts.push("[RÚBRICA ACTIVA]\n" + (rub.reglas || []).map((r) => "- " + r.texto + " (ref: " + r.ref + ")").join("\n"));
@@ -300,6 +301,11 @@
     parts.push("[CONTENIDO ACTUAL]\n" + contentBlock(cfg.id, st));
     const tarea = (rub.promptTarea && rub.promptTarea[mode]) || "";
     parts.push("[TAREA]\n" + tarea);
+    if (mode === "externa" && ext && ext.externalText) {
+      parts.push("[RESPUESTA EXTERNA A CONTRASTAR]\n" +
+        "Lo siguiente lo produjo otra IA fuera del proyecto. Contrastalo contra la r\u00fabrica activa:\n" +
+        "<<<RESPUESTA_EXTERNA\n" + String(ext.externalText) + "\nRESPUESTA_EXTERNA>>>");
+    }
     const salida = (rub.salidaEsperada && rub.salidaEsperada[mode]) || "";
     let salidaTxt = salida;
     if (mode === "directo") {
@@ -351,6 +357,89 @@
     try { localStorage.setItem(HISTORY_KEY, JSON.stringify(h)); } catch (e) { /* storage lleno */ }
     return h[agentId];
   };
+
+  // ── Task 4: cliente IA local (solo el servicio :8000, sin claves ni fallback duplicado) ──
+  const AI_BASE = "http://localhost:8000/api/ai";
+  const FETCH_TIMEOUT_MS = 5000;
+  const POLL_MS = 2000;
+
+  MOD._classifyAIResponse = function _classifyAIResponse(res) {
+    if (!res || typeof res !== "object" || !res.body || typeof res.body !== "object") {
+      return { kind: "down", message: "buz\u00f3n local apagado: el servicio no respondi\u00f3" };
+    }
+    const body = res.body;
+    if (res.status === 429 && body.status === "rate-limit") {
+      return { kind: "rate-limit", message: body.message || "l\u00edmite de uso alcanzado" };
+    }
+    if (typeof body.status === "string") {
+      if (body.status === "started") return { kind: "started", job: body.job, provider: body.provider || body.model || "" };
+      if (body.status === "done") return { kind: "done", text: body.text || "", provider: body.provider || body.model || "" };
+      if (body.status === "error") return { kind: "error", message: body.message || "error del servicio" };
+      if (body.status === "no-provider") return { kind: "no-provider", message: body.message || "sin proveedor de IA configurado" };
+      if (body.status === "running" || body.status === "queued") {
+        return { kind: "running", message: body.message || "" };
+      }
+      return { kind: "running", message: body.message || ("estado de job: " + body.status) };
+    }
+    return { kind: "down", message: body.message || ("servicio respondi\u00f3 HTTP " + res.status) };
+  };
+
+  function fetchWithTimeout(url, opts) {
+    const ctrl = new AbortController();
+    const t = setTimeout(function () { ctrl.abort(); }, FETCH_TIMEOUT_MS);
+    return fetch(url, Object.assign({}, opts, { signal: ctrl.signal })).finally(function () { clearTimeout(t); });
+  }
+
+  // analyze(promptText, onProgress?) → Promise<{ok:true,text,provider} | {ok:false,status,message}>
+  MOD.analyze = function analyze(promptText, onProgress) {
+    return new Promise(function (resolve) {
+      let p = typeof onProgress === "function" ? onProgress : function () {};
+      let res = null;
+      fetchWithTimeout(AI_BASE, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt: String(promptText || "") })
+      })
+        .then(function (r) { return r.json().then(function (b) { return { status: r.status, body: b }; }); })
+        .then(function (r) { res = r; return MOD._classifyAIResponse(r); })
+        .then(function (cls) {
+          if (cls.kind !== "started") { p(cls); resolve(fail(cls)); return; }
+          pollJob(cls.job, p, resolve);
+        })
+        .catch(function () {
+          p({ kind: "down", message: "buz\u00f3n local apagado: el servicio no respondi\u00f3" });
+          resolve(fail(MOD._classifyAIResponse(null)));
+        });
+      function fail(cls) { return { ok: false, status: cls.kind, message: cls.message || "sin respuesta" }; }
+    });
+  };
+
+  function pollJob(job, p, resolve) {
+    fetchWithTimeout(AI_BASE + "/progress?job=" + encodeURIComponent(job))
+      .then(function (r) { return r.json().then(function (b) { return { status: r.status, body: b }; }); })
+      .then(function (r) {
+        const cls = MOD._classifyAIResponse(r);
+        if (cls.kind === "done") { p(cls); resolve({ ok: true, text: cls.text, provider: cls.provider }); return; }
+        if (cls.kind === "error") { p(cls); resolve({ ok: false, status: "error", message: cls.message }); return; }
+        if (cls.kind === "down") { p(cls); resolve({ ok: false, status: "down", message: cls.message }); return; }
+        setTimeout(function () { pollJob(job, p, resolve); }, POLL_MS);
+      })
+      .catch(function () {
+        const cls = MOD._classifyAIResponse(null);
+        p(cls);
+        resolve({ ok: false, status: "down", message: cls.message });
+      });
+  }
+
+  // Chip de proveedor: GET /api/ai/status tolerante a falla.
+  MOD.aiStatus = function aiStatus() {
+    return fetchWithTimeout(AI_BASE + "/status")
+      .then(function (r) { return r.json(); })
+      .then(function (b) { return b && typeof b === "object" ? b : {}; })
+      .catch(function () { return { status: "down", message: "buz\u00f3n local apagado" }; });
+  };
+
+  MOD.POLL_MS = POLL_MS;
 
   globalThis.RSA = MOD;
 
@@ -701,6 +790,183 @@
         ov.classList.add("is-open");
       });
     }
+
+    // ── Task 4: análisis directo / respuesta externa / render estructurado ──
+    // renderAnalysis(rootEl, result): result = {ok:true,text,provider} | {ok:false,status,message}
+    RSA.renderAnalysis = function renderAnalysis(rootEl, result) {
+      rootEl.innerHTML = "";
+      if (!result || !result.ok) {
+        const notes = {
+          "rate-limit": "El servicio alcanzó su límite de uso. Mensaje del servicio:",
+          "no-provider": "No hay proveedor de IA conectado en el servicio local. Mensaje:",
+          "error": "El servicio reportó un error. Mensaje:",
+          "down": "El buzón local (rally_service) no responde. Mensaje:"
+        };
+        const note = el("div", "rsa-note rsa-note-err");
+        note.appendChild(document.createTextNode(notes[result && result.status] || notes.down + " "));
+        if (result && result.message) {
+          note.appendChild(document.createTextNode(" " + String(result.message)));
+        }
+        rootEl.appendChild(note);
+        return;
+      }
+      const parsed = RSA.parseAIResult(result.text || "");
+      if (parsed.format === "raw") {
+        rootEl.appendChild(el("div", "rsa-raw-label", "respuesta sin formato"));
+        const pre = document.createElement("pre");
+        pre.className = "rsa-raw-text";
+        pre.textContent = result.text || "";
+        rootEl.appendChild(pre);
+        return parsed;
+      }
+      const data = parsed.data || {};
+      // Veredictos
+      if (Array.isArray(data.veredictos) && data.veredictos.length) {
+        const vs = el("div", "rsa-verdicts");
+        data.veredictos.forEach(function (v) {
+          const estado = String(v.estado || "");
+          const cls = estado === "Cumple" ? "ok" : (estado === "Parcial" ? "warn" : (estado === "Falla" ? "err" : "soft"));
+          vs.appendChild(el("span", "rsa-chip rsa-chip-" + cls,
+            "<strong>" + esc(estado) + "</strong> " + esc(v.criterio || "")));
+        });
+        rootEl.appendChild(vs);
+      }
+      // Problemas
+      if (Array.isArray(data.problemas) && data.problemas.length) {
+        const ps = el("div", "rsa-problems");
+        data.problemas.forEach(function (p) {
+          const sev = p.severity === "Critico" ? "err" : (p.severity === "Mejora" ? "warn" : "soft");
+          const row = el("div", "rsa-problem rsa-problem-" + sev);
+          row.appendChild(el("strong", null, esc(p.severity || "Sugerencia") + " · " + (p.titulo || p.title || "")));
+          if (p.evidencia) row.appendChild(el("div", "rsa-problem-evidence", esc(p.evidencia)));
+          if (p.correccion) row.appendChild(el("div", "rsa-problem-fix", "Corrección: " + esc(p.correccion)));
+          ps.appendChild(row);
+        });
+        const h = el("h4", "rsa-section-title", "Problemas");
+        rootEl.appendChild(h);
+        rootEl.appendChild(ps);
+      }
+      // Ajustes: copiar ANTES de saltar; pegarlo es decisión del humano (decisión 6).
+      if (Array.isArray(data.ajustes) && data.ajustes.length) {
+        const h = el("h4", "rsa-section-title", "Ajustes propuestos");
+        rootEl.appendChild(h);
+        data.ajustes.forEach(function (a) {
+          const row = el("div", "rsa-adjust");
+          row.appendChild(el("div", "rsa-adjust-text", esc(a.texto || a.text || "")));
+          const acts = el("div", "rsa-adjust-acts");
+          const btnCopy = el("button", "rsa-btn rsa-btn-mini", "Copiar");
+          btnCopy.addEventListener("click", function () {
+            copyText(a.texto || a.text || "", function (ok) {
+              btnCopy.textContent = ok ? "Copiado" : "Sin portapapeles";
+              setTimeout(function () { btnCopy.textContent = "Copiar"; }, 1500);
+            });
+          });
+          acts.appendChild(btnCopy);
+          if (a.tab) {
+            const btnGo = el("button", "rsa-btn rsa-btn-mini", "Ir a " + esc(a.tab));
+            btnGo.addEventListener("click", function () {
+              copyText(a.texto || a.text || "", function () {
+                jump(a.tab); // salto tras copia; pegar es manual
+              });
+            });
+            acts.appendChild(btnGo);
+          }
+          row.appendChild(acts);
+          rootEl.appendChild(row);
+        });
+      }
+      // Visuales
+      if (Array.isArray(data.visuales) && data.visuales.length) {
+        const h = el("h4", "rsa-section-title", "Sugerencias visuales");
+        rootEl.appendChild(h);
+        const ul = el("ul", "rsa-visuals");
+        data.visuales.forEach(function (v) {
+          ul.appendChild(el("li", null, esc(typeof v === "string" ? v : (v.texto || v.descripcion || JSON.stringify(v)))));
+        });
+        rootEl.appendChild(ul);
+      }
+      return parsed;
+    };
+
+    // Resumen de una salida para historial (≤ 120 chars).
+    function resumenDe(parsed, result) {
+      if (parsed && parsed.format === "json" && parsed.data && Array.isArray(parsed.data.problemas)) {
+        const crit = parsed.data.problemas.filter(function (p) { return p.severity === "Critico"; }).length;
+        return crit + " crítico(s), " + parsed.data.problemas.length + " problema(s) marcados";
+      }
+      if (parsed && parsed.format === "raw") return String(result.text || "").slice(0, 120);
+      return "sin problemas marcados";
+    }
+
+    // analyzeDirect(ctx): prompt directo → analyze → render → historial
+    RSA.analyzeDirect = function analyzeDirect(ctx) {
+      const RSAv = RSA;
+      const st = ctx.state || RSAv.readState();
+      const resultEl = ctx.resultEl;
+      resultEl.innerHTML = "";
+      resultEl.appendChild(el("div", "rsa-note", "Analizando con la IA local… (poll cada 2 s)"));
+      const rub = rubricFor(ctx.agentId, st.rally_type);
+      if (!rub) {
+        resultEl.innerHTML = "";
+        resultEl.appendChild(el("div", "rsa-note rsa-note-err",
+          "rúbricas no cargadas: no puedo armar el prompt de análisis. Los checks locales siguen activos."));
+        return;
+      }
+      const promptText = RSAv.buildPrompt(ctx.agentCfg || { id: ctx.agentId }, rub, st, "directo");
+      RSAv.analyze(promptText).then(function (res) {
+        const parsed = RSA.renderAnalysis(resultEl, res);
+        if (res.ok) {
+          RSA.historyAdd(ctx.agentId, { mode: "directo", resumen: resumenDe(parsed, res), veredicto: parsed && parsed.format });
+        }
+      });
+    };
+
+    // analyzeExternal(ctx): respuesta externa → la IA local la contrasta → render → historial
+    RSA.analyzeExternal = function analyzeExternal(ctx) {
+      const RSAv = RSA;
+      const st = ctx.state || RSAv.readState();
+      const resultEl = ctx.resultEl;
+      const ext = String(ctx.externalText || "").trim();
+      resultEl.innerHTML = "";
+      if (!ext) {
+        resultEl.appendChild(el("div", "rsa-note rsa-note-err",
+          "Pega primero la respuesta de la IA externa en el cuadro de texto."));
+        return;
+      }
+      resultEl.appendChild(el("div", "rsa-note", "Contrastando tu respuesta externa con la IA local…"));
+      const rub = rubricFor(ctx.agentId, st.rally_type);
+      if (!rub) {
+        resultEl.innerHTML = "";
+        resultEl.appendChild(el("div", "rsa-note rsa-note-err",
+          "rúbricas no cargadas: no puedo armar el prompt de contraste. Los checks locales siguen activos."));
+        return;
+      }
+      const promptText = RSAv.buildPrompt(
+        ctx.agentCfg || { id: ctx.agentId },
+        rub, st, "externa",
+        { externalText: ext }
+      );
+      RSAv.analyze(promptText).then(function (res) {
+        const parsed = RSA.renderAnalysis(resultEl, res);
+        if (res.ok) {
+          RSA.historyAdd(ctx.agentId, { mode: "externa", resumen: resumenDe(parsed, res), veredicto: parsed && parsed.format });
+        }
+      });
+    };
+
+    // Chip de proveedor real (GET /api/ai/status, tolerante a falla).
+    RSA.UI_refreshProvider = function UI_refreshProvider(chip) {
+      RSA.aiStatus().then(function (stUS) {
+        if (!chip) return;
+        if (stUS && stUS.provider) {
+          chip.textContent = stUS.provider + (stUS.model ? " · " + stUS.model : "");
+          chip.classList.add("rsa-provider-ok");
+        } else {
+          chip.textContent = (stUS && stUS.message) || "no disponible";
+          chip.classList.add("rsa-provider-down");
+        }
+      });
+    };
 
     // Superficie pública para Tasks 4–5.
     globalThis.RSA_UI = {

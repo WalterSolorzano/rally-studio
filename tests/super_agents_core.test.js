@@ -23,6 +23,12 @@ vm.runInContext(src, ctx, { filename: "super_agents.js" });
 const RSA = ctx.RSA;
 assert.ok(RSA, "RSA debe existir en el contexto VM");
 
+// Rubricas reales del Task 1 (se registran en globalThis y window si existe).
+const rubSrcPath = path.join(__dirname, "..", "dashboard", "super_agents_rubrics.js");
+vm.runInContext(fs.readFileSync(rubSrcPath, "utf8"), ctx, { filename: "super_agents_rubrics.js" });
+const RSA_RUBRICS = ctx.RSA_RUBRICS || (ctx.window && ctx.window.RSA_RUBRICS);
+assert.ok(RSA_RUBRICS, "RSA_RUBRICS debe existir en el contexto VM");
+
 const STATE_KEY = "rally_studio_production_state_2026_v3";
 const words = (n) => Array.from({ length: n }, (_, i) => "w" + i).join(" ");
 const hit = (p, re) => (re.test(String(p.title)) || re.test(String(p.evidence || "")));
@@ -206,4 +212,28 @@ all.forEach((p) => {
   assert.ok(p.title && typeof p.evidence === "string", "forma {title, severity, evidence}");
 });
 
-console.log("SUITE COMPLETA: todos los asserts de Task 2 pasan.");
+// ── Task 4: _classifyAIResponse (pura) ───────────────────────────────────────
+assert.equal(RSA._classifyAIResponse({status: 429, body: {status: "rate-limit", message: "limite"}}).kind, "rate-limit");
+assert.equal(RSA._classifyAIResponse({status: 200, body: {status: "no-provider", message: "x"}}).kind, "no-provider");
+assert.equal(RSA._classifyAIResponse({status: 200, body: {status: "started", job: "j1"}}).kind, "started");
+assert.equal(RSA._classifyAIResponse({status: 200, body: {status: "done", text: "hola"}}).kind, "done");
+assert.equal(RSA._classifyAIResponse({status: 200, body: {status: "error", message: "m"}}).kind, "error");
+// estados intermedios del job: polling contin�a, no es "down"
+assert.equal(RSA._classifyAIResponse({status: 200, body: {status: "running", text: ""}}).kind, "running");
+assert.equal(RSA._classifyAIResponse({status: 200, body: {status: "queued"}}).kind, "running");
+assert.equal(RSA._classifyAIResponse({status: 500, body: {}}).kind, "down");
+assert.equal(RSA._classifyAIResponse(null).kind, "down");
+// mensaje honesto del servicio viaja con la clasificación cuando existe
+assert.equal(RSA._classifyAIResponse({status: 429, body: {status: "rate-limit", message: "MSG-429"}}).message, "MSG-429");
+assert.equal(RSA._classifyAIResponse({status: 200, body: {status: "error", message: "MSG-ERR"}}).message, "MSG-ERR");
+
+// buildPrompt(mode externa) inyecta la respuesta externa a contrastar
+const pExt = RSA.buildPrompt({id: "guion", name: "Revisor de Gui\u00f3n"}, RSA_RUBRICS.guion,
+  {rally_type: "latam"}, "externa", {externalText: "DESDE-IA-EXTERNA-123"});
+assert.ok(pExt.includes("[RESPUESTA EXTERNA A CONTRASTAR]"), "secci\u00f3n respuesta externa");
+assert.ok(pExt.includes("DESDE-IA-EXTERNA-123"), "texto externo presente");
+// y sin respuesta externa la seccion no aparece
+assert.equal(RSA.buildPrompt({id: "guion"}, RSA_RUBRICS.guion, {rally_type: "latam"}, "directo")
+  .includes("RESPUESTA EXTERNA"), false);
+
+console.log("SUITE COMPLETA: todos los asserts de Task 2+4 pasan.");
