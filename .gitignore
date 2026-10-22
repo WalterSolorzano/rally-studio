@@ -73,6 +73,9 @@ dashboard/data/stats.status.json
 .superpowers/
 .impeccable/
 node_modules/
+tmp/
+scripts/.cache/
+tools/parse_detect.py
 
 # Reflejos de skills que crea scripts/setup_agente.ps1 (la fuente es skills/)
 .opencode/skills/

@@ -195,7 +195,17 @@ flowchart TD
 - **Vista Dual de Trabajo:**
   - **Modo Documento Cooperativo:** Permite leer todos los retos en formato continuo, registrar lluvia de ideas por integrante del equipo y descartar opciones inviables con 1 click.
   - **Modo Tarjetas Tácticas:** Vista condensada con indicadores de win-rate y accesos rápidos a análisis estratégico.
-- **Ranking TOP 3 en Radar:** Algoritmo que clasifica los 3 retos con mayor probabilidad de victoria evaluando viabilidad técnica, potencial de novedad y alineación con ODS.
+- **Importar visible y lista editable:** el botón de importación queda siempre a la vista y la lista cargada muestra cada reto con su acción de borrado. Importar con la lista ya cargada **suma** por defecto; reemplazar es una decisión explícita.
+- **Ranking TOP 3 en Radar:** Algoritmo que clasifica los 3 retos con mayor probabilidad de victoria evaluando viabilidad técnica, potencial de novedad y alineación con ODS. Si no hay precedente histórico, el puntaje se calcula con los criterios reales del reto y se marca como `criterios`; no se inventa un win-rate plano.
+
+### 1.1 Guardas de ingesta de retos
+
+El parser vive en `dashboard/challenge_parser.js`, separado de `app.js` para poder probarlo sin DOM (`tests/test_challenges_parse.py`).
+
+- **Un informe no es un catálogo:** solo abre reto un encabezado `RETO n:` / `DESAFÍO n:`, o una lista numerada cuyo título sea plausible. Encabezados de sección («3 El reporte nacional», «La lógica común», «Anexos 17.1…») se rechazan.
+- **IDs sanos:** IDs repetidos se renumeran y al reemplazar la lista se renumera desde `01`.
+- **Sin duplicados:** al sumar retos se descarta el título ya existente y se continúa la numeración.
+- **Purga en cascada:** borrar un reto elimina sus votos, sus ideas de deliberación y la selección activa que lo apuntaba, para no dejar referencias huérfanas.
 
 ### 2. Taller de Solución y WOW Factor
 Formulación de la tesis de impacto, diferenciación de la competencia y anclaje a las necesidades reales del certamen.

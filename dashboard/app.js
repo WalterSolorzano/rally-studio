@@ -3283,7 +3283,6 @@ function winnerAngleFor(ch) {
   const probes = [
     { ok: !!ch.precedent, text: ch.precedent ? `Precedente ganador: ${ch.precedent}` : "Sin precedente directo: apóyate en el patrón de ganador genérico (infra útil + dato en vivo)." },
     { ok: info.isHighComp, text: info.isHighComp ? "Concurrencia alta: exige ≥2 capas tecnológicas para no perder por saturación." : "Concurrencia baja: ventaja directa si la factibilidad es sólida." },
-    { ok: !!ch.nicaraguaAdaptation, text: ch.nicaraguaAdaptation ? `Anclaje territorial listo: ${String(ch.nicaraguaAdaptation).slice(0, 90)}` : "Redacta el anclaje territorial: ganadores citan comunidad y lugar." },
     { ok: true, text: "Juega las cifras exactas: presupuesto $4,000–$6,000 realista y demostrable en 28 h." },
     { ok: true, text: "Diseña la demostración temprana (Acto II): hardware visible antes del minuto 30 del video." }
   ];
@@ -3418,12 +3417,13 @@ function mesaGo(chId) {
   renderTab("challenges");
 }
 
-function renderMesaNav(list, activeId) {
+function renderMesaNav(list, activeId, total) {
+  const totalActivos = Number.isFinite(total) ? total : list.length;
   return `
     <aside class="deliberation-nav">
       <div class="deliberation-nav-header">
         <span>CATÁLOGO DE RETOS</span>
-        <span style="font-family:var(--font-mono); font-size:11px; color:#5C7193;">${list.length} ACTIVOS</span>
+        <span style="font-family:var(--font-mono); font-size:11px; color:#5C7193;">${totalActivos} ACTIVOS</span>
       </div>
       <div class="deliberation-nav-list">
         ${list.map(ch => {
@@ -3636,7 +3636,6 @@ function renderMesaSlide(ch, list, idx) {
           }).join("")}
         </div>
         <div class="cr-head-note">
-          <span class="cr-mono">viabilidad ${ch.winRate || 90}%</span>
           <span class="cr-niche">${isSat ? "ALTA CONCURRENCIA" : "NICHO TÉCNICO"}</span>
           <span class="cr-niche-why">${isSat ? "Exige ≥2 capas tecnológicas para superar la saturación de sedes." : "Baja rivalidad de sedes: ventaja directa si la factibilidad es sólida."}</span>
         </div>
@@ -3651,7 +3650,7 @@ function renderMesaSlide(ch, list, idx) {
     <h2 class="cr-title">${ch.title}</h2>
 
     <div class="cr-metrics">
-      <span class="cr-metric"><b>${info.score}</b> <span class="cr-metric-k">pts del motor</span></span>
+      <span class="cr-metric"><b>${info.score}</b> <span class="cr-metric-k">${info.scoreBasis === "historico" ? "pts del motor" : "pts por criterios"}</span></span>
       <span class="cr-metric"><b>#${rank}</b> <span class="cr-metric-k">de ${list.length}</span></span>
       <span class="cr-metric-reason">${(reasonLines[0] || "Delibera en equipo: el motor no tiene una razón dominante para este reto.").replace(/\(\s*[+-]?[\d.]+\s*pts\s*\)/i, "").trim()}</span>
     </div>
@@ -3988,7 +3987,7 @@ function renderViewChallenges() {
 
         ${mesaActive ? `
           <div class="deliberation-container">
-            ${renderMesaNav(mesaList, mesaActive.id)}
+            ${renderMesaNav(mesaList, mesaActive.id, list.length)}
             <section class="deliberation-sheet cr-sheet">
               ${renderMesaBar(mesaList, mesaActive, mesaIndex)}
               ${renderMesaSlide(mesaActive, mesaList, mesaIndex)}
@@ -4031,6 +4030,7 @@ function deleteChallenge(id) {
   const name = ch ? ch.title : `Reto #${id}`;
   if (confirm(`¿Descartar "${name}" del radar del certamen?`)) {
     state.challenges = (state.challenges || []).filter(c => c.id !== id);
+    purgeChallengeRefs([id]);
     if (state.challenge_id === id) {
       state.challenge_id = "";
       state.challenge_title = "";
@@ -4183,6 +4183,10 @@ function saveEditedChallenge(chId) {
   if (!ch) return;
 
   const t = document.getElementById("edit-ch-title").value.trim();
+  if (t && window.RallyChallengeParser && !window.RallyChallengeParser.isPlausibleTitle(t)) {
+    showToast("Ese título parece un encabezado de documento, no un reto. Escribe el problema del comité.", true);
+    return;
+  }
   const cat = document.getElementById("edit-ch-cat").value;
   const dem = document.getElementById("edit-ch-demand").value.trim();
   const wow = document.getElementById("edit-ch-wow").value.trim();
@@ -4210,10 +4214,17 @@ let CHALLENGE_RANKING_2026 = []; // datos externos (challenge_bank.json)
 
 function challengeRankFor(ch) {
   const t = (ch.title || "").toLowerCase();
-  const rank = CHALLENGE_RANKING_2026.find(r => t.includes(r.kw));
+  const rank = CHALLENGE_RANKING_2026.find(r => r.kw && t.includes(String(r.kw).toLowerCase()));
   const isHighComp = (ch.compDensity || "").toLowerCase().includes("alta");
-  const score = rank ? rank.score : Math.round((ch.winRate || 80) - (isHighComp ? 8 : 0));
   const odsLen = Array.isArray(ch.ods) ? ch.ods.length : (String(ch.ods || "").split(",").filter(Boolean).length || 3);
+  // Sin match histórico no se inventa un puntaje plano: se suma lo que de verdad tiene el reto.
+  const criteriaPoints = (isHighComp ? 0 : 18)
+    + (odsLen >= 3 ? 10.5 : 0)
+    + 14
+    + (ch.nicaraguaAdaptation ? 10 : 0)
+    + ((ch.precedent || ch.winnerPattern) ? 8 : 0)
+    + (ch.wowProposal ? 6 : 0);
+  const score = rank ? rank.score : Math.min(100, Math.round(criteriaPoints));
   const criteria = [
     { icon: "Rivalidad", ok: !isHighComp, text: isHighComp ? "Muchas sedes compiten el mismo reto" : (ch.compDensity ? "Poca rivalidad de sedes: " + ch.compDensity.toLowerCase() : "Poca rivalidad de sedes") },
     { icon: "ODS", ok: odsLen >= 3, text: `Cubre ${odsLen} ODS${odsLen >= 3 ? " (+10.5)" : ""}` },
@@ -4221,7 +4232,7 @@ function challengeRankFor(ch) {
     { icon: "Territorio", ok: !!ch.nicaraguaAdaptation, text: ch.nicaraguaAdaptation ? "Anclaje en comunidades de Nicaragua" : "Sin anclaje territorial redactado" },
     { icon: "Precedente", ok: !!ch.precedent, text: ch.precedent ? "Patrón de ganador: " + ch.precedent : "Sin precedente directo" }
   ];
-  return { score, reasonLines: rank ? rank.reasons : null, criteria, isHighComp };
+  return { score, reasonLines: rank ? rank.reasons : null, criteria, isHighComp, scoreBasis: rank ? "historico" : "criterios" };
 }
 
 function toggleRankingDetail(chId) {
@@ -4281,10 +4292,13 @@ function renderRankingChartSvg(rows) {
   return `<div class="rank-chart-wrap">${svg}</div>`;
 }
 
-function renderChallengeRanking() {  const list = (state.challenges && state.challenges.length ? state.challenges : OFFICIAL_CHALLENGES_2026).slice();
+function renderChallengeRanking() {
+  const list = (state.challenges && state.challenges.length ? state.challenges : OFFICIAL_CHALLENGES_2026).slice();
   const rows = list.map(ch => ({ ch, info: challengeRankFor(ch) }))
     .sort((a, b) => b.info.score - a.info.score || (a.ch.id > b.ch.id ? 1 : -1));
   const chosen = state.challenge_id ? rows.find(r => r.ch.id === state.challenge_id) : null;
+  // El ranking es pronóstico, no segunda papeleta: solo el podio; el resto vive en el catálogo de abajo.
+  const podium = rows.slice(0, Math.min(5, rows.length));
   return `
     <section class="ranking-panel">
       <div class="ranking-head">
@@ -4306,9 +4320,9 @@ function renderChallengeRanking() {  const list = (state.challenges && state.cha
           </div>
         `}
       </div>
-      ${renderRankingChartSvg(rows)}
+      ${renderRankingChartSvg(podium)}
       <div class="ranking-rows">
-        ${rows.map((r, i) => {
+        ${podium.map((r, i) => {
           const isSel = state.challenge_id === r.ch.id;
           const topReason = r.info.reasonLines
             ? r.info.reasonLines.find(rr => rr.includes("+")) || r.info.reasonLines[0]
@@ -4324,9 +4338,6 @@ function renderChallengeRanking() {  const list = (state.challenges && state.cha
                 <div class="rank-bar"><span style="width:${Math.max(6, Math.min(100, r.info.score))}%"></span></div>
                 <span class="rank-num">${r.info.score}</span>
               </div>
-              <button class="btn-secondary rank-pick ${isSel ? "rank-pick-sel" : ""}" onclick="event.stopPropagation(); selectChallenge('${r.ch.id}', ${isSel ? "true" : "false"});">
-                ${isSel ? "✔ Elegido" : "Elegir"}
-              </button>
             </div>
             <div class="rank-detail" id="rank-detail-${r.ch.id}" style="display:none;">
               <div class="rank-crit-grid">
@@ -4341,6 +4352,7 @@ function renderChallengeRanking() {  const list = (state.challenges && state.cha
           `;
         }).join("")}
       </div>
+      <p class="ranking-sub" style="margin-top:8px;">Podio de ${rows.length}: el resto se delibera en el catálogo de abajo. Aquí solo se pronostica; la decisión se toma en la mesa.</p>
     </section>
   `;
 }
@@ -5211,7 +5223,7 @@ function parseChallengesFromOcrText(ocrText, fileName) {
       return {
         title: title.length > 85 ? title.slice(0, 82) + "..." : title,
         demand: rest,
-        ods: odsMatch ? Array.from(new Set(odsMatch.map(o => o.toUpperCase()))) : (isSocial ? ["ODS 11"] : ["ODS 12", "ODS 9"]),
+        ods: odsMatch ? Array.from(new Set(odsMatch.map(o => o.toUpperCase()))) : [],
         category: isSocial ? "Impacto Social" : "Innovación"
       };
     });
@@ -5229,7 +5241,7 @@ function parseChallengesFromOcrText(ocrText, fileName) {
   return [{
     title: bestTitle.length > 90 ? bestTitle.slice(0, 87) + "..." : bestTitle,
     demand: demand,
-    ods: odsMatch ? Array.from(new Set(odsMatch.map(o => o.toUpperCase()))) : (isSocial ? ["ODS 11"] : ["ODS 12", "ODS 9"]),
+    ods: odsMatch ? Array.from(new Set(odsMatch.map(o => o.toUpperCase()))) : [],
     category: isSocial ? "Impacto Social" : "Innovación"
   }];
 }
@@ -5256,7 +5268,7 @@ function parseSingleChallengeChunk(chunk, label, fileName) {
   return {
     title: title,
     demand: demand,
-    ods: odsMatch ? Array.from(new Set(odsMatch.map(o => o.toUpperCase()))) : (isSocial ? ["ODS 11", "ODS 3"] : ["ODS 9", "ODS 12"]),
+    ods: odsMatch ? Array.from(new Set(odsMatch.map(o => o.toUpperCase()))) : [],
     category: isSocial ? "Impacto Social" : "Innovación"
   };
 }
@@ -5490,6 +5502,7 @@ function removeChallenge(id) {
   const before = state.challenges.length;
   state.challenges = state.challenges.filter(ch => String(ch.id) !== String(id));
   if (state.challenges.length === before) return;
+  purgeChallengeRefs([id]);
   if (String(state.active_deliberation_challenge_id) === String(id)) {
     state.active_deliberation_challenge_id = state.challenges.length ? state.challenges[0].id : "";
   }
@@ -5505,7 +5518,9 @@ function removeChallenge(id) {
 
 function clearAllChallenges() {
   if (confirm("¿Limpiar todos los retos cargados para ingresar un nuevo comunicado oficial?")) {
+    const goneIds = (state.challenges || []).map(c => String(c.id));
     state.challenges = [];
+    purgeChallengeRefs(goneIds);
     state.challenge_id = "";
     state.challenge_title = "";
     state.active_deliberation_challenge_id = "";
@@ -5594,140 +5609,56 @@ function processCommitteeChallengesInput() {
     return;
   }
 
-  const lines = txt.split("\n").map(l => l.trim()).filter(Boolean);
-  const parsed = [];
-  let current = null;
+  const parser = window.RallyChallengeParser;
+  if (!parser) {
+    alert("Falta cargar el validador de retos (challenge_parser.js). Recarga la página.");
+    return;
+  }
+  const parsed = parser.parse(txt);
 
-  lines.forEach(l => {
-    const imgMatch = l.match(/^\[IMAGEN_ORIGEN:\s*([^\]]+)\]/i);
-    if (imgMatch) {
-      if (current) current.imageKey = imgMatch[1].trim();
-      return;
-    }
-    const odsMatch = l.match(/^ODS:\s*(.+)/i);
-    if (odsMatch) {
-      if (current) current.ods = odsMatch[1].split(",").map(s => s.trim().toUpperCase());
-      return;
-    }
-
-    const match = l.match(/^(?:reto|desaf[ií]o)?\s*#?\s*(\d+)[:\.\-\s]+(.*)/i);
-    if (match) {
-      if (current) {
-        if (current.imageKey && window._challengeImageStore && window._challengeImageStore[current.imageKey]) {
-          current.imageUrl = window._challengeImageStore[current.imageKey];
-        } else if (window._challengeImageStore && window._challengeImageStore[current.id]) {
-          current.imageUrl = window._challengeImageStore[current.id];
-        }
-        const tactical = generateTacticalSolution(current.title, current.officialExpectation, current.category);
-        Object.assign(current, tactical);
-        parsed.push(current);
-      }
-      let title = match[2].trim();
-      const id = match[1].padStart(2, "0");
-      if (title.toLowerCase().includes("whatsapp image")) {
-        title = `Desafío Oficial #${id}`;
-      }
-      const category = title.toLowerCase().includes("social") || title.toLowerCase().includes("comun") ? "Impacto Social" : "Innovación";
-      current = {
-        id: id,
-        title: title,
-        category: category,
-        officialExpectation: "",
-        compDensity: "Edición Oficial en Vivo"
-      };
-    } else if (current) {
-      const cleanLine = l.replace(/^Demanda del comit[eé]:\s*/i, "").trim();
-      current.officialExpectation = (current.officialExpectation + " " + cleanLine).trim();
-    }
+  // Cartel oficial de cada reto, si vino en la importación.
+  const imageStore = window._challengeImageStore || {};
+  parsed.forEach(ch => {
+    ch.imageUrl = (ch.imageKey && imageStore[ch.imageKey]) || imageStore[ch.id] || "";
+    delete ch.imageKey;
   });
 
-  if (current) {
-    if (current.imageKey && window._challengeImageStore && window._challengeImageStore[current.imageKey]) {
-      current.imageUrl = window._challengeImageStore[current.imageKey];
-    } else if (window._challengeImageStore && window._challengeImageStore[current.id]) {
-      current.imageUrl = window._challengeImageStore[current.id];
-    }
-    const tactical = generateTacticalSolution(current.title, current.officialExpectation, current.category);
-    Object.assign(current, tactical);
-    parsed.push(current);
-  }
-
   if (parsed.length > 0) {
-    // Sanitizar titulos fragiles (placeholders OCR/whatsapp) y descartar duplicados ANTES de instalar.
-    const sanitized = parsed.map(ch => {
-      const generic = /^(desaf[ií]o|reto)\s*oficial\s*#?\d*$/i.test(ch.title || "") || !ch.title;
-      if (generic) {
-        ch.title = formatChallengeTitle({ ...ch, title: "" });
+    // Tesis táctica solo con demanda real del comité; sin demanda queda "pendiente".
+    const conDemanda = parsed.map(ch => {
+      if ((ch.officialExpectation || "").trim().length >= 40) {
+        Object.assign(ch, generateTacticalSolution(ch.title, ch.officialExpectation, ch.category));
       }
       return ch;
     });
-    const seen = [];
-    const deduped = sanitized.filter(ch => {
-      const sigTail = (ch.officialExpectation || ch.description || "").replace(/\s+/g, " ").toLowerCase().slice(0, 40);
-      const sig = (ch.imageUrl || "") + "|" + sigTail;
-      if (sigTail && seen.includes(sig)) return false;
-      if (sigTail) seen.push(sig);
-      return true;
-    });
     const appendBox = document.getElementById("challenge-append-mode");
     const shouldAppend = !!(appendBox && appendBox.checked);
-    state.challenges = mergeIncomingChallenges(deduped.length ? deduped : sanitized, shouldAppend);
+    state.challenges = mergeIncomingChallenges(conDemanda, shouldAppend);
     state.active_deliberation_challenge_id = state.challenges[0].id;
     saveState();
     renderTab("challenges");
     openChallengeImportBox(); // deja la lista visible con el resultado de la importación
   } else {
-    let title = lines[0];
-    if (title.toLowerCase().includes("whatsapp image") || title.toLowerCase().startsWith("image")) title = "Desafío Oficial #01";
-    let expectation = lines.slice(1).join(" ") || lines[0];
-    if (expectation.toLowerCase().includes("whatsapp image")) {
-      expectation = expectation.replace(/whatsapp image[^\.\n]*/gi, "cartel de convocatoria oficial");
-    }
-    const category = title.toLowerCase().includes("social") ? "Impacto Social" : "Innovación";
-    const tactical = generateTacticalSolution(title, expectation, category);
-    const appendBox2 = document.getElementById("challenge-append-mode");
-    const shouldAppend2 = !!(appendBox2 && appendBox2.checked);
-    state.challenges = mergeIncomingChallenges([{
-      id: "01",
-      title: title,
-      category: category,
-      compDensity: "Edición Oficial en Vivo",
-      officialExpectation: expectation,
-      imageUrl: (window._challengeImageStore && window._challengeImageStore["01"]) || "",
-      ...tactical
-    }], shouldAppend2);
-    state.active_deliberation_challenge_id = state.challenges[0].id;
-    saveState();
-    renderTab("challenges");
-    openChallengeImportBox();
+    // Ni un reto reconocible: no se inventa uno con el primer renglón (así entró el informe).
+    alert("Este texto no parece un comunicado de retos. Usa el formato \"RETO 01: título\" y una línea de demanda por reto.");
   }
 }
 
 // Importar con la lista ya cargada suma por defecto en vez de borrar todo.
-// Los ids nuevos continúan la numeración y los títulos repetidos se descartan.
+// Ids, deduplicado y purga en cascada viven en challenge_parser.js (probado en tests/js).
 function mergeIncomingChallenges(incoming, append) {
-  const list = Array.isArray(incoming) ? incoming : [];
-  if (!append || !Array.isArray(state.challenges) || !state.challenges.length) return list;
-  const sigOf = (ch) => String(ch.title || "").replace(/\s+/g, " ").toLowerCase().slice(0, 60);
-  const existing = state.challenges.slice();
-  const seen = new Set(existing.map(sigOf));
-  // Ids nuevos: correlativo libre desde (n+1), no "máximo numérico + 1" — los
-  // ids importados de un PDF traen años ("2018") y disparaban ids absurdos.
-  const taken = new Set(existing.map(ch => String(ch.id)));
-  let nextId = existing.length + 1;
-  const nextFreeId = () => {
-    let id;
-    do { id = String(nextId).padStart(2, "0"); nextId += 1; } while (taken.has(id));
-    taken.add(id);
-    return id;
-  };
-  const added = list.filter(ch => {
-    const sig = sigOf(ch);
-    if (!sig || seen.has(sig)) return false;
-    seen.add(sig);
-    return true;
-  }).map(ch => Object.assign({}, ch, { id: nextFreeId() }));
-  return existing.concat(added);
+  const parser = window.RallyChallengeParser;
+  if (!parser) return Array.isArray(incoming) ? incoming : [];
+  const existing = Array.isArray(state.challenges) ? state.challenges : [];
+  const res = parser.merge(existing, incoming, append);
+  if (res.removedIds && res.removedIds.length) purgeChallengeRefs(res.removedIds);
+  return res.list;
+}
+
+// Borra votos, redacciones y selección de retos que ya no existen.
+function purgeChallengeRefs(ids) {
+  const parser = window.RallyChallengeParser;
+  if (parser && parser.purgeRefs) parser.purgeRefs(state, ids);
 }
 
 function selectChallenge(id, proceedImmediately = false) {
