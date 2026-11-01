@@ -67,6 +67,25 @@ esta doctrina. Nació de una revisión real del usuario y es obligatoria.
   tamaño y el mismo color (navy), y el rótulo va en el mismo chip. Cambiar tamaño o color de una
   respecto a la otra la degrada a subsección. Ningún nombre de solución repite el cobalto del
   número de reto: ese cobalto es del reto, no de la propuesta.
+- **El oficio obvio no es una solución.** Reparar, reciclar, recolectar o "capacitar" es lo primero
+  que se le ocurre a cualquiera y no gana: lo hace cualquier taller del barrio. La propuesta sube
+  cuando **al residuo se le suma una capa técnica nueva** (medición, control, automatización,
+  material, trazabilidad) **y una función colectiva** (un servicio que la comunidad usa todos los
+  días). Antes de escribir, cinco pruebas:
+  1. ¿Podría montarlo mañana un taller común, sin nada nuevo? Entonces es un oficio, no una propuesta.
+  2. ¿El insumo es tan variable que no se puede estandarizar (marcas, años, modelos)? Entonces el
+     mecanismo tiene que **medir y adaptarse en el sitio**, no prometer una norma fija ni una garantía
+     por modelo.
+  3. ¿Alguien lo usa todos los días y paga por el servicio, o se vende una unidad y desaparece?
+  4. ¿La métrica es física (quintales, litros, vatios, horas) o es una promesa?
+  5. ¿Qué gana quien lo opera y qué pierde el barrio si no existe?
+- **El banco de ganadores se consulta por mecanismo, no por nombre.**
+  `knowledge/retos_razonamiento.json` tiene 20 casos con problema, insight, solución, métrica y video.
+  Si existe el caso que ganó ese mismo reto, se lee primero y se copia su **mecanismo**, no su
+  redacción: el reto de motores lo ganó un equipo que no revendió motores, los convirtió en planta
+  motriz de tracción comunitaria. Los demás precedentes se eligen por el movimiento técnico que
+  comparten ("obra + instrumentación", "residuo + material nuevo", "dato + decisión"), nunca por
+  coincidencia de palabras con el título del reto.
 - **Insignias que aplican** (2 o 3 por reto, después de los ODS): marcos reales de reconocimiento,
   financiamiento o política a los que la solución puede postular — Ciudades Creativas UNESCO,
   Premio Latinoamérica Verde, Fondo de Agua, Fondo nacional de innovación, Marco de Sendai, REP de
@@ -196,6 +215,10 @@ Cada punto nació de una corrección del usuario. Si el entregable repite uno de
 13. **Nombre abstracto.** Un nombre que suena a institución ("banco", "fondo", "plataforma")
     antes que a producto confunde al lector. Se prueba el nombre en una frase: si hay que
     explicarlo, se cambia.
+14. **Solución de oficio obvio.** Reparar y revender el residuo con garantía, sin capa técnica ni
+    servicio colectivo. Cualquier taller lo hace, el insumo varía por marca y año, y no hay razón
+    para que la gente vaya. Se corrige buscando qué función diaria puede prestar ese residuo y qué
+    medición la vuelve confiable.
 
 ### Validación antes de entregar
 
