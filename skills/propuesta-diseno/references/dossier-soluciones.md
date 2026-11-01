@@ -25,7 +25,7 @@ glassmorphism, tarjetas repetidas, emojis.
 - Fuentes locales en `fuentes/*.ttf` declaradas con `@font-face`; nunca depender de Google
   Fonts al imprimir.
 
-## Colores oficiales de los ODS (badge)
+## Colores oficiales de los ODS (respaldo)
 
 | ODS | HEX | ODS | HEX |
 |---|---|---|---|
@@ -39,8 +39,20 @@ glassmorphism, tarjetas repetidas, emojis.
 | 8 | `#A21942` | 17 | `#19486A` |
 | 9 | `#FD6925` | | |
 
-Badge: cuadrado de 9 mm, radio 1.2 mm, número en blanco, peso 800. Debajo, nombre del ODS en
-navy y una línea de justificación en cuerpo.
+Figura oficial: se inserta el archivo oficial de la ONU `E_SDG_Icons-NN.jpg` (466×466) a 11 mm.
+La imagen ya trae el color, el número y el pictograma, así que **no se dibuja un cuadrado con el
+número**: una recreación no se reconoce como sello y fue una corrección expresa del usuario.
+Debajo, nombre oficial en español (8.4 pt navy) y una línea de justificación (7.9 pt cuerpo).
+Los PNG/JPG se guardan en `fuentes/ods/odsNN.jpg` (los 11 que usan los retos de prueba: 2, 3, 6,
+7, 8, 9, 11, 12, 13, 15, 16); si falta uno, se descarga de
+`https://sdgs.un.org/sites/default/files/goals/E_SDG_Icons-NN.jpg` (dos dígitos, extensión `.jpg`).
+
+```
+.ods-logo { width: 11mm; height: 11mm; display: block; margin-bottom: 1.6mm; border-radius: 1mm }
+```
+
+Word: `run.add_picture(path, width=Cm(1.15))` dentro de la primera celda de la tabla del ODS.
+Excel: `openpyxl.drawing.image.Image` anclada en `A{fila}` con 26×26 px y alto de fila 34.
 
 ## Estructura de página
 

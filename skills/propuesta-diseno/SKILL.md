@@ -115,8 +115,11 @@ esta doctrina. Nació de una revisión real del usuario y es obligatoria.
   pitch de 60 s → **COMENTARIOS** con líneas regladas.
 - **Tres páginas por reto.** Página 1: cabecera + ODS + Opción 01. Página 2: Opción 02 +
   detalles + cadena + métricas. Página 3: señal + precedentes + pitch + comentarios.
-- ODS con **figura**: badge cuadrado del color oficial del ODS con su número en blanco, nombre
-  y una línea de justificación. Nunca escribir solo "ODS 12".
+- ODS con **la figura oficial de la ONU**, no una recreación. Se usa el archivo oficial del ODS
+  (`E_SDG_Icons-NN.jpg`, 466×466) como imagen a 11 mm; la figura ya trae el color, el número y
+  el pictograma. Prohibido reemplazarla por un cuadrado con el número en blanco, por un ícono
+  propio o por un emoji: el lector tiene que reconocer el sello real. Debajo, nombre oficial en
+  español y una línea de justificación. Nunca escribir solo "ODS 12".
 - Insignias en una fila de píldoras (`border: 1px solid #C8D8EE`): rótulo mono navy y calificador
   en gris. Se acomodan en dos líneas como máximo; si ocupan más, sobra una insignia.
 - Nada de páginas huérfanas: si el cierre no cabe, se compacta el ritmo vertical; no se deja una
@@ -139,10 +142,39 @@ esta doctrina. Nació de una revisión real del usuario y es obligatoria.
 
 - **PDF**: A4, Chrome headless, fuentes locales (`Plus Jakarta Sans` + `JetBrains Mono`).
 - **Word**: espejo del PDF con la misma jerarquía, las dos opciones y los ODS como tabla con
-  celda de color.
+  la imagen oficial del ODS insertada en la primera celda (no un número sobre color).
 - **Excel**: hoja Panel con todos los retos (propuesta 01, propuesta 02, beneficiario, métrica
   clave, precedente y video) y una hoja por reto con ambas soluciones, detalles, métricas y
   bloque "Comentarios e ideas del equipo" con filas editables (idea, responsable, métrica, fecha).
+
+### Fallos que ya costaron una revisión
+
+Cada punto nació de una corrección del usuario. Si el entregable repite uno de estos, se devuelve.
+
+1. **Una sola solución por reto.** Se piden dos, con mecanismo distinto y sin depender una de la
+   otra. La segunda no es "fase 2" de la primera ni un plan B; se sostiene sola.
+2. **Solución que cuelga de la otra.** Frases como "vuelve al banco central", "se suma a la
+   Opción 01" o "aprovecha la red de la primera" rompen la independencia. Se reescriben.
+3. **Jerga sin traducir.** Si aparece un objeto técnico sin explicar, el lector no entiende la
+   idea ("hotel de nidos", "fisurómetro", "bebedero", "retorta", "biochar", "transesterificación").
+   Todo término se traduce en la misma frase.
+4. **Párrafo de presentación corto y sin escala.** Tres líneas no venden: falta la situación, qué
+   incluye y cuánto (unidades, metros, litros, número de puntos, garantía). Sin cifras el reto
+   suena a eslogan.
+5. **Defensa ante el jurado.** No hay réplica. Todo se cubre con la propuesta y el video; el
+   riesgo se resuelve con una decisión de diseño, no con un párrafo de ataque/mitigación.
+6. **ODS decorativos.** No se eligen por quedar bien: cada ODS va con la razón concreta por la que
+   la solución lo toca. Si la justificación sirve para cualquier reto, no sirve.
+7. **Insignias inventadas o de relleno.** Solo marcos reales que el mecanismo habilita; si no
+   aplica, se deja en dos insignias.
+8. **Figura del ODS recreada.** Un cuadrado con el número no es el sello oficial. Se usa la
+   imagen oficial de la ONU.
+9. **Estadísticas internas del motor** (tasas de acierto, scores de precedentes). Solo datos que
+   vendan la solución.
+10. **Retos escritos por nosotros.** El usuario entrega los retos; nosotros solo proponemos. Nunca
+    se inventa un reto ni se completa el enunciado con supuestos propios.
+11. **Páginas casi vacías o elementos cortados.** Antes de entregar se mira el PDF renderizado,
+    no solo el conteo de páginas.
 
 ### Validación antes de entregar
 
@@ -150,6 +182,6 @@ esta doctrina. Nació de una revisión real del usuario y es obligatoria.
 2. Buscar palabras prohibidas (`saturacion`, `probabilidad`, `win rate`, `winrate`, `score`)
    y la cadena "No documentado".
 3. Verificar que cada reto tenga sus 2 soluciones independientes, 2 o 3 insignias, 3 detalles,
-   sus links de video y sus ODS con figura.
+   sus links de video y sus ODS con **la imagen oficial** (no un cuadrado con número).
 4. Renderizar páginas a PNG y mirar: sin cortes, sin grupos de métricas partidos entre páginas,
    sin repetición circular del nombre del reto.
