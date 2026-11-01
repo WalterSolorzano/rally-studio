@@ -52,6 +52,10 @@ Reglas completas y decisiones D1–D7 en
    en el mismo shell nunca se solapan: el primero libera antes de que el
    segundo corra, y la prueba miente con un OK falso.
    `release --resource <r> --force` lo usa SOLO el director, avisando al humano.
+
+4b. **Chequeo obligatorio del guardia antes de procesos pesados**: antes de despachar cualquier especialista que ejecute un binario pesado (render Blender headless, TTS con `gen_voice.py`, grabación web con Playwright, exportación ffmpeg), el director ejecuta:
+`python scripts/gpu_lock.py run --owner <especialista> --priority <alta|media|baja> -- <comando>`
+Nunca llamar a blender, ffmpeg ni TTS directo. Si el recurso está ocupado, el guardia bloquea y el director informa al usuario el tiempo estimado de cola. El PC puede ir cargado pero no debe colapsar: máximo 3 especialistas concurrentes (2 típico + 1 esperando).
 5. **Nadie improvisa**: antes de producir, el especialista responde sobre su
    fila: qué toma, en qué acto, cuántos segundos en cámara, qué criterio de
    rúbrica sostiene y con qué tomas se conecta (`depends_on`). Si algo no lo
