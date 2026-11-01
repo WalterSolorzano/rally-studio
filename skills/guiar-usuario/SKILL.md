@@ -31,6 +31,7 @@ description: Lleva al usuario por las 13 etapas del workbench, detecta qué falt
 - Si el usuario pide saltarse una etapa, dile qué se rompe después (no bloquees, avisa).
 - Si detectas una contradicción (dos cifras distintas en guion y presupuesto), señálala
   antes de seguir.
+- Antes de guiar, leer `AGENTS.md` sección "El flujo (13 etapas)" (certamen → team → challenges → solution → impact → multi_ai → pautado → budget → resources → canvas → script → webdemo → timeline). Elegir la primera etapa incompleta y avanzar solo cuando la anterior esté completa. Nunca inventar datos para poder avanzar; si falta una respuesta, la etapa queda abierta y se pregunta al usuario.
 
 ## Punteros
 
