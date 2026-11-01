@@ -1,0 +1,137 @@
+{
+ "video_id": "HvVmzTdUaJA",
+ "url": "https://youtu.be/HvVmzTdUaJA",
+ "year": 2019,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "CIBEDS",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2019,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "CIBEDS",
+   "challenge": "04 - SISTEMA INTELIGENTE PARA DETECTAR AUSENCIA DE ELEMENTOS DE SEGURIDAD EN EDIFICIOS"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:58:03+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Rally Latinoamericano de Innovación 2019. Desafío. Sistema inteligente para detectar ausencia de elementos de seguridad en edificios. ¿Le brindas a tus trabajadores un lugar seguro para elaborar? ¿Tu entorno de trabajo garantiza la disponibilidad de elementos de seguridad en caso de incidentes? ¿Te has hecho una idea de cuán costoso puede ser no contar con los elementos de seguridad necesarios ante desastres, gastos de seguros de vida, reestructuraciones de áreas afectadas y, en mayor grado, la muerte? ¿Sabías que, según OIT, Organización Internacional de Trabajo cada 15 segundos en algún lugar del mundo, 160 trabajadores sufren accidente relacionados con el trabajo? Las prácticas de seguridad social y laboral deficientes alcanzan el 4% del PIB, Producto Interno Bruto Global de cada año. Para emitigar este incidente hemos creado SIMBE, Sistema de Monitorio y Verificación de Elementos de Seguridad, que deben permanecer en todas las instituciones e infraestructuras. Este sistema se basa en la instalación de dispositivos electrónicos los que permiten monitorear la existencia y ubicación de dichos elementos dentro de las instalaciones. A manera de minimizar riesgos elaborados, este sistema que nos permite monitorear por medio de ondas, de radio de frecuencias y transductores. El dispositivo que será colocado en cada uno de los elementos de seguridad consta de una tarjeta RF que permite una onda lo cual será percibida por una tarjeta electrónica inteligente que tiene la capacidad de ser receptora y transmisora de datos. Esta enviará los datos a un servidor que por medio de un algoritmo matemático nos permitirá descifrar el mensaje recibido. Una vez descifrado, el mensaje este genera un reporte de los dispositivos que se encuentran a ausentes o presentantes perfectos. Un sistema multifunción en la palma de su mano.",
+ "segments": [
+  {
+   "start": 0.24,
+   "end": 8.16,
+   "text": "Rally Latinoamericano de Innovación 2019. Desafío. Sistema inteligente para detectar"
+  },
+  {
+   "start": 8.16,
+   "end": 21.99,
+   "text": "ausencia de elementos de seguridad en edificios. ¿Le brindas a tus trabajadores un lugar seguro"
+  },
+  {
+   "start": 21.99,
+   "end": 30.13,
+   "text": "para elaborar? ¿Tu entorno de trabajo garantiza la disponibilidad de elementos de seguridad en caso"
+  },
+  {
+   "start": 30.13,
+   "end": 36.77,
+   "text": "de incidentes? ¿Te has hecho una idea de cuán costoso puede ser no contar con los elementos"
+  },
+  {
+   "start": 36.77,
+   "end": 44.73,
+   "text": "de seguridad necesarios ante desastres, gastos de seguros de vida, reestructuraciones de áreas"
+  },
+  {
+   "start": 44.73,
+   "end": 52.13,
+   "text": "afectadas y, en mayor grado, la muerte? ¿Sabías que, según OIT, Organización Internacional"
+  },
+  {
+   "start": 52.13,
+   "end": 59.17,
+   "text": "de Trabajo cada 15 segundos en algún lugar del mundo, 160 trabajadores sufren accidente"
+  },
+  {
+   "start": 59.17,
+   "end": 66.05,
+   "text": "relacionados con el trabajo? Las prácticas de seguridad social y laboral deficientes alcanzan"
+  },
+  {
+   "start": 66.05,
+   "end": 72.69,
+   "text": "el 4% del PIB, Producto Interno Bruto Global de cada año."
+  },
+  {
+   "start": 72.69,
+   "end": 79.69,
+   "text": "Para emitigar este incidente hemos creado SIMBE, Sistema de Monitorio y Verificación de Elementos"
+  },
+  {
+   "start": 79.69,
+   "end": 86.61,
+   "text": "de Seguridad, que deben permanecer en todas las instituciones e infraestructuras. Este"
+  },
+  {
+   "start": 86.61,
+   "end": 93.45,
+   "text": "sistema se basa en la instalación de dispositivos electrónicos los que permiten monitorear la"
+  },
+  {
+   "start": 93.45,
+   "end": 98.97,
+   "text": "existencia y ubicación de dichos elementos dentro de las instalaciones."
+  },
+  {
+   "start": 98.97,
+   "end": 106.29,
+   "text": "A manera de minimizar riesgos elaborados, este sistema que nos permite monitorear por"
+  },
+  {
+   "start": 106.29,
+   "end": 113.41,
+   "text": "medio de ondas, de radio de frecuencias y transductores. El dispositivo que será colocado"
+  },
+  {
+   "start": 113.41,
+   "end": 120.45,
+   "text": "en cada uno de los elementos de seguridad consta de una tarjeta RF que permite una onda"
+  },
+  {
+   "start": 120.45,
+   "end": 127.53,
+   "text": "lo cual será percibida por una tarjeta electrónica inteligente que tiene la capacidad de ser"
+  },
+  {
+   "start": 127.53,
+   "end": 135.33,
+   "text": "receptora y transmisora de datos. Esta enviará los datos a un servidor que por medio de"
+  },
+  {
+   "start": 135.33,
+   "end": 143.84,
+   "text": "un algoritmo matemático nos permitirá descifrar el mensaje recibido."
+  },
+  {
+   "start": 143.84,
+   "end": 148.88,
+   "text": "Una vez descifrado, el mensaje este genera un reporte de los dispositivos que se encuentran"
+  },
+  {
+   "start": 148.88,
+   "end": 153.48,
+   "text": "a ausentes o presentantes perfectos."
+  },
+  {
+   "start": 153.48,
+   "end": 156.6,
+   "text": "Un sistema multifunción en la palma de su mano."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 165.2
+}

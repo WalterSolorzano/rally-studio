@@ -65,7 +65,7 @@ cuánto gana, de dónde salen los insumos y qué esfuerzo exige arrancar.
 - La solución sirve para **toda la familia del reto**, no para el ejemplo más cómodo.
 
 El razonamiento completo (análisis sistémico, familias de mecanismos A–G, pruebas de descarte y
-anti-patrones) vive en `skills/propuesta-diseno/SKILL.md`. Este documento solo dice cómo
+banderas de riesgo) vive en `skills/dossier-soluciones/SKILL.md`. Este documento solo dice cómo
 ejecutarlo.
 
 ## Esquema del JSON

@@ -1,0 +1,147 @@
+{
+ "video_id": "5AuCCIwsDyU",
+ "url": "https://youtu.be/5AuCCIwsDyU",
+ "year": 2024,
+ "collection": "sede",
+ "country": "EL SALVADOR",
+ "team": "TECH TEAM",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "TECH TEAM",
+   "challenge": "02 - EMPAQUES CONTAMINANTES"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:44:09+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "El uso excesivo de empaques desechables genera toneladas de residuos que terminan en nuestros ríos, mares y calles afectando gravemente al medio ambiente. A través de iCollect buscamos rechapar esto creando un ciclo de reutilización eficiente entre consumidores, tiendas y empresas. Es una aplicación móvil que conecta a los consumidores con tiendas locales y fabricantes. Los usuarios recolectan envases reutilizables de productos que ya han sido consumidos y los llevan a las tiendas registradas como puntos de recolección. Allí los envases son pesados y escaneados mediante un código QR generando puntos llamados Echo Points que los usuarios pueden acumular y canjear por recompensas o descuentos en productos. Estas tiendas almacenan los envases hasta que las empresas de los fabricantes lo recogen para su limpieza, preparación y reintegración en su proceso productivo, reduciendo la necesidad de crear nuevos empaques. Lo innovador de iCollect es que no solo reduce el desperdicio, sino que convierte a los consumidores y empeobredadores activos dentro de un sistema de economía circular. A diferencia de otras soluciones que se centran en el reciclaje tradicional, nosotros apostamos por la reutilización que es más eficiente y sostenible a largo plazo. Además, la app hace que el proceso sea simple, atractivo y beneficioso, tanto para los consumidores como para las empresas. iCollect no es solo una sanación tecnológica, sino que también es una herramienta que fomenta la conciencia ambiental y genera un impacto positivo en nuestro entorno. Únete con nosotros para transformar los empaques contaminantes en recursos valiosos para un futuro más verde. iCollect",
+ "segments": [
+  {
+   "start": 0.37,
+   "end": 5.81,
+   "text": "El uso excesivo de empaques desechables genera toneladas de residuos que terminan en nuestros"
+  },
+  {
+   "start": 5.81,
+   "end": 11.49,
+   "text": "ríos, mares y calles afectando gravemente al medio ambiente."
+  },
+  {
+   "start": 11.49,
+   "end": 17.65,
+   "text": "A través de iCollect buscamos rechapar esto creando un ciclo de reutilización eficiente"
+  },
+  {
+   "start": 17.65,
+   "end": 22.09,
+   "text": "entre consumidores, tiendas y empresas."
+  },
+  {
+   "start": 22.09,
+   "end": 27.09,
+   "text": "Es una aplicación móvil que conecta a los consumidores con tiendas locales y fabricantes."
+  },
+  {
+   "start": 27.09,
+   "end": 32.41,
+   "text": "Los usuarios recolectan envases reutilizables de productos que ya han sido consumidos y los"
+  },
+  {
+   "start": 32.41,
+   "end": 36.01,
+   "text": "llevan a las tiendas registradas como puntos de recolección."
+  },
+  {
+   "start": 36.01,
+   "end": 42.09,
+   "text": "Allí los envases son pesados y escaneados mediante un código QR generando puntos llamados"
+  },
+  {
+   "start": 42.09,
+   "end": 47.29,
+   "text": "Echo Points que los usuarios pueden acumular y canjear por recompensas o descuentos en"
+  },
+  {
+   "start": 47.29,
+   "end": 50.05,
+   "text": "productos."
+  },
+  {
+   "start": 50.05,
+   "end": 54.29,
+   "text": "Estas tiendas almacenan los envases hasta que las empresas de los fabricantes lo recogen"
+  },
+  {
+   "start": 54.29,
+   "end": 60.61,
+   "text": "para su limpieza, preparación y reintegración en su proceso productivo, reduciendo la necesidad"
+  },
+  {
+   "start": 60.61,
+   "end": 63.01,
+   "text": "de crear nuevos empaques."
+  },
+  {
+   "start": 63.01,
+   "end": 68.57,
+   "text": "Lo innovador de iCollect es que no solo reduce el desperdicio, sino que convierte a los consumidores"
+  },
+  {
+   "start": 68.57,
+   "end": 73.41,
+   "text": "y empeobredadores activos dentro de un sistema de economía circular."
+  },
+  {
+   "start": 73.41,
+   "end": 78.17,
+   "text": "A diferencia de otras soluciones que se centran en el reciclaje tradicional, nosotros"
+  },
+  {
+   "start": 78.17,
+   "end": 83.77,
+   "text": "apostamos por la reutilización que es más eficiente y sostenible a largo plazo."
+  },
+  {
+   "start": 83.81,
+   "end": 90.93,
+   "text": "Además, la app hace que el proceso sea simple, atractivo y beneficioso, tanto para los consumidores"
+  },
+  {
+   "start": 90.93,
+   "end": 93.61,
+   "text": "como para las empresas."
+  },
+  {
+   "start": 93.61,
+   "end": 99.05,
+   "text": "iCollect no es solo una sanación tecnológica, sino que también es una herramienta que fomenta"
+  },
+  {
+   "start": 99.05,
+   "end": 104.85,
+   "text": "la conciencia ambiental y genera un impacto positivo en nuestro entorno."
+  },
+  {
+   "start": 104.85,
+   "end": 109.25,
+   "text": "Únete con nosotros para transformar los empaques contaminantes en recursos valiosos para"
+  },
+  {
+   "start": 109.25,
+   "end": 111.93,
+   "text": "un futuro más verde."
+  },
+  {
+   "start": 111.93,
+   "end": 112.93,
+   "text": "iCollect"
+  }
+ ],
+ "has_info": false,
+ "duration_s": 116.6
+}

@@ -1,0 +1,92 @@
+{
+ "video_id": "cAyFgmIHQ_U",
+ "url": "https://youtu.be/cAyFgmIHQ_U",
+ "year": 2024,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "ECOFLOW",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "ECOFLOW",
+   "challenge": "01 - MICROPRESAS O MICROEMBALSES"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:29:19+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Argentina, un país constantemente asotado por tormentas y sequías extremas que dificultan el sustento de miles de personas. La falta de lluvias también tuvieron como consecuencia un marcado retraso, como decía anteriormente, en la siembra de azúcar y maíz, llevando a ambos cultivos a cubrir la menor área en 22 años, donde la producción agrícola se ve fuertemente afectada por el extenso intervalo de sequías. Cuando a cofló, proponimos una solución sostenible, la recolección de tratamiento y reutilización del agua mediante mito represas. Estas mito represas, diseñadas para contener grandes cantidades de agua, solían tener un problema. La solución es un ácido membrano, con alámen geosintética que recubre la presa evitando jugas y asegurando la intención del agua. Además, esto cuenta con la válvula de izanotos para accesoriar. El agua recolentada se dirige a un sistema de filtrade, con el agua grande y con el agua puerto. Pasa por un tormentón que se alarma, que caliente el agua y es un ácido de arrasos UV. Lo hay, que se almacena un tanto en el izanot, pero finalmente el agua llega al usuario y lo aposide si utilizarla para cultivo o para consumo. En caso de esta última, pasa por un mini-indexador que arregla calcio y manguece hipotáceo. Si el agua se asegura para el uso humano y cualquier excedente vuelve a la invito de este. De esta forma garantizamos que el agua siempre esté armacenada, evitando la evaporación y proliferación de mosquitos, asegurando una solución eficaz frente a la sequía.",
+ "segments": [
+  {
+   "start": 11.25,
+   "end": 19.25,
+   "text": "Argentina, un país constantemente asotado por tormentas y sequías extremas que dificultan el sustento de miles de personas."
+  },
+  {
+   "start": 19.25,
+   "end": 27.25,
+   "text": "La falta de lluvias también tuvieron como consecuencia un marcado retraso, como decía anteriormente, en la siembra de azúcar y maíz,"
+  },
+  {
+   "start": 27.25,
+   "end": 37.25,
+   "text": "llevando a ambos cultivos a cubrir la menor área en 22 años, donde la producción agrícola se ve fuertemente afectada por el extenso intervalo de sequías."
+  },
+  {
+   "start": 37.25,
+   "end": 46.25,
+   "text": "Cuando a cofló, proponimos una solución sostenible, la recolección de tratamiento y reutilización del agua mediante mito represas."
+  },
+  {
+   "start": 46.25,
+   "end": 52.25,
+   "text": "Estas mito represas, diseñadas para contener grandes cantidades de agua, solían tener un problema."
+  },
+  {
+   "start": 52.25,
+   "end": 62.25,
+   "text": "La solución es un ácido membrano, con alámen geosintética que recubre la presa evitando jugas y asegurando la intención del agua."
+  },
+  {
+   "start": 63.25,
+   "end": 67.25,
+   "text": "Además, esto cuenta con la válvula de izanotos para accesoriar."
+  },
+  {
+   "start": 67.25,
+   "end": 71.25,
+   "text": "El agua recolentada se dirige a un sistema de filtrade, con el agua grande y con el agua puerto."
+  },
+  {
+   "start": 71.25,
+   "end": 81.94,
+   "text": "Pasa por un tormentón que se alarma, que caliente el agua y es un ácido de arrasos UV."
+  },
+  {
+   "start": 81.94,
+   "end": 91.9,
+   "text": "Lo hay, que se almacena un tanto en el izanot, pero finalmente el agua llega al usuario y lo aposide si utilizarla para cultivo o para consumo."
+  },
+  {
+   "start": 91.9,
+   "end": 97.9,
+   "text": "En caso de esta última, pasa por un mini-indexador que arregla calcio y manguece hipotáceo."
+  },
+  {
+   "start": 97.9,
+   "end": 103.9,
+   "text": "Si el agua se asegura para el uso humano y cualquier excedente vuelve a la invito de este."
+  },
+  {
+   "start": 103.9,
+   "end": 113.9,
+   "text": "De esta forma garantizamos que el agua siempre esté armacenada, evitando la evaporación y proliferación de mosquitos, asegurando una solución eficaz frente a la sequía."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 118.9
+}

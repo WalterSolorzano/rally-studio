@@ -1,0 +1,72 @@
+{
+ "video_id": "kr50Oiz8zlo",
+ "url": "https://youtu.be/kr50Oiz8zlo",
+ "year": 2023,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "CREATIVE MIND",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "CREATIVE MIND",
+   "challenge": "08 - TRATAR DE ESTAR MEJOR"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:19:14+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Hola qué tal nosotros somos el equipo Creative Mind, el desafío es tratar de estar mejor. En este caso estaremos presentando la inscripción del problema y su solución. El distanciamiento social producto del COVID-19 implicó un riesgo debido a que despiertan sentimientos de incendidumbre, miedo y desesperación en donde la depresión ha sido crucial en el grupo adolescente. Safety UnLive pretende resolver la depresión de adolescentes por medio de atención integral digital con estrategia de afrontamiento relacionado con la adaptabilidad, la creatividad y la resiliencia. Safety UnLive llevará una estructura compuesto por una tarjeta Arduino sensor de pulso también un GMS para integrar un micro nano SIM card además llevará la batería litio 16 x 32 mm Safety UnLive será tu mejor opción.",
+ "segments": [
+  {
+   "start": 2.19,
+   "end": 9.99,
+   "text": "Hola qué tal nosotros somos el equipo Creative Mind, el desafío es tratar de estar mejor."
+  },
+  {
+   "start": 9.99,
+   "end": 15.19,
+   "text": "En este caso estaremos presentando la inscripción del problema y su solución."
+  },
+  {
+   "start": 15.19,
+   "end": 23.19,
+   "text": "El distanciamiento social producto del COVID-19 implicó un riesgo debido a que despiertan sentimientos"
+  },
+  {
+   "start": 23.19,
+   "end": 31.19,
+   "text": "de incendidumbre, miedo y desesperación en donde la depresión ha sido crucial en el grupo adolescente."
+  },
+  {
+   "start": 31.19,
+   "end": 39.19,
+   "text": "Safety UnLive pretende resolver la depresión de adolescentes por medio de atención integral digital"
+  },
+  {
+   "start": 39.19,
+   "end": 47.19,
+   "text": "con estrategia de afrontamiento relacionado con la adaptabilidad, la creatividad y la resiliencia."
+  },
+  {
+   "start": 47.19,
+   "end": 55.19,
+   "text": "Safety UnLive llevará una estructura compuesto por una tarjeta Arduino sensor de pulso"
+  },
+  {
+   "start": 55.19,
+   "end": 68.19,
+   "text": "también un GMS para integrar un micro nano SIM card además llevará la batería litio 16 x 32 mm"
+  },
+  {
+   "start": 68.19,
+   "end": 74.72,
+   "text": "Safety UnLive será tu mejor opción."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 85.1
+}

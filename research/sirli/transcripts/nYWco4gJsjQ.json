@@ -1,0 +1,82 @@
+{
+ "video_id": "nYWco4gJsjQ",
+ "url": "https://www.youtube.com/watch?v=nYWco4gJsjQ",
+ "year": 2024,
+ "collection": "sede",
+ "country": "EL SALVADOR",
+ "team": "CONSTRUCTORES DEL FUTURO",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "CONSTRUCTORES DEL FUTURO",
+   "challenge": "07 - PARQUÍMETRO DESATENDIDO"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:42:26+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En las ciudades concurridas, la búsqueda de estacionamiento puede ser frustrante y consume mucho tiempo, lo cual genera tráfico, lo que a su vez genera contaminación. La poca regulación en los estacionamientos públicos es un problema que nos afecta a todos. Por esa razón, te presentamos nuestro sistema de parquímetro autónomo. Funciona con parches inteligentes y antenas receptoras posicionadas en los parqueos públicos. Además, cuenta con el soporte de una aplicación móvil en la cual agregarás una forma de pago. Así los cobros por el uso del parquímetro serán automáticos. Tú solo tienes que parquearte en el lugar. En tu celular, se te notificará el tiempo que llevas en el parqueo y la tarifa que se te cobrará al momento de retirarte del lugar. El cobro se hará automáticamente.",
+ "segments": [
+  {
+   "start": 4.3,
+   "end": 11.3,
+   "text": "En las ciudades concurridas, la búsqueda de estacionamiento puede ser frustrante y consume mucho tiempo,"
+  },
+  {
+   "start": 11.3,
+   "end": 16.3,
+   "text": "lo cual genera tráfico, lo que a su vez genera contaminación."
+  },
+  {
+   "start": 16.3,
+   "end": 22.3,
+   "text": "La poca regulación en los estacionamientos públicos es un problema que nos afecta a todos."
+  },
+  {
+   "start": 22.3,
+   "end": 27.3,
+   "text": "Por esa razón, te presentamos nuestro sistema de parquímetro autónomo."
+  },
+  {
+   "start": 27.3,
+   "end": 33.3,
+   "text": "Funciona con parches inteligentes y antenas receptoras posicionadas en los parqueos públicos."
+  },
+  {
+   "start": 33.3,
+   "end": 40.3,
+   "text": "Además, cuenta con el soporte de una aplicación móvil en la cual agregarás una forma de pago."
+  },
+  {
+   "start": 40.3,
+   "end": 45.3,
+   "text": "Así los cobros por el uso del parquímetro serán automáticos."
+  },
+  {
+   "start": 45.3,
+   "end": 48.3,
+   "text": "Tú solo tienes que parquearte en el lugar."
+  },
+  {
+   "start": 48.3,
+   "end": 52.3,
+   "text": "En tu celular, se te notificará el tiempo que llevas en el parqueo"
+  },
+  {
+   "start": 52.3,
+   "end": 57.3,
+   "text": "y la tarifa que se te cobrará al momento de retirarte del lugar."
+  },
+  {
+   "start": 57.3,
+   "end": 60.3,
+   "text": "El cobro se hará automáticamente."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 61.3
+}

@@ -1,0 +1,157 @@
+{
+ "video_id": "LwxNFGI0q60",
+ "url": "https://youtu.be/LwxNFGI0q60",
+ "year": 2022,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "DARKHOLD",
+ "place_label": "TERCER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "sede",
+   "place_label": "TERCER LUGAR",
+   "team": "DARKHOLD",
+   "challenge": "06 - LAS MORDEDURAS DE SERPIENTE A LA VISTA"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:35:16+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Hola, somos el grupo Darkhold de la Universidad Nacional Autónoma de Nicaragua, un alma en agua de la Facultad Farén-Carazo. Hemos escogido darle solución al desafío 6, mordedoras de serpientes a la vista. Esto para resolver la problemática seleccionada es la modificación e innovación de un dispositivo a ullentador de serpientes, ya existente el cual emite pulsaciones. Por ende, estas se desmantan y no ingresan a la zona donde está ubicado el dispositivo. La propuesta consiste en incorporarle una placa SP32, es la denominación de una familia de chipsite debajo costo y consumo de energía, con tecnología wifi y Bluetooth de modo dual integrado, la cual emitirá señales wifi por lo tanto, está permitida conectividad entre los mismos dispositivos y crear una red para la administración mediante la página web, con la cual se va a monitorear todos los dispositivos vinculados a la red, permitiendo visualizar los fallos técnicos e inconvenientes adversos, simplemente asistiendo desde la web, sin necesidad de cerciorarse físicamente. Este constará con parlantes que emitirán un sonido de 400 a 1000 Hz, el cual generará pulsos zónicos, que son perceptibles para las serpientes, siendo las mismas una señal de advertencia que hace que ellas no pasen más allá de los pulsos. Por medio de la página web, se gestionaría el funcionamiento del dispositivo, y así saber en tiempo real el estado de los mismos, cabe resaltar que con esta herramienta se tomaría aproximadamente 10 segundos para saber el estado actual de todos los dispositivos conectados. Esto permite agilizar todos sus procesos. El dispositivo RAP Snake viene a fortalecer los aspectos de gestión y mantenimiento del producto. Por tales motivos le hacemos la invitación a utilizar RAP Snake, para erradicar de una vez por todas los inconvenientes con las serpientes y sus mordeduras.",
+ "segments": [
+  {
+   "start": 0.27,
+   "end": 5.27,
+   "text": "Hola, somos el grupo Darkhold de la Universidad Nacional Autónoma de Nicaragua,"
+  },
+  {
+   "start": 5.27,
+   "end": 7.77,
+   "text": "un alma en agua de la Facultad Farén-Carazo."
+  },
+  {
+   "start": 7.77,
+   "end": 12.27,
+   "text": "Hemos escogido darle solución al desafío 6, mordedoras de serpientes a la vista."
+  },
+  {
+   "start": 12.27,
+   "end": 20.77,
+   "text": "Esto para resolver la problemática seleccionada es la modificación e innovación de un dispositivo a ullentador de serpientes,"
+  },
+  {
+   "start": 20.77,
+   "end": 23.77,
+   "text": "ya existente el cual emite pulsaciones."
+  },
+  {
+   "start": 23.77,
+   "end": 29.27,
+   "text": "Por ende, estas se desmantan y no ingresan a la zona donde está ubicado el dispositivo."
+  },
+  {
+   "start": 29.27,
+   "end": 34.27,
+   "text": "La propuesta consiste en incorporarle una placa SP32,"
+  },
+  {
+   "start": 34.27,
+   "end": 39.27,
+   "text": "es la denominación de una familia de chipsite debajo costo y consumo de energía,"
+  },
+  {
+   "start": 39.27,
+   "end": 43.27,
+   "text": "con tecnología wifi y Bluetooth de modo dual integrado,"
+  },
+  {
+   "start": 43.27,
+   "end": 46.27,
+   "text": "la cual emitirá señales wifi por lo tanto,"
+  },
+  {
+   "start": 46.27,
+   "end": 49.27,
+   "text": "está permitida conectividad entre los mismos dispositivos"
+  },
+  {
+   "start": 49.27,
+   "end": 53.27,
+   "text": "y crear una red para la administración mediante la página web,"
+  },
+  {
+   "start": 53.27,
+   "end": 57.27,
+   "text": "con la cual se va a monitorear todos los dispositivos vinculados a la red,"
+  },
+  {
+   "start": 57.27,
+   "end": 62.27,
+   "text": "permitiendo visualizar los fallos técnicos e inconvenientes adversos,"
+  },
+  {
+   "start": 62.27,
+   "end": 68.27,
+   "text": "simplemente asistiendo desde la web, sin necesidad de cerciorarse físicamente."
+  },
+  {
+   "start": 68.27,
+   "end": 74.27,
+   "text": "Este constará con parlantes que emitirán un sonido de 400 a 1000 Hz,"
+  },
+  {
+   "start": 74.27,
+   "end": 78.27,
+   "text": "el cual generará pulsos zónicos, que son perceptibles para las serpientes,"
+  },
+  {
+   "start": 78.27,
+   "end": 84.27,
+   "text": "siendo las mismas una señal de advertencia que hace que ellas no pasen más allá de los pulsos."
+  },
+  {
+   "start": 84.27,
+   "end": 88.27,
+   "text": "Por medio de la página web, se gestionaría el funcionamiento del dispositivo,"
+  },
+  {
+   "start": 88.27,
+   "end": 92.27,
+   "text": "y así saber en tiempo real el estado de los mismos,"
+  },
+  {
+   "start": 92.27,
+   "end": 97.27,
+   "text": "cabe resaltar que con esta herramienta se tomaría aproximadamente 10 segundos"
+  },
+  {
+   "start": 97.27,
+   "end": 100.27,
+   "text": "para saber el estado actual de todos los dispositivos conectados."
+  },
+  {
+   "start": 100.27,
+   "end": 103.27,
+   "text": "Esto permite agilizar todos sus procesos."
+  },
+  {
+   "start": 103.27,
+   "end": 109.27,
+   "text": "El dispositivo RAP Snake viene a fortalecer los aspectos de gestión y mantenimiento del producto."
+  },
+  {
+   "start": 109.27,
+   "end": 113.27,
+   "text": "Por tales motivos le hacemos la invitación a utilizar RAP Snake,"
+  },
+  {
+   "start": 113.27,
+   "end": 118.27,
+   "text": "para erradicar de una vez por todas los inconvenientes con las serpientes y sus mordeduras."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 118.8
+}

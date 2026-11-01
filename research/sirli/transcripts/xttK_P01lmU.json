@@ -1,0 +1,317 @@
+{
+ "video_id": "xttK_P01lmU",
+ "url": "https://www.youtube.com/watch?v=xttK_P01lmU",
+ "year": 2025,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "JUSTICIA SOCIAL",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "JUSTICIA SOCIAL",
+   "challenge": "01 - APROVECHAMIENTO TETRA PAK"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:59:58+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Cuántos tetrapac tenés en tu heladera? Y en tu basura, muchos de los alimentos y bebidas que consumimos vienen en este envase milagroso, que los protege y los mantiene, pero que resulta una pesadilla para el ambiente. Cartón, plástico, aluminio, una mezcla costosa y compleja de reciclar. La consecuencia, vertederos saturados y contaminación. El problema no es el envase, sino la falta de una cadena de valor que lo aproveche localmente. Por eso, presentamos RecrePac, una solución para darle una nueva vida al tetrapac, transformándolo en juegos de plaza, ecológicos e inclusivos y con propósito social. Tuvitamos los altos costos químicos y energéticos del reciclaje industrial y aprovechamos la durabilidad, impermeabilidad y agilamiento natural del tetrapac. Un sistema de bioconstrucción simple, sustentable y 100% replicable. La factibilidad es innegable. Usamos residuos gratuitos como materia prima, tecnología de moldeado y rellenado es de baja inversión inicial, pero el verdadero motor de RecrePac es su impacto social. Creamos una cadena de valor humana y circular. Instalamos ecopuntos en áreas públicas y privadas, fomentando la participación ciudadana en la recolección. Ofrecemos capacitación y empleo digno a personas en situación carcelaria y de libertad condicional. Con RecrePac, el trabajo se convierte en una herramienta de reparación social y de la oportunidad. Transformamos el residuo recolectado por la comunidad en un espacio de juego seguro y de calidad para los niños. Estamos convirtiendo el desecho más difícil en la oportunidad social más grande. Nuestra propuesta es una solución de triple impacto que une la gestión de residuo, la reinserción laboral y la educación ambiental. RecrePac no solo saca el tetrapac del relleno sanitario, sino que lo devuelve la comunidad transformada en dignidad, juego y futuro. Llevamos oportunidad a cada plaza de Latinoamérica.",
+ "segments": [
+  {
+   "start": 0.53,
+   "end": 2.53,
+   "text": "¿Cuántos tetrapac tenés en tu heladera?"
+  },
+  {
+   "start": 2.53,
+   "end": 4.53,
+   "text": "Y en tu basura,"
+  },
+  {
+   "start": 4.53,
+   "end": 6.53,
+   "text": "muchos de los alimentos y bebidas que consumimos"
+  },
+  {
+   "start": 6.53,
+   "end": 8.53,
+   "text": "vienen en este envase milagroso,"
+  },
+  {
+   "start": 8.53,
+   "end": 10.53,
+   "text": "que los protege y los mantiene,"
+  },
+  {
+   "start": 10.53,
+   "end": 12.53,
+   "text": "pero que resulta una pesadilla para el ambiente."
+  },
+  {
+   "start": 12.53,
+   "end": 14.53,
+   "text": "Cartón, plástico, aluminio,"
+  },
+  {
+   "start": 14.53,
+   "end": 16.53,
+   "text": "una mezcla costosa y compleja de reciclar."
+  },
+  {
+   "start": 16.53,
+   "end": 18.53,
+   "text": "La consecuencia,"
+  },
+  {
+   "start": 18.53,
+   "end": 20.53,
+   "text": "vertederos saturados y contaminación."
+  },
+  {
+   "start": 20.53,
+   "end": 22.53,
+   "text": "El problema no es el envase,"
+  },
+  {
+   "start": 22.53,
+   "end": 24.53,
+   "text": "sino la falta de una cadena de valor"
+  },
+  {
+   "start": 24.53,
+   "end": 26.53,
+   "text": "que lo aproveche localmente."
+  },
+  {
+   "start": 26.53,
+   "end": 28.53,
+   "text": "Por eso, presentamos RecrePac,"
+  },
+  {
+   "start": 28.53,
+   "end": 30.53,
+   "text": "una solución para darle una nueva vida al tetrapac,"
+  },
+  {
+   "start": 30.53,
+   "end": 32.53,
+   "text": "transformándolo en juegos de plaza,"
+  },
+  {
+   "start": 32.53,
+   "end": 34.53,
+   "text": "ecológicos e inclusivos"
+  },
+  {
+   "start": 34.53,
+   "end": 36.53,
+   "text": "y con propósito social."
+  },
+  {
+   "start": 36.53,
+   "end": 38.53,
+   "text": "Tuvitamos los altos costos químicos"
+  },
+  {
+   "start": 38.53,
+   "end": 40.53,
+   "text": "y energéticos del reciclaje industrial"
+  },
+  {
+   "start": 40.53,
+   "end": 42.53,
+   "text": "y aprovechamos la durabilidad,"
+  },
+  {
+   "start": 42.53,
+   "end": 44.53,
+   "text": "impermeabilidad y agilamiento natural"
+  },
+  {
+   "start": 44.53,
+   "end": 46.53,
+   "text": "del tetrapac."
+  },
+  {
+   "start": 46.53,
+   "end": 48.53,
+   "text": "Un sistema de bioconstrucción simple,"
+  },
+  {
+   "start": 48.53,
+   "end": 50.53,
+   "text": "sustentable y 100% replicable."
+  },
+  {
+   "start": 50.53,
+   "end": 52.53,
+   "text": "La factibilidad es innegable."
+  },
+  {
+   "start": 52.53,
+   "end": 54.53,
+   "text": "Usamos residuos gratuitos"
+  },
+  {
+   "start": 54.53,
+   "end": 56.53,
+   "text": "como materia prima,"
+  },
+  {
+   "start": 56.53,
+   "end": 58.53,
+   "text": "tecnología de moldeado y rellenado"
+  },
+  {
+   "start": 58.53,
+   "end": 60.53,
+   "text": "es de baja inversión inicial,"
+  },
+  {
+   "start": 60.53,
+   "end": 62.53,
+   "text": "pero el verdadero motor de RecrePac"
+  },
+  {
+   "start": 62.53,
+   "end": 64.53,
+   "text": "es su impacto social."
+  },
+  {
+   "start": 64.53,
+   "end": 66.53,
+   "text": "Creamos una cadena de valor humana y circular."
+  },
+  {
+   "start": 66.53,
+   "end": 68.53,
+   "text": "Instalamos ecopuntos"
+  },
+  {
+   "start": 68.53,
+   "end": 70.53,
+   "text": "en áreas públicas y privadas,"
+  },
+  {
+   "start": 70.53,
+   "end": 72.53,
+   "text": "fomentando la participación ciudadana en la recolección."
+  },
+  {
+   "start": 72.53,
+   "end": 74.53,
+   "text": "Ofrecemos capacitación"
+  },
+  {
+   "start": 74.53,
+   "end": 76.53,
+   "text": "y empleo digno a personas en situación"
+  },
+  {
+   "start": 76.53,
+   "end": 78.53,
+   "text": "carcelaria y de libertad condicional."
+  },
+  {
+   "start": 78.53,
+   "end": 80.53,
+   "text": "Con RecrePac,"
+  },
+  {
+   "start": 80.53,
+   "end": 82.53,
+   "text": "el trabajo se convierte en una herramienta"
+  },
+  {
+   "start": 82.53,
+   "end": 84.53,
+   "text": "de reparación social"
+  },
+  {
+   "start": 84.53,
+   "end": 86.53,
+   "text": "y de la oportunidad."
+  },
+  {
+   "start": 86.53,
+   "end": 88.53,
+   "text": "Transformamos el residuo recolectado por la comunidad"
+  },
+  {
+   "start": 88.53,
+   "end": 90.53,
+   "text": "en un espacio de juego seguro"
+  },
+  {
+   "start": 90.53,
+   "end": 92.53,
+   "text": "y de calidad para los niños."
+  },
+  {
+   "start": 92.53,
+   "end": 94.53,
+   "text": "Estamos convirtiendo el desecho"
+  },
+  {
+   "start": 94.53,
+   "end": 96.53,
+   "text": "más difícil en la oportunidad"
+  },
+  {
+   "start": 96.53,
+   "end": 98.53,
+   "text": "social más grande."
+  },
+  {
+   "start": 98.53,
+   "end": 100.53,
+   "text": "Nuestra propuesta es una solución de triple impacto"
+  },
+  {
+   "start": 100.53,
+   "end": 102.53,
+   "text": "que une la gestión de residuo,"
+  },
+  {
+   "start": 102.53,
+   "end": 104.53,
+   "text": "la reinserción laboral"
+  },
+  {
+   "start": 104.53,
+   "end": 106.53,
+   "text": "y la educación ambiental."
+  },
+  {
+   "start": 106.53,
+   "end": 108.53,
+   "text": "RecrePac no solo saca el tetrapac"
+  },
+  {
+   "start": 108.53,
+   "end": 110.53,
+   "text": "del relleno sanitario, sino que lo devuelve"
+  },
+  {
+   "start": 110.53,
+   "end": 112.53,
+   "text": "la comunidad transformada en dignidad,"
+  },
+  {
+   "start": 112.53,
+   "end": 114.53,
+   "text": "juego y futuro."
+  },
+  {
+   "start": 114.53,
+   "end": 116.53,
+   "text": "Llevamos oportunidad a cada plaza de Latinoamérica."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 117.4
+}

@@ -13,7 +13,9 @@ NUCLEO = [
 PRODUCCION = [
     "proponer-retos",
     "sugerir-por-fase",
-    "propuesta-diseno",
+    "propuesta-identidad",
+    "dossier-soluciones",
+    "presupuesto",
     "modelo-3d-blender",
     "publicar-sitio",
 ]

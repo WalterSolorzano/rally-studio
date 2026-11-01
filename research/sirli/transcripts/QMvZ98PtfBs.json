@@ -1,0 +1,97 @@
+{
+ "video_id": "QMvZ98PtfBs",
+ "url": "https://youtu.be/QMvZ98PtfBs?si=Fq4Eq5ey5C7dkBtZ",
+ "year": 2024,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "DOTNIC",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "DOTNIC",
+   "challenge": "05 - EVACUACIÓN"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:00:35+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "El tiempo es un recurso altamente valioso al momento de una emergencia. Esto debido a que en cuestión de segundos la calma puede convertirse en un caos, donde el camino correcto puede separar la seguridad de un desenlace fatal. En América Latina, las estadísticas de incendio muestran una tendencia preocupante. Además, al estar ubicada en el cinturón de fuego, se enfrenta a mucha actividad sísmica y volcánica. Aunque ya existen señalizaciones, el miedo y la confusión de las personas puede jugar un factor crítico. Por ello creamos StickyDot, un sistema de optimización del método de evacuación tradicional. Gracias al aprovechamiento de energía renovable, se alimenta de un sistema autónomo capaz de notificar por medio de estímulos visuales y auditivos la situación de riesgo que se presenta. Conectado a una app de más de 1.600 sensores sísmicos y aprovechando la tecnología Twilio, el sistema es capaz de adelantarse a los fenómenos por cuestión de segundos. Y los cuales son vitales para salvaguardar las vidas en los recintos, tomando también en cuenta la integridad de aquellos con capacidades diferentes. Este es StickyDot, protege aquí en el sándiz.",
+ "segments": [
+  {
+   "start": 3.89,
+   "end": 7.89,
+   "text": "El tiempo es un recurso altamente valioso al momento de una emergencia."
+  },
+  {
+   "start": 7.89,
+   "end": 11.89,
+   "text": "Esto debido a que en cuestión de segundos la calma puede convertirse en un caos,"
+  },
+  {
+   "start": 11.89,
+   "end": 16.89,
+   "text": "donde el camino correcto puede separar la seguridad de un desenlace fatal."
+  },
+  {
+   "start": 16.89,
+   "end": 20.89,
+   "text": "En América Latina, las estadísticas de incendio muestran una tendencia preocupante."
+  },
+  {
+   "start": 20.89,
+   "end": 26.89,
+   "text": "Además, al estar ubicada en el cinturón de fuego, se enfrenta a mucha actividad sísmica y volcánica."
+  },
+  {
+   "start": 26.89,
+   "end": 32.89,
+   "text": "Aunque ya existen señalizaciones, el miedo y la confusión de las personas puede jugar un factor crítico."
+  },
+  {
+   "start": 32.89,
+   "end": 37.89,
+   "text": "Por ello creamos StickyDot, un sistema de optimización del método de evacuación tradicional."
+  },
+  {
+   "start": 37.89,
+   "end": 41.89,
+   "text": "Gracias al aprovechamiento de energía renovable, se alimenta de un sistema autónomo"
+  },
+  {
+   "start": 41.89,
+   "end": 47.89,
+   "text": "capaz de notificar por medio de estímulos visuales y auditivos la situación de riesgo que se presenta."
+  },
+  {
+   "start": 47.89,
+   "end": 52.89,
+   "text": "Conectado a una app de más de 1.600 sensores sísmicos y aprovechando la tecnología Twilio,"
+  },
+  {
+   "start": 52.89,
+   "end": 56.89,
+   "text": "el sistema es capaz de adelantarse a los fenómenos por cuestión de segundos."
+  },
+  {
+   "start": 56.89,
+   "end": 60.89,
+   "text": "Y los cuales son vitales para salvaguardar las vidas en los recintos,"
+  },
+  {
+   "start": 60.89,
+   "end": 64.89,
+   "text": "tomando también en cuenta la integridad de aquellos con capacidades diferentes."
+  },
+  {
+   "start": 112.46,
+   "end": 118.47,
+   "text": "Este es StickyDot, protege aquí en el sándiz."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.8
+}

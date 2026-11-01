@@ -1,0 +1,117 @@
+{
+ "video_id": "JUedY2uH-bw",
+ "url": "https://youtu.be/JUedY2uH-bw",
+ "year": 2026,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "MAIAS",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "MAIAS",
+   "challenge": "09 - OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:51:02+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Los deslaves cortan los caminos, una comunidad entera queda incomunicada, sin refugio, sin energía y sin saber quién necesita ayuda primero. El cambio climático nos deja sin lluvias por meses y luego con tormentas torrenciales. Las comunidades de la sierra son las más golpeadas. En Tenango de Doria, los deslaves de la temporada monzónica las dejaron aisladas y la ayuda no podía llegar. Nuestra propuesta es un módulo de emergencia modular y desmontable, que deja listo en zonas estratégicas y se arma con rapidez. Ofrece un refugio temporal, cama, agua potable, alimentos y paneles solares con baterías para tener luz y energía para comunicación. El módulo tiene tres áreas, salud para atender emergencias, registro donde captura identidad, estado de salud, bienes afectados y suministros. Una antena fatal, resuelve la pérdida de señal y si la batería baja el sistema apaga primero los no esencial. Para proteger la comunicación así la ayuda se decide como datos no aciera. Con un costo estimado de 326 mil pesos es accesible para programas municipales de protección civil y se puede reutilizar en cada contingencia. No evita las inundaciones pero permite responder rápido, de manera organizada y segura y reduce los tiempos de atención. Descartamos monitorear cada casa porque sólo alerta y no atiende lo que viene después. Nosotros apostamos por lo que más importa cuidar a las personas cuando más lo necesitan módulos de emergencia, refugio, energía y datos para saludar vidas.",
+ "segments": [
+  {
+   "start": 3.12,
+   "end": 8.04,
+   "text": "Los deslaves cortan los caminos, una comunidad entera queda incomunicada,"
+  },
+  {
+   "start": 8.04,
+   "end": 12.16,
+   "text": "sin refugio, sin energía y sin saber quién necesita ayuda primero."
+  },
+  {
+   "start": 12.16,
+   "end": 19.54,
+   "text": "El cambio climático nos deja sin lluvias por meses y luego con tormentas torrenciales."
+  },
+  {
+   "start": 19.54,
+   "end": 22.58,
+   "text": "Las comunidades de la sierra son las más golpeadas."
+  },
+  {
+   "start": 22.58,
+   "end": 30.22,
+   "text": "En Tenango de Doria, los deslaves de la temporada monzónica las dejaron aisladas y la ayuda no podía llegar."
+  },
+  {
+   "start": 30.22,
+   "end": 39.8,
+   "text": "Nuestra propuesta es un módulo de emergencia modular y desmontable, que deja listo en zonas"
+  },
+  {
+   "start": 39.8,
+   "end": 45.96,
+   "text": "estratégicas y se arma con rapidez. Ofrece un refugio temporal, cama, agua potable,"
+  },
+  {
+   "start": 45.96,
+   "end": 51.64,
+   "text": "alimentos y paneles solares con baterías para tener luz y energía para comunicación."
+  },
+  {
+   "start": 51.64,
+   "end": 58.91,
+   "text": "El módulo tiene tres áreas, salud para atender emergencias, registro donde captura"
+  },
+  {
+   "start": 58.91,
+   "end": 64.17,
+   "text": "identidad, estado de salud, bienes afectados y suministros. Una antena fatal,"
+  },
+  {
+   "start": 64.17,
+   "end": 69.73,
+   "text": "resuelve la pérdida de señal y si la batería baja el sistema apaga primero los no esencial."
+  },
+  {
+   "start": 69.73,
+   "end": 75.21,
+   "text": "Para proteger la comunicación así la ayuda se decide como datos no aciera."
+  },
+  {
+   "start": 75.21,
+   "end": 84.12,
+   "text": "Con un costo estimado de 326 mil pesos es accesible para programas municipales de"
+  },
+  {
+   "start": 84.12,
+   "end": 90.8,
+   "text": "protección civil y se puede reutilizar en cada contingencia. No evita las inundaciones pero"
+  },
+  {
+   "start": 90.8,
+   "end": 95.68,
+   "text": "permite responder rápido, de manera organizada y segura y reduce los tiempos de atención."
+  },
+  {
+   "start": 99.38,
+   "end": 104.22,
+   "text": "Descartamos monitorear cada casa porque sólo alerta y no atiende lo que viene después."
+  },
+  {
+   "start": 104.22,
+   "end": 110.22,
+   "text": "Nosotros apostamos por lo que más importa cuidar a las personas cuando más lo necesitan módulos"
+  },
+  {
+   "start": 110.22,
+   "end": 113.18,
+   "text": "de emergencia, refugio, energía y datos para saludar vidas."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.0
+}

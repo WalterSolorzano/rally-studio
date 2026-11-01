@@ -1,0 +1,187 @@
+{
+ "video_id": "rfGews8R3AM",
+ "url": "https://www.youtube.com/watch?v=rfGews8R3AM",
+ "year": 2026,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "BIO MISION",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "BIO MISION",
+   "challenge": "07 - REUTILIZACIÓN DE ACEITE DOMÉSTICO"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:26:24+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¡Hey! ¿Sabías que contaminás hasta 4.000 litros de agua por año? ¡Pff! ¿Cómo? ¡Eso es el aceite que tirás por la cañería! Estamos en misiones, parados sobre la reserva de agua dulce más grande del mundo. Y todo lo que tiramos, algún día, tiene que caer. Un litro de aceite contamina hasta 1.000 litros de agua. Y una persona en promedio por año descarta hasta 4 litros. Más de la mitad de los argentinos no lo separan. Pero la harían si se supieran cómo. Por eso nace polo azul, en fría, en botella, entrega. Nosotros te damos la botella, de vidrio, nada de plástico. Sin costo para vos, una camioneta pasa por tu casa. Te registrás y arrancas con 10 puntos. Pedís el retiro cuando tu botella está lista. Seguís la camioneta y al retirar, sumas puntos y ves cuánta agua cuidaste. Cada litro que entregás suma 10 puntos. Con 20 descuentos en supermercados. Con 30 en restaurantes. Con 40 pastillas para encender el fuego. Y cada litro cuida hasta 1.000 litros de agua. Clasificamos el aceite en el momento. Un sensor mide su degradación y una electroválvula lo manda al tanque o a un bidón aparte. Nada se mezcla. En la planta, una centrifuga térmica lo purifica. El bueno a biodiesel, el quemado a jabón. Los restos se prensan y son pastillas para el fuego. No se desperdicia nada. Oro azul es de todos hogares, restaurantes y comercios. Cada litro que no baja es agua cuidada. Oro azul, lo que tirás hoy lo tomás mañana. Sumate.",
+ "segments": [
+  {
+   "start": 8.14,
+   "end": 12.38,
+   "text": "¡Hey! ¿Sabías que contaminás hasta 4.000 litros de agua por año?"
+  },
+  {
+   "start": 12.38,
+   "end": 14.38,
+   "text": "¡Pff! ¿Cómo?"
+  },
+  {
+   "start": 14.38,
+   "end": 17.58,
+   "text": "¡Eso es el aceite que tirás por la cañería!"
+  },
+  {
+   "start": 17.58,
+   "end": 22.58,
+   "text": "Estamos en misiones, parados sobre la reserva de agua dulce más grande del mundo."
+  },
+  {
+   "start": 22.58,
+   "end": 26.58,
+   "text": "Y todo lo que tiramos, algún día, tiene que caer."
+  },
+  {
+   "start": 27.58,
+   "end": 30.86,
+   "text": "Un litro de aceite contamina hasta 1.000 litros de agua."
+  },
+  {
+   "start": 30.86,
+   "end": 34.86,
+   "text": "Y una persona en promedio por año descarta hasta 4 litros."
+  },
+  {
+   "start": 35.42,
+   "end": 38.42,
+   "text": "Más de la mitad de los argentinos no lo separan."
+  },
+  {
+   "start": 38.42,
+   "end": 40.42,
+   "text": "Pero la harían si se supieran cómo."
+  },
+  {
+   "start": 40.42,
+   "end": 48.22,
+   "text": "Por eso nace polo azul, en fría, en botella, entrega."
+  },
+  {
+   "start": 48.22,
+   "end": 52.22,
+   "text": "Nosotros te damos la botella, de vidrio, nada de plástico."
+  },
+  {
+   "start": 52.22,
+   "end": 55.22,
+   "text": "Sin costo para vos, una camioneta pasa por tu casa."
+  },
+  {
+   "start": 55.22,
+   "end": 58.22,
+   "text": "Te registrás y arrancas con 10 puntos."
+  },
+  {
+   "start": 58.22,
+   "end": 61.22,
+   "text": "Pedís el retiro cuando tu botella está lista."
+  },
+  {
+   "start": 61.22,
+   "end": 66.22,
+   "text": "Seguís la camioneta y al retirar, sumas puntos y ves cuánta agua cuidaste."
+  },
+  {
+   "start": 66.58,
+   "end": 69.06,
+   "text": "Cada litro que entregás suma 10 puntos."
+  },
+  {
+   "start": 69.06,
+   "end": 71.54,
+   "text": "Con 20 descuentos en supermercados."
+  },
+  {
+   "start": 71.54,
+   "end": 73.78,
+   "text": "Con 30 en restaurantes."
+  },
+  {
+   "start": 73.78,
+   "end": 76.58,
+   "text": "Con 40 pastillas para encender el fuego."
+  },
+  {
+   "start": 76.58,
+   "end": 79.58,
+   "text": "Y cada litro cuida hasta 1.000 litros de agua."
+  },
+  {
+   "start": 79.58,
+   "end": 88.12,
+   "text": "Clasificamos el aceite en el momento."
+  },
+  {
+   "start": 88.12,
+   "end": 91.56,
+   "text": "Un sensor mide su degradación y una electroválvula"
+  },
+  {
+   "start": 91.56,
+   "end": 93.84,
+   "text": "lo manda al tanque o a un bidón aparte."
+  },
+  {
+   "start": 93.84,
+   "end": 95.16,
+   "text": "Nada se mezcla."
+  },
+  {
+   "start": 95.16,
+   "end": 98.16,
+   "text": "En la planta, una centrifuga térmica lo purifica."
+  },
+  {
+   "start": 98.16,
+   "end": 101.16,
+   "text": "El bueno a biodiesel, el quemado a jabón."
+  },
+  {
+   "start": 101.2,
+   "end": 104.2,
+   "text": "Los restos se prensan y son pastillas para el fuego."
+  },
+  {
+   "start": 104.2,
+   "end": 106.2,
+   "text": "No se desperdicia nada."
+  },
+  {
+   "start": 106.2,
+   "end": 110.2,
+   "text": "Oro azul es de todos hogares, restaurantes y comercios."
+  },
+  {
+   "start": 110.2,
+   "end": 113.2,
+   "text": "Cada litro que no baja es agua cuidada."
+  },
+  {
+   "start": 113.2,
+   "end": 117.2,
+   "text": "Oro azul, lo que tirás hoy lo tomás mañana."
+  },
+  {
+   "start": 117.2,
+   "end": 118.2,
+   "text": "Sumate."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 118.2
+}

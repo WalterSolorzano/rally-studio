@@ -1,0 +1,77 @@
+{
+ "video_id": "yk_qpvswzuw",
+ "url": "https://youtu.be/yk_qpvswzuw?si=Mi_XLA69OcjUN0b_",
+ "year": 2023,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "INNROQ",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "INNROQ",
+   "challenge": "03 - AGUA SEGURA"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:09:04+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Nuestro equipo INROKE, participante del real y de INNOVATEC 2023, les presenta la propuesta del año para el desafío de aguas limpias. Les proponemos un prototipo de un dispositivo que llamamos destilador de aguas grises, que en pocas palabras queremos aplicar en un ciclo de sustentabilidad de agua para combatir las casas de agua en las comunidades más vulnerables de nuestros municipios. Este ciclo consiste en instalar nuestro producto propuesto en las comunidades de manera tal que esté conectada a ríos, canales y sistema de alcantarillodo público, que es donde se almacena principalmente las aguas residuales, es decir, agua sucia o agua que se desperdice en los hogares. Como por ejemplo, el agua de la lavadora contaminada con los detergentes de uso doméstico, que es una fuente de agua al ser revalorizada contribuiría al ahorro de recursos, minimización de costos y dar un acceso digno de agua limpia a las comunidades con la problemática de sequía y escasez de agua. Y todo esto es posible mediante el destilador de aguas grises. A veroso modo, nuestro prototipo lo constituye una zona donde se almacenará el agua purificada. Cuando entre el agua residual a dicha zona, se activará el proceso de ebullición, el cual permitirá separar las moléculas contaminadas del agua dejando pasar solo el agua limpia, la cual está garantizada, ya que para que pase a la siguiente etapa será monitoreada por un indicador de pureza. Cabe mencionar que el proceso de ebullición de nuestro prototipo puede ser ejecutado gracias a los paneles solares que lo constituyen. Dentro del video podemos observar que durante el proceso de purificación se le agrega al agua una capa de cal y cloro, ya que es uno de los métodos más viables económicamente hablando para destilar el agua.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 9.0,
+   "text": "Nuestro equipo INROKE, participante del real y de INNOVATEC 2023, les presenta la propuesta del año para el desafío de aguas limpias."
+  },
+  {
+   "start": 9.0,
+   "end": 24.0,
+   "text": "Les proponemos un prototipo de un dispositivo que llamamos destilador de aguas grises, que en pocas palabras queremos aplicar en un ciclo de sustentabilidad de agua para combatir las casas de agua en las comunidades más vulnerables de nuestros municipios."
+  },
+  {
+   "start": 24.0,
+   "end": 41.0,
+   "text": "Este ciclo consiste en instalar nuestro producto propuesto en las comunidades de manera tal que esté conectada a ríos, canales y sistema de alcantarillodo público, que es donde se almacena principalmente las aguas residuales, es decir, agua sucia o agua que se desperdice en los hogares."
+  },
+  {
+   "start": 41.0,
+   "end": 59.0,
+   "text": "Como por ejemplo, el agua de la lavadora contaminada con los detergentes de uso doméstico, que es una fuente de agua al ser revalorizada contribuiría al ahorro de recursos, minimización de costos y dar un acceso digno de agua limpia a las comunidades con la problemática de sequía y escasez de agua."
+  },
+  {
+   "start": 60.0,
+   "end": 63.0,
+   "text": "Y todo esto es posible mediante el destilador de aguas grises."
+  },
+  {
+   "start": 64.0,
+   "end": 70.0,
+   "text": "A veroso modo, nuestro prototipo lo constituye una zona donde se almacenará el agua purificada."
+  },
+  {
+   "start": 71.0,
+   "end": 83.0,
+   "text": "Cuando entre el agua residual a dicha zona, se activará el proceso de ebullición, el cual permitirá separar las moléculas contaminadas del agua dejando pasar solo el agua limpia,"
+  },
+  {
+   "start": 83.0,
+   "end": 91.0,
+   "text": "la cual está garantizada, ya que para que pase a la siguiente etapa será monitoreada por un indicador de pureza."
+  },
+  {
+   "start": 91.0,
+   "end": 99.0,
+   "text": "Cabe mencionar que el proceso de ebullición de nuestro prototipo puede ser ejecutado gracias a los paneles solares que lo constituyen."
+  },
+  {
+   "start": 99.0,
+   "end": 114.0,
+   "text": "Dentro del video podemos observar que durante el proceso de purificación se le agrega al agua una capa de cal y cloro, ya que es uno de los métodos más viables económicamente hablando para destilar el agua."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.8
+}

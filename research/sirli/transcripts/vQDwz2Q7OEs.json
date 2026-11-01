@@ -1,0 +1,132 @@
+{
+ "video_id": "vQDwz2Q7OEs",
+ "url": "https://youtu.be/vQDwz2Q7OEs",
+ "year": 2024,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "WANDERLUST",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "WANDERLUST",
+   "challenge": "04 - AGUACATE"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:16:52+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "El aguacate es una de las frutas más consumidas en Latinoamérica, generando grandes cantidades de residuos, especialmente en forma de semillas, los cuales son comúnmente desechadas como es en el caso de México, que en el año 2022, produjo aproximadamente 2 millones de toneladas de aguacate, por lo que se estima que se generaron grandes cantidades de residuos de cáscara y hueso, los cuales podrían ser aprovechados para obtener productos y se preguntarán, como lo lograremos, es presentamos bio-aule. La cantidad de producción del aguacate es mayor al consumo de este, por lo tanto, los residuos tienen un cremento exorbitante, resultando una problemática en la contaminación ambiental, reducido por la quema de los residuos, emitiendo gases tóxicos. Con la ayuda del afao, hemos desarrollado una fórmula para empaquetado bio-degradable, que se pueden encontrar en diversas presentaciones como cajíes de huevos, canasta para fruta y vueltas de compra. Esta propuesta representa una solución innovadora, porque aborda dos problemas actuales de manera integral, la gestión de residuos y la búsqueda de alternativas al plástico tradicional, aprovechando las propiedades antimicrobiana y antioxidantes de la semilla para la protección y conservación de los alimentos, al combinar este elemento con glycerol y ácido acético, bio-aulex de la semilla al empate.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 4.14,
+   "text": "El aguacate es una de las frutas más consumidas en Latinoamérica,"
+  },
+  {
+   "start": 4.14,
+   "end": 8.62,
+   "text": "generando grandes cantidades de residuos, especialmente en forma de semillas,"
+  },
+  {
+   "start": 8.62,
+   "end": 14.46,
+   "text": "los cuales son comúnmente desechadas como es en el caso de México, que en el año 2022,"
+  },
+  {
+   "start": 14.46,
+   "end": 18.56,
+   "text": "produjo aproximadamente 2 millones de toneladas de aguacate,"
+  },
+  {
+   "start": 18.56,
+   "end": 23.38,
+   "text": "por lo que se estima que se generaron grandes cantidades de residuos de cáscara y hueso,"
+  },
+  {
+   "start": 23.38,
+   "end": 27.78,
+   "text": "los cuales podrían ser aprovechados para obtener productos y se preguntarán,"
+  },
+  {
+   "start": 27.78,
+   "end": 31.14,
+   "text": "como lo lograremos, es presentamos bio-aule."
+  },
+  {
+   "start": 31.14,
+   "end": 35.44,
+   "text": "La cantidad de producción del aguacate es mayor al consumo de este,"
+  },
+  {
+   "start": 35.44,
+   "end": 39.08,
+   "text": "por lo tanto, los residuos tienen un cremento exorbitante,"
+  },
+  {
+   "start": 39.08,
+   "end": 42.64,
+   "text": "resultando una problemática en la contaminación ambiental,"
+  },
+  {
+   "start": 42.64,
+   "end": 46.86,
+   "text": "reducido por la quema de los residuos, emitiendo gases tóxicos."
+  },
+  {
+   "start": 46.86,
+   "end": 52.32,
+   "text": "Con la ayuda del afao, hemos desarrollado una fórmula para empaquetado bio-degradable,"
+  },
+  {
+   "start": 52.32,
+   "end": 56.34,
+   "text": "que se pueden encontrar en diversas presentaciones como cajíes de huevos,"
+  },
+  {
+   "start": 56.48,
+   "end": 59.36,
+   "text": "canasta para fruta y vueltas de compra."
+  },
+  {
+   "start": 59.36,
+   "end": 62.72,
+   "text": "Esta propuesta representa una solución innovadora,"
+  },
+  {
+   "start": 62.72,
+   "end": 65.86,
+   "text": "porque aborda dos problemas actuales de manera integral,"
+  },
+  {
+   "start": 65.86,
+   "end": 70.3,
+   "text": "la gestión de residuos y la búsqueda de alternativas al plástico tradicional,"
+  },
+  {
+   "start": 70.3,
+   "end": 74.66,
+   "text": "aprovechando las propiedades antimicrobiana y antioxidantes de la semilla"
+  },
+  {
+   "start": 74.66,
+   "end": 77.56,
+   "text": "para la protección y conservación de los alimentos,"
+  },
+  {
+   "start": 77.56,
+   "end": 81.24,
+   "text": "al combinar este elemento con glycerol y ácido acético,"
+  },
+  {
+   "start": 81.24,
+   "end": 84.5,
+   "text": "bio-aulex de la semilla al empate."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 91.1
+}

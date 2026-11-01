@@ -1,0 +1,162 @@
+{
+ "video_id": "yrW6MrEAN_w",
+ "url": "https://youtu.be/yrW6MrEAN_w",
+ "year": 2024,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "SAFE YOUR LIFE",
+ "place_label": "TERCER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "TERCER LUGAR",
+   "team": "SAFE YOUR LIFE",
+   "challenge": "05 - EVACUACIÓN"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:12:54+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Más de 120 vidas perdidas, cerca de 15 mil hogares destruidos, el incendio que arrasó al paraíso, el dolor, incertidumbre y el miedo. Pero en momentos como este no podemos quedarnos solo con las pérdidas. En una emergencia cada segundo cuenta la falta de comunicación y las rutas bloqueadas dificultan aún más las evacuaciones seguras. ¿Cómo evitamos que esto se repita? Hoy tenemos una solución, ARCUS, un sistema de monitoreo de emergencias autónomo localizado en esta caja que asegura una evacuación rápida y segura, resistente, independiente y diseñado para proteger vidas. Permite gestionar la asistencia de los empleados que verifica la ubicación exacta de cada trabajador. Si se detecta el uso de una BPN o cualquier otra anomalía en ubicación, envía un alerta inmediata al panel de control para su revisión. En situaciones de emergencia es capaz de enviar alertas masivas a todos los dispositivos conectados, indicando las rutas de evacuación. Si se detecta que una salida está aglomerada, recomendará rutas alternativas, mostrando su capacidad para adaptarse a cambios en tiempo real. Si tras la evacuación se detecta que algún empleado sigue dentro de las instalaciones, podrá estimar su ubicación y Bluetooth para una localización más precisa, incluso en caso de caída de la red principal. Continúa operando de manera autónoma gracias a su arquitectura aislada, garantizando el funcionamiento en emergencias. Además, como fabricantes obtenemos beneficios significativos con una inversión de 8.550 dólares americanos, recuperamos el capital con tan solo tres ventas, generando un 30% de utilidad. Arcus, preparados para protegerte, preparados para salvar vidas.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 6.76,
+   "text": "Más de 120 vidas perdidas, cerca de 15 mil hogares destruidos, el incendio que arrasó"
+  },
+  {
+   "start": 6.76,
+   "end": 10.68,
+   "text": "al paraíso, el dolor, incertidumbre y el miedo."
+  },
+  {
+   "start": 10.68,
+   "end": 15.12,
+   "text": "Pero en momentos como este no podemos quedarnos solo con las pérdidas."
+  },
+  {
+   "start": 15.12,
+   "end": 21.22,
+   "text": "En una emergencia cada segundo cuenta la falta de comunicación y las rutas bloqueadas"
+  },
+  {
+   "start": 21.22,
+   "end": 24.6,
+   "text": "dificultan aún más las evacuaciones seguras."
+  },
+  {
+   "start": 24.6,
+   "end": 27.16,
+   "text": "¿Cómo evitamos que esto se repita?"
+  },
+  {
+   "start": 27.16,
+   "end": 32.48,
+   "text": "Hoy tenemos una solución, ARCUS, un sistema de monitoreo de emergencias"
+  },
+  {
+   "start": 32.48,
+   "end": 37.78,
+   "text": "autónomo localizado en esta caja que asegura una evacuación rápida y segura,"
+  },
+  {
+   "start": 37.78,
+   "end": 42.16,
+   "text": "resistente, independiente y diseñado para proteger vidas."
+  },
+  {
+   "start": 42.16,
+   "end": 46.48,
+   "text": "Permite gestionar la asistencia de los empleados que verifica la ubicación"
+  },
+  {
+   "start": 46.48,
+   "end": 48.64,
+   "text": "exacta de cada trabajador."
+  },
+  {
+   "start": 48.64,
+   "end": 53.76,
+   "text": "Si se detecta el uso de una BPN o cualquier otra anomalía en ubicación,"
+  },
+  {
+   "start": 53.92,
+   "end": 58.6,
+   "text": "envía un alerta inmediata al panel de control para su revisión."
+  },
+  {
+   "start": 58.6,
+   "end": 64.76,
+   "text": "En situaciones de emergencia es capaz de enviar alertas masivas a todos los dispositivos conectados,"
+  },
+  {
+   "start": 64.76,
+   "end": 67.44,
+   "text": "indicando las rutas de evacuación."
+  },
+  {
+   "start": 67.44,
+   "end": 70.16,
+   "text": "Si se detecta que una salida está aglomerada,"
+  },
+  {
+   "start": 70.16,
+   "end": 77.92,
+   "text": "recomendará rutas alternativas, mostrando su capacidad para adaptarse a cambios en tiempo real."
+  },
+  {
+   "start": 77.92,
+   "end": 83.32,
+   "text": "Si tras la evacuación se detecta que algún empleado sigue dentro de las instalaciones,"
+  },
+  {
+   "start": 83.4,
+   "end": 89.08,
+   "text": "podrá estimar su ubicación y Bluetooth para una localización más precisa,"
+  },
+  {
+   "start": 89.08,
+   "end": 92.2,
+   "text": "incluso en caso de caída de la red principal."
+  },
+  {
+   "start": 92.2,
+   "end": 97.76,
+   "text": "Continúa operando de manera autónoma gracias a su arquitectura aislada,"
+  },
+  {
+   "start": 97.76,
+   "end": 100.56,
+   "text": "garantizando el funcionamiento en emergencias."
+  },
+  {
+   "start": 100.56,
+   "end": 105.36,
+   "text": "Además, como fabricantes obtenemos beneficios significativos"
+  },
+  {
+   "start": 105.36,
+   "end": 109.08,
+   "text": "con una inversión de 8.550 dólares americanos,"
+  },
+  {
+   "start": 109.08,
+   "end": 112.68,
+   "text": "recuperamos el capital con tan solo tres ventas,"
+  },
+  {
+   "start": 112.72,
+   "end": 115.16,
+   "text": "generando un 30% de utilidad."
+  },
+  {
+   "start": 115.16,
+   "end": 119.6,
+   "text": "Arcus, preparados para protegerte, preparados para salvar vidas."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.0
+}

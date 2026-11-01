@@ -28,7 +28,7 @@ A diferencia de herramientas genéricas de gestión de proyectos o tableros de i
 
 - **Flujo Secuencial Guiado:** Certamen -> Equipo -> Retos del Comité -> Taller Solución -> Despacho Multi-IA -> Espacio Completo.
 - **Validación Reglamentaria SIRLI:** Verificación de conformación de equipo (4-10 miembros, mín. 1 ingeniería, mín. 1 mujer, egresados/docentes sin liderazgo) y asistencia de Naming Dual (Squad + Marca).
-- **Arquitectura PAS-V 120s:** Control oral de 240-270 palabras en 4 actos con correspondencia exacta hacia los 5 criterios de la rúbrica oficial.
+- **Arquitectura PAS-V 120s:** 4 actos que cubren los 5 criterios de la rúbrica oficial, con audio medido por duración (240-270 palabras es referencia, no regla).
 - **Teoría de la Doble Codificación:** Bifurcación contextual de prompts (Nacional: anclaje territorial en PNDH/MEFCCA; Latam: lenguaje universal COTS/USD/ODS con Nicaragua de piloto regional).
 - **Calibración de Rúbricas:** Ponderación y validación separada según certamen activo (Rally Latinoamericano de Innovación vs. Rally Nacional Nicaragua Innova).
 - **Despacho Multi-IA:** Generador de mega-prompts especializados y estructurados para alimentar cualquier modelo de IA (ingeniería, canvas de impacto, memoria pautada, guion de pitch).

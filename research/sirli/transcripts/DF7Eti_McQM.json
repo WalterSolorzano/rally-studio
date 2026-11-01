@@ -1,0 +1,192 @@
+{
+ "video_id": "DF7Eti_McQM",
+ "url": "https://www.youtube.com/watch?v=DF7Eti_McQM&t=7s",
+ "year": 2020,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "MAGIOS PATAGONICOS",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2020,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "MAGIOS PATAGONICOS",
+   "challenge": "06 - ¿SERÍA POSIBLE DESARROLLAR UN SISTEMA GUÍA PARA DÉBILES VISUALES O INVIDENTES QUE NO REQUIERA INTERNET?"
+  }
+ ],
+ "fetched_at": "2026-10-23T01:09:04+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "La Organización Mundial de la Salud estima que hay 255 millones de personas con discapacidad visual en el mundo. La ceguera es una discapacidad que afecta entre el 1 y 4% de la población latinoamericana, casi 900 mil personas que en algún grado de discapacidad visual en el mundo. La solución a la problemática consiste en desarrollar un sistema formado por una aplicación móvil y un conjunto de balizos electrónicas distribuidas por la toda la ciudad que le permiten a una persona no evidente poder movilizarse de manera ágil y sin mayores inconvenientes. La solución se divide en dos partes, una aplicación móvil que reproduce mediante mensajes de voz, la información almacenada en las balizas indicando ubicación geográfica estado del camino que recorre y posibles sugerencias de lugares. Además, permite almacenar la información de los sectores por los que el usuario transita y en base a esto crear mapas. Por otro lado están las balizas, que pueden ser activas o pasivas. Las activas tienen un alcance de hasta 100 metros y emiten una señal con una frecuencia de 10 veces por segundo. Estas señales son recibidas por la aplicación móvil y se usan para dar señal de alerta. Las balizas pasivas tienen un alcance de 500 metros y emiten una señal 2 veces por segundo que pueden no ser reproducidas por la aplicación, esto se puede configurar y contiene una información de la posición actual. En las esquinas se ubican balizas que informan a las personas en qué calles o puntos geográficos se encuentran. Un posible uso de esta tecnología por parte de los comerciantes sería que puedan ofrecer sus servicios de cuentas especiales, promociones a todo tipo de clientes que se encuentran cerca de su local y cuenten con la aplicación móvil instalada. Una persona transita cerca de un centro de salud mediante la aplicación móvil tiene la opción de consultarle el dispositivo la posibilidad de ser atendido por algún tipo de profesional particular o en caso de contar con disponibilidad reservar un turno para una fecha posterior. Otro posible uso puede ser como un dispositivo de cuidado personal evitando posibles accidentes en sectores donde la senda peatonal se encuentre en malas condiciones para circular. Las personas no evidentes pueden informar a los choferes de colectivo cuando se encuentren en una parada habilitada que desean viajar hacia algún destino específico, por lo que el chofer del colectivo recibirá las notificaciones cuando se encuentre transitando dentro de la cuadra y deberá frenar a recoger a la persona.",
+ "segments": [
+  {
+   "start": 2.19,
+   "end": 6.75,
+   "text": "La Organización Mundial de la Salud estima que hay 255 millones de personas con discapacidad"
+  },
+  {
+   "start": 6.75,
+   "end": 8.25,
+   "text": "visual en el mundo."
+  },
+  {
+   "start": 8.25,
+   "end": 12.35,
+   "text": "La ceguera es una discapacidad que afecta entre el 1 y 4% de la población latinoamericana,"
+  },
+  {
+   "start": 12.35,
+   "end": 17.5,
+   "text": "casi 900 mil personas que en algún grado de discapacidad visual en el mundo."
+  },
+  {
+   "start": 17.5,
+   "end": 20.96,
+   "text": "La solución a la problemática consiste en desarrollar un sistema formado por una aplicación"
+  },
+  {
+   "start": 20.96,
+   "end": 24.54,
+   "text": "móvil y un conjunto de balizos electrónicas distribuidas por la toda la ciudad que le"
+  },
+  {
+   "start": 24.54,
+   "end": 30.34,
+   "text": "permiten a una persona no evidente poder movilizarse de manera ágil y sin mayores inconvenientes."
+  },
+  {
+   "start": 30.34,
+   "end": 33.9,
+   "text": "La solución se divide en dos partes, una aplicación móvil que reproduce mediante mensajes"
+  },
+  {
+   "start": 33.9,
+   "end": 37.42,
+   "text": "de voz, la información almacenada en las balizas indicando ubicación geográfica estado del"
+  },
+  {
+   "start": 37.42,
+   "end": 39.86,
+   "text": "camino que recorre y posibles sugerencias de lugares."
+  },
+  {
+   "start": 39.86,
+   "end": 43.4,
+   "text": "Además, permite almacenar la información de los sectores por los que el usuario transita"
+  },
+  {
+   "start": 43.4,
+   "end": 45.42,
+   "text": "y en base a esto crear mapas."
+  },
+  {
+   "start": 45.42,
+   "end": 48.5,
+   "text": "Por otro lado están las balizas, que pueden ser activas o pasivas."
+  },
+  {
+   "start": 48.5,
+   "end": 51.74,
+   "text": "Las activas tienen un alcance de hasta 100 metros y emiten una señal con una frecuencia"
+  },
+  {
+   "start": 51.74,
+   "end": 52.82,
+   "text": "de 10 veces por segundo."
+  },
+  {
+   "start": 52.82,
+   "end": 56.94,
+   "text": "Estas señales son recibidas por la aplicación móvil y se usan para dar señal de alerta."
+  },
+  {
+   "start": 56.94,
+   "end": 60.58,
+   "text": "Las balizas pasivas tienen un alcance de 500 metros y emiten una señal 2 veces por segundo"
+  },
+  {
+   "start": 60.58,
+   "end": 65.3,
+   "text": "que pueden no ser reproducidas por la aplicación, esto se puede configurar y contiene una información"
+  },
+  {
+   "start": 65.3,
+   "end": 66.3,
+   "text": "de la posición actual."
+  },
+  {
+   "start": 66.3,
+   "end": 72.38,
+   "text": "En las esquinas se ubican balizas que informan a las personas en qué calles o puntos geográficos"
+  },
+  {
+   "start": 72.38,
+   "end": 73.38,
+   "text": "se encuentran."
+  },
+  {
+   "start": 73.38,
+   "end": 77.02,
+   "text": "Un posible uso de esta tecnología por parte de los comerciantes sería que puedan"
+  },
+  {
+   "start": 77.02,
+   "end": 80.5,
+   "text": "ofrecer sus servicios de cuentas especiales, promociones a todo tipo de clientes que"
+  },
+  {
+   "start": 80.5,
+   "end": 84.06,
+   "text": "se encuentran cerca de su local y cuenten con la aplicación móvil instalada."
+  },
+  {
+   "start": 84.18,
+   "end": 88.54,
+   "text": "Una persona transita cerca de un centro de salud mediante la aplicación móvil tiene la opción"
+  },
+  {
+   "start": 88.54,
+   "end": 92.22,
+   "text": "de consultarle el dispositivo la posibilidad de ser atendido por algún tipo de profesional"
+  },
+  {
+   "start": 92.22,
+   "end": 98.34,
+   "text": "particular o en caso de contar con disponibilidad reservar un turno para una fecha posterior."
+  },
+  {
+   "start": 98.34,
+   "end": 102.3,
+   "text": "Otro posible uso puede ser como un dispositivo de cuidado personal evitando posibles accidentes"
+  },
+  {
+   "start": 102.3,
+   "end": 106.34,
+   "text": "en sectores donde la senda peatonal se encuentre en malas condiciones para circular."
+  },
+  {
+   "start": 106.34,
+   "end": 110.58,
+   "text": "Las personas no evidentes pueden informar a los choferes de colectivo cuando se encuentren"
+  },
+  {
+   "start": 110.58,
+   "end": 115.02,
+   "text": "en una parada habilitada que desean viajar hacia algún destino específico, por lo que"
+  },
+  {
+   "start": 115.02,
+   "end": 119.74,
+   "text": "el chofer del colectivo recibirá las notificaciones cuando se encuentre transitando dentro de la"
+  },
+  {
+   "start": 119.74,
+   "end": 122.02,
+   "text": "cuadra y deberá frenar a recoger a la persona."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 122.9
+}

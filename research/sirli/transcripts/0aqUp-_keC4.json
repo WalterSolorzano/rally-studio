@@ -1,0 +1,164 @@
+{
+ "video_id": "0aqUp-_keC4",
+ "url": "https://youtu.be/0aqUp-_keC4?si=kJvM7mbsoO3Tjcls",
+ "year": 2024,
+ "collection": "nacional",
+ "country": "EL SALVADOR",
+ "team": "GNIUS SOLUTION",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "GNIUS SOLUTION",
+   "challenge": "05 - EVACUACIÓN"
+  },
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "GNIUS SOLUTION",
+   "challenge": "05 - EVACUACIÓN"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:16:58+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Sabes que son los sismos? Los sismos son fenómenos naturales que ocurren en cualquier momento y en cualquier parte del mundo. Pero, ¿quieres saber cómo podemos estar preparados para ellos? Seguridad es una prioridad en todo momento y mucho más en zonas de alta actividad sísmica. La preocupación por los terremotos es muy constante en la vida de muchas personas. Bajo este contexto podemos obtener un sistema que nos permita advertir con segunos de entelación la llegada de un sismo. Esto tendría una amplia acertación social ya que en general la adopción de tecnologías en las últimas décadas es de forma muy masiva en lo que respecta dispositivos inteligentes y conectividad a internet. Presentamos Genius Lab, un API que está diseñado para activarse el millisecondo en el momento de intentarlo así que por medio de milimosas de otros APIs que podemos adiantar de CUPOS, de Google Maps y el EFRACIPI, poder determinar de manera óptima cuál es la ruta más idónea de evapación. Cada equipo conectado a la red o con acceso a cualquier red de datos será capaz de ofrecer indicaciones siempre y cuando dispone de una pantalla, digasos smartphones, que party, guay, ordenadores o equipo de audícate. Las alertas serán en invierno una forma de señal tipo brocas con la intención de que ningún impositivo se quede fuera, que esto podría considerarse como una vida que no pudo salvarse. Las rutas de evacuación podrán retroalimentarse de forma manual para un mejor control de entrada y salida y podrá ser mejorado para implementarse en otro tipo de usos que no requieran existencia de mención, diferente y así. Otro sistema estará diseñado para activarse en cuestión de milisegundos al momento de detectarse un sismo, esto gracias a la recopilación de datos de Google Maps y del sistema de Android eCourse Alerts, utilizando un modelo basado en agentes para simular diferentes escenarios de evacuación basado en patrones y algoritmos de optimización de rutas para determinar las rutas más seguras y rápidas. La factibilidad económica de este proyecto conlleva a un ahorro significativo, ya que cada una de las tecnologías utilizadas como los SDK, las APIs o los entrenamientos de redes neuronales son de bajo costo y accesibles para cualquier persona que desee continuar su desarrollo y mejorarlo.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 5.72,
+   "text": "¿Sabes que son los sismos? Los sismos son fenómenos naturales que ocurren en cualquier momento"
+  },
+  {
+   "start": 5.72,
+   "end": 11.04,
+   "text": "y en cualquier parte del mundo. Pero, ¿quieres saber cómo podemos estar preparados para ellos?"
+  },
+  {
+   "start": 11.04,
+   "end": 14.76,
+   "text": "Seguridad es una prioridad en todo momento y mucho más en zonas de alta actividad sísmica."
+  },
+  {
+   "start": 14.76,
+   "end": 18.72,
+   "text": "La preocupación por los terremotos es muy constante en la vida de muchas personas. Bajo"
+  },
+  {
+   "start": 18.72,
+   "end": 23.08,
+   "text": "este contexto podemos obtener un sistema que nos permita advertir con segunos de entelación"
+  },
+  {
+   "start": 23.08,
+   "end": 27.8,
+   "text": "la llegada de un sismo. Esto tendría una amplia acertación social ya que en"
+  },
+  {
+   "start": 27.8,
+   "end": 32.96,
+   "text": "general la adopción de tecnologías en las últimas décadas es de forma muy masiva en lo que respecta"
+  },
+  {
+   "start": 32.96,
+   "end": 38.84,
+   "text": "dispositivos inteligentes y conectividad a internet. Presentamos Genius Lab, un API que está diseñado"
+  },
+  {
+   "start": 38.84,
+   "end": 42.84,
+   "text": "para activarse el millisecondo en el momento de intentarlo así que por medio de milimosas"
+  },
+  {
+   "start": 42.84,
+   "end": 48.28,
+   "text": "de otros APIs que podemos adiantar de CUPOS, de Google Maps y el EFRACIPI, poder determinar"
+  },
+  {
+   "start": 48.28,
+   "end": 53.28,
+   "text": "de manera óptima cuál es la ruta más idónea de evapación. Cada equipo conectado a la red o con"
+  },
+  {
+   "start": 53.28,
+   "end": 57.08,
+   "text": "acceso a cualquier red de datos será capaz de ofrecer indicaciones siempre y cuando"
+  },
+  {
+   "start": 57.08,
+   "end": 62.04,
+   "text": "dispone de una pantalla, digasos smartphones, que party, guay, ordenadores o equipo de audícate."
+  },
+  {
+   "start": 62.04,
+   "end": 66.08,
+   "text": "Las alertas serán en invierno una forma de señal tipo brocas con la intención de que"
+  },
+  {
+   "start": 66.08,
+   "end": 70.24,
+   "text": "ningún impositivo se quede fuera, que esto podría considerarse como una vida que no"
+  },
+  {
+   "start": 70.24,
+   "end": 75.72,
+   "text": "pudo salvarse. Las rutas de evacuación podrán retroalimentarse de forma manual para un mejor"
+  },
+  {
+   "start": 75.72,
+   "end": 80.56,
+   "text": "control de entrada y salida y podrá ser mejorado para implementarse en otro tipo de usos que"
+  },
+  {
+   "start": 80.56,
+   "end": 83.52,
+   "text": "no requieran existencia de mención, diferente y así."
+  },
+  {
+   "start": 83.56,
+   "end": 87.24,
+   "text": "Otro sistema estará diseñado para activarse en cuestión de milisegundos al momento de"
+  },
+  {
+   "start": 87.24,
+   "end": 92.2,
+   "text": "detectarse un sismo, esto gracias a la recopilación de datos de Google Maps y del sistema de Android"
+  },
+  {
+   "start": 92.2,
+   "end": 96.84,
+   "text": "eCourse Alerts, utilizando un modelo basado en agentes para simular diferentes escenarios"
+  },
+  {
+   "start": 96.84,
+   "end": 101.48,
+   "text": "de evacuación basado en patrones y algoritmos de optimización de rutas para determinar"
+  },
+  {
+   "start": 101.48,
+   "end": 105.8,
+   "text": "las rutas más seguras y rápidas. La factibilidad económica de este proyecto"
+  },
+  {
+   "start": 105.8,
+   "end": 110.32,
+   "text": "conlleva a un ahorro significativo, ya que cada una de las tecnologías utilizadas"
+  },
+  {
+   "start": 110.32,
+   "end": 116.88,
+   "text": "como los SDK, las APIs o los entrenamientos de redes neuronales son de bajo costo y accesibles"
+  },
+  {
+   "start": 116.88,
+   "end": 120.44,
+   "text": "para cualquier persona que desee continuar su desarrollo y mejorarlo."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 132.1
+}

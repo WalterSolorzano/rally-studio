@@ -1,0 +1,77 @@
+{
+ "video_id": "IiXBMohhqVk",
+ "url": "https://www.youtube.com/watch?v=IiXBMohhqVk&feature=youtu.be&themeRefresh=1",
+ "year": 2023,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "CHICOS INNOVADORES",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "CHICOS INNOVADORES",
+   "challenge": "08 - TRATAR DE ESTAR MEJOR"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:18:47+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En un mundo transformado por la pandemia del COVID-19, la vida tal como la conocíamos cambió drásticamente. El COVID-19 se presentó en una pandemia inmunológica, afectando a millones y alterando las rutinas diarias de todos, especialmente de los jóvenes. Las relaciones que solían ser cara a cara se volvieron digitales, pero estas conexiones virtuales no llenaban el vacío en los corazones de los jóvenes. Muchos se sintieron perdidos y solos. Pero entonces llegó Vida AT, una aplicación diseñada exclusivamente para adolescentes y lo mejor de todo, excesible para todos, sin importar su situación económica. Vida AT ofrece chat en tiempo real, videoconferencias, material educativo compartido y, lo más importante, el apoyo profesional de psicólogos. Es un espacio seguro para expresar emociones, compartir experiencias y encontrar orientación. Hoy en un mundo donde las plataformas digitales son nuestro nuevo hogar, Vida AT es más que una aplicación. Es un refugio, un mentor y un amigo. Una nueva forma de aprender a separar la realidad de lo virtual. Vida AT, donde los corazones se conectan y las vidas se transforman, porque en este mundo digital todos merecen una conexión real, una esperanza real y un apoyo real.",
+ "segments": [
+  {
+   "start": 7.25,
+   "end": 14.25,
+   "text": "En un mundo transformado por la pandemia del COVID-19, la vida tal como la conocíamos cambió drásticamente."
+  },
+  {
+   "start": 15.25,
+   "end": 26.25,
+   "text": "El COVID-19 se presentó en una pandemia inmunológica, afectando a millones y alterando las rutinas diarias de todos, especialmente de los jóvenes."
+  },
+  {
+   "start": 27.25,
+   "end": 36.25,
+   "text": "Las relaciones que solían ser cara a cara se volvieron digitales, pero estas conexiones virtuales no llenaban el vacío en los corazones de los jóvenes."
+  },
+  {
+   "start": 37.25,
+   "end": 39.25,
+   "text": "Muchos se sintieron perdidos y solos."
+  },
+  {
+   "start": 40.25,
+   "end": 52.25,
+   "text": "Pero entonces llegó Vida AT, una aplicación diseñada exclusivamente para adolescentes y lo mejor de todo, excesible para todos, sin importar su situación económica."
+  },
+  {
+   "start": 52.25,
+   "end": 65.25,
+   "text": "Vida AT ofrece chat en tiempo real, videoconferencias, material educativo compartido y, lo más importante, el apoyo profesional de psicólogos."
+  },
+  {
+   "start": 66.25,
+   "end": 72.25,
+   "text": "Es un espacio seguro para expresar emociones, compartir experiencias y encontrar orientación."
+  },
+  {
+   "start": 74.25,
+   "end": 80.25,
+   "text": "Hoy en un mundo donde las plataformas digitales son nuestro nuevo hogar, Vida AT es más que una aplicación."
+  },
+  {
+   "start": 80.25,
+   "end": 88.25,
+   "text": "Es un refugio, un mentor y un amigo. Una nueva forma de aprender a separar la realidad de lo virtual."
+  },
+  {
+   "start": 89.25,
+   "end": 102.53,
+   "text": "Vida AT, donde los corazones se conectan y las vidas se transforman, porque en este mundo digital todos merecen una conexión real, una esperanza real y un apoyo real."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 104.1
+}

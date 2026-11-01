@@ -1,0 +1,92 @@
+{
+ "video_id": "Nxg444cq59s",
+ "url": "https://youtu.be/Nxg444cq59s?si=OASLPJ4j9xygyi9-",
+ "year": 2024,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "PATAGÓNICOS",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "PATAGÓNICOS",
+   "challenge": "06 - ESCOMBROS"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:32:16+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Los residuos derivados de la demolición en la construcción constituyen una de las mayores fuentes de residuos sólidos en la actualidad. De todo el cemento fabricado un 10% termina como escombro, lo que representa alrededor del 40% de los residuos sólidos urbanos en una ciudad promedio, los cuales muchas veces no son tratados y terminan acumulándose en escombreras o asureras. Nuestra propuesta consiste en revalorizar estos residuos y darles una aplicación práctica empleándolo como materia prima para fabricar aviones de contención. Para la primera etapa del proceso se propone el uso de una aplicación móvil creando una plataforma dinámica intermediaria entre quienes generan escombros y el municipio que se encargará de su traslado. Recomendamos un servicio de disposición y traslado de contenedores y destinar unas zonas para terminar de tratar los desechos que allí se depositen. Los escombros deben pasar un proceso de molienda dispuesto de tal manera que se consigue un tamaño de grano adecuado, y posteriormente, almacenarlos en una zona de acopio donde estarán a disposición para emplearlos de la forma más conveniente, abaratando costos en obras públicas e incluso ofreciéndolos como un producto a sectores privados. El proceso en conjunto lograría reutilizar desechos de otras industrias, disminuir la generación y acumulación de residuos de la construcción, impactar positivamente en la sociedad y en su economía puesto que se reducen costos y se crean potenciales fuentes de trabajo de ingreso, contribuir al medio ambiente al reducir la huella de carbono del cemento, conservar recursos al limitar la extracción de rocas para aviones y disminuir la generación de residuos. Gestionar respontablemente los residuos de emulición hoy es clave para construir un futuro más sostenible y consciente.",
+ "segments": [
+  {
+   "start": 5.07,
+   "end": 11.07,
+   "text": "Los residuos derivados de la demolición en la construcción constituyen una de las mayores fuentes de residuos sólidos en la actualidad."
+  },
+  {
+   "start": 11.07,
+   "end": 19.07,
+   "text": "De todo el cemento fabricado un 10% termina como escombro, lo que representa alrededor del 40% de los residuos sólidos urbanos en una ciudad promedio,"
+  },
+  {
+   "start": 19.07,
+   "end": 24.07,
+   "text": "los cuales muchas veces no son tratados y terminan acumulándose en escombreras o asureras."
+  },
+  {
+   "start": 24.07,
+   "end": 33.07,
+   "text": "Nuestra propuesta consiste en revalorizar estos residuos y darles una aplicación práctica empleándolo como materia prima para fabricar aviones de contención."
+  },
+  {
+   "start": 33.07,
+   "end": 55.84,
+   "text": "Para la primera etapa del proceso se propone el uso de una aplicación móvil creando una plataforma dinámica intermediaria entre quienes generan escombros y el municipio que se encargará de su traslado."
+  },
+  {
+   "start": 55.84,
+   "end": 63.84,
+   "text": "Recomendamos un servicio de disposición y traslado de contenedores y destinar unas zonas para terminar de tratar los desechos que allí se depositen."
+  },
+  {
+   "start": 63.84,
+   "end": 76.59,
+   "text": "Los escombros deben pasar un proceso de molienda dispuesto de tal manera que se consigue un tamaño de grano adecuado,"
+  },
+  {
+   "start": 76.59,
+   "end": 82.59,
+   "text": "y posteriormente, almacenarlos en una zona de acopio donde estarán a disposición para emplearlos de la forma más conveniente,"
+  },
+  {
+   "start": 82.59,
+   "end": 87.59,
+   "text": "abaratando costos en obras públicas e incluso ofreciéndolos como un producto a sectores privados."
+  },
+  {
+   "start": 87.59,
+   "end": 96.59,
+   "text": "El proceso en conjunto lograría reutilizar desechos de otras industrias, disminuir la generación y acumulación de residuos de la construcción,"
+  },
+  {
+   "start": 96.59,
+   "end": 103.59,
+   "text": "impactar positivamente en la sociedad y en su economía puesto que se reducen costos y se crean potenciales fuentes de trabajo de ingreso,"
+  },
+  {
+   "start": 103.59,
+   "end": 112.59,
+   "text": "contribuir al medio ambiente al reducir la huella de carbono del cemento, conservar recursos al limitar la extracción de rocas para aviones y disminuir la generación de residuos."
+  },
+  {
+   "start": 112.59,
+   "end": 118.59,
+   "text": "Gestionar respontablemente los residuos de emulición hoy es clave para construir un futuro más sostenible y consciente."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 121.0
+}

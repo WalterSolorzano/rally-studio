@@ -1,0 +1,117 @@
+{
+ "video_id": "KEL7op1u9w0",
+ "url": "https://www.youtube.com/watch?v=KEL7op1u9w0&t=19s",
+ "year": 2022,
+ "collection": "sede",
+ "country": "EL SALVADOR",
+ "team": "INNOVAES",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "INNOVAES",
+   "challenge": "04 - AHORRO ENERGÉTICO EN EL SECTOR GASTRONÓMICO"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:30:55+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "A causa de la crisis energética global que se ha desarrollado en los últimos años, diversos sectores como el gastronómico vio afectada su rentabilidad. En América Latina, dichos negocios son importantes en su cultura y economía. El aumento de las tarifas o la falta de abastecimiento eléctrico se convierte en un obstáculo cada vez mayor. Por ello, INNOVAES propone la implementación de SAEL, sistema de autoconsumo energético, el cual es adaptable en las distintas condiciones de cada región, aprovechando distintas tecnologías de eficiencia energética, tales como las valdosas piezoeléctricas, generando energía con cada paso. Asimismo, un generador a base de biomasa que reutiliza los residuos y excedentes y por último la implementación de páneles solares, generadores eólicos o hidroeléctricos, estos últimos dependiendo de las condiciones del entorno. Gracias a ello, se espera una reducción del 20 al 50% en el consumo energético, dependiendo de los dispositivos conectados o el uso que se le den, además de aprovechar los residuos que se producen como desechos. SAEL es una propuesta escalable y replicable, es decir, que no se limita solo al sector gastronómico, ya que puede ser aprovechado tanto en el sector turístico, educativo, urbano y rural. Este sistema puede ser implementado de manera accesible, contando con el apoyo financiero de distintas entidades y empresas con responsabilidad social, reduciendo significativamente su costo.",
+ "segments": [
+  {
+   "start": 0.4,
+   "end": 10.17,
+   "text": "A causa de la crisis energética global que se ha desarrollado en los últimos años, diversos"
+  },
+  {
+   "start": 10.17,
+   "end": 13.53,
+   "text": "sectores como el gastronómico vio afectada su rentabilidad."
+  },
+  {
+   "start": 13.53,
+   "end": 19.67,
+   "text": "En América Latina, dichos negocios son importantes en su cultura y economía."
+  },
+  {
+   "start": 19.67,
+   "end": 24.57,
+   "text": "El aumento de las tarifas o la falta de abastecimiento eléctrico se convierte en un obstáculo"
+  },
+  {
+   "start": 24.57,
+   "end": 26.57,
+   "text": "cada vez mayor."
+  },
+  {
+   "start": 26.57,
+   "end": 33.57,
+   "text": "Por ello, INNOVAES propone la implementación de SAEL, sistema de autoconsumo energético,"
+  },
+  {
+   "start": 33.57,
+   "end": 39.49,
+   "text": "el cual es adaptable en las distintas condiciones de cada región, aprovechando distintas tecnologías"
+  },
+  {
+   "start": 39.49,
+   "end": 47.33,
+   "text": "de eficiencia energética, tales como las valdosas piezoeléctricas, generando energía con cada paso."
+  },
+  {
+   "start": 47.33,
+   "end": 52.73,
+   "text": "Asimismo, un generador a base de biomasa que reutiliza los residuos y excedentes y por"
+  },
+  {
+   "start": 52.73,
+   "end": 58.65,
+   "text": "último la implementación de páneles solares, generadores eólicos o hidroeléctricos,"
+  },
+  {
+   "start": 58.65,
+   "end": 61.85,
+   "text": "estos últimos dependiendo de las condiciones del entorno."
+  },
+  {
+   "start": 61.85,
+   "end": 68.93,
+   "text": "Gracias a ello, se espera una reducción del 20 al 50% en el consumo energético, dependiendo"
+  },
+  {
+   "start": 68.93,
+   "end": 73.85,
+   "text": "de los dispositivos conectados o el uso que se le den, además de aprovechar los residuos"
+  },
+  {
+   "start": 73.85,
+   "end": 75.41,
+   "text": "que se producen como desechos."
+  },
+  {
+   "start": 75.41,
+   "end": 83.85,
+   "text": "SAEL es una propuesta escalable y replicable, es decir, que no se limita solo al sector gastronómico,"
+  },
+  {
+   "start": 83.85,
+   "end": 90.37,
+   "text": "ya que puede ser aprovechado tanto en el sector turístico, educativo, urbano y rural."
+  },
+  {
+   "start": 90.37,
+   "end": 95.17,
+   "text": "Este sistema puede ser implementado de manera accesible, contando con el apoyo financiero"
+  },
+  {
+   "start": 95.17,
+   "end": 102.17,
+   "text": "de distintas entidades y empresas con responsabilidad social, reduciendo significativamente su costo."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.0
+}

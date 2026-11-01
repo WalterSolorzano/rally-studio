@@ -1,0 +1,77 @@
+{
+ "video_id": "eBHmLMamlZo",
+ "url": "https://www.youtube.com/watch?v=eBHmLMamlZo",
+ "year": 2023,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "LEONES DE JUDÁ",
+ "place_label": "TERCER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "TERCER LUGAR",
+   "team": "LEONES DE JUDÁ",
+   "challenge": "08 - TRATAR DE ESTAR MEJOR"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:26:04+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Nuestro desafío es tratar de estar mejor. En nuestro planeta actualmente la salud mental a causa de la depresión una de las grandes deficiencias en los adolescentes, por la soledad y la poca comunicación familiar. Desencadenando una serie de patologías como ansiedad, depresión y en el peor de los casos optar por el suicidio. Para encontrar una solución a este problema hemos creado Yami un robot con inteligencia artificial diseñado para abordar la problemática de la falta de comunicación intrafamiliar, aislamiento social, falta de conocimiento y soledad. Con este proyecto se pretende utilizar sensores, ter ritmo cardíaco, depresión arterial y de temperatura corporal, acelerómetro, sistema de codificación de emergencia, incorporado a una pulsera, que enviará los datos al robot, permitiendo a los padres llevar un control sobre la conducta de los adolescentes, por medio de los smartphones, tomando en cuenta que estamos en la Cuarta Revolución Industria. Con esta herramienta los padres controlarán el comportamiento de sus hijos adolescentes desde el lugar que se encuentren mediante los dispositivos utilizados. Es una herramienta con factibilidad económica, sus costos son proporcionales a los grandes beneficiosos, beneficiando no solo a adolescentes sino a personas de todas las edades que se vean involucradas en problemas de salud en la vida. La innovación es hacer lo que otros no han hecho, o pensar lo que otros no han pensado, Einstein, 1950. Bajo esta realidad, la presente propuesta es innovadora porque generará un cambio significativo en nuestros hogares latinoamericanos, cultura y tecnología, ya que, está diseñada para ayudar a los padres, a supervisar y controlar las actividades diarias de sus hijos.",
+ "segments": [
+  {
+   "start": 0.69,
+   "end": 22.48,
+   "text": "Nuestro desafío es tratar de estar mejor."
+  },
+  {
+   "start": 22.48,
+   "end": 31.48,
+   "text": "En nuestro planeta actualmente la salud mental a causa de la depresión una de las grandes deficiencias en los adolescentes, por la soledad y la poca comunicación familiar."
+  },
+  {
+   "start": 31.48,
+   "end": 37.48,
+   "text": "Desencadenando una serie de patologías como ansiedad, depresión y en el peor de los casos optar por el suicidio."
+  },
+  {
+   "start": 37.48,
+   "end": 49.48,
+   "text": "Para encontrar una solución a este problema hemos creado Yami un robot con inteligencia artificial diseñado para abordar la problemática de la falta de comunicación intrafamiliar, aislamiento social, falta de conocimiento y soledad."
+  },
+  {
+   "start": 49.48,
+   "end": 62.48,
+   "text": "Con este proyecto se pretende utilizar sensores, ter ritmo cardíaco, depresión arterial y de temperatura corporal, acelerómetro, sistema de codificación de emergencia, incorporado a una pulsera, que enviará los datos al robot,"
+  },
+  {
+   "start": 62.48,
+   "end": 71.48,
+   "text": "permitiendo a los padres llevar un control sobre la conducta de los adolescentes, por medio de los smartphones, tomando en cuenta que estamos en la Cuarta Revolución Industria."
+  },
+  {
+   "start": 71.48,
+   "end": 79.48,
+   "text": "Con esta herramienta los padres controlarán el comportamiento de sus hijos adolescentes desde el lugar que se encuentren mediante los dispositivos utilizados."
+  },
+  {
+   "start": 79.48,
+   "end": 91.48,
+   "text": "Es una herramienta con factibilidad económica, sus costos son proporcionales a los grandes beneficiosos, beneficiando no solo a adolescentes sino a personas de todas las edades que se vean involucradas en problemas de salud en la vida."
+  },
+  {
+   "start": 92.48,
+   "end": 100.48,
+   "text": "La innovación es hacer lo que otros no han hecho, o pensar lo que otros no han pensado, Einstein, 1950."
+  },
+  {
+   "start": 100.48,
+   "end": 116.48,
+   "text": "Bajo esta realidad, la presente propuesta es innovadora porque generará un cambio significativo en nuestros hogares latinoamericanos, cultura y tecnología, ya que, está diseñada para ayudar a los padres, a supervisar y controlar las actividades diarias de sus hijos."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 118.9
+}

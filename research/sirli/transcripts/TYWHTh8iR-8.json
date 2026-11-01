@@ -1,0 +1,197 @@
+{
+ "video_id": "TYWHTh8iR-8",
+ "url": "https://youtu.be/TYWHTh8iR-8",
+ "year": 2025,
+ "collection": "sede",
+ "country": "CHILE",
+ "team": "NEWTHREAD",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "NEWTHREAD",
+   "challenge": "02 - RECICLADO TEXTIL"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:06:32+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Sabías que una camisa vieja puede convertirse en una gran barrera para el planeta en que vivimos? La industria de la moda hoy es uno de los sectores más contaminantes del mundo. Al año se producen cerca de 100 mil millones de prendas, lo que es equivalente a que un camión recolector de resíos lleno de ropa termine en vertedoros cada segundo. Por eso en Ustrat decidimos cambiar el hilo de la historia. Transformando estos resíos textiles en geomembranas decentables, creadas a partir de fibras recicladas y polímeros de polietileno de alta densidad recuperados, en una proporción de 2080. Estas geomembranas ofrecen la misma durabilidad y resistencia que las convencionales, pero con un impacto ambiental positivo, reduciendo resíos y promoviendo la economía circular. Sus usos son versátiles según el sector. En construcción sirven como aislantes o componentes estructurales. En minería e industria son ideales para tranques de reglave o embarses, y en municipios o gestión ambiental se aplican en rellenos sanitarios y obres hidráulicos. ¿Cómo lo logramos? En primer lugar, el textil se obtiene a través de puntos de acopio, centros de reciclaje, hoteles o retail. Luego, a las prendas se les retira las partes no textiles como botones o cierres, luego son lavadas, secadas y tituradas para obtener una fibra homogénea y apta para pasar por el proceso de extrusión, en el cual se agrega también el plástico HDPE tratado. El producto de este proceso se debe enfriar, cortar y revoinar para crear nuestras gran geomembranas. Para aumentar la eficiencia energética, aplicamos un retrofiring en la estruzora. Además, integramos energía solar fotovoltaica para cubrir gran parte del consumo diurno, utilizando una fuente limpia, renovable y replicable en cualquier país. Nuestros costos son competitivos. La propuesta reduce las emisiones y el consumo energético respecto a la fabricación convencional. Por ejemplo, a partir del cálculo de costos de producción, llegamos a la conclusión de que una bobina de 140 metros de New Threads valdía 435 dólares, en cambio una convencional valdía 3.000 dólares aproximadamente. Nuestro modelo es adaptable a distintas realidades, buscando recolectar 2 toneladas diarias de residuos textiles, integrando cooperativas locales que fomenten el empleo verde y la inclusión social. En New Threads, demostramos que la innovación puede tejer un futuro más limpio y sostenible, transformamos residuos en valor, desechos en soluciones y desafíos en oportunidades.",
+ "segments": [
+  {
+   "start": 0.02,
+   "end": 4.58,
+   "text": "¿Sabías que una camisa vieja puede convertirse en una gran barrera para el planeta en que vivimos?"
+  },
+  {
+   "start": 4.58,
+   "end": 8.02,
+   "text": "La industria de la moda hoy es uno de los sectores más contaminantes del mundo."
+  },
+  {
+   "start": 8.02,
+   "end": 10.58,
+   "text": "Al año se producen cerca de 100 mil millones de prendas,"
+  },
+  {
+   "start": 10.58,
+   "end": 15.38,
+   "text": "lo que es equivalente a que un camión recolector de resíos lleno de ropa termine en vertedoros cada segundo."
+  },
+  {
+   "start": 15.38,
+   "end": 18.62,
+   "text": "Por eso en Ustrat decidimos cambiar el hilo de la historia."
+  },
+  {
+   "start": 18.62,
+   "end": 21.98,
+   "text": "Transformando estos resíos textiles en geomembranas decentables,"
+  },
+  {
+   "start": 21.98,
+   "end": 26.14,
+   "text": "creadas a partir de fibras recicladas y polímeros de polietileno de alta densidad recuperados,"
+  },
+  {
+   "start": 26.14,
+   "end": 28.02,
+   "text": "en una proporción de 2080."
+  },
+  {
+   "start": 28.02,
+   "end": 32.02,
+   "text": "Estas geomembranas ofrecen la misma durabilidad y resistencia que las convencionales,"
+  },
+  {
+   "start": 32.02,
+   "end": 36.82,
+   "text": "pero con un impacto ambiental positivo, reduciendo resíos y promoviendo la economía circular."
+  },
+  {
+   "start": 36.82,
+   "end": 39.06,
+   "text": "Sus usos son versátiles según el sector."
+  },
+  {
+   "start": 39.06,
+   "end": 42.66,
+   "text": "En construcción sirven como aislantes o componentes estructurales."
+  },
+  {
+   "start": 42.66,
+   "end": 46.1,
+   "text": "En minería e industria son ideales para tranques de reglave o embarses,"
+  },
+  {
+   "start": 46.1,
+   "end": 49.98,
+   "text": "y en municipios o gestión ambiental se aplican en rellenos sanitarios y obres hidráulicos."
+  },
+  {
+   "start": 49.98,
+   "end": 51.14,
+   "text": "¿Cómo lo logramos?"
+  },
+  {
+   "start": 51.14,
+   "end": 56.42,
+   "text": "En primer lugar, el textil se obtiene a través de puntos de acopio, centros de reciclaje, hoteles o retail."
+  },
+  {
+   "start": 56.5,
+   "end": 60.38,
+   "text": "Luego, a las prendas se les retira las partes no textiles como botones o cierres,"
+  },
+  {
+   "start": 60.38,
+   "end": 63.9,
+   "text": "luego son lavadas, secadas y tituradas para obtener una fibra homogénea"
+  },
+  {
+   "start": 63.9,
+   "end": 66.26,
+   "text": "y apta para pasar por el proceso de extrusión,"
+  },
+  {
+   "start": 66.26,
+   "end": 69.46,
+   "text": "en el cual se agrega también el plástico HDPE tratado."
+  },
+  {
+   "start": 69.46,
+   "end": 74.66,
+   "text": "El producto de este proceso se debe enfriar, cortar y revoinar para crear nuestras gran geomembranas."
+  },
+  {
+   "start": 74.66,
+   "end": 78.1,
+   "text": "Para aumentar la eficiencia energética, aplicamos un retrofiring en la estruzora."
+  },
+  {
+   "start": 78.1,
+   "end": 82.38,
+   "text": "Además, integramos energía solar fotovoltaica para cubrir gran parte del consumo diurno,"
+  },
+  {
+   "start": 82.38,
+   "end": 86.06,
+   "text": "utilizando una fuente limpia, renovable y replicable en cualquier país."
+  },
+  {
+   "start": 86.14,
+   "end": 87.86,
+   "text": "Nuestros costos son competitivos."
+  },
+  {
+   "start": 87.86,
+   "end": 92.34,
+   "text": "La propuesta reduce las emisiones y el consumo energético respecto a la fabricación convencional."
+  },
+  {
+   "start": 92.34,
+   "end": 95.22,
+   "text": "Por ejemplo, a partir del cálculo de costos de producción,"
+  },
+  {
+   "start": 95.22,
+   "end": 100.94,
+   "text": "llegamos a la conclusión de que una bobina de 140 metros de New Threads valdía 435 dólares,"
+  },
+  {
+   "start": 100.94,
+   "end": 104.46,
+   "text": "en cambio una convencional valdía 3.000 dólares aproximadamente."
+  },
+  {
+   "start": 104.46,
+   "end": 106.74,
+   "text": "Nuestro modelo es adaptable a distintas realidades,"
+  },
+  {
+   "start": 106.74,
+   "end": 109.78,
+   "text": "buscando recolectar 2 toneladas diarias de residuos textiles,"
+  },
+  {
+   "start": 109.78,
+   "end": 113.5,
+   "text": "integrando cooperativas locales que fomenten el empleo verde y la inclusión social."
+  },
+  {
+   "start": 113.54,
+   "end": 117.26,
+   "text": "En New Threads, demostramos que la innovación puede tejer un futuro más limpio y sostenible,"
+  },
+  {
+   "start": 117.26,
+   "end": 120.94,
+   "text": "transformamos residuos en valor, desechos en soluciones y desafíos en oportunidades."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.9
+}

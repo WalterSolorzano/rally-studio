@@ -1,0 +1,122 @@
+{
+ "video_id": "LMCpSw5nsls",
+ "url": "https://youtu.be/LMCpSw5nsls",
+ "year": 2025,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "DESING CREW",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "DESING CREW",
+   "challenge": "06 - RESIDUOS EN PLAYAS"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:56:52+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Cada año más de 11 millones de toneladas de plásticos terminan en el heloceano. El 70% de los residuos en las playas son plásticos, botellas, envoltorios y colillas, desechos que tardan siglos en degradarse. Cada trozo de basura pone en riesgo la vida marina. Tortuga, peces y aves que confunden los plásticos con alimentos y los microplásticos ya están presentes en el agua que bebemos y en las comidas que consumimos. Hoy se estima que ingenimos al equivalente a una tarjeta de créditos en plásticos cada semana. Pero hay una nueva forma de cambiar esta historia. Mundu Cycle es un sistema, producto, servicio que transforma los residuos costeros en recursos bútiles, tico hecho con plásticos reciclados y accionado a tracción humana, sin combustibles, sin energía eléctrica, solo ingenio y trabajo colaborativo. Los residuos recolectados se transforman en nuevos objetos como mobiliarios escolares, cestos de basura y componentes para seguir fabricando más unidades del sistema. Así cerramos el ciclo del plástico en un modelo de economía circular. Este modelo no solo limpia playas, genera empleo local, educa en sostenibilidad y proteja el ecosistema costero. El mercado del plástico reciclado, valuado en 53 mil millones de dólares en 2024, crecerá hasta 127 mil millones en 2024. Y Mundu Cycle aprovechará esta oportunidad para transformar un problema global en un recurso sostenible. Cada pedazo de plástico puede tener una segunda vida. Cada acción cuenta Mundu Cycle del reciduo al recurso del problema a la oportunidad.",
+ "segments": [
+  {
+   "start": 2.19,
+   "end": 6.59,
+   "text": "Cada año más de 11 millones de toneladas de plásticos terminan en el heloceano."
+  },
+  {
+   "start": 6.59,
+   "end": 12.29,
+   "text": "El 70% de los residuos en las playas son plásticos, botellas, envoltorios y colillas,"
+  },
+  {
+   "start": 12.29,
+   "end": 17.91,
+   "text": "desechos que tardan siglos en degradarse. Cada trozo de basura pone en riesgo la vida marina."
+  },
+  {
+   "start": 17.91,
+   "end": 23.79,
+   "text": "Tortuga, peces y aves que confunden los plásticos con alimentos y los microplásticos ya están"
+  },
+  {
+   "start": 23.79,
+   "end": 29.27,
+   "text": "presentes en el agua que bebemos y en las comidas que consumimos. Hoy se estima que ingenimos"
+  },
+  {
+   "start": 29.27,
+   "end": 32.51,
+   "text": "al equivalente a una tarjeta de créditos en plásticos cada semana."
+  },
+  {
+   "start": 32.51,
+   "end": 38.39,
+   "text": "Pero hay una nueva forma de cambiar esta historia. Mundu Cycle es un sistema,"
+  },
+  {
+   "start": 38.39,
+   "end": 42.75,
+   "text": "producto, servicio que transforma los residuos costeros en recursos bútiles,"
+  },
+  {
+   "start": 42.75,
+   "end": 46.87,
+   "text": "tico hecho con plásticos reciclados y accionado a tracción humana,"
+  },
+  {
+   "start": 46.87,
+   "end": 51.99,
+   "text": "sin combustibles, sin energía eléctrica, solo ingenio y trabajo colaborativo."
+  },
+  {
+   "start": 51.99,
+   "end": 57.35,
+   "text": "Los residuos recolectados se transforman en nuevos objetos como mobiliarios escolares,"
+  },
+  {
+   "start": 57.35,
+   "end": 61.59,
+   "text": "cestos de basura y componentes para seguir fabricando más unidades del sistema."
+  },
+  {
+   "start": 61.59,
+   "end": 68.07,
+   "text": "Así cerramos el ciclo del plástico en un modelo de economía circular. Este modelo no"
+  },
+  {
+   "start": 68.07,
+   "end": 73.91,
+   "text": "solo limpia playas, genera empleo local, educa en sostenibilidad y proteja el ecosistema costero."
+  },
+  {
+   "start": 73.91,
+   "end": 79.71,
+   "text": "El mercado del plástico reciclado, valuado en 53 mil millones de dólares en 2024,"
+  },
+  {
+   "start": 79.71,
+   "end": 86.79,
+   "text": "crecerá hasta 127 mil millones en 2024. Y Mundu Cycle aprovechará esta oportunidad"
+  },
+  {
+   "start": 86.79,
+   "end": 90.59,
+   "text": "para transformar un problema global en un recurso sostenible."
+  },
+  {
+   "start": 90.59,
+   "end": 97.95,
+   "text": "Cada pedazo de plástico puede tener una segunda vida. Cada acción cuenta Mundu Cycle del reciduo"
+  },
+  {
+   "start": 97.95,
+   "end": 100.95,
+   "text": "al recurso del problema a la oportunidad."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 106.0
+}

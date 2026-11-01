@@ -1,0 +1,97 @@
+{
+ "video_id": "mmWe9guigAg",
+ "url": "https://youtu.be/mmWe9guigAg",
+ "year": 2020,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "CARAZO INNOVA",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2020,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "CARAZO INNOVA",
+   "challenge": "04 - ¿SERÁ POSIBLE PROMOVER UN USO CRECIENTE DE LA BICICLETA COMO MEDIO HABITUAL DE TRANSPORTE?"
+  }
+ ],
+ "fetched_at": "2026-10-23T01:16:35+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Actualmente en una sociedad en la que vivimos se hace cada vez más notorio el incremento de daños ocasionados al medio ambiente. Los medios de transporte traen repercusiones climáticas por el exceso de CO2, desencadenando problemas graves al ambiente que amenaza la existencia de la humanidad en el planeta. Ante el congestionamiento vehicular y la contaminación creciente de la atmósfera, el hombre necesita urgentemente promover y comentar el uso del mejor transporte alternativo y amigable con el medio ambiente. Teniendo en cuenta que la contaminación del aire causa 1.300 muertes al año en el mundo. Utilizar un vehículo con serian misiones como la bicicleta es la mejor forma de actuar contra esta realidad. La bicicleta aporta innumerables beneficios creando un entorno eficiente como un estilo de vida más saludable, una actividad de voz agradable y un medio ambiente sano. Es por esto que se presenta ProCycode, un nuevo producto con múltiples funcionalidades capaz de generar energía eléctrica sustentable con el uso de una bicicleta. A través de un producto que proporciona una forma eficaz de utilizar la energía al generar elciedad con el uso del pedal. Esta energía es almacenada en pequeños bancos que se abusa con un modelo funcional que puede alimentar desde el foco de la bicicleta, carga el móvil y conectar múltiples accesorios por energía producida. A la vez que el generador se puede convertir en un impulsador para lugares donde es difícil el esfuerzo. Se desarrolla con un sistema inteligente capaz de monitorear datos del usuario, estadísticas y trayectoria, ubicación, retos diarios y los beneficios que motiven a las personas de usar este sistema. Que son mandados a un aplicación móvil y luego a la nube, donde los datos de información podrán ser adquiridos por instituciones públicas y privadas. Con el objetivo de poder analizar los datos para tomar decisiones de aspectos ambientales, infraestructura, ciclistica y salud. Además ofrece la posibilidad de que varios usuarios compartan contenidos para un bien común.",
+ "segments": [
+  {
+   "start": 0.72,
+   "end": 7.32,
+   "text": "Actualmente en una sociedad en la que vivimos se hace cada vez más notorio el incremento de daños ocasionados al medio ambiente."
+  },
+  {
+   "start": 7.32,
+   "end": 17.72,
+   "text": "Los medios de transporte traen repercusiones climáticas por el exceso de CO2, desencadenando problemas graves al ambiente que amenaza la existencia de la humanidad en el planeta."
+  },
+  {
+   "start": 17.72,
+   "end": 28.72,
+   "text": "Ante el congestionamiento vehicular y la contaminación creciente de la atmósfera, el hombre necesita urgentemente promover y comentar el uso del mejor transporte alternativo y amigable con el medio ambiente."
+  },
+  {
+   "start": 28.72,
+   "end": 34.72,
+   "text": "Teniendo en cuenta que la contaminación del aire causa 1.300 muertes al año en el mundo."
+  },
+  {
+   "start": 34.72,
+   "end": 40.72,
+   "text": "Utilizar un vehículo con serian misiones como la bicicleta es la mejor forma de actuar contra esta realidad."
+  },
+  {
+   "start": 40.72,
+   "end": 50.72,
+   "text": "La bicicleta aporta innumerables beneficios creando un entorno eficiente como un estilo de vida más saludable, una actividad de voz agradable y un medio ambiente sano."
+  },
+  {
+   "start": 50.72,
+   "end": 60.72,
+   "text": "Es por esto que se presenta ProCycode, un nuevo producto con múltiples funcionalidades capaz de generar energía eléctrica sustentable con el uso de una bicicleta."
+  },
+  {
+   "start": 60.72,
+   "end": 68.72,
+   "text": "A través de un producto que proporciona una forma eficaz de utilizar la energía al generar elciedad con el uso del pedal."
+  },
+  {
+   "start": 68.72,
+   "end": 81.72,
+   "text": "Esta energía es almacenada en pequeños bancos que se abusa con un modelo funcional que puede alimentar desde el foco de la bicicleta, carga el móvil y conectar múltiples accesorios por energía producida."
+  },
+  {
+   "start": 81.72,
+   "end": 87.72,
+   "text": "A la vez que el generador se puede convertir en un impulsador para lugares donde es difícil el esfuerzo."
+  },
+  {
+   "start": 87.72,
+   "end": 100.72,
+   "text": "Se desarrolla con un sistema inteligente capaz de monitorear datos del usuario, estadísticas y trayectoria, ubicación, retos diarios y los beneficios que motiven a las personas de usar este sistema."
+  },
+  {
+   "start": 100.72,
+   "end": 108.72,
+   "text": "Que son mandados a un aplicación móvil y luego a la nube, donde los datos de información podrán ser adquiridos por instituciones públicas y privadas."
+  },
+  {
+   "start": 108.72,
+   "end": 117.72,
+   "text": "Con el objetivo de poder analizar los datos para tomar decisiones de aspectos ambientales, infraestructura, ciclistica y salud."
+  },
+  {
+   "start": 117.72,
+   "end": 123.72,
+   "text": "Además ofrece la posibilidad de que varios usuarios compartan contenidos para un bien común."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 125.3
+}

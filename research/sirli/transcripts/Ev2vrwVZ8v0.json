@@ -1,0 +1,152 @@
+{
+ "video_id": "Ev2vrwVZ8v0",
+ "url": "https://www.youtube.com/watch?v=Ev2vrwVZ8v0",
+ "year": 2024,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "FUERZA JAGUAR.",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "FUERZA JAGUAR.",
+   "challenge": "07 - PARQUÍMETRO DESATENDIDO"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:46:32+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En un mundo donde el tráfico y las caces de espacios de estacionamiento en áreas concurridas son problemas cada vez más graves. Nace una solución innovadora. Hoy en día muchas ciudades enfrentan grandes retos debido a la falta de un sistema dinámico para gestionar estacionamientos. Espacios ocupados durante largos periodos, con gestión vehicular y la frustración de no encontrar lugar. Teniendo como consecuencia una pérdida de tiempo, más contaminación y complicaciones al pagar. Es por eso que presentamos una solución que haga que estacionarse sea simple, rápido y sin complicaciones. Smart Parking. Es un sistema de parquímetros los cuales son energizados en el día por medio de un panel fotovoltaico y en la noche por medio de un controlador híbrido que cambia el suministro a la acorde en Tecumun. Reduciendo sustancialmente los costos de consumo eléctrico. Todo ello para alimentar 15 lugares donde se integra el sistema de monitoreo. El cual consta de un sensor de radio frecuencia. En este caso, de omitir el pago pertinente generará una infracción en el sistema de tránsito de la ciudad. Funciona mediante scanner, utilizado para leer códigos QR, pudiendo así cobrar desde la aplicación o bien pagando directamente en la zona de contactles que se encuentra bajo el lector de código. Aúnado a esto la aplicación les permite visualizar espacios disponibles de manera remota optimizando el tiempo y recursos consumidos. El sistema de identificación de PUVE será usado en caso de omisión del pago, el cual brinda datos del vehículo para generar una infracción directamente en el sistema de tránsito de la ciudad que será aplicada en su próximo trámite vehicular. Este sistema es accesible, económicamente sostenible y socialmente aceptable, con precios competitivos y una estructura pensada para durar. Así no sólo mejora el presente, sino que construye un futuro más sustentable para nuestras ciudades. Smart Parking, tecnología, innovación y sostenibilidad al servicio de la movilidad urbana. El futuro del estacionamiento está aquí.",
+ "segments": [
+  {
+   "start": 0.05,
+   "end": 6.07,
+   "text": "En un mundo donde el tráfico y las caces de espacios de estacionamiento en áreas concurridas son problemas cada vez más graves."
+  },
+  {
+   "start": 6.07,
+   "end": 8.31,
+   "text": "Nace una solución innovadora."
+  },
+  {
+   "start": 8.31,
+   "end": 15.05,
+   "text": "Hoy en día muchas ciudades enfrentan grandes retos debido a la falta de un sistema dinámico para gestionar estacionamientos."
+  },
+  {
+   "start": 15.05,
+   "end": 20.13,
+   "text": "Espacios ocupados durante largos periodos, con gestión vehicular y la frustración de no encontrar lugar."
+  },
+  {
+   "start": 20.13,
+   "end": 24.97,
+   "text": "Teniendo como consecuencia una pérdida de tiempo, más contaminación y complicaciones al pagar."
+  },
+  {
+   "start": 24.97,
+   "end": 30.63,
+   "text": "Es por eso que presentamos una solución que haga que estacionarse sea simple, rápido y sin complicaciones."
+  },
+  {
+   "start": 30.63,
+   "end": 32.39,
+   "text": "Smart Parking."
+  },
+  {
+   "start": 32.39,
+   "end": 37.77,
+   "text": "Es un sistema de parquímetros los cuales son energizados en el día por medio de un panel fotovoltaico"
+  },
+  {
+   "start": 37.77,
+   "end": 42.37,
+   "text": "y en la noche por medio de un controlador híbrido que cambia el suministro a la acorde en Tecumun."
+  },
+  {
+   "start": 42.37,
+   "end": 45.65,
+   "text": "Reduciendo sustancialmente los costos de consumo eléctrico."
+  },
+  {
+   "start": 45.65,
+   "end": 50.31,
+   "text": "Todo ello para alimentar 15 lugares donde se integra el sistema de monitoreo."
+  },
+  {
+   "start": 50.31,
+   "end": 53.65,
+   "text": "El cual consta de un sensor de radio frecuencia."
+  },
+  {
+   "start": 53.77,
+   "end": 59.93,
+   "text": "En este caso, de omitir el pago pertinente generará una infracción en el sistema de tránsito de la ciudad."
+  },
+  {
+   "start": 59.93,
+   "end": 68.14,
+   "text": "Funciona mediante scanner, utilizado para leer códigos QR, pudiendo así cobrar desde la aplicación o bien"
+  },
+  {
+   "start": 68.14,
+   "end": 72.94,
+   "text": "pagando directamente en la zona de contactles que se encuentra bajo el lector de código."
+  },
+  {
+   "start": 72.94,
+   "end": 78.18,
+   "text": "Aúnado a esto la aplicación les permite visualizar espacios disponibles de manera remota"
+  },
+  {
+   "start": 78.18,
+   "end": 81.06,
+   "text": "optimizando el tiempo y recursos consumidos."
+  },
+  {
+   "start": 81.54,
+   "end": 85.82,
+   "text": "El sistema de identificación de PUVE será usado en caso de omisión del pago,"
+  },
+  {
+   "start": 85.82,
+   "end": 90.66,
+   "text": "el cual brinda datos del vehículo para generar una infracción directamente en el sistema de"
+  },
+  {
+   "start": 90.66,
+   "end": 94.7,
+   "text": "tránsito de la ciudad que será aplicada en su próximo trámite vehicular."
+  },
+  {
+   "start": 94.7,
+   "end": 99.78,
+   "text": "Este sistema es accesible, económicamente sostenible y socialmente aceptable,"
+  },
+  {
+   "start": 99.78,
+   "end": 103.3,
+   "text": "con precios competitivos y una estructura pensada para durar."
+  },
+  {
+   "start": 103.3,
+   "end": 109.18,
+   "text": "Así no sólo mejora el presente, sino que construye un futuro más sustentable para nuestras ciudades."
+  },
+  {
+   "start": 109.34,
+   "end": 114.78,
+   "text": "Smart Parking, tecnología, innovación y sostenibilidad al servicio de la movilidad urbana."
+  },
+  {
+   "start": 114.78,
+   "end": 117.06,
+   "text": "El futuro del estacionamiento está aquí."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.0
+}

@@ -1,0 +1,142 @@
+{
+ "video_id": "t5wXdrVJK_k",
+ "url": "https://youtu.be/t5wXdrVJK_k",
+ "year": 2026,
+ "collection": "sede",
+ "country": "VENEZUELA",
+ "team": "LOS PILARES",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "LOS PILARES",
+   "challenge": "09 - OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:54:30+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Ante un evento catastrófico como un terremoto o deslave, la caída del servicio eléctrico y de las telecomunicaciones genera un caos inmediato. Las primeras horas son críticas y las autoridades deben tomar decisiones bajo alta presión, con información fragmentada y recursos muy limitados. Para resolverlo, desarrollamos una plataforma inteligente de su porte de decisión, a través de un admobil que emite señales de vida en segundo plano. Detectamos en tiempo real que son las que harán incomunicadas sin depender de llamadas de emergencia. Esta información se procesa en un tablero web centralizado para las autoridades. El sistema mape instantáneamente el nivel de impacto por sectores, filtrando datos verificados para erradicar la desinformación y visualizando las áreas rojas más críticas. Bajo una matrilla estricta de prioridades operativas, la plataforma recomienda la asignación eficiente de respcatistas especializados. Equipos usar y ambulancias, conectando a los heridos con hospitales que cuentan con capacidad real en ese momento. Una vez asegurada la vida humana, el sistema coordina la distribución transparente de agua potable, alimentos y medicinas. Monitoramos en tiempo real los inventarios en albergues para que la ayuda llegue exactamente a donde más se necesita. Nuestra propuesta es factible y de cero costo en licencias, al estar desarrollada con software libre. Además, está optimizada para transmitir paquetes mínimos de datos en redes degradadas, garantizando estabilidad técnica en el terreno. Diseñado inicialmente para atender la fragilidad geográfica de les de Caracas y la Guayra. Este sistema cuenta con una arquitectura modular y escalable, lista para ser desplegada en los 335 municipios de todo el territorio nacional. Transformamos la confusión de una tragedia en una cadena de mando organizada, rápida y humana. Estamos listos para implementar esta solución, optimizar cada recurso disponible y salvar miles de vida. Muchas gracias.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 3.36,
+   "text": "Ante un evento catastrófico como un terremoto o deslave,"
+  },
+  {
+   "start": 3.36,
+   "end": 8.0,
+   "text": "la caída del servicio eléctrico y de las telecomunicaciones genera un caos inmediato."
+  },
+  {
+   "start": 8.0,
+   "end": 12.8,
+   "text": "Las primeras horas son críticas y las autoridades deben tomar decisiones bajo alta presión,"
+  },
+  {
+   "start": 12.8,
+   "end": 16.0,
+   "text": "con información fragmentada y recursos muy limitados."
+  },
+  {
+   "start": 16.0,
+   "end": 20.0,
+   "text": "Para resolverlo, desarrollamos una plataforma inteligente de su porte de decisión,"
+  },
+  {
+   "start": 21.0,
+   "end": 25.0,
+   "text": "a través de un admobil que emite señales de vida en segundo plano."
+  },
+  {
+   "start": 25.0,
+   "end": 30.0,
+   "text": "Detectamos en tiempo real que son las que harán incomunicadas sin depender de llamadas de emergencia."
+  },
+  {
+   "start": 31.0,
+   "end": 36.0,
+   "text": "Esta información se procesa en un tablero web centralizado para las autoridades."
+  },
+  {
+   "start": 36.0,
+   "end": 39.0,
+   "text": "El sistema mape instantáneamente el nivel de impacto por sectores,"
+  },
+  {
+   "start": 40.0,
+   "end": 45.0,
+   "text": "filtrando datos verificados para erradicar la desinformación y visualizando las áreas rojas más críticas."
+  },
+  {
+   "start": 46.0,
+   "end": 49.0,
+   "text": "Bajo una matrilla estricta de prioridades operativas,"
+  },
+  {
+   "start": 49.0,
+   "end": 54.0,
+   "text": "la plataforma recomienda la asignación eficiente de respcatistas especializados."
+  },
+  {
+   "start": 54.0,
+   "end": 61.0,
+   "text": "Equipos usar y ambulancias, conectando a los heridos con hospitales que cuentan con capacidad real en ese momento."
+  },
+  {
+   "start": 61.0,
+   "end": 68.0,
+   "text": "Una vez asegurada la vida humana, el sistema coordina la distribución transparente de agua potable, alimentos y medicinas."
+  },
+  {
+   "start": 68.0,
+   "end": 75.0,
+   "text": "Monitoramos en tiempo real los inventarios en albergues para que la ayuda llegue exactamente a donde más se necesita."
+  },
+  {
+   "start": 76.0,
+   "end": 82.0,
+   "text": "Nuestra propuesta es factible y de cero costo en licencias, al estar desarrollada con software libre."
+  },
+  {
+   "start": 82.0,
+   "end": 87.0,
+   "text": "Además, está optimizada para transmitir paquetes mínimos de datos en redes degradadas,"
+  },
+  {
+   "start": 87.0,
+   "end": 90.0,
+   "text": "garantizando estabilidad técnica en el terreno."
+  },
+  {
+   "start": 91.0,
+   "end": 96.0,
+   "text": "Diseñado inicialmente para atender la fragilidad geográfica de les de Caracas y la Guayra."
+  },
+  {
+   "start": 96.0,
+   "end": 105.0,
+   "text": "Este sistema cuenta con una arquitectura modular y escalable, lista para ser desplegada en los 335 municipios de todo el territorio nacional."
+  },
+  {
+   "start": 106.0,
+   "end": 111.0,
+   "text": "Transformamos la confusión de una tragedia en una cadena de mando organizada, rápida y humana."
+  },
+  {
+   "start": 112.0,
+   "end": 118.0,
+   "text": "Estamos listos para implementar esta solución, optimizar cada recurso disponible y salvar miles de vida."
+  },
+  {
+   "start": 118.0,
+   "end": 120.0,
+   "text": "Muchas gracias."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.1
+}

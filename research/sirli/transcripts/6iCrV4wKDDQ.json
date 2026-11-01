@@ -1,0 +1,152 @@
+{
+ "video_id": "6iCrV4wKDDQ",
+ "url": "https://youtu.be/6iCrV4wKDDQ",
+ "year": 2022,
+ "collection": "sede",
+ "country": "CHILE",
+ "team": "TECNOLOGIAS DEL NUEVO MUNDO",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "TECNOLOGIAS DEL NUEVO MUNDO",
+   "challenge": "07 - ALUDES DE BARRO"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:24:27+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Sabemos que Latinoamérica sufren la crisis de vivienda, lo que conlleva la toma de terrenos, los cuales muchas veces suelen ser víctimas de alubiones. Los alubiones son desprendimientos de tierra desplazados por una corriente de agua y son los causantes de miles de muertes a nivel global anualmente. La cadastrofe natural es inminente, pero difícil de predecir y causan daños estructurales, económicos y sobre todo mortales. Sin embargo, hay comunidades que de todos modos habitan en estas zonas de alto riesgo de desprendimiento del suelo, puesto que son terrenos disponibles. Entonces, si los alubiones son difíciles de predecir, ¿cómo alertamos a la comunidad que está en riesgo? Nuestra propuesta consiste en un dispositivo que, mediante procesamiento de datos, alertará sobre posibles desprendimientos de tierra y prevenerá alubiones. También funcionan con diferentes sensores que miden las principales características que propician un desplazamiento de tierra. Adicionalmente, viene integrado un arbusto de romero que crecerá mediante micro-risas arbosculares, un hongo que realizará el arbusto y entre ambos se nutrirá mutuamente. Lo anterior adiciona la prevención de los desprendimientos de tierra, puesto que juegan el papel de afianzar el suelo con sus raíces. Hay un límite al que estas mediciones pueden llegar. Si ocurre alguna anomalía, se generará una alerta a la comunidad sobre un posible alubión. Si se suma, además, el factor de detección de un desplazamiento, avisará que el alubión es inminente. Con este instrumento, lo leemos evitar los alubiones y si es que sucedieran, contaríamos con una forma de alertar a la comunidad para prevenir la muerte y lesiones de decenas de personas que habitan en estos sectores de alto riesgo.",
+ "segments": [
+  {
+   "start": 0.3,
+   "end": 6.3,
+   "text": "Sabemos que Latinoamérica sufren la crisis de vivienda, lo que conlleva la toma de terrenos,"
+  },
+  {
+   "start": 6.3,
+   "end": 10.02,
+   "text": "los cuales muchas veces suelen ser víctimas de alubiones."
+  },
+  {
+   "start": 10.02,
+   "end": 14.9,
+   "text": "Los alubiones son desprendimientos de tierra desplazados por una corriente de agua y son"
+  },
+  {
+   "start": 14.9,
+   "end": 19.22,
+   "text": "los causantes de miles de muertes a nivel global anualmente."
+  },
+  {
+   "start": 19.22,
+   "end": 24.66,
+   "text": "La cadastrofe natural es inminente, pero difícil de predecir y causan daños estructurales,"
+  },
+  {
+   "start": 24.66,
+   "end": 28.58,
+   "text": "económicos y sobre todo mortales."
+  },
+  {
+   "start": 28.58,
+   "end": 32.62,
+   "text": "Sin embargo, hay comunidades que de todos modos habitan en estas zonas de alto riesgo"
+  },
+  {
+   "start": 32.62,
+   "end": 36.46,
+   "text": "de desprendimiento del suelo, puesto que son terrenos disponibles."
+  },
+  {
+   "start": 36.46,
+   "end": 42.62,
+   "text": "Entonces, si los alubiones son difíciles de predecir, ¿cómo alertamos a la comunidad"
+  },
+  {
+   "start": 42.62,
+   "end": 44.42,
+   "text": "que está en riesgo?"
+  },
+  {
+   "start": 44.42,
+   "end": 49.46,
+   "text": "Nuestra propuesta consiste en un dispositivo que, mediante procesamiento de datos, alertará"
+  },
+  {
+   "start": 49.46,
+   "end": 53.58,
+   "text": "sobre posibles desprendimientos de tierra y prevenerá alubiones."
+  },
+  {
+   "start": 53.58,
+   "end": 58.1,
+   "text": "También funcionan con diferentes sensores que miden las principales características que"
+  },
+  {
+   "start": 58.1,
+   "end": 64.37,
+   "text": "propician un desplazamiento de tierra."
+  },
+  {
+   "start": 64.37,
+   "end": 70.21,
+   "text": "Adicionalmente, viene integrado un arbusto de romero que crecerá mediante micro-risas"
+  },
+  {
+   "start": 70.21,
+   "end": 77.57,
+   "text": "arbosculares, un hongo que realizará el arbusto y entre ambos se nutrirá mutuamente."
+  },
+  {
+   "start": 77.57,
+   "end": 82.85,
+   "text": "Lo anterior adiciona la prevención de los desprendimientos de tierra, puesto que"
+  },
+  {
+   "start": 82.85,
+   "end": 86.57,
+   "text": "juegan el papel de afianzar el suelo con sus raíces."
+  },
+  {
+   "start": 86.69,
+   "end": 89.73,
+   "text": "Hay un límite al que estas mediciones pueden llegar."
+  },
+  {
+   "start": 89.73,
+   "end": 95.25,
+   "text": "Si ocurre alguna anomalía, se generará una alerta a la comunidad sobre un posible alubión."
+  },
+  {
+   "start": 95.25,
+   "end": 100.33,
+   "text": "Si se suma, además, el factor de detección de un desplazamiento, avisará que el alubión"
+  },
+  {
+   "start": 100.33,
+   "end": 101.89,
+   "text": "es inminente."
+  },
+  {
+   "start": 101.89,
+   "end": 107.29,
+   "text": "Con este instrumento, lo leemos evitar los alubiones y si es que sucedieran, contaríamos"
+  },
+  {
+   "start": 107.29,
+   "end": 112.05,
+   "text": "con una forma de alertar a la comunidad para prevenir la muerte y lesiones de decenas"
+  },
+  {
+   "start": 112.05,
+   "end": 114.93,
+   "text": "de personas que habitan en estos sectores de alto riesgo."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 115.4
+}

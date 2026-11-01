@@ -1,0 +1,102 @@
+{
+ "video_id": "fD5OASRz94E",
+ "url": "https://youtu.be/fD5OASRz94E",
+ "year": 2023,
+ "collection": "sede",
+ "country": "COLOMBIA",
+ "team": "DELOSGANADORES",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "DELOSGANADORES",
+   "challenge": "07 - CROWDSENSING"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:58:54+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Alguna vez jugaste esto? Era un juego de Flash de por allá de 2012 donde la premisa era bastante simple. Optimizar el uso de los semáforos. Y de eso hablaremos aquí. El problema del tráfico nosotros decidimos abordarlo por medio del crow sensing, que se define como lo que puedes leer en pantalla y que básicamente nos habla de que nosotros podemos aprovechar el montón de sensores e implementos que tienen nuestros aparatos móviles. Nosotros nos seccionamos en los datos que se pueden recolectar en situaciones de tránsito para abordar el tema del tráfico lento. ¿Qué cosas causan este tipo de problemas de movilidad? Aunque en gran parte está el factor humano, hay estudios que demuestran que con el simple reglo de los tiempos del semáforo, pueda haber grandes cambios en la movilidad de una ciudad. Nuestra solución parte de un sistema en conjunto de una base de datos y un algoritmo que proponga una adaptación inmediata a los tiempos de los semáforos, así logrando una sincronización ideal en los trayectos viales. Nuestra idea ataca el problema del tránsito de nuestro punto de vista. Se han propuesto modelos de autoconducción para probar el problema típico, pero que no son accesibles para todos los países del mundo. Esta propuesta conlleva a muchos beneficios para el medio ambiente, para el contexto social y para el crecimiento de la economía de las comunidades. Por último, les dejamos las ideas que descartamos y las referencias de las construcciones y potesí que nosotros usamos en el video. Aquí Rafa en Matera, representando al grupo de los ganadores y gracias por ver.",
+ "segments": [
+  {
+   "start": 0.3,
+   "end": 8.3,
+   "text": "¿Alguna vez jugaste esto? Era un juego de Flash de por allá de 2012 donde la premisa era bastante simple."
+  },
+  {
+   "start": 8.3,
+   "end": 15.3,
+   "text": "Optimizar el uso de los semáforos. Y de eso hablaremos aquí."
+  },
+  {
+   "start": 15.3,
+   "end": 22.3,
+   "text": "El problema del tráfico nosotros decidimos abordarlo por medio del crow sensing,"
+  },
+  {
+   "start": 22.3,
+   "end": 33.3,
+   "text": "que se define como lo que puedes leer en pantalla y que básicamente nos habla de que nosotros podemos aprovechar el montón de sensores e implementos que tienen nuestros aparatos móviles."
+  },
+  {
+   "start": 33.3,
+   "end": 43.3,
+   "text": "Nosotros nos seccionamos en los datos que se pueden recolectar en situaciones de tránsito para abordar el tema del tráfico lento."
+  },
+  {
+   "start": 43.3,
+   "end": 47.3,
+   "text": "¿Qué cosas causan este tipo de problemas de movilidad?"
+  },
+  {
+   "start": 47.3,
+   "end": 55.3,
+   "text": "Aunque en gran parte está el factor humano, hay estudios que demuestran que con el simple reglo de los tiempos del semáforo,"
+  },
+  {
+   "start": 55.3,
+   "end": 59.3,
+   "text": "pueda haber grandes cambios en la movilidad de una ciudad."
+  },
+  {
+   "start": 59.3,
+   "end": 74.12,
+   "text": "Nuestra solución parte de un sistema en conjunto de una base de datos y un algoritmo que proponga una adaptación inmediata a los tiempos de los semáforos,"
+  },
+  {
+   "start": 74.12,
+   "end": 79.12,
+   "text": "así logrando una sincronización ideal en los trayectos viales."
+  },
+  {
+   "start": 79.12,
+   "end": 83.12,
+   "text": "Nuestra idea ataca el problema del tránsito de nuestro punto de vista."
+  },
+  {
+   "start": 83.12,
+   "end": 90.12,
+   "text": "Se han propuesto modelos de autoconducción para probar el problema típico, pero que no son accesibles para todos los países del mundo."
+  },
+  {
+   "start": 90.12,
+   "end": 102.12,
+   "text": "Esta propuesta conlleva a muchos beneficios para el medio ambiente, para el contexto social y para el crecimiento de la economía de las comunidades."
+  },
+  {
+   "start": 102.12,
+   "end": 110.12,
+   "text": "Por último, les dejamos las ideas que descartamos y las referencias de las construcciones y potesí que nosotros usamos en el video."
+  },
+  {
+   "start": 110.12,
+   "end": 115.12,
+   "text": "Aquí Rafa en Matera, representando al grupo de los ganadores y gracias por ver."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 118.0
+}

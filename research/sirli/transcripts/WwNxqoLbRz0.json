@@ -1,0 +1,137 @@
+{
+ "video_id": "WwNxqoLbRz0",
+ "url": "https://youtu.be/WwNxqoLbRz0",
+ "year": 2021,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "CONJUNTO SAPUCAY",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "CONJUNTO SAPUCAY",
+   "challenge": "06 - SOSTENIBILIDAD AMBIENTAL ORIENTADA AL APROVECHAMIENTO DE RESIDUOS PLÁSTICOS EN FRANJAS COSTERAS"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:42:57+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "La presencia de residuos plásticos en zonas costeras es una problemática cada vez más frecuente que altera la fauna, paisaje y flora del ambiente. La situación crítica requiere de soluciones automatizadas que permitan una economía circular donde el reciclaje sea fuente de materia prima para brindar productos y servicios de calidad a las personas. A la hora de abordar esta problemática, notamos que la mayor fuente de estos residuos son los desagües pluviales provenientes de la ciudad, por lo que te presentamos el proyecto acopio. Analizamos que la solución más eficiente en recursos consiste en evitar que dichos residuos lleguen a expandirse más allá de los focos emisores de tal forma que dañen menor fauna y no lleguen a depositarse en las costas donde la limpieza es más difícil de realizar. Esto se logra mediante un sistema automatizado de bollas flotantes a modo del aso alrededor del punto donde desembocan los desagües. Las mismas retienen los residuos flotantes y al superar cierto volumen de los mismos, un sensor envía la señal a un sistema motor polea de enrollar la cinta de bollas acercando a la costa los residuos hacia una cinta transportadora inclinada que los deposita en un contenedor. Luego, mediante otra bolla semi-anclada y gracias al aprovechamiento de la corriente, el sistema vuelva a su posición original. En dicho contenedor, se trasladarán los residuos hacia una planta recicladora donde se procesarán como madera plástica que se utilizará para construir infraestructura costera como muelles flotantes y obras turísticas alquilables para uso popular. dicha propuesta requerirá una baja inversión inicial que realizará el estado y se irá solventando en el tiempo mediante alquiler de espacio para publicidad y actividades de los usuarios. El bajo costo de inversión, materimiento, su automatización, impacto ambiental y social hacen del proyecto a copio una gran inversión a la que apostar.",
+ "segments": [
+  {
+   "start": 1.65,
+   "end": 6.93,
+   "text": "La presencia de residuos plásticos en zonas costeras es una problemática cada vez más"
+  },
+  {
+   "start": 6.93,
+   "end": 13.17,
+   "text": "frecuente que altera la fauna, paisaje y flora del ambiente. La situación crítica requiere"
+  },
+  {
+   "start": 13.17,
+   "end": 18.37,
+   "text": "de soluciones automatizadas que permitan una economía circular donde el reciclaje sea fuente"
+  },
+  {
+   "start": 18.37,
+   "end": 22.41,
+   "text": "de materia prima para brindar productos y servicios de calidad a las personas."
+  },
+  {
+   "start": 22.41,
+   "end": 27.65,
+   "text": "A la hora de abordar esta problemática, notamos que la mayor fuente de estos residuos"
+  },
+  {
+   "start": 27.65,
+   "end": 33.45,
+   "text": "son los desagües pluviales provenientes de la ciudad, por lo que te presentamos el proyecto acopio."
+  },
+  {
+   "start": 33.45,
+   "end": 39.13,
+   "text": "Analizamos que la solución más eficiente en recursos consiste en evitar que dichos residuos"
+  },
+  {
+   "start": 39.13,
+   "end": 43.89,
+   "text": "lleguen a expandirse más allá de los focos emisores de tal forma que dañen menor fauna"
+  },
+  {
+   "start": 43.89,
+   "end": 48.61,
+   "text": "y no lleguen a depositarse en las costas donde la limpieza es más difícil de realizar."
+  },
+  {
+   "start": 48.61,
+   "end": 54.49,
+   "text": "Esto se logra mediante un sistema automatizado de bollas flotantes a modo del aso alrededor"
+  },
+  {
+   "start": 54.65,
+   "end": 60.61,
+   "text": "del punto donde desembocan los desagües. Las mismas retienen los residuos flotantes y al superar"
+  },
+  {
+   "start": 60.61,
+   "end": 66.25,
+   "text": "cierto volumen de los mismos, un sensor envía la señal a un sistema motor polea de enrollar"
+  },
+  {
+   "start": 66.25,
+   "end": 72.01,
+   "text": "la cinta de bollas acercando a la costa los residuos hacia una cinta transportadora inclinada"
+  },
+  {
+   "start": 72.01,
+   "end": 77.81,
+   "text": "que los deposita en un contenedor. Luego, mediante otra bolla semi-anclada y gracias al"
+  },
+  {
+   "start": 77.81,
+   "end": 82.97,
+   "text": "aprovechamiento de la corriente, el sistema vuelva a su posición original. En dicho contenedor,"
+  },
+  {
+   "start": 82.97,
+   "end": 88.21,
+   "text": "se trasladarán los residuos hacia una planta recicladora donde se procesarán como madera"
+  },
+  {
+   "start": 88.21,
+   "end": 93.13,
+   "text": "plástica que se utilizará para construir infraestructura costera como muelles flotantes"
+  },
+  {
+   "start": 93.13,
+   "end": 99.37,
+   "text": "y obras turísticas alquilables para uso popular. dicha propuesta requerirá una baja"
+  },
+  {
+   "start": 99.37,
+   "end": 104.25,
+   "text": "inversión inicial que realizará el estado y se irá solventando en el tiempo mediante alquiler"
+  },
+  {
+   "start": 104.25,
+   "end": 109.25,
+   "text": "de espacio para publicidad y actividades de los usuarios. El bajo costo de inversión,"
+  },
+  {
+   "start": 109.41,
+   "end": 116.33,
+   "text": "materimiento, su automatización, impacto ambiental y social hacen del proyecto a copio una gran"
+  },
+  {
+   "start": 116.33,
+   "end": 117.69,
+   "text": "inversión a la que apostar."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 118.1
+}

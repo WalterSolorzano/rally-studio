@@ -1,0 +1,107 @@
+{
+ "video_id": "IWiX43xW61g",
+ "url": "https://youtu.be/IWiX43xW61g",
+ "year": 2025,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "GALIUM TECH",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "GALIUM TECH",
+   "challenge": "02 - RECICLADO TEXTIL"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:58:24+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "El fast-fashion genera más de 60.000 toneladas de residuos textiles solo en el noroeste argentino cada año. Estos desechos no se biodegradan, liberan químicos tóxicos y representan un riesgo ambiental enorme. El problema real es la falta total de un sistema de gestión. Nuestra propuesta es un sistema integral. Implementamos una flota de camiones que, mediante convenios con empresas y el Estado, retira los residuos textiles directamente de las fábricas y de contenedores urbanos especiales. El siguiente paso, la pirólicis. Transformamos térmicamente estos residuos, en ausencia de oxígeno, en tres productos valiosos. Aceites similares al crudo, gases para autoalimentar el sistema y biotchar para tratamiento de aguas. Es económicamente sostenible. Con un rendimiento del 72% en aceite de alto valor, el proyecto es rentable. Los cálculos demuestran que la inversión inicial de un millón de dólares se puede recuperar en pocos meses y obteniendo una ganancia de 19 millones de dólares por año. Nuestro impacto es integral. Combatimos la contaminación, creamos empleo, impulsamos la industria sostenible y promovemos la economía circular. Innovamos donde nadie lo hace, en la recolección masiva y la transformación total del residuo. Desde Salta, Argentina, ofrecemos una solución real, técnica y económicamente viable para uno de los mayores desafíos ambientales de nuestra era. El futuro es circular.",
+ "segments": [
+  {
+   "start": 4.78,
+   "end": 13.78,
+   "text": "El fast-fashion genera más de 60.000 toneladas de residuos textiles solo en el noroeste argentino cada año."
+  },
+  {
+   "start": 13.78,
+   "end": 21.78,
+   "text": "Estos desechos no se biodegradan, liberan químicos tóxicos y representan un riesgo ambiental enorme."
+  },
+  {
+   "start": 21.78,
+   "end": 25.78,
+   "text": "El problema real es la falta total de un sistema de gestión."
+  },
+  {
+   "start": 25.78,
+   "end": 36.16,
+   "text": "Nuestra propuesta es un sistema integral. Implementamos una flota de camiones que, mediante convenios con empresas y el Estado,"
+  },
+  {
+   "start": 36.16,
+   "end": 42.16,
+   "text": "retira los residuos textiles directamente de las fábricas y de contenedores urbanos especiales."
+  },
+  {
+   "start": 42.16,
+   "end": 46.16,
+   "text": "El siguiente paso, la pirólicis."
+  },
+  {
+   "start": 46.16,
+   "end": 53.16,
+   "text": "Transformamos térmicamente estos residuos, en ausencia de oxígeno, en tres productos valiosos."
+  },
+  {
+   "start": 53.16,
+   "end": 61.16,
+   "text": "Aceites similares al crudo, gases para autoalimentar el sistema y biotchar para tratamiento de aguas."
+  },
+  {
+   "start": 61.16,
+   "end": 71.63,
+   "text": "Es económicamente sostenible. Con un rendimiento del 72% en aceite de alto valor, el proyecto es rentable."
+  },
+  {
+   "start": 71.63,
+   "end": 77.63,
+   "text": "Los cálculos demuestran que la inversión inicial de un millón de dólares se puede recuperar en pocos meses"
+  },
+  {
+   "start": 77.63,
+   "end": 81.63,
+   "text": "y obteniendo una ganancia de 19 millones de dólares por año."
+  },
+  {
+   "start": 81.63,
+   "end": 84.63,
+   "text": "Nuestro impacto es integral."
+  },
+  {
+   "start": 84.63,
+   "end": 91.63,
+   "text": "Combatimos la contaminación, creamos empleo, impulsamos la industria sostenible y promovemos la economía circular."
+  },
+  {
+   "start": 91.63,
+   "end": 98.63,
+   "text": "Innovamos donde nadie lo hace, en la recolección masiva y la transformación total del residuo."
+  },
+  {
+   "start": 98.63,
+   "end": 108.63,
+   "text": "Desde Salta, Argentina, ofrecemos una solución real, técnica y económicamente viable para uno de los mayores desafíos ambientales de nuestra era."
+  },
+  {
+   "start": 108.63,
+   "end": 111.63,
+   "text": "El futuro es circular."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 116.8
+}

@@ -1,0 +1,162 @@
+{
+ "video_id": "PNIrfv8g8j0",
+ "url": "https://youtu.be/PNIrfv8g8j0",
+ "year": 2021,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "HUERGO SOFT",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "HUERGO SOFT",
+   "challenge": "08 - TECNOLOGÍAS DE EFICIENCIA ENERGÉTICA APLICADA A VIVIENDAS"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:43:57+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Este video cuenta con subtítulos para las personas con discapacidad auditiva. Hola, somos Guergo Zoth y venimos a proponer de una forma de vienda eficiente con un software que mide la energía utilizada. Los materiales de construcción de aislamiento que utilizamos son los ladrillos con plástico pet reciclado y lana de vidrio, lo cual hace el proyecto esficiente y a la vez rentable. También contamos con doble vidrio en ventanas para garantizar un aislamiento opustico y energético, que sea envolvente herméticamente. Al estar en un humedal, las temperaturas son ancas. Por eso buscamos una orientación que nos proteja del verano, porque de esa manera también estamos cubiertos en invierno. Para ello buscamos que los espacios de uso compartido como la cocina y el comedor estrenan noroeste y las habitaciones al sur. Utilizamos un sistema de vidro-gas y la provisión de agua y la potabilización se hace mediante un sistema séptico. Para las cloacas utilizamos una depuradora que purifica el agua residual y la usa para arreglar. El baño de la vivienda es un baño seco con separación de orina de cámara de compostaje. Utilizamos la energía solar aerotérmica con paneles que se colocan en las paredes exteriores de la casa. Pero ¿cómo podemos hacer para que el uso de la energía en una vivienda sea deficiente? Les presentamos nuestro software para control de eficiencia energética y aprovechamiento para zonas de humedales. El software consiste en una solución de sistema integrado junto a una, inteligencia artificial, con sensores de calor y movimiento que gracias a su sistema de aprendizaje a largo plazo, garantiza un confort autosustentable en zonas de humedales a un costo expediente de energía. La inteligencia artificial toma el control de los servicios de la vivienda que, junto con los hábitos del WESPED, a quien estudiará el diseño de la casa, les ayudará en el momento de tomar decisiones simples como el encendido de una luz con la graduación justa, dependiendo de las condiciones del cielo y presencia del WESPED, y otras más complejas como el estudio el pronóstico extendido para adelantar la reelección de lluvia, control del clima interno para su conservación en el tiempo, o desconexión de electrodomésticos en caso de tormenta. Además, alentamos el uso de transportes sustentables, como bicis y patines, colocando caminos por los que sea fácil transitar. Somos Volvo Soft, viviendas eficientes y sustentables.",
+ "segments": [
+  {
+   "start": 0.08,
+   "end": 3.54,
+   "text": "Este video cuenta con subtítulos para las personas con discapacidad auditiva."
+  },
+  {
+   "start": 5.66,
+   "end": 12.2,
+   "text": "Hola, somos Guergo Zoth y venimos a proponer de una forma de vienda eficiente con un software que mide la energía utilizada."
+  },
+  {
+   "start": 12.2,
+   "end": 17.5,
+   "text": "Los materiales de construcción de aislamiento que utilizamos son los ladrillos con plástico pet reciclado y lana de vidrio,"
+  },
+  {
+   "start": 17.5,
+   "end": 20.02,
+   "text": "lo cual hace el proyecto esficiente y a la vez rentable."
+  },
+  {
+   "start": 20.02,
+   "end": 26.42,
+   "text": "También contamos con doble vidrio en ventanas para garantizar un aislamiento opustico y energético, que sea envolvente herméticamente."
+  },
+  {
+   "start": 26.42,
+   "end": 29.14,
+   "text": "Al estar en un humedal, las temperaturas son ancas."
+  },
+  {
+   "start": 29.26,
+   "end": 34.46,
+   "text": "Por eso buscamos una orientación que nos proteja del verano, porque de esa manera también estamos cubiertos en invierno."
+  },
+  {
+   "start": 34.46,
+   "end": 40.06,
+   "text": "Para ello buscamos que los espacios de uso compartido como la cocina y el comedor estrenan noroeste y las habitaciones al sur."
+  },
+  {
+   "start": 40.06,
+   "end": 46.58,
+   "text": "Utilizamos un sistema de vidro-gas y la provisión de agua y la potabilización se hace mediante un sistema séptico."
+  },
+  {
+   "start": 46.58,
+   "end": 51.5,
+   "text": "Para las cloacas utilizamos una depuradora que purifica el agua residual y la usa para arreglar."
+  },
+  {
+   "start": 51.5,
+   "end": 55.5,
+   "text": "El baño de la vivienda es un baño seco con separación de orina de cámara de compostaje."
+  },
+  {
+   "start": 56.06,
+   "end": 61.06,
+   "text": "Utilizamos la energía solar aerotérmica con paneles que se colocan en las paredes exteriores de la casa."
+  },
+  {
+   "start": 61.06,
+   "end": 65.22,
+   "text": "Pero ¿cómo podemos hacer para que el uso de la energía en una vivienda sea deficiente?"
+  },
+  {
+   "start": 65.22,
+   "end": 70.3,
+   "text": "Les presentamos nuestro software para control de eficiencia energética y aprovechamiento para zonas de humedales."
+  },
+  {
+   "start": 70.3,
+   "end": 75.22,
+   "text": "El software consiste en una solución de sistema integrado junto a una, inteligencia artificial,"
+  },
+  {
+   "start": 75.22,
+   "end": 79.34,
+   "text": "con sensores de calor y movimiento que gracias a su sistema de aprendizaje a largo plazo,"
+  },
+  {
+   "start": 79.34,
+   "end": 84.1,
+   "text": "garantiza un confort autosustentable en zonas de humedales a un costo expediente de energía."
+  },
+  {
+   "start": 84.18,
+   "end": 87.7,
+   "text": "La inteligencia artificial toma el control de los servicios de la vivienda que,"
+  },
+  {
+   "start": 87.7,
+   "end": 91.54,
+   "text": "junto con los hábitos del WESPED, a quien estudiará el diseño de la casa,"
+  },
+  {
+   "start": 91.54,
+   "end": 96.54,
+   "text": "les ayudará en el momento de tomar decisiones simples como el encendido de una luz con la graduación justa,"
+  },
+  {
+   "start": 96.54,
+   "end": 99.38,
+   "text": "dependiendo de las condiciones del cielo y presencia del WESPED,"
+  },
+  {
+   "start": 99.38,
+   "end": 104.58,
+   "text": "y otras más complejas como el estudio el pronóstico extendido para adelantar la reelección de lluvia,"
+  },
+  {
+   "start": 104.58,
+   "end": 107.62,
+   "text": "control del clima interno para su conservación en el tiempo,"
+  },
+  {
+   "start": 107.62,
+   "end": 110.7,
+   "text": "o desconexión de electrodomésticos en caso de tormenta."
+  },
+  {
+   "start": 110.74,
+   "end": 114.66,
+   "text": "Además, alentamos el uso de transportes sustentables, como bicis y patines,"
+  },
+  {
+   "start": 114.66,
+   "end": 117.06,
+   "text": "colocando caminos por los que sea fácil transitar."
+  },
+  {
+   "start": 117.06,
+   "end": 120.02,
+   "text": "Somos Volvo Soft, viviendas eficientes y sustentables."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.0
+}

@@ -1,0 +1,142 @@
+{
+ "video_id": "NBKxIHllS60",
+ "url": "https://youtu.be/NBKxIHllS60",
+ "year": 2025,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "HIJOS DEL MAÍZ",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "HIJOS DEL MAÍZ",
+   "challenge": "01 - APROVECHAMIENTO TETRA PAK"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:42:23+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Aprovechamiento de tetrapax. En base este trapac utilizados para leche y otros líquidos representan un problema ambiental por su difícil reciclaje, ya que combinan cartón, plástico y aluminio de un solo material. Ante la problemática se propone. La incubadora cría y eclosiona los huevos en el mismo espacio, sin necesidad de trasladarlos a una máquina separada. Con esta idea se busca reducir residuos, potenciando activamente el reciclaje en zonas rurales y a la misma vez fortalecer el emprendimiento o bícola. Materiales a utilizar. Tetrapac limpio. Dos termostato. Un ventilador. Un panel solar. Un bombillo. La incubadora ayuda emprendedores y familias a producir de forma sostenible, reduce residuos, fomenta el reciclaje y promueve una relación más equilibrada entre tecnología y naturaleza. Eso de elaboración de nuestro prototipo, donde miraremos en la parte inferior izquierda, donde estará el funcionamiento, temperatura es alta, y en la parte baja estarán los pollos que han nacido.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 2.0,
+   "text": "Aprovechamiento de tetrapax."
+  },
+  {
+   "start": 3.0,
+   "end": 6.12,
+   "text": "En base este trapac utilizados para leche y otros líquidos"
+  },
+  {
+   "start": 6.12,
+   "end": 9.12,
+   "text": "representan un problema ambiental por su difícil reciclaje,"
+  },
+  {
+   "start": 9.12,
+   "end": 12.72,
+   "text": "ya que combinan cartón, plástico y aluminio de un solo material."
+  },
+  {
+   "start": 13.68,
+   "end": 15.56,
+   "text": "Ante la problemática se propone."
+  },
+  {
+   "start": 16.08,
+   "end": 19.16,
+   "text": "La incubadora cría y eclosiona los huevos en el mismo espacio,"
+  },
+  {
+   "start": 19.16,
+   "end": 22.16,
+   "text": "sin necesidad de trasladarlos a una máquina separada."
+  },
+  {
+   "start": 22.92,
+   "end": 25.12,
+   "text": "Con esta idea se busca reducir residuos,"
+  },
+  {
+   "start": 25.12,
+   "end": 27.88,
+   "text": "potenciando activamente el reciclaje en zonas rurales"
+  },
+  {
+   "start": 27.88,
+   "end": 30.88,
+   "text": "y a la misma vez fortalecer el emprendimiento o bícola."
+  },
+  {
+   "start": 31.6,
+   "end": 33.04,
+   "text": "Materiales a utilizar."
+  },
+  {
+   "start": 33.04,
+   "end": 34.24,
+   "text": "Tetrapac limpio."
+  },
+  {
+   "start": 34.24,
+   "end": 35.44,
+   "text": "Dos termostato."
+  },
+  {
+   "start": 35.44,
+   "end": 36.4,
+   "text": "Un ventilador."
+  },
+  {
+   "start": 36.4,
+   "end": 37.44,
+   "text": "Un panel solar."
+  },
+  {
+   "start": 37.44,
+   "end": 38.44,
+   "text": "Un bombillo."
+  },
+  {
+   "start": 39.84,
+   "end": 43.96,
+   "text": "La incubadora ayuda emprendedores y familias a producir de forma sostenible,"
+  },
+  {
+   "start": 43.96,
+   "end": 48.04,
+   "text": "reduce residuos, fomenta el reciclaje y promueve una relación más equilibrada"
+  },
+  {
+   "start": 48.04,
+   "end": 50.04,
+   "text": "entre tecnología y naturaleza."
+  },
+  {
+   "start": 51.48,
+   "end": 54.88,
+   "text": "Eso de elaboración de nuestro prototipo,"
+  },
+  {
+   "start": 54.96,
+   "end": 57.88,
+   "text": "donde miraremos en la parte inferior izquierda,"
+  },
+  {
+   "start": 58.48,
+   "end": 61.88,
+   "text": "donde estará el funcionamiento, temperatura es alta,"
+  },
+  {
+   "start": 61.88,
+   "end": 66.48,
+   "text": "y en la parte baja estarán los pollos que han nacido."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 68.6
+}

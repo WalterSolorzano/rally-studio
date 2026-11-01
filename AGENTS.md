@@ -111,11 +111,11 @@ Tu contexto es: `brief.json` + este archivo. Nada más hasta que hayas leído am
 3. No repitas el nombre del proyecto más de una vez por sección del pautado.
 4. Sin cards genéricas, sin morado (#7c3aed o similar), sin fuentes fuera de `brand/tokens.css`.
 5. Presupuesto: solo costos de implementación superficiales — sin TIR, VAN, ROI complejo.
-6. Video ≤ 120 segundos. Estructura exacta de 4 actos (ver `knowledge/rubric_latam.md`).
+6. Video ≤ 120 segundos medidos en el audio. Estructura de 4 actos (ver `knowledge/rubric_matrices.md` §3).
 7. Assets nombrados: `asset_<shotlist_id>_<descripcion>.<ext>`
 8. Un proceso GPU a la vez. Consulta `scripts/render_watch.py` antes de lanzar render.
 9. Cada hora avisa cuánto tiempo queda y el estado de cada entregable.
-10. Al llegar a T-6h, propón congelar assets y preparar exportación final.
+10. Al llegar al 75 % del tiempo del certamen, propón congelar assets y preparar exportación final.
 11. Olvida proyectos anteriores. Solo existe el proyecto actual en `brief.json`.
 12. No hardcodees el nombre del proyecto en scripts. Léelo siempre de `brief.json`.
 
@@ -168,7 +168,7 @@ Un proceso a la vez (bloquea GPU/CPU):
 - NO usar emojis como íconos en la web demo.
 - NO afirmar que datos son reales si son simulados. Marcar con `[SIMULADO]` en HTML/código.
 - NO hardcodear el nombre del proyecto en scripts. Leerlo siempre de `brief.json`.
-- NO renderizar en resolución final hasta T-2h.
+- NO renderizar en resolución final antes del 75 % del tiempo del certamen.
 - NO poner nombre del proyecto en los primeros 20 s del video.
 - NO repetir datos entre secciones del pautado.
 - NO enviar a SIRLI hasta que validate_brief.py, validate_budget.py y validate_pautado.py pasen sin errores.

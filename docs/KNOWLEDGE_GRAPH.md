@@ -173,7 +173,7 @@ Nodes (3): Consejo Nacional de Universidades (CNU), Jurado Internacional latinoa
 
 ### Community 20 - "Entregables y plataforma de carga"
 Cohesion: 0.50
-Nodes (4): Entregables oficiales del Rally Latam (video YouTube, reporte pautado PDF, TikTok), Reporte pautado en PDF, Sistema SIRLI de carga de entregables, Video pitch de 120 segundos alojado en YouTube
+Nodes (4): Entregables oficiales del Rally Latam (video YouTube, reporte pautado PDF; el reglamento menciona un TikTok de interacción que este proyecto no produce), Reporte pautado en PDF, Sistema SIRLI de carga de entregables, Video pitch de 120 segundos alojado en YouTube
 
 ## Knowledge Gaps
 - **72 isolated node(s):** `Programa Regional de Emprendedorismo e Innovación en Ingeniería (PRECITYE)`, `Jurado Internacional del Rally`, `Asociación Colombiana de Facultades de Ingeniería (ACOFI)`, `Consejo Nacional de Universidades (CNU, Nicaragua)`, `Ministerio de la Juventud (MINJUVE, Nicaragua)` (+67 more)

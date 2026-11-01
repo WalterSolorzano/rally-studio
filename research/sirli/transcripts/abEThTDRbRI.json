@@ -1,0 +1,122 @@
+{
+ "video_id": "abEThTDRbRI",
+ "url": "https://www.youtube.com/watch?v=abEThTDRbRI",
+ "year": 2026,
+ "collection": "sede",
+ "country": "EL SALVADOR",
+ "team": "LOS PAR-CHEROS",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "LOS PAR-CHEROS",
+   "challenge": "09 - OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:44:05+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En video quedó registrado el momento del terremoto que se acudió a la Guaira epicentro del primer terremoto de 7.1 En segundos, las vías colapsan y la señal celular desaparece. Las autoridades reciben miles de llamadas de auxilios simultáneas, pero ¿cómo saben a dónde enviar la primera ambulancia si no hay información? En una catástrofe, el caos no es el único enemigo, y la falta de datos coordinados también cuesta vidas. Terremotos, inundaciones de slaves. La ayuda existe, lo que falta saber a quién atender primero. Nuestra propuesta usa una radio que existe, Liligo TVim, con mesh static. La colocamos en puntos estratégicos, escuelas, hospitales, iglesias, oficinas de gobierno y casas de la comunidad. Cada una va a una caja sellada contra el agua y la antena sale por un 6. Esa radio se conecta con una aplicación, avise a quién lleva el lugar, qué insumo hace falta, en qué lugar, se hay embarazadas, niños o adultos mayores en riesgo, cuántas personas fueron afectadas, qué pasó y si la calle está despejada. Si el teléfono tiene cobertura, el mensaje llega directo al centro de operaciones de emergencia. Si no tiene cobertura, por Bluetooth pasa al TVing más cercano y ese nodo lo entrega al siguiente, así hasta llegar al Coe. En el centro, el operador ve los reportes según su nivel de emergencia y envía el equipo que corresponde, con los insumos de ese caso. Junto a esto, planteamos dos botones por comunidad con un responsable en cada uno. El tipo de catástrofe ya se conoce. Se presionan antes de 10 minutos, esa comunidad está bien y no sale ningún equipo. Si nadie presiona, el Coe envía un equipo pequeño a verificar la situación. La señal puede caer. La decisión a quién atender primero? No.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 14.82,
+   "text": "En video quedó registrado el momento del terremoto que se acudió a la Guaira epicentro del primer terremoto de 7.1"
+  },
+  {
+   "start": 14.82,
+   "end": 20.82,
+   "text": "En segundos, las vías colapsan y la señal celular desaparece."
+  },
+  {
+   "start": 20.82,
+   "end": 26.82,
+   "text": "Las autoridades reciben miles de llamadas de auxilios simultáneas,"
+  },
+  {
+   "start": 26.82,
+   "end": 32.82,
+   "text": "pero ¿cómo saben a dónde enviar la primera ambulancia si no hay información?"
+  },
+  {
+   "start": 32.82,
+   "end": 42.82,
+   "text": "En una catástrofe, el caos no es el único enemigo, y la falta de datos coordinados también cuesta vidas."
+  },
+  {
+   "start": 42.82,
+   "end": 50.28,
+   "text": "Terremotos, inundaciones de slaves. La ayuda existe, lo que falta saber a quién atender primero."
+  },
+  {
+   "start": 50.28,
+   "end": 55.28,
+   "text": "Nuestra propuesta usa una radio que existe, Liligo TVim, con mesh static."
+  },
+  {
+   "start": 55.28,
+   "end": 61.28,
+   "text": "La colocamos en puntos estratégicos, escuelas, hospitales, iglesias, oficinas de gobierno y casas de la comunidad."
+  },
+  {
+   "start": 61.28,
+   "end": 66.28,
+   "text": "Cada una va a una caja sellada contra el agua y la antena sale por un 6."
+  },
+  {
+   "start": 66.28,
+   "end": 71.28,
+   "text": "Esa radio se conecta con una aplicación, avise a quién lleva el lugar, qué insumo hace falta, en qué lugar,"
+  },
+  {
+   "start": 71.28,
+   "end": 78.28,
+   "text": "se hay embarazadas, niños o adultos mayores en riesgo, cuántas personas fueron afectadas, qué pasó y si la calle está despejada."
+  },
+  {
+   "start": 78.28,
+   "end": 82.28,
+   "text": "Si el teléfono tiene cobertura, el mensaje llega directo al centro de operaciones de emergencia."
+  },
+  {
+   "start": 82.28,
+   "end": 89.28,
+   "text": "Si no tiene cobertura, por Bluetooth pasa al TVing más cercano y ese nodo lo entrega al siguiente, así hasta llegar al Coe."
+  },
+  {
+   "start": 89.28,
+   "end": 96.28,
+   "text": "En el centro, el operador ve los reportes según su nivel de emergencia y envía el equipo que corresponde, con los insumos de ese caso."
+  },
+  {
+   "start": 96.28,
+   "end": 100.28,
+   "text": "Junto a esto, planteamos dos botones por comunidad con un responsable en cada uno."
+  },
+  {
+   "start": 100.28,
+   "end": 102.28,
+   "text": "El tipo de catástrofe ya se conoce."
+  },
+  {
+   "start": 102.28,
+   "end": 106.28,
+   "text": "Se presionan antes de 10 minutos, esa comunidad está bien y no sale ningún equipo."
+  },
+  {
+   "start": 106.28,
+   "end": 111.28,
+   "text": "Si nadie presiona, el Coe envía un equipo pequeño a verificar la situación."
+  },
+  {
+   "start": 111.28,
+   "end": 115.28,
+   "text": "La señal puede caer. La decisión a quién atender primero? No."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.8
+}

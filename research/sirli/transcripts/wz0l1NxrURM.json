@@ -1,0 +1,157 @@
+{
+ "video_id": "wz0l1NxrURM",
+ "url": "https://youtu.be/wz0l1NxrURM",
+ "year": 2025,
+ "collection": "sede",
+ "country": "COLOMBIA",
+ "team": "VITANET",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "VITANET",
+   "challenge": "07 - SALUD MÓVIL PARA MUJERES EN ZONAS RURALES"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:15:09+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En las zonas rurales, muchas mujeres enfrentan graves limitaciones de acceso a servicios de salud básicos, especialmente en los relacionados con la salud materna, sexual y reproductiva. La falta de infraestructura médica, personal especializado y conectividad tecnológica, impide que puedan recibir chequeos previamente atales, exámenes ginecológicos o atención oportuna ante emergencias. Esta brecha de atención incrementa los riesgos de mortalidad materna, enfermedades prevenibles y complicaciones que podrían ser tratadas a tiempo con un sistema de monitoreo y acompañamiento adecuado. Las principales causas, falta de infraestructura sanitaria, escasez de personal médico y especialistas disponibles localmente, deficiente de conectividad digital e infraestructura tecnológica limitada, barreras socioeconómicas y culturales como la desinformación, el bajo acceso a la educación en salud, falta de sistemas de monitoreo remoto o teleasistencia que conecten comunidades con centros de salud. El problema central no es únicamente la falta de atención médica presencial, sino la ausencia de una efectiva red de comunicación y respuestas sanitaria que conecte a las mujeres rurales con los servicios de salud de manera rápida, accesible y continua. Se requiere una solución tecnológica inclusiva y de bajo costo que permita registrar, monitorear y derivar casos médicos mediante canales digitales, aplicación o plataforma web, integrando asistencia virtual con inteligencia artificial y el apoyo de entidades locales de salud para reducir tiempos de atención y salvar vías. Impacto social. Vítanes reduce las brechas de acceso a la salud en zona rural. Mediate tecnologías como herramientas de inclusión, prevención y respuesta fortuna. Permita atención médica y seguimiento prenatal sin desplazamiento. Reduce la mortalidad materna e infantil, impulsar el empoderamiento femenino y comunitario. También portalece el sistema de salud rural y promueve la instrucción tecnológica y digital.",
+ "segments": [
+  {
+   "start": 9.33,
+   "end": 13.73,
+   "text": "En las zonas rurales, muchas mujeres enfrentan graves limitaciones de acceso a servicios de"
+  },
+  {
+   "start": 13.73,
+   "end": 19.21,
+   "text": "salud básicos, especialmente en los relacionados con la salud materna, sexual y reproductiva."
+  },
+  {
+   "start": 19.21,
+   "end": 22.37,
+   "text": "La falta de infraestructura médica, personal especializado y conectividad tecnológica,"
+  },
+  {
+   "start": 22.37,
+   "end": 27.13,
+   "text": "impide que puedan recibir chequeos previamente atales, exámenes ginecológicos o atención"
+  },
+  {
+   "start": 27.13,
+   "end": 29.77,
+   "text": "oportuna ante emergencias."
+  },
+  {
+   "start": 29.77,
+   "end": 33.69,
+   "text": "Esta brecha de atención incrementa los riesgos de mortalidad materna, enfermedades prevenibles"
+  },
+  {
+   "start": 33.69,
+   "end": 36.73,
+   "text": "y complicaciones que podrían ser tratadas a tiempo con un sistema de monitoreo"
+  },
+  {
+   "start": 36.73,
+   "end": 38.73,
+   "text": "y acompañamiento adecuado."
+  },
+  {
+   "start": 38.73,
+   "end": 43.13,
+   "text": "Las principales causas, falta de infraestructura sanitaria, escasez de personal médico y especialistas"
+  },
+  {
+   "start": 43.13,
+   "end": 48.73,
+   "text": "disponibles localmente, deficiente de conectividad digital e infraestructura tecnológica limitada,"
+  },
+  {
+   "start": 48.73,
+   "end": 52.37,
+   "text": "barreras socioeconómicas y culturales como la desinformación, el bajo acceso a la educación"
+  },
+  {
+   "start": 52.37,
+   "end": 57.09,
+   "text": "en salud, falta de sistemas de monitoreo remoto o teleasistencia que conecten comunidades"
+  },
+  {
+   "start": 57.09,
+   "end": 58.89,
+   "text": "con centros de salud."
+  },
+  {
+   "start": 58.89,
+   "end": 62.33,
+   "text": "El problema central no es únicamente la falta de atención médica presencial, sino"
+  },
+  {
+   "start": 62.33,
+   "end": 66.73,
+   "text": "la ausencia de una efectiva red de comunicación y respuestas sanitaria que conecte a las"
+  },
+  {
+   "start": 66.73,
+   "end": 72.13,
+   "text": "mujeres rurales con los servicios de salud de manera rápida, accesible y continua."
+  },
+  {
+   "start": 72.13,
+   "end": 76.25,
+   "text": "Se requiere una solución tecnológica inclusiva y de bajo costo que permita registrar, monitorear"
+  },
+  {
+   "start": 76.25,
+   "end": 80.53,
+   "text": "y derivar casos médicos mediante canales digitales, aplicación o plataforma web, integrando"
+  },
+  {
+   "start": 80.53,
+   "end": 84.33,
+   "text": "asistencia virtual con inteligencia artificial y el apoyo de entidades locales de salud"
+  },
+  {
+   "start": 84.33,
+   "end": 90.25,
+   "text": "para reducir tiempos de atención y salvar vías."
+  },
+  {
+   "start": 90.25,
+   "end": 91.65,
+   "text": "Impacto social."
+  },
+  {
+   "start": 91.65,
+   "end": 95.29,
+   "text": "Vítanes reduce las brechas de acceso a la salud en zona rural."
+  },
+  {
+   "start": 95.29,
+   "end": 99.81,
+   "text": "Mediate tecnologías como herramientas de inclusión, prevención y respuesta fortuna."
+  },
+  {
+   "start": 99.85,
+   "end": 103.37,
+   "text": "Permita atención médica y seguimiento prenatal sin desplazamiento."
+  },
+  {
+   "start": 103.37,
+   "end": 108.69,
+   "text": "Reduce la mortalidad materna e infantil, impulsar el empoderamiento femenino y comunitario."
+  },
+  {
+   "start": 108.69,
+   "end": 113.37,
+   "text": "También portalece el sistema de salud rural y promueve la instrucción tecnológica y digital."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.6
+}

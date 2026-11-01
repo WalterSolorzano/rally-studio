@@ -1,0 +1,157 @@
+{
+ "video_id": "_lbBR7N9pz4",
+ "url": "https://www.youtube.com/watch?v=_lbBR7N9pz4",
+ "year": 2025,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "TECNOALERTA",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "TECNOALERTA",
+   "challenge": "04 - SISTEMA DE ALERTA TEMPRANA"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:55:52+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "El gran efecto del cambio climático hace que la probabilidad de inundaciones e incendios sean más altas. Estos desastres son de gran envergadura, ya que pueden poner la vida, la salud, los medios y los recursos con los que la sociedad y familia cuentan, dejando panoramas, dolorosos y precarios. Por ello surge la necesidad de una solución efectiva, que alerte de forma temprana ante cualquier crecida de caudales y propagación de fuego para salvaguardar la vida y todo lo que valoramos. La propuesta es un sistema de monitoreo completo, Tecno Alertas. Usa un dispositivo de tarjeta arduino con sensores que varían si es de incendio o inundaciones. Es de último, usa botella en vez de voyas. Envia datos a un sistema centralizado de alertas comunitarios. El sistema notificará al usuario si hay alerta en su comunidad, aporta la opción qué hacer en caso de una alerta, según su categoría, y dar a orientaciones valiosas. Mostrará en el mapa un color según la alerta y si es roja, el usuario podrá ver igualmente en el mapa los albergues más cercanos con los que cuenta para salvaguardarse. Contará con un espacio para interactuar entre usuarios y envía reportes para mantener información actualizada y de importancia. También dispondrá de hacer llamadas al SOS de su localidad en caso de emergencia. Tecno Alertas cuenta con un panel de control para autoridades competentes de ayuda y rescate, donde podrán ver en el mapa la categoría y el alcance del suceso. Los protocolos previamente designado ante emergencia, soportes con IAS que ayudan a distribuir la entidad y recursos necesarios con los que se disponga para un plan de acción. Y lista de tareas que permite marcar qué acciones se han complementado. Se han completado. El costo del dispositivo es de 100 dólares. Es viable y de esta manera salvaguardamos a bajo costo. Tecno Alertas es el aliado ideal para prevenirte tempranamente ante inundaciones e incendios porque valoramos lo que tú valoras.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 4.88,
+   "text": "El gran efecto del cambio climático hace que la probabilidad de inundaciones e incendios"
+  },
+  {
+   "start": 4.88,
+   "end": 10.62,
+   "text": "sean más altas. Estos desastres son de gran envergadura, ya que pueden poner la vida,"
+  },
+  {
+   "start": 10.62,
+   "end": 15.44,
+   "text": "la salud, los medios y los recursos con los que la sociedad y familia cuentan, dejando"
+  },
+  {
+   "start": 15.44,
+   "end": 20.86,
+   "text": "panoramas, dolorosos y precarios. Por ello surge la necesidad de una solución efectiva,"
+  },
+  {
+   "start": 20.86,
+   "end": 25.68,
+   "text": "que alerte de forma temprana ante cualquier crecida de caudales y propagación de fuego"
+  },
+  {
+   "start": 25.68,
+   "end": 29.2,
+   "text": "para salvaguardar la vida y todo lo que valoramos."
+  },
+  {
+   "start": 29.2,
+   "end": 32.48,
+   "text": "La propuesta es un sistema de monitoreo completo, Tecno Alertas."
+  },
+  {
+   "start": 32.48,
+   "end": 37.16,
+   "text": "Usa un dispositivo de tarjeta arduino con sensores que varían si es de incendio o"
+  },
+  {
+   "start": 37.16,
+   "end": 42.32,
+   "text": "inundaciones. Es de último, usa botella en vez de voyas. Envia datos a un sistema"
+  },
+  {
+   "start": 42.32,
+   "end": 47.04,
+   "text": "centralizado de alertas comunitarios. El sistema notificará al usuario si hay"
+  },
+  {
+   "start": 47.04,
+   "end": 51.6,
+   "text": "alerta en su comunidad, aporta la opción qué hacer en caso de una alerta,"
+  },
+  {
+   "start": 51.6,
+   "end": 54.96,
+   "text": "según su categoría, y dar a orientaciones valiosas."
+  },
+  {
+   "start": 55.44,
+   "end": 60.08,
+   "text": "Mostrará en el mapa un color según la alerta y si es roja, el usuario podrá"
+  },
+  {
+   "start": 60.08,
+   "end": 64.16,
+   "text": "ver igualmente en el mapa los albergues más cercanos con los que cuenta para"
+  },
+  {
+   "start": 64.16,
+   "end": 69.16,
+   "text": "salvaguardarse. Contará con un espacio para interactuar entre usuarios y envía"
+  },
+  {
+   "start": 69.16,
+   "end": 73.2,
+   "text": "reportes para mantener información actualizada y de importancia. También"
+  },
+  {
+   "start": 73.2,
+   "end": 77.72,
+   "text": "dispondrá de hacer llamadas al SOS de su localidad en caso de emergencia."
+  },
+  {
+   "start": 77.72,
+   "end": 82.24,
+   "text": "Tecno Alertas cuenta con un panel de control para autoridades competentes de"
+  },
+  {
+   "start": 82.24,
+   "end": 85.84,
+   "text": "ayuda y rescate, donde podrán ver en el mapa la categoría y el alcance del"
+  },
+  {
+   "start": 85.84,
+   "end": 90.4,
+   "text": "suceso. Los protocolos previamente designado ante emergencia, soportes con"
+  },
+  {
+   "start": 90.4,
+   "end": 93.88,
+   "text": "IAS que ayudan a distribuir la entidad y recursos necesarios con los que se"
+  },
+  {
+   "start": 93.88,
+   "end": 98.36,
+   "text": "disponga para un plan de acción. Y lista de tareas que permite marcar qué acciones"
+  },
+  {
+   "start": 98.36,
+   "end": 104.72,
+   "text": "se han complementado. Se han completado. El costo del dispositivo es de 100 dólares."
+  },
+  {
+   "start": 104.72,
+   "end": 108.56,
+   "text": "Es viable y de esta manera salvaguardamos a bajo costo."
+  },
+  {
+   "start": 108.56,
+   "end": 113.28,
+   "text": "Tecno Alertas es el aliado ideal para prevenirte tempranamente ante inundaciones"
+  },
+  {
+   "start": 113.28,
+   "end": 117.88,
+   "text": "e incendios porque valoramos lo que tú valoras."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 116.7
+}

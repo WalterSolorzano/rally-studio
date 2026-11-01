@@ -12,7 +12,7 @@
   "use strict";
 
   var POLL_MS = 2000;
-  var STORAGE_KEY = "rally_studio_production_state_2026_v3";
+  var STORAGE_KEY = "rally_studio_production_state_2026_v4";
   var CHANNEL_NAME = "rally_studio_auto_sync";
   var SEEN_KEY = "rally_content_seen";
   var DOCK_ID = "rally-content-dock";

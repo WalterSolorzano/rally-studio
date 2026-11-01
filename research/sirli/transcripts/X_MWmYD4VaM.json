@@ -1,0 +1,122 @@
+{
+ "video_id": "X_MWmYD4VaM",
+ "url": "https://youtu.be/X_MWmYD4VaM?si=X1RujE43G6v-G944",
+ "year": 2026,
+ "collection": "sede",
+ "country": "VENEZUELA",
+ "team": "VORTEX-V3",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "VORTEX-V3",
+   "challenge": "05 - MONITOREO INTELIGENTE E INFRAESTRUCTURA VERDE EN RESERVORIOS PLUVIALES"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:55:27+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En las montañas del castaño estado agua cada temporada de lluvias trae el mismo riesgo. Lluvias extremas saturan las laderas y el agua baja sin control hacia la comunidad. Así comienza un deslable. Lodo, rocas y troncos descienden por el cauce con enorme fuerza. Sin niña madera todo estiraría directo a las viviendas. Por eso diseñamos un sistema plural encastado. La primera piscina de reducción intercepta la presión, atrapa los espombros y frena la primera onda. Unzana la viento la conecta 200 metros más abajo con una segunda piscina. Atención, alerta de deslave. Cada una reduce la velocidad del agua, mientras sensores ultrasonicos con ESP32 vigilan el nivel en tiempo real y alertan cuando llega un estado crítico. Las piscinas están escaronadas sobre un atendiente del 15%, y cada una se detante el oro. En una tercera piscina, 11 escalones en contra del flujo disipan energía restante del agua. La bomba no trabaja ceras. Un ESP32 lee la presión y ajusta la frecuencia del tren de pulsos que contra el variador. Si la demanda sube, el metrador asolera. Si bajó, les asolera. Incluso, ante estados críticos mantiene la presión instable y ahorra energía. Y una averibación de la planta no ha de un generador eléctrico, y no tiene las calles de la ordenación eléctrica. En el mismo sistema que protege, JVC genera energía, convertimos la amenaza de la lluvia en un recurso para la comunidad.",
+ "segments": [
+  {
+   "start": 0.24,
+   "end": 5.58,
+   "text": "En las montañas del castaño estado agua cada temporada de lluvias trae el mismo riesgo."
+  },
+  {
+   "start": 5.58,
+   "end": 11.2,
+   "text": "Lluvias extremas saturan las laderas y el agua baja sin control hacia la comunidad."
+  },
+  {
+   "start": 11.2,
+   "end": 16.88,
+   "text": "Así comienza un deslable. Lodo, rocas y troncos descienden por el cauce con"
+  },
+  {
+   "start": 16.88,
+   "end": 21.08,
+   "text": "enorme fuerza. Sin niña madera todo estiraría directo a las viviendas."
+  },
+  {
+   "start": 21.08,
+   "end": 25.6,
+   "text": "Por eso diseñamos un sistema plural encastado. La primera piscina de"
+  },
+  {
+   "start": 25.6,
+   "end": 30.32,
+   "text": "reducción intercepta la presión, atrapa los espombros y frena la primera onda."
+  },
+  {
+   "start": 30.32,
+   "end": 35.72,
+   "text": "Unzana la viento la conecta 200 metros más abajo con una segunda piscina."
+  },
+  {
+   "start": 35.72,
+   "end": 50.9,
+   "text": "Atención, alerta de deslave. Cada una reduce la velocidad del agua,"
+  },
+  {
+   "start": 50.9,
+   "end": 56.58,
+   "text": "mientras sensores ultrasonicos con ESP32 vigilan el nivel en tiempo real y"
+  },
+  {
+   "start": 56.58,
+   "end": 62.46,
+   "text": "alertan cuando llega un estado crítico. Las piscinas están escaronadas sobre un atendiente del 15%,"
+  },
+  {
+   "start": 62.94,
+   "end": 68.34,
+   "text": "y cada una se detante el oro. En una tercera piscina, 11 escalones"
+  },
+  {
+   "start": 68.34,
+   "end": 71.9,
+   "text": "en contra del flujo disipan energía restante del agua."
+  },
+  {
+   "start": 71.9,
+   "end": 78.22,
+   "text": "La bomba no trabaja ceras. Un ESP32 lee la presión y ajusta la frecuencia del"
+  },
+  {
+   "start": 78.22,
+   "end": 82.74,
+   "text": "tren de pulsos que contra el variador. Si la demanda sube, el metrador asolera."
+  },
+  {
+   "start": 82.74,
+   "end": 87.54,
+   "text": "Si bajó, les asolera. Incluso, ante estados críticos mantiene la presión"
+  },
+  {
+   "start": 87.54,
+   "end": 91.9,
+   "text": "instable y ahorra energía. Y una averibación de la planta no ha de un"
+  },
+  {
+   "start": 91.98,
+   "end": 95.78,
+   "text": "generador eléctrico, y no tiene las calles de la ordenación eléctrica."
+  },
+  {
+   "start": 95.78,
+   "end": 99.82,
+   "text": "En el mismo sistema que protege, JVC genera energía,"
+  },
+  {
+   "start": 99.82,
+   "end": 103.62,
+   "text": "convertimos la amenaza de la lluvia en un recurso para la comunidad."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 111.7
+}

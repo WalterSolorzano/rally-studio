@@ -1,0 +1,157 @@
+{
+ "video_id": "vF4Ks8y11KM",
+ "url": "https://youtu.be/vF4Ks8y11KM",
+ "year": 2024,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "MIDCE-NIC",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "MIDCE-NIC",
+   "challenge": "05 - EVACUACIÓN"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:09:27+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Latinoamérica es conocida por su riqueza natural. Sin embargo, entre los años 2000 a 2020 se han experimentado un total de 75 terremotos y cismos, ya que América Central y Sur están situadas en el anillo de fuego. Altas incidencias en incendios han cobrado la vida de más de 27 personas en el año 2023. Pero ¿a qué se debe esta problemática? Factores como la falta de claridad en rutas de evacuación, exclusión de grupos vulnerables y la comunicación inadecuada han llevado a la creación de rutas de evacuación seguras para reducir los índices de accidentes y las tasas de mortalidad. Por eso, se ha creado a mi seguridad. Es una aplicación diseñada para advertir de manera rápida y efectiva desastres e incidencias como cismos e incendios. Ofreciendo alertas de enfranas y guías de evacuación en tiempo real, reduciendo víctimas y mejorando la preparación comunitaria en zonas vulnerables. Esta propuesta tecnológica se desarrolló con la finalidad de un enfoque en la sostenibilidad ambiental, hecho y pensado para la sociedad al ser una plataforma digital que no requiere de recursos naturales. A mi tiene como objetivo utilizarse sin la necesidad de tener acceso a Internet. Asimismo, cuenta con orientaciones verbales, auditivos y sensoriales que garantizan accesibilidad e inclusividad para la población en general. Es una aplicación intuitiva, accesible, proporciona localización de refugios, fortaleciendo la resiliencia y cooperación entre ciudadanos y autoridades. Esta tiene una inversión de aproximadamente 18.000 dólares y abarcaría la elaboración, funcionalidad, mantenimiento y actualización de APT, lo cual es factible económicamente siendo fundamental para la sociedad.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 7.3,
+   "text": "Latinoamérica es conocida por su riqueza natural."
+  },
+  {
+   "start": 7.3,
+   "end": 13.82,
+   "text": "Sin embargo, entre los años 2000 a 2020 se han experimentado un total de 75 terremotos"
+  },
+  {
+   "start": 13.82,
+   "end": 19.42,
+   "text": "y cismos, ya que América Central y Sur están situadas en el anillo de fuego."
+  },
+  {
+   "start": 19.42,
+   "end": 25.82,
+   "text": "Altas incidencias en incendios han cobrado la vida de más de 27 personas en el año 2023."
+  },
+  {
+   "start": 25.82,
+   "end": 29.38,
+   "text": "Pero ¿a qué se debe esta problemática?"
+  },
+  {
+   "start": 29.38,
+   "end": 33.58,
+   "text": "Factores como la falta de claridad en rutas de evacuación,"
+  },
+  {
+   "start": 33.58,
+   "end": 37.58,
+   "text": "exclusión de grupos vulnerables y la comunicación inadecuada"
+  },
+  {
+   "start": 37.58,
+   "end": 40.98,
+   "text": "han llevado a la creación de rutas de evacuación seguras"
+  },
+  {
+   "start": 40.98,
+   "end": 45.98,
+   "text": "para reducir los índices de accidentes y las tasas de mortalidad."
+  },
+  {
+   "start": 45.98,
+   "end": 49.18,
+   "text": "Por eso, se ha creado a mi seguridad."
+  },
+  {
+   "start": 49.18,
+   "end": 53.18,
+   "text": "Es una aplicación diseñada para advertir de manera rápida y efectiva"
+  },
+  {
+   "start": 53.18,
+   "end": 56.38,
+   "text": "desastres e incidencias como cismos e incendios."
+  },
+  {
+   "start": 56.38,
+   "end": 60.38,
+   "text": "Ofreciendo alertas de enfranas y guías de evacuación en tiempo real,"
+  },
+  {
+   "start": 60.38,
+   "end": 65.38,
+   "text": "reduciendo víctimas y mejorando la preparación comunitaria en zonas vulnerables."
+  },
+  {
+   "start": 65.38,
+   "end": 71.38,
+   "text": "Esta propuesta tecnológica se desarrolló con la finalidad de un enfoque en la sostenibilidad ambiental,"
+  },
+  {
+   "start": 71.38,
+   "end": 74.98,
+   "text": "hecho y pensado para la sociedad al ser una plataforma digital"
+  },
+  {
+   "start": 74.98,
+   "end": 77.38,
+   "text": "que no requiere de recursos naturales."
+  },
+  {
+   "start": 77.38,
+   "end": 83.38,
+   "text": "A mi tiene como objetivo utilizarse sin la necesidad de tener acceso a Internet."
+  },
+  {
+   "start": 83.38,
+   "end": 87.38,
+   "text": "Asimismo, cuenta con orientaciones verbales, auditivos y sensoriales"
+  },
+  {
+   "start": 87.38,
+   "end": 92.38,
+   "text": "que garantizan accesibilidad e inclusividad para la población en general."
+  },
+  {
+   "start": 92.38,
+   "end": 95.38,
+   "text": "Es una aplicación intuitiva, accesible,"
+  },
+  {
+   "start": 95.38,
+   "end": 100.38,
+   "text": "proporciona localización de refugios, fortaleciendo la resiliencia"
+  },
+  {
+   "start": 100.38,
+   "end": 103.38,
+   "text": "y cooperación entre ciudadanos y autoridades."
+  },
+  {
+   "start": 103.38,
+   "end": 108.38,
+   "text": "Esta tiene una inversión de aproximadamente 18.000 dólares"
+  },
+  {
+   "start": 108.38,
+   "end": 112.38,
+   "text": "y abarcaría la elaboración, funcionalidad, mantenimiento y actualización de APT,"
+  },
+  {
+   "start": 112.38,
+   "end": 117.38,
+   "text": "lo cual es factible económicamente siendo fundamental para la sociedad."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 118.0
+}

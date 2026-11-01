@@ -1,0 +1,117 @@
+{
+ "video_id": "NP4d_lEn9wo",
+ "url": "https://www.youtube.com/watch?v=NP4d_lEn9wo",
+ "year": 2024,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "ROTARACT",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "ROTARACT",
+   "challenge": "08 - REDUCCIÓN DE DESPERDICIOS ALIMENTARIOS"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:32:48+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Ir al supermercado para nosotros supone una actividad rutinaria, pero sabías que aproximadamente se desperdician 16 millones de toneladas de alimentos en Argentina anualmente. Como se ve en la gráfica, Latinoamérica es uno de los continentes con mayores residuos. Por eso, proponemos la innovadora aplicación a alimentarnos. Esta aplicación permite conectar el sector privado, organizaciones no bursales y la comunidad a través de la tecnología, ofreciendo trazabilidad y transparencia. Los supermercados adheridos podrán publicar nuevas ofertas de donaciones para que los beneficiarios más cercanos puedan abastecerse de forma inmediata, asegurándose hacia una distribución eficaz de los alimentos que aún están aptos para el consumo. Creemos que nuestra aplicación va a perdurar en el tiempo porque las empresas adheridas podrían obtener beneficios fiscales como el certificado verde que eleva la imagen pública de la marca de manera positiva y a su vez el eco tributo que disminuye la carga impositiva. Se propone que las empresas, el Estado y los civiles puedan interactuar y realizar una distribución de los alimentos aptos para el consumo. El costo es bajo porque se reduce la necesidad de intermediarios y se maximiza el uso de recursos existentes, lo cual permite que se disminuyan los residuos que terminan siendo desechados y que posteriormente generan emisiones de gases de efecto invernadero por su descomposición. Un excelente puede ser un beneficio. Sumate al cambio. Sumate a alimentarnos.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 5.92,
+   "text": "Ir al supermercado para nosotros supone una actividad rutinaria, pero sabías que aproximadamente"
+  },
+  {
+   "start": 5.92,
+   "end": 12.16,
+   "text": "se desperdician 16 millones de toneladas de alimentos en Argentina anualmente."
+  },
+  {
+   "start": 12.16,
+   "end": 17.12,
+   "text": "Como se ve en la gráfica, Latinoamérica es uno de los continentes con mayores residuos."
+  },
+  {
+   "start": 17.12,
+   "end": 21.72,
+   "text": "Por eso, proponemos la innovadora aplicación a alimentarnos."
+  },
+  {
+   "start": 21.72,
+   "end": 27.0,
+   "text": "Esta aplicación permite conectar el sector privado, organizaciones no bursales y"
+  },
+  {
+   "start": 27.0,
+   "end": 32.6,
+   "text": "la comunidad a través de la tecnología, ofreciendo trazabilidad y transparencia."
+  },
+  {
+   "start": 32.6,
+   "end": 39.08,
+   "text": "Los supermercados adheridos podrán publicar nuevas ofertas de donaciones para que los beneficiarios"
+  },
+  {
+   "start": 39.08,
+   "end": 45.32,
+   "text": "más cercanos puedan abastecerse de forma inmediata, asegurándose hacia una distribución"
+  },
+  {
+   "start": 45.32,
+   "end": 48.44,
+   "text": "eficaz de los alimentos que aún están aptos para el consumo."
+  },
+  {
+   "start": 48.44,
+   "end": 54.28,
+   "text": "Creemos que nuestra aplicación va a perdurar en el tiempo porque las empresas adheridas"
+  },
+  {
+   "start": 54.28,
+   "end": 59.08,
+   "text": "podrían obtener beneficios fiscales como el certificado verde que eleva la imagen pública"
+  },
+  {
+   "start": 59.08,
+   "end": 64.44,
+   "text": "de la marca de manera positiva y a su vez el eco tributo que disminuye la carga impositiva."
+  },
+  {
+   "start": 64.44,
+   "end": 70.56,
+   "text": "Se propone que las empresas, el Estado y los civiles puedan interactuar y realizar una distribución"
+  },
+  {
+   "start": 70.56,
+   "end": 76.72,
+   "text": "de los alimentos aptos para el consumo. El costo es bajo porque se reduce la necesidad"
+  },
+  {
+   "start": 76.72,
+   "end": 84.04,
+   "text": "de intermediarios y se maximiza el uso de recursos existentes, lo cual permite que se"
+  },
+  {
+   "start": 84.04,
+   "end": 89.68,
+   "text": "disminuyan los residuos que terminan siendo desechados y que posteriormente generan emisiones de gases"
+  },
+  {
+   "start": 89.68,
+   "end": 113.78,
+   "text": "de efecto invernadero por su descomposición. Un excelente puede ser un beneficio."
+  },
+  {
+   "start": 113.78,
+   "end": 117.14,
+   "text": "Sumate al cambio. Sumate a alimentarnos."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.3
+}

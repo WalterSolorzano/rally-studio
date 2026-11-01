@@ -1,0 +1,172 @@
+{
+ "video_id": "oL0gghZPOdA",
+ "url": "https://youtu.be/oL0gghZPOdA",
+ "year": 2026,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "E-404",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "E-404",
+   "challenge": "09 - OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:27:30+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Bueno pues vaya semana de esas actuales en el país, empezó con las lluvias torrenciales de KTP que dejó los muertos, ahí persisten las inundaciones en varias colonias, como decían el pueblo. El 45% de las muertes reportadas en el mundo estuvo relacionada con catástrofes naturales. Personas de riesgo, caminos bloqueados y recursos limitados, sin información clara, cada decisión cuenta. ¿FARO? La solución. Un sistema inteligente de soporte a la toma de decisiones que transforma información del territorio en prioridad de acción. Mediante webs adaptados y nodos lorameche que se comunican entre sí, FARO reúne datos sobre el estado de las personas, los daños estructurales, los servicios esenciales y la accesibilidad de cada zona. Una inteligencia artificial procesa estas variables y genera una matriz de prioridades para identificar dónde la necesidad es más urgente y qué recursos conviene asignar primero. Y porque detrás de cada zona afectada hay personas. FARO incorpora PREPA. Un módulo de asistencia inteligente que permite conocer su situación, evaluar sus necesidades y transmitir alertas prioritarias. PREPA asiste a las personas según su contexto y aporta información que ayude a actualizar las prioridades del sistema. Así FARO no solo considera los daños materiales sino también las necesidades humanas. Con esta información organismos gubernamentales, equipos de emergencia y organizaciones humanitarias pueden planificar, priorizar y distribuir mejor sus recursos. Porque no se trata solamente de tener recursos, sino de saber dónde hace más falta. FARO. Tecnología para decidir mejor y responder donde más se necesita.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 4.56,
+   "text": "Bueno pues vaya semana de esas actuales en el país, empezó con las lluvias torrenciales"
+  },
+  {
+   "start": 4.56,
+   "end": 9.6,
+   "text": "de KTP que dejó los muertos, ahí persisten las inundaciones en varias colonias, como"
+  },
+  {
+   "start": 9.6,
+   "end": 10.6,
+   "text": "decían el pueblo."
+  },
+  {
+   "start": 10.6,
+   "end": 15.64,
+   "text": "El 45% de las muertes reportadas en el mundo estuvo relacionada con catástrofes naturales."
+  },
+  {
+   "start": 15.64,
+   "end": 21.52,
+   "text": "Personas de riesgo, caminos bloqueados y recursos limitados, sin información clara, cada decisión"
+  },
+  {
+   "start": 21.52,
+   "end": 22.52,
+   "text": "cuenta."
+  },
+  {
+   "start": 22.52,
+   "end": 23.52,
+   "text": "¿FARO?"
+  },
+  {
+   "start": 23.52,
+   "end": 24.52,
+   "text": "La solución."
+  },
+  {
+   "start": 24.52,
+   "end": 28.64,
+   "text": "Un sistema inteligente de soporte a la toma de decisiones que transforma información"
+  },
+  {
+   "start": 28.64,
+   "end": 30.72,
+   "text": "del territorio en prioridad de acción."
+  },
+  {
+   "start": 30.72,
+   "end": 36.68,
+   "text": "Mediante webs adaptados y nodos lorameche que se comunican entre sí, FARO reúne datos sobre"
+  },
+  {
+   "start": 36.68,
+   "end": 41.44,
+   "text": "el estado de las personas, los daños estructurales, los servicios esenciales y la accesibilidad"
+  },
+  {
+   "start": 41.44,
+   "end": 42.84,
+   "text": "de cada zona."
+  },
+  {
+   "start": 42.84,
+   "end": 47.0,
+   "text": "Una inteligencia artificial procesa estas variables y genera una matriz de prioridades para"
+  },
+  {
+   "start": 47.0,
+   "end": 51.6,
+   "text": "identificar dónde la necesidad es más urgente y qué recursos conviene asignar"
+  },
+  {
+   "start": 51.6,
+   "end": 52.6,
+   "text": "primero."
+  },
+  {
+   "start": 52.6,
+   "end": 55.72,
+   "text": "Y porque detrás de cada zona afectada hay personas."
+  },
+  {
+   "start": 55.72,
+   "end": 57.68,
+   "text": "FARO incorpora PREPA."
+  },
+  {
+   "start": 57.68,
+   "end": 62.56,
+   "text": "Un módulo de asistencia inteligente que permite conocer su situación, evaluar sus necesidades"
+  },
+  {
+   "start": 62.56,
+   "end": 64.64,
+   "text": "y transmitir alertas prioritarias."
+  },
+  {
+   "start": 64.64,
+   "end": 69.48,
+   "text": "PREPA asiste a las personas según su contexto y aporta información que ayude a actualizar"
+  },
+  {
+   "start": 69.48,
+   "end": 71.4,
+   "text": "las prioridades del sistema."
+  },
+  {
+   "start": 71.4,
+   "end": 76.16,
+   "text": "Así FARO no solo considera los daños materiales sino también las necesidades humanas."
+  },
+  {
+   "start": 76.16,
+   "end": 81.2,
+   "text": "Con esta información organismos gubernamentales, equipos de emergencia y organizaciones"
+  },
+  {
+   "start": 81.2,
+   "end": 82.2,
+   "text": "humanitarias"
+  },
+  {
+   "start": 82.2,
+   "end": 85.88,
+   "text": "pueden planificar, priorizar y distribuir mejor sus recursos."
+  },
+  {
+   "start": 86.0,
+   "end": 90.4,
+   "text": "Porque no se trata solamente de tener recursos, sino de saber dónde hace más falta."
+  },
+  {
+   "start": 90.4,
+   "end": 91.4,
+   "text": "FARO."
+  },
+  {
+   "start": 91.4,
+   "end": 94.48,
+   "text": "Tecnología para decidir mejor y responder donde más se necesita."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 95.1
+}

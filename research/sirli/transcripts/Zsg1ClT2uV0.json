@@ -1,0 +1,102 @@
+{
+ "video_id": "Zsg1ClT2uV0",
+ "url": "https://youtu.be/Zsg1ClT2uV0?si=xuS1X1LUpGDoMA6k",
+ "year": 2025,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "HYDROGUARD",
+ "place_label": "TERCER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "TERCER LUGAR",
+   "team": "HYDROGUARD",
+   "challenge": "04 - SISTEMA DE ALERTA TEMPRANA"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:41:34+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Somos Indomad, verme la tierra de los ciudadanos. Cada año, miletes familia enfrentan el impacto de las inundaciones, eventos impredecibles que ponen el riesgo de vida, hogares y comunidad entera. HydroWard nace como una respuesta tecnológica ante los impactos negativos de las inundaciones como una aplicación móvil-pionera en la edición de riesgo ante desastres. A través del monitoreo climatológico, fluvial y fluvial en tiempo real. HydroWard permite anticipar eventos extremos y activar respuestas temprano. Cada usuario puede recibir alertas personalizadas, incluso en zonas rurales o con conectividad limitadas. HydroWard permite el acceso a información crítica ante eventualidades extremas, fortaleciendo la resiliencia comunitaria y garantizando que nadie quede afuera de la prevención. Su implementación permite a comunidades urbanas, rurales, peri urbanas, a tomar decisiones informadas, reduciendo riesgos y salvando vidas. HydroWard, tecnología, inclusión y prevención al alcance de todos.",
+ "segments": [
+  {
+   "start": 0.08,
+   "end": 4.08,
+   "text": "Somos Indomad, verme la tierra de los ciudadanos."
+  },
+  {
+   "start": 5.08,
+   "end": 8.08,
+   "text": "Cada año, miletes familia enfrentan el impacto de las inundaciones,"
+  },
+  {
+   "start": 8.08,
+   "end": 14.08,
+   "text": "eventos impredecibles que ponen el riesgo de vida, hogares y comunidad entera."
+  },
+  {
+   "start": 14.08,
+   "end": 18.08,
+   "text": "HydroWard nace como una respuesta tecnológica ante los impactos negativos"
+  },
+  {
+   "start": 18.08,
+   "end": 24.08,
+   "text": "de las inundaciones como una aplicación móvil-pionera en la edición de riesgo ante desastres."
+  },
+  {
+   "start": 24.08,
+   "end": 29.08,
+   "text": "A través del monitoreo climatológico, fluvial y fluvial en tiempo real."
+  },
+  {
+   "start": 29.08,
+   "end": 34.08,
+   "text": "HydroWard permite anticipar eventos extremos y activar respuestas temprano."
+  },
+  {
+   "start": 34.08,
+   "end": 38.08,
+   "text": "Cada usuario puede recibir alertas personalizadas,"
+  },
+  {
+   "start": 38.08,
+   "end": 42.08,
+   "text": "incluso en zonas rurales o con conectividad limitadas."
+  },
+  {
+   "start": 43.08,
+   "end": 49.08,
+   "text": "HydroWard permite el acceso a información crítica ante eventualidades extremas,"
+  },
+  {
+   "start": 49.08,
+   "end": 51.08,
+   "text": "fortaleciendo la resiliencia comunitaria"
+  },
+  {
+   "start": 51.08,
+   "end": 55.08,
+   "text": "y garantizando que nadie quede afuera de la prevención."
+  },
+  {
+   "start": 55.08,
+   "end": 61.33,
+   "text": "Su implementación permite a comunidades urbanas, rurales, peri urbanas,"
+  },
+  {
+   "start": 61.33,
+   "end": 66.33,
+   "text": "a tomar decisiones informadas, reduciendo riesgos y salvando vidas."
+  },
+  {
+   "start": 67.33,
+   "end": 72.33,
+   "text": "HydroWard, tecnología, inclusión y prevención al alcance de todos."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 84.9
+}

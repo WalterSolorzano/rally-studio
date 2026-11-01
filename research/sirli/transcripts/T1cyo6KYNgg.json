@@ -1,0 +1,107 @@
+{
+ "video_id": "T1cyo6KYNgg",
+ "url": "https://www.youtube.com/shorts/T1cyo6KYNgg",
+ "year": 2025,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "AGROTECH WARRIORS",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "AGROTECH WARRIORS",
+   "challenge": "03 - FUGAS DE AGUA"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:35:52+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Tenemos un gran problema. Una pequeña fuga puede desperdiciar hasta 30 litros de agua al día. Esto no solo afecta a los costos de operación, sino también la sostenibilidad de un recurso vital. El verdadero reto no es solo reparar las fugas, sino también detectarlas a tiempo. Gran parte de estas pérdidas se mantiene invisible hasta que el problema es realmente grave. Por eso el día de hoy nuestro equipo Agrotec Warrior les traemos la solución. Un escáner acústico inteligente. Este dispositivo combina sensores ultrasonicos, micrófonos y una placa Arduino con inteligencia artificial. ¿Cómo funciona? Se hace un agujero que llegue hasta la tubería madre. Se ubica el dispositivo en la parte exterior de la tubería para que de esta manera pueda recibir el sonido que emite la misma. Un sistema recibirá la información emitida por el dispositivo. Con esto se brindará una respuesta para confirmar si hay una fuga o no. El dispositivo no es solo económico y portátil, sino que también permitirá a las organizaciones encargadas del servicio de agua identificar las fugas con mayor rapidez, de esta manera evitando daños estructurales mayores y sobre todo ahorrando agua. El impacto es enorme. Menor desperdicio hídrico, una mayor conciencia ambiental y una herramienta al alcance de comunidades con recursos limitados. No hablamos solo de tecnología, sino de un futuro donde cada gota cuenta.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 7.0,
+   "text": "Tenemos un gran problema. Una pequeña fuga puede desperdiciar hasta 30 litros de agua al día."
+  },
+  {
+   "start": 7.0,
+   "end": 14.0,
+   "text": "Esto no solo afecta a los costos de operación, sino también la sostenibilidad de un recurso vital."
+  },
+  {
+   "start": 14.0,
+   "end": 20.0,
+   "text": "El verdadero reto no es solo reparar las fugas, sino también detectarlas a tiempo."
+  },
+  {
+   "start": 20.0,
+   "end": 26.0,
+   "text": "Gran parte de estas pérdidas se mantiene invisible hasta que el problema es realmente grave."
+  },
+  {
+   "start": 26.0,
+   "end": 30.0,
+   "text": "Por eso el día de hoy nuestro equipo Agrotec Warrior les traemos la solución."
+  },
+  {
+   "start": 30.0,
+   "end": 33.0,
+   "text": "Un escáner acústico inteligente."
+  },
+  {
+   "start": 34.0,
+   "end": 40.0,
+   "text": "Este dispositivo combina sensores ultrasonicos, micrófonos y una placa Arduino con inteligencia artificial."
+  },
+  {
+   "start": 40.0,
+   "end": 44.0,
+   "text": "¿Cómo funciona? Se hace un agujero que llegue hasta la tubería madre."
+  },
+  {
+   "start": 44.0,
+   "end": 51.0,
+   "text": "Se ubica el dispositivo en la parte exterior de la tubería para que de esta manera pueda recibir el sonido que emite la misma."
+  },
+  {
+   "start": 51.0,
+   "end": 55.0,
+   "text": "Un sistema recibirá la información emitida por el dispositivo."
+  },
+  {
+   "start": 55.0,
+   "end": 60.0,
+   "text": "Con esto se brindará una respuesta para confirmar si hay una fuga o no."
+  },
+  {
+   "start": 60.0,
+   "end": 66.0,
+   "text": "El dispositivo no es solo económico y portátil, sino que también permitirá a las organizaciones encargadas del servicio de agua"
+  },
+  {
+   "start": 66.0,
+   "end": 74.0,
+   "text": "identificar las fugas con mayor rapidez, de esta manera evitando daños estructurales mayores y sobre todo ahorrando agua."
+  },
+  {
+   "start": 74.0,
+   "end": 80.0,
+   "text": "El impacto es enorme. Menor desperdicio hídrico, una mayor conciencia ambiental"
+  },
+  {
+   "start": 80.0,
+   "end": 85.0,
+   "text": "y una herramienta al alcance de comunidades con recursos limitados."
+  },
+  {
+   "start": 85.0,
+   "end": 90.0,
+   "text": "No hablamos solo de tecnología, sino de un futuro donde cada gota cuenta."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 91.1
+}

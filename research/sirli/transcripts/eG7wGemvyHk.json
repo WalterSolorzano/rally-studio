@@ -1,0 +1,169 @@
+{
+ "video_id": "eG7wGemvyHk",
+ "url": "https://youtu.be/eG7wGemvyHk",
+ "year": 2017,
+ "collection": "nacional",
+ "country": "MÉXICO",
+ "team": "KUATLAKALI",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2017,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "KUATLAKALI",
+   "challenge": "03 - ESTRUCTURAS DE INVERNADERO RESISTENTES"
+  },
+  {
+   "year": 2017,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "KUATLAKALI",
+   "challenge": "03 - ESTRUCTURAS DE INVERNADERO RESISTENTES"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:25:15+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Para Latinoamérica, es de evitar importancia a la agricultura. Su desarrollo ancestral está marcado por sus cultivos tradicionales y la conservación de sus recursos. Debido al cambio climático se genera la necesidad de cultivos controlados y de fácil acceso. Ante los diversos tipos de clima que existen en Latinoamérica que van desde cálidos a fríos, los invernaderos presentan ciertas desventajas como es el uso de la calefacción, lo que genera un gasto económico y energético. Debido a su estructura y materiales usados presentan una ventilación insuficiente, una baja resistencia a los vientos y baja disponibilidad de agua. Por lo que nuestra solución es ofrecer a nuestros clientes un invernadero ecosustentable, el cual contará con un sistema de captación de aguas pluviales. Posteriormente, esta agua con ayuda de una bomba acera recirculada al pasar por una serie de herios, los cuales ayudarán a eliminar los nitratos y fosfatos del agua. La recirculación del agua se realizará por una serie de tubos de PVC donde se encontrarán los cultivos a cosechar. La ventilación será conformada por botellas de PET, las cuales no cuentan con la base y estarán colocadas en los muros, tanto en la parte inferior como superior del invernadero y se encargarán de permitir el flujo de calor al interior. Otra característica es permitir el cultivo de plantas de ornato de alto valor comercial, como lo son las horquillas permitiendo aprovechar residuos agroindustriales como es la fibra de coco y poderlo colocar de forma aérea al interior de este invernadero. La estructura estará conformada por aploblox, los cuales están hechos a base de bermiculita, la cual es un mineral que tendrá la función de aislante al igual que el barro que se encontrará en el cimiento. Por los materiales utilizados se sustenta que la construcción será resistente y económica, a la vez que se puede mantener un clima estable lo cual permite generar diferentes tipos de cultivos. Uno de los beneficios que presenta el invernadero es que podrá ser monitoreada en tiempo real a través de sensores, los cuales al medir la temperatura y la humedad presentarán el estado actual del cultivo, dado que si algunos de estos presentan algún problema, esta se notificará a través de una aplicación para la toma de decisiones. Otro enfoque que tiene dicho proyecto es la investigación por parte de instituciones destinadas a dicho fin y con colaboración de organismos gubernamentales se buscarán las alternativas para llevarla a cabo.",
+ "segments": [
+  {
+   "start": 3.92,
+   "end": 7.52,
+   "text": "Para Latinoamérica, es de evitar importancia a la agricultura."
+  },
+  {
+   "start": 7.52,
+   "end": 13.32,
+   "text": "Su desarrollo ancestral está marcado por sus cultivos tradicionales y la conservación de sus recursos."
+  },
+  {
+   "start": 13.32,
+   "end": 18.92,
+   "text": "Debido al cambio climático se genera la necesidad de cultivos controlados y de fácil acceso."
+  },
+  {
+   "start": 18.92,
+   "end": 24.32,
+   "text": "Ante los diversos tipos de clima que existen en Latinoamérica que van desde cálidos a fríos,"
+  },
+  {
+   "start": 24.32,
+   "end": 28.92,
+   "text": "los invernaderos presentan ciertas desventajas como es el uso de la calefacción,"
+  },
+  {
+   "start": 28.92,
+   "end": 31.72,
+   "text": "lo que genera un gasto económico y energético."
+  },
+  {
+   "start": 31.72,
+   "end": 37.12,
+   "text": "Debido a su estructura y materiales usados presentan una ventilación insuficiente,"
+  },
+  {
+   "start": 37.12,
+   "end": 41.52,
+   "text": "una baja resistencia a los vientos y baja disponibilidad de agua."
+  },
+  {
+   "start": 41.52,
+   "end": 47.72,
+   "text": "Por lo que nuestra solución es ofrecer a nuestros clientes un invernadero ecosustentable,"
+  },
+  {
+   "start": 47.72,
+   "end": 51.52,
+   "text": "el cual contará con un sistema de captación de aguas pluviales."
+  },
+  {
+   "start": 51.52,
+   "end": 57.92,
+   "text": "Posteriormente, esta agua con ayuda de una bomba acera recirculada al pasar por una serie de herios,"
+  },
+  {
+   "start": 58.12,
+   "end": 62.72,
+   "text": "los cuales ayudarán a eliminar los nitratos y fosfatos del agua."
+  },
+  {
+   "start": 63.92,
+   "end": 71.12,
+   "text": "La recirculación del agua se realizará por una serie de tubos de PVC donde se encontrarán los cultivos a cosechar."
+  },
+  {
+   "start": 71.12,
+   "end": 78.72,
+   "text": "La ventilación será conformada por botellas de PET, las cuales no cuentan con la base y estarán colocadas en los muros,"
+  },
+  {
+   "start": 78.72,
+   "end": 86.32,
+   "text": "tanto en la parte inferior como superior del invernadero y se encargarán de permitir el flujo de calor al interior."
+  },
+  {
+   "start": 87.32,
+   "end": 92.32,
+   "text": "Otra característica es permitir el cultivo de plantas de ornato de alto valor comercial,"
+  },
+  {
+   "start": 92.32,
+   "end": 99.12,
+   "text": "como lo son las horquillas permitiendo aprovechar residuos agroindustriales como es la fibra de coco"
+  },
+  {
+   "start": 99.12,
+   "end": 103.32,
+   "text": "y poderlo colocar de forma aérea al interior de este invernadero."
+  },
+  {
+   "start": 104.32,
+   "end": 110.72,
+   "text": "La estructura estará conformada por aploblox, los cuales están hechos a base de bermiculita,"
+  },
+  {
+   "start": 110.72,
+   "end": 117.72,
+   "text": "la cual es un mineral que tendrá la función de aislante al igual que el barro que se encontrará en el cimiento."
+  },
+  {
+   "start": 117.72,
+   "end": 123.72,
+   "text": "Por los materiales utilizados se sustenta que la construcción será resistente y económica,"
+  },
+  {
+   "start": 123.72,
+   "end": 129.72,
+   "text": "a la vez que se puede mantener un clima estable lo cual permite generar diferentes tipos de cultivos."
+  },
+  {
+   "start": 130.72,
+   "end": 137.72,
+   "text": "Uno de los beneficios que presenta el invernadero es que podrá ser monitoreada en tiempo real a través de sensores,"
+  },
+  {
+   "start": 137.72,
+   "end": 142.72,
+   "text": "los cuales al medir la temperatura y la humedad presentarán el estado actual del cultivo,"
+  },
+  {
+   "start": 142.72,
+   "end": 149.72,
+   "text": "dado que si algunos de estos presentan algún problema, esta se notificará a través de una aplicación para la toma de decisiones."
+  },
+  {
+   "start": 150.72,
+   "end": 156.72,
+   "text": "Otro enfoque que tiene dicho proyecto es la investigación por parte de instituciones destinadas a dicho fin"
+  },
+  {
+   "start": 156.72,
+   "end": 162.72,
+   "text": "y con colaboración de organismos gubernamentales se buscarán las alternativas para llevarla a cabo."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 167.6
+}

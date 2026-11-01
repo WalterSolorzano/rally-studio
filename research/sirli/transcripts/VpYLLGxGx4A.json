@@ -1,0 +1,182 @@
+{
+ "video_id": "VpYLLGxGx4A",
+ "url": "https://youtu.be/VpYLLGxGx4A",
+ "year": 2026,
+ "collection": "sede",
+ "country": "BOLIVIA",
+ "team": "LOS TILCAYOS",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "LOS TILCAYOS",
+   "challenge": "02 - SENSORES AL SERVICIO DE LA COMUNIDAD"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:34:03+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En 2019, 13 países de América Latina generaron 1,3 millones de toneladas de residuos electrónicos. Apenas el 2,7% recibió una gestión ambientalmente adecuada. Pero estos dispositivos no solo contienen materiales recuperables, también incorporan sensores capaces de registrar movimientos y vibraciones. Una capacidad que abre una posibilidad inesperada frente a otro problema crítico. En Bolivia, los deslizamientos y los sismos pueden poner en peligro comunidades enteras. Detectar cambios en el movimiento del terreno es un desafío clave, especialmente en zonas vulnerables donde el monitoreo puede ser limitado y costoso. En Tilgayo Alerts, proponemos recuperar y reutilizar sensores de movimiento de teléfonos en desuso, como acelerómetros y giroscopios, integrándolos a una ESP32. Instalados en estacas de 2 a 3 metros de profundidad para captar el estrato real del suelo, estos componentes recuperados pueden medir vibraciones y cambios de inclinación en puntos vulnerables. La ESP32 procesa las mediciones y las transmite mediante lora a una estación receptora, comunicando datos a larga distancia con total autonomía solar y sin exigir una conexión a Internet en cada sensor. No instalamos puntos aislados. Displegamos una red de 200 nodos estratégicos enlazados a 10 estaciones receptoras en las zonas críticas de la PAS. Esta malla continua cruza mediciones de múltiples fallas en simultáneo, transformando sensores individuales en una cobertura territorial completa, redundante y con información de máxima confiabilidad para las autoridades. Todos estos datos llegan a Tilgayo Alerts, donde visualizamos mediciones en tiempo real, consultamos gráficas y conocemos el estado del terreno en un mapa interactivo. Pero vamos más allá de ver números. Cuatro agentes inteligentes trabajan en conjunto para filtrar vibraciones habituales, detectar anomalías, analizar factores como las lluvias y evaluar patrones asociados al riesgo. Cuando las mediciones superan los umbrales establecidos, el sistema pasa a rojo y genera una alerta inmediata que apoya a las comunidades y a los equipos de emergencia en la toma de decisiones preventivas ante deslizamientos o eventos sísmicos. Logramos más del 92% de ahorro. Desarrollamos cara nodo local por solo 1.135 bolivianos, frente a los más de 14.000 de la alternativa comercial. Con 200 nodos protegiendo las cuencas paseñas, alcanzamos una tir social del 23%, superando con creces la tasa oficial del bitfe.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 5.84,
+   "text": "En 2019, 13 países de América Latina generaron 1,3 millones de toneladas de residuos electrónicos."
+  },
+  {
+   "start": 5.84,
+   "end": 10.2,
+   "text": "Apenas el 2,7% recibió una gestión ambientalmente adecuada."
+  },
+  {
+   "start": 10.2,
+   "end": 13.32,
+   "text": "Pero estos dispositivos no solo contienen materiales recuperables,"
+  },
+  {
+   "start": 13.32,
+   "end": 17.04,
+   "text": "también incorporan sensores capaces de registrar movimientos y vibraciones."
+  },
+  {
+   "start": 17.04,
+   "end": 20.88,
+   "text": "Una capacidad que abre una posibilidad inesperada frente a otro problema crítico."
+  },
+  {
+   "start": 20.88,
+   "end": 25.12,
+   "text": "En Bolivia, los deslizamientos y los sismos pueden poner en peligro comunidades enteras."
+  },
+  {
+   "start": 25.12,
+   "end": 28.08,
+   "text": "Detectar cambios en el movimiento del terreno es un desafío clave,"
+  },
+  {
+   "start": 28.16,
+   "end": 31.92,
+   "text": "especialmente en zonas vulnerables donde el monitoreo puede ser limitado y costoso."
+  },
+  {
+   "start": 31.92,
+   "end": 36.72,
+   "text": "En Tilgayo Alerts, proponemos recuperar y reutilizar sensores de movimiento de teléfonos en desuso,"
+  },
+  {
+   "start": 36.72,
+   "end": 40.84,
+   "text": "como acelerómetros y giroscopios, integrándolos a una ESP32."
+  },
+  {
+   "start": 40.84,
+   "end": 45.36,
+   "text": "Instalados en estacas de 2 a 3 metros de profundidad para captar el estrato real del suelo,"
+  },
+  {
+   "start": 45.36,
+   "end": 50.08,
+   "text": "estos componentes recuperados pueden medir vibraciones y cambios de inclinación en puntos vulnerables."
+  },
+  {
+   "start": 50.08,
+   "end": 55.08,
+   "text": "La ESP32 procesa las mediciones y las transmite mediante lora a una estación receptora,"
+  },
+  {
+   "start": 55.08,
+   "end": 61.08,
+   "text": "comunicando datos a larga distancia con total autonomía solar y sin exigir una conexión a Internet en cada sensor."
+  },
+  {
+   "start": 61.08,
+   "end": 62.88,
+   "text": "No instalamos puntos aislados."
+  },
+  {
+   "start": 62.88,
+   "end": 69.08,
+   "text": "Displegamos una red de 200 nodos estratégicos enlazados a 10 estaciones receptoras en las zonas críticas de la PAS."
+  },
+  {
+   "start": 69.08,
+   "end": 72.52,
+   "text": "Esta malla continua cruza mediciones de múltiples fallas en simultáneo,"
+  },
+  {
+   "start": 72.52,
+   "end": 76.92,
+   "text": "transformando sensores individuales en una cobertura territorial completa, redundante"
+  },
+  {
+   "start": 76.92,
+   "end": 79.92,
+   "text": "y con información de máxima confiabilidad para las autoridades."
+  },
+  {
+   "start": 79.92,
+   "end": 84.12,
+   "text": "Todos estos datos llegan a Tilgayo Alerts, donde visualizamos mediciones en tiempo real,"
+  },
+  {
+   "start": 84.12,
+   "end": 88.12,
+   "text": "consultamos gráficas y conocemos el estado del terreno en un mapa interactivo."
+  },
+  {
+   "start": 88.12,
+   "end": 90.12,
+   "text": "Pero vamos más allá de ver números."
+  },
+  {
+   "start": 90.12,
+   "end": 94.12,
+   "text": "Cuatro agentes inteligentes trabajan en conjunto para filtrar vibraciones habituales,"
+  },
+  {
+   "start": 94.12,
+   "end": 98.72,
+   "text": "detectar anomalías, analizar factores como las lluvias y evaluar patrones asociados al riesgo."
+  },
+  {
+   "start": 98.72,
+   "end": 102.52,
+   "text": "Cuando las mediciones superan los umbrales establecidos, el sistema pasa a rojo"
+  },
+  {
+   "start": 102.52,
+   "end": 106.32,
+   "text": "y genera una alerta inmediata que apoya a las comunidades y a los equipos de emergencia"
+  },
+  {
+   "start": 106.32,
+   "end": 110.12,
+   "text": "en la toma de decisiones preventivas ante deslizamientos o eventos sísmicos."
+  },
+  {
+   "start": 110.12,
+   "end": 111.92,
+   "text": "Logramos más del 92% de ahorro."
+  },
+  {
+   "start": 111.92,
+   "end": 115.92,
+   "text": "Desarrollamos cara nodo local por solo 1.135 bolivianos, frente a los más de 14.000 de la alternativa comercial."
+  },
+  {
+   "start": 115.92,
+   "end": 119.12,
+   "text": "Con 200 nodos protegiendo las cuencas paseñas, alcanzamos una tir social del 23%,"
+  },
+  {
+   "start": 119.12,
+   "end": 121.12,
+   "text": "superando con creces la tasa oficial del bitfe."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 123.7
+}

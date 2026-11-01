@@ -1,0 +1,132 @@
+{
+ "video_id": "LrlXEwtQxP8",
+ "url": "https://youtu.be/LrlXEwtQxP8",
+ "year": 2025,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "FIRESENSE",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "FIRESENSE",
+   "challenge": "04 - SISTEMA DE ALERTA TEMPRANA"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:40:00+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Según la originización meteorológica mundial, los fenómenos meteorológicos y climáticos extremos dejaron una huella profunda en América Latina y el Caribe en 2024. En 2023, en los barancones, costa Caribe Sur. Un incendio arrasó viviendas de madera y zinc. Familias perdieron todo. FireSense es un innovador sistema de monitoreo que utiliza sensores avanzados para medir temperatura, humo y CO2. El no-utónomo montado en árboles trabaja con energía solar detectando incendios de forma precisa y confiable. Conectado por radiofrecuencia, FireSense transmite alertas sin depender de redes celulares. Así, emite alarmas locales y envía datos a una estación base, asegurando una respuesta rápida. Para los costos del nodo, el sensor NDR base tiene un precio de $85 y el panel solar monocristalino cuesta unos $90. El costo principal, sin embargo, es la batería LifePo Sub4 que, importada en Nicaragua, asciende a $1,325, llevando el costo total del nodo a $1,776.78. La protección de acero inoxidable, grado $316, tiene un costo de $105, declosado $90 de materiales y $15 de mano de obra. Además, se necesita una inversión digital de al menos $7,000 para desarrollar el producto mínimo viable del dashboard. Finalmente, el mantenimiento mensual por nodo está estimado en $216. Según la Oficina de las Naciones Unidas, para reducción de riesgo de desastres, los sistemas de alerta temprana salvan vidas y son uno de las mejores inversiones públicas, reduciendo pérdidas económicas y protegiendo medios de vida. La innovación de FireSense no es sólo técnica, es descentralizada y centrada en las personas. Funciona con energía solar sin depender de Internet y la comunidad opera y decide la respuesta. En lugar es como los francones, esto se traduce en minuto ganados para vacuar, cortar el fuego y evitar que la pérdida total se repite.",
+ "segments": [
+  {
+   "start": 3.54,
+   "end": 9.3,
+   "text": "Según la originización meteorológica mundial, los fenómenos meteorológicos y climáticos extremos"
+  },
+  {
+   "start": 9.3,
+   "end": 15.7,
+   "text": "dejaron una huella profunda en América Latina y el Caribe en 2024. En 2023, en los barancones,"
+  },
+  {
+   "start": 15.7,
+   "end": 21.46,
+   "text": "costa Caribe Sur. Un incendio arrasó viviendas de madera y zinc. Familias perdieron todo."
+  },
+  {
+   "start": 21.46,
+   "end": 26.94,
+   "text": "FireSense es un innovador sistema de monitoreo que utiliza sensores avanzados para medir temperatura,"
+  },
+  {
+   "start": 26.94,
+   "end": 32.5,
+   "text": "humo y CO2. El no-utónomo montado en árboles trabaja con energía solar detectando"
+  },
+  {
+   "start": 32.5,
+   "end": 38.14,
+   "text": "incendios de forma precisa y confiable. Conectado por radiofrecuencia, FireSense transmite alertas"
+  },
+  {
+   "start": 38.14,
+   "end": 43.62,
+   "text": "sin depender de redes celulares. Así, emite alarmas locales y envía datos a una estación base,"
+  },
+  {
+   "start": 43.62,
+   "end": 49.62,
+   "text": "asegurando una respuesta rápida. Para los costos del nodo, el sensor NDR base tiene un precio de"
+  },
+  {
+   "start": 49.62,
+   "end": 56.06,
+   "text": "$85 y el panel solar monocristalino cuesta unos $90. El costo principal, sin embargo,"
+  },
+  {
+   "start": 56.06,
+   "end": 61.74,
+   "text": "es la batería LifePo Sub4 que, importada en Nicaragua, asciende a $1,325,"
+  },
+  {
+   "start": 61.74,
+   "end": 69.22,
+   "text": "llevando el costo total del nodo a $1,776.78. La protección de acero inoxidable,"
+  },
+  {
+   "start": 69.22,
+   "end": 76.5,
+   "text": "grado $316, tiene un costo de $105, declosado $90 de materiales y $15 de mano de obra."
+  },
+  {
+   "start": 76.5,
+   "end": 80.42,
+   "text": "Además, se necesita una inversión digital de al menos $7,000 para"
+  },
+  {
+   "start": 80.42,
+   "end": 84.34,
+   "text": "desarrollar el producto mínimo viable del dashboard. Finalmente, el mantenimiento"
+  },
+  {
+   "start": 84.34,
+   "end": 89.5,
+   "text": "mensual por nodo está estimado en $216. Según la Oficina de las Naciones Unidas,"
+  },
+  {
+   "start": 89.5,
+   "end": 94.9,
+   "text": "para reducción de riesgo de desastres, los sistemas de alerta temprana salvan vidas y son"
+  },
+  {
+   "start": 94.9,
+   "end": 99.86,
+   "text": "uno de las mejores inversiones públicas, reduciendo pérdidas económicas y protegiendo"
+  },
+  {
+   "start": 99.86,
+   "end": 105.74,
+   "text": "medios de vida. La innovación de FireSense no es sólo técnica, es descentralizada y centrada"
+  },
+  {
+   "start": 105.74,
+   "end": 110.86,
+   "text": "en las personas. Funciona con energía solar sin depender de Internet y la comunidad opera"
+  },
+  {
+   "start": 110.86,
+   "end": 116.14,
+   "text": "y decide la respuesta. En lugar es como los francones, esto se traduce en minuto ganados para"
+  },
+  {
+   "start": 116.14,
+   "end": 120.06,
+   "text": "vacuar, cortar el fuego y evitar que la pérdida total se repite."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.1
+}

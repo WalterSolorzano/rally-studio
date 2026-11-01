@@ -1,0 +1,77 @@
+{
+ "video_id": "FgJT0-AC7fw",
+ "url": "https://youtu.be/FgJT0-AC7fw",
+ "year": 2023,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "IESASIT",
+ "place_label": "TERCER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "TERCER LUGAR",
+   "team": "IESASIT",
+   "challenge": "08 - TRATAR DE ESTAR MEJOR"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:23:07+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Y Esasip presenta desafío 8, tratar de estar mejor. Las personas con problemas de salud mental sufren repercusiones que afectan diferentes áreas de su vida como la interacción social y en casos extremos pueden llegar a considerar el suicidio. Para ayudar a estas personas te presentamos Mental Health, que es una aplicación que cuenta con un asistente virtual impulsado por inteligencia artificial que le permite entablar una conversación terapraúdica, un conversatorio con personas que padecen de problemas de salud mental al igual que un foro de profesionales de la psicología que brindan apoyo personalizado. También se ha incorporado la función de habitaciones inteligentes que permiten personalizar el entorno haciendo uso de la neuroarquitectura. Un claro ejemplo de ello es la utilización de colores que ayudarán emocionalmente. A su vez brinda a los usuarios el poder asociarse con personas cercanas para notificar momentos de crisis, seguimiento rutinario y progreso del usuario. Se ha desarrollado una red numeral para sugerir actividades que puede realizar el usuario de acuerdo a los síntomas. Se utilizan el sensor de la cámara de los celulares para identificar patrones de comportamiento que retroalimenten la ida y se implementan las conexiones de dispositivos inteligentes a través de wifi. El costo de mental health es de 8,881.28 dólares con el 0.5% de la población que sufre de trastornos mentales que adquiera la aplicación, se repupera la inversión inicial y se obtienen cuantiosas ganancias.",
+ "segments": [
+  {
+   "start": 0.82,
+   "end": 5.82,
+   "text": "Y Esasip presenta desafío 8, tratar de estar mejor."
+  },
+  {
+   "start": 5.82,
+   "end": 19.9,
+   "text": "Las personas con problemas de salud mental sufren repercusiones que afectan diferentes áreas de su vida como la interacción social y en casos extremos pueden llegar a considerar el suicidio."
+  },
+  {
+   "start": 19.9,
+   "end": 34.9,
+   "text": "Para ayudar a estas personas te presentamos Mental Health, que es una aplicación que cuenta con un asistente virtual impulsado por inteligencia artificial que le permite entablar una conversación terapraúdica,"
+  },
+  {
+   "start": 34.9,
+   "end": 44.9,
+   "text": "un conversatorio con personas que padecen de problemas de salud mental al igual que un foro de profesionales de la psicología que brindan apoyo personalizado."
+  },
+  {
+   "start": 44.9,
+   "end": 54.9,
+   "text": "También se ha incorporado la función de habitaciones inteligentes que permiten personalizar el entorno haciendo uso de la neuroarquitectura."
+  },
+  {
+   "start": 54.9,
+   "end": 60.9,
+   "text": "Un claro ejemplo de ello es la utilización de colores que ayudarán emocionalmente."
+  },
+  {
+   "start": 60.9,
+   "end": 71.9,
+   "text": "A su vez brinda a los usuarios el poder asociarse con personas cercanas para notificar momentos de crisis, seguimiento rutinario y progreso del usuario."
+  },
+  {
+   "start": 72.9,
+   "end": 80.9,
+   "text": "Se ha desarrollado una red numeral para sugerir actividades que puede realizar el usuario de acuerdo a los síntomas."
+  },
+  {
+   "start": 80.9,
+   "end": 92.9,
+   "text": "Se utilizan el sensor de la cámara de los celulares para identificar patrones de comportamiento que retroalimenten la ida y se implementan las conexiones de dispositivos inteligentes a través de wifi."
+  },
+  {
+   "start": 92.9,
+   "end": 114.1,
+   "text": "El costo de mental health es de 8,881.28 dólares con el 0.5% de la población que sufre de trastornos mentales que adquiera la aplicación, se repupera la inversión inicial y se obtienen cuantiosas ganancias."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 117.8
+}

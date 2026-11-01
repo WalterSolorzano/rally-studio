@@ -1,0 +1,92 @@
+{
+ "video_id": "uty0o-EV2fA",
+ "url": "https://youtu.be/uty0o-EV2fA",
+ "year": 2026,
+ "collection": "sede",
+ "country": "EL SALVADOR",
+ "team": "INNOVATECH",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "INNOVATECH",
+   "challenge": "09 - OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:43:34+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "y priorización de recursos en la posemergencia para evitar que estas tragedias vuelvan a suceder. Esto funciona así. Nuestra aplicación genera un reporte en milisegundos a una unidad de transporte sin necesidad de internet. El vehículo envía los reportes al COE, donde nuestro algoritmo agrupa los incidentes publicados y los cruza en el mapa de riesgo para dar prioridad rusa inmediata. Si uno de nuestros rescatistas tiene la conexión, luego de haber pasado un lapso de 30 minutos, vamos a emitir una alerta, siete rescatistas no da señales de que está bien. En el dado caso de que hubieran más rescatistas que hayan perdido la señal todos, a la vez vamos a emitir de inmediato una alerta a Roja porque seguramente ha pasado un accidente mayor. Con conclusión, al garantizar que nuestra información fluida rápidamente garantizamos y trásecamente reducimos la respuesta médica, mejorando la salud para nuestros queridos graves. Esa es tecnología, no solo optimiza recursos, sino que también da líquido a las comunidades y también nos ayuda a mejorar la logística y así salvar la vida.",
+ "segments": [
+  {
+   "start": 34.35,
+   "end": 39.35,
+   "text": "y priorización de recursos en la posemergencia para evitar que estas"
+  },
+  {
+   "start": 39.35,
+   "end": 41.35,
+   "text": "tragedias vuelvan a suceder."
+  },
+  {
+   "start": 41.35,
+   "end": 54.8,
+   "text": "Esto funciona así. Nuestra aplicación genera un reporte en milisegundos a una unidad de transporte sin necesidad de internet."
+  },
+  {
+   "start": 54.8,
+   "end": 61.8,
+   "text": "El vehículo envía los reportes al COE, donde nuestro algoritmo agrupa los incidentes publicados"
+  },
+  {
+   "start": 61.8,
+   "end": 67.8,
+   "text": "y los cruza en el mapa de riesgo para dar prioridad rusa inmediata."
+  },
+  {
+   "start": 67.8,
+   "end": 78.74,
+   "text": "Si uno de nuestros rescatistas tiene la conexión, luego de haber pasado un lapso de 30 minutos,"
+  },
+  {
+   "start": 78.74,
+   "end": 83.74,
+   "text": "vamos a emitir una alerta, siete rescatistas no da señales de que está bien."
+  },
+  {
+   "start": 83.74,
+   "end": 89.74,
+   "text": "En el dado caso de que hubieran más rescatistas que hayan perdido la señal todos,"
+  },
+  {
+   "start": 89.74,
+   "end": 96.74,
+   "text": "a la vez vamos a emitir de inmediato una alerta a Roja porque seguramente ha pasado un accidente mayor."
+  },
+  {
+   "start": 96.74,
+   "end": 101.74,
+   "text": "Con conclusión, al garantizar que nuestra información fluida rápidamente garantizamos"
+  },
+  {
+   "start": 101.74,
+   "end": 109.74,
+   "text": "y trásecamente reducimos la respuesta médica, mejorando la salud para nuestros queridos graves."
+  },
+  {
+   "start": 109.74,
+   "end": 114.74,
+   "text": "Esa es tecnología, no solo optimiza recursos, sino que también da líquido a las comunidades"
+  },
+  {
+   "start": 114.74,
+   "end": 119.74,
+   "text": "y también nos ayuda a mejorar la logística y así salvar la vida."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.0
+}

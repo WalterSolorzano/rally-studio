@@ -1,0 +1,142 @@
+{
+ "video_id": "dAS0Z1qb1EY",
+ "url": "https://youtu.be/dAS0Z1qb1EY",
+ "year": 2023,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "TEAM ROCKET",
+ "place_label": "TERCER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "TERCER LUGAR",
+   "team": "TEAM ROCKET",
+   "challenge": "02 - SIEMPRE EN CONTACTO"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:31:58+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En los últimos años el turismo y la aventura se han vuelto populares en Latinoamérica, pero la falta de información preciera dificultad para ubicar a las personas en estas actividades presentan desafíos. La falta de conexión a internet en áreas rurales y remotas agrava la seguridad de los viajeros, poniendo en riesgo sus vidas. Ante esta problemática, Tim Rocket propone Safe Locator, un innovador dispositivo que aborda la localización y comunicación en áreas sin conexión a internet, con el objetivo de mejorar la seguridad y la tranquilidad de quienes exploran entornos no graficamente complejos. Tus características clave incluyen una localización precisa mediante tecnologías satelitales, una comunicación efectiva con una interfaz intuitiva capaz de contactar a autoridades o equipos de rescate, además se centra en empoderar a los usuarios y brindarles tranquilidad en situaciones críticas fomentando una mayor participación en actividades al aire libre. El dispositivo se conecta a servidores a través de antenas GSM, permitiendo a los administradores de centros turísticos realizar un seguimiento en tiempo real de la ubicación y el ritmo cardíaco de los viajeros, además cuenta con un botón de pánico para situaciones de emergencia. Esta combinación de tecnologías avanzadas y conectividad efectiva garantiza una mayor seguridad y atención en áreas geográficamente desafiantes, proporcionando una experiencia de exploración más segura y tranquila. El dispositivo Safe Locator es una innovación revolucionaria que aumenta la seguridad en actividades de turismo, aventura y trabajos en áreas remotas, utiliza tecnología GPS avanzada para un rastreo preciso en entornos desafiantes y garantiza la posibilidad de recibir ayuda en situaciones críticas, incluso sin conexión a internet. Esta solución innovadora promueve la seguridad y la exploración en áreas remotas. Recuerda que siempre es mejor salvaguardar la vida de nuestros turistas antes que lamentarla.",
+ "segments": [
+  {
+   "start": 2.06,
+   "end": 7.22,
+   "text": "En los últimos años el turismo y la aventura se han vuelto populares en Latinoamérica,"
+  },
+  {
+   "start": 7.22,
+   "end": 11.66,
+   "text": "pero la falta de información preciera dificultad para ubicar a las personas en estas actividades"
+  },
+  {
+   "start": 11.66,
+   "end": 16.58,
+   "text": "presentan desafíos. La falta de conexión a internet en áreas rurales y remotas agrava"
+  },
+  {
+   "start": 16.58,
+   "end": 21.34,
+   "text": "la seguridad de los viajeros, poniendo en riesgo sus vidas. Ante esta problemática,"
+  },
+  {
+   "start": 21.34,
+   "end": 26.06,
+   "text": "Tim Rocket propone Safe Locator, un innovador dispositivo que aborda la localización y"
+  },
+  {
+   "start": 26.06,
+   "end": 30.46,
+   "text": "comunicación en áreas sin conexión a internet, con el objetivo de mejorar la seguridad"
+  },
+  {
+   "start": 30.46,
+   "end": 34.3,
+   "text": "y la tranquilidad de quienes exploran entornos no graficamente complejos."
+  },
+  {
+   "start": 34.3,
+   "end": 39.78,
+   "text": "Tus características clave incluyen una localización precisa mediante tecnologías satelitales,"
+  },
+  {
+   "start": 39.78,
+   "end": 45.22,
+   "text": "una comunicación efectiva con una interfaz intuitiva capaz de contactar a autoridades"
+  },
+  {
+   "start": 45.22,
+   "end": 50.34,
+   "text": "o equipos de rescate, además se centra en empoderar a los usuarios y brindarles"
+  },
+  {
+   "start": 50.34,
+   "end": 54.86,
+   "text": "tranquilidad en situaciones críticas fomentando una mayor participación en"
+  },
+  {
+   "start": 54.86,
+   "end": 61.26,
+   "text": "actividades al aire libre. El dispositivo se conecta a servidores a través de antenas GSM,"
+  },
+  {
+   "start": 61.26,
+   "end": 66.82,
+   "text": "permitiendo a los administradores de centros turísticos realizar un seguimiento en tiempo"
+  },
+  {
+   "start": 66.82,
+   "end": 71.38,
+   "text": "real de la ubicación y el ritmo cardíaco de los viajeros, además cuenta con un botón de"
+  },
+  {
+   "start": 71.38,
+   "end": 76.26,
+   "text": "pánico para situaciones de emergencia. Esta combinación de tecnologías avanzadas"
+  },
+  {
+   "start": 76.26,
+   "end": 82.06,
+   "text": "y conectividad efectiva garantiza una mayor seguridad y atención en áreas geográficamente"
+  },
+  {
+   "start": 82.06,
+   "end": 86.3,
+   "text": "desafiantes, proporcionando una experiencia de exploración más segura y tranquila."
+  },
+  {
+   "start": 86.3,
+   "end": 91.7,
+   "text": "El dispositivo Safe Locator es una innovación revolucionaria que aumenta la seguridad en"
+  },
+  {
+   "start": 91.7,
+   "end": 99.14,
+   "text": "actividades de turismo, aventura y trabajos en áreas remotas, utiliza tecnología GPS avanzada"
+  },
+  {
+   "start": 99.14,
+   "end": 105.22,
+   "text": "para un rastreo preciso en entornos desafiantes y garantiza la posibilidad de recibir ayuda en"
+  },
+  {
+   "start": 105.22,
+   "end": 110.3,
+   "text": "situaciones críticas, incluso sin conexión a internet. Esta solución innovadora promueve"
+  },
+  {
+   "start": 110.3,
+   "end": 116.54,
+   "text": "la seguridad y la exploración en áreas remotas. Recuerda que siempre es mejor salvaguardar la vida"
+  },
+  {
+   "start": 116.54,
+   "end": 118.74,
+   "text": "de nuestros turistas antes que lamentarla."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.9
+}

@@ -1,0 +1,162 @@
+{
+ "video_id": "PegGw5E6Pg8",
+ "url": "https://youtu.be/PegGw5E6Pg8",
+ "year": 2019,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "INGERNOV",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2019,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "INGERNOV",
+   "challenge": "07 - NUEVAS FORMAS DE PRODUCCIÓN HORTÍCOLA"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:59:57+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Actualmente, una de las problemáticas en la producción artícula son un bajo nivel de rendimiento productivo, alta vulnerabilidad a factores climáticos y competitividad en la industria artícula. Las actividades claves de Ingenon están constituidas por la identificación de los potenciales beneficiarios del proyecto para cuatificar la demanda, establecer alianzas, recolectar materia prima en insumos, diseñar túneles de invernadero para producir plántulas, desarrollar aplicativo para web y celulares, comercialización de plántulas y aplicativo. Así, Ingenon presenta en su propuesta de valor el plan de producción de plántulas de hortalizas resistentes a plagas y enfermedades, disponible para los productores por ciclo agrícola. Dicho plan de producción estará incorporado al aplicativo web Ingenon App, que permitirá mejorar la competitividad de los pequeños y medianos productores. Este aplicativo dispondrá de herramientas de asistencia técnica, con íconos de datos disponibles sobre las áreas, sembradas y predicciones de producción de hortalizas, enfermedades comunes de hortalizas, plan de fertilización, además del contacto directo con cadena de supermercados, manufactureras y exportadoras para que el productor pueda comercializar sin usar otros intermediarios. En la actualidad, la mayoría de las zonas rurales y urbanas disponen de celulares que tienen cobertura de Internet que permite al productor de hortalizas acceder a Ingenon App, que lo articula con la cadena de valor del sector artícola. Nuestros productos Ingenon van dirigidos a pequeños y medianos productores de hortalizas asociados o no a cooperativas, que posean la necesidad de aumentar la producción y el rendimiento de cosecha, además de disminuir el riesgo de pérdidas económicas por sobresaturación del mercado, así como facilitar la conexión de venta directa de las hortalizas producidas, enlazando a los eslabones principales de la cadena como son los productores y distribuidores. De este modo, Ingenon, además de la aplicativa web, dispondrá de plántulas de hortalizas caracterizadas por su resistencia a plagas y enfermedades, cuya producción dependerá de las predicciones del mercado. Los productores podrán adquirir estas plántulas a precios accesibles y contando con el apoyo y asistencia técnica de Ingenon. Ingenon es educación, tecnología y ciencia para nuevas formas de producción artícola.",
+ "segments": [
+  {
+   "start": 4.94,
+   "end": 11.94,
+   "text": "Actualmente, una de las problemáticas en la producción artícula son un bajo nivel de rendimiento productivo,"
+  },
+  {
+   "start": 11.94,
+   "end": 17.94,
+   "text": "alta vulnerabilidad a factores climáticos y competitividad en la industria artícula."
+  },
+  {
+   "start": 17.94,
+   "end": 24.94,
+   "text": "Las actividades claves de Ingenon están constituidas por la identificación de los potenciales beneficiarios del proyecto"
+  },
+  {
+   "start": 24.94,
+   "end": 30.94,
+   "text": "para cuatificar la demanda, establecer alianzas, recolectar materia prima en insumos,"
+  },
+  {
+   "start": 30.94,
+   "end": 37.94,
+   "text": "diseñar túneles de invernadero para producir plántulas, desarrollar aplicativo para web y celulares,"
+  },
+  {
+   "start": 37.94,
+   "end": 40.94,
+   "text": "comercialización de plántulas y aplicativo."
+  },
+  {
+   "start": 40.94,
+   "end": 49.94,
+   "text": "Así, Ingenon presenta en su propuesta de valor el plan de producción de plántulas de hortalizas resistentes a plagas y enfermedades,"
+  },
+  {
+   "start": 49.94,
+   "end": 52.94,
+   "text": "disponible para los productores por ciclo agrícola."
+  },
+  {
+   "start": 52.94,
+   "end": 57.94,
+   "text": "Dicho plan de producción estará incorporado al aplicativo web Ingenon App,"
+  },
+  {
+   "start": 57.94,
+   "end": 62.94,
+   "text": "que permitirá mejorar la competitividad de los pequeños y medianos productores."
+  },
+  {
+   "start": 62.94,
+   "end": 66.94,
+   "text": "Este aplicativo dispondrá de herramientas de asistencia técnica,"
+  },
+  {
+   "start": 66.94,
+   "end": 73.94,
+   "text": "con íconos de datos disponibles sobre las áreas, sembradas y predicciones de producción de hortalizas,"
+  },
+  {
+   "start": 73.94,
+   "end": 77.94,
+   "text": "enfermedades comunes de hortalizas, plan de fertilización,"
+  },
+  {
+   "start": 77.94,
+   "end": 81.94,
+   "text": "además del contacto directo con cadena de supermercados,"
+  },
+  {
+   "start": 81.94,
+   "end": 88.94,
+   "text": "manufactureras y exportadoras para que el productor pueda comercializar sin usar otros intermediarios."
+  },
+  {
+   "start": 88.94,
+   "end": 95.94,
+   "text": "En la actualidad, la mayoría de las zonas rurales y urbanas disponen de celulares que tienen cobertura de Internet"
+  },
+  {
+   "start": 95.94,
+   "end": 99.94,
+   "text": "que permite al productor de hortalizas acceder a Ingenon App,"
+  },
+  {
+   "start": 99.94,
+   "end": 103.94,
+   "text": "que lo articula con la cadena de valor del sector artícola."
+  },
+  {
+   "start": 103.94,
+   "end": 109.94,
+   "text": "Nuestros productos Ingenon van dirigidos a pequeños y medianos productores de hortalizas"
+  },
+  {
+   "start": 109.94,
+   "end": 116.94,
+   "text": "asociados o no a cooperativas, que posean la necesidad de aumentar la producción y el rendimiento de cosecha,"
+  },
+  {
+   "start": 116.94,
+   "end": 122.94,
+   "text": "además de disminuir el riesgo de pérdidas económicas por sobresaturación del mercado,"
+  },
+  {
+   "start": 122.94,
+   "end": 127.94,
+   "text": "así como facilitar la conexión de venta directa de las hortalizas producidas,"
+  },
+  {
+   "start": 127.94,
+   "end": 134.94,
+   "text": "enlazando a los eslabones principales de la cadena como son los productores y distribuidores."
+  },
+  {
+   "start": 134.94,
+   "end": 141.94,
+   "text": "De este modo, Ingenon, además de la aplicativa web, dispondrá de plántulas de hortalizas"
+  },
+  {
+   "start": 141.94,
+   "end": 148.94,
+   "text": "caracterizadas por su resistencia a plagas y enfermedades, cuya producción dependerá de las predicciones del mercado."
+  },
+  {
+   "start": 148.94,
+   "end": 156.94,
+   "text": "Los productores podrán adquirir estas plántulas a precios accesibles y contando con el apoyo y asistencia técnica de Ingenon."
+  },
+  {
+   "start": 156.94,
+   "end": 163.94,
+   "text": "Ingenon es educación, tecnología y ciencia para nuevas formas de producción artícola."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 177.2
+}

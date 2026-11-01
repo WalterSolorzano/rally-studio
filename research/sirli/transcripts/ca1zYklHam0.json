@@ -1,0 +1,112 @@
+{
+ "video_id": "ca1zYklHam0",
+ "url": "https://youtu.be/ca1zYklHam0",
+ "year": 2023,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "INNOVAGV",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "INNOVAGV",
+   "challenge": "09 - GRIS A VERDE"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:24:18+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Según el Banco Mundial, un 30% de la población latinoamericana vive en áreas con poco acceso al agua potable, por lo cual diversas familias optan por utilizar y tratar sus aguas residuales con métodos caseros no confiables. Un 70% de las aguas residuales de nuestra región vuelven a los ríos sin ser tratados, creando problemas de salud pública y medioambientales. Innova GB propone tratar las aguas crisis por medio de un sistema compuesto por un filtro, un calentador solar por heliósatos que actúa como captador y reflector de energía solar, elevando la temperatura del agua y eliminando bacterias en estas, dirigiendose a un dispositivo final como un sensor que evalúa la calidad del agua, por último se realizará un proceso de clorificación. Es un sistema de bajo costo accesible a la población de las zonas rurales de todo el país en vías de desarrollo, logrando transformar las aguas grises para un futuro verde. Asimismo es aplicable a zonas del gas curvano y resulta viable gracias a su composición con materiales de fácil adquisición e instalación. Promovemos la sostenibilidad ambiental al reducir la demanda de agua potable, lo que disminuye la presión sobre las fuentes de agua dulce y reducir las descargas de aguas grises en los ecosistemas acuáticos, generando un ahorro económico significativo al eliminar las necesidades de adquirir agua de la red de distribución. El proceso aplicado en esta agua tendrá el propósito de suministrar a los sistemas de riego en nuestros hogares y con fines de uso doméstico.",
+ "segments": [
+  {
+   "start": 7.25,
+   "end": 12.67,
+   "text": "Según el Banco Mundial, un 30% de la población latinoamericana vive en áreas con poco acceso"
+  },
+  {
+   "start": 12.67,
+   "end": 17.41,
+   "text": "al agua potable, por lo cual diversas familias optan por utilizar y tratar sus aguas residuales"
+  },
+  {
+   "start": 17.41,
+   "end": 23.13,
+   "text": "con métodos caseros no confiables. Un 70% de las aguas residuales de nuestra región vuelven"
+  },
+  {
+   "start": 23.13,
+   "end": 28.13,
+   "text": "a los ríos sin ser tratados, creando problemas de salud pública y medioambientales. Innova"
+  },
+  {
+   "start": 28.13,
+   "end": 33.45,
+   "text": "GB propone tratar las aguas crisis por medio de un sistema compuesto por un filtro,"
+  },
+  {
+   "start": 33.45,
+   "end": 38.37,
+   "text": "un calentador solar por heliósatos que actúa como captador y reflector de energía solar,"
+  },
+  {
+   "start": 38.37,
+   "end": 43.81,
+   "text": "elevando la temperatura del agua y eliminando bacterias en estas, dirigiendose a un dispositivo"
+  },
+  {
+   "start": 43.81,
+   "end": 49.01,
+   "text": "final como un sensor que evalúa la calidad del agua, por último se realizará un proceso de"
+  },
+  {
+   "start": 49.01,
+   "end": 54.73,
+   "text": "clorificación. Es un sistema de bajo costo accesible a la población de las zonas rurales de todo"
+  },
+  {
+   "start": 54.73,
+   "end": 59.65,
+   "text": "el país en vías de desarrollo, logrando transformar las aguas grises para un futuro verde."
+  },
+  {
+   "start": 60.05,
+   "end": 68.7,
+   "text": "Asimismo es aplicable a zonas del gas curvano y resulta viable gracias a su composición con materiales"
+  },
+  {
+   "start": 68.7,
+   "end": 75.42,
+   "text": "de fácil adquisición e instalación. Promovemos la sostenibilidad ambiental al reducir la demanda"
+  },
+  {
+   "start": 75.42,
+   "end": 80.9,
+   "text": "de agua potable, lo que disminuye la presión sobre las fuentes de agua dulce y reducir las"
+  },
+  {
+   "start": 80.9,
+   "end": 86.14,
+   "text": "descargas de aguas grises en los ecosistemas acuáticos, generando un ahorro económico"
+  },
+  {
+   "start": 86.14,
+   "end": 91.14,
+   "text": "significativo al eliminar las necesidades de adquirir agua de la red de distribución."
+  },
+  {
+   "start": 91.14,
+   "end": 96.9,
+   "text": "El proceso aplicado en esta agua tendrá el propósito de suministrar a los sistemas de riego"
+  },
+  {
+   "start": 96.9,
+   "end": 100.06,
+   "text": "en nuestros hogares y con fines de uso doméstico."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 104.2
+}

@@ -1,0 +1,162 @@
+{
+ "video_id": "YRUZrUJsaGI",
+ "url": "https://youtu.be/YRUZrUJsaGI",
+ "year": 2021,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "RAINYCAMEL",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "RAINYCAMEL",
+   "challenge": "03 - AGUA PARA SOÑAR"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:46:42+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En el mundo más de 2.000 millones de personas viven sin agua potable. La falta de ella causa 3 millones y medio de muertes por año y cada 20 segundos muere un niño. El problema nace de las barreras para acceder al agua potable. Desde Rainy Kamel proponemos una solución, el proyecto FIQUA, utilizando el agua de lluvia como fuente principal, almacenando y potabilizando, manteniendo el al mayor tiempo posible con los recursos mínimos y brinando un fácil acceso para diferentes comunidades. FIQUA es una tecnología de fácil implementación, mantenimiento, replicación y con costos relativamente bajos. Involucramos a la comunidad para que, mediante capacitaciones, puedan cambiar los filtros de ellos mismos. Esto significa sembrar en cada uno de ellos un sentido de cuidado del medio ambiente y de mejorar la salud de toda la comunidad. FIQUA se puede implementar en escuelas, edificios municipales, estadios y otros que tengan una superficie con gran capacidad de captación de agua de lluvia, misma a la que podrán disponer en un suministro de agua existente o acercándose en los puntos de los reservorios. El proyecto propone aumentar la disponibilidad de agua sin transportarlo por grandes distancias, lo que actualmente representa un gran esfuerzo físico y de deshidratación, que afectan de gran manera la salud. Una alternativa que además tiene un bajo impacto ambiental, lo que en conjunto otorga grandes ventajas frente a otras existentes. Parantes gubernamentales, usuarios de lugares donde se cuentan con conexión a internet, pero persiste el problema de disponibilidad de agua, contamos con un sistema informático en la nube al que se accede a través de una página web, por medio de cualquier dispositivo. Brindando a los usuarios la información en tiempo real de la disponibilidad de agua en los reservorios más próximos a su localización. Nadie debería estar privado del agua. El agua es vida.",
+ "segments": [
+  {
+   "start": 0.37,
+   "end": 5.17,
+   "text": "En el mundo más de 2.000 millones de personas viven sin agua potable."
+  },
+  {
+   "start": 5.17,
+   "end": 11.17,
+   "text": "La falta de ella causa 3 millones y medio de muertes por año y cada 20 segundos muere un niño."
+  },
+  {
+   "start": 11.17,
+   "end": 14.97,
+   "text": "El problema nace de las barreras para acceder al agua potable."
+  },
+  {
+   "start": 14.97,
+   "end": 18.87,
+   "text": "Desde Rainy Kamel proponemos una solución, el proyecto FIQUA,"
+  },
+  {
+   "start": 18.87,
+   "end": 23.57,
+   "text": "utilizando el agua de lluvia como fuente principal, almacenando y potabilizando,"
+  },
+  {
+   "start": 23.57,
+   "end": 26.67,
+   "text": "manteniendo el al mayor tiempo posible con los recursos mínimos"
+  },
+  {
+   "start": 26.67,
+   "end": 29.97,
+   "text": "y brinando un fácil acceso para diferentes comunidades."
+  },
+  {
+   "start": 30.07,
+   "end": 38.17,
+   "text": "FIQUA es una tecnología de fácil implementación, mantenimiento, replicación y con costos relativamente bajos."
+  },
+  {
+   "start": 38.17,
+   "end": 44.27,
+   "text": "Involucramos a la comunidad para que, mediante capacitaciones, puedan cambiar los filtros de ellos mismos."
+  },
+  {
+   "start": 44.27,
+   "end": 49.67,
+   "text": "Esto significa sembrar en cada uno de ellos un sentido de cuidado del medio ambiente"
+  },
+  {
+   "start": 49.67,
+   "end": 52.77,
+   "text": "y de mejorar la salud de toda la comunidad."
+  },
+  {
+   "start": 52.77,
+   "end": 57.87,
+   "text": "FIQUA se puede implementar en escuelas, edificios municipales, estadios"
+  },
+  {
+   "start": 57.87,
+   "end": 62.27,
+   "text": "y otros que tengan una superficie con gran capacidad de captación de agua de lluvia,"
+  },
+  {
+   "start": 62.27,
+   "end": 69.17,
+   "text": "misma a la que podrán disponer en un suministro de agua existente o acercándose en los puntos de los reservorios."
+  },
+  {
+   "start": 69.17,
+   "end": 74.77,
+   "text": "El proyecto propone aumentar la disponibilidad de agua sin transportarlo por grandes distancias,"
+  },
+  {
+   "start": 74.77,
+   "end": 79.07,
+   "text": "lo que actualmente representa un gran esfuerzo físico y de deshidratación,"
+  },
+  {
+   "start": 79.07,
+   "end": 82.37,
+   "text": "que afectan de gran manera la salud."
+  },
+  {
+   "start": 82.37,
+   "end": 85.47,
+   "text": "Una alternativa que además tiene un bajo impacto ambiental,"
+  },
+  {
+   "start": 85.57,
+   "end": 89.87,
+   "text": "lo que en conjunto otorga grandes ventajas frente a otras existentes."
+  },
+  {
+   "start": 89.87,
+   "end": 94.57,
+   "text": "Parantes gubernamentales, usuarios de lugares donde se cuentan con conexión a internet,"
+  },
+  {
+   "start": 94.57,
+   "end": 97.87,
+   "text": "pero persiste el problema de disponibilidad de agua,"
+  },
+  {
+   "start": 97.87,
+   "end": 102.67,
+   "text": "contamos con un sistema informático en la nube al que se accede a través de una página web,"
+  },
+  {
+   "start": 102.67,
+   "end": 105.07,
+   "text": "por medio de cualquier dispositivo."
+  },
+  {
+   "start": 105.07,
+   "end": 109.57,
+   "text": "Brindando a los usuarios la información en tiempo real de la disponibilidad de agua"
+  },
+  {
+   "start": 109.57,
+   "end": 113.27,
+   "text": "en los reservorios más próximos a su localización."
+  },
+  {
+   "start": 113.37,
+   "end": 115.67,
+   "text": "Nadie debería estar privado del agua."
+  },
+  {
+   "start": 115.67,
+   "end": 116.67,
+   "text": "El agua es vida."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.1
+}

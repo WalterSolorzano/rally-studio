@@ -1,0 +1,157 @@
+{
+ "video_id": "O_l6TC4pjOY",
+ "url": "https://www.youtube.com/watch?v=O_l6TC4pjOY",
+ "year": 2026,
+ "collection": "sede",
+ "country": "CHILE",
+ "team": "FANTASMINESCODE",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "FANTASMINESCODE",
+   "challenge": "07 - REUTILIZACIÓN DE ACEITE DOMÉSTICO"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:34:05+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Qué se escone el aceite cuando terminas de freír? En Chile por ciudadamente hay 128 mil toneladas de aceite usado, en cual solamente el 12% se recupera. Las casas se aportan en con tres a cinco por ciento del aceite recuperado. Y ese aceite casi siempre termina en la platos. Se enfria y tapa las enguilcantarillas y el problema llega al acantarillado de todos. Frey Cicle no es un producto, es un circuito de barrio. Una pastilla deja tu aceite en un bloque. Lo dejas en el almacé por un cupón. Y el camión que ya pasa lo lleva a convertirse en biodiesel. La pastilla las fabricaríamos nosotros. Mismo ingrediente vegetal que las comerciales. Hasta 100 veces más barata y validada antes de elaborar. La clave es la logística inversa. Puerta puerta, cuesta unos 900 pesos por litro. Con el camión que ya pasa unos 140, encaja ser médicas y separada del aceite en agua. ¿Y quién paga? El plan que tenemos es que la marca financia la pastilla y tu cupón. Y el gas y el gestor compran el aceite desde 330 pesos en litro. Easy Fire Plan B, el fondo comunidad activa o el municipio financiado en el piloto. Y si el gestor no acepta el bloque, juntamos el aceite líquido en botellas cerradas. Partimos por Kiligura, seis meses, 500 hogares y 30 almacenes. 7.000 litros y 7.6 millones de pesos, meridos con indicadores. Si funciona el primer año serían 16.800 litros y 39 toneladas de CO2 evitadas. Y luego más comunas. Fry Circle, el aceite no se bota, se transforma.",
+ "segments": [
+  {
+   "start": 9.68,
+   "end": 12.68,
+   "text": "¿Qué se escone el aceite cuando terminas de freír?"
+  },
+  {
+   "start": 12.68,
+   "end": 17.18,
+   "text": "En Chile por ciudadamente hay 128 mil toneladas de aceite usado,"
+  },
+  {
+   "start": 17.18,
+   "end": 19.68,
+   "text": "en cual solamente el 12% se recupera."
+  },
+  {
+   "start": 19.68,
+   "end": 23.68,
+   "text": "Las casas se aportan en con tres a cinco por ciento del aceite recuperado."
+  },
+  {
+   "start": 23.68,
+   "end": 25.68,
+   "text": "Y ese aceite casi siempre termina en la platos."
+  },
+  {
+   "start": 25.68,
+   "end": 30.68,
+   "text": "Se enfria y tapa las enguilcantarillas y el problema llega al acantarillado de todos."
+  },
+  {
+   "start": 31.68,
+   "end": 34.68,
+   "text": "Frey Cicle no es un producto, es un circuito de barrio."
+  },
+  {
+   "start": 34.68,
+   "end": 37.68,
+   "text": "Una pastilla deja tu aceite en un bloque."
+  },
+  {
+   "start": 37.68,
+   "end": 39.68,
+   "text": "Lo dejas en el almacé por un cupón."
+  },
+  {
+   "start": 39.68,
+   "end": 42.68,
+   "text": "Y el camión que ya pasa lo lleva a convertirse en biodiesel."
+  },
+  {
+   "start": 43.68,
+   "end": 45.68,
+   "text": "La pastilla las fabricaríamos nosotros."
+  },
+  {
+   "start": 45.68,
+   "end": 48.68,
+   "text": "Mismo ingrediente vegetal que las comerciales."
+  },
+  {
+   "start": 48.68,
+   "end": 52.68,
+   "text": "Hasta 100 veces más barata y validada antes de elaborar."
+  },
+  {
+   "start": 52.68,
+   "end": 55.68,
+   "text": "La clave es la logística inversa."
+  },
+  {
+   "start": 55.68,
+   "end": 58.68,
+   "text": "Puerta puerta, cuesta unos 900 pesos por litro."
+  },
+  {
+   "start": 58.68,
+   "end": 63.68,
+   "text": "Con el camión que ya pasa unos 140, encaja ser médicas y separada del aceite en agua."
+  },
+  {
+   "start": 63.68,
+   "end": 65.68,
+   "text": "¿Y quién paga?"
+  },
+  {
+   "start": 65.68,
+   "end": 69.68,
+   "text": "El plan que tenemos es que la marca financia la pastilla y tu cupón."
+  },
+  {
+   "start": 69.68,
+   "end": 73.68,
+   "text": "Y el gas y el gestor compran el aceite desde 330 pesos en litro."
+  },
+  {
+   "start": 74.68,
+   "end": 79.68,
+   "text": "Easy Fire Plan B, el fondo comunidad activa o el municipio financiado en el piloto."
+  },
+  {
+   "start": 79.68,
+   "end": 84.68,
+   "text": "Y si el gestor no acepta el bloque, juntamos el aceite líquido en botellas cerradas."
+  },
+  {
+   "start": 84.68,
+   "end": 89.68,
+   "text": "Partimos por Kiligura, seis meses, 500 hogares y 30 almacenes."
+  },
+  {
+   "start": 89.68,
+   "end": 94.68,
+   "text": "7.000 litros y 7.6 millones de pesos, meridos con indicadores."
+  },
+  {
+   "start": 95.68,
+   "end": 102.68,
+   "text": "Si funciona el primer año serían 16.800 litros y 39 toneladas de CO2 evitadas."
+  },
+  {
+   "start": 102.68,
+   "end": 104.68,
+   "text": "Y luego más comunas."
+  },
+  {
+   "start": 105.68,
+   "end": 108.68,
+   "text": "Fry Circle, el aceite no se bota, se transforma."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 117.1
+}

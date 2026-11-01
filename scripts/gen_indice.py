@@ -86,9 +86,9 @@ DESCRIPCIONES: dict[str, tuple[str, str, str]] = {
         "Como fuente de datos: no es evidencia.",
     ),
     "rubrica_oficial_latam.jpeg": (
-        "Imagen de la rúbrica oficial del Rally Latam (criterios y puntajes).",
+        "Imagen de la rúbrica oficial del Rally Latam (19 ítems y puntajes).",
         "Verificar ponderaciones exactas antes de auditar un entregable.",
-        "Si ya se consultó rubric_latam.md en esta sesión.",
+        "Si ya se consultó rubric_matrices.md en esta sesión.",
     ),
     "PRODUCT.md": (
         "Definición de producto: usuarios, propósito, posicionamiento, marca, accesibilidad.",
@@ -123,14 +123,24 @@ DESCRIPCIONES: dict[str, tuple[str, str, str]] = {
     ),
     # --- knowledge ------------------------------------------------------
     "knowledge/rubric_latam.md": (
-        "Rúbrica del Rally Latam destilada: 5 criterios, 100 puntos, qué mira el jurado.",
-        "Auditar cualquier entregable del certamen latinoamericano.",
-        "Para el certamen nacional: usar rubric_matrices.md.",
+        "Puntero corto a rubric_matrices.md §1: no duplica ítems ni ventanas.",
+        "Llegar rápido a la matriz Latam desde una mención suelta.",
+        "Como fuente de criterios: la fuente única es rubric_matrices.md.",
     ),
     "knowledge/rubric_matrices.md": (
-        "Matrices y ponderaciones del Rally Nacional (categorías CNU/Comisión Creativa).",
-        "Auditar entregables del certamen nacional.",
-        "Para Latam: usar rubric_latam.md.",
+        "Fuente única de rúbricas: Latam oficial verificada (19 ítems) y Nacional no verificada.",
+        "Auditar cualquier entregable y justificar el puntaje esperado.",
+        "Para buscar patrones de video: usar rubric_matrices.md §3.",
+    ),
+    "knowledge/ERRATAS.md": (
+        "Correcciones y datos dudosos del corpus, con la fuente que los resuelve.",
+        "Antes de citar año, rally, puesto o equipo de un caso.",
+        "Para reescribir la historia: solo registra erratas.",
+    ),
+    "knowledge/insignias.json": (
+        "Marcos e insignias con URL oficial y estado de verificación.",
+        "Elegir 2–3 insignias defendibles para una solución.",
+        "Si el marco no está en la lista: se omite, no se inventa.",
     ),
     "knowledge/winners_analysis.md": (
         "Patrones destilados de proyectos ganadores.",

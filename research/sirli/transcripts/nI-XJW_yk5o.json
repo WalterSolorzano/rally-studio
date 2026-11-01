@@ -1,0 +1,26 @@
+{
+ "video_id": "nI-XJW_yk5o",
+ "url": "https://youtu.be/nI-XJW_yk5o",
+ "year": 2024,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "INNOVA",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "INNOVA",
+   "challenge": "05 - EVACUACIÓN"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:30:09+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "",
+ "segments": [],
+ "has_info": false,
+ "duration_s": 118.4
+}

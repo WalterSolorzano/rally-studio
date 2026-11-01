@@ -1,0 +1,52 @@
+{
+ "video_id": "GQC0mzTZlxo",
+ "url": "https://youtu.be/GQC0mzTZlxo",
+ "year": 2025,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "MULTITEXTIL",
+ "place_label": "TERCER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "TERCER LUGAR",
+   "team": "MULTITEXTIL",
+   "challenge": "02 - RECICLADO TEXTIL"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:49:07+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "La moda rápida está asfixiando nuestro planeta. Esta industria produce prendas en masa, súper baratas y diseñadas para usarse muy pocas veces. El resultado es una montaña de desperdicio testil que tarda décadas, en desaparecer, envenenando nuestros suelos, ríos y océanos con químicos tóxicos y microplásticos. Estos desechos no solo ocupan un espacio brutal en los vertederos, sino que están destruyendo la biodiversidad y poniendo en riesgo la salud humana. La pregunta clave es, si no podemos seguir enterrando o quemando esta ropa, cuál es el proceso innovador y su...",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 4.0,
+   "text": "La moda rápida está asfixiando nuestro planeta."
+  },
+  {
+   "start": 4.0,
+   "end": 11.0,
+   "text": "Esta industria produce prendas en masa, súper baratas y diseñadas para usarse muy pocas veces."
+  },
+  {
+   "start": 11.0,
+   "end": 23.0,
+   "text": "El resultado es una montaña de desperdicio testil que tarda décadas, en desaparecer, envenenando nuestros suelos, ríos y océanos con químicos tóxicos y microplásticos."
+  },
+  {
+   "start": 23.0,
+   "end": 32.0,
+   "text": "Estos desechos no solo ocupan un espacio brutal en los vertederos, sino que están destruyendo la biodiversidad y poniendo en riesgo la salud humana."
+  },
+  {
+   "start": 32.0,
+   "end": 40.0,
+   "text": "La pregunta clave es, si no podemos seguir enterrando o quemando esta ropa, cuál es el proceso innovador y su..."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 39.5
+}

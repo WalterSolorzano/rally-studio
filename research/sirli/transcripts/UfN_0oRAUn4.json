@@ -1,0 +1,137 @@
+{
+ "video_id": "UfN_0oRAUn4",
+ "url": "https://youtu.be/UfN_0oRAUn4",
+ "year": 2021,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "BRUMAS TEAM",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "BRUMAS TEAM",
+   "challenge": "10 - ¿QUÉ HACER CON TU MASCARILLA, BARBIJO O CUBREBOCAS?"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:44:47+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Qué sucede con el cubrebocas después de su uso? Presentamos GreenMaskBots, una máquina que se crea con el fin de determinar qué usuario es portador de COVID-19 y a su vez convertirles mascarillas en materia prima aprovechable para el cuido medioambiental. Además este dispositivo disfrutará de los beneficios de la energía renovable provista por paneles solares. Funcionamiento del dispositivo Se deposita la mascarilla en el receptor de la máquina y a través de un sensor se genera un código QR único que al ser escaneado con el móvil dirigirá al usuario a un sitio web donde se mostrará el resultado de manera confidencial después de un tiempo determinado y medidas de seguridad adicionales según el análisis obtenido. Durante este proceso la máquina se bloqueará. Una vez finalizada la fase de análisis la mascarilla será transportada al triturador y posteriormente al incinerador para garantizar la pulverización total. Cabe señalar que el humo producido pasará por una turbina de aire. Los residuos se almacenarán en un contenedor donde permanecerán hasta su uso posterior. El dispositivo será estilizado por medio de una membrana que aplicará radiación ultravioleta para garantizar la limpieza del sensor eliminando agentes patógenos. Consecutivamente se desbloquea la máquina y se reinicia el ciclo. GreenMassBot se encontrará disponible en lugares públicos entre ellos escuelas, bancos, iglesias, parques, terminales de buses, etc.",
+ "segments": [
+  {
+   "start": 1.2,
+   "end": 5.04,
+   "text": "¿Qué sucede con el cubrebocas después de su uso?"
+  },
+  {
+   "start": 5.04,
+   "end": 11.96,
+   "text": "Presentamos GreenMaskBots, una máquina que se crea con el fin de determinar qué usuario"
+  },
+  {
+   "start": 11.96,
+   "end": 18.34,
+   "text": "es portador de COVID-19 y a su vez convertirles mascarillas en materia prima aprovechable"
+  },
+  {
+   "start": 18.34,
+   "end": 20.56,
+   "text": "para el cuido medioambiental."
+  },
+  {
+   "start": 20.56,
+   "end": 25.92,
+   "text": "Además este dispositivo disfrutará de los beneficios de la energía renovable provista"
+  },
+  {
+   "start": 25.92,
+   "end": 30.18,
+   "text": "por paneles solares."
+  },
+  {
+   "start": 30.18,
+   "end": 33.18,
+   "text": "Funcionamiento del dispositivo"
+  },
+  {
+   "start": 33.18,
+   "end": 38.14,
+   "text": "Se deposita la mascarilla en el receptor de la máquina y a través de un sensor"
+  },
+  {
+   "start": 38.14,
+   "end": 44.38,
+   "text": "se genera un código QR único que al ser escaneado con el móvil dirigirá al"
+  },
+  {
+   "start": 44.38,
+   "end": 49.5,
+   "text": "usuario a un sitio web donde se mostrará el resultado de manera confidencial"
+  },
+  {
+   "start": 49.5,
+   "end": 54.5,
+   "text": "después de un tiempo determinado y medidas de seguridad adicionales"
+  },
+  {
+   "start": 54.5,
+   "end": 56.82,
+   "text": "según el análisis obtenido."
+  },
+  {
+   "start": 56.82,
+   "end": 60.52,
+   "text": "Durante este proceso la máquina se bloqueará."
+  },
+  {
+   "start": 60.52,
+   "end": 66.94,
+   "text": "Una vez finalizada la fase de análisis la mascarilla será transportada al triturador"
+  },
+  {
+   "start": 66.94,
+   "end": 73.1,
+   "text": "y posteriormente al incinerador para garantizar la pulverización total."
+  },
+  {
+   "start": 73.1,
+   "end": 77.94,
+   "text": "Cabe señalar que el humo producido pasará por una turbina de aire."
+  },
+  {
+   "start": 77.94,
+   "end": 84.46,
+   "text": "Los residuos se almacenarán en un contenedor donde permanecerán hasta su uso posterior."
+  },
+  {
+   "start": 84.5,
+   "end": 90.82,
+   "text": "El dispositivo será estilizado por medio de una membrana que aplicará radiación"
+  },
+  {
+   "start": 90.82,
+   "end": 97.42,
+   "text": "ultravioleta para garantizar la limpieza del sensor eliminando agentes patógenos."
+  },
+  {
+   "start": 97.42,
+   "end": 103.02,
+   "text": "Consecutivamente se desbloquea la máquina y se reinicia el ciclo."
+  },
+  {
+   "start": 103.02,
+   "end": 109.42,
+   "text": "GreenMassBot se encontrará disponible en lugares públicos entre ellos"
+  },
+  {
+   "start": 109.42,
+   "end": 117.18,
+   "text": "escuelas, bancos, iglesias, parques, terminales de buses, etc."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 118.1
+}

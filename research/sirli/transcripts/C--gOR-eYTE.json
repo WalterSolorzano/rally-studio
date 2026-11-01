@@ -1,0 +1,127 @@
+{
+ "video_id": "C--gOR-eYTE",
+ "url": "https://youtu.be/C--gOR-eYTE",
+ "year": 2020,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "WOLVES TECH",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2020,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "WOLVES TECH",
+   "challenge": "05 - ¿AYUDARÍA UN SISTEMA O DISPOSITIVO HOGAREÑO A EVITAR QUE EL ACEITE DE FRITURA USADO TERMINE EN LA RED PÚBLICA?"
+  }
+ ],
+ "fetched_at": "2026-10-23T01:10:39+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "El aceite frito es uno de los mayores contaminantes del agua en la red pública. Un litro puede llegar a contaminar cerca de 40 mil litros de agua. Esto se debe a que contiene aproximadamente 5 mil veces más carga contaminante que el agua residual que circula por la red de saneamiento. Además, dichos aceites y grasas suelen terminar en ríos, mares o lagos, afectando el intercambio gaseoso. Esto reduce la oxigenación del agua y pone el riesgo a las especies apuáticas que habitan allí. Para solucionarlo, presentamos SIGAR, un sistema integrado de separación y reciclaje del aceite que se usa para freír en un hogar tipo. Este proceso consiste en la aplicación de dos operaciones. El primero, está conformada por una trampa de grasa que evita que el aceite desechado en el lavado de la cocina continúe por la cañería y llegue a la red. La innovación parte en aplicarle una modificación en la parte superior donde se puede extraer el líquido oleoso y almacenarlo en un recipiente. El aceite después es utilizado para la creación de velas ecológicas, utilizada para la decoración o iluminación del hogar. Con esta iniciativa buscamos generar conciencia del impacto que provoca al medio ambiente una actividad común que realizamos en nuestros hogares. También tiene como finalidad promover el uso de técnicas o métodos de reciclaje y así disminuir nuestra producción de aceite. Promover el cuidado del medio ambiente es enseñar a cuidar la vida.",
+ "segments": [
+  {
+   "start": 5.1,
+   "end": 9.3,
+   "text": "El aceite frito es uno de los mayores contaminantes del agua en la red pública."
+  },
+  {
+   "start": 9.3,
+   "end": 13.38,
+   "text": "Un litro puede llegar a contaminar cerca de 40 mil litros de agua."
+  },
+  {
+   "start": 13.38,
+   "end": 17.82,
+   "text": "Esto se debe a que contiene aproximadamente 5 mil veces más carga"
+  },
+  {
+   "start": 17.82,
+   "end": 22.26,
+   "text": "contaminante que el agua residual que circula por la red de saneamiento."
+  },
+  {
+   "start": 22.26,
+   "end": 27.9,
+   "text": "Además, dichos aceites y grasas suelen terminar en ríos, mares o lagos,"
+  },
+  {
+   "start": 27.9,
+   "end": 30.54,
+   "text": "afectando el intercambio gaseoso."
+  },
+  {
+   "start": 30.7,
+   "end": 36.22,
+   "text": "Esto reduce la oxigenación del agua y pone el riesgo a las especies apuáticas que habitan allí."
+  },
+  {
+   "start": 36.22,
+   "end": 42.74,
+   "text": "Para solucionarlo, presentamos SIGAR, un sistema integrado de separación y reciclaje del aceite"
+  },
+  {
+   "start": 42.74,
+   "end": 48.58,
+   "text": "que se usa para freír en un hogar tipo. Este proceso consiste en la aplicación de dos operaciones."
+  },
+  {
+   "start": 48.58,
+   "end": 54.7,
+   "text": "El primero, está conformada por una trampa de grasa que evita que el aceite desechado en el lavado"
+  },
+  {
+   "start": 54.7,
+   "end": 57.98,
+   "text": "de la cocina continúe por la cañería y llegue a la red."
+  },
+  {
+   "start": 58.62,
+   "end": 62.78,
+   "text": "La innovación parte en aplicarle una modificación en la parte superior"
+  },
+  {
+   "start": 62.78,
+   "end": 67.82,
+   "text": "donde se puede extraer el líquido oleoso y almacenarlo en un recipiente."
+  },
+  {
+   "start": 67.82,
+   "end": 73.14,
+   "text": "El aceite después es utilizado para la creación de velas ecológicas,"
+  },
+  {
+   "start": 73.14,
+   "end": 76.34,
+   "text": "utilizada para la decoración o iluminación del hogar."
+  },
+  {
+   "start": 76.34,
+   "end": 83.5,
+   "text": "Con esta iniciativa buscamos generar conciencia del impacto que provoca al medio ambiente"
+  },
+  {
+   "start": 83.5,
+   "end": 86.86,
+   "text": "una actividad común que realizamos en nuestros hogares."
+  },
+  {
+   "start": 87.34,
+   "end": 93.22,
+   "text": "También tiene como finalidad promover el uso de técnicas o métodos de reciclaje"
+  },
+  {
+   "start": 93.22,
+   "end": 96.42,
+   "text": "y así disminuir nuestra producción de aceite."
+  },
+  {
+   "start": 97.42,
+   "end": 102.02,
+   "text": "Promover el cuidado del medio ambiente es enseñar a cuidar la vida."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 111.6
+}

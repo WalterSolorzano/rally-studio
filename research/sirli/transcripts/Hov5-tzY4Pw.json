@@ -1,0 +1,157 @@
+{
+ "video_id": "Hov5-tzY4Pw",
+ "url": "https://youtu.be/Hov5-tzY4Pw",
+ "year": 2017,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "DRAWIDEA TEAM",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2017,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "DRAWIDEA TEAM",
+   "challenge": "02 - CONSTRUIR UN PROYECTO DE CALLE INTELIGENTE"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:04:11+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En la actualidad, gran parte de las ciudades latinoamericanas viven una crisis en sus sistemas de transporte urbano debido al incremento acelerado de la población, llegando a ubicar a América Latina como la región con más alto índice de población urbana. Entre el 20 y el 61% de la población latinoamericana utilizan como principal medio de movilización el transporte urbano colectivo, provocando que aproximadamente el 25% de personas tengan que esperar alrededor de 20 minutos por un medio de transporte. El proyecto Interpar es un sistema de gestión de datos y herramientas para el control y monitoreo del transporte urbano colectivo, a través de un algoritmo de inteligencia artificial con la capacidad de aprender del flujo del tráfico sugiriendo así las rutas más eficientes. El sistema cuenta con una pantalla interactiva ubicada en las estaciones, donde se visualiza el recorrido del autobús, el tiempo estimado llegada a la estación y de llegada al destino, probabilidad de retraso y ubicación actual del transporte. Además de mostrar en la pantalla mensajes de concientización ambiental y una opción que permite solicitar un servicio de taxi a través de un botón que enciende una luz intermitente color amarillo. La sustentabilidad de la estación se basa en paneles solares que permiten suministrar energía a un sistema de iluminación automático, capaz de atenuarse cuando un sensor no perciba presencia de usuarios en la estación, así mismo el servicio de wifi gratis. Además la estación se complementa con una aplicación móvil de fácil uso y de descarga totalmente gratuita, donde se podrá visualizar la ubicación actual de los medios de transporte, las estaciones, la ubicación actual del usuario, hacer búsquedas de recorridos que lleven de un punto de partida a un punto final, mostrando la ruta que realizaré el transporte, el tiempo estimada llegada a la estación y el tiempo que demora en llegar a su destino. El sistema permite al usuario realizar recorridos integradores e igualitarios, ya que no es necesario poseer un smartphone para hacer uso del servicio. Además de ser accesible y sostenible, ya que permite transitar con alto grado de eficiencia y convivencia.",
+ "segments": [
+  {
+   "start": 7.86,
+   "end": 12.66,
+   "text": "En la actualidad, gran parte de las ciudades latinoamericanas viven una crisis en sus sistemas"
+  },
+  {
+   "start": 12.66,
+   "end": 17.94,
+   "text": "de transporte urbano debido al incremento acelerado de la población, llegando a ubicar"
+  },
+  {
+   "start": 17.94,
+   "end": 22.9,
+   "text": "a América Latina como la región con más alto índice de población urbana."
+  },
+  {
+   "start": 22.9,
+   "end": 28.62,
+   "text": "Entre el 20 y el 61% de la población latinoamericana utilizan como principal medio de movilización"
+  },
+  {
+   "start": 28.62,
+   "end": 34.78,
+   "text": "el transporte urbano colectivo, provocando que aproximadamente el 25% de personas tengan"
+  },
+  {
+   "start": 34.78,
+   "end": 38.66,
+   "text": "que esperar alrededor de 20 minutos por un medio de transporte."
+  },
+  {
+   "start": 38.66,
+   "end": 45.9,
+   "text": "El proyecto Interpar es un sistema de gestión de datos y herramientas para el control y monitoreo"
+  },
+  {
+   "start": 45.9,
+   "end": 50.86,
+   "text": "del transporte urbano colectivo, a través de un algoritmo de inteligencia artificial con"
+  },
+  {
+   "start": 50.86,
+   "end": 56.42,
+   "text": "la capacidad de aprender del flujo del tráfico sugiriendo así las rutas más eficientes."
+  },
+  {
+   "start": 56.42,
+   "end": 61.38,
+   "text": "El sistema cuenta con una pantalla interactiva ubicada en las estaciones,"
+  },
+  {
+   "start": 61.54,
+   "end": 67.54,
+   "text": "donde se visualiza el recorrido del autobús, el tiempo estimado llegada a la estación y"
+  },
+  {
+   "start": 67.54,
+   "end": 72.1,
+   "text": "de llegada al destino, probabilidad de retraso y ubicación actual del transporte."
+  },
+  {
+   "start": 72.1,
+   "end": 77.82,
+   "text": "Además de mostrar en la pantalla mensajes de concientización ambiental y una opción"
+  },
+  {
+   "start": 77.82,
+   "end": 82.14,
+   "text": "que permite solicitar un servicio de taxi a través de un botón que enciende una luz"
+  },
+  {
+   "start": 82.14,
+   "end": 87.58,
+   "text": "intermitente color amarillo. La sustentabilidad de la estación se basa en paneles solares"
+  },
+  {
+   "start": 87.58,
+   "end": 91.9,
+   "text": "que permiten suministrar energía a un sistema de iluminación automático,"
+  },
+  {
+   "start": 91.9,
+   "end": 96.42,
+   "text": "capaz de atenuarse cuando un sensor no perciba presencia de usuarios en la estación,"
+  },
+  {
+   "start": 96.42,
+   "end": 101.98,
+   "text": "así mismo el servicio de wifi gratis. Además la estación se complementa con"
+  },
+  {
+   "start": 101.98,
+   "end": 107.94,
+   "text": "una aplicación móvil de fácil uso y de descarga totalmente gratuita, donde se podrá visualizar"
+  },
+  {
+   "start": 107.94,
+   "end": 112.46,
+   "text": "la ubicación actual de los medios de transporte, las estaciones, la ubicación actual del"
+  },
+  {
+   "start": 112.46,
+   "end": 117.02,
+   "text": "usuario, hacer búsquedas de recorridos que lleven de un punto de partida a un punto final,"
+  },
+  {
+   "start": 117.3,
+   "end": 122.38,
+   "text": "mostrando la ruta que realizaré el transporte, el tiempo estimada llegada a la estación y el"
+  },
+  {
+   "start": 122.38,
+   "end": 151.56,
+   "text": "tiempo que demora en llegar a su destino. El sistema permite al usuario realizar recorridos"
+  },
+  {
+   "start": 151.56,
+   "end": 157.08,
+   "text": "integradores e igualitarios, ya que no es necesario poseer un smartphone para hacer uso del servicio."
+  },
+  {
+   "start": 157.08,
+   "end": 162.4,
+   "text": "Además de ser accesible y sostenible, ya que permite transitar con alto grado de"
+  },
+  {
+   "start": 162.4,
+   "end": 163.84,
+   "text": "eficiencia y convivencia."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 179.3
+}

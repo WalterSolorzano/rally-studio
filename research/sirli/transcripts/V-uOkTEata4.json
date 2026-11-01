@@ -1,0 +1,137 @@
+{
+ "video_id": "V-uOkTEata4",
+ "url": "https://youtu.be/V-uOkTEata4",
+ "year": 2024,
+ "collection": "sede",
+ "country": "COLOMBIA",
+ "team": "SEMILLA DE CAMBIO",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "SEMILLA DE CAMBIO",
+   "challenge": "08 - REDUCCIÓN DE DESPERDICIOS ALIMENTARIOS"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:39:56+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Hola, somos Semillas del Cabrio. ¿Quiénes somos? Somos una entidad sin ánimo de lucro que se encarga de conectar restaurantes, supermercados, bancos de alimentos y comunidades locales para mitigar el hambre en poblaciones vulnerables y reducir así el desperdicio de estos. A nivel mundial, se desperdicia casi un tercio de los alimentos producidos, y a pesar de ello, uno de cada 10 habitantes sufre hambre y estos desperdicios contribuyen de manera significativa la emisión de gases de efecto invernadero. Conectamos participantes claves para redistribuir alimentos aptos para el consumo humano. Así, Semilla de Cambia ayuda a reducir el desperdicio y apoya al objetivo de hambre cero. Trabajamos bajo los Objetivos de Desarrollo Sostenible definidos para el 2030. Nuestra misión es redistribuir alimentos antes de ser desperdiciados, colaborando con cooperativas de agricultores y facilitando donaciones en especie o en efectivo. Mejoramos la seguridad alimentaria en las comunidades vulnerables. También ayudamos a reducir la huella de carbono y conservamos los recursos naturales que el desperdicio de alimentos consume, incluyendo el 28% de la tierra agrícola global. En lo económico, buscamos reducir costos para las empresas al redistribuir alimentos que, de otra forma, serían desperdiciados. Crear nuevas oportunidades de negocio en la cadena de redistribución alimentaria. En lo social, buscamos mejorar la seguridad alimentaria, proporcionando alimentos a poblaciones vulnerables. Fomentá el desarrollo de microemprendedores que participan en la iniciativa. Y finalmente, en lo ambiental, disminuye los residuos sólidos, contribuyendo a la reducción del impacto ambiental. Conservar recursos naturales al minimizar la cantidad de alimentos desechados. Esperamos reducir el desperdicio de alimentos y ayudar a las poblaciones más vulnerables. A largo plazo, planeamos expandirnos a más sectores con el apoyo del gobierno y el sector privado. Para el año 2030, nuestra misión es expandirnos y generar nuevas oportunidades de negocio, fortaleciendo las economías locales, construyendo un futuro más justo y sostenible. Visita nuestra página web y ayuda a combatir el hambre mundial.",
+ "segments": [
+  {
+   "start": 0.14,
+   "end": 3.14,
+   "text": "Hola, somos Semillas del Cabrio."
+  },
+  {
+   "start": 3.14,
+   "end": 4.14,
+   "text": "¿Quiénes somos?"
+  },
+  {
+   "start": 4.14,
+   "end": 13.14,
+   "text": "Somos una entidad sin ánimo de lucro que se encarga de conectar restaurantes, supermercados, bancos de alimentos y comunidades locales para mitigar el hambre en poblaciones vulnerables y reducir así el desperdicio de estos."
+  },
+  {
+   "start": 13.14,
+   "end": 23.14,
+   "text": "A nivel mundial, se desperdicia casi un tercio de los alimentos producidos, y a pesar de ello, uno de cada 10 habitantes sufre hambre y estos desperdicios contribuyen de manera significativa la emisión de gases de efecto invernadero."
+  },
+  {
+   "start": 23.14,
+   "end": 27.14,
+   "text": "Conectamos participantes claves para redistribuir alimentos aptos para el consumo humano."
+  },
+  {
+   "start": 27.14,
+   "end": 31.14,
+   "text": "Así, Semilla de Cambia ayuda a reducir el desperdicio y apoya al objetivo de hambre cero."
+  },
+  {
+   "start": 31.14,
+   "end": 35.14,
+   "text": "Trabajamos bajo los Objetivos de Desarrollo Sostenible definidos para el 2030."
+  },
+  {
+   "start": 35.14,
+   "end": 41.14,
+   "text": "Nuestra misión es redistribuir alimentos antes de ser desperdiciados, colaborando con cooperativas de agricultores y facilitando donaciones en especie o en efectivo."
+  },
+  {
+   "start": 41.14,
+   "end": 44.14,
+   "text": "Mejoramos la seguridad alimentaria en las comunidades vulnerables."
+  },
+  {
+   "start": 44.14,
+   "end": 49.14,
+   "text": "También ayudamos a reducir la huella de carbono y conservamos los recursos naturales que el desperdicio de alimentos consume,"
+  },
+  {
+   "start": 49.14,
+   "end": 51.14,
+   "text": "incluyendo el 28% de la tierra agrícola global."
+  },
+  {
+   "start": 51.14,
+   "end": 57.14,
+   "text": "En lo económico, buscamos reducir costos para las empresas al redistribuir alimentos que, de otra forma, serían desperdiciados."
+  },
+  {
+   "start": 57.14,
+   "end": 61.14,
+   "text": "Crear nuevas oportunidades de negocio en la cadena de redistribución alimentaria."
+  },
+  {
+   "start": 61.14,
+   "end": 66.14,
+   "text": "En lo social, buscamos mejorar la seguridad alimentaria, proporcionando alimentos a poblaciones vulnerables."
+  },
+  {
+   "start": 66.14,
+   "end": 69.14,
+   "text": "Fomentá el desarrollo de microemprendedores que participan en la iniciativa."
+  },
+  {
+   "start": 69.14,
+   "end": 74.14,
+   "text": "Y finalmente, en lo ambiental, disminuye los residuos sólidos, contribuyendo a la reducción del impacto ambiental."
+  },
+  {
+   "start": 74.14,
+   "end": 77.14,
+   "text": "Conservar recursos naturales al minimizar la cantidad de alimentos desechados."
+  },
+  {
+   "start": 77.14,
+   "end": 81.14,
+   "text": "Esperamos reducir el desperdicio de alimentos y ayudar a las poblaciones más vulnerables."
+  },
+  {
+   "start": 81.14,
+   "end": 85.14,
+   "text": "A largo plazo, planeamos expandirnos a más sectores con el apoyo del gobierno y el sector privado."
+  },
+  {
+   "start": 85.14,
+   "end": 90.14,
+   "text": "Para el año 2030, nuestra misión es expandirnos y generar nuevas oportunidades de negocio,"
+  },
+  {
+   "start": 90.14,
+   "end": 93.14,
+   "text": "fortaleciendo las economías locales, construyendo un futuro más justo y sostenible."
+  },
+  {
+   "start": 93.14,
+   "end": 96.14,
+   "text": "Visita nuestra página web y ayuda a combatir el hambre mundial."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 97.6
+}

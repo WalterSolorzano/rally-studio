@@ -1,0 +1,107 @@
+{
+ "video_id": "pMEkcB4blXM",
+ "url": "https://youtu.be/pMEkcB4blXM",
+ "year": 2021,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "POWERBANCKS",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "POWERBANCKS",
+   "challenge": "04 - OTRA VUELTA DE TUERCA CON LAS PILAS"
+  }
+ ],
+ "fetched_at": "2026-10-23T01:03:38+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "A diario se desechan alrededor de 165 mil libras de baterías en el mundo, entre ellas AA, AAA, entre otras. Una sola de estas baterías puede contaminar más de 600 mil litros de agua ya que contienen químicos como el manganeso, mercurio, zinc, carbono y níquel. Estos son sumamente dañenos para la salud humana y para el medio ambiente. En promedio se necesitan sólo 250 pilas para contaminar el lago de managua. Es por ello que PowerBand ha creado a partir de metales reciclados una máquina que se encarga de la recepción, clasificación de pilas y baterías para imprimir las sustancias que contienen. Y trayendo así los químicos reutilizables como el manganeso que es utilizado para los pigmentos de pintura, el zinc que sirve para galvanizar el acero, el carbono para los combustibles fósiles petroleros y por último el mercurio que se utiliza para la extracción de oro. Luego que los elementos están divididos y una vez que se le extrae los desechos innecesarios, estos químicos se comercializarán a extranjeros que hacen uso del manganeso para la producción de monedas de oro y otros metales. Cabe destacar que este proyecto está comprometido con la sociedad y medio ambiente tratando de evitar así también que toda esta sustancia afecte a actividades humanas y microbiológicas no visibles. PowerBand dándole otra vuelta de tuerca con las pilas poniéndonos las pilas.",
+ "segments": [
+  {
+   "start": 3.66,
+   "end": 10.52,
+   "text": "A diario se desechan alrededor de 165 mil libras de baterías en el mundo, entre ellas"
+  },
+  {
+   "start": 10.52,
+   "end": 17.62,
+   "text": "AA, AAA, entre otras. Una sola de estas baterías puede contaminar más de 600 mil litros de"
+  },
+  {
+   "start": 17.62,
+   "end": 25.32,
+   "text": "agua ya que contienen químicos como el manganeso, mercurio, zinc, carbono y níquel. Estos son"
+  },
+  {
+   "start": 25.32,
+   "end": 30.44,
+   "text": "sumamente dañenos para la salud humana y para el medio ambiente. En promedio se"
+  },
+  {
+   "start": 30.44,
+   "end": 37.44,
+   "text": "necesitan sólo 250 pilas para contaminar el lago de managua. Es por ello que PowerBand"
+  },
+  {
+   "start": 37.44,
+   "end": 42.86,
+   "text": "ha creado a partir de metales reciclados una máquina que se encarga de la recepción,"
+  },
+  {
+   "start": 42.86,
+   "end": 47.8,
+   "text": "clasificación de pilas y baterías para imprimir las sustancias que contienen."
+  },
+  {
+   "start": 47.8,
+   "end": 54.36,
+   "text": "Y trayendo así los químicos reutilizables como el manganeso que es utilizado para los"
+  },
+  {
+   "start": 54.36,
+   "end": 61.16,
+   "text": "pigmentos de pintura, el zinc que sirve para galvanizar el acero, el carbono para los combustibles"
+  },
+  {
+   "start": 61.16,
+   "end": 66.24,
+   "text": "fósiles petroleros y por último el mercurio que se utiliza para la extracción de oro."
+  },
+  {
+   "start": 66.24,
+   "end": 72.14,
+   "text": "Luego que los elementos están divididos y una vez que se le extrae los desechos innecesarios,"
+  },
+  {
+   "start": 72.14,
+   "end": 77.8,
+   "text": "estos químicos se comercializarán a extranjeros que hacen uso del manganeso para la producción"
+  },
+  {
+   "start": 77.8,
+   "end": 82.08,
+   "text": "de monedas de oro y otros metales. Cabe destacar que este proyecto está"
+  },
+  {
+   "start": 82.08,
+   "end": 87.4,
+   "text": "comprometido con la sociedad y medio ambiente tratando de evitar así también que toda esta"
+  },
+  {
+   "start": 87.4,
+   "end": 91.92,
+   "text": "sustancia afecte a actividades humanas y microbiológicas no visibles."
+  },
+  {
+   "start": 91.92,
+   "end": 97.56,
+   "text": "PowerBand dándole otra vuelta de tuerca con las pilas poniéndonos las pilas."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 97.6
+}

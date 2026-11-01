@@ -1,0 +1,92 @@
+{
+ "video_id": "9bKfy3Ielms",
+ "url": "https://youtu.be/9bKfy3Ielms",
+ "year": 2023,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "LOS BORBOTONES",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "LOS BORBOTONES",
+   "challenge": "08 - TRATAR DE ESTAR MEJOR"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:53:51+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Esto se puede prevenir. Para para, si ya se que estas pensando. Otra más sobre salud mental, déjame que te cuente. Maqui es una aplicación exclusiva a la que podrá ser sola del paciente y su psiquiatra. Mientras el botón de emergencia, el paciente tiene conexión inmediata con su contacto de confianza, psiquiatra o servicio de emergencia. Lo que le permitirá el seguimiento del tratamiento, responder pequeñas preguntas para monitorar como estuvo su día. Respiremos. 1, 2, 3, exhalemos. 1, 2, 3. El paciente recibirá recordatorios sobre cuando tomar el medicamento, cuando registrar los datos de una aplicación, a través de dispositivo como el Smartwatch. El paciente puede realizar un seguimiento complementario como el ciclo del sueño y las pulsaciones que van a mandar alertas al médico cuando se encuentren en valores alterados. Es hora de ejercitarnos. Vamos a caminar un poco. La información seguirá almacenando en una base de datos que sólo verá el profesional, lo que permitirá el seguimiento del tratamiento. Contacta con tu obra social o visitador médico para saber vas a acercar a Maqui. Porque Maqui, salvadidas.",
+ "segments": [
+  {
+   "start": 4.11,
+   "end": 6.11,
+   "text": "Esto se puede prevenir."
+  },
+  {
+   "start": 24.01,
+   "end": 26.01,
+   "text": "Para para, si ya se que estas pensando."
+  },
+  {
+   "start": 27.01,
+   "end": 29.01,
+   "text": "Otra más sobre salud mental, déjame que te cuente."
+  },
+  {
+   "start": 30.01,
+   "end": 35.01,
+   "text": "Maqui es una aplicación exclusiva a la que podrá ser sola del paciente y su psiquiatra."
+  },
+  {
+   "start": 36.01,
+   "end": 42.01,
+   "text": "Mientras el botón de emergencia, el paciente tiene conexión inmediata con su contacto de confianza, psiquiatra o servicio de emergencia."
+  },
+  {
+   "start": 43.01,
+   "end": 50.01,
+   "text": "Lo que le permitirá el seguimiento del tratamiento, responder pequeñas preguntas para monitorar como estuvo su día."
+  },
+  {
+   "start": 51.01,
+   "end": 62.01,
+   "text": "Respiremos. 1, 2, 3, exhalemos. 1, 2, 3."
+  },
+  {
+   "start": 64.01,
+   "end": 72.01,
+   "text": "El paciente recibirá recordatorios sobre cuando tomar el medicamento, cuando registrar los datos de una aplicación, a través de dispositivo como el Smartwatch."
+  },
+  {
+   "start": 72.01,
+   "end": 84.01,
+   "text": "El paciente puede realizar un seguimiento complementario como el ciclo del sueño y las pulsaciones que van a mandar alertas al médico cuando se encuentren en valores alterados."
+  },
+  {
+   "start": 85.01,
+   "end": 87.01,
+   "text": "Es hora de ejercitarnos. Vamos a caminar un poco."
+  },
+  {
+   "start": 88.01,
+   "end": 95.01,
+   "text": "La información seguirá almacenando en una base de datos que sólo verá el profesional, lo que permitirá el seguimiento del tratamiento."
+  },
+  {
+   "start": 96.01,
+   "end": 100.01,
+   "text": "Contacta con tu obra social o visitador médico para saber vas a acercar a Maqui."
+  },
+  {
+   "start": 100.01,
+   "end": 102.01,
+   "text": "Porque Maqui, salvadidas."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 103.1
+}

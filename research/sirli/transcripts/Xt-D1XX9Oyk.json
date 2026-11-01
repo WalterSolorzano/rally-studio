@@ -1,0 +1,137 @@
+{
+ "video_id": "Xt-D1XX9Oyk",
+ "url": "https://youtu.be/Xt-D1XX9Oyk?si=AOY5pkdp-kItp3_j",
+ "year": 2026,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "EQUIPO DINAMITA",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "EQUIPO DINAMITA",
+   "challenge": "02 - SENSORES AL SERVICIO DE LA COMUNIDAD"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:47:56+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Y si ese celular que tienes olvidado en un cajón pudiera ayudar a proteger una vida? En México dos problemas aparentemente distintos pueden conectarse mediante una misma solución tecnológica, la reutilización de celulares y la seguridad de niñas, niños y adolescentes. Según redi, durante 2025 se registraron en promedio 31 niñas, niños y adolescentes al día, en México dentro de las categorías de desaparición, no localización o localización. Por otra parte el Global E-Waze Monitor, 2024 estima que nuestro país generó alrededor de 1.5 millones de toneladas de residuos electrónicos en 2022. Son dos desafíos que nos invitan a pensar cómo aprovechar la tecnología que ya existe. Luestra propuesta consiste en desarrollar accesorios inteligentes de localización como brazaletes, joyares o cinturones, utilizando celulares que todavía funcionan pero que han quedado en desuso. Aprovechamos su GPS para obtener información de ubicación, sus sensores de movimiento para registrar desplazamientos y subconnectividad para transmitir datos a una aplicación, así los familiares podrán consultar la información disponible y contar con una herramienta ante situaciones de riesgo. La innovación está en combinar seguridad, tecnología accesible y economía circular. En lugar de depender necesariamente de un dispositivo nuevo, buscamos dar una segunda vida a equipos existentes y evaluar si es posible reducir los costos de implementación. El proyecto también contempla la autonomía de la batería, la cobertura de red, la comodidad del accesorio y sobre todo la protección de los datos personales. No pretendemos sustituir los protocolos oficiales de búsqueda sin explorar cómo la tecnología puede contribuir a una respuesta más oportuna, porque innovar no siempre significa crear algo desde cero, a veces significa darle un nuevo propósito a lo que ya tenemos.",
+ "segments": [
+  {
+   "start": 0.62,
+   "end": 6.28,
+   "text": "¿Y si ese celular que tienes olvidado en un cajón pudiera ayudar a proteger una vida?"
+  },
+  {
+   "start": 6.28,
+   "end": 10.74,
+   "text": "En México dos problemas aparentemente distintos pueden conectarse mediante una misma solución"
+  },
+  {
+   "start": 10.74,
+   "end": 16.46,
+   "text": "tecnológica, la reutilización de celulares y la seguridad de niñas, niños y adolescentes."
+  },
+  {
+   "start": 16.46,
+   "end": 23.02,
+   "text": "Según redi, durante 2025 se registraron en promedio 31 niñas, niños y adolescentes"
+  },
+  {
+   "start": 23.02,
+   "end": 30.5,
+   "text": "al día, en México dentro de las categorías de desaparición, no localización o localización."
+  },
+  {
+   "start": 30.5,
+   "end": 37.58,
+   "text": "Por otra parte el Global E-Waze Monitor, 2024 estima que nuestro país generó alrededor"
+  },
+  {
+   "start": 37.58,
+   "end": 43.62,
+   "text": "de 1.5 millones de toneladas de residuos electrónicos en 2022."
+  },
+  {
+   "start": 43.62,
+   "end": 49.34,
+   "text": "Son dos desafíos que nos invitan a pensar cómo aprovechar la tecnología que ya existe."
+  },
+  {
+   "start": 49.34,
+   "end": 54.5,
+   "text": "Luestra propuesta consiste en desarrollar accesorios inteligentes de localización como brazaletes,"
+  },
+  {
+   "start": 54.5,
+   "end": 59.1,
+   "text": "joyares o cinturones, utilizando celulares que todavía funcionan pero que han quedado"
+  },
+  {
+   "start": 60.1,
+   "end": 64.46,
+   "text": "en desuso. Aprovechamos su GPS para obtener información de ubicación, sus sensores de"
+  },
+  {
+   "start": 64.46,
+   "end": 68.54,
+   "text": "movimiento para registrar desplazamientos y subconnectividad para transmitir datos a"
+  },
+  {
+   "start": 68.54,
+   "end": 73.26,
+   "text": "una aplicación, así los familiares podrán consultar la información disponible y contar"
+  },
+  {
+   "start": 73.26,
+   "end": 75.78,
+   "text": "con una herramienta ante situaciones de riesgo."
+  },
+  {
+   "start": 75.78,
+   "end": 81.82,
+   "text": "La innovación está en combinar seguridad, tecnología accesible y economía circular."
+  },
+  {
+   "start": 81.82,
+   "end": 86.18,
+   "text": "En lugar de depender necesariamente de un dispositivo nuevo, buscamos dar una segunda"
+  },
+  {
+   "start": 86.18,
+   "end": 91.66,
+   "text": "vida a equipos existentes y evaluar si es posible reducir los costos de implementación."
+  },
+  {
+   "start": 91.66,
+   "end": 98.98,
+   "text": "El proyecto también contempla la autonomía de la batería, la cobertura de red, la comodidad"
+  },
+  {
+   "start": 98.98,
+   "end": 104.1,
+   "text": "del accesorio y sobre todo la protección de los datos personales."
+  },
+  {
+   "start": 104.1,
+   "end": 109.46,
+   "text": "No pretendemos sustituir los protocolos oficiales de búsqueda sin explorar cómo la tecnología"
+  },
+  {
+   "start": 109.46,
+   "end": 115.5,
+   "text": "puede contribuir a una respuesta más oportuna, porque innovar no siempre significa crear"
+  },
+  {
+   "start": 115.5,
+   "end": 120.06,
+   "text": "algo desde cero, a veces significa darle un nuevo propósito a lo que ya tenemos."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 121.9
+}

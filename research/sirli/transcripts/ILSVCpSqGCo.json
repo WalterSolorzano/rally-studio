@@ -1,0 +1,167 @@
+{
+ "video_id": "ILSVCpSqGCo",
+ "url": "https://www.youtube.com/watch?v=ILSVCpSqGCo",
+ "year": 2025,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "B3",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "B3",
+   "challenge": "02 - RECICLADO TEXTIL"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:55:58+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Cada año millones de toneladas de ropa terminan en basurales y rellenos sanitarios. El que alguna vez fue moda hoy es un problema ambiental creciente. Gran parte de la misma está compuesta por fibras sintéticas, como el poliéster, que no se dirában fácilmente y que, al incinerarse o enterrarse liberan microsplásticos y gases contaminantes que afectan la salud y el ambiente. Nuestra propuesta busca transformar esos residuos textiles en productos energéticos e industriales con valor de mercado, mediante una secuencia integrada de procesos. Primero, la ropa se prepare y acondiciona. Se retira a las piezas metálicas, se limpia, tectura y seca, garantizando una materia primaestable. Luego, mediante un tratamiento con acido cítrico y calor, se separan las fracciones celulósticas y poliméricas sin recurrir al químicos agresivos. Las celulosas pueden valorizarse por fermentación y la fracción sintética, principalmente poliéster, se destina a gasificación controlada. En esta etapa las fibras se transforman en un gas compuesto polidrógeno, monóxido y dióxido de carbono, evitando incineraciones convencionales. A continuación, el monóxido de carbono reacciona con vapor de agua para generar más hidrógeno y dióxido de carbono. Finalmente, el gas enriquecido se purifica con tecnologías PCA y MOF. El PCA actúa como un filtro selectivo que permite obtener hidrógeno de alta pureza. Los MOF, definidos como materiales por osos anano-escala, capturan selectivamente el dióxido de carbono. Así, se generan dos productos valorizables, listos para integrarse a cadenas industriales y energéticas. Esta integración tecnológica compacta de adaptable convierte un residuo complejo en un activo industrial rentable. Transformar lo que hoy es basura en energía y desarrollo local no es solo posible, es necesario. Porque cada prenda descartada puede ser una oportunidad para construir un futuro más sostenible y justo.",
+ "segments": [
+  {
+   "start": 2.77,
+   "end": 7.53,
+   "text": "Cada año millones de toneladas de ropa terminan en basurales y rellenos sanitarios."
+  },
+  {
+   "start": 7.53,
+   "end": 10.65,
+   "text": "El que alguna vez fue moda hoy es un problema ambiental creciente."
+  },
+  {
+   "start": 10.65,
+   "end": 14.77,
+   "text": "Gran parte de la misma está compuesta por fibras sintéticas, como el poliéster,"
+  },
+  {
+   "start": 14.77,
+   "end": 19.57,
+   "text": "que no se dirában fácilmente y que, al incinerarse o enterrarse liberan microsplásticos"
+  },
+  {
+   "start": 19.57,
+   "end": 23.21,
+   "text": "y gases contaminantes que afectan la salud y el ambiente."
+  },
+  {
+   "start": 23.21,
+   "end": 27.09,
+   "text": "Nuestra propuesta busca transformar esos residuos textiles en productos energéticos"
+  },
+  {
+   "start": 27.09,
+   "end": 31.53,
+   "text": "e industriales con valor de mercado, mediante una secuencia integrada de procesos."
+  },
+  {
+   "start": 31.53,
+   "end": 34.09,
+   "text": "Primero, la ropa se prepare y acondiciona."
+  },
+  {
+   "start": 34.09,
+   "end": 39.65,
+   "text": "Se retira a las piezas metálicas, se limpia, tectura y seca, garantizando una materia primaestable."
+  },
+  {
+   "start": 39.65,
+   "end": 42.53,
+   "text": "Luego, mediante un tratamiento con acido cítrico y calor,"
+  },
+  {
+   "start": 42.53,
+   "end": 48.21,
+   "text": "se separan las fracciones celulósticas y poliméricas sin recurrir al químicos agresivos."
+  },
+  {
+   "start": 48.21,
+   "end": 51.13,
+   "text": "Las celulosas pueden valorizarse por fermentación"
+  },
+  {
+   "start": 51.13,
+   "end": 55.97,
+   "text": "y la fracción sintética, principalmente poliéster, se destina a gasificación controlada."
+  },
+  {
+   "start": 55.97,
+   "end": 59.61,
+   "text": "En esta etapa las fibras se transforman en un gas compuesto polidrógeno,"
+  },
+  {
+   "start": 59.61,
+   "end": 64.25,
+   "text": "monóxido y dióxido de carbono, evitando incineraciones convencionales."
+  },
+  {
+   "start": 64.25,
+   "end": 67.57,
+   "text": "A continuación, el monóxido de carbono reacciona con vapor de agua"
+  },
+  {
+   "start": 67.57,
+   "end": 70.69,
+   "text": "para generar más hidrógeno y dióxido de carbono."
+  },
+  {
+   "start": 70.69,
+   "end": 75.29,
+   "text": "Finalmente, el gas enriquecido se purifica con tecnologías PCA y MOF."
+  },
+  {
+   "start": 75.29,
+   "end": 80.13,
+   "text": "El PCA actúa como un filtro selectivo que permite obtener hidrógeno de alta pureza."
+  },
+  {
+   "start": 80.13,
+   "end": 83.69,
+   "text": "Los MOF, definidos como materiales por osos anano-escala,"
+  },
+  {
+   "start": 83.69,
+   "end": 86.41,
+   "text": "capturan selectivamente el dióxido de carbono."
+  },
+  {
+   "start": 86.41,
+   "end": 89.17,
+   "text": "Así, se generan dos productos valorizables,"
+  },
+  {
+   "start": 89.25,
+   "end": 93.29,
+   "text": "listos para integrarse a cadenas industriales y energéticas."
+  },
+  {
+   "start": 93.29,
+   "end": 97.09,
+   "text": "Esta integración tecnológica compacta de adaptable"
+  },
+  {
+   "start": 97.09,
+   "end": 100.89,
+   "text": "convierte un residuo complejo en un activo industrial rentable."
+  },
+  {
+   "start": 100.89,
+   "end": 106.41,
+   "text": "Transformar lo que hoy es basura en energía y desarrollo local no es solo posible, es necesario."
+  },
+  {
+   "start": 106.41,
+   "end": 109.41,
+   "text": "Porque cada prenda descartada puede ser una oportunidad"
+  },
+  {
+   "start": 109.41,
+   "end": 112.41,
+   "text": "para construir un futuro más sostenible y justo."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 113.3
+}

@@ -1,0 +1,142 @@
+{
+ "video_id": "tZrrtESZ3K0",
+ "url": "https://youtu.be/tZrrtESZ3K0",
+ "year": 2026,
+ "collection": "sede",
+ "country": "COLOMBIA",
+ "team": "NEXUS",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "NEXUS",
+   "challenge": "09 - OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:42:16+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Tras un evento catastrófico como un terremoto, alud o inundación severa, las comunidades sufren cortes de comunicación, bloqueo de rutas y una demanda masiva de asistencia que deporta por completo a los municipios y equipos de rescate. En Colombia, 6,3 millones de personas enfrentan necesidades humanitarias, pero en medio de la crisis el verdadero enemigo es la seguida operativa, al no poder filtrar ni geolocalizar la demanda en tiempo real para salvar a quienes corren mayor riesgo vital. Desde la corporación universitaria reformada, el equipo Nexus presenta a Salvo, una aplicación web y móvil de segmentación poblacional y residuo de emergencias. Nuestra plataforma ayuda a las autoridades que coordinan, que refuestan a decidir contra pides transformando datos fragmentados en perfiles adhérables para definir a quienes atender primero donde concentrar los refuerzos y qué recursos asignan. Y si colapsan internet, su arquitectura y videa opera con cartografía en memoria local, enviando reportes GPS comprimidos via SMS celular y activando una belisa pasiva que emite la última ubicación si la batería entra en la briga. En términos de viabilidad, esta solución es financieramente abordable, requiere una inversión inicial de 116 millones de pesos usando cartografía de código abierto y 11 millones mensuales de operación. Democatiza el auxilio superando la brecha digital, aporta a las ODS3 y 11 y reduce la odia de carbono al evitar desplazamientos logísticos ahí. Gracias a esta tecnología, sorrevivir en una catástrofe deja de depender de quién logra comunicarse primero, asegurando que la ayuda llegue a quienes más lo necesitan. Somos Nexus y con Asalvo convertimos cada teléfono en un salvavidas inteligente.",
+ "segments": [
+  {
+   "start": 0.27,
+   "end": 4.83,
+   "text": "Tras un evento catastrófico como un terremoto, alud o inundación severa, las comunidades"
+  },
+  {
+   "start": 4.83,
+   "end": 9.11,
+   "text": "sufren cortes de comunicación, bloqueo de rutas y una demanda masiva de asistencia que deporta"
+  },
+  {
+   "start": 9.11,
+   "end": 13.51,
+   "text": "por completo a los municipios y equipos de rescate. En Colombia, 6,3 millones de personas"
+  },
+  {
+   "start": 13.51,
+   "end": 17.31,
+   "text": "enfrentan necesidades humanitarias, pero en medio de la crisis el verdadero enemigo"
+  },
+  {
+   "start": 17.31,
+   "end": 21.55,
+   "text": "es la seguida operativa, al no poder filtrar ni geolocalizar la demanda en tiempo real"
+  },
+  {
+   "start": 21.55,
+   "end": 23.79,
+   "text": "para salvar a quienes corren mayor riesgo vital."
+  },
+  {
+   "start": 23.79,
+   "end": 29.75,
+   "text": "Desde la corporación universitaria reformada, el equipo Nexus presenta a Salvo, una"
+  },
+  {
+   "start": 29.75,
+   "end": 34.11,
+   "text": "aplicación web y móvil de segmentación poblacional y residuo de emergencias."
+  },
+  {
+   "start": 34.11,
+   "end": 38.63,
+   "text": "Nuestra plataforma ayuda a las autoridades que coordinan, que refuestan a decidir"
+  },
+  {
+   "start": 38.63,
+   "end": 43.35,
+   "text": "contra pides transformando datos fragmentados en perfiles adhérables para definir"
+  },
+  {
+   "start": 43.35,
+   "end": 48.51,
+   "text": "a quienes atender primero donde concentrar los refuerzos y qué recursos asignan."
+  },
+  {
+   "start": 48.51,
+   "end": 53.23,
+   "text": "Y si colapsan internet, su arquitectura y videa opera con cartografía en memoria local,"
+  },
+  {
+   "start": 53.23,
+   "end": 58.31,
+   "text": "enviando reportes GPS comprimidos via SMS celular y activando una belisa pasiva"
+  },
+  {
+   "start": 58.31,
+   "end": 61.47,
+   "text": "que emite la última ubicación si la batería entra en la briga."
+  },
+  {
+   "start": 61.47,
+   "end": 65.43,
+   "text": "En términos de viabilidad, esta solución es financieramente abordable,"
+  },
+  {
+   "start": 65.43,
+   "end": 70.55,
+   "text": "requiere una inversión inicial de 116 millones de pesos usando cartografía de"
+  },
+  {
+   "start": 70.55,
+   "end": 73.71,
+   "text": "código abierto y 11 millones mensuales de operación."
+  },
+  {
+   "start": 73.71,
+   "end": 79.23,
+   "text": "Democatiza el auxilio superando la brecha digital, aporta a las ODS3 y 11"
+  },
+  {
+   "start": 79.23,
+   "end": 83.63,
+   "text": "y reduce la odia de carbono al evitar desplazamientos logísticos ahí."
+  },
+  {
+   "start": 83.63,
+   "end": 86.79,
+   "text": "Gracias a esta tecnología, sorrevivir en una catástrofe"
+  },
+  {
+   "start": 86.79,
+   "end": 89.51,
+   "text": "deja de depender de quién logra comunicarse primero,"
+  },
+  {
+   "start": 89.51,
+   "end": 92.63,
+   "text": "asegurando que la ayuda llegue a quienes más lo necesitan."
+  },
+  {
+   "start": 92.63,
+   "end": 97.47,
+   "text": "Somos Nexus y con Asalvo convertimos cada teléfono en un salvavidas inteligente."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 97.6
+}

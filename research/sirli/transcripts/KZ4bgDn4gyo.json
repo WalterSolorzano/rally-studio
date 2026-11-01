@@ -1,0 +1,237 @@
+{
+ "video_id": "KZ4bgDn4gyo",
+ "url": "https://youtu.be/KZ4bgDn4gyo",
+ "year": 2025,
+ "collection": "sede",
+ "country": "COLOMBIA",
+ "team": "KAIZEN TEAM",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "KAIZEN TEAM",
+   "challenge": "04 - SISTEMA DE ALERTA TEMPRANA"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:11:18+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Cada año, Latinoamérica enfrenta una amenaza que destruye vidas, hogares y economías locales, que son los incendios forestales. Según la FAO, los desastres asociados a incendios han causado pérdidas agrícola superiores a 13 mil millones de dólares en la última década en América Latina. En México, más de 1.6 millones de hectáreas fueron afectadas en 2024. Los incendios dejaron pérdidas de millones de infraestructuras rurales, según la Conafur. En Colombia, las pérdidas solo en enero y marzo superaron los 122 mil millones de pesos según la Afe de Gan. En zonas rurales, de Bolivia y Paraguay, se reportaron pérdidas del 60% incultivos agravando la inseguridad alimentaria. Pero en este panorama presentamos ojo de fuego. Un sistema alerta temprano ha diseñado para proteger comunidades rurales y agrícolas mediante detección y media tede de foco de calor. El Z-Time Glove era caliente de 2.5 metros de radio y caba 60 metros del suelo, equipado con una cámara térmica de alta precisión que monitorea en tiempo real un radio de 3 kilómetros. El globo está conectado a tierra mediante una línea que le suministra energía. Cuando la cámara detecta un aumento inusual de temperatura, el sistema emite una alerta automática a nivel regional, permitiendo que brigadas, bomberos y comunidades respondan de forma preventiva. Las tres capas del globo son una que retene el aire, una caída del calor y una que protege el sol y la lluvia. Arriba lleva un calentador eléctrico ptc y un ventilador que mantiene el interior cerca de 80 grados centígrados. Todos alimentan desde la red de 220 voltios con un cable de silicona de 50 metros. El globo está sujeto por una línea de DM con arnes en y y una manguera de tres cuartos pulgadas para el aire. El globo está asegurado al suelo. Y este tiene una cámara para vigilar incendios, teniendo un costo estimado de 5.836 por la unidad, con consumo eléctrico esperado a 1.200 kiloguatios por hora. Ojo de fuego representa un invención en prevención que protege vidas y reduce perdias. Económicamente, evita millones de daños de polincendios y reduce los costos de operación de brigadas, maquina y recursos hídricos. Socialmente, venda tranquilidad a familias rurales fortales a los sistemas de alerta comunitarios y mejora la respuesta ante emergencias. Ambindalmente, contribuye a mantener ecosistemas productivos y suelos fértiles. Su escalabilidad permite replicar a esta ministra regiones rurales o perturbadas, adaptando el número y tamaño del globo a segunda condición del terreno y el nivel de riesgo, lo que hace que su implementación sea progresiva, sostenible y bajo costo operativo. Somos Casey and Tim, creadores de Ojo de Fuego, y no vamos para proteger lo que más importa, la gente, la tierra y la esperanza.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 5.88,
+   "text": "Cada año, Latinoamérica enfrenta una amenaza que destruye vidas, hogares y economías locales,"
+  },
+  {
+   "start": 5.88,
+   "end": 7.88,
+   "text": "que son los incendios forestales."
+  },
+  {
+   "start": 7.88,
+   "end": 11.1,
+   "text": "Según la FAO, los desastres asociados a incendios han causado pérdidas agrícola superiores"
+  },
+  {
+   "start": 11.1,
+   "end": 14.8,
+   "text": "a 13 mil millones de dólares en la última década en América Latina."
+  },
+  {
+   "start": 14.8,
+   "end": 18.2,
+   "text": "En México, más de 1.6 millones de hectáreas fueron afectadas en 2024."
+  },
+  {
+   "start": 18.2,
+   "end": 21.28,
+   "text": "Los incendios dejaron pérdidas de millones de infraestructuras rurales, según la"
+  },
+  {
+   "start": 21.28,
+   "end": 22.28,
+   "text": "Conafur."
+  },
+  {
+   "start": 22.28,
+   "end": 25.04,
+   "text": "En Colombia, las pérdidas solo en enero y marzo superaron los 122 mil millones de"
+  },
+  {
+   "start": 25.04,
+   "end": 26.32,
+   "text": "pesos según la Afe de Gan."
+  },
+  {
+   "start": 26.32,
+   "end": 29.68,
+   "text": "En zonas rurales, de Bolivia y Paraguay, se reportaron pérdidas del 60% incultivos"
+  },
+  {
+   "start": 29.68,
+   "end": 31.18,
+   "text": "agravando la inseguridad alimentaria."
+  },
+  {
+   "start": 31.18,
+   "end": 33.4,
+   "text": "Pero en este panorama presentamos ojo de fuego."
+  },
+  {
+   "start": 33.4,
+   "end": 36.2,
+   "text": "Un sistema alerta temprano ha diseñado para proteger comunidades rurales y agrícolas"
+  },
+  {
+   "start": 36.2,
+   "end": 38.44,
+   "text": "mediante detección y media tede de foco de calor."
+  },
+  {
+   "start": 38.44,
+   "end": 42.56,
+   "text": "El Z-Time Glove era caliente de 2.5 metros de radio y caba 60 metros del suelo, equipado"
+  },
+  {
+   "start": 42.56,
+   "end": 45.76,
+   "text": "con una cámara térmica de alta precisión que monitorea en tiempo real un radio de"
+  },
+  {
+   "start": 45.76,
+   "end": 46.76,
+   "text": "3 kilómetros."
+  },
+  {
+   "start": 46.76,
+   "end": 50.32,
+   "text": "El globo está conectado a tierra mediante una línea que le suministra energía."
+  },
+  {
+   "start": 50.32,
+   "end": 53.04,
+   "text": "Cuando la cámara detecta un aumento inusual de temperatura, el sistema emite una"
+  },
+  {
+   "start": 53.04,
+   "end": 56.64,
+   "text": "alerta automática a nivel regional, permitiendo que brigadas, bomberos y comunidades respondan"
+  },
+  {
+   "start": 56.64,
+   "end": 57.64,
+   "text": "de forma preventiva."
+  },
+  {
+   "start": 57.64,
+   "end": 60.84,
+   "text": "Las tres capas del globo son una que retene el aire, una caída del calor y una que"
+  },
+  {
+   "start": 60.84,
+   "end": 62.44,
+   "text": "protege el sol y la lluvia."
+  },
+  {
+   "start": 62.44,
+   "end": 65.4,
+   "text": "Arriba lleva un calentador eléctrico ptc y un ventilador que mantiene el interior"
+  },
+  {
+   "start": 65.4,
+   "end": 67.2,
+   "text": "cerca de 80 grados centígrados."
+  },
+  {
+   "start": 67.2,
+   "end": 71.08,
+   "text": "Todos alimentan desde la red de 220 voltios con un cable de silicona de 50 metros."
+  },
+  {
+   "start": 71.08,
+   "end": 74.16,
+   "text": "El globo está sujeto por una línea de DM con arnes en y y una manguera de tres"
+  },
+  {
+   "start": 74.16,
+   "end": 75.96,
+   "text": "cuartos pulgadas para el aire."
+  },
+  {
+   "start": 75.96,
+   "end": 77.76,
+   "text": "El globo está asegurado al suelo."
+  },
+  {
+   "start": 77.76,
+   "end": 81.6,
+   "text": "Y este tiene una cámara para vigilar incendios, teniendo un costo estimado de 5.836"
+  },
+  {
+   "start": 81.6,
+   "end": 85.36,
+   "text": "por la unidad, con consumo eléctrico esperado a 1.200 kiloguatios por hora."
+  },
+  {
+   "start": 85.36,
+   "end": 88.64,
+   "text": "Ojo de fuego representa un invención en prevención que protege vidas y reduce perdias."
+  },
+  {
+   "start": 88.64,
+   "end": 92.08,
+   "text": "Económicamente, evita millones de daños de polincendios y reduce los costos de operación"
+  },
+  {
+   "start": 92.08,
+   "end": 93.96,
+   "text": "de brigadas, maquina y recursos hídricos."
+  },
+  {
+   "start": 93.96,
+   "end": 97.32,
+   "text": "Socialmente, venda tranquilidad a familias rurales fortales a los sistemas de alerta"
+  },
+  {
+   "start": 97.32,
+   "end": 99.2,
+   "text": "comunitarios y mejora la respuesta ante emergencias."
+  },
+  {
+   "start": 99.2,
+   "end": 102.36,
+   "text": "Ambindalmente, contribuye a mantener ecosistemas productivos y suelos fértiles."
+  },
+  {
+   "start": 102.36,
+   "end": 105.4,
+   "text": "Su escalabilidad permite replicar a esta ministra regiones rurales o perturbadas,"
+  },
+  {
+   "start": 105.4,
+   "end": 108.04,
+   "text": "adaptando el número y tamaño del globo a segunda condición del terreno y el nivel"
+  },
+  {
+   "start": 108.04,
+   "end": 111.48,
+   "text": "de riesgo, lo que hace que su implementación sea progresiva, sostenible y bajo costo operativo."
+  },
+  {
+   "start": 111.48,
+   "end": 115.0,
+   "text": "Somos Casey and Tim, creadores de Ojo de Fuego, y no vamos para proteger lo que más"
+  },
+  {
+   "start": 115.0,
+   "end": 116.84,
+   "text": "importa, la gente, la tierra y la esperanza."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 116.9
+}

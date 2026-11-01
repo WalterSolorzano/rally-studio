@@ -1,0 +1,112 @@
+{
+ "video_id": "XZ-xxSCd4XU",
+ "url": "https://youtu.be/XZ-xxSCd4XU?si=l9q3T8dxBBnw-iAY",
+ "year": 2025,
+ "collection": "sede",
+ "country": "CHILE",
+ "team": "DEXTRA INNOVA",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "DEXTRA INNOVA",
+   "challenge": "07 - SALUD MÓVIL PARA MUJERES EN ZONAS RURALES"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:04:48+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Sabías que muchas mujeres rurales en Chile deben recorrer horas, incluso días, para acceder a un simple control médico? ¿Casos como la mujer que cruzó un río en una rueda o la que debió realizarse una cesárea sola en su casa no deberían existir? El 45% de las mujeres rurales no asista un control médico por la distancia. El 56% de las personas en zonas rurales no tienen acceso a servicio de salud esencial. En Chile, más de 1.4 mil mujeres viven en zonas rurales correspondiendo a más del 50% de esta población. La salud es un derecho, una necesidad básica, pero lamentablemente no todas la tienen. Hoy queremos cambiar eso, queremos que tú también seas parte de la solución. Te presentamos Warmic Auside, que en que hecho significa vida para la mujer. Una unidad móvil de salud diseñada para llegar donde nadie llega, equipada para entrear atención médica básica y conectividad con especialistas a través de la telemedicina. Warmic cuenta con su propia plataforma web, que registra cada atención y genera base de datos sobre las necesidades reales de cada comunidad. Warmic funciona con energía solar y con una batería recargaable de respaldo, permitiendo operar de forma autónoma y sustentable. Y a diferencia de otras clínicas móviles, Warmic puede acoplarse a cualquier vehículo, municipal o privado, lo que reduce drásticamente los costos de transporte y operación. Nuestra misión es simple, llevar atención, educación y esperanza sin importar la distancia. Warmic Auside no es solo una solución social, sino también es económicamente viable. Mientras proyectos similares superan los 140 mil dólares y servicios especializados, como los dentistas móviles alcanzan más de 150 mil dólares, Warmic logra operar desde apenas 29 mil dólares como una unidad básica, y 40 mil dólares cuando incluye profesionales especializados. Una idea con un impacto inmenso, solo necesitamos tu financiamiento para Chile, y ¿por qué no para el mundo?",
+ "segments": [
+  {
+   "start": 3.28,
+   "end": 9.48,
+   "text": "¿Sabías que muchas mujeres rurales en Chile deben recorrer horas, incluso días, para acceder a un simple control médico?"
+  },
+  {
+   "start": 9.8,
+   "end": 15.8,
+   "text": "¿Casos como la mujer que cruzó un río en una rueda o la que debió realizarse una cesárea sola en su casa no deberían existir?"
+  },
+  {
+   "start": 15.8,
+   "end": 20.28,
+   "text": "El 45% de las mujeres rurales no asista un control médico por la distancia."
+  },
+  {
+   "start": 20.28,
+   "end": 25.8,
+   "text": "El 56% de las personas en zonas rurales no tienen acceso a servicio de salud esencial."
+  },
+  {
+   "start": 25.8,
+   "end": 32.68,
+   "text": "En Chile, más de 1.4 mil mujeres viven en zonas rurales correspondiendo a más del 50% de esta población."
+  },
+  {
+   "start": 32.68,
+   "end": 37.44,
+   "text": "La salud es un derecho, una necesidad básica, pero lamentablemente no todas la tienen."
+  },
+  {
+   "start": 37.44,
+   "end": 41.12,
+   "text": "Hoy queremos cambiar eso, queremos que tú también seas parte de la solución."
+  },
+  {
+   "start": 41.12,
+   "end": 45.68,
+   "text": "Te presentamos Warmic Auside, que en que hecho significa vida para la mujer."
+  },
+  {
+   "start": 45.68,
+   "end": 54.68,
+   "text": "Una unidad móvil de salud diseñada para llegar donde nadie llega, equipada para entrear atención médica básica y conectividad con especialistas a través de la telemedicina."
+  },
+  {
+   "start": 54.68,
+   "end": 61.68,
+   "text": "Warmic cuenta con su propia plataforma web, que registra cada atención y genera base de datos sobre las necesidades reales de cada comunidad."
+  },
+  {
+   "start": 61.68,
+   "end": 68.68,
+   "text": "Warmic funciona con energía solar y con una batería recargaable de respaldo, permitiendo operar de forma autónoma y sustentable."
+  },
+  {
+   "start": 68.68,
+   "end": 77.68,
+   "text": "Y a diferencia de otras clínicas móviles, Warmic puede acoplarse a cualquier vehículo, municipal o privado, lo que reduce drásticamente los costos de transporte y operación."
+  },
+  {
+   "start": 77.68,
+   "end": 82.68,
+   "text": "Nuestra misión es simple, llevar atención, educación y esperanza sin importar la distancia."
+  },
+  {
+   "start": 82.68,
+   "end": 87.68,
+   "text": "Warmic Auside no es solo una solución social, sino también es económicamente viable."
+  },
+  {
+   "start": 87.68,
+   "end": 95.68,
+   "text": "Mientras proyectos similares superan los 140 mil dólares y servicios especializados, como los dentistas móviles alcanzan más de 150 mil dólares,"
+  },
+  {
+   "start": 95.68,
+   "end": 103.68,
+   "text": "Warmic logra operar desde apenas 29 mil dólares como una unidad básica, y 40 mil dólares cuando incluye profesionales especializados."
+  },
+  {
+   "start": 103.68,
+   "end": 112.15,
+   "text": "Una idea con un impacto inmenso, solo necesitamos tu financiamiento para Chile, y ¿por qué no para el mundo?"
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.2
+}

@@ -1,0 +1,26 @@
+{
+ "video_id": "T1qiEMJJGIc",
+ "url": "https://youtu.be/T1qiEMJJGIc?si=Et9_j7jI6RtRZJwV",
+ "year": 2025,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "HONDUNICA",
+ "place_label": "TERCER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "TERCER LUGAR",
+   "team": "HONDUNICA",
+   "challenge": "09 - LOGÍSTICA ANTE DESASTRES NATURALES"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:41:44+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "",
+ "segments": [],
+ "has_info": false,
+ "duration_s": 45.1
+}

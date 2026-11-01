@@ -1,0 +1,117 @@
+{
+ "video_id": "rvg4QgokD-4",
+ "url": "https://www.youtube.com/watch?v=rvg4QgokD-4",
+ "year": 2026,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "404 NOT FOUND",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "404 NOT FOUND",
+   "challenge": "02 - SENSORES AL SERVICIO DE LA COMUNIDAD"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:26:45+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Hola somos 4409 Founding, nombre es Daniela Cévedo, de una guinada y elegimos el reto dos descensores, más que nada por dos casos particulares que ocurrieron en nuestra ciudad como la de Arabia el primero en 2023, delizamiento del cerro Achenque que partió al medio de la ciudad y el segundo el deslizamiento del cerro Ormite que sacó a más de 500 familias de sus hogares a continuación en pantalla van estar viendo un prototipo visual de cómo sería el centinela en la realidad estos centinelas van a estar compuestos principalmente por los celulares donados y por los paneles solares ahora vamos a hacer una prueba de escritorio en el cual tenemos ciertos elementos un panel tipo de la fana que es un prototipo que hicimos el chat de telegram que va a enviar mensajes a la comunidad tenemos el nodo el cual va a estar compuesto por un panel solar, el teléfono y la estructura que lo protege esta aplicación va a mandar la información del acelerómetro hacia la computadora o el servidor ahora vamos a hacer el sismo como vemos detecta el sismo y automáticamente envía una alerta hacia el grupo del telera una vez que termina el movimiento también avisa que se termina el movimiento cada centinera nos cuesta 80 dólares a comparación de un sensor óptico comercial que entre los 900 a los 1500 dólares con el valor de 3 de eso podemos poner 30 en zonas específicas de comodor de aire empezamos por comodoro pero este kit puede ser utilizado por cualquier ciudad que tenga casas sobre ladras",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 3.6,
+   "text": "Hola somos 4409 Founding, nombre es Daniela Cévedo, de una guinada"
+  },
+  {
+   "start": 3.6,
+   "end": 8.9,
+   "text": "y elegimos el reto dos descensores, más que nada por dos casos particulares que ocurrieron en nuestra ciudad como la de Arabia"
+  },
+  {
+   "start": 8.9,
+   "end": 13.3,
+   "text": "el primero en 2023, delizamiento del cerro Achenque que partió al medio de la ciudad"
+  },
+  {
+   "start": 13.3,
+   "end": 18.4,
+   "text": "y el segundo el deslizamiento del cerro Ormite que sacó a más de 500 familias de sus hogares"
+  },
+  {
+   "start": 18.4,
+   "end": 25.3,
+   "text": "a continuación en pantalla van estar viendo un prototipo visual de cómo sería el centinela en la realidad"
+  },
+  {
+   "start": 25.3,
+   "end": 29.6,
+   "text": "estos centinelas van a estar compuestos principalmente por los celulares donados"
+  },
+  {
+   "start": 29.7,
+   "end": 31.6,
+   "text": "y por los paneles solares"
+  },
+  {
+   "start": 32.1,
+   "end": 35.8,
+   "text": "ahora vamos a hacer una prueba de escritorio en el cual tenemos ciertos elementos"
+  },
+  {
+   "start": 35.8,
+   "end": 38.8,
+   "text": "un panel tipo de la fana que es un prototipo que hicimos"
+  },
+  {
+   "start": 38.8,
+   "end": 42.6,
+   "text": "el chat de telegram que va a enviar mensajes a la comunidad"
+  },
+  {
+   "start": 42.6,
+   "end": 48.4,
+   "text": "tenemos el nodo el cual va a estar compuesto por un panel solar, el teléfono y la estructura que lo protege"
+  },
+  {
+   "start": 48.4,
+   "end": 55.3,
+   "text": "esta aplicación va a mandar la información del acelerómetro hacia la computadora o el servidor"
+  },
+  {
+   "start": 55.3,
+   "end": 56.5,
+   "text": "ahora vamos a hacer el sismo"
+  },
+  {
+   "start": 58.92,
+   "end": 65.12,
+   "text": "como vemos detecta el sismo y automáticamente envía una alerta hacia el grupo del telera"
+  },
+  {
+   "start": 65.12,
+   "end": 69.82,
+   "text": "una vez que termina el movimiento también avisa que se termina el movimiento"
+  },
+  {
+   "start": 69.82,
+   "end": 76.62,
+   "text": "cada centinera nos cuesta 80 dólares a comparación de un sensor óptico comercial que entre los 900 a los 1500 dólares"
+  },
+  {
+   "start": 76.62,
+   "end": 81.52,
+   "text": "con el valor de 3 de eso podemos poner 30 en zonas específicas de comodor de aire"
+  },
+  {
+   "start": 81.52,
+   "end": 87.82,
+   "text": "empezamos por comodoro pero este kit puede ser utilizado por cualquier ciudad que tenga casas sobre ladras"
+  }
+ ],
+ "has_info": false,
+ "duration_s": 88.2
+}

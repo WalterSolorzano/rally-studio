@@ -1,0 +1,264 @@
+{
+ "video_id": "XiEExoys-EU",
+ "url": "https://www.youtube.com/watch?v=XiEExoys-EU&f",
+ "year": 2017,
+ "collection": "nacional",
+ "country": "ECUADOR",
+ "team": "NIÑOS EN ACCIÓN",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2017,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "NIÑOS EN ACCIÓN",
+   "challenge": "08 - MEJORA DE LA VIDA DE LOS NIÑOS"
+  },
+  {
+   "year": 2017,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "NIÑOS EN ACCIÓN",
+   "challenge": "08 - MEJORA DE LA VIDA DE LOS NIÑOS"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:25:32+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Sabías que cada 90 segundos se pierde un niño frente a los ojos de su padre? ¿Sabías que la inactividad de los niños causa problemas de salud? En un mundo de constante cambio, donde la calidad de vida de muchos niños es menospreciada, los niños dejaron de ser niños. El avance tecnológico tiene que ir a la par del desarrollo social, debido a que la valorización de la interacción humana ha decaído, desembocando en problemas emergentes actuales. Buscamos generar un ambiente amigable con el entorno, que vaya de la mano con el factor tecnológico, brindando una sociedad más allá de las limitaciones. Así nace el sistema interactivo en tiempo real basado en la IoT, y ANAPAQUI, como una solución a esto y muchos problemas más, presentes en la vida cotidiana de niños, padres o tutores. Bajo un concepto de protección e interrelación, PAQUITO, la NUTRIA, engloba todas las características que el sistema representa. ANAPAQUI es un sistema que consta de una pantalla que muestra información oportuna. Además, del éxito y alerta de perímetro, donde la ubicación del infante se delimitará mediante un rango. Posee un botón de pánico que, al ser presionada por el niño, se alertará a padres y el departamento competente de la emergencia. Un sensor cardiaco y de temperatura que muestra la condición física actual. La información recolectada por este dispositivo será almacenada en la nube, para luego ser consultada por padres o tutores de acuerdo a una aplicación móvil en la cual te permitirá acceder a un menú principal, en donde deberás llenar datos personales tuyos y de tu niño. Dentro de éste encontrarás diferentes opciones, como la localización, la cual te permite realizar un rastreo de tu niño. El ícono de ritmo cardiaco te permite monitorear las horas de sueño y la calidad del mismo. Temperatura. El dispositivo tiene un sensor que permite el registro diario de ésta. La gamificación. Diariamente se actualizan actividades productivas. Las mismas que mediante la culminación de éstas, os obtenrán recompensas denominadas PACI. Eventos precursores de la educación, cultura, interacción son realizados trimestralmente, con la generalidad de crear grupos sociales y líderes de correlación motivados por un mismo fin. Las suscripciones serán gestionadas de tres formas. La primera es el pago a través de actividades ecológicas. La segunda es la acumulación de PACIs mediante el cumplimiento de metas. Y la tercera es un cobro mensual por el servicio. En el mundo moderno, la calidad de vida es la calidad de la comunicación. Nuestro sistema te brinda todas las posibilidades. Ven y diviértete con Pacito.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 4.0,
+   "text": "¿Sabías que cada 90 segundos se pierde un niño frente a los ojos de su padre?"
+  },
+  {
+   "start": 4.0,
+   "end": 8.0,
+   "text": "¿Sabías que la inactividad de los niños causa problemas de salud?"
+  },
+  {
+   "start": 8.0,
+   "end": 13.0,
+   "text": "En un mundo de constante cambio, donde la calidad de vida de muchos niños es menospreciada,"
+  },
+  {
+   "start": 13.0,
+   "end": 15.0,
+   "text": "los niños dejaron de ser niños."
+  },
+  {
+   "start": 15.0,
+   "end": 19.0,
+   "text": "El avance tecnológico tiene que ir a la par del desarrollo social,"
+  },
+  {
+   "start": 19.0,
+   "end": 23.0,
+   "text": "debido a que la valorización de la interacción humana ha decaído,"
+  },
+  {
+   "start": 23.0,
+   "end": 26.0,
+   "text": "desembocando en problemas emergentes actuales."
+  },
+  {
+   "start": 26.0,
+   "end": 29.0,
+   "text": "Buscamos generar un ambiente amigable con el entorno,"
+  },
+  {
+   "start": 29.0,
+   "end": 32.0,
+   "text": "que vaya de la mano con el factor tecnológico,"
+  },
+  {
+   "start": 32.0,
+   "end": 35.0,
+   "text": "brindando una sociedad más allá de las limitaciones."
+  },
+  {
+   "start": 35.0,
+   "end": 39.0,
+   "text": "Así nace el sistema interactivo en tiempo real basado en la IoT,"
+  },
+  {
+   "start": 39.0,
+   "end": 43.0,
+   "text": "y ANAPAQUI, como una solución a esto y muchos problemas más,"
+  },
+  {
+   "start": 43.0,
+   "end": 47.0,
+   "text": "presentes en la vida cotidiana de niños, padres o tutores."
+  },
+  {
+   "start": 48.0,
+   "end": 51.0,
+   "text": "Bajo un concepto de protección e interrelación,"
+  },
+  {
+   "start": 51.0,
+   "end": 53.0,
+   "text": "PAQUITO, la NUTRIA,"
+  },
+  {
+   "start": 53.0,
+   "end": 56.0,
+   "text": "engloba todas las características que el sistema representa."
+  },
+  {
+   "start": 57.0,
+   "end": 61.0,
+   "text": "ANAPAQUI es un sistema que consta de una pantalla que muestra información oportuna."
+  },
+  {
+   "start": 61.0,
+   "end": 64.0,
+   "text": "Además, del éxito y alerta de perímetro,"
+  },
+  {
+   "start": 64.0,
+   "end": 67.0,
+   "text": "donde la ubicación del infante se delimitará mediante un rango."
+  },
+  {
+   "start": 67.0,
+   "end": 70.0,
+   "text": "Posee un botón de pánico que, al ser presionada por el niño,"
+  },
+  {
+   "start": 70.0,
+   "end": 73.0,
+   "text": "se alertará a padres y el departamento competente de la emergencia."
+  },
+  {
+   "start": 73.0,
+   "end": 78.0,
+   "text": "Un sensor cardiaco y de temperatura que muestra la condición física actual."
+  },
+  {
+   "start": 78.0,
+   "end": 86.64,
+   "text": "La información recolectada por este dispositivo será almacenada en la nube,"
+  },
+  {
+   "start": 86.64,
+   "end": 90.64,
+   "text": "para luego ser consultada por padres o tutores de acuerdo a una aplicación móvil"
+  },
+  {
+   "start": 90.64,
+   "end": 93.64,
+   "text": "en la cual te permitirá acceder a un menú principal,"
+  },
+  {
+   "start": 93.64,
+   "end": 97.64,
+   "text": "en donde deberás llenar datos personales tuyos y de tu niño."
+  },
+  {
+   "start": 98.64,
+   "end": 102.64,
+   "text": "Dentro de éste encontrarás diferentes opciones, como la localización,"
+  },
+  {
+   "start": 102.64,
+   "end": 105.64,
+   "text": "la cual te permite realizar un rastreo de tu niño."
+  },
+  {
+   "start": 105.64,
+   "end": 109.64,
+   "text": "El ícono de ritmo cardiaco te permite monitorear las horas de sueño"
+  },
+  {
+   "start": 109.64,
+   "end": 111.64,
+   "text": "y la calidad del mismo."
+  },
+  {
+   "start": 111.64,
+   "end": 112.64,
+   "text": "Temperatura."
+  },
+  {
+   "start": 112.64,
+   "end": 116.64,
+   "text": "El dispositivo tiene un sensor que permite el registro diario de ésta."
+  },
+  {
+   "start": 116.64,
+   "end": 120.64,
+   "text": "La gamificación. Diariamente se actualizan actividades productivas."
+  },
+  {
+   "start": 120.64,
+   "end": 123.64,
+   "text": "Las mismas que mediante la culminación de éstas,"
+  },
+  {
+   "start": 123.64,
+   "end": 126.64,
+   "text": "os obtenrán recompensas denominadas PACI."
+  },
+  {
+   "start": 126.64,
+   "end": 129.64,
+   "text": "Eventos precursores de la educación, cultura, interacción"
+  },
+  {
+   "start": 129.64,
+   "end": 131.64,
+   "text": "son realizados trimestralmente,"
+  },
+  {
+   "start": 131.64,
+   "end": 133.64,
+   "text": "con la generalidad de crear grupos sociales"
+  },
+  {
+   "start": 133.64,
+   "end": 137.64,
+   "text": "y líderes de correlación motivados por un mismo fin."
+  },
+  {
+   "start": 137.64,
+   "end": 140.64,
+   "text": "Las suscripciones serán gestionadas de tres formas."
+  },
+  {
+   "start": 140.64,
+   "end": 143.64,
+   "text": "La primera es el pago a través de actividades ecológicas."
+  },
+  {
+   "start": 143.64,
+   "end": 147.64,
+   "text": "La segunda es la acumulación de PACIs mediante el cumplimiento de metas."
+  },
+  {
+   "start": 147.64,
+   "end": 150.64,
+   "text": "Y la tercera es un cobro mensual por el servicio."
+  },
+  {
+   "start": 151.64,
+   "end": 155.64,
+   "text": "En el mundo moderno, la calidad de vida es la calidad de la comunicación."
+  },
+  {
+   "start": 155.64,
+   "end": 158.64,
+   "text": "Nuestro sistema te brinda todas las posibilidades."
+  },
+  {
+   "start": 158.64,
+   "end": 160.64,
+   "text": "Ven y diviértete con Pacito."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 164.1
+}

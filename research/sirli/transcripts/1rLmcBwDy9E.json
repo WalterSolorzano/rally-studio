@@ -1,0 +1,167 @@
+{
+ "video_id": "1rLmcBwDy9E",
+ "url": "https://youtu.be/1rLmcBwDy9E",
+ "year": 2025,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "LOSTUZOSISC",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "LOSTUZOSISC",
+   "challenge": "05 - HUERTOS VERTICALES"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:22:08+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Este proyecto propone un sistema agrícola modular, automatizado y ecológico. Adaptable a cualquier espacio urbano o rural, funciona con paneles solares, sensores y riego inteligente, facilitando el cultivo de alimentos, incluso para quienes no tienen experiencia. Incluye materiales educativos, accesibles y biodegradables, promoviendo autosuficiencia, sostenibilidad y tecnología al alcance de todos. Queremos desarrollar un sistema de cultivo vertical que optimice el uso de espacios en zonas urbanas, automatiza el riego y la fertilización, promueve el autoconsumo y la sostenibilidad, sea accesible para personas con recursos limitados o sin experiencia agrícola. ¿Por qué es autosustentable y beneficioso para zonas urbanas? ¿Uso eficiente del agua? Gracias al riego automatizado y la recolección de lluvia, la reducción de huella ecológica, cultivos locales disminuyen el transporte de alimentos, el aprovechamiento de espacios pequeños, ideal para departamentos azoteas o patios, accesibilidad tecnológica con componentes económicos como SPIT32, también mejora la calidad de vida, acceso a alimentos frescos y reducción del estrés urbano. Nuestro huerto vertical e inteligente no es sólo una solución agrícola, es una propuesta de cambio. Con una inversión mínima de 2.596, logramos integrar tecnología, sostenibilidad y accesibilidad en un sistema que puede transformar azoteas, patios y espacios urbanos en fuente de alimento limpio y autosuficiente. A diferencia de otros huertos, el nuestro aprovecha materiales reciclables, energía solar y agua pluvial, reduciendo costos cuidando el medio ambiente. Además, su diseño modular y automatizado permite que cualquier persona, sin importar su experiencia, pueda cultivarlo con éxito. Este proyecto no sólo cultiva alimentos, cultiva conciencia, autonomía y comunidad. Es una herramienta educativa, ecológica y tecnológica que responde a los desafíos actuales del cambio climático, la escasez y los recursos y la necesidad urgente de producir alimentos de forma responsable. Con nuestro huerto, no solo sembramos plantas, sembramos el futuro.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 4.2,
+   "text": "Este proyecto propone un sistema agrícola modular, automatizado y ecológico."
+  },
+  {
+   "start": 4.2,
+   "end": 8.08,
+   "text": "Adaptable a cualquier espacio urbano o rural, funciona con paneles solares,"
+  },
+  {
+   "start": 8.08,
+   "end": 11.52,
+   "text": "sensores y riego inteligente, facilitando el cultivo de alimentos,"
+  },
+  {
+   "start": 11.52,
+   "end": 15.32,
+   "text": "incluso para quienes no tienen experiencia. Incluye materiales educativos,"
+  },
+  {
+   "start": 15.32,
+   "end": 18.6,
+   "text": "accesibles y biodegradables, promoviendo autosuficiencia,"
+  },
+  {
+   "start": 18.6,
+   "end": 21.72,
+   "text": "sostenibilidad y tecnología al alcance de todos."
+  },
+  {
+   "start": 21.72,
+   "end": 27.16,
+   "text": "Queremos desarrollar un sistema de cultivo vertical que optimice el uso de espacios en zonas urbanas,"
+  },
+  {
+   "start": 27.2,
+   "end": 31.52,
+   "text": "automatiza el riego y la fertilización, promueve el autoconsumo y la sostenibilidad,"
+  },
+  {
+   "start": 31.52,
+   "end": 35.92,
+   "text": "sea accesible para personas con recursos limitados o sin experiencia agrícola."
+  },
+  {
+   "start": 36.92,
+   "end": 40.08,
+   "text": "¿Por qué es autosustentable y beneficioso para zonas urbanas?"
+  },
+  {
+   "start": 40.08,
+   "end": 41.44,
+   "text": "¿Uso eficiente del agua?"
+  },
+  {
+   "start": 41.44,
+   "end": 44.0,
+   "text": "Gracias al riego automatizado y la recolección de lluvia,"
+  },
+  {
+   "start": 44.0,
+   "end": 48.6,
+   "text": "la reducción de huella ecológica, cultivos locales disminuyen el transporte de alimentos,"
+  },
+  {
+   "start": 48.6,
+   "end": 53.52,
+   "text": "el aprovechamiento de espacios pequeños, ideal para departamentos azoteas o patios,"
+  },
+  {
+   "start": 53.68,
+   "end": 57.6,
+   "text": "accesibilidad tecnológica con componentes económicos como SPIT32,"
+  },
+  {
+   "start": 57.6,
+   "end": 62.2,
+   "text": "también mejora la calidad de vida, acceso a alimentos frescos y reducción del estrés urbano."
+  },
+  {
+   "start": 62.2,
+   "end": 66.08,
+   "text": "Nuestro huerto vertical e inteligente no es sólo una solución agrícola,"
+  },
+  {
+   "start": 66.08,
+   "end": 70.28,
+   "text": "es una propuesta de cambio. Con una inversión mínima de 2.596,"
+  },
+  {
+   "start": 70.28,
+   "end": 74.84,
+   "text": "logramos integrar tecnología, sostenibilidad y accesibilidad en un sistema que puede"
+  },
+  {
+   "start": 74.84,
+   "end": 79.36,
+   "text": "transformar azoteas, patios y espacios urbanos en fuente de alimento limpio y autosuficiente."
+  },
+  {
+   "start": 79.68,
+   "end": 83.08,
+   "text": "A diferencia de otros huertos, el nuestro aprovecha materiales reciclables,"
+  },
+  {
+   "start": 83.08,
+   "end": 86.64,
+   "text": "energía solar y agua pluvial, reduciendo costos cuidando el medio ambiente."
+  },
+  {
+   "start": 86.64,
+   "end": 90.88,
+   "text": "Además, su diseño modular y automatizado permite que cualquier persona, sin importar"
+  },
+  {
+   "start": 90.88,
+   "end": 94.64,
+   "text": "su experiencia, pueda cultivarlo con éxito. Este proyecto no sólo cultiva alimentos,"
+  },
+  {
+   "start": 94.64,
+   "end": 98.56,
+   "text": "cultiva conciencia, autonomía y comunidad. Es una herramienta educativa,"
+  },
+  {
+   "start": 98.56,
+   "end": 102.48,
+   "text": "ecológica y tecnológica que responde a los desafíos actuales del cambio climático,"
+  },
+  {
+   "start": 102.48,
+   "end": 106.32,
+   "text": "la escasez y los recursos y la necesidad urgente de producir alimentos de forma"
+  },
+  {
+   "start": 106.32,
+   "end": 110.4,
+   "text": "responsable. Con nuestro huerto, no solo sembramos plantas, sembramos el futuro."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 111.4
+}

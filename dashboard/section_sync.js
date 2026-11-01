@@ -8,7 +8,7 @@
 (function () {
   "use strict";
 
-  const STORAGE_KEY = "rally_studio_production_state_2026_v3";
+  const STORAGE_KEY = "rally_studio_production_state_2026_v4";
   const META_KEY = "rally_section_sync_meta_v1";
   const CHANNEL_NAME = "rally_studio_auto_sync";
   const POLL_MS = 1000;

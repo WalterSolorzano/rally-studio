@@ -1,0 +1,202 @@
+{
+ "video_id": "y7c0oZ5rVBg",
+ "url": "https://youtu.be/y7c0oZ5rVBg?si=n7fv4iaH8PWsNL9x",
+ "year": 2026,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "NICHIND",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "NICHIND",
+   "challenge": "09 - OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:30:37+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Puedes hacer una vez a la batalla naval? ¿Y si tengo que cada movimiento en este tablero podría salvar una vida? Frente a catástrofes imprevistas, la sociedad queda expuesta. Y en una emergencia, alto a rápido no basta. Hay que decir bien. Por eso, transformamos la ciudad en un tablero estratégico donde cada coordenada es un nodo vital. ¿Cómo funciona? El sistema opera en dos etapas claves. Primero, en tiempo de paz aprovechamos el conocimiento esperto. Los líderes locales cargan a nuestro sistema NICIN, Elimentario de los parámetros base. Definen hospitales, comisarias, cuarteles de bomberos y los recursos disponibles. También mapean los barrios, la población y subo la verabilidad histórica. Segundo, cuando la emergencia estalla, por ejemplo, un terremoto o una inundación, sabemos que reina al caos. El sistema permite declarar la emergencia ajustando la gravedad del evento y que zonas están afectadas en tiempo real. A partir de esta combinación, los datos previos y la estimación actual, el sistema calcula la demanda exacta, conecta la vulnerabilidad del barrio con un requerimiento específico de ambulancias, camiones de bomberos o patrullas. Y acá es donde la magia ocurre. Confiando en quién está en el terreno, nuestro herramiento unifica en información mediante un modelo matemático avanzado. Con un solo clic, el sistema resuelve el problema y entrega un plan de acción ejecutar. Asigna los recursos limitados desde el punto de origen ideal hasta el destino. Calcula las distancias e incluso te avise si hay un déficit de recursos que requieren ayuda externa. Todo esto se visualiza en un mapa táctico en vivo, mostrando las rutas óptimas para asistir a la mayor cantidad de personas posible. Hablamos de un sistema escalable, una herramienta que transforma la incertidumbre en coordinación y esperanza, lista para aplicarse de cualquier desastre, en cualquier parte del mundo.",
+ "segments": [
+  {
+   "start": 7.6,
+   "end": 9.6,
+   "text": "¿Puedes hacer una vez a la batalla naval?"
+  },
+  {
+   "start": 9.6,
+   "end": 18.47,
+   "text": "¿Y si tengo que cada movimiento en este tablero podría salvar una vida?"
+  },
+  {
+   "start": 18.47,
+   "end": 23.47,
+   "text": "Frente a catástrofes imprevistas, la sociedad queda expuesta."
+  },
+  {
+   "start": 23.47,
+   "end": 26.47,
+   "text": "Y en una emergencia, alto a rápido no basta."
+  },
+  {
+   "start": 26.47,
+   "end": 27.47,
+   "text": "Hay que decir bien."
+  },
+  {
+   "start": 27.47,
+   "end": 31.47,
+   "text": "Por eso, transformamos la ciudad en un tablero estratégico"
+  },
+  {
+   "start": 31.47,
+   "end": 33.47,
+   "text": "donde cada coordenada es un nodo vital."
+  },
+  {
+   "start": 33.47,
+   "end": 35.47,
+   "text": "¿Cómo funciona?"
+  },
+  {
+   "start": 35.47,
+   "end": 38.47,
+   "text": "El sistema opera en dos etapas claves."
+  },
+  {
+   "start": 38.47,
+   "end": 41.47,
+   "text": "Primero, en tiempo de paz aprovechamos el conocimiento esperto."
+  },
+  {
+   "start": 41.47,
+   "end": 43.47,
+   "text": "Los líderes locales cargan a nuestro sistema NICIN,"
+  },
+  {
+   "start": 43.47,
+   "end": 45.47,
+   "text": "Elimentario de los parámetros base."
+  },
+  {
+   "start": 45.47,
+   "end": 49.47,
+   "text": "Definen hospitales, comisarias, cuarteles de bomberos y los recursos disponibles."
+  },
+  {
+   "start": 49.47,
+   "end": 53.47,
+   "text": "También mapean los barrios, la población y subo la verabilidad histórica."
+  },
+  {
+   "start": 53.47,
+   "end": 57.47,
+   "text": "Segundo, cuando la emergencia estalla, por ejemplo, un terremoto o una inundación,"
+  },
+  {
+   "start": 57.47,
+   "end": 59.47,
+   "text": "sabemos que reina al caos."
+  },
+  {
+   "start": 59.47,
+   "end": 62.47,
+   "text": "El sistema permite declarar la emergencia ajustando la gravedad del evento"
+  },
+  {
+   "start": 62.47,
+   "end": 64.47,
+   "text": "y que zonas están afectadas en tiempo real."
+  },
+  {
+   "start": 64.47,
+   "end": 67.47,
+   "text": "A partir de esta combinación, los datos previos y la estimación actual,"
+  },
+  {
+   "start": 67.47,
+   "end": 69.47,
+   "text": "el sistema calcula la demanda exacta,"
+  },
+  {
+   "start": 69.47,
+   "end": 72.47,
+   "text": "conecta la vulnerabilidad del barrio con un requerimiento específico de ambulancias,"
+  },
+  {
+   "start": 72.47,
+   "end": 74.47,
+   "text": "camiones de bomberos o patrullas."
+  },
+  {
+   "start": 74.47,
+   "end": 76.47,
+   "text": "Y acá es donde la magia ocurre."
+  },
+  {
+   "start": 76.47,
+   "end": 78.47,
+   "text": "Confiando en quién está en el terreno,"
+  },
+  {
+   "start": 78.47,
+   "end": 81.47,
+   "text": "nuestro herramiento unifica en información mediante un modelo matemático avanzado."
+  },
+  {
+   "start": 81.47,
+   "end": 83.47,
+   "text": "Con un solo clic, el sistema resuelve el problema"
+  },
+  {
+   "start": 83.47,
+   "end": 85.47,
+   "text": "y entrega un plan de acción ejecutar."
+  },
+  {
+   "start": 85.47,
+   "end": 88.47,
+   "text": "Asigna los recursos limitados desde el punto de origen ideal hasta el destino."
+  },
+  {
+   "start": 88.47,
+   "end": 91.47,
+   "text": "Calcula las distancias e incluso te avise si hay un déficit de recursos"
+  },
+  {
+   "start": 91.47,
+   "end": 93.47,
+   "text": "que requieren ayuda externa."
+  },
+  {
+   "start": 93.47,
+   "end": 96.47,
+   "text": "Todo esto se visualiza en un mapa táctico en vivo,"
+  },
+  {
+   "start": 96.47,
+   "end": 100.47,
+   "text": "mostrando las rutas óptimas para asistir a la mayor cantidad de personas posible."
+  },
+  {
+   "start": 100.47,
+   "end": 102.47,
+   "text": "Hablamos de un sistema escalable,"
+  },
+  {
+   "start": 102.47,
+   "end": 106.47,
+   "text": "una herramienta que transforma la incertidumbre en coordinación y esperanza,"
+  },
+  {
+   "start": 106.47,
+   "end": 110.47,
+   "text": "lista para aplicarse de cualquier desastre, en cualquier parte del mundo."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 123.0
+}

@@ -1,0 +1,97 @@
+{
+ "video_id": "neu5cEXozpA",
+ "url": "https://youtu.be/neu5cEXozpA",
+ "year": 2023,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "ECOINNOVA",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "ECOINNOVA",
+   "challenge": "06 - REVALORIZACIÓN RESIDUOS"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:06:44+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Desafío 6. Revalorización de residuos, equipo eco-innova. Los procesos industriales que se llevan a cabo generan una gran cantidad de residuos que no son aprovechados, ya que estos pueden ser utilizados para distintos productos ecológicos debido a sus propiedades y funciones. La casca de naranja es un residuo agroindustrial que por sus características ocasiona diversos problemas ambientales como la contaminación del suelo. Se busca la reducción de la contaminación por plástico dado que queremos dar una nueva entrada de uso para reducir el consumo de plástico convencional, ya que es una de las más significativas en la actualidad debido a que una botella de plástico tarda de 700 a 1000 años en degradarse, en cambio la casca de naranja tarda de 6 a 8 meses. Nuestro proceso de creación de bioplástico comienza con la obtención de cascaras de naranja de los desechos de las fábricas. Después está eslabada para posteriormente meterla a la máquina con la cual hicimos nuestra principal innovación. Así comenzando por la parte superior vertiendo las cascaras y que de esta forma se han trituradas por rodillos dentados para posteriormente pasar por un tornillo sin fin, el cual es una prensa de lodos acoplada en la misma máquina para sacar todos los aceites esenciales posibles de las cascaras. Estos aceites obtenidos luego son procesados por un filtro dentro de la misma posteriormente son vertidos en una máquina purificadora y con un filtro más especializado en residuos sólidos. Como siguiente paso seguimos con la polimerización donde las moléculas enlazan para formar la estructura de un polímero. Pasamos al moldeo donde se le da forma deseada al material obtenido y por último las propiedades de acabado donde se evalúan sus propiedades físicas, mecánicas y químicas.",
+ "segments": [
+  {
+   "start": 1.04,
+   "end": 7.04,
+   "text": "Desafío 6. Revalorización de residuos, equipo eco-innova."
+  },
+  {
+   "start": 7.04,
+   "end": 14.04,
+   "text": "Los procesos industriales que se llevan a cabo generan una gran cantidad de residuos que no son aprovechados,"
+  },
+  {
+   "start": 14.04,
+   "end": 22.04,
+   "text": "ya que estos pueden ser utilizados para distintos productos ecológicos debido a sus propiedades y funciones."
+  },
+  {
+   "start": 22.04,
+   "end": 33.04,
+   "text": "La casca de naranja es un residuo agroindustrial que por sus características ocasiona diversos problemas ambientales como la contaminación del suelo."
+  },
+  {
+   "start": 33.04,
+   "end": 44.04,
+   "text": "Se busca la reducción de la contaminación por plástico dado que queremos dar una nueva entrada de uso para reducir el consumo de plástico convencional,"
+  },
+  {
+   "start": 44.04,
+   "end": 54.04,
+   "text": "ya que es una de las más significativas en la actualidad debido a que una botella de plástico tarda de 700 a 1000 años en degradarse,"
+  },
+  {
+   "start": 54.04,
+   "end": 59.04,
+   "text": "en cambio la casca de naranja tarda de 6 a 8 meses."
+  },
+  {
+   "start": 59.04,
+   "end": 66.04,
+   "text": "Nuestro proceso de creación de bioplástico comienza con la obtención de cascaras de naranja de los desechos de las fábricas."
+  },
+  {
+   "start": 66.04,
+   "end": 73.04,
+   "text": "Después está eslabada para posteriormente meterla a la máquina con la cual hicimos nuestra principal innovación."
+  },
+  {
+   "start": 73.04,
+   "end": 83.04,
+   "text": "Así comenzando por la parte superior vertiendo las cascaras y que de esta forma se han trituradas por rodillos dentados para posteriormente pasar por un tornillo sin fin,"
+  },
+  {
+   "start": 83.04,
+   "end": 90.04,
+   "text": "el cual es una prensa de lodos acoplada en la misma máquina para sacar todos los aceites esenciales posibles de las cascaras."
+  },
+  {
+   "start": 90.04,
+   "end": 100.04,
+   "text": "Estos aceites obtenidos luego son procesados por un filtro dentro de la misma posteriormente son vertidos en una máquina purificadora y con un filtro más especializado en residuos sólidos."
+  },
+  {
+   "start": 100.04,
+   "end": 107.04,
+   "text": "Como siguiente paso seguimos con la polimerización donde las moléculas enlazan para formar la estructura de un polímero."
+  },
+  {
+   "start": 107.04,
+   "end": 119.04,
+   "text": "Pasamos al moldeo donde se le da forma deseada al material obtenido y por último las propiedades de acabado donde se evalúan sus propiedades físicas, mecánicas y químicas."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.1
+}

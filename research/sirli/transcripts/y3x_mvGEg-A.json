@@ -1,0 +1,197 @@
+{
+ "video_id": "y3x_mvGEg-A",
+ "url": "https://youtu.be/y3x_mvGEg-A",
+ "year": 2025,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "INNOVASOBRIOS",
+ "place_label": "TERCER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "TERCER LUGAR",
+   "team": "INNOVASOBRIOS",
+   "challenge": "04 - SISTEMA DE ALERTA TEMPRANA"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:43:30+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Los fenómenos y desastres naturales son cada vez una realidad más frecuente, especialmente en comunidades rurales. Esto debido a los altos costos y la complejidad de instalación de las soluciones existentes. Las inundaciones e incendios constituyen una amenaza real y de alto impacto, que afectan a miles de personas que no cuentan con un sistema de alerta temprana que les permita anticipar y mitigar los desencadenantes de estos desastres. Sobún un estudio realizado por el Fondo Internacional de Emergencia de las Naciones Unidas para la Infancia UNICEF en 2020, más de 15.000 familias resultaron afectadas por desastres naturales en Nicaragua, lo que refleja la necesidad urgente de implementar sistema de alerta temprana accesibles y eficientes en zonas vulnerables. Como solución a esta problemática, presentamos ARGO SAT, una solución de bajo costo y de fácil implementación con enfoque en comunidades rurales. ARGO SAT consta de un sistema de alerta temprana para desastres naturales, permitiendo anticipar estos eventos y reducir el impacto de estas amenazas, garantizando así la protección de la vida humana, la vida animal y el patrimonio natural y local. Este sistema detecta los niveles de agua mediante un sensor ultrasonico activado por un sensor de humedad, permitiendo la recolección, análisis y envió de alertas a la población. Asimismo, los usuarios podrán también alertar sobre anomalías en su zona, contribuyendo así a la seguridad de la población. La aplicación permite visualizar un mapa en tiempo real, mostrando zonas de color propensas e iniciar un incendio. Nuestra app le permitirá a los usuarios compartir datos en tiempo real sobre la ubicación de zonas de riesgo activas, tales como en emulaciones e incendios solestales. El proyecto tiene un costo estimado de 12,202 Córdobas para su realización, siendo el costo unitario de fabricación por cada dispositivo de 3,026.19 Córdobas.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 4.68,
+   "text": "Los fenómenos y desastres naturales son cada vez una realidad más frecuente,"
+  },
+  {
+   "start": 4.68,
+   "end": 7.16,
+   "text": "especialmente en comunidades rurales."
+  },
+  {
+   "start": 7.16,
+   "end": 10.92,
+   "text": "Esto debido a los altos costos y la complejidad de instalación de las"
+  },
+  {
+   "start": 10.92,
+   "end": 12.56,
+   "text": "soluciones existentes."
+  },
+  {
+   "start": 12.56,
+   "end": 17.44,
+   "text": "Las inundaciones e incendios constituyen una amenaza real y de alto impacto,"
+  },
+  {
+   "start": 17.44,
+   "end": 20.92,
+   "text": "que afectan a miles de personas que no cuentan con un sistema de alerta"
+  },
+  {
+   "start": 20.92,
+   "end": 25.28,
+   "text": "temprana que les permita anticipar y mitigar los desencadenantes de estos"
+  },
+  {
+   "start": 25.28,
+   "end": 26.4,
+   "text": "desastres."
+  },
+  {
+   "start": 26.4,
+   "end": 29.6,
+   "text": "Sobún un estudio realizado por el Fondo Internacional de Emergencia de"
+  },
+  {
+   "start": 29.6,
+   "end": 35.36,
+   "text": "las Naciones Unidas para la Infancia UNICEF en 2020, más de 15.000 familias"
+  },
+  {
+   "start": 35.36,
+   "end": 38.6,
+   "text": "resultaron afectadas por desastres naturales en Nicaragua,"
+  },
+  {
+   "start": 38.6,
+   "end": 42.08,
+   "text": "lo que refleja la necesidad urgente de implementar sistema de alerta"
+  },
+  {
+   "start": 42.08,
+   "end": 46.28,
+   "text": "temprana accesibles y eficientes en zonas vulnerables."
+  },
+  {
+   "start": 46.28,
+   "end": 49.92,
+   "text": "Como solución a esta problemática, presentamos ARGO SAT,"
+  },
+  {
+   "start": 49.92,
+   "end": 53.92,
+   "text": "una solución de bajo costo y de fácil implementación con enfoque en comunidades"
+  },
+  {
+   "start": 53.92,
+   "end": 55.24,
+   "text": "rurales."
+  },
+  {
+   "start": 55.32,
+   "end": 58.84,
+   "text": "ARGO SAT consta de un sistema de alerta temprana para desastres"
+  },
+  {
+   "start": 58.84,
+   "end": 63.04,
+   "text": "naturales, permitiendo anticipar estos eventos y reducir el impacto de"
+  },
+  {
+   "start": 63.04,
+   "end": 67.04,
+   "text": "estas amenazas, garantizando así la protección de la vida humana,"
+  },
+  {
+   "start": 67.04,
+   "end": 70.08,
+   "text": "la vida animal y el patrimonio natural y local."
+  },
+  {
+   "start": 70.08,
+   "end": 73.16,
+   "text": "Este sistema detecta los niveles de agua mediante un sensor"
+  },
+  {
+   "start": 73.16,
+   "end": 75.76,
+   "text": "ultrasonico activado por un sensor de humedad,"
+  },
+  {
+   "start": 75.76,
+   "end": 79.32,
+   "text": "permitiendo la recolección, análisis y envió de alertas a la"
+  },
+  {
+   "start": 79.32,
+   "end": 80.44,
+   "text": "población."
+  },
+  {
+   "start": 80.44,
+   "end": 84.76,
+   "text": "Asimismo, los usuarios podrán también alertar sobre anomalías en su zona,"
+  },
+  {
+   "start": 84.8,
+   "end": 87.76,
+   "text": "contribuyendo así a la seguridad de la población."
+  },
+  {
+   "start": 87.76,
+   "end": 90.92,
+   "text": "La aplicación permite visualizar un mapa en tiempo real,"
+  },
+  {
+   "start": 90.92,
+   "end": 94.24,
+   "text": "mostrando zonas de color propensas e iniciar un incendio."
+  },
+  {
+   "start": 94.24,
+   "end": 97.28,
+   "text": "Nuestra app le permitirá a los usuarios compartir datos en tiempo"
+  },
+  {
+   "start": 97.28,
+   "end": 100.44,
+   "text": "real sobre la ubicación de zonas de riesgo activas,"
+  },
+  {
+   "start": 100.44,
+   "end": 103.64,
+   "text": "tales como en emulaciones e incendios solestales."
+  },
+  {
+   "start": 103.64,
+   "end": 108.64,
+   "text": "El proyecto tiene un costo estimado de 12,202 Córdobas para su realización,"
+  },
+  {
+   "start": 108.64,
+   "end": 111.72,
+   "text": "siendo el costo unitario de fabricación por cada dispositivo de"
+  },
+  {
+   "start": 111.72,
+   "end": 114.16,
+   "text": "3,026.19 Córdobas."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 116.1
+}

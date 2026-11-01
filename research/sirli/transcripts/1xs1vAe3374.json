@@ -1,0 +1,162 @@
+{
+ "video_id": "1xs1vAe3374",
+ "url": "https://youtu.be/1xs1vAe3374?si=_rWHEpbhgvjzXDro",
+ "year": 2026,
+ "collection": "sede",
+ "country": "EL SALVADOR",
+ "team": "IRON MAIDENS",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "IRON MAIDENS",
+   "challenge": "08 - DESECHOS DE BASURA VERDE"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:44:29+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Sabías que en El Salvador existe hasta 1.8 millones de paneles solares instalados? La energía limpia crece rápido, pero sin planificación previa ni plantas de reciclaje en Latinoamérica, estos equipos se convierten en basura verde peligrosa, contienen materiales tóxicos como el plomo, el cadmio y el silicio, representando un grave riesgo ambiental y biológico que no se descartan con cuidado. Así que en el equipo de Iron Maidens de la Universidad Francisco de Avivia, creemos que las segundas oportunidades son las más aprovechadas. Así como un panel monocrisalino de 10 a 15 años de uso comercial, aún conserva entre el 75 y 85% de su capacidad, y rinde excelente incluso en días nublados, nuestras soluciones rescatar estos paneles descartados y crear pequeñas estaciones comunitarias en colonias y cantones, que son vulnerables que sufren constantes correos de energía, además integramos baterías de automóvil usadas adaptadas para almacenar esta energía y usarla por las noches, evitando que contaminen el suelo. El impacto es directo, brindamos iluminación nocturna en las calles y pasajes para reducir la delincuencia, energía para irrigación de cultivos y puntos de carga de emergencia durante tormentas o inundaciones, que nos hace innovadores. No solo llevamos un respaldo eléctrico a quienes no lo tienen, sino que invitamos a la comunidad a personalizar y pintar marcos de los paneles, capacitando además de los jóvenes locales como técnicos de mantenimiento para generar un verdadero sentido la propiedad, Económicamente sumamente viable, mientras un panel nuevo supera los 100 dólares, uno recondicionado cuesta entre 5 y 15 dólares, o se obtiene mediante donaciones de responsabilidad social empresarial, de parques, olares y baterías, de los más de 4.500 talleres mecánicos del país, en alianzas con alcaldías y oréjes, aseguramos la instalación y una logística inversa obligatoria, cuando los paneles y baterías agotan su vida a obtilación por ciento, se retiran para extraer sus materiales valiosos y desechar el plomo y el ácido de forma segura, transformamos un residuo peligroso en luz y seguridad social. Muchas gracias por ver este video.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 4.56,
+   "text": "¿Sabías que en El Salvador existe hasta 1.8 millones de paneles solares instalados?"
+  },
+  {
+   "start": 4.56,
+   "end": 9.72,
+   "text": "La energía limpia crece rápido, pero sin planificación previa ni plantas de reciclaje en Latinoamérica,"
+  },
+  {
+   "start": 9.72,
+   "end": 15.92,
+   "text": "estos equipos se convierten en basura verde peligrosa, contienen materiales tóxicos como el plomo, el cadmio y el silicio,"
+  },
+  {
+   "start": 15.92,
+   "end": 20.36,
+   "text": "representando un grave riesgo ambiental y biológico que no se descartan con cuidado."
+  },
+  {
+   "start": 20.36,
+   "end": 24.0,
+   "text": "Así que en el equipo de Iron Maidens de la Universidad Francisco de Avivia,"
+  },
+  {
+   "start": 24.0,
+   "end": 26.92,
+   "text": "creemos que las segundas oportunidades son las más aprovechadas."
+  },
+  {
+   "start": 26.92,
+   "end": 34.72,
+   "text": "Así como un panel monocrisalino de 10 a 15 años de uso comercial, aún conserva entre el 75 y 85% de su capacidad,"
+  },
+  {
+   "start": 34.72,
+   "end": 40.24,
+   "text": "y rinde excelente incluso en días nublados, nuestras soluciones rescatar estos paneles descartados"
+  },
+  {
+   "start": 40.24,
+   "end": 43.72,
+   "text": "y crear pequeñas estaciones comunitarias en colonias y cantones,"
+  },
+  {
+   "start": 43.72,
+   "end": 46.64,
+   "text": "que son vulnerables que sufren constantes correos de energía,"
+  },
+  {
+   "start": 46.64,
+   "end": 52.6,
+   "text": "además integramos baterías de automóvil usadas adaptadas para almacenar esta energía y usarla por las noches,"
+  },
+  {
+   "start": 52.6,
+   "end": 54.28,
+   "text": "evitando que contaminen el suelo."
+  },
+  {
+   "start": 54.32,
+   "end": 59.92,
+   "text": "El impacto es directo, brindamos iluminación nocturna en las calles y pasajes para reducir la delincuencia,"
+  },
+  {
+   "start": 59.92,
+   "end": 65.32,
+   "text": "energía para irrigación de cultivos y puntos de carga de emergencia durante tormentas o inundaciones,"
+  },
+  {
+   "start": 65.32,
+   "end": 66.52,
+   "text": "que nos hace innovadores."
+  },
+  {
+   "start": 66.52,
+   "end": 69.68,
+   "text": "No solo llevamos un respaldo eléctrico a quienes no lo tienen,"
+  },
+  {
+   "start": 69.68,
+   "end": 73.56,
+   "text": "sino que invitamos a la comunidad a personalizar y pintar marcos de los paneles,"
+  },
+  {
+   "start": 73.56,
+   "end": 79.6,
+   "text": "capacitando además de los jóvenes locales como técnicos de mantenimiento para generar un verdadero sentido la propiedad,"
+  },
+  {
+   "start": 79.68,
+   "end": 83.84,
+   "text": "Económicamente sumamente viable, mientras un panel nuevo supera los 100 dólares,"
+  },
+  {
+   "start": 83.84,
+   "end": 87.0,
+   "text": "uno recondicionado cuesta entre 5 y 15 dólares,"
+  },
+  {
+   "start": 87.0,
+   "end": 92.52,
+   "text": "o se obtiene mediante donaciones de responsabilidad social empresarial, de parques, olares y baterías,"
+  },
+  {
+   "start": 92.52,
+   "end": 95.44,
+   "text": "de los más de 4.500 talleres mecánicos del país,"
+  },
+  {
+   "start": 95.44,
+   "end": 101.2,
+   "text": "en alianzas con alcaldías y oréjes, aseguramos la instalación y una logística inversa obligatoria,"
+  },
+  {
+   "start": 101.2,
+   "end": 104.72,
+   "text": "cuando los paneles y baterías agotan su vida a obtilación por ciento,"
+  },
+  {
+   "start": 104.72,
+   "end": 110.2,
+   "text": "se retiran para extraer sus materiales valiosos y desechar el plomo y el ácido de forma segura,"
+  },
+  {
+   "start": 110.2,
+   "end": 113.84,
+   "text": "transformamos un residuo peligroso en luz y seguridad social."
+  },
+  {
+   "start": 113.84,
+   "end": 115.56,
+   "text": "Muchas gracias por ver este video."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.0
+}

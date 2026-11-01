@@ -1,0 +1,47 @@
+{
+ "video_id": "cySmFv_fbfU",
+ "url": "https://youtu.be/cySmFv_fbfU?si=ahWDhd4yuOzgp7c_",
+ "year": 2025,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "DELTA",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "DELTA",
+   "challenge": "03 - FUGAS DE AGUA"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:19:18+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Dispositivo económico y fácil de instalar que evita el desperdicio de agua, protege bienes y promueve conciencia ambiental. Brasalete para tuberías que detecta fugas y envía alertas inmediatas via internet, con diseño compacto y seguro basado en arruino.",
+ "segments": [
+  {
+   "start": 0.14,
+   "end": 40.54,
+   "text": "Dispositivo económico y fácil de instalar que evita el desperdicio de agua,"
+  },
+  {
+   "start": 40.54,
+   "end": 43.94,
+   "text": "protege bienes y promueve conciencia ambiental."
+  },
+  {
+   "start": 45.34,
+   "end": 50.58,
+   "text": "Brasalete para tuberías que detecta fugas y envía alertas inmediatas via internet,"
+  },
+  {
+   "start": 50.58,
+   "end": 53.94,
+   "text": "con diseño compacto y seguro basado en arruino."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 65.8
+}

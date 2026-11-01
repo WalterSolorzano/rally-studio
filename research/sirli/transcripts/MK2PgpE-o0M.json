@@ -1,0 +1,132 @@
+{
+ "video_id": "MK2PgpE-o0M",
+ "url": "https://youtu.be/MK2PgpE-o0M",
+ "year": 2026,
+ "collection": "sede",
+ "country": "VENEZUELA",
+ "team": "INGNOVA",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "INGNOVA",
+   "challenge": "09 - OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:54:54+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Cuando ocurre un desastre, cada segundo cuenta. Pero, ¿qué pasa cuando las comunicaciones fallan, las vías se obstruyen y la ayuda no llega? ¿Cómo transformamos el caos en una respuesta inmediata? Nuestra respuesta es Sentinel, una solución tecnológica que brinda los equipos de rescate el poder de actuar más rápido. Somos sus ojos y oídos en el terreno, garantizando que la ayuda llegue a las manos correctas en el momento exacto. ¿Cómo lo hacemos? A través de nuestra aplicación de gestión logística, tanto ciudadanos como rescatistas pueden enviar alertas con subficaciones exactas y estado vital. Así, el sistema evalúa la gravedad al instante y prioriza a quienes más lo necesitan. Desde el aire, nuestros drones mapean la zona en tiempo real. Sus cámaras infrarrojas detectan hasta personas bajo los escombros y evaluan qué rutas son seguras para el traslado de recursos. Y para quienes necesitan refugio inmediato, desplegamos nuestro sistema modular. Estructuras de acero ligero que se arman sin maquinaria pesada. Primero operan como puestos médicos autónomos y después se transforman en viviendas temporales dignas. Software inteligente que conecta y arquitectura modular que protege. Porque coordinar la ayuda a tiempo es la diferencia entre la tragedia y la recuperación. ¡Connetemos para salvar vidas!",
+ "segments": [
+  {
+   "start": 0.66,
+   "end": 4.66,
+   "text": "Cuando ocurre un desastre, cada segundo cuenta."
+  },
+  {
+   "start": 4.66,
+   "end": 11.66,
+   "text": "Pero, ¿qué pasa cuando las comunicaciones fallan, las vías se obstruyen y la ayuda no llega?"
+  },
+  {
+   "start": 11.66,
+   "end": 15.66,
+   "text": "¿Cómo transformamos el caos en una respuesta inmediata?"
+  },
+  {
+   "start": 15.66,
+   "end": 22.66,
+   "text": "Nuestra respuesta es Sentinel, una solución tecnológica que brinda los equipos de rescate"
+  },
+  {
+   "start": 22.66,
+   "end": 24.66,
+   "text": "el poder de actuar más rápido."
+  },
+  {
+   "start": 24.66,
+   "end": 27.66,
+   "text": "Somos sus ojos y oídos en el terreno,"
+  },
+  {
+   "start": 27.66,
+   "end": 32.66,
+   "text": "garantizando que la ayuda llegue a las manos correctas en el momento exacto."
+  },
+  {
+   "start": 32.66,
+   "end": 34.66,
+   "text": "¿Cómo lo hacemos?"
+  },
+  {
+   "start": 34.66,
+   "end": 37.66,
+   "text": "A través de nuestra aplicación de gestión logística,"
+  },
+  {
+   "start": 37.66,
+   "end": 43.66,
+   "text": "tanto ciudadanos como rescatistas pueden enviar alertas con subficaciones exactas y estado vital."
+  },
+  {
+   "start": 43.66,
+   "end": 49.66,
+   "text": "Así, el sistema evalúa la gravedad al instante y prioriza a quienes más lo necesitan."
+  },
+  {
+   "start": 49.66,
+   "end": 53.66,
+   "text": "Desde el aire, nuestros drones mapean la zona en tiempo real."
+  },
+  {
+   "start": 53.66,
+   "end": 57.66,
+   "text": "Sus cámaras infrarrojas detectan hasta personas bajo los escombros"
+  },
+  {
+   "start": 57.66,
+   "end": 61.66,
+   "text": "y evaluan qué rutas son seguras para el traslado de recursos."
+  },
+  {
+   "start": 61.66,
+   "end": 67.66,
+   "text": "Y para quienes necesitan refugio inmediato, desplegamos nuestro sistema modular."
+  },
+  {
+   "start": 67.66,
+   "end": 71.66,
+   "text": "Estructuras de acero ligero que se arman sin maquinaria pesada."
+  },
+  {
+   "start": 71.66,
+   "end": 75.66,
+   "text": "Primero operan como puestos médicos autónomos"
+  },
+  {
+   "start": 75.66,
+   "end": 79.66,
+   "text": "y después se transforman en viviendas temporales dignas."
+  },
+  {
+   "start": 79.66,
+   "end": 86.61,
+   "text": "Software inteligente que conecta y arquitectura modular que protege."
+  },
+  {
+   "start": 86.61,
+   "end": 91.61,
+   "text": "Porque coordinar la ayuda a tiempo es la diferencia entre la tragedia y la recuperación."
+  },
+  {
+   "start": 91.61,
+   "end": 94.61,
+   "text": "¡Connetemos para salvar vidas!"
+  }
+ ],
+ "has_info": false,
+ "duration_s": 94.9
+}

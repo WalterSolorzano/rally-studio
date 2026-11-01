@@ -3,7 +3,15 @@
   "casos": [
     {
       "id": "techriders_micropresas_2024",
-      "temas": ["agua", "micropresas", "riego", "sequia", "telemetria", "lora", "hidrica"],
+      "temas": [
+        "agua",
+        "micropresas",
+        "riego",
+        "sequia",
+        "telemetria",
+        "lora",
+        "hidrica"
+      ],
       "year": 2024,
       "rally": "latam",
       "categoria": "innovacion",
@@ -20,7 +28,15 @@
     },
     {
       "id": "digna_gueguense_2023",
-      "temas": ["vivienda", "agua", "energia", "solar", "saneamiento", "reciclaje", "bambu"],
+      "temas": [
+        "vivienda",
+        "agua",
+        "energia",
+        "solar",
+        "saneamiento",
+        "reciclaje",
+        "bambu"
+      ],
       "year": 2023,
       "rally": "latam",
       "categoria": "innovacion",
@@ -37,7 +53,14 @@
     },
     {
       "id": "mt_soluciones_vivienda_2021",
-      "temas": ["vivienda", "energia", "eficiencia", "solar", "bioclimatico", "confort"],
+      "temas": [
+        "vivienda",
+        "energia",
+        "eficiencia",
+        "solar",
+        "bioclimatico",
+        "confort"
+      ],
       "year": 2021,
       "rally": "latam",
       "categoria": "innovacion",
@@ -54,7 +77,15 @@
     },
     {
       "id": "stem_synergy_huertos_2025",
-      "temas": ["agricultura", "huertos", "agua", "riego", "reciclaje", "materiales", "urbano"],
+      "temas": [
+        "agricultura",
+        "huertos",
+        "agua",
+        "riego",
+        "reciclaje",
+        "materiales",
+        "urbano"
+      ],
       "year": 2025,
       "rally": "latam",
       "categoria": "innovacion",
@@ -71,7 +102,13 @@
     },
     {
       "id": "seiketsu_serpientes_2022",
-      "temas": ["salud", "serpientes", "rural", "emergencia", "biomedico"],
+      "temas": [
+        "salud",
+        "serpientes",
+        "rural",
+        "emergencia",
+        "biomedico"
+      ],
       "year": 2022,
       "rally": "latam",
       "categoria": "innovacion",
@@ -88,7 +125,14 @@
     },
     {
       "id": "lexostop_parada_2019",
-      "temas": ["energia", "transporte", "buses", "eolica", "solar", "urbano"],
+      "temas": [
+        "energia",
+        "transporte",
+        "buses",
+        "eolica",
+        "solar",
+        "urbano"
+      ],
       "year": 2019,
       "rally": "latam",
       "categoria": "impacto_social",
@@ -105,7 +149,14 @@
     },
     {
       "id": "alertar_ingeniarte_2021",
-      "temas": ["violencia", "genero", "seguridad", "hardware", "emergencia", "confinamiento"],
+      "temas": [
+        "violencia",
+        "genero",
+        "seguridad",
+        "hardware",
+        "emergencia",
+        "confinamiento"
+      ],
       "year": 2021,
       "rally": "latam",
       "categoria": "impacto_social",
@@ -122,7 +173,14 @@
     },
     {
       "id": "bioinnova_nicarq_2023",
-      "temas": ["vivienda", "agua", "saneamiento", "huertos", "alimentos", "resiliencia"],
+      "temas": [
+        "vivienda",
+        "agua",
+        "saneamiento",
+        "huertos",
+        "alimentos",
+        "resiliencia"
+      ],
       "year": 2023,
       "rally": "latam",
       "categoria": "impacto_social",
@@ -139,7 +197,14 @@
     },
     {
       "id": "mentes_volcanicas_tetrapak_2025",
-      "temas": ["reciclaje", "tetrapak", "construccion", "paneles", "residuos", "circular"],
+      "temas": [
+        "reciclaje",
+        "tetrapak",
+        "construccion",
+        "paneles",
+        "residuos",
+        "circular"
+      ],
       "year": 2025,
       "rally": "latam",
       "categoria": "impacto_social",
@@ -156,7 +221,13 @@
     },
     {
       "id": "bottlelife_envases_2017",
-      "temas": ["reciclaje", "plastico", "vivienda", "construccion", "residuos"],
+      "temas": [
+        "reciclaje",
+        "plastico",
+        "vivienda",
+        "construccion",
+        "residuos"
+      ],
       "year": 2017,
       "rally": "latam",
       "categoria": "impacto_social",
@@ -173,7 +244,14 @@
     },
     {
       "id": "geckakz_ninos_2016",
-      "temas": ["discapacidad", "ninos", "ciegos", "juego", "inclusion", "educacion"],
+      "temas": [
+        "discapacidad",
+        "ninos",
+        "ciegos",
+        "juego",
+        "inclusion",
+        "educacion"
+      ],
       "year": 2016,
       "rally": "latam",
       "categoria": "impacto_social",
@@ -189,14 +267,21 @@
       "video_url": ""
     },
     {
-      "id": "ollnari_artesania_2023",
-      "temas": ["artesania", "comercio", "mercado", "digital", "cultura", "emprendimiento"],
-      "year": 2023,
+      "id": "ollnari_artesania_2025",
+      "temas": [
+        "artesania",
+        "comercio",
+        "mercado",
+        "digital",
+        "cultura",
+        "emprendimiento"
+      ],
+      "year": 2025,
       "rally": "nacional",
-      "categoria": "tecnologica",
-      "equipo": "Ollnari (Joséfa Toledo de Aguerri, Juigalpa / INATEC)",
+      "categoria": "procesos",
+      "equipo": "Operación Titán (UNI-RUPAP / INATEC)",
       "proyecto": "Ollnari",
-      "puesto": "1er lugar nacional Innovación Tecnológica",
+      "puesto": "1er lugar nacional Innovación de Procesos u Organizacional",
       "problema": "Artesanos desconectados de los mercados nacionales e internacionales.",
       "causa_raiz": "No documentado en la fuente",
       "insight": "Conectar el talento artesanal con el mundo mediante un catálogo con Origen Garantizado y mapa interactivo, mostrando la plataforma en navegación real y no como pantalla estática.",
@@ -207,7 +292,14 @@
     },
     {
       "id": "ignis_code_polinizadores_2026",
-      "temas": ["polinizadores", "abejas", "biodiversidad", "clima", "agricultura", "refugios"],
+      "temas": [
+        "polinizadores",
+        "abejas",
+        "biodiversidad",
+        "clima",
+        "agricultura",
+        "refugios"
+      ],
       "year": 2026,
       "rally": "nacional",
       "categoria": "tecnologica",
@@ -224,7 +316,14 @@
     },
     {
       "id": "avocado_motores_2026",
-      "temas": ["motores", "reutilizacion", "electromecanica", "energia", "rural", "circular"],
+      "temas": [
+        "motores",
+        "reutilizacion",
+        "electromecanica",
+        "energia",
+        "rural",
+        "circular"
+      ],
       "year": 2026,
       "rally": "nacional",
       "categoria": "social",
@@ -241,7 +340,13 @@
     },
     {
       "id": "elohim_inclusion_2026",
-      "temas": ["discapacidad", "inclusion", "tecnologia", "accesibilidad", "educacion"],
+      "temas": [
+        "discapacidad",
+        "inclusion",
+        "tecnologia",
+        "accesibilidad",
+        "educacion"
+      ],
       "year": 2026,
       "rally": "nacional",
       "categoria": "social",
@@ -258,7 +363,15 @@
     },
     {
       "id": "sinergia360_bidisign_2026",
-      "temas": ["discapacidad", "sordera", "senas", "vision", "artificial", "inclusion", "comunicacion"],
+      "temas": [
+        "discapacidad",
+        "sordera",
+        "senas",
+        "vision",
+        "artificial",
+        "inclusion",
+        "comunicacion"
+      ],
       "year": 2026,
       "rally": "nacional",
       "categoria": "social",
@@ -275,7 +388,14 @@
     },
     {
       "id": "solareductech_banca_2026",
-      "temas": ["energia", "solar", "mobiliario", "urbano", "alumbrado", "recarga"],
+      "temas": [
+        "energia",
+        "solar",
+        "mobiliario",
+        "urbano",
+        "alumbrado",
+        "recarga"
+      ],
       "year": 2026,
       "rally": "nacional",
       "categoria": "tecnologica",
@@ -292,7 +412,14 @@
     },
     {
       "id": "lubanic_sitracafe_2026",
-      "temas": ["cafe", "trazabilidad", "fermentacion", "beneficio", "agricultura", "procesos"],
+      "temas": [
+        "cafe",
+        "trazabilidad",
+        "fermentacion",
+        "beneficio",
+        "agricultura",
+        "procesos"
+      ],
       "year": 2026,
       "rally": "nacional",
       "categoria": "procesos",
@@ -309,7 +436,13 @@
     },
     {
       "id": "steel_innovators_sensores_2026",
-      "temas": ["sensores", "agricultura", "bajo costo", "comunidad", "monitoreo"],
+      "temas": [
+        "sensores",
+        "agricultura",
+        "bajo costo",
+        "comunidad",
+        "monitoreo"
+      ],
       "year": 2026,
       "rally": "nacional",
       "categoria": "tecnologica",
@@ -326,7 +459,13 @@
     },
     {
       "id": "nanobots_filtracion_2026",
-      "temas": ["agua", "filtracion", "nanomateriales", "reciclaje", "sensores"],
+      "temas": [
+        "agua",
+        "filtracion",
+        "nanomateriales",
+        "reciclaje",
+        "sensores"
+      ],
       "year": 2026,
       "rally": "nacional",
       "categoria": "tecnologica",

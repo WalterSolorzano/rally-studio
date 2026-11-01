@@ -1,0 +1,117 @@
+{
+ "video_id": "BaNxUOmKXc4",
+ "url": "https://youtu.be/BaNxUOmKXc4",
+ "year": 2025,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "AGROELEVADO",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "AGROELEVADO",
+   "challenge": "05 - HUERTOS VERTICALES"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:35:36+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Sabía que el crecimiento de la ciudad ha dejado cada vez menos espacio para producir nuestro propio alimento Entre tantos segmentos y edificios, la agricultura urbana se ha vuelto una necesidad Pero hay un problema, muchos huertos verticales son caros, difíciles de mantener y terminado abandonado por falta de conocimiento y planificación Por eso, creamos una solución práctica, económica y sostenible Un huerto vertical modular hecho con tubos de PVC, tablas de madera reciclada y un barrio reutilizado para almacenar agua Este sistema de riego por goteo, regulable y con sensores inteligentes de humedad que controlan el riego de forma automática Usando la cantidad de agua que la planta necesita realmente Hacia ahorramos hasta un 25 de agua y garantizamos un crecimiento saludable y constante Además, nuestro modelo incluye capacitaciones comunitarias para enseñar a mantener el huerto Controlar plagas, hacer compos y aprovechar cada espacio Queremos que cada familia, escuela o comunidad pueda producir su propio alimento fresco Aún es, aún es espacio pequeño como azoteas o balcones Durante el diseño, descartamos cajones de madera porque se dañan y acumulan bacterias Pilas de madera por su costo y poca dorabilidad y huerto fijo en paredes Porque limitan el movimiento, también elegimos una estructura móvil económica y bradera Todo el sistema tiene un costo total de $7,205 cortobas menos de $200 dólares Es accesible, replicable y sostenible en el tiempo Con esta propuesta queremos transformar la ciudad en lugar más verde, productivo y sostenible",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 5.5,
+   "text": "Sabía que el crecimiento de la ciudad ha dejado cada vez menos espacio para producir nuestro propio alimento"
+  },
+  {
+   "start": 5.5,
+   "end": 9.94,
+   "text": "Entre tantos segmentos y edificios, la agricultura urbana se ha vuelto una necesidad"
+  },
+  {
+   "start": 9.94,
+   "end": 18.0,
+   "text": "Pero hay un problema, muchos huertos verticales son caros, difíciles de mantener y terminado abandonado por falta de conocimiento y planificación"
+  },
+  {
+   "start": 18.0,
+   "end": 22.0,
+   "text": "Por eso, creamos una solución práctica, económica y sostenible"
+  },
+  {
+   "start": 22.0,
+   "end": 29.5,
+   "text": "Un huerto vertical modular hecho con tubos de PVC, tablas de madera reciclada y un barrio reutilizado para almacenar agua"
+  },
+  {
+   "start": 29.5,
+   "end": 37.5,
+   "text": "Este sistema de riego por goteo, regulable y con sensores inteligentes de humedad que controlan el riego de forma automática"
+  },
+  {
+   "start": 37.5,
+   "end": 42.5,
+   "text": "Usando la cantidad de agua que la planta necesita realmente"
+  },
+  {
+   "start": 42.5,
+   "end": 47.5,
+   "text": "Hacia ahorramos hasta un 25 de agua y garantizamos un crecimiento saludable y constante"
+  },
+  {
+   "start": 47.5,
+   "end": 54.5,
+   "text": "Además, nuestro modelo incluye capacitaciones comunitarias para enseñar a mantener el huerto"
+  },
+  {
+   "start": 54.5,
+   "end": 58.5,
+   "text": "Controlar plagas, hacer compos y aprovechar cada espacio"
+  },
+  {
+   "start": 58.5,
+   "end": 62.5,
+   "text": "Queremos que cada familia, escuela o comunidad pueda producir su propio alimento fresco"
+  },
+  {
+   "start": 62.5,
+   "end": 66.5,
+   "text": "Aún es, aún es espacio pequeño como azoteas o balcones"
+  },
+  {
+   "start": 66.5,
+   "end": 72.5,
+   "text": "Durante el diseño, descartamos cajones de madera porque se dañan y acumulan bacterias"
+  },
+  {
+   "start": 72.5,
+   "end": 78.5,
+   "text": "Pilas de madera por su costo y poca dorabilidad y huerto fijo en paredes"
+  },
+  {
+   "start": 78.5,
+   "end": 85.5,
+   "text": "Porque limitan el movimiento, también elegimos una estructura móvil económica y bradera"
+  },
+  {
+   "start": 85.5,
+   "end": 90.5,
+   "text": "Todo el sistema tiene un costo total de $7,205 cortobas menos de $200 dólares"
+  },
+  {
+   "start": 90.5,
+   "end": 94.5,
+   "text": "Es accesible, replicable y sostenible en el tiempo"
+  },
+  {
+   "start": 94.5,
+   "end": 100.5,
+   "text": "Con esta propuesta queremos transformar la ciudad en lugar más verde, productivo y sostenible"
+  }
+ ],
+ "has_info": false,
+ "duration_s": 100.5
+}

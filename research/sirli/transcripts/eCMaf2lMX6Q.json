@@ -1,0 +1,167 @@
+{
+ "video_id": "eCMaf2lMX6Q",
+ "url": "https://www.youtube.com/watch?v=eCMaf2lMX6Q",
+ "year": 2023,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "VISIONARIOS DEL CAMBIO",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "VISIONARIOS DEL CAMBIO",
+   "challenge": "01 - MOVILIDAD SUSTENTABLE"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:33:00+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "La movilidad de los medios de transportes de Latinoamérica es un desafío y puede variar entre los distintos países, según los obstáculos que enfrentan al desarrollar sistemas de transporte ambientalmente sostenibles. Es un problema no resuelto, originado entre otras causas por la existencia de una infraestructura vial inadecuada, la congestión del tráfico, el transporte público deficiente en cantidad y cobertura a todas las zonas que lo demandan, inseguridad en las vías, contaminación ambiental por la emisión de gases de efecto invernadero entre otras. La propuesta, consiste en integrar un sistema de energía renovable con paneles solares en los vehículos de transporte colectivo y selectivo afiliados a cooperativas, es una idea innovadora y ecológica que permitirá generar electricidad a partir de la luz solar y reducir el consumo de combustibles. El impacto social que la propuesta generaría, está enfocada en reducir la dependencia de los combustibles fósiles y diversificar las fuentes de energía para el transporte, al igual que se contribuirá a disminuir la contaminación atmosférica y acústica, mejorando la calidad del aire y la salud de las personas, ahorrar dinero en el consumo de combustible y en el mantenimiento de los vehículos, fomentar la innovación tecnológica y el desarrollo de nuevas industrias relacionadas con la energía solar fotovoltaica, aumentar la seguridad vial y prevenir el delito por medio de la implementación de cámaras en los vehículos que permitan grabar, comunicar y disminuir el número de accidentes de tránsito. La implementación se complementará con una campaña de educación vial soportada en medios de comunicación tradicionales y en redes sociales, en la que debe involucrarse el gobierno y la sociedad civil. Además, se implementará la creación de estaciones de recarga de energía renovable en los vehículos, por medio del intercambio de baterías recargables en estaciones ubicadas estratégicamente en las sedes de cooperativas de transporte. Estas estaciones de carga contarán con un monitoreo del sistema de seguridad de cada vehículo, trabajando de mano con las autoridades del orden público.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 4.5,
+   "text": "La movilidad de los medios de transportes de Latinoamérica es un desafío y puede variar"
+  },
+  {
+   "start": 4.5,
+   "end": 9.42,
+   "text": "entre los distintos países, según los obstáculos que enfrentan al desarrollar sistemas de transporte"
+  },
+  {
+   "start": 9.42,
+   "end": 11.0,
+   "text": "ambientalmente sostenibles."
+  },
+  {
+   "start": 11.0,
+   "end": 15.66,
+   "text": "Es un problema no resuelto, originado entre otras causas por la existencia de una infraestructura"
+  },
+  {
+   "start": 15.66,
+   "end": 20.34,
+   "text": "vial inadecuada, la congestión del tráfico, el transporte público deficiente en cantidad"
+  },
+  {
+   "start": 20.34,
+   "end": 24.88,
+   "text": "y cobertura a todas las zonas que lo demandan, inseguridad en las vías, contaminación"
+  },
+  {
+   "start": 24.88,
+   "end": 29.28,
+   "text": "ambiental por la emisión de gases de efecto invernadero entre otras."
+  },
+  {
+   "start": 29.28,
+   "end": 33.68,
+   "text": "La propuesta, consiste en integrar un sistema de energía renovable con paneles solares en"
+  },
+  {
+   "start": 33.68,
+   "end": 38.6,
+   "text": "los vehículos de transporte colectivo y selectivo afiliados a cooperativas, es una idea innovadora"
+  },
+  {
+   "start": 38.6,
+   "end": 43.04,
+   "text": "y ecológica que permitirá generar electricidad a partir de la luz solar y reducir el consumo"
+  },
+  {
+   "start": 43.04,
+   "end": 45.04,
+   "text": "de combustibles."
+  },
+  {
+   "start": 45.04,
+   "end": 49.2,
+   "text": "El impacto social que la propuesta generaría, está enfocada en reducir la dependencia"
+  },
+  {
+   "start": 49.2,
+   "end": 53.52,
+   "text": "de los combustibles fósiles y diversificar las fuentes de energía para el transporte,"
+  },
+  {
+   "start": 53.52,
+   "end": 57.68,
+   "text": "al igual que se contribuirá a disminuir la contaminación atmosférica y acústica,"
+  },
+  {
+   "start": 57.68,
+   "end": 61.76,
+   "text": "mejorando la calidad del aire y la salud de las personas, ahorrar dinero en el consumo"
+  },
+  {
+   "start": 61.76,
+   "end": 66.04,
+   "text": "de combustible y en el mantenimiento de los vehículos, fomentar la innovación tecnológica"
+  },
+  {
+   "start": 66.04,
+   "end": 70.94,
+   "text": "y el desarrollo de nuevas industrias relacionadas con la energía solar fotovoltaica, aumentar"
+  },
+  {
+   "start": 70.94,
+   "end": 74.64,
+   "text": "la seguridad vial y prevenir el delito por medio de la implementación de cámaras en"
+  },
+  {
+   "start": 74.64,
+   "end": 78.64,
+   "text": "los vehículos que permitan grabar, comunicar y disminuir el número de accidentes de"
+  },
+  {
+   "start": 78.64,
+   "end": 80.16,
+   "text": "tránsito."
+  },
+  {
+   "start": 80.16,
+   "end": 83.56,
+   "text": "La implementación se complementará con una campaña de educación vial soportada"
+  },
+  {
+   "start": 83.56,
+   "end": 87.8,
+   "text": "en medios de comunicación tradicionales y en redes sociales, en la que debe involucrarse"
+  },
+  {
+   "start": 87.8,
+   "end": 90.24,
+   "text": "el gobierno y la sociedad civil."
+  },
+  {
+   "start": 90.24,
+   "end": 95.44,
+   "text": "Además, se implementará la creación de estaciones de recarga de energía renovable en los vehículos,"
+  },
+  {
+   "start": 95.44,
+   "end": 99.72,
+   "text": "por medio del intercambio de baterías recargables en estaciones ubicadas estratégicamente en"
+  },
+  {
+   "start": 99.72,
+   "end": 102.76,
+   "text": "las sedes de cooperativas de transporte."
+  },
+  {
+   "start": 102.76,
+   "end": 106.16,
+   "text": "Estas estaciones de carga contarán con un monitoreo del sistema de seguridad de"
+  },
+  {
+   "start": 106.16,
+   "end": 110.04,
+   "text": "cada vehículo, trabajando de mano con las autoridades del orden público."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 110.8
+}

@@ -1,0 +1,147 @@
+{
+ "video_id": "5N4kTueKCrw",
+ "url": "https://www.youtube.com/watch?v=5N4kTueKCrw",
+ "year": 2024,
+ "collection": "sede",
+ "country": "CHILE",
+ "team": "INNOVA EVACUATION UDLA VL",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "INNOVA EVACUATION UDLA VL",
+   "challenge": "05 - EVACUACIÓN"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:35:01+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Vamos a pasar, vamos a pasar. Vamos a pasar. Si les evitar que estas situaciones vuelvan a ocurrir, donde se perdieron vidas debido a la falta de protocolos de evacuación y escasa información, no creemos que las llamas toquen tu puerta. Nucismo te encierra en un callejón sin salida, el que podría ser tu último recorrido. Los protocolos de evacuación actuales y las herramientas existentes no son inclusivos con grupos vulnerables, son muy generales y poco específicos. No presentan una buena conexión y comunicación entre las diferentes entidades reguladoras de desastres. No tienen información actualizada y constante, no hay herramientas de fácil acceso globalizada e integradora de ayuda inmediata. Por el contrario, nuestra propuesta, o sea, Sain, es innovadora e integradora. Pensada en una globalidad inclusiva donde todos los grupos de la sociedad son integrados y no una fórmula generalizada y poco ajustable. Presentamos herramientas personalizadas a través de opciones dentro de la aplicación donde se pueden crear comunidades como Universidad de las Américas. Dentro de este grupo ingresan miembros como estudiantes, profesores, autoridades, etc. Los cuales ingresan con roles específicos, como agente de apoyo, director, docente, primeros auxilios y un largo, etc. Dentro de los cuales, todos los miembros pueden acceder el plan de evacuación. Routas son aseguras entre otras de la institución y así con todos los edificios e instituciones. Asimismo, nuestra propuesta ofrece dos pasos de acción. El primero, la evaluación del recinto al exterior y el segundo, del exterior de las zonas seguras. ofreciendo rutas rápidas y accesibles, así como una comunicación con familiares y amigos a través de una agenda de contactos, de emergencia y saber dónde están y si están evacuando, así como toda la información actualizada del desastre.",
+ "segments": [
+  {
+   "start": 1.36,
+   "end": 3.36,
+   "text": "Vamos a pasar, vamos a pasar."
+  },
+  {
+   "start": 5.36,
+   "end": 6.36,
+   "text": "Vamos a pasar."
+  },
+  {
+   "start": 6.36,
+   "end": 9.36,
+   "text": "Si les evitar que estas situaciones vuelvan a ocurrir,"
+  },
+  {
+   "start": 9.36,
+   "end": 15.36,
+   "text": "donde se perdieron vidas debido a la falta de protocolos de evacuación y escasa información,"
+  },
+  {
+   "start": 15.36,
+   "end": 17.36,
+   "text": "no creemos que las llamas toquen tu puerta."
+  },
+  {
+   "start": 17.36,
+   "end": 22.36,
+   "text": "Nucismo te encierra en un callejón sin salida, el que podría ser tu último recorrido."
+  },
+  {
+   "start": 23.36,
+   "end": 28.36,
+   "text": "Los protocolos de evacuación actuales y las herramientas existentes no son inclusivos con grupos vulnerables,"
+  },
+  {
+   "start": 28.36,
+   "end": 30.36,
+   "text": "son muy generales y poco específicos."
+  },
+  {
+   "start": 30.36,
+   "end": 35.36,
+   "text": "No presentan una buena conexión y comunicación entre las diferentes entidades reguladoras de desastres."
+  },
+  {
+   "start": 36.36,
+   "end": 42.36,
+   "text": "No tienen información actualizada y constante, no hay herramientas de fácil acceso globalizada e integradora de ayuda inmediata."
+  },
+  {
+   "start": 42.36,
+   "end": 49.36,
+   "text": "Por el contrario, nuestra propuesta, o sea, Sain, es innovadora e integradora."
+  },
+  {
+   "start": 50.36,
+   "end": 55.36,
+   "text": "Pensada en una globalidad inclusiva donde todos los grupos de la sociedad son integrados"
+  },
+  {
+   "start": 55.36,
+   "end": 58.36,
+   "text": "y no una fórmula generalizada y poco ajustable."
+  },
+  {
+   "start": 58.36,
+   "end": 62.36,
+   "text": "Presentamos herramientas personalizadas a través de opciones dentro de la aplicación"
+  },
+  {
+   "start": 62.36,
+   "end": 66.36,
+   "text": "donde se pueden crear comunidades como Universidad de las Américas."
+  },
+  {
+   "start": 66.36,
+   "end": 72.36,
+   "text": "Dentro de este grupo ingresan miembros como estudiantes, profesores, autoridades, etc."
+  },
+  {
+   "start": 72.36,
+   "end": 81.36,
+   "text": "Los cuales ingresan con roles específicos, como agente de apoyo, director, docente, primeros auxilios y un largo, etc."
+  },
+  {
+   "start": 81.36,
+   "end": 85.36,
+   "text": "Dentro de los cuales, todos los miembros pueden acceder el plan de evacuación."
+  },
+  {
+   "start": 85.36,
+   "end": 92.36,
+   "text": "Routas son aseguras entre otras de la institución y así con todos los edificios e instituciones."
+  },
+  {
+   "start": 93.36,
+   "end": 96.36,
+   "text": "Asimismo, nuestra propuesta ofrece dos pasos de acción."
+  },
+  {
+   "start": 97.36,
+   "end": 103.36,
+   "text": "El primero, la evaluación del recinto al exterior y el segundo, del exterior de las zonas seguras."
+  },
+  {
+   "start": 104.36,
+   "end": 109.36,
+   "text": "ofreciendo rutas rápidas y accesibles, así como una comunicación con familiares y amigos"
+  },
+  {
+   "start": 109.36,
+   "end": 116.36,
+   "text": "a través de una agenda de contactos, de emergencia y saber dónde están y si están evacuando,"
+  },
+  {
+   "start": 116.36,
+   "end": 119.36,
+   "text": "así como toda la información actualizada del desastre."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.5
+}

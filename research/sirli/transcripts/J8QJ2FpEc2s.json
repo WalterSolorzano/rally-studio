@@ -1,0 +1,92 @@
+{
+ "video_id": "J8QJ2FpEc2s",
+ "url": "https://www.youtube.com/watch?v=J8QJ2FpEc2s",
+ "year": 2024,
+ "collection": "sede",
+ "country": "CHILE",
+ "team": "UBBSAURIOS",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "UBBSAURIOS",
+   "challenge": "05 - EVACUACIÓN"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:36:24+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Las vacaciones en situaciones de riesgo suelen ser confusas y poco claras, al poseer mecanismos estáticos y logrando señalar únicamente dos direcciones. Muchas veces en contra de la salida se vuelve una misión compleja. Las faldosas están formadas por paneles capaces de animar señaléticas y señalar la vía de vacación. Gracias a la conexión de los mismos con sensores de humo, temperatura y reconocimiento de imágenes. Si una vía de vacación es interrumpida ya sea por escombros o un incendio, las faldosas son capaces de reddireccionar el flujo de vacación hacia una nueva ruta más óptima. Para la instalación se requiere extraer del suelo una sección de 45 por 45 centímetros, con 4 centímetros de profundidad y realizar las conexiones eléctricas. Cada faldoza consume un aproximado de 130 W, generando que el costo de funcionamiento sea de 2 centavos de dólar la hora, octubre de 2024. El costo de producción de una faldoza es de aproximadamente 49 dólares la pieza. Con nuestro proyecto le mostramos una forma dinámica y de bajo costo para optimizar la evocación de masas. ¿Te sumas el cambio?",
+ "segments": [
+  {
+   "start": 0.62,
+   "end": 6.68,
+   "text": "Las vacaciones en situaciones de riesgo suelen ser confusas y poco claras, al poseer mecanismos"
+  },
+  {
+   "start": 6.68,
+   "end": 12.56,
+   "text": "estáticos y logrando señalar únicamente dos direcciones. Muchas veces en contra de la salida"
+  },
+  {
+   "start": 12.56,
+   "end": 18.94,
+   "text": "se vuelve una misión compleja. Las faldosas están formadas por paneles capaces de animar"
+  },
+  {
+   "start": 18.94,
+   "end": 25.02,
+   "text": "señaléticas y señalar la vía de vacación. Gracias a la conexión de los mismos con"
+  },
+  {
+   "start": 25.02,
+   "end": 29.66,
+   "text": "sensores de humo, temperatura y reconocimiento de imágenes. Si una vía de"
+  },
+  {
+   "start": 29.66,
+   "end": 35.18,
+   "text": "vacación es interrumpida ya sea por escombros o un incendio, las faldosas son capaces de"
+  },
+  {
+   "start": 35.18,
+   "end": 42.54,
+   "text": "reddireccionar el flujo de vacación hacia una nueva ruta más óptima. Para la instalación"
+  },
+  {
+   "start": 42.54,
+   "end": 48.86,
+   "text": "se requiere extraer del suelo una sección de 45 por 45 centímetros, con 4 centímetros de profundidad"
+  },
+  {
+   "start": 49.18,
+   "end": 54.98,
+   "text": "y realizar las conexiones eléctricas. Cada faldoza consume un aproximado de 130 W,"
+  },
+  {
+   "start": 54.98,
+   "end": 59.74,
+   "text": "generando que el costo de funcionamiento sea de 2 centavos de dólar la hora,"
+  },
+  {
+   "start": 59.74,
+   "end": 66.62,
+   "text": "octubre de 2024. El costo de producción de una faldoza es de aproximadamente 49 dólares la"
+  },
+  {
+   "start": 66.62,
+   "end": 72.26,
+   "text": "pieza. Con nuestro proyecto le mostramos una forma dinámica y de bajo costo para optimizar la"
+  },
+  {
+   "start": 72.26,
+   "end": 74.58,
+   "text": "evocación de masas. ¿Te sumas el cambio?"
+  }
+ ],
+ "has_info": false,
+ "duration_s": 77.0
+}

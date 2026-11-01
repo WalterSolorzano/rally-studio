@@ -1,0 +1,167 @@
+{
+ "video_id": "2yqmeY6wQQI",
+ "url": "https://youtu.be/2yqmeY6wQQI?si=sdeFYDX7pBCtJJNe",
+ "year": 2026,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "XABON",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "XABON",
+   "challenge": "08 - DESECHOS DE BASURA VERDE"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:34:33+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Uno se amarga, uno se obstina, se cansa uno de esto. No existe, no hay glúteas, es como para llorar. Te imaginas vivir en un lugar donde tener electricidad todos los días todavía sea un lujo. Mientras muchas familias tienen dificultades para acceder a energía, paneles solar en todo el mundo son descartados, incluso cuando pueden seguir funcionando. Según la Global Energy Association, para 2060 el mundo podría acumular hasta 400 millones de toneladas de paneles solar desechados. Eso si no hacemos algo. Después de 25 años, un panel puede conservar cerca del 88% de su capacidad original. Eso significa que desechamos energía que todavía puede aprovecharse. Nosotros somos sabón, y queremos conectar esos problemas para convertirlos en una solución. Darle una segunda oportunidad a la energía que todavía puede utilizarse. Recolectamos paneles solar usados de organismos que buscan deshacerse de ellos, los evaluamos y convertimos en kits energéticos. Nuestro diseño integra un panel de 60 celdas, el modelo más común. Y a su vez un controlador MPPT, una batería live-spec-4 de 256 horas y 6 salidas eléctricas. Su estructura facilita el acceso y movilidad en viviendas. La inclinación del panel se ajusta a la latitud de cada país, que tiene un mínimo de 10 grados para que la lluvia lo limpia. La APTA incluye una aplicación que funciona sin internet. Esta monitorea la batería, la generación solar y la constancia del consumo, tanto del panel como de las 6 conexiones disponibles. Conectando con el ODS-7 de energía asequible, el ODS-12 de producción responsable y el ODS-13 de la acción por el clima. Nuestro piloto beneficiará a 25 familias con estaciones gratuitas para manejar más de 200 W diarios, con un costo estimado de 398 dólares en componentes. Nada se desperdicia. Cuando un panel finalmente llega al final de su vida útil, recuperamos y comercializamos sus materiales para aprovechar al máximo cada recurso. Porque para nosotros nada debería desperdiciarse si todavía puede generar valor. La APTA que renace.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 4.12,
+   "text": "Uno se amarga, uno se obstina, se cansa uno de esto."
+  },
+  {
+   "start": 4.12,
+   "end": 6.92,
+   "text": "No existe, no hay glúteas, es como para llorar."
+  },
+  {
+   "start": 6.92,
+   "end": 11.36,
+   "text": "Te imaginas vivir en un lugar donde tener electricidad todos los días todavía sea un lujo."
+  },
+  {
+   "start": 11.36,
+   "end": 14.52,
+   "text": "Mientras muchas familias tienen dificultades para acceder a energía,"
+  },
+  {
+   "start": 14.52,
+   "end": 19.12,
+   "text": "paneles solar en todo el mundo son descartados, incluso cuando pueden seguir funcionando."
+  },
+  {
+   "start": 19.12,
+   "end": 27.92,
+   "text": "Según la Global Energy Association, para 2060 el mundo podría acumular hasta 400 millones de toneladas de paneles solar desechados."
+  },
+  {
+   "start": 27.92,
+   "end": 29.92,
+   "text": "Eso si no hacemos algo."
+  },
+  {
+   "start": 29.96,
+   "end": 35.48,
+   "text": "Después de 25 años, un panel puede conservar cerca del 88% de su capacidad original."
+  },
+  {
+   "start": 35.48,
+   "end": 39.08,
+   "text": "Eso significa que desechamos energía que todavía puede aprovecharse."
+  },
+  {
+   "start": 39.08,
+   "end": 43.32,
+   "text": "Nosotros somos sabón, y queremos conectar esos problemas para convertirlos en una solución."
+  },
+  {
+   "start": 43.32,
+   "end": 46.28,
+   "text": "Darle una segunda oportunidad a la energía que todavía puede utilizarse."
+  },
+  {
+   "start": 46.28,
+   "end": 50.08,
+   "text": "Recolectamos paneles solar usados de organismos que buscan deshacerse de ellos,"
+  },
+  {
+   "start": 50.08,
+   "end": 52.92,
+   "text": "los evaluamos y convertimos en kits energéticos."
+  },
+  {
+   "start": 52.92,
+   "end": 56.92,
+   "text": "Nuestro diseño integra un panel de 60 celdas, el modelo más común."
+  },
+  {
+   "start": 56.92,
+   "end": 63.92,
+   "text": "Y a su vez un controlador MPPT, una batería live-spec-4 de 256 horas y 6 salidas eléctricas."
+  },
+  {
+   "start": 63.92,
+   "end": 66.92,
+   "text": "Su estructura facilita el acceso y movilidad en viviendas."
+  },
+  {
+   "start": 66.92,
+   "end": 73.92,
+   "text": "La inclinación del panel se ajusta a la latitud de cada país, que tiene un mínimo de 10 grados para que la lluvia lo limpia."
+  },
+  {
+   "start": 73.92,
+   "end": 76.92,
+   "text": "La APTA incluye una aplicación que funciona sin internet."
+  },
+  {
+   "start": 76.92,
+   "end": 80.92,
+   "text": "Esta monitorea la batería, la generación solar y la constancia del consumo,"
+  },
+  {
+   "start": 80.92,
+   "end": 83.92,
+   "text": "tanto del panel como de las 6 conexiones disponibles."
+  },
+  {
+   "start": 83.92,
+   "end": 91.92,
+   "text": "Conectando con el ODS-7 de energía asequible, el ODS-12 de producción responsable y el ODS-13 de la acción por el clima."
+  },
+  {
+   "start": 91.92,
+   "end": 98.92,
+   "text": "Nuestro piloto beneficiará a 25 familias con estaciones gratuitas para manejar más de 200 W diarios,"
+  },
+  {
+   "start": 98.92,
+   "end": 102.92,
+   "text": "con un costo estimado de 398 dólares en componentes."
+  },
+  {
+   "start": 102.92,
+   "end": 103.92,
+   "text": "Nada se desperdicia."
+  },
+  {
+   "start": 103.92,
+   "end": 106.92,
+   "text": "Cuando un panel finalmente llega al final de su vida útil,"
+  },
+  {
+   "start": 106.92,
+   "end": 110.92,
+   "text": "recuperamos y comercializamos sus materiales para aprovechar al máximo cada recurso."
+  },
+  {
+   "start": 110.92,
+   "end": 115.92,
+   "text": "Porque para nosotros nada debería desperdiciarse si todavía puede generar valor."
+  },
+  {
+   "start": 115.92,
+   "end": 117.92,
+   "text": "La APTA que renace."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.4
+}

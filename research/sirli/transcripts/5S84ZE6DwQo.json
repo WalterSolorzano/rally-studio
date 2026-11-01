@@ -1,0 +1,72 @@
+{
+ "video_id": "5S84ZE6DwQo",
+ "url": "https://youtu.be/5S84ZE6DwQo",
+ "year": 2022,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "ECOCOMPONENTES",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "ECOCOMPONENTES",
+   "challenge": "04 - AHORRO ENERGÉTICO EN EL SECTOR GASTRONÓMICO"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:15:50+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Presentamos ecocomponentes. La solución para el ahorro de energía convencional y aprovechamientos de desechos generados en el sector gastronómico, provocando menores gastos. A través de ecocomponentes independientes, se les autoran a las cocinas, dispositivos y módulos que son productivos, eficaces y que promueven la reutilización de desechos generados durante la jornada laboral. Los ecocomponentes que ofrecemos son el módulo de piso. Ofrecemos un sobrepiso al ya existente para colocar un seleccionador de desechos cuyo funcionamiento consiste en una cinta donde un sistema de sensores detecta y separa los tipos de desechos en ormánicos, plásticos y metales. También se agrega un tanque que almacena el aceite usado en la cocina previamente filtrado para convertirse en combustible para alimentar un generador de energía aléctrica. El módulo de pared. Ofrecemos una falsa pared con estructura de acero galvanizado y frente de EPS, la cual en su interior contará con canirías de circulación de agua para la refrigeración del ambiente. También alimentarán a los asparzoles contra incendio. Si la zona lo permite, el agua que se utilizará será obtenida de agua de lluvia o de lo contrario será de agua escruida. El módulo de techo. Ofrecemos la instalación de un techo compuesto por paneles termoléctricos que generan electricidad para usar en la cocina con regillas de ventilación automatizada para la circulación de aire necesarias para nivelar las temperaturas. Si la zona lo permite, se pueden agregar paneles y termotanques solares para optimizar la energía. En Nicocomponentes queremos que vivas todos los beneficios que tiene la energía sustentable para tu negocio y economía contribuyendo también a la conservación del medio ambiente.",
+ "segments": [
+  {
+   "start": 0.59,
+   "end": 10.59,
+   "text": "Presentamos ecocomponentes. La solución para el ahorro de energía convencional y aprovechamientos de desechos generados en el sector gastronómico, provocando menores gastos."
+  },
+  {
+   "start": 10.59,
+   "end": 21.59,
+   "text": "A través de ecocomponentes independientes, se les autoran a las cocinas, dispositivos y módulos que son productivos, eficaces y que promueven la reutilización de desechos generados durante la jornada laboral."
+  },
+  {
+   "start": 21.59,
+   "end": 38.59,
+   "text": "Los ecocomponentes que ofrecemos son el módulo de piso. Ofrecemos un sobrepiso al ya existente para colocar un seleccionador de desechos cuyo funcionamiento consiste en una cinta donde un sistema de sensores detecta y separa los tipos de desechos en ormánicos, plásticos y metales."
+  },
+  {
+   "start": 38.59,
+   "end": 47.59,
+   "text": "También se agrega un tanque que almacena el aceite usado en la cocina previamente filtrado para convertirse en combustible para alimentar un generador de energía aléctrica."
+  },
+  {
+   "start": 47.59,
+   "end": 59.59,
+   "text": "El módulo de pared. Ofrecemos una falsa pared con estructura de acero galvanizado y frente de EPS, la cual en su interior contará con canirías de circulación de agua para la refrigeración del ambiente."
+  },
+  {
+   "start": 59.59,
+   "end": 68.59,
+   "text": "También alimentarán a los asparzoles contra incendio. Si la zona lo permite, el agua que se utilizará será obtenida de agua de lluvia o de lo contrario será de agua escruida."
+  },
+  {
+   "start": 68.59,
+   "end": 81.59,
+   "text": "El módulo de techo. Ofrecemos la instalación de un techo compuesto por paneles termoléctricos que generan electricidad para usar en la cocina con regillas de ventilación automatizada para la circulación de aire necesarias para nivelar las temperaturas."
+  },
+  {
+   "start": 81.59,
+   "end": 86.59,
+   "text": "Si la zona lo permite, se pueden agregar paneles y termotanques solares para optimizar la energía."
+  },
+  {
+   "start": 86.59,
+   "end": 95.59,
+   "text": "En Nicocomponentes queremos que vivas todos los beneficios que tiene la energía sustentable para tu negocio y economía contribuyendo también a la conservación del medio ambiente."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 102.2
+}

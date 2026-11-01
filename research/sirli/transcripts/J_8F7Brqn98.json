@@ -1,0 +1,127 @@
+{
+ "video_id": "J_8F7Brqn98",
+ "url": "https://youtu.be/J_8F7Brqn98",
+ "year": 2023,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "CUAYAMANI",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "CUAYAMANI",
+   "challenge": "08 - TRATAR DE ESTAR MEJOR"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:20:20+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Sabemos que la pandemia de COVID-19 ha incrementado en todos los aspectos de la salud en toda la población, generando alta tasa de depresión en adolescentes por las secuelas de COVID en cuanto a la salud mental, que han llegado a impactar de manera negativa el aprendizaje, las interrelaciones personales y en casos mayores generando suicidio. Ante esta situación, el equipo Huayami creó el sistema informático Hope Searches, que busca la manera de prevenir estas afectaciones psicológicas a través de la interacción virtual. Hope Searches pretende ayudar a las personas que sufrieron traumas durante la pandemia de COVID-19 con la finalidad de evitar el incremento de suicidios a nivel global. Este sistema informático ofrece una amplia interfaz que facilita el acceso a información sobre niveles de estado de salud mental. Puede ser utilizado por personas que quieran ayudar a otras personas con estos problemas, brindando guías de aprendizaje sobre cada estado que considera acertado con esa persona, es un sitio gratuito. Este sistema asegura la privacidad del usuario, cuenta con un algoritmo que permite identificar situaciones de riesgo donde requiere asistencia profesional. Tras la identificación de riesgo, cuenta con una integración de llamada de emergencia. En su funcionamiento tenemos que Hope Searches funciona mediante módulos, comenzando por el módulo de recopilación de datos, seguido el detección de síntomas, categorización por etapa, jerarquización de nivel de implicación, módulo de respuesta y apoyo, módulo de comunidad de apoyo, módulo de acompañamiento por videoconferencias, módulo de evaluación y retroalimentación finalizando con un módulo de integración con sistemas de salud.",
+ "segments": [
+  {
+   "start": 2.74,
+   "end": 9.44,
+   "text": "Sabemos que la pandemia de COVID-19 ha incrementado en todos los aspectos de la salud en toda la población,"
+  },
+  {
+   "start": 9.44,
+   "end": 16.04,
+   "text": "generando alta tasa de depresión en adolescentes por las secuelas de COVID en cuanto a la salud mental,"
+  },
+  {
+   "start": 16.04,
+   "end": 21.74,
+   "text": "que han llegado a impactar de manera negativa el aprendizaje, las interrelaciones personales"
+  },
+  {
+   "start": 21.74,
+   "end": 24.54,
+   "text": "y en casos mayores generando suicidio."
+  },
+  {
+   "start": 24.54,
+   "end": 30.34,
+   "text": "Ante esta situación, el equipo Huayami creó el sistema informático Hope Searches,"
+  },
+  {
+   "start": 30.34,
+   "end": 36.04,
+   "text": "que busca la manera de prevenir estas afectaciones psicológicas a través de la interacción virtual."
+  },
+  {
+   "start": 36.04,
+   "end": 42.54,
+   "text": "Hope Searches pretende ayudar a las personas que sufrieron traumas durante la pandemia de COVID-19"
+  },
+  {
+   "start": 42.54,
+   "end": 46.54,
+   "text": "con la finalidad de evitar el incremento de suicidios a nivel global."
+  },
+  {
+   "start": 46.54,
+   "end": 55.34,
+   "text": "Este sistema informático ofrece una amplia interfaz que facilita el acceso a información sobre niveles de estado de salud mental."
+  },
+  {
+   "start": 55.84,
+   "end": 60.84,
+   "text": "Puede ser utilizado por personas que quieran ayudar a otras personas con estos problemas,"
+  },
+  {
+   "start": 60.84,
+   "end": 67.54,
+   "text": "brindando guías de aprendizaje sobre cada estado que considera acertado con esa persona, es un sitio gratuito."
+  },
+  {
+   "start": 67.54,
+   "end": 74.34,
+   "text": "Este sistema asegura la privacidad del usuario, cuenta con un algoritmo que permite identificar situaciones de riesgo"
+  },
+  {
+   "start": 74.34,
+   "end": 76.94,
+   "text": "donde requiere asistencia profesional."
+  },
+  {
+   "start": 76.94,
+   "end": 82.04,
+   "text": "Tras la identificación de riesgo, cuenta con una integración de llamada de emergencia."
+  },
+  {
+   "start": 82.04,
+   "end": 86.74,
+   "text": "En su funcionamiento tenemos que Hope Searches funciona mediante módulos,"
+  },
+  {
+   "start": 86.74,
+   "end": 89.64,
+   "text": "comenzando por el módulo de recopilación de datos,"
+  },
+  {
+   "start": 89.64,
+   "end": 94.34,
+   "text": "seguido el detección de síntomas, categorización por etapa,"
+  },
+  {
+   "start": 94.34,
+   "end": 98.34,
+   "text": "jerarquización de nivel de implicación, módulo de respuesta y apoyo,"
+  },
+  {
+   "start": 98.34,
+   "end": 104.24,
+   "text": "módulo de comunidad de apoyo, módulo de acompañamiento por videoconferencias,"
+  },
+  {
+   "start": 104.24,
+   "end": 111.34,
+   "text": "módulo de evaluación y retroalimentación finalizando con un módulo de integración con sistemas de salud."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 118.9
+}

@@ -14,94 +14,83 @@ description: Genera modelos o renders 3D con Blender para el video, con ficha t�
 
 ## Procedimiento (en orden; sin saltar pasos)
 
-1. **Confirma la toma**: lee tu fila (toma, acto, duración en cámara,
-   `rubric_item`, `quality_tier`, `depends_on`). Si falta algún dato,
-   pregunta al director y no inventes nada. Sin `rubric_item`, la pieza
-   no se produce.
-2. **Compila los contratos**: ejecuta `python scripts/build_shotlist.py`.
-   Debe terminar sin errores y escribir `script/shotlist.csv`. Con errores
-   no hay CSV ni modelo: corrige los YAML de `shots/` y vuelve a compilar
-   antes de modelar.
-3. **Busca antes de modelar**: revisa primero modelos existentes (bibliotecas
-   CC0 tipo Poly Haven o Kenney, repositorios abiertos, o modelos que el propio
-   proyecto aporte). Solo se modela lo que no se encontró o que debe seguir el
-   diseño propio con exactitud.
-4. **Instala el addon según el tipo de proyecto** (antes de abrir Blender):
-   ```bash
-   python scripts/blender_addons.py --proyecto <tipo> --instalar
-   ```
-   producto/objeto técnico → BlenderKit; arquitectura/casa/módulo →
-   Archimesh + MeasureIt; control remoto IA → BlenderMCP (solo con permiso
-   del director). Queda registrado en `blender/addons_instalados.json`.
-5. **Toma el guardia de recursos** (obligatorio; nada directo):
-   ```bash
-   python scripts/gpu_lock.py run --owner modeler_<pieza> --priority media -- <comando>
-   ```
-   Para chequear sin tomar: `python scripts/gpu_lock.py status`.
-   Desde un script Python: `from gpu_lock import acquire, release`.
-   Si el recurso está ocupado, espera; no fuerce nada.
-6. **Escribe la ficha técnica** `blender/ficha_<shot_id>.md` (protocolo abajo)
-   y pide al director que la revise antes de abrir Blender.
-7. **pre_render_check antes de Blender / render**: ejecuta
-   ```bash
-   python scripts/pre_render_check.py <shot_id>
-   ```
-   Debe salir con código 0 (todas las `depends_on` en `integrado`) antes de
-   abrir Blender o lanzar cualquier render.
-8. **Modela con script reproducible** (no a mano en la interfaz). Deja el
-   `.blend` y el script en `blender/`. Las dimensiones salen de
-   `budget/bom.csv` (`dim_*_mm`): nada se dimensiona a ojo.
-9. **Renderiza en el tier de la toma**, leyendo `env.json`:
-   - `draft`: EEVEE, 50 %, ≤ 5 min (exploración descartable).
-   - `revisar` (tier de aprobación): EEVEE, 100 %, ≤ 20 min.
-   - `final` (Cycles): solo cuando el reloj del rally pasó el
-     `caps.render_final_%` (~75 % del tiempo transcurrido) y con
-     `hours_total` definido en `brief.json`. Sin proyecto: no existe.
-10. **Aprobación antes del final**: solo con el humano conforme al encuadre de
-    `revisar` se lanza el `final`.
-11. **Auditoría geométrica (Anatomy)**: antes del render `final`, corre la
-    auditoría geométrica externa sobre la pieza y verifica que nada atraviese
-    nada (sin colisiones ni superposiciones). Solo pasa a `final` si está limpia.
-12. **Entrega**: guarda la salida en `dashboard/assets/` como
-    `asset_<shotlist_id>_<descripcion>.<ext>`, sírvela a la ventana
-    (`--tab resources --slot main`) y anota los minutos en
-    `blender/horas_3d.csv` (columnas: fecha, shot_id, minutos).
+1. **Confirma la toma**: lee tu fila (`rubric_item`, `quality_tier`, `depends_on`,
+   duración en cámara). Sin `rubric_item` la pieza no se produce; si falta un
+   dato, pregunta al director.
+2. **Compila los contratos**: `python scripts/build_shotlist.py` debe escribir
+   `script/shotlist.csv` sin errores. Si falla, corrige `shots/*.yaml` antes de modelar.
+3. **Busca antes de modelar**: modelos CC0 (Poly Haven, Kenney) o del proyecto.
+   Solo se modela lo que no existe o debe seguir el diseño propio con exactitud.
+4. **Instala el addon** antes de abrir Blender:
+   `python scripts/blender_addons.py --proyecto <tipo> --instalar`
+   (producto → BlenderKit; arquitectura → Archimesh + MeasureIt; control IA →
+   BlenderMCP solo con permiso). Queda en `blender/addons_instalados.json`.
+5. **Escribe la ficha** `blender/ficha_<shot_id>.md` (protocolo abajo) y pide al
+   director que la apruebe **antes** de reservar GPU. Sin ficha aprobada no se
+   modela. Plazo: 30 min o el siguiente punto de control; si no responde, la
+   pieza se aparca y se avisa. **Nunca** se autoaprueba.
+6. **Toma el guardia** (solo con ficha aprobada):
+   `python scripts/gpu_lock.py run --owner modeler_<pieza> --priority media -- <comando>`.
+   Para ver sin tomar: `gpu_lock.py status`. Si está ocupado, espera; no fuerces.
+7. **pre_render_check**: `python scripts/pre_render_check.py <shot_id>` debe salir
+   0 (todas las `depends_on` en `integrado`) antes de abrir Blender o renderizar.
+8. **Modela con script reproducible**, no a mano. `.blend` y script en `blender/`.
+   Dimensiones desde `budget/bom.csv` (`dim_*_mm`): nada a ojo.
+9. **Renderiza en el tier de la toma** (`env.json`; si no existe, `env.example.json`):
+   `draft` EEVEE 50 % ≤5 min; `revisar` EEVEE 100 % ≤20 min; `final` Cycles solo
+   pasado `caps.render_final_%` (~75 %) y con `hours_total` en `brief.json`.
+   Si EEVEE falla o hay <4 GB de VRAM, usa Workbench o CPU en el mismo tier: la
+   pieza no se cancela por un fallo de motor.
+10. **Bucle de crítica (máx. 2 vueltas)**: render `revisar`, lista en la ficha qué
+    no se lee en cámara y corrige. Si no convence, simplifica la toma o propón 2D.
+11. **Aprobación antes del final**: solo con el humano conforme al encuadre de
+    `revisar`. Sin respuesta no se lanza: se queda en `revisar` y se avisa.
+12. **Auditoría geométrica**: antes del `final`, verifica en el `.blend` que nada
+    atraviesa ni se superpone (colisiones, tornillos, cables sin recorrido) y corre
+    `pre_render_check.py <shot_id>`. No existe script dedicado. Solo pasa si está limpia.
+13. **Entrega**: salida en `dashboard/assets/` como
+    `asset_<shotlist_id>_<descripcion>.<ext>`, servir a la ventana
+    (`--tab resources --slot main`) y anotar minutos en `blender/horas_3d.csv`.
 
 ## Ficha técnica obligatoria (antes de modelar)
 
 Sin ficha revisada, Blender no abre. La ficha existe por una toma y responde
 un criterio de la rúbrica:
 
-1. **Propósito**: shot_id, acto, duración en cámara, qué debe comunicar la
-   pieza y a qué `rubric_item` responde.
-2. **Materiales ANTES de la geometría** (tabla: pieza / material / por qué /
-   costo relativo / color en cámara). El material define rugosidad, reflejo,
-   cómo recibe la luz y cuánta poligonización basta. Elegir material después
-   de modelar es improvisación: prohibido.
-3. **Componentes reales y dimensiones de bom.csv**: si la pieza lleva tecnología,
-   los componentes concretos y sus medidas salen de `budget/bom.csv`
-   (`dim_*_mm`; nombre o modelo real, sin inventar). Ningún cubo sin identidad.
-   Si la pieza no lleva tecnología, decláralo explícito en la ficha.
-4. **Tornillos**: tipo y medida de cada tornillo (M3 / M4 / M5, largo, tipo de
-   cabeza, posición x,y,z). Ningún tornillo sin medida ni posición declarada.
-5. **Cables**: origen y destino, diámetro, holgura y borneras de cada cable;
-   espacio real para su recorrido.
-6. **Tolerancias**: holgura ≥ 0.5 mm entre piezas móviles; declare cada
-   holgura y su ubicación.
-7. **Sin colisiones / sin superposición**: declaración expresa de que ninguna
-   pieza atraviesa ni se superpone a otra (verificar con la auditoría Anatomy
-   antes del render `final`).
-8. **Interfaces físicas** (si el equipo lo pide por la naturaleza del proyecto):
-   posición y material de cada tornillo, bornera, sub-carcasa, anclaje a la
-   estructura.
-9. **Diseño para cámara**: encuadre previsto, luz de 3 puntos, fondo, algo de
-   referencia de escala, y qué no debe verse en el cuadro.
-10. **Validación física mínima**: proporciones contrastadas contra las
-    dimensiones del `bom.csv`; volumen y estabilidad plausibles (nada flota ni
-    atraviesa paredes); detalle proporcional a su tamaño en el plano.
-11. **Presupuesto por pieza**: tier y límites de `env.json` (poligonización
-    objetivo, minutos máximos del tier). Si la pieza no cabe en su presupuesto:
-    baja poligonización o propón eliminar la pieza al director.
+1. **Propósito**: shot_id, acto, duración en cámara, qué comunica y a qué `rubric_item` responde.
+2. **Materiales antes de la geometría** (tabla pieza/material/por qué/costo relativo/color
+   en cámara): definen rugosidad, reflejo, luz y polígonos. Elegirlos después es improvisar.
+3. **Componentes y dimensiones de `budget/bom.csv`** (`dim_*_mm`, modelo real, sin
+   inventar). Sin tecnología: decláralo.
+4. **Tornillos**: M3/M4/M5, largo, cabeza y posición x,y,z. Ninguno sin medida.
+5. **Cables**: origen, destino, diámetro, holgura, borneras y recorrido real.
+6. **Tolerancias**: holgura ≥0.5 mm entre piezas móviles, con ubicación.
+7. **Sin colisiones ni superposición**, verificado en la auditoría geométrica (paso 12).
+8. **Interfaces físicas** (si aplica): tornillos, borneras, sub-carcasas y anclajes.
+9. **Diseño para cámara**: encuadre, luz de 3 puntos, fondo, referencia de escala y qué
+   no debe verse.
+10. **Validación física mínima**: proporciones contra `bom.csv`, volumen y estabilidad
+    plausibles, detalle proporcional a su tamaño en plano.
+11. **Presupuesto por pieza**: tier de `env.json` (polígonos y minutos). Si no cabe, baja
+    detalle o propón eliminar la pieza antes de empezar.
+
+## Checklist de realismo (antes del render de `revisar`)
+
+- **Escala**: referencia humana u objeto conocido en cuadro; proporciones de `bom.csv`.
+- **Apoyo y gravedad**: nada flota; el centro de masa cae dentro de la base y la ficha
+  dice dónde se apoya.
+- **Sombras de contacto**: contacto visible entre piezas y con el suelo.
+- **Materiales**: rugosidad y reflejo del material declarado (metal no parece plástico).
+- **Lectura en 3 segundos**: si no se entiende qué es, se corrige el encuadre o se
+  simplifica la geometría.
+
+## Estimador de tiempo
+
+Antes de reservar GPU, anota en la ficha: `minutos ≈ fotogramas × costo_por_fotograma +
+modelado + correcciones`. Costo por tier: `draft` ≈2 s/fotograma, `revisar` ≈6 s, `final`
+≈20 s (ajusta con la primera prueba real). Modelado: 20–40 min una pieza simple, 60–120 min
+una protagonista. Si la suma supera `caps.max_3d_hours_total`, recorta detalle o elimina la
+pieza antes de empezar, no a mitad del render.
 
 ## Jerarquía de assets (orden de decisión, no de gustos)
 
@@ -114,7 +103,9 @@ un criterio de la rúbrica:
 
 ## Anexos 3D (bajo demanda)
 
-- **Anatomy**: figuras didácticas para el video; ver `anexos-3d.md`.
+- **Figuras didácticas**: la skill externa `anatomy` sirve para figuras humanas
+  didácticas del video; ver `anexos-3d.md`. No tiene relación con la auditoría
+  geométrica del paso 12.
 - **Caja de herramientas 3D**: BlenderMCP, extensions, MPFB2, Rigify, glTF,
   Poly Haven y Geometry Nodes. No se instala todo: usa
   `python scripts/herramientas.py necesita "<tarea>"` e instala una sola con
@@ -132,7 +123,7 @@ Detalle completo: `anexos-3d.md` (mismo directorio).
   paralelo con TTS, Playwright o ffmpeg si estos compiten por el mismo slot.
 - Menos de 4 GB de VRAM (dato de `env.json`): dilo y propón alternativa 2D o
   una pieza de baja poligonización; no pongas en riesgo el cuelgue.
-- Render final solo en su ventana del reloj (D7, paso 7 del procedimiento).
+- Render final solo en su ventana del reloj (paso 9 del procedimiento).
 - El MCP de Blender es opcional: pide permiso antes de instalarlo.
 
 ## Punteros

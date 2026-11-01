@@ -1,0 +1,147 @@
+{
+ "video_id": "WaJbaM3Dhr4",
+ "url": "https://youtu.be/WaJbaM3Dhr4",
+ "year": 2025,
+ "collection": "sede",
+ "country": "CHILE",
+ "team": "ALTEM",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "ALTEM",
+   "challenge": "04 - SISTEMA DE ALERTA TEMPRANA"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:04:03+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "América Latina arde cada verano. En 2023 los incendios arrasaron más de 12 millones de hectáreas y en 2024 la pérdida de bosques primarios fue casi cinco veces mayor que el año anterior. En Chile, entre 2014 y 2024, se registraron más de 68.000 incendios que quemaron 1.6 millones de hectáreas. Solo en Valparaíso, en 2024, 6.974 viviendas fueron destruidas, 122 personas murieron y las pérdidas superaron los 500 millones de dólares. Hoy confiamos en satélites que entregan imágenes con retraso, drones que cubren pocas hectáreas y requieren expertos y brigadas humanas que muchas veces llegan demasiado tarde. Son sistemas caros, reactivos y poco accesibles. El resultado más sinceros, más pérdidas y hasta un 200% de aumento de los costos de seguros forestales en la última década. Nuestra propuesta es distinta. Usamos una red de sensores duales, infrarrojos e ionizantes. Los sensores infrarrojos detectan aumento de calor y humo, pero lo verdaderamente innovador son los sensores ionizantes, una tecnología poderosa que funciona midiendo cambios en el aire. Cuando partículas de humo alteran la ionización del aire, el sensor lo detecta en segundos, incluso antes de que la llama sea visible. Toda esta información se envía a un sistema centralizado que analiza tanto los datos en tiempo real como los registros históricos de incendios y clima. Así podemos anticipar focos con mayor precisión. Además, el sistema se conecta con las autoridades de emergencia y activa postes comunitarios con sirenas y luces que indican rutas de evacuación para la población. El costo de una red piloto es de apenas $50,000 por 100 hectáreas, mientras que un solo incendio en esa superficie genera pérdidas de más de $500,000. Nuestra solución es más rápida, económica y directa que cualquier alternativa. Reduce misiones que representan hasta al 10% del CO2 global y, sobre todo, protege vidas. No solo combatimos incendios, los prevenimos porque no incendio, cada minuto cuenta. Somos Altem, alerta temprana, futuro seguro.",
+ "segments": [
+  {
+   "start": 0.3,
+   "end": 5.94,
+   "text": "América Latina arde cada verano. En 2023 los incendios arrasaron más de 12 millones de hectáreas"
+  },
+  {
+   "start": 5.94,
+   "end": 11.34,
+   "text": "y en 2024 la pérdida de bosques primarios fue casi cinco veces mayor que el año anterior."
+  },
+  {
+   "start": 11.34,
+   "end": 19.26,
+   "text": "En Chile, entre 2014 y 2024, se registraron más de 68.000 incendios que quemaron 1.6 millones de hectáreas."
+  },
+  {
+   "start": 19.26,
+   "end": 26.38,
+   "text": "Solo en Valparaíso, en 2024, 6.974 viviendas fueron destruidas, 122 personas murieron"
+  },
+  {
+   "start": 26.38,
+   "end": 29.3,
+   "text": "y las pérdidas superaron los 500 millones de dólares."
+  },
+  {
+   "start": 29.78,
+   "end": 33.38,
+   "text": "Hoy confiamos en satélites que entregan imágenes con retraso,"
+  },
+  {
+   "start": 33.38,
+   "end": 39.94,
+   "text": "drones que cubren pocas hectáreas y requieren expertos y brigadas humanas que muchas veces llegan"
+  },
+  {
+   "start": 39.94,
+   "end": 45.82,
+   "text": "demasiado tarde. Son sistemas caros, reactivos y poco accesibles. El resultado más sinceros,"
+  },
+  {
+   "start": 45.82,
+   "end": 50.98,
+   "text": "más pérdidas y hasta un 200% de aumento de los costos de seguros forestales en la última década."
+  },
+  {
+   "start": 50.98,
+   "end": 56.62,
+   "text": "Nuestra propuesta es distinta. Usamos una red de sensores duales, infrarrojos e ionizantes."
+  },
+  {
+   "start": 56.62,
+   "end": 62.14,
+   "text": "Los sensores infrarrojos detectan aumento de calor y humo, pero lo verdaderamente innovador son los"
+  },
+  {
+   "start": 62.14,
+   "end": 66.46,
+   "text": "sensores ionizantes, una tecnología poderosa que funciona midiendo cambios en el aire."
+  },
+  {
+   "start": 66.46,
+   "end": 71.54,
+   "text": "Cuando partículas de humo alteran la ionización del aire, el sensor lo detecta en segundos,"
+  },
+  {
+   "start": 71.54,
+   "end": 73.74,
+   "text": "incluso antes de que la llama sea visible."
+  },
+  {
+   "start": 75.02,
+   "end": 79.18,
+   "text": "Toda esta información se envía a un sistema centralizado que analiza tanto los datos en"
+  },
+  {
+   "start": 79.18,
+   "end": 83.82,
+   "text": "tiempo real como los registros históricos de incendios y clima. Así podemos anticipar"
+  },
+  {
+   "start": 83.82,
+   "end": 88.38,
+   "text": "focos con mayor precisión. Además, el sistema se conecta con las autoridades de emergencia y"
+  },
+  {
+   "start": 88.38,
+   "end": 93.42,
+   "text": "activa postes comunitarios con sirenas y luces que indican rutas de evacuación para la población."
+  },
+  {
+   "start": 94.22,
+   "end": 99.46,
+   "text": "El costo de una red piloto es de apenas $50,000 por 100 hectáreas, mientras que un solo incendio"
+  },
+  {
+   "start": 99.46,
+   "end": 104.38,
+   "text": "en esa superficie genera pérdidas de más de $500,000. Nuestra solución es más rápida,"
+  },
+  {
+   "start": 104.38,
+   "end": 108.54,
+   "text": "económica y directa que cualquier alternativa. Reduce misiones que representan hasta al"
+  },
+  {
+   "start": 108.54,
+   "end": 113.5,
+   "text": "10% del CO2 global y, sobre todo, protege vidas. No solo combatimos incendios,"
+  },
+  {
+   "start": 113.5,
+   "end": 118.62,
+   "text": "los prevenimos porque no incendio, cada minuto cuenta. Somos Altem,"
+  },
+  {
+   "start": 118.62,
+   "end": 120.86,
+   "text": "alerta temprana, futuro seguro."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 121.8
+}

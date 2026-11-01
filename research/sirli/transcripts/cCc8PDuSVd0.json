@@ -1,0 +1,127 @@
+{
+ "video_id": "cCc8PDuSVd0",
+ "url": "https://youtu.be/cCc8PDuSVd0",
+ "year": 2020,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "INNOVANIC",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2020,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "INNOVANIC",
+   "challenge": "06 - ¿SERÍA POSIBLE DESARROLLAR UN SISTEMA GUÍA PARA DÉBILES VISUALES O INVIDENTES QUE NO REQUIERA INTERNET?"
+  }
+ ],
+ "fetched_at": "2026-10-23T01:17:07+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En el mundo existen 65 millones de personas consiguiera. Estas cuentan con muy pocos programas de inclusión social. Algunas de estas personas llegan al punto de evitar salir para no sentirse dependientes de otras personas o perros guías. Nosotros y NoaNik proponemos el sistema de PoemBast, un bastón inteligente que cuenta con un geolocalizador y un sistema de voz que brinda información de puntos referenciales a las personas. El funcionamiento del dispositivo se basa en la utilización de un mapa de la ciudad precargado mediante el sistema de información geográfica, con puntos de referencia y sistemas de posicionamiento global para orientar su ubicación mediante comandos de voz, sin la necesidad de internet. Los comandos son recibidos en un audicular alámbrico o bluetooth de preferencia, llevando información a las tijos visuales, brindándoles la información a los noventes. En el mercado actual no existen una tecnología como esta. Algunas similares solo son bastones concesores o aproximaciones de objetos. PoemBast propone algo innovador con un gran impacto social, ayudando a estas personas a sentirles más incluidas y dependientes. Será fabricado de plástico y alumnos. Entre los beneficios de PoemBast tenemos en el ámbito económico gastos de fabricación bajos, materia prima y mano de obra disponibles en la zona. El proceso de manufactura amigable posee una batería recargable. En el ámbito social fácil manejo y transporte del usuario, materiales duraderos, actualizaciones gratis trimestrales. Genera empleados locales.",
+ "segments": [
+  {
+   "start": 0.59,
+   "end": 4.31,
+   "text": "En el mundo existen 65 millones de personas consiguiera."
+  },
+  {
+   "start": 4.31,
+   "end": 7.31,
+   "text": "Estas cuentan con muy pocos programas de inclusión social."
+  },
+  {
+   "start": 7.31,
+   "end": 14.31,
+   "text": "Algunas de estas personas llegan al punto de evitar salir para no sentirse dependientes de otras personas o perros guías."
+  },
+  {
+   "start": 14.31,
+   "end": 18.51,
+   "text": "Nosotros y NoaNik proponemos el sistema de PoemBast,"
+  },
+  {
+   "start": 18.51,
+   "end": 26.51,
+   "text": "un bastón inteligente que cuenta con un geolocalizador y un sistema de voz que brinda información de puntos referenciales a las personas."
+  },
+  {
+   "start": 26.51,
+   "end": 34.51,
+   "text": "El funcionamiento del dispositivo se basa en la utilización de un mapa de la ciudad precargado mediante el sistema de información geográfica,"
+  },
+  {
+   "start": 34.51,
+   "end": 43.51,
+   "text": "con puntos de referencia y sistemas de posicionamiento global para orientar su ubicación mediante comandos de voz, sin la necesidad de internet."
+  },
+  {
+   "start": 43.51,
+   "end": 49.51,
+   "text": "Los comandos son recibidos en un audicular alámbrico o bluetooth de preferencia,"
+  },
+  {
+   "start": 49.51,
+   "end": 55.51,
+   "text": "llevando información a las tijos visuales, brindándoles la información a los noventes."
+  },
+  {
+   "start": 55.51,
+   "end": 59.51,
+   "text": "En el mercado actual no existen una tecnología como esta."
+  },
+  {
+   "start": 59.51,
+   "end": 64.51,
+   "text": "Algunas similares solo son bastones concesores o aproximaciones de objetos."
+  },
+  {
+   "start": 64.51,
+   "end": 68.51,
+   "text": "PoemBast propone algo innovador con un gran impacto social,"
+  },
+  {
+   "start": 68.51,
+   "end": 73.51,
+   "text": "ayudando a estas personas a sentirles más incluidas y dependientes."
+  },
+  {
+   "start": 73.51,
+   "end": 75.51,
+   "text": "Será fabricado de plástico y alumnos."
+  },
+  {
+   "start": 75.51,
+   "end": 80.51,
+   "text": "Entre los beneficios de PoemBast tenemos en el ámbito económico gastos de fabricación bajos,"
+  },
+  {
+   "start": 80.51,
+   "end": 84.51,
+   "text": "materia prima y mano de obra disponibles en la zona."
+  },
+  {
+   "start": 84.51,
+   "end": 88.51,
+   "text": "El proceso de manufactura amigable posee una batería recargable."
+  },
+  {
+   "start": 88.51,
+   "end": 93.51,
+   "text": "En el ámbito social fácil manejo y transporte del usuario,"
+  },
+  {
+   "start": 93.51,
+   "end": 98.51,
+   "text": "materiales duraderos, actualizaciones gratis trimestrales."
+  },
+  {
+   "start": 98.51,
+   "end": 100.51,
+   "text": "Genera empleados locales."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 111.5
+}

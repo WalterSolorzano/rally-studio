@@ -1,0 +1,107 @@
+{
+ "video_id": "1p4rt-c0n20",
+ "url": "https://youtu.be/1p4rt-c0n20",
+ "year": 2022,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "INNOVAUNLAM",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "INNOVAUNLAM",
+   "challenge": "07 - ALUDES DE BARRO"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:17:26+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Algunas comunidades se encuentran en zonas vulnerables por fenómenos naturales que las perjudican de forma directa. Los deslizamientos de tierra causados por alteraciones en el equilibrio natural de una pendiente producen aludes. Las lluvias torrenciales, las sequías, los terremotos o las erupciones volcánicas sumados a la desforestación afectan al terreno causando estos desprendimientos. Desde Mad Notify proponemos un sistema preventivo para alertar a la comunidad mediante un sensor y una aplicación para así salvar vidas frente a un alud. Dicha aplicación recibirá información provista por CENSA, un dispositivo autónomo emisor de alertas fabricado con una válvula de vacío y un resorte calibrado que dará una lectura de desplazamiento de tierra detectando una oscilación continua que diferencia un alud de otros tipos de movimientos. Estará conectado a una jabalina empotrada y fijada a la tierra. Mediante el LORA, un sistema inalámbrico resistente a catástrofes se generará una alerta a la central. Otra posibilidad es que la alerta llegue a la central mediante un algoritmo de predicción, ya que en la aplicación se recopilará y analizarán datos climáticos en tiempo real. Esta alerta será alta, media o baja y será informada a las autoridades, personal de rescate y a la comunidad activando sirenas sonoras y lumínicas. También enviará mensajes a los dispositivos móviles dentro del radio y diferenciará las rutas afectadas y habilitadas para llevar a cabo la evacuación y así poder guiar a la población. Por último, se involucrará a la comunidad, ya que la aplicación brindará capacitación sobre cómo proceder ante una posible alerta. Desde MadNotify, buscamos cuidar la integridad física y la vida de las personas con un sistema accesible, eficiente e innovador. MadNotify no solo envía avisos, salva vidas.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 5.8,
+   "text": "Algunas comunidades se encuentran en zonas vulnerables por fenómenos naturales que las perjudican de forma directa."
+  },
+  {
+   "start": 5.8,
+   "end": 11.56,
+   "text": "Los deslizamientos de tierra causados por alteraciones en el equilibrio natural de una pendiente producen aludes."
+  },
+  {
+   "start": 11.56,
+   "end": 20.56,
+   "text": "Las lluvias torrenciales, las sequías, los terremotos o las erupciones volcánicas sumados a la desforestación afectan al terreno causando estos desprendimientos."
+  },
+  {
+   "start": 20.56,
+   "end": 29.56,
+   "text": "Desde Mad Notify proponemos un sistema preventivo para alertar a la comunidad mediante un sensor y una aplicación para así salvar vidas frente a un alud."
+  },
+  {
+   "start": 29.56,
+   "end": 40.12,
+   "text": "Dicha aplicación recibirá información provista por CENSA, un dispositivo autónomo emisor de alertas fabricado con una válvula de vacío y un resorte calibrado"
+  },
+  {
+   "start": 40.12,
+   "end": 47.76,
+   "text": "que dará una lectura de desplazamiento de tierra detectando una oscilación continua que diferencia un alud de otros tipos de movimientos."
+  },
+  {
+   "start": 47.76,
+   "end": 52.12,
+   "text": "Estará conectado a una jabalina empotrada y fijada a la tierra."
+  },
+  {
+   "start": 52.52,
+   "end": 58.88,
+   "text": "Mediante el LORA, un sistema inalámbrico resistente a catástrofes se generará una alerta a la central."
+  },
+  {
+   "start": 58.88,
+   "end": 64.56,
+   "text": "Otra posibilidad es que la alerta llegue a la central mediante un algoritmo de predicción,"
+  },
+  {
+   "start": 64.56,
+   "end": 69.48,
+   "text": "ya que en la aplicación se recopilará y analizarán datos climáticos en tiempo real."
+  },
+  {
+   "start": 69.48,
+   "end": 79.48,
+   "text": "Esta alerta será alta, media o baja y será informada a las autoridades, personal de rescate y a la comunidad activando sirenas sonoras y lumínicas."
+  },
+  {
+   "start": 79.88,
+   "end": 86.68,
+   "text": "También enviará mensajes a los dispositivos móviles dentro del radio y diferenciará las rutas afectadas y habilitadas"
+  },
+  {
+   "start": 86.68,
+   "end": 91.12,
+   "text": "para llevar a cabo la evacuación y así poder guiar a la población."
+  },
+  {
+   "start": 91.12,
+   "end": 99.52,
+   "text": "Por último, se involucrará a la comunidad, ya que la aplicación brindará capacitación sobre cómo proceder ante una posible alerta."
+  },
+  {
+   "start": 99.52,
+   "end": 109.72,
+   "text": "Desde MadNotify, buscamos cuidar la integridad física y la vida de las personas con un sistema accesible, eficiente e innovador."
+  },
+  {
+   "start": 109.72,
+   "end": 113.92,
+   "text": "MadNotify no solo envía avisos, salva vidas."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.4
+}

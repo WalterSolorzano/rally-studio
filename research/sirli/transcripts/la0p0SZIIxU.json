@@ -1,0 +1,137 @@
+{
+ "video_id": "la0p0SZIIxU",
+ "url": "https://youtu.be/la0p0SZIIxU?si=Vpx_Mduh69aYzH01",
+ "year": 2026,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "VOLCANIC",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "VOLCANIC",
+   "challenge": "02 - SENSORES AL SERVICIO DE LA COMUNIDAD"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:33:35+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Y si ese celular que hoy está olvidado en un cajón pudiera convertirse en un herramienta capaz de alertar a una comunidad antes de una inundación? Cada temporada lluvia es a muchas comunidades que enfrentan inundaciones, drenajes, obstruidos y deslizamientos. Pero el problema no es solamente la lluvia, también existe una ceguera operativa. Muchas veces no se cuenta con información en tiempo real que permita detectar un aumento peligroso del agua, una obstrucción o una señal de riesgo antes de que la emergencia ocurra. Por eso creamos a Reasons, una red de monitoreo de bajo costo que reutiliza celulares en desuso, como nodos inteligentes de alerta temprana. Un primer nodo registra lluvia y movimientos del terreno asociados a posibles deslizamientos. Un segundo monitoreo al nivel del agua y compara distintos puntos de un cauce para detectar aumentos peligrosos o posibles obstrucciones. Y un tercer nodo supervisa drenajes para identificar condiciones que puedan provocar una inundación. Los nodos se comunican mediante el hora, funcionan con energía solar y pueden activar una sirena local ante una situación de riesgo. La información también puede visualizarse en una aplicación y enviarse a las autoridades. Reasons reutiliza celulares en desuso y combina sus sensores con hardware externo para crear una red de monitoreo accesible, modular y escalable. Reasons es accesible y viable, cada nodo cuesta entre 171 y 193 dólares según se reutiliza o adquiera el celular, permitiendo una implementación escalable para las comunidades. Reasons busca dar más tiempo para actuar antes de una inundación. Los componentes electrónicos funcionales que no se utilizan podrán convertirse en kits educativos para escuelas mientras que los materiales restantes serán destinados a recuperación y reciclaer. Así transformamos residuos electrónicos en prevención, educación y tecnología útil.",
+ "segments": [
+  {
+   "start": 0.02,
+   "end": 9.27,
+   "text": "Y si ese celular que hoy está olvidado en un cajón pudiera convertirse en un herramienta"
+  },
+  {
+   "start": 9.27,
+   "end": 13.03,
+   "text": "capaz de alertar a una comunidad antes de una inundación?"
+  },
+  {
+   "start": 13.03,
+   "end": 17.75,
+   "text": "Cada temporada lluvia es a muchas comunidades que enfrentan inundaciones, drenajes, obstruidos"
+  },
+  {
+   "start": 17.75,
+   "end": 19.27,
+   "text": "y deslizamientos."
+  },
+  {
+   "start": 19.27,
+   "end": 24.55,
+   "text": "Pero el problema no es solamente la lluvia, también existe una ceguera operativa."
+  },
+  {
+   "start": 24.55,
+   "end": 28.63,
+   "text": "Muchas veces no se cuenta con información en tiempo real que permita detectar un"
+  },
+  {
+   "start": 28.63,
+   "end": 35.15,
+   "text": "aumento peligroso del agua, una obstrucción o una señal de riesgo antes de que la emergencia ocurra."
+  },
+  {
+   "start": 35.15,
+   "end": 40.83,
+   "text": "Por eso creamos a Reasons, una red de monitoreo de bajo costo que reutiliza celulares en desuso,"
+  },
+  {
+   "start": 40.83,
+   "end": 47.27,
+   "text": "como nodos inteligentes de alerta temprana. Un primer nodo registra lluvia y movimientos"
+  },
+  {
+   "start": 47.27,
+   "end": 53.27,
+   "text": "del terreno asociados a posibles deslizamientos. Un segundo monitoreo al nivel del agua y"
+  },
+  {
+   "start": 53.27,
+   "end": 59.15,
+   "text": "compara distintos puntos de un cauce para detectar aumentos peligrosos o posibles obstrucciones."
+  },
+  {
+   "start": 59.15,
+   "end": 65.91,
+   "text": "Y un tercer nodo supervisa drenajes para identificar condiciones que puedan provocar una inundación."
+  },
+  {
+   "start": 65.91,
+   "end": 71.15,
+   "text": "Los nodos se comunican mediante el hora, funcionan con energía solar y pueden activar una sirena"
+  },
+  {
+   "start": 71.15,
+   "end": 75.99,
+   "text": "local ante una situación de riesgo. La información también puede visualizarse en una aplicación"
+  },
+  {
+   "start": 75.99,
+   "end": 81.75,
+   "text": "y enviarse a las autoridades. Reasons reutiliza celulares en desuso y combina sus sensores"
+  },
+  {
+   "start": 81.75,
+   "end": 86.63,
+   "text": "con hardware externo para crear una red de monitoreo accesible, modular y escalable."
+  },
+  {
+   "start": 86.63,
+   "end": 93.15,
+   "text": "Reasons es accesible y viable, cada nodo cuesta entre 171 y 193 dólares según se reutiliza"
+  },
+  {
+   "start": 93.15,
+   "end": 97.31,
+   "text": "o adquiera el celular, permitiendo una implementación escalable para las comunidades."
+  },
+  {
+   "start": 97.31,
+   "end": 102.11,
+   "text": "Reasons busca dar más tiempo para actuar antes de una inundación. Los componentes"
+  },
+  {
+   "start": 102.11,
+   "end": 107.31,
+   "text": "electrónicos funcionales que no se utilizan podrán convertirse en kits educativos para"
+  },
+  {
+   "start": 107.31,
+   "end": 112.55,
+   "text": "escuelas mientras que los materiales restantes serán destinados a recuperación y reciclaer."
+  },
+  {
+   "start": 112.55,
+   "end": 118.39,
+   "text": "Así transformamos residuos electrónicos en prevención, educación y tecnología útil."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.2
+}

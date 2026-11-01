@@ -1,0 +1,87 @@
+{
+ "video_id": "kPY4yzG44VM",
+ "url": "https://youtu.be/kPY4yzG44VM?si=1wUikgN4B_CYQ8Q4",
+ "year": 2024,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "NEXTGEN",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "NEXTGEN",
+   "challenge": "08 - REDUCCIÓN DE DESPERDICIOS ALIMENTARIOS"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:09:30+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En un mundo donde millones luchan por obtener alimentos, alrededor de 1300 millones de toneladas de alimentos se desperdicen al año a nivel atam, afectándonos solo a nuestra economía sino a nuestro planeta. El desperdicio de alimentos no es solo una cuestión de recursos mal gestionados, es una tragedia humana que deja a nuestros pequeños sin la oportunidad de un mejor por venir. Prente a la realidad que se vive a nivel atam, presentamos sabor Nick del sabor a tu corazón. Es una solución viable y amicable con el medio ambiente que reduce el desperdicio de hortalizas. Es un producto 100% orgánico libre de preservantes, el cual mantiene los nutrientes necesarios para condimentar los alimentos. Este producto está elaborado en un horno artesanal alimentado por briquetas de aserrín, eliminando de esta forma el uso de la leña. Y esto ha sido sabor Nick, le da una segunda oportunidad a tu cocina.",
+ "segments": [
+  {
+   "start": 5.84,
+   "end": 12.46,
+   "text": "En un mundo donde millones luchan por obtener alimentos, alrededor de 1300 millones de toneladas"
+  },
+  {
+   "start": 12.46,
+   "end": 18.74,
+   "text": "de alimentos se desperdicen al año a nivel atam, afectándonos solo a nuestra economía"
+  },
+  {
+   "start": 18.74,
+   "end": 22.89,
+   "text": "sino a nuestro planeta."
+  },
+  {
+   "start": 22.89,
+   "end": 29.21,
+   "text": "El desperdicio de alimentos no es solo una cuestión de recursos mal gestionados, es una"
+  },
+  {
+   "start": 29.21,
+   "end": 37.45,
+   "text": "tragedia humana que deja a nuestros pequeños sin la oportunidad de un mejor por venir."
+  },
+  {
+   "start": 37.45,
+   "end": 43.73,
+   "text": "Prente a la realidad que se vive a nivel atam, presentamos sabor Nick del sabor a tu corazón."
+  },
+  {
+   "start": 43.73,
+   "end": 49.65,
+   "text": "Es una solución viable y amicable con el medio ambiente que reduce el desperdicio de hortalizas."
+  },
+  {
+   "start": 49.65,
+   "end": 55.69,
+   "text": "Es un producto 100% orgánico libre de preservantes, el cual mantiene los nutrientes necesarios"
+  },
+  {
+   "start": 55.69,
+   "end": 57.85,
+   "text": "para condimentar los alimentos."
+  },
+  {
+   "start": 57.85,
+   "end": 62.61,
+   "text": "Este producto está elaborado en un horno artesanal alimentado por briquetas de aserrín,"
+  },
+  {
+   "start": 62.61,
+   "end": 65.61,
+   "text": "eliminando de esta forma el uso de la leña."
+  },
+  {
+   "start": 65.61,
+   "end": 70.33,
+   "text": "Y esto ha sido sabor Nick, le da una segunda oportunidad a tu cocina."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 79.3
+}

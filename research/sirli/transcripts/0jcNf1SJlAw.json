@@ -1,0 +1,102 @@
+{
+ "video_id": "0jcNf1SJlAw",
+ "url": "https://youtu.be/0jcNf1SJlAw",
+ "year": 2025,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "SYNKRO",
+ "place_label": "TERCER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "TERCER LUGAR",
+   "team": "SYNKRO",
+   "challenge": "03 - FUGAS DE AGUA"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:53:58+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Cada año, miles de litros de agua se desperdician por fugas invisibles en la tubería. Lo que comienza como una sinfesfiltración termina siendo en grande gasto y costos de reparación. Y en nuestras comunidades, esto significa una reducción notoria de nuestro vital líquido. El agua es uno de los recursos más importantes que tenemos, pero también uno de los más desperdiciados. Cada año se pierden miles de litros debido a fugas desapercibidas. Detectar una fuga no es fácil. La mayoría se encuentra cuando ya hay daños visibles. Por eso hoy nos presentamos Somos SyncroDetector, un equipo que presenta a un sensor capaz de detectar cualquier fuga en tuberías. Nuestro sistema inteligente SyncroDetector funciona con una combinación de tecnología infra-iultrazónica con la fuerza del viento. Nuestro dispositivo se alimenta de forma autónoma, sin necesidad de conexión eléctrica, lo que lo hace ideal para diferentes zonas de difícil acceso. Este se puede conectar a cualquier red, no necesita de obra y puede integrarse a cualquier sistema ya existente. Por su diseño modular, el costo aproximado de la oración es de 1.152 dólares. Con SyncroDetector, las fugas deben de ser un problema oculto. Nuestro objetivo es reducir costo y así cuidar el vital líquido de nuestro planeta. Recordemos que cada acción cuenta.",
+ "segments": [
+  {
+   "start": 0.69,
+   "end": 5.37,
+   "text": "Cada año, miles de litros de agua se desperdician por fugas invisibles en la tubería."
+  },
+  {
+   "start": 5.37,
+   "end": 10.85,
+   "text": "Lo que comienza como una sinfesfiltración termina siendo en grande gasto y costos de reparación."
+  },
+  {
+   "start": 10.85,
+   "end": 15.57,
+   "text": "Y en nuestras comunidades, esto significa una reducción notoria de nuestro vital líquido."
+  },
+  {
+   "start": 15.57,
+   "end": 19.99,
+   "text": "El agua es uno de los recursos más importantes que tenemos, pero también uno de los más desperdiciados."
+  },
+  {
+   "start": 19.99,
+   "end": 23.69,
+   "text": "Cada año se pierden miles de litros debido a fugas desapercibidas."
+  },
+  {
+   "start": 23.69,
+   "end": 29.29,
+   "text": "Detectar una fuga no es fácil. La mayoría se encuentra cuando ya hay daños visibles."
+  },
+  {
+   "start": 29.89,
+   "end": 37.49,
+   "text": "Por eso hoy nos presentamos Somos SyncroDetector, un equipo que presenta a un sensor capaz de detectar cualquier fuga en tuberías."
+  },
+  {
+   "start": 37.49,
+   "end": 44.79,
+   "text": "Nuestro sistema inteligente SyncroDetector funciona con una combinación de tecnología infra-iultrazónica con la fuerza del viento."
+  },
+  {
+   "start": 44.79,
+   "end": 49.29,
+   "text": "Nuestro dispositivo se alimenta de forma autónoma, sin necesidad de conexión eléctrica,"
+  },
+  {
+   "start": 49.29,
+   "end": 52.49,
+   "text": "lo que lo hace ideal para diferentes zonas de difícil acceso."
+  },
+  {
+   "start": 53.49,
+   "end": 60.49,
+   "text": "Este se puede conectar a cualquier red, no necesita de obra y puede integrarse a cualquier sistema ya existente."
+  },
+  {
+   "start": 60.49,
+   "end": 65.49,
+   "text": "Por su diseño modular, el costo aproximado de la oración es de 1.152 dólares."
+  },
+  {
+   "start": 65.49,
+   "end": 69.49,
+   "text": "Con SyncroDetector, las fugas deben de ser un problema oculto."
+  },
+  {
+   "start": 69.49,
+   "end": 74.49,
+   "text": "Nuestro objetivo es reducir costo y así cuidar el vital líquido de nuestro planeta."
+  },
+  {
+   "start": 74.49,
+   "end": 77.49,
+   "text": "Recordemos que cada acción cuenta."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 79.7
+}

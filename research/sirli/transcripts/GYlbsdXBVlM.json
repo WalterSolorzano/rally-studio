@@ -1,0 +1,72 @@
+{
+ "video_id": "GYlbsdXBVlM",
+ "url": "https://youtu.be/GYlbsdXBVlM?si=6OGUcAfiajMpY4iU",
+ "year": 2024,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "INNOVAROAD",
+ "place_label": "TERCER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "TERCER LUGAR",
+   "team": "INNOVAROAD",
+   "challenge": "05 - EVACUACIÓN"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:05:44+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Imagina que estás en un edificio y ocurre un sismo o incendio en esos momentos. Tomar decisiones rápidas y correctas puede salvar tu vida. Pero... ¿Cómo saber cuál es la vía más segura y rápida hacia la salida? Road está diseñada para brindarte asistencia de evacuación en tiempo real. Al detectar un sismo o incendio, la app utiliza el plano arquitectónico del edificio donde te encuentras. Con este plano, la aplicación analiza el lugar del desastre, como el foco del incendio o el epicentro del sismo. Luego, la app calcula la ruta de evacuación más segura y cercana personalizada según tu ubicación exacta dentro del edificio. De esta manera, recibirás una guía clara y precisa para evacuar de forma rápida y eficiente, evitando zonas de riesgo. Con Road estarás un paso más adelante en situaciones de emergencia, asegurando que puedas salir a salvo en el menor tiempo posible.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 4.28,
+   "text": "Imagina que estás en un edificio y ocurre un sismo o incendio en esos momentos."
+  },
+  {
+   "start": 4.28,
+   "end": 7.0,
+   "text": "Tomar decisiones rápidas y correctas puede salvar tu vida."
+  },
+  {
+   "start": 7.0,
+   "end": 11.4,
+   "text": "Pero... ¿Cómo saber cuál es la vía más segura y rápida hacia la salida?"
+  },
+  {
+   "start": 11.4,
+   "end": 15.12,
+   "text": "Road está diseñada para brindarte asistencia de evacuación en tiempo real."
+  },
+  {
+   "start": 15.12,
+   "end": 20.56,
+   "text": "Al detectar un sismo o incendio, la app utiliza el plano arquitectónico del edificio donde te encuentras."
+  },
+  {
+   "start": 20.56,
+   "end": 26.48,
+   "text": "Con este plano, la aplicación analiza el lugar del desastre, como el foco del incendio o el epicentro del sismo."
+  },
+  {
+   "start": 26.48,
+   "end": 33.2,
+   "text": "Luego, la app calcula la ruta de evacuación más segura y cercana personalizada según tu ubicación exacta dentro del edificio."
+  },
+  {
+   "start": 33.2,
+   "end": 39.6,
+   "text": "De esta manera, recibirás una guía clara y precisa para evacuar de forma rápida y eficiente, evitando zonas de riesgo."
+  },
+  {
+   "start": 39.6,
+   "end": 46.28,
+   "text": "Con Road estarás un paso más adelante en situaciones de emergencia, asegurando que puedas salir a salvo en el menor tiempo posible."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 46.4
+}

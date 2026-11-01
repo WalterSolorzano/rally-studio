@@ -1,0 +1,302 @@
+{
+ "video_id": "9-8izks1AHE",
+ "url": "https://www.youtube.com/watch?v=9-8izks1AHE",
+ "year": 2017,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "TNT",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2017,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "TNT",
+   "challenge": "08 - MEJORA DE LA VIDA DE LOS NIÑOS"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:07:13+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "La muerte de un niño es una pérdida trágica. En el año 2015, según estimaciones de la Organización Mundial de la Salud, alrededor de 6 millones de niños y niñas murieron antes de cumplir 5 años. Más de la mitad de esas muertes fueron a causa de enfermedades que se pudieron evitar si se hubiesen tratado con tiempo. 15% fueron a causa de problemas respiratorios. 19% están asociadas a problemas de malnutrición. Por otra parte, de acuerdo a las Naciones Unidas, en pleno siglo XXI, más de 2 millones de niños son secuestrados y explotados anualmente. Asimismo, existe una gran cantidad de niños que mueren abogados por descuidos. Del mismo modo, la ocurrencia de fenómenos, como los terremotos han tenido consecuencias devastadora en los últimos 10 años, provocando la muerte de más de 500.000 personas, de los cuales el 25% fueron niños y niñas, muchos de los cuales no fueron rescatados por desconocimiento de su ubicación. No menos importante, el bullying es un aspecto social que afecta a cientos de miles de niños en todos los países de Latinoamérica, causando lesiones físicas y psicológicas en los menores. De acuerdo a lo antes mencionado, de presentamos WatchGate, una aplicación dirigida al monitoreo detallado los aspectos relacionados con salud, nutrición, crecimiento y protección social. Esta aplicación está sincronizada con un brazalete inteligente que posee GPS, cámara de vídeo, marca pasos y sensores especiales que monitorea signos vitales en tiempo real, como son la presión arterial y ritmo cardíano. Y Cho Brazalete constará con un botón de pánico que se activará de manera manual, cuando el infante lo presione a voluntad y de manera automática, cuando sea retirado por la fuerza o bien, cuando los signos vitales de éste se encuentren alterados o presenten una anomalía activando la cámara de vídeo y enviando una notificación anistante a los padres. Asimismo, el botón de pánico estará enlazado con las páginas que contienen registros sismológicos activándose automáticamente en caso de eventos o terremotos de magnitudes considerables, indicando la posición exacta del mejor en Google Maps. La aplicación también constará con un sistema de configuración personalizable, de acuerdo a las características física de niño o niña y un registro que deberá ser actualizado constantemente por los padres con información relacionadas con el peso, estatura, temperatura y registros de signos vitales brindados por el ritmo brazalete. La dicha base de datos se sinfonizará automáticamente con el registro médico del doctor o pediatra que atiende al minuto, facilitando así la programación de citas, chequeos y controles periódicamente. La idea es mejorar la calidad de vida en infantes, tomando en cuenta la integridad y bienestar con un seguimiento a sus actividades cotidianas. ¿Y qué mejor que un brazalete inteligente que cuida como un guardián e informa como un médico? ¡La seguridad de tus hijos en tus manos!",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 3.24,
+   "text": "La muerte de un niño es una pérdida trágica."
+  },
+  {
+   "start": 3.24,
+   "end": 8.16,
+   "text": "En el año 2015, según estimaciones de la Organización Mundial de la Salud,"
+  },
+  {
+   "start": 8.16,
+   "end": 13.64,
+   "text": "alrededor de 6 millones de niños y niñas murieron antes de cumplir 5 años."
+  },
+  {
+   "start": 13.64,
+   "end": 18.72,
+   "text": "Más de la mitad de esas muertes fueron a causa de enfermedades que se pudieron evitar"
+  },
+  {
+   "start": 18.72,
+   "end": 21.24,
+   "text": "si se hubiesen tratado con tiempo."
+  },
+  {
+   "start": 21.24,
+   "end": 25.6,
+   "text": "15% fueron a causa de problemas respiratorios."
+  },
+  {
+   "start": 25.64,
+   "end": 30.12,
+   "text": "19% están asociadas a problemas de malnutrición."
+  },
+  {
+   "start": 30.12,
+   "end": 32.96,
+   "text": "Por otra parte, de acuerdo a las Naciones Unidas,"
+  },
+  {
+   "start": 32.96,
+   "end": 39.32,
+   "text": "en pleno siglo XXI, más de 2 millones de niños son secuestrados y explotados anualmente."
+  },
+  {
+   "start": 39.32,
+   "end": 44.92,
+   "text": "Asimismo, existe una gran cantidad de niños que mueren abogados por descuidos."
+  },
+  {
+   "start": 46.16,
+   "end": 49.12,
+   "text": "Del mismo modo, la ocurrencia de fenómenos,"
+  },
+  {
+   "start": 49.12,
+   "end": 54.08,
+   "text": "como los terremotos han tenido consecuencias devastadora en los últimos 10 años,"
+  },
+  {
+   "start": 54.16,
+   "end": 56.88,
+   "text": "provocando la muerte de más de 500.000 personas,"
+  },
+  {
+   "start": 56.88,
+   "end": 60.52,
+   "text": "de los cuales el 25% fueron niños y niñas,"
+  },
+  {
+   "start": 60.52,
+   "end": 65.56,
+   "text": "muchos de los cuales no fueron rescatados por desconocimiento de su ubicación."
+  },
+  {
+   "start": 65.56,
+   "end": 69.88,
+   "text": "No menos importante, el bullying es un aspecto social que afecta"
+  },
+  {
+   "start": 69.88,
+   "end": 73.68,
+   "text": "a cientos de miles de niños en todos los países de Latinoamérica,"
+  },
+  {
+   "start": 73.68,
+   "end": 82.3,
+   "text": "causando lesiones físicas y psicológicas en los menores."
+  },
+  {
+   "start": 82.3,
+   "end": 85.54,
+   "text": "De acuerdo a lo antes mencionado, de presentamos WatchGate,"
+  },
+  {
+   "start": 85.62,
+   "end": 89.22,
+   "text": "una aplicación dirigida al monitoreo detallado los aspectos relacionados"
+  },
+  {
+   "start": 89.22,
+   "end": 92.34,
+   "text": "con salud, nutrición, crecimiento y protección social."
+  },
+  {
+   "start": 92.34,
+   "end": 96.74,
+   "text": "Esta aplicación está sincronizada con un brazalete inteligente que posee GPS,"
+  },
+  {
+   "start": 96.74,
+   "end": 99.66,
+   "text": "cámara de vídeo, marca pasos y sensores especiales"
+  },
+  {
+   "start": 99.66,
+   "end": 102.1,
+   "text": "que monitorea signos vitales en tiempo real,"
+  },
+  {
+   "start": 102.1,
+   "end": 104.7,
+   "text": "como son la presión arterial y ritmo cardíano."
+  },
+  {
+   "start": 104.7,
+   "end": 107.18,
+   "text": "Y Cho Brazalete constará con un botón de pánico"
+  },
+  {
+   "start": 107.18,
+   "end": 108.74,
+   "text": "que se activará de manera manual,"
+  },
+  {
+   "start": 108.74,
+   "end": 111.98,
+   "text": "cuando el infante lo presione a voluntad y de manera automática,"
+  },
+  {
+   "start": 111.98,
+   "end": 114.18,
+   "text": "cuando sea retirado por la fuerza o bien,"
+  },
+  {
+   "start": 114.22,
+   "end": 117.02,
+   "text": "cuando los signos vitales de éste se encuentren alterados"
+  },
+  {
+   "start": 117.02,
+   "end": 120.42,
+   "text": "o presenten una anomalía activando la cámara de vídeo"
+  },
+  {
+   "start": 120.42,
+   "end": 122.98,
+   "text": "y enviando una notificación anistante a los padres."
+  },
+  {
+   "start": 122.98,
+   "end": 125.94,
+   "text": "Asimismo, el botón de pánico estará enlazado"
+  },
+  {
+   "start": 125.94,
+   "end": 128.78,
+   "text": "con las páginas que contienen registros sismológicos"
+  },
+  {
+   "start": 128.78,
+   "end": 132.42,
+   "text": "activándose automáticamente en caso de eventos o terremotos"
+  },
+  {
+   "start": 132.42,
+   "end": 134.18,
+   "text": "de magnitudes considerables,"
+  },
+  {
+   "start": 134.18,
+   "end": 137.3,
+   "text": "indicando la posición exacta del mejor en Google Maps."
+  },
+  {
+   "start": 137.3,
+   "end": 139.7,
+   "text": "La aplicación también constará con un sistema"
+  },
+  {
+   "start": 139.7,
+   "end": 141.74,
+   "text": "de configuración personalizable,"
+  },
+  {
+   "start": 141.78,
+   "end": 144.86,
+   "text": "de acuerdo a las características física de niño o niña"
+  },
+  {
+   "start": 144.86,
+   "end": 147.94,
+   "text": "y un registro que deberá ser actualizado constantemente"
+  },
+  {
+   "start": 147.94,
+   "end": 150.9,
+   "text": "por los padres con información relacionadas con el peso,"
+  },
+  {
+   "start": 150.9,
+   "end": 153.9,
+   "text": "estatura, temperatura y registros de signos vitales"
+  },
+  {
+   "start": 153.9,
+   "end": 155.54,
+   "text": "brindados por el ritmo brazalete."
+  },
+  {
+   "start": 155.54,
+   "end": 158.94,
+   "text": "La dicha base de datos se sinfonizará automáticamente"
+  },
+  {
+   "start": 158.94,
+   "end": 161.54,
+   "text": "con el registro médico del doctor o pediatra"
+  },
+  {
+   "start": 161.54,
+   "end": 162.62,
+   "text": "que atiende al minuto,"
+  },
+  {
+   "start": 162.62,
+   "end": 165.42,
+   "text": "facilitando así la programación de citas, chequeos"
+  },
+  {
+   "start": 165.42,
+   "end": 166.86,
+   "text": "y controles periódicamente."
+  },
+  {
+   "start": 166.86,
+   "end": 169.86,
+   "text": "La idea es mejorar la calidad de vida en infantes,"
+  },
+  {
+   "start": 169.9,
+   "end": 172.22,
+   "text": "tomando en cuenta la integridad y bienestar"
+  },
+  {
+   "start": 172.22,
+   "end": 175.22,
+   "text": "con un seguimiento a sus actividades cotidianas."
+  },
+  {
+   "start": 175.22,
+   "end": 177.66,
+   "text": "¿Y qué mejor que un brazalete inteligente"
+  },
+  {
+   "start": 177.66,
+   "end": 180.66,
+   "text": "que cuida como un guardián e informa como un médico?"
+  },
+  {
+   "start": 180.66,
+   "end": 183.66,
+   "text": "¡La seguridad de tus hijos en tus manos!"
+  }
+ ],
+ "has_info": false,
+ "duration_s": 183.6
+}

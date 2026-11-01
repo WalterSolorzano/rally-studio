@@ -1,0 +1,112 @@
+{
+ "video_id": "1KswJgVkw8g",
+ "url": "https://youtu.be/1KswJgVkw8g?si=jdO3-2XFXY89m-mt",
+ "year": 2023,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "LOS ÁCIDOS DE LA AGRARIA",
+ "place_label": "TERCER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "TERCER LUGAR",
+   "team": "LOS ÁCIDOS DE LA AGRARIA",
+   "challenge": "06 - REVALORIZACIÓN RESIDUOS"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:27:28+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Los productores del sector agropecuario se enfrentan a diversos desafíos. Nuestro proyecto se centra en la revalorización de residuos, en este caso cascara de naranja y mandarina, que normalmente son tomados como desechos o desperdicios. Con nuestro desengrasante y desinfectante a base de naranja y mandarina, ofrecemos una solución segura y eficaz para estos problemas. Gracias a su composición natural, no solo elimina rápidamente la grasa acumulada, sino que también desinfecta las superficies eliminando las bacterias y reduciendo el riesgo de enfermedades. Además, al no contener químicos fuertes, es amigable con el medio ambiente, lo cual no genera residuos tóxicos. Esto significa que podemos utilizarlos en preocuparnos por los efectos negativos que pueda tener en nuestra salud o en la contaminación del planeta. En resumen, nuestro desengrasante y desinfectante a base de naranja y mandarina ofrece una solución efectiva y segura para eliminar la grasa y mantener una correcta higiene en nuestro entorno, garantizando así la salud y el bienestar.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 4.0,
+   "text": "Los productores del sector agropecuario se enfrentan a diversos desafíos."
+  },
+  {
+   "start": 4.0,
+   "end": 8.0,
+   "text": "Nuestro proyecto se centra en la revalorización de residuos,"
+  },
+  {
+   "start": 8.0,
+   "end": 11.0,
+   "text": "en este caso cascara de naranja y mandarina,"
+  },
+  {
+   "start": 11.0,
+   "end": 15.0,
+   "text": "que normalmente son tomados como desechos o desperdicios."
+  },
+  {
+   "start": 15.0,
+   "end": 19.0,
+   "text": "Con nuestro desengrasante y desinfectante a base de naranja y mandarina,"
+  },
+  {
+   "start": 19.0,
+   "end": 23.0,
+   "text": "ofrecemos una solución segura y eficaz para estos problemas."
+  },
+  {
+   "start": 23.0,
+   "end": 29.0,
+   "text": "Gracias a su composición natural, no solo elimina rápidamente la grasa acumulada,"
+  },
+  {
+   "start": 29.0,
+   "end": 33.0,
+   "text": "sino que también desinfecta las superficies eliminando las bacterias"
+  },
+  {
+   "start": 33.0,
+   "end": 36.0,
+   "text": "y reduciendo el riesgo de enfermedades."
+  },
+  {
+   "start": 36.0,
+   "end": 41.0,
+   "text": "Además, al no contener químicos fuertes, es amigable con el medio ambiente,"
+  },
+  {
+   "start": 41.0,
+   "end": 44.0,
+   "text": "lo cual no genera residuos tóxicos."
+  },
+  {
+   "start": 44.0,
+   "end": 49.0,
+   "text": "Esto significa que podemos utilizarlos en preocuparnos por los efectos negativos"
+  },
+  {
+   "start": 49.0,
+   "end": 54.0,
+   "text": "que pueda tener en nuestra salud o en la contaminación del planeta."
+  },
+  {
+   "start": 54.0,
+   "end": 59.0,
+   "text": "En resumen, nuestro desengrasante y desinfectante a base de naranja y mandarina"
+  },
+  {
+   "start": 59.0,
+   "end": 63.0,
+   "text": "ofrece una solución efectiva y segura para eliminar la grasa"
+  },
+  {
+   "start": 63.0,
+   "end": 67.0,
+   "text": "y mantener una correcta higiene en nuestro entorno,"
+  },
+  {
+   "start": 67.0,
+   "end": 70.0,
+   "text": "garantizando así la salud y el bienestar."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 69.6
+}

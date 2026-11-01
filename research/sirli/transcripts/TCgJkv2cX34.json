@@ -1,0 +1,117 @@
+{
+ "video_id": "TCgJkv2cX34",
+ "url": "https://youtu.be/TCgJkv2cX34",
+ "year": 2025,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "RECICLAR-NOS",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "RECICLAR-NOS",
+   "challenge": "02 - RECICLADO TEXTIL"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:01:52+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Qué pasaría si la basura dejara de existir? 92 millones de toneladas de recibos textiles son desechadas por año. Prente a este problema decidimos actuar. Así nació Recyclarnos, una iniciativa que busca cambiar la forma en que entendemos la moda y los recibos. Recyclamos desechos textiles, reducimos la basura y reutilizamos esos materiales para crear packaging sustentable. A través de locales adheridos y donaciones voluntarias, Cualquier persona puede ser parte de una cadena circular que transforma tus recibos en valor. Creamos el sello verde textil, una certificación que distinga las empresas comprometidas con el ambiente y les permite destacarse con una imagen responsable y moderna. Los consumidores acceden a unos datos de consumo verde, participando de un modelo de economía circular donde cada compra impulsa la reutilización de materiales y la reducción de recibos. Las empresas mejoran su imagen y reducen costos. Los consumidores contribuyen activamente al cambio y el ambiente se beneficia al disminuir la cantidad de recibos textiles y plásticos. Queremos demostrar que nada se pierde, que todo se transforma, que no existen recibos, solo materia prima, donde la basura se convierte en valor, donde las ideas se transforman en acciones. Recyclarnos, la basura que se repienza para el futuro.",
+ "segments": [
+  {
+   "start": 0.24,
+   "end": 7.41,
+   "text": "¿Qué pasaría si la basura dejara de existir?"
+  },
+  {
+   "start": 7.41,
+   "end": 11.85,
+   "text": "92 millones de toneladas de recibos textiles son desechadas por año."
+  },
+  {
+   "start": 11.85,
+   "end": 14.25,
+   "text": "Prente a este problema decidimos actuar."
+  },
+  {
+   "start": 14.25,
+   "end": 19.93,
+   "text": "Así nació Recyclarnos, una iniciativa que busca cambiar la forma en que entendemos la moda y los recibos."
+  },
+  {
+   "start": 19.93,
+   "end": 26.53,
+   "text": "Recyclamos desechos textiles, reducimos la basura y reutilizamos esos materiales para crear packaging sustentable."
+  },
+  {
+   "start": 26.53,
+   "end": 29.69,
+   "text": "A través de locales adheridos y donaciones voluntarias,"
+  },
+  {
+   "start": 29.77,
+   "end": 34.57,
+   "text": "Cualquier persona puede ser parte de una cadena circular que transforma tus recibos en valor."
+  },
+  {
+   "start": 34.57,
+   "end": 39.49,
+   "text": "Creamos el sello verde textil, una certificación que distinga las empresas comprometidas con el ambiente"
+  },
+  {
+   "start": 39.49,
+   "end": 42.29,
+   "text": "y les permite destacarse con una imagen responsable y moderna."
+  },
+  {
+   "start": 42.29,
+   "end": 47.53,
+   "text": "Los consumidores acceden a unos datos de consumo verde, participando de un modelo de economía circular"
+  },
+  {
+   "start": 47.53,
+   "end": 51.85,
+   "text": "donde cada compra impulsa la reutilización de materiales y la reducción de recibos."
+  },
+  {
+   "start": 51.85,
+   "end": 54.21,
+   "text": "Las empresas mejoran su imagen y reducen costos."
+  },
+  {
+   "start": 54.21,
+   "end": 56.81,
+   "text": "Los consumidores contribuyen activamente al cambio"
+  },
+  {
+   "start": 56.81,
+   "end": 60.57,
+   "text": "y el ambiente se beneficia al disminuir la cantidad de recibos textiles y plásticos."
+  },
+  {
+   "start": 60.57,
+   "end": 64.13,
+   "text": "Queremos demostrar que nada se pierde, que todo se transforma,"
+  },
+  {
+   "start": 64.13,
+   "end": 68.93,
+   "text": "que no existen recibos, solo materia prima, donde la basura se convierte en valor,"
+  },
+  {
+   "start": 68.93,
+   "end": 71.81,
+   "text": "donde las ideas se transforman en acciones."
+  },
+  {
+   "start": 71.81,
+   "end": 75.09,
+   "text": "Recyclarnos, la basura que se repienza para el futuro."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 75.8
+}

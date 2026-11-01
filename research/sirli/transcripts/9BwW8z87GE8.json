@@ -1,0 +1,172 @@
+{
+ "video_id": "9BwW8z87GE8",
+ "url": "https://www.youtube.com/watch?v=9BwW8z87GE8",
+ "year": 2026,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "DON SATUR",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "DON SATUR",
+   "challenge": "02 - SENSORES AL SERVICIO DE LA COMUNIDAD"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:28:24+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Hoy en día recoletar datos sobre infraestructura urbana es sumamente ineficiente y costoso. Detetar batches, cogestión vehicular o acumulación de los egócios suele exigir sensores caros y un mantenimiento constante que muchos municipios no pueden afrontar. Nuestra propuesta resuelve esto transformando smartphones en desuso en nodos de cómputo para monitoreo urbano. Aprovechamos celulares de hasta 8 años de antigüedad con un perfil básico pero funcional, dos shiabais de RAM, modo de 4G, cámara y sensor de movimiento. El servicio está dirigido a municipios y la que todo opera en dos modalidades de despliegue, nodos móviles y nodos fijos. Para los nodos móviles instalados en vehículos públicos los dispositivos se montan en soportes antibiratorios mecánicos para aislar el ruido de alta frecuencia del motor y chasis. Aplicamos otros sensores importantes para estas mediciones, como el acelerómetro que mide las fluctuaciones de aceleración del neleje vertical. Mientras que el giroscopio detecta variaciones de intinación cuando el vehículo pasa por un batche, dichos sensores procesan la sacudida, el procesador, etiqueta de aventura con las ordenadas GPS en tiempo real y almacena el elemento en la memoria interna del dispositivo. El nodo fijo es ubicado especialmente en poste de la omisión pública con alimentación gondina y aprovechamos el sensor óptico de la cámara de más de 8 megapíceles. El celular no transmite video continuo en vivo, sino que ejecuta modelos livianos de visión artificie directamente en el dispositivo. Este procesamiento local detecta la presencia de residuos, inundaciones, opciones viales y densidad de tráfico. Al procesar localmente, reducimos drásticamente el consumo de datos y ancho de banda de en la red móvil. Los datos estructurados se empaquetan y transmiten mediante telemetría al servidor central del municipio. Si se pierda la conventidad de la memoria del almacenamiento interna funciona como caché de respaldo. Antes de almacenar las incidencias en la base de datos principal, la sistema amplia una validación cruzada. Contranta los eventos detectados contra mapas de acceso público y agorinmos de depuración, duplicaciones espacio temporal, eliminando falsos positivos y reportes repetidos antes de la conformación. Reutilizamos tecnología en desuso para crear una infraestructura de monitoreo económica, escalable y transparente. Allí ayudamos a los municipios a optimizar recursos y mejorar directamente la calidad de vida de los ciudadanos.",
+ "segments": [
+  {
+   "start": 0.3,
+   "end": 5.22,
+   "text": "Hoy en día recoletar datos sobre infraestructura urbana es sumamente ineficiente y costoso."
+  },
+  {
+   "start": 5.22,
+   "end": 9.5,
+   "text": "Detetar batches, cogestión vehicular o acumulación de los egócios suele exigir sensores caros"
+  },
+  {
+   "start": 9.5,
+   "end": 12.78,
+   "text": "y un mantenimiento constante que muchos municipios no pueden afrontar."
+  },
+  {
+   "start": 12.78,
+   "end": 17.24,
+   "text": "Nuestra propuesta resuelve esto transformando smartphones en desuso en nodos de cómputo"
+  },
+  {
+   "start": 17.24,
+   "end": 22.02,
+   "text": "para monitoreo urbano. Aprovechamos celulares de hasta 8 años de antigüedad con un perfil"
+  },
+  {
+   "start": 22.02,
+   "end": 28.14,
+   "text": "básico pero funcional, dos shiabais de RAM, modo de 4G, cámara y sensor de movimiento."
+  },
+  {
+   "start": 28.14,
+   "end": 32.94,
+   "text": "El servicio está dirigido a municipios y la que todo opera en dos modalidades de despliegue, nodos móviles y nodos fijos."
+  },
+  {
+   "start": 32.94,
+   "end": 37.44,
+   "text": "Para los nodos móviles instalados en vehículos públicos los dispositivos se montan en soportes"
+  },
+  {
+   "start": 37.44,
+   "end": 40.82,
+   "text": "antibiratorios mecánicos para aislar el ruido de alta frecuencia del motor y chasis."
+  },
+  {
+   "start": 40.82,
+   "end": 45.22,
+   "text": "Aplicamos otros sensores importantes para estas mediciones, como el acelerómetro que"
+  },
+  {
+   "start": 45.22,
+   "end": 49.14,
+   "text": "mide las fluctuaciones de aceleración del neleje vertical. Mientras que el giroscopio detecta"
+  },
+  {
+   "start": 49.14,
+   "end": 53.46,
+   "text": "variaciones de intinación cuando el vehículo pasa por un batche, dichos sensores procesan la"
+  },
+  {
+   "start": 53.46,
+   "end": 57.26,
+   "text": "sacudida, el procesador, etiqueta de aventura con las ordenadas GPS en tiempo real y"
+  },
+  {
+   "start": 57.26,
+   "end": 59.54,
+   "text": "almacena el elemento en la memoria interna del dispositivo."
+  },
+  {
+   "start": 60.54,
+   "end": 64.66,
+   "text": "El nodo fijo es ubicado especialmente en poste de la omisión pública con alimentación"
+  },
+  {
+   "start": 64.66,
+   "end": 68.34,
+   "text": "gondina y aprovechamos el sensor óptico de la cámara de más de 8 megapíceles."
+  },
+  {
+   "start": 68.34,
+   "end": 72.18,
+   "text": "El celular no transmite video continuo en vivo, sino que ejecuta modelos"
+  },
+  {
+   "start": 72.18,
+   "end": 76.18,
+   "text": "livianos de visión artificie directamente en el dispositivo. Este procesamiento local detecta"
+  },
+  {
+   "start": 76.18,
+   "end": 80.22,
+   "text": "la presencia de residuos, inundaciones, opciones viales y densidad de tráfico."
+  },
+  {
+   "start": 80.22,
+   "end": 85.46,
+   "text": "Al procesar localmente, reducimos drásticamente el consumo de datos y ancho de banda de"
+  },
+  {
+   "start": 85.58,
+   "end": 90.38,
+   "text": "en la red móvil. Los datos estructurados se empaquetan y transmiten mediante telemetría"
+  },
+  {
+   "start": 90.38,
+   "end": 94.74,
+   "text": "al servidor central del municipio. Si se pierda la conventidad de la memoria del almacenamiento"
+  },
+  {
+   "start": 94.74,
+   "end": 99.3,
+   "text": "interna funciona como caché de respaldo. Antes de almacenar las incidencias en la base"
+  },
+  {
+   "start": 99.3,
+   "end": 103.58,
+   "text": "de datos principal, la sistema amplia una validación cruzada. Contranta los eventos"
+  },
+  {
+   "start": 103.58,
+   "end": 107.5,
+   "text": "detectados contra mapas de acceso público y agorinmos de depuración, duplicaciones"
+  },
+  {
+   "start": 107.5,
+   "end": 111.7,
+   "text": "espacio temporal, eliminando falsos positivos y reportes repetidos antes de la conformación."
+  },
+  {
+   "start": 111.9,
+   "end": 115.34,
+   "text": "Reutilizamos tecnología en desuso para crear una infraestructura de monitoreo económica,"
+  },
+  {
+   "start": 115.34,
+   "end": 118.46,
+   "text": "escalable y transparente. Allí ayudamos a los municipios a optimizar recursos"
+  },
+  {
+   "start": 118.46,
+   "end": 120.22,
+   "text": "y mejorar directamente la calidad de vida de los ciudadanos."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.3
+}

@@ -1,6 +1,6 @@
 ---
 name: orquestador
-description: Orquesta agentes especialistas (guionista, modeler 3D, pautador, presupuestador, investigador) que trabajan a la vez sin chocarse, con contratos por archivo y guardia de recursos. Úsala cuando el humano pida despachar al equipo o que varios trabajen en paralelo.
+description: Orquesta agentes especialistas (investigador, guionista, modeler 3D, pautador, presupuestador, grafista, web, voz, editor y auditor) que trabajan a la vez sin chocarse, con contratos por archivo y guardia de recursos. Úsala cuando el humano pida despachar al equipo o que varios trabajen en paralelo.
 ---
 
 # Orquestador: director + especialistas
@@ -37,14 +37,21 @@ Reglas completas y decisiones D1–D7 en
    - `pautador` → `docs/`
    - `presupuestador` → `budget/` (salvo `bom.csv`, del director)
    - `investigador` → `research/` (solo `claims.json`, con fuente, URL y año)
+   - `grafista` → `assets/2d/`
+   - `web` → `site/`
+   - `voz` → `assets/voice/`
+   - `editor` → `video/`
+   - `auditor` → `reports/` (solo informes; no corrige nada)
 4. **Todo binario pesado pasa por el guardia**:
    ```bash
    python scripts/gpu_lock.py run --owner <agente> --priority <baja|media|alta> -- <comando>
    ```
    Nunca blender, ffmpeg ni TTS directo: `scripts/heavy_guard.py` lo bloquea.
    El hook `.opencode/plugins/heavy-guard.js` aplica en sesiones nuevas de
-   OpenCode; especialistas lanzados fuera de la app no pasan por el hook:
-   el guardia lo sostiene esta regla del skill.
+   OpenCode. En otros hosts (Antigravity, terminal, subagente en otra app) el
+   hook no existe: valen los atajos de `bin/` puestos en el PATH
+   (`blender-guarded`, `ffmpeg-guarded`, `tts-guarded`) y, si no están, esta
+   regla del skill es la que manda. Nunca se llama al binario crudo.
    Desde código Python se usa la API de import de `gpu_lock`.
    Para verificar que el guardia rechaza cuando el recurso está ocupado,
    los dos holders deben CORRER A LA VEZ: dos `run` en procesos separados,
@@ -73,14 +80,19 @@ Nunca llamar a blender, ffmpeg ni TTS directo. Si el recurso está ocupado, el g
 
 1. **Leer antes de despachar**: `brief.json` (si hay proyecto),
    `research/claims.json`, la rúbrica del certamen activo
-   (`knowledge/rubric_*.md` según `rally_type`) y `env.json`.
+   (`knowledge/rubric_matrices.md`; `rally_type` decide qué matriz aplica) y
+   `env.json` si existe (si no, `env.example.json`). Nunca se bloquea el
+   despacho por faltar un archivo de capacidades.
 2. **Armar las tomas**: crea o edita `shots/<id>.yaml`, con campos
    `id, act, description, asset_id, asset_type, duration_s, status, notes` y
    `rubric_item, claim_ids, owner, depends_on, quality_tier`.
    Sin `rubric_item` la toma no se crea (D1).
 3. **Compilar y validar**: `python scripts/build_shotlist.py`. Con errores:
    corregir antes de despachar a nadie. Sin errores: `script/shotlist.csv`
-   queda listo.
+   queda listo. Antes de despachar, comprueba la **cobertura de rúbrica**: cada
+   ítem que se puede ganar en el video tiene al menos una toma con ese
+   `rubric_item`. Si un ítem queda sin toma, se crea o se declara por escrito
+   que se cubre fuera del video (pautado o pitch oral).
 4. **Despachar con 5 datos por especialista**: (a) zona de escritura exacta;
    (b) sus filas de `shotlist.csv`; (c) el `rubric_item` de cada fila;
    (d) recordatorio del guardia + su tier de presupuesto (`quality_tier` leido
@@ -93,8 +105,13 @@ Nunca llamar a blender, ffmpeg ni TTS directo. Si el recurso está ocupado, el g
 7. **Cierre**: `python arsenal.py check-todo` antes de integrar todo
    (duración ≤ 120 s, coherencia de cifras, caracteres por campo). Lo que
    falla vuelve a su especialista; el director no lo arregla a mano.
-8. **Cronómetro**: cada hora informa al humano tiempo restante y estado por
-   especialista. A T-6h propone congelar assets y preparar exportación.
+8. **Cronómetro por porcentaje**: en cada interacción informa tiempo restante y
+   estado por especialista. La fase se calcula con el tiempo transcurrido sobre
+   la duración del `rally_type` (24 h Nacional, 28 h Latam), no con horas fijas:
+   - 0–35 %: producir; 35–55 %: revisar; 55–75 %: integrar; 75–90 %: congelar
+     assets y preparar exportación; 90–100 %: solo entrega y verificación.
+   Si el humano fija una hora de inicio distinta, se usa esa; el porcentaje
+   nunca se hardcodea en el reloj del sistema.
 9. **Herramientas externas, bajo demanda**: antes de instalar cualquier skill,
    MCP o addon, lee `docs/herramientas.json` y ejecuta
    `python scripts/herramientas.py necesita "<tarea>"`. Instala **solo** lo que
@@ -116,40 +133,45 @@ por carpeta compartida; el equipo lo decide al abrir el proyecto.
 
 ## Tabla de coordinación (anti-improvisación)
 
-| Especialista | Produce | Lee | Coordina con |
-|---|---|---|---|
-| guionista | actos del guion | tomas (shots + shotlist), fichas `blender/ficha_*.md`, claims | modeler (piezas en cámara), investigador (números) |
-| modeler | ficha, `.blend`, scripts, renders | tomas (acto, duración, cámara), `budget/bom.csv` (dimensiones y materiales), `env.json` (tier) | guionista, presupuestador (la ficha alimenta los precios), director (`rubric_item`) |
-| investigador | claims con fuente, URL y año | fuentes citables | guionista, pautador |
-| pautador | secciones del pautado, canvas | brief, claims, budget | presupuestador |
-| presupuestador | `budget/budget.json` | `budget/bom.csv`, fichas `blender/ficha_*.md` (lo que dijo el modeler), claims, proveedores con URL | modeler (lo que la pieza necesita de verdad), pautador, director |
-| grafista2d | piezas 2D si se despacha | tomas con owner grafista2d | guionista |
+| Especialista | Zona | Produce | Lee | Coordina con |
+|---|---|---|---|---|
+| investigador | `research/` | claims con fuente, URL y año | fuentes citables | guionista, pautador, dossier |
+| guionista | `script/` | actos del guion | tomas (shots + shotlist), fichas `blender/ficha_*.md`, claims | modeler (piezas en cámara), investigador (números) |
+| modeler | `blender/` + renders en `dashboard/assets/` | ficha, `.blend`, scripts, renders | tomas (acto, duración, cámara), `budget/bom.csv` (dimensiones y materiales), `env.json` (tier) | guionista, presupuestador (la ficha alimenta los precios), director (`rubric_item`) |
+| pautador | `docs/` | secciones del pautado, canvas | brief, claims, budget | presupuestador |
+| presupuestador | `budget/` (salvo `bom.csv`) | `budget/budget.json` | `budget/bom.csv`, fichas `blender/ficha_*.md`, claims, proveedores con URL | modeler, pautador, director |
+| grafista | `assets/2d/` | piezas 2D, íconos, diagramas | tomas con owner grafista, `brand/tokens.css` | guionista, web |
+| web | `site/` | prototipo y sitio demo | brief, `brand/tokens.css`, datos del pautado | grafista, guionista |
+| voz | `assets/voice/` | narración MP4/AAC ≤ 120 s | guion aprobado | guionista, editor |
+| editor | `video/` | video final, cortes, exportación | `script/shotlist.csv`, renders, narración | voz, modeler, guionista |
+| auditor | `reports/` | informe de rúbrica y huecos | todo lo entregado + `knowledge/rubric_matrices.md` | director |
 
-## Cómo se ponen los precios (presupuestador)
+## Grafo de dependencias (orden de despacho)
 
-Reglas de sentido común, sin tecnicismos:
+```
+investigador → claims
+      ↓
+    brief → tomas → shotlist
+      ↓
+modeler → ficha/BOM → presupuestador → budget
+      ↓                    ↓
+   renders            pautado/canvas
+      ↓                    ↓
+   guionista → voz → editor → video
+      ↓
+ grafista → web → sitio
+      ↓
+   auditor (informe final)
+```
 
-1. **El precio se apoya en la ficha**. Cada línea del presupuesto sale de lo
-   que otro especialista dijo que se necesita: si el modeler escribió en su
-   ficha qué materiales y piezas lleva el modelo, los precios cubren exactamente
-   eso. Si es una app, el costo sale de lo que la app necesita para funcionar,
-   no de lo que a nadie se le ocurra. Nadie presupuesta en el aire.
-2. **Precios creíbles**: ni locos ni regalados. Si una cosa cuesta 5 cuando en
-   cualquier tienda cuesta 200, el precio está mal (demasiado barato = parece
-   inventado). Si cuesta 2 000 cuando el promedio real es 50, también está mal.
-   Antes de escribir un precio se busca la página del vendedor y se anota el
-   enlace en la fila. Sin enlace, la fila no pasa.
-3. **Pagar por usar, casi nunca construir**. Si ya existe un servicio que se
-   paga por uso (alojamiento, envío de mensajes, voz, cajas, transporte), se
-   contrata: es más barato, más rápido y más creíble que fabricarlo. Lo único
-   que el propio equipo construye con sus manos (el prototipo, el modelo, el
-   código propio) casi no cuesta dinero: ahí no se pone un precio grande. El
-   presupuesto real vive en los servicios que se contratan a terceros.
-4. **Gastos anuales para lo digital**. Si la solución es una app o una web,
-   pensar en membresías que se pagan por año y planes por uso, no solo en el
-   gasto del primer día. Siempre con el precio y el enlace real del plan.
-5. **Palabras normales**. La tabla la lee gente que no es ingeniera: nombre de
-   la cosa, para qué sirve y cuántas. Sin siglas raras ni jerga.
+Se despacha lo que no tiene dependencia pendiente. Si una pieza espera a otra,
+el director no la lanza "por adelantado": la deja en cola y avisa.
+
+## Precios
+
+La doctrina de precios vive en `skills/presupuesto/SKILL.md`. Esta skill solo
+despacha al presupuestador y verifica que cada fila traiga `units`, `unit_cost`
+y URL de respaldo.
 
 ## Anti-objetivos (lo que el director NO hace)
 
@@ -164,8 +186,9 @@ Reglas de sentido común, sin tecnicismos:
 
 - [ ] `brief.json` con proyecto; si no, nada se despacha.
 - [ ] Tomas en `shots/*.yaml` completas (`rubric_item` no vacío).
+- [ ] Cobertura de rúbrica revisada (cada ítem con toma o cubierto fuera del video).
 - [ ] `python scripts/build_shotlist.py` sin errores.
-- [ ] `env.json` cargado (hardware, slots, caps, tiers).
+- [ ] `env.json` leído o, si no existe, `env.example.json` como respaldo.
 - [ ] `python scripts/orchestrate.py status` muestra los recursos libres.
 - [ ] Cada despacho con los 5 datos del paso 4.
 - [ ] Nada pesado fuera de `gpu_lock.py run`.

@@ -1,0 +1,102 @@
+{
+ "video_id": "uixYU8M3JPA",
+ "url": "https://www.youtube.com/watch?v=uixYU8M3JPA",
+ "year": 2021,
+ "collection": "sede",
+ "country": "EL SALVADOR",
+ "team": "PROYECO GREEN",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "PROYECO GREEN",
+   "challenge": "02 - LA CIRCULARIDAD Y RECUPERACIÓN DE ENVASES DESCARTABLES"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:53:35+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Sabías que la descomposición de una lata puede tardar hasta 500 años? Las botellas de plástico tardan en descomponerse entre 100 a 1000 años, pero el vidrio tarda mucho más, hasta 5000 años. Ante la problemática de la poca conscientización sobre el reciclaje y el hecho de no revalorizar en bases como latas y botellas de vidrio que en ocasiones no ingresan al circuito de reciclaje surge Proyeco Green. Proyeco Green es un proyecto ecoamigable que plantea establecer estaciones con contenedores ubicados estratégicamente en comunidades que promuevan el reciclaje a través de canjes, es decir, que las personas puedan entregar en bases y a cambio recibir beneficios como puntos canjeables por productos de primera necesidad y productos con impacto ambiental. Así pues, la revalorización de los en bases y latas se verá reflejada a través de la construcción de hogares autosustentables, dicho de otra manera hogares construidos a partir de los embases pensionados anteriormente. Recyclar y reutilizar son acciones que pueden darle más vida a nuestro planeta. El futuro no es desechable, se parte de la solución, no de la contaminación.",
+ "segments": [
+  {
+   "start": 0.66,
+   "end": 6.26,
+   "text": "¿Sabías que la descomposición de una lata puede tardar hasta 500 años?"
+  },
+  {
+   "start": 6.26,
+   "end": 14.18,
+   "text": "Las botellas de plástico tardan en descomponerse entre 100 a 1000 años, pero el vidrio tarda"
+  },
+  {
+   "start": 14.18,
+   "end": 18.74,
+   "text": "mucho más, hasta 5000 años."
+  },
+  {
+   "start": 18.74,
+   "end": 24.22,
+   "text": "Ante la problemática de la poca conscientización sobre el reciclaje y el hecho de no revalorizar"
+  },
+  {
+   "start": 24.22,
+   "end": 31.22,
+   "text": "en bases como latas y botellas de vidrio que en ocasiones no ingresan al circuito de reciclaje"
+  },
+  {
+   "start": 31.22,
+   "end": 35.06,
+   "text": "surge Proyeco Green."
+  },
+  {
+   "start": 35.06,
+   "end": 41.78,
+   "text": "Proyeco Green es un proyecto ecoamigable que plantea establecer estaciones con contenedores"
+  },
+  {
+   "start": 41.78,
+   "end": 48.66,
+   "text": "ubicados estratégicamente en comunidades que promuevan el reciclaje a través de canjes,"
+  },
+  {
+   "start": 48.66,
+   "end": 54.5,
+   "text": "es decir, que las personas puedan entregar en bases y a cambio recibir beneficios como"
+  },
+  {
+   "start": 54.5,
+   "end": 60.78,
+   "text": "puntos canjeables por productos de primera necesidad y productos con impacto ambiental."
+  },
+  {
+   "start": 60.78,
+   "end": 68.74,
+   "text": "Así pues, la revalorización de los en bases y latas se verá reflejada a través de la"
+  },
+  {
+   "start": 68.74,
+   "end": 74.9,
+   "text": "construcción de hogares autosustentables, dicho de otra manera hogares construidos a"
+  },
+  {
+   "start": 74.9,
+   "end": 79.66,
+   "text": "partir de los embases pensionados anteriormente."
+  },
+  {
+   "start": 79.66,
+   "end": 85.7,
+   "text": "Recyclar y reutilizar son acciones que pueden darle más vida a nuestro planeta."
+  },
+  {
+   "start": 85.7,
+   "end": 91.3,
+   "text": "El futuro no es desechable, se parte de la solución, no de la contaminación."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 108.1
+}

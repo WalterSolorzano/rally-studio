@@ -1,0 +1,122 @@
+{
+ "video_id": "7KRMRkPlf70",
+ "url": "https://youtu.be/7KRMRkPlf70",
+ "year": 2020,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "INGENIEROS EN PROCESO",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2020,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "INGENIEROS EN PROCESO",
+   "challenge": "02 - ¿CÓMO PODEMOS HACER PARA QUE LOS CONDUCTORES EVITEN DISTRAERSE CON SU CELULAR O MÓVIL MIENTRAS MANEJAN SUS VEHÍCULOS?"
+  }
+ ],
+ "fetched_at": "2026-10-23T01:14:32+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Hola, nosotros somos del país de México en la sede del Instituto Tecnológico Superoble Sur de Guanajuato. El nombre de nuestro equipo es ingenieros en proceso y la problemática que se eligió es la de evitar que el conductor alir en el auto tome su celular ya sea para llamar al mensaje solo interactuar simplemente con él. Es la solución por esta problemática se dio con dos simples aspectos que ya existen en la vida pero implementadas en este caso aún no. La primera sería que como en los autos de ahora cuando te pones un cinturón el carro detecta si ya te lo pusiste o no te lo pusiste y te manda un testigo a un cinturón, el cual está pitando hasta que te lo pones. Esta es una señal que te manda con usuario que necesitas poner cinturón de seguridad y la otra es por medio de como la plataforma de WhatsApp tiene de WhatsApp web te puedes conectar en aquí un código QR te conectas y se entrelaza la computadora con el celular esto va a ser la manera en que el conductor va a conectar su celular con el carro. Esto para qué para que se conecte una aplicación y esa aplicación restrica las llamadas mensajes y todo todo lo vas a extinguir. Cuando sea una llamada lo que no vas a poder contestarla hasta que tú oríes el carro y frenes y acances una velocidad de 0 kilómetros y cuando esté 0 kilómetros la aplicación se va a salir y tu teléfono va a funcionar correctamente esa sería la solución que teníamos en este momento.",
+ "segments": [
+  {
+   "start": 0.56,
+   "end": 6.2,
+   "text": "Hola, nosotros somos del país de México en la sede del Instituto Tecnológico Superoble"
+  },
+  {
+   "start": 6.2,
+   "end": 11.0,
+   "text": "Sur de Guanajuato. El nombre de nuestro equipo es ingenieros en proceso y la"
+  },
+  {
+   "start": 11.0,
+   "end": 17.54,
+   "text": "problemática que se eligió es la de evitar que el conductor alir en el"
+  },
+  {
+   "start": 17.54,
+   "end": 22.72,
+   "text": "auto tome su celular ya sea para llamar al mensaje solo interactuar simplemente con"
+  },
+  {
+   "start": 22.72,
+   "end": 26.72,
+   "text": "él. Es la solución por esta problemática se"
+  },
+  {
+   "start": 26.72,
+   "end": 34.48,
+   "text": "dio con dos simples aspectos que ya existen en la vida pero implementadas en este caso"
+  },
+  {
+   "start": 34.48,
+   "end": 42.0,
+   "text": "aún no. La primera sería que como en los autos de ahora cuando te pones un cinturón"
+  },
+  {
+   "start": 42.0,
+   "end": 50.96,
+   "text": "el carro detecta si ya te lo pusiste o no te lo pusiste y te manda un testigo"
+  },
+  {
+   "start": 50.96,
+   "end": 58.4,
+   "text": "a un cinturón, el cual está pitando hasta que te lo pones. Esta es una señal que"
+  },
+  {
+   "start": 58.4,
+   "end": 65.56,
+   "text": "te manda con usuario que necesitas poner cinturón de seguridad y la otra es por"
+  },
+  {
+   "start": 65.56,
+   "end": 71.68,
+   "text": "medio de como la plataforma de WhatsApp tiene de WhatsApp web te puedes conectar"
+  },
+  {
+   "start": 71.68,
+   "end": 77.16,
+   "text": "en aquí un código QR te conectas y se entrelaza la computadora con el celular"
+  },
+  {
+   "start": 77.4,
+   "end": 84.4,
+   "text": "esto va a ser la manera en que el conductor va a conectar su celular con el"
+  },
+  {
+   "start": 84.4,
+   "end": 89.36,
+   "text": "carro. Esto para qué para que se conecte una aplicación y esa aplicación"
+  },
+  {
+   "start": 89.36,
+   "end": 97.32,
+   "text": "restrica las llamadas mensajes y todo todo lo vas a extinguir. Cuando sea una"
+  },
+  {
+   "start": 97.32,
+   "end": 102.96,
+   "text": "llamada lo que no vas a poder contestarla hasta que tú oríes el"
+  },
+  {
+   "start": 102.96,
+   "end": 108.72,
+   "text": "carro y frenes y acances una velocidad de 0 kilómetros y cuando esté 0 kilómetros"
+  },
+  {
+   "start": 108.72,
+   "end": 115.88,
+   "text": "la aplicación se va a salir y tu teléfono va a funcionar correctamente"
+  },
+  {
+   "start": 115.88,
+   "end": 121.24,
+   "text": "esa sería la solución que teníamos en este momento."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.0
+}

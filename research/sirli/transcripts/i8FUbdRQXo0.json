@@ -1,0 +1,122 @@
+{
+ "video_id": "i8FUbdRQXo0",
+ "url": "https://youtu.be/i8FUbdRQXo0?si=8g7cdAROr594W9mg",
+ "year": 2024,
+ "collection": "sede",
+ "country": "EL SALVADOR",
+ "team": "INNOVADEV",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "INNOVADEV",
+   "challenge": "01 - MICROPRESAS O MICROEMBALSES"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:43:05+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En muchas zonas rurales, la escasez y el exceso de agua han causado estragos en agricultura y en la vida diaria. Las basal de agua diseñadas para hacer una solución muchas veces se han convertido en parte del problema. Hiltraciones, evaporación rápida y la proliferación de mosquitos son sólo algunos de los desafíos que estas balsas presentan. Los animales atraídos por el agua quedan atrapados y mueren, generando un impacto negativo tanto en el ecosistema como en las comunidades locales. Esta situación ha llevado a la pérdida de cosechas, afectando directamente a las familias que dependen de la agricultura. A esto se suma un problema de salud pública, ya que la agua estancada se convierte en un criadero de mosquitos, incrementando el riesgo de enfermedades. Nosotros, y mi equipo y no va a ver, entendemos estos problemas y estamos comprometidos con encontrar una solución práctica y efectiva. Como equipo, nos propusimos en desarrollar un enfoque que no sólo sea accesible para comunidades rurales, sino también respetuoso por el medio ambiente. Nuestra solución es ecopresa, un sistema de microembalces que mejora significativamente la forma en la que se recogue y conserve el agua lluvia, usando materiales locales como arsilla compactada y vegetación nativa. Ecopresa no sólo evita las filtraciones de agua al suelo, sino que también reduce la evaporación de plantar árboles y vegetación alrededor de las plantas, creando un entorno más fresco y estable para conservar el agua. Esta solución no requiere de tecnologías avanzadas ni costosas, lo que hace ideal para las comunidades rurales. Además, el diseño natural de ecopresa protege la biodiversidad al evitar que las animales queden atrapados y al disminuir los criaderos de mosquitos, mejorando la calidad del agua y el ambiente. Con ecopresa, estamos ayudando a las comunidades a gestionar mejor sus recursos hídricos, protegiendo la biodiversidad y mejorando la calidad de vida. Nuestro foco es sencillo, eficiente y lo más importante es sostenible. En InnovaDev estamos comprometidos como ofrecer soluciones que marquen la diferencia real para las personas y su entorno.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 6.06,
+   "text": "En muchas zonas rurales, la escasez y el exceso de agua han causado estragos en agricultura y en la vida diaria."
+  },
+  {
+   "start": 6.06,
+   "end": 11.76,
+   "text": "Las basal de agua diseñadas para hacer una solución muchas veces se han convertido en parte del problema."
+  },
+  {
+   "start": 11.76,
+   "end": 18.52,
+   "text": "Hiltraciones, evaporación rápida y la proliferación de mosquitos son sólo algunos de los desafíos que estas balsas presentan."
+  },
+  {
+   "start": 18.52,
+   "end": 26.42,
+   "text": "Los animales atraídos por el agua quedan atrapados y mueren, generando un impacto negativo tanto en el ecosistema como en las comunidades locales."
+  },
+  {
+   "start": 26.46,
+   "end": 32.7,
+   "text": "Esta situación ha llevado a la pérdida de cosechas, afectando directamente a las familias que dependen de la agricultura."
+  },
+  {
+   "start": 32.7,
+   "end": 39.62,
+   "text": "A esto se suma un problema de salud pública, ya que la agua estancada se convierte en un criadero de mosquitos, incrementando el riesgo de enfermedades."
+  },
+  {
+   "start": 39.62,
+   "end": 47.5,
+   "text": "Nosotros, y mi equipo y no va a ver, entendemos estos problemas y estamos comprometidos con encontrar una solución práctica y efectiva."
+  },
+  {
+   "start": 47.5,
+   "end": 56.34,
+   "text": "Como equipo, nos propusimos en desarrollar un enfoque que no sólo sea accesible para comunidades rurales, sino también respetuoso por el medio ambiente."
+  },
+  {
+   "start": 56.54,
+   "end": 63.64,
+   "text": "Nuestra solución es ecopresa, un sistema de microembalces que mejora significativamente la forma en la que se recogue y conserve el agua lluvia,"
+  },
+  {
+   "start": 63.64,
+   "end": 68.46,
+   "text": "usando materiales locales como arsilla compactada y vegetación nativa."
+  },
+  {
+   "start": 68.46,
+   "end": 76.66,
+   "text": "Ecopresa no sólo evita las filtraciones de agua al suelo, sino que también reduce la evaporación de plantar árboles y vegetación alrededor de las plantas,"
+  },
+  {
+   "start": 76.66,
+   "end": 81.14,
+   "text": "creando un entorno más fresco y estable para conservar el agua."
+  },
+  {
+   "start": 81.54,
+   "end": 88.54,
+   "text": "Esta solución no requiere de tecnologías avanzadas ni costosas, lo que hace ideal para las comunidades rurales."
+  },
+  {
+   "start": 88.54,
+   "end": 97.7,
+   "text": "Además, el diseño natural de ecopresa protege la biodiversidad al evitar que las animales queden atrapados y al disminuir los criaderos de mosquitos,"
+  },
+  {
+   "start": 97.7,
+   "end": 100.5,
+   "text": "mejorando la calidad del agua y el ambiente."
+  },
+  {
+   "start": 100.5,
+   "end": 105.3,
+   "text": "Con ecopresa, estamos ayudando a las comunidades a gestionar mejor sus recursos hídricos,"
+  },
+  {
+   "start": 105.46,
+   "end": 108.46,
+   "text": "protegiendo la biodiversidad y mejorando la calidad de vida."
+  },
+  {
+   "start": 108.46,
+   "end": 112.46,
+   "text": "Nuestro foco es sencillo, eficiente y lo más importante es sostenible."
+  },
+  {
+   "start": 112.46,
+   "end": 119.46,
+   "text": "En InnovaDev estamos comprometidos como ofrecer soluciones que marquen la diferencia real para las personas y su entorno."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.0
+}

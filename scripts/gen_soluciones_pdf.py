@@ -151,7 +151,7 @@ def _card(ruta: dict) -> str:
       <div class="label">Recursos y componentes</div>
       <div class="chips">{chips or '<span class="chip">Definir BOM en budget/bom.csv</span>'}</div>
       <div class="rubric"><strong>Alineación con la rúbrica:</strong> {linea_rubrica}</div>
-      <div class="risk">{e(ruta.get('riesgo'))}</div>
+      <div class="risk"><strong>Bandera de riesgo:</strong> {e(ruta.get('riesgo'))}</div>
       {aviso}
       <div class="pitch">{e(ruta.get('pitch'))}</div>
       {_bloque_grafo(ruta)}

@@ -1,0 +1,97 @@
+{
+ "video_id": "6Nze5enH5og",
+ "url": "https://youtu.be/6Nze5enH5og",
+ "year": 2023,
+ "collection": "sede",
+ "country": "EL SALVADOR",
+ "team": "CUARTETO UGB",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "CUARTETO UGB",
+   "challenge": "07 - CROWDSENSING"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:03:15+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Te imaginas vivir en una ciudad inteligente donde tu celular se convierte en tu mano derecha y te ayuda a solucionar problemas cotidianos? Si lo crees así, estás en el lugar indicado. Con eSense buscamos que tu día a día sea más o menos mientras le sacas el máximo provecho a tu tiempo. ¿Cómo te estarás preguntando? Hay múltiples maneras. Desde en cómo uses el transporte colectivo, ayudándote a escoger la mejor ruta para llegar a tu destino, reduciendo el tiempo en que te lleva a realizar tus compras, sugiriendote siempre las mejores lugares con los menores tiempos de espera, mostrándote los eventos más relevantes y las actividades más interesantes en tu área, para que disfrutes de tu tiempo libre como te lo mereces. Entre muchas otras actividades, querán que tus días sean mejores, sin perder ni un minuto. Queremos que seas parte de esta revolución digital en tu ciudad, que transforma los desafíos en oportunidades donde el único límite es como quieres vivir el mañana. ¿Te animas?",
+ "segments": [
+  {
+   "start": 1.3,
+   "end": 9.46,
+   "text": "¿Te imaginas vivir en una ciudad inteligente donde tu celular se convierte en tu mano derecha y te ayuda a solucionar problemas cotidianos?"
+  },
+  {
+   "start": 10.74,
+   "end": 13.86,
+   "text": "Si lo crees así, estás en el lugar indicado."
+  },
+  {
+   "start": 14.18,
+   "end": 20.3,
+   "text": "Con eSense buscamos que tu día a día sea más o menos mientras le sacas el máximo provecho a tu tiempo."
+  },
+  {
+   "start": 21.7,
+   "end": 23.7,
+   "text": "¿Cómo te estarás preguntando?"
+  },
+  {
+   "start": 24.74,
+   "end": 26.74,
+   "text": "Hay múltiples maneras."
+  },
+  {
+   "start": 26.82,
+   "end": 32.98,
+   "text": "Desde en cómo uses el transporte colectivo, ayudándote a escoger la mejor ruta para llegar a tu destino,"
+  },
+  {
+   "start": 33.54,
+   "end": 36.74,
+   "text": "reduciendo el tiempo en que te lleva a realizar tus compras,"
+  },
+  {
+   "start": 36.74,
+   "end": 40.98,
+   "text": "sugiriendote siempre las mejores lugares con los menores tiempos de espera,"
+  },
+  {
+   "start": 41.94,
+   "end": 46.58,
+   "text": "mostrándote los eventos más relevantes y las actividades más interesantes en tu área,"
+  },
+  {
+   "start": 46.58,
+   "end": 49.78,
+   "text": "para que disfrutes de tu tiempo libre como te lo mereces."
+  },
+  {
+   "start": 50.98,
+   "end": 56.58,
+   "text": "Entre muchas otras actividades, querán que tus días sean mejores, sin perder ni un minuto."
+  },
+  {
+   "start": 58.21,
+   "end": 61.81,
+   "text": "Queremos que seas parte de esta revolución digital en tu ciudad,"
+  },
+  {
+   "start": 61.81,
+   "end": 68.21,
+   "text": "que transforma los desafíos en oportunidades donde el único límite es como quieres vivir el mañana."
+  },
+  {
+   "start": 69.09,
+   "end": 71.09,
+   "text": "¿Te animas?"
+  }
+ ],
+ "has_info": false,
+ "duration_s": 71.2
+}

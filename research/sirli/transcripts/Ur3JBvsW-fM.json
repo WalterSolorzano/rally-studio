@@ -1,0 +1,137 @@
+{
+ "video_id": "Ur3JBvsW-fM",
+ "url": "https://youtu.be/Ur3JBvsW-fM",
+ "year": 2024,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "BRAVO RINOS",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "BRAVO RINOS",
+   "challenge": "04 - AGUACATE"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:45:00+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Bienvenidos al Real y Latinoamericano 2024. En México, el aguacate es uno de los frutos más importantes para la economía. Sin embargo, hay un problema creciente en los residuos que genera. Cáscaras y semillas que se desechan sin ningún aprovechamiento, incrementando la contaminación y la huella de carbono. Nuestro equipo, Bravo Rinos, propone una solución innovadora. Transformó estos desechos en biopelículas biodegradables. Estas biopelículas hechas a partir de las cáscaras y semillas del aguacate podrían reemplazar plásticos convencionales en diversas aplicaciones. Este proceso no solo contribuye a reducir la contaminación plástica, sino que también aproveche los residuos al máximo, cerrando el ciclo de una verdadera economía circular. La planta procesadora que proponemos es autosustentable, utilizando biogases y biocombustibles generados durante el proceso de transformación. De esta manera, no solo reducimos residuos, sino también la dependencia de combustibles fósiles. Además, esta solución tiene un impacto social significativo, ya que generaría empleo en las zonas productoras de aguacate, beneficiendo directamente a las comunidades rurales. Con esta propuesta no solo cuidamos el medio ambiente, sino que también generamos nuevas oportunidades económicas. Es momento de transformar el aguacate en una solución sostenible para el futuro. Bravo, Rinos, innovando para un futuro más verde.",
+ "segments": [
+  {
+   "start": 1.52,
+   "end": 5.86,
+   "text": "Bienvenidos al Real y Latinoamericano 2024."
+  },
+  {
+   "start": 5.86,
+   "end": 12.02,
+   "text": "En México, el aguacate es uno de los frutos más importantes para la economía."
+  },
+  {
+   "start": 12.02,
+   "end": 16.86,
+   "text": "Sin embargo, hay un problema creciente en los residuos que genera."
+  },
+  {
+   "start": 16.86,
+   "end": 21.46,
+   "text": "Cáscaras y semillas que se desechan sin ningún aprovechamiento,"
+  },
+  {
+   "start": 21.46,
+   "end": 25.46,
+   "text": "incrementando la contaminación y la huella de carbono."
+  },
+  {
+   "start": 25.46,
+   "end": 30.26,
+   "text": "Nuestro equipo, Bravo Rinos, propone una solución innovadora."
+  },
+  {
+   "start": 30.26,
+   "end": 33.76,
+   "text": "Transformó estos desechos en biopelículas biodegradables."
+  },
+  {
+   "start": 33.76,
+   "end": 38.26,
+   "text": "Estas biopelículas hechas a partir de las cáscaras y semillas del aguacate"
+  },
+  {
+   "start": 38.26,
+   "end": 43.76,
+   "text": "podrían reemplazar plásticos convencionales en diversas aplicaciones."
+  },
+  {
+   "start": 43.76,
+   "end": 49.26,
+   "text": "Este proceso no solo contribuye a reducir la contaminación plástica,"
+  },
+  {
+   "start": 49.26,
+   "end": 53.26,
+   "text": "sino que también aproveche los residuos al máximo,"
+  },
+  {
+   "start": 53.26,
+   "end": 58.76,
+   "text": "cerrando el ciclo de una verdadera economía circular."
+  },
+  {
+   "start": 58.76,
+   "end": 62.26,
+   "text": "La planta procesadora que proponemos es autosustentable,"
+  },
+  {
+   "start": 62.26,
+   "end": 67.26,
+   "text": "utilizando biogases y biocombustibles generados durante el proceso de transformación."
+  },
+  {
+   "start": 67.26,
+   "end": 73.26,
+   "text": "De esta manera, no solo reducimos residuos, sino también la dependencia de combustibles fósiles."
+  },
+  {
+   "start": 74.76,
+   "end": 79.26,
+   "text": "Además, esta solución tiene un impacto social significativo,"
+  },
+  {
+   "start": 79.26,
+   "end": 83.76,
+   "text": "ya que generaría empleo en las zonas productoras de aguacate,"
+  },
+  {
+   "start": 83.76,
+   "end": 87.76,
+   "text": "beneficiendo directamente a las comunidades rurales."
+  },
+  {
+   "start": 88.76,
+   "end": 91.76,
+   "text": "Con esta propuesta no solo cuidamos el medio ambiente,"
+  },
+  {
+   "start": 91.76,
+   "end": 95.26,
+   "text": "sino que también generamos nuevas oportunidades económicas."
+  },
+  {
+   "start": 95.26,
+   "end": 100.26,
+   "text": "Es momento de transformar el aguacate en una solución sostenible para el futuro."
+  },
+  {
+   "start": 101.26,
+   "end": 105.26,
+   "text": "Bravo, Rinos, innovando para un futuro más verde."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 111.6
+}

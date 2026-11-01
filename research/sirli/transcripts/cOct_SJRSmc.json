@@ -1,0 +1,97 @@
+{
+ "video_id": "cOct_SJRSmc",
+ "url": "https://www.youtube.com/watch?v=cOct_SJRSmc",
+ "year": 2022,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "TECHNOVA",
+ "place_label": "TERCER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "sede",
+   "place_label": "TERCER LUGAR",
+   "team": "TECHNOVA",
+   "challenge": "07 - ALUDES DE BARRO"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:43:34+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Hola, somos el equipo Tex Nova y nuestro desafío es el número 7, alude de barro. En Latinoamérica el 80% de desastres naturales son de carácter geofísicos, hidrológicos y climatológicos. Dentro de los hidrológicos los más letales y repentinos son los deslizamientos de tierra en terrenos altos y poco estables, debido a la saturación de la humedad del suelo. Por defecto de la gravedad se deslizan ladera abajo causando destrucción en infraestructuras comunitarias y pérdidas de vida humana. El usuario al entrar deberá colocar un nombre de registro y se guardará en la base de datos de la app. Luego en la página de inicio mostrará dos paneles, uno dando información de tiempo, clima y hora. El siguiente panel, una gráfica que estará funcionando conectada a la base de datos principal mediante de ondas de radio de un sensor, que medirá en tiempo real y mandará notificaciones al usuario indicando el porcentaje de precipitación de la lluvia en el suelo, así evitando riesgo de deslave en la zona. Debido a esta problemática se decide implementar un sistema de alerta temprana o preventiva ante deslizamiento de tierra. La tecnología empleada en este sistema con tensión de energía con paneles solares constará de dos tipos de sensores, geófonos para registrar los movimientos sísmicos y sensores para medir la humedad del suelo. Estarán conectados a una estación o una base de control en donde se registrarán los datos y se enviarán a la app sin adhesión. Siendo esta una aplicación para notificar en diferentes niveles de emergencia a los pobladores cercanos a la zona de riesgo.",
+ "segments": [
+  {
+   "start": 0.24,
+   "end": 6.24,
+   "text": "Hola, somos el equipo Tex Nova y nuestro desafío es el número 7, alude de barro."
+  },
+  {
+   "start": 6.24,
+   "end": 14.24,
+   "text": "En Latinoamérica el 80% de desastres naturales son de carácter geofísicos, hidrológicos y climatológicos."
+  },
+  {
+   "start": 14.24,
+   "end": 22.24,
+   "text": "Dentro de los hidrológicos los más letales y repentinos son los deslizamientos de tierra en terrenos altos y poco estables,"
+  },
+  {
+   "start": 22.24,
+   "end": 26.24,
+   "text": "debido a la saturación de la humedad del suelo."
+  },
+  {
+   "start": 26.24,
+   "end": 35.24,
+   "text": "Por defecto de la gravedad se deslizan ladera abajo causando destrucción en infraestructuras comunitarias y pérdidas de vida humana."
+  },
+  {
+   "start": 35.24,
+   "end": 42.24,
+   "text": "El usuario al entrar deberá colocar un nombre de registro y se guardará en la base de datos de la app."
+  },
+  {
+   "start": 42.24,
+   "end": 48.24,
+   "text": "Luego en la página de inicio mostrará dos paneles, uno dando información de tiempo, clima y hora."
+  },
+  {
+   "start": 48.24,
+   "end": 55.24,
+   "text": "El siguiente panel, una gráfica que estará funcionando conectada a la base de datos principal mediante de ondas de radio de un sensor,"
+  },
+  {
+   "start": 55.24,
+   "end": 66.24,
+   "text": "que medirá en tiempo real y mandará notificaciones al usuario indicando el porcentaje de precipitación de la lluvia en el suelo, así evitando riesgo de deslave en la zona."
+  },
+  {
+   "start": 66.24,
+   "end": 75.24,
+   "text": "Debido a esta problemática se decide implementar un sistema de alerta temprana o preventiva ante deslizamiento de tierra."
+  },
+  {
+   "start": 75.24,
+   "end": 83.24,
+   "text": "La tecnología empleada en este sistema con tensión de energía con paneles solares constará de dos tipos de sensores,"
+  },
+  {
+   "start": 83.24,
+   "end": 90.24,
+   "text": "geófonos para registrar los movimientos sísmicos y sensores para medir la humedad del suelo."
+  },
+  {
+   "start": 90.24,
+   "end": 99.24,
+   "text": "Estarán conectados a una estación o una base de control en donde se registrarán los datos y se enviarán a la app sin adhesión."
+  },
+  {
+   "start": 99.24,
+   "end": 108.24,
+   "text": "Siendo esta una aplicación para notificar en diferentes niveles de emergencia a los pobladores cercanos a la zona de riesgo."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 111.9
+}

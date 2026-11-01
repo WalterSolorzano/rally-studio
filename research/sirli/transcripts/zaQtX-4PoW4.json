@@ -1,0 +1,107 @@
+{
+ "video_id": "zaQtX-4PoW4",
+ "url": "https://youtu.be/zaQtX-4PoW4?si=09IgElDUnA2k_-RQ",
+ "year": 2025,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "INNOVATE - AZUL",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "INNOVATE - AZUL",
+   "challenge": "04 - SISTEMA DE ALERTA TEMPRANA"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:44:01+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Latinoamérica, las comunidades vulnerables viven constantemente expuestas a inundaciones, incendios y quemas agrícolas. La información muchas veces llega tarde o es confusa, poniendo en riesgo vidas y medios de conservación. Sabia cambia esa realidad, es un sistema de alerta visual inteligente y autónomo diseñado para detectar riesgo antes de que se conviertan en desastre. Lo innovador de Sabia es la integración de múltiples sensores autónomos, humo, gases, temperatura, humedad y nivel de agua. Sensores que recopilan señales de la población a través de reportes públicos filtrados de redes sociales. Todos los datos se procesan localmente para generar alertas inmediatas sin depender de internet o telefonía móvil. Las alertas llegan a la comunidad de manera visual y sonora. Mapas claros con colores que indican el nivel de riesgo, megáfonos inteligentes que ajustan su potencia según el viento, asegurando que todos escuchen alerta. El desfiegue también es innovador y sostenible. Usamos árboles como soporte natural para los equipos, aprovechando su altura y robustez, con panel solar y batería integrada. Esto hace que el sistema sea duradero, autónomo y respetuoso con el entorno. Más que una alerta temprana, Sabia es un sistema autónomo de fortaleza ambiental, capaz de adaptarse a distintas realidades latinoamericanas con sensores inteligentes, energía solar y participación ciudadana. Convertimos la innovación en protección sostenible.",
+ "segments": [
+  {
+   "start": 12.94,
+   "end": 19.34,
+   "text": "Latinoamérica, las comunidades vulnerables viven constantemente expuestas a inundaciones,"
+  },
+  {
+   "start": 19.34,
+   "end": 26.1,
+   "text": "incendios y quemas agrícolas. La información muchas veces llega tarde o es confusa, poniendo"
+  },
+  {
+   "start": 26.1,
+   "end": 32.54,
+   "text": "en riesgo vidas y medios de conservación. Sabia cambia esa realidad, es un sistema"
+  },
+  {
+   "start": 32.54,
+   "end": 39.42,
+   "text": "de alerta visual inteligente y autónomo diseñado para detectar riesgo antes de que se conviertan"
+  },
+  {
+   "start": 39.42,
+   "end": 46.98,
+   "text": "en desastre. Lo innovador de Sabia es la integración de múltiples sensores autónomos, humo, gases,"
+  },
+  {
+   "start": 46.98,
+   "end": 54.14,
+   "text": "temperatura, humedad y nivel de agua. Sensores que recopilan señales de la población a través"
+  },
+  {
+   "start": 54.14,
+   "end": 61.14,
+   "text": "de reportes públicos filtrados de redes sociales. Todos los datos se procesan localmente para"
+  },
+  {
+   "start": 61.14,
+   "end": 68.34,
+   "text": "generar alertas inmediatas sin depender de internet o telefonía móvil. Las alertas llegan a la"
+  },
+  {
+   "start": 68.34,
+   "end": 74.3,
+   "text": "comunidad de manera visual y sonora. Mapas claros con colores que indican el nivel de riesgo,"
+  },
+  {
+   "start": 74.3,
+   "end": 80.82,
+   "text": "megáfonos inteligentes que ajustan su potencia según el viento, asegurando que todos escuchen"
+  },
+  {
+   "start": 80.82,
+   "end": 88.14,
+   "text": "alerta. El desfiegue también es innovador y sostenible. Usamos árboles como soporte natural para"
+  },
+  {
+   "start": 88.14,
+   "end": 94.98,
+   "text": "los equipos, aprovechando su altura y robustez, con panel solar y batería integrada. Esto hace"
+  },
+  {
+   "start": 94.98,
+   "end": 102.02,
+   "text": "que el sistema sea duradero, autónomo y respetuoso con el entorno. Más que una alerta temprana,"
+  },
+  {
+   "start": 102.02,
+   "end": 108.82,
+   "text": "Sabia es un sistema autónomo de fortaleza ambiental, capaz de adaptarse a distintas"
+  },
+  {
+   "start": 108.82,
+   "end": 114.34,
+   "text": "realidades latinoamericanas con sensores inteligentes, energía solar y participación"
+  },
+  {
+   "start": 114.34,
+   "end": 118.46,
+   "text": "ciudadana. Convertimos la innovación en protección sostenible."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 123.0
+}

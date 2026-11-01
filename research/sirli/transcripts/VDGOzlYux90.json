@@ -1,0 +1,112 @@
+{
+ "video_id": "VDGOzlYux90",
+ "url": "https://youtu.be/VDGOzlYux90",
+ "year": 2025,
+ "collection": "sede",
+ "country": "COLOMBIA",
+ "team": "QUANTUM INFINITY",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "QUANTUM INFINITY",
+   "challenge": "04 - SISTEMA DE ALERTA TEMPRANA"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:12:53+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "debido a que se siguen presentando catástrofos y dando solucional el desafío número 4. Se decide desarrollar e implementar un sistema de alerta temprana de inundaciones para advertir a una comunidad cuando el nivel del río está aumentando, alineado con el objetivo de desarrollar Sostenible 11 que busca lograr que las ciudades sean más inclusivas, seguras a presidentes y sostenibles. Es una herramienta intuitiva, con un panel de control centralizado que muestra el tiempo real, los datos de niveles del agua del río, la lluvia que está cayendo en las últimas horas, el estado de los sensores. Todo esto apoyado por colores. Asimismo se puede configurar un reporte de alerta. También contamos con visualización geospatial de los sensores y áreas de riesgo en un mapa interactivo. Asimismo se cuenta con un módulo para obtener datos de los residentes de la comunidad, y así que puedan obtener capacitaciones periódicas, así como alertar los de simulacros. Y ya, para la capacitación, contamos con un control de asistencia, así como un análisis de aceptación o de adaptación a la comunidad mediante estos recursos sacados. Por último, se evidencia que toda esta información será actualizada y será analizada en tiempo real. Esta organización de monitoreo, implementada en la aplicación alerta HOSO, contribuirá a que las ciudades sean más seguras y resilientes al proporcionar una herramienta efectiva para la gestión y mitinglación de riesgos de inundaciones.",
+ "segments": [
+  {
+   "start": 0.59,
+   "end": 6.89,
+   "text": "debido a que se siguen presentando catástrofos y dando solucional el desafío número 4."
+  },
+  {
+   "start": 6.89,
+   "end": 13.89,
+   "text": "Se decide desarrollar e implementar un sistema de alerta temprana de inundaciones para advertir a una comunidad"
+  },
+  {
+   "start": 13.89,
+   "end": 18.99,
+   "text": "cuando el nivel del río está aumentando, alineado con el objetivo de desarrollar Sostenible 11"
+  },
+  {
+   "start": 18.99,
+   "end": 24.69,
+   "text": "que busca lograr que las ciudades sean más inclusivas, seguras a presidentes y sostenibles."
+  },
+  {
+   "start": 25.69,
+   "end": 31.19,
+   "text": "Es una herramienta intuitiva, con un panel de control centralizado que muestra el tiempo real,"
+  },
+  {
+   "start": 31.19,
+   "end": 38.19,
+   "text": "los datos de niveles del agua del río, la lluvia que está cayendo en las últimas horas, el estado de los sensores."
+  },
+  {
+   "start": 39.19,
+   "end": 41.69,
+   "text": "Todo esto apoyado por colores."
+  },
+  {
+   "start": 42.69,
+   "end": 46.69,
+   "text": "Asimismo se puede configurar un reporte de alerta."
+  },
+  {
+   "start": 46.69,
+   "end": 60.72,
+   "text": "También contamos con visualización geospatial de los sensores y áreas de riesgo en un mapa interactivo."
+  },
+  {
+   "start": 61.22,
+   "end": 67.72,
+   "text": "Asimismo se cuenta con un módulo para obtener datos de los residentes de la comunidad,"
+  },
+  {
+   "start": 67.72,
+   "end": 74.72,
+   "text": "y así que puedan obtener capacitaciones periódicas, así como alertar los de simulacros."
+  },
+  {
+   "start": 74.72,
+   "end": 85.97,
+   "text": "Y ya, para la capacitación, contamos con un control de asistencia,"
+  },
+  {
+   "start": 85.97,
+   "end": 94.97,
+   "text": "así como un análisis de aceptación o de adaptación a la comunidad mediante estos recursos sacados."
+  },
+  {
+   "start": 96.47,
+   "end": 103.97,
+   "text": "Por último, se evidencia que toda esta información será actualizada y será analizada en tiempo real."
+  },
+  {
+   "start": 103.97,
+   "end": 109.97,
+   "text": "Esta organización de monitoreo, implementada en la aplicación alerta HOSO,"
+  },
+  {
+   "start": 109.97,
+   "end": 113.97,
+   "text": "contribuirá a que las ciudades sean más seguras y resilientes"
+  },
+  {
+   "start": 113.97,
+   "end": 119.97,
+   "text": "al proporcionar una herramienta efectiva para la gestión y mitinglación de riesgos de inundaciones."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.8
+}

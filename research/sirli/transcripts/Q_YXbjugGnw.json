@@ -1,0 +1,117 @@
+{
+ "video_id": "Q_YXbjugGnw",
+ "url": "https://youtu.be/Q_YXbjugGnw?si=U4k7OBhhlwM23yzA",
+ "year": 2026,
+ "collection": "sede",
+ "country": "COLOMBIA",
+ "team": "IMPACT FACTORY",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "IMPACT FACTORY",
+   "challenge": "04 - MANEJO ECOLÓGICO DE RESIDUOS DE PODA Y BIOMASA VEGETAL URBANA"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:40:50+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Y si los residuos de poda y biomasa vegetal urbana, que hoy terminan desechados, pudieran convertirse en oportunidades de empleo, recuperación ambiental y desarrollo para Swatcha? Nuestro territorio necesita soluciones que no solo gestione los residuos, sino que también beneficien a su gente. Con BioSwatcha queremos que las madres, cabezas de hogar y otros habitantes sean protagonistas del cambio, mediante capacitación, participación comunitaria y oportunidades de trabajo digno, de acuerdo con los recursos y alianzas que logremos consolidar. La propuesta conecta a conjunto residuales, jardineros, recicladores, organizaciones comunitarias y operadores autorizados para identificar, clasificar y aprovechar responsablemente los residuos de poda y la biomasa vegetal. Nuestra solución integra una aplicación para registrar solicitudes y hacer trazable cada carga. Las ramas aptas podrán transformarse en material de cobertura vegetal y otros residuos compatibles, podrán convertirse en compost mediante procesos controlados. Buscaremos articular esfuerzos con la alcaldía, empresas y operadores autorizados para llevar estos recursos a parques, jardines y espacios comunitarios. Como equipo, estamos trabajando para convertir esta idea en un modelo viable, medible y replicable. Queremos educar, recuperar materiales, fortalecer la participación ciudadana y demostrar que la innovación también puede generar valor social. Biosuacha, transformar residuos en recursos y la participación comunitaria y oportunidades, el cambio comienza cuando trabajamos juntos.",
+ "segments": [
+  {
+   "start": 3.95,
+   "end": 8.91,
+   "text": "¿Y si los residuos de poda y biomasa vegetal urbana, que hoy terminan desechados,"
+  },
+  {
+   "start": 8.91,
+   "end": 14.61,
+   "text": "pudieran convertirse en oportunidades de empleo, recuperación ambiental y desarrollo para Swatcha?"
+  },
+  {
+   "start": 14.61,
+   "end": 20.95,
+   "text": "Nuestro territorio necesita soluciones que no solo gestione los residuos, sino que también beneficien a su gente."
+  },
+  {
+   "start": 22.71,
+   "end": 29.57,
+   "text": "Con BioSwatcha queremos que las madres, cabezas de hogar y otros habitantes sean protagonistas del cambio,"
+  },
+  {
+   "start": 29.73,
+   "end": 34.61,
+   "text": "mediante capacitación, participación comunitaria y oportunidades de trabajo digno,"
+  },
+  {
+   "start": 34.61,
+   "end": 37.93,
+   "text": "de acuerdo con los recursos y alianzas que logremos consolidar."
+  },
+  {
+   "start": 38.73,
+   "end": 45.33,
+   "text": "La propuesta conecta a conjunto residuales, jardineros, recicladores, organizaciones comunitarias"
+  },
+  {
+   "start": 45.33,
+   "end": 52.37,
+   "text": "y operadores autorizados para identificar, clasificar y aprovechar responsablemente los residuos de poda"
+  },
+  {
+   "start": 52.37,
+   "end": 53.93,
+   "text": "y la biomasa vegetal."
+  },
+  {
+   "start": 54.37,
+   "end": 61.09,
+   "text": "Nuestra solución integra una aplicación para registrar solicitudes y hacer trazable cada carga."
+  },
+  {
+   "start": 61.09,
+   "end": 66.93,
+   "text": "Las ramas aptas podrán transformarse en material de cobertura vegetal y otros residuos compatibles,"
+  },
+  {
+   "start": 66.93,
+   "end": 70.37,
+   "text": "podrán convertirse en compost mediante procesos controlados."
+  },
+  {
+   "start": 70.37,
+   "end": 76.49,
+   "text": "Buscaremos articular esfuerzos con la alcaldía, empresas y operadores autorizados para llevar"
+  },
+  {
+   "start": 76.49,
+   "end": 81.81,
+   "text": "estos recursos a parques, jardines y espacios comunitarios. Como equipo,"
+  },
+  {
+   "start": 81.93,
+   "end": 87.33,
+   "text": "estamos trabajando para convertir esta idea en un modelo viable, medible y replicable."
+  },
+  {
+   "start": 87.33,
+   "end": 92.85,
+   "text": "Queremos educar, recuperar materiales, fortalecer la participación ciudadana y demostrar que la"
+  },
+  {
+   "start": 92.85,
+   "end": 99.17,
+   "text": "innovación también puede generar valor social. Biosuacha, transformar residuos en recursos"
+  },
+  {
+   "start": 99.17,
+   "end": 104.53,
+   "text": "y la participación comunitaria y oportunidades, el cambio comienza cuando trabajamos juntos."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 105.8
+}

@@ -1,0 +1,92 @@
+{
+ "video_id": "x0RUlQb9nVI",
+ "url": "https://youtu.be/x0RUlQb9nVI?si=D7ooqyvTYwt6zTyO",
+ "year": 2024,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "REUTINIC",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "REUTINIC",
+   "challenge": "02 - EMPAQUES CONTAMINANTES"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:13:06+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Quieres tu vera el planeta y a cambio ganar dinero, quédate con Refino, que te enseñamos con... Presentamos la innovadora máquina expendedora de dinero. Simplemente introduce una botella de plástico para comenzar. El proceso de reciclaje convierte residuos en recompensas. Gana dinero mientras cuidas del medio ambiente. Reduce residuos y contribuye a un planeta más limpio, una máquina en acción y cómo funciona en tiempo real. Comparada con métodos tradicionales, esta máquina es más eficiente. Únete a nosotros y fomenta el reciclaje en tu comunidad. Encuentra la máquina en tu área y empieza a reciclar hoy. Combinación de incentivos económicos, accesibilidad y tecnología y sobre todo enfoque en economía circular hace que nuestra solución no sea o no lo sea innovadora, sino que también efectiva. La mejor opción de este planeta, Refini, es tu mejor opción.",
+ "segments": [
+  {
+   "start": 6.35,
+   "end": 11.35,
+   "text": "Quieres tu vera el planeta y a cambio ganar dinero, quédate con Refino, que te enseñamos con..."
+  },
+  {
+   "start": 11.35,
+   "end": 15.35,
+   "text": "Presentamos la innovadora máquina expendedora de dinero."
+  },
+  {
+   "start": 15.35,
+   "end": 19.35,
+   "text": "Simplemente introduce una botella de plástico para comenzar."
+  },
+  {
+   "start": 19.35,
+   "end": 24.35,
+   "text": "El proceso de reciclaje convierte residuos en recompensas."
+  },
+  {
+   "start": 24.35,
+   "end": 28.35,
+   "text": "Gana dinero mientras cuidas del medio ambiente."
+  },
+  {
+   "start": 28.35,
+   "end": 32.35,
+   "text": "Reduce residuos y contribuye a un planeta más limpio,"
+  },
+  {
+   "start": 32.35,
+   "end": 36.35,
+   "text": "una máquina en acción y cómo funciona en tiempo real."
+  },
+  {
+   "start": 36.35,
+   "end": 41.35,
+   "text": "Comparada con métodos tradicionales, esta máquina es más eficiente."
+  },
+  {
+   "start": 41.35,
+   "end": 45.35,
+   "text": "Únete a nosotros y fomenta el reciclaje en tu comunidad."
+  },
+  {
+   "start": 45.35,
+   "end": 52.55,
+   "text": "Encuentra la máquina en tu área y empieza a reciclar hoy."
+  },
+  {
+   "start": 52.55,
+   "end": 56.55,
+   "text": "Combinación de incentivos económicos, accesibilidad y tecnología"
+  },
+  {
+   "start": 56.55,
+   "end": 63.55,
+   "text": "y sobre todo enfoque en economía circular hace que nuestra solución no sea o no lo sea innovadora, sino que también efectiva."
+  },
+  {
+   "start": 63.55,
+   "end": 66.55,
+   "text": "La mejor opción de este planeta, Refini, es tu mejor opción."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 69.0
+}

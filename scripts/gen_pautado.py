@@ -60,14 +60,14 @@ def create_default_document(brief, claims):
 
     doc.add_paragraph("─" * 45)
 
-    stats_text = " ".join([f"{c['stat']} ({c['source']}, {c['year']})." for c in claims]) if claims else "Segun registros oficiales, la problematica afecta de manera directa a la poblacion local."
+    stats_text = " ".join([f"{c['stat']} ({c['source']}, {c['year']})." for c in claims]) if claims else "Segun registros oficiales, la problematica afecta de manera directa a los usuarios del piloto."
 
     sections = [
-        ("PROBLEMA", 1250, f"{{SEC_PROBLEMA}}\n{stats_text} La ausencia de soluciones accesibles y descentralizadas agrava la vulnerabilidad territorial, requiriendo intervencion inmediata.\n{{SEC_END}}"),
-        ("SOLUCION", 1250, f"{{SEC_SOLUCION}}\n{brief.get('description_one_line','Solucion tecnica')} El diseno optimiza el rendimiento mediante una arquitectura modular y componentes estandarizados.\n{{SEC_END}}"),
+        ("PROBLEMA", 1250, f"{{SEC_PROBLEMA}}\n{stats_text} La ausencia de soluciones accesibles y descentralizadas agrava la brecha, requiriendo intervencion inmediata.\n{{SEC_END}}"),
+        ("SOLUCION", 1250, f"{{SEC_SOLUCION}}\n{brief.get('solution_detail') or (brief.get('description_one_line','Solucion tecnica') + ' El diseno optimiza el rendimiento mediante una arquitectura modular y componentes estandarizados.')}\n{{SEC_END}}"),
         ("PREFACTIBILIDAD", 1000, f"{{SEC_PREFACTIBILIDAD}}\nCosto estimado de implementacion inicial: {cost_str}. La estructura de insumos se basa en suministros de escala con enlaces de respaldo verificables.\n{{SEC_END}}"),
-        ("INNOVACION", 1000, f"{{SEC_INNOVACION}}\nA diferencia de las alternativas convencionales, nuestra propuesta integra tecnologia accesible y adaptacion local de materiales, reduciendo tiempos de despliegue.\n{{SEC_END}}"),
-        ("IMPACTO", 1500, f"{{SEC_IMPACTO}}\nAlineado directamente con {', '.join(brief.get('ods_ids',['ODS 11']))} y la estrategia de resiliencia comunitaria. Se proyecta beneficiar directamente a mas de 2,500 habitantes en la fase piloto.\n{{SEC_END}}")
+        ("INNOVACION", 1000, f"{{SEC_INNOVACION}}\n{brief.get('innovation_detail') or 'A diferencia de las alternativas convencionales, nuestra propuesta integra tecnologia accesible y adaptacion local de materiales, reduciendo tiempos de despliegue.'}\n{{SEC_END}}"),
+        ("IMPACTO", 1500, f"{{SEC_IMPACTO}}\nAlineado directamente con {', '.join(brief.get('ods_ids',['ODS 11']))} y la estrategia de desarrollo del piloto. El impacto se medira con indicadores auditables durante y despues del rally.\n{{SEC_END}}")
     ]
 
     for sec_title, limit, content in sections:

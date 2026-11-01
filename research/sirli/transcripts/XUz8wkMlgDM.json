@@ -1,0 +1,137 @@
+{
+ "video_id": "XUz8wkMlgDM",
+ "url": "https://youtu.be/XUz8wkMlgDM",
+ "year": 2023,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "INNOVA18",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "INNOVA18",
+   "challenge": "01 - MOVILIDAD SUSTENTABLE"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:08:29+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Sabías que en ciudades metropolitanas el tiempo por medio que se pierde en el tráfico cuando se utiliza un vehículo particular es de aproximadamente 240 horas al año? Por ello hemos diseñado ciclosidad, un sistema de bicicletas compartidas que es además una visión para ciudades más sostenibles, seguras y saludables. Su principal característica es la seguridad. Entendemos que la inseguridad y los accidentes viales son preocupaciones al utilizar medios de transporte no motorizados. Por eso diseñamos ciclovías cerradas exclusivas para los ciclistas. Esto significa que los usuarios de ciclociudad nunca tendrán que preocuparse por estar en medio del tráfico ni por las inclemencias del tiempo. Nuestras ciclovías están iluminadas las 24 horas del día. Durante las horas de luz natural, la iluminación es posible debido a nuestros techos de policarbonato, un material que resiste hasta 20 años. Además, tenemos una red de vigilancia conectada a los departamentos de seguridad pública, lo que significa que estamos comprometidos con tu seguridad en todo momento. En ciclociudad somos conscientes de nuestro impacto en el medio ambiente. Es por eso que utilizamos energía sustentable generada a través de pándeles solares para iluminar nuestras ciclovías en el horario nocturno. Esto garantiza que puedas estar alejando con seguridad, incluso en la oscuridad. Pero lo más importante es que ciclociudad es acerca de la comunidad. Nos esforzamos por hacer que la movilidad sea accesible para todos, sin importar tu edad ni tus habilidades. Creemos que el ciclismo puede mejorar nuestra calidad de vida y reducir la congestión vial en nuestra ciudad. Y para hacerlo un mejor, hemos implementado un sistema de alquiler de bicicletas, que va a permitir a quienes no tienen su propia bicicleta rentar una en cualquier estación y entregarle en otra al finalizar su recorrido. Si ya tienes tu propia bicicleta, nuestras estaciones funcionan como estacionamientos temporales. Todo esto puede ser monitoreado y gestionado de manera sencilla a través de nuestra aplicación móvil. Y lo mejor de todo es que los costos son accesibles. Con ello, ciclociudad se vuelve un programa integral enfocado en la sustentabilidad y sostenibilidad urbana. Juntos podemos pedalear hacia un mejor futuro.",
+ "segments": [
+  {
+   "start": 6.29,
+   "end": 15.29,
+   "text": "¿Sabías que en ciudades metropolitanas el tiempo por medio que se pierde en el tráfico cuando se utiliza un vehículo particular es de aproximadamente 240 horas al año?"
+  },
+  {
+   "start": 15.29,
+   "end": 24.29,
+   "text": "Por ello hemos diseñado ciclosidad, un sistema de bicicletas compartidas que es además una visión para ciudades más sostenibles, seguras y saludables."
+  },
+  {
+   "start": 24.29,
+   "end": 27.29,
+   "text": "Su principal característica es la seguridad."
+  },
+  {
+   "start": 27.29,
+   "end": 32.29,
+   "text": "Entendemos que la inseguridad y los accidentes viales son preocupaciones al utilizar medios de transporte no motorizados."
+  },
+  {
+   "start": 32.29,
+   "end": 36.29,
+   "text": "Por eso diseñamos ciclovías cerradas exclusivas para los ciclistas."
+  },
+  {
+   "start": 36.29,
+   "end": 43.29,
+   "text": "Esto significa que los usuarios de ciclociudad nunca tendrán que preocuparse por estar en medio del tráfico ni por las inclemencias del tiempo."
+  },
+  {
+   "start": 43.29,
+   "end": 46.29,
+   "text": "Nuestras ciclovías están iluminadas las 24 horas del día."
+  },
+  {
+   "start": 46.29,
+   "end": 53.29,
+   "text": "Durante las horas de luz natural, la iluminación es posible debido a nuestros techos de policarbonato, un material que resiste hasta 20 años."
+  },
+  {
+   "start": 53.29,
+   "end": 61.29,
+   "text": "Además, tenemos una red de vigilancia conectada a los departamentos de seguridad pública, lo que significa que estamos comprometidos con tu seguridad en todo momento."
+  },
+  {
+   "start": 61.29,
+   "end": 64.29,
+   "text": "En ciclociudad somos conscientes de nuestro impacto en el medio ambiente."
+  },
+  {
+   "start": 64.29,
+   "end": 71.29,
+   "text": "Es por eso que utilizamos energía sustentable generada a través de pándeles solares para iluminar nuestras ciclovías en el horario nocturno."
+  },
+  {
+   "start": 71.29,
+   "end": 75.29,
+   "text": "Esto garantiza que puedas estar alejando con seguridad, incluso en la oscuridad."
+  },
+  {
+   "start": 75.29,
+   "end": 79.29,
+   "text": "Pero lo más importante es que ciclociudad es acerca de la comunidad."
+  },
+  {
+   "start": 79.29,
+   "end": 85.29,
+   "text": "Nos esforzamos por hacer que la movilidad sea accesible para todos, sin importar tu edad ni tus habilidades."
+  },
+  {
+   "start": 85.29,
+   "end": 90.29,
+   "text": "Creemos que el ciclismo puede mejorar nuestra calidad de vida y reducir la congestión vial en nuestra ciudad."
+  },
+  {
+   "start": 90.29,
+   "end": 94.29,
+   "text": "Y para hacerlo un mejor, hemos implementado un sistema de alquiler de bicicletas,"
+  },
+  {
+   "start": 94.29,
+   "end": 100.29,
+   "text": "que va a permitir a quienes no tienen su propia bicicleta rentar una en cualquier estación y entregarle en otra al finalizar su recorrido."
+  },
+  {
+   "start": 100.29,
+   "end": 104.29,
+   "text": "Si ya tienes tu propia bicicleta, nuestras estaciones funcionan como estacionamientos temporales."
+  },
+  {
+   "start": 104.29,
+   "end": 109.29,
+   "text": "Todo esto puede ser monitoreado y gestionado de manera sencilla a través de nuestra aplicación móvil."
+  },
+  {
+   "start": 109.29,
+   "end": 112.29,
+   "text": "Y lo mejor de todo es que los costos son accesibles."
+  },
+  {
+   "start": 112.29,
+   "end": 117.29,
+   "text": "Con ello, ciclociudad se vuelve un programa integral enfocado en la sustentabilidad y sostenibilidad urbana."
+  },
+  {
+   "start": 117.29,
+   "end": 120.29,
+   "text": "Juntos podemos pedalear hacia un mejor futuro."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.0
+}

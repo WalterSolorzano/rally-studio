@@ -1,0 +1,122 @@
+{
+ "video_id": "lKA4F_lyE1Y",
+ "url": "https://www.youtube.com/watch?v=lKA4F_lyE1Y&feature=youtu.be",
+ "year": 2020,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "TECNOARQ",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2020,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "TECNOARQ",
+   "challenge": "04 - ¿SERÁ POSIBLE PROMOVER UN USO CRECIENTE DE LA BICICLETA COMO MEDIO HABITUAL DE TRANSPORTE?"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:57:12+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En el contexto nacional, el uso de las bicicletas no representa una actividad cotidiana. Somos totalmente dependientes de los medios de transporte con alto grado de contaminación. Nicaragua está en un proceso de crecimiento del volumen de contaminación que incrementa cada año. Esto se encuentra en el Ranking 71 de los países que más emite estos gases. Es por esto que surge la alternativa PsychoSystem. PsychoSystem es un modelo de movilidad urbana que está constituido por una serie de procesos y elementos a través de una visión holística de las dimensiones social, económico, cultural, ambiental y urbano. Tales elementos son los siguientes. Donde se tiene como primera instancia la adecuación de la infraestructura existente para integrar ciclovías que sirven como conectores de los diferentes puntos de un sector. Implementando ciclovías de dos carriles, franjas arboladas que nos permitan mantener la adecuada calidad ambiental, franjas vehiculares, aceras peatonales. Sumado a esto se implementará PsychoApp, una herramienta tecnológica que optimizará la experiencia de los ciclistas. Este sistema estará apto para todo público, sin embargo promueve el uso de bicicletas a través de ingresos o beneficios que serán transferibles en puntos comerciales conforme al recorrido realizado por medio del circuito. Los beneficios de este sistema, crear una cultura de movilidad sostenible, impacto ambiental, impacto económico, generando interacciones comerciales, implementación de sistemas de energías sustentables y sistemas de recolección de lluvia. Son todas estas particularidades que hacen que PsychoSystem sea un modelo eficaz adaptable en diferentes sectores.",
+ "segments": [
+  {
+   "start": 6.83,
+   "end": 12.47,
+   "text": "En el contexto nacional, el uso de las bicicletas no representa una actividad cotidiana."
+  },
+  {
+   "start": 12.47,
+   "end": 18.39,
+   "text": "Somos totalmente dependientes de los medios de transporte con alto grado de contaminación."
+  },
+  {
+   "start": 18.39,
+   "end": 24.07,
+   "text": "Nicaragua está en un proceso de crecimiento del volumen de contaminación que incrementa cada año."
+  },
+  {
+   "start": 24.07,
+   "end": 29.19,
+   "text": "Esto se encuentra en el Ranking 71 de los países que más emite estos gases."
+  },
+  {
+   "start": 29.19,
+   "end": 32.95,
+   "text": "Es por esto que surge la alternativa PsychoSystem."
+  },
+  {
+   "start": 32.95,
+   "end": 47.85,
+   "text": "PsychoSystem es un modelo de movilidad urbana que está constituido por una serie de procesos"
+  },
+  {
+   "start": 47.85,
+   "end": 53.89,
+   "text": "y elementos a través de una visión holística de las dimensiones social, económico, cultural,"
+  },
+  {
+   "start": 53.89,
+   "end": 60.29,
+   "text": "ambiental y urbano. Tales elementos son los siguientes. Donde se tiene como primera instancia"
+  },
+  {
+   "start": 60.29,
+   "end": 65.09,
+   "text": "la adecuación de la infraestructura existente para integrar ciclovías que sirven como"
+  },
+  {
+   "start": 65.09,
+   "end": 70.65,
+   "text": "conectores de los diferentes puntos de un sector. Implementando ciclovías de dos carriles,"
+  },
+  {
+   "start": 70.65,
+   "end": 76.61,
+   "text": "franjas arboladas que nos permitan mantener la adecuada calidad ambiental, franjas vehiculares,"
+  },
+  {
+   "start": 76.61,
+   "end": 84.01,
+   "text": "aceras peatonales. Sumado a esto se implementará PsychoApp, una herramienta tecnológica que"
+  },
+  {
+   "start": 84.01,
+   "end": 89.05,
+   "text": "optimizará la experiencia de los ciclistas. Este sistema estará apto para todo público,"
+  },
+  {
+   "start": 89.05,
+   "end": 93.25,
+   "text": "sin embargo promueve el uso de bicicletas a través de ingresos o beneficios que serán"
+  },
+  {
+   "start": 93.25,
+   "end": 97.73,
+   "text": "transferibles en puntos comerciales conforme al recorrido realizado por medio del circuito."
+  },
+  {
+   "start": 97.85,
+   "end": 103.29,
+   "text": "Los beneficios de este sistema, crear una cultura de movilidad sostenible, impacto ambiental,"
+  },
+  {
+   "start": 103.29,
+   "end": 107.73,
+   "text": "impacto económico, generando interacciones comerciales, implementación de sistemas de"
+  },
+  {
+   "start": 107.73,
+   "end": 115.22,
+   "text": "energías sustentables y sistemas de recolección de lluvia. Son todas estas particularidades que"
+  },
+  {
+   "start": 115.22,
+   "end": 120.26,
+   "text": "hacen que PsychoSystem sea un modelo eficaz adaptable en diferentes sectores."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 124.7
+}

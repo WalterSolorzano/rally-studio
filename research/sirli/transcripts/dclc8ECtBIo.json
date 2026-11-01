@@ -1,0 +1,137 @@
+{
+ "video_id": "dclc8ECtBIo",
+ "url": "https://www.youtube.com/watch?v=dclc8ECtBIo",
+ "year": 2021,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "BREAKING LIMITS (SIUNA-NICARAGUA)",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "BREAKING LIMITS (SIUNA-NICARAGUA)",
+   "challenge": "03 - AGUA PARA SOÑAR"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:43:01+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "La escasez del agua siempre ha representado un problema de salud pública que afecta a todos los estrategios sociales, limitando el desarrollo de las actividades básicas de nuestra sociedad. Las causas son múltiples, logrando destacar entre otras el cambio climático que ha jugado un papel determinante en la reducción de la precipitación de algunas zonas geográficas, los incendios, la deforestación, el avance de la frontera agrícola y la ganadería intensiva. Los pozos artesanales han dejado de ser una opción. En este contexto, es imperativo desarrollar un sistema que permita purificar y conservar el agua de lluvia y que ésta sea apta para el consumo humano, con costos limitados de fácil acceso y un aspecto importante que destacar, es el hecho de que no se emplee en químicos de conservación o purificación, sino materiales del medio. Filtro Cíclico La propuesta diseñada consiste en desarrollar un sistema de filtración de agua de lluvia, para el cual sea de utilizar materiales del medio más insumos comerciales. La propuesta es viable porque para la purificación no se utilizarán químicos, a diferencia de otros que puedan dañar la salud. Para este proyecto se seleccionarán las tecnologías de captación, potabilización y bombeo. El desarrollo del proceso estará determinado por la captación del agua de lluvia, que será reseccionada en un recipiente con una capacidad de 1.5 metros cúbico, luego será direccionada al purificador, el cual condendrá arena, piedrín, algodón y carbón. Posteriormente el tanque de almacenamiento con una capacidad de 500 litros, este tendrá dos salidas. Una a la distribución de consumo y la otra regresará al tanque de recepción a través del bombeo para cumplir con el ciclo de purificación. La implementación de este proyecto es muy necesaria para garantizar en los hogares un producto de la conservación y purificación del agua de lluvia, apta para el consumo humano.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 7.8,
+   "text": "La escasez del agua siempre ha representado un problema de salud pública que afecta a todos los estrategios sociales,"
+  },
+  {
+   "start": 7.8,
+   "end": 11.56,
+   "text": "limitando el desarrollo de las actividades básicas de nuestra sociedad."
+  },
+  {
+   "start": 11.56,
+   "end": 18.6,
+   "text": "Las causas son múltiples, logrando destacar entre otras el cambio climático que ha jugado un papel determinante en la reducción"
+  },
+  {
+   "start": 18.6,
+   "end": 27.0,
+   "text": "de la precipitación de algunas zonas geográficas, los incendios, la deforestación, el avance de la frontera agrícola y la ganadería intensiva."
+  },
+  {
+   "start": 27.0,
+   "end": 30.8,
+   "text": "Los pozos artesanales han dejado de ser una opción."
+  },
+  {
+   "start": 30.8,
+   "end": 37.5,
+   "text": "En este contexto, es imperativo desarrollar un sistema que permita purificar y conservar el agua de lluvia"
+  },
+  {
+   "start": 37.5,
+   "end": 44.8,
+   "text": "y que ésta sea apta para el consumo humano, con costos limitados de fácil acceso y un aspecto importante que destacar,"
+  },
+  {
+   "start": 44.8,
+   "end": 51.4,
+   "text": "es el hecho de que no se emplee en químicos de conservación o purificación, sino materiales del medio."
+  },
+  {
+   "start": 51.6,
+   "end": 53.6,
+   "text": "Filtro Cíclico"
+  },
+  {
+   "start": 53.6,
+   "end": 58.2,
+   "text": "La propuesta diseñada consiste en desarrollar un sistema de filtración de agua de lluvia,"
+  },
+  {
+   "start": 58.2,
+   "end": 62.6,
+   "text": "para el cual sea de utilizar materiales del medio más insumos comerciales."
+  },
+  {
+   "start": 62.6,
+   "end": 67.2,
+   "text": "La propuesta es viable porque para la purificación no se utilizarán químicos,"
+  },
+  {
+   "start": 67.2,
+   "end": 69.9,
+   "text": "a diferencia de otros que puedan dañar la salud."
+  },
+  {
+   "start": 69.9,
+   "end": 76.0,
+   "text": "Para este proyecto se seleccionarán las tecnologías de captación, potabilización y bombeo."
+  },
+  {
+   "start": 76.2,
+   "end": 80.5,
+   "text": "El desarrollo del proceso estará determinado por la captación del agua de lluvia,"
+  },
+  {
+   "start": 80.5,
+   "end": 86.0,
+   "text": "que será reseccionada en un recipiente con una capacidad de 1.5 metros cúbico,"
+  },
+  {
+   "start": 86.0,
+   "end": 92.8,
+   "text": "luego será direccionada al purificador, el cual condendrá arena, piedrín, algodón y carbón."
+  },
+  {
+   "start": 92.8,
+   "end": 99.5,
+   "text": "Posteriormente el tanque de almacenamiento con una capacidad de 500 litros, este tendrá dos salidas."
+  },
+  {
+   "start": 99.5,
+   "end": 104.0,
+   "text": "Una a la distribución de consumo y la otra regresará al tanque de recepción"
+  },
+  {
+   "start": 104.0,
+   "end": 108.0,
+   "text": "a través del bombeo para cumplir con el ciclo de purificación."
+  },
+  {
+   "start": 108.0,
+   "end": 112.0,
+   "text": "La implementación de este proyecto es muy necesaria para garantizar en los hogares"
+  },
+  {
+   "start": 112.0,
+   "end": 117.5,
+   "text": "un producto de la conservación y purificación del agua de lluvia, apta para el consumo humano."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.0
+}

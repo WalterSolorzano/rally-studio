@@ -1,0 +1,102 @@
+{
+ "video_id": "6u_zC4MGrnM",
+ "url": "https://youtu.be/6u_zC4MGrnM",
+ "year": 2023,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "RENTUL",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "RENTUL",
+   "challenge": "02 - SIEMPRE EN CONTACTO"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:55:31+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Las primeras horas son cruciales para salvar la vida de una persona. Cuando ocurre un accidente en territorios inhóspitos o de poca comunicación, el tiempo de respuesta es un factor crítico. Pasada la primera hora dorada, las probabilidades de un rescate exitoso disminuyen significativamente. Atalaya es un sistema de localización y biometría de bajo costo enfocado en brindar información precisa sobre el estado de los usuarios. Nuestro emisor Verd realiza un seguimiento sobre el posicionamiento, la frecuencia cardíaca y de oximetría del usuario, informando las terminales de control nest en caso de detectarse una anomalía, la pérdida de contacto o la activación de los botones de auxilio. Con una batería de larga autonomía recargable a partir de energía cinética, Verd consigue un diseño ergonómico y resistente que implementa tecnología Lora complementada por posicionamiento de GPS. El sistema garantiza una cobertura en territorios inhóspitos a partir del despliegue de receptores nest que permiten un seguimiento constante de la situación global de los usuarios. Además, se dispone de repetidores móviles que aumentan el alcance de la cenilla. En caso de emergencias sísmicas, meteorológicas u otra información relevante, las terminales nest son capaces de enviar alertas a los usuarios en el territorio. Gracias a la incorporación de luces led y vibración, los dispositivos Verd pueden comunicar esta información de forma sencilla y a un bajo costo energético que no comprometa su autonomía. Consigrando los altos costos que tienen los equipos de rescate, la aplicación del sistema ATAL AYA permite monitorear el acceso a zonas peligrosas, analizando los datos de posicionamiento gracias a la implementación de inteligencia artificial. La aplicación del sistema permite una reducción de las muertes y un agregado valor a las ofertas turísticas.",
+ "segments": [
+  {
+   "start": 8.27,
+   "end": 12.27,
+   "text": "Las primeras horas son cruciales para salvar la vida de una persona."
+  },
+  {
+   "start": 12.27,
+   "end": 18.27,
+   "text": "Cuando ocurre un accidente en territorios inhóspitos o de poca comunicación, el tiempo de respuesta es un factor crítico."
+  },
+  {
+   "start": 18.27,
+   "end": 24.27,
+   "text": "Pasada la primera hora dorada, las probabilidades de un rescate exitoso disminuyen significativamente."
+  },
+  {
+   "start": 24.27,
+   "end": 32.27,
+   "text": "Atalaya es un sistema de localización y biometría de bajo costo enfocado en brindar información precisa sobre el estado de los usuarios."
+  },
+  {
+   "start": 32.27,
+   "end": 38.27,
+   "text": "Nuestro emisor Verd realiza un seguimiento sobre el posicionamiento, la frecuencia cardíaca y de oximetría del usuario,"
+  },
+  {
+   "start": 38.27,
+   "end": 47.27,
+   "text": "informando las terminales de control nest en caso de detectarse una anomalía, la pérdida de contacto o la activación de los botones de auxilio."
+  },
+  {
+   "start": 47.27,
+   "end": 53.27,
+   "text": "Con una batería de larga autonomía recargable a partir de energía cinética, Verd consigue un diseño ergonómico y resistente"
+  },
+  {
+   "start": 53.27,
+   "end": 57.27,
+   "text": "que implementa tecnología Lora complementada por posicionamiento de GPS."
+  },
+  {
+   "start": 57.27,
+   "end": 66.27,
+   "text": "El sistema garantiza una cobertura en territorios inhóspitos a partir del despliegue de receptores nest que permiten un seguimiento constante de la situación global de los usuarios."
+  },
+  {
+   "start": 66.27,
+   "end": 70.27,
+   "text": "Además, se dispone de repetidores móviles que aumentan el alcance de la cenilla."
+  },
+  {
+   "start": 70.27,
+   "end": 78.27,
+   "text": "En caso de emergencias sísmicas, meteorológicas u otra información relevante, las terminales nest son capaces de enviar alertas a los usuarios en el territorio."
+  },
+  {
+   "start": 78.27,
+   "end": 87.27,
+   "text": "Gracias a la incorporación de luces led y vibración, los dispositivos Verd pueden comunicar esta información de forma sencilla y a un bajo costo energético que no comprometa su autonomía."
+  },
+  {
+   "start": 87.27,
+   "end": 94.27,
+   "text": "Consigrando los altos costos que tienen los equipos de rescate, la aplicación del sistema ATAL AYA permite monitorear el acceso a zonas peligrosas,"
+  },
+  {
+   "start": 94.27,
+   "end": 98.27,
+   "text": "analizando los datos de posicionamiento gracias a la implementación de inteligencia artificial."
+  },
+  {
+   "start": 98.27,
+   "end": 104.27,
+   "text": "La aplicación del sistema permite una reducción de las muertes y un agregado valor a las ofertas turísticas."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 112.0
+}

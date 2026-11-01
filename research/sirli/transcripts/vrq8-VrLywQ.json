@@ -1,0 +1,122 @@
+{
+ "video_id": "vrq8-VrLywQ",
+ "url": "https://www.youtube.com/shorts/vrq8-VrLywQ?feature=share",
+ "year": 2025,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "PIONEROS DEL PENSAMIENTO",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "PIONEROS DEL PENSAMIENTO",
+   "challenge": "03 - FUGAS DE AGUA"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:49:44+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "La fuga de agua es un problema social. Al desperdiciar este recurso, contribuyen a la escasez de agua potable, lo que provoca inseguridad alimentaria, propagación de enfermedades por falta de higiene y desigualdades sociales, ya que las comunidades más vulnerables suelen ser las más afectadas. ¿Cómo podemos dar solución a esto? Dada la problemática social que presenta la fuga de agua, presentamos una solución innovadora llamada ECOFuga-0, una técnica de gas trazador donde se inyecta un gas inerte en las tuberías de agua y se utilizan detectores ultrasensibles para localizar la fuga sin necesidad de romper superficies, donde el gas es una mezcla de hidrógeno y nitrógeno completamente segura para tuberías de agua potable. Se utiliza un detector especializado que identifica la presencia de gas en la superficie, señalando con precisión el lugar de la fuga. Esta tecnología permite un mantenimiento preventivo más eficaz, disminuye el desperdicio de agua y optimiza el uso de recursos públicos. Es ideal para municipios, empresas de agua y proyectos comunitarios. La reparación a base de gas mezcla de hidrógeno inteligente que detectan cambios en presión o humedad en tuberías, así permitirá un sistema de monitoreo remoto que alternan sobre fugas en tiempo real, permitiendo una respuesta rápida. Se utiliza un detector de gas especializado para barrer el área sospechosa. En el suelo el detector indicará la ubicación exacta donde el gas se está liberando, señalando así el punto de fuga.",
+ "segments": [
+  {
+   "start": 0.43,
+   "end": 7.43,
+   "text": "La fuga de agua es un problema social. Al desperdiciar este recurso, contribuyen a la escasez de agua potable,"
+  },
+  {
+   "start": 7.43,
+   "end": 15.43,
+   "text": "lo que provoca inseguridad alimentaria, propagación de enfermedades por falta de higiene y desigualdades sociales,"
+  },
+  {
+   "start": 15.43,
+   "end": 20.43,
+   "text": "ya que las comunidades más vulnerables suelen ser las más afectadas."
+  },
+  {
+   "start": 20.43,
+   "end": 22.43,
+   "text": "¿Cómo podemos dar solución a esto?"
+  },
+  {
+   "start": 22.43,
+   "end": 30.43,
+   "text": "Dada la problemática social que presenta la fuga de agua, presentamos una solución innovadora llamada ECOFuga-0,"
+  },
+  {
+   "start": 30.43,
+   "end": 37.43,
+   "text": "una técnica de gas trazador donde se inyecta un gas inerte en las tuberías de agua"
+  },
+  {
+   "start": 37.43,
+   "end": 45.43,
+   "text": "y se utilizan detectores ultrasensibles para localizar la fuga sin necesidad de romper superficies,"
+  },
+  {
+   "start": 45.43,
+   "end": 54.43,
+   "text": "donde el gas es una mezcla de hidrógeno y nitrógeno completamente segura para tuberías de agua potable."
+  },
+  {
+   "start": 54.43,
+   "end": 61.43,
+   "text": "Se utiliza un detector especializado que identifica la presencia de gas en la superficie,"
+  },
+  {
+   "start": 61.43,
+   "end": 65.43,
+   "text": "señalando con precisión el lugar de la fuga."
+  },
+  {
+   "start": 65.43,
+   "end": 70.43,
+   "text": "Esta tecnología permite un mantenimiento preventivo más eficaz,"
+  },
+  {
+   "start": 70.43,
+   "end": 76.43,
+   "text": "disminuye el desperdicio de agua y optimiza el uso de recursos públicos."
+  },
+  {
+   "start": 76.43,
+   "end": 81.43,
+   "text": "Es ideal para municipios, empresas de agua y proyectos comunitarios."
+  },
+  {
+   "start": 81.43,
+   "end": 91.43,
+   "text": "La reparación a base de gas mezcla de hidrógeno inteligente que detectan cambios en presión o humedad en tuberías,"
+  },
+  {
+   "start": 91.43,
+   "end": 99.43,
+   "text": "así permitirá un sistema de monitoreo remoto que alternan sobre fugas en tiempo real,"
+  },
+  {
+   "start": 99.43,
+   "end": 102.43,
+   "text": "permitiendo una respuesta rápida."
+  },
+  {
+   "start": 102.43,
+   "end": 108.43,
+   "text": "Se utiliza un detector de gas especializado para barrer el área sospechosa."
+  },
+  {
+   "start": 108.43,
+   "end": 115.43,
+   "text": "En el suelo el detector indicará la ubicación exacta donde el gas se está liberando,"
+  },
+  {
+   "start": 115.43,
+   "end": 118.43,
+   "text": "señalando así el punto de fuga."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 135.6
+}

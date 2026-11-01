@@ -1,0 +1,162 @@
+{
+ "video_id": "dCZ2zwtu0DY",
+ "url": "https://youtu.be/dCZ2zwtu0DY?si=3hvg9RDy8dYqzyNi",
+ "year": 2026,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "XINOTECANTL",
+ "place_label": "TERCER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "TERCER LUGAR",
+   "team": "XINOTECANTL",
+   "challenge": "09 - OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:34:50+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Autoridades cirigadistas avanzan en ciegas. Administrar ayuda médica o rescatistas se vuelve todo un caos. El hecho de administrar bien lo que son los recursos es esencial, sobre todo para no dejar aisladas a las comunidades más vulnerables. Tras un desastre natural como un terramoto, los segundos cuentan. Pero en la fase poseemergencia surge una crisis invisible y devastadora. El colapso total de las redes de comunicación e internet. La solución. Para transformar esta realidad, creamos CENDA. CENDA es una plataforma de gestión logística de emergencias que opera mediante redes en Maya o Machine Networks. Basándonos en el estudio de Solov en 2021, conectamos dispositivos de forma directa e independiente a través de Bluetooth. Como respaldo a la investigación de Flor Álvarez en 2019, este sistema garantiza la continuidad total de las comunicaciones sin depender de internet ni de infraestructura tradicional. Así, brigadistas y comunidades transmiten en tiempo real datos de triage médico, ubicaciones de heridos y rutas de evacuación seguras. El impacto de CENDA es inmediato. Optimizar la respuesta para salvar vidas garantiza la inclusión tecnológica en zonas rurales sin depender de costosas conexiones satelitales. Es económica y ambientalmente sostenible, pues aprovecha los smartphones que la población ya utiliza. CENDA no es solo una app. Es la vía de comunicación para salvar vidas cuando todo lo demás falla. CENDA, comunicando vidas donde las redes colapsan.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 6.0,
+   "text": "Autoridades cirigadistas avanzan en ciegas."
+  },
+  {
+   "start": 6.0,
+   "end": 10.2,
+   "text": "Administrar ayuda médica o rescatistas se vuelve todo un caos."
+  },
+  {
+   "start": 10.2,
+   "end": 15.4,
+   "text": "El hecho de administrar bien lo que son los recursos es esencial,"
+  },
+  {
+   "start": 15.4,
+   "end": 19.8,
+   "text": "sobre todo para no dejar aisladas a las comunidades más vulnerables."
+  },
+  {
+   "start": 19.8,
+   "end": 24.6,
+   "text": "Tras un desastre natural como un terramoto, los segundos cuentan."
+  },
+  {
+   "start": 24.6,
+   "end": 28.8,
+   "text": "Pero en la fase poseemergencia surge una crisis invisible y devastadora."
+  },
+  {
+   "start": 28.8,
+   "end": 32.0,
+   "text": "El colapso total de las redes de comunicación e internet."
+  },
+  {
+   "start": 33.0,
+   "end": 35.0,
+   "text": "La solución."
+  },
+  {
+   "start": 35.0,
+   "end": 38.0,
+   "text": "Para transformar esta realidad, creamos CENDA."
+  },
+  {
+   "start": 38.0,
+   "end": 41.0,
+   "text": "CENDA es una plataforma de gestión logística de emergencias"
+  },
+  {
+   "start": 41.0,
+   "end": 44.0,
+   "text": "que opera mediante redes en Maya o Machine Networks."
+  },
+  {
+   "start": 44.0,
+   "end": 47.0,
+   "text": "Basándonos en el estudio de Solov en 2021,"
+  },
+  {
+   "start": 47.0,
+   "end": 51.0,
+   "text": "conectamos dispositivos de forma directa e independiente a través de Bluetooth."
+  },
+  {
+   "start": 51.0,
+   "end": 55.0,
+   "text": "Como respaldo a la investigación de Flor Álvarez en 2019,"
+  },
+  {
+   "start": 55.0,
+   "end": 58.0,
+   "text": "este sistema garantiza la continuidad total de las comunicaciones"
+  },
+  {
+   "start": 58.0,
+   "end": 61.0,
+   "text": "sin depender de internet ni de infraestructura tradicional."
+  },
+  {
+   "start": 61.0,
+   "end": 65.0,
+   "text": "Así, brigadistas y comunidades transmiten en tiempo real"
+  },
+  {
+   "start": 65.0,
+   "end": 69.0,
+   "text": "datos de triage médico, ubicaciones de heridos y rutas de evacuación seguras."
+  },
+  {
+   "start": 71.0,
+   "end": 73.0,
+   "text": "El impacto de CENDA es inmediato."
+  },
+  {
+   "start": 73.0,
+   "end": 75.0,
+   "text": "Optimizar la respuesta para salvar vidas"
+  },
+  {
+   "start": 75.0,
+   "end": 78.0,
+   "text": "garantiza la inclusión tecnológica en zonas rurales"
+  },
+  {
+   "start": 78.0,
+   "end": 81.0,
+   "text": "sin depender de costosas conexiones satelitales."
+  },
+  {
+   "start": 81.0,
+   "end": 84.0,
+   "text": "Es económica y ambientalmente sostenible,"
+  },
+  {
+   "start": 84.0,
+   "end": 87.0,
+   "text": "pues aprovecha los smartphones que la población ya utiliza."
+  },
+  {
+   "start": 87.0,
+   "end": 90.34,
+   "text": "CENDA no es solo una app."
+  },
+  {
+   "start": 90.34,
+   "end": 94.34,
+   "text": "Es la vía de comunicación para salvar vidas cuando todo lo demás falla."
+  },
+  {
+   "start": 94.34,
+   "end": 97.34,
+   "text": "CENDA, comunicando vidas donde las redes colapsan."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 99.8
+}

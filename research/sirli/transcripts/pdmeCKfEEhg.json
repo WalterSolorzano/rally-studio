@@ -1,0 +1,167 @@
+{
+ "video_id": "pdmeCKfEEhg",
+ "url": "https://youtu.be/pdmeCKfEEhg?si=0o4idzNtlnKcvpby",
+ "year": 2025,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "ALTO IMPACTO",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "ALTO IMPACTO",
+   "challenge": "05 - HUERTOS VERTICALES"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:56:19+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Cada año, millones de toneladas de ropa, plástico y residuos contaminan el agua y la tierra que nos sostienen. En América Latina, millones de familias viven sin exceso alimento frescos y asequibles y la falta de espacio, agua y empleo en los barrios urbanos limita cualquier intento de cultivo. Donde cada metro cuenta, los huertos tradicionales no alcanzan. Escuelas, centros comunitarios y hogares podrían ser fértiles, pero necesitan soluciones simples, modulares y sostenibles que lo hagan posible. ¿Cómo cultivamos esperanza en los lugares donde falta espacio, agua y oportunidad? La respuesta es huerta circular, un sistema modular vertical y de bajo costo que transforma residuos textiles y envase este trapac en fuentes de vida y alimento. Desarrollados junto a universidades, escuelas y comunidades, huerta circular combina educación, ciencia y acción social. Los materiales se obtienen mediante un programa de incentivo universitario donde estudiantes de materias de práctica comunitaria, como química o ingeniería y saciedad, ensamblan las estructuras y capacitan a las comunidades para convertir los materiales recuperados en módulos productivos. En su interior, una manta multicapa inteligente regula la humedad con precisión. Primera capa poliestre reciclado que retiene el agua y evita perdidas. Segunda capa toalla reutilizada que mantiene la humedad constante. Tercera capa algodonolino que libera lentamente el agua hacia las raíces. Por encima de estas capas, un tubo de tetrapac con picos de bajo costo conforma un sistema de autorrivo por goteo y recirculación, garantizando una distribución eficiente del agua a lo largo del módulo. El riego funciona únicamente por gravedad y en la base un recipiente de PVC reciclado recoge el excedente para reutilizarlo en el siguiente ciclo. Además, se trabaja junto a escuelas de jardinería y empresas privadas, estableciendo convenios de responsabilidad social empresarial para la obtención de semillas y apoyo logístico. Los participantes del programa reciben capacitación, semillas y el dispositivo de cultivo en comodato, a cambio de reciclar materiales o producir ecoladrillos. De este modo, se promueve una economía circular donde el intercambio entre universidad y comunidad asegura la sostenibilidad del proyecto a lo largo del tiempo. A diferencia del cultivo en tierra, donde se pierde este el 80% del agua y el crecimiento es lento, huerta circular ofrece mayor eficiencia, velocidad y sostenibilidad, sin necesidad de electricidad ni mantenimiento complejo. Y lo más inspirador, cada módulo se construye como trabajo práctico integrador enseñando a los estudiantes a innovar con propósito, a transformar residuos en oportunidades y a cerrar el ciclo del agua en los materiales y el conocimiento.",
+ "segments": [
+  {
+   "start": 0.11,
+   "end": 6.61,
+   "text": "Cada año, millones de toneladas de ropa, plástico y residuos contaminan el agua y la tierra que nos sostienen."
+  },
+  {
+   "start": 6.61,
+   "end": 11.11,
+   "text": "En América Latina, millones de familias viven sin exceso alimento frescos y asequibles"
+  },
+  {
+   "start": 11.11,
+   "end": 16.11,
+   "text": "y la falta de espacio, agua y empleo en los barrios urbanos limita cualquier intento de cultivo."
+  },
+  {
+   "start": 16.11,
+   "end": 19.11,
+   "text": "Donde cada metro cuenta, los huertos tradicionales no alcanzan."
+  },
+  {
+   "start": 19.11,
+   "end": 21.61,
+   "text": "Escuelas, centros comunitarios y hogares podrían ser fértiles,"
+  },
+  {
+   "start": 21.61,
+   "end": 25.11,
+   "text": "pero necesitan soluciones simples, modulares y sostenibles que lo hagan posible."
+  },
+  {
+   "start": 25.11,
+   "end": 28.61,
+   "text": "¿Cómo cultivamos esperanza en los lugares donde falta espacio, agua y oportunidad?"
+  },
+  {
+   "start": 28.61,
+   "end": 32.61,
+   "text": "La respuesta es huerta circular, un sistema modular vertical y de bajo costo"
+  },
+  {
+   "start": 32.61,
+   "end": 36.61,
+   "text": "que transforma residuos textiles y envase este trapac en fuentes de vida y alimento."
+  },
+  {
+   "start": 36.61,
+   "end": 42.61,
+   "text": "Desarrollados junto a universidades, escuelas y comunidades, huerta circular combina educación, ciencia y acción social."
+  },
+  {
+   "start": 42.61,
+   "end": 45.61,
+   "text": "Los materiales se obtienen mediante un programa de incentivo universitario"
+  },
+  {
+   "start": 45.61,
+   "end": 49.61,
+   "text": "donde estudiantes de materias de práctica comunitaria, como química o ingeniería y saciedad,"
+  },
+  {
+   "start": 49.61,
+   "end": 54.61,
+   "text": "ensamblan las estructuras y capacitan a las comunidades para convertir los materiales recuperados en módulos productivos."
+  },
+  {
+   "start": 54.61,
+   "end": 58.11,
+   "text": "En su interior, una manta multicapa inteligente regula la humedad con precisión."
+  },
+  {
+   "start": 58.11,
+   "end": 61.11,
+   "text": "Primera capa poliestre reciclado que retiene el agua y evita perdidas."
+  },
+  {
+   "start": 61.11,
+   "end": 64.11,
+   "text": "Segunda capa toalla reutilizada que mantiene la humedad constante."
+  },
+  {
+   "start": 64.11,
+   "end": 67.11,
+   "text": "Tercera capa algodonolino que libera lentamente el agua hacia las raíces."
+  },
+  {
+   "start": 67.11,
+   "end": 73.11,
+   "text": "Por encima de estas capas, un tubo de tetrapac con picos de bajo costo conforma un sistema de autorrivo por goteo y recirculación,"
+  },
+  {
+   "start": 73.11,
+   "end": 76.11,
+   "text": "garantizando una distribución eficiente del agua a lo largo del módulo."
+  },
+  {
+   "start": 76.11,
+   "end": 83.11,
+   "text": "El riego funciona únicamente por gravedad y en la base un recipiente de PVC reciclado recoge el excedente para reutilizarlo en el siguiente ciclo."
+  },
+  {
+   "start": 83.11,
+   "end": 86.11,
+   "text": "Además, se trabaja junto a escuelas de jardinería y empresas privadas,"
+  },
+  {
+   "start": 86.11,
+   "end": 90.11,
+   "text": "estableciendo convenios de responsabilidad social empresarial para la obtención de semillas y apoyo logístico."
+  },
+  {
+   "start": 90.11,
+   "end": 97.11,
+   "text": "Los participantes del programa reciben capacitación, semillas y el dispositivo de cultivo en comodato, a cambio de reciclar materiales o producir ecoladrillos."
+  },
+  {
+   "start": 97.11,
+   "end": 103.11,
+   "text": "De este modo, se promueve una economía circular donde el intercambio entre universidad y comunidad asegura la sostenibilidad del proyecto a lo largo del tiempo."
+  },
+  {
+   "start": 103.11,
+   "end": 110.11,
+   "text": "A diferencia del cultivo en tierra, donde se pierde este el 80% del agua y el crecimiento es lento, huerta circular ofrece mayor eficiencia, velocidad y sostenibilidad,"
+  },
+  {
+   "start": 110.11,
+   "end": 113.11,
+   "text": "sin necesidad de electricidad ni mantenimiento complejo."
+  },
+  {
+   "start": 113.11,
+   "end": 119.11,
+   "text": "Y lo más inspirador, cada módulo se construye como trabajo práctico integrador enseñando a los estudiantes a innovar con propósito,"
+  },
+  {
+   "start": 119.11,
+   "end": 123.11,
+   "text": "a transformar residuos en oportunidades y a cerrar el ciclo del agua en los materiales y el conocimiento."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 123.5
+}

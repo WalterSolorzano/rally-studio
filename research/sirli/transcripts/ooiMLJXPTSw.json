@@ -1,0 +1,177 @@
+{
+ "video_id": "ooiMLJXPTSw",
+ "url": "https://www.youtube.com/watch?v=ooiMLJXPTSw",
+ "year": 2026,
+ "collection": "sede",
+ "country": "CHILE",
+ "team": "CONCIENCIA",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "CONCIENCIA",
+   "challenge": "09 - OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:34:37+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Y después de todo eso que ha pasado 25 días que ustedes, el gobierno no nos traigo ni siquiera una media agua Ni un clavo Ni un clavo Es que se compromete a ustedes, no traigo nada No traigo nada No traigo nada 2 de febrero del 2024, las alertas llegaron tarde 139 fallecidos ¿Qué harías tú? Oye pero ¿cómo esto no va ni por acá, ni por acá? ¡Ni un número dado! ¿Cómo tanto? En julio de 2026, un solo sistema frontal Dejó en Chile 13 fallecidos y casi 14.000 damnificados Además, llegó a haber 100 personas asiladas Sin rutas ni comunicación Emergencias así, necesitamos saber donde están y hacia donde movilizanlas Para poder garantizar su vida Hay que ayudar a las autoridades y organismos que coordina las respuestas ante catástrofes para que decidan con rapidez La espera entre el desastre y las primeras acciones es demasiado larga En formación se tarda en recoger, validar y llegar a quien decir ¿Y si te cuento que podemos usar geolocalización para solucionar estos problemas? En una catástrofe, cada segundo y cada minuto es valioso Nuestra solución, transformar datos reales en ayuda real No dosos, contiene una alerta activa ante las catástrofes Te guía hacia la zona segura más cercana, acompañándote en cada paso Y protege tu vida mientras llega la ayuda de las autoridades Necesitamos 292 millones para financiamiento Tres cuartos se van a financiar de fundos públicos, que serían 204 millones El otro que falta sería el 30% de V2B, con un margen del 150% de utilidad Y por eso los invitamos a tomar conciencia y ser precavidos de lo que está ocurriendo en el país",
+ "segments": [
+  {
+   "start": 0.85,
+   "end": 5.89,
+   "text": "Y después de todo eso que ha pasado 25 días que ustedes, el gobierno no nos traigo ni siquiera una media agua"
+  },
+  {
+   "start": 5.89,
+   "end": 6.89,
+   "text": "Ni un clavo"
+  },
+  {
+   "start": 6.89,
+   "end": 7.89,
+   "text": "Ni un clavo"
+  },
+  {
+   "start": 7.89,
+   "end": 9.89,
+   "text": "Es que se compromete a ustedes, no traigo nada"
+  },
+  {
+   "start": 9.89,
+   "end": 10.89,
+   "text": "No traigo nada"
+  },
+  {
+   "start": 10.89,
+   "end": 18.83,
+   "text": "No traigo nada"
+  },
+  {
+   "start": 18.83,
+   "end": 21.83,
+   "text": "2 de febrero del 2024, las alertas llegaron tarde"
+  },
+  {
+   "start": 21.83,
+   "end": 23.83,
+   "text": "139 fallecidos"
+  },
+  {
+   "start": 23.83,
+   "end": 25.83,
+   "text": "¿Qué harías tú?"
+  },
+  {
+   "start": 25.83,
+   "end": 28.83,
+   "text": "Oye pero ¿cómo esto no va ni por acá, ni por acá?"
+  },
+  {
+   "start": 28.83,
+   "end": 30.83,
+   "text": "¡Ni un número dado! ¿Cómo tanto?"
+  },
+  {
+   "start": 31.83,
+   "end": 36.98,
+   "text": "En julio de 2026, un solo sistema frontal"
+  },
+  {
+   "start": 37.02,
+   "end": 41.02,
+   "text": "Dejó en Chile 13 fallecidos y casi 14.000 damnificados"
+  },
+  {
+   "start": 41.02,
+   "end": 45.02,
+   "text": "Además, llegó a haber 100 personas asiladas"
+  },
+  {
+   "start": 45.02,
+   "end": 47.02,
+   "text": "Sin rutas ni comunicación"
+  },
+  {
+   "start": 47.02,
+   "end": 52.02,
+   "text": "Emergencias así, necesitamos saber donde están y hacia donde movilizanlas"
+  },
+  {
+   "start": 52.02,
+   "end": 54.02,
+   "text": "Para poder garantizar su vida"
+  },
+  {
+   "start": 54.02,
+   "end": 60.02,
+   "text": "Hay que ayudar a las autoridades y organismos que coordina las respuestas ante catástrofes para que decidan con rapidez"
+  },
+  {
+   "start": 60.02,
+   "end": 64.02,
+   "text": "La espera entre el desastre y las primeras acciones es demasiado larga"
+  },
+  {
+   "start": 64.06,
+   "end": 67.06,
+   "text": "En formación se tarda en recoger, validar y llegar a quien decir"
+  },
+  {
+   "start": 67.06,
+   "end": 71.06,
+   "text": "¿Y si te cuento que podemos usar geolocalización para solucionar estos problemas?"
+  },
+  {
+   "start": 71.06,
+   "end": 75.06,
+   "text": "En una catástrofe, cada segundo y cada minuto es valioso"
+  },
+  {
+   "start": 75.06,
+   "end": 79.06,
+   "text": "Nuestra solución, transformar datos reales en ayuda real"
+  },
+  {
+   "start": 79.06,
+   "end": 83.06,
+   "text": "No dosos, contiene una alerta activa ante las catástrofes"
+  },
+  {
+   "start": 83.06,
+   "end": 86.06,
+   "text": "Te guía hacia la zona segura más cercana, acompañándote en cada paso"
+  },
+  {
+   "start": 86.06,
+   "end": 90.06,
+   "text": "Y protege tu vida mientras llega la ayuda de las autoridades"
+  },
+  {
+   "start": 90.06,
+   "end": 93.06,
+   "text": "Necesitamos 292 millones para financiamiento"
+  },
+  {
+   "start": 93.1,
+   "end": 97.1,
+   "text": "Tres cuartos se van a financiar de fundos públicos, que serían 204 millones"
+  },
+  {
+   "start": 97.1,
+   "end": 103.1,
+   "text": "El otro que falta sería el 30% de V2B, con un margen del 150% de utilidad"
+  },
+  {
+   "start": 103.1,
+   "end": 108.1,
+   "text": "Y por eso los invitamos a tomar conciencia y ser precavidos de lo que está ocurriendo en el país"
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.0
+}

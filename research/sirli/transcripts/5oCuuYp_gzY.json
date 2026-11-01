@@ -1,0 +1,112 @@
+{
+ "video_id": "5oCuuYp_gzY",
+ "url": "https://www.youtube.com/watch?v=5oCuuYp_gzY",
+ "year": 2024,
+ "collection": "sede",
+ "country": "COLOMBIA",
+ "team": "CREALIA & INNOVARTE FIVE",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "CREALIA & INNOVARTE FIVE",
+   "challenge": "04 - AGUACATE"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:37:11+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "El producto propuesto consiste en desarrollar bolsas biodegradables elaboradas a partir de almidón extraído de las semillas de aguacate como una alternativa a las bolsas plásticas tradicionales fabricadas con polietileno de baja densidad. Esta propuesta busca mitigar el impacto ambiental de las bolsas plásticas convencionales las cuales contribuyen significativamente a la contaminación por microplásticos y poseen tiempos de la gradación extremadamente prolongados. La solución se diferencia de otras propuestas existentes en el mercado al aprovechar un residuo agroindustrial como las semillas de aguacate que suelen ser desechadas. De este modo no solo se seduce la dependencia de plásticos derivados de combustibles fósiles sino que también se agrega valor a un subproducto aerícola fomentando un enfoque de economía secular. Para la implementación se adecuye a la tecnología de producción de biopolímulos a partir de fuentes vegetales con énfasis en la extracción de almidón y su posterior conversión en material biodegradable con propiedades mecánicas adecuadas para soportar el uso diario. Finalmente este enfoque innovador convierta las bolsas de almidón de semillas de aguacate en una opción destacada dentro de la presente demanda por soluciones sostenibles en el sector de empaques y plásticos.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 5.1,
+   "text": "El producto propuesto consiste en desarrollar bolsas biodegradables elaboradas a partir"
+  },
+  {
+   "start": 5.1,
+   "end": 10.22,
+   "text": "de almidón extraído de las semillas de aguacate como una alternativa a las bolsas plásticas"
+  },
+  {
+   "start": 10.22,
+   "end": 14.62,
+   "text": "tradicionales fabricadas con polietileno de baja densidad."
+  },
+  {
+   "start": 14.62,
+   "end": 19.62,
+   "text": "Esta propuesta busca mitigar el impacto ambiental de las bolsas plásticas convencionales las"
+  },
+  {
+   "start": 19.62,
+   "end": 25.18,
+   "text": "cuales contribuyen significativamente a la contaminación por microplásticos y poseen"
+  },
+  {
+   "start": 25.18,
+   "end": 28.68,
+   "text": "tiempos de la gradación extremadamente prolongados."
+  },
+  {
+   "start": 28.68,
+   "end": 34.18,
+   "text": "La solución se diferencia de otras propuestas existentes en el mercado al aprovechar un"
+  },
+  {
+   "start": 34.18,
+   "end": 39.98,
+   "text": "residuo agroindustrial como las semillas de aguacate que suelen ser desechadas."
+  },
+  {
+   "start": 39.98,
+   "end": 45.62,
+   "text": "De este modo no solo se seduce la dependencia de plásticos derivados de combustibles fósiles"
+  },
+  {
+   "start": 45.62,
+   "end": 51.02,
+   "text": "sino que también se agrega valor a un subproducto aerícola fomentando un enfoque de economía"
+  },
+  {
+   "start": 51.02,
+   "end": 52.02,
+   "text": "secular."
+  },
+  {
+   "start": 52.46,
+   "end": 57.3,
+   "text": "Para la implementación se adecuye a la tecnología de producción de biopolímulos a partir de"
+  },
+  {
+   "start": 57.3,
+   "end": 63.18,
+   "text": "fuentes vegetales con énfasis en la extracción de almidón y su posterior conversión en material"
+  },
+  {
+   "start": 63.18,
+   "end": 69.26,
+   "text": "biodegradable con propiedades mecánicas adecuadas para soportar el uso diario."
+  },
+  {
+   "start": 69.26,
+   "end": 75.22,
+   "text": "Finalmente este enfoque innovador convierta las bolsas de almidón de semillas de aguacate"
+  },
+  {
+   "start": 75.22,
+   "end": 80.3,
+   "text": "en una opción destacada dentro de la presente demanda por soluciones sostenibles en el"
+  },
+  {
+   "start": 80.3,
+   "end": 82.54,
+   "text": "sector de empaques y plásticos."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 85.1
+}

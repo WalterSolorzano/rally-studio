@@ -1,0 +1,102 @@
+{
+ "video_id": "akiKxFOwi5E",
+ "url": "https://www.youtube.com/watch?v=akiKxFOwi5E",
+ "year": 2023,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "INGENIC",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "INGENIC",
+   "challenge": "02 - SIEMPRE EN CONTACTO"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:23:05+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Sabías que el turismo de aventura en Latinoamérica tiene más riesgos que el turismo normal? Debido a muchos casos de personas desaparecidas y accidentes en la región. En Latinoamérica, la industria en crecimiento del turismo es una fuente de ingresos que representa el 7.9% del producto interno bruto de la región, según el Consejo Mundial de Viaje y Turismo. Es crucial enfocarse en la seguridad, tanto para prevenir problemas como para responder en caso de emergencia durante esta actividad. Es por esto que nace Venture SOS, un dispositivo que utiliza un sistema satelital de geolocalización para proporcionar una ubicación aproximada. El prototipo de este dispositivo tiene dimensiones de 67.5 x 45 x 15 milímetros y cuenta con un microcontrolador que es compatible con un módulo GPS o BLOX. Sin dejar de un lado la sustentabilidad del diseño hace recargable con larga vida útil y de bajo costo en comparación al resto del mercado. Su batería recargable tiene una autonomía de alrededor de 36 horas, contando también con tres diferentes presentaciones para mayor versatilidad. Este diseño plantea una solución para la inseguridad en actividades como el ciclismo de montaña, kayak, senderismo, surf, entre otros. Con un presionitario de 33 dólares, el dispositivo cuenta con un software de fácil utilización con doenfoque personal y empresarial, que permite conocer la ubicación en tiempo real guardando un registro. Este proyecto se llevará a cabo mediante un financiamiento inicial que pueden ser inversionistas o empresas privadas y su principal fuente de ingresos serán ventas mediante agencia de viaje. Venture SOS, garantiza tu seguridad.",
+ "segments": [
+  {
+   "start": 4.5,
+   "end": 9.02,
+   "text": "¿Sabías que el turismo de aventura en Latinoamérica tiene más riesgos que el turismo normal?"
+  },
+  {
+   "start": 9.02,
+   "end": 13.14,
+   "text": "Debido a muchos casos de personas desaparecidas y accidentes en la región."
+  },
+  {
+   "start": 13.14,
+   "end": 22.78,
+   "text": "En Latinoamérica, la industria en crecimiento del turismo es una fuente de ingresos que representa el 7.9% del producto interno bruto de la región,"
+  },
+  {
+   "start": 22.78,
+   "end": 25.58,
+   "text": "según el Consejo Mundial de Viaje y Turismo."
+  },
+  {
+   "start": 25.58,
+   "end": 33.5,
+   "text": "Es crucial enfocarse en la seguridad, tanto para prevenir problemas como para responder en caso de emergencia durante esta actividad."
+  },
+  {
+   "start": 33.5,
+   "end": 43.14,
+   "text": "Es por esto que nace Venture SOS, un dispositivo que utiliza un sistema satelital de geolocalización para proporcionar una ubicación aproximada."
+  },
+  {
+   "start": 43.14,
+   "end": 55.14,
+   "text": "El prototipo de este dispositivo tiene dimensiones de 67.5 x 45 x 15 milímetros y cuenta con un microcontrolador que es compatible con un módulo GPS o BLOX."
+  },
+  {
+   "start": 55.14,
+   "end": 63.46,
+   "text": "Sin dejar de un lado la sustentabilidad del diseño hace recargable con larga vida útil y de bajo costo en comparación al resto del mercado."
+  },
+  {
+   "start": 64.22,
+   "end": 73.82,
+   "text": "Su batería recargable tiene una autonomía de alrededor de 36 horas, contando también con tres diferentes presentaciones para mayor versatilidad."
+  },
+  {
+   "start": 73.82,
+   "end": 83.42,
+   "text": "Este diseño plantea una solución para la inseguridad en actividades como el ciclismo de montaña, kayak, senderismo, surf, entre otros."
+  },
+  {
+   "start": 83.42,
+   "end": 91.62,
+   "text": "Con un presionitario de 33 dólares, el dispositivo cuenta con un software de fácil utilización con doenfoque personal y empresarial,"
+  },
+  {
+   "start": 91.82,
+   "end": 95.82,
+   "text": "que permite conocer la ubicación en tiempo real guardando un registro."
+  },
+  {
+   "start": 96.82,
+   "end": 103.22,
+   "text": "Este proyecto se llevará a cabo mediante un financiamiento inicial que pueden ser inversionistas o empresas privadas"
+  },
+  {
+   "start": 103.22,
+   "end": 107.18,
+   "text": "y su principal fuente de ingresos serán ventas mediante agencia de viaje."
+  },
+  {
+   "start": 107.18,
+   "end": 111.18,
+   "text": "Venture SOS, garantiza tu seguridad."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 111.6
+}

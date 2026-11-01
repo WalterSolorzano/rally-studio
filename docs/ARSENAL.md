@@ -82,5 +82,5 @@ GSAP Standard License (no es MIT); el banner de licencia se conserva.
 - Las 9 "skills propias" del kit: duplicaban `gen_script`, `gen_pautado`, `gen_budget`,
   `gen_canvas`, `gen_voice` y `gen_palette`. Dos fuentes de verdad.
 - `color-palette` y `colormind`: ya resueltos en `gen_palette.py` (Pillow + WCAG).
-- `brandkit` y `Logo Creator`: cubiertos por `propuesta-diseno` y las skills globales.
+- `brandkit` y `Logo Creator`: cubiertos por `propuesta-identidad` y las skills globales.
 - El tono "nada es ley": las bases oficiales y las reglas duras del repo siguen mandando.

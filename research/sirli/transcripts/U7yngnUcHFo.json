@@ -1,0 +1,157 @@
+{
+ "video_id": "U7yngnUcHFo",
+ "url": "https://youtu.be/U7yngnUcHFo?si=DIjaRrKq3hdKPmy3",
+ "year": 2026,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "OLINOVA",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "OLINOVA",
+   "challenge": "07 - REUTILIZACIÓN DE ACEITE DOMÉSTICO"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:31:53+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Todos los días miles de cocinas descartan aceite usado. Parte del mismo terminal de desagüe y ahí empieza el problema. La grasa acumula en cañerías lo que genera obstrucción, mal olor y contaminación. Los gente y jabones usamos para el lavado de utensillos, no lo destruyen sino que empeor el problema, llevándolo a las cloas. Nuestro propuesto utiliza el traeche de uso doméstico para alimentar la desarrollación de política, que es una levadura que se alimenta de grasa. En presencia de lípidos produce lipasa, que es una molécula que arrompe las grasas en glycerol y ácidos grasos. Comenzamos el laboratorio universitario, utilizamos esto porque nos brinda la infraestructura, la bioseguridad, el equipo de estabilización y lo que hace es permitir que nuestro asfuntivo crezca. Luego pasamos con un biorector piloto, en el cual le damos las condiciones como pH, temperatura, agitación constante para que la levadura produzca la lipasa, la cual lo obtenemos de manera líquida y generalmente la envasamos como desengrasante en simato. El modelo se retroriza, el comercio nos entrega sofrir usado y nosotros le entregamos el 20% de la producción en desengrasante en proporción de lo que eso nos va a aportar. Y el 80% restante se lo comercializamos a lavadero o a un auto, para hacer el mecánico o a tiendas de artículos de líquida. Evitamos vertidos, reducimos desengrasantes químicos, bajamos costo de mantenimiento y ayudamos a cumplir la normativa sobre aceite usado como la ordenanza de santa. Prohibí verte a aceites en cloacas, además generamos empleo local en recolección, producción y distribución. Convertimos un residuo en la solución a su propio problema. A aceite usado, lipasa de sagüe limpios.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 4.0,
+   "text": "Todos los días miles de cocinas descartan aceite usado."
+  },
+  {
+   "start": 4.0,
+   "end": 8.0,
+   "text": "Parte del mismo terminal de desagüe y ahí empieza el problema."
+  },
+  {
+   "start": 9.0,
+   "end": 14.0,
+   "text": "La grasa acumula en cañerías lo que genera obstrucción, mal olor y contaminación."
+  },
+  {
+   "start": 14.0,
+   "end": 17.0,
+   "text": "Los gente y jabones usamos para el lavado de utensillos,"
+  },
+  {
+   "start": 17.0,
+   "end": 22.0,
+   "text": "no lo destruyen sino que empeor el problema, llevándolo a las cloas."
+  },
+  {
+   "start": 22.0,
+   "end": 28.0,
+   "text": "Nuestro propuesto utiliza el traeche de uso doméstico para alimentar la desarrollación de política,"
+  },
+  {
+   "start": 28.0,
+   "end": 31.0,
+   "text": "que es una levadura que se alimenta de grasa."
+  },
+  {
+   "start": 31.0,
+   "end": 34.0,
+   "text": "En presencia de lípidos produce lipasa,"
+  },
+  {
+   "start": 34.0,
+   "end": 38.0,
+   "text": "que es una molécula que arrompe las grasas en glycerol y ácidos grasos."
+  },
+  {
+   "start": 39.0,
+   "end": 45.0,
+   "text": "Comenzamos el laboratorio universitario, utilizamos esto porque nos brinda la infraestructura,"
+  },
+  {
+   "start": 45.0,
+   "end": 53.0,
+   "text": "la bioseguridad, el equipo de estabilización y lo que hace es permitir que nuestro asfuntivo crezca."
+  },
+  {
+   "start": 53.0,
+   "end": 60.0,
+   "text": "Luego pasamos con un biorector piloto, en el cual le damos las condiciones como pH,"
+  },
+  {
+   "start": 60.0,
+   "end": 66.0,
+   "text": "temperatura, agitación constante para que la levadura produzca la lipasa,"
+  },
+  {
+   "start": 66.0,
+   "end": 74.0,
+   "text": "la cual lo obtenemos de manera líquida y generalmente la envasamos como desengrasante en simato."
+  },
+  {
+   "start": 74.0,
+   "end": 78.0,
+   "text": "El modelo se retroriza, el comercio nos entrega sofrir usado"
+  },
+  {
+   "start": 78.0,
+   "end": 82.0,
+   "text": "y nosotros le entregamos el 20% de la producción en desengrasante"
+  },
+  {
+   "start": 82.0,
+   "end": 84.0,
+   "text": "en proporción de lo que eso nos va a aportar."
+  },
+  {
+   "start": 84.0,
+   "end": 88.0,
+   "text": "Y el 80% restante se lo comercializamos a lavadero o a un auto,"
+  },
+  {
+   "start": 88.0,
+   "end": 91.0,
+   "text": "para hacer el mecánico o a tiendas de artículos de líquida."
+  },
+  {
+   "start": 91.0,
+   "end": 94.0,
+   "text": "Evitamos vertidos, reducimos desengrasantes químicos,"
+  },
+  {
+   "start": 94.0,
+   "end": 99.0,
+   "text": "bajamos costo de mantenimiento y ayudamos a cumplir la normativa sobre aceite usado"
+  },
+  {
+   "start": 99.0,
+   "end": 100.0,
+   "text": "como la ordenanza de santa."
+  },
+  {
+   "start": 100.0,
+   "end": 102.0,
+   "text": "Prohibí verte a aceites en cloacas,"
+  },
+  {
+   "start": 102.0,
+   "end": 107.0,
+   "text": "además generamos empleo local en recolección, producción y distribución."
+  },
+  {
+   "start": 107.0,
+   "end": 110.0,
+   "text": "Convertimos un residuo en la solución a su propio problema."
+  },
+  {
+   "start": 110.0,
+   "end": 113.0,
+   "text": "A aceite usado, lipasa de sagüe limpios."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 113.5
+}

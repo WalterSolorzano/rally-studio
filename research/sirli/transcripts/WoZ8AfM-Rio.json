@@ -1,0 +1,159 @@
+{
+ "video_id": "WoZ8AfM-Rio",
+ "url": "https://youtu.be/WoZ8AfM-Rio?si=_eqm2SZcxYB8v-U8",
+ "year": 2026,
+ "collection": "nacional",
+ "country": "CHILE",
+ "team": "HOOKE",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "HOOKE",
+   "challenge": "09 - OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA"
+  },
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "HOOKE",
+   "challenge": "09 - OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:12:14+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "El IRKEN, enero de 2026. El fuego arrasó el 80% del sector urbano. Donald Tomás salvó una sola cosa, su celular. Más de 20.000 personas dawnificadas. Llegaron toneladas de ayuda y miles de voluntarios, pero la casa de Donald Tomás no llegó nadie. Un funcionario municipal nos contó que las primeras horas son de confusión y todo termina en un excel improvisado. Nos teníamos la herramienta en las plataformas, por ejemplo. Han intentado distribuir en distintas zonas sobre todo donde dicen no ha llegado la ayuda necesaria, afirmación que se repite por parte de otros voluntarios quienes apuntan a una mala distribución desde los centros de acopio. Por eso creamos Atlas, una señal y una respuesta. Una app que cada vecino instala antes de la temporada de incendios. Cuando ocurre la emergencia, Donald Tomás responde tocando emojis sin escribir. Sigue aunque esté nervioso o le cueste leer. La app guarda su ubicación y si no hay señal, guarda el reporte y lo envía apenas vuelva a la colección. Ahora desde una nueva perspectiva. En municipio de un mapa por coleras, donde es urgente y cuántos afectados hay. Y los sectores que no reportan se marcan como zonas silenciosas. Para que un equipo municipal vaya a verlo. ¿Y quién no tiene la app? ¿Lo registra un líder vecinal o el equipo puesta por él? Estamos desplegados en terreno. Con esta aplicación es fácil. Podemos reportar los daños. Úsenla para ayudar.",
+ "segments": [
+  {
+   "start": 0.37,
+   "end": 5.61,
+   "text": "El IRKEN, enero de 2026. El fuego arrasó el 80% del sector urbano."
+  },
+  {
+   "start": 5.61,
+   "end": 8.73,
+   "text": "Donald Tomás salvó una sola cosa, su celular."
+  },
+  {
+   "start": 8.73,
+   "end": 15.84,
+   "text": "Más de 20.000 personas dawnificadas. Llegaron toneladas de ayuda y miles de"
+  },
+  {
+   "start": 15.84,
+   "end": 19.14,
+   "text": "voluntarios, pero la casa de Donald Tomás no llegó nadie."
+  },
+  {
+   "start": 19.14,
+   "end": 32.18,
+   "text": "Un funcionario municipal nos contó que las primeras horas son de confusión y"
+  },
+  {
+   "start": 32.18,
+   "end": 34.38,
+   "text": "todo termina en un excel improvisado."
+  },
+  {
+   "start": 34.38,
+   "end": 37.94,
+   "text": "Nos teníamos la herramienta en las plataformas, por ejemplo."
+  },
+  {
+   "start": 38.5,
+   "end": 43.4,
+   "text": "Han intentado distribuir en distintas zonas sobre todo donde dicen no ha"
+  },
+  {
+   "start": 43.4,
+   "end": 48.68,
+   "text": "llegado la ayuda necesaria, afirmación que se repite por parte de otros voluntarios"
+  },
+  {
+   "start": 48.68,
+   "end": 53.02,
+   "text": "quienes apuntan a una mala distribución desde los centros de acopio."
+  },
+  {
+   "start": 53.02,
+   "end": 58.1,
+   "text": "Por eso creamos Atlas, una señal y una respuesta. Una app que cada vecino instala"
+  },
+  {
+   "start": 58.1,
+   "end": 61.86,
+   "text": "antes de la temporada de incendios. Cuando ocurre la emergencia, Donald Tomás"
+  },
+  {
+   "start": 61.86,
+   "end": 65.94,
+   "text": "responde tocando emojis sin escribir. Sigue aunque esté nervioso o le"
+  },
+  {
+   "start": 65.94,
+   "end": 70.94,
+   "text": "cueste leer. La app guarda su ubicación y si no hay señal, guarda el reporte y lo"
+  },
+  {
+   "start": 70.94,
+   "end": 72.94,
+   "text": "envía apenas vuelva a la colección."
+  },
+  {
+   "start": 72.94,
+   "end": 75.94,
+   "text": "Ahora desde una nueva perspectiva."
+  },
+  {
+   "start": 75.94,
+   "end": 82.67,
+   "text": "En municipio de un mapa por coleras, donde es urgente y cuántos afectados hay."
+  },
+  {
+   "start": 82.67,
+   "end": 87.67,
+   "text": "Y los sectores que no reportan se marcan como zonas silenciosas."
+  },
+  {
+   "start": 87.67,
+   "end": 90.67,
+   "text": "Para que un equipo municipal vaya a verlo."
+  },
+  {
+   "start": 91.67,
+   "end": 93.67,
+   "text": "¿Y quién no tiene la app?"
+  },
+  {
+   "start": 93.67,
+   "end": 97.67,
+   "text": "¿Lo registra un líder vecinal o el equipo puesta por él?"
+  },
+  {
+   "start": 98.67,
+   "end": 100.67,
+   "text": "Estamos desplegados en terreno."
+  },
+  {
+   "start": 100.67,
+   "end": 102.67,
+   "text": "Con esta aplicación es fácil."
+  },
+  {
+   "start": 102.67,
+   "end": 104.67,
+   "text": "Podemos reportar los daños."
+  },
+  {
+   "start": 104.67,
+   "end": 106.67,
+   "text": "Úsenla para ayudar."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 117.7
+}

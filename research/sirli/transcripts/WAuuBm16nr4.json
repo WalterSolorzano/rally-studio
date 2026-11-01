@@ -1,0 +1,122 @@
+{
+ "video_id": "WAuuBm16nr4",
+ "url": "https://youtu.be/WAuuBm16nr4?si=dZw5tFDtVk_Woegb",
+ "year": 2025,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "COCIBOLCA.",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "COCIBOLCA.",
+   "challenge": "06 - RESIDUOS EN PLAYAS"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:36:48+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "que vienen ya días de amar el mundo que aveas. Las playas y costas sufren una severa contaminación por residuos sólidos, plásticos, latas, vidrios y orgánicos que degradan el ecosistema marino y costero, dañan la fauna por ingesta o enredos y representan un riesgo para la salud y el turismo. El desafío residuos en las playas como equipo Cosi Volca enfrentamos el desafío diseñando un dispositivo portátil y manual para recolectar residuos en la arena. Buscamos que sea fácil de construir, operar y mantener por las comunidades costeras utilizando materiales de bajo costo y sin necesidad de electricidad. El carretillo recolector es nuestra propuesta, lo cual está basado en un cilindro rotatorio manual y portátil. Al ser empujado sobre la arena, el cilindro cubierto con una malla de metal enreciclada, separa los residuos del sedimento y lo deposita en un contenedor interno. La tecnología utilizada es mecánica simple, robusta y adaptable. Consiste un cilindro de mallaco, una granulometría específica montado sobre un transíx de tubo PVC con rodas y un mango. Es una solución 100% autónoma, no eléctrica no combustible de muy bajo costo y fácil de operar y reparar diferenciándose de las costosas máquinas industriales o la lenta recolección manual. La implementación de este equipo ofrece un método de limpieza más rápido y eficiente, mejorando la calidad de vida de las personas y aumentando el atractivo turístico. Somos Cosiguelta, Nicaragua.",
+ "segments": [
+  {
+   "start": 0.4,
+   "end": 6.0,
+   "text": "que vienen ya días de amar el mundo que aveas."
+  },
+  {
+   "start": 6.0,
+   "end": 12.38,
+   "text": "Las playas y costas sufren una severa contaminación por residuos sólidos, plásticos, latas,"
+  },
+  {
+   "start": 12.38,
+   "end": 19.08,
+   "text": "vidrios y orgánicos que degradan el ecosistema marino y costero, dañan la fauna por ingesta"
+  },
+  {
+   "start": 19.08,
+   "end": 24.96,
+   "text": "o enredos y representan un riesgo para la salud y el turismo."
+  },
+  {
+   "start": 24.96,
+   "end": 31.52,
+   "text": "El desafío residuos en las playas como equipo Cosi Volca enfrentamos el desafío diseñando"
+  },
+  {
+   "start": 31.52,
+   "end": 37.04,
+   "text": "un dispositivo portátil y manual para recolectar residuos en la arena."
+  },
+  {
+   "start": 37.04,
+   "end": 43.48,
+   "text": "Buscamos que sea fácil de construir, operar y mantener por las comunidades costeras utilizando"
+  },
+  {
+   "start": 43.48,
+   "end": 48.04,
+   "text": "materiales de bajo costo y sin necesidad de electricidad."
+  },
+  {
+   "start": 48.04,
+   "end": 56.16,
+   "text": "El carretillo recolector es nuestra propuesta, lo cual está basado en un cilindro rotatorio"
+  },
+  {
+   "start": 56.16,
+   "end": 62.32,
+   "text": "manual y portátil. Al ser empujado sobre la arena, el cilindro cubierto con una malla"
+  },
+  {
+   "start": 62.32,
+   "end": 68.28,
+   "text": "de metal enreciclada, separa los residuos del sedimento y lo deposita en un contenedor"
+  },
+  {
+   "start": 68.28,
+   "end": 76.2,
+   "text": "interno. La tecnología utilizada es mecánica simple, robusta y adaptable. Consiste un"
+  },
+  {
+   "start": 76.2,
+   "end": 84.28,
+   "text": "cilindro de mallaco, una granulometría específica montado sobre un transíx de tubo PVC con rodas"
+  },
+  {
+   "start": 84.28,
+   "end": 90.56,
+   "text": "y un mango. Es una solución 100% autónoma, no eléctrica"
+  },
+  {
+   "start": 90.56,
+   "end": 97.72,
+   "text": "no combustible de muy bajo costo y fácil de operar y reparar diferenciándose de las costosas"
+  },
+  {
+   "start": 97.72,
+   "end": 102.04,
+   "text": "máquinas industriales o la lenta recolección manual."
+  },
+  {
+   "start": 102.04,
+   "end": 107.48,
+   "text": "La implementación de este equipo ofrece un método de limpieza más rápido y eficiente,"
+  },
+  {
+   "start": 107.48,
+   "end": 113.0,
+   "text": "mejorando la calidad de vida de las personas y aumentando el atractivo turístico."
+  },
+  {
+   "start": 113.0,
+   "end": 116.16,
+   "text": "Somos Cosiguelta, Nicaragua."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 123.8
+}

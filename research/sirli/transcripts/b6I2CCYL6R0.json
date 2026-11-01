@@ -1,0 +1,117 @@
+{
+ "video_id": "b6I2CCYL6R0",
+ "url": "https://youtu.be/b6I2CCYL6R0",
+ "year": 2026,
+ "collection": "sede",
+ "country": "CHILE",
+ "team": "POMERAPE",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "POMERAPE",
+   "challenge": "05 - MONITOREO INTELIGENTE E INFRAESTRUCTURA VERDE EN RESERVORIOS PLUVIALES"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:37:18+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Sabías que en Belén, Dúpará, Brasil, caen más de 3.300 milímetros de lluvia al año? También sabes que en Cuenca Matafome, 30.000 personas sufren por inundaciones de diluvios. Incluso la Mareda del Río Maguarí sube 3 metros y medio bloqueando todas las salidas propravedad. Cuánto nos cuesta esta ceguera? Más de 13.000 personas desalojadas por temporales. Familias perdiendo todo y respuestas de emergencia que siempre llegan tarde. Ante esta catástrofe decidimos actuar. No nos quedamos en el papel. Diseñamos y programamos una solución real que une la fuerza de la naturaleza con la inteligencia de datos. Primero, miramos desde el espacio. Usamos satélites que atraviesan la nubosidad para ubicar con precisión las calles en mayor riesgo. Allí instalamos nuestra red bioesponja. Jardines urbanos que absorben miles de litros de agua usando plantas amazónicas y residuos de acaí, limpiando la calle y evitando criaderos de dengue. Luego le damos vida a inteligencia. Instalamos sensores de nivel en los jardines y en el río. Conectados a una plataforma web que avisa a los vecinos y al alcaldía horas antes de que ocurra una inundación. Con la inversión de un solo año ahorramos 12.000 dólares anuales a la ciudad y durante los costosos operativos de emergencia. Por eso, llevamos a la prefectura de Belém y a Fón Plata. Cuidemos a nuestra gente y protejamos nuestros barrios. Somos Pomerápe y esto es Red Bioesponja Amazónica.",
+ "segments": [
+  {
+   "start": 6.42,
+   "end": 11.82,
+   "text": "¿Sabías que en Belén, Dúpará, Brasil, caen más de 3.300 milímetros de lluvia al año?"
+  },
+  {
+   "start": 11.82,
+   "end": 19.41,
+   "text": "También sabes que en Cuenca Matafome, 30.000 personas sufren por inundaciones de diluvios."
+  },
+  {
+   "start": 20.41,
+   "end": 25.61,
+   "text": "Incluso la Mareda del Río Maguarí sube 3 metros y medio bloqueando todas las salidas propravedad."
+  },
+  {
+   "start": 25.61,
+   "end": 33.48,
+   "text": "Cuánto nos cuesta esta ceguera? Más de 13.000 personas desalojadas por temporales."
+  },
+  {
+   "start": 33.48,
+   "end": 38.08,
+   "text": "Familias perdiendo todo y respuestas de emergencia que siempre llegan tarde."
+  },
+  {
+   "start": 39.08,
+   "end": 44.08,
+   "text": "Ante esta catástrofe decidimos actuar. No nos quedamos en el papel."
+  },
+  {
+   "start": 44.08,
+   "end": 50.08,
+   "text": "Diseñamos y programamos una solución real que une la fuerza de la naturaleza con la inteligencia de datos."
+  },
+  {
+   "start": 50.08,
+   "end": 56.08,
+   "text": "Primero, miramos desde el espacio. Usamos satélites que atraviesan la nubosidad"
+  },
+  {
+   "start": 56.08,
+   "end": 59.08,
+   "text": "para ubicar con precisión las calles en mayor riesgo."
+  },
+  {
+   "start": 59.08,
+   "end": 65.08,
+   "text": "Allí instalamos nuestra red bioesponja. Jardines urbanos que absorben miles de litros de agua"
+  },
+  {
+   "start": 65.08,
+   "end": 72.08,
+   "text": "usando plantas amazónicas y residuos de acaí, limpiando la calle y evitando criaderos de dengue."
+  },
+  {
+   "start": 72.08,
+   "end": 78.08,
+   "text": "Luego le damos vida a inteligencia. Instalamos sensores de nivel en los jardines y en el río."
+  },
+  {
+   "start": 78.08,
+   "end": 85.08,
+   "text": "Conectados a una plataforma web que avisa a los vecinos y al alcaldía horas antes de que ocurra una inundación."
+  },
+  {
+   "start": 85.08,
+   "end": 91.08,
+   "text": "Con la inversión de un solo año ahorramos 12.000 dólares anuales a la ciudad"
+  },
+  {
+   "start": 91.08,
+   "end": 94.08,
+   "text": "y durante los costosos operativos de emergencia."
+  },
+  {
+   "start": 94.08,
+   "end": 98.08,
+   "text": "Por eso, llevamos a la prefectura de Belém y a Fón Plata."
+  },
+  {
+   "start": 98.08,
+   "end": 102.08,
+   "text": "Cuidemos a nuestra gente y protejamos nuestros barrios."
+  },
+  {
+   "start": 102.08,
+   "end": 107.08,
+   "text": "Somos Pomerápe y esto es Red Bioesponja Amazónica."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 106.8
+}

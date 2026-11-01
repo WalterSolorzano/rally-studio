@@ -1,0 +1,112 @@
+{
+ "video_id": "Qz2ljeHx3QI",
+ "url": "https://youtu.be/Qz2ljeHx3QI",
+ "year": 2025,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "LAS INGENIOSAS",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "LAS INGENIOSAS",
+   "challenge": "09 - LOGÍSTICA ANTE DESASTRES NATURALES"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:20:49+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Muy buenas tardes, nosotros somos del equipo de las ingeniosas, somos de la Universidad Politécnica de Pachuca y nuestra propuesta responde ante el desafío logística ante desastres naturales. Nosotros sabemos que cuando existe una catástrofe pues la infraestructura se puede ver colapsada, entonces pueden haber caminos bloqueados, puede haber cortes eléctricos e incluso puede haber comunidades incomunicadas. En estos casos la rapidez y sobre todo la organización son fundamentales para marcar una gran diferencia entre la vida y la muerte. Nuestra solución combina tecnología y humanidad, un sistema lógico basado en drones de carga y refugios fundamentales automatizables. Los drones permiten transportar medicamentos y quite supervivencia a sesonas aisladas, superando carreteras dañadas o inalcanzables, mientras que los refugios equipados con paneles solares, aviso de agua y espacios médicos básicos, sirven como puntos seguros de atención y recuperación. Esta propuesta es diferente ya que opera en las primeras obras críticas del desastre, en lo que la ayuda tradicional llega a la zona del desastre natural. Además su diseño sostenible reduce el impacto hacia la energía solar y al transporte aéreo eléctrico. Con esto no solo buscamos llevar ayuda, sino crear espacios de esperanza, lugares donde las comunidades puedan recuperarse y reorganizarse con autonomía. Nuestra visión es clara, una logística humanitaria inteligente, empática y sostenible, capaz de salvar vidas y fortalecer la residencia frente a estos cambios climáticos. Muchas gracias.",
+ "segments": [
+  {
+   "start": 4.72,
+   "end": 9.72,
+   "text": "Muy buenas tardes, nosotros somos del equipo de las ingeniosas, somos de la Universidad Politécnica de Pachuca"
+  },
+  {
+   "start": 9.72,
+   "end": 13.72,
+   "text": "y nuestra propuesta responde ante el desafío logística ante desastres naturales."
+  },
+  {
+   "start": 13.72,
+   "end": 19.72,
+   "text": "Nosotros sabemos que cuando existe una catástrofe pues la infraestructura se puede ver colapsada,"
+  },
+  {
+   "start": 19.72,
+   "end": 24.72,
+   "text": "entonces pueden haber caminos bloqueados, puede haber cortes eléctricos e incluso puede haber comunidades incomunicadas."
+  },
+  {
+   "start": 24.72,
+   "end": 30.72,
+   "text": "En estos casos la rapidez y sobre todo la organización son fundamentales para marcar una gran diferencia entre la vida y la muerte."
+  },
+  {
+   "start": 30.72,
+   "end": 41.86,
+   "text": "Nuestra solución combina tecnología y humanidad, un sistema lógico basado en drones de carga y refugios fundamentales automatizables."
+  },
+  {
+   "start": 41.86,
+   "end": 46.86,
+   "text": "Los drones permiten transportar medicamentos y quite supervivencia a sesonas aisladas,"
+  },
+  {
+   "start": 46.86,
+   "end": 52.86,
+   "text": "superando carreteras dañadas o inalcanzables, mientras que los refugios equipados con paneles solares,"
+  },
+  {
+   "start": 52.86,
+   "end": 59.86,
+   "text": "aviso de agua y espacios médicos básicos, sirven como puntos seguros de atención y recuperación."
+  },
+  {
+   "start": 59.86,
+   "end": 67.03,
+   "text": "Esta propuesta es diferente ya que opera en las primeras obras críticas del desastre,"
+  },
+  {
+   "start": 67.03,
+   "end": 72.03,
+   "text": "en lo que la ayuda tradicional llega a la zona del desastre natural."
+  },
+  {
+   "start": 72.03,
+   "end": 81.03,
+   "text": "Además su diseño sostenible reduce el impacto hacia la energía solar y al transporte aéreo eléctrico."
+  },
+  {
+   "start": 81.03,
+   "end": 86.38,
+   "text": "Con esto no solo buscamos llevar ayuda, sino crear espacios de esperanza,"
+  },
+  {
+   "start": 86.38,
+   "end": 91.38,
+   "text": "lugares donde las comunidades puedan recuperarse y reorganizarse con autonomía."
+  },
+  {
+   "start": 91.38,
+   "end": 96.38,
+   "text": "Nuestra visión es clara, una logística humanitaria inteligente, empática y sostenible,"
+  },
+  {
+   "start": 96.38,
+   "end": 101.38,
+   "text": "capaz de salvar vidas y fortalecer la residencia frente a estos cambios climáticos."
+  },
+  {
+   "start": 101.38,
+   "end": 102.38,
+   "text": "Muchas gracias."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 105.2
+}

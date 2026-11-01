@@ -1,0 +1,52 @@
+{
+ "video_id": "rmDUsjrDJ88",
+ "url": "https://youtu.be/rmDUsjrDJ88?si=e5ByT_FLtGWGxwpy",
+ "year": 2023,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "DESARROLLADORES NIC",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "DESARROLLADORES NIC",
+   "challenge": "07 - CROWDSENSING"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:20:05+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "de la población produce diferentes focos de contaminación ambiental. A consecuencia de arrojar la basura de la ventana del auto como vertedero ilegal y no regulado entre otras acciones. El Constandy, conocido como Censin Colectivo, ocurre cuando un grupo de persona utiliza para recopilar datos y reconstruir a proyectos de investigaciones cruces, permite recopilar datos que se pueden tomar medidas para",
+ "segments": [
+  {
+   "start": 10.86,
+   "end": 15.86,
+   "text": "de la población produce diferentes focos de contaminación ambiental."
+  },
+  {
+   "start": 15.86,
+   "end": 22.86,
+   "text": "A consecuencia de arrojar la basura de la ventana del auto como vertedero ilegal y no regulado"
+  },
+  {
+   "start": 22.86,
+   "end": 29.86,
+   "text": "entre otras acciones. El Constandy, conocido como Censin Colectivo,"
+  },
+  {
+   "start": 29.86,
+   "end": 40.02,
+   "text": "ocurre cuando un grupo de persona utiliza para recopilar datos y reconstruir a proyectos"
+  },
+  {
+   "start": 40.02,
+   "end": 54.9,
+   "text": "de investigaciones cruces, permite recopilar datos que se pueden tomar medidas para"
+  }
+ ],
+ "has_info": false,
+ "duration_s": 76.5
+}

@@ -1,0 +1,219 @@
+{
+ "video_id": "voGT6AOQFWw",
+ "url": "https://youtu.be/voGT6AOQFWw",
+ "year": 2019,
+ "collection": "nacional",
+ "country": "MÉXICO",
+ "team": "IDEA-TEC",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2019,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "IDEA-TEC",
+   "challenge": "08 - PARADAS DE AUTOBÚS SUSTENTABLE"
+  },
+  {
+   "year": 2019,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "IDEA-TEC",
+   "challenge": "08 - PARADAS DE AUTOBÚS SUSTENTABLE"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:24:09+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "El mundo está cambiando. La erupción de la tecnología en nuestra vida cotidiana crece a pasos agigantados en sectores que las personas ni siquiera se imaginan. Desde teléfonos inteligentes hasta autos que se conducen solos, el uso de la tecnología nos ha llevado a una demanda de energía excesiva, por lo cual estamos sobre explotando a nuestro planeta y no permitimos que tenga el tiempo suficiente para que se reúne. Por mucho tiempo, las energías renovables se habían rezagado debido a la poca implementación de estas, pero hoy en día son buenas alternativas para el uso en proyectos innovadores. El tratar de ayudar a nuestro planeta comienza desde el grano de arena más pequeña. Tomemos un ejemplo simple, el alumbrado de las paradas de transporte actual. Para empezar, ¿por qué no todas las paradas cuentan como una buena iluminación? Y además, dicho iluminación proviene de energías renovables, el uso de la tecnología puede ayudar a resolver la problemática con iluminación de alta capacidad como son las lámparas LED, las cuales permiten la iluminación de amplias áreas sin la necesidad de un alto consumo energético. El gran problema es ¿cómo alimentar dichas lámparas con energías renovables y sustentar la inversión económicamente? El uso de paneles dolares es una buena alternativa para la alimentación de dichas lámparas. Otro problema es la incertidumbre de no saber si tu transporte está en camino o ya pasó. Las paradas del transporte público pueden aportar algunas otras características que las hacen más atrayentes a los usuarios. Pan tallas que informen a las personas si el transporte público está cercano a la parada, además de informar detalles de la ruta de procedencia del transporte, es de gran utilidad para las personas. El uso de dispositivos GPS es una gran opción para tratar esta problemática, sin embargo representa un costo elevado. Es posible crear una aplicación que use APIs de GPS en el celular del conductor para obtener información de la posición actual. La aplicación resultante, además de ofrecer la característica anteriormente propuesta, puede ofrecer servicios de atención a clientes para reportar averías tanto en transportes como en paradas. Muchas veces a lo largo del día nuestros celulares se quedan sin energía y debemos recargarlos. El uso de pices mecánicos que generen energía puede ayudar a la carga de celulares de una manera amigable al mediante. Otro valor agregado son las máquinas para abolir zapatos. Estas máquinas accionadas por un mecanismo de pedazo pueden limpiar zapatos para ocasiones cuando se requiere citas importantes. Todas estas características no son tan económicas, pero es posible costearlas por medio de publicidad en pantallas modulares en donde se pueden agregar más módulos para crear anuncios más grandes. Dicha publicidad sería de gran utilidad para múltiples empresas, gracias al gran número de personas que día con día acuden a una parada de transportes. La aplicación mencionada en puntos anteriores tiene la posibilidad de tener un módulo para atender a aquellas empresas que deseen promocionarse en las paradas, además de ofrecer paquetes promocionales y de esta manera obtener más clientes.",
+ "segments": [
+  {
+   "start": 0.24,
+   "end": 5.88,
+   "text": "El mundo está cambiando. La erupción de la tecnología en nuestra vida cotidiana crece a pasos"
+  },
+  {
+   "start": 5.88,
+   "end": 11.28,
+   "text": "agigantados en sectores que las personas ni siquiera se imaginan. Desde teléfonos inteligentes hasta"
+  },
+  {
+   "start": 11.28,
+   "end": 16.56,
+   "text": "autos que se conducen solos, el uso de la tecnología nos ha llevado a una demanda de energía excesiva,"
+  },
+  {
+   "start": 16.56,
+   "end": 21.6,
+   "text": "por lo cual estamos sobre explotando a nuestro planeta y no permitimos que tenga el tiempo"
+  },
+  {
+   "start": 21.6,
+   "end": 26.1,
+   "text": "suficiente para que se reúne. Por mucho tiempo, las energías renovables se habían"
+  },
+  {
+   "start": 26.1,
+   "end": 30.74,
+   "text": "rezagado debido a la poca implementación de estas, pero hoy en día son buenas alternativas"
+  },
+  {
+   "start": 30.74,
+   "end": 35.62,
+   "text": "para el uso en proyectos innovadores. El tratar de ayudar a nuestro planeta comienza desde el grano"
+  },
+  {
+   "start": 35.62,
+   "end": 41.1,
+   "text": "de arena más pequeña. Tomemos un ejemplo simple, el alumbrado de las paradas de transporte actual."
+  },
+  {
+   "start": 41.1,
+   "end": 46.54,
+   "text": "Para empezar, ¿por qué no todas las paradas cuentan como una buena iluminación? Y además,"
+  },
+  {
+   "start": 46.54,
+   "end": 51.78,
+   "text": "dicho iluminación proviene de energías renovables, el uso de la tecnología puede ayudar a"
+  },
+  {
+   "start": 51.78,
+   "end": 55.98,
+   "text": "resolver la problemática con iluminación de alta capacidad como son las lámparas LED,"
+  },
+  {
+   "start": 55.98,
+   "end": 61.26,
+   "text": "las cuales permiten la iluminación de amplias áreas sin la necesidad de un alto consumo energético."
+  },
+  {
+   "start": 61.26,
+   "end": 66.54,
+   "text": "El gran problema es ¿cómo alimentar dichas lámparas con energías renovables y sustentar"
+  },
+  {
+   "start": 66.54,
+   "end": 71.66,
+   "text": "la inversión económicamente? El uso de paneles dolares es una buena alternativa para la"
+  },
+  {
+   "start": 71.66,
+   "end": 76.46,
+   "text": "alimentación de dichas lámparas. Otro problema es la incertidumbre de no saber si tu transporte"
+  },
+  {
+   "start": 76.46,
+   "end": 80.82,
+   "text": "está en camino o ya pasó. Las paradas del transporte público pueden aportar"
+  },
+  {
+   "start": 80.82,
+   "end": 84.38,
+   "text": "algunas otras características que las hacen más atrayentes a los usuarios."
+  },
+  {
+   "start": 84.38,
+   "end": 88.7,
+   "text": "Pan tallas que informen a las personas si el transporte público está cercano a la parada,"
+  },
+  {
+   "start": 88.7,
+   "end": 92.66,
+   "text": "además de informar detalles de la ruta de procedencia del transporte,"
+  },
+  {
+   "start": 92.66,
+   "end": 98.38,
+   "text": "es de gran utilidad para las personas. El uso de dispositivos GPS es una gran opción para"
+  },
+  {
+   "start": 98.38,
+   "end": 102.06,
+   "text": "tratar esta problemática, sin embargo representa un costo elevado."
+  },
+  {
+   "start": 102.06,
+   "end": 107.42,
+   "text": "Es posible crear una aplicación que use APIs de GPS en el celular del conductor para"
+  },
+  {
+   "start": 107.42,
+   "end": 113.18,
+   "text": "obtener información de la posición actual. La aplicación resultante, además de ofrecer"
+  },
+  {
+   "start": 113.18,
+   "end": 118.26,
+   "text": "la característica anteriormente propuesta, puede ofrecer servicios de atención a clientes para"
+  },
+  {
+   "start": 118.26,
+   "end": 121.54,
+   "text": "reportar averías tanto en transportes como en paradas."
+  },
+  {
+   "start": 121.54,
+   "end": 126.86,
+   "text": "Muchas veces a lo largo del día nuestros celulares se quedan sin energía y debemos"
+  },
+  {
+   "start": 126.86,
+   "end": 131.34,
+   "text": "recargarlos. El uso de pices mecánicos que generen energía puede ayudar a la carga de"
+  },
+  {
+   "start": 131.34,
+   "end": 137.34,
+   "text": "celulares de una manera amigable al mediante. Otro valor agregado son las máquinas para"
+  },
+  {
+   "start": 137.34,
+   "end": 142.62,
+   "text": "abolir zapatos. Estas máquinas accionadas por un mecanismo de pedazo pueden limpiar zapatos"
+  },
+  {
+   "start": 142.62,
+   "end": 146.3,
+   "text": "para ocasiones cuando se requiere citas importantes."
+  },
+  {
+   "start": 146.3,
+   "end": 152.06,
+   "text": "Todas estas características no son tan económicas, pero es posible costearlas por medio de publicidad"
+  },
+  {
+   "start": 152.06,
+   "end": 156.5,
+   "text": "en pantallas modulares en donde se pueden agregar más módulos para crear anuncios"
+  },
+  {
+   "start": 156.5,
+   "end": 162.46,
+   "text": "más grandes. Dicha publicidad sería de gran utilidad para múltiples empresas,"
+  },
+  {
+   "start": 162.46,
+   "end": 167.86,
+   "text": "gracias al gran número de personas que día con día acuden a una parada de transportes."
+  },
+  {
+   "start": 167.86,
+   "end": 172.74,
+   "text": "La aplicación mencionada en puntos anteriores tiene la posibilidad de tener un módulo para"
+  },
+  {
+   "start": 172.74,
+   "end": 177.82,
+   "text": "atender a aquellas empresas que deseen promocionarse en las paradas, además de ofrecer paquetes"
+  },
+  {
+   "start": 177.82,
+   "end": 180.98,
+   "text": "promocionales y de esta manera obtener más clientes."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 181.0
+}

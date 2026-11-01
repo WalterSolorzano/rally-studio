@@ -1,0 +1,132 @@
+{
+ "video_id": "6z7eDNLuQXc",
+ "url": "https://youtu.be/6z7eDNLuQXc",
+ "year": 2024,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "AYLLU",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "AYLLU",
+   "challenge": "08 - REDUCCIÓN DE DESPERDICIOS ALIMENTARIOS"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:27:51+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Cada año, toneladas de alimentos terminan en la basura mientras millones de personas pasan hambre. Pero esto puede cambiar. El grupo AYJU presenta Shed de Sabores, una aplicación que conecta al mundo con un plato de soluciones. Shed de Sabores comunica supermercados y restaurantes con bancos de alimentos y comunidades locales para reducir el desperdicio de comida. Nuestro objetivo es generar una economía circular que beneficia el ambiente, la economía y la sociedad. Dona productos en un solo minuto con nuestra aplicación que optimiza al máximo el tiempo de distribución. Además, Shed de Sabores también aprovecha las obras de comida de supermercados y restaurantes adheridos para la preparación de comida para mascotas, dando una segunda vida a lo que de otra manera se perdería. Pero eso no es todo. Los alimentos perecederos que aún son comestibles se transforman en deliciosos dulces o salsas que serán vendidos para ayudar a financiar toda la operación. Y para que todos puedan sumarse, en nuestra página web compartimos recetas para que aproveches esos alimentos que tienes en casa antes de que se echen a perder. ¿Y qué pasa si los alimentos ya no son comestibles? ¿Son redirigidos para ser transformados en abono para la agricultura o hasta incluso generar energía llenoable a través del avión más? Shed de Sabores cuenta con una inteligencia artificial que optimiza el proceso armando paquetes y asegurando que en cada donación se entregan combos nutritivos que curan la mayoría de las necesidades alimentarias. A nivel mundial, un percio de los alimentos producidos se desperdicia. El objetivo de Shed de Sabores es apoyar a las personas de tu comunidad gestionando y redistribuyendo estos alimentos de manera deficiente. Sin embargo, para lograr un verdadero impacto necesitamos de tu participación activa. Solo juntos podemos construir una cadena alimentaria más justa y sostenible. Shed de Sabores. Conecta el mundo con un plato de soluciones.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 6.0,
+   "text": "Cada año, toneladas de alimentos terminan en la basura mientras millones de personas pasan hambre."
+  },
+  {
+   "start": 6.0,
+   "end": 8.0,
+   "text": "Pero esto puede cambiar."
+  },
+  {
+   "start": 8.0,
+   "end": 15.0,
+   "text": "El grupo AYJU presenta Shed de Sabores, una aplicación que conecta al mundo con un plato de soluciones."
+  },
+  {
+   "start": 15.0,
+   "end": 23.0,
+   "text": "Shed de Sabores comunica supermercados y restaurantes con bancos de alimentos y comunidades locales para reducir el desperdicio de comida."
+  },
+  {
+   "start": 23.0,
+   "end": 30.0,
+   "text": "Nuestro objetivo es generar una economía circular que beneficia el ambiente, la economía y la sociedad."
+  },
+  {
+   "start": 30.0,
+   "end": 36.0,
+   "text": "Dona productos en un solo minuto con nuestra aplicación que optimiza al máximo el tiempo de distribución."
+  },
+  {
+   "start": 36.0,
+   "end": 43.0,
+   "text": "Además, Shed de Sabores también aprovecha las obras de comida de supermercados y restaurantes adheridos"
+  },
+  {
+   "start": 43.0,
+   "end": 49.0,
+   "text": "para la preparación de comida para mascotas, dando una segunda vida a lo que de otra manera se perdería."
+  },
+  {
+   "start": 49.0,
+   "end": 56.0,
+   "text": "Pero eso no es todo. Los alimentos perecederos que aún son comestibles se transforman en deliciosos dulces o salsas"
+  },
+  {
+   "start": 56.0,
+   "end": 60.0,
+   "text": "que serán vendidos para ayudar a financiar toda la operación."
+  },
+  {
+   "start": 60.0,
+   "end": 67.0,
+   "text": "Y para que todos puedan sumarse, en nuestra página web compartimos recetas para que aproveches esos alimentos que tienes en casa"
+  },
+  {
+   "start": 67.0,
+   "end": 69.0,
+   "text": "antes de que se echen a perder."
+  },
+  {
+   "start": 69.0,
+   "end": 72.0,
+   "text": "¿Y qué pasa si los alimentos ya no son comestibles?"
+  },
+  {
+   "start": 72.0,
+   "end": 79.0,
+   "text": "¿Son redirigidos para ser transformados en abono para la agricultura o hasta incluso generar energía llenoable a través del avión más?"
+  },
+  {
+   "start": 79.0,
+   "end": 86.0,
+   "text": "Shed de Sabores cuenta con una inteligencia artificial que optimiza el proceso armando paquetes y asegurando que en cada donación"
+  },
+  {
+   "start": 86.0,
+   "end": 91.0,
+   "text": "se entregan combos nutritivos que curan la mayoría de las necesidades alimentarias."
+  },
+  {
+   "start": 91.0,
+   "end": 96.0,
+   "text": "A nivel mundial, un percio de los alimentos producidos se desperdicia."
+  },
+  {
+   "start": 96.0,
+   "end": 104.0,
+   "text": "El objetivo de Shed de Sabores es apoyar a las personas de tu comunidad gestionando y redistribuyendo estos alimentos de manera deficiente."
+  },
+  {
+   "start": 104.0,
+   "end": 110.0,
+   "text": "Sin embargo, para lograr un verdadero impacto necesitamos de tu participación activa."
+  },
+  {
+   "start": 110.0,
+   "end": 115.0,
+   "text": "Solo juntos podemos construir una cadena alimentaria más justa y sostenible."
+  },
+  {
+   "start": 115.0,
+   "end": 119.0,
+   "text": "Shed de Sabores. Conecta el mundo con un plato de soluciones."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.8
+}

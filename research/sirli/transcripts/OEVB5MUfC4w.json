@@ -1,0 +1,94 @@
+{
+ "video_id": "OEVB5MUfC4w",
+ "url": "https://www.youtube.com/watch?v=OEVB5MUfC4w",
+ "year": 2021,
+ "collection": "nacional",
+ "country": "COLOMBIA",
+ "team": "INSPIRA EJE",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "INSPIRA EJE",
+   "challenge": "03 - AGUA PARA SOÑAR"
+  },
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "INSPIRA EJE",
+   "challenge": "03 - AGUA PARA SOÑAR"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:21:29+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Sabías que hay poblaciones que se encuentran alejadas de los centros urbanos que no cuentan con agua potable? Sus comunidades presentan problemas de salud debido a que deben consumir alimentos en condiciones de mínima saludidad. Por esto el grupo InspiraEje presenta OxiPlant, sistema de oxigenación a base de plantas acuáticas y filtro naturales que se encargan de potabilizar el agua. La recolección del agua lluvia se realiza mediante canales que conducen el líquido hacia el estanque de vida, plantas acuáticas que pulifican y bajo ellas varias capas de base de piedra, gravilla, arena y carbón se encargan del filtrado y finalizan con un proceso de oxigenación por medio de aspas que hacen circular el agua. El nivel del agua se podrá visualizar mediante un simáforo que informa en tiempo real la disponibilidad del agua, ubicado en un punto estratégico de la comunidad. Capacitaciones y una cartilla informativa de respaldo explicará el proceso a la comunidad para que puedan realizar el mantenimiento del sistema OxiPlant y de esta forma sea sostenible en el tiempo. Nuestro sistema OxiPlant es sostenible, económico, viable, con la ayuda de capitales gubernaventales y ONGS se puede prohíber. Agua potable recogida de la lluvia a comunidades apartadas. Con OxiPlant la vida fluye.",
+ "segments": [
+  {
+   "start": 1.46,
+   "end": 8.46,
+   "text": "¿Sabías que hay poblaciones que se encuentran alejadas de los centros urbanos que no cuentan con agua potable?"
+  },
+  {
+   "start": 9.46,
+   "end": 18.46,
+   "text": "Sus comunidades presentan problemas de salud debido a que deben consumir alimentos en condiciones de mínima saludidad."
+  },
+  {
+   "start": 19.46,
+   "end": 24.46,
+   "text": "Por esto el grupo InspiraEje presenta OxiPlant,"
+  },
+  {
+   "start": 24.46,
+   "end": 32.46,
+   "text": "sistema de oxigenación a base de plantas acuáticas y filtro naturales que se encargan de potabilizar el agua."
+  },
+  {
+   "start": 33.46,
+   "end": 39.46,
+   "text": "La recolección del agua lluvia se realiza mediante canales que conducen el líquido hacia el estanque de vida,"
+  },
+  {
+   "start": 40.46,
+   "end": 45.46,
+   "text": "plantas acuáticas que pulifican y bajo ellas varias capas de base de piedra,"
+  },
+  {
+   "start": 45.46,
+   "end": 57.46,
+   "text": "gravilla, arena y carbón se encargan del filtrado y finalizan con un proceso de oxigenación por medio de aspas que hacen circular el agua."
+  },
+  {
+   "start": 58.46,
+   "end": 65.46,
+   "text": "El nivel del agua se podrá visualizar mediante un simáforo que informa en tiempo real la disponibilidad del agua,"
+  },
+  {
+   "start": 66.46,
+   "end": 69.46,
+   "text": "ubicado en un punto estratégico de la comunidad."
+  },
+  {
+   "start": 69.46,
+   "end": 84.46,
+   "text": "Capacitaciones y una cartilla informativa de respaldo explicará el proceso a la comunidad para que puedan realizar el mantenimiento del sistema OxiPlant y de esta forma sea sostenible en el tiempo."
+  },
+  {
+   "start": 85.46,
+   "end": 94.46,
+   "text": "Nuestro sistema OxiPlant es sostenible, económico, viable, con la ayuda de capitales gubernaventales y ONGS se puede prohíber."
+  },
+  {
+   "start": 94.46,
+   "end": 104.46,
+   "text": "Agua potable recogida de la lluvia a comunidades apartadas. Con OxiPlant la vida fluye."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 112.6
+}

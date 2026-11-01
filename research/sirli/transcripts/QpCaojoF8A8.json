@@ -1,0 +1,122 @@
+{
+ "video_id": "QpCaojoF8A8",
+ "url": "https://youtu.be/QpCaojoF8A8",
+ "year": 2025,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "PICO MOGOTÓN",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "PICO MOGOTÓN",
+   "challenge": "04 - SISTEMA DE ALERTA TEMPRANA"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:50:29+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Cada año los incendios en comunidades rurales arrasan miles de hectáreas, destruyen hogares y ponen en riesgo las vidas humanas. Las alertas llegan tarde, las comunidades no tienen información y las pérdidas son irreparables. Y si pudiéramos anticiparnos antes de que el fuego se propague, somos el equipo Picomogoto, un grupo de jóvenes micaragüentes comprometidos con la tecnología al servicio de la comunidad. El propósito de nuestro equipo es salvar la vida y preservar la naturaleza a través de la tecnología y la información oportuna. Nuestra propuesta de solución es el sistema Mogocen sobre la alerta temprana contra incendios el cual está compuesto por noos consensores multifuncionales, capaces de detectar temperaturas, gases y humedad alimentado por energía solar. Estos dispositivos se comunican entre sí por radio frecuencia y envían los datos a un servidor central mediante una tarjeta sin para posteriormente notificar a las familias y entidades de gestiones de riesgo por medio de una aplicación virtual. Además, es una solución de bajo costo y alto impacto, ya que cada dispositivo tiene un costo estimado de 110 dólares, mientras que la instalación completa del sistema interconectado para una comunidad rural puede desarrollarse con una inversión aproximada de 1200 dólares. Con este sistema, las comunidades podrán actuar antes de que ocurre una tragedia. Reducimos las pérdidas humanas, protegemos la flor y la fauna, disminuye la emisión de gases de peque invernadero y fortalecemos la resiliencia ante desastres. En Pico Mogotón creemos que anticiparnos es al Barbidas, unimos ciencia, tecnología y comunidad para construir un futuro más seguro.",
+ "segments": [
+  {
+   "start": 4.75,
+   "end": 10.87,
+   "text": "Cada año los incendios en comunidades rurales arrasan miles de hectáreas, destruyen hogares"
+  },
+  {
+   "start": 10.87,
+   "end": 16.95,
+   "text": "y ponen en riesgo las vidas humanas. Las alertas llegan tarde, las comunidades no tienen información"
+  },
+  {
+   "start": 16.95,
+   "end": 23.03,
+   "text": "y las pérdidas son irreparables. Y si pudiéramos anticiparnos antes de que el fuego se propague,"
+  },
+  {
+   "start": 23.03,
+   "end": 27.31,
+   "text": "somos el equipo Picomogoto, un grupo de jóvenes micaragüentes comprometidos con la"
+  },
+  {
+   "start": 27.31,
+   "end": 31.79,
+   "text": "tecnología al servicio de la comunidad. El propósito de nuestro equipo es salvar"
+  },
+  {
+   "start": 31.79,
+   "end": 36.63,
+   "text": "la vida y preservar la naturaleza a través de la tecnología y la información oportuna."
+  },
+  {
+   "start": 36.63,
+   "end": 41.95,
+   "text": "Nuestra propuesta de solución es el sistema Mogocen sobre la alerta temprana contra incendios"
+  },
+  {
+   "start": 41.95,
+   "end": 47.87,
+   "text": "el cual está compuesto por noos consensores multifuncionales, capaces de detectar temperaturas,"
+  },
+  {
+   "start": 47.87,
+   "end": 54.43,
+   "text": "gases y humedad alimentado por energía solar. Estos dispositivos se comunican entre sí"
+  },
+  {
+   "start": 54.43,
+   "end": 59.23,
+   "text": "por radio frecuencia y envían los datos a un servidor central mediante una tarjeta"
+  },
+  {
+   "start": 59.23,
+   "end": 64.55,
+   "text": "sin para posteriormente notificar a las familias y entidades de gestiones de riesgo por medio"
+  },
+  {
+   "start": 64.55,
+   "end": 70.03,
+   "text": "de una aplicación virtual. Además, es una solución de bajo costo y alto impacto,"
+  },
+  {
+   "start": 70.03,
+   "end": 75.59,
+   "text": "ya que cada dispositivo tiene un costo estimado de 110 dólares, mientras que la instalación"
+  },
+  {
+   "start": 75.59,
+   "end": 80.47,
+   "text": "completa del sistema interconectado para una comunidad rural puede desarrollarse"
+  },
+  {
+   "start": 80.47,
+   "end": 87.03,
+   "text": "con una inversión aproximada de 1200 dólares. Con este sistema, las comunidades podrán"
+  },
+  {
+   "start": 87.03,
+   "end": 92.99,
+   "text": "actuar antes de que ocurre una tragedia. Reducimos las pérdidas humanas, protegemos la flor y la fauna,"
+  },
+  {
+   "start": 92.99,
+   "end": 98.75,
+   "text": "disminuye la emisión de gases de peque invernadero y fortalecemos la resiliencia ante desastres."
+  },
+  {
+   "start": 100.27,
+   "end": 104.79,
+   "text": "En Pico Mogotón creemos que anticiparnos es al Barbidas, unimos ciencia,"
+  },
+  {
+   "start": 104.79,
+   "end": 108.63,
+   "text": "tecnología y comunidad para construir un futuro más seguro."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 109.3
+}

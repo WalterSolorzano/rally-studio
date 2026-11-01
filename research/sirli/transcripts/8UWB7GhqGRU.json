@@ -1,0 +1,157 @@
+{
+ "video_id": "8UWB7GhqGRU",
+ "url": "https://youtu.be/8UWB7GhqGRU?si=Y7ZQB2eXFOB49ArX",
+ "year": 2024,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "NICAFORCE",
+ "place_label": "TERCER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "TERCER LUGAR",
+   "team": "NICAFORCE",
+   "challenge": "05 - EVACUACIÓN"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:10:20+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "América Latina, debido a su posición geográfica, esta propensa ha sido afectada por sismo de alta intensidad, lo que podría resultar en incendios. Como solución en la problemática presentada en el desafío 5 del Rally Latinoamericano de Innovación 2024, se plantea C. Un sistema de evacuación inteligente, integral e inclusivo, pasado en inteligencia artificial, el cual está diseñado para evacuar a las personas de manera eficiente, adaptándose a la situación de cada país, usuario e instituciones, inclusive sin conexión a Internet, sus tecnología, integran. Una aplicación móvil que alertará al usuario en situación de riesgo cuando se encuentra en vía pública, indicándole la zona segura más cercana, almacenando su última ubicación. Si el usuario se encuentra dentro de una institución, C. integra una red de cámaras con reconocimiento facial instaladas en el perímetro de las instituciones cuales identifican a las personas ubicadas en zonas de riesgo. C. cuenta también con un sistema de alertas sonoras personalizadas según la zona donde se encuentran los usuarios y un sistema de iluminación LED inteligentes instaladas estratégicamente, asistiendo a personas con discapacidad visual y auditiva, para indicarles la ruta de evacuación más efectiva en tiempo real. C. integra además con una aplicación móvil que le indica a los usuarios la ruta de evacuación adecuada en tiempo real, de acuerdo a su ubicación dentro de la empresa. Datole al usuario, las empresas y el gobierno de cada país un conjunto de posibilidades integradas en un solo sistema para evacuaciones más seguras y eficientes de su población, implementando las tecnologías actuales como sistema de planeles solares para alimentación energética, teniendo en cuenta el bajo costo de inversión que es de 5.805 dólares para las empresas que adquieren esta solución era tuite para el usuario general que descargase la aplicación. Ningún costo justifica perder una vida.",
+ "segments": [
+  {
+   "start": 0.05,
+   "end": 6.05,
+   "text": "América Latina, debido a su posición geográfica, esta propensa ha sido afectada por sismo de alta intensidad,"
+  },
+  {
+   "start": 6.05,
+   "end": 8.05,
+   "text": "lo que podría resultar en incendios."
+  },
+  {
+   "start": 8.05,
+   "end": 15.05,
+   "text": "Como solución en la problemática presentada en el desafío 5 del Rally Latinoamericano de Innovación 2024, se plantea C."
+  },
+  {
+   "start": 15.05,
+   "end": 20.05,
+   "text": "Un sistema de evacuación inteligente, integral e inclusivo, pasado en inteligencia artificial,"
+  },
+  {
+   "start": 20.05,
+   "end": 24.05,
+   "text": "el cual está diseñado para evacuar a las personas de manera eficiente,"
+  },
+  {
+   "start": 24.05,
+   "end": 28.05,
+   "text": "adaptándose a la situación de cada país, usuario e instituciones,"
+  },
+  {
+   "start": 28.05,
+   "end": 31.05,
+   "text": "inclusive sin conexión a Internet, sus tecnología, integran."
+  },
+  {
+   "start": 31.05,
+   "end": 35.05,
+   "text": "Una aplicación móvil que alertará al usuario en situación de riesgo"
+  },
+  {
+   "start": 35.05,
+   "end": 41.05,
+   "text": "cuando se encuentra en vía pública, indicándole la zona segura más cercana, almacenando su última ubicación."
+  },
+  {
+   "start": 41.05,
+   "end": 44.05,
+   "text": "Si el usuario se encuentra dentro de una institución,"
+  },
+  {
+   "start": 44.05,
+   "end": 50.05,
+   "text": "C. integra una red de cámaras con reconocimiento facial instaladas en el perímetro de las instituciones"
+  },
+  {
+   "start": 50.05,
+   "end": 54.05,
+   "text": "cuales identifican a las personas ubicadas en zonas de riesgo."
+  },
+  {
+   "start": 54.05,
+   "end": 60.05,
+   "text": "C. cuenta también con un sistema de alertas sonoras personalizadas según la zona donde se encuentran los usuarios"
+  },
+  {
+   "start": 60.05,
+   "end": 65.05,
+   "text": "y un sistema de iluminación LED inteligentes instaladas estratégicamente,"
+  },
+  {
+   "start": 65.05,
+   "end": 68.05,
+   "text": "asistiendo a personas con discapacidad visual y auditiva,"
+  },
+  {
+   "start": 68.05,
+   "end": 73.05,
+   "text": "para indicarles la ruta de evacuación más efectiva en tiempo real."
+  },
+  {
+   "start": 73.05,
+   "end": 77.05,
+   "text": "C. integra además con una aplicación móvil que le indica a los usuarios"
+  },
+  {
+   "start": 77.05,
+   "end": 82.05,
+   "text": "la ruta de evacuación adecuada en tiempo real, de acuerdo a su ubicación dentro de la empresa."
+  },
+  {
+   "start": 82.05,
+   "end": 87.05,
+   "text": "Datole al usuario, las empresas y el gobierno de cada país"
+  },
+  {
+   "start": 87.05,
+   "end": 92.05,
+   "text": "un conjunto de posibilidades integradas en un solo sistema para evacuaciones más seguras"
+  },
+  {
+   "start": 92.05,
+   "end": 96.05,
+   "text": "y eficientes de su población, implementando las tecnologías actuales"
+  },
+  {
+   "start": 96.05,
+   "end": 99.05,
+   "text": "como sistema de planeles solares para alimentación energética,"
+  },
+  {
+   "start": 99.05,
+   "end": 105.05,
+   "text": "teniendo en cuenta el bajo costo de inversión que es de 5.805 dólares"
+  },
+  {
+   "start": 105.05,
+   "end": 108.05,
+   "text": "para las empresas que adquieren esta solución"
+  },
+  {
+   "start": 108.05,
+   "end": 113.05,
+   "text": "era tuite para el usuario general que descargase la aplicación."
+  },
+  {
+   "start": 113.05,
+   "end": 116.05,
+   "text": "Ningún costo justifica perder una vida."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.6
+}

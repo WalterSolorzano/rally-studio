@@ -1,0 +1,132 @@
+{
+ "video_id": "qDfrnc6slNU",
+ "url": "https://youtu.be/qDfrnc6slNU",
+ "year": 2021,
+ "collection": "nacional",
+ "country": "ECUADOR",
+ "team": "ICTE UPS UIO",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "ICTE UPS UIO",
+   "challenge": "06 - SOSTENIBILIDAD AMBIENTAL ORIENTADA AL APROVECHAMIENTO DE RESIDUOS PLÁSTICOS EN FRANJAS COSTERAS"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:21:34+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Sabes tú que el 85% de los eches recolectados en las playas del ecuador corresponden a productos plásticos? En la calidad existe un abuso en el uso de embases desechables. Estas embases desechables no reciben un tratamiento adecuado en riesgo de ser desechados, generando una amenaza a la fauna marina en las playas del ecuador. Productos plásticos tienen que acumularse en las zonas costeras, específicamente en el mar y sus alrededores. 30% de contaminación por residuos plásticos es generada por nosotros como consumidores y por los turistas que visitan las playas. El otro 70% es generado por las empresas que desechan sus residuos en afluentes que terminan en el mar. Nuestro fiberblock constará de una trituradora en donde se colocará la materia prima, en este caso el plástico, y un extructor donde ingresará el plástico triturado para transformarlo en filamento. La trituradora está dividida en dos partes, una en donde solo entrará en material PET que se usará en la elaboración del filamento y la segunda donde ingresará cualquier tipo de plástico para triturarlo y usarlo en la fabricación de bloques de construcción. En el ecuador hay 50.000 pescadores, los cuales deben cambiar sus redes alrededor de un año de uso, generando más desechos. Nuestra propuesta consiste en hacer redes con fibras de plástico extraídas de botellas PET recolectadas de las franjas costeras, y cuando el tiempo de vida útil de las redes termina se podrán usar para la elaboración de bloques, junto con otro tipo de plásticos. El valor de comercialización de cada rollo es de 6,38. Una red de pescar tiene valor en el mercado de 60 dólares, con nuestra propuesta de producto su elaboración tendría un valor de 35 dólares. Eso quiere decir que nuestra propuesta es completamente rentable y replicable en otras zonas costeras de la Cinometria.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 7.0,
+   "text": "¿Sabes tú que el 85% de los eches recolectados en las playas del ecuador corresponden a productos plásticos?"
+  },
+  {
+   "start": 7.0,
+   "end": 11.0,
+   "text": "En la calidad existe un abuso en el uso de embases desechables."
+  },
+  {
+   "start": 11.0,
+   "end": 16.0,
+   "text": "Estas embases desechables no reciben un tratamiento adecuado en riesgo de ser desechados,"
+  },
+  {
+   "start": 16.0,
+   "end": 21.0,
+   "text": "generando una amenaza a la fauna marina en las playas del ecuador."
+  },
+  {
+   "start": 21.0,
+   "end": 29.0,
+   "text": "Productos plásticos tienen que acumularse en las zonas costeras, específicamente en el mar y sus alrededores."
+  },
+  {
+   "start": 29.0,
+   "end": 37.5,
+   "text": "30% de contaminación por residuos plásticos es generada por nosotros como consumidores"
+  },
+  {
+   "start": 37.5,
+   "end": 39.5,
+   "text": "y por los turistas que visitan las playas."
+  },
+  {
+   "start": 39.5,
+   "end": 47.5,
+   "text": "El otro 70% es generado por las empresas que desechan sus residuos en afluentes que terminan en el mar."
+  },
+  {
+   "start": 47.5,
+   "end": 54.5,
+   "text": "Nuestro fiberblock constará de una trituradora en donde se colocará la materia prima, en este caso el plástico,"
+  },
+  {
+   "start": 54.5,
+   "end": 59.5,
+   "text": "y un extructor donde ingresará el plástico triturado para transformarlo en filamento."
+  },
+  {
+   "start": 59.5,
+   "end": 64.5,
+   "text": "La trituradora está dividida en dos partes, una en donde solo entrará en material PET"
+  },
+  {
+   "start": 64.5,
+   "end": 70.5,
+   "text": "que se usará en la elaboración del filamento y la segunda donde ingresará cualquier tipo de plástico"
+  },
+  {
+   "start": 70.5,
+   "end": 74.5,
+   "text": "para triturarlo y usarlo en la fabricación de bloques de construcción."
+  },
+  {
+   "start": 74.5,
+   "end": 82.5,
+   "text": "En el ecuador hay 50.000 pescadores, los cuales deben cambiar sus redes alrededor de un año de uso, generando más desechos."
+  },
+  {
+   "start": 82.5,
+   "end": 87.5,
+   "text": "Nuestra propuesta consiste en hacer redes con fibras de plástico extraídas de botellas PET"
+  },
+  {
+   "start": 87.5,
+   "end": 92.5,
+   "text": "recolectadas de las franjas costeras, y cuando el tiempo de vida útil de las redes termina"
+  },
+  {
+   "start": 92.5,
+   "end": 97.5,
+   "text": "se podrán usar para la elaboración de bloques, junto con otro tipo de plásticos."
+  },
+  {
+   "start": 97.5,
+   "end": 101.5,
+   "text": "El valor de comercialización de cada rollo es de 6,38."
+  },
+  {
+   "start": 101.5,
+   "end": 105.5,
+   "text": "Una red de pescar tiene valor en el mercado de 60 dólares,"
+  },
+  {
+   "start": 105.5,
+   "end": 110.5,
+   "text": "con nuestra propuesta de producto su elaboración tendría un valor de 35 dólares."
+  },
+  {
+   "start": 110.5,
+   "end": 120.28,
+   "text": "Eso quiere decir que nuestra propuesta es completamente rentable y replicable en otras zonas costeras de la Cinometria."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.7
+}

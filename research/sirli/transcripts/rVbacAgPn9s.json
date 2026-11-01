@@ -1,0 +1,82 @@
+{
+ "video_id": "rVbacAgPn9s",
+ "url": "https://youtu.be/rVbacAgPn9s",
+ "year": 2022,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "POWER GREEN",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "POWER GREEN",
+   "challenge": "08 - DESINFECTANTE PERSONAL BIODEGRADABLE"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:41:43+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Con el impacto de la pandemia COVID-19, aproximadamente 6.53 millones de latinoamericanos han fallecido, obligándonos así a tomar todas las medidas preventivas posibles para disminuir los contagios. Algunas de estas medidas son el uso de mascarillas desechables, antibacteriales, desinfectantes, entre otros. Eso ha sido muy beneficioso para la población de todo el mundo y para disminuir los casos que se registran cada día. Pero sin embargo ha tenido un impacto negativo hacia el medio ambiente, ya que se ha aumentado la producción de desechos inorgánicos y también así la contaminación en todo el mundo. Es por eso que hemos creado el proyecto Public Green, que consiste en realizar un producto antibacterial 100% natural con un envase vio degradable hecho de bamboo, ofreciendo así un producto que ayudará a que sigamos protegiéndonos del virus y que al mismo tiempo cuidemos nuestro planeta y así evitemos la contaminación con estos desechos. Nuestro producto es económico, vio degradable y con un envase reciclable que también es un desecho orgánico. Protejamos nuestra salud y cuidemos nuestro medio ambiente.",
+ "segments": [
+  {
+   "start": 1.2,
+   "end": 10.0,
+   "text": "Con el impacto de la pandemia COVID-19, aproximadamente 6.53 millones de latinoamericanos han fallecido,"
+  },
+  {
+   "start": 10.0,
+   "end": 17.2,
+   "text": "obligándonos así a tomar todas las medidas preventivas posibles para disminuir los contagios."
+  },
+  {
+   "start": 17.2,
+   "end": 27.2,
+   "text": "Algunas de estas medidas son el uso de mascarillas desechables, antibacteriales, desinfectantes, entre otros."
+  },
+  {
+   "start": 28.2,
+   "end": 36.2,
+   "text": "Eso ha sido muy beneficioso para la población de todo el mundo y para disminuir los casos que se registran cada día."
+  },
+  {
+   "start": 36.2,
+   "end": 47.2,
+   "text": "Pero sin embargo ha tenido un impacto negativo hacia el medio ambiente, ya que se ha aumentado la producción de desechos inorgánicos"
+  },
+  {
+   "start": 47.2,
+   "end": 51.2,
+   "text": "y también así la contaminación en todo el mundo."
+  },
+  {
+   "start": 51.2,
+   "end": 60.2,
+   "text": "Es por eso que hemos creado el proyecto Public Green, que consiste en realizar un producto antibacterial 100% natural"
+  },
+  {
+   "start": 60.2,
+   "end": 69.2,
+   "text": "con un envase vio degradable hecho de bamboo, ofreciendo así un producto que ayudará a que sigamos protegiéndonos del virus"
+  },
+  {
+   "start": 69.2,
+   "end": 76.2,
+   "text": "y que al mismo tiempo cuidemos nuestro planeta y así evitemos la contaminación con estos desechos."
+  },
+  {
+   "start": 77.2,
+   "end": 86.2,
+   "text": "Nuestro producto es económico, vio degradable y con un envase reciclable que también es un desecho orgánico."
+  },
+  {
+   "start": 87.2,
+   "end": 92.2,
+   "text": "Protejamos nuestra salud y cuidemos nuestro medio ambiente."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 96.0
+}

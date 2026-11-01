@@ -1,0 +1,122 @@
+{
+ "video_id": "mtqCWvCLu0o",
+ "url": "https://youtu.be/mtqCWvCLu0o",
+ "year": 2025,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "SEMILLA TECNOLOGICA",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "SEMILLA TECNOLOGICA",
+   "challenge": "05 - HUERTOS VERTICALES"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:23:54+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En América Latina, las escases de agua y el limitado acceso a energía eléctrica representan dos de los principales obstáculos para la producción de alimentos en zonas rurales y ogril. A medida que crecen las ciudades y se reducen espacios disponibles para la agricultura, millones de familias enfrentan dificultades para producir sus propios alimentos de manera sostenible. Somos Semilla Tecnológica, un equipo mexicano del Tecnológico Nacional de México, campus purísima del rincón, comprometido con el desarrollo de soluciones sostenibles que transformen la vida en comunidad de rurales. Nuestra solución es un huerto vertical bioeléctrico, un sistema modular diseñado para zonas rurales que cultivan alimentos utilizando agua recuperada y genera su propia energía a través de una celda de combustible micro-viana. Esta tecnología aprovecha la actividad natural de las raíces y microorganismos del sustrato. Cada huerto se fabrica con materiales reciclados como PVC y botellas PET, tiene un costo de producción de 522 pesos mexicanos y un precio a la venta de 700 pesos mexicanos, alcanzando el punto de equilibrio con 66 unidades. Más que un sistema de cultivo es una herramienta de cambio que impulsa la autosuficiencia energética y alimentaria, reduce emisiones de dióxido de carbono y promueve prácticas sostenibles alineadas con la agenda 2030, especialmente con la ODS-2, 7, 11, 12 y 13. Cuando el espacio falta, la innovación florece.",
+ "segments": [
+  {
+   "start": 0.08,
+   "end": 5.08,
+   "text": "En América Latina, las escases de agua y el limitado acceso a energía eléctrica"
+  },
+  {
+   "start": 5.08,
+   "end": 10.08,
+   "text": "representan dos de los principales obstáculos para la producción de alimentos"
+  },
+  {
+   "start": 10.08,
+   "end": 14.08,
+   "text": "en zonas rurales y ogril. A medida que crecen las ciudades y se reducen"
+  },
+  {
+   "start": 14.08,
+   "end": 18.08,
+   "text": "espacios disponibles para la agricultura, millones de familias enfrentan"
+  },
+  {
+   "start": 18.08,
+   "end": 22.08,
+   "text": "dificultades para producir sus propios alimentos de manera sostenible."
+  },
+  {
+   "start": 22.08,
+   "end": 27.08,
+   "text": "Somos Semilla Tecnológica, un equipo mexicano del Tecnológico Nacional de México,"
+  },
+  {
+   "start": 27.08,
+   "end": 32.08,
+   "text": "campus purísima del rincón, comprometido con el desarrollo de soluciones"
+  },
+  {
+   "start": 32.08,
+   "end": 36.08,
+   "text": "sostenibles que transformen la vida en comunidad de rurales."
+  },
+  {
+   "start": 36.08,
+   "end": 41.08,
+   "text": "Nuestra solución es un huerto vertical bioeléctrico, un sistema modular diseñado"
+  },
+  {
+   "start": 41.08,
+   "end": 46.08,
+   "text": "para zonas rurales que cultivan alimentos utilizando agua recuperada"
+  },
+  {
+   "start": 46.08,
+   "end": 51.08,
+   "text": "y genera su propia energía a través de una celda de combustible micro-viana."
+  },
+  {
+   "start": 51.08,
+   "end": 55.08,
+   "text": "Esta tecnología aprovecha la actividad natural de las raíces"
+  },
+  {
+   "start": 55.08,
+   "end": 60.08,
+   "text": "y microorganismos del sustrato. Cada huerto se fabrica con materiales reciclados"
+  },
+  {
+   "start": 60.08,
+   "end": 67.08,
+   "text": "como PVC y botellas PET, tiene un costo de producción de 522 pesos mexicanos"
+  },
+  {
+   "start": 67.08,
+   "end": 73.08,
+   "text": "y un precio a la venta de 700 pesos mexicanos, alcanzando el punto de equilibrio"
+  },
+  {
+   "start": 73.08,
+   "end": 79.08,
+   "text": "con 66 unidades. Más que un sistema de cultivo es una herramienta de cambio"
+  },
+  {
+   "start": 79.08,
+   "end": 85.08,
+   "text": "que impulsa la autosuficiencia energética y alimentaria, reduce emisiones de dióxido de carbono"
+  },
+  {
+   "start": 85.08,
+   "end": 96.08,
+   "text": "y promueve prácticas sostenibles alineadas con la agenda 2030, especialmente con la ODS-2, 7, 11, 12 y 13."
+  },
+  {
+   "start": 96.08,
+   "end": 101.36,
+   "text": "Cuando el espacio falta, la innovación florece."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 103.5
+}

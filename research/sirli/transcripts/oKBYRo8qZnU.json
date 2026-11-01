@@ -1,0 +1,162 @@
+{
+ "video_id": "oKBYRo8qZnU",
+ "url": "https://youtu.be/oKBYRo8qZnU",
+ "year": 2021,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "AYNITEC",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "AYNITEC",
+   "challenge": "03 - AGUA PARA SOÑAR"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:42:21+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "El agua se ha considerado desde siempre como un derecho humano fundamental para la calidad de vida de las personas. ¿Sabidas que una de cada tres personas en el mundo no tiene acceso al agua potable? Según la Organización Panamericana de la Salud, 28 millones de personas carecen de una fuente de agua mejorada en América. En algunas comunidades, la única posibilidad de obtener agua es a través de la lluvia. Desde Initec proponemos INOT, un sistema basado en una superficie recolectora de dimensión ajustable según las características pluviales de la región y cantidad de personas a abastecer. El sistema está compuesto por una etapa de recolección conformadas por canaletas de materiales reciclados que conducen el agua hacia la etapa de filtración, donde se eliminan partículas, olores y sabores indeseados. Luego se potabiliza a través de dosificador automático de cloro y se almacena en un depósito flexible y estanco que evita el contacto del agua con la luz y el aire. Finalmente, se eleve el agua a un tanque para su posterior distribución en los centros correspondientes dentro de la comunidad. La energía eléctrica necesaria se obtiene a través de paneles solares u otras fuentes renovables según la región. El sistema está dotado de sensores de nivel de una estación meteorológica que adquieren información en tiempo real y una aplicación que calcula de forma precisa y muestra cuál es el nivel de las reservas de agua, consumos promedios, datos meteorológicos y estimaciones de reservas a largo plazo. Esta solución se complementa con sistema de agua no potabilizada en cada vivienda para su posterior utilización en los servicios básicos ya muy bien difundidos en la sociedad. INOT se realiza con materiales reciclables de fácil adquisición a nivel global, a bajo costo, disponiendo así de una fuente de agua potable y de calidad durante todo el año, impulsando el desarrollo de una población y favoreciendo el cuidado del ambiente. AI-NO-TEK, asumiendo compromiso social y sustentable.",
+ "segments": [
+  {
+   "start": 1.62,
+   "end": 6.64,
+   "text": "El agua se ha considerado desde siempre como un derecho humano fundamental para la calidad"
+  },
+  {
+   "start": 6.64,
+   "end": 10.72,
+   "text": "de vida de las personas. ¿Sabidas que una de cada tres personas en el mundo no tiene"
+  },
+  {
+   "start": 10.72,
+   "end": 16.84,
+   "text": "acceso al agua potable? Según la Organización Panamericana de la Salud, 28 millones de personas"
+  },
+  {
+   "start": 16.84,
+   "end": 21.04,
+   "text": "carecen de una fuente de agua mejorada en América. En algunas comunidades, la única"
+  },
+  {
+   "start": 21.04,
+   "end": 24.28,
+   "text": "posibilidad de obtener agua es a través de la lluvia."
+  },
+  {
+   "start": 24.28,
+   "end": 29.42,
+   "text": "Desde Initec proponemos INOT, un sistema basado en una superficie recolectora de"
+  },
+  {
+   "start": 29.42,
+   "end": 33.68,
+   "text": "dimensión ajustable según las características pluviales de la región y"
+  },
+  {
+   "start": 33.68,
+   "end": 38.4,
+   "text": "cantidad de personas a abastecer. El sistema está compuesto por una etapa de"
+  },
+  {
+   "start": 38.4,
+   "end": 43.02,
+   "text": "recolección conformadas por canaletas de materiales reciclados que conducen el"
+  },
+  {
+   "start": 43.02,
+   "end": 47.48,
+   "text": "agua hacia la etapa de filtración, donde se eliminan partículas, olores y"
+  },
+  {
+   "start": 47.48,
+   "end": 53.24,
+   "text": "sabores indeseados. Luego se potabiliza a través de dosificador automático de"
+  },
+  {
+   "start": 53.24,
+   "end": 57.0,
+   "text": "cloro y se almacena en un depósito flexible y estanco que evita el"
+  },
+  {
+   "start": 57.06,
+   "end": 61.94,
+   "text": "contacto del agua con la luz y el aire. Finalmente, se eleve el agua a un tanque"
+  },
+  {
+   "start": 61.94,
+   "end": 65.94,
+   "text": "para su posterior distribución en los centros correspondientes dentro de la"
+  },
+  {
+   "start": 65.94,
+   "end": 69.38,
+   "text": "comunidad. La energía eléctrica necesaria se obtiene a través de"
+  },
+  {
+   "start": 69.38,
+   "end": 73.42,
+   "text": "paneles solares u otras fuentes renovables según la región. El sistema"
+  },
+  {
+   "start": 73.42,
+   "end": 77.62,
+   "text": "está dotado de sensores de nivel de una estación meteorológica que adquieren"
+  },
+  {
+   "start": 77.62,
+   "end": 81.74,
+   "text": "información en tiempo real y una aplicación que calcula de forma"
+  },
+  {
+   "start": 81.74,
+   "end": 85.54,
+   "text": "precisa y muestra cuál es el nivel de las reservas de agua, consumos"
+  },
+  {
+   "start": 85.6,
+   "end": 89.88,
+   "text": "promedios, datos meteorológicos y estimaciones de reservas a largo plazo."
+  },
+  {
+   "start": 89.88,
+   "end": 94.68,
+   "text": "Esta solución se complementa con sistema de agua no potabilizada en cada vivienda"
+  },
+  {
+   "start": 94.68,
+   "end": 98.84,
+   "text": "para su posterior utilización en los servicios básicos ya muy bien"
+  },
+  {
+   "start": 98.84,
+   "end": 103.72,
+   "text": "difundidos en la sociedad. INOT se realiza con materiales reciclables de"
+  },
+  {
+   "start": 103.72,
+   "end": 108.08,
+   "text": "fácil adquisición a nivel global, a bajo costo, disponiendo así de una fuente"
+  },
+  {
+   "start": 108.08,
+   "end": 112.72,
+   "text": "de agua potable y de calidad durante todo el año, impulsando el desarrollo de"
+  },
+  {
+   "start": 112.72,
+   "end": 115.98,
+   "text": "una población y favoreciendo el cuidado del ambiente."
+  },
+  {
+   "start": 115.98,
+   "end": 119.58,
+   "text": "AI-NO-TEK, asumiendo compromiso social y sustentable."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.6
+}

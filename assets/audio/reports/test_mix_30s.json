@@ -1,0 +1,82 @@
+{
+  "out": "assets\\audio\\test_mix_30s.mp4",
+  "video": "assets\\audio\\test_source_30s.mp4",
+  "voice": "assets\\audio\\test_voice_30s.mp3",
+  "start": 0.0,
+  "dur": 30.0,
+  "music_db": -4.0,
+  "duck_db": 6.0,
+  "notes": [
+    "duracion del video 30.0 s: la cama se recorta al final del acto que corresponda",
+    "shotlist.csv no tiene planos todavia: se usan los SFX por defecto",
+    "musica bajada a -10.2 dB para dejar 14 dB bajo la voz (-20.2 LUFS)"
+  ],
+  "acts": [
+    {
+      "act": "I",
+      "from": 0.0,
+      "to": 27.0,
+      "cue": "cue_01_tension.mp3"
+    },
+    {
+      "act": "II",
+      "from": 27.0,
+      "to": 30.0,
+      "cue": "cue_02_drive.mp3"
+    }
+  ],
+  "voice_lufs": -20.2,
+  "music_bus_db": -10.2,
+  "ducking": {
+    "voice_present": true,
+    "speech_ratio": 0.858,
+    "segments": 9,
+    "voice_floor_db": -48.9,
+    "voice_peak_db": -10.6,
+    "gate_hi_db": -26.6
+  },
+  "premaster": {
+    "lufs_i": -20.2,
+    "lra": 2.3,
+    "true_peak_db": -5.7
+  },
+  "final": {
+    "lufs_i": -14.0,
+    "lra": 2.3,
+    "true_peak_db": -2.0
+  },
+  "loudness_ok": true,
+  "master_gain_db": 6.2,
+  "music_under_voice": {
+    "music_rms_under_voice_dbfs": -33.4,
+    "music_rms_in_pauses_dbfs": -28.6,
+    "duck_depth_db": 4.8,
+    "voice_rms_dbfs": -22.7,
+    "voice_minus_music_db": 10.6,
+    "speech_ratio": 0.91
+  },
+  "stems_lufs": {
+    "music_ducked": {
+      "lufs_i": -33.4,
+      "lra": 3.5,
+      "true_peak_db": -17.7
+    },
+    "voice": {
+      "lufs_i": -20.2,
+      "lra": 2.6,
+      "true_peak_db": -5.8
+    },
+    "sfx": {
+      "lufs_i": -28.8,
+      "lra": 16.8,
+      "true_peak_db": -14.3
+    }
+  },
+  "voice_minus_music_lufs": 13.2,
+  "master_ref": {
+    "voice_lufs": -14.0,
+    "music_under_voice_dbfs": -27.2,
+    "music_in_pauses_dbfs": -22.4,
+    "sfx_peak_dbfs": -8.1
+  }
+}

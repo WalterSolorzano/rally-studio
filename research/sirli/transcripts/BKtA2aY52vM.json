@@ -1,0 +1,137 @@
+{
+ "video_id": "BKtA2aY52vM",
+ "url": "https://youtu.be/BKtA2aY52vM?si=j6TrCxXERiLLuX7l",
+ "year": 2026,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "ELECTROPARTNERS",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "ELECTROPARTNERS",
+   "challenge": "09 - OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:48:06+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Tras un desastre natural de gran magnitud, las redes móviles y la luz colapsan en segundo. Millones de personas quedan aisladas e invisibles en la etapa crítica, mientras las brigadas de rescate avanzan a ciegas, sin saber dónde están las verdaderas emergencias. En una crisis, la falta de información mata tanto como el desastre mismo. Para responder al desafío 9, optimización y priorización de recursos y esfuerzos en la post-emergencia, creamos ReSilicon, un sistema táctico de comunicaciones de emergencia que no requiere internet, torres celulares ni telefonías satelital. Mediante una app móvil gratuita, transformamos los smartphones de la población en una red Viven Maya con Bluetooth y Wi-Fi, permitiendo que las alertas reboten de teléfono en teléfono hasta ponerse a salvo. Para llevar estos datos a kilómetros de distancia, nos acoplamos a radioenlaces en banda de 60 GHz. En el centro de mando, nuestro Dashboard Páctico, procesamos la información con algoritmos precisos para eliminar reportes duplicados, evaluando el índice táctico de prioridad según el riesgo vital y calcular las rutas de auxilio más rápida con el algoritmo ABC. Evitando caminos bloqueados. ReSilicon es una solución 100% digital, económicamente asequible y sin costos de espectro. Democratice el auxilio en sectores vulnerables, reduce el uso de combustibles en vehículos de socorro y no genera huella ecológica por obra civil. Porque en una emergencia, estar desconectado no significa estar solo. ReSilicon, conectando vidas, quiando el rescate. Somos el equipo electropalmos para radio en",
+ "segments": [
+  {
+   "start": 0.78,
+   "end": 6.42,
+   "text": "Tras un desastre natural de gran magnitud, las redes móviles y la luz colapsan en segundo."
+  },
+  {
+   "start": 6.42,
+   "end": 10.38,
+   "text": "Millones de personas quedan aisladas e invisibles en la etapa crítica,"
+  },
+  {
+   "start": 10.38,
+   "end": 13.82,
+   "text": "mientras las brigadas de rescate avanzan a ciegas,"
+  },
+  {
+   "start": 13.82,
+   "end": 16.7,
+   "text": "sin saber dónde están las verdaderas emergencias."
+  },
+  {
+   "start": 16.7,
+   "end": 21.78,
+   "text": "En una crisis, la falta de información mata tanto como el desastre mismo."
+  },
+  {
+   "start": 22.9,
+   "end": 25.06,
+   "text": "Para responder al desafío 9,"
+  },
+  {
+   "start": 25.06,
+   "end": 29.7,
+   "text": "optimización y priorización de recursos y esfuerzos en la post-emergencia,"
+  },
+  {
+   "start": 29.7,
+   "end": 35.54,
+   "text": "creamos ReSilicon, un sistema táctico de comunicaciones de emergencia que no requiere internet,"
+  },
+  {
+   "start": 35.54,
+   "end": 38.38,
+   "text": "torres celulares ni telefonías satelital."
+  },
+  {
+   "start": 38.38,
+   "end": 43.86,
+   "text": "Mediante una app móvil gratuita, transformamos los smartphones de la población en una red"
+  },
+  {
+   "start": 43.86,
+   "end": 50.1,
+   "text": "Viven Maya con Bluetooth y Wi-Fi, permitiendo que las alertas reboten de teléfono en teléfono"
+  },
+  {
+   "start": 50.1,
+   "end": 55.26,
+   "text": "hasta ponerse a salvo. Para llevar estos datos a kilómetros de distancia,"
+  },
+  {
+   "start": 55.26,
+   "end": 60.62,
+   "text": "nos acoplamos a radioenlaces en banda de 60 GHz. En el centro de mando,"
+  },
+  {
+   "start": 60.62,
+   "end": 66.7,
+   "text": "nuestro Dashboard Páctico, procesamos la información con algoritmos precisos para eliminar reportes"
+  },
+  {
+   "start": 66.7,
+   "end": 72.9,
+   "text": "duplicados, evaluando el índice táctico de prioridad según el riesgo vital y calcular las"
+  },
+  {
+   "start": 72.9,
+   "end": 76.74,
+   "text": "rutas de auxilio más rápida con el algoritmo ABC."
+  },
+  {
+   "start": 76.74,
+   "end": 78.86,
+   "text": "Evitando caminos bloqueados."
+  },
+  {
+   "start": 78.86,
+   "end": 86.54,
+   "text": "ReSilicon es una solución 100% digital, económicamente asequible y sin costos de espectro. Democratice"
+  },
+  {
+   "start": 86.54,
+   "end": 91.9,
+   "text": "el auxilio en sectores vulnerables, reduce el uso de combustibles en vehículos de socorro"
+  },
+  {
+   "start": 91.9,
+   "end": 96.38,
+   "text": "y no genera huella ecológica por obra civil."
+  },
+  {
+   "start": 96.38,
+   "end": 100.98,
+   "text": "Porque en una emergencia, estar desconectado no significa estar solo. ReSilicon,"
+  },
+  {
+   "start": 100.98,
+   "end": 105.46,
+   "text": "conectando vidas, quiando el rescate. Somos el equipo electropalmos para radio en"
+  }
+ ],
+ "has_info": false,
+ "duration_s": 107.4
+}

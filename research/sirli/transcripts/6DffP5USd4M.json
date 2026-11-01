@@ -1,0 +1,92 @@
+{
+ "video_id": "6DffP5USd4M",
+ "url": "https://youtu.be/6DffP5USd4M?si=AwfNwa0exzHoPWgT",
+ "year": 2025,
+ "collection": "sede",
+ "country": "COLOMBIA",
+ "team": "SEMILLERO SIA",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "SEMILLERO SIA",
+   "challenge": "05 - HUERTOS VERTICALES"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:13:26+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Hola, somos el equipo detrás de módulos verticales comunitarios en balcones de edificaciones, una propuesta que busca transformar los balcones de las ciudades en espacios vivos, sostenibles y productivos. Nuestra idea combina tecnología accesible, aprovechamiento del agua y lluvia y cultivos hidropónicos inteligentes para fortalecer la seguridad alimentaria urbana y la conexión comunitaria. Creemos que la innovación debe crecer junto con las personas, por eso diseñamos un sistema autosuficiente, bello y funcional que cualquier hogar puede tener. Cada balcón verde es una semilla de cambio hacia ciudades más saludables, resilientes y humanas. Imagina una ciudad que cultiva su propia comida en cada balcón, donde muros grises se transforman en jardines vivos, tecnología suave, hidroponía inteligente, luz lede, sensores de humedad y pH que cuidan cada planta. La lluvia cae, se recoge, se filtra y vuelve a alimentar el ciclo sin derroches. Avejas y mariposas regresan, la ciudad respira biodiversidad. Decinos que siembran, riegan y cosechan lechugas y hierbas, compartiendo sabor, salud y orgullo. Te día crece, de noche brilla, una ciudad más verde, bella y segura.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 5.8,
+   "text": "Hola, somos el equipo detrás de módulos verticales comunitarios en balcones de edificaciones,"
+  },
+  {
+   "start": 5.8,
+   "end": 10.8,
+   "text": "una propuesta que busca transformar los balcones de las ciudades en espacios vivos, sostenibles"
+  },
+  {
+   "start": 10.8,
+   "end": 16.48,
+   "text": "y productivos. Nuestra idea combina tecnología accesible, aprovechamiento del agua y lluvia"
+  },
+  {
+   "start": 16.48,
+   "end": 21.68,
+   "text": "y cultivos hidropónicos inteligentes para fortalecer la seguridad alimentaria urbana"
+  },
+  {
+   "start": 21.68,
+   "end": 26.38,
+   "text": "y la conexión comunitaria. Creemos que la innovación debe crecer junto"
+  },
+  {
+   "start": 26.38,
+   "end": 32.54,
+   "text": "con las personas, por eso diseñamos un sistema autosuficiente, bello y funcional que cualquier"
+  },
+  {
+   "start": 32.54,
+   "end": 38.1,
+   "text": "hogar puede tener. Cada balcón verde es una semilla de cambio hacia ciudades más saludables,"
+  },
+  {
+   "start": 38.1,
+   "end": 44.1,
+   "text": "resilientes y humanas. Imagina una ciudad que cultiva su propia comida en cada balcón,"
+  },
+  {
+   "start": 44.1,
+   "end": 51.82,
+   "text": "donde muros grises se transforman en jardines vivos, tecnología suave, hidroponía inteligente,"
+  },
+  {
+   "start": 51.82,
+   "end": 60.66,
+   "text": "luz lede, sensores de humedad y pH que cuidan cada planta. La lluvia cae, se recoge, se filtra"
+  },
+  {
+   "start": 60.66,
+   "end": 67.62,
+   "text": "y vuelve a alimentar el ciclo sin derroches. Avejas y mariposas regresan, la ciudad respira"
+  },
+  {
+   "start": 67.62,
+   "end": 73.74,
+   "text": "biodiversidad. Decinos que siembran, riegan y cosechan lechugas y hierbas, compartiendo"
+  },
+  {
+   "start": 73.74,
+   "end": 81.62,
+   "text": "sabor, salud y orgullo. Te día crece, de noche brilla, una ciudad más verde, bella y segura."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 82.1
+}

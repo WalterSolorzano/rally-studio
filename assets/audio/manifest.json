@@ -1,0 +1,161 @@
+{
+  "generated_by": "tools/make_audio_assets.py",
+  "sample_rate": 48000,
+  "license": "Original del proyecto (sintesis DSP). Sin samples de terceros. CC0-equivalente.",
+  "no_vocals": true,
+  "beds": {
+    "ambient.mp3": {
+      "dur_s": 300.0,
+      "bpm": 64,
+      "key": "Dm",
+      "input_i": -16.32,
+      "input_tp": -3.0,
+      "input_lra": 2.0,
+      "lufs_i": -20.2,
+      "lra": 2.0,
+      "true_peak_db": -6.9,
+      "sha256_12": "9d70c5f8c3ac",
+      "bytes": 7201196
+    },
+    "bed.mp3": {
+      "dur_s": 286.83,
+      "bpm": 123,
+      "key": "Am",
+      "input_i": -15.18,
+      "input_tp": -2.46,
+      "input_lra": 9.4,
+      "lufs_i": -16.2,
+      "lra": 8.3,
+      "true_peak_db": -3.6,
+      "sha256_12": "dacd558e6de7",
+      "bytes": 6885548
+    }
+  },
+  "cues": {
+    "cue_01_tension.mp3": {
+      "dur_s": 30.0,
+      "act": "I",
+      "mood": "tension",
+      "input_i": -17.72,
+      "input_tp": -4.0,
+      "input_lra": 2.6,
+      "lufs_i": -18.1,
+      "lra": 1.4,
+      "true_peak_db": -4.5,
+      "sha256_12": "ac75dad86be5",
+      "bytes": 721196
+    },
+    "cue_02_drive.mp3": {
+      "dur_s": 40.0,
+      "act": "II",
+      "mood": "drive",
+      "input_i": -15.58,
+      "input_tp": -4.0,
+      "input_lra": 1.6,
+      "lufs_i": -18.1,
+      "lra": 1.4,
+      "true_peak_db": -6.5,
+      "sha256_12": "ee01784c21a3",
+      "bytes": 961388
+    },
+    "cue_02b_confidence.mp3": {
+      "dur_s": 28.0,
+      "act": "III",
+      "mood": "confidence",
+      "derived_from": "cue_02_drive.mp3",
+      "input_i": -18.62,
+      "input_tp": -4.0,
+      "input_lra": 2.7,
+      "lufs_i": -18.2,
+      "lra": 2.4,
+      "true_peak_db": -3.6,
+      "sha256_12": "b8d97cef411a",
+      "bytes": 673388
+    },
+    "cue_03_resolve.mp3": {
+      "dur_s": 35.0,
+      "act": "IV",
+      "mood": "resolve",
+      "input_i": -13.48,
+      "input_tp": -4.0,
+      "input_lra": 3.0,
+      "lufs_i": -18.2,
+      "lra": 2.4,
+      "true_peak_db": -8.8,
+      "sha256_12": "2a8a902ff8c8",
+      "bytes": 841580
+    }
+  },
+  "sfx": {
+    "whoosh_acto.mp3": {
+      "dur_s": 1.3,
+      "desc": "transicion de acto",
+      "peak_db": -6.0,
+      "lufs_i": -22.4,
+      "lra": 0.0,
+      "true_peak_db": -6.3,
+      "sha256_12": "ef25dcc1fb5d",
+      "bytes": 32876
+    },
+    "click_ui.mp3": {
+      "dur_s": 0.09,
+      "desc": "clic de interfaz",
+      "peak_db": -8.0,
+      "lufs_i": -70.0,
+      "lra": 0.0,
+      "true_peak_db": -8.1,
+      "sha256_12": "3982b2a66211",
+      "bytes": 3500
+    },
+    "typing_loop.mp3": {
+      "dur_s": 3.0,
+      "desc": "tecleo 3 s loop",
+      "peak_db": -8.0,
+      "lufs_i": -30.9,
+      "lra": 20.0,
+      "true_peak_db": -8.1,
+      "sha256_12": "73f0dbad3088",
+      "bytes": 73196
+    },
+    "riser_3s.mp3": {
+      "dur_s": 3.0,
+      "desc": "riser 3 s",
+      "peak_db": -6.0,
+      "lufs_i": -22.8,
+      "lra": 20.0,
+      "true_peak_db": -6.8,
+      "sha256_12": "7fedbf4d8588",
+      "bytes": 73196
+    },
+    "impact_bass.mp3": {
+      "dur_s": 1.6,
+      "desc": "impacto grave",
+      "peak_db": -6.0,
+      "lufs_i": -19.1,
+      "lra": 0.0,
+      "true_peak_db": -5.3,
+      "sha256_12": "2edb25ae2426",
+      "bytes": 39788
+    },
+    "sub_drop.mp3": {
+      "dur_s": 2.0,
+      "desc": "caida de sub",
+      "peak_db": -6.0,
+      "lufs_i": -17.4,
+      "lra": 0.0,
+      "true_peak_db": -5.8,
+      "sha256_12": "a223531d4c06",
+      "bytes": 49580
+    },
+    "paper.mp3": {
+      "dur_s": 0.6,
+      "desc": "papel / documento",
+      "peak_db": -8.0,
+      "lufs_i": -26.3,
+      "lra": 0.0,
+      "true_peak_db": -8.1,
+      "sha256_12": "5f16fbc38215",
+      "bytes": 15596
+    }
+  }
+}

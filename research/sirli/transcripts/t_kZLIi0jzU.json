@@ -1,0 +1,162 @@
+{
+ "video_id": "t_kZLIi0jzU",
+ "url": "https://youtu.be/t_kZLIi0jzU",
+ "year": 2025,
+ "collection": "sede",
+ "country": "COLOMBIA",
+ "team": "INGENIERÍA EN ACCIÓN",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "INGENIERÍA EN ACCIÓN",
+   "challenge": "04 - SISTEMA DE ALERTA TEMPRANA"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:09:42+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Imagina por un momento que tu comunidad puede anticipar un incendio o una inondación. Te has preguntado qué diferencia haría recibir una alerta a tiempo. En América Latina cada año más de 25 millones de personas se ven afectadas por desastres naturales y más del 70% de las comunidades rurales carece del sistema de alerta temprana eficaces según la ONU y el BID. Los incendios forestales y las inundaciones se han incrementado un 35% en la última década dejando perdidas superiores a 20 mil millones de dólares anuales. Nosotros somos ingeniería en acción y creemos que la prevención salva vidas. Por eso presentamos Eco Alert, un sistema de alerta temprana modular y accesible diseñada especialmente para comunidades rurales y semiurbanas. Eco Alert combina sensores de bajo costo, energía solar y comunicación inalámbrica para detectar incendios e inundaciones en tiempo real. Cada no monitorea variables como temperatura, humo, nivel de agua y humedad del suelo enviando la información a una central comunitaria. Cuando se detecta una amenaza, el sistema activa alertas automáticas mediante sirenas, mensajes de texto o notificaciones de WhatsApp, avisando a tiempo para que las personas se pongan a salvo. Lo mejor es que no requiere conexión constante internet, funciona con energía renovable y puede ser operado por los mismos habitantes promoviendo la colaboración entre vecinos, autoridades y líderes locales. Así fortalecemos la resiliencia, protegemos el medio ambiente y reducimos pérdidas. Eco Alert contribuye directamente a los objetivos de desarrollo sostenible 11 y 13, creando comunidades más seguras y preparadas. Estudios del Banco Interamericano de Desarrollo demuestran que los sistemas de alerta temprana pueden reducir hasta en un 30% los daños materiales y salvar miles de vidas cada año. Eco Alert, tecnología comunitaria para anticipar, prevenir y proteger la vida.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 5.0,
+   "text": "Imagina por un momento que tu comunidad puede anticipar un incendio o una inondación."
+  },
+  {
+   "start": 5.0,
+   "end": 9.0,
+   "text": "Te has preguntado qué diferencia haría recibir una alerta a tiempo."
+  },
+  {
+   "start": 9.0,
+   "end": 15.0,
+   "text": "En América Latina cada año más de 25 millones de personas se ven afectadas por desastres naturales"
+  },
+  {
+   "start": 15.0,
+   "end": 20.0,
+   "text": "y más del 70% de las comunidades rurales carece del sistema de alerta temprana eficaces"
+  },
+  {
+   "start": 20.0,
+   "end": 22.0,
+   "text": "según la ONU y el BID."
+  },
+  {
+   "start": 22.0,
+   "end": 27.0,
+   "text": "Los incendios forestales y las inundaciones se han incrementado un 35% en la última década"
+  },
+  {
+   "start": 27.0,
+   "end": 31.0,
+   "text": "dejando perdidas superiores a 20 mil millones de dólares anuales."
+  },
+  {
+   "start": 31.0,
+   "end": 36.0,
+   "text": "Nosotros somos ingeniería en acción y creemos que la prevención salva vidas."
+  },
+  {
+   "start": 36.0,
+   "end": 41.0,
+   "text": "Por eso presentamos Eco Alert, un sistema de alerta temprana modular y accesible diseñada"
+  },
+  {
+   "start": 41.0,
+   "end": 44.0,
+   "text": "especialmente para comunidades rurales y semiurbanas."
+  },
+  {
+   "start": 44.0,
+   "end": 49.0,
+   "text": "Eco Alert combina sensores de bajo costo, energía solar y comunicación inalámbrica"
+  },
+  {
+   "start": 49.0,
+   "end": 52.0,
+   "text": "para detectar incendios e inundaciones en tiempo real."
+  },
+  {
+   "start": 52.0,
+   "end": 57.0,
+   "text": "Cada no monitorea variables como temperatura, humo, nivel de agua y humedad del suelo"
+  },
+  {
+   "start": 57.0,
+   "end": 61.0,
+   "text": "enviando la información a una central comunitaria."
+  },
+  {
+   "start": 61.0,
+   "end": 66.0,
+   "text": "Cuando se detecta una amenaza, el sistema activa alertas automáticas mediante sirenas,"
+  },
+  {
+   "start": 66.0,
+   "end": 69.0,
+   "text": "mensajes de texto o notificaciones de WhatsApp,"
+  },
+  {
+   "start": 69.0,
+   "end": 73.0,
+   "text": "avisando a tiempo para que las personas se pongan a salvo."
+  },
+  {
+   "start": 73.0,
+   "end": 76.0,
+   "text": "Lo mejor es que no requiere conexión constante internet,"
+  },
+  {
+   "start": 76.0,
+   "end": 81.0,
+   "text": "funciona con energía renovable y puede ser operado por los mismos habitantes"
+  },
+  {
+   "start": 81.0,
+   "end": 86.0,
+   "text": "promoviendo la colaboración entre vecinos, autoridades y líderes locales."
+  },
+  {
+   "start": 86.0,
+   "end": 91.0,
+   "text": "Así fortalecemos la resiliencia, protegemos el medio ambiente y reducimos pérdidas."
+  },
+  {
+   "start": 91.0,
+   "end": 97.0,
+   "text": "Eco Alert contribuye directamente a los objetivos de desarrollo sostenible 11 y 13,"
+  },
+  {
+   "start": 97.0,
+   "end": 100.0,
+   "text": "creando comunidades más seguras y preparadas."
+  },
+  {
+   "start": 100.0,
+   "end": 102.0,
+   "text": "Estudios del Banco Interamericano de Desarrollo"
+  },
+  {
+   "start": 102.0,
+   "end": 106.0,
+   "text": "demuestran que los sistemas de alerta temprana pueden reducir"
+  },
+  {
+   "start": 106.0,
+   "end": 111.0,
+   "text": "hasta en un 30% los daños materiales y salvar miles de vidas cada año."
+  },
+  {
+   "start": 111.0,
+   "end": 117.0,
+   "text": "Eco Alert, tecnología comunitaria para anticipar, prevenir y proteger la vida."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.5
+}

@@ -1,0 +1,112 @@
+{
+ "video_id": "86GbXHDLnK8",
+ "url": "https://youtu.be/86GbXHDLnK8",
+ "year": 2020,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "MANNSCHAFT WEISE",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2020,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "MANNSCHAFT WEISE",
+   "challenge": "06 - ¿SERÍA POSIBLE DESARROLLAR UN SISTEMA GUÍA PARA DÉBILES VISUALES O INVIDENTES QUE NO REQUIERA INTERNET?"
+  }
+ ],
+ "fetched_at": "2026-10-23T01:15:02+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Hola qué tal somos el equipo manchow's wiser como principal desafío encontramos que tan posible sería desarrollar un sistema guía para débiles visuales o invidentes pero que principalmente este no requiera internet bien nosotros creamos un dispositivo llamado right way en el que nos enfocamos a las dificultades con las que se lleva a encontrar todo este tipo de población vulnerable en la que nos queremos adaptar a su comodidad y estabilidad económica pero sobre todo a las nuevas tecnologías que nos acompañan en la actualidad nuestro sistema de acompañamiento se ha creado y pensado en un dispositivo versátil para personas no evidentes que les permita tener una mayor confianza a la hora de usarlo ya un precio totalmente accesible el dispositivo no solo es un audífonos sino también es una herramienta dinámica que puede orientar al usuario en su ubicación así mismo que pueda persuadirlo de algún objeto que obstruy a su camino a través de un sonido vibración o indicación previamente grabada esto antes configurado dependiendo de las dificultades del usuario y qué es lo que lo hace único es que está diseñado para no dañar el oído ya que tiene frecuencias de 30 a 60 decibeles que lo hacen más amigables es más fácil de portar y cómodo así mismo está integrado un módulo que ya tiene previamente cargado mapas croquis frutas y sobre todo cualquier tipo de ubicación dentro de la ciudad o poblado así mismo generando la confianza de una movilidad más autónoma y estábila no lo olvides somos right well la ruta correcta al alcance de tu oído",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 16.0,
+   "text": "Hola qué tal somos el equipo manchow's wiser como principal desafío encontramos que tan"
+  },
+  {
+   "start": 16.0,
+   "end": 22.28,
+   "text": "posible sería desarrollar un sistema guía para débiles visuales o invidentes pero que principalmente"
+  },
+  {
+   "start": 22.28,
+   "end": 29.48,
+   "text": "este no requiera internet bien nosotros creamos un dispositivo llamado right way en el que nos"
+  },
+  {
+   "start": 29.48,
+   "end": 34.4,
+   "text": "enfocamos a las dificultades con las que se lleva a encontrar todo este tipo de población vulnerable"
+  },
+  {
+   "start": 34.4,
+   "end": 40.04,
+   "text": "en la que nos queremos adaptar a su comodidad y estabilidad económica pero sobre todo a las"
+  },
+  {
+   "start": 40.04,
+   "end": 45.08,
+   "text": "nuevas tecnologías que nos acompañan en la actualidad nuestro sistema de acompañamiento se ha"
+  },
+  {
+   "start": 45.08,
+   "end": 50.84,
+   "text": "creado y pensado en un dispositivo versátil para personas no evidentes que les permita tener una"
+  },
+  {
+   "start": 50.84,
+   "end": 57.2,
+   "text": "mayor confianza a la hora de usarlo ya un precio totalmente accesible el dispositivo no solo"
+  },
+  {
+   "start": 57.2,
+   "end": 61.92,
+   "text": "es un audífonos sino también es una herramienta dinámica que puede orientar al usuario en su"
+  },
+  {
+   "start": 61.92,
+   "end": 67.32,
+   "text": "ubicación así mismo que pueda persuadirlo de algún objeto que obstruy a su camino a través"
+  },
+  {
+   "start": 67.32,
+   "end": 73.64,
+   "text": "de un sonido vibración o indicación previamente grabada esto antes configurado dependiendo de"
+  },
+  {
+   "start": 73.64,
+   "end": 79.36,
+   "text": "las dificultades del usuario y qué es lo que lo hace único es que está diseñado para no dañar"
+  },
+  {
+   "start": 79.36,
+   "end": 86.4,
+   "text": "el oído ya que tiene frecuencias de 30 a 60 decibeles que lo hacen más amigables es más fácil"
+  },
+  {
+   "start": 86.4,
+   "end": 91.6,
+   "text": "de portar y cómodo así mismo está integrado un módulo que ya tiene previamente cargado"
+  },
+  {
+   "start": 91.6,
+   "end": 98.2,
+   "text": "mapas croquis frutas y sobre todo cualquier tipo de ubicación dentro de la ciudad o poblado así"
+  },
+  {
+   "start": 98.2,
+   "end": 104.24,
+   "text": "mismo generando la confianza de una movilidad más autónoma y estábila no lo olvides somos right"
+  },
+  {
+   "start": 104.24,
+   "end": 107.16,
+   "text": "well la ruta correcta al alcance de tu oído"
+  }
+ ],
+ "has_info": false,
+ "duration_s": 108.0
+}

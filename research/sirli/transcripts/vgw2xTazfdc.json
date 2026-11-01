@@ -1,0 +1,132 @@
+{
+ "video_id": "vgw2xTazfdc",
+ "url": "https://youtu.be/vgw2xTazfdc?si=t9kF2Qv921FViMNE",
+ "year": 2024,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "TECNOPARKING",
+ "place_label": "TERCER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "TERCER LUGAR",
+   "team": "TECNOPARKING",
+   "challenge": "07 - PARQUÍMETRO DESATENDIDO"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:15:21+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En las grandes ciudades, el estacionamiento urbano es una de las mayores preocupaciones para conductores y autoridades. Las largas filas para encontrar un espacio e incluso la intervención de agentes municipales confican lo que debería ser un proceso rápido y sencillo. ¿Y si el proceso pudiera ser automático, eficiente y sin complicaciones? Te presentamos Techno Parking, una solución que revoluciona el parqueamiento urbano. Techno Parking utiliza visión por computadora para capturar la matrícula del vehículo en cuanto te estacionas iniciando el conteo del tiempo sin intervención humana. Todo esto es gestionado a través de la Parking A.A. que notifica al usuario sobre su tiempo de estacionamiento y facilita el pago digital. La app cuenta con un registro donde el usuario ingresa datos como nombre completo, código de matrícula y licencia del usuario, permitiendo así un reconocimiento eficiente del vehículo en cualquier parquímetro y realizando directamente el proceso de conteo. Si el conductor se retira sin pagar, el sistema genera automáticamente una infracción y la envía a través de la app vinculando la matrícula con una base de datos policial. Techno Parking es la cámara SV-3C1080P equipada con tecnologías de OpenCV y Tesseract que permiten reconocer y procesar de manera precisa las matrículas de los vehículos. Esta cámara, con su alta resolución de 1080P, ofrece una rotación panorámica de 355 grados, lo que le permite cubrir grandes áreas de estacionamiento. Además, cuenta con visión nocturna, detección de movimiento, asegurando un monitoreo constante, incluso en condiciones de baje iluminación. Gracias a OpenCV y Tesseract, los cuales son OpenSource, el sistema reconoce las matrículas y las vincula a bases de datos policiales, iniciando el conteo del tiempo de estacionamiento de manera automática. Nuestro presupuesto es de $5,370 dólares.",
+ "segments": [
+  {
+   "start": 3.5,
+   "end": 10.5,
+   "text": "En las grandes ciudades, el estacionamiento urbano es una de las mayores preocupaciones para conductores y autoridades."
+  },
+  {
+   "start": 10.5,
+   "end": 16.5,
+   "text": "Las largas filas para encontrar un espacio e incluso la intervención de agentes municipales"
+  },
+  {
+   "start": 16.5,
+   "end": 19.5,
+   "text": "confican lo que debería ser un proceso rápido y sencillo."
+  },
+  {
+   "start": 19.5,
+   "end": 24.5,
+   "text": "¿Y si el proceso pudiera ser automático, eficiente y sin complicaciones?"
+  },
+  {
+   "start": 24.5,
+   "end": 29.5,
+   "text": "Te presentamos Techno Parking, una solución que revoluciona el parqueamiento urbano."
+  },
+  {
+   "start": 29.5,
+   "end": 35.5,
+   "text": "Techno Parking utiliza visión por computadora para capturar la matrícula del vehículo en cuanto te estacionas"
+  },
+  {
+   "start": 35.5,
+   "end": 38.5,
+   "text": "iniciando el conteo del tiempo sin intervención humana."
+  },
+  {
+   "start": 38.5,
+   "end": 46.5,
+   "text": "Todo esto es gestionado a través de la Parking A.A. que notifica al usuario sobre su tiempo de estacionamiento y facilita el pago digital."
+  },
+  {
+   "start": 46.5,
+   "end": 53.5,
+   "text": "La app cuenta con un registro donde el usuario ingresa datos como nombre completo, código de matrícula y licencia del usuario,"
+  },
+  {
+   "start": 53.5,
+   "end": 60.5,
+   "text": "permitiendo así un reconocimiento eficiente del vehículo en cualquier parquímetro y realizando directamente el proceso de conteo."
+  },
+  {
+   "start": 60.5,
+   "end": 67.5,
+   "text": "Si el conductor se retira sin pagar, el sistema genera automáticamente una infracción y la envía a través de la app"
+  },
+  {
+   "start": 67.5,
+   "end": 70.5,
+   "text": "vinculando la matrícula con una base de datos policial."
+  },
+  {
+   "start": 70.5,
+   "end": 77.5,
+   "text": "Techno Parking es la cámara SV-3C1080P equipada con tecnologías de OpenCV y Tesseract"
+  },
+  {
+   "start": 77.5,
+   "end": 82.5,
+   "text": "que permiten reconocer y procesar de manera precisa las matrículas de los vehículos."
+  },
+  {
+   "start": 82.5,
+   "end": 90.5,
+   "text": "Esta cámara, con su alta resolución de 1080P, ofrece una rotación panorámica de 355 grados,"
+  },
+  {
+   "start": 90.5,
+   "end": 93.5,
+   "text": "lo que le permite cubrir grandes áreas de estacionamiento."
+  },
+  {
+   "start": 93.5,
+   "end": 100.5,
+   "text": "Además, cuenta con visión nocturna, detección de movimiento, asegurando un monitoreo constante,"
+  },
+  {
+   "start": 100.5,
+   "end": 103.5,
+   "text": "incluso en condiciones de baje iluminación."
+  },
+  {
+   "start": 103.5,
+   "end": 109.5,
+   "text": "Gracias a OpenCV y Tesseract, los cuales son OpenSource, el sistema reconoce las matrículas"
+  },
+  {
+   "start": 109.5,
+   "end": 115.5,
+   "text": "y las vincula a bases de datos policiales, iniciando el conteo del tiempo de estacionamiento de manera automática."
+  },
+  {
+   "start": 115.5,
+   "end": 119.5,
+   "text": "Nuestro presupuesto es de $5,370 dólares."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.0
+}

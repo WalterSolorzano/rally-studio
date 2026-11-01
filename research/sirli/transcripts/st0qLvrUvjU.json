@@ -1,0 +1,92 @@
+{
+ "video_id": "st0qLvrUvjU",
+ "url": "https://youtu.be/st0qLvrUvjU",
+ "year": 2017,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "INNOVATIC",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2017,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "INNOVATIC",
+   "challenge": "01 - TUTORÍAS ESTUDIANTILES VIRTUALES"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:05:30+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "El ruto interamericano para la educación superior en América Latina y el Caribe indica que 37% de los jóvenes ingresan a una carrera universitaria de ser tan entre el primer y segundo año de la carrera. Hola, mi nombre es Margarita Castillo y soy coordinadora del grupo Innovatic. Escojimos la problemática de tutoriales estudiantiles virtuales para encontrar la manera de reducir la deserción universitaria en América Latina. Para dar solución a esta problemática que amenaza gravemente la educación de los jóvenes, hemos creado una plataforma interactiva llamada Test Tutorial Estudiantiles Virtual, con la cual los alumnos universitarios de primer y segundo año pueden interactuar con alumnos de años superiores y así incentivar a la no deserción universitaria. En esta plataforma podrás pedir ayuda de estudiantes de años superiores con un tutorial o trabajo en base a la carrera de cada usuario de forma personal o grupal. Los beneficios que aportan a sus usuarios son increíbles, ya que es una aplicación gratuita en la cual podrás acceder con facilidad desde cualquier dispositivo con acceso a internet en cualquier lugar a cualquier hora. Ofrece parte de estudiantes de grados mayores apoyo a estudiantes con dificultad en algunas materias. Facilita estudios a mujeres con hijos, personas con discapacidad visual y auditiva, así como personas con problemas o osteomusculares. El valor agregado de TestBee consiste en que los estudiantes de primer y segundo año tendrán una herramienta virtual que le permitirá estar en contacto con otros estudiantes de años superiores y de esta manera incentivar el uso de la plataforma, ya que funcionaría como una red social de estudiantes expertos, donde los tutoriales reciben una apuntación por dar respuestas correctas a estudiantes de primer y segundo año.",
+ "segments": [
+  {
+   "start": 18.22,
+   "end": 27.22,
+   "text": "El ruto interamericano para la educación superior en América Latina y el Caribe indica que 37% de los jóvenes ingresan a una carrera universitaria"
+  },
+  {
+   "start": 27.22,
+   "end": 29.22,
+   "text": "de ser tan entre el primer y segundo año de la carrera."
+  },
+  {
+   "start": 29.22,
+   "end": 33.22,
+   "text": "Hola, mi nombre es Margarita Castillo y soy coordinadora del grupo Innovatic."
+  },
+  {
+   "start": 33.22,
+   "end": 41.22,
+   "text": "Escojimos la problemática de tutoriales estudiantiles virtuales para encontrar la manera de reducir la deserción universitaria en América Latina."
+  },
+  {
+   "start": 41.22,
+   "end": 60.42,
+   "text": "Para dar solución a esta problemática que amenaza gravemente la educación de los jóvenes, hemos creado una plataforma interactiva llamada Test Tutorial Estudiantiles Virtual,"
+  },
+  {
+   "start": 60.42,
+   "end": 67.42,
+   "text": "con la cual los alumnos universitarios de primer y segundo año pueden interactuar con alumnos de años superiores y así incentivar a la no deserción universitaria."
+  },
+  {
+   "start": 67.42,
+   "end": 75.42,
+   "text": "En esta plataforma podrás pedir ayuda de estudiantes de años superiores con un tutorial o trabajo en base a la carrera de cada usuario de forma personal o grupal."
+  },
+  {
+   "start": 75.42,
+   "end": 87.91,
+   "text": "Los beneficios que aportan a sus usuarios son increíbles, ya que es una aplicación gratuita en la cual podrás acceder con facilidad desde cualquier dispositivo con acceso a internet en cualquier lugar a cualquier hora."
+  },
+  {
+   "start": 87.91,
+   "end": 92.91,
+   "text": "Ofrece parte de estudiantes de grados mayores apoyo a estudiantes con dificultad en algunas materias."
+  },
+  {
+   "start": 92.91,
+   "end": 98.91,
+   "text": "Facilita estudios a mujeres con hijos, personas con discapacidad visual y auditiva, así como personas con problemas o osteomusculares."
+  },
+  {
+   "start": 156.04,
+   "end": 165.04,
+   "text": "El valor agregado de TestBee consiste en que los estudiantes de primer y segundo año tendrán una herramienta virtual que le permitirá estar en contacto con otros estudiantes de años superiores"
+  },
+  {
+   "start": 165.04,
+   "end": 171.04,
+   "text": "y de esta manera incentivar el uso de la plataforma, ya que funcionaría como una red social de estudiantes expertos,"
+  },
+  {
+   "start": 171.04,
+   "end": 175.04,
+   "text": "donde los tutoriales reciben una apuntación por dar respuestas correctas a estudiantes de primer y segundo año."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 182.8
+}

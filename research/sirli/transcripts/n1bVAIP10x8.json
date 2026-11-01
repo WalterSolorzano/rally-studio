@@ -1,0 +1,127 @@
+{
+ "video_id": "n1bVAIP10x8",
+ "url": "https://youtu.be/n1bVAIP10x8?si=nvS-iUOp6eht4Mmh",
+ "year": 2023,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "INGENIARTE",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "INGENIARTE",
+   "challenge": "05 - VIVIENDA DIGNA"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:24:19+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Te has preguntado cuál es uno de los impactos más significativos para la salud. La falta de acceso a agua potable, saneamiento adecuado y drenaje en estas viviendas propicia la propagación de enfermedades transmitidas por el agua. Esta situación pone en riesgo la salud de las personas con la posibilidad de hospitalizaciones. Las viviendas precarias a menudo son inseguras desde el punto de vista estructural. Son vulnerables a desastres naturales como inundaciones, deslizamientos y terremotos. Los asentamientos informales pueden constituir una parte significativa de la población. En algunas ciudades de América Latina es posible encontrar más del 30% de la población viviendo en condiciones precarias. Es por ello que ingeniarte presenta viviendas renovadas con estructuras de residuos de maíz convertidos en láminas y bases estructurales. Techos aislantes, baños secos que reducen el consumo de agua y genera compost. Sistema de recolección de agua de lluvia en barriles y disminuye la dependencia de fuentes convencionales. Los baños secos tienen compartimientos para extraer tierra, que se usa como cobertura y posterior compostaje. En caso de comunidades sin acceso a agua para uso doméstico se propone pozo compartido. Estas viviendas poseen 58 metros cuadrados y aprovechan residuos de maíz para su construcción, promoviendo el reciclaje. Para la instalación de las láminas se puede instalar una estructura ya existente pero adecuada. A diferencia de las otras propuestas, esta integra múltiples soluciones en un solo diseño, maximizando la funcionalidad y sostenibilidad. Ambientalmente, al utilizar residuos de maíz se reduce la demanda de materiales no renovables y se produce el reciclaje. En conjunto, esta propuesta combina sostenibilidad, reciclaje y bienestar comunitario.",
+ "segments": [
+  {
+   "start": 2.16,
+   "end": 6.96,
+   "text": "Te has preguntado cuál es uno de los impactos más significativos para la salud."
+  },
+  {
+   "start": 6.96,
+   "end": 11.84,
+   "text": "La falta de acceso a agua potable, saneamiento adecuado y drenaje en estas viviendas"
+  },
+  {
+   "start": 11.84,
+   "end": 15.64,
+   "text": "propicia la propagación de enfermedades transmitidas por el agua."
+  },
+  {
+   "start": 15.64,
+   "end": 21.24,
+   "text": "Esta situación pone en riesgo la salud de las personas con la posibilidad de hospitalizaciones."
+  },
+  {
+   "start": 21.24,
+   "end": 26.04,
+   "text": "Las viviendas precarias a menudo son inseguras desde el punto de vista estructural."
+  },
+  {
+   "start": 26.04,
+   "end": 31.44,
+   "text": "Son vulnerables a desastres naturales como inundaciones, deslizamientos y terremotos."
+  },
+  {
+   "start": 31.44,
+   "end": 36.8,
+   "text": "Los asentamientos informales pueden constituir una parte significativa de la población."
+  },
+  {
+   "start": 36.8,
+   "end": 43.68,
+   "text": "En algunas ciudades de América Latina es posible encontrar más del 30% de la población viviendo en condiciones precarias."
+  },
+  {
+   "start": 43.68,
+   "end": 49.2,
+   "text": "Es por ello que ingeniarte presenta viviendas renovadas con estructuras de residuos de maíz"
+  },
+  {
+   "start": 49.2,
+   "end": 52.32,
+   "text": "convertidos en láminas y bases estructurales."
+  },
+  {
+   "start": 52.32,
+   "end": 58.0,
+   "text": "Techos aislantes, baños secos que reducen el consumo de agua y genera compost."
+  },
+  {
+   "start": 58.08,
+   "end": 64.16,
+   "text": "Sistema de recolección de agua de lluvia en barriles y disminuye la dependencia de fuentes convencionales."
+  },
+  {
+   "start": 64.16,
+   "end": 71.56,
+   "text": "Los baños secos tienen compartimientos para extraer tierra, que se usa como cobertura y posterior compostaje."
+  },
+  {
+   "start": 71.56,
+   "end": 77.72,
+   "text": "En caso de comunidades sin acceso a agua para uso doméstico se propone pozo compartido."
+  },
+  {
+   "start": 77.72,
+   "end": 86.4,
+   "text": "Estas viviendas poseen 58 metros cuadrados y aprovechan residuos de maíz para su construcción, promoviendo el reciclaje."
+  },
+  {
+   "start": 86.56,
+   "end": 92.96,
+   "text": "Para la instalación de las láminas se puede instalar una estructura ya existente pero adecuada."
+  },
+  {
+   "start": 92.96,
+   "end": 99.36,
+   "text": "A diferencia de las otras propuestas, esta integra múltiples soluciones en un solo diseño,"
+  },
+  {
+   "start": 99.36,
+   "end": 102.84,
+   "text": "maximizando la funcionalidad y sostenibilidad."
+  },
+  {
+   "start": 102.84,
+   "end": 111.28,
+   "text": "Ambientalmente, al utilizar residuos de maíz se reduce la demanda de materiales no renovables y se produce el reciclaje."
+  },
+  {
+   "start": 111.28,
+   "end": 118.16,
+   "text": "En conjunto, esta propuesta combina sostenibilidad, reciclaje y bienestar comunitario."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 118.3
+}

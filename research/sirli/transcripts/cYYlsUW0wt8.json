@@ -1,0 +1,117 @@
+{
+ "video_id": "cYYlsUW0wt8",
+ "url": "https://youtu.be/cYYlsUW0wt8",
+ "year": 2021,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "NEVER GIVE UP",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "NEVER GIVE UP",
+   "challenge": "09 - IDENTIFICADOR PRÁCTICO Y ECONÓMICO DEL AEROSOL DE CO2 EN ESPACIOS CERRADOS"
+  }
+ ],
+ "fetched_at": "2026-10-23T01:02:53+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "La concentración de dióxido de carbono en espacios educativos cerrados provoca la mayor vía de contagio de COVID-19, esto a través de los aerosoles, pequeñas gotas que emitimos con tan solo respirar y que pueden quedar flotando en el aire. Así lo afirmó con claridad la Organización Mundial de la Salud, OMS. Para solucionar esta problemática, se propone desarrollar un dispositivo electrónico llamado SensOvit. Este cuenta con un medidor de CO2 que funciona a través de un sensor arduino, el cual se mantiene en un constante monitoreo, mientras esté conectado a una corriente como un puerto USB. Gracias a este dispositivo se mostrará en una pantalla LED la concentración de CO2 medido en PPM. Si el dispositivo marca una concentración de 800 ppm, sonará un alarma, lo cual indica que es necesario ventilar el espacio. El dispositivo estará fabricado de material reciclado, principalmente de plástico, para garantizar un bajo precio y el cuido del medio ambiente. Además se desarrollará una aplicación móvil que se podrá conectar a SensOvit por medio de wifi, con un valor agregado a la medición de temperatura y la humedad. ¿Por qué adquirir SensOvit? SensOvit pretende reducir el índice de contagio de COVID-19 en un espacio cerrado, donde exista concentración de alumnos o maestros en la institución educativa. SensOvit garantiza educación de calidad en tiempos de pandemia.",
+ "segments": [
+  {
+   "start": 6.1,
+   "end": 11.38,
+   "text": "La concentración de dióxido de carbono en espacios educativos cerrados provoca la mayor"
+  },
+  {
+   "start": 11.38,
+   "end": 17.78,
+   "text": "vía de contagio de COVID-19, esto a través de los aerosoles, pequeñas gotas que emitimos"
+  },
+  {
+   "start": 17.78,
+   "end": 21.86,
+   "text": "con tan solo respirar y que pueden quedar flotando en el aire."
+  },
+  {
+   "start": 21.86,
+   "end": 27.1,
+   "text": "Así lo afirmó con claridad la Organización Mundial de la Salud, OMS."
+  },
+  {
+   "start": 27.1,
+   "end": 32.18,
+   "text": "Para solucionar esta problemática, se propone desarrollar un dispositivo electrónico"
+  },
+  {
+   "start": 32.18,
+   "end": 36.16,
+   "text": "llamado SensOvit."
+  },
+  {
+   "start": 36.16,
+   "end": 42.16,
+   "text": "Este cuenta con un medidor de CO2 que funciona a través de un sensor arduino,"
+  },
+  {
+   "start": 42.16,
+   "end": 49.92,
+   "text": "el cual se mantiene en un constante monitoreo, mientras esté conectado a una corriente como un puerto USB."
+  },
+  {
+   "start": 49.92,
+   "end": 56.92,
+   "text": "Gracias a este dispositivo se mostrará en una pantalla LED la concentración de CO2 medido en PPM."
+  },
+  {
+   "start": 56.92,
+   "end": 65.92,
+   "text": "Si el dispositivo marca una concentración de 800 ppm, sonará un alarma, lo cual indica que es necesario ventilar el espacio."
+  },
+  {
+   "start": 65.92,
+   "end": 71.48,
+   "text": "El dispositivo estará fabricado de material reciclado, principalmente de plástico,"
+  },
+  {
+   "start": 71.48,
+   "end": 75.92,
+   "text": "para garantizar un bajo precio y el cuido del medio ambiente."
+  },
+  {
+   "start": 75.92,
+   "end": 82.68,
+   "text": "Además se desarrollará una aplicación móvil que se podrá conectar a SensOvit por medio de wifi,"
+  },
+  {
+   "start": 82.68,
+   "end": 87.08,
+   "text": "con un valor agregado a la medición de temperatura y la humedad."
+  },
+  {
+   "start": 87.08,
+   "end": 89.08,
+   "text": "¿Por qué adquirir SensOvit?"
+  },
+  {
+   "start": 89.08,
+   "end": 95.44,
+   "text": "SensOvit pretende reducir el índice de contagio de COVID-19 en un espacio cerrado,"
+  },
+  {
+   "start": 95.44,
+   "end": 101.24,
+   "text": "donde exista concentración de alumnos o maestros en la institución educativa."
+  },
+  {
+   "start": 101.24,
+   "end": 106.24,
+   "text": "SensOvit garantiza educación de calidad en tiempos de pandemia."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 106.7
+}

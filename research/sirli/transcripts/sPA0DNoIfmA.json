@@ -1,0 +1,152 @@
+{
+ "video_id": "sPA0DNoIfmA",
+ "url": "https://www.youtube.com/watch?v=sPA0DNoIfmA",
+ "year": 2025,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "INNOVA",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "INNOVA",
+   "challenge": "08 - APOYO EMOCIONAL PARA NIÑOS MIGRANTES"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:59:14+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En el camino de la vida, algunos viajes son más desafiantes que otros. Para los migrantes, la incertidumbre puede ser abrumadora. Frente al miedo y la separación, Nasa y Capybox. Una respuesta afectiva y tecnológica para acompañar su tránsito. Es una caja portátil de herramientas que combina arte, juego y tecnología para restaurar la calma y la expresión. Con el squishy, practican la calma. Con las historias, abordan la pérdida y el coraje desde el juego. Desde su casa, el emerge para ti. Capy, tu amigo que siempre escucha. Su corazón de inteligencia te entiende. Gracias a su corazón tecnológico de bajo costo, Capy habla, propone juegos y reproduce canciones infantiles seguras. Les invita a crear, a dibujar lo que sienten. Transformando el miedo en trazos libres y seguros. Sus sensores detectan un abrazo fuerte o un apretón suave, comprendiendo la necesidad de consuelo. Capy usa micrófono y parlante para mensajes y ejercicios guiados. Además, conecta con otros a través del juego colaborativo. Nuestro propósito es que quien lo necesite, encuentre en Capy un refugio emocional. ¡Ay, Capy! No solo soy un amigo abrasable, soy el futuro. ¿Quieres saber cómo funciona todo? ¡Tengo algo increíble que mostrarte! ¡Ven a verlo en mi web!",
+ "segments": [
+  {
+   "start": 3.79,
+   "end": 7.99,
+   "text": "En el camino de la vida, algunos viajes son más desafiantes que otros."
+  },
+  {
+   "start": 7.99,
+   "end": 11.59,
+   "text": "Para los migrantes, la incertidumbre puede ser abrumadora."
+  },
+  {
+   "start": 11.59,
+   "end": 15.19,
+   "text": "Frente al miedo y la separación, Nasa y Capybox."
+  },
+  {
+   "start": 15.19,
+   "end": 19.39,
+   "text": "Una respuesta afectiva y tecnológica para acompañar su tránsito."
+  },
+  {
+   "start": 19.39,
+   "end": 24.59,
+   "text": "Es una caja portátil de herramientas que combina arte, juego y tecnología"
+  },
+  {
+   "start": 24.59,
+   "end": 27.19,
+   "text": "para restaurar la calma y la expresión."
+  },
+  {
+   "start": 27.19,
+   "end": 29.99,
+   "text": "Con el squishy, practican la calma."
+  },
+  {
+   "start": 30.79,
+   "end": 34.99,
+   "text": "Con las historias, abordan la pérdida y el coraje desde el juego."
+  },
+  {
+   "start": 35.79,
+   "end": 38.19,
+   "text": "Desde su casa, el emerge para ti."
+  },
+  {
+   "start": 38.59,
+   "end": 40.59,
+   "text": "Capy, tu amigo que siempre escucha."
+  },
+  {
+   "start": 40.59,
+   "end": 42.79,
+   "text": "Su corazón de inteligencia te entiende."
+  },
+  {
+   "start": 43.39,
+   "end": 48.39,
+   "text": "Gracias a su corazón tecnológico de bajo costo, Capy habla, propone juegos"
+  },
+  {
+   "start": 48.39,
+   "end": 50.79,
+   "text": "y reproduce canciones infantiles seguras."
+  },
+  {
+   "start": 50.79,
+   "end": 53.39,
+   "text": "Les invita a crear, a dibujar lo que sienten."
+  },
+  {
+   "start": 53.79,
+   "end": 56.59,
+   "text": "Transformando el miedo en trazos libres y seguros."
+  },
+  {
+   "start": 56.79,
+   "end": 60.59,
+   "text": "Sus sensores detectan un abrazo fuerte o un apretón suave,"
+  },
+  {
+   "start": 60.59,
+   "end": 62.79,
+   "text": "comprendiendo la necesidad de consuelo."
+  },
+  {
+   "start": 62.79,
+   "end": 66.79,
+   "text": "Capy usa micrófono y parlante para mensajes y ejercicios guiados."
+  },
+  {
+   "start": 66.79,
+   "end": 70.59,
+   "text": "Además, conecta con otros a través del juego colaborativo."
+  },
+  {
+   "start": 71.99,
+   "end": 74.59,
+   "text": "Nuestro propósito es que quien lo necesite,"
+  },
+  {
+   "start": 74.59,
+   "end": 77.59,
+   "text": "encuentre en Capy un refugio emocional."
+  },
+  {
+   "start": 77.59,
+   "end": 89.98,
+   "text": "¡Ay, Capy! No solo soy un amigo abrasable, soy el futuro."
+  },
+  {
+   "start": 89.98,
+   "end": 91.58,
+   "text": "¿Quieres saber cómo funciona todo?"
+  },
+  {
+   "start": 91.58,
+   "end": 93.38,
+   "text": "¡Tengo algo increíble que mostrarte!"
+  },
+  {
+   "start": 93.38,
+   "end": 94.78,
+   "text": "¡Ven a verlo en mi web!"
+  }
+ ],
+ "has_info": false,
+ "duration_s": 94.5
+}

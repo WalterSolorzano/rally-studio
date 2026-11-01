@@ -1,0 +1,77 @@
+{
+ "video_id": "nVzk8SioqOI",
+ "url": "https://youtu.be/nVzk8SioqOI?si=Kp_clS3qlLMwrOpk",
+ "year": 2026,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "CÓDIGO ALPHA",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "CÓDIGO ALPHA",
+   "challenge": "09 - OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:46:47+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Qué ocurre después del desastre? ¿Qué pasa después del desastre? SIREP es un centro de mando adaptativo que reúne, analiza e interpreta la situación en tiempo real. A diferencia de los métodos tradicionales que atienden por orden de llegada, SIREP clasifica la urgencia mediante un algoritmo que cruza el nivel de riesgo, personas afectadas, necesidades médicas y viabilidad de rutas, funcionando incluso sin conexión a Internet. SIREP utiliza drones con visión térmica y modelado 3D para identificar riesgos y evaluar daños en minutos, incluso sin Internet, transmite información y actualiza rutas y prioridades ante nuevos peligros. Con una inversión de 6.8 millones de pesos y 64 drones estratégicamente distribuidos, SIREP busca mejorar la respuesta ante emergencias en México. Somos Cody Walfa de la Universidad Politécnica de Pachuca y nos vamos para que la ayuda llegue a tiempo y salvar vidas.",
+ "segments": [
+  {
+   "start": 2.9,
+   "end": 4.9,
+   "text": "¿Qué ocurre después del desastre?"
+  },
+  {
+   "start": 35.3,
+   "end": 37.3,
+   "text": "¿Qué pasa después del desastre?"
+  },
+  {
+   "start": 65.3,
+   "end": 70.3,
+   "text": "SIREP es un centro de mando adaptativo que reúne, analiza e interpreta la situación en tiempo real."
+  },
+  {
+   "start": 70.3,
+   "end": 77.3,
+   "text": "A diferencia de los métodos tradicionales que atienden por orden de llegada, SIREP clasifica la urgencia mediante un algoritmo que cruza el nivel de riesgo,"
+  },
+  {
+   "start": 77.3,
+   "end": 83.3,
+   "text": "personas afectadas, necesidades médicas y viabilidad de rutas, funcionando incluso sin conexión a Internet."
+  },
+  {
+   "start": 84.3,
+   "end": 91.3,
+   "text": "SIREP utiliza drones con visión térmica y modelado 3D para identificar riesgos y evaluar daños en minutos,"
+  },
+  {
+   "start": 91.3,
+   "end": 96.3,
+   "text": "incluso sin Internet, transmite información y actualiza rutas y prioridades ante nuevos peligros."
+  },
+  {
+   "start": 96.3,
+   "end": 102.3,
+   "text": "Con una inversión de 6.8 millones de pesos y 64 drones estratégicamente distribuidos,"
+  },
+  {
+   "start": 102.3,
+   "end": 106.3,
+   "text": "SIREP busca mejorar la respuesta ante emergencias en México."
+  },
+  {
+   "start": 106.3,
+   "end": 113.3,
+   "text": "Somos Cody Walfa de la Universidad Politécnica de Pachuca y nos vamos para que la ayuda llegue a tiempo y salvar vidas."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.4
+}

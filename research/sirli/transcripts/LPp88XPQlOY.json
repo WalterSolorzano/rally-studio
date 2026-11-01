@@ -1,0 +1,132 @@
+{
+ "video_id": "LPp88XPQlOY",
+ "url": "https://youtu.be/LPp88XPQlOY",
+ "year": 2020,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "TEAM REVOLUTION",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2020,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "TEAM REVOLUTION",
+   "challenge": "06 - ¿SERÍA POSIBLE DESARROLLAR UN SISTEMA GUÍA PARA DÉBILES VISUALES O INVIDENTES QUE NO REQUIERA INTERNET?"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:56:31+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Conoce a José, él es un joven con un espíritu aventurero. Estas vacaciones su familia y él viajaron a Nicaragua. José es como tú, es como yo, lo único que él es invidente. Mientras su familia descansaba salió a dar un paseo. José se emocionó tanto que no recuerdo el término de regreso. ¿Cómo ayudamos a José? Blind Maps es tu solución. Blind Maps es un accesorio paralente con herramientas funcionales que no necesitan acceso a Internet. Este es elaborado por un sistema biofotovoltaico a base de bacterias que convierten luz solar en corriente eléctrica. Con una horabilidad hasta de 12 años. Sucesores incorporados puran detectar objetos cercanos a 3 metros de distancia. Blind Maps o Següinteniencia Artificial. Vas a contocar un botón para activar tu blente. Automáticamente se activará tu sitio GPS y no impresitente de vos te atenderá. Blind Maps es tu aplicación online con mi biblioteca de mapa de TEMURA, que atrae de CG GPS te guiará. Este se actualizará cuando vuelvas a conectarte a una red. Así podremos ayudarte en esos momentos difíciles. Hola José, soy Blind. ¿Y qué puedo ayudarte? José puede preguntar su ubicación actual o le da un lugar céntrico. También puede mandar un mensaje de detecto a su contacto de emergencia con sus coordenadas actuales. Tu Wi-Fi no te guía, nosotros lo haremos.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 3.34,
+   "text": "Conoce a José, él es un joven con un espíritu aventurero."
+  },
+  {
+   "start": 3.34,
+   "end": 6.36,
+   "text": "Estas vacaciones su familia y él viajaron a Nicaragua."
+  },
+  {
+   "start": 6.36,
+   "end": 10.32,
+   "text": "José es como tú, es como yo, lo único que él es invidente."
+  },
+  {
+   "start": 10.32,
+   "end": 13.16,
+   "text": "Mientras su familia descansaba salió a dar un paseo."
+  },
+  {
+   "start": 13.16,
+   "end": 16.16,
+   "text": "José se emocionó tanto que no recuerdo el término de regreso."
+  },
+  {
+   "start": 16.16,
+   "end": 17.9,
+   "text": "¿Cómo ayudamos a José?"
+  },
+  {
+   "start": 17.9,
+   "end": 20.0,
+   "text": "Blind Maps es tu solución."
+  },
+  {
+   "start": 20.0,
+   "end": 27.44,
+   "text": "Blind Maps es un accesorio paralente con herramientas funcionales que no necesitan acceso a Internet."
+  },
+  {
+   "start": 27.66,
+   "end": 34.3,
+   "text": "Este es elaborado por un sistema biofotovoltaico a base de bacterias que convierten luz solar en corriente eléctrica."
+  },
+  {
+   "start": 34.3,
+   "end": 36.74,
+   "text": "Con una horabilidad hasta de 12 años."
+  },
+  {
+   "start": 36.74,
+   "end": 45.63,
+   "text": "Sucesores incorporados puran detectar objetos cercanos a 3 metros de distancia."
+  },
+  {
+   "start": 45.63,
+   "end": 48.03,
+   "text": "Blind Maps o Següinteniencia Artificial."
+  },
+  {
+   "start": 48.03,
+   "end": 50.13,
+   "text": "Vas a contocar un botón para activar tu blente."
+  },
+  {
+   "start": 50.13,
+   "end": 54.53,
+   "text": "Automáticamente se activará tu sitio GPS y no impresitente de vos te atenderá."
+  },
+  {
+   "start": 54.53,
+   "end": 61.13,
+   "text": "Blind Maps es tu aplicación online con mi biblioteca de mapa de TEMURA, que atrae de CG GPS te guiará."
+  },
+  {
+   "start": 61.13,
+   "end": 63.63,
+   "text": "Este se actualizará cuando vuelvas a conectarte a una red."
+  },
+  {
+   "start": 63.63,
+   "end": 66.13,
+   "text": "Así podremos ayudarte en esos momentos difíciles."
+  },
+  {
+   "start": 66.13,
+   "end": 68.83,
+   "text": "Hola José, soy Blind. ¿Y qué puedo ayudarte?"
+  },
+  {
+   "start": 68.83,
+   "end": 72.33,
+   "text": "José puede preguntar su ubicación actual o le da un lugar céntrico."
+  },
+  {
+   "start": 72.33,
+   "end": 76.83,
+   "text": "También puede mandar un mensaje de detecto a su contacto de emergencia con sus coordenadas actuales."
+  },
+  {
+   "start": 76.83,
+   "end": 79.33,
+   "text": "Tu Wi-Fi no te guía, nosotros lo haremos."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 94.2
+}

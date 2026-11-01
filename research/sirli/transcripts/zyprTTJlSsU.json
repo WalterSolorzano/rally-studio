@@ -1,0 +1,197 @@
+{
+ "video_id": "zyprTTJlSsU",
+ "url": "https://www.youtube.com/watch?v=zyprTTJlSsU&feature=youtu.be",
+ "year": 2019,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "XOLOTLAN",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2019,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "XOLOTLAN",
+   "challenge": "04 - SISTEMA INTELIGENTE PARA DETECTAR AUSENCIA DE ELEMENTOS DE SEGURIDAD EN EDIFICIOS"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:02:20+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "La seguridad de ingenio industrial es un conjunto de medidas que se explica con el fin de prevenir accidentes laborales y minimizar su consecuencia. Como marco de referencia se utilizan las normas internacionales que cada país adopta a su entorno y nivel de desarrollo, por ejemplo, en Nicaragua la ley 618 ley de seguridad de ingenio. La empresa de instituciones con el propósito de respetar el marco legal o buscar la certificación internacional contratan empresas para diseñar e implantar modelos de seguridad industrial, pero para mantener de forma exactiva la calidad y la disponibilidad de los elementos de seguridad como extintores, luces de emergencia, avisos, implica un alto costo, ya que las grandes instituciones contratan equipos para constantes auditorías interna a largo plazo, determinando si el modelo de seguridad laboral se mantiene en fábrica, oficina y en todas las instalaciones. Es decir, que cada elemento de seguridad esté en su lugar correspondiente y sea adecuado para su uso. Esto propone un reto que la empresa SoloTlan retiene responder con implementación de un sistema inteligente diseñado en tres etapas. La primera etapa consiste en colocar en cada extintor y luces de emergencia un dispositivo electrónico construido con un arduino nano, módulo ESP8266 y leg infrarroja, la cual al retirar el extintor o las luces de emergencia informa el sistema principal el suceso. Posteriormente se instará una cámara que utiliza técnicas de reconocimiento de patrones de objetos y un conjunto de rieles colocado en cada uno de los pasillos con acceso a ángulos que permitan identificar oficina y espacio de eje del acceso. Esto permitirá que la cámara sea móvil, por lo tanto, para el reconocimiento de objetos se preprocesará la imagen aplicando técnicas de mejoramiento y se extraen los racos característicos e empleando un algoritmo aprendizado automático. Utilizando datos de entrenamiento, que en nuestro caso serían elementos de seguridad tales como tintores, interna y señales. Para determinar si un objeto está un lugar adecuado se utiliza una base de datos. Si la cámara detecta el universal envía una alerta con una foto del esceno. La tercera etapa es la capacitación al personal sobre el uso del software sistema solotran donde se muestra el plano de edificio con sus elementos de seguridad situados. Cuando un elemento no está ubicado en su posición el mapa muestra un círculo en rojo y una inversencia detallada. Al costado se muestra una lista de sensores agrupados por elementos, tintores, lámparas y otros. Cada elemento podrá ser lastable con ayuda de la cámara móvil manipulable del sistema. El sistema proporciona un plante de mantenimiento usando la fecha de vencimiento y vida útil estimada en cada elemento. Estas y muchas más opciones presentan nuestro sistema solotlan. Cuida tus colaboradores, reducir y recolaborar, implementa el sistema inteligente solotlan.",
+ "segments": [
+  {
+   "start": 9.74,
+   "end": 13.98,
+   "text": "La seguridad de ingenio industrial es un conjunto de medidas que se explica con el fin de prevenir"
+  },
+  {
+   "start": 13.98,
+   "end": 18.18,
+   "text": "accidentes laborales y minimizar su consecuencia. Como marco de referencia se utilizan las normas"
+  },
+  {
+   "start": 18.18,
+   "end": 22.18,
+   "text": "internacionales que cada país adopta a su entorno y nivel de desarrollo, por ejemplo,"
+  },
+  {
+   "start": 22.18,
+   "end": 25.22,
+   "text": "en Nicaragua la ley 618 ley de seguridad de ingenio."
+  },
+  {
+   "start": 25.22,
+   "end": 29.3,
+   "text": "La empresa de instituciones con el propósito de respetar el marco legal o buscar la certificación"
+  },
+  {
+   "start": 29.3,
+   "end": 33.5,
+   "text": "internacional contratan empresas para diseñar e implantar modelos de seguridad industrial,"
+  },
+  {
+   "start": 33.5,
+   "end": 37.58,
+   "text": "pero para mantener de forma exactiva la calidad y la disponibilidad de los elementos"
+  },
+  {
+   "start": 37.58,
+   "end": 43.02,
+   "text": "de seguridad como extintores, luces de emergencia, avisos, implica un alto costo,"
+  },
+  {
+   "start": 43.02,
+   "end": 48.94,
+   "text": "ya que las grandes instituciones contratan equipos para constantes auditorías interna a largo plazo,"
+  },
+  {
+   "start": 48.94,
+   "end": 55.1,
+   "text": "determinando si el modelo de seguridad laboral se mantiene en fábrica, oficina y en todas"
+  },
+  {
+   "start": 55.1,
+   "end": 60.26,
+   "text": "las instalaciones. Es decir, que cada elemento de seguridad esté en su lugar correspondiente y"
+  },
+  {
+   "start": 60.26,
+   "end": 66.1,
+   "text": "sea adecuado para su uso. Esto propone un reto que la empresa SoloTlan retiene responder con"
+  },
+  {
+   "start": 66.1,
+   "end": 73.1,
+   "text": "implementación de un sistema inteligente diseñado en tres etapas. La primera etapa consiste en colocar"
+  },
+  {
+   "start": 73.1,
+   "end": 79.42,
+   "text": "en cada extintor y luces de emergencia un dispositivo electrónico construido con un arduino nano,"
+  },
+  {
+   "start": 79.42,
+   "end": 87.5,
+   "text": "módulo ESP8266 y leg infrarroja, la cual al retirar el extintor o las luces de emergencia"
+  },
+  {
+   "start": 87.5,
+   "end": 93.18,
+   "text": "informa el sistema principal el suceso. Posteriormente se instará una cámara que utiliza"
+  },
+  {
+   "start": 93.18,
+   "end": 98.22,
+   "text": "técnicas de reconocimiento de patrones de objetos y un conjunto de rieles colocado en cada uno de los"
+  },
+  {
+   "start": 98.22,
+   "end": 103.34,
+   "text": "pasillos con acceso a ángulos que permitan identificar oficina y espacio de eje del acceso."
+  },
+  {
+   "start": 103.34,
+   "end": 108.5,
+   "text": "Esto permitirá que la cámara sea móvil, por lo tanto, para el reconocimiento de objetos se"
+  },
+  {
+   "start": 108.5,
+   "end": 113.86,
+   "text": "preprocesará la imagen aplicando técnicas de mejoramiento y se extraen los racos característicos"
+  },
+  {
+   "start": 113.86,
+   "end": 118.62,
+   "text": "e empleando un algoritmo aprendizado automático. Utilizando datos de entrenamiento,"
+  },
+  {
+   "start": 118.62,
+   "end": 123.7,
+   "text": "que en nuestro caso serían elementos de seguridad tales como tintores, interna y señales."
+  },
+  {
+   "start": 123.7,
+   "end": 129.18,
+   "text": "Para determinar si un objeto está un lugar adecuado se utiliza una base de datos. Si la"
+  },
+  {
+   "start": 129.18,
+   "end": 132.9,
+   "text": "cámara detecta el universal envía una alerta con una foto del esceno."
+  },
+  {
+   "start": 133.98,
+   "end": 139.1,
+   "text": "La tercera etapa es la capacitación al personal sobre el uso del software sistema solotran donde"
+  },
+  {
+   "start": 139.1,
+   "end": 143.5,
+   "text": "se muestra el plano de edificio con sus elementos de seguridad situados. Cuando un elemento no"
+  },
+  {
+   "start": 143.5,
+   "end": 147.22,
+   "text": "está ubicado en su posición el mapa muestra un círculo en rojo y una inversencia detallada."
+  },
+  {
+   "start": 147.22,
+   "end": 151.54,
+   "text": "Al costado se muestra una lista de sensores agrupados por elementos, tintores, lámparas y otros."
+  },
+  {
+   "start": 152.78,
+   "end": 157.3,
+   "text": "Cada elemento podrá ser lastable con ayuda de la cámara móvil manipulable del sistema."
+  },
+  {
+   "start": 157.3,
+   "end": 160.74,
+   "text": "El sistema proporciona un plante de mantenimiento usando la fecha de"
+  },
+  {
+   "start": 160.74,
+   "end": 162.7,
+   "text": "vencimiento y vida útil estimada en cada elemento."
+  },
+  {
+   "start": 162.7,
+   "end": 166.26,
+   "text": "Estas y muchas más opciones presentan nuestro sistema solotlan."
+  },
+  {
+   "start": 166.26,
+   "end": 169.42,
+   "text": "Cuida tus colaboradores, reducir y recolaborar,"
+  },
+  {
+   "start": 169.42,
+   "end": 172.34,
+   "text": "implementa el sistema inteligente solotlan."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 173.6
+}

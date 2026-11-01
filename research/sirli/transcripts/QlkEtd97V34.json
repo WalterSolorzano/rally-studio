@@ -1,0 +1,142 @@
+{
+ "video_id": "QlkEtd97V34",
+ "url": "https://youtu.be/QlkEtd97V34",
+ "year": 2024,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "ECONIC",
+ "place_label": "TERCER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "TERCER LUGAR",
+   "team": "ECONIC",
+   "challenge": "07 - PARQUÍMETRO DESATENDIDO"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:01:08+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Imagina esto, das vueltas y vueltas en el centro de la ciudad buscando un lugar para estacionar. La música empieza a sonar más fuerte, el café se enfría y el estrés sube. ¿Se suena familiar? Tranquilo, no está solo. Este es un problema que miles de personas enfrentan a diario. En Latinoamérica, los parquímetros actuales requieren intervención continua de agentes municipales, lo que genera con gestión, costos operativos elevados y baja eficiencia. Además, la búsqueda de espacios contribuye al tráfico, la contaminación y el conelobéiculos a riesgo de seguridad. Somos Econic y traemos AutoPark, un prototipo de parquímetro autónomo y una plataforma administrativa y aplicación móvil. Este sistema utiliza geolocalización y cámaras inteligentes para identificar espacios en tiempo real, permitiendo a los usuarios pagar desde su móvil, recibir alertas de tiempo y garantizar la seguridad del vehículo mediante monitoreo continuo. AutoPark no solo optimiza la eficiencia del estacionamiento, sino que es una solución sostenible, utilizando energía renovada. Además, es inclusivo, identifica automáticamente a personas con capacidades limitadas, gracias a placas especiales y fomenta la rotación vehicular. Su viabilidad social y financiera la hace ideal para cualquier ciudad, reduciendo costos municipales y generando ingresos sostenibles. Estamos aquí para transformar el estacionamiento haciendo nuestras ciudades más eficientes, seguras y sostenibles. Sumémonos al cambio con AutoPark.",
+ "segments": [
+  {
+   "start": 1.33,
+   "end": 7.05,
+   "text": "Imagina esto, das vueltas y vueltas en el centro de la ciudad buscando un lugar para estacionar."
+  },
+  {
+   "start": 7.05,
+   "end": 11.53,
+   "text": "La música empieza a sonar más fuerte, el café se enfría y el estrés sube."
+  },
+  {
+   "start": 11.53,
+   "end": 12.37,
+   "text": "¿Se suena familiar?"
+  },
+  {
+   "start": 12.37,
+   "end": 13.93,
+   "text": "Tranquilo, no está solo."
+  },
+  {
+   "start": 13.93,
+   "end": 17.61,
+   "text": "Este es un problema que miles de personas enfrentan a diario."
+  },
+  {
+   "start": 17.61,
+   "end": 23.21,
+   "text": "En Latinoamérica, los parquímetros actuales requieren intervención continua de agentes municipales,"
+  },
+  {
+   "start": 23.21,
+   "end": 28.01,
+   "text": "lo que genera con gestión, costos operativos elevados y baja eficiencia."
+  },
+  {
+   "start": 28.01,
+   "end": 34.21,
+   "text": "Además, la búsqueda de espacios contribuye al tráfico, la contaminación y el conelobéiculos"
+  },
+  {
+   "start": 34.21,
+   "end": 35.69,
+   "text": "a riesgo de seguridad."
+  },
+  {
+   "start": 35.69,
+   "end": 43.37,
+   "text": "Somos Econic y traemos AutoPark, un prototipo de parquímetro autónomo y una plataforma administrativa"
+  },
+  {
+   "start": 43.37,
+   "end": 44.69,
+   "text": "y aplicación móvil."
+  },
+  {
+   "start": 44.69,
+   "end": 50.77,
+   "text": "Este sistema utiliza geolocalización y cámaras inteligentes para identificar espacios en"
+  },
+  {
+   "start": 50.77,
+   "end": 55.53,
+   "text": "tiempo real, permitiendo a los usuarios pagar desde su móvil, recibir alertas de"
+  },
+  {
+   "start": 55.53,
+   "end": 60.01,
+   "text": "tiempo y garantizar la seguridad del vehículo mediante monitoreo continuo."
+  },
+  {
+   "start": 60.01,
+   "end": 64.53,
+   "text": "AutoPark no solo optimiza la eficiencia del estacionamiento, sino que es una solución"
+  },
+  {
+   "start": 64.53,
+   "end": 67.33,
+   "text": "sostenible, utilizando energía renovada."
+  },
+  {
+   "start": 67.33,
+   "end": 73.33,
+   "text": "Además, es inclusivo, identifica automáticamente a personas con capacidades limitadas, gracias"
+  },
+  {
+   "start": 73.33,
+   "end": 77.13,
+   "text": "a placas especiales y fomenta la rotación vehicular."
+  },
+  {
+   "start": 77.13,
+   "end": 81.45,
+   "text": "Su viabilidad social y financiera la hace ideal para cualquier ciudad, reduciendo"
+  },
+  {
+   "start": 81.45,
+   "end": 84.73,
+   "text": "costos municipales y generando ingresos sostenibles."
+  },
+  {
+   "start": 84.85,
+   "end": 90.09,
+   "text": "Estamos aquí para transformar el estacionamiento haciendo nuestras ciudades más eficientes,"
+  },
+  {
+   "start": 90.09,
+   "end": 91.53,
+   "text": "seguras y sostenibles."
+  },
+  {
+   "start": 91.53,
+   "end": 94.53,
+   "text": "Sumémonos al cambio con AutoPark."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 100.1
+}

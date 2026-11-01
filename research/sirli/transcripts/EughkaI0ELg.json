@@ -1,0 +1,142 @@
+{
+ "video_id": "EughkaI0ELg",
+ "url": "https://youtu.be/EughkaI0ELg",
+ "year": 2022,
+ "collection": "sede",
+ "country": "EL SALVADOR",
+ "team": "TECNO POWER",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "TECNO POWER",
+   "challenge": "07 - ALUDES DE BARRO"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:32:09+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Sabías que los deslizamientos son un problema de carácter mundial y aún más en países con climas tropicales? En los cuales durante el invierno se perciben muchos centímetros cúbicos de lluvia cada año, haciendo que esto provoque que en muchos lugares que están cerca de cadenas volcánicas o alto relieve se vean afectadas directamente cuando la humedad del suelo supera el equilibrio. Muchas personas viven en lugares de esta naturaleza donde el suelo es de origen volcánico o inestable, poniéndose directamente en zona roja o zona de riesgo, provocando muchas veces víctimas mortales que lamentar, debido a que no existe un sistema que los proteja o alerte. Como equipo proponemos SAI, sistema de alarma inmediata, que implementaría una estación de monitoreo de humedad del suelo que recibirá señal inalámbrica de sensores que estarán ubicados de manera estratégica. Esta analizará las mediciones y las comparará con los parámetros de los niveles de humedad normal arrojados por una inspección previa del suelo. Para el funcionamiento de los sensores y estación de monitoreos se propone utilizar energía renovable, la cual es autosustentable. En los casos donde los niveles de humedad no sean extremos, la estación emitirá un alerta al mensaje de texto a las personas responsables de la comunidad para que se tenga el cuidado necesario al circular por la zona. Cuando los niveles de humedad se encuentren llegando al límite que soporte el tipo de suelo, se enviará un alerta vía correo electrónico a las autoridades pertinentes y emitirá un alerta sonora para la población aledaña, ya que el riesgo de un deslizamiento es elevado. A diferencia de otras tecnologías existentes, SAI alertaría con anticipación a las comunidades de un posible deslizamiento y así poder salvaguardar la vida de las personas.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 15.5,
+   "text": "¿Sabías que los deslizamientos son un problema de carácter mundial y aún más en países"
+  },
+  {
+   "start": 15.5,
+   "end": 20.34,
+   "text": "con climas tropicales? En los cuales durante el invierno se perciben muchos centímetros"
+  },
+  {
+   "start": 20.34,
+   "end": 25.06,
+   "text": "cúbicos de lluvia cada año, haciendo que esto provoque que en muchos lugares que están"
+  },
+  {
+   "start": 25.06,
+   "end": 30.18,
+   "text": "cerca de cadenas volcánicas o alto relieve se vean afectadas directamente cuando la"
+  },
+  {
+   "start": 30.18,
+   "end": 35.74,
+   "text": "humedad del suelo supera el equilibrio. Muchas personas viven en lugares de esta naturaleza"
+  },
+  {
+   "start": 35.74,
+   "end": 40.42,
+   "text": "donde el suelo es de origen volcánico o inestable, poniéndose directamente en zona"
+  },
+  {
+   "start": 40.42,
+   "end": 45.18,
+   "text": "roja o zona de riesgo, provocando muchas veces víctimas mortales que lamentar,"
+  },
+  {
+   "start": 45.18,
+   "end": 51.14,
+   "text": "debido a que no existe un sistema que los proteja o alerte. Como equipo proponemos"
+  },
+  {
+   "start": 51.14,
+   "end": 55.86,
+   "text": "SAI, sistema de alarma inmediata, que implementaría una estación de monitoreo"
+  },
+  {
+   "start": 55.86,
+   "end": 59.98,
+   "text": "de humedad del suelo que recibirá señal inalámbrica de sensores que estarán"
+  },
+  {
+   "start": 59.98,
+   "end": 64.82,
+   "text": "ubicados de manera estratégica. Esta analizará las mediciones y las comparará"
+  },
+  {
+   "start": 64.9,
+   "end": 68.94,
+   "text": "con los parámetros de los niveles de humedad normal arrojados por una inspección"
+  },
+  {
+   "start": 68.94,
+   "end": 73.34,
+   "text": "previa del suelo. Para el funcionamiento de los sensores y estación de monitoreos"
+  },
+  {
+   "start": 73.34,
+   "end": 77.54,
+   "text": "se propone utilizar energía renovable, la cual es autosustentable."
+  },
+  {
+   "start": 78.3,
+   "end": 82.58,
+   "text": "En los casos donde los niveles de humedad no sean extremos, la estación emitirá"
+  },
+  {
+   "start": 82.58,
+   "end": 86.7,
+   "text": "un alerta al mensaje de texto a las personas responsables de la comunidad"
+  },
+  {
+   "start": 86.7,
+   "end": 90.18,
+   "text": "para que se tenga el cuidado necesario al circular por la zona."
+  },
+  {
+   "start": 90.94,
+   "end": 94.58,
+   "text": "Cuando los niveles de humedad se encuentren llegando al límite que soporte"
+  },
+  {
+   "start": 94.58,
+   "end": 99.34,
+   "text": "el tipo de suelo, se enviará un alerta vía correo electrónico a las autoridades"
+  },
+  {
+   "start": 99.34,
+   "end": 104.38,
+   "text": "pertinentes y emitirá un alerta sonora para la población aledaña, ya que el"
+  },
+  {
+   "start": 104.38,
+   "end": 109.98,
+   "text": "riesgo de un deslizamiento es elevado. A diferencia de otras tecnologías existentes,"
+  },
+  {
+   "start": 109.98,
+   "end": 115.02,
+   "text": "SAI alertaría con anticipación a las comunidades de un posible deslizamiento"
+  },
+  {
+   "start": 115.02,
+   "end": 117.82,
+   "text": "y así poder salvaguardar la vida de las personas."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.0
+}

@@ -1,0 +1,127 @@
+{
+ "video_id": "slQqier_EZU",
+ "url": "https://youtu.be/slQqier_EZU",
+ "year": 2022,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "LA HORA DEL TEA",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "LA HORA DEL TEA",
+   "challenge": "01 - INCLUSIÓN LABORAL DE PERSONAS DEL ESPECTRO AUTISTA"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:17:57+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Estudios realizados en el país arrojaron que aproximadamente el 30% de las personas con trastorno al espectro autista no poseen ningún tipo de empleo y además la mitad de ellas poseen uno que se encuentra precarizado o en malas condiciones de trabajo. Esta no es solo una problemática que afecta los involucrallos y sus familias, sino también a nosotros como sociedad. Entonces, ¿qué tan inclusivos somos realmente? Les presento Lexitea. Lexitea es una aplicación de compatibilidad que permita acomodar las necesidades y habilidades de las personas con autismo y la disponibilidad de requerimientos del empleador a través de perfiles configurados por ellos mismos. Cada usuario podría crear su perfil en base a sus actitudes, experiencias laborales, preferencias como aumentación, tipo de espacio, decoración, sonidos, luces y tecnología a utilizar. Esta plataforma está diseñada en conjunto con expertos que tienen conocimiento sobre espectro autista como no son terapitas ocupacionales, psicólogos y pedagogos y más. Es por eso que el formato de la misma no es aleatorio y sus colores tampoco. A través de la aplicación también ofrecemos capacitación a las empresas y, una vez concretado el emparejamiento, proveeremos entrevistadores capacitados para que con preguntas orientadas a los requerimientos de la población les indique las cualidades para decidir si contratarlos o no. Una vez que los posturantes son contratados, se les brinda a los empleadores un espacio diseñado especialmente para su futuro empleado, en donde este puede desarrollar al cien por ciento sus capacidades. Lexitea, creando experiencias.",
+ "segments": [
+  {
+   "start": 8.14,
+   "end": 23.44,
+   "text": "Estudios realizados en el país arrojaron que aproximadamente el 30% de las personas"
+  },
+  {
+   "start": 23.44,
+   "end": 27.44,
+   "text": "con trastorno al espectro autista no poseen ningún tipo de empleo y además la mitad de"
+  },
+  {
+   "start": 27.44,
+   "end": 31.64,
+   "text": "ellas poseen uno que se encuentra precarizado o en malas condiciones de trabajo."
+  },
+  {
+   "start": 31.64,
+   "end": 35.54,
+   "text": "Esta no es solo una problemática que afecta los involucrallos y sus familias, sino también"
+  },
+  {
+   "start": 35.54,
+   "end": 40.84,
+   "text": "a nosotros como sociedad. Entonces, ¿qué tan inclusivos somos realmente?"
+  },
+  {
+   "start": 40.84,
+   "end": 50.71,
+   "text": "Les presento Lexitea. Lexitea es una aplicación de compatibilidad que permita acomodar"
+  },
+  {
+   "start": 50.71,
+   "end": 54.91,
+   "text": "las necesidades y habilidades de las personas con autismo y la disponibilidad"
+  },
+  {
+   "start": 54.91,
+   "end": 59.01,
+   "text": "de requerimientos del empleador a través de perfiles configurados por ellos mismos."
+  },
+  {
+   "start": 59.01,
+   "end": 64.21,
+   "text": "Cada usuario podría crear su perfil en base a sus actitudes, experiencias laborales,"
+  },
+  {
+   "start": 64.21,
+   "end": 70.81,
+   "text": "preferencias como aumentación, tipo de espacio, decoración, sonidos, luces y tecnología a utilizar."
+  },
+  {
+   "start": 70.81,
+   "end": 75.91,
+   "text": "Esta plataforma está diseñada en conjunto con expertos que tienen conocimiento sobre"
+  },
+  {
+   "start": 75.91,
+   "end": 80.91,
+   "text": "espectro autista como no son terapitas ocupacionales, psicólogos y pedagogos y más."
+  },
+  {
+   "start": 80.91,
+   "end": 85.41,
+   "text": "Es por eso que el formato de la misma no es aleatorio y sus colores tampoco."
+  },
+  {
+   "start": 85.41,
+   "end": 89.91,
+   "text": "A través de la aplicación también ofrecemos capacitación a las empresas y,"
+  },
+  {
+   "start": 89.91,
+   "end": 93.41,
+   "text": "una vez concretado el emparejamiento, proveeremos entrevistadores capacitados"
+  },
+  {
+   "start": 93.41,
+   "end": 98.41,
+   "text": "para que con preguntas orientadas a los requerimientos de la población les indique las cualidades"
+  },
+  {
+   "start": 98.41,
+   "end": 100.91,
+   "text": "para decidir si contratarlos o no."
+  },
+  {
+   "start": 101.41,
+   "end": 105.91,
+   "text": "Una vez que los posturantes son contratados, se les brinda a los empleadores un espacio"
+  },
+  {
+   "start": 105.91,
+   "end": 112.91,
+   "text": "diseñado especialmente para su futuro empleado, en donde este puede desarrollar al cien por ciento sus capacidades."
+  },
+  {
+   "start": 113.91,
+   "end": 116.91,
+   "text": "Lexitea, creando experiencias."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 117.4
+}

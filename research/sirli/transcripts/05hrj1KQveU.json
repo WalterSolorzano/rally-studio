@@ -1,0 +1,137 @@
+{
+ "video_id": "05hrj1KQveU",
+ "url": "https://youtu.be/05hrj1KQveU",
+ "year": 2023,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "PAN DE MUERTO",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "PAN DE MUERTO",
+   "challenge": "05 - VIVIENDA DIGNA"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:10:21+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En toda Latinoamérica nos encontramos con numerosos santamientos caracterizados por viviendas de baja calidad. Estos hogares carecen de servicios esenciales y no cumplen con las condiciones mínimas de saneamiento. En su mayoría están construidas utilizando materiales inadecuados como la tierra, lo que resulta en paredes y techos frágiles. La principal causa es la pobreza extrema y la agresión de desigualdad económica. Los precios de la vivienda se disparan y procederán a la escasez de recursos naturales y financieros. Estos cases limitan la capacidad para construir viviendas adecuadas por accesos a servicios básicos, elevando así el costo de la vivienda a niveles inalcanzables para muchos. Al igual que sean formados santamientos informales y precarios en una planificación obtenible, lo que ha generado desequilibrio social y ambiental. Nuestra propuesta se basa en tres pilares fundamentales que buscan mejorar la calidad de vida de las comunidades. En primer uso de fibras naturales de frutas, hemos optado por esa fibra natural a los procedentes del coco, caña de azúcar y plátano. Estos fibros aportan resistencia y durabilidad a la estructura. Al mismo tiempo que aprovechan los recursos naturales de la región, también está la implementación de baños secos, lo cual permite el aprovechamiento de materia orgánica transformándole en valioso fertilizante para la siembricultivos. Esto no sólo reduce la generación de residuos, sino que también contribuye a la sostenibilidad agrícola de las comunidades. Por último está la recolección y reutilización de agua de lluvia. Los objetos para recoger agua de lluvia se instalarán para satisfacer las necesidades diarias de las personas. Este becursón natural se utiliza tanto para el consumo humano como para el riesgo de cultivos maximizando el aprovechamiento y minimizando el desperdicio. Lo que distingue nuestra propuesta de otras es la elección de materiales poco comunes en comparación con las construcciones tradicionales que utilizan materiales difíciles de encontrar en Latinoamérica. Al optar por soluciones alternativas conseguimos una mayor sustentabilidad tanto desde el punto de vista económico como el ambiental.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 7.0,
+   "text": "En toda Latinoamérica nos encontramos con numerosos santamientos caracterizados por viviendas de baja calidad."
+  },
+  {
+   "start": 7.0,
+   "end": 12.0,
+   "text": "Estos hogares carecen de servicios esenciales y no cumplen con las condiciones mínimas de saneamiento."
+  },
+  {
+   "start": 12.0,
+   "end": 16.0,
+   "text": "En su mayoría están construidas utilizando materiales inadecuados como la tierra,"
+  },
+  {
+   "start": 16.0,
+   "end": 18.0,
+   "text": "lo que resulta en paredes y techos frágiles."
+  },
+  {
+   "start": 18.0,
+   "end": 22.0,
+   "text": "La principal causa es la pobreza extrema y la agresión de desigualdad económica."
+  },
+  {
+   "start": 22.0,
+   "end": 26.0,
+   "text": "Los precios de la vivienda se disparan y procederán a la escasez de recursos naturales y financieros."
+  },
+  {
+   "start": 26.0,
+   "end": 31.0,
+   "text": "Estos cases limitan la capacidad para construir viviendas adecuadas por accesos a servicios básicos,"
+  },
+  {
+   "start": 31.0,
+   "end": 35.0,
+   "text": "elevando así el costo de la vivienda a niveles inalcanzables para muchos."
+  },
+  {
+   "start": 35.0,
+   "end": 39.0,
+   "text": "Al igual que sean formados santamientos informales y precarios en una planificación obtenible,"
+  },
+  {
+   "start": 39.0,
+   "end": 42.0,
+   "text": "lo que ha generado desequilibrio social y ambiental."
+  },
+  {
+   "start": 42.0,
+   "end": 47.0,
+   "text": "Nuestra propuesta se basa en tres pilares fundamentales que buscan mejorar la calidad de vida de las comunidades."
+  },
+  {
+   "start": 47.0,
+   "end": 54.0,
+   "text": "En primer uso de fibras naturales de frutas, hemos optado por esa fibra natural a los procedentes del coco, caña de azúcar y plátano."
+  },
+  {
+   "start": 54.0,
+   "end": 57.0,
+   "text": "Estos fibros aportan resistencia y durabilidad a la estructura."
+  },
+  {
+   "start": 57.0,
+   "end": 62.0,
+   "text": "Al mismo tiempo que aprovechan los recursos naturales de la región, también está la implementación de baños secos,"
+  },
+  {
+   "start": 62.0,
+   "end": 68.0,
+   "text": "lo cual permite el aprovechamiento de materia orgánica transformándole en valioso fertilizante para la siembricultivos."
+  },
+  {
+   "start": 68.0,
+   "end": 74.0,
+   "text": "Esto no sólo reduce la generación de residuos, sino que también contribuye a la sostenibilidad agrícola de las comunidades."
+  },
+  {
+   "start": 74.0,
+   "end": 77.0,
+   "text": "Por último está la recolección y reutilización de agua de lluvia."
+  },
+  {
+   "start": 77.0,
+   "end": 82.0,
+   "text": "Los objetos para recoger agua de lluvia se instalarán para satisfacer las necesidades diarias de las personas."
+  },
+  {
+   "start": 82.0,
+   "end": 89.0,
+   "text": "Este becursón natural se utiliza tanto para el consumo humano como para el riesgo de cultivos maximizando el aprovechamiento y minimizando el desperdicio."
+  },
+  {
+   "start": 89.0,
+   "end": 96.0,
+   "text": "Lo que distingue nuestra propuesta de otras es la elección de materiales poco comunes en comparación con las construcciones tradicionales"
+  },
+  {
+   "start": 96.0,
+   "end": 99.0,
+   "text": "que utilizan materiales difíciles de encontrar en Latinoamérica."
+  },
+  {
+   "start": 99.0,
+   "end": 106.0,
+   "text": "Al optar por soluciones alternativas conseguimos una mayor sustentabilidad tanto desde el punto de vista económico como el ambiental."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 106.9
+}

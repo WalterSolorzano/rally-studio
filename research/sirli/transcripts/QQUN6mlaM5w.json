@@ -1,0 +1,107 @@
+{
+ "video_id": "QQUN6mlaM5w",
+ "url": "https://youtu.be/QQUN6mlaM5w",
+ "year": 2023,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "CITRON",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "CITRON",
+   "challenge": "06 - REVALORIZACIÓN RESIDUOS"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:05:30+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Sabías que Monterrey es la tercera ciudad de Latinoamérica más contaminada con partículas BM10? Estas partículas son producidas por la quema de leñas y drocarguros que pueden traer problemas a la salud y median ventales. Monterrey, al ser un centro gastronómico de la carne asada, puede llegar a emitir emisiones enormes del CO2 y compuestos orgánicos volátiles tóxicos en un solo día. Una parte de ellos viene de los iniciadores de fuego que contienen derivados del petróleo y parafinas. Es por eso que presentamos esta alternativa más amigable con el medio ambiente, Citron. Citron es una propuesta de iniciador de fuego sustentable hecha a base de cascaras de naranja, con el cual buscamos no solo ayudar con el problema de la emisión de partículas BM10, sino que también buscamos aprovechar este residuo agroindustrial del cual México es el quinto productor mundial. Citron es el resultado de un proceso de colección, reutilización, deshidratación, trituración y adición de aglutinantes para concluir con un proceso de moldeado y compresión para formar una pastilla. La base de producto es aprovechar las propiedades físico-químicas que la cascara de naranja ya tiene y resulta no ser tóxicas para el ambiente y pueden producir un fuego duradero y al instante, además de permitir reducir los costos y reutilizar un residuo con una total nueva función, poniendo así al producto en un nivel competitivo digno de sus contrincantes. Y tú, Citron, ¿y más a darle un nuevo uso a los residuos orgánicos? Con Citron lo podrás hacer.",
+ "segments": [
+  {
+   "start": 0.4,
+   "end": 6.24,
+   "text": "¿Sabías que Monterrey es la tercera ciudad de Latinoamérica más contaminada con partículas BM10?"
+  },
+  {
+   "start": 6.24,
+   "end": 13.36,
+   "text": "Estas partículas son producidas por la quema de leñas y drocarguros que pueden traer problemas a la salud y median ventales."
+  },
+  {
+   "start": 13.36,
+   "end": 23.52,
+   "text": "Monterrey, al ser un centro gastronómico de la carne asada, puede llegar a emitir emisiones enormes del CO2 y compuestos orgánicos volátiles tóxicos en un solo día."
+  },
+  {
+   "start": 23.52,
+   "end": 29.44,
+   "text": "Una parte de ellos viene de los iniciadores de fuego que contienen derivados del petróleo y parafinas."
+  },
+  {
+   "start": 29.52,
+   "end": 35.12,
+   "text": "Es por eso que presentamos esta alternativa más amigable con el medio ambiente, Citron."
+  },
+  {
+   "start": 35.12,
+   "end": 40.72,
+   "text": "Citron es una propuesta de iniciador de fuego sustentable hecha a base de cascaras de naranja,"
+  },
+  {
+   "start": 40.72,
+   "end": 45.6,
+   "text": "con el cual buscamos no solo ayudar con el problema de la emisión de partículas BM10,"
+  },
+  {
+   "start": 45.6,
+   "end": 53.52,
+   "text": "sino que también buscamos aprovechar este residuo agroindustrial del cual México es el quinto productor mundial."
+  },
+  {
+   "start": 53.6,
+   "end": 58.8,
+   "text": "Citron es el resultado de un proceso de colección, reutilización, deshidratación,"
+  },
+  {
+   "start": 58.8,
+   "end": 64.0,
+   "text": "trituración y adición de aglutinantes para concluir con un proceso de moldeado y compresión"
+  },
+  {
+   "start": 64.0,
+   "end": 67.68,
+   "text": "para formar una pastilla. La base de producto es aprovechar las"
+  },
+  {
+   "start": 67.68,
+   "end": 72.96,
+   "text": "propiedades físico-químicas que la cascara de naranja ya tiene y resulta no ser tóxicas"
+  },
+  {
+   "start": 72.96,
+   "end": 78.0,
+   "text": "para el ambiente y pueden producir un fuego duradero y al instante, además de permitir"
+  },
+  {
+   "start": 78.08,
+   "end": 82.72,
+   "text": "reducir los costos y reutilizar un residuo con una total nueva función,"
+  },
+  {
+   "start": 82.72,
+   "end": 87.12,
+   "text": "poniendo así al producto en un nivel competitivo digno de sus contrincantes."
+  },
+  {
+   "start": 88.24,
+   "end": 95.2,
+   "text": "Y tú, Citron, ¿y más a darle un nuevo uso a los residuos orgánicos? Con Citron lo podrás hacer."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 97.6
+}

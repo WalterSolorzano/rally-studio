@@ -1,0 +1,107 @@
+{
+ "video_id": "NK0YnnRcwM8",
+ "url": "https://youtu.be/NK0YnnRcwM8?si=ZXdHJVdV0gBo-Qkc",
+ "year": 2025,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "INNOVA VERDE",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "INNOVA VERDE",
+   "challenge": "01 - APROVECHAMIENTO TETRA PAK"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:44:24+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En el mundo se consumen mil millones de litros de agua, leche, cugos y otros alimentos líquidos. ¿Sabes en qué viene estos productos? Así es, en envases tetrapac, envases principalmente compuestos de cartón, pero lo cierto es que tienen tres materiales diferentes, cartón, plástico, tipo polietileno y aluminio. Al año, 5,2 millones de toneladas de desechos son generados por estos envases y tan sólo el 26% termina siendo reciclado de manera efectiva a nivel mundial. El resto quedan como residuos no reciclados, que normalmente suelen terminar en océanos, ríos, drenajes o bien vertederos. Mientras tanto, en Latinoamérica los desastres naturales arrebatan la vivienda de miles de familias, dejándolos sin un techo digno. Especialmente en las costas, los daños por tormentas, huracanes o ciclones son del 17% del PBI de un país. En Green Vision estamos comprometidos a minimizar el impacto ambiental que provocan estos productos, al mismo tiempo que proporcionamos refugios modulares construidos con páneles reciclados de tetrapac a las familias vulneradas en las costas. Una solución sostenible, innovadora y amigable con el medio ambiente. Cada uno de estos refugios utiliza al menos una tonelada de envases reciclados, minimizando la contaminación. Además, el costo de fabricación cuesta un 40% menos que un refugio temporal convencional, y su instalación no sobrepasa un tiempo límite de 48 horas. Nuestro objetivo no es solo reciclar en bases, sino reconstruir esperanzas.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 7.0,
+   "text": "En el mundo se consumen mil millones de litros de agua, leche, cugos y otros alimentos líquidos."
+  },
+  {
+   "start": 7.0,
+   "end": 11.0,
+   "text": "¿Sabes en qué viene estos productos?"
+  },
+  {
+   "start": 11.0,
+   "end": 18.0,
+   "text": "Así es, en envases tetrapac, envases principalmente compuestos de cartón,"
+  },
+  {
+   "start": 18.0,
+   "end": 26.0,
+   "text": "pero lo cierto es que tienen tres materiales diferentes, cartón, plástico, tipo polietileno y aluminio."
+  },
+  {
+   "start": 26.0,
+   "end": 33.0,
+   "text": "Al año, 5,2 millones de toneladas de desechos son generados por estos envases"
+  },
+  {
+   "start": 33.0,
+   "end": 40.0,
+   "text": "y tan sólo el 26% termina siendo reciclado de manera efectiva a nivel mundial."
+  },
+  {
+   "start": 40.0,
+   "end": 51.0,
+   "text": "El resto quedan como residuos no reciclados, que normalmente suelen terminar en océanos, ríos, drenajes o bien vertederos."
+  },
+  {
+   "start": 51.0,
+   "end": 60.0,
+   "text": "Mientras tanto, en Latinoamérica los desastres naturales arrebatan la vivienda de miles de familias, dejándolos sin un techo digno."
+  },
+  {
+   "start": 60.0,
+   "end": 70.0,
+   "text": "Especialmente en las costas, los daños por tormentas, huracanes o ciclones son del 17% del PBI de un país."
+  },
+  {
+   "start": 70.0,
+   "end": 77.0,
+   "text": "En Green Vision estamos comprometidos a minimizar el impacto ambiental que provocan estos productos,"
+  },
+  {
+   "start": 77.0,
+   "end": 87.0,
+   "text": "al mismo tiempo que proporcionamos refugios modulares construidos con páneles reciclados de tetrapac a las familias vulneradas en las costas."
+  },
+  {
+   "start": 87.0,
+   "end": 92.0,
+   "text": "Una solución sostenible, innovadora y amigable con el medio ambiente."
+  },
+  {
+   "start": 92.0,
+   "end": 101.0,
+   "text": "Cada uno de estos refugios utiliza al menos una tonelada de envases reciclados, minimizando la contaminación."
+  },
+  {
+   "start": 101.0,
+   "end": 109.0,
+   "text": "Además, el costo de fabricación cuesta un 40% menos que un refugio temporal convencional,"
+  },
+  {
+   "start": 109.0,
+   "end": 115.0,
+   "text": "y su instalación no sobrepasa un tiempo límite de 48 horas."
+  },
+  {
+   "start": 115.0,
+   "end": 121.0,
+   "text": "Nuestro objetivo no es solo reciclar en bases, sino reconstruir esperanzas."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 121.2
+}

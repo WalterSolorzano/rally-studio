@@ -1,0 +1,107 @@
+{
+ "video_id": "nEe7InSSdVg",
+ "url": "https://youtu.be/nEe7InSSdVg",
+ "year": 2021,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "ALPHA TEAM",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "ALPHA TEAM",
+   "challenge": "09 - IDENTIFICADOR PRÁCTICO Y ECONÓMICO DEL AEROSOL DE CO2 EN ESPACIOS CERRADOS"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:44:50+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Somos el equipo Alpha Team de la Unan Manawa Farangharaso. Respondemos el reto número 9. La problemática sobre el Sarkov-2 es la actual situación sanitaria de impacto social. Es una realidad que enfrentamos en nuestras actividades diarias y aprender a vivir con ello. Nuestra misión es proveer una solución preventiva respecto al contagio masivo en centros educativos, lugares de trabajo que disponen de un espacio cerrado para la interacción humana. Presentamos nuestro producto, HubDetector, un dispositivo que aprovecha las funciones que permite medir las partes por midón del CO2, pero con la diferencia que nuestro dispositivo permitirá recepcionar las cotículas emitidas por personas que estén presentes en un espacio cerrado como banco o centro de estudio. ¿Cómo funciona? Haciendo uso de una enzima empleada por las pruebas de PCR llamada polimerasa, que posibilitan la detección de la presencia del virus Sarkov-2, a través de sensores infrarrojos que detectan el CO2 del entorno, mostrando en la pantalla los resultados gráficos del test antígeno del COVID y con un parlante que emitirá la señal de alerta auditiva para sanitizar el espacio. Gracias por la experiencia.",
+ "segments": [
+  {
+   "start": 0.27,
+   "end": 4.43,
+   "text": "Somos el equipo Alpha Team de la Unan Manawa Farangharaso."
+  },
+  {
+   "start": 4.43,
+   "end": 6.71,
+   "text": "Respondemos el reto número 9."
+  },
+  {
+   "start": 6.71,
+   "end": 17.63,
+   "text": "La problemática sobre el Sarkov-2 es la actual situación sanitaria de impacto social."
+  },
+  {
+   "start": 17.63,
+   "end": 23.27,
+   "text": "Es una realidad que enfrentamos en nuestras actividades diarias y aprender a vivir con ello."
+  },
+  {
+   "start": 23.27,
+   "end": 29.87,
+   "text": "Nuestra misión es proveer una solución preventiva respecto al contagio masivo en centros educativos,"
+  },
+  {
+   "start": 29.87,
+   "end": 36.4,
+   "text": "lugares de trabajo que disponen de un espacio cerrado para la interacción humana."
+  },
+  {
+   "start": 36.4,
+   "end": 46.36,
+   "text": "Presentamos nuestro producto, HubDetector, un dispositivo que aprovecha las funciones que permite medir las partes por midón del CO2,"
+  },
+  {
+   "start": 46.36,
+   "end": 53.68,
+   "text": "pero con la diferencia que nuestro dispositivo permitirá recepcionar las cotículas emitidas por personas"
+  },
+  {
+   "start": 53.68,
+   "end": 58.8,
+   "text": "que estén presentes en un espacio cerrado como banco o centro de estudio."
+  },
+  {
+   "start": 58.88,
+   "end": 60.72,
+   "text": "¿Cómo funciona?"
+  },
+  {
+   "start": 60.72,
+   "end": 66.56,
+   "text": "Haciendo uso de una enzima empleada por las pruebas de PCR llamada polimerasa,"
+  },
+  {
+   "start": 66.56,
+   "end": 71.16,
+   "text": "que posibilitan la detección de la presencia del virus Sarkov-2,"
+  },
+  {
+   "start": 71.16,
+   "end": 76.0,
+   "text": "a través de sensores infrarrojos que detectan el CO2 del entorno,"
+  },
+  {
+   "start": 76.0,
+   "end": 81.2,
+   "text": "mostrando en la pantalla los resultados gráficos del test antígeno del COVID"
+  },
+  {
+   "start": 81.2,
+   "end": 86.4,
+   "text": "y con un parlante que emitirá la señal de alerta auditiva para sanitizar el espacio."
+  },
+  {
+   "start": 86.4,
+   "end": 90.16,
+   "text": "Gracias por la experiencia."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 92.4
+}

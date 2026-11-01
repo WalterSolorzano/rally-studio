@@ -1,0 +1,77 @@
+{
+ "video_id": "mhegZMrnaBI",
+ "url": "https://youtu.be/mhegZMrnaBI",
+ "year": 2023,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "LIDERES INTREPIDOS",
+ "place_label": "TERCER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "TERCER LUGAR",
+   "team": "LIDERES INTREPIDOS",
+   "challenge": "09 - GRIS A VERDE"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:26:33+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Hola, somos líderes intrépidos. Imagina un mundo donde la sostenibilidad y la conservación de agua son fundamentales. Este proyecto aborda el desafío de convertir lo gris en verde. Se trata de la creación de un sistema inomador que permite reutilizar aguas grises procedientes de baños, lavamanos y fregaderos. Nuestro método incluye un sistema de filtración de vanguardia capaz de separar partículas sólidas, incluso en el caso de los desaguas de inodoros, y de eliminar grasas de manera deficiente. Lo emocionante es que estos recursos recuperados se pueden aplicar tanto en entornos industriales como residenciales. ¿Qué significa esto? Puedes usar estas aguas para el riesgo de tus jardines o devolverlas al ciclo de descarga de inodoros, contribuyendo así al ahorro del agua. La magia radica en nuestra aplicación conectada a un sensor que supervisa y controla todo el proceso de reutilización de manera inteligente. Estamos transformando el concepto de agua gris en recurso verde y estamos listos para cambiar el mundo, un desahué a la desu.",
+ "segments": [
+  {
+   "start": 0.08,
+   "end": 3.08,
+   "text": "Hola, somos líderes intrépidos."
+  },
+  {
+   "start": 4.08,
+   "end": 10.08,
+   "text": "Imagina un mundo donde la sostenibilidad y la conservación de agua son fundamentales."
+  },
+  {
+   "start": 10.08,
+   "end": 16.49,
+   "text": "Este proyecto aborda el desafío de convertir lo gris en verde."
+  },
+  {
+   "start": 16.49,
+   "end": 25.49,
+   "text": "Se trata de la creación de un sistema inomador que permite reutilizar aguas grises procedientes de baños, lavamanos y fregaderos."
+  },
+  {
+   "start": 25.49,
+   "end": 32.49,
+   "text": "Nuestro método incluye un sistema de filtración de vanguardia capaz de separar partículas sólidas,"
+  },
+  {
+   "start": 32.49,
+   "end": 38.49,
+   "text": "incluso en el caso de los desaguas de inodoros, y de eliminar grasas de manera deficiente."
+  },
+  {
+   "start": 39.49,
+   "end": 47.49,
+   "text": "Lo emocionante es que estos recursos recuperados se pueden aplicar tanto en entornos industriales como residenciales."
+  },
+  {
+   "start": 47.49,
+   "end": 58.49,
+   "text": "¿Qué significa esto? Puedes usar estas aguas para el riesgo de tus jardines o devolverlas al ciclo de descarga de inodoros, contribuyendo así al ahorro del agua."
+  },
+  {
+   "start": 58.49,
+   "end": 68.49,
+   "text": "La magia radica en nuestra aplicación conectada a un sensor que supervisa y controla todo el proceso de reutilización de manera inteligente."
+  },
+  {
+   "start": 68.49,
+   "end": 77.49,
+   "text": "Estamos transformando el concepto de agua gris en recurso verde y estamos listos para cambiar el mundo, un desahué a la desu."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 78.6
+}

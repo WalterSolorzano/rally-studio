@@ -1,0 +1,97 @@
+{
+ "video_id": "dW-IVKW3feM",
+ "url": "https://www.youtube.com/watch?v=dW-IVKW3feM",
+ "year": 2026,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "OOZMA KAPPA",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "OOZMA KAPPA",
+   "challenge": "02 - SENSORES AL SERVICIO DE LA COMUNIDAD"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:31:11+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Más de 850.000 habitantes, entre chaco y corrientes, dependen del puente general del grano. Esta estructura tiene más de 40 años, soporta 19.000 vehículos diarios y sufre un desgaste constante sin vigilancia continua. Y si las soluciones tuvieran un cajón? Somos Usma Kappa y presentamos Puente Vivo. En este modelo utilizamos 56 celulares en desuso que sienten las vibraciones del puente las 24 horas para anticipar riesgos estructurales. El sistema reutiliza los sensores de movimiento y las baterías de los teléfonos obteniendo alimentación constante a través de energía solar. En estos dispositivos se resguardan en cajas de fusibles instaladas en los postes eléctricos y monitorean la estructura mediante un software dedicado cada 5 a 8 segundos. A través de una red de cableado se cifra la información y luego se conectan a un model que transfiere los datos a un servidor especializado. Cuando el sensor detecta un patrón irregular, temblor o riesgo de accidente se activa una alerta temprana. El servidor analiza la anomalía, notifica las autoridades correspondientes y activa de inmediato el sistema alert AR, el cual envía mensajes de advertencia a los dispositivos de los usuarios dentro de esa zona geográfica. Este proyecto reduce radicalmente los costos de monitoreo en zonas de recursos limitados y cuida el medio ambiente dándole una segunda vida a los residuos electrónicos. Además, impulsa la economía al generar puestos de trabajo regional en la programación, instalación y mantenimiento de los equipos. Un celular en desuso es mucho más con residuos, es una oportunidad para construir un futuro más seguro, sustentable y conectado.",
+ "segments": [
+  {
+   "start": 0.56,
+   "end": 7.56,
+   "text": "Más de 850.000 habitantes, entre chaco y corrientes, dependen del puente general del grano."
+  },
+  {
+   "start": 7.56,
+   "end": 16.56,
+   "text": "Esta estructura tiene más de 40 años, soporta 19.000 vehículos diarios y sufre un desgaste constante sin vigilancia continua."
+  },
+  {
+   "start": 16.56,
+   "end": 19.56,
+   "text": "Y si las soluciones tuvieran un cajón?"
+  },
+  {
+   "start": 19.56,
+   "end": 23.56,
+   "text": "Somos Usma Kappa y presentamos Puente Vivo."
+  },
+  {
+   "start": 23.56,
+   "end": 33.56,
+   "text": "En este modelo utilizamos 56 celulares en desuso que sienten las vibraciones del puente las 24 horas para anticipar riesgos estructurales."
+  },
+  {
+   "start": 33.56,
+   "end": 42.56,
+   "text": "El sistema reutiliza los sensores de movimiento y las baterías de los teléfonos obteniendo alimentación constante a través de energía solar."
+  },
+  {
+   "start": 42.56,
+   "end": 53.56,
+   "text": "En estos dispositivos se resguardan en cajas de fusibles instaladas en los postes eléctricos y monitorean la estructura mediante un software dedicado cada 5 a 8 segundos."
+  },
+  {
+   "start": 53.56,
+   "end": 62.56,
+   "text": "A través de una red de cableado se cifra la información y luego se conectan a un model que transfiere los datos a un servidor especializado."
+  },
+  {
+   "start": 62.56,
+   "end": 69.56,
+   "text": "Cuando el sensor detecta un patrón irregular, temblor o riesgo de accidente se activa una alerta temprana."
+  },
+  {
+   "start": 69.56,
+   "end": 77.56,
+   "text": "El servidor analiza la anomalía, notifica las autoridades correspondientes y activa de inmediato el sistema alert AR,"
+  },
+  {
+   "start": 77.56,
+   "end": 84.56,
+   "text": "el cual envía mensajes de advertencia a los dispositivos de los usuarios dentro de esa zona geográfica."
+  },
+  {
+   "start": 85.56,
+   "end": 93.56,
+   "text": "Este proyecto reduce radicalmente los costos de monitoreo en zonas de recursos limitados y cuida el medio ambiente dándole una segunda vida a los residuos electrónicos."
+  },
+  {
+   "start": 93.56,
+   "end": 100.56,
+   "text": "Además, impulsa la economía al generar puestos de trabajo regional en la programación, instalación y mantenimiento de los equipos."
+  },
+  {
+   "start": 100.56,
+   "end": 107.56,
+   "text": "Un celular en desuso es mucho más con residuos, es una oportunidad para construir un futuro más seguro, sustentable y conectado."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 113.6
+}

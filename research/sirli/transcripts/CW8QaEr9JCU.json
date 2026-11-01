@@ -1,0 +1,224 @@
+{
+ "video_id": "CW8QaEr9JCU",
+ "url": "https://youtu.be/CW8QaEr9JCU",
+ "year": 2025,
+ "collection": "nacional",
+ "country": "BRASIL",
+ "team": "EGQ - UNIJUI",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "EGQ - UNIJUI",
+   "challenge": "09 - LOGÍSTICA ANTE DESASTRES NATURALES"
+  },
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "EGQ - UNIJUI",
+   "challenge": "09 - LOGÍSTICA ANTE DESASTRES NATURALES"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:14:10+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En situaciones de desastre, el tiempo salva vidas, pero cuando las estradas están bloqueadas y la comunicação falla, la ayuda demora llegar. La centralización de los estoques y la falta de información torna la logística comunitaria lenta, cara e ineficiente. La re-allocar, red de logística comunitaria resiliente, propone una nueva forma de agir, descentralizar la ayuda antes del desastre. Utilizamos containers modulares y suplementos equipados con comunicación via satélite y lacros eletrônicos, instalados en puntos de seguridad comunitaria próximas a las personas que más precisan. Cada container funciona como un minicentro logístico autónomo y interligado. Ellos se comunican entre sí y en cada municipio, trocando información sobre demandas y recursos disponibles. Alimentados por energía solar y conectados con la sábana, continúa operando, mesmo sin red eléctrica o internet, garantiendo que ayuda a llegar a que realmente es posible. Usa lacros eletrônicos, impale saques y asegura una transparencia total en distribución. Por las emergencias, los containers pueden ser usados para actividades comunitarias, como armazenamiento, capacitación y entrenamientos. Y cuando los alimentos estiverem próximos los vencidos, son renovados y doados, evitando desperdicio y fortaleciendo vinculos solidarios locales. La re-allocar es viable y asesiva. Utiliza terminais de satélite debajo de costo y aproveita estructuras ya existentes, como escolas e igrejas. Las instalaciones de los containers ocurrirán en municipios estratégicos, priorizando regiones más vulnerables a desastres. Con treinamiento, los propios muradores tornan a ser los primeros agentes de respuesta, transformando dependencia en autonomía. Re-allocar, porque resiliencia comienza en la comunidad.",
+ "segments": [
+  {
+   "start": 5.01,
+   "end": 8.29,
+   "text": "En situaciones de desastre, el tiempo salva vidas,"
+  },
+  {
+   "start": 8.29,
+   "end": 11.73,
+   "text": "pero cuando las estradas están bloqueadas y la comunicação falla,"
+  },
+  {
+   "start": 11.73,
+   "end": 13.73,
+   "text": "la ayuda demora llegar."
+  },
+  {
+   "start": 13.73,
+   "end": 16.69,
+   "text": "La centralización de los estoques y la falta de información"
+  },
+  {
+   "start": 16.69,
+   "end": 20.49,
+   "text": "torna la logística comunitaria lenta, cara e ineficiente."
+  },
+  {
+   "start": 20.49,
+   "end": 24.01,
+   "text": "La re-allocar, red de logística comunitaria resiliente,"
+  },
+  {
+   "start": 24.01,
+   "end": 26.01,
+   "text": "propone una nueva forma de agir,"
+  },
+  {
+   "start": 26.01,
+   "end": 28.81,
+   "text": "descentralizar la ayuda antes del desastre."
+  },
+  {
+   "start": 28.81,
+   "end": 31.65,
+   "text": "Utilizamos containers modulares y suplementos"
+  },
+  {
+   "start": 31.81,
+   "end": 35.49,
+   "text": "equipados con comunicación via satélite y lacros eletrônicos,"
+  },
+  {
+   "start": 35.49,
+   "end": 39.13,
+   "text": "instalados en puntos de seguridad comunitaria próximas"
+  },
+  {
+   "start": 39.13,
+   "end": 40.93,
+   "text": "a las personas que más precisan."
+  },
+  {
+   "start": 40.93,
+   "end": 45.05,
+   "text": "Cada container funciona como un minicentro logístico autónomo y interligado."
+  },
+  {
+   "start": 45.05,
+   "end": 48.05,
+   "text": "Ellos se comunican entre sí y en cada municipio,"
+  },
+  {
+   "start": 48.05,
+   "end": 51.53,
+   "text": "trocando información sobre demandas y recursos disponibles."
+  },
+  {
+   "start": 51.53,
+   "end": 54.73,
+   "text": "Alimentados por energía solar y conectados con la sábana,"
+  },
+  {
+   "start": 54.73,
+   "end": 58.09,
+   "text": "continúa operando, mesmo sin red eléctrica o internet,"
+  },
+  {
+   "start": 58.09,
+   "end": 61.37,
+   "text": "garantiendo que ayuda a llegar a que realmente es posible."
+  },
+  {
+   "start": 61.45,
+   "end": 64.49,
+   "text": "Usa lacros eletrônicos, impale saques y asegura"
+  },
+  {
+   "start": 64.49,
+   "end": 67.01,
+   "text": "una transparencia total en distribución."
+  },
+  {
+   "start": 67.01,
+   "end": 69.77,
+   "text": "Por las emergencias, los containers pueden ser usados"
+  },
+  {
+   "start": 69.77,
+   "end": 71.57,
+   "text": "para actividades comunitarias,"
+  },
+  {
+   "start": 71.57,
+   "end": 74.77,
+   "text": "como armazenamiento, capacitación y entrenamientos."
+  },
+  {
+   "start": 74.77,
+   "end": 76.57,
+   "text": "Y cuando los alimentos estiverem próximos"
+  },
+  {
+   "start": 76.57,
+   "end": 79.01,
+   "text": "los vencidos, son renovados y doados,"
+  },
+  {
+   "start": 79.01,
+   "end": 82.45,
+   "text": "evitando desperdicio y fortaleciendo vinculos solidarios locales."
+  },
+  {
+   "start": 82.45,
+   "end": 84.45,
+   "text": "La re-allocar es viable y asesiva."
+  },
+  {
+   "start": 84.45,
+   "end": 86.97,
+   "text": "Utiliza terminais de satélite debajo de costo"
+  },
+  {
+   "start": 86.97,
+   "end": 89.05,
+   "text": "y aproveita estructuras ya existentes,"
+  },
+  {
+   "start": 89.05,
+   "end": 90.85,
+   "text": "como escolas e igrejas."
+  },
+  {
+   "start": 90.93,
+   "end": 92.85,
+   "text": "Las instalaciones de los containers"
+  },
+  {
+   "start": 92.85,
+   "end": 94.85,
+   "text": "ocurrirán en municipios estratégicos,"
+  },
+  {
+   "start": 94.85,
+   "end": 98.05,
+   "text": "priorizando regiones más vulnerables a desastres."
+  },
+  {
+   "start": 98.05,
+   "end": 100.05,
+   "text": "Con treinamiento, los propios muradores"
+  },
+  {
+   "start": 100.05,
+   "end": 102.45,
+   "text": "tornan a ser los primeros agentes de respuesta,"
+  },
+  {
+   "start": 102.45,
+   "end": 105.53,
+   "text": "transformando dependencia en autonomía."
+  },
+  {
+   "start": 105.53,
+   "end": 107.73,
+   "text": "Re-allocar, porque resiliencia"
+  },
+  {
+   "start": 107.73,
+   "end": 109.73,
+   "text": "comienza en la comunidad."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 114.1
+}

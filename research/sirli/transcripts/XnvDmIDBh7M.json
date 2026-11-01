@@ -1,0 +1,137 @@
+{
+ "video_id": "XnvDmIDBh7M",
+ "url": "https://youtu.be/XnvDmIDBh7M",
+ "year": 2025,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "CIRCULO CREATIVO NIC",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "CIRCULO CREATIVO NIC",
+   "challenge": "03 - FUGAS DE AGUA"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:38:37+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Sabías que en América Latina se pierde un 50% de agua potable por fuga? La mitad del agua se pierde antes de llegar a las casas. Eso afecta a las familias, a las comunidades y al planeta, pero encontramos una solución. Detrata cada fuga. Hay historias de escasez. Familia afecta a ecosistemas que se van deteriorando. Cada fuga no solo desperdicia agua y energía, sino que también incrementa la contaminación y el estrés hídrico. Ibratam es un sistema de detección de fuga de agua mediante una aplicación. Este esquema muestra un sistema automatizado de tensión de fuga que utiliza energía sola como fuente de alimentación autónoma que utiliza una combinación de componentes para monitorear y controlar el flujo de agua. El sistema se alimenta de un módulo de energía sola lo que lo hace autónomo y sostenible. Un sensor cautelímetro mide el flujo de agua en tiempo real con una sensibilidad del 0.5%. Un controlador lógico, programable PLC, procesa los datos del sensor y en caso de detectar una fuga activa un algoritmo de detección de fuga. El PLC envía señales de control a válvulas olenoides para cerrar o abrir el paso del agua en la red de tuberilla. Un módulo SP32 permite la conexión a una interfaz de usuarios a través de WIFI o Bluetooth donde se puede monitorear y registrar datos así como recibir alertas. Ahorramos agua, reducimos costo, evitamos daños en casa y cuidamos el ambiente. No más pérdida de agua, queremos agua para todos y tecnología al servicio de la comunidad. Somos Círculos CreativoNi y esto es Hydrolatal.",
+ "segments": [
+  {
+   "start": 4.66,
+   "end": 9.14,
+   "text": "¿Sabías que en América Latina se pierde un 50% de agua potable por fuga?"
+  },
+  {
+   "start": 9.14,
+   "end": 12.14,
+   "text": "La mitad del agua se pierde antes de llegar a las casas."
+  },
+  {
+   "start": 12.14,
+   "end": 17.3,
+   "text": "Eso afecta a las familias, a las comunidades y al planeta, pero encontramos una solución."
+  },
+  {
+   "start": 17.3,
+   "end": 20.46,
+   "text": "Detrata cada fuga. Hay historias de escasez."
+  },
+  {
+   "start": 20.46,
+   "end": 24.02,
+   "text": "Familia afecta a ecosistemas que se van deteriorando."
+  },
+  {
+   "start": 24.02,
+   "end": 27.46,
+   "text": "Cada fuga no solo desperdicia agua y energía,"
+  },
+  {
+   "start": 27.46,
+   "end": 31.22,
+   "text": "sino que también incrementa la contaminación y el estrés hídrico."
+  },
+  {
+   "start": 32.18,
+   "end": 36.3,
+   "text": "Ibratam es un sistema de detección de fuga de agua mediante una aplicación."
+  },
+  {
+   "start": 36.3,
+   "end": 40.34,
+   "text": "Este esquema muestra un sistema automatizado de tensión de fuga"
+  },
+  {
+   "start": 40.34,
+   "end": 44.34,
+   "text": "que utiliza energía sola como fuente de alimentación autónoma"
+  },
+  {
+   "start": 44.34,
+   "end": 49.54,
+   "text": "que utiliza una combinación de componentes para monitorear y controlar el flujo de agua."
+  },
+  {
+   "start": 49.54,
+   "end": 55.78,
+   "text": "El sistema se alimenta de un módulo de energía sola lo que lo hace autónomo y sostenible."
+  },
+  {
+   "start": 55.78,
+   "end": 59.98,
+   "text": "Un sensor cautelímetro mide el flujo de agua en tiempo real"
+  },
+  {
+   "start": 60.02,
+   "end": 63.02,
+   "text": "con una sensibilidad del 0.5%."
+  },
+  {
+   "start": 63.02,
+   "end": 66.98,
+   "text": "Un controlador lógico, programable PLC,"
+  },
+  {
+   "start": 66.98,
+   "end": 74.7,
+   "text": "procesa los datos del sensor y en caso de detectar una fuga activa un algoritmo de detección de fuga."
+  },
+  {
+   "start": 74.7,
+   "end": 83.1,
+   "text": "El PLC envía señales de control a válvulas olenoides para cerrar o abrir el paso del agua en la red de tuberilla."
+  },
+  {
+   "start": 83.26,
+   "end": 90.86,
+   "text": "Un módulo SP32 permite la conexión a una interfaz de usuarios a través de WIFI o Bluetooth"
+  },
+  {
+   "start": 90.86,
+   "end": 95.58,
+   "text": "donde se puede monitorear y registrar datos así como recibir alertas."
+  },
+  {
+   "start": 95.58,
+   "end": 100.58,
+   "text": "Ahorramos agua, reducimos costo, evitamos daños en casa y cuidamos el ambiente."
+  },
+  {
+   "start": 100.58,
+   "end": 106.5,
+   "text": "No más pérdida de agua, queremos agua para todos y tecnología al servicio de la comunidad."
+  },
+  {
+   "start": 106.5,
+   "end": 111.5,
+   "text": "Somos Círculos CreativoNi y esto es Hydrolatal."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 112.2
+}

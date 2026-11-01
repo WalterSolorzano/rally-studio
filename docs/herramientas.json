@@ -135,7 +135,7 @@
       "instalar": "npx skills add impeccable",
       "se_usa_cuando": ["interfaz", "ui", "landing", "rediseno", "pulir pantalla"],
       "no_instalar_cuando": ["solo texto o datos sin interfaz"],
-      "nota": "Exigida por propuesta-diseno."
+      "nota": "Opcional para propuesta-identidad; no es requisito."
     },
     {
       "id": "frontend-design",
@@ -145,7 +145,7 @@
       "instalar": "npx skills add frontend-design",
       "se_usa_cuando": ["interfaz", "frontend", "componentes"],
       "no_instalar_cuando": ["solo documento o presentacion"],
-      "nota": "Exigida por propuesta-diseno."
+      "nota": "Opcional para propuesta-identidad; no es requisito."
     },
     {
       "id": "ui-ux-pro-max",

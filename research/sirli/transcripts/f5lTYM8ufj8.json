@@ -1,0 +1,117 @@
+{
+ "video_id": "f5lTYM8ufj8",
+ "url": "https://www.youtube.com/watch?v=f5lTYM8ufj8",
+ "year": 2020,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "INNOVATION SQUAD",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2020,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "INNOVATION SQUAD",
+   "challenge": "02 - ¿CÓMO PODEMOS HACER PARA QUE LOS CONDUCTORES EVITEN DISTRAERSE CON SU CELULAR O MÓVIL MIENTRAS MANEJAN SUS VEHÍCULOS?"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:55:21+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "El uso de celulares al momento de conducir constituye una de las mayores problemáticas a nivel mundial, siendo esta una de las principales causas de los accidentes de tránsito. Según la Organización Mundial de la Salud, 1,35 millones de personas mueren cada año en este tipo de accidentes y el 30% de ellos son causados por el uso de dispositivos móviles mientras está al volando. La pregunta siempre ha sido la misma, ¿Cómo logramos cambiar estas cifras? Quizás te parezca imposible, pero no es así. Representamos C-CARD. C-CARD es un GPS novedoso que te guía a tu destino de forma segura y eficaz, evitando que utilices su teléfono celular al conducir. C-CARD administrará y bloqueará tus llamadas y mensajes, clasificándolos por su nivel de emergencia. En caso de ser una emergencia, esta aplicación le mostrará el estacionamiento más cercano para que pueda atender o devolver sus llamadas, nuevas rutas de tránsito por medio de su inteligencia artificial. Y así, en menos tiempo y utilizando menos combustible, podrá llegar a su destino, lo que aporta a la vez un valor ambiental. Porque trabajamos en pro de una sociedad más valorativa, más comprometida y responsable, y porque tu seguridad es nuestra prioridad, somos Innovation Squad. Y el C-CARD ya está disponible para ti. Que esperas, descárgala de este App Store o Play Store.",
+ "segments": [
+  {
+   "start": 11.5,
+   "end": 18.4,
+   "text": "El uso de celulares al momento de conducir constituye una de las mayores problemáticas a nivel mundial,"
+  },
+  {
+   "start": 18.4,
+   "end": 22.6,
+   "text": "siendo esta una de las principales causas de los accidentes de tránsito."
+  },
+  {
+   "start": 22.6,
+   "end": 30.4,
+   "text": "Según la Organización Mundial de la Salud, 1,35 millones de personas mueren cada año en este tipo de accidentes"
+  },
+  {
+   "start": 30.4,
+   "end": 36.6,
+   "text": "y el 30% de ellos son causados por el uso de dispositivos móviles mientras está al volando."
+  },
+  {
+   "start": 36.6,
+   "end": 41.2,
+   "text": "La pregunta siempre ha sido la misma, ¿Cómo logramos cambiar estas cifras?"
+  },
+  {
+   "start": 41.3,
+   "end": 44.1,
+   "text": "Quizás te parezca imposible, pero no es así."
+  },
+  {
+   "start": 44.1,
+   "end": 46.1,
+   "text": "Representamos C-CARD."
+  },
+  {
+   "start": 46.1,
+   "end": 51.4,
+   "text": "C-CARD es un GPS novedoso que te guía a tu destino de forma segura y eficaz,"
+  },
+  {
+   "start": 51.4,
+   "end": 55.1,
+   "text": "evitando que utilices su teléfono celular al conducir."
+  },
+  {
+   "start": 55.1,
+   "end": 61.7,
+   "text": "C-CARD administrará y bloqueará tus llamadas y mensajes, clasificándolos por su nivel de emergencia."
+  },
+  {
+   "start": 61.7,
+   "end": 67.1,
+   "text": "En caso de ser una emergencia, esta aplicación le mostrará el estacionamiento más cercano"
+  },
+  {
+   "start": 67.2,
+   "end": 74.0,
+   "text": "para que pueda atender o devolver sus llamadas, nuevas rutas de tránsito por medio de su inteligencia artificial."
+  },
+  {
+   "start": 74.0,
+   "end": 79.0,
+   "text": "Y así, en menos tiempo y utilizando menos combustible, podrá llegar a su destino,"
+  },
+  {
+   "start": 79.0,
+   "end": 81.5,
+   "text": "lo que aporta a la vez un valor ambiental."
+  },
+  {
+   "start": 81.5,
+   "end": 87.2,
+   "text": "Porque trabajamos en pro de una sociedad más valorativa, más comprometida y responsable,"
+  },
+  {
+   "start": 87.2,
+   "end": 91.8,
+   "text": "y porque tu seguridad es nuestra prioridad, somos Innovation Squad."
+  },
+  {
+   "start": 91.9,
+   "end": 94.4,
+   "text": "Y el C-CARD ya está disponible para ti."
+  },
+  {
+   "start": 94.4,
+   "end": 97.1,
+   "text": "Que esperas, descárgala de este App Store o Play Store."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 97.1
+}

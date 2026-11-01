@@ -42,13 +42,23 @@ propone **soluciones** para esos retos. Si no hay retos, pídelos o impórtalos;
 5. Revisa el resultado antes de entregarlo:
    - Cada solución debe traer cadena de razonamiento (problema → causa raíz → insight →
      solución → métrica) y un precedente con año, equipo y proyecto.
+   - **Dos soluciones por reto**, con mecanismo distinto e independiente (no "fase 2").
+   - Cada solución trae su párrafo «En la práctica»: quién lo opera, quién paga, de dónde
+     salen insumos y equipos.
+   - Antes de citar año, rally, equipo o puesto, contrasta con `knowledge/ERRATAS.md`.
    - Si una ruta es `exploratoria`, dilo: no hay precedente directo y debe validarse.
    - Las cifras de impacto solo aparecen si tienen fuente en el corpus.
    - La categoría debe estar justificada, no asumida.
 
+La doctrina completa (análisis sistémico, familias de mecanismos, pruebas de descarte,
+banderas de riesgo y anatomía del dossier) vive en `skills/dossier-soluciones/SKILL.md`.
+Esta skill solo opera el motor.
+
 ## Qué no hacer
 
 - **Nunca** propongas retos nuevos ni reformules el enunciado del comité.
+- **Nunca** incluyas una sección de «lo que el jurado va a atacar»: no hay réplica. El
+  riesgo se escribe como bandera con la condición que lo resuelve.
 - **Nunca** muestres estadísticas internas (saturación, score, probabilidad de victoria).
   Solo datos de impacto con fuente para vender la idea.
 - **Nunca** inventes cifras, precios, beneficiarios ni precedentes.
@@ -66,7 +76,8 @@ propone **soluciones** para esos retos. Si no hay retos, pídelos o impórtalos;
 | Impacto | Dato + fuente; si no hay, "por validar con el equipo" |
 | Recursos | Componentes y materiales detectados |
 | Rúbrica | Criterio principal y secundario con puntos |
-| Riesgo | Lo que el jurado atacaría primero |
+| Bandera de riesgo | La bandera y la condición que la resuelve |
+| En la práctica | Quién opera, quién paga, insumos, arranque (350–450 caracteres) |
 | Pitch | Una frase para el video |
 
 ## Punteros
@@ -74,6 +85,8 @@ propone **soluciones** para esos retos. Si no hay retos, pídelos o impórtalos;
 - Motor: `scripts/soluciones_motor.py`
 - PDF: `scripts/gen_soluciones_pdf.py` + `docs/assets/soluciones.css`
 - Casos: `knowledge/retos_razonamiento.json`
+- Erratas y fechas: `knowledge/ERRATAS.md`
+- Doctrina: `skills/dossier-soluciones/SKILL.md`
 - Ganadores: `research/sirli/winners.jsonl`, `knowledge/winners_analysis.md`
 - Cerebro: `brain/corpus/retos.md`, `graphify-out/graph.json`
 - Rúbricas: `.agents/rules/rubricas-y-puntajes.md`

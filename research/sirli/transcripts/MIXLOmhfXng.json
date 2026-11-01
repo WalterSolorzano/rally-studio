@@ -1,0 +1,117 @@
+{
+ "video_id": "MIXLOmhfXng",
+ "url": "https://youtu.be/MIXLOmhfXng",
+ "year": 2025,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "ECHONIC",
+ "place_label": "TERCER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "TERCER LUGAR",
+   "team": "ECHONIC",
+   "challenge": "04 - SISTEMA DE ALERTA TEMPRANA"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:38:08+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Imaginemos recibir una alerta de inundación minuto antes de que el agua arrase su comunidad. En América Latina, los desatres naturales han causado pérdidas de 58 mil millones de dólares anuales y ha afectado a 174 millones de personas. El problema no es la falta de tecnología, sino su alto costo y complejidad que incluye a las comunidades más vulnerables. Somos Econic y les presentamos Centaurium, la solución que transforma la gestión del riesgo. Nuestra innovación es un dispositivo híbrico, emplea un sensor ultrasonico H.C.S.R.04 para medir la altura del agua en río y cálculo. Un sensor de lluvia FSC37 para quantificar la precipitación y, en algunos casos, un sensor de unedad del suelo YL-39 para anticipar saturación. El dispositivo para incendios combina un sensor DHT22 que monitorea temperatura y humedad, un M2-2 que detecta humo y gases de convulsión y un anemómetro YSCWV02 que mide la velocidad del viento, variable clave en la propagación del cuerpo. Cada módulo recopila estos datos y lo envía por red celular 3G a nuestra API central, donde un workflow en N8N analiza las variaciones y activa la alerta automáticamente. El sistema activa una sirena local que advierte a la población en el punto de riesgo, difunde la información en segundo a través de WhatsApp institucional, radios, televisora y redes sociales, con un VPN de 1.070 dólares y un TIR del 18.7%. La plataforma es eficiente y escalable. Los invitamos a ser parte de una revolución que empodera comunidades y construye resiliencia real. La tecnología funciona, los números lo respaldan.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 5.88,
+   "text": "Imaginemos recibir una alerta de inundación minuto antes de que el agua arrase su comunidad."
+  },
+  {
+   "start": 5.88,
+   "end": 12.72,
+   "text": "En América Latina, los desatres naturales han causado pérdidas de 58 mil millones de dólares anuales"
+  },
+  {
+   "start": 12.72,
+   "end": 16.12,
+   "text": "y ha afectado a 174 millones de personas."
+  },
+  {
+   "start": 16.12,
+   "end": 23.56,
+   "text": "El problema no es la falta de tecnología, sino su alto costo y complejidad que incluye a las comunidades más vulnerables."
+  },
+  {
+   "start": 23.56,
+   "end": 29.08,
+   "text": "Somos Econic y les presentamos Centaurium, la solución que transforma la gestión del riesgo."
+  },
+  {
+   "start": 29.16,
+   "end": 40.24,
+   "text": "Nuestra innovación es un dispositivo híbrico, emplea un sensor ultrasonico H.C.S.R.04 para medir la altura del agua en río y cálculo."
+  },
+  {
+   "start": 40.24,
+   "end": 52.28,
+   "text": "Un sensor de lluvia FSC37 para quantificar la precipitación y, en algunos casos, un sensor de unedad del suelo YL-39 para anticipar saturación."
+  },
+  {
+   "start": 52.36,
+   "end": 58.88,
+   "text": "El dispositivo para incendios combina un sensor DHT22 que monitorea temperatura y humedad,"
+  },
+  {
+   "start": 58.88,
+   "end": 68.12,
+   "text": "un M2-2 que detecta humo y gases de convulsión y un anemómetro YSCWV02 que mide la velocidad del viento,"
+  },
+  {
+   "start": 68.12,
+   "end": 70.52,
+   "text": "variable clave en la propagación del cuerpo."
+  },
+  {
+   "start": 70.52,
+   "end": 76.72,
+   "text": "Cada módulo recopila estos datos y lo envía por red celular 3G a nuestra API central,"
+  },
+  {
+   "start": 76.76,
+   "end": 83.72,
+   "text": "donde un workflow en N8N analiza las variaciones y activa la alerta automáticamente."
+  },
+  {
+   "start": 83.72,
+   "end": 89.64,
+   "text": "El sistema activa una sirena local que advierte a la población en el punto de riesgo,"
+  },
+  {
+   "start": 89.64,
+   "end": 95.76,
+   "text": "difunde la información en segundo a través de WhatsApp institucional, radios, televisora y redes sociales,"
+  },
+  {
+   "start": 95.76,
+   "end": 101.76,
+   "text": "con un VPN de 1.070 dólares y un TIR del 18.7%."
+  },
+  {
+   "start": 101.76,
+   "end": 104.16,
+   "text": "La plataforma es eficiente y escalable."
+  },
+  {
+   "start": 104.2,
+   "end": 110.8,
+   "text": "Los invitamos a ser parte de una revolución que empodera comunidades y construye resiliencia real."
+  },
+  {
+   "start": 110.8,
+   "end": 113.96,
+   "text": "La tecnología funciona, los números lo respaldan."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 117.3
+}

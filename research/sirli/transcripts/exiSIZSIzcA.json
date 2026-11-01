@@ -1,0 +1,57 @@
+{
+ "video_id": "exiSIZSIzcA",
+ "url": "https://youtu.be/exiSIZSIzcA",
+ "year": 2022,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "UNITED FOR THE GOAL (UFG)",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "UNITED FOR THE GOAL (UFG)",
+   "challenge": "01 - INCLUSIÓN LABORAL DE PERSONAS DEL ESPECTRO AUTISTA"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:38:14+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En donde se desarrolló una asesoría para la correcta administración, un trato igualitario a habilidades blandas propuesta eventos en munición. ¿Sabías que una de cada 120 personas presenta algún tipo de trastorno de espectro? Brindando herramientas y estrategias necesarias mediante la capacitación del personal, que a su vez mejorará las condiciones laborales de las personas que presentan un trastorno de espectro. ¿Qué es la calidad en tu ambiente de trabajo, además de que generas inclusión, conciencia en tu equipo de trabajo? Brindando un servicio. Este es dar asesorías y capacitación para con ello concientizar acerca del trastorno de espectro. Si no también aseguras la mejora del rendimiento de tu empresa al crear nuevas oportunidades, nuestros precios de introducción van de los que oportunizas más adelante.",
+ "segments": [
+  {
+   "start": 1.39,
+   "end": 12.39,
+   "text": "En donde se desarrolló una asesoría para la correcta administración, un trato igualitario a habilidades blandas propuesta eventos en munición."
+  },
+  {
+   "start": 12.39,
+   "end": 18.39,
+   "text": "¿Sabías que una de cada 120 personas presenta algún tipo de trastorno de espectro?"
+  },
+  {
+   "start": 18.39,
+   "end": 28.39,
+   "text": "Brindando herramientas y estrategias necesarias mediante la capacitación del personal, que a su vez mejorará las condiciones laborales de las personas que presentan un trastorno de espectro."
+  },
+  {
+   "start": 28.39,
+   "end": 34.39,
+   "text": "¿Qué es la calidad en tu ambiente de trabajo, además de que generas inclusión, conciencia en tu equipo de trabajo?"
+  },
+  {
+   "start": 34.39,
+   "end": 42.39,
+   "text": "Brindando un servicio. Este es dar asesorías y capacitación para con ello concientizar acerca del trastorno de espectro."
+  },
+  {
+   "start": 42.39,
+   "end": 53.39,
+   "text": "Si no también aseguras la mejora del rendimiento de tu empresa al crear nuevas oportunidades, nuestros precios de introducción van de los que oportunizas más adelante."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 55.3
+}

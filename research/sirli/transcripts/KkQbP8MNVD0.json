@@ -1,0 +1,97 @@
+{
+ "video_id": "KkQbP8MNVD0",
+ "url": "https://youtu.be/KkQbP8MNVD0",
+ "year": 2025,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "PSYCHIC FEVER",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "PSYCHIC FEVER",
+   "challenge": "07 - SALUD MÓVIL PARA MUJERES EN ZONAS RURALES"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:51:44+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En muchas comunidades rurales, las mujeres enfrentan una dura realidad, no tienen acceso a chequeos médicos básicos, controles prenatales, exámenes ginecológicos o revisiones de mamas, servicios esenciales para prevenir enfermedades y cuidar su bienestar. Muchas veces son un lujo inaccesible. La falta de recursos, distancia y comunicación con personal de salud, pone en riesgo su vida y la de sus hijos si él nace como una respuesta a esta necesidad. Es una aplicación móvil de bajo costo diseñada para brindar atención médica femenina en zonas rurales, facilitando la comunicación directa y oportuna con profesionales capacitados a través de consultas virtuales, recordatorios personalizados, orientación médica básica y acceso a información preventiva. Si él busca acercar la salud de cada mujer, sin importar donde se encuentre, nuestro propósito es claro, empoderar a las mujeres rurales, con herramientas accesibles que les permitan cuidar su cuerpo, su salud y su futuro. Porque si él significa más que tecnología, significa esperanza, conexión y vida.",
+ "segments": [
+  {
+   "start": 25.14,
+   "end": 31.54,
+   "text": "En muchas comunidades rurales, las mujeres enfrentan una dura realidad, no tienen acceso"
+  },
+  {
+   "start": 31.54,
+   "end": 39.06,
+   "text": "a chequeos médicos básicos, controles prenatales, exámenes ginecológicos o revisiones de"
+  },
+  {
+   "start": 39.06,
+   "end": 46.18,
+   "text": "mamas, servicios esenciales para prevenir enfermedades y cuidar su bienestar."
+  },
+  {
+   "start": 46.18,
+   "end": 48.9,
+   "text": "Muchas veces son un lujo inaccesible."
+  },
+  {
+   "start": 48.9,
+   "end": 55.34,
+   "text": "La falta de recursos, distancia y comunicación con personal de salud, pone en riesgo su vida"
+  },
+  {
+   "start": 55.34,
+   "end": 61.46,
+   "text": "y la de sus hijos si él nace como una respuesta a esta necesidad."
+  },
+  {
+   "start": 61.46,
+   "end": 67.86,
+   "text": "Es una aplicación móvil de bajo costo diseñada para brindar atención médica femenina en"
+  },
+  {
+   "start": 67.86,
+   "end": 74.7,
+   "text": "zonas rurales, facilitando la comunicación directa y oportuna con profesionales capacitados"
+  },
+  {
+   "start": 74.7,
+   "end": 81.5,
+   "text": "a través de consultas virtuales, recordatorios personalizados, orientación médica básica y"
+  },
+  {
+   "start": 81.5,
+   "end": 83.86,
+   "text": "acceso a información preventiva."
+  },
+  {
+   "start": 83.86,
+   "end": 91.14,
+   "text": "Si él busca acercar la salud de cada mujer, sin importar donde se encuentre, nuestro propósito"
+  },
+  {
+   "start": 91.14,
+   "end": 96.9,
+   "text": "es claro, empoderar a las mujeres rurales, con herramientas accesibles que les permitan"
+  },
+  {
+   "start": 96.9,
+   "end": 100.14,
+   "text": "cuidar su cuerpo, su salud y su futuro."
+  },
+  {
+   "start": 100.14,
+   "end": 107.5,
+   "text": "Porque si él significa más que tecnología, significa esperanza, conexión y vida."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 107.5
+}

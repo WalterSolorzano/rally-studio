@@ -1,5 +1,5 @@
 {
-  "corpus_files": 17,
+  "corpus_files": 16,
   "project_file": null,
   "missing_sources": [],
   "files": [
@@ -9,15 +9,15 @@
     },
     {
       "name": "claims_datos.md",
-      "bytes": 1164
+      "bytes": 23
     },
     {
       "name": "ganadores_analisis.md",
-      "bytes": 30548
+      "bytes": 29707
     },
     {
       "name": "ganadores_db.md",
-      "bytes": 8695
+      "bytes": 8898
     },
     {
       "name": "ganadores_latam.md",
@@ -49,15 +49,15 @@
     },
     {
       "name": "retos_ranked.md",
-      "bytes": 3384
+      "bytes": 21
     },
     {
       "name": "retos_reporte.md",
-      "bytes": 2921
+      "bytes": 101
     },
     {
       "name": "rubrica_latam.md",
-      "bytes": 2999
+      "bytes": 622
     },
     {
       "name": "rubrica_oficial.jpeg",
@@ -65,7 +65,7 @@
     },
     {
       "name": "rubricas_matrices.md",
-      "bytes": 11867
+      "bytes": 7042
     }
   ]
 }

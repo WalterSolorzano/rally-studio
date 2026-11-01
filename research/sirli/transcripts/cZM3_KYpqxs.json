@@ -1,0 +1,137 @@
+{
+ "video_id": "cZM3_KYpqxs",
+ "url": "https://youtu.be/cZM3_KYpqxs?si=y5p-hBapFOXS3vMR",
+ "year": 2024,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "IMPULSO",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "IMPULSO",
+   "challenge": "08 - REDUCCIÓN DE DESPERDICIOS ALIMENTARIOS"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:04:34+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "220 millones de toneladas de alimentos son desperdiciados anualmente, afectando a 47 millones de personas que padecen de hambre en las regiones de América Latina. Este problema crece debido a la desconexión entre lo fértil y la demanda, así como en la falta de conciencia sobre el impacto del desperdicio alimentario en restaurantes y supermercados. Por eso hemos desarrollado HOPE, un proyecto que aborda el desperdicio de alimentos gestionando y distribuyendo productos que no cumplen con los estándares estéticos y de caducidad. Transformándolos en sopas nutritivas entregadas en envases retornables para familias de escasos recursos. Usando contenedores con sensores que monitoreamos a través de una app en tiempo real, la logística de recolección de desperdicios de alimentos de restaurantes y supermercados. Socialmente, HOPE mejore el acceso a alimentos nutritivos, generando empleos en la comunidad e incentiva a la agricultura familiar. Desde una perspectiva ambiental, el uso de envases de vidrio promueve una economía circular al eliminar plásticos, haciendo de HOPE una propuesta viable y sostenible en el tiempo. Se estima captar 170.000 libras de desechos anualmente, evitando que terminen en vertederos. Por cada 500 libras de materia prima se beneficiarán aproximadamente 200 personas por día. De esta manera nosotros financiaremos la causa social de sopas HOPE, además de promover un puerto familiar e incentivar la ciendra de árboles vitales. HOPE es un vistazo hacia el futuro. Con cada sopa reduciremos el hambre en las comunidades que más lo necesitan y con cada bono regeneraremos la tierra para las siguientes generaciones.",
+ "segments": [
+  {
+   "start": 0.72,
+   "end": 10.64,
+   "text": "220 millones de toneladas de alimentos son desperdiciados anualmente, afectando a 47 millones"
+  },
+  {
+   "start": 10.64,
+   "end": 15.52,
+   "text": "de personas que padecen de hambre en las regiones de América Latina."
+  },
+  {
+   "start": 15.52,
+   "end": 20.52,
+   "text": "Este problema crece debido a la desconexión entre lo fértil y la demanda, así como en"
+  },
+  {
+   "start": 20.52,
+   "end": 25.0,
+   "text": "la falta de conciencia sobre el impacto del desperdicio alimentario en restaurantes"
+  },
+  {
+   "start": 25.0,
+   "end": 27.28,
+   "text": "y supermercados."
+  },
+  {
+   "start": 27.28,
+   "end": 32.84,
+   "text": "Por eso hemos desarrollado HOPE, un proyecto que aborda el desperdicio de alimentos gestionando"
+  },
+  {
+   "start": 32.84,
+   "end": 37.64,
+   "text": "y distribuyendo productos que no cumplen con los estándares estéticos y de caducidad."
+  },
+  {
+   "start": 37.64,
+   "end": 43.96,
+   "text": "Transformándolos en sopas nutritivas entregadas en envases retornables para familias de escasos"
+  },
+  {
+   "start": 43.96,
+   "end": 45.44,
+   "text": "recursos."
+  },
+  {
+   "start": 45.44,
+   "end": 51.24,
+   "text": "Usando contenedores con sensores que monitoreamos a través de una app en tiempo real, la logística"
+  },
+  {
+   "start": 51.24,
+   "end": 56.0,
+   "text": "de recolección de desperdicios de alimentos de restaurantes y supermercados."
+  },
+  {
+   "start": 56.04,
+   "end": 61.76,
+   "text": "Socialmente, HOPE mejore el acceso a alimentos nutritivos, generando empleos en la comunidad"
+  },
+  {
+   "start": 61.76,
+   "end": 64.76,
+   "text": "e incentiva a la agricultura familiar."
+  },
+  {
+   "start": 64.76,
+   "end": 70.2,
+   "text": "Desde una perspectiva ambiental, el uso de envases de vidrio promueve una economía circular"
+  },
+  {
+   "start": 70.2,
+   "end": 77.24,
+   "text": "al eliminar plásticos, haciendo de HOPE una propuesta viable y sostenible en el tiempo."
+  },
+  {
+   "start": 77.24,
+   "end": 83.76,
+   "text": "Se estima captar 170.000 libras de desechos anualmente, evitando que terminen en vertederos."
+  },
+  {
+   "start": 83.84,
+   "end": 89.72,
+   "text": "Por cada 500 libras de materia prima se beneficiarán aproximadamente 200 personas por día."
+  },
+  {
+   "start": 89.72,
+   "end": 96.16,
+   "text": "De esta manera nosotros financiaremos la causa social de sopas HOPE, además de promover"
+  },
+  {
+   "start": 96.16,
+   "end": 100.8,
+   "text": "un puerto familiar e incentivar la ciendra de árboles vitales."
+  },
+  {
+   "start": 100.8,
+   "end": 103.0,
+   "text": "HOPE es un vistazo hacia el futuro."
+  },
+  {
+   "start": 103.0,
+   "end": 107.52,
+   "text": "Con cada sopa reduciremos el hambre en las comunidades que más lo necesitan y con"
+  },
+  {
+   "start": 107.52,
+   "end": 111.52,
+   "text": "cada bono regeneraremos la tierra para las siguientes generaciones."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 115.2
+}

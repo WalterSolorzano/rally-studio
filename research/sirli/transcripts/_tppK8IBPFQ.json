@@ -1,0 +1,237 @@
+{
+ "video_id": "_tppK8IBPFQ",
+ "url": "https://youtu.be/_tppK8IBPFQ",
+ "year": 2025,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "MONKEY SCIENCE",
+ "place_label": "TERCER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "TERCER LUGAR",
+   "team": "MONKEY SCIENCE",
+   "challenge": "05 - HUERTOS VERTICALES"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:47:43+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "El rápido crecimiento urbano en Latinoamérica genera una falta de espacio para los cultivos. Por sando una desconexión de las comunidades con el origen de su alimento, esta dependencia provoca que el consumo de lopestales frescos sea accesibilidad limitada por los cosos logísticos que implica. Esto contribuye al desafío global de la desnutrición y el sobrepeso de la región debido a los alimentos procesados. Sumado a esto, la dependencia de los sistemas industrializados elimina el control de la calidad que se consume debido a los altos niveles de agroquímico y pesticida. En un contexto urbano donde el espacio es limitado, la alta valoración del suelo restringe el acceso a áreas productivas. El proyecto propone un huerto vertical y ropónico automatizado, utilizando botellas plásticas grandes a piladas verticalmente unidas Rabocola. Cada una preparada con dos orificios laterales que contienen un sustrato de piedra pome sostenido por un alambre galmarizado interno. El sistema incorpora asensores de pH, humedad, conductividad eléctrica y temperatura, cuyos datos se visualizan mediante una aplicación móvil. El sistema funciona en que cuando la humedad desciende por debajo del umbral, una electroválvula libera agua desde el tanque hacia las columnas. Al alcanzar el rango óptimo de humedad, dependiendo las necesidades del cultivo, la electroválvula se cierra y el excedente de agua se recolecta y recrúcula mediante una bomba. Un sistema fotovoltaico básico alimenta la bomba asensores y electroválvula. El abastecimiento de agua proviene principalmente de la ayuda que está apta a filtrar y almacenar en un tanque. Para el control biológico de plagas, se emplea un microorganismo denominado VTI en solución líquida. La propuesta es sostenible, económica y replicable, ideal para producir alim... La AP es fundamental para la automatización y supervisión eficientemente del sistema hidropónico. Permite monitoriar en tiempo real parámetros como pH, humedad, temperatura y conductividad eléctrica, también con su respectiva gráfica. Además, observar el comportamiento de la apertura y cierre automática válvula según las condiciones detectadas, todos estos por los sensores. También con un sistema de alertas para saber en qué momento puede ir a fallar una anomalía, a facilitando la toma de decisiones y promediendo una agricultura más sostenible e inteligente. El método permite incrementar la producción hasta 6 veces frente a los sistemas convencionales y por los bajos de mantenimiento resulta una alternativa afectiva y sostenible de largo plazo. Además, se alinea con los eje 1, 3, 5, 6 y 7 de Plan Nacional de Lucha contra la Proces para el Desarrollo Humano 2022-2026.",
+ "segments": [
+  {
+   "start": 3.89,
+   "end": 7.49,
+   "text": "El rápido crecimiento urbano en Latinoamérica genera una falta de espacio para los cultivos."
+  },
+  {
+   "start": 7.49,
+   "end": 11.05,
+   "text": "Por sando una desconexión de las comunidades con el origen de su alimento, esta dependencia"
+  },
+  {
+   "start": 11.05,
+   "end": 14.21,
+   "text": "provoca que el consumo de lopestales frescos sea accesibilidad limitada por los cosos"
+  },
+  {
+   "start": 14.21,
+   "end": 15.21,
+   "text": "logísticos que implica."
+  },
+  {
+   "start": 15.21,
+   "end": 18.93,
+   "text": "Esto contribuye al desafío global de la desnutrición y el sobrepeso de la región debido a los"
+  },
+  {
+   "start": 18.93,
+   "end": 19.93,
+   "text": "alimentos procesados."
+  },
+  {
+   "start": 19.93,
+   "end": 22.91,
+   "text": "Sumado a esto, la dependencia de los sistemas industrializados elimina el control de la"
+  },
+  {
+   "start": 22.91,
+   "end": 26.37,
+   "text": "calidad que se consume debido a los altos niveles de agroquímico y pesticida."
+  },
+  {
+   "start": 26.37,
+   "end": 28.81,
+   "text": "En un contexto urbano donde el espacio es limitado, la alta valoración del"
+  },
+  {
+   "start": 28.81,
+   "end": 31.21,
+   "text": "suelo restringe el acceso a áreas productivas."
+  },
+  {
+   "start": 31.21,
+   "end": 34.93,
+   "text": "El proyecto propone un huerto vertical y ropónico automatizado, utilizando botellas"
+  },
+  {
+   "start": 34.93,
+   "end": 37.69,
+   "text": "plásticas grandes a piladas verticalmente unidas Rabocola."
+  },
+  {
+   "start": 37.69,
+   "end": 41.65,
+   "text": "Cada una preparada con dos orificios laterales que contienen un sustrato de piedra pome sostenido"
+  },
+  {
+   "start": 41.65,
+   "end": 43.53,
+   "text": "por un alambre galmarizado interno."
+  },
+  {
+   "start": 43.53,
+   "end": 47.25,
+   "text": "El sistema incorpora asensores de pH, humedad, conductividad eléctrica y temperatura, cuyos"
+  },
+  {
+   "start": 47.25,
+   "end": 49.69,
+   "text": "datos se visualizan mediante una aplicación móvil."
+  },
+  {
+   "start": 49.69,
+   "end": 52.89,
+   "text": "El sistema funciona en que cuando la humedad desciende por debajo del umbral,"
+  },
+  {
+   "start": 52.89,
+   "end": 55.81,
+   "text": "una electroválvula libera agua desde el tanque hacia las columnas."
+  },
+  {
+   "start": 55.81,
+   "end": 58.93,
+   "text": "Al alcanzar el rango óptimo de humedad, dependiendo las necesidades del cultivo,"
+  },
+  {
+   "start": 58.93,
+   "end": 62.17,
+   "text": "la electroválvula se cierra y el excedente de agua se recolecta y recrúcula"
+  },
+  {
+   "start": 62.17,
+   "end": 63.41,
+   "text": "mediante una bomba."
+  },
+  {
+   "start": 63.41,
+   "end": 66.57,
+   "text": "Un sistema fotovoltaico básico alimenta la bomba asensores y electroválvula."
+  },
+  {
+   "start": 66.57,
+   "end": 69.05,
+   "text": "El abastecimiento de agua proviene principalmente de la ayuda que está"
+  },
+  {
+   "start": 69.05,
+   "end": 70.93,
+   "text": "apta a filtrar y almacenar en un tanque."
+  },
+  {
+   "start": 70.93,
+   "end": 73.49,
+   "text": "Para el control biológico de plagas, se emplea un microorganismo denominado"
+  },
+  {
+   "start": 73.49,
+   "end": 74.89,
+   "text": "VTI en solución líquida."
+  },
+  {
+   "start": 74.89,
+   "end": 77.77,
+   "text": "La propuesta es sostenible, económica y replicable, ideal para producir alim..."
+  },
+  {
+   "start": 78.53,
+   "end": 81.01,
+   "text": "La AP es fundamental para la automatización y supervisión"
+  },
+  {
+   "start": 81.01,
+   "end": 82.41,
+   "text": "eficientemente del sistema hidropónico."
+  },
+  {
+   "start": 82.41,
+   "end": 84.57,
+   "text": "Permite monitoriar en tiempo real parámetros como pH,"
+  },
+  {
+   "start": 84.57,
+   "end": 87.93,
+   "text": "humedad, temperatura y conductividad eléctrica, también con su respectiva gráfica."
+  },
+  {
+   "start": 87.97,
+   "end": 90.05,
+   "text": "Además, observar el comportamiento de la apertura y cierre automática"
+  },
+  {
+   "start": 90.05,
+   "end": 92.85,
+   "text": "válvula según las condiciones detectadas, todos estos por los sensores."
+  },
+  {
+   "start": 92.85,
+   "end": 95.29,
+   "text": "También con un sistema de alertas para saber en qué momento"
+  },
+  {
+   "start": 95.29,
+   "end": 98.37,
+   "text": "puede ir a fallar una anomalía, a facilitando la toma de decisiones"
+  },
+  {
+   "start": 98.37,
+   "end": 101.01,
+   "text": "y promediendo una agricultura más sostenible e inteligente."
+  },
+  {
+   "start": 101.01,
+   "end": 103.69,
+   "text": "El método permite incrementar la producción hasta 6 veces"
+  },
+  {
+   "start": 103.69,
+   "end": 105.61,
+   "text": "frente a los sistemas convencionales y por los bajos"
+  },
+  {
+   "start": 105.61,
+   "end": 108.41,
+   "text": "de mantenimiento resulta una alternativa afectiva y sostenible"
+  },
+  {
+   "start": 108.41,
+   "end": 109.09,
+   "text": "de largo plazo."
+  },
+  {
+   "start": 109.09,
+   "end": 112.41,
+   "text": "Además, se alinea con los eje 1, 3, 5, 6 y 7 de Plan Nacional"
+  },
+  {
+   "start": 112.41,
+   "end": 115.65,
+   "text": "de Lucha contra la Proces para el Desarrollo Humano 2022-2026."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.3
+}

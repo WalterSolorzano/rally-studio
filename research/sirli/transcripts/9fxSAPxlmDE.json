@@ -1,0 +1,87 @@
+{
+ "video_id": "9fxSAPxlmDE",
+ "url": "https://youtu.be/9fxSAPxlmDE",
+ "year": 2021,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "CARIBBEAN INNOVATION",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "CARIBBEAN INNOVATION",
+   "challenge": "01 - AUMENTO EN CASOS DE SITUACIONES LÍMITE BAJO ENCIERRO"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:43:50+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Eres víctima de violencia? ¿No tienes un medio de comunicación rápido y eficaz? Somos el grupo Caribbean Innovation, una de las problemáticas con alto índice a nivel internacional. Es el aumento en casos de situaciones límite bajo encierro. A través de Emergency Watch, te ofrecemos una solución rápida y eficaz. Emergency Watch es un dispositivo que permitirá la medición del tiempo, pero tendrá un segundo uso o un potencial en donde éste permitirá mandar un mensaje de alerta a las instituciones de ayuda como la Policía Nacional, para médicos o asistencia médica, enviando un mensaje y ubicación exacta de las personas que lo porta, tan solo aprecianando un botón. El botón rojo llama asistencia médica, el botón azul a la Policía Nacional y el botón negro graba audio y vídeo. A la vez cuenta con un sistema de luz que sirve de mensaje al portador, pantalla roja indica que no se envió el mensaje, pantalla naranja, cuando se va el mensaje y pantalla verde cuando han recibido el mensaje. Con Emergency Watch salvaguardarás tu vida. Con Emergency Watch tenemos una solución.",
+ "segments": [
+  {
+   "start": 1.01,
+   "end": 8.89,
+   "text": "¿Eres víctima de violencia? ¿No tienes un medio de comunicación rápido y eficaz?"
+  },
+  {
+   "start": 8.89,
+   "end": 17.01,
+   "text": "Somos el grupo Caribbean Innovation, una de las problemáticas con alto índice a nivel"
+  },
+  {
+   "start": 17.01,
+   "end": 24.13,
+   "text": "internacional. Es el aumento en casos de situaciones límite bajo encierro."
+  },
+  {
+   "start": 24.61,
+   "end": 33.53,
+   "text": "A través de Emergency Watch, te ofrecemos una solución rápida y eficaz."
+  },
+  {
+   "start": 33.53,
+   "end": 46.17,
+   "text": "Emergency Watch es un dispositivo que permitirá la medición del tiempo, pero tendrá un segundo uso o un potencial"
+  },
+  {
+   "start": 46.29,
+   "end": 55.89,
+   "text": "en donde éste permitirá mandar un mensaje de alerta a las instituciones de ayuda como la Policía"
+  },
+  {
+   "start": 55.89,
+   "end": 67.29,
+   "text": "Nacional, para médicos o asistencia médica, enviando un mensaje y ubicación exacta de las personas"
+  },
+  {
+   "start": 67.29,
+   "end": 78.53,
+   "text": "que lo porta, tan solo aprecianando un botón. El botón rojo llama asistencia médica, el botón azul a la"
+  },
+  {
+   "start": 78.53,
+   "end": 89.61,
+   "text": "Policía Nacional y el botón negro graba audio y vídeo. A la vez cuenta con un sistema de luz que"
+  },
+  {
+   "start": 89.61,
+   "end": 98.93,
+   "text": "sirve de mensaje al portador, pantalla roja indica que no se envió el mensaje, pantalla naranja,"
+  },
+  {
+   "start": 98.93,
+   "end": 111.41,
+   "text": "cuando se va el mensaje y pantalla verde cuando han recibido el mensaje. Con Emergency Watch salvaguardarás tu vida."
+  },
+  {
+   "start": 111.41,
+   "end": 118.49,
+   "text": "Con Emergency Watch tenemos una solución."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.2
+}

@@ -1,0 +1,112 @@
+{
+ "video_id": "1hmYHzH8TKA",
+ "url": "https://www.youtube.com/watch?v=1hmYHzH8TKA",
+ "year": 2023,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "LA BICICLETA DE ZN",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "LA BICICLETA DE ZN",
+   "challenge": "06 - REVALORIZACIÓN RESIDUOS"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:53:18+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En la industria de zumo de frutas, en particular de zumo de naranja, existe un resido de 8 millones de toneladas anuales de casca de naranja. Muchos de estas terminan en la quema obertaderos liberando grandes emisiones de gases que contribuyen al efecto invernadero, asidificando los suelos y napas de agua potable. Ofrecemos un ciclo productivo múltipleserrado que genera productos de alto valor comercial en la mercado actual, con el cual se alegra la obtención de polifenoles, esencias aromáticas, acetes esenciales y harina. ¿Sabes que el 2021 la demanda de polifenoles sece cada año en un 6,7%? Esto se da a sus propiedades occidentes, las cuales son de interés para la industria farmacéutica, alimenticia y cosmética. Proponemos un proceso de extracción por fluidos súper críticos que es más rápido, más eficiente y más económico a largo y corto plazo que los metos convencionales de separación de polifenoles. Es un producto amigable con el medio ambiente y pensado para elaboración de productos con una alta demanda. Que a su vez genera oportunidades laborales para los residentes locales y es un precursor de emprendimientos secundarios. Otro interés de carácter social es de elaboración de harina que tiene la ventaja de ser apta para ser líacos, además de favorable para controlar los niveles de hiperglucemia en sangre. Esto abarca el mercado alimenticio y cumple con una problemática constante en la sociedad, que es la reducida cantidad de productos SIMTAC destinada a personas ser líacas y de los productos que no eliven los niveles de glucos en sangre para los diabéticos. Entonces te preguntamos ¿Por qué expresar la cascara de naranja cuando existe viorage?",
+ "segments": [
+  {
+   "start": 1.9,
+   "end": 9.06,
+   "text": "En la industria de zumo de frutas, en particular de zumo de naranja, existe un resido de 8 millones de toneladas anuales de casca de naranja."
+  },
+  {
+   "start": 9.06,
+   "end": 15.18,
+   "text": "Muchos de estas terminan en la quema obertaderos liberando grandes emisiones de gases que contribuyen al efecto invernadero,"
+  },
+  {
+   "start": 15.18,
+   "end": 18.02,
+   "text": "asidificando los suelos y napas de agua potable."
+  },
+  {
+   "start": 18.02,
+   "end": 23.82,
+   "text": "Ofrecemos un ciclo productivo múltipleserrado que genera productos de alto valor comercial en la mercado actual,"
+  },
+  {
+   "start": 23.82,
+   "end": 29.5,
+   "text": "con el cual se alegra la obtención de polifenoles, esencias aromáticas, acetes esenciales y harina."
+  },
+  {
+   "start": 29.98,
+   "end": 35.5,
+   "text": "¿Sabes que el 2021 la demanda de polifenoles sece cada año en un 6,7%?"
+  },
+  {
+   "start": 35.5,
+   "end": 41.74,
+   "text": "Esto se da a sus propiedades occidentes, las cuales son de interés para la industria farmacéutica, alimenticia y cosmética."
+  },
+  {
+   "start": 41.74,
+   "end": 49.5,
+   "text": "Proponemos un proceso de extracción por fluidos súper críticos que es más rápido, más eficiente y más económico a largo y corto plazo"
+  },
+  {
+   "start": 49.5,
+   "end": 52.74,
+   "text": "que los metos convencionales de separación de polifenoles."
+  },
+  {
+   "start": 52.74,
+   "end": 58.06,
+   "text": "Es un producto amigable con el medio ambiente y pensado para elaboración de productos con una alta demanda."
+  },
+  {
+   "start": 58.14,
+   "end": 64.82,
+   "text": "Que a su vez genera oportunidades laborales para los residentes locales y es un precursor de emprendimientos secundarios."
+  },
+  {
+   "start": 64.82,
+   "end": 70.54,
+   "text": "Otro interés de carácter social es de elaboración de harina que tiene la ventaja de ser apta para ser líacos,"
+  },
+  {
+   "start": 70.54,
+   "end": 74.66,
+   "text": "además de favorable para controlar los niveles de hiperglucemia en sangre."
+  },
+  {
+   "start": 74.66,
+   "end": 79.34,
+   "text": "Esto abarca el mercado alimenticio y cumple con una problemática constante en la sociedad,"
+  },
+  {
+   "start": 79.34,
+   "end": 83.22,
+   "text": "que es la reducida cantidad de productos SIMTAC destinada a personas ser líacas"
+  },
+  {
+   "start": 83.22,
+   "end": 87.42,
+   "text": "y de los productos que no eliven los niveles de glucos en sangre para los diabéticos."
+  },
+  {
+   "start": 87.42,
+   "end": 92.78,
+   "text": "Entonces te preguntamos ¿Por qué expresar la cascara de naranja cuando existe viorage?"
+  }
+ ],
+ "has_info": false,
+ "duration_s": 99.4
+}

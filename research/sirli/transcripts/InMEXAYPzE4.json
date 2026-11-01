@@ -1,0 +1,162 @@
+{
+ "video_id": "InMEXAYPzE4",
+ "url": "https://www.youtube.com/watch?v=InMEXAYPzE4",
+ "year": 2025,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "PAK-NELES",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "PAK-NELES",
+   "challenge": "01 - APROVECHAMIENTO TETRA PAK"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:01:23+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Cada año en Argentina se producen más de 3.000 millones de envases Tetra Pak. En el año 2022 se pudieron reciclar alrededor de 30 millones de estos paquetes. Si lo pusiéramos uno al lado del otro, podríamos lograr recorrer la Ruta 40 desde norte hasta el sur. Y todavía nos obrarían más de 300.000 paquetes. Properemos transformar este lecido en algo útil. Placa para la construcción en interiores. Utilizando los materiales de Tetravik, papeles, aluminio, plástico, haremos unas placas muy resistentes, más duraderas e impermeables. En comparación a las placas de yeso que tenemos acá. El proceso comienza con el lavado de los envases, utilizando en primera instancia agua de lluvia. Esa agua luego se trata y reutiliza gracias a un proceso de pretratada, un biodigestor y un humidal artificial, que degrada naturalmente los residuos de manera continua. Luego el material limpio se tritura en una extrusora especialmente diseñada, que calienta y mezcla los componentes. Por último, se transforma en las placas, dando lugar a un producto sólido, durable y sin polvo, ideal para interiores. Esta solución convierte un residuo de valor nulo en un material para la construcción de interiores de gran valor agregado. Esto reduce la contaminación, el consumo de agua y energía requerido y además genera empleo local, integrando recolectores urbanos, todo dentro del marco de la economía circular y, adicionalmente, genera una huella hídrica nula. Un humidal no solamente es un ecosistema controlado, sino que acá también es un miembro vital de la cadena de producción al justamente poder tratar el agua de una manera natural, sin aporte de energía.",
+ "segments": [
+  {
+   "start": 5.71,
+   "end": 11.71,
+   "text": "Cada año en Argentina se producen más de 3.000 millones de envases Tetra Pak."
+  },
+  {
+   "start": 11.71,
+   "end": 16.71,
+   "text": "En el año 2022 se pudieron reciclar alrededor de 30 millones de estos paquetes."
+  },
+  {
+   "start": 16.71,
+   "end": 22.71,
+   "text": "Si lo pusiéramos uno al lado del otro, podríamos lograr recorrer la Ruta 40 desde norte hasta el sur."
+  },
+  {
+   "start": 22.71,
+   "end": 25.71,
+   "text": "Y todavía nos obrarían más de 300.000 paquetes."
+  },
+  {
+   "start": 25.71,
+   "end": 28.71,
+   "text": "Properemos transformar este lecido en algo útil."
+  },
+  {
+   "start": 28.71,
+   "end": 30.71,
+   "text": "Placa para la construcción en interiores."
+  },
+  {
+   "start": 30.71,
+   "end": 35.71,
+   "text": "Utilizando los materiales de Tetravik, papeles, aluminio, plástico,"
+  },
+  {
+   "start": 35.71,
+   "end": 40.71,
+   "text": "haremos unas placas muy resistentes, más duraderas e impermeables."
+  },
+  {
+   "start": 40.71,
+   "end": 49.19,
+   "text": "En comparación a las placas de yeso que tenemos acá."
+  },
+  {
+   "start": 49.19,
+   "end": 52.19,
+   "text": "El proceso comienza con el lavado de los envases,"
+  },
+  {
+   "start": 52.19,
+   "end": 55.19,
+   "text": "utilizando en primera instancia agua de lluvia."
+  },
+  {
+   "start": 55.19,
+   "end": 59.19,
+   "text": "Esa agua luego se trata y reutiliza gracias a un proceso de pretratada,"
+  },
+  {
+   "start": 59.19,
+   "end": 61.19,
+   "text": "un biodigestor y un humidal artificial,"
+  },
+  {
+   "start": 61.19,
+   "end": 64.19,
+   "text": "que degrada naturalmente los residuos de manera continua."
+  },
+  {
+   "start": 64.19,
+   "end": 69.19,
+   "text": "Luego el material limpio se tritura en una extrusora especialmente diseñada,"
+  },
+  {
+   "start": 69.19,
+   "end": 72.19,
+   "text": "que calienta y mezcla los componentes."
+  },
+  {
+   "start": 72.19,
+   "end": 76.19,
+   "text": "Por último, se transforma en las placas, dando lugar a un producto sólido,"
+  },
+  {
+   "start": 76.19,
+   "end": 79.19,
+   "text": "durable y sin polvo, ideal para interiores."
+  },
+  {
+   "start": 84.46,
+   "end": 86.46,
+   "text": "Esta solución convierte un residuo de valor nulo"
+  },
+  {
+   "start": 86.46,
+   "end": 89.46,
+   "text": "en un material para la construcción de interiores de gran valor agregado."
+  },
+  {
+   "start": 90.46,
+   "end": 93.46,
+   "text": "Esto reduce la contaminación, el consumo de agua y energía requerido"
+  },
+  {
+   "start": 93.46,
+   "end": 96.46,
+   "text": "y además genera empleo local, integrando recolectores urbanos,"
+  },
+  {
+   "start": 96.46,
+   "end": 99.46,
+   "text": "todo dentro del marco de la economía circular"
+  },
+  {
+   "start": 99.46,
+   "end": 102.46,
+   "text": "y, adicionalmente, genera una huella hídrica nula."
+  },
+  {
+   "start": 102.46,
+   "end": 105.46,
+   "text": "Un humidal no solamente es un ecosistema controlado,"
+  },
+  {
+   "start": 105.46,
+   "end": 109.46,
+   "text": "sino que acá también es un miembro vital de la cadena de producción"
+  },
+  {
+   "start": 109.46,
+   "end": 114.46,
+   "text": "al justamente poder tratar el agua de una manera natural, sin aporte de energía."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.0
+}

@@ -1,0 +1,142 @@
+{
+ "video_id": "BiSpNt3ktXw",
+ "url": "https://youtu.be/BiSpNt3ktXw",
+ "year": 2023,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "SUPERNOVA",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "SUPERNOVA",
+   "challenge": "02 - SIEMPRE EN CONTACTO"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:29:53+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Hola, somos el equipo supernova de la Universidad Católica de Nicaragua. En un mundo donde la seguridad y la localización son fundamentales, especialmente en regiones vulnerables de América Latina. Países como Argentina, Guatemala, Perú y El Salvador enfrentan graves problemas de personas desaparecidas, debido a diversas causas, de desecuestro hasta desastres naturales. Presentamos Supernova Bracelet, una innovadora solución que aborda estos problemas. Supernova Bracelet es la respuesta a estos desafíos. Este dispositivo utiliza tecnología avanzada para localizar a personas desaparecidas sin depender de una conexión a Internet. Su diseño ergonómico se asemeja a un reloj y ideal para su uso en situaciones de emergencia en lugares turísticos y zonas remotas, donde no hay acceso a algunos de Internet. Este consiste en dos pulseras de acero que actúan como dispositivo hermano, un emisor y un receptor, lo que permite la transmisión de señales del estado físico y de salud de la persona, así como sus coordenadas. La propuesta del dispositivo posee un impacto económico social, AL, ofrecer un valor agregado a los centros turísticos al proporcionar información valiosa sobre la ubicación y el estado del usuario, facilitar el rastreo en tiempo real de personas, especialmente en emergencias como accidentes y peligros personales. Desempeñar un papel esencial en acordinación de esfuerzos de búsqueda y rescate durante desastres naturales. Utiliza una intranet y sensores que emplean microondas con oscilación superior a 30 GHz, además las microondas utilizadas no son ionizantes, lo que significa que no dañan la materia orgánica. Emplea una batería litio-carbon que, a diferencia de las baterías recargables convencionales, esta no se recarga y se reemplaza al final de su vida útil. Esto reduce costo y minimiza la contaminación ambiental.",
+ "segments": [
+  {
+   "start": 7.18,
+   "end": 11.78,
+   "text": "Hola, somos el equipo supernova de la Universidad Católica de Nicaragua."
+  },
+  {
+   "start": 11.78,
+   "end": 15.98,
+   "text": "En un mundo donde la seguridad y la localización son fundamentales,"
+  },
+  {
+   "start": 15.98,
+   "end": 19.18,
+   "text": "especialmente en regiones vulnerables de América Latina."
+  },
+  {
+   "start": 19.18,
+   "end": 25.78,
+   "text": "Países como Argentina, Guatemala, Perú y El Salvador enfrentan graves problemas de personas desaparecidas,"
+  },
+  {
+   "start": 25.78,
+   "end": 30.18,
+   "text": "debido a diversas causas, de desecuestro hasta desastres naturales."
+  },
+  {
+   "start": 30.18,
+   "end": 35.18,
+   "text": "Presentamos Supernova Bracelet, una innovadora solución que aborda estos problemas."
+  },
+  {
+   "start": 35.18,
+   "end": 39.18,
+   "text": "Supernova Bracelet es la respuesta a estos desafíos."
+  },
+  {
+   "start": 39.18,
+   "end": 44.58,
+   "text": "Este dispositivo utiliza tecnología avanzada para localizar a personas desaparecidas"
+  },
+  {
+   "start": 44.58,
+   "end": 46.78,
+   "text": "sin depender de una conexión a Internet."
+  },
+  {
+   "start": 46.78,
+   "end": 53.58,
+   "text": "Su diseño ergonómico se asemeja a un reloj y ideal para su uso en situaciones de emergencia en lugares turísticos"
+  },
+  {
+   "start": 53.58,
+   "end": 57.18,
+   "text": "y zonas remotas, donde no hay acceso a algunos de Internet."
+  },
+  {
+   "start": 57.18,
+   "end": 61.38,
+   "text": "Este consiste en dos pulseras de acero que actúan como dispositivo hermano,"
+  },
+  {
+   "start": 61.38,
+   "end": 67.78,
+   "text": "un emisor y un receptor, lo que permite la transmisión de señales del estado físico y de salud de la persona,"
+  },
+  {
+   "start": 67.78,
+   "end": 69.58,
+   "text": "así como sus coordenadas."
+  },
+  {
+   "start": 69.58,
+   "end": 73.78,
+   "text": "La propuesta del dispositivo posee un impacto económico social, AL,"
+  },
+  {
+   "start": 73.78,
+   "end": 80.78,
+   "text": "ofrecer un valor agregado a los centros turísticos al proporcionar información valiosa sobre la ubicación y el estado del usuario,"
+  },
+  {
+   "start": 80.78,
+   "end": 87.38,
+   "text": "facilitar el rastreo en tiempo real de personas, especialmente en emergencias como accidentes y peligros personales."
+  },
+  {
+   "start": 87.38,
+   "end": 92.98,
+   "text": "Desempeñar un papel esencial en acordinación de esfuerzos de búsqueda y rescate durante desastres naturales."
+  },
+  {
+   "start": 92.98,
+   "end": 98.38,
+   "text": "Utiliza una intranet y sensores que emplean microondas con oscilación superior a 30 GHz,"
+  },
+  {
+   "start": 98.38,
+   "end": 105.18,
+   "text": "además las microondas utilizadas no son ionizantes, lo que significa que no dañan la materia orgánica."
+  },
+  {
+   "start": 105.18,
+   "end": 110.18,
+   "text": "Emplea una batería litio-carbon que, a diferencia de las baterías recargables convencionales,"
+  },
+  {
+   "start": 110.18,
+   "end": 113.38,
+   "text": "esta no se recarga y se reemplaza al final de su vida útil."
+  },
+  {
+   "start": 113.38,
+   "end": 117.38,
+   "text": "Esto reduce costo y minimiza la contaminación ambiental."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 117.2
+}

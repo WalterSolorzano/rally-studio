@@ -1,0 +1,142 @@
+{
+ "video_id": "HvwQ4Ls7giQ",
+ "url": "https://youtu.be/HvwQ4Ls7giQ?si=bFzaQ76n2XGLLTfY",
+ "year": 2023,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "HALTEC",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "HALTEC",
+   "challenge": "02 - SIEMPRE EN CONTACTO"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:07:56+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "El crimen es uno de los problemas más grandes que se enfrenta a México. Solo en 2021 hubo cerca de 6 mil víctimas de arrobo en la vía o transporte público. Además, a septiembre de 2023 se contabilizaron un total de 95 mil personas desaparecidas o no localizadas en la ciudad de México, ya sea en regiones inhóspitas o geográficamente complejas. Buen día, mi nombre es Aul. Pertenezco al equipo Haltec y junto con mi equipo, mi trabajo, le presentamos nuestra propuesta, SpinRish. SpinRish es una pulsera diseñada con el objetivo de ayudar a las personas que se encuentran en un entorno de edificio en acceso o una situación de riesgo, especialmente mujeres. Nuestro dispositivo ofrece la opción de comunicación con los distintos contactos de emergencia mediante mensajes de texto y envío de comunicación a través de gestos realizados con la muñaca, los cuales no requerirán acceso a internet. La pulsera utiliza un micro GPS, un acelerómetro, un giroscopio, una pequeña batería recargable y un micropane solar para almacenar energía durante el día. Los mensajes de texto, al igual que los números de emergencia, se podrán personalizar, mediante una aplicación el cual se vinculará al dispositivo a través de una conexión Bluetooth. La mayoría de dispositivos de localización existentes, como de su smartwatch, dependen de colecciones de red a través de un teléfono con conexión a internet. La propuesta de un dispositivo que no requiera conexión a internet y sea de bajo costo como lo es SpinRish es innovador, ya que agorda la limitación de conectividad en entornos inóspitos, así como la seguridad personal en caso de situaciones peligrosas o de riesgo. El equipo Haltec. Brayame, Camino. Gracias, Carlos. Mi nombre es Luis. Mi nombre es Miriam. Hemos pensado en una solución real para situaciones reales con resultados realmente adivinados. Siempre pensando en tu seguridad y cada giro del camino. Gracias.",
+ "segments": [
+  {
+   "start": 7.15,
+   "end": 12.15,
+   "text": "El crimen es uno de los problemas más grandes que se enfrenta a México."
+  },
+  {
+   "start": 12.15,
+   "end": 19.15,
+   "text": "Solo en 2021 hubo cerca de 6 mil víctimas de arrobo en la vía o transporte público."
+  },
+  {
+   "start": 19.15,
+   "end": 27.15,
+   "text": "Además, a septiembre de 2023 se contabilizaron un total de 95 mil personas desaparecidas"
+  },
+  {
+   "start": 27.15,
+   "end": 34.15,
+   "text": "o no localizadas en la ciudad de México, ya sea en regiones inhóspitas o geográficamente complejas."
+  },
+  {
+   "start": 34.15,
+   "end": 36.15,
+   "text": "Buen día, mi nombre es Aul."
+  },
+  {
+   "start": 36.15,
+   "end": 44.15,
+   "text": "Pertenezco al equipo Haltec y junto con mi equipo, mi trabajo, le presentamos nuestra propuesta, SpinRish."
+  },
+  {
+   "start": 44.15,
+   "end": 57.06,
+   "text": "SpinRish es una pulsera diseñada con el objetivo de ayudar a las personas que se encuentran en un entorno de edificio en acceso o una situación de riesgo, especialmente mujeres."
+  },
+  {
+   "start": 57.06,
+   "end": 66.06,
+   "text": "Nuestro dispositivo ofrece la opción de comunicación con los distintos contactos de emergencia mediante mensajes de texto y envío de comunicación a través de gestos realizados con la muñaca,"
+  },
+  {
+   "start": 66.06,
+   "end": 68.06,
+   "text": "los cuales no requerirán acceso a internet."
+  },
+  {
+   "start": 68.06,
+   "end": 78.06,
+   "text": "La pulsera utiliza un micro GPS, un acelerómetro, un giroscopio, una pequeña batería recargable y un micropane solar para almacenar energía durante el día."
+  },
+  {
+   "start": 78.06,
+   "end": 82.06,
+   "text": "Los mensajes de texto, al igual que los números de emergencia, se podrán personalizar,"
+  },
+  {
+   "start": 82.06,
+   "end": 86.06,
+   "text": "mediante una aplicación el cual se vinculará al dispositivo a través de una conexión Bluetooth."
+  },
+  {
+   "start": 86.06,
+   "end": 93.06,
+   "text": "La mayoría de dispositivos de localización existentes, como de su smartwatch, dependen de colecciones de red a través de un teléfono con conexión a internet."
+  },
+  {
+   "start": 93.06,
+   "end": 99.06,
+   "text": "La propuesta de un dispositivo que no requiera conexión a internet y sea de bajo costo como lo es SpinRish es innovador,"
+  },
+  {
+   "start": 99.06,
+   "end": 106.06,
+   "text": "ya que agorda la limitación de conectividad en entornos inóspitos, así como la seguridad personal en caso de situaciones peligrosas o de riesgo."
+  },
+  {
+   "start": 106.06,
+   "end": 107.06,
+   "text": "El equipo Haltec."
+  },
+  {
+   "start": 107.06,
+   "end": 108.06,
+   "text": "Brayame, Camino."
+  },
+  {
+   "start": 108.06,
+   "end": 109.06,
+   "text": "Gracias, Carlos."
+  },
+  {
+   "start": 109.06,
+   "end": 110.06,
+   "text": "Mi nombre es Luis."
+  },
+  {
+   "start": 110.06,
+   "end": 111.06,
+   "text": "Mi nombre es Miriam."
+  },
+  {
+   "start": 111.06,
+   "end": 116.06,
+   "text": "Hemos pensado en una solución real para situaciones reales con resultados realmente adivinados."
+  },
+  {
+   "start": 116.06,
+   "end": 119.06,
+   "text": "Siempre pensando en tu seguridad y cada giro del camino."
+  },
+  {
+   "start": 119.06,
+   "end": 120.06,
+   "text": "Gracias."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.9
+}

@@ -1,0 +1,112 @@
+{
+ "video_id": "94uQXw4WQpY",
+ "url": "https://youtu.be/94uQXw4WQpY",
+ "year": 2023,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "SIETE SENTIDOS",
+ "place_label": "TERCER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "TERCER LUGAR",
+   "team": "SIETE SENTIDOS",
+   "challenge": "07 - CROWDSENSING"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:30:21+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En la región latinoamericana, la recopilación de datos depende de métodos costosos y pocos eficientes, como los censos poblacionales periódicos. Esto limita obtener información en tiempo real sobre las dinámicas urbanas y las necesidades cambiantes de los ciudadanos. Crowd Pulse es la solución. Crowd Pulse es un sistema que automatiza la recopilación de datos del usuario para alimentar una red de inteligencia artificial. Este sistema permite generar indicadores y predicciones en áreas como la gestión del tráfico, atención médica, seguridad pública, gestión de energía, comercio local y educación. Este sistema funciona aprovechando los sensores incorporados en los dispositivos móviles de los usuarios. Los datos se procesan en servidores con alta conectividad, respetando las políticas de privacidad de datos vigentes de cada país. Crowd Pulse tiene un interfaz amigable para el usuario. Esta es la solución que América Latina necesita. Crowd Pulse evolucionando a ciudades inteligentes. Crowd Pulse es la solución.",
+ "segments": [
+  {
+   "start": 4.72,
+   "end": 11.08,
+   "text": "En la región latinoamericana, la recopilación de datos depende de métodos costosos y pocos"
+  },
+  {
+   "start": 11.08,
+   "end": 15.4,
+   "text": "eficientes, como los censos poblacionales periódicos."
+  },
+  {
+   "start": 15.4,
+   "end": 21.24,
+   "text": "Esto limita obtener información en tiempo real sobre las dinámicas urbanas y las necesidades"
+  },
+  {
+   "start": 21.24,
+   "end": 27.46,
+   "text": "cambiantes de los ciudadanos."
+  },
+  {
+   "start": 27.46,
+   "end": 32.8,
+   "text": "Crowd Pulse es la solución."
+  },
+  {
+   "start": 32.8,
+   "end": 38.24,
+   "text": "Crowd Pulse es un sistema que automatiza la recopilación de datos del usuario para"
+  },
+  {
+   "start": 38.24,
+   "end": 41.52,
+   "text": "alimentar una red de inteligencia artificial."
+  },
+  {
+   "start": 41.52,
+   "end": 47.4,
+   "text": "Este sistema permite generar indicadores y predicciones en áreas como la gestión del"
+  },
+  {
+   "start": 47.4,
+   "end": 55.84,
+   "text": "tráfico, atención médica, seguridad pública, gestión de energía, comercio local y educación."
+  },
+  {
+   "start": 55.84,
+   "end": 61.68,
+   "text": "Este sistema funciona aprovechando los sensores incorporados en los dispositivos móviles"
+  },
+  {
+   "start": 61.68,
+   "end": 64.73,
+   "text": "de los usuarios."
+  },
+  {
+   "start": 64.73,
+   "end": 71.09,
+   "text": "Los datos se procesan en servidores con alta conectividad, respetando las políticas de privacidad"
+  },
+  {
+   "start": 71.09,
+   "end": 74.89,
+   "text": "de datos vigentes de cada país."
+  },
+  {
+   "start": 74.89,
+   "end": 87.66,
+   "text": "Crowd Pulse tiene un interfaz amigable para el usuario."
+  },
+  {
+   "start": 87.66,
+   "end": 90.7,
+   "text": "Esta es la solución que América Latina necesita."
+  },
+  {
+   "start": 90.7,
+   "end": 96.75,
+   "text": "Crowd Pulse evolucionando a ciudades inteligentes."
+  },
+  {
+   "start": 96.75,
+   "end": 98.95,
+   "text": "Crowd Pulse es la solución."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 105.3
+}

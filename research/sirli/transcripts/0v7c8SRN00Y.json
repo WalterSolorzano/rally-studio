@@ -1,0 +1,97 @@
+{
+ "video_id": "0v7c8SRN00Y",
+ "url": "https://www.youtube.com/watch?v=0v7c8SRN00Y",
+ "year": 2026,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "HEPTANOVA",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "HEPTANOVA",
+   "challenge": "02 - SENSORES AL SERVICIO DE LA COMUNIDAD"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:29:21+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Todos los días miles de personas recorren nuestras calles pero un bache puede significar mucho más que una molestia, daños en los vehículos, maniobras peligrosas y riesgos para quienes circulan y hay una pregunta fundamental ¿Cómo sabemos qué calles necesitan preparación primero? Mientras tanto muchos celulares que ya no utilizamos siguen funcionando tienen sensores de movimiento, GPS y capacidad de procesamiento y si pudiéramos darle una segura a vida, así nace Via Alert una propuesta que recupera celulares en desuso y los transforma en dispositivos del monitoreo vial instalados de forma segura y fuera de la vista en colectivos, taxis y vehículos principales de esta manera con Via Alert aprovechamos tecnología existente promovemos la economía circular y transformamos recorridos cotidianos en información útil para mejorar la planificación del movimiento vial de celulares olvidados a caminos más seguros una nueva vida para la tecnología una mejor oportunidad para nuestras calles",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 8.67,
+   "text": "Todos los días miles de personas recorren nuestras calles pero un bache puede"
+  },
+  {
+   "start": 8.67,
+   "end": 13.03,
+   "text": "significar mucho más que una molestia, daños en los vehículos, maniobras"
+  },
+  {
+   "start": 13.03,
+   "end": 17.91,
+   "text": "peligrosas y riesgos para quienes circulan y hay una pregunta fundamental"
+  },
+  {
+   "start": 17.91,
+   "end": 23.4,
+   "text": "¿Cómo sabemos qué calles necesitan preparación primero?"
+  },
+  {
+   "start": 23.4,
+   "end": 27.6,
+   "text": "Mientras tanto muchos celulares que ya no utilizamos siguen funcionando"
+  },
+  {
+   "start": 27.6,
+   "end": 32.84,
+   "text": "tienen sensores de movimiento, GPS y capacidad de procesamiento"
+  },
+  {
+   "start": 32.84,
+   "end": 38.74,
+   "text": "y si pudiéramos darle una segura a vida, así nace Via Alert"
+  },
+  {
+   "start": 38.74,
+   "end": 44.22,
+   "text": "una propuesta que recupera celulares en desuso y los transforma en dispositivos del monitoreo vial"
+  },
+  {
+   "start": 44.22,
+   "end": 50.18,
+   "text": "instalados de forma segura y fuera de la vista en colectivos, taxis y vehículos principales"
+  },
+  {
+   "start": 50.18,
+   "end": 54.06,
+   "text": "de esta manera con Via Alert aprovechamos tecnología existente"
+  },
+  {
+   "start": 54.06,
+   "end": 59.02,
+   "text": "promovemos la economía circular y transformamos recorridos cotidianos en información útil"
+  },
+  {
+   "start": 59.02,
+   "end": 63.82,
+   "text": "para mejorar la planificación del movimiento vial"
+  },
+  {
+   "start": 63.82,
+   "end": 66.82,
+   "text": "de celulares olvidados a caminos más seguros"
+  },
+  {
+   "start": 66.82,
+   "end": 71.82,
+   "text": "una nueva vida para la tecnología una mejor oportunidad para nuestras calles"
+  }
+ ],
+ "has_info": false,
+ "duration_s": 77.6
+}

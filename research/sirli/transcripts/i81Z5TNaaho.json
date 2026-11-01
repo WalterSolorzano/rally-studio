@@ -1,0 +1,92 @@
+{
+ "video_id": "i81Z5TNaaho",
+ "url": "https://youtu.be/i81Z5TNaaho",
+ "year": 2025,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "SEEDS OF THE FUTURE",
+ "place_label": "TERCER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "TERCER LUGAR",
+   "team": "SEEDS OF THE FUTURE",
+   "challenge": "05 - HUERTOS VERTICALES"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:52:24+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Hola, nosotros somos SILUSAMANIPUTE, mi nombre es Juan Espinosa, y somos Iore y qué le ensalas. Y hemos elegido el reto número 5 de huertos verticales. La problemática es la falta de alimentos frescos en pequeñas viviendas urbanas. Nuestra solución al problema es el sistema modular de cultivo vertical para aprovechar balcones, corredores y producir alimentos saludables. Viabilidad técnica fácil de instalar con materiales accesibles. Viabilidad económica, bajo presupuestos con posibilidades de generar ingresos. Viabilidad social, alto impacto en el salud, educación y cobertión comunitaria. Rentabilidad que ahorro en alimentos. Infacto esperado, salud familiar, conciencia ecológica y autonomía alimentísima. Imagina transformar una pared vacía en una fuente de vida. Rentable para que cualquier familia de zona urbana sin importar el poco espacio pueda reconectar con la naturaleza y mejorar su calidad de vida.",
+ "segments": [
+  {
+   "start": 0.53,
+   "end": 9.53,
+   "text": "Hola, nosotros somos SILUSAMANIPUTE, mi nombre es Juan Espinosa, y somos Iore y qué le ensalas."
+  },
+  {
+   "start": 9.53,
+   "end": 12.53,
+   "text": "Y hemos elegido el reto número 5 de huertos verticales."
+  },
+  {
+   "start": 12.53,
+   "end": 17.53,
+   "text": "La problemática es la falta de alimentos frescos en pequeñas viviendas urbanas."
+  },
+  {
+   "start": 17.53,
+   "end": 22.53,
+   "text": "Nuestra solución al problema es el sistema modular de cultivo vertical para aprovechar"
+  },
+  {
+   "start": 22.53,
+   "end": 26.53,
+   "text": "balcones, corredores y producir alimentos saludables."
+  },
+  {
+   "start": 27.53,
+   "end": 31.53,
+   "text": "Viabilidad técnica fácil de instalar con materiales accesibles."
+  },
+  {
+   "start": 32.53,
+   "end": 36.53,
+   "text": "Viabilidad económica, bajo presupuestos con posibilidades de generar ingresos."
+  },
+  {
+   "start": 36.53,
+   "end": 40.53,
+   "text": "Viabilidad social, alto impacto en el salud, educación y cobertión comunitaria."
+  },
+  {
+   "start": 40.53,
+   "end": 43.53,
+   "text": "Rentabilidad que ahorro en alimentos."
+  },
+  {
+   "start": 43.53,
+   "end": 49.53,
+   "text": "Infacto esperado, salud familiar, conciencia ecológica y autonomía alimentísima."
+  },
+  {
+   "start": 49.53,
+   "end": 53.53,
+   "text": "Imagina transformar una pared vacía en una fuente de vida."
+  },
+  {
+   "start": 53.53,
+   "end": 58.53,
+   "text": "Rentable para que cualquier familia de zona urbana sin importar el poco espacio"
+  },
+  {
+   "start": 58.53,
+   "end": 62.53,
+   "text": "pueda reconectar con la naturaleza y mejorar su calidad de vida."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 63.3
+}

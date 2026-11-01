@@ -1,0 +1,107 @@
+{
+ "video_id": "fWpdjKhnU2Y",
+ "url": "https://youtu.be/fWpdjKhnU2Y",
+ "year": 2022,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "MIXED",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "MIXED",
+   "challenge": "02 - TRANSFORMACIÓN DE RESIDUOS DE UNA CAFETERÍA"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:36:59+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Hola qué tal, nosotros somos el equipo Mixed, nosotros elegimos el desafío número 2, transformación de resícitos de una cafetería. ¿Qué es lo que pasa? Tanto las botellas de vidrio como el atras al dominio como el PET no se están dando en un circuito de reciclado. Entonces pierde la posibilidad de volverlo a reciclar. Muchas de las empresas tienen como meta volver a dar esos reciclos o los paquetes y buscan la manera de dar un valor comercial a esos desechos. Planteamos como solución tomar los botes que actualmente tenemos, que está dividido en orgánica, inorgánica, papel, petio aluminio e innovarlo. De cierta manera que cada que una persona vaya a poner su basura pueda obtener un código QR o un código que puede escanearlo o ponerlo en la app gratuita en lo que conlleva a descuentos o puede tener algo del mismo valor y eso motiva a las personas a que sigan reciclando. Nuestro proyecto innovador de reciclado se está llevando a cabo ya que hoy en día México no tiene una disciplina de reciclar. Porque mucha gente tira basura en cualquier parte y lo que nosotros queremos es que la basura esté en un lugar específico y sobre todo motiva a los hacerlo de una manera diferente. Esto causaría un gran impacto en la ambiental y un gran impacto en la economía circular. Un ejemplo sería que si reciclamos al día una lata aluminio fácil con toda la jugación serían 295 millones de latas nuevas. Ese es el efecto reciclar. Innovación. Nuestra propuesta de solución va dedicada a la sociedad ya que hoy en día el población de México no está acostumbrado a reciclar. Pero con base a nuestra problemática queremos acostumbrar a la gente a tener un orden de reciclado ya que nos estamos guiando desde la tecnología. Es una herramienta muy importante hoy en día.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 6.0,
+   "text": "Hola qué tal, nosotros somos el equipo Mixed, nosotros elegimos el desafío número 2, transformación de resícitos de una cafetería."
+  },
+  {
+   "start": 6.0,
+   "end": 12.0,
+   "text": "¿Qué es lo que pasa? Tanto las botellas de vidrio como el atras al dominio como el PET no se están dando en un circuito de reciclado."
+  },
+  {
+   "start": 12.0,
+   "end": 15.0,
+   "text": "Entonces pierde la posibilidad de volverlo a reciclar."
+  },
+  {
+   "start": 15.0,
+   "end": 24.0,
+   "text": "Muchas de las empresas tienen como meta volver a dar esos reciclos o los paquetes y buscan la manera de dar un valor comercial a esos desechos."
+  },
+  {
+   "start": 24.0,
+   "end": 33.0,
+   "text": "Planteamos como solución tomar los botes que actualmente tenemos, que está dividido en orgánica, inorgánica, papel, petio aluminio e innovarlo."
+  },
+  {
+   "start": 33.0,
+   "end": 45.0,
+   "text": "De cierta manera que cada que una persona vaya a poner su basura pueda obtener un código QR o un código que puede escanearlo o ponerlo en la app gratuita"
+  },
+  {
+   "start": 45.0,
+   "end": 54.0,
+   "text": "en lo que conlleva a descuentos o puede tener algo del mismo valor y eso motiva a las personas a que sigan reciclando."
+  },
+  {
+   "start": 54.0,
+   "end": 62.0,
+   "text": "Nuestro proyecto innovador de reciclado se está llevando a cabo ya que hoy en día México no tiene una disciplina de reciclar."
+  },
+  {
+   "start": 62.0,
+   "end": 69.0,
+   "text": "Porque mucha gente tira basura en cualquier parte y lo que nosotros queremos es que la basura esté en un lugar específico"
+  },
+  {
+   "start": 69.0,
+   "end": 74.0,
+   "text": "y sobre todo motiva a los hacerlo de una manera diferente."
+  },
+  {
+   "start": 74.0,
+   "end": 83.0,
+   "text": "Esto causaría un gran impacto en la ambiental y un gran impacto en la economía circular."
+  },
+  {
+   "start": 83.0,
+   "end": 93.0,
+   "text": "Un ejemplo sería que si reciclamos al día una lata aluminio fácil con toda la jugación serían 295 millones de latas nuevas."
+  },
+  {
+   "start": 93.0,
+   "end": 95.0,
+   "text": "Ese es el efecto reciclar."
+  },
+  {
+   "start": 95.0,
+   "end": 102.0,
+   "text": "Innovación. Nuestra propuesta de solución va dedicada a la sociedad ya que hoy en día el población de México no está acostumbrado a reciclar."
+  },
+  {
+   "start": 102.0,
+   "end": 109.0,
+   "text": "Pero con base a nuestra problemática queremos acostumbrar a la gente a tener un orden de reciclado ya que nos estamos guiando desde la tecnología."
+  },
+  {
+   "start": 109.0,
+   "end": 111.0,
+   "text": "Es una herramienta muy importante hoy en día."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 112.1
+}

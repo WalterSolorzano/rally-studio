@@ -1,0 +1,47 @@
+{
+ "video_id": "jXC4jRO8gdA",
+ "url": "https://www.youtube.com/watch?v=jXC4jRO8gdA",
+ "year": 2022,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "ARDING",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "ARDING",
+   "challenge": "06 - LAS MORDEDURAS DE SERPIENTE A LA VISTA"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:14:31+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Más de 5,4 millones de personas son víctimas de mordedura de serpiente. Estas causan entre 80 y 130 mil muertes al año y la cantidad de personas con discapacidades permanentes o amputaciones de la zona lastimada es 3 veces mayor. Las viviendas de zonas rurales, zonas costeras, suelen ser las más afectadas.",
+ "segments": [
+  {
+   "start": 0.43,
+   "end": 6.27,
+   "text": "Más de 5,4 millones de personas son víctimas de mordedura de serpiente."
+  },
+  {
+   "start": 6.27,
+   "end": 11.95,
+   "text": "Estas causan entre 80 y 130 mil muertes al año y la cantidad de personas con"
+  },
+  {
+   "start": 11.95,
+   "end": 17.03,
+   "text": "discapacidades permanentes o amputaciones de la zona lastimada es 3 veces mayor."
+  },
+  {
+   "start": 17.03,
+   "end": 28.59,
+   "text": "Las viviendas de zonas rurales, zonas costeras, suelen ser las más afectadas."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.7
+}

@@ -1,0 +1,132 @@
+{
+ "video_id": "3DdO68CtB3U",
+ "url": "https://youtu.be/3DdO68CtB3U?si=NVQey_Dce0OwuPWY",
+ "year": 2024,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "INNOVA-TEC",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "INNOVA-TEC",
+   "challenge": "06 - ESCOMBROS"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:05:27+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Un estudio de la Comisión Económica para América Latina menciona que el 30% de los residuos sólidos son escombros. Cada año en Latinoamérica se generan más de 100 millones de toneladas de desecho, teniendo en cuenta la diversidad del país y sus niveles de urbanización y construcción. El mal manejo de estos escombros contribuye a la contaminación del medio ambiente. Además, muchos de estos residuos terminan en vertedero, ocupando espacio y creando un manejo ineficiente de los mismos. A raíz de esta situación surge Regenera, una planta modular de manejo de escombros con un enfoque integral, la cual se encargará de clasificar, triturar y reutilizar los diferentes tipos de escombros a través de trituradoras móviles ecológicas, con el objetivo de darles un valor agregado en los siguientes aspectos. Mejoramiento de caminos en zonas rurales con problemas de accesibilidad utilizando material selecto reciclado, elaboración de materiales didáctico y la creación de artículos decorativos. Este proyecto se vuelve viable debido a que reutilizar escombros puede ser más económico que la extracción y procesamiento de nuevos materiales y se promueve la economía circular y una cultura de sostenibilidad. Por último, es necesario convertir el reciclaje en una actividad diaria con el objetivo de un cambio de mentalidad en la sociedad donde el enfoque principal sea visualizar el futuro y los efectos de nuestras acciones. Por ti, por nosotros y por todos los que vendrán, construye un futuro más limpio y sostenible.",
+ "segments": [
+  {
+   "start": 2.77,
+   "end": 8.29,
+   "text": "Un estudio de la Comisión Económica para América Latina menciona que el 30% de los"
+  },
+  {
+   "start": 8.29,
+   "end": 13.93,
+   "text": "residuos sólidos son escombros. Cada año en Latinoamérica se generan más de 100 millones"
+  },
+  {
+   "start": 13.93,
+   "end": 18.65,
+   "text": "de toneladas de desecho, teniendo en cuenta la diversidad del país y sus niveles de"
+  },
+  {
+   "start": 18.65,
+   "end": 20.53,
+   "text": "urbanización y construcción."
+  },
+  {
+   "start": 20.53,
+   "end": 26.67,
+   "text": "El mal manejo de estos escombros contribuye a la contaminación del medio ambiente."
+  },
+  {
+   "start": 26.67,
+   "end": 33.31,
+   "text": "Además, muchos de estos residuos terminan en vertedero, ocupando espacio y creando un"
+  },
+  {
+   "start": 33.31,
+   "end": 35.31,
+   "text": "manejo ineficiente de los mismos."
+  },
+  {
+   "start": 35.31,
+   "end": 43.31,
+   "text": "A raíz de esta situación surge Regenera, una planta modular de manejo de escombros con"
+  },
+  {
+   "start": 43.31,
+   "end": 50.35,
+   "text": "un enfoque integral, la cual se encargará de clasificar, triturar y reutilizar los"
+  },
+  {
+   "start": 50.35,
+   "end": 56.71,
+   "text": "diferentes tipos de escombros a través de trituradoras móviles ecológicas, con el"
+  },
+  {
+   "start": 56.71,
+   "end": 61.99,
+   "text": "objetivo de darles un valor agregado en los siguientes aspectos."
+  },
+  {
+   "start": 61.99,
+   "end": 67.19,
+   "text": "Mejoramiento de caminos en zonas rurales con problemas de accesibilidad utilizando"
+  },
+  {
+   "start": 67.19,
+   "end": 73.39,
+   "text": "material selecto reciclado, elaboración de materiales didáctico y la creación"
+  },
+  {
+   "start": 73.39,
+   "end": 76.55,
+   "text": "de artículos decorativos."
+  },
+  {
+   "start": 76.55,
+   "end": 81.35,
+   "text": "Este proyecto se vuelve viable debido a que reutilizar escombros puede ser más"
+  },
+  {
+   "start": 81.35,
+   "end": 86.51,
+   "text": "económico que la extracción y procesamiento de nuevos materiales y se"
+  },
+  {
+   "start": 86.51,
+   "end": 91.87,
+   "text": "promueve la economía circular y una cultura de sostenibilidad."
+  },
+  {
+   "start": 91.87,
+   "end": 97.27,
+   "text": "Por último, es necesario convertir el reciclaje en una actividad diaria con el"
+  },
+  {
+   "start": 97.27,
+   "end": 103.19,
+   "text": "objetivo de un cambio de mentalidad en la sociedad donde el enfoque principal"
+  },
+  {
+   "start": 103.27,
+   "end": 108.67,
+   "text": "sea visualizar el futuro y los efectos de nuestras acciones."
+  },
+  {
+   "start": 108.67,
+   "end": 116.91,
+   "text": "Por ti, por nosotros y por todos los que vendrán, construye un futuro más limpio y sostenible."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.1
+}

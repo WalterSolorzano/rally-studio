@@ -1,0 +1,122 @@
+{
+ "video_id": "AvbG_mP3y_M",
+ "url": "https://youtu.be/AvbG_mP3y_M",
+ "year": 2025,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "RAICES DEL FUTURO",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "RAICES DEL FUTURO",
+   "challenge": "05 - HUERTOS VERTICALES"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:50:50+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Hola, nosotros somos el equipo Raíces del Futuro y el nombre de nuestro proyecto es Tecnoverde. Te has fijado que en la ciudad cada vez hay menos espacio y más cemento. El agua escasea, los alimentos suben de precio y la mayoría vienen de lejos, perdiendo frescura y contaminando más. Esa realidad nos inspiró a crear una solución verde, práctica y sostenible. El huerto vertical, modular y hábitos suficiente. El sluerto está diseñado por aprovechar esos espacios pequeños que casi nadie usa, como los balcones, terrazas o paredes. Utilizamos materiales reciclados como botellas prácticas y estructuras ligeras para hacerlo accesible y económico. Pero lo más increíble es su tecnología inteligente. Cuenta con un sistema de riego automatizado, sensores de 1 megavat de fertilización controlada por un móvil y energía solar. Todo esto permite que las plantas reciban justo lo que necesitan sin desperdiciar agua ni energía. Con este sistema, cualquiera puede cultivar hortalizas, hierbas aromáticas o vegetales frescos sin perder del supermercado. Así fortalecemos la seguridad alimentaria, promovemos una alimentación saludable y reducimos el impacto ambiental. Además, al aumentar la vegetación en los entornos urbanos, mejoramos el aire, reducimos el calor y envécemos la ciudad. Socialmente, este proyecto impulsa la educación ambiental, la colaboración comunitaria y la autosuficiencia. Imagina vecinos, escuelas o familias compartiendo conocimientos, cosechando juntos y transformando espacios grises en reconhecimientos de vida. Nuestra innovación combina diseño ecológico, tecnología accesible y economía circular. Es fácil de instalar bajo costo y totalmente replicable en cualquier ciudad. En resumen, convertimos un muro vacío en una fuente de alimento, aire limpio y esperanza verde. Porque el futuro se cultiva y comienza desde tu pared.",
+ "segments": [
+  {
+   "start": 0.37,
+   "end": 6.37,
+   "text": "Hola, nosotros somos el equipo Raíces del Futuro y el nombre de nuestro proyecto es Tecnoverde."
+  },
+  {
+   "start": 6.37,
+   "end": 11.37,
+   "text": "Te has fijado que en la ciudad cada vez hay menos espacio y más cemento."
+  },
+  {
+   "start": 11.37,
+   "end": 18.37,
+   "text": "El agua escasea, los alimentos suben de precio y la mayoría vienen de lejos, perdiendo frescura y contaminando más."
+  },
+  {
+   "start": 18.37,
+   "end": 23.37,
+   "text": "Esa realidad nos inspiró a crear una solución verde, práctica y sostenible."
+  },
+  {
+   "start": 23.37,
+   "end": 26.37,
+   "text": "El huerto vertical, modular y hábitos suficiente."
+  },
+  {
+   "start": 26.37,
+   "end": 33.37,
+   "text": "El sluerto está diseñado por aprovechar esos espacios pequeños que casi nadie usa, como los balcones, terrazas o paredes."
+  },
+  {
+   "start": 33.37,
+   "end": 39.37,
+   "text": "Utilizamos materiales reciclados como botellas prácticas y estructuras ligeras para hacerlo accesible y económico."
+  },
+  {
+   "start": 39.37,
+   "end": 42.37,
+   "text": "Pero lo más increíble es su tecnología inteligente."
+  },
+  {
+   "start": 42.37,
+   "end": 50.37,
+   "text": "Cuenta con un sistema de riego automatizado, sensores de 1 megavat de fertilización controlada por un móvil y energía solar."
+  },
+  {
+   "start": 50.37,
+   "end": 55.37,
+   "text": "Todo esto permite que las plantas reciban justo lo que necesitan sin desperdiciar agua ni energía."
+  },
+  {
+   "start": 55.37,
+   "end": 62.37,
+   "text": "Con este sistema, cualquiera puede cultivar hortalizas, hierbas aromáticas o vegetales frescos sin perder del supermercado."
+  },
+  {
+   "start": 62.37,
+   "end": 68.37,
+   "text": "Así fortalecemos la seguridad alimentaria, promovemos una alimentación saludable y reducimos el impacto ambiental."
+  },
+  {
+   "start": 68.37,
+   "end": 75.37,
+   "text": "Además, al aumentar la vegetación en los entornos urbanos, mejoramos el aire, reducimos el calor y envécemos la ciudad."
+  },
+  {
+   "start": 75.37,
+   "end": 80.37,
+   "text": "Socialmente, este proyecto impulsa la educación ambiental, la colaboración comunitaria y la autosuficiencia."
+  },
+  {
+   "start": 80.37,
+   "end": 88.37,
+   "text": "Imagina vecinos, escuelas o familias compartiendo conocimientos, cosechando juntos y transformando espacios grises en reconhecimientos de vida."
+  },
+  {
+   "start": 88.37,
+   "end": 93.37,
+   "text": "Nuestra innovación combina diseño ecológico, tecnología accesible y economía circular."
+  },
+  {
+   "start": 93.37,
+   "end": 98.37,
+   "text": "Es fácil de instalar bajo costo y totalmente replicable en cualquier ciudad."
+  },
+  {
+   "start": 98.37,
+   "end": 103.37,
+   "text": "En resumen, convertimos un muro vacío en una fuente de alimento, aire limpio y esperanza verde."
+  },
+  {
+   "start": 103.37,
+   "end": 107.37,
+   "text": "Porque el futuro se cultiva y comienza desde tu pared."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 108.3
+}

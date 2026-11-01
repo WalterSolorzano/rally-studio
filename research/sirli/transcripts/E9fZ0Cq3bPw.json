@@ -1,0 +1,164 @@
+{
+ "video_id": "E9fZ0Cq3bPw",
+ "url": "https://youtu.be/E9fZ0Cq3bPw",
+ "year": 2025,
+ "collection": "nacional",
+ "country": "ARGENTINA",
+ "team": "MARELIK Y SUS PERSAS",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "MARELIK Y SUS PERSAS",
+   "challenge": "03 - FUGAS DE AGUA"
+  },
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "MARELIK Y SUS PERSAS",
+   "challenge": "03 - FUGAS DE AGUA"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:14:13+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En muchas ciudades de Latinoamérica, la red de distribución de agua potable sufre una deficiencia agraria. La detección y reparación de fugas es tardía, lenta, costosa y no lo suficientemente precisa. Cada demora significa miles de litros perdidos, entre el 30 y el 50% del total distribuido. Cada día sin solución afecta a familias enteras, que permanecen horas, incluso semanas, sin acceso a un derecho básico, el agua potable. Pero eso cambia hoy. IKUE llega para transformar la forma en que conocemos lo que ocurre bajo nuestros pies. Es un vehículo subacuático, no tripulado, modular y autónomo. Se desplaza por el interior de las tuberías sin necesidad de interrumpir el flujo de agua. Impulsado por un sistema de ruedas, inspirado en el rover Curiosity de la NASA, posee una suspensión retráctil que le permite adaptarse a diferentes diámetros de cañería y sortear obstáculos con precisión milimétrica. El mapeo digital de la red se carga en su sistema, otorgándole autonomía de navegación. La transmisión de datos se realiza por ultrasonido hacia puntos estratégicos, lo que permite acceder a la información, es de cualquier parte de la ciudad, en tiempo real. IKUE aprovecha el propio flujo del agua para generar energía mediante microélices internas, lo que extiende su autonomía y reduce el mantenimiento. Su corazón tecnológico es un sonar de apertura sintética, capaz de mapear el interior de las tuberías con resolución bilimétrica. El sistema detecta fugas activas, en mediante algoritmos de machine learning, dedica fallas futuras antes de copurar. El resultado, una red inteligente, monitoreada y viva. La creación de 50 robots IKUE equivale a una sola detección con el método actual y puede detectar simultánea y continuamente las fungas. El sistema se replica, se multiplica y crece con cada misión. Imagina un enjambre de IKUE que patrulla silenciosamente el interior de la ciudad protegiendo el recurso más valioso que tenemos.",
+ "segments": [
+  {
+   "start": 10.45,
+   "end": 16.45,
+   "text": "En muchas ciudades de Latinoamérica, la red de distribución de agua potable sufre una deficiencia agraria."
+  },
+  {
+   "start": 16.45,
+   "end": 22.95,
+   "text": "La detección y reparación de fugas es tardía, lenta, costosa y no lo suficientemente precisa."
+  },
+  {
+   "start": 22.95,
+   "end": 29.45,
+   "text": "Cada demora significa miles de litros perdidos, entre el 30 y el 50% del total distribuido."
+  },
+  {
+   "start": 29.45,
+   "end": 34.45,
+   "text": "Cada día sin solución afecta a familias enteras, que permanecen horas, incluso semanas,"
+  },
+  {
+   "start": 34.45,
+   "end": 38.95,
+   "text": "sin acceso a un derecho básico, el agua potable. Pero eso cambia hoy."
+  },
+  {
+   "start": 38.95,
+   "end": 43.95,
+   "text": "IKUE llega para transformar la forma en que conocemos lo que ocurre bajo nuestros pies."
+  },
+  {
+   "start": 43.95,
+   "end": 47.95,
+   "text": "Es un vehículo subacuático, no tripulado, modular y autónomo."
+  },
+  {
+   "start": 47.95,
+   "end": 51.95,
+   "text": "Se desplaza por el interior de las tuberías sin necesidad de interrumpir el flujo de agua."
+  },
+  {
+   "start": 51.95,
+   "end": 55.95,
+   "text": "Impulsado por un sistema de ruedas, inspirado en el rover Curiosity de la NASA,"
+  },
+  {
+   "start": 55.95,
+   "end": 60.95,
+   "text": "posee una suspensión retráctil que le permite adaptarse a diferentes diámetros de cañería"
+  },
+  {
+   "start": 60.95,
+   "end": 63.95,
+   "text": "y sortear obstáculos con precisión milimétrica."
+  },
+  {
+   "start": 63.95,
+   "end": 68.95,
+   "text": "El mapeo digital de la red se carga en su sistema, otorgándole autonomía de navegación."
+  },
+  {
+   "start": 68.95,
+   "end": 72.95,
+   "text": "La transmisión de datos se realiza por ultrasonido hacia puntos estratégicos,"
+  },
+  {
+   "start": 72.95,
+   "end": 77.95,
+   "text": "lo que permite acceder a la información, es de cualquier parte de la ciudad, en tiempo real."
+  },
+  {
+   "start": 77.95,
+   "end": 82.95,
+   "text": "IKUE aprovecha el propio flujo del agua para generar energía mediante microélices internas,"
+  },
+  {
+   "start": 82.95,
+   "end": 85.95,
+   "text": "lo que extiende su autonomía y reduce el mantenimiento."
+  },
+  {
+   "start": 85.95,
+   "end": 88.95,
+   "text": "Su corazón tecnológico es un sonar de apertura sintética,"
+  },
+  {
+   "start": 88.95,
+   "end": 92.95,
+   "text": "capaz de mapear el interior de las tuberías con resolución bilimétrica."
+  },
+  {
+   "start": 92.95,
+   "end": 95.95,
+   "text": "El sistema detecta fugas activas, en mediante algoritmos de machine learning,"
+  },
+  {
+   "start": 95.95,
+   "end": 98.95,
+   "text": "dedica fallas futuras antes de copurar."
+  },
+  {
+   "start": 98.95,
+   "end": 101.95,
+   "text": "El resultado, una red inteligente, monitoreada y viva."
+  },
+  {
+   "start": 101.95,
+   "end": 107.95,
+   "text": "La creación de 50 robots IKUE equivale a una sola detección con el método actual"
+  },
+  {
+   "start": 107.95,
+   "end": 110.95,
+   "text": "y puede detectar simultánea y continuamente las fungas."
+  },
+  {
+   "start": 110.95,
+   "end": 114.95,
+   "text": "El sistema se replica, se multiplica y crece con cada misión."
+  },
+  {
+   "start": 114.95,
+   "end": 118.95,
+   "text": "Imagina un enjambre de IKUE que patrulla silenciosamente el interior de la ciudad"
+  },
+  {
+   "start": 118.95,
+   "end": 121.95,
+   "text": "protegiendo el recurso más valioso que tenemos."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 124.0
+}

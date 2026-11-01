@@ -1,0 +1,152 @@
+{
+ "video_id": "WYZvzXYWwyA",
+ "url": "https://youtu.be/WYZvzXYWwyA",
+ "year": 2026,
+ "collection": "sede",
+ "country": "CHILE",
+ "team": "HYDRONEX",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "HYDRONEX",
+   "challenge": "05 - MONITOREO INTELIGENTE E INFRAESTRUCTURA VERDE EN RESERVORIOS PLUVIALES"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:35:57+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Recuerdan cuando jugábamos legos cuando chicos? A veces nos faltaba una pieza y no podíamos terminar lo que imaginábamos. En nuestra ciudad ocurre algo parecido, tenemos parques, drenajes y tecnologías, pero no siempre trabajan juntos cuando llegan la lluvia intensas. En Latinoamérica el crecimiento urbano reduce las superficies que absorben agua. Cuando llueve, con fuerza, los colectores se desobrecargan y los ríos pueden deportarse, y el resultado cae inundadas viviendo las expuestas y comunidades con poco tiempo para reaccionar. Somos HydronX y creamos HydroShelt, un parque reservuario pluvial inteligente. Integra tres piosanjas con vegetación, arena y sustrato, y graba para almacenar y filtrar parte del agua. En puntos críticos con templas defensas hidráulicas como tetrapodos, si solo si el terreno lo permita. Y mediante de arenajes inferiores, las sancas pueden vaciarse gradualmente para volver a utilizarse. El sistema combina pronósticos meteorológicos, un sensor de nivel de río y un sensor en cada vio sanja. Los datos viajan mediante Lora One, una reten inlambrica de bajo consumo. Así podemos monitorear las cinco etapas del evento y generar aletas tempranas cuando existe peligro, incluso antes de que la sanja se llene. Cuando no llueve, HydroShelt sigue siendo un parque con áreas verdes, senderos y espacios para practicar deporte. Proponemos comenzar con un piloto y adaptar el diseño a distintas ciudades de Latinoamérica. ¿Por qué no nos faltan piezas para construir ciudades mejores? Necesitamos conectarlas. HydroShelt, el parque que protege tu ciudad. No podemos detener la lluvia, pero sí podemos cambiar la forma en la que nuestra ciudad la enfrente. Con HydroShelt queremos transformar espacios urbanos en lugares que no solo permitan disfrutar el presente, sino también proteger nuestro futuro. Porque la mejor innovación no solo construye ciudades, protege vidas. Somos HydroNext y esto es HydroShelt, el parque que protege tu ciudad. Subtítulos por la comunidad de Amara.org",
+ "segments": [
+  {
+   "start": 0.3,
+   "end": 6.32,
+   "text": "¿Recuerdan cuando jugábamos legos cuando chicos? A veces nos faltaba una pieza y no podíamos terminar lo que imaginábamos."
+  },
+  {
+   "start": 6.32,
+   "end": 13.82,
+   "text": "En nuestra ciudad ocurre algo parecido, tenemos parques, drenajes y tecnologías, pero no siempre trabajan juntos cuando llegan la lluvia intensas."
+  },
+  {
+   "start": 14.82,
+   "end": 18.74,
+   "text": "En Latinoamérica el crecimiento urbano reduce las superficies que absorben agua."
+  },
+  {
+   "start": 18.74,
+   "end": 22.94,
+   "text": "Cuando llueve, con fuerza, los colectores se desobrecargan y los ríos pueden deportarse,"
+  },
+  {
+   "start": 22.94,
+   "end": 28.46,
+   "text": "y el resultado cae inundadas viviendo las expuestas y comunidades con poco tiempo para reaccionar."
+  },
+  {
+   "start": 29.42,
+   "end": 34.44,
+   "text": "Somos HydronX y creamos HydroShelt, un parque reservuario pluvial inteligente."
+  },
+  {
+   "start": 34.44,
+   "end": 42.18,
+   "text": "Integra tres piosanjas con vegetación, arena y sustrato, y graba para almacenar y filtrar parte del agua."
+  },
+  {
+   "start": 42.18,
+   "end": 48.82,
+   "text": "En puntos críticos con templas defensas hidráulicas como tetrapodos, si solo si el terreno lo permita."
+  },
+  {
+   "start": 48.82,
+   "end": 55.54,
+   "text": "Y mediante de arenajes inferiores, las sancas pueden vaciarse gradualmente para volver a utilizarse."
+  },
+  {
+   "start": 56.02,
+   "end": 61.82,
+   "text": "El sistema combina pronósticos meteorológicos, un sensor de nivel de río y un sensor en cada vio sanja."
+  },
+  {
+   "start": 61.82,
+   "end": 66.1,
+   "text": "Los datos viajan mediante Lora One, una reten inlambrica de bajo consumo."
+  },
+  {
+   "start": 66.1,
+   "end": 70.98,
+   "text": "Así podemos monitorear las cinco etapas del evento y generar aletas tempranas cuando existe peligro,"
+  },
+  {
+   "start": 70.98,
+   "end": 73.3,
+   "text": "incluso antes de que la sanja se llene."
+  },
+  {
+   "start": 73.3,
+   "end": 77.5,
+   "text": "Cuando no llueve, HydroShelt sigue siendo un parque con áreas verdes,"
+  },
+  {
+   "start": 77.5,
+   "end": 79.74,
+   "text": "senderos y espacios para practicar deporte."
+  },
+  {
+   "start": 79.74,
+   "end": 84.14,
+   "text": "Proponemos comenzar con un piloto y adaptar el diseño a distintas ciudades de Latinoamérica."
+  },
+  {
+   "start": 84.54,
+   "end": 86.94,
+   "text": "¿Por qué no nos faltan piezas para construir ciudades mejores?"
+  },
+  {
+   "start": 86.94,
+   "end": 88.66,
+   "text": "Necesitamos conectarlas."
+  },
+  {
+   "start": 88.66,
+   "end": 92.54,
+   "text": "HydroShelt, el parque que protege tu ciudad."
+  },
+  {
+   "start": 92.54,
+   "end": 98.22,
+   "text": "No podemos detener la lluvia, pero sí podemos cambiar la forma en la que nuestra ciudad la enfrente."
+  },
+  {
+   "start": 98.22,
+   "end": 103.7,
+   "text": "Con HydroShelt queremos transformar espacios urbanos en lugares que no solo permitan disfrutar el presente,"
+  },
+  {
+   "start": 103.7,
+   "end": 105.7,
+   "text": "sino también proteger nuestro futuro."
+  },
+  {
+   "start": 105.7,
+   "end": 109.42,
+   "text": "Porque la mejor innovación no solo construye ciudades, protege vidas."
+  },
+  {
+   "start": 109.42,
+   "end": 114.42,
+   "text": "Somos HydroNext y esto es HydroShelt, el parque que protege tu ciudad."
+  },
+  {
+   "start": 115.42,
+   "end": 118.42,
+   "text": "Subtítulos por la comunidad de Amara.org"
+  }
+ ],
+ "has_info": false,
+ "duration_s": 115.5
+}

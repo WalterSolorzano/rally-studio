@@ -1,0 +1,122 @@
+{
+ "video_id": "VugEJ8C-_kw",
+ "url": "https://www.youtube.com/watch?v=VugEJ8C-_kw",
+ "year": 2024,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "FARAMED",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "FARAMED",
+   "challenge": "05 - EVACUACIÓN"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:01:51+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En los últimos 23 años, América Latina y el Caribe han sufrido múltiples desastres naturales, como inundaciones, tormentas, terremotos, deslizamientos de tierra, eventos polcánicos e incendios forestales. A menudo, las rutas de evacuación carecen de visibilidad tanto dentro como fuera de la infraestructura y aumentan el pánico y desesperación de las personas provocando aglomeraciones, accidentes y que en estas situaciones de emergencia las calles también se conviertan en un sitio de caos. Ante la falta de rutas de evacuación segura y efectiva, la tasa de mortalidad tiende a incrementar. Como estudiantes, creamos Geo Sentinel para abordar una problemática crucial, mejorar la seguridad en nuestros hogares, oficinas y empresas ofreciendo una solución innovadora que protege a la población en situaciones de emergencia. Soy Geo Sentinel. Fui creada por el equipo de Faramete la Universidad Nacional Comandante Madre Gaspar García Labiana, Leon, Nicaragua. Actualmente soy un prototipo diseñado para responder preguntas predeterminadas relacionadas con la evacuación en situaciones de emergencia. Me convertiré en el mejor surpuer de ayuda para la población. Si tienes alguna pregunta o situación de emergencia, por favor no dudes en preguntarme. ¿Cómo puedo asistir de hoy? Geo Sentinel es un dispositivo innovador que combina un sensor de terremoto de alta precisión y un detector de humo avanzado para brindarte la máxima seguridad. Su pantalla te ofrece alerta en tiempo real, mientras que su parlante con una voz predeterminada te guía con instrucciones claras durante emergencias.",
+ "segments": [
+  {
+   "start": 3.34,
+   "end": 10.34,
+   "text": "En los últimos 23 años, América Latina y el Caribe han sufrido múltiples desastres naturales,"
+  },
+  {
+   "start": 10.34,
+   "end": 19.34,
+   "text": "como inundaciones, tormentas, terremotos, deslizamientos de tierra, eventos polcánicos e incendios forestales."
+  },
+  {
+   "start": 19.34,
+   "end": 25.34,
+   "text": "A menudo, las rutas de evacuación carecen de visibilidad tanto dentro como fuera de la infraestructura"
+  },
+  {
+   "start": 25.34,
+   "end": 32.34,
+   "text": "y aumentan el pánico y desesperación de las personas provocando aglomeraciones, accidentes"
+  },
+  {
+   "start": 32.34,
+   "end": 37.34,
+   "text": "y que en estas situaciones de emergencia las calles también se conviertan en un sitio de caos."
+  },
+  {
+   "start": 37.34,
+   "end": 44.34,
+   "text": "Ante la falta de rutas de evacuación segura y efectiva, la tasa de mortalidad tiende a incrementar."
+  },
+  {
+   "start": 44.34,
+   "end": 50.34,
+   "text": "Como estudiantes, creamos Geo Sentinel para abordar una problemática crucial,"
+  },
+  {
+   "start": 50.34,
+   "end": 57.34,
+   "text": "mejorar la seguridad en nuestros hogares, oficinas y empresas ofreciendo una solución innovadora"
+  },
+  {
+   "start": 57.34,
+   "end": 61.34,
+   "text": "que protege a la población en situaciones de emergencia."
+  },
+  {
+   "start": 61.34,
+   "end": 67.82,
+   "text": "Soy Geo Sentinel. Fui creada por el equipo de Faramete la Universidad Nacional Comandante"
+  },
+  {
+   "start": 67.82,
+   "end": 70.82,
+   "text": "Madre Gaspar García Labiana, Leon, Nicaragua."
+  },
+  {
+   "start": 70.82,
+   "end": 77.7,
+   "text": "Actualmente soy un prototipo diseñado para responder preguntas predeterminadas relacionadas"
+  },
+  {
+   "start": 77.7,
+   "end": 85.8,
+   "text": "con la evacuación en situaciones de emergencia. Me convertiré en el mejor surpuer de ayuda para la población."
+  },
+  {
+   "start": 85.8,
+   "end": 93.58,
+   "text": "Si tienes alguna pregunta o situación de emergencia, por favor no dudes en preguntarme."
+  },
+  {
+   "start": 93.58,
+   "end": 96.58,
+   "text": "¿Cómo puedo asistir de hoy?"
+  },
+  {
+   "start": 96.58,
+   "end": 102.58,
+   "text": "Geo Sentinel es un dispositivo innovador que combina un sensor de terremoto de alta precisión"
+  },
+  {
+   "start": 102.58,
+   "end": 107.58,
+   "text": "y un detector de humo avanzado para brindarte la máxima seguridad."
+  },
+  {
+   "start": 107.58,
+   "end": 112.58,
+   "text": "Su pantalla te ofrece alerta en tiempo real, mientras que su parlante con una voz predeterminada"
+  },
+  {
+   "start": 112.58,
+   "end": 116.58,
+   "text": "te guía con instrucciones claras durante emergencias."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.2
+}

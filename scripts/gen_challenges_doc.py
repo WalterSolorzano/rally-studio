@@ -28,33 +28,7 @@ BRIEF_PATH = pathlib.Path("brief.json")
 OUT_DOCX = pathlib.Path("docs/Matriz_Seleccion_Desafios_2026.docx")
 
 # Tecnologías de alto impacto ("WOW") mapeadas por tipología de desafío
-WOW_TECH_MATRIX = {
-    "01": {
-        "tech": "Manufactura Circular Paramétrica & Generadores de Flujo Axial",
-        "description": "Reconversión de estatores de lavarropas en generadores eólicos de imanes permanentes o trilladoras comunitarias modulares.",
-        "wow_factor": "Transformación física visible de chatarra doméstica en energía agropecuaria sin requerir fundición pesada."
-    },
-    "02": {
-        "tech": "Telemetría LoRaWAN Mesh + Algoritmo de Crecida por Visión Sintética",
-        "description": "Red de sensores de ultrasonido y nivel hidrométrico con protocolo de salto mallado (Mesh) y compuerta electromecánica de alivio automatizada.",
-        "wow_factor": "Anticipación de crecida de 30 minutos sin depender de red celular ni internet comercial durante huracanes."
-    },
-    "03": {
-        "tech": "Acústica Pasiva por Edge-AI (TinyML) en Colmenas Meliponas",
-        "description": "Microcontroladores de $5 USD ejecutando inferencia acústica de zumbido para alertar envenenamiento por pesticidas o colapso térmico.",
-        "wow_factor": "Invasividad cero: el sensor escucha el espectro de frecuencia sin perturbar el hábitat del polinizador."
-    },
-    "04": {
-        "tech": "Biochar por Pirólisis Térmica Autotérmica + Paneles Termoacústicos",
-        "description": "Compactadora mecánica de poda urbana para producir placas aislantes livianas y enmienda de biochar para suelos degradados.",
-        "wow_factor": "Captura de carbono negativa comprobable con balance de masa y energía cerrado."
-    },
-    "05": {
-        "tech": "Filtración por Vórtice Hidráulico + Microturbina Gravitatoria",
-        "description": "Separador ciclónico autolimpiante de sedimentos pluviales acoplado a desinfección UV solar pasiva sin filtros de cartucho descartables.",
-        "wow_factor": "Zero-waste y mantenimiento cero: los sedimentos se purgan automáticamente por fuerza centrífuga."
-    }
-}
+WOW_TECH_MATRIX = {}
 
 def set_cell_background(cell, hex_color):
     shading_xml = f'<w:shd {nsdecls("w")} w:fill="{hex_color}"/>'
@@ -138,9 +112,9 @@ def main():
     for ch in challenges:
         ch_id = ch.get("id", "").replace("DESAFIO_", "")
         wow_info = WOW_TECH_MATRIX.get(ch_id, {
-            "tech": "Hibridación Ciber-Física & Economía Circular",
-            "description": "Integración de componentes de desecho con sensores IoT de bajo consumo.",
-            "wow_factor": "Soberanía tecnológica y escalabilidad en América Latina."
+            "tech": ch.get("title", "Propuesta tecnica por formular"),
+            "description": ch.get("description", "Descripcion pendiente de completar por el equipo."),
+            "wow_factor": "Diferenciacion por validar con evidencia del corpus."
         })
 
         row_cells = table_top.add_row().cells
@@ -149,7 +123,7 @@ def main():
         row_cells[0].paragraphs[0].runs[0].font.size = Pt(9)
 
         # Probabilidad estimada
-        win_est = "92% (Top 1)" if ch_id == "03" else ("90% (Top 2)" if ch_id == "01" else "84% (Media)")
+        win_est = "Por validar"
         row_cells[1].text = win_est
         row_cells[1].paragraphs[0].runs[0].font.size = Pt(9)
 

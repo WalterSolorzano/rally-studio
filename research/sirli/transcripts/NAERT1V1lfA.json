@@ -1,0 +1,152 @@
+{
+ "video_id": "NAERT1V1lfA",
+ "url": "https://youtu.be/NAERT1V1lfA",
+ "year": 2022,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "EQUIPO 5",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "EQUIPO 5",
+   "challenge": "05 - NEUMÁTICOS AMIGABLES CON EL MEDIOAMBIENTE"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:34:32+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "El desperdicio de los nemóticos es muy alto. En los países desarrollados se recupera el 85% de los nemóticos fabricados y en los países emergentes solamente el 10%. Dejando así un alto índice de contaminantes, generando desechos en diversos lugares como verdaderos, ríos y calles. Para resolver el problema, se utilizará fibra de caña. Esto es por su durabilidad, así como el caucho natural extraído del huayule combinado con el miselio. Por otra parte, el miselio es el sistema de raíces de las setas. Es un material resistente, sin toxicidad, biodegradable e inocuo para el medio ambiente. Se propone reemplazar el cobre que se utiliza para su reforzamiento de la llanta y será reemplazada por los nanotubos de carbono. Esto con la finalidad de minimizar los impactos ambientales y mejorar la resistencia del producto. Con los materiales anteriores, pasan por un proceso de fabricación. Para así crear la nueva llanta EcoWiz, la cual se ha comparado con los precios de las competencias actuales, siendo nuestra llanta de mayor precio. Pero, a diferencia de las convencionales, la nuestra es amigable con el ambiente por su materia prima. Esta propuesta tiene que contar con un costo total de 4.782 pesos mexicanos, repartida entre maquinaria, equipo de oficina, reparto, etc. y el precio de venta de los pneumáticos competirá contra pneumáticos que se encuentran dentro del mercado, como se muestra en la gráfica compitiendo con otras marcas. Esto es Rally Latinoamericano Innovación 2022.",
+ "segments": [
+  {
+   "start": 2.9,
+   "end": 5.7,
+   "text": "El desperdicio de los nemóticos es muy alto."
+  },
+  {
+   "start": 5.7,
+   "end": 10.9,
+   "text": "En los países desarrollados se recupera el 85% de los nemóticos fabricados"
+  },
+  {
+   "start": 10.9,
+   "end": 14.2,
+   "text": "y en los países emergentes solamente el 10%."
+  },
+  {
+   "start": 14.2,
+   "end": 17.2,
+   "text": "Dejando así un alto índice de contaminantes,"
+  },
+  {
+   "start": 17.2,
+   "end": 21.7,
+   "text": "generando desechos en diversos lugares como verdaderos, ríos y calles."
+  },
+  {
+   "start": 26.46,
+   "end": 30.16,
+   "text": "Para resolver el problema, se utilizará fibra de caña."
+  },
+  {
+   "start": 30.16,
+   "end": 31.96,
+   "text": "Esto es por su durabilidad,"
+  },
+  {
+   "start": 31.96,
+   "end": 36.76,
+   "text": "así como el caucho natural extraído del huayule combinado con el miselio."
+  },
+  {
+   "start": 36.76,
+   "end": 45.44,
+   "text": "Por otra parte, el miselio es el sistema de raíces de las setas."
+  },
+  {
+   "start": 45.44,
+   "end": 51.24,
+   "text": "Es un material resistente, sin toxicidad, biodegradable e inocuo para el medio ambiente."
+  },
+  {
+   "start": 51.24,
+   "end": 56.44,
+   "text": "Se propone reemplazar el cobre que se utiliza para su reforzamiento de la llanta"
+  },
+  {
+   "start": 56.44,
+   "end": 59.44,
+   "text": "y será reemplazada por los nanotubos de carbono."
+  },
+  {
+   "start": 59.44,
+   "end": 62.94,
+   "text": "Esto con la finalidad de minimizar los impactos ambientales"
+  },
+  {
+   "start": 62.94,
+   "end": 65.44,
+   "text": "y mejorar la resistencia del producto."
+  },
+  {
+   "start": 66.44,
+   "end": 70.44,
+   "text": "Con los materiales anteriores, pasan por un proceso de fabricación."
+  },
+  {
+   "start": 71.04,
+   "end": 74.04,
+   "text": "Para así crear la nueva llanta EcoWiz,"
+  },
+  {
+   "start": 74.04,
+   "end": 81.97,
+   "text": "la cual se ha comparado con los precios de las competencias actuales,"
+  },
+  {
+   "start": 81.97,
+   "end": 83.97,
+   "text": "siendo nuestra llanta de mayor precio."
+  },
+  {
+   "start": 83.97,
+   "end": 86.77,
+   "text": "Pero, a diferencia de las convencionales,"
+  },
+  {
+   "start": 86.77,
+   "end": 90.17,
+   "text": "la nuestra es amigable con el ambiente por su materia prima."
+  },
+  {
+   "start": 90.17,
+   "end": 95.97,
+   "text": "Esta propuesta tiene que contar con un costo total de 4.782 pesos mexicanos,"
+  },
+  {
+   "start": 95.97,
+   "end": 100.97,
+   "text": "repartida entre maquinaria, equipo de oficina, reparto, etc."
+  },
+  {
+   "start": 100.97,
+   "end": 105.97,
+   "text": "y el precio de venta de los pneumáticos competirá contra pneumáticos que se encuentran dentro del mercado,"
+  },
+  {
+   "start": 105.97,
+   "end": 109.97,
+   "text": "como se muestra en la gráfica compitiendo con otras marcas."
+  },
+  {
+   "start": 110.97,
+   "end": 114.97,
+   "text": "Esto es Rally Latinoamericano Innovación 2022."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 116.7
+}

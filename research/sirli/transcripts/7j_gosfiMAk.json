@@ -1,0 +1,77 @@
+{
+ "video_id": "7j_gosfiMAk",
+ "url": "https://youtu.be/7j_gosfiMAk",
+ "year": 2021,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "UNTA DAWANKA",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "UNTA DAWANKA",
+   "challenge": "06 - SOSTENIBILIDAD AMBIENTAL ORIENTADA AL APROVECHAMIENTO DE RESIDUOS PLÁSTICOS EN FRANJAS COSTERAS"
+  }
+ ],
+ "fetched_at": "2026-10-23T01:05:34+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "De acuerdo al informe del Fondo Mundial para la Naturaleza, América Latina es el cuarto productor mundial de desechos plástico. El 70% de estos residuos terminan en los mares donde las olas y el viento los erosionan hasta convertirlos en microplásticos. El objetivo de desarrollo sostenible, vida submarina, busca conservar y utilizarnos océanos, los mares y los recursos marinos de manera sostenible. Por lo que es imperativo prevenir y reducir la contaminación marina de residuos plásticos. Somos UNDA DAWANKA, un equipo multidisciplinario que propone una solución holística razón por la que se creó mayas con botellas de plásticos recicladas de 100 metros de largo por 2 metros de ancho. Flexible que permita moverse según el nivel de la marea, se ubicará en lugares estratégicos, riveras de ríos y desahuas de alcantarillados para captar dichos residuos. Funcionará con sensores que identifican la cantidad idico de plástico, la recopilación, procesamiento y análisis de datos reales del exceso de residuos, el cual generará alertas a la población por medios digitales. Se capacitará a pescadores artesanales para el proceso de recolección, clasificación y traslado de los residuos al centro de acopio de la cooperativa, los cuales serán transformados con una máquina artesanal en producto utilizado en la industria pesquera. Voyas, trampas para cangrejos, langosta, mecate, termos, sombreros, entre otros, cumpliendo con las normas establecidas de residuos, contribuyendo al desarrollo sostenible, mitigando el uso de residuos plástico, generando empleo, aumentando la pesca y con ella los ingresos y la salud de las personas. Untada oanca, comprometidos con la sostenibilidad ambiental de las zonas costeras.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 8.36,
+   "text": "De acuerdo al informe del Fondo Mundial para la Naturaleza, América Latina es el cuarto productor mundial de desechos plástico."
+  },
+  {
+   "start": 8.36,
+   "end": 17.44,
+   "text": "El 70% de estos residuos terminan en los mares donde las olas y el viento los erosionan hasta convertirlos en microplásticos."
+  },
+  {
+   "start": 17.44,
+   "end": 27.0,
+   "text": "El objetivo de desarrollo sostenible, vida submarina, busca conservar y utilizarnos océanos, los mares y los recursos marinos de manera sostenible."
+  },
+  {
+   "start": 27.0,
+   "end": 32.84,
+   "text": "Por lo que es imperativo prevenir y reducir la contaminación marina de residuos plásticos."
+  },
+  {
+   "start": 32.84,
+   "end": 49.28,
+   "text": "Somos UNDA DAWANKA, un equipo multidisciplinario que propone una solución holística razón por la que se creó mayas con botellas de plásticos recicladas de 100 metros de largo por 2 metros de ancho."
+  },
+  {
+   "start": 49.28,
+   "end": 61.52,
+   "text": "Flexible que permita moverse según el nivel de la marea, se ubicará en lugares estratégicos, riveras de ríos y desahuas de alcantarillados para captar dichos residuos."
+  },
+  {
+   "start": 61.52,
+   "end": 77.56,
+   "text": "Funcionará con sensores que identifican la cantidad idico de plástico, la recopilación, procesamiento y análisis de datos reales del exceso de residuos, el cual generará alertas a la población por medios digitales."
+  },
+  {
+   "start": 77.72,
+   "end": 92.8,
+   "text": "Se capacitará a pescadores artesanales para el proceso de recolección, clasificación y traslado de los residuos al centro de acopio de la cooperativa, los cuales serán transformados con una máquina artesanal en producto utilizado en la industria pesquera."
+  },
+  {
+   "start": 92.8,
+   "end": 112.52,
+   "text": "Voyas, trampas para cangrejos, langosta, mecate, termos, sombreros, entre otros, cumpliendo con las normas establecidas de residuos, contribuyendo al desarrollo sostenible, mitigando el uso de residuos plástico, generando empleo, aumentando la pesca y con ella los ingresos y la salud de las personas."
+  },
+  {
+   "start": 112.52,
+   "end": 118.88,
+   "text": "Untada oanca, comprometidos con la sostenibilidad ambiental de las zonas costeras."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 118.9
+}

@@ -1,0 +1,112 @@
+{
+ "video_id": "UQakVdjhZVw",
+ "url": "https://youtu.be/UQakVdjhZVw",
+ "year": 2025,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "POLARIS",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "POLARIS",
+   "challenge": "07 - SALUD MÓVIL PARA MUJERES EN ZONAS RURALES"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:51:12+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Cuando una mujer embarazada enfrenta una emergencia como una hemorragia o presión alta, cada minuto puede hacer la diferencia, pero en muchas zonas rurales de Latinoamérica llegar a un hospital no es sencillo. Las distancias son largas, no siempre hay transporte y sobre todo no hay señal para pedir ayuda. En esos momentos las parteras son quienes están ahí, mujeres con experiencia, compromiso y vocación, pero muchas veces trabajan solas sin comunicación ni apoyo inmediato. Conxalud es una mochila diseñada para parteras con paneles solares y materiales reciclados, que garantiza la conexión en zonas sin cobertura a través de la tecnología LORA. Les permita comunicarse con profesionales de la salud y crear una red entre mochilas, asegurando la atención oportuna en partos y emergencias. Conxalud cada partera se convierte en un enlace vital entre su comunidad y el sistema de salud. Ahora pueden actuar con más seguridad, reducir complicaciones y salvar vidas. Este proyecto no solo mejora la atención médica, también reconoce y fortalece el papel de las parteras como pilares del cuidado materno en las zonas rurales. Conxalud une tecnología, experiencia y compromiso humano, porque cuando hay conexión hay esperanza. ¡Compiaza, innovación y bienestar! ¡El compromiso de Nexalud! www.nexalud.com",
+ "segments": [
+  {
+   "start": 3.95,
+   "end": 10.95,
+   "text": "Cuando una mujer embarazada enfrenta una emergencia como una hemorragia o presión alta, cada minuto puede hacer la diferencia,"
+  },
+  {
+   "start": 10.95,
+   "end": 14.95,
+   "text": "pero en muchas zonas rurales de Latinoamérica llegar a un hospital no es sencillo."
+  },
+  {
+   "start": 14.95,
+   "end": 19.95,
+   "text": "Las distancias son largas, no siempre hay transporte y sobre todo no hay señal para pedir ayuda."
+  },
+  {
+   "start": 19.95,
+   "end": 25.95,
+   "text": "En esos momentos las parteras son quienes están ahí, mujeres con experiencia, compromiso y vocación,"
+  },
+  {
+   "start": 25.95,
+   "end": 30.95,
+   "text": "pero muchas veces trabajan solas sin comunicación ni apoyo inmediato."
+  },
+  {
+   "start": 30.95,
+   "end": 35.95,
+   "text": "Conxalud es una mochila diseñada para parteras con paneles solares y materiales reciclados,"
+  },
+  {
+   "start": 35.95,
+   "end": 41.95,
+   "text": "que garantiza la conexión en zonas sin cobertura a través de la tecnología LORA."
+  },
+  {
+   "start": 41.95,
+   "end": 45.95,
+   "text": "Les permita comunicarse con profesionales de la salud y crear una red entre mochilas,"
+  },
+  {
+   "start": 45.95,
+   "end": 50.95,
+   "text": "asegurando la atención oportuna en partos y emergencias."
+  },
+  {
+   "start": 50.95,
+   "end": 56.95,
+   "text": "Conxalud cada partera se convierte en un enlace vital entre su comunidad y el sistema de salud."
+  },
+  {
+   "start": 56.95,
+   "end": 60.95,
+   "text": "Ahora pueden actuar con más seguridad, reducir complicaciones y salvar vidas."
+  },
+  {
+   "start": 60.95,
+   "end": 63.95,
+   "text": "Este proyecto no solo mejora la atención médica,"
+  },
+  {
+   "start": 63.95,
+   "end": 68.95,
+   "text": "también reconoce y fortalece el papel de las parteras como pilares del cuidado materno en las zonas rurales."
+  },
+  {
+   "start": 68.95,
+   "end": 75.95,
+   "text": "Conxalud une tecnología, experiencia y compromiso humano, porque cuando hay conexión hay esperanza."
+  },
+  {
+   "start": 75.95,
+   "end": 79.95,
+   "text": "¡Compiaza, innovación y bienestar!"
+  },
+  {
+   "start": 79.95,
+   "end": 82.95,
+   "text": "¡El compromiso de Nexalud!"
+  },
+  {
+   "start": 86.95,
+   "end": 89.95,
+   "text": "www.nexalud.com"
+  }
+ ],
+ "has_info": false,
+ "duration_s": 89.5
+}

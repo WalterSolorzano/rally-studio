@@ -1,0 +1,122 @@
+{
+ "video_id": "MFHGXT8aMIQ",
+ "url": "https://youtu.be/MFHGXT8aMIQ",
+ "year": 2025,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "PANTERSLATAM",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "PANTERSLATAM",
+   "challenge": "07 - SALUD MÓVIL PARA MUJERES EN ZONAS RURALES"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:23:14+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En el corazón de nuestros pueblos donde los amaneceres pintan de oro los campos vive una fuerza imparable, las mujeres rurales, guardianas de la vida, del alimento, de la tierra y de los sueños, pero su salud tan vital como su labor ha sido olvidada. La distancia, la falta de médicos y un sistema que llega tarde ha dejado a muchas comunidades sin atención. Sin embargo el conocimiento ancestral sigue ahí, en las manos de las curanderas, en la sabiduría de las abuelas. Un saber que merece ser reconocido, protegido y conectado con el futuro, por eso nació Tecal, una herramienta que une la ciencia moderna con la sabiduría ancestral, una aplicación que no necesita internet, que funciona con energía solar y que convierte a las mujeres en líderes de su propia salud. Con Tecal las parteras y curanderas registran sus conocimientos, consultan guías visuales y se comunican con medios a distancia sin tener que salir de su comunidad, es más que tecnología, es confianza, es autonomía, es esperanza. Tecal empodera, conecta y transforma, reduce viajes largos y costosos, cuida en medio ambiente y fortalece la salud de las familias, porque el futuro no está en abandonar nuestras raíces, sino en hacer que florezcan con la fuerza del sol. Tecal, el conocimiento de la abuela con la tecnología del nieto. Un futuro donde la salud es un derecho y está en nuestras propias manos. Es un futuro donde la salud deja de ser un privilegio y se convierte en un derecho autogestionado por las propias comunidades.",
+ "segments": [
+  {
+   "start": 1.42,
+   "end": 11.56,
+   "text": "En el corazón de nuestros pueblos donde los amaneceres pintan de oro los campos vive"
+  },
+  {
+   "start": 11.56,
+   "end": 17.66,
+   "text": "una fuerza imparable, las mujeres rurales, guardianas de la vida, del alimento, de la"
+  },
+  {
+   "start": 17.66,
+   "end": 24.86,
+   "text": "tierra y de los sueños, pero su salud tan vital como su labor ha sido olvidada. La distancia,"
+  },
+  {
+   "start": 24.86,
+   "end": 30.02,
+   "text": "la falta de médicos y un sistema que llega tarde ha dejado a muchas comunidades sin"
+  },
+  {
+   "start": 30.02,
+   "end": 35.62,
+   "text": "atención. Sin embargo el conocimiento ancestral sigue ahí, en las manos de las"
+  },
+  {
+   "start": 35.62,
+   "end": 41.38,
+   "text": "curanderas, en la sabiduría de las abuelas. Un saber que merece ser reconocido,"
+  },
+  {
+   "start": 41.38,
+   "end": 48.06,
+   "text": "protegido y conectado con el futuro, por eso nació Tecal, una herramienta que une"
+  },
+  {
+   "start": 48.06,
+   "end": 53.74,
+   "text": "la ciencia moderna con la sabiduría ancestral, una aplicación que no necesita"
+  },
+  {
+   "start": 53.74,
+   "end": 58.54,
+   "text": "internet, que funciona con energía solar y que convierte a las mujeres en"
+  },
+  {
+   "start": 58.54,
+   "end": 64.18,
+   "text": "líderes de su propia salud. Con Tecal las parteras y curanderas registran sus"
+  },
+  {
+   "start": 64.18,
+   "end": 69.5,
+   "text": "conocimientos, consultan guías visuales y se comunican con medios a distancia sin"
+  },
+  {
+   "start": 69.5,
+   "end": 75.22,
+   "text": "tener que salir de su comunidad, es más que tecnología, es confianza, es"
+  },
+  {
+   "start": 75.22,
+   "end": 82.3,
+   "text": "autonomía, es esperanza. Tecal empodera, conecta y transforma, reduce viajes"
+  },
+  {
+   "start": 82.3,
+   "end": 86.74,
+   "text": "largos y costosos, cuida en medio ambiente y fortalece la salud de las"
+  },
+  {
+   "start": 86.78,
+   "end": 92.3,
+   "text": "familias, porque el futuro no está en abandonar nuestras raíces, sino en hacer"
+  },
+  {
+   "start": 92.3,
+   "end": 97.94,
+   "text": "que florezcan con la fuerza del sol. Tecal, el conocimiento de la abuela con la"
+  },
+  {
+   "start": 97.94,
+   "end": 104.14,
+   "text": "tecnología del nieto. Un futuro donde la salud es un derecho y está en nuestras"
+  },
+  {
+   "start": 104.14,
+   "end": 110.06,
+   "text": "propias manos. Es un futuro donde la salud deja de ser un privilegio y se"
+  },
+  {
+   "start": 110.06,
+   "end": 116.02,
+   "text": "convierte en un derecho autogestionado por las propias comunidades."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.1
+}

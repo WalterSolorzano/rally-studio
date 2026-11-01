@@ -1,0 +1,137 @@
+{
+ "video_id": "9e1pRqTR35I",
+ "url": "https://youtu.be/9e1pRqTR35I",
+ "year": 2022,
+ "collection": "sede",
+ "country": "COLOMBIA",
+ "team": "TABLE-TURNERS",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "TABLE-TURNERS",
+   "challenge": "04 - AHORRO ENERGÉTICO EN EL SECTOR GASTRONÓMICO"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:27:27+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Sabías cuántos desechos se producen en tus restaurantes favoritos? La industria astronómica es uno de los sectores con mayor huella de carbono por su alto consumo de energía y los desechos que produce. La mayoría de las cadenas no cuentan con un sistema de eliminación de desechos eficiente y terminan deshaciéndose de sustancias tan nocivas como el aceite, que se sabe puede contaminar hasta mililitros de agua de la manera incorrecta. Esto sin contar la innumerable cantidad de desechos orgánicos que generan día a día. Es por eso que creamos Ecosina. Ecosina es un dispositivo que combina las funciones de un biodigestor y un decantador de biodiesel. Permítanos contarte cómo funciona su tecnología. Se trata de un contenedor que cuenta con un filtro que servirá como decantador. Tuverías que permitirán el flujo del gas metrano producido, válvulas para controlar su flujo, quedan hacia el tanque que se conecta directo con la estufa. Además de una llave que nos da acceso al biodice el generado. Una vez que los residuos han alcanzado su máximo nivel de biodegradación, retiraremos el filtro y nos desharemos de ellos para llenar el filtro con desechos nuevos y reiniciar el proceso. Ecosina es un dispositivo que nos permite generar gas metano y biodice que pueden ser utilizados como fuente de enciencia en la cocina o combustible para el servicio domicilio mientras que los residuos finales se destinan a la composta. Con ecosina todos los residuos se utilizan en beneficio del medio ambiente. Ecosina no es solo un producto, es una oportunidad para cambiar y en table tournaments creemos que todo gran cambio comienza con una gran idea.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 4.8,
+   "text": "¿Sabías cuántos desechos se producen en tus restaurantes favoritos?"
+  },
+  {
+   "start": 4.8,
+   "end": 9.28,
+   "text": "La industria astronómica es uno de los sectores con mayor huella de carbono por su alto consumo"
+  },
+  {
+   "start": 9.28,
+   "end": 14.24,
+   "text": "de energía y los desechos que produce. La mayoría de las cadenas no cuentan con un"
+  },
+  {
+   "start": 14.24,
+   "end": 19.2,
+   "text": "sistema de eliminación de desechos eficiente y terminan deshaciéndose de sustancias tan"
+  },
+  {
+   "start": 19.2,
+   "end": 24.12,
+   "text": "nocivas como el aceite, que se sabe puede contaminar hasta mililitros de agua de"
+  },
+  {
+   "start": 24.12,
+   "end": 28.76,
+   "text": "la manera incorrecta. Esto sin contar la innumerable cantidad de desechos orgánicos"
+  },
+  {
+   "start": 28.76,
+   "end": 35.79,
+   "text": "que generan día a día. Es por eso que creamos Ecosina."
+  },
+  {
+   "start": 35.79,
+   "end": 42.23,
+   "text": "Ecosina es un dispositivo que combina las funciones de un biodigestor y un"
+  },
+  {
+   "start": 42.23,
+   "end": 47.03,
+   "text": "decantador de biodiesel. Permítanos contarte cómo funciona su tecnología."
+  },
+  {
+   "start": 47.03,
+   "end": 52.51,
+   "text": "Se trata de un contenedor que cuenta con un filtro que servirá como decantador."
+  },
+  {
+   "start": 52.51,
+   "end": 57.59,
+   "text": "Tuverías que permitirán el flujo del gas metrano producido, válvulas para"
+  },
+  {
+   "start": 57.59,
+   "end": 63.11,
+   "text": "controlar su flujo, quedan hacia el tanque que se conecta directo con la estufa."
+  },
+  {
+   "start": 63.11,
+   "end": 70.64,
+   "text": "Además de una llave que nos da acceso al biodice el generado. Una vez que los residuos"
+  },
+  {
+   "start": 70.64,
+   "end": 74.8,
+   "text": "han alcanzado su máximo nivel de biodegradación, retiraremos el filtro y"
+  },
+  {
+   "start": 74.8,
+   "end": 79.04,
+   "text": "nos desharemos de ellos para llenar el filtro con desechos nuevos y reiniciar"
+  },
+  {
+   "start": 79.04,
+   "end": 88.79,
+   "text": "el proceso. Ecosina es un dispositivo que nos permite generar gas metano y"
+  },
+  {
+   "start": 88.79,
+   "end": 92.95,
+   "text": "biodice que pueden ser utilizados como fuente de enciencia en la cocina o"
+  },
+  {
+   "start": 92.95,
+   "end": 96.79,
+   "text": "combustible para el servicio domicilio mientras que los residuos finales"
+  },
+  {
+   "start": 96.79,
+   "end": 101.95,
+   "text": "se destinan a la composta. Con ecosina todos los residuos se utilizan en"
+  },
+  {
+   "start": 101.95,
+   "end": 110.82,
+   "text": "beneficio del medio ambiente. Ecosina no es solo un producto, es una oportunidad para"
+  },
+  {
+   "start": 110.82,
+   "end": 115.7,
+   "text": "cambiar y en table tournaments creemos que todo gran cambio comienza con una gran"
+  },
+  {
+   "start": 115.7,
+   "end": 118.02,
+   "text": "idea."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.0
+}

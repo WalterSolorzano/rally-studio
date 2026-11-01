@@ -1,0 +1,93 @@
+{
+  "out": "assets\\audio\\test_mix_full.mp4",
+  "video": "assets\\audio\\test_source_120s.mp4",
+  "voice": "assets\\audio\\test_voice_120s.mp3",
+  "start": 0.0,
+  "dur": 119.96,
+  "music_db": -4.0,
+  "duck_db": 6.0,
+  "notes": [
+    "shotlist.csv no tiene planos todavia: se usan los SFX por defecto",
+    "musica bajada a -10.4 dB para dejar 14 dB bajo la voz (-20.4 LUFS)"
+  ],
+  "acts": [
+    {
+      "act": "I",
+      "from": 0.0,
+      "to": 27.0,
+      "cue": "cue_01_tension.mp3"
+    },
+    {
+      "act": "II",
+      "from": 27.0,
+      "to": 63.0,
+      "cue": "cue_02_drive.mp3"
+    },
+    {
+      "act": "III",
+      "from": 63.0,
+      "to": 90.0,
+      "cue": "cue_02b_confidence.mp3"
+    },
+    {
+      "act": "IV",
+      "from": 90.0,
+      "to": 119.96000000000001,
+      "cue": "cue_03_resolve.mp3"
+    }
+  ],
+  "voice_lufs": -20.4,
+  "music_bus_db": -10.4,
+  "ducking": {
+    "voice_present": true,
+    "speech_ratio": 0.798,
+    "segments": 35,
+    "voice_floor_db": -57.3,
+    "voice_peak_db": -11.1,
+    "gate_hi_db": -27.1
+  },
+  "premaster": {
+    "lufs_i": -20.5,
+    "lra": 3.0,
+    "true_peak_db": -4.8
+  },
+  "final": {
+    "lufs_i": -14.1,
+    "lra": 3.0,
+    "true_peak_db": -1.8
+  },
+  "loudness_ok": true,
+  "master_gain_db": 6.4,
+  "music_under_voice": {
+    "music_rms_under_voice_dbfs": -34.9,
+    "music_rms_in_pauses_dbfs": -29.4,
+    "duck_depth_db": 5.4,
+    "voice_rms_dbfs": -22.8,
+    "voice_minus_music_db": 12.1,
+    "speech_ratio": 0.851
+  },
+  "stems_lufs": {
+    "music_ducked": {
+      "lufs_i": -33.1,
+      "lra": 4.8,
+      "true_peak_db": -14.4
+    },
+    "voice": {
+      "lufs_i": -20.4,
+      "lra": 3.5,
+      "true_peak_db": -5.6
+    },
+    "sfx": {
+      "lufs_i": -26.2,
+      "lra": 26.2,
+      "true_peak_db": -13.3
+    }
+  },
+  "voice_minus_music_lufs": 12.7,
+  "master_ref": {
+    "voice_lufs": -14.0,
+    "music_under_voice_dbfs": -28.5,
+    "music_in_pauses_dbfs": -23.0,
+    "sfx_peak_dbfs": -6.9
+  }
+}

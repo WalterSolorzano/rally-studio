@@ -1,0 +1,132 @@
+{
+ "video_id": "v3qbbcJBM4o",
+ "url": "https://www.youtube.com/watch?v=v3qbbcJBM4o",
+ "year": 2022,
+ "collection": "sede",
+ "country": "COLOMBIA",
+ "team": "EQUIPO 7-SEMILLERORADIOCOMUNICAICONES",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "EQUIPO 7-SEMILLERORADIOCOMUNICAICONES",
+   "challenge": "06 - LAS MORDEDURAS DE SERPIENTE A LA VISTA"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:25:42+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Reto Rally Latinoamericano de Innovación por la Institución Universitaria ITM. En cuanto al reto, escogimos el número 6 que es diseñar un dispositivo que permita alejar a las serpientes de las comunidades productoras y desarrollar una estrategia de concientización a las poblaciones acerca del riesgo de vivir en estas comunidades. Desarrollamos el radar WAVES, un dispositivo que integra un sistema de cámaras térmicas que toma imágenes de entre 160 grados constantemente, integra un sistema de visión artificial, la cual tiene como función realizar un reconocimiento de las serpientes. Además posee un sistema de radar el cual emite las ondas en el rango del ultrasonido para alejar la serpiente según su tipo, evitando afectar algún otro ecosistema presente con respecto a la fauna y flora. En cuanto a su funcionamiento, inicialmente el sistema toma las imágenes entre 160 grados. Posteriormente evalúa las imágenes por el sistema de visión artificial y reconoce si están presentes o no organismos vivos, en este caso las serpientes. La imagen será procesada por deep learning identificando el tipo de serpiente y el sistema de radar sonar, teniendo en cuenta los datos de la serpiente, es decir su tamaño, velocidad, forma, ubicación, entre otras, procederá a emitir las ondas en la frecuencia indicada para que la serpiente se aleje. Utilizando dos o más radar WAVES existe la posibilidad de ampliar el rango de cobertura, tal como se puede apreciar en la imagen el radar WAVES cuenta con una app móvil que se puede conectar al dispositivo para identificar las posibles amenazas según su ubicación. Nuestra estrategia de concientización es realizar una campaña con medios tradicionales, es decir mediante volantes, televisión y radio.",
+ "segments": [
+  {
+   "start": 0.3,
+   "end": 6.0,
+   "text": "Reto Rally Latinoamericano de Innovación por la Institución Universitaria ITM."
+  },
+  {
+   "start": 6.0,
+   "end": 11.2,
+   "text": "En cuanto al reto, escogimos el número 6 que es diseñar un dispositivo que permita"
+  },
+  {
+   "start": 11.2,
+   "end": 15.92,
+   "text": "alejar a las serpientes de las comunidades productoras y desarrollar una estrategia"
+  },
+  {
+   "start": 15.92,
+   "end": 21.6,
+   "text": "de concientización a las poblaciones acerca del riesgo de vivir en estas comunidades."
+  },
+  {
+   "start": 23.1,
+   "end": 28.6,
+   "text": "Desarrollamos el radar WAVES, un dispositivo que integra un sistema de cámaras térmicas"
+  },
+  {
+   "start": 28.6,
+   "end": 33.64,
+   "text": "que toma imágenes de entre 160 grados constantemente, integra un sistema de"
+  },
+  {
+   "start": 33.64,
+   "end": 37.96,
+   "text": "visión artificial, la cual tiene como función realizar un reconocimiento de"
+  },
+  {
+   "start": 37.96,
+   "end": 43.0,
+   "text": "las serpientes. Además posee un sistema de radar el cual emite las ondas en el"
+  },
+  {
+   "start": 43.0,
+   "end": 47.84,
+   "text": "rango del ultrasonido para alejar la serpiente según su tipo, evitando"
+  },
+  {
+   "start": 47.84,
+   "end": 52.6,
+   "text": "afectar algún otro ecosistema presente con respecto a la fauna y flora."
+  },
+  {
+   "start": 53.6,
+   "end": 60.0,
+   "text": "En cuanto a su funcionamiento, inicialmente el sistema toma las imágenes entre 160 grados."
+  },
+  {
+   "start": 60.0,
+   "end": 65.44,
+   "text": "Posteriormente evalúa las imágenes por el sistema de visión artificial y reconoce si"
+  },
+  {
+   "start": 65.44,
+   "end": 72.24,
+   "text": "están presentes o no organismos vivos, en este caso las serpientes. La imagen será procesada"
+  },
+  {
+   "start": 72.24,
+   "end": 77.24,
+   "text": "por deep learning identificando el tipo de serpiente y el sistema de radar sonar,"
+  },
+  {
+   "start": 77.24,
+   "end": 84.64,
+   "text": "teniendo en cuenta los datos de la serpiente, es decir su tamaño, velocidad, forma, ubicación,"
+  },
+  {
+   "start": 84.64,
+   "end": 91.24,
+   "text": "entre otras, procederá a emitir las ondas en la frecuencia indicada para que la serpiente se aleje."
+  },
+  {
+   "start": 92.52,
+   "end": 98.48,
+   "text": "Utilizando dos o más radar WAVES existe la posibilidad de ampliar el rango de cobertura,"
+  },
+  {
+   "start": 98.48,
+   "end": 104.28,
+   "text": "tal como se puede apreciar en la imagen el radar WAVES cuenta con una app móvil que se puede"
+  },
+  {
+   "start": 104.28,
+   "end": 108.84,
+   "text": "conectar al dispositivo para identificar las posibles amenazas según su ubicación."
+  },
+  {
+   "start": 109.84,
+   "end": 115.16,
+   "text": "Nuestra estrategia de concientización es realizar una campaña con medios tradicionales,"
+  },
+  {
+   "start": 115.16,
+   "end": 118.4,
+   "text": "es decir mediante volantes, televisión y radio."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.0
+}

@@ -1,0 +1,137 @@
+{
+ "video_id": "TLigD6wvJk0",
+ "url": "https://youtu.be/TLigD6wvJk0?feature=shared",
+ "year": 2023,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "INGENICA",
+ "place_label": "TERCER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "TERCER LUGAR",
+   "team": "INGENICA",
+   "challenge": "09 - GRIS A VERDE"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:23:30+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En zonas rurales enfrentamos un problema crítico. El estrés hídrico, factores como el cambio climático, la sobre explotación de recursos acuáticos, la urbanización y el aumento poblacional, lleva que la demanda de agua supere la oferta disponible, comprometiendo la salud pública y equilibrio ecológico. De cada seis personas, una enfrenta a este desafío al no tener acceso a agua potable. Aquí es donde la biojardinera toma protagonismo. Este sistema es sostenible y diseñado para tratar agua grise, utilizando materiales accesibles y locales, lo que resulta en un bajo costo. No solo recicla el agua, sino que previene su contaminación, combate la escase y protege el ecosistema. Vamos allá desfiltrado, educando sobre la conservación y gestión del agua. Y en lugar de optar por soluciones convencionales como bomba eléctrica o productos químicos, la biojardinera incorpora la naturaleza, usando plantas específicas como alarima de San Pedro, Ericónia, Platanillo y Papiro, combinadas con bolones, grava, arena y tubo PDC, para la desinfectación de agua grise y un filtrado eficiente respectivamente. Esta propuesta resalta económicamente por aprovechar materiales locales, minimizando costo inicial y de mantenimiento. Se anticipan ahora a optar por soluciones sostenibles que evitan gasto en daño futuro, atiende urgencias sociales garantizando acceso a aguas limpias y gestionando aguas residuales, lo que beneficia la salud comunitaria y con la participación activa de la comunidad, refuerza su compromiso con el proyecto. Ambientalmente promueve la conservación a reutilizar agua grise, protegiendo fuente hídrica y ecosistema, fomentando prácticas sostenibles a través de la educación comunitaria. En resumen, este proyecto no solo aborta desafío hídrico, sino también fortalece la comunidad, promueve la biodiversidad y sienta en base para un futuro más sostenible y saludable en áreas rurales.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 6.44,
+   "text": "En zonas rurales enfrentamos un problema crítico. El estrés hídrico, factores como el cambio climático,"
+  },
+  {
+   "start": 6.44,
+   "end": 12.12,
+   "text": "la sobre explotación de recursos acuáticos, la urbanización y el aumento poblacional,"
+  },
+  {
+   "start": 12.12,
+   "end": 19.96,
+   "text": "lleva que la demanda de agua supere la oferta disponible, comprometiendo la salud pública y equilibrio ecológico."
+  },
+  {
+   "start": 19.96,
+   "end": 25.72,
+   "text": "De cada seis personas, una enfrenta a este desafío al no tener acceso a agua potable."
+  },
+  {
+   "start": 25.72,
+   "end": 31.44,
+   "text": "Aquí es donde la biojardinera toma protagonismo. Este sistema es sostenible y diseñado para tratar agua"
+  },
+  {
+   "start": 31.44,
+   "end": 36.96,
+   "text": "grise, utilizando materiales accesibles y locales, lo que resulta en un bajo costo."
+  },
+  {
+   "start": 36.96,
+   "end": 42.64,
+   "text": "No solo recicla el agua, sino que previene su contaminación, combate la escase y protege el"
+  },
+  {
+   "start": 42.64,
+   "end": 48.16,
+   "text": "ecosistema. Vamos allá desfiltrado, educando sobre la conservación y gestión del agua."
+  },
+  {
+   "start": 48.16,
+   "end": 53.16,
+   "text": "Y en lugar de optar por soluciones convencionales como bomba eléctrica o productos químicos,"
+  },
+  {
+   "start": 53.16,
+   "end": 59.36,
+   "text": "la biojardinera incorpora la naturaleza, usando plantas específicas como alarima de San Pedro,"
+  },
+  {
+   "start": 59.36,
+   "end": 66.44,
+   "text": "Ericónia, Platanillo y Papiro, combinadas con bolones, grava, arena y tubo PDC,"
+  },
+  {
+   "start": 66.44,
+   "end": 71.16,
+   "text": "para la desinfectación de agua grise y un filtrado eficiente respectivamente."
+  },
+  {
+   "start": 71.16,
+   "end": 75.36,
+   "text": "Esta propuesta resalta económicamente por aprovechar materiales locales,"
+  },
+  {
+   "start": 75.36,
+   "end": 81.08,
+   "text": "minimizando costo inicial y de mantenimiento. Se anticipan ahora a optar por soluciones"
+  },
+  {
+   "start": 81.08,
+   "end": 87.2,
+   "text": "sostenibles que evitan gasto en daño futuro, atiende urgencias sociales garantizando acceso"
+  },
+  {
+   "start": 87.2,
+   "end": 92.76,
+   "text": "a aguas limpias y gestionando aguas residuales, lo que beneficia la salud comunitaria y con"
+  },
+  {
+   "start": 92.76,
+   "end": 97.32,
+   "text": "la participación activa de la comunidad, refuerza su compromiso con el proyecto."
+  },
+  {
+   "start": 97.32,
+   "end": 101.52,
+   "text": "Ambientalmente promueve la conservación a reutilizar agua grise,"
+  },
+  {
+   "start": 101.52,
+   "end": 106.8,
+   "text": "protegiendo fuente hídrica y ecosistema, fomentando prácticas sostenibles a través"
+  },
+  {
+   "start": 106.8,
+   "end": 111.8,
+   "text": "de la educación comunitaria. En resumen, este proyecto no solo aborta desafío hídrico,"
+  },
+  {
+   "start": 111.8,
+   "end": 117.36,
+   "text": "sino también fortalece la comunidad, promueve la biodiversidad y sienta en base para un futuro"
+  },
+  {
+   "start": 117.36,
+   "end": 119.88,
+   "text": "más sostenible y saludable en áreas rurales."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.1
+}

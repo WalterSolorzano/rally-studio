@@ -1,0 +1,137 @@
+{
+ "video_id": "VrNzQt_QJcY",
+ "url": "https://youtu.be/VrNzQt_QJcY",
+ "year": 2024,
+ "collection": "sede",
+ "country": "COLOMBIA",
+ "team": "TEAM SOLUTIONS",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "TEAM SOLUTIONS",
+   "challenge": "08 - REDUCCIÓN DE DESPERDICIOS ALIMENTARIOS"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:40:32+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Hey, sabías que tiramos un tercio de los alimentos que producimos mientras millones de personas pasan hambre? Es hora de hacer algo al respecto. Te cuento la historia de Andrés, dueño de un pequeño mercado. Cada semana, al final del día, le sobra comida perfectamente consumible, pero no tiene idea de cómo donarla antes de que se echa a perder. Mientras tanto, aún las cuadras, Rosa y su familia no tienen suficiente alimentos frescos para cenar. Así como Andrés, miles de negocios enfrentan este mismo dilema y toneladas de comida terminan en la basura. Pero, ¿qué pasaría si existiera una solución que conecte a quienes tienen alimentos de sobra con quienes realmente lo necesitan? Esa es nuestra solución, se llama NutriLink. El desperdicio de alimentos es un problema masivo. Se estima que un tercio de lo que producimos termina desperdiciado. Esto no solo tiene un impacto económico, sino también ambiental, al generar gases contaminantes y social contribuyendo a la inseguridad alimentaria. NutriLink es una aplicación innovadora que conecta a restaurantes, supermercados y pequeños comercios con bancos de alimentos, ONGs y personas que lo necesitan. Utilizando tecnología de geolocalización, permite redistribuir los excedentes de alimentos en tiempo real, asegurando que lleguen a quienes más lo necesitan antes de que sean desechados. NutriLink tiene un impacto transformador. A nivel social, reduce la inseguridad alimentaria, al garantizar que los alimentos sobrantes lleguen a quienes lo necesitan. A nivel ambiental, disminuye las toneladas de comida desperdiciada y con ello las emisiones de gases de efecto invernadero que contribuyen al calentamiento global.",
+ "segments": [
+  {
+   "start": 4.91,
+   "end": 10.79,
+   "text": "¿Hey, sabías que tiramos un tercio de los alimentos que producimos mientras millones de personas pasan hambre?"
+  },
+  {
+   "start": 11.19,
+   "end": 13.19,
+   "text": "Es hora de hacer algo al respecto."
+  },
+  {
+   "start": 14.15,
+   "end": 17.63,
+   "text": "Te cuento la historia de Andrés, dueño de un pequeño mercado."
+  },
+  {
+   "start": 17.63,
+   "end": 22.71,
+   "text": "Cada semana, al final del día, le sobra comida perfectamente consumible,"
+  },
+  {
+   "start": 23.11,
+   "end": 26.83,
+   "text": "pero no tiene idea de cómo donarla antes de que se echa a perder."
+  },
+  {
+   "start": 27.47,
+   "end": 33.47,
+   "text": "Mientras tanto, aún las cuadras, Rosa y su familia no tienen suficiente alimentos frescos para cenar."
+  },
+  {
+   "start": 33.95,
+   "end": 40.55,
+   "text": "Así como Andrés, miles de negocios enfrentan este mismo dilema y toneladas de comida terminan en la basura."
+  },
+  {
+   "start": 41.27,
+   "end": 49.11,
+   "text": "Pero, ¿qué pasaría si existiera una solución que conecte a quienes tienen alimentos de sobra con quienes realmente lo necesitan?"
+  },
+  {
+   "start": 49.67,
+   "end": 52.47,
+   "text": "Esa es nuestra solución, se llama NutriLink."
+  },
+  {
+   "start": 53.35,
+   "end": 56.83,
+   "text": "El desperdicio de alimentos es un problema masivo."
+  },
+  {
+   "start": 57.39,
+   "end": 61.31,
+   "text": "Se estima que un tercio de lo que producimos termina desperdiciado."
+  },
+  {
+   "start": 61.79,
+   "end": 65.51,
+   "text": "Esto no solo tiene un impacto económico, sino también ambiental,"
+  },
+  {
+   "start": 65.51,
+   "end": 71.31,
+   "text": "al generar gases contaminantes y social contribuyendo a la inseguridad alimentaria."
+  },
+  {
+   "start": 72.39,
+   "end": 80.75,
+   "text": "NutriLink es una aplicación innovadora que conecta a restaurantes, supermercados y pequeños comercios con bancos de alimentos,"
+  },
+  {
+   "start": 80.75,
+   "end": 84.47,
+   "text": "ONGs y personas que lo necesitan."
+  },
+  {
+   "start": 85.07,
+   "end": 91.75,
+   "text": "Utilizando tecnología de geolocalización, permite redistribuir los excedentes de alimentos en tiempo real,"
+  },
+  {
+   "start": 92.27,
+   "end": 97.23,
+   "text": "asegurando que lleguen a quienes más lo necesitan antes de que sean desechados."
+  },
+  {
+   "start": 98.11,
+   "end": 100.79,
+   "text": "NutriLink tiene un impacto transformador."
+  },
+  {
+   "start": 101.31,
+   "end": 104.27,
+   "text": "A nivel social, reduce la inseguridad alimentaria,"
+  },
+  {
+   "start": 104.67,
+   "end": 108.43,
+   "text": "al garantizar que los alimentos sobrantes lleguen a quienes lo necesitan."
+  },
+  {
+   "start": 109.27,
+   "end": 113.91,
+   "text": "A nivel ambiental, disminuye las toneladas de comida desperdiciada"
+  },
+  {
+   "start": 113.91,
+   "end": 119.87,
+   "text": "y con ello las emisiones de gases de efecto invernadero que contribuyen al calentamiento global."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.0
+}

@@ -1,0 +1,114 @@
+{
+ "video_id": "9DVBUTd2Foo",
+ "url": "https://youtu.be/9DVBUTd2Foo",
+ "year": 2023,
+ "collection": "nacional",
+ "country": "PERÚ",
+ "team": "THE VISIONARIES",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "THE VISIONARIES",
+   "challenge": "02 - SIEMPRE EN CONTACTO"
+  },
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "THE VISIONARIES",
+   "challenge": "02 - SIEMPRE EN CONTACTO"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:19:22+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "La problemática en cuestión es sobre la dificultad de localización de personas en entornos inhóspitos, como el turismo, de aventura o de trabajo en regiones remotas. En estos escenarios es común que las personas se encuentran en situaciones de riesgo y necesiten ser localizadas rápidamente para recibir ayuda. La solución propuesta es el dispositivo guardian aventurero, que utiliza tecnología de comunicación de baja potencia y sensores para estimar la ubicación. El dispositivo guardian aventurero se compone de un pequeño dispositivo portátil que los usuarios pueden llevar consigo durante sus actividades. Este dispositivo utiliza tecnología de comunicación de bajos recursos, como Bluetooth o redes de área amplia de baja potencia. Para enviar señales de ubicación a estaciones de base cercanas. Estas estaciones están ubicadas eslatégicamente en áreas remotas y actúan como puntos de acceso para recibir señales de ubicación y transmitirlas al centro de control. Además de la tecnología de comunicación, el dispositivo guardian aventurero también cuenta con sensores que permiten detectar situaciones de riesgo, como caídas o cambios bruscos de temperatura. Estos sensores envían alertas al centro de control cuando se detecta una situación de riesgo, lo que permite respuestas rápidas y eficientes por parte de los equipos de rescate. Una de las principales ventajas de este dispositivo es su capacidad de operar sin conexión a internet. Esto es especialmente importante en entornos y inóspitos donde la conectividad puede ser limitada o inexistente. El dispositivo utiliza tecnologías de comunicación de baja potencia que nos requieren una conexión a internet para transmitir las señales de ubicación, lo que garantiza su funcionamiento inclusión a áreas remotas. A la ventaja importante del dispositivo guardian aventurero es su accesibilidad económica, a diferencia de otros dispositivos de localización y seguridad personal.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 6.0,
+   "text": "La problemática en cuestión es sobre la dificultad de localización de personas en entornos inhóspitos,"
+  },
+  {
+   "start": 6.0,
+   "end": 11.0,
+   "text": "como el turismo, de aventura o de trabajo en regiones remotas."
+  },
+  {
+   "start": 12.0,
+   "end": 20.0,
+   "text": "En estos escenarios es común que las personas se encuentran en situaciones de riesgo y necesiten ser localizadas rápidamente para recibir ayuda."
+  },
+  {
+   "start": 21.0,
+   "end": 31.0,
+   "text": "La solución propuesta es el dispositivo guardian aventurero, que utiliza tecnología de comunicación de baja potencia y sensores para estimar la ubicación."
+  },
+  {
+   "start": 32.0,
+   "end": 39.0,
+   "text": "El dispositivo guardian aventurero se compone de un pequeño dispositivo portátil que los usuarios pueden llevar consigo durante sus actividades."
+  },
+  {
+   "start": 40.0,
+   "end": 48.0,
+   "text": "Este dispositivo utiliza tecnología de comunicación de bajos recursos, como Bluetooth o redes de área amplia de baja potencia."
+  },
+  {
+   "start": 48.0,
+   "end": 51.0,
+   "text": "Para enviar señales de ubicación a estaciones de base cercanas."
+  },
+  {
+   "start": 52.0,
+   "end": 62.0,
+   "text": "Estas estaciones están ubicadas eslatégicamente en áreas remotas y actúan como puntos de acceso para recibir señales de ubicación y transmitirlas al centro de control."
+  },
+  {
+   "start": 63.0,
+   "end": 71.0,
+   "text": "Además de la tecnología de comunicación, el dispositivo guardian aventurero también cuenta con sensores que permiten detectar situaciones de riesgo,"
+  },
+  {
+   "start": 71.0,
+   "end": 74.0,
+   "text": "como caídas o cambios bruscos de temperatura."
+  },
+  {
+   "start": 74.0,
+   "end": 85.0,
+   "text": "Estos sensores envían alertas al centro de control cuando se detecta una situación de riesgo, lo que permite respuestas rápidas y eficientes por parte de los equipos de rescate."
+  },
+  {
+   "start": 86.0,
+   "end": 92.0,
+   "text": "Una de las principales ventajas de este dispositivo es su capacidad de operar sin conexión a internet."
+  },
+  {
+   "start": 93.0,
+   "end": 100.0,
+   "text": "Esto es especialmente importante en entornos y inóspitos donde la conectividad puede ser limitada o inexistente."
+  },
+  {
+   "start": 100.0,
+   "end": 109.0,
+   "text": "El dispositivo utiliza tecnologías de comunicación de baja potencia que nos requieren una conexión a internet para transmitir las señales de ubicación,"
+  },
+  {
+   "start": 109.0,
+   "end": 113.0,
+   "text": "lo que garantiza su funcionamiento inclusión a áreas remotas."
+  },
+  {
+   "start": 114.0,
+   "end": 124.0,
+   "text": "A la ventaja importante del dispositivo guardian aventurero es su accesibilidad económica, a diferencia de otros dispositivos de localización y seguridad personal."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 124.5
+}

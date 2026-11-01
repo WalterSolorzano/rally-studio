@@ -1,0 +1,167 @@
+{
+ "video_id": "fh2h3zAuGtI",
+ "url": "https://youtu.be/fh2h3zAuGtI",
+ "year": 2026,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "101",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "101",
+   "challenge": "06 - REMOCIÓN Y EXTRACCIÓN DE BARRO EN VIVIENDAS ANEGADAS"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:46:03+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Cuando una inundación termina, el problema apenas comienza. Esto es Mostak. Un deslave, un río desbordado, arrastra tierra, arena y piedras hasta la casa. El agua baja, pero el lodo se queda. ¿Cómo recuperas tu hogar cuando cada palada pesa? En 2020, julias inundaciones dañaron más de 250.000 viviendas en México. Este lodo es denso, pesado y al secarse se endurece. Hoy se retira Manu, Palá, Cubeta y muchos viajes. Dentro de una casa hay pasillos estrechos, piedras y barro de distinta consistencia. Por eso creamos Mostak, un sistema portátil basado en una bomba de afragma a gasolina. Lo complementa manguera de 3 pulgadas, colador, agua, un depósito receptor y equipo de protección. Primero se retiran obstáculos y se humediense del barro. Después se conectan las mangueras. La manguera entra a la casa y aspira la mezcla de lodo y agua. La bomba, afuera, la impulsa por pulsos y la descarga la lleva a un depósito receptor. Un recorrido continuo de la casa al depósito. Al subir el diafragma aspira. Al bajar, empuja la mezcla hacia la descarga. Según el fabricante, admite sólidos de hasta 41 milímetros. Los componentes suman unos 120.000 pesos. El equipo proyecta un rendimiento de 20%, todavía por comprobar. Esperamos menos acarreó y acceso donde solo cabe una manguera. Valtan de mostrarlo en condiciones reales. Nuestra página web reúne los materiales del prototipo y sus costos. Retirar el lodo es el primer paso para volver a casa. Mostak es un proyecto de estudiantes de la Universidad Politécnica de Pachuca para el Rally Latinoamericano de Innovación, 2026. El Ababaja, esa propuesta ayuda a retirar lo que quiera.",
+ "segments": [
+  {
+   "start": 1.2,
+   "end": 5.2,
+   "text": "Cuando una inundación termina, el problema apenas comienza."
+  },
+  {
+   "start": 5.2,
+   "end": 7.2,
+   "text": "Esto es Mostak."
+  },
+  {
+   "start": 7.2,
+   "end": 12.2,
+   "text": "Un deslave, un río desbordado, arrastra tierra, arena y piedras hasta la casa."
+  },
+  {
+   "start": 12.2,
+   "end": 15.2,
+   "text": "El agua baja, pero el lodo se queda."
+  },
+  {
+   "start": 15.2,
+   "end": 18.2,
+   "text": "¿Cómo recuperas tu hogar cuando cada palada pesa?"
+  },
+  {
+   "start": 18.2,
+   "end": 24.2,
+   "text": "En 2020, julias inundaciones dañaron más de 250.000 viviendas en México."
+  },
+  {
+   "start": 24.2,
+   "end": 29.2,
+   "text": "Este lodo es denso, pesado y al secarse se endurece."
+  },
+  {
+   "start": 29.2,
+   "end": 33.2,
+   "text": "Hoy se retira Manu, Palá, Cubeta y muchos viajes."
+  },
+  {
+   "start": 33.2,
+   "end": 38.2,
+   "text": "Dentro de una casa hay pasillos estrechos, piedras y barro de distinta consistencia."
+  },
+  {
+   "start": 38.2,
+   "end": 44.2,
+   "text": "Por eso creamos Mostak, un sistema portátil basado en una bomba de afragma a gasolina."
+  },
+  {
+   "start": 44.2,
+   "end": 51.2,
+   "text": "Lo complementa manguera de 3 pulgadas, colador, agua, un depósito receptor y equipo de protección."
+  },
+  {
+   "start": 51.2,
+   "end": 54.2,
+   "text": "Primero se retiran obstáculos y se humediense del barro."
+  },
+  {
+   "start": 54.2,
+   "end": 57.2,
+   "text": "Después se conectan las mangueras."
+  },
+  {
+   "start": 57.2,
+   "end": 61.2,
+   "text": "La manguera entra a la casa y aspira la mezcla de lodo y agua."
+  },
+  {
+   "start": 61.2,
+   "end": 67.2,
+   "text": "La bomba, afuera, la impulsa por pulsos y la descarga la lleva a un depósito receptor."
+  },
+  {
+   "start": 67.2,
+   "end": 70.2,
+   "text": "Un recorrido continuo de la casa al depósito."
+  },
+  {
+   "start": 70.2,
+   "end": 72.2,
+   "text": "Al subir el diafragma aspira."
+  },
+  {
+   "start": 72.2,
+   "end": 75.2,
+   "text": "Al bajar, empuja la mezcla hacia la descarga."
+  },
+  {
+   "start": 75.2,
+   "end": 80.2,
+   "text": "Según el fabricante, admite sólidos de hasta 41 milímetros."
+  },
+  {
+   "start": 80.2,
+   "end": 84.2,
+   "text": "Los componentes suman unos 120.000 pesos."
+  },
+  {
+   "start": 84.2,
+   "end": 89.2,
+   "text": "El equipo proyecta un rendimiento de 20%, todavía por comprobar."
+  },
+  {
+   "start": 89.2,
+   "end": 93.2,
+   "text": "Esperamos menos acarreó y acceso donde solo cabe una manguera."
+  },
+  {
+   "start": 93.2,
+   "end": 96.2,
+   "text": "Valtan de mostrarlo en condiciones reales."
+  },
+  {
+   "start": 96.2,
+   "end": 101.2,
+   "text": "Nuestra página web reúne los materiales del prototipo y sus costos."
+  },
+  {
+   "start": 101.2,
+   "end": 104.2,
+   "text": "Retirar el lodo es el primer paso para volver a casa."
+  },
+  {
+   "start": 104.2,
+   "end": 108.2,
+   "text": "Mostak es un proyecto de estudiantes de la Universidad Politécnica de Pachuca"
+  },
+  {
+   "start": 108.2,
+   "end": 112.2,
+   "text": "para el Rally Latinoamericano de Innovación, 2026."
+  },
+  {
+   "start": 112.2,
+   "end": 116.2,
+   "text": "El Ababaja, esa propuesta ayuda a retirar lo que quiera."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 118.8
+}

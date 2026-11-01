@@ -1,0 +1,122 @@
+{
+ "video_id": "KRHPVFz-U5w",
+ "url": "https://youtu.be/KRHPVFz-U5w",
+ "year": 2025,
+ "collection": "sede",
+ "country": "CHILE",
+ "team": "TERRASENSE",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "TERRASENSE",
+   "challenge": "04 - SISTEMA DE ALERTA TEMPRANA"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:07:15+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Sabías que en Latinoamérica los incendios forestales han aumentado significativamente en frecuencia e intensidad, y las inundaciones han incrementado en un 134% en comparación con las dos décadas anteriores? Miles de comunidades vulnerables no reciben alertas a tiempo, con consecuencias devastadoras. Somos TerraCense, un equipo innovador en sistemas de alerta temprana para catástrofes naturales. Combinamos tecnología y compromiso social para proteger vidas y ecosistemas. Los incendios y las inundaciones aumentan con el cambio climático, la deforestación y el crecimiento urbano desordenado, pero, sobre todo, la falta de sistemas de alerta accesibles y confiables. Los sistemas actuales son costosos, dependen de internet y no cubren zonas rurales, resultando en muertes, daños económicos y destrucción de ecosistemas. Pero ¿qué pasaría si pudiéramos usar la tecnología para anticipar estas catástrofes antes de que ocurran? Nuestra solución integra sensores locales debajo costo con datos satelitales públicos, capaces de anticipar incendios e inundaciones y enviar alertas a comunidades vulnerables eficazmente, procesados en un servidor externo que valida la información y reduce falsas alarmas. Funciona con Lora o GSM y Energía Solar, enviando alertas por SMS, radio o sirenas comunitarias, asegurando que las comunidades vulnerables reciban la información a tiempo. Siendo más económica que sistemas actuales, mantiene eficacia y cobertura y está diseñada para brigadas locales, fácil de instalar y operar. Respetuosa con el medio ambiente, al estar hecha en gran parte con materiales reciclables y usar energía solar. TerraSense puede implementarse en zonas rurales, cuencas fluviales, parques nacionales y áreas agrícolas, protegiendo vidas, cultivos e infraestructura. Se integra con municipios, centros meteorológicos y organizaciones ambientales, ampliando su alcance regional. En busca de que la innovación sea una herramienta de protección, no un privilegio, transformando la forma de responder al cambio climático mediante prevención y acción colectiva. Esperamos que este viaje comience aquí, en el Rally latinoamericano de Innovación 2025. Muchas gracias.",
+ "segments": [
+  {
+   "start": 1.04,
+   "end": 6.48,
+   "text": "¿Sabías que en Latinoamérica los incendios forestales han aumentado significativamente en frecuencia e intensidad,"
+  },
+  {
+   "start": 6.48,
+   "end": 12.04,
+   "text": "y las inundaciones han incrementado en un 134% en comparación con las dos décadas anteriores?"
+  },
+  {
+   "start": 12.04,
+   "end": 17.28,
+   "text": "Miles de comunidades vulnerables no reciben alertas a tiempo, con consecuencias devastadoras."
+  },
+  {
+   "start": 17.28,
+   "end": 22.64,
+   "text": "Somos TerraCense, un equipo innovador en sistemas de alerta temprana para catástrofes naturales."
+  },
+  {
+   "start": 22.64,
+   "end": 27.04,
+   "text": "Combinamos tecnología y compromiso social para proteger vidas y ecosistemas."
+  },
+  {
+   "start": 27.04,
+   "end": 33.04,
+   "text": "Los incendios y las inundaciones aumentan con el cambio climático, la deforestación y el crecimiento urbano desordenado,"
+  },
+  {
+   "start": 33.04,
+   "end": 37.04,
+   "text": "pero, sobre todo, la falta de sistemas de alerta accesibles y confiables."
+  },
+  {
+   "start": 37.04,
+   "end": 45.04,
+   "text": "Los sistemas actuales son costosos, dependen de internet y no cubren zonas rurales, resultando en muertes, daños económicos y destrucción de ecosistemas."
+  },
+  {
+   "start": 45.04,
+   "end": 50.04,
+   "text": "Pero ¿qué pasaría si pudiéramos usar la tecnología para anticipar estas catástrofes antes de que ocurran?"
+  },
+  {
+   "start": 50.04,
+   "end": 59.04,
+   "text": "Nuestra solución integra sensores locales debajo costo con datos satelitales públicos, capaces de anticipar incendios e inundaciones y enviar alertas a comunidades vulnerables eficazmente,"
+  },
+  {
+   "start": 59.04,
+   "end": 63.04,
+   "text": "procesados en un servidor externo que valida la información y reduce falsas alarmas."
+  },
+  {
+   "start": 63.04,
+   "end": 73.04,
+   "text": "Funciona con Lora o GSM y Energía Solar, enviando alertas por SMS, radio o sirenas comunitarias, asegurando que las comunidades vulnerables reciban la información a tiempo."
+  },
+  {
+   "start": 74.04,
+   "end": 81.04,
+   "text": "Siendo más económica que sistemas actuales, mantiene eficacia y cobertura y está diseñada para brigadas locales, fácil de instalar y operar."
+  },
+  {
+   "start": 81.04,
+   "end": 87.04,
+   "text": "Respetuosa con el medio ambiente, al estar hecha en gran parte con materiales reciclables y usar energía solar."
+  },
+  {
+   "start": 87.04,
+   "end": 95.04,
+   "text": "TerraSense puede implementarse en zonas rurales, cuencas fluviales, parques nacionales y áreas agrícolas, protegiendo vidas, cultivos e infraestructura."
+  },
+  {
+   "start": 95.04,
+   "end": 101.04,
+   "text": "Se integra con municipios, centros meteorológicos y organizaciones ambientales, ampliando su alcance regional."
+  },
+  {
+   "start": 102.04,
+   "end": 110.04,
+   "text": "En busca de que la innovación sea una herramienta de protección, no un privilegio, transformando la forma de responder al cambio climático mediante prevención y acción colectiva."
+  },
+  {
+   "start": 110.04,
+   "end": 116.04,
+   "text": "Esperamos que este viaje comience aquí, en el Rally latinoamericano de Innovación 2025."
+  },
+  {
+   "start": 116.04,
+   "end": 117.04,
+   "text": "Muchas gracias."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 117.2
+}

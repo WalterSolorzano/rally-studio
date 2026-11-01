@@ -1,0 +1,107 @@
+{
+ "video_id": "j-1TmqAgQO0",
+ "url": "https://youtu.be/j-1TmqAgQO0",
+ "year": 2023,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "PIONEROS DEL EXITO",
+ "place_label": "TERCER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "TERCER LUGAR",
+   "team": "PIONEROS DEL EXITO",
+   "challenge": "09 - GRIS A VERDE"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:28:50+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Sabías que la escasez de agua es un problema global que afecta al 40% de las comunidades y zonas urbanas de todo el mundo? Los factores y contribuyentes a esta escasez incluyen el cambio climático, el crecimiento poblacional y la contaminación. Somos los pioneros del éxito de una anfara y matagalpa y hoy les presentamos la solución. Greg Water Transformation, un dispositivo innovador de tragua desechada a los ríos, lagunas, alcantaríados sanitarios y darle un uso más eficiente y efectivo. En beneficio del centro dispositivo de tratamiento de aguas grises consiste en los siguientes componentes. Un sistema de bombeo para la distribución del agua tratada, un sistema de filtro para el eliminación de contaminantes, un dispositivo arduino concesores para la clasificación de las aguas grises, un tanque de almacenamiento para el agua tratado. Este proyecto tiene potencial de tener un impacto positivo en las comunidades y zonas urbanas que lo implementen. Es una solución viable a la escasez de agua en comunidades y zonas urbanas. Un innovación que utiliza tecnología de bajo costo y que puede ser implementado al reducir el consumo de agua potable y mejorar la calidad del agua reutilizada. Las generaciones futuras.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 5.5,
+   "text": "¿Sabías que la escasez de agua es un problema global que afecta al 40% de las comunidades"
+  },
+  {
+   "start": 5.5,
+   "end": 11.0,
+   "text": "y zonas urbanas de todo el mundo? Los factores y contribuyentes a esta escasez incluyen el"
+  },
+  {
+   "start": 11.0,
+   "end": 16.68,
+   "text": "cambio climático, el crecimiento poblacional y la contaminación. Somos los pioneros del"
+  },
+  {
+   "start": 16.68,
+   "end": 21.72,
+   "text": "éxito de una anfara y matagalpa y hoy les presentamos la solución."
+  },
+  {
+   "start": 21.72,
+   "end": 28.36,
+   "text": "Greg Water Transformation, un dispositivo innovador de tragua desechada a los ríos, lagunas,"
+  },
+  {
+   "start": 28.36,
+   "end": 33.72,
+   "text": "alcantaríados sanitarios y darle un uso más eficiente y efectivo. En beneficio del"
+  },
+  {
+   "start": 33.72,
+   "end": 37.96,
+   "text": "centro dispositivo de tratamiento de aguas grises consiste en los siguientes"
+  },
+  {
+   "start": 37.96,
+   "end": 43.6,
+   "text": "componentes. Un sistema de bombeo para la distribución del agua tratada, un"
+  },
+  {
+   "start": 43.6,
+   "end": 48.92,
+   "text": "sistema de filtro para el eliminación de contaminantes, un dispositivo arduino"
+  },
+  {
+   "start": 48.92,
+   "end": 54.44,
+   "text": "concesores para la clasificación de las aguas grises, un tanque de almacenamiento"
+  },
+  {
+   "start": 54.44,
+   "end": 59.76,
+   "text": "para el agua tratado. Este proyecto tiene potencial de tener un impacto positivo"
+  },
+  {
+   "start": 59.76,
+   "end": 65.0,
+   "text": "en las comunidades y zonas urbanas que lo implementen. Es una solución viable a la"
+  },
+  {
+   "start": 65.0,
+   "end": 69.56,
+   "text": "escasez de agua en comunidades y zonas urbanas. Un innovación que utiliza"
+  },
+  {
+   "start": 69.56,
+   "end": 75.08,
+   "text": "tecnología de bajo costo y que puede ser implementado al reducir el consumo de"
+  },
+  {
+   "start": 75.08,
+   "end": 80.24,
+   "text": "agua potable y mejorar la calidad del agua reutilizada. Las generaciones"
+  },
+  {
+   "start": 80.24,
+   "end": 82.52,
+   "text": "futuras."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 81.1
+}

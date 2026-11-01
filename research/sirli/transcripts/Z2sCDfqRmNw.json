@@ -1,0 +1,107 @@
+{
+ "video_id": "Z2sCDfqRmNw",
+ "url": "https://youtu.be/Z2sCDfqRmNw?si=5p1KfbLgPsgpvSvK",
+ "year": 2024,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "TANTANTAN",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "TANTANTAN",
+   "challenge": "05 - EVACUACIÓN"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:33:21+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Presentamos Help, un sistema de evacuación como complemento a los sistemas tradicionales de evacuación, orientado a empresas, escuelas e instituciones con el fin de facilitar los planes de evacuación y acompañarte en cada paso de este proceso. La aplicación del sistema se basa en la utilización de tu última conexión de wifi para determinar tu posición. Una vez localizada se te mostrará la ruta más segura para tu evacuación, en caso de encontrarse atrapado o en alguna situación que impida poder evacuar, con un simple botón se enviará a su ubicación y sus datos al encargado para solicitar la ayuda correspondiente. En caso de que ya se haya evacuado, deberá oprimir el botón a salvo, así el responsable de tu institución pueda tener un conteo. En caso de que por alguna razón no te encuentres en la zona indicada por la AP, podrás restablecer tu ubicación con el botón no estoy aquí, e indicando en el mapa en que área te encuentras. A su vez se tendrá una alarma e indicaciones sonoras para personas con discapacidad visual. En la parte superior de la pantalla se indicará el problema existente, incendio, sismo u otro. Los mapas, zonas seguras y otras indicaciones podrán ser personalizadas por cada institución. Por otra parte se incluirá un sistema de guiado mediante luces en la pared para indicar el camino a la salida más cercana. Nos adaptamos a tus necesidades con help, tu lugar está seguro.",
+ "segments": [
+  {
+   "start": 1.81,
+   "end": 6.93,
+   "text": "Presentamos Help, un sistema de evacuación como complemento a los sistemas tradicionales de"
+  },
+  {
+   "start": 6.93,
+   "end": 12.45,
+   "text": "evacuación, orientado a empresas, escuelas e instituciones con el fin de facilitar los planes"
+  },
+  {
+   "start": 12.45,
+   "end": 18.49,
+   "text": "de evacuación y acompañarte en cada paso de este proceso. La aplicación del sistema se"
+  },
+  {
+   "start": 18.49,
+   "end": 23.89,
+   "text": "basa en la utilización de tu última conexión de wifi para determinar tu posición. Una vez"
+  },
+  {
+   "start": 23.89,
+   "end": 28.81,
+   "text": "localizada se te mostrará la ruta más segura para tu evacuación, en caso de encontrarse"
+  },
+  {
+   "start": 28.81,
+   "end": 34.01,
+   "text": "atrapado o en alguna situación que impida poder evacuar, con un simple botón se enviará"
+  },
+  {
+   "start": 34.01,
+   "end": 52.5,
+   "text": "a su ubicación y sus datos al encargado para solicitar la ayuda correspondiente. En caso"
+  },
+  {
+   "start": 52.5,
+   "end": 57.26,
+   "text": "de que ya se haya evacuado, deberá oprimir el botón a salvo, así el responsable de"
+  },
+  {
+   "start": 57.26,
+   "end": 65.3,
+   "text": "tu institución pueda tener un conteo. En caso de que por alguna razón no te encuentres"
+  },
+  {
+   "start": 65.3,
+   "end": 70.46,
+   "text": "en la zona indicada por la AP, podrás restablecer tu ubicación con el botón no estoy aquí,"
+  },
+  {
+   "start": 70.9,
+   "end": 76.22,
+   "text": "e indicando en el mapa en que área te encuentras. A su vez se tendrá una alarma e indicaciones"
+  },
+  {
+   "start": 76.22,
+   "end": 81.5,
+   "text": "sonoras para personas con discapacidad visual. En la parte superior de la pantalla se indicará"
+  },
+  {
+   "start": 81.5,
+   "end": 88.7,
+   "text": "el problema existente, incendio, sismo u otro. Los mapas, zonas seguras y otras indicaciones"
+  },
+  {
+   "start": 88.7,
+   "end": 93.42,
+   "text": "podrán ser personalizadas por cada institución. Por otra parte se incluirá un sistema de"
+  },
+  {
+   "start": 93.42,
+   "end": 98.34,
+   "text": "guiado mediante luces en la pared para indicar el camino a la salida más cercana."
+  },
+  {
+   "start": 98.34,
+   "end": 102.74,
+   "text": "Nos adaptamos a tus necesidades con help, tu lugar está seguro."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 110.1
+}

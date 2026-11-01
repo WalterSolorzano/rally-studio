@@ -1,0 +1,144 @@
+{
+ "video_id": "a_4ymQIPPfY",
+ "url": "https://youtu.be/a_4ymQIPPfY",
+ "year": 2023,
+ "collection": "nacional",
+ "country": "ARGENTINA",
+ "team": "INNOVATEC",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "INNOVATEC",
+   "challenge": "09 - GRIS A VERDE"
+  },
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "INNOVATEC",
+   "challenge": "09 - GRIS A VERDE"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:16:34+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Todos usamos agua en nuestras casas para cocinar, lavar platos y bañanas. Se estima que representar más de 50% de su uso doméstico lo que equivale en promedio para una familia de 4 personas a 3 mil litros de agua al día. Pero alguna vez has pensado ¿a dónde va esa agua después de usarla? Esa agua, conocida como agua grises, puede ser tratada y reutilizada para el riego, limpieza y hasta para el inodoro. Esto significa menos presión sobre nuestros recursos hídricos limitados. La escasez de agua es una realidad preocupante en muchas partes del mundo. Los embalses se están secando y la sequía son cada vez más frecuentes. Es crucial que tomemos medidas para conservar el agua. Actualmente existen sistemas de recolección y reutilización de aguas grises para hogares que pueden marcar la diferencia. Sin embargo, esta agua que se recicla puede contener una elevada concentración de bacterias y patógenos que podrían esparcir, afectando la salud de las personas y contaminando el medio ambiente. Para ello diseñamos un dispositivo compuesto por una placa capaz de determinar la presencia de bacterias en el agua. En estas se encuentran inmobilizadas unas proteínas capaces y a trapar de manera específica pero reversible ciertos componentes pertenecientes a los patógenos llamados lipopolisacadidos. Además, las mismas cuentan con moléculas fluorescentes llamadas quininas que en presencia de estas partículas disminuyen su fluorescencia debido a un fenómeno conocido como quenchin. Entonces, cuando el agua residual se encuentran estos patógenos, se unirán al sensor permitiendo la emisión de fotones que serán transformados en señales eléctricas. Así podremos conocer la concentración de estos microorganismos que, sumado a un análisis físico básico y otros sensores de turbides y pH, nos permite calificar los diferentes uso del agua. Las señales eléctricas generadas se convierten en valores que los usuarios pueden ver en sus dispositivos electrónicos, permitiendo su uso más eficiente del agua y reduciendo su deyoche y costos.",
+ "segments": [
+  {
+   "start": 3.76,
+   "end": 10.24,
+   "text": "Todos usamos agua en nuestras casas para cocinar, lavar platos y bañanas. Se estima que representar"
+  },
+  {
+   "start": 10.24,
+   "end": 16.48,
+   "text": "más de 50% de su uso doméstico lo que equivale en promedio para una familia de 4 personas a 3 mil"
+  },
+  {
+   "start": 16.48,
+   "end": 22.52,
+   "text": "litros de agua al día. Pero alguna vez has pensado ¿a dónde va esa agua después de usarla? Esa agua,"
+  },
+  {
+   "start": 22.52,
+   "end": 27.76,
+   "text": "conocida como agua grises, puede ser tratada y reutilizada para el riego, limpieza y hasta"
+  },
+  {
+   "start": 27.76,
+   "end": 32.64,
+   "text": "para el inodoro. Esto significa menos presión sobre nuestros recursos hídricos limitados."
+  },
+  {
+   "start": 32.64,
+   "end": 38.44,
+   "text": "La escasez de agua es una realidad preocupante en muchas partes del mundo. Los embalses se están secando"
+  },
+  {
+   "start": 38.44,
+   "end": 44.72,
+   "text": "y la sequía son cada vez más frecuentes. Es crucial que tomemos medidas para conservar el agua. Actualmente"
+  },
+  {
+   "start": 44.72,
+   "end": 49.76,
+   "text": "existen sistemas de recolección y reutilización de aguas grises para hogares que pueden marcar la"
+  },
+  {
+   "start": 49.76,
+   "end": 55.72,
+   "text": "diferencia. Sin embargo, esta agua que se recicla puede contener una elevada concentración de bacterias"
+  },
+  {
+   "start": 55.72,
+   "end": 60.32,
+   "text": "y patógenos que podrían esparcir, afectando la salud de las personas y contaminando el medio"
+  },
+  {
+   "start": 60.8,
+   "end": 65.64,
+   "text": "ambiente. Para ello diseñamos un dispositivo compuesto por una placa capaz de determinar la presencia de"
+  },
+  {
+   "start": 65.64,
+   "end": 70.04,
+   "text": "bacterias en el agua. En estas se encuentran inmobilizadas unas proteínas capaces y a"
+  },
+  {
+   "start": 70.04,
+   "end": 74.6,
+   "text": "trapar de manera específica pero reversible ciertos componentes pertenecientes a los patógenos"
+  },
+  {
+   "start": 74.6,
+   "end": 80.36,
+   "text": "llamados lipopolisacadidos. Además, las mismas cuentan con moléculas fluorescentes llamadas"
+  },
+  {
+   "start": 80.36,
+   "end": 84.68,
+   "text": "quininas que en presencia de estas partículas disminuyen su fluorescencia debido a un fenómeno"
+  },
+  {
+   "start": 84.68,
+   "end": 89.6,
+   "text": "conocido como quenchin. Entonces, cuando el agua residual se encuentran estos patógenos,"
+  },
+  {
+   "start": 89.6,
+   "end": 94.0,
+   "text": "se unirán al sensor permitiendo la emisión de fotones que serán transformados en señales"
+  },
+  {
+   "start": 94.0,
+   "end": 99.52,
+   "text": "eléctricas. Así podremos conocer la concentración de estos microorganismos que, sumado a un análisis"
+  },
+  {
+   "start": 99.52,
+   "end": 103.8,
+   "text": "físico básico y otros sensores de turbides y pH, nos permite calificar los diferentes"
+  },
+  {
+   "start": 103.8,
+   "end": 109.24,
+   "text": "uso del agua. Las señales eléctricas generadas se convierten en valores que los usuarios"
+  },
+  {
+   "start": 109.24,
+   "end": 114.48,
+   "text": "pueden ver en sus dispositivos electrónicos, permitiendo su uso más eficiente del agua y"
+  },
+  {
+   "start": 114.48,
+   "end": 116.4,
+   "text": "reduciendo su deyoche y costos."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.0
+}

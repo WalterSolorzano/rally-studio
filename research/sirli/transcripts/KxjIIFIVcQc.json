@@ -1,0 +1,112 @@
+{
+ "video_id": "KxjIIFIVcQc",
+ "url": "https://youtu.be/KxjIIFIVcQc",
+ "year": 2021,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "INTERCONECTADOS - AR.CO",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "INTERCONECTADOS - AR.CO",
+   "challenge": "05 - SISTEMA DE RECICLADO DE RESIDUOS PATOLÓGICOS DE CASAS DE SALUD PARA ANCIANOS"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:44:29+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Sabías que los pañales desechables contaminan el planeta a gran escala? Su composición principal requiere un material orgánico llamado celulosa que equivale a 5 árboles cortados por pañal. Además, producen 3.600 toneladas de basura por día que tardan entre 100 y 500 años en degradarse. Ante la problemática te presentamos, arco verde, un dispositivo capaz de crear simultáneamente reciclando los pañales de los adultos mayores, polipropileno y geles fertilizantes. Su tecnología incorporada permite separar y humedecer el material orgánico e inorgánico para luego dirigirse mediante cintas transportadoras hacia su tratado especial. Por un lado, luego del proceso de humectación, el agua utilizada filtrada y llevada hasta un recipiente para después reutilizarla en la producción del gel fertilizante. Por otro lado, los pañales vuelven a humedecerse con étilo y agua para luego triturarse y pasar al proceso de otensión del polipropileno. Los beneficios de arco verde, además de reducir la contaminación del medio ambiente, fortalecen los espacios ecológicos y la economía circular, aprovechando al máximo los recursos materiales de los que se disponen, alargando así el ciclo de vida de los productos. Gracias a este sistema, las residencias geriátricas resuelven el destino final de los desechos, vendiéndolos como materia prima.",
+ "segments": [
+  {
+   "start": 1.52,
+   "end": 7.52,
+   "text": "¿Sabías que los pañales desechables contaminan el planeta a gran escala?"
+  },
+  {
+   "start": 7.52,
+   "end": 16.52,
+   "text": "Su composición principal requiere un material orgánico llamado celulosa que equivale a 5 árboles cortados por pañal."
+  },
+  {
+   "start": 16.52,
+   "end": 25.52,
+   "text": "Además, producen 3.600 toneladas de basura por día que tardan entre 100 y 500 años en degradarse."
+  },
+  {
+   "start": 25.52,
+   "end": 31.52,
+   "text": "Ante la problemática te presentamos, arco verde, un dispositivo capaz de crear simultáneamente"
+  },
+  {
+   "start": 31.52,
+   "end": 37.52,
+   "text": "reciclando los pañales de los adultos mayores, polipropileno y geles fertilizantes."
+  },
+  {
+   "start": 37.52,
+   "end": 43.52,
+   "text": "Su tecnología incorporada permite separar y humedecer el material orgánico e inorgánico"
+  },
+  {
+   "start": 43.52,
+   "end": 49.52,
+   "text": "para luego dirigirse mediante cintas transportadoras hacia su tratado especial."
+  },
+  {
+   "start": 49.52,
+   "end": 54.52,
+   "text": "Por un lado, luego del proceso de humectación, el agua utilizada filtrada y llevada hasta un recipiente"
+  },
+  {
+   "start": 54.52,
+   "end": 59.52,
+   "text": "para después reutilizarla en la producción del gel fertilizante."
+  },
+  {
+   "start": 59.52,
+   "end": 64.52,
+   "text": "Por otro lado, los pañales vuelven a humedecerse con étilo y agua para luego triturarse"
+  },
+  {
+   "start": 64.52,
+   "end": 68.52,
+   "text": "y pasar al proceso de otensión del polipropileno."
+  },
+  {
+   "start": 68.52,
+   "end": 73.52,
+   "text": "Los beneficios de arco verde, además de reducir la contaminación del medio ambiente,"
+  },
+  {
+   "start": 73.52,
+   "end": 77.52,
+   "text": "fortalecen los espacios ecológicos y la economía circular,"
+  },
+  {
+   "start": 77.52,
+   "end": 81.52,
+   "text": "aprovechando al máximo los recursos materiales de los que se disponen,"
+  },
+  {
+   "start": 81.52,
+   "end": 85.52,
+   "text": "alargando así el ciclo de vida de los productos."
+  },
+  {
+   "start": 85.52,
+   "end": 89.52,
+   "text": "Gracias a este sistema, las residencias geriátricas"
+  },
+  {
+   "start": 89.52,
+   "end": 94.52,
+   "text": "resuelven el destino final de los desechos, vendiéndolos como materia prima."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 96.6
+}

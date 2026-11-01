@@ -1,0 +1,192 @@
+{
+ "video_id": "48TEA300TsM",
+ "url": "https://youtu.be/48TEA300TsM",
+ "year": 2025,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "GENASAFÍO",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "GENASAFÍO",
+   "challenge": "03 - FUGAS DE AGUA"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:58:05+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En Argentina, aproximadamente el 40% del agua potable se pierde por fugas y perdidas en la red de distribución. Para dar una idea de la magnitud del problema, una empresa proveedora de agua como AISA indica que entre 100 y 150 litros de cada 550 producidos por habitante se pierden diariamente debido al deterioro de las cañerías. Ante esta situación resulta fundamental modernizar la infraestructura y adaptar tecnologías que permiten una gestión más eficiente del agua. Es en este contexto donde surge nuestra propuesta, orientada a la detección temprana de fugas para reducir al mínimo estas perdidas. La propuesta consiste en un método de inspección que utiliza sensores de presión diferencial, ubicados estratégicamente en distintos puntos de una red de distribución de agua, tanto domiciliaria como pública. Estos puntos que llamamos nodos funcionan como estaciones de monitoreo que detectan cambios anormales de presión en las tuberías. Cuando se registra una diferencia significativa entre dos nodos, el sistema lo interpreta como una posible fuga de agua. Una vez detectada, la información se envía automáticamente a un servidor a través de una red wifi, y desde ahí es accesible en tiempo real mediante una aplicación móvil. Esta app muestra un mapa con todos los nodos instalados en la red y su estado actual, indicando exactamente dónde y cuándo se produjo la fuga. De esta manera, propietarios de viviendas, administradores edificios o responsables de redes públicas pueden actuar red inmediato, produciendo el tiempo que las fugas permanecen activas y evitando grandes perdidas de agua. Al permitir una acción temprana ante el alerte de una fuga, se combate de forma directa la principal consecuencia del desperdicio de agua. Se ayuda a ciudades que presenten escasez, se reducen los costos de reparación y se previenen futuros problemas causados por la fuga prolongada en las redes de distribución. Además, garantizamos sostenibilidad a largo plazo gracias a no requerir modificaciones estructurales en las instalaciones existentes, minimizando costos, prolongando la vida útil de la infraestructura y generando nuevas posibilidades para comunidades con presupuestos limitados. Esperamos que el vídeo haya sido informativo y que juntos podamos fabricar un futuro mejor.",
+ "segments": [
+  {
+   "start": 0.21,
+   "end": 6.81,
+   "text": "En Argentina, aproximadamente el 40% del agua potable se pierde por fugas y perdidas en la red de distribución."
+  },
+  {
+   "start": 6.81,
+   "end": 11.81,
+   "text": "Para dar una idea de la magnitud del problema, una empresa proveedora de agua como AISA"
+  },
+  {
+   "start": 11.81,
+   "end": 16.61,
+   "text": "indica que entre 100 y 150 litros de cada 550 producidos por habitante"
+  },
+  {
+   "start": 16.61,
+   "end": 20.21,
+   "text": "se pierden diariamente debido al deterioro de las cañerías."
+  },
+  {
+   "start": 20.21,
+   "end": 23.61,
+   "text": "Ante esta situación resulta fundamental modernizar la infraestructura"
+  },
+  {
+   "start": 23.61,
+   "end": 26.81,
+   "text": "y adaptar tecnologías que permiten una gestión más eficiente del agua."
+  },
+  {
+   "start": 26.81,
+   "end": 29.61,
+   "text": "Es en este contexto donde surge nuestra propuesta,"
+  },
+  {
+   "start": 29.61,
+   "end": 34.41,
+   "text": "orientada a la detección temprana de fugas para reducir al mínimo estas perdidas."
+  },
+  {
+   "start": 34.41,
+   "end": 38.41,
+   "text": "La propuesta consiste en un método de inspección que utiliza sensores de presión diferencial,"
+  },
+  {
+   "start": 38.41,
+   "end": 42.61,
+   "text": "ubicados estratégicamente en distintos puntos de una red de distribución de agua,"
+  },
+  {
+   "start": 42.61,
+   "end": 44.71,
+   "text": "tanto domiciliaria como pública."
+  },
+  {
+   "start": 44.71,
+   "end": 48.01,
+   "text": "Estos puntos que llamamos nodos funcionan como estaciones de monitoreo"
+  },
+  {
+   "start": 48.01,
+   "end": 50.81,
+   "text": "que detectan cambios anormales de presión en las tuberías."
+  },
+  {
+   "start": 50.81,
+   "end": 53.91,
+   "text": "Cuando se registra una diferencia significativa entre dos nodos,"
+  },
+  {
+   "start": 53.91,
+   "end": 56.61,
+   "text": "el sistema lo interpreta como una posible fuga de agua."
+  },
+  {
+   "start": 56.61,
+   "end": 59.71,
+   "text": "Una vez detectada, la información se envía automáticamente a un servidor"
+  },
+  {
+   "start": 59.71,
+   "end": 64.91,
+   "text": "a través de una red wifi, y desde ahí es accesible en tiempo real mediante una aplicación móvil."
+  },
+  {
+   "start": 64.91,
+   "end": 69.31,
+   "text": "Esta app muestra un mapa con todos los nodos instalados en la red y su estado actual,"
+  },
+  {
+   "start": 69.31,
+   "end": 72.61,
+   "text": "indicando exactamente dónde y cuándo se produjo la fuga."
+  },
+  {
+   "start": 72.61,
+   "end": 75.91,
+   "text": "De esta manera, propietarios de viviendas, administradores edificios"
+  },
+  {
+   "start": 75.91,
+   "end": 78.81,
+   "text": "o responsables de redes públicas pueden actuar red inmediato,"
+  },
+  {
+   "start": 78.81,
+   "end": 81.61,
+   "text": "produciendo el tiempo que las fugas permanecen activas"
+  },
+  {
+   "start": 81.61,
+   "end": 83.41,
+   "text": "y evitando grandes perdidas de agua."
+  },
+  {
+   "start": 83.41,
+   "end": 86.01,
+   "text": "Al permitir una acción temprana ante el alerte de una fuga,"
+  },
+  {
+   "start": 86.01,
+   "end": 89.41,
+   "text": "se combate de forma directa la principal consecuencia del desperdicio de agua."
+  },
+  {
+   "start": 89.41,
+   "end": 93.41,
+   "text": "Se ayuda a ciudades que presenten escasez, se reducen los costos de reparación"
+  },
+  {
+   "start": 93.41,
+   "end": 97.91,
+   "text": "y se previenen futuros problemas causados por la fuga prolongada en las redes de distribución."
+  },
+  {
+   "start": 97.91,
+   "end": 101.51,
+   "text": "Además, garantizamos sostenibilidad a largo plazo gracias a no requerir"
+  },
+  {
+   "start": 101.51,
+   "end": 104.91,
+   "text": "modificaciones estructurales en las instalaciones existentes,"
+  },
+  {
+   "start": 104.91,
+   "end": 108.21,
+   "text": "minimizando costos, prolongando la vida útil de la infraestructura"
+  },
+  {
+   "start": 108.21,
+   "end": 112.21,
+   "text": "y generando nuevas posibilidades para comunidades con presupuestos limitados."
+  },
+  {
+   "start": 112.21,
+   "end": 114.61,
+   "text": "Esperamos que el vídeo haya sido informativo"
+  },
+  {
+   "start": 114.61,
+   "end": 117.21,
+   "text": "y que juntos podamos fabricar un futuro mejor."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.0
+}

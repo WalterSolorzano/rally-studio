@@ -44,10 +44,10 @@
 
 ##### Registro 1
 
-- **year**: 2023
+- **year**: 2025
 - **project**: Ollnari
-- **team**: INATEC Juigalpa
-- **scope**: Nacional 1er Lugar
+- **team**: Operación Titán (UNI-RUPAP / INATEC)
+- **scope**: Nacional 1er Lugar Innovación de Procesos u Organizacional
 - **lesson**: Uso de tonos tierra, terracota y maíz (#8B4513, #D2691E, #F4A460) inspirados en la artesanía precolombina de Chontales. Empatía visual inmediata con el jurado.
 
 ##### Registro 2
@@ -182,7 +182,7 @@
 
 ### script
 
-- **key rule**: 120 segundos. 240–270 palabras. 4 actos milimétricos. CERO logos/nombres en los primeros 20 segundos.
+- **key rule**: 120 segundos medidos en el audio. 240–270 palabras son referencia de escritura, no regla. 4 actos. CERO logos/nombres en los primeros 20 segundos.
 
 #### winning cases
 
@@ -220,15 +220,15 @@
 
 ##### Registro 2
 
-- **year**: 2023
+- **year**: 2025
 - **project**: Ollnari
-- **team**: INATEC
-- **scope**: Nacional 1er Lugar
+- **team**: Operación Titán (UNI-RUPAP / INATEC)
+- **scope**: Nacional 1er Lugar Innovación de Procesos u Organizacional
 - **lesson**: Grabación de la plataforma web en resolución nativa con navegación fluida por el catálogo artesanal, evitando pantallas estáticas.
 
 ### clock
 
-- **key rule**: T-6h congelamiento de claims; T-2h render medio; T-1h armado final. Subir a YouTube con 45 min de colchón por demora de procesamiento HD.
+- **key rule**: Congelar claims al 75 % del tiempo; render final despues; armado final en el ultimo 10 %. Subir a YouTube con 45 min de colchón por demora de procesamiento HD.
 
 #### winning cases
 

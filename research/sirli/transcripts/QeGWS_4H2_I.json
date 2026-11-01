@@ -1,0 +1,72 @@
+{
+ "video_id": "QeGWS_4H2_I",
+ "url": "https://youtu.be/QeGWS_4H2_I",
+ "year": 2020,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "EQUIPO ALFA POTROS CHAVITOS COOL",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2020,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "EQUIPO ALFA POTROS CHAVITOS COOL",
+   "challenge": "02 - ¿CÓMO PODEMOS HACER PARA QUE LOS CONDUCTORES EVITEN DISTRAERSE CON SU CELULAR O MÓVIL MIENTRAS MANEJAN SUS VEHÍCULOS?"
+  }
+ ],
+ "fetched_at": "2026-10-23T01:13:36+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Según las cifras de la asociación mexicana de instituciones de seguros, siete de cada diez accidentes automobilísticos suceden por el uso individuo del sexo. De 2015 las muertes poderosas celular al momento de manejar han superado las muertes por manejar en estados de seguridad y según el Instituto de Seguridad y Servicios Sociales de los Trabajadores del Estado, las víctimas más frecuentes de estos accidentes son personas de entre 15 y 19 años. Hola nosotros somos safe driving y venimos a cambiar esto. Si el conductor va 80 kilómetros por hora y se toma una selfie va a recorrer entre 200 a 300 metros a sillas. Una de las principales distracciones son las notificaciones al momento de manejar. La sensación de algo nuevo, de algo que necesitamos ver nos llena y queremos inmediatamente revisar la notificación. Esto ha provocado miles de accidentes. Al analizar esta situación nosotros nos proposimos detectar cuando una persona esté manejando y bloquear su dispositivo móvil de tal forma que la única opción de volverlo a utilizar sea deteniendo el automóvil. Medidas drásticas para situaciones drásticas. Todo comienza en nuestra aplicación. Esta se conecta al dispositivo que hemos diseñado mediante bluetooth. Una vez que esté sincronizado y comience el conductor a manejar, el dispositivo se bloqueará automáticamente hasta que el conductor pare o descienda del vehículo. El 39.1 considera que la mejor opción para evitar utilizar el celular mientras maneja es una aplicación que lo limita.",
+ "segments": [
+  {
+   "start": 6.03,
+   "end": 13.43,
+   "text": "Según las cifras de la asociación mexicana de instituciones de seguros, siete de cada diez accidentes automobilísticos suceden por el uso individuo del"
+  },
+  {
+   "start": 13.43,
+   "end": 24.99,
+   "text": "sexo. De 2015 las muertes poderosas celular al momento de manejar han superado las muertes por manejar en estados de seguridad y según el Instituto de Seguridad y Servicios Sociales de los Trabajadores del Estado, las víctimas más"
+  },
+  {
+   "start": 24.99,
+   "end": 28.55,
+   "text": "frecuentes de estos accidentes son personas de entre 15 y 19 años."
+  },
+  {
+   "start": 28.55,
+   "end": 38.87,
+   "text": "Hola nosotros somos safe driving y venimos a cambiar esto. Si el conductor va 80 kilómetros por hora y se toma una selfie va a recorrer entre 200 a 300 metros a sillas."
+  },
+  {
+   "start": 38.87,
+   "end": 51.43,
+   "text": "Una de las principales distracciones son las notificaciones al momento de manejar. La sensación de algo nuevo, de algo que necesitamos ver nos llena y queremos inmediatamente revisar la notificación."
+  },
+  {
+   "start": 52.19,
+   "end": 65.19,
+   "text": "Esto ha provocado miles de accidentes. Al analizar esta situación nosotros nos proposimos detectar cuando una persona esté manejando y bloquear su dispositivo móvil de tal forma que la única opción de volverlo a utilizar sea deteniendo el automóvil."
+  },
+  {
+   "start": 65.19,
+   "end": 72.99,
+   "text": "Medidas drásticas para situaciones drásticas. Todo comienza en nuestra aplicación. Esta se conecta al dispositivo que hemos diseñado mediante bluetooth."
+  },
+  {
+   "start": 72.99,
+   "end": 81.99,
+   "text": "Una vez que esté sincronizado y comience el conductor a manejar, el dispositivo se bloqueará automáticamente hasta que el conductor pare o descienda del vehículo."
+  },
+  {
+   "start": 81.99,
+   "end": 88.07,
+   "text": "El 39.1 considera que la mejor opción para evitar utilizar el celular mientras maneja es una aplicación que lo limita."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 88.1
+}

@@ -1,0 +1,82 @@
+{
+ "video_id": "12rv2fXP7Ik",
+ "url": "https://youtu.be/12rv2fXP7Ik",
+ "year": 2025,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "MASTERMINDS",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "MASTERMINDS",
+   "challenge": "04 - SISTEMA DE ALERTA TEMPRANA"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:48:25+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Los incendios forestales e inundaciones son catástrofes naturales que requieren de aviso temprano para reducir sus impactos. Las inundaciones por crecidas de ríos afectan gravemente a comunidades vulnerables que carecen de sistema de alerta temprana. Al mismo tiempo, los incendios forestales se vuelven más frecuentes e intensos, requiriendo detección rápida para su control. Por ende, se propuso un sistema de monitoreo ambiental, accesible que permita las detecciones tempranas de inundaciones o incendios, y faciliten las emisiones de alertas comunitarias. En el menú principal de la página, observamos información sobre algunos desastres naturales y un menú de opciones que no muestra las siguientes opciones. Reporte. Donde el usuario puede realizar reportes sobre algún desastre natural que esté ocurriendo en ese momento. Ayuda. Donde los ciudadanos pueden realizar preguntas y solicitar ayuda sobre alguna problemática con algún desastre natural. Información. Donde el usuario se puede informar sobre cómo prevenir desastres naturales y conocer algunas medidas que se deben tomar al encontrarse en alguna situación de esas. Alerta. En este apartado se pueden ver las alertas de seguridad que hay, si hay algún desastre natural, y que medidas se deben seguir ante este desastre. Zonas de riesgo. En este apartado se pueden ver, las zonas de mayor riesgo en el país, para tener una mayor precaución.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 9.0,
+   "text": "Los incendios forestales e inundaciones son catástrofes naturales que requieren de aviso temprano para reducir sus impactos."
+  },
+  {
+   "start": 9.0,
+   "end": 18.0,
+   "text": "Las inundaciones por crecidas de ríos afectan gravemente a comunidades vulnerables que carecen de sistema de alerta temprana."
+  },
+  {
+   "start": 18.0,
+   "end": 26.0,
+   "text": "Al mismo tiempo, los incendios forestales se vuelven más frecuentes e intensos, requiriendo detección rápida para su control."
+  },
+  {
+   "start": 26.0,
+   "end": 36.0,
+   "text": "Por ende, se propuso un sistema de monitoreo ambiental, accesible que permita las detecciones tempranas de inundaciones o incendios,"
+  },
+  {
+   "start": 36.0,
+   "end": 39.0,
+   "text": "y faciliten las emisiones de alertas comunitarias."
+  },
+  {
+   "start": 39.0,
+   "end": 49.0,
+   "text": "En el menú principal de la página, observamos información sobre algunos desastres naturales y un menú de opciones que no muestra las siguientes opciones."
+  },
+  {
+   "start": 49.0,
+   "end": 57.0,
+   "text": "Reporte. Donde el usuario puede realizar reportes sobre algún desastre natural que esté ocurriendo en ese momento."
+  },
+  {
+   "start": 57.0,
+   "end": 66.0,
+   "text": "Ayuda. Donde los ciudadanos pueden realizar preguntas y solicitar ayuda sobre alguna problemática con algún desastre natural."
+  },
+  {
+   "start": 66.0,
+   "end": 78.0,
+   "text": "Información. Donde el usuario se puede informar sobre cómo prevenir desastres naturales y conocer algunas medidas que se deben tomar al encontrarse en alguna situación de esas."
+  },
+  {
+   "start": 78.0,
+   "end": 89.0,
+   "text": "Alerta. En este apartado se pueden ver las alertas de seguridad que hay, si hay algún desastre natural, y que medidas se deben seguir ante este desastre."
+  },
+  {
+   "start": 89.0,
+   "end": 97.0,
+   "text": "Zonas de riesgo. En este apartado se pueden ver, las zonas de mayor riesgo en el país, para tener una mayor precaución."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 101.8
+}

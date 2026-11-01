@@ -1,0 +1,117 @@
+{
+ "video_id": "VOdIdTJ6ptM",
+ "url": "https://youtu.be/VOdIdTJ6ptM",
+ "year": 2026,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "MAGIC TOOL",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "MAGIC TOOL",
+   "challenge": "01 - SEGUNDA VIDA DE LOS MOTORES ELÉCTRICOS DOMÉSTICOS"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:50:22+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Los electrodomésticos en desuso como lavadoras, caminadoras, secadoras y bombas de agua contienen motores eléctricos que pueden contener funciones aprovechables, sin embargo, muchos de estos componentes que han desuso debido a fallas en el sistema de este falta de mantenimiento o no hay manera de repararlos. Entre una de las principales problemáticas, son los procesos accesibles para identificar motores reutilizables, el desconocimiento de sus características técnicas y la falta de propuestas de adaptación para nuevas aplicaciones, lo que genera el problema del desaprovechamiento de motores funcionales que podrían recibir una segunda vida mediante su recuperación, evaluación y adaptación, evitando su descarte prematuro y generando soluciones tecnológicas con utilidad social. Una solución viable debido a que permite recuperar y aprovechar motores eléctricos funcionales en electrodomésticos abandonados, es adaptando a sí mismos a una aplicación referente a un beneficio social. En lugar de acechar estos componentes se busca aprovechar su capacidad para generar movimiento para desarrollar así un sistema experimental de asistencia eléctrica para sillas de ruedas de infantiles. Nuestra solución a la problemática será adaptar un motor bruschles a una silla de ruedas, esto con el pende que sea más accesible para personas jóvenes y niños.",
+ "segments": [
+  {
+   "start": 0.53,
+   "end": 36.08,
+   "text": "Los electrodomésticos en desuso como lavadoras, caminadoras, secadoras y bombas de agua contienen"
+  },
+  {
+   "start": 36.08,
+   "end": 42.56,
+   "text": "motores eléctricos que pueden contener funciones aprovechables, sin embargo, muchos de estos"
+  },
+  {
+   "start": 42.56,
+   "end": 48.2,
+   "text": "componentes que han desuso debido a fallas en el sistema de este falta de mantenimiento"
+  },
+  {
+   "start": 48.2,
+   "end": 50.88,
+   "text": "o no hay manera de repararlos."
+  },
+  {
+   "start": 50.88,
+   "end": 55.52,
+   "text": "Entre una de las principales problemáticas, son los procesos accesibles para identificar"
+  },
+  {
+   "start": 55.52,
+   "end": 60.96,
+   "text": "motores reutilizables, el desconocimiento de sus características técnicas y la falta de propuestas"
+  },
+  {
+   "start": 60.96,
+   "end": 65.96,
+   "text": "de adaptación para nuevas aplicaciones, lo que genera el problema del desaprovechamiento de"
+  },
+  {
+   "start": 65.96,
+   "end": 70.16,
+   "text": "motores funcionales que podrían recibir una segunda vida mediante su recuperación,"
+  },
+  {
+   "start": 70.16,
+   "end": 75.56,
+   "text": "evaluación y adaptación, evitando su descarte prematuro y generando soluciones tecnológicas"
+  },
+  {
+   "start": 75.56,
+   "end": 77.0,
+   "text": "con utilidad social."
+  },
+  {
+   "start": 77.0,
+   "end": 82.68,
+   "text": "Una solución viable debido a que permite recuperar y aprovechar motores eléctricos"
+  },
+  {
+   "start": 82.68,
+   "end": 88.8,
+   "text": "funcionales en electrodomésticos abandonados, es adaptando a sí mismos a una aplicación"
+  },
+  {
+   "start": 88.8,
+   "end": 90.96,
+   "text": "referente a un beneficio social."
+  },
+  {
+   "start": 90.96,
+   "end": 96.92,
+   "text": "En lugar de acechar estos componentes se busca aprovechar su capacidad para generar movimiento"
+  },
+  {
+   "start": 96.92,
+   "end": 102.24,
+   "text": "para desarrollar así un sistema experimental de asistencia eléctrica para sillas de"
+  },
+  {
+   "start": 102.24,
+   "end": 104.32,
+   "text": "ruedas de infantiles."
+  },
+  {
+   "start": 104.32,
+   "end": 109.36,
+   "text": "Nuestra solución a la problemática será adaptar un motor bruschles a una silla de"
+  },
+  {
+   "start": 109.36,
+   "end": 114.56,
+   "text": "ruedas, esto con el pende que sea más accesible para personas jóvenes y niños."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.1
+}

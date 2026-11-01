@@ -1,0 +1,162 @@
+{
+ "video_id": "XDvhSE_GDvA",
+ "url": "https://youtu.be/XDvhSE_GDvA?si=YYDxx7e2pjwUK3MI",
+ "year": 2026,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "RESCATEC",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "RESCATEC",
+   "challenge": "09 - OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:51:35+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Los sismos desde los inicios de la humanidad siempre han sido un terror para nosotros, ocurriendo 408 mil sismos al año aproximadamente dejando unos con 10 mil muertes anuales y una inversión para tratar de evitar estas de entre 2 mil millones y 5 mil millones de dólares al año, principalmente porque no se tiene un sistema de multiditacción y autónomo para determinar y organizar las zonas donde la vida se gura, partiendo de esa idea nace a hídros. Los módulos de hídros. El primero se componen una cámara térmica que nos ayuda a identificar caldón bajo los escombros y poder decidir si bajar a escanear o no. El siguiente sistema son 48 micrófonos distribuidos en una esfera de 50 centímetros con un espiral de fibonache, inspirados en el concepto de nido de cuervo del sistema luz. La esfera cubre todas las direcciones y evita conjunirlo de arriba como los rotores con lo de abajo. Después nuestro radar imite ondas de 5 milímetros de longitud y mide cómo regresan. Cuando el pecho se mueve cambia la fase de onda reflejada, esto detecta signos vitales sin necesidad de sonido ni calor. Este es el drone que transporte el sistema completo. Nuestra computadora procesa y organiza todos los datos y los manda a los operadores mediante el radio olor. El radio olor conecta el drone con el punto de mando sin depender del red celular. Todo lo hace mientras Skybrows recibe el video y lo convierte en un modo de lado 3D y para ejemplificar lo hicimos una simulación a escala, resultando todo nuestro sistema de la siguiente forma. Siendo nuestro procedimiento resultante la siguiente animación donde primero escaneamos el perímetro con luz infrarroja y al detectar una señal de calor bajamos y escaneamos mediante el sonido y signos vitales la confirmación de una vida. De esta forma podríamos ver a Hydrox no solo como un drone sino como una herramienta que no solo nos ayuda a guardar recursos sino más bien salvar vidas en peligro.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 4.44,
+   "text": "Los sismos desde los inicios de la humanidad siempre han sido un terror para nosotros, ocurriendo"
+  },
+  {
+   "start": 4.44,
+   "end": 9.68,
+   "text": "408 mil sismos al año aproximadamente dejando unos con 10 mil muertes anuales y una inversión"
+  },
+  {
+   "start": 9.68,
+   "end": 14.0,
+   "text": "para tratar de evitar estas de entre 2 mil millones y 5 mil millones de dólares al año,"
+  },
+  {
+   "start": 14.0,
+   "end": 17.44,
+   "text": "principalmente porque no se tiene un sistema de multiditacción y autónomo para determinar"
+  },
+  {
+   "start": 17.44,
+   "end": 22.64,
+   "text": "y organizar las zonas donde la vida se gura, partiendo de esa idea nace a hídros."
+  },
+  {
+   "start": 22.64,
+   "end": 24.16,
+   "text": "Los módulos de hídros."
+  },
+  {
+   "start": 24.16,
+   "end": 27.68,
+   "text": "El primero se componen una cámara térmica que nos ayuda a identificar caldón bajo"
+  },
+  {
+   "start": 27.68,
+   "end": 30.72,
+   "text": "los escombros y poder decidir si bajar a escanear o no."
+  },
+  {
+   "start": 30.72,
+   "end": 36.2,
+   "text": "El siguiente sistema son 48 micrófonos distribuidos en una esfera de 50 centímetros con un espiral"
+  },
+  {
+   "start": 36.2,
+   "end": 40.36,
+   "text": "de fibonache, inspirados en el concepto de nido de cuervo del sistema luz."
+  },
+  {
+   "start": 40.36,
+   "end": 44.92,
+   "text": "La esfera cubre todas las direcciones y evita conjunirlo de arriba como los rotores con lo"
+  },
+  {
+   "start": 44.92,
+   "end": 45.92,
+   "text": "de abajo."
+  },
+  {
+   "start": 45.92,
+   "end": 51.04,
+   "text": "Después nuestro radar imite ondas de 5 milímetros de longitud y mide cómo regresan."
+  },
+  {
+   "start": 51.04,
+   "end": 55.32,
+   "text": "Cuando el pecho se mueve cambia la fase de onda reflejada, esto detecta signos vitales"
+  },
+  {
+   "start": 55.32,
+   "end": 57.92,
+   "text": "sin necesidad de sonido ni calor."
+  },
+  {
+   "start": 57.92,
+   "end": 61.0,
+   "text": "Este es el drone que transporte el sistema completo."
+  },
+  {
+   "start": 61.0,
+   "end": 65.2,
+   "text": "Nuestra computadora procesa y organiza todos los datos y los manda a los operadores mediante"
+  },
+  {
+   "start": 65.2,
+   "end": 66.2,
+   "text": "el radio olor."
+  },
+  {
+   "start": 66.2,
+   "end": 71.56,
+   "text": "El radio olor conecta el drone con el punto de mando sin depender del red celular."
+  },
+  {
+   "start": 71.56,
+   "end": 76.0,
+   "text": "Todo lo hace mientras Skybrows recibe el video y lo convierte en un modo de lado 3D y para"
+  },
+  {
+   "start": 76.0,
+   "end": 81.64,
+   "text": "ejemplificar lo hicimos una simulación a escala, resultando todo nuestro sistema de"
+  },
+  {
+   "start": 81.64,
+   "end": 83.36,
+   "text": "la siguiente forma."
+  },
+  {
+   "start": 83.36,
+   "end": 92.08,
+   "text": "Siendo nuestro procedimiento resultante la siguiente animación donde primero escaneamos el perímetro"
+  },
+  {
+   "start": 92.08,
+   "end": 97.6,
+   "text": "con luz infrarroja y al detectar una señal de calor bajamos y escaneamos mediante el sonido"
+  },
+  {
+   "start": 97.6,
+   "end": 100.24,
+   "text": "y signos vitales la confirmación de una vida."
+  },
+  {
+   "start": 100.24,
+   "end": 105.04,
+   "text": "De esta forma podríamos ver a Hydrox no solo como un drone sino como una herramienta"
+  },
+  {
+   "start": 105.04,
+   "end": 109.48,
+   "text": "que no solo nos ayuda a guardar recursos sino más bien salvar vidas en peligro."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 110.2
+}

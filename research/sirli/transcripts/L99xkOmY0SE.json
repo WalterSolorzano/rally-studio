@@ -1,0 +1,117 @@
+{
+ "video_id": "L99xkOmY0SE",
+ "url": "https://www.youtube.com/watch?v=L99xkOmY0SE&ab_channel=Quimtech",
+ "year": 2023,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "QUIMTECH",
+ "place_label": "TERCER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "TERCER LUGAR",
+   "team": "QUIMTECH",
+   "challenge": "09 - GRIS A VERDE"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:29:35+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En la actualidad la escasez de agua es un desafío global que afecta a muchas regiones, especialmente en la zona urbana. En América Latina y el Caribe, la rápida urbanización y la desigualdad económica han llevado a un aumento desmesurado en el consumo de agua, exercerbando la escasez del recurso. Factores como la falta de conciencia sobre la importancia de la preservación de los recursos hídricos, la contaminación debido a actividades humanas y el cambio climático agravan aún más la situación. Quintes propone una solución innovadora, basándose en un sistema de monitoreo y control que utiliza sensores electrónicos para medir la calidad de la agua reciclada. El sistema incluye estrésensores electrónicos, un sensor de pH, uno de conductividad y un sensor de clorolibre. Todos estos se integran en una placa de Arduino para una interacción sencilla y económica. Los usuarios pueden interactuar con el sistema a través de una interfaz amigable y de bajo costo. El agua reciclada puede utilizarse para arregos de plantas y cumple con el rango de pH permisible entre 7 y 8, sino se utilizará para carga de agua en los servicios sanitarios en los hogares de los usuarios. Al reciclar agua grise se reduce el costo del agua en los hogares, beneficiando la economía familiar. Se estima que por persona se reciclarán entre 22 a 57 litros de agua al día, contribuyendo significativamente a la ahorro de agua y evitando la contaminación de cuerpo hídrico. La propuesta es innovadora porque reemplace a pruebas costosas por sensores electrónicos, permitiendo a las comunidades identificar la calidad del agua gris de manera doméstica. Además, logres en civilizar a las comunidades sobre la importancia del óptimo uso del agua y juntos contrair un futuro más sostenible al cuidar nuestro recurso.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 14.46,
+   "text": "En la actualidad la escasez de agua es un desafío global que afecta a muchas regiones, especialmente en la zona urbana."
+  },
+  {
+   "start": 14.46,
+   "end": 23.46,
+   "text": "En América Latina y el Caribe, la rápida urbanización y la desigualdad económica han llevado a un aumento desmesurado en el consumo de agua,"
+  },
+  {
+   "start": 23.46,
+   "end": 26.46,
+   "text": "exercerbando la escasez del recurso."
+  },
+  {
+   "start": 26.46,
+   "end": 31.46,
+   "text": "Factores como la falta de conciencia sobre la importancia de la preservación de los recursos hídricos,"
+  },
+  {
+   "start": 31.46,
+   "end": 37.46,
+   "text": "la contaminación debido a actividades humanas y el cambio climático agravan aún más la situación."
+  },
+  {
+   "start": 37.46,
+   "end": 48.46,
+   "text": "Quintes propone una solución innovadora, basándose en un sistema de monitoreo y control que utiliza sensores electrónicos para medir la calidad de la agua reciclada."
+  },
+  {
+   "start": 48.46,
+   "end": 56.46,
+   "text": "El sistema incluye estrésensores electrónicos, un sensor de pH, uno de conductividad y un sensor de clorolibre."
+  },
+  {
+   "start": 56.46,
+   "end": 62.46,
+   "text": "Todos estos se integran en una placa de Arduino para una interacción sencilla y económica."
+  },
+  {
+   "start": 62.46,
+   "end": 68.46,
+   "text": "Los usuarios pueden interactuar con el sistema a través de una interfaz amigable y de bajo costo."
+  },
+  {
+   "start": 68.46,
+   "end": 75.46,
+   "text": "El agua reciclada puede utilizarse para arregos de plantas y cumple con el rango de pH permisible entre 7 y 8,"
+  },
+  {
+   "start": 75.46,
+   "end": 81.46,
+   "text": "sino se utilizará para carga de agua en los servicios sanitarios en los hogares de los usuarios."
+  },
+  {
+   "start": 81.46,
+   "end": 87.46,
+   "text": "Al reciclar agua grise se reduce el costo del agua en los hogares, beneficiando la economía familiar."
+  },
+  {
+   "start": 87.46,
+   "end": 93.46,
+   "text": "Se estima que por persona se reciclarán entre 22 a 57 litros de agua al día,"
+  },
+  {
+   "start": 93.46,
+   "end": 99.46,
+   "text": "contribuyendo significativamente a la ahorro de agua y evitando la contaminación de cuerpo hídrico."
+  },
+  {
+   "start": 99.46,
+   "end": 104.46,
+   "text": "La propuesta es innovadora porque reemplace a pruebas costosas por sensores electrónicos,"
+  },
+  {
+   "start": 104.46,
+   "end": 110.46,
+   "text": "permitiendo a las comunidades identificar la calidad del agua gris de manera doméstica."
+  },
+  {
+   "start": 110.46,
+   "end": 115.46,
+   "text": "Además, logres en civilizar a las comunidades sobre la importancia del óptimo uso del agua"
+  },
+  {
+   "start": 115.46,
+   "end": 120.46,
+   "text": "y juntos contrair un futuro más sostenible al cuidar nuestro recurso."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.4
+}

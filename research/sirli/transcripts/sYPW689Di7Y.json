@@ -1,0 +1,179 @@
+{
+ "video_id": "sYPW689Di7Y",
+ "url": "https://youtu.be/sYPW689Di7Y?si=n87XpUG2U3dJwFif",
+ "year": 2024,
+ "collection": "nacional",
+ "country": "BOLIVIA",
+ "team": "SUMAQ YACHAY",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "SUMAQ YACHAY",
+   "challenge": "07 - PARQUÍMETRO DESATENDIDO"
+  },
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "SUMAQ YACHAY",
+   "challenge": "07 - PARQUÍMETRO DESATENDIDO"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:15:50+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "No puede ver que no se puede estacionar aquí, hay dos señores sociales. Pero miren, entiendes que eso ahora por favor no hay condición de estacionamiento. Medio hora está esperando aquí y no hay ningún condición. ¿Qué voy a hacer? ¿Puedo no ver? Dos también, amigo, dos también. ¡Cuate! ¡Sabe, vamos con el canal! ¡Adiós! ¿Sabías que solo el 8% de los conductores recurrentes encuentran estacionamiento al instante? Ante esta problemática, nosotros tenemos una solución. ParkiVot. Esta es una aplicación para dispositivos móviles donde los usuarios deben registrarse con sus datos personales y con los beneficios de un sistema automatizado podrán buscar estacionamiento de manera práctica y sencilla utilizando chips RFID que se encontrarán tanto en los vehículos como en los espacios de parqueo. Estos sensores detectan la llegada y salida de los autos y cronometran automáticamente el tiempo de estacionamiento permitiendo a los usuarios pagar de manera automática con la debitación de su cuenta vinculada o con un QR generado. Un sistema permite a los usuarios conocer el tiempo exacto de estacionamiento y también facilita el pago que puede realizarse de manera automática o dentro de un periodo establecido. También los usuarios pueden ver si es teorial de parqueo realizados en los últimos días y en otra sección registran su cuenta bancaria o el método de pago que ellos prefieran. Los datos se envían de por minedamérica a un servidor central que lo sostiene en tiempo real y lo está sin. Este sistema elimina la necesidad de partímetros físicos mejorando así la eficiencia y reducir el uso de papel y materiales contribuyendo también a la sostenibilidad. ¡Uy, chiquita! Mira, ese millón no nos ha dejado parquearnos breite a su casa. Sí, para qué no sabes que hay una aplicación que utilice el proceso de prensos de estacionamiento. Ah, sí, ¿tá? ¿Cómo se llama, pues? Parque, ¿cómo no conoces? Eh...",
+ "segments": [
+  {
+   "start": 2.64,
+   "end": 11.08,
+   "text": "No puede ver que no se puede estacionar aquí, hay dos señores sociales."
+  },
+  {
+   "start": 11.08,
+   "end": 14.08,
+   "text": "Pero miren, entiendes que eso ahora por favor no hay condición de estacionamiento."
+  },
+  {
+   "start": 14.08,
+   "end": 17.08,
+   "text": "Medio hora está esperando aquí y no hay ningún condición."
+  },
+  {
+   "start": 17.08,
+   "end": 18.08,
+   "text": "¿Qué voy a hacer?"
+  },
+  {
+   "start": 18.08,
+   "end": 19.08,
+   "text": "¿Puedo no ver?"
+  },
+  {
+   "start": 19.08,
+   "end": 20.08,
+   "text": "Dos también, amigo, dos también."
+  },
+  {
+   "start": 20.08,
+   "end": 21.08,
+   "text": "¡Cuate!"
+  },
+  {
+   "start": 21.08,
+   "end": 23.62,
+   "text": "¡Sabe, vamos con el canal!"
+  },
+  {
+   "start": 23.62,
+   "end": 24.62,
+   "text": "¡Adiós!"
+  },
+  {
+   "start": 24.62,
+   "end": 34.08,
+   "text": "¿Sabías que solo el 8% de los conductores recurrentes encuentran estacionamiento al instante?"
+  },
+  {
+   "start": 34.08,
+   "end": 37.08,
+   "text": "Ante esta problemática, nosotros tenemos una solución."
+  },
+  {
+   "start": 37.08,
+   "end": 39.08,
+   "text": "ParkiVot."
+  },
+  {
+   "start": 39.08,
+   "end": 45.08,
+   "text": "Esta es una aplicación para dispositivos móviles donde los usuarios deben registrarse con sus datos personales"
+  },
+  {
+   "start": 45.08,
+   "end": 50.08,
+   "text": "y con los beneficios de un sistema automatizado podrán buscar estacionamiento de manera práctica y sencilla"
+  },
+  {
+   "start": 50.08,
+   "end": 55.08,
+   "text": "utilizando chips RFID que se encontrarán tanto en los vehículos como en los espacios de parqueo."
+  },
+  {
+   "start": 55.08,
+   "end": 61.08,
+   "text": "Estos sensores detectan la llegada y salida de los autos y cronometran automáticamente el tiempo de estacionamiento"
+  },
+  {
+   "start": 61.08,
+   "end": 67.08,
+   "text": "permitiendo a los usuarios pagar de manera automática con la debitación de su cuenta vinculada o con un QR generado."
+  },
+  {
+   "start": 67.08,
+   "end": 72.08,
+   "text": "Un sistema permite a los usuarios conocer el tiempo exacto de estacionamiento y también facilita el pago"
+  },
+  {
+   "start": 72.08,
+   "end": 76.08,
+   "text": "que puede realizarse de manera automática o dentro de un periodo establecido."
+  },
+  {
+   "start": 76.08,
+   "end": 81.08,
+   "text": "También los usuarios pueden ver si es teorial de parqueo realizados en los últimos días"
+  },
+  {
+   "start": 81.08,
+   "end": 85.08,
+   "text": "y en otra sección registran su cuenta bancaria o el método de pago que ellos prefieran."
+  },
+  {
+   "start": 85.08,
+   "end": 91.08,
+   "text": "Los datos se envían de por minedamérica a un servidor central que lo sostiene en tiempo real y lo está sin."
+  },
+  {
+   "start": 91.08,
+   "end": 98.08,
+   "text": "Este sistema elimina la necesidad de partímetros físicos mejorando así la eficiencia y reducir el uso de papel y materiales"
+  },
+  {
+   "start": 98.08,
+   "end": 101.08,
+   "text": "contribuyendo también a la sostenibilidad."
+  },
+  {
+   "start": 101.08,
+   "end": 106.08,
+   "text": "¡Uy, chiquita! Mira, ese millón no nos ha dejado parquearnos breite a su casa."
+  },
+  {
+   "start": 106.08,
+   "end": 111.08,
+   "text": "Sí, para qué no sabes que hay una aplicación que utilice el proceso de prensos de estacionamiento."
+  },
+  {
+   "start": 111.08,
+   "end": 113.08,
+   "text": "Ah, sí, ¿tá? ¿Cómo se llama, pues?"
+  },
+  {
+   "start": 113.08,
+   "end": 115.08,
+   "text": "Parque, ¿cómo no conoces?"
+  },
+  {
+   "start": 115.08,
+   "end": 116.08,
+   "text": "Eh..."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.5
+}

@@ -56,10 +56,10 @@
     titulo: "Revisor de Guión",
     reglas: [
       { id: "gui-actos", texto: "Estructura de 4 actos (PAS-V): Acto I Dolor 0:00–0:20 (~45 palabras) · Acto II Caja Negra 0:20–1:00 (~90) · Acto III Costo 1:00–1:35 (~75) · Acto IV Cierre 1:35–2:00 (~55).", ref: "rubric-matrices" },
-      { id: "gui-palabras", texto: "240–270 palabras en total; locución a 135 palabras por minuto (rango 130–140 ppm). Superar 270 palabras causa dicción ininteligible o descalificación por tiempo (>120 s).", ref: "rubric-matrices" },
+      { id: "gui-palabras", texto: "El límite legal es la duración: máximo 120 segundos de audio, medidos con ffprobe. Aviso de escritura: 240–270 palabras a 135 ppm (rango 130–140) caben en ese tiempo; si el guion las supera, avisa al equipo que tendrá problemas para grabarlo dentro de los 120 s. El conteo de palabras no descalifica.", ref: "rubric-matrices" },
       { id: "gui-acto1", texto: "Acto I: PROHIBIDO el nombre del proyecto, su logo, saludo del equipo o lectura del desafío. Solo estadística dura + rostro del beneficiario + territorio nombrado.", ref: "pautado-y-guion" },
       { id: "gui-acto2", texto: "Acto II: bautismo comercial de la solución y desglose técnico visual (3D/CAD/UI, mecanismo físico, químico o algorítmico en pantalla).", ref: "pautado-y-guion" },
-      { id: "gui-acto3", texto: "Acto III: costo unitario, quién financia, ROI/ingresos, economía circular. Omitirlo es la causa #1 de eliminación.", ref: "rubric-matrices" },
+      { id: "gui-acto3", texto: "Acto III: costo unitario, quién financia, ROI/ingresos, economía circular. Omitirlo deja sin sustento la prefactibilidad económica del pitch.", ref: "rubric-matrices" },
       { id: "gui-acto4", texto: "Acto IV: tres métricas auditables proyectadas, ODS animados con la paleta del proyecto y cierre empático (nacional) o regional ('piloto en [ciudad], replicable en toda América Latina') en latam.", ref: "pautado-y-guion" },
       { id: "gui-cifras", texto: "Toda métrica enunciada en el video (costo, beneficiarios, capacidad) debe coincidir con exactitud matemática con los datos del pautado, presupuesto y Canvas; el jurado cruza los últimos 25 segundos con el Excel.", ref: "rubric-matrices" },
       { id: "gui-innovacion", texto: "Acto II activa los criterios Innovación + Viabilidad Técnica: mostrar visualmente el mecanismo (caja negra) neutraliza dudas técnicas; las soluciones unidisciplinarias pierden frente a sistemas híbridos ciber-físicos.", ref: "winners-latam" },

@@ -1,0 +1,102 @@
+{
+ "video_id": "wu2VDXttQZE",
+ "url": "https://youtu.be/wu2VDXttQZE",
+ "year": 2024,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "CREATIVE SPIRIT",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "CREATIVE SPIRIT",
+   "challenge": "06 - ESCOMBROS"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:00:51+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En toda América Latina, los escombros de obra de construcción, de molición y desastres naturales son una fuente de contaminación ambiental descontrolada y sin ningún tipo de manejo. Sabías que estos residuos formados por concreto, hierro, plástico, madera e incluso vidrio ocupan nuestros suelos durante décadas. La solución es trash, que por medio de un sistema de procesos logra la transformación de los escombros en materiales para suministras de una vivienda digna de carácter social. El proceso de transformación consiste en una clasificación de elementos en donde se tritura el concreto para crear bloques modulares, cemento y lozetas, la madera para la creación de puertas y marcos de ventana. El vidrio se funde para los cristales de las ventanas, el plástico para la elaboración de láminas que se colocarán en el techo y el hierro se fundirá para hacer las varillas de las vigas estructurales. La solución es que los escombros se convierten en una vivienda digna, segura y de bajo costo para las familias de escasos recursos, teniendo un costo no máximo de 2.061 dólares, desgrosado en dicho presupuesto en donde se hace énfasis en los objetivos de desarrollo sostenible, de organizaciones gubernamentales y asociaciones comprometidas en las preservaciones de medio ambiente a nivel atermicano. Escombros hoy, materiales mañana.",
+ "segments": [
+  {
+   "start": 1.39,
+   "end": 6.51,
+   "text": "En toda América Latina, los escombros de obra de construcción, de molición y desastres naturales"
+  },
+  {
+   "start": 6.51,
+   "end": 10.51,
+   "text": "son una fuente de contaminación ambiental descontrolada y sin ningún tipo de manejo."
+  },
+  {
+   "start": 10.51,
+   "end": 16.51,
+   "text": "Sabías que estos residuos formados por concreto, hierro, plástico, madera e incluso vidrio"
+  },
+  {
+   "start": 16.51,
+   "end": 22.03,
+   "text": "ocupan nuestros suelos durante décadas. La solución es trash, que por medio de un sistema"
+  },
+  {
+   "start": 22.03,
+   "end": 27.07,
+   "text": "de procesos logra la transformación de los escombros en materiales para suministras de una vivienda"
+  },
+  {
+   "start": 27.07,
+   "end": 32.83,
+   "text": "digna de carácter social. El proceso de transformación consiste en una clasificación de elementos en donde"
+  },
+  {
+   "start": 32.83,
+   "end": 39.11,
+   "text": "se tritura el concreto para crear bloques modulares, cemento y lozetas, la madera para la creación de"
+  },
+  {
+   "start": 39.11,
+   "end": 45.23,
+   "text": "puertas y marcos de ventana. El vidrio se funde para los cristales de las ventanas, el plástico"
+  },
+  {
+   "start": 45.23,
+   "end": 49.95,
+   "text": "para la elaboración de láminas que se colocarán en el techo y el hierro se fundirá para hacer"
+  },
+  {
+   "start": 49.95,
+   "end": 54.71,
+   "text": "las varillas de las vigas estructurales. La solución es que los escombros se convierten en una"
+  },
+  {
+   "start": 54.71,
+   "end": 60.15,
+   "text": "vivienda digna, segura y de bajo costo para las familias de escasos recursos, teniendo un costo"
+  },
+  {
+   "start": 60.15,
+   "end": 66.99,
+   "text": "no máximo de 2.061 dólares, desgrosado en dicho presupuesto en donde se hace énfasis en los"
+  },
+  {
+   "start": 66.99,
+   "end": 72.03,
+   "text": "objetivos de desarrollo sostenible, de organizaciones gubernamentales y asociaciones comprometidas"
+  },
+  {
+   "start": 72.03,
+   "end": 76.19,
+   "text": "en las preservaciones de medio ambiente a nivel atermicano."
+  },
+  {
+   "start": 76.19,
+   "end": 78.03,
+   "text": "Escombros hoy, materiales mañana."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 89.1
+}

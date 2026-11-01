@@ -1,0 +1,187 @@
+{
+ "video_id": "WCzlaCa8uWk",
+ "url": "https://youtu.be/WCzlaCa8uWk",
+ "year": 2019,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "NOVA_ABJAM",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2019,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "NOVA_ABJAM",
+   "challenge": "01 - EFICIENCIA ENERGÉTICA EN EL ENTORNO LABORAL"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:00:43+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Te has preguntado cuánta energía eléctrica se consume en un país? Estudios blindados por el Banco Central de Nicaragua mostrarán que en el 2016 registraron un consumo aproximado de 4.500 miles de megavatios por hora en una población aproximada de 6 millones de personas que al menos el 20% de este consumo se debe al uso inadecuado de energía ya que no se promueve la costumbre del ahorro del servicio. Novabjant es un proyecto que consiste en la creación de un sistema que monitorea el uso de energía eléctrica en el ámbito laboral. Dicho sistema se encargará en manipular la distribución de energía de manera adecuada. Para solucionar este problema, proponemos el dispositivo control and saving que hace conectar el dispositivo electrónico de las oficinas, plantas industriales, centros de salud, talleres y en cualquier otro entorno laboral en general e instituciones que mediante un software monitorea el flujo de energía que va hacia los dispositivos electrónicos conectados. A través de un sensor de movimiento, determina si en una oficina hay persona laborando. Pasando tres minutos de inactividad en la sala, el dispositivo activa un alarma avisando que se apagará el aire acondicionado, abanicos, luces, televisores y computadoras, suspendiendo el fluido de energía que va hacia los tomacorrientes. En el caso de las computadoras, al suspender el fluido de energía, quedarán funcionando con la reserva de energía en las baterías activando nuevamente el fluido de energía cuando las baterías se agote. En este dispositivo se registrará el promedio de energía consumida en la empresa por día. Si el consumo está siendo mayor que ese promedio, el dispositivo podrá activar un sistema alterno alimentado por energía solar, donde estarán conectados los bombillos, abanicos u otros dispositivos de menor consumo de energía. Control-Shaving genera el ahorro y uso de eficiente de energía en nuestras oficinas, plantas industriales, centros de salud, talleres y en cualquier otro entorno laboral general, llevando consigo una disminución de gastos y aportando al medio ambiente y los reforzos naturales. Promueve el cambio de hábitos de consumo de los trabajadores.",
+ "segments": [
+  {
+   "start": 4.75,
+   "end": 8.35,
+   "text": "¿Te has preguntado cuánta energía eléctrica se consume en un país?"
+  },
+  {
+   "start": 8.35,
+   "end": 11.23,
+   "text": "Estudios blindados por el Banco Central de Nicaragua"
+  },
+  {
+   "start": 11.23,
+   "end": 13.39,
+   "text": "mostrarán que en el 2016"
+  },
+  {
+   "start": 13.39,
+   "end": 18.15,
+   "text": "registraron un consumo aproximado de 4.500 miles de megavatios por hora"
+  },
+  {
+   "start": 18.15,
+   "end": 22.27,
+   "text": "en una población aproximada de 6 millones de personas"
+  },
+  {
+   "start": 22.27,
+   "end": 27.03,
+   "text": "que al menos el 20% de este consumo se debe al uso inadecuado de energía"
+  },
+  {
+   "start": 27.03,
+   "end": 30.27,
+   "text": "ya que no se promueve la costumbre del ahorro del servicio."
+  },
+  {
+   "start": 34.24,
+   "end": 38.44,
+   "text": "Novabjant es un proyecto que consiste en la creación de un sistema"
+  },
+  {
+   "start": 38.44,
+   "end": 42.44,
+   "text": "que monitorea el uso de energía eléctrica en el ámbito laboral."
+  },
+  {
+   "start": 42.44,
+   "end": 51.66,
+   "text": "Dicho sistema se encargará en manipular la distribución de energía de manera adecuada."
+  },
+  {
+   "start": 51.66,
+   "end": 56.5,
+   "text": "Para solucionar este problema, proponemos el dispositivo control and saving"
+  },
+  {
+   "start": 56.5,
+   "end": 61.1,
+   "text": "que hace conectar el dispositivo electrónico de las oficinas,"
+  },
+  {
+   "start": 61.1,
+   "end": 64.14,
+   "text": "plantas industriales, centros de salud, talleres"
+  },
+  {
+   "start": 64.22,
+   "end": 68.06,
+   "text": "y en cualquier otro entorno laboral en general e instituciones"
+  },
+  {
+   "start": 68.06,
+   "end": 71.34,
+   "text": "que mediante un software monitorea el flujo de energía"
+  },
+  {
+   "start": 71.34,
+   "end": 74.54,
+   "text": "que va hacia los dispositivos electrónicos conectados."
+  },
+  {
+   "start": 74.54,
+   "end": 79.7,
+   "text": "A través de un sensor de movimiento, determina si en una oficina hay persona laborando."
+  },
+  {
+   "start": 79.7,
+   "end": 84.3,
+   "text": "Pasando tres minutos de inactividad en la sala, el dispositivo activa un alarma"
+  },
+  {
+   "start": 84.3,
+   "end": 86.78,
+   "text": "avisando que se apagará el aire acondicionado,"
+  },
+  {
+   "start": 86.78,
+   "end": 90.02,
+   "text": "abanicos, luces, televisores y computadoras,"
+  },
+  {
+   "start": 90.02,
+   "end": 93.74,
+   "text": "suspendiendo el fluido de energía que va hacia los tomacorrientes."
+  },
+  {
+   "start": 93.82,
+   "end": 97.3,
+   "text": "En el caso de las computadoras, al suspender el fluido de energía,"
+  },
+  {
+   "start": 97.3,
+   "end": 100.94,
+   "text": "quedarán funcionando con la reserva de energía en las baterías activando"
+  },
+  {
+   "start": 100.94,
+   "end": 104.34,
+   "text": "nuevamente el fluido de energía cuando las baterías se agote."
+  },
+  {
+   "start": 106.34,
+   "end": 111.34,
+   "text": "En este dispositivo se registrará el promedio de energía consumida en la empresa por día."
+  },
+  {
+   "start": 111.34,
+   "end": 114.66,
+   "text": "Si el consumo está siendo mayor que ese promedio,"
+  },
+  {
+   "start": 114.66,
+   "end": 120.02,
+   "text": "el dispositivo podrá activar un sistema alterno alimentado por energía solar,"
+  },
+  {
+   "start": 120.02,
+   "end": 126.02,
+   "text": "donde estarán conectados los bombillos, abanicos u otros dispositivos de menor consumo de energía."
+  },
+  {
+   "start": 128.02,
+   "end": 133.02,
+   "text": "Control-Shaving genera el ahorro y uso de eficiente de energía en nuestras oficinas,"
+  },
+  {
+   "start": 133.02,
+   "end": 138.02,
+   "text": "plantas industriales, centros de salud, talleres y en cualquier otro entorno laboral general,"
+  },
+  {
+   "start": 138.02,
+   "end": 144.02,
+   "text": "llevando consigo una disminución de gastos y aportando al medio ambiente y los reforzos naturales."
+  },
+  {
+   "start": 144.02,
+   "end": 147.02,
+   "text": "Promueve el cambio de hábitos de consumo de los trabajadores."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 152.1
+}

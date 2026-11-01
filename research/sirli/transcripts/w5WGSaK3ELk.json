@@ -1,0 +1,167 @@
+{
+ "video_id": "w5WGSaK3ELk",
+ "url": "https://youtu.be/w5WGSaK3ELk",
+ "year": 2022,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "SATDNIC",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "SATDNIC",
+   "challenge": "07 - ALUDES DE BARRO"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:41:50+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "El deslizamiento de Rumbe es un fenómeno de la naturaleza que se desarrolla cuando el agua se acumula rápidamente en el suelo, a raíz de lluvia intensa, convirtiendo el terreno en un río de barro. La problemática de los saludos de barro generalmente se repite en lugares donde ya antes ha ocurrido, debido a la ampliación de la frontera agrícola, la quema indiscriminada de los bosques, disminuyendo la capacidad de filtración y aumentando el coeficiente de escorrentía superficial. El dispositivo de alerta estará conformado por la unión de un flujero, fue para determinar la cantidad de lluvia que al acercarse a la precipitación máxima histórica de la zona, el sistema se active, un barómetro que permite la medición de la presión atmosférica y que ésta genere un alarma de que se aproxima una precipitación. A su vez, un infinómetro en parte estratégica en la zona para leer el nivel preáctico y que cuando el nivel sea superado, o un rango del 70%, de acuerdo con estudios previos de permeabilidad, el sistema acción se ubicará un GPS para georreferenciar la zona vulnerable en la estación de control. Además, se posicionará un sismógrafo que notifique las vibraciones que generen una probabilidad de desplazamiento de acuerdo con lo de datos histórico. La información de los equipos de monitoreo será transmitida al SAP a través de redes inalámpicas, el cual estará localizado cerca de la zona de riesgo. Y para proporcionar el aviso a la población y autoridades correspondientes, se transmitará un mensaje de prevención por medio de bocinas, pantalla ubicada en la red vial cercana al área afectada y de la misma manera se cerrará el paso vehicular. El SAP se constituye en una medida de prevención que permitirá a las personas que habitan cerca de la zona de riesgo una reacción rápida ante una catástrofe de este tipo, reduciendo la tasa de mortalidad, así como la espertidad económica opcionada en la vía de transporte. El costo de inversión es de 24.760 dólares con 68 centavos, el cual será ejecutado con el apoyo del gobierno del país.",
+ "segments": [
+  {
+   "start": 5.04,
+   "end": 11.62,
+   "text": "El deslizamiento de Rumbe es un fenómeno de la naturaleza que se desarrolla cuando el agua se acumula rápidamente en el suelo,"
+  },
+  {
+   "start": 11.62,
+   "end": 15.5,
+   "text": "a raíz de lluvia intensa, convirtiendo el terreno en un río de barro."
+  },
+  {
+   "start": 15.5,
+   "end": 21.54,
+   "text": "La problemática de los saludos de barro generalmente se repite en lugares donde ya antes ha ocurrido,"
+  },
+  {
+   "start": 21.54,
+   "end": 26.34,
+   "text": "debido a la ampliación de la frontera agrícola, la quema indiscriminada de los bosques,"
+  },
+  {
+   "start": 26.34,
+   "end": 31.74,
+   "text": "disminuyendo la capacidad de filtración y aumentando el coeficiente de escorrentía superficial."
+  },
+  {
+   "start": 32.34,
+   "end": 35.44,
+   "text": "El dispositivo de alerta estará conformado por la unión de un flujero,"
+  },
+  {
+   "start": 35.44,
+   "end": 39.84,
+   "text": "fue para determinar la cantidad de lluvia que al acercarse a la precipitación máxima histórica de la zona,"
+  },
+  {
+   "start": 39.84,
+   "end": 43.64,
+   "text": "el sistema se active, un barómetro que permite la medición de la presión atmosférica"
+  },
+  {
+   "start": 43.64,
+   "end": 46.94,
+   "text": "y que ésta genere un alarma de que se aproxima una precipitación."
+  },
+  {
+   "start": 46.94,
+   "end": 51.04,
+   "text": "A su vez, un infinómetro en parte estratégica en la zona para leer el nivel preáctico"
+  },
+  {
+   "start": 51.04,
+   "end": 54.34,
+   "text": "y que cuando el nivel sea superado, o un rango del 70%,"
+  },
+  {
+   "start": 54.34,
+   "end": 57.6,
+   "text": "de acuerdo con estudios previos de permeabilidad, el sistema acción"
+  },
+  {
+   "start": 57.7,
+   "end": 62.0,
+   "text": "se ubicará un GPS para georreferenciar la zona vulnerable en la estación de control."
+  },
+  {
+   "start": 62.0,
+   "end": 65.7,
+   "text": "Además, se posicionará un sismógrafo que notifique las vibraciones"
+  },
+  {
+   "start": 65.7,
+   "end": 69.6,
+   "text": "que generen una probabilidad de desplazamiento de acuerdo con lo de datos histórico."
+  },
+  {
+   "start": 69.6,
+   "end": 74.4,
+   "text": "La información de los equipos de monitoreo será transmitida al SAP a través de redes inalámpicas,"
+  },
+  {
+   "start": 74.4,
+   "end": 77.1,
+   "text": "el cual estará localizado cerca de la zona de riesgo."
+  },
+  {
+   "start": 77.1,
+   "end": 80.9,
+   "text": "Y para proporcionar el aviso a la población y autoridades correspondientes,"
+  },
+  {
+   "start": 80.9,
+   "end": 84.2,
+   "text": "se transmitará un mensaje de prevención por medio de bocinas,"
+  },
+  {
+   "start": 84.3,
+   "end": 87.5,
+   "text": "pantalla ubicada en la red vial cercana al área afectada"
+  },
+  {
+   "start": 87.5,
+   "end": 89.9,
+   "text": "y de la misma manera se cerrará el paso vehicular."
+  },
+  {
+   "start": 89.9,
+   "end": 94.1,
+   "text": "El SAP se constituye en una medida de prevención que permitirá a las personas"
+  },
+  {
+   "start": 94.1,
+   "end": 96.9,
+   "text": "que habitan cerca de la zona de riesgo una reacción rápida"
+  },
+  {
+   "start": 96.9,
+   "end": 98.6,
+   "text": "ante una catástrofe de este tipo,"
+  },
+  {
+   "start": 98.6,
+   "end": 100.1,
+   "text": "reduciendo la tasa de mortalidad,"
+  },
+  {
+   "start": 100.1,
+   "end": 103.3,
+   "text": "así como la espertidad económica opcionada en la vía de transporte."
+  },
+  {
+   "start": 103.3,
+   "end": 107.5,
+   "text": "El costo de inversión es de 24.760 dólares con 68 centavos,"
+  },
+  {
+   "start": 107.5,
+   "end": 110.5,
+   "text": "el cual será ejecutado con el apoyo del gobierno del país."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.2
+}

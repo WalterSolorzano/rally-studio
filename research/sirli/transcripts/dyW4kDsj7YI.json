@@ -1,0 +1,177 @@
+{
+ "video_id": "dyW4kDsj7YI",
+ "url": "https://youtu.be/dyW4kDsj7YI",
+ "year": 2022,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "LOS 10ERARIOS",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "LOS 10ERARIOS",
+   "challenge": "01 - INCLUSIÓN LABORAL DE PERSONAS DEL ESPECTRO AUTISTA"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:35:45+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En la actualidad las personas diagnosticadas con autismo no tienen las oficinas e inclusiones de logocativo social hasta laboral, han estado causas de la falta de preparación desde el ambiente familiar hasta el social. El Abando de la Sociedad de Las Personas nos demostra que no hay una iniciativa para capacitar sin asumir de las oportunidades. Derivado al anterior, los trabajos no cuentan con medios aptos para que las personas con autismo puedan desarrollarse. Es por eso que damos como solución el crear una aplicación en la cual tanto empresas como personas autistas se registren al momento de registrarse las empresas pedirán los requerimientos que desean para estas personas y los autistas darán sus habilidades y debilidades para ver si pueden con el trabajo que está requiriendo la empresa. El proyecto tendrá un impacto positivo en la sociedad ya que ayudará que las personas puedan desenvolverse y convirtiéndose así en personas activas y trabajadoras. Además esto elevará su autoestima y mejorar las sus relaciones socio emocionales. Otra cosa es que habrá menos desempleo y ecológicamente habrá menos papelio ya que todos los datos serán guardados en la aplicación. Esta es una de las que es la primera exclusiva para personas con autismo. Se genera un mediano de algoritmo donde ejecuala los sabines del usuario y los requerimientos de la empresa. Se notifica el trabajo apto para haberle interesado y se da elegir. Se tiene un apartado con casos de éxito y se guardan de historial con potenciales. Si no es apto este trabajador se manda a capacitar. Nuestro proyecto se basa en las tres dimensiones de la sustentabilidad. Económica, social y ambiental. En la económica apoyaremos a la economía del país. En lo social ayudaremos a las personas a desarrollarse laboralmente y en lo ambiental apoyaremos a la no contaminación.",
+ "segments": [
+  {
+   "start": 15.38,
+   "end": 19.7,
+   "text": "En la actualidad las personas diagnosticadas con autismo no tienen las oficinas e inclusiones"
+  },
+  {
+   "start": 19.7,
+   "end": 23.54,
+   "text": "de logocativo social hasta laboral, han estado causas de la falta de preparación desde el"
+  },
+  {
+   "start": 23.54,
+   "end": 25.46,
+   "text": "ambiente familiar hasta el social."
+  },
+  {
+   "start": 25.46,
+   "end": 28.78,
+   "text": "El Abando de la Sociedad de Las Personas nos demostra que no hay una iniciativa para"
+  },
+  {
+   "start": 28.78,
+   "end": 31.18,
+   "text": "capacitar sin asumir de las oportunidades."
+  },
+  {
+   "start": 31.18,
+   "end": 35.14,
+   "text": "Derivado al anterior, los trabajos no cuentan con medios aptos para que las personas con"
+  },
+  {
+   "start": 35.14,
+   "end": 36.7,
+   "text": "autismo puedan desarrollarse."
+  },
+  {
+   "start": 36.7,
+   "end": 40.54,
+   "text": "Es por eso que damos como solución el crear una aplicación en la cual tanto"
+  },
+  {
+   "start": 40.54,
+   "end": 45.66,
+   "text": "empresas como personas autistas se registren al momento de registrarse las"
+  },
+  {
+   "start": 45.66,
+   "end": 49.7,
+   "text": "empresas pedirán los requerimientos que desean para estas personas y los"
+  },
+  {
+   "start": 49.7,
+   "end": 54.22,
+   "text": "autistas darán sus habilidades y debilidades para ver si pueden con el"
+  },
+  {
+   "start": 54.22,
+   "end": 56.54,
+   "text": "trabajo que está requiriendo la empresa."
+  },
+  {
+   "start": 56.54,
+   "end": 60.62,
+   "text": "El proyecto tendrá un impacto positivo en la sociedad ya que ayudará que las personas"
+  },
+  {
+   "start": 60.62,
+   "end": 65.06,
+   "text": "puedan desenvolverse y convirtiéndose así en personas activas y trabajadoras."
+  },
+  {
+   "start": 65.06,
+   "end": 69.1,
+   "text": "Además esto elevará su autoestima y mejorar las sus relaciones socio"
+  },
+  {
+   "start": 69.1,
+   "end": 70.38,
+   "text": "emocionales."
+  },
+  {
+   "start": 70.38,
+   "end": 76.94,
+   "text": "Otra cosa es que habrá menos desempleo y ecológicamente habrá menos"
+  },
+  {
+   "start": 76.94,
+   "end": 80.54,
+   "text": "papelio ya que todos los datos serán guardados en la aplicación."
+  },
+  {
+   "start": 80.54,
+   "end": 84.82,
+   "text": "Esta es una de las que es la primera exclusiva para personas con autismo."
+  },
+  {
+   "start": 84.82,
+   "end": 87.66,
+   "text": "Se genera un mediano de algoritmo donde ejecuala los sabines del usuario y"
+  },
+  {
+   "start": 87.66,
+   "end": 89.1,
+   "text": "los requerimientos de la empresa."
+  },
+  {
+   "start": 89.1,
+   "end": 93.82,
+   "text": "Se notifica el trabajo apto para haberle interesado y se da elegir."
+  },
+  {
+   "start": 93.82,
+   "end": 97.9,
+   "text": "Se tiene un apartado con casos de éxito y se guardan de historial con"
+  },
+  {
+   "start": 97.9,
+   "end": 99.1,
+   "text": "potenciales."
+  },
+  {
+   "start": 99.1,
+   "end": 103.06,
+   "text": "Si no es apto este trabajador se manda a capacitar."
+  },
+  {
+   "start": 103.06,
+   "end": 106.58,
+   "text": "Nuestro proyecto se basa en las tres dimensiones de la sustentabilidad."
+  },
+  {
+   "start": 106.58,
+   "end": 108.54,
+   "text": "Económica, social y ambiental."
+  },
+  {
+   "start": 108.54,
+   "end": 112.66,
+   "text": "En la económica apoyaremos a la economía del país."
+  },
+  {
+   "start": 112.66,
+   "end": 118.38,
+   "text": "En lo social ayudaremos a las personas a desarrollarse laboralmente y en lo"
+  },
+  {
+   "start": 118.38,
+   "end": 121.26,
+   "text": "ambiental apoyaremos a la no contaminación."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 124.1
+}

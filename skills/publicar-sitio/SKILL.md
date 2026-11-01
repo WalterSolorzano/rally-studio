@@ -35,7 +35,7 @@ python scripts/publish_site.py
 - Nunca publiques credenciales, `.env`, `scripts/freellmapi.key` ni el buzón de propuestas.
 - No inventes una URL: si no se publicó, no hay link.
 - No publiques sin que el usuario lo haya pedido explícitamente.
-- No cambies el diseño del sitio en esta skill; eso es `propuesta-diseno`.
+- No cambies el diseño del sitio en esta skill; eso es `propuesta-identidad`.
 
 ## Punteros
 

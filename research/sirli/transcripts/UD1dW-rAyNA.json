@@ -1,0 +1,127 @@
+{
+ "video_id": "UD1dW-rAyNA",
+ "url": "https://youtu.be/UD1dW-rAyNA",
+ "year": 2026,
+ "collection": "sede",
+ "country": "CHILE",
+ "team": "ESO BRAD",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "ESO BRAD",
+   "challenge": "05 - MONITOREO INTELIGENTE E INFRAESTRUCTURA VERDE EN RESERVORIOS PLUVIALES"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:35:13+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Son las tres de la mañana en hualpe, afuera y llueve, adentro estaban durmiendo. Magali lleva 27 años en los pereles, esa noche le entraron 50 centímetros de agua con agua servidas, perdió hasta la comida de sus gatos, Fernando, profesor, ya perdió la cuenta, se ha inundado unas siete veces. A Óscar, Nadia la adictió, su esposa astmática tuvo que irse por la humedad. Más de 100 casas, 20 años repitiendose. El sumidero se tapa en silencio, nadie lo ve, hasta que el agua ya está adentro. Esa noche, a Magali, la despertó una vecina. Y si el sumidero pudiera avisar... Les presentamos Brad. Brad es un sumidero inteligente, un filtro de conchas marinas trituradas de Penkwilirken retiene la basura y el barro. Los tensores pasan el filtro, miden el caudal y con el pronóstico de lluvia predicen cuando se va a saturar. Entonces avisa la cuadrilla limpia antes y si algo falla un bypass deja pasar el agua. Esta vez el aviso llega a una hora antes. Los vecinos pidieron solución hace más de 10 años. La planta elevadora sigue en espera, las conchas marinas ya tienen un respaldo científico como filtro. Y lo que falta lo medimos en el piloto. Brad puede proteger hasta 200 hogares. Un piloto en tres sumideros cuesta 6 millones de pesos. Un solo temporal deja entre 75 y 300 millones de pérdidas. Brad, para que la próxima vez alguien le desavise antes.",
+ "segments": [
+  {
+   "start": 1.94,
+   "end": 7.94,
+   "text": "Son las tres de la mañana en hualpe, afuera y llueve, adentro estaban durmiendo."
+  },
+  {
+   "start": 8.94,
+   "end": 15.94,
+   "text": "Magali lleva 27 años en los pereles, esa noche le entraron 50 centímetros de agua con agua servidas,"
+  },
+  {
+   "start": 15.94,
+   "end": 25.66,
+   "text": "perdió hasta la comida de sus gatos, Fernando, profesor, ya perdió la cuenta, se ha inundado unas siete veces."
+  },
+  {
+   "start": 25.66,
+   "end": 30.66,
+   "text": "A Óscar, Nadia la adictió, su esposa astmática tuvo que irse por la humedad."
+  },
+  {
+   "start": 31.66,
+   "end": 34.66,
+   "text": "Más de 100 casas, 20 años repitiendose."
+  },
+  {
+   "start": 35.66,
+   "end": 40.66,
+   "text": "El sumidero se tapa en silencio, nadie lo ve, hasta que el agua ya está adentro."
+  },
+  {
+   "start": 40.66,
+   "end": 45.0,
+   "text": "Esa noche, a Magali, la despertó una vecina."
+  },
+  {
+   "start": 46.0,
+   "end": 48.0,
+   "text": "Y si el sumidero pudiera avisar..."
+  },
+  {
+   "start": 48.0,
+   "end": 52.34,
+   "text": "Les presentamos Brad."
+  },
+  {
+   "start": 52.34,
+   "end": 61.42,
+   "text": "Brad es un sumidero inteligente, un filtro de conchas marinas trituradas de Penkwilirken retiene la basura y el barro."
+  },
+  {
+   "start": 61.42,
+   "end": 66.42,
+   "text": "Los tensores pasan el filtro, miden el caudal y con el pronóstico de lluvia predicen cuando se va a saturar."
+  },
+  {
+   "start": 66.42,
+   "end": 72.42,
+   "text": "Entonces avisa la cuadrilla limpia antes y si algo falla un bypass deja pasar el agua."
+  },
+  {
+   "start": 72.42,
+   "end": 83.54,
+   "text": "Esta vez el aviso llega a una hora antes."
+  },
+  {
+   "start": 86.5,
+   "end": 89.5,
+   "text": "Los vecinos pidieron solución hace más de 10 años."
+  },
+  {
+   "start": 89.5,
+   "end": 94.5,
+   "text": "La planta elevadora sigue en espera, las conchas marinas ya tienen un respaldo científico como filtro."
+  },
+  {
+   "start": 94.5,
+   "end": 96.5,
+   "text": "Y lo que falta lo medimos en el piloto."
+  },
+  {
+   "start": 96.5,
+   "end": 103.86,
+   "text": "Brad puede proteger hasta 200 hogares."
+  },
+  {
+   "start": 103.86,
+   "end": 107.86,
+   "text": "Un piloto en tres sumideros cuesta 6 millones de pesos."
+  },
+  {
+   "start": 107.86,
+   "end": 111.86,
+   "text": "Un solo temporal deja entre 75 y 300 millones de pérdidas."
+  },
+  {
+   "start": 113.86,
+   "end": 117.86,
+   "text": "Brad, para que la próxima vez alguien le desavise antes."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.0
+}

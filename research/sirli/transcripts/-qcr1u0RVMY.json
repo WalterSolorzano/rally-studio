@@ -1,0 +1,107 @@
+{
+ "video_id": "-qcr1u0RVMY",
+ "url": "https://youtu.be/-qcr1u0RVMY",
+ "year": 2026,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "LOINGNNOVADORES",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "LOINGNNOVADORES",
+   "challenge": "06 - REMOCIÓN Y EXTRACCIÓN DE BARRO EN VIVIENDAS ANEGADAS"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:29:37+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "El 8 de octubre, una lubión llenó de barro más de 2.000 casas en las condes. 3 días después, con cientos de voluntarios, el barro seco todavía no salía. Si pasan lugares con tantos recursos, imaginate en un barro vulnerable. Por eso creamos el kit a barro, un kit comunitario y un plan de acción para que los vecinos saquen el barro de su casa antes de que se seque. El kit cuenta con una bomba, manual o a batería para el barro líquido, con una manguera que va siempre a un contenedor. Una mochila pulverizadora para aflojarlo sólido, un extractor de barro que junta con el movimiento de las ruedas sin motor. Un trino mejorado para llevar las bolsas sin cargar baldes y protección para cada vecino. El plan empieza antes. Los kits se guardan en escuelas, clubes, salas de bomberos, salitas y comedores. Cuando hay un lubión, las autoridades se evacúan y deciden cuando se vuelve. Si hay una duda, no se entra. El centro entrega el kit y se arma de equipo de dos o tres personas con protección y la luz cortada. Primero, la bomba saca lo líquido, que es la mayor parte, antes de que se asiente. Lo que queda abajo se afloja con el agua, se saca con el extractor. La pare y la carretilla, sólo para las piedras y restos. Al final se lava y se desinfecta y se ventila. Es como un matafuegos, está ahí antes de que no necesites.",
+ "segments": [
+  {
+   "start": 9.2,
+   "end": 13.88,
+   "text": "El 8 de octubre, una lubión llenó de barro más de 2.000 casas en las condes."
+  },
+  {
+   "start": 13.88,
+   "end": 18.24,
+   "text": "3 días después, con cientos de voluntarios, el barro seco todavía no salía."
+  },
+  {
+   "start": 18.24,
+   "end": 22.68,
+   "text": "Si pasan lugares con tantos recursos, imaginate en un barro vulnerable."
+  },
+  {
+   "start": 22.68,
+   "end": 41.1,
+   "text": "Por eso creamos el kit a barro, un kit comunitario y un plan de acción para que los vecinos saquen el barro de su casa antes de que se seque."
+  },
+  {
+   "start": 41.1,
+   "end": 48.54,
+   "text": "El kit cuenta con una bomba, manual o a batería para el barro líquido, con una manguera que va siempre a un contenedor."
+  },
+  {
+   "start": 48.54,
+   "end": 56.26,
+   "text": "Una mochila pulverizadora para aflojarlo sólido, un extractor de barro que junta con el movimiento de las ruedas sin motor."
+  },
+  {
+   "start": 56.26,
+   "end": 61.46,
+   "text": "Un trino mejorado para llevar las bolsas sin cargar baldes y protección para cada vecino."
+  },
+  {
+   "start": 61.46,
+   "end": 76.1,
+   "text": "El plan empieza antes. Los kits se guardan en escuelas, clubes, salas de bomberos, salitas y comedores."
+  },
+  {
+   "start": 76.1,
+   "end": 80.46,
+   "text": "Cuando hay un lubión, las autoridades se evacúan y deciden cuando se vuelve."
+  },
+  {
+   "start": 80.46,
+   "end": 82.46,
+   "text": "Si hay una duda, no se entra."
+  },
+  {
+   "start": 82.5,
+   "end": 88.34,
+   "text": "El centro entrega el kit y se arma de equipo de dos o tres personas con protección y la luz cortada."
+  },
+  {
+   "start": 88.34,
+   "end": 93.54,
+   "text": "Primero, la bomba saca lo líquido, que es la mayor parte, antes de que se asiente."
+  },
+  {
+   "start": 93.54,
+   "end": 97.14,
+   "text": "Lo que queda abajo se afloja con el agua, se saca con el extractor."
+  },
+  {
+   "start": 97.14,
+   "end": 100.14,
+   "text": "La pare y la carretilla, sólo para las piedras y restos."
+  },
+  {
+   "start": 100.14,
+   "end": 111.67,
+   "text": "Al final se lava y se desinfecta y se ventila."
+  },
+  {
+   "start": 111.67,
+   "end": 114.83,
+   "text": "Es como un matafuegos, está ahí antes de que no necesites."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.8
+}

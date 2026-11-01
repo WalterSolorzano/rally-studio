@@ -5,14 +5,14 @@
 //
 // Contrato con el resto del proyecto:
 // - Lee, JAMÁS escribe, el estado del tablero
-//   (localStorage["rally_studio_production_state_2026_v3"]).
+//   (localStorage["rally_studio_production_state_2026_v4"]).
 // - La IA va SOLO por el servicio local (scripts/rally_service.py):
 //   POST /api/ai + GET /api/ai/progress (cliente entra en Task 4).
 // - Historial con llaves rally_super_agents_*.
 // globalThis.RSAprocessablepure disponible para tests vía node:vm.
 
 (function () {
-  const STORE_KEY = "rally_studio_production_state_2026_v3";
+  const STORE_KEY = "rally_studio_production_state_2026_v4";
   const HISTORY_KEY = "rally_super_agents_history_v1";
 
   // Espejo de dashboard/app.js (getPautadoLimit): nunca fuente creativa.

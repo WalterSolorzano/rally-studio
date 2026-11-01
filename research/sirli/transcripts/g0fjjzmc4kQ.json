@@ -1,0 +1,82 @@
+{
+ "video_id": "g0fjjzmc4kQ",
+ "url": "https://www.youtube.com/watch?v=g0fjjzmc4kQ",
+ "year": 2024,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "LAS CONEJITAS",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "LAS CONEJITAS",
+   "challenge": "03 - ENLAZANDO GENERACIONES"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:48:03+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Enlazando generaciones. Los adultos mayores suelen dejar de realizar actividades que podrían estimular su cerebro, causando una constante de generación de éste. Una de las principales problemáticas que preocupan a los adultos mayores es el Alzheimer, que es responsable de entre el 60 y 80% de casos de demencia. Asimismo, sabemos que existen aplicaciones específicamente diseñadas para la resolución del problema. Pero una gran mayoría de adultos mayores no las conocen o no cuentan con acceso para su uso. Suelen estar enfocadas a un público más joven. El desafío es fomentar esta interacción que permita a adultos mayores mantenerse cognitivamente activos, mientras que los jóvenes buscan desarrollar actitudes. Todo esto mediante una plataforma amigable y simple que permita a los adultos mayores interactuar con ella, creando un entorno de apoyo mutuo y asegurando que ambos adquieren habilidades. Esta misma contendrá un temario para los mentores, para que de esta forma se lleve un control de las clases impartidas, facilitando su enseñanza, llamada GEMBREACH. La solución aborda directamente la poca interacción entre generaciones y la necesidad de mantener a los adultos mayores activos cognitivamente. La solución de que los jóvenes realicen sus prácticas brindando cursos gratuitos a adultos mayores está pensado para hacer una propuesta sostenible y viable al mismo tiempo. Al enfocarse en actividades cognitivas que no requieren grandes recursos físicos, el impacto ambiental es menor o casi nulo. Esta solución logra combinar el factor humano y el factor tecnológico, promoviendo un contacto cara a cara que puede ser más accesible para adultos mayores que no se encuentran familiarizados con la tecnología.",
+ "segments": [
+  {
+   "start": 3.7,
+   "end": 18.89,
+   "text": "Enlazando generaciones. Los adultos mayores suelen dejar de realizar actividades que podrían estimular su cerebro, causando una constante de generación de éste."
+  },
+  {
+   "start": 19.89,
+   "end": 29.89,
+   "text": "Una de las principales problemáticas que preocupan a los adultos mayores es el Alzheimer, que es responsable de entre el 60 y 80% de casos de demencia."
+  },
+  {
+   "start": 29.89,
+   "end": 35.89,
+   "text": "Asimismo, sabemos que existen aplicaciones específicamente diseñadas para la resolución del problema."
+  },
+  {
+   "start": 35.89,
+   "end": 44.89,
+   "text": "Pero una gran mayoría de adultos mayores no las conocen o no cuentan con acceso para su uso. Suelen estar enfocadas a un público más joven."
+  },
+  {
+   "start": 44.89,
+   "end": 56.13,
+   "text": "El desafío es fomentar esta interacción que permita a adultos mayores mantenerse cognitivamente activos, mientras que los jóvenes buscan desarrollar actitudes."
+  },
+  {
+   "start": 57.13,
+   "end": 68.13,
+   "text": "Todo esto mediante una plataforma amigable y simple que permita a los adultos mayores interactuar con ella, creando un entorno de apoyo mutuo y asegurando que ambos adquieren habilidades."
+  },
+  {
+   "start": 68.13,
+   "end": 78.13,
+   "text": "Esta misma contendrá un temario para los mentores, para que de esta forma se lleve un control de las clases impartidas, facilitando su enseñanza, llamada GEMBREACH."
+  },
+  {
+   "start": 79.13,
+   "end": 87.13,
+   "text": "La solución aborda directamente la poca interacción entre generaciones y la necesidad de mantener a los adultos mayores activos cognitivamente."
+  },
+  {
+   "start": 87.13,
+   "end": 98.13,
+   "text": "La solución de que los jóvenes realicen sus prácticas brindando cursos gratuitos a adultos mayores está pensado para hacer una propuesta sostenible y viable al mismo tiempo."
+  },
+  {
+   "start": 98.13,
+   "end": 106.13,
+   "text": "Al enfocarse en actividades cognitivas que no requieren grandes recursos físicos, el impacto ambiental es menor o casi nulo."
+  },
+  {
+   "start": 106.13,
+   "end": 119.76,
+   "text": "Esta solución logra combinar el factor humano y el factor tecnológico, promoviendo un contacto cara a cara que puede ser más accesible para adultos mayores que no se encuentran familiarizados con la tecnología."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.4
+}

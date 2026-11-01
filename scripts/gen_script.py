@@ -283,7 +283,7 @@ def _textos_actos(brief: dict, claims: list, costo: str | None) -> dict:
         a4_req = [
             f"El piloto arranca en {city} y se mide con tres indicadores: tiempo de "
             "respuesta, usuarios o sitios activos y costo por unidad operativa.",
-            f"Aporta directamente a {ods_list} y a las metas regionales de resiliencia."
+            f"Aporta directamente a {ods_list} y a las metas regionales de desarrollo."
             if ods_list
             else "Aporta directamente a los ODS priorizados y a las metas regionales de resiliencia.",
             f"{project}: innovacion latinoamericana disenada para replicarse, no para quedarse en un solo pais.",
@@ -342,10 +342,9 @@ def _textos_actos(brief: dict, claims: list, costo: str | None) -> dict:
             "rubric": "Grado de Innovacion (30 pts) + Viabilidad Tecnica (20 pts)",
             "requeridas": a2_req,
             "opcionales": a2_opt,
-            "visual": (
-                f"Aparicion rotunda de {project}. Modelo 3D explosionado (pernos, "
-                "conectores IP67, sensores) o plano publicitario 3D de la UI web con "
-                "datos reactivos."
+            "visual": brief.get("prototype_visual") or (
+                f"Aparicion rotunda de {project}. Plano del prototipo en uso: flujo "
+                "completo de punta a punta, interfaz con datos reales y resultado visible."
             ),
             "asset_id": "asset_A2_prototipo_mecanismo.glb",
             "onscreen": f"{project}\n{challenge}",

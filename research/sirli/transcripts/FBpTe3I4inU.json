@@ -1,0 +1,159 @@
+{
+ "video_id": "FBpTe3I4inU",
+ "url": "https://youtu.be/FBpTe3I4inU",
+ "year": 2025,
+ "collection": "nacional",
+ "country": "MÉXICO",
+ "team": "BÚHOS TARIMORO",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "BÚHOS TARIMORO",
+   "challenge": "05 - HUERTOS VERTICALES"
+  },
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "BÚHOS TARIMORO",
+   "challenge": "05 - HUERTOS VERTICALES"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:15:15+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En las ciudades, el agua y el espacio son un recurso muy escaso, lo que genera baja producción de alimentos en comparación del número de personas que viven ahí. Además, las ciudades están en constante expansión. Esto reduce aún más el espacio para la agricultura tradicional. Esto dificulta el acceso a alimentos frescos y eleva los costos de transporte. La agricultura convencional presenta un alto consumo y desperdicio de agua. Este sistema combina ecología y tecnología para cuidar el planeta. Funciona de forma autónoma, gracias al hidrógeno verde, que genere electricidad limpia sin contaminar. Con esa energía, una bomba riega a los canales, aportando agua nueva a las plantas. Su diseño vertical ahorra espacio y aumenta la producción por metro cuadrado. Además, al no depender de fuentes externas, reduce el consumo de energía y promueve la autosuficiencia. Es una forma práctica, sostenible y moderna de cultivar alimentos en casa, cuidando el medio ambiente. Consiste en el desarrollo de un sistema de riego por goteo automático, capaz de funcionar sin dependencia de fuentes externas de energía. Su resolución integra un módulo de electrolysis, que se utilizará para producir electricidad destinada a la alimentación de una batería. Con esto, se potenciará una bomba que mediante su automatización abastecerá cada 12 horas para mantener la humedad requerida en los canales de riego, asegurando el riego continuo de las plantas del muerto. El diseño estructural es flexible con el espacio disponible y las necesidades del usuario, permitiendo la optimización de la productividad en relación con su abarcamiento en metros cuadrados. Los costos de fabricación, incluyendo la mano de obra, se estiman en 8.500 pesos mexicanos, por lo que termina siendo una inversión pequeña tomando en cuenta la problemática que se busca resolver.",
+ "segments": [
+  {
+   "start": 0.08,
+   "end": 7.19,
+   "text": "En las ciudades, el agua y el espacio son un recurso muy escaso, lo que genera baja"
+  },
+  {
+   "start": 7.19,
+   "end": 10.79,
+   "text": "producción de alimentos en comparación del número de personas que viven ahí."
+  },
+  {
+   "start": 10.79,
+   "end": 16.43,
+   "text": "Además, las ciudades están en constante expansión. Esto reduce aún más el espacio"
+  },
+  {
+   "start": 16.43,
+   "end": 21.45,
+   "text": "para la agricultura tradicional. Esto dificulta el acceso a alimentos frescos y"
+  },
+  {
+   "start": 21.45,
+   "end": 26.03,
+   "text": "eleva los costos de transporte. La agricultura convencional presenta un alto"
+  },
+  {
+   "start": 26.03,
+   "end": 30.63,
+   "text": "consumo y desperdicio de agua. Este sistema combina ecología y tecnología"
+  },
+  {
+   "start": 30.63,
+   "end": 35.37,
+   "text": "para cuidar el planeta. Funciona de forma autónoma, gracias al hidrógeno verde,"
+  },
+  {
+   "start": 35.37,
+   "end": 40.37,
+   "text": "que genere electricidad limpia sin contaminar. Con esa energía, una bomba"
+  },
+  {
+   "start": 40.37,
+   "end": 45.19,
+   "text": "riega a los canales, aportando agua nueva a las plantas. Su diseño vertical ahorra"
+  },
+  {
+   "start": 45.19,
+   "end": 50.35,
+   "text": "espacio y aumenta la producción por metro cuadrado. Además, al no depender de fuentes"
+  },
+  {
+   "start": 50.35,
+   "end": 55.31,
+   "text": "externas, reduce el consumo de energía y promueve la autosuficiencia. Es una"
+  },
+  {
+   "start": 55.31,
+   "end": 60.23,
+   "text": "forma práctica, sostenible y moderna de cultivar alimentos en casa, cuidando"
+  },
+  {
+   "start": 60.23,
+   "end": 63.83,
+   "text": "el medio ambiente. Consiste en el desarrollo de un sistema de"
+  },
+  {
+   "start": 63.83,
+   "end": 67.83,
+   "text": "riego por goteo automático, capaz de funcionar sin dependencia de fuentes"
+  },
+  {
+   "start": 67.83,
+   "end": 71.83,
+   "text": "externas de energía. Su resolución integra un módulo de"
+  },
+  {
+   "start": 71.83,
+   "end": 76.03,
+   "text": "electrolysis, que se utilizará para producir electricidad destinada a la"
+  },
+  {
+   "start": 76.03,
+   "end": 80.59,
+   "text": "alimentación de una batería. Con esto, se potenciará una bomba que mediante"
+  },
+  {
+   "start": 80.59,
+   "end": 84.55,
+   "text": "su automatización abastecerá cada 12 horas para mantener la humedad"
+  },
+  {
+   "start": 84.55,
+   "end": 88.47,
+   "text": "requerida en los canales de riego, asegurando el riego continuo de las"
+  },
+  {
+   "start": 88.47,
+   "end": 93.87,
+   "text": "plantas del muerto. El diseño estructural es flexible con el espacio disponible y las"
+  },
+  {
+   "start": 93.87,
+   "end": 97.87,
+   "text": "necesidades del usuario, permitiendo la optimización de la productividad en"
+  },
+  {
+   "start": 97.87,
+   "end": 102.03,
+   "text": "relación con su abarcamiento en metros cuadrados. Los costos de fabricación,"
+  },
+  {
+   "start": 102.03,
+   "end": 107.07,
+   "text": "incluyendo la mano de obra, se estiman en 8.500 pesos mexicanos, por lo que"
+  },
+  {
+   "start": 107.07,
+   "end": 110.47,
+   "text": "termina siendo una inversión pequeña tomando en cuenta la problemática que"
+  },
+  {
+   "start": 110.47,
+   "end": 113.27,
+   "text": "se busca resolver."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 118.1
+}

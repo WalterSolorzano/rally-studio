@@ -1,0 +1,122 @@
+{
+ "video_id": "hTwk9FoX1T4",
+ "url": "https://youtu.be/hTwk9FoX1T4",
+ "year": 2026,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "WIFAB",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "WIFAB",
+   "challenge": "09 - OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:53:27+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Si mañana un desastre te deja sin señal, ¿cómo sabría alguien que necesitas ayuda? Para 2030, la ONU advierte que el mundo podría enfrentar cerca de un desastre y medio cada día. En América Latina ya lo vivimos, y el problema no es solo el desastre, es responder a ciegas. Con información incompleta, las autoridades deciden sin saber dónde está lo más grave, y las comunidades más vulnerables quedan invisibles. Por eso creamos KIPU, un sistema para protección civil que reduce la incertidumbre y propone a dónde ir primero y por qué. Mientras hay internet, KIPU reúne alertas oficiales de GDACS y ConAgua y calcula un índice de prioridad que cruza peligro, vulnerabilidad, población, necesidad médica y tiempo sin ayuda. Con Valhalla y Vroom, traza rutas, asigna vehículos y proyecta los suministros necesarios. Y cuando colapsan las comunicaciones, KIPU sigue operando desde un servidor local. Los brigadistas reportan con nodos Lora mensajes de sólo 16 bytes, sin internet ni señal celular, y el plan se recalcula en segundos. Las colonias sin reportes no desaparecen. El sistema estima su situación y sube su prioridad con cada hora sin ayuda. Pero KIPU no decide solo, el funcionario revisa y aprueba cada plan. Con Software Libre y Hardware Lora, la inversión inicial es de unos $7,100 dólares por municipio, sin licencias ni pagos mensuales. KIPU satisface de forma directa la meta 11,5 del ODS-11, la meta 13,1 del ODS-13 y la meta 1,5 del ODS-1. KIPU, donde se apaga la señal, empieza la respuesta.",
+ "segments": [
+  {
+   "start": 0.14,
+   "end": 14.14,
+   "text": "Si mañana un desastre te deja sin señal, ¿cómo sabría alguien que necesitas ayuda?"
+  },
+  {
+   "start": 14.14,
+   "end": 20.14,
+   "text": "Para 2030, la ONU advierte que el mundo podría enfrentar cerca de un desastre y medio cada día."
+  },
+  {
+   "start": 20.14,
+   "end": 26.14,
+   "text": "En América Latina ya lo vivimos, y el problema no es solo el desastre, es responder a ciegas."
+  },
+  {
+   "start": 26.14,
+   "end": 30.14,
+   "text": "Con información incompleta, las autoridades deciden sin saber dónde está lo más grave,"
+  },
+  {
+   "start": 30.14,
+   "end": 33.14,
+   "text": "y las comunidades más vulnerables quedan invisibles."
+  },
+  {
+   "start": 33.14,
+   "end": 40.14,
+   "text": "Por eso creamos KIPU, un sistema para protección civil que reduce la incertidumbre y propone a dónde ir primero y por qué."
+  },
+  {
+   "start": 40.14,
+   "end": 46.14,
+   "text": "Mientras hay internet, KIPU reúne alertas oficiales de GDACS y ConAgua y calcula un índice de prioridad"
+  },
+  {
+   "start": 46.14,
+   "end": 51.14,
+   "text": "que cruza peligro, vulnerabilidad, población, necesidad médica y tiempo sin ayuda."
+  },
+  {
+   "start": 51.14,
+   "end": 56.14,
+   "text": "Con Valhalla y Vroom, traza rutas, asigna vehículos y proyecta los suministros necesarios."
+  },
+  {
+   "start": 56.14,
+   "end": 60.14,
+   "text": "Y cuando colapsan las comunicaciones, KIPU sigue operando desde un servidor local."
+  },
+  {
+   "start": 60.14,
+   "end": 66.14,
+   "text": "Los brigadistas reportan con nodos Lora mensajes de sólo 16 bytes, sin internet ni señal celular,"
+  },
+  {
+   "start": 66.14,
+   "end": 68.14,
+   "text": "y el plan se recalcula en segundos."
+  },
+  {
+   "start": 68.14,
+   "end": 70.14,
+   "text": "Las colonias sin reportes no desaparecen."
+  },
+  {
+   "start": 70.14,
+   "end": 74.14,
+   "text": "El sistema estima su situación y sube su prioridad con cada hora sin ayuda."
+  },
+  {
+   "start": 74.14,
+   "end": 79.14,
+   "text": "Pero KIPU no decide solo, el funcionario revisa y aprueba cada plan."
+  },
+  {
+   "start": 79.14,
+   "end": 84.14,
+   "text": "Con Software Libre y Hardware Lora, la inversión inicial es de unos $7,100 dólares por municipio,"
+  },
+  {
+   "start": 84.14,
+   "end": 86.14,
+   "text": "sin licencias ni pagos mensuales."
+  },
+  {
+   "start": 86.14,
+   "end": 95.14,
+   "text": "KIPU satisface de forma directa la meta 11,5 del ODS-11, la meta 13,1 del ODS-13 y la meta 1,5 del ODS-1."
+  },
+  {
+   "start": 95.14,
+   "end": 98.14,
+   "text": "KIPU, donde se apaga la señal, empieza la respuesta."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 103.4
+}

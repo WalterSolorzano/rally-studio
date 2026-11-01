@@ -1,0 +1,192 @@
+{
+ "video_id": "p2QsaUjhHbA",
+ "url": "https://youtu.be/p2QsaUjhHbA?si=G34LDg-ykgl4p1qg",
+ "year": 2026,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "WINNERS POV",
+ "place_label": "TERCER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "TERCER LUGAR",
+   "team": "WINNERS POV",
+   "challenge": "05 - MONITOREO INTELIGENTE E INFRAESTRUCTURA VERDE EN RESERVORIOS PLUVIALES"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:33:06+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Imagina que has construido tu vida a lado de un reservorio provial en temporadas lluviosas. Tu vida está en constante riesgo. Tu vivienda es insegura. Y todo lo que conoces podría acabarse en un momento de desborde, porque nadie te avisó a tiempo. Según ICERV, 25,8 millones de niños, niñas y adolescentes en América Latina y el Caribe no deben imaginar esta realidad. Puede enfrentar riesgos directos por inundaciones. Para las poblaciones urbanas y periurbanas vulnerables de América Latina, creamos RIVA, Reservorio Inteligente, Verde y Asequible. RIVA es una solución tecnológica a reservorios fluviales donde se instala un pequeño dispositivo con una placa ESP32 conectada por 4G que mide el nivel del agua y las condiciones atmosféricas minuto a minuto y que a su vez hace un llamado a la acción por SMS a los pobladores cuando el nivel fluvial pase umbrales predefinidos. RIVA funciona con la energía del mismo flujo del agua, gracias a un molín hidráulico. También brindamos ayuda constante a la comunidad con el riego de huertos comunitarios y la redirección de energía sobrante al alumbrado público. RIVA es replicable en cualquier población vulnerable junto a reservorios fluviales en América Latina. De esta forma, contribuimos integralmente con las ODSes. 3, 6, 7, 9 y 11. Con el apoyo de instituciones gubernamentales y no gubernamentales, la implementación de RIVA tiene un costo aproximado de $350 por reservorio, considerando sus componentes electrónicos, módulos de energía renovable, riego inteligente y tecnología. RIVA es la seguridad que nuestros pueblos necesitan porque brindamos información oportuna, prevención y la oportunidad de tomar acción a tiempo, porque cada hogar, familia e individuo tiene el derecho de vivir seguro.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 5.88,
+   "text": "Imagina que has construido tu vida a lado de un reservorio provial en temporadas lluviosas."
+  },
+  {
+   "start": 5.88,
+   "end": 8.54,
+   "text": "Tu vida está en constante riesgo."
+  },
+  {
+   "start": 8.54,
+   "end": 10.74,
+   "text": "Tu vivienda es insegura."
+  },
+  {
+   "start": 10.74,
+   "end": 15.6,
+   "text": "Y todo lo que conoces podría acabarse en un momento de desborde,"
+  },
+  {
+   "start": 15.6,
+   "end": 18.6,
+   "text": "porque nadie te avisó a tiempo."
+  },
+  {
+   "start": 19.6,
+   "end": 25.04,
+   "text": "Según ICERV, 25,8 millones de niños, niñas y adolescentes en América Latina"
+  },
+  {
+   "start": 25.04,
+   "end": 27.48,
+   "text": "y el Caribe no deben imaginar esta realidad."
+  },
+  {
+   "start": 27.48,
+   "end": 29.84,
+   "text": "Puede enfrentar riesgos directos por inundaciones."
+  },
+  {
+   "start": 29.92,
+   "end": 33.92,
+   "text": "Para las poblaciones urbanas y periurbanas vulnerables de América Latina,"
+  },
+  {
+   "start": 33.92,
+   "end": 37.84,
+   "text": "creamos RIVA, Reservorio Inteligente, Verde y Asequible."
+  },
+  {
+   "start": 37.84,
+   "end": 41.48,
+   "text": "RIVA es una solución tecnológica a reservorios fluviales"
+  },
+  {
+   "start": 41.48,
+   "end": 46.08,
+   "text": "donde se instala un pequeño dispositivo con una placa ESP32"
+  },
+  {
+   "start": 46.08,
+   "end": 49.16,
+   "text": "conectada por 4G que mide el nivel del agua"
+  },
+  {
+   "start": 49.16,
+   "end": 52.08,
+   "text": "y las condiciones atmosféricas minuto a minuto"
+  },
+  {
+   "start": 52.08,
+   "end": 56.72,
+   "text": "y que a su vez hace un llamado a la acción por SMS a los pobladores"
+  },
+  {
+   "start": 56.72,
+   "end": 59.8,
+   "text": "cuando el nivel fluvial pase umbrales predefinidos."
+  },
+  {
+   "start": 59.8,
+   "end": 63.04,
+   "text": "RIVA funciona con la energía del mismo flujo del agua,"
+  },
+  {
+   "start": 63.04,
+   "end": 65.0,
+   "text": "gracias a un molín hidráulico."
+  },
+  {
+   "start": 65.0,
+   "end": 67.96,
+   "text": "También brindamos ayuda constante a la comunidad"
+  },
+  {
+   "start": 67.96,
+   "end": 69.96,
+   "text": "con el riego de huertos comunitarios"
+  },
+  {
+   "start": 69.96,
+   "end": 73.76,
+   "text": "y la redirección de energía sobrante al alumbrado público."
+  },
+  {
+   "start": 73.76,
+   "end": 76.64,
+   "text": "RIVA es replicable en cualquier población vulnerable"
+  },
+  {
+   "start": 76.64,
+   "end": 79.32,
+   "text": "junto a reservorios fluviales en América Latina."
+  },
+  {
+   "start": 79.32,
+   "end": 82.56,
+   "text": "De esta forma, contribuimos integralmente con las ODSes."
+  },
+  {
+   "start": 82.56,
+   "end": 85.16,
+   "text": "3, 6, 7, 9 y 11."
+  },
+  {
+   "start": 85.16,
+   "end": 88.44,
+   "text": "Con el apoyo de instituciones gubernamentales y no gubernamentales,"
+  },
+  {
+   "start": 88.44,
+   "end": 93.08,
+   "text": "la implementación de RIVA tiene un costo aproximado de $350 por reservorio,"
+  },
+  {
+   "start": 93.08,
+   "end": 95.16,
+   "text": "considerando sus componentes electrónicos,"
+  },
+  {
+   "start": 95.16,
+   "end": 99.04,
+   "text": "módulos de energía renovable, riego inteligente y tecnología."
+  },
+  {
+   "start": 99.04,
+   "end": 101.96,
+   "text": "RIVA es la seguridad que nuestros pueblos necesitan"
+  },
+  {
+   "start": 101.96,
+   "end": 104.24,
+   "text": "porque brindamos información oportuna,"
+  },
+  {
+   "start": 104.24,
+   "end": 107.24,
+   "text": "prevención y la oportunidad de tomar acción a tiempo,"
+  },
+  {
+   "start": 107.24,
+   "end": 111.64,
+   "text": "porque cada hogar, familia e individuo tiene el derecho de vivir seguro."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 116.8
+}

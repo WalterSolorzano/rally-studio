@@ -1,0 +1,32 @@
+{
+ "video_id": "JlIblF4gXyE",
+ "url": "https://youtu.be/JlIblF4gXyE?si=jNSIQGNPetGYC-Gc",
+ "year": 2025,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "UNIDOS POR EL RETO",
+ "place_label": "TERCER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "TERCER LUGAR",
+   "team": "UNIDOS POR EL RETO",
+   "challenge": "08 - APOYO EMOCIONAL PARA NIÑOS MIGRANTES"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:56:02+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Y ya, ¿y qué es lo que es?",
+ "segments": [
+  {
+   "start": 14.58,
+   "end": 16.58,
+   "text": "Y ya, ¿y qué es lo que es?"
+  }
+ ],
+ "has_info": false,
+ "duration_s": 64.6
+}

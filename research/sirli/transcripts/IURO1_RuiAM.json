@@ -1,0 +1,102 @@
+{
+ "video_id": "IURO1_RuiAM",
+ "url": "https://youtu.be/IURO1_RuiAM",
+ "year": 2023,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "INNOVALAB",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "INNOVALAB",
+   "challenge": "08 - TRATAR DE ESTAR MEJOR"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:24:34+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "a dos secuelas invisibles, problemas alimentales que afectan a millones. La angustia, la ansiedad y la depresión se han vuelto más comunes que nunca. Somos un equipo comprometido con una solución innovadora. Somos InnovaLab. Espresentamos Bed Friends. Ofrecemos evaluaciones personalizadas, acceso a profesionales, actividades para el bienestar y una comunidad de apoyo. Beneficieras a cualquiera que necesite apoyo emocional en estos tiempos difíciles. Mejorarás tu bienestar emocional, reducirás el estima y encontrarás una comunidad que te apoyará. Para llevar a cabo nuestra visión necesitamos una inversión de 133.000 Córdobas. Juntos podemos transformar la salud mental. Únete a nosotros en esta misión. Seamos los mejores amigos de quienes más lo necesitan. Bed Friends. Porque la salud mental importa.",
+ "segments": [
+  {
+   "start": 25.71,
+   "end": 30.51,
+   "text": "a dos secuelas invisibles, problemas alimentales que afectan a millones."
+  },
+  {
+   "start": 30.51,
+   "end": 44.31,
+   "text": "La angustia, la ansiedad y la depresión se han vuelto más comunes que nunca."
+  },
+  {
+   "start": 44.31,
+   "end": 46.99,
+   "text": "Somos un equipo comprometido con una solución innovadora."
+  },
+  {
+   "start": 46.99,
+   "end": 53.53,
+   "text": "Somos InnovaLab."
+  },
+  {
+   "start": 53.53,
+   "end": 58.76,
+   "text": "Espresentamos Bed Friends."
+  },
+  {
+   "start": 58.76,
+   "end": 63.64,
+   "text": "Ofrecemos evaluaciones personalizadas, acceso a profesionales, actividades para el bienestar"
+  },
+  {
+   "start": 63.64,
+   "end": 70.65,
+   "text": "y una comunidad de apoyo."
+  },
+  {
+   "start": 70.65,
+   "end": 80.73,
+   "text": "Beneficieras a cualquiera que necesite apoyo emocional en estos tiempos difíciles."
+  },
+  {
+   "start": 80.73,
+   "end": 89.24,
+   "text": "Mejorarás tu bienestar emocional, reducirás el estima y encontrarás una comunidad que te apoyará."
+  },
+  {
+   "start": 89.24,
+   "end": 99.15,
+   "text": "Para llevar a cabo nuestra visión necesitamos una inversión de 133.000 Córdobas."
+  },
+  {
+   "start": 99.15,
+   "end": 101.59,
+   "text": "Juntos podemos transformar la salud mental."
+  },
+  {
+   "start": 101.59,
+   "end": 103.83,
+   "text": "Únete a nosotros en esta misión."
+  },
+  {
+   "start": 103.83,
+   "end": 109.19,
+   "text": "Seamos los mejores amigos de quienes más lo necesitan."
+  },
+  {
+   "start": 109.19,
+   "end": 113.63,
+   "text": "Bed Friends."
+  },
+  {
+   "start": 113.63,
+   "end": 115.43,
+   "text": "Porque la salud mental importa."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 118.6
+}

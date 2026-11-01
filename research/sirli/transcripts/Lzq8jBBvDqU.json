@@ -1,0 +1,137 @@
+{
+ "video_id": "Lzq8jBBvDqU",
+ "url": "https://youtu.be/Lzq8jBBvDqU",
+ "year": 2026,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "CÚPULA PLUVIAL",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "CÚPULA PLUVIAL",
+   "challenge": "05 - MONITOREO INTELIGENTE E INFRAESTRUCTURA VERDE EN RESERVORIOS PLUVIALES"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:26:59+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "somos cúpula pluvial y sabemos que en Concordia llueve fuerte 100 milímetros sobre una sola manzana son un millón de litros es como llenar seis casas hasta el techo y gran parte corre hacia desagües tapados proponemos aquanexus módulos que frenan la lluvia de cada techo, las filtran con plantas y la miden cuadra por cuadra un tal que de mis metros retiene la lluvia del techo de 60 metros cuadrado hasta 21 milímetros calculamos el vaciado, calibración del sensor, calidad del agua y lluvia retenida medirlo en el piloto es el próximo paso en cada casa los módulos de 200 litros se interconectan el agua se usa en el baño y para arregar sólo cuando están llenos el excedente valdez agua pluvial con un sistema de monitoreo basado en sp-32 y medidores de Nierl cada tanque no sólo un pluvio metrón sino que también el medidor de escorrentia puntos arman un mapa en vivo así el municipio sabrá que desagües de sabotar antes de una tormenta cada punto en el mapa es un módulo verde con lugar amarillo cargándose y rojo lleno llegan alertas y reportes de los vecinos y en la app cada familia ve su nivel y recibe avisos la hora pública puede ser cara y lenta con tanques comunes que sólo guardan pero no miden y las alertas no llevan a la calle somos 9 ingenieros estudiantes de civil sistemas e ingeniería en alimentos y mecatrónica el agua sirve para riego y limpieza pero no es potable no frenamos las inundaciones atrapamos los primeros milímetros de cada techo y los reutilizamos en casa y le damos al sistema lo que nunca tuvo datos",
+ "segments": [
+  {
+   "start": 0.14,
+   "end": 6.42,
+   "text": "somos cúpula pluvial y sabemos que en Concordia llueve fuerte"
+  },
+  {
+   "start": 6.42,
+   "end": 11.22,
+   "text": "100 milímetros sobre una sola manzana son un millón de litros"
+  },
+  {
+   "start": 11.22,
+   "end": 17.02,
+   "text": "es como llenar seis casas hasta el techo y gran parte corre hacia desagües tapados"
+  },
+  {
+   "start": 17.02,
+   "end": 23.66,
+   "text": "proponemos aquanexus módulos que frenan la lluvia de cada techo, las filtran"
+  },
+  {
+   "start": 23.66,
+   "end": 28.6,
+   "text": "con plantas y la miden cuadra por cuadra"
+  },
+  {
+   "start": 28.6,
+   "end": 35.4,
+   "text": "un tal que de mis metros retiene la lluvia del techo de 60 metros cuadrado hasta 21 milímetros"
+  },
+  {
+   "start": 35.4,
+   "end": 41.32,
+   "text": "calculamos el vaciado, calibración del sensor, calidad del agua y lluvia retenida"
+  },
+  {
+   "start": 41.32,
+   "end": 49.23,
+   "text": "medirlo en el piloto es el próximo paso en cada casa los módulos de 200 litros"
+  },
+  {
+   "start": 49.23,
+   "end": 52.47,
+   "text": "se interconectan el agua se usa en el baño y para arregar"
+  },
+  {
+   "start": 52.47,
+   "end": 55.79,
+   "text": "sólo cuando están llenos el excedente valdez agua pluvial"
+  },
+  {
+   "start": 56.55,
+   "end": 64.46,
+   "text": "con un sistema de monitoreo basado en sp-32 y medidores de Nierl cada tanque no"
+  },
+  {
+   "start": 64.46,
+   "end": 67.66,
+   "text": "sólo un pluvio metrón sino que también el medidor de escorrentia"
+  },
+  {
+   "start": 67.66,
+   "end": 71.82,
+   "text": "puntos arman un mapa en vivo así el municipio sabrá que desagües de"
+  },
+  {
+   "start": 71.82,
+   "end": 73.98,
+   "text": "sabotar antes de una tormenta"
+  },
+  {
+   "start": 73.98,
+   "end": 80.72,
+   "text": "cada punto en el mapa es un módulo verde con lugar amarillo cargándose y rojo lleno"
+  },
+  {
+   "start": 80.72,
+   "end": 86.1,
+   "text": "llegan alertas y reportes de los vecinos y en la app cada familia ve su nivel y"
+  },
+  {
+   "start": 86.1,
+   "end": 91.38,
+   "text": "recibe avisos la hora pública puede ser cara y lenta con tanques comunes que"
+  },
+  {
+   "start": 91.38,
+   "end": 94.74,
+   "text": "sólo guardan pero no miden y las alertas no llevan a la calle"
+  },
+  {
+   "start": 94.74,
+   "end": 99.06,
+   "text": "somos 9 ingenieros estudiantes de civil sistemas e ingeniería en alimentos y"
+  },
+  {
+   "start": 99.06,
+   "end": 105.18,
+   "text": "mecatrónica el agua sirve para riego y limpieza pero no es potable"
+  },
+  {
+   "start": 105.18,
+   "end": 109.18,
+   "text": "no frenamos las inundaciones atrapamos los primeros milímetros de cada"
+  },
+  {
+   "start": 109.18,
+   "end": 113.82,
+   "text": "techo y los reutilizamos en casa y le damos al sistema lo que nunca tuvo datos"
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.1
+}

@@ -1,0 +1,164 @@
+{
+ "video_id": "LSu0cgbji7M",
+ "url": "https://youtu.be/LSu0cgbji7M",
+ "year": 2022,
+ "collection": "nacional",
+ "country": "EL SALVADOR",
+ "team": "FRANCIS STEAM UFG",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "FRANCIS STEAM UFG",
+   "challenge": "07 - ALUDES DE BARRO"
+  },
+  {
+   "year": 2022,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "FRANCIS STEAM UFG",
+   "challenge": "07 - ALUDES DE BARRO"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:20:37+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Los deslizamientos de tierra son muy frecuentes en América Latina. Los antecedentes de las Naciones Unidas indican que desde el año 2000 América Latina ha sido afectada con 66 deslizamientos de considerable magnitud, los cuales causaron alrededor de 5 mil muertes. Sin embargo, en el 2022 esto no ha cambiado mucho. Por favor, alguien puede pedir ayuda, no podemos ligar al bombero ni nada. Puesto que la realidad económica hace que muchas familias se vean obligadas a vivir en zonas con alto riesgo de deslizamiento de tierra. Consciente del gran desafío de desarrollar un sistema integral que permita alertar a la comunidad y a las autoridades sobre el riesgo de deslizamiento de tierra, se desarrolla el sistema alerta francis. Alerta francis tiene como base dos parámetros de alerta. El primero con un sensor dentro de un pluviómetro que determina si hay riesgo con base en la cantidad de lluvia. El segundo con un sensor de movimiento de tierra. Estos mecanismos emiten una señal mediante una antena hacia la estación de alarma. Si la señal es emitida por movimiento de tierra o por niveles extremos de lluvia, se enciende la alarma sonora que indica emergencia. Si la señal es emitida por lluvia moderada, se enciende la alarma visual, indicando el nivel de riesgo de la luz. Las alarmas son transmitidas mediante hondas de radio hacia las municipalidades, quienes a partir de ese momento deberán movilizarse con la ayuda. La estación de alerta ha sido diseñada de tal manera que sea visible desde cualquier punto y funciona similar a un semáforo. En caso de riesgo extremo, se activa la alarma sonora que indica evacuación. Alerta Francis es un sistema comprometido con la integridad y la vida de las personas.",
+ "segments": [
+  {
+   "start": 0.11,
+   "end": 4.43,
+   "text": "Los deslizamientos de tierra son muy frecuentes en América Latina."
+  },
+  {
+   "start": 4.43,
+   "end": 8.75,
+   "text": "Los antecedentes de las Naciones Unidas indican que desde el año 2000"
+  },
+  {
+   "start": 8.75,
+   "end": 14.59,
+   "text": "América Latina ha sido afectada con 66 deslizamientos de considerable magnitud,"
+  },
+  {
+   "start": 14.59,
+   "end": 18.63,
+   "text": "los cuales causaron alrededor de 5 mil muertes."
+  },
+  {
+   "start": 18.63,
+   "end": 22.87,
+   "text": "Sin embargo, en el 2022 esto no ha cambiado mucho."
+  },
+  {
+   "start": 22.87,
+   "end": 26.07,
+   "text": "Por favor, alguien puede pedir ayuda,"
+  },
+  {
+   "start": 26.07,
+   "end": 28.87,
+   "text": "no podemos ligar al bombero ni nada."
+  },
+  {
+   "start": 29.03,
+   "end": 33.67,
+   "text": "Puesto que la realidad económica hace que muchas familias se vean obligadas"
+  },
+  {
+   "start": 33.67,
+   "end": 37.59,
+   "text": "a vivir en zonas con alto riesgo de deslizamiento de tierra."
+  },
+  {
+   "start": 37.59,
+   "end": 43.67,
+   "text": "Consciente del gran desafío de desarrollar un sistema integral que permita alertar a la comunidad"
+  },
+  {
+   "start": 43.67,
+   "end": 47.59,
+   "text": "y a las autoridades sobre el riesgo de deslizamiento de tierra,"
+  },
+  {
+   "start": 47.59,
+   "end": 51.95,
+   "text": "se desarrolla el sistema alerta francis."
+  },
+  {
+   "start": 51.95,
+   "end": 55.47,
+   "text": "Alerta francis tiene como base dos parámetros de alerta."
+  },
+  {
+   "start": 55.55,
+   "end": 64.15,
+   "text": "El primero con un sensor dentro de un pluviómetro que determina si hay riesgo con base en la cantidad de lluvia."
+  },
+  {
+   "start": 64.15,
+   "end": 67.91,
+   "text": "El segundo con un sensor de movimiento de tierra."
+  },
+  {
+   "start": 67.91,
+   "end": 74.15,
+   "text": "Estos mecanismos emiten una señal mediante una antena hacia la estación de alarma."
+  },
+  {
+   "start": 74.15,
+   "end": 79.79,
+   "text": "Si la señal es emitida por movimiento de tierra o por niveles extremos de lluvia,"
+  },
+  {
+   "start": 79.79,
+   "end": 83.95,
+   "text": "se enciende la alarma sonora que indica emergencia."
+  },
+  {
+   "start": 84.03,
+   "end": 89.11,
+   "text": "Si la señal es emitida por lluvia moderada, se enciende la alarma visual,"
+  },
+  {
+   "start": 89.11,
+   "end": 92.23,
+   "text": "indicando el nivel de riesgo de la luz."
+  },
+  {
+   "start": 92.23,
+   "end": 96.95,
+   "text": "Las alarmas son transmitidas mediante hondas de radio hacia las municipalidades,"
+  },
+  {
+   "start": 96.95,
+   "end": 100.63,
+   "text": "quienes a partir de ese momento deberán movilizarse con la ayuda."
+  },
+  {
+   "start": 100.63,
+   "end": 106.11,
+   "text": "La estación de alerta ha sido diseñada de tal manera que sea visible desde cualquier punto"
+  },
+  {
+   "start": 106.11,
+   "end": 108.95,
+   "text": "y funciona similar a un semáforo."
+  },
+  {
+   "start": 109.03,
+   "end": 114.51,
+   "text": "En caso de riesgo extremo, se activa la alarma sonora que indica evacuación."
+  },
+  {
+   "start": 114.51,
+   "end": 120.11,
+   "text": "Alerta Francis es un sistema comprometido con la integridad y la vida de las personas."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.2
+}

@@ -1,0 +1,132 @@
+{
+ "video_id": "D-4rOwaW0SI",
+ "url": "https://youtube.com/watch?v=D-4rOwaW0SI&feature=shared",
+ "year": 2024,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "TECH NEXUS",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "TECH NEXUS",
+   "challenge": "07 - PARQUÍMETRO DESATENDIDO"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:50:14+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Parquímetros puedan un papel crucial en la gestión del estacionamiento en las ciudades de todo el mundo. Esos específicos nos permiten estacionar nuestro vehículo de manera legal y controlada, evitando el caos y la confesión en las calles. Algunas de las causas de la problemática del uso del parquímetro es el mal uso del estacionamiento, la poca información respecto del uso del parquímetro, la falta de uso de tecnologías, uno de los problemas que hay que tener en cuenta a la hora de hablar de parquímetros es la reducción de la confesión. Es fundamental implementar sistemas que facilitan una retracción eficiente de los espacios de estacionamiento. Al reducir el tiempo que los conductores pasan buscando un lugar, mejoramos experiencia y ayudamos a que la ciudad sea menos procrastinada. Al abordar estos desafíos, podemos gestionar el estacionamiento de manera más efectiva, mejorando la experiencia de los conductores y aprovechando el máximo de los espacios disponibles. Con un enfoque centrado en las personas y la tecnología, podemos cambiar la forma en que se gestiona el estacionamiento en nuestras ciudades. Por ello proponemos una app que nos ayude a resolver las problemáticas del parquímetro. Esta es llamada Nexos Parking, en la cual tendrás que registrar utilizando tu número de celular y generando una contraseña en esta aplicación, podrás localizar parquímetros gracias a un mapa que exactamente permitirá ubicar si los parquímetros encontrados están disponibles o no. También te deberá mostrar por medio de uso de cada parquímetro y con esta información estar consciente de si se puede o no haber espacios disponibles. Y por último, otro de los beneficios de la aplicación es que gracias al sensor y las cámaras puedan tener mayor seguridad con propiedad privada.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 4.42,
+   "text": "Parquímetros puedan un papel crucial en la gestión del estacionamiento en las ciudades de todo el mundo."
+  },
+  {
+   "start": 4.42,
+   "end": 8.58,
+   "text": "Esos específicos nos permiten estacionar nuestro vehículo de manera legal y controlada,"
+  },
+  {
+   "start": 8.58,
+   "end": 11.04,
+   "text": "evitando el caos y la confesión en las calles."
+  },
+  {
+   "start": 11.04,
+   "end": 15.58,
+   "text": "Algunas de las causas de la problemática del uso del parquímetro es el mal uso del estacionamiento,"
+  },
+  {
+   "start": 15.58,
+   "end": 20.1,
+   "text": "la poca información respecto del uso del parquímetro, la falta de uso de tecnologías,"
+  },
+  {
+   "start": 20.1,
+   "end": 26.46,
+   "text": "uno de los problemas que hay que tener en cuenta a la hora de hablar de parquímetros es la reducción de la confesión."
+  },
+  {
+   "start": 26.46,
+   "end": 31.34,
+   "text": "Es fundamental implementar sistemas que facilitan una retracción eficiente de los espacios de estacionamiento."
+  },
+  {
+   "start": 31.34,
+   "end": 34.1,
+   "text": "Al reducir el tiempo que los conductores pasan buscando un lugar,"
+  },
+  {
+   "start": 34.1,
+   "end": 37.82,
+   "text": "mejoramos experiencia y ayudamos a que la ciudad sea menos procrastinada."
+  },
+  {
+   "start": 37.82,
+   "end": 42.46,
+   "text": "Al abordar estos desafíos, podemos gestionar el estacionamiento de manera más efectiva,"
+  },
+  {
+   "start": 42.46,
+   "end": 47.46,
+   "text": "mejorando la experiencia de los conductores y aprovechando el máximo de los espacios disponibles."
+  },
+  {
+   "start": 47.46,
+   "end": 49.88,
+   "text": "Con un enfoque centrado en las personas y la tecnología,"
+  },
+  {
+   "start": 49.88,
+   "end": 53.58,
+   "text": "podemos cambiar la forma en que se gestiona el estacionamiento en nuestras ciudades."
+  },
+  {
+   "start": 53.66,
+   "end": 57.58,
+   "text": "Por ello proponemos una app que nos ayude a resolver las problemáticas del parquímetro."
+  },
+  {
+   "start": 57.58,
+   "end": 63.1,
+   "text": "Esta es llamada Nexos Parking, en la cual tendrás que registrar utilizando tu número de celular"
+  },
+  {
+   "start": 63.1,
+   "end": 67.78,
+   "text": "y generando una contraseña en esta aplicación, podrás localizar parquímetros gracias a un mapa"
+  },
+  {
+   "start": 67.78,
+   "end": 72.58,
+   "text": "que exactamente permitirá ubicar si los parquímetros encontrados están disponibles o no."
+  },
+  {
+   "start": 72.58,
+   "end": 76.58,
+   "text": "También te deberá mostrar por medio de uso de cada parquímetro y con esta información"
+  },
+  {
+   "start": 76.58,
+   "end": 80.1,
+   "text": "estar consciente de si se puede o no haber espacios disponibles."
+  },
+  {
+   "start": 80.1,
+   "end": 84.6,
+   "text": "Y por último, otro de los beneficios de la aplicación es que gracias al sensor y las cámaras"
+  },
+  {
+   "start": 84.6,
+   "end": 87.1,
+   "text": "puedan tener mayor seguridad con propiedad privada."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 88.1
+}

@@ -1,0 +1,127 @@
+{
+ "video_id": "2MX2HNukjPU",
+ "url": "https://youtu.be/2MX2HNukjPU",
+ "year": 2022,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "QIME (TECNM AGS)",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "QIME (TECNM AGS)",
+   "challenge": "08 - DESINFECTANTE PERSONAL BIODEGRADABLE"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:37:28+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Hallelata 2022, Equipo Quime, Deslumbre, Desinfectante de Alumbre. Desde pequeños nos han enseñado que la higiene es una parte fundamental para mantener una buena salud, siendo lavado de manos o nabuejabón en el hábito más común. Durante la pandemia COVID-19 nos vimos obligados a fortalecer nuestra cultura de higiene para contraestar las enfermedades visitadas en dicha pandemia. El gel antibacterial se volvió indispensable para la vida cotidiana, tanto que ha traído consigo una serie de problemas relacionados principalmente con la gestión de recursos y los efectos en la salud, por lo que se busca una alternativa adecuada al lavado de manos con nabuejabón. Quime pone su disposición de deslumbre, un desinfectante natural, biodegradable y de bajo costo en una cómoda presentación de laminitas que se activan con el calor al hacer fricción con las manos. Deslumbre está hecho a base de polvo de alumbre, liserina y carbonato de sodio, limón y aceite esencial de lavado. Como cualquier producto de aplicación tópica se deben tomar precauciones considerando el tipo de piel de cada persona, debido a que los componentes pueden resultar irritantes en cutis sensibles. Al aplicar el producto omitimos el uso de agua, por lo tanto menos desperdicio de nuestro líquido vital. Usa deslumbre.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 7.88,
+   "text": "Hallelata 2022, Equipo Quime, Deslumbre, Desinfectante de Alumbre."
+  },
+  {
+   "start": 7.88,
+   "end": 14.0,
+   "text": "Desde pequeños nos han enseñado que la higiene es una parte fundamental para mantener una buena salud,"
+  },
+  {
+   "start": 14.0,
+   "end": 18.0,
+   "text": "siendo lavado de manos o nabuejabón en el hábito más común."
+  },
+  {
+   "start": 18.0,
+   "end": 23.0,
+   "text": "Durante la pandemia COVID-19 nos vimos obligados a fortalecer nuestra cultura de higiene"
+  },
+  {
+   "start": 23.0,
+   "end": 27.0,
+   "text": "para contraestar las enfermedades visitadas en dicha pandemia."
+  },
+  {
+   "start": 27.0,
+   "end": 31.0,
+   "text": "El gel antibacterial se volvió indispensable para la vida cotidiana,"
+  },
+  {
+   "start": 31.0,
+   "end": 35.0,
+   "text": "tanto que ha traído consigo una serie de problemas relacionados principalmente"
+  },
+  {
+   "start": 35.0,
+   "end": 39.0,
+   "text": "con la gestión de recursos y los efectos en la salud,"
+  },
+  {
+   "start": 39.0,
+   "end": 44.0,
+   "text": "por lo que se busca una alternativa adecuada al lavado de manos con nabuejabón."
+  },
+  {
+   "start": 44.0,
+   "end": 49.0,
+   "text": "Quime pone su disposición de deslumbre, un desinfectante natural,"
+  },
+  {
+   "start": 49.0,
+   "end": 53.0,
+   "text": "biodegradable y de bajo costo en una cómoda presentación de laminitas"
+  },
+  {
+   "start": 53.0,
+   "end": 57.0,
+   "text": "que se activan con el calor al hacer fricción con las manos."
+  },
+  {
+   "start": 57.0,
+   "end": 63.0,
+   "text": "Deslumbre está hecho a base de polvo de alumbre, liserina y carbonato de sodio,"
+  },
+  {
+   "start": 63.0,
+   "end": 67.0,
+   "text": "limón y aceite esencial de lavado."
+  },
+  {
+   "start": 67.0,
+   "end": 71.0,
+   "text": "Como cualquier producto de aplicación tópica se deben tomar precauciones"
+  },
+  {
+   "start": 71.0,
+   "end": 74.0,
+   "text": "considerando el tipo de piel de cada persona,"
+  },
+  {
+   "start": 74.0,
+   "end": 79.0,
+   "text": "debido a que los componentes pueden resultar irritantes en cutis sensibles."
+  },
+  {
+   "start": 79.0,
+   "end": 82.0,
+   "text": "Al aplicar el producto omitimos el uso de agua,"
+  },
+  {
+   "start": 82.0,
+   "end": 85.0,
+   "text": "por lo tanto menos desperdicio de nuestro líquido vital."
+  },
+  {
+   "start": 85.0,
+   "end": 87.0,
+   "text": "Usa deslumbre."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 88.7
+}

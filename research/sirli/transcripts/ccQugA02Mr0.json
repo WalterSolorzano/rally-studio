@@ -1,0 +1,92 @@
+{
+ "video_id": "ccQugA02Mr0",
+ "url": "https://youtu.be/ccQugA02Mr0",
+ "year": 2021,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "28 LEYENDAS",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "28 LEYENDAS",
+   "challenge": "02 - LA CIRCULARIDAD Y RECUPERACIÓN DE ENVASES DESCARTABLES"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:43:52+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Las botellas de vidrio son algunos de los deseos que no entran dentro del circuito de reciclaje, por la falta de empresas recicladoras y transformadoras de estos residuos en nuestro país, permitiendo que estos sean desaprovechados y se vuelvan elementos únicamente contaminantes para el ambiente. Como solución a esta problemática, desarrollaremos una entidad comercial denominada de vidrio. Empresas dedicadas a la transformación del vidrio, empiezas utilitarias remunerando económicamente y a un precio justo a las personas por los deseos de vidrio que producen mensualmente en sus hogares, asimismo que les facilite la recolección y la transformación de estos sin generar contaminación en el medio ambiente ni perjudicar la salud de las personas. Esta es una solución factible porque desarrolla una forma sustentable de eliminar el vidrio de los hogares, modificándolo en nuevos productos que alarguen la vida útil de estos residuos, convirténdose en productos como reconocimientos, vasos, jarrones y seres domésticos. De vidrio, cree firmemente que el cuido del planeta es responsabilidad de todos, de vidrio socialmente responsable.",
+ "segments": [
+  {
+   "start": 0.24,
+   "end": 11.68,
+   "text": "Las botellas de vidrio son algunos de los deseos que no entran dentro del circuito de reciclaje,"
+  },
+  {
+   "start": 11.68,
+   "end": 17.88,
+   "text": "por la falta de empresas recicladoras y transformadoras de estos residuos en nuestro país,"
+  },
+  {
+   "start": 17.88,
+   "end": 24.96,
+   "text": "permitiendo que estos sean desaprovechados y se vuelvan elementos únicamente contaminantes"
+  },
+  {
+   "start": 24.96,
+   "end": 32.44,
+   "text": "para el ambiente. Como solución a esta problemática, desarrollaremos una entidad comercial denominada"
+  },
+  {
+   "start": 32.44,
+   "end": 40.92,
+   "text": "de vidrio. Empresas dedicadas a la transformación del vidrio, empiezas utilitarias remunerando"
+  },
+  {
+   "start": 40.92,
+   "end": 47.52,
+   "text": "económicamente y a un precio justo a las personas por los deseos de vidrio que producen"
+  },
+  {
+   "start": 47.52,
+   "end": 54.2,
+   "text": "mensualmente en sus hogares, asimismo que les facilite la recolección y la transformación de"
+  },
+  {
+   "start": 54.2,
+   "end": 60.16,
+   "text": "estos sin generar contaminación en el medio ambiente ni perjudicar la salud de las personas."
+  },
+  {
+   "start": 60.16,
+   "end": 67.88,
+   "text": "Esta es una solución factible porque desarrolla una forma sustentable de eliminar el vidrio de"
+  },
+  {
+   "start": 67.88,
+   "end": 74.24,
+   "text": "los hogares, modificándolo en nuevos productos que alarguen la vida útil de estos residuos,"
+  },
+  {
+   "start": 74.24,
+   "end": 81.72,
+   "text": "convirténdose en productos como reconocimientos, vasos, jarrones y seres domésticos."
+  },
+  {
+   "start": 82.68,
+   "end": 88.2,
+   "text": "De vidrio, cree firmemente que el cuido del planeta es responsabilidad de todos,"
+  },
+  {
+   "start": 88.2,
+   "end": 91.36,
+   "text": "de vidrio socialmente responsable."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 96.4
+}

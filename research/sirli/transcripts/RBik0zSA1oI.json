@@ -1,0 +1,162 @@
+{
+ "video_id": "RBik0zSA1oI",
+ "url": "https://youtu.be/RBik0zSA1oI",
+ "year": 2023,
+ "collection": "sede",
+ "country": "COLOMBIA",
+ "team": "UAN CARTAGENA",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "UAN CARTAGENA",
+   "challenge": "09 - GRIS A VERDE"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:01:58+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "El hombre siempre ha pensado en evolucionar y expandirse, creando infraestructuras y diseños arquitectónicos acumulando mayor población por metro cuadrado, ocasionando consecuencias ambientales graves para el planeta, especialmente a las fuentes hídricas que son esenciales para los seres vivos. Es importante resaltar que América Latina es la región más urbanizada del mundo. Se estima que los asentamientos urbanos de la región producen más de 30 kilómetros cúbicos de agua residuo al cada año. Ante esto, como equipos analizamos esta problemática y decidimos diseñar un dispositivo que fuese capaz de testear las aguas grises de los hogares y de acuerdo a los resultados del echame, clasificarla para su uso. El dispositivo va a contar con una de los duino nano y cuatro sensores que son de pH, temperatura, conductividad y turbidez. Las aguas que se seleccionaron para reutilizar son las del baño, cocina y lavadora. Estas van a ser transportadas por las tuberías del hogar, pasan por un pequeño filtro para eliminar la mayor cantidad de residuos sólidos que contenga. Luego, van a llegar a los sensores donde se les medra el nivel de pH, turbidez, temperatura y conductividad. De acuerdo a los resultados, el agua se clasificará para un tipo de uso como lo es regar las plantas, lavar exteriores e interiores llenadas de sanitarios o tratamiento. El agua testiada atravesará una válvula que permite el paso de acuerdo a las características del líquido. El costo en materiales, diseños e implementación es de 511.650 pesos por dispositivo. Nuestra propuesta es innovadora, con impacto significativo en la sociedad y el medio ambiente, debido a que mejora la salud pública al reducir el riesgo de enfermedades transmitidas por el agua y genera ahorros económicos para los hogares. Además, promueve una mayor conciencia ambiental en la comunidad al fomentar prácticas sostenibles en el manejo del agua. También contribuía la conservación de recursos hídricos al disminuir la demanda de agua potable.",
+ "segments": [
+  {
+   "start": 0.37,
+   "end": 3.97,
+   "text": "El hombre siempre ha pensado en evolucionar y expandirse,"
+  },
+  {
+   "start": 3.97,
+   "end": 6.97,
+   "text": "creando infraestructuras y diseños arquitectónicos"
+  },
+  {
+   "start": 6.97,
+   "end": 9.77,
+   "text": "acumulando mayor población por metro cuadrado,"
+  },
+  {
+   "start": 9.77,
+   "end": 13.37,
+   "text": "ocasionando consecuencias ambientales graves para el planeta,"
+  },
+  {
+   "start": 13.37,
+   "end": 17.57,
+   "text": "especialmente a las fuentes hídricas que son esenciales para los seres vivos."
+  },
+  {
+   "start": 17.57,
+   "end": 22.57,
+   "text": "Es importante resaltar que América Latina es la región más urbanizada del mundo."
+  },
+  {
+   "start": 22.57,
+   "end": 25.57,
+   "text": "Se estima que los asentamientos urbanos de la región"
+  },
+  {
+   "start": 25.57,
+   "end": 29.37,
+   "text": "producen más de 30 kilómetros cúbicos de agua residuo al cada año."
+  },
+  {
+   "start": 29.37,
+   "end": 32.97,
+   "text": "Ante esto, como equipos analizamos esta problemática"
+  },
+  {
+   "start": 32.97,
+   "end": 37.77,
+   "text": "y decidimos diseñar un dispositivo que fuese capaz de testear las aguas grises de los hogares"
+  },
+  {
+   "start": 37.77,
+   "end": 41.77,
+   "text": "y de acuerdo a los resultados del echame, clasificarla para su uso."
+  },
+  {
+   "start": 41.77,
+   "end": 46.97,
+   "text": "El dispositivo va a contar con una de los duino nano y cuatro sensores que son de pH,"
+  },
+  {
+   "start": 46.97,
+   "end": 49.77,
+   "text": "temperatura, conductividad y turbidez."
+  },
+  {
+   "start": 49.77,
+   "end": 54.77,
+   "text": "Las aguas que se seleccionaron para reutilizar son las del baño, cocina y lavadora."
+  },
+  {
+   "start": 54.77,
+   "end": 57.97,
+   "text": "Estas van a ser transportadas por las tuberías del hogar,"
+  },
+  {
+   "start": 57.97,
+   "end": 62.97,
+   "text": "pasan por un pequeño filtro para eliminar la mayor cantidad de residuos sólidos que contenga."
+  },
+  {
+   "start": 62.97,
+   "end": 69.57,
+   "text": "Luego, van a llegar a los sensores donde se les medra el nivel de pH, turbidez, temperatura y conductividad."
+  },
+  {
+   "start": 69.57,
+   "end": 73.57,
+   "text": "De acuerdo a los resultados, el agua se clasificará para un tipo de uso"
+  },
+  {
+   "start": 73.57,
+   "end": 78.57,
+   "text": "como lo es regar las plantas, lavar exteriores e interiores llenadas de sanitarios o tratamiento."
+  },
+  {
+   "start": 78.57,
+   "end": 84.57,
+   "text": "El agua testiada atravesará una válvula que permite el paso de acuerdo a las características del líquido."
+  },
+  {
+   "start": 84.57,
+   "end": 91.57,
+   "text": "El costo en materiales, diseños e implementación es de 511.650 pesos por dispositivo."
+  },
+  {
+   "start": 91.57,
+   "end": 96.57,
+   "text": "Nuestra propuesta es innovadora, con impacto significativo en la sociedad y el medio ambiente,"
+  },
+  {
+   "start": 96.57,
+   "end": 101.17,
+   "text": "debido a que mejora la salud pública al reducir el riesgo de enfermedades transmitidas por el agua"
+  },
+  {
+   "start": 101.17,
+   "end": 103.57,
+   "text": "y genera ahorros económicos para los hogares."
+  },
+  {
+   "start": 103.57,
+   "end": 107.57,
+   "text": "Además, promueve una mayor conciencia ambiental en la comunidad"
+  },
+  {
+   "start": 107.57,
+   "end": 110.37,
+   "text": "al fomentar prácticas sostenibles en el manejo del agua."
+  },
+  {
+   "start": 110.37,
+   "end": 115.37,
+   "text": "También contribuía la conservación de recursos hídricos al disminuir la demanda de agua potable."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 115.6
+}

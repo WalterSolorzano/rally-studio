@@ -1,0 +1,137 @@
+{
+ "video_id": "h-bZH0d6zPw",
+ "url": "https://youtu.be/h-bZH0d6zPw",
+ "year": 2026,
+ "collection": "sede",
+ "country": "VENEZUELA",
+ "team": "ACIMES",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "ACIMES",
+   "challenge": "02 - SENSORES AL SERVICIO DE LA COMUNIDAD"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:54:26+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En América Latina las vías son una trampa de incertidumbre. La carretera Maraca y Choronín colapsa por deslizamientos. Cada casa merece paralizada por las lluvias. El problema no es solo el clima, es la desinformación y la falta de monitoreo continuo. Dependemos de que un ciudadano sufre un accidente para que las aplicaciones o los sistemas de emergencia puedan reaccionar. Es un modelo reactivo que cuesta tiempo y lo más importante, vidas. Somos a CIMES, la Unión de Arquitectura, Ingeniería Civil, Industrial Mantenimiento Mecánico, Electrónica y Sistemas. Hoy cambiamos la regla del juego. Presentamos Centinel, nuestra solución preventiva. Centinel transforma la basura electrónica en una red de vigilancia autónoma. Reutilizamos teléfonos inteligentes en desuso, los alimentamos con energía 100% solar y los instalamos en postes estratégicos. Las cámaras capturan fotos periódicas que nuestra plataforma procesa con inteligencia artificial para detectar inundaciones siniestros y baches. Simultaneamente, el acelerómetro opera como alertosísmica temprana. Todo se gestiona mediante una arquitectura dual, es decir, un portal avanzado para que las autoridades competentes verifiquen la veracidad de la alerta y organicen la respuesta. Y una app pública donde la comunidad visualiza las vías para evitar el peligro. El impacto económico. Una cámara wifi industrial para exteriores supera fácilmente los 150 dólares. Centinel logra una vigilancia autónoma superior por alrededor de 27 dólares por nodo. Menos basura electrónica, más vidas salvadas. Somos a Simes, construyendo la prevención del mañana.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 4.2,
+   "text": "En América Latina las vías son una trampa de incertidumbre."
+  },
+  {
+   "start": 4.2,
+   "end": 8.68,
+   "text": "La carretera Maraca y Choronín colapsa por deslizamientos."
+  },
+  {
+   "start": 8.68,
+   "end": 11.92,
+   "text": "Cada casa merece paralizada por las lluvias."
+  },
+  {
+   "start": 11.92,
+   "end": 17.04,
+   "text": "El problema no es solo el clima, es la desinformación y la falta de monitoreo continuo."
+  },
+  {
+   "start": 17.04,
+   "end": 22.88,
+   "text": "Dependemos de que un ciudadano sufre un accidente para que las aplicaciones o los sistemas de emergencia puedan reaccionar."
+  },
+  {
+   "start": 22.88,
+   "end": 27.36,
+   "text": "Es un modelo reactivo que cuesta tiempo y lo más importante, vidas."
+  },
+  {
+   "start": 27.36,
+   "end": 34.76,
+   "text": "Somos a CIMES, la Unión de Arquitectura, Ingeniería Civil, Industrial Mantenimiento Mecánico, Electrónica y Sistemas."
+  },
+  {
+   "start": 34.76,
+   "end": 37.04,
+   "text": "Hoy cambiamos la regla del juego."
+  },
+  {
+   "start": 37.04,
+   "end": 40.2,
+   "text": "Presentamos Centinel, nuestra solución preventiva."
+  },
+  {
+   "start": 40.2,
+   "end": 44.4,
+   "text": "Centinel transforma la basura electrónica en una red de vigilancia autónoma."
+  },
+  {
+   "start": 44.4,
+   "end": 52.4,
+   "text": "Reutilizamos teléfonos inteligentes en desuso, los alimentamos con energía 100% solar y los instalamos en postes estratégicos."
+  },
+  {
+   "start": 52.56,
+   "end": 57.72,
+   "text": "Las cámaras capturan fotos periódicas que nuestra plataforma procesa con inteligencia artificial"
+  },
+  {
+   "start": 57.72,
+   "end": 61.0,
+   "text": "para detectar inundaciones siniestros y baches."
+  },
+  {
+   "start": 61.0,
+   "end": 66.4,
+   "text": "Simultaneamente, el acelerómetro opera como alertosísmica temprana."
+  },
+  {
+   "start": 66.4,
+   "end": 73.04,
+   "text": "Todo se gestiona mediante una arquitectura dual, es decir, un portal avanzado para que las autoridades competentes"
+  },
+  {
+   "start": 73.04,
+   "end": 76.96,
+   "text": "verifiquen la veracidad de la alerta y organicen la respuesta."
+  },
+  {
+   "start": 76.96,
+   "end": 82.08,
+   "text": "Y una app pública donde la comunidad visualiza las vías para evitar el peligro."
+  },
+  {
+   "start": 82.24,
+   "end": 83.72,
+   "text": "El impacto económico."
+  },
+  {
+   "start": 83.72,
+   "end": 89.44,
+   "text": "Una cámara wifi industrial para exteriores supera fácilmente los 150 dólares."
+  },
+  {
+   "start": 89.44,
+   "end": 94.76,
+   "text": "Centinel logra una vigilancia autónoma superior por alrededor de 27 dólares por nodo."
+  },
+  {
+   "start": 94.76,
+   "end": 97.6,
+   "text": "Menos basura electrónica, más vidas salvadas."
+  },
+  {
+   "start": 97.6,
+   "end": 101.04,
+   "text": "Somos a Simes, construyendo la prevención del mañana."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 101.1
+}

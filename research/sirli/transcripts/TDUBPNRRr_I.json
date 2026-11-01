@@ -1,0 +1,97 @@
+{
+ "video_id": "TDUBPNRRr_I",
+ "url": "https://youtu.be/TDUBPNRRr_I?si=rWYHFHgjMTYctivw",
+ "year": 2024,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "DESAFÍO FARMACÉUTICO",
+ "place_label": "TERCER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "TERCER LUGAR",
+   "team": "DESAFÍO FARMACÉUTICO",
+   "challenge": "04 - AGUACATE"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:00:28+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En Nicaragua el consumo del aguacate es de mucha importancia, es bueno para la salud, en general, dada sus propiedades nutritivas, propiedades antioxidantes y nutracépticas. El SIT-Siker es una empresa de elaboración del ICSER tópico, a base de semilla de aguacate, que nos permite sacar el principio activo de dicho hueso. Nuestra propuesta mejor el proceso existente de aprovechamiento de la semilla de aguacate, con el resultado que generamos un proceso de elaboración totalmente sostenible para el uso humano. Este proyecto fue escogido para dar uso responsable y seguro a los desechos del aguacate, logrando así un mayor control de desechos de aguacate. De esta manera, reducimos de manera satisfactoria la contaminación ambiental. La revaloración de los residuos del aguacate, como su cáscara y hueso, pueden ser una excelente iniciativa para reducir el desprecio y el aprovechamiento al máximo de este fruto. La revaloración de estos residuos no solo contribuye a la sostenibilidad, sino que también puede abrir nuevas oportunidades de negocio y desarrollar en la comunidad una mejora gestión de residuos. Esto nos ayuda a costear los pagos de canje y así poder obtener la materia prima de manera fácil, tomando en cuenta que también logramos concientizar a la población al rehuso de los residuos del aguacate.",
+ "segments": [
+  {
+   "start": 0.5,
+   "end": 7.5,
+   "text": "En Nicaragua el consumo del aguacate es de mucha importancia, es bueno para la salud, en general,"
+  },
+  {
+   "start": 7.5,
+   "end": 15.5,
+   "text": "dada sus propiedades nutritivas, propiedades antioxidantes y nutracépticas. El SIT-Siker"
+  },
+  {
+   "start": 15.5,
+   "end": 21.5,
+   "text": "es una empresa de elaboración del ICSER tópico, a base de semilla de aguacate,"
+  },
+  {
+   "start": 21.5,
+   "end": 28.5,
+   "text": "que nos permite sacar el principio activo de dicho hueso. Nuestra propuesta mejor el proceso existente"
+  },
+  {
+   "start": 28.5,
+   "end": 35.5,
+   "text": "de aprovechamiento de la semilla de aguacate, con el resultado que generamos un proceso de elaboración"
+  },
+  {
+   "start": 35.5,
+   "end": 43.5,
+   "text": "totalmente sostenible para el uso humano. Este proyecto fue escogido para dar uso responsable"
+  },
+  {
+   "start": 43.5,
+   "end": 49.5,
+   "text": "y seguro a los desechos del aguacate, logrando así un mayor control de desechos de aguacate."
+  },
+  {
+   "start": 49.5,
+   "end": 55.5,
+   "text": "De esta manera, reducimos de manera satisfactoria la contaminación ambiental."
+  },
+  {
+   "start": 55.5,
+   "end": 63.5,
+   "text": "La revaloración de los residuos del aguacate, como su cáscara y hueso, pueden ser una excelente iniciativa"
+  },
+  {
+   "start": 63.5,
+   "end": 71.5,
+   "text": "para reducir el desprecio y el aprovechamiento al máximo de este fruto. La revaloración de estos residuos"
+  },
+  {
+   "start": 71.5,
+   "end": 78.5,
+   "text": "no solo contribuye a la sostenibilidad, sino que también puede abrir nuevas oportunidades de negocio"
+  },
+  {
+   "start": 79.5,
+   "end": 84.5,
+   "text": "y desarrollar en la comunidad una mejora gestión de residuos."
+  },
+  {
+   "start": 84.5,
+   "end": 92.5,
+   "text": "Esto nos ayuda a costear los pagos de canje y así poder obtener la materia prima de manera fácil,"
+  },
+  {
+   "start": 92.5,
+   "end": 100.5,
+   "text": "tomando en cuenta que también logramos concientizar a la población al rehuso de los residuos del aguacate."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 101.7
+}

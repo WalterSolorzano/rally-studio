@@ -1,0 +1,142 @@
+{
+ "video_id": "R_57hiiIZ0o",
+ "url": "https://youtu.be/R_57hiiIZ0o",
+ "year": 2026,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "⚡CIMATRONIK⚡",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "⚡CIMATRONIK⚡",
+   "challenge": "05 - MONITOREO INTELIGENTE E INFRAESTRUCTURA VERDE EN RESERVORIOS PLUVIALES"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:53:32+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En las zonas periféricas y higidos las lluvias intensas se convertan rápidamente en un desastre. La falta de infraestructura, la acumulación de seguimientos y la ausencia de monitoreo provocan inundaciones recurrentes que dañan viviendas, caminos y animales. Ironicamente, toda esta agua que hoy nos inundas se pierde por completo, dejándonos así vulnerables durante la temporada de sequía, afectando gravemente nuestras actividades agrícolas y ganaderas. El verdadero recto no es solo sobrevivir a las lluvias, sino dejar de ver el agua como una amenaza y comenzar a captarla y gestionarla como nuestra principal solución. Para solucionar esto, proponemos gota, gestión optimizada y tratamiento de agua. Integramos aquí sensores de nivel y flujo en pozos de captación que transmiten así datos en tiempo real alertando protección civil para prevenir inundaciones. Nuestra solución se activa ante fuertes lluvias o desbordamientos mediante un proceso de captación inteligente. Primero, el agua pasa por una regía de filtrado para retener desechos sólidos seguida de un sistema de bioretensión con vegetación ativa que frena y filtra los seguimientos. Durante este proceso, monitoreamos la eficiencia del drenaje utilizando sensores de flujo. Si el reservorio alcanza su límite, un sensor de nivel activa un alerte emitida a protección civil para poder prevenir emergencias. Como medida de seguridad y aprovechamiento ecológico, el agua tratada se redireccionará hacia parques cercanos promoviendo así su infiltración natural y recargando el subzelo. Toda la información del sistema, incluyendo los niveles del reservorio, las alertas de flujo y el monitoreo remoto, se podrán consultar directamente a través de una aplicación móvil. Es una solución escalable con un doble impacto. Salva guarda vidas mediante alertas tempranas y transforma zonas vulnerables en espaces verdes productivos y resilientes.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 5.0,
+   "text": "En las zonas periféricas y higidos las lluvias intensas se convertan rápidamente en un desastre."
+  },
+  {
+   "start": 5.0,
+   "end": 9.0,
+   "text": "La falta de infraestructura, la acumulación de seguimientos y la ausencia de monitoreo"
+  },
+  {
+   "start": 9.0,
+   "end": 13.0,
+   "text": "provocan inundaciones recurrentes que dañan viviendas, caminos y animales."
+  },
+  {
+   "start": 13.0,
+   "end": 19.0,
+   "text": "Ironicamente, toda esta agua que hoy nos inundas se pierde por completo, dejándonos así vulnerables"
+  },
+  {
+   "start": 19.0,
+   "end": 24.0,
+   "text": "durante la temporada de sequía, afectando gravemente nuestras actividades agrícolas y ganaderas."
+  },
+  {
+   "start": 24.0,
+   "end": 30.0,
+   "text": "El verdadero recto no es solo sobrevivir a las lluvias, sino dejar de ver el agua como una amenaza"
+  },
+  {
+   "start": 30.0,
+   "end": 34.0,
+   "text": "y comenzar a captarla y gestionarla como nuestra principal solución."
+  },
+  {
+   "start": 34.0,
+   "end": 39.0,
+   "text": "Para solucionar esto, proponemos gota, gestión optimizada y tratamiento de agua."
+  },
+  {
+   "start": 39.0,
+   "end": 45.0,
+   "text": "Integramos aquí sensores de nivel y flujo en pozos de captación que transmiten así datos en tiempo real"
+  },
+  {
+   "start": 45.0,
+   "end": 48.0,
+   "text": "alertando protección civil para prevenir inundaciones."
+  },
+  {
+   "start": 48.0,
+   "end": 54.0,
+   "text": "Nuestra solución se activa ante fuertes lluvias o desbordamientos mediante un proceso de captación inteligente."
+  },
+  {
+   "start": 54.0,
+   "end": 58.0,
+   "text": "Primero, el agua pasa por una regía de filtrado para retener desechos sólidos"
+  },
+  {
+   "start": 58.0,
+   "end": 64.0,
+   "text": "seguida de un sistema de bioretensión con vegetación ativa que frena y filtra los seguimientos."
+  },
+  {
+   "start": 64.0,
+   "end": 69.0,
+   "text": "Durante este proceso, monitoreamos la eficiencia del drenaje utilizando sensores de flujo."
+  },
+  {
+   "start": 69.0,
+   "end": 75.0,
+   "text": "Si el reservorio alcanza su límite, un sensor de nivel activa un alerte emitida a protección civil"
+  },
+  {
+   "start": 75.0,
+   "end": 77.0,
+   "text": "para poder prevenir emergencias."
+  },
+  {
+   "start": 77.0,
+   "end": 82.0,
+   "text": "Como medida de seguridad y aprovechamiento ecológico, el agua tratada se redireccionará"
+  },
+  {
+   "start": 82.0,
+   "end": 87.0,
+   "text": "hacia parques cercanos promoviendo así su infiltración natural y recargando el subzelo."
+  },
+  {
+   "start": 87.0,
+   "end": 91.0,
+   "text": "Toda la información del sistema, incluyendo los niveles del reservorio, las alertas de flujo"
+  },
+  {
+   "start": 91.0,
+   "end": 96.0,
+   "text": "y el monitoreo remoto, se podrán consultar directamente a través de una aplicación móvil."
+  },
+  {
+   "start": 96.0,
+   "end": 99.0,
+   "text": "Es una solución escalable con un doble impacto."
+  },
+  {
+   "start": 99.0,
+   "end": 103.0,
+   "text": "Salva guarda vidas mediante alertas tempranas y transforma zonas vulnerables"
+  },
+  {
+   "start": 103.0,
+   "end": 106.0,
+   "text": "en espaces verdes productivos y resilientes."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 106.1
+}

@@ -1,0 +1,162 @@
+{
+ "video_id": "9JZfG3fmRXA",
+ "url": "https://www.youtube.com/watch?v=9JZfG3fmRXA",
+ "year": 2025,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "LOS LÍDERES",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "LOS LÍDERES",
+   "challenge": "03 - FUGAS DE AGUA"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:47:19+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¡Manto el 30% del agua potable del mundo se pierde en las redes de distribución! Pues si cada día millones de litros de agua se escapan por fuga en nuestras redes de tubería, no lo vemos pero pagamos por ello. Y si pudiéramos encontrarlos rápido sin romper caiz de dinar donde cavar, detectarlo hoy es costoso y lento, dejando agua y dinero desperdiciado. Por esto presentamos Agua Cero, un pack completo con un dispositivo IDOTE llamado Ojo de Agua, no invasivo, autónomo y debajo costo. El pack incluye la capsula Ojo de Agua, el gateway con amplificador y la app que procesa los datos para detectar fugas. La app muestra consumo en tiempo real, historial de cauda y presión, alerta automáticas, reportes comunitarios y estadísticas por vivienda o sector. Si oígaste mucho más que ayer o que la semana pasada, esta señal es de que probablemente hay una fuga. Cuando se detecta una posible perdida, entres la capsula y la tubería, mediante un adaptador simple sin cortar su inicio. La capsula registra velocidad del agua, presión y giro en curva o difuscaciones mientras recorre la tubería, enviando datos en tiempo real al gateway. La app reconstruye las trazas en la tubería, aplica inteligencia artificial y marca el tramo probable de la fuga, mostrando el nivel de confianza. La capsula se puede recuperar de manera flexible, por la salida, con maya y man o estación de captura. Ahora imagina varias capsulas recorriendo tramos, con gateway estratégico y una entidad operadora que coordina reparaciones. La app muestra un mapa de fugas y el consumo de cada nudo, cubriendo barrios y escabar a ciegas. Con inteligencia artificial, Aguacero puede anticipar hasta el 80% de la fuga, reduciendo perdida entre el 30 y el 55%, generando ahorros, datos precisos y control del agua para usuario y autoridad, siendo una solución rentable. Aguacero apoya a los ODS-6, O11, O2 y O13, asegurando agua limpia, ciudad de sostenible, uso responsable de recursos y reducción de misiones, optimizando costo y conciencia ambiental. Aguacero hace misiles de la fuga inisible, es hora de tomar el control del agua que usamos. Con Aguacero, cada gota cuenta, cada fuga se encuentra.",
+ "segments": [
+  {
+   "start": 0.46,
+   "end": 5.46,
+   "text": "¡Manto el 30% del agua potable del mundo se pierde en las redes de distribución!"
+  },
+  {
+   "start": 5.46,
+   "end": 10.66,
+   "text": "Pues si cada día millones de litros de agua se escapan por fuga en nuestras redes de tubería,"
+  },
+  {
+   "start": 10.66,
+   "end": 12.46,
+   "text": "no lo vemos pero pagamos por ello."
+  },
+  {
+   "start": 12.46,
+   "end": 17.46,
+   "text": "Y si pudiéramos encontrarlos rápido sin romper caiz de dinar donde cavar, detectarlo hoy"
+  },
+  {
+   "start": 17.46,
+   "end": 20.86,
+   "text": "es costoso y lento, dejando agua y dinero desperdiciado."
+  },
+  {
+   "start": 20.86,
+   "end": 25.3,
+   "text": "Por esto presentamos Agua Cero, un pack completo con un dispositivo IDOTE llamado Ojo de"
+  },
+  {
+   "start": 25.3,
+   "end": 28.3,
+   "text": "Agua, no invasivo, autónomo y debajo costo."
+  },
+  {
+   "start": 28.3,
+   "end": 34.3,
+   "text": "El pack incluye la capsula Ojo de Agua, el gateway con amplificador y la app que procesa los datos para detectar fugas."
+  },
+  {
+   "start": 34.3,
+   "end": 39.3,
+   "text": "La app muestra consumo en tiempo real, historial de cauda y presión, alerta automáticas,"
+  },
+  {
+   "start": 39.3,
+   "end": 42.3,
+   "text": "reportes comunitarios y estadísticas por vivienda o sector."
+  },
+  {
+   "start": 42.3,
+   "end": 47.3,
+   "text": "Si oígaste mucho más que ayer o que la semana pasada, esta señal es de que probablemente hay una fuga."
+  },
+  {
+   "start": 47.3,
+   "end": 50.3,
+   "text": "Cuando se detecta una posible perdida, entres la capsula y la tubería,"
+  },
+  {
+   "start": 50.3,
+   "end": 53.3,
+   "text": "mediante un adaptador simple sin cortar su inicio."
+  },
+  {
+   "start": 53.3,
+   "end": 58.3,
+   "text": "La capsula registra velocidad del agua, presión y giro en curva o difuscaciones mientras recorre la tubería,"
+  },
+  {
+   "start": 58.3,
+   "end": 61.3,
+   "text": "enviando datos en tiempo real al gateway."
+  },
+  {
+   "start": 61.3,
+   "end": 67.3,
+   "text": "La app reconstruye las trazas en la tubería, aplica inteligencia artificial y marca el tramo probable de la fuga,"
+  },
+  {
+   "start": 67.3,
+   "end": 69.3,
+   "text": "mostrando el nivel de confianza."
+  },
+  {
+   "start": 69.3,
+   "end": 75.3,
+   "text": "La capsula se puede recuperar de manera flexible, por la salida, con maya y man o estación de captura."
+  },
+  {
+   "start": 75.3,
+   "end": 82.3,
+   "text": "Ahora imagina varias capsulas recorriendo tramos, con gateway estratégico y una entidad operadora que coordina reparaciones."
+  },
+  {
+   "start": 82.3,
+   "end": 87.3,
+   "text": "La app muestra un mapa de fugas y el consumo de cada nudo, cubriendo barrios y escabar a ciegas."
+  },
+  {
+   "start": 87.3,
+   "end": 91.3,
+   "text": "Con inteligencia artificial, Aguacero puede anticipar hasta el 80% de la fuga,"
+  },
+  {
+   "start": 91.3,
+   "end": 98.3,
+   "text": "reduciendo perdida entre el 30 y el 55%, generando ahorros, datos precisos y control del agua para usuario y autoridad,"
+  },
+  {
+   "start": 98.3,
+   "end": 100.3,
+   "text": "siendo una solución rentable."
+  },
+  {
+   "start": 100.3,
+   "end": 105.3,
+   "text": "Aguacero apoya a los ODS-6, O11, O2 y O13, asegurando agua limpia, ciudad de sostenible,"
+  },
+  {
+   "start": 105.3,
+   "end": 110.3,
+   "text": "uso responsable de recursos y reducción de misiones, optimizando costo y conciencia ambiental."
+  },
+  {
+   "start": 110.3,
+   "end": 115.3,
+   "text": "Aguacero hace misiles de la fuga inisible, es hora de tomar el control del agua que usamos."
+  },
+  {
+   "start": 115.3,
+   "end": 118.3,
+   "text": "Con Aguacero, cada gota cuenta, cada fuga se encuentra."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 118.9
+}

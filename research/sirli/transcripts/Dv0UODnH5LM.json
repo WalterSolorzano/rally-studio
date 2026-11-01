@@ -1,0 +1,112 @@
+{
+ "video_id": "Dv0UODnH5LM",
+ "url": "https://youtu.be/Dv0UODnH5LM",
+ "year": 2025,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "CREATECH",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "CREATECH",
+   "challenge": "04 - SISTEMA DE ALERTA TEMPRANA"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:57:06+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Sabías que cada año miles de hectáreas de bosque argentino se pierden por incendios que podrían haberse evitado? Las alertas llegan tarde, la información no circula, las comunidades quedan expuestas, el cambio climático acelera los riesgos, pero los sistemas de prevención siguen siendo lentos, desconectados y poco accesibles. ¿Cómo protegemos lo que aún podemos salvar? EcoAlertar es una propuesta tecnológica, comunitaria y territorial, un sistema de alerta temprana que combina sensores inteligentes, protocolos regionales y comunicación directa con la ciudadanía. El dispositivo funciona con energía solar, sin cables y se instala fácilmente en zonas forestales. Detecta variaciones térmicas y ambientales en tiempo real y emite alertas visuales y digitales. Notifica la estación de bomberos más cercanas sobre las probabilidades de incendio y en caso de que se inicie uno, envía las coordenadas del lugar al mismo tiempo que alerta a los usuarios de la aplicación para que evacúen la zona. La aplicación Ciudadana permite recibir alertas, reportar focos y participar activamente en la prevención. EcoAlertar no es sólo tecnología, es comunidad, es educación, es acción, porque cuidar nuestros bosques es cuidar nuestra identidad y porque el futuro se construye con innovación que respeta el territorio. Si querés más información, contacta nos.",
+ "segments": [
+  {
+   "start": 0.37,
+   "end": 6.37,
+   "text": "¿Sabías que cada año miles de hectáreas de bosque argentino se pierden por incendios que podrían haberse evitado?"
+  },
+  {
+   "start": 6.37,
+   "end": 13.37,
+   "text": "Las alertas llegan tarde, la información no circula, las comunidades quedan expuestas,"
+  },
+  {
+   "start": 13.37,
+   "end": 19.37,
+   "text": "el cambio climático acelera los riesgos, pero los sistemas de prevención siguen siendo lentos,"
+  },
+  {
+   "start": 19.37,
+   "end": 22.37,
+   "text": "desconectados y poco accesibles."
+  },
+  {
+   "start": 22.37,
+   "end": 25.37,
+   "text": "¿Cómo protegemos lo que aún podemos salvar?"
+  },
+  {
+   "start": 25.37,
+   "end": 34.29,
+   "text": "EcoAlertar es una propuesta tecnológica, comunitaria y territorial,"
+  },
+  {
+   "start": 34.29,
+   "end": 44.29,
+   "text": "un sistema de alerta temprana que combina sensores inteligentes, protocolos regionales y comunicación directa con la ciudadanía."
+  },
+  {
+   "start": 44.29,
+   "end": 52.29,
+   "text": "El dispositivo funciona con energía solar, sin cables y se instala fácilmente en zonas forestales."
+  },
+  {
+   "start": 52.29,
+   "end": 60.29,
+   "text": "Detecta variaciones térmicas y ambientales en tiempo real y emite alertas visuales y digitales."
+  },
+  {
+   "start": 60.29,
+   "end": 66.29,
+   "text": "Notifica la estación de bomberos más cercanas sobre las probabilidades de incendio"
+  },
+  {
+   "start": 66.29,
+   "end": 72.29,
+   "text": "y en caso de que se inicie uno, envía las coordenadas del lugar al mismo tiempo"
+  },
+  {
+   "start": 72.29,
+   "end": 77.29,
+   "text": "que alerta a los usuarios de la aplicación para que evacúen la zona."
+  },
+  {
+   "start": 78.29,
+   "end": 87.29,
+   "text": "La aplicación Ciudadana permite recibir alertas, reportar focos y participar activamente en la prevención."
+  },
+  {
+   "start": 87.29,
+   "end": 94.29,
+   "text": "EcoAlertar no es sólo tecnología, es comunidad, es educación, es acción,"
+  },
+  {
+   "start": 94.29,
+   "end": 98.29,
+   "text": "porque cuidar nuestros bosques es cuidar nuestra identidad"
+  },
+  {
+   "start": 98.29,
+   "end": 105.29,
+   "text": "y porque el futuro se construye con innovación que respeta el territorio."
+  },
+  {
+   "start": 105.29,
+   "end": 108.29,
+   "text": "Si querés más información, contacta nos."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 115.6
+}

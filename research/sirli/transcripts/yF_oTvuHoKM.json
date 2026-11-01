@@ -1,0 +1,147 @@
+{
+ "video_id": "yF_oTvuHoKM",
+ "url": "https://www.youtube.com/watch?v=yF_oTvuHoKM",
+ "year": 2023,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "DILIGENTES",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "DILIGENTES",
+   "challenge": "08 - TRATAR DE ESTAR MEJOR"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:51:40+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En Argentina, a pesar de los esfuerzos y recursos destinados, enfrentamos un desafío monumental, mejorar la cobertura y eficiencia del sistema de salud mental, especialmente para nuestros adolescentes. Los profesionales, aunque dedicados, a menudo se encuentran sobrepasados y la cobertura no llega a todos. En este panorama, muchos jóvenes, en su momento más vulnerable, quedan sin el apoyo que desesperadamente necesitan. ¿Cómo podemos garantizar que cada adolescente tenga acceso a la atención que merece? ¿Cómo podemos potenciar la eficiencia de nuestros profesionales de salud mental y ayudarles a priorizar a aquellos pacientes que más lo necesitan? Te presentamos Sanamente, una solución innovadora diseñada para abordar estas cuestiones en el corazón de Cava, con el potencial de impactar a más de 200.000 alumnos y asistir a 5.000 terapéutas. Esta plataforma, pensada para ser introducidas en colegios, se centra en una IA avanzada que interactúa mediante texto y videollamada. Sanamente utiliza tecnologías de vanguardia para analizar expresiones faciales y tonos de voz, proporcionando respuestas personalizadas y recopilando datos vitales para los profesionales. Esta información es crucial para que los terapéutas puedan identificar y priorizar a aquellos pacientes que requieren atención inmediata. El proceso es sencillo, el adolescente interactúa con la inteligencia artificial, el sistema comprende y responde y estos datos son utilizados para mejorar la eficiencia de los profesionales, permitiendo intervenciones más precisas y efectivas. Sanamente no es solo una herramienta tecnológica, es un puente hacia un sistema de salud mental más inclusivo y eficiente, es robusta, escalable y sobretodo esencial. El costo del proyecto es una fracción del presupuesto nacional y estamos seguros de que el impacto será real y efectivo en la mejora de la salud mental de la población. Argentina es hora de priorizar la salud mental de nuestros jóvenes, consanamente damos un paso adelante en esa dirección porque cada mente importa y juntos podemos hacer la diferencia.",
+ "segments": [
+  {
+   "start": 0.05,
+   "end": 6.79,
+   "text": "En Argentina, a pesar de los esfuerzos y recursos destinados, enfrentamos un desafío monumental,"
+  },
+  {
+   "start": 6.79,
+   "end": 11.29,
+   "text": "mejorar la cobertura y eficiencia del sistema de salud mental, especialmente para nuestros"
+  },
+  {
+   "start": 11.29,
+   "end": 17.41,
+   "text": "adolescentes. Los profesionales, aunque dedicados, a menudo se encuentran sobrepasados y la cobertura"
+  },
+  {
+   "start": 17.41,
+   "end": 22.37,
+   "text": "no llega a todos. En este panorama, muchos jóvenes, en su momento más vulnerable,"
+  },
+  {
+   "start": 22.37,
+   "end": 25.29,
+   "text": "quedan sin el apoyo que desesperadamente necesitan."
+  },
+  {
+   "start": 25.45,
+   "end": 30.29,
+   "text": "¿Cómo podemos garantizar que cada adolescente tenga acceso a la atención que merece? ¿Cómo"
+  },
+  {
+   "start": 30.29,
+   "end": 35.81,
+   "text": "podemos potenciar la eficiencia de nuestros profesionales de salud mental y ayudarles a priorizar"
+  },
+  {
+   "start": 35.81,
+   "end": 38.37,
+   "text": "a aquellos pacientes que más lo necesitan?"
+  },
+  {
+   "start": 38.37,
+   "end": 44.01,
+   "text": "Te presentamos Sanamente, una solución innovadora diseñada para abordar estas cuestiones en"
+  },
+  {
+   "start": 44.01,
+   "end": 48.97,
+   "text": "el corazón de Cava, con el potencial de impactar a más de 200.000 alumnos y asistir"
+  },
+  {
+   "start": 48.97,
+   "end": 54.45,
+   "text": "a 5.000 terapéutas. Esta plataforma, pensada para ser introducidas en colegios, se"
+  },
+  {
+   "start": 54.49,
+   "end": 60.49,
+   "text": "centra en una IA avanzada que interactúa mediante texto y videollamada. Sanamente utiliza"
+  },
+  {
+   "start": 60.49,
+   "end": 66.13,
+   "text": "tecnologías de vanguardia para analizar expresiones faciales y tonos de voz, proporcionando respuestas"
+  },
+  {
+   "start": 66.13,
+   "end": 71.49,
+   "text": "personalizadas y recopilando datos vitales para los profesionales. Esta información"
+  },
+  {
+   "start": 71.49,
+   "end": 76.13,
+   "text": "es crucial para que los terapéutas puedan identificar y priorizar a aquellos pacientes"
+  },
+  {
+   "start": 76.13,
+   "end": 80.57,
+   "text": "que requieren atención inmediata. El proceso es sencillo, el adolescente interactúa"
+  },
+  {
+   "start": 80.73,
+   "end": 86.05,
+   "text": "con la inteligencia artificial, el sistema comprende y responde y estos datos son utilizados"
+  },
+  {
+   "start": 86.05,
+   "end": 90.65,
+   "text": "para mejorar la eficiencia de los profesionales, permitiendo intervenciones más precisas"
+  },
+  {
+   "start": 90.65,
+   "end": 96.17,
+   "text": "y efectivas. Sanamente no es solo una herramienta tecnológica, es un puente hacia un sistema"
+  },
+  {
+   "start": 96.17,
+   "end": 102.05,
+   "text": "de salud mental más inclusivo y eficiente, es robusta, escalable y sobretodo esencial."
+  },
+  {
+   "start": 102.05,
+   "end": 105.81,
+   "text": "El costo del proyecto es una fracción del presupuesto nacional y estamos seguros"
+  },
+  {
+   "start": 105.81,
+   "end": 110.33,
+   "text": "de que el impacto será real y efectivo en la mejora de la salud mental de la población."
+  },
+  {
+   "start": 110.33,
+   "end": 116.77,
+   "text": "Argentina es hora de priorizar la salud mental de nuestros jóvenes, consanamente damos un paso"
+  },
+  {
+   "start": 116.77,
+   "end": 121.65,
+   "text": "adelante en esa dirección porque cada mente importa y juntos podemos hacer la diferencia."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 124.0
+}

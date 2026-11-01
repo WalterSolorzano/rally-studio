@@ -1,0 +1,109 @@
+{
+ "video_id": "ZVmnDpTWMys",
+ "url": "https://www.youtube.com/watch?v=ZVmnDpTWMys&feature=youtu.be",
+ "year": 2019,
+ "collection": "nacional",
+ "country": "COLOMBIA",
+ "team": "LA JUNTA Y ASOCIADOS.",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2019,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "LA JUNTA Y ASOCIADOS.",
+   "challenge": "03 - S.O.S. AQUÍ ESTOY!"
+  },
+  {
+   "year": 2019,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "LA JUNTA Y ASOCIADOS.",
+   "challenge": "03 - S.O.S. AQUÍ ESTOY!"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:23:13+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Chile es el país latinoamericano más propenso a sufrir un desastre natural de tipo sísmico, ya que se encuentra ubicado justo al límite de la placa tectónica de Nasca, que choca contra la placa sudamericana. Esta fricción constante entre ambos bloques hace que la región sea una de las más sísmicas del mundo, y aunque esto es sabido por los científicos, resulta imposible anticipar cuándo puede ocurrir y su magnitud. A pesar de los esfuerzos para prevenir y concientizar a la población ante este tipo de desastres, a la hora del rescate se ha dificultado encontrar y localizar a las personas o sus cuerpos. Con la ayuda del Ministerio del Interior y Seguridad Pública de Chile, al momento de un sismo se hará uso del SAE, Sistema de Alerta de Emergencia, que es actualmente implementado. Para esto se envía la señal a los accesorios inteligentes rescue, que emiten ondas intermitentes coordinadas con el ritmo cardiaco. Para priorizar de esta manera el rescate, teniendo en cuenta que a mayor frecuencia mayor ritmo cardiaco. Estos accesorios tienen también una función de iluminación que se activa para reconfortar, recordando al usuario que está siendo buscado. Y de ser necesario también provee la identificación del usuario. La línea de accesorios rescue incluye elementos tales como anillos, pulseras, collares, entre otros.",
+ "segments": [
+  {
+   "start": 0.24,
+   "end": 6.12,
+   "text": "Chile es el país latinoamericano más propenso a sufrir un desastre natural de tipo sísmico,"
+  },
+  {
+   "start": 6.12,
+   "end": 10.72,
+   "text": "ya que se encuentra ubicado justo al límite de la placa tectónica de Nasca, que choca"
+  },
+  {
+   "start": 10.72,
+   "end": 16.02,
+   "text": "contra la placa sudamericana. Esta fricción constante entre ambos bloques hace que la"
+  },
+  {
+   "start": 16.02,
+   "end": 21.68,
+   "text": "región sea una de las más sísmicas del mundo, y aunque esto es sabido por los científicos,"
+  },
+  {
+   "start": 21.68,
+   "end": 27.16,
+   "text": "resulta imposible anticipar cuándo puede ocurrir y su magnitud. A pesar de los esfuerzos"
+  },
+  {
+   "start": 27.16,
+   "end": 32.8,
+   "text": "para prevenir y concientizar a la población ante este tipo de desastres, a la hora del rescate"
+  },
+  {
+   "start": 32.8,
+   "end": 36.68,
+   "text": "se ha dificultado encontrar y localizar a las personas o sus cuerpos."
+  },
+  {
+   "start": 37.96,
+   "end": 43.6,
+   "text": "Con la ayuda del Ministerio del Interior y Seguridad Pública de Chile, al momento de un sismo se hará"
+  },
+  {
+   "start": 43.6,
+   "end": 50.08,
+   "text": "uso del SAE, Sistema de Alerta de Emergencia, que es actualmente implementado. Para esto se envía"
+  },
+  {
+   "start": 50.08,
+   "end": 55.88,
+   "text": "la señal a los accesorios inteligentes rescue, que emiten ondas intermitentes coordinadas con"
+  },
+  {
+   "start": 55.88,
+   "end": 61.52,
+   "text": "el ritmo cardiaco. Para priorizar de esta manera el rescate, teniendo en cuenta que a mayor frecuencia"
+  },
+  {
+   "start": 61.52,
+   "end": 67.28,
+   "text": "mayor ritmo cardiaco. Estos accesorios tienen también una función de iluminación que se activa"
+  },
+  {
+   "start": 67.28,
+   "end": 73.24,
+   "text": "para reconfortar, recordando al usuario que está siendo buscado. Y de ser necesario también"
+  },
+  {
+   "start": 73.24,
+   "end": 79.08,
+   "text": "provee la identificación del usuario. La línea de accesorios rescue incluye elementos tales"
+  },
+  {
+   "start": 79.08,
+   "end": 81.96,
+   "text": "como anillos, pulseras, collares, entre otros."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 83.8
+}

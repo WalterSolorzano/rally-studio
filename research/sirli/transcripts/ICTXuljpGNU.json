@@ -1,0 +1,142 @@
+{
+ "video_id": "ICTXuljpGNU",
+ "url": "https://youtu.be/ICTXuljpGNU",
+ "year": 2023,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "KAIZEN NOVA",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "KAIZEN NOVA",
+   "challenge": "06 - REVALORIZACIÓN RESIDUOS"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:26:30+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Sabías que en América Latina los residuos cítricos pueden ser revalorizados? El procesamiento de cítricos produce grandes volúmenes de residuos, que al no aprovecharse adecuadamente, pierden la oportunidad de transformarse en productos útiles que generen ingresos adicionales. Es por ello que se propone agrocitral, un innovador proceso productivo que a partir de los residuos de frutas cítricas se elaboran cuatro subproductos. 1. Suplemento alimenticio para carinos y boginos a base de fibra cítrica. 2. Bio óleos para comercializar a empresas de la industria de higiene y cuidado personal. 3. Bio repelentes en espiral y cuatro infusiones para el público en general. La materia prima se adquirirá a través de socios claves como mercados y plantas de productos cítricos que ofrezcan altas salidas de residuos y con la colaboración de instituciones competentes para la concesión de permisos de comercialización, usando un canal de distribución directo a través de la plataforma web agrocitral e indirectos a través de supermercados. La propuesta tiene un valor que alcanza el nivel regional al ser un problema real al que se enfrentan muchos países. A corto plazo, la revalorización de residuos cítricos introducirá nuevos productos con características amigables con el ambiente, tanto en su proceso de producción como en su producto final. A mediano plazo, la salud de las mascotas caninas mejorará significativamente y la alimentación de bobinos ya que no en toda la región se produce caña y esta alternativa adquiere mayor fuerza. Finalmente, a largo plazo, se reducirá la contaminación provocada por residuos cítricos al igual que el gasto público destinado al saneamiento de residuos sólidos en vertederos.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 5.68,
+   "text": "¿Sabías que en América Latina los residuos cítricos pueden ser revalorizados?"
+  },
+  {
+   "start": 5.68,
+   "end": 10.68,
+   "text": "El procesamiento de cítricos produce grandes volúmenes de residuos,"
+  },
+  {
+   "start": 10.68,
+   "end": 13.02,
+   "text": "que al no aprovecharse adecuadamente,"
+  },
+  {
+   "start": 13.02,
+   "end": 19.44,
+   "text": "pierden la oportunidad de transformarse en productos útiles que generen ingresos adicionales."
+  },
+  {
+   "start": 19.44,
+   "end": 23.0,
+   "text": "Es por ello que se propone agrocitral,"
+  },
+  {
+   "start": 23.0,
+   "end": 28.6,
+   "text": "un innovador proceso productivo que a partir de los residuos de frutas cítricas"
+  },
+  {
+   "start": 28.6,
+   "end": 30.96,
+   "text": "se elaboran cuatro subproductos."
+  },
+  {
+   "start": 30.96,
+   "end": 36.32,
+   "text": "1. Suplemento alimenticio para carinos y boginos a base de fibra cítrica."
+  },
+  {
+   "start": 36.32,
+   "end": 42.04,
+   "text": "2. Bio óleos para comercializar a empresas de la industria de higiene y cuidado personal."
+  },
+  {
+   "start": 42.04,
+   "end": 48.4,
+   "text": "3. Bio repelentes en espiral y cuatro infusiones para el público en general."
+  },
+  {
+   "start": 48.4,
+   "end": 54.32,
+   "text": "La materia prima se adquirirá a través de socios claves como mercados y plantas"
+  },
+  {
+   "start": 54.32,
+   "end": 60.36,
+   "text": "de productos cítricos que ofrezcan altas salidas de residuos y con la colaboración de"
+  },
+  {
+   "start": 60.36,
+   "end": 64.84,
+   "text": "instituciones competentes para la concesión de permisos de comercialización,"
+  },
+  {
+   "start": 64.84,
+   "end": 69.92,
+   "text": "usando un canal de distribución directo a través de la plataforma web agrocitral"
+  },
+  {
+   "start": 69.92,
+   "end": 72.64,
+   "text": "e indirectos a través de supermercados."
+  },
+  {
+   "start": 72.64,
+   "end": 80.0,
+   "text": "La propuesta tiene un valor que alcanza el nivel regional al ser un problema real al que"
+  },
+  {
+   "start": 80.0,
+   "end": 82.04,
+   "text": "se enfrentan muchos países."
+  },
+  {
+   "start": 82.48,
+   "end": 88.88,
+   "text": "A corto plazo, la revalorización de residuos cítricos introducirá nuevos productos con"
+  },
+  {
+   "start": 88.88,
+   "end": 95.84,
+   "text": "características amigables con el ambiente, tanto en su proceso de producción como en su producto"
+  },
+  {
+   "start": 95.84,
+   "end": 102.68,
+   "text": "final. A mediano plazo, la salud de las mascotas caninas mejorará significativamente y la"
+  },
+  {
+   "start": 102.68,
+   "end": 108.36,
+   "text": "alimentación de bobinos ya que no en toda la región se produce caña y esta alternativa"
+  },
+  {
+   "start": 108.4,
+   "end": 115.08,
+   "text": "adquiere mayor fuerza. Finalmente, a largo plazo, se reducirá la contaminación provocada por residuos"
+  },
+  {
+   "start": 115.08,
+   "end": 120.72,
+   "text": "cítricos al igual que el gasto público destinado al saneamiento de residuos sólidos en vertederos."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 121.1
+}

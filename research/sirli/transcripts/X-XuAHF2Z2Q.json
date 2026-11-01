@@ -1,0 +1,127 @@
+{
+ "video_id": "X-XuAHF2Z2Q",
+ "url": "https://www.youtube.com/watch?v=X-XuAHF2Z2Q",
+ "year": 2023,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "GENIOS DEL FUTURO",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "GENIOS DEL FUTURO",
+   "challenge": "07 - CROWDSENSING"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:22:01+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Las ciudades inteligentes aprovechan tecnologías avanzadas como sensores, tecnología de las cosas y análisis de datos para mejorar la calidad de vida de sus habitantes en área como el transporte, la energía, la seguridad y la sostenibilidad ambiental, promoviendo la conectividad y la participación ciudadana. Sin embargo, enfrentan desafíos relacionados con la privacidad y la seguridad de los datos recopilados, lo que requiere un enfoque centrado en proteger la información y la participación activa de los usuarios en la toma de decisiones y políticas públicas tecnológicas para garantizar un entorno eficiente y adaptado a las necesidades de la comunidad. Se planea implementar una aplicación inamovible en dispositivos Android que instalarán proveedores de servicios al activar nuevo dispositivo, la cual tendrá un seguimiento por el ente regulador de telecomunicaciones, con términos y condiciones obligatorios para la recolección de datos limitadas a sensores del dispositivo, conservando la privacidad de los usuarios. Esta aplicación se distingue al ofrecer alertas ante desastres naturales entre otros servicios de emergencia y la ubicación en tiempo real para la respuesta rápida. Dispondrá de seguridad como bloqueo y seguimiento en caso de pérdidas. Utilizará tecnologías de Amazon Web Service desarrollada en Android Studio con lenguajes de programación en Python, Java o JavaScript para la recopilación y el procesamiento de datos.",
+ "segments": [
+  {
+   "start": 9.17,
+   "end": 13.53,
+   "text": "Las ciudades inteligentes aprovechan tecnologías avanzadas como sensores,"
+  },
+  {
+   "start": 13.53,
+   "end": 18.17,
+   "text": "tecnología de las cosas y análisis de datos para mejorar la calidad de vida de sus"
+  },
+  {
+   "start": 18.17,
+   "end": 23.81,
+   "text": "habitantes en área como el transporte, la energía, la seguridad y la sostenibilidad"
+  },
+  {
+   "start": 23.81,
+   "end": 28.73,
+   "text": "ambiental, promoviendo la conectividad y la participación ciudadana."
+  },
+  {
+   "start": 28.73,
+   "end": 33.01,
+   "text": "Sin embargo, enfrentan desafíos relacionados con la privacidad y la"
+  },
+  {
+   "start": 33.01,
+   "end": 38.33,
+   "text": "seguridad de los datos recopilados, lo que requiere un enfoque centrado en"
+  },
+  {
+   "start": 38.33,
+   "end": 42.37,
+   "text": "proteger la información y la participación activa de los usuarios en"
+  },
+  {
+   "start": 42.37,
+   "end": 47.33,
+   "text": "la toma de decisiones y políticas públicas tecnológicas para garantizar un"
+  },
+  {
+   "start": 47.33,
+   "end": 52.05,
+   "text": "entorno eficiente y adaptado a las necesidades de la comunidad."
+  },
+  {
+   "start": 52.05,
+   "end": 57.01,
+   "text": "Se planea implementar una aplicación inamovible en dispositivos Android que"
+  },
+  {
+   "start": 57.01,
+   "end": 62.05,
+   "text": "instalarán proveedores de servicios al activar nuevo dispositivo, la cual"
+  },
+  {
+   "start": 62.05,
+   "end": 66.77,
+   "text": "tendrá un seguimiento por el ente regulador de telecomunicaciones, con"
+  },
+  {
+   "start": 66.81,
+   "end": 72.61,
+   "text": "términos y condiciones obligatorios para la recolección de datos limitadas a"
+  },
+  {
+   "start": 72.61,
+   "end": 77.81,
+   "text": "sensores del dispositivo, conservando la privacidad de los usuarios."
+  },
+  {
+   "start": 77.81,
+   "end": 82.93,
+   "text": "Esta aplicación se distingue al ofrecer alertas ante desastres naturales"
+  },
+  {
+   "start": 82.93,
+   "end": 87.89,
+   "text": "entre otros servicios de emergencia y la ubicación en tiempo real para la"
+  },
+  {
+   "start": 87.89,
+   "end": 92.13,
+   "text": "respuesta rápida. Dispondrá de seguridad como bloqueo y"
+  },
+  {
+   "start": 92.21,
+   "end": 96.81,
+   "text": "seguimiento en caso de pérdidas. Utilizará tecnologías de Amazon Web"
+  },
+  {
+   "start": 96.81,
+   "end": 102.09,
+   "text": "Service desarrollada en Android Studio con lenguajes de programación en Python,"
+  },
+  {
+   "start": 102.09,
+   "end": 107.65,
+   "text": "Java o JavaScript para la recopilación y el procesamiento de datos."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 109.6
+}

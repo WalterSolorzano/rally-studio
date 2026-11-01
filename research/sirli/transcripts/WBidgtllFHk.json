@@ -1,0 +1,107 @@
+{
+ "video_id": "WBidgtllFHk",
+ "url": "https://youtu.be/WBidgtllFHk",
+ "year": 2021,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "HALCONES DE AZUL",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "HALCONES DE AZUL",
+   "challenge": "09 - IDENTIFICADOR PRÁCTICO Y ECONÓMICO DEL AEROSOL DE CO2 EN ESPACIOS CERRADOS"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:56:01+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "El aislamiento está terminando, pero la pandemia aún continúa. Como se sabe, el principal medio de transporte del SARS-CoV-2 es por medio del aire y sobre todo en espacios cerrados con alameración de personas. Con el actor regreso a clases, los alumnos y maestros exponen a un mayor riesgo de contagio. El ser humano al respirar permite la entrada de oxígeno y sale como el áxido de carbono. Al haber un número significativo de personas en una habitación, el yóxido de carbono se acumula y resulta peligroso para la salud. Pregnando el aumento de contagios por COVID, ¿sino lo ofrecemos? Y decé un dispositivo que consta un sensor MQ-135 que detecta la concentración del yóxido de carbono en unidades partes por millón. Let'sca permite identificarlo, refiriéndose a estos. ¿Cómo? Verde, significa bueno, que va desde 350 a 500 partes por millón. Amarillo, medio, que se refiere a 600 partes por millón. Y rojo, malo. Cuando los niveles superan los 1200 partes por millón, se activará un sistema de alarma por medio de un zumbador y automáticamente un módulo GMS mandará una notificación vía mensaje de texto al propietario. Visitemos nuestro sitio web IDC y también síguenos en nuestras redes sociales. Nos encontrarás en Facebook e Instagram como IDC.",
+ "segments": [
+  {
+   "start": 13.3,
+   "end": 18.3,
+   "text": "El aislamiento está terminando, pero la pandemia aún continúa."
+  },
+  {
+   "start": 18.3,
+   "end": 26.3,
+   "text": "Como se sabe, el principal medio de transporte del SARS-CoV-2 es por medio del aire y sobre todo en espacios cerrados con alameración de personas."
+  },
+  {
+   "start": 26.3,
+   "end": 31.3,
+   "text": "Con el actor regreso a clases, los alumnos y maestros exponen a un mayor riesgo de contagio."
+  },
+  {
+   "start": 33.99,
+   "end": 37.99,
+   "text": "El ser humano al respirar permite la entrada de oxígeno y sale como el áxido de carbono."
+  },
+  {
+   "start": 37.99,
+   "end": 44.99,
+   "text": "Al haber un número significativo de personas en una habitación, el yóxido de carbono se acumula y resulta peligroso para la salud."
+  },
+  {
+   "start": 44.99,
+   "end": 48.99,
+   "text": "Pregnando el aumento de contagios por COVID, ¿sino lo ofrecemos?"
+  },
+  {
+   "start": 48.99,
+   "end": 57.99,
+   "text": "Y decé un dispositivo que consta un sensor MQ-135 que detecta la concentración del yóxido de carbono en unidades partes por millón."
+  },
+  {
+   "start": 57.99,
+   "end": 60.99,
+   "text": "Let'sca permite identificarlo, refiriéndose a estos."
+  },
+  {
+   "start": 60.99,
+   "end": 61.99,
+   "text": "¿Cómo?"
+  },
+  {
+   "start": 61.99,
+   "end": 66.99,
+   "text": "Verde, significa bueno, que va desde 350 a 500 partes por millón."
+  },
+  {
+   "start": 66.99,
+   "end": 69.99,
+   "text": "Amarillo, medio, que se refiere a 600 partes por millón."
+  },
+  {
+   "start": 69.99,
+   "end": 71.99,
+   "text": "Y rojo, malo."
+  },
+  {
+   "start": 71.99,
+   "end": 77.99,
+   "text": "Cuando los niveles superan los 1200 partes por millón, se activará un sistema de alarma por medio de un zumbador"
+  },
+  {
+   "start": 77.99,
+   "end": 84.99,
+   "text": "y automáticamente un módulo GMS mandará una notificación vía mensaje de texto al propietario."
+  },
+  {
+   "start": 84.99,
+   "end": 89.99,
+   "text": "Visitemos nuestro sitio web IDC y también síguenos en nuestras redes sociales."
+  },
+  {
+   "start": 89.99,
+   "end": 93.99,
+   "text": "Nos encontrarás en Facebook e Instagram como IDC."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 99.3
+}

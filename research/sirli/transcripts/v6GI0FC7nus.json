@@ -1,0 +1,132 @@
+{
+ "video_id": "v6GI0FC7nus",
+ "url": "https://www.youtube.com/watch?v=v6GI0FC7nus&feature=youtu.be",
+ "year": 2026,
+ "collection": "sede",
+ "country": "COLOMBIA",
+ "team": "SIIMA NEXUS IEEE",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "SIIMA NEXUS IEEE",
+   "challenge": "08 - DESECHOS DE BASURA VERDE"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:42:50+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Sabían que el mundo enfrenta su primera gran ola de desechos solares? Según la unidad de planeación mineral energética de Colombia, en los últimos años se enfrenta a una creciente de bola de residuos fotovoltaicos debido al fin de la vida útil comercial de millones de paneles solares instalados durante las últimas décadas. Mientras tanto, miles de agricultores en nuestras regiones pierden sus cosechas por sequías, radiación extrema y el alto costo de volviar agua. Para solucionarlo, creamos ecopanelagro. Mediante el diseño paramétrico en SolidWare, desarrollamos una estructura de 3 metros de altura a 15 grados de inclinación, que reutiliza paneles al 70% de eficiencia, generando sombra controlada que protege el cultivo y retiene la humedad del suelo. ¿Cómo hacemos que sea financieramente sostenible? Aterrizándolo a normativas como la colombiana mediante un trángulo ganar-ganar. Hoy la ley ambiental obliga a las generadoras a gastar millones para destruir sus paneles viejos. Nosotros proponemos recibirlos como donación, así la empresa se ahorra el 100% del costo de destrucción, recibe un 25% de descuento en su impuesto de renta y con ese ahorro financia nuestra recolección. A su vez, el agricultor recibe un sistema de riego más económico que uno nuevo, libre de IVA y financiable con crédito verde. Paneles solares de segundo uso, conectados en serie. Esa energía pasa primero por una caja de protección que cuida los equipos y permite desconectar el sistema con seguridad. Luego llega un variador que adapta la energía para que la bomba funcione mejor según la cantidad del sol que haya. La bomba toma el agua de la fuente y la sube a un tanque elevado, desde cuando se riega el por gravedad. Cuando el tanque se llena un flota oraviza y la bomba se detiene sola. Además, todos los equipos metálicos están conectados a tierra para que el sistema sea seguro.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 3.84,
+   "text": "¿Sabían que el mundo enfrenta su primera gran ola de desechos solares?"
+  },
+  {
+   "start": 3.84,
+   "end": 7.44,
+   "text": "Según la unidad de planeación mineral energética de Colombia,"
+  },
+  {
+   "start": 7.44,
+   "end": 12.04,
+   "text": "en los últimos años se enfrenta a una creciente de bola de residuos fotovoltaicos"
+  },
+  {
+   "start": 12.04,
+   "end": 19.16,
+   "text": "debido al fin de la vida útil comercial de millones de paneles solares instalados durante las últimas décadas."
+  },
+  {
+   "start": 19.16,
+   "end": 24.72,
+   "text": "Mientras tanto, miles de agricultores en nuestras regiones pierden sus cosechas por sequías,"
+  },
+  {
+   "start": 24.72,
+   "end": 28.92,
+   "text": "radiación extrema y el alto costo de volviar agua."
+  },
+  {
+   "start": 28.92,
+   "end": 32.92,
+   "text": "Para solucionarlo, creamos ecopanelagro."
+  },
+  {
+   "start": 32.92,
+   "end": 40.92,
+   "text": "Mediante el diseño paramétrico en SolidWare, desarrollamos una estructura de 3 metros de altura a 15 grados de inclinación,"
+  },
+  {
+   "start": 40.92,
+   "end": 50.72,
+   "text": "que reutiliza paneles al 70% de eficiencia, generando sombra controlada que protege el cultivo y retiene la humedad del suelo."
+  },
+  {
+   "start": 50.72,
+   "end": 53.92,
+   "text": "¿Cómo hacemos que sea financieramente sostenible?"
+  },
+  {
+   "start": 53.92,
+   "end": 58.84,
+   "text": "Aterrizándolo a normativas como la colombiana mediante un trángulo ganar-ganar."
+  },
+  {
+   "start": 58.84,
+   "end": 64.84,
+   "text": "Hoy la ley ambiental obliga a las generadoras a gastar millones para destruir sus paneles viejos."
+  },
+  {
+   "start": 64.84,
+   "end": 70.84,
+   "text": "Nosotros proponemos recibirlos como donación, así la empresa se ahorra el 100% del costo de destrucción,"
+  },
+  {
+   "start": 70.84,
+   "end": 78.84,
+   "text": "recibe un 25% de descuento en su impuesto de renta y con ese ahorro financia nuestra recolección."
+  },
+  {
+   "start": 78.84,
+   "end": 86.84,
+   "text": "A su vez, el agricultor recibe un sistema de riego más económico que uno nuevo, libre de IVA y financiable con crédito verde."
+  },
+  {
+   "start": 86.84,
+   "end": 89.84,
+   "text": "Paneles solares de segundo uso, conectados en serie."
+  },
+  {
+   "start": 89.84,
+   "end": 96.84,
+   "text": "Esa energía pasa primero por una caja de protección que cuida los equipos y permite desconectar el sistema con seguridad."
+  },
+  {
+   "start": 96.84,
+   "end": 103.84,
+   "text": "Luego llega un variador que adapta la energía para que la bomba funcione mejor según la cantidad del sol que haya."
+  },
+  {
+   "start": 103.84,
+   "end": 109.84,
+   "text": "La bomba toma el agua de la fuente y la sube a un tanque elevado, desde cuando se riega el por gravedad."
+  },
+  {
+   "start": 109.84,
+   "end": 113.84,
+   "text": "Cuando el tanque se llena un flota oraviza y la bomba se detiene sola."
+  },
+  {
+   "start": 113.84,
+   "end": 119.84,
+   "text": "Además, todos los equipos metálicos están conectados a tierra para que el sistema sea seguro."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.0
+}

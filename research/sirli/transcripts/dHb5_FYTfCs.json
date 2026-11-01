@@ -1,0 +1,157 @@
+{
+ "video_id": "dHb5_FYTfCs",
+ "url": "https://www.youtube.com/watch?v=dHb5_FYTfCs",
+ "year": 2025,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "INNOMAKERS",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "INNOMAKERS",
+   "challenge": "04 - SISTEMA DE ALERTA TEMPRANA"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:42:12+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "La falta de información nos dejó desprotegido y perdimos vidas que pudieron haberse salvado. Cuando la inundación llegó, no recibimos ninguna alerta. Mi vecino se ahogó en su casa. El de Palem, en Cuba, no sorprendió en la madrugada y mi hermano no pudo salir a tiempo. En América Latina más de 190 millones de personas ha sido afectadas por desastres naturales en los últimos años y muchos siguen sin acceso a una herramienta de alerta adecuada. Lo que es la falta de prevención y coordinación cuestan vidas, hiperdidas y reparables. Iguna realidad en donde la incertidumbre reina en las catástrofes naturales se necesitan soluciones efectivas para anticipar el riesgo y comunicar con claridad coordinar respuestas en segundos. Y por eso presentamos Safeway, una extensión gratuita de Google que predice y muestra en tiempo real las alertas de desastres naturales. Así prevenimos tragedia y vendamos seguridad a quienes más nos ayuden. En nuestra plataforma ves un mapa con íconos de cada riesgo. Al hacer clic muestra lo que está pasando, el nivel de alerta y la fuente. Todo claro con colores. Te avisamos con anticipación para lluvias e inundaciones. Tendrás tiempo de prepararte. Antecrecidas. El aviso llega antes de que el agua te alcance. En los escenarios marcamos el riesgo y se surge un foco. Te avisamos al momento. Encismo. Un aviso en segundos. Es un AMI sin demora. Y cuenta con un sistema de localización en caso de emergencias. Las alertas sí llegan a comunidades de difícil acceso. Mediante SMS, sirlinas solares y radio del pueblo. Además cuenta con rutas seguras, protocolas descargables en PDF y contacto de emergencia cercano. La notificación de Safeway ya han directo a tu celular. Incluso sin internet. Puede ser mensaje de texto, alerta sonora o notificaciones visuales por color según el nivel de riesgo. Vive en mundo fuera de riesgo. Safeway. Protección sin límites, prevención sin frontera.",
+ "segments": [
+  {
+   "start": 0.21,
+   "end": 5.21,
+   "text": "La falta de información nos dejó desprotegido y perdimos vidas que pudieron haberse salvado."
+  },
+  {
+   "start": 5.21,
+   "end": 11.21,
+   "text": "Cuando la inundación llegó, no recibimos ninguna alerta. Mi vecino se ahogó en su casa."
+  },
+  {
+   "start": 11.21,
+   "end": 17.21,
+   "text": "El de Palem, en Cuba, no sorprendió en la madrugada y mi hermano no pudo salir a tiempo."
+  },
+  {
+   "start": 17.21,
+   "end": 23.21,
+   "text": "En América Latina más de 190 millones de personas ha sido afectadas por desastres naturales en los últimos años"
+  },
+  {
+   "start": 23.21,
+   "end": 27.21,
+   "text": "y muchos siguen sin acceso a una herramienta de alerta adecuada."
+  },
+  {
+   "start": 27.21,
+   "end": 33.21,
+   "text": "Lo que es la falta de prevención y coordinación cuestan vidas, hiperdidas y reparables."
+  },
+  {
+   "start": 33.21,
+   "end": 38.21,
+   "text": "Iguna realidad en donde la incertidumbre reina en las catástrofes naturales"
+  },
+  {
+   "start": 38.21,
+   "end": 41.21,
+   "text": "se necesitan soluciones efectivas para anticipar el riesgo"
+  },
+  {
+   "start": 41.21,
+   "end": 45.21,
+   "text": "y comunicar con claridad coordinar respuestas en segundos."
+  },
+  {
+   "start": 46.21,
+   "end": 52.21,
+   "text": "Y por eso presentamos Safeway, una extensión gratuita de Google que predice y muestra en tiempo real"
+  },
+  {
+   "start": 52.21,
+   "end": 58.21,
+   "text": "las alertas de desastres naturales. Así prevenimos tragedia y vendamos seguridad a quienes más nos ayuden."
+  },
+  {
+   "start": 58.21,
+   "end": 62.21,
+   "text": "En nuestra plataforma ves un mapa con íconos de cada riesgo."
+  },
+  {
+   "start": 62.21,
+   "end": 67.21,
+   "text": "Al hacer clic muestra lo que está pasando, el nivel de alerta y la fuente."
+  },
+  {
+   "start": 67.21,
+   "end": 72.21,
+   "text": "Todo claro con colores. Te avisamos con anticipación para lluvias e inundaciones."
+  },
+  {
+   "start": 72.21,
+   "end": 75.21,
+   "text": "Tendrás tiempo de prepararte. Antecrecidas."
+  },
+  {
+   "start": 75.21,
+   "end": 78.21,
+   "text": "El aviso llega antes de que el agua te alcance."
+  },
+  {
+   "start": 78.21,
+   "end": 82.21,
+   "text": "En los escenarios marcamos el riesgo y se surge un foco. Te avisamos al momento."
+  },
+  {
+   "start": 82.21,
+   "end": 86.21,
+   "text": "Encismo. Un aviso en segundos. Es un AMI sin demora."
+  },
+  {
+   "start": 86.21,
+   "end": 89.21,
+   "text": "Y cuenta con un sistema de localización en caso de emergencias."
+  },
+  {
+   "start": 89.21,
+   "end": 92.21,
+   "text": "Las alertas sí llegan a comunidades de difícil acceso."
+  },
+  {
+   "start": 92.21,
+   "end": 96.21,
+   "text": "Mediante SMS, sirlinas solares y radio del pueblo."
+  },
+  {
+   "start": 96.21,
+   "end": 101.21,
+   "text": "Además cuenta con rutas seguras, protocolas descargables en PDF y contacto de emergencia cercano."
+  },
+  {
+   "start": 101.21,
+   "end": 104.21,
+   "text": "La notificación de Safeway ya han directo a tu celular."
+  },
+  {
+   "start": 104.21,
+   "end": 111.21,
+   "text": "Incluso sin internet. Puede ser mensaje de texto, alerta sonora o notificaciones visuales por color según el nivel de riesgo."
+  },
+  {
+   "start": 111.21,
+   "end": 114.52,
+   "text": "Vive en mundo fuera de riesgo."
+  },
+  {
+   "start": 114.52,
+   "end": 118.52,
+   "text": "Safeway. Protección sin límites, prevención sin frontera."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.5
+}

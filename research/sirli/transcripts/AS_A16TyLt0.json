@@ -1,0 +1,217 @@
+{
+ "video_id": "AS_A16TyLt0",
+ "url": "https://youtu.be/AS_A16TyLt0",
+ "year": 2025,
+ "collection": "sede",
+ "country": "EL SALVADOR",
+ "team": "SYSNOVA",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "SYSNOVA",
+   "challenge": "01 - APROVECHAMIENTO TETRA PAK"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:17:29+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "El envase Tetrapac representa un grave problema ambiental en Latinoamérica. Su estructura multi-capa, 75% de cartón, 20% de polietileno y 5% de aluminio, impide su reciclaje convencional. Estas capas no se separan fácilmente, lo que los convierte en residos complejos y persistentes. En la región se consumen más de 30 mil millones de estos envases al año, 8 mil millones en México, 20 mil millones en Brasil, 1.200 millones en Colombia y 600 millones en Chile. Sin embargo, menos del 30% logra reciclarse debido a la falta de infraestructura especializada y al alto costo de procesamiento. Los envases descartados terminan en vertederos, quebradas o entornos naturales, donde tardan más de 30 años en degradarse. Durante ese tiempo liberan microplásticos, contaminan suelos y acuíferos y generan impactos negativos en la biodiversidad. Además, su acumulación agrava la saturación de rellenos sanitarios ya colapsados. Este problema se agrava en comunidades vulnerables, donde la recolección selectiva es inexistente y los residuos se queman o entierran a cielo abierto, generando emisiones tóxicas. Mientras tanto el potencial del material como recurso útil permanece ignorado, desperdiciando una oportunidad para la economía circular y el desarrollo local. Nuestra solución transforma este desecho en polialuminio reciclado mediante un proceso físico-mecánico que no requiere separar capas. Los envases se recolectan tal como se desechan, se limpian, trituran y termoprenzán a 180 grados celsius y 1500 libras por pulgada cuadrada durante 20 minutos. El polietileno se funde y actúa como aglutinante natural entre el cartón y el aluminio, generando láminas rígidas, impermeables y duraderas. Estas tienen una densidad de 1250-1450 kg por metro cúbico y una absorción de agua de solo 2 a 3%. Con aproximadamente 400 en base se produce un metro cuadrado de lámina. Una sola prensa permite fabricar 6 a 8 láminas diarias de 1 metro por 1 metro, con un consumo de energía de 1,5 a 2,0 kWh por ciclo, lo que hace el proceso altamente eficiente y replicable. Este material se convierte en tejas, banquetas, mobiliario escolar, paneles modulares y divisores comunitarios. En zonas donde el 72% de las viviendas rurales en Chocó, Colombia, tienen techos precarios o donde el 30% de las calles Masaguas en México carecen de banquetas, la propuesta mejora infraestructura básica. Además, genera microempresas locales con bajo umbral de entrada, promueve la inclusión de recicladores de base y reduce la presión sobre los vertederos.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 3.28,
+   "text": "El envase Tetrapac representa un grave problema ambiental en Latinoamérica."
+  },
+  {
+   "start": 3.28,
+   "end": 8.88,
+   "text": "Su estructura multi-capa, 75% de cartón, 20% de polietileno y 5% de aluminio,"
+  },
+  {
+   "start": 8.88,
+   "end": 10.6,
+   "text": "impide su reciclaje convencional."
+  },
+  {
+   "start": 10.6,
+   "end": 14.72,
+   "text": "Estas capas no se separan fácilmente, lo que los convierte en residos complejos y persistentes."
+  },
+  {
+   "start": 14.72,
+   "end": 17.88,
+   "text": "En la región se consumen más de 30 mil millones de estos envases al año,"
+  },
+  {
+   "start": 17.88,
+   "end": 20.48,
+   "text": "8 mil millones en México, 20 mil millones en Brasil,"
+  },
+  {
+   "start": 20.48,
+   "end": 23.24,
+   "text": "1.200 millones en Colombia y 600 millones en Chile."
+  },
+  {
+   "start": 23.24,
+   "end": 27.56,
+   "text": "Sin embargo, menos del 30% logra reciclarse debido a la falta de infraestructura especializada"
+  },
+  {
+   "start": 27.56,
+   "end": 29.04,
+   "text": "y al alto costo de procesamiento."
+  },
+  {
+   "start": 29.12,
+   "end": 32.56,
+   "text": "Los envases descartados terminan en vertederos, quebradas o entornos naturales,"
+  },
+  {
+   "start": 32.56,
+   "end": 34.64,
+   "text": "donde tardan más de 30 años en degradarse."
+  },
+  {
+   "start": 34.64,
+   "end": 37.96,
+   "text": "Durante ese tiempo liberan microplásticos, contaminan suelos y acuíferos"
+  },
+  {
+   "start": 37.96,
+   "end": 40.2,
+   "text": "y generan impactos negativos en la biodiversidad."
+  },
+  {
+   "start": 40.2,
+   "end": 43.52,
+   "text": "Además, su acumulación agrava la saturación de rellenos sanitarios ya colapsados."
+  },
+  {
+   "start": 43.52,
+   "end": 45.6,
+   "text": "Este problema se agrava en comunidades vulnerables,"
+  },
+  {
+   "start": 45.6,
+   "end": 49.56,
+   "text": "donde la recolección selectiva es inexistente y los residuos se queman o entierran a cielo abierto,"
+  },
+  {
+   "start": 49.56,
+   "end": 51.04,
+   "text": "generando emisiones tóxicas."
+  },
+  {
+   "start": 51.04,
+   "end": 53.8,
+   "text": "Mientras tanto el potencial del material como recurso útil permanece ignorado,"
+  },
+  {
+   "start": 53.8,
+   "end": 56.96,
+   "text": "desperdiciando una oportunidad para la economía circular y el desarrollo local."
+  },
+  {
+   "start": 57.0,
+   "end": 61.16,
+   "text": "Nuestra solución transforma este desecho en polialuminio reciclado mediante un proceso físico-mecánico"
+  },
+  {
+   "start": 61.16,
+   "end": 62.64,
+   "text": "que no requiere separar capas."
+  },
+  {
+   "start": 62.64,
+   "end": 67.72,
+   "text": "Los envases se recolectan tal como se desechan, se limpian, trituran y termoprenzán a 180 grados celsius"
+  },
+  {
+   "start": 67.72,
+   "end": 70.92,
+   "text": "y 1500 libras por pulgada cuadrada durante 20 minutos."
+  },
+  {
+   "start": 70.92,
+   "end": 74.68,
+   "text": "El polietileno se funde y actúa como aglutinante natural entre el cartón y el aluminio,"
+  },
+  {
+   "start": 74.68,
+   "end": 77.56,
+   "text": "generando láminas rígidas, impermeables y duraderas."
+  },
+  {
+   "start": 77.56,
+   "end": 81.84,
+   "text": "Estas tienen una densidad de 1250-1450 kg por metro cúbico"
+  },
+  {
+   "start": 81.84,
+   "end": 84.16,
+   "text": "y una absorción de agua de solo 2 a 3%."
+  },
+  {
+   "start": 84.2,
+   "end": 87.44,
+   "text": "Con aproximadamente 400 en base se produce un metro cuadrado de lámina."
+  },
+  {
+   "start": 87.44,
+   "end": 91.2,
+   "text": "Una sola prensa permite fabricar 6 a 8 láminas diarias de 1 metro por 1 metro,"
+  },
+  {
+   "start": 91.2,
+   "end": 94.88,
+   "text": "con un consumo de energía de 1,5 a 2,0 kWh por ciclo,"
+  },
+  {
+   "start": 94.88,
+   "end": 97.24,
+   "text": "lo que hace el proceso altamente eficiente y replicable."
+  },
+  {
+   "start": 97.24,
+   "end": 100.2,
+   "text": "Este material se convierte en tejas, banquetas, mobiliario escolar,"
+  },
+  {
+   "start": 100.2,
+   "end": 102.28,
+   "text": "paneles modulares y divisores comunitarios."
+  },
+  {
+   "start": 102.28,
+   "end": 105.76,
+   "text": "En zonas donde el 72% de las viviendas rurales en Chocó, Colombia,"
+  },
+  {
+   "start": 105.76,
+   "end": 110.28,
+   "text": "tienen techos precarios o donde el 30% de las calles Masaguas en México carecen de banquetas,"
+  },
+  {
+   "start": 110.28,
+   "end": 112.2,
+   "text": "la propuesta mejora infraestructura básica."
+  },
+  {
+   "start": 112.24,
+   "end": 115.04,
+   "text": "Además, genera microempresas locales con bajo umbral de entrada,"
+  },
+  {
+   "start": 115.04,
+   "end": 118.64,
+   "text": "promueve la inclusión de recicladores de base y reduce la presión sobre los vertederos."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 118.7
+}

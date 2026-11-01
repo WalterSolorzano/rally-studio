@@ -1,0 +1,127 @@
+{
+ "video_id": "YGwCAMiH7Z4",
+ "url": "https://youtu.be/YGwCAMiH7Z4?si=Gpkye-Upy-JyaGoO",
+ "year": 2023,
+ "collection": "sede",
+ "country": "COLOMBIA",
+ "team": "CORHUILA INDUSTRIAL 8",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "CORHUILA INDUSTRIAL 8",
+   "challenge": "08 - TRATAR DE ESTAR MEJOR"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:58:24+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Según la OMS, a escala mundial, aproximadamente 280 millones de personas sufren de depresión. Este es el 50% más frecuente entre las mujeres que interruzamos. La pandemia del COVID-19 aumentó en un 25% la prevalencia de ansiedad y depresión en todo el mundo. Cada año se existían más de 700 mil personas donde la depresión incide en mayor proporción. El suicidio es la cuarta causa de muerte en el grupo de personas de 15 a 29 años que de la población juvenil. ¡Oye, Liana! ¡Misargracias! Ya voy en camino. Inteligencia artificial instana de WhatsApp, la COVID funciona como chatbot. Esta creada es la asociación de amistad entre la persona y la aplicación. Toma información documentada en la NUE como también del historial de los chats, la cual se adapta a las necesidades de los usuarios. Al setar con Lidia, las personas pueden expresarse libremente sobre cómo se sienten sin ser juzgadas. La Inteligencia artificial escucha de forma activa y proporciona palabras de aliento. Pasas ya de la compañía, Lidia recomienda recursos educativos y prácticos hablados por expertos. Además también sufiere grupos presenciales según los intereses del receptor para que interactúe con más personas de su ciudad con gustos similares. Si durante la conversación detecta señales de una emergencia de Lidia deriva, al usuario inmediato opciones de apoyo humano a las 24 horas. Su seguridad y bienestar son la máxima prioridad. El objetivo final es de quienes batallan con su salud mental, tener un aliado tecnológico en el que puedan confiar.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 5.7,
+   "text": "Según la OMS, a escala mundial, aproximadamente 280 millones de personas sufren de depresión."
+  },
+  {
+   "start": 5.7,
+   "end": 9.6,
+   "text": "Este es el 50% más frecuente entre las mujeres que interruzamos."
+  },
+  {
+   "start": 9.6,
+   "end": 15.5,
+   "text": "La pandemia del COVID-19 aumentó en un 25% la prevalencia de ansiedad y depresión en todo el mundo."
+  },
+  {
+   "start": 15.5,
+   "end": 20.5,
+   "text": "Cada año se existían más de 700 mil personas donde la depresión incide en mayor proporción."
+  },
+  {
+   "start": 20.5,
+   "end": 27.5,
+   "text": "El suicidio es la cuarta causa de muerte en el grupo de personas de 15 a 29 años que de la población juvenil."
+  },
+  {
+   "start": 27.5,
+   "end": 68.07,
+   "text": "¡Oye, Liana! ¡Misargracias! Ya voy en camino."
+  },
+  {
+   "start": 68.07,
+   "end": 74.93,
+   "text": "Inteligencia artificial instana de WhatsApp, la COVID funciona como chatbot."
+  },
+  {
+   "start": 74.93,
+   "end": 78.93,
+   "text": "Esta creada es la asociación de amistad entre la persona y la aplicación."
+  },
+  {
+   "start": 78.93,
+   "end": 82.43,
+   "text": "Toma información documentada en la NUE como también del historial de los chats,"
+  },
+  {
+   "start": 82.43,
+   "end": 84.93,
+   "text": "la cual se adapta a las necesidades de los usuarios."
+  },
+  {
+   "start": 84.93,
+   "end": 89.43,
+   "text": "Al setar con Lidia, las personas pueden expresarse libremente sobre cómo se sienten sin ser juzgadas."
+  },
+  {
+   "start": 89.43,
+   "end": 93.43,
+   "text": "La Inteligencia artificial escucha de forma activa y proporciona palabras de aliento."
+  },
+  {
+   "start": 93.43,
+   "end": 98.43,
+   "text": "Pasas ya de la compañía, Lidia recomienda recursos educativos y prácticos hablados por expertos."
+  },
+  {
+   "start": 98.43,
+   "end": 101.93,
+   "text": "Además también sufiere grupos presenciales según los intereses del receptor"
+  },
+  {
+   "start": 101.93,
+   "end": 105.43,
+   "text": "para que interactúe con más personas de su ciudad con gustos similares."
+  },
+  {
+   "start": 105.43,
+   "end": 108.93,
+   "text": "Si durante la conversación detecta señales de una emergencia de Lidia deriva,"
+  },
+  {
+   "start": 108.93,
+   "end": 111.93,
+   "text": "al usuario inmediato opciones de apoyo humano a las 24 horas."
+  },
+  {
+   "start": 111.93,
+   "end": 114.43,
+   "text": "Su seguridad y bienestar son la máxima prioridad."
+  },
+  {
+   "start": 114.43,
+   "end": 117.43,
+   "text": "El objetivo final es de quienes batallan con su salud mental,"
+  },
+  {
+   "start": 117.43,
+   "end": 119.93,
+   "text": "tener un aliado tecnológico en el que puedan confiar."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.1
+}

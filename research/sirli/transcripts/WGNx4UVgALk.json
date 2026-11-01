@@ -1,0 +1,124 @@
+{
+ "video_id": "WGNx4UVgALk",
+ "url": "https://youtu.be/WGNx4UVgALk?si=340FeJLFsPps-E8e",
+ "year": 2025,
+ "collection": "nacional",
+ "country": "EL SALVADOR",
+ "team": "BIOINGES",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "BIOINGES",
+   "challenge": "01 - APROVECHAMIENTO TETRA PAK"
+  },
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "BIOINGES",
+   "challenge": "01 - APROVECHAMIENTO TETRA PAK"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:14:46+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Los embases de Trapac son ampliamente utilizados por su practicidad para conservar líquidos. Por esta misma conveniencia, genera un gran volumen de desechos. Debido a su composición multicapa, de cartón, plástico y aluminio, su reciclaje resulta complejo. Y la mayoría termina en verteceros o cuerpos de agua, donde puede tardar décadas en degradarse afectando gravemente a nuestros ecosistemas. Nuestra propuesta, llamada TetraFungi, busca transformar este residuo en una fuente de alimento y materiales sostenibles. Recolectamos tetrapacs y residuos de café en centros educativos, comedores y comunidades previamente capacitadas en clasificación de desechos. Estos materiales se transportan a plantas comunitarias de procesamiento, donde mediante un hidropulper se separa el cartón del plástico y aluminio. El cartón recuperado, que apresenta aproximadamente el 70% del envase, se filtra, se esteriliza y se mezcla con residuos de café para generar un sustrato ligno celolósico idóneo para el cultivo del hongo comestible plebrotus austreatus. Las bolsas colonizadas se entregan a comunidades donde se cuidan hasta su fructificación, produciendo una fuente local y sostenible de proteína. Cada unidad puede generar hasta 4 ciclos productivos, y al finalizar el sustrato residual se aprovecha como compostaje agrícola. El 30% restante, compuesto por poli-aluminio, se tritura y compacta para fabricar tejas, mobiliarios escolares y materiales de construcción no estructurales. De esta forma, Tetrafungi convierte un desecho complejo en una oportunidad ambiental, alimentaria y social para nuestras comunidades.",
+ "segments": [
+  {
+   "start": 5.23,
+   "end": 10.23,
+   "text": "Los embases de Trapac son ampliamente utilizados por su practicidad para conservar líquidos."
+  },
+  {
+   "start": 10.23,
+   "end": 14.23,
+   "text": "Por esta misma conveniencia, genera un gran volumen de desechos."
+  },
+  {
+   "start": 14.23,
+   "end": 20.23,
+   "text": "Debido a su composición multicapa, de cartón, plástico y aluminio, su reciclaje resulta complejo."
+  },
+  {
+   "start": 20.23,
+   "end": 25.23,
+   "text": "Y la mayoría termina en verteceros o cuerpos de agua, donde puede tardar décadas"
+  },
+  {
+   "start": 25.23,
+   "end": 28.23,
+   "text": "en degradarse afectando gravemente a nuestros ecosistemas."
+  },
+  {
+   "start": 29.23,
+   "end": 38.23,
+   "text": "Nuestra propuesta, llamada TetraFungi, busca transformar este residuo en una fuente de alimento y materiales sostenibles."
+  },
+  {
+   "start": 38.23,
+   "end": 49.23,
+   "text": "Recolectamos tetrapacs y residuos de café en centros educativos, comedores y comunidades previamente capacitadas en clasificación de desechos."
+  },
+  {
+   "start": 49.23,
+   "end": 54.23,
+   "text": "Estos materiales se transportan a plantas comunitarias de procesamiento,"
+  },
+  {
+   "start": 54.23,
+   "end": 60.23,
+   "text": "donde mediante un hidropulper se separa el cartón del plástico y aluminio."
+  },
+  {
+   "start": 60.23,
+   "end": 67.74,
+   "text": "El cartón recuperado, que apresenta aproximadamente el 70% del envase, se filtra,"
+  },
+  {
+   "start": 67.74,
+   "end": 73.74,
+   "text": "se esteriliza y se mezcla con residuos de café para generar un sustrato ligno celolósico idóneo"
+  },
+  {
+   "start": 73.74,
+   "end": 77.74,
+   "text": "para el cultivo del hongo comestible plebrotus austreatus."
+  },
+  {
+   "start": 77.74,
+   "end": 82.74,
+   "text": "Las bolsas colonizadas se entregan a comunidades donde se cuidan hasta su fructificación,"
+  },
+  {
+   "start": 82.74,
+   "end": 86.74,
+   "text": "produciendo una fuente local y sostenible de proteína."
+  },
+  {
+   "start": 86.74,
+   "end": 96.46,
+   "text": "Cada unidad puede generar hasta 4 ciclos productivos, y al finalizar el sustrato residual se aprovecha como compostaje agrícola."
+  },
+  {
+   "start": 96.46,
+   "end": 103.46,
+   "text": "El 30% restante, compuesto por poli-aluminio, se tritura y compacta para fabricar tejas,"
+  },
+  {
+   "start": 103.46,
+   "end": 107.46,
+   "text": "mobiliarios escolares y materiales de construcción no estructurales."
+  },
+  {
+   "start": 107.46,
+   "end": 116.46,
+   "text": "De esta forma, Tetrafungi convierte un desecho complejo en una oportunidad ambiental, alimentaria y social para nuestras comunidades."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 122.6
+}

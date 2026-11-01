@@ -1,0 +1,157 @@
+{
+ "video_id": "1k9GIOtTY2Y",
+ "url": "https://www.youtube.com/watch?v=1k9GIOtTY2Y",
+ "year": 2021,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "UNION PAMPA-MISSIONES",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "UNION PAMPA-MISSIONES",
+   "challenge": "03 - AGUA PARA SOÑAR"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:48:27+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "José es un habitante de América Latina. Una de cada cuatro personas en esta región no tiene agua potable limpia. José es uno de ellos, que vive en una situación de vulnerabilidad social. Un buen día, un grupo de jóvenes y estudiantes tuvo una idea brillante. ¡Costruyamos un depósito para depurar agua! dijo uno de ellos. ¡Sí, vamos! ¡Podemos utilizar materiales reciclables! dijo otro. Se sentaron y crearon un proyecto muy satisfactorio. Se siguieron a hacer canaletas de cañada de azúcar o de botellas de pet para llevar agua de lluvia o incluso de ríos o arroyos que no es apta para el consumo en esa región a un contenedor. Esta agua pasa por un proceso de descantación. Desde el recipiente, el agua pasa a través de un filtro hecho de piedra, arena y piedra regular para eliminar residuos del proceso anterior, que caerá en un depósito revestido de una lona negra. ¡Caramba! ¿Esto funcionará? Lo hará porque justo después de eso el agua entra en un recipiente que tiene encima un vidrio o plástico transparente que leva la temperatura para que se produzca la evaporación por el calor del sol. Al estar inclinado, las gotitas de agua potable que se acumulen en la superficie fluirán hacia un recipiente herméticamente sellado y adecuado para el agua potable, que se regulará con un flotador en la tapa, por lo que cuando alcance su máxima capacidad, para aviso de que el agua está lista y apta para el consumo. El grupo expuso su idea a un inversor que decidió probarlo y llevar a Oahuajose y otros habitantes de esa región.",
+ "segments": [
+  {
+   "start": 0.4,
+   "end": 3.16,
+   "text": "José es un habitante de América Latina."
+  },
+  {
+   "start": 3.16,
+   "end": 7.16,
+   "text": "Una de cada cuatro personas en esta región no tiene agua potable limpia."
+  },
+  {
+   "start": 7.16,
+   "end": 11.8,
+   "text": "José es uno de ellos, que vive en una situación de vulnerabilidad social."
+  },
+  {
+   "start": 11.8,
+   "end": 15.7,
+   "text": "Un buen día, un grupo de jóvenes y estudiantes tuvo una idea brillante."
+  },
+  {
+   "start": 15.7,
+   "end": 19.5,
+   "text": "¡Costruyamos un depósito para depurar agua! dijo uno de ellos."
+  },
+  {
+   "start": 19.5,
+   "end": 21.02,
+   "text": "¡Sí, vamos!"
+  },
+  {
+   "start": 21.02,
+   "end": 24.72,
+   "text": "¡Podemos utilizar materiales reciclables! dijo otro."
+  },
+  {
+   "start": 24.72,
+   "end": 28.32,
+   "text": "Se sentaron y crearon un proyecto muy satisfactorio."
+  },
+  {
+   "start": 28.44,
+   "end": 31.76,
+   "text": "Se siguieron a hacer canaletas de cañada de azúcar o de botellas de pet"
+  },
+  {
+   "start": 31.76,
+   "end": 34.88,
+   "text": "para llevar agua de lluvia o incluso de ríos o arroyos"
+  },
+  {
+   "start": 34.88,
+   "end": 38.62,
+   "text": "que no es apta para el consumo en esa región a un contenedor."
+  },
+  {
+   "start": 38.62,
+   "end": 41.92,
+   "text": "Esta agua pasa por un proceso de descantación."
+  },
+  {
+   "start": 41.92,
+   "end": 47.62,
+   "text": "Desde el recipiente, el agua pasa a través de un filtro hecho de piedra, arena y piedra regular"
+  },
+  {
+   "start": 47.62,
+   "end": 50.18,
+   "text": "para eliminar residuos del proceso anterior,"
+  },
+  {
+   "start": 50.18,
+   "end": 53.98,
+   "text": "que caerá en un depósito revestido de una lona negra."
+  },
+  {
+   "start": 53.98,
+   "end": 56.58,
+   "text": "¡Caramba! ¿Esto funcionará?"
+  },
+  {
+   "start": 56.64,
+   "end": 60.92,
+   "text": "Lo hará porque justo después de eso el agua entra en un recipiente"
+  },
+  {
+   "start": 60.92,
+   "end": 64.64,
+   "text": "que tiene encima un vidrio o plástico transparente que leva la temperatura"
+  },
+  {
+   "start": 64.64,
+   "end": 67.74,
+   "text": "para que se produzca la evaporación por el calor del sol."
+  },
+  {
+   "start": 67.74,
+   "end": 72.2,
+   "text": "Al estar inclinado, las gotitas de agua potable que se acumulen en la superficie"
+  },
+  {
+   "start": 72.2,
+   "end": 77.44,
+   "text": "fluirán hacia un recipiente herméticamente sellado y adecuado para el agua potable,"
+  },
+  {
+   "start": 77.44,
+   "end": 80.74,
+   "text": "que se regulará con un flotador en la tapa,"
+  },
+  {
+   "start": 80.74,
+   "end": 83.08,
+   "text": "por lo que cuando alcance su máxima capacidad,"
+  },
+  {
+   "start": 83.14,
+   "end": 86.7,
+   "text": "para aviso de que el agua está lista y apta para el consumo."
+  },
+  {
+   "start": 86.7,
+   "end": 90.54,
+   "text": "El grupo expuso su idea a un inversor que decidió probarlo"
+  },
+  {
+   "start": 90.54,
+   "end": 93.54,
+   "text": "y llevar a Oahuajose y otros habitantes de esa región."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 98.6
+}

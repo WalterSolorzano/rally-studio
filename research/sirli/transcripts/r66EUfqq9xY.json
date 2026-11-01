@@ -1,0 +1,164 @@
+{
+ "video_id": "r66EUfqq9xY",
+ "url": "https://youtu.be/r66EUfqq9xY?is=RDOd0KitDOpusa8r",
+ "year": 2026,
+ "collection": "nacional",
+ "country": "BRASIL",
+ "team": "PET EGC UNIJUÍ",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "PET EGC UNIJUÍ",
+   "challenge": "05 - MONITOREO INTELIGENTE E INFRAESTRUCTURA VERDE EN RESERVORIOS PLUVIALES"
+  },
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "PET EGC UNIJUÍ",
+   "challenge": "05 - MONITOREO INTELIGENTE E INFRAESTRUCTURA VERDE EN RESERVORIOS PLUVIALES"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:11:34+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En 2024, el Rio Grande del Sul enfrentó chuvas extremas. La ciudad de Porto Alegre sufrió alagamentos en grandes proporciones y un modelo baseado apenas en estructuras de contención no respondió con agilidad. El problema va a além de un evento isolado. La urbanización acelerada, la impermeabilización del sol y las mudanzas climáticas sobrecarrega un adrenaje tradicional y faltan herramientas integradas de monitoramiento y previsión. Nuestra propuesta es adaptar a ciudades del sur de Brasil a las estrategias de ciudades de Esponja. Reservatores pulviais, biovaletas, pavimientos permeables y parques alagáveis retenen a infiltrar agua de chuva, liberando a los pocos. Sensores meden un nivel de reservatores, estiman el volumen armazenado y emiten alertas cuando el sistema se aproxima del límite. El diferencial no es sólo replicar técnicas que ya funcionan por el mundo, sino combinar soluciones verdes con monitoramiento continuo, adaptadas al relevo, al sol y a chuvas de nuestra región. El impacto es social y ambiental. Reduzimos piedras humanas y materiales, protegimos comunidades vulnerables y creamos espacios de lazer y convivencia. La infraestructura verde ainda favorece la infiltración a recarga de aquíferos y ameniza a las islas de calor. La entanto, puede ser fecha por etapas, comenzando por proyectos piloto en prazas, parques y canteiros públicos con alagamentos recorrentes. Así, avaliamos custos y resultados antes de ampliar. Cidades expongen con monitoramiento inteligente, prevenir es más eficiente que reconstruir.",
+ "segments": [
+  {
+   "start": 0.46,
+   "end": 5.34,
+   "text": "En 2024, el Rio Grande del Sul enfrentó chuvas extremas."
+  },
+  {
+   "start": 5.34,
+   "end": 10.24,
+   "text": "La ciudad de Porto Alegre sufrió alagamentos en grandes proporciones"
+  },
+  {
+   "start": 10.24,
+   "end": 15.94,
+   "text": "y un modelo baseado apenas en estructuras de contención no respondió con agilidad."
+  },
+  {
+   "start": 15.94,
+   "end": 19.1,
+   "text": "El problema va a além de un evento isolado."
+  },
+  {
+   "start": 19.1,
+   "end": 23.46,
+   "text": "La urbanización acelerada, la impermeabilización del sol"
+  },
+  {
+   "start": 23.46,
+   "end": 27.84,
+   "text": "y las mudanzas climáticas sobrecarrega un adrenaje tradicional"
+  },
+  {
+   "start": 27.84,
+   "end": 32.38,
+   "text": "y faltan herramientas integradas de monitoramiento y previsión."
+  },
+  {
+   "start": 32.38,
+   "end": 39.68,
+   "text": "Nuestra propuesta es adaptar a ciudades del sur de Brasil a las estrategias de ciudades de Esponja."
+  },
+  {
+   "start": 39.68,
+   "end": 46.68,
+   "text": "Reservatores pulviais, biovaletas, pavimientos permeables y parques alagáveis"
+  },
+  {
+   "start": 46.68,
+   "end": 51.48,
+   "text": "retenen a infiltrar agua de chuva, liberando a los pocos."
+  },
+  {
+   "start": 51.48,
+   "end": 57.08,
+   "text": "Sensores meden un nivel de reservatores, estiman el volumen armazenado"
+  },
+  {
+   "start": 57.22,
+   "end": 61.88,
+   "text": "y emiten alertas cuando el sistema se aproxima del límite."
+  },
+  {
+   "start": 63.18,
+   "end": 67.82,
+   "text": "El diferencial no es sólo replicar técnicas que ya funcionan por el mundo,"
+  },
+  {
+   "start": 67.82,
+   "end": 72.38,
+   "text": "sino combinar soluciones verdes con monitoramiento continuo,"
+  },
+  {
+   "start": 72.38,
+   "end": 76.88,
+   "text": "adaptadas al relevo, al sol y a chuvas de nuestra región."
+  },
+  {
+   "start": 76.88,
+   "end": 79.36,
+   "text": "El impacto es social y ambiental."
+  },
+  {
+   "start": 79.36,
+   "end": 82.38,
+   "text": "Reduzimos piedras humanas y materiales,"
+  },
+  {
+   "start": 82.52,
+   "end": 88.36,
+   "text": "protegimos comunidades vulnerables y creamos espacios de lazer y convivencia."
+  },
+  {
+   "start": 88.36,
+   "end": 94.36,
+   "text": "La infraestructura verde ainda favorece la infiltración a recarga de aquíferos"
+  },
+  {
+   "start": 94.36,
+   "end": 97.06,
+   "text": "y ameniza a las islas de calor."
+  },
+  {
+   "start": 97.06,
+   "end": 99.96,
+   "text": "La entanto, puede ser fecha por etapas,"
+  },
+  {
+   "start": 99.96,
+   "end": 105.06,
+   "text": "comenzando por proyectos piloto en prazas, parques y canteiros públicos"
+  },
+  {
+   "start": 105.06,
+   "end": 107.06,
+   "text": "con alagamentos recorrentes."
+  },
+  {
+   "start": 107.06,
+   "end": 111.86,
+   "text": "Así, avaliamos custos y resultados antes de ampliar."
+  },
+  {
+   "start": 111.94,
+   "end": 115.14,
+   "text": "Cidades expongen con monitoramiento inteligente,"
+  },
+  {
+   "start": 115.14,
+   "end": 118.14,
+   "text": "prevenir es más eficiente que reconstruir."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 118.6
+}

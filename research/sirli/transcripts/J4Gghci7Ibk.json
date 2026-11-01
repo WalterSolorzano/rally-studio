@@ -1,0 +1,97 @@
+{
+ "video_id": "J4Gghci7Ibk",
+ "url": "https://www.youtube.com/watch?v=J4Gghci7Ibk&ab_channel=Andr%C3%A9sBlas",
+ "year": 2021,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "PRAMMA TANKAY",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "PRAMMA TANKAY",
+   "challenge": "03 - AGUA PARA SOÑAR"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:46:06+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "América Latina cuenta con una población de casi 500 millones de personas, de las cuales cerca del 85% cuenta con servicios de agua segura, ya sea con conexión o con fácil acceso a una fuente pública. Sin embargo, no hay equidad en el acceso y el uso de estos servicios y se observan grandes disparidades entre zonas urbanas y rurales. Existen amplias zonas con un marcado déficit en la provisión de agua segura y en muchos lugares el agua que se dispone tiene un elevado contenido de minerales disolvos. Proponemos el sistema de integr agua basado en la cosecha de agua de lluvia mediante techos colectores. El agua pluvial se traslada por gravedad hace un filtro ecológico para su posterior almacenamiento en systemas subterráneas de placa de cemento. La estructura de captación y las tuberías serán de aluminio y plástico PVC gisicrado. El filtro ecológico cuenta con varias capas de diferentes materiales naturales y accesibles, como una rejilla para incuresas, materiale uránico como acejín, y dura para la complejación de metales pesados, filtro de arena y carbón activado contra patógenos y finalmente una capa de arsilla que asovera iones de minerales disolvos. Los componentes nombrados son de origen natural, residuos agrícolas y forestales, todos de fácil obtención, los cuales una vez terminado su vida útil, servirán como enmienda al suelo. Esta propuesta se le incorpora un sistema de información geográfica para generar datos sobre la disponibilidad en tiempo real del agua. Este sistema integra diversos parámetros, ubicación geográfica, capacidad de captación, datos de precipitaciones, capacidad de almacenamiento y consumo medio familiar. Con esto las instituciones involucradas tendrán acceso a la información en tiempo real sobre la cantidad de agua en las comunidades y en base a esto poder generar alertas en épocas de sequía y vulnerabilidad. Integrar agua mejorará la calidad de vida de las familias al poder acceder a un recurso esencial de manera segura. De efectividad, versatilidad y accesibilidad del sistema propiciará su uso masivo de manera que las familias involucradas puedan aplicarlos por sí mismos.",
+ "segments": [
+  {
+   "start": 3.34,
+   "end": 14.34,
+   "text": "América Latina cuenta con una población de casi 500 millones de personas, de las cuales cerca del 85% cuenta con servicios de agua segura, ya sea con conexión o con fácil acceso a una fuente pública."
+  },
+  {
+   "start": 14.34,
+   "end": 20.34,
+   "text": "Sin embargo, no hay equidad en el acceso y el uso de estos servicios y se observan grandes disparidades entre zonas urbanas y rurales."
+  },
+  {
+   "start": 20.34,
+   "end": 27.34,
+   "text": "Existen amplias zonas con un marcado déficit en la provisión de agua segura y en muchos lugares el agua que se dispone tiene un elevado contenido de minerales disolvos."
+  },
+  {
+   "start": 28.34,
+   "end": 32.34,
+   "text": "Proponemos el sistema de integr agua basado en la cosecha de agua de lluvia mediante techos colectores."
+  },
+  {
+   "start": 32.34,
+   "end": 39.34,
+   "text": "El agua pluvial se traslada por gravedad hace un filtro ecológico para su posterior almacenamiento en systemas subterráneas de placa de cemento."
+  },
+  {
+   "start": 39.34,
+   "end": 44.34,
+   "text": "La estructura de captación y las tuberías serán de aluminio y plástico PVC gisicrado."
+  },
+  {
+   "start": 44.34,
+   "end": 52.34,
+   "text": "El filtro ecológico cuenta con varias capas de diferentes materiales naturales y accesibles, como una rejilla para incuresas, materiale uránico como acejín,"
+  },
+  {
+   "start": 52.34,
+   "end": 61.34,
+   "text": "y dura para la complejación de metales pesados, filtro de arena y carbón activado contra patógenos y finalmente una capa de arsilla que asovera iones de minerales disolvos."
+  },
+  {
+   "start": 61.34,
+   "end": 70.34,
+   "text": "Los componentes nombrados son de origen natural, residuos agrícolas y forestales, todos de fácil obtención, los cuales una vez terminado su vida útil, servirán como enmienda al suelo."
+  },
+  {
+   "start": 70.34,
+   "end": 76.34,
+   "text": "Esta propuesta se le incorpora un sistema de información geográfica para generar datos sobre la disponibilidad en tiempo real del agua."
+  },
+  {
+   "start": 76.34,
+   "end": 85.34,
+   "text": "Este sistema integra diversos parámetros, ubicación geográfica, capacidad de captación, datos de precipitaciones, capacidad de almacenamiento y consumo medio familiar."
+  },
+  {
+   "start": 85.34,
+   "end": 95.34,
+   "text": "Con esto las instituciones involucradas tendrán acceso a la información en tiempo real sobre la cantidad de agua en las comunidades y en base a esto poder generar alertas en épocas de sequía y vulnerabilidad."
+  },
+  {
+   "start": 96.34,
+   "end": 102.34,
+   "text": "Integrar agua mejorará la calidad de vida de las familias al poder acceder a un recurso esencial de manera segura."
+  },
+  {
+   "start": 102.34,
+   "end": 110.34,
+   "text": "De efectividad, versatilidad y accesibilidad del sistema propiciará su uso masivo de manera que las familias involucradas puedan aplicarlos por sí mismos."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.1
+}

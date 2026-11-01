@@ -1,0 +1,152 @@
+{
+ "video_id": "JAaN67BLGMw",
+ "url": "https://youtu.be/JAaN67BLGMw",
+ "year": 2020,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "QUÍMICAFOCUSTIME",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2020,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "QUÍMICAFOCUSTIME",
+   "challenge": "05 - ¿AYUDARÍA UN SISTEMA O DISPOSITIVO HOGAREÑO A EVITAR QUE EL ACEITE DE FRITURA USADO TERMINE EN LA RED PÚBLICA?"
+  }
+ ],
+ "fetched_at": "2026-10-23T01:15:39+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Hola, nosotros somos Química Focus Time. Los integrantes son Monce, Carla, Araceli, Fernando Cristal, Maricela, Jesús, Selena, Jorge y Ariadna. El desafío seleccionado es ¿Ayudaría un sistema o dispositivo hogareño a evitar que el aceite de fritura usado termine en la red pública? La respuesta es sí. Actualmente un problema mental que se ha suscitado en el día a día son los residuos de aceite vegetal usado. Debido a que una vez utilizado se vierte la red del cantarillado, causando atascos, malos olores en las cañerías, así como una gran cantidad de programas ambientales, al elevar la cantidad de demanda química de oxígena. La propuesta consiste en realizar una modificación al céspol de las tarjas, convirtiéndolo en un dispositivo inteligente por medio de un sensor de densidad electroválvulas, el cual consistirá en separar ambos líquidos permitiendo el paso de agua hacia el drenaje y el aceite a un recolector. Para lograr esto se emplearán las densidades de cada fluido. El aprovechamiento del aceite usado contribuirá a disminuir los impactos en ecosistemas acuáticos, acumulación de residuos orgánicos como en lagunas, ríos, mares o bien en plantas de tratamiento de aguas residuales. También contribuyen la disminución de costos para las PTAR por sus siglas y las plantas de tratamiento de aguas residuales al prevenir su presencia. La innovación radica en el método tradicional es estar separando generalmente con ayuda de un embudo o coladera el aceite de los demás residuos y luego guardarlo en botellas vacías de refresco, esperando hasta que pase el camión recolector de basura. Una de las ventajas de este sistema es que cuenta con un depósito de aceite, el cual lo tratará para evitar los malos olores y evitar el arranciamiento. El sistema es de 25 dólares.",
+ "segments": [
+  {
+   "start": 0.4,
+   "end": 6.36,
+   "text": "Hola, nosotros somos Química Focus Time. Los integrantes son Monce, Carla,"
+  },
+  {
+   "start": 6.36,
+   "end": 11.92,
+   "text": "Araceli, Fernando Cristal, Maricela, Jesús, Selena, Jorge y Ariadna. El desafío"
+  },
+  {
+   "start": 11.92,
+   "end": 16.72,
+   "text": "seleccionado es ¿Ayudaría un sistema o dispositivo hogareño a evitar que el"
+  },
+  {
+   "start": 16.72,
+   "end": 20.68,
+   "text": "aceite de fritura usado termine en la red pública?"
+  },
+  {
+   "start": 20.68,
+   "end": 25.06,
+   "text": "La respuesta es sí. Actualmente un problema mental que se ha suscitado en"
+  },
+  {
+   "start": 25.06,
+   "end": 28.24,
+   "text": "el día a día son los residuos de aceite vegetal usado."
+  },
+  {
+   "start": 28.46,
+   "end": 33.4,
+   "text": "Debido a que una vez utilizado se vierte la red del cantarillado, causando atascos,"
+  },
+  {
+   "start": 33.4,
+   "end": 37.24,
+   "text": "malos olores en las cañerías, así como una gran cantidad de programas"
+  },
+  {
+   "start": 37.24,
+   "end": 42.0,
+   "text": "ambientales, al elevar la cantidad de demanda química de oxígena."
+  },
+  {
+   "start": 42.0,
+   "end": 46.28,
+   "text": "La propuesta consiste en realizar una modificación al céspol de las tarjas,"
+  },
+  {
+   "start": 46.28,
+   "end": 49.68,
+   "text": "convirtiéndolo en un dispositivo inteligente por medio de un sensor de"
+  },
+  {
+   "start": 49.68,
+   "end": 53.96,
+   "text": "densidad electroválvulas, el cual consistirá en separar ambos líquidos"
+  },
+  {
+   "start": 53.96,
+   "end": 57.52,
+   "text": "permitiendo el paso de agua hacia el drenaje y el aceite a un recolector."
+  },
+  {
+   "start": 57.52,
+   "end": 61.0,
+   "text": "Para lograr esto se emplearán las densidades de cada fluido."
+  },
+  {
+   "start": 61.0,
+   "end": 65.4,
+   "text": "El aprovechamiento del aceite usado contribuirá a disminuir los impactos en"
+  },
+  {
+   "start": 65.4,
+   "end": 69.96,
+   "text": "ecosistemas acuáticos, acumulación de residuos orgánicos como en lagunas,"
+  },
+  {
+   "start": 69.96,
+   "end": 73.6,
+   "text": "ríos, mares o bien en plantas de tratamiento de aguas residuales."
+  },
+  {
+   "start": 73.6,
+   "end": 79.28,
+   "text": "También contribuyen la disminución de costos para las PTAR por sus siglas"
+  },
+  {
+   "start": 79.28,
+   "end": 84.28,
+   "text": "y las plantas de tratamiento de aguas residuales al prevenir su presencia."
+  },
+  {
+   "start": 84.28,
+   "end": 91.28,
+   "text": "La innovación radica en el método tradicional es estar separando generalmente con ayuda de un embudo o coladera"
+  },
+  {
+   "start": 91.28,
+   "end": 96.28,
+   "text": "el aceite de los demás residuos y luego guardarlo en botellas vacías de refresco,"
+  },
+  {
+   "start": 96.28,
+   "end": 99.28,
+   "text": "esperando hasta que pase el camión recolector de basura."
+  },
+  {
+   "start": 99.28,
+   "end": 103.28,
+   "text": "Una de las ventajas de este sistema es que cuenta con un depósito de aceite,"
+  },
+  {
+   "start": 103.28,
+   "end": 107.28,
+   "text": "el cual lo tratará para evitar los malos olores y evitar el arranciamiento."
+  },
+  {
+   "start": 107.28,
+   "end": 110.28,
+   "text": "El sistema es de 25 dólares."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 115.2
+}

@@ -1,0 +1,107 @@
+{
+ "video_id": "RCWTLaK69zQ",
+ "url": "https://youtu.be/RCWTLaK69zQ",
+ "year": 2021,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "SYNTAXERROR",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "SYNTAXERROR",
+   "challenge": "08 - TECNOLOGÍAS DE EFICIENCIA ENERGÉTICA APLICADA A VIVIENDAS"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:47:58+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Hola, somos de la Universidad Nacional de la Rioja Argentina. Nuestro proyecto se basa en el diseño de una casa energéticamente eficiente a partir del uso de materiales muy económicos como lo son el bamboo y botella de plástico, aprovechando características de un humedal. Este proyecto está normalizado con las normas de la acción electrotécnica de Argentina y las normas iran. Nos decidimos en hacer énfasis en la climatización natural aprovechando las propiedades de la zona y como datos tomamos a misiones posadas con 30º de máxima y 15º de mínima en promedio. Trataremos de lograr un recorte en el gasto de una vivienda normal que gasta 20 amperes para poder usar aeros condicionados para diferentes ambientes, haciendo que la casca permanezca en dos circuitos. Utilizaremos un sistema de climatización geotérmico de forma pasiva para la geofigeración y calificación de la vivienda. Este sistema no requiere radiación solar pues el suelo mantiene una temperatura constante a lo largo del año. También utilizaremos luces ecológicas denominadas luces de botella para iluminar de día zonas que no necesitan tantos lux. Finalmente un techo con una armazón de madera con un fondo aislado y tierra que reflectara los yoyos UV solares para evitar el levantamiento de temperatura en la casa. También generando un aislamiento acústico. Esta clase de proyectos con bamboo y tratando de no afectar al ecosistema ya se ha llevado a cabo pero en zonas de preservación natural o países en vías de desayoyo. Por lo cual no se ha normalizado el uso del bamboo como material ni se ha envuelto en popularidad al ser un material de la extranjera. Pero que puede ser cultivado y proyectado en la mayoría de las partes del mundo. Al ser mucho más económico como material de construcción se pueden hacer viviendas mucho más grandes con menos capital. Ylegándola a ser y concreto a proyectos más grandes como puentes y edificios. Gracias por su atención. Saludos desde Argentina.",
+ "segments": [
+  {
+   "start": 0.53,
+   "end": 4.53,
+   "text": "Hola, somos de la Universidad Nacional de la Rioja Argentina."
+  },
+  {
+   "start": 5.53,
+   "end": 16.53,
+   "text": "Nuestro proyecto se basa en el diseño de una casa energéticamente eficiente a partir del uso de materiales muy económicos como lo son el bamboo y botella de plástico, aprovechando características de un humedal."
+  },
+  {
+   "start": 16.53,
+   "end": 22.53,
+   "text": "Este proyecto está normalizado con las normas de la acción electrotécnica de Argentina y las normas iran."
+  },
+  {
+   "start": 22.53,
+   "end": 37.18,
+   "text": "Nos decidimos en hacer énfasis en la climatización natural aprovechando las propiedades de la zona y como datos tomamos a misiones posadas con 30º de máxima y 15º de mínima en promedio."
+  },
+  {
+   "start": 37.18,
+   "end": 48.18,
+   "text": "Trataremos de lograr un recorte en el gasto de una vivienda normal que gasta 20 amperes para poder usar aeros condicionados para diferentes ambientes, haciendo que la casca permanezca en dos circuitos."
+  },
+  {
+   "start": 48.18,
+   "end": 55.18,
+   "text": "Utilizaremos un sistema de climatización geotérmico de forma pasiva para la geofigeración y calificación de la vivienda."
+  },
+  {
+   "start": 55.18,
+   "end": 61.18,
+   "text": "Este sistema no requiere radiación solar pues el suelo mantiene una temperatura constante a lo largo del año."
+  },
+  {
+   "start": 62.18,
+   "end": 69.18,
+   "text": "También utilizaremos luces ecológicas denominadas luces de botella para iluminar de día zonas que no necesitan tantos lux."
+  },
+  {
+   "start": 69.18,
+   "end": 78.18,
+   "text": "Finalmente un techo con una armazón de madera con un fondo aislado y tierra que reflectara los yoyos UV solares para evitar el levantamiento de temperatura en la casa."
+  },
+  {
+   "start": 78.18,
+   "end": 81.18,
+   "text": "También generando un aislamiento acústico."
+  },
+  {
+   "start": 82.18,
+   "end": 90.18,
+   "text": "Esta clase de proyectos con bamboo y tratando de no afectar al ecosistema ya se ha llevado a cabo pero en zonas de preservación natural o países en vías de desayoyo."
+  },
+  {
+   "start": 90.18,
+   "end": 96.18,
+   "text": "Por lo cual no se ha normalizado el uso del bamboo como material ni se ha envuelto en popularidad al ser un material de la extranjera."
+  },
+  {
+   "start": 96.18,
+   "end": 100.18,
+   "text": "Pero que puede ser cultivado y proyectado en la mayoría de las partes del mundo."
+  },
+  {
+   "start": 100.18,
+   "end": 105.18,
+   "text": "Al ser mucho más económico como material de construcción se pueden hacer viviendas mucho más grandes con menos capital."
+  },
+  {
+   "start": 105.18,
+   "end": 109.18,
+   "text": "Ylegándola a ser y concreto a proyectos más grandes como puentes y edificios."
+  },
+  {
+   "start": 109.18,
+   "end": 112.18,
+   "text": "Gracias por su atención. Saludos desde Argentina."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 113.0
+}

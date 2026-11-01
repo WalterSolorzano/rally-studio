@@ -1,0 +1,117 @@
+{
+ "video_id": "sk--PVqgFFg",
+ "url": "https://www.youtube.com/watch?v=sk--PVqgFFg",
+ "year": 2022,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "ALPHA TEAM",
+ "place_label": "TERCER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "sede",
+   "place_label": "TERCER LUGAR",
+   "team": "ALPHA TEAM",
+   "challenge": "02 - TRANSFORMACIÓN DE RESIDUOS DE UNA CAFETERÍA"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:34:24+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Recicla y da vida. En la actualidad se desechan miles de toneladas de residuos sólidos en Latinoamérica y el mundo, los cuales se acumulan en distintos lugares de las ciudades. La idea es crear macetas con botellas de vidrio y con envases de latas, producidos por la cafetería, decorando los recipientes con pinturas, luego fundiendo las latas, creamos una lámina. Las botellas se unen a la forma deseada. Con esta solución pretendemos generar un impacto positivo, porque estamos reutilizando y revalorizándolos en bases de vidrio y latas que las cafeterías, empresas y personas no le dan ningún valor. Además, estaremos contribuyendo con el medio ambiente a través de la elaboración de macetas para plantas acuáticas. Esta solución muestra una propuesta innovadora, porque la volaremos macetas para plantas acuáticas fabricadas a base de desechos, tales como las botellas de vidrio, la cual funcionará como borde, y las latas de aluminio. Pasarán por un proceso de descomposición para la creación de una lámina, la cual finalizará con el proceso de moldería. Esta propuesta es abordable, ya que se utilizarán botellas de vidrio y latas de aluminio desechables. En primer lugar, en cafetería, en diferentes espacios de la ciudad, de esta manera estamos fomentando el hábito de reciclaje en las futuras generaciones. Además, estaríamos beneficiando a la cafetería y brindando nuevas oportunidades de empleo, a medida que dicha propuesta vaya en crecimiento.",
+ "segments": [
+  {
+   "start": 3.06,
+   "end": 5.06,
+   "text": "Recicla y da vida."
+  },
+  {
+   "start": 6.56,
+   "end": 12.56,
+   "text": "En la actualidad se desechan miles de toneladas de residuos sólidos en Latinoamérica y el mundo,"
+  },
+  {
+   "start": 12.56,
+   "end": 16.56,
+   "text": "los cuales se acumulan en distintos lugares de las ciudades."
+  },
+  {
+   "start": 16.56,
+   "end": 24.9,
+   "text": "La idea es crear macetas con botellas de vidrio y con envases de latas,"
+  },
+  {
+   "start": 24.9,
+   "end": 29.9,
+   "text": "producidos por la cafetería, decorando los recipientes con pinturas,"
+  },
+  {
+   "start": 29.9,
+   "end": 35.9,
+   "text": "luego fundiendo las latas, creamos una lámina. Las botellas se unen a la forma deseada."
+  },
+  {
+   "start": 36.9,
+   "end": 40.9,
+   "text": "Con esta solución pretendemos generar un impacto positivo,"
+  },
+  {
+   "start": 40.9,
+   "end": 50.9,
+   "text": "porque estamos reutilizando y revalorizándolos en bases de vidrio y latas que las cafeterías, empresas y personas no le dan ningún valor."
+  },
+  {
+   "start": 50.9,
+   "end": 58.9,
+   "text": "Además, estaremos contribuyendo con el medio ambiente a través de la elaboración de macetas para plantas acuáticas."
+  },
+  {
+   "start": 58.9,
+   "end": 68.34,
+   "text": "Esta solución muestra una propuesta innovadora, porque la volaremos macetas para plantas acuáticas"
+  },
+  {
+   "start": 68.34,
+   "end": 76.34,
+   "text": "fabricadas a base de desechos, tales como las botellas de vidrio, la cual funcionará como borde,"
+  },
+  {
+   "start": 76.34,
+   "end": 82.34,
+   "text": "y las latas de aluminio. Pasarán por un proceso de descomposición para la creación de una lámina,"
+  },
+  {
+   "start": 82.34,
+   "end": 86.34,
+   "text": "la cual finalizará con el proceso de moldería."
+  },
+  {
+   "start": 86.34,
+   "end": 96.7,
+   "text": "Esta propuesta es abordable, ya que se utilizarán botellas de vidrio y latas de aluminio desechables."
+  },
+  {
+   "start": 96.7,
+   "end": 101.7,
+   "text": "En primer lugar, en cafetería, en diferentes espacios de la ciudad,"
+  },
+  {
+   "start": 101.7,
+   "end": 107.7,
+   "text": "de esta manera estamos fomentando el hábito de reciclaje en las futuras generaciones."
+  },
+  {
+   "start": 107.7,
+   "end": 113.7,
+   "text": "Además, estaríamos beneficiando a la cafetería y brindando nuevas oportunidades de empleo,"
+  },
+  {
+   "start": 113.7,
+   "end": 117.7,
+   "text": "a medida que dicha propuesta vaya en crecimiento."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.0
+}

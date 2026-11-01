@@ -1,0 +1,77 @@
+{
+ "video_id": "-qTaapg_JfY",
+ "url": "https://youtu.be/-qTaapg_JfY",
+ "year": 2024,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "LOS PILARES",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "LOS PILARES",
+   "challenge": "05 - EVACUACIÓN"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:07:45+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "El avance de la tecnología no ha brindado un sinumero de beneficio y respuesta instantánea ante las dificultades presentes en la vida cotidiana. Sin embargo, mucho no tiene en cuenta que parte de esa cotidianidad también se refiere a una situación de depelir en las que nos podemos ver involucrados sin previo aviso. El sistema inteligente de evacuación está basado en Internet de las Cosas, IOT, interconectando diferentes dispositivos para lograr un sistema que logre un aviso de alarma para orientar una evacuación segura y eficiente. Es considerado una solución viable y sobresaliente a los demás competidores por el hecho de que tiene la capacidad de avisar para una movilización estratégica en un sistema de monitoreo en tiempo real. El servicio estará presente en ubicaciones estratégicas que permitan el correcto desarrollo de los protocolos de seguridad cuyo propósito es disminuir exponencialmente la tasa de incidentes o errores cometidos durante una de estas situaciones, lo que permite designar una ruta de evacuación óptima en caso de esta se vea afectada, una ruta secundaria a la que se pueda recurrir en caso sea necesario. Nuestra propuesta nace de la necesidad de modernizar los protocolos tradicionales que han mostrado un espacio de mejora a cada individuo y comunicarles rutas seguras de evacuación de manera funcional. La sustentabilidad económica está basada en un sistema de suscripción temporales dividida en pagos mensuales o anuales por las cuales se ofrecen los servicios de software, hardware, así como una conexión estable y directa con las autoridades competentes. Los desastres naturales pueden suceder en cualquier momento nuestro deber es prever este tipo de situaciones planteando un mecanismo de acción. Dicho mecanismo tiene que ser eficiente, claro, directo y comprensible.",
+ "segments": [
+  {
+   "start": 0.3,
+   "end": 8.3,
+   "text": "El avance de la tecnología no ha brindado un sinumero de beneficio y respuesta instantánea ante las dificultades presentes en la vida cotidiana."
+  },
+  {
+   "start": 8.3,
+   "end": 19.3,
+   "text": "Sin embargo, mucho no tiene en cuenta que parte de esa cotidianidad también se refiere a una situación de depelir en las que nos podemos ver involucrados sin previo aviso."
+  },
+  {
+   "start": 19.3,
+   "end": 34.3,
+   "text": "El sistema inteligente de evacuación está basado en Internet de las Cosas, IOT, interconectando diferentes dispositivos para lograr un sistema que logre un aviso de alarma para orientar una evacuación segura y eficiente."
+  },
+  {
+   "start": 34.3,
+   "end": 46.3,
+   "text": "Es considerado una solución viable y sobresaliente a los demás competidores por el hecho de que tiene la capacidad de avisar para una movilización estratégica en un sistema de monitoreo en tiempo real."
+  },
+  {
+   "start": 46.3,
+   "end": 59.3,
+   "text": "El servicio estará presente en ubicaciones estratégicas que permitan el correcto desarrollo de los protocolos de seguridad cuyo propósito es disminuir exponencialmente la tasa de incidentes o errores cometidos durante una de estas situaciones,"
+  },
+  {
+   "start": 59.3,
+   "end": 69.3,
+   "text": "lo que permite designar una ruta de evacuación óptima en caso de esta se vea afectada, una ruta secundaria a la que se pueda recurrir en caso sea necesario."
+  },
+  {
+   "start": 69.3,
+   "end": 82.3,
+   "text": "Nuestra propuesta nace de la necesidad de modernizar los protocolos tradicionales que han mostrado un espacio de mejora a cada individuo y comunicarles rutas seguras de evacuación de manera funcional."
+  },
+  {
+   "start": 82.3,
+   "end": 96.3,
+   "text": "La sustentabilidad económica está basada en un sistema de suscripción temporales dividida en pagos mensuales o anuales por las cuales se ofrecen los servicios de software, hardware, así como una conexión estable y directa con las autoridades competentes."
+  },
+  {
+   "start": 96.3,
+   "end": 104.3,
+   "text": "Los desastres naturales pueden suceder en cualquier momento nuestro deber es prever este tipo de situaciones planteando un mecanismo de acción."
+  },
+  {
+   "start": 104.3,
+   "end": 109.3,
+   "text": "Dicho mecanismo tiene que ser eficiente, claro, directo y comprensible."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 111.3
+}

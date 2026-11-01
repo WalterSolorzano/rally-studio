@@ -1,0 +1,72 @@
+{
+ "video_id": "ow1JgNiJ4SI",
+ "url": "https://www.youtube.com/watch?v=ow1JgNiJ4SI",
+ "year": 2022,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "COFFLIFE",
+ "place_label": "TERCER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "sede",
+   "place_label": "TERCER LUGAR",
+   "team": "COFFLIFE",
+   "challenge": "02 - TRANSFORMACIÓN DE RESIDUOS DE UNA CAFETERÍA"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:35:37+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Sabía usted que según el Banco Interamericano de Desarrollo, en América Latina y el Caribe se generan anualmente alrededor de 216 millones de toneladas de desecho sólido. Muchos de ellos son aluminio y botellas de vidrio, que no entran al circuito de reciclaje y se pierde la posibilidad de revalorizar estos residuos. Como solución a esta problemática les presentamos COX LIVE, el cual es un dispositivo electrónico que mediante sensores e identificadores almacenará los residuos correspondientes de las cafeterías. Estos continuamente serán vendidos a nuestros proveedores. Independientemente, este dispositivo le otorgará el beneficio al usuario que interactúe con él mediante su utilidad de almacenamiento, la cual le brindará un cupón de descuento para su siguiente compra en la cafetería.",
+ "segments": [
+  {
+   "start": 0.56,
+   "end": 6.68,
+   "text": "Sabía usted que según el Banco Interamericano de Desarrollo, en América Latina y el Caribe"
+  },
+  {
+   "start": 6.68,
+   "end": 13.28,
+   "text": "se generan anualmente alrededor de 216 millones de toneladas de desecho sólido. Muchos de ellos"
+  },
+  {
+   "start": 13.28,
+   "end": 19.84,
+   "text": "son aluminio y botellas de vidrio, que no entran al circuito de reciclaje y se pierde la posibilidad"
+  },
+  {
+   "start": 19.84,
+   "end": 26.52,
+   "text": "de revalorizar estos residuos. Como solución a esta problemática les presentamos COX LIVE,"
+  },
+  {
+   "start": 27.0,
+   "end": 32.16,
+   "text": "el cual es un dispositivo electrónico que mediante sensores e identificadores"
+  },
+  {
+   "start": 32.16,
+   "end": 38.32,
+   "text": "almacenará los residuos correspondientes de las cafeterías. Estos continuamente serán vendidos"
+  },
+  {
+   "start": 38.32,
+   "end": 45.08,
+   "text": "a nuestros proveedores. Independientemente, este dispositivo le otorgará el beneficio al usuario"
+  },
+  {
+   "start": 45.08,
+   "end": 50.84,
+   "text": "que interactúe con él mediante su utilidad de almacenamiento, la cual le brindará un"
+  },
+  {
+   "start": 50.84,
+   "end": 54.6,
+   "text": "cupón de descuento para su siguiente compra en la cafetería."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 55.1
+}

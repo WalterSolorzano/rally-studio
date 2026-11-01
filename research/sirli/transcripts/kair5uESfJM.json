@@ -1,0 +1,122 @@
+{
+ "video_id": "kair5uESfJM",
+ "url": "https://www.youtube.com/watch?v=kair5uESfJM",
+ "year": 2025,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "AGROUP",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "AGROUP",
+   "challenge": "05 - HUERTOS VERTICALES"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:36:09+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Sabías que los huertos urbanos enfrentan grandes problemas, son costosos y dependen del agua potable. Además, la escasez de agua de zona urbana afecta el 36% de la población mundial. Abro a resuelve todo esto mediante ingeniería ecológica, bajo costo y tecnología social. Promueve el uso de materiales reciclados como botellas plástica y sus tratos ultra ligeros. Integra un sistema de goteo solar pasivo que contencia agua usando el calor del sol. Aproveche el agua de lluvia y la niebla, filtrándola para que sea segura para riego, logrando hasta un 80% de autonomía hídrica y derrociendo el uso de agua potable. Permite conectarse a sensores Arduino para medir una amenaza y PH en tiempo real. El sistema promueve que el mantenimiento sea una experiencia divertida y educativa mediante desafío y punto de sostenibilidad. Ofrece la experiencia completa de aprendizaje y gamificación, incluso sensores, con tutoriales, retos ecológicos y un espacio para que gobiernos, comunidades y empresas puedan cotizar proyectos devuertos verticales a gran escala. Reduce costo hasta un 70% frente alquíes comerciales, utilizando materia prima disponible para el usuario y disminuyendo el impacto ambiental y económico mientras multiplica el impacto social. Nuestra visión es transformar la sostenibilidad en un juego y cada muro de la ciudad es una oportunidad para cultivar el futuro.",
+ "segments": [
+  {
+   "start": 4.08,
+   "end": 8.52,
+   "text": "Sabías que los huertos urbanos enfrentan grandes problemas,"
+  },
+  {
+   "start": 8.52,
+   "end": 11.68,
+   "text": "son costosos y dependen del agua potable."
+  },
+  {
+   "start": 11.68,
+   "end": 19.08,
+   "text": "Además, la escasez de agua de zona urbana afecta el 36% de la población mundial."
+  },
+  {
+   "start": 20.52,
+   "end": 26.08,
+   "text": "Abro a resuelve todo esto mediante ingeniería ecológica,"
+  },
+  {
+   "start": 26.08,
+   "end": 29.32,
+   "text": "bajo costo y tecnología social."
+  },
+  {
+   "start": 29.76,
+   "end": 37.52,
+   "text": "Promueve el uso de materiales reciclados como botellas plástica y sus tratos ultra ligeros."
+  },
+  {
+   "start": 37.52,
+   "end": 45.92,
+   "text": "Integra un sistema de goteo solar pasivo que contencia agua usando el calor del sol."
+  },
+  {
+   "start": 45.92,
+   "end": 53.32,
+   "text": "Aproveche el agua de lluvia y la niebla, filtrándola para que sea segura para riego,"
+  },
+  {
+   "start": 53.76,
+   "end": 60.52,
+   "text": "logrando hasta un 80% de autonomía hídrica y derrociendo el uso de agua potable."
+  },
+  {
+   "start": 60.52,
+   "end": 68.56,
+   "text": "Permite conectarse a sensores Arduino para medir una amenaza y PH en tiempo real."
+  },
+  {
+   "start": 68.56,
+   "end": 74.76,
+   "text": "El sistema promueve que el mantenimiento sea una experiencia divertida y educativa"
+  },
+  {
+   "start": 74.76,
+   "end": 80.0,
+   "text": "mediante desafío y punto de sostenibilidad."
+  },
+  {
+   "start": 80.0,
+   "end": 85.48,
+   "text": "Ofrece la experiencia completa de aprendizaje y gamificación, incluso sensores,"
+  },
+  {
+   "start": 85.48,
+   "end": 90.92,
+   "text": "con tutoriales, retos ecológicos y un espacio para que gobiernos, comunidades y empresas"
+  },
+  {
+   "start": 90.92,
+   "end": 95.16,
+   "text": "puedan cotizar proyectos devuertos verticales a gran escala."
+  },
+  {
+   "start": 95.16,
+   "end": 99.44,
+   "text": "Reduce costo hasta un 70% frente alquíes comerciales,"
+  },
+  {
+   "start": 99.44,
+   "end": 106.4,
+   "text": "utilizando materia prima disponible para el usuario y disminuyendo el impacto ambiental y económico"
+  },
+  {
+   "start": 106.4,
+   "end": 109.0,
+   "text": "mientras multiplica el impacto social."
+  },
+  {
+   "start": 109.0,
+   "end": 118.0,
+   "text": "Nuestra visión es transformar la sostenibilidad en un juego y cada muro de la ciudad es una oportunidad para cultivar el futuro."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.7
+}

@@ -39,7 +39,7 @@ El éxito en maratones de innovación de 24 a 28 horas no depende de la inspirac
 | **Categorías Oficiales** | **2 Categorías Continental:**<br>1. *Innovación*<br>2. *Impacto Social* | **3 Categorías Nacionales:**<br>1. *Innovación Tecnológica*<br>2. *Innovación Social*<br>3. *Innovación de Procesos / Organizacional* |
 | **Gobernanza del Jurado** | **Embudo de 3 Instancias:**<br>Sede → Nacional → Internacional.<br>Deliberación en Sede ≤3 horas. Deliberación Internacional a 72 horas. | **Comisión Interinstitucional Mixta:**<br>Evaluadores de CNU, MEFCCA, INATEC, MINJUVE y Red de Ciudades Creativas. |
 | **Regla de Incompatibilidad** | **PROHIBICIÓN ESTRICTA:** Ningún jurado internacional puede calificar proyectos provenientes de su propio país. | Jurados de sede no califican proyectos donde tengan parentesco o tutoría directa. |
-| **Entregables Auditables** | **3 Entregables Obligatorios:**<br>1. Reporte PDF Pautado SIRLI (caracteres estrictos)<br>2. Video Pitch YouTube ≤120s<br>3. Video TikTok de interacción internacional | **2 Entregables Principales:**<br>1. Documento Técnico de Propuesta (hasta 10 páginas con Canvas)<br>2. Video Pitch YouTube ≤120s |
+| **Entregables Auditables** | **2 Entregables Obligatorios:**<br>1. Reporte PDF Pautado SIRLI (caracteres estrictos)<br>2. Video Pitch YouTube ≤120s | **2 Entregables Principales:**<br>1. Documento Técnico de Propuesta (hasta 10 páginas con Canvas)<br>2. Video Pitch YouTube ≤120s |
 
 ### 1.2 Reglas SIRLI de Conformación de Equipo (Causa Inmediata de Inhabilitación)
 Antes de ingresar al taller de diseño, el sistema central SIRLI audita 4 requisitos de equipo. Si uno solo falla a las 12:00 PM del viernes, el equipo queda inhabilitado por software:
@@ -103,11 +103,11 @@ El jurado calificador revisa docenas de videos en pocas horas tras una jornada e
 
 ## 4. ARQUITECTURA NARRATIVA DEL GUION DE PITCH: ESTÁNDAR PAS-V (120 SEGUNDOS)
 
-El video pitch de 2 minutos es el artefacto que define el podio. Un error de 1 segundo hacia arriba significa **0 puntos por descalificación**.
+El video pitch de 2 minutos es el artefacto que define el podio. El límite es 120 s y se verifica sobre el audio final. El número de palabras no descalifica.
 
 ### 4.1 Métricas Oro de Locución
 * **Velocidad de Dicción Profesional:** **135 palabras por minuto** = **2.25 palabras por segundo**.
-* **Longitud Total del Guion:** **240 a 270 palabras como máximo absoluto**.
+* **Longitud Total del Guion:** **240 a 270 palabras como referencia de escritura** (guía, no regla).
 * Si el guion tiene 310 palabras, el locutor deberá hablar a 155 ppm: la voz sonará acelerada, ininteligible y transmitirá ansiedad y falta de síntesis al jurado.
 * **Corte Seguro de Edición:** El video debe finalizar y fundir a negro en el segundo **1:57 - 1:58** (nunca en 2:00 exacto para evitar discrepancias de transcodificación de YouTube).
 
@@ -189,14 +189,14 @@ El análisis de cientos de proyectos eliminados en ediciones anteriores arroja u
 
 1. **Desperdicio del Acto I (0:00–0:20):** Gastar los primeros 20 segundos en logotipos institucionales o presentaciones personales.
 2. **La Trampa de la "App Móvil de Denuncia":** Proponer una app pasiva como solución mágica a problemas de saneamiento, escasez de agua o violencia comunitaria. Si no hay transformación física o hardware, el jurado internacional la califica de inviable.
-3. **Discrepancia Numérica Video vs. PDF:** Citar en el video pitch que el sistema cuesta $350 y colocar en las tablas del PDF pautado que cuesta $1,200. Esta falta de rigor matemático es la causa oculta número uno de descalificación por jurados expertos.
-4. **Video Pitch de 121 Segundos:** Exceder los 2 minutos oficiales por un solo segundo. El software del comité aplica descalificación automática sin mediación humana.
+3. **Discrepancia Numérica Video vs. PDF:** Citar en el video pitch que el sistema cuesta $350 y colocar en las tablas del PDF pautado que cuesta $1,200. Esta incoherencia es el riesgo más frecuente ante jurados expertos.
+4. **Video Pitch de 121 Segundos:** Exceder los 2 minutos oficiales por un solo segundo. El límite se mide con ffprobe sobre el audio entregado; no se apuesta al margen.
 5. **Video en YouTube en Modo "Privado":** Dejar el video en modo privado en lugar de "No listado" (Oculto) o "Público". Cuando el jurado hace clic en la plataforma SIRLI, aparece error de acceso y califica con 0 puntos.
 6. **Naming Trillado con Sufijo `-INNOVA`:** Nombres genéricos como *AgroInnova*, *NicaInnova*, *EcoInnova*. Se diluyen en la memoria del jurado frente a esquemas de Naming Dual (*Güegüense* + *DIGNA*).
 7. **Omisión de Costos Unitarios y Presupuesto de Lote Piloto:** No cotizar insumos mayoristas reales ni definir el rango financiero ($4k-$6k USD).
 8. **Exceso de Caracteres en el Pautado SIRLI:** Superar el límite estricto de caracteres con espacios (1250, 1000, 1500), provocando que la plataforma oficial corte el texto en seco a mitad de una frase técnica.
 9. **Canal Personal Desarticulado en YouTube:** Subir el video desde la cuenta personal de un estudiante sin título canónico, descripción técnica ni hashtags oficiales.
-10. **Omisión del TikTok de Interacción Internacional:** En el Rally Latam, el video lúdico de TikTok es un entregable auditable que habilita puntos de vinculación continental.
+10. **Audio de más de 120 segundos:** el límite se mide sobre el archivo final; recortar el guion antes de grabar, no después.
 11. **Replanteamiento Arquitectónico Tardío (T-6 Horas):** Cambiar la solución a medianoche o madrugada destruye los guiones, renders y presupuestos en marcha.
 
 ---
@@ -252,12 +252,12 @@ El manejo del tiempo bajo privación de sueño exige una disciplina militar de h
 | Bloque Temporal | Hito Crítico | Riesgo y Guardrail de Descalificación | Responsable Funcional |
 | :--- | :--- | :--- | :--- |
 | **08:00 AM (Vie)**<br>*(T-28 Horas)* | Apertura de plataforma central y descarga de matrices oficiales de retos. | **Riesgo:** Elegir reto sin evaluar saturación competitiva.<br>**Guardrail:** Clasificar en matriz Saturado vs Nicho. | Todo el equipo y mentor |
-| **12:00 PM (Vie)**<br>*(T-24 Horas)* | **Cierre fatal de confirmación de equipo en SIRLI.** | **Riesgo:** Descalificación automática de software.<br>**Guardrail:** Validar 4-10 miembros, ≥1 ing, ≥1 mujer. | Líder estudiantil |
+| **12:00 PM (Vie)**<br>*(inicio)* | **Cierre fatal de confirmación de equipo en SIRLI.** | **Riesgo:** Descalificación automática de software.<br>**Guardrail:** Validar 4-10 miembros, ≥1 ing, ≥1 mujer. | Líder estudiantil |
 | **04:00 PM (Vie)**<br>*(T-20 Horas)* | Aprobación de la Tesis de Solución con Efecto Wow. | **Riesgo:** Propuesta lineal o app pasiva sin hardware.<br>**Guardrail:** Activar al menos 1 dimensión Wow. | Diseñador e Ingeniero |
-| **08:00 PM (Vie)**<br>*(T-16 Horas)* | **Publicación obligatoria del Video TikTok de interacción.** | **Riesgo:** Pérdida de puntos de vinculación SIRLI.<br>**Guardrail:** Subir con los 5 hashtags oficiales. | Encargado Audiovisual |
+| **08:00 PM (Vie)**<br>*(~35 % del tiempo)* | **Cierre de cifras: presupuesto, canvas y guion cuadran.** | **Riesgo:** incoherencia entre piezas.<br>**Guardrail:** mismas cifras en video, PDF y Excel. | Presupuestador |
 | **12:00 AM (Sáb)**<br>*(T-12 Horas)* | **Congelamiento total de la arquitectura técnica.** | **Riesgo:** Cambios a medianoche arruinan el guion.<br>**Guardrail:** Prohibido modificar componentes COTS. | Equipo técnico |
 | **04:00 AM (Sáb)**<br>*(T-8 Horas)* | Redacción del reporte pautado y cotizaciones de presupuesto. | **Riesgo:** Superar límite de caracteres con espacios.<br>**Guardrail:** Auditar que el texto no se trunque. | Redactor técnico |
-| **07:00 AM (Sáb)**<br>*(T-5 Horas)* | Grabación de locución de guion PAS-V (240–270 palabras). | **Riesgo:** Dicción acelerada o duración >120s.<br>**Guardrail:** Cronometrar locución a 135 ppm. | Locutor / Editor AV |
+| **07:00 AM (Sáb)**<br>*(~80 % del tiempo)* | Grabación de locución de guion PAS-V (referencia 240–270 palabras). | **Riesgo:** Dicción acelerada o duración >120s.<br>**Guardrail:** Cronometrar locución a 135 ppm. | Locutor / Editor AV |
 | **09:30 AM (Sáb)**<br>*(T-2.5 Horas)* | **Render final de video (1080p, ≤118s) y subida a YouTube.** | **Riesgo:** YouTube tarda 30 min en procesar HD.<br>**Guardrail:** Modo "No listado" en canal de marca. | Editor Audiovisual |
 | **11:00 AM (Sáb)**<br>*(T-1 Hora)* | **Auditoría cruzada de sincronía numérica PDF vs. Video.** | **Riesgo:** Discrepancia de costos descalifica prefactibilidad.<br>**Guardrail:** Cotejo centavo a centavo y persona a persona. | Auditor del equipo |
 | **11:30 AM (Sáb)**<br>*(T-30 Min)* | Emisión y carga de comprobantes definitivos en la plataforma. | **Riesgo:** Caída de Wi-Fi institucional o congestión de servidor.<br>**Guardrail:** Subir con conexión de contingencia 4G/5G. | Líder y Co-líder |

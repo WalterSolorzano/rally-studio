@@ -53,6 +53,12 @@ KEYWORDS = {
     },
 }
 
+GENERICOS = {
+    "emergencia", "emergencias", "solucion", "soluciones", "problema", "sistema",
+    "sistemas", "comunidad", "comunidades", "urbano", "urbana", "bajo", "baja",
+    "costo", "costos", "materiales", "general", "nuevo", "nueva",
+}
+
 STOP = set("""
 de la el los las un una unos unas y o u en con por para del al que se su sus
 como mas menos sobre entre desde hasta durante sin tras cada cual cuales
@@ -244,9 +250,14 @@ def emparejar_casos(
         ct: set[str] = set()
         for tema in caso.get("temas", []):
             ct |= _tokens(tema)
+        # El nombre del proyecto ganador es la senal mas fuerte cuando el reto es el mismo.
+        ct |= _tokens(caso.get("proyecto", ""))
         overlap_titulo = len(tt_titulo & ct)
         overlap_total = len(tt_total & ct)
-        if overlap_total < 2 and overlap_titulo < 1:
+        # Un token del titulo solo cuenta si es especifico: "emergencia", "sistema"
+        # o "comunidad" aparecen en casi cualquier reto y producen falsos positivos.
+        titulo_especifico = (tt_titulo & ct) - GENERICOS
+        if overlap_total < 2 and not titulo_especifico:
             continue
         puntos = overlap_titulo * 3 + overlap_total
         if categoria and caso.get("categoria") == categoria:
@@ -338,6 +349,24 @@ def _frase(texto: str, limite: int = 220) -> str:
     return texto[: corte if corte > 0 else limite].rstrip() + "…"
 
 
+def _aporta(texto: str, usados: list[str]) -> bool:
+    """True si el texto agrega informacion y no repite lo ya dicho."""
+    texto = str(texto or "").strip()
+    if not texto or "no documentado" in _norm(texto):
+        return False
+    if re.search(r"equipos|nicho|concurrencia|satura|poco tomado", _norm(texto)):
+        return False
+    tokens = _tokens(texto)
+    if not tokens:
+        return False
+    previos: set[str] = set()
+    for usado in usados:
+        previos |= _tokens(usado)
+    if previos and len(tokens & previos) / len(tokens) >= 0.75:
+        return False
+    return True
+
+
 def _ruta_desde_caso(reto: dict, caso: dict, certamen: str, categoria: str, indice: int) -> dict:
     proyecto = caso.get("proyecto", "Caso ganador")
     solucion = caso.get("solucion", "No documentado en la fuente")
@@ -346,30 +375,57 @@ def _ruta_desde_caso(reto: dict, caso: dict, certamen: str, categoria: str, indi
     tiene_metrica = bool(metrica) and "no documentado" not in _norm(metrica)
 
     titulo = f"{_frase(proyecto, 60)} aplicado a {_frase(reto.get('title', 'el reto'), 50)}"
-    concepto = (
-        f"{proyecto} demostró que {_frase(caso.get('insight', ''), 170)} "
-        f"La ruta traslada ese principio al reto: {_frase(solucion, 220)}"
-    )
+    tp = _tokens(proyecto)
+    tr = _tokens(reto.get("title", ""))
+    mismo_reto = bool(tp and tr) and len(tp & tr) / len(tp) >= 0.6
+    if mismo_reto and "no documentado" not in _norm(solucion):
+        titulo = _frase(solucion, 95)
+    partes = []
+    usados = [proyecto, reto.get("title", "")]
+    if _aporta(caso.get("problema", ""), usados):
+        partes.append(f"Problema documentado: {_frase(caso.get('problema', ''), 170).rstrip('.').strip()}.")
+        usados.append(caso.get("problema", ""))
+    if _aporta(solucion, usados):
+        partes.append(f"Solución del caso: {_frase(solucion, 200).rstrip('.').strip()}.")
+        usados.append(solucion)
+    if _aporta(caso.get("insight", ""), usados):
+        partes.append(f"Principio transferible: {_frase(caso.get('insight', ''), 170).rstrip('.').strip()}.")
+        usados.append(caso.get("insight", ""))
+    elif _aporta(caso.get("causa_raiz", ""), usados):
+        partes.append(f"Principio transferible: {_frase(caso.get('causa_raiz', ''), 170).rstrip('.').strip()}.")
+        usados.append(caso.get("causa_raiz", ""))
+    if not partes:
+        partes.append(
+            "El corpus documenta el proyecto y su puesto, no el mecanismo interno: "
+            "la ruta se apoya en el resultado y en el diagnóstico que el equipo debe validar."
+        )
+    concepto = f"{proyecto} ({caso.get('year')}). " + " ".join(partes)
     por_que = (
         f"El reto pide: {_frase(reto.get('description', reto.get('title', '')), 200)} "
-        f"El caso {proyecto} ({caso.get('year')}) atacó el mismo núcleo: "
+        f"El caso {proyecto} ({caso.get('year')}) trabajó un núcleo equivalente: "
         f"{_frase(caso.get('problema', ''), 150)} "
-        f"Causa raíz identificada: {_frase(caso.get('causa_raiz', ''), 120)}"
+        "La ruta reutiliza ese diagnóstico; no copia el producto."
     )
     impacto = []
     if tiene_metrica:
         impacto.append({"dato": _frase(metrica, 200), "fuente": fuente})
     recursos = recursos_de(f"{solucion} {caso.get('problema', '')} {reto.get('description', '')}")
     riesgo = (
-        "El jurado atacará la métrica si no se mide en el prototipo: "
+        "Bandera: la métrica no se mide en el prototipo. Condición que la resuelve: "
         "definir instrumento y unidad antes de la hora 14."
         if not tiene_metrica else
-        f"El jurado atacará la transferibilidad: demostrar que {_frase(metrica, 90)} se sostiene con recursos locales."
+        f"Bandera: transferibilidad. Condición que la resuelve: demostrar que {_frase(metrica, 90)} se sostiene con recursos locales."
     )
     pitch = (
-        f"Con {_frase(proyecto, 40)} adaptado, {_frase(reto.get('title', 'el reto'), 50)} se resuelve "
-        f"con {_frase(metrica, 90) if tiene_metrica else 'un piloto medible (métrica por definir)'}."
+        f"Para este reto ya existe un caso que funcionó: {_frase(proyecto, 50)} "
+        f"({caso.get('year')}, {_frase(caso.get('puesto', ''), 40)}). "
     )
+    if _aporta(solucion, [proyecto]):
+        pitch += f"Se reutiliza su mecanismo: {_frase(solucion, 110)}"
+    else:
+        pitch += "Se reutiliza su mecanismo y se reajusta al beneficiario de este reto."
+    if tiene_metrica:
+        pitch += f" Métrica del caso: {_frase(metrica, 80)}"
     return {
         "id": f"ruta-{indice}",
         "titulo": titulo,
@@ -406,9 +462,10 @@ def _ruta_exploratoria(reto: dict, certamen: str, categoria: str) -> dict:
         "id": "ruta-exploratoria",
         "titulo": f"Hipótesis de solución para {_frase(reto.get('title', 'el reto'), 60)}",
         "concepto": (
-            "No existe un caso ganador comparable en el corpus. La ruta se formula como hipótesis "
-            "a validar con el beneficiario antes de construir: definir el proceso físico mínimo, "
-            "medirlo y recién entonces prototipar."
+            "No hay un caso ganador comparable en el corpus. La ruta se plantea como hipótesis: "
+            f"definir el proceso físico mínimo que resuelve «{_frase(reto.get('title', 'el reto'), 80)}», "
+            "construir un prototipo de banco con recursos locales y medirlo con el beneficiario "
+            "antes de escalar. El jurado evalúa método y evidencia, no promesas."
         ),
         "por_que_aplica": (
             f"El reto pide: {_frase(reto.get('description', reto.get('title', '')), 240)} "
@@ -428,7 +485,7 @@ def _ruta_exploratoria(reto: dict, certamen: str, categoria: str) -> dict:
         "ventana": VENTANAS[certamen],
         "impacto": [],
         "rubrica": rubrica_para(certamen, categoria),
-        "riesgo": "Sin precedente: el jurado exigirá evidencia primaria. No presentar como validado.",
+        "riesgo": "Bandera: sin precedente. Condición que la resuelve: conseguir evidencia primaria; no presentar como validado.",
         "pitch": "Hipótesis en validación: no usar cifras hasta medir el piloto.",
     }
 
@@ -450,7 +507,7 @@ def generar_soluciones(
 
     rutas = []
     for puntos, caso in pares:
-        if puntos < 4:
+        if puntos < 5:
             continue
         if len(rutas) >= propuestas:
             break

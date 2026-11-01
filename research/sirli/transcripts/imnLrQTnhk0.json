@@ -1,0 +1,127 @@
+{
+ "video_id": "imnLrQTnhk0",
+ "url": "https://youtu.be/imnLrQTnhk0",
+ "year": 2026,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "BEEKEEPER",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "BEEKEEPER",
+   "challenge": "02 - SENSORES AL SERVICIO DE LA COMUNIDAD"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:27:18+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Solo en Argentina descartamos más de 500.000 toneladas de basura electrónica al año, unos 11 kilos de contaminación por personas. ¿Y si pudieramos utilizar la tecnología que ya no usamos para ayudar a recuperar poblaciones de abejas? ¿Qué pasaría si esos celulares que hoy dormen en un cajón pudieran convertirse en el escudo protector de la naturaleza? Las abejas son fundamentales para la polinización y la biodiversidad de nuestros alimentos. Sin embargo, cuando aparecen sonorbanos buscando refugio pueden ser exterminadas por miedo, antes de que un rescatista pueda llegar a tiempo. Hoy presentamos una propuesta que combina reciclaje electrónico y cuidado al medio ambiente. Trae de la minería urbana, utilizando celulares obsoletos para extraer sus sensores e integrarlo en microcontrolador de bajo consumo. Para evitar falsos positivos, el modo utiliza una triple validación. El micrófono detecta un sumbido de sentamiento a 200 Hz. El acelerómetro registra actividad y el sensor de luz del teléfono detecta oscurecimiento cuando las abejas ocupan la caja. Despertando solo unos segundos cada 10 o 15 minutos para ahorrar batería. A través de software libre, infraestructura y hotel, el dispositivo envía una alerta de georeferencia por Telegram WhatsApp al celular del rescatista. El enjambre capturado en la ubicación X, el especialista va directo al lugar exacto. Retira el cajón con cuidado y traslada las abejas a un lugar seguro, sin viajes en vano ni riesgo para la comunidad, ahorrando a cimas del 70% de los cotos logísticos. Unimos dos grandes desafíos, reducir la basura electrónica, proteger la biodiversidad, reciclar tecnología, recuperar enjambres y cuidar a las abejas. Una idea para transformar resuidos en oportunidades para la naturaleza. Esta iniciativa propone tomar aquello que consideramos basura y darle una segunda oportunidad sostenible. Innovación consente al servicio del planeta.",
+ "segments": [
+  {
+   "start": 4.46,
+   "end": 10.46,
+   "text": "Solo en Argentina descartamos más de 500.000 toneladas de basura electrónica al año, unos 11 kilos de contaminación por personas."
+  },
+  {
+   "start": 10.46,
+   "end": 15.46,
+   "text": "¿Y si pudieramos utilizar la tecnología que ya no usamos para ayudar a recuperar poblaciones de abejas?"
+  },
+  {
+   "start": 15.46,
+   "end": 21.46,
+   "text": "¿Qué pasaría si esos celulares que hoy dormen en un cajón pudieran convertirse en el escudo protector de la naturaleza?"
+  },
+  {
+   "start": 21.46,
+   "end": 25.46,
+   "text": "Las abejas son fundamentales para la polinización y la biodiversidad de nuestros alimentos."
+  },
+  {
+   "start": 25.46,
+   "end": 29.46,
+   "text": "Sin embargo, cuando aparecen sonorbanos buscando refugio pueden ser exterminadas por miedo,"
+  },
+  {
+   "start": 29.46,
+   "end": 31.46,
+   "text": "antes de que un rescatista pueda llegar a tiempo."
+  },
+  {
+   "start": 31.46,
+   "end": 36.46,
+   "text": "Hoy presentamos una propuesta que combina reciclaje electrónico y cuidado al medio ambiente."
+  },
+  {
+   "start": 36.46,
+   "end": 42.46,
+   "text": "Trae de la minería urbana, utilizando celulares obsoletos para extraer sus sensores e integrarlo en microcontrolador de bajo consumo."
+  },
+  {
+   "start": 42.46,
+   "end": 45.46,
+   "text": "Para evitar falsos positivos, el modo utiliza una triple validación."
+  },
+  {
+   "start": 45.46,
+   "end": 49.46,
+   "text": "El micrófono detecta un sumbido de sentamiento a 200 Hz."
+  },
+  {
+   "start": 49.46,
+   "end": 56.46,
+   "text": "El acelerómetro registra actividad y el sensor de luz del teléfono detecta oscurecimiento cuando las abejas ocupan la caja."
+  },
+  {
+   "start": 56.46,
+   "end": 60.46,
+   "text": "Despertando solo unos segundos cada 10 o 15 minutos para ahorrar batería."
+  },
+  {
+   "start": 60.46,
+   "end": 68.46,
+   "text": "A través de software libre, infraestructura y hotel, el dispositivo envía una alerta de georeferencia por Telegram WhatsApp al celular del rescatista."
+  },
+  {
+   "start": 68.46,
+   "end": 73.46,
+   "text": "El enjambre capturado en la ubicación X, el especialista va directo al lugar exacto."
+  },
+  {
+   "start": 73.46,
+   "end": 78.46,
+   "text": "Retira el cajón con cuidado y traslada las abejas a un lugar seguro, sin viajes en vano ni riesgo para la comunidad,"
+  },
+  {
+   "start": 78.46,
+   "end": 81.46,
+   "text": "ahorrando a cimas del 70% de los cotos logísticos."
+  },
+  {
+   "start": 81.46,
+   "end": 89.46,
+   "text": "Unimos dos grandes desafíos, reducir la basura electrónica, proteger la biodiversidad, reciclar tecnología, recuperar enjambres y cuidar a las abejas."
+  },
+  {
+   "start": 89.46,
+   "end": 92.46,
+   "text": "Una idea para transformar resuidos en oportunidades para la naturaleza."
+  },
+  {
+   "start": 92.46,
+   "end": 97.46,
+   "text": "Esta iniciativa propone tomar aquello que consideramos basura y darle una segunda oportunidad sostenible."
+  },
+  {
+   "start": 97.46,
+   "end": 99.46,
+   "text": "Innovación consente al servicio del planeta."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 108.6
+}

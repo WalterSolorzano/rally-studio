@@ -1,0 +1,87 @@
+{
+ "video_id": "2NKkJr3lRXU",
+ "url": "https://youtu.be/2NKkJr3lRXU?si=RZ88dSLtpgMirWG9",
+ "year": 2023,
+ "collection": "sede",
+ "country": "COLOMBIA",
+ "team": "SURGENIUS INNOVATORS",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "SURGENIUS INNOVATORS",
+   "challenge": "09 - GRIS A VERDE"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:01:26+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "La problemática seleccionada por el equipo que representamos en este caso es Colombia, fue el desafío número 9, pasarte gris, haberte. La problemática plantea buscar una alternativa que solucione la problemática de la comunidad en cuanto a reconocer qué tipo de uso se le puede brindar al agua. Si es para consumirse, si se puede lavar o si es definitivamente el agua, no se puede utilizar en nuestros hogares. La solución que le dimos a esto está basada en el objetivo de desarrollo de sostenibilidad que está actualmente en funcionamiento por las organizaciones unidas. La idea es un poco económica. La construcción del filtro no tiene un valor más de 12 dólares aproximadamente, en cuanto a las plantas son de fácil cuidados, son de fácil reproducción, entonces no genera un mayor cuidado ni mayor impacto para el usuario. Lo que sí hace es generar un impacto económico y claramente reduce también los riesgos del consumo de agua inestable y indopotable para las comunidades de todos los territorios y los territorios en los que se están más aislados y es un poco más difícil acceder a este beneficio. Según la implementación de la aplicación, que sería nuestro punto más signo ahora en cuanto a el desarrollo de la actividad, pues el costo es un poquito más alto, son 10.000 dólares, pero estamos viendo que es un único costo en la programación y adaptación de la aplicación. Y esto no se habría sumido por la ciudadanía. La ciudadanía tendría acceso completamente gratuito y se necesitaría de adquirir internet para el uso de esta aplicación. Entonces contamos con una idea muy amplia que se puede trabajar, se puede construir y ayuda a solucionar una problemática a nivel mundial. Entonces se pone en práctica en regiones aisladas, podemos ver grandes beneficios en la economía mundial, en la mejoría de la salud y claramente esto impacta muchos de los objetivos de desarrollo sostenibles que actualmente se están trabajando para las organizaciones.",
+ "segments": [
+  {
+   "start": 0.72,
+   "end": 9.08,
+   "text": "La problemática seleccionada por el equipo que representamos en este caso es Colombia, fue el desafío número 9, pasarte gris, haberte."
+  },
+  {
+   "start": 9.08,
+   "end": 20.48,
+   "text": "La problemática plantea buscar una alternativa que solucione la problemática de la comunidad en cuanto a reconocer qué tipo de uso se le puede brindar al agua."
+  },
+  {
+   "start": 20.48,
+   "end": 26.58,
+   "text": "Si es para consumirse, si se puede lavar o si es definitivamente el agua, no se puede utilizar en nuestros hogares."
+  },
+  {
+   "start": 27.1,
+   "end": 35.42,
+   "text": "La solución que le dimos a esto está basada en el objetivo de desarrollo de sostenibilidad que está actualmente en funcionamiento por las organizaciones unidas."
+  },
+  {
+   "start": 35.42,
+   "end": 43.38,
+   "text": "La idea es un poco económica. La construcción del filtro no tiene un valor más de 12 dólares aproximadamente,"
+  },
+  {
+   "start": 43.38,
+   "end": 52.02,
+   "text": "en cuanto a las plantas son de fácil cuidados, son de fácil reproducción, entonces no genera un mayor cuidado ni mayor impacto para el usuario."
+  },
+  {
+   "start": 52.38,
+   "end": 68.26,
+   "text": "Lo que sí hace es generar un impacto económico y claramente reduce también los riesgos del consumo de agua inestable y indopotable para las comunidades de todos los territorios y los territorios en los que se están más aislados y es un poco más difícil acceder a este beneficio."
+  },
+  {
+   "start": 68.58,
+   "end": 75.46,
+   "text": "Según la implementación de la aplicación, que sería nuestro punto más signo ahora en cuanto a el desarrollo de la actividad,"
+  },
+  {
+   "start": 75.46,
+   "end": 83.86,
+   "text": "pues el costo es un poquito más alto, son 10.000 dólares, pero estamos viendo que es un único costo en la programación y adaptación de la aplicación."
+  },
+  {
+   "start": 83.86,
+   "end": 94.06,
+   "text": "Y esto no se habría sumido por la ciudadanía. La ciudadanía tendría acceso completamente gratuito y se necesitaría de adquirir internet para el uso de esta aplicación."
+  },
+  {
+   "start": 94.38,
+   "end": 102.22,
+   "text": "Entonces contamos con una idea muy amplia que se puede trabajar, se puede construir y ayuda a solucionar una problemática a nivel mundial."
+  },
+  {
+   "start": 102.22,
+   "end": 118.26,
+   "text": "Entonces se pone en práctica en regiones aisladas, podemos ver grandes beneficios en la economía mundial, en la mejoría de la salud y claramente esto impacta muchos de los objetivos de desarrollo sostenibles que actualmente se están trabajando para las organizaciones."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 118.8
+}

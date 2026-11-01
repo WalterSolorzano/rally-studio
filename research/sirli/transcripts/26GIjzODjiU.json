@@ -1,0 +1,142 @@
+{
+ "video_id": "26GIjzODjiU",
+ "url": "https://youtu.be/26GIjzODjiU",
+ "year": 2023,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "AGUERRIDOS PINOLEROS",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "AGUERRIDOS PINOLEROS",
+   "challenge": "02 - SIEMPRE EN CONTACTO"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:17:41+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Rally Latinoamericano de Innovación 2023 El turismo de aventuras se ha convertido en un negocio cada vez más demandado, con una facturación global estimada de 263 millones de dólares anuales. Según datos de la Asociación de Comercio de Viajes de Aventura, entidad que representa más de 300 empresas turísticas especializadas de 69 países. Sin embargo, hay una necesidad de ofrecer actividades turísticas seguras en lugares donde puede ocurrir fenómenos naturales espontáneos. Puede existir la posibilidad de perderse en la trayectoria o tener un accidente y se debe tener una solución de cómo ser localizado. La empresa tecnopinolera es un negocio que diseña y vende diferentes accesorios tecnológicos que funcionan con o sin internet, como dispositivo portátil y de fácil uso para el turista que practica turismo de aventura. Aventur es un dispositivo que proporciona información en tiempo real para ubicar la posición geográfica de la persona, los signos vitales, condiciones climáticas, rastreo de animales peligrosos, identifica los sitios registrados para la práctica de este tipo de turismo y un botón de alerta de pánico. Aventur consta de un sensor en forma de pastilla rectangular, era integrado en la pechera y funcionará sin necesidad de usar internet a través de una frecuencia de amplitud modular AM. Aventur medirá distancia, frecuencia de luz, humedad, posición, sonido, temperatura, velocidad, magnetismo y óptico. Cuando el turista aporte Aventur activará las posibilizaciones corporales y al mismo tiempo se transmite esa señal por medio de ondas de expansión a un receptor a través de antenas y estará emitiendo diferentes tiempos de vibraciones de peligro a la persona que según el fenómeno que vaya a ocurrir para que busque un lugar seguro.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 4.88,
+   "text": "Rally Latinoamericano de Innovación 2023"
+  },
+  {
+   "start": 4.88,
+   "end": 9.36,
+   "text": "El turismo de aventuras se ha convertido en un negocio cada vez más demandado, con una"
+  },
+  {
+   "start": 9.36,
+   "end": 15.56,
+   "text": "facturación global estimada de 263 millones de dólares anuales. Según datos de la Asociación"
+  },
+  {
+   "start": 15.56,
+   "end": 21.48,
+   "text": "de Comercio de Viajes de Aventura, entidad que representa más de 300 empresas turísticas"
+  },
+  {
+   "start": 21.48,
+   "end": 27.0,
+   "text": "especializadas de 69 países. Sin embargo, hay una necesidad de ofrecer actividades"
+  },
+  {
+   "start": 27.0,
+   "end": 31.32,
+   "text": "turísticas seguras en lugares donde puede ocurrir fenómenos naturales"
+  },
+  {
+   "start": 31.32,
+   "end": 36.84,
+   "text": "espontáneos. Puede existir la posibilidad de perderse en la trayectoria o tener un"
+  },
+  {
+   "start": 36.84,
+   "end": 40.68,
+   "text": "accidente y se debe tener una solución de cómo ser localizado."
+  },
+  {
+   "start": 40.68,
+   "end": 46.32,
+   "text": "La empresa tecnopinolera es un negocio que diseña y vende diferentes accesorios"
+  },
+  {
+   "start": 46.32,
+   "end": 51.48,
+   "text": "tecnológicos que funcionan con o sin internet, como dispositivo portátil y de"
+  },
+  {
+   "start": 51.48,
+   "end": 55.0,
+   "text": "fácil uso para el turista que practica turismo de aventura."
+  },
+  {
+   "start": 55.2,
+   "end": 60.96,
+   "text": "Aventur es un dispositivo que proporciona información en tiempo real para ubicar"
+  },
+  {
+   "start": 60.96,
+   "end": 66.72,
+   "text": "la posición geográfica de la persona, los signos vitales, condiciones climáticas,"
+  },
+  {
+   "start": 66.72,
+   "end": 72.12,
+   "text": "rastreo de animales peligrosos, identifica los sitios registrados para la práctica"
+  },
+  {
+   "start": 72.12,
+   "end": 75.36,
+   "text": "de este tipo de turismo y un botón de alerta de pánico."
+  },
+  {
+   "start": 76.36,
+   "end": 80.32,
+   "text": "Aventur consta de un sensor en forma de pastilla rectangular,"
+  },
+  {
+   "start": 80.32,
+   "end": 86.04,
+   "text": "era integrado en la pechera y funcionará sin necesidad de usar internet a través de una"
+  },
+  {
+   "start": 86.04,
+   "end": 91.64,
+   "text": "frecuencia de amplitud modular AM. Aventur medirá distancia, frecuencia de luz,"
+  },
+  {
+   "start": 91.64,
+   "end": 98.16,
+   "text": "humedad, posición, sonido, temperatura, velocidad, magnetismo y óptico."
+  },
+  {
+   "start": 98.16,
+   "end": 103.84,
+   "text": "Cuando el turista aporte Aventur activará las posibilizaciones corporales y al mismo tiempo"
+  },
+  {
+   "start": 103.84,
+   "end": 109.84,
+   "text": "se transmite esa señal por medio de ondas de expansión a un receptor a través de antenas"
+  },
+  {
+   "start": 109.84,
+   "end": 116.52,
+   "text": "y estará emitiendo diferentes tiempos de vibraciones de peligro a la persona que según el fenómeno"
+  },
+  {
+   "start": 116.52,
+   "end": 119.6,
+   "text": "que vaya a ocurrir para que busque un lugar seguro."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.1
+}

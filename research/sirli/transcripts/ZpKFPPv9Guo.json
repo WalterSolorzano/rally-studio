@@ -1,0 +1,202 @@
+{
+ "video_id": "ZpKFPPv9Guo",
+ "url": "https://youtu.be/ZpKFPPv9Guo?si=aZj6F4Zn0c5ncauV",
+ "year": 2026,
+ "collection": "sede",
+ "country": "COLOMBIA",
+ "team": "CÓDIGO 52-57",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "CÓDIGO 52-57",
+   "challenge": "04 - MANEJO ECOLÓGICO DE RESIDUOS DE PODA Y BIOMASA VEGETAL URBANA"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:40:13+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En las ciudades de México y Colombia, el mantenimiento de parques y zonas verdes genera constantemente residuos como ramas, hojas y restos de poda. El problema es que gran parte de estos residuos no se aprovecha como recurso y termina siendo trasladada a sitios de disposición final. Pero, ¿y si estos residuos pudieran convertirse en una solución para las propias áreas verdes? Los parques y jardines necesitan proteger sus suelos de la pérdida de humedad, la erosión y el crecimiento de malezas. Sin embargo, existen dificultades como la falta de separación de los residuos vegetales, los costos de transporte y procesamiento, y la falta de conexión entre quienes generan estos residuos y quienes podrían aprovecharlos. Por eso, proponemos un modelo accesible y adaptable para transformar esta biomasa en un recurso útil. Nuestra propuesta consiste en producir acolchado orgánico, o mulch, a partir de residuos de poda. Primero se recolectan y separan las ramas y hojas. Después, se eliminan materiales contaminantes o no aptos, y cuando es necesario, las ramas se trituran. Finalmente, el material se distribuye sobre el suelo de parques, jardines y huertas. Este acolchado puede ayudar a conservar la humedad, moderar la temperatura del suelo, reducir algunas malezas y protegerlo frente al impacto de la lluvia. Para comprobar que la propuesta es viable, se plantea comenzar con un proyecto piloto de un mes, en el que se busca aprovechar aproximadamente una tonelada de residuos de poda. El presupuesto estimado para este piloto sería de entre 250 y 450 dólares. Los principales gastos corresponden a la recolección y transporte, selección y preparación, trituración, almacenamiento y aplicación, además del seguimiento de resultados. Estos costos son referenciales y pueden variar dependiendo de la ubicación, los costos operativos y las posibles ayudas locales. La innovación no consiste en inventar una nueva técnica de acolchado, sino en crear un sistema que conecte la generación, selección, preparación y aprovechamiento de los residuos vegetales. Además, se busca fortalecer la colaboración entre autoridades, operarios y comunidades. El impacto se evaluará mediante indicadores como las toneladas de biomasas reutilizadas, los metros cuadrados cubiertos y el costo por metro cuadrado. En conclusión, los residuos de poda pueden dejar de ser considerados únicamente como desechos y convertirse en un recurso para nuestras zonas verdes. Con un modelo sencillo, de implementación gradual y adaptable a las condiciones de México y Colombia, buscamos impulsar un manejo más eficiente, económico y sostenible de la biomasa vegetal urbana.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 3.18,
+   "text": "En las ciudades de México y Colombia, el mantenimiento de parques y zonas verdes"
+  },
+  {
+   "start": 3.18,
+   "end": 6.48,
+   "text": "genera constantemente residuos como ramas, hojas y restos de poda."
+  },
+  {
+   "start": 6.48,
+   "end": 10.08,
+   "text": "El problema es que gran parte de estos residuos no se aprovecha como recurso"
+  },
+  {
+   "start": 10.08,
+   "end": 12.36,
+   "text": "y termina siendo trasladada a sitios de disposición final."
+  },
+  {
+   "start": 12.36,
+   "end": 16.86,
+   "text": "Pero, ¿y si estos residuos pudieran convertirse en una solución para las propias áreas verdes?"
+  },
+  {
+   "start": 16.86,
+   "end": 20.24,
+   "text": "Los parques y jardines necesitan proteger sus suelos de la pérdida de humedad,"
+  },
+  {
+   "start": 20.24,
+   "end": 22.24,
+   "text": "la erosión y el crecimiento de malezas."
+  },
+  {
+   "start": 22.24,
+   "end": 25.86,
+   "text": "Sin embargo, existen dificultades como la falta de separación de los residuos vegetales,"
+  },
+  {
+   "start": 25.86,
+   "end": 27.44,
+   "text": "los costos de transporte y procesamiento,"
+  },
+  {
+   "start": 27.52,
+   "end": 30.82,
+   "text": "y la falta de conexión entre quienes generan estos residuos y quienes podrían aprovecharlos."
+  },
+  {
+   "start": 30.82,
+   "end": 35.18,
+   "text": "Por eso, proponemos un modelo accesible y adaptable para transformar esta biomasa en un recurso útil."
+  },
+  {
+   "start": 35.18,
+   "end": 39.78,
+   "text": "Nuestra propuesta consiste en producir acolchado orgánico, o mulch, a partir de residuos de poda."
+  },
+  {
+   "start": 39.78,
+   "end": 41.94,
+   "text": "Primero se recolectan y separan las ramas y hojas."
+  },
+  {
+   "start": 41.94,
+   "end": 47.06,
+   "text": "Después, se eliminan materiales contaminantes o no aptos, y cuando es necesario, las ramas se trituran."
+  },
+  {
+   "start": 47.06,
+   "end": 51.18,
+   "text": "Finalmente, el material se distribuye sobre el suelo de parques, jardines y huertas."
+  },
+  {
+   "start": 51.18,
+   "end": 55.06,
+   "text": "Este acolchado puede ayudar a conservar la humedad, moderar la temperatura del suelo,"
+  },
+  {
+   "start": 55.16,
+   "end": 57.76,
+   "text": "reducir algunas malezas y protegerlo frente al impacto de la lluvia."
+  },
+  {
+   "start": 57.76,
+   "end": 61.8,
+   "text": "Para comprobar que la propuesta es viable, se plantea comenzar con un proyecto piloto de un mes,"
+  },
+  {
+   "start": 61.8,
+   "end": 65.36,
+   "text": "en el que se busca aprovechar aproximadamente una tonelada de residuos de poda."
+  },
+  {
+   "start": 65.36,
+   "end": 69.96,
+   "text": "El presupuesto estimado para este piloto sería de entre 250 y 450 dólares."
+  },
+  {
+   "start": 69.96,
+   "end": 73.6,
+   "text": "Los principales gastos corresponden a la recolección y transporte, selección y preparación,"
+  },
+  {
+   "start": 73.6,
+   "end": 77.2,
+   "text": "trituración, almacenamiento y aplicación, además del seguimiento de resultados."
+  },
+  {
+   "start": 77.2,
+   "end": 80.64,
+   "text": "Estos costos son referenciales y pueden variar dependiendo de la ubicación,"
+  },
+  {
+   "start": 80.64,
+   "end": 83.0,
+   "text": "los costos operativos y las posibles ayudas locales."
+  },
+  {
+   "start": 83.14,
+   "end": 85.74,
+   "text": "La innovación no consiste en inventar una nueva técnica de acolchado,"
+  },
+  {
+   "start": 85.74,
+   "end": 89.54,
+   "text": "sino en crear un sistema que conecte la generación, selección, preparación y"
+  },
+  {
+   "start": 89.54,
+   "end": 91.1,
+   "text": "aprovechamiento de los residuos vegetales."
+  },
+  {
+   "start": 91.1,
+   "end": 95.34,
+   "text": "Además, se busca fortalecer la colaboración entre autoridades, operarios y comunidades."
+  },
+  {
+   "start": 95.34,
+   "end": 99.1,
+   "text": "El impacto se evaluará mediante indicadores como las toneladas de biomasas reutilizadas,"
+  },
+  {
+   "start": 99.1,
+   "end": 101.98,
+   "text": "los metros cuadrados cubiertos y el costo por metro cuadrado."
+  },
+  {
+   "start": 101.98,
+   "end": 105.86,
+   "text": "En conclusión, los residuos de poda pueden dejar de ser considerados únicamente como"
+  },
+  {
+   "start": 105.86,
+   "end": 108.3,
+   "text": "desechos y convertirse en un recurso para nuestras zonas verdes."
+  },
+  {
+   "start": 108.3,
+   "end": 112.1,
+   "text": "Con un modelo sencillo, de implementación gradual y adaptable a las condiciones de"
+  },
+  {
+   "start": 112.1,
+   "end": 114.92,
+   "text": "México y Colombia, buscamos impulsar un manejo más eficiente,"
+  },
+  {
+   "start": 114.92,
+   "end": 116.88,
+   "text": "económico y sostenible de la biomasa vegetal urbana."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 117.0
+}

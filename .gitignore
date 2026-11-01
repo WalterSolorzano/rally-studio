@@ -99,3 +99,14 @@ env.json
 
 # Basura de Blender y renders de prueba
 blender/tmp/
+
+# Sueltos de descarga en la raiz: no son producto
+/780607480_*.jpg
+/app2.png
+/preview.webp
+/preview (1).webp
+/Cuaderno_Tareas_Ing_Sistemas.pdf
+
+# Derivados del corpus SIRLI: se regeneran con scripts/sirli_thumbs.py
+research/sirli/meta/thumbs/
+tools/__pycache__/

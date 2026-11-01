@@ -1,0 +1,152 @@
+{
+ "video_id": "MMcI4jJaz0Y",
+ "url": "https://youtu.be/MMcI4jJaz0Y",
+ "year": 2025,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "INGENIUM RALLY TEAM",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "INGENIUM RALLY TEAM",
+   "challenge": "09 - LOGÍSTICA ANTE DESASTRES NATURALES"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:59:25+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En las primeras horas después de un desastre natural, cada minuto cuenta. Caminos destruidos, cortes de energía y zonas aisladas hacen casi imposible llevar ayuda a quienes más la necesitan. El ingenión Rallyte Am propone una solución rápida y sustentable, un sistema logístico aéreo basado en drones de J-Flycard 30, capaces de transportar hasta 30 kilos de carga en un radio operativo de 28 kilómetros, incluso bajo condiciones climáticas adversas. Este sistema está pensado como el primer paso de la operación de evacuación, actuando durante las primeras 72 horas para entregar ayuda esencial y ubicar a las personas atrapadas. Cada jab operativo contaría con ocho drones. Seis drones con cámara FPV e infrarroja, destinados al transporte de kits y reconocimiento cercano, y dos drones con cámaras multispectrales o doble térmica, dedicados a búsqueda avanzada, detección de vida y análisis de focos de calor. Los kits de emergencia, de hasta 30 kilos cada uno, contienen raciones de comida, agua, medicamentos, mantas térmicas y elementos de supervivencia empaquetados para resistir calor y humedad. Cada jab puede entregar más de 100 kits por día, operando con energía solar y baterías intercambiables, lo que garantiza autonomía, bajo costo y mínima huella ambiental. Las brigadas de rescate, formadas por 3 a 5 personas, se encargan de coordinar los vuelos, mantener las estaciones solares y organizar la distribución en tierra. Los drones multispectrales permiten detectar personas incluso entre humo o vegetación densa, mientras que los drones FPV ofrecen una vista en primera persona para aterrizajes precisos y reconocimiento rápido. Si las temperaturas son extremas, los sensores térmicos ajustan la ruta para evitar daños y mantener la operación segura. Esta propuesta combina tecnología, eficiencia y humanidad, una logística aérea sostenible que lleva esperanza donde antes solo había aislamiento.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 4.66,
+   "text": "En las primeras horas después de un desastre natural, cada minuto cuenta."
+  },
+  {
+   "start": 4.66,
+   "end": 11.64,
+   "text": "Caminos destruidos, cortes de energía y zonas aisladas hacen casi imposible llevar ayuda a quienes más la necesitan."
+  },
+  {
+   "start": 11.64,
+   "end": 15.64,
+   "text": "El ingenión Rallyte Am propone una solución rápida y sustentable,"
+  },
+  {
+   "start": 15.64,
+   "end": 19.78,
+   "text": "un sistema logístico aéreo basado en drones de J-Flycard 30,"
+  },
+  {
+   "start": 19.78,
+   "end": 24.94,
+   "text": "capaces de transportar hasta 30 kilos de carga en un radio operativo de 28 kilómetros,"
+  },
+  {
+   "start": 24.94,
+   "end": 28.02,
+   "text": "incluso bajo condiciones climáticas adversas."
+  },
+  {
+   "start": 28.16,
+   "end": 32.22,
+   "text": "Este sistema está pensado como el primer paso de la operación de evacuación,"
+  },
+  {
+   "start": 32.22,
+   "end": 38.46,
+   "text": "actuando durante las primeras 72 horas para entregar ayuda esencial y ubicar a las personas atrapadas."
+  },
+  {
+   "start": 38.46,
+   "end": 41.5,
+   "text": "Cada jab operativo contaría con ocho drones."
+  },
+  {
+   "start": 41.5,
+   "end": 47.9,
+   "text": "Seis drones con cámara FPV e infrarroja, destinados al transporte de kits y reconocimiento cercano,"
+  },
+  {
+   "start": 47.9,
+   "end": 53.1,
+   "text": "y dos drones con cámaras multispectrales o doble térmica, dedicados a búsqueda avanzada,"
+  },
+  {
+   "start": 53.1,
+   "end": 56.14,
+   "text": "detección de vida y análisis de focos de calor."
+  },
+  {
+   "start": 56.26,
+   "end": 59.38,
+   "text": "Los kits de emergencia, de hasta 30 kilos cada uno,"
+  },
+  {
+   "start": 59.38,
+   "end": 65.38,
+   "text": "contienen raciones de comida, agua, medicamentos, mantas térmicas y elementos de supervivencia"
+  },
+  {
+   "start": 65.38,
+   "end": 67.98,
+   "text": "empaquetados para resistir calor y humedad."
+  },
+  {
+   "start": 67.98,
+   "end": 74.14,
+   "text": "Cada jab puede entregar más de 100 kits por día, operando con energía solar y baterías intercambiables,"
+  },
+  {
+   "start": 74.14,
+   "end": 78.14,
+   "text": "lo que garantiza autonomía, bajo costo y mínima huella ambiental."
+  },
+  {
+   "start": 78.14,
+   "end": 84.14,
+   "text": "Las brigadas de rescate, formadas por 3 a 5 personas, se encargan de coordinar los vuelos,"
+  },
+  {
+   "start": 84.14,
+   "end": 88.14,
+   "text": "mantener las estaciones solares y organizar la distribución en tierra."
+  },
+  {
+   "start": 88.14,
+   "end": 93.14,
+   "text": "Los drones multispectrales permiten detectar personas incluso entre humo o vegetación densa,"
+  },
+  {
+   "start": 93.14,
+   "end": 98.14,
+   "text": "mientras que los drones FPV ofrecen una vista en primera persona para aterrizajes"
+  },
+  {
+   "start": 98.14,
+   "end": 100.14,
+   "text": "precisos y reconocimiento rápido."
+  },
+  {
+   "start": 100.14,
+   "end": 107.14,
+   "text": "Si las temperaturas son extremas, los sensores térmicos ajustan la ruta para evitar daños y mantener la operación segura."
+  },
+  {
+   "start": 107.14,
+   "end": 111.14,
+   "text": "Esta propuesta combina tecnología, eficiencia y humanidad,"
+  },
+  {
+   "start": 111.14,
+   "end": 116.14,
+   "text": "una logística aérea sostenible que lleva esperanza donde antes solo había aislamiento."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 116.7
+}

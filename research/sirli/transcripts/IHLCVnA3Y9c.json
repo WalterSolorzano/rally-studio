@@ -1,0 +1,132 @@
+{
+ "video_id": "IHLCVnA3Y9c",
+ "url": "https://youtu.be/IHLCVnA3Y9c",
+ "year": 2023,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "TECHSQUAD",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "TECHSQUAD",
+   "challenge": "02 - SIEMPRE EN CONTACTO"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:31:30+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En el mundo del turismo aventura y el trabajo en regiones inhóspitas y geográficamente complejas, surge un desafío constante, la localización de las personas en estos lugares. Imagina una situación en la que alguien ha sufrido un accidente, se enfrenta a fenómenos climatológicos a perso o experimenta cualquier otra emergencia que lo aísle del mundo exterior. En tales circunstancias, encontrar y comunicarse con ese grupo o individuo puede ser extremadamente complicado, incluso peligroso. La búsqueda se convierte en una carrera contra el tiempo, donde la tecnología y la experiencia se unen para salvar vidas y ofrecer ayuda en medio de la adversidad. Pero, ¿cómo abordamos este desafío? La respuesta radica en la innovación y la tecnología. Imagina diseñar un dispositivo de bajo costo, sin necesidad de conexión a internet, que pueda ser la clave para estimar la ubicación de una persona en cualquier lugar remoto. Este dispositivo no solo ofrece esa información, sino que también desempeña un papel crucial en la seguridad de quienes se aventuran en terrenos inhóspitos. ¿Cómo? Proporcionando datos en tiempo real que pueden ayudar a determinar si la vida de la persona está en riesgo durante su travesía. Es la combinación perfecta entre ingenio y tecnología, una solución que puede marcar la diferencia en situaciones críticas y salvar vidas en lugares donde cada segundo cuenta. La solución propuesta es un brazalete de bajo costo que envía signos vitales y ubicación en tiempo real. Los datos se mandaran a través de los sensores vía satelital, pasaran por la antena y finalmente a los monitores del sistema Fingyó. Este sistema se conecta directamente al brazalete enviando señal vía satelital, permitiendo que, en caso de complicaciones de salud, informe al centro de monitorio a través de los sensores integrados.",
+ "segments": [
+  {
+   "start": 6.19,
+   "end": 11.63,
+   "text": "En el mundo del turismo aventura y el trabajo en regiones inhóspitas y geográficamente complejas,"
+  },
+  {
+   "start": 11.63,
+   "end": 16.39,
+   "text": "surge un desafío constante, la localización de las personas en estos lugares."
+  },
+  {
+   "start": 16.39,
+   "end": 20.75,
+   "text": "Imagina una situación en la que alguien ha sufrido un accidente,"
+  },
+  {
+   "start": 20.75,
+   "end": 25.99,
+   "text": "se enfrenta a fenómenos climatológicos a perso o experimenta cualquier otra emergencia que"
+  },
+  {
+   "start": 25.99,
+   "end": 32.51,
+   "text": "lo aísle del mundo exterior. En tales circunstancias, encontrar y comunicarse con ese grupo o"
+  },
+  {
+   "start": 32.51,
+   "end": 38.79,
+   "text": "individuo puede ser extremadamente complicado, incluso peligroso. La búsqueda se convierte en"
+  },
+  {
+   "start": 38.79,
+   "end": 44.51,
+   "text": "una carrera contra el tiempo, donde la tecnología y la experiencia se unen para salvar vidas y ofrecer"
+  },
+  {
+   "start": 44.51,
+   "end": 51.43,
+   "text": "ayuda en medio de la adversidad. Pero, ¿cómo abordamos este desafío? La respuesta radica en"
+  },
+  {
+   "start": 51.43,
+   "end": 56.47,
+   "text": "la innovación y la tecnología. Imagina diseñar un dispositivo de bajo costo,"
+  },
+  {
+   "start": 56.47,
+   "end": 61.83,
+   "text": "sin necesidad de conexión a internet, que pueda ser la clave para estimar la ubicación de una"
+  },
+  {
+   "start": 61.83,
+   "end": 67.23,
+   "text": "persona en cualquier lugar remoto. Este dispositivo no solo ofrece esa información,"
+  },
+  {
+   "start": 67.23,
+   "end": 72.27,
+   "text": "sino que también desempeña un papel crucial en la seguridad de quienes se aventuran en terrenos"
+  },
+  {
+   "start": 72.27,
+   "end": 78.95,
+   "text": "inhóspitos. ¿Cómo? Proporcionando datos en tiempo real que pueden ayudar a determinar si la vida de la"
+  },
+  {
+   "start": 78.95,
+   "end": 83.83,
+   "text": "persona está en riesgo durante su travesía. Es la combinación perfecta entre ingenio y"
+  },
+  {
+   "start": 83.83,
+   "end": 88.75,
+   "text": "tecnología, una solución que puede marcar la diferencia en situaciones críticas y salvar"
+  },
+  {
+   "start": 88.75,
+   "end": 95.03,
+   "text": "vidas en lugares donde cada segundo cuenta. La solución propuesta es un brazalete de bajo costo que"
+  },
+  {
+   "start": 95.03,
+   "end": 99.67,
+   "text": "envía signos vitales y ubicación en tiempo real. Los datos se mandaran a través de los"
+  },
+  {
+   "start": 99.67,
+   "end": 104.07,
+   "text": "sensores vía satelital, pasaran por la antena y finalmente a los monitores del sistema Fingyó."
+  },
+  {
+   "start": 104.07,
+   "end": 109.23,
+   "text": "Este sistema se conecta directamente al brazalete enviando señal vía satelital,"
+  },
+  {
+   "start": 109.23,
+   "end": 115.47,
+   "text": "permitiendo que, en caso de complicaciones de salud, informe al centro de monitorio a través"
+  },
+  {
+   "start": 115.47,
+   "end": 116.87,
+   "text": "de los sensores integrados."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.7
+}

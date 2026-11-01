@@ -13,12 +13,12 @@ Este informe analiza en detalle las ediciones nacionales nicaragüenses y latino
 
 ## Edición 2023  
 - **Rally Nacional “Nicaragua Innova 2023” (1ª edición nacional):** Se premiaron los tres mejores equipos por categoría. Los ganadores *principales* fueron:  
-  - **Innovación Tecnológica:** *Primer lugar:* **Ollnari** (Joséfa Toledo de Aguerri, Juigalpa) – plataforma web que conecta artesanos con mercados nacionales e internacionales.  
+  - **Innovación Tecnológica:** primer lugar no documentado en la fuente verificada. La plataforma artesanal **Ollnari** se atribuye en este registro a **2025** (Procesos), no a 2023; ver `knowledge/ERRATAS.md`.
   - **Innovación Social:** *Primer lugar:* **Ingenova** (UNI-Managua) – aunque la nota no describe su proyecto en detalle, por el nombre supuso enfoque educativo o social.  
   - **Innovación de Procesos/Organizacional:** *Primer lugar:* **Nahuatl Innova** (UNI-IES, Managua) – proyecto desconocido (nombre cultural), se infiere un énfasis organizacional.  
 
   (Vídeos: no fueron publicados en fuentes accesibles; se omiten enlaces).  
-  **Análisis de videos:** En este primer rally nacional, es claro el esfuerzo por resaltar la identidad cultural y las necesidades locales. Por ejemplo, *Ollnari* destaca la “conexión del talento artesanal con el mundo”; su video probablemente comenzaría resaltando el problema de la desconexión de artesanos, muestra la plataforma digital (screenshots de la app), y concluye con testimonios de artesanos felices. Los recursos visuales debieron incluir tomas de artesanías, interfaces web y mapas interactivos. La narrativa usaría una estructura storytelling: introducción del artesano típico, propuesta (Ollnari) y beneficios. Es destacable la mención de “Origen Garantizado” y “mapa interactivo”, lo cual sugiere uso de dispositivos persuasivos como testimonios emocionales y datos de impacto (mercados abiertos). Aunque no se señala explícitamente, es probable que usaron **design thinking** (enfocándose en el usuario artesano) y prototipado rápido en su metodología.  
+  **Análisis de videos:** En esta edición no hay videos accesibles. El análisis de **Ollnari** (plataforma artesanal, “Origen Garantizado”, mapa interactivo) corresponde a la edición **2025** y se lee en esa sección; no se usa como evidencia de 2023.
 
 - **Rally Latinoamericano 2023 (XII edición):** Nicaragua logró el **1.er lugar en Innovación** con **GÜEGÜENSE PINOLERO** (UNI-RMAV, Managua) y **2.º lugar en Impacto Social** con **NICARQ SINERGY** (UNI-RUSB).  
   - *Proyecto GÜEGÜENSE PINOLERO:* **DIGNA**, una vivienda social modular (44.18 m²) diseñada para familias de ~6 integrantes. Incluye tecnologías sustentables (sistema de purificación de agua SODIS, panel solar 400W, fosa séptica con filtración FAFA), bambú como particiones interiores, y materiales reciclados (pisos de neumático reciclado).  
@@ -105,7 +105,7 @@ Participación récord de ~3,900 estudiantes, 600+ equipos, 91 sedes y adopción
 - **Tribunal de Sede:** Deliberación en ≤3 horas tras el cierre de las 28h/24h con jurado impar (1 evaluador por cada 3 equipos).
 - **Jurado Continental Internacional:** Deliberación en 72 horas. **Prohibición estricta de evaluar proyectos del propio país de origen.**
 - **Composición Obligatoria SIRLI:** Equipos de 4 a 10 personas; mínimo 1 estudiante de ingeniería; mínimo 1 mujer; opcional 1 profesional egresado y 1 docente sin rol de liderazgo.
-- **Los 3 Entregables Auditables:** (1) Reporte PDF pautado; (2) Video YouTube ≤120s; (3) TikTok de interacción internacional lúdico-creativa.
+- **Entregables auditables:** (1) Reporte PDF pautado; (2) Video YouTube ≤120 s. El reglamento Latam menciona además un TikTok de interacción internacional; este proyecto **no lo produce** (decisión del equipo, ver `knowledge/ERRATAS.md`).
 
 ## Patrones y Recomendaciones  
 
@@ -144,7 +144,6 @@ timeline
 | 2022| LATAM (XI) (*nac.*) | Nicaragua – *Innnovación Pinolera* | Innovación (1.er lugar nacional) | *–*           | [EQDVgGqz7PI]                                  | ~2 min          | Español  | –                                  |
 | 2022| LATAM (XI) (*nac.*) | Nicaragua – *Inovatos*    | Impacto Social (1.er lugar nacional) | *–*       | [vz9jrhlri_g]                                  | ~2 min          | Español  | –                                  |
 | 2023| Nacional (1ª Ed.)   | Nicaragua – **Ingenova** | Innovación Social           | (no especificado) | — (n.p.)                                         | —               | Español  | –                                  |
-| 2023| Nacional (1ª Ed.)   | Nicaragua – **Ollnari**  | Innovación Tecnológica       | Ollnari        | [v4kZD-S1NHk] (YouTube)                          | 2:22            | Español  | e-commerce artesanal              |
 | 2023| Nacional (1ª Ed.)   | Nicaragua – **Nahuatl Innova** | Procesos/Organizacional  | Nahuatl Innova | —                                                 | —               | Español  | –                                  |
 | 2023| LATAM (XII)         | Nicaragua – **Güegüense Pinolero** | Innovación (1.er lugar)  | DIGNA (vivienda modular) | [AjtVryXaGDc]                                 | 1:45            | Español  | vivienda social, energía solar   |
 | 2023| LATAM (XII)         | Nicaragua – **Nicarq Sinergy** | Impacto Social (2.º lugar)  | BioInnova (vivienda) | [5dVqVY9Ugeg]                                 | 1:53            | Español  | vivienda digna, huertos          |

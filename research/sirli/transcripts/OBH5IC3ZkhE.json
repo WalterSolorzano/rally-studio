@@ -1,0 +1,207 @@
+{
+ "video_id": "OBH5IC3ZkhE",
+ "url": "https://www.youtube.com/watch?v=OBH5IC3ZkhE",
+ "year": 2026,
+ "collection": "sede",
+ "country": "CHILE",
+ "team": "POSTCRISIS",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "POSTCRISIS",
+   "challenge": "09 - OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:35:54+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¡Pávor, por favor! ¡Mi pierna, mi pierna! ¡Mi pierna! ¡Mi pierna! ¡Me duele mucho! ¡Mi pierna! ¡Por favor! ¡Mi pierna! ¡Ya va, pa'quienza! ¡Va a ver si al! ¡Va a ver si al! La noticia de último minuto. Un terremoto golpea la zona centro-sur de nuestro país. Con unas completas sin comunicación. Ya tenemos ejemplo en Chile 2010, México 2017 y Brasil 2024. En Latinoamérica la pregunta no es si volverá a pasar. ¿Es cuándo volverá a pasar? En 2010 las redes cayeron en enoras y la autoridad defendida de ellas. El Icantel en 2023 la de esta celular nunca llegó. Las obtuvieron a los vecinos y si llegase el barrio no tiene como responderla. Presentamos POS Crisis, un sistema de reportes de la Junta de Vecinas de Alcá sin internet diseñar. Así desde que lleva a todo costando tan solo 30 mil pesos por un alcance de kilómetros. El encargado dena en la pp el informe Alfa, el formulario oficial de los municipios con afectados viviendo a destruidas peligro de vida. Por Bluetooth llega la casa, que lo envía por Radio Lora, la cual es cargada con un panel solar. Bomberos del municipio lo reciben con las categorías del informe Alfa y el comité decide con sus propios criterios a dónde va la ayuda primera. La Junta recibe la confirmación. Los responsables de operar el sistema son los presentes de la Junta de Vecina. Personas de confianza y confirmidad con su comunidad. A ser un grupo acotado, el canal de radio permanece despejado. Implementar este solicitivo en talca, cortaría 4,7 millones y en comparación con Starlink, cortaría 116 millones en el primer año. Tenemos 129 barrios conectados y un comité que decide de forma informada. Cuando todo se cae, la gente sigue teniendo voz. Post Crisis en el rally latinoamericano de innovación 2026.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 2.0,
+   "text": "¡Pávor, por favor! ¡Mi pierna, mi pierna!"
+  },
+  {
+   "start": 2.0,
+   "end": 3.0,
+   "text": "¡Mi pierna!"
+  },
+  {
+   "start": 3.0,
+   "end": 4.0,
+   "text": "¡Mi pierna!"
+  },
+  {
+   "start": 4.0,
+   "end": 5.0,
+   "text": "¡Me duele mucho!"
+  },
+  {
+   "start": 5.0,
+   "end": 6.0,
+   "text": "¡Mi pierna!"
+  },
+  {
+   "start": 6.0,
+   "end": 7.0,
+   "text": "¡Por favor!"
+  },
+  {
+   "start": 7.0,
+   "end": 8.0,
+   "text": "¡Mi pierna!"
+  },
+  {
+   "start": 8.0,
+   "end": 9.0,
+   "text": "¡Ya va, pa'quienza!"
+  },
+  {
+   "start": 9.0,
+   "end": 10.0,
+   "text": "¡Va a ver si al!"
+  },
+  {
+   "start": 10.0,
+   "end": 12.54,
+   "text": "¡Va a ver si al!"
+  },
+  {
+   "start": 12.54,
+   "end": 14.54,
+   "text": "La noticia de último minuto."
+  },
+  {
+   "start": 14.54,
+   "end": 17.54,
+   "text": "Un terremoto golpea la zona centro-sur de nuestro país."
+  },
+  {
+   "start": 17.54,
+   "end": 19.54,
+   "text": "Con unas completas sin comunicación."
+  },
+  {
+   "start": 19.54,
+   "end": 24.54,
+   "text": "Ya tenemos ejemplo en Chile 2010, México 2017 y Brasil 2024."
+  },
+  {
+   "start": 24.54,
+   "end": 27.54,
+   "text": "En Latinoamérica la pregunta no es si volverá a pasar."
+  },
+  {
+   "start": 27.54,
+   "end": 29.54,
+   "text": "¿Es cuándo volverá a pasar?"
+  },
+  {
+   "start": 29.54,
+   "end": 33.54,
+   "text": "En 2010 las redes cayeron en enoras y la autoridad defendida de ellas."
+  },
+  {
+   "start": 33.54,
+   "end": 37.54,
+   "text": "El Icantel en 2023 la de esta celular nunca llegó."
+  },
+  {
+   "start": 37.54,
+   "end": 42.54,
+   "text": "Las obtuvieron a los vecinos y si llegase el barrio no tiene como responderla."
+  },
+  {
+   "start": 42.54,
+   "end": 46.54,
+   "text": "Presentamos POS Crisis, un sistema de reportes de la Junta de Vecinas de Alcá"
+  },
+  {
+   "start": 46.54,
+   "end": 48.54,
+   "text": "sin internet diseñar."
+  },
+  {
+   "start": 48.54,
+   "end": 52.54,
+   "text": "Así desde que lleva a todo costando tan solo 30 mil pesos por un alcance de kilómetros."
+  },
+  {
+   "start": 52.54,
+   "end": 61.02,
+   "text": "El encargado dena en la pp el informe Alfa,"
+  },
+  {
+   "start": 61.02,
+   "end": 66.02,
+   "text": "el formulario oficial de los municipios con afectados viviendo a destruidas peligro de vida."
+  },
+  {
+   "start": 66.02,
+   "end": 72.02,
+   "text": "Por Bluetooth llega la casa, que lo envía por Radio Lora, la cual es cargada con un panel solar."
+  },
+  {
+   "start": 72.02,
+   "end": 77.02,
+   "text": "Bomberos del municipio lo reciben con las categorías del informe Alfa"
+  },
+  {
+   "start": 77.02,
+   "end": 81.02,
+   "text": "y el comité decide con sus propios criterios a dónde va la ayuda primera."
+  },
+  {
+   "start": 81.02,
+   "end": 84.02,
+   "text": "La Junta recibe la confirmación."
+  },
+  {
+   "start": 84.02,
+   "end": 88.02,
+   "text": "Los responsables de operar el sistema son los presentes de la Junta de Vecina."
+  },
+  {
+   "start": 88.02,
+   "end": 91.02,
+   "text": "Personas de confianza y confirmidad con su comunidad."
+  },
+  {
+   "start": 91.02,
+   "end": 94.02,
+   "text": "A ser un grupo acotado, el canal de radio permanece despejado."
+  },
+  {
+   "start": 94.02,
+   "end": 100.02,
+   "text": "Implementar este solicitivo en talca, cortaría 4,7 millones y en comparación con Starlink,"
+  },
+  {
+   "start": 100.02,
+   "end": 103.02,
+   "text": "cortaría 116 millones en el primer año."
+  },
+  {
+   "start": 103.02,
+   "end": 108.02,
+   "text": "Tenemos 129 barrios conectados y un comité que decide de forma informada."
+  },
+  {
+   "start": 108.02,
+   "end": 110.02,
+   "text": "Cuando todo se cae, la gente sigue teniendo voz."
+  },
+  {
+   "start": 110.02,
+   "end": 114.02,
+   "text": "Post Crisis en el rally latinoamericano de innovación 2026."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 114.0
+}

@@ -1,0 +1,107 @@
+{
+ "video_id": "yYVaFrRsLI8",
+ "url": "https://youtu.be/yYVaFrRsLI8/",
+ "year": 2026,
+ "collection": "sede",
+ "country": "EL SALVADOR",
+ "team": "XENITH",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "XENITH",
+   "challenge": "01 - SEGUNDA VIDA DE LOS MOTORES ELÉCTRICOS DOMÉSTICOS"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:45:13+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Hola, somos el equipo Seneca y esta es nuestra propuesta, el motor del cambio. En 2022 el Salvador generó 41 millones de kilos de residuos electrónicos y sólo cerca del 1.4% se documentó como reciclado. Mientras tanto los pequeños agricultores de Ussulután no pueden pagar un motor de riego nuevo. Nuestra solución es un centro de acopio y recondicionamiento de motores eléctricos y funcionan cuatro pasos. Primero, la recolección. Reunimos motores de lavadoras y bombas en desuso con apoyo de las alcaldías. Segundo, el reacondicionamiento. Limpiamos el motor, cambiamos los rodamientos y lo rebobinamos con cobre o aluminio nuevo. Tercero, el acople. Lo conectamos a una bomba para riego por goteo o para llenar pilas de agua. Y cuarto, la entrega. Lo distribuimos a pequeños agricultores mediante cooperativas. Y que nos hace diferente. Un motor viejo suele tener dos destinos. En la chatarrería se desarma sólo por vender el metal. En los talleres comunes se repara para seguir en el mismo uso doméstico. Por último, proponemos una tercera ruta, darle una segunda vida productiva en el campo. El impacto es doble. El ambiental reciclar aluminio a horro hasta un 25% de energía. Y reciclar cobre hasta un 85%. Además, hay menos motores contaminando. En humano creamos empleos técnicos locales y damos a los agricultores a sexo a riego. A un costo menor. Una segunda vida para los motores. Una oportunidad para el campo. Gracias.",
+ "segments": [
+  {
+   "start": 1.52,
+   "end": 9.52,
+   "text": "Hola, somos el equipo Seneca y esta es nuestra propuesta, el motor del cambio."
+  },
+  {
+   "start": 9.52,
+   "end": 16.52,
+   "text": "En 2022 el Salvador generó 41 millones de kilos de residuos electrónicos y sólo cerca del"
+  },
+  {
+   "start": 16.52,
+   "end": 23.52,
+   "text": "1.4% se documentó como reciclado. Mientras tanto los pequeños agricultores de Ussulután"
+  },
+  {
+   "start": 23.52,
+   "end": 31.36,
+   "text": "no pueden pagar un motor de riego nuevo. Nuestra solución es un centro de acopio y recondicionamiento"
+  },
+  {
+   "start": 31.36,
+   "end": 39.2,
+   "text": "de motores eléctricos y funcionan cuatro pasos. Primero, la recolección. Reunimos motores de lavadoras"
+  },
+  {
+   "start": 39.2,
+   "end": 47.48,
+   "text": "y bombas en desuso con apoyo de las alcaldías. Segundo, el reacondicionamiento. Limpiamos el"
+  },
+  {
+   "start": 47.48,
+   "end": 55.76,
+   "text": "motor, cambiamos los rodamientos y lo rebobinamos con cobre o aluminio nuevo. Tercero, el acople."
+  },
+  {
+   "start": 55.76,
+   "end": 63.76,
+   "text": "Lo conectamos a una bomba para riego por goteo o para llenar pilas de agua. Y cuarto, la entrega."
+  },
+  {
+   "start": 63.76,
+   "end": 71.76,
+   "text": "Lo distribuimos a pequeños agricultores mediante cooperativas. Y que nos hace diferente."
+  },
+  {
+   "start": 71.76,
+   "end": 77.48,
+   "text": "Un motor viejo suele tener dos destinos. En la chatarrería se desarma sólo por vender"
+  },
+  {
+   "start": 77.48,
+   "end": 84.84,
+   "text": "el metal. En los talleres comunes se repara para seguir en el mismo uso doméstico."
+  },
+  {
+   "start": 84.88,
+   "end": 91.92,
+   "text": "Por último, proponemos una tercera ruta, darle una segunda vida productiva en el campo."
+  },
+  {
+   "start": 91.92,
+   "end": 98.96,
+   "text": "El impacto es doble. El ambiental reciclar aluminio a horro hasta un 25% de energía."
+  },
+  {
+   "start": 98.96,
+   "end": 106.52,
+   "text": "Y reciclar cobre hasta un 85%. Además, hay menos motores contaminando. En humano creamos"
+  },
+  {
+   "start": 106.52,
+   "end": 113.24,
+   "text": "empleos técnicos locales y damos a los agricultores a sexo a riego. A un costo menor."
+  },
+  {
+   "start": 113.24,
+   "end": 119.6,
+   "text": "Una segunda vida para los motores. Una oportunidad para el campo. Gracias."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.6
+}

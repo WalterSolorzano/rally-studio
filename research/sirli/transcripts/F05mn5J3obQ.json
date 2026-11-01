@@ -1,0 +1,112 @@
+{
+ "video_id": "F05mn5J3obQ",
+ "url": "https://youtu.be/F05mn5J3obQ?si=ybNGh_PamfKcEJ6g",
+ "year": 2026,
+ "collection": "sede",
+ "country": "EL SALVADOR",
+ "team": "SPARKLAB TEAM",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "SPARKLAB TEAM",
+   "challenge": "09 - OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:44:40+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Centro de Coordinación POS Emergencia. Ante una emergencia, cada segundo cuenta de remotos, incendios y inundaciones pueden generar situaciones críticas que requieren una reposa rápida y organizada. Sin embargo, la demanda masiva de ayuda, las rutas bloqueadas, las interrupciones en la comunicación y los datos incompletos dificultan la coordinación de los equipos de emergencia. Frente a esta problemática, se propone desarrollar un centro de coordinación POS Emergencia que organiza los reportes según su prioridad y recomiende qué unidad de enviar y cuál es la ruta más adecuada. El sistema recibe, agrupa y prioriza las emergencias, tomando en cuenta la gravedad de cada situación. Las personas afectadas, el grupo culnerable, el tiempo de respuesta y la cofabilidad de los datos. Además, identifica rutas alternativas, registra cada decisión y permite dar seguimiento a las acciones realizadas manteniendo el personal responsable como encargado de aprobar las recomendaciones. Su objetivo es entender primero los casos más críticos, reducir los recorridos innecesarios y mejorar la coordinación de los recursos disponibles. De esta manera, la propuesta busca brindar una respuesta más eficiente, transparente y organizada frente a situaciones de emergencia, facilitando que le ayuda a llegar oportunamente a quienes más la necesitan. Esta plataforma permite visualizar y consultar información geográfica de manera práctica y organizada. Al ingresar al sistema, se presenta un mapa interactivo que facilita la identificación de diferentes ubicaciones y la exploración de los recursos disponibles. En el apartado de recursos y servicios, es posible consultar la información registrada y acceder a los detalles de cada elemento. Asimismo, la plataforma ofrece distintas opciones de búsqueda que permiten localizar información específica y regresar los registros disponibles. A través del mapa interactivo, pues usualmente pueden visualizar diferentes puntos geográficos y consultar los detalles asociados a cada ubicación. También es posible observar rutas y recorridos entre distintos lugares, lo que facilita la identificación de traíditos y la planificación de desplazamientos. Así, la plataforma integra herramientas de consulta y visualización geográfica que contribuyen a una mejor organización de la información que facilita la búsqueda de datos.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 2.52,
+   "text": "Centro de Coordinación POS Emergencia."
+  },
+  {
+   "start": 2.52,
+   "end": 10.52,
+   "text": "Ante una emergencia, cada segundo cuenta de remotos, incendios y inundaciones pueden generar situaciones críticas que requieren una reposa rápida y organizada."
+  },
+  {
+   "start": 10.52,
+   "end": 19.16,
+   "text": "Sin embargo, la demanda masiva de ayuda, las rutas bloqueadas, las interrupciones en la comunicación y los datos incompletos dificultan la coordinación de los equipos de emergencia."
+  },
+  {
+   "start": 19.16,
+   "end": 29.04,
+   "text": "Frente a esta problemática, se propone desarrollar un centro de coordinación POS Emergencia que organiza los reportes según su prioridad y recomiende qué unidad de enviar y cuál es la ruta más adecuada."
+  },
+  {
+   "start": 29.2,
+   "end": 34.92,
+   "text": "El sistema recibe, agrupa y prioriza las emergencias, tomando en cuenta la gravedad de cada situación."
+  },
+  {
+   "start": 34.92,
+   "end": 40.08,
+   "text": "Las personas afectadas, el grupo culnerable, el tiempo de respuesta y la cofabilidad de los datos."
+  },
+  {
+   "start": 40.08,
+   "end": 49.96,
+   "text": "Además, identifica rutas alternativas, registra cada decisión y permite dar seguimiento a las acciones realizadas manteniendo el personal responsable como encargado de aprobar las recomendaciones."
+  },
+  {
+   "start": 49.96,
+   "end": 57.72,
+   "text": "Su objetivo es entender primero los casos más críticos, reducir los recorridos innecesarios y mejorar la coordinación de los recursos disponibles."
+  },
+  {
+   "start": 57.72,
+   "end": 63.96,
+   "text": "De esta manera, la propuesta busca brindar una respuesta más eficiente, transparente y organizada frente a situaciones de emergencia,"
+  },
+  {
+   "start": 63.96,
+   "end": 67.56,
+   "text": "facilitando que le ayuda a llegar oportunamente a quienes más la necesitan."
+  },
+  {
+   "start": 67.56,
+   "end": 72.56,
+   "text": "Esta plataforma permite visualizar y consultar información geográfica de manera práctica y organizada."
+  },
+  {
+   "start": 72.56,
+   "end": 79.92,
+   "text": "Al ingresar al sistema, se presenta un mapa interactivo que facilita la identificación de diferentes ubicaciones y la exploración de los recursos disponibles."
+  },
+  {
+   "start": 79.92,
+   "end": 85.88,
+   "text": "En el apartado de recursos y servicios, es posible consultar la información registrada y acceder a los detalles de cada elemento."
+  },
+  {
+   "start": 85.88,
+   "end": 93.28,
+   "text": "Asimismo, la plataforma ofrece distintas opciones de búsqueda que permiten localizar información específica y regresar los registros disponibles."
+  },
+  {
+   "start": 93.28,
+   "end": 100.48,
+   "text": "A través del mapa interactivo, pues usualmente pueden visualizar diferentes puntos geográficos y consultar los detalles asociados a cada ubicación."
+  },
+  {
+   "start": 100.48,
+   "end": 107.88,
+   "text": "También es posible observar rutas y recorridos entre distintos lugares, lo que facilita la identificación de traíditos y la planificación de desplazamientos."
+  },
+  {
+   "start": 107.88,
+   "end": 116.44,
+   "text": "Así, la plataforma integra herramientas de consulta y visualización geográfica que contribuyen a una mejor organización de la información que facilita la búsqueda de datos."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 118.0
+}

@@ -1,0 +1,97 @@
+{
+ "video_id": "MJ-qe6XtL6U",
+ "url": "https://youtu.be/MJ-qe6XtL6U",
+ "year": 2025,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "CENTINELA VERDE",
+ "place_label": "TERCER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "TERCER LUGAR",
+   "team": "CENTINELA VERDE",
+   "challenge": "04 - SISTEMA DE ALERTA TEMPRANA"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:37:16+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En 2025 se han registrado estadísticas alarmantes de incendios a nivel mundial, con más de 100 millones de hectáreas quemadas para el mes de junio. Además, reportes de la Organización Meteorológica Mundial advierten que las inundaciones representan entre 35 y 40% de los desastres relacionados con el clima, generando pérdidas económicas multimillonarias y efectos de ecosistemas vitales. Nuestras comunidades rurales, las inundaciones e incendios pueden surgir sin previo aviso, poniendo el riesgo de hogares, cultivos y vidas. Por eso hemos creado un dispositivo inteligente que detecta a tiempo estas amenazas ayudando a salvar vidas. Nuestro dispositivo monitorea a través de sensores térmicos e hidroométricos en tiempo real de condiciones del clima y el nivel del agua, enviando alertas tempranas a los líderes comunitarios y agentes que trabajan en esta área. Esto permite actuar rápidamente, reducir daños y evacuar con seguridad. Actúa a tiempo, salva vidas y protege tu hogar.",
+ "segments": [
+  {
+   "start": 47.28,
+   "end": 53.36,
+   "text": "En 2025 se han registrado estadísticas alarmantes de incendios a nivel mundial, con más de 100"
+  },
+  {
+   "start": 53.36,
+   "end": 56.56,
+   "text": "millones de hectáreas quemadas para el mes de junio."
+  },
+  {
+   "start": 56.56,
+   "end": 62.7,
+   "text": "Además, reportes de la Organización Meteorológica Mundial advierten que las inundaciones representan"
+  },
+  {
+   "start": 62.7,
+   "end": 69.16,
+   "text": "entre 35 y 40% de los desastres relacionados con el clima, generando pérdidas económicas"
+  },
+  {
+   "start": 69.16,
+   "end": 74.04,
+   "text": "multimillonarias y efectos de ecosistemas vitales."
+  },
+  {
+   "start": 74.04,
+   "end": 79.2,
+   "text": "Nuestras comunidades rurales, las inundaciones e incendios pueden surgir sin previo aviso,"
+  },
+  {
+   "start": 79.2,
+   "end": 82.72,
+   "text": "poniendo el riesgo de hogares, cultivos y vidas."
+  },
+  {
+   "start": 82.72,
+   "end": 88.2,
+   "text": "Por eso hemos creado un dispositivo inteligente que detecta a tiempo estas amenazas ayudando"
+  },
+  {
+   "start": 88.2,
+   "end": 89.88,
+   "text": "a salvar vidas."
+  },
+  {
+   "start": 89.88,
+   "end": 94.88,
+   "text": "Nuestro dispositivo monitorea a través de sensores térmicos e hidroométricos en"
+  },
+  {
+   "start": 94.88,
+   "end": 100.36,
+   "text": "tiempo real de condiciones del clima y el nivel del agua, enviando alertas tempranas"
+  },
+  {
+   "start": 100.36,
+   "end": 105.04,
+   "text": "a los líderes comunitarios y agentes que trabajan en esta área."
+  },
+  {
+   "start": 105.04,
+   "end": 110.68,
+   "text": "Esto permite actuar rápidamente, reducir daños y evacuar con seguridad."
+  },
+  {
+   "start": 110.68,
+   "end": 113.48,
+   "text": "Actúa a tiempo, salva vidas y protege tu hogar."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.8
+}

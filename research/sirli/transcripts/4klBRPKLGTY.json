@@ -1,0 +1,142 @@
+{
+ "video_id": "4klBRPKLGTY",
+ "url": "https://youtu.be/4klBRPKLGTY?si=_9vDsgOXghn3m8ii",
+ "year": 2023,
+ "collection": "sede",
+ "country": "EL SALVADOR",
+ "team": "NEW HORIZONT",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "NEW HORIZONT",
+   "challenge": "08 - TRATAR DE ESTAR MEJOR"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:03:57+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "somos YouRaiZone y presentamos nuestro asistente emocional, Kenneth. Las secuelas de la pandemia de COVID-19 ha tenido un impacto significativo en la salud mental de las personas. La nueva realidad que se vive con diferentes cepas ha provocado un aumento de la ansiedad, depresión y estrés que en todos los sectores de la población, pero principalmente en los jóvenes y adolescentes, lo que ha impactado negativamente al aprendizaje y la socialización. Hoy les presentaremos un emocionante proyecto en desarrollo llamado Kenneth. ¿Cómo funciona? Kenneth es una API que emplea algoritmos avanzados para analizar patrones de uso del usuario, a través de interacciones en chat de texto, mensaje de voz, patrones de uso del móvil, wearables, redes sociales y cualquier dispositivo capaz de recabar datos. El objetivo de Kenneth es proporcionar apoyo emocional en momentos críticos en materia de salud mental. Puede sotar por dos tipos de análisis, uno rápido que basará su resultado en los datos que te indes en el momento y otro más complejo y detallado, donde se ofrecerá un diagnóstico preliminar de tu salud mental en base en los patrones de uso de tus datos. Kenneth es capaz de comprender tus emociones y tu comportamiento, mejorando la personalización de su apoyo. Al finalizar tu análisis, puede ofrecer te opciones de atención inmediata si así tú lo deseas, ya que lo importante es tu salud mental. Se hace uso de llamarós para chat de texto y whisperers para transcripción de mensaje de voz a texto. Los ensayos clínicos de los cuales el modelo de procesamiento de lenguaje natural y aprendizaje profundo de redes neuronales, del que está basado, ocupa como repositorios los propios datos del usuario de forma local y incritada, así como también repositorios de Kaggle y UCI, entre otros de diferentes universidades y centros médicos especializados en atención psicológica, con la finalidad de llevar a cabo tareas de análisis de salud mental más complejas, como la detección de patrones sutiles en datos biométricos o descensores. Tu uso es sencillo y por esta razón hemos decidido abrir el API para que cualquier desarrollador pueda implementarla en cualquier red social, dispositivos inteligentes o de IOT. Siempre velando por la privacidad del usuario, descubre cómo esta API puede ser tu compañero de apoyo emocional. ¿Listos para dar el siguiente paso hacia una mejor salud mental? Kenneth Emotional Assistant",
+ "segments": [
+  {
+   "start": 1.04,
+   "end": 5.84,
+   "text": "somos YouRaiZone y presentamos nuestro asistente emocional, Kenneth."
+  },
+  {
+   "start": 5.84,
+   "end": 13.7,
+   "text": "Las secuelas de la pandemia de COVID-19 ha tenido un impacto significativo en la salud mental de las personas."
+  },
+  {
+   "start": 13.7,
+   "end": 20.5,
+   "text": "La nueva realidad que se vive con diferentes cepas ha provocado un aumento de la ansiedad, depresión y estrés que en todos los sectores de la población,"
+  },
+  {
+   "start": 20.5,
+   "end": 26.9,
+   "text": "pero principalmente en los jóvenes y adolescentes, lo que ha impactado negativamente al aprendizaje y la socialización."
+  },
+  {
+   "start": 26.9,
+   "end": 31.3,
+   "text": "Hoy les presentaremos un emocionante proyecto en desarrollo llamado Kenneth."
+  },
+  {
+   "start": 31.3,
+   "end": 37.1,
+   "text": "¿Cómo funciona? Kenneth es una API que emplea algoritmos avanzados para analizar patrones de uso del usuario,"
+  },
+  {
+   "start": 37.1,
+   "end": 45.7,
+   "text": "a través de interacciones en chat de texto, mensaje de voz, patrones de uso del móvil, wearables, redes sociales y cualquier dispositivo capaz de recabar datos."
+  },
+  {
+   "start": 45.7,
+   "end": 50.1,
+   "text": "El objetivo de Kenneth es proporcionar apoyo emocional en momentos críticos en materia de salud mental."
+  },
+  {
+   "start": 50.1,
+   "end": 55.7,
+   "text": "Puede sotar por dos tipos de análisis, uno rápido que basará su resultado en los datos que te indes en el momento"
+  },
+  {
+   "start": 55.9,
+   "end": 62.9,
+   "text": "y otro más complejo y detallado, donde se ofrecerá un diagnóstico preliminar de tu salud mental en base en los patrones de uso de tus datos."
+  },
+  {
+   "start": 62.9,
+   "end": 68.3,
+   "text": "Kenneth es capaz de comprender tus emociones y tu comportamiento, mejorando la personalización de su apoyo."
+  },
+  {
+   "start": 68.3,
+   "end": 74.7,
+   "text": "Al finalizar tu análisis, puede ofrecer te opciones de atención inmediata si así tú lo deseas, ya que lo importante es tu salud mental."
+  },
+  {
+   "start": 74.7,
+   "end": 79.9,
+   "text": "Se hace uso de llamarós para chat de texto y whisperers para transcripción de mensaje de voz a texto."
+  },
+  {
+   "start": 79.9,
+   "end": 84.5,
+   "text": "Los ensayos clínicos de los cuales el modelo de procesamiento de lenguaje natural y aprendizaje profundo de redes neuronales,"
+  },
+  {
+   "start": 84.5,
+   "end": 89.7,
+   "text": "del que está basado, ocupa como repositorios los propios datos del usuario de forma local y incritada,"
+  },
+  {
+   "start": 89.7,
+   "end": 96.3,
+   "text": "así como también repositorios de Kaggle y UCI, entre otros de diferentes universidades y centros médicos especializados en atención psicológica,"
+  },
+  {
+   "start": 96.3,
+   "end": 100.3,
+   "text": "con la finalidad de llevar a cabo tareas de análisis de salud mental más complejas,"
+  },
+  {
+   "start": 100.3,
+   "end": 103.9,
+   "text": "como la detección de patrones sutiles en datos biométricos o descensores."
+  },
+  {
+   "start": 103.9,
+   "end": 110.9,
+   "text": "Tu uso es sencillo y por esta razón hemos decidido abrir el API para que cualquier desarrollador pueda implementarla en cualquier red social,"
+  },
+  {
+   "start": 110.9,
+   "end": 113.3,
+   "text": "dispositivos inteligentes o de IOT."
+  },
+  {
+   "start": 113.3,
+   "end": 118.7,
+   "text": "Siempre velando por la privacidad del usuario, descubre cómo esta API puede ser tu compañero de apoyo emocional."
+  },
+  {
+   "start": 118.7,
+   "end": 121.9,
+   "text": "¿Listos para dar el siguiente paso hacia una mejor salud mental?"
+  },
+  {
+   "start": 121.9,
+   "end": 123.9,
+   "text": "Kenneth Emotional Assistant"
+  }
+ ],
+ "has_info": false,
+ "duration_s": 127.9
+}

@@ -1,0 +1,152 @@
+{
+ "video_id": "Xh3cNN9v_iE",
+ "url": "https://youtu.be/Xh3cNN9v_iE",
+ "year": 2026,
+ "collection": "sede",
+ "country": "EL SALVADOR",
+ "team": "LOS TRONICOS",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "LOS TRONICOS",
+   "challenge": "09 - OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:45:02+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Hola desde sede Itka Sentkal Santa Tecna, en este video queremos compartirles nuestra propuesta para optimizar la respuesta después de una emergencia. Después de un desastre el caos no es solo físico, también es de información. Las instituciones no logren coordenarse, las líneas de emergencia se colapsan y las personas, sin saber a quién llamar, entran y panico. Al final nadie tiene el panorama completo, se repiten esfuerzos, hay zonas aisladas que quedan olvidadas y se pierden las pineras 72 horas, justo cuando hay más posibilidades de salvar vidas. Para resolverlo diseñamos una red descentralizada que une inteligencia artificial, internet satelital con Starlink y tecnología Lora One, capaz de operar aunque la red local haya caído. Todo empieza cuando una persona reporta su emergencia a través de un chatbot, indicando que ocurre y compartiendo su ubicación. Y si no tiene internet, puede dirigirse a un punto de emergencia, un dispositivo Lora One instalado en su comunidad que envía la alerta directamente a nuestro servidor. Hay una IA entrenada con distintos escenarios de riesgo, determina qué tan crítica es cada situación. Además si varias personas reportan el mismo hecho el sistema no se satura, lo analiza una sola vez y solo sube la prioridad si es necesario. Después usando GPS avisa el equipo de rescate y protección civil más cercanos que tengan recursos disponibles, quienes se mantienen comunicados por internet satelital. Cuando los rescatistas informan sobre el estado de las víctimas el sistema las envía al hospital más adecuado según su gravedad. Si el centro llega a su capacidad máxima avisa la IA y los pacientes se redirigen a otro lugar a tiempo. El resultado, respuesta más rápidas, líneas menos saturadas e instituciones coordinadas con información en tiempo real. Gracias por su atención.",
+ "segments": [
+  {
+   "start": 0.3,
+   "end": 7.7,
+   "text": "Hola desde sede Itka Sentkal Santa Tecna, en este video queremos compartirles nuestra propuesta"
+  },
+  {
+   "start": 7.7,
+   "end": 12.26,
+   "text": "para optimizar la respuesta después de una emergencia."
+  },
+  {
+   "start": 12.26,
+   "end": 16.42,
+   "text": "Después de un desastre el caos no es solo físico, también es de información."
+  },
+  {
+   "start": 16.42,
+   "end": 20.82,
+   "text": "Las instituciones no logren coordenarse, las líneas de emergencia se colapsan y las"
+  },
+  {
+   "start": 20.82,
+   "end": 24.1,
+   "text": "personas, sin saber a quién llamar, entran y panico."
+  },
+  {
+   "start": 24.1,
+   "end": 28.74,
+   "text": "Al final nadie tiene el panorama completo, se repiten esfuerzos, hay zonas aisladas que"
+  },
+  {
+   "start": 28.74,
+   "end": 33.1,
+   "text": "quedan olvidadas y se pierden las pineras 72 horas, justo cuando hay más"
+  },
+  {
+   "start": 33.1,
+   "end": 38.26,
+   "text": "posibilidades de salvar vidas. Para resolverlo diseñamos una red"
+  },
+  {
+   "start": 38.26,
+   "end": 44.02,
+   "text": "descentralizada que une inteligencia artificial, internet satelital con"
+  },
+  {
+   "start": 44.02,
+   "end": 50.54,
+   "text": "Starlink y tecnología Lora One, capaz de operar aunque la red local haya caído."
+  },
+  {
+   "start": 50.54,
+   "end": 54.94,
+   "text": "Todo empieza cuando una persona reporta su emergencia a través de un chatbot,"
+  },
+  {
+   "start": 54.94,
+   "end": 59.62,
+   "text": "indicando que ocurre y compartiendo su ubicación. Y si no tiene internet, puede"
+  },
+  {
+   "start": 59.62,
+   "end": 63.46,
+   "text": "dirigirse a un punto de emergencia, un dispositivo Lora One instalado en su"
+  },
+  {
+   "start": 63.46,
+   "end": 66.42,
+   "text": "comunidad que envía la alerta directamente a nuestro servidor."
+  },
+  {
+   "start": 66.42,
+   "end": 71.14,
+   "text": "Hay una IA entrenada con distintos escenarios de riesgo, determina qué tan"
+  },
+  {
+   "start": 71.14,
+   "end": 75.3,
+   "text": "crítica es cada situación. Además si varias personas reportan el mismo"
+  },
+  {
+   "start": 75.3,
+   "end": 79.62,
+   "text": "hecho el sistema no se satura, lo analiza una sola vez y solo sube la"
+  },
+  {
+   "start": 79.62,
+   "end": 84.98,
+   "text": "prioridad si es necesario. Después usando GPS avisa el equipo de rescate y"
+  },
+  {
+   "start": 84.98,
+   "end": 88.9,
+   "text": "protección civil más cercanos que tengan recursos disponibles, quienes se mantienen"
+  },
+  {
+   "start": 88.9,
+   "end": 94.06,
+   "text": "comunicados por internet satelital. Cuando los rescatistas informan sobre el estado"
+  },
+  {
+   "start": 94.06,
+   "end": 97.62,
+   "text": "de las víctimas el sistema las envía al hospital más adecuado según su"
+  },
+  {
+   "start": 97.62,
+   "end": 101.3,
+   "text": "gravedad. Si el centro llega a su capacidad máxima avisa la IA y los"
+  },
+  {
+   "start": 101.3,
+   "end": 106.62,
+   "text": "pacientes se redirigen a otro lugar a tiempo. El resultado, respuesta más"
+  },
+  {
+   "start": 106.62,
+   "end": 112.06,
+   "text": "rápidas, líneas menos saturadas e instituciones coordinadas con información"
+  },
+  {
+   "start": 112.06,
+   "end": 117.14,
+   "text": "en tiempo real. Gracias por su atención."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 115.3
+}

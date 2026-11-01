@@ -1,0 +1,162 @@
+{
+ "video_id": "bmKOjsJ1cws",
+ "url": "https://youtu.be/bmKOjsJ1cws",
+ "year": 2024,
+ "collection": "sede",
+ "country": "CHILE",
+ "team": "RELENOVATIONS2",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "RELENOVATIONS2",
+   "challenge": "08 - REDUCCIÓN DE DESPERDICIOS ALIMENTARIOS"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:35:55+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Sabías que según el ODS en 2022 aproximadamente 735 millones de personas o el 9,2% de la población mundial se encontraban en estado de hambre crónica, lo que significa un aumento vertiginoso en comparación con el 2019. Y además en los supermercados, feria de líderes y otros puntos de venta al detalle, se pierde una cantidad considerable de alimentos que podrían alimentar a más de 30 millones de personas, lo que equivale al 64% de quienes sufren hambre en la región. A partir de estos datos se nos planteó el desafío de conectar supermercados y restaurantes con banco de alimentos y comunidades locales, con el fin de permitir una gestión y distribución más eficiente de los alimento. ¿Y qué solución tendríamos como equipo? La solución que planteamos como equipo fue Food Flux, la cual es una aplicación que conecta supermercados y restaurantes con fundaciones, comunidad y banco de alimentos. Su funcionamiento se basa en la doración de fruta y verduras que por diversos motivos no pueden ser vendidos por la institución. Los productos se desiguran en comestibles y no comestibles, los productos no comestibles se aprovechan para la operación de compost y semillas que luego se comercializan. Por los ingresos generados por estas ventas se financen los contos operativos como la logística asegurando la sustabilidad en el proceso. Dentro de Food Flux, al ingresar tenemos distintos apartados donde el primero apartado tenemos el microplace donde los usuarios podrán ofrecer su fruta y verduras a las comunidades y estas podrán ver en detalle qué son. Además de esto podemos ver el apartado de publicación donde clasificamos el fruto de verduras y si es comestible o no comestible. Hacer el proceso, volvemos al menú principal de la aplicación en donde podemos ver los avisos donde los supermercados podrán avisar ante cualquier ventualidad, un mapa donde podemos ver los distintos puntos de fundaciones y el menú desplegable donde podemos ingresar al apartado de productos donde serán las ventas de compost y semillas.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 8.16,
+   "text": "Sabías que según el ODS en 2022 aproximadamente 735 millones de personas o el 9,2% de la población"
+  },
+  {
+   "start": 8.16,
+   "end": 13.0,
+   "text": "mundial se encontraban en estado de hambre crónica, lo que significa un aumento vertiginoso"
+  },
+  {
+   "start": 13.0,
+   "end": 15.08,
+   "text": "en comparación con el 2019."
+  },
+  {
+   "start": 15.08,
+   "end": 20.36,
+   "text": "Y además en los supermercados, feria de líderes y otros puntos de venta al detalle, se pierde"
+  },
+  {
+   "start": 20.36,
+   "end": 24.28,
+   "text": "una cantidad considerable de alimentos que podrían alimentar a más de 30 millones"
+  },
+  {
+   "start": 24.28,
+   "end": 29.44,
+   "text": "de personas, lo que equivale al 64% de quienes sufren hambre en la región."
+  },
+  {
+   "start": 29.44,
+   "end": 34.4,
+   "text": "A partir de estos datos se nos planteó el desafío de conectar supermercados y restaurantes"
+  },
+  {
+   "start": 34.4,
+   "end": 39.36,
+   "text": "con banco de alimentos y comunidades locales, con el fin de permitir una gestión y distribución"
+  },
+  {
+   "start": 39.36,
+   "end": 40.68,
+   "text": "más eficiente de los alimento."
+  },
+  {
+   "start": 40.68,
+   "end": 42.76,
+   "text": "¿Y qué solución tendríamos como equipo?"
+  },
+  {
+   "start": 42.76,
+   "end": 47.16,
+   "text": "La solución que planteamos como equipo fue Food Flux, la cual es una aplicación que conecta"
+  },
+  {
+   "start": 47.16,
+   "end": 51.64,
+   "text": "supermercados y restaurantes con fundaciones, comunidad y banco de alimentos."
+  },
+  {
+   "start": 51.64,
+   "end": 57.04,
+   "text": "Su funcionamiento se basa en la doración de fruta y verduras que por diversos motivos"
+  },
+  {
+   "start": 57.04,
+   "end": 59.28,
+   "text": "no pueden ser vendidos por la institución."
+  },
+  {
+   "start": 59.28,
+   "end": 63.32,
+   "text": "Los productos se desiguran en comestibles y no comestibles, los productos no comestibles"
+  },
+  {
+   "start": 63.32,
+   "end": 68.0,
+   "text": "se aprovechan para la operación de compost y semillas que luego se comercializan."
+  },
+  {
+   "start": 68.0,
+   "end": 72.04,
+   "text": "Por los ingresos generados por estas ventas se financen los contos operativos como la"
+  },
+  {
+   "start": 72.04,
+   "end": 75.36,
+   "text": "logística asegurando la sustabilidad en el proceso."
+  },
+  {
+   "start": 75.36,
+   "end": 81.56,
+   "text": "Dentro de Food Flux, al ingresar tenemos distintos apartados donde el primero apartado tenemos"
+  },
+  {
+   "start": 81.56,
+   "end": 88.24,
+   "text": "el microplace donde los usuarios podrán ofrecer su fruta y verduras a las comunidades"
+  },
+  {
+   "start": 88.36,
+   "end": 91.2,
+   "text": "y estas podrán ver en detalle qué son."
+  },
+  {
+   "start": 91.2,
+   "end": 95.44,
+   "text": "Además de esto podemos ver el apartado de publicación donde"
+  },
+  {
+   "start": 95.44,
+   "end": 99.68,
+   "text": "clasificamos el fruto de verduras y si es comestible o no comestible."
+  },
+  {
+   "start": 99.68,
+   "end": 106.12,
+   "text": "Hacer el proceso, volvemos al menú principal de la aplicación en donde podemos ver los"
+  },
+  {
+   "start": 106.12,
+   "end": 112.2,
+   "text": "avisos donde los supermercados podrán avisar ante cualquier ventualidad, un mapa donde"
+  },
+  {
+   "start": 112.2,
+   "end": 116.96,
+   "text": "podemos ver los distintos puntos de fundaciones y el menú desplegable donde podemos"
+  },
+  {
+   "start": 116.96,
+   "end": 121.28,
+   "text": "ingresar al apartado de productos donde serán las ventas de compost y semillas."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 123.5
+}

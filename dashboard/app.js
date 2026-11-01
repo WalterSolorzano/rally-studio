@@ -288,7 +288,7 @@ function getDefaultMultiAITasks() {
       id: "blender_3d",
       title: "Modelo 3D y Script Paramétrico en Blender",
       ai: "OpenCode / ChatGPT",
-      desc: "Genera script bpy con biseles mecánicos, puertos estancos IP67 y materiales realistas para planos de video.",
+      desc: "Genera script bpy con biseles mecánicos, carcasas y materiales realistas para planos de video.",
       status: "pending",
       result: ""
     },
@@ -731,7 +731,7 @@ function syncUI() {
 
 function loadSavedState() {
   try {
-    const saved = localStorage.getItem("rally_studio_production_state_2026_v3");
+    const saved = localStorage.getItem("rally_studio_production_state_2026_v4");
     if (saved) {
       state = Object.assign(getInitialState(), JSON.parse(saved));
       // Migra metadatos de tareas sin perder resultados ya pegados por el equipo.
@@ -812,7 +812,7 @@ if (typeof BroadcastChannel !== "undefined") {
 
 if (typeof window !== "undefined" && window.addEventListener) {
   window.addEventListener("storage", function(event) {
-    if (event.key === "rally_studio_production_state_2026_v3" && event.newValue) {
+    if (event.key === "rally_studio_production_state_2026_v4" && event.newValue) {
       try {
         const remoteState = JSON.parse(event.newValue);
         state = Object.assign(getInitialState(), remoteState);
@@ -824,7 +824,7 @@ if (typeof window !== "undefined" && window.addEventListener) {
 
 function saveState() {
   try {
-    localStorage.setItem("rally_studio_production_state_2026_v3", JSON.stringify(state));
+    localStorage.setItem("rally_studio_production_state_2026_v4", JSON.stringify(state));
     if (syncBroadcastChannel) {
       syncBroadcastChannel.postMessage({ type: "AUTO_SYNC_STATE", state });
     }
@@ -838,7 +838,7 @@ function saveState() {
 
 function resetProject() {
   if (confirm("¿Iniciar nuevo proyecto desde cero? Se limpiarán los datos locales para arrancar una nueva competencia.")) {
-    localStorage.removeItem("rally_studio_production_state_2026_v3");
+    localStorage.removeItem("rally_studio_production_state_2026_v4");
     state = getInitialState();
     activeTab = "certamen";
     syncUI();
@@ -974,22 +974,16 @@ function preparePrintDossierHTML() {
 
   // Partidas presupuestarias sincronizadas (resuelve b.concept y b.element)
   const budgetList = Array.isArray(state.budget) && state.budget.length > 0 ? state.budget : [
-    { concept: "Diseño y Prototipado Rápido (Materiales / Maqueta)", category: "Prototipado", units: 1, unit_cost: 250, url: "Proveedor Local / FabLab UNI" },
-    { concept: "Componentes Electromecánicos / Hardware Base", category: "Hardware Base", units: 1, unit_cost: 320, url: "COTS Mayorista (ESP32/LoRa)" },
-    { concept: "Pruebas de Campo y Validación Operativa", category: "Validación", units: 1, unit_cost: 180, url: "Logística Territorial" },
-    { concept: "Herramientas de Ensamblaje y Gabinetes IP67", category: "Fabricación", units: 1, unit_cost: 140, url: "Manufactura Aditiva PETG" },
-    { concept: "Talleres y Metodología de Apropiación Comunitaria", category: "Impacto Social", units: 1, unit_cost: 150, url: "Comités Locales" }
+    { concept: "Prototipo y materiales", category: "Prototipado", units: 1, unit_cost: 0, url: "" },
+    { concept: "Validación técnica", category: "Validación", units: 1, unit_cost: 0, url: "" },
+    { concept: "Documentación y difusión", category: "Comunicación", units: 1, unit_cost: 0, url: "" }
   ];
   const budgetTotal = budgetList.reduce((acc, b) => acc + (Number(b.units || 1) * Number(b.unit_cost || 0)), 0);
   const bctx = budgetCurrency();
   const budgetInRange = budgetTotal >= 500 && budgetTotal <= 15000;
 
   // Claims de Respaldo Fáctico / Propiedad Intelectual
-  const claimsList = (Array.isArray(state.claims) && state.claims.length > 0) ? state.claims : [
-    { stat: "En Nicaragua, las inundaciones y anegaciones afectan anualmente a más de 120,000 personas en zonas urbanas y periurbanas de la cuenca del Pacífico.", source: "SINAPRED", year: 2024 },
-    { stat: "El 42% de las pérdidas materiales en eventos hidroclimáticos extremos se deben a la falta de telemetría en tiempo real en los primeros 30 minutos.", source: "CEPAL", year: 2024 },
-    { stat: "Las redes LoRaWAN permiten una reducción del 78% en costos de transmisión comparado con telemetría celular dedicada en áreas rurales.", source: "IEEE Surveys", year: 2023 }
-  ];
+  const claimsList = (Array.isArray(state.claims) && state.claims.length > 0) ? state.claims : [];
 
   // Matriz de 10 Guardarraíles de Rúbrica SIRLI
   const guardrailsDef = [
@@ -1012,8 +1006,8 @@ function preparePrintDossierHTML() {
   const deliberationIdeas = (state.challenge_ideas && state.challenge_ideas[challengeId]) ? state.challenge_ideas[challengeId] : [];
 
   // URLs de Entregables
-  const videoUrl = state.video_url || "https://youtu.be/ejemplo-hidrovigia-2026";
-  const siteUrl = state.site_url || "https://mentes-pinoleras.github.io/hidro-vigia";
+  const videoUrl = state.video_url || "";
+  const siteUrl = state.site_url || "";
   const driveUrl = state.google_drive_url || "https://drive.google.com";
   const canvaUrl = state.canva_url || "https://canva.com";
   const figmaUrl = state.figma_url || "";
@@ -1169,39 +1163,39 @@ function preparePrintDossierHTML() {
       <div class="print-canvas-grid">
         <div class="print-canvas-box print-canvas-box-socios">
           <div class="print-canvas-box-title">1. Socios Clave</div>
-          <p class="print-canvas-box-body">${canvas.socios || 'Municipalidades locales, cooperativas agropecuarias de la zona, comités de cuenca (COMUPRED) y distribuidores mayoristas de hardware COTS.'}</p>
+          <p class="print-canvas-box-body">${canvas.socios || 'Socios institucionales, técnicos y comunitarios definidos en el modelo de negocio.'}</p>
         </div>
         <div class="print-canvas-box print-canvas-box-actividades">
           <div class="print-canvas-box-title">2. Actividades Clave</div>
-          <p class="print-canvas-box-body">${canvas.actividades || 'Ensamblaje e integración modular de telemetría, calibración hidrométrica en banco de pruebas y talleres de adopción técnica.'}</p>
+          <p class="print-canvas-box-body">${canvas.actividades || 'Actividades clave de desarrollo, validación y adopción descritas en el canvas.'}</p>
         </div>
         <div class="print-canvas-box print-canvas-box-recursos">
           <div class="print-canvas-box-title">6. Recursos Clave</div>
-          <p class="print-canvas-box-body">${canvas.recursos || 'Microcontroladores ESP32, transceptores LoRaWAN sub-GHz, celdas fotovoltaicas LiFePO4 y equipo multidisciplinario UNI.'}</p>
+          <p class="print-canvas-box-body">${canvas.recursos || 'Recursos técnicos, humanos y de infraestructura requeridos por el proyecto.'}</p>
         </div>
         <div class="print-canvas-box print-canvas-box-propuesta">
           <div class="print-canvas-box-title">3. Propuesta de Valor ★</div>
-          <p class="print-canvas-box-body"><strong>${canvas.propuesta || state.solution_thesis || 'Sistema de alerta temprana no invasivo con 30 minutos de anticipación operativa, cero dependencia celular y costo unitario 70% menor al mercado.'}</strong></p>
+          <p class="print-canvas-box-body"><strong>${canvas.propuesta || state.solution_thesis || 'Propuesta de valor diferencial del proyecto, validada con el equipo.'}</strong></p>
         </div>
         <div class="print-canvas-box print-canvas-box-relaciones">
           <div class="print-canvas-box-title">4. Relaciones</div>
-          <p class="print-canvas-box-body">${canvas.relaciones || 'Acompañamiento presencial en simulacros de campo, capacitación comunitaria y protocolos de mantenimiento semestral.'}</p>
+          <p class="print-canvas-box-body">${canvas.relaciones || 'Relaciones de acompañamiento, capacitación y soporte con los usuarios.'}</p>
         </div>
         <div class="print-canvas-box print-canvas-box-canales">
           <div class="print-canvas-box-title">7. Canales</div>
-          <p class="print-canvas-box-body">${canvas.canales || 'Red de radiofrecuencia mallada, sirenas locales autónomas y tablero web de telemetría para autoridades municipales.'}</p>
+          <p class="print-canvas-box-body">${canvas.canales || 'Canales de distribución, comunicación y soporte del proyecto.'}</p>
         </div>
         <div class="print-canvas-box print-canvas-box-segmentos">
           <div class="print-canvas-box-title">5. Segmentos</div>
-          <p class="print-canvas-box-body">${canvas.segmentos || 'Familias periurbanas y rurales asentadas en márgenes de ríos vulnerables, comités barriales de prevención y gobiernos locales.'}</p>
+          <p class="print-canvas-box-body">${canvas.segmentos || 'Segmentos de usuarios y clientes priorizados en el canvas.'}</p>
         </div>
         <div class="print-canvas-box print-canvas-box-costes">
           <div class="print-canvas-box-title">8. Estructura de Costes (Tope \$15k)</div>
-          <p class="print-canvas-box-body">${canvas.costes || 'Adquisición de componentes mayoristas COTS ($650), manufactura aditiva y sellado IP67 ($320), calibración y pruebas de campo ($450).'}</p>
+          <p class="print-canvas-box-body">${canvas.costes || 'Costos de implementación calculados a partir del presupuesto auditado.'}</p>
         </div>
         <div class="print-canvas-box print-canvas-box-ingresos">
           <div class="print-canvas-box-title">9. Fuentes de Ingresos / Sostenibilidad</div>
-          <p class="print-canvas-box-body">${canvas.ingresos || 'Fondos de inversión municipal en prevención de desastres, cooperación internacional (PNUD/CEPAL) y convenios de extensión universitaria.'}</p>
+          <p class="print-canvas-box-body">${canvas.ingresos || 'Fuentes de ingreso y sostenibilidad definidas en el modelo de negocio.'}</p>
         </div>
       </div>
     </div>
@@ -2730,7 +2724,7 @@ function openIdentityModal() {
       <p class="rs-modal-help">Tu nombre se guarda en este dispositivo y aparece junto a los entregables que tomes. Debe ser único: nada de nombres aleatorios.</p>
       <label class="rs-field">
         <span>Mi nombre</span>
-        <input id="rs-identity-input" type="text" maxlength="28" autocomplete="off" placeholder="Ej. María López" value="${amINamed() ? escapeHtml(currentClientMascot.name) : ""}">
+        <input id="rs-identity-input" type="text" maxlength="28" autocomplete="off" placeholder="Ej. Tu nombre" value="${amINamed() ? escapeHtml(currentClientMascot.name) : ""}">
       </label>
       <p class="rs-modal-error" id="rs-identity-error" role="alert"></p>
       <div class="rs-modal-actions">
@@ -5533,72 +5527,20 @@ function clearAllChallenges() {
 
 // ── MOTOR GENERADOR DE SOLUCIONES TÁCTICAS PARA RETOS EN VIVO ────────────────
 function generateTacticalSolution(title, description, category) {
-  const t = (title + " " + description).toLowerCase();
-
-  // 1. Electromecánica, Motores, Electrodomésticos y Economía Circular (ODS 12, 8, 9)
-  if (t.includes("motor") || t.includes("electrodom") || t.includes("lavarropa") || t.includes("chatarra") || t.includes("variador") || (t.includes("electr") && !t.includes("electroencef")) || t.includes("bater") || t.includes("solar") || t.includes("potencia") || t.includes("reutiliz")) {
-    return {
-      wowProposal: "Convierte motores de electrodomésticos gastados en motorcitos productivos: un control reciclado que regula su fuerza y un acople 3D, para mover bombas y molinos en fincas.",
-      nicaraguaAdaptation: "Sustitución de motores diésel costosos por motores de lavadora y electrodomésticos reacondicionados en cooperativas agropecuarias de Boaco y Chontales.",
-      noveltyReason: "Transición de reciclaje pasivo a economía circular productiva de alto torque con costo total de reconversión menor a $65 USD por unidad.",
-      winnerPattern: "Patrón Avocado / Revolt: economía circular aplicada a cadenas de valor existentes.",
-      ods: ["ODS 12", "ODS 8", "ODS 9"],
-      winRate: 92
-    };
-  }
-
-  // 2. Recursos Hídricos, Inundaciones y Cuencas Hidrológicas (ODS 11, 13, 6)
-  if (t.includes("inunda") || t.includes("crecida") || t.includes("cauce") || t.includes("cuenca") || t.includes("aluvion") || (t.includes("rio") && !t.includes("criterio")) || t.includes("río") || t.includes("hidro") || ((t.includes("agua") || t.includes("pluvial")) && (t.includes("sensor") || t.includes("monitoreo") || t.includes("alerta") || t.includes("nivel") || t.includes("potable") || t.includes("tratamiento")))) {
-    return {
-      wowProposal: "Sensores de nivel montados sin obras en los cauces, que avisan a la comunidad 30 minutos antes de la crecida por radio de largo alcance, sin red de celular.",
-      nicaraguaAdaptation: "Anclaje prioritario en puntos críticos de cauces urbanos de Managua (Cauce Oriental) y cuencas vulnerables de Matagalpa o Rivas, con enlace directo a brigadistas comunitarios CODEPRED sin depender de red celular.",
-      noveltyReason: "Elimina la ceguera hidrométrica mediante hardware COTS inferior a $75 USD por nodo con respaldo fotovoltaico y telemetría garantizada sin luz solar.",
-      winnerPattern: "Patrón Techriders / HidroVigía: hardware tangible in situ con métricas verificables de mitigación de riesgo.",
-      ods: ["ODS 11", "ODS 13", "ODS 6"],
-      winRate: 94
-    };
-  }
-
-  if (t.includes("agric") || t.includes("cultiv") || t.includes("suelo") || t.includes("abono") || t.includes("compost") || t.includes("alimento") || t.includes("plaga")) {
-    return {
-      wowProposal: "Compost con timón propio: sensores sencillos controlan temperatura, humedad y nutrientes, el sol da el calor y el equipo dosifica sola la pastilla que el cultivo necesita.",
-      nicaraguaAdaptation: "Optimizado para pequeños productores de hortalizas y granos básicos en Sébaco y Estelí, reduciendo en 40% el gasto en fertilizantes químicos importados.",
-      noveltyReason: "Acelera el tiempo de biodegradación de 90 a 18 días mediante control térmico de bajo costo con insumos locales.",
-      winnerPattern: "Patrón AgroTech: validación agronómica directa con reducción de costos operacionales comprobables.",
-      ods: ["ODS 2", "ODS 12", "ODS 15"],
-      winRate: 91
-    };
-  }
-
-  if (t.includes("residu") || t.includes("plastic") || t.includes("plástic") || t.includes("basura") || t.includes("recicl") || t.includes("desecho")) {
-    return {
-      wowProposal: "Convierte el plástico del barrio en adoquines y perfiles de construcción: se tritura, se clasifica por peso y se prensa en caliente. Menos basural, pavimento barato.",
-      nicaraguaAdaptation: "Alianza con cooperativas de recicladores urbanos en Managua y León, transformando plásticos difíciles en mobiliario comunal y barreras de contención.",
-      noveltyReason: "Evita la logística cara de exportación de chatarra plástica al procesar y convertir el material en el mismo municipio con retorno de inversión en 8 meses.",
-      winnerPattern: "Patrón EcoLadrillo: producto final de construcción con prueba de resistencia de carga validada.",
-      ods: ["ODS 12", "ODS 11", "ODS 9"],
-      winRate: 89
-    };
-  }
-
-  if (t.includes("salud") || t.includes("medic") || t.includes("vacuna") || t.includes("frio") || t.includes("frío") || t.includes("hospital") || t.includes("enferm")) {
-    return {
-      wowProposal: "Nevera portátil de transporte rural para vacunas y alimentos, con un sensor que anota cada temperatura en una bitácora confiable. Sin hielo y sin cortes de cadena.",
-      nicaraguaAdaptation: "Rutas fluviales y terrestres del Caribe Norte y Sur (MINSA / SILAIS), garantizando la integridad de sueros antiofídicos y vacunas en zonas sin electrificación fija.",
-      noveltyReason: "Opera con banco LiFePO4 recargable por panel flexible de mochila manteniendo 2°C a 8°C durante 36 horas continuas.",
-      winnerPattern: "Patrón MediCold / SaludMóvil: impacto humanitario directo con tecnología biomédica accesible.",
-      ods: ["ODS 3", "ODS 10", "ODS 9"],
-      winRate: 93
-    };
-  }
-
+  const cleanTitle = (title || "").trim();
+  const cleanDesc = (description || "").trim();
+  const categoryLabel = (category || "innovacion").trim();
   return {
-    wowProposal: `[Pendiente de formulación con IA activa] Haz clic en "Formular con IA Activa" para estructurar la Tesis técnica según la Rúbrica oficial (100 Pts).`,
-    nicaraguaAdaptation: "Arquitectura concebida con componentes comerciales de bajo costo disponibles localmente, integrable en planes municipales y cooperativas comunitarias.",
-    noveltyReason: "Rompe los enfoques convencionales al combinar sensado in-situ, cero dependencia de infraestructura costosa y despliegue rápido en 24 horas.",
-    winnerPattern: "Alineación estricta con Rúbrica Oficial (100 Pts) e impacto tangible demostrable.",
-    ods: ["ODS 9", "ODS 12"],
-    winRate: 90
+    wowProposal: cleanTitle
+      ? `Propuesta en construccion para "${cleanTitle}": el equipo debe formular la tesis tecnica con IA activa y validarla contra la rubrica oficial.`
+      : `[Pendiente de formulacion] Define el reto y usa "Formular con IA Activa" para construir la tesis tecnica.`,
+    nicaraguaAdaptation: cleanDesc
+      ? `Anclaje territorial por definir con el equipo a partir de la demanda: ${cleanDesc}`
+      : "Anclaje territorial pendiente de definir con el equipo.",
+    noveltyReason: "La novedad debe justificarse con evidencia del corpus y validacion con usuarios, no con texto generico.",
+    winnerPattern: `Alineacion con la rubrica oficial (100 Pts) en la categoria ${categoryLabel}.`,
+    ods: ["ODS 9"],
+    winRate: 0
   };
 }
 
@@ -6265,7 +6207,7 @@ const ODS_CATALOG = [
     icon: `<path d="M12 3v18M5 8h14M3 13l4-5 4 5a4 4 0 0 1-8 0zm10 0l4-5 4 5a4 4 0 0 1-8 0z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>`,
     shortTarget: "Meta 16.6: Instituciones eficaces, transparentes y participativas",
     unTarget: "Crear a todos los niveles instituciones eficaces y transparentes que rindan cuentas a la comunidad beneficiaria y refuercen la gobernanza local.",
-    diagnostic: "Falta de datos verificables en tiempo real para la toma de decisiones ágil entre alcaldías, SINAPRED y comités de barrio.",
+    diagnostic: "Falta de datos verificables en tiempo real para la toma de decisiones entre instituciones y comunidades.",
     mechanism: "Telemetría comunitaria transparente, bases de datos abiertas y participación ciudadana directa en el monitoreo preventivo."
   },
   {
@@ -7284,12 +7226,12 @@ Proyecto: "${pName}" (${chTitle}).
 Tesis: "${thesis}".
 Criterio Rúbrica Oficial Jurado Nacional: Calidad del Video Pitch (15 Puntos) e Identidad Territorial.
 Patrón de Ganadores Nacionales (Fórmula 120 Segundos):
-Genera el texto de locución continuo para los 4 actos (cadencia de 135 ppm, total 250 a 270 palabras):
+Genera el texto de locución continuo para los 4 actos. Límite legal: 120 segundos de audio. Referencia de escritura: 250 a 270 palabras a 135 ppm; si el texto se pasa de esa referencia, avisa que costará grabarlo dentro de los 120 s.
 - Acto 1 (0–20s): Apertura empática en territorio real de Nicaragua con cifra contundente. PROHIBIDO nombre del proyecto o logos.
 - Acto 2 (20–60s): Explicación técnica de la solución, nombre identitario/marca registrable y demostración del mecanismo funcional/prototipo (los ganadores muestran la maqueta temprano).
 - Acto 3 (60–95s): Prefactibilidad económica y sostenibilidad con actores del entorno local (alcaldías, cooperativas, MEFCCA) y cifras exactas del pautado.
 - Acto 4 (95–120s): Cierre memorable de impacto humano, empleo y orgullo del talento nicaragüense (identidad cultural real, no retórica vacía).
-Distribución objetiva de palabras: Acto 1 ≤45, Acto 2 ≤90, Acto 3 ≤75, Acto 4 ≤55 (total 250-270).
+Distribución de referencia (no regla): Acto 1 ≈45, Acto 2 ≈90, Acto 3 ≈75, Acto 4 ≈55 palabras. Lo que se verifica al final es la duración real del audio: ≤120 s.
 Entrega solo el texto continuo para el locutor o sintetizador TTS, sin acotaciones teatrales ni corchetes.
 
 MOTOR Y ENTREGABLE DE AUDIO (si tu entorno tiene acceso al equipo):
@@ -7303,12 +7245,12 @@ Proyecto: "${pName}" (${chTitle}).
 Tesis: "${thesis}".
 Criterio Rúbrica Oficial: Calidad de la Presentación y Estructura Audiovisual (10 Puntos).
 Patrón de Ganadores (Anatomía de 120 segundos):
-Genera el texto de locución continuo para los 4 actos (cadencia estricta de 135 palabras por minuto, total 250 a 270 palabras):
+Genera el texto de locución continuo para los 4 actos. Límite legal: 120 segundos de audio. Referencia de escritura: 250 a 270 palabras a 135 ppm; si el texto se pasa de esa referencia, avisa que costará grabarlo dentro de los 120 s.
 - Acto 1 (0–20s): Dolor humano y cifras cuantificadas. PROHIBIDO mencionar el nombre del proyecto o mostrar logos.
 - Acto 2 (20–60s): Explicación técnica de la solución y mecanismo funcional; los ganadores Latam muestran la demo visual de forma temprana y usualen un nombre memorable de identidad regional.
 - Acto 3 (60–95s): Prefactibilidad y desglose del presupuesto en ${isNac ? "córdobas (C$)" : "USD"} coincidente con el documento pautado.
 - Acto 4 (95–120s): Cierre de impacto, métricas auditables y proyección regional, con identidad nicaragüense (símbolo o cifra de orgullo local) como en los videos ganadores.
-Distribución objetiva de palabras: Acto 1 ≤45, Acto 2 ≤90, Acto 3 ≤75, Acto 4 ≤55 (total 250-270).
+Distribución de referencia (no regla): Acto 1 ≈45, Acto 2 ≈90, Acto 3 ≈75, Acto 4 ≈55 palabras. Lo que se verifica al final es la duración real del audio: ≤120 s.
 Entrega solo el texto continuo para el locutor o sintetizador TTS, sin acotaciones teatrales ni corchetes.
 
 MOTOR Y ENTREGABLE DE AUDIO (si tu entorno tiene acceso al equipo):
@@ -7329,13 +7271,13 @@ Pautado Oficial Actual: ${pautadoSummary}
 Guion 120s Actual:\n${scriptSummary}
 
 Misión crítica como jurado riguroso antes de calificar:
-1. AUDITORÍA DE DISCREPANCIAS NUMÉRICAS (Causa oculta #1 de descalificación):
+1. AUDITORÍA DE DISCREPANCIAS NUMÉRICAS (riesgo más frecuente en prefactibilidad):
    - Coteja centavo a centavo y persona a persona si alguna cifra dicha en el guion (costos, beneficiarios, tiempos, reducción %) contradice o no está en el pautado. Si hay discrepancia, indícala con su corrección exacta.
 2. CHECKLIST DE LOS 11 PATRONES PERDEDORES:
    - ¿Propone una app móvil genérica para crisis complejas de salud/violencia sin hardware o validación física?
    - ¿Falta costeo unitario y lote piloto en el rango recomendado ($4,000 - $6,000 USD)?
    - ¿Desperdicia los primeros 20 segundos en logotipos o presentaciones?
-   - ¿El guion excede 270 palabras o 120 segundos?
+      - ¿El audio del guion supera 120 segundos? (límite legal, se mide con ffprobe). Si además pasa de 270 palabras, advierte que la locución tendrá problemas para grabarse dentro del tiempo.
    - ¿Usa sufijo genérico -INNOVA en lugar de Naming Dual diferenciado?
 3. BILINGÜISMO EVALUATIVO Y RÚBRICA 100 PTS:
    - ${isNac ? 'Verifica anclaje territorial nicaragüense, alineación con PNDH 2022-2026 y actores locales (INATEC/MEFCCA).' : 'Verifica universalidad técnica en lenguaje COTS/CAD, costos en USD sin subsidio y Nicaragua como prueba piloto para escalar a Latinoamérica.'}
@@ -7355,7 +7297,7 @@ Requisitos estrictos:
 1. Hero con nombre del proyecto, la tesis condensada y 3 métricas grandes en tipografía mono (ej. unidades del piloto, cobertura, ahorro estimado) tomadas de la tesis y del presupuesto.
 2. Panel "Telemetría en Vivo" con datos simulados en JS (setInterval) que cambien cada 2s: señal, batería, nivel, temperatura — números plausibles para el hardware de la tesis.
 3. Tabla de partidas mayoristas con los datos de presupuesto dados (elemento, unidades, costo) + total calculado en ${pctx.rotulo}.
-4. Barra inferior con pulso de "Registro Territorial" y estado del gateway LoRaWAN.
+4. Barra inferior con pulso de "Registro Territorial" y estado del prototipo.
 5. Estética: fondo blanco, 1 línea de acento cobalto, sin gradientes chillones, sin emojis, sin imágenes externas; texto legible en 4K (para grabar a 1080p/4K).
 6. Todo debe correr en un solo archivo, responsive, sin errores de consola.
 Entrega SOLO el código completo del archivo HTML.`;
@@ -9069,7 +9011,7 @@ function renderViewScript() {
             <span class="rubric-tag">20 PTS PREFACTIBILIDAD (CAUSA #1 DESCARTE)</span>
           </div>
         </div>
-        <div style="font-size:11px; color:var(--text-muted); margin-bottom:6px;">Patrón ganador: cifras exactas en pantalla ($ por partida, % de flete) — causa #1 de descarte es una prefactibilidad vaga.</div>
+        <div style="font-size:11px; color:var(--text-muted); margin-bottom:6px;">Patrón ganador: cifras exactas en pantalla ($ por partida, % de flete). Una prefactibilidad vaga es el punto más débil del pitch.</div>
         <textarea id="sc-a3" rows="3" style="width:100%; border:1px solid var(--border-light); border-radius:4px; padding:8px; font-size:12px; font-family:var(--font-ui); box-sizing:border-box;"
           placeholder="Ej: «15 módulos a $12.80, gateway a $290, flete del 18%...» — total del piloto entre $4,000 y $6,000 USD, con fuente verificable."
           onfocus="broadcastLock('script-acto3')"
@@ -9186,6 +9128,27 @@ function saveScript() {
 function renderViewWebDemo() {
   const pName = state.project_name || "PROTOTIPO_ACTIVO";
   const isSocial = state.category === "Impacto Social";
+  const budgetTotal = (state.budget || []).reduce((acc, it) => acc + (Number(it.units || 0) * Number(it.unit_cost || 0)), 0);
+  const pautadoDone = Object.keys(state.pautado || {}).filter(k => (state.pautado[k] || "").length >= 150).length;
+  const pautadoTotal = Object.keys(state.pautado || {}).length || 5;
+  const scriptWords = Object.values(state.script || {}).join(" ").trim().split(/\s+/).filter(Boolean).length;
+  const odsList = (state.impact_alignment && state.impact_alignment.selected_ods || []).map(n => `ODS ${n}`).join(" · ") || "ODS pendiente";
+  const budgetLabel = budgetTotal ? `$${budgetTotal.toLocaleString("en-US", { maximumFractionDigits: 0 })} USD` : "Sin presupuesto";
+  const phasesDone = [
+    !!state.rally_type,
+    !!(state.team_name && state.university),
+    !!state.challenge_id,
+    !!state.solution_approved,
+    !!(state.impact_alignment && state.impact_alignment.selected_ods && state.impact_alignment.selected_ods.length),
+    false,
+    (typeof isPautadoComplete === "function" && isPautadoComplete()),
+    (typeof isBudgetValid === "function" && isBudgetValid()),
+    !!(state.resources && state.resources.items && state.resources.items.length),
+    false,
+    (typeof isScriptComplete === "function" && isScriptComplete()),
+    false,
+    false
+  ].filter(Boolean).length;
 
   return `
     <div class="phase-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:14px; margin-bottom:24px; padding-bottom:14px; border-bottom:1px solid var(--border-light);">
@@ -9210,30 +9173,31 @@ function renderViewWebDemo() {
       <div style="padding:20px; background:#f8fafc;">
         <div class="telemetry-kpi-grid">
           <div style="background:#fff; border:1px solid var(--border-light); padding:14px; border-radius:6px;">
-            <div style="font-size:10px; font-weight:800; color:var(--text-muted); text-transform:uppercase;">${isSocial ? 'Índice de Rendimiento' : 'Parámetro Operativo'}</div>
-            <div style="font-size:24px; font-weight:800; font-family:var(--font-mono); color:var(--color-primary); margin:4px 0;">94.2%</div>
-            <div style="font-size:11px; color:#047857; font-weight:600;">Calibración de campo completa</div>
+            <div style="font-size:10px; font-weight:800; color:var(--text-muted); text-transform:uppercase;">Fases completadas</div>
+            <div style="font-size:24px; font-weight:800; font-family:var(--font-mono); color:var(--color-primary); margin:4px 0;">${phasesDone}/13</div>
+            <div style="font-size:11px; color:#047857; font-weight:600;">Flujo guiado de punta a punta</div>
           </div>
 
           <div style="background:#fff; border:1px solid var(--border-light); padding:14px; border-radius:6px;">
-            <div style="font-size:10px; font-weight:800; color:var(--text-muted); text-transform:uppercase;">${isSocial ? 'Tiempo de Respuesta' : 'Ciclo de Operación'}</div>
-            <div style="font-size:24px; font-weight:800; font-family:var(--font-mono); color:var(--text-main); margin:4px 0;">1.2 s</div>
-            <div style="font-size:11px; color:var(--text-muted);">Procesamiento in-situ autónomo</div>
+            <div style="font-size:10px; font-weight:800; color:var(--text-muted); text-transform:uppercase;">Pautado validado</div>
+            <div style="font-size:24px; font-weight:800; font-family:var(--font-mono); color:var(--text-main); margin:4px 0;">${pautadoDone}/${pautadoTotal}</div>
+            <div style="font-size:11px; color:var(--text-muted);">Secciones dentro de los límites</div>
           </div>
 
           <div style="background:#fff; border:1px solid var(--border-light); padding:14px; border-radius:6px;">
-            <div style="font-size:10px; font-weight:800; color:var(--text-muted); text-transform:uppercase;">Autonomía Energética</div>
-            <div style="font-size:24px; font-weight:800; font-family:var(--font-mono); color:#047857; margin:4px 0;">98.6%</div>
-            <div style="font-size:11px; color:var(--text-muted);">Baterías LiFePO4 + Panel Solar</div>
+            <div style="font-size:10px; font-weight:800; color:var(--text-muted); text-transform:uppercase;">Presupuesto del piloto</div>
+            <div style="font-size:24px; font-weight:800; font-family:var(--font-mono); color:#047857; margin:4px 0;">${budgetLabel}</div>
+            <div style="font-size:11px; color:var(--text-muted);">Partidas con enlace de respaldo</div>
           </div>
         </div>
 
         <div style="background:#fff; border:1px solid var(--border-light); border-radius:6px; padding:14px;">
-          <div style="font-size:11px; font-weight:800; color:var(--text-main); margin-bottom:8px;">REGISTRO DE TELEMETRÍA EN TIEMPO REAL</div>
+          <div style="font-size:11px; font-weight:800; color:var(--text-main); margin-bottom:8px;">REGISTRO DE OPERACIÓN DEL FLUJO</div>
           <div style="font-family:var(--font-mono); font-size:11px; color:var(--text-muted); line-height:1.6;">
-            <div>[T-08s] ${pName}_NODO_01: Nivel de señal -82dBm | Consumo: 14mW | ESTADO: ACTIVO</div>
-            <div>[T-19s] ${pName}_NODO_02: Lectura de sensor nominal | Voltaje: 3.31V | ESTADO: ACTIVO</div>
-            <div>[T-32s] ${pName}_NODO_03: Transmisión confirmada | Paquetes: 0 perdidos | ESTADO: ACTIVO</div>
+            <div>[06] Pautado: ${pautadoDone}/${pautadoTotal} secciones validadas | Límites de carácter verificados</div>
+            <div>[07] Presupuesto: ${(state.budget || []).length} partidas | ${budgetLabel} | Enlaces de respaldo</div>
+            <div>[10] Guion: ${scriptWords} palabras | ${Math.round(scriptWords / 135 * 60)} s estimados | Cadencia 135 ppm</div>
+            <div>[04] Impacto: ${odsList} | Alineación verificada</div>
           </div>
         </div>
       </div>
@@ -9255,7 +9219,7 @@ const GUARDRAILS_DEFINITIONS = [
     key: "video_duration_ok",
     title: "2. Duración del Video Pitch (Estrictamente ≤ 119 Segundos)",
     desc: "El video no debe exceder los 2 minutos exactos (120s). Recomendado exportar a 1:55 - 1:58 min.",
-    risk: "Un video de 121 segundos (2:01 min) es descalificado automáticamente por el software evaluador sin revisión humana."
+    risk: "El límite es 120 segundos de audio: se mide con ffprobe antes de subir. Pasarse deja el video fuera de las bases, así que no se apuesta al margen."
   },
   {
     key: "video_unlisted_or_public",
@@ -9285,7 +9249,7 @@ const GUARDRAILS_DEFINITIONS = [
     key: "pdf_video_numbers_synced",
     title: "7. Sincronía Numérica Estricta PDF vs Video (Cero Discrepancia)",
     desc: "Todas las cifras de costos unitarios, inversión de lote piloto ($4k-$6k USD), beneficiarios y métricas del guion deben coincidir exactamente con el PDF.",
-    risk: "La discrepancia numérica entre el video y el PDF es la causa oculta #1 de descalificación y penalización en prefactibilidad económica."
+    risk: "La discrepancia numérica entre el video y el PDF es el riesgo más frecuente en prefactibilidad económica: el jurado cruza las cifras."
   },
   {
     key: "youtube_channel_brand",

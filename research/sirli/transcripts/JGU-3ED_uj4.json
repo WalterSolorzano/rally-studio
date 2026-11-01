@@ -1,0 +1,112 @@
+{
+ "video_id": "JGU-3ED_uj4",
+ "url": "https://www.youtube.com/watch?v=JGU-3ED_uj4",
+ "year": 2025,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "BRAINSTORM",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "BRAINSTORM",
+   "challenge": "06 - RESIDUOS EN PLAYAS"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:38:11+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Te ha pasado que visitas una playa y en lugar de la belleza natural te encuentras con una alfombra de botellas, plásticos y basura que te arruina la experiencia? Ese es la cruda realidad de muchas de nuestras costas y el problema es doble. Nuestras playas acumulan residuos como plásticos y latas y los métodos de limpieza actuales son ineficientes. Ante esta realidad nace signature, la sencillez que la costa necesita en un kit de limpieza costera portable y manual, siendo una solución práctica, económica y radicalmente sostenible. ¿Quieres ser parte de esto? Imagina una herramienta de limpieza mejorada cuya estructura cuenta como marco ligero con ruedas equipado con un sistema de engranaje y banda recolectora que permite separar y recoger los desechos de la arena como plástico o latas con un mecanismo manual de arrastre y que todo el diseño se pueda armar con bajo costo y sin necesidad de electricidad, permitiendo así que cualquier comunidad costera pueda construirlo y operarlo sin complicaciones. Además, su diseño modular permite replicarlo en diferentes comunidades con un costo de 150 dólares. De igual forma, este proyecto está dirigido a las principales organizaciones nacionales e internacionales que velan por el bienestar de nuestras playas y costas, de igual forma al público general, promoviendo así un compromiso activo con el medio ambiente y reforzando la imagen turística de nuestras playas. Signature no solo limpia playas, limpia conciencia, porque cuidar las playas no debería ser un lujo, debería ser una responsabilidad compartida.",
+ "segments": [
+  {
+   "start": 0.14,
+   "end": 6.26,
+   "text": "¿Te ha pasado que visitas una playa y en lugar de la belleza natural te encuentras con una alfombra"
+  },
+  {
+   "start": 6.26,
+   "end": 12.9,
+   "text": "de botellas, plásticos y basura que te arruina la experiencia? Ese es la cruda realidad de muchas"
+  },
+  {
+   "start": 12.9,
+   "end": 19.86,
+   "text": "de nuestras costas y el problema es doble. Nuestras playas acumulan residuos como plásticos y latas"
+  },
+  {
+   "start": 19.86,
+   "end": 26.82,
+   "text": "y los métodos de limpieza actuales son ineficientes. Ante esta realidad nace signature,"
+  },
+  {
+   "start": 26.82,
+   "end": 33.54,
+   "text": "la sencillez que la costa necesita en un kit de limpieza costera portable y manual,"
+  },
+  {
+   "start": 33.54,
+   "end": 40.7,
+   "text": "siendo una solución práctica, económica y radicalmente sostenible. ¿Quieres ser parte de esto?"
+  },
+  {
+   "start": 40.7,
+   "end": 47.62,
+   "text": "Imagina una herramienta de limpieza mejorada cuya estructura cuenta como marco ligero con"
+  },
+  {
+   "start": 47.62,
+   "end": 54.9,
+   "text": "ruedas equipado con un sistema de engranaje y banda recolectora que permite separar y recoger"
+  },
+  {
+   "start": 54.9,
+   "end": 62.34,
+   "text": "los desechos de la arena como plástico o latas con un mecanismo manual de arrastre y que todo el"
+  },
+  {
+   "start": 62.34,
+   "end": 69.22,
+   "text": "diseño se pueda armar con bajo costo y sin necesidad de electricidad, permitiendo así que"
+  },
+  {
+   "start": 69.22,
+   "end": 75.3,
+   "text": "cualquier comunidad costera pueda construirlo y operarlo sin complicaciones. Además,"
+  },
+  {
+   "start": 75.3,
+   "end": 81.94,
+   "text": "su diseño modular permite replicarlo en diferentes comunidades con un costo de 150 dólares."
+  },
+  {
+   "start": 82.42,
+   "end": 88.02,
+   "text": "De igual forma, este proyecto está dirigido a las principales organizaciones nacionales e"
+  },
+  {
+   "start": 88.02,
+   "end": 93.7,
+   "text": "internacionales que velan por el bienestar de nuestras playas y costas, de igual forma al"
+  },
+  {
+   "start": 93.7,
+   "end": 100.06,
+   "text": "público general, promoviendo así un compromiso activo con el medio ambiente y reforzando"
+  },
+  {
+   "start": 100.06,
+   "end": 107.06,
+   "text": "la imagen turística de nuestras playas. Signature no solo limpia playas, limpia conciencia,"
+  },
+  {
+   "start": 107.06,
+   "end": 113.38,
+   "text": "porque cuidar las playas no debería ser un lujo, debería ser una responsabilidad compartida."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 114.0
+}

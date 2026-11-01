@@ -1,0 +1,122 @@
+{
+ "video_id": "xbl12oeshPY",
+ "url": "https://youtu.be/xbl12oeshPY?si=2_IbaPMvc98enBK2",
+ "year": 2026,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "QVEP",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "QVEP",
+   "challenge": "09 - OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:31:47+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "29 de octubre de 2024. Valencia, España. A las 8 y 11 de la noche, todos los celulares recibieron la alerta. Pero para la mayoría de las víctimas, ya era tarde. Más de 200 personas murieron. Muchas encotcheras y enautos antes de que llegara el aviso. Y días después, miles de voluntarios subieron autobuses que no sabían a qué pueblo ir. No faltaban recursos, faltaba información. Nadie sabía dónde estaba la gente. Y siempre pasa igual. El primer panorama oficial de la ONU llega a las 72 horas. Las primeras horas, las que salvan vidas, se deciden a ciegas. Por eso creamos protocolo T-Zero. Funciona como la caja negra de un avión. El celular ya tiene guardado. ¿Dónde estás? ¿Cómo te mueves? ¿Y cuánta batería te queda? Cuando se declara la emergencia o el teléfono detecta la sacudida, congela los minutos previos y envió un mensaje de menos de 100 bytes. Entra en una SMS. Con miles de esas fotos, el organismo de emergencia ve, en el primer minuto, un mapa. ¿Dónde estaba la gente? ¿Quién iba en auto? ¿Qué calles se cortaron? ¿Qué zonas quedaron en silencio? ¿Y a quién se le acaba la batería? ¿El sistema ordena las zonas por prioridad? ¿Explica por qué? Y una persona decide. Si mañana pasa algo así en Córdoba, los rescates van primero a los autos detenidos y a las zonas en silencio, y cada grupo de voluntarios sabe a dónde ir. Todo lo que usamos ya existe. Lo nuevo es la foto del instante 0. Protocolo T-Zero. Decidir en minutos lo que hoy tarda horas. Para que la próxima vez se halla obviano.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 8.52,
+   "text": "29 de octubre de 2024. Valencia, España. A las 8 y 11 de la noche, todos los celulares"
+  },
+  {
+   "start": 8.52,
+   "end": 13.84,
+   "text": "recibieron la alerta. Pero para la mayoría de las víctimas, ya era tarde."
+  },
+  {
+   "start": 13.84,
+   "end": 20.0,
+   "text": "Más de 200 personas murieron. Muchas encotcheras y enautos antes de que llegara el aviso. Y"
+  },
+  {
+   "start": 20.0,
+   "end": 26.08,
+   "text": "días después, miles de voluntarios subieron autobuses que no sabían a qué pueblo ir."
+  },
+  {
+   "start": 26.08,
+   "end": 31.4,
+   "text": "No faltaban recursos, faltaba información. Nadie sabía dónde estaba la gente."
+  },
+  {
+   "start": 31.4,
+   "end": 37.6,
+   "text": "Y siempre pasa igual. El primer panorama oficial de la ONU llega a las 72 horas."
+  },
+  {
+   "start": 37.6,
+   "end": 41.68,
+   "text": "Las primeras horas, las que salvan vidas, se deciden a ciegas."
+  },
+  {
+   "start": 41.68,
+   "end": 48.2,
+   "text": "Por eso creamos protocolo T-Zero. Funciona como la caja negra de un avión. El celular"
+  },
+  {
+   "start": 48.2,
+   "end": 53.04,
+   "text": "ya tiene guardado. ¿Dónde estás? ¿Cómo te mueves? ¿Y cuánta batería te queda?"
+  },
+  {
+   "start": 53.04,
+   "end": 58.64,
+   "text": "Cuando se declara la emergencia o el teléfono detecta la sacudida, congela los"
+  },
+  {
+   "start": 58.64,
+   "end": 63.88,
+   "text": "minutos previos y envió un mensaje de menos de 100 bytes. Entra en una SMS."
+  },
+  {
+   "start": 63.88,
+   "end": 69.36,
+   "text": "Con miles de esas fotos, el organismo de emergencia ve, en el primer minuto, un mapa."
+  },
+  {
+   "start": 69.36,
+   "end": 74.68,
+   "text": "¿Dónde estaba la gente? ¿Quién iba en auto? ¿Qué calles se cortaron? ¿Qué zonas quedaron"
+  },
+  {
+   "start": 74.68,
+   "end": 79.92,
+   "text": "en silencio? ¿Y a quién se le acaba la batería? ¿El sistema ordena las zonas por prioridad?"
+  },
+  {
+   "start": 79.92,
+   "end": 85.08,
+   "text": "¿Explica por qué? Y una persona decide. Si mañana pasa algo así en Córdoba,"
+  },
+  {
+   "start": 85.08,
+   "end": 89.2,
+   "text": "los rescates van primero a los autos detenidos y a las zonas en silencio,"
+  },
+  {
+   "start": 89.2,
+   "end": 94.88,
+   "text": "y cada grupo de voluntarios sabe a dónde ir. Todo lo que usamos ya existe."
+  },
+  {
+   "start": 94.88,
+   "end": 103.16,
+   "text": "Lo nuevo es la foto del instante 0. Protocolo T-Zero. Decidir en minutos lo que hoy tarda horas."
+  },
+  {
+   "start": 103.16,
+   "end": 105.96,
+   "text": "Para que la próxima vez se halla obviano."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 109.5
+}

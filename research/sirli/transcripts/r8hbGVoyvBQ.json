@@ -1,0 +1,67 @@
+{
+ "video_id": "r8hbGVoyvBQ",
+ "url": "https://youtube.com/shorts/r8hbGVoyvBQ?si=A-KxBs6aJ0wSqg5V",
+ "year": 2024,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "ECOTEAM",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "ECOTEAM",
+   "challenge": "05 - EVACUACIÓN"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:02:09+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Sabías que en México van normalmente se han registrado más de 95 mil incendios urbano y no urbano donde han demostrado más de 6 mil personas muertas por la exposición al fuego no controlado hace 10 años. Es por ello que hemos desarrollado la idea de crear una aplicación que nos proporciona información. En tiempo real que nos permita tomar acciones para salvaguardar la vida humana. Esta aplicación será llevada a cabo via satelital la cual nos permitirá ver en tiempo y forma las notificaciones de los lugares donde se encuentre el incendio. Este es un proyecto económico el cual no tiene ningún costo ya que te permite utilizarlo sin data o wifi. También te brinda mensajes detectos y salidas alternativas de evacuación. Evacfire, alerta rapida vida segura.",
+ "segments": [
+  {
+   "start": 3.57,
+   "end": 9.27,
+   "text": "Sabías que en México van normalmente se han registrado más de 95 mil incendios urbano y no urbano"
+  },
+  {
+   "start": 9.27,
+   "end": 15.27,
+   "text": "donde han demostrado más de 6 mil personas muertas por la exposición al fuego no controlado hace 10 años."
+  },
+  {
+   "start": 15.27,
+   "end": 20.27,
+   "text": "Es por ello que hemos desarrollado la idea de crear una aplicación que nos proporciona información."
+  },
+  {
+   "start": 20.27,
+   "end": 24.27,
+   "text": "En tiempo real que nos permita tomar acciones para salvaguardar la vida humana."
+  },
+  {
+   "start": 24.27,
+   "end": 31.77,
+   "text": "Esta aplicación será llevada a cabo via satelital la cual nos permitirá ver en tiempo y forma las notificaciones de los lugares donde se encuentre el incendio."
+  },
+  {
+   "start": 31.77,
+   "end": 38.97,
+   "text": "Este es un proyecto económico el cual no tiene ningún costo ya que te permite utilizarlo sin data o wifi."
+  },
+  {
+   "start": 38.97,
+   "end": 43.97,
+   "text": "También te brinda mensajes detectos y salidas alternativas de evacuación."
+  },
+  {
+   "start": 43.97,
+   "end": 47.97,
+   "text": "Evacfire, alerta rapida vida segura."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 50.9
+}

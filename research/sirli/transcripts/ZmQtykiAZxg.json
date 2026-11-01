@@ -1,0 +1,107 @@
+{
+ "video_id": "ZmQtykiAZxg",
+ "url": "https://youtube.com/shorts/ZmQtykiAZxg?si=FtBFBwDmHsfMjI2k",
+ "year": 2025,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "DESMOTECH",
+ "place_label": "TERCER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "TERCER LUGAR",
+   "team": "DESMOTECH",
+   "challenge": "04 - SISTEMA DE ALERTA TEMPRANA"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:39:50+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En Nicaragua, muchas comunidades viven rodeadas de ríos, montañas y bosques, pero cuando llegan las lluvias intensas o el calor extremo, estos lugares se convierten en zonas de riesgo. Las inundaciones y los incendios forestales pueden destruir hogares, cultivos y ecosistema en cuestión de horas. Uno de los mayores desafíos es la falta de avisos tempranos. Las comunidades más vulnerables muchas veces no cuentan con sistemas de alerta o monitoreos accesibles. Por eso nace PREVE, una aplicación creada para detectar y alertar sobre inundaciones e incendios de forma rápida y sencilla. PREVE utiliza sensores ION y tecnología LoraOne para monitorear cambios en el nivel del agua, temperatura y humedad. Cuando detectan una amenaza, envía una alerta inmediata a los habitantes y a las autoridades locales. Así, las personas pueden actuar a tiempo y proteger sus vidas y sus bienes. Lo mejor es que PREVE está pensada para las comunidades. Es fácil de usar, económica y puede funcionar incluso con conexión limitada. Fortalece la organización local y promueve una cultura de prevención. Con PREVE, la tecnología se convierte en galeada de la vida porque prevenir es proteger. PREVE, anticiparnos para cuidar lo que más queremos.",
+ "segments": [
+  {
+   "start": 0.05,
+   "end": 6.57,
+   "text": "En Nicaragua, muchas comunidades viven rodeadas de ríos, montañas y bosques, pero cuando"
+  },
+  {
+   "start": 6.57,
+   "end": 13.57,
+   "text": "llegan las lluvias intensas o el calor extremo, estos lugares se convierten en zonas de riesgo."
+  },
+  {
+   "start": 13.57,
+   "end": 20.05,
+   "text": "Las inundaciones y los incendios forestales pueden destruir hogares, cultivos y ecosistema"
+  },
+  {
+   "start": 20.05,
+   "end": 22.21,
+   "text": "en cuestión de horas."
+  },
+  {
+   "start": 22.21,
+   "end": 27.61,
+   "text": "Uno de los mayores desafíos es la falta de avisos tempranos. Las comunidades más"
+  },
+  {
+   "start": 27.61,
+   "end": 33.21,
+   "text": "vulnerables muchas veces no cuentan con sistemas de alerta o monitoreos accesibles."
+  },
+  {
+   "start": 33.21,
+   "end": 41.85,
+   "text": "Por eso nace PREVE, una aplicación creada para detectar y alertar sobre inundaciones e incendios"
+  },
+  {
+   "start": 41.85,
+   "end": 44.73,
+   "text": "de forma rápida y sencilla."
+  },
+  {
+   "start": 44.73,
+   "end": 52.33,
+   "text": "PREVE utiliza sensores ION y tecnología LoraOne para monitorear cambios en el nivel del agua,"
+  },
+  {
+   "start": 52.33,
+   "end": 59.73,
+   "text": "temperatura y humedad. Cuando detectan una amenaza, envía una alerta inmediata a los habitantes"
+  },
+  {
+   "start": 59.73,
+   "end": 66.05,
+   "text": "y a las autoridades locales. Así, las personas pueden actuar a tiempo y proteger sus vidas"
+  },
+  {
+   "start": 66.05,
+   "end": 67.77,
+   "text": "y sus bienes."
+  },
+  {
+   "start": 67.77,
+   "end": 74.69,
+   "text": "Lo mejor es que PREVE está pensada para las comunidades. Es fácil de usar, económica"
+  },
+  {
+   "start": 74.69,
+   "end": 80.41,
+   "text": "y puede funcionar incluso con conexión limitada. Fortalece la organización local"
+  },
+  {
+   "start": 80.41,
+   "end": 86.09,
+   "text": "y promueve una cultura de prevención. Con PREVE, la tecnología se convierte en galeada"
+  },
+  {
+   "start": 86.09,
+   "end": 93.09,
+   "text": "de la vida porque prevenir es proteger. PREVE, anticiparnos para cuidar lo que más queremos."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 93.4
+}

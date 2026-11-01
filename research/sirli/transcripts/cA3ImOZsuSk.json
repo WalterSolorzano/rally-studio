@@ -1,0 +1,117 @@
+{
+ "video_id": "cA3ImOZsuSk",
+ "url": "https://youtu.be/cA3ImOZsuSk",
+ "year": 2025,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "HYDRA TECH",
+ "place_label": "TERCER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "TERCER LUGAR",
+   "team": "HYDRA TECH",
+   "challenge": "07 - SALUD MÓVIL PARA MUJERES EN ZONAS RURALES"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:43:15+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Mujer en la bordo de parto, alerta roja. Repito, mujer en la bordo de parto, alerta roja. ¿Sabías que en Nicaragua hay muchas mujeres de las zonas rurales que tienen que caminar hasta tres horas para asistir a una cita médica? O que muchas de ellas mueren en la bordo de parto porque no pudieron acceder a un sitio médico. Eso puede cambiar hoy. Por eso nace el Plan de Acción Centro-Médico Conector Eloisa Díaz, una red que conecta a la salud femenina rural con el mundo médico, usando tecnología accesible y comunicación humana. Creamos un Plan de Centros-Médico Rurales Sostenibles, de bajo costo, donde las mujeres reciben atención ginecológica, renatal y emocional, con conexión directa a hospitales y especialistas urbanos. A través de Radio Salud transmitimos educación médica por medio de radios de batería, en español y otras lenguas indígenas, una que ninguna mujer se quede fuera de su alcance por no tener internet. Y llegamos hasta donde nadie más llega. Cuando el camino se termina, enviamos drones con medicamento y ayuda inmediata. Además, tenemos una plataforma global, donde puedes conocer nuestro impacto, donar, ofrecer voluntariado o apoyar becas. Con solo un dólar, podemos llevar atención médica a una mujer que nunca antes la tuvo. Un dólar que puede salvar una vida, una madre, una historia. El Plan de Centro-Médico Conectore Loizadías no es solo un proyecto de salud, es un puente entre la esperanza y la realidad, porque cuando una mujer rural tiene acceso a salud y dignidad, todo un país empieza a sanar.",
+ "segments": [
+  {
+   "start": 1.14,
+   "end": 7.64,
+   "text": "Mujer en la bordo de parto, alerta roja. Repito, mujer en la bordo de parto, alerta roja."
+  },
+  {
+   "start": 7.64,
+   "end": 12.66,
+   "text": "¿Sabías que en Nicaragua hay muchas mujeres de las zonas rurales que tienen que caminar"
+  },
+  {
+   "start": 12.66,
+   "end": 17.76,
+   "text": "hasta tres horas para asistir a una cita médica? O que muchas de ellas mueren en la bordo de"
+  },
+  {
+   "start": 17.76,
+   "end": 23.18,
+   "text": "parto porque no pudieron acceder a un sitio médico. Eso puede cambiar hoy."
+  },
+  {
+   "start": 23.18,
+   "end": 28.76,
+   "text": "Por eso nace el Plan de Acción Centro-Médico Conector Eloisa Díaz, una red que conecta"
+  },
+  {
+   "start": 28.76,
+   "end": 34.48,
+   "text": "a la salud femenina rural con el mundo médico, usando tecnología accesible y comunicación"
+  },
+  {
+   "start": 34.48,
+   "end": 41.02,
+   "text": "humana. Creamos un Plan de Centros-Médico Rurales Sostenibles, de bajo costo, donde las mujeres"
+  },
+  {
+   "start": 41.02,
+   "end": 46.92,
+   "text": "reciben atención ginecológica, renatal y emocional, con conexión directa a hospitales"
+  },
+  {
+   "start": 46.92,
+   "end": 52.2,
+   "text": "y especialistas urbanos. A través de Radio Salud transmitimos educación"
+  },
+  {
+   "start": 52.2,
+   "end": 57.72,
+   "text": "médica por medio de radios de batería, en español y otras lenguas indígenas,"
+  },
+  {
+   "start": 57.72,
+   "end": 61.72,
+   "text": "una que ninguna mujer se quede fuera de su alcance por no tener internet."
+  },
+  {
+   "start": 61.72,
+   "end": 67.56,
+   "text": "Y llegamos hasta donde nadie más llega. Cuando el camino se termina, enviamos drones"
+  },
+  {
+   "start": 67.56,
+   "end": 73.96,
+   "text": "con medicamento y ayuda inmediata. Además, tenemos una plataforma global, donde puedes"
+  },
+  {
+   "start": 73.96,
+   "end": 81.12,
+   "text": "conocer nuestro impacto, donar, ofrecer voluntariado o apoyar becas. Con solo un dólar, podemos"
+  },
+  {
+   "start": 81.12,
+   "end": 86.12,
+   "text": "llevar atención médica a una mujer que nunca antes la tuvo. Un dólar que puede"
+  },
+  {
+   "start": 86.12,
+   "end": 92.88,
+   "text": "salvar una vida, una madre, una historia. El Plan de Centro-Médico Conectore Loizadías"
+  },
+  {
+   "start": 92.88,
+   "end": 98.68,
+   "text": "no es solo un proyecto de salud, es un puente entre la esperanza y la realidad, porque cuando"
+  },
+  {
+   "start": 98.68,
+   "end": 103.64,
+   "text": "una mujer rural tiene acceso a salud y dignidad, todo un país empieza a sanar."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 110.1
+}

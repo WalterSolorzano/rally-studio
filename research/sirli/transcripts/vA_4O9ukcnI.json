@@ -1,0 +1,187 @@
+{
+ "video_id": "vA_4O9ukcnI",
+ "url": "https://www.youtube.com/watch?v=vA_4O9ukcnI&f",
+ "year": 2017,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "FÉNIX",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2017,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "FÉNIX",
+   "challenge": "08 - MEJORA DE LA VIDA DE LOS NIÑOS"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:04:56+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En la actualidad, una de las principales preocupaciones de los tutores es la seguridad de los niños, tanto en la escuela como en el hogar. La violencia infantil, según la UNICEF en el año 2012, indica que, 6 de cada 10 niños en el mundo de entre 2 y 14 años sufren maltrato físico a diario, y cada 5 minutos un niño muere a causa de la violencia. Los casos de secuestros, según el estudio de la UNICEF en el 2014, están encabezados por Perú, Venezuela y Chile. Según la OMS, otro de los problemas relacionados a la seguridad son los accidentes no intencionales, ahogamiento, quemaduras y caídas. Para contribuir a la seguridad de los niños, proponemos ICEKIDS, un sistema móvil, multiplataforma y de fácil uso para el monitoreo de los niños, en el que combinamos tecnologías como streaming, microchips con cámaras y micrófonos, geolocalización GPS y comunicación via wifi. Con ICEKIDS, usted podrá administrar la tutela de los niños desde un dispositivo móvil, como el celular que estará conectado a un broche inteligente con geolocalización. Además, usted podrá estar al cuidado de los niños que están registrado a través de la opción niños en tutela, agregando su foto y datos personales. El dispositivo broche inteligente le permitirá obtener información de la ubicación geográfica del niño, que será visible en un mapa desde la opción localización de la aplicación móvil. Por otro lado, si el niño esté en peligro, se emitirán mensajes de alertas mediante el reconocimiento de palabras claves, que serán dirigidas al dispositivo móvil del tutor como alertas, acompañadas de vibración, sonido e imágenes intuitivas que indiquen la gravedad del mensaje. También podrá habilitar en distintos momentos del día las opciones de vídeo o voz, lo cual le permitirá ver o escuchar lo que está haciendo o diciendo el niño en tiempo real. ICEKIDS fortalece los lazos afectivos del niño y tutor mediante un sistema de seguridad virtual móvil. Aprovecha tecnología que tiene a mano como el celular y el internet en la seguridad de los niños en situaciones de violencia, accidentes y secuestros. Para quienes? Mamás y papás freelancers que trabajan desde el hogar, tutores de escuelas o centros de cuido de niños, empresas de seguridad que requieren innovar su sistema de seguridad actual incorporando transmisión de voz, video y mensajes en tiempo real con micro tecnología. Tutores que requieren presencia física en el momento justo que se presenta un peligro ante el niño.",
+ "segments": [
+  {
+   "start": 5.26,
+   "end": 11.14,
+   "text": "En la actualidad, una de las principales preocupaciones de los tutores es la seguridad de los niños,"
+  },
+  {
+   "start": 11.14,
+   "end": 13.46,
+   "text": "tanto en la escuela como en el hogar."
+  },
+  {
+   "start": 13.46,
+   "end": 19.94,
+   "text": "La violencia infantil, según la UNICEF en el año 2012, indica que, 6 de cada 10 niños"
+  },
+  {
+   "start": 19.94,
+   "end": 26.1,
+   "text": "en el mundo de entre 2 y 14 años sufren maltrato físico a diario, y cada 5 minutos un niño"
+  },
+  {
+   "start": 26.1,
+   "end": 28.34,
+   "text": "muere a causa de la violencia."
+  },
+  {
+   "start": 28.34,
+   "end": 33.22,
+   "text": "Los casos de secuestros, según el estudio de la UNICEF en el 2014, están encabezados"
+  },
+  {
+   "start": 33.22,
+   "end": 40.5,
+   "text": "por Perú, Venezuela y Chile. Según la OMS, otro de los problemas relacionados a la seguridad"
+  },
+  {
+   "start": 40.5,
+   "end": 47.94,
+   "text": "son los accidentes no intencionales, ahogamiento, quemaduras y caídas."
+  },
+  {
+   "start": 47.94,
+   "end": 54.22,
+   "text": "Para contribuir a la seguridad de los niños, proponemos ICEKIDS, un sistema móvil, multiplataforma"
+  },
+  {
+   "start": 54.22,
+   "end": 58.7,
+   "text": "y de fácil uso para el monitoreo de los niños, en el que combinamos tecnologías"
+  },
+  {
+   "start": 58.7,
+   "end": 65.7,
+   "text": "como streaming, microchips con cámaras y micrófonos, geolocalización GPS y comunicación"
+  },
+  {
+   "start": 65.7,
+   "end": 69.02,
+   "text": "via wifi."
+  },
+  {
+   "start": 69.02,
+   "end": 74.38,
+   "text": "Con ICEKIDS, usted podrá administrar la tutela de los niños desde un dispositivo móvil, como"
+  },
+  {
+   "start": 74.38,
+   "end": 81.22,
+   "text": "el celular que estará conectado a un broche inteligente con geolocalización. Además,"
+  },
+  {
+   "start": 81.22,
+   "end": 85.66,
+   "text": "usted podrá estar al cuidado de los niños que están registrado a través de la opción"
+  },
+  {
+   "start": 85.66,
+   "end": 92.3,
+   "text": "niños en tutela, agregando su foto y datos personales. El dispositivo broche inteligente"
+  },
+  {
+   "start": 92.3,
+   "end": 98.1,
+   "text": "le permitirá obtener información de la ubicación geográfica del niño, que será visible en"
+  },
+  {
+   "start": 98.1,
+   "end": 102.9,
+   "text": "un mapa desde la opción localización de la aplicación móvil."
+  },
+  {
+   "start": 102.9,
+   "end": 107.66,
+   "text": "Por otro lado, si el niño esté en peligro, se emitirán mensajes de alertas mediante"
+  },
+  {
+   "start": 107.66,
+   "end": 112.34,
+   "text": "el reconocimiento de palabras claves, que serán dirigidas al dispositivo móvil"
+  },
+  {
+   "start": 112.34,
+   "end": 119.46,
+   "text": "del tutor como alertas, acompañadas de vibración, sonido e imágenes intuitivas que indiquen la"
+  },
+  {
+   "start": 119.46,
+   "end": 125.54,
+   "text": "gravedad del mensaje. También podrá habilitar en distintos momentos del día las opciones"
+  },
+  {
+   "start": 125.54,
+   "end": 131.18,
+   "text": "de vídeo o voz, lo cual le permitirá ver o escuchar lo que está haciendo o diciendo"
+  },
+  {
+   "start": 131.18,
+   "end": 133.42,
+   "text": "el niño en tiempo real."
+  },
+  {
+   "start": 133.42,
+   "end": 138.78,
+   "text": "ICEKIDS fortalece los lazos afectivos del niño y tutor mediante un sistema de"
+  },
+  {
+   "start": 138.78,
+   "end": 144.58,
+   "text": "seguridad virtual móvil. Aprovecha tecnología que tiene a mano como el celular y el internet"
+  },
+  {
+   "start": 144.58,
+   "end": 150.34,
+   "text": "en la seguridad de los niños en situaciones de violencia, accidentes y secuestros."
+  },
+  {
+   "start": 150.34,
+   "end": 155.94,
+   "text": "Para quienes? Mamás y papás freelancers que trabajan desde el hogar, tutores de escuelas"
+  },
+  {
+   "start": 155.94,
+   "end": 160.74,
+   "text": "o centros de cuido de niños, empresas de seguridad que requieren innovar su sistema"
+  },
+  {
+   "start": 160.74,
+   "end": 166.94,
+   "text": "de seguridad actual incorporando transmisión de voz, video y mensajes en tiempo real"
+  },
+  {
+   "start": 167.06,
+   "end": 172.42,
+   "text": "con micro tecnología. Tutores que requieren presencia física en el momento justo que se"
+  },
+  {
+   "start": 172.42,
+   "end": 174.54,
+   "text": "presenta un peligro ante el niño."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 183.6
+}

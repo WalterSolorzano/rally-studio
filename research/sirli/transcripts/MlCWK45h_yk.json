@@ -1,0 +1,62 @@
+{
+ "video_id": "MlCWK45h_yk",
+ "url": "https://youtu.be/MlCWK45h_yk",
+ "year": 2021,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "INICIATIVA LOL-HA",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "INICIATIVA LOL-HA",
+   "challenge": "03 - AGUA PARA SOÑAR"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:56:39+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "La falta de acceso al agua potable es uno de los problemas que afecta principalmente a las zonas rurales de México, que carecen de una infraestructura que les permita satisfacer a su totalidad sus necesidades. El Consejo Consultivo del Agua menciona que el 80% de las aguas residuales retornan al ecosistema sin ser tratadas o reutilizadas, pero nosotros mostraremos que esto se puede contrarrestar. Les presentamos el sistema de captación y filtración, que consiste en la implementación de cuatro tinacos posicionados estratégicamente dentro de una comunidad, los cuales nos permitirán recolectar el agua de lluvia a través de un sistema de canaletas previamente instaladas, recolectar el agua del vacío a través de la succión de lagos imanantiales o en otros casos a través del agua previamente recolectada por la lluvia, filtrar a través de cuatro fases, es decir, a través del sistema de grava, arena, carbón y grava fina, y almacenar y mantener el agua con ayuda de la implementación de un sistema de oleaje simple, con el cual el agua se mantendrá en constante movimiento y así evitará su descomposición. Pero, ¿cuál es el valor agregado de nuestro producto? Este sistema de captación y filtración integrará las funciones de medición, predicción y sugerencia, que en conjunto con un módulo de inteligencia artificial ayudará a la comunidad a optimizar el uso del agua con la implementación de sensores de humedad que nos permitirán conocer la cantidad de agua que se recolecta, la cantidad que se extrae y la cantidad de agua en existencia, con el fin de gestionar de manera óptima este recurso. Gracias a la iniciativa LOLHA se ha logrado encontrar un equilibrio entre el impacto social y ambiental. Por la parte social cada vez más comunidades en estado de vulnerabilidad podrán contar con acceso a la OOPOTABLE a través del sistema de captación y filtración, mientras que a su vez se estarán fomentando los procesos sostenibles de cultivo, de riego y de más actividades que permitan la reutilización de aguas residuales a través de un sistema de captación.",
+ "segments": [
+  {
+   "start": 5.26,
+   "end": 16.26,
+   "text": "La falta de acceso al agua potable es uno de los problemas que afecta principalmente a las zonas rurales de México, que carecen de una infraestructura que les permita satisfacer a su totalidad sus necesidades."
+  },
+  {
+   "start": 16.26,
+   "end": 27.26,
+   "text": "El Consejo Consultivo del Agua menciona que el 80% de las aguas residuales retornan al ecosistema sin ser tratadas o reutilizadas, pero nosotros mostraremos que esto se puede contrarrestar."
+  },
+  {
+   "start": 27.26,
+   "end": 49.26,
+   "text": "Les presentamos el sistema de captación y filtración, que consiste en la implementación de cuatro tinacos posicionados estratégicamente dentro de una comunidad, los cuales nos permitirán recolectar el agua de lluvia a través de un sistema de canaletas previamente instaladas, recolectar el agua del vacío a través de la succión de lagos imanantiales o en otros casos a través del agua previamente recolectada por la lluvia,"
+  },
+  {
+   "start": 49.26,
+   "end": 64.26,
+   "text": "filtrar a través de cuatro fases, es decir, a través del sistema de grava, arena, carbón y grava fina, y almacenar y mantener el agua con ayuda de la implementación de un sistema de oleaje simple, con el cual el agua se mantendrá en constante movimiento y así evitará su descomposición."
+  },
+  {
+   "start": 64.26,
+   "end": 67.26,
+   "text": "Pero, ¿cuál es el valor agregado de nuestro producto?"
+  },
+  {
+   "start": 67.26,
+   "end": 91.26,
+   "text": "Este sistema de captación y filtración integrará las funciones de medición, predicción y sugerencia, que en conjunto con un módulo de inteligencia artificial ayudará a la comunidad a optimizar el uso del agua con la implementación de sensores de humedad que nos permitirán conocer la cantidad de agua que se recolecta, la cantidad que se extrae y la cantidad de agua en existencia, con el fin de gestionar de manera óptima este recurso."
+  },
+  {
+   "start": 91.26,
+   "end": 118.26,
+   "text": "Gracias a la iniciativa LOLHA se ha logrado encontrar un equilibrio entre el impacto social y ambiental. Por la parte social cada vez más comunidades en estado de vulnerabilidad podrán contar con acceso a la OOPOTABLE a través del sistema de captación y filtración, mientras que a su vez se estarán fomentando los procesos sostenibles de cultivo, de riego y de más actividades que permitan la reutilización de aguas residuales a través de un sistema de captación."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.1
+}

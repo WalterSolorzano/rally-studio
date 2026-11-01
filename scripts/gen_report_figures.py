@@ -233,16 +233,22 @@ def fig05_pasv() -> None:
 
 # ---------------------------------------------------------------- figura 6
 def fig06_presupuesto() -> None:
-    items = [
-        ("Unidad ESP32-S3 + LoRa SX1262", 192.00),
-        ("Arreglo de sensores multivariables", 727.50),
-        ("Alimentación fotovoltaica autónoma", 1150.00),
-        ("Carcasas IP67 con disipación pasiva", 510.00),
-        ("Gateway LoRaWAN de 8 canales", 580.00),
-        ("Servidor cloud demo y telemetría", 240.00),
-        ("Herramental y cableado marino", 380.00),
-        ("Flete, aranceles y seguro (18 %)", 670.50),
-    ]
+    budget_path = ROOT / "budget" / "budget.json"
+    items = []
+    if budget_path.exists():
+        try:
+            data = json.loads(budget_path.read_text(encoding="utf-8"))
+            rows = data if isinstance(data, list) else data.get("items", [])
+            for row in rows:
+                name = row.get("element") or row.get("concept") or "Partida"
+                total = row.get("total")
+                if total is None:
+                    total = float(row.get("units", 1) or 1) * float(row.get("unit_cost_usd") or row.get("unit_cost") or 0)
+                items.append((name, float(total or 0)))
+        except Exception:
+            items = []
+    if not items:
+        items = [("Sin partidas cargadas", 0.0)]
     labels = [i[0] for i in items][::-1]
     values = [i[1] for i in items][::-1]
     fig, ax = plt.subplots(figsize=(7.0, 2.85))

@@ -1,0 +1,122 @@
+{
+ "video_id": "1QHPk7T_W5g",
+ "url": "https://youtu.be/1QHPk7T_W5g",
+ "year": 2026,
+ "collection": "sede",
+ "country": "CHILE",
+ "team": "IMPACT+",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "IMPACT+",
+   "challenge": "09 - OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:34:32+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "6.8.5 en Valparadiso. Sin señal, se solicita información. Cambio. Cuando ocurre un terremoto, no falta la ayuda. Falta saber dónde está la emergencia. Las rutas se bloquean, las comunicaciones vayan. Los equipos de rescate deben decidir a quién ayudar primero. Y muchas veces la información no está claro. Pero, ¿de a quién ayudar primero? Somos ImpactMass presentando ImpactSystem, un algoritmo de reconocimiento y apoyo post-terremoto que determina las rutas más accesibles para la distribución de recursos necesarios. El dron analiza y nuestro laborismo decir, en minutos cada recurso va donde más se necesita, por los caminos que si están habilitados. Las 345 comunas de Chile deben tener un plan de emergencia por ley, pero no existe manera de decidir rápidamente. Somos de la región del videobio y estuvimos presentes en el terremoto del 2010. Vivimos la desesperación de no recibir ayuda a tiempo. Buscamos implementar esta idea en algún municipio con datos reales. Del terremoto a la decisión en minutos 90. ImpactMass!",
+ "segments": [
+  {
+   "start": 0.88,
+   "end": 5.38,
+   "text": "6.8.5 en Valparadiso. Sin señal, se solicita información. Cambio."
+  },
+  {
+   "start": 5.88,
+   "end": 10.88,
+   "text": "Cuando ocurre un terremoto, no falta la ayuda. Falta saber dónde está la emergencia."
+  },
+  {
+   "start": 11.38,
+   "end": 13.88,
+   "text": "Las rutas se bloquean, las comunicaciones vayan."
+  },
+  {
+   "start": 14.38,
+   "end": 16.88,
+   "text": "Los equipos de rescate deben decidir a quién ayudar primero."
+  },
+  {
+   "start": 17.38,
+   "end": 19.88,
+   "text": "Y muchas veces la información no está claro."
+  },
+  {
+   "start": 20.38,
+   "end": 21.88,
+   "text": "Pero, ¿de a quién ayudar primero?"
+  },
+  {
+   "start": 22.38,
+   "end": 24.88,
+   "text": "Somos ImpactMass presentando ImpactSystem,"
+  },
+  {
+   "start": 25.38,
+   "end": 27.88,
+   "text": "un algoritmo de reconocimiento y apoyo post-terremoto"
+  },
+  {
+   "start": 27.88,
+   "end": 31.88,
+   "text": "que determina las rutas más accesibles para la distribución de recursos necesarios."
+  },
+  {
+   "start": 32.88,
+   "end": 34.88,
+   "text": "El dron analiza y nuestro laborismo decir,"
+  },
+  {
+   "start": 35.38,
+   "end": 37.88,
+   "text": "en minutos cada recurso va donde más se necesita,"
+  },
+  {
+   "start": 38.38,
+   "end": 40.38,
+   "text": "por los caminos que si están habilitados."
+  },
+  {
+   "start": 40.88,
+   "end": 44.88,
+   "text": "Las 345 comunas de Chile deben tener un plan de emergencia por ley,"
+  },
+  {
+   "start": 45.38,
+   "end": 47.88,
+   "text": "pero no existe manera de decidir rápidamente."
+  },
+  {
+   "start": 48.38,
+   "end": 51.88,
+   "text": "Somos de la región del videobio y estuvimos presentes en el terremoto del 2010."
+  },
+  {
+   "start": 52.38,
+   "end": 54.88,
+   "text": "Vivimos la desesperación de no recibir ayuda a tiempo."
+  },
+  {
+   "start": 54.88,
+   "end": 57.88,
+   "text": "Buscamos implementar esta idea en algún municipio con datos reales."
+  },
+  {
+   "start": 58.38,
+   "end": 62.38,
+   "text": "Del terremoto a la decisión en minutos 90."
+  },
+  {
+   "start": 63.38,
+   "end": 65.38,
+   "text": "ImpactMass!"
+  }
+ ],
+ "has_info": false,
+ "duration_s": 67.9
+}

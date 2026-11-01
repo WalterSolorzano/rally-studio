@@ -1,0 +1,122 @@
+{
+ "video_id": "qMbdtp3WJwg",
+ "url": "https://youtu.be/qMbdtp3WJwg?si=BLG_L-Y6GGO2ejdy",
+ "year": 2026,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "JC. JUNIORS",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "JC. JUNIORS",
+   "challenge": "05 - MONITOREO INTELIGENTE E INFRAESTRUCTURA VERDE EN RESERVORIOS PLUVIALES"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:48:30+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "La urbanización acelerada genera escorrentía pluvial contaminada, causando erosión, inundaciones viales y desaprovechamiento de agua en una zona con alto estrés hídrico. La región de Wechapan sufre por escasez de agua, pero al mismo tiempo sus lluvias generan inundaciones y contaminación por falta de infraestructura adecuada. Ante este problema común de distintas zonas con mismas características como la zona seleccionada, se llega a la propuesta de un sistema de captación, conducción, almacenamiento y tratamiento de agua pluvial que aprovecha los escurrimientos como lo es presente en el cerro de la estancia. Para ello tenemos principalmente filtración escalonada por gravedad donde se reduce la necesidad de bombeo y consumo energético. Un modelo de economía circular en base a la reutilización de los residuos de piedra por osa pomes de las canteras locales de Wechapan como medio filtrante. El tratamiento biológico y desinfección mediante el uso de la planta a sola para la absorción de nitrógeno y fósforo. Seguido de desinfección con luz UVC alimentada por paneles solares, el monitoreo inteligente y gestión en tiempo real generan una alerta temprana para las autoridades ante riesgos de desbordamiento en cruces viales y supervisión constante de la calidad del agua. Además todo alineado a la norma 003 de Semarnat 1997 y a los ODS 6, 11, 12 y 13 de la agenda 2030. Para concretar este proyecto estratégicamente se busca lograrlo con la reutilización de descartes de la industria canterera regional, pues al ser un desecho de difícil tratamiento, representaría significativamente la disminución de costos iniciales. Nosotros somos J. C. Juniors del Instituto Tecnológico Superior de Wechapan.",
+ "segments": [
+  {
+   "start": 0.21,
+   "end": 8.21,
+   "text": "La urbanización acelerada genera escorrentía pluvial contaminada, causando erosión, inundaciones"
+  },
+  {
+   "start": 8.21,
+   "end": 14.45,
+   "text": "viales y desaprovechamiento de agua en una zona con alto estrés hídrico. La región"
+  },
+  {
+   "start": 14.45,
+   "end": 21.45,
+   "text": "de Wechapan sufre por escasez de agua, pero al mismo tiempo sus lluvias generan inundaciones"
+  },
+  {
+   "start": 21.45,
+   "end": 28.81,
+   "text": "y contaminación por falta de infraestructura adecuada. Ante este problema común de distintas"
+  },
+  {
+   "start": 28.81,
+   "end": 35.05,
+   "text": "zonas con mismas características como la zona seleccionada, se llega a la propuesta de un"
+  },
+  {
+   "start": 35.05,
+   "end": 42.09,
+   "text": "sistema de captación, conducción, almacenamiento y tratamiento de agua pluvial que aprovecha"
+  },
+  {
+   "start": 42.09,
+   "end": 48.01,
+   "text": "los escurrimientos como lo es presente en el cerro de la estancia. Para ello tenemos"
+  },
+  {
+   "start": 48.01,
+   "end": 53.65,
+   "text": "principalmente filtración escalonada por gravedad donde se reduce la necesidad de"
+  },
+  {
+   "start": 53.65,
+   "end": 61.29,
+   "text": "bombeo y consumo energético. Un modelo de economía circular en base a la reutilización"
+  },
+  {
+   "start": 61.29,
+   "end": 68.37,
+   "text": "de los residuos de piedra por osa pomes de las canteras locales de Wechapan como medio filtrante."
+  },
+  {
+   "start": 68.37,
+   "end": 74.89,
+   "text": "El tratamiento biológico y desinfección mediante el uso de la planta a sola para"
+  },
+  {
+   "start": 74.89,
+   "end": 81.57,
+   "text": "la absorción de nitrógeno y fósforo. Seguido de desinfección con luz UVC alimentada"
+  },
+  {
+   "start": 81.57,
+   "end": 87.45,
+   "text": "por paneles solares, el monitoreo inteligente y gestión en tiempo real generan una alerta"
+  },
+  {
+   "start": 87.45,
+   "end": 93.53,
+   "text": "temprana para las autoridades ante riesgos de desbordamiento en cruces viales y supervisión"
+  },
+  {
+   "start": 93.53,
+   "end": 102.73,
+   "text": "constante de la calidad del agua. Además todo alineado a la norma 003 de Semarnat 1997"
+  },
+  {
+   "start": 102.73,
+   "end": 110.93,
+   "text": "y a los ODS 6, 11, 12 y 13 de la agenda 2030. Para concretar este proyecto estratégicamente"
+  },
+  {
+   "start": 110.97,
+   "end": 115.65,
+   "text": "se busca lograrlo con la reutilización de descartes de la industria canterera regional,"
+  },
+  {
+   "start": 115.65,
+   "end": 122.21,
+   "text": "pues al ser un desecho de difícil tratamiento, representaría significativamente la disminución"
+  },
+  {
+   "start": 122.21,
+   "end": 128.93,
+   "text": "de costos iniciales. Nosotros somos J. C. Juniors del Instituto Tecnológico Superior de Wechapan."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 129.1
+}

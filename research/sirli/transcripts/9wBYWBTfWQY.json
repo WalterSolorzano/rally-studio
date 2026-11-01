@@ -1,0 +1,117 @@
+{
+ "video_id": "9wBYWBTfWQY",
+ "url": "https://youtu.be/9wBYWBTfWQY",
+ "year": 2024,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "TECNO-INNOVADORES",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "TECNO-INNOVADORES",
+   "challenge": "08 - REDUCCIÓN DE DESPERDICIOS ALIMENTARIOS"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:16:03+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "El desperdicio de alimentos es una problemática crítica en el mundo, donde aproximadamente un tercio de los alimentos producidos para el consumo humano se pierden o se desperdician cada año, lo que equivale a 1.3 mil millones de toneladas. Esto representa un costo económico de alrededor de un billón de dólares anuales. Y si te dijéramos que tenemos una solución para cambiar esta realidad, presentamos Foodlink, una plataforma diseñada para conectar restaurantes, supermercados y filántropos con bancos de alimentos, comunidades locales y las autoridades para reducir el desperdicio y llevar comida a quienes más lo necesitan. A través de nuestra plataforma los restaurantes, supermercados y filántropos pueden registrar de forma sencilla los alimentos que están próximos a caducar. En tiempo real, los bancos de alimentos y comunidades locales pueden visualizar estos recursos y coordinar su recolección antes de que se pierdan. Con la colaboración de las alcaldías se agilizan los procesos de transporte y distribución asegurando que los alimentos lleguen frescos a quienes más lo necesitan. Antes no sabíamos qué hacer con el excedente de comida, ahora gracias a Foodlink podemos ayudar a reducir el desperdicio y alimentar a las comunidades. Con nuestra plataforma no solo reducimos el desperdicio de alimentos, sino que creamos un impacto real en la vida de las personas. Únete a nosotros en esta misión para un futuro más sostenible. Juntos podemos hacer la diferencia, Foodlink alimentando tu futuro.",
+ "segments": [
+  {
+   "start": 3.28,
+   "end": 7.44,
+   "text": "El desperdicio de alimentos es una problemática crítica en el mundo,"
+  },
+  {
+   "start": 7.44,
+   "end": 14.16,
+   "text": "donde aproximadamente un tercio de los alimentos producidos para el consumo humano se pierden o se"
+  },
+  {
+   "start": 14.16,
+   "end": 21.8,
+   "text": "desperdician cada año, lo que equivale a 1.3 mil millones de toneladas. Esto representa un"
+  },
+  {
+   "start": 21.8,
+   "end": 28.32,
+   "text": "costo económico de alrededor de un billón de dólares anuales. Y si te dijéramos que tenemos"
+  },
+  {
+   "start": 28.32,
+   "end": 34.68,
+   "text": "una solución para cambiar esta realidad, presentamos Foodlink, una plataforma diseñada"
+  },
+  {
+   "start": 34.68,
+   "end": 40.12,
+   "text": "para conectar restaurantes, supermercados y filántropos con bancos de alimentos,"
+  },
+  {
+   "start": 40.12,
+   "end": 46.32,
+   "text": "comunidades locales y las autoridades para reducir el desperdicio y llevar comida a"
+  },
+  {
+   "start": 46.32,
+   "end": 51.36,
+   "text": "quienes más lo necesitan. A través de nuestra plataforma los restaurantes,"
+  },
+  {
+   "start": 51.36,
+   "end": 57.2,
+   "text": "supermercados y filántropos pueden registrar de forma sencilla los alimentos que están próximos"
+  },
+  {
+   "start": 57.2,
+   "end": 62.92,
+   "text": "a caducar. En tiempo real, los bancos de alimentos y comunidades locales pueden visualizar"
+  },
+  {
+   "start": 62.92,
+   "end": 69.8,
+   "text": "estos recursos y coordinar su recolección antes de que se pierdan. Con la colaboración de"
+  },
+  {
+   "start": 69.8,
+   "end": 75.2,
+   "text": "las alcaldías se agilizan los procesos de transporte y distribución asegurando que"
+  },
+  {
+   "start": 75.2,
+   "end": 78.44,
+   "text": "los alimentos lleguen frescos a quienes más lo necesitan."
+  },
+  {
+   "start": 78.44,
+   "end": 85.64,
+   "text": "Antes no sabíamos qué hacer con el excedente de comida, ahora gracias a Foodlink podemos"
+  },
+  {
+   "start": 85.64,
+   "end": 92.4,
+   "text": "ayudar a reducir el desperdicio y alimentar a las comunidades. Con nuestra plataforma no"
+  },
+  {
+   "start": 92.4,
+   "end": 98.12,
+   "text": "solo reducimos el desperdicio de alimentos, sino que creamos un impacto real en la vida de las"
+  },
+  {
+   "start": 98.12,
+   "end": 104.8,
+   "text": "personas. Únete a nosotros en esta misión para un futuro más sostenible. Juntos podemos"
+  },
+  {
+   "start": 104.8,
+   "end": 108.88,
+   "text": "hacer la diferencia, Foodlink alimentando tu futuro."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 113.3
+}

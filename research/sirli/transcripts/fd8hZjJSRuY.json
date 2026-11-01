@@ -1,0 +1,212 @@
+{
+ "video_id": "fd8hZjJSRuY",
+ "url": "https://www.youtube.com/watch?v=fd8hZjJSRuY&feature=youtu.be",
+ "year": 2019,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "IFIRE",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2019,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "IFIRE",
+   "challenge": "03 - S.O.S. AQUÍ ESTOY!"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:56:35+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "A lo largo de la historia la humanidad ha sido víctima de numerosos desastres de origen natural, accidental o provocados por la mano del hombre. Estas situaciones de extremo peligro han marcado la vida de mucha familia y naciones enteras. Desde 1995 más de 606 mil millones de personas han fallecido y otras 4 mil 100 millones han resultado gravemente heridas. Una de las tareas más complejas de realizar después de una catástrofe es el proceso de búsqueda e identificación de víctimas debido a que la tecnología existente no brinda la eficiencia requerida para la detección temprana por parte de las brigadas y perros rescatistas. Una opción para solventar esta problemática es a través de un sistema de circuitos integrados que ayuden a brindar un rastreo eficiente de víctimas al equipo de rescate. El dispositivo funciona mediante un mecanismo en conjunto con un nano-SIM 3G y emisores de ondas radiales incorporado en la arquitectura de nuestro accesorio. Con este sistema los rescatistas obtienen información sobre el individuo afectado como su identificación, tipo sanguíneo, alergias, etc. para presentar un reporte oficial sobre el estado de la víctima. El equipo de rescatistas contará con un radar llamado Finder que tiene como propósito de emitir ondas radiales que activan los dispositivos FINDAS que permitirá localizar al usuario. Al recibir la señal estos reaccionarán enviando otra onda que hace uso de frecuencias radiales con amplitud modulada. Esto funcionará a través de un método de energía renovable muy limpia, conocida como piezo electricidad la cual consiste en adquirir polarización eléctrica al someter algunos cristales a tensiones mecánicas. El anillo FINDAS está elaborado de tres capas. La capa externa está formada con diferentes metales que pueden ser comprados y el usuario lo quiera cambiar como acero, oro y plata, cuya función principal será alimentar el dispositivo a través de la rotación generando la tensión necesaria para que la segunda cumpla su función. La capa intermedia está compuesta con polipropileno, novio degradable de 4 milímetros en el cual se encuentra distribuido el cristal que abastece la electromagnética de nuestro anillo. Dicha información será únicamente visible para el rescatista que posee el FINDAR. La información de la persona afectada será presentada en un informe a la institución responsable del seguimiento de las víctimas. Su medio distribución serán las alcaldías, ya que esta dicha institución es confiable para el público. Queremos que colaboren con IFIRE para que nos brinden la información necesaria para los dispositivos. Sin importar donde estés, te encontraremos. Find us.",
+ "segments": [
+  {
+   "start": 8.5,
+   "end": 13.58,
+   "text": "A lo largo de la historia la humanidad ha sido víctima de numerosos desastres de origen natural,"
+  },
+  {
+   "start": 13.58,
+   "end": 16.6,
+   "text": "accidental o provocados por la mano del hombre."
+  },
+  {
+   "start": 16.6,
+   "end": 22.62,
+   "text": "Estas situaciones de extremo peligro han marcado la vida de mucha familia y naciones enteras."
+  },
+  {
+   "start": 22.62,
+   "end": 29.38,
+   "text": "Desde 1995 más de 606 mil millones de personas han fallecido"
+  },
+  {
+   "start": 29.38,
+   "end": 34.14,
+   "text": "y otras 4 mil 100 millones han resultado gravemente heridas."
+  },
+  {
+   "start": 34.58,
+   "end": 42.34,
+   "text": "Una de las tareas más complejas de realizar después de una catástrofe es el proceso de búsqueda e identificación de víctimas"
+  },
+  {
+   "start": 42.34,
+   "end": 51.14,
+   "text": "debido a que la tecnología existente no brinda la eficiencia requerida para la detección temprana por parte de las brigadas y perros rescatistas."
+  },
+  {
+   "start": 51.14,
+   "end": 56.38,
+   "text": "Una opción para solventar esta problemática es a través de un sistema de circuitos integrados"
+  },
+  {
+   "start": 56.38,
+   "end": 60.74,
+   "text": "que ayuden a brindar un rastreo eficiente de víctimas al equipo de rescate."
+  },
+  {
+   "start": 60.82,
+   "end": 66.62,
+   "text": "El dispositivo funciona mediante un mecanismo en conjunto con un nano-SIM 3G"
+  },
+  {
+   "start": 66.62,
+   "end": 71.42,
+   "text": "y emisores de ondas radiales incorporado en la arquitectura de nuestro accesorio."
+  },
+  {
+   "start": 71.42,
+   "end": 76.54,
+   "text": "Con este sistema los rescatistas obtienen información sobre el individuo afectado"
+  },
+  {
+   "start": 76.54,
+   "end": 81.06,
+   "text": "como su identificación, tipo sanguíneo, alergias, etc."
+  },
+  {
+   "start": 81.06,
+   "end": 84.54,
+   "text": "para presentar un reporte oficial sobre el estado de la víctima."
+  },
+  {
+   "start": 84.54,
+   "end": 88.38,
+   "text": "El equipo de rescatistas contará con un radar llamado Finder"
+  },
+  {
+   "start": 88.46,
+   "end": 93.78,
+   "text": "que tiene como propósito de emitir ondas radiales que activan los dispositivos FINDAS"
+  },
+  {
+   "start": 93.78,
+   "end": 96.3,
+   "text": "que permitirá localizar al usuario."
+  },
+  {
+   "start": 96.3,
+   "end": 103.74,
+   "text": "Al recibir la señal estos reaccionarán enviando otra onda que hace uso de frecuencias radiales con amplitud modulada."
+  },
+  {
+   "start": 103.74,
+   "end": 109.78,
+   "text": "Esto funcionará a través de un método de energía renovable muy limpia, conocida como piezo electricidad"
+  },
+  {
+   "start": 109.78,
+   "end": 116.18,
+   "text": "la cual consiste en adquirir polarización eléctrica al someter algunos cristales a tensiones mecánicas."
+  },
+  {
+   "start": 116.18,
+   "end": 119.46,
+   "text": "El anillo FINDAS está elaborado de tres capas."
+  },
+  {
+   "start": 119.46,
+   "end": 123.94,
+   "text": "La capa externa está formada con diferentes metales que pueden ser comprados"
+  },
+  {
+   "start": 123.94,
+   "end": 128.3,
+   "text": "y el usuario lo quiera cambiar como acero, oro y plata,"
+  },
+  {
+   "start": 128.3,
+   "end": 132.98,
+   "text": "cuya función principal será alimentar el dispositivo a través de la rotación"
+  },
+  {
+   "start": 132.98,
+   "end": 137.3,
+   "text": "generando la tensión necesaria para que la segunda cumpla su función."
+  },
+  {
+   "start": 137.3,
+   "end": 140.86,
+   "text": "La capa intermedia está compuesta con polipropileno,"
+  },
+  {
+   "start": 140.86,
+   "end": 146.38,
+   "text": "novio degradable de 4 milímetros en el cual se encuentra distribuido el cristal"
+  },
+  {
+   "start": 146.38,
+   "end": 149.5,
+   "text": "que abastece la electromagnética de nuestro anillo."
+  },
+  {
+   "start": 149.5,
+   "end": 154.34,
+   "text": "Dicha información será únicamente visible para el rescatista que posee el FINDAR."
+  },
+  {
+   "start": 154.34,
+   "end": 158.42,
+   "text": "La información de la persona afectada será presentada en un informe"
+  },
+  {
+   "start": 158.42,
+   "end": 161.98,
+   "text": "a la institución responsable del seguimiento de las víctimas."
+  },
+  {
+   "start": 161.98,
+   "end": 164.5,
+   "text": "Su medio distribución serán las alcaldías,"
+  },
+  {
+   "start": 164.5,
+   "end": 168.02,
+   "text": "ya que esta dicha institución es confiable para el público."
+  },
+  {
+   "start": 168.14,
+   "end": 172.94,
+   "text": "Queremos que colaboren con IFIRE para que nos brinden la información necesaria"
+  },
+  {
+   "start": 172.94,
+   "end": 174.66,
+   "text": "para los dispositivos."
+  },
+  {
+   "start": 174.66,
+   "end": 178.1,
+   "text": "Sin importar donde estés, te encontraremos."
+  },
+  {
+   "start": 178.1,
+   "end": 178.82,
+   "text": "Find us."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 178.8
+}

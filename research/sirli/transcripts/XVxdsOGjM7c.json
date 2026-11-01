@@ -1,0 +1,97 @@
+{
+ "video_id": "XVxdsOGjM7c",
+ "url": "https://youtu.be/XVxdsOGjM7c",
+ "year": 2026,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "TRANSFOR+",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "TRANSFOR+",
+   "challenge": "09 - OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:32:31+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Imagina que ocurre un desastre. Hay personas que necesitan ayuda, caminos bloqueados y comunicaciones interrumpidas. Todos quieren ayudar, pero surge una pregunta. ¿Cómo saber quién necesita ayuda primero? En medio del caos, la tecnología puede convertirse en nuestra mejor aliada. Somos Transformers y presentamos una propuesta que busca transformar la confusión en esperanza. Del caos a la acción. Nuestra aplicación permite reportar emergencias, localizar las zonas afectadas y verificar las necesidades de las personas. Además, puede guardar información sin internet y sincronizarla cuando vuelva la conexión. Con esta herramienta, los equipos de emergencia pueden organizar mejor sus recursos, identificar las necesidades más urgentes y evitar que la ayuda se duplique mientras otras zonas siguen esperando. Porque detrás de cada reporte hay una persona, una familia y una esperanza. No se trata solamente de compartir información, sino de convertirla en acciones que marquen la diferencia. En Transformers, creemos que la tecnología, la solidaridad y la organización pueden ayudar a construir comunidades más preparadas para enfrentar las emergencias. Del caos a la acción, porque ayudar a tiempo puede cambiarlo todo.",
+ "segments": [
+  {
+   "start": 0.11,
+   "end": 7.01,
+   "text": "Imagina que ocurre un desastre. Hay personas que necesitan ayuda, caminos bloqueados y comunicaciones interrumpidas."
+  },
+  {
+   "start": 7.01,
+   "end": 9.81,
+   "text": "Todos quieren ayudar, pero surge una pregunta."
+  },
+  {
+   "start": 9.81,
+   "end": 12.01,
+   "text": "¿Cómo saber quién necesita ayuda primero?"
+  },
+  {
+   "start": 12.01,
+   "end": 16.21,
+   "text": "En medio del caos, la tecnología puede convertirse en nuestra mejor aliada."
+  },
+  {
+   "start": 16.21,
+   "end": 22.01,
+   "text": "Somos Transformers y presentamos una propuesta que busca transformar la confusión en esperanza."
+  },
+  {
+   "start": 22.01,
+   "end": 23.51,
+   "text": "Del caos a la acción."
+  },
+  {
+   "start": 24.51,
+   "end": 31.71,
+   "text": "Nuestra aplicación permite reportar emergencias, localizar las zonas afectadas y verificar las necesidades de las personas."
+  },
+  {
+   "start": 31.71,
+   "end": 37.01,
+   "text": "Además, puede guardar información sin internet y sincronizarla cuando vuelva la conexión."
+  },
+  {
+   "start": 37.01,
+   "end": 42.51,
+   "text": "Con esta herramienta, los equipos de emergencia pueden organizar mejor sus recursos,"
+  },
+  {
+   "start": 42.51,
+   "end": 48.01,
+   "text": "identificar las necesidades más urgentes y evitar que la ayuda se duplique mientras otras zonas siguen esperando."
+  },
+  {
+   "start": 48.01,
+   "end": 53.21,
+   "text": "Porque detrás de cada reporte hay una persona, una familia y una esperanza."
+  },
+  {
+   "start": 53.21,
+   "end": 58.51,
+   "text": "No se trata solamente de compartir información, sino de convertirla en acciones que marquen la diferencia."
+  },
+  {
+   "start": 58.51,
+   "end": 67.01,
+   "text": "En Transformers, creemos que la tecnología, la solidaridad y la organización pueden ayudar a construir comunidades más preparadas para enfrentar las emergencias."
+  },
+  {
+   "start": 67.01,
+   "end": 70.91,
+   "text": "Del caos a la acción, porque ayudar a tiempo puede cambiarlo todo."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 72.6
+}

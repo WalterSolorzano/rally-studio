@@ -1,0 +1,117 @@
+{
+ "video_id": "Pwp56gBEL-M",
+ "url": "https://youtu.be/Pwp56gBEL-M",
+ "year": 2023,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "WASI",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "WASI",
+   "challenge": "05 - VIVIENDA DIGNA"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:56:48+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En Latinoamérica, 114 millones de personas viven en hogares precarios. En Argentina, uno de cada tres hogares no cuenta con una vivienda adecuada. Esto puede presentar diversos problemas, desde materiales inapropiados como piso de tierra, muros y techos frágiles, como así también problemas de acceso al agua, saneamiento y drenajes insuficientes que derivan en enfermedades. Por otro lado, en Argentina se consume un promedio de 6.4 kilogramos de hierba por habitante al año. Somos WACI, una empresa argentina que propone una solución innovadora, sustentable y de gran impacto social. Nuestra propuesta consiste en fabricar ladrillos ecológicos, a partir de una mezcla hecha a base de hierba mate reciclada y resina de pino como material aglutinante, productos abundantes en nuestro entorno local. Nuestro proyecto se basa en el aprovisionamiento de la población objetivo de unos recipientes especialmente diseñados para contener y escurrir la hierba mate usada diariamente. Una vez llenos, serán recogidos semanalmente por equipos conformados por ONGs, seleccionadas localmente como techo, abuela naturaleza, entre otras. Nuestra propuesta tiene diversos beneficios entre los que se encuentran, contribuir a solucionar la precariedad habitacional de manera sustentable y económica, reducir la cantidad de residuos que se generan a partir del consumo de hierba mate, generar empleo y oportunidades de desarrollo para las comunidades locales. WACI, una solución innovadora y sustentable que contribuye a mejorar el mundo en que vivimos.",
+ "segments": [
+  {
+   "start": 1.68,
+   "end": 7.68,
+   "text": "En Latinoamérica, 114 millones de personas viven en hogares precarios."
+  },
+  {
+   "start": 7.68,
+   "end": 13.68,
+   "text": "En Argentina, uno de cada tres hogares no cuenta con una vivienda adecuada."
+  },
+  {
+   "start": 13.68,
+   "end": 21.68,
+   "text": "Esto puede presentar diversos problemas, desde materiales inapropiados como piso de tierra, muros y techos frágiles,"
+  },
+  {
+   "start": 21.68,
+   "end": 28.68,
+   "text": "como así también problemas de acceso al agua, saneamiento y drenajes insuficientes que derivan en enfermedades."
+  },
+  {
+   "start": 28.68,
+   "end": 36.68,
+   "text": "Por otro lado, en Argentina se consume un promedio de 6.4 kilogramos de hierba por habitante al año."
+  },
+  {
+   "start": 36.68,
+   "end": 43.68,
+   "text": "Somos WACI, una empresa argentina que propone una solución innovadora, sustentable y de gran impacto social."
+  },
+  {
+   "start": 43.68,
+   "end": 47.68,
+   "text": "Nuestra propuesta consiste en fabricar ladrillos ecológicos,"
+  },
+  {
+   "start": 47.68,
+   "end": 54.68,
+   "text": "a partir de una mezcla hecha a base de hierba mate reciclada y resina de pino como material aglutinante,"
+  },
+  {
+   "start": 54.68,
+   "end": 58.68,
+   "text": "productos abundantes en nuestro entorno local."
+  },
+  {
+   "start": 58.68,
+   "end": 64.68,
+   "text": "Nuestro proyecto se basa en el aprovisionamiento de la población objetivo de unos recipientes especialmente diseñados"
+  },
+  {
+   "start": 64.68,
+   "end": 69.68,
+   "text": "para contener y escurrir la hierba mate usada diariamente."
+  },
+  {
+   "start": 69.68,
+   "end": 74.68,
+   "text": "Una vez llenos, serán recogidos semanalmente por equipos conformados por ONGs,"
+  },
+  {
+   "start": 74.68,
+   "end": 79.68,
+   "text": "seleccionadas localmente como techo, abuela naturaleza, entre otras."
+  },
+  {
+   "start": 79.68,
+   "end": 83.68,
+   "text": "Nuestra propuesta tiene diversos beneficios entre los que se encuentran,"
+  },
+  {
+   "start": 83.68,
+   "end": 88.68,
+   "text": "contribuir a solucionar la precariedad habitacional de manera sustentable y económica,"
+  },
+  {
+   "start": 88.68,
+   "end": 93.68,
+   "text": "reducir la cantidad de residuos que se generan a partir del consumo de hierba mate,"
+  },
+  {
+   "start": 93.68,
+   "end": 98.68,
+   "text": "generar empleo y oportunidades de desarrollo para las comunidades locales."
+  },
+  {
+   "start": 98.68,
+   "end": 106.68,
+   "text": "WACI, una solución innovadora y sustentable que contribuye a mejorar el mundo en que vivimos."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 111.6
+}

@@ -1,12 +1,19 @@
 #!/usr/bin/env python3
 """
 gen_canvas.py -- Genera docs/canvas.md a partir de brief.json y budget/budget.json.
-Valida la coherencia de costos, propuesta de valor y beneficiarios.
+
+Diseno generico: no asume sector, tecnologia ni geografia. Todo el contenido
+sale del brief y del presupuesto. El brief puede sobrescribir cualquier bloque
+con los campos opcionales:
+    canvas_partners, canvas_activities, canvas_resources, canvas_value_bullets,
+    canvas_relationships, canvas_channels, canvas_segments,
+    canvas_cost_notes, canvas_revenue
+Cada uno acepta lista de strings o un string con bullets separados por "|".
 """
+import io
 import json
 import pathlib
 import sys
-import io
 
 if sys.platform == "win32":
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
@@ -14,6 +21,20 @@ if sys.platform == "win32":
 BRIEF_PATH = pathlib.Path("brief.json")
 BUDGET_PATH = pathlib.Path("budget/budget.json")
 CANVAS_PATH = pathlib.Path("docs/canvas.md")
+
+
+def _lista(valor, defecto):
+    """Normaliza un campo del brief a lista de bullets."""
+    if isinstance(valor, list):
+        return [str(v).strip() for v in valor if str(v).strip()]
+    if isinstance(valor, str) and valor.strip():
+        return [v.strip() for v in valor.split("|") if v.strip()]
+    return defecto
+
+
+def _bullets(items):
+    return "<br>".join(f"• {item}" for item in items)
+
 
 def main():
     if not BRIEF_PATH.exists():
@@ -23,15 +44,69 @@ def main():
     brief = json.loads(BRIEF_PATH.read_text(encoding="utf-8"))
     budget_items = json.loads(BUDGET_PATH.read_text(encoding="utf-8")) if BUDGET_PATH.exists() else []
 
-    total_budget = sum(float(it.get("units", 1)) * float(it.get("unit_cost_usd", 0)) for it in budget_items)
-    
+    total_budget = sum(
+        float(it.get("units", 1)) * float(it.get("unit_cost_usd") or it.get("unit_cost", 0))
+        for it in budget_items
+    )
+
     project = brief.get("project_name", "PROYECTO").upper()
     team = brief.get("team_name", "EQUIPO")
-    city = brief.get("city", "Managua")
+    city = brief.get("city", "")
     category = brief.get("category", "General")
     rally = brief.get("rally_type", "nacional").upper()
     ods = ", ".join(brief.get("ods_ids", ["ODS 11"]))
-    desc = brief.get("description_one_line", "Solucion tecnica")
+    desc = brief.get("description_one_line", "Solucion tecnica validada en piloto")
+    university = brief.get("university", "")
+
+    # --- Valores por defecto genericos, sin supuestos de sector ---
+    partners = _lista(brief.get("canvas_partners"), [
+        f"Universidad / sede: {university}" if university else "Universidad y centros de innovación",
+        f"Aliados locales en {city}" if city else "Aliados locales del piloto",
+        "Proveedores y plataformas citadas en el presupuesto",
+        "Programas de innovación y financiamiento del certamen",
+    ])
+    activities = _lista(brief.get("canvas_activities"), [
+        "Desarrollo y despliegue del piloto end-to-end.",
+        "Validación con usuarios reales durante el rally.",
+        "Documentación, capacitación y transferencia.",
+        "Medición de indicadores y mejora continua.",
+    ])
+    resources = _lista(brief.get("canvas_resources"), [
+        f"Equipo multidisciplinario: {team}.",
+        f"Presupuesto de puesta en marcha: ${total_budget:,.2f} USD.",
+        "Plataforma, prototipo y datos del piloto.",
+        "Mentoría, red de aliados y conocimiento del certamen.",
+    ])
+    value_bullets = _lista(brief.get("canvas_value_bullets"), [
+        "Reduce el tiempo y el costo de operar un rally de innovación.",
+        "Centraliza brief, documentos, presupuesto, guion y video en un solo flujo.",
+        "Es replicable: cada equipo lo configura con su propio reto.",
+    ])
+    relationships = _lista(brief.get("canvas_relationships"), [
+        "Acompañamiento durante el rally y soporte posterior.",
+        "Comunidad de equipos y mejora continua.",
+        "Alianzas con universidades y organizadores.",
+    ])
+    channels = _lista(brief.get("canvas_channels"), [
+        "Plataforma web y demos en vivo.",
+        "Ferias de innovación y universidades.",
+        "Programas de emprendimiento y convocatorias.",
+    ])
+    segments = _lista(brief.get("canvas_segments"), [
+        "Equipos que compiten en rallies de innovación.",
+        "Universidades y organizadores de certámenes.",
+        "Programas de fomento y aceleradoras.",
+    ])
+    cost_notes = _lista(brief.get("canvas_cost_notes"), [
+        f"Puesta en marcha del piloto: ${total_budget:,.2f} USD (ver `budget/budget.xlsx`).",
+        "Operación, soporte y mejora continua del producto.",
+        "Comercialización y alianzas.",
+    ])
+    revenue = _lista(brief.get("canvas_revenue"), [
+        "Suscripción por equipo o por certamen.",
+        "Servicios de acompañamiento y capacitación.",
+        "Licenciamiento a universidades y organizadores.",
+    ])
 
     canvas_content = f"""# Business Model Canvas -- {project}
 **Certamen:** Rally {rally} | **Equipo:** {team} | **Ciudad Piloto:** {city} | **Categoria:** {category}
@@ -41,15 +116,15 @@ def main():
 
 | Bloque Canvas | Definicion Operativa del Proyecto |
 | :--- | :--- |
-| **1. Socios Clave (Key Partners)** | • Alcaldia Municipal de {city} (autorizacion de infraestructura publica y postes).<br>• Sistema de Gestion de Riesgo y Proteccion Civil (SINAPRED).<br>• Proveedores de componentes IoT mayoristas y distribuidores locales de perfiles metalicos.<br>• Universidades y Centros de Innovacion Abierta (CNIA). |
-| **2. Actividades Clave (Key Activities)** | • Ensamble y calibracion de modulos sensores con carcasas IP67.<br>• Despliegue de red de telemetria LoRaWAN y gateways base.<br>• Integracion de API de visualizacion de datos en tiempo real.<br>• Capacitacion y transferencia tecnica a operadores comunitarios y brigadas locales. |
-| **3. Recursos Clave (Key Resources)** | • **Fisicos:** {len(budget_items)} componentes de puesta en marcha (sensores, placas ESP32, alimentacion solar).<br>• **Tecnologicos:** Firmware de bajo consumo, broker MQTT y panel de control web.<br>• **Humanos:** Equipo multidisciplinario de ingenieria, diseno y gestion territorial.<br>• **Financieros:** Fondo inicial de implementacion (${total_budget:,.2f} USD). |
-| **4. Propuesta de Valor (Value Proposition)** | **{desc}**<br>• Alerta temprana hiperlocal y oportuna con 30 minutos de anticipacion.<br>• Despliegue descentralizado de bajo costo frente a estaciones meteorologicas convencionales.<br>• Independencia de la red electrica mediante respaldo fotovoltaico y bajo consumo. |
-| **5. Relaciones con Clientes (Customer Relationships)** | • Asistencia tecnica directa y mantenimiento preventivo semestral.<br>• Monitoreo colaborativo en tiempo real con brigadas comunitarias.<br>• Alianzas de cooperacion tecnica interinstitucional B2G. |
-| **6. Canales de Distribucion (Channels)** | • Entrega directa en talleres municipales de obras publicas.<br>• Interfaz web y alertas moviles para tomadores de decision.<br>• Muestras de innovacion y foros de gestion de riesgo. |
-| **7. Segmentos de Clientes / Beneficiarios (Customer Segments)** | • **Beneficiarios Primarios:** Familias y barrios vulnerables a anegaciones en {city}.<br>• **Clientes / Financiadores:** Alcaldias municipales, programas de mitigacion de riesgo (B2G).<br>• **Sector Privado:** Cooperativas agropecuarias y poligonos industriales en cuencas criticas. |
-| **8. Estructura de Costos (Cost Structure)** | • Adquisicion de hardware y sensores: ${total_budget:,.2f} USD (ver `budget/budget.xlsx`).<br>• Ensamble, calibracion y mano de obra de despliegue en campo.<br>• Servidor cloud y conectividad de respaldo anual: ~$240 USD/ano.<br>• Flete internacional y aranceles consolidados (~15-18% del costo FOB). |
-| **9. Fuentes de Ingresos / Sostenibilidad (Revenue Streams)** | • Contratos B2G de provision de red y telemetria municipal.<br>• Cuotas de mantenimiento y calibracion de red por nodo sensor.<br>• Acceso a reportes historicos y datos analiticos para aseguradoras y proyectos de infraestructura. |
+| **1. Socios Clave (Key Partners)** | {_bullets(partners)} |
+| **2. Actividades Clave (Key Activities)** | {_bullets(activities)} |
+| **3. Recursos Clave (Key Resources)** | {_bullets(resources)} |
+| **4. Propuesta de Valor (Value Proposition)** | **{desc}**<br>{_bullets(value_bullets)} |
+| **5. Relaciones con Clientes (Customer Relationships)** | {_bullets(relationships)} |
+| **6. Canales de Distribucion (Channels)** | {_bullets(channels)} |
+| **7. Segmentos de Clientes / Beneficiarios (Customer Segments)** | {_bullets(segments)} |
+| **8. Estructura de Costos (Cost Structure)** | {_bullets(cost_notes)} |
+| **9. Fuentes de Ingresos / Sostenibilidad (Revenue Streams)** | {_bullets(revenue)} |
 
 ---
 
@@ -62,6 +137,7 @@ def main():
     pathlib.Path("docs").mkdir(exist_ok=True)
     CANVAS_PATH.write_text(canvas_content, encoding="utf-8")
     print(f"OK: {CANVAS_PATH} generado exitosamente.")
+
 
 if __name__ == "__main__":
     main()

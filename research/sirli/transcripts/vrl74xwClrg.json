@@ -1,0 +1,57 @@
+{
+ "video_id": "vrl74xwClrg",
+ "url": "https://youtu.be/vrl74xwClrg?si=Y4wB20CzEWz_fpm4",
+ "year": 2024,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "ALFA DINAMITA",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "ALFA DINAMITA",
+   "challenge": "04 - AGUACATE"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:58:26+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Luego se seleccionan las cáscaras y semillas en buen estado para posteriormente ser llevadas al área de lavado y prensado por secado, en el cual se extrae el aceite y luego puede ser vendido y distribuido a las pimas. Una vez extraído el aceite, se lleva al residuo de la pasta para ser pasada por el prensado en húmedo, para posteriormente ser llevado a cocción en un horno, durante un tiempo de entre 5 a 10 minutos a 45 grados para liberar todo el almidón y mezclarlo con un biopolípero, es decir un ácido bolígaco. Con la pasta restante, se realiza una mezcla con la cáscara del aguapate y papel reciclado para la elaboración de la pacería con el cartón resultante.",
+ "segments": [
+  {
+   "start": 75.86,
+   "end": 82.72,
+   "text": "Luego se seleccionan las cáscaras y semillas en buen estado para posteriormente ser llevadas al área de lavado y prensado por secado,"
+  },
+  {
+   "start": 82.72,
+   "end": 87.68,
+   "text": "en el cual se extrae el aceite y luego puede ser vendido y distribuido a las pimas."
+  },
+  {
+   "start": 87.68,
+   "end": 94.2,
+   "text": "Una vez extraído el aceite, se lleva al residuo de la pasta para ser pasada por el prensado en húmedo,"
+  },
+  {
+   "start": 94.2,
+   "end": 104.18,
+   "text": "para posteriormente ser llevado a cocción en un horno, durante un tiempo de entre 5 a 10 minutos a 45 grados para liberar todo el almidón y mezclarlo con un biopolípero,"
+  },
+  {
+   "start": 104.34,
+   "end": 106.34,
+   "text": "es decir un ácido bolígaco."
+  },
+  {
+   "start": 106.34,
+   "end": 115.94,
+   "text": "Con la pasta restante, se realiza una mezcla con la cáscara del aguapate y papel reciclado para la elaboración de la pacería con el cartón resultante."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 116.8
+}

@@ -1,0 +1,92 @@
+{
+ "video_id": "LdRoYK2tIxU",
+ "url": "https://youtu.be/LdRoYK2tIxU?si=sgJIYs-9rv9RpxVF",
+ "year": 2023,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "CARRIES",
+ "place_label": "TERCER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "TERCER LUGAR",
+   "team": "CARRIES",
+   "challenge": "03 - AGUA SEGURA"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:20:08+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "El producto propuesto como solución es un biofiltro bicomponente con purificadora base de cascaras de arroz carbonizado y cítricos. Es una solución a la problemática de agua segura, ya que mediante el uso del producto las personas de zonas rurales las cuales no tienen acceso a recursos de agua potable, puedan disponer de la opción de purificación del agua. El producto se diferencia de los otros, ya que se usan diferentes fases para la obtención del agua debidamente filtrada y purificada a base de materiales económicos que presenten características para el correcto proceso de obtención de agua potable. Cuenta con una etapa de filtración por capas para eliminación de sedimentos y otra de purificación donde se usa polvo en cascas acítricas las cuales contienen propiedades que dejan un producto el cual puede ser consumido por las personas. Desde el punto de vista social, su diseño accesible y ansequible que integra procesos de filtración y purificación en un solo dispositivo tiene el potencial de revolucionar la salud de comunidades enteras. Al reducir las enfermedades transmitidas por el agua como la diarrea, la fibratifoidea se minimiza las cargas de enfermedades y se combate la tasa de mortalidad, dos problemas graves en áreas con acceso limitado al agua potable. Ambientalmente, la utilización de residuos cítricos para eliminar patógeno no solo demuestra un enfoque innovador sino que recicla desechos que, de otro modo, podrían contribuir al problema de residuos. Este enfoque bio degradable y sustentable también evita la necesidad de productos químicos dañinos en el proceso de purificación. La propuesta subra ya la conservación y protección de recursos hídricos, alentando prácticas más sostenibles y consistentes. El biofilter es altamente factible económicamente con un coste de producción de 16.57 dólares. Esto es base viable de ser asequible para comunidades de recursos limitados, mejorando la salud y el entorno de manera rentable. En resumen, el biofilter equilibra factibilidad económica, aceptación social y sustentabilidad, consolidándose como una solución integral para desafíos hídricos en zonas rurales.",
+ "segments": [
+  {
+   "start": 7.38,
+   "end": 13.94,
+   "text": "El producto propuesto como solución es un biofiltro bicomponente con purificadora base de cascaras de arroz carbonizado y cítricos."
+  },
+  {
+   "start": 13.94,
+   "end": 22.24,
+   "text": "Es una solución a la problemática de agua segura, ya que mediante el uso del producto las personas de zonas rurales las cuales no tienen acceso a recursos de agua potable,"
+  },
+  {
+   "start": 22.24,
+   "end": 24.82,
+   "text": "puedan disponer de la opción de purificación del agua."
+  },
+  {
+   "start": 24.82,
+   "end": 36.74,
+   "text": "El producto se diferencia de los otros, ya que se usan diferentes fases para la obtención del agua debidamente filtrada y purificada a base de materiales económicos que presenten características para el correcto proceso de obtención de agua potable."
+  },
+  {
+   "start": 36.96,
+   "end": 49.38,
+   "text": "Cuenta con una etapa de filtración por capas para eliminación de sedimentos y otra de purificación donde se usa polvo en cascas acítricas las cuales contienen propiedades que dejan un producto el cual puede ser consumido por las personas."
+  },
+  {
+   "start": 49.38,
+   "end": 59.94,
+   "text": "Desde el punto de vista social, su diseño accesible y ansequible que integra procesos de filtración y purificación en un solo dispositivo tiene el potencial de revolucionar la salud de comunidades enteras."
+  },
+  {
+   "start": 59.94,
+   "end": 72.3,
+   "text": "Al reducir las enfermedades transmitidas por el agua como la diarrea, la fibratifoidea se minimiza las cargas de enfermedades y se combate la tasa de mortalidad, dos problemas graves en áreas con acceso limitado al agua potable."
+  },
+  {
+   "start": 72.3,
+   "end": 82.8,
+   "text": "Ambientalmente, la utilización de residuos cítricos para eliminar patógeno no solo demuestra un enfoque innovador sino que recicla desechos que, de otro modo, podrían contribuir al problema de residuos."
+  },
+  {
+   "start": 82.8,
+   "end": 89.3,
+   "text": "Este enfoque bio degradable y sustentable también evita la necesidad de productos químicos dañinos en el proceso de purificación."
+  },
+  {
+   "start": 89.66,
+   "end": 96.18,
+   "text": "La propuesta subra ya la conservación y protección de recursos hídricos, alentando prácticas más sostenibles y consistentes."
+  },
+  {
+   "start": 96.18,
+   "end": 102.02,
+   "text": "El biofilter es altamente factible económicamente con un coste de producción de 16.57 dólares."
+  },
+  {
+   "start": 102.02,
+   "end": 108.02,
+   "text": "Esto es base viable de ser asequible para comunidades de recursos limitados, mejorando la salud y el entorno de manera rentable."
+  },
+  {
+   "start": 108.02,
+   "end": 117.52,
+   "text": "En resumen, el biofilter equilibra factibilidad económica, aceptación social y sustentabilidad, consolidándose como una solución integral para desafíos hídricos en zonas rurales."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.6
+}

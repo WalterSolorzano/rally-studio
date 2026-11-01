@@ -1,0 +1,222 @@
+{
+ "video_id": "WTN0LAnaWbM",
+ "url": "https://youtu.be/WTN0LAnaWbM",
+ "year": 2022,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "CHIPÁ GUAZÚ",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "CHIPÁ GUAZÚ",
+   "challenge": "01 - INCLUSIÓN LABORAL DE PERSONAS DEL ESPECTRO AUTISTA"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:15:03+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Qué harías si solo el 0,001% de las empresas quisiera contratarte? Al nivel global, entre el 76 y 90% de personas adultas con TEA, vives todo los días. Esta tasa de desempleo se debe a que, entre otras cosas, las condiciones laborales no son las adecuadas. Como grupo interdisciplinario, presentamos ADELA. ADELA es un servicio único, integral en Latinoamérica que vincula potenciales candidatos dentro del espectro, empresas y especialistas de la salud. Cuenta con tres pilares principales, capacitación, acompañamiento y una herramienta digital. Las capacitaciones pagas que sustentan nuestro proyecto consisten en cursos de formación sobre TEA dirigidos a las empresas, las cuales permiten volver los ambientes laborales mucho más adecuados. También proponemos talleres orientados a los candidatos para elevar sus perfiles y ofrecemos a los profesionales de la salud, nuestros aliados estratégicos, acceso a foros y un pool de datos en constante actualización. El acompañamiento consiste en un seguimiento realizado por expertos que asegura la correcta inserción de nuestros candidatos. El perfil de candidato permite cargar diagnósticos tales como niveles de autismo y de transtornos de déficit de atención e hiperactividad, currícula o invitad y preferencias del ambiente laboral. Las empresas pueden cargar las competencias que requerirán sus empleados y los caros vacantes. Mientras, los profesionales tienen la posibilidad de registrar el desarrollo de sus candidatos asignados. De este modo, nuestra aplicación es una plataforma que permite que los tres actores puedan registrarse y actuar de manera coordinada, interactiva y dinámica. Una vez que se produce el match laboral, Adela propone una serie de acciones que incluyen al espacio físico y condiciones óptimas para la correcta adaptación del potencial empleado. Sabiendo esto, ¿Qué esperás para sumarte? Adela, adelantate y sé el cambio.",
+ "segments": [
+  {
+   "start": 0.78,
+   "end": 6.78,
+   "text": "¿Qué harías si solo el 0,001% de las empresas quisiera contratarte?"
+  },
+  {
+   "start": 7.78,
+   "end": 12.78,
+   "text": "Al nivel global, entre el 76 y 90% de personas adultas con TEA,"
+  },
+  {
+   "start": 12.78,
+   "end": 14.78,
+   "text": "vives todo los días."
+  },
+  {
+   "start": 14.78,
+   "end": 18.78,
+   "text": "Esta tasa de desempleo se debe a que, entre otras cosas,"
+  },
+  {
+   "start": 18.78,
+   "end": 21.78,
+   "text": "las condiciones laborales no son las adecuadas."
+  },
+  {
+   "start": 21.78,
+   "end": 24.78,
+   "text": "Como grupo interdisciplinario, presentamos ADELA."
+  },
+  {
+   "start": 24.78,
+   "end": 28.78,
+   "text": "ADELA es un servicio único, integral en Latinoamérica"
+  },
+  {
+   "start": 28.78,
+   "end": 30.78,
+   "text": "que vincula potenciales candidatos dentro del espectro,"
+  },
+  {
+   "start": 30.78,
+   "end": 32.78,
+   "text": "empresas y especialistas de la salud."
+  },
+  {
+   "start": 32.78,
+   "end": 34.78,
+   "text": "Cuenta con tres pilares principales,"
+  },
+  {
+   "start": 34.78,
+   "end": 38.78,
+   "text": "capacitación, acompañamiento y una herramienta digital."
+  },
+  {
+   "start": 38.78,
+   "end": 43.13,
+   "text": "Las capacitaciones pagas que sustentan nuestro proyecto"
+  },
+  {
+   "start": 43.13,
+   "end": 47.13,
+   "text": "consisten en cursos de formación sobre TEA dirigidos a las empresas,"
+  },
+  {
+   "start": 47.13,
+   "end": 51.13,
+   "text": "las cuales permiten volver los ambientes laborales mucho más adecuados."
+  },
+  {
+   "start": 51.13,
+   "end": 55.13,
+   "text": "También proponemos talleres orientados a los candidatos para elevar sus perfiles"
+  },
+  {
+   "start": 55.13,
+   "end": 57.13,
+   "text": "y ofrecemos a los profesionales de la salud,"
+  },
+  {
+   "start": 57.13,
+   "end": 59.13,
+   "text": "nuestros aliados estratégicos,"
+  },
+  {
+   "start": 59.13,
+   "end": 62.13,
+   "text": "acceso a foros y un pool de datos en constante actualización."
+  },
+  {
+   "start": 62.13,
+   "end": 66.13,
+   "text": "El acompañamiento consiste en un seguimiento realizado por expertos"
+  },
+  {
+   "start": 66.13,
+   "end": 69.13,
+   "text": "que asegura la correcta inserción de nuestros candidatos."
+  },
+  {
+   "start": 69.13,
+   "end": 73.13,
+   "text": "El perfil de candidato permite cargar diagnósticos"
+  },
+  {
+   "start": 73.13,
+   "end": 77.13,
+   "text": "tales como niveles de autismo y de transtornos de déficit de atención e hiperactividad,"
+  },
+  {
+   "start": 77.13,
+   "end": 81.13,
+   "text": "currícula o invitad y preferencias del ambiente laboral."
+  },
+  {
+   "start": 81.13,
+   "end": 83.13,
+   "text": "Las empresas pueden cargar las competencias"
+  },
+  {
+   "start": 83.13,
+   "end": 86.13,
+   "text": "que requerirán sus empleados y los caros vacantes."
+  },
+  {
+   "start": 86.13,
+   "end": 89.13,
+   "text": "Mientras, los profesionales tienen la posibilidad"
+  },
+  {
+   "start": 89.13,
+   "end": 92.13,
+   "text": "de registrar el desarrollo de sus candidatos asignados."
+  },
+  {
+   "start": 92.13,
+   "end": 95.13,
+   "text": "De este modo, nuestra aplicación es una plataforma"
+  },
+  {
+   "start": 95.13,
+   "end": 98.13,
+   "text": "que permite que los tres actores puedan registrarse"
+  },
+  {
+   "start": 98.13,
+   "end": 101.13,
+   "text": "y actuar de manera coordinada, interactiva y dinámica."
+  },
+  {
+   "start": 101.13,
+   "end": 104.13,
+   "text": "Una vez que se produce el match laboral,"
+  },
+  {
+   "start": 104.13,
+   "end": 106.13,
+   "text": "Adela propone una serie de acciones que incluyen"
+  },
+  {
+   "start": 106.13,
+   "end": 108.13,
+   "text": "al espacio físico y condiciones óptimas"
+  },
+  {
+   "start": 108.13,
+   "end": 111.13,
+   "text": "para la correcta adaptación del potencial empleado."
+  },
+  {
+   "start": 111.13,
+   "end": 112.13,
+   "text": "Sabiendo esto,"
+  },
+  {
+   "start": 112.13,
+   "end": 113.13,
+   "text": "¿Qué esperás para sumarte?"
+  },
+  {
+   "start": 113.13,
+   "end": 114.13,
+   "text": "Adela,"
+  },
+  {
+   "start": 114.13,
+   "end": 115.13,
+   "text": "adelantate"
+  },
+  {
+   "start": 115.13,
+   "end": 117.13,
+   "text": "y sé el cambio."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 118.6
+}

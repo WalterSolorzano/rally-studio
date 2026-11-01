@@ -1,0 +1,72 @@
+{
+ "video_id": "lNK5JmxFU4s",
+ "url": "https://youtu.be/lNK5JmxFU4s",
+ "year": 2025,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "ESPERANZA EN MOVIMIENTO",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "ESPERANZA EN MOVIMIENTO",
+   "challenge": "07 - SALUD MÓVIL PARA MUJERES EN ZONAS RURALES"
+  }
+ ],
+ "fetched_at": "2026-10-22T20:40:22+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Nosotros somos el equipo Esperanza y Movimiento y nuestro proyecto se llamaba Mujeres Saludables. Un otro desafío consiste en la Salón Mobile para mujeres en zonas rurales. El proyecto aborda la problemática del invitado a exceso a servicios de salud para mujeres en zonas rurales. Tienes enfrenta barreras laboral y económicas del social que disfrutan controles ginecológicos a comisión federal y seguimiento médico. La falta de transporte, infraestructura y personal de salud agravala situación apasionando retrasos, una atención y abandonar el tratamiento. Como solución se propone la acredición de brigadas móviles de salud femenina Mujeres Saludables conformadas por el estudiante de Medicina Social.",
+ "segments": [
+  {
+   "start": 1.46,
+   "end": 9.46,
+   "text": "Nosotros somos el equipo Esperanza y Movimiento y nuestro proyecto se llamaba Mujeres Saludables."
+  },
+  {
+   "start": 9.46,
+   "end": 17.46,
+   "text": "Un otro desafío consiste en la Salón Mobile para mujeres en zonas rurales."
+  },
+  {
+   "start": 17.46,
+   "end": 25.46,
+   "text": "El proyecto aborda la problemática del invitado a exceso a servicios de salud para mujeres en zonas rurales."
+  },
+  {
+   "start": 25.46,
+   "end": 33.46,
+   "text": "Tienes enfrenta barreras laboral y económicas del social que disfrutan controles ginecológicos"
+  },
+  {
+   "start": 33.46,
+   "end": 37.46,
+   "text": "a comisión federal y seguimiento médico."
+  },
+  {
+   "start": 37.46,
+   "end": 44.46,
+   "text": "La falta de transporte, infraestructura y personal de salud agravala situación apasionando retrasos,"
+  },
+  {
+   "start": 44.46,
+   "end": 48.46,
+   "text": "una atención y abandonar el tratamiento."
+  },
+  {
+   "start": 48.46,
+   "end": 56.46,
+   "text": "Como solución se propone la acredición de brigadas móviles de salud femenina Mujeres Saludables"
+  },
+  {
+   "start": 56.46,
+   "end": 60.46,
+   "text": "conformadas por el estudiante de Medicina Social."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 60.0
+}

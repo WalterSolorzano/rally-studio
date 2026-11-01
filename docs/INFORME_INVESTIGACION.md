@@ -166,7 +166,7 @@ Pese a las diferencias, ambos certámenes comparten una arquitectura:
 
 - **Tiempo comprimido.** 24 o 28 horas obligan a decidir el desafío en la primera hora y a producir el video en paralelo al reporte.
 - **Desafío impuesto.** El equipo no elige el problema; elige cómo resolverlo. La selección del desafío es, por tanto, la primera decisión estratégica.
-- **Tres entregables auditables.** Reporte, video y (en Latam) TikTok. Los tres deben contar la misma historia con los mismos números.
+- **Dos entregables obligatorios en este proyecto.** Reporte pautado y video. El reglamento Latam menciona además un TikTok de interacción internacional, que este equipo decidió no producir (ver `knowledge/ERRATAS.md`). Las cifras del reporte y del video deben coincidir.
 - **Jurado con incentivos distintos.** El nacional premia pertinencia y viabilidad local; el internacional premia transferibilidad y rigor. El mismo proyecto debe satisfacer a ambos.
 
 ---
@@ -541,7 +541,7 @@ El video dura 120 segundos y se divide en cuatro microactos. Cada uno activa un 
 | III. Prefactibilidad | 1:00–1:35 | Costos, unidad, modelo, ciclo ambiental | Prefactibilidad y sostenibilidad | ~75 |
 | IV. Cierre | 1:35–2:00 | Métricas, ODS, escalabilidad, frase final | Integración y recordación | ~55 |
 
-El total óptimo es de 240 a 270 palabras, a unas 135 palabras por minuto. Menos de 200 palabras deja silencios que el jurado llena con duda; más de 280 obliga a acelerar y pierde claridad.
+El total de 240 a 270 palabras es una **referencia de escritura**, no una regla: lo que se mide es la duración del audio (≤120 s). Menos de 200 palabras deja silencios que el jurado llena con duda; más de 280 obliga a acelerar y pierde claridad.
 
 ![Figura 4. Estructura PAS-V del video de 120 segundos.](figures/fig05_pasv.svg)
 

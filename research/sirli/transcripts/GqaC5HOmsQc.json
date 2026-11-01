@@ -1,0 +1,192 @@
+{
+ "video_id": "GqaC5HOmsQc",
+ "url": "https://youtu.be/GqaC5HOmsQc",
+ "year": 2024,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "INNOVATOROS",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "INNOVATOROS",
+   "challenge": "07 - PARQUÍMETRO DESATENDIDO"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:47:31+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "El parquímetro desatendido se ha convertido en un tema relevante en el contexto urbano actual, donde la gestión eficiente del espacio público es fundamental para su desarrollo sostenible. La falta de personal mantenimiento y recursos genera que el parquímetro desatendido sea una verdadera problemática. Por eso se sugiere brindarle un servicio que trata de un dispositivo inteligente, el cual permite medir el tiempo de estacionamiento en parquímetros de manera automática. La carcasa del dispositivo estructurado por filamento a base de PET contendrá una batería de emergencia, utiliza tecnologías inteligentes, indicadores y resistencias para su protección, las cuales mandan al usuario alertas automáticas con ayuda de una aplicación que muestra el amantrícula y el tiempo de estacionamiento. Este dispositivo se proporciona geolocalización a la hora de que el vehículo detecte el espacio del parquímetro y medir el tiempo estacionado. Con ayuda del sensor NFC y una tarjeta de devito o crédito se podrá cobrar de forma automática. La aplicación ingresa un dashboard en el que el usuario se registre inicia sesión a través de su cuenta, el usuario podrá agregar automóviles y la aplicación recibirá datos de tiempo que permaneció estacionado. Asimismo se le descontará de su monedero electrónico. El monedero electrónico será controlado, monitoreado y recargado desde la aplicación. Se basó en un conteo de registro de la materia prima directa. Los gastos de administración y la mano de obra donde se determinó que el costo por unidad es de 210 pesos. Este servicio elimina la necesidad de agentes municipales para verificar manualmente el tiempo de aparcamiento y que exista solamente la intervención del usuario. Esta solución es factible debido a que el parquímetro diseñado incrementa la recaudación de ingresos a través de que el tiempo ocupado del espacio y una gestión más eficiente del estacionamiento se traduce en más fondos disponibles para reinvertir. Este sistema mejora la experiencia de los conductores a satisfacción y aceptación social del sistema. Al optimizar la búsqueda de estacionamiento el servicio contribuye a disminuir las emisiones de gases contaminantes mejorando la calidad del aire.",
+ "segments": [
+  {
+   "start": 0.08,
+   "end": 7.03,
+   "text": "El parquímetro desatendido se ha convertido en un tema relevante en el contexto urbano actual,"
+  },
+  {
+   "start": 7.03,
+   "end": 11.03,
+   "text": "donde la gestión eficiente del espacio público es fundamental para su desarrollo sostenible."
+  },
+  {
+   "start": 11.03,
+   "end": 17.03,
+   "text": "La falta de personal mantenimiento y recursos genera que el parquímetro desatendido sea una verdadera problemática."
+  },
+  {
+   "start": 17.03,
+   "end": 21.03,
+   "text": "Por eso se sugiere brindarle un servicio que trata de un dispositivo inteligente,"
+  },
+  {
+   "start": 21.03,
+   "end": 25.03,
+   "text": "el cual permite medir el tiempo de estacionamiento en parquímetros de manera automática."
+  },
+  {
+   "start": 25.03,
+   "end": 30.03,
+   "text": "La carcasa del dispositivo estructurado por filamento a base de PET contendrá una batería de emergencia,"
+  },
+  {
+   "start": 30.03,
+   "end": 34.03,
+   "text": "utiliza tecnologías inteligentes, indicadores y resistencias para su protección,"
+  },
+  {
+   "start": 34.03,
+   "end": 38.03,
+   "text": "las cuales mandan al usuario alertas automáticas con ayuda de una aplicación"
+  },
+  {
+   "start": 38.03,
+   "end": 41.03,
+   "text": "que muestra el amantrícula y el tiempo de estacionamiento."
+  },
+  {
+   "start": 41.03,
+   "end": 46.03,
+   "text": "Este dispositivo se proporciona geolocalización a la hora de que el vehículo detecte el espacio del parquímetro"
+  },
+  {
+   "start": 46.03,
+   "end": 48.03,
+   "text": "y medir el tiempo estacionado."
+  },
+  {
+   "start": 48.03,
+   "end": 54.03,
+   "text": "Con ayuda del sensor NFC y una tarjeta de devito o crédito se podrá cobrar de forma automática."
+  },
+  {
+   "start": 54.03,
+   "end": 58.03,
+   "text": "La aplicación ingresa un dashboard en el que el usuario se registre inicia sesión"
+  },
+  {
+   "start": 58.03,
+   "end": 61.03,
+   "text": "a través de su cuenta, el usuario podrá agregar automóviles"
+  },
+  {
+   "start": 61.03,
+   "end": 65.03,
+   "text": "y la aplicación recibirá datos de tiempo que permaneció estacionado."
+  },
+  {
+   "start": 65.03,
+   "end": 68.03,
+   "text": "Asimismo se le descontará de su monedero electrónico."
+  },
+  {
+   "start": 68.03,
+   "end": 72.03,
+   "text": "El monedero electrónico será controlado, monitoreado y recargado desde la aplicación."
+  },
+  {
+   "start": 72.03,
+   "end": 75.03,
+   "text": "Se basó en un conteo de registro de la materia prima directa."
+  },
+  {
+   "start": 75.03,
+   "end": 78.03,
+   "text": "Los gastos de administración y la mano de obra donde se determinó"
+  },
+  {
+   "start": 78.03,
+   "end": 81.03,
+   "text": "que el costo por unidad es de 210 pesos."
+  },
+  {
+   "start": 81.03,
+   "end": 84.03,
+   "text": "Este servicio elimina la necesidad de agentes municipales"
+  },
+  {
+   "start": 84.03,
+   "end": 87.03,
+   "text": "para verificar manualmente el tiempo de aparcamiento"
+  },
+  {
+   "start": 87.03,
+   "end": 89.03,
+   "text": "y que exista solamente la intervención del usuario."
+  },
+  {
+   "start": 89.03,
+   "end": 92.03,
+   "text": "Esta solución es factible debido a que el parquímetro diseñado"
+  },
+  {
+   "start": 92.03,
+   "end": 94.03,
+   "text": "incrementa la recaudación de ingresos"
+  },
+  {
+   "start": 94.03,
+   "end": 96.03,
+   "text": "a través de que el tiempo ocupado del espacio"
+  },
+  {
+   "start": 96.03,
+   "end": 98.03,
+   "text": "y una gestión más eficiente del estacionamiento"
+  },
+  {
+   "start": 98.03,
+   "end": 101.03,
+   "text": "se traduce en más fondos disponibles para reinvertir."
+  },
+  {
+   "start": 101.03,
+   "end": 104.03,
+   "text": "Este sistema mejora la experiencia de los conductores"
+  },
+  {
+   "start": 104.03,
+   "end": 106.03,
+   "text": "a satisfacción y aceptación social del sistema."
+  },
+  {
+   "start": 106.03,
+   "end": 109.03,
+   "text": "Al optimizar la búsqueda de estacionamiento"
+  },
+  {
+   "start": 109.03,
+   "end": 112.03,
+   "text": "el servicio contribuye a disminuir las emisiones de gases contaminantes"
+  },
+  {
+   "start": 112.03,
+   "end": 114.03,
+   "text": "mejorando la calidad del aire."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 116.1
+}

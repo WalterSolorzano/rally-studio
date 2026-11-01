@@ -1,0 +1,97 @@
+{
+ "video_id": "erT-hU2FHsQ",
+ "url": "https://www.youtube.com/watch?v=erT-hU2FHsQ",
+ "year": 2022,
+ "collection": "sede",
+ "country": "ARGENTINA",
+ "team": "INGNOVAR",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "INGNOVAR",
+   "challenge": "01 - INCLUSIÓN LABORAL DE PERSONAS DEL ESPECTRO AUTISTA"
+  }
+ ],
+ "fetched_at": "2026-10-23T00:16:54+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Los TEA son trascornos del espectro autista que dificultan la vida social con diferentes manifestaciones. La construcción de estigmas sobre los euros divergentes hace que su exerción y la actuación al mercado laboral se vea oftalizada. En el relín latinoamericano 2022, el equipo INF NOVAR propone. Nuestra solución se enfoca en inteligencia artificial y machine learning para seleccionar los puestos óptimos de trabajo en cuestiones de capacidad y necesidades de las personas con TEA. El intercambio TEA de inteligencia artificial se produce mediante tests creados por expertos para recopilar las cualidades positivas de los euros divergentes. Con la alimentación de doble entrada desde los centros de salud y las empresas, el algoritmo incluite a mejora la eficiencia y precisión de todas sus funciones. Incluite a especifica las condiciones en las cuales se deberá conducir el empleo. A través de relevamientos periódicos y mentorías in situ, se verifica la adaptación del ambiente laboral al empleado. No solo somos innovadores. También somos humanos.",
+ "segments": [
+  {
+   "start": 4.18,
+   "end": 14.3,
+   "text": "Los TEA son trascornos del espectro autista que dificultan la vida social con diferentes manifestaciones."
+  },
+  {
+   "start": 14.3,
+   "end": 28.98,
+   "text": "La construcción de estigmas sobre los euros divergentes hace que su exerción y la actuación al mercado laboral se vea oftalizada."
+  },
+  {
+   "start": 28.98,
+   "end": 32.98,
+   "text": "En el relín latinoamericano 2022, el equipo INF NOVAR propone."
+  },
+  {
+   "start": 32.98,
+   "end": 41.5,
+   "text": "Nuestra solución se enfoca en inteligencia artificial y machine learning"
+  },
+  {
+   "start": 41.5,
+   "end": 46.5,
+   "text": "para seleccionar los puestos óptimos de trabajo en cuestiones de capacidad y necesidades de las personas con TEA."
+  },
+  {
+   "start": 46.5,
+   "end": 55.08,
+   "text": "El intercambio TEA de inteligencia artificial se produce mediante tests creados por expertos"
+  },
+  {
+   "start": 55.08,
+   "end": 59.08,
+   "text": "para recopilar las cualidades positivas de los euros divergentes."
+  },
+  {
+   "start": 59.08,
+   "end": 67.14,
+   "text": "Con la alimentación de doble entrada desde los centros de salud y las empresas,"
+  },
+  {
+   "start": 67.14,
+   "end": 71.14,
+   "text": "el algoritmo incluite a mejora la eficiencia y precisión de todas sus funciones."
+  },
+  {
+   "start": 71.14,
+   "end": 78.86,
+   "text": "Incluite a especifica las condiciones en las cuales se deberá conducir el empleo."
+  },
+  {
+   "start": 78.86,
+   "end": 87.37,
+   "text": "A través de relevamientos periódicos y mentorías in situ,"
+  },
+  {
+   "start": 87.37,
+   "end": 90.37,
+   "text": "se verifica la adaptación del ambiente laboral al empleado."
+  },
+  {
+   "start": 90.37,
+   "end": 106.51,
+   "text": "No solo somos innovadores."
+  },
+  {
+   "start": 106.51,
+   "end": 108.51,
+   "text": "También somos humanos."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 110.8
+}

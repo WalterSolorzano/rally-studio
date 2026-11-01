@@ -1,0 +1,87 @@
+{
+ "video_id": "gU7evUZ7I44",
+ "url": "https://youtu.be/gU7evUZ7I44",
+ "year": 2026,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "TECNO VIDA",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "TECNO VIDA",
+   "challenge": "01 - SEGUNDA VIDA DE LOS MOTORES ELÉCTRICOS DOMÉSTICOS"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:52:06+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Sabías que en algunos motores eléctricos los electrodomésticos de que desechamos todavía pueden tener componentes útiles? En lugar de considerarlos basura podemos darle una segunda vida y convertirlos en parte de una subvolución innovadora. El desecho de aparatos eléctricos genera residuos que pueden afectar al medio ambiente. Al mismo tiempo el acceso a sistemas de riego económico representa un desafío para algunas personas que cultivan plantas y pequeños huertos. Por eso, en Tecnovida, proponemos reutilizar motores eléctricos domésticos en desuso para recuperar componentes que todavía sean funcionales, como bobinas y estatuales, y aprovecharlos en el desarrollo de una bomba de agua destinada a un sistema de río. Nuestra propuesta busca reducir el desperdicio de materiales y explorar una alternativa bajo costo que contribuye al aprovechamiento de agua en pequeños cultivos. Para dar forma a esta idea desarrollamos un diseño en Solidwork, una herramienta que nos permite representar nuestro sistema, visualizar sus componentes y planificar su estructura antes de su fabricación. Además, buscamos que el proyecto sea práctico, accesible y adaptable a las necesidades del usuario. Este proyecto reúne conocimientos de ingeniería mechatrónica, informática e ingeniería eléctrica, integrando distintas perspectivas para desarrollar una solución que combine tecnología, reutilización e innovación. En conjunto, estos componentes permiten extraer, impulsar, filtrar y conducir el agua de manera controlada. En Tecnobida creemos que los residuos de hoy pueden convertirse en las soluciones del mañana. Temos una segunda vida a la tecnología.",
+ "segments": [
+  {
+   "start": 4.59,
+   "end": 10.59,
+   "text": "¿Sabías que en algunos motores eléctricos los electrodomésticos de que desechamos todavía pueden tener componentes útiles?"
+  },
+  {
+   "start": 10.99,
+   "end": 17.45,
+   "text": "En lugar de considerarlos basura podemos darle una segunda vida y convertirlos en parte de una subvolución innovadora."
+  },
+  {
+   "start": 18.87,
+   "end": 23.75,
+   "text": "El desecho de aparatos eléctricos genera residuos que pueden afectar al medio ambiente."
+  },
+  {
+   "start": 23.83,
+   "end": 32.67,
+   "text": "Al mismo tiempo el acceso a sistemas de riego económico representa un desafío para algunas personas que cultivan plantas y pequeños huertos."
+  },
+  {
+   "start": 33.67,
+   "end": 48.67,
+   "text": "Por eso, en Tecnovida, proponemos reutilizar motores eléctricos domésticos en desuso para recuperar componentes que todavía sean funcionales, como bobinas y estatuales, y aprovecharlos en el desarrollo de una bomba de agua destinada a un sistema de río."
+  },
+  {
+   "start": 48.67,
+   "end": 58.67,
+   "text": "Nuestra propuesta busca reducir el desperdicio de materiales y explorar una alternativa bajo costo que contribuye al aprovechamiento de agua en pequeños cultivos."
+  },
+  {
+   "start": 58.67,
+   "end": 71.67,
+   "text": "Para dar forma a esta idea desarrollamos un diseño en Solidwork, una herramienta que nos permite representar nuestro sistema, visualizar sus componentes y planificar su estructura antes de su fabricación."
+  },
+  {
+   "start": 71.67,
+   "end": 77.67,
+   "text": "Además, buscamos que el proyecto sea práctico, accesible y adaptable a las necesidades del usuario."
+  },
+  {
+   "start": 78.67,
+   "end": 92.67,
+   "text": "Este proyecto reúne conocimientos de ingeniería mechatrónica, informática e ingeniería eléctrica, integrando distintas perspectivas para desarrollar una solución que combine tecnología, reutilización e innovación."
+  },
+  {
+   "start": 92.67,
+   "end": 99.67,
+   "text": "En conjunto, estos componentes permiten extraer, impulsar, filtrar y conducir el agua de manera controlada."
+  },
+  {
+   "start": 99.67,
+   "end": 104.67,
+   "text": "En Tecnobida creemos que los residuos de hoy pueden convertirse en las soluciones del mañana."
+  },
+  {
+   "start": 104.67,
+   "end": 107.67,
+   "text": "Temos una segunda vida a la tecnología."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 111.7
+}

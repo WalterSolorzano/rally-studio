@@ -1,0 +1,212 @@
+{
+ "video_id": "d7hBrFVPrFw",
+ "url": "https://youtu.be/d7hBrFVPrFw?si=1VS1gMibnzaKstNi",
+ "year": 2026,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "LOS COFFEES",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "LOS COFFEES",
+   "challenge": "02 - SENSORES AL SERVICIO DE LA COMUNIDAD"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:49:34+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Chichen Itza resistió más de mil años de selva, lluvia y tiempo. Hoy la está desgastando algo nuevo, nuestros pasos. Casi 6 mil visitantes al día. En Tulum el caminar de la gente ya erosionó el sitio, pero el verdadero problema no es cuánta gente llega, es que nadie sabe por dónde camina. La taquilla cuenta boletos, no pisadas, y el daño se descubre cuando ya es demasiado tarde. El turismo difunde el patrimonio, pero sin control de afluencia se acelera su deterioro. Por eso creamos NeChat, una red de sensores hecha con celulares en desuso que mide cuánta gente pasa por cada zona y avisa antes de que la piedra se dañe. Funciona en tres pasos. Cuenta. La cámara del celular cuenta personas sin guardar imágenes y un sensor mide la humidad. Transmite. Los datos saltan de poste en poste por radio con Meshastik, una red de código abierto creada para comunicarse sin señal en zonas remotas para transmitir datos desde la selva sin depender de internet. Alerta. La señal estima el desgaste de cada zona. Si la escalinata se satura, el custódio recibe el aviso en su radio y va en camino. Si llueve, sabe que cerrar. Al medir el tránsito por zona, permite rotar recorridos para que pisos escalinatas y senderos descancen al detectar aglomeraciones junto a los monumentos. 10 estaciones cuestan unos 41,000 pesos, menos del 1% de lo que costó reabir una sola escalinata. Y cada estación salvo un celular de la basura. Por eso creamos NetChat. Medir hoy para conservar siempre.",
+ "segments": [
+  {
+   "start": 1.26,
+   "end": 7.02,
+   "text": "Chichen Itza resistió más de mil años de selva, lluvia y tiempo."
+  },
+  {
+   "start": 7.02,
+   "end": 10.82,
+   "text": "Hoy la está desgastando algo nuevo, nuestros pasos."
+  },
+  {
+   "start": 10.82,
+   "end": 13.5,
+   "text": "Casi 6 mil visitantes al día."
+  },
+  {
+   "start": 13.5,
+   "end": 17.98,
+   "text": "En Tulum el caminar de la gente ya erosionó el sitio,"
+  },
+  {
+   "start": 17.98,
+   "end": 21.1,
+   "text": "pero el verdadero problema no es cuánta gente llega,"
+  },
+  {
+   "start": 21.1,
+   "end": 23.86,
+   "text": "es que nadie sabe por dónde camina."
+  },
+  {
+   "start": 23.86,
+   "end": 26.9,
+   "text": "La taquilla cuenta boletos, no pisadas,"
+  },
+  {
+   "start": 26.9,
+   "end": 30.22,
+   "text": "y el daño se descubre cuando ya es demasiado tarde."
+  },
+  {
+   "start": 30.34,
+   "end": 32.62,
+   "text": "El turismo difunde el patrimonio,"
+  },
+  {
+   "start": 32.62,
+   "end": 36.14,
+   "text": "pero sin control de afluencia se acelera su deterioro."
+  },
+  {
+   "start": 36.14,
+   "end": 38.38,
+   "text": "Por eso creamos NeChat,"
+  },
+  {
+   "start": 38.38,
+   "end": 41.58,
+   "text": "una red de sensores hecha con celulares en desuso"
+  },
+  {
+   "start": 41.58,
+   "end": 44.3,
+   "text": "que mide cuánta gente pasa por cada zona"
+  },
+  {
+   "start": 44.3,
+   "end": 46.94,
+   "text": "y avisa antes de que la piedra se dañe."
+  },
+  {
+   "start": 46.94,
+   "end": 48.78,
+   "text": "Funciona en tres pasos."
+  },
+  {
+   "start": 48.78,
+   "end": 49.74,
+   "text": "Cuenta."
+  },
+  {
+   "start": 49.74,
+   "end": 53.1,
+   "text": "La cámara del celular cuenta personas sin guardar imágenes"
+  },
+  {
+   "start": 53.1,
+   "end": 55.62,
+   "text": "y un sensor mide la humidad."
+  },
+  {
+   "start": 55.62,
+   "end": 56.94,
+   "text": "Transmite."
+  },
+  {
+   "start": 57.02,
+   "end": 61.38,
+   "text": "Los datos saltan de poste en poste por radio con Meshastik,"
+  },
+  {
+   "start": 61.38,
+   "end": 64.94,
+   "text": "una red de código abierto creada para comunicarse sin señal"
+  },
+  {
+   "start": 64.94,
+   "end": 68.22,
+   "text": "en zonas remotas para transmitir datos desde la selva"
+  },
+  {
+   "start": 68.22,
+   "end": 70.34,
+   "text": "sin depender de internet."
+  },
+  {
+   "start": 70.34,
+   "end": 71.22,
+   "text": "Alerta."
+  },
+  {
+   "start": 71.22,
+   "end": 74.14,
+   "text": "La señal estima el desgaste de cada zona."
+  },
+  {
+   "start": 74.14,
+   "end": 75.7,
+   "text": "Si la escalinata se satura,"
+  },
+  {
+   "start": 75.7,
+   "end": 79.1,
+   "text": "el custódio recibe el aviso en su radio y va en camino."
+  },
+  {
+   "start": 79.1,
+   "end": 81.86,
+   "text": "Si llueve, sabe que cerrar."
+  },
+  {
+   "start": 81.86,
+   "end": 83.58,
+   "text": "Al medir el tránsito por zona,"
+  },
+  {
+   "start": 83.58,
+   "end": 86.62,
+   "text": "permite rotar recorridos para que pisos escalinatas"
+  },
+  {
+   "start": 86.62,
+   "end": 90.06,
+   "text": "y senderos descancen al detectar aglomeraciones"
+  },
+  {
+   "start": 90.06,
+   "end": 91.82,
+   "text": "junto a los monumentos."
+  },
+  {
+   "start": 91.82,
+   "end": 95.5,
+   "text": "10 estaciones cuestan unos 41,000 pesos,"
+  },
+  {
+   "start": 95.5,
+   "end": 99.86,
+   "text": "menos del 1% de lo que costó reabir una sola escalinata."
+  },
+  {
+   "start": 99.86,
+   "end": 102.94,
+   "text": "Y cada estación salvo un celular de la basura."
+  },
+  {
+   "start": 102.94,
+   "end": 104.82,
+   "text": "Por eso creamos NetChat."
+  },
+  {
+   "start": 104.82,
+   "end": 108.18,
+   "text": "Medir hoy para conservar siempre."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 107.1
+}

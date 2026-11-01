@@ -1,0 +1,107 @@
+{
+ "video_id": "-Njqj3VpYk0",
+ "url": "https://youtu.be/-Njqj3VpYk0",
+ "year": 2024,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "OSPFV3",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "OSPFV3",
+   "challenge": "01 - MICROPRESAS O MICROEMBALSES"
+  }
+ ],
+ "fetched_at": "2026-10-22T23:49:18+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En la actualidad, las lluvias discontinuas y la sequía son una de las principales causas por las cuales cultivos se pierden. Para mitigar esta problemática, los agricultores han implementado micropresas, las cuales siguen presentando dificultades, debido a la evaporación del agua, la filtración de esta misma hacia el subsuelo y la floriferación de mosquitos. Además de que no se hace uso de la captación del agua de lluvias, lo cual es un desperdicio de un recurso que la naturaleza nos ofrece. Es por esto que proponemos la implementación de estructuras inclinadas que cubrieran la superficie de la micropresa. Estas constarán de una pequeña barra y una cubierta de polietileno, esto con el fin de disminuir la evaporación del agua utilizando una técnica llamada la evaporación inversa. Para minimizar la filtración del agua hacia el subsuelo se optó por utilizar geomembrana debido a su relación calidad precio. Para poder aprovechar un recurso tan importante como es la lluvia, se implementarán pequeñas cosas que servirán para captar el agua. Y esta agua mediante tubos pasará por un filtro para que de esta manera llegue más limpia a la micropresa principal. Y aquí el agua se evapora y se condensa, cayendo así en la misma presa. Esta propuesta hace un uso eficiente del agua, permitiendo mejorar la producción agrícola y tener mayor resiliencia frente a periodos de desecuía. Además, la solución contribuye a los objetivos de desarrollo sostenible de la ONU, especialmente en temas de hambre cero y acción por el clima para evitar la desertificación. Nuestra solución destaca por implementación de un recoprimiento hermético de polietileno en la micropresa y la creación de una red de cuencos subterráneos, lo cual no ha sido propuesta en soluciones anteriores. Estos elementos innovadores permiten una mayor eficiencia en la captación y almacenamiento de agua, mientras que el diseño accesible y económico facilita su implementación en diferentes comunidades agrícolas.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 6.4,
+   "text": "En la actualidad, las lluvias discontinuas y la sequía son una de las principales causas por las cuales cultivos se pierden."
+  },
+  {
+   "start": 6.4,
+   "end": 12.9,
+   "text": "Para mitigar esta problemática, los agricultores han implementado micropresas, las cuales siguen presentando dificultades,"
+  },
+  {
+   "start": 12.9,
+   "end": 19.5,
+   "text": "debido a la evaporación del agua, la filtración de esta misma hacia el subsuelo y la floriferación de mosquitos."
+  },
+  {
+   "start": 19.5,
+   "end": 26.7,
+   "text": "Además de que no se hace uso de la captación del agua de lluvias, lo cual es un desperdicio de un recurso que la naturaleza nos ofrece."
+  },
+  {
+   "start": 26.7,
+   "end": 32.5,
+   "text": "Es por esto que proponemos la implementación de estructuras inclinadas que cubrieran la superficie de la micropresa."
+  },
+  {
+   "start": 32.5,
+   "end": 43.5,
+   "text": "Estas constarán de una pequeña barra y una cubierta de polietileno, esto con el fin de disminuir la evaporación del agua utilizando una técnica llamada la evaporación inversa."
+  },
+  {
+   "start": 43.5,
+   "end": 50.7,
+   "text": "Para minimizar la filtración del agua hacia el subsuelo se optó por utilizar geomembrana debido a su relación calidad precio."
+  },
+  {
+   "start": 50.7,
+   "end": 58.3,
+   "text": "Para poder aprovechar un recurso tan importante como es la lluvia, se implementarán pequeñas cosas que servirán para captar el agua."
+  },
+  {
+   "start": 58.3,
+   "end": 65.5,
+   "text": "Y esta agua mediante tubos pasará por un filtro para que de esta manera llegue más limpia a la micropresa principal."
+  },
+  {
+   "start": 65.5,
+   "end": 70.2,
+   "text": "Y aquí el agua se evapora y se condensa, cayendo así en la misma presa."
+  },
+  {
+   "start": 70.2,
+   "end": 78.2,
+   "text": "Esta propuesta hace un uso eficiente del agua, permitiendo mejorar la producción agrícola y tener mayor resiliencia frente a periodos de desecuía."
+  },
+  {
+   "start": 78.2,
+   "end": 87.7,
+   "text": "Además, la solución contribuye a los objetivos de desarrollo sostenible de la ONU, especialmente en temas de hambre cero y acción por el clima para evitar la desertificación."
+  },
+  {
+   "start": 87.7,
+   "end": 96.7,
+   "text": "Nuestra solución destaca por implementación de un recoprimiento hermético de polietileno en la micropresa y la creación de una red de cuencos subterráneos,"
+  },
+  {
+   "start": 96.7,
+   "end": 99.7,
+   "text": "lo cual no ha sido propuesta en soluciones anteriores."
+  },
+  {
+   "start": 99.7,
+   "end": 105.2,
+   "text": "Estos elementos innovadores permiten una mayor eficiencia en la captación y almacenamiento de agua,"
+  },
+  {
+   "start": 105.2,
+   "end": 111.2,
+   "text": "mientras que el diseño accesible y económico facilita su implementación en diferentes comunidades agrícolas."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 111.6
+}

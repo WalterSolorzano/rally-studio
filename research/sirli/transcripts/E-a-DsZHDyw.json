@@ -1,0 +1,222 @@
+{
+ "video_id": "E-a-DsZHDyw",
+ "url": "https://youtu.be/E-a-DsZHDyw?si=Tt2wjU6SJFnas3jS",
+ "year": 2026,
+ "collection": "sede",
+ "country": "MÉXICO",
+ "team": "ECOMASICOS",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "ECOMASICOS",
+   "challenge": "04 - MANEJO ECOLÓGICO DE RESIDUOS DE PODA Y BIOMASA VEGETAL URBANA"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:47:21+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Qué ves cuando miras estos residuos de poda? ¿Basura? Nosotros vemos energía, cargo una aprovechable y una oportunidad que hoy estamos despirriciendo. En las ciudades se generan constantemente ramas, hojas y restoleñosos que muchas veces terminan acumulados o sin ningún aprovechamiento. Sin embargo, investigaciones recientes identifican a los residuos de poda como una materia prima favorable para producir biochar y gas de pirólices con potencial energético. ¿No está propuesta? ¿Ecomásticos? Busca cambiar esto mediante un módulo automatizado de pirólices controlada. Diseñado bajo un modelo de ingeniería de código abierto y adaptable a diferentes comunidades. La biomasa se introduce en una cámara térmica con la ausencia de oxígeno. Al controlar temperaturas entre aproximadamente 400 y 600 grados la materia se transforma principalmente en biochar compuestos condensables y un gas combustible que puede aprovecharse energéticamente. Pero no queremos que sea solo un recto. Sensores monitorean temperatura, presión, lujo de gases, oxígeno y velocidad de calentamiento. El sistema ajuste el proceso en tiempo real y almacena información para detectar desviaciones, optimizar la operación y apoyar un futuro mantenimiento predeventivo o predictivo. El resultado es doble. Aprovechamos el gas generado como fuente de energía y obtenemos biochar. Un material con aplicaciones agrícolas y ambientales. Un metaanálisis de 681 observaciones encontró un aumento promedio de 26.8% en el agua disponible del suelo. Además, el sistema puede utilizarse en universidades y escuelas para enseñar energía, automatización, química y economía circular. Así, un residuo que antes terminaba sin aprovecharse puede convertirse en energía, conocimiento y valor para la comunidad.",
+ "segments": [
+  {
+   "start": 0.56,
+   "end": 2.96,
+   "text": "¿Qué ves cuando miras estos residuos de poda?"
+  },
+  {
+   "start": 2.96,
+   "end": 3.66,
+   "text": "¿Basura?"
+  },
+  {
+   "start": 3.66,
+   "end": 8.96,
+   "text": "Nosotros vemos energía, cargo una aprovechable y una oportunidad que hoy estamos despirriciendo."
+  },
+  {
+   "start": 8.96,
+   "end": 13.76,
+   "text": "En las ciudades se generan constantemente ramas, hojas y restoleñosos"
+  },
+  {
+   "start": 13.76,
+   "end": 17.56,
+   "text": "que muchas veces terminan acumulados o sin ningún aprovechamiento."
+  },
+  {
+   "start": 17.56,
+   "end": 21.96,
+   "text": "Sin embargo, investigaciones recientes identifican a los residuos de poda"
+  },
+  {
+   "start": 21.96,
+   "end": 25.06,
+   "text": "como una materia prima favorable para producir biochar"
+  },
+  {
+   "start": 25.06,
+   "end": 27.76,
+   "text": "y gas de pirólices con potencial energético."
+  },
+  {
+   "start": 27.76,
+   "end": 28.86,
+   "text": "¿No está propuesta?"
+  },
+  {
+   "start": 28.86,
+   "end": 29.86,
+   "text": "¿Ecomásticos?"
+  },
+  {
+   "start": 29.86,
+   "end": 33.86,
+   "text": "Busca cambiar esto mediante un módulo automatizado de pirólices controlada."
+  },
+  {
+   "start": 33.86,
+   "end": 37.26,
+   "text": "Diseñado bajo un modelo de ingeniería de código abierto"
+  },
+  {
+   "start": 37.26,
+   "end": 39.26,
+   "text": "y adaptable a diferentes comunidades."
+  },
+  {
+   "start": 40.76,
+   "end": 43.46,
+   "text": "La biomasa se introduce en una cámara térmica"
+  },
+  {
+   "start": 43.46,
+   "end": 45.36,
+   "text": "con la ausencia de oxígeno."
+  },
+  {
+   "start": 45.36,
+   "end": 50.86,
+   "text": "Al controlar temperaturas entre aproximadamente 400 y 600 grados"
+  },
+  {
+   "start": 50.86,
+   "end": 53.86,
+   "text": "la materia se transforma principalmente en biochar"
+  },
+  {
+   "start": 53.86,
+   "end": 56.46,
+   "text": "compuestos condensables y un gas combustible"
+  },
+  {
+   "start": 56.46,
+   "end": 59.06,
+   "text": "que puede aprovecharse energéticamente."
+  },
+  {
+   "start": 60.26,
+   "end": 62.66,
+   "text": "Pero no queremos que sea solo un recto."
+  },
+  {
+   "start": 62.66,
+   "end": 65.46,
+   "text": "Sensores monitorean temperatura, presión,"
+  },
+  {
+   "start": 65.46,
+   "end": 68.66,
+   "text": "lujo de gases, oxígeno y velocidad de calentamiento."
+  },
+  {
+   "start": 68.66,
+   "end": 71.26,
+   "text": "El sistema ajuste el proceso en tiempo real"
+  },
+  {
+   "start": 71.26,
+   "end": 74.26,
+   "text": "y almacena información para detectar desviaciones,"
+  },
+  {
+   "start": 74.26,
+   "end": 77.26,
+   "text": "optimizar la operación y apoyar un futuro"
+  },
+  {
+   "start": 77.26,
+   "end": 80.06,
+   "text": "mantenimiento predeventivo o predictivo."
+  },
+  {
+   "start": 80.06,
+   "end": 81.86,
+   "text": "El resultado es doble."
+  },
+  {
+   "start": 81.86,
+   "end": 85.06,
+   "text": "Aprovechamos el gas generado como fuente de energía"
+  },
+  {
+   "start": 85.06,
+   "end": 86.86,
+   "text": "y obtenemos biochar."
+  },
+  {
+   "start": 86.86,
+   "end": 90.06,
+   "text": "Un material con aplicaciones agrícolas y ambientales."
+  },
+  {
+   "start": 90.06,
+   "end": 94.26,
+   "text": "Un metaanálisis de 681 observaciones"
+  },
+  {
+   "start": 94.26,
+   "end": 98.36,
+   "text": "encontró un aumento promedio de 26.8%"
+  },
+  {
+   "start": 98.36,
+   "end": 100.36,
+   "text": "en el agua disponible del suelo."
+  },
+  {
+   "start": 100.36,
+   "end": 104.26,
+   "text": "Además, el sistema puede utilizarse en universidades y escuelas"
+  },
+  {
+   "start": 104.26,
+   "end": 106.66,
+   "text": "para enseñar energía, automatización,"
+  },
+  {
+   "start": 106.66,
+   "end": 108.86,
+   "text": "química y economía circular."
+  },
+  {
+   "start": 108.86,
+   "end": 112.46,
+   "text": "Así, un residuo que antes terminaba sin aprovecharse"
+  },
+  {
+   "start": 112.46,
+   "end": 115.46,
+   "text": "puede convertirse en energía, conocimiento"
+  },
+  {
+   "start": 115.46,
+   "end": 117.06,
+   "text": "y valor para la comunidad."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 118.4
+}

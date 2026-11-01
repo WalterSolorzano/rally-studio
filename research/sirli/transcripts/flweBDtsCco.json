@@ -1,0 +1,67 @@
+{
+ "video_id": "flweBDtsCco",
+ "url": "https://www.youtube.com/watch?v=flweBDtsCco&feature=youtu.be",
+ "year": 2023,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "LOS EXPLORADORES VIRTUALES",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "LOS EXPLORADORES VIRTUALES",
+   "challenge": "01 - MOVILIDAD SUSTENTABLE"
+  }
+ ],
+ "fetched_at": "2026-10-22T21:26:34+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Entendamos algo. El exceso del transporte motorizado particular no solo afecta nuestra movilización diaria sino también causa gran contaminación en nuestras ciudades causando problemas medioambientales y el deterioro de nuestra salud. Por ello la movilidad sustentable es la solución más viable que consiste en desplazarse de manera responsable en transportes de menos impacto ambiental como puede ser la bicicleta y sus derivados, el transporte público o por qué no, irnos trotando a nuestro trabajo. Esto hará que nuestras condiciones de vida mejoren y creando una gran comunidad, las administraciones públicas impulsarán mucho más el desarrollo de la movilidad sustentable.",
+ "segments": [
+  {
+   "start": 0.24,
+   "end": 5.52,
+   "text": "Entendamos algo. El exceso del transporte motorizado particular no solo afecta"
+  },
+  {
+   "start": 5.52,
+   "end": 10.24,
+   "text": "nuestra movilización diaria sino también causa gran contaminación en nuestras"
+  },
+  {
+   "start": 10.24,
+   "end": 16.2,
+   "text": "ciudades causando problemas medioambientales y el deterioro de nuestra salud. Por ello la"
+  },
+  {
+   "start": 16.2,
+   "end": 22.0,
+   "text": "movilidad sustentable es la solución más viable que consiste en desplazarse de manera"
+  },
+  {
+   "start": 22.0,
+   "end": 27.48,
+   "text": "responsable en transportes de menos impacto ambiental como puede ser la bicicleta y"
+  },
+  {
+   "start": 27.48,
+   "end": 32.84,
+   "text": "sus derivados, el transporte público o por qué no, irnos trotando a nuestro trabajo."
+  },
+  {
+   "start": 32.84,
+   "end": 37.92,
+   "text": "Esto hará que nuestras condiciones de vida mejoren y creando una gran comunidad,"
+  },
+  {
+   "start": 37.92,
+   "end": 43.96,
+   "text": "las administraciones públicas impulsarán mucho más el desarrollo de la movilidad sustentable."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 72.8
+}

@@ -1,0 +1,117 @@
+{
+ "video_id": "WXl4kKq6yEs",
+ "url": "https://www.youtube.com/watch?v=WXl4kKq6yEs",
+ "year": 2017,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "ΜIDEAS",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2017,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "ΜIDEAS",
+   "challenge": "09 - ADULTOS MAYORES"
+  }
+ ],
+ "fetched_at": "2026-10-22T22:07:51+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Grampa System es un sistema unificador de componentes para que los familiares puedan monitorear signos vitales, como temperatura, presión arterial, pulso cardíaco, ubicación y sistema de seguridad de su adulto mayor mediante su dispositivo móvil. Grampa App es la aplicación complementaria al Grampa System, que permite mediante una interfaz sencilla e infinitiva, monitorear el ritmo cardíaco, presión sanguínea, ubicación e historial de salidas, recordatorios personalizadores para medicamentos o chequeos y llamadas de emergencias. Todo esto desde tu dispositivo móvil. Grampa System establece comunicación por Bluetooth, Wifi o cableado con las tecnologías de lugar, tales como Smart Band y sistema de seguridad. Una vez los dispositivos conectados, Grampa System centraliza y transmite bien Internet. Toda la información recibida a un dispositivo móvil conectado al sistema. Cuenta con altavoces integrados para mejorar la experiencia de uso, reproduciendo recordatorios de voz, pregrabados para medicinas o necesidades específicas del adulto mayor. En caso de problemas asociados a la salud, como una baja en el ritmo cardíaco o una alteración en la presión sanguínea, una llamada de emergencia es realizada al número de emergencia asociado. Simultaneamente, indicaciones serán emitidas desde los altavoces para tranquilizar al adulto mayor mientras llega la ayuda. Grampa System está pensado para los familiares de los más de 350.000 nicarabuenses de la tercera edad. Con 60 años o más que desean llevar un control de la salud de su familiar. Ubicación del adulto mayor y monitoreo constante que alerta sobre posible allanamientos domiciliares.",
+ "segments": [
+  {
+   "start": 23.7,
+   "end": 30.7,
+   "text": "Grampa System es un sistema unificador de componentes para que los familiares puedan monitorear signos vitales,"
+  },
+  {
+   "start": 30.7,
+   "end": 56.44,
+   "text": "como temperatura, presión arterial, pulso cardíaco, ubicación y sistema de seguridad de su adulto mayor mediante su dispositivo móvil."
+  },
+  {
+   "start": 56.44,
+   "end": 60.44,
+   "text": "Grampa App es la aplicación complementaria al Grampa System,"
+  },
+  {
+   "start": 60.44,
+   "end": 69.44,
+   "text": "que permite mediante una interfaz sencilla e infinitiva, monitorear el ritmo cardíaco, presión sanguínea, ubicación e historial de salidas,"
+  },
+  {
+   "start": 69.44,
+   "end": 75.44,
+   "text": "recordatorios personalizadores para medicamentos o chequeos y llamadas de emergencias."
+  },
+  {
+   "start": 75.44,
+   "end": 78.44,
+   "text": "Todo esto desde tu dispositivo móvil."
+  },
+  {
+   "start": 78.44,
+   "end": 94.46,
+   "text": "Grampa System establece comunicación por Bluetooth, Wifi o cableado con las tecnologías de lugar,"
+  },
+  {
+   "start": 95.46,
+   "end": 98.46,
+   "text": "tales como Smart Band y sistema de seguridad."
+  },
+  {
+   "start": 98.46,
+   "end": 106.46,
+   "text": "Una vez los dispositivos conectados, Grampa System centraliza y transmite bien Internet."
+  },
+  {
+   "start": 106.46,
+   "end": 111.46,
+   "text": "Toda la información recibida a un dispositivo móvil conectado al sistema."
+  },
+  {
+   "start": 111.46,
+   "end": 115.46,
+   "text": "Cuenta con altavoces integrados para mejorar la experiencia de uso,"
+  },
+  {
+   "start": 115.46,
+   "end": 123.46,
+   "text": "reproduciendo recordatorios de voz, pregrabados para medicinas o necesidades específicas del adulto mayor."
+  },
+  {
+   "start": 123.46,
+   "end": 139.62,
+   "text": "En caso de problemas asociados a la salud, como una baja en el ritmo cardíaco o una alteración en la presión sanguínea,"
+  },
+  {
+   "start": 139.62,
+   "end": 144.62,
+   "text": "una llamada de emergencia es realizada al número de emergencia asociado."
+  },
+  {
+   "start": 144.62,
+   "end": 151.62,
+   "text": "Simultaneamente, indicaciones serán emitidas desde los altavoces para tranquilizar al adulto mayor mientras llega la ayuda."
+  },
+  {
+   "start": 151.62,
+   "end": 164.08,
+   "text": "Grampa System está pensado para los familiares de los más de 350.000 nicarabuenses de la tercera edad."
+  },
+  {
+   "start": 164.08,
+   "end": 171.08,
+   "text": "Con 60 años o más que desean llevar un control de la salud de su familiar."
+  },
+  {
+   "start": 171.08,
+   "end": 178.08,
+   "text": "Ubicación del adulto mayor y monitoreo constante que alerta sobre posible allanamientos domiciliares."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 180.2
+}
