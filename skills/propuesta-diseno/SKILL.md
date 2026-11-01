@@ -48,3 +48,65 @@ description: Convierte el nombre, logo o una idea del equipo en propuestas de id
 - Tokens: `brand/tokens.css`.
 - Generador desde logo: `scripts/gen_palette.py`.
 - Doctrina visual: `PRODUCT.md` y `DESIGN.md`.
+- Entregable dossier: `references/dossier-soluciones.md`.
+
+## Dossier de soluciones (entregable editorial)
+
+Cuando el pedido es un dossier de soluciones para retos de rally (PDF + Word + Excel), aplica
+esta doctrina. Nació de una revisión real del usuario y es obligatoria.
+
+### Contenido y pensamiento
+
+- Nosotros **no creamos retos**: el usuario los entrega. Nosotros proponemos soluciones.
+- Cada reto lleva una **propuesta concreta** con nombre propio, beneficiario, componentes,
+  costo estimado, pasos de operación y métricas. El diagnóstico solo existe para sostener la
+  propuesta; nunca ocupa más espacio que ella.
+- Cadena obligatoria: problema → causa raíz → insight → solución → métrica. La causa raíz
+  **nunca** es "No documentado": si falta la fuente, se razona el mecanismo y se marca la cifra
+  como estimación a validar.
+- **Precedentes por mecanismo, no por nombre del reto.** Los retos casi nunca se repiten entre
+  años. Se busca el caso ganador que resolvió el mismo movimiento (residuo→kit, obra pasiva→
+  telemetría, acopio→transformación) y se explica "por qué se parece". Un ganador del mismo
+  reto no es evidencia, es circularidad. Siempre incluir el link del video.
+- La "señal que se repite en los ganadores" es una frase de patrón, no una estadística interna.
+- No mostrar estadísticas internas del motor; solo datos que vendan la solución.
+
+### Anatomía de página
+
+- **Sin portada y sin índice.** El documento abre directo en el reto 01.
+- Cabecera del reto: número gigante (64 pt, cobalto) a la izquierda, título a la derecha y
+  debajo un chip navy con `CATEGORÍA · 01/09`.
+- Orden: descripción breve → ODS → propuesta (nombre + claim + qué es) → cómo funciona →
+  datos (beneficiario, componentes, costo) → riesgo/mitigación → cadena de razonamiento →
+  métricas → señal → precedentes → pitch de 60 s → **COMENTARIOS** con líneas regladas.
+- ODS con **figura**: badge cuadrado del color oficial del ODS con su número en blanco, nombre
+  y una línea de justificación. Nunca escribir solo "ODS 12".
+- Dos páginas por reto. Nada de páginas huérfanas: si el bloque final no cabe, se compacta el
+  ritmo vertical hasta que entre; no se deja una hoja con tres líneas.
+
+### Jerarquía visual (no todo gris)
+
+- Etiquetas de tabla y rótulos de sección en **navy `#0D1B35`**, no en gris.
+- Acento cobalto `#0866F5` reservado a: número de reto, nombre de la propuesta, métrica clave,
+  numeración de pasos y links.
+- Cuerpo en `#334155`; gris `#5C7193` solo para metadatos (puesto, notas al pie).
+- Cada sección abre con una regla hairline 1 px + rótulo mono en mayúsculas: eso es la
+  separación. Sin tarjetas, sin sombras, sin emojis, sin degradados.
+- Prohibido el celeste/cian como color de texto; el azul de lectura es navy o cobalto.
+- Nada de tablas o bloques cortados a mitad de página: `break-inside: avoid` en filas,
+  analogías, riesgo, pitch y comentarios; `break-after: avoid` en encabezados.
+
+### Entregables
+
+- **PDF**: A4, Chrome headless, fuentes locales (`Plus Jakarta Sans` + `JetBrains Mono`).
+- **Word**: espejo del PDF con la misma jerarquía y los ODS como tabla con celda de color.
+- **Excel**: hoja Panel con todos los retos y una hoja por reto con métricas, propuesta y
+  bloque "Comentarios e ideas del equipo" con filas editables (idea, responsable, métrica, fecha).
+
+### Validación antes de entregar
+
+1. Contar páginas: 2 por reto, sin huérfanas; revisar el `y` máximo de cada página.
+2. Buscar palabras prohibidas (`saturacion`, `probabilidad`, `win rate`, `winrate`, `score`)
+   y la cadena "No documentado".
+3. Verificar que cada reto tenga su link de video y sus ODS con figura.
+4. Renderizar páginas a PNG y mirar: sin cortes, sin repetición circular del nombre del reto.
