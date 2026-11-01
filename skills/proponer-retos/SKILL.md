@@ -14,8 +14,9 @@ description: Propone retos nuevos o reformulados para el certamen activo, anclad
 ## Procedimiento
 
 1. Lee `brief.json` para saber el certamen (`nacional` o `latam`), la categoría y la ciudad.
+   El reto a escoger y la biblioteca/tecnología a usar **no se saben de antemano**: se definen en el momento con el usuario, después de leer `brief.json` (certamen, categoría, ciudad) y `research/challenges.json`. No se hardcodea ningún reto ni ninguna biblioteca.
 2. Lee `research/challenges.json` (banco base) y `research/claims.json` (cifras con fuente).
-   Si una cifra no está ahí, **no la escribas**: describe el problema sin número.
+   Antes de proponer un reto, valida que cualquier cifra o precedente que cites exista en `research/claims.json` con fuente, URL y año. Si una cifra no está ahí, no se escribe como hecho: describe el problema sin número o marca como estimación.
 3. Revisa `knowledge/winners_latam.md` y `knowledge/winners_analysis.md` para no proponer algo
    que ya ganó igual, y para copiar el patrón que sí funciona (hibridación ciberfísica:
    hardware comercial + software).
