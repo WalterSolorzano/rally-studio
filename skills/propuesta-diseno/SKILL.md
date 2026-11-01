@@ -13,6 +13,10 @@ description: Convierte el nombre, logo o una idea del equipo en propuestas de id
 
 ## Procedimiento
 
+### Requisitos previos (obligatorios)
+- Instalar la skill `impeccable` (`npx skills add impeccable`) y la skill `frontend-design` (`npx skills add frontend-design`) antes de generar cualquier propuesta visual. Sin ambas skills instaladas, no se procede.
+- Hacer preguntas de diseño al usuario antes de proponer: nombre del proyecto, a qué se dedica, público, tono (sobrio / cálido / técnico), si ya hay logo o color obligatorio, y en qué dispositivo se verá principalmente. Nunca proponer sin estas respuestas.
+
 1. Pregunta solo lo que no puedas deducir: nombre del proyecto, a qué se dedica, público,
    tono (sobrio / cálido / técnico) y si ya hay logo o color obligatorio.
 2. Si hay logo, léelo (`brand/logo.png` o el que indique) y extrae 2-3 colores dominantes.
