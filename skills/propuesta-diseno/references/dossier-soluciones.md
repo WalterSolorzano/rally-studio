@@ -79,7 +79,9 @@ Secciones: `h3` mono 7.3 pt, mayúsculas, navy, `border-top: 1px solid #0D1B35`,
 Cierre del reto:
 
 - `.pitch` — borde superior navy 2 px, texto 9.4 pt, rótulo `Pitch de 60 segundos · Opción 01`.
-- `.comentarios` — rótulo cobalto, 12 líneas regladas de 8.2 mm.
+- `.comentarios` — rótulo cobalto, **11 líneas regladas** de 8.2 mm. Con 12 la última cae fuera
+  del área útil y Chrome la recorta sin avisar; si se agrega contenido a la página 3, se vuelve a
+  contar.
 
 Dos soluciones:
 
@@ -89,9 +91,23 @@ Dos soluciones:
 .sol.b .prop .name { color: #0D1B35; font-size: 16.5pt }   /* la opción 2 no compite en cobalto */
 .sol.b .prop .claim { font-size: 9.8pt }  .sol.b .prop .what { font-size: 8.8pt }
 .sol-tag     { mono 6.9pt navy }          /* "Opción 01" / "Reto 09 · Opción 02" */
-table.datos  { table-layout: fixed }  td.k { width: 33mm }   /* evita solapamiento etiqueta/valor */
-table.datos.compact td { padding: 1.3mm 0; font-size: 8.2pt }
+table.datos  { table-layout: fixed }  td.k { width: 36mm }   /* evita solapamiento etiqueta/valor */
+table.datos.compact td { padding: 1.2mm 0; font-size: 8.2pt }
 ```
+
+En la práctica (un párrafo por solución, después de la tabla de datos):
+
+```
+.real   { margin-top: 2mm; border-left: 2px solid #C8D8EE; padding-left: 3mm;
+          font-size: 8.1pt; line-height: 1.34; color: #334155; max-width: 170mm;
+          break-inside: avoid }
+.real .k { mono 6.7pt navy, "En la práctica" }
+```
+
+Contenido obligatorio del párrafo (350–450 caracteres): quién opera, quién paga y cuánto gana ese
+operador, de dónde salen insumos y equipos, y qué esfuerzo exige arrancar (personas, metros,
+horario). En Word va como párrafo con run `EN LA PRÁCTICA` en Consolas 7 pt navy; en Excel, una
+sección «En la práctica · Opción 01/02» con la fila mezclada A:D y alto 62.
 
 Detalles que suman: `.detalles` grid 3 columnas, `.detalle` con borde izquierdo cobalto 2 px,
 `.detalle .k` mono navy 6.8 pt y texto 7.9 pt. Tres por reto.
@@ -157,8 +173,12 @@ El lector del dossier no tiene por qué saber del oficio del reto. Reglas de esc
   fuera en vez de inventar.
 - Las dos soluciones no se encadenan: la Opción 02 no puede decir "vuelve al banco central", "se
   suma a la Opción 01" ni ninguna fórmula que la vuelva dependiente. Cada una cierra sola.
+- `datos_realidad.py`: `REALIDAD["01".."09"]` con `a` y `b`, los párrafos «En la práctica» de cada
+  opción (350–450 caracteres: operador, quién paga y cuánto gana, origen de insumos, esfuerzo de
+  arranque). Se mergea como los demás.
 - `generar_dossier_v3.py`: construye HTML → PDF (Chrome headless), DOCX (python-docx) y
   XLSX (openpyxl). Sin dict de riesgos: la sección de jurado se eliminó a propósito.
+  `html_solucion(etiqueta, prop, real="", compacto=False)` imprime el párrafo `real` si viene.
 - Excel: hoja `Panel` + una hoja por reto. Panel: Reto, Propuesta 01, Propuesta 02, Categoría,
   ODS, Beneficiario, Métrica clave, Precedente 1, Video del precedente (el hipervínculo vive en
   la columna 9). El bloque editable se llama "Comentarios e ideas del equipo" y trae columnas
@@ -168,6 +188,10 @@ El lector del dossier no tiene por qué saber del oficio del reto. Reglas de esc
 
 1. `paginas == 3 × retos`, sin páginas con menos de ~150 caracteres.
 2. Sin `saturacion`, `probabilidad`, `win rate`, `winrate`, `score`, `No documentado`.
-3. 2 soluciones, 3 detalles, 2 links de video y 3 ODS con badge por reto.
-4. DOCX con el mismo orden, ambas opciones y los ODS como tabla con celda de color.
-5. XLSX con 9 hojas de reto, segunda solución y filas de comentarios editables.
+3. 2 soluciones independientes, 2 «En la práctica», 3 detalles, 2 links de video y 3 ODS con
+   figura oficial por reto.
+4. DOCX con el mismo orden, ambas opciones, los ODS con imagen insertada y el párrafo
+   «EN LA PRÁCTICA» en cada una.
+5. XLSX con 9 hojas de reto, segunda solución, «En la práctica · Opción 01/02» y filas de
+   comentarios editables.
+6. 11 líneas regladas de COMENTARIOS visibles; ninguna cortada al pie.

@@ -84,6 +84,16 @@ esta doctrina. Nació de una revisión real del usuario y es obligatoria.
   líneas no vende: el lector tiene que poder imaginarse el objeto instalado.
 - **Los pasos de "cómo funciona" repiten el idioma llano**, no vuelven a la jerga que la
   presentación acaba de traducir.
+- **"En la práctica" (obligatorio, uno por solución).** Después de la tabla de datos, un párrafo
+  de 350 a 450 caracteres responde cuatro cosas: quién lo opera (junta vecinal, taller del
+  barrio, cooperativa, municipio), quién paga y cuánto gana el que opera, de dónde salen los
+  insumos y los equipos, y cuánto esfuerzo exige arrancar (personas, metros, horario). Se
+  encabeza con el rótulo mono `En la práctica` y una regla vertical gris a la izquierda. Sin este
+  párrafo la propuesta se lee como idea abierta: "se instalará" o "los usuarios podrán" no es
+  una solución.
+- **Nombres que se entiendan solos.** El nombre no es una abstracción corporativa: "MotorBank"
+  hace pensar en un banco financiero o en un depósito de motores. Se elige un nombre que diga qué
+  hace o qué entrega ("MotorListo", "Turno de Agua", "Briqueta Viva").
 - **Es una idea, no un proyecto de ingeniería.** No desarrollar detalle constructivo ni plan de
   obra: la ejecución se resuelve después. Basta con que la idea se entienda y se vea viable.
 - **Detalles que suman** (3 por reto): ganchos de buenas prácticas que elevan la propuesta sin
@@ -110,9 +120,10 @@ esta doctrina. Nació de una revisión real del usuario y es obligatoria.
 - Cabecera del reto: número gigante (64 pt, cobalto) a la izquierda, título a la derecha y
   debajo un chip navy con `CATEGORÍA · 01/09` en una sola línea.
 - Orden: descripción breve → ODS → insignias que aplican → "Dos soluciones posibles" → Opción 01
-  completa → Opción 02 (página nueva, rótulo `Reto NN · Opción 02`) → Detalles que suman (3
-  columnas) → cadena de razonamiento → métricas agrupadas por opción → señal → precedentes →
-  pitch de 60 s → **COMENTARIOS** con líneas regladas.
+  completa (nombre, claim, qué es, cómo funciona, datos y **En la práctica**) → Opción 02 (página
+  nueva, rótulo `Reto NN · Opción 02`, misma estructura) → Detalles que suman (3 columnas) →
+  cadena de razonamiento → métricas agrupadas por opción → señal → precedentes → pitch de 60 s →
+  **COMENTARIOS** con líneas regladas.
 - **Tres páginas por reto.** Página 1: cabecera + ODS + Opción 01. Página 2: Opción 02 +
   detalles + cadena + métricas. Página 3: señal + precedentes + pitch + comentarios.
 - ODS con **la figura oficial de la ONU**, no una recreación. Se usa el archivo oficial del ODS
@@ -174,7 +185,13 @@ Cada punto nació de una corrección del usuario. Si el entregable repite uno de
 10. **Retos escritos por nosotros.** El usuario entrega los retos; nosotros solo proponemos. Nunca
     se inventa un reto ni se completa el enunciado con supuestos propios.
 11. **Páginas casi vacías o elementos cortados.** Antes de entregar se mira el PDF renderizado,
-    no solo el conteo de páginas.
+    no solo el conteo de páginas. Y se cuentan las líneas regladas de comentarios: si el bloque
+    se pasa del pie, Chrome recorta la última sin avisar.
+12. **Propuesta sin operador ni incentivo.** Falta quién la opera, quién paga, cuánto gana y de
+    dónde salen los materiales. Se corrige con el párrafo "En la práctica", no con más adjetivos.
+13. **Nombre abstracto.** Un nombre que suena a institución ("banco", "fondo", "plataforma")
+    antes que a producto confunde al lector. Se prueba el nombre en una frase: si hay que
+    explicarlo, se cambia.
 
 ### Validación antes de entregar
 
@@ -182,6 +199,9 @@ Cada punto nació de una corrección del usuario. Si el entregable repite uno de
 2. Buscar palabras prohibidas (`saturacion`, `probabilidad`, `win rate`, `winrate`, `score`)
    y la cadena "No documentado".
 3. Verificar que cada reto tenga sus 2 soluciones independientes, 2 o 3 insignias, 3 detalles,
-   sus links de video y sus ODS con **la imagen oficial** (no un cuadrado con número).
+   sus links de video, sus ODS con **la imagen oficial** (no un cuadrado con número) y **un
+   párrafo "En la práctica" por solución**.
 4. Renderizar páginas a PNG y mirar: sin cortes, sin grupos de métricas partidos entre páginas,
    sin repetición circular del nombre del reto.
+5. Contar las líneas regladas de COMENTARIOS en el PDF: si la última queda fuera del área útil,
+   se baja a la cantidad que entre (11 en A4 con esta maqueta).
