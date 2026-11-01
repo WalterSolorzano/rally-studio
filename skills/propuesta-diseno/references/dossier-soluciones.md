@@ -79,9 +79,9 @@ Secciones: `h3` mono 7.3 pt, mayúsculas, navy, `border-top: 1px solid #0D1B35`,
 Cierre del reto:
 
 - `.pitch` — borde superior navy 2 px, texto 9.4 pt, rótulo `Pitch de 60 segundos · Opción 01`.
-- `.comentarios` — rótulo cobalto, **11 líneas regladas** de 8.2 mm. Con 12 la última cae fuera
-  del área útil y Chrome la recorta sin avisar; si se agrega contenido a la página 3, se vuelve a
-  contar.
+- `.comentarios` — rótulo cobalto, **10 líneas regladas** de 8.2 mm (una menos si la página 3
+  trae mucho texto). De 12 en adelante la última cae fuera del área útil y Chrome la recorta sin
+  avisar; si se agrega contenido a la página 3, se vuelve a contar.
 
 Dos soluciones (misma jerarquía: nombre 19 pt navy en ambas, rótulo en chip claro):
 
@@ -135,8 +135,8 @@ El lector del dossier no tiene por qué saber del oficio del reto. Reglas de esc
   qué es y para qué sirve: «hotel de nidos: bloque de madera con agujeros y cañas huecas donde
   las abejas solitarias ponen sus huevos»; «bebedero: bandeja poco profunda con agua y piedras
   donde beben los insectos» (no es nada que se instale en un edificio); «fisurómetro: regla
-  pegada a los dos lados de una grieta»; «retorta: horno cerrado sin oxígeno»; «biochar: carbón
-  poroso que se entierra»; «briqueta: bloque denso del tamaño de un ladrillo».
+  pegada a los dos lados de una grieta»; «retorta: horno cerrado sin oxígeno». La prueba: si el
+  lector no puede dibujar el objeto con esa frase, falta la traducción.
 - **El párrafo de presentación (`que_es`) tiene cuatro movimientos**: situación concreta →
   qué es la solución → qué incluye, con cada objeto explicado → cantidad y escala (8 a 12 nodos
   por sector, cuatro manzanas; franja de 3 a 6 m; 200 litros; ocho puntos de carga; garantía de
@@ -162,6 +162,11 @@ El lector del dossier no tiene por qué saber del oficio del reto. Reglas de esc
 - Verificar con el `y` máximo de cada página: si una página termina por debajo de ~590 pt de
   800 útiles, revisar que el bloque anterior no se haya partido; el hueco de cierre de la
   Opción 01 en la página 1 es esperado (la Opción 02 abre página nueva).
+
+- **La solución sirve para toda la familia del reto.** Si el reto nombra un conjunto
+  (electrodomésticos, residuos del mercado, puntos de acopio), el mecanismo tiene que valer para
+  el conjunto: medir y adaptar en el sitio, o plano con tres medidas, o ruta de acopio. Una
+  propuesta que solo funciona con el elemento más cómodo resuelve el ejemplo, no el reto.
 
 ## Generador
 
@@ -195,4 +200,4 @@ El lector del dossier no tiene por qué saber del oficio del reto. Reglas de esc
    «EN LA PRÁCTICA» en cada una.
 5. XLSX con 9 hojas de reto, segunda solución, «En la práctica · Opción 01/02» y filas de
    comentarios editables.
-6. 11 líneas regladas de COMENTARIOS visibles; ninguna cortada al pie.
+6. 10 líneas regladas de COMENTARIOS visibles; ninguna cortada al pie.

@@ -57,7 +57,22 @@ esta doctrina. Nació de una revisión real del usuario y es obligatoria.
 
 ### Cómo se razona una solución que gana
 
-**1. Primero el banco, después la idea.** `knowledge/retos_razonamiento.json` guarda 20 casos
+**1. Análisis sistémico antes de idear.** Ninguna idea sale antes de escribir el sistema del reto:
+actores (quién lo sufre, quién decide, quién opera, quién paga), flujos de materia y energía (qué
+entra, qué sale, dónde se acumula), capacidad instalada que ya existe (talleres, comités, escuelas,
+galpones), estacionalidad, normas y quién pierde si la solución funciona. De ese mapa salen las
+tensiones reales; la idea tiene que resolver al menos dos a la vez (residuo y costo, desempleo y
+servicio, dato y decisión). Una idea que resuelve una sola tensión es la respuesta obvia de
+cualquiera.
+
+**2. Toda la familia del reto, no el ejemplo cómodo.** Si el reto nombra un conjunto ("electrodomésticos",
+"residuos del mercado", "puntos de acopio"), la solución tiene que servir para el conjunto aunque
+cambien marca, año, tamaño o modelo. Se logra con un mecanismo que **mide y se adapta en el sitio**
+(medir la potencia y calibrar el corte, medir y elegir la pieza, un plano con tres medidas) o con una
+ruta de acopio y clasificación. Si la propuesta solo funciona con un elemento concreto, se está
+resolviendo el ejemplo, no el reto.
+
+**3. Primero el banco, después la idea.** `knowledge/retos_razonamiento.json` guarda 20 casos
 ganadores con `id`, `temas`, `año`, `rally`, `categoría`, `equipo`, `puesto`, `problema`,
 `causa_raiz`, `insight`, `solucion`, `metrica`, `video_url`. Se busca por **verbo del mecanismo**
 ("reutilizar", "medir", "trazar", "filtrar") y por `temas`, nunca por título del reto. De cada caso
@@ -65,7 +80,7 @@ se extraen dos cosas: el `insight` (qué convención rompió) y la `metrica` (qu
 Si un campo dice "No documentado en la fuente", no se copia: se razona el mecanismo y la cifra se
 marca como estimación. Si existe el caso que ganó ese mismo reto, se lee antes que nada y manda.
 
-**2. Familias de mecanismos que ya ganaron.** Toda propuesta se declara en una de estas familias.
+**4. Familias de mecanismos que ya ganaron.** Toda propuesta se declara en una de estas familias.
 Si no cae en ninguna, es un oficio, no una propuesta.
 
 - **A. Objeto de siempre + instrumentación y control.** Techriders 2024 convirtió una micropresa en
@@ -90,18 +105,18 @@ Si no cae en ninguna, es un oficio, no una propuesta.
   reciclados), BioInnova 2023 (vivienda con agua, saneamiento y huerto). Gana porque se instala mil
   veces igual y el insumo tiene quién lo recoja.
 
-**3. Cinco pruebas de descarte.** Antes de escribir, la idea pasa las cinco o se descarta:
+**5. Cinco pruebas de descarte.** Antes de escribir, la idea pasa las cinco o se descarta:
 
 1. ¿Podría montarlo mañana un taller común, sin nada nuevo? Entonces es un oficio, no una propuesta.
-2. ¿El insumo varía tanto (marcas, años, modelos) que no se puede estandarizar? Entonces el mecanismo
-   tiene que **medir y adaptarse en el sitio**, no prometer una norma fija ni una garantía por modelo.
+2. ¿El insumo varía tanto (marcas, años, modelos) que no se puede estandarizar? El mecanismo tiene
+   que **medir y adaptarse en el sitio**, y servir para toda la familia del reto, no para un modelo.
 3. ¿Alguien lo usa todos los días y paga por el servicio, o se vende una unidad y desaparece?
 4. ¿La métrica es física (quintales, litros, vatios, horas, personas) o es una promesa?
 5. ¿Qué gana quien lo opera y qué pierde el barrio si no existe?
 
-**4. Anti-patrones.** Estos ya se descartaron y no vuelven:
+**6. Anti-patrones.** Estos ya se descartaron y no vuelven:
 
-- Taller que repara y revende el residuo con garantía (el reto 01 cayó aquí).
+- Taller que repara y revende el residuo con garantía.
 - Plataforma o app que "conecta" oferta y demanda sin acopio, logística ni operador.
 - Capacitación y concientización como núcleo de la solución.
 - Sensor o dispositivo suelto, sin nadie que decida con el dato.
@@ -109,7 +124,7 @@ Si no cae en ninguna, es un oficio, no una propuesta.
 - Solución que depende de donaciones permanentes de tiempo o de insumos.
 - Mejorar el mismo producto que ya existe sin cambiar quién lo usa ni quién paga.
 
-**5. La prueba del día 400.** Al día 400, ¿el servicio sigue funcionando?, ¿quién cambió la pieza
+**7. La prueba del día 400.** Al día 400, ¿el servicio sigue funcionando?, ¿quién cambió la pieza
 gastada?, ¿quién pagó?, ¿qué pasa si el operador se va del barrio? Si la respuesta es "depende de un
 proyecto nuevo", la propuesta todavía no está terminada.
 
@@ -155,7 +170,7 @@ proyecto nuevo", la propuesta todavía no está terminada.
   una solución.
 - **Nombres que se entiendan solos.** El nombre no es una abstracción corporativa: "MotorBank"
   hace pensar en un banco financiero o en un depósito de motores. Se elige un nombre que diga qué
-  hace o qué entrega ("MotorListo", "Turno de Agua", "Briqueta Viva").
+  hace o qué entrega: el objeto, el servicio o el resultado, sin metáfora corporativa.
 - **Es una idea, no un proyecto de ingeniería.** No desarrollar detalle constructivo ni plan de
   obra: la ejecución se resuelve después. Basta con que la idea se entienda y se vea viable.
 - **Detalles que suman** (3 por reto): ganchos de buenas prácticas que elevan la propuesta sin
@@ -172,8 +187,8 @@ proyecto nuevo", la propuesta todavía no está terminada.
 - **Precedentes por mecanismo.** Los retos casi nunca se repiten entre años, así que se busca el
   caso ganador que resolvió el mismo movimiento (residuo→kit, obra pasiva→telemetría, acopio→
   transformación) y se explica "por qué se parece". Si existe el caso que ganó **ese mismo reto**,
-  es el primer precedente y se copia su mecanismo, no su redacción: el reto de motores lo ganó un
-  equipo que no revendió motores, los volvió planta motriz de tracción comunitaria. Siempre se
+  es el primer precedente y se copia su mecanismo, no su redacción: el caso de motores no revendió
+  motores, los volvió planta motriz de tracción comunitaria. Siempre se
   incluye el link del video; si el caso no tiene video, se dice y se compensa con un segundo
   precedente que sí lo tenga.
 - La "señal que se repite en los ganadores" es una frase de patrón, no una estadística interna.
