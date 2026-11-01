@@ -1,0 +1,9 @@
+asset_id,nombre,tipo,dim_ancho_mm,dim_alto_mm,dim_fondo_mm,material
+tornillo_m3,Tornillo M3 x 12 mm,herraje,5,5,12,acero
+tornillo_m4,Tornillo M4 x 16 mm,herraje,7,7,16,acero
+tornillo_m5,Tornillo M5 x 20 mm,herraje,8,8,20,acero
+cable_usb,Cable USB-C 1 m,conectividad,1200,4,4,PVC
+conector_rc,Conector control remoto,electronica,20,10,5,plastico
+carcasa_principal,Carcasa equipo,carcasa,150,80,30,ABS
+sin_dimensiones,Pieza sin dimen,pieza,,,,,
+sin_asset,,pieza,,,,,

@@ -20,6 +20,7 @@ Uso:
 """
 import csv
 import json
+import re
 import sys
 import io
 from pathlib import Path
@@ -28,6 +29,9 @@ RAIZ = Path(__file__).resolve().parents[1]
 DIR_SHOTS = RAIZ / "shots"
 SALIDA = RAIZ / "script" / "shotlist.csv"
 ARCHIVO_CLAIMS = RAIZ / "research" / "claims.json"
+BOM_PATH = RAIZ / "budget" / "bom.csv"
+
+_DIM_MM = re.compile(r"^dim_.+_mm$")
 
 COLUM_BASE = ["id", "act", "description", "asset_id", "asset_type",
               "duration_s", "status", "notes"]
@@ -64,12 +68,37 @@ def _cargar_ids_utc_claim() -> set:
     return set()
 
 
-def cargar_shots() -> tuple[list[dict], list[str]]:
+def _cargar_bom(bom_path: Path) -> dict[str, dict]:
+    """Lee budget/bom.csv y devuelve {asset_id: fila}."""
+    tabla: dict[str, dict] = {}
+    if not bom_path.exists():
+        return tabla
+    try:
+        with bom_path.open(newline="", encoding="utf-8") as f:
+            for row in csv.DictReader(f):
+                aid = str(row.get("asset_id", "")).strip()
+                if aid:
+                    tabla[aid] = row
+    except OSError:
+        return tabla
+    return tabla
+
+
+def _tiene_dim_mm(row: dict) -> bool:
+    return any(_DIM_MM.match(str(k)) for k in row.keys())
+
+
+def cargar_shots(dir_shots: Path | None = None, bom_path: Path | None = None) -> tuple[list[dict], list[str]]:
     """Lee shots/*.yaml y valida. Devuelve (filas, errores)."""
+    if dir_shots is None:
+        dir_shots = DIR_SHOTS
+    if bom_path is None:
+        bom_path = BOM_PATH
     errores: list[str] = []
     filas: list[dict] = []
-    archivos = sorted(DIR_SHOTS.glob("*.yaml")) if DIR_SHOTS.exists() else []
+    archivos = sorted(dir_shots.glob("*.yaml")) if dir_shots.exists() else []
     ids_utc = _cargar_ids_utc_claim()
+    bom = _cargar_bom(bom_path)
     vistos: set = set()
     for ruta in archivos:
         try:
@@ -89,6 +118,14 @@ def cargar_shots() -> tuple[list[dict], list[str]]:
         if owner and owner not in OWNERS_VALIDOS:
             errores.append(f"{ruta.name}: owner '{owner}' no es especialista conocido "
                            f"({sorted(OWNERS_VALIDOS)})")
+        if owner == "modeler":
+            asset_id = str(d.get("asset_id", "")).strip()
+            if not asset_id:
+                errores.append(f"{ruta.name}: falta asset_id (obligatorio para modeler)")
+            elif asset_id not in bom:
+                errores.append(f"{ruta.name}: asset_id '{asset_id}' no existe en budget/bom.csv")
+            elif not _tiene_dim_mm(bom[asset_id]):
+                errores.append(f"{ruta.name}: budget/bom.csv: '{asset_id}' carece de dim_*_mm")
         tier = str(d.get("quality_tier", "")).strip()
         if tier and tier not in TIERS_VALIDOS:
             errores.append(f"{ruta.name}: quality_tier '{tier}' invalido (draft|revisar|final)")
