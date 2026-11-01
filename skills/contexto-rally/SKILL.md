@@ -34,6 +34,19 @@ description: Carga el contexto del proyecto antes de trabajar. Lee brief.json, e
 - Si `brief.json` trae datos de ejemplo (`hidro-vigia`, `mentes-pinoleras`), son residuo de
   una plantilla: no los presentes como si fueran del usuario.
 
+## Modo del certamen
+
+Confirmar `rally_type` en `brief.json` antes de leer cualquier fuente del otro certamen.
+
+- **Nacional (24 h):** municipio real de Nicaragua, eje del Plan Nacional de Lucha contra la
+  Pobreza 2022–2026, presupuesto en córdobas (C$) con tasa del BCN declarada en `brief.json`,
+  siglas locales (CNU, MINJUVE, TELCOR, INATEC, MEFCCA), Ciudades Creativas si aplica, ODS
+  animados con la paleta del proyecto.
+- **Latam (28 h):** el municipio es laboratorio piloto (no el único destino), solución modular,
+  paramétrica y replicable en toda América Latina, presupuesto en USD (sin C$ ni tasas locales),
+  sin siglas gubernamentales locales, cierre del video: "piloto en [ciudad], replicable en toda
+  América Latina".
+
 ## Punteros
 
 - Estado del proyecto: `brief.json`
