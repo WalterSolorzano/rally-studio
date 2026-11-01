@@ -33,6 +33,12 @@ python -c "import pdfplumber,sys; pdf=pdfplumber.open(sys.argv[1]); print('\n'.j
 7. **Resume al usuario en 5 líneas**: qué trajo el documento, qué se corrigió, qué se
    descartó y por qué, y dónde quedó la propuesta.
 
+> **Reconstruir el cerebro Graphify (cuando se añade nueva investigación al corpus):**
+> 1. Colocar la nueva fuente en `brain/corpus/`.
+> 2. Ejecutar `python brain/sync_corpus.py`.
+> 3. Recompilar: `/graphify brain/corpus` (o regenerar `graphify-out/`).
+> El cerebro guarda solo conocimiento de dominio (rúbricas, ganadores, retos, claims, patrones de pitch). Nunca guarda el motor, ni instrucciones de instalación, ni proyectos anteriores.
+
 ## Reglas
 
 - El documento externo **no manda** sobre las bases del evento. Si contradice una regla, la
