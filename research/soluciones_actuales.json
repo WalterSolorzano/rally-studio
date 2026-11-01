@@ -1,0 +1,1199 @@
+{
+ "meta": {
+  "kicker": "Rally Studio // Motor de soluciones",
+  "titulo": "Nueve retos, nueve propuestas",
+  "subtitulo": "Soluciones construidas por mecanismo, con el precedente que las sostiene y espacio para las ideas del equipo.",
+  "certamen": "Rally Latinoamericano de Innovación",
+  "fecha": "Octubre 2026",
+  "equipo": "Rally Studio"
+ },
+ "retos": [
+  {
+   "id": "01",
+   "titulo": "Segunda vida de los motores eléctricos domésticos",
+   "categoria": "Impacto Social",
+   "categoria_porque": "El punto de molienda y la picadora del mercado son servicios de barrio: el valor se mide en quintales molidos, toneladas picadas y familias atendidas, no en unidades vendidas.",
+   "descripcion": "Los electrodomésticos en desuso (caminadoras, bombas de agua, lavarropas, ventiladores, herramientas) conservan motores funcionales que terminan como chatarra. El reto pide elegir un actor beneficiario concreto y proponer como recuperar esos motores y darles un nuevo propósito.",
+   "ods": [
+    [
+     "ODS 12",
+     "Producción y consumo responsables",
+     "El motor alarga su vida dentro de un servicio que funciona todos los días, en vez de venderse una vez y perderse."
+    ],
+    [
+     "ODS 8",
+     "Trabajo decente y crecimiento económico",
+     "El punto de molienda da ingreso a una cooperativa de barrio y baja el costo de moler para las familias."
+    ],
+    [
+     "ODS 7",
+     "Energía asequible y no contaminante",
+     "El motor que ya existe mueve el molino y la picadora sin fabricar una máquina nueva ni quemar combustible."
+    ]
+   ],
+   "propuesta": {
+    "nombre": "Molino Vecinal",
+    "claim": "Los motores que se tiran mueven el molino del barrio: maíz, café y grano molidos por cuota, con corte calibrado a la potencia medida.",
+    "que_es": "Un motor de cualquier aparato se tira porque nadie sabe cuánta fuerza le queda, y el molino del barrio cobra caro. Qué es: un punto de molienda donde el motor rescatado del acopio mueve el molino de grano, con un protector térmico calibrado al amperaje medido en el banco de prueba. Ese corte evita que se queme otra vez, sin importar marca ni año. Muele 8 a 12 quintales por semana para 40 familias, con cuota por quintal.",
+    "como": [
+     "Acopio: los motores llegan del punto limpio, de talleres y de las casas a cambio de un vale de molienda.",
+     "Prueba en banco: se mide aislamiento, consumo en vacío y vueltas por minuto. El motor que pasa se queda; el que no, va a recuperación de cobre.",
+     "Corte calibrado: al motor se le ajusta el protector térmico al amperaje medido, así trabaja sin sobrecarga. Ahí está la diferencia con cualquier taller.",
+     "Servicio: el motor mueve el molino por polea; se cobra por quintal y el contador avisa cuándo toca cambiar rodamientos."
+    ],
+    "beneficiario": "Familias del barrio y pequeños productores que hoy muelen en casa o pagan el molino comercial: 40 familias y 8 a 12 quintales por semana por punto.",
+    "componentes": [
+     "Banco de prueba con megóhmetro y pinza amperimétrica",
+     "Protector térmico regulable",
+     "Molino de grano y poleas",
+     "Contador de horas y amperaje",
+     "Estructura y guardas de lámina"
+    ],
+    "costo": "Estimación de diseño: USD 250 a 400 por punto (molino, poleas, guardas y tablero) más USD 20 a 40 por motor recuperado, frente a USD 120 a 260 por uno nuevo de potencia similar. Validar con cotización local.",
+    "metricas": [
+     "Quintales molidos por semana y familias atendidas por punto.",
+     "Costo por quintal frente al molino comercial.",
+     "Horas de servicio antes del primer cambio de rodamientos."
+    ]
+   },
+   "cadena": {
+    "problema": "Motores que todavía giran se tiran como chatarra mientras el barrio muele caro.",
+    "causa_raiz": "Nadie mide cuánta fuerza le queda ni a qué carga trabaja: sin medición no hay acople, y sin acople el motor se sobrecarga y se quema.",
+    "insight": "El motor no vale por lo que fue sino por la función que puede prestar. Medir la potencia y calibrar el corte convierte un desecho en servicio diario.",
+    "solucion": "Molino Vecinal: banco de prueba, corte calibrado y punto de molienda que cobra por quintal.",
+    "metrica": "Quintales molidos por semana y costo por quintal frente al molino comercial."
+   },
+   "senal": "Este reto lo ganó un equipo que no vendió el motor como repuesto: lo volvió tracción para el campo.",
+   "analogias": [
+    {
+     "year": 2026,
+     "equipo": "AVOCADO (UAM - Jaguares)",
+     "proyecto": "Segunda vida de motores eléctricos domésticos",
+     "que_hicieron": "Rescató motores descartados y los volvió planta motriz para tracción rural.",
+     "por_que": "Ganó este reto sin reparar ni revender: puso el motor a mover una máquina de la comunidad.",
+     "video": "",
+     "puesto": "1er lugar nacional Impacto Social"
+    },
+    {
+     "year": 2024,
+     "equipo": "Techriders (UNI-RUSB)",
+     "proyecto": "Micropresas telemetradas",
+     "que_hicieron": "Volvió una obra hidráulica convencional un sistema medido y automatizado.",
+     "por_que": "Mismo movimiento: el objeto de siempre más medición y control de la carga.",
+     "video": "https://www.youtube.com/watch?v=MIvlD31HfIk",
+     "puesto": "1er lugar internacional Innovación"
+    }
+   ],
+   "alterna": {
+    "nombre": "Abono de Mercado",
+    "claim": "La picadora se arma con lo que traiga el acopio: un motor medido y el tambor o la chapa del mismo aparato, sea lavadora, secadora o bomba.",
+    "que_es": "Un electrodoméstico no entrega solo un motor: también deja chapa, tambor o tanque que nadie recoge. Qué es: una picadora de desechos orgánicos que se arma con lo que llegue al acopio. Se mide el motor en el banco, se corta el tambor o la chapa del mismo aparato al diámetro de la polea y la máquina sirve igual si era lavadora, secadora o bomba de agua. El mercado pica cáscaras, hojas y fruta vieja, lo mezcla con poda seca y a las ocho semanas tiene abono: una a dos toneladas por semana y 40 a 60 sacos al mes.",
+    "como": [
+     "Acopio sin filtro de marca: llega el aparato completo. Se mide el motor y del mismo aparato salen la tolva y la cámara de corte; lo que no sirve va a recuperación de cobre.",
+     "Armado: un solo plano con tres medidas de tolva cubre lavadora, secadora y bomba; el motor va por polea con correa que patina antes de quemar el bobinado.",
+     "Proporción: una carretilla de desecho húmedo por una de poda seca, escrita en un tablero que maneja el propio reciclador.",
+     "Retorno: a las ocho semanas se tamiza y el abono vuelve a los puestos y al huerto escolar, a mitad del precio de tienda."
+    ],
+    "beneficiario": "Mercado de barrio, recicladores de base y huerto escolar: una a dos toneladas de desecho picadas por semana y 40 a 60 sacos de abono por mes.",
+    "componentes": [
+     "Motor medido de cualquier aparato",
+     "Tambor o chapa del mismo aparato como tolva",
+     "Cuchillas de lámina recuperada",
+     "Patio de compostaje con tablero de proporción",
+     "Tamiz y sacos retornables"
+    ],
+    "costo": "Estimación de diseño: USD 300 a 450 por picadora armada con material del acopio (motor, tambor, cuchillas y estructura), frente a USD 1.800 a 3.000 de una trituradora comercial; el patio se arma con pallets.",
+    "metricas": [
+     "Toneladas de desecho picadas por semana y sacos de abono producidos.",
+     "Costo por saco frente al abono de tienda.",
+     "Aparatos distintos que se arman con el mismo plano: lavadora, secadora y bomba."
+    ]
+   },
+   "detalles": [
+    [
+     "Economía circular",
+     "El aparato se usa entero: el motor da la fuerza, el tambor hace de tolva y la lámina se vuelve cuchilla, sea cual sea el modelo."
+    ],
+    [
+     "Empleo local",
+     "La picadora la operan recicladores de base que hoy viven del kilo de cartón; el abono les da un turno fijo y un producto con precio."
+    ],
+    [
+     "Datos abiertos",
+     "El mercado entrega al municipio el peso que dejó de ir al relleno y con ese dato negocia la tasa de recolección."
+    ]
+   ],
+   "insignias": [
+    [
+     "Economía circular",
+     "circuito cobre → motor"
+    ],
+    [
+     "Fondo nacional de innovación",
+     "piloto replicable"
+    ],
+    [
+     "Premio Latinoamérica Verde",
+     "categoría residuos"
+    ]
+   ],
+   "realidad": {
+    "a": "Lo opera una cooperativa de mujeres del barrio con dos personas formadas en el banco de prueba; el comité de agua cede el local. La familia paga 1,50 a 2,50 dólares por quintal molido, la mitad del molino comercial, y la cooperativa se queda con el margen. Los motores llegan del punto limpio y de talleres a cambio de un vale; el molino y las poleas son de ferretería. Arranca con un molino, un banco de prueba y 40 metros cuadrados.",
+    "b": "La opera una asociación de recicladores del mercado con dos personas, en el patio que cede el administrador. El mercado paga por tonelada que deja de mandar al relleno y los puestos compran el saco a mitad de precio. Los aparatos llegan completos del punto limpio, y la poda seca, de la gente que barre. Arranca con 30 metros cuadrados de patio, una picadora y una tarde de picado al día."
+   },
+   "pitch": "Cada año se tiran motores que todavía giran. En vez de revenderlos, el barrio los pone a moler: un banco mide su fuerza y un corte calibrado evita que se quemen."
+  },
+  {
+   "id": "02",
+   "titulo": "Sensores al servicio de la comunidad",
+   "categoria": "Impacto Social",
+   "categoria_porque": "La red protege viviendas y barrios vulnerables; el indicador final es personas avisadas a tiempo, no el dispositivo.",
+   "descripcion": "Millones de celulares en desuso siguen funcionando y traen acelerómetro, giroscopio, magnetómetro, GPS y conectividad. El reto pide identificar un problema local donde esos sensores aporten información útil y definir que mide, donde se instala, como se alimenta y quien decide con el dato.",
+   "ods": [
+    [
+     "ODS 9",
+     "Industria, innovación e infraestructura",
+     "Convierte hardware de consumo descartado en instrumentación de bajo costo para infraestructura comunitaria."
+    ],
+    [
+     "ODS 11",
+     "Ciudades y comunidades sostenibles",
+     "Reduce el riesgo de deslizamiento en barrios de ladera con alerta temprana y protocolo vecinal."
+    ],
+    [
+     "ODS 13",
+     "Acción por el clima",
+     "Las lluvias intensas aumentan la inestabilidad de taludes; medirla permite adaptarse con evidencia."
+    ]
+   ],
+   "propuesta": {
+    "nombre": "Ojo de Ladera",
+    "claim": "Celulares en desuso como inclinómetros y sismógrafos de bajo costo para avisar deslizamientos en barrios de ladera.",
+    "que_es": "En una ladera el aviso de derrumbe llega cuando el muro ya se movió. Qué es: una red de teléfonos viejos fijados con una base rígida a muros, taludes y tanques comunitarios. Cada teléfono mide dos cosas: cuánto se inclina la pared y si hay vibración o ruido de tierra. Se alimenta con un panel solar de 6 W y reporta cada 10 minutos. Cuántos: 8 a 12 aparatos por sector, unas cuatro manzanas. El comité ve un tablero de tres estados: normal, vigilancia y evacuación.",
+    "como": [
+     "El teléfono se fija a un muro o talud con una base rígida. Mide inclinación con su sensor de movimiento y escucha el ruido de la tierra con el micrófono.",
+     "Panel solar de 6 W y batería de celular recargable. Reporta por Wi-Fi del barrio, radio de largo alcance o chip de celular, según lo que haya.",
+     "Dos niveles de aviso: aviso cuando la inclinación cambia más de 2 mm; alarma cuando dos aparatos vecinos confirman vibración anómala.",
+     "El comité recibe el aviso en un tablero de tres estados y aplica el protocolo de evacuación. El municipio recibe el registro para mantenimiento."
+    ],
+    "beneficiario": "Barrios periurbanos en ladera con muros de contención y tanques comunitarios. Piloto: 8 a 12 nodos por sector.",
+    "componentes": [
+     "Celulares donados",
+     "Caja estanca IP65",
+     "Panel solar 6 W",
+     "Batería 18650 y controlador",
+     "Radio de largo alcance o chip de datos",
+     "Soporte rígido y tornillería"
+    ],
+    "costo": "Estimación: USD 25 a 40 por nodo reutilizando el teléfono. Validar con proveedor local y costo de datos.",
+    "metricas": [
+     "Variación de inclinación en milímetros por semana.",
+     "Falsas alarmas por mes y alarmas confirmadas.",
+     "Tiempo entre alerta y evacuación.",
+     "Nodos activos sobre nodos instalados."
+    ]
+   },
+   "cadena": {
+    "problema": "Las laderas no tienen instrumentación y el aviso llega cuando el deslizamiento ya ocurrió.",
+    "causa_raiz": "La instrumentación geotécnica comercial cuesta más que la vivienda que protege y exige energía y red que el barrio no tiene. Por eso nadie mide y no existe un umbral acordado para evacuar.",
+    "insight": "El teléfono ya trae acelerómetro, reloj, memoria y radio. El costo marginal de un nodo es la carcasa, el panel y el soporte; la instrumentación ya está en el dispositivo.",
+    "solucion": "Ojo de Ladera: nodos con celulares donados, doble umbral y protocolo comunitario de evacuación.",
+    "metrica": "Milímetros de desplazamiento detectados y minutos entre alerta y evacuación."
+   },
+   "senal": "Los ganadores de monitoreo no presentan el sensor: presentan la decisión que cambia cuando el dato llega. El tablero y el protocolo valen más que el hardware.",
+   "analogias": [
+    {
+     "year": 2024,
+     "equipo": "Techriders (UNI-RUSB)",
+     "proyecto": "Micropresas telemetradas",
+     "que_hicieron": "Instrumento una obra hidráulica con sensores de nivel, válvulas y telemetría LoRaWAN para operarla con datos.",
+     "por_que": "Es el mismo mecanismo: tomar infraestructura comunitaria que hoy es pasiva y convertirla en un sistema que mide y avisa. Cambia el objeto medido, no la arquitectura.",
+     "video": "https://www.youtube.com/watch?v=MIvlD31HfIk",
+     "puesto": "1er lugar internacional Innovación"
+    },
+    {
+     "year": 2021,
+     "equipo": "Ingeniarte (UNNE)",
+     "proyecto": "Alertar",
+     "que_hicieron": "Dispositivo de bajo costo y protocolo comunitario para pedir ayuda en una emergencia doméstica.",
+     "por_que": "Aporta la parte que la tecnología sola no resuelve: activación simple, aviso a una persona concreta y respuesta ensayada por la comunidad.",
+     "video": "https://www.youtube.com/watch?v=mgAvnq8aTJs",
+     "puesto": "1er lugar internacional Impacto Social"
+    }
+   ],
+   "alterna": {
+    "nombre": "Lectura de Muro",
+    "claim": "Sin señal ni electricidad estable también se vigila una ladera: fisurómetros de acrílico, una regla y una brigada vecinal que lee el muro cada semana.",
+    "que_es": "Cuando no hay señal ni luz estable, se vigila con los ojos y una regla. Qué es: un fisurómetro es una regla de plástico pegada a los dos lados de una grieta; si la grieta se abre, la marca se corre y se ve a simple vista. Cada vivienda recibe uno en el muro y otro en el tanque, más una ficha semanal. Una brigada del comité pasa cada semana, anota la apertura y la compara con la anterior; si pasa el umbral, suena una sirena de 12 V que carga con un panel de 10 W.",
+    "como": [
+     "Instalación de testigos pasivos: fisurómetros de acrílico, plomada y marcas de referencia en muros y tanques.",
+     "Lectura semanal con ficha y foto: la brigada registra apertura de fisura, inclinación y cambios visibles en el terreno.",
+     "Umbral y sirena: tres niveles acordados con el comité; el nivel alto dispara simulacro y aviso al municipio."
+    ],
+    "beneficiario": "Barrios en ladera sin cobertura de datos ni energía estable; comités de riesgo y escuelas del sector.",
+    "componentes": [
+     "Reglas de grieta de acrílico",
+     "Plomada y miras",
+     "Fichas impresas",
+     "Sirena de 12 V",
+     "Panel solar de 10 W"
+    ],
+    "costo": "Estimación de diseño: USD 8 a 15 por vivienda monitoreada y USD 40 por sirena. Validar con imprenta local y ferretería.",
+    "metricas": [
+     "Viviendas con ficha de lectura al día.",
+     "Tiempo entre la primera fisura nueva y el aviso al comité.",
+     "Porcentaje de la población que reconoce la sirena en simulacro."
+    ]
+   },
+   "detalles": [
+    [
+     "Economía circular",
+     "Los celulares que se descartan en el barrio se recuperan como cámara y linterna de la brigada, y el resto va a acopio de RAEE."
+    ],
+    [
+     "Datos abiertos",
+     "Las fichas semanales alimentan un mapa de riesgo que el municipio usa para priorizar obras de contención."
+    ],
+    [
+     "Energía compartida",
+     "El panel de la sirena también carga la radio del comité, de modo que la inversión sirve en emergencia y en el día a día."
+    ]
+   ],
+   "insignias": [
+    [
+     "Marco de Sendai",
+     "meta de alerta temprana"
+    ],
+    [
+     "Sello ODS Local",
+     "monitoreo comunitario"
+    ]
+   ],
+   "realidad": {
+    "a": "Lo opera el comité de riesgo del barrio con dos jóvenes capacitados; la universidad local presta el taller de armado. La familia recibe la alarma sin pagar mensualidad y el comité gana un mapa de riesgo con el que pide obras al municipio. Los celulares salen de una campaña de acopio de aparatos viejos y los paneles de 6 W se compran con fondo municipal. Los 8 a 12 nodos se arman en una jornada y el mantenimiento es una visita al mes.",
+    "b": "La brigada son cuatro vecinos del comité, con ficha semanal y firma. Cada familia sabe si su muro se movió sin comprar equipo, y el aviso llega por la sirena comunal. El acrílico y la plomada se compran en la ferretería del barrio; el panel de 10 W solo alimenta la sirena. Cuesta de 8 a 15 dólares por vivienda y una hora de lectura por semana: es la versión que se puede montar esta misma semana."
+   },
+   "pitch": "Un celular viejo ya tiene el sensor que necesita una ladera. Ojo de Ladera lo fija a un muro, lo alimenta con un panel de 6 W y avisa al comité cuando el suelo se mueve: la alerta llega antes que el derrumbe, sin instrumentos importados."
+  },
+  {
+   "id": "03",
+   "titulo": "Protección y fomento de polinizadores",
+   "categoria": "Impacto Social",
+   "categoria_porque": "El resultado se mide en producción de alimentos y biodiversidad local, con una comunidad agrícola como beneficiaria.",
+   "descripcion": "La disminución de polinizadores nativos pone en riesgo la producción de alimentos y la biodiversidad regional. El reto pide elegir un entorno concreto y una comunidad de usuarios para diseñar una propuesta ecológica o de manejo del paisaje que reduzca las amenazas locales.",
+   "ods": [
+    [
+     "ODS 2",
+     "Hambre cero",
+     "Aumenta el cuajado de fruto y la productividad hortícola sin ampliar la frontera agrícola."
+    ],
+    [
+     "ODS 15",
+     "Vida de ecosistemas terrestres",
+     "Restaura hábitat, nidos y corredores para polinizadores nativos."
+    ],
+    [
+     "ODS 11",
+     "Ciudades y comunidades sostenibles",
+     "Integra el corredor en bordes periurbanos y espacios escolares con manejo comunitario."
+    ]
+   ],
+   "propuesta": {
+    "nombre": "Corredor Nativo",
+    "claim": "El borde de la parcela deja de ser maleza: flores nativas que abren en tres momentos del año, nidos y agua para los polinizadores que suben el rendimiento del cultivo.",
+    "que_es": "La parcela rinde menos porque no hay abejas ni avispas que lleven el polen, y el borde está en maleza. Qué es: ese borde de 3 a 6 metros se convierte en una franja de flores nativas que abren en tres momentos del año (una baja, una media y una alta), para que siempre haya alimento. Incluye un hotel de nidos: un bloque de madera con agujeros y cañas huecas donde las abejas solitarias ponen sus huevos. Incluye un bebedero: una bandeja poco profunda con agua y piedras donde los insectos se posan a beber. Y parches de tierra desnuda para las abejas que anidan en el suelo. El productor firma no fumigar mientras hay floración y se mide con conteos fijos cada 15 días.",
+    "como": [
+     "Diagnóstico de las cuatro amenazas en un radio de 500 metros: pesticida, monocultivo, falta de nido y falta de agua.",
+     "Franja de 3 a 6 metros con flores de tres alturas (bajas, medias y altas) que abren en meses distintos, elegidas de la lista nativa local.",
+     "Bloques de madera perforada y cañas huecas para nidos de abeja, bandeja con agua y piedras para beber, y parches de tierra para las abejas que anidan en el suelo.",
+     "Acuerdo de no fumigar durante la floración y conteo de insectos en puntos fijos cada 15 días."
+    ],
+    "beneficiario": "Productores hortícolas, escuela rural y municipio. Piloto: una hectárea de borde por comunidad.",
+    "componentes": [
+     "Semilla y plantín nativo",
+     "Madera y caña para nidos",
+     "Bebedero",
+     "Postes y cerco",
+     "Fichas de conteo"
+    ],
+    "costo": "Estimación: USD 300 a 600 por hectárea de borde, con material local y mano de obra comunitaria. Validar con vivero local.",
+    "metricas": [
+     "Visitas de polinizadores por transecto de 15 minutos.",
+     "Ocupación de nidos instalados.",
+     "Cuajado de fruto comparado con el borde testigo.",
+     "Reducción de aplicaciones de pesticida durante la floración."
+    ]
+   },
+   "cadena": {
+    "problema": "El borde de la parcela se limpia y se fumiga, y con eso desaparecen nido, alimento y refugio justo donde el cultivo necesita polinizadores.",
+    "causa_raiz": "El borde se trata como terreno improductivo. La amenaza no es una sola: es la suma de pesticida, pérdida de nido y falta de floración continua en el momento en que el cultivo la necesita.",
+    "insight": "El polinizador no se cría: se le devuelve el hábitat en el borde. La franja floral es infraestructura agrícola con retorno medible en cuajado, no un jardín decorativo.",
+    "solucion": "Corredor Nativo: tres estratos florales nativos, nidos, agua y acuerdo de no fumigación.",
+    "metrica": "Visitas por transecto y porcentaje de cuajado de fruto frente al testigo."
+   },
+   "senal": "Los ganadores en biodiversidad no presentan una especie ni un aparato: presentan un sistema de manejo con responsabilidad asignada y una medición repetible.",
+   "analogias": [
+    {
+     "year": 2025,
+     "equipo": "STEM Synergy (UAM-DIEM)",
+     "proyecto": "Huertos verticales con recirculación hídrica",
+     "que_hicieron": "Diseño un sistema modular de cultivo con riego eficiente y materiales reciclados, pensado como infraestructura y no como objeto aislado.",
+     "por_que": "Comparte la lógica de diseñar un módulo replicable que se integra al paisaje productivo existente, con montaje local y bajo mantenimiento.",
+     "video": "https://www.youtube.com/watch?v=JhqjBm20DXo",
+     "puesto": "1er lugar internacional Innovación"
+    },
+    {
+     "year": 2023,
+     "equipo": "Nicarq Sinergy (UNI-RUSB)",
+     "proyecto": "BioInnova",
+     "que_hicieron": "Integró agua, saneamiento y producción de alimentos en una sola unidad de resiliencia para comunidad rural.",
+     "por_que": "Aporta la mirada de sistema: el corredor no se juzga solo por flores, sino por el alimento y el hábitat que sostiene en el mismo territorio.",
+     "video": "https://www.youtube.com/watch?v=5dVqVY9Ugeg",
+     "puesto": "2do lugar internacional Impacto Social"
+    }
+   ],
+   "alterna": {
+    "nombre": "Néctar de Barrio",
+    "claim": "La ciudad también es hábitat: una red de jardines de bolsillo en techos, escuelas y veredas, con sello de «amigo de los polinizadores» para quien la mantiene.",
+    "que_es": "En la ciudad los polinizadores no tienen dónde vivir: cada patio es cemento o césped cortado. Qué es: una red de jardines de bolsillo de 2 a 20 metros cuadrados en techos, patios de escuela y veredas, plantados con flores nativas y conectados entre sí como una cadena. Cada punto lo adopta una escuela, un restaurante o una junta vecinal, que firma cuidarlo sin pesticida y manda una foto al mes. El municipio entrega un sello de amigo de los polinizadores y un vivero de barrio provee los plantines y la semilla.",
+    "como": [
+     "Mapa de puntos: se identifican techos, patios y veredas con sol y agua disponible y se conectan en cadena.",
+     "Adopción con compromiso: cada punto firma cuidado sin pesticida y mantiene un registro fotográfico mensual.",
+     "Vivero de barrio: semilla nativa, sustrato con compost local y entrega de plantines a los puntos adoptantes."
+    ],
+    "beneficiario": "Escuelas, restaurantes y juntas vecinales de la ciudad; viveros de barrio que producen los plantines.",
+    "componentes": [
+     "Semilla nativa",
+     "Macetas con material reciclado",
+     "Carteles con código QR",
+     "Vivero de 20 m²",
+     "Compost del mercado"
+    ],
+    "costo": "Estimación de diseño: USD 12 a 20 por metro cuadrado de jardín; el sello y la capacitación son costo casi nulo. Validar con vivero local.",
+    "metricas": [
+     "Puntos de hábitat conectados y metros cuadrados intervenidos.",
+     "Especies de polinizadores registradas por punto en el censo trimestral.",
+     "Plantines entregados y porcentaje que sobrevive a los seis meses."
+    ]
+   },
+   "detalles": [
+    [
+     "Economía circular",
+     "El compost sale del residuo orgánico del mercado y reemplaza sustrato comprado, cerrando el ciclo en el mismo barrio."
+    ],
+    [
+     "Ciudades creativas",
+     "El recorrido de jardines se suma a la oferta de turismo de avistamiento y a la agenda cultural del municipio."
+    ],
+    [
+     "Agua que ya existe",
+     "El riego usa agua gris de lavado y agua de lluvia de canaleta, sin aumentar el consumo potable."
+    ]
+   ],
+   "insignias": [
+    [
+     "Ciudades Creativas UNESCO",
+     "turismo de naturaleza"
+    ],
+    [
+     "Pacto Global",
+     "biodiversidad urbana"
+    ]
+   ],
+   "realidad": {
+    "a": "Lo opera el propio productor, que es dueño del borde, con la escuela rural haciendo el conteo de insectos. Gana cuajado de fruto sin sembrar tierra nueva y la escuela usa la franja como aula. La semilla viene del vivero municipal y del banco local; los nidos se arman con madera de poda. Arranca con 3 a 6 metros de borde por hectárea y una jornada de siembra con la familia.",
+    "b": "Lo adoptan juntas vecinales, escuelas y restaurantes; el municipio entrega el sello y el vivero de barrio provee los plantines. El restaurante lo pone en su carta, la escuela lo usa como material de clase y el vecino gana un jardín que se riega con agua de lavado y de lluvia. El sustrato sale del compost del mercado y las macetas, de material reciclado. Cuesta de 12 a 20 dólares por metro cuadrado."
+   },
+   "pitch": "El polinizador no necesita un aparato: necesita un borde con flores, nidos y agua. Corredor Nativo convierte la orilla improductiva de la parcela en hábitat y mide el retorno en fruto cuajado, no en discursos."
+  },
+  {
+   "id": "04",
+   "titulo": "Manejo ecológico de residuos de poda y biomasa vegetal urbana",
+   "categoria": "Impacto Social",
+   "categoria_porque": "El beneficio es ambiental y comunitario: menos quema, mejores suelos y un servicio municipal con participación vecinal.",
+   "descripcion": "Grandes volúmenes de biomasa vegetal urbana se tratan como desecho o se queman. El reto pide una alternativa de reuso accesible, práctica y económica para un municipio o sector urbano que reintegre la biomasa a los ciclos locales.",
+   "ods": [
+    [
+     "ODS 11",
+     "Ciudades y comunidades sostenibles",
+     "Convierte un residuo municipal en insumo para alcorques, huertos y taludes urbanos."
+    ],
+    [
+     "ODS 12",
+     "Producción y consumo responsables",
+     "Cierra el ciclo de la poda y reduce el volumen que llega a relleno o a quema."
+    ],
+    [
+     "ODS 13",
+     "Acción por el clima",
+     "Evita emisiones de quema abierta y mejora la retención de agua y carbono del suelo."
+    ]
+   ],
+   "propuesta": {
+    "nombre": "Carbón Vivo",
+    "claim": "Un horno retorta móvil convierte la poda en biochar, se mezcla con compost y vuelve a los mismos árboles del municipio.",
+    "que_es": "La poda del municipio se quema o se entierra, y no vuelve a ningún lado. Qué es: un servicio que recoge la poda separada, la tritura y la calienta dentro de un horno cerrado de 200 litros sin oxígeno, para que no arda: eso es una retorta, y lo que sale es biochar, un carbón poroso que se entierra. Ese carbón se mezcla al 10 o 20 por ciento con compost curado y se pone al pie de los mismos árboles, en huertos escolares y taludes; retiene agua y nutrientes. El excedente se vende en sacos con ficha de dosis y paga la operación.",
+    "como": [
+     "Se recoge la poda separada y se tritura a trozos de 3 a 5 cm. Se descarta madera pintada, tratada o con clavos.",
+     "Se calienta en un horno cerrado sin oxígeno (retorta); los gases se queman aparte para que no salga humo negro.",
+     "El carbón que sale se mezcla al 10 o 20 por ciento con compost maduro y se deja curar dos semanas.",
+     "Se aplica al pie de los árboles, en huertos y taludes; el excedente se vende en sacos con ficha de dosis."
+    ],
+    "beneficiario": "Municipio o sector urbano con poda recurrente y suelos degradados. Una retorta procesa 2 a 3 toneladas de poda al mes.",
+    "componentes": [
+     "Retorta de 200 L",
+     "Trituradora",
+     "Chimenea y cámara de combustión",
+     "Báscula",
+     "Sacos y etiqueta"
+    ],
+    "costo": "Estimación: USD 180 a 320 por retorta fabricada en taller local. Validar con herrería y costo de operación.",
+    "metricas": [
+     "Metros cúbicos de poda desviados de quema o relleno.",
+     "Rendimiento de biochar por kilogramo de poda seca.",
+     "Retención de agua del suelo tratado.",
+     "Sacos vendidos y costo por tonelada procesada."
+    ]
+   },
+   "cadena": {
+    "problema": "La poda se mezcla con basura y se quema porque el municipio no tiene un proceso intermedio que la convierta en insumo.",
+    "causa_raiz": "Disponer la poda es más barato que aprovecharla: falta el equipo de transformación, la receta de mezcla y un usuario claro para el producto. Sin esos tres elementos, la biomasa sigue siendo costo.",
+    "insight": "El biochar resuelve dos problemas con el mismo material: reduce el volumen de poda y mejora el suelo que el municipio ya riega y mantiene. El horno es la pieza que falta entre ambos.",
+    "solucion": "Carbón Vivo: recolección separada, retorta móvil, mezcla con compost y aplicación municipal.",
+    "metrica": "Toneladas desviadas de quema y retención de agua del suelo tratado."
+   },
+   "senal": "Los ganadores de economía circular presentan el proceso completo: de donde sale, como se transforma, quien lo compra y como se comprueba la calidad.",
+   "analogias": [
+    {
+     "year": 2025,
+     "equipo": "Mentes Volcanicas (UNI-RUPAP)",
+     "proyecto": "Paneles constructivos de Tetra Pak",
+     "que_hicieron": "Convirtió un residuo urbano en un panel con proceso, herramienta y especificación técnica.",
+     "por_que": "Es el mismo patrón: residuo local, transformación simple y producto con destino definido. La retorta cumple el papel de la prensa en aquel caso.",
+     "video": "https://www.youtube.com/watch?v=_JSUKR1bPnE",
+     "puesto": "1er lugar internacional Impacto Social"
+    },
+    {
+     "year": 2017,
+     "equipo": "BottleLife (Montevideo, Uruguay)",
+     "proyecto": "Sistema constructivo con envases reciclados",
+     "que_hicieron": "Diseño un producto modular a partir de un residuo domiciliario y organizó la recolección para abastecerlo.",
+     "por_que": "Aporta la lección logística: sin separación en origen, el transformador no tiene materia prima constante. Carbón Vivo depende de la ruta de poda, no solo del horno.",
+     "video": "https://www.youtube.com/watch?v=yhVE1ZRDQZk",
+     "puesto": "1er lugar internacional Impacto Social"
+    }
+   ],
+   "alterna": {
+    "nombre": "Briqueta Viva",
+    "claim": "La poda no vuelve al árbol, vuelve a la cocina: briquetas densificadas que reemplazan leña y carbón en comedores y calderas pequeñas.",
+    "que_es": "La poda no vuelve al árbol, vuelve a la cocina. Qué es: una planta que tritura la poda, la mezcla con arcilla o almidón como pegamento y la prensa en briquetas: bloques densos del tamaño de un ladrillo que se queman en cocina o caldera y reemplazan leña o carbón. El calor del prensado seca el lote siguiente y la ceniza vuelve al vivero municipal. Se vende por kilo a comedores y panaderías, en saco retornable y con precio fijo por temporada.",
+    "como": [
+     "Chipeado y secado al sol: la poda se reduce y se deja secar en eras cubiertas durante una semana.",
+     "Mezcla y prensado: triturado fino con arcilla o almidón como aglutinante, prensado manual o hidráulico.",
+     "Distribución local: briquetas a comedores, panaderías y calderas, con saco retornable y precio por kilo."
+    ],
+    "beneficiario": "Comedores populares, panaderías y calderas pequeñas que hoy compran leña o carbón; municipio con poda recurrente.",
+    "componentes": [
+     "Trituradora de poda",
+     "Prensa de briquetas",
+     "Aglutinante local",
+     "Eras de secado",
+     "Sacos retornables"
+    ],
+    "costo": "Estimación de diseño: USD 45 a 70 por tonelada procesada; briqueta a USD 0,25 a 0,40 por kilo. Validar con prensa y precio de leña local.",
+    "metricas": [
+     "Toneladas de poda convertidas en briqueta por mes.",
+     "Kilos de leña o carbón sustituidos en los clientes.",
+     "Costo por kilo frente al combustible que reemplaza."
+    ]
+   },
+   "detalles": [
+    [
+     "Energía renovable",
+     "El calor residual del prensado seca el lote siguiente y evita una fuente externa de energía."
+    ],
+    [
+     "Economía circular",
+     "La ceniza vuelve al vivero municipal y el saco se retorna, así el residuo no genera un segundo pasivo."
+    ],
+    [
+     "Empleo local",
+     "Los podadores municipales pasan a operar la planta en temporada baja de poda."
+    ]
+   ],
+   "insignias": [
+    [
+     "Premio Latinoamérica Verde",
+     "categoría residuos"
+    ],
+    [
+     "Mercado de carbono",
+     "créditos por biochar"
+    ]
+   ],
+   "realidad": {
+    "a": "Lo opera el área de parques del municipio con dos operarios, y el vivero municipal se queda con el biochar. El municipio baja el costo de disponer la poda y el vivero reduce el fertilizante que compra. La materia prima es la poda que hoy se quema o se entierra, y la retorta se paga con el presupuesto de residuos. Arranca con una retorta móvil y 2 a 3 toneladas al mes, que es lo que produce un barrio grande.",
+    "b": "Lo opera una cooperativa de podadores que vende a comedores, panaderías y calderas. El comedor paga menos por kilo que la leña y cocina igual. La poda la entrega el municipio sin costo y el aglutinante es arcilla o almidón de la zona. Arranca con trituradora, prensa y una nave de 60 metros cuadrados; la ceniza vuelve al vivero y el saco se retorna."
+   },
+   "pitch": "La poda no es basura: es materia prima. Carbón Vivo la convierte en biochar con una retorta móvil y la devuelve a los árboles del municipio, cerrando el ciclo donde se genera."
+  },
+  {
+   "id": "05",
+   "titulo": "Monitoreo inteligente e infraestructura verde en reservorios pluviales",
+   "categoria": "Impacto Social",
+   "categoria_porque": "Protege a una comunidad expuesta a inundaciones y articula comité de cuenca, municipio y vecinos.",
+   "descripcion": "Los reservorios pluviales en zonas vulnerables sufren anegamientos, acumulación de sedimentos y falta de monitoreo en tiempo real. El reto pide combinar monitoreo de agua con infraestructura verde y articular la gestión comunitaria e institucional.",
+   "ods": [
+    [
+     "ODS 6",
+     "Agua limpia y saneamiento",
+     "Mejora la operación del reservorio y la calidad del agua que descarga."
+    ],
+    [
+     "ODS 11",
+     "Ciudades y comunidades sostenibles",
+     "Reduce el riesgo de anegamiento en barrios aguas abajo."
+    ],
+    [
+     "ODS 13",
+     "Acción por el clima",
+     "Adapta el drenaje urbano a lluvias más intensas con soluciones basadas en naturaleza."
+    ]
+   ],
+   "propuesta": {
+    "nombre": "Reservorio Vivo",
+    "claim": "Dos sensores baratos avisan cuánta agua queda y qué tan sucia está, con trampa de sedimentos y plantas de orilla; el comité ve tres estados en un tablero.",
+    "que_es": "El reservorio se llena de sedimento y nadie sabe cuánta agua queda hasta que desborda. Qué es: dos sensores baratos, uno que mide la altura del agua desde arriba y otro que mide qué tan sucia está, puestos en la entrada y en el fondo, con lectura cada 15 minutos. Suma una trampa de sedimentos desmontable y un borde de humedal con plantas de orilla (totora y similares) que filtran y sostienen el talud. El comité ve tres estados: normal, vigilancia y evacuación, con protocolo y mantenimiento trimestral.",
+    "como": [
+     "Un sensor mide la altura del agua con sonido y otro mide qué tan sucia está; se instalan en la entrada y en el fondo, con lectura cada 15 minutos.",
+     "Una trampa desmontable y una zanja con piedras frenan el sedimento antes de que llegue al reservorio.",
+     "En el borde se planta totora y otras plantas de orilla: filtran el agua, dan hábitat y sostienen el talud.",
+     "El comité ve tres estados (normal, vigilancia, evacuación) con su protocolo, y el municipio recibe el registro para mantenimiento trimestral."
+    ],
+    "beneficiario": "Comunidad urbana o periurbana aguas abajo de un reservorio con anegamientos recurrentes.",
+    "componentes": [
+     "Sensor ultrasónico",
+     "Sensor de turbidez",
+     "Registrador y batería solar",
+     "Trampa de sedimentos",
+     "Plantines de totora y junco"
+    ],
+    "costo": "Estimación: USD 350 a 600 por reservorio para instrumentación. La infraestructura verde se cotiza aparte. Validar.",
+    "metricas": [
+     "Nivel en centímetros y tiempo de bajada después de una lluvia.",
+     "Sedimento acumulado por año.",
+     "Incidentes de anegamiento por temporada.",
+     "Porcentaje de alertas emitidas antes del desborde."
+    ]
+   },
+   "cadena": {
+    "problema": "El reservorio se desborda y nadie sabe cuanto margen queda; los sedimentos reducen la capacidad sin que se note.",
+    "causa_raiz": "El reservorio se diseño para almacenar, no para informar. No hay instrumento, no hay mantenimiento de sedimentos y la comunidad no tiene un estado visible del agua.",
+    "insight": "Monitorear sin intervenir solo produce datos; intervenir sin monitorear produce obras ciegas. La propuesta une las dos mitades en una sola operación municipal y comunitaria.",
+    "solucion": "Reservorio Vivo: instrumentación de nivel y turbidez, trampa de sedimentos y humedal construido.",
+    "metrica": "Tiempo de bajada tras una lluvia e incidentes de anegamiento por temporada."
+   },
+   "senal": "Los ganadores de agua combinan obra física con operación: no entregan solo el sensor ni solo el humedal, entregan quien mira el dato y que hace cuando cambia.",
+   "analogias": [
+    {
+     "year": 2024,
+     "equipo": "Techriders (UNI-RUSB)",
+     "proyecto": "Micropresas telemetradas",
+     "que_hicieron": "Instrumento una obra hidráulica con sensores de nivel, válvulas automatizadas y telemetría LoRaWAN.",
+     "por_que": "Aporta exactamente la arquitectura de medición y control para agua. Reservorio Vivo reemplaza la válvula por una decisión comunitaria, pero conserva el principio.",
+     "video": "https://www.youtube.com/watch?v=MIvlD31HfIk",
+     "puesto": "1er lugar internacional Innovación"
+    },
+    {
+     "year": 2023,
+     "equipo": "Nicarq Sinergy (UNI-RUSB)",
+     "proyecto": "BioInnova",
+     "que_hicieron": "Integró agua, saneamiento y producción en una unidad de resiliencia comunitaria.",
+     "por_que": "Demuestra como una solución de agua se sostiene cuando la comunidad la opera y la asocia a un beneficio visible, no solo a la infraestructura.",
+     "video": "https://www.youtube.com/watch?v=5dVqVY9Ugeg",
+     "puesto": "2do lugar internacional Impacto Social"
+    }
+   ],
+   "alterna": {
+    "nombre": "Turno de Agua",
+    "claim": "El agua se administra como servicio: padrón de usuarios, turnos de riego y una tarifa que paga el mantenimiento, con medidor mecánico y regla pintada en el muro.",
+    "que_es": "Aquí no se mide con electrónica: se administra. Qué es: el reservorio pasa a tener padrón de usuarios, turnos de riego y una cuota mensual que paga el mantenimiento. La medición es una regla graduada pintada en el muro, que se lee a ojo, y un medidor mecánico de caudal en la salida, sin batería. El tablero es una pizarra en la caseta con el turno del día y un libro semanal abierto a la comunidad; la limpieza se hace en faena dos veces al año.",
+    "como": [
+     "Padrón y turnos: cada usuario conoce su hora, su caudal y su cuota de mantenimiento.",
+     "Medición simple: regla graduada en el muro y caudalímetro mecánico en la salida, sin electrónica.",
+     "Mantenimiento con faena: limpieza de rejilla y borde verde dos veces al año, financiada con la cuota."
+    ],
+    "beneficiario": "Comité de cuenca y usuarios de riego aguas abajo; municipio que hoy atiende reclamos sin registro.",
+    "componentes": [
+     "Regla limnimétrica",
+     "Medidor de caudal mecánico",
+     "Pizarra y libro de turnos",
+     "Rejilla de retención",
+     "Plantines de totora"
+    ],
+    "costo": "Estimación de diseño: USD 300 a 600 de implementación por reservorio, más la cuota mensual de mantenimiento. Validar con el comité.",
+    "metricas": [
+     "Usuarios con turno asignado y cuota al día.",
+     "Litros entregados por turno frente al caudal acordado.",
+     "Días de reservorio fuera de servicio por año."
+    ]
+   },
+   "detalles": [
+    [
+     "Economía circular",
+     "La boya de nivel se hace con botellas recicladas lastradas y el borde verde se planta con totora del mismo humedal."
+    ],
+    [
+     "Servicio que se paga",
+     "La cuota de mantenimiento crea un fondo de reposición de la rejilla sin depender de una donación nueva cada año."
+    ],
+    [
+     "Datos abiertos",
+     "El libro de turnos se fotografía cada semana y se publica en el grupo del barrio, para que la asignación sea verificable."
+    ]
+   ],
+   "insignias": [
+    [
+     "Fondo de Agua",
+     "pago por servicio ecosistémico"
+    ],
+    [
+     "Sello ODS Local",
+     "gestión comunitaria"
+    ]
+   ],
+   "realidad": {
+    "a": "Lo opera el comité de cuenca con un técnico formado; el municipio paga la instalación. Los usuarios riegan cuando hay agua y dejan de perder cosecha, y el comité responde con datos en vez de reclamos. Los sensores de nivel y turbidez se compran con el fondo de agua y el gabinete se arma en el taller del barrio. Cuesta de 800 a 1.200 dólares por reservorio y una semana de capacitación.",
+    "b": "Lo opera el comité con padrón y libro de turnos; un fontanero del barrio hace el mantenimiento y cobra con la cuota. Cada usuario sabe su hora y su caudal, y la cuota evita las cuotas extraordinarias de cada emergencia. La regla se pinta en el muro, el medidor y la rejilla son de ferretería y la totora sale del mismo humedal. Cuesta de 300 a 600 dólares y dos días de faena vecinal."
+   },
+   "pitch": "Un reservorio que no se mide no se puede operar. Reservorio Vivo le pone nivel y turbidez, le saca el sedimento y le suma un humedal: el barrio ve el estado del agua y actúa antes del desborde."
+  },
+  {
+   "id": "06",
+   "titulo": "Remoción y extracción de barro en viviendas anegadas",
+   "categoria": "Innovación",
+   "categoria_porque": "El núcleo es un dispositivo mecánico nuevo y su viabilidad técnica; el impacto social es la consecuencia.",
+   "descripcion": "Tras un aluvión o desborde, las viviendas quedan con lodo denso que se seca y se vuelve casi cemento. La remoción manual con pala exige días de esfuerzo. El reto pide herramientas o metodos de succión de bajo costo, operables en interiores y movilizables rápido.",
+   "ods": [
+    [
+     "ODS 11",
+     "Ciudades y comunidades sostenibles",
+     "Acelera la recuperación de viviendas y reduce el tiempo de desplazamiento."
+    ],
+    [
+     "ODS 13",
+     "Acción por el clima",
+     "Responde a eventos extremos más frecuentes con una herramienta replicable."
+    ],
+    [
+     "ODS 3",
+     "Salud y bienestar",
+     "Baja el esfuerzo físico extremo y el riesgo de lesión de vecinos y voluntarios."
+    ]
+   ],
+   "propuesta": {
+    "nombre": "Lodo Express",
+    "claim": "Un kit de dos piezas afloja el lodo seco con agua a presión y lo succiona con una bomba de 12 V: dos personas sacan la casa sin pala.",
+    "que_es": "Después del aluvión el lodo se seca y queda como cemento: sacarlo con pala toma días. Qué es: un kit de dos piezas que se carga en un balde. Un agitador helicoidal, una varilla con hélice, inyecta agua a presión y rompe la costra sin levantar polvo; una bomba de 12 V con trituradora aspira la mezcla por una manguera de 2 pulgadas y la expulsa al patio o al drenaje. Se conecta a la batería de un auto. Dos personas: una afloja, otra succiona y anota metros y tiempo por vivienda.",
+    "como": [
+     "El agitador helicoidal inyecta agua a presión y rompe la costra sin levantar polvo.",
+     "La bomba de 12 V con trituradora aspira la mezcla por manguera de 2 pulgadas y la descarga fuera de la vivienda.",
+     "Prefiltro de rejilla y válvula de alivio para piedras; alimentación desde batería de vehículo o estación portátil.",
+     "Brigada de dos personas: una fluidifica, otra extrae y registra metros cuadrados y tiempo por vivienda."
+    ],
+    "beneficiario": "Viviendas de zonas vulnerables tras aluvión o desborde; brigadas comunitarias y municipales.",
+    "componentes": [
+     "Bomba de achique 12 V con trituradora",
+     "Agitador helicoidal",
+     "Manguera de 2 pulgadas",
+     "Prefiltro y válvula",
+     "Balde de 60 L",
+     "Batería o estación portátil"
+    ],
+    "costo": "Estimación: USD 120 a 200 por kit con componentes de taller local. Validar con cotización.",
+    "metricas": [
+     "Metros cúbicos de lodo extraídos por hora.",
+     "Litros de agua usados por metro cúbico.",
+     "Personas necesarias por vivienda.",
+     "Viviendas atendidas por día y tiempo de limpieza."
+    ]
+   },
+   "cadena": {
+    "problema": "El lodo se seca y se vuelve casi cemento; sacarlo con pala toma días y lesiona a los voluntarios.",
+    "causa_raiz": "El lodo se compacta porque no hay una etapa que lo vuelva fluido antes de extraerlo. La pala ataca el problema cuando ya es una costra dura, y cualquier bomba barata se bloquea con esa consistencia.",
+    "insight": "El orden correcto es fluidificar y luego succionar. La innovación no es la bomba: es el agitador que cambia la consistencia y permite usar una bomba barata y disponible.",
+    "solucion": "Lodo Express: agitador helicoidal, bomba de 12 V con trituradora y protocolo de brigada de dos personas.",
+    "metrica": "Metros cúbicos por hora y litros de agua por metro cúbico."
+   },
+   "senal": "Los ganadores con hardware simple ganan cuando el dispositivo resuelve la etapa correcta del proceso, no cuando agregan tecnología a la etapa equivocada.",
+   "analogias": [
+    {
+     "year": 2024,
+     "equipo": "Techriders (UNI-RUSB)",
+     "proyecto": "Micropresas telemetradas",
+     "que_hicieron": "Integró mecánica, sensores y control en un sistema de bajo costo para manejar agua en terreno vulnerable.",
+     "por_que": "Comparte la lógica de resolver con electromecánica accesible y mantenimiento local, en lugar de importar un equipo especializado.",
+     "video": "https://www.youtube.com/watch?v=MIvlD31HfIk",
+     "puesto": "1er lugar internacional Innovación"
+    },
+    {
+     "year": 2021,
+     "equipo": "Ingeniarte (UNNE)",
+     "proyecto": "Alertar",
+     "que_hicieron": "Diseño un dispositivo simple, de bajo costo y activación inmediata para una situación de emergencia.",
+     "por_que": "Aporta el criterio de diseño para emergencia: una sola acción, sin capacitación larga y con respuesta inmediata. Lodo Express debe operarse igual de simple.",
+     "video": "https://www.youtube.com/watch?v=mgAvnq8aTJs",
+     "puesto": "1er lugar internacional Impacto Social"
+    }
+   ],
+   "alterna": {
+    "nombre": "Trampa de Sedimento",
+    "claim": "Si el barro no entra, no hay que sacarlo: una barrera aguas arriba retiene el sedimento antes de que llegue a la puerta, y ese lodo se vuelve adobe.",
+    "que_es": "Si el barro no entra a la casa, no hay que sacarlo. Qué es: una obra pequeña aguas arriba de la puerta, con una rejilla que retiene piedras y ramas, un canal revestido que desvía el agua y un patio de retención donde el sedimento se asienta. Se limpia en jornada vecinal programada. El lodo retenido no se tira: se seca, se mezcla con fibra de paja o estiércol y se hace adobe para muro o revoque de la misma vivienda.",
+    "como": [
+     "Lectura del flujo: se identifica por dónde entra el agua y se ubica la trampa antes del primer patio.",
+     "Barrera y desvío: rejilla de madera o metal, canal revestido y patio de retención con pendiente controlada.",
+     "Cosecha del lodo: retiro programado, secado y mezcla con fibra para adobe de muro o revoque."
+    ],
+    "beneficiario": "Viviendas en quebrada y calles con arrastre recurrente; brigadas de faena y municipio que hoy limpian después del daño.",
+    "componentes": [
+     "Rejilla de retención",
+     "Canal revestido",
+     "Geotextil",
+     "Madera o malla",
+     "Molde de adobe"
+    ],
+    "costo": "Estimación de diseño: USD 60 a 120 por trampa familiar; USD 250 a 400 la versión de calle. Validar con albañilería local.",
+    "metricas": [
+     "Volumen de sedimento retenido por evento de lluvia.",
+     "Viviendas sin ingreso de lodo en la temporada.",
+     "Adobes producidos con el material retenido."
+    ]
+   },
+   "detalles": [
+    [
+     "Economía circular",
+     "El lodo deja de ser basura: se convierte en adobe y revoque para la misma vivienda o para el muro del pasaje."
+    ],
+    [
+     "Faena organizada",
+     "La limpieza se hace en jornada vecinal con carretilla y bici-bomba, sin equipo motorizado."
+    ],
+    [
+     "Obra que se replica",
+     "El diseño de la trampa se entrega en un plano de una página para que el vecino lo replique con materiales de ferretería."
+    ]
+   ],
+   "insignias": [
+    [
+     "Marco de Sendai",
+     "reducción de riesgo"
+    ],
+    [
+     "Fondo nacional de innovación",
+     "obra replicable"
+    ]
+   ],
+   "realidad": {
+    "a": "Lo opera la brigada municipal de emergencia o la empresa de limpieza con dos operarios. La familia vuelve a su casa en un día en vez de una semana de pala. La bomba de 12 V, la manguera y la boquilla son de ferretería, y el agua sale del tanque o de la cisterna del barrio. El equipo cabe en una camioneta y rota entre viviendas: no hay obra que construir ni permiso que tramitar.",
+    "b": "La construye cada familia con un albañil del barrio y el municipio entrega el plano de una página. El lodo deja de entrar a la casa y lo retenido se vuelve adobe para el mismo muro del pasaje. Rejilla, geotextil y cemento son de ferretería. Cuesta de 60 a 120 dólares por trampa familiar y dos jornadas de faena; la versión de calle, de 250 a 400."
+   },
+   "pitch": "El barro no se saca con más fuerza: se saca en otro orden. Lodo Express lo fluidifica con un agitador y lo succiona con una bomba de 12 V; dos personas limpian en horas lo que la pala tarda días."
+  },
+  {
+   "id": "07",
+   "titulo": "Reutilización de aceite doméstico",
+   "categoria": "Impacto Social",
+   "categoria_porque": "El punto de partida es el hogar y el beneficio es agua limpia y energía accesible para la comunidad.",
+   "descripcion": "Un litro de aceite residual contamina 40 mil litros de agua y tapa el drenaje. El reto pide una forma económica y accesible de reutilizar el aceite doméstico para generar energía limpia u otros subproductos.",
+   "ods": [
+    [
+     "ODS 7",
+     "Energía asequible y no contaminante",
+     "Produce biodiésel para la flota municipal a partir de un residuo doméstico."
+    ],
+    [
+     "ODS 12",
+     "Producción y consumo responsables",
+     "Convierte un residuo en insumo y reduce la carga sobre el drenaje."
+    ],
+    [
+     "ODS 6",
+     "Agua limpia y saneamiento",
+     "Evita que el aceite llegue a cuerpos de agua y a la red de alcantarillado."
+    ]
+   ],
+   "propuesta": {
+    "nombre": "Aceite Circular",
+    "claim": "El aceite de cocina usado del barrio se junta puerta a puerta y se convierte en biodiésel en una planta pequeña, con jabón como subproducto.",
+    "que_es": "Un litro de aceite usado contamina 40 mil litros de agua y tapa el desagüe. Qué es: puntos de acopio en tiendas, escuelas y edificios con un bidón de 20 litros, embudo y tapa, y retiro semanal. El aceite se filtra, se mide su acidez y se transforma en biodiésel en una microplanta barrial: se le agrega metanol y sosa, se deja decantar y se lava. La glicerina que sobra se convierte en jabón y el biodiésel va a la flota municipal.",
+    "como": [
+     "Puntos de acopio con bidón de 20 litros, embudo y tapa; retiro semanal y registro de qué comercio entregó.",
+     "El aceite se filtra y se mide su acidez; si está muy ácido se corrige antes de procesarlo.",
+     "Se le agrega metanol y sosa, se deja reposar, se lava y se seca. Se controla que cumpla la norma antes de despachar.",
+     "El biodiésel va a la flota municipal; la glicerina se convierte en jabón; el aceite que no cumple se deriva a jabón industrial."
+    ],
+    "beneficiario": "Barrio o municipio con restaurantes y hogares. Microplanta de 100 litros por lote.",
+    "componentes": [
+     "Bidones y embudo",
+     "Tanque reactor",
+     "Bomba y agitador",
+     "Kit de titulación",
+     "Metanol y sosa",
+     "Densímetro"
+    ],
+    "costo": "Estimación: USD 1.200 a 2.500 para la microplanta de 100 litros por lote. Validar con proveedor y precio del metanol.",
+    "metricas": [
+     "Litros de aceite recolectados por mes.",
+     "Conversión a biodiésel y litros producidos.",
+     "Litros de aceite desviados del drenaje.",
+     "Costo por litro frente al diésel y kilogramos de jabón."
+    ]
+   },
+   "cadena": {
+    "problema": "El aceite se tira por el fregadero y contamina el agua porque no hay un punto de acopio cercano ni un comprador que garantice el retiro.",
+    "causa_raiz": "El problema es logístico antes que químico: si el aceite no se junta, no se transforma. El hogar elige el drenaje porque es gratis e inmediato; sin red de acopio, la planta no tiene materia prima.",
+    "insight": "La microplanta solo funciona si la red de acopio es barrial y sostenida. El diseño debe empezar por el embudo y el bidón, no por el reactor.",
+    "solucion": "Aceite Circular: acopio barrial, titulación, transesterificación y subproducto de jabón.",
+    "metrica": "Litros recolectados por mes y litros de biodiésel producidos."
+   },
+   "senal": "Los ganadores de reciclaje demuestran primero que la recolección funciona; la transformación es la segunda mitad, no la primera.",
+   "analogias": [
+    {
+     "year": 2017,
+     "equipo": "BottleLife (Montevideo, Uruguay)",
+     "proyecto": "Sistema constructivo con envases reciclados",
+     "que_hicieron": "Organizó la recolección de un residuo domiciliario y lo transformó en un producto modular con uso definido.",
+     "por_que": "Es el mismo problema de dos mitades: acopio disperso y transformación local. La lección es que la red de recolección es parte del diseño.",
+     "video": "https://www.youtube.com/watch?v=yhVE1ZRDQZk",
+     "puesto": "1er lugar internacional Impacto Social"
+    },
+    {
+     "year": 2025,
+     "equipo": "Mentes Volcanicas (UNI-RUPAP)",
+     "proyecto": "Paneles constructivos de Tetra Pak",
+     "que_hicieron": "Demostro que un residuo doméstico puede transformarse en un producto con especificación y control de proceso.",
+     "por_que": "Aporta el criterio de calidad: el biodiésel necesita ficha, medición y trazabilidad, igual que un panel necesita resistencia y dimensiones.",
+     "video": "https://www.youtube.com/watch?v=_JSUKR1bPnE",
+     "puesto": "1er lugar internacional Impacto Social"
+    }
+   ],
+   "alterna": {
+    "nombre": "Aceite con Retorno",
+    "claim": "El aceite usado paga: cada litro entregado suma puntos canjeables en el mercado del barrio y se vende a la planta de biodiésel que ya existe.",
+    "que_es": "El problema no es la técnica, es que nadie lleva el aceite. Qué es: una red de acopio con premio. El vecino entrega la botella cerrada en el punto del barrio y recibe puntos por litro, canjeables en el mercado o el comedor; el restaurante pide retiro a domicilio. El aceite se filtra y se pesa, y se vende a una planta de biodiésel que ya existe: no hay que montar transformación propia. La botella es retornable y los puntos se gastan en el mismo barrio.",
+    "como": [
+     "Punto de acopio con botella retornable: el vecino entrega cerrado y recibe un comprobante con puntos.",
+     "Canje local: los puntos se gastan en el mercado o en el comedor del barrio, lo que sostiene la entrega mes a mes.",
+     "Venta a planta existente: aceite filtrado y pesado, con contrato de retiro y trazabilidad por lote."
+    ],
+    "beneficiario": "Hogares, restaurantes y mercados del barrio; planta de biodiésel que hoy compra aceite a acopiadores informales.",
+    "componentes": [
+     "Bidones de acopio",
+     "Balanzas",
+     "Filtro de malla",
+     "Tarjetas de puntos",
+     "Triciclo de recolección"
+    ],
+    "costo": "Estimación de diseño: USD 400 a 800 de implementación; el punto se sostiene con el margen de venta. Validar con la planta compradora.",
+    "metricas": [
+     "Litros de aceite recolectados por mes y por punto.",
+     "Hogares que repiten la entrega al mes siguiente.",
+     "Puntos canjeados y comercios que los aceptan."
+    ]
+   },
+   "detalles": [
+    [
+     "Economía circular",
+     "El aceite deja de ir al desagüe y vuelve como combustible; la botella retornable evita un envase nuevo por entrega."
+    ],
+    [
+     "Comercio de barrio",
+     "El canje inyecta consumo en el mercado local, así el incentivo no es un gasto sino circulación."
+    ],
+    [
+     "Transporte limpio",
+     "La recolección se hace en triciclo de carga, sin camión y sin horario nocturno."
+    ]
+   ],
+   "insignias": [
+    [
+     "Política nacional de biocombustibles",
+     "venta a planta"
+    ],
+    [
+     "Economía circular",
+     "aceite → combustible"
+    ]
+   ],
+   "realidad": {
+    "a": "La opera una cooperativa de recicladores con restaurantes que entregan por contrato. El restaurante se libra del aceite y evita la multa, y recibe biodiésel o descuento. El aceite sale de restaurantes y hogares; el metanol y la sosa, de un proveedor químico. La planta de 200 litros al día se puede arrancar con lotes de 50 litros, dos operarios y un galpón ventilado.",
+    "b": "La opera la junta vecinal con dos personas y un triciclo; la planta de biodiésel que ya existe compra el aceite filtrado. El vecino canjea puntos en el mercado del barrio y el restaurante recibe constancia de disposición. Los bidones y la balanza son la única compra y la botella la trae el propio vecino. Cuesta de 400 a 800 dólares y no transforma el aceite: se lo vende a quien ya sabe hacerlo."
+   },
+   "pitch": "El aceite no llega a la planta si no hay dónde dejarlo. Aceite Circular pone el bidón en la tienda de la esquina, retira cada semana y convierte el aceite en biodiésel y jabón: la logística primero, la química después."
+  },
+  {
+   "id": "08",
+   "titulo": "Desechos de basura verde: residuos fotovoltaicos",
+   "categoria": "Innovación",
+   "categoria_porque": "El núcleo es un proceso técnico de triaje y recuperación de materiales con viabilidad logística y seguridad.",
+   "descripcion": "Las celdas solares fuera de uso se convierten en residuos peligrosos y el problema crece en América Latina. El reto pide un proceso económico de segunda vida en aplicaciones de menor exigencia o un sistema seguro de desarme y recuperación de materiales.",
+   "ods": [
+    [
+     "ODS 7",
+     "Energía asequible y no contaminante",
+     "Extiende la vida útil del módulo y lleva energía a aplicaciones de baja exigencia."
+    ],
+    [
+     "ODS 12",
+     "Producción y consumo responsables",
+     "Recupera aluminio, vidrio y cobre en lugar de enterrar el módulo."
+    ],
+    [
+     "ODS 11",
+     "Ciudades y comunidades sostenibles",
+     "Evita que residuos peligrosos queden en patios y botaderos urbanos."
+    ]
+   ],
+   "propuesta": {
+    "nombre": "Segundo Sol",
+    "claim": "Cada panel usado se prueba y se etiqueta con la potencia real que todavía entrega: se reutiliza en usos de menor exigencia o se desarma con seguridad.",
+    "que_es": "Un panel que ya no rinde para techo se vuelve basura peligrosa, aunque todavía genera. Qué es: una estación de triaje que mide cada panel con multímetro y una carga de prueba, y lo etiqueta con la potencia real que entrega, no la de fábrica. Se clasifica en A, B o C: A va directo a bombeo o iluminación con regulador, B a usos de baja exigencia con limitador, C se desarma con protección (marco de aluminio, vidrio, caja y celdas) y va a disposición certificada.",
+    "como": [
+     "Se mide el voltaje que entrega el panel al sol y la corriente máxima; se revisan fisuras en el vidrio y manchas calientes.",
+     "Clase A: reuso directo con regulador. Clase B: reuso en baja exigencia con limitador. Clase C: desarme.",
+     "Desarme con protección de ojos y manos: marco de aluminio, caja de conexiones, vidrio y celdas, cada material a su destino.",
+     "Aplicaciones de segunda vida: bombeo solar comunitario, iluminación de puesto y carga de radios de emergencia."
+    ],
+    "beneficiario": "Municipios y cooperativas con paneles fuera de garantía; aplicaciones de baja exigencia.",
+    "componentes": [
+     "Multímetro y carga resistiva",
+     "Regulador de carga",
+     "Equipo de protección para vidrio",
+     "Herramienta de desarme",
+     "Caja de conexiones",
+     "Soportes"
+    ],
+    "costo": "Estimación: USD 6 a 12 por panel para prueba y limpieza; el desarme requiere espacio y protección. Validar.",
+    "metricas": [
+     "Porcentaje de paneles reusados frente a desarmados.",
+     "Kilogramos de aluminio, vidrio y cobre recuperados.",
+     "Watts instalados en segunda vida.",
+     "Costo por panel reacondicionado y energía entregada."
+    ]
+   },
+   "cadena": {
+    "problema": "El panel sale de garantía y se descarta aunque todavía pueda entregar energía en una aplicación menos exigente.",
+    "causa_raiz": "No existe un criterio de triaje ni un mercado de segunda vida. El instalador no puede distinguir entre un módulo útil y uno peligroso, y el desarme formal cuesta más que guardar el panel.",
+    "insight": "No todos los paneles viejos sirven para la red, pero muchos sirven para baja exigencia. El negocio está en la clasificación: separa el módulo bueno del residuo peligroso antes de desarmar.",
+    "solucion": "Segundo Sol: prueba, clasificación A/B/C, reuso en baja exigencia y desarme seguro.",
+    "metrica": "Porcentaje de paneles reusados y kilogramos de material recuperado."
+   },
+   "senal": "Los ganadores de residuos peligrosos no prometen reciclar todo: separan lo reutilizable de lo que exige desarme y demuestran seguridad en cada destino.",
+   "analogias": [
+    {
+     "year": 2025,
+     "equipo": "Mentes Volcanicas (UNI-RUPAP)",
+     "proyecto": "Paneles constructivos de Tetra Pak",
+     "que_hicieron": "Transformó un residuo compuesto en un panel con especificación y control de proceso.",
+     "por_que": "Comparte la lógica de separar materiales y reconstruir un producto con ficha técnica. El panel fotovoltaico tambien es un compuesto que hay que desarmar por capas.",
+     "video": "https://www.youtube.com/watch?v=_JSUKR1bPnE",
+     "puesto": "1er lugar internacional Impacto Social"
+    },
+    {
+     "year": 2023,
+     "equipo": "Gueguense Pinolero (UNMRMA / UNI-RMAV)",
+     "proyecto": "DIGNA",
+     "que_hicieron": "Dimensionó un módulo solar de 400 W dentro de una vivienda con restricciones explícitas de costo y consumo.",
+     "por_que": "Aporta el criterio de dimensionar para el uso real. Segundo Sol no vende watts de catálogo: entrega la potencia medida para una aplicación concreta.",
+     "video": "https://www.youtube.com/watch?v=AjtVryXaGDc",
+     "puesto": "1er lugar internacional Innovación"
+    }
+   ],
+   "alterna": {
+    "nombre": "Estación Solar de Barrio",
+    "claim": "Un panel que ya no sirve para techo sí sirve para cargar: estación pública con panel de segunda vida y baterías recuperadas que alquila linternas y radios.",
+    "que_es": "Un panel descartado sigue cargando, y con eso se arma un puesto de carga. Qué es: un puesto en mercado, escuela o plaza con un panel fuera de garantía, un banco de baterías de portátil recuperadas y un tablero de ocho salidas. Alquila linternas y radios por jornada a tarifa simbólica y carga celulares de los vecinos. Antes de armar el banco se mide cada celda: la que no retiene carga se descarta. La estructura es de andamio reciclado.",
+    "como": [
+     "Prueba y selección: se mide potencia real del panel y capacidad de cada celda recuperada antes de armar el banco.",
+     "Montaje del puesto: estructura de andamio reciclado, regulador, banco de baterías y tablero de ocho salidas.",
+     "Operación con alquiler: linternas numeradas por jornada, tarifa simbólica y registro de carga."
+    ],
+    "beneficiario": "Comerciantes de mercado, estudiantes y familias sin conexión estable; cooperativa que opera el puesto.",
+    "componentes": [
+     "Panel de segunda vida",
+     "Celdas de portátil recuperadas",
+     "Regulador de carga",
+     "Linternas y radios",
+     "Estructura de andamio"
+    ],
+    "costo": "Estimación de diseño: USD 180 a 300 por puesto, con material recuperado. Validar con la cooperativa y el proveedor de reguladores.",
+    "metricas": [
+     "Cargas atendidas por semana y equipos alquilados.",
+     "Capacidad útil del banco de baterías medida cada mes.",
+     "Ahorro del usuario frente a comprar pilas o cargar en otro lado."
+    ]
+   },
+   "detalles": [
+    [
+     "Economía circular",
+     "Las baterías de portátiles descartados extienden su vida en el puesto antes de ir a disposición final."
+    ],
+    [
+     "Energía renovable",
+     "El puesto funciona sin red y demuestra en la plaza que un panel descartado sigue generando."
+    ],
+    [
+     "Pago en residuo",
+     "Quien no paga la tarifa puede entregar material reciclable en el mismo puesto, que se vende para el fondo de reposición."
+    ]
+   ],
+   "insignias": [
+    [
+     "REP de RAEE",
+     "disposición certificada"
+    ],
+    [
+     "Fondo nacional de innovación",
+     "puesto replicable"
+    ]
+   ],
+   "realidad": {
+    "a": "La opera una cooperativa de reciclaje electrónico con un técnico certificado. Quien entrega su panel viejo recibe descuento en uno probado o dinero. Los paneles salen de instaladores y empresas que los cambiaron por falla; el multímetro y las cargas de prueba son toda la inversión. No se fabrica nada: se mide, se etiqueta con la potencia real y se revende con garantía corta.",
+    "b": "La opera una cooperativa o una escuela técnica, y los comerciantes del mercado la cuidan. El comerciante alquila una linterna por jornada o carga gratis entregando material reciclable. El panel es de segunda vida y las celdas salen de portátiles descartados del propio acopio. Cuesta de 180 a 300 dólares por puesto con material recuperado, y son ocho puntos de carga por puesto."
+   },
+   "pitch": "Un panel viejo no sirve para la red, pero sí para bombear agua. Segundo Sol lo prueba, lo clasifica y lo reubica con potencia medida; lo que no sirve se desarma con seguridad y se recupera por material."
+  },
+  {
+   "id": "09",
+   "titulo": "Optimización y priorización de recursos en la post-emergencia",
+   "categoria": "Impacto Social",
+   "categoria_porque": "La decisión protege vidas en comunidades afectadas; la herramienta es simple y el resultado se mide en personas atendidas a tiempo.",
+   "descripcion": "Tras un terremoto, alud o inundación, la demanda de asistencia desborda la capacidad inicial. Con recursos limitados e información fragmentada, el reto pide ayudar a decidir rápido a quien atender primero y donde concentrar los esfuerzos.",
+   "ods": [
+    [
+     "ODS 11",
+     "Ciudades y comunidades sostenibles",
+     "Ordena la respuesta en las primeras horas y reduce el impacto del desastre en la comunidad."
+    ],
+    [
+     "ODS 13",
+     "Acción por el clima",
+     "Mejora la respuesta ante eventos extremos cada vez más frecuentes."
+    ],
+    [
+     "ODS 16",
+     "Paz, justicia e instituciones solidas",
+     "Hace transparente y auditable el criterio con que se asignan recursos públicos."
+    ]
+   ],
+   "propuesta": {
+    "nombre": "Faro",
+    "claim": "Ficha de seis campos, índice de prioridad ponderado y tablero offline que asigna recursos en la primera hora, con o sin red.",
+    "que_es": "En las primeras 72 horas sobra información y falta orden: cada brigada anota en su cuaderno y nadie sabe qué se hizo ya. Qué es: una ficha de seis campos (atrapados, heridos, agua, riesgo estructural, acceso y energía) que llena la brigada en el terreno, un índice que ordena la cola por gravedad y tiempo, y un tablero que muestra sectores y recursos disponibles. Funciona en papel y en teléfono, y sincroniza por SMS o radio cuando hay red. No decide: ordena la decisión del coordinador.",
+    "como": [
+     "La brigada llena seis campos: personas atrapadas, heridos, agua, riesgo estructural, acceso y energía.",
+     "El índice pondera gravedad y tiempo; los campos faltantes se marcan y bajan la confianza del caso, no lo eliminan.",
+     "El tablero agrupa por sector y muestra la cola de atención y los recursos disponibles, en papel y en teléfono.",
+     "Sincronización por SMS o radio cuando hay red; cada cierre actualiza el estado y libera el recurso."
+    ],
+    "beneficiario": "Municipios y organismos de respuesta en las primeras 72 horas; un tablero por puesto de mando.",
+    "componentes": [
+     "Fichas impresas",
+     "Teléfonos existentes",
+     "Planilla de cálculo",
+     "Mapa de sectores",
+     "Radio o SMS"
+    ],
+    "costo": "Casi nulo: fichas impresas y teléfonos existentes. El costo real es la capacitación de dos horas por brigada.",
+    "metricas": [
+     "Tiempo hasta la primera asignación.",
+     "Porcentaje de casos críticos atendidos en menos de 2 horas.",
+     "Sectores cubiertos sobre sectores identificados.",
+     "Exactitud del estado reportado al cierre."
+    ]
+   },
+   "cadena": {
+    "problema": "La información llega en formatos distintos y sin prioridad común; el coordinador decide por orden de llamada, no por gravedad.",
+    "causa_raiz": "No hay un lenguaje de prioridad compartido entre brigadas, municipio y vecinos. Cada actor reporta distinto y el puesto de mando reconstruye el mapa a mano, bajo presión y con datos incompletos.",
+    "insight": "No hace falta un sistema sofisticado: hace falta un lenguaje de prioridad común y un tablero que quepa en una hoja. La tecnología debe sobrevivir sin red y sin electricidad.",
+    "solucion": "Faro: ficha de seis campos, índice ponderado, tablero offline y sincronización por radio o SMS.",
+    "metrica": "Tiempo hasta la primera asignación y porcentaje de casos críticos atendidos en menos de 2 horas."
+   },
+   "senal": "Los ganadores de emergencia no proponen una app: proponen un protocolo que funciona cuando la red falla. La adopción se gana con una acción simple, no con una funcionalidad.",
+   "analogias": [
+    {
+     "year": 2021,
+     "equipo": "Ingeniarte (UNNE)",
+     "proyecto": "Alertar",
+     "que_hicieron": "Dispositivo simple y protocolo comunitario para activar ayuda en una emergencia.",
+     "por_que": "Es el mismo principio de diseño: una acción, una persona que responde y un protocolo ensayado. Faro aplica eso a la coordinación, no al aviso individual.",
+     "video": "https://www.youtube.com/watch?v=mgAvnq8aTJs",
+     "puesto": "1er lugar internacional Impacto Social"
+    },
+    {
+     "year": 2024,
+     "equipo": "Techriders (UNI-RUSB)",
+     "proyecto": "Micropresas telemetradas",
+     "que_hicieron": "Construyó un tablero de telemetría para decidir con datos sobre una infraestructura crítica.",
+     "por_que": "Aporta la idea de una cola de decisión visible. Faro reemplaza el sensor por una ficha humana y conserva el tablero como centro de mando.",
+     "video": "https://www.youtube.com/watch?v=MIvlD31HfIk",
+     "puesto": "1er lugar internacional Innovación"
+    }
+   ],
+   "alterna": {
+    "nombre": "Pizarra Abierta",
+    "claim": "La prioridad la fija la asamblea, no la fórmula: fichas visibles, votos ponderados por daño y un tablero que cualquiera puede leer en la pared.",
+    "que_es": "Si la prioridad la fija una fórmula que nadie ve, la comunidad no la acepta. Qué es: una mesa de priorización en el punto de encuentro. Cada familia tiene una ficha con seis campos, código y foto; la asamblea cuelga las fichas en la pared y las ordena con votos ponderados por daño (una casa destruida pesa más que una con daño menor), y la brigada valida en terreno. La lista se publica en la pared, por radio y por mensaje, y cada entrega se marca en la misma ficha.",
+    "como": [
+     "Ficha por familia: seis campos, código y foto; se entrega en el punto de encuentro o por mensaje.",
+     "Asamblea de priorización: se ordenan las fichas en la pared con votos ponderados por daño y se valida cada caso con la brigada.",
+     "Difusión y seguimiento: lista publicada en la pared, por radio y por mensaje; cada entrega se marca en la misma ficha."
+    ],
+    "beneficiario": "Familias afectadas y comité de emergencia en las primeras 72 horas; cabina de radio y escuela como punto de encuentro.",
+    "componentes": [
+     "Fichas impresas y marcadores",
+     "Tablero de pared",
+     "Radio comunitaria",
+     "Teléfono con mensajes",
+     "Brigada de validación"
+    ],
+    "costo": "Estimación de diseño: USD 50 a 120 por punto de encuentro; casi todo el costo es impresión y capacitación. Validar con el comité.",
+    "metricas": [
+     "Fichas levantadas y validadas en las primeras 24 horas.",
+     "Tiempo entre la asamblea y la primera entrega.",
+     "Porcentaje de entregas registradas en la ficha pública."
+    ]
+   },
+   "detalles": [
+    [
+     "Datos abiertos",
+     "La lista de prioridades se comparte con el municipio y las ONG para que no se dupliquen entregas."
+    ],
+    [
+     "Ciudades creativas",
+     "La cabina de radio y la escuela se suman como puntos de encuentro ya conocidos por el barrio, sin infraestructura nueva."
+    ],
+    [
+     "Voluntariado",
+     "Estudiantes de universidad local operan el tablero por turnos y dejan el registro sistematizado al cerrar la emergencia."
+    ]
+   ],
+   "insignias": [
+    [
+     "Ciudades Creativas UNESCO",
+     "punto de encuentro cultural"
+    ],
+    [
+     "Voluntariado universitario",
+     "operación del tablero"
+    ]
+   ],
+   "realidad": {
+    "a": "Lo opera el comité de emergencia con la cabina de radio y dos voluntarios por turno. La familia recibe primero lo que más daño tiene y no compite por atención. Las fichas, el teléfono y la radio ya existen en el barrio: solo se imprime y se cuelga el tablero. Cuesta de 50 a 120 dólares por punto y se opera en las primeras 72 horas, sin esperar presupuesto nuevo.",
+    "b": "La conduce la asamblea barrial: cada familia tiene su ficha y la brigada valida en terreno. La familia ve por qué quedó en ese lugar y cuándo le toca, y nadie paga por anotarse. Papel, marcadores y un tablero de pared; la radio comunitaria ya está instalada y el municipio recibe la lista para no duplicar entregas. Cuesta la impresión y una tarde de asamblea."
+   },
+   "pitch": "En la primera hora no falta tecnología: falta un orden. Faro da a cada brigada una ficha de seis campos y un tablero que funciona sin red, para que el coordinador atienda por gravedad y no por orden de llamada."
+  }
+ ]
+}
