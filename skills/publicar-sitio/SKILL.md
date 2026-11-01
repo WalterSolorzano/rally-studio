@@ -24,13 +24,11 @@ description: Construye y publica la web demo del proyecto en GitHub Pages o Netl
 python scripts/publish_site.py
 ```
 
-4. Publica **solo si ya hay credenciales listas**:
-   - Netlify CLI instalado y autenticado → `netlify deploy --prod --dir=site`,
-   - o repositorio de GitHub con Pages activo → commit y `git push`.
-5. Si no hay credenciales, **no pidas tokens**. Explica los dos caminos en 4 líneas y deja el
-   `site/` listo para que el usuario publique desde su cuenta.
-6. Escribe la URL resultante en `brief.json` (`site_url`) y avisa al usuario.
-7. Sirve el enlace al checklist (`--tab timeline --slot main`).
+4. Despliegue:
+   - **GitHub Pages:** activa en Settings → Pages → Source: GitHub Actions (workflow `.github/workflows/pages.yml` incluido en el repo). Luego `git add site/` y `git push`.
+   - **Netlify:** instala Netlify CLI, autentícate, y corre `netlify deploy --prod --dir=site`.
+   - Si no hay credenciales listas, no pidas tokens: explica los dos caminos en 4 líneas y deja el `site/` listo para que el usuario publique desde su cuenta.
+   - Escribe la URL resultante en `brief.json` (`site_url`) y sirve el enlace al checklist (`--tab timeline --slot main`).
 
 ## Reglas
 
