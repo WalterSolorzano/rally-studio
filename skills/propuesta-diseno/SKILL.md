@@ -55,6 +55,64 @@ description: Convierte el nombre, logo o una idea del equipo en propuestas de id
 Cuando el pedido es un dossier de soluciones para retos de rally (PDF + Word + Excel), aplica
 esta doctrina. Nació de una revisión real del usuario y es obligatoria.
 
+### Cómo se razona una solución que gana
+
+**1. Primero el banco, después la idea.** `knowledge/retos_razonamiento.json` guarda 20 casos
+ganadores con `id`, `temas`, `año`, `rally`, `categoría`, `equipo`, `puesto`, `problema`,
+`causa_raiz`, `insight`, `solucion`, `metrica`, `video_url`. Se busca por **verbo del mecanismo**
+("reutilizar", "medir", "trazar", "filtrar") y por `temas`, nunca por título del reto. De cada caso
+se extraen dos cosas: el `insight` (qué convención rompió) y la `metrica` (qué se mide para probarlo).
+Si un campo dice "No documentado en la fuente", no se copia: se razona el mecanismo y la cifra se
+marca como estimación. Si existe el caso que ganó ese mismo reto, se lee antes que nada y manda.
+
+**2. Familias de mecanismos que ya ganaron.** Toda propuesta se declara en una de estas familias.
+Si no cae en ninguna, es un oficio, no una propuesta.
+
+- **A. Objeto de siempre + instrumentación y control.** Techriders 2024 convirtió una micropresa en
+  un sistema con sensores, válvulas y telemetría. Gana porque el objeto tradicional se vuelve
+  confiable y medible.
+- **B. Residuo + componente nuevo con especificación.** Mentes Volcánicas 2025 (paneles de Tetra Pak
+  con ruta de acopio), BottleLife 2017 (envases estructurales). Gana porque el desecho se convierte
+  en un producto con ficha técnica, no en artesanía.
+- **C. Dato + alguien que decide.** SITRACAFE 2026 (trazabilidad del beneficio de café), Ollnari 2023
+  (origen garantizado), Steel Innovators 2026 (red de sensores). Gana si el dato llega a quien tiene
+  que actuar esa misma semana.
+- **D. Energía integrada a un objeto de uso diario.** LexoStop 2019 (parada eólico-solar), Banca Solar
+  2026, DIGNA 2023 (panel más purificación de agua). Gana porque el objeto ya existía y ahora se
+  sostiene solo.
+- **E. Servicio comunitario que reemplaza la compra del objeto.** AVOCADO 2026 (motores domésticos
+  convertidos en tracción comunitaria). Gana porque la comunidad usa el servicio todos los días en
+  vez de comprar una máquina.
+- **F. Accesibilidad y adaptación al usuario.** BidiSign 2026 (traductor de LENSEGUA), Elohim 2026
+  (espacio adaptativo), Geckakz 2016 (juego para niños no videntes). Gana porque cambia quién puede
+  usar algo que ya existe.
+- **G. Módulo replicable con ruta de acopio.** Stem Synergy 2025 (huertos verticales con materiales
+  reciclados), BioInnova 2023 (vivienda con agua, saneamiento y huerto). Gana porque se instala mil
+  veces igual y el insumo tiene quién lo recoja.
+
+**3. Cinco pruebas de descarte.** Antes de escribir, la idea pasa las cinco o se descarta:
+
+1. ¿Podría montarlo mañana un taller común, sin nada nuevo? Entonces es un oficio, no una propuesta.
+2. ¿El insumo varía tanto (marcas, años, modelos) que no se puede estandarizar? Entonces el mecanismo
+   tiene que **medir y adaptarse en el sitio**, no prometer una norma fija ni una garantía por modelo.
+3. ¿Alguien lo usa todos los días y paga por el servicio, o se vende una unidad y desaparece?
+4. ¿La métrica es física (quintales, litros, vatios, horas, personas) o es una promesa?
+5. ¿Qué gana quien lo opera y qué pierde el barrio si no existe?
+
+**4. Anti-patrones.** Estos ya se descartaron y no vuelven:
+
+- Taller que repara y revende el residuo con garantía (el reto 01 cayó aquí).
+- Plataforma o app que "conecta" oferta y demanda sin acopio, logística ni operador.
+- Capacitación y concientización como núcleo de la solución.
+- Sensor o dispositivo suelto, sin nadie que decida con el dato.
+- Kit que se entrega sin quién lo opere ni quién cobre por usarlo.
+- Solución que depende de donaciones permanentes de tiempo o de insumos.
+- Mejorar el mismo producto que ya existe sin cambiar quién lo usa ni quién paga.
+
+**5. La prueba del día 400.** Al día 400, ¿el servicio sigue funcionando?, ¿quién cambió la pieza
+gastada?, ¿quién pagó?, ¿qué pasa si el operador se va del barrio? Si la respuesta es "depende de un
+proyecto nuevo", la propuesta todavía no está terminada.
+
 ### Contenido y pensamiento
 
 - Nosotros **no creamos retos**: el usuario los entrega. Nosotros proponemos soluciones.
@@ -67,25 +125,6 @@ esta doctrina. Nació de una revisión real del usuario y es obligatoria.
   tamaño y el mismo color (navy), y el rótulo va en el mismo chip. Cambiar tamaño o color de una
   respecto a la otra la degrada a subsección. Ningún nombre de solución repite el cobalto del
   número de reto: ese cobalto es del reto, no de la propuesta.
-- **El oficio obvio no es una solución.** Reparar, reciclar, recolectar o "capacitar" es lo primero
-  que se le ocurre a cualquiera y no gana: lo hace cualquier taller del barrio. La propuesta sube
-  cuando **al residuo se le suma una capa técnica nueva** (medición, control, automatización,
-  material, trazabilidad) **y una función colectiva** (un servicio que la comunidad usa todos los
-  días). Antes de escribir, cinco pruebas:
-  1. ¿Podría montarlo mañana un taller común, sin nada nuevo? Entonces es un oficio, no una propuesta.
-  2. ¿El insumo es tan variable que no se puede estandarizar (marcas, años, modelos)? Entonces el
-     mecanismo tiene que **medir y adaptarse en el sitio**, no prometer una norma fija ni una garantía
-     por modelo.
-  3. ¿Alguien lo usa todos los días y paga por el servicio, o se vende una unidad y desaparece?
-  4. ¿La métrica es física (quintales, litros, vatios, horas) o es una promesa?
-  5. ¿Qué gana quien lo opera y qué pierde el barrio si no existe?
-- **El banco de ganadores se consulta por mecanismo, no por nombre.**
-  `knowledge/retos_razonamiento.json` tiene 20 casos con problema, insight, solución, métrica y video.
-  Si existe el caso que ganó ese mismo reto, se lee primero y se copia su **mecanismo**, no su
-  redacción: el reto de motores lo ganó un equipo que no revendió motores, los convirtió en planta
-  motriz de tracción comunitaria. Los demás precedentes se eligen por el movimiento técnico que
-  comparten ("obra + instrumentación", "residuo + material nuevo", "dato + decisión"), nunca por
-  coincidencia de palabras con el título del reto.
 - **Insignias que aplican** (2 o 3 por reto, después de los ODS): marcos reales de reconocimiento,
   financiamiento o política a los que la solución puede postular — Ciudades Creativas UNESCO,
   Premio Latinoamérica Verde, Fondo de Agua, Fondo nacional de innovación, Marco de Sendai, REP de
@@ -130,10 +169,13 @@ esta doctrina. Nació de una revisión real del usuario y es obligatoria.
 - Cadena obligatoria: problema → causa raíz → insight → solución → métrica. La causa raíz
   **nunca** es "No documentado": si falta la fuente, se razona el mecanismo y se marca la cifra
   como estimación a validar.
-- **Precedentes por mecanismo, no por nombre del reto.** Los retos casi nunca se repiten entre
-  años. Se busca el caso ganador que resolvió el mismo movimiento (residuo→kit, obra pasiva→
-  telemetría, acopio→transformación) y se explica "por qué se parece". Un ganador del mismo
-  reto no es evidencia, es circularidad. Siempre incluir el link del video.
+- **Precedentes por mecanismo.** Los retos casi nunca se repiten entre años, así que se busca el
+  caso ganador que resolvió el mismo movimiento (residuo→kit, obra pasiva→telemetría, acopio→
+  transformación) y se explica "por qué se parece". Si existe el caso que ganó **ese mismo reto**,
+  es el primer precedente y se copia su mecanismo, no su redacción: el reto de motores lo ganó un
+  equipo que no revendió motores, los volvió planta motriz de tracción comunitaria. Siempre se
+  incluye el link del video; si el caso no tiene video, se dice y se compensa con un segundo
+  precedente que sí lo tenga.
 - La "señal que se repite en los ganadores" es una frase de patrón, no una estadística interna.
 - No mostrar estadísticas internas del motor; solo datos que vendan la solución.
 
@@ -162,8 +204,9 @@ esta doctrina. Nació de una revisión real del usuario y es obligatoria.
 ### Jerarquía visual (no todo gris)
 
 - Etiquetas de tabla y rótulos de sección en **navy `#0D1B35`**, no en gris.
-- Acento cobalto `#0866F5` reservado a: número de reto, nombre de la propuesta principal,
-  métrica clave, numeración de pasos y links. La Opción 02 se titula en navy para no competir.
+- Acento cobalto `#0866F5` reservado a: número de reto, métrica clave, numeración de pasos y links.
+  El nombre de cualquiera de las dos soluciones va en navy: el cobalto es del reto, no de la
+  propuesta.
 - Cuerpo en `#334155`; gris `#5C7193` solo para metadatos (puesto, notas al pie).
 - Cada sección abre con una regla hairline 1 px + rótulo mono en mayúsculas: eso es la
   separación. Sin tarjetas, sin sombras, sin emojis, sin degradados.
@@ -228,6 +271,7 @@ Cada punto nació de una corrección del usuario. Si el entregable repite uno de
 3. Verificar que cada reto tenga sus 2 soluciones independientes, 2 o 3 insignias, 3 detalles,
    sus links de video, sus ODS con **la imagen oficial** (no un cuadrado con número) y **un
    párrafo "En la práctica" por solución**.
+   Cada solución declara su familia de mecanismo (A–G) y pasa las cinco pruebas de descarte.
 4. Renderizar páginas a PNG y mirar: sin cortes, sin grupos de métricas partidos entre páginas,
    sin repetición circular del nombre del reto.
 5. Contar las líneas regladas de COMENTARIOS en el PDF: si la última queda fuera del área útil,
