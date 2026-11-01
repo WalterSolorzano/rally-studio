@@ -66,32 +66,57 @@ Secciones: `h3` mono 7.3 pt, mayúsculas, navy, `border-top: 1px solid #0D1B35`,
 
 Cierre del reto:
 
-- `.pitch` — borde superior navy 2 px, texto 9.4 pt.
-- `.comentarios` — rótulo cobalto, 3 líneas regladas de 8.2 mm.
+- `.pitch` — borde superior navy 2 px, texto 9.4 pt, rótulo `Pitch de 60 segundos · Opción 01`.
+- `.comentarios` — rótulo cobalto, 12 líneas regladas de 8.2 mm.
+
+Dos soluciones:
+
+```
+.sol-head    { break-inside: avoid }              /* etiqueta + nombre + claim + qué es */
+.sol.b       { break-before: page; border-top: 4px solid #0866F5; padding-top: 4mm }
+.sol.b .prop .name { color: #0D1B35; font-size: 16.5pt }   /* la opción 2 no compite en cobalto */
+.sol.b .prop .claim { font-size: 9.8pt }  .sol.b .prop .what { font-size: 8.8pt }
+.sol-tag     { mono 6.9pt navy }          /* "Opción 01" / "Reto 09 · Opción 02" */
+table.datos  { table-layout: fixed }  td.k { width: 33mm }   /* evita solapamiento etiqueta/valor */
+table.datos.compact td { padding: 1.3mm 0; font-size: 8.2pt }
+```
+
+Detalles que suman: `.detalles` grid 3 columnas, `.detalle` con borde izquierdo cobalto 2 px,
+`.detalle .k` mono navy 6.8 pt y texto 7.9 pt. Tres por reto.
 
 ## Reglas de paginación
 
-- Objetivo: 2 páginas por reto, 0 huérfanas.
-- `break-inside: avoid` en `.analogia`, `.riesgo`, `.pitch`, `.comentarios`, `.ods-item`,
-  filas de tabla.
-- Si el bloque de comentarios se va a una tercera página, se reduce el ritmo (altura de línea,
-  márgenes de `h3`, tamaño de pasos) hasta que entre. Nunca dejar una página con tres líneas.
+- Objetivo: 3 páginas por reto, 0 huérfanas.
+  - Página 1: cabecera + descripción + ODS + Opción 01.
+  - Página 2: Opción 02 + Detalles que suman + cadena + métricas (ambos grupos).
+  - Página 3: señal + precedentes + pitch + comentarios.
+- `break-inside: avoid` en `.analogia`, `.detalle`, `.mgroup` (cada grupo de métricas completo),
+  `.pitch`, `.comentarios`, `.ods-item`, `.sol-head` y filas de tabla; `break-after: avoid` en
+  encabezados; `break-before: page` en `.sol.b`.
+- El grupo de métricas de la Opción 02 puede abrir la página 3: se acepta porque el rótulo
+  `Opción 02 · Nombre` lo hace autosuficiente. Lo que no se acepta es una métrica suelta al pie
+  o al inicio de una página.
 - Verificar con el `y` máximo de cada página: si una página termina por debajo de ~590 pt de
-  800 útiles, compactar o aceptar solo si el bloque anterior lo justifica.
+  800 útiles, revisar que el bloque anterior no se haya partido; el hueco de cierre de la
+  Opción 01 en la página 1 es esperado (la Opción 02 abre página nueva).
 
 ## Generador
 
 - `datos_dossier.py`: contenido curado por reto (propuesta, ODS, cadena, señal, analogías,
   videos). No meter retos de prueba aquí si el entregable es del usuario.
+- `datos_extra.py`: `EXTRA["01".."09"]` con `alterna` (segunda solución) y `detalles` (3 pares
+  etiqueta/texto). `datos_dossier.py` hace el merge al final.
 - `generar_dossier_v3.py`: construye HTML → PDF (Chrome headless), DOCX (python-docx) y
-  XLSX (openpyxl).
-- Excel: hoja `Panel` + una hoja por reto. El bloque editable se llama
-  "Comentarios e ideas del equipo" y trae columnas Idea / Responsable / Cómo se mide / Fecha.
+  XLSX (openpyxl). Sin dict de riesgos: la sección de jurado se eliminó a propósito.
+- Excel: hoja `Panel` + una hoja por reto. Panel: Reto, Propuesta 01, Propuesta 02, Categoría,
+  ODS, Beneficiario, Métrica clave, Precedente 1, Video del precedente (el hipervínculo vive en
+  la columna 9). El bloque editable se llama "Comentarios e ideas del equipo" y trae columnas
+  Idea / Responsable / Cómo se mide / Fecha.
 
 ## Checklist de salida
 
-1. `paginas == 2 × retos`, sin páginas con menos de ~150 caracteres.
+1. `paginas == 3 × retos`, sin páginas con menos de ~150 caracteres.
 2. Sin `saturacion`, `probabilidad`, `win rate`, `winrate`, `score`, `No documentado`.
-3. 2 links de video por reto, 3 ODS con badge por reto.
-4. DOCX con el mismo orden y los ODS como tabla con celda de color.
-5. XLSX con 9 hojas de reto y filas de comentarios editables.
+3. 2 soluciones, 3 detalles, 2 links de video y 3 ODS con badge por reto.
+4. DOCX con el mismo orden, ambas opciones y los ODS como tabla con celda de color.
+5. XLSX con 9 hojas de reto, segunda solución y filas de comentarios editables.
