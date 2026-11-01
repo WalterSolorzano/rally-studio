@@ -73,6 +73,17 @@ esta doctrina. Nació de una revisión real del usuario y es obligatoria.
 - Cada solución lleva nombre propio, claim, qué es, cómo funciona, beneficiario, componentes,
   costo estimado y métricas. El diagnóstico solo existe para sostener la propuesta; nunca ocupa
   más espacio que ella.
+- **Se escribe para alguien que no sabe del tema.** Ningún término técnico queda sin traducir:
+  se nombra el objeto y se explica en la misma frase qué es y para qué sirve ("hotel de nidos:
+  bloque de madera con agujeros y cañas huecas donde las abejas solitarias ponen sus huevos";
+  "fisurómetro: regla pegada a los dos lados de una grieta"; "bebedero: bandeja poco profunda
+  con agua y piedras donde beben los insectos"; "retorta: horno cerrado sin oxígeno").
+- **El párrafo de presentación vende y dimensiona.** Abre con la situación concreta que resuelve,
+  sigue con qué es la solución y cierra con lo que incluye y en qué cantidad (8 a 12 nodos por
+  sector, cuatro manzanas, franja de 3 a 6 metros, ocho puntos de carga). Un párrafo de tres
+  líneas no vende: el lector tiene que poder imaginarse el objeto instalado.
+- **Los pasos de "cómo funciona" repiten el idioma llano**, no vuelven a la jerga que la
+  presentación acaba de traducir.
 - **Es una idea, no un proyecto de ingeniería.** No desarrollar detalle constructivo ni plan de
   obra: la ejecución se resuelve después. Basta con que la idea se entienda y se vea viable.
 - **Detalles que suman** (3 por reto): ganchos de buenas prácticas que elevan la propuesta sin

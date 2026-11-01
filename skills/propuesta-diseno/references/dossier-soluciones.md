@@ -98,6 +98,26 @@ Van dentro del bloque `.ods`, después de la grilla de ODS, así viajan siempre 
 y nunca solas a la página siguiente. Dos o tres por reto; si la fila necesita más de dos líneas,
 se recorta.
 
+## Redacción (lenguaje llano)
+
+El lector del dossier no tiene por qué saber del oficio del reto. Reglas de escritura:
+
+- **Ningún término técnico sin traducir.** Se nombra el objeto y se explica en la misma frase
+  qué es y para qué sirve: «hotel de nidos: bloque de madera con agujeros y cañas huecas donde
+  las abejas solitarias ponen sus huevos»; «bebedero: bandeja poco profunda con agua y piedras
+  donde beben los insectos» (no es nada que se instale en un edificio); «fisurómetro: regla
+  pegada a los dos lados de una grieta»; «retorta: horno cerrado sin oxígeno»; «biochar: carbón
+  poroso que se entierra»; «briqueta: bloque denso del tamaño de un ladrillo».
+- **El párrafo de presentación (`que_es`) tiene cuatro movimientos**: situación concreta →
+  qué es la solución → qué incluye, con cada objeto explicado → cantidad y escala (8 a 12 nodos
+  por sector, cuatro manzanas; franja de 3 a 6 m; 200 litros; ocho puntos de carga; garantía de
+  90 días). Entre 380 y 650 caracteres. Menos de eso no vende; más, no cabe.
+- **Los pasos de "Cómo funciona" no reintroducen la jerga** que la presentación acaba de traducir.
+- **Los componentes llevan glosa corta entre paréntesis** cuando el nombre no es obvio:
+  «Megóhmetro (mide fugas)», «Caja estanca IP65», «Radio de largo alcance o chip de datos»,
+  «Fichas de conteo», «Reglas de grieta de acrílico», «Medidor de caudal mecánico»,
+  «Trituradora de poda», «Plantines de totora y junco».
+
 ## Reglas de paginación
 
 - Objetivo: 3 páginas por reto, 0 huérfanas.
