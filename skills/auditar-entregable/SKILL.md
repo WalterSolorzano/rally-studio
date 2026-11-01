@@ -35,6 +35,10 @@ description: Revisa un entregable contra la rúbrica del certamen, las bases del
 
 ## Reglas
 
+- Antes de dar un entregable como listo para SIRLI, ejecutar obligatoriamente:
+  `python arsenal.py check-todo` (valida duración del video ≤ 120 s, coherencia de cifras entre
+  guion y presupuesto, y caracteres por campo del pautado). Lo que falle vuelve a su
+  especialista; el director no lo arregla a mano. Sin este check sin errores, no se sube a SIRLI.
 - No inventes criterios. Si la rúbrica no dice algo, no lo presentes como requisito.
 - No confundas "no me gusta" con "resta puntos".
 - Si un dato no tiene respaldo, es un hallazgo crítico, no un detalle de estilo.
