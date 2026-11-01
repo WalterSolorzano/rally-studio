@@ -59,9 +59,17 @@ esta doctrina. Nació de una revisión real del usuario y es obligatoria.
 
 - Nosotros **no creamos retos**: el usuario los entrega. Nosotros proponemos soluciones.
 - **Dos soluciones por reto.** Opción 01 es la propuesta principal; Opción 02 ataca el mismo
-  reto con un **mecanismo distinto** (no es la misma idea con otro nombre: una pasa por
-  infraestructura y la otra por gestión comunitaria, o una por producto y la otra por servicio).
-  Ambas deben cumplir los criterios del reto y ser defendibles por separado.
+  reto con un **mecanismo distinto**. No tienen que parecerse ni estar conectadas: pueden diferir
+  en tecnología, en modelo de negocio, en escala o en la vía de acceso al beneficiario, y ninguna
+  depende de la otra. Se piden dos porque el reto admite más de un camino, no porque la segunda
+  sea el plan B de la primera. Ambas deben cumplir los criterios del reto y sostenerse solas.
+- **Insignias que aplican** (2 o 3 por reto, después de los ODS): marcos reales de reconocimiento,
+  financiamiento o política a los que la solución puede postular — Ciudades Creativas UNESCO,
+  Premio Latinoamérica Verde, Fondo de Agua, Fondo nacional de innovación, Marco de Sendai, REP de
+  RAEE, Pacto Global, mercado de carbono. Cada insignia va con un calificador de tres o cuatro
+  palabras que dice **por qué aplica a este reto** ("turismo de naturaleza", "obra replicable").
+  Solo se listan si el mecanismo de la solución las habilita; nunca como relleno ni inventando
+  programas.
 - Cada solución lleva nombre propio, claim, qué es, cómo funciona, beneficiario, componentes,
   costo estimado y métricas. El diagnóstico solo existe para sostener la propuesta; nunca ocupa
   más espacio que ella.
@@ -90,14 +98,16 @@ esta doctrina. Nació de una revisión real del usuario y es obligatoria.
 - **Sin portada y sin índice.** El documento abre directo en el reto 01.
 - Cabecera del reto: número gigante (64 pt, cobalto) a la izquierda, título a la derecha y
   debajo un chip navy con `CATEGORÍA · 01/09` en una sola línea.
-- Orden: descripción breve → ODS → "Dos soluciones posibles" → Opción 01 completa → Opción 02
-  (página nueva, rótulo `Reto NN · Opción 02`) → Detalles que suman (3 columnas) → cadena de
-  razonamiento → métricas agrupadas por opción → señal → precedentes → pitch de 60 s →
-  **COMENTARIOS** con líneas regladas.
+- Orden: descripción breve → ODS → insignias que aplican → "Dos soluciones posibles" → Opción 01
+  completa → Opción 02 (página nueva, rótulo `Reto NN · Opción 02`) → Detalles que suman (3
+  columnas) → cadena de razonamiento → métricas agrupadas por opción → señal → precedentes →
+  pitch de 60 s → **COMENTARIOS** con líneas regladas.
 - **Tres páginas por reto.** Página 1: cabecera + ODS + Opción 01. Página 2: Opción 02 +
   detalles + cadena + métricas. Página 3: señal + precedentes + pitch + comentarios.
 - ODS con **figura**: badge cuadrado del color oficial del ODS con su número en blanco, nombre
   y una línea de justificación. Nunca escribir solo "ODS 12".
+- Insignias en una fila de píldoras (`border: 1px solid #C8D8EE`): rótulo mono navy y calificador
+  en gris. Se acomodan en dos líneas como máximo; si ocupan más, sobra una insignia.
 - Nada de páginas huérfanas: si el cierre no cabe, se compacta el ritmo vertical; no se deja una
   hoja con tres líneas.
 
@@ -128,7 +138,7 @@ esta doctrina. Nació de una revisión real del usuario y es obligatoria.
 1. Contar páginas: 3 por reto, sin huérfanas; revisar el `y` máximo de cada página.
 2. Buscar palabras prohibidas (`saturacion`, `probabilidad`, `win rate`, `winrate`, `score`)
    y la cadena "No documentado".
-3. Verificar que cada reto tenga sus 2 soluciones, 3 detalles, sus links de video y sus ODS con
-   figura.
+3. Verificar que cada reto tenga sus 2 soluciones independientes, 2 o 3 insignias, 3 detalles,
+   sus links de video y sus ODS con figura.
 4. Renderizar páginas a PNG y mirar: sin cortes, sin grupos de métricas partidos entre páginas,
    sin repetición circular del nombre del reto.

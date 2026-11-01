@@ -84,6 +84,20 @@ table.datos.compact td { padding: 1.3mm 0; font-size: 8.2pt }
 Detalles que suman: `.detalles` grid 3 columnas, `.detalle` con borde izquierdo cobalto 2 px,
 `.detalle .k` mono navy 6.8 pt y texto 7.9 pt. Tres por reto.
 
+Insignias:
+
+```
+.insignias   { display: flex; flex-wrap: wrap; gap: 1.8mm 2.4mm; break-inside: avoid; margin-top: 3.2mm }
+.insignias .lbl { mono 6.6pt navy, "INSIGNIAS QUE APLICAN" }
+.insignia    { border: 1px solid #C8D8EE; border-radius: 1mm; padding: .9mm 2.2mm }
+.insignia .n { mono 6.8pt navy uppercase }   /* nombre del marco o programa */
+.insignia .t { 7.1pt #5C7193 }               /* calificador: por qué aplica */
+```
+
+Van dentro del bloque `.ods`, después de la grilla de ODS, así viajan siempre con el diagnóstico
+y nunca solas a la página siguiente. Dos o tres por reto; si la fila necesita más de dos líneas,
+se recorta.
+
 ## Reglas de paginación
 
 - Objetivo: 3 páginas por reto, 0 huérfanas.
@@ -106,6 +120,11 @@ Detalles que suman: `.detalles` grid 3 columnas, `.detalle` con borde izquierdo 
   videos). No meter retos de prueba aquí si el entregable es del usuario.
 - `datos_extra.py`: `EXTRA["01".."09"]` con `alterna` (segunda solución) y `detalles` (3 pares
   etiqueta/texto). `datos_dossier.py` hace el merge al final.
+- `datos_insignias.py`: `INSIGNIAS["01".."09"]` con 2 o 3 pares `(marco, por qué aplica)`. Se
+  mergea igual que `EXTRA` y solo lista marcos reales; si un reto no habilita ninguno, se deja
+  fuera en vez de inventar.
+- Las dos soluciones no se encadenan: la Opción 02 no puede decir "vuelve al banco central", "se
+  suma a la Opción 01" ni ninguna fórmula que la vuelva dependiente. Cada una cierra sola.
 - `generar_dossier_v3.py`: construye HTML → PDF (Chrome headless), DOCX (python-docx) y
   XLSX (openpyxl). Sin dict de riesgos: la sección de jurado se eliminó a propósito.
 - Excel: hoja `Panel` + una hoja por reto. Panel: Reto, Propuesta 01, Propuesta 02, Categoría,
