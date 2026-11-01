@@ -28,6 +28,9 @@ description: Da sugerencias cortas y accionables para una etapa concreta del flu
 
 ## Reglas
 
+- Cada sugerencia debe validarse contra la rúbrica del certamen activo
+  (`.agents/rules/rubricas-y-puntajes.md`) antes de devolverse: indicar el criterio de mayor
+  peso que toca y por qué sube puntaje. Ninguna sugerencia se da sin esta validación.
 - No reescribas toda la sección si no te lo piden: sugiere.
 - Nada de consejos genéricos ("mejora la redacción"). Cada sugerencia debe poder ejecutarse.
 - Si falta un dato de base, esa es la primera sugerencia: conseguirlo.
