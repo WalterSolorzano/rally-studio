@@ -20,6 +20,9 @@ __pycache__/
 *.pyc
 .pytest_cache/
 
+# Salidas intermedias del motor de soluciones
+docs/_build/
+
 # Recursos subidos por el equipo en el Estudio de Video (datos de usuario, pesados)
 dashboard/assets_uploads/
 

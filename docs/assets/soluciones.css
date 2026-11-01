@@ -1,0 +1,80 @@
+@page { size: A4; margin: 14mm 13mm 16mm; }
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Segoe UI", "Plus Jakarta Sans", system-ui, sans-serif;
+  color: #0f172a;
+  font-size: 10pt;
+  line-height: 1.45;
+}
+h1, h2, h3 { margin: 0; line-height: 1.15; }
+a { color: #1d45b9; text-decoration: none; }
+
+.cover {
+  min-height: 240mm;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-left: 6px solid #1d45b9;
+  padding-left: 14mm;
+}
+.cover .kicker { color: #2aa7ad; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; font-size: 8pt; }
+.cover h1 { font-size: 30pt; margin: 6mm 0 3mm; color: #0f172a; }
+.cover .sub { font-size: 13pt; color: #334155; max-width: 150mm; }
+.cover .meta { margin-top: 12mm; color: #475569; font-size: 9.5pt; }
+.cover .rule { width: 42mm; height: 3px; background: #2aa7ad; margin: 7mm 0; }
+
+.method {
+  margin-top: 8mm;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  padding: 5mm 6mm;
+  font-size: 9pt;
+  color: #334155;
+}
+.method strong { color: #0f172a; }
+
+.reto { page-break-before: always; }
+.reto-head { border-bottom: 2px solid #0f172a; padding-bottom: 3mm; margin-bottom: 4mm; }
+.reto-head .id { font-family: "JetBrains Mono", Consolas, monospace; font-size: 8pt; color: #1d45b9; letter-spacing: .08em; }
+.reto-head h2 { font-size: 17pt; margin: 1mm 0; }
+.badges { display: flex; gap: 4mm; flex-wrap: wrap; font-size: 8pt; color: #475569; }
+.badge { background: #e2e8f0; border-radius: 3px; padding: 1mm 2.5mm; font-weight: 600; color: #0f172a; }
+.badge.cat { background: #1d45b9; color: #fff; }
+.desc { font-size: 9.5pt; color: #334155; margin-bottom: 4mm; }
+
+.card {
+  border: 1px solid #cbd5e1;
+  border-radius: 5px;
+  padding: 5mm;
+  margin-bottom: 5mm;
+  page-break-inside: avoid;
+}
+.card h3 { font-size: 13pt; margin-bottom: 2mm; }
+.tag { font-size: 7pt; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 1mm 2.5mm; border-radius: 3px; }
+.tag.precedente { background: #dcfce7; color: #166534; }
+.tag.exploratoria { background: #fef3c7; color: #92400e; }
+.card p { margin: 0 0 2.5mm; }
+.label { font-size: 7.5pt; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #64748b; margin-bottom: 1mm; }
+
+.chain { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2mm; margin: 3mm 0; }
+.chain div { background: #f8fafc; border-top: 2px solid #2aa7ad; padding: 2mm; font-size: 7.8pt; }
+.chain b { display: block; font-size: 7pt; text-transform: uppercase; color: #64748b; margin-bottom: .8mm; }
+
+table { width: 100%; border-collapse: collapse; font-size: 8pt; margin: 2mm 0; }
+th { text-align: left; background: #0f172a; color: #fff; padding: 1.5mm 2mm; font-weight: 600; }
+td { border-bottom: 1px solid #e2e8f0; padding: 1.5mm 2mm; vertical-align: top; }
+
+.impact { background: #ecfdf5; border-left: 3px solid #059669; padding: 3mm 4mm; margin: 3mm 0; font-size: 8.5pt; }
+.impact .label { color: #047857; }
+.chips { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 1mm 0 3mm; }
+.chip { border: 1px solid #94a3b8; border-radius: 20px; padding: .6mm 2.5mm; font-size: 7.5pt; color: #334155; }
+
+.rubric { font-size: 8.5pt; color: #334155; }
+.risk { font-size: 8.5pt; color: #7c2d12; background: #fff7ed; border-left: 3px solid #ea580c; padding: 2mm 4mm; margin: 2.5mm 0; }
+.pitch { font-size: 10pt; font-weight: 700; color: #0f172a; background: #eff6ff; border-left: 3px solid #1d45b9; padding: 3mm 4mm; margin-top: 3mm; }
+
+.source { font-size: 7.5pt; color: #64748b; word-break: break-all; }
+.footer { margin-top: 6mm; border-top: 1px solid #cbd5e1; padding-top: 2mm; font-size: 7.5pt; color: #94a3b8; }
+.pendiente { color: #92400e; font-weight: 600; }

@@ -8,6 +8,7 @@ ingest_challenges.py -- Ingesta de desafíos desde múltiples formatos:
 
 Al ingestar, guarda fielmente en research/challenges.json y genera automáticamente
 el Word editable 'docs/Matriz_Seleccion_Desafios_2026.docx'.
+Con --dossier --certamen nacional|latam genera además el dossier PDF de soluciones.
 """
 import sys
 import io
@@ -75,7 +76,24 @@ def parse_raw_text(text):
             })
     return challenges
 
+def _extraer_opcion(args, nombre):
+    if nombre in args:
+        i = args.index(nombre)
+        valor = args[i + 1] if i + 1 < len(args) else None
+        del args[i:i + 2]
+        return valor
+    return None
+
+
 def main():
+    # Opciones propias (no afectan el parseo posicional existente)
+    argv = sys.argv[1:]
+    certamen = _extraer_opcion(argv, "--certamen")
+    con_dossier = "--dossier" in argv
+    if con_dossier:
+        argv.remove("--dossier")
+    sys.argv = [sys.argv[0]] + argv
+
     print("\n" + "═" * 65)
     print("  RALLY STUDIO -- INGESTA UNIVERSAL DE DESAFÍOS (Fiel & Literal)")
     print("═" * 65)
@@ -126,6 +144,21 @@ def main():
         print("Generando Matriz Word de deliberación...")
         subprocess.run([sys.executable, "scripts/gen_challenges_doc.py"], check=True)
         print("✓ Matriz oficial generada: docs/Matriz_Seleccion_Desafios_2026.docx")
+
+        if con_dossier:
+            if not certamen:
+                print("WARN: --dossier requiere --certamen nacional|latam. Se omite el PDF.")
+            else:
+                print("Generando soluciones y dossier PDF...")
+                subprocess.run([
+                    sys.executable, "scripts/soluciones_motor.py", "--todos",
+                    "--certamen", certamen, "--json", "docs/_build/soluciones.json",
+                ], check=True)
+                subprocess.run([
+                    sys.executable, "scripts/gen_soluciones_pdf.py",
+                    "--json", "docs/_build/soluciones.json",
+                    "--out", f"docs/Dossier_Soluciones_{certamen}.pdf",
+                ], check=True)
     else:
         print("WARN: No se detectaron desafíos estructurados.")
 

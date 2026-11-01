@@ -1,53 +1,80 @@
 ---
 name: proponer-retos
-description: Propone retos nuevos o reformulados para el certamen activo, anclados a demanda real, ODS y precedentes ganadores. Úsala cuando el equipo no tiene reto, quiere comparar opciones o pide ideas para el banco de desafíos.
+description: Genera soluciones aplicables para los retos que da el usuario, con precedentes ganadores, razonamiento problema-causa-insight-solución y dossier PDF. Úsala cuando el equipo ya tiene retos del comité y necesita propuestas sustentadas.
 ---
 
-# Proponer retos
+# Soluciones para retos
+
+## Regla dura
+
+**Este sistema no crea retos.** El usuario o el comité entregan los retos; la skill
+propone **soluciones** para esos retos. Si no hay retos, pídelos o impórtalos; no inventes.
 
 ## Cuándo usarla
 
-- El usuario aún no tiene `challenge_id` y pide ideas.
-- Quiere explorar alternativas antes de elegir.
-- Pide reformular un reto del comité con otro enfoque.
+- El usuario tiene los retos del comité y pide ideas de solución.
+- Quiere un dossier PDF para deliberar con el equipo.
+- Pide reformular una solución existente con otro enfoque.
 
 ## Procedimiento
 
-1. Lee `brief.json` para saber el certamen (`nacional` o `latam`), la categoría y la ciudad.
-   El reto a escoger y la biblioteca/tecnología a usar **no se saben de antemano**: se definen en el momento con el usuario, después de leer `brief.json` (certamen, categoría, ciudad) y `research/challenges.json`. No se hardcodea ningún reto ni ninguna biblioteca.
-2. Lee `research/challenges.json` (banco base) y `research/claims.json` (cifras con fuente).
-   Antes de proponer un reto, valida que cualquier cifra o precedente que cites exista en `research/claims.json` con fuente, URL y año. Si una cifra no está ahí, no se escribe como hecho: describe el problema sin número o marca como estimación.
-3. Revisa `knowledge/winners_latam.md` y `knowledge/winners_analysis.md` para no proponer algo
-   que ya ganó igual, y para copiar el patrón que sí funciona (hibridación ciberfísica:
-   hardware comercial + software).
-4. Propón **3 retos**, cada uno con este formato:
+1. Lee `brief.json`: `rally_type` (`nacional` 24 h o `latam` 28 h), categoría, ciudad y equipo.
+   Si falta el certamen, pregúntalo antes de generar.
+2. Asegura el banco de retos:
+   - Si `research/challenges.json` tiene retos, úsalo.
+   - Si está vacío y existen los retos del comité en `brain/corpus/retos.md`:
+     `python scripts/soluciones_motor.py --importar-brain`
+   - Si no hay ninguna fuente, pide al usuario el texto de los retos. No los redactes tú.
+3. Genera el JSON de soluciones:
+   ```bash
+   python scripts/soluciones_motor.py --todos --certamen nacional --grafo \
+     --json docs/_build/soluciones.json
+   ```
+   Para un solo reto: `--reto DESAFIO_01 --certamen latam`.
+   Categoría forzada (solo si el usuario la conoce): `--categoria social|tecnologica|procesos`
+   (Nacional) o `--categoria innovacion|impacto_social` (Latam).
+4. Genera el PDF:
+   ```bash
+   python scripts/gen_soluciones_pdf.py --json docs/_build/soluciones.json \
+     --out docs/Dossier_Soluciones_<certamen>.pdf
+   ```
+   Entrega la ruta del PDF. No pegues el JSON crudo en el chat.
+5. Revisa el resultado antes de entregarlo:
+   - Cada solución debe traer cadena de razonamiento (problema → causa raíz → insight →
+     solución → métrica) y un precedente con año, equipo y proyecto.
+   - Si una ruta es `exploratoria`, dilo: no hay precedente directo y debe validarse.
+   - Las cifras de impacto solo aparecen si tienen fuente en el corpus.
+   - La categoría debe estar justificada, no asumida.
 
-```
-RETO: <título corto, sin siglas>
-Quién sufre el problema: <grupo concreto y lugar>
-Demanda: <qué necesita y por qué hoy no lo tiene>
-ODS: <2-3>
-Categoría: <tecnológica | social | procesos>
-Se puede construir en 24-28 h: <sí/no y con qué>
-Precedente: <ganador parecido o "sin precedente directo">
-Riesgo: <lo que un jurado atacaría primero>
-```
+## Qué no hacer
 
-5. Calibra según el certamen:
-   - **Nacional**: municipio real de Nicaragua, eje del Plan Nacional, recursos locales.
-   - **Latam**: el municipio es laboratorio piloto; la solución debe ser modular, paramétrica
-     y replicable en toda América Latina.
-6. Ofrece servir el reto elegido a la ventana (skill `servir-a-ventana`, `--tab challenges
-   --slot main`). No lo sirvas sin que el usuario elija.
+- **Nunca** propongas retos nuevos ni reformules el enunciado del comité.
+- **Nunca** muestres estadísticas internas (saturación, score, probabilidad de victoria).
+  Solo datos de impacto con fuente para vender la idea.
+- **Nunca** inventes cifras, precios, beneficiarios ni precedentes.
+- No prometas que una solución "gana": presenta la ruta y su evidencia.
+- No entregues soluciones genéricas sin caso, sin causa raíz o sin métrica.
 
-## Reglas
+## Formato de cada solución
 
-- Nunca inventes estadísticas, poblaciones ni precios.
-- No propongas retos que dependan de hardware no comprable en el país.
-- Un reto debe poder explicarse en una frase; si necesitas dos, no está listo.
+| Campo | Contenido |
+|---|---|
+| Título | Solución concreta, no el nombre del reto |
+| Concepto | Qué se construye y por qué funciona |
+| Cadena | Problema → causa raíz → insight → solución → métrica |
+| Precedente | Año, equipo, proyecto, puesto, video |
+| Impacto | Dato + fuente; si no hay, "por validar con el equipo" |
+| Recursos | Componentes y materiales detectados |
+| Rúbrica | Criterio principal y secundario con puntos |
+| Riesgo | Lo que el jurado atacaría primero |
+| Pitch | Una frase para el video |
 
 ## Punteros
 
-- Banco y ranking: `research/challenges.json`, `research/challenges_ranked.json`.
-- Cifras verificadas: `research/claims.json`.
-- Modos: `.agents/rules/modos-rally.md`.
+- Motor: `scripts/soluciones_motor.py`
+- PDF: `scripts/gen_soluciones_pdf.py` + `docs/assets/soluciones.css`
+- Casos: `knowledge/retos_razonamiento.json`
+- Ganadores: `research/sirli/winners.jsonl`, `knowledge/winners_analysis.md`
+- Cerebro: `brain/corpus/retos.md`, `graphify-out/graph.json`
+- Rúbricas: `.agents/rules/rubricas-y-puntajes.md`
+- Documentación: `docs/MOTOR_SOLUCIONES.md`

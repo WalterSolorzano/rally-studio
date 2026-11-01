@@ -226,6 +226,20 @@ brand/tokens.css     → variables CSS derivadas de palette.json
 | Colormind API | Paleta desde logo | gen_palette.py |
 | ffmpeg | Edición y exportación de video | Última etapa |
 | `scripts/herramientas.py` | Caja de herramientas externa bajo demanda | Solo cuando la tarea dispara una |
+| `scripts/soluciones_motor.py` | Soluciones para los retos que da el usuario | Cuando ya existen retos y piden propuestas |
+| `scripts/gen_soluciones_pdf.py` | Dossier PDF de soluciones | Después de generar el JSON |
+
+### Motor de soluciones
+
+Detalle: `docs/MOTOR_SOLUCIONES.md`.
+
+- Los retos los da el usuario o el comité. El sistema **no crea retos**: propone soluciones.
+- Cadena obligatoria: problema → causa raíz → insight → solución → métrica, con precedente
+  (año, equipo, proyecto) o etiqueta `exploratoria`.
+- Nunca mostrar estadísticas internas (saturación, score, probabilidad de victoria):
+  el dossier solo usa datos de impacto con fuente para vender la idea.
+- Si `research/challenges.json` está vacío: `python scripts/soluciones_motor.py --importar-brain`.
+
 
 ### Caja de herramientas externa
 
