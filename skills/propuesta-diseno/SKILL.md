@@ -63,6 +63,10 @@ esta doctrina. Nació de una revisión real del usuario y es obligatoria.
   en tecnología, en modelo de negocio, en escala o en la vía de acceso al beneficiario, y ninguna
   depende de la otra. Se piden dos porque el reto admite más de un camino, no porque la segunda
   sea el plan B de la primera. Ambas deben cumplir los criterios del reto y sostenerse solas.
+- **Misma jerarquía visual entre las dos opciones.** El nombre de cada solución lleva el mismo
+  tamaño y el mismo color (navy), y el rótulo va en el mismo chip. Cambiar tamaño o color de una
+  respecto a la otra la degrada a subsección. Ningún nombre de solución repite el cobalto del
+  número de reto: ese cobalto es del reto, no de la propuesta.
 - **Insignias que aplican** (2 o 3 por reto, después de los ODS): marcos reales de reconocimiento,
   financiamiento o política a los que la solución puede postular — Ciudades Creativas UNESCO,
   Premio Latinoamérica Verde, Fondo de Agua, Fondo nacional de innovación, Marco de Sendai, REP de

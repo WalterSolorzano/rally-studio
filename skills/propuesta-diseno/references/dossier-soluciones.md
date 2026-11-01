@@ -83,14 +83,15 @@ Cierre del reto:
   del área útil y Chrome la recorta sin avisar; si se agrega contenido a la página 3, se vuelve a
   contar.
 
-Dos soluciones:
+Dos soluciones (misma jerarquía: nombre 19 pt navy en ambas, rótulo en chip claro):
 
 ```
 .sol-head    { break-inside: avoid }              /* etiqueta + nombre + claim + qué es */
 .sol.b       { break-before: page; border-top: 4px solid #0866F5; padding-top: 4mm }
-.sol.b .prop .name { color: #0D1B35; font-size: 16.5pt }   /* la opción 2 no compite en cobalto */
-.sol.b .prop .claim { font-size: 9.8pt }  .sol.b .prop .what { font-size: 8.8pt }
-.sol-tag     { mono 6.9pt navy }          /* "Opción 01" / "Reto 09 · Opción 02" */
+.prop .name  { font-size: 19pt; color: #0D1B35 }  /* el cobalto queda para el número del reto */
+.sol.b .prop .name { color: #0D1B35; font-size: 19pt }
+.sol-tag     { mono 6.9pt cobalto; background #EDF3FE; border 1px #D3E2FA; padding .9mm 2.4mm }
+.sol.b .prop .claim { font-size: 10.2pt }  .sol.b .prop .what { font-size: 8.7pt }
 table.datos  { table-layout: fixed }  td.k { width: 36mm }   /* evita solapamiento etiqueta/valor */
 table.datos.compact td { padding: 1.2mm 0; font-size: 8.2pt }
 ```
