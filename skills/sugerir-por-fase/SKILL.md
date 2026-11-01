@@ -35,6 +35,7 @@ description: Da sugerencias cortas y accionables para una etapa concreta del flu
 - Nada de consejos genéricos ("mejora la redacción"). Cada sugerencia debe poder ejecutarse.
 - Si falta un dato de base, esa es la primera sugerencia: conseguirlo.
 - Respeta los límites de caracteres del pautado y la duración del guion.
+- `slides` es opcional y solo se instala si el usuario pide un pitch deck además del video de 120 s; nunca reemplaza el guion ni el video.
 
 ## Punteros
 

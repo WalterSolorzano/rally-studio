@@ -1,0 +1,251 @@
+{
+  "version": 1,
+  "actualizado": "2026-10-31",
+  "regla": "Instalar solo la herramienta cuyo 'se_usa_cuando' coincida con la tarea actual. Prohibido instalar la caja completa.",
+  "no_usar": [
+    {
+      "id": "tripo",
+      "motivo": "malla generada por IA: licencia y coste inciertos para una entrega oficial"
+    },
+    {
+      "id": "hyper3d",
+      "motivo": "malla generada por IA: licencia y coste inciertos para una entrega oficial"
+    },
+    {
+      "id": "rodin",
+      "motivo": "malla generada por IA: licencia y coste inciertos para una entrega oficial"
+    }
+  ],
+  "herramientas": [
+    {
+      "id": "dispatching-parallel-agents",
+      "tipo": "skill",
+      "origen": "superpowers",
+      "agente": "orquestador",
+      "instalar": null,
+      "se_usa_cuando": ["varias tareas independientes", "especialistas en paralelo", "delegar en paralelo"],
+      "no_instalar_cuando": ["tareas dependientes entre si", "un solo especialista"],
+      "nota": "Ya viene con superpowers; se carga con la herramienta skill."
+    },
+    {
+      "id": "subagent-driven-development",
+      "tipo": "skill",
+      "origen": "superpowers",
+      "agente": "orquestador",
+      "instalar": null,
+      "se_usa_cuando": ["plan con varias tareas", "implementar plan por tareas", "revision por tarea"],
+      "no_instalar_cuando": ["cambio de un solo archivo"],
+      "nota": "Ya viene con superpowers; se carga con la herramienta skill."
+    },
+    {
+      "id": "writing-plans",
+      "tipo": "skill",
+      "origen": "superpowers",
+      "agente": "orquestador",
+      "instalar": null,
+      "se_usa_cuando": ["escribir plan", "plan de implementacion", "descomponer en tareas"],
+      "no_instalar_cuando": ["tarea trivial de un paso"],
+      "nota": "Ya viene con superpowers; se carga con la herramienta skill."
+    },
+    {
+      "id": "anatomy",
+      "tipo": "skill",
+      "origen": "hub",
+      "agente": "modeler",
+      "instalar": "npx skills add wheresryan22/anatomy",
+      "se_usa_cuando": ["figura humana", "figuras humanas", "anatomia", "personas en escena", "explicar geometria", "video explicativo"],
+      "no_instalar_cuando": ["objeto tecnico sin personas"],
+      "nota": "Tambien la usa el grafista2d para figuras del video."
+    },
+    {
+      "id": "blender-mcp",
+      "tipo": "mcp",
+      "origen": "local",
+      "agente": "modeler",
+      "instalar": "uvx blender-mcp",
+      "se_usa_cuando": ["control en vivo", "blender interactivo", "mcp de blender", "iterar en blender"],
+      "no_instalar_cuando": ["render headless por contrato", "sin autorizacion del director"],
+      "nota": "Desactivado por defecto. Solo se habilita con BLENDERMCP_AUTORIZADO y --si."
+    },
+    {
+      "id": "blender-extensions",
+      "tipo": "builtin",
+      "origen": "blender",
+      "agente": "modeler",
+      "instalar": "blender --command extension install <id>",
+      "se_usa_cuando": ["instalar addon", "extension de blender", "addon oficial"],
+      "no_instalar_cuando": ["addon ya incluido en Blender"],
+      "nota": "Plataforma oficial de extensiones (Blender 4.2+). Preferirla sobre descargas manuales."
+    },
+    {
+      "id": "mpfb2",
+      "tipo": "addon",
+      "origen": "blender",
+      "agente": "modeler",
+      "instalar": null,
+      "se_usa_cuando": ["personaje humano", "figura humana rig", "makehuman"],
+      "no_instalar_cuando": ["producto sin personas"],
+      "nota": "Descargar MPFB2 desde extensions.blender.org. Gratis y con licencia limpia."
+    },
+    {
+      "id": "rigify",
+      "tipo": "builtin",
+      "origen": "blender",
+      "agente": "modeler",
+      "instalar": null,
+      "se_usa_cuando": ["rig", "esqueleto", "animar personaje"],
+      "no_instalar_cuando": ["modelo estatico para render fijo"],
+      "nota": "Addon incluido en Blender; activar en Preferencias > Add-ons."
+    },
+    {
+      "id": "gltf-export",
+      "tipo": "builtin",
+      "origen": "blender",
+      "agente": "modeler",
+      "instalar": null,
+      "se_usa_cuando": ["exportar a web", "three.js", "glb", "asset web"],
+      "no_instalar_cuando": ["el render final no se reutiliza en la web demo"],
+      "nota": "Exportador glTF/GLB incluido; un asset sirve para render y webdemo."
+    },
+    {
+      "id": "polyhaven",
+      "tipo": "api",
+      "origen": "api",
+      "agente": "modeler",
+      "instalar": null,
+      "se_usa_cuando": ["hdri", "materiales cc0", "iluminacion de estudio"],
+      "no_instalar_cuando": ["material propio ya definido en brand/palette.json"],
+      "nota": "API publica de Poly Haven / ambientCG. Assets CC0; no requiere instalacion."
+    },
+    {
+      "id": "geonodes",
+      "tipo": "builtin",
+      "origen": "blender",
+      "agente": "modeler",
+      "instalar": null,
+      "se_usa_cuando": ["procedural", "parametrico", "variantes del modelo"],
+      "no_instalar_cuando": ["una sola pieza unica sin variantes"],
+      "nota": "Geometry Nodes incluido en Blender; encaja con el discurso modular/replicable."
+    },
+    {
+      "id": "impeccable",
+      "tipo": "skill",
+      "origen": "hub",
+      "agente": "grafista2d",
+      "instalar": "npx skills add impeccable",
+      "se_usa_cuando": ["interfaz", "ui", "landing", "rediseno", "pulir pantalla"],
+      "no_instalar_cuando": ["solo texto o datos sin interfaz"],
+      "nota": "Exigida por propuesta-diseno."
+    },
+    {
+      "id": "frontend-design",
+      "tipo": "skill",
+      "origen": "hub",
+      "agente": "grafista2d",
+      "instalar": "npx skills add frontend-design",
+      "se_usa_cuando": ["interfaz", "frontend", "componentes"],
+      "no_instalar_cuando": ["solo documento o presentacion"],
+      "nota": "Exigida por propuesta-diseno."
+    },
+    {
+      "id": "ui-ux-pro-max",
+      "tipo": "skill",
+      "origen": "hub",
+      "agente": "grafista2d",
+      "instalar": "npx skills add ui-ux-pro-max",
+      "se_usa_cuando": ["paleta", "tipografia", "sistema de diseno", "accesibilidad"],
+      "no_instalar_cuando": ["brand/tokens.css ya resuelve el caso"],
+      "nota": "Consulta local; no reemplaza brand/tokens.css."
+    },
+    {
+      "id": "design-system",
+      "tipo": "skill",
+      "origen": "hub",
+      "agente": "grafista2d",
+      "instalar": "npx skills add design-system",
+      "se_usa_cuando": ["tokens", "sistema de diseno", "especificar componentes"],
+      "no_instalar_cuando": ["pagina unica sin reutilizacion"],
+      "nota": "Util para coherencia entre dashboard y sitio."
+    },
+    {
+      "id": "firecrawl-research-index",
+      "tipo": "skill",
+      "origen": "hub",
+      "agente": "investigador",
+      "instalar": "npx skills add firecrawl-research-index",
+      "se_usa_cuando": ["papers", "literatura", "fuentes academicas", "investigacion"],
+      "no_instalar_cuando": ["el claim ya existe en research/claims.json"],
+      "nota": "Refuerza fuente, URL y anio antes de escribir una cifra."
+    },
+    {
+      "id": "firecrawl-developer-index",
+      "tipo": "skill",
+      "origen": "hub",
+      "agente": "investigador",
+      "instalar": "npx skills add firecrawl-developer-index",
+      "se_usa_cuando": ["documentacion tecnica", "api", "error de libreria"],
+      "no_instalar_cuando": ["consulta de negocio o de rubrica"],
+      "nota": "Para dudas tecnicas verificables en fuente primaria."
+    },
+    {
+      "id": "test-driven-development",
+      "tipo": "skill",
+      "origen": "superpowers",
+      "agente": "profe",
+      "instalar": null,
+      "se_usa_cuando": ["escribir test", "bugfix", "nueva funcion"],
+      "no_instalar_cuando": ["solo contenido o documentacion"],
+      "nota": "Solo para el agente que toca scripts, nunca para contenido."
+    },
+    {
+      "id": "verification-before-completion",
+      "tipo": "skill",
+      "origen": "superpowers",
+      "agente": "profe",
+      "instalar": null,
+      "se_usa_cuando": ["afirmar que funciona", "cerrar tarea", "commit"],
+      "no_instalar_cuando": ["exploracion sin entrega"],
+      "nota": "Evidencia antes de afirmar que algo pasa."
+    },
+    {
+      "id": "systematic-debugging",
+      "tipo": "skill",
+      "origen": "superpowers",
+      "agente": "profe",
+      "instalar": null,
+      "se_usa_cuando": ["bug", "fallo", "comportamiento inesperado"],
+      "no_instalar_cuando": ["no hay fallo que reproducir"],
+      "nota": "Diagnostico antes de proponer el fix."
+    },
+    {
+      "id": "caveman-compress",
+      "tipo": "skill",
+      "origen": "hub",
+      "agente": "todos",
+      "instalar": "npx skills add caveman-compress",
+      "se_usa_cuando": ["comprimir memoria", "agents.md", "ahorrar tokens"],
+      "no_instalar_cuando": ["documento que el humano debe leer completo"],
+      "nota": "Comprime AGENTS.md o notas; guarda copia .original.md."
+    },
+    {
+      "id": "cavecrew",
+      "tipo": "skill",
+      "origen": "hub",
+      "agente": "todos",
+      "instalar": "npx skills add cavecrew",
+      "se_usa_cuando": ["delegar a subagente", "comprimir salida", "ahorrar contexto"],
+      "no_instalar_cuando": ["trabajo que cabe en el hilo principal"],
+      "nota": "Salida comprimida de subagentes para sesiones largas."
+    },
+    {
+      "id": "slides",
+      "tipo": "skill",
+      "origen": "hub",
+      "agente": "pautador",
+      "instalar": "npx skills add slides",
+      "se_usa_cuando": ["presentacion", "pitch deck", "diapositivas"],
+      "no_instalar_cuando": ["el entregable es solo video de 120 s"],
+      "nota": "Respaldo opcional; no reemplaza el guion ni el video."
+    }
+  ]
+}

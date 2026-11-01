@@ -153,6 +153,18 @@ if ($cfg.mcp.PSObject.Properties.Name -contains "playwright") {
     Anotar "OK MCP playwright agregado a opencode.json"
 }
 
+if ($cfg.mcp.PSObject.Properties.Name -contains "blender-mcp") {
+    Anotar "OK MCP blender-mcp ya declarado en opencode.json"
+} else {
+    $bm = New-Object PSObject
+    $bm | Add-Member -NotePropertyName "type" -NotePropertyValue "local"
+    $bm | Add-Member -NotePropertyName "command" -NotePropertyValue @("uvx", "blender-mcp")
+    $bm | Add-Member -NotePropertyName "enabled" -NotePropertyValue $false
+    $cfg.mcp | Add-Member -NotePropertyName "blender-mcp" -NotePropertyValue $bm
+    $cfg | ConvertTo-Json -Depth 10 | Set-Content -Path $cfgPath -Encoding UTF8
+    Anotar "OK MCP blender-mcp declarado (desactivado hasta autorizacion)"
+}
+
 # ---------------------------------------------------------------------------
 # 5. El servidor arranca
 # ---------------------------------------------------------------------------

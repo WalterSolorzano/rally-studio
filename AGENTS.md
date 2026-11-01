@@ -225,3 +225,20 @@ brand/tokens.css     → variables CSS derivadas de palette.json
 | Playwright | Captura de web demo | Después de que site/ esté completo |
 | Colormind API | Paleta desde logo | gen_palette.py |
 | ffmpeg | Edición y exportación de video | Última etapa |
+| `scripts/herramientas.py` | Caja de herramientas externa bajo demanda | Solo cuando la tarea dispara una |
+
+### Caja de herramientas externa
+
+Catálogo único: `docs/herramientas.json` (explicado en
+`docs/CAJA_HERRAMIENTAS.md`). **No se instala todo.**
+
+```bash
+python scripts/herramientas.py necesita "<tarea actual>"   # qué hace falta
+python scripts/herramientas.py instalar <id> --si          # una sola, confirmada
+```
+
+- Instala solo lo que devuelva `necesita`; una herramienta por tarea.
+- `blender-mcp` queda desactivado hasta autorización explícita.
+- Prohibido Tripo, Hyper3D y Rodin (malla IA con licencia/coste inciertos).
+- Skills de superpowers (`writing-plans`, `test-driven-development`, etc.) ya
+  vienen con el harness: se cargan con la herramienta `skill`, no se instalan.

@@ -95,6 +95,11 @@ Nunca llamar a blender, ffmpeg ni TTS directo. Si el recurso está ocupado, el g
    falla vuelve a su especialista; el director no lo arregla a mano.
 8. **Cronómetro**: cada hora informa al humano tiempo restante y estado por
    especialista. A T-6h propone congelar assets y preparar exportación.
+9. **Herramientas externas, bajo demanda**: antes de instalar cualquier skill,
+   MCP o addon, lee `docs/herramientas.json` y ejecuta
+   `python scripts/herramientas.py necesita "<tarea>"`. Instala **solo** lo que
+   devuelva esa consulta, una por tarea y con `--si`. Prohibido instalar la
+   caja completa o habilitar `blender-mcp` sin autorización explícita.
 
 ## Cómo se lanza un especialista, por host (D5)
 

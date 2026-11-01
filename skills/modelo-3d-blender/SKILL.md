@@ -112,29 +112,16 @@ un criterio de la rúbrica:
 3. **Nada de "relleno 3D"**: si una pieza no sostiene criterio de rúbrica ni
    la pide una toma, no se produce.
 
-## Recursos de video explicativos (Anatomy)
+## Anexos 3D (bajo demanda)
 
-**Anatomy** (`wheresryan22/anatomy`) es una skill para construir figuras
-técnicas isométricas (SVG, WebGL, 3D) que explican cómo funciona una pieza,
-mecanismo o proceso. Úsala como **recurso de video** cuando el guion necesite
-mostrar algo que no se entiende solo con el render de Blender (ensamblaje,
-flujo interno, diagrama de conexiones, sección de una carcasa).
+- **Anatomy**: figuras didácticas para el video; ver `anexos-3d.md`.
+- **Caja de herramientas 3D**: BlenderMCP, extensions, MPFB2, Rigify, glTF,
+  Poly Haven y Geometry Nodes. No se instala todo: usa
+  `python scripts/herramientas.py necesita "<tarea>"` e instala una sola con
+  `--si`. BlenderMCP sigue desactivado hasta autorización. Nunca Tripo,
+  Hyper3D ni Rodin.
 
-- **Quién la usa:** el agente que despliega todo (director / orquestador) o el
-  modeler, para generar recursos explicativos antes del render final de Blender.
-- **Qué hace:** inventa un objeto físico cuya *forma es el concepto*, lo dibuja
-  en partes sólidas y shadeadas, lo pone en movimiento suave bajo el cursor, y
-  ejecuta su **propia auditoría geométrica** (`kit/audit.mjs`) para certificar
-  que ninguna pieza atraviesa otra y que todo está bien ensamblado.
-- **Instalación:** `npx skills add wheresryan22/anatomy` (no hay dependencias,
-  solo Node.js).
-- **Uso:** `/anatomy explain <idea que debe explicar el video>`.
-- **Salida:** HTML autónomo, SVG suelto o componente React; apto para insertar
-  en el video pitch como recurso explicativo.
-
-Anatomy complementa a Blender, no lo reemplaza: Blender para el modelo 3D
-fotorealista del producto; Anatomy para la figura didáctica que explica cómo
-funciona.
+Detalle completo: `anexos-3d.md` (mismo directorio).
 
 ## Reglas
 

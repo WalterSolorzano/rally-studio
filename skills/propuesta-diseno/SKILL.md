@@ -16,6 +16,7 @@ description: Convierte el nombre, logo o una idea del equipo en propuestas de id
 ### Requisitos previos (obligatorios)
 - Instalar la skill `impeccable` (`npx skills add impeccable`) y la skill `frontend-design` (`npx skills add frontend-design`) antes de generar cualquier propuesta visual. Sin ambas skills instaladas, no se procede.
 - Hacer preguntas de diseño al usuario antes de proponer: nombre del proyecto, a qué se dedica, público, tono (sobrio / cálido / técnico), si ya hay logo o color obligatorio, y en qué dispositivo se verá principalmente. Nunca proponer sin estas respuestas.
+- `ui-ux-pro-max` y `design-system` son opcionales: instálalas solo si la tarea pide paleta, tipografía, tokens o accesibilidad que `brand/tokens.css` no resuelva. Consúltalas con `python scripts/herramientas.py necesita "<tarea>"`; no las instales por rutina.
 
 1. Completa las preguntas de diseño pendientes del requisito previo (nombre, a qué se dedica,
    público, tono, logo/color obligatorio, dispositivo principal) antes de avanzar.
