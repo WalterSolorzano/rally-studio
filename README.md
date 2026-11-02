@@ -23,7 +23,12 @@
 - [Cerebro de Conocimiento: En qué se basa el sistema](#cerebro-de-conocimiento-en-qué-se-basa-el-sistema)
 - [Informe de sustento de la investigación](#informe-de-sustento-de-la-investigación)
 - [¿Cómo funciona Rally Studio? (Arquitectura y Flujo)](#cómo-funciona-rally-studio-arquitectura-y-flujo)
+- [Capturas del workbench](#capturas-del-workbench)
 - [Módulos Principales del Workbench](#módulos-principales-del-workbench)
+- [Skills del agente (14 piezas de criterio)](#skills-del-agente-14-piezas-de-criterio)
+- [Sharktank: salud de la idea antes de invertir horas](#sharktank-salud-de-la-idea-antes-de-invertir-horas)
+- [Motor de soluciones y dossier por reto](#motor-de-soluciones-y-dossier-por-reto)
+- [Del modelo 3D al presupuesto](#del-modelo-3d-al-presupuesto)
 - [Calibración Matemática de Rúbricas Oficiales](#calibración-matemática-de-rúbricas-oficiales)
 - [Resiliencia en Redes Universitarias Hostiles](#resiliencia-en-redes-universitarias-hostiles)
 - [Instalación y Uso Rápido (Windows)](#instalación-y-uso-rápido-windows)
@@ -143,19 +148,26 @@ El workbench canaliza las 28 horas de competencia a través de una secuencia de 
 
 ```
 +---------------------------------------------------------------------------------------+
-|                                FLUJO TÁCTICO RALLY STUDIO                             |
+|                          FLUJO TÁCTICO · 13 ETAPAS                                   |
 +---------------------------------------------------------------------------------------+
-|  01. CERTAMEN        --> Configuración de reglas (Latam 28h vs Nacional 24h).          |
-|  02. EQUIPO          --> Conformación multidisciplinaria y asignación de roles.       |
-|  03. RETOS (COMITÉ)  --> Importador multiformato + Deliberación cooperativa + TOP 3.  |
-|  04. TALLER SOLUCIÓN --> Formulación del WOW Factor y tesis arquitectónica.           |
-|  05. DESPACHO IA     --> Generador de mega-prompts técnicos de ingeniería y canvas.   |
-|  06. PAUTADO OFICIAL --> Redacción asistida de la memoria técnica de 5 secciones.     |
-|  07. PRESUPUESTO     --> Tabla económica sustentada y cuadratura de costos.           |
-|  08. GUION PITCH     --> Cronometría estricta de 120 segundos para YouTube.          |
-|  09. CHECKLIST       --> Guardarraíles antidescalificación antes de la subida a SIRLI.|
+|  00 CERTAMEN        Reglas del evento: Latam 28 h vs Nacional 24 h.                   |
+|  01 EQUIPO          Squad, universidad, ciudad, marca y logo.                          |
+|  02 RETOS (COMITÉ)  Importador multiformato + deliberación + TOP 3.                   |
+|  03 SOLUCIÓN        Formulación del WOW Factor y tesis arquitectónica.                |
+|  04 IMPACTO         ODS y eje del plan nacional (obligatorio en Nacional).            |
+|  05 DESPACHO IA     Mega-prompts técnicos para IAs externas.                          |
+|  06 PAUTADO         Memoria técnica de 5 secciones dentro de los límites.             |
+|  07 PRESUPUESTO     Tabla económica con URL de respaldo por rubro.                    |
+|  08 RECURSOS        Logos, imágenes, videos y assets nombrados.                       |
+|  09 CANVAS          Modelo de negocio coherente con el presupuesto.                   |
+|  10 GUION           PAS-V en 4 actos, ≤ 120 s medidos en audio.                       |
+|  11 WEB DEMO        Prototipo navegable para el video.                                |
+|  12 CHECKLIST       Guardarraíles antidescalificación antes de SIRLI.                 |
 +---------------------------------------------------------------------------------------+
 ```
+
+Cada etapa tiene lo mismo: **pregunta lo que falta → propone marcado como propuesta → verifica
+contra la rúbrica**. El agente nunca avanza inventando datos.
 
 ```mermaid
 flowchart TD
@@ -185,6 +197,28 @@ flowchart TD
         Guard --> SIRLI["Entrega Verificada en Plataforma Oficial"]
     end
 ```
+
+---
+
+## Capturas del workbench
+
+<p align="center">
+  <img src="dash-resumen.png" alt="Resumen del Rally: 13 fases, avance de rúbrica y entregables" width="1000" />
+</p>
+<p align="center"><em>Figura 3: Resumen del Rally — las 13 fases con su estado, avance de rúbrica y la lista de entregables con responsable.</em></p>
+
+<p align="center">
+  <img src="dash-pautado.png" alt="Pantalla de certamen con temporizador, preparación oficial y criterio de jurado" width="1000" />
+</p>
+<p align="center"><em>Figura 4: Etapa 00 — selección del certamen, temporizador del evento, panel de preparación oficial y el criterio de jurado que se está cuidando.</em></p>
+
+El agente no rellena casillas: pregunta, propone marcado como propuesta y deja que el humano
+acepte o descarte. La frontera está dibujada en la interfaz:
+
+<p align="center">
+  <img src="docs/img/05-flujo.png" alt="Cómo trabaja el agente: pregunta, propone, sirve, tú decides, verifica; y qué puede y no puede tocar" width="1000" />
+</p>
+<p align="center"><em>Figura 5: El bucle de trabajo del agente y la frontera dura — contenido sí, máquina de estado y reglas de negocio no.</em></p>
 
 ---
 
@@ -228,6 +262,118 @@ El cuadrito **Herramientas** del topbar abre seis agentes especializados: Reviso
 - **La rúbrica va compilada y citada:** `dashboard/super_agents_rubrics.js` destila `knowledge/` y `.agents/rules/` con la referencia de cada regla; no inventa límites.
 - **Nunca sobrescribe:** veredictos, problemas y ajustes viven en el panel. Un ajuste se copia al portapapeles y salta a su pestaña; pegar y guardar es decisión del humano.
 - **Salida honesta:** si el servicio no tiene proveedor, está apagado o devuelve texto sin JSON, el panel lo dice tal cual y muestra la respuesta cruda etiquetada.
+
+---
+
+## Skills del agente (14 piezas de criterio)
+
+Las skills viven en `skills/<nombre>/SKILL.md`, se reflejan en `.opencode/skills/` y
+`.agents/skills/` (por junction, un solo origen) y el agente las carga cuando la tarea las
+dispara. No son prompts sueltos: cada una fija procedimiento, límites y qué NO hacer.
+
+| Skill | Para qué sirve |
+|---|---|
+| `contexto-rally` | Carga `brief.json`, el índice del corpus y el estado vivo de la ventana antes de producir nada. |
+| `guiar-usuario` | Recorre las 13 etapas, detecta qué falta y pregunta de a una. |
+| `sugerir-por-fase` | Sugerencias cortas y accionables para la etapa abierta. |
+| `proponer-retos` | Soluciones sustentadas para los retos que entrega el comité. |
+| `dossier-soluciones` | Dossier de 3 páginas por reto (PDF/Word/Excel) con precedentes ganadores. |
+| `ingestar-investigacion` | Procesa un PDF, DOCX o MD traído de fuera y lo alinea a la rúbrica. |
+| `orquestador` | Despacha especialistas en paralelo con contratos por archivo y guardia de recursos. |
+| `presupuesto` | Filas justificadas con precio creíble y URL de respaldo, en la moneda del certamen. |
+| `propuesta-identidad` | Paleta, tipografías, tokens y dirección de logotipo. |
+| `modelo-3d-blender` | Ficha técnica justificada antes de modelar; renders para el video. |
+| `publicar-sitio` | Publica la web demo en GitHub Pages o Netlify. |
+| `servir-a-ventana` | Entrega una propuesta al buzón para Aceptar / Descartar. |
+| `auditar-entregable` | Revisa contra rúbrica y bases, ordena hallazgos por gravedad, no reescribe. |
+| `sharktank` | Detecta fallas de la idea (lógica, técnica, social, económica) y busca prior art. |
+
+Instalación y detalle: [`docs/INSTALACION_AGENTE.md`](docs/INSTALACION_AGENTE.md).
+
+---
+
+## Sharktank: salud de la idea antes de invertir horas
+
+Antes de escribir el pautado conviene saber **qué puede salir mal con la idea** — no un
+veredicto de jurado ni un puntaje simulado, sino fallas concretas que el equipo puede leer y
+resolver. Eso hace `sharktank`:
+
+- **Cuatro lentes:** lógica (¿resuelve la causa o el síntoma?), técnica, social y económica.
+- **Hecho vs supuesto:** cada hallazgo se etiqueta; un supuesto no es una falla, es algo que
+  hay que validar.
+- **Idea vs implementación:** solo lo primero es urgente en las 28 horas.
+- **Lo que ya aguanta:** también se documenta lo sólido, con 3–5 puntos.
+- **Prior art profundo con guardas anti-tokens:** local-first (`claims.json`, corpus), una
+  query por ángulo, y cada coincidencia con número de publicación o marcada
+  `sin número verificado`. Nunca inventa patentes.
+- **Salida:** PDF con los tokens de marca en `docs/sharktank_<slug>.pdf`, servido además por
+  la ventana para aceptar o descartar.
+
+```powershell
+python scripts/gen_sharktank_pdf.py --payload sharktank_payload.json
+python scripts/servir_propuesta.py --tab solution --slot main --kind text `
+  --title "Sharktank: fallas de la idea" --source sharktank --payload sobre.json
+```
+
+`auditar-entregable` sigue siendo la skill de rúbrica; `sharktank` no la reemplaza.
+
+---
+
+## Motor de soluciones y dossier por reto
+
+Los retos los da el usuario o el comité; el sistema **no inventa retos**, propone soluciones
+con cadena obligatoria:
+
+```
+problema → causa raíz → insight → solución → métrica
+```
+
+Cada solución se apoya en un precedente real (año, equipo, proyecto) o se marca
+`exploratoria`. El dossier de 3 páginas por reto se arma con `scripts/soluciones_motor.py` y
+`scripts/gen_soluciones_pdf.py`; nunca muestra estadísticas internas (saturación, score,
+probabilidad de victoria), solo datos de impacto con fuente.
+
+```powershell
+python scripts/soluciones_motor.py --importar-brain   # si research/challenges.json está vacío
+python scripts/gen_soluciones_pdf.py --payload salida.json
+```
+
+Detalle: [`docs/MOTOR_SOLUCIONES.md`](docs/MOTOR_SOLUCIONES.md).
+
+---
+
+## Del modelo 3D al presupuesto
+
+La pieza 3D no se modela "porque sí": existe una toma del video que la pide y un criterio de
+rúbrica que la sostiene. La ficha técnica (`ficha_SITRA-01.md`) fija materiales, medidas en
+mm, espacio para cables y techo de horas antes de abrir Blender.
+
+<p align="center">
+  <img src="docs/img/sitra_nodo.png" alt="Render del nodo SITRA-01 con regla de 200 mm" width="820" />
+</p>
+<p align="center"><em>Figura 6: Render del nodo — carcasa ABS monobloque, sonda, panel solar y antena LoRa, con regla de referencia para escala.</em></p>
+
+<p align="center">
+  <img src="docs/img/sitra_despiece.png" alt="Vista de despiece del nodo con diez componentes etiquetados" width="900" />
+</p>
+<p align="center"><em>Figura 7: Despiece para el video — diez componentes numerados y rotulados, coherentes con la lista de materiales del presupuesto.</em></p>
+
+<p align="center">
+  <img src="docs/img/sitra_blender.png" alt="Viewport de Blender con el modelo SITRA abierto" width="1000" />
+</p>
+<p align="center"><em>Figura 8: El modelo en Blender — captura del viewport con la jerarquía de la escena y las medidas reales del nodo.</em></p>
+
+Ese modelo se traduce en filas de presupuesto con URL de respaldo, no en totales sueltos:
+
+<p align="center">
+  <img src="docs/img/presupuesto_sitra.png" alt="Tabla de presupuesto de SITRA con nueve rubros y total de 4112.40 USD" width="1000" />
+</p>
+<p align="center"><em>Figura 9: Tabla generada por <code>scripts/gen_budget.py</code> — nueve rubros, cantidad, costo unitario, total y URL por fila. En Nacional la moneda es C$ con tasa BCN declarada; en Latam, USD.</em></p>
+
+**Reglas del presupuesto:** costos de implementación superficiales — sin TIR, VAN ni ROI
+complejo; cada fila con `units`, `unit_cost` y enlace verificable; la cifra que se diga en el
+video debe cuadrar al centavo con la tabla. `scripts/validate_budget.py` lo comprueba antes de
+servir.
 
 ---
 
