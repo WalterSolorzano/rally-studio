@@ -27,6 +27,36 @@ def main():
     items = json.loads(BUDGET_JSON.read_text(encoding="utf-8-sig"))
     brief = json.loads(BRIEF_JSON.read_text(encoding="utf-8-sig")) if BRIEF_JSON.exists() else {}
     ctx = contexto(brief)
+
+    # Paleta de diseno del proyecto/grupo (brand/palette.json).
+    # El color de la tabla NUNCA se hardcodea: varia segun los tokens del equipo.
+    palette = {}
+    palette_path = pathlib.Path("brand/palette.json")
+    if palette_path.exists():
+        try:
+            palette = json.loads(palette_path.read_text(encoding="utf-8-sig"))
+        except Exception:
+            palette = {}
+
+    def _rgb(key, default):
+        try:
+            h = str(palette.get(key, "")).lstrip("#")
+            if len(h) != 6:
+                return default
+            return tuple(int(h[i:i + 2], 16) for i in (0, 2, 4))
+        except Exception:
+            return default
+
+    COLOR_PRIMARIO = _rgb("primary", (0x1F, 0x49, 0x7D))
+    COLOR_ACENTO = _rgb("accent", (0xE2, 0xEF, 0xDA))
+    COLOR_TEXTO = _rgb("text", (0x1F, 0x49, 0x7D))
+    hex_primary = "%02X%02X%02X" % COLOR_PRIMARIO
+    hex_acento = "%02X%02X%02X" % COLOR_ACENTO
+    hex_texto = "%02X%02X%02X" % COLOR_TEXTO
+    if palette.get("primary"):
+        print(f"OK: paleta del proyecto aplicada (primary #{hex_primary}).")
+    else:
+        print("WARN: brand/palette.json no encontrado; se usa azul neutro.")
     unidad = "C$" if ctx.get("code") == "NIO" else "USD"
     if ctx["advertencia"]:
         print(f"WARN: {ctx['advertencia']}")
@@ -36,11 +66,11 @@ def main():
     ws.title = "Presupuesto Puesta en Marcha"
     ws.views.sheetView[0].showGridLines = True
 
-    # Estilos
-    font_title = Font(name="Calibri", size=14, bold=True, color="1F497D")
-    font_subtitle = Font(name="Calibri", size=10, italic=True, color="595959")
+    # Estilos (colores derivados de la paleta del proyecto)
+    font_title = Font(name="Calibri", size=14, bold=True, color=hex_primary)
+    font_subtitle = Font(name="Calibri", size=10, color="595959")
     font_header = Font(name="Calibri", size=11, bold=True, color="FFFFFF")
-    fill_header = PatternFill(start_color="1F497D", end_color="1F497D", fill_type="solid")
+    fill_header = PatternFill(start_color=hex_primary, end_color=hex_primary, fill_type="solid")
     font_bold = Font(name="Calibri", size=11, bold=True)
     align_center = Alignment(horizontal="center", vertical="center")
     align_left = Alignment(horizontal="left", vertical="center")
@@ -56,18 +86,18 @@ def main():
     project_name = brief.get("project_name", "PROYECTO").upper()
     team_name = brief.get("team_name", "EQUIPO")
     ws.merge_cells("A1:H1")
-    ws["A1"] = f"PRESUPUESTO DE PUESTA EN MARCHA (PILOTO INICIAL) -- {project_name}"
-    ws["A1"].font = font_title
-    ws["A1"].alignment = align_left
+    ws["A1"] = f"PRESUPUESTO - PUESTA EN MARCHA (PILOTO INICIAL): {project_name}"
+    ws["A1"].font = Font(name="Calibri", size=16, bold=True, color=hex_texto)
+    ws["A1"].alignment = Alignment(horizontal="center", vertical="center")
 
     ws.merge_cells("A2:H2")
     tasa_txt = f" | Tasa BCN: C$ {ctx['tasa']:,.2f} por USD" if ctx.get("tasa") else ""
     ws["A2"] = f"Equipo: {team_name} | Moneda base: {ctx['etiqueta']}{tasa_txt} | Metodologia: Costos mayoristas sustentados"
     ws["A2"].font = font_subtitle
-    ws["A2"].alignment = align_left
+    ws["A2"].alignment = Alignment(horizontal="center", vertical="center")
 
-    # Encabezados de tabla
-    headers = ["#", "Elemento / Insumo", "Descripcion Tecnica", "Unidades", f"Costo Unit. ({unidad})", f"Subtotal ({unidad})", "Fuente / Enlace", "Fecha"]
+    # Encabezados de tabla (sin columna de fecha: la fecha vive en budget.json)
+    headers = ["#", "Elemento / Insumo", "Descripcion (para que sirve)", "Unidades", f"Costo Unit. ({unidad})", f"Subtotal ({unidad})", "Tipo", "Fuente / Enlace"]
     row_idx = 4
     for col_idx, h in enumerate(headers, 1):
         cell = ws.cell(row=row_idx, column=col_idx, value=h)
@@ -98,15 +128,15 @@ def main():
         ws.cell(row=curr_row, column=3, value=it.get("description", "")).alignment = align_left
         ws.cell(row=curr_row, column=4, value=units).alignment = align_center
         c_unit = ws.cell(row=curr_row, column=5, value=unit_cost)
-        c_unit.alignment = align_right
+        c_unit.alignment = align_center
         c_unit.number_format = numero_excel(ctx)
         
         c_sub = ws.cell(row=curr_row, column=6, value=subtotal)
-        c_sub.alignment = align_right
+        c_sub.alignment = align_center
         c_sub.number_format = numero_excel(ctx)
         
-        ws.cell(row=curr_row, column=7, value=it.get("url", "")).alignment = align_left
-        ws.cell(row=curr_row, column=8, value=it.get("date", "")).alignment = align_center
+        ws.cell(row=curr_row, column=7, value=it.get("tipo") or it.get("category", "")).alignment = align_center
+        ws.cell(row=curr_row, column=8, value=it.get("url", "")).alignment = align_left
 
         for col in range(1, 9):
             ws.cell(row=curr_row, column=col).border = thin_border
@@ -119,18 +149,22 @@ def main():
     
     cell_total = ws.cell(row=total_row, column=6, value=total_general)
     cell_total.font = font_bold
-    cell_total.alignment = align_right
+    cell_total.alignment = align_center
     cell_total.number_format = numero_excel(ctx)
-    cell_total.fill = PatternFill(start_color="E2EFDA", end_color="E2EFDA", fill_type="solid")
+    cell_total.fill = PatternFill(start_color=hex_acento, end_color=hex_acento, fill_type="solid")
 
     for col in range(1, 9):
         ws.cell(row=total_row, column=col).border = thin_border
 
-    # Autoajustar ancho de columnas
+    # Autoajustar ancho de columnas (la columna # es angosta a proposito)
     for col in ws.columns:
         max_len = max(len(str(cell.value or '')) for cell in col)
-        col_letter = get_column_letter(col[0].column)
-        ws.column_dimensions[col_letter].width = min(max(max_len + 3, 10), 45)
+        col_idx = col[0].column
+        col_letter = get_column_letter(col_idx)
+        if col_idx == 1:
+            ws.column_dimensions[col_letter].width = 4
+        else:
+            ws.column_dimensions[col_letter].width = min(max(max_len + 3, 10), 45)
 
     wb.save(BUDGET_XLSX)
     print(f"OK: {BUDGET_XLSX} generado exitosamente.")
