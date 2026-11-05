@@ -31,7 +31,7 @@ harness y se cargan con la herramienta `skill`.
 | Agente | Herramientas | Se activa cuando |
 |---|---|---|
 | orquestador | `dispatching-parallel-agents`, `subagent-driven-development`, `writing-plans` | hay 2+ tareas independientes o un plan por tareas |
-| modeler | `blender-mcp`, `anatomy`, `blender-extensions`, `mpfb2`, `rigify`, `gltf-export`, `polyhaven`, `geonodes` | la toma pide control en vivo, personas, rig, asset web o variantes |
+| modeler | `blender-mcp`, `anatomy`, `blender-extensions`, `mpfb2`, `rigify`, `gltf-export`, `polyhaven`, `geonodes`, `cad-sketcher`, `bonsai`, `building-tools`, `sverchok`, `sun-position`, `node-wrangler`, `tissue`, `blendergis`, `blosm`, `camera-shakify` | la toma pide control en vivo, personas, rig, asset web, variantes o contexto real |
 | grafista2d | `impeccable`, `frontend-design`, `ui-ux-pro-max`, `design-system` | hay interfaz, paleta o tokens que decidir |
 | investigador | `firecrawl-research-index`, `firecrawl-developer-index` | hay papers o documentación técnica que verificar |
 | profe (builder) | `test-driven-development`, `verification-before-completion`, `systematic-debugging` | se toca código o hay un bug que reproducir |
@@ -45,9 +45,10 @@ harness y se cargan con la herramienta `skill`.
 2. **Máximo una instalación por tarea.** Si hacen falta dos, se justifica.
 3. **`blender-mcp` está desactivado por defecto** en `opencode.json`. Solo se
    habilita con autorización del director (`BLENDERMCP_AUTORIZADO`) y `--si`.
-4. **Nada de mallas generadas por IA** (Tripo, Hyper3D, Rodin): licencia y
-   coste inciertos para una entrega oficial. Están listadas como `no_usar` en
-   el catálogo.
+4. **Nada de mallas ni texturas generadas por IA** (Tripo, Hyper3D, Rodin,
+   TripoSR, TRELLIS, Hunyuan3D, Dream Textures): licencia y coste inciertos para
+   una entrega oficial, y además consumen mucha VRAM. Están listadas como
+   `no_usar` en el catálogo.
 5. **No duplicar lo que ya existe:** si `brand/tokens.css` resuelve la paleta,
    no se instala `ui-ux-pro-max`; si el claim ya está en
    `research/claims.json`, no se instala el buscador de papers.
@@ -65,6 +66,15 @@ harness y se cargan con la herramienta `skill`.
 | glTF/GLB | asset reutilizable en render y webdemo | el modelo también va a la web |
 | Poly Haven / ambientCG | HDRIs y materiales CC0 | iluminación y materiales |
 | Geometry Nodes | variantes paramétricas | discurso modular/replicable |
+| CAD Sketcher | bocetos CAD con medidas exactas | pieza de producto con cotas reales |
+| Bonsai (BlenderBIM) | edificios con datos IFC estructurados | solución arquitectónica con datos reales |
+| Building Tools | edificios paramétricos por piso | alternativa ligera a Bonsai |
+| Sverchok | diseño paramétrico por nodos | patrones y estructuras complejas |
+| Sun Position | sol realista por hora y lugar | iluminación exterior |
+| Node Wrangler | flujo de nodos acelerado | materiales y shaders |
+| Tissue | celosías y teselados | formas orgánicas estructurales |
+| BlenderGIS / Blosm | terreno y ciudad reales | contexto del municipio piloto |
+| Camera Shakify | cámara a mano | movimiento natural |
 
 `anatomy` complementa a Blender: figura didáctica para explicar, no reemplaza
 el render del producto.

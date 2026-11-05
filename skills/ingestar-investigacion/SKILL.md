@@ -12,20 +12,32 @@ description: Procesa un PDF, DOCX o MD que trae el usuario desde fuera (por ejem
 
 ## Procedimiento
 
-1. **Extrae el texto sin IA.** No dependas del modelo para leer el archivo:
+1. **Extrae el texto sin IA.** No dependas del modelo para leer el archivo. Escribe el
+   archivo **desde Python en UTF-8** — en Windows, redirigir con `>` o `| Out-File`
+   reencoda por cp1252 y produce mojibake o `UnicodeEncodeError`:
 
 ```bash
-python -c "import pdfplumber,sys; pdf=pdfplumber.open(sys.argv[1]); print('\n'.join((p.extract_text() or '') for p in pdf.pages))" informe.pdf > extraido.txt
+python -c "import pdfplumber,sys; pdf=pdfplumber.open(sys.argv[1]); t='\n'.join((p.extract_text() or '') for p in pdf.pages); open(sys.argv[2],'w',encoding='utf-8').write(t)" informe.pdf extraido.txt
 ```
 
-   Para DOCX: `python -c "import docx,sys; d=docx.Document(sys.argv[1]); print('\n'.join(p.text for p in d.paragraphs))" informe.docx`.
+   Para DOCX: `python -c "import docx,sys; d=docx.Document(sys.argv[1]); t='\n'.join(p.text for p in d.paragraphs); open(sys.argv[2],'w',encoding='utf-8').write(t)" informe.docx extraido.txt`
+
+   Para leer por pantalla: `set PYTHONIOENCODING=utf-8` (PowerShell: `$env:PYTHONIOENCODING="utf-8"`).
 
 2. **Lee `extraido.txt` por rangos.** No lo vuelques entero en el contexto.
+   Limpia primero el relleno de Word: U+2002/U+2003 (en/em quads) y espacios dobles —
+   inflan el conteo de caracteres de cada sección.
 3. **Separa hechos de opiniones.** Toda cifra que vayas a usar debe existir en
    `research/claims.json` o venir con fuente y año en el documento. Si no, márcala como
-   estimación y dilo.
+   estimación y dilo. Si `claims.json` está vacío, toda cifra queda "solo con respaldo
+   del documento": exige fuente + año en el propio documento y sirve con `--simulated`.
 4. **Alinea al certamen activo** (`brief.json` → `rally_type`), usando
    `.agents/rules/modos-rally.md` y `.agents/rules/rubricas-y-puntajes.md`.
+   Si `rally_type` está vacío: **no adivines** — pregunta el certamen o infírelo del
+   documento solo para analizar, marcándolo como supuesto, y no cierres nada hasta que
+   el usuario confirme.
+   Cuenta caracteres por sección contra los topes (`knowledge/rubric_matrices.md` §4;
+   Latam: 1250/1250/1000/1000/1500). Si una sección se pasa, recórtala y avisa.
 5. **Decide el destino**: qué pestaña y qué ranura. Presupuesto → `budget/costos`;
    problema/solución/impacto → `pautado/<slot>`; guion → `script/actoN`.
 6. **Sirve la propuesta** con la skill `servir-a-ventana`. Marca `--simulated` si algo no
@@ -43,6 +55,9 @@ python -c "import pdfplumber,sys; pdf=pdfplumber.open(sys.argv[1]); print('\n'.j
 
 - El documento externo **no manda** sobre las bases del evento. Si contradice una regla, la
   regla gana y se avisa.
+- **Pruebas aisladas**: para probar la ingesta sin ensuciar el buzón del proyecto, sirve
+  con `RALLY_DATA_DIR=<sandbox>` apuntando fuera de `dashboard/data/` (sin token, sin
+  `--mailbox`, sin servidor). El repo activo no debe recibir sobres de una prueba.
 - No inventes URLs ni proveedores para "completar" un presupuesto.
 - Para papers usa `firecrawl-research-index`; para documentación técnica o errores de librería, `firecrawl-developer-index`. Instálalas solo cuando la tarea las pida (`python scripts/herramientas.py necesita "<tarea>"`); si el claim ya está en `research/claims.json`, no instales nada.
 - Si el documento trae datos personales o internos, no los publiques en `site/`.

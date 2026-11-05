@@ -1,7 +1,7 @@
 {
   "_generated_at": "",
-  "rally_type": "",
-  "hours_total": 0,
+  "rally_type": "latam",
+  "hours_total": 28,
   "hours_remaining": 0,
   "alert_times_h": [6, 4, 3, 2, 1, 0.5],
   "category": "",

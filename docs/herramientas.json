@@ -14,6 +14,22 @@
     {
       "id": "rodin",
       "motivo": "malla generada por IA: licencia y coste inciertos para una entrega oficial"
+    },
+    {
+      "id": "triposr",
+      "motivo": "malla generada por IA: licencia y coste inciertos para una entrega oficial; consume mucha VRAM"
+    },
+    {
+      "id": "trellis",
+      "motivo": "malla generada por IA: licencia y coste inciertos para una entrega oficial; consume mucha VRAM"
+    },
+    {
+      "id": "hunyuan3d",
+      "motivo": "malla generada por IA: licencia y coste inciertos para una entrega oficial; consume mucha VRAM"
+    },
+    {
+      "id": "dream-textures",
+      "motivo": "textura generada por IA: licencia y coste inciertos para una entrega oficial; consume mucha VRAM"
     }
   ],
   "herramientas": [
@@ -126,6 +142,116 @@
       "se_usa_cuando": ["procedural", "parametrico", "variantes del modelo"],
       "no_instalar_cuando": ["una sola pieza unica sin variantes"],
       "nota": "Geometry Nodes incluido en Blender; encaja con el discurso modular/replicable."
+    },
+    {
+      "id": "cad-sketcher",
+      "tipo": "addon",
+      "origen": "blender",
+      "agente": "modeler",
+      "instalar": null,
+      "se_usa_cuando": ["medidas exactas", "pieza de producto", "boceto cad", "restriccion geometrica", "cotas"],
+      "no_instalar_cuando": ["modelo organico sin medidas", "terreno libre"],
+      "nota": "Bocetos con restricciones tipo CAD. Ligero; ideal para piezas con medidas reales del BOM."
+    },
+    {
+      "id": "bonsai",
+      "tipo": "addon",
+      "origen": "blender",
+      "agente": "modeler",
+      "instalar": null,
+      "se_usa_cuando": ["edificio", "ifc", "construccion", "muros", "losas", "arquitectura con datos"],
+      "no_instalar_cuando": ["producto sin arquitectura", "pieza unica"],
+      "nota": "BlenderBIM: trabaja con IFC estructurado. La IA genera edificios con datos reales de construccion. Ligero al modelar; pesado si el IFC es enorme."
+    },
+    {
+      "id": "building-tools",
+      "tipo": "addon",
+      "origen": "blender",
+      "agente": "modeler",
+      "instalar": null,
+      "se_usa_cuando": ["edificio parametrico", "pisos", "ventanas", "puertas", "fachada"],
+      "no_instalar_cuando": ["producto sin edificio"],
+      "nota": "Genera edificios por piso, ventana y puerta con parametros simples. Alternativa ligera a Bonsai."
+    },
+    {
+      "id": "sverchok",
+      "tipo": "addon",
+      "origen": "blender",
+      "agente": "modeler",
+      "instalar": null,
+      "se_usa_cuando": ["patron", "estructura compleja", "diseno parametrico por nodos", "arquitectura compleja"],
+      "no_instalar_cuando": ["pieza unica simple"],
+      "nota": "Diseno parametrico por nodos. Moderado: cuidado con patrones de miles de piezas."
+    },
+    {
+      "id": "sun-position",
+      "tipo": "builtin",
+      "origen": "blender",
+      "agente": "modeler",
+      "instalar": null,
+      "se_usa_cuando": ["luz solar realista", "hora y lugar", "iluminacion exterior", "cielo"],
+      "no_instalar_cuando": ["estudio cerrado con luz artificial fija"],
+      "nota": "Incluido en Blender. Sol realista segun hora y ubicacion, sin costo."
+    },
+    {
+      "id": "node-wrangler",
+      "tipo": "builtin",
+      "origen": "blender",
+      "agente": "modeler",
+      "instalar": null,
+      "se_usa_cuando": ["materiales", "shader", "nodos", "texturizado"],
+      "no_instalar_cuando": ["material solido plano sin nodos"],
+      "nota": "Incluido en Blender. Acelera el flujo de nodos; util para que la IA trabaje materiales rapido."
+    },
+    {
+      "id": "tissue",
+      "tipo": "builtin",
+      "origen": "blender",
+      "agente": "modeler",
+      "instalar": null,
+      "se_usa_cuando": ["celosia", "teselado", "forma organica estructural", "reticula"],
+      "no_instalar_cuando": ["pieza solida simple"],
+      "nota": "Incluido en Blender. Diseno computacional: celosias y teselados. Modular y ligero si la malla es sensata."
+    },
+    {
+      "id": "blendergis",
+      "tipo": "addon",
+      "origen": "blender",
+      "agente": "modeler",
+      "instalar": null,
+      "se_usa_cuando": ["terreno real", "ciudad real", "contexto del municipio", "piloto en ciudad"],
+      "no_instalar_cuando": ["zona grande", "ciudad entera"],
+      "nota": "Terrenos y ciudades reales como contexto del piloto. Ligero si la zona es pequena."
+    },
+    {
+      "id": "blosm",
+      "tipo": "addon",
+      "origen": "blender",
+      "agente": "modeler",
+      "instalar": null,
+      "se_usa_cuando": ["manzana", "barrio", "osm", "openstreetmap", "contexto urbano"],
+      "no_instalar_cuando": ["ciudad entera", "render de producto aislado"],
+      "nota": "Importa manzanas o barrios de OpenStreetMap. Moderado: una manzana bien, una ciudad entera no."
+    },
+    {
+      "id": "camera-shakify",
+      "tipo": "addon",
+      "origen": "blender",
+      "agente": "modeler",
+      "instalar": null,
+      "se_usa_cuando": ["camara a mano", "movimiento natural", "handheld"],
+      "no_instalar_cuando": ["camara fija de estudio"],
+      "nota": "Movimiento de camara a mano realista. Casi no consume recursos."
+    },
+    {
+      "id": "decimate",
+      "tipo": "builtin",
+      "origen": "blender",
+      "agente": "modeler",
+      "instalar": null,
+      "se_usa_cuando": ["reducir poligonos", "bajar carga", "optimizar malla", "lod", "decimar", "malla pesada", "nivel de detalle"],
+      "no_instalar_cuando": ["malla ya ligera", "detalle obligatorio en primer plano"],
+      "nota": "Modificador Decimate (COLLAPSE/PLANAR/UNSUBDIVIDE) y Simplify de viewport. No destructivo: no aplicar hasta el final. Baja carga sin tocar el original."
     },
     {
       "id": "impeccable",
