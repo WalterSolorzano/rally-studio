@@ -1,0 +1,186 @@
+{
+  "retos": [
+    {
+      "reto_id": "DESAFIO_01",
+      "reto_enunciado": "Segunda vida de los motores elÃ©ctricos domÃ©sticos Reto del comité sobre Segunda vida de los motores elÃ©ctricos domÃ©sticos. Sector declarado: electrodomÃ©sticos en desuso.",
+      "title": "Segunda vida de los motores elÃ©ctricos domÃ©sticos",
+      "description": "Reto del comité sobre Segunda vida de los motores elÃ©ctricos domÃ©sticos. Sector declarado: electrodomÃ©sticos en desuso.",
+      "opciones": [
+        {
+          "id": "ruta-2",
+          "titulo": "Carretilla de carga con motor de lavadora doméstica para el mercado",
+          "que_es": "Carretilla de tracción con motor eléctrico doméstico en desuso, para mover carga en el mercado municipal sin usar combustible.",
+          "como_funciona": [
+            "Desmontar el motor de lavadora doméstico en desuso y acoplarlo al eje trasero.",
+            "Montar el chasis de la carretilla con ruedas del carrito de mano existente.",
+            "Probar la carga en patio con sacos de prueba antes de entrar al mercado.",
+            "Ceder la carretilla al jefe del mercado con su ficha de carga y operación."
+          ],
+          "pagador": "Mercado municipal · cuota de puestos · jefe del mercado · carretillas de carga para el acopio",
+          "metrica": "por validar · fuente: research/claims.json",
+          "ya_existe": "por validar con el equipo",
+          "precedente": "AVOCADO (UAM - Jaguares) · 2026 · Segunda vida de motores eléctricos domésticos · 1er lugar nacional",
+          "costo": "por validar con el equipo",
+          "por_validar": "Supuesto: el motor de lavadora mueve la carretilla con carga del mercado; prueba barata: arrastrar dos sacos en el patio con el motor montado antes de entregarla.",
+          "pitch": "El motor de lavadora en desuso tira de la carretilla que el jefe del mercado hoy empuja a mano."
+        }
+      ]
+    },
+    {
+      "reto_id": "DESAFIO_02",
+      "reto_enunciado": "Sensores al servicio de la comunidad Reto del comité sobre Sensores al servicio de la comunidad. Sector declarado: celulares en desuso.",
+      "title": "Sensores al servicio de la comunidad",
+      "description": "Reto del comité sobre Sensores al servicio de la comunidad. Sector declarado: celulares en desuso.",
+      "opciones": [
+        {
+          "id": "ruta-2",
+          "titulo": "Reloj de riego con alarma de celulares en desuso para la parcela",
+          "que_es": "Reloj de riego que enciende la bomba de la parcela en horas fijas usando la alarma y la pantalla de un celular en desuso.",
+          "como_funciona": [
+            "Leer el horario de riego que la asociación ya usa en su parcela.",
+            "Poner la alarma de un celular en desuso a la hora de riego diaria.",
+            "Acoplar el aviso de la alarma a la bomba con un relé de arranque.",
+            "Medir horas de bomba y litros por turno antes de copiar el reloj a otras parcelas."
+          ],
+          "pagador": "Asociación de productores · cobro por horario de riego · gerente · relojes de encendido para sus bombas",
+          "metrica": "por validar · fuente: research/claims.json",
+          "ya_existe": "por validar con el equipo",
+          "precedente": "Nanobots (UNI RUPAP) · 2026 · Módulos de filtración con nanomateriales reciclados · 3er lugar nacional Innovación",
+          "costo": "por validar con el equipo",
+          "por_validar": "Supuesto: el reloj enciende la bomba sin fallar bajo humedad; prueba barata: programar un encendido diario durante una semana y contar los arranques.",
+          "pitch": "La asociación riega a la hora programada con un reloj armado de celulares en desuso, sin comprar controlador nuevo."
+        }
+      ]
+    },
+    {
+      "reto_id": "DESAFIO_03",
+      "reto_enunciado": "ProtecciÃ³n y fomento de polinizadores Reto del comité sobre ProtecciÃ³n y fomento de polinizadores. Sector declarado: entornos agrÃ­cola/urbano.",
+      "title": "ProtecciÃ³n y fomento de polinizadores",
+      "description": "Reto del comité sobre ProtecciÃ³n y fomento de polinizadores. Sector declarado: entornos agrÃ­cola/urbano.",
+      "opciones": [
+        {
+          "id": "ruta-2",
+          "titulo": "Franja de floración continua para polinizadores en el patio urbano",
+          "que_es": "Semillero de plantas nativas con floración escalonada para néctar continuo en entornos agrícolas, medido con visitas de polinizadores.",
+          "como_funciona": [
+            "Escoger con el productor plantas nativas que florecen en meses distintos.",
+            "Sembrar la franja en el lindero de la finca con esos plantones.",
+            "Contar visitas de polinizadores en la franja y en un tramo sin sembrar.",
+            "Comparar floración por mes y llevar el calendario al productor."
+          ],
+          "pagador": "Instituto agrícola · fondo de proyectos · rector · franja de floración continua en su patio",
+          "metrica": "por validar · fuente: research/claims.json",
+          "ya_existe": "por validar con el equipo",
+          "precedente": "DESUCHO · 2026 · Protección y fomento de polinizadores · PRIMER LUGAR",
+          "costo": "por validar con el equipo",
+          "por_validar": "Supuesto: la floración escalonada cubre meses sin flor natural; prueba barata: sembrar un tramo de 10 metros y contar visitas un mes.",
+          "pitch": "Con plantas nativas de floración escalonada, el lindero de la finca da néctar cuando la flor natural ya se acabó."
+        }
+      ]
+    },
+    {
+      "reto_id": "DESAFIO_05",
+      "reto_enunciado": "Monitoreo inteligente e infraestructura verde en reservorios pluviales Reto del comité sobre Monitoreo inteligente e infraestructura verde en reservorios pluviales. Sector declarado: riesgo hÃ­drico.",
+      "title": "Monitoreo inteligente e infraestructura verde en reservorios pluviales",
+      "description": "Reto del comité sobre Monitoreo inteligente e infraestructura verde en reservorios pluviales. Sector declarado: riesgo hÃ­drico.",
+      "opciones": [
+        {
+          "id": "ruta-2",
+          "titulo": "Canaleta de techo que alimenta el reservorio pluvial con agua de lluvia",
+          "que_es": "Canaleta con filtro de hojas que suma el agua del techo al reservorio pluvial y marca cuántos litros entran en cada lluvia.",
+          "como_funciona": [
+            "Medir el área de techo de la escuela y la entrada de agua por lluvia.",
+            "Montar la canaleta con filtro de hojas hacia el reservorio pluvial existente.",
+            "Marcar el nivel de entrada y registrar litros por tormenta durante la temporada.",
+            "Comparar el agua captada con la compra de agua antes de repetir en otras escuelas."
+          ],
+          "pagador": "Escuela · partida de mantenimiento · rector · canaleta de captación para su reservorio",
+          "metrica": "por validar · fuente: research/claims.json",
+          "ya_existe": "por validar con el equipo",
+          "precedente": "PET EGC UNIJUÍ · 2026 · Monitoreo inteligente e infraestructura verde en reservorios pluviales · PRIMER LUGAR",
+          "costo": "por validar con el equipo",
+          "por_validar": "Supuesto: el techo rinde agua suficiente para notar la diferencia; prueba barata: colocar un bidón en el desagüe y medir los litros de una tormenta.",
+          "pitch": "La canaleta convierte el agua del techo de la escuela en litros guardados en el reservorio pluvial."
+        }
+      ]
+    },
+    {
+      "reto_id": "DESAFIO_06",
+      "reto_enunciado": "RemociÃ³n y extracciÃ³n de barro en viviendas anegadas Reto del comité sobre RemociÃ³n y extracciÃ³n de barro en viviendas anegadas. Sector declarado: post-emergencia.",
+      "title": "RemociÃ³n y extracciÃ³n de barro en viviendas anegadas",
+      "description": "Reto del comité sobre RemociÃ³n y extracciÃ³n de barro en viviendas anegadas. Sector declarado: post-emergencia.",
+      "opciones": [
+        {
+          "id": "ruta-2",
+          "titulo": "Torno manual para izar baldes de barro de viviendas anegadas",
+          "que_es": "Torno de manivela con cuerda y gancho que sube baldes de barro desde la vivienda anegada hasta el bote de la calle.",
+          "como_funciona": [
+            "Anclar el torno al dintel firme de la puerta de la vivienda anegada.",
+            "Subir baldes de barro de a uno con la manivela hasta el bote.",
+            "Contar baldes y horas por vivienda con la hoja de la brigada.",
+            "Comparar horas con la remoción a mano antes de pedir más tornos."
+          ],
+          "pagador": "Junta de barrio · cuota de emergencia · secretario · tornos manuales para su brigada",
+          "metrica": "por validar · fuente: research/claims.json",
+          "ya_existe": "por validar con el equipo",
+          "precedente": "META-INNOVA · 2026 · Optimización y priorización de recursos y esfuerzos en la post-emergencia · PRIMER LUGAR",
+          "costo": "por validar con el equipo",
+          "por_validar": "Supuesto: el dintel aguanta el torno cargado sin soltarse; prueba barata: izar un balde de arena desde un patio antes de llevarlo a la vivienda.",
+          "pitch": "Con manivela y cuerda, la junta de barrio vacía el barro de la vivienda sin esperar la bomba de la municipalidad."
+        }
+      ]
+    },
+    {
+      "reto_id": "DESAFIO_07",
+      "reto_enunciado": "ReutilizaciÃ³n de aceite domÃ©stico Reto del comité sobre ReutilizaciÃ³n de aceite domÃ©stico. Sector declarado: aceite de cocina.",
+      "title": "ReutilizaciÃ³n de aceite domÃ©stico",
+      "description": "Reto del comité sobre ReutilizaciÃ³n de aceite domÃ©stico. Sector declarado: aceite de cocina.",
+      "opciones": [
+        {
+          "id": "ruta-2",
+          "titulo": "Recolección pagada de aceite de cocina gastado en bidones cerrados",
+          "que_es": "Bidón cerrado y balanza en cada cocina: el aceite gastado se guarda, se pesa y se vende a la empresa recolectora por kilo.",
+          "como_funciona": [
+            "Ubicar el bidón cerrado con etiqueta en la cocina de la panadería y los comercios.",
+            "Pesar el bidón en la balanza del mercado y anotar el kilo en la libreta.",
+            "Vender el aceite a la empresa recolectora cada semana.",
+            "Contar el ingreso por kilo y el volumen guardado antes de sumar más cocinas."
+          ],
+          "pagador": "Empresa de aceites · compra por kilo · gerente · aceite gastado en bidón cerrado",
+          "metrica": "por validar · fuente: research/claims.json",
+          "ya_existe": "por validar con el equipo",
+          "precedente": "por validar",
+          "costo": "por validar con el equipo",
+          "por_validar": "Supuesto: la empresa recolectora compra el aceite gastado de estas cocinas; prueba barata: pesar un bidón completo y llamar a dos empresas antes de prometer el ingreso.",
+          "pitch": "Cada cocina guarda su aceite gastado en un bidón, lo pesa y lo vende por kilo en vez de tirarlo al desagüe."
+        }
+      ]
+    },
+    {
+      "reto_id": "DESAFIO_09",
+      "reto_enunciado": "OptimizaciÃ³n y priorizaciÃ³n de recursos y esfuerzos en la post-emergencia Reto del comité sobre OptimizaciÃ³n y priorizaciÃ³n de recursos y esfuerzos en la post-emergencia. Sector declarado: coordinaciÃ³n de respuesta.",
+      "title": "OptimizaciÃ³n y priorizaciÃ³n de recursos y esfuerzos en la post-emergencia",
+      "description": "Reto del comité sobre OptimizaciÃ³n y priorizaciÃ³n de recursos y esfuerzos en la post-emergencia. Sector declarado: coordinaciÃ³n de respuesta.",
+      "opciones": [
+        {
+          "id": "ruta-2",
+          "titulo": "Mapa de cuadrantes con rutas cortas para la respuesta en post-emergencia",
+          "que_es": "Mapa de cuadrantes que reparte los recursos y las cuadrillas por el municipio para acortar la llegada en post-emergencia.",
+          "como_funciona": [
+            "Dividir el municipio en cuadrantes con las cuadrillas que ya existen.",
+            "Marcar en cada cuadrante la ruta más corta entre el puesto y los puntos de agua.",
+            "Asignar la cuadrilla al cuadrante más cercano en cada turno con el mapa impreso.",
+            "Contar minutos de llegada a tres puntos del cuadrante antes de ampliar el mapa."
+          ],
+          "pagador": "Empresa de logística · convenio de apoyo · gerente · rutas de cuadrante para la respuesta",
+          "metrica": "por validar · fuente: research/claims.json",
+          "ya_existe": "por validar con el equipo",
+          "precedente": "THE BUBBLES · 2026 · Optimización y priorización de recursos y esfuerzos en la post-emergencia · PRIMER LUGAR",
+          "costo": "por validar con el equipo",
+          "por_validar": "Supuesto: las cuadrillas siguen la ruta más corta sin atajos no marcados; prueba barata: cronometrar dos cuadrillas en la siguiente simulación.",
+          "pitch": "El mapa reparte las cuadrillas por el municipio para que cada turno llegue antes al punto que más urge."
+        }
+      ]
+    }
+  ]
+}

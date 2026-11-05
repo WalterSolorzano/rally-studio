@@ -1,0 +1,110 @@
+[
+  {
+    "reto_id": "DESAFIO_01",
+    "opcion_id": "ruta-1",
+    "estado": "PASS",
+    "motivos": []
+  },
+  {
+    "reto_id": "DESAFIO_01",
+    "opcion_id": "ruta-2",
+    "estado": "PASS",
+    "motivos": []
+  },
+  {
+    "reto_id": "DESAFIO_02",
+    "opcion_id": "ruta-1",
+    "estado": "PASS",
+    "motivos": []
+  },
+  {
+    "reto_id": "DESAFIO_02",
+    "opcion_id": "ruta-2",
+    "estado": "PASS",
+    "motivos": []
+  },
+  {
+    "reto_id": "DESAFIO_03",
+    "opcion_id": "ruta-exploratoria",
+    "estado": "PASS",
+    "motivos": []
+  },
+  {
+    "reto_id": "DESAFIO_03",
+    "opcion_id": "ruta-2",
+    "estado": "PASS",
+    "motivos": []
+  },
+  {
+    "reto_id": "DESAFIO_04",
+    "opcion_id": "ruta-1",
+    "estado": "PASS",
+    "motivos": []
+  },
+  {
+    "reto_id": "DESAFIO_04",
+    "opcion_id": "ruta-2",
+    "estado": "PASS",
+    "motivos": []
+  },
+  {
+    "reto_id": "DESAFIO_05",
+    "opcion_id": "ruta-exploratoria",
+    "estado": "PASS",
+    "motivos": []
+  },
+  {
+    "reto_id": "DESAFIO_05",
+    "opcion_id": "ruta-2",
+    "estado": "PASS",
+    "motivos": []
+  },
+  {
+    "reto_id": "DESAFIO_06",
+    "opcion_id": "ruta-exploratoria",
+    "estado": "PASS",
+    "motivos": []
+  },
+  {
+    "reto_id": "DESAFIO_06",
+    "opcion_id": "ruta-2",
+    "estado": "PASS",
+    "motivos": []
+  },
+  {
+    "reto_id": "DESAFIO_07",
+    "opcion_id": "ruta-exploratoria",
+    "estado": "PASS",
+    "motivos": []
+  },
+  {
+    "reto_id": "DESAFIO_07",
+    "opcion_id": "ruta-2",
+    "estado": "PASS",
+    "motivos": []
+  },
+  {
+    "reto_id": "DESAFIO_08",
+    "opcion_id": "ruta-1",
+    "estado": "PASS",
+    "motivos": []
+  },
+  {
+    "reto_id": "DESAFIO_08",
+    "opcion_id": "ruta-2",
+    "estado": "PASS",
+    "motivos": []
+  },
+  {
+    "reto_id": "DESAFIO_09",
+    "opcion_id": "ruta-exploratoria",
+    "estado": "PASS",
+    "motivos": []
+  },
+  {
+    "reto_id": "DESAFIO_09",
+    "opcion_id": "ruta-2",
+    "estado": "PASS",
+    "motivos": []
+  }
+]

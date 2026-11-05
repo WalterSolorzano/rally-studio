@@ -9,7 +9,7 @@ explícito y un dossier listo para deliberar.
 | Ruta | Script | Qué produce |
 |---|---|---|
 | Dossier pulido (el que se entrega) | `scripts/gen_dossier.py` | PDF de 3 páginas por reto + Word editable + Excel por hoja |
-| Borrador automático | `scripts/soluciones_motor.py` + `scripts/gen_soluciones_pdf.py` | tarjetas rápidas por reto para revisar antes de curar |
+| Borrador automático | `scripts/soluciones_motor.py` + `scripts/gen_soluciones_pdf.py` | tarjetas rápidas por reto para revisar antes de curar — **BORRADOR BANEADO para entrega**: su diseño no es el aprobado; entregar solo con `gen_dossier.py` |
 
 El dossier pulido **no se escribe en el Python**: el contenido vive en un JSON y el script solo
 maqueta. Cambiar texto es editar el JSON, nunca el generador.
