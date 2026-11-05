@@ -1,0 +1,42 @@
+{
+  "id": "DESAFIO_03",
+  "titulo": "Protección de polinizadores",
+  "certamen": "latam",
+  "categoria_preliminar": null,
+  "estado": "borrador_para_curar",
+  "fuente_completa": "../dossier_latam_2026.md",
+  "cadena_resumen": "síntoma: cae la población de polinizadores en las veredas urbanas → causa raíz: falta forraje nativo y refugio en los barrios → causa de la causa: la vereda está diseñada solo para el paso del peatón, no como corredor de alimento",
+  "nomina_resumen": {
+    "jugador": "vecino que cede el frente de su vereda",
+    "canal": "juntura de barrio y vivero local de nativas",
+    "nodo": "tramo de vereda convertido en corredor de floración",
+    "nota": "resumen de draft; texto completo en ../dossier_latam_2026.md"
+  },
+  "solucion_a": {
+    "opcion": "01",
+    "nombre": "Vereda en Flor",
+    "mecanismo": "infraestructura comunitaria básica con regla de mantención",
+    "que_es": "tramo de 10 m de vereda con 6 especies nativas de floración escalonada, enraizado en la vereda con un convenio de cuidado entre vecinos",
+    "costo_estimado_usd": 39,
+    "unidad_costo": "por tramo de 10 m",
+    "metrica_resultado": "veredas con contrato de mantención firmado (regla detrás del esquema de contenedores de germinación y cuidado)",
+    "nota": "texto completo define la regla de contratos"
+  },
+  "solucion_b": {
+    "opcion": "02",
+    "nombre": "Hotel de Nidos en Muro",
+    "mecanismo": "objeto de siempre + instrumentación (familia A), mecanismo de refugio distinto al forraje de la Opción 01",
+    "que_es": "bloque de madera con agujeros y cañas huecas montado en un muro para abejas solitarias y otros polinizadores de nido",
+    "costo_estimado_usd": 21,
+    "unidad_costo": "por bloque",
+    "metrica_resultado": null,
+    "nota": "métrica y costo de ticket en el texto completo"
+  },
+  "exploracion_sin_intervenir": "Pasar un día fotografiando 3 veredas de un mismo barrio y llevar registro de qué polinizadores aparece sin apostar ni cuidar nada",
+  "anti_generico": "si se cambia 'polinizadores' por 'aves' el bloque de nidos deja de ser válido: es amarrado al montaje y al insecto",
+  "avisos": [
+    "precedentes pendientes de cruce en research/sirli/winners.jsonl y knowledge/ERRATAS.md",
+    "valor de [CIUDAD] pendiente en brief.json",
+    "métrica y costo de ticket de la Opción 02 completar desde el texto completo"
+  ]
+}

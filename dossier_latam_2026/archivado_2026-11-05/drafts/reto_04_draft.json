@@ -1,0 +1,44 @@
+{
+  "id": "DESAFIO_04",
+  "titulo": "Manejo ecológico de residuos de poda y biomasa vegetal urbana",
+  "certamen": "latam",
+  "categoria_preliminar": null,
+  "estado": "borrador_para_curar",
+  "fuente_completa": "../dossier_latam_2026.md",
+  "cadena_resumen": "síntoma: la poda se apila y se quema o termina en el vertedero → causa raíz: no hay ruta de acopio y transformación en el barrio → causa de la causa: la trituradora es cara para un solo vecino y nadie la comparte",
+  "nomina_resumen": {
+    "jugador": "vecino que sacrifica el saco de poda",
+    "canal": "juntura de barrio que coordina el acopio",
+    "nodo": "trituradora compartida o barril de biochar por zona",
+    "nota": "resumen de draft; texto completo en ../dossier_latam_2026.md"
+  },
+  "solucion_a": {
+    "opcion": "01",
+    "nombre": "Chipea Barrio",
+    "mecanismo": "módulo compartible con ruta de acopio (familia G)",
+    "que_es": "trituradora de poda rota entre 3 barrios con una fórmula de cobro por bolsa y apilado de resultado",
+    "costo_estimado_usd": 456,
+    "unidad_costo": "por escuadrón de 3 barrios",
+    "tarifa_usd": 2,
+    "unidad_tarifa": "por bolsa",
+    "metrica_resultado": "reducción de volumen de residuo entre 5 y 8 veces",
+    "nota": "texto completo define las reglas de repartición"
+  },
+  "solucion_b": {
+    "opcion": "02",
+    "nombre": "Barra de Biochar",
+    "mecanismo": "residuo + componente con especificación (familia B), distinto a la trituración de la Opción 01",
+    "que_es": "barril de 200 litros convertido en horno cerrado que convierte la rama gruesa en biochar para el huerto o la vereda, con guía doble sin llama libre",
+    "costo_estimado_usd": 31,
+    "unidad_costo": "por barril equipado",
+    "metrica_resultado": null,
+    "nota": "métrica y costo de ticket en el texto completo"
+  },
+  "exploracion_sin_intervenir": "Pasar un día en un barrio con poda activa y registrar cuántas bolsas se acumulan en una esquina y en cuánto tiempo las recoge la recolección",
+  "anti_generico": "si se cambia 'residuos de poda' por 'restos de comida' la trituradora y el barril no aplican; mecanismo amarrado a la fibra y al volumen de la rama",
+  "avisos": [
+    "precedentes pendientes de cruce en research/sirli/winners.jsonl y knowledge/ERRATAS.md",
+    "valor de [CIUDAD] pendiente en brief.json",
+    "métrica y costo de ticket de la Opción 02 completar desde el texto completo"
+  ]
+}

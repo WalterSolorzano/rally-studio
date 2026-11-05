@@ -1,0 +1,45 @@
+{
+  "id": "DESAFIO_01",
+  "titulo": "Segunda vida para motores eléctricos domésticos",
+  "certamen": "latam",
+  "categoria_preliminar": null,
+  "estado": "borrador_para_curar",
+  "fuente_completa": "../dossier_latam_2026.md",
+  "cadena_resumen": "síntoma: motores domésticos quemados terminan en la chatarra → causa raíz: no existe ruta técnica de rescate → causa de la causa: no hay punto de verificación con veredicto sirven/rebobinan/no sirven",
+  "nomina_resumen": {
+    "jugador": "vecino dueño del motor doméstico quemado",
+    "canal": "ferretería o taller de barrio como punto de acopio",
+    "nodo": "taller equipado con kit de arranque y banco de prueba",
+    "nota": "resumen de draft; texto completo en ../dossier_latam_2026.md"
+  },
+  "solucion_a": {
+    "opcion": "01",
+    "nombre": "Riego de Motor Recuperado",
+    "mecanismo": "objeto de siempre + instrumentación y control (familia A)",
+    "que_es": "kit de arranque permanente por condensador que devuelve a los motores domésticos su función de bombeo en un puesto de reuso",
+    "costo_estimado_usd": 57,
+    "unidad_costo": "por kit",
+    "metrica_resultado": "≥10 motores en 2º uso operando en 60 días",
+    "ticket_validacion": "1 semana · recuperar 5 motores en un taller de barrio y dejarlos operando con el kit",
+    "costo_ticket_usd": null,
+    "nota": "costo de ticket en el texto completo"
+  },
+  "solucion_b": {
+    "opcion": "02",
+    "nombre": "Taller de Chequeo de Motores",
+    "mecanismo": "servicio que sustituye la compra del objeto (familia E)",
+    "que_es": "punto de verificación donde el vecino trae el motor y recibe un veredicto sirven/rebobinan/no sirven con ruta inmediata",
+    "costo_estimado_usd": 22,
+    "unidad_costo": "por veredicto",
+    "metrica_resultado": null,
+    "nota": "métrica y costo de ticket en el texto completo"
+  },
+  "exploracion_sin_intervenir": "Observar un turno de recepción de chatarra de barrio: qué motores entran, quién los lleva y qué los desanima a rescatarlos",
+  "anti_generico": "si se cambia 'motores domésticos' por 'microondas' el kit de arranque deja de tener sentido; mecanismo amarrado al objeto",
+  "avisos": [
+    "cifra de aceite 1:40000 es del set del comité, se debe validar antes de publicar",
+    "precedentes pendientes de cruce en research/sirli/winners.jsonl y knowledge/ERRATAS.md",
+    "valor de [CIUDAD] pendiente en brief.json",
+    "métrica y costo de ticket de la Opción 02 completar desde el texto completo"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "id": "DESAFIO_08",
+  "titulo": "Desechos fotovoltaicos: reducción de residuos y recuperación de componentes",
+  "certamen": "latam",
+  "categoria_preliminar": null,
+  "estado": "borrador_para_curar",
+  "fuente_completa": "../dossier_latam_2026.md",
+  "cadena_resumen": {
+    "sintoma": "módulos fuera de vida se acumulan o se desechan en la parte más débil de la mesa",
+    "causa_raiz": "no hay mesa de evaluación ni protocolo de desarme: nadie distingue un panel reutilizable de uno de despeje",
+    "causa_de_la_causa": "instaladoras fijan paneles como residuo porque el frente del panel quedaAuthority frente a la mesa"
+  },
+  "nomina_resumen": {
+    "jugador": "mesa de evaluación de barrio operada por el equipo con la instaladora local",
+    "canal": "instaladora local que entrega el panel a la mesa en cambio de un cupo de evaluación",
+    "nodo": "mesa de evaluación o taller en la ruta entre la instaladora y la bodega",
+    "nota": "resumen de draft; texto completo en ../dossier_latam_2026.md"
+  },
+  "solucion_a": {
+    "opcion": "01",
+    "nombre": "Segunda Luz",
+    "mecanismo": "objeto de siempre (multímetro + medidor de aislamiento) convertido en servicio de evaluación con criterio declarado (familia A instrumentación y control)",
+    "que_es": "mesa con multímetro y medidor de aislamiento que evalúa cada panel con un umbral declarado (≥70% de potencia nominal, est.) y entrega cupo de evaluación a la instaladora",
+    "costo_estimado_usd": 115,
+    "unidad_costo": "USD por mesa",
+    "metrica_resultado": "cada panel evaluado con veredicto declarado antes de salir de la mesa (≥70% nominal, est.)",
+    "ticket_validacion": null,
+    "costo_ticket_usd": null,
+    "nota": "texto completo en ../dossier_latam_2026.md; umbral ≥70% nominal y costo de evaluación USD8 por instaladora canon; cifra de umbral marcada est."
+  },
+  "solucion_b": {
+    "opcion": "02",
+    "nombre": "Mesa de Desarme Seguro",
+    "mecanismo_distinto_a": "no evalúa: protocolo de desarme en 5 pasos con destino declarado (familia G módulo replicable con ruta de acopio)",
+    "que_es": "regla de 5 pasos impuesta en la mesa: cubrir luz → marco → caja de conexiones → vidrio y celdas → despacho; cada trayecto queda con destino declarado",
+    "costo_estimado_usd": null,
+    "unidad_costo": null,
+    "metrica_resultado": "≥90% de paneles con destino declarado",
+    "nota": "texto completo en ../dossier_latam_2026.md"
+  },
+  "exploracion_sin_intervenir": "Observar en 2 instaladoras de barrio cómo llega un panel fuera de vida: quién lo declara, dónde lo suelta y qué le falta al operador para cerrar el comprobante",
+  "anti_generico": "si se cambia 'reutilizable a despeje' por 'reciclable a repuesto' la mesa de evaluación embarcaría sin criterio; amarrada al umbral y al desarme",
+  "avisos": [
+    "ciudad pendiente: [CIUDAD] sin confirmar por el equipo",
+    "umbral ≥70% nominal marcado est.; falta validar con el equipo",
+    "cifras y precedentes del corpus aún sin cruzar con knowledge/ERRATAS.md"
+  ]
+}

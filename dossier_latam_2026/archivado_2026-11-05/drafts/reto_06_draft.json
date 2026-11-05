@@ -1,0 +1,42 @@
+{
+  "id": "DESAFIO_06",
+  "titulo": "Remoción de barro en viviendas anegadas",
+  "certamen": "latam",
+  "categoria_preliminar": null,
+  "estado": "borrador_para_curar",
+  "fuente_completa": "../dossier_latam_2026.md",
+  "cadena_resumen": "síntoma: tras la creciente la casa queda con barro y tarda días en quedar limpia → causa raíz: el retiro del barro es manual y sin equipo → causa de la causa: no existe kit mecánico barato para la vivienda individual",
+  "nomina_resumen": {
+    "jugador": "familia de la vivienda anegada",
+    "canal": "comités de emergencia y junturas de barrio",
+    "nodo": "kit de fluidificación barro distribuido por manzana",
+    "nota": "resumen de draft; texto completo en ../dossier_latam_2026.md"
+  },
+  "solucion_a": {
+    "opcion": "01",
+    "nombre": "Bomba de Barro Interior",
+    "mecanismo": "objeto de siempre + técnica de fluidificación (familia A)",
+    "que_es": "bomba de lodo de bajo costo que, con ≤25 litros de agua por tirada, fluidifica el barro del interior y lo saca por manguera a la calle",
+    "costo_estimado_usd": 122,
+    "unidad_costo": "por kit",
+    "metrica_resultado": "vivienda limpia de barro en ≤12 horas",
+    "nota": "texto completo define el protocolo de uso"
+  },
+  "solucion_b": {
+    "opcion": "02",
+    "nombre": "Kit de Paleta de Escalera",
+    "mecanismo": "herramienta manual estructurada, distinta a la bomba de la Opción 01",
+    "que_es": "paleta de escalera con jalón y tanque de 60 litros en el patio para extraer el barro de la vivienda a mano con menos esfuerzo",
+    "costo_estimado_usd": 49,
+    "unidad_costo": "por kit",
+    "metrica_resultado": null,
+    "nota": "métrica y costo de ticket en el texto completo"
+  },
+  "exploracion_sin_intervenir": "Si se repite una creciente, observar en una cuadra cuántos días dura el retiro del barro y quién paga el retiro",
+  "anti_generico": "si se cambia 'barro post-creciente' por 'escombros de demolición' la bomba de lodo no sirve; amarrada al volumen fluido del barro",
+  "avisos": [
+    "precedentes pendientes de cruce en research/sirli/winners.jsonl y knowledge/ERRATAS.md",
+    "valor de [CIUDAD] pendiente en brief.json",
+    "métrica y costo de ticket de la Opción 02 completar desde el texto completo"
+  ]
+}

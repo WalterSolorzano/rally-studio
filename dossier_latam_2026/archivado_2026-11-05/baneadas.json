@@ -1,0 +1,17 @@
+{
+  "fecha": "2026-11-05",
+  "motivo": "Rechazo total del PDF — prueba de fuego de la ley anti-contaminación",
+  "ley": "skills/dossier-soluciones/SKILL.md §Ley de rechazo total",
+  "origen_critica": "dossier_latam_2026/CRITICA.md",
+  "baneadas": [
+    {"reto": "R01", "opcion": "Kit de Acople a Máquina", "motivo": "La escena abre con picadora de maíz, fuera del enunciado; hereda 'Abono de Mercado'."},
+    {"reto": "R02", "opcion": "Vigía de Talud", "motivo": "Grieta de años, municipio que no repara, sin decisor; teléfono mal instrumento."},
+    {"reto": "R02", "opcion": "Oído de Tubería", "motivo": "Micrófono de celular no es sensor de contacto; sin calibración; precedente y costo."},
+    {"reto": "R04", "opcion": "Suscripción de Astilla", "motivo": "Cuota mensual + chipeadora alquilada; no hay artefacto que el cliente se lleve."},
+    {"reto": "R05", "opcion": "Regla de Nivel", "motivo": "Guardia con pago simbólico; sin partida ni mantenimiento."},
+    {"reto": "R06", "opcion": "Trineo Filtrante", "motivo": "Alquiler por día; no hay producto que se venda."},
+    {"reto": "R07", "opcion": "Garrafa con Depósito", "motivo": "Costo imposible (USD 4 por garrafa + depósito 200 L) y comisión por litro; precedente."},
+    {"reto": "R07", "opcion": "Aceite para Cadena", "motivo": "Aceite de cocina usado como lubricante: acidez/polimerización; estado del arte."},
+    {"reto": "R09", "opcion": "Tablero de Manzana", "motivo": "Jefe sin sueldo; precedente; pagador."}
+  ]
+}

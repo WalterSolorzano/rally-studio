@@ -1,0 +1,42 @@
+{
+  "id": "DESAFIO_02",
+  "titulo": "Sensores al servicio de la comunidad vía celulares en desuso",
+  "certamen": "latam",
+  "categoria_preliminar": null,
+  "estado": "borrador_para_curar",
+  "fuente_completa": "../dossier_latam_2026.md",
+  "cadena_resumen": "síntoma: riesgo urbano invisible (calles y baches sin medir) → causa raíz: no hay instrumentación de bajo costo → causa de la causa: los celulares en desuso se descartan en lugar de usarse como sensores",
+  "nomina_resumen": {
+    "jugador": "vecino que dona el celular en desuso",
+    "canal": "juntura de barrio que recibe y monta",
+    "nodo": "caja estanca en poste o muebles común instalada",
+    "nota": "resumen de draft; texto completo en ../dossier_latam_2026.md"
+  },
+  "solucion_a": {
+    "opcion": "01",
+    "nombre": "Ojo Vital",
+    "mecanismo": "dato + alguien que decide (familia C)",
+    "que_es": "celular en desuso dentro de una caja estanca de PVC; el acelerómetro del celular detecta vibración del poste donde va montado y la app da un resumen en 3 colores (estable, alerta, riesgo)",
+    "costo_estimado_usd": 10,
+    "unidad_costo": "por unidad",
+    "metrica_resultado": "≥10 decisiones documentadas en 30 días",
+    "nota": "costo de ticket y ticket de validación en el texto completo"
+  },
+  "solucion_b": {
+    "opcion": "02",
+    "nombre": "Bacheómetro",
+    "mecanismo": "dato + alguien que decide (familia C), con mecanismo móvil distinto al de la Opción 01",
+    "que_es": "celular en desuso sujeto a un carro o patín que recorre las calles midiendo el toque y produce un ranking del top-5 de calles más castigadas",
+    "costo_estimado_usd": 3,
+    "unidad_costo": "por montaje",
+    "metrica_resultado": null,
+    "nota": "métrica y costo de ticket en el texto completo"
+  },
+  "exploracion_sin_intervenir": "Contar en un mes cuántos celulares viejos acumula una misma ciudad y dónde terminan",
+  "anti_generico": "si se cambia 'celulares' por 'tablets' el montaje de la caja estanca no resiste; amarrado al objeto",
+  "avisos": [
+    "precedentes pendientes de cruce en research/sirli/winners.jsonl y knowledge/ERRATAS.md",
+    "valor de [CIUDAD] pendiente en brief.json",
+    "métrica y costo de ticket de la Opción 02 completar desde el texto completo"
+  ]
+}

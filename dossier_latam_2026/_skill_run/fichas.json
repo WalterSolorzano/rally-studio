@@ -1,0 +1,274 @@
+{
+  "retos": [
+    {
+      "reto_id": "DESAFIO_01",
+      "reto_enunciado": "Segunda vida de los motores elÃ©ctricos domÃ©sticos Reto del comité sobre Segunda vida de los motores elÃ©ctricos domÃ©sticos. Sector declarado: electrodomÃ©sticos en desuso.",
+      "title": "Segunda vida de los motores elÃ©ctricos domÃ©sticos",
+      "description": "Reto del comité sobre Segunda vida de los motores elÃ©ctricos domÃ©sticos. Sector declarado: electrodomÃ©sticos en desuso.",
+      "opciones": [
+        {
+          "id": "ruta-1",
+          "titulo": "Motores eléctricos domésticos en desuso convertidos en bombas de riego",
+          "que_es": "Grupo motriz de bomba de riego fabricado con motores de electrodomésticos en desuso, cedido a una asociación de productores.",
+          "como_funciona": [
+            "Desmontar motores de lavadoras y ventiladores descartados sin piezas nuevas.",
+            "Acoplar el eje del motor a una bomba de impulsión para riego de parcelas.",
+            "Probar el caudal en un banco de medición antes de instalar en el campo.",
+            "Entregar el equipo montado a la asociación de productores con su manual de operación."
+          ],
+          "pagador": "Alcaldía · partida de agua potable · alcalde · equipo de bombeo para parcelas",
+          "metrica": "por validar · fuente: research/claims.json",
+          "ya_existe": "por validar con el equipo",
+          "precedente": "AVOCADO (UAM - Jaguares) · 2026 · Segunda vida de motores eléctricos domésticos · 1er lugar nacional",
+          "costo": "por validar con el equipo",
+          "por_validar": "Supuesto: el motor de lavadora rinde caudal suficiente en campo; prueba barata: medir caudal en banco con un motor rescatado antes de fabricar más.",
+          "pitch": "Motores de lavadora en desuso mueven la bomba de riego que la asociación de productores necesita para su parcela."
+        }
+      ]
+    },
+    {
+      "reto_id": "DESAFIO_02",
+      "reto_enunciado": "Sensores al servicio de la comunidad Reto del comité sobre Sensores al servicio de la comunidad. Sector declarado: celulares en desuso.",
+      "title": "Sensores al servicio de la comunidad",
+      "description": "Reto del comité sobre Sensores al servicio de la comunidad. Sector declarado: celulares en desuso.",
+      "opciones": [
+        {
+          "id": "ruta-1",
+          "titulo": "Medidor de humedad de parcelas con lectura en celulares en desuso",
+          "que_es": "Red de sensores de humedad que publica lecturas en celulares en desuso de la junta de agua, probada en una parcela antes de escalar.",
+          "como_funciona": [
+            "Extraer la placa de humedad y el módulo de comunicación de celulares en desuso.",
+            "Sellar la electrónica con resina para dejarla a la intemperie en la parcela.",
+            "Configurar el envío de lecturas al celular de la junta de agua.",
+            "Registrar una temporada completa de lecturas antes de decidir la compra del siguiente equipo."
+          ],
+          "pagador": "Junta de agua potable · cuota de mantenimiento · coordinador · red de medición en barrios",
+          "metrica": "por validar · fuente: research/claims.json",
+          "ya_existe": "por validar con el equipo",
+          "precedente": "Steel Innovators (CUR UNI Juigalpa) · 2026 · Red de sensores agrícolas de bajo costo · 2do lugar nacional Innovación",
+          "costo": "por validar con el equipo",
+          "por_validar": "Supuesto: los celulares en desuso aportan piezas que aguantan humedad de campo; prueba barata: dejar un módulo sellado en una parcela una semana y leerlo.",
+          "pitch": "La junta de agua ve la humedad de sus parcelas en el celular que ya tiene, sin comprar estación nueva."
+        }
+      ]
+    },
+    {
+      "reto_id": "DESAFIO_03",
+      "reto_enunciado": "ProtecciÃ³n y fomento de polinizadores Reto del comité sobre ProtecciÃ³n y fomento de polinizadores. Sector declarado: entornos agrÃ­cola/urbano.",
+      "title": "ProtecciÃ³n y fomento de polinizadores",
+      "description": "Reto del comité sobre ProtecciÃ³n y fomento de polinizadores. Sector declarado: entornos agrÃ­cola/urbano.",
+      "opciones": [
+        {
+          "id": "ruta-exploratoria",
+          "titulo": "Refugios para polinizadores en entornos agrícolas y bordes de parcela",
+          "que_es": "Hipótesis: refugios de madera y barro que replican el micro-refugio de Ignis Code, medidos con polinizadores en entornos agrícolas del sector cafetalero antes de escalar.",
+          "como_funciona": [
+            "Levantar con el equipo un inventario de polinizadores y sombra en la parcela.",
+            "Construir refugios de madera y barro con aberturas del tamaño de las abejas locales.",
+            "Instalar tres refugios y registrar visitas de polinizadores durante la temporada.",
+            "Comparar visitas con y sin refugio y llevar el resultado al productor."
+          ],
+          "pagador": "Cooperativa cafetalera · fondo de proyectos · gerente · refugios para polinizadores en sus laderas",
+          "metrica": "por validar · fuente: research/claims.json",
+          "ya_existe": "por validar con el equipo",
+          "precedente": "Ignis Code (UAM - DIEM) · 2026 · Micro-refugios bio-climáticos para polinizadores · 1er lugar nacional Innovación",
+          "costo": "por validar con el equipo",
+          "por_validar": "Supuesto: el refugio atrae más polinizadores que la parcela testigo; prueba barata: instalar un refugio y contar visitas durante una temporada.",
+          "pitch": "Con madera y barro locales, la cooperativa hospeda en su ladera a los polinizadores de la parcela."
+        }
+      ]
+    },
+    {
+      "reto_id": "DESAFIO_04",
+      "reto_enunciado": "Manejo ecolÃ³gico de residuos de poda y biomasa vegetal urbana Reto del comité sobre Manejo ecolÃ³gico de residuos de poda y biomasa vegetal urbana. Sector declarado: biomasa urbana.",
+      "title": "Manejo ecolÃ³gico de residuos de poda y biomasa vegetal urbana",
+      "description": "Reto del comité sobre Manejo ecolÃ³gico de residuos de poda y biomasa vegetal urbana. Sector declarado: biomasa urbana.",
+      "opciones": [
+        {
+          "id": "ruta-1",
+          "titulo": "Paneles de Tetra Pak prensados con residuos de poda y biomasa",
+          "que_es": "Plancha modular sismorresistente que sigue el método del caso Tetra Pak 2025, aquí con residuos de poda prensados y biomasa seca.",
+          "como_funciona": [
+            "Secar y triturar los residuos de poda que la municipalidad recolecta en los barrios.",
+            "Prensar la biomasa con el compuesto multicapa del caso Tetra Pak en planchas de techo.",
+            "Probar carga y ruido de gotas en un panel de banco antes de montar el techo.",
+            "Entregar el panel y su ficha de recolección al proveedor de techos de la alcaldía."
+          ],
+          "pagador": "Alcaldía · partida de manejo de residuos · alcalde · planchas de techo para mercados",
+          "metrica": "por validar · fuente: research/claims.json",
+          "ya_existe": "por validar con el equipo",
+          "precedente": "Mentes Volcánicas (UNI-RUPAP) · 2025 · Paneles constructivos de Tetra Pak · 1er lugar internacional y 1er lugar nacional",
+          "costo": "por validar con el equipo",
+          "por_validar": "Supuesto: la biomasa de poda prensada aguanta carga y lluvia como el Tetra Pak; prueba barata: prensar una plancha y mojarla una semana antes de prometer techos.",
+          "pitch": "La municipalidad ya recoge residuos de poda; con el método Tetra Pak 2025 esos barrios arman techos en vez de tirarlos."
+        },
+        {
+          "id": "ruta-2",
+          "titulo": "Estructura de acopio de biomasa urbana armada con envases plásticos",
+          "que_es": "Contenedor modular para la biomasa urbana de los barrios, armado con envases plásticos según el método estructural del caso BottleLife 2017.",
+          "como_funciona": [
+            "Separar los envases plásticos en el mismo punto de recolección de la poda de los barrios.",
+            "Ensamblar el contenedor con envases entrelazados, sin adhesivos ni piezas metálicas.",
+            "Cargar con residuos de poda y medir hinchazón y carga durante un mes.",
+            "Entregar el contenedor a la brigada de aseo de la alcaldía con su ficha de carga."
+          ],
+          "pagador": "Alcaldía · partida de aseo urbano · alcalde · contenedores de acopio para barrios",
+          "metrica": "por validar · fuente: research/claims.json",
+          "ya_existe": "por validar con el equipo",
+          "precedente": "BottleLife (Montevideo, Uruguay) · 2017 · BottleLife · 1er lugar internacional",
+          "costo": "por validar con el equipo",
+          "por_validar": "Supuesto: un contenedor de envases aguanta la biomasa húmeda un mes sin colapsar; prueba barata: llenarlo con poda de dos patios y pesarlo cada semana.",
+          "pitch": "La brigada de aseo de la alcaldía recibe contenedores de acopio que arman con los envases que ya separa en cada barrio."
+        }
+      ]
+    },
+    {
+      "reto_id": "DESAFIO_05",
+      "reto_enunciado": "Monitoreo inteligente e infraestructura verde en reservorios pluviales Reto del comité sobre Monitoreo inteligente e infraestructura verde en reservorios pluviales. Sector declarado: riesgo hÃ­drico.",
+      "title": "Monitoreo inteligente e infraestructura verde en reservorios pluviales",
+      "description": "Reto del comité sobre Monitoreo inteligente e infraestructura verde en reservorios pluviales. Sector declarado: riesgo hÃ­drico.",
+      "opciones": [
+        {
+          "id": "ruta-exploratoria",
+          "titulo": "Nivel del agua en reservorios pluviales con lectura automática y jardines",
+          "que_es": "Hipótesis de instrumentación de monitoreo que avisa el nivel del reservorio pluvial a la brigada de bomberos, sumada a jardines que filtran el escurrimiento.",
+          "como_funciona": [
+            "Instalar una regleta de nivel en el reservorio pluvial del barrio.",
+            "Enviar la lectura por radio al puesto de la brigada de bomberos.",
+            "Sembrar jardines de borde con plantas nativas para frenar el escurrimiento.",
+            "Medir nivel y escurrimiento durante la temporada de lluvias antes de ampliar."
+          ],
+          "pagador": "Municipalidad · partida de infraestructura verde · alcalde · medición de nivel y jardines de borde",
+          "metrica": "por validar · fuente: research/claims.json",
+          "ya_existe": "por validar con el equipo",
+          "precedente": "Techriders (UNI-RUSB) · 2024 · Micropresas telemetradas · 1er lugar internacional Innovación y 1er lugar nacional",
+          "costo": "por validar con el equipo; referencia: 4,500 usd cotizó el lote piloto de Micropresas telemetradas (2024) · fuente: knowledge/retos_razonamiento.json",
+          "por_validar": "Supuesto: la lectura de nivel llega sin cable hasta la brigada; prueba barata: dejar la regleta una semana de lluvias y comparar el aviso con la lectura manual.",
+          "pitch": "El nivel del reservorio avisa a la brigada antes que la lluvia, y los jardines de borde absorben el escurrimiento del barrio."
+        }
+      ]
+    },
+    {
+      "reto_id": "DESAFIO_06",
+      "reto_enunciado": "RemociÃ³n y extracciÃ³n de barro en viviendas anegadas Reto del comité sobre RemociÃ³n y extracciÃ³n de barro en viviendas anegadas. Sector declarado: post-emergencia.",
+      "title": "RemociÃ³n y extracciÃ³n de barro en viviendas anegadas",
+      "description": "Reto del comité sobre RemociÃ³n y extracciÃ³n de barro en viviendas anegadas. Sector declarado: post-emergencia.",
+      "opciones": [
+        {
+          "id": "ruta-exploratoria",
+          "titulo": "Bombeo portátil que saca barro de viviendas inundadas sin maquinaria pesada",
+          "que_es": "Bomba de succión movida por un motor de gasolina que saca el barro de las viviendas anegadas, operada por la brigada de la municipalidad.",
+          "como_funciona": [
+            "Descomponer la vivienda anegada por cuartos para medir cuánto barro hay en cada piso.",
+            "Conectar la succión a la manguera rígida y vaciar el barro en la calle contigua.",
+            "Contar los metros cúbicos extraídos por vivienda con el registro de la brigada.",
+            "Comparar horas de trabajo con la remoción manual antes de pedir más equipos."
+          ],
+          "pagador": "Municipalidad · partida de emergencias · alcalde · bomba de succión para la brigada",
+          "metrica": "por validar · fuente: research/claims.json",
+          "ya_existe": "por validar con el equipo",
+          "precedente": "THE BUBBLES · 2026 · Optimización y priorización de recursos y esfuerzos en la post-emergencia · PRIMER LUGAR",
+          "costo": "por validar con el equipo",
+          "por_validar": "Supuesto: la bomba vacía barro espeso sin atascarse; prueba barata: sacar un balde de lodo de un patio con la bomba antes de llevarla a una vivienda.",
+          "pitch": "Una succión portátil vacía el barro de una vivienda sin traer maquinaria pesada a la calle."
+        }
+      ]
+    },
+    {
+      "reto_id": "DESAFIO_07",
+      "reto_enunciado": "ReutilizaciÃ³n de aceite domÃ©stico Reto del comité sobre ReutilizaciÃ³n de aceite domÃ©stico. Sector declarado: aceite de cocina.",
+      "title": "ReutilizaciÃ³n de aceite domÃ©stico",
+      "description": "Reto del comité sobre ReutilizaciÃ³n de aceite domÃ©stico. Sector declarado: aceite de cocina.",
+      "opciones": [
+        {
+          "id": "ruta-exploratoria",
+          "titulo": "Aceite de cocina gastado convertido en jabón para el mercado",
+          "que_es": "Hipótesis de planta de banco que transforma el aceite doméstico gastado en jabón vendible, medida con la dueña de la panadería antes de escalar.",
+          "como_funciona": [
+            "Recolectar aceite gastado de las cocinas de la panadería y los comercios del sector.",
+            "Filtrar el aceite en la planta de banco y mezclarlo con cal para hacer jabón.",
+            "Pesar el jabón producido y probarlo en el lavado de trastes del mercado.",
+            "Registrar costo por kilo y venta en el mercado antes de ampliar la recolección."
+          ],
+          "pagador": "Mercado municipal · cuota de aseo · jefe del mercado · planta de jabón con recolección de aceite",
+          "metrica": "por validar · fuente: research/claims.json",
+          "ya_existe": "por validar con el equipo",
+          "precedente": "por validar",
+          "costo": "por validar con el equipo",
+          "por_validar": "Supuesto: el aceite gastado saponifica bien con cal local; prueba barata: hacer un lote de jabón con aceite de una panadería y pesar la barra.",
+          "pitch": "La panadería ya tira su aceite gastado; con cal local ese aceite vuelve al mercado convertido en jabón."
+        }
+      ]
+    },
+    {
+      "reto_id": "DESAFIO_08",
+      "reto_enunciado": "Desechos de basura verde (residuos fotovoltaicos) Reto del comité sobre Desechos de basura verde (residuos fotovoltaicos). Sector declarado: paneles solares retirados.",
+      "title": "Desechos de basura verde (residuos fotovoltaicos)",
+      "description": "Reto del comité sobre Desechos de basura verde (residuos fotovoltaicos). Sector declarado: paneles solares retirados.",
+      "opciones": [
+        {
+          "id": "ruta-1",
+          "titulo": "Planchas de techo prensadas con residuos fotovoltaicos y Tetra Pak",
+          "que_es": "Plancha constructiva sismorresistente que aplica el método del caso Tetra Pak 2025 a residuos fotovoltaicos de paneles solares retirados de la cooperativa eléctrica.",
+          "como_funciona": [
+            "Recolectar paneles solares retirados de los techos con la cooperativa eléctrica.",
+            "Segregar vidrio, marco y encapsulante, y prensar los fragmentos con el compuesto del caso Tetra Pak.",
+            "Probar carga y humedad en una plancha de banco antes de montarla en un techo.",
+            "Entregar la plancha y su ficha de material al proveedor de techos de la alcaldía."
+          ],
+          "pagador": "Empresa de energía · contrato de retiro de equipos · gerente · planchas de techo para sedes y escuelas",
+          "metrica": "por validar · fuente: research/claims.json",
+          "ya_existe": "por validar con el equipo",
+          "precedente": "Mentes Volcánicas (UNI-RUPAP) · 2025 · Paneles constructivos de Tetra Pak · 1er lugar internacional y 1er lugar nacional",
+          "costo": "por validar con el equipo",
+          "por_validar": "Supuesto: los fragmentos fotovoltaicos prensados aguantan carga y lluvia como el compuesto Tetra Pak; prueba barata: prensar una muestra y mojarla una semana.",
+          "pitch": "La cooperativa ya retira paneles solares; con el método Tetra Pak 2025 esos residuos salen del techo como planchas de construcción."
+        },
+        {
+          "id": "ruta-2",
+          "titulo": "Estructura de canope para mercados armada con residuos fotovoltaicos",
+          "que_es": "Techumbre de canope hecha con residuos fotovoltaicos, vidrio y marcos de paneles solares retirados, según la reutilización estructural del caso BottleLife 2017.",
+          "como_funciona": [
+            "Recoger con la cooperativa los paneles solares retirados de sus techos.",
+            "Desmontar marco, vidrio y célula, y clasificar cada material en el patio.",
+            "Armar la techumbre con marcos enlazados y vidrio como panel translúcido.",
+            "Cargar el techo con agua y registrar filtraciones antes de entregarlo al mercado."
+          ],
+          "pagador": "Mercado municipal · partida de obras · concejal · techumbre de canope para sus puestos",
+          "metrica": "por validar · fuente: research/claims.json",
+          "ya_existe": "por validar con el equipo",
+          "precedente": "BottleLife (Montevideo, Uruguay) · 2017 · BottleLife · 1er lugar internacional",
+          "costo": "por validar con el equipo",
+          "por_validar": "Supuesto: el vidrio fotovoltaico sin célula sirve de panel translúcido en la techumbre; prueba barata: montar un cuadro de un metro con un vidrio retirado y mojarlo.",
+          "pitch": "Los paneles solares retirados ya llegan de la cooperativa; sus marcos y vidrio techan el mercado con el método BottleLife."
+        }
+      ]
+    },
+    {
+      "reto_id": "DESAFIO_09",
+      "reto_enunciado": "OptimizaciÃ³n y priorizaciÃ³n de recursos y esfuerzos en la post-emergencia Reto del comité sobre OptimizaciÃ³n y priorizaciÃ³n de recursos y esfuerzos en la post-emergencia. Sector declarado: coordinaciÃ³n de respuesta.",
+      "title": "OptimizaciÃ³n y priorizaciÃ³n de recursos y esfuerzos en la post-emergencia",
+      "description": "Reto del comité sobre OptimizaciÃ³n y priorizaciÃ³n de recursos y esfuerzos en la post-emergencia. Sector declarado: coordinaciÃ³n de respuesta.",
+      "opciones": [
+        {
+          "id": "ruta-exploratoria",
+          "titulo": "Tablero de prioridades de recursos para brigadas en post-emergencia",
+          "que_es": "Hipótesis de tablero físico con reglas de prioridad que ordena recursos y esfuerzos de la coordinación municipal después de la emergencia.",
+          "como_funciona": [
+            "Mapear con la coordinación municipal qué recursos quedan disponibles tras la emergencia.",
+            "Escribir reglas de prioridad: población en riesgo, agua, alojamiento y acceso.",
+            "Ordenar las cuadrillas en el tablero según esas reglas en cada turno.",
+            "Comparar horas de respuesta con el método anterior durante la siguiente simulación."
+          ],
+          "pagador": "Protección Civil municipal · partida de emergencias · coordinador · tablero y reglas de prioridad",
+          "metrica": "por validar · fuente: research/claims.json",
+          "ya_existe": "por validar con el equipo",
+          "precedente": "HOOKE · 2026 · Optimización y priorización de recursos y esfuerzos en la post-emergencia · PRIMER LUGAR",
+          "costo": "por validar con el equipo",
+          "por_validar": "Supuesto: las brigadas siguen las reglas del tablero bajo presión; prueba barata: una simulación de una hora con la brigada y el tablero en la sala.",
+          "pitch": "El tablero le dice a la brigada qué recurso va primero en cada turno, sin reunión ni radio de por medio."
+        }
+      ]
+    }
+  ]
+}

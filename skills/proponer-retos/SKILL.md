@@ -9,19 +9,19 @@ description: Genera soluciones aplicables para los retos que da el usuario, con 
 
 Para cada reto del comité, devolver **dos soluciones en ficha rápida** (no párrafos largos)
 que pasen las nueve compuertas y el test de swap. Si una opción no pasa, se descarta y se
-genera otra — nunca se maquilla la narrativa.
+genera otra; nunca se maquilla la narrativa.
 
-**Flujo.** Comité entrega retos → 2 fichas por reto → equipo revisa y selecciona → las
-seleccionadas pasan al dossier PDF (`gen_dossier.py`).
+**Flujo.** Retos del comité → 2 fichas por reto → selección del equipo → dossier PDF
+(`gen_dossier.py`).
 
 **Banco interno.** Retos de `research/challenges.json` / `brain/corpus/retos.md`; precedentes
-de `knowledge/retos_razonamiento.json` y `research/sirli/winners.jsonl`. **No se inventan retos
-ni casos desde la memoria.** Doctrina profunda: `dossier-soluciones/SKILL.md`. Antes de generar,
+de `knowledge/retos_razonamiento.json` y `research/sirli/winners.jsonl`. **No se inventan
+retos ni casos desde la memoria.** Doctrina: `dossier-soluciones/SKILL.md`. Antes de generar,
 lee `references/goal.md` y `references/anti-generico.md`.
 
 ## 2. Regla dura
 
-**Este sistema no crea retos.** El usuario o el comité entregan los retos; la skill propone **soluciones**. Si no hay retos, pídelos o impórtalos; no inventes. Si te falta `rally_type`, pregunta antes de generar.
+**Este sistema no crea retos.** El comité entrega los retos; la skill propone **soluciones**. Si no hay retos, pídelos o impórtalos; no inventes. Si te falta `rally_type`, pregunta antes de generar.
 
 ## 3. Cuándo usarla
 
@@ -52,8 +52,8 @@ El detalle del goal y el sistema de razonamiento forzado están en `references/g
        --importar-brain --retos-json research/challenges.json`; luego ejecuta el motor otra
        vez pasando ese archivo con `--retos-json`.
     - Sin fuente explícita, pide el texto de los retos. No los redactes tú.
-3. **Carga el goal**: lee `references/goal.md` y `references/anti-generico.md` antes de invocar
-   el motor; sin ellos la skill opera con la versión vieja y produce propuestas genéricas.
+3. **Carga el goal**: lee `references/goal.md` y `references/anti-generico.md` antes de
+   invocar el motor; sin ellos produce propuestas genéricas con la versión vieja.
 4. **Genera el JSON de soluciones**:
    ```bash
     python scripts/soluciones_motor.py --todos --retos-json <retos_entregados.json> --certamen nacional --grafo \
@@ -80,35 +80,35 @@ El detalle del goal y el sistema de razonamiento forzado están en `references/g
    memoria) de tecnologías, papers o casos recientes que aporten un mecanismo nuevo. Si aporta
    con URL y año → campo opcional `Mecanismo nuevo`; si no → se omite. Nunca inventes
    tecnologías: solo las de una fuente abrible.
-8. **Devuelve las fichas rápidas en el chat** (una por opción, formato en
-   `references/ficha-y-cascada.md` §2). **No** maquetes el PDF todavía — el equipo primero
-   revisa y selecciona.
+8. **Devuelve las fichas en el chat** (formato `references/ficha-y-cascada.md` §2). No
+   maquetes el PDF: el equipo revisa y selecciona primero.
 9. **Si el equipo selecciona opciones**: genera el PDF solo con las seleccionadas:
    ```bash
    python scripts/gen_soluciones_pdf.py --json docs/_build/soluciones_seleccionadas.json \
      --out docs/Dossier_Soluciones_<certamen>.pdf
    ```
    Entrega la ruta; no pegues el JSON crudo en el chat.
+   **Rechazo total del PDF** → ley de `dossier-soluciones/SKILL.md` «Ley de rechazo total»:
+   borrar todas las soluciones, archivar baneadas solo si el usuario lo pide, regenerar
+   desde cero sin leer archivos viejos.
 10. **Auto-auditoría**: corre `scripts/check_anti_generico.py` sobre el JSON y luego el
     checklist de `references/anti-generico.md` ("Auto-auditoría antes de entregar"). Si algo
     falla, la opción vuelve al paso 5 — no se entrega con fallas.
 
 ## 6. Compuertas en cascada (anti-genérico)
 
-Cascada completa (etapa · compuerta · si falla): `references/ficha-y-cascada.md` §1. Doctrina
-de cada compuerta: `dossier-soluciones/SKILL.md`.
+Cascada completa: `references/ficha-y-cascada.md` §1. Doctrina de cada compuerta:
+`dossier-soluciones/SKILL.md`.
 
 ## 7. Formato de cada solución (ficha rápida en chat)
 
-Plantilla, reglas y "lo que NO va en la ficha": `references/ficha-y-cascada.md` §2. Resumen:
-ficha compacta <1 min, una opción por bloque, cada número con fuente; el párrafo narrativo va
-solo al dossier PDF.
+Plantilla, reglas y "lo que NO va": `references/ficha-y-cascada.md` §2. Ficha compacta
+<1 min, una opción por bloque, cada número con fuente; narrativa solo al dossier PDF.
 
 ## 8. Qué no hacer
 
 Lista completa: `references/ficha-y-cascada.md` §3. Nunca inventar retos o cifras desde la
-memoria, publicar sin pasar compuertas, heredar de versiones anteriores ni mostrar
-estadísticas internas del motor.
+memoria, publicar sin pasar compuertas ni heredar de versiones anteriores.
 
 ## 9. Punteros
 
@@ -117,8 +117,7 @@ estadísticas internas del motor.
 - Doctrina completa: `skills/dossier-soluciones/SKILL.md`
 - **Goal maestro**: `references/goal.md` · **Detector anti-genérico**: `references/anti-generico.md`
 - **Ficha, cascada y qué no hacer**: `references/ficha-y-cascada.md`
-- Cerebro: `brain/corpus/retos.md` · Rúbricas: `.agents/rules/rubricas-y-puntajes.md`
-- Documentación: `docs/MOTOR_SOLUCIONES.md`
+- Cerebro: `brain/corpus/retos.md` · Rúbricas: `.agents/rules/rubricas-y-puntajes.md` · Docs: `docs/MOTOR_SOLUCIONES.md`
 
 ## 10. Calibrar la compuerta
 

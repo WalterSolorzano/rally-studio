@@ -1,0 +1,1171 @@
+{
+  "certamen": "latam",
+  "ciudad": "",
+  "equipo": "",
+  "retos": [
+    {
+      "reto": {
+        "id": "DESAFIO_01",
+        "title": "Segunda vida de los motores elÃ©ctricos domÃ©sticos",
+        "description": "Reto del comité sobre Segunda vida de los motores elÃ©ctricos domÃ©sticos. Sector declarado: electrodomÃ©sticos en desuso.",
+        "ods_ids": []
+      },
+      "certamen": "latam",
+      "categoria": "innovacion",
+      "justificacion_categoria": "El enunciado apunta a una solucion tecnica o de innovacion.",
+      "soluciones": [
+        {
+          "id": "ruta-1",
+          "titulo": "Reutilización de motores eléctricos en desuso para tracción comunitaria rural.",
+          "concepto": "Segunda vida de motores eléctricos domésticos (2026). Problema documentado: Motores eléctricos domésticos en desuso y falta de maquinaria de bajo costo para comunidades vulnerables (Desafío 01). Solución del caso: Reutilización de motores eléctricos en desuso para tracción comunitaria rural. Principio transferible: Aplicó economía circular directa: rescatar motores de electrodomésticos descartados para reconvertirlos en maquinaria productiva y energética de bajo costo.",
+          "por_que_aplica": "El reto pide: Reto del comité sobre Segunda vida de los motores elÃ©ctricos domÃ©sticos. Sector declarado: electrodomÃ©sticos en desuso. El caso Segunda vida de motores eléctricos domésticos (2026) trabajó un núcleo equivalente: Motores eléctricos domésticos en desuso y falta de maquinaria de bajo costo para comunidades vulnerables (Desafío 01). La ruta reutiliza ese diagnóstico; no copia el producto.",
+          "etiqueta": "precedente",
+          "cadena_razonamiento": {
+            "problema": "Motores eléctricos domésticos en desuso y falta de maquinaria de bajo costo para comunidades vulnerables (Desafío 01).",
+            "causa_raiz": "No documentado en la fuente",
+            "insight": "Aplicó economía circular directa: rescatar motores de electrodomésticos descartados para reconvertirlos en maquinaria productiva y energética de bajo costo.",
+            "solucion": "Reutilización de motores eléctricos en desuso para tracción comunitaria rural.",
+            "metrica": "No documentado en la fuente",
+            "fuente": "knowledge/winners_latam.md"
+          },
+          "precedentes": [
+            {
+              "year": 2026,
+              "equipo": "AVOCADO (UAM - Jaguares)",
+              "proyecto": "Segunda vida de motores eléctricos domésticos",
+              "puesto": "1er lugar nacional Impacto Social",
+              "video_url": "",
+              "fuente": "knowledge/winners_latam.md"
+            }
+          ],
+          "recursos": [
+            "Motor"
+          ],
+          "ventana": {
+            "duracion": "28 h",
+            "plan": [
+              {
+                "tramo": "0-2 h",
+                "actividad": "Leer el reto y fijar beneficiario, restricción y métrica"
+              },
+              {
+                "tramo": "2-6 h",
+                "actividad": "Arquitectura modular, BOM y plan de validación"
+              },
+              {
+                "tramo": "6-16 h",
+                "actividad": "Prototipo y prueba de concepto"
+              },
+              {
+                "tramo": "16-21 h",
+                "actividad": "Medición, costo unitario y replicabilidad"
+              },
+              {
+                "tramo": "21-25 h",
+                "actividad": "Pautado, canvas y video de 120 s"
+              },
+              {
+                "tramo": "25-28 h",
+                "actividad": "Checklist SIRLI y entrega"
+              }
+            ]
+          },
+          "impacto": [],
+          "rubrica": [
+            {
+              "criterio": "Grado de Innovación",
+              "puntos": 30
+            },
+            {
+              "criterio": "Impacto Positivo en la Sociedad",
+              "puntos": 20
+            }
+          ],
+          "riesgo": "Bandera: la métrica no se mide en el prototipo. Condición que la resuelve: definir instrumento y unidad antes de la hora 14.",
+          "pitch": "Para este reto ya existe un caso que funcionó: Segunda vida de motores eléctricos domésticos (2026, 1er lugar nacional Impacto Social). Se reutiliza su mecanismo: Reutilización de motores eléctricos en desuso para tracción comunitaria rural.",
+          "precedentes_sirli": [
+            {
+              "year": 2026,
+              "equipo": "INIVEZ",
+              "puesto": "PRIMER LUGAR",
+              "pais": "VENEZUELA",
+              "reto": "SEGUNDA VIDA DE LOS MOTORES ELÉCTRICOS DOMÉSTICOS",
+              "video_url": "https://youtu.be/YInXXmzd3kM?si=6bSQb1F5FMCTPUXJ",
+              "fuente": "research/sirli/winners.jsonl"
+            },
+            {
+              "year": 2026,
+              "equipo": "REVOLT",
+              "puesto": "PRIMER LUGAR",
+              "pais": "EL SALVADOR",
+              "reto": "SEGUNDA VIDA DE LOS MOTORES ELÉCTRICOS DOMÉSTICOS",
+              "video_url": "https://youtu.be/zXEc_tdKh9U",
+              "fuente": "research/sirli/winners.jsonl"
+            },
+            {
+              "year": 2026,
+              "equipo": "AVOCADO",
+              "puesto": "PRIMER LUGAR",
+              "pais": "NICARAGUA",
+              "reto": "SEGUNDA VIDA DE LOS MOTORES ELÉCTRICOS DOMÉSTICOS",
+              "video_url": "https://youtu.be/g0pXDNbKRIM",
+              "fuente": "research/sirli/winners.jsonl"
+            }
+          ],
+          "evidencia_grafo": [
+            {
+              "dato": "Avocado (2026, segunda vida de motores eléctricos domésticos)",
+              "fuente": "ganadores_latam.md"
+            },
+            {
+              "dato": "Desafío: Segunda vida de los motores eléctricos domésticos",
+              "fuente": "ganadores_latam.md"
+            },
+            {
+              "dato": "DESAFIO_01 — Segunda vida de motores eléctricos",
+              "fuente": "retos.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "reto": {
+        "id": "DESAFIO_02",
+        "title": "Sensores al servicio de la comunidad",
+        "description": "Reto del comité sobre Sensores al servicio de la comunidad. Sector declarado: celulares en desuso.",
+        "ods_ids": []
+      },
+      "certamen": "latam",
+      "categoria": "impacto_social",
+      "justificacion_categoria": "El enunciado apunta a impacto social (1 senales).",
+      "soluciones": [
+        {
+          "id": "ruta-1",
+          "titulo": "Red de sensores agrícolas de bajo costo aplicado a Sensores al servicio de la comunidad",
+          "concepto": "Red de sensores agrícolas de bajo costo (2026). Problema documentado: Sensores al servicio de la comunidad (Desafío 02), aplicados al monitoreo agrícola.",
+          "por_que_aplica": "El reto pide: Reto del comité sobre Sensores al servicio de la comunidad. Sector declarado: celulares en desuso. El caso Red de sensores agrícolas de bajo costo (2026) trabajó un núcleo equivalente: Sensores al servicio de la comunidad (Desafío 02), aplicados al monitoreo agrícola. La ruta reutiliza ese diagnóstico; no copia el producto.",
+          "etiqueta": "precedente",
+          "cadena_razonamiento": {
+            "problema": "Sensores al servicio de la comunidad (Desafío 02), aplicados al monitoreo agrícola.",
+            "causa_raiz": "No documentado en la fuente",
+            "insight": "No documentado en la fuente",
+            "solucion": "Red de sensores agrícolas de bajo costo.",
+            "metrica": "No documentado en la fuente",
+            "fuente": "knowledge/winners_analysis.md"
+          },
+          "precedentes": [
+            {
+              "year": 2026,
+              "equipo": "Steel Innovators (CUR UNI Juigalpa)",
+              "proyecto": "Red de sensores agrícolas de bajo costo",
+              "puesto": "2do lugar nacional Innovación",
+              "video_url": "",
+              "fuente": "knowledge/winners_analysis.md"
+            }
+          ],
+          "recursos": [
+            "Sensores"
+          ],
+          "ventana": {
+            "duracion": "28 h",
+            "plan": [
+              {
+                "tramo": "0-2 h",
+                "actividad": "Leer el reto y fijar beneficiario, restricción y métrica"
+              },
+              {
+                "tramo": "2-6 h",
+                "actividad": "Arquitectura modular, BOM y plan de validación"
+              },
+              {
+                "tramo": "6-16 h",
+                "actividad": "Prototipo y prueba de concepto"
+              },
+              {
+                "tramo": "16-21 h",
+                "actividad": "Medición, costo unitario y replicabilidad"
+              },
+              {
+                "tramo": "21-25 h",
+                "actividad": "Pautado, canvas y video de 120 s"
+              },
+              {
+                "tramo": "25-28 h",
+                "actividad": "Checklist SIRLI y entrega"
+              }
+            ]
+          },
+          "impacto": [],
+          "rubrica": [
+            {
+              "criterio": "Impacto Positivo en la Sociedad",
+              "puntos": 20
+            },
+            {
+              "criterio": "Grado de Innovación",
+              "puntos": 30
+            }
+          ],
+          "riesgo": "Bandera: la métrica no se mide en el prototipo. Condición que la resuelve: definir instrumento y unidad antes de la hora 14.",
+          "pitch": "Para este reto ya existe un caso que funcionó: Red de sensores agrícolas de bajo costo (2026, 2do lugar nacional Innovación). Se reutiliza su mecanismo y se reajusta al beneficiario de este reto.",
+          "precedentes_sirli": [
+            {
+              "year": 2026,
+              "equipo": "INNOVACIÓN SIN LÍMITE VOL2.0",
+              "puesto": "PRIMER LUGAR",
+              "pais": "COLOMBIA",
+              "reto": "SENSORES AL SERVICIO DE LA COMUNIDAD",
+              "video_url": "https://youtu.be/DrvsYWQyaFE",
+              "fuente": "research/sirli/winners.jsonl"
+            },
+            {
+              "year": 2026,
+              "equipo": "FACETITOS",
+              "puesto": "PRIMER LUGAR",
+              "pais": "ARGENTINA",
+              "reto": "SENSORES AL SERVICIO DE LA COMUNIDAD",
+              "video_url": "https://youtube.com/watch?v=qnxCM-GAX4A&si=O6iMoqyWVQajI317",
+              "fuente": "research/sirli/winners.jsonl"
+            },
+            {
+              "year": 2026,
+              "equipo": "EL NOMBRE ES LO DE MENOS",
+              "puesto": "PRIMER LUGAR",
+              "pais": "ARGENTINA",
+              "reto": "SENSORES AL SERVICIO DE LA COMUNIDAD",
+              "video_url": "https://youtu.be/DfYuP-BGU2Q?feature=shared",
+              "fuente": "research/sirli/winners.jsonl"
+            }
+          ],
+          "evidencia_grafo": [
+            {
+              "dato": "Desafío: Sensores al servicio de la comunidad",
+              "fuente": "ganadores_latam.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "reto": {
+        "id": "DESAFIO_03",
+        "title": "ProtecciÃ³n y fomento de polinizadores",
+        "description": "Reto del comité sobre ProtecciÃ³n y fomento de polinizadores. Sector declarado: entornos agrÃ­cola/urbano.",
+        "ods_ids": []
+      },
+      "certamen": "latam",
+      "categoria": "innovacion",
+      "justificacion_categoria": "El enunciado apunta a una solucion tecnica o de innovacion.",
+      "soluciones": [
+        {
+          "id": "ruta-exploratoria",
+          "titulo": "Hipótesis de solución para ProtecciÃ³n y fomento de polinizadores",
+          "concepto": "No hay un caso ganador comparable en el corpus. La ruta se plantea como hipótesis: definir el proceso físico mínimo que resuelve «ProtecciÃ³n y fomento de polinizadores», construir un prototipo de banco con recursos locales y medirlo con el beneficiario antes de escalar. El jurado evalúa método y evidencia, no promesas.",
+          "por_que_aplica": "El reto pide: Reto del comité sobre ProtecciÃ³n y fomento de polinizadores. Sector declarado: entornos agrÃ­cola/urbano. Sin precedente directo, el equipo debe levantar evidencia primaria.",
+          "etiqueta": "exploratoria",
+          "cadena_razonamiento": {
+            "problema": "Reto del comité sobre ProtecciÃ³n y fomento de polinizadores. Sector declarado: entornos agrÃ­cola/urbano.",
+            "causa_raiz": "Por validar con el beneficiario.",
+            "insight": "Sin precedente en el corpus de ganadores.",
+            "solucion": "Hipótesis a validar.",
+            "metrica": "Por definir.",
+            "fuente": "research/challenges.json"
+          },
+          "precedentes": [],
+          "recursos": [],
+          "ventana": {
+            "duracion": "28 h",
+            "plan": [
+              {
+                "tramo": "0-2 h",
+                "actividad": "Leer el reto y fijar beneficiario, restricción y métrica"
+              },
+              {
+                "tramo": "2-6 h",
+                "actividad": "Arquitectura modular, BOM y plan de validación"
+              },
+              {
+                "tramo": "6-16 h",
+                "actividad": "Prototipo y prueba de concepto"
+              },
+              {
+                "tramo": "16-21 h",
+                "actividad": "Medición, costo unitario y replicabilidad"
+              },
+              {
+                "tramo": "21-25 h",
+                "actividad": "Pautado, canvas y video de 120 s"
+              },
+              {
+                "tramo": "25-28 h",
+                "actividad": "Checklist SIRLI y entrega"
+              }
+            ]
+          },
+          "impacto": [],
+          "rubrica": [
+            {
+              "criterio": "Grado de Innovación",
+              "puntos": 30
+            },
+            {
+              "criterio": "Impacto Positivo en la Sociedad",
+              "puntos": 20
+            }
+          ],
+          "riesgo": "Bandera: sin precedente. Condición que la resuelve: conseguir evidencia primaria; no presentar como validado.",
+          "pitch": "Hipótesis en validación: no usar cifras hasta medir el piloto.",
+          "precedentes_sirli": [
+            {
+              "year": 2026,
+              "equipo": "DESUCHO",
+              "puesto": "PRIMER LUGAR",
+              "pais": "ARGENTINA",
+              "reto": "PROTECCIÓN Y FOMENTO DE POLINIZADORES",
+              "video_url": "https://www.youtube.com/watch?v=fRxIl-WVSO8",
+              "fuente": "research/sirli/winners.jsonl"
+            },
+            {
+              "year": 2026,
+              "equipo": "INGENIEROS INNOVA",
+              "puesto": "PRIMER LUGAR",
+              "pais": "COLOMBIA",
+              "reto": "PROTECCIÓN Y FOMENTO DE POLINIZADORES",
+              "video_url": "https://www.youtube.com/watch?v=XC28JqOGlpg",
+              "fuente": "research/sirli/winners.jsonl"
+            },
+            {
+              "year": 2026,
+              "equipo": "NOVA GEN",
+              "puesto": "PRIMER LUGAR",
+              "pais": "COSTA RICA",
+              "reto": "PROTECCIÓN Y FOMENTO DE POLINIZADORES",
+              "video_url": "https://youtu.be/REGcXq3vDjU?si=zfcmNQMpRGZ6XqQF",
+              "fuente": "research/sirli/winners.jsonl"
+            }
+          ],
+          "evidencia_grafo": [
+            {
+              "dato": "Desafío: Protección y fomento de polinizadores",
+              "fuente": "ganadores_latam.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "reto": {
+        "id": "DESAFIO_04",
+        "title": "Manejo ecolÃ³gico de residuos de poda y biomasa vegetal urbana",
+        "description": "Reto del comité sobre Manejo ecolÃ³gico de residuos de poda y biomasa vegetal urbana. Sector declarado: biomasa urbana.",
+        "ods_ids": []
+      },
+      "certamen": "latam",
+      "categoria": "innovacion",
+      "justificacion_categoria": "El enunciado apunta a una solucion tecnica o de innovacion.",
+      "soluciones": [
+        {
+          "id": "ruta-1",
+          "titulo": "Paneles constructivos de Tetra Pak aplicado a Manejo ecolÃ³gico de residuos de poda y biomasa…",
+          "concepto": "Paneles constructivos de Tetra Pak (2025). Problema documentado: Aprovechamiento de Tetra Pak como pasivo ambiental de gran volumen (Desafío 01). Solución del caso: Paneles constructivos modulares sismorresistentes fabricados con Tetra Pak revalorizado, con ruta de recolección inclusiva vinculada a la manufactura. Principio transferible: Evitar el reciclaje artesanal de bajo valor agregado y montar una ruta de procesamiento industrializable que explote las propiedades térmicas, acústicas e impermeables….",
+          "por_que_aplica": "El reto pide: Reto del comité sobre Manejo ecolÃ³gico de residuos de poda y biomasa vegetal urbana. Sector declarado: biomasa urbana. El caso Paneles constructivos de Tetra Pak (2025) trabajó un núcleo equivalente: Aprovechamiento de Tetra Pak como pasivo ambiental de gran volumen (Desafío 01). La ruta reutiliza ese diagnóstico; no copia el producto.",
+          "etiqueta": "precedente",
+          "cadena_razonamiento": {
+            "problema": "Aprovechamiento de Tetra Pak como pasivo ambiental de gran volumen (Desafío 01).",
+            "causa_raiz": "No documentado en la fuente",
+            "insight": "Evitar el reciclaje artesanal de bajo valor agregado y montar una ruta de procesamiento industrializable que explote las propiedades térmicas, acústicas e impermeables del compuesto multicapa de celulosa, polietileno y aluminio.",
+            "solucion": "Paneles constructivos modulares sismorresistentes fabricados con Tetra Pak revalorizado, con ruta de recolección inclusiva vinculada a la manufactura.",
+            "metrica": "No documentado en la fuente",
+            "fuente": "knowledge/winners_latam.md"
+          },
+          "precedentes": [
+            {
+              "year": 2025,
+              "equipo": "Mentes Volcánicas (UNI-RUPAP)",
+              "proyecto": "Paneles constructivos de Tetra Pak",
+              "puesto": "1er lugar internacional Impacto Social y 1er lugar nacional",
+              "video_url": "https://www.youtube.com/watch?v=_JSUKR1bPnE",
+              "fuente": "knowledge/winners_latam.md"
+            }
+          ],
+          "recursos": [
+            "Tetra Pak reciclado"
+          ],
+          "ventana": {
+            "duracion": "28 h",
+            "plan": [
+              {
+                "tramo": "0-2 h",
+                "actividad": "Leer el reto y fijar beneficiario, restricción y métrica"
+              },
+              {
+                "tramo": "2-6 h",
+                "actividad": "Arquitectura modular, BOM y plan de validación"
+              },
+              {
+                "tramo": "6-16 h",
+                "actividad": "Prototipo y prueba de concepto"
+              },
+              {
+                "tramo": "16-21 h",
+                "actividad": "Medición, costo unitario y replicabilidad"
+              },
+              {
+                "tramo": "21-25 h",
+                "actividad": "Pautado, canvas y video de 120 s"
+              },
+              {
+                "tramo": "25-28 h",
+                "actividad": "Checklist SIRLI y entrega"
+              }
+            ]
+          },
+          "impacto": [],
+          "rubrica": [
+            {
+              "criterio": "Grado de Innovación",
+              "puntos": 30
+            },
+            {
+              "criterio": "Impacto Positivo en la Sociedad",
+              "puntos": 20
+            }
+          ],
+          "riesgo": "Bandera: la métrica no se mide en el prototipo. Condición que la resuelve: definir instrumento y unidad antes de la hora 14.",
+          "pitch": "Para este reto ya existe un caso que funcionó: Paneles constructivos de Tetra Pak (2025, 1er lugar internacional Impacto Social…). Se reutiliza su mecanismo: Paneles constructivos modulares sismorresistentes fabricados con Tetra Pak revalorizado, con ruta de…",
+          "precedentes_sirli": [
+            {
+              "year": 2026,
+              "equipo": "NEXO-SOSTENIBLE",
+              "puesto": "PRIMER LUGAR",
+              "pais": "CHILE",
+              "reto": "MANEJO ECOLÓGICO DE RESIDUOS DE PODA Y BIOMASA VEGETAL URBANA",
+              "video_url": "https://youtu.be/i6fMS8UCgV0?feature=shared",
+              "fuente": "research/sirli/winners.jsonl"
+            },
+            {
+              "year": 2026,
+              "equipo": "KUBO I+D",
+              "puesto": "PRIMER LUGAR",
+              "pais": "ARGENTINA",
+              "reto": "MANEJO ECOLÓGICO DE RESIDUOS DE PODA Y BIOMASA VEGETAL URBANA",
+              "video_url": "https://youtu.be/15iVMqt_tuw",
+              "fuente": "research/sirli/winners.jsonl"
+            },
+            {
+              "year": 2026,
+              "equipo": "NEXORA",
+              "puesto": "PRIMER LUGAR",
+              "pais": "BOLIVIA",
+              "reto": "MANEJO ECOLÓGICO DE RESIDUOS DE PODA Y BIOMASA VEGETAL URBANA",
+              "video_url": "https://youtu.be/6i4-kjI4QWs",
+              "fuente": "research/sirli/winners.jsonl"
+            }
+          ],
+          "evidencia_grafo": [
+            {
+              "dato": "Desafío: Residuos de poda y biomasa vegetal urbana",
+              "fuente": "ganadores_latam.md"
+            }
+          ]
+        },
+        {
+          "id": "ruta-2",
+          "titulo": "BottleLife aplicado a Manejo ecolÃ³gico de residuos de poda y biomasa…",
+          "concepto": "BottleLife (2017). Problema documentado: Reutilización de envases plásticos como problema ambiental con componente de desarrollo social. Solución del caso: Reutilización estructural de envases plásticos para fines de construcción y desarrollo social.",
+          "por_que_aplica": "El reto pide: Reto del comité sobre Manejo ecolÃ³gico de residuos de poda y biomasa vegetal urbana. Sector declarado: biomasa urbana. El caso BottleLife (2017) trabajó un núcleo equivalente: Reutilización de envases plásticos como problema ambiental con componente de desarrollo social. La ruta reutiliza ese diagnóstico; no copia el producto.",
+          "etiqueta": "precedente",
+          "cadena_razonamiento": {
+            "problema": "Reutilización de envases plásticos como problema ambiental con componente de desarrollo social.",
+            "causa_raiz": "No documentado en la fuente",
+            "insight": "No documentado en la fuente",
+            "solucion": "Reutilización estructural de envases plásticos para fines de construcción y desarrollo social.",
+            "metrica": "No documentado en la fuente",
+            "fuente": "knowledge/winners_latam.md"
+          },
+          "precedentes": [
+            {
+              "year": 2017,
+              "equipo": "BottleLife (Montevideo, Uruguay)",
+              "proyecto": "BottleLife",
+              "puesto": "1er lugar internacional Impacto Social",
+              "video_url": "https://www.youtube.com/watch?v=yhVE1ZRDQZk",
+              "fuente": "knowledge/winners_latam.md"
+            }
+          ],
+          "recursos": [
+            "Estructura"
+          ],
+          "ventana": {
+            "duracion": "28 h",
+            "plan": [
+              {
+                "tramo": "0-2 h",
+                "actividad": "Leer el reto y fijar beneficiario, restricción y métrica"
+              },
+              {
+                "tramo": "2-6 h",
+                "actividad": "Arquitectura modular, BOM y plan de validación"
+              },
+              {
+                "tramo": "6-16 h",
+                "actividad": "Prototipo y prueba de concepto"
+              },
+              {
+                "tramo": "16-21 h",
+                "actividad": "Medición, costo unitario y replicabilidad"
+              },
+              {
+                "tramo": "21-25 h",
+                "actividad": "Pautado, canvas y video de 120 s"
+              },
+              {
+                "tramo": "25-28 h",
+                "actividad": "Checklist SIRLI y entrega"
+              }
+            ]
+          },
+          "impacto": [],
+          "rubrica": [
+            {
+              "criterio": "Grado de Innovación",
+              "puntos": 30
+            },
+            {
+              "criterio": "Impacto Positivo en la Sociedad",
+              "puntos": 20
+            }
+          ],
+          "riesgo": "Bandera: la métrica no se mide en el prototipo. Condición que la resuelve: definir instrumento y unidad antes de la hora 14.",
+          "pitch": "Para este reto ya existe un caso que funcionó: BottleLife (2017, 1er lugar internacional Impacto Social). Se reutiliza su mecanismo: Reutilización estructural de envases plásticos para fines de construcción y desarrollo social.",
+          "precedentes_sirli": [
+            {
+              "year": 2026,
+              "equipo": "NEXO-SOSTENIBLE",
+              "puesto": "PRIMER LUGAR",
+              "pais": "CHILE",
+              "reto": "MANEJO ECOLÓGICO DE RESIDUOS DE PODA Y BIOMASA VEGETAL URBANA",
+              "video_url": "https://youtu.be/i6fMS8UCgV0?feature=shared",
+              "fuente": "research/sirli/winners.jsonl"
+            },
+            {
+              "year": 2026,
+              "equipo": "KUBO I+D",
+              "puesto": "PRIMER LUGAR",
+              "pais": "ARGENTINA",
+              "reto": "MANEJO ECOLÓGICO DE RESIDUOS DE PODA Y BIOMASA VEGETAL URBANA",
+              "video_url": "https://youtu.be/15iVMqt_tuw",
+              "fuente": "research/sirli/winners.jsonl"
+            },
+            {
+              "year": 2026,
+              "equipo": "NEXORA",
+              "puesto": "PRIMER LUGAR",
+              "pais": "BOLIVIA",
+              "reto": "MANEJO ECOLÓGICO DE RESIDUOS DE PODA Y BIOMASA VEGETAL URBANA",
+              "video_url": "https://youtu.be/6i4-kjI4QWs",
+              "fuente": "research/sirli/winners.jsonl"
+            }
+          ],
+          "evidencia_grafo": [
+            {
+              "dato": "Desafío: Residuos de poda y biomasa vegetal urbana",
+              "fuente": "ganadores_latam.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "reto": {
+        "id": "DESAFIO_05",
+        "title": "Monitoreo inteligente e infraestructura verde en reservorios pluviales",
+        "description": "Reto del comité sobre Monitoreo inteligente e infraestructura verde en reservorios pluviales. Sector declarado: riesgo hÃ­drico.",
+        "ods_ids": []
+      },
+      "certamen": "latam",
+      "categoria": "innovacion",
+      "justificacion_categoria": "El enunciado apunta a una solucion tecnica o de innovacion.",
+      "soluciones": [
+        {
+          "id": "ruta-exploratoria",
+          "titulo": "Hipótesis de solución para Monitoreo inteligente e infraestructura verde en…",
+          "concepto": "No hay un caso ganador comparable en el corpus. La ruta se plantea como hipótesis: definir el proceso físico mínimo que resuelve «Monitoreo inteligente e infraestructura verde en reservorios pluviales», construir un prototipo de banco con recursos locales y medirlo con el beneficiario antes de escalar. El jurado evalúa método y evidencia, no promesas.",
+          "por_que_aplica": "El reto pide: Reto del comité sobre Monitoreo inteligente e infraestructura verde en reservorios pluviales. Sector declarado: riesgo hÃ­drico. Sin precedente directo, el equipo debe levantar evidencia primaria.",
+          "etiqueta": "exploratoria",
+          "cadena_razonamiento": {
+            "problema": "Reto del comité sobre Monitoreo inteligente e infraestructura verde en reservorios pluviales. Sector declarado: riesgo hÃ­drico.",
+            "causa_raiz": "Por validar con el beneficiario.",
+            "insight": "Sin precedente en el corpus de ganadores.",
+            "solucion": "Hipótesis a validar.",
+            "metrica": "Por definir.",
+            "fuente": "research/challenges.json"
+          },
+          "precedentes": [],
+          "recursos": [
+            "Estructura"
+          ],
+          "ventana": {
+            "duracion": "28 h",
+            "plan": [
+              {
+                "tramo": "0-2 h",
+                "actividad": "Leer el reto y fijar beneficiario, restricción y métrica"
+              },
+              {
+                "tramo": "2-6 h",
+                "actividad": "Arquitectura modular, BOM y plan de validación"
+              },
+              {
+                "tramo": "6-16 h",
+                "actividad": "Prototipo y prueba de concepto"
+              },
+              {
+                "tramo": "16-21 h",
+                "actividad": "Medición, costo unitario y replicabilidad"
+              },
+              {
+                "tramo": "21-25 h",
+                "actividad": "Pautado, canvas y video de 120 s"
+              },
+              {
+                "tramo": "25-28 h",
+                "actividad": "Checklist SIRLI y entrega"
+              }
+            ]
+          },
+          "impacto": [],
+          "rubrica": [
+            {
+              "criterio": "Grado de Innovación",
+              "puntos": 30
+            },
+            {
+              "criterio": "Impacto Positivo en la Sociedad",
+              "puntos": 20
+            }
+          ],
+          "riesgo": "Bandera: sin precedente. Condición que la resuelve: conseguir evidencia primaria; no presentar como validado.",
+          "pitch": "Hipótesis en validación: no usar cifras hasta medir el piloto.",
+          "precedentes_sirli": [
+            {
+              "year": 2026,
+              "equipo": "PET EGC UNIJUÍ",
+              "puesto": "PRIMER LUGAR",
+              "pais": "BRASIL",
+              "reto": "MONITOREO INTELIGENTE E INFRAESTRUCTURA VERDE EN RESERVORIOS PLUVIALES",
+              "video_url": "https://youtu.be/r66EUfqq9xY?is=RDOd0KitDOpusa8r",
+              "fuente": "research/sirli/winners.jsonl"
+            },
+            {
+              "year": 2026,
+              "equipo": "FRANCISQUITOS",
+              "puesto": "PRIMER LUGAR",
+              "pais": "EL SALVADOR",
+              "reto": "MONITOREO INTELIGENTE E INFRAESTRUCTURA VERDE EN RESERVORIOS PLUVIALES",
+              "video_url": "https://youtu.be/L0GKGuBQbVY?si=1a_dN7LDzRXva7Vt",
+              "fuente": "research/sirli/winners.jsonl"
+            },
+            {
+              "year": 2026,
+              "equipo": "LA MURALLA",
+              "puesto": "PRIMER LUGAR",
+              "pais": "ARGENTINA",
+              "reto": "MONITOREO INTELIGENTE E INFRAESTRUCTURA VERDE EN RESERVORIOS PLUVIALES",
+              "video_url": "https://youtu.be/AyNXAXWWLxU",
+              "fuente": "research/sirli/winners.jsonl"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "reto": {
+        "id": "DESAFIO_06",
+        "title": "RemociÃ³n y extracciÃ³n de barro en viviendas anegadas",
+        "description": "Reto del comité sobre RemociÃ³n y extracciÃ³n de barro en viviendas anegadas. Sector declarado: post-emergencia.",
+        "ods_ids": []
+      },
+      "certamen": "latam",
+      "categoria": "innovacion",
+      "justificacion_categoria": "El enunciado apunta a una solucion tecnica o de innovacion.",
+      "soluciones": [
+        {
+          "id": "ruta-exploratoria",
+          "titulo": "Hipótesis de solución para RemociÃ³n y extracciÃ³n de barro en viviendas anegadas",
+          "concepto": "No hay un caso ganador comparable en el corpus. La ruta se plantea como hipótesis: definir el proceso físico mínimo que resuelve «RemociÃ³n y extracciÃ³n de barro en viviendas anegadas», construir un prototipo de banco con recursos locales y medirlo con el beneficiario antes de escalar. El jurado evalúa método y evidencia, no promesas.",
+          "por_que_aplica": "El reto pide: Reto del comité sobre RemociÃ³n y extracciÃ³n de barro en viviendas anegadas. Sector declarado: post-emergencia. Sin precedente directo, el equipo debe levantar evidencia primaria.",
+          "etiqueta": "exploratoria",
+          "cadena_razonamiento": {
+            "problema": "Reto del comité sobre RemociÃ³n y extracciÃ³n de barro en viviendas anegadas. Sector declarado: post-emergencia.",
+            "causa_raiz": "Por validar con el beneficiario.",
+            "insight": "Sin precedente en el corpus de ganadores.",
+            "solucion": "Hipótesis a validar.",
+            "metrica": "Por definir.",
+            "fuente": "research/challenges.json"
+          },
+          "precedentes": [],
+          "recursos": [],
+          "ventana": {
+            "duracion": "28 h",
+            "plan": [
+              {
+                "tramo": "0-2 h",
+                "actividad": "Leer el reto y fijar beneficiario, restricción y métrica"
+              },
+              {
+                "tramo": "2-6 h",
+                "actividad": "Arquitectura modular, BOM y plan de validación"
+              },
+              {
+                "tramo": "6-16 h",
+                "actividad": "Prototipo y prueba de concepto"
+              },
+              {
+                "tramo": "16-21 h",
+                "actividad": "Medición, costo unitario y replicabilidad"
+              },
+              {
+                "tramo": "21-25 h",
+                "actividad": "Pautado, canvas y video de 120 s"
+              },
+              {
+                "tramo": "25-28 h",
+                "actividad": "Checklist SIRLI y entrega"
+              }
+            ]
+          },
+          "impacto": [],
+          "rubrica": [
+            {
+              "criterio": "Grado de Innovación",
+              "puntos": 30
+            },
+            {
+              "criterio": "Impacto Positivo en la Sociedad",
+              "puntos": 20
+            }
+          ],
+          "riesgo": "Bandera: sin precedente. Condición que la resuelve: conseguir evidencia primaria; no presentar como validado.",
+          "pitch": "Hipótesis en validación: no usar cifras hasta medir el piloto.",
+          "precedentes_sirli": [
+            {
+              "year": 2026,
+              "equipo": "HOOKE",
+              "puesto": "PRIMER LUGAR",
+              "pais": "CHILE",
+              "reto": "OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA",
+              "video_url": "https://youtu.be/WoZ8AfM-Rio?si=_eqm2SZcxYB8v-U8",
+              "fuente": "research/sirli/winners.jsonl"
+            },
+            {
+              "year": 2026,
+              "equipo": "THE BUBBLES",
+              "puesto": "PRIMER LUGAR",
+              "pais": "PARAGUAY",
+              "reto": "OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA",
+              "video_url": "https://youtu.be/o3uaLK96Z8k",
+              "fuente": "research/sirli/winners.jsonl"
+            },
+            {
+              "year": 2026,
+              "equipo": "META-INNOVA",
+              "puesto": "PRIMER LUGAR",
+              "pais": "VENEZUELA",
+              "reto": "OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA",
+              "video_url": "https://youtu.be/FF4IDxo4Tbo",
+              "fuente": "research/sirli/winners.jsonl"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "reto": {
+        "id": "DESAFIO_07",
+        "title": "ReutilizaciÃ³n de aceite domÃ©stico",
+        "description": "Reto del comité sobre ReutilizaciÃ³n de aceite domÃ©stico. Sector declarado: aceite de cocina.",
+        "ods_ids": []
+      },
+      "certamen": "latam",
+      "categoria": "innovacion",
+      "justificacion_categoria": "El enunciado apunta a una solucion tecnica o de innovacion.",
+      "soluciones": [
+        {
+          "id": "ruta-exploratoria",
+          "titulo": "Hipótesis de solución para ReutilizaciÃ³n de aceite domÃ©stico",
+          "concepto": "No hay un caso ganador comparable en el corpus. La ruta se plantea como hipótesis: definir el proceso físico mínimo que resuelve «ReutilizaciÃ³n de aceite domÃ©stico», construir un prototipo de banco con recursos locales y medirlo con el beneficiario antes de escalar. El jurado evalúa método y evidencia, no promesas.",
+          "por_que_aplica": "El reto pide: Reto del comité sobre ReutilizaciÃ³n de aceite domÃ©stico. Sector declarado: aceite de cocina. Sin precedente directo, el equipo debe levantar evidencia primaria.",
+          "etiqueta": "exploratoria",
+          "cadena_razonamiento": {
+            "problema": "Reto del comité sobre ReutilizaciÃ³n de aceite domÃ©stico. Sector declarado: aceite de cocina.",
+            "causa_raiz": "Por validar con el beneficiario.",
+            "insight": "Sin precedente en el corpus de ganadores.",
+            "solucion": "Hipótesis a validar.",
+            "metrica": "Por definir.",
+            "fuente": "research/challenges.json"
+          },
+          "precedentes": [],
+          "recursos": [],
+          "ventana": {
+            "duracion": "28 h",
+            "plan": [
+              {
+                "tramo": "0-2 h",
+                "actividad": "Leer el reto y fijar beneficiario, restricción y métrica"
+              },
+              {
+                "tramo": "2-6 h",
+                "actividad": "Arquitectura modular, BOM y plan de validación"
+              },
+              {
+                "tramo": "6-16 h",
+                "actividad": "Prototipo y prueba de concepto"
+              },
+              {
+                "tramo": "16-21 h",
+                "actividad": "Medición, costo unitario y replicabilidad"
+              },
+              {
+                "tramo": "21-25 h",
+                "actividad": "Pautado, canvas y video de 120 s"
+              },
+              {
+                "tramo": "25-28 h",
+                "actividad": "Checklist SIRLI y entrega"
+              }
+            ]
+          },
+          "impacto": [],
+          "rubrica": [
+            {
+              "criterio": "Grado de Innovación",
+              "puntos": 30
+            },
+            {
+              "criterio": "Impacto Positivo en la Sociedad",
+              "puntos": 20
+            }
+          ],
+          "riesgo": "Bandera: sin precedente. Condición que la resuelve: conseguir evidencia primaria; no presentar como validado.",
+          "pitch": "Hipótesis en validación: no usar cifras hasta medir el piloto."
+        }
+      ]
+    },
+    {
+      "reto": {
+        "id": "DESAFIO_08",
+        "title": "Desechos de basura verde (residuos fotovoltaicos)",
+        "description": "Reto del comité sobre Desechos de basura verde (residuos fotovoltaicos). Sector declarado: paneles solares retirados.",
+        "ods_ids": []
+      },
+      "certamen": "latam",
+      "categoria": "innovacion",
+      "justificacion_categoria": "El enunciado apunta a una solucion tecnica o de innovacion.",
+      "soluciones": [
+        {
+          "id": "ruta-1",
+          "titulo": "Paneles constructivos de Tetra Pak aplicado a Desechos de basura verde (residuos fotovoltaicos)",
+          "concepto": "Paneles constructivos de Tetra Pak (2025). Problema documentado: Aprovechamiento de Tetra Pak como pasivo ambiental de gran volumen (Desafío 01). Solución del caso: Paneles constructivos modulares sismorresistentes fabricados con Tetra Pak revalorizado, con ruta de recolección inclusiva vinculada a la manufactura. Principio transferible: Evitar el reciclaje artesanal de bajo valor agregado y montar una ruta de procesamiento industrializable que explote las propiedades térmicas, acústicas e impermeables….",
+          "por_que_aplica": "El reto pide: Reto del comité sobre Desechos de basura verde (residuos fotovoltaicos). Sector declarado: paneles solares retirados. El caso Paneles constructivos de Tetra Pak (2025) trabajó un núcleo equivalente: Aprovechamiento de Tetra Pak como pasivo ambiental de gran volumen (Desafío 01). La ruta reutiliza ese diagnóstico; no copia el producto.",
+          "etiqueta": "precedente",
+          "cadena_razonamiento": {
+            "problema": "Aprovechamiento de Tetra Pak como pasivo ambiental de gran volumen (Desafío 01).",
+            "causa_raiz": "No documentado en la fuente",
+            "insight": "Evitar el reciclaje artesanal de bajo valor agregado y montar una ruta de procesamiento industrializable que explote las propiedades térmicas, acústicas e impermeables del compuesto multicapa de celulosa, polietileno y aluminio.",
+            "solucion": "Paneles constructivos modulares sismorresistentes fabricados con Tetra Pak revalorizado, con ruta de recolección inclusiva vinculada a la manufactura.",
+            "metrica": "No documentado en la fuente",
+            "fuente": "knowledge/winners_latam.md"
+          },
+          "precedentes": [
+            {
+              "year": 2025,
+              "equipo": "Mentes Volcánicas (UNI-RUPAP)",
+              "proyecto": "Paneles constructivos de Tetra Pak",
+              "puesto": "1er lugar internacional Impacto Social y 1er lugar nacional",
+              "video_url": "https://www.youtube.com/watch?v=_JSUKR1bPnE",
+              "fuente": "knowledge/winners_latam.md"
+            }
+          ],
+          "recursos": [
+            "Panel solar",
+            "Tetra Pak reciclado"
+          ],
+          "ventana": {
+            "duracion": "28 h",
+            "plan": [
+              {
+                "tramo": "0-2 h",
+                "actividad": "Leer el reto y fijar beneficiario, restricción y métrica"
+              },
+              {
+                "tramo": "2-6 h",
+                "actividad": "Arquitectura modular, BOM y plan de validación"
+              },
+              {
+                "tramo": "6-16 h",
+                "actividad": "Prototipo y prueba de concepto"
+              },
+              {
+                "tramo": "16-21 h",
+                "actividad": "Medición, costo unitario y replicabilidad"
+              },
+              {
+                "tramo": "21-25 h",
+                "actividad": "Pautado, canvas y video de 120 s"
+              },
+              {
+                "tramo": "25-28 h",
+                "actividad": "Checklist SIRLI y entrega"
+              }
+            ]
+          },
+          "impacto": [],
+          "rubrica": [
+            {
+              "criterio": "Grado de Innovación",
+              "puntos": 30
+            },
+            {
+              "criterio": "Impacto Positivo en la Sociedad",
+              "puntos": 20
+            }
+          ],
+          "riesgo": "Bandera: la métrica no se mide en el prototipo. Condición que la resuelve: definir instrumento y unidad antes de la hora 14.",
+          "pitch": "Para este reto ya existe un caso que funcionó: Paneles constructivos de Tetra Pak (2025, 1er lugar internacional Impacto Social…). Se reutiliza su mecanismo: Paneles constructivos modulares sismorresistentes fabricados con Tetra Pak revalorizado, con ruta de…",
+          "precedentes_sirli": [
+            {
+              "year": 2026,
+              "equipo": "PLAN ZERO FIT",
+              "puesto": "PRIMER LUGAR",
+              "pais": "BOLIVIA",
+              "reto": "DESECHOS DE BASURA VERDE",
+              "video_url": "https://youtu.be/wjVf4Y0BWOc?si=gD1Zu_WK0w8XcIDL",
+              "fuente": "research/sirli/winners.jsonl"
+            },
+            {
+              "year": 2026,
+              "equipo": "CORTOCIRCUITADOS",
+              "puesto": "PRIMER LUGAR",
+              "pais": "ARGENTINA",
+              "reto": "DESECHOS DE BASURA VERDE",
+              "video_url": "https://youtu.be/D_9UHR0cgv4",
+              "fuente": "research/sirli/winners.jsonl"
+            },
+            {
+              "year": 2026,
+              "equipo": "DELTA S",
+              "puesto": "PRIMER LUGAR",
+              "pais": "ARGENTINA",
+              "reto": "DESECHOS DE BASURA VERDE",
+              "video_url": "https://www.youtube.com/watch?v=snxzhXaRsjo",
+              "fuente": "research/sirli/winners.jsonl"
+            }
+          ]
+        },
+        {
+          "id": "ruta-2",
+          "titulo": "BottleLife aplicado a Desechos de basura verde (residuos fotovoltaicos)",
+          "concepto": "BottleLife (2017). Problema documentado: Reutilización de envases plásticos como problema ambiental con componente de desarrollo social. Solución del caso: Reutilización estructural de envases plásticos para fines de construcción y desarrollo social.",
+          "por_que_aplica": "El reto pide: Reto del comité sobre Desechos de basura verde (residuos fotovoltaicos). Sector declarado: paneles solares retirados. El caso BottleLife (2017) trabajó un núcleo equivalente: Reutilización de envases plásticos como problema ambiental con componente de desarrollo social. La ruta reutiliza ese diagnóstico; no copia el producto.",
+          "etiqueta": "precedente",
+          "cadena_razonamiento": {
+            "problema": "Reutilización de envases plásticos como problema ambiental con componente de desarrollo social.",
+            "causa_raiz": "No documentado en la fuente",
+            "insight": "No documentado en la fuente",
+            "solucion": "Reutilización estructural de envases plásticos para fines de construcción y desarrollo social.",
+            "metrica": "No documentado en la fuente",
+            "fuente": "knowledge/winners_latam.md"
+          },
+          "precedentes": [
+            {
+              "year": 2017,
+              "equipo": "BottleLife (Montevideo, Uruguay)",
+              "proyecto": "BottleLife",
+              "puesto": "1er lugar internacional Impacto Social",
+              "video_url": "https://www.youtube.com/watch?v=yhVE1ZRDQZk",
+              "fuente": "knowledge/winners_latam.md"
+            }
+          ],
+          "recursos": [
+            "Panel solar",
+            "Estructura"
+          ],
+          "ventana": {
+            "duracion": "28 h",
+            "plan": [
+              {
+                "tramo": "0-2 h",
+                "actividad": "Leer el reto y fijar beneficiario, restricción y métrica"
+              },
+              {
+                "tramo": "2-6 h",
+                "actividad": "Arquitectura modular, BOM y plan de validación"
+              },
+              {
+                "tramo": "6-16 h",
+                "actividad": "Prototipo y prueba de concepto"
+              },
+              {
+                "tramo": "16-21 h",
+                "actividad": "Medición, costo unitario y replicabilidad"
+              },
+              {
+                "tramo": "21-25 h",
+                "actividad": "Pautado, canvas y video de 120 s"
+              },
+              {
+                "tramo": "25-28 h",
+                "actividad": "Checklist SIRLI y entrega"
+              }
+            ]
+          },
+          "impacto": [],
+          "rubrica": [
+            {
+              "criterio": "Grado de Innovación",
+              "puntos": 30
+            },
+            {
+              "criterio": "Impacto Positivo en la Sociedad",
+              "puntos": 20
+            }
+          ],
+          "riesgo": "Bandera: la métrica no se mide en el prototipo. Condición que la resuelve: definir instrumento y unidad antes de la hora 14.",
+          "pitch": "Para este reto ya existe un caso que funcionó: BottleLife (2017, 1er lugar internacional Impacto Social). Se reutiliza su mecanismo: Reutilización estructural de envases plásticos para fines de construcción y desarrollo social.",
+          "precedentes_sirli": [
+            {
+              "year": 2026,
+              "equipo": "PLAN ZERO FIT",
+              "puesto": "PRIMER LUGAR",
+              "pais": "BOLIVIA",
+              "reto": "DESECHOS DE BASURA VERDE",
+              "video_url": "https://youtu.be/wjVf4Y0BWOc?si=gD1Zu_WK0w8XcIDL",
+              "fuente": "research/sirli/winners.jsonl"
+            },
+            {
+              "year": 2026,
+              "equipo": "CORTOCIRCUITADOS",
+              "puesto": "PRIMER LUGAR",
+              "pais": "ARGENTINA",
+              "reto": "DESECHOS DE BASURA VERDE",
+              "video_url": "https://youtu.be/D_9UHR0cgv4",
+              "fuente": "research/sirli/winners.jsonl"
+            },
+            {
+              "year": 2026,
+              "equipo": "DELTA S",
+              "puesto": "PRIMER LUGAR",
+              "pais": "ARGENTINA",
+              "reto": "DESECHOS DE BASURA VERDE",
+              "video_url": "https://www.youtube.com/watch?v=snxzhXaRsjo",
+              "fuente": "research/sirli/winners.jsonl"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "reto": {
+        "id": "DESAFIO_09",
+        "title": "OptimizaciÃ³n y priorizaciÃ³n de recursos y esfuerzos en la post-emergencia",
+        "description": "Reto del comité sobre OptimizaciÃ³n y priorizaciÃ³n de recursos y esfuerzos en la post-emergencia. Sector declarado: coordinaciÃ³n de respuesta.",
+        "ods_ids": []
+      },
+      "certamen": "latam",
+      "categoria": "innovacion",
+      "justificacion_categoria": "El enunciado apunta a una solucion tecnica o de innovacion.",
+      "soluciones": [
+        {
+          "id": "ruta-exploratoria",
+          "titulo": "Hipótesis de solución para OptimizaciÃ³n y priorizaciÃ³n de recursos y esfuerzos en la…",
+          "concepto": "No hay un caso ganador comparable en el corpus. La ruta se plantea como hipótesis: definir el proceso físico mínimo que resuelve «OptimizaciÃ³n y priorizaciÃ³n de recursos y esfuerzos en la post-emergencia», construir un prototipo de banco con recursos locales y medirlo con el beneficiario antes de escalar. El jurado evalúa método y evidencia, no promesas.",
+          "por_que_aplica": "El reto pide: Reto del comité sobre OptimizaciÃ³n y priorizaciÃ³n de recursos y esfuerzos en la post-emergencia. Sector declarado: coordinaciÃ³n de respuesta. Sin precedente directo, el equipo debe levantar evidencia primaria.",
+          "etiqueta": "exploratoria",
+          "cadena_razonamiento": {
+            "problema": "Reto del comité sobre OptimizaciÃ³n y priorizaciÃ³n de recursos y esfuerzos en la post-emergencia. Sector declarado: coordinaciÃ³n de respuesta.",
+            "causa_raiz": "Por validar con el beneficiario.",
+            "insight": "Sin precedente en el corpus de ganadores.",
+            "solucion": "Hipótesis a validar.",
+            "metrica": "Por definir.",
+            "fuente": "research/challenges.json"
+          },
+          "precedentes": [],
+          "recursos": [],
+          "ventana": {
+            "duracion": "28 h",
+            "plan": [
+              {
+                "tramo": "0-2 h",
+                "actividad": "Leer el reto y fijar beneficiario, restricción y métrica"
+              },
+              {
+                "tramo": "2-6 h",
+                "actividad": "Arquitectura modular, BOM y plan de validación"
+              },
+              {
+                "tramo": "6-16 h",
+                "actividad": "Prototipo y prueba de concepto"
+              },
+              {
+                "tramo": "16-21 h",
+                "actividad": "Medición, costo unitario y replicabilidad"
+              },
+              {
+                "tramo": "21-25 h",
+                "actividad": "Pautado, canvas y video de 120 s"
+              },
+              {
+                "tramo": "25-28 h",
+                "actividad": "Checklist SIRLI y entrega"
+              }
+            ]
+          },
+          "impacto": [],
+          "rubrica": [
+            {
+              "criterio": "Grado de Innovación",
+              "puntos": 30
+            },
+            {
+              "criterio": "Impacto Positivo en la Sociedad",
+              "puntos": 20
+            }
+          ],
+          "riesgo": "Bandera: sin precedente. Condición que la resuelve: conseguir evidencia primaria; no presentar como validado.",
+          "pitch": "Hipótesis en validación: no usar cifras hasta medir el piloto.",
+          "precedentes_sirli": [
+            {
+              "year": 2026,
+              "equipo": "HOOKE",
+              "puesto": "PRIMER LUGAR",
+              "pais": "CHILE",
+              "reto": "OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA",
+              "video_url": "https://youtu.be/WoZ8AfM-Rio?si=_eqm2SZcxYB8v-U8",
+              "fuente": "research/sirli/winners.jsonl"
+            },
+            {
+              "year": 2026,
+              "equipo": "THE BUBBLES",
+              "puesto": "PRIMER LUGAR",
+              "pais": "PARAGUAY",
+              "reto": "OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA",
+              "video_url": "https://youtu.be/o3uaLK96Z8k",
+              "fuente": "research/sirli/winners.jsonl"
+            },
+            {
+              "year": 2026,
+              "equipo": "META-INNOVA",
+              "puesto": "PRIMER LUGAR",
+              "pais": "VENEZUELA",
+              "reto": "OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA",
+              "video_url": "https://youtu.be/FF4IDxo4Tbo",
+              "fuente": "research/sirli/winners.jsonl"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

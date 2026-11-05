@@ -1,0 +1,47 @@
+{
+  "id": "DESAFIO_09",
+  "titulo": "Restitución de la actividad diaria e infraestructura: casi con o sin protocolo post-creciente",
+  "certamen": "latam",
+  "categoria_preliminar": null,
+  "estado": "borrador_para_curar",
+  "fuente_completa": "../dossier_latam_2026.md",
+  "cadena_resumen": {
+    "sintoma": "después de la creciente cada barrio decide prioridades por la puerta de entrada",
+    "causa_raiz": "no hay ficha única ni prioridad entre viviendas: cada operador toma el reto en su orden",
+    "causa_de_la_causa": "sin ficha estandarizada offline cada diagnóstico queda amarrado al cuaderno del operador"
+  },
+  "nomina_resumen": {
+    "jugador": "operador de barrio que llena la ficha en cada casa",
+    "canal": "ficha de 2 min con 6 campos offline por celular y sabana impresa con 1 guía por cada 20 viviendas",
+    "nodo": "cuadra como unidad de registro y el tablero 3 colores en la sede: verdes, ámbar, rojo",
+    "nota": "resumen de draft; texto completo en ../dossier_latam_2026.md"
+  },
+  "solucion_a": {
+    "opcion": "01",
+    "nombre": "Tablero de Prioridades",
+    "mecanismo": "dato + alguien que decide (familia C), offline primero: ficha en el celular y sincronización posterior",
+    "que_es": "ficha de 2 min con 6 campos indispensable de internet; tablero 3 colores con orden de prioridad entre viviendas",
+    "costo_estimado_usd": 30,
+    "unidad_costo": "USD por tablero",
+    "metrica_resultado": "decisión de prioridad por vivienda en <15 min y ≥90% de la cuadra registrada en ≤2 h",
+    "ticket_validacion": null,
+    "costo_ticket_usd": null,
+    "nota": "texto completo en ../dossier_latam_2026.md"
+  },
+  "solucion_b": {
+    "opcion": "02",
+    "nombre": "Ronda de Guías de Barrio",
+    "mecanismo_distinto_a": "no es dato digital: 1 guía impresa por cada 20 viviendas que la ronda busca puerta por puerta",
+    "que_es": "guía física con las 6 preguntas y la fila del barro de esa cuadra; 1 guía por 20 viviendas en 45 min",
+    "costo_estimado_usd": 5,
+    "unidad_costo": "USD por guía",
+    "metrica_resultado": "20 puertas visitadas en 45 min con la misma ficha",
+    "nota": "texto completo en ../dossier_latam_2026.md"
+  },
+  "exploracion_sin_intervenir": "Acompañar una ronda post-creciente en 1 cuadra y registrar qué pregunta se hace primero en cada puerta y qué queda sin respuesta",
+  "anti_generico": "si se cambia 'desecho post-creciente en la cuadra' por 'fila con parche en el centro de salud' el tablero de prioridades por cuadra no sirve; amarrada al desborde de la cuadra",
+  "avisos": [
+    "ciudad pendiente: [CIUDAD] sin confirmar por el equipo",
+    "cifras y precedentes del corpus aún sin cruzar con knowledge/ERRATAS.md"
+  ]
+}

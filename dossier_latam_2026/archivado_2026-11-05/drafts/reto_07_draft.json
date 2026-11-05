@@ -1,0 +1,43 @@
+{
+  "id": "DESAFIO_07",
+  "titulo": "Reutilización de aceite doméstico",
+  "certamen": "latam",
+  "categoria_preliminar": null,
+  "estado": "borrador_para_curar",
+  "fuente_completa": "../dossier_latam_2026.md",
+  "cadena_resumen": "síntoma: el aceite doméstico usado va al desagüe → causa raíz: no hay reto cómodo de entrega ni valor de vuelta para el vecino → causa de la causa: el punto de canje está lejos o no existe",
+  "nomina_resumen": {
+    "jugador": "vecino que cocina con aceite",
+    "canal": "bodega de barrio como punto de canje",
+    "nodo": "bidón con ticket y ruta de retiro hacia el jabón",
+    "nota": "resumen de draft; texto completo en ../dossier_latam_2026.md"
+  },
+  "solucion_a": {
+    "opcion": "01",
+    "nombre": "OilLoop",
+    "mecanismo": "residuo + componente con especificación (familia B)",
+    "que_es": "bidón de entrega con ticket anotado por bodega: el vecino deja su aceite y canjea su ticket en la misma bodega de barrio",
+    "costo_estimado_usd": 34,
+    "unidad_costo": "por punto de canje",
+    "metrica_resultado": "reversión > 60% trimestral",
+    "nota": "texto completo define la regla de reversión"
+  },
+  "solucion_b": {
+    "opcion": "02",
+    "nombre": "Jabón de Barrio",
+    "mecanismo": "residuo con especificación de transformación casera segura (familia B insumo-clave, protección y ruta de despacho con EPP y supervisión adulta)",
+    "que_es": "taller casero con sosa cáustica, equipo de protección y supervisión adulta para convertir el aceite colectado en jabón de barrio",
+    "costo_estimado_usd": 20,
+    "unidad_costo": "por lote",
+    "metrica_resultado": null,
+    "nota": "métrica y costo de ticket en el texto completo"
+  },
+  "exploracion_sin_intervenir": "Pasar un día en 5 cocinas de barrio y registrar cuánto aceite usan por semana y dónde termina el envase",
+  "anti_generico": "si se cambia 'aceite doméstico' por 'aceite industrial' el punto de bodega no sigue la manzana; amarrado al caudal doméstico",
+  "avisos": [
+    "cifra de aceite 1:40000 es del set del comité, debe validarse antes de publicar",
+    "precedentes pendientes de cruce en research/sirli/winners.jsonl y knowledge/ERRATAS.md",
+    "valor de [CIUDAD] pendiente en brief.json",
+    "métrica y costo de ticket de la Opción 02 completar desde el texto completo"
+  ]
+}

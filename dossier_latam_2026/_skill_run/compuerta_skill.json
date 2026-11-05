@@ -1,0 +1,115 @@
+[
+  {
+    "reto_id": "DESAFIO_01",
+    "opcion_id": "ruta-1",
+    "estado": "RECHAZADA",
+    "motivos": [
+      "[MOTOR_SCHEMA] Ruta del motor incompleta para ficha rápida; faltan: pagador, ya_existe, costo. Completarla antes de aprobarla.",
+      "[FORBIDDEN · 1.2_actores_sin_nombre] «comunidades vulnerables» — Actor sin nombre propio (no firma ni paga)",
+      "[FORBIDDEN · 1.3_etiquetas_no_producto] «economia circular» — Etiqueta abstracta como núcleo del producto",
+      "[FORBIDDEN · 1.3_etiquetas_no_producto] «impacto social» — Etiqueta abstracta como núcleo del producto",
+      "[FORBIDDEN · 1.3_etiquetas_no_producto] «impacto social» — Etiqueta abstracta como núcleo del producto",
+      "[METRIC_UNIDAD] Métrica sin unidad física reconocida: «No documentado en la fuente». Debe usar quintales/litros/vatios/horas/personas/córdobas/USD/kg/toneladas/viviendas/familias/puestos/cooperativas u otro conteo concreto."
+    ]
+  },
+  {
+    "reto_id": "DESAFIO_02",
+    "opcion_id": "ruta-1",
+    "estado": "RECHAZADA",
+    "motivos": [
+      "[MOTOR_SCHEMA] Ruta del motor incompleta para ficha rápida; faltan: pagador, ya_existe, costo. Completarla antes de aprobarla.",
+      "[FORBIDDEN · 1.4_taller_servicio] «servicio de» — Taller/servicio/campaña como núcleo",
+      "[FORBIDDEN · 1.4_taller_servicio] «servicio de» — Taller/servicio/campaña como núcleo",
+      "[METRIC_UNIDAD] Métrica sin unidad física reconocida: «No documentado en la fuente». Debe usar quintales/litros/vatios/horas/personas/córdobas/USD/kg/toneladas/viviendas/familias/puestos/cooperativas u otro conteo concreto."
+    ]
+  },
+  {
+    "reto_id": "DESAFIO_03",
+    "opcion_id": "ruta-exploratoria",
+    "estado": "RECHAZADA",
+    "motivos": [
+      "[MOTOR_SCHEMA] Ruta del motor incompleta para ficha rápida; faltan: pagador, ya_existe, costo. Completarla antes de aprobarla.",
+      "[METRIC_UNIDAD] Métrica sin unidad física reconocida: «Por definir.». Debe usar quintales/litros/vatios/horas/personas/córdobas/USD/kg/toneladas/viviendas/familias/puestos/cooperativas u otro conteo concreto."
+    ]
+  },
+  {
+    "reto_id": "DESAFIO_04",
+    "opcion_id": "ruta-1",
+    "estado": "RECHAZADA",
+    "motivos": [
+      "[MOTOR_SCHEMA] Ruta del motor incompleta para ficha rápida; faltan: pagador, ya_existe, costo. Completarla antes de aprobarla.",
+      "[FORBIDDEN · 1.3_etiquetas_no_producto] «impacto social» — Etiqueta abstracta como núcleo del producto",
+      "[FORBIDDEN · 1.3_etiquetas_no_producto] «impacto social» — Etiqueta abstracta como núcleo del producto",
+      "[METRIC_UNIDAD] Métrica sin unidad física reconocida: «No documentado en la fuente». Debe usar quintales/litros/vatios/horas/personas/córdobas/USD/kg/toneladas/viviendas/familias/puestos/cooperativas u otro conteo concreto."
+    ]
+  },
+  {
+    "reto_id": "DESAFIO_04",
+    "opcion_id": "ruta-2",
+    "estado": "RECHAZADA",
+    "motivos": [
+      "[MOTOR_SCHEMA] Ruta del motor incompleta para ficha rápida; faltan: pagador, ya_existe, costo. Completarla antes de aprobarla.",
+      "[FORBIDDEN · 1.3_etiquetas_no_producto] «impacto social» — Etiqueta abstracta como núcleo del producto",
+      "[FORBIDDEN · 1.3_etiquetas_no_producto] «impacto social» — Etiqueta abstracta como núcleo del producto",
+      "[METRIC_UNIDAD] Métrica sin unidad física reconocida: «No documentado en la fuente». Debe usar quintales/litros/vatios/horas/personas/córdobas/USD/kg/toneladas/viviendas/familias/puestos/cooperativas u otro conteo concreto."
+    ]
+  },
+  {
+    "reto_id": "DESAFIO_05",
+    "opcion_id": "ruta-exploratoria",
+    "estado": "RECHAZADA",
+    "motivos": [
+      "[MOTOR_SCHEMA] Ruta del motor incompleta para ficha rápida; faltan: pagador, ya_existe, costo. Completarla antes de aprobarla.",
+      "[METRIC_UNIDAD] Métrica sin unidad física reconocida: «Por definir.». Debe usar quintales/litros/vatios/horas/personas/córdobas/USD/kg/toneladas/viviendas/familias/puestos/cooperativas u otro conteo concreto."
+    ]
+  },
+  {
+    "reto_id": "DESAFIO_06",
+    "opcion_id": "ruta-exploratoria",
+    "estado": "RECHAZADA",
+    "motivos": [
+      "[MOTOR_SCHEMA] Ruta del motor incompleta para ficha rápida; faltan: pagador, ya_existe, costo. Completarla antes de aprobarla.",
+      "[METRIC_UNIDAD] Métrica sin unidad física reconocida: «Por definir.». Debe usar quintales/litros/vatios/horas/personas/córdobas/USD/kg/toneladas/viviendas/familias/puestos/cooperativas u otro conteo concreto."
+    ]
+  },
+  {
+    "reto_id": "DESAFIO_07",
+    "opcion_id": "ruta-exploratoria",
+    "estado": "RECHAZADA",
+    "motivos": [
+      "[MOTOR_SCHEMA] Ruta del motor incompleta para ficha rápida; faltan: pagador, ya_existe, costo. Completarla antes de aprobarla.",
+      "[METRIC_UNIDAD] Métrica sin unidad física reconocida: «Por definir.». Debe usar quintales/litros/vatios/horas/personas/córdobas/USD/kg/toneladas/viviendas/familias/puestos/cooperativas u otro conteo concreto."
+    ]
+  },
+  {
+    "reto_id": "DESAFIO_08",
+    "opcion_id": "ruta-1",
+    "estado": "RECHAZADA",
+    "motivos": [
+      "[MOTOR_SCHEMA] Ruta del motor incompleta para ficha rápida; faltan: pagador, ya_existe, costo. Completarla antes de aprobarla.",
+      "[FORBIDDEN · 1.3_etiquetas_no_producto] «impacto social» — Etiqueta abstracta como núcleo del producto",
+      "[FORBIDDEN · 1.3_etiquetas_no_producto] «impacto social» — Etiqueta abstracta como núcleo del producto",
+      "[METRIC_UNIDAD] Métrica sin unidad física reconocida: «No documentado en la fuente». Debe usar quintales/litros/vatios/horas/personas/córdobas/USD/kg/toneladas/viviendas/familias/puestos/cooperativas u otro conteo concreto."
+    ]
+  },
+  {
+    "reto_id": "DESAFIO_08",
+    "opcion_id": "ruta-2",
+    "estado": "RECHAZADA",
+    "motivos": [
+      "[MOTOR_SCHEMA] Ruta del motor incompleta para ficha rápida; faltan: pagador, ya_existe, costo. Completarla antes de aprobarla.",
+      "[FORBIDDEN · 1.3_etiquetas_no_producto] «impacto social» — Etiqueta abstracta como núcleo del producto",
+      "[FORBIDDEN · 1.3_etiquetas_no_producto] «impacto social» — Etiqueta abstracta como núcleo del producto",
+      "[METRIC_UNIDAD] Métrica sin unidad física reconocida: «No documentado en la fuente». Debe usar quintales/litros/vatios/horas/personas/córdobas/USD/kg/toneladas/viviendas/familias/puestos/cooperativas u otro conteo concreto."
+    ]
+  },
+  {
+    "reto_id": "DESAFIO_09",
+    "opcion_id": "ruta-exploratoria",
+    "estado": "RECHAZADA",
+    "motivos": [
+      "[MOTOR_SCHEMA] Ruta del motor incompleta para ficha rápida; faltan: pagador, ya_existe, costo. Completarla antes de aprobarla.",
+      "[METRIC_UNIDAD] Métrica sin unidad física reconocida: «Por definir.». Debe usar quintales/litros/vatios/horas/personas/córdobas/USD/kg/toneladas/viviendas/familias/puestos/cooperativas u otro conteo concreto."
+    ]
+  }
+]

@@ -1,0 +1,43 @@
+{
+  "id": "DESAFIO_05",
+  "titulo": "Monitoreo inteligente e infraestructura verde en reservorios pluviales",
+  "certamen": "latam",
+  "categoria_preliminar": null,
+  "estado": "borrador_para_curar",
+  "fuente_completa": "../dossier_latam_2026.md",
+  "cadena_resumen": "síntoma: reservorios pluviales sin lectura de nivel ni cobertura verde → causa raíz: no hay instrumentación barata de nivel ni vegetación estructural instalada → causa de la causa: los reservorios se diseñan como tanques, no como zonas de gestión visible",
+  "nomina_resumen": {
+    "jugador": "vecino guardián del reservorio o la esquina",
+    "canal": "juntura que sube lectura a un registro compartido",
+    "nodo": "poste graduado o faja de vegetación junto a la cota",
+    "nota": "resumen de draft; texto completo en ../dossier_latam_2026.md"
+  },
+  "solucion_a": {
+    "opcion": "01",
+    "nombre": "Ojo de Cota",
+    "mecanismo": "objeto de siempre + instrumentación (familia A)",
+    "que_es": "poste graduado de aluminio instalado en el reservorio con fotografía desde el celular para registrar el nivel; el vecino guardián anota la cota y la app guarda la lectura",
+    "costo_estimado_usd": 22,
+    "unidad_costo": "por poste equipado",
+    "metrica_resultado": "diferencia de lectura entre 2 guardias < 5 cm",
+    "nota": "texto completo define el protocolo de lectura"
+  },
+  "solucion_b": {
+    "opcion": "02",
+    "nombre": "Freno Verde",
+    "mecanismo": "infraestructura verde con función hidrológica, distinta a la medición de la Opción 01",
+    "que_es": "faja de vetiver de 20 m² junto al barranco del reservorio y cuneta vegetada que frena el caudal que entra de aportes",
+    "costo_estimado_usd": 100,
+    "unidad_costo": "por faja instalada",
+    "sensor_complementario_usd": 22,
+    "metrica_resultado": null,
+    "nota": "métrica y costo de ticket en el texto completo"
+  },
+  "exploracion_sin_intervenir": "Registrar en 3 lluvias qué reservorios se llenan, cuánto tardan en bajar y si alguien al menos los vigila",
+  "anti_generico": "si se cambia 'reservorios pluviales' por 'tanques de agua potable' el protocolo de cota no aplica igual; amarrado al caudal",
+  "avisos": [
+    "precedentes pendientes de cruce en research/sirli/winners.jsonl y knowledge/ERRATAS.md",
+    "valor de [CIUDAD] pendiente en brief.json",
+    "métrica y costo de ticket de la Opción 02 completar desde el texto completo"
+  ]
+}

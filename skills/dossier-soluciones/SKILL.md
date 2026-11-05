@@ -376,6 +376,22 @@ Cambiar toda la propuesta por una observación parcial es cómo se pierden las b
 Antes de reescribir una solución, escribe: qué parte queda, qué parte cambia y por qué el
 cambio no rompe la escena que ya vendía.
 
+## Ley de rechazo total (anti-contaminación)
+
+Cuando el usuario recibe el PDF y **no le gusta nada** (rechazo total del dossier, no una
+corrección puntual):
+
+1. **Borrar todas las soluciones** del ciclo actual: JSON de salida, drafts y contenido
+   derivado salen del pipeline activo.
+2. **Archivar las baneadas solo si el usuario lo pidió** — y solo en el archivo de archivo
+   (`baneadas.json` con fecha y motivo). Si no lo pidió, se borran sin archivar.
+3. **Regenerar desde cero** con el motor y la compuerta, **sin leer archivos viejos**: nada
+   de `research/soluciones_actuales.json`, `contenido_final.py`, `soluciones.json` previos ni
+   drafts. Esa lectura es exactamente lo que contamina las soluciones nuevas con las viejas.
+4. El usuario manda: si pide otro enfoque, se cambia de enfoque, no se hace un re-skin.
+
+Corrección puntual (una opción, un costo) ≠ rechazo total: para eso aplica «Corregir con
+bisturí», de arriba. La ley solo se dispara con rechazo explícito del PDF completo.
 
 ## Anatomía de página
 
