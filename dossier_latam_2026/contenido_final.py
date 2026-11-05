@@ -279,124 +279,127 @@ CONTENIDO = {
     # ------------------------------------------------------------------ 03
     "03": {
         "categoria_porque": (
-            "El resultado se mide en floración y nidificación dentro de la ciudad, con una "
-            "comunidad que mantiene el espacio y recibe el beneficio."
+            "El resultado se mide en colonias vivas y frutos cuajados dentro de la ciudad: "
+            "el polinizador llega cuando alguien gana con tenerlo cerca."
         ),
         "ods": [
             ("ODS 15", "Vida de ecosistemas terrestres",
-             "Restaura floración y sitios de nidificación para polinizadores nativos en "
-             "suelo urbano ya construido."),
+             "Instala colonias de abejas nativas y cobertura florida en patios, huertos y "
+             "bordes urbanos, sin ampliar la frontera agrícola."),
             ("ODS 2", "Hambre cero",
-             "Aumenta el cuajado de fruto en huertos escolares y familiares sin ampliar la "
-             "frontera agrícola."),
-            ("ODS 11", "Ciudades y comunidades sostenibles",
-             "Integra el corredor en patios escolares y muros existentes con manejo vecinal."),
+             "Aumenta el cuajado de fruto en huertos familiares y escolares con polinización "
+             "local y miel de la misma caja."),
+            ("ODS 8", "Trabajo decente y crecimiento económico",
+             "La miel y la división de colonias dan ingreso al que cuida la caja; el vivero "
+             "vende la colonia y la semilla."),
         ],
         "insignias": [
             ("Small Grants Programme (GEF / PNUD)", "comunidad y ambiente"),
             ("Premio Latinoamérica Verde", "impacto ambiental medible"),
         ],
         "cadena": {
-            "problema": "Menos polinizadores nativos en la ciudad.",
-            "causa": ("El contrato de mantención paga corte y herbicida como criterio de "
-                      "calidad; el que corta no tiene motivo para esperar la floración."),
-            "insight": ("El jardín cambia cuando cambia el criterio de pago, no cuando se "
-                        "agrega un cartel."),
-            "metrica": ("Picos de floración por metro y celdas de nido ocupadas por temporada."),
+            "problema": "Menos polinizadores nativos y menos fruto cuajado en huertos urbanos.",
+            "causa": ("El paisaje es uniforme (césped cortado, suelo desnudo) y no hay una "
+                      "colonia cerca del huerto que polinice cuando abre la flor."),
+            "insight": ("El polinizador no se protege con un cartel ni con una certificación: "
+                        "se instala donde alguien gana miel y fruta con tenerlo."),
+            "metrica": ("Colonias vivas a los 6 meses y frutos cuajados por rama testigo "
+                        "frente a la rama sin caja."),
         },
-        "pitch": ("El que corta cobra por cortar; por eso no hay flores. La franja paga por "
-                  "floración y el bloque de nidos da casa a las abejas nativas. Mismo "
-                  "jardinero, mismo muro, otro criterio: flores contadas por los estudiantes."),
+        "pitch": ("La abeja nativa no se protege con un cartel: se instala en el patio. Una "
+                  "caja con colonia da miel, se divide al año y cuaja más fruta; la cobertura "
+                  "florida cubre el suelo y la trae de vuelta. El dueño gana miel y fruta: por "
+                  "eso la compra."),
         "analogias": [
-            (2025, "STEM Synergy (UAM-DIEM)", "Huertos verticales con recirculación hídrica",
-             "Diseñó un sistema modular de cultivo con riego eficiente y materiales reciclados.",
-             "Comparte la lógica de un módulo replicable que se instala en espacio ya construido."),
             (2023, "Nicarq Sinergy (UNI-RUSB)", "BioInnova",
              "Integró agua, saneamiento y producción en una unidad de resiliencia comunitaria.",
-             "Aporta la mirada de sistema: el corredor se juzga por el conjunto, no por una planta."),
+             "Aporta la mirada de sistema: la caja, la flor y el huerto se juzgan juntos."),
+            (2025, "STEM Synergy (UAM-DIEM)", "Huertos verticales con recirculación hídrica",
+             "Diseñó un sistema modular de cultivo con riego eficiente y materiales reciclados.",
+             "Comparte la lógica de un módulo que se instala en espacio ya construido."),
         ],
         "a": {
-            "nombre": "Franja que Florece",
-            "claim": "Se paga por floración, no por corte.",
+            "nombre": "Caja de Abejas Nativas",
+            "claim": "Una colonia en el patio: miel para la casa y más fruta en el árbol.",
             "que_es": (
-                "En una escuela con patio de cemento, el jardinero corta el pasto cada quince "
-                "días y cobra por corte; la barda queda limpia y sin una sola flor. La franja "
-                "cambia lo que se paga: un módulo de diez metros con especies nativas que "
-                "florecen en dos momentos del año, instalado contra la barda y mantenido por el "
-                "mismo jardinero, que ahora cobra por mantener la floración y no por arrasar. "
-                "La escuela pone el espacio y paga el módulo; el jardinero conserva el contrato "
-                "y gana un criterio que puede cumplir; el vivero vende los plantines. Cada mes, "
-                "los estudiantes cuentan flores y abejas en una ficha de dos columnas, y ese "
-                "conteo es lo que decide si el mantenimiento se pagó. No hace falta que nadie "
-                "certifique desde afuera: el que paga mira la ficha. Lo que existe es el jardín "
-                "ornamental, que cuesta lo mismo de mantener que el césped y no se cuenta, y el "
-                "cartel de «no cortar», que nadie fiscaliza. La diferencia es el criterio de pago."
+                "En el patio de una casa hay dos limoneros que dan flor cada año y casi ningún "
+                "limón. La familia culpa al suelo y al agua, pero el problema es que no hay "
+                "quién transporte el polen cuando la flor abre. La caja de abejas nativas "
+                "resuelve eso con un objeto: una colmena racional de madera, con su colonia de "
+                "abejas sin aguijón, que se cuelga bajo el alero y trabaja en un radio corto, "
+                "justo el del patio. La familia no necesita traje ni ahumador: abre la caja, "
+                "cosecha miel dos veces al año y, cuando la colonia crece, la divide y vende la "
+                "nueva. El vivero vende la caja con colonia y compra las divisiones; el dueño "
+                "del huerto gana miel, fruta y una colonia que se multiplica. Lo que existe es "
+                "el apiario de abeja europea, que exige equipo, humo y manejo, y el panal "
+                "silvestre que se saquea y se pierde. La diferencia es que esta caja cabe en un "
+                "patio y se paga sola con la miel."
             ),
             "como": [
-                "Se elige el borde de la barda y se marca el módulo de diez metros.",
-                "Se instalan plantines nativos de dos épocas de floración y se riegan al inicio.",
-                "El jardinero mantiene la franja y cobra contra la ficha de floración.",
-                "Los estudiantes cuentan flores y abejas cada mes; el conteo cierra el pago.",
+                "El vivero entrega la caja con la colonia y la cuelga en un lugar con sombra.",
+                "La familia revisa la entrada una vez por semana y repone el comedero al inicio.",
+                "A los seis meses cosecha miel y deja la reserva para la temporada seca.",
+                "Cuando la colonia crece, se divide y la nueva caja se vende o se queda en casa.",
             ],
-            "componentes": ["Plantines nativos (30)", "Sustrato", "Borde de corte",
-                            "Ficha de floración impresa", "Cartel del módulo", "Manguera de riego"],
-            "costo": "~USD 39 / módulo de 10 m (estimación propia, por cotizar)",
-            "metrica": "Picos de floración por metro y visitas de abejas contadas.",
+            "componentes": ["Caja racional de madera", "Colonia de abeja sin aguijón",
+                            "Trampa de entrada", "Comedero", "Soporte de colgado",
+                            "Guía de manejo de una hoja"],
+            "costo": "~USD 45 / caja con colonia (estimación propia, por cotizar)",
+            "metrica": "Colonias vivas a 6 meses y frutos cuajados por rama testigo.",
             "ya_existe": (
-                "El jardín ornamental, que se mantiene igual que el césped y no se cuenta, y el "
-                "cartel de «no cortar», que nadie fiscaliza. La diferencia: el pago depende de "
-                "un conteo que el propio cliente puede hacer."
+                "El apiario de abeja europea, que exige traje, humo y manejo, y el panal "
+                "silvestre que se saquea y se pierde. La diferencia: abeja nativa sin "
+                "aguijón, caja de patio y miel que paga la inversión."
             ),
             "paga": (
-                "La escuela o el conjunto paga el módulo y el mantenimiento; el jardinero cobra "
-                "por floración sostenida; el vivero vende los plantines y repone los que no "
-                "prenden. Sin donaciones: el módulo se compra y el contrato se renueva por año."
+                "La familia o el dueño del huerto compra la caja; el vivero la vende con "
+                "colonia y compra las divisiones; el colegio compra una para el huerto "
+                "escolar. Sin donaciones: la miel y la venta de divisiones devuelven el costo."
             ),
             "validar": (
-                "Que un módulo de 10 m sostenga dos picos de floración con el riego disponible. "
-                "Prueba: un módulo testigo durante una temporada seca."
+                "Que la colonia sobreviva la estación seca y que el cuajado suba frente a una "
+                "rama sin caja. Prueba: 10 cajas y 10 ramas testigo durante una floración."
             ),
         },
         "b": {
-            "nombre": "Bloque de Nidos",
-            "claim": "Una pieza de concreto que se vuelve casa de abejas nativas.",
+            "nombre": "Mezcla de Cobertura Florida",
+            "claim": "Un kilo de semilla cubre el suelo desnudo y devuelve las flores.",
             "que_es": (
-                "En el muro de una bodega hay abejas sin aguijón que entran y salen de un hueco "
-                "y nadie sabe cuántas son ni si están bien. El bloque de nidos es una pieza de "
-                "concreto con seis perforaciones de distinto diámetro, que se atornilla al muro "
-                "existente y ofrece celdas limpias para que las abejas nativas nidifiquen. No "
-                "necesita riego, no necesita jardín y no necesita que nadie la cuide: se "
-                "instala una vez y se revisa cada temporada. El municipio compra bloques y los "
-                "reparte entre escuelas y edificios públicos; el vivero los vende; el dueño del "
-                "muro no paga nada y gana polinizadores en su patio. La métrica es física: se "
-                "cuentan las celdas tapadas con barro, que es la señal de que hay cría dentro. "
-                "Lo que existe es el hotel de insectos de madera, que se pudre en dos lluvias y "
-                "queda de adorno, y el tronco hueco que se usa una vez y se bota. La diferencia "
-                "es que este bloque se cuenta, dura y se repone por unidad."
+                "Entre las hileras del huerto hay tierra pelada, y cada temporada el dueño "
+                "gasta en herbicida y en deshierbe para que no crezca nada. La mezcla de "
+                "cobertura cambia ese suelo por una alfombra de plantas nativas que florecen en "
+                "dos momentos del año: cubre la tierra, la protege del sol y de la lluvia, y "
+                "trae de vuelta a las abejas que ya viven en la cuadra. Se vende por kilo, como "
+                "cualquier semilla, y se siembra al voleo antes de la lluvia; no necesita "
+                "bandeja, ni riego permanente, ni que nadie la cuide. El vivero la mezcla y la "
+                "vende; el agricultor ahorra deshierbe y herbicida; la escuela la usa en el "
+                "huerto. Lo que existe es el herbicida, que deja el suelo pelado, y la semilla "
+                "de pasto, que se corta antes de florecer. La diferencia es que esta cobertura "
+                "se deja florecer, cubre el suelo y no compite con el cultivo."
             ),
             "como": [
-                "Se elige un muro orientado al sol de la mañana y se marcan los anclajes.",
-                "Se atornilla el bloque a la altura de un metro y se sella el borde.",
-                "Las abejas ocupan las perforaciones y las tapan con barro.",
-                "Cada temporada se cuenta las celdas tapadas y se repone el bloque dañado.",
+                "El vivero mezcla semilla nativa de porte bajo con dos épocas de floración.",
+                "El agricultor siega bajo y siembra al voleo antes de la lluvia.",
+                "La cobertura cierra el suelo y florece en la siguiente estación.",
+                "Se corta una vez al año, después de la semilla, para que vuelva sola.",
             ],
-            "componentes": ["Bloque de concreto perforado", "Tapa de barro",
-                            "Varilla de anclaje", "Tornillos y tarugos", "Sellador"],
-            "costo": "~USD 14 / bloque (estimación propia, por cotizar)",
-            "metrica": "Celdas de nido tapadas por bloque y por temporada.",
+            "componentes": ["Semilla nativa de cobertura (1 kg)", "Mezcla de dos floraciones",
+                            "Bolsa de papel", "Ficha de siembra", "Rodillo de contacto"],
+            "costo": "~USD 8 / kg (estimación propia, por cotizar)",
+            "metrica": "Metros cuadrados cubiertos y flores por metro en temporada.",
             "ya_existe": (
-                "El hotel de insectos de madera, que se pudre y queda de adorno, y el tronco "
-                "hueco de un solo uso. La diferencia: concreto que dura, celdas de tamaño "
-                "estudiado y un conteo que se puede repetir."
+                "El herbicida, que deja el suelo pelado, y la semilla de pasto, que se corta "
+                "antes de florecer. La diferencia: cubre sin química, se deja florecer y "
+                "vuelve sola al año siguiente."
             ),
             "paga": (
-                "El municipio compra bloques para escuelas y edificios públicos; el vivero los "
-                "vende con margen; el dueño del muro recibe el bloque instalado sin pagar y "
-                "gana polinizadores. Sin donaciones: cada bloque tiene comprador."
+                "El agricultor o la escuela compra el kilo; el vivero mezcla y vende; el "
+                "municipio compra para taludes y bordes de vereda. Sin donaciones: la semilla "
+                "se vende como cualquier insumo agrícola y ahorra deshierbe."
             ),
             "validar": (
-                "Qué diámetros ocupan las abejas locales y en cuánto tiempo. Prueba: 10 bloques "
-                "con tres diámetros, revisados cada 15 días por una temporada."
+                "Que la mezcla no compita con el cultivo y vuelva a florecer sin resiembra. "
+                "Prueba: dos parcelas testigo durante un ciclo completo."
             ),
         },
     },

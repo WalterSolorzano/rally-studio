@@ -251,20 +251,47 @@ explica con la lista de componentes, el pitch nombra algo que no está en el tex
 precedente cita el nombre de una solución anterior, o las insignias y los ODS hablan de un
 mecanismo que ya no está.
 
-**2. Si algo necesita red, no sirve en la emergencia.** El dossier se usa cuando no hay
-internet, ni señal, ni luz, ni batería. Por eso:
+**2. La red se juzga según el reto, no por reflejo.** La restricción de cero red aplica
+**solo cuando el reto la implica**: desastre, emergencia, comunidad sin cobertura, zona
+rural aislada, operación en el momento en que la antena se cae. Ahí sí: nada de QR, nube,
+SMS ni GPS. En un reto de acopio, horticultura, energía o residuos con mercado normal, una
+aplicación o un mensaje **sí valen** y no se descartan por prejuicio. Pregunta primero:
+«¿en este contexto hay red, luz y alguien que la use todos los días?»; si la respuesta es
+sí, la restricción no aplica.
+
+Donde sí aplica:
 
 - **Prohibido el QR y el formulario como producto.** Un QR es una puerta a una base de
   datos que no está; en un desastre la antena se cae primero. Un formulario no cambia nada
   físico: no es una solución.
-- **Prohibido depender de aplicación, SMS, nube, GPS o «el municipio lo sube».** El dato
-  viaja en el objeto, en papel o por radio.
-- **La lectura tiene que ser física y visible**: color, bandera, varilla, ficha, talón. Si
-  la única forma de saber algo es mirar una pantalla con saldo, no cuenta.
+- **Prohibido depender de red para el aviso crítico**: si la alarma solo existe en una
+  pantalla con saldo, no cuenta.
+- **La lectura tiene que ser física y visible**: color, bandera, varilla, ficha, talón.
 - **La energía se resuelve en el objeto**: pedal, flotador, contrapeso, batería con panel.
-  Nunca «se enchufa» ni «se carga en la casa».
 - **Nada de confiar en la memoria o la buena voluntad**: número único, copia, sello, doble
   registro. El control se puede reconstruir en una mesa.
+
+**3. La solución se compra por interés propio, no por conciencia.** Nadie paga por
+certificar, por cumplir una norma que puede evitar, ni por «concientizar». El comprador
+tiene que ganar algo suyo y medible: miel, fruta, agua, tiempo, plata, salud, menos
+deshierbe. Por eso quedan fuera como núcleo:
+
+- **Certificados, sellos y auditorías** como producto principal: el que puede evitarlos, los
+  evita; el que los compra solo gana si otro los exige.
+- **Campañas de sensibilización**, jornadas de limpieza y «compromiso ciudadano».
+- **Modelos que dependen de que el vecino sea buena gente**: si el flujo se rompe cuando
+  alguien actúa por su interés, el modelo está mal.
+
+Prueba rápida: escribe en una línea qué gana el que paga y qué pierde si no compra. Si la
+respuesta es «nada» o «ayuda al planeta», no hay venta y la idea no aguanta el jurado.
+
+## Corregir con bisturí, no con hacha
+
+Cuando una crítica señala un punto —un costo que no cuadra, un comprador que no existe, una
+dependencia que no aplica—, se corrige **ese punto** y se conserva la idea que funcionaba.
+Cambiar toda la propuesta por una observación parcial es cómo se pierden las buenas ideas.
+Antes de reescribir una solución, escribe: qué parte queda, qué parte cambia y por qué el
+cambio no rompe la escena que ya vendía.
 
 
 ## Anatomía de página
@@ -317,16 +344,19 @@ internet, ni señal, ni luz, ni batería. Por eso:
 13. **Coherencia interna, opción por opción**: cada componente de la lista aparece en el
     relato o en los pasos; el costo se explica por esa lista; la métrica se mide con lo que
     la solución instala; el pitch nombra la solución actual y no otra.
-14. **Cero red**: ninguna opción depende de QR, aplicación, SMS, nube, GPS ni de una base
-    de datos. La lectura es física y visible.
-15. **Sin nombres muertos**: ningún precedente, ODS, insignia o señal cita una solución de
+14. **Red según contexto**: si el reto es emergencia, desastre o comunidad sin cobertura,
+    ninguna opción depende de QR, aplicación, SMS, nube o GPS y la lectura es física. Si el
+    reto no lo implica, la herramienta digital se permite y no se penaliza.
+15. **Comprador con interés**: cada opción declara qué gana quien paga y qué pierde si no
+    compra. Sin certificados, sellos ni concientización como núcleo del modelo.
+16. **Sin nombres muertos**: ningún precedente, ODS, insignia o señal cita una solución de
     una versión anterior. Se busca el nombre viejo en todo el JSON antes de maquetar.
-16. **Precedentes honestos**: el `por_que` describe el mecanismo del caso, no el de la
+17. **Precedentes honestos**: el `por_que` describe el mecanismo del caso, no el de la
     solución propia, y el puesto/año coinciden con `knowledge/retos_razonamiento.json` o con
     la fuente del repo.
-17. **El `.md` y el JSON son espejo**: se regeneran desde el mismo JSON; ninguno se edita a
+18. **El `.md` y el JSON son espejo**: se regeneran desde el mismo JSON; ninguno se edita a
     mano.
-18. **La skill que se carga es la que se editó**: `skills/<nombre>/SKILL.md` se copia a
+19. **La skill que se carga es la que se editó**: `skills/<nombre>/SKILL.md` se copia a
     `.opencode/skills/` y `.agents/skills/` (o se corre `scripts/setup_agente.ps1`). Si esas
     copias quedan viejas, el agente lee la versión anterior y repite los mismos errores.
 

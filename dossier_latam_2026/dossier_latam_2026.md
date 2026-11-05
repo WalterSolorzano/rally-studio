@@ -155,73 +155,73 @@
 
 ## RETO 03 · Protección y fomento de polinizadores
 
-**Categoría:** Impacto Social — El resultado se mide en floración y nidificación dentro de la ciudad, con una comunidad que mantiene el espacio y recibe el beneficio.
+**Categoría:** Impacto Social — El resultado se mide en colonias vivas y frutos cuajados dentro de la ciudad: el polinizador llega cuando alguien gana con tenerlo cerca.
 
 **El reto:** La disminución de polinizadores nativos pone en riesgo la producción de alimentos y la biodiversidad regional. El reto pide elegir un entorno concreto y una comunidad de usuarios para diseñar una propuesta ecológica o de manejo del paisaje que reduzca las amenazas locales.
 
 **ODS elegidos y por qué**
-- **ODS 15 · Vida de ecosistemas terrestres.** Restaura floración y sitios de nidificación para polinizadores nativos en suelo urbano ya construido.
-- **ODS 2 · Hambre cero.** Aumenta el cuajado de fruto en huertos escolares y familiares sin ampliar la frontera agrícola.
-- **ODS 11 · Ciudades y comunidades sostenibles.** Integra el corredor en patios escolares y muros existentes con manejo vecinal.
+- **ODS 15 · Vida de ecosistemas terrestres.** Instala colonias de abejas nativas y cobertura florida en patios, huertos y bordes urbanos, sin ampliar la frontera agrícola.
+- **ODS 2 · Hambre cero.** Aumenta el cuajado de fruto en huertos familiares y escolares con polinización local y miel de la misma caja.
+- **ODS 8 · Trabajo decente y crecimiento económico.** La miel y la división de colonias dan ingreso al que cuida la caja; el vivero vende la colonia y la semilla.
 
 **Insignias que aplican:** Small Grants Programme (GEF / PNUD) (comunidad y ambiente) · Premio Latinoamérica Verde (impacto ambiental medible)
 
 **Cadena del problema**
-- Problema: Menos polinizadores nativos en la ciudad.
-- Causa raíz: El contrato de mantención paga corte y herbicida como criterio de calidad; el que corta no tiene motivo para esperar la floración.
-- Causa de la causa: El jardín cambia cuando cambia el criterio de pago, no cuando se agrega un cartel.
-- Solución: Franja que Florece y Bloque de Nidos: dos rutas independientes sobre el mismo problema.
-- Métrica: Picos de floración por metro y celdas de nido ocupadas por temporada.
+- Problema: Menos polinizadores nativos y menos fruto cuajado en huertos urbanos.
+- Causa raíz: El paisaje es uniforme (césped cortado, suelo desnudo) y no hay una colonia cerca del huerto que polinice cuando abre la flor.
+- Causa de la causa: El polinizador no se protege con un cartel ni con una certificación: se instala donde alguien gana miel y fruta con tenerlo.
+- Solución: Caja de Abejas Nativas y Mezcla de Cobertura Florida: dos rutas independientes sobre el mismo problema.
+- Métrica: Colonias vivas a los 6 meses y frutos cuajados por rama testigo frente a la rama sin caja.
 
 ### Dos soluciones posibles para este reto
 
-**Opción 01 — Franja que Florece**
+**Opción 01 — Caja de Abejas Nativas**
 
-*Se paga por floración, no por corte.*
+*Una colonia en el patio: miel para la casa y más fruta en el árbol.*
 
-**Qué es.** En una escuela con patio de cemento, el jardinero corta el pasto cada quince días y cobra por corte; la barda queda limpia y sin una sola flor. La franja cambia lo que se paga: un módulo de diez metros con especies nativas que florecen en dos momentos del año, instalado contra la barda y mantenido por el mismo jardinero, que ahora cobra por mantener la floración y no por arrasar. La escuela pone el espacio y paga el módulo; el jardinero conserva el contrato y gana un criterio que puede cumplir; el vivero vende los plantines. Cada mes, los estudiantes cuentan flores y abejas en una ficha de dos columnas, y ese conteo es lo que decide si el mantenimiento se pagó. No hace falta que nadie certifique desde afuera: el que paga mira la ficha. Lo que existe es el jardín ornamental, que cuesta lo mismo de mantener que el césped y no se cuenta, y el cartel de «no cortar», que nadie fiscaliza. La diferencia es el criterio de pago.
-
-**Cómo se ve en la práctica**
-1. Se elige el borde de la barda y se marca el módulo de diez metros.
-2. Se instalan plantines nativos de dos épocas de floración y se riegan al inicio.
-3. El jardinero mantiene la franja y cobra contra la ficha de floración.
-4. Los estudiantes cuentan flores y abejas cada mes; el conteo cierra el pago.
-
-- **Costo:** ~USD 39 / módulo de 10 m (estimación propia, por cotizar)
-- **Insumos:** Plantines nativos (30), Sustrato, Borde de corte, Ficha de floración impresa, Cartel del módulo, Manguera de riego
-- **Métrica:** Picos de floración por metro y visitas de abejas contadas.
-- **Quién paga:** La escuela o el conjunto paga el módulo y el mantenimiento; el jardinero cobra por floración sostenida; el vivero vende los plantines y repone los que no prenden. Sin donaciones: el módulo se compra y el contrato se renueva por año.
-
-**Opción 02 — Bloque de Nidos**
-
-*Una pieza de concreto que se vuelve casa de abejas nativas.*
-
-**Qué es.** En el muro de una bodega hay abejas sin aguijón que entran y salen de un hueco y nadie sabe cuántas son ni si están bien. El bloque de nidos es una pieza de concreto con seis perforaciones de distinto diámetro, que se atornilla al muro existente y ofrece celdas limpias para que las abejas nativas nidifiquen. No necesita riego, no necesita jardín y no necesita que nadie la cuide: se instala una vez y se revisa cada temporada. El municipio compra bloques y los reparte entre escuelas y edificios públicos; el vivero los vende; el dueño del muro no paga nada y gana polinizadores en su patio. La métrica es física: se cuentan las celdas tapadas con barro, que es la señal de que hay cría dentro. Lo que existe es el hotel de insectos de madera, que se pudre en dos lluvias y queda de adorno, y el tronco hueco que se usa una vez y se bota. La diferencia es que este bloque se cuenta, dura y se repone por unidad.
+**Qué es.** En el patio de una casa hay dos limoneros que dan flor cada año y casi ningún limón. La familia culpa al suelo y al agua, pero el problema es que no hay quién transporte el polen cuando la flor abre. La caja de abejas nativas resuelve eso con un objeto: una colmena racional de madera, con su colonia de abejas sin aguijón, que se cuelga bajo el alero y trabaja en un radio corto, justo el del patio. La familia no necesita traje ni ahumador: abre la caja, cosecha miel dos veces al año y, cuando la colonia crece, la divide y vende la nueva. El vivero vende la caja con colonia y compra las divisiones; el dueño del huerto gana miel, fruta y una colonia que se multiplica. Lo que existe es el apiario de abeja europea, que exige equipo, humo y manejo, y el panal silvestre que se saquea y se pierde. La diferencia es que esta caja cabe en un patio y se paga sola con la miel.
 
 **Cómo se ve en la práctica**
-1. Se elige un muro orientado al sol de la mañana y se marcan los anclajes.
-2. Se atornilla el bloque a la altura de un metro y se sella el borde.
-3. Las abejas ocupan las perforaciones y las tapan con barro.
-4. Cada temporada se cuenta las celdas tapadas y se repone el bloque dañado.
+1. El vivero entrega la caja con la colonia y la cuelga en un lugar con sombra.
+2. La familia revisa la entrada una vez por semana y repone el comedero al inicio.
+3. A los seis meses cosecha miel y deja la reserva para la temporada seca.
+4. Cuando la colonia crece, se divide y la nueva caja se vende o se queda en casa.
 
-- **Costo:** ~USD 14 / bloque (estimación propia, por cotizar)
-- **Insumos:** Bloque de concreto perforado, Tapa de barro, Varilla de anclaje, Tornillos y tarugos, Sellador
-- **Métrica:** Celdas de nido tapadas por bloque y por temporada.
-- **Quién paga:** El municipio compra bloques para escuelas y edificios públicos; el vivero los vende con margen; el dueño del muro recibe el bloque instalado sin pagar y gana polinizadores. Sin donaciones: cada bloque tiene comprador.
+- **Costo:** ~USD 45 / caja con colonia (estimación propia, por cotizar)
+- **Insumos:** Caja racional de madera, Colonia de abeja sin aguijón, Trampa de entrada, Comedero, Soporte de colgado, Guía de manejo de una hoja
+- **Métrica:** Colonias vivas a 6 meses y frutos cuajados por rama testigo.
+- **Quién paga:** La familia o el dueño del huerto compra la caja; el vivero la vende con colonia y compra las divisiones; el colegio compra una para el huerto escolar. Sin donaciones: la miel y la venta de divisiones devuelven el costo.
 
-**Ya existe.** El jardín ornamental, que se mantiene igual que el césped y no se cuenta, y el cartel de «no cortar», que nadie fiscaliza. La diferencia: el pago depende de un conteo que el propio cliente puede hacer. / El hotel de insectos de madera, que se pudre y queda de adorno, y el tronco hueco de un solo uso. La diferencia: concreto que dura, celdas de tamaño estudiado y un conteo que se puede repetir.
+**Opción 02 — Mezcla de Cobertura Florida**
 
-**Quién paga.** La escuela o el conjunto paga el módulo y el mantenimiento; el jardinero cobra por floración sostenida; el vivero vende los plantines y repone los que no prenden. Sin donaciones: el módulo se compra y el contrato se renueva por año. / El municipio compra bloques para escuelas y edificios públicos; el vivero los vende con margen; el dueño del muro recibe el bloque instalado sin pagar y gana polinizadores. Sin donaciones: cada bloque tiene comprador.
+*Un kilo de semilla cubre el suelo desnudo y devuelve las flores.*
 
-**Por validar.** Que un módulo de 10 m sostenga dos picos de floración con el riego disponible. Prueba: un módulo testigo durante una temporada seca. / Qué diámetros ocupan las abejas locales y en cuánto tiempo. Prueba: 10 bloques con tres diámetros, revisados cada 15 días por una temporada.
+**Qué es.** Entre las hileras del huerto hay tierra pelada, y cada temporada el dueño gasta en herbicida y en deshierbe para que no crezca nada. La mezcla de cobertura cambia ese suelo por una alfombra de plantas nativas que florecen en dos momentos del año: cubre la tierra, la protege del sol y de la lluvia, y trae de vuelta a las abejas que ya viven en la cuadra. Se vende por kilo, como cualquier semilla, y se siembra al voleo antes de la lluvia; no necesita bandeja, ni riego permanente, ni que nadie la cuide. El vivero la mezcla y la vende; el agricultor ahorra deshierbe y herbicida; la escuela la usa en el huerto. Lo que existe es el herbicida, que deja el suelo pelado, y la semilla de pasto, que se corta antes de florecer. La diferencia es que esta cobertura se deja florecer, cubre el suelo y no compite con el cultivo.
 
-**Pitch:** El que corta cobra por cortar; por eso no hay flores. La franja paga por floración y el bloque de nidos da casa a las abejas nativas. Mismo jardinero, mismo muro, otro criterio: flores contadas por los estudiantes.
+**Cómo se ve en la práctica**
+1. El vivero mezcla semilla nativa de porte bajo con dos épocas de floración.
+2. El agricultor siega bajo y siembra al voleo antes de la lluvia.
+3. La cobertura cierra el suelo y florece en la siguiente estación.
+4. Se corta una vez al año, después de la semilla, para que vuelva sola.
+
+- **Costo:** ~USD 8 / kg (estimación propia, por cotizar)
+- **Insumos:** Semilla nativa de cobertura (1 kg), Mezcla de dos floraciones, Bolsa de papel, Ficha de siembra, Rodillo de contacto
+- **Métrica:** Metros cuadrados cubiertos y flores por metro en temporada.
+- **Quién paga:** El agricultor o la escuela compra el kilo; el vivero mezcla y vende; el municipio compra para taludes y bordes de vereda. Sin donaciones: la semilla se vende como cualquier insumo agrícola y ahorra deshierbe.
+
+**Ya existe.** El apiario de abeja europea, que exige traje, humo y manejo, y el panal silvestre que se saquea y se pierde. La diferencia: abeja nativa sin aguijón, caja de patio y miel que paga la inversión. / El herbicida, que deja el suelo pelado, y la semilla de pasto, que se corta antes de florecer. La diferencia: cubre sin química, se deja florecer y vuelve sola al año siguiente.
+
+**Quién paga.** La familia o el dueño del huerto compra la caja; el vivero la vende con colonia y compra las divisiones; el colegio compra una para el huerto escolar. Sin donaciones: la miel y la venta de divisiones devuelven el costo. / El agricultor o la escuela compra el kilo; el vivero mezcla y vende; el municipio compra para taludes y bordes de vereda. Sin donaciones: la semilla se vende como cualquier insumo agrícola y ahorra deshierbe.
+
+**Por validar.** Que la colonia sobreviva la estación seca y que el cuajado suba frente a una rama sin caja. Prueba: 10 cajas y 10 ramas testigo durante una floración. / Que la mezcla no compita con el cultivo y vuelva a florecer sin resiembra. Prueba: dos parcelas testigo durante un ciclo completo.
+
+**Pitch:** La abeja nativa no se protege con un cartel: se instala en el patio. Una caja con colonia da miel, se divide al año y cuaja más fruta; la cobertura florida cubre el suelo y la trae de vuelta. El dueño gana miel y fruta: por eso la compra.
 
 **Señal que se repite en los ganadores.** Los ganadores en biodiversidad no presentan una especie ni un aparato: presentan un sistema de manejo con responsabilidad asignada y una medición repetible.
 
 **Precedentes por tipo de solución**
-- 2025 · STEM Synergy (UAM-DIEM) · Huertos verticales con recirculación hídrica. Diseñó un sistema modular de cultivo con riego eficiente y materiales reciclados. Comparte la lógica de un módulo replicable que se instala en espacio ya construido.
-- 2023 · Nicarq Sinergy (UNI-RUSB) · BioInnova. Integró agua, saneamiento y producción en una unidad de resiliencia comunitaria. Aporta la mirada de sistema: el corredor se juzga por el conjunto, no por una planta.
+- 2023 · Nicarq Sinergy (UNI-RUSB) · BioInnova. Integró agua, saneamiento y producción en una unidad de resiliencia comunitaria. Aporta la mirada de sistema: la caja, la flor y el huerto se juzgan juntos.
+- 2025 · STEM Synergy (UAM-DIEM) · Huertos verticales con recirculación hídrica. Diseñó un sistema modular de cultivo con riego eficiente y materiales reciclados. Comparte la lógica de un módulo que se instala en espacio ya construido.
 
 **Comentarios.** Anoten aquí sus ideas, dudas y ajustes a las propuestas.
 
