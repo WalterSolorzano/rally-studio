@@ -127,3 +127,25 @@ python -m pytest tests/test_gen_dossier.py tests/test_soluciones_motor.py -q
 Y sobre el PDF generado: 3 páginas por reto, ninguna palabra prohibida
 (`saturacion`, `probabilidad`, `win rate`, `winrate`, `score`, «No documentado»), 27 sellos ODS
 como imagen y las líneas de COMENTARIOS completas dentro del pie.
+
+## Compuerta anti-genérico (`scripts/check_anti_generico.py`)
+
+Detector regex que se corre sobre el JSON del motor antes de entregar fichas. Lee
+`skills/proponer-retos/references/anti-generico.md` (una línea de baneo por frase: si el
+detector falla, se agrega el patrón ahí y el script lo carga en la siguiente corrida).
+
+```powershell
+python scripts/check_anti_generico.py --json docs/_build/soluciones.json `
+  --out-md docs/_build/compuerta.md --out-json docs/_build/compuerta.json
+```
+
+- Exit `0` = todo PASS · exit `1` = hay `RECHAZADA` (no entregar).
+- Motivos: `[MOTOR_SCHEMA]` (ruta incompleta: faltan `pagador`/`ya_existe`/`costo`),
+  `[FORBIDDEN · cat]` (11 categorías: verbos huecos, actores sin nombre, etiquetas no-producto,
+  taller/servicio, reacondicionamiento 1.4b, hardware donado 1.4c, kit/app/sensor, relleno,
+  métrica abstracta, frases hechas, weasel words), `[SMELL]`, `[ENCAJE_LITERAL]`,
+  `[TERMINO_ENUNCIADO]`, métrica sin unidad, pagador sin cargo.
+- Acepta el formato crudo del motor (`{certamen, retos:[{reto, soluciones}]}`) vía
+  `normalizar_reto`/`normalizar_opcion`; también listas y `{soluciones: [...]}`.
+- Calibración: `tests/test_check_anti_generico.py` (casos PASS + RECHAZAR sintéticos).
+  Antes de confiar en la cascada, pásale una opción que ya falló: debe rechazarla.

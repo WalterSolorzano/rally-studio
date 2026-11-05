@@ -570,6 +570,10 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--certamen", choices=list(CATEGORIAS), help="nacional|latam (default: brief.json)")
     parser.add_argument("--categoria", help="fuerza la categoria del certamen")
     parser.add_argument("--propuestas", type=int, default=3, help="rutas por reto (default 3)")
+    parser.add_argument(
+        "--retos-json", type=Path,
+        help="archivo JSON entregado por el usuario o comité; no se usa un banco activo por defecto",
+    )
     parser.add_argument("--json", dest="salida", help="archivo JSON de salida")
     parser.add_argument("--grafo", action="store_true", help="enriquece con graphify-out/graph.json")
     args = parser.parse_args(argv)
@@ -592,7 +596,15 @@ def main(argv: list[str] | None = None) -> int:
         print("ERROR: define el certamen en brief.json o con --certamen nacional|latam.", file=sys.stderr)
         return 2
 
-    retos = cargar_retos()
+    if not args.retos_json:
+        print(
+            "ERROR: no hay retos activos. Entrega --retos-json <archivo> "
+            "o usa --importar-brain de forma explícita.",
+            file=sys.stderr,
+        )
+        return 2
+
+    retos = cargar_retos(args.retos_json)
     casos = cargar_casos()
     winners = _leer_winners()
     nodos = _leer_nodos() if args.grafo else None

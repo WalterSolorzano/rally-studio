@@ -39,6 +39,29 @@ PDF de referencia aprobado (`Soluciones_Prueba_09_Retos.pdf`, o el que indique e
 
 No se mezclan los dos modos. Sin `rally_type` en `brief.json`, se pregunta antes de generar.
 
+## Compuerta de contenido: nueve campos antes de escribir
+
+Esta compuerta se corre **por opción**, antes de redactar. Si un campo no se llena con una
+frase concreta, la opción no entra: no se maquilla después con la narrativa. La tabla de
+trabajo se guarda junto al JSON; el PDF solo muestra la versión limpia.
+
+| # | Campo | Se escribe así | Se rechaza si… |
+|---|---|---|---|
+| 1 | **Encaje literal** | «El reto nombra: [lista literal del enunciado]. Esta opción atiende a [actor] con [objeto de esa lista]. El mecanismo funciona para [3 casos de la lista] o se justifica el subconjunto.» | el actor u objeto no está en el enunciado; la escena abre con un objeto que el reto no nombra; el mecanismo solo funciona para un caso. |
+| 2 | **Bucle de decisión** | «La decisión es [X]; la toma [quién] con el umbral [Y] en [plazo Z]; si no se actúa, pasa [consecuencia].» | no hay decisor, no hay umbral o el plazo no existe. Si el fenómeno tarda años y la decisión se toma en semanas, el sensor no es la solución. |
+| 3 | **Estado del arte** | «Hoy la mejor alternativa es [producto/servicio/práctica], cuesta [precio o costo] y se consigue en [lugar o proveedor]. No basta porque [límite concreto]. Esta opción hace [capacidad distinta].» | el sustituto es un armatoste casero o una práctica manual; la diferencia es solo «más barato», «más bonito» o «sin red». |
+| 4 | **Precedente equivalente** | «[Equipo, año, puesto] resolvió [mecanismo] con [artefacto]. Esta opción usa el mismo mecanismo: [equivalencia en una frase].» | el caso es de otro mecanismo o de otro sector; el mismo precedente se repite más de dos veces en el dossier. |
+| 5 | **Factibilidad** | «Mide [variable] con [instrumento]; resolución [X]; calibración [Y]; falla en [modo]; lo repara [quién].» | la resolución del instrumento es mayor que el fenómeno; el proceso exige una condición que el usuario no puede mantener; no hay prueba de mesa en una semana. |
+| 6 | **Costo de abajo hacia arriba** | «[Componente] × [cantidad] × [precio unitario] = [total]. Fuente: [URL o cotización, fecha]. El rubro dominante es [X].» | el total no es la suma; no hay fuente ni fecha; el total es menor que la suma de los componentes listados. |
+| 7 | **Pagador con línea** | «Compra [institución/empresa/persona] con [partida/ingreso]; firma [cargo]; recibe [bien]; mantiene [quién].» | el pagador es «la junta», «la comunidad», «el guardia con pago simbólico» o «el jefe sin sueldo»; no hay partida, contrato ni mantenimiento. |
+| 8 | **Categoría justificada** | «Categoría [X] porque la rúbrica la define como [definición] y esta solución cumple [criterio].» | se asigna por intuición o por defecto; el set de retos no trae categoría y se inventa una. |
+| 9 | **No herencia** | «Esta opción no reutiliza escena, actor, dispositivo, costo, claim ni precedente de un dossier o una versión anterior; si coincide en el tema, se reescribió desde el enunciado.» | el texto conserva una escena u objeto de la versión anterior que el reto no nombra. |
+
+**Cómo se usa.** Se llena la tabla para las dos opciones de cada reto. Una sola celda
+«rechaza» elimina la opción: se genera otra, no se baja el estándar. Las tablas se guardan en
+`docs/_build/compuerta_<certamen>.md` o junto al JSON del dossier. Sin esa tabla no se corre el
+generador del PDF.
+
 ## Cómo se razona una solución
 
 La cadena obligatoria (problema → causa raíz → insight → solución → métrica) se recorre en
@@ -62,7 +85,11 @@ beneficiario identificable.
 **4. La familia del reto, no el ejemplo cómodo.** Si el reto nombra un conjunto
 («electrodomésticos», «residuos del mercado»), la solución sirve para el conjunto aunque
 cambien marca, año o modelo: un mecanismo que **mide y se adapta en el sitio**, o una ruta
-de acopio y clasificación.
+de acopio y clasificación. **La escena abre con el objeto o recurso que el enunciado nombra**,
+no con la máquina que lo usa después: si el reto habla de un insumo, la escena empieza en ese
+insumo; el producto final puede aparecer después, nunca como el objeto del reto. Si el objeto
+de la escena no está en la lista, se justifica por escrito por qué pertenece al conjunto; si
+no, se descarta.
 
 **5. Primero el banco, después la idea.** `knowledge/retos_razonamiento.json` guarda 20
 casos (`id`, `temas`, `year`, `rally`, `categoria`, `equipo`, `puesto`, `problema`,
@@ -87,21 +114,46 @@ encontrar el precedente, no para descartar una idea que no encaje:
 Ollnari (Operación Titán, 2025, Nacional, Procesos) es un caso de **C** con plataforma y
 sello de origen; se usa como referencia de mecanismo, no como plantilla de texto.
 
-**7. Lo obvio no basta — y dos salidas quedan prohibidas.** Nombra las soluciones típicas
-—taller que repara y revende, venta como chatarra, donación, reventa y campaña de
+**7. Lo obvio no basta — y una lista cerrada de lo que no es solución.** Nombra las soluciones
+típicas —taller que repara y revende, venta como chatarra, donación, reventa, campaña de
 concientización— y comprueba que la tuya no sea una de ellas a secas.
 
-Dos están cerradas, no son banderas:
+**Lista cerrada: esto no entra como opción, ni con otro nombre.**
 
-- **Prohibido que una solución sea un taller, un servicio o una mesa de desarme.** Un taller
-  no se vende en un rally y suele ser algo que ya existe: el electricista que rebobina, el
-  jabonero del mercado, el técnico que evalúa paneles. Cada opción debe ser un **producto,
-  un sistema o un modelo con activo propio** (un objeto que se instala, un stock con
-  garantía, una infraestructura, un envase retornable).
-- **Prohibido suponer donaciones** (motores donados, celulares donados, «horas-crédito»,
-  «el municipio firma»). Si no está escrito **qué gana cada actor y quién paga**, eso no
-  ocurre y el jurado lo desarma en una pregunta. Toda solución declara su flujo de dinero
-  en una línea: quién cobra, cuánto y por qué le conviene.
+- **Taller, servicio, mesa de desarme o capacitación** como núcleo. Un taller no se vende en un
+  rally y suele existir ya: el electricista que rebobina, el jabonero del mercado, el técnico
+  que evalúa paneles.
+- **Suscripción, alquiler, arriendo, membresía, comisión por intermediación o pago por uso**
+  como ingreso principal. Son modelos de negocio, no productos: el cliente no se lleva un
+  artefacto y el ingreso depende de captar usuarios o de alquilar el activo de otro.
+- **App, QR o formulario como producto.** Una app puede acompañar, pero no es el artefacto que
+  se instala, se vende y se mantiene.
+- **Kit sin operador, sensor suelto o certificado/sello/auditoría como núcleo.** Ya están en la
+  tabla de banderas; si no hay quien opere, decida o compre, no es solución.
+- **Donación, voluntariado o heroísmo.** Si el modelo se rompe cuando cada actor busca su
+  interés, está mal.
+
+Cada opción debe ser un **producto, un sistema o una infraestructura con activo propio**: un
+objeto que se instala, un stock con garantía, un envase retornable, una obra que se mantiene. La
+prueba es física: **¿qué se lleva el cliente cuando paga?** Si la respuesta es «una cuota», «un
+acceso» o «una idea», no es producto.
+
+| Racionalización | Por qué no |
+|---|---|
+| «La suscripción es un modelo con activo propio» | El activo es alquilado o del operador; el cliente no se lleva nada y el ingreso depende de captar suscriptores. |
+| «El municipio paga la cuota» | Sigue siendo un servicio; solo vale si compra el artefacto y lo opera. |
+| «Es economía circular» | No exime: el producto se vende por unidad o no es producto. |
+| «El jurado valora el modelo de negocio» | Valora un artefacto concreto; un modelo no se puede mostrar ni tocar. |
+| «El guardia/jefe lo hace por la comunidad» | Sin sueldo o partida no hay operación sostenida; el día 400 falla. |
+| «El sensor es barato» | Barato no es útil si nadie decide con el dato. |
+| «Ya existe, pero es más barato» | Precio no es capacidad; el sustituto más fuerte sigue ganando. |
+| «El precedente es de otro tema, pero innova» | El precedente debe compartir mecanismo, no vibra. |
+
+**Banderas rojas.** Si aparece una, la opción no entra: se puede describir sin nombrar un
+objeto que el cliente se lleve; el ingreso principal es una cuota; el pagador es una
+organización sin presupuesto; el «ya existe» es una herramienta suelta o una práctica manual; el
+mismo precedente aparece en tres retos; la métrica es «personas sensibilizadas»; el costo total
+es menor que la suma de los componentes; la escena usa un objeto que el reto no nombra.
 
 
 **8. Generación divergente antes de converger.** Mínimo 10 ideas por mecanismos distintos,
@@ -149,10 +201,19 @@ Las de taller/servicio y donación ya quedaron cerradas en el paso 7.
 | Mejora del mismo producto | cambia quién lo usa o quién paga |
 | Dependencia de un solo caso | el mecanismo cubre la familia completa del reto |
 
-**Prueba de «ya existe» (obligatoria).** Nombra **dos sustitutos actuales** —una app, un
-oficio, un producto de ferretería, una práctica municipal— y di en una frase **qué hace
-distinta** esta idea. Si no encuentras los dos, no buscaste: busca otra vez. Si la
-diferencia es «más barato» o «más bonito», tampoco alcanza.
+**Prueba de «ya existe» (obligatoria).** Nombra **el sustituto más fuerte que hoy se
+consigue**, no el más primitivo: el producto comercial, el servicio municipal o la práctica
+con precio o costo y quién lo provee. Escribe su precio o costo, dónde se consigue y **qué límite concreto** tiene.
+Después, en una frase, la **capacidad distinta** de esta idea: mide algo que el sustituto no
+mide, funciona en una condición donde el sustituto no funciona, o produce un bien que el
+sustituto no entrega. Si la diferencia es «más barato», «más bonito» o «sin red», no alcanza.
+Una herramienta suelta o una práctica manual no son el estado del arte: son el punto de
+partida del usuario.
+
+**Prueba de la ventana de decisión.** Si el fenómeno tarda años en cambiar (un proceso
+estructural, geológico o ambiental lento) y la decisión se toma en semanas, el sensor no es la solución: se reemplaza
+por una lectura física barata y una brigada, o se elige otro riesgo del reto con ventana
+corta. El dato solo vale si alguien decide algo antes de que sea tarde.
 
 
 **13. Revisión crítica (tipo sharktank).** Etiqueta cada hallazgo como HECHO o SUPUESTO,
@@ -191,25 +252,20 @@ estimes). Conteo obligatorio antes de maquetar.
   campos, no en la idea: «bomba centrífuga de baja altura acoplada a motor…» es una línea de
   especificación, no una solución que alguien quiera comprar.
 - El párrafo cierra con **por qué esto no es lo que ya existe**.
-- El término técnico se traduce en la misma frase («fisurómetro: regla pegada a los dos lados
-  de una grieta»).
+- El término técnico se traduce en la misma frase (el nombre del instrumento seguido de lo
+  que mide y cómo se usa).
 - Debajo del párrafo, en campos aparte: claim, cómo funciona (4 pasos), beneficiario,
   componentes, costo estimado y métricas.
 
-**Ejemplo de forma (idea por validar, no texto para copiar):**
+**Ejemplo de forma (plantilla, no texto para copiar):**
 
-> En muchas laderas hay casas con grietas en sus muros y nadie sabe si están quietas o
-> moviéndose. Los instrumentos que lo miden cuestan cientos de dólares y los interpreta un
-> ingeniero. La idea es convertir un celular viejo en ese instrumento: se coloca en una caja
-> sellada fija al muro y, usando el sensor de movimiento que ya trae, registra la inclinación
-> y las vibraciones de la pared las 24 horas. En lugar de números, la familia ve una luz en
-> la pantalla: verde, amarillo o rojo, según cuánto se aleja la pared de su estado inicial.
-> Si pasa a rojo, el sistema avisa a un responsable de la comunidad que ya sabe qué hacer.
-> Cualquier barrio con casas en riesgo puede tener su red de vigilancia por una fracción de
-> lo que cuesta un equipo profesional.
+> [Quién] vive en [dónde] y hoy [qué problema concreto]. La idea es [objeto o sistema] que
+> [qué hace] y [qué cambia]. Se usa así: [cómo se opera en una frase]. En lugar de [lo que
+> recibe hoy], la persona [qué recibe o ve]. Cualquier [familia del reto] puede [resultado]
+> por [condición de acceso]. Por eso no es [sustituto más fuerte]: [capacidad distinta].
 
-Ese párrafo también expone los huecos: ¿quién fija el umbral?, ¿quién responde?, ¿de dónde
-sale el celular? Se resuelven en `Quién paga` y `Por validar`, no escondiéndolos.
+Ese párrafo también expone los huecos: ¿quién lo opera?, ¿quién paga?, ¿qué pasa si falla?
+Se resuelven en `Quién paga` y `Por validar`, no escondiéndolos.
 
 ### Jerga interna: prohibida en lo que lee el jurado
 
@@ -238,7 +294,7 @@ del sistema. Se traducen a lenguaje de calle: «canal» → «quién lo vende o 
 - Precedentes con link de video; si falta, se dice y se compensa.
 - Sin estadísticas internas del motor.
 
-## Dos reglas que evitan el dossier incoherente
+## Cuatro reglas que evitan el dossier incoherente
 
 **1. Una solución es un objeto completo, no un párrafo.** Narrativa, claim, 4 pasos,
 componentes, costo, métrica, «ya existe», «quién paga», «por validar», pitch y precedente
@@ -304,6 +360,13 @@ alguien compre un certificado que puede evitar. Por eso quedan fuera como núcle
 
 Prueba rápida: escribe en una línea quién firma el pago —un particular, una empresa o una
 partida pública— y qué recibe a cambio. Si no hay firma ni bien recibido, no hay venta.
+
+**4. Un dossier o una versión anterior no es fuente de verdad.** Cualquier JSON, PDF o
+borrador previo conserva escenas, actores, costos y errores. Se lee solo para (a) no repetir
+una propuesta y (b) comprobar que la nueva no heredó nada. No se copian escenas, objetos,
+claims, costos, ODS, insignias, precedentes ni señales. Si una opción nueva coincide con la
+vieja en el objeto o el actor, se reescribe desde el enunciado del reto. Los ODS y las
+insignias se re-derivan de `knowledge/insignias.json` y de la lista oficial; no se heredan.
 
 ## Corregir con bisturí, no con hacha
 
@@ -382,4 +445,31 @@ cambio no rompe la escena que ya vendía.
 19. **La skill que se carga es la que se editó**: `skills/<nombre>/SKILL.md` se copia a
     `.opencode/skills/` y `.agents/skills/` (o se corre `scripts/setup_agente.ps1`). Si esas
     copias quedan viejas, el agente lee la versión anterior y repite los mismos errores.
+20. **Encaje literal**: cada opción nombra el objeto/actor del enunciado y el mecanismo cubre
+    al menos 3 casos de la lista, o se justifica el subconjunto.
+21. **Bucle de decisión**: cada opción tiene decisor, umbral y plazo; la ventana de decisión es
+    menor que la evolución del fenómeno.
+22. **Estado del arte**: cada opción nombra el sustituto más fuerte con precio o costo y
+    proveedor, y una capacidad distinta; no alcanza «más barato» ni «sin red».
+23. **Precedente equivalente**: el `por_que` describe el mismo mecanismo; ningún precedente se
+    repite más de dos veces en el dossier.
+24. **Factibilidad**: variable, instrumento, resolución, calibración, modo de falla y quién
+    repara; hay prueba de mesa en una semana.
+25. **Costo bottom-up**: componentes × cantidad × precio = total; fuente o cotización con
+    fecha; el total no es menor que la suma.
+26. **Pagador con línea**: institución/empresa, partida o ingreso, cargo que firma, bien
+    recibido y quién mantiene; no «junta», «comunidad», «pago simbólico» ni «sin sueldo».
+27. **Categoría justificada**: definición de la rúbrica + criterio cumplido, o «sin categoría»
+    si el certamen no la pide.
+28. **No herencia**: se comparó contra el dossier o la versión anterior y ninguna opción
+    conserva escena, objeto, costo, ODS, insignia o precedente heredado.
+29. **Compuerta completa**: las tablas por reto están llenas y ninguna opción con celda
+    «rechaza» llegó al PDF.
+
+## Calibrar la compuerta
+
+Antes de confiar en la compuerta, pásale una solución que ya sabes que no sirve —de un
+dossier anterior o de una propuesta descartada—. Debe rechazarla. Si la aprueba, falta un
+campo o una regla está floja. No se calibra con el caso que estás escribiendo: se calibra
+con uno que ya falló.
 

@@ -7,6 +7,7 @@ from scripts.soluciones_motor import (
     clasificar,
     generar_soluciones,
     importar_desde_brain,
+    main,
     recursos_de,
     rubrica_para,
 )
@@ -50,6 +51,10 @@ def test_cargar_retos_falla_si_banco_vacio(tmp_path):
 def test_cargar_retos_no_inventa_si_falta_archivo(tmp_path):
     with pytest.raises(SystemExit):
         cargar_retos(tmp_path / "no-existe.json")
+
+
+def test_main_no_usa_historial_como_retos_activos():
+    assert main(["--todos", "--certamen", "latam"]) == 2
 
 
 def test_categoria_nacional_social():

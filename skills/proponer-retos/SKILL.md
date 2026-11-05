@@ -5,89 +5,123 @@ description: Genera soluciones aplicables para los retos que da el usuario, con 
 
 # Soluciones para retos
 
-## Regla dura
+## 1. Misión
 
-**Este sistema no crea retos.** El usuario o el comité entregan los retos; la skill
-propone **soluciones** para esos retos. Si no hay retos, pídelos o impórtalos; no inventes.
+Para cada reto del comité, devolver **dos soluciones en ficha rápida** (no párrafos largos)
+que pasen las nueve compuertas y el test de swap. Si una opción no pasa, se descarta y se
+genera otra — nunca se maquilla la narrativa.
 
-## Cuándo usarla
+**Flujo.** Comité entrega retos → 2 fichas por reto → equipo revisa y selecciona → las
+seleccionadas pasan al dossier PDF (`gen_dossier.py`).
+
+**Banco interno.** Retos de `research/challenges.json` / `brain/corpus/retos.md`; precedentes
+de `knowledge/retos_razonamiento.json` y `research/sirli/winners.jsonl`. **No se inventan retos
+ni casos desde la memoria.** Doctrina profunda: `dossier-soluciones/SKILL.md`. Antes de generar,
+lee `references/goal.md` y `references/anti-generico.md`.
+
+## 2. Regla dura
+
+**Este sistema no crea retos.** El usuario o el comité entregan los retos; la skill propone **soluciones**. Si no hay retos, pídelos o impórtalos; no inventes. Si te falta `rally_type`, pregunta antes de generar.
+
+## 3. Cuándo usarla
 
 - El usuario tiene los retos del comité y pide ideas de solución.
 - Quiere un dossier PDF para deliberar con el equipo.
 - Pide reformular una solución existente con otro enfoque.
 
-## Procedimiento
+## 4. Goal jerárquico
 
-1. Lee `brief.json`: `rally_type` (`nacional` 24 h o `latam` 28 h), categoría, ciudad y equipo.
-   Si falta el certamen, pregúntalo antes de generar.
-2. Asegura el banco de retos:
-   - Si `research/challenges.json` tiene retos, úsalo.
-   - Si está vacío y existen los retos del comité en `brain/corpus/retos.md`:
-     `python scripts/soluciones_motor.py --importar-brain`
-   - Si no hay ninguna fuente, pide al usuario el texto de los retos. No los redactes tú.
-3. Genera el JSON de soluciones:
+Orden estricto; si dos reglas compiten, gana la de arriba:
+
+1. **Misión (北极星).** Dos fichas rápidas concretas por reto que pasen las nueve compuertas y el test de swap; ficha = lectura rápida del equipo.
+2. **Banco interno como única fuente.** Retos del banco del usuario; precedentes solo de `knowledge/retos_razonamiento.json` o `research/sirli/winners.jsonl`. Dato fuera del banco → `por validar con el equipo`.
+3. **Compuertas duras.** Las nueve de `dossier-soluciones` + test de swap + FORBIDDEN_PHRASES. Cualquier celda `RECHAZA` elimina la opción — sin negociación.
+4. **No invención.** Cifras, precios, beneficiarios y precedentes solo de `research/claims.json`, `knowledge/retos_razonamiento.json` o `knowledge/ERRATAS.md`; lo demás `por validar con el equipo`.
+5. **No herencia.** Ningún dossier o JSON anterior es fuente de verdad: escenas, objetos, costos, ODS, insignias y precedentes no se heredan.
+6. **Operación.** El motor (`soluciones_motor.py`) genera, la skill aplica compuertas y devuelve fichas. El PDF se maqueta con `gen_dossier.py` solo para las opciones seleccionadas; la skill **no** edita CSS ni diseño.
+
+El detalle del goal y el sistema de razonamiento forzado están en `references/goal.md`. Es **obligatorio** cargarlo antes de generar.
+
+## 5. Procedimiento
+
+1. **Precondición**: lee `brief.json`. Si falta `rally_type`, `equipo`, `ciudad` o `categoria`, pregunta antes de generar.
+2. **Asegura el banco de retos** (del banco interno, no inventados):
+    - Usa únicamente el archivo entregado por el usuario o comité, pasado explícitamente con
+       `--retos-json <archivo>`. El historial de `research/` y `brain/` no es un banco activo.
+    - Si el comité está en `brain/corpus/retos.md`: `python scripts/soluciones_motor.py
+       --importar-brain --retos-json research/challenges.json`; luego ejecuta el motor otra
+       vez pasando ese archivo con `--retos-json`.
+    - Sin fuente explícita, pide el texto de los retos. No los redactes tú.
+3. **Carga el goal**: lee `references/goal.md` y `references/anti-generico.md` antes de invocar
+   el motor; sin ellos la skill opera con la versión vieja y produce propuestas genéricas.
+4. **Genera el JSON de soluciones**:
    ```bash
-   python scripts/soluciones_motor.py --todos --certamen nacional --grafo \
+    python scripts/soluciones_motor.py --todos --retos-json <retos_entregados.json> --certamen nacional --grafo \
      --json docs/_build/soluciones.json
    ```
-   Para un solo reto: `--reto DESAFIO_01 --certamen latam`.
+    Para un solo reto: `--reto DESAFIO_01 --retos-json <retos_entregados.json> --certamen latam`.
    Categoría forzada (solo si el usuario la conoce): `--categoria social|tecnologica|procesos`
    (Nacional) o `--categoria innovacion|impacto_social` (Latam).
-4. Genera el PDF:
+5. **Chain-of-thought antes de redactar**: por cada opción, escribe en
+   `docs/_build/razonamiento_<certamen>.md` las 8 preguntas del goal (enunciado, actor,
+   objeto, causa raíz, insight, mecanismo, métrica física, pagador con línea). **No inventes
+   datos**: si una pregunta no se responde con el enunciado o el banco, la opción queda
+   `RECHAZADA`.
+6. **Compuerta de contenido**: corre las nueve compuertas de `dossier-soluciones` + test de
+   swap + `FORBIDDEN_PHRASES` (`references/anti-generico.md`). Cualquier celda `RECHAZA`
+   elimina la opción: se genera otra, no se baja el estándar.
+   - **Lectura cuidadosa del término del enunciado** (smell #11): subraya objeto, actor,
+     territorio y escala exactos del enunciado. Problema vecino («domésticos» → «de molinos»)
+     = `RECHAZADA` en la compuerta 1 de Encaje literal.
+   - **Baneos adicionales** (secciones 1.4b/1.4c de `anti-generico.md`): reacondicionamiento,
+     cambio de pieza, testeo de usados, teléfonos y hardware donado como núcleo → `RECHAZADA`;
+     se replantea transformando el recurso, no restaurándolo.
+7. **Búsqueda de tecnologías nuevas** (`references/goal.md` §6b): búsqueda activa (no de
+   memoria) de tecnologías, papers o casos recientes que aporten un mecanismo nuevo. Si aporta
+   con URL y año → campo opcional `Mecanismo nuevo`; si no → se omite. Nunca inventes
+   tecnologías: solo las de una fuente abrible.
+8. **Devuelve las fichas rápidas en el chat** (una por opción, formato en
+   `references/ficha-y-cascada.md` §2). **No** maquetes el PDF todavía — el equipo primero
+   revisa y selecciona.
+9. **Si el equipo selecciona opciones**: genera el PDF solo con las seleccionadas:
    ```bash
-   python scripts/gen_soluciones_pdf.py --json docs/_build/soluciones.json \
+   python scripts/gen_soluciones_pdf.py --json docs/_build/soluciones_seleccionadas.json \
      --out docs/Dossier_Soluciones_<certamen>.pdf
    ```
-   Entrega la ruta del PDF. No pegues el JSON crudo en el chat.
-5. Revisa el resultado antes de entregarlo:
-   - Cada solución debe traer cadena de razonamiento (problema → causa raíz → insight →
-     solución → métrica) y un precedente con año, equipo y proyecto.
-   - **Dos soluciones por reto**, con mecanismo distinto e independiente (no "fase 2").
-   - Cada solución trae su párrafo «En la práctica»: quién lo opera, quién paga, de dónde
-     salen insumos y equipos.
-   - Antes de citar año, rally, equipo o puesto, contrasta con `knowledge/ERRATAS.md`.
-   - Si una ruta es `exploratoria`, dilo: no hay precedente directo y debe validarse.
-   - Las cifras de impacto solo aparecen si tienen fuente en el corpus.
-   - La categoría debe estar justificada, no asumida.
+   Entrega la ruta; no pegues el JSON crudo en el chat.
+10. **Auto-auditoría**: corre `scripts/check_anti_generico.py` sobre el JSON y luego el
+    checklist de `references/anti-generico.md` ("Auto-auditoría antes de entregar"). Si algo
+    falla, la opción vuelve al paso 5 — no se entrega con fallas.
 
-La doctrina completa (análisis sistémico, familias de mecanismos, pruebas de descarte,
-banderas de riesgo y anatomía del dossier) vive en `skills/dossier-soluciones/SKILL.md`.
-Esta skill solo opera el motor.
+## 6. Compuertas en cascada (anti-genérico)
 
-## Qué no hacer
+Cascada completa (etapa · compuerta · si falla): `references/ficha-y-cascada.md` §1. Doctrina
+de cada compuerta: `dossier-soluciones/SKILL.md`.
 
-- **Nunca** propongas retos nuevos ni reformules el enunciado del comité.
-- **Nunca** incluyas una sección de «lo que el jurado va a atacar»: no hay réplica. El
-  riesgo se escribe como bandera con la condición que lo resuelve.
-- **Nunca** muestres estadísticas internas (saturación, score, probabilidad de victoria).
-  Solo datos de impacto con fuente para vender la idea.
-- **Nunca** inventes cifras, precios, beneficiarios ni precedentes.
-- No prometas que una solución "gana": presenta la ruta y su evidencia.
-- No entregues soluciones genéricas sin caso, sin causa raíz o sin métrica.
+## 7. Formato de cada solución (ficha rápida en chat)
 
-## Formato de cada solución
+Plantilla, reglas y "lo que NO va en la ficha": `references/ficha-y-cascada.md` §2. Resumen:
+ficha compacta <1 min, una opción por bloque, cada número con fuente; el párrafo narrativo va
+solo al dossier PDF.
 
-| Campo | Contenido |
-|---|---|
-| Título | Solución concreta, no el nombre del reto |
-| Concepto | Qué se construye y por qué funciona |
-| Cadena | Problema → causa raíz → insight → solución → métrica |
-| Precedente | Año, equipo, proyecto, puesto, video |
-| Impacto | Dato + fuente; si no hay, "por validar con el equipo" |
-| Recursos | Componentes y materiales detectados |
-| Rúbrica | Criterio principal y secundario con puntos |
-| Bandera de riesgo | La bandera y la condición que la resuelve |
-| En la práctica | Quién opera, quién paga, insumos, arranque (350–450 caracteres) |
-| Pitch | Una frase para el video |
+## 8. Qué no hacer
 
-## Punteros
+Lista completa: `references/ficha-y-cascada.md` §3. Nunca inventar retos o cifras desde la
+memoria, publicar sin pasar compuertas, heredar de versiones anteriores ni mostrar
+estadísticas internas del motor.
 
-- Motor: `scripts/soluciones_motor.py`
-- PDF: `scripts/gen_soluciones_pdf.py` + `docs/assets/soluciones.css`
-- Casos: `knowledge/retos_razonamiento.json`
-- Erratas y fechas: `knowledge/ERRATAS.md`
-- Doctrina: `skills/dossier-soluciones/SKILL.md`
-- Ganadores: `research/sirli/winners.jsonl`, `knowledge/winners_analysis.md`
-- Cerebro: `brain/corpus/retos.md`, `graphify-out/graph.json`
-- Rúbricas: `.agents/rules/rubricas-y-puntajes.md`
+## 9. Punteros
+
+- Motor: `scripts/soluciones_motor.py` · PDF: `scripts/gen_soluciones_pdf.py` + `docs/assets/soluciones.css`
+- Casos: `knowledge/retos_razonamiento.json` · Erratas: `knowledge/ERRATAS.md` · Ganadores: `research/sirli/winners.jsonl`
+- Doctrina completa: `skills/dossier-soluciones/SKILL.md`
+- **Goal maestro**: `references/goal.md` · **Detector anti-genérico**: `references/anti-generico.md`
+- **Ficha, cascada y qué no hacer**: `references/ficha-y-cascada.md`
+- Cerebro: `brain/corpus/retos.md` · Rúbricas: `.agents/rules/rubricas-y-puntajes.md`
 - Documentación: `docs/MOTOR_SOLUCIONES.md`
+
+## 10. Calibrar la compuerta
+
+Antes de confiar en la cascada, pásale una solución que ya sabes que no sirve (de un dossier
+anterior o descartada): debe devolver `RECHAZADA` con motivo. Si la aprueba, falta un campo o
+una regla está floja. No se calibra con el caso que estás escribiendo, sino con uno que ya falló.
