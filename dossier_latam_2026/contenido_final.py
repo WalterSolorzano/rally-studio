@@ -9,7 +9,8 @@ una solución, cambia su lista de componentes, su costo, su métrica y su pitch.
 Reglas duras (skill dossier-soluciones):
 - Sin QR, sin aplicación, sin red: todo funciona sin internet y sin señal.
 - Nada es un formulario, un taller ni un servicio: es objeto, sistema o modelo.
-- Sin donaciones supuestas: cada actor cobra o gana algo concreto.
+- Sin donaciones supuestas: cada actor cobra, gana algo concreto o lo paga una partida
+  pública nombrada (municipio, ministerio, cooperación) cuando el bien es social.
 - Narrativa de 150-250 palabras con escena, sin precios ni componentes dentro.
 """
 
@@ -92,9 +93,10 @@ CONTENIDO = {
                 "diferencia: veredicto en el sitio, sin abrir el motor y sin depender de la red."
             ),
             "paga": (
-                "El taller de barrio compra el banco y cobra la prueba; la escuela técnica "
-                "compra uno para su taller; la familia paga la prueba y el montaje en vez de "
-                "una máquina nueva. Nadie dona el equipo: se vende y se recupera en ~20 pruebas."
+                "El taller de barrio compra el banco y cobra la prueba; la escuela técnica lo "
+                "compra con su partida de taller; la familia paga la prueba y el montaje en vez "
+                "de una máquina nueva. El equipo se compra, no se dona, y se recupera en ~20 "
+                "pruebas."
             ),
             "validar": (
                 "Que el banco distinga un motor quemado de uno sano en las cuatro familias de "
@@ -137,7 +139,7 @@ CONTENIDO = {
             "paga": (
                 "La ferretería compra el kit al fabricante y lo vende con margen; el dueño de "
                 "la máquina paga una vez y reusa el motor que ya tiene; el taller cobra el "
-                "montaje si el cliente no lo hace. Sin donaciones: cada kit se vende."
+                "montaje si el cliente no lo hace. Cada kit se vende y se repone por catálogo."
             ),
             "validar": (
                 "Que tres medidas de acople cubran la mayoría de picadoras, molinos y bombas "
@@ -221,10 +223,10 @@ CONTENIDO = {
                 "es local, visible y se registra sin señal."
             ),
             "paga": (
-                "El municipio compra la unidad y paga la instalación; el comité de riesgo la "
-                "mantiene y el ingeniero valida el umbral; la escuela técnica calibra. Sin "
-                "donaciones: el celular se compra usado y el panel se repone con el mismo "
-                "contrato de mantenimiento."
+                "El municipio compra la unidad con su partida de gestión de riesgo y paga la "
+                "instalación; el comité la mantiene y el ingeniero valida el umbral; la escuela "
+                "técnica calibra. Es gasto público corriente, no donación: el celular se compra "
+                "usado y el panel se repone con el mismo contrato de mantenimiento."
             ),
             "validar": (
                 "Que la inclinación del celular detecte movimiento antes de que la grieta sea "
@@ -265,9 +267,10 @@ CONTENIDO = {
                 "grabada y se puede repetir sin señal."
             ),
             "paga": (
-                "El municipio compra dos unidades por cuadrilla y ahorra horas de excavación; "
-                "el equipo de agua usa el mapa; el vecino no paga nada y evita el corte. Sin "
-                "donaciones: el celular se compra usado y el municipio paga el mantenimiento."
+                "El municipio compra dos unidades por cuadrilla con el presupuesto de agua y "
+                "ahorra horas de excavación; el equipo usa el mapa; el vecino no paga y evita "
+                "el corte. Es partida pública, no donación: el celular se compra usado y el "
+                "mantenimiento va en el mismo contrato."
             ),
             "validar": (
                 "Que el micrófono del celular distinga una fuga de una llave abierta o de una "
@@ -353,8 +356,9 @@ CONTENIDO = {
             ),
             "paga": (
                 "La familia o el dueño del huerto compra la caja; el vivero la vende con "
-                "colonia y compra las divisiones; el colegio compra una para el huerto "
-                "escolar. Sin donaciones: la miel y la venta de divisiones devuelven el costo."
+                "colonia y compra las divisiones; el municipio compra cajas para huertos "
+                "escolares con su partida de agricultura urbana. La miel y las divisiones "
+                "devuelven el costo."
             ),
             "validar": (
                 "Que la colonia sobreviva la estación seca y que el cuajado suba frente a una "
@@ -394,8 +398,9 @@ CONTENIDO = {
             ),
             "paga": (
                 "El agricultor o la escuela compra el kilo; el vivero mezcla y vende; el "
-                "municipio compra para taludes y bordes de vereda. Sin donaciones: la semilla "
-                "se vende como cualquier insumo agrícola y ahorra deshierbe."
+                "municipio compra para taludes y bordes de vereda con su partida de "
+                "mantenimiento verde. La semilla se vende como cualquier insumo agrícola y "
+                "ahorra deshierbe."
             ),
             "validar": (
                 "Que la mezcla no compita con el cultivo y vuelva a florecer sin resiembra. "
@@ -477,7 +482,8 @@ CONTENIDO = {
             "paga": (
                 "El suscriptor paga cuota mensual y recibe astilla; el operador cobra la ruta "
                 "y no compra máquina hasta tener demanda; el vivero vende la astilla compostada "
-                "en saco. Sin donaciones: la máquina se arrienda con la cuota ya cobrada."
+                "en saco. La jornada se cubre con la cuota ya cobrada y el municipio paga aparte "
+                "la recolección que se ahorra."
             ),
             "validar": (
                 "Cuántos suscriptores por cuadra sostienen una jornada de chipeadora. Prueba: "
@@ -518,8 +524,8 @@ CONTENIDO = {
             ),
             "paga": (
                 "El operador del patio cobra por lote; el municipio paga la recolección que se "
-                "ahorra; el huerto compra el carbón a precio de barrio. Sin donaciones: el "
-                "horno se paga con lotes y el carbón tiene comprador."
+                "ahorra; el huerto compra el carbón a precio de barrio. El horno se paga con "
+                "lotes y el carbón tiene comprador fijo."
             ),
             "validar": (
                 "Rendimiento y emisiones del horno frente a la quema abierta. Prueba: tres "
@@ -602,8 +608,8 @@ CONTENIDO = {
             "paga": (
                 "El municipio compra el punto como parte de la obra del reservorio; el comité "
                 "de cuenca limpia la varilla y prueba la sirena cada mes; el guardia recibe un "
-                "pago simbólico por estar de turno. Sin donaciones: el mantenimiento va en el "
-                "contrato del reservorio."
+                "pago simbólico por estar de turno. El mantenimiento va en el contrato de la "
+                "obra, con partida pública."
             ),
             "validar": (
                 "Que la varilla no se trabe con sedimento en crecida. Prueba: una temporada de "
@@ -645,7 +651,7 @@ CONTENIDO = {
             "paga": (
                 "El municipio la compra dentro de la obra del reservorio; el comité de cuenca "
                 "la mantiene con la limpieza mensual; el vecino de aguas arriba no paga y no "
-                "recibe el rebote. Sin donaciones: va en el presupuesto de la obra."
+                "recibe el rebote. Es inversión pública en la obra, no donación."
             ),
             "validar": (
                 "Que el contrapeso abra la compuerta cuando baja el caudal y no deje sedimento "
@@ -726,7 +732,8 @@ CONTENIDO = {
             "paga": (
                 "La junta del barrio compra una unidad entre varias familias y la presta por "
                 "turnos; el taller local cobra la reparación; la familia no paga alquiler y "
-                "devuelve la bomba limpia. Sin donaciones: la unidad se compra y se rota."
+                "devuelve la bomba limpia. La alcaldía puede comprar unidades para el comité "
+                "de emergencia con su partida de riesgo."
             ),
             "validar": (
                 "Que el diafragma succione lodo con piedras de hasta 3 cm sin atascarse. Prueba: "
@@ -766,8 +773,8 @@ CONTENIDO = {
             ),
             "paga": (
                 "El taller de metal del barrio lo fabrica y lo vende o alquila; la junta lo rota "
-                "entre las casas; la familia paga el alquiler del día. Sin donaciones: cada "
-                "trineo se vende."
+                "entre las casas; la familia paga el alquiler del día. Cada trineo se vende y "
+                "la alcaldía puede comprar un lote para el comité de emergencia."
             ),
             "validar": (
                 "Que el geotextil retenga el lodo fino y no se rasgue al arrastrar. Prueba: "
@@ -847,8 +854,9 @@ CONTENIDO = {
             ),
             "paga": (
                 "El procesador paga comisión por litro a la bodega; la bodega descuenta a la "
-                "familia y gana clientela; el vecino entrega el aceite y recibe descuento. Sin "
-                "donaciones: la comisión cubre la garrafa y el retiro."
+                "familia y gana clientela; el vecino entrega el aceite y recibe descuento. La "
+                "comisión cubre la garrafa y el retiro; si el municipio suma un incentivo por "
+                "litro acopiado, el punto despega antes."
             ),
             "validar": (
                 "Cuántos litros por mes sostienen el retiro semanal y cuántas garrafas vuelven. "
@@ -889,7 +897,7 @@ CONTENIDO = {
             "paga": (
                 "El taller o el bicicletero compra el frasco; la familia que entrega aceite "
                 "recibe descuento o un frasco; el que filtra cobra el servicio de acondicionado. "
-                "Sin donaciones: el lubricante tiene comprador fijo."
+                "El lubricante tiene comprador fijo y el lote se repone por caja."
             ),
             "validar": (
                 "Que la acidez del aceite de cocina usado no dañe la cadena. Prueba: dos "
@@ -970,7 +978,7 @@ CONTENIDO = {
             "paga": (
                 "La instaladora compra el kit y cobra la evaluación; el puesto de segunda vida "
                 "lo usa para clasificar stock; el comprador paga la ficha incluida en el panel. "
-                "Sin donaciones: la evaluación se cobra por unidad."
+                "La evaluación se cobra por unidad y el kit se repone por taller."
             ),
             "validar": (
                 "Que la medición con carga se acerque a la del equipo profesional. Prueba: 10 "
@@ -1010,7 +1018,7 @@ CONTENIDO = {
             "paga": (
                 "La instaladora entrega el panel retirado y cobra por el retiro; el puesto lo "
                 "prueba, lo equipa y lo vende con margen; el comprador paga menos que un panel "
-                "nuevo. Sin donaciones: el stock se compra a la instaladora."
+                "nuevo. El stock se compra a la instaladora y el precio incluye la garantía."
             ),
             "validar": (
                 "Cuántos paneles retirados superan el 60 % de potencia y sostienen la garantía. "
@@ -1090,10 +1098,10 @@ CONTENIDO = {
                 "caminando, sin energía."
             ),
             "paga": (
-                "La alcaldía o la junta compra un tablero por manzana; el jefe de manzana lo "
-                "opera sin sueldo y recibe capacitación; el municipio se ahorra la duplicación "
-                "de ayuda. Sin donaciones: cada tablero se compra y se reusa en la siguiente "
-                "temporada."
+                "La alcaldía o la junta compra un tablero por manzana con su partida de "
+                "emergencia; el jefe de manzana lo opera sin sueldo y recibe capacitación; el "
+                "municipio se ahorra la duplicación de ayuda. Cada tablero se compra y se reusa "
+                "en la siguiente temporada."
             ),
             "validar": (
                 "Que el tablero reduzca entregas duplicadas frente al cuaderno. Prueba: dos "
@@ -1133,9 +1141,9 @@ CONTENIDO = {
                 "cuadran en una mesa."
             ),
             "paga": (
-                "El municipio o la junta compra los talonarios por jornada; la bodega recibe una "
-                "copia y cobra contra ella; el coordinador cuadra y firma. Sin donaciones: el "
-                "costo por vale es parte del operativo de entrega."
+                "El municipio o la junta compra los talonarios por jornada con su partida de "
+                "operativo; la bodega recibe una copia y cobra contra ella; el coordinador "
+                "cuadra y firma. El costo por vale es parte del operativo de entrega."
             ),
             "validar": (
                 "Que el talonario reduzca el doble cobro frente a la lista suelta. Prueba: una "

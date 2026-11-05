@@ -221,8 +221,10 @@ del sistema. Se traducen a lenguaje de calle: «canal» → «quién lo vende o 
 ### Tres campos fijos por solución
 
 - **Ya existe:** dos sustitutos actuales + la diferencia en una frase.
-- **Quién paga:** quién cobra, cuánto y qué gana cada actor (barrio, taller, escuela,
-  municipio). Sin donaciones supuestas.
+- **Quién paga:** quién cobra, cuánto y qué gana cada actor. Dos rutas válidas: comprador
+  privado con interés propio, o **partida pública** (municipio, ministerio, cooperación)
+  cuando la solución es un bien social. Si es pública, nombrar la partida, la obligación o
+  el costo evitado y quién mantiene. Sin donaciones supuestas.
 - **Por validar:** el supuesto más riesgoso y la prueba barata que lo confirma o lo tumba.
 
 ### Resto del contenido
@@ -271,19 +273,37 @@ Donde sí aplica:
 - **Nada de confiar en la memoria o la buena voluntad**: número único, copia, sello, doble
   registro. El control se puede reconstruir en una mesa.
 
-**3. La solución se compra por interés propio, no por conciencia.** Nadie paga por
-certificar, por cumplir una norma que puede evitar, ni por «concientizar». El comprador
-tiene que ganar algo suyo y medible: miel, fruta, agua, tiempo, plata, salud, menos
-deshierbe. Por eso quedan fuera como núcleo:
+**3. Quién paga: interés propio o partida pública. La conciencia no paga facturas.**
+Hay dos modelos legítimos y un modelo que no existe:
+
+- **Comprador privado con interés propio.** Quien paga gana algo suyo y medible: miel,
+  fruta, agua, tiempo, plata, salud, menos deshierbe. Es el modelo de taller, bodega,
+  ferretería, agricultor o familia.
+- **Servicio social con partida pública.** Cuando la solución es un bien público —riesgo,
+  agua, salud, emergencia, espacio común—, es **normal y correcto** que la pague el Estado:
+  municipio, alcaldía, ministerio, empresa pública o cooperación internacional. En América
+  Latina eso es la regla, no la excepción. No hay que pedir perdón por eso ni forzar un
+  autofinanciamiento que nadie va a pagar. Lo que sí se exige es nombrar el pago con
+  precisión:
+  - qué partida o programa la compra (gestión de riesgo, agua y saneamiento, mantenimiento
+    verde, operativo de emergencia, agricultura urbana);
+  - por qué le conviene al Estado: obligación legal, servicio que ya presta, costo evitado
+    (excavación, relleno, atención de emergencia, subsidio que ya paga);
+  - quién firma el contrato y quién mantiene, para que la compra no sea un regalo único.
+
+El modelo que no existe es **el que no tiene pagador**: el que depende de donaciones
+supuestas, de que el vecino sea buena gente, de una campaña de concientización o de que
+alguien compre un certificado que puede evitar. Por eso quedan fuera como núcleo:
 
 - **Certificados, sellos y auditorías** como producto principal: el que puede evitarlos, los
   evita; el que los compra solo gana si otro los exige.
-- **Campañas de sensibilización**, jornadas de limpieza y «compromiso ciudadano».
-- **Modelos que dependen de que el vecino sea buena gente**: si el flujo se rompe cuando
-  alguien actúa por su interés, el modelo está mal.
+- **Campañas de sensibilización**, jornadas de limpieza y «compromiso ciudadano» sin un
+  bien o servicio concreto detrás.
+- **Modelos que se rompen si cada actor busca su interés**: si el flujo depende de heroísmo,
+  el modelo está mal.
 
-Prueba rápida: escribe en una línea qué gana el que paga y qué pierde si no compra. Si la
-respuesta es «nada» o «ayuda al planeta», no hay venta y la idea no aguanta el jurado.
+Prueba rápida: escribe en una línea quién firma el pago —un particular, una empresa o una
+partida pública— y qué recibe a cambio. Si no hay firma ni bien recibido, no hay venta.
 
 ## Corregir con bisturí, no con hacha
 
@@ -347,8 +367,11 @@ cambio no rompe la escena que ya vendía.
 14. **Red según contexto**: si el reto es emergencia, desastre o comunidad sin cobertura,
     ninguna opción depende de QR, aplicación, SMS, nube o GPS y la lectura es física. Si el
     reto no lo implica, la herramienta digital se permite y no se penaliza.
-15. **Comprador con interés**: cada opción declara qué gana quien paga y qué pierde si no
-    compra. Sin certificados, sellos ni concientización como núcleo del modelo.
+15. **Pagador identificado**: cada opción declara quién firma el pago —particular, empresa
+    o partida pública— y qué recibe a cambio. En soluciones sociales la partida pública es
+    válida y se nombra (programa, obligación, costo evitado); no se exige autofinanciamiento
+    ni se presenta la donación como modelo. Sin certificados, sellos ni concientización como
+    núcleo.
 16. **Sin nombres muertos**: ningún precedente, ODS, insignia o señal cita una solución de
     una versión anterior. Se busca el nombre viejo en todo el JSON antes de maquetar.
 17. **Precedentes honestos**: el `por_que` describe el mecanismo del caso, no el de la

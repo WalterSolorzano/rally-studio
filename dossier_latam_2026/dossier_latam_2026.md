@@ -42,7 +42,7 @@
 - **Costo:** ~USD 95 / banco (estimación propia, por cotizar)
 - **Insumos:** Riel de acero 1 m, Mordaza ajustable, Correa y poleas, Generador 12 V como carga, Multímetro con pinza, Resistencia de carga, Caja de instrumentos
 - **Métrica:** Motores probados que vuelven a una máquina en 30 días.
-- **Quién paga:** El taller de barrio compra el banco y cobra la prueba; la escuela técnica compra uno para su taller; la familia paga la prueba y el montaje en vez de una máquina nueva. Nadie dona el equipo: se vende y se recupera en ~20 pruebas.
+- **Quién paga:** El taller de barrio compra el banco y cobra la prueba; la escuela técnica lo compra con su partida de taller; la familia paga la prueba y el montaje en vez de una máquina nueva. El equipo se compra, no se dona, y se recupera en ~20 pruebas.
 
 **Opción 02 — Kit de Acople a Máquina**
 
@@ -59,11 +59,11 @@
 - **Costo:** ~USD 32 / kit (estimación propia, por cotizar)
 - **Insumos:** Placa base perforada, Acoples de eje (3 medidas), Polea, Mordaza de eje, Tornillería, Plantilla de alineación
 - **Métrica:** Máquinas que vuelven a operar con un motor recuperado.
-- **Quién paga:** La ferretería compra el kit al fabricante y lo vende con margen; el dueño de la máquina paga una vez y reusa el motor que ya tiene; el taller cobra el montaje si el cliente no lo hace. Sin donaciones: cada kit se vende.
+- **Quién paga:** La ferretería compra el kit al fabricante y lo vende con margen; el dueño de la máquina paga una vez y reusa el motor que ya tiene; el taller cobra el montaje si el cliente no lo hace. Cada kit se vende y se repone por catálogo.
 
 **Ya existe.** El multímetro de ferretería, que mide continuidad y voltaje sin carga, y el taller de rebobinado, que cobra la revisión y retiene el motor. La diferencia: veredicto en el sitio, sin abrir el motor y sin depender de la red. / El repuesto genérico de ferretería, que no coincide con el eje ni con la distancia entre tornillos, y el taller que adapta a medida en semanas. La diferencia: catálogo por máquina, con la medida en la caja y sin dejar el motor.
 
-**Quién paga.** El taller de barrio compra el banco y cobra la prueba; la escuela técnica compra uno para su taller; la familia paga la prueba y el montaje en vez de una máquina nueva. Nadie dona el equipo: se vende y se recupera en ~20 pruebas. / La ferretería compra el kit al fabricante y lo vende con margen; el dueño de la máquina paga una vez y reusa el motor que ya tiene; el taller cobra el montaje si el cliente no lo hace. Sin donaciones: cada kit se vende.
+**Quién paga.** El taller de barrio compra el banco y cobra la prueba; la escuela técnica lo compra con su partida de taller; la familia paga la prueba y el montaje en vez de una máquina nueva. El equipo se compra, no se dona, y se recupera en ~20 pruebas. / La ferretería compra el kit al fabricante y lo vende con margen; el dueño de la máquina paga una vez y reusa el motor que ya tiene; el taller cobra el montaje si el cliente no lo hace. Cada kit se vende y se repone por catálogo.
 
 **Por validar.** Que el banco distinga un motor quemado de uno sano en las cuatro familias de motores domésticos. Prueba: 20 motores de descarte contra el veredicto de un electricista. / Que tres medidas de acople cubran la mayoría de picadoras, molinos y bombas del barrio. Prueba: inventario de 30 máquinas y medición de eje y anclajes.
 
@@ -116,7 +116,7 @@
 - **Costo:** ~USD 78 / unidad (estimación propia, por cotizar)
 - **Insumos:** Celular usado sin chip, Caja estanca, Panel 5 W, Batería 6 Ah, Controlador de carga, Poste y soporte, LED de 3 colores, Bandera con pasador
 - **Métrica:** Noches con lectura completa y avisos accionados antes del evento.
-- **Quién paga:** El municipio compra la unidad y paga la instalación; el comité de riesgo la mantiene y el ingeniero valida el umbral; la escuela técnica calibra. Sin donaciones: el celular se compra usado y el panel se repone con el mismo contrato de mantenimiento.
+- **Quién paga:** El municipio compra la unidad con su partida de gestión de riesgo y paga la instalación; el comité la mantiene y el ingeniero valida el umbral; la escuela técnica calibra. Es gasto público corriente, no donación: el celular se compra usado y el panel se repone con el mismo contrato de mantenimiento.
 
 **Opción 02 — Oído de Tubería**
 
@@ -133,11 +133,11 @@
 - **Costo:** ~USD 55 / unidad (estimación propia, por cotizar)
 - **Insumos:** Celular usado sin chip, Caja estanca, Abrazadera a tubería, Batería 5 Ah, Panel 3 W, Mapa impreso de la cuadra, Marcador y pintura
 - **Métrica:** Fugas localizadas por semana sin abrir la calle al azar.
-- **Quién paga:** El municipio compra dos unidades por cuadrilla y ahorra horas de excavación; el equipo de agua usa el mapa; el vecino no paga nada y evita el corte. Sin donaciones: el celular se compra usado y el municipio paga el mantenimiento.
+- **Quién paga:** El municipio compra dos unidades por cuadrilla con el presupuesto de agua y ahorra horas de excavación; el equipo usa el mapa; el vecino no paga y evita el corte. Es partida pública, no donación: el celular se compra usado y el mantenimiento va en el mismo contrato.
 
 **Ya existe.** El inclinómetro comercial, que cuesta cientos de dólares y lo lee un técnico, y el reporte vecinal que llega después del derrumbe. La diferencia: el aviso es local, visible y se registra sin señal. / El geófono profesional, que cuesta miles y exige operador, y la denuncia del vecino cuando el charco ya salió. La diferencia: la escucha es nocturna, grabada y se puede repetir sin señal.
 
-**Quién paga.** El municipio compra la unidad y paga la instalación; el comité de riesgo la mantiene y el ingeniero valida el umbral; la escuela técnica calibra. Sin donaciones: el celular se compra usado y el panel se repone con el mismo contrato de mantenimiento. / El municipio compra dos unidades por cuadrilla y ahorra horas de excavación; el equipo de agua usa el mapa; el vecino no paga nada y evita el corte. Sin donaciones: el celular se compra usado y el municipio paga el mantenimiento.
+**Quién paga.** El municipio compra la unidad con su partida de gestión de riesgo y paga la instalación; el comité la mantiene y el ingeniero valida el umbral; la escuela técnica calibra. Es gasto público corriente, no donación: el celular se compra usado y el panel se repone con el mismo contrato de mantenimiento. / El municipio compra dos unidades por cuadrilla con el presupuesto de agua y ahorra horas de excavación; el equipo usa el mapa; el vecino no paga y evita el corte. Es partida pública, no donación: el celular se compra usado y el mantenimiento va en el mismo contrato.
 
 **Por validar.** Que la inclinación del celular detecte movimiento antes de que la grieta sea visible. Prueba: 30 días comparando con un inclinómetro prestado. / Que el micrófono del celular distinga una fuga de una llave abierta o de una bomba. Prueba: 10 puntos con fuga conocida y 10 sin fuga.
 
@@ -190,7 +190,7 @@
 - **Costo:** ~USD 45 / caja con colonia (estimación propia, por cotizar)
 - **Insumos:** Caja racional de madera, Colonia de abeja sin aguijón, Trampa de entrada, Comedero, Soporte de colgado, Guía de manejo de una hoja
 - **Métrica:** Colonias vivas a 6 meses y frutos cuajados por rama testigo.
-- **Quién paga:** La familia o el dueño del huerto compra la caja; el vivero la vende con colonia y compra las divisiones; el colegio compra una para el huerto escolar. Sin donaciones: la miel y la venta de divisiones devuelven el costo.
+- **Quién paga:** La familia o el dueño del huerto compra la caja; el vivero la vende con colonia y compra las divisiones; el municipio compra cajas para huertos escolares con su partida de agricultura urbana. La miel y las divisiones devuelven el costo.
 
 **Opción 02 — Mezcla de Cobertura Florida**
 
@@ -207,11 +207,11 @@
 - **Costo:** ~USD 8 / kg (estimación propia, por cotizar)
 - **Insumos:** Semilla nativa de cobertura (1 kg), Mezcla de dos floraciones, Bolsa de papel, Ficha de siembra, Rodillo de contacto
 - **Métrica:** Metros cuadrados cubiertos y flores por metro en temporada.
-- **Quién paga:** El agricultor o la escuela compra el kilo; el vivero mezcla y vende; el municipio compra para taludes y bordes de vereda. Sin donaciones: la semilla se vende como cualquier insumo agrícola y ahorra deshierbe.
+- **Quién paga:** El agricultor o la escuela compra el kilo; el vivero mezcla y vende; el municipio compra para taludes y bordes de vereda con su partida de mantenimiento verde. La semilla se vende como cualquier insumo agrícola y ahorra deshierbe.
 
 **Ya existe.** El apiario de abeja europea, que exige traje, humo y manejo, y el panal silvestre que se saquea y se pierde. La diferencia: abeja nativa sin aguijón, caja de patio y miel que paga la inversión. / El herbicida, que deja el suelo pelado, y la semilla de pasto, que se corta antes de florecer. La diferencia: cubre sin química, se deja florecer y vuelve sola al año siguiente.
 
-**Quién paga.** La familia o el dueño del huerto compra la caja; el vivero la vende con colonia y compra las divisiones; el colegio compra una para el huerto escolar. Sin donaciones: la miel y la venta de divisiones devuelven el costo. / El agricultor o la escuela compra el kilo; el vivero mezcla y vende; el municipio compra para taludes y bordes de vereda. Sin donaciones: la semilla se vende como cualquier insumo agrícola y ahorra deshierbe.
+**Quién paga.** La familia o el dueño del huerto compra la caja; el vivero la vende con colonia y compra las divisiones; el municipio compra cajas para huertos escolares con su partida de agricultura urbana. La miel y las divisiones devuelven el costo. / El agricultor o la escuela compra el kilo; el vivero mezcla y vende; el municipio compra para taludes y bordes de vereda con su partida de mantenimiento verde. La semilla se vende como cualquier insumo agrícola y ahorra deshierbe.
 
 **Por validar.** Que la colonia sobreviva la estación seca y que el cuajado suba frente a una rama sin caja. Prueba: 10 cajas y 10 ramas testigo durante una floración. / Que la mezcla no compita con el cultivo y vuelva a florecer sin resiembra. Prueba: dos parcelas testigo durante un ciclo completo.
 
@@ -264,7 +264,7 @@
 - **Costo:** ~USD 90 / jornada (estimación propia, por cotizar)
 - **Insumos:** Alquiler de chipeadora por jornada, Remolque, Cuchillas, Bolsas de 20 L, Báscula, Avisos de ruta
 - **Métrica:** % de poda de la cuadra que no sale del barrio.
-- **Quién paga:** El suscriptor paga cuota mensual y recibe astilla; el operador cobra la ruta y no compra máquina hasta tener demanda; el vivero vende la astilla compostada en saco. Sin donaciones: la máquina se arrienda con la cuota ya cobrada.
+- **Quién paga:** El suscriptor paga cuota mensual y recibe astilla; el operador cobra la ruta y no compra máquina hasta tener demanda; el vivero vende la astilla compostada en saco. La jornada se cubre con la cuota ya cobrada y el municipio paga aparte la recolección que se ahorra.
 
 **Opción 02 — Horno de Retorta de Tambor**
 
@@ -281,11 +281,11 @@
 - **Costo:** ~USD 210 / horno (estimación propia, por cotizar)
 - **Insumos:** Tambor 200 L interior, Tambor 200 L exterior, Tubo de escape, Termómetro, Tapa con sello, Horquilla de carga
 - **Métrica:** Lotes de carbón entregados por mes y poda que no se quemó al aire.
-- **Quién paga:** El operador del patio cobra por lote; el municipio paga la recolección que se ahorra; el huerto compra el carbón a precio de barrio. Sin donaciones: el horno se paga con lotes y el carbón tiene comprador.
+- **Quién paga:** El operador del patio cobra por lote; el municipio paga la recolección que se ahorra; el huerto compra el carbón a precio de barrio. El horno se paga con lotes y el carbón tiene comprador fijo.
 
 **Ya existe.** El contrato municipal que paga por desmontar y transportar, y la bolsa de sustrato que el vivero trae de fuera. La diferencia: la demanda está pagada antes de que la máquina salga y el residuo se queda en la cuadra. / La quema abierta, que contamina y rinde poco, y el horno industrial de biochar, que no cabe en un patio. La diferencia: retorta de dos tambores, sin energía y con el humo quemado en la misma cámara.
 
-**Quién paga.** El suscriptor paga cuota mensual y recibe astilla; el operador cobra la ruta y no compra máquina hasta tener demanda; el vivero vende la astilla compostada en saco. Sin donaciones: la máquina se arrienda con la cuota ya cobrada. / El operador del patio cobra por lote; el municipio paga la recolección que se ahorra; el huerto compra el carbón a precio de barrio. Sin donaciones: el horno se paga con lotes y el carbón tiene comprador.
+**Quién paga.** El suscriptor paga cuota mensual y recibe astilla; el operador cobra la ruta y no compra máquina hasta tener demanda; el vivero vende la astilla compostada en saco. La jornada se cubre con la cuota ya cobrada y el municipio paga aparte la recolección que se ahorra. / El operador del patio cobra por lote; el municipio paga la recolección que se ahorra; el huerto compra el carbón a precio de barrio. El horno se paga con lotes y el carbón tiene comprador fijo.
 
 **Por validar.** Cuántos suscriptores por cuadra sostienen una jornada de chipeadora. Prueba: una ruta piloto de 20 casas durante dos meses. / Rendimiento y emisiones del horno frente a la quema abierta. Prueba: tres lotes medidos con termómetro y báscula.
 
@@ -338,7 +338,7 @@
 - **Costo:** ~USD 85 / punto (estimación propia, por cotizar)
 - **Insumos:** Poste graduado, Varilla de flotador, Boya, Sirena 12 V, Batería 12 Ah, Panel 10 W, Gabinete estanco
 - **Métrica:** Tormentas con anegamiento frente al semestre anterior.
-- **Quién paga:** El municipio compra el punto como parte de la obra del reservorio; el comité de cuenca limpia la varilla y prueba la sirena cada mes; el guardia recibe un pago simbólico por estar de turno. Sin donaciones: el mantenimiento va en el contrato del reservorio.
+- **Quién paga:** El municipio compra el punto como parte de la obra del reservorio; el comité de cuenca limpia la varilla y prueba la sirena cada mes; el guardia recibe un pago simbólico por estar de turno. El mantenimiento va en el contrato de la obra, con partida pública.
 
 **Opción 02 — Compuerta de Flotador**
 
@@ -355,11 +355,11 @@
 - **Costo:** ~USD 140 / unidad (estimación propia, por cotizar)
 - **Insumos:** Hoja de PRFV, Bisagras de acero inoxidable, Flotador, Contrapeso, Sello de goma, Rejilla, Anclajes
 - **Métrica:** % del caudal de crecida que entra frenado y sedimentos retenidos.
-- **Quién paga:** El municipio la compra dentro de la obra del reservorio; el comité de cuenca la mantiene con la limpieza mensual; el vecino de aguas arriba no paga y no recibe el rebote. Sin donaciones: va en el presupuesto de la obra.
+- **Quién paga:** El municipio la compra dentro de la obra del reservorio; el comité de cuenca la mantiene con la limpieza mensual; el vecino de aguas arriba no paga y no recibe el rebote. Es inversión pública en la obra, no donación.
 
 **Ya existe.** La regla pintada en el muro, que se tapa de lodo y nadie limpia, y el aviso que llega con el agua adentro. La diferencia: lectura pública, alarma local y cero dependencia de la red. / La rejilla fija, que se tapa en la primera crecida, y la compuerta motorizada, que necesita energía y tablero. La diferencia: pasiva, sin consumo y con purga que impide embalsar aguas arriba.
 
-**Quién paga.** El municipio compra el punto como parte de la obra del reservorio; el comité de cuenca limpia la varilla y prueba la sirena cada mes; el guardia recibe un pago simbólico por estar de turno. Sin donaciones: el mantenimiento va en el contrato del reservorio. / El municipio la compra dentro de la obra del reservorio; el comité de cuenca la mantiene con la limpieza mensual; el vecino de aguas arriba no paga y no recibe el rebote. Sin donaciones: va en el presupuesto de la obra.
+**Quién paga.** El municipio compra el punto como parte de la obra del reservorio; el comité de cuenca limpia la varilla y prueba la sirena cada mes; el guardia recibe un pago simbólico por estar de turno. El mantenimiento va en el contrato de la obra, con partida pública. / El municipio la compra dentro de la obra del reservorio; el comité de cuenca la mantiene con la limpieza mensual; el vecino de aguas arriba no paga y no recibe el rebote. Es inversión pública en la obra, no donación.
 
 **Por validar.** Que la varilla no se trabe con sedimento en crecida. Prueba: una temporada de lluvia con limpieza semanal registrada. / Que el contrapeso abra la compuerta cuando baja el caudal y no deje sedimento atrapado. Prueba: una temporada con dos crecidas medidas.
 
@@ -412,7 +412,7 @@
 - **Costo:** ~USD 180 / unidad (estimación propia, por cotizar)
 - **Insumos:** Bomba de diafragma de doble cámara, Pedal y biela, Manguera de 2 pulgadas, Filtro de entrada, Válvulas, Bastidor plegable
 - **Métrica:** Horas por vivienda vaciada en las primeras 48 horas.
-- **Quién paga:** La junta del barrio compra una unidad entre varias familias y la presta por turnos; el taller local cobra la reparación; la familia no paga alquiler y devuelve la bomba limpia. Sin donaciones: la unidad se compra y se rota.
+- **Quién paga:** La junta del barrio compra una unidad entre varias familias y la presta por turnos; el taller local cobra la reparación; la familia no paga alquiler y devuelve la bomba limpia. La alcaldía puede comprar unidades para el comité de emergencia con su partida de riesgo.
 
 **Opción 02 — Trineo Filtrante**
 
@@ -429,11 +429,11 @@
 - **Costo:** ~USD 60 / unidad (estimación propia, por cotizar)
 - **Insumos:** Trineo de chapa plegada, Saco de geotextil, Ruedas pequeñas, Manija de arrastre, Cincha, Pala corta
 - **Métrica:** Sacos de lodo retirados por jornada y agua que no vuelve al piso.
-- **Quién paga:** El taller de metal del barrio lo fabrica y lo vende o alquila; la junta lo rota entre las casas; la familia paga el alquiler del día. Sin donaciones: cada trineo se vende.
+- **Quién paga:** El taller de metal del barrio lo fabrica y lo vende o alquila; la junta lo rota entre las casas; la familia paga el alquiler del día. Cada trineo se vende y la alcaldía puede comprar un lote para el comité de emergencia.
 
 **Ya existe.** La bomba de achique eléctrica, que se atasca con sólidos y no tiene corriente, y la pala con cubeta, que toma días. La diferencia: mueve lodo denso con pedal y se desarma para llevarla en un carro. / La carretilla, que no pasa por la puerta, y la cubeta, que obliga a cargar veinte kilos por viaje. La diferencia: filtra en el camino y trabaja en el pasillo angosto.
 
-**Quién paga.** La junta del barrio compra una unidad entre varias familias y la presta por turnos; el taller local cobra la reparación; la familia no paga alquiler y devuelve la bomba limpia. Sin donaciones: la unidad se compra y se rota. / El taller de metal del barrio lo fabrica y lo vende o alquila; la junta lo rota entre las casas; la familia paga el alquiler del día. Sin donaciones: cada trineo se vende.
+**Quién paga.** La junta del barrio compra una unidad entre varias familias y la presta por turnos; el taller local cobra la reparación; la familia no paga alquiler y devuelve la bomba limpia. La alcaldía puede comprar unidades para el comité de emergencia con su partida de riesgo. / El taller de metal del barrio lo fabrica y lo vende o alquila; la junta lo rota entre las casas; la familia paga el alquiler del día. Cada trineo se vende y la alcaldía puede comprar un lote para el comité de emergencia.
 
 **Por validar.** Que el diafragma succione lodo con piedras de hasta 3 cm sin atascarse. Prueba: tres casas con lodo real y cronómetro. / Que el geotextil retenga el lodo fino y no se rasgue al arrastrar. Prueba: cinco jornadas con el mismo saco.
 
@@ -486,7 +486,7 @@
 - **Costo:** ~USD 4 / garrafa + depósito (estimación propia, por cotizar)
 - **Insumos:** Garrafa de 5 L retornable, Sello y número, Depósito de 200 L, Bomba de trasvase, Báscula, Cuaderno de comisión
 - **Métrica:** Litros acopiados por bodega al mes y garrafas devueltas.
-- **Quién paga:** El procesador paga comisión por litro a la bodega; la bodega descuenta a la familia y gana clientela; el vecino entrega el aceite y recibe descuento. Sin donaciones: la comisión cubre la garrafa y el retiro.
+- **Quién paga:** El procesador paga comisión por litro a la bodega; la bodega descuenta a la familia y gana clientela; el vecino entrega el aceite y recibe descuento. La comisión cubre la garrafa y el retiro; si el municipio suma un incentivo por litro acopiado, el punto despega antes.
 
 **Opción 02 — Aceite para Cadena**
 
@@ -503,11 +503,11 @@
 - **Costo:** ~USD 3 / frasco (estimación propia, por cotizar)
 - **Insumos:** Filtro de malla, Embudo, Frascos de 1 L con pico, Etiquetas de lote, Tiras de acidez, Caja de transporte
 - **Métrica:** Frascos vendidos por mes y lotes descartados por acidez.
-- **Quién paga:** El taller o el bicicletero compra el frasco; la familia que entrega aceite recibe descuento o un frasco; el que filtra cobra el servicio de acondicionado. Sin donaciones: el lubricante tiene comprador fijo.
+- **Quién paga:** El taller o el bicicletero compra el frasco; la familia que entrega aceite recibe descuento o un frasco; el que filtra cobra el servicio de acondicionado. El lubricante tiene comprador fijo y el lote se repone por caja.
 
 **Ya existe.** La botella plástica que se tira, el camión de basura que no recibe líquidos y el restaurante que vende a granel. La diferencia: el envase vuelve y el descuento se cobra en la misma cuadra. / El aceite usado a granel, que mancha y huele, y el lubricante nuevo de tienda. La diferencia: filtrado, probado y en un envase con pico que no ensucia.
 
-**Quién paga.** El procesador paga comisión por litro a la bodega; la bodega descuenta a la familia y gana clientela; el vecino entrega el aceite y recibe descuento. Sin donaciones: la comisión cubre la garrafa y el retiro. / El taller o el bicicletero compra el frasco; la familia que entrega aceite recibe descuento o un frasco; el que filtra cobra el servicio de acondicionado. Sin donaciones: el lubricante tiene comprador fijo.
+**Quién paga.** El procesador paga comisión por litro a la bodega; la bodega descuenta a la familia y gana clientela; el vecino entrega el aceite y recibe descuento. La comisión cubre la garrafa y el retiro; si el municipio suma un incentivo por litro acopiado, el punto despega antes. / El taller o el bicicletero compra el frasco; la familia que entrega aceite recibe descuento o un frasco; el que filtra cobra el servicio de acondicionado. El lubricante tiene comprador fijo y el lote se repone por caja.
 
 **Por validar.** Cuántos litros por mes sostienen el retiro semanal y cuántas garrafas vuelven. Prueba: una bodega piloto durante dos meses. / Que la acidez del aceite de cocina usado no dañe la cadena. Prueba: dos cadenas testigo durante un mes con medición de desgaste.
 
@@ -560,7 +560,7 @@
 - **Costo:** ~USD 135 / kit (estimación propia, por cotizar)
 - **Insumos:** Carga resistiva, Celda de referencia, Pinza amperimétrica, Multímetro, Caja de instrumentos, Cables y conectores
 - **Métrica:** Paneles evaluados con destino declarado por semana.
-- **Quién paga:** La instaladora compra el kit y cobra la evaluación; el puesto de segunda vida lo usa para clasificar stock; el comprador paga la ficha incluida en el panel. Sin donaciones: la evaluación se cobra por unidad.
+- **Quién paga:** La instaladora compra el kit y cobra la evaluación; el puesto de segunda vida lo usa para clasificar stock; el comprador paga la ficha incluida en el panel. La evaluación se cobra por unidad y el kit se repone por taller.
 
 **Opción 02 — Panel de Segunda Vida**
 
@@ -577,11 +577,11 @@
 - **Costo:** ~USD 45 / kit + panel (estimación propia, por cotizar)
 - **Insumos:** Panel probado, Soporte de ángulo, Controlador de carga, Batería 12 V, Cableado, Etiqueta de potencia
 - **Métrica:** Paneles revendidos con garantía y fallas dentro del plazo.
-- **Quién paga:** La instaladora entrega el panel retirado y cobra por el retiro; el puesto lo prueba, lo equipa y lo vende con margen; el comprador paga menos que un panel nuevo. Sin donaciones: el stock se compra a la instaladora.
+- **Quién paga:** La instaladora entrega el panel retirado y cobra por el retiro; el puesto lo prueba, lo equipa y lo vende con margen; el comprador paga menos que un panel nuevo. El stock se compra a la instaladora y el precio incluye la garantía.
 
 **Ya existe.** El multímetro, que mide en vacío y no dice la potencia real, y el proveedor que no certifica paneles usados. La diferencia: medición a plena carga y bajo sol, con ficha y veredicto. / El panel usado que se vende «como está», y el desarme para recuperar aluminio. La diferencia: potencia escrita, kit de instalación y garantía de seis meses.
 
-**Quién paga.** La instaladora compra el kit y cobra la evaluación; el puesto de segunda vida lo usa para clasificar stock; el comprador paga la ficha incluida en el panel. Sin donaciones: la evaluación se cobra por unidad. / La instaladora entrega el panel retirado y cobra por el retiro; el puesto lo prueba, lo equipa y lo vende con margen; el comprador paga menos que un panel nuevo. Sin donaciones: el stock se compra a la instaladora.
+**Quién paga.** La instaladora compra el kit y cobra la evaluación; el puesto de segunda vida lo usa para clasificar stock; el comprador paga la ficha incluida en el panel. La evaluación se cobra por unidad y el kit se repone por taller. / La instaladora entrega el panel retirado y cobra por el retiro; el puesto lo prueba, lo equipa y lo vende con margen; el comprador paga menos que un panel nuevo. El stock se compra a la instaladora y el precio incluye la garantía.
 
 **Por validar.** Que la medición con carga se acerque a la del equipo profesional. Prueba: 10 paneles medidos con ambos métodos. / Cuántos paneles retirados superan el 60 % de potencia y sostienen la garantía. Prueba: 20 paneles con seguimiento de seis meses.
 
@@ -634,7 +634,7 @@
 - **Costo:** ~USD 35 / tablero (estimación propia, por cotizar)
 - **Insumos:** Tablero plegable, Fichas imantadas (100), Tarjetas de casa numeradas, Marcador de pizarra, Protocolo impreso, Funda impermeable
 - **Métrica:** Casas atendidas por hora y fichas sin actualizar al cierre.
-- **Quién paga:** La alcaldía o la junta compra un tablero por manzana; el jefe de manzana lo opera sin sueldo y recibe capacitación; el municipio se ahorra la duplicación de ayuda. Sin donaciones: cada tablero se compra y se reusa en la siguiente temporada.
+- **Quién paga:** La alcaldía o la junta compra un tablero por manzana con su partida de emergencia; el jefe de manzana lo opera sin sueldo y recibe capacitación; el municipio se ahorra la duplicación de ayuda. Cada tablero se compra y se reusa en la siguiente temporada.
 
 **Opción 02 — Talonario de Vales**
 
@@ -651,11 +651,11 @@
 - **Costo:** ~USD 6 / 100 vales (estimación propia)
 - **Insumos:** Talonario triplicado (100), Sello de serie, Marcador grueso, Tabla de cuadre, Funda impermeable
 - **Métrica:** Entregas duplicadas por jornada y talones cuadrados al cierre.
-- **Quién paga:** El municipio o la junta compra los talonarios por jornada; la bodega recibe una copia y cobra contra ella; el coordinador cuadra y firma. Sin donaciones: el costo por vale es parte del operativo de entrega.
+- **Quién paga:** El municipio o la junta compra los talonarios por jornada con su partida de operativo; la bodega recibe una copia y cobra contra ella; el coordinador cuadra y firma. El costo por vale es parte del operativo de entrega.
 
 **Ya existe.** La lista en cuaderno, que se pierde y se duplica, y el grupo de mensajes, que se cae con la antena. La diferencia: el estado está a la vista y se lee caminando, sin energía. / La lista suelta sin número, que se moja y se confunde, y el registro digital, que se cae con la red. La diferencia: número único en tres copias que se cuadran en una mesa.
 
-**Quién paga.** La alcaldía o la junta compra un tablero por manzana; el jefe de manzana lo opera sin sueldo y recibe capacitación; el municipio se ahorra la duplicación de ayuda. Sin donaciones: cada tablero se compra y se reusa en la siguiente temporada. / El municipio o la junta compra los talonarios por jornada; la bodega recibe una copia y cobra contra ella; el coordinador cuadra y firma. Sin donaciones: el costo por vale es parte del operativo de entrega.
+**Quién paga.** La alcaldía o la junta compra un tablero por manzana con su partida de emergencia; el jefe de manzana lo opera sin sueldo y recibe capacitación; el municipio se ahorra la duplicación de ayuda. Cada tablero se compra y se reusa en la siguiente temporada. / El municipio o la junta compra los talonarios por jornada con su partida de operativo; la bodega recibe una copia y cobra contra ella; el coordinador cuadra y firma. El costo por vale es parte del operativo de entrega.
 
 **Por validar.** Que el tablero reduzca entregas duplicadas frente al cuaderno. Prueba: dos manzanas comparadas en un simulacro. / Que el talonario reduzca el doble cobro frente a la lista suelta. Prueba: una jornada real con dos mesas de entrega.
 
