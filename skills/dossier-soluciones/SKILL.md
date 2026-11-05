@@ -236,6 +236,36 @@ del sistema. Se traducen a lenguaje de calle: «canal» → «quién lo vende o 
 - Precedentes con link de video; si falta, se dice y se compensa.
 - Sin estadísticas internas del motor.
 
+## Dos reglas que evitan el dossier incoherente
+
+**1. Una solución es un objeto completo, no un párrafo.** Narrativa, claim, 4 pasos,
+componentes, costo, métrica, «ya existe», «quién paga», «por validar», pitch y precedente
+pertenecen a la misma solución y se escriben **juntos**. Si cambia la idea, se reescriben
+todos sus campos en el mismo movimiento. Nunca se heredan componentes, costo, pitch ni
+precedente de una versión anterior: así se produjo un dossier donde el texto hablaba de un
+probador y la lista de insumos decía «bomba, manguera y marco de riego», o donde el pitch
+vendía una solución que ya no existía.
+
+Señales de que esto pasó: dos opciones del mismo reto comparten insumos, el costo no se
+explica con la lista de componentes, el pitch nombra algo que no está en el texto, un
+precedente cita el nombre de una solución anterior, o las insignias y los ODS hablan de un
+mecanismo que ya no está.
+
+**2. Si algo necesita red, no sirve en la emergencia.** El dossier se usa cuando no hay
+internet, ni señal, ni luz, ni batería. Por eso:
+
+- **Prohibido el QR y el formulario como producto.** Un QR es una puerta a una base de
+  datos que no está; en un desastre la antena se cae primero. Un formulario no cambia nada
+  físico: no es una solución.
+- **Prohibido depender de aplicación, SMS, nube, GPS o «el municipio lo sube».** El dato
+  viaja en el objeto, en papel o por radio.
+- **La lectura tiene que ser física y visible**: color, bandera, varilla, ficha, talón. Si
+  la única forma de saber algo es mirar una pantalla con saldo, no cuenta.
+- **La energía se resuelve en el objeto**: pedal, flotador, contrapeso, batería con panel.
+  Nunca «se enchufa» ni «se carga en la casa».
+- **Nada de confiar en la memoria o la buena voluntad**: número único, copia, sello, doble
+  registro. El control se puede reconstruir en una mesa.
+
 
 ## Anatomía de página
 
@@ -284,4 +314,19 @@ del sistema. Se traducen a lenguaje de calle: «canal» → «quién lo vende o 
 11. Renderizar a PNG: sin cortes ni grupos partidos; COMENTARIOS completos en el área útil.
 12. Correr el verificador de texto sobre el PDF final (conteo de palabras, términos
     prohibidos, aparición literal de cada narrativa) antes de decir que está listo.
+13. **Coherencia interna, opción por opción**: cada componente de la lista aparece en el
+    relato o en los pasos; el costo se explica por esa lista; la métrica se mide con lo que
+    la solución instala; el pitch nombra la solución actual y no otra.
+14. **Cero red**: ninguna opción depende de QR, aplicación, SMS, nube, GPS ni de una base
+    de datos. La lectura es física y visible.
+15. **Sin nombres muertos**: ningún precedente, ODS, insignia o señal cita una solución de
+    una versión anterior. Se busca el nombre viejo en todo el JSON antes de maquetar.
+16. **Precedentes honestos**: el `por_que` describe el mecanismo del caso, no el de la
+    solución propia, y el puesto/año coinciden con `knowledge/retos_razonamiento.json` o con
+    la fuente del repo.
+17. **El `.md` y el JSON son espejo**: se regeneran desde el mismo JSON; ninguno se edita a
+    mano.
+18. **La skill que se carga es la que se editó**: `skills/<nombre>/SKILL.md` se copia a
+    `.opencode/skills/` y `.agents/skills/` (o se corre `scripts/setup_agente.ps1`). Si esas
+    copias quedan viejas, el agente lee la versión anterior y repite los mismos errores.
 

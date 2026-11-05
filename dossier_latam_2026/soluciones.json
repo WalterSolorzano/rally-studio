@@ -8,78 +8,82 @@
   "retos": [
     {
       "id": "01",
-      "titulo": "SEGUNDA VIDA DE LOS MOTORES ELÉCTRICOS DOMÉSTICOS",
+      "titulo": "Segunda vida de los motores eléctricos domésticos",
       "categoria": "Impacto Social",
-      "categoria_porque": "El valor se mide en motores que vuelven a trabajar y en familias que evitan comprar una máquina nueva, no en unidades vendidas.",
+      "categoria_porque": "El valor se mide en motores que vuelven a mover una máquina y en familias que evitan comprar una nueva, no en unidades vendidas.",
       "descripcion": "Los electrodomésticos en desuso (caminadoras, bombas de agua, lavarropas, ventiladores, herramientas) conservan motores funcionales que terminan como chatarra. El reto pide elegir un actor beneficiario concreto y proponer como recuperar esos motores y darles un nuevo propósito.",
       "ods": [
         [
           "ODS 12",
           "Producción y consumo responsables",
-          "El motor alarga su vida dentro de un servicio que funciona todos los días, en vez de venderse una vez y perderse."
+          "El motor alarga su vida útil dentro de una máquina que ya existe, en vez de vender una unidad nueva y perder el cobre y el acero del anterior."
         ],
         [
           "ODS 8",
           "Trabajo decente y crecimiento económico",
-          "El punto de molienda da ingreso a una cooperativa de barrio y baja el costo de moler para las familias."
+          "El taller de barrio cobra la prueba y el montaje, dos servicios que hoy no puede ofrecer porque no tiene cómo verificar un motor."
         ],
         [
           "ODS 7",
           "Energía asequible y no contaminante",
-          "El motor que ya existe mueve el molino y la picadora sin fabricar una máquina nueva ni quemar combustible."
+          "El motor recuperado mueve el molino, la picadora o la bomba sin quemar combustible ni fabricar un equipo nuevo."
         ]
       ],
       "propuesta": {
-        "nombre": "Motor de Segunda Vida",
-        "claim": "El motor que ya tienes vuelve a mover algo tuyo, no del chatarrero.",
-        "que_es": "Cuando la lavadora se quema, el motor casi siempre sigue sirviendo, pero nadie lo sabe. El dueño ve un aparato muerto, el chatarrero paga por peso de cobre y el taller cobra la revisión antes de decir nada. La propuesta es un equipo pequeño que se enchufa entre el motor y la pared: en pocos minutos mide si arranca, si calienta y si aguanta carga, y muestra un veredicto simple, sirve o no sirve, sin lenguaje técnico. Si sirve, el mismo equipo trae un acople ajustable y una base para montarlo en un molino, una picadora, una bomba o un banco de trabajo, con las medidas de eje más comunes del hogar. La familia compra el equipo y conserva su motor; el electricista cobra la instalación; la ferretería gana el margen del kit. Nadie tiene que donar nada ni esperar turno. Lo que ya existe es el multímetro y el taller de rebobinado: el primero no dice si el motor aguanta carga, el segundo obliga a dejarlo días. La diferencia es el veredicto en casa y el acople que convierte un motor suelto en una máquina útil para lavadoras, bombas, ventiladores o caminadoras por igual.",
+        "nombre": "Banco de Prueba de Motor",
+        "claim": "Diez minutos y un veredicto: sirve, sirve para esto o no sirve.",
+        "que_es": "En el taller del barrio se acumulan motores de lavadora, de bomba y de caminadora que nadie sabe si sirven. El dueño los guarda porque pesan y porque le dijeron que aún valen, pero no tiene cómo comprobarlo. El banco de prueba cambia eso: el motor se monta sobre un riel, se le acopla una correa al eje y se le hace girar a mano y después con una carga pequeña. No se conecta a la red, así que no importa si es de escobillas, de inducción o con controlador: el banco mide lo que el motor entrega al girar y cuánto aguanta antes de calentarse. En diez minutos sale un veredicto escrito: sirve, sirve para tal uso o no sirve. La familia no compra una máquina nueva; el taller cobra la prueba y el montaje; la escuela técnica compra un banco y lo usa para enseñar. Lo que existe hoy es el multímetro, que mide continuidad pero no carga, y el taller de rebobinado, que se queda el motor por días sin decir para qué sirve.",
         "como": [
-          "El equipo se enchufa entre el motor suelto y la pared.",
-          "En pocos minutos da veredicto: sirve o no sirve, sin tecnicismos.",
-          "Si sirve, el acople ajustable monta el motor en molino, picadora o bomba.",
-          "La familia conserva el motor; el electricista cobra la instalación."
+          "El taller monta el motor sobre el riel y lo fija con la mordaza.",
+          "Acopla la correa al eje y hace girar el motor con la carga conectada.",
+          "Anota corriente, voltaje y temperatura; compara con la tabla de referencia.",
+          "Entrega la ficha con el veredicto y el uso recomendado para ese motor."
         ],
-        "beneficiario": "Familias y huertos hortícolas de periferia",
+        "beneficiario": "por definir",
         "componentes": [
-          "Motor usado",
-          "Acoplador",
-          "Bomba 25 mm",
-          "Manguera + válvula",
-          "Marco + tornillería",
-          "Multímetro"
+          "Riel de acero 1 m",
+          "Mordaza ajustable",
+          "Correa y poleas",
+          "Generador 12 V como carga",
+          "Multímetro con pinza",
+          "Resistencia de carga",
+          "Caja de instrumentos"
         ],
-        "costo": "~USD 57 / kit (estimación propia, por cotizar)",
+        "costo": "~USD 95 / banco (estimación propia, por cotizar)",
         "metricas": [
-          "≥10 motores con segundo uso operando a 60 días, de al menos 3 tipos de aparato."
+          "Motores probados que vuelven a una máquina en 30 días."
         ]
       },
       "alterna": {
-        "nombre": "Motor de Intercambio",
-        "claim": "Entregas el motor quemado y sales con uno que funciona, el mismo día.",
-        "que_es": "El problema no es solo saber si el motor sirve, sino no quedarse sin máquina mientras lo averiguan. En una ferretería de barrio hay un estante con motores ya probados, limpios y con placa: el cliente entrega el suyo como parte de pago y se lleva uno equivalente en el mismo viaje, con garantía escrita de tres meses. El que entrega sabe que su motor entra al circuito; el que compra no espera días ni deja la lavadora desarmada. La ferretería gana la diferencia y el cobre del motor entregado; el rebobinador local trabaja por volumen y no por mostrador; el cliente paga solo la diferencia, no un motor nuevo. Es el mismo modelo del acumulador de auto, aplicado a motores domésticos de lavadora, bomba, ventilador o caminadora. Lo que ya existe es el electricista que repara a domicilio y el chatarrero que compra por peso: ninguno de los dos entrega un reemplazo inmediato con garantía. La diferencia es el cambio en el mostrador y un stock probado que cubre varios tipos de aparato, no un solo modelo.",
+        "nombre": "Kit de Acople a Máquina",
+        "claim": "El motor viejo vuelve a mover la máquina, no al revés.",
+        "que_es": "Una picadora de maíz pierde su motor y el motor queda huérfano cuando la máquina se oxida. En la ferretería nadie vende el acople porque cada máquina tiene su eje, su base y su distancia entre tornillos. El kit resuelve ese punto: una placa perforada, tres acoples de eje y una polea que se eligen según la máquina, no según el motor. El comprador llega con la foto de la picadora, el mostrador identifica el modelo y entrega el kit; en la casa se atornilla la placa, se calza el acople y el motor viejo vuelve a mover la máquina. El kit se cobra una vez y sirve para varias máquinas de la misma familia. Lo que existe es el repuesto genérico, que no calza, y el taller que adapta a medida y tarda semanas. La diferencia es que el kit se vende por catálogo, con la medida escrita en la caja, y no exige dejar el motor en ningún lado.",
         "como": [
-          "El cliente entrega su motor quemado en la ferretería.",
-          "Recibe un motor probado y con placa, del mismo tipo, el mismo día.",
-          "Paga la diferencia y se lleva garantía escrita de tres meses.",
-          "El motor entregado entra al circuito de rebobinado o despiece."
+          "El mostrador identifica la máquina por modelo y elige el kit de esa familia.",
+          "Se atornilla la placa base sobre los anclajes originales de la máquina.",
+          "Se calza el acople de eje y se alinea la polea con la del motor.",
+          "Se prueba en vacío y se entrega con la medida y el par de apriete anotados."
         ],
-        "beneficiario": "Familias y huertos hortícolas de periferia",
+        "beneficiario": "por definir",
         "componentes": [
-          "Tablones",
-          "Multímetro",
-          "Poste de corrida"
+          "Placa base perforada",
+          "Acoples de eje (3 medidas)",
+          "Polea",
+          "Mordaza de eje",
+          "Tornillería",
+          "Plantilla de alineación"
         ],
-        "costo": "~USD 22 / unidad de stock inicial (estimación propia, por cotizar)",
+        "costo": "~USD 32 / kit (estimación propia, por cotizar)",
         "metricas": [
-          "≥70% de los intercambios resueltos el mismo día, con garantía emitida."
+          "Máquinas que vuelven a operar con un motor recuperado."
         ]
       },
       "cadena": {
-        "problema": "Motores funcionales terminan como chatarra.",
-        "causa_raiz": "El dueño no puede probar si sirve (sin multímetro, sin corrida) y el taller cobra revisión → «es basura pesada».",
-        "insight": "No existe un punto comunitario que haga el chequeo en 5 min y entregue veredicto + lista de usos locales.",
-        "solucion": "Motor de Segunda Vida y Motor de Intercambio: dos rutas independientes sobre el mismo problema.",
-        "metrica": "≥10 motores con segundo uso operando a 60 días, de al menos 3 tipos de aparato. (Opción 01); ≥70% de los intercambios resueltos el mismo día, con garantía emitida. (Opción 02)."
+        "problema": "Motores funcionales terminan como chatarra pesada.",
+        "causa_raiz": "Nadie puede comprobar si el motor sirve sin desarmarlo, y el taller cobra la revisión y retiene el motor por días.",
+        "insight": "El motor no necesita la red para probarse: se le hace girar, se le pone carga y lo que entrega dice si sirve y para qué.",
+        "solucion": "Banco de Prueba de Motor y Kit de Acople a Máquina: dos rutas independientes sobre el mismo problema.",
+        "metrica": "Del total de motores probados, % con segundo uso operando en una máquina a los 60 días."
       },
       "senal": "Este reto lo ganó un equipo que no vendió el motor como repuesto: lo volvió tracción para el campo.",
       "analogias": [
@@ -87,127 +91,131 @@
           "year": 2026,
           "equipo": "AVOCADO (UAM - Jaguares)",
           "proyecto": "Segunda vida de motores eléctricos domésticos",
+          "puesto": "1er lugar nacional Impacto Social",
           "que_hicieron": "Rescató motores descartados y los volvió planta motriz para tracción rural.",
-          "por_que": "Ganó este reto sin reparar ni revender: puso el motor a mover una máquina de la comunidad.",
-          "video": "",
-          "puesto": "1er lugar nacional Impacto Social"
+          "por_que": "Mismo principio: el motor no se vende como repuesto, se vuelve a poner a trabajar.",
+          "video": ""
         },
         {
           "year": 2024,
           "equipo": "Techriders (UNI-RUSB)",
           "proyecto": "Micropresas telemetradas",
-          "que_hicieron": "Volvió una obra hidráulica convencional un sistema medido y automatizado.",
-          "por_que": "Mismo movimiento: el objeto de siempre más medición y control de la carga.",
-          "video": "https://www.youtube.com/watch?v=MIvlD31HfIk",
-          "puesto": "1er lugar internacional Innovación"
+          "puesto": "1er lugar internacional Innovación",
+          "que_hicieron": "Construyó un tablero de telemetría para decidir sobre infraestructura crítica.",
+          "por_que": "Aporta el criterio de medir con un instrumento barato antes de decidir.",
+          "video": ""
         }
       ],
       "realidad": {
-        "a": "La familia compra el equipo; el electricista cobra la instalación; la ferretería gana el margen. Sin donaciones.",
-        "b": "El cliente paga la diferencia; la ferretería gana margen y cobre; el rebobinador gana por volumen."
+        "a": "El taller de barrio compra el banco y cobra la prueba; la escuela técnica compra uno para su taller; la familia paga la prueba y el montaje en vez de una máquina nueva. Nadie dona el equipo: se vende y se recupera en ~20 pruebas.",
+        "b": "La ferretería compra el kit al fabricante y lo vende con margen; el dueño de la máquina paga una vez y reusa el motor que ya tiene; el taller cobra el montaje si el cliente no lo hace. Sin donaciones: cada kit se vende."
       },
       "detalles": [
         [
           "Ya existe",
-          "El multímetro (mide continuidad, no carga) y el taller de rebobinado (se queda el motor por días). La diferencia: veredicto en casa y acople que sirve a varios aparatos. / El electricista que repara (días sin máquina) y el chatarrero que paga por peso. La diferencia: reemplazo inmediato con garantía y stock de varios tipos."
+          "El multímetro de ferretería, que mide continuidad y voltaje sin carga, y el taller de rebobinado, que cobra la revisión y retiene el motor. La diferencia: veredicto en el sitio, sin abrir el motor y sin depender de la red. / El repuesto genérico de ferretería, que no coincide con el eje ni con la distancia entre tornillos, y el taller que adapta a medida en semanas. La diferencia: catálogo por máquina, con la medida en la caja y sin dejar el motor."
         ],
         [
           "Quién paga",
-          "La familia compra el equipo; el electricista cobra la instalación; la ferretería gana el margen. Sin donaciones. / El cliente paga la diferencia; la ferretería gana margen y cobre; el rebobinador gana por volumen."
+          "El taller de barrio compra el banco y cobra la prueba; la escuela técnica compra uno para su taller; la familia paga la prueba y el montaje en vez de una máquina nueva. Nadie dona el equipo: se vende y se recupera en ~20 pruebas. / La ferretería compra el kit al fabricante y lo vende con margen; el dueño de la máquina paga una vez y reusa el motor que ya tiene; el taller cobra el montaje si el cliente no lo hace. Sin donaciones: cada kit se vende."
         ],
         [
           "Por validar",
-          "Que el acople cubra los ejes más comunes sin vibración; probar con 10 motores distintos antes de vender el kit. / Cuánto stock mínimo hace falta para cubrir la demanda de un barrio sin inmovilizar capital."
+          "Que el banco distinga un motor quemado de uno sano en las cuatro familias de motores domésticos. Prueba: 20 motores de descarte contra el veredicto de un electricista. / Que tres medidas de acople cubran la mayoría de picadoras, molinos y bombas del barrio. Prueba: inventario de 30 máquinas y medición de eje y anclajes."
         ]
       ],
       "insignias": [
         [
-          "Economía circular",
-          "circuito cobre → motor"
-        ],
-        [
-          "Fondo nacional de innovación",
-          "piloto replicable"
-        ],
-        [
           "Premio Latinoamérica Verde",
-          "categoría residuos"
+          "economía circular"
+        ],
+        [
+          "Pacto Global de las Naciones Unidas",
+          "trabajo y ambiente"
         ]
       ],
-      "pitch": "De «basura pesada» a riego por goteo: el chequeo de 5 minutos del centro devuelve motores al uso y el taller gana por montaje."
+      "pitch": "Un motor que no se puede probar es chatarra. El banco lo monta, lo hace girar bajo carga y devuelve un veredicto en diez minutos; el kit de acople lo vuelve a poner en la máquina. El taller cobra, la familia ahorra y el cobre no se va al relleno."
     },
     {
       "id": "02",
-      "titulo": "SENSORES AL SERVICIO DE LA COMUNIDAD",
+      "titulo": "Sensores al servicio de la comunidad",
       "categoria": "Impacto Social",
-      "categoria_porque": "La red protege viviendas y barrios vulnerables; el indicador final es personas avisadas a tiempo, no el dispositivo.",
+      "categoria_porque": "La red protege viviendas y barrios vulnerables; el indicador final es el aviso que llega antes del evento, no el aparato.",
       "descripcion": "Millones de celulares en desuso siguen funcionando y traen acelerómetro, giroscopio, magnetómetro, GPS y conectividad. El reto pide identificar un problema local donde esos sensores aporten información útil y definir que mide, donde se instala, como se alimenta y quien decide con el dato.",
       "ods": [
         [
-          "ODS 9",
-          "Industria, innovación e infraestructura",
-          "Convierte hardware de consumo descartado en instrumentación de bajo costo para infraestructura comunitaria."
-        ],
-        [
           "ODS 11",
           "Ciudades y comunidades sostenibles",
-          "Reduce el riesgo de deslizamiento en barrios de ladera con alerta temprana y protocolo vecinal."
+          "Reduce el riesgo de deslizamiento y de fuga en barrios donde el dato llega siempre después del daño."
         ],
         [
           "ODS 13",
           "Acción por el clima",
-          "Las lluvias intensas aumentan la inestabilidad de taludes; medirla permite adaptarse con evidencia."
+          "Las lluvias intensas mueven taludes y rompen tuberías; medir antes permite adaptar la respuesta con evidencia local."
+        ],
+        [
+          "ODS 9",
+          "Industria, innovación e infraestructura",
+          "Convierte hardware de consumo descartado en instrumentación comunitaria que funciona sin red."
         ]
       ],
       "propuesta": {
-        "nombre": "Ojo Vital",
-        "claim": "La pared avisa antes de caer: luz verde, amarilla o roja, y alguien responde.",
-        "que_es": "En una ladera, una familia duerme con una grieta que creció este año y nadie sabe si sigue moviéndose. El acelerómetro de un celular no mide riesgo: mide inclinación y vibración, y eso es justo lo que hace falta. El teléfono va en una caja sellada, fija al muro, registrando contra una línea base tomada el día de la instalación. Un ingeniero de la oficina de riesgo municipal define con la junta los umbrales de verde, amarillo y rojo, y los deja por escrito; la comunidad los valida en asamblea. Si el muro pasa a rojo, la caja enciende una baliza y manda aviso al responsable nombrado por la junta, no un resumen semanal. El equipo se compra con presupuesto del proyecto o se arma con el celular viejo de la propia casa, sin depender de donaciones; el municipio paga la instalación y la conexión, porque le sale más barato que instrumentar cada ladera. Lo que ya existe es el inclinómetro y la regla de grietas, que alguien debe ir a leer, y el equipo profesional, que cuesta cientos de dólares y requiere ingeniero. La diferencia es vigilancia continua con alerta inmediata y umbrales acordados, en cualquier casa con muro de carga.",
+        "nombre": "Vigía de Talud",
+        "claim": "La grieta avisa sola, sin red y sin técnico.",
+        "que_es": "En un barrio de ladera hay una grieta que creció durante la última tormenta y nadie sabe si sigue abriéndose. El vigía es un celular viejo que ya no tiene chip ni saldo, encerrado en una caja estanca y atornillado a un poste frente al talud. Trabaja en modo avión: mide inclinación y vibración cada hora, las compara con la línea base del primer día y guarda todo en su memoria. En el poste hay una luz de tres colores y una bandera sujeta con un pasador; cuando la lectura pasa el umbral, la bandera cae y la luz se pone roja, así que el vecino que pasa lo ve sin abrir nada. El umbral lo fija el ingeniero del municipio junto con el comité de riesgo, y queda escrito en una tarjeta. Cuando el comité quiere el detalle, acerca otro celular y descarga la bitácora sin señal. Lo que existe es el inclinómetro comercial, que cuesta cientos de dólares y lo interpreta un técnico, y el reporte que llega después del derrumbe.",
         "como": [
-          "El celular va en caja sellada fija al muro y toma una línea base.",
-          "Ingeniero municipal y junta acuerdan por escrito los umbrales de color.",
-          "Si el muro pasa a rojo, baliza local y aviso al responsable de la junta.",
-          "El municipio paga instalación y conexión; la familia no compra instrumentos."
+          "Se fija la caja al poste, se toma la línea base con el talud en calma.",
+          "El celular registra inclinación y vibración cada hora en su memoria.",
+          "Al cruzar el umbral, suelta la bandera y enciende la luz roja en el poste.",
+          "El comité descarga la bitácora por Bluetooth y decide con el ingeniero."
         ],
-        "beneficiario": "Junta vecinal / familias",
+        "beneficiario": "por definir",
         "componentes": [
-          "Celular en desuso",
-          "Caja estanca PVC",
-          "Montaje de muro",
-          "Resumen de 3 colores"
+          "Celular usado sin chip",
+          "Caja estanca",
+          "Panel 5 W",
+          "Batería 6 Ah",
+          "Controlador de carga",
+          "Poste y soporte",
+          "LED de 3 colores",
+          "Bandera con pasador"
         ],
-        "costo": "~USD 10 / unidad (estimación propia)",
+        "costo": "~USD 78 / unidad (estimación propia, por cotizar)",
         "metricas": [
-          "≥10 alertas rojas atendidas con acción registrada en 30 días."
+          "Noches con lectura completa y avisos accionados antes del evento."
         ]
       },
       "alterna": {
-        "nombre": "Semáforo de Ruido",
-        "claim": "La esquina muestra su nivel de ruido y deja evidencia para exigir silencio.",
-        "que_es": "Frente a una escuela hay una esquina donde los buses aceleran y los vecinos ya no pueden dictar clase después del mediodía. Nadie tiene un sonómetro ni tiempo para medir. La propuesta es un poste con micrófono, panel solar y una pantalla de tres colores: verde mientras el ruido es tolerable, amarillo cuando sube, rojo cuando pasa el límite que fijó la ordenanza local. El equipo guarda un registro de treinta días con fecha y hora, sin grabar voces, solo nivel. La escuela y la junta compran el poste; el municipio recibe el registro como evidencia para una medida concreta, como reubicar la parada o poner un reductor de velocidad. El comercio de la esquina gana porque el semáforo también le avisa cuándo su equipo está molestando. Lo que ya existe es el sonómetro profesional, que usa un técnico en una visita puntual, y las aplicaciones de ruido del celular, que miden una vez y no dejan constancia. La diferencia es un testigo permanente, visible para todos, que no depende de que alguien sostenga un teléfono.",
+        "nombre": "Oído de Tubería",
+        "claim": "La fuga se oye de noche, antes de que salga el charco.",
+        "que_es": "Bajo una calle hay una fuga que no sale a la superficie: el agua se va por debajo de la losa y solo aparece cuando ya lavó el suelo. El oído de tubería presta atención en el momento en que nadie más lo hace: de noche, cuando el barrio se calla. Un celular viejo, sin chip, se abraza a la tubería con una abrazadera y graba el sonido del agua durante veinte minutos; el programa compara el silbido con el registro de una tubería sana y marca la cuadra donde está la fuga. El resultado se anota en un mapa de papel que el equipo de agua recoge cada semana, y el municipio pica donde dice el mapa, no al azar. Funciona sin red, sin medidor y sin que nadie entre a la casa. Lo que existe es el geófono profesional, que cuesta miles y requiere un operador capacitado, y la denuncia del vecino cuando el charco ya salió. La diferencia es que aquí el aviso llega antes del charco y cuesta lo que un celular de cajón.",
         "como": [
-          "El poste se instala en la esquina con micrófono y panel solar.",
-          "La pantalla muestra verde, amarillo o rojo según la ordenanza local.",
-          "Guarda 30 días de nivel con fecha y hora, sin grabar voces.",
-          "El municipio usa el registro como evidencia para una medida concreta."
+          "Se abraza el celular a la tubería con la abrazadera y se graba de noche.",
+          "El programa compara el sonido con el patrón de una tubería sana.",
+          "Se marca la cuadra en el mapa de papel y se entrega al equipo de agua.",
+          "El equipo pica en el punto marcado y confirma o descarta la fuga."
         ],
-        "beneficiario": "Junta vecinal / familias",
+        "beneficiario": "por definir",
         "componentes": [
-          "Celular en desuso",
-          "Soporte impreso",
-          "Registro de rutas"
+          "Celular usado sin chip",
+          "Caja estanca",
+          "Abrazadera a tubería",
+          "Batería 5 Ah",
+          "Panel 3 W",
+          "Mapa impreso de la cuadra",
+          "Marcador y pintura"
         ],
-        "costo": "~USD 120 / poste (estimación propia, por cotizar)",
+        "costo": "~USD 55 / unidad (estimación propia, por cotizar)",
         "metricas": [
-          "≥30 días de registro continuo y una medida municipal adoptada con esa evidencia."
+          "Fugas localizadas por semana sin abrir la calle al azar."
         ]
       },
       "cadena": {
-        "problema": "Decisiones (evacuar / reparar / alertar) sin dato.",
-        "causa_raiz": "Instrumento comercial (sismómetro, inclinómetro) caro y con jerga técnica.",
-        "insight": "No hay canal local que instale, alimente y sustente la estación → nadie mide por defecto.",
-        "solucion": "Ojo Vital y Semáforo de Ruido: dos rutas independientes sobre el mismo problema.",
-        "metrica": "≥10 alertas rojas atendidas con acción registrada en 30 días. (Opción 01); ≥30 días de registro continuo y una medida municipal adoptada con esa evidencia. (Opción 02)."
+        "problema": "Decisiones de evacuar, reparar o avisar se toman sin dato previo.",
+        "causa_raiz": "El instrumento que mide cuesta cientos de dólares, exige un técnico y no tiene quien lo alimente ni lo mantenga en el barrio.",
+        "insight": "El sensor ya está en el cajón de la casa; lo que falta es energía, lectura local y alguien que decida antes del evento.",
+        "solucion": "Vigía de Talud y Oído de Tubería: dos rutas independientes sobre el mismo problema.",
+        "metrica": "Noches con lectura completa y avisos accionados antes del evento, por mes."
       },
       "senal": "Los ganadores de monitoreo no presentan el sensor: presentan la decisión que cambia cuando el dato llega. El tablero y el protocolo valen más que el hardware.",
       "analogias": [
@@ -215,535 +223,37 @@
           "year": 2024,
           "equipo": "Techriders (UNI-RUSB)",
           "proyecto": "Micropresas telemetradas",
-          "que_hicieron": "Instrumento una obra hidráulica con sensores de nivel, válvulas y telemetría LoRaWAN para operarla con datos.",
-          "por_que": "Es la misma lógica: tomar infraestructura comunitaria que hoy es pasiva y convertirla en un sistema que mide y avisa. Cambia el objeto medido, no la arquitectura.",
-          "video": "https://www.youtube.com/watch?v=MIvlD31HfIk",
-          "puesto": "1er lugar internacional Innovación"
+          "puesto": "1er lugar internacional Innovación",
+          "que_hicieron": "Construyó un tablero de telemetría para decidir sobre infraestructura crítica.",
+          "por_que": "Aporta la lógica de instrumentar una infraestructura que hoy es pasiva.",
+          "video": ""
         },
         {
           "year": 2021,
           "equipo": "Ingeniarte (UNNE)",
           "proyecto": "Alertar",
-          "que_hicieron": "Dispositivo de bajo costo y protocolo comunitario para pedir ayuda en una emergencia doméstica.",
-          "por_que": "Aporta la parte que la tecnología sola no resuelve: activación simple, aviso a una persona concreta y respuesta ensayada por la comunidad.",
-          "video": "https://www.youtube.com/watch?v=mgAvnq8aTJs",
-          "puesto": "1er lugar internacional Impacto Social"
+          "puesto": "1er lugar internacional Impacto Social",
+          "que_hicieron": "Dispositivo simple y protocolo comunitario para activar ayuda en una emergencia.",
+          "por_que": "Aporta la parte que la tecnología sola no resuelve: quién responde y con qué protocolo.",
+          "video": ""
         }
       ],
       "realidad": {
-        "a": "El municipio compra e instala; la familia aporta el muro; la escuela técnica arma y mantiene las cajas por contrato.",
-        "b": "Escuela y junta compran el poste; el municipio usa el registro; el comercio recibe el aviso."
+        "a": "El municipio compra la unidad y paga la instalación; el comité de riesgo la mantiene y el ingeniero valida el umbral; la escuela técnica calibra. Sin donaciones: el celular se compra usado y el panel se repone con el mismo contrato de mantenimiento.",
+        "b": "El municipio compra dos unidades por cuadrilla y ahorra horas de excavación; el equipo de agua usa el mapa; el vecino no paga nada y evita el corte. Sin donaciones: el celular se compra usado y el municipio paga el mantenimiento."
       },
       "detalles": [
         [
           "Ya existe",
-          "El inclinómetro y la regla de grietas (lectura manual y espaciada) y la instrumentación profesional (cientos de dólares, con ingeniero). La diferencia: alerta continua y umbrales acordados. / El sonómetro profesional (visita puntual de un técnico) y las apps de ruido (una medición sin constancia). La diferencia: testigo permanente y visible."
+          "El inclinómetro comercial, que cuesta cientos de dólares y lo lee un técnico, y el reporte vecinal que llega después del derrumbe. La diferencia: el aviso es local, visible y se registra sin señal. / El geófono profesional, que cuesta miles y exige operador, y la denuncia del vecino cuando el charco ya salió. La diferencia: la escucha es nocturna, grabada y se puede repetir sin señal."
         ],
         [
           "Quién paga",
-          "El municipio compra e instala; la familia aporta el muro; la escuela técnica arma y mantiene las cajas por contrato. / Escuela y junta compran el poste; el municipio usa el registro; el comercio recibe el aviso."
+          "El municipio compra la unidad y paga la instalación; el comité de riesgo la mantiene y el ingeniero valida el umbral; la escuela técnica calibra. Sin donaciones: el celular se compra usado y el panel se repone con el mismo contrato de mantenimiento. / El municipio compra dos unidades por cuadrilla y ahorra horas de excavación; el equipo de agua usa el mapa; el vecino no paga nada y evita el corte. Sin donaciones: el celular se compra usado y el municipio paga el mantenimiento."
         ],
         [
           "Por validar",
-          "Que la vibración del tráfico o del viento no dispare falsas alarmas; definir quién responde y con qué recursos. / Calibrar el micrófono contra un sonómetro certificado y definir el límite con la ordenanza."
-        ]
-      ],
-      "insignias": [
-        [
-          "Marco de Sendai",
-          "meta de alerta temprana"
-        ],
-        [
-          "Sello ODS Local",
-          "monitoreo comunitario"
-        ]
-      ],
-      "pitch": "Donde nadie mide, mide el celular del cajón: 3 colores para la junta y un top-5 de calles para reparar primero."
-    },
-    {
-      "id": "03",
-      "titulo": "PROTECCIÓN Y FOMENTO DE POLINIZADORES",
-      "categoria": "Impacto Social",
-      "categoria_porque": "El resultado se mide en producción de alimentos y biodiversidad local, con una comunidad agrícola como beneficiaria.",
-      "descripcion": "La disminución de polinizadores nativos pone en riesgo la producción de alimentos y la biodiversidad regional. El reto pide elegir un entorno concreto y una comunidad de usuarios para diseñar una propuesta ecológica o de manejo del paisaje que reduzca las amenazas locales.",
-      "ods": [
-        [
-          "ODS 2",
-          "Hambre cero",
-          "Aumenta el cuajado de fruto y la productividad hortícola sin ampliar la frontera agrícola."
-        ],
-        [
-          "ODS 15",
-          "Vida de ecosistemas terrestres",
-          "Restaura hábitat, nidos y corredores para polinizadores nativos."
-        ],
-        [
-          "ODS 11",
-          "Ciudades y comunidades sostenibles",
-          "Integra el corredor en bordes periurbanos y espacios escolares con manejo comunitario."
-        ]
-      ],
-      "propuesta": {
-        "nombre": "Franja Certificada",
-        "claim": "El contrato de jardinería paga por cortar; esta franja le paga por dejar florecer.",
-        "que_es": "El mantenimiento de una plaza paga por corte y herbicida, así que el operador tiene un motivo para dejar el pasto corto y ningún motivo para esperar la floración. La propuesta no es un jardín bonito con cartel: es una franja nativa de diez metros que se instala con un protocolo de dos cortes al año y se certifica con una ficha de florecimiento y ocupación. El contratista de mantención paga la instalación porque baja su costo de corte y porque la certificación le suma puntos en la siguiente licitación; el vivero o la escuela técnica venden los plantines; el vecino gana el corredor. La franja se cotiza como módulo y se replica en cualquier bandejón, borde de vereda o patio escolar. Lo que ya existe es el jardín ornamental, que se compra y se mantiene igual que el césped, y el cartel de «no cortar», que nadie fiscaliza. La diferencia es que el producto es la cláusula de mantención y su certificado: cambia el incentivo del que corta, no solo el color del espacio.",
-        "como": [
-          "Se instala un módulo de 10 m con especies nativas de la zona.",
-          "El protocolo fija dos cortes al año y una ficha de florecimiento.",
-          "El contratista paga porque baja el costo de corte y suma puntos en la licitación.",
-          "El módulo se replica en bandejones, veredas y patios escolares."
-        ],
-        "beneficiario": "Junta vecinal + operadores de jardinería",
-        "componentes": [
-          "Semillas nativas",
-          "Plantines",
-          "Estacas amarillas",
-          "Cartel",
-          "Marcado"
-        ],
-        "costo": "~USD 39 / módulo de 10 m (estimación propia)",
-        "metricas": [
-          "Visitas de polinizadores en la franja vs. vereda control, y 2 cortes al año cumplidos."
-        ]
-      },
-      "alterna": {
-        "nombre": "Plantín con Garantía",
-        "claim": "La nativa que se vende prende, o se repone: el contratista no necesita saber jardinería.",
-        "que_es": "Un contratista de mantención quiere ofrecer vegetación nativa, pero no tiene vivero ni personal que sepa propagarla, y si la planta se muere pierde la apuesta. La propuesta es una línea de plantines nativos con garantía de prendimiento: se eligen por sitio y por temporada, se entregan con una ficha de plantación de una página, y si no prenden en la primera estación se reponen. La escuela técnica o el vivero local produce el stock y firma la garantía; el contratista compra y ofrece el servicio sin aprender horticultura; el municipio recibe vegetación que sobrevive. El producto es el plantín más la ficha más la garantía, no la planta suelta. Lo que ya existe es el vivero que vende especies ornamentales sin garantía y sin instrucciones para el operador, y el voluntariado que planta sin seguimiento. La diferencia es que traslada el riesgo de la siembra al que sabe producirla y deja al operador una instrucción clara. Sirve para cualquier banda, patio o corredor que necesite cobertura nativa, no para una sola plaza.",
-        "como": [
-          "El vivero o la escuela produce stock nativo seleccionado por sitio y temporada.",
-          "Se entrega con ficha de plantación de una página para el operador.",
-          "Si no prende en la primera estación, se repone sin costo.",
-          "El contratista compra y ofrece el servicio sin aprender horticultura."
-        ],
-        "beneficiario": "Junta vecinal + operadores de jardinería",
-        "componentes": [
-          "Bloque de concreto",
-          "Cañas huecas",
-          "Montaje en pared"
-        ],
-        "costo": "~USD 21 / lote de plantines (estimación propia)",
-        "metricas": [
-          "≥80% de prendimiento a una estación, con reposición atendida."
-        ]
-      },
-      "cadena": {
-        "problema": "Menos polinizadores nativos.",
-        "causa_raiz": "Paisaje uniforme (césped cortado a diario + herbicida) elimina floración y nidificación.",
-        "insight": "Los contratos de mantención fijan «corte más herbicida» como criterio de calidad verde, sin alternativa entregada al operador.",
-        "solucion": "Franja Certificada y Plantín con Garantía: dos rutas independientes sobre el mismo problema.",
-        "metrica": "Visitas de polinizadores en la franja vs. vereda control, y 2 cortes al año cumplidos. (Opción 01); ≥80% de prendimiento a una estación, con reposición atendida. (Opción 02)."
-      },
-      "senal": "Los ganadores en biodiversidad no presentan una especie ni un aparato: presentan un sistema de manejo con responsabilidad asignada y una medición repetible.",
-      "analogias": [
-        {
-          "year": 2025,
-          "equipo": "STEM Synergy (UAM-DIEM)",
-          "proyecto": "Huertos verticales con recirculación hídrica",
-          "que_hicieron": "Diseño un sistema modular de cultivo con riego eficiente y materiales reciclados, pensado como infraestructura y no como objeto aislado.",
-          "por_que": "Comparte la lógica de diseñar un módulo replicable que se integra al paisaje productivo existente, con montaje local y bajo mantenimiento.",
-          "video": "https://www.youtube.com/watch?v=JhqjBm20DXo",
-          "puesto": "1er lugar internacional Innovación"
-        },
-        {
-          "year": 2023,
-          "equipo": "Nicarq Sinergy (UNI-RUSB)",
-          "proyecto": "BioInnova",
-          "que_hicieron": "Integró agua, saneamiento y producción de alimentos en una sola unidad de resiliencia para comunidad rural.",
-          "por_que": "Aporta la mirada de sistema: el corredor no se juzga solo por flores, sino por el alimento y el hábitat que sostiene en el mismo territorio.",
-          "video": "https://www.youtube.com/watch?v=5dVqVY9Ugeg",
-          "puesto": "2do lugar internacional Impacto Social"
-        }
-      ],
-      "realidad": {
-        "a": "El contratista de mantención paga la franja; el vivero o la escuela venden plantines; el municipio no pone dinero extra.",
-        "b": "El contratista compra el plantín con garantía; el vivero o la escuela produce y repone; el municipio recibe cobertura que sobrevive."
-      },
-      "detalles": [
-        [
-          "Ya existe",
-          "El jardín ornamental (misma mantención que el césped) y el cartel de «no cortar» (sin fiscalización). La diferencia: certificado que cambia el incentivo del contrato. / El vivero ornamental (sin garantía ni instrucciones para el operador) y la plantación voluntaria (sin seguimiento). La diferencia: garantía de prendimiento y ficha de una página."
-        ],
-        [
-          "Quién paga",
-          "El contratista de mantención paga la franja; el vivero o la escuela venden plantines; el municipio no pone dinero extra. / El contratista compra el plantín con garantía; el vivero o la escuela produce y repone; el municipio recibe cobertura que sobrevive."
-        ],
-        [
-          "Por validar",
-          "Que la certificación sea aceptada en las bases de licitación; medir el ahorro real de corte. / Tasa real de prendimiento por especie y estación antes de firmar la garantía."
-        ]
-      ],
-      "insignias": [
-        [
-          "Ciudades Creativas UNESCO",
-          "turismo de naturaleza"
-        ],
-        [
-          "Pacto Global",
-          "biodiversidad urbana"
-        ]
-      ],
-      "pitch": "La vereda que florece dos veces al año y el muro que nidifica: el mismo contrato de mantención, con otro criterio de calidad."
-    },
-    {
-      "id": "04",
-      "titulo": "MANEJO ECOLÓGICO DE RESIDUOS DE PODA Y BIOMASA VEGETAL URBANA",
-      "categoria": "Impacto Social",
-      "categoria_porque": "El beneficio es ambiental y comunitario: menos quema, mejores suelos y un servicio municipal con participación vecinal.",
-      "descripcion": "Grandes volúmenes de biomasa vegetal urbana se tratan como desecho o se queman. El reto pide una alternativa de reuso accesible, práctica y económica para un municipio o sector urbano que reintegre la biomasa a los ciclos locales.",
-      "ods": [
-        [
-          "ODS 11",
-          "Ciudades y comunidades sostenibles",
-          "Convierte un residuo municipal en insumo para alcorques, huertos y taludes urbanos."
-        ],
-        [
-          "ODS 12",
-          "Producción y consumo responsables",
-          "Cierra el ciclo de la poda y reduce el volumen que llega a relleno o a quema."
-        ],
-        [
-          "ODS 13",
-          "Acción por el clima",
-          "Evita emisiones de quema abierta y mejora la retención de agua y carbono del suelo."
-        ]
-      ],
-      "propuesta": {
-        "nombre": "Suscripción de Astilla",
-        "claim": "La poda se vende antes de triturarse: suscripción de sustrato, no máquina suelta.",
-        "que_es": "Cada semana el municipio retira poda y la entierra o la quema; a la vez, los huertos urbanos compran sustrato que viene de otra región. El problema no es tener una chipeadora, es que la astilla no tiene comprador y la máquina queda parada. La propuesta invierte el orden: primero se venden suscripciones a huertos, viveros y colegios, que pagan por bolsas entregadas cada quince días; con esa demanda firmada se compra la máquina y se opera en un patio fijo, con la poda del sector. El operador cobra por bolsa entregada, no por hora de máquina; el huerto sustituye sustrato importado por uno local; el municipio reduce el volumen que transporta al relleno. Lo que ya existe es la composta municipal, que depende de la temporada y no entrega a domicilio, y el sustrato de vivero, que llega de fuera. La diferencia es la entrega programada, el tamaño uniforme y el origen trazable, con la demanda vendida antes de comprar el equipo. Funciona con cualquier mezcla de poda y residuo verde del sector.",
-        "como": [
-          "Primero se venden suscripciones a huertos, viveros y colegios.",
-          "Con la demanda firmada se compra la chipeadora y se opera en un patio fijo.",
-          "La poda del sector se tritura y se entrega cada quince días.",
-          "El operador cobra por bolsa entregada, no por hora de máquina."
-        ],
-        "beneficiario": "Operador de poda del barrio + huertos compradores",
-        "componentes": [
-          "Chipeadora eléctrica",
-          "Carrito",
-          "Cuchillas de repuesto",
-          "Bolsas 20 L",
-          "Avisos"
-        ],
-        "costo": "~USD 456 / equipo (estimación propia, por cotizar)",
-        "metricas": [
-          "≥20 suscriptores activos y ≥80% de entregas cumplidas en el mes."
-        ]
-      },
-      "alterna": {
-        "nombre": "Carbón de Poda",
-        "claim": "La poda urbana se vuelve carbón en un horno fijo, con destino y precio.",
-        "que_es": "La poda no solo ocupa espacio: también puede venderse como carbón, pero hacerlo en barriles sueltos dentro de la ciudad es un riesgo y un mal negocio. La propuesta es un horno de retorta fijo en el patio de transferencia, con cámara de postcombustión y horario de operación, que convierte la poda en carbón vegetal envasado y etiquetado. El producto se vende a parrillas, viveros y huertos que ya compran carbón de bosque; el municipio cobra por el residuo que deja de enterrar y reduce el volumen transportado; el operador gana por saco vendido. La seguridad no depende del cuidado de un voluntario: depende del diseño del horno y de un protocolo de encendido. Lo que ya existe es el carbón de leña, que viene de bosque y tiene precio variable, y el barril artesanal, que humea y no se puede operar cerca de casas. La diferencia es un punto fijo, con retorta y postcombustión, que produce un saco parejo y trazable. Sirve para poda de árboles, setos y residuo verde mezclado.",
-        "como": [
-          "La poda se lleva a un horno de retorta fijo en el patio de transferencia.",
-          "El horno opera con cámara de postcombustión y protocolo de encendido.",
-          "El carbón se envasa y etiqueta con origen y fecha.",
-          "Se vende a parrillas, viveros y huertos por saco."
-        ],
-        "beneficiario": "Operador de poda del barrio + huertos compradores",
-        "componentes": [
-          "Barril 200 L",
-          "Control de aire",
-          "Tapas",
-          "Sensor de humedad"
-        ],
-        "costo": "~USD 31 / lote (estimación propia)",
-        "metricas": [
-          "Sacos vendidos por tonelada de poda procesada y 0 incidentes de humo."
-        ]
-      },
-      "cadena": {
-        "problema": "La poda se quema o se viaja entera.",
-        "causa_raiz": "Sin chipeo en el sitio, el volumen viaja completo (5–8×) y sale más caro que quemarlo; el material no llega con fecha y comprador.",
-        "insight": "El contrato de poda paga por desmontar, no por revalorizar.",
-        "solucion": "Suscripción de Astilla y Carbón de Poda: dos rutas independientes sobre el mismo problema.",
-        "metrica": "≥20 suscriptores activos y ≥80% de entregas cumplidas en el mes. (Opción 01); Sacos vendidos por tonelada de poda procesada y 0 incidentes de humo. (Opción 02)."
-      },
-      "senal": "Los ganadores de economía circular presentan el proceso completo: de donde sale, como se transforma, quien lo compra y como se comprueba la calidad.",
-      "analogias": [
-        {
-          "year": 2025,
-          "equipo": "Mentes Volcanicas (UNI-RUPAP)",
-          "proyecto": "Paneles constructivos de Tetra Pak",
-          "que_hicieron": "Convirtió un residuo urbano en un panel con proceso, herramienta y especificación técnica.",
-          "por_que": "Es el mismo patrón: residuo local, transformación simple y producto con destino definido. La retorta cumple el papel de la prensa en aquel caso.",
-          "video": "https://www.youtube.com/watch?v=_JSUKR1bPnE",
-          "puesto": "1er lugar internacional Impacto Social"
-        },
-        {
-          "year": 2017,
-          "equipo": "BottleLife (Montevideo, Uruguay)",
-          "proyecto": "Sistema constructivo con envases reciclados",
-          "que_hicieron": "Diseño un producto modular a partir de un residuo domiciliario y organizó la recolección para abastecerlo.",
-          "por_que": "Aporta la lección logística: sin separación en origen, el transformador no tiene materia prima constante. Carbón Vivo depende de la ruta de poda, no solo del horno.",
-          "video": "https://www.youtube.com/watch?v=yhVE1ZRDQZk",
-          "puesto": "1er lugar internacional Impacto Social"
-        }
-      ],
-      "realidad": {
-        "a": "El huerto o vivero paga la suscripción; el operador cobra por bolsa; el municipio ahorra transporte.",
-        "b": "Parrillas, viveros y huertos compran el saco; el municipio cobra por residuo evitado; el operador gana por saco."
-      },
-      "detalles": [
-        [
-          "Ya existe",
-          "La composta municipal (estacional, sin entrega) y el sustrato de vivero (traído de fuera). La diferencia: entrega programada y demanda vendida antes de comprar. / El carbón de leña (de bosque, precio variable) y el barril artesanal (humea, no apto cerca de casas). La diferencia: punto fijo con retorta y saco parejo."
-        ],
-        [
-          "Quién paga",
-          "El huerto o vivero paga la suscripción; el operador cobra por bolsa; el municipio ahorra transporte. / Parrillas, viveros y huertos compran el saco; el municipio cobra por residuo evitado; el operador gana por saco."
-        ],
-        [
-          "Por validar",
-          "Cantidad mínima de suscriptores que sostiene el patio y la máquina sin subsidio. / Rendimiento real por tonelada de poda y aceptación del carbón por los compradores."
-        ]
-      ],
-      "insignias": [
-        [
-          "Premio Latinoamérica Verde",
-          "categoría residuos"
-        ],
-        [
-          "Mercado de carbono",
-          "créditos por biochar"
-        ]
-      ],
-      "pitch": "La poda ya no viaja ni se quema: astillas a USD 2 en la cuadra y biochar que se queda en el suelo del barrio."
-    },
-    {
-      "id": "05",
-      "titulo": "MONITOREO INTELIGENTE E INFRAESTRUCTURA VERDE EN RESERVORIOS PLUVIALES",
-      "categoria": "Impacto Social",
-      "categoria_porque": "Protege a una comunidad expuesta a inundaciones y articula comité de cuenca, municipio y vecinos.",
-      "descripcion": "Los reservorios pluviales en zonas vulnerables sufren anegamientos, acumulación de sedimentos y falta de monitoreo en tiempo real. El reto pide combinar monitoreo de agua con infraestructura verde y articular la gestión comunitaria e institucional.",
-      "ods": [
-        [
-          "ODS 6",
-          "Agua limpia y saneamiento",
-          "Mejora la operación del reservorio y la calidad del agua que descarga."
-        ],
-        [
-          "ODS 11",
-          "Ciudades y comunidades sostenibles",
-          "Reduce el riesgo de anegamiento en barrios aguas abajo."
-        ],
-        [
-          "ODS 13",
-          "Acción por el clima",
-          "Adapta el drenaje urbano a lluvias más intensas con soluciones basadas en naturaleza."
-        ]
-      ],
-      "propuesta": {
-        "nombre": "Centinela de Nivel",
-        "claim": "El reservorio avisa solo: boya, umbral y alarma antes de que el agua entre.",
-        "que_es": "Cuando llueve fuerte, el reservorio sube y nadie sabe cuánto falta para que el agua entre a las casas hasta que ya está entrando. La propuesta es un centinela de nivel: una boya en un pozo de calma marca dos umbrales, y al alcanzarlos dispara una sirena local y un mensaje al teléfono del comité de agua. Funciona con panel solar y batería, sin visita diaria, y una vez por semana alguien toma una foto de la regla para calibrar. El comité compra el equipo y lo mantiene; el municipio recibe el aviso y puede cerrar la compuerta o evacuar; el instalador cobra el montaje. No hay promesa de predicción: hay aviso cuando el nivel llega al punto acordado. Lo que ya existe es la regla pintada, que alguien debe ir a leer bajo la lluvia, y la telemetría comercial, que cuesta y requiere servicio. La diferencia es una alarma automática y barata que funciona sin red eléctrica y sin técnico residente. Sirve en cualquier reservorio con pozo de calma, no en uno solo.",
-        "como": [
-          "Se instala una boya en un pozo de calma junto al reservorio.",
-          "Dos umbrales disparan sirena local y mensaje al comité de agua.",
-          "Panel solar y batería evitan la visita diaria.",
-          "Una foto semanal de la regla calibra el sistema."
-        ],
-        "beneficiario": "Guardia vecinal del barrio",
-        "componentes": [
-          "Postes graduados (3)",
-          "Caja con celular",
-          "Tablero de colores"
-        ],
-        "costo": "~USD 22 / kit (estimación propia)",
-        "metricas": [
-          "≥90% de los umbrales disparados con aviso efectivo en la misma lluvia."
-        ]
-      },
-      "alterna": {
-        "nombre": "Compuerta de Flotador",
-        "claim": "La compuerta se cierra sola cuando el agua sube, sin electricidad ni operador.",
-        "que_es": "El agua entra al reservorio por un conducto y, cuando el caudal crece, pasa de largo y golpea el intake. La propuesta es una compuerta pasiva: un flotador conectado a una bisagra hace que la hoja baje cuando el nivel sube, desviando el excedente a una cuneta de infiltración. No usa motor ni sensor ni batería; se mueve con el agua que quiere frenar. Un taller local la fabrica con plancha y eje, y el municipio la instala en el conducto antes de la temporada. El taller gana por unidad y por mantenimiento; el municipio evita daños en el intake; el vecino deja de ver la calle inundada. Lo que ya existe es el dique fijo, que no distingue caudal, y el saco de arena, que se pone a mano cuando ya llovió. La diferencia es que actúa sola en el momento, sin que nadie salga corriendo. Sirve en cualquier conducto de entrada con pendiente, no en un reservorio específico.",
-        "como": [
-          "Un taller local fabrica la compuerta con plancha, eje y flotador.",
-          "Se instala en el conducto antes de la temporada de lluvia.",
-          "Al subir el nivel, el flotador baja la hoja y desvía el excedente.",
-          "El excedente entra a una cuneta de infiltración."
-        ],
-        "beneficiario": "Guardia vecinal del barrio",
-        "componentes": [
-          "Faja de vetiver 20 m²",
-          "Cuneta de infiltración",
-          "Sensor de velocidad"
-        ],
-        "costo": "~USD 100 + 22 / unidad (estimación propia)",
-        "metricas": [
-          "Caudal desviado en la misma lluvia y 0 atascos por temporada."
-        ]
-      },
-      "cadena": {
-        "problema": "Anegamiento recurrente.",
-        "causa_raiz": "Reservorio sedimentado y sin nivel visible antes de la lluvia; el caudal del intake llega libre (sin freno verde).",
-        "insight": "Nadie local tiene hora ni protocolo del reservorio; los datos llegan después, no antes.",
-        "solucion": "Centinela de Nivel y Compuerta de Flotador: dos rutas independientes sobre el mismo problema.",
-        "metrica": "≥90% de los umbrales disparados con aviso efectivo en la misma lluvia. (Opción 01); Caudal desviado en la misma lluvia y 0 atascos por temporada. (Opción 02)."
-      },
-      "senal": "Los ganadores de agua combinan obra física con operación: no entregan solo el sensor ni solo el humedal, entregan quien mira el dato y que hace cuando cambia.",
-      "analogias": [
-        {
-          "year": 2024,
-          "equipo": "Techriders (UNI-RUSB)",
-          "proyecto": "Micropresas telemetradas",
-          "que_hicieron": "Instrumento una obra hidráulica con sensores de nivel, válvulas automatizadas y telemetría LoRaWAN.",
-          "por_que": "Aporta exactamente la arquitectura de medición y control para agua. Reservorio Vivo reemplaza la válvula por una decisión comunitaria, pero conserva el principio.",
-          "video": "https://www.youtube.com/watch?v=MIvlD31HfIk",
-          "puesto": "1er lugar internacional Innovación"
-        },
-        {
-          "year": 2023,
-          "equipo": "Nicarq Sinergy (UNI-RUSB)",
-          "proyecto": "BioInnova",
-          "que_hicieron": "Integró agua, saneamiento y producción en una unidad de resiliencia comunitaria.",
-          "por_que": "Demuestra como una solución de agua se sostiene cuando la comunidad la opera y la asocia a un beneficio visible, no solo a la infraestructura.",
-          "video": "https://www.youtube.com/watch?v=5dVqVY9Ugeg",
-          "puesto": "2do lugar internacional Impacto Social"
-        }
-      ],
-      "realidad": {
-        "a": "El comité de agua compra el equipo; el municipio recibe el aviso; el instalador cobra el montaje.",
-        "b": "El municipio compra e instala; el taller local gana por unidad y mantenimiento; el vecino evita la inundación."
-      },
-      "detalles": [
-        [
-          "Ya existe",
-          "La regla pintada (lectura manual bajo la lluvia) y la telemetría comercial (costosa, con servicio). La diferencia: alarma automática sin red eléctrica. / El dique fijo (no distingue caudal) y el saco de arena (se coloca después de que llovió). La diferencia: actúa sola en el momento."
-        ],
-        [
-          "Quién paga",
-          "El comité de agua compra el equipo; el municipio recibe el aviso; el instalador cobra el montaje. / El municipio compra e instala; el taller local gana por unidad y mantenimiento; el vecino evita la inundación."
-        ],
-        [
-          "Por validar",
-          "Que la boya no se trabe con sedimento y que el mensaje llegue con señal débil. / Que la bisagra no se oxide ni se trabe con palos y sedimento."
-        ]
-      ],
-      "insignias": [
-        [
-          "Fondo de Agua",
-          "pago por servicio ecosistémico"
-        ],
-        [
-          "Sello ODS Local",
-          "gestión comunitaria"
-        ]
-      ],
-      "pitch": "El nivel se ve antes de la lluvia y el caudal entra frenado: dato del guardia más obra verde con firma municipal."
-    },
-    {
-      "id": "06",
-      "titulo": "REMOCIÓN Y EXTRACCIÓN DE BARRO EN VIVIENDAS ANEGADAS",
-      "categoria": "Innovación",
-      "categoria_porque": "El núcleo es un dispositivo mecánico nuevo y su viabilidad técnica; el impacto social es la consecuencia.",
-      "descripcion": "Tras un aluvión o desborde, las viviendas quedan con lodo denso que se seca y se vuelve casi cemento. La remoción manual con pala exige días de esfuerzo. El reto pide herramientas o metodos de succión de bajo costo, operables en interiores y movilizables rápido.",
-      "ods": [
-        [
-          "ODS 11",
-          "Ciudades y comunidades sostenibles",
-          "Acelera la recuperación de viviendas y reduce el tiempo de desplazamiento."
-        ],
-        [
-          "ODS 13",
-          "Acción por el clima",
-          "Responde a eventos extremos más frecuentes con una herramienta replicable."
-        ],
-        [
-          "ODS 3",
-          "Salud y bienestar",
-          "Baja el esfuerzo físico extremo y el riesgo de lesión de vecinos y voluntarios."
-        ]
-      ],
-      "propuesta": {
-        "nombre": "Bomba de Pedal",
-        "claim": "Saca el lodo sin combustible ni corriente, con una persona pedaleando.",
-        "que_es": "Después de la inundación, el lodo queda dentro de la casa y la motobomba se compra o se alquila, consume combustible y no entra por los pasillos. La propuesta es una bomba de diafragma a pedal, montada en un marco plegable: una persona pedalea, la bomba aspira el lodo y lo empuja a la calle o a un saco filtrante. No usa motor, no depende de la red eléctrica y se guarda contra la pared entre temporadas, con un kit de repuestos de bajo costo. La compra la hace la alcaldía o defensa civil para sus brigadas; la cuadrilla no paga; el taller que la fabrica gana por unidad y por repuesto. Lo que ya existe es la motobomba de lodos, que requiere combustible y no pasa por puertas angostas, y el balde en cadena, que depende de muchas manos. La diferencia es que funciona en apagón, con una sola persona y en espacio estrecho. Sirve para lodo, agua con barro y pozos, no para una sola casa.",
-        "como": [
-          "La bomba de diafragma va montada en un marco plegable.",
-          "Una persona pedalea y la bomba aspira el lodo de la vivienda.",
-          "El lodo sale a la calle o a un saco filtrante.",
-          "Se guarda contra la pared y se mantiene con un kit de repuestos."
-        ],
-        "beneficiario": "Vecinos de la casa anegada + voluntarios de la junta",
-        "componentes": [
-          "Bomba de lodos bajo caudal",
-          "Agitador",
-          "Manguera interior",
-          "Kit de maniobra"
-        ],
-        "costo": "~USD 122 / unidad (estimación propia, por cotizar)",
-        "metricas": [
-          "Vivienda vaciada en ≤12 h con una cuadrilla y sin combustible."
-        ]
-      },
-      "alterna": {
-        "nombre": "Trineo Filtrante",
-        "claim": "El lodo sale por la puerta, pero sale más liviano y sin volver.",
-        "que_es": "El lodo que se saca de una casa vuelve a entrar como agua sucia si se transporta en baldes abiertos, y la carretilla no pasa por una puerta de sesenta centímetros. La propuesta es un trineo de dos ruedas angostas con un saco filtrante: se llena adentro, el agua escurre por el saco mientras se arrastra, y llega a la calle con menos peso y sin chorrear. El saco es el consumible y se fabrica localmente; el trineo se queda en la brigada. La alcaldía compra los trineos y los sacos; la cuadrilla trabaja con menos viajes; el vecino no recibe el lodo de vuelta. Lo que ya existe es la carretilla, que no entra y vuelca, y el balde, que gotea por todo el pasillo. La diferencia es el filtro incorporado y el ancho que pasa por la puerta. Sirve para cualquier vivienda anegada, con lodo seco o húmedo.",
-        "como": [
-          "El trineo de ruedas angostas entra por la puerta de la vivienda.",
-          "Se llena con el lodo y el saco filtrante deja escurrir el agua.",
-          "Se arrastra hasta la calle con menos peso y sin chorrear.",
-          "El saco se repone; el trineo queda en la brigada."
-        ],
-        "beneficiario": "Vecinos de la casa anegada + voluntarios de la junta",
-        "componentes": [
-          "Paleta ancha",
-          "Jalón",
-          "Tanque 60 L de 2 ruedas"
-        ],
-        "costo": "~USD 49 / unidad (estimación propia)",
-        "metricas": [
-          "Menos viajes por vivienda y 0 retornos de lodo al pasillo."
-        ]
-      },
-      "cadena": {
-        "problema": "Días de palas, familias agotadas.",
-        "causa_raiz": "Las herramientas comerciales son para exteriores; el interior es otro problema; el barro seco es cemento.",
-        "insight": "No hay protocolo de primeras 48 h con equipos ligeros baratos a mano del barrio.",
-        "solucion": "Bomba de Pedal y Trineo Filtrante: dos rutas independientes sobre el mismo problema.",
-        "metrica": "Vivienda vaciada en ≤12 h con una cuadrilla y sin combustible. (Opción 01); Menos viajes por vivienda y 0 retornos de lodo al pasillo. (Opción 02)."
-      },
-      "senal": "Los ganadores con hardware simple ganan cuando el dispositivo resuelve la etapa correcta del proceso, no cuando agregan tecnología a la etapa equivocada.",
-      "analogias": [
-        {
-          "year": 2024,
-          "equipo": "Techriders (UNI-RUSB)",
-          "proyecto": "Micropresas telemetradas",
-          "que_hicieron": "Integró mecánica, sensores y control en un sistema de bajo costo para manejar agua en terreno vulnerable.",
-          "por_que": "Comparte la lógica de resolver con electromecánica accesible y mantenimiento local, en lugar de importar un equipo especializado.",
-          "video": "https://www.youtube.com/watch?v=MIvlD31HfIk",
-          "puesto": "1er lugar internacional Innovación"
-        },
-        {
-          "year": 2021,
-          "equipo": "Ingeniarte (UNNE)",
-          "proyecto": "Alertar",
-          "que_hicieron": "Diseño un dispositivo simple, de bajo costo y activación inmediata para una situación de emergencia.",
-          "por_que": "Aporta el criterio de diseño para emergencia: una sola acción, sin capacitación larga y con respuesta inmediata. Lodo Express debe operarse igual de simple.",
-          "video": "https://www.youtube.com/watch?v=mgAvnq8aTJs",
-          "puesto": "1er lugar internacional Impacto Social"
-        }
-      ],
-      "realidad": {
-        "a": "La alcaldía o defensa civil compra para sus brigadas; el taller local gana por unidad y repuesto.",
-        "b": "La alcaldía compra trineos y sacos; la cuadrilla hace menos viajes; el vecino no recibe lodo de vuelta."
-      },
-      "detalles": [
-        [
-          "Ya existe",
-          "La motobomba de lodos (combustible, no entra por pasillos) y el balde en cadena (mucha mano de obra). La diferencia: funciona en apagón, con una persona y espacio estrecho. / La carretilla (no entra, vuelca) y el balde (gotea por el pasillo). La diferencia: filtro incorporado y ancho que pasa por la puerta."
-        ],
-        [
-          "Quién paga",
-          "La alcaldía o defensa civil compra para sus brigadas; el taller local gana por unidad y repuesto. / La alcaldía compra trineos y sacos; la cuadrilla hace menos viajes; el vecino no recibe lodo de vuelta."
-        ],
-        [
-          "Por validar",
-          "Caudal real con lodo espeso y resistencia del diafragma con arena. / Resistencia del saco con lodo y piedras; tiempo de escurrido real."
+          "Que la inclinación del celular detecte movimiento antes de que la grieta sea visible. Prueba: 30 días comparando con un inclinómetro prestado. / Que el micrófono del celular distinga una fuga de una llave abierta o de una bomba. Prueba: 10 puntos con fuga conocida y 10 sin fuga."
         ]
       ],
       "insignias": [
@@ -752,86 +262,606 @@
           "reducción de riesgo"
         ],
         [
-          "Fondo nacional de innovación",
-          "obra replicable"
+          "Small Grants Programme (GEF / PNUD)",
+          "comunidad y ambiente"
         ]
       ],
-      "pitch": "Contra el barro que se vuelve cemento: bomba liviana en las primeras horas y paletas con jalón cuando ya secó."
+      "pitch": "El sensor ya está en el cajón: un celular sin chip mide el talud o escucha la tubería, guarda el dato y avisa sin red. El comité decide antes, no después. Cuesta lo que un celular usado y no depende de la antena."
     },
     {
-      "id": "07",
-      "titulo": "REUTILIZACIÓN DE ACEITE DOMÉSTICO",
+      "id": "03",
+      "titulo": "Protección y fomento de polinizadores",
       "categoria": "Impacto Social",
-      "categoria_porque": "El punto de partida es el hogar y el beneficio es agua limpia y energía accesible para la comunidad.",
-      "descripcion": "Un litro de aceite residual contamina 40 mil litros de agua y tapa el drenaje. El reto pide una forma económica y accesible de reutilizar el aceite doméstico para generar energía limpia u otros subproductos.",
+      "categoria_porque": "El resultado se mide en floración y nidificación dentro de la ciudad, con una comunidad que mantiene el espacio y recibe el beneficio.",
+      "descripcion": "La disminución de polinizadores nativos pone en riesgo la producción de alimentos y la biodiversidad regional. El reto pide elegir un entorno concreto y una comunidad de usuarios para diseñar una propuesta ecológica o de manejo del paisaje que reduzca las amenazas locales.",
       "ods": [
         [
-          "ODS 7",
-          "Energía asequible y no contaminante",
-          "Produce biodiésel para la flota municipal a partir de un residuo doméstico."
+          "ODS 15",
+          "Vida de ecosistemas terrestres",
+          "Restaura floración y sitios de nidificación para polinizadores nativos en suelo urbano ya construido."
+        ],
+        [
+          "ODS 2",
+          "Hambre cero",
+          "Aumenta el cuajado de fruto en huertos escolares y familiares sin ampliar la frontera agrícola."
+        ],
+        [
+          "ODS 11",
+          "Ciudades y comunidades sostenibles",
+          "Integra el corredor en patios escolares y muros existentes con manejo vecinal."
+        ]
+      ],
+      "propuesta": {
+        "nombre": "Franja que Florece",
+        "claim": "Se paga por floración, no por corte.",
+        "que_es": "En una escuela con patio de cemento, el jardinero corta el pasto cada quince días y cobra por corte; la barda queda limpia y sin una sola flor. La franja cambia lo que se paga: un módulo de diez metros con especies nativas que florecen en dos momentos del año, instalado contra la barda y mantenido por el mismo jardinero, que ahora cobra por mantener la floración y no por arrasar. La escuela pone el espacio y paga el módulo; el jardinero conserva el contrato y gana un criterio que puede cumplir; el vivero vende los plantines. Cada mes, los estudiantes cuentan flores y abejas en una ficha de dos columnas, y ese conteo es lo que decide si el mantenimiento se pagó. No hace falta que nadie certifique desde afuera: el que paga mira la ficha. Lo que existe es el jardín ornamental, que cuesta lo mismo de mantener que el césped y no se cuenta, y el cartel de «no cortar», que nadie fiscaliza. La diferencia es el criterio de pago.",
+        "como": [
+          "Se elige el borde de la barda y se marca el módulo de diez metros.",
+          "Se instalan plantines nativos de dos épocas de floración y se riegan al inicio.",
+          "El jardinero mantiene la franja y cobra contra la ficha de floración.",
+          "Los estudiantes cuentan flores y abejas cada mes; el conteo cierra el pago."
+        ],
+        "beneficiario": "por definir",
+        "componentes": [
+          "Plantines nativos (30)",
+          "Sustrato",
+          "Borde de corte",
+          "Ficha de floración impresa",
+          "Cartel del módulo",
+          "Manguera de riego"
+        ],
+        "costo": "~USD 39 / módulo de 10 m (estimación propia, por cotizar)",
+        "metricas": [
+          "Picos de floración por metro y visitas de abejas contadas."
+        ]
+      },
+      "alterna": {
+        "nombre": "Bloque de Nidos",
+        "claim": "Una pieza de concreto que se vuelve casa de abejas nativas.",
+        "que_es": "En el muro de una bodega hay abejas sin aguijón que entran y salen de un hueco y nadie sabe cuántas son ni si están bien. El bloque de nidos es una pieza de concreto con seis perforaciones de distinto diámetro, que se atornilla al muro existente y ofrece celdas limpias para que las abejas nativas nidifiquen. No necesita riego, no necesita jardín y no necesita que nadie la cuide: se instala una vez y se revisa cada temporada. El municipio compra bloques y los reparte entre escuelas y edificios públicos; el vivero los vende; el dueño del muro no paga nada y gana polinizadores en su patio. La métrica es física: se cuentan las celdas tapadas con barro, que es la señal de que hay cría dentro. Lo que existe es el hotel de insectos de madera, que se pudre en dos lluvias y queda de adorno, y el tronco hueco que se usa una vez y se bota. La diferencia es que este bloque se cuenta, dura y se repone por unidad.",
+        "como": [
+          "Se elige un muro orientado al sol de la mañana y se marcan los anclajes.",
+          "Se atornilla el bloque a la altura de un metro y se sella el borde.",
+          "Las abejas ocupan las perforaciones y las tapan con barro.",
+          "Cada temporada se cuenta las celdas tapadas y se repone el bloque dañado."
+        ],
+        "beneficiario": "por definir",
+        "componentes": [
+          "Bloque de concreto perforado",
+          "Tapa de barro",
+          "Varilla de anclaje",
+          "Tornillos y tarugos",
+          "Sellador"
+        ],
+        "costo": "~USD 14 / bloque (estimación propia, por cotizar)",
+        "metricas": [
+          "Celdas de nido tapadas por bloque y por temporada."
+        ]
+      },
+      "cadena": {
+        "problema": "Menos polinizadores nativos en la ciudad.",
+        "causa_raiz": "El contrato de mantención paga corte y herbicida como criterio de calidad; el que corta no tiene motivo para esperar la floración.",
+        "insight": "El jardín cambia cuando cambia el criterio de pago, no cuando se agrega un cartel.",
+        "solucion": "Franja que Florece y Bloque de Nidos: dos rutas independientes sobre el mismo problema.",
+        "metrica": "Picos de floración por metro y celdas de nido ocupadas por temporada."
+      },
+      "senal": "Los ganadores en biodiversidad no presentan una especie ni un aparato: presentan un sistema de manejo con responsabilidad asignada y una medición repetible.",
+      "analogias": [
+        {
+          "year": 2025,
+          "equipo": "STEM Synergy (UAM-DIEM)",
+          "proyecto": "Huertos verticales con recirculación hídrica",
+          "puesto": "1er lugar internacional Innovación",
+          "que_hicieron": "Diseñó un sistema modular de cultivo con riego eficiente y materiales reciclados.",
+          "por_que": "Comparte la lógica de un módulo replicable que se instala en espacio ya construido.",
+          "video": ""
+        },
+        {
+          "year": 2023,
+          "equipo": "Nicarq Sinergy (UNI-RUSB)",
+          "proyecto": "BioInnova",
+          "puesto": "2do lugar internacional Impacto Social",
+          "que_hicieron": "Integró agua, saneamiento y producción en una unidad de resiliencia comunitaria.",
+          "por_que": "Aporta la mirada de sistema: el corredor se juzga por el conjunto, no por una planta.",
+          "video": ""
+        }
+      ],
+      "realidad": {
+        "a": "La escuela o el conjunto paga el módulo y el mantenimiento; el jardinero cobra por floración sostenida; el vivero vende los plantines y repone los que no prenden. Sin donaciones: el módulo se compra y el contrato se renueva por año.",
+        "b": "El municipio compra bloques para escuelas y edificios públicos; el vivero los vende con margen; el dueño del muro recibe el bloque instalado sin pagar y gana polinizadores. Sin donaciones: cada bloque tiene comprador."
+      },
+      "detalles": [
+        [
+          "Ya existe",
+          "El jardín ornamental, que se mantiene igual que el césped y no se cuenta, y el cartel de «no cortar», que nadie fiscaliza. La diferencia: el pago depende de un conteo que el propio cliente puede hacer. / El hotel de insectos de madera, que se pudre y queda de adorno, y el tronco hueco de un solo uso. La diferencia: concreto que dura, celdas de tamaño estudiado y un conteo que se puede repetir."
+        ],
+        [
+          "Quién paga",
+          "La escuela o el conjunto paga el módulo y el mantenimiento; el jardinero cobra por floración sostenida; el vivero vende los plantines y repone los que no prenden. Sin donaciones: el módulo se compra y el contrato se renueva por año. / El municipio compra bloques para escuelas y edificios públicos; el vivero los vende con margen; el dueño del muro recibe el bloque instalado sin pagar y gana polinizadores. Sin donaciones: cada bloque tiene comprador."
+        ],
+        [
+          "Por validar",
+          "Que un módulo de 10 m sostenga dos picos de floración con el riego disponible. Prueba: un módulo testigo durante una temporada seca. / Qué diámetros ocupan las abejas locales y en cuánto tiempo. Prueba: 10 bloques con tres diámetros, revisados cada 15 días por una temporada."
+        ]
+      ],
+      "insignias": [
+        [
+          "Small Grants Programme (GEF / PNUD)",
+          "comunidad y ambiente"
+        ],
+        [
+          "Premio Latinoamérica Verde",
+          "impacto ambiental medible"
+        ]
+      ],
+      "pitch": "El que corta cobra por cortar; por eso no hay flores. La franja paga por floración y el bloque de nidos da casa a las abejas nativas. Mismo jardinero, mismo muro, otro criterio: flores contadas por los estudiantes."
+    },
+    {
+      "id": "04",
+      "titulo": "Manejo ecológico de residuos de poda y biomasa vegetal urbana",
+      "categoria": "Impacto Social",
+      "categoria_porque": "El beneficio es ambiental y comunitario: menos quema, mejor suelo y un servicio que se paga por jornada y no por volumen transportado.",
+      "descripcion": "Grandes volúmenes de biomasa vegetal urbana se tratan como desecho o se queman. El reto pide una alternativa de reuso accesible, práctica y económica para un municipio o sector urbano que reintegre la biomasa a los ciclos locales.",
+      "ods": [
+        [
+          "ODS 11",
+          "Ciudades y comunidades sostenibles",
+          "Convierte un residuo municipal en cobertura y carbón para alcorques, huertos y taludes urbanos."
         ],
         [
           "ODS 12",
           "Producción y consumo responsables",
-          "Convierte un residuo en insumo y reduce la carga sobre el drenaje."
+          "Cierra el ciclo de la poda y reduce el volumen que viaja a relleno o a quema."
         ],
+        [
+          "ODS 13",
+          "Acción por el clima",
+          "Evita emisiones de quema abierta y mejora la retención de agua del suelo."
+        ]
+      ],
+      "propuesta": {
+        "nombre": "Suscripción de Astilla",
+        "claim": "Se vende la astilla antes de encender la chipeadora.",
+        "que_es": "En un barrio, la poda de los árboles se amontona en la esquina hasta que pasa el camión y se la lleva entera, con todo el volumen que ocupa. La suscripción cambia el orden: el operador vende primero y corta después. Los vecinos pagan una cuota mensual y dejan la poda atada en la vereda el día que pasa la chipeadora; a cambio reciben bolsas de astilla para sus alcorques y macetas. El operador no compra la máquina hasta tener veinte suscriptores: arrienda la chipeadora por jornada y la remolca por una ruta fija, así que cada visita ya está pagada antes de salir. La astilla fresca no se vende como sustrato: se entrega como cobertura y se deja compostar seis semanas antes de usarla en huerto. Lo que existe es el contrato municipal que paga por desmontar y transportar, sin importar cuánto volumen viaje, y la bolsa de sustrato que el vivero trae de fuera. La diferencia es que aquí el comprador existe antes del corte.",
+        "como": [
+          "Se inscriben veinte suscriptores por cuadra y se fija un día de ruta.",
+          "El operador arrienda la chipeadora y recorre la ruta con el remolque.",
+          "Cada suscriptor deja la poda atada y recibe sus bolsas de astilla.",
+          "La astilla se deja compostar seis semanas antes de usarse en huerto."
+        ],
+        "beneficiario": "por definir",
+        "componentes": [
+          "Alquiler de chipeadora por jornada",
+          "Remolque",
+          "Cuchillas",
+          "Bolsas de 20 L",
+          "Báscula",
+          "Avisos de ruta"
+        ],
+        "costo": "~USD 90 / jornada (estimación propia, por cotizar)",
+        "metricas": [
+          "% de poda de la cuadra que no sale del barrio."
+        ]
+      },
+      "alterna": {
+        "nombre": "Horno de Retorta de Tambor",
+        "claim": "Dos tambores convierten la rama gruesa en carbón sin humo negro.",
+        "que_es": "En el patio de una casa hay una montaña de ramas gruesas que no sirven para compost y que nadie quiere llevar al relleno. El horno de retorta convierte esa madera en carbón sin quemarla al aire. Son dos tambores, uno dentro de otro: en el de adentro se apila la poda seca y se tapa; en el de afuera se hace fuego con las ramas finas, y el humo que sale del tambor interior se quema en la llama de la cámara exterior, así que no escapa negro. En cuatro horas queda carbón que se usa en los alcorques, en los huertos y en los filtros de agua del barrio. El operador cobra por lote y entrega el carbón a quien trajo la poda; el municipio le paga la recolección que se ahorra. Lo que existe es la quema abierta, que contamina y rinde poco, y el horno industrial de biochar, que cuesta miles y no cabe en un patio. La diferencia es que este horno se arma con dos tambores y se opera sin energía.",
+        "como": [
+          "Se arma el tambor interior dentro del exterior y se deja la cámara de fuego.",
+          "Se llena el tambor interior con poda seca y se tapa con sello de barro.",
+          "Se alimenta el fuego exterior con ramas finas durante cuatro horas.",
+          "Se apaga, se deja enfriar y se entrega el carbón a quien trajo la poda."
+        ],
+        "beneficiario": "por definir",
+        "componentes": [
+          "Tambor 200 L interior",
+          "Tambor 200 L exterior",
+          "Tubo de escape",
+          "Termómetro",
+          "Tapa con sello",
+          "Horquilla de carga"
+        ],
+        "costo": "~USD 210 / horno (estimación propia, por cotizar)",
+        "metricas": [
+          "Lotes de carbón entregados por mes y poda que no se quemó al aire."
+        ]
+      },
+      "cadena": {
+        "problema": "La poda se quema o viaja entera al relleno.",
+        "causa_raiz": "El contrato paga por desmontar y transportar, no por revalorizar; el volumen viaja completo y sale más caro que quemarlo.",
+        "insight": "Si el comprador existe antes del corte, la poda deja de ser basura.",
+        "solucion": "Suscripción de Astilla y Horno de Retorta de Tambor: dos rutas independientes sobre el mismo problema.",
+        "metrica": "% de poda que no sale del barrio y bolsas entregadas por jornada."
+      },
+      "senal": "Los ganadores de economía circular presentan el proceso completo: de donde sale, como se transforma, quien lo compra y como se comprueba la calidad.",
+      "analogias": [
+        {
+          "year": 2025,
+          "equipo": "Mentes Volcanicas (UNI-RUPAP)",
+          "proyecto": "Paneles constructivos de Tetra Pak",
+          "puesto": "1er lugar internacional Impacto Social",
+          "que_hicieron": "Transformó un residuo compuesto en un panel con especificación y control de proceso.",
+          "por_que": "Mismo patrón: residuo local, transformación simple y producto con uso definido.",
+          "video": ""
+        },
+        {
+          "year": 2017,
+          "equipo": "BottleLife (Montevideo, Uruguay)",
+          "proyecto": "Sistema constructivo con envases reciclados",
+          "puesto": "1er lugar internacional Impacto Social",
+          "que_hicieron": "Organizó la recolección de un residuo domiciliario y lo volvió producto modular.",
+          "por_que": "Aporta la lección logística: sin acopio previo, el residuo no llega al equipo.",
+          "video": ""
+        }
+      ],
+      "realidad": {
+        "a": "El suscriptor paga cuota mensual y recibe astilla; el operador cobra la ruta y no compra máquina hasta tener demanda; el vivero vende la astilla compostada en saco. Sin donaciones: la máquina se arrienda con la cuota ya cobrada.",
+        "b": "El operador del patio cobra por lote; el municipio paga la recolección que se ahorra; el huerto compra el carbón a precio de barrio. Sin donaciones: el horno se paga con lotes y el carbón tiene comprador."
+      },
+      "detalles": [
+        [
+          "Ya existe",
+          "El contrato municipal que paga por desmontar y transportar, y la bolsa de sustrato que el vivero trae de fuera. La diferencia: la demanda está pagada antes de que la máquina salga y el residuo se queda en la cuadra. / La quema abierta, que contamina y rinde poco, y el horno industrial de biochar, que no cabe en un patio. La diferencia: retorta de dos tambores, sin energía y con el humo quemado en la misma cámara."
+        ],
+        [
+          "Quién paga",
+          "El suscriptor paga cuota mensual y recibe astilla; el operador cobra la ruta y no compra máquina hasta tener demanda; el vivero vende la astilla compostada en saco. Sin donaciones: la máquina se arrienda con la cuota ya cobrada. / El operador del patio cobra por lote; el municipio paga la recolección que se ahorra; el huerto compra el carbón a precio de barrio. Sin donaciones: el horno se paga con lotes y el carbón tiene comprador."
+        ],
+        [
+          "Por validar",
+          "Cuántos suscriptores por cuadra sostienen una jornada de chipeadora. Prueba: una ruta piloto de 20 casas durante dos meses. / Rendimiento y emisiones del horno frente a la quema abierta. Prueba: tres lotes medidos con termómetro y báscula."
+        ]
+      ],
+      "insignias": [
+        [
+          "Premio Latinoamérica Verde",
+          "impacto ambiental medible"
+        ],
+        [
+          "Small Grants Programme (GEF / PNUD)",
+          "comunidad y ambiente"
+        ]
+      ],
+      "pitch": "La poda viaja al relleno porque nadie la compra antes de cortarla. La suscripción vende la astilla antes de la jornada; el horno de dos tambores convierte la rama gruesa en carbón. Menos volumen, menos quema, mismo barrio."
+    },
+    {
+      "id": "05",
+      "titulo": "Monitoreo inteligente e infraestructura verde en reservorios pluviales",
+      "categoria": "Impacto Social",
+      "categoria_porque": "Protege a una comunidad expuesta a inundaciones y articula comité de cuenca, municipio y vecinos alrededor de una obra que se ve.",
+      "descripcion": "Los reservorios pluviales en zonas vulnerables sufren anegamientos, acumulación de sedimentos y falta de monitoreo en tiempo real. El reto pide combinar monitoreo de agua con infraestructura verde y articular la gestión comunitaria e institucional.",
+      "ods": [
         [
           "ODS 6",
           "Agua limpia y saneamiento",
-          "Evita que el aceite llegue a cuerpos de agua y a la red de alcantarillado."
+          "Mejora la operación del reservorio y reduce los sedimentos que descarga aguas abajo."
+        ],
+        [
+          "ODS 11",
+          "Ciudades y comunidades sostenibles",
+          "Reduce el anegamiento en barrios aguas abajo con obra verde y aviso local."
+        ],
+        [
+          "ODS 13",
+          "Acción por el clima",
+          "Adapta el drenaje urbano a lluvias más intensas con soluciones basadas en la naturaleza."
+        ]
+      ],
+      "propuesta": {
+        "nombre": "Regla de Nivel",
+        "claim": "El nivel del reservorio se ve desde la esquina.",
+        "que_es": "El reservorio del barrio se llena en silencio y la gente se entera cuando el agua ya entró a las casas. La regla de nivel pone el dato donde se ve: un poste junto al muro, con una varilla que sube con el agua y tres franjas pintadas de verde, amarillo y rojo. Cualquiera que pase por la esquina sabe cómo está el nivel sin abrir una pantalla. Cuando la varilla llega a la franja roja, un flotador cierra un contacto y una sirena de batería suena en la casa del guardia, que ya tiene escrito a quién llamar. No usa red, no usa celular y no depende de que alguien mande un mensaje. El comité de cuenca y el municipio fijan juntos dónde va cada franja, con la cota que da el plano. Lo que existe es la regla pintada en el muro, que se tapa de lodo y nadie limpia, y el aviso que llega cuando el agua ya está adentro. La diferencia es que aquí el nivel se ve antes y la alarma no necesita señal.",
+        "como": [
+          "Se fija el poste y se cala la varilla del flotador contra la cota del plano.",
+          "Se pintan las tres franjas con el comité y el municipio.",
+          "Al subir el agua, la varilla marca el color y el flotador arma el contacto.",
+          "La sirena suena en la casa del guardia y el comité sigue el protocolo escrito."
+        ],
+        "beneficiario": "por definir",
+        "componentes": [
+          "Poste graduado",
+          "Varilla de flotador",
+          "Boya",
+          "Sirena 12 V",
+          "Batería 12 Ah",
+          "Panel 10 W",
+          "Gabinete estanco"
+        ],
+        "costo": "~USD 85 / punto (estimación propia, por cotizar)",
+        "metricas": [
+          "Tormentas con anegamiento frente al semestre anterior."
+        ]
+      },
+      "alterna": {
+        "nombre": "Compuerta de Flotador",
+        "claim": "Frena la crecida sin motor y falla abierta.",
+        "que_es": "En la boca del canal que alimenta el reservorio entra toda el agua de una vez y arrastra sedimentos que después hay que sacar a pala. La compuerta de flotador frena ese golpe sin motor ni electricidad: una hoja que flota y sube con el caudal, montada sobre bisagras, que deja pasar el agua normal y se cierra cuando el río crece. Un contrapeso y un orificio de purga impiden que cierre del todo, así que nunca embalsa agua hacia arriba ni inunda al vecino. Se instala en la boca con anclajes, se revisa una vez al mes y no consume nada. El municipio la compra como parte de la obra verde del reservorio; el comité de cuenca la mantiene y el guardia reporta si se traba. Lo que existe es la rejilla fija, que se tapa en la primera crecida, y la compuerta motorizada, que necesita energía y un tablero que nadie repara. La diferencia es que esta compuerta trabaja sola y falla abierta.",
+        "como": [
+          "Se ancla el marco en la boca del canal, a plomo con el muro.",
+          "Se monta la hoja en las bisagras y se calza el flotador con el contrapeso.",
+          "Se deja el orificio de purga abierto para que nunca cierre del todo.",
+          "Se revisa una vez al mes y se limpia la rejilla de hojas."
+        ],
+        "beneficiario": "por definir",
+        "componentes": [
+          "Hoja de PRFV",
+          "Bisagras de acero inoxidable",
+          "Flotador",
+          "Contrapeso",
+          "Sello de goma",
+          "Rejilla",
+          "Anclajes"
+        ],
+        "costo": "~USD 140 / unidad (estimación propia, por cotizar)",
+        "metricas": [
+          "% del caudal de crecida que entra frenado y sedimentos retenidos."
+        ]
+      },
+      "cadena": {
+        "problema": "Anegamiento recurrente en las viviendas de aguas abajo.",
+        "causa_raiz": "Nadie ve el nivel antes de la lluvia y el caudal del intake entra libre, sin freno y con sedimentos.",
+        "insight": "El aviso sirve si llega antes y sin red; la obra sirve si no depende del aviso.",
+        "solucion": "Regla de Nivel y Compuerta de Flotador: dos rutas independientes sobre el mismo problema.",
+        "metrica": "Tormentas con anegamiento en viviendas frente al semestre anterior."
+      },
+      "senal": "Los ganadores de agua combinan obra física con operación: no entregan solo el sensor ni solo el humedal, entregan quien mira el dato y que hace cuando cambia.",
+      "analogias": [
+        {
+          "year": 2024,
+          "equipo": "Techriders (UNI-RUSB)",
+          "proyecto": "Micropresas telemetradas",
+          "puesto": "1er lugar internacional Innovación",
+          "que_hicieron": "Construyó un tablero de telemetría para decidir sobre infraestructura crítica.",
+          "por_que": "Aporta la arquitectura de medición y control, aquí resuelta sin red.",
+          "video": ""
+        },
+        {
+          "year": 2023,
+          "equipo": "Nicarq Sinergy (UNI-RUSB)",
+          "proyecto": "BioInnova",
+          "puesto": "2do lugar internacional Impacto Social",
+          "que_hicieron": "Integró agua, saneamiento y producción en una unidad de resiliencia comunitaria.",
+          "por_que": "Demuestra que una solución de agua se sostiene cuando la comunidad la opera.",
+          "video": ""
+        }
+      ],
+      "realidad": {
+        "a": "El municipio compra el punto como parte de la obra del reservorio; el comité de cuenca limpia la varilla y prueba la sirena cada mes; el guardia recibe un pago simbólico por estar de turno. Sin donaciones: el mantenimiento va en el contrato del reservorio.",
+        "b": "El municipio la compra dentro de la obra del reservorio; el comité de cuenca la mantiene con la limpieza mensual; el vecino de aguas arriba no paga y no recibe el rebote. Sin donaciones: va en el presupuesto de la obra."
+      },
+      "detalles": [
+        [
+          "Ya existe",
+          "La regla pintada en el muro, que se tapa de lodo y nadie limpia, y el aviso que llega con el agua adentro. La diferencia: lectura pública, alarma local y cero dependencia de la red. / La rejilla fija, que se tapa en la primera crecida, y la compuerta motorizada, que necesita energía y tablero. La diferencia: pasiva, sin consumo y con purga que impide embalsar aguas arriba."
+        ],
+        [
+          "Quién paga",
+          "El municipio compra el punto como parte de la obra del reservorio; el comité de cuenca limpia la varilla y prueba la sirena cada mes; el guardia recibe un pago simbólico por estar de turno. Sin donaciones: el mantenimiento va en el contrato del reservorio. / El municipio la compra dentro de la obra del reservorio; el comité de cuenca la mantiene con la limpieza mensual; el vecino de aguas arriba no paga y no recibe el rebote. Sin donaciones: va en el presupuesto de la obra."
+        ],
+        [
+          "Por validar",
+          "Que la varilla no se trabe con sedimento en crecida. Prueba: una temporada de lluvia con limpieza semanal registrada. / Que el contrapeso abra la compuerta cuando baja el caudal y no deje sedimento atrapado. Prueba: una temporada con dos crecidas medidas."
+        ]
+      ],
+      "insignias": [
+        [
+          "Fondos de Agua (The Nature Conservancy)",
+          "cuenca y agua"
+        ],
+        [
+          "Marco de Sendai",
+          "reducción de riesgo"
+        ]
+      ],
+      "pitch": "El nivel se ve en la esquina antes de que llueva y el caudal entra frenado por una compuerta que flota. Sin red, sin celular y sin motor: el vecino ve el color, la sirena suena y el agua llega más lenta."
+    },
+    {
+      "id": "06",
+      "titulo": "Remoción y extracción de barro en viviendas anegadas",
+      "categoria": "Innovación",
+      "categoria_porque": "El núcleo es un dispositivo mecánico nuevo y su viabilidad técnica; el impacto social es la vivienda que se recupera en horas en vez de días.",
+      "descripcion": "Tras un aluvión o desborde, las viviendas quedan con lodo denso que se seca y se vuelve casi cemento. La remoción manual con pala exige días de esfuerzo. El reto pide herramientas o metodos de succión de bajo costo, operables en interiores y movilizables rápido.",
+      "ods": [
+        [
+          "ODS 11",
+          "Ciudades y comunidades sostenibles",
+          "Acelera la recuperación de viviendas y reduce los días de desplazamiento."
+        ],
+        [
+          "ODS 3",
+          "Salud y bienestar",
+          "Baja el esfuerzo físico extremo y el riesgo de lesión de vecinos y voluntarios."
+        ],
+        [
+          "ODS 13",
+          "Acción por el clima",
+          "Responde a eventos extremos más frecuentes con una herramienta replicable."
+        ]
+      ],
+      "propuesta": {
+        "nombre": "Bomba de Pedal",
+        "claim": "Dos personas y un pedal sacan el lodo denso sin electricidad.",
+        "que_es": "Cuando el agua se va de una casa, queda un lodo espeso que pesa como cemento y no entra en una cubeta sin deshacerse. La bomba de pedal mueve ese lodo con dos personas: una pedalea y la otra dirige la manguera por el pasillo. Es una bomba de diafragma, sin motor ni combustible, que succiona barro con piedras pequeñas y lo empuja hasta la calle; se desarma en tres piezas y cabe en el maletero de un carro. La junta del barrio la compra entre varias familias y la presta por turnos; el taller local la repara con repuestos de ferretería. Funciona con luz cortada, sin generador y sin que nadie se meta al cuarto. Lo que existe es la bomba de achique eléctrica, que se atasca con sólidos y no tiene corriente, y la pala con cubeta, que toma días y lesiona la espalda. La diferencia es que esta bomba saca el lodo denso, no solo el agua, y no necesita energía.",
+        "como": [
+          "Se arma la bomba en el pasillo y se pasa la manguera hasta el punto más bajo.",
+          "Una persona pedalea y la otra guía la manguera por el cuarto.",
+          "El lodo sale a la calle y se descarga en un punto acordado con la junta.",
+          "Se desarma, se lava con agua limpia y se guarda para la siguiente casa."
+        ],
+        "beneficiario": "por definir",
+        "componentes": [
+          "Bomba de diafragma de doble cámara",
+          "Pedal y biela",
+          "Manguera de 2 pulgadas",
+          "Filtro de entrada",
+          "Válvulas",
+          "Bastidor plegable"
+        ],
+        "costo": "~USD 180 / unidad (estimación propia, por cotizar)",
+        "metricas": [
+          "Horas por vivienda vaciada en las primeras 48 horas."
+        ]
+      },
+      "alterna": {
+        "nombre": "Trineo Filtrante",
+        "claim": "Entra por el pasillo y separa el agua del lodo en el camino.",
+        "que_es": "Cuando el lodo ya secó, la casa huele a tierra y el piso está duro como una losa. El trineo filtrante entra por el pasillo donde no entra una carretilla: es una chapa plegada con ruedas pequeñas y un saco de geotextil adentro. Se arrastra con una manija, se llena de lodo y el agua sale por el saco mientras los sólidos quedan adentro; cuando pesa, se levanta y se vacía en la calle. No usa energía, no levanta polvo y no exige palear dentro de la casa. El taller de metal del barrio lo fabrica con chapa de segunda y lo vende o lo alquila; la junta lo rota entre las casas. Lo que existe es la carretilla, que no pasa por la puerta, y la cubeta, que obliga a cargar veinte kilos por viaje. La diferencia es que el trineo separa el agua del lodo en el camino y trabaja en el espacio donde la casa es más angosta.",
+        "como": [
+          "Se extiende el saco de geotextil dentro del trineo plegado.",
+          "Se arrastra por el pasillo y se carga el lodo seco con la pala corta.",
+          "El agua escurre por el saco y los sólidos quedan retenidos.",
+          "Se vacía en la calle, se lava el saco y se cuelga para secar."
+        ],
+        "beneficiario": "por definir",
+        "componentes": [
+          "Trineo de chapa plegada",
+          "Saco de geotextil",
+          "Ruedas pequeñas",
+          "Manija de arrastre",
+          "Cincha",
+          "Pala corta"
+        ],
+        "costo": "~USD 60 / unidad (estimación propia, por cotizar)",
+        "metricas": [
+          "Sacos de lodo retirados por jornada y agua que no vuelve al piso."
+        ]
+      },
+      "cadena": {
+        "problema": "Días de pala y familias agotadas después del anegamiento.",
+        "causa_raiz": "Las herramientas disponibles son de exterior y para agua limpia; el lodo denso atasca lo que hay y el barro seco pesa como cemento.",
+        "insight": "El lodo se mueve con succión positiva y poca agua, no con fuerza humana ni con energía de la red.",
+        "solucion": "Bomba de Pedal y Trineo Filtrante: dos rutas independientes sobre el mismo problema.",
+        "metrica": "Horas por vivienda vaciada y sacos retirados por jornada."
+      },
+      "senal": "Los ganadores con hardware simple ganan cuando el dispositivo resuelve la etapa correcta del proceso, no cuando agregan tecnología a la etapa equivocada.",
+      "analogias": [
+        {
+          "year": 2021,
+          "equipo": "Ingeniarte (UNNE)",
+          "proyecto": "Alertar",
+          "puesto": "1er lugar internacional Impacto Social",
+          "que_hicieron": "Dispositivo simple y protocolo comunitario para activar ayuda en una emergencia.",
+          "por_que": "Aporta el criterio de diseño para emergencia: una sola acción, sin energía.",
+          "video": ""
+        },
+        {
+          "year": 2024,
+          "equipo": "Techriders (UNI-RUSB)",
+          "proyecto": "Micropresas telemetradas",
+          "puesto": "1er lugar internacional Innovación",
+          "que_hicieron": "Construyó un tablero de telemetría para decidir sobre infraestructura crítica.",
+          "por_que": "Comparte la lógica de resolver con electromecánica accesible y operador local.",
+          "video": ""
+        }
+      ],
+      "realidad": {
+        "a": "La junta del barrio compra una unidad entre varias familias y la presta por turnos; el taller local cobra la reparación; la familia no paga alquiler y devuelve la bomba limpia. Sin donaciones: la unidad se compra y se rota.",
+        "b": "El taller de metal del barrio lo fabrica y lo vende o alquila; la junta lo rota entre las casas; la familia paga el alquiler del día. Sin donaciones: cada trineo se vende."
+      },
+      "detalles": [
+        [
+          "Ya existe",
+          "La bomba de achique eléctrica, que se atasca con sólidos y no tiene corriente, y la pala con cubeta, que toma días. La diferencia: mueve lodo denso con pedal y se desarma para llevarla en un carro. / La carretilla, que no pasa por la puerta, y la cubeta, que obliga a cargar veinte kilos por viaje. La diferencia: filtra en el camino y trabaja en el pasillo angosto."
+        ],
+        [
+          "Quién paga",
+          "La junta del barrio compra una unidad entre varias familias y la presta por turnos; el taller local cobra la reparación; la familia no paga alquiler y devuelve la bomba limpia. Sin donaciones: la unidad se compra y se rota. / El taller de metal del barrio lo fabrica y lo vende o alquila; la junta lo rota entre las casas; la familia paga el alquiler del día. Sin donaciones: cada trineo se vende."
+        ],
+        [
+          "Por validar",
+          "Que el diafragma succione lodo con piedras de hasta 3 cm sin atascarse. Prueba: tres casas con lodo real y cronómetro. / Que el geotextil retenga el lodo fino y no se rasgue al arrastrar. Prueba: cinco jornadas con el mismo saco."
+        ]
+      ],
+      "insignias": [
+        [
+          "Marco de Sendai",
+          "reducción de riesgo"
+        ],
+        [
+          "Small Grants Programme (GEF / PNUD)",
+          "comunidad y ambiente"
+        ]
+      ],
+      "pitch": "El lodo no se saca a pala: se succiona con un pedal o se arrastra en un trineo que separa el agua. Sin luz, sin combustible y sin meterse al cuarto. La casa se recupera en horas, no en días."
+    },
+    {
+      "id": "07",
+      "titulo": "Reutilización de aceite doméstico",
+      "categoria": "Impacto Social",
+      "categoria_porque": "El punto de partida es el hogar y el beneficio es agua limpia en la cuadra, con un envase que vuelve y una comisión que se paga en la bodega.",
+      "descripcion": "Un litro de aceite residual contamina 40 mil litros de agua y tapa el drenaje. El reto pide una forma económica y accesible de reutilizar el aceite doméstico para generar energía limpia u otros subproductos.",
+      "ods": [
+        [
+          "ODS 6",
+          "Agua limpia y saneamiento",
+          "Evita que el aceite llegue al caño y a los cuerpos de agua del barrio."
+        ],
+        [
+          "ODS 12",
+          "Producción y consumo responsables",
+          "Convierte un residuo doméstico en insumo y devuelve el envase al circuito."
+        ],
+        [
+          "ODS 11",
+          "Ciudades y comunidades sostenibles",
+          "Reduce el taponamiento de la red y el aceite que termina en la calle."
         ]
       ],
       "propuesta": {
         "nombre": "Garrafa con Depósito",
-        "claim": "El aceite usado tiene precio visible y envase que vuelve, no un tacho en la calle.",
-        "que_es": "En la cocina se junta aceite usado y nadie sabe qué hacer con él: va al lavaplatos, a la basura o se lo lleva un comprador informal que paga lo que quiere. La propuesta es una garrafa reutilizable de cinco litros, con depósito de garantía: el cliente la compra una vez, la llena en casa y la devuelve en cualquier comercio participante, donde le devuelven el depósito y le descuentan el precio del aceite en la compra siguiente. El comercio gana tráfico y una comisión; el procesador que compra el aceite paga esa comisión porque recibe materia prima limpia y constante; el cliente recupera su depósito y no discute el precio. Lo que ya existe es el comprador informal, que pasa cuando quiere y paga sin regla, y el frasco que se tira a la basura. La diferencia es un envase cerrado, un precio publicado y un punto fijo de devolución. Sirve para aceite de cocina de cualquier hogar, comedor o fritura de barrio.",
+        "claim": "La garrafa vuelve y el descuento se paga en la bodega.",
+        "que_es": "En la cocina hay una botella cortada con aceite viejo y nadie sabe qué hacer con ella: tirarla al caño tapa la tubería, tirarla a la basura la revienta en el camión. La garrafa retornable cambia el destino: la bodega entrega una garrafa de cinco litros con sello, la familia la llena con el aceite usado y la devuelve en el mismo punto. La bodega anota la entrega y descuenta en la compra; el depósito de doscientos litros se retira cuando está lleno y el procesador paga una comisión por litro a la bodega. Nadie dona nada: la bodega gana comisión y clientela, el procesador gana materia prima y la familia gana descuento. El sello y el número de garrafa evitan que el mismo litro se cobre dos veces. Lo que existe es la botella plástica que se tira, el camión de basura que no recibe líquidos y el restaurante que vende a granel. La diferencia es que aquí el envase vuelve y el pago ocurre en la cuadra.",
         "como": [
-          "El cliente compra una garrafa de 5 L con depósito de garantía.",
-          "La llena en casa con el aceite usado y la lleva a un comercio participante.",
-          "Recibe el depósito de vuelta y descuento en la compra siguiente.",
-          "El procesador retira el aceite y paga la comisión al comercio."
+          "La bodega entrega la garrafa sellada y anota el número en su cuaderno.",
+          "La familia la llena con el aceite de cocina usado y la devuelve.",
+          "La bodega descuenta en la compra y vacía la garrafa en el depósito.",
+          "El procesador retira el depósito lleno y paga la comisión por litro."
         ],
-        "beneficiario": "Familias y bodegas",
+        "beneficiario": "por definir",
         "componentes": [
-          "Bidón 60 L",
-          "Embudo",
-          "Vales de descuento",
-          "Retiro semanal"
+          "Garrafa de 5 L retornable",
+          "Sello y número",
+          "Depósito de 200 L",
+          "Bomba de trasvase",
+          "Báscula",
+          "Cuaderno de comisión"
         ],
-        "costo": "~USD 34 / punto (estimación propia)",
+        "costo": "~USD 4 / garrafa + depósito (estimación propia, por cotizar)",
         "metricas": [
-          "Litros captados por barrio-mes y % de garrafas que vuelven."
+          "Litros acopiados por bodega al mes y garrafas devueltas."
         ]
       },
       "alterna": {
         "nombre": "Aceite para Cadena",
-        "claim": "El aceite usado, filtrado y etiquetado, lubrica lo que ya se mueve en el campo.",
-        "que_es": "El aceite de cocina usado se tira o se regala, mientras el agricultor compra aceite nuevo para la cadena de la motosierra y para las bisagras del galpón. La propuesta es una unidad de filtrado y decantado que convierte ese aceite en lubricante para cadena, envasado y etiquetado con su uso y su límite. El taller o la cooperativa filtra, envasa y vende a fincas, talleres y ferreterías de la zona; el cliente paga menos que por el aceite nuevo; el generador del aceite recibe un vale o un descuento. No es un jabón ni un cosmético: es un insumo industrial con comprador identificado. Lo que ya existe es el aceite nuevo para cadena, que se compra, y el aceite usado vertido sin filtrar, que daña la cadena. La diferencia es el filtrado y la etiqueta, con un uso claro y un precio menor. Sirve para motosierras, cadenas de moto, bisagras y maquinaria simple, no para un solo taller.",
+        "claim": "El aceite usado, filtrado y probado, lubrica la cadena del taller.",
+        "que_es": "El aceite que sobra de la cocina se puede volver a usar, pero nadie lo hace porque sale sucio y sin envase. El aceite para cadena lo filtra y lo pone en un frasco con pico: se cuela dos veces, se prueba la acidez con una tira y, si pasa, se etiqueta como lubricante para cadenas de moto, bisagras y herramientas. El taller de motos y el bicicletero del mercado lo compran por caja; la familia que entrega el aceite recibe un frasco o un descuento. No compite con el jabón artesanal, que ya tiene su mercado: compite con el lubricante nuevo, que cuesta más y viene en envase plástico. La prueba de acidez es lo que separa el lote bueno del que se descarta, y queda anotada en la etiqueta. Lo que existe es el aceite usado a granel, que mancha y huele, y el lubricante de tienda. La diferencia es que este sale filtrado, probado y en un envase que se puede usar sin ensuciar la cadena.",
         "como": [
-          "La cooperativa recibe el aceite usado y lo deja decantar.",
-          "Una unidad de filtrado lo limpia y lo envasa etiquetado.",
-          "Se vende a fincas, talleres y ferreterías como lubricante de cadena.",
-          "El generador del aceite recibe vale o descuento."
+          "Se recibe el aceite y se deja reposar para que baje el sedimento.",
+          "Se filtra dos veces por malla y se prueba la acidez con una tira.",
+          "Se envasa en frasco de 1 L con pico y etiqueta de lote.",
+          "El taller o el bicicletero lo compra por caja y devuelve el frasco."
         ],
-        "beneficiario": "Familias y bodegas",
+        "beneficiario": "por definir",
         "componentes": [
-          "Sosa cáustica",
-          "Esencias",
-          "Moldes",
-          "EPP",
-          "Supervisión de adulto"
+          "Filtro de malla",
+          "Embudo",
+          "Frascos de 1 L con pico",
+          "Etiquetas de lote",
+          "Tiras de acidez",
+          "Caja de transporte"
         ],
-        "costo": "~USD 20 / lote (estimación propia)",
+        "costo": "~USD 3 / frasco (estimación propia, por cotizar)",
         "metricas": [
-          "Litros vendidos como lubricante y 0 quejas por desgaste."
+          "Frascos vendidos por mes y lotes descartados por acidez."
         ]
       },
       "cadena": {
-        "problema": "Aceite al caño (contamina ~1:40.000 según el enunciado del comité; confirmar en banco antes de citar).",
-        "causa_raiz": "Sin punto ni canje, el aceite se tira; la industria solo compra en restaurantes.",
-        "insight": "No hay incentivo local pagado ni canal barrial.",
+        "problema": "El aceite usado se tira al caño o a la basura.",
+        "causa_raiz": "No hay punto de acopio en la cuadra ni comprador que pague por el litro; la industria solo compra a restaurantes.",
+        "insight": "El aceite no es basura si el envase vuelve y alguien paga una comisión en la misma bodega.",
         "solucion": "Garrafa con Depósito y Aceite para Cadena: dos rutas independientes sobre el mismo problema.",
-        "metrica": "Litros captados por barrio-mes y % de garrafas que vuelven. (Opción 01); Litros vendidos como lubricante y 0 quejas por desgaste. (Opción 02)."
+        "metrica": "Litros acopiados por bodega al mes y garrafas que vuelven."
       },
       "senal": "Los ganadores de reciclaje demuestran primero que la recolección funciona; la transformación es la segunda mitad, no la primera.",
       "analogias": [
@@ -839,122 +869,128 @@
           "year": 2017,
           "equipo": "BottleLife (Montevideo, Uruguay)",
           "proyecto": "Sistema constructivo con envases reciclados",
-          "que_hicieron": "Organizó la recolección de un residuo domiciliario y lo transformó en un producto modular con uso definido.",
-          "por_que": "Es el mismo problema de dos mitades: acopio disperso y transformación local. La lección es que la red de recolección es parte del diseño.",
-          "video": "https://www.youtube.com/watch?v=yhVE1ZRDQZk",
-          "puesto": "1er lugar internacional Impacto Social"
+          "puesto": "1er lugar internacional Impacto Social",
+          "que_hicieron": "Organizó la recolección de un residuo domiciliario y lo volvió producto modular.",
+          "por_que": "Mismo problema de dos mitades: acopio disperso y transformación simple.",
+          "video": ""
         },
         {
           "year": 2025,
           "equipo": "Mentes Volcanicas (UNI-RUPAP)",
           "proyecto": "Paneles constructivos de Tetra Pak",
-          "que_hicieron": "Demostro que un residuo doméstico puede transformarse en un producto con especificación y control de proceso.",
-          "por_que": "Aporta el criterio de calidad: el biodiésel necesita ficha, medición y trazabilidad, igual que un panel necesita resistencia y dimensiones.",
-          "video": "https://www.youtube.com/watch?v=_JSUKR1bPnE",
-          "puesto": "1er lugar internacional Impacto Social"
+          "puesto": "1er lugar internacional Impacto Social",
+          "que_hicieron": "Transformó un residuo compuesto en un panel con especificación y control de proceso.",
+          "por_que": "Aporta el criterio de calidad: el lote necesita ficha y prueba antes de venderse.",
+          "video": ""
         }
       ],
       "realidad": {
-        "a": "El procesador paga la comisión; el comercio gana tráfico; el cliente recupera el depósito.",
-        "b": "Fincas y talleres compran el lubricante; la cooperativa gana el margen; el generador recibe vale."
+        "a": "El procesador paga comisión por litro a la bodega; la bodega descuenta a la familia y gana clientela; el vecino entrega el aceite y recibe descuento. Sin donaciones: la comisión cubre la garrafa y el retiro.",
+        "b": "El taller o el bicicletero compra el frasco; la familia que entrega aceite recibe descuento o un frasco; el que filtra cobra el servicio de acondicionado. Sin donaciones: el lubricante tiene comprador fijo."
       },
       "detalles": [
         [
           "Ya existe",
-          "El comprador informal (pasa cuando quiere, paga sin regla) y el frasco a la basura. La diferencia: envase cerrado, precio publicado y punto fijo. / El aceite nuevo para cadena (se compra) y el aceite usado sin filtrar (daña la cadena). La diferencia: filtrado y etiqueta con uso claro."
+          "La botella plástica que se tira, el camión de basura que no recibe líquidos y el restaurante que vende a granel. La diferencia: el envase vuelve y el descuento se cobra en la misma cuadra. / El aceite usado a granel, que mancha y huele, y el lubricante nuevo de tienda. La diferencia: filtrado, probado y en un envase con pico que no ensucia."
         ],
         [
           "Quién paga",
-          "El procesador paga la comisión; el comercio gana tráfico; el cliente recupera el depósito. / Fincas y talleres compran el lubricante; la cooperativa gana el margen; el generador recibe vale."
+          "El procesador paga comisión por litro a la bodega; la bodega descuenta a la familia y gana clientela; el vecino entrega el aceite y recibe descuento. Sin donaciones: la comisión cubre la garrafa y el retiro. / El taller o el bicicletero compra el frasco; la familia que entrega aceite recibe descuento o un frasco; el que filtra cobra el servicio de acondicionado. Sin donaciones: el lubricante tiene comprador fijo."
         ],
         [
           "Por validar",
-          "Que el depósito cubra el costo de la garrafa y que el comercio no pierda plata con la comisión. / Que el filtrado alcance para cadena sin desgaste acelerado; análisis de viscosidad."
+          "Cuántos litros por mes sostienen el retiro semanal y cuántas garrafas vuelven. Prueba: una bodega piloto durante dos meses. / Que la acidez del aceite de cocina usado no dañe la cadena. Prueba: dos cadenas testigo durante un mes con medición de desgaste."
         ]
       ],
       "insignias": [
         [
-          "Política nacional de biocombustibles",
-          "venta a planta"
+          "Premio Latinoamérica Verde",
+          "economía circular"
         ],
         [
-          "Economía circular",
-          "aceite → combustible"
+          "Pacto Global de las Naciones Unidas",
+          "trabajo y ambiente"
         ]
       ],
-      "pitch": "El litro que antes iba al caño vuelve como vale en la bodega o como jabón de feria, con jóvenes al frente."
+      "pitch": "El litro que antes iba al caño vuelve como descuento en la bodega o como lubricante para la cadena. Garrafa retornable, depósito en la esquina y comisión pagada al bodeguero: nadie dona nada y el aceite no llega al río."
     },
     {
       "id": "08",
-      "titulo": "DESECHOS DE BASURA VERDE (RESIDUOS FOTOVOLTAICOS)",
+      "titulo": "Desechos de basura verde: residuos fotovoltaicos",
       "categoria": "Innovación",
-      "categoria_porque": "El núcleo es un proceso técnico de triaje y recuperación de materiales con viabilidad logística y seguridad.",
+      "categoria_porque": "El núcleo es un proceso técnico de evaluación y reuso con viabilidad logística; el impacto es energía que sigue disponible en vez de volverse residuo peligroso.",
       "descripcion": "Las celdas solares fuera de uso se convierten en residuos peligrosos y el problema crece en América Latina. El reto pide un proceso económico de segunda vida en aplicaciones de menor exigencia o un sistema seguro de desarme y recuperación de materiales.",
       "ods": [
         [
           "ODS 7",
           "Energía asequible y no contaminante",
-          "Extiende la vida útil del módulo y lleva energía a aplicaciones de baja exigencia."
+          "Extiende la vida del módulo y lleva energía a bombeo e iluminación de baja exigencia."
         ],
         [
           "ODS 12",
           "Producción y consumo responsables",
-          "Recupera aluminio, vidrio y cobre en lugar de enterrar el módulo."
+          "Evita que un panel que aún genera se entierre antes de tiempo."
         ],
         [
           "ODS 11",
           "Ciudades y comunidades sostenibles",
-          "Evita que residuos peligrosos queden en patios y botaderos urbanos."
+          "Evita que residuos peligrosos queden amontonados en patios y botaderos urbanos."
         ]
       ],
       "propuesta": {
         "nombre": "Probador Bajo Sol",
-        "claim": "Un panel no se juzga con multímetro: se juzga con carga y sol real.",
-        "que_es": "Un panel retirado de un techo puede marcar voltaje y aun así no entregar potencia bajo el sol. El multímetro dice que hay tensión, no que sirva. La propuesta es un probador portátil que conecta el panel a una carga resistiva y lo compara con una celda de referencia: mide potencia real, la expresa como porcentaje de la nominal y emite una ficha con hora, irradiancia y veredicto. La instaladora o la cooperativa compra el kit y lo usa en el sitio, sin desmontar el panel ni mandarlo a un laboratorio; el dueño recibe una ficha que puede mostrar al comprador. Lo que ya existe es el multímetro, que solo mide tensión en vacío, y el laboratorio, que exige trasladar el panel y esperar. La diferencia es la medición con carga y la ficha en el mismo lugar. Sirve para paneles de cualquier tamaño y marca, no para un modelo específico.",
+        "claim": "Veinte minutos al sol y el panel tiene veredicto con número.",
+        "que_es": "En el patio de una instaladora se apilan paneles que los clientes devolvieron porque «ya no rinden». Nadie sabe si es verdad: el multímetro marca voltaje en vacío y eso no dice cuánta potencia entrega el panel cuando trabaja. El probador bajo sol resuelve la duda en veinte minutos: el panel se conecta a una resistencia de carga, se compara la corriente con la de una celda de referencia que está al lado, y se anota la hora y la irradiancia del momento. El resultado es una ficha con el porcentaje de potencia real y un veredicto: sirve, sirve para bombeo, o no sirve. La instaladora cobra la evaluación y deja de regalar paneles dudosos; el comprador sabe qué está comprando. Lo que existe es el multímetro, que mide sin carga, y el proveedor que no certifica paneles usados. La diferencia es que aquí el número se mide bajo el sol y a plena carga, no de noche ni en vacío.",
         "como": [
-          "El kit se conecta al panel en el sitio, sin desmontarlo.",
-          "Una carga resistiva y una celda de referencia miden potencia real.",
-          "El resultado se expresa como % de la potencia nominal.",
-          "Se emite una ficha con hora, irradiancia y veredicto."
+          "Se limpia el panel y se orienta al sol junto a la celda de referencia.",
+          "Se conecta la carga resistiva y se mide corriente y voltaje a plena carga.",
+          "Se compara con la celda de referencia y se calcula el % de potencia.",
+          "Se emite la ficha con hora, irradiancia y veredicto de destino."
         ],
-        "beneficiario": "Instaladora que entrega paneles retirados",
+        "beneficiario": "por definir",
         "componentes": [
+          "Carga resistiva",
+          "Celda de referencia",
+          "Pinza amperimétrica",
           "Multímetro",
-          "Medidor de aislamiento",
-          "Mesa de evaluación"
+          "Caja de instrumentos",
+          "Cables y conectores"
         ],
-        "costo": "~USD 115 / kit (estimación propia)",
+        "costo": "~USD 135 / kit (estimación propia, por cotizar)",
         "metricas": [
-          "≥90% de las fichas coinciden con laboratorio en ±10%."
+          "Paneles evaluados con destino declarado por semana."
         ]
       },
       "alterna": {
         "nombre": "Panel de Segunda Vida",
-        "claim": "Panel usado, probado y con garantía, para bombeo donde la eficiencia no es crítica.",
-        "que_es": "Los paneles retirados de techos suelen terminar en una bodega o en la calle, aunque muchos siguen sirviendo para usos donde no importa perder eficiencia, como bombear agua o cargar una batería de cerca. La propuesta es un stock de paneles probados bajo carga, clasificados por potencia real, con conectores sanos y una garantía de seis meses sobre la potencia medida. El agricultor o la escuela compra a una fracción del panel nuevo; la cooperativa compra el lote, prueba, limpia y revende; el instalador cobra el montaje. No se vende como panel nuevo ni se promete eficiencia que no tiene: se vende con la ficha del probador y un uso recomendado. Lo que ya existe es el panel nuevo, con precio lleno, y la reventa informal, sin prueba ni garantía. La diferencia es el stock clasificado y la garantía escrita. Sirve para bombeo, cercas y cargas de día, no para una instalación conectada a red.",
+        "claim": "Panel probado, con potencia escrita y seis meses de garantía.",
+        "que_es": "Un panel que ya no alcanza para una casa puede bombear agua en un corral o encender tres lámparas en una bodega. El panel de segunda vida se vende probado, con el porcentaje de potencia escrito en una etiqueta y seis meses de garantía. Viene con soporte de ángulo, controlador de carga y cableado, listo para instalar en bombeo o en iluminación; el comprador paga por lo que el panel entrega, no por lo que promete la caja. La instaladora que lo retiró lo entrega al puesto, el puesto lo prueba y lo vende; el comprador ahorra frente al panel nuevo. Lo que existe es el panel usado que se vende «como está», sin número y sin garantía, y el desarme para recuperar aluminio, que pierde el panel entero para ganar unos kilos de metal. La diferencia es que aquí el panel sigue generando y el riesgo lo asume quien lo probó.",
         "como": [
-          "La cooperativa compra lotes de paneles retirados.",
-          "Cada panel se prueba bajo carga y se clasifica por potencia real.",
-          "Se limpia, se le ponen conectores sanos y se etiqueta su uso recomendado.",
-          "Se vende con garantía de seis meses sobre la potencia medida."
+          "El puesto recibe el panel retirado y lo pasa por el probador bajo sol.",
+          "Se etiqueta con el % de potencia y se arma el kit de instalación.",
+          "Se vende para bombeo o iluminación con seis meses de garantía.",
+          "Si falla dentro de la garantía, el puesto lo repone del mismo stock."
         ],
-        "beneficiario": "Instaladora que entrega paneles retirados",
+        "beneficiario": "por definir",
         "componentes": [
-          "Mesa de desarme",
-          "EPP",
-          "Contenedores separados"
+          "Panel probado",
+          "Soporte de ángulo",
+          "Controlador de carga",
+          "Batería 12 V",
+          "Cableado",
+          "Etiqueta de potencia"
         ],
-        "costo": "~USD 45 / unidad (estimación propia)",
+        "costo": "~USD 45 / kit + panel (estimación propia, por cotizar)",
         "metricas": [
-          "Paneles vendidos con ficha y ≥90% sin reclamo en seis meses."
+          "Paneles revendidos con garantía y fallas dentro del plazo."
         ]
       },
       "cadena": {
-        "problema": "Paneles retirados amontonados (residuo peligroso).",
-        "causa_raiz": "Sin canal local que evalúe, ni comprador de aluminio/vidrio; no se separa el panel «dudoso» del claro.",
-        "insight": "No hay punto de acopio separado ni quien firme «sirve / no sirve / se desarma».",
+        "problema": "Paneles retirados se amontonan como residuo peligroso.",
+        "causa_raiz": "Nadie dice «sirve / no sirve» con un número, y no hay comprador para el panel que todavía genera.",
+        "insight": "Bajo sol y con carga, la potencia real se sabe en veinte minutos.",
         "solucion": "Probador Bajo Sol y Panel de Segunda Vida: dos rutas independientes sobre el mismo problema.",
-        "metrica": "≥90% de las fichas coinciden con laboratorio en ±10%. (Opción 01); Paneles vendidos con ficha y ≥90% sin reclamo en seis meses. (Opción 02)."
+        "metrica": "% de paneles evaluados con destino declarado y unidades revendidas."
       },
       "senal": "Los ganadores de residuos peligrosos no prometen reciclar todo: separan lo reutilizable de lo que exige desarme y demuestran seguridad en cada destino.",
       "analogias": [
@@ -962,122 +998,127 @@
           "year": 2025,
           "equipo": "Mentes Volcanicas (UNI-RUPAP)",
           "proyecto": "Paneles constructivos de Tetra Pak",
+          "puesto": "1er lugar internacional Impacto Social",
           "que_hicieron": "Transformó un residuo compuesto en un panel con especificación y control de proceso.",
-          "por_que": "Comparte la lógica de separar materiales y reconstruir un producto con ficha técnica. El panel fotovoltaico tambien es un compuesto que hay que desarmar por capas.",
-          "video": "https://www.youtube.com/watch?v=_JSUKR1bPnE",
-          "puesto": "1er lugar internacional Impacto Social"
+          "por_que": "Comparte la lógica de separar, especificar y reconstruir un producto vendible.",
+          "video": ""
         },
         {
           "year": 2023,
           "equipo": "Gueguense Pinolero (UNMRMA / UNI-RMAV)",
           "proyecto": "DIGNA",
-          "que_hicieron": "Dimensionó un módulo solar de 400 W dentro de una vivienda con restricciones explícitas de costo y consumo.",
-          "por_que": "Aporta el criterio de dimensionar para el uso real. Segundo Sol no vende watts de catálogo: entrega la potencia medida para una aplicación concreta.",
-          "video": "https://www.youtube.com/watch?v=AjtVryXaGDc",
-          "puesto": "1er lugar internacional Innovación"
+          "puesto": "1er lugar internacional Innovación",
+          "que_hicieron": "Dimensionó un módulo solar de 400 W dentro de una vivienda con restricciones de costo.",
+          "por_que": "Aporta el criterio de dimensionar para el uso real y no para el catálogo.",
+          "video": ""
         }
       ],
       "realidad": {
-        "a": "La instaladora o cooperativa compra el kit; el dueño recibe la ficha; el comprador paga por un panel evaluado.",
-        "b": "El agricultor o la escuela compra a fracción de precio; la cooperativa gana el margen; el instalador cobra el montaje."
+        "a": "La instaladora compra el kit y cobra la evaluación; el puesto de segunda vida lo usa para clasificar stock; el comprador paga la ficha incluida en el panel. Sin donaciones: la evaluación se cobra por unidad.",
+        "b": "La instaladora entrega el panel retirado y cobra por el retiro; el puesto lo prueba, lo equipa y lo vende con margen; el comprador paga menos que un panel nuevo. Sin donaciones: el stock se compra a la instaladora."
       },
       "detalles": [
         [
           "Ya existe",
-          "El multímetro (solo tensión en vacío) y el laboratorio (traslado y espera). La diferencia: potencia real con carga y ficha en el sitio. / El panel nuevo (precio lleno) y la reventa informal (sin prueba ni garantía). La diferencia: stock clasificado con ficha y garantía."
+          "El multímetro, que mide en vacío y no dice la potencia real, y el proveedor que no certifica paneles usados. La diferencia: medición a plena carga y bajo sol, con ficha y veredicto. / El panel usado que se vende «como está», y el desarme para recuperar aluminio. La diferencia: potencia escrita, kit de instalación y garantía de seis meses."
         ],
         [
           "Quién paga",
-          "La instaladora o cooperativa compra el kit; el dueño recibe la ficha; el comprador paga por un panel evaluado. / El agricultor o la escuela compra a fracción de precio; la cooperativa gana el margen; el instalador cobra el montaje."
+          "La instaladora compra el kit y cobra la evaluación; el puesto de segunda vida lo usa para clasificar stock; el comprador paga la ficha incluida en el panel. Sin donaciones: la evaluación se cobra por unidad. / La instaladora entrega el panel retirado y cobra por el retiro; el puesto lo prueba, lo equipa y lo vende con margen; el comprador paga menos que un panel nuevo. Sin donaciones: el stock se compra a la instaladora."
         ],
         [
           "Por validar",
-          "Precisión del kit contra un laboratorio en 10 paneles; efecto de la nubosidad. / Demanda real de paneles usados para bombeo y costo de la garantía."
+          "Que la medición con carga se acerque a la del equipo profesional. Prueba: 10 paneles medidos con ambos métodos. / Cuántos paneles retirados superan el 60 % de potencia y sostienen la garantía. Prueba: 20 paneles con seguimiento de seis meses."
         ]
       ],
       "insignias": [
         [
-          "REP de RAEE",
-          "disposición certificada"
+          "Premio Latinoamérica Verde",
+          "economía circular"
         ],
         [
-          "Fondo nacional de innovación",
-          "puesto replicable"
+          "Pacto Global de las Naciones Unidas",
+          "trabajo y ambiente"
         ]
       ],
-      "pitch": "Ningún panel amontonado: evaluación a USD 8 o desarme de 5 pasos; el destino queda declarado y el aluminio paga el desarme."
+      "pitch": "Un panel retirado no es basura: es un panel sin ficha. Bajo sol y con carga se mide lo que entrega, se etiqueta y se vende con garantía para bombeo. El instalador deja de regalar dudas y el comprador sabe qué potencia recibe."
     },
     {
       "id": "09",
-      "titulo": "OPTIMIZACIÓN Y PRIORIZACIÓN EN LA POST-EMERGENCIA",
+      "titulo": "Optimización y priorización de recursos en la post-emergencia",
       "categoria": "Impacto Social",
-      "categoria_porque": "La decisión protege vidas en comunidades afectadas; la herramienta es simple y el resultado se mide en personas atendidas a tiempo.",
+      "categoria_porque": "La decisión protege vidas en comunidades afectadas; la herramienta es simple, funciona sin red y deja un registro que se puede auditar.",
       "descripcion": "Tras un terremoto, alud o inundación, la demanda de asistencia desborda la capacidad inicial. Con recursos limitados e información fragmentada, el reto pide ayudar a decidir rápido a quien atender primero y donde concentrar los esfuerzos.",
       "ods": [
         [
           "ODS 11",
           "Ciudades y comunidades sostenibles",
-          "Ordena la respuesta en las primeras horas y reduce el impacto del desastre en la comunidad."
+          "Ordena la respuesta en las primeras horas y reduce el impacto del desastre."
+        ],
+        [
+          "ODS 16",
+          "Paz, justicia e instituciones sólidas",
+          "Hace transparente y auditable el criterio con que se asignan recursos."
         ],
         [
           "ODS 13",
           "Acción por el clima",
           "Mejora la respuesta ante eventos extremos cada vez más frecuentes."
-        ],
-        [
-          "ODS 16",
-          "Paz, justicia e instituciones solidas",
-          "Hace transparente y auditable el criterio con que se asignan recursos públicos."
         ]
       ],
       "propuesta": {
-        "nombre": "Ficha con Consentimiento",
-        "claim": "La prioridad se decide con datos mínimos, sin publicar la vida de nadie.",
-        "que_es": "Después de una emergencia, la ayuda se decide con listas de papel y mensajes de WhatsApp que se pierden, se duplican y exponen enfermedades o ingresos de familias vulnerables. La propuesta es una ficha preimpresa por vivienda, con seis campos y un QR, que se llena sin internet y se sincroniza cuando vuelve la señal. El sistema pide solo lo necesario para priorizar: ubicación, daño, personas, necesidad inmediata y un contacto; no pide diagnóstico ni ingresos, y el tablero público muestra conteos por cuadra, nunca nombres. La junta o el municipio compra las fichas y define quién puede ver qué, con registro de accesos y fecha de borrado. El coordinador gana porque decide en minutos y puede justificar el orden; la familia gana porque no entrega más de lo necesario. Lo que ya existe es el censo en papel, que se moja y se duplica, y el grupo de WhatsApp, que mezcla datos sensibles con rumores. La diferencia es el consentimiento explícito y el tablero sin nombres. Sirve para cualquier evento y cualquier barrio.",
+        "nombre": "Tablero de Manzana",
+        "claim": "Una ficha por casa, a la vista de todos, sin red.",
+        "que_es": "Después de una inundación, la información vive en la cabeza de veinte voluntarios y en un cuaderno que se moja. El tablero de manzana la pone en una pared: una ficha por casa, con cuatro datos que se mueven a mano (cuántas personas, si hay agua, si la estructura está en pie y por dónde se sale). El jefe de manzana mueve la ficha a rojo, amarillo o verde según lo que vio, y el coordinador recorre la calle y lee el tablero sin abrir ninguna aplicación. Cada dos horas pasa el resumen por radio al puesto municipal, que anota el mismo código. Funciona sin luz, sin red y sin batería; si se moja, se seca y se sigue usando. Los vecinos ven el tablero y saben que su casa está contada. Lo que existe es la lista en cuaderno, que se pierde y se duplica, y el grupo de mensajes, que se cae cuando se cae la antena. La diferencia es que el estado compartido está en la calle, a la vista de todos.",
         "como": [
-          "Cada vivienda recibe una ficha preimpresa con seis campos y un QR.",
-          "Se llena sin internet y se sincroniza cuando vuelve la señal.",
-          "El sistema pide solo lo necesario y registra quién consulta qué.",
-          "El tablero público muestra conteos por cuadra, nunca nombres."
+          "Antes del evento se numeran las casas y se entrega una ficha por vivienda.",
+          "El jefe de manzana recorre y mueve la ficha a rojo, amarillo o verde.",
+          "El coordinador lee el tablero y pasa el resumen por radio cada dos horas.",
+          "Al cierre se fotografían las fichas y se archivan para la auditoría."
         ],
-        "beneficiario": "Coordinador de respuesta",
+        "beneficiario": "por definir",
         "componentes": [
-          "Ficha de 6 campos offline",
-          "Sincronización SMS",
-          "Tablero de 3 colores"
+          "Tablero plegable",
+          "Fichas imantadas (100)",
+          "Tarjetas de casa numeradas",
+          "Marcador de pizarra",
+          "Protocolo impreso",
+          "Funda impermeable"
         ],
-        "costo": "~USD 30 / 100 fichas (estimación propia)",
+        "costo": "~USD 35 / tablero (estimación propia, por cotizar)",
         "metricas": [
-          "Prioridad asignada en <15 min y 0 nombres expuestos en el tablero."
+          "Casas atendidas por hora y fichas sin actualizar al cierre."
         ]
       },
       "alterna": {
-        "nombre": "Vales con Serie",
-        "claim": "Una familia, un vale numerado: la ayuda no se duplica y queda a la vista.",
-        "que_es": "En la post-emergencia, la misma familia recibe ayuda de dos organizaciones y otra no recibe nada, porque cada lista vive en un cuaderno distinto. La propuesta es un talonario de vales numerados y un tablero público de canje: cada familia recibe un vale con serie, el comercio lo canjea y marca la serie, y el tablero muestra cuántos vales se usaron por sector, sin nombres. El donante o el municipio imprime los talonarios; el comercio cobra contra la serie canjeada; la familia recibe una vez y sabe cuánto le toca. No se publica la lista de personas: se publica el movimiento de vales. Lo que ya existe es la lista de papel por organización, que nadie cruza, y la entrega directa sin comprobante, que se presta para el rumor. La diferencia es la serie única y el tablero de canje. Sirve para alimentos, agua, materiales o transporte, en cualquier evento.",
+        "nombre": "Talonario de Vales",
+        "claim": "Tres copias con el mismo número: nadie cobra dos veces.",
+        "que_es": "En la entrega de agua y comida, la misma casa recibe dos veces porque dos voluntarios anotan en dos listas que nunca se cruzan. El talonario de vales evita eso sin ningún sistema: cada entrega se escribe tres veces con el mismo número, una copia queda en la casa, otra en la bodega y otra en manos del coordinador. Al final del día, los talones se ordenan por número y se cuadran en una tabla; si una casa aparece dos veces, el número la delata. La serie se imprime por jornada y se sella al entregar, así que no se puede reutilizar. Funciona con lluvia, sin luz y sin señal, y deja un registro que se puede auditar después. Lo que existe es la lista suelta sin número, que se moja y se confunde, y el registro digital, que se cae justo cuando más se necesita. La diferencia es que aquí el control viaja en papel y se puede reconstruir en una mesa.",
         "como": [
-          "El municipio o el donante imprime talonarios con series únicas.",
-          "Cada familia recibe un vale y el comercio lo canjea marcando la serie.",
-          "El tablero público muestra vales usados por sector, sin nombres.",
-          "El comercio cobra contra la serie; la familia sabe cuánto le toca."
+          "Se imprime el talonario por jornada y se sella la serie antes de salir.",
+          "Se entrega la ayuda y se llenan las tres copias con el número visible.",
+          "Una copia queda en la casa, otra en la bodega y otra con el coordinador.",
+          "Al cierre se ordenan los talones por número y se cuadra la tabla."
         ],
-        "beneficiario": "Coordinador de respuesta",
+        "beneficiario": "por definir",
         "componentes": [
-          "Sabana impresa de puertas",
-          "Marcador",
-          "Ronda nominal"
+          "Talonario triplicado (100)",
+          "Sello de serie",
+          "Marcador grueso",
+          "Tabla de cuadre",
+          "Funda impermeable"
         ],
-        "costo": "~USD 5 / 100 vales (estimación propia)",
+        "costo": "~USD 6 / 100 vales (estimación propia)",
         "metricas": [
-          "0 duplicados por familia y ≥90% de vales canjeados en 15 días."
+          "Entregas duplicadas por jornada y talones cuadrados al cierre."
         ]
       },
       "cadena": {
-        "problema": "Decisión de «quién va primero» a ojo y bajo presión.",
-        "causa_raiz": "Sin dato mínimo útil compartido (personas / agua / riesgo de estructura / ruta de salida) ni roles prefijados.",
-        "insight": "Ni ficha por hogar ni guías nombradas antes del evento; el «sistema» aparece siempre después.",
-        "solucion": "Ficha con Consentimiento y Vales con Serie: dos rutas independientes sobre el mismo problema.",
-        "metrica": "Prioridad asignada en <15 min y 0 nombres expuestos en el tablero. (Opción 01); 0 duplicados por familia y ≥90% de vales canjeados en 15 días. (Opción 02)."
+        "problema": "La decisión de «quién va primero» se toma a ojo y bajo presión.",
+        "causa_raiz": "No hay un estado compartido de la cuadra ni roles definidos antes del evento; la información vive en cuadernos y en la memoria.",
+        "insight": "El orden se decide con lo que se ve en la calle, no con una base de datos que se cae con la antena.",
+        "solucion": "Tablero de Manzana y Talonario de Vales: dos rutas independientes sobre el mismo problema.",
+        "metrica": "Casas atendidas por hora y entregas duplicadas por jornada."
       },
       "senal": "Los ganadores de emergencia no proponen una app: proponen un protocolo que funciona cuando la red falla. La adopción se gana con una acción simple, no con una funcionalidad.",
       "analogias": [
@@ -1085,50 +1126,50 @@
           "year": 2021,
           "equipo": "Ingeniarte (UNNE)",
           "proyecto": "Alertar",
+          "puesto": "1er lugar internacional Impacto Social",
           "que_hicieron": "Dispositivo simple y protocolo comunitario para activar ayuda en una emergencia.",
-          "por_que": "Es el mismo principio de diseño: una acción, una persona que responde y un protocolo ensayado. Faro aplica eso a la coordinación, no al aviso individual.",
-          "video": "https://www.youtube.com/watch?v=mgAvnq8aTJs",
-          "puesto": "1er lugar internacional Impacto Social"
+          "por_que": "Es el mismo principio: una acción, una persona que responde y un protocolo previo.",
+          "video": ""
         },
         {
           "year": 2024,
           "equipo": "Techriders (UNI-RUSB)",
           "proyecto": "Micropresas telemetradas",
-          "que_hicieron": "Construyó un tablero de telemetría para decidir con datos sobre una infraestructura crítica.",
-          "por_que": "Aporta la idea de una cola de decisión visible. Faro reemplaza el sensor por una ficha humana y conserva el tablero como centro de mando.",
-          "video": "https://www.youtube.com/watch?v=MIvlD31HfIk",
-          "puesto": "1er lugar internacional Innovación"
+          "puesto": "1er lugar internacional Innovación",
+          "que_hicieron": "Construyó un tablero de telemetría para decidir sobre infraestructura crítica.",
+          "por_que": "Aporta la idea de un estado compartido visible para decidir.",
+          "video": ""
         }
       ],
       "realidad": {
-        "a": "La junta o el municipio compra las fichas y define accesos; el coordinador decide en minutos; la familia no entrega datos innecesarios.",
-        "b": "El donante o municipio imprime; el comercio cobra contra la serie; la familia recibe una sola vez."
+        "a": "La alcaldía o la junta compra un tablero por manzana; el jefe de manzana lo opera sin sueldo y recibe capacitación; el municipio se ahorra la duplicación de ayuda. Sin donaciones: cada tablero se compra y se reusa en la siguiente temporada.",
+        "b": "El municipio o la junta compra los talonarios por jornada; la bodega recibe una copia y cobra contra ella; el coordinador cuadra y firma. Sin donaciones: el costo por vale es parte del operativo de entrega."
       },
       "detalles": [
         [
           "Ya existe",
-          "El censo en papel (se moja, se duplica) y el grupo de WhatsApp (mezcla datos sensibles). La diferencia: consentimiento explícito y tablero sin nombres. / La lista de papel por organización (nadie la cruza) y la entrega sin comprobante (rumor). La diferencia: serie única y tablero de canje."
+          "La lista en cuaderno, que se pierde y se duplica, y el grupo de mensajes, que se cae con la antena. La diferencia: el estado está a la vista y se lee caminando, sin energía. / La lista suelta sin número, que se moja y se confunde, y el registro digital, que se cae con la red. La diferencia: número único en tres copias que se cuadran en una mesa."
         ],
         [
           "Quién paga",
-          "La junta o el municipio compra las fichas y define accesos; el coordinador decide en minutos; la familia no entrega datos innecesarios. / El donante o municipio imprime; el comercio cobra contra la serie; la familia recibe una sola vez."
+          "La alcaldía o la junta compra un tablero por manzana; el jefe de manzana lo opera sin sueldo y recibe capacitación; el municipio se ahorra la duplicación de ayuda. Sin donaciones: cada tablero se compra y se reusa en la siguiente temporada. / El municipio o la junta compra los talonarios por jornada; la bodega recibe una copia y cobra contra ella; el coordinador cuadra y firma. Sin donaciones: el costo por vale es parte del operativo de entrega."
         ],
         [
           "Por validar",
-          "Que el QR se lea con poca luz y que la sincronización no duplique fichas. / Que el comercio no canjee vales falsos y que el tablero no permita identificar familias."
+          "Que el tablero reduzca entregas duplicadas frente al cuaderno. Prueba: dos manzanas comparadas en un simulacro. / Que el talonario reduzca el doble cobro frente a la lista suelta. Prueba: una jornada real con dos mesas de entrega."
         ]
       ],
       "insignias": [
         [
-          "Ciudades Creativas UNESCO",
-          "punto de encuentro cultural"
+          "Marco de Sendai",
+          "reducción de riesgo"
         ],
         [
-          "Voluntariado universitario",
-          "operación del tablero"
+          "Pacto Global de las Naciones Unidas",
+          "derechos y transparencia"
         ]
       ],
-      "pitch": "El orden se decide con datos de la cuadra y guías nombradas desde antes, no con el pánico del primer día."
+      "pitch": "Cuando cae la antena, el orden se decide en la calle: un tablero con una ficha por casa y un talonario numerado que se cuadra en una mesa. Sin red, sin aplicación y sin que nadie cobre dos veces la misma ayuda."
     }
   ]
 }
