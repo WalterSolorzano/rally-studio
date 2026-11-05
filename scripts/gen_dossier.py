@@ -155,7 +155,7 @@ def html_retos() -> str:
             f'<h3>Métricas para demostrar en el prototipo</h3>{metricas}'
             f'<h3>Señal que se repite en los ganadores</h3>'
             f'<div class="senal">{e(r["senal"])}</div>'
-            f'<h3>Precedentes por mecanismo</h3>{analogias}'
+            f'<h3>Precedentes por tipo de solución</h3>{analogias}'
             f'<div class="pitch"><div class="t">Pitch de 60 segundos · Opción 01</div><p>{e(r["pitch"])}</p></div>'
             f'<div class="comentarios">'
             f'<div class="t">Comentarios · Reto {r["id"]}</div>'
@@ -399,7 +399,7 @@ def build_docx() -> None:
         run.font.size = Pt(10)
         run.font.color.rgb = azul
 
-        rotulo("Precedentes por mecanismo, no por nombre del reto")
+        rotulo("Precedentes por tipo de solución, no por nombre del reto")
         for a in r["analogias"]:
             p(f"{a['year']} · {a['equipo']} · {a['puesto']}", 8.5, True, color=cyan, before=6, after=1)
             p(a["proyecto"], 11, True, color=azul, after=2)
@@ -693,7 +693,7 @@ def build_xlsx() -> None:
         h.row_dimensions[f].height = 38
         f += 2
 
-        f = seccion(h, f, "Precedentes por mecanismo")
+        f = seccion(h, f, "Precedentes por tipo de solución")
         for a in r["analogias"]:
             h.merge_cells(start_row=f, start_column=1, end_row=f, end_column=4)
             c = h.cell(row=f, column=1, value=f"{a['year']} · {a['equipo']} · {a['proyecto']}")

@@ -1,0 +1,16 @@
+{
+  "certamen": "latam",
+  "fuente": "enunciado del comité",
+  "avisos": ["cifra aceite 1:40000 viene del enunciado; confirmar en banco antes de citar", "ciudad pendiente en brief.json; usar [CIUDAD]"],
+  "retos": [
+    {"id": "01", "titulo": "Segunda vida de los motores eléctricos domésticos", "sector": "electrodomésticos en desuso"},
+    {"id": "02", "titulo": "Sensores al servicio de la comunidad", "sector": "celulares en desuso"},
+    {"id": "03", "titulo": "Protección y fomento de polinizadores", "sector": "entornos agrícola/urbano"},
+    {"id": "04", "titulo": "Manejo ecológico de residuos de poda y biomasa vegetal urbana", "sector": "biomasa urbana"},
+    {"id": "05", "titulo": "Monitoreo inteligente e infraestructura verde en reservorios pluviales", "sector": "riesgo hídrico"},
+    {"id": "06", "titulo": "Remoción y extracción de barro en viviendas anegadas", "sector": "post-emergencia"},
+    {"id": "07", "titulo": "Reutilización de aceite doméstico", "sector": "aceite de cocina"},
+    {"id": "08", "titulo": "Desechos de basura verde (residuos fotovoltaicos)", "sector": "paneles solares retirados"},
+    {"id": "09", "titulo": "Optimización y priorización de recursos y esfuerzos en la post-emergencia", "sector": "coordinación de respuesta"}
+  ]
+}

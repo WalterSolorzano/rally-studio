@@ -1,0 +1,27 @@
+LOG DE DECISION — dossier_latam_2026
+Doctrina aplicada: skills/dossier-soluciones/SKILL.md (16 pasos) aprobada por el usuario.
+Modo: Latam / USD / [CIUDAD] pendiente / sin siglas locales.
+Honestidad: sin cifras sin fuente; estimaciones marcadas (est.); señales de precedentes sin año/equipo (pendiente cruce con retos_razonamiento.json).
+Salidas por reto: cadena de causa (síntoma→raíz→causa de la causa) + nómina jugador/canal/nodo + 2 soluciones con mecanismo distinto (sesdos×2, ticket, insumos, métrica de resultado) + exploración sin intervenir + cartón réplica + prueba anti-genérica.
+Fuentes cruzadas pendientes: retos_razonamiento.json, ERRATAS.md, winners.jsonl (solo en curaduría final, no aquí).
+No se tocó: docs/, research/, scripts/, skills/.
+
+--- REBUILD post-complaint (render final) ---
+Queja del usuario: el PDF anterior no tenia el diseño del dossier-soluciones y mezclaba razonamiento ("Cadena de causa (sintoma - raiz - causa de la causa)") en la pagina visible.
+Correcciones en _build_final.py:
+- Razonamiento purgado de la pagina: sin etiquetas de sintoma/causa, sin sesgos ni tickets como secciones (los sesgos van solo inline donde el canon los declara).
+- Etiqueta visible de la cadena ahora es la OFICIAL: "Cadena problema -> causa raiz -> insight -> solucion -> metrica".
+- Page plan 3x9: P1 cabecera+cadena+nomina+Opcion 01+insumos 01; P2 Opcion 02+insumos 02+metricas+detalles; P3 precedentes+pitch+COMENTARIOS regladas.
+- PDF regenerado: 27 paginas exactas (objetivo 27 = 3x9). Verificacion post-rebuild: 0 hits de tokens prohibidos (saturacion, probabilidad, win rate, score, No documentado). Check guardado en _pdf_check.txt temporal y borrado.
+- Nota honestidad: ODS/insignias/senal OMITIDOS del render porque el canon no los trae; precedentes quedan como nota honesta pendiente de cruce contra knowledge/retos_razonamiento.json y knowledge/ERRATAS.md.
+- Fonts: se usaron SOLO LECTURA ../docs/assets/fuentes (repo); nada fuera de dossier_latam_2026/ fue tocado.
+
+
+=== 2026-11-05 · ronda de correcciones de fondo (critica del usuario) ===
+DISENO: el PDF aprobado era C:\\Users\\--X\\Downloads\\Soluciones_Prueba_09_Retos.pdf (28 pp) y lo produce el generador del repo scripts/gen_dossier.py. El primer rebuild de este sandbox salio con CSS propio: error de criterio, corregido. Ahora el PDF se genera SOLO con el generador del repo (27 pp, mismo diseno).
+CONTENIDO: las 9 cadenas y los 18 textos viven en contenido_final.py. Cada 'que es' es una narrativa de 150-250 palabras con escena, sin precios ni componentes dentro del parrafo, y cierra explicando por que no es lo que ya existe. _make_json.py valida conteo de palabras, los 4 pasos, la lista de jerga prohibida y que ningun nombre de opcion sea taller/servicio/mesa de desarme; aborta si falla.
+REDISENOS (por reto): 01 probador de carga + acople universal / stock probado con garantia y canje; 02 Ojo Vital (inclinacion y vibracion contra linea base, umbral fijado por ingeniero y junta, aviso inmediato) / semaforo de ruido; 03 franja certificada (cambia el criterio del contrato) / plantin con garantia de prendimiento; 04 suscripcion de astilla (vende antes de comprar la maquina) / carbon de poda en retorta fija; 05 centinela de nivel con sirena y SMS / compuerta pasiva de flotador; 06 bomba de pedal de diafragma / trineo filtrante; 07 garrafa retornable con deposito y comision del procesador / aceite filtrado para cadena; 08 probador bajo sol con carga resistiva y celda de referencia / panel de segunda vida con garantia; 09 ficha con consentimiento y datos minimos / vales numerados con tablero de canje.
+DATOS: no se inventaron cifras. Los costos heredados del canon van marcados '(estimacion propia)' o '(estimacion propia, por cotizar)'. Placeholder [CIUDAD], aceite ~1:40.000 con fuente del comite y precedentes 'por cruzar' se mantienen.
+HONESTIDAD DEL PROCESO: los ODS, insignias, senal y analogias se tomaron en SOLO LECTURA de research/soluciones_actuales.json; no se copiaron sus propuestas. Cambios al repo: solo rotulos en scripts/gen_dossier.py ('Precedentes por mecanismo' -> 'Precedentes por tipo de solucion'); la maquetacion no se toco.
+VERIFICACION: 27 paginas, 62754 caracteres, 0 apariciones de saturacion/probabilidad/win rate/score/No documentado/nomina/jugador/nodo/sesgo/ticket/mecanismo/est. canon/donad/horas-credito; las 18 narrativas entre 150 y 250 palabras y presentes literalmente en el PDF.
+ARCHIVOS: dossier_latam_2026.md regenerado desde soluciones.json con _make_md.py (sin jerga; con Ya existe / Quien paga / Por validar). Temporales borrados.
