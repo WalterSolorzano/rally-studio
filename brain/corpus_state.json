@@ -1,5 +1,5 @@
 {
-  "corpus_files": 22,
+  "corpus_files": 23,
   "project_file": null,
   "missing_sources": [],
   "files": [
@@ -17,7 +17,7 @@
     },
     {
       "name": "ganadores_analisis.md",
-      "bytes": 29707
+      "bytes": 7518
     },
     {
       "name": "ganadores_db.md",
@@ -25,7 +25,7 @@
     },
     {
       "name": "ganadores_latam.md",
-      "bytes": 257480
+      "bytes": 129887
     },
     {
       "name": "guion_voz.md",
