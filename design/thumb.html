@@ -27,6 +27,30 @@
 @keyframes thZoom{from{transform:scale(1)}to{transform:scale(1.13)}}
 @keyframes thPan{from{background-position:18% 50%}to{background-position:82% 50%}}
 .hero-thumb{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border:1px solid var(--rs-border);border-radius:6px;background:var(--rs-bg-subtle)}
+/* ===== CONTROLES: cajón flotante, la vista manda =====
+   Igual que el carrusel: nada de columna fija. Un botón "Ajustes" visible,
+   un raíl de iconos dentro y un solo bloque abierto a la vez. */
+.layout{display:block}
+.preview-col{max-width:900px;margin:0 auto}
+.ctrl-col{position:fixed;top:0;right:0;bottom:0;width:392px;max-width:94vw;background:var(--rs-bg,#fff);
+  border-left:1px solid var(--rs-border);box-shadow:-24px 0 60px -34px rgba(13,27,53,.6);z-index:72;
+  display:flex;flex-direction:column;gap:10px;padding:12px;overflow:auto;overscroll-behavior:contain;
+  transform:translateX(103%);transition:transform .24s cubic-bezier(.3,.7,.3,1);visibility:hidden}
+.ctrl-col.open{transform:none;visibility:visible}
+.ctrl-col .ctabs{display:flex;gap:4px;align-items:center;flex:none;padding-bottom:10px;border-bottom:1px solid var(--rs-border)}
+.ctrl-col .ctabs button{width:36px;height:36px;border-radius:9px;border:1px solid transparent;background:transparent;
+  color:var(--rs-muted);display:grid;place-items:center;cursor:pointer}
+.ctrl-col .ctabs button svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.ctrl-col .ctabs button:hover{background:var(--rs-bg-secondary,#F0F6FF);color:var(--rs-title)}
+.ctrl-col .ctabs button.on{background:var(--rs-primary,#0866F5);color:#fff}
+.ctrl-col .ctabs .ct-x{margin-left:auto;border-color:var(--rs-border);background:#fff;font:400 19px/1 var(--rs-sans)}
+.ctrl-col .ctrl{margin:0}
+.cback{position:fixed;inset:0;background:rgba(13,27,53,.3);z-index:66;opacity:0;pointer-events:none;transition:opacity .2s}
+.cback.on{opacity:1;pointer-events:auto}
+.cfg-btn{display:inline-flex;align-items:center;gap:6px;margin:0 0 12px;padding:7px 11px;border-radius:9px;
+  border:1px solid var(--rs-border);background:#fff;color:var(--rs-navy,#0D1B35);font:700 11px/1 var(--rs-sans);cursor:pointer}
+.cfg-btn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.cfg-btn:hover{border-color:var(--rs-primary,#0866F5);color:var(--rs-primary,#0866F5)}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -54,6 +78,7 @@
 <section>
   <div class="layout">
     <div class="preview-col">
+      <button class="cfg-btn" id="thCfg" title="Abrir ajustes" aria-label="Abrir ajustes"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="9" cy="6" r="2"/><circle cx="15" cy="12" r="2"/><circle cx="8" cy="18" r="2"/></svg>Ajustes</button>
       <div class="preview-frame">
         <div class="thumb-stage" id="thumbStage">
           <div class="thumb-card" id="thumbPreview" data-style="editorial">
@@ -85,7 +110,16 @@
         </div>
       </div>
     </div>
-    <div class="ctrl-col">
+    <div class="ctrl-col" id="thCtrls">
+      <div class="ctabs">
+        <button data-tab="0" class="on" title="Certamen" aria-label="Certamen"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.4 3.2 8 8 9 4.8-1 8-4.6 8-9V6l-8-3Z"/></svg></button>
+        <button data-tab="1" title="Estilo" aria-label="Estilo"><svg viewBox="0 0 24 24"><path d="M12 3 3 9l9 6 9-6-9-6Z"/><path d="m3 15 9 6 9-6"/></svg></button>
+        <button data-tab="2" title="Contenido" aria-label="Contenido"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h12M4 18h8"/></svg></button>
+        <button data-tab="3" title="Imagen protagonista" aria-label="Imagen protagonista"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m4 19 5-5 4 4 3-3 4 4"/></svg></button>
+        <button data-tab="4" title="Exportar" aria-label="Exportar"><svg viewBox="0 0 24 24"><path d="M12 4v10m0 0 4-4m-4 4-4-4"/><path d="M4 18h16"/></svg></button>
+        <button data-tab="5" title="Leyes de diseño" aria-label="Leyes de diseño"><svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4V3Z"/></svg></button>
+        <button class="ct-x" id="thCfgClose" title="Cerrar" aria-label="Cerrar">×</button>
+      </div>
       <details class="ctrl" open>
         <summary>Certamen</summary>
         <div class="body">
@@ -214,6 +248,7 @@
         </div>
       </details>
     </div>
+    <div class="cback" id="thCback"></div>
   </div>
 </section>
 
@@ -224,4 +259,23 @@
 <script src="fonts.js"></script>
 <script src="mapa_ni.js"></script>
 <script src="thumb.js"></script>
+<script>
+/* Cajón de ajustes: el botón "Ajustes" lo abre, un solo bloque a la vez. */
+(function(){
+  var box=document.getElementById('thCtrls'),openBtn=document.getElementById('thCfg'),
+      back=document.getElementById('thCback'),x=document.getElementById('thCfgClose');
+  if(!box||!openBtn)return;
+  var ds=[].slice.call(box.querySelectorAll('.ctrl')),
+      tabs=[].slice.call(box.querySelectorAll('.ctabs button[data-tab]'));
+  function abrir(i){box.classList.add('open');if(back)back.classList.add('on');
+    tabs.forEach(function(b,j){b.classList.toggle('on',j===i)});
+    ds.forEach(function(d,j){d.open=(j===i)});box.scrollTop=0}
+  function cerrar(){box.classList.remove('open');if(back)back.classList.remove('on')}
+  openBtn.onclick=function(){abrir(0)};
+  if(x)x.onclick=cerrar;
+  if(back)back.onclick=cerrar;
+  tabs.forEach(function(b,i){b.onclick=function(){abrir(i)}});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')cerrar()});
+})();
+</script>
 </body></html>

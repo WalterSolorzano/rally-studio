@@ -55,6 +55,10 @@ section + section{border-top:1px solid var(--rs-border);margin-top:24px}
 .sec-h{display:flex;align-items:baseline;gap:10px;margin:0 0 14px}
 .sec-h h2{margin:0;font:800 15px/1.3 var(--rs-sans);letter-spacing:-.01em;color:var(--rs-navy)}
 .sec-h .meta{margin-left:auto;font:600 10px/1 var(--rs-mono);letter-spacing:.08em;color:var(--rs-muted);text-transform:uppercase;text-align:right}
+/* disparador visible de los ajustes: el FAB flotante solo no se descubre */
+.cfg-btn{display:inline-flex;align-items:center;gap:6px;margin-left:10px;padding:7px 11px;border-radius:9px;border:1px solid var(--rs-border);background:#fff;color:var(--rs-navy,#0D1B35);font:700 11px/1 var(--rs-sans);cursor:pointer;flex:none;align-self:center;transition:border-color var(--rs-t,120ms),color var(--rs-t,120ms)}
+.cfg-btn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.cfg-btn:hover{border-color:var(--rs-primary,#0866F5);color:var(--rs-primary,#0866F5)}
 
 /* ===== CONTROLES ===== */
 label{display:block;font:600 10px/1.4 var(--rs-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--rs-muted);margin:0 0 5px}
@@ -572,7 +576,7 @@ main{margin-left:64px}
 
 <div class="wrap">
   <div class="pane">
-    <div class="sec-h"><h2>Vista</h2><span class="meta">4:5 · 1080×1350</span></div>
+    <div class="sec-h"><h2>Vista</h2><span class="meta">4:5 · 1080×1350</span><button class="cfg-btn" id="cfab2" title="Abrir ajustes" aria-label="Abrir ajustes"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1Z"/></svg>Ajustes</button></div>
     <div class="stage" id="stage"><div id="view"></div></div>
     <div class="pager">
       <button class="sec" id="pv">Anterior</button>
@@ -1233,6 +1237,8 @@ cargarBrief(S,function(){all()});
     if(body)body.scrollTop=0}
   function cerrar(){box.classList.remove('open');back.classList.remove('on');fab.classList.remove('hide')}
   fab.onclick=function(){abrir(0)};
+  var fab2=document.getElementById('cfab2');
+  if(fab2)fab2.onclick=function(){abrir(0)};
   x.onclick=cerrar;back.onclick=cerrar;
   tabs.forEach(function(b,i){b.onclick=function(){abrir(i)}});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')cerrar()});
