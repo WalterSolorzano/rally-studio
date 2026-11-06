@@ -54,5 +54,5 @@ Las skills (`proponer-retos`, `dossier-soluciones`, `guion-pas-v`) deben:
 ## Archivos de datos
 
 - `knowledge/retos_razonamiento.json` — 101 casos (version 2), 91 con video_url
-- `research/sirli/videos_sin_audio.tsv` — 607 videos sin audio (grupo, url, motivo)
+- `research/sirli/videos_sin_audio.tsv` — 182 videos sin audio (has_captions=false|null) + `research/sirli/datos/captions_pendientes.tsv` — 425 con captions disponibles sin descargar (total 607 revisados)
 - `research/sirli/analisis/modelo_solucion.json` — analisis de tipos de solucion

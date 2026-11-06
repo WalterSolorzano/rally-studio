@@ -971,7 +971,7 @@ Los tres deben ser coherentes entre sí y con el video.
 
 - **Techriders:** lote piloto de 4.500 USD para micropresas telemetradas.
 - **SITRA (referencia):** 204,94 USD por nodo con ESP32, LoRa, panel solar de 5 W y batería de 2.500 mAh.
-- **Presupuesto modelo:** 4.450 USD en ocho líneas, dentro del rango de 4.000 a 6.000 que usan los equipos nicaragüenses.
+- **Presupuesto modelo:** 4.450 USD en ocho líneas, dentro del rango de referencia 4.000–6.000 USD [EQUIPO] (hábito de equipos nicaragüenses, no ley de rúbrica).
 
 ![Figura 12. Estructura del presupuesto modelo por línea.](figures/fig06_presupuesto.svg)
 

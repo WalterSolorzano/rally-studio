@@ -89,7 +89,7 @@ Anti-patrones (no ganan): solución vaga sin detalles técnicos, métrica ausent
 
 ## 5. Videos sin audio (no mapeables para análisis de solución)
 
-607 videos sin audio registrados en `research/sirli/videos_sin_audio.tsv` (590 de `asr_dead.txt` + 43 transcripciones vacías). Cualquier mapeo futuro debe consultar este archivo antes de asumir que un grupo/link tiene audio disponible.
+182 verdaderamente sin audio (`has_captions=false|null`) + 425 con captions disponibles pero sin transcript local (`research/sirli/datos/captions_pendientes.tsv`). Total 607 revisados contra `research/sirli/meta/videos.jsonl`. Cualquier mapeo futuro debe consultar `videos_sin_audio.tsv` antes de asumir audio disponible. Ejemplo corregido: `rPtgPdNEodI` (AXIOMA, 119 s, YouTube declara `has_captions=true`) estaba mal marcado como "this video is not available"; ahora está en `captions_pendientes.tsv`.
 
 ---
 
@@ -101,4 +101,4 @@ Anti-patrones (no ganan): solución vaga sin detalles técnicos, métrica ausent
 | `research/sirli/winners.csv` | Misma CSV, delimitador `;` |
 | `knowledge/winners_latam.md` | Tabla maestra LATAM + Nacional con año, puesto, nombre, reto, solución, video |
 | `knowledge/retos_razonamiento.json` | 101 casos de razonamiento (versión 2), 91 con video_url |
-| `research/sirli/videos_sin_audio.tsv` | 607 videos sin audio |
+| `research/sirli/videos_sin_audio.tsv` | 182 videos sin audio + 425 captions pendientes (607 revisados contra meta/videos.jsonl) |
