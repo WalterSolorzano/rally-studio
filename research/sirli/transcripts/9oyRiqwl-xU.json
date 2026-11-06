@@ -1,0 +1,129 @@
+{
+ "video_id": "9oyRiqwl-xU",
+ "url": "https://youtu.be/9oyRiqwl-xU",
+ "year": 2021,
+ "collection": "nacional",
+ "country": "ARGENTINA",
+ "team": "MECATONID",
+ "place_label": "TERCER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "nacional",
+   "place_label": "TERCER LUGAR",
+   "team": "MECATONID",
+   "challenge": "03 - AGUA PARA SOÑAR"
+  },
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "MECATONID",
+   "challenge": "03 - AGUA PARA SOÑAR"
+  }
+ ],
+ "fetched_at": "2026-11-06T22:03:05+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "¿Sabías que? Sólo el 0,025% del agua en todo el planeta cumple con los requisitos necesarios para el consumo humano. En Argentina, el 85% del agua superficial total disponible se encuentra en el territorio de la Cuenca del Río de la Plata. Pero en provincias como San Juan o La Rioja, la precipitación anual es muy baja y concentra menos del 1% de escorrentía superficial disponible. Además, el 22% de los habitantes no tienen acceso a la República de Agua y alrededor de 2 millones de argentinos usan entre 3 y 6 horas diarias para buscar agua. Nosotros somos Mecatonia e ideamos un sistema llamado Yaku para ayudar a las comunidades con el abastecimiento de agua potable. Por empezar, de acuerdo a la cantidad de agua que se necesite se instalarán en número necesario de torres. Luego, por medio de sus membranas, captarán el agua presente en la humedad del aire. Si el sistema inteligente detecta que está a punto de lober, se despliegarán las membranas y en esta configuración se actuarán una mayor superficie para captar agua y lluvia. Una vez que se recoge el agua, pasa por una serie de filtros y se la analiza por medio de sensores ubicados en la torre para detectar su estado. El agua obtenida en las torres se depositará en un tanque que está gestionado por Inteligencia Artificial. En este lugar, se potabilizará y mantendrá el agua en condiciones, controlando los parámetros de manera autónoma. Por último, el sistema inteligente Yaku le comunicará a los dispositivos ubicados en la comunidad distintos datos, como la calidad y cantidad de agua, además de otros aspectos técnicos como mantenimiento y reposición de químicos. En cuanto a la aplicación, la misma estará gestionada en su backend con una red de Monoanálida Inteligencia Artificial, la misma red que también gestiona el centro de potabilización. Como pueden ver, es un sistema autónomo que unifica todos los parámetros de nuestras torres Yaku. No vamos a llevar trabajo, ya que se necesita capacitar gente de los pueblos para su construcción. Así también, concientizaremos sobre la forestación, ya que utilizaremos árboles para canalizar el aire hacia las torres Yaku. Podemos mejorar la calidad de vida de las comunidades, y sabemos que Yaku, tal como su nombre lo indica, puede ser una fuente de esperanza.",
+ "segments": [
+  {
+   "start": 1.58,
+   "end": 8.98,
+   "text": "¿Sabías que? Sólo el 0,025% del agua en todo el planeta cumple con los requisitos necesarios para el consumo humano."
+  },
+  {
+   "start": 8.98,
+   "end": 15.98,
+   "text": "En Argentina, el 85% del agua superficial total disponible se encuentra en el territorio de la Cuenca del Río de la Plata."
+  },
+  {
+   "start": 15.98,
+   "end": 24.48,
+   "text": "Pero en provincias como San Juan o La Rioja, la precipitación anual es muy baja y concentra menos del 1% de escorrentía superficial disponible."
+  },
+  {
+   "start": 24.48,
+   "end": 33.88,
+   "text": "Además, el 22% de los habitantes no tienen acceso a la República de Agua y alrededor de 2 millones de argentinos usan entre 3 y 6 horas diarias para buscar agua."
+  },
+  {
+   "start": 33.88,
+   "end": 41.88,
+   "text": "Nosotros somos Mecatonia e ideamos un sistema llamado Yaku para ayudar a las comunidades con el abastecimiento de agua potable."
+  },
+  {
+   "start": 41.88,
+   "end": 46.88,
+   "text": "Por empezar, de acuerdo a la cantidad de agua que se necesite se instalarán en número necesario de torres."
+  },
+  {
+   "start": 46.88,
+   "end": 49.88,
+   "text": "Luego, por medio de sus membranas, captarán el agua presente en la humedad del aire."
+  },
+  {
+   "start": 50.28,
+   "end": 57.28,
+   "text": "Si el sistema inteligente detecta que está a punto de lober, se despliegarán las membranas y en esta configuración se actuarán una mayor superficie para captar agua y lluvia."
+  },
+  {
+   "start": 57.28,
+   "end": 63.28,
+   "text": "Una vez que se recoge el agua, pasa por una serie de filtros y se la analiza por medio de sensores ubicados en la torre para detectar su estado."
+  },
+  {
+   "start": 63.28,
+   "end": 67.28,
+   "text": "El agua obtenida en las torres se depositará en un tanque que está gestionado por Inteligencia Artificial."
+  },
+  {
+   "start": 67.28,
+   "end": 72.28,
+   "text": "En este lugar, se potabilizará y mantendrá el agua en condiciones, controlando los parámetros de manera autónoma."
+  },
+  {
+   "start": 72.68,
+   "end": 79.68,
+   "text": "Por último, el sistema inteligente Yaku le comunicará a los dispositivos ubicados en la comunidad distintos datos, como la calidad y cantidad de agua,"
+  },
+  {
+   "start": 79.68,
+   "end": 83.68,
+   "text": "además de otros aspectos técnicos como mantenimiento y reposición de químicos."
+  },
+  {
+   "start": 83.68,
+   "end": 87.68,
+   "text": "En cuanto a la aplicación, la misma estará gestionada en su backend con una red de Monoanálida Inteligencia Artificial,"
+  },
+  {
+   "start": 87.68,
+   "end": 90.68,
+   "text": "la misma red que también gestiona el centro de potabilización."
+  },
+  {
+   "start": 90.68,
+   "end": 95.68,
+   "text": "Como pueden ver, es un sistema autónomo que unifica todos los parámetros de nuestras torres Yaku."
+  },
+  {
+   "start": 95.68,
+   "end": 100.68,
+   "text": "No vamos a llevar trabajo, ya que se necesita capacitar gente de los pueblos para su construcción."
+  },
+  {
+   "start": 101.08,
+   "end": 106.08,
+   "text": "Así también, concientizaremos sobre la forestación, ya que utilizaremos árboles para canalizar el aire hacia las torres Yaku."
+  },
+  {
+   "start": 106.08,
+   "end": 113.08,
+   "text": "Podemos mejorar la calidad de vida de las comunidades, y sabemos que Yaku, tal como su nombre lo indica, puede ser una fuente de esperanza."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 112.9
+}

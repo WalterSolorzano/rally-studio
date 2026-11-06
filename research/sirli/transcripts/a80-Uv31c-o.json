@@ -1,0 +1,99 @@
+{
+ "video_id": "a80-Uv31c-o",
+ "url": "https://www.youtube.com/watch?v=a80-Uv31c-o",
+ "year": 2025,
+ "collection": "nacional",
+ "country": "COLOMBIA",
+ "team": "LOS INGE",
+ "place_label": "TERCER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "nacional",
+   "place_label": "TERCER LUGAR",
+   "team": "LOS INGE",
+   "challenge": "09 - LOGÍSTICA ANTE DESASTRES NATURALES"
+  },
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "LOS INGE",
+   "challenge": "09 - LOGÍSTICA ANTE DESASTRES NATURALES"
+  }
+ ],
+ "fetched_at": "2026-11-06T20:42:08+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "En medio de los desastres naturales hay algo que no puede esperar, la ayuda humanitaria. Pero, ¿qué pasa cuando las comunidades están aisladas, incomunicadas y en peligro? Cada año miles de personas en zonas rurales principalmente enfrentan desastres naturales que bloquean caminos y dificultan el acceso a alimentos, agua y medicamentos. La logística tradicional no llega a tiempo y eso puede costar vidas. Nuestra propuesta es una red de drones autónomos diseñados para entregar kits de supervivencia en zonas de difícil acceso. Equipados con GPS, sensores de clima y rutas inteligentes, estos drones pueden volar sobre terrenos peligrosos, llegar en minutos y salvar vidas. Este proyecto responde a una necesidad concreta, mejorar la logística de entrega en zonas de difícil acceso. Con drones autónomos, optimizando rutas, reducimos tiempos y evitamos riesgos humanos en terreno. Es una solución escalable, adaptable y pensada para funcionar en condiciones extremas. Nuestra meta es clara, que la ayuda llegue rápido y sin obstáculos.",
+ "segments": [
+  {
+   "start": 0.85,
+   "end": 6.85,
+   "text": "En medio de los desastres naturales hay algo que no puede esperar, la ayuda humanitaria."
+  },
+  {
+   "start": 6.85,
+   "end": 11.85,
+   "text": "Pero, ¿qué pasa cuando las comunidades están aisladas, incomunicadas y en peligro?"
+  },
+  {
+   "start": 11.85,
+   "end": 19.85,
+   "text": "Cada año miles de personas en zonas rurales principalmente enfrentan desastres naturales que bloquean caminos"
+  },
+  {
+   "start": 19.85,
+   "end": 23.85,
+   "text": "y dificultan el acceso a alimentos, agua y medicamentos."
+  },
+  {
+   "start": 23.85,
+   "end": 29.85,
+   "text": "La logística tradicional no llega a tiempo y eso puede costar vidas."
+  },
+  {
+   "start": 29.85,
+   "end": 37.85,
+   "text": "Nuestra propuesta es una red de drones autónomos diseñados para entregar kits de supervivencia en zonas de difícil acceso."
+  },
+  {
+   "start": 37.85,
+   "end": 42.85,
+   "text": "Equipados con GPS, sensores de clima y rutas inteligentes,"
+  },
+  {
+   "start": 42.85,
+   "end": 49.85,
+   "text": "estos drones pueden volar sobre terrenos peligrosos, llegar en minutos y salvar vidas."
+  },
+  {
+   "start": 49.85,
+   "end": 53.85,
+   "text": "Este proyecto responde a una necesidad concreta,"
+  },
+  {
+   "start": 53.85,
+   "end": 57.85,
+   "text": "mejorar la logística de entrega en zonas de difícil acceso."
+  },
+  {
+   "start": 57.85,
+   "end": 64.85,
+   "text": "Con drones autónomos, optimizando rutas, reducimos tiempos y evitamos riesgos humanos en terreno."
+  },
+  {
+   "start": 64.85,
+   "end": 70.85,
+   "text": "Es una solución escalable, adaptable y pensada para funcionar en condiciones extremas."
+  },
+  {
+   "start": 70.85,
+   "end": 75.85,
+   "text": "Nuestra meta es clara, que la ayuda llegue rápido y sin obstáculos."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 80.3
+}

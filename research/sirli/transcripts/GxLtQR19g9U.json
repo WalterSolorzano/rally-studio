@@ -1,0 +1,134 @@
+{
+ "video_id": "GxLtQR19g9U",
+ "url": "https://www.youtube.com/watch?v=GxLtQR19g9U",
+ "year": 2021,
+ "collection": "nacional",
+ "country": "COSTA RICA",
+ "team": "TICOLOGICOS",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "TICOLOGICOS",
+   "challenge": "06 - SOSTENIBILIDAD AMBIENTAL ORIENTADA AL APROVECHAMIENTO DE RESIDUOS PLÁSTICOS EN FRANJAS COSTERAS"
+  },
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "TICOLOGICOS",
+   "challenge": "06 - SOSTENIBILIDAD AMBIENTAL ORIENTADA AL APROVECHAMIENTO DE RESIDUOS PLÁSTICOS EN FRANJAS COSTERAS"
+  }
+ ],
+ "fetched_at": "2026-11-06T22:20:51+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "¿Sabías que los océanos curren las tres cuartas partes del planeta? ¿Qué estamos haciendo para proteger la zona costera? El día de hoy vengo a hablarte sobre sostenibilidad ambiental. Mi equipo ha escogido el desafío número 6. Mi nombre es Andrea Chan y represento al equipo Ticolóneos. Como solución planteada queremos proceder a realizar campañas de concientización y recolección de residuos en toda la franja costera a través de la tecnología. Esto se va a hacer utilizando drones que contengan inteligencia artificial para encontrar y también identificar desde el aire cuál es la zona costera que se encuentra mayor afectada. Una vez que los drones identifican cuál es la zona costera más afectada y que ocupa nuestra ayuda, el ser humano entra en acción y es así como se da inicio al proceso de limpieza de las micropartículas que se adhieren a la piel de las especies marinas. El impacto ambiental planteado generará grandes resultados debido a que no sólo porque usaremos nuevas tecnologías sino porque también daremos la apertura directa e indirecta de nuevos empleos que aportarán a la economía latinoamericana de cada país. Adicionalmente también vamos a generar un impacto socio educativo lo cual va a repercutir en que las personas con el tiempo generen mejor conciencia y cuiden más el medio ambiente. Inovamos a través de la tecnología. La inteligencia artificial es parte del futuro y el futuro es hoy. A través de la creación de drones pretendemos realizar análisis modernos no sólo en la franja costera sino también en puntos clave que requieren de nuestra ayuda en cada parte del país. Gracias por haber llegado hasta aquí. Nuestro planeta, las especies marinas, todo el medio ambiente nos necesita. Es momento de que empecemos el campo.",
+ "segments": [
+  {
+   "start": 1.68,
+   "end": 6.66,
+   "text": "¿Sabías que los océanos curren las tres cuartas partes del planeta? ¿Qué estamos haciendo para"
+  },
+  {
+   "start": 6.66,
+   "end": 12.54,
+   "text": "proteger la zona costera? El día de hoy vengo a hablarte sobre sostenibilidad ambiental. Mi"
+  },
+  {
+   "start": 12.54,
+   "end": 18.3,
+   "text": "equipo ha escogido el desafío número 6. Mi nombre es Andrea Chan y represento al equipo Ticolóneos."
+  },
+  {
+   "start": 18.3,
+   "end": 24.14,
+   "text": "Como solución planteada queremos proceder a realizar campañas de concientización y"
+  },
+  {
+   "start": 24.14,
+   "end": 29.7,
+   "text": "recolección de residuos en toda la franja costera a través de la tecnología. Esto se va a"
+  },
+  {
+   "start": 29.7,
+   "end": 34.7,
+   "text": "hacer utilizando drones que contengan inteligencia artificial para encontrar y"
+  },
+  {
+   "start": 34.7,
+   "end": 39.9,
+   "text": "también identificar desde el aire cuál es la zona costera que se encuentra mayor afectada."
+  },
+  {
+   "start": 41.14,
+   "end": 47.04,
+   "text": "Una vez que los drones identifican cuál es la zona costera más afectada y que ocupa nuestra"
+  },
+  {
+   "start": 47.04,
+   "end": 51.92,
+   "text": "ayuda, el ser humano entra en acción y es así como se da inicio al proceso de limpieza"
+  },
+  {
+   "start": 51.92,
+   "end": 58.08,
+   "text": "de las micropartículas que se adhieren a la piel de las especies marinas. El impacto"
+  },
+  {
+   "start": 58.16,
+   "end": 64.48,
+   "text": "ambiental planteado generará grandes resultados debido a que no sólo porque usaremos nuevas"
+  },
+  {
+   "start": 64.48,
+   "end": 70.08,
+   "text": "tecnologías sino porque también daremos la apertura directa e indirecta de nuevos empleos"
+  },
+  {
+   "start": 70.08,
+   "end": 77.44,
+   "text": "que aportarán a la economía latinoamericana de cada país. Adicionalmente también vamos"
+  },
+  {
+   "start": 77.44,
+   "end": 83.4,
+   "text": "a generar un impacto socio educativo lo cual va a repercutir en que las personas con el"
+  },
+  {
+   "start": 83.4,
+   "end": 90.48,
+   "text": "tiempo generen mejor conciencia y cuiden más el medio ambiente. Inovamos a través de la"
+  },
+  {
+   "start": 90.48,
+   "end": 96.12,
+   "text": "tecnología. La inteligencia artificial es parte del futuro y el futuro es hoy. A través"
+  },
+  {
+   "start": 96.12,
+   "end": 101.52,
+   "text": "de la creación de drones pretendemos realizar análisis modernos no sólo en la franja costera"
+  },
+  {
+   "start": 101.52,
+   "end": 106.72,
+   "text": "sino también en puntos clave que requieren de nuestra ayuda en cada parte del país."
+  },
+  {
+   "start": 106.72,
+   "end": 111.96,
+   "text": "Gracias por haber llegado hasta aquí. Nuestro planeta, las especies marinas,"
+  },
+  {
+   "start": 111.96,
+   "end": 116.76,
+   "text": "todo el medio ambiente nos necesita. Es momento de que empecemos el campo."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.0
+}

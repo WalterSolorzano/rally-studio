@@ -1,0 +1,119 @@
+{
+ "video_id": "o3uaLK96Z8k",
+ "url": "https://youtu.be/o3uaLK96Z8k",
+ "year": 2026,
+ "collection": "nacional",
+ "country": "PARAGUAY",
+ "team": "THE BUBBLES",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "THE BUBBLES",
+   "challenge": "09 - OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA"
+  },
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "THE BUBBLES",
+   "challenge": "09 - OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA"
+  }
+ ],
+ "fetched_at": "2026-11-06T20:29:01+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Tras un desastre natural como una inundación severa o una luta, el tiempo no solo es un factor, es la diferencia entre salvar vidas o lamentar pérdidas, que en estos momentos las autoridades y rescatistas enfrentan un grave dilema. Información fragmentada, llamadas saturadas y recursos limitados. Decidir a quién atender primero y dónde concentrar los esfuerzos bajo extrema presión es una tarea crítica. Ver esta problemática hemos creado Sincroemergencia, una plataforma que optimiza y prioriza la respuesta en post emergencia, conectando en tiempo real a la ciudadanía con las fuerzas de rescate. Pensada para actuar bajo estrés, la versión para ciudadanos permite ayuda en segundos mediante botones grandes y pictogramas sencillos, ideal para niños o personas mayores además evita duplicados agrupando reportes cercanos a menos de 300 metros y le permite al usuario seguir el estado de su pedido en tiempo real. Toma decisiones estratégicas, para bomberos, policía y voluntarios el mapa agrupa las emergencias por nivel de prioridad y detecta automáticamente sectores críticos cuando hay tres o más casos en un radio de 500 metros. Con opciones de coordinar quién atiende cada evento, solicitar o actuar como refuerzo entre distritos y visualizar bases cercanas. Eliminamos la duplicación de esfuerzos y aceleramos la respuesta. En situaciones de emergencia, cada segundo y cada mensaje cuentan. Sincroemergencia lo que busca es acortar esa brecha cuando la red falla. Gracias por ver el vídeo.",
+ "segments": [
+  {
+   "start": 0.34,
+   "end": 7.16,
+   "text": "Tras un desastre natural como una inundación severa o una luta, el tiempo no solo es un factor,"
+  },
+  {
+   "start": 7.16,
+   "end": 12.98,
+   "text": "es la diferencia entre salvar vidas o lamentar pérdidas, que en estos momentos"
+  },
+  {
+   "start": 12.98,
+   "end": 16.94,
+   "text": "las autoridades y rescatistas enfrentan un grave dilema."
+  },
+  {
+   "start": 18.26,
+   "end": 25.1,
+   "text": "Información fragmentada, llamadas saturadas y recursos limitados. Decidir a quién atender"
+  },
+  {
+   "start": 25.1,
+   "end": 30.5,
+   "text": "primero y dónde concentrar los esfuerzos bajo extrema presión es una tarea crítica."
+  },
+  {
+   "start": 30.5,
+   "end": 40.9,
+   "text": "Ver esta problemática hemos creado Sincroemergencia, una plataforma que optimiza y prioriza la"
+  },
+  {
+   "start": 40.9,
+   "end": 46.26,
+   "text": "respuesta en post emergencia, conectando en tiempo real a la ciudadanía con las fuerzas"
+  },
+  {
+   "start": 46.26,
+   "end": 52.66,
+   "text": "de rescate. Pensada para actuar bajo estrés, la versión para ciudadanos permite ayuda en"
+  },
+  {
+   "start": 52.66,
+   "end": 58.82,
+   "text": "segundos mediante botones grandes y pictogramas sencillos, ideal para niños o personas mayores"
+  },
+  {
+   "start": 59.3,
+   "end": 65.54,
+   "text": "además evita duplicados agrupando reportes cercanos a menos de 300 metros y le permite"
+  },
+  {
+   "start": 65.54,
+   "end": 70.58,
+   "text": "al usuario seguir el estado de su pedido en tiempo real. Toma decisiones estratégicas,"
+  },
+  {
+   "start": 70.58,
+   "end": 76.42,
+   "text": "para bomberos, policía y voluntarios el mapa agrupa las emergencias por nivel de prioridad"
+  },
+  {
+   "start": 76.42,
+   "end": 82.22,
+   "text": "y detecta automáticamente sectores críticos cuando hay tres o más casos en un radio de"
+  },
+  {
+   "start": 82.22,
+   "end": 89.42,
+   "text": "500 metros. Con opciones de coordinar quién atiende cada evento, solicitar o actuar como refuerzo"
+  },
+  {
+   "start": 89.42,
+   "end": 95.5,
+   "text": "entre distritos y visualizar bases cercanas. Eliminamos la duplicación de esfuerzos y"
+  },
+  {
+   "start": 95.5,
+   "end": 104.76,
+   "text": "aceleramos la respuesta. En situaciones de emergencia, cada segundo y cada mensaje cuentan."
+  },
+  {
+   "start": 104.76,
+   "end": 116.43,
+   "text": "Sincroemergencia lo que busca es acortar esa brecha cuando la red falla. Gracias por ver el vídeo."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.0
+}

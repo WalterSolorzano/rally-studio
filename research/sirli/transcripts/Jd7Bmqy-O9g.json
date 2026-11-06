@@ -1,0 +1,182 @@
+{
+ "video_id": "Jd7Bmqy-O9g",
+ "url": "https://youtu.be/Jd7Bmqy-O9g",
+ "year": 2024,
+ "collection": "nacional",
+ "country": "ARGENTINA",
+ "team": "UTN-FRN",
+ "place_label": "TERCER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "nacional",
+   "place_label": "TERCER LUGAR",
+   "team": "UTN-FRN",
+   "challenge": "02 - EMPAQUES CONTAMINANTES"
+  }
+ ],
+ "fetched_at": "2026-11-06T20:56:08+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "La contaminación ambiental es una de las mayores problemáticas a nivel mundial, la cual se agrava con el crecimiento constante de la población, incrementando así el uso de plásticos. Solo en Argentina, cada persona consume aproximadamente 40 kilogramos de plástico al año, y según Amplastify, el 71% de los residuos plásticos en Argentina termina en rellenos sanitarios, el 23% en basurales a cielo abierto, y solo el 6% se recicla. Los alimentos que más se consumen en Argentina son yerba mate, harina y azúcar, los cuales aportan un gran porcentaje a la contaminación en nuestro país. Existen varias opciones de envoltorios ecológicos, pero ninguno que funcione en escala industrial, así nace la idea innovadora de un envoltorio ecológico que incorpora grafeno en su estructura, lo que garantiza la calidad industrial. Por esto presentamos nuestro producto, Ecoera. Está basado en biopolímeros con grafeno, el cual se puede degradar en 183 días en comparación con las bolsas plásticas que se degradan en 150 años. Además, al contar con una capa de grafeno, se tienen las siguientes propiedades. Evita el paso de bacterias, prolonga la vida útil de los comestibles, reduce la oxidación en los alimentos, provee elasticidad y resistencia a la bolsa, por lo cual todas estas propiedades mencionadas ayudan a mantener en un buen estado a la comida almacenada. Para incentivar a las empresas a hacer un cambio, se propone como medida política que se apliquen descuentos en impuestos, esto para convencer a las distintas empresas a empezar un cambio. La misión de Ecoera es cuidar el medio ambiente y fomentar el uso de esta tecnología a las personas y a las empresas.",
+ "segments": [
+  {
+   "start": 4.85,
+   "end": 9.65,
+   "text": "La contaminación ambiental es una de las mayores problemáticas a nivel mundial,"
+  },
+  {
+   "start": 9.65,
+   "end": 13.45,
+   "text": "la cual se agrava con el crecimiento constante de la población,"
+  },
+  {
+   "start": 13.45,
+   "end": 16.45,
+   "text": "incrementando así el uso de plásticos."
+  },
+  {
+   "start": 16.45,
+   "end": 22.45,
+   "text": "Solo en Argentina, cada persona consume aproximadamente 40 kilogramos de plástico al año,"
+  },
+  {
+   "start": 22.45,
+   "end": 27.85,
+   "text": "y según Amplastify, el 71% de los residuos plásticos en Argentina"
+  },
+  {
+   "start": 27.85,
+   "end": 33.45,
+   "text": "termina en rellenos sanitarios, el 23% en basurales a cielo abierto,"
+  },
+  {
+   "start": 33.45,
+   "end": 36.05,
+   "text": "y solo el 6% se recicla."
+  },
+  {
+   "start": 36.05,
+   "end": 41.05,
+   "text": "Los alimentos que más se consumen en Argentina son yerba mate, harina y azúcar,"
+  },
+  {
+   "start": 41.05,
+   "end": 46.05,
+   "text": "los cuales aportan un gran porcentaje a la contaminación en nuestro país."
+  },
+  {
+   "start": 46.05,
+   "end": 48.85,
+   "text": "Existen varias opciones de envoltorios ecológicos,"
+  },
+  {
+   "start": 48.85,
+   "end": 51.45,
+   "text": "pero ninguno que funcione en escala industrial,"
+  },
+  {
+   "start": 51.45,
+   "end": 54.85,
+   "text": "así nace la idea innovadora de un envoltorio ecológico"
+  },
+  {
+   "start": 54.85,
+   "end": 57.45,
+   "text": "que incorpora grafeno en su estructura,"
+  },
+  {
+   "start": 57.45,
+   "end": 60.05,
+   "text": "lo que garantiza la calidad industrial."
+  },
+  {
+   "start": 60.25,
+   "end": 63.65,
+   "text": "Por esto presentamos nuestro producto, Ecoera."
+  },
+  {
+   "start": 63.65,
+   "end": 66.45,
+   "text": "Está basado en biopolímeros con grafeno,"
+  },
+  {
+   "start": 66.45,
+   "end": 70.25,
+   "text": "el cual se puede degradar en 183 días"
+  },
+  {
+   "start": 70.25,
+   "end": 75.65,
+   "text": "en comparación con las bolsas plásticas que se degradan en 150 años."
+  },
+  {
+   "start": 75.65,
+   "end": 79.05,
+   "text": "Además, al contar con una capa de grafeno,"
+  },
+  {
+   "start": 79.05,
+   "end": 81.25,
+   "text": "se tienen las siguientes propiedades."
+  },
+  {
+   "start": 81.25,
+   "end": 83.45,
+   "text": "Evita el paso de bacterias,"
+  },
+  {
+   "start": 83.45,
+   "end": 86.25,
+   "text": "prolonga la vida útil de los comestibles,"
+  },
+  {
+   "start": 86.25,
+   "end": 89.05,
+   "text": "reduce la oxidación en los alimentos,"
+  },
+  {
+   "start": 89.05,
+   "end": 92.45,
+   "text": "provee elasticidad y resistencia a la bolsa,"
+  },
+  {
+   "start": 92.45,
+   "end": 95.25,
+   "text": "por lo cual todas estas propiedades mencionadas"
+  },
+  {
+   "start": 95.25,
+   "end": 99.45,
+   "text": "ayudan a mantener en un buen estado a la comida almacenada."
+  },
+  {
+   "start": 99.45,
+   "end": 102.45,
+   "text": "Para incentivar a las empresas a hacer un cambio,"
+  },
+  {
+   "start": 102.45,
+   "end": 106.25,
+   "text": "se propone como medida política que se apliquen descuentos en impuestos,"
+  },
+  {
+   "start": 106.25,
+   "end": 110.45,
+   "text": "esto para convencer a las distintas empresas a empezar un cambio."
+  },
+  {
+   "start": 110.45,
+   "end": 113.85,
+   "text": "La misión de Ecoera es cuidar el medio ambiente"
+  },
+  {
+   "start": 113.85,
+   "end": 118.45,
+   "text": "y fomentar el uso de esta tecnología a las personas y a las empresas."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 118.4
+}

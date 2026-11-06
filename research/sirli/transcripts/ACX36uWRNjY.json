@@ -1,0 +1,179 @@
+{
+ "video_id": "ACX36uWRNjY",
+ "url": "https://youtu.be/ACX36uWRNjY",
+ "year": 2026,
+ "collection": "nacional",
+ "country": "CHILE",
+ "team": "FIQUITOS",
+ "place_label": "TERCER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "nacional",
+   "place_label": "TERCER LUGAR",
+   "team": "FIQUITOS",
+   "challenge": "02 - SENSORES AL SERVICIO DE LA COMUNIDAD"
+  },
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "FIQUITOS",
+   "challenge": "02 - SENSORES AL SERVICIO DE LA COMUNIDAD"
+  }
+ ],
+ "fetched_at": "2026-11-06T20:18:15+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Cada mañana alguien descubre que su auto ya no está y nadie le aviso. En Chile durante el 2025 se robaron 36.868 vehículos, más de 100 al día. Y de los autos asegurados, solo cerca de la mitad vuelve a su dueña. Para muchos no es solo un auto, es con lo que llevan a sus hijos al colegio o con lo que trabajan. Mientras tanto en millones de cajones duerme un celular que ya nadie usa. Solo el 2% se recicla y el resto termina en vertederos y en comercio informal, afectando gravemente al medio ambiente y a la comunidad. Estos son dos problemas que parecen no tener nada que ver. Pero la solución a uno está guardada en el otro. En Kimoon convertimos ese celular olvidado en un sistema antirrobo conectado. Oculto bajo el tablero y fijo la estructura del auto, el celular siente cada movimiento. Si levantan el auto para robar las ruedas, sus sensores detectan la inclinación. Si lo golpean o lo mueven, también. Por red móvil te llega una alerta con la ubicación, la evidencia para denunciar en los primeros minutos. La app clasifica cada evento por nivel, para que solo los graves te despierten. Se alimenta el auto con un solo fusible, sin cortar cables. Un controlador evita que la batería del auto se descargue y un corte térmico protege al celular del calor. Y no se quedan tu auto. Cada intento confirmado se suma, de forma anónima, a un marbo comunitario. Así, los intentos de robo que nunca se denuncian por fin quedan registrados y vecinos y municipios pueden decidir dónde prevenir. No es otro rastreador. Es una red de sensores que cuida tu auto y le da tu barrio datos que hoy nadie tiene. Un rastreador comercial cuesta entre 46 y 66 dólares. Más 20 dólares al mes. Kimu cuesta menos de 40 dólares, celular incluido y solo un plan de datos básico. Los celulares salen de tu propio cajón o de las campañas de reciclaje que ya funcionan en América Latina. Pensado para dedicar los que llenan nuestras calles, cada kit le da una segunda vida a un celular, sin fabricar un rastreador nuevo. Hoy empezamos en Temuco. Mañana, en cualquier ciudad de Latinoamérica donde haya un auto y un celular olvidado. Kimu no mou zungun significa conocimiento, porque lo que le pasa a tu auto, tú lo sabes primero.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 4.72,
+   "text": "Cada mañana alguien descubre que su auto ya no está y nadie le aviso."
+  },
+  {
+   "start": 4.72,
+   "end": 12.96,
+   "text": "En Chile durante el 2025 se robaron 36.868 vehículos, más de 100 al día."
+  },
+  {
+   "start": 12.96,
+   "end": 17.28,
+   "text": "Y de los autos asegurados, solo cerca de la mitad vuelve a su dueña."
+  },
+  {
+   "start": 17.28,
+   "end": 22.96,
+   "text": "Para muchos no es solo un auto, es con lo que llevan a sus hijos al colegio o con lo que trabajan."
+  },
+  {
+   "start": 22.96,
+   "end": 27.44,
+   "text": "Mientras tanto en millones de cajones duerme un celular que ya nadie usa."
+  },
+  {
+   "start": 27.44,
+   "end": 35.68,
+   "text": "Solo el 2% se recicla y el resto termina en vertederos y en comercio informal, afectando gravemente al medio ambiente y a la comunidad."
+  },
+  {
+   "start": 35.68,
+   "end": 40.08,
+   "text": "Estos son dos problemas que parecen no tener nada que ver."
+  },
+  {
+   "start": 41.28,
+   "end": 43.44,
+   "text": "Pero la solución a uno está guardada en el otro."
+  },
+  {
+   "start": 43.44,
+   "end": 47.44,
+   "text": "En Kimoon convertimos ese celular olvidado en un sistema antirrobo conectado."
+  },
+  {
+   "start": 47.44,
+   "end": 51.92,
+   "text": "Oculto bajo el tablero y fijo la estructura del auto, el celular siente cada movimiento."
+  },
+  {
+   "start": 51.92,
+   "end": 55.36,
+   "text": "Si levantan el auto para robar las ruedas, sus sensores detectan la inclinación."
+  },
+  {
+   "start": 55.36,
+   "end": 56.88,
+   "text": "Si lo golpean o lo mueven, también."
+  },
+  {
+   "start": 56.88,
+   "end": 61.2,
+   "text": "Por red móvil te llega una alerta con la ubicación, la evidencia para denunciar en los primeros minutos."
+  },
+  {
+   "start": 61.2,
+   "end": 64.4,
+   "text": "La app clasifica cada evento por nivel, para que solo los graves te despierten."
+  },
+  {
+   "start": 64.4,
+   "end": 67.28,
+   "text": "Se alimenta el auto con un solo fusible, sin cortar cables."
+  },
+  {
+   "start": 67.28,
+   "end": 71.84,
+   "text": "Un controlador evita que la batería del auto se descargue y un corte térmico protege al celular del calor."
+  },
+  {
+   "start": 71.84,
+   "end": 72.96,
+   "text": "Y no se quedan tu auto."
+  },
+  {
+   "start": 72.96,
+   "end": 76.4,
+   "text": "Cada intento confirmado se suma, de forma anónima, a un marbo comunitario."
+  },
+  {
+   "start": 76.4,
+   "end": 82.32,
+   "text": "Así, los intentos de robo que nunca se denuncian por fin quedan registrados y vecinos y municipios pueden decidir dónde prevenir."
+  },
+  {
+   "start": 82.4,
+   "end": 83.44,
+   "text": "No es otro rastreador."
+  },
+  {
+   "start": 83.44,
+   "end": 87.6,
+   "text": "Es una red de sensores que cuida tu auto y le da tu barrio datos que hoy nadie tiene."
+  },
+  {
+   "start": 87.6,
+   "end": 91.36,
+   "text": "Un rastreador comercial cuesta entre 46 y 66 dólares."
+  },
+  {
+   "start": 91.36,
+   "end": 92.8,
+   "text": "Más 20 dólares al mes."
+  },
+  {
+   "start": 92.8,
+   "end": 97.44,
+   "text": "Kimu cuesta menos de 40 dólares, celular incluido y solo un plan de datos básico."
+  },
+  {
+   "start": 97.44,
+   "end": 102.4,
+   "text": "Los celulares salen de tu propio cajón o de las campañas de reciclaje que ya funcionan en América Latina."
+  },
+  {
+   "start": 102.4,
+   "end": 107.84,
+   "text": "Pensado para dedicar los que llenan nuestras calles, cada kit le da una segunda vida a un celular, sin fabricar un rastreador nuevo."
+  },
+  {
+   "start": 107.92,
+   "end": 109.04,
+   "text": "Hoy empezamos en Temuco."
+  },
+  {
+   "start": 109.04,
+   "end": 112.8,
+   "text": "Mañana, en cualquier ciudad de Latinoamérica donde haya un auto y un celular olvidado."
+  },
+  {
+   "start": 112.8,
+   "end": 117.92,
+   "text": "Kimu no mou zungun significa conocimiento, porque lo que le pasa a tu auto, tú lo sabes primero."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 117.9
+}

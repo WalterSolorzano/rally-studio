@@ -1,0 +1,144 @@
+{
+ "video_id": "4o2t1XC9Ivg",
+ "url": "https://youtu.be/4o2t1XC9Ivg",
+ "year": 2026,
+ "collection": "nacional",
+ "country": "COLOMBIA",
+ "team": "TECNO-ING",
+ "place_label": "TERCER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "nacional",
+   "place_label": "TERCER LUGAR",
+   "team": "TECNO-ING",
+   "challenge": "04 - MANEJO ECOLÓGICO DE RESIDUOS DE PODA Y BIOMASA VEGETAL URBANA"
+  },
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "TECNO-ING",
+   "challenge": "04 - MANEJO ECOLÓGICO DE RESIDUOS DE PODA Y BIOMASA VEGETAL URBANA"
+  }
+ ],
+ "fetched_at": "2026-11-06T20:22:58+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Los puntos verdes circulares transforman la biomasa urbana en abono. Pero ¿cómo procesan ramas enteras sin usar maquinaria pesada? Normalmente, estos enormes bultos de vegetación que quedan tras podar tu barrio terminan colapsando basureros o quemándose a cielo abierto. La solución es esta microplanta de apenas 25 metros cuadrados. Aquí, el primer paso es recibir ese material y organizarlo en esta área de acopio. Dentro de contenedores construidos exclusivamente con estivas de madera reciclada. Aquí surge el obstáculo. Descomponer troncos y pasto grueso exige un equilibrio de oxígeno y humedad que normalmente requiere comprar costosas volteadoras industriales. Pero esta zona central lo resuelve a mano. Al regar estratégicamente y voltear las pilas con palas, se activa a los microorganismos para que devoren el material. A este proceso se le llama compostaje aeróbico. En un ciclo de 45 días, la naturaleza hace el trabajo pesado con cero consumo eléctrico. Y el material más duro, que no se composta rápido, pasa a esta estación de triturado manual, donde se fragmenta para crear mulch, protector para el suelo. Así garantizan que absolutamente nada se desperdicie. De esta forma, ese enorme bulto de basura vegetal que antes ahogaba las calles regresa directamente a las manos de los vecinos, convertido en abono organico puro para regenerar sus propias huertas.",
+ "segments": [
+  {
+   "start": 10.0,
+   "end": 14.44,
+   "text": "Los puntos verdes circulares transforman la biomasa urbana en abono."
+  },
+  {
+   "start": 14.44,
+   "end": 18.64,
+   "text": "Pero ¿cómo procesan ramas enteras sin usar maquinaria pesada?"
+  },
+  {
+   "start": 18.64,
+   "end": 23.8,
+   "text": "Normalmente, estos enormes bultos de vegetación que quedan tras podar tu barrio"
+  },
+  {
+   "start": 23.8,
+   "end": 27.6,
+   "text": "terminan colapsando basureros o quemándose a cielo abierto."
+  },
+  {
+   "start": 27.6,
+   "end": 32.6,
+   "text": "La solución es esta microplanta de apenas 25 metros cuadrados."
+  },
+  {
+   "start": 32.6,
+   "end": 38.4,
+   "text": "Aquí, el primer paso es recibir ese material y organizarlo en esta área de acopio."
+  },
+  {
+   "start": 38.4,
+   "end": 43.4,
+   "text": "Dentro de contenedores construidos exclusivamente con estivas de madera reciclada."
+  },
+  {
+   "start": 43.4,
+   "end": 45.4,
+   "text": "Aquí surge el obstáculo."
+  },
+  {
+   "start": 45.4,
+   "end": 50.4,
+   "text": "Descomponer troncos y pasto grueso exige un equilibrio de oxígeno y humedad"
+  },
+  {
+   "start": 50.4,
+   "end": 54.4,
+   "text": "que normalmente requiere comprar costosas volteadoras industriales."
+  },
+  {
+   "start": 54.4,
+   "end": 57.4,
+   "text": "Pero esta zona central lo resuelve a mano."
+  },
+  {
+   "start": 57.4,
+   "end": 61.0,
+   "text": "Al regar estratégicamente y voltear las pilas con palas,"
+  },
+  {
+   "start": 61.0,
+   "end": 64.4,
+   "text": "se activa a los microorganismos para que devoren el material."
+  },
+  {
+   "start": 64.4,
+   "end": 67.4,
+   "text": "A este proceso se le llama compostaje aeróbico."
+  },
+  {
+   "start": 67.4,
+   "end": 73.4,
+   "text": "En un ciclo de 45 días, la naturaleza hace el trabajo pesado con cero consumo eléctrico."
+  },
+  {
+   "start": 73.4,
+   "end": 76.4,
+   "text": "Y el material más duro, que no se composta rápido,"
+  },
+  {
+   "start": 76.4,
+   "end": 79.4,
+   "text": "pasa a esta estación de triturado manual,"
+  },
+  {
+   "start": 79.4,
+   "end": 83.4,
+   "text": "donde se fragmenta para crear mulch, protector para el suelo."
+  },
+  {
+   "start": 83.4,
+   "end": 86.4,
+   "text": "Así garantizan que absolutamente nada se desperdicie."
+  },
+  {
+   "start": 86.4,
+   "end": 91.4,
+   "text": "De esta forma, ese enorme bulto de basura vegetal que antes ahogaba las calles"
+  },
+  {
+   "start": 91.4,
+   "end": 94.4,
+   "text": "regresa directamente a las manos de los vecinos,"
+  },
+  {
+   "start": 94.4,
+   "end": 99.4,
+   "text": "convertido en abono organico puro para regenerar sus propias huertas."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 110.7
+}

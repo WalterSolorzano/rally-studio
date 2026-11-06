@@ -1,0 +1,154 @@
+{
+ "video_id": "WYwC2vrSAes",
+ "url": "https://www.youtube.com/watch?v=WYwC2vrSAes",
+ "year": 2022,
+ "collection": "nacional",
+ "country": "BRASIL",
+ "team": "PET-EGC",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "PET-EGC",
+   "challenge": "07 - ALUDES DE BARRO"
+  },
+  {
+   "year": 2022,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "PET-EGC",
+   "challenge": "07 - ALUDES DE BARRO"
+  }
+ ],
+ "fetched_at": "2026-11-06T21:39:31+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "En Brasil hay muchas áreas de riesgo de deslizamiento de tierra, principalmente en ocupaciones irregulares de infraestructuras rodoviarias. Así, es importante la implementación de un sistema de sensores capaz de prognosticar y prevenir desmoronamientos. Las casas de rompimiento pueden ser por mudanças en la inclina de la encosta o elevación del nivel piezométrico. Con base en esto, presentamos una solución para tal situación, el monitoramiento de taludes naturales para alertar a las personas sobre posibles deslizamientos en las áreas de riesgo. Inicialmente, debe ser el control meteorológico a través de previsiones de tiempo feitas en las estaciones meteorológicas por el Instituto Nacional de Meteorología, acompañado diariamente. Además, el control de las tubas puede ser hecho a través de mediaciones instantáneas en pluviómetros automáticos. Además, el monitoramiento es hecho por instrumentación para el control de taludes que serán dispuestos en él, en el topo, en el medio y en la base, siendo estos indicadores de nivel de agua utilizados para monitorar la cota del lenzol freático y el inclinómetro, instrumento para medir deslocamientos horizontales dentro del terreno. A partir de este monitoramiento, hecho por defensa civil o por empresa privada, al recibir las informaciones del sistema de control, es definido si existe posibilidad de deslizamiento de tierra, y con esto se define la intensidad del problema, si está en estado de alerta o en estado de alarma. La información es transmitida a las personas en alerta, en la forma de mensajes de los celulares y computadores, y en postes sinalizadores con luz amarilla y aviso sonoro bajo. Y para alarmes, en los mismos postes, aviso sonoro alto y específico y luces vermelas. La emisión de la primera alerta de atención permite que el poder público tome las debidas providencias y intenten evitar un posible desastre ambiental. Es importante resaltar la influencia que el equipamiento tendrá en la vida de los residentes, visto que con las alertas y los alarmes las familias pueden retirarse y numerosas vidas serán salvas. Esta es una propuesta innovadora, que actualmente la mayoría de las regiones pasivas de desmoronamiento no tienen un indicador de movimientos de camadas de sol, o sea, la población de estos lugares tiene como base solamente la previsión meteorológica.",
+ "segments": [
+  {
+   "start": 0.46,
+   "end": 7.46,
+   "text": "En Brasil hay muchas áreas de riesgo de deslizamiento de tierra, principalmente en ocupaciones irregulares de infraestructuras rodoviarias."
+  },
+  {
+   "start": 7.46,
+   "end": 13.46,
+   "text": "Así, es importante la implementación de un sistema de sensores capaz de prognosticar y prevenir desmoronamientos."
+  },
+  {
+   "start": 13.46,
+   "end": 19.46,
+   "text": "Las casas de rompimiento pueden ser por mudanças en la inclina de la encosta o elevación del nivel piezométrico."
+  },
+  {
+   "start": 19.46,
+   "end": 22.46,
+   "text": "Con base en esto, presentamos una solución para tal situación,"
+  },
+  {
+   "start": 22.46,
+   "end": 28.46,
+   "text": "el monitoramiento de taludes naturales para alertar a las personas sobre posibles deslizamientos en las áreas de riesgo."
+  },
+  {
+   "start": 28.46,
+   "end": 35.46,
+   "text": "Inicialmente, debe ser el control meteorológico a través de previsiones de tiempo feitas en las estaciones meteorológicas por el Instituto Nacional de Meteorología,"
+  },
+  {
+   "start": 35.46,
+   "end": 37.46,
+   "text": "acompañado diariamente."
+  },
+  {
+   "start": 37.46,
+   "end": 42.46,
+   "text": "Además, el control de las tubas puede ser hecho a través de mediaciones instantáneas en pluviómetros automáticos."
+  },
+  {
+   "start": 42.46,
+   "end": 49.46,
+   "text": "Además, el monitoramiento es hecho por instrumentación para el control de taludes que serán dispuestos en él, en el topo, en el medio y en la base,"
+  },
+  {
+   "start": 49.46,
+   "end": 54.46,
+   "text": "siendo estos indicadores de nivel de agua utilizados para monitorar la cota del lenzol freático y el inclinómetro,"
+  },
+  {
+   "start": 54.46,
+   "end": 58.46,
+   "text": "instrumento para medir deslocamientos horizontales dentro del terreno."
+  },
+  {
+   "start": 58.46,
+   "end": 62.46,
+   "text": "A partir de este monitoramiento, hecho por defensa civil o por empresa privada,"
+  },
+  {
+   "start": 62.46,
+   "end": 67.46,
+   "text": "al recibir las informaciones del sistema de control, es definido si existe posibilidad de deslizamiento de tierra,"
+  },
+  {
+   "start": 67.46,
+   "end": 73.46,
+   "text": "y con esto se define la intensidad del problema, si está en estado de alerta o en estado de alarma."
+  },
+  {
+   "start": 73.46,
+   "end": 77.46,
+   "text": "La información es transmitida a las personas en alerta, en la forma de mensajes de los celulares y computadores,"
+  },
+  {
+   "start": 77.46,
+   "end": 81.46,
+   "text": "y en postes sinalizadores con luz amarilla y aviso sonoro bajo."
+  },
+  {
+   "start": 82.46,
+   "end": 87.46,
+   "text": "Y para alarmes, en los mismos postes, aviso sonoro alto y específico y luces vermelas."
+  },
+  {
+   "start": 87.46,
+   "end": 92.46,
+   "text": "La emisión de la primera alerta de atención permite que el poder público tome las debidas providencias"
+  },
+  {
+   "start": 92.46,
+   "end": 94.46,
+   "text": "y intenten evitar un posible desastre ambiental."
+  },
+  {
+   "start": 94.46,
+   "end": 98.46,
+   "text": "Es importante resaltar la influencia que el equipamiento tendrá en la vida de los residentes,"
+  },
+  {
+   "start": 98.46,
+   "end": 103.46,
+   "text": "visto que con las alertas y los alarmes las familias pueden retirarse y numerosas vidas serán salvas."
+  },
+  {
+   "start": 103.46,
+   "end": 108.46,
+   "text": "Esta es una propuesta innovadora, que actualmente la mayoría de las regiones pasivas de desmoronamiento"
+  },
+  {
+   "start": 108.46,
+   "end": 111.46,
+   "text": "no tienen un indicador de movimientos de camadas de sol,"
+  },
+  {
+   "start": 111.46,
+   "end": 115.46,
+   "text": "o sea, la población de estos lugares tiene como base solamente la previsión meteorológica."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.0
+}

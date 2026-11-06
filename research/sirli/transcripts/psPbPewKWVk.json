@@ -1,0 +1,92 @@
+{
+ "video_id": "psPbPewKWVk",
+ "url": "https://youtu.be/psPbPewKWVk",
+ "year": 2022,
+ "collection": "nacional",
+ "country": "ECUADOR",
+ "team": "INOVASUCRE",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "nacional",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "INOVASUCRE",
+   "challenge": "07 - ALUDES DE BARRO"
+  }
+ ],
+ "fetched_at": "2026-11-06T21:50:02+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Sigue subiendo la cifra de muertos por el deslave ocurrido en el centro oeste de Quito, la capital de Ecuador. En Brasil siguen los esfuerzos por encontrar a sobrevivientes de un deslave que arrastró decenas de casas en la ciudad. Llamarnos a Perú donde un derrumbe dejó bajo tierra más de 15 viviendas en la localidad de Retamas, en la provincia de Patas. ¿Sabías que en Latinoamérica se han construido miles de viviendas a las faldas de las montañas, cerca de laderas o quebradas? Debido a los descuidos de los dueños de terreno y estudios de suelos mal hechos, estos se han visto afectados, por lo que muchas familias se quedan sin un lugar para habitar. Incluso algunos son víctimas de estos desastres naturales que les cuesta la vida. ALER es un dispositivo automatizado que brinda alertas a la comunidad ante un posible deslizamiento de tierra en zonas más vulnerables como las viviendas asentadas sobre laderas, quebradas, zonas empinadas, con la finalidad de salvaguardar vidas humanas ante este desastre natural que provoca pérdidas materiales e incluso vidas. El diseño del prototipo consta de materiales reciclables como el filamento de impresión 3D, así como plásticos biodegradables a largo plazo. Los componentes electrónicos están debidamente acoplados, conectados y energizados gracias a su panel solar, haciendo de este sistema autónomo y funcional a 24 horas del día. Este dispositivo es enterrado en puntos específicos o críticos ante los posibles deslaves, monitoreando humedad y movimientos tectónicos con la ayuda de un sensor capacitivo de humedad de suelo El dispositivo es un sensor de movimiento MPU-6050 que capta los pequeños movimientos de la tierra, los cuales, junto a la placa electrónica de desarrollo ESP32 conectada mediante una red Ethernet, permitirán obtener datos en tiempo real que serán enviados a la aplicación desarrollada para dispositivos Android o iOS, generando un registro de actividades y alertas tempranas para los moradores que descarguen la aplicación de forma gratuita.",
+ "segments": [
+  {
+   "start": 0.14,
+   "end": 5.78,
+   "text": "Sigue subiendo la cifra de muertos por el deslave ocurrido en el centro oeste de Quito, la capital de Ecuador."
+  },
+  {
+   "start": 5.78,
+   "end": 12.78,
+   "text": "En Brasil siguen los esfuerzos por encontrar a sobrevivientes de un deslave que arrastró decenas de casas en la ciudad."
+  },
+  {
+   "start": 12.78,
+   "end": 19.38,
+   "text": "Llamarnos a Perú donde un derrumbe dejó bajo tierra más de 15 viviendas en la localidad de Retamas, en la provincia de Patas."
+  },
+  {
+   "start": 19.38,
+   "end": 26.38,
+   "text": "¿Sabías que en Latinoamérica se han construido miles de viviendas a las faldas de las montañas, cerca de laderas o quebradas?"
+  },
+  {
+   "start": 26.82,
+   "end": 35.82,
+   "text": "Debido a los descuidos de los dueños de terreno y estudios de suelos mal hechos, estos se han visto afectados, por lo que muchas familias se quedan sin un lugar para habitar."
+  },
+  {
+   "start": 35.82,
+   "end": 40.82,
+   "text": "Incluso algunos son víctimas de estos desastres naturales que les cuesta la vida."
+  },
+  {
+   "start": 40.82,
+   "end": 47.82,
+   "text": "ALER es un dispositivo automatizado que brinda alertas a la comunidad ante un posible deslizamiento de tierra en zonas más vulnerables"
+  },
+  {
+   "start": 48.26,
+   "end": 59.26,
+   "text": "como las viviendas asentadas sobre laderas, quebradas, zonas empinadas, con la finalidad de salvaguardar vidas humanas ante este desastre natural que provoca pérdidas materiales e incluso vidas."
+  },
+  {
+   "start": 59.26,
+   "end": 68.26,
+   "text": "El diseño del prototipo consta de materiales reciclables como el filamento de impresión 3D, así como plásticos biodegradables a largo plazo."
+  },
+  {
+   "start": 68.7,
+   "end": 79.7,
+   "text": "Los componentes electrónicos están debidamente acoplados, conectados y energizados gracias a su panel solar, haciendo de este sistema autónomo y funcional a 24 horas del día."
+  },
+  {
+   "start": 79.7,
+   "end": 90.7,
+   "text": "Este dispositivo es enterrado en puntos específicos o críticos ante los posibles deslaves, monitoreando humedad y movimientos tectónicos con la ayuda de un sensor capacitivo de humedad de suelo"
+  },
+  {
+   "start": 91.14,
+   "end": 102.14,
+   "text": "El dispositivo es un sensor de movimiento MPU-6050 que capta los pequeños movimientos de la tierra, los cuales, junto a la placa electrónica de desarrollo ESP32 conectada mediante una red Ethernet,"
+  },
+  {
+   "start": 102.14,
+   "end": 119.14,
+   "text": "permitirán obtener datos en tiempo real que serán enviados a la aplicación desarrollada para dispositivos Android o iOS, generando un registro de actividades y alertas tempranas para los moradores que descarguen la aplicación de forma gratuita."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.8
+}

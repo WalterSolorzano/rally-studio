@@ -1,0 +1,33 @@
+{
+ "video_id": "XFbgGXoXuWg",
+ "url": "https://youtu.be/XFbgGXoXuWg",
+ "year": 2023,
+ "collection": "nacional",
+ "country": "EL SALVADOR",
+ "team": "EXPLORADORES DEL CONOCIMIENTO",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "EXPLORADORES DEL CONOCIMIENTO",
+   "challenge": "08 - TRATAR DE ESTAR MEJOR"
+  },
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "EXPLORADORES DEL CONOCIMIENTO",
+   "challenge": "08 - TRATAR DE ESTAR MEJOR"
+  }
+ ],
+ "fetched_at": "2026-11-06T21:29:27+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "",
+ "segments": [],
+ "has_info": false,
+ "duration_s": 61.0
+}

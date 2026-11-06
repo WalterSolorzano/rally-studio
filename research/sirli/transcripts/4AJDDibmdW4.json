@@ -1,0 +1,174 @@
+{
+ "video_id": "4AJDDibmdW4",
+ "url": "https://youtu.be/4AJDDibmdW4",
+ "year": 2022,
+ "collection": "nacional",
+ "country": "COSTA RICA",
+ "team": "IJOBS",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "IJOBS",
+   "challenge": "01 - INCLUSIÓN LABORAL DE PERSONAS DEL ESPECTRO AUTISTA"
+  },
+  {
+   "year": 2022,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "IJOBS",
+   "challenge": "01 - INCLUSIÓN LABORAL DE PERSONAS DEL ESPECTRO AUTISTA"
+  }
+ ],
+ "fetched_at": "2026-11-06T21:44:20+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "En América Latina, por cada 10 mil habitantes, viven entre 25 y 30 personas con trastorno espectroautista, una población que se ha visto excluida del sistema laboral por muchos años con tasas de desempleo que rondan el 85%. Los gobiernos de muchos países han creado leyes contra la exclusión de personas en el marco de su neurodiversidad, sin embargo los cambios no han sido suficientes. Así que, ¿qué podemos hacer por esta comunidad? iJobs es un concepto que integra eficazmente la tecnología y la psicología laboral para mejorar el ambiente laboral de personas con TEA. Comencemos dándole un vistazo a nuestra página web que aloja ofertas de empleo especialmente dirigidas a personas con neurodiversidad. Aquí el candidato puede encontrar un trabajo que se ajuste a su perfil, habilidades y preferencias en diversidad de campos. El requisito cuenta con una encuesta personalizada para las búsquedas para quien pueda encontrar su trabajo ideal. Uno de los más grandes desafíos a los que se enfrentan las personas con TEA son las entrevistas laborales por la presión social que ellas conllevan, por lo cual hemos diseñado un modo de capacitación para que los reclutadores se preparen adecuadamente antes de entrevistar a las personas con esta condición. También incluimos una sección de testimonios de empresas y colaboradores con las mejores prácticas para gestionar el talento de personas neurodiversas. Finalmente hemos incorporado una aplicación móvil la cual funciona con un asistente de voz personalizado con estímulos visuales para poder ayudar a estas personas a la realización de trabajo físico. Este asistente dictará el paso a paso en las actividades reflejadas por estos estímulos. Además la aplicación contará con un aprendizaje de inteligencia artificial en donde la empresa puede insertar las tareas manualmente o una vez la aplicación haya aprendido ciertas tareas las selecciones según el horario automáticamente. Para lo cual solo se necesita un teléfono móvil y audífonos. iJobs aspira a convertirse en una comunidad de apoyo para el talento neurodiverso del hoy y del mañana.",
+ "segments": [
+  {
+   "start": 0.05,
+   "end": 6.15,
+   "text": "En América Latina, por cada 10 mil habitantes, viven entre 25 y 30 personas con trastorno"
+  },
+  {
+   "start": 6.15,
+   "end": 11.27,
+   "text": "espectroautista, una población que se ha visto excluida del sistema laboral por muchos"
+  },
+  {
+   "start": 11.27,
+   "end": 17.51,
+   "text": "años con tasas de desempleo que rondan el 85%. Los gobiernos de muchos países han"
+  },
+  {
+   "start": 17.51,
+   "end": 22.19,
+   "text": "creado leyes contra la exclusión de personas en el marco de su neurodiversidad, sin"
+  },
+  {
+   "start": 22.19,
+   "end": 26.71,
+   "text": "embargo los cambios no han sido suficientes. Así que, ¿qué podemos hacer por esta"
+  },
+  {
+   "start": 26.71,
+   "end": 32.71,
+   "text": "comunidad? iJobs es un concepto que integra eficazmente la tecnología y la psicología"
+  },
+  {
+   "start": 32.71,
+   "end": 38.27,
+   "text": "laboral para mejorar el ambiente laboral de personas con TEA. Comencemos dándole"
+  },
+  {
+   "start": 38.27,
+   "end": 43.03,
+   "text": "un vistazo a nuestra página web que aloja ofertas de empleo especialmente dirigidas"
+  },
+  {
+   "start": 43.03,
+   "end": 47.27,
+   "text": "a personas con neurodiversidad. Aquí el candidato puede encontrar un trabajo"
+  },
+  {
+   "start": 47.27,
+   "end": 52.43,
+   "text": "que se ajuste a su perfil, habilidades y preferencias en diversidad de campos."
+  },
+  {
+   "start": 52.43,
+   "end": 56.83,
+   "text": "El requisito cuenta con una encuesta personalizada para las búsquedas para quien pueda encontrar"
+  },
+  {
+   "start": 56.83,
+   "end": 60.51,
+   "text": "su trabajo ideal. Uno de los más grandes desafíos a los que"
+  },
+  {
+   "start": 60.51,
+   "end": 64.69,
+   "text": "se enfrentan las personas con TEA son las entrevistas laborales por la presión"
+  },
+  {
+   "start": 64.69,
+   "end": 69.21,
+   "text": "social que ellas conllevan, por lo cual hemos diseñado un modo de capacitación"
+  },
+  {
+   "start": 69.21,
+   "end": 73.43,
+   "text": "para que los reclutadores se preparen adecuadamente antes de entrevistar a las"
+  },
+  {
+   "start": 73.43,
+   "end": 78.03,
+   "text": "personas con esta condición. También incluimos una sección de testimonios"
+  },
+  {
+   "start": 78.03,
+   "end": 81.75,
+   "text": "de empresas y colaboradores con las mejores prácticas para gestionar el"
+  },
+  {
+   "start": 81.75,
+   "end": 86.19,
+   "text": "talento de personas neurodiversas. Finalmente hemos incorporado una"
+  },
+  {
+   "start": 86.19,
+   "end": 89.79,
+   "text": "aplicación móvil la cual funciona con un asistente de voz personalizado"
+  },
+  {
+   "start": 89.79,
+   "end": 93.31,
+   "text": "con estímulos visuales para poder ayudar a estas personas a la"
+  },
+  {
+   "start": 93.31,
+   "end": 97.63,
+   "text": "realización de trabajo físico. Este asistente dictará el paso a paso"
+  },
+  {
+   "start": 97.63,
+   "end": 101.67,
+   "text": "en las actividades reflejadas por estos estímulos. Además la aplicación"
+  },
+  {
+   "start": 101.67,
+   "end": 105.33,
+   "text": "contará con un aprendizaje de inteligencia artificial en donde la"
+  },
+  {
+   "start": 105.33,
+   "end": 109.17,
+   "text": "empresa puede insertar las tareas manualmente o una vez la aplicación"
+  },
+  {
+   "start": 109.17,
+   "end": 112.89,
+   "text": "haya aprendido ciertas tareas las selecciones según el horario"
+  },
+  {
+   "start": 112.89,
+   "end": 116.73,
+   "text": "automáticamente. Para lo cual solo se necesita un teléfono móvil y"
+  },
+  {
+   "start": 116.73,
+   "end": 120.65,
+   "text": "audífonos. iJobs aspira a convertirse en una comunidad de apoyo para el"
+  },
+  {
+   "start": 120.65,
+   "end": 125.21,
+   "text": "talento neurodiverso del hoy y del mañana."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 124.6
+}

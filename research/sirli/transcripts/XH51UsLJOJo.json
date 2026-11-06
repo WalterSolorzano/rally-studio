@@ -1,0 +1,159 @@
+{
+ "video_id": "XH51UsLJOJo",
+ "url": "https://youtu.be/XH51UsLJOJo",
+ "year": 2024,
+ "collection": "nacional",
+ "country": "COLOMBIA",
+ "team": "CYBERACHIRA",
+ "place_label": "TERCER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "nacional",
+   "place_label": "TERCER LUGAR",
+   "team": "CYBERACHIRA",
+   "challenge": "07 - PARQUÍMETRO DESATENDIDO"
+  },
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "CYBERACHIRA",
+   "challenge": "07 - PARQUÍMETRO DESATENDIDO"
+  }
+ ],
+ "fetched_at": "2026-11-06T21:01:20+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "En las ciudades y metrópolis de hoy en día el espacio es un recurso escaso. Cada vez más los conductores se enfrentan a la frustración de encontrar un lugar donde estacionar, lo que se ha convertido en una verdadera carrera contra el tiempo. Para responder a esta necesidad el uso de parquímetros y sistemas de estacionamiento urbano se ha convertido en una medida común en muchas ciudades del mundo. Tradicionalmente los parquímetros han sido una herramienta eficaz para regular el uso de los espacios públicos, distribuyendo el tiempo de estacionamiento y generando ingresos para las administraciones locales. Sin embargo, estos sistemas no están exentos de problemas. En muchas ciudades de Latinoamérica el transporte y el tráfico urbano son un desafío constante. Las calles congestionadas, la falta de estacionamiento y la escasez de tecnología adecuada son solo algunas de las dificultades que enfrentan a los ciudadanos día a día. En la Ciudad de México el 30% del tráfico se debe a conductores que pasan entre 15 y 20 minutos buscando un lugar para estacionarse. Esta búsqueda no solo consume tiempo sino que también impacta económicamente con un gasto promedio de hasta 55.350 pesos al año en estacionamientos y parquímetros. Colombia, particularmente en ciudades como Bogotá, enfrenta uno de los peores problemas Según Inrix, los conductores colombianos pasan 47 horas al año atrapados en el tráfico, más que en cualquier otro país, exceptuando Tailandia. Las razones son claras, un transporte público deficiente y una infraestructura inadecuada. En H-Park utilizamos tecnología de vanguardia con cámaras LPR y un avanzado modelo de religencia artificial, Big Data y Machine Learning que identifica placas y vehículos en cuestión de segundos. Con esto reducimos el tiempo de búsqueda de un lugar de estacionamiento en hasta un 70%. Imagina pasar de 20 minutos a solo 6.",
+ "segments": [
+  {
+   "start": 1.55,
+   "end": 5.77,
+   "text": "En las ciudades y metrópolis de hoy en día el espacio es un recurso escaso."
+  },
+  {
+   "start": 5.77,
+   "end": 11.69,
+   "text": "Cada vez más los conductores se enfrentan a la frustración de encontrar un lugar donde estacionar,"
+  },
+  {
+   "start": 11.69,
+   "end": 15.45,
+   "text": "lo que se ha convertido en una verdadera carrera contra el tiempo."
+  },
+  {
+   "start": 15.45,
+   "end": 20.65,
+   "text": "Para responder a esta necesidad el uso de parquímetros y sistemas de estacionamiento"
+  },
+  {
+   "start": 20.65,
+   "end": 25.13,
+   "text": "urbano se ha convertido en una medida común en muchas ciudades del mundo."
+  },
+  {
+   "start": 25.13,
+   "end": 29.33,
+   "text": "Tradicionalmente los parquímetros han sido una herramienta eficaz para regular"
+  },
+  {
+   "start": 29.33,
+   "end": 33.25,
+   "text": "el uso de los espacios públicos, distribuyendo el tiempo de estacionamiento"
+  },
+  {
+   "start": 33.25,
+   "end": 35.77,
+   "text": "y generando ingresos para las administraciones locales."
+  },
+  {
+   "start": 35.77,
+   "end": 39.13,
+   "text": "Sin embargo, estos sistemas no están exentos de problemas."
+  },
+  {
+   "start": 39.13,
+   "end": 45.05,
+   "text": "En muchas ciudades de Latinoamérica el transporte y el tráfico urbano son un desafío constante."
+  },
+  {
+   "start": 45.05,
+   "end": 50.17,
+   "text": "Las calles congestionadas, la falta de estacionamiento y la escasez de tecnología adecuada"
+  },
+  {
+   "start": 50.17,
+   "end": 54.45,
+   "text": "son solo algunas de las dificultades que enfrentan a los ciudadanos día a día."
+  },
+  {
+   "start": 55.13,
+   "end": 61.45,
+   "text": "En la Ciudad de México el 30% del tráfico se debe a conductores que pasan entre 15 y 20 minutos"
+  },
+  {
+   "start": 61.45,
+   "end": 64.13,
+   "text": "buscando un lugar para estacionarse."
+  },
+  {
+   "start": 64.13,
+   "end": 69.29,
+   "text": "Esta búsqueda no solo consume tiempo sino que también impacta económicamente con"
+  },
+  {
+   "start": 69.29,
+   "end": 76.33,
+   "text": "un gasto promedio de hasta 55.350 pesos al año en estacionamientos y parquímetros."
+  },
+  {
+   "start": 76.33,
+   "end": 81.29,
+   "text": "Colombia, particularmente en ciudades como Bogotá, enfrenta uno de los peores problemas"
+  },
+  {
+   "start": 82.25,
+   "end": 88.89,
+   "text": "Según Inrix, los conductores colombianos pasan 47 horas al año atrapados en el tráfico,"
+  },
+  {
+   "start": 88.89,
+   "end": 92.73,
+   "text": "más que en cualquier otro país, exceptuando Tailandia."
+  },
+  {
+   "start": 92.73,
+   "end": 98.53,
+   "text": "Las razones son claras, un transporte público deficiente y una infraestructura inadecuada."
+  },
+  {
+   "start": 98.53,
+   "end": 102.53,
+   "text": "En H-Park utilizamos tecnología de vanguardia con cámaras LPR"
+  },
+  {
+   "start": 102.53,
+   "end": 106.53,
+   "text": "y un avanzado modelo de religencia artificial, Big Data y Machine Learning"
+  },
+  {
+   "start": 106.53,
+   "end": 109.61,
+   "text": "que identifica placas y vehículos en cuestión de segundos."
+  },
+  {
+   "start": 109.61,
+   "end": 115.45,
+   "text": "Con esto reducimos el tiempo de búsqueda de un lugar de estacionamiento en hasta un 70%."
+  },
+  {
+   "start": 115.45,
+   "end": 118.65,
+   "text": "Imagina pasar de 20 minutos a solo 6."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.0
+}

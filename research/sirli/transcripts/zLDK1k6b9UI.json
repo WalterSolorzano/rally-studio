@@ -1,0 +1,147 @@
+{
+ "video_id": "zLDK1k6b9UI",
+ "url": "https://youtu.be/zLDK1k6b9UI",
+ "year": 2021,
+ "collection": "nacional",
+ "country": "EL SALVADOR",
+ "team": "EPSILON UNITE",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "nacional",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "EPSILON UNITE",
+   "challenge": "09 - IDENTIFICADOR PRÁCTICO Y ECONÓMICO DEL AEROSOL DE CO2 EN ESPACIOS CERRADOS"
+  }
+ ],
+ "fetched_at": "2026-11-06T22:26:16+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Según la Organización Mundial de la Salud, el COVID-19 se transmite a través de gotas respiratorias, que se generan al hablar, toser o estornudar. Cumpliendo siempre el resto de medidas establecidas por las autoridades sanitarias, agregamos la ventilación como una parte fundamental para diluir los aerosoles en sitios cerrados. Al tomar en cuenta esta información, cuando los estudiantes regresen a clases frecenciales, los niveles de aerosoles en las aulas se dispararán, y se requerirá de una herramienta que mide los niveles de CO2 para prevenir los contagios. Y es por eso que nace la idea de Fricos. Fricos es un pequeño circuito electrónico construido sobre un metrocontrolador Arduino que está pensado para medir la cantidad de CO2 y otros parámetros ambientales para recomendarnos cuando deberíamos renovar el aire de la aula u otros espacios de trabajo. Este indicará, a través de sus LEDs con colores azul, verde, amarillo y rojo, el nivel de concentración de CO2, y a través de su pantalla LED se mostrará de forma métrica el PPM. Cada dispositivo Fricos se construirá utilizando un Arduino, un sensor MH-Z19, transistores y pantallas LED. Esto le da la característica de ser portable y fácil de instalar. Pero, cambiando el Arduino por un metrocontrolador ESP8266 o ESP32, convertimos nuestros dispositivos Fricos en dispositivos IoT. Esto nos permitirá enviar los datos a un servidor y traer un panel administrativo, donde podremos agregar los diferentes Fricos instalados por todo el lugar, que nos indicarán en todo momento el nivel de concentración de CO2 por todo el recinto, y al alcanzar niveles críticos nos notificará del peligro. Al estar midiendo los niveles de concentración de CO2, ya sea en aula o en otros lugares de trabajo, se puede garantizar un espacio con los niveles recomendados, reduciendo así el contagio de COVID-19 y de otras enfermedades respiratorias. Fricos, al ser un ecosistema IoT, también nos permitirá integrarnos a un sistema de filtrado de aire. Este, al superar la barrera de los 1000 PPM, se activará bajando los niveles de concentración de CO2 del lugar, garantizando así la adecuada calidad del aire dentro del salón.",
+ "segments": [
+  {
+   "start": 0.24,
+   "end": 6.88,
+   "text": "Según la Organización Mundial de la Salud, el COVID-19 se transmite a través de gotas respiratorias, que se generan al hablar, toser o estornudar."
+  },
+  {
+   "start": 6.88,
+   "end": 10.04,
+   "text": "Cumpliendo siempre el resto de medidas establecidas por las autoridades sanitarias,"
+  },
+  {
+   "start": 10.04,
+   "end": 14.08,
+   "text": "agregamos la ventilación como una parte fundamental para diluir los aerosoles en sitios cerrados."
+  },
+  {
+   "start": 14.08,
+   "end": 17.68,
+   "text": "Al tomar en cuenta esta información, cuando los estudiantes regresen a clases frecenciales,"
+  },
+  {
+   "start": 17.68,
+   "end": 23.44,
+   "text": "los niveles de aerosoles en las aulas se dispararán, y se requerirá de una herramienta que mide los niveles de CO2 para prevenir los contagios."
+  },
+  {
+   "start": 23.44,
+   "end": 25.68,
+   "text": "Y es por eso que nace la idea de Fricos."
+  },
+  {
+   "start": 25.88,
+   "end": 29.84,
+   "text": "Fricos es un pequeño circuito electrónico construido sobre un metrocontrolador Arduino"
+  },
+  {
+   "start": 29.84,
+   "end": 33.48,
+   "text": "que está pensado para medir la cantidad de CO2 y otros parámetros ambientales"
+  },
+  {
+   "start": 33.48,
+   "end": 37.6,
+   "text": "para recomendarnos cuando deberíamos renovar el aire de la aula u otros espacios de trabajo."
+  },
+  {
+   "start": 37.6,
+   "end": 43.56,
+   "text": "Este indicará, a través de sus LEDs con colores azul, verde, amarillo y rojo, el nivel de concentración de CO2,"
+  },
+  {
+   "start": 43.56,
+   "end": 47.12,
+   "text": "y a través de su pantalla LED se mostrará de forma métrica el PPM."
+  },
+  {
+   "start": 47.12,
+   "end": 53.72,
+   "text": "Cada dispositivo Fricos se construirá utilizando un Arduino, un sensor MH-Z19, transistores y pantallas LED."
+  },
+  {
+   "start": 53.76,
+   "end": 56.8,
+   "text": "Esto le da la característica de ser portable y fácil de instalar."
+  },
+  {
+   "start": 56.8,
+   "end": 65.76,
+   "text": "Pero, cambiando el Arduino por un metrocontrolador ESP8266 o ESP32, convertimos nuestros dispositivos Fricos en dispositivos IoT."
+  },
+  {
+   "start": 65.76,
+   "end": 69.96,
+   "text": "Esto nos permitirá enviar los datos a un servidor y traer un panel administrativo,"
+  },
+  {
+   "start": 69.96,
+   "end": 73.24,
+   "text": "donde podremos agregar los diferentes Fricos instalados por todo el lugar,"
+  },
+  {
+   "start": 73.24,
+   "end": 78.24,
+   "text": "que nos indicarán en todo momento el nivel de concentración de CO2 por todo el recinto,"
+  },
+  {
+   "start": 78.24,
+   "end": 81.32,
+   "text": "y al alcanzar niveles críticos nos notificará del peligro."
+  },
+  {
+   "start": 81.32,
+   "end": 86.24,
+   "text": "Al estar midiendo los niveles de concentración de CO2, ya sea en aula o en otros lugares de trabajo,"
+  },
+  {
+   "start": 86.24,
+   "end": 89.04,
+   "text": "se puede garantizar un espacio con los niveles recomendados,"
+  },
+  {
+   "start": 89.04,
+   "end": 93.64,
+   "text": "reduciendo así el contagio de COVID-19 y de otras enfermedades respiratorias."
+  },
+  {
+   "start": 93.64,
+   "end": 99.92,
+   "text": "Fricos, al ser un ecosistema IoT, también nos permitirá integrarnos a un sistema de filtrado de aire."
+  },
+  {
+   "start": 99.92,
+   "end": 106.2,
+   "text": "Este, al superar la barrera de los 1000 PPM, se activará bajando los niveles de concentración de CO2 del lugar,"
+  },
+  {
+   "start": 106.2,
+   "end": 110.24,
+   "text": "garantizando así la adecuada calidad del aire dentro del salón."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.5
+}

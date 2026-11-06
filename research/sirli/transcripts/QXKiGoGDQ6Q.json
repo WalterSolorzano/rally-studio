@@ -1,0 +1,109 @@
+{
+ "video_id": "QXKiGoGDQ6Q",
+ "url": "https://youtu.be/QXKiGoGDQ6Q",
+ "year": 2019,
+ "collection": "nacional",
+ "country": "EL SALVADOR",
+ "team": "SMART GREENHOUSE",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2019,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "SMART GREENHOUSE",
+   "challenge": "07 - NUEVAS FORMAS DE PRODUCCIÓN HORTÍCOLA"
+  },
+  {
+   "year": 2019,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "SMART GREENHOUSE",
+   "challenge": "07 - NUEVAS FORMAS DE PRODUCCIÓN HORTÍCOLA"
+  }
+ ],
+ "fetched_at": "2026-11-06T22:36:11+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "alimentos sanos a base de hortalizas, libre de químicos y mendeblas a precios accesibles, es la clave para utilizar Innova Farm. El principal problema que tienen la mayoría de las personas con los alimentos orgánicos es que son costosos. Sin embargo, existen muchas maneras diferentes de reducir radicalmente el costo de su alimento. Uno de los principales beneficios de cultivar sus propios alimentos es que usted tiene todo el control sobre el producto, desde la composición hasta la exposición química. Tú como jardinero orgánico no utilizarás productos químicos y alimentarás al suelo con abono orgánico. Es por eso que Innova Farming es un facilitador de producción hortícola, adecuado para todo cambio climático. Nosotros hacemos una estructura desmontable con materiales que sean amigables con el hortalizante, que consisten en un huerto de fares reducidos con un hortalizante para el uso adecuado de el sistema pequeño y mediano agricultor.",
+ "segments": [
+  {
+   "start": 6.8,
+   "end": 13.16,
+   "text": "alimentos sanos a base de hortalizas, libre de químicos y mendeblas a precios accesibles,"
+  },
+  {
+   "start": 13.16,
+   "end": 16.96,
+   "text": "es la clave para utilizar Innova Farm."
+  },
+  {
+   "start": 16.96,
+   "end": 21.8,
+   "text": "El principal problema que tienen la mayoría de las personas con los alimentos orgánicos"
+  },
+  {
+   "start": 21.8,
+   "end": 23.4,
+   "text": "es que son costosos."
+  },
+  {
+   "start": 23.4,
+   "end": 28.64,
+   "text": "Sin embargo, existen muchas maneras diferentes de reducir radicalmente el costo de su"
+  },
+  {
+   "start": 28.64,
+   "end": 29.64,
+   "text": "alimento."
+  },
+  {
+   "start": 29.64,
+   "end": 35.76,
+   "text": "Uno de los principales beneficios de cultivar sus propios alimentos es que usted tiene"
+  },
+  {
+   "start": 35.76,
+   "end": 43.07,
+   "text": "todo el control sobre el producto, desde la composición hasta la exposición química."
+  },
+  {
+   "start": 43.07,
+   "end": 48.59,
+   "text": "Tú como jardinero orgánico no utilizarás productos químicos y alimentarás al suelo"
+  },
+  {
+   "start": 48.59,
+   "end": 51.23,
+   "text": "con abono orgánico."
+  },
+  {
+   "start": 51.23,
+   "end": 57.11,
+   "text": "Es por eso que Innova Farming es un facilitador de producción hortícola, adecuado para"
+  },
+  {
+   "start": 57.11,
+   "end": 58.99,
+   "text": "todo cambio climático."
+  },
+  {
+   "start": 58.99,
+   "end": 64.71,
+   "text": "Nosotros hacemos una estructura desmontable con materiales que sean amigables con el"
+  },
+  {
+   "start": 64.71,
+   "end": 105.2,
+   "text": "hortalizante, que consisten en un huerto de fares reducidos con un hortalizante"
+  },
+  {
+   "start": 105.2,
+   "end": 171.27,
+   "text": "para el uso adecuado de el sistema pequeño y mediano agricultor."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 176.4
+}

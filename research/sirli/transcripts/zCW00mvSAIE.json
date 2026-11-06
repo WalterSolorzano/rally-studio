@@ -1,0 +1,104 @@
+{
+ "video_id": "zCW00mvSAIE",
+ "url": "https://youtu.be/zCW00mvSAIE",
+ "year": 2021,
+ "collection": "nacional",
+ "country": "ECUADOR",
+ "team": "SERENDIPITY",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "nacional",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "SERENDIPITY",
+   "challenge": "03 - AGUA PARA SOÑAR"
+  },
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "SERENDIPITY",
+   "challenge": "03 - AGUA PARA SOÑAR"
+  }
+ ],
+ "fetched_at": "2026-11-06T22:23:56+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "¿Sabías que en Ecuador 8 de cada 10 niños indígenas carecen simultáneamente de servicios de agua, saneamiento e insumos de higiene? La falta de acceso a este derecho repercute en la salud de los niños, al ser uno de los principales determinantes de la desnutrición crónica. Según la OMS, la ingesta de agua contaminada causa enfermedades como la cólera, diarrea, fiebre, tifoidea y hepatitis, y permite la reproducción de insectos como la malaria, dengue, chikungu y icica, afectando gravemente la salud, especialmente de las comunidades rurales. Les presentamos YakuFiltro, un sistema de filtración de agua lluvia que permite llevar agua limpia a las comunidades localizadas en los paráemos andinos. Utiliza productos propios de la zona como el carbón activado y otros materiales naturales. El sistema que hemos diseñado consiste en tres etapas, recolección, filtración y almacenamiento. La primera etapa, la etapa de recolección, consiste en aprovechar los techos inclinados de las casas para recolectar esta agua lluvia y separarla de los sólidos tales como arena o como hojas de las plantas. Luego toda esta agua que es recolectada pasa a nuestro primer filtro. Hemos diseñado este filtro para ser adaptable a los tubos por el que pasa el agua. Este filtro consta de capas de grava, gravilla y arena, permitiendo así que el agua tenga un primer filtrado. Luego de este primer filtrado, el agua pasaría a almacenarse en un tanque de sedimentación, el cual permitirá que los elementos que aún permanezcan en suspensión en el agua se vayan asentando en el fondo y el agua limpia va a pasar hasta un segundo proceso de filtrado.",
+ "segments": [
+  {
+   "start": 3.98,
+   "end": 12.38,
+   "text": "¿Sabías que en Ecuador 8 de cada 10 niños indígenas carecen simultáneamente de servicios de agua, saneamiento e insumos de higiene?"
+  },
+  {
+   "start": 12.38,
+   "end": 21.78,
+   "text": "La falta de acceso a este derecho repercute en la salud de los niños, al ser uno de los principales determinantes de la desnutrición crónica."
+  },
+  {
+   "start": 21.78,
+   "end": 30.58,
+   "text": "Según la OMS, la ingesta de agua contaminada causa enfermedades como la cólera, diarrea, fiebre, tifoidea y hepatitis,"
+  },
+  {
+   "start": 30.78,
+   "end": 41.78,
+   "text": "y permite la reproducción de insectos como la malaria, dengue, chikungu y icica, afectando gravemente la salud, especialmente de las comunidades rurales."
+  },
+  {
+   "start": 41.78,
+   "end": 52.98,
+   "text": "Les presentamos YakuFiltro, un sistema de filtración de agua lluvia que permite llevar agua limpia a las comunidades localizadas en los paráemos andinos."
+  },
+  {
+   "start": 52.98,
+   "end": 59.38,
+   "text": "Utiliza productos propios de la zona como el carbón activado y otros materiales naturales."
+  },
+  {
+   "start": 61.85,
+   "end": 68.45,
+   "text": "El sistema que hemos diseñado consiste en tres etapas, recolección, filtración y almacenamiento."
+  },
+  {
+   "start": 68.45,
+   "end": 81.45,
+   "text": "La primera etapa, la etapa de recolección, consiste en aprovechar los techos inclinados de las casas para recolectar esta agua lluvia y separarla de los sólidos tales como arena o como hojas de las plantas."
+  },
+  {
+   "start": 81.85,
+   "end": 86.85,
+   "text": "Luego toda esta agua que es recolectada pasa a nuestro primer filtro."
+  },
+  {
+   "start": 86.85,
+   "end": 91.85,
+   "text": "Hemos diseñado este filtro para ser adaptable a los tubos por el que pasa el agua."
+  },
+  {
+   "start": 91.85,
+   "end": 99.85,
+   "text": "Este filtro consta de capas de grava, gravilla y arena, permitiendo así que el agua tenga un primer filtrado."
+  },
+  {
+   "start": 100.25,
+   "end": 106.25,
+   "text": "Luego de este primer filtrado, el agua pasaría a almacenarse en un tanque de sedimentación,"
+  },
+  {
+   "start": 106.25,
+   "end": 112.25,
+   "text": "el cual permitirá que los elementos que aún permanezcan en suspensión en el agua"
+  },
+  {
+   "start": 112.25,
+   "end": 120.25,
+   "text": "se vayan asentando en el fondo y el agua limpia va a pasar hasta un segundo proceso de filtrado."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.0
+}

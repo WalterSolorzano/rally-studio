@@ -1,0 +1,164 @@
+{
+ "video_id": "y8SfEN0Deoo",
+ "url": "https://youtu.be/y8SfEN0Deoo?si=Rfy5aThca5hKpFGr",
+ "year": 2024,
+ "collection": "nacional",
+ "country": "MÉXICO",
+ "team": "LEOPARDOS",
+ "place_label": "TERCER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "nacional",
+   "place_label": "TERCER LUGAR",
+   "team": "LEOPARDOS",
+   "challenge": "04 - AGUACATE"
+  },
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "LEOPARDOS",
+   "challenge": "04 - AGUACATE"
+  }
+ ],
+ "fetched_at": "2026-11-06T21:13:05+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "harina base de hueso, aguacate, amaranto y semilla de girasol. ¿Sabías que? México es el principal productor y exportador de aguacates en el mundo. En 2023 su producción superó los 2.9 millones de toneladas métricas, generando un problema ecológico debido a que el principal desecho es el hueso del aguacate. Por otro lado, según datos de la encuesta nacional de salud y nutrición en Sanu 2020, estiman que México 2.8% de los niños menores de 5 años presentan bajo peso, 13.6% muestran baja talla y el 1.6% de nutrición aguda. De acuerdo con el ENEJI, México ocupa el primer lugar mundial en obesidad infantil y el segundo en adultos, y la prevalencia de sobrepeso en niños en edad escolar ha ido aumentando en los últimos años. Es urgente afundar este problema, ya que la obesidad se suce con enfermedades cardiovasculares, diabetes, tranzonos óseos y musculares y algunos tipos de cáncer. Esto afecta la quilidad de vida de quienes lo padecen, divide el consumo de alimentos procesados, bebidas asucaradas y su fácil acceso. Por ello es una carga considerable para el sector salud. Dada esta problemática, se propone producir una harina de uso comecila a partir del hueso del aguacate disetratado, semilla de amaranto y semilla de girasol. Estos tres ingredientes proporcionan nutrientes, vitaminas, proteínas y aminoácidos, lo que asegura la producción de un insumo de alta calidad nutricional. Una de las principales propuestas para la sustentabilidad es la de incorporar el secado solar a nuestro producto con la finalidad de reducir o anular el uso de electricidad y aprovechar en su totalidad la energía que el mismo sol nos proporciona, cumpliendo con los objetivos de la Agenda 2030, como lo son el objetivo 2, 3, 9 y 12. Para obtener un producto de alta calidad nos apagaremos a diferentes normas oficiales mexicanas y normas internacionales, tales como ISO 22000, Norma para Inacuidad Alimentaria, Norma 187, Norma Sanitaria para el Sector Alimenticio, ISO 22001, Norma para Prácticas de Seguridad y Salud. Muchas gracias por su querida atención.",
+ "segments": [
+  {
+   "start": 0.21,
+   "end": 6.21,
+   "text": "harina base de hueso, aguacate, amaranto y semilla de girasol. ¿Sabías que?"
+  },
+  {
+   "start": 6.21,
+   "end": 11.41,
+   "text": "México es el principal productor y exportador de aguacates en el mundo."
+  },
+  {
+   "start": 11.41,
+   "end": 16.81,
+   "text": "En 2023 su producción superó los 2.9 millones de toneladas métricas,"
+  },
+  {
+   "start": 16.81,
+   "end": 22.81,
+   "text": "generando un problema ecológico debido a que el principal desecho es el hueso del aguacate."
+  },
+  {
+   "start": 22.81,
+   "end": 28.21,
+   "text": "Por otro lado, según datos de la encuesta nacional de salud y nutrición en Sanu 2020,"
+  },
+  {
+   "start": 28.21,
+   "end": 33.21,
+   "text": "estiman que México 2.8% de los niños menores de 5 años presentan bajo peso,"
+  },
+  {
+   "start": 33.21,
+   "end": 40.21,
+   "text": "13.6% muestran baja talla y el 1.6% de nutrición aguda."
+  },
+  {
+   "start": 40.21,
+   "end": 46.21,
+   "text": "De acuerdo con el ENEJI, México ocupa el primer lugar mundial en obesidad infantil y el segundo en adultos,"
+  },
+  {
+   "start": 46.21,
+   "end": 52.21,
+   "text": "y la prevalencia de sobrepeso en niños en edad escolar ha ido aumentando en los últimos años."
+  },
+  {
+   "start": 52.21,
+   "end": 57.21,
+   "text": "Es urgente afundar este problema, ya que la obesidad se suce con enfermedades cardiovasculares, diabetes,"
+  },
+  {
+   "start": 57.21,
+   "end": 60.21,
+   "text": "tranzonos óseos y musculares y algunos tipos de cáncer."
+  },
+  {
+   "start": 60.21,
+   "end": 63.21,
+   "text": "Esto afecta la quilidad de vida de quienes lo padecen,"
+  },
+  {
+   "start": 63.21,
+   "end": 67.21,
+   "text": "divide el consumo de alimentos procesados, bebidas asucaradas y su fácil acceso."
+  },
+  {
+   "start": 67.21,
+   "end": 70.21,
+   "text": "Por ello es una carga considerable para el sector salud."
+  },
+  {
+   "start": 70.21,
+   "end": 74.21,
+   "text": "Dada esta problemática, se propone producir una harina de uso comecila"
+  },
+  {
+   "start": 74.21,
+   "end": 78.21,
+   "text": "a partir del hueso del aguacate disetratado, semilla de amaranto y semilla de girasol."
+  },
+  {
+   "start": 78.21,
+   "end": 83.21,
+   "text": "Estos tres ingredientes proporcionan nutrientes, vitaminas, proteínas y aminoácidos,"
+  },
+  {
+   "start": 83.21,
+   "end": 86.21,
+   "text": "lo que asegura la producción de un insumo de alta calidad nutricional."
+  },
+  {
+   "start": 86.21,
+   "end": 92.21,
+   "text": "Una de las principales propuestas para la sustentabilidad es la de incorporar el secado solar a nuestro producto"
+  },
+  {
+   "start": 92.21,
+   "end": 95.21,
+   "text": "con la finalidad de reducir o anular el uso de electricidad"
+  },
+  {
+   "start": 95.21,
+   "end": 99.21,
+   "text": "y aprovechar en su totalidad la energía que el mismo sol nos proporciona,"
+  },
+  {
+   "start": 99.21,
+   "end": 103.21,
+   "text": "cumpliendo con los objetivos de la Agenda 2030, como lo son el objetivo 2, 3, 9 y 12."
+  },
+  {
+   "start": 103.21,
+   "end": 107.21,
+   "text": "Para obtener un producto de alta calidad nos apagaremos a diferentes normas oficiales mexicanas"
+  },
+  {
+   "start": 107.21,
+   "end": 112.21,
+   "text": "y normas internacionales, tales como ISO 22000, Norma para Inacuidad Alimentaria,"
+  },
+  {
+   "start": 112.21,
+   "end": 118.21,
+   "text": "Norma 187, Norma Sanitaria para el Sector Alimenticio, ISO 22001, Norma para Prácticas de Seguridad y Salud."
+  },
+  {
+   "start": 118.21,
+   "end": 120.21,
+   "text": "Muchas gracias por su querida atención."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.7
+}

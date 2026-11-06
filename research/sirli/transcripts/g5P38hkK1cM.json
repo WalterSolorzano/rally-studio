@@ -1,0 +1,169 @@
+{
+ "video_id": "g5P38hkK1cM",
+ "url": "https://youtu.be/g5P38hkK1cM",
+ "year": 2021,
+ "collection": "nacional",
+ "country": "CHILE",
+ "team": "BIOMASK",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "BIOMASK",
+   "challenge": "10 - ¿QUÉ HACER CON TU MASCARILLA, BARBIJO O CUBREBOCAS?"
+  },
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "BIOMASK",
+   "challenge": "10 - ¿QUÉ HACER CON TU MASCARILLA, BARBIJO O CUBREBOCAS?"
+  }
+ ],
+ "fetched_at": "2026-11-06T22:08:52+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Con la pandemia del COVID-19, el uso de mascarillas desechables es indispensable para reducir la propagación del virus, por lo que estas son usadas masivamente por la población. Sin embargo, una vez que se humedecen, pierden la capacidad de aislación, reduciendo su vida útil, poniendo en riesgo la salud del usuario y transformándose en un desecho difícil de tratar, ya que estas mascarillas están hechas de celulosa y polipropileno, siendo este último un polímero termoplástico que puede demorar hasta 450 años en degradarse. Esta situación es compleja. Sólo en Chile una persona puede utilizar dos mascarillas diarias, estimándose un incremento de 136 toneladas de desechos diarios, situación que se agrava si estos son depositados en lugares no apropiados, aumentando los niveles de microplásticos en el ambiente. Ante esto, urge una solución que permite identificar, por un lado, cuándo una mascarilla ha dejado de ser útil, así como reformular su degradación en el ambiente. Ante esto, proponemos la creación de una mascarilla que por un lado sea de bajo costo, que permita conocer su efectividad y que sea amigable con el medio ambiente. Esta es MioMask. Nuestra solución abarca dos aspectos. Informar al usuario cuándo su mascarilla pierde efectividad y hacernos cargo de la disposición del producto. Para lo primero, se busca crear una mascarilla que tenga una banda que cambie de color en función de la humedad, lo cual sería un indicador de pérdida de calidad, alertando al usuario la necesidad de recambio. Para esto se pretende utilizar el principio de las tiras reactivas a la humedad, las cuales son un papel que cambie de color en pasando de azul profundo a rosa cuando llega a un 80% de humedad. En cuanto a disposición final, proponemos un cambio del polipropileno en su fabricación por un material biodegradable y compostable, un compuesto constituido por almidón comercial y un aditivo biovasado plastificante, obtenido a partir de la conversión de acérrim de pino radiata, obtenido de los desechos de acerraderos y de la industria forestal. Al producir una mascarilla con la tecnología biodegradable y biocompostable, nos permite brindar un producto sustentable y por ende reducir la contaminación de plástico al ambiente, reduciendo además la acumulación indebida de mascarillas desechadas.",
+ "segments": [
+  {
+   "start": 0.02,
+   "end": 5.3,
+   "text": "Con la pandemia del COVID-19, el uso de mascarillas desechables es indispensable para reducir la"
+  },
+  {
+   "start": 5.3,
+   "end": 9.94,
+   "text": "propagación del virus, por lo que estas son usadas masivamente por la población. Sin embargo,"
+  },
+  {
+   "start": 9.94,
+   "end": 13.66,
+   "text": "una vez que se humedecen, pierden la capacidad de aislación, reduciendo su vida útil,"
+  },
+  {
+   "start": 13.66,
+   "end": 17.7,
+   "text": "poniendo en riesgo la salud del usuario y transformándose en un desecho difícil de"
+  },
+  {
+   "start": 17.7,
+   "end": 21.92,
+   "text": "tratar, ya que estas mascarillas están hechas de celulosa y polipropileno, siendo"
+  },
+  {
+   "start": 21.92,
+   "end": 26.66,
+   "text": "este último un polímero termoplástico que puede demorar hasta 450 años en degradarse."
+  },
+  {
+   "start": 26.98,
+   "end": 31.58,
+   "text": "Esta situación es compleja. Sólo en Chile una persona puede utilizar dos mascarillas diarias,"
+  },
+  {
+   "start": 31.58,
+   "end": 36.98,
+   "text": "estimándose un incremento de 136 toneladas de desechos diarios, situación que se agrava si"
+  },
+  {
+   "start": 36.98,
+   "end": 41.18,
+   "text": "estos son depositados en lugares no apropiados, aumentando los niveles de microplásticos en el"
+  },
+  {
+   "start": 41.18,
+   "end": 45.06,
+   "text": "ambiente. Ante esto, urge una solución que permite identificar, por un lado,"
+  },
+  {
+   "start": 45.06,
+   "end": 49.14,
+   "text": "cuándo una mascarilla ha dejado de ser útil, así como reformular su degradación en el ambiente."
+  },
+  {
+   "start": 49.14,
+   "end": 53.66,
+   "text": "Ante esto, proponemos la creación de una mascarilla que por un lado sea de bajo costo,"
+  },
+  {
+   "start": 53.66,
+   "end": 56.82,
+   "text": "que permita conocer su efectividad y que sea amigable con el medio ambiente."
+  },
+  {
+   "start": 56.82,
+   "end": 61.98,
+   "text": "Esta es MioMask. Nuestra solución abarca dos aspectos. Informar al usuario cuándo"
+  },
+  {
+   "start": 61.98,
+   "end": 65.7,
+   "text": "su mascarilla pierde efectividad y hacernos cargo de la disposición del producto."
+  },
+  {
+   "start": 65.7,
+   "end": 70.74,
+   "text": "Para lo primero, se busca crear una mascarilla que tenga una banda que cambie de color en"
+  },
+  {
+   "start": 70.74,
+   "end": 73.74,
+   "text": "función de la humedad, lo cual sería un indicador de pérdida de calidad,"
+  },
+  {
+   "start": 73.74,
+   "end": 78.46,
+   "text": "alertando al usuario la necesidad de recambio. Para esto se pretende utilizar el principio"
+  },
+  {
+   "start": 78.46,
+   "end": 81.78,
+   "text": "de las tiras reactivas a la humedad, las cuales son un papel que cambie de color en"
+  },
+  {
+   "start": 82.54,
+   "end": 86.66,
+   "text": "pasando de azul profundo a rosa cuando llega a un 80% de humedad."
+  },
+  {
+   "start": 86.66,
+   "end": 91.02,
+   "text": "En cuanto a disposición final, proponemos un cambio del polipropileno en su fabricación"
+  },
+  {
+   "start": 91.02,
+   "end": 95.34,
+   "text": "por un material biodegradable y compostable, un compuesto constituido por almidón comercial"
+  },
+  {
+   "start": 95.34,
+   "end": 98.94,
+   "text": "y un aditivo biovasado plastificante, obtenido a partir de la conversión de"
+  },
+  {
+   "start": 98.94,
+   "end": 102.82,
+   "text": "acérrim de pino radiata, obtenido de los desechos de acerraderos y de la industria"
+  },
+  {
+   "start": 102.82,
+   "end": 107.38,
+   "text": "forestal. Al producir una mascarilla con la tecnología biodegradable y biocompostable,"
+  },
+  {
+   "start": 107.38,
+   "end": 111.74,
+   "text": "nos permite brindar un producto sustentable y por ende reducir la contaminación de plástico"
+  },
+  {
+   "start": 111.74,
+   "end": 115.98,
+   "text": "al ambiente, reduciendo además la acumulación indebida de mascarillas desechadas."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 117.4
+}

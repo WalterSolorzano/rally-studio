@@ -20,13 +20,23 @@
 <main>
 
 <header class="top">
-  <div>
+  <div class="top-id">
     <div class="page-logo"><span class="r">RALLY</span><span class="s">STUDIO</span></div>
     <p class="cmd">// RALLY DESIGN · KIT DE PRENSA</p>
     <h1>Kit de prensa</h1>
-    <p>Identidad visual del equipo: logo, paleta, tipografía H1/H2/H3 y equipo. Exportable. <a href="index.html">← Carrusel de equipo</a> · <a href="thumb.html">Thumbnail →</a></p>
+    <p>Identidad del equipo y del proyecto en un tablero. Edita en el panel lateral y el documento se actualiza al instante. <a href="index.html">← Carrusel de equipo</a> · <a href="thumb.html">Thumbnail →</a></p>
   </div>
+  <nav class="tools" aria-label="Controles del kit">
+    <button type="button" class="tool" data-open="detIdentidad"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg><span>Equipo</span></button>
+    <button type="button" class="tool" data-open="detProj"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="M8 6V4h8v2M4 11h16"/></svg><span>Proyecto</span></button>
+    <button type="button" class="tool" data-open="detPaleta"><svg viewBox="0 0 24 24"><circle cx="8" cy="9" r="2.4"/><circle cx="15.5" cy="8" r="2.4"/><circle cx="11.5" cy="15" r="2.4"/><path d="M12 3a9 9 0 1 0 0 18c1.7 0 2.4-1.2 1.6-2.4-.9-1.4 0-3 1.8-3H18a3 3 0 0 0 3-3A9 9 0 0 0 12 3z"/></svg><span>Paleta</span></button>
+    <button type="button" class="tool" data-open="detTipo"><svg viewBox="0 0 24 24"><path d="M5 5h14M12 5v14M8 19h8"/></svg><span>Tipografía</span></button>
+    <button type="button" class="tool" data-open="detInstitucion"><svg viewBox="0 0 24 24"><path d="M4 20h16M6 20V9l6-4 6 4v11"/><path d="M10 20v-5h4v5"/></svg><span>Institución</span></button>
+    <button type="button" class="tool" data-open="detVentana"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg><span>Ventana</span></button>
+    <button type="button" class="tool tool-primary" data-open="detExport"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg><span>Exportar</span></button>
+  </nav>
 </header>
+<div class="scrim" id="scrim" hidden></div>
 
 <section>
   <div class="layout">
@@ -41,8 +51,9 @@
             <div class="logo" id="kitLogo"></div>
           </div>
           <div class="kit-body">
+            <div class="kit-col">
             <div class="kit-section">
-              <h4 style="color:var(--primary)">Logo · variantes de uso</h4>
+              <h4 style="color:var(--primary)">01 · Logo del equipo</h4>
               <div class="logo-variants">
                 <div class="logo-box" id="lv1" style="background:var(--primary);color:#fff"></div>
                 <div class="logo-box" id="lv2" style="background:#fff;color:var(--primary);border:1px solid var(--primary)"></div>
@@ -50,7 +61,7 @@
               </div>
             </div>
             <div class="kit-section">
-              <h4 style="color:var(--primary)">Tipografía · H1 / H2 / H3</h4>
+              <h4 style="color:var(--primary)">02 · Tipografía del equipo</h4>
               <div class="fonts">
                 <div class="font-row"><span class="tag">H1</span><span class="sample h1" id="fH1">Título principal del proyecto</span></div>
                 <div class="font-row"><span class="tag">H2</span><span class="sample h2" id="fH2">Sección o subtítulo</span></div>
@@ -60,30 +71,86 @@
               </div>
             </div>
             <div class="kit-section">
-              <h4 style="color:var(--primary)">Paleta de marca</h4>
+              <h4 style="color:var(--primary)">03 · Paleta del equipo</h4>
               <div class="palette-row" id="kitPal"></div>
             </div>
             <div class="kit-section">
-              <h4 style="color:var(--primary)">Equipo</h4>
+              <h4 style="color:var(--primary)">04 · Datos del equipo</h4>
               <div class="team-grid" id="kitTeam"></div>
             </div>
-            <div class="kit-section">
-              <h4 style="color:var(--primary)">Bio del equipo</h4>
+            </div>
+            <div class="kit-col">
+              <div class="kit-section kit-section--wide">
+              <h4 style="color:var(--primary)">05 · Bio del equipo</h4>
               <div class="bio" id="kitBio"></div>
             </div>
-            <div class="kit-section">
-              <h4 style="color:var(--primary)">Contacto</h4>
+            <div class="kit-section kit-section--proj">
+              <div class="proj-head">
+                <div>
+                  <h4 style="color:var(--primary);margin-bottom:4px">06 · Proyecto · marca de la solución</h4>
+                  <p class="proj-lede">Segunda marca, independiente de la del equipo. Es la que va en el producto, el video, el canvas y la web.</p>
+                </div>
+                <span class="proj-badge">Marca propia</span>
+              </div>
+              <div id="kitProj" class="kit-proj-id">
+                <div id="kitProjLogo" style="flex:0 0 auto;width:54px;height:54px;border-radius:10px;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;overflow:hidden"></div>
+                <div style="min-width:0">
+                  <div id="kitProjName" style="font-size:19px;font-weight:800;line-height:1.15;color:var(--navy)">—</div>
+                  <div id="kitProjSlogan" style="font-size:12px;color:var(--navy);opacity:.66;margin-top:2px"></div>
+                  <div id="kitProjSector" style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--primary);margin-top:5px"></div>
+                  <div id="kitProjStyle" style="display:none;margin-top:6px;font-size:10px;letter-spacing:.06em;border-radius:99px;padding:3px 8px"></div>
+                </div>
+              </div>
+              <div id="kitProjPurpose" style="margin-top:10px;display:grid;gap:7px">
+                <div style="display:none"><span style="display:block;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--primary)">Misión</span><p id="kitProjMission" style="margin:2px 0 0;font-size:11px;line-height:1.4;color:var(--navy)"></p></div>
+                <div style="display:none"><span style="display:block;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--primary)">Visión</span><p id="kitProjVision" style="margin:2px 0 0;font-size:11px;line-height:1.4;color:var(--navy)"></p></div>
+                <div style="display:none"><span style="display:block;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--primary)">Inspiración visual</span><p id="kitProjInspiration" style="margin:2px 0 0;font-size:11px;line-height:1.4;color:var(--navy);opacity:.8"></p></div>
+              </div>
+              <div id="kitProjExistingRow" style="display:none;margin-top:8px;font-size:10px;color:var(--navy);opacity:.8">Producto existente: <a id="kitProjExisting" target="_blank" rel="noopener" style="color:var(--primary);word-break:break-all"></a></div>
+              <div class="proj-block proj-block--fonts">
+                <span class="proj-label">Tipografía · propuesta y razón</span>
+                <div id="kitProjFonts" style="font-size:10px;line-height:1.4;color:var(--navy);opacity:.85;margin:3px 0 4px"></div>
+                <div id="kitProjFontWhy" style="font-size:10px;line-height:1.45;color:var(--navy);opacity:.75;margin-bottom:8px"></div>
+                <div id="kitProjType" style="border-left:3px solid var(--primary);padding-left:11px"></div>
+              </div>
+              <div class="proj-block proj-block--pal">
+                <span class="proj-label">Paleta completa</span>
+                <div id="kitProjPal" class="proj-pal"></div>
+              </div>
+              <div class="proj-block proj-block--tex">
+                <span class="proj-label">Elementos gráficos · descargables</span>
+                <div id="kitProjPatterns" class="proj-tex-grid"></div>
+                <p id="kitProjTextureNote" style="margin:6px 0 0;font-size:10px;line-height:1.4;color:var(--navy);opacity:.8"></p>
+                <div class="btn-row" style="margin-top:8px">
+                  <button class="sec" id="descargarMosaico">Mosaico PNG</button>
+                  <button class="sec" id="descargarMotivo">Motivo PNG</button>
+                  <button class="sec" id="descargarMotivoBlanco">Motivo blanco PNG</button>
+                </div>
+                <p class="note" style="margin:6px 0 0">PNG 2048×2048 con fondo transparente. El mosaico repite el patrón; el motivo va centrado. Sirven para canvas, video o diapositiva.</p>
+                <p class="status" id="statusTexturas"></p>
+              </div>
+            </div>
+            <div class="kit-section kit-section--wide">
+              <h4 style="color:var(--primary)">07 · Contacto</h4>
               <div class="contact-grid">
                 <div class="contact-cell uni-cell"><div class="uni-mark" id="kitUniMark"></div><div><div class="lbl">Universidad</div><div class="val" id="kitUni">—</div></div></div>
                 <div class="contact-cell" id="kitCityCell"><div class="lbl">Ciudad</div><div class="val" id="kitCity">—</div></div>
               </div>
+            </div>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="ctrl-col">
-      <details class="ctrl" open>
+      <div class="drawer-top">
+        <div>
+          <p class="cmd">// panel de edición</p>
+          <h2>Controles del kit</h2>
+        </div>
+        <button type="button" class="drawer-close" id="drawerClose" aria-label="Cerrar panel">✕</button>
+      </div>
+      <details class="ctrl" id="detIdentidad" open>
         <summary>Identidad</summary>
         <div class="body">
           <div class="field"><label>Nombre del equipo</label><input type="text" id="teamName"></div>
@@ -97,7 +164,73 @@
           <div class="field"><label>Bio corta</label><textarea id="bio"></textarea></div>
         </div>
       </details>
-      <details class="ctrl">
+      <details class="ctrl" id="detProj">
+        <summary>Marca del proyecto · asistente</summary>
+        <div class="body">
+          <p class="note" id="projAsk">Si el proyecto aún no tiene nombre, escribe abajo qué ataca y pulsa <b>Sugerir nombres</b>. La marca es del proyecto, no del equipo.</p>
+          <div class="field"><label>Nombre del proyecto o empresa</label><input type="text" id="projName" placeholder="Marca que entrega la solución"></div>
+          <div class="field"><label>Marca del proyecto (iniciales o texto)</label><input type="text" id="projLogoText" maxlength="4"></div>
+          <div class="field"><label>Qué resuelve (una línea)</label><input type="text" id="projClaim" placeholder="Ej: agua segura para las familias"></div>
+          <div class="field"><label>Sector o rubro</label><input type="text" id="projSector" placeholder="Agua · Agro · Salud · Educación"></div>
+          <div class="field">
+            <label>Logo del proyecto (PNG/SVG)</label>
+            <label class="upload-btn" for="projLogoFile">Seleccionar archivo</label>
+            <input type="file" id="projLogoFile" accept="image/*" hidden>
+            <span class="upload-name" id="projLogoFileName">Ningún archivo seleccionado</span>
+          </div>
+          <div class="field"><label>¿Ya existe el producto o prototipo? Pega el enlace</label><input type="text" id="projExisting" placeholder="https://… (web, repo, drive, video)"></div>
+          <div class="field"><label>¿Mascota?</label>
+            <select id="projMascot">
+              <option value="auto">Decidir según el público</option>
+              <option value="si">Sí, quiero mascota</option>
+              <option value="no">No, solo símbolo</option>
+            </select>
+          </div>
+          <details style="margin-top:10px" open>
+            <summary style="cursor:pointer;font-size:11px;font-weight:800;color:#0D1B35">Prompt para IA de imágenes · logo, mascota y producto</summary>
+            <p class="note" id="projPromptAsk" style="margin:6px 0">Sin logo todavía. Copia el prompt y pégalo en tu IA de imágenes; vuelve con el PNG y súbelo arriba.</p>
+            <div class="field"><label>Prompt del logo</label><textarea id="promptLogo" rows="7" readonly style="font-size:10px;line-height:1.45"></textarea><div class="btn-row"><button class="sec" data-copy="promptLogo">Copiar prompt del logo</button></div></div>
+            <div class="field"><label>Prompt de mascota</label><textarea id="promptMascota" rows="6" readonly style="font-size:10px;line-height:1.45"></textarea><div class="btn-row"><button class="sec" data-copy="promptMascota">Copiar prompt de mascota</button></div><p class="note" id="projMascotNote" style="margin:4px 0 0"></p></div>
+            <div class="field"><label>Prompt de producto / render</label><textarea id="promptProducto" rows="6" readonly style="font-size:10px;line-height:1.45"></textarea><div class="btn-row"><button class="sec" data-copy="promptProducto">Copiar prompt de producto</button></div></div>
+            <p class="note" id="projHasLogo" style="display:none">Logo cargado: el prompt queda como respaldo si necesitas regenerarlo.</p>
+          </details>
+
+          <h5 style="margin:14px 0 6px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#0D1B35">Del problema a la marca</h5>
+          <div class="field"><label>Problema que ataca</label><textarea id="projProblem" placeholder="Ej: las familias rurales cargan agua a pie y se enferman"></textarea></div>
+          <div class="field"><label>Cómo lo resuelve</label><textarea id="projSolution" placeholder="Ej: captación de lluvia con filtro comunitario"></textarea></div>
+          <div class="field"><label>A quién sirve</label><input type="text" id="projAudience" placeholder="Ej: familias de comunidades rurales"></div>
+          <div class="field"><label>Tono de la marca</label>
+            <select id="projTone">
+              <option value="cercano">Cercano y humano</option>
+              <option value="juvenil">Juvenil y lúdico</option>
+              <option value="serio">Serio e institucional</option>
+              <option value="tecnico">Técnico y preciso</option>
+              <option value="premium">Premium y sobrio</option>
+              <option value="humor">Con humor</option>
+            </select>
+          </div>
+          <div class="btn-row">
+            <button class="sec" id="sugerirNombres">Sugerir nombres</button>
+            <button class="sec" id="sugerirClaim">Sugerir slogan</button>
+            <button class="sec" id="sugerirProposito">Sugerir misión y visión</button>
+          </div>
+          <div id="projIdeas" style="margin-top:8px"></div>
+
+          <h5 style="margin:14px 0 6px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#0D1B35">Estilo de marca · elige uno</h5>
+          <p class="note" style="margin:0 0 8px">Estilos investigados en rebrand.gallery y los 12 arquetipos de marca. Las 12 paletas salen de sistemas probados en campo (Patagonia, IBM Carbon, Duolingo, Aesop, Nike, Nature…) y se validaron con contraste AA sobre los dos fondos. Cada estilo declara su pareja tipográfica y por qué: el kit muestra H1, H2, H3 y párrafo con esa pareja.</p>
+          <div id="projStyles" style="display:grid;grid-template-columns:1fr 1fr;gap:7px"></div>
+
+          <h5 style="margin:14px 0 6px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#0D1B35">Relato de la marca</h5>
+          <div class="field"><label>Slogan</label><input type="text" id="projSlogan" placeholder="Una línea que se recuerde"></div>
+          <div class="field"><label>Misión</label><textarea id="projMission"></textarea></div>
+          <div class="field"><label>Visión</label><textarea id="projVision"></textarea></div>
+          <div class="field"><label>Qué inspira su diseño</label><textarea id="projInspiration"></textarea></div>
+          <div class="btn-row"><button class="sec" id="aplicarProyectoKit">Llevar esta identidad al kit completo</button></div>
+          <p class="status" id="statusProyecto"></p>
+          <p class="note">Esta marca es la del proyecto que distribuye la solución, no la del equipo del rally. Puede ser distinta a la del grupo.</p>
+        </div>
+      </details>
+      <details class="ctrl" id="detInstitucion">
         <summary>Institución (oculto)</summary>
         <div class="body">
           <div class="grid g2 field">
@@ -107,21 +240,21 @@
           <p class="note">Por defecto: Universidad Nacional de Ingeniería, sin ciudad. Solo si el equipo usa otra institución.</p>
         </div>
       </details>
-      <details class="ctrl">
+      <details class="ctrl" id="detPaleta">
         <summary>Paleta</summary>
         <div class="body">
-          <div class="grid g2">
-            <div><label>Marca</label><input type="color" id="cAc"></div>
-            <div><label>Texto</label><input type="color" id="cInk"></div>
-            <div><label>Suave</label><input type="color" id="cMu"></div>
-            <div><label>Formas</label><input type="color" id="cGl"></div>
-            <div><label>Fondo</label><input type="color" id="cBg"></div>
-            <div><label>Fondo 2</label><input type="color" id="cBg2"></div>
+          <div class="pal-edit">
+            <label>Marca<input type="color" id="cAc"></label>
+            <label>Texto<input type="color" id="cInk"></label>
+            <label>Suave<input type="color" id="cMu"></label>
+            <label>Formas<input type="color" id="cGl"></label>
+            <label>Fondo<input type="color" id="cBg"></label>
+            <label>Fondo 2<input type="color" id="cBg2"></label>
           </div>
           <p class="note">Modo propuesta: la IA sugiere paleta a partir del logo. Modo manual: el usuario elige cada color.</p>
         </div>
       </details>
-      <details class="ctrl">
+      <details class="ctrl" id="detTipo">
         <summary>Tipografía</summary>
         <div class="body">
           <div class="field"><label>Fuente de títulos (H1/H2/H3)</label><select id="fontTitle"></select></div>
@@ -130,7 +263,7 @@
           <div class="btn-row"><button class="sec" id="addCustomFont">Cargar fuente</button></div>
         </div>
       </details>
-      <details class="ctrl">
+      <details class="ctrl" id="detExport">
         <summary>Exportar kit</summary>
         <div class="body">
           <div class="btn-row">
@@ -140,7 +273,7 @@
           <p class="status" id="statusKit"></p>
         </div>
       </details>
-      <details class="ctrl">
+      <details class="ctrl" id="detVentana">
         <summary>Ventana</summary>
         <div class="body">
           <div class="btn-row"><button class="sec" id="enviarVentana">Enviar logo y paleta a la ventana</button></div>
@@ -156,4 +289,41 @@
 <script src="fonts.js"></script>
 <script src="ventana.js"></script>
 <script src="kit.js"></script>
+<button type="button" class="drawer-fab" id="drawerFab" aria-label="Abrir panel de controles" title="Controles">
+  <svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2.4"/><circle cx="8" cy="17" r="2.4"/></svg>
+</button>
+<script>
+(function () {
+  var panel = document.querySelector('.ctrl-col');
+  var scrim = document.getElementById('scrim');
+  var fab = document.getElementById('drawerFab');
+  function open(id) {
+    if (!panel) return;
+    panel.classList.add('open');
+    if (scrim) scrim.hidden = false;
+    document.body.classList.add('drawer-open');
+    if (id) {
+      var d = document.getElementById(id);
+      if (d) {
+        if (d.tagName === 'DETAILS') d.open = true;
+        d.scrollIntoView({ block: 'start' });
+      }
+    }
+  }
+  function close() {
+    if (!panel) return;
+    panel.classList.remove('open');
+    if (scrim) scrim.hidden = true;
+    document.body.classList.remove('drawer-open');
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-open]'), function (b) {
+    b.addEventListener('click', function () { open(b.getAttribute('data-open')); });
+  });
+  if (fab) fab.addEventListener('click', function () { open('detIdentidad'); });
+  var x = document.getElementById('drawerClose');
+  if (x) x.addEventListener('click', close);
+  if (scrim) scrim.addEventListener('click', close);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+})();
+</script>
 </body></html>

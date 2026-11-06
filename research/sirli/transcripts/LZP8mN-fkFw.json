@@ -1,0 +1,137 @@
+{
+ "video_id": "LZP8mN-fkFw",
+ "url": "https://youtu.be/LZP8mN-fkFw",
+ "year": 2025,
+ "collection": "nacional",
+ "country": "EL SALVADOR",
+ "team": "VERTICALIS",
+ "place_label": "TERCER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "nacional",
+   "place_label": "TERCER LUGAR",
+   "team": "VERTICALIS",
+   "challenge": "05 - HUERTOS VERTICALES"
+  }
+ ],
+ "fetched_at": "2026-11-06T20:49:04+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "El Salvador enfrenta una crisis silenciosa. La productividad agrícola disminuye cada año. Cada vez más familias dependen de alimentos importados, mientras los jóvenes del campo migran en busca de oportunidades. Pero, y si pudiéramos transformar ese panorama con innovación, tecnología y esperanza, nuestra solución es una torre de cultivo vertical en forma de hélice verticalis, un sistema modular diseñado para producir alimentos en espacios reducidos, patios o balcones urbanos. Verticalis funciona mediante sistemas hidropónicos o de sustrato automatizados por una Raspberry Pi que controla el riego, la humedad, el pH y la temperatura de forma inteligente. A su vez, la Raspberry contaría con un servidor web que instruía a los usuarios en el uso y posicionamiento de las plantas en la infraestructura. Así logramos un cultivo sostenible, eficiente y fácil de mantener. La forma en hélice no es casualidad. Abajo crecen tubérculos como zanahorias y rábanos que fortalecen la base y mejoran la estructura del sustrato. En el medio, bayas y hortalizas como fresas, lechugas y espinacas se benefician de la humedad y nutrientes que descienden. Y en la parte superior, plantas aromáticas y polinizadoras como la albahaca, el romero y flores comestibles atraen insectos beneficiosos y promueven un micro ecosistema equilibrado. Verticalis une tecnología y sostenibilidad. Su diseño ligero y modular permite transportarla fácilmente, ensamblarla sin conocimientos técnicos y adaptarla a distintos entornos. Esto empodera a jóvenes rurales y urbanos brindándoles herramientas digitales para producir alimentos, emprender y contribuir al desarrollo de sus comunidades. Nuestra propuesta utiliza materiales locales, energía mínima y puede replicarse a cualquier escala. Con Verticalis sembramos más que alimentos. Sembramos oportunidades, sostenibilidad y futuro para El Salvador.",
+ "segments": [
+  {
+   "start": 0.02,
+   "end": 5.66,
+   "text": "El Salvador enfrenta una crisis silenciosa. La productividad agrícola disminuye cada año."
+  },
+  {
+   "start": 5.66,
+   "end": 11.02,
+   "text": "Cada vez más familias dependen de alimentos importados, mientras los jóvenes del campo"
+  },
+  {
+   "start": 11.02,
+   "end": 16.1,
+   "text": "migran en busca de oportunidades. Pero, y si pudiéramos transformar ese panorama con"
+  },
+  {
+   "start": 16.1,
+   "end": 21.06,
+   "text": "innovación, tecnología y esperanza, nuestra solución es una torre de cultivo vertical"
+  },
+  {
+   "start": 21.06,
+   "end": 26.9,
+   "text": "en forma de hélice verticalis, un sistema modular diseñado para producir alimentos"
+  },
+  {
+   "start": 26.9,
+   "end": 33.62,
+   "text": "en espacios reducidos, patios o balcones urbanos. Verticalis funciona mediante sistemas hidropónicos"
+  },
+  {
+   "start": 33.62,
+   "end": 39.94,
+   "text": "o de sustrato automatizados por una Raspberry Pi que controla el riego, la humedad, el pH y la"
+  },
+  {
+   "start": 39.94,
+   "end": 45.54,
+   "text": "temperatura de forma inteligente. A su vez, la Raspberry contaría con un servidor web que"
+  },
+  {
+   "start": 45.54,
+   "end": 51.1,
+   "text": "instruía a los usuarios en el uso y posicionamiento de las plantas en la infraestructura. Así"
+  },
+  {
+   "start": 51.1,
+   "end": 57.42,
+   "text": "logramos un cultivo sostenible, eficiente y fácil de mantener. La forma en hélice no es"
+  },
+  {
+   "start": 57.42,
+   "end": 63.26,
+   "text": "casualidad. Abajo crecen tubérculos como zanahorias y rábanos que fortalecen la base y mejoran"
+  },
+  {
+   "start": 63.26,
+   "end": 68.98,
+   "text": "la estructura del sustrato. En el medio, bayas y hortalizas como fresas, lechugas y"
+  },
+  {
+   "start": 68.98,
+   "end": 73.66,
+   "text": "espinacas se benefician de la humedad y nutrientes que descienden. Y en la parte"
+  },
+  {
+   "start": 73.66,
+   "end": 78.7,
+   "text": "superior, plantas aromáticas y polinizadoras como la albahaca, el romero y flores"
+  },
+  {
+   "start": 78.7,
+   "end": 83.82,
+   "text": "comestibles atraen insectos beneficiosos y promueven un micro ecosistema equilibrado."
+  },
+  {
+   "start": 83.82,
+   "end": 90.06,
+   "text": "Verticalis une tecnología y sostenibilidad. Su diseño ligero y modular permite transportarla"
+  },
+  {
+   "start": 90.06,
+   "end": 95.38,
+   "text": "fácilmente, ensamblarla sin conocimientos técnicos y adaptarla a distintos entornos."
+  },
+  {
+   "start": 95.38,
+   "end": 100.82,
+   "text": "Esto empodera a jóvenes rurales y urbanos brindándoles herramientas digitales para"
+  },
+  {
+   "start": 100.82,
+   "end": 105.9,
+   "text": "producir alimentos, emprender y contribuir al desarrollo de sus comunidades. Nuestra"
+  },
+  {
+   "start": 105.9,
+   "end": 110.98,
+   "text": "propuesta utiliza materiales locales, energía mínima y puede replicarse a cualquier escala."
+  },
+  {
+   "start": 110.98,
+   "end": 115.02,
+   "text": "Con Verticalis sembramos más que alimentos. Sembramos oportunidades,"
+  },
+  {
+   "start": 115.02,
+   "end": 117.34,
+   "text": "sostenibilidad y futuro para El Salvador."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 117.8
+}

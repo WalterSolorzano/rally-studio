@@ -1,0 +1,169 @@
+{
+ "video_id": "NswXrPUl2Uw",
+ "url": "https://youtu.be/NswXrPUl2Uw",
+ "year": 2021,
+ "collection": "nacional",
+ "country": "COSTA RICA",
+ "team": "LOS GUERREROS DEL SUR",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "LOS GUERREROS DEL SUR",
+   "challenge": "06 - SOSTENIBILIDAD AMBIENTAL ORIENTADA AL APROVECHAMIENTO DE RESIDUOS PLÁSTICOS EN FRANJAS COSTERAS"
+  },
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "LOS GUERREROS DEL SUR",
+   "challenge": "06 - SOSTENIBILIDAD AMBIENTAL ORIENTADA AL APROVECHAMIENTO DE RESIDUOS PLÁSTICOS EN FRANJAS COSTERAS"
+  }
+ ],
+ "fetched_at": "2026-11-06T22:18:29+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Los envases plásticos son uno de los residuos que más genera la sociedad moderna, y su gestión inadecuada representa un problema ambiental, ya que pueden tardar desde los 100 hasta los 1000 años en degradarse. En el año 2015, se produjeron más de 380 millones de toneladas de plástico en el mundo, y ese número aún continúa aumentando. Con nuestro proyecto, Eco House, pretendemos reducir la huella ocasionada por la mala gestión de los plásticos, mediante la utilización de la tecnología de impresión 3D a niveles industriales para la producción de casas, de diferentes formas y tamaños. La impresión 3D consiste en una máquina que toma un filamento plástico y mediante coordenadas programadas en un software especializado, va imprimiendo capa por capa la forma o figura que se desee. La impresión 3D para viviendas ya existe y es una realidad, sin embargo, se utiliza cemento para darle forma al proyecto, el cual tiene un costo de producción muy elevado, además del impacto ambiental necesario para la producción del mismo. Al utilizar plástico desechado, reducimos los costos de producción, puesto que el plástico lo podemos conseguir desde campañas de recolección, o bien, de los miles de toneladas que llegan a los mares, lamentablemente. Con Eco House, podemos imprimir casas para proyectos habitacionales modernos, minimalistas, elegantes y sobre todo, duraderos, puesto que utilizamos la propiedad de larga degradación del plástico a nuestro favor. Además, podemos realizar proyectos habitacionales con carácter social, puesto que al tener costos de producción más bajos, por utilizar materiales de desecho, el sueño de muchas personas en condición de pobreza de contar con casa propia, está cada vez más cerca. Eco House, tu sueñas con tu casa, nosotros con cuidar el ambiente.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 13.26,
+   "text": "Los envases plásticos son uno de los residuos que más genera la sociedad moderna,"
+  },
+  {
+   "start": 13.26,
+   "end": 16.26,
+   "text": "y su gestión inadecuada representa un problema ambiental,"
+  },
+  {
+   "start": 16.26,
+   "end": 20.26,
+   "text": "ya que pueden tardar desde los 100 hasta los 1000 años en degradarse."
+  },
+  {
+   "start": 20.26,
+   "end": 26.26,
+   "text": "En el año 2015, se produjeron más de 380 millones de toneladas de plástico en el mundo,"
+  },
+  {
+   "start": 26.26,
+   "end": 29.26,
+   "text": "y ese número aún continúa aumentando."
+  },
+  {
+   "start": 29.26,
+   "end": 35.26,
+   "text": "Con nuestro proyecto, Eco House, pretendemos reducir la huella ocasionada por la mala gestión de los plásticos,"
+  },
+  {
+   "start": 35.26,
+   "end": 41.26,
+   "text": "mediante la utilización de la tecnología de impresión 3D a niveles industriales para la producción de casas,"
+  },
+  {
+   "start": 41.26,
+   "end": 43.26,
+   "text": "de diferentes formas y tamaños."
+  },
+  {
+   "start": 43.26,
+   "end": 48.26,
+   "text": "La impresión 3D consiste en una máquina que toma un filamento plástico"
+  },
+  {
+   "start": 48.26,
+   "end": 51.26,
+   "text": "y mediante coordenadas programadas en un software especializado,"
+  },
+  {
+   "start": 51.26,
+   "end": 55.26,
+   "text": "va imprimiendo capa por capa la forma o figura que se desee."
+  },
+  {
+   "start": 55.26,
+   "end": 59.26,
+   "text": "La impresión 3D para viviendas ya existe y es una realidad,"
+  },
+  {
+   "start": 59.26,
+   "end": 63.26,
+   "text": "sin embargo, se utiliza cemento para darle forma al proyecto,"
+  },
+  {
+   "start": 63.26,
+   "end": 66.26,
+   "text": "el cual tiene un costo de producción muy elevado,"
+  },
+  {
+   "start": 66.26,
+   "end": 70.26,
+   "text": "además del impacto ambiental necesario para la producción del mismo."
+  },
+  {
+   "start": 70.26,
+   "end": 74.26,
+   "text": "Al utilizar plástico desechado, reducimos los costos de producción,"
+  },
+  {
+   "start": 74.26,
+   "end": 78.26,
+   "text": "puesto que el plástico lo podemos conseguir desde campañas de recolección,"
+  },
+  {
+   "start": 78.26,
+   "end": 83.26,
+   "text": "o bien, de los miles de toneladas que llegan a los mares, lamentablemente."
+  },
+  {
+   "start": 83.26,
+   "end": 88.26,
+   "text": "Con Eco House, podemos imprimir casas para proyectos habitacionales modernos,"
+  },
+  {
+   "start": 88.26,
+   "end": 91.26,
+   "text": "minimalistas, elegantes y sobre todo, duraderos,"
+  },
+  {
+   "start": 91.26,
+   "end": 96.26,
+   "text": "puesto que utilizamos la propiedad de larga degradación del plástico a nuestro favor."
+  },
+  {
+   "start": 96.26,
+   "end": 100.26,
+   "text": "Además, podemos realizar proyectos habitacionales con carácter social,"
+  },
+  {
+   "start": 100.26,
+   "end": 103.26,
+   "text": "puesto que al tener costos de producción más bajos,"
+  },
+  {
+   "start": 103.26,
+   "end": 105.26,
+   "text": "por utilizar materiales de desecho,"
+  },
+  {
+   "start": 105.26,
+   "end": 109.26,
+   "text": "el sueño de muchas personas en condición de pobreza de contar con casa propia,"
+  },
+  {
+   "start": 109.26,
+   "end": 111.26,
+   "text": "está cada vez más cerca."
+  },
+  {
+   "start": 111.26,
+   "end": 116.26,
+   "text": "Eco House, tu sueñas con tu casa, nosotros con cuidar el ambiente."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.3
+}

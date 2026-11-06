@@ -37,7 +37,7 @@ Reglas completas y decisiones D1–D7 en
    - `pautador` → `docs/`
    - `presupuestador` → `budget/` (salvo `bom.csv`, del director)
    - `investigador` → `research/` (solo `claims.json`, con fuente, URL y año)
-   - `grafista` → `assets/2d/`
+   - `grafista` → `assets/2d/` (lee la base de `plantillas/contadores/`)
    - `web` → `site/`
    - `voz` → `assets/voice/`
    - `editor` → `video/`
@@ -140,7 +140,7 @@ por carpeta compartida; el equipo lo decide al abrir el proyecto.
 | modeler | `blender/` + renders en `dashboard/assets/` | ficha, `.blend`, scripts, renders | tomas (acto, duración, cámara), `budget/bom.csv` (dimensiones y materiales), `env.json` (tier) | guionista, presupuestador (la ficha alimenta los precios), director (`rubric_item`) |
 | pautador | `docs/` | secciones del pautado, canvas | brief, claims, budget | presupuestador |
 | presupuestador | `budget/` (salvo `bom.csv`) | `budget/budget.json` | `budget/bom.csv`, fichas `blender/ficha_*.md`, claims, proveedores con URL | modeler, pautador, director |
-| grafista | `assets/2d/` | piezas 2D, íconos, diagramas | tomas con owner grafista, `brand/tokens.css` | guionista, web |
+| grafista | `assets/2d/` | piezas 2D, íconos, diagramas; MP4 de contadores del Acto IV con `scripts/render_contadores.py` (solo con presupuesto aprobado) | tomas con owner grafista, `brand/tokens.css`, `budget/budget.json` | guionista, web, presupuestador |
 | web | `site/` | prototipo y sitio demo | brief, `brand/tokens.css`, datos del pautado | grafista, guionista |
 | voz | `assets/voice/` | narración MP4/AAC ≤ 120 s | guion aprobado | guionista, editor |
 | editor | `video/` | video final, cortes, exportación | `script/shotlist.csv`, renders, narración | voz, modeler, guionista |

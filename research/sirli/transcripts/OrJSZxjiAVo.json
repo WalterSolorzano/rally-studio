@@ -1,0 +1,144 @@
+{
+ "video_id": "OrJSZxjiAVo",
+ "url": "https://www.youtube.com/watch?v=OrJSZxjiAVo",
+ "year": 2021,
+ "collection": "nacional",
+ "country": "CHILE",
+ "team": "INNOVARDILLA",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "nacional",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "INNOVARDILLA",
+   "challenge": "07 -CONSTRUCCIÓN DE ESPACIOS PÚBLICOS DESDE LA PERSPECTIVA DE GÉNERO"
+  },
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "INNOVARDILLA",
+   "challenge": "07 -CONSTRUCCIÓN DE ESPACIOS PÚBLICOS DESDE LA PERSPECTIVA DE GÉNERO"
+  }
+ ],
+ "fetched_at": "2026-11-06T22:09:48+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Los espacios públicos son una fuente de recreación, bienestar y calidad de vida. Reflejan el desarrollo de la ciudad y unen a las personas y generaciones. Podemos observar en los parques gente haciendo deporte, niños jugando, ancianos al aire libre, estudiantes leyendo y mascotas corriendo. Es el panorama que se vive en estos maravillosos lugares enriquecidos de naturaleza y experiencias. Lamentablemente esa no es la realidad que se vive todos los días. Se abusa estos espacios y se presenta la problemática de que pueden llegar a ser potenciales lugares de agresiones, dirigidos especialmente hacia nosotras, las mujeres que somos las más afectadas en esta área. Por esta razón hemos creado Safe Spot, que tiene como objetivo afrontar estas situaciones de forma innovadora, económica y a la vez sustentable. Este consiste en la implementación de semidomos construidos por una estructura de metal y plástico reciclado que cubre las bancas que se encuentran en los parques, garantizando una mayor seguridad al momento de compartir en estos espacios. Dentro de este se encontrará un casillero para poder almacenar objetos personales y un botón de emergencia, el cual se puede presionar en el caso de posibles amenazas. En este evento la iluminación del domo se incrementará dramáticamente para sustar a potenciales agresores y dar aviso a las personas alrededor que algo no está bien. Con Safe Spot las personas se podrán sentir seguras y protegidas, sin tener la preocupación de que les roben o agravan de alguna forma. Todo esto con la finalidad de que puedan disfrutar los espacios públicos de mejor manera y más libremente.",
+ "segments": [
+  {
+   "start": 10.9,
+   "end": 14.84,
+   "text": "Los espacios públicos son una fuente de recreación, bienestar y calidad de vida."
+  },
+  {
+   "start": 14.84,
+   "end": 18.58,
+   "text": "Reflejan el desarrollo de la ciudad y unen a las personas y generaciones."
+  },
+  {
+   "start": 18.58,
+   "end": 22.46,
+   "text": "Podemos observar en los parques gente haciendo deporte, niños jugando,"
+  },
+  {
+   "start": 22.46,
+   "end": 25.9,
+   "text": "ancianos al aire libre, estudiantes leyendo y mascotas corriendo."
+  },
+  {
+   "start": 25.9,
+   "end": 30.46,
+   "text": "Es el panorama que se vive en estos maravillosos lugares enriquecidos de naturaleza y experiencias."
+  },
+  {
+   "start": 30.46,
+   "end": 35.99,
+   "text": "Lamentablemente esa no es la realidad que se vive todos los días."
+  },
+  {
+   "start": 35.99,
+   "end": 41.23,
+   "text": "Se abusa estos espacios y se presenta la problemática de que pueden llegar a ser"
+  },
+  {
+   "start": 41.23,
+   "end": 45.75,
+   "text": "potenciales lugares de agresiones, dirigidos especialmente hacia nosotras,"
+  },
+  {
+   "start": 45.75,
+   "end": 49.59,
+   "text": "las mujeres que somos las más afectadas en esta área."
+  },
+  {
+   "start": 49.59,
+   "end": 56.39,
+   "text": "Por esta razón hemos creado Safe Spot, que tiene como objetivo afrontar estas"
+  },
+  {
+   "start": 56.39,
+   "end": 61.63,
+   "text": "situaciones de forma innovadora, económica y a la vez sustentable."
+  },
+  {
+   "start": 61.63,
+   "end": 66.61,
+   "text": "Este consiste en la implementación de semidomos construidos por una estructura"
+  },
+  {
+   "start": 66.61,
+   "end": 70.89,
+   "text": "de metal y plástico reciclado que cubre las bancas que se encuentran en los parques,"
+  },
+  {
+   "start": 70.89,
+   "end": 74.81,
+   "text": "garantizando una mayor seguridad al momento de compartir en estos espacios."
+  },
+  {
+   "start": 74.81,
+   "end": 79.53,
+   "text": "Dentro de este se encontrará un casillero para poder almacenar objetos personales y"
+  },
+  {
+   "start": 79.53,
+   "end": 83.41,
+   "text": "un botón de emergencia, el cual se puede presionar en el caso de posibles amenazas."
+  },
+  {
+   "start": 83.41,
+   "end": 87.93,
+   "text": "En este evento la iluminación del domo se incrementará dramáticamente para"
+  },
+  {
+   "start": 87.93,
+   "end": 92.05,
+   "text": "sustar a potenciales agresores y dar aviso a las personas alrededor que algo no está bien."
+  },
+  {
+   "start": 92.05,
+   "end": 98.01,
+   "text": "Con Safe Spot las personas se podrán sentir seguras y protegidas,"
+  },
+  {
+   "start": 98.01,
+   "end": 102.13,
+   "text": "sin tener la preocupación de que les roben o agravan de alguna forma."
+  },
+  {
+   "start": 102.13,
+   "end": 107.01,
+   "text": "Todo esto con la finalidad de que puedan disfrutar los espacios públicos de mejor"
+  },
+  {
+   "start": 107.01,
+   "end": 108.85,
+   "text": "manera y más libremente."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 111.0
+}

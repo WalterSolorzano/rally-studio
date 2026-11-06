@@ -1,0 +1,149 @@
+{
+ "video_id": "vBMQd09NCtI",
+ "url": "https://youtu.be/vBMQd09NCtI",
+ "year": 2025,
+ "collection": "nacional",
+ "country": "MÉXICO",
+ "team": "ERD 404",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "ERD 404",
+   "challenge": "05 - HUERTOS VERTICALES"
+  },
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "ERD 404",
+   "challenge": "05 - HUERTOS VERTICALES"
+  }
+ ],
+ "fetched_at": "2026-11-06T20:50:12+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "¿Has visto las ciudades antes y después del gran desarrollo urbano? Las áreas verdes se convierten en bosques de concreto con algún arbusto en los pabellones. ¿Qué podemos hacer al respecto? Te presento los huertos verticales. Son sistemas de cultivo que aprovechan el espacio en altura para sembrar plantas, frutas y verduras sin necesidad de tener un gran terreno. Tienen la capacidad de proveer aire fresco y alimenta a una familia e incluso a la comunidad. En ERD 404 proponemos un modelo de huerto vertical más automatizado y eficiente. Mediante captación pluvial, el agua de lluvia pasará por un filtro natural conformado por capas de carbón activado, grava y arena fina, capaz de limpiar el agua para su consumo por nuestro ecosistema vegetal. El agua filtrada se almacena en un tanque K, mediante una válvula inteligente que será activada por un microcontrolador, por ejemplo Arduino Uno, según la información recibida por una red de sensores. Esta red se conforma por tres sensores de humedad colocados estratégicamente para cubrir toda la área de interés. De igual forma, el contenedor tendrá un sensor de temperatura para hacerse orarse de que la temperatura sea adecuada para el riego de las plantas. Misma temperatura que será fácilmente monitoreable a través de un display de siete segmentos. Cuando llueve, las plantas son humedecidas con la lluvia, mientras el tanque se llena nuevamente. Cuando la humedad del huerto sea insuficiente, el microcontrolador permite el paso del agua hacia el sistema de suministro que, mediante un proceso de goteo como forma de riego, permite hidratar nuestro huerto en alguna época de sequía o similar. Este mismo funcionamiento aplica para todos los niveles del huerto y es escalable para diferentes alturas de huerto vertical. La implementación de esta invernadera automatizado, sin contar la inversión inicial por la vegetación, se estima en una suma de $250, algo menos de $5000 pesos mexicanos. Este sistema aprovecha los recursos naturales, dado que el agua obtenida es principalmente para utilizar en la precipitación, obteniendo un sistema autosustentable y que ayuda al medio ambiente al generar más áreas verdes en las zonas urbanas.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 4.0,
+   "text": "¿Has visto las ciudades antes y después del gran desarrollo urbano?"
+  },
+  {
+   "start": 4.0,
+   "end": 8.5,
+   "text": "Las áreas verdes se convierten en bosques de concreto con algún arbusto en los pabellones."
+  },
+  {
+   "start": 8.5,
+   "end": 10.0,
+   "text": "¿Qué podemos hacer al respecto?"
+  },
+  {
+   "start": 10.0,
+   "end": 12.5,
+   "text": "Te presento los huertos verticales."
+  },
+  {
+   "start": 12.5,
+   "end": 16.5,
+   "text": "Son sistemas de cultivo que aprovechan el espacio en altura para sembrar plantas,"
+  },
+  {
+   "start": 16.5,
+   "end": 19.5,
+   "text": "frutas y verduras sin necesidad de tener un gran terreno."
+  },
+  {
+   "start": 19.5,
+   "end": 24.0,
+   "text": "Tienen la capacidad de proveer aire fresco y alimenta a una familia e incluso a la comunidad."
+  },
+  {
+   "start": 24.0,
+   "end": 29.5,
+   "text": "En ERD 404 proponemos un modelo de huerto vertical más automatizado y eficiente."
+  },
+  {
+   "start": 29.5,
+   "end": 37.0,
+   "text": "Mediante captación pluvial, el agua de lluvia pasará por un filtro natural conformado por capas de carbón activado, grava y arena fina,"
+  },
+  {
+   "start": 37.0,
+   "end": 41.0,
+   "text": "capaz de limpiar el agua para su consumo por nuestro ecosistema vegetal."
+  },
+  {
+   "start": 41.0,
+   "end": 47.5,
+   "text": "El agua filtrada se almacena en un tanque K, mediante una válvula inteligente que será activada por un microcontrolador,"
+  },
+  {
+   "start": 47.5,
+   "end": 52.0,
+   "text": "por ejemplo Arduino Uno, según la información recibida por una red de sensores."
+  },
+  {
+   "start": 52.0,
+   "end": 58.0,
+   "text": "Esta red se conforma por tres sensores de humedad colocados estratégicamente para cubrir toda la área de interés."
+  },
+  {
+   "start": 58.5,
+   "end": 65.5,
+   "text": "De igual forma, el contenedor tendrá un sensor de temperatura para hacerse orarse de que la temperatura sea adecuada para el riego de las plantas."
+  },
+  {
+   "start": 65.5,
+   "end": 70.5,
+   "text": "Misma temperatura que será fácilmente monitoreable a través de un display de siete segmentos."
+  },
+  {
+   "start": 70.5,
+   "end": 75.5,
+   "text": "Cuando llueve, las plantas son humedecidas con la lluvia, mientras el tanque se llena nuevamente."
+  },
+  {
+   "start": 75.5,
+   "end": 82.5,
+   "text": "Cuando la humedad del huerto sea insuficiente, el microcontrolador permite el paso del agua hacia el sistema de suministro que,"
+  },
+  {
+   "start": 83.0,
+   "end": 89.0,
+   "text": "mediante un proceso de goteo como forma de riego, permite hidratar nuestro huerto en alguna época de sequía o similar."
+  },
+  {
+   "start": 89.0,
+   "end": 96.0,
+   "text": "Este mismo funcionamiento aplica para todos los niveles del huerto y es escalable para diferentes alturas de huerto vertical."
+  },
+  {
+   "start": 96.0,
+   "end": 101.0,
+   "text": "La implementación de esta invernadera automatizado, sin contar la inversión inicial por la vegetación,"
+  },
+  {
+   "start": 101.0,
+   "end": 107.0,
+   "text": "se estima en una suma de $250, algo menos de $5000 pesos mexicanos."
+  },
+  {
+   "start": 107.5,
+   "end": 112.5,
+   "text": "Este sistema aprovecha los recursos naturales, dado que el agua obtenida es principalmente para utilizar en la precipitación,"
+  },
+  {
+   "start": 112.5,
+   "end": 119.5,
+   "text": "obteniendo un sistema autosustentable y que ayuda al medio ambiente al generar más áreas verdes en las zonas urbanas."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.4
+}

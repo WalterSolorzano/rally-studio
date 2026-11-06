@@ -1,0 +1,114 @@
+{
+ "video_id": "96Kh0uQ4Y58",
+ "url": "https://youtu.be/96Kh0uQ4Y58",
+ "year": 2023,
+ "collection": "nacional",
+ "country": "BRASIL",
+ "team": "TELECONNERS",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "nacional",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "TELECONNERS",
+   "challenge": "02 - SIEMPRE EN CONTACTO"
+  },
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "TELECONNERS",
+   "challenge": "02 - SIEMPRE EN CONTACTO"
+  }
+ ],
+ "fetched_at": "2026-11-06T21:20:28+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Imaginemos una área de turismo de aventura que, a pesar de sus hermosas y emocionantes atracciones, enfrenta riesgos constantes de desastres naturales, como inundaciones, deslizamientos de tierra y terremotos. Ahora, imagina que esta región tiene un sistema innovador de monitoramiento y alerta, atendiendo a criterios que viabilizan un enlace de comunicación en tiempo real, además de utilizarse energía limpia y renovable en su funcionamiento, pronto para proteger vidas y propiedades en caso de emergencia. Nuestra jornada comienza con la instalación de tres repitidores de celular con alimentación fotovoltaica, que, por su vez, alimentan un banco de baterías que garantice el funcionamiento de los repitidores por no menos de 12 horas, sin necesidad de la irradia de sol, propiamente dita, instalados en lugares estratégicos dentro de la área de turismo de aventura. Estos repitidores son robustos y resistentes a condiciones extremas, garantiendo que la comunicación permanece activa, independientemente de las circunstancias. La próxima etapa envuelve la creación de una red de sensores de geolocalización en puntos cruciados de la región. Estos sensores monitoran constantemente los movimientos de tierra, niveles de agua, actividad sísmica y las condiciones climáticas locales. Los datos que hemos recogido son esenciales para la detección precoce de cualquier amenaza natural eminente. Con la red de sensores en funcionamiento, implementamos un sistema de alerta automatizado que integra estos datos con los repitidores de celular. Cuando los sensores detectan cambios significativos en las condiciones, como un rápido aumento del nivel de agua debido a las lluvias intensas, el sistema emite alertas instantáneas. Para envolver a la comunidad local y a los visitantes, desarrollamos un aplicativo móvel. Este aplicativo no solo ofrece alertas en tiempo real directamente en sus dispositivos móveis, como rutas de evacuación, medidas de seguridad y actualizaciones meteorológicas. Además, este aplicativo puede utilizarse del módulo GPS que los smartphones tienen embarcado en su sistema operacional, posibilitando que una central de monitoramiento obtenga en tiempo real la localización de los usuarios dentro de la área monitorada, siendo posible así tomar medidas necesarias para evacuar y controlar las condiciones.",
+ "segments": [
+  {
+   "start": 1.07,
+   "end": 13.07,
+   "text": "Imaginemos una área de turismo de aventura que, a pesar de sus hermosas y emocionantes atracciones, enfrenta riesgos constantes de desastres naturales, como inundaciones, deslizamientos de tierra y terremotos."
+  },
+  {
+   "start": 13.07,
+   "end": 22.07,
+   "text": "Ahora, imagina que esta región tiene un sistema innovador de monitoramiento y alerta, atendiendo a criterios que viabilizan un enlace de comunicación en tiempo real,"
+  },
+  {
+   "start": 22.07,
+   "end": 29.07,
+   "text": "además de utilizarse energía limpia y renovable en su funcionamiento, pronto para proteger vidas y propiedades en caso de emergencia."
+  },
+  {
+   "start": 29.07,
+   "end": 40.07,
+   "text": "Nuestra jornada comienza con la instalación de tres repitidores de celular con alimentación fotovoltaica, que, por su vez, alimentan un banco de baterías que garantice el funcionamiento de los repitidores por no menos de 12 horas,"
+  },
+  {
+   "start": 40.07,
+   "end": 48.07,
+   "text": "sin necesidad de la irradia de sol, propiamente dita, instalados en lugares estratégicos dentro de la área de turismo de aventura."
+  },
+  {
+   "start": 48.07,
+   "end": 56.07,
+   "text": "Estos repitidores son robustos y resistentes a condiciones extremas, garantiendo que la comunicación permanece activa, independientemente de las circunstancias."
+  },
+  {
+   "start": 56.07,
+   "end": 62.07,
+   "text": "La próxima etapa envuelve la creación de una red de sensores de geolocalización en puntos cruciados de la región."
+  },
+  {
+   "start": 62.07,
+   "end": 69.07,
+   "text": "Estos sensores monitoran constantemente los movimientos de tierra, niveles de agua, actividad sísmica y las condiciones climáticas locales."
+  },
+  {
+   "start": 69.07,
+   "end": 74.07,
+   "text": "Los datos que hemos recogido son esenciales para la detección precoce de cualquier amenaza natural eminente."
+  },
+  {
+   "start": 74.07,
+   "end": 80.07,
+   "text": "Con la red de sensores en funcionamiento, implementamos un sistema de alerta automatizado que integra estos datos con los repitidores de celular."
+  },
+  {
+   "start": 81.07,
+   "end": 89.07,
+   "text": "Cuando los sensores detectan cambios significativos en las condiciones, como un rápido aumento del nivel de agua debido a las lluvias intensas, el sistema emite alertas instantáneas."
+  },
+  {
+   "start": 89.07,
+   "end": 94.07,
+   "text": "Para envolver a la comunidad local y a los visitantes, desarrollamos un aplicativo móvel."
+  },
+  {
+   "start": 94.07,
+   "end": 103.07,
+   "text": "Este aplicativo no solo ofrece alertas en tiempo real directamente en sus dispositivos móveis, como rutas de evacuación, medidas de seguridad y actualizaciones meteorológicas."
+  },
+  {
+   "start": 103.07,
+   "end": 109.07,
+   "text": "Además, este aplicativo puede utilizarse del módulo GPS que los smartphones tienen embarcado en su sistema operacional,"
+  },
+  {
+   "start": 109.07,
+   "end": 115.07,
+   "text": "posibilitando que una central de monitoramiento obtenga en tiempo real la localización de los usuarios dentro de la área monitorada,"
+  },
+  {
+   "start": 115.07,
+   "end": 120.07,
+   "text": "siendo posible así tomar medidas necesarias para evacuar y controlar las condiciones."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.8
+}

@@ -1,0 +1,154 @@
+{
+ "video_id": "ukVpW8JrZUA",
+ "url": "https://youtu.be/ukVpW8JrZUA",
+ "year": 2024,
+ "collection": "nacional",
+ "country": "MÉXICO",
+ "team": "ALIANZA CREACTIVA",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "nacional",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "ALIANZA CREACTIVA",
+   "challenge": "01 - MICROPRESAS O MICROEMBALSES"
+  },
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "ALIANZA CREACTIVA",
+   "challenge": "01 - MICROPRESAS O MICROEMBALSES"
+  }
+ ],
+ "fetched_at": "2026-11-06T21:10:58+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "El agua es vida, pero en muchas regiones del mundo acceder a ella es un reto. Hoy les presentamos una solución inspirada a la naturaleza misma. Un proyecto innovador basado en el escarabajo del desierto de Namibia, capaz de captar humedad y transformar el entorno de una manera autosuficiente. Este sistema de captación se basa en la estructura de este pequeño insecto que sobrevive en condiciones extremas. Utilizando paneles con superficies hidrofílicas e hidrofóbicas, recolectamos hasta las gotas más pequeñas de niebla o lluvia. El agua se almacena en depósitos inteligentes de materiales autosellantes y con memoria de forma. Estos depósitos se adaptan al volumen del agua y se autorreparan si hay alguna fisura, asegurando cero perdidas. ¿Y cómo distribuimos el agua de forma eficiente? Inspirándose en las raíces de las plantas utilizamos fibras capilares que detecten la sequedad del suelo y liberan agua solo cuando es necesario. Para evitar la evaporación y la proligeración de mosquitos, hemos diseñado superficies inspiradas en las hojas de loto. Estas superficies repelen el agua y evitan la formación de charcos donde los mosquitos podrían reproducirse. Este proyecto no solo garantiza un uso más eficiente del agua, sino que también promueve un menor impacto ambiental. Sostenibilidad, eficiencia y naturaleza trabajando juntas para asegurar el futuro del agua en comunidades vulnerables. El agua puede ser un reto, pero con la naturaleza como aliada, no hay límites para lo que podemos lograr.",
+ "segments": [
+  {
+   "start": 0.21,
+   "end": 4.77,
+   "text": "El agua es vida, pero en muchas regiones del mundo acceder a ella es un reto."
+  },
+  {
+   "start": 4.77,
+   "end": 8.21,
+   "text": "Hoy les presentamos una solución inspirada a la naturaleza misma."
+  },
+  {
+   "start": 8.21,
+   "end": 12.27,
+   "text": "Un proyecto innovador basado en el escarabajo del desierto de Namibia,"
+  },
+  {
+   "start": 12.27,
+   "end": 16.81,
+   "text": "capaz de captar humedad y transformar el entorno de una manera autosuficiente."
+  },
+  {
+   "start": 16.81,
+   "end": 21.47,
+   "text": "Este sistema de captación se basa en la estructura de este pequeño insecto"
+  },
+  {
+   "start": 21.47,
+   "end": 23.57,
+   "text": "que sobrevive en condiciones extremas."
+  },
+  {
+   "start": 23.57,
+   "end": 27.01,
+   "text": "Utilizando paneles con superficies hidrofílicas e hidrofóbicas,"
+  },
+  {
+   "start": 27.17,
+   "end": 30.37,
+   "text": "recolectamos hasta las gotas más pequeñas de niebla o lluvia."
+  },
+  {
+   "start": 30.37,
+   "end": 37.86,
+   "text": "El agua se almacena en depósitos inteligentes de materiales autosellantes y con memoria de forma."
+  },
+  {
+   "start": 37.86,
+   "end": 42.74,
+   "text": "Estos depósitos se adaptan al volumen del agua y se autorreparan si hay alguna fisura,"
+  },
+  {
+   "start": 42.74,
+   "end": 44.46,
+   "text": "asegurando cero perdidas."
+  },
+  {
+   "start": 44.46,
+   "end": 48.02,
+   "text": "¿Y cómo distribuimos el agua de forma eficiente?"
+  },
+  {
+   "start": 48.02,
+   "end": 52.5,
+   "text": "Inspirándose en las raíces de las plantas utilizamos fibras capilares"
+  },
+  {
+   "start": 52.5,
+   "end": 56.34,
+   "text": "que detecten la sequedad del suelo y liberan agua solo cuando es necesario."
+  },
+  {
+   "start": 57.1,
+   "end": 60.18,
+   "text": "Para evitar la evaporación y la proligeración de mosquitos,"
+  },
+  {
+   "start": 60.18,
+   "end": 63.14,
+   "text": "hemos diseñado superficies inspiradas en las hojas de loto."
+  },
+  {
+   "start": 63.14,
+   "end": 67.26,
+   "text": "Estas superficies repelen el agua y evitan la formación de charcos"
+  },
+  {
+   "start": 67.26,
+   "end": 69.46,
+   "text": "donde los mosquitos podrían reproducirse."
+  },
+  {
+   "start": 69.46,
+   "end": 73.58,
+   "text": "Este proyecto no solo garantiza un uso más eficiente del agua,"
+  },
+  {
+   "start": 73.58,
+   "end": 76.26,
+   "text": "sino que también promueve un menor impacto ambiental."
+  },
+  {
+   "start": 76.26,
+   "end": 80.74,
+   "text": "Sostenibilidad, eficiencia y naturaleza trabajando juntas"
+  },
+  {
+   "start": 80.74,
+   "end": 84.02,
+   "text": "para asegurar el futuro del agua en comunidades vulnerables."
+  },
+  {
+   "start": 84.22,
+   "end": 87.94,
+   "text": "El agua puede ser un reto, pero con la naturaleza como aliada,"
+  },
+  {
+   "start": 87.94,
+   "end": 90.26,
+   "text": "no hay límites para lo que podemos lograr."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 91.5
+}

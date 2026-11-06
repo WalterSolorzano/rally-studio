@@ -1,0 +1,194 @@
+{
+ "video_id": "EZNHhYDIixk",
+ "url": "https://youtu.be/EZNHhYDIixk",
+ "year": 2026,
+ "collection": "nacional",
+ "country": "COLOMBIA",
+ "team": "DREAM TEAM",
+ "place_label": "TERCER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "nacional",
+   "place_label": "TERCER LUGAR",
+   "team": "DREAM TEAM",
+   "challenge": "04 - MANEJO ECOLÓGICO DE RESIDUOS DE PODA Y BIOMASA VEGETAL URBANA"
+  },
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "DREAM TEAM",
+   "challenge": "04 - MANEJO ECOLÓGICO DE RESIDUOS DE PODA Y BIOMASA VEGETAL URBANA"
+  }
+ ],
+ "fetched_at": "2026-11-06T20:19:17+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Mientras las ciudades entierran toneladas de poda que terminan contaminando el suelo, a pocos kilómetros miles de familias campesinas ven perder sus cosechas enteras por falta de agua y sequías extremas. La respuesta no era esperar la lluvia, estaba en rescatar el 80% de agua y celulosa que la ciudad desecha. Así creamos a Hydrocore, un biohidrogel en polvo nacido de la ciencia circular para devolverle la esperanza al productor agrícola. Un solo gramo retiene al instante 150 veces su peso en agua, convirtiéndose en un escudo hídrico para las raíces. Procesamos 600 toneladas de pasto al año mediante una biorefinería modular limpia. El prensado en frío extrae el 52% como fertilizante líquido natural sin desperdiciar una sola gota. En reactores de grado industrial reticulamos la celulosa con ácido cítrico, química verde, segura y libre de derivados del petróleo. El material se deshidrata a 80 grados y se micropulveriza para facilitar una absorción homogénea en cualquier terreno. El resultado son sacos de 10 kilos prácticos, económicos y listos para ser aplicados por cualquier agricultor. En la tierra, el campesino lo aplica directamente en la raíz, sin maquinaria compleja ni costos adicionales de mano de obra. El gel hidrata la planta por demanda natural, reduciendo el riego un 50% y asegurando la cosecha aún en verano. Cero microplásticos en el alimento, Hydrocore se biodegrada en 8 meses, enriqueciendo el suelo para las futuras generaciones. Evitamos 660 toneladas de dióxido de carbono y cuidamos el agua subterránea de nuestras comunidades. Con un capex de 118 mil dólares y costo de 2.45, lo vendemos a 5.50 el kilo, accesible para el campo y con una rentabilidad del 46%. Hydrocore, ingeniería con corazón que transforma los residuos de la ciudad en abundancia para quienes alimentan a nuestra región.",
+ "segments": [
+  {
+   "start": 0.34,
+   "end": 4.84,
+   "text": "Mientras las ciudades entierran toneladas de poda que terminan contaminando el suelo,"
+  },
+  {
+   "start": 4.84,
+   "end": 9.34,
+   "text": "a pocos kilómetros miles de familias campesinas ven perder sus cosechas enteras"
+  },
+  {
+   "start": 9.34,
+   "end": 11.84,
+   "text": "por falta de agua y sequías extremas."
+  },
+  {
+   "start": 11.84,
+   "end": 13.84,
+   "text": "La respuesta no era esperar la lluvia,"
+  },
+  {
+   "start": 13.84,
+   "end": 17.84,
+   "text": "estaba en rescatar el 80% de agua y celulosa que la ciudad desecha."
+  },
+  {
+   "start": 19.81,
+   "end": 24.31,
+   "text": "Así creamos a Hydrocore, un biohidrogel en polvo nacido de la ciencia circular"
+  },
+  {
+   "start": 24.31,
+   "end": 26.81,
+   "text": "para devolverle la esperanza al productor agrícola."
+  },
+  {
+   "start": 26.81,
+   "end": 30.81,
+   "text": "Un solo gramo retiene al instante 150 veces su peso en agua,"
+  },
+  {
+   "start": 30.81,
+   "end": 33.81,
+   "text": "convirtiéndose en un escudo hídrico para las raíces."
+  },
+  {
+   "start": 38.15,
+   "end": 43.65,
+   "text": "Procesamos 600 toneladas de pasto al año mediante una biorefinería modular limpia."
+  },
+  {
+   "start": 43.65,
+   "end": 48.65,
+   "text": "El prensado en frío extrae el 52% como fertilizante líquido natural"
+  },
+  {
+   "start": 48.65,
+   "end": 50.65,
+   "text": "sin desperdiciar una sola gota."
+  },
+  {
+   "start": 50.65,
+   "end": 54.65,
+   "text": "En reactores de grado industrial reticulamos la celulosa con ácido cítrico,"
+  },
+  {
+   "start": 54.65,
+   "end": 57.65,
+   "text": "química verde, segura y libre de derivados del petróleo."
+  },
+  {
+   "start": 57.65,
+   "end": 60.15,
+   "text": "El material se deshidrata a 80 grados"
+  },
+  {
+   "start": 60.15,
+   "end": 64.15,
+   "text": "y se micropulveriza para facilitar una absorción homogénea en cualquier terreno."
+  },
+  {
+   "start": 64.15,
+   "end": 67.65,
+   "text": "El resultado son sacos de 10 kilos prácticos, económicos"
+  },
+  {
+   "start": 67.65,
+   "end": 70.65,
+   "text": "y listos para ser aplicados por cualquier agricultor."
+  },
+  {
+   "start": 71.15,
+   "end": 77.53,
+   "text": "En la tierra, el campesino lo aplica directamente en la raíz,"
+  },
+  {
+   "start": 77.53,
+   "end": 80.53,
+   "text": "sin maquinaria compleja ni costos adicionales de mano de obra."
+  },
+  {
+   "start": 80.53,
+   "end": 83.03,
+   "text": "El gel hidrata la planta por demanda natural,"
+  },
+  {
+   "start": 83.03,
+   "end": 88.03,
+   "text": "reduciendo el riego un 50% y asegurando la cosecha aún en verano."
+  },
+  {
+   "start": 89.53,
+   "end": 93.03,
+   "text": "Cero microplásticos en el alimento, Hydrocore se biodegrada en 8 meses,"
+  },
+  {
+   "start": 93.03,
+   "end": 96.03,
+   "text": "enriqueciendo el suelo para las futuras generaciones."
+  },
+  {
+   "start": 96.03,
+   "end": 100.03,
+   "text": "Evitamos 660 toneladas de dióxido de carbono"
+  },
+  {
+   "start": 100.03,
+   "end": 102.53,
+   "text": "y cuidamos el agua subterránea de nuestras comunidades."
+  },
+  {
+   "start": 102.53,
+   "end": 107.03,
+   "text": "Con un capex de 118 mil dólares y costo de 2.45,"
+  },
+  {
+   "start": 107.03,
+   "end": 109.03,
+   "text": "lo vendemos a 5.50 el kilo,"
+  },
+  {
+   "start": 109.03,
+   "end": 113.03,
+   "text": "accesible para el campo y con una rentabilidad del 46%."
+  },
+  {
+   "start": 113.03,
+   "end": 115.03,
+   "text": "Hydrocore, ingeniería con corazón"
+  },
+  {
+   "start": 115.03,
+   "end": 117.03,
+   "text": "que transforma los residuos de la ciudad"
+  },
+  {
+   "start": 117.03,
+   "end": 120.03,
+   "text": "en abundancia para quienes alimentan a nuestra región."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.9
+}

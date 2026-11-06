@@ -4,27 +4,47 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Contadores del Acto IV</title>
+<!-- Tokens del proyecto/grupo: brand/tokens.css lo escribe gen_palette.py -->
+<link rel="stylesheet" href="../../brand/tokens.css">
 <style>
   :root {
-    --bg: #101311;
-    --surface: #171b18;
-    --text: #f2f0ea;
-    --muted: #9aa39b;
-    --accent: #c8a24a;
-    --line: #2a302b;
+    --bg: var(--color-bg, #101311);
+    --text: var(--color-text, #f2f0ea);
+    --accent: var(--color-accent, #c8a24a);
+    --surface: color-mix(in srgb, var(--bg), var(--text) 7%);
+    --muted: color-mix(in srgb, var(--text), var(--bg) 42%);
+    --line: color-mix(in srgb, var(--bg), var(--text) 18%);
   }
   * { box-sizing: border-box; }
   body {
     margin: 0;
     min-height: 100vh;
     display: grid;
-    place-items: center;
+    grid-template-rows: auto 1fr;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    padding: clamp(1.5rem, 4vw, 3rem);
     background: var(--bg);
     color: var(--text);
     font-family: "Inter", "Source Sans 3", system-ui, sans-serif;
   }
+  .head { display: flex; align-items: baseline; gap: 1rem; }
+  .head__act {
+    font-size: .8rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: .25rem;
+  }
+  .head__title {
+    margin: 0;
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    font-weight: 550;
+    letter-spacing: -.01em;
+  }
+  .wrap { display: grid; place-items: center; }
   .board {
-    width: min(1100px, 92vw);
+    width: min(1400px, 100%);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1px;
@@ -60,22 +80,32 @@
     border-top: 1px solid var(--line);
     padding-top: .75rem;
   }
+  .metric__source[data-simulated="true"]::before {
+    content: "[SIMULADO] ";
+    color: var(--accent);
+  }
   @media (max-width: 720px) {
     .board { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
+<header class="head">
+  <span class="head__act" id="act">Acto IV</span>
+  <h1 class="head__title" id="title"></h1>
+</header>
+
+<div class="wrap">
 <main class="board" id="board">
   <article class="metric">
     <div class="metric__value" data-counter data-target="1250" data-suffix=" L">0 L</div>
     <div class="metric__label">Agua recuperada por familia al mes</div>
-    <div class="metric__source">[SIMULADO] Reemplazar con el claim y la fuente</div>
+    <div class="metric__source" data-simulated="true">Reemplazar con el claim y la fuente</div>
   </article>
   <article class="metric">
     <div class="metric__value" data-counter data-target="64" data-suffix="%">0%</div>
     <div class="metric__label">Demanda cubierta en el piloto</div>
-    <div class="metric__source">[SIMULADO] Reemplazar con el claim y la fuente</div>
+    <div class="metric__source" data-simulated="true">Reemplazar con el claim y la fuente</div>
   </article>
   <article class="metric">
     <div class="metric__value" data-counter data-target="4850" data-prefix="$" data-decimals="0">$0</div>
@@ -83,20 +113,70 @@
     <div class="metric__source">Debe coincidir con budget/budget.json</div>
   </article>
 </main>
+</div>
 
 <!-- GSAP local si existe; si no, CDN. El fallback deja los numeros finales. -->
 <script src="../gsap.min.js" onerror="this.remove()"></script>
 <script>
 (function () {
+  var board = document.getElementById('board');
+
+  function texto(nodo, valor) {
+    if (valor !== undefined && valor !== null && valor !== '') nodo.textContent = valor;
+  }
+
+  function tarjeta(m) {
+    var art = document.createElement('article');
+    art.className = 'metric';
+
+    var valor = document.createElement('div');
+    valor.className = 'metric__value';
+    valor.setAttribute('data-counter', '');
+    valor.setAttribute('data-target', String(Number(m.value) || 0));
+    if (m.prefix) valor.setAttribute('data-prefix', m.prefix);
+    if (m.suffix) valor.setAttribute('data-suffix', m.suffix);
+    if (m.decimals) valor.setAttribute('data-decimals', String(m.decimals));
+    valor.textContent = (m.prefix || '') + '0' + (m.suffix || '');
+
+    var label = document.createElement('div');
+    label.className = 'metric__label';
+    texto(label, m.label);
+
+    var fuente = document.createElement('div');
+    fuente.className = 'metric__source';
+    if (m.simulated) fuente.setAttribute('data-simulated', 'true');
+    texto(fuente, m.source);
+
+    art.appendChild(valor);
+    art.appendChild(label);
+    art.appendChild(fuente);
+    return art;
+  }
+
+  // Datos del render (render_contadores.py) o de la ventana:
+  //   index.html?data=<JSON codificado>
+  var datos = null;
+  try {
+    var crudo = new URLSearchParams(location.search).get('data');
+    if (crudo) datos = JSON.parse(crudo);
+  } catch (e) { datos = null; }
+
+  if (datos && Array.isArray(datos.metrics) && datos.metrics.length) {
+    board.textContent = '';
+    datos.metrics.forEach(function (m) { board.appendChild(tarjeta(m)); });
+    texto(document.getElementById('act'), datos.act);
+    texto(document.getElementById('title'), datos.title);
+  }
+
   var nodes = Array.prototype.slice.call(document.querySelectorAll('[data-counter]'));
 
   function formato(valor, el) {
     var decimales = parseInt(el.dataset.decimals || '0', 10);
-    var texto = valor.toLocaleString('es-NI', {
+    var textoNum = valor.toLocaleString('es-NI', {
       minimumFractionDigits: decimales,
       maximumFractionDigits: decimales
     });
-    return (el.dataset.prefix || '') + texto + (el.dataset.suffix || '');
+    return (el.dataset.prefix || '') + textoNum + (el.dataset.suffix || '');
   }
 
   function escribir(el, valor) {

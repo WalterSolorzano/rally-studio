@@ -1,0 +1,94 @@
+{
+ "video_id": "dOOsFxm7JFs",
+ "url": "https://www.youtube.com/watch?v=dOOsFxm7JFs",
+ "year": 2022,
+ "collection": "nacional",
+ "country": "MÉXICO",
+ "team": "10/10 - UANL - EQUIPO 10",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "10/10 - UANL - EQUIPO 10",
+   "challenge": "01 - INCLUSIÓN LABORAL DE PERSONAS DEL ESPECTRO AUTISTA"
+  },
+  {
+   "year": 2022,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "10/10 - UANL - EQUIPO 10",
+   "challenge": "01 - INCLUSIÓN LABORAL DE PERSONAS DEL ESPECTRO AUTISTA"
+  }
+ ],
+ "fetched_at": "2026-11-06T21:54:33+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "¿Sabías que aproximadamente 6.4 millones de personas son diagnosticadas con trastornos de espectro autista en Latinoamérica? El TEA es un grupo de afecciones diversas que se caracterizan por algún grado de dificultad en la interacción social y la comunicación. Esto provoca obstáculos de inclusión de personas adultas que desean desarrollarse como tales, fundamentalmente por la desinformación de la población en general. La mayoría de las organizaciones existentes se enfocan en la inclusión de niños con TEA. Y no existe en Latinoamérica aquellas que le den continuidad a esta inclusión en su vida adulta, tales como la posibilidad de un trabajo que les brinde dignidad e independencia. Nuestro equipo, 10 de 10, propone ILTEA, una organización que actúe de intermediaria entre las personas con TEA y las empresas de la siguiente manera. Evaluar aptitudes motoras y cognitivas aplicando batería de pruebas y test de vendor, con el objetivo de determinar en qué ámbitos y actividades la persona puede explotar al máximo sus capacidades. Inclusión dentro del ambiente laboral, con la ayuda de profesionales ergonómicos rediseñando el lugar físico de trabajo con objeto de optimizar el bienestar de la persona a ocuparlo. Capacitación a la empresa en general, tanto directivos como compañeros de trabajo, para brindarles conocimientos sobre el TEA y las maneras de relacionarse con las personas que presentan dicha condición. Todas estas prácticas se enfocarán en empresas con responsabilidad social, que aprovechen estos talentos y sirvan de ejemplo para que otras empresas tomen la iniciativa de explotar el potencial de estas personas. El impacto que el TEA busca generar en lo social es ayudar a las personas dentro del espectro a que logren encontrar trabajos dignos y plenos, en los cuales se sientan cómodos y desarrollen actividades como normalmente lo haría cualquier persona de la sociedad. Al mismo tiempo de cooperar con las empresas para la inclusión de estas personas y generar concientización sobre este trastorno que por tanto tiempo se excluyó y pide a grito su inclusión.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 7.2,
+   "text": "¿Sabías que aproximadamente 6.4 millones de personas son diagnosticadas con trastornos de espectro autista en Latinoamérica?"
+  },
+  {
+   "start": 7.2,
+   "end": 14.96,
+   "text": "El TEA es un grupo de afecciones diversas que se caracterizan por algún grado de dificultad en la interacción social y la comunicación."
+  },
+  {
+   "start": 14.96,
+   "end": 23.96,
+   "text": "Esto provoca obstáculos de inclusión de personas adultas que desean desarrollarse como tales, fundamentalmente por la desinformación de la población en general."
+  },
+  {
+   "start": 24.04,
+   "end": 29.04,
+   "text": "La mayoría de las organizaciones existentes se enfocan en la inclusión de niños con TEA."
+  },
+  {
+   "start": 29.04,
+   "end": 39.24,
+   "text": "Y no existe en Latinoamérica aquellas que le den continuidad a esta inclusión en su vida adulta, tales como la posibilidad de un trabajo que les brinde dignidad e independencia."
+  },
+  {
+   "start": 39.24,
+   "end": 49.12,
+   "text": "Nuestro equipo, 10 de 10, propone ILTEA, una organización que actúe de intermediaria entre las personas con TEA y las empresas de la siguiente manera."
+  },
+  {
+   "start": 49.2,
+   "end": 60.52,
+   "text": "Evaluar aptitudes motoras y cognitivas aplicando batería de pruebas y test de vendor, con el objetivo de determinar en qué ámbitos y actividades la persona puede explotar al máximo sus capacidades."
+  },
+  {
+   "start": 60.52,
+   "end": 71.16,
+   "text": "Inclusión dentro del ambiente laboral, con la ayuda de profesionales ergonómicos rediseñando el lugar físico de trabajo con objeto de optimizar el bienestar de la persona a ocuparlo."
+  },
+  {
+   "start": 71.16,
+   "end": 81.72,
+   "text": "Capacitación a la empresa en general, tanto directivos como compañeros de trabajo, para brindarles conocimientos sobre el TEA y las maneras de relacionarse con las personas que presentan dicha condición."
+  },
+  {
+   "start": 81.72,
+   "end": 94.48,
+   "text": "Todas estas prácticas se enfocarán en empresas con responsabilidad social, que aprovechen estos talentos y sirvan de ejemplo para que otras empresas tomen la iniciativa de explotar el potencial de estas personas."
+  },
+  {
+   "start": 94.52,
+   "end": 108.84,
+   "text": "El impacto que el TEA busca generar en lo social es ayudar a las personas dentro del espectro a que logren encontrar trabajos dignos y plenos, en los cuales se sientan cómodos y desarrollen actividades como normalmente lo haría cualquier persona de la sociedad."
+  },
+  {
+   "start": 108.84,
+   "end": 119.8,
+   "text": "Al mismo tiempo de cooperar con las empresas para la inclusión de estas personas y generar concientización sobre este trastorno que por tanto tiempo se excluyó y pide a grito su inclusión."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.9
+}

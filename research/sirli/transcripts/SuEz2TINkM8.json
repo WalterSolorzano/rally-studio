@@ -1,0 +1,104 @@
+{
+ "video_id": "SuEz2TINkM8",
+ "url": "https://youtu.be/SuEz2TINkM8",
+ "year": 2023,
+ "collection": "nacional",
+ "country": "COSTA RICA",
+ "team": "ECO-SYSTEMS EXPEDITION",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "ECO-SYSTEMS EXPEDITION",
+   "challenge": "06 - REVALORIZACIÓN RESIDUOS"
+  },
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "ECO-SYSTEMS EXPEDITION",
+   "challenge": "06 - REVALORIZACIÓN RESIDUOS"
+  }
+ ],
+ "fetched_at": "2026-11-06T21:24:20+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "¿Sabías que la producción y procesamiento de cítricos, como las naranjas y los limones, generan enormes cantidades de residuos? Este es un problema que afecta a nuestra industria alimentaria y al medio ambiente. La gestión ineficiente de estos residuos cítricos a menudo resulta en su acumulación en vertederos, causando contaminación y emisiones de gases de efecto invernadero. Pero tenemos una solución. Proponemos convertir estos residuos en un repelente natural. ¿Por qué? Porque este enfoque inteligente y sostenible resuelve dos problemas a la vez, el desperdicio de recursos y la necesidad de alternativas naturales. Nuestro repelente natural a base de cítricos puede utilizarse en jardines, cultivos e incluso en tu hogar. Es seguro, efectivo y amigable con el medio ambiente. Además, esta solución también beneficia a nuestras comunidades agrícolas, protegiendo sus cultivos de manera natural y aumentando la producción. Así que únete a nosotros en esta iniciativa para transformar residuos en recursos valiosos. Juntos, podemos crear un mundo más sostenible y saludable. Hagamos la diferencia.",
+ "segments": [
+  {
+   "start": 5.01,
+   "end": 10.47,
+   "text": "¿Sabías que la producción y procesamiento de cítricos, como las naranjas y los limones,"
+  },
+  {
+   "start": 10.47,
+   "end": 16.67,
+   "text": "generan enormes cantidades de residuos? Este es un problema que afecta a nuestra"
+  },
+  {
+   "start": 16.67,
+   "end": 22.31,
+   "text": "industria alimentaria y al medio ambiente. La gestión ineficiente de estos residuos"
+  },
+  {
+   "start": 22.31,
+   "end": 25.63,
+   "text": "cítricos a menudo resulta en su acumulación en vertederos,"
+  },
+  {
+   "start": 25.63,
+   "end": 29.75,
+   "text": "causando contaminación y emisiones de gases de efecto invernadero."
+  },
+  {
+   "start": 30.41,
+   "end": 36.77,
+   "text": "Pero tenemos una solución. Proponemos convertir estos residuos en un repelente natural."
+  },
+  {
+   "start": 36.77,
+   "end": 43.69,
+   "text": "¿Por qué? Porque este enfoque inteligente y sostenible resuelve dos problemas a la vez,"
+  },
+  {
+   "start": 43.69,
+   "end": 48.25,
+   "text": "el desperdicio de recursos y la necesidad de alternativas naturales."
+  },
+  {
+   "start": 48.25,
+   "end": 53.61,
+   "text": "Nuestro repelente natural a base de cítricos puede utilizarse en jardines,"
+  },
+  {
+   "start": 53.63,
+   "end": 60.55,
+   "text": "cultivos e incluso en tu hogar. Es seguro, efectivo y amigable con el medio ambiente."
+  },
+  {
+   "start": 60.55,
+   "end": 65.79,
+   "text": "Además, esta solución también beneficia a nuestras comunidades agrícolas,"
+  },
+  {
+   "start": 65.79,
+   "end": 70.35,
+   "text": "protegiendo sus cultivos de manera natural y aumentando la producción."
+  },
+  {
+   "start": 70.35,
+   "end": 76.79,
+   "text": "Así que únete a nosotros en esta iniciativa para transformar residuos en recursos valiosos."
+  },
+  {
+   "start": 76.79,
+   "end": 84.37,
+   "text": "Juntos, podemos crear un mundo más sostenible y saludable. Hagamos la diferencia."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 95.0
+}

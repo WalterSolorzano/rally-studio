@@ -1,0 +1,99 @@
+{
+ "video_id": "W8NGhPjktrg",
+ "url": "https://www.youtube.com/watch?v=W8NGhPjktrg",
+ "year": 2022,
+ "collection": "nacional",
+ "country": "COLOMBIA",
+ "team": "STOP SNAKES",
+ "place_label": "TERCER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "nacional",
+   "place_label": "TERCER LUGAR",
+   "team": "STOP SNAKES",
+   "challenge": "06 - LAS MORDEDURAS DE SERPIENTE A LA VISTA"
+  },
+  {
+   "year": 2022,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "STOP SNAKES",
+   "challenge": "06 - LAS MORDEDURAS DE SERPIENTE A LA VISTA"
+  }
+ ],
+ "fetched_at": "2026-11-06T21:42:59+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "y un campesino de Belén de Umbria, Rizaraldas, tuvo a punto de morir tras la mordedura de una serpiente venenosa. Carolina Bailarín, luego de ser mordida por una serpiente, este hecho ocurrió el domingo en el resguardo indígena Amparado Alto en el corregimiento Murri. Las serpientes son de los reptiles más conocidos y temidos por los seres humanos. Son escurridizos y viven principalmente en zonas tropicales y subtropicales. Algunas familias de este tipo de animales son sumamente venenosas y pueden ocasionar daños irreversibles en los seres humanos, ocasionando cegueras, parálisis e incluso la muerte. Debido a que crear un dispositivo que aleja a las serpientes de las zonas rurales puede representar un riesgo para el correcto equilibrio de los ecosistemas y el control de plagas, proponemos crear una instrumentalización para los trabajadores que les permita estar protegidos en los momentos y en las zonas de sus trabajos. Esto consiste en guantes y botas que están hechos de un material polimérico resistente y que son anti picaduras y que cuentan con un sistema o material que presenta sensores, actuadores y mecanismos de control Intrínsecos o embebidos que son capaces de permitirles sentir el estímulo y reaccionar oportunamente a las picaduras. Además de que no permite que el veneno pase a la piel y por ende a la sangre. Respecto a las campañas de concientización proponemos estrategias que permitan la difusión de información a estas poblaciones rurales que les permita saber el correcto uso y manejo de basuras que se producen en las mismas, el mantenimiento de los espacios en los que viven y el correcto equipamiento que se usa para las zonas de cultivo y pastoreo, ya que esto permitirá bajar los porcentajes de mordedores.",
+ "segments": [
+  {
+   "start": 1.46,
+   "end": 7.22,
+   "text": "y un campesino de Belén de Umbria, Rizaraldas, tuvo a punto de morir tras la mordedura de una"
+  },
+  {
+   "start": 7.22,
+   "end": 9.26,
+   "text": "serpiente venenosa."
+  },
+  {
+   "start": 9.26,
+   "end": 17.46,
+   "text": "Carolina Bailarín, luego de ser mordida por una serpiente, este hecho ocurrió el domingo en el resguardo indígena Amparado Alto en el corregimiento Murri."
+  },
+  {
+   "start": 17.46,
+   "end": 23.86,
+   "text": "Las serpientes son de los reptiles más conocidos y temidos por los seres humanos."
+  },
+  {
+   "start": 23.86,
+   "end": 28.46,
+   "text": "Son escurridizos y viven principalmente en zonas tropicales y subtropicales."
+  },
+  {
+   "start": 28.86,
+   "end": 42.46,
+   "text": "Algunas familias de este tipo de animales son sumamente venenosas y pueden ocasionar daños irreversibles en los seres humanos, ocasionando cegueras, parálisis e incluso la muerte."
+  },
+  {
+   "start": 42.46,
+   "end": 51.06,
+   "text": "Debido a que crear un dispositivo que aleja a las serpientes de las zonas rurales puede representar un riesgo para el correcto equilibrio de los ecosistemas y el control de plagas,"
+  },
+  {
+   "start": 51.46,
+   "end": 61.86,
+   "text": "proponemos crear una instrumentalización para los trabajadores que les permita estar protegidos en los momentos y en las zonas de sus trabajos."
+  },
+  {
+   "start": 61.86,
+   "end": 74.46,
+   "text": "Esto consiste en guantes y botas que están hechos de un material polimérico resistente y que son anti picaduras y que cuentan con un sistema o material que presenta sensores, actuadores y mecanismos de control"
+  },
+  {
+   "start": 74.86,
+   "end": 81.86,
+   "text": "Intrínsecos o embebidos que son capaces de permitirles sentir el estímulo y reaccionar oportunamente a las picaduras."
+  },
+  {
+   "start": 81.86,
+   "end": 86.86,
+   "text": "Además de que no permite que el veneno pase a la piel y por ende a la sangre."
+  },
+  {
+   "start": 86.86,
+   "end": 101.3,
+   "text": "Respecto a las campañas de concientización proponemos estrategias que permitan la difusión de información a estas poblaciones rurales que les permita saber el correcto uso y manejo de basuras"
+  },
+  {
+   "start": 101.3,
+   "end": 116.7,
+   "text": "que se producen en las mismas, el mantenimiento de los espacios en los que viven y el correcto equipamiento que se usa para las zonas de cultivo y pastoreo, ya que esto permitirá bajar los porcentajes de mordedores."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 118.8
+}

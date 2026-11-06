@@ -1,0 +1,109 @@
+{
+ "video_id": "MDESyr378es",
+ "url": "https://youtu.be/MDESyr378es",
+ "year": 2023,
+ "collection": "nacional",
+ "country": "BRASIL",
+ "team": "HYDRA ENGENHARIA",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "nacional",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "HYDRA ENGENHARIA",
+   "challenge": "03 - AGUA SEGURA"
+  },
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "HYDRA ENGENHARIA",
+   "challenge": "03 - AGUA SEGURA"
+  }
+ ],
+ "fetched_at": "2026-11-06T21:18:26+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Hola, mi nombre es Gabrielle y estoy participando en el Rally Internacional Latinoamericano 2023. Hablo del Brasil y voy a hablar un poco sobre la problemática que nos fue presentada, que es en relación a la agua segura. Nos fue expuesto un escenario de precariedad de muchas comunidades, que debido a falta de recursos financieros, acaban por consumir agua contaminada. Esto resulta en enfermedades y hasta la muerte de estas personas. Nuestra idea consiste en un filtro de agua. Está encima del telado de la casa, por medio de rayos UV y filtro de cerámica, carvón activado y plata coloidal que se realiza la limpieza de esta agua. Esta representación es donde el individuo depositará la agua contaminada, sea de donde fuera que haga esta captura. Por medio de una bomba que funciona a través de una pequeña placa solar, es que esta agua será depositada en el filtro. Ella va a pasar por una camada de cerámica y va a estar expuesta a los rayos UV del sol por al menos seis horas. Después, será depositada en un reservatario interno y puede ser consumida por los habitantes de la casa. El costo de este sistema fue estimado en menos de 500 reais para una habitación de cinco personas. Esta solución es simple, barata y eficaz, visando la calidad de vida de las personas y su autonomía y bienestar. Gracias por la atención.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 7.0,
+   "text": "Hola, mi nombre es Gabrielle y estoy participando en el Rally Internacional Latinoamericano 2023."
+  },
+  {
+   "start": 7.0,
+   "end": 13.0,
+   "text": "Hablo del Brasil y voy a hablar un poco sobre la problemática que nos fue presentada, que es en relación a la agua segura."
+  },
+  {
+   "start": 13.0,
+   "end": 20.0,
+   "text": "Nos fue expuesto un escenario de precariedad de muchas comunidades, que debido a falta de recursos financieros,"
+  },
+  {
+   "start": 20.0,
+   "end": 23.0,
+   "text": "acaban por consumir agua contaminada."
+  },
+  {
+   "start": 23.0,
+   "end": 28.0,
+   "text": "Esto resulta en enfermedades y hasta la muerte de estas personas."
+  },
+  {
+   "start": 28.0,
+   "end": 33.0,
+   "text": "Nuestra idea consiste en un filtro de agua."
+  },
+  {
+   "start": 33.0,
+   "end": 45.0,
+   "text": "Está encima del telado de la casa, por medio de rayos UV y filtro de cerámica, carvón activado y plata coloidal que se realiza la limpieza de esta agua."
+  },
+  {
+   "start": 45.0,
+   "end": 50.0,
+   "text": "Esta representación es donde el individuo depositará la agua contaminada,"
+  },
+  {
+   "start": 50.0,
+   "end": 54.0,
+   "text": "sea de donde fuera que haga esta captura."
+  },
+  {
+   "start": 54.0,
+   "end": 64.0,
+   "text": "Por medio de una bomba que funciona a través de una pequeña placa solar, es que esta agua será depositada en el filtro."
+  },
+  {
+   "start": 64.0,
+   "end": 72.0,
+   "text": "Ella va a pasar por una camada de cerámica y va a estar expuesta a los rayos UV del sol por al menos seis horas."
+  },
+  {
+   "start": 72.0,
+   "end": 80.0,
+   "text": "Después, será depositada en un reservatario interno y puede ser consumida por los habitantes de la casa."
+  },
+  {
+   "start": 80.0,
+   "end": 87.0,
+   "text": "El costo de este sistema fue estimado en menos de 500 reais para una habitación de cinco personas."
+  },
+  {
+   "start": 87.0,
+   "end": 94.0,
+   "text": "Esta solución es simple, barata y eficaz, visando la calidad de vida de las personas y su autonomía y bienestar."
+  },
+  {
+   "start": 94.0,
+   "end": 97.0,
+   "text": "Gracias por la atención."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 99.3
+}

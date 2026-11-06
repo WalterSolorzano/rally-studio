@@ -1,0 +1,149 @@
+{
+ "video_id": "a8cnpCs54Lk",
+ "url": "https://youtu.be/a8cnpCs54Lk",
+ "year": 2026,
+ "collection": "nacional",
+ "country": "BOLIVIA",
+ "team": "ALTIPLANO 360",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "nacional",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "ALTIPLANO 360",
+   "challenge": "07 - REUTILIZACIÓN DE ACEITE DOMÉSTICO"
+  },
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "ALTIPLANO 360",
+   "challenge": "07 - REUTILIZACIÓN DE ACEITE DOMÉSTICO"
+  }
+ ],
+ "fetched_at": "2026-11-06T20:14:16+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "¿Qué pasa con el aceite que usas para freír? En América Latina, un hogar de cuatro personas genera unos 10 litros de aceite usado al año y, en la mayoría de los casos, termina en el desagüe o en la basura. Allí se solidifica, obstruye las tuberías del alcantarillado y llega a ríos y mares. Un solo litro de aceite puede contaminar hasta 40.000 litros de agua, asfixiando la vida acuática. La solución, biotecnología circular. Recolectamos el aceite usado de hogares e industrias, como las frosterías, y lo filtramos. En el bioreactor, la bacteria Cupliabidus necator consume el aceite como fuente de carbono y, de forma natural, lo convierte en PHA, un poliester biodegradable que almacena dentro de sus células. Luego, extraemos el PHA y, para reducir los costos de producción, lo mezclamos con un 30% de vagazo de caña de azúcar. Con moldeo por inyección fabricamos vasos y cubiertos biodegradables. Y al reemplazar los plásticos derivados del petróleo, estos bioplásticos también ayudan a reducir los residuos que hoy contaminan nuestros ríos. Así, nuestra propuesta aporta a los objetivos de desarrollo sostenible. Y todo comienza en Bolivia, con puntos de acopio en las principales ciudades, logramos menos contaminación del agua, menos plásticos de un solo uso y empleo local. Cada 100 litros de aceite rinden más de 50 kilos de biocompuesto, material para miles de cubiertos y vasos. Lo que hoy tapa nuestras tuberías, mañana puede ser un cubierto que se degrada en la tierra. Dao recido al recurso. Somos Altiplano 360. Gracias.",
+ "segments": [
+  {
+   "start": 0.66,
+   "end": 3.36,
+   "text": "¿Qué pasa con el aceite que usas para freír?"
+  },
+  {
+   "start": 3.36,
+   "end": 10.52,
+   "text": "En América Latina, un hogar de cuatro personas genera unos 10 litros de aceite usado al año"
+  },
+  {
+   "start": 10.52,
+   "end": 14.62,
+   "text": "y, en la mayoría de los casos, termina en el desagüe o en la basura."
+  },
+  {
+   "start": 14.62,
+   "end": 20.72,
+   "text": "Allí se solidifica, obstruye las tuberías del alcantarillado y llega a ríos y mares."
+  },
+  {
+   "start": 20.72,
+   "end": 29.83,
+   "text": "Un solo litro de aceite puede contaminar hasta 40.000 litros de agua, asfixiando la vida acuática."
+  },
+  {
+   "start": 29.83,
+   "end": 34.36,
+   "text": "La solución, biotecnología circular."
+  },
+  {
+   "start": 34.86,
+   "end": 40.86,
+   "text": "Recolectamos el aceite usado de hogares e industrias, como las frosterías, y lo filtramos."
+  },
+  {
+   "start": 40.86,
+   "end": 47.86,
+   "text": "En el bioreactor, la bacteria Cupliabidus necator consume el aceite como fuente de carbono y, de forma natural,"
+  },
+  {
+   "start": 47.86,
+   "end": 52.86,
+   "text": "lo convierte en PHA, un poliester biodegradable que almacena dentro de sus células."
+  },
+  {
+   "start": 53.86,
+   "end": 58.36,
+   "text": "Luego, extraemos el PHA y, para reducir los costos de producción,"
+  },
+  {
+   "start": 58.36,
+   "end": 66.56,
+   "text": "lo mezclamos con un 30% de vagazo de caña de azúcar."
+  },
+  {
+   "start": 66.56,
+   "end": 70.56,
+   "text": "Con moldeo por inyección fabricamos vasos y cubiertos biodegradables."
+  },
+  {
+   "start": 70.56,
+   "end": 75.67,
+   "text": "Y al reemplazar los plásticos derivados del petróleo,"
+  },
+  {
+   "start": 75.67,
+   "end": 80.67,
+   "text": "estos bioplásticos también ayudan a reducir los residuos que hoy contaminan nuestros ríos."
+  },
+  {
+   "start": 80.67,
+   "end": 88.13,
+   "text": "Así, nuestra propuesta aporta a los objetivos de desarrollo sostenible."
+  },
+  {
+   "start": 89.13,
+   "end": 93.13,
+   "text": "Y todo comienza en Bolivia, con puntos de acopio en las principales ciudades,"
+  },
+  {
+   "start": 93.13,
+   "end": 98.13,
+   "text": "logramos menos contaminación del agua, menos plásticos de un solo uso y empleo local."
+  },
+  {
+   "start": 99.13,
+   "end": 103.13,
+   "text": "Cada 100 litros de aceite rinden más de 50 kilos de biocompuesto,"
+  },
+  {
+   "start": 103.13,
+   "end": 106.13,
+   "text": "material para miles de cubiertos y vasos."
+  },
+  {
+   "start": 106.13,
+   "end": 111.13,
+   "text": "Lo que hoy tapa nuestras tuberías, mañana puede ser un cubierto que se degrada en la tierra."
+  },
+  {
+   "start": 112.13,
+   "end": 114.13,
+   "text": "Dao recido al recurso."
+  },
+  {
+   "start": 114.13,
+   "end": 116.13,
+   "text": "Somos Altiplano 360."
+  },
+  {
+   "start": 117.13,
+   "end": 118.13,
+   "text": "Gracias."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.7
+}

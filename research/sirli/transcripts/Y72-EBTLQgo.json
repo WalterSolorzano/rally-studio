@@ -1,0 +1,204 @@
+{
+ "video_id": "Y72-EBTLQgo",
+ "url": "https://youtu.be/Y72-EBTLQgo",
+ "year": 2022,
+ "collection": "nacional",
+ "country": "BRASIL",
+ "team": "ELEMENTO X",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "ELEMENTO X",
+   "challenge": "07 - ALUDES DE BARRO"
+  },
+  {
+   "year": 2022,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "ELEMENTO X",
+   "challenge": "07 - ALUDES DE BARRO"
+  }
+ ],
+ "fetched_at": "2026-11-06T21:37:55+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "La luz de barro. En América Latina muchos países están repletos de montañas, lo que puede inevitablemente hacer con que las personas vivan en estas regiones. El riesgo de deslizamiento de tierras en estas regiones es mayor y puede impactar la vida de los habitantes locales, llevando a la perdida de materiales y hasta la vida. Pensado en esto, ¿cómo podríamos anticipar estos problemas y evitar sus consecuencias? Al estudiarnos, nos dimos cuenta de que existen algunos factores que contribuyen directamente para ampliar el riesgo de deslizamiento. La humedad, el volumen de la lluvia, la temperatura, la inclina de la tierra, el tipo de suelo y los tremores de la tierra. Conociendo estos factores, podemos crear una red de sensores locales para monitorear estas condiciones y, además, los datos de la internet para obtener información más abrangente. ¿Conoces el sitio EcoWeather de meteorología? ¿Y el Sismic Monitor de tremores sísmicos? Para detectar los tremores de las regiones, vamos a tener pequeñas estaciones meteorológicas construidas en módulos que pueden ser aprimorados con nuevos sensores. Estas estaciones captan tremores en la región y, con una antena, envían información a una red que estará conectada a otras estaciones. Estos sensores y antenas serán alimentados por una placa solar. Para días con mucha lluvia o que no tengamos acceso a energía, la estación contará con un generador de emergencia con autonomía de, por lo menos, 8 horas. En cuanto a esto, las antenas estarán conectadas a las ciudades, que con sirenes y alto-falantes irán a avisar a las personas locales a salir de sus casas. El software monitore todas las regiones a partir de las informaciones que se han recogido en la internet. Al detectar riesgos, pasa a monitorear la estación local y a avisar a los habitantes con mensajes. Las mensajes serán enviadas por un aplicativo para las autoridades locales para los ciudadanos. El sensor va a funcionar de la siguiente forma. Una estaca será clavada en el sol y, cuando haya una variación en el sol, el sensor irá a movimientos para ambos lados, enviando una mensaje. Un sensor óptico también puede ser usado. Detecó una distancia cuando hubiera una alteración.",
+ "segments": [
+  {
+   "start": 0.5,
+   "end": 2.5,
+   "text": "La luz de barro."
+  },
+  {
+   "start": 2.5,
+   "end": 5.5,
+   "text": "En América Latina muchos países están repletos de montañas,"
+  },
+  {
+   "start": 5.5,
+   "end": 9.5,
+   "text": "lo que puede inevitablemente hacer con que las personas vivan en estas regiones."
+  },
+  {
+   "start": 9.5,
+   "end": 13.5,
+   "text": "El riesgo de deslizamiento de tierras en estas regiones es mayor"
+  },
+  {
+   "start": 13.5,
+   "end": 15.5,
+   "text": "y puede impactar la vida de los habitantes locales,"
+  },
+  {
+   "start": 15.5,
+   "end": 18.5,
+   "text": "llevando a la perdida de materiales y hasta la vida."
+  },
+  {
+   "start": 19.5,
+   "end": 24.5,
+   "text": "Pensado en esto, ¿cómo podríamos anticipar estos problemas y evitar sus consecuencias?"
+  },
+  {
+   "start": 24.5,
+   "end": 27.5,
+   "text": "Al estudiarnos, nos dimos cuenta de que existen algunos factores"
+  },
+  {
+   "start": 27.5,
+   "end": 30.5,
+   "text": "que contribuyen directamente para ampliar el riesgo de deslizamiento."
+  },
+  {
+   "start": 30.5,
+   "end": 35.5,
+   "text": "La humedad, el volumen de la lluvia, la temperatura, la inclina de la tierra,"
+  },
+  {
+   "start": 35.5,
+   "end": 38.5,
+   "text": "el tipo de suelo y los tremores de la tierra."
+  },
+  {
+   "start": 38.5,
+   "end": 41.5,
+   "text": "Conociendo estos factores, podemos crear una red de sensores locales"
+  },
+  {
+   "start": 41.5,
+   "end": 44.5,
+   "text": "para monitorear estas condiciones y, además, los datos de la internet"
+  },
+  {
+   "start": 44.5,
+   "end": 47.5,
+   "text": "para obtener información más abrangente."
+  },
+  {
+   "start": 47.5,
+   "end": 50.5,
+   "text": "¿Conoces el sitio EcoWeather de meteorología?"
+  },
+  {
+   "start": 50.5,
+   "end": 53.5,
+   "text": "¿Y el Sismic Monitor de tremores sísmicos?"
+  },
+  {
+   "start": 54.5,
+   "end": 58.5,
+   "text": "Para detectar los tremores de las regiones, vamos a tener pequeñas estaciones meteorológicas"
+  },
+  {
+   "start": 58.5,
+   "end": 62.5,
+   "text": "construidas en módulos que pueden ser aprimorados con nuevos sensores."
+  },
+  {
+   "start": 62.5,
+   "end": 65.5,
+   "text": "Estas estaciones captan tremores en la región y, con una antena,"
+  },
+  {
+   "start": 65.5,
+   "end": 69.5,
+   "text": "envían información a una red que estará conectada a otras estaciones."
+  },
+  {
+   "start": 69.5,
+   "end": 73.5,
+   "text": "Estos sensores y antenas serán alimentados por una placa solar."
+  },
+  {
+   "start": 74.5,
+   "end": 77.5,
+   "text": "Para días con mucha lluvia o que no tengamos acceso a energía,"
+  },
+  {
+   "start": 77.5,
+   "end": 82.5,
+   "text": "la estación contará con un generador de emergencia con autonomía de, por lo menos, 8 horas."
+  },
+  {
+   "start": 83.5,
+   "end": 86.5,
+   "text": "En cuanto a esto, las antenas estarán conectadas a las ciudades,"
+  },
+  {
+   "start": 86.5,
+   "end": 89.5,
+   "text": "que con sirenes y alto-falantes irán a avisar a las personas locales"
+  },
+  {
+   "start": 89.5,
+   "end": 91.5,
+   "text": "a salir de sus casas."
+  },
+  {
+   "start": 91.5,
+   "end": 96.5,
+   "text": "El software monitore todas las regiones a partir de las informaciones que se han recogido en la internet."
+  },
+  {
+   "start": 96.5,
+   "end": 101.5,
+   "text": "Al detectar riesgos, pasa a monitorear la estación local y a avisar a los habitantes con mensajes."
+  },
+  {
+   "start": 101.5,
+   "end": 106.5,
+   "text": "Las mensajes serán enviadas por un aplicativo para las autoridades locales para los ciudadanos."
+  },
+  {
+   "start": 106.5,
+   "end": 108.5,
+   "text": "El sensor va a funcionar de la siguiente forma."
+  },
+  {
+   "start": 108.5,
+   "end": 111.5,
+   "text": "Una estaca será clavada en el sol y, cuando haya una variación en el sol,"
+  },
+  {
+   "start": 111.5,
+   "end": 115.5,
+   "text": "el sensor irá a movimientos para ambos lados, enviando una mensaje."
+  },
+  {
+   "start": 115.5,
+   "end": 117.5,
+   "text": "Un sensor óptico también puede ser usado."
+  },
+  {
+   "start": 117.5,
+   "end": 120.5,
+   "text": "Detecó una distancia cuando hubiera una alteración."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.8
+}

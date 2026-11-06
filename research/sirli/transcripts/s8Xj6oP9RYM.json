@@ -1,0 +1,164 @@
+{
+ "video_id": "s8Xj6oP9RYM",
+ "url": "https://youtu.be/s8Xj6oP9RYM?si=XHwSAXpYb8rfS4BS",
+ "year": 2025,
+ "collection": "nacional",
+ "country": "MÉXICO",
+ "team": "TEAM CEAA",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "nacional",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "TEAM CEAA",
+   "challenge": "05 - HUERTOS VERTICALES"
+  },
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "TEAM CEAA",
+   "challenge": "05 - HUERTOS VERTICALES"
+  }
+ ],
+ "fetched_at": "2026-11-06T20:51:38+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "En la actualidad, cada vez más personas buscan consumir productos orgánicos y saludables. Sin embargo, en las zonas urbanas, el espacio reducido y la escasez de agua hacen difícil cultivar alimentos propios. Además, los métodos tradicionales de agricultura utilizan fertilizantes y químicos que afectan la salud y el medio ambiente. Por eso, nuestro reto fue claro, encontrar una alternativa sostenible que permita reducir alimentos en espacios pequeños y con recursos limitados. Nuestra solución es un sistema de huerto vertical inteligente elaborado con materiales reciclados como botellas de PET y Tetra Pak. Nuestro huerto vertical utiliza estructura de PTR que sostiene columnas formadas por botellas de PET de 2.5 litros. Estas botellas actúan como dispositivos conectados entre sí, permitiendo el almacenamiento y circulación eficiente del agua. El sistema de captación aprovecha el agua de lluvia y la proviniente de aires acondicionados. Ambas son recolectadas mediante un sistema artesanal que las conduce hacia un tanque de almacenamiento. Una bomba de presurización impulsa el agua al sistema de riego, que pasa por un filtro mecánico compuesto por grava, fibra vegetal y Tetra Pak antes de recircularse nuevamente. Además, cuenta con sensores de monitoreo que registran la humedad del sustrato y la temperatura, permitiendo un control más preciso del sistema de riego. El costo único es de $3,000 pesos mexicanos, lo cual es posible construir un sistema funcional eficiente y adaptable a cualquier espacio, ya sea una azotea o un balcón. El huerto vertical Temsea es más que una propuesta. Es una forma práctica, sustentable y replicable de mejor calidad de vida en las ciudades del futuro.",
+ "segments": [
+  {
+   "start": 2.74,
+   "end": 8.7,
+   "text": "En la actualidad, cada vez más personas buscan consumir productos orgánicos y saludables."
+  },
+  {
+   "start": 8.7,
+   "end": 15.14,
+   "text": "Sin embargo, en las zonas urbanas, el espacio reducido y la escasez de agua hacen difícil"
+  },
+  {
+   "start": 15.14,
+   "end": 16.78,
+   "text": "cultivar alimentos propios."
+  },
+  {
+   "start": 16.78,
+   "end": 22.3,
+   "text": "Además, los métodos tradicionales de agricultura utilizan fertilizantes y químicos que afectan"
+  },
+  {
+   "start": 22.3,
+   "end": 24.26,
+   "text": "la salud y el medio ambiente."
+  },
+  {
+   "start": 24.26,
+   "end": 29.72,
+   "text": "Por eso, nuestro reto fue claro, encontrar una alternativa sostenible que permita"
+  },
+  {
+   "start": 29.72,
+   "end": 33.96,
+   "text": "reducir alimentos en espacios pequeños y con recursos limitados."
+  },
+  {
+   "start": 33.96,
+   "end": 39.28,
+   "text": "Nuestra solución es un sistema de huerto vertical inteligente elaborado con materiales"
+  },
+  {
+   "start": 39.28,
+   "end": 42.88,
+   "text": "reciclados como botellas de PET y Tetra Pak."
+  },
+  {
+   "start": 42.88,
+   "end": 47.52,
+   "text": "Nuestro huerto vertical utiliza estructura de PTR que sostiene columnas formadas"
+  },
+  {
+   "start": 47.52,
+   "end": 51.0,
+   "text": "por botellas de PET de 2.5 litros."
+  },
+  {
+   "start": 51.0,
+   "end": 56.28,
+   "text": "Estas botellas actúan como dispositivos conectados entre sí, permitiendo el almacenamiento"
+  },
+  {
+   "start": 56.28,
+   "end": 58.68,
+   "text": "y circulación eficiente del agua."
+  },
+  {
+   "start": 58.68,
+   "end": 65.04,
+   "text": "El sistema de captación aprovecha el agua de lluvia y la proviniente de aires acondicionados."
+  },
+  {
+   "start": 65.04,
+   "end": 70.12,
+   "text": "Ambas son recolectadas mediante un sistema artesanal que las conduce hacia un tanque"
+  },
+  {
+   "start": 70.12,
+   "end": 71.72,
+   "text": "de almacenamiento."
+  },
+  {
+   "start": 71.72,
+   "end": 77.4,
+   "text": "Una bomba de presurización impulsa el agua al sistema de riego, que pasa por"
+  },
+  {
+   "start": 77.4,
+   "end": 84.56,
+   "text": "un filtro mecánico compuesto por grava, fibra vegetal y Tetra Pak antes de recircularse"
+  },
+  {
+   "start": 84.56,
+   "end": 85.56,
+   "text": "nuevamente."
+  },
+  {
+   "start": 85.72,
+   "end": 90.64,
+   "text": "Además, cuenta con sensores de monitoreo que registran la humedad del sustrato y"
+  },
+  {
+   "start": 90.64,
+   "end": 96.08,
+   "text": "la temperatura, permitiendo un control más preciso del sistema de riego."
+  },
+  {
+   "start": 96.08,
+   "end": 102.48,
+   "text": "El costo único es de $3,000 pesos mexicanos, lo cual es posible construir un sistema"
+  },
+  {
+   "start": 102.48,
+   "end": 109.0,
+   "text": "funcional eficiente y adaptable a cualquier espacio, ya sea una azotea o un balcón."
+  },
+  {
+   "start": 109.2,
+   "end": 113.36,
+   "text": "El huerto vertical Temsea es más que una propuesta."
+  },
+  {
+   "start": 113.36,
+   "end": 119.16,
+   "text": "Es una forma práctica, sustentable y replicable de mejor calidad de vida en las ciudades"
+  },
+  {
+   "start": 119.16,
+   "end": 119.8,
+   "text": "del futuro."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.9
+}

@@ -1,0 +1,134 @@
+{
+ "video_id": "PW3Ajeq0eUw",
+ "url": "https://youtu.be/PW3Ajeq0eUw",
+ "year": 2022,
+ "collection": "nacional",
+ "country": "ECUADOR",
+ "team": "AYA-DROP",
+ "place_label": "TERCER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "nacional",
+   "place_label": "TERCER LUGAR",
+   "team": "AYA-DROP",
+   "challenge": "04 - AHORRO ENERGÉTICO EN EL SECTOR GASTRONÓMICO"
+  },
+  {
+   "year": 2022,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "AYA-DROP",
+   "challenge": "04 - AHORRO ENERGÉTICO EN EL SECTOR GASTRONÓMICO"
+  }
+ ],
+ "fetched_at": "2026-11-06T21:48:09+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "¿Sabías qué? Debido a la crisis global energética que se ha presentado en los últimos años, 6 de cada 10 negocios en el sector gastronómico se ha visto afectado en su rentabilidad. Se genera un 71.4% correspondiente a la materia orgánica que podría ser utilizada en procesos de compostaje. Los negocios gastronómicos impactan en el medio, provocando una cadena de reacciones asociadas al consumo de energía, la explotación de los recursos naturales y la producción de los residuos. Cada acción tiene un doble coste, uno económico y otro ambiental. Es por ello que surge en la ciudad de Quito, Ecuador, el proyecto de innovación IADROG, el mismo que está orientado al ahorro en el uso de energías convencionales en el ámbito tecnológico, ecológico, económico y social. Dando a conocer como su primera propuesta la generación de energía a través de la realización por un corto periodo de tiempo de uso de la bicicleta, que recolecta energía y es transmitida a una isla energética a la que se encarga de la distribución de la ambisma a los negocios gastronómicos. Es recompensada por medio de un código QR que es generado al finalizar la actividad física, permitiendo un descuento en la compra en el negocio gastronómico. Esto se verá reflejado en la página web de negocio que es desarrollado por IADROG. Nuestra segunda propuesta ecológica es la implementación de biodigestores tipo saichicha en los exteriores de los negocios gastronómicos generando energía calórica y energía eléctrica. El mismo es generado a través de la recolección de los desechos orgánicos que son obtenidos colando los residuos orgánicos y el estiércol en una fosa con una cama de granillo a desnivel, en un plástico tubular en el que será de uso para la mezcla y la descomposición de los residuos colocados, generando gas metano el cual es conducido a una centralina de gas teniendo una presión constante del gas metano el mismo que será distribuido a los negocios gastronómicos permitiendo su aplicación a nivel local siendo replicable y escalable.",
+ "segments": [
+  {
+   "start": 2.42,
+   "end": 7.52,
+   "text": "¿Sabías qué? Debido a la crisis global energética que se ha presentado en los últimos años,"
+  },
+  {
+   "start": 7.52,
+   "end": 12.42,
+   "text": "6 de cada 10 negocios en el sector gastronómico se ha visto afectado en su rentabilidad."
+  },
+  {
+   "start": 12.42,
+   "end": 19.42,
+   "text": "Se genera un 71.4% correspondiente a la materia orgánica que podría ser utilizada en procesos de compostaje."
+  },
+  {
+   "start": 19.42,
+   "end": 22.42,
+   "text": "Los negocios gastronómicos impactan en el medio,"
+  },
+  {
+   "start": 22.42,
+   "end": 25.42,
+   "text": "provocando una cadena de reacciones asociadas al consumo de energía,"
+  },
+  {
+   "start": 25.42,
+   "end": 29.42,
+   "text": "la explotación de los recursos naturales y la producción de los residuos."
+  },
+  {
+   "start": 29.42,
+   "end": 32.42,
+   "text": "Cada acción tiene un doble coste, uno económico y otro ambiental."
+  },
+  {
+   "start": 32.42,
+   "end": 37.42,
+   "text": "Es por ello que surge en la ciudad de Quito, Ecuador, el proyecto de innovación IADROG,"
+  },
+  {
+   "start": 37.42,
+   "end": 45.42,
+   "text": "el mismo que está orientado al ahorro en el uso de energías convencionales en el ámbito tecnológico, ecológico, económico y social."
+  },
+  {
+   "start": 45.42,
+   "end": 53.42,
+   "text": "Dando a conocer como su primera propuesta la generación de energía a través de la realización por un corto periodo de tiempo de uso de la bicicleta,"
+  },
+  {
+   "start": 53.42,
+   "end": 60.42,
+   "text": "que recolecta energía y es transmitida a una isla energética a la que se encarga de la distribución de la ambisma a los negocios gastronómicos."
+  },
+  {
+   "start": 60.42,
+   "end": 65.42,
+   "text": "Es recompensada por medio de un código QR que es generado al finalizar la actividad física,"
+  },
+  {
+   "start": 65.42,
+   "end": 68.42,
+   "text": "permitiendo un descuento en la compra en el negocio gastronómico."
+  },
+  {
+   "start": 68.42,
+   "end": 73.42,
+   "text": "Esto se verá reflejado en la página web de negocio que es desarrollado por IADROG."
+  },
+  {
+   "start": 74.42,
+   "end": 79.42,
+   "text": "Nuestra segunda propuesta ecológica es la implementación de biodigestores tipo saichicha"
+  },
+  {
+   "start": 79.42,
+   "end": 83.42,
+   "text": "en los exteriores de los negocios gastronómicos generando energía calórica y energía eléctrica."
+  },
+  {
+   "start": 83.42,
+   "end": 93.42,
+   "text": "El mismo es generado a través de la recolección de los desechos orgánicos que son obtenidos colando los residuos orgánicos y el estiércol en una fosa con una cama de granillo a desnivel,"
+  },
+  {
+   "start": 93.42,
+   "end": 99.42,
+   "text": "en un plástico tubular en el que será de uso para la mezcla y la descomposición de los residuos colocados,"
+  },
+  {
+   "start": 99.42,
+   "end": 106.42,
+   "text": "generando gas metano el cual es conducido a una centralina de gas teniendo una presión constante del gas metano"
+  },
+  {
+   "start": 106.42,
+   "end": 114.42,
+   "text": "el mismo que será distribuido a los negocios gastronómicos permitiendo su aplicación a nivel local siendo replicable y escalable."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.0
+}

@@ -1,0 +1,89 @@
+{
+ "video_id": "0Ye84xW4RBY",
+ "url": "https://youtu.be/0Ye84xW4RBY",
+ "year": 2020,
+ "collection": "nacional",
+ "country": "BRASIL",
+ "team": "CONEXÃO PARAHYBA",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2020,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "CONEXÃO PARAHYBA",
+   "challenge": "01 - “ALAS PARA MONTAR”… ¿PERO POR QUÉ “ALAS PARA MONTAR”?"
+  },
+  {
+   "year": 2020,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "CONEXÃO PARAHYBA",
+   "challenge": "01 - “ALAS PARA MONTAR”… ¿PERO POR QUÉ “ALAS PARA MONTAR”?"
+  }
+ ],
+ "fetched_at": "2026-11-06T22:32:35+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "La equinoterapia es un método terapéutico de rehabilitación de personas con diferentes patologías, que utiliza como herramienta principal de trabajo el caballo. Conectan así los pacientes a la naturaleza y ayudándolos a mejorar su calidad de vida. Pero hay un problema. ¿Cómo posicionar el paciente de manera segura y eficiente arriba del caballo sin necesitar el esfuerzo físico de los profesionales? Pensando en eso, desarrollamos un sistema muy simple para disminuir los problemas en el momento del paso de una silla de ruedas a la montura de un caballo. Y tenemos una solución. La solución consiste en un sistema de operación sencillo dividido en dos partes, una silla de ruedas adaptada y un ascensor hidráulico.",
+ "segments": [
+  {
+   "start": 4.24,
+   "end": 10.24,
+   "text": "La equinoterapia es un método terapéutico de rehabilitación de personas con diferentes patologías,"
+  },
+  {
+   "start": 10.24,
+   "end": 15.24,
+   "text": "que utiliza como herramienta principal de trabajo el caballo."
+  },
+  {
+   "start": 15.24,
+   "end": 21.24,
+   "text": "Conectan así los pacientes a la naturaleza y ayudándolos a mejorar su calidad de vida."
+  },
+  {
+   "start": 21.24,
+   "end": 26.22,
+   "text": "Pero hay un problema."
+  },
+  {
+   "start": 26.22,
+   "end": 33.74,
+   "text": "¿Cómo posicionar el paciente de manera segura y eficiente"
+  },
+  {
+   "start": 33.74,
+   "end": 38.74,
+   "text": "arriba del caballo sin necesitar el esfuerzo físico de los profesionales?"
+  },
+  {
+   "start": 38.74,
+   "end": 43.74,
+   "text": "Pensando en eso, desarrollamos un sistema muy simple para disminuir los problemas"
+  },
+  {
+   "start": 43.74,
+   "end": 47.74,
+   "text": "en el momento del paso de una silla de ruedas a la montura de un caballo."
+  },
+  {
+   "start": 47.74,
+   "end": 49.74,
+   "text": "Y tenemos una solución."
+  },
+  {
+   "start": 49.74,
+   "end": 57.02,
+   "text": "La solución consiste en un sistema de operación sencillo dividido en dos partes,"
+  },
+  {
+   "start": 57.02,
+   "end": 61.02,
+   "text": "una silla de ruedas adaptada y un ascensor hidráulico."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 116.9
+}

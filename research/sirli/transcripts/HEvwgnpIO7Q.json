@@ -1,0 +1,144 @@
+{
+ "video_id": "HEvwgnpIO7Q",
+ "url": "https://youtu.be/HEvwgnpIO7Q",
+ "year": 2022,
+ "collection": "nacional",
+ "country": "BOLIVIA",
+ "team": "INNOVA PRO",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "nacional",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "INNOVA PRO",
+   "challenge": "04 - AHORRO ENERGÉTICO EN EL SECTOR GASTRONÓMICO"
+  },
+  {
+   "year": 2022,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "INNOVA PRO",
+   "challenge": "04 - AHORRO ENERGÉTICO EN EL SECTOR GASTRONÓMICO"
+  }
+ ],
+ "fetched_at": "2026-11-06T21:36:29+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "El incremento global en el costo de la energía en medio de una crisis económica, climática, política y energética mundial ha empujado al sector gastronómico hacia la urgencia de la optimización y ahorro energético ante el riesgo de perder su competitividad o incluso quebrar. Es por eso que creamos CERECREEM, un sistema accesible de energía alternativa para restaurantes que convierte sus recigos orgánicos en gas de electricidad limpia para su autoconsumo. Este sistema está compuesto por un biodigestor, una pelepisadora, un sistema de transformación de energía y un sistema de monitoreo y control de los resultados que son fáciles de implementar y ocupa un poco espacio en un restaurante o plaza de comidas. El biodigestor, un recipiente sedado herméticamente en cuyo interior se produce la descomposición de los recidos orgánicos de cocina, genera biogás, un combustible con el cual se puede cocinar, calentar agua y producir energía eléctrica mediante un generador a gas y materia orgánica que entre otros usos puede ser convertida en pele, una biomasa sólida que se constituye en un combustible ecológico de gran poder calorítico. La pelepisadora, un equipo que empleando un rodillo prensante y una trefiladora de comprensión y cuchillas realiza un proceso de extracción para convertir materia orgánica en pele. El sistema de transformación de energía que por medio de la combustión generada del quemado de los pelets produce energía eléctrica para el uso del restaurante. Genera tu propia energía mientras ayudas al medio ambiente.",
+ "segments": [
+  {
+   "start": 3.06,
+   "end": 6.78,
+   "text": "El incremento global en el costo de la energía en medio de una crisis"
+  },
+  {
+   "start": 6.78,
+   "end": 10.82,
+   "text": "económica, climática, política y energética mundial ha empujado al"
+  },
+  {
+   "start": 10.82,
+   "end": 14.9,
+   "text": "sector gastronómico hacia la urgencia de la optimización y ahorro energético"
+  },
+  {
+   "start": 14.9,
+   "end": 19.86,
+   "text": "ante el riesgo de perder su competitividad o incluso quebrar."
+  },
+  {
+   "start": 19.86,
+   "end": 24.82,
+   "text": "Es por eso que creamos CERECREEM, un sistema accesible de energía alternativa"
+  },
+  {
+   "start": 24.82,
+   "end": 28.5,
+   "text": "para restaurantes que convierte sus recigos orgánicos en gas de"
+  },
+  {
+   "start": 28.5,
+   "end": 33.78,
+   "text": "electricidad limpia para su autoconsumo. Este sistema está compuesto por un"
+  },
+  {
+   "start": 33.78,
+   "end": 38.5,
+   "text": "biodigestor, una pelepisadora, un sistema de transformación de energía y un"
+  },
+  {
+   "start": 38.5,
+   "end": 42.32,
+   "text": "sistema de monitoreo y control de los resultados que son fáciles de"
+  },
+  {
+   "start": 42.32,
+   "end": 53.03,
+   "text": "implementar y ocupa un poco espacio en un restaurante o plaza de comidas."
+  },
+  {
+   "start": 53.03,
+   "end": 56.67,
+   "text": "El biodigestor, un recipiente sedado herméticamente en cuyo interior se"
+  },
+  {
+   "start": 56.67,
+   "end": 60.39,
+   "text": "produce la descomposición de los recidos orgánicos de cocina, genera"
+  },
+  {
+   "start": 60.39,
+   "end": 64.47,
+   "text": "biogás, un combustible con el cual se puede cocinar, calentar agua y"
+  },
+  {
+   "start": 64.47,
+   "end": 68.91,
+   "text": "producir energía eléctrica mediante un generador a gas y materia orgánica"
+  },
+  {
+   "start": 68.91,
+   "end": 73.75,
+   "text": "que entre otros usos puede ser convertida en pele, una biomasa sólida"
+  },
+  {
+   "start": 73.75,
+   "end": 77.51,
+   "text": "que se constituye en un combustible ecológico de gran poder calorítico."
+  },
+  {
+   "start": 77.51,
+   "end": 82.99,
+   "text": "La pelepisadora, un equipo que empleando un rodillo prensante y una"
+  },
+  {
+   "start": 82.99,
+   "end": 86.75,
+   "text": "trefiladora de comprensión y cuchillas realiza un proceso de"
+  },
+  {
+   "start": 86.75,
+   "end": 91.79,
+   "text": "extracción para convertir materia orgánica en pele. El sistema de"
+  },
+  {
+   "start": 91.83,
+   "end": 95.31,
+   "text": "transformación de energía que por medio de la combustión generada del"
+  },
+  {
+   "start": 95.31,
+   "end": 100.31,
+   "text": "quemado de los pelets produce energía eléctrica para el uso del restaurante."
+  },
+  {
+   "start": 100.31,
+   "end": 113.96,
+   "text": "Genera tu propia energía mientras ayudas al medio ambiente."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 117.7
+}

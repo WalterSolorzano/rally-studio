@@ -1,0 +1,229 @@
+{
+ "video_id": "imTrrqPidxU",
+ "url": "https://www.youtube.com/watch?v=imTrrqPidxU",
+ "year": 2021,
+ "collection": "nacional",
+ "country": "CHILE",
+ "team": "ACIIFO",
+ "place_label": "TERCER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "nacional",
+   "place_label": "TERCER LUGAR",
+   "team": "ACIIFO",
+   "challenge": "06 - SOSTENIBILIDAD AMBIENTAL ORIENTADA AL APROVECHAMIENTO DE RESIDUOS PLÁSTICOS EN FRANJAS COSTERAS"
+  },
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "ACIIFO",
+   "challenge": "06 - SOSTENIBILIDAD AMBIENTAL ORIENTADA AL APROVECHAMIENTO DE RESIDUOS PLÁSTICOS EN FRANJAS COSTERAS"
+  }
+ ],
+ "fetched_at": "2026-11-06T22:07:40+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Usted sabe que los peces que consumimos se alimentan de microplásticos que hay en el océano? En lo que va del año se estima que la acumulación de partículas de plástico es de 286.940 toneladas de este material flotando en el océano. ¿De qué manera podemos contribuir a la disminución de esta contaminación? Hola, somos un grupo de estudiantes de la ingeniería comercial, industrial, informática y medio mental de la Universidad de Bernardo Hins. Y juntos hemos conformado el equipo a CIFO. Uno de nuestros objetivos es formar una empresa tipo E. Actualmente nos enfocamos en generar conciencia ambiental sobre los efectos que pueden provocar la presencia de estos microplásticos, afectando la biodiversidad marina y la alimentación de peces que se utilizan para el consumo humano. CIFO consideramos que sería una opción innovadora, concientizadora y factible económicamente. Desarrollamos una solución sostenible para disminuir la cantidad de microplásticos en el mar, a través de su recolección. Actualmente existen propuestas sobre la extracción de plásticos, pero pocos se enfocan en estas partículas. Es por esto que nuestra idea consiste en la creación de un filtro que se encuentra adherido a pequeñas embarcaciones y que tiene la capacidad de atrapar partículas de microplásticos secundarios de entre 2 y 5 milímetros. Esencialmente la propuesta viene en el beneficio que se obtiene al implementar este producto de embarcaciones pequeñas, ya que estas tienen consecutivas salidas durante el día. Es con esto que nuestra propuesta se considera una opción para aprovechar el recorrido. Además es de fácil uso, bajo costo, contribuye a un importante impacto social y mental. Asimismo busca extender el ciclo de vida de estas partículas de plástico. La manera en que se va a implementar el modelo de negocio sobre esta propuesta consiste en recibir ingresos primarios por medio del modelo Crown Funding, de tal manera que incluyamos a todos los interesados en generar una red de financiamiento colectivo, además de obtener ingresos secundarios de la venta del material microplástico, extraído por medio de acuerdos estratégicos con empresas dedicadas a la utilización de este en el ámbito de productos reciclados. Es de suma importancia y responsabilidad de todos hacer que lleguen menos contaminantes de plásticos a los senos. Dile no al microplástico.",
+ "segments": [
+  {
+   "start": 4.88,
+   "end": 9.2,
+   "text": "Usted sabe que los peces que consumimos se alimentan de microplásticos que hay en el océano?"
+  },
+  {
+   "start": 9.2,
+   "end": 12.48,
+   "text": "En lo que va del año se estima que la acumulación de partículas de plástico"
+  },
+  {
+   "start": 12.48,
+   "end": 16.88,
+   "text": "es de 286.940 toneladas de este material flotando en el océano."
+  },
+  {
+   "start": 16.88,
+   "end": 20.44,
+   "text": "¿De qué manera podemos contribuir a la disminución de esta contaminación?"
+  },
+  {
+   "start": 20.44,
+   "end": 23.32,
+   "text": "Hola, somos un grupo de estudiantes de la ingeniería comercial,"
+  },
+  {
+   "start": 23.32,
+   "end": 26.6,
+   "text": "industrial, informática y medio mental de la Universidad de Bernardo Hins."
+  },
+  {
+   "start": 26.6,
+   "end": 29.28,
+   "text": "Y juntos hemos conformado el equipo a CIFO."
+  },
+  {
+   "start": 29.28,
+   "end": 32.28,
+   "text": "Uno de nuestros objetivos es formar una empresa tipo E."
+  },
+  {
+   "start": 32.32,
+   "end": 35.8,
+   "text": "Actualmente nos enfocamos en generar conciencia ambiental sobre los efectos"
+  },
+  {
+   "start": 35.8,
+   "end": 38.52,
+   "text": "que pueden provocar la presencia de estos microplásticos,"
+  },
+  {
+   "start": 38.52,
+   "end": 41.6,
+   "text": "afectando la biodiversidad marina y la alimentación de peces"
+  },
+  {
+   "start": 41.6,
+   "end": 43.08,
+   "text": "que se utilizan para el consumo humano."
+  },
+  {
+   "start": 43.08,
+   "end": 45.92,
+   "text": "CIFO consideramos que sería una opción innovadora,"
+  },
+  {
+   "start": 45.92,
+   "end": 48.44,
+   "text": "concientizadora y factible económicamente."
+  },
+  {
+   "start": 48.44,
+   "end": 52.92,
+   "text": "Desarrollamos una solución sostenible para disminuir la cantidad de microplásticos en el mar,"
+  },
+  {
+   "start": 52.92,
+   "end": 54.64,
+   "text": "a través de su recolección."
+  },
+  {
+   "start": 54.64,
+   "end": 57.76,
+   "text": "Actualmente existen propuestas sobre la extracción de plásticos,"
+  },
+  {
+   "start": 57.76,
+   "end": 60.16,
+   "text": "pero pocos se enfocan en estas partículas."
+  },
+  {
+   "start": 60.2,
+   "end": 62.96,
+   "text": "Es por esto que nuestra idea consiste en la creación de un filtro"
+  },
+  {
+   "start": 62.96,
+   "end": 65.32,
+   "text": "que se encuentra adherido a pequeñas embarcaciones"
+  },
+  {
+   "start": 65.32,
+   "end": 69.2,
+   "text": "y que tiene la capacidad de atrapar partículas de microplásticos secundarios"
+  },
+  {
+   "start": 69.2,
+   "end": 70.92,
+   "text": "de entre 2 y 5 milímetros."
+  },
+  {
+   "start": 70.92,
+   "end": 73.96,
+   "text": "Esencialmente la propuesta viene en el beneficio que se obtiene"
+  },
+  {
+   "start": 73.96,
+   "end": 76.68,
+   "text": "al implementar este producto de embarcaciones pequeñas,"
+  },
+  {
+   "start": 76.68,
+   "end": 79.64,
+   "text": "ya que estas tienen consecutivas salidas durante el día."
+  },
+  {
+   "start": 79.64,
+   "end": 83.96,
+   "text": "Es con esto que nuestra propuesta se considera una opción para aprovechar el recorrido."
+  },
+  {
+   "start": 83.96,
+   "end": 86.44,
+   "text": "Además es de fácil uso, bajo costo,"
+  },
+  {
+   "start": 86.44,
+   "end": 88.96,
+   "text": "contribuye a un importante impacto social y mental."
+  },
+  {
+   "start": 89.0,
+   "end": 92.84,
+   "text": "Asimismo busca extender el ciclo de vida de estas partículas de plástico."
+  },
+  {
+   "start": 92.84,
+   "end": 96.08,
+   "text": "La manera en que se va a implementar el modelo de negocio sobre esta propuesta"
+  },
+  {
+   "start": 96.08,
+   "end": 99.44,
+   "text": "consiste en recibir ingresos primarios por medio del modelo Crown Funding,"
+  },
+  {
+   "start": 99.44,
+   "end": 102.04,
+   "text": "de tal manera que incluyamos a todos los interesados"
+  },
+  {
+   "start": 102.04,
+   "end": 104.28,
+   "text": "en generar una red de financiamiento colectivo,"
+  },
+  {
+   "start": 104.28,
+   "end": 107.8,
+   "text": "además de obtener ingresos secundarios de la venta del material microplástico,"
+  },
+  {
+   "start": 107.8,
+   "end": 109.84,
+   "text": "extraído por medio de acuerdos estratégicos"
+  },
+  {
+   "start": 109.84,
+   "end": 113.96,
+   "text": "con empresas dedicadas a la utilización de este en el ámbito de productos reciclados."
+  },
+  {
+   "start": 113.96,
+   "end": 116.16,
+   "text": "Es de suma importancia y responsabilidad de todos"
+  },
+  {
+   "start": 116.2,
+   "end": 119.08,
+   "text": "hacer que lleguen menos contaminantes de plásticos a los senos."
+  },
+  {
+   "start": 119.08,
+   "end": 120.72,
+   "text": "Dile no al microplástico."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.8
+}

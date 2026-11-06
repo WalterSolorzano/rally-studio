@@ -1,0 +1,174 @@
+{
+ "video_id": "-Zv1p2MZlhE",
+ "url": "https://youtu.be/-Zv1p2MZlhE",
+ "year": 2026,
+ "collection": "nacional",
+ "country": "MÉXICO",
+ "team": "LOS NEZZI-OS",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "nacional",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "LOS NEZZI-OS",
+   "challenge": "09 - OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA"
+  },
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "LOS NEZZI-OS",
+   "challenge": "09 - OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA"
+  }
+ ],
+ "fetched_at": "2026-11-06T20:28:07+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Son las 11.40 de la noche. Hay un sismo de 6.5. Protección civil recibe cientos de mensajes repetidos con faltas y algunos falsos. Hay una avenida bloqueada, una colonia a la que no le llega nada y se cae el internet. ¿A dónde mandamos primero a nuestros equipos? Lo vimos en el sismo del 2017 y en el huracán Otis. El problema no es solo tener recursos y decidir con información desordenada. Estamos en Smart Client Graph y creamos un sistema de apoyo a autoridades y equipos de rescate. Un modelo de lenguaje en español que lee cada mensaje, aunque venga con falta de autografía, los convierte en datos. Por ejemplo, si cinco personas reportan el mismo derrumbe, lo une en un solo incidente y solo lo verifica cuando dos fuentes independientes coinciden en esta misma. Prioriza y siempre explica por qué. Por ejemplo, una patrulla y una ambulancia como sensores para detectar tales bloqueos o sugiere alguna ruta real. Además, conecta los tres órdenes de gobierno si la emergencia rebasa al municipio, al estado y a la federación. Estas entran viviendo en la misma información sin empezar de cero y si se cae el internet, sigue funcionando. Como impacto buscamos atender primero a la población más vulnerable con criterios técnicos y no por favoritismos. Nuestros clientes de protección civil municipal, estatal y federal, el C5 y equipos de rescate la ciudadanía nunca pagará. Empezamos con un convenio piloto entre la universidad y el gobierno y después con un contrato de servicio con niveles de calidad garantizados. El prototipo cuesta entre 51 y 121 mil pesos y nos apoyamos en socios como la coordinación nacional de protección civil, el Cenapred y el C5. Los países no necesitan otra app, necesitan que la información llegue ordenada a quien decide. Por eso no reemplazamos a nadie, usamos los formatos de protección civil, bien conocen y cada decisión la fira una persona. Denos un municipio insimulacro, los resultados hablarán por nosotros. Esmaltic Lane Grab, la tecnología ordena, la autoridad decide.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 5.12,
+   "text": "Son las 11.40 de la noche. Hay un sismo de 6.5. Protección civil recibe cientos de mensajes"
+  },
+  {
+   "start": 5.12,
+   "end": 9.64,
+   "text": "repetidos con faltas y algunos falsos. Hay una avenida bloqueada, una colonia a la que"
+  },
+  {
+   "start": 9.64,
+   "end": 14.12,
+   "text": "no le llega nada y se cae el internet. ¿A dónde mandamos primero a nuestros equipos?"
+  },
+  {
+   "start": 14.12,
+   "end": 18.8,
+   "text": "Lo vimos en el sismo del 2017 y en el huracán Otis. El problema no es solo tener"
+  },
+  {
+   "start": 18.8,
+   "end": 20.72,
+   "text": "recursos y decidir con información desordenada."
+  },
+  {
+   "start": 20.72,
+   "end": 25.56,
+   "text": "Estamos en Smart Client Graph y creamos un sistema de apoyo a autoridades y equipos"
+  },
+  {
+   "start": 25.56,
+   "end": 31.32,
+   "text": "de rescate. Un modelo de lenguaje en español que lee cada mensaje, aunque venga con"
+  },
+  {
+   "start": 31.32,
+   "end": 35.48,
+   "text": "falta de autografía, los convierte en datos. Por ejemplo, si cinco personas"
+  },
+  {
+   "start": 35.48,
+   "end": 40.72,
+   "text": "reportan el mismo derrumbe, lo une en un solo incidente y solo lo verifica"
+  },
+  {
+   "start": 40.72,
+   "end": 44.84,
+   "text": "cuando dos fuentes independientes coinciden en esta misma. Prioriza y"
+  },
+  {
+   "start": 44.84,
+   "end": 49.48,
+   "text": "siempre explica por qué. Por ejemplo, una patrulla y una ambulancia como sensores"
+  },
+  {
+   "start": 49.48,
+   "end": 57.08,
+   "text": "para detectar tales bloqueos o sugiere alguna ruta real. Además, conecta los"
+  },
+  {
+   "start": 57.08,
+   "end": 60.92,
+   "text": "tres órdenes de gobierno si la emergencia rebasa al municipio, al"
+  },
+  {
+   "start": 60.92,
+   "end": 65.2,
+   "text": "estado y a la federación. Estas entran viviendo en la misma"
+  },
+  {
+   "start": 65.2,
+   "end": 70.88,
+   "text": "información sin empezar de cero y si se cae el internet, sigue funcionando."
+  },
+  {
+   "start": 70.88,
+   "end": 73.6,
+   "text": "Como impacto buscamos atender primero a la población más"
+  },
+  {
+   "start": 73.6,
+   "end": 77.28,
+   "text": "vulnerable con criterios técnicos y no por favoritismos. Nuestros clientes"
+  },
+  {
+   "start": 77.28,
+   "end": 80.36,
+   "text": "de protección civil municipal, estatal y federal, el C5 y equipos de"
+  },
+  {
+   "start": 80.36,
+   "end": 83.88,
+   "text": "rescate la ciudadanía nunca pagará. Empezamos con un convenio piloto entre"
+  },
+  {
+   "start": 83.88,
+   "end": 86.08,
+   "text": "la universidad y el gobierno y después con un contrato de servicio"
+  },
+  {
+   "start": 86.08,
+   "end": 90.44,
+   "text": "con niveles de calidad garantizados. El prototipo cuesta entre 51 y 121 mil"
+  },
+  {
+   "start": 90.44,
+   "end": 93.24,
+   "text": "pesos y nos apoyamos en socios como la coordinación nacional de"
+  },
+  {
+   "start": 93.24,
+   "end": 97.48,
+   "text": "protección civil, el Cenapred y el C5. Los países no necesitan otra app,"
+  },
+  {
+   "start": 97.48,
+   "end": 101.16,
+   "text": "necesitan que la información llegue ordenada a quien decide. Por eso no"
+  },
+  {
+   "start": 101.16,
+   "end": 103.68,
+   "text": "reemplazamos a nadie, usamos los formatos de protección civil, bien"
+  },
+  {
+   "start": 103.68,
+   "end": 105.64,
+   "text": "conocen y cada decisión la fira una persona."
+  },
+  {
+   "start": 105.64,
+   "end": 109.32,
+   "text": "Denos un municipio insimulacro, los resultados hablarán por nosotros."
+  },
+  {
+   "start": 109.32,
+   "end": 114.4,
+   "text": "Esmaltic Lane Grab, la tecnología ordena, la autoridad decide."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 115.4
+}

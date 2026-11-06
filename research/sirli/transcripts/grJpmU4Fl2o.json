@@ -1,0 +1,119 @@
+{
+ "video_id": "grJpmU4Fl2o",
+ "url": "https://youtu.be/grJpmU4Fl2o?si=OjG33-FTNT0z_zIb",
+ "year": 2026,
+ "collection": "nacional",
+ "country": "BOLIVIA",
+ "team": "LOS 4 FANTASTICOS Y CELESTE",
+ "place_label": "TERCER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "nacional",
+   "place_label": "TERCER LUGAR",
+   "team": "LOS 4 FANTASTICOS Y CELESTE",
+   "challenge": "02 - SENSORES AL SERVICIO DE LA COMUNIDAD"
+  },
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "LOS 4 FANTASTICOS Y CELESTE",
+   "challenge": "02 - SENSORES AL SERVICIO DE LA COMUNIDAD"
+  }
+ ],
+ "fetched_at": "2026-11-06T20:15:41+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Moverse por Sucre no siempre es fácil. Los turistas desconocen las rutas de los transportes públicos, algunos pasajeros sufren recorridos incompletos y todos compartimos la misma pregunta. ¿Cuándo llegará el próximo micro? Bro, una pregunta. ¿Alguna vez un micro no completó su recorrido o te hizo bajar antes de acabar su línea? Oh, sí, más de una vez. Muchísimas, la verdad. Es un poco complicado para los turistas. No sabemos dónde va, no sabemos el nombre del vecino. Es un poco complicado saberlo. ¿Te crees que es una buena idea hacer un app para que los turistas y los que no saben cómo funciona el bus puedan ver las rutas y dónde está el próximo? Sí, sí, completamente. Los pasajeros no sufran ninguna adversidad. La energía del prototipo va conectada a la batería del bus para que esta funcione. Presentamos la app de Tilkibus. A veces en Sucre la gente no sabe por dónde va a pasar el micro o dónde está el más cercano. En nuestra app puedes ver esto en el mapa, todas las rutas y cuál es el micro más cercano a ti. Si quieres viajar de un lugar a otro puedes seleccionarlo en la app. También puedes ver qué opciones tienes de viaje, tomando en cuenta la cantidad de buses a tomar, el precio y la cantidad de personas. Una vez seleccionado el viaje puedes ver la mejor ruta a tomar. Si eres un conductor de bus puedes registrar tu micro para que pueda trabajar con la app de Tilkibus. Una vez registrado tu vehículo puedes iniciar el recorrido para que la gente pueda verlo en el mapa y tomar en cuenta la cantidad recorrida que diste en el viaje y cuánto combustible usaste. También puedes revisar que todos los sensores del equipo estén funcionando correctamente. Con tecnología accesible buscamos un transporte más informado, eficiente y sostenible para Sucre. Porque innovar no siempre significa crear algo desde cero, sino encontrar una nueva utilidad a lo que ya tenemos.",
+ "segments": [
+  {
+   "start": 0.05,
+   "end": 11.05,
+   "text": "Moverse por Sucre no siempre es fácil. Los turistas desconocen las rutas de los transportes públicos, algunos pasajeros sufren recorridos incompletos y todos compartimos la misma pregunta. ¿Cuándo llegará el próximo micro?"
+  },
+  {
+   "start": 11.05,
+   "end": 17.05,
+   "text": "Bro, una pregunta. ¿Alguna vez un micro no completó su recorrido o te hizo bajar antes de acabar su línea?"
+  },
+  {
+   "start": 17.05,
+   "end": 19.05,
+   "text": "Oh, sí, más de una vez. Muchísimas, la verdad."
+  },
+  {
+   "start": 19.05,
+   "end": 30.05,
+   "text": "Es un poco complicado para los turistas. No sabemos dónde va, no sabemos el nombre del vecino. Es un poco complicado saberlo."
+  },
+  {
+   "start": 30.05,
+   "end": 40.05,
+   "text": "¿Te crees que es una buena idea hacer un app para que los turistas y los que no saben cómo funciona el bus puedan ver las rutas y dónde está el próximo?"
+  },
+  {
+   "start": 40.05,
+   "end": 41.05,
+   "text": "Sí, sí, completamente."
+  },
+  {
+   "start": 49.05,
+   "end": 55.05,
+   "text": "Los pasajeros no sufran ninguna adversidad. La energía del prototipo va conectada a la batería del bus para que esta funcione."
+  },
+  {
+   "start": 55.05,
+   "end": 61.05,
+   "text": "Presentamos la app de Tilkibus. A veces en Sucre la gente no sabe por dónde va a pasar el micro o dónde está el más cercano."
+  },
+  {
+   "start": 61.05,
+   "end": 66.05,
+   "text": "En nuestra app puedes ver esto en el mapa, todas las rutas y cuál es el micro más cercano a ti."
+  },
+  {
+   "start": 66.05,
+   "end": 70.05,
+   "text": "Si quieres viajar de un lugar a otro puedes seleccionarlo en la app."
+  },
+  {
+   "start": 70.05,
+   "end": 77.05,
+   "text": "También puedes ver qué opciones tienes de viaje, tomando en cuenta la cantidad de buses a tomar, el precio y la cantidad de personas."
+  },
+  {
+   "start": 77.05,
+   "end": 80.05,
+   "text": "Una vez seleccionado el viaje puedes ver la mejor ruta a tomar."
+  },
+  {
+   "start": 80.05,
+   "end": 86.05,
+   "text": "Si eres un conductor de bus puedes registrar tu micro para que pueda trabajar con la app de Tilkibus."
+  },
+  {
+   "start": 86.05,
+   "end": 97.05,
+   "text": "Una vez registrado tu vehículo puedes iniciar el recorrido para que la gente pueda verlo en el mapa y tomar en cuenta la cantidad recorrida que diste en el viaje y cuánto combustible usaste."
+  },
+  {
+   "start": 97.05,
+   "end": 101.05,
+   "text": "También puedes revisar que todos los sensores del equipo estén funcionando correctamente."
+  },
+  {
+   "start": 102.05,
+   "end": 107.05,
+   "text": "Con tecnología accesible buscamos un transporte más informado, eficiente y sostenible para Sucre."
+  },
+  {
+   "start": 107.05,
+   "end": 112.05,
+   "text": "Porque innovar no siempre significa crear algo desde cero, sino encontrar una nueva utilidad a lo que ya tenemos."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 118.0
+}

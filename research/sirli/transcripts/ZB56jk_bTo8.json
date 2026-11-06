@@ -1,0 +1,154 @@
+{
+ "video_id": "ZB56jk_bTo8",
+ "url": "https://youtu.be/ZB56jk_bTo8",
+ "year": 2022,
+ "collection": "nacional",
+ "country": "ECUADOR",
+ "team": "LEGIÓN 501",
+ "place_label": "TERCER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "nacional",
+   "place_label": "TERCER LUGAR",
+   "team": "LEGIÓN 501",
+   "challenge": "04 - AHORRO ENERGÉTICO EN EL SECTOR GASTRONÓMICO"
+  },
+  {
+   "year": 2022,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "LEGIÓN 501",
+   "challenge": "04 - AHORRO ENERGÉTICO EN EL SECTOR GASTRONÓMICO"
+  }
+ ],
+ "fetched_at": "2026-11-06T21:51:08+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "El mundo entero está pasando por épocas muy duras debido a la crisis global energética. Hoy por hoy casi cualquier actividad que realicemos conlleva un cierto porcentaje de energía. Realizando estudios llegamos a deducir que un restaurante convencional gasta un aproximado de 6.600 dólares anualmente de energía convencional. Nuestra propuesta pretende reducir este costo hasta un 65% mediante un sistema llamado Ailer, ahorrador de energía limpia para el restaurante. Una forma innovadora de crear energía a partir de nuestro entorno creando un sistema que sea auto sustentable y que a la vez reduzca la contaminación ambiental. Nuestro sistema consta de generador eólico. Hemos mejorado el modelo convencional adaptándolo al entorno urbano con una inversión de 400 dólares. Valdosas pisoeléctricas está compuesta por baldosas de fibras de vidrio que al momento de accionarlas genera una diferencial de energía equivalente a medio watts por hora con una inversión baja y una duración estimada de 5 años. Filtros de agua residuales. Una persona por medio desperdicia 100 litros de agua al día la cual podríamos reutilizarla mediante un filtro de agua que a la vez genera energía hidráulica. Banco de energía. Diseñamos una zona de batería donde la energía de cada elemento llega a esta área para alimentar el restaurante haciendo que incluso sin energía pueda estar en completo funcionamiento. Placas HHO. Este sistema está compuesto por placas acero inoxidable lo que genera un proceso químico llamado electrolisis y son alimentados por el banco de batería creando suficiente hidrógeno para que funcione el generador de gasolina. Y por último un generador de gasolina es administrado por las placas HHO que anteriormente hemos explicado. En conclusión es un proyecto que tiene un costo de inversión de 2500 dólares dándonos un ahorro de 4000 dólares en comparación a la energía que normalmente utilizamos produciendo hasta 600 mil watts de energía anualmente lo que fácilmente nos puede abastecer un restaurante genérico de 12 metros cuadrados",
+ "segments": [
+  {
+   "start": 0.14,
+   "end": 4.82,
+   "text": "El mundo entero está pasando por épocas muy duras debido a la crisis global energética."
+  },
+  {
+   "start": 4.82,
+   "end": 9.26,
+   "text": "Hoy por hoy casi cualquier actividad que realicemos conlleva un cierto porcentaje de"
+  },
+  {
+   "start": 9.26,
+   "end": 14.06,
+   "text": "energía. Realizando estudios llegamos a deducir que un restaurante convencional"
+  },
+  {
+   "start": 14.06,
+   "end": 18.54,
+   "text": "gasta un aproximado de 6.600 dólares anualmente de energía convencional."
+  },
+  {
+   "start": 18.54,
+   "end": 25.46,
+   "text": "Nuestra propuesta pretende reducir este costo hasta un 65% mediante un sistema llamado"
+  },
+  {
+   "start": 25.46,
+   "end": 30.66,
+   "text": "Ailer, ahorrador de energía limpia para el restaurante. Una forma innovadora de crear"
+  },
+  {
+   "start": 30.66,
+   "end": 36.1,
+   "text": "energía a partir de nuestro entorno creando un sistema que sea auto sustentable y que a"
+  },
+  {
+   "start": 36.1,
+   "end": 40.42,
+   "text": "la vez reduzca la contaminación ambiental. Nuestro sistema consta de generador eólico."
+  },
+  {
+   "start": 40.42,
+   "end": 44.66,
+   "text": "Hemos mejorado el modelo convencional adaptándolo al entorno urbano con una"
+  },
+  {
+   "start": 44.66,
+   "end": 49.18,
+   "text": "inversión de 400 dólares. Valdosas pisoeléctricas está compuesta por"
+  },
+  {
+   "start": 49.18,
+   "end": 52.78,
+   "text": "baldosas de fibras de vidrio que al momento de accionarlas genera una"
+  },
+  {
+   "start": 52.78,
+   "end": 57.9,
+   "text": "diferencial de energía equivalente a medio watts por hora con una inversión baja y una"
+  },
+  {
+   "start": 57.9,
+   "end": 64.66,
+   "text": "duración estimada de 5 años. Filtros de agua residuales. Una persona por medio desperdicia"
+  },
+  {
+   "start": 64.66,
+   "end": 69.38,
+   "text": "100 litros de agua al día la cual podríamos reutilizarla mediante un filtro de agua que a"
+  },
+  {
+   "start": 69.38,
+   "end": 74.22,
+   "text": "la vez genera energía hidráulica. Banco de energía. Diseñamos una zona de batería"
+  },
+  {
+   "start": 74.22,
+   "end": 78.98,
+   "text": "donde la energía de cada elemento llega a esta área para alimentar el restaurante"
+  },
+  {
+   "start": 79.18,
+   "end": 84.46,
+   "text": "haciendo que incluso sin energía pueda estar en completo funcionamiento. Placas HHO. Este"
+  },
+  {
+   "start": 84.46,
+   "end": 88.58,
+   "text": "sistema está compuesto por placas acero inoxidable lo que genera un proceso químico"
+  },
+  {
+   "start": 88.58,
+   "end": 93.5,
+   "text": "llamado electrolisis y son alimentados por el banco de batería creando suficiente"
+  },
+  {
+   "start": 93.5,
+   "end": 99.06,
+   "text": "hidrógeno para que funcione el generador de gasolina. Y por último un generador de gasolina"
+  },
+  {
+   "start": 99.06,
+   "end": 104.34,
+   "text": "es administrado por las placas HHO que anteriormente hemos explicado. En conclusión es un proyecto"
+  },
+  {
+   "start": 104.54,
+   "end": 109.94,
+   "text": "que tiene un costo de inversión de 2500 dólares dándonos un ahorro de 4000 dólares en comparación"
+  },
+  {
+   "start": 109.94,
+   "end": 114.02,
+   "text": "a la energía que normalmente utilizamos produciendo hasta 600 mil watts de energía"
+  },
+  {
+   "start": 114.02,
+   "end": 119.3,
+   "text": "anualmente lo que fácilmente nos puede abastecer un restaurante genérico de 12 metros cuadrados"
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.3
+}

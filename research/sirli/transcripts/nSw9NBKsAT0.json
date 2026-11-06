@@ -1,0 +1,134 @@
+{
+ "video_id": "nSw9NBKsAT0",
+ "url": "https://youtu.be/nSw9NBKsAT0",
+ "year": 2026,
+ "collection": "nacional",
+ "country": "ARGENTINA",
+ "team": "NONABEACH",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "nacional",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "NONABEACH",
+   "challenge": "07 - REUTILIZACIÓN DE ACEITE DOMÉSTICO"
+  },
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "NONABEACH",
+   "challenge": "07 - REUTILIZACIÓN DE ACEITE DOMÉSTICO"
+  }
+ ],
+ "fetched_at": "2026-11-06T20:13:17+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Un litro de aceite contamina 40.000 litros de agua. Hoy estos residuos terminan en nuestros desagües tapando nuestras cañerías. El verdadero desafío es la recolección domiciliaria. Por eso creamos puntos limpios impulsados por una app, transformando un problema en un hábito recompensado donde los vecinos canjean su aceite por descuentos en comercios locales. A diferencia de otras tecnologías como el biodiesel, que es muy caro y muy peligroso de hacer por sus químicos, nosotros lo que proponemos es rejuvenecer el asfalto con aceite viejo. En calles que necesitan repavimentación, se levanta y tritura el asfalto dañado. El aceite reciclado, filtrado y tratado térmicamente se mezcla con este material. El aceite actúa como un agente rejuvenecedor, que le devuelve la elasticidad al betún reseco, permitiendo que vuelva a unir las piedras a la perfección. Con esta opción el municipio va a ahorrar el sustituto y el uso de petroquímicos caros por un residuo bajo costo, reduce gastos por desobstrucción cloacal y evita utilizar piedra anuada de cantera. Además, se realiza en las plantas de asfalto ya existentes mediante un sistema de filtrado simple. Obtenemos una solución doble cuando utilizamos el aceite doméstico mientras repavimentamos la ciudad. Con esto, tenemos una mejora en nuestra economía con una solución ambiental y sustentable.",
+ "segments": [
+  {
+   "start": 2.45,
+   "end": 5.41,
+   "text": "Un litro de aceite contamina 40.000 litros de agua."
+  },
+  {
+   "start": 5.41,
+   "end": 9.41,
+   "text": "Hoy estos residuos terminan en nuestros desagües tapando nuestras cañerías."
+  },
+  {
+   "start": 9.41,
+   "end": 14.7,
+   "text": "El verdadero desafío es la recolección domiciliaria."
+  },
+  {
+   "start": 14.7,
+   "end": 18.14,
+   "text": "Por eso creamos puntos limpios impulsados por una app,"
+  },
+  {
+   "start": 18.14,
+   "end": 21.34,
+   "text": "transformando un problema en un hábito recompensado"
+  },
+  {
+   "start": 21.34,
+   "end": 25.1,
+   "text": "donde los vecinos canjean su aceite por descuentos en comercios locales."
+  },
+  {
+   "start": 25.1,
+   "end": 32.02,
+   "text": "A diferencia de otras tecnologías como el biodiesel, que es muy caro"
+  },
+  {
+   "start": 32.02,
+   "end": 34.18,
+   "text": "y muy peligroso de hacer por sus químicos,"
+  },
+  {
+   "start": 34.34,
+   "end": 38.34,
+   "text": "nosotros lo que proponemos es rejuvenecer el asfalto con aceite viejo."
+  },
+  {
+   "start": 38.34,
+   "end": 49.2,
+   "text": "En calles que necesitan repavimentación, se levanta y tritura el asfalto dañado."
+  },
+  {
+   "start": 49.2,
+   "end": 55.2,
+   "text": "El aceite reciclado, filtrado y tratado térmicamente se mezcla con este material."
+  },
+  {
+   "start": 55.2,
+   "end": 59.2,
+   "text": "El aceite actúa como un agente rejuvenecedor,"
+  },
+  {
+   "start": 59.2,
+   "end": 61.2,
+   "text": "que le devuelve la elasticidad al betún reseco,"
+  },
+  {
+   "start": 61.2,
+   "end": 64.4,
+   "text": "permitiendo que vuelva a unir las piedras a la perfección."
+  },
+  {
+   "start": 65.97,
+   "end": 69.97,
+   "text": "Con esta opción el municipio va a ahorrar el sustituto y el uso de petroquímicos caros"
+  },
+  {
+   "start": 69.97,
+   "end": 73.97,
+   "text": "por un residuo bajo costo, reduce gastos por desobstrucción cloacal"
+  },
+  {
+   "start": 73.97,
+   "end": 75.97,
+   "text": "y evita utilizar piedra anuada de cantera."
+  },
+  {
+   "start": 75.97,
+   "end": 81.97,
+   "text": "Además, se realiza en las plantas de asfalto ya existentes mediante un sistema de filtrado simple."
+  },
+  {
+   "start": 81.97,
+   "end": 87.97,
+   "text": "Obtenemos una solución doble cuando utilizamos el aceite doméstico mientras repavimentamos la ciudad."
+  },
+  {
+   "start": 87.97,
+   "end": 93.97,
+   "text": "Con esto, tenemos una mejora en nuestra economía con una solución ambiental y sustentable."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 102.1
+}

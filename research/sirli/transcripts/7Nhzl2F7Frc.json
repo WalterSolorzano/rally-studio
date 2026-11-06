@@ -1,0 +1,33 @@
+{
+ "video_id": "7Nhzl2F7Frc",
+ "url": "https://www.youtube.com/watch?v=7Nhzl2F7Frc",
+ "year": 2021,
+ "collection": "nacional",
+ "country": "COSTA RICA",
+ "team": "EQUIPO DINÁMITA - ULACIT (CR)",
+ "place_label": "TERCER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "nacional",
+   "place_label": "TERCER LUGAR",
+   "team": "EQUIPO DINÁMITA - ULACIT (CR)",
+   "challenge": "10 - ¿QUÉ HACER CON TU MASCARILLA, BARBIJO O CUBREBOCAS?"
+  },
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "EQUIPO DINÁMITA - ULACIT (CR)",
+   "challenge": "10 - ¿QUÉ HACER CON TU MASCARILLA, BARBIJO O CUBREBOCAS?"
+  }
+ ],
+ "fetched_at": "2026-11-06T22:17:25+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "",
+ "segments": [],
+ "has_info": false,
+ "duration_s": 93.1
+}

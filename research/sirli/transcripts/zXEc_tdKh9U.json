@@ -1,0 +1,124 @@
+{
+ "video_id": "zXEc_tdKh9U",
+ "url": "https://youtu.be/zXEc_tdKh9U",
+ "year": 2026,
+ "collection": "nacional",
+ "country": "EL SALVADOR",
+ "team": "REVOLT",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "REVOLT",
+   "challenge": "01 - SEGUNDA VIDA DE LOS MOTORES ELÉCTRICOS DOMÉSTICOS"
+  },
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "REVOLT",
+   "challenge": "01 - SEGUNDA VIDA DE LOS MOTORES ELÉCTRICOS DOMÉSTICOS"
+  }
+ ],
+ "fetched_at": "2026-11-06T20:27:00+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "¿Alguna vez te has preguntado qué sucede con los motores eléctricos domésticos cuando ya no están en uso? Pues nosotros sí, pero la respuesta no es tan buena. Es por ello que creamos ReVolt, un sistema de compostaje con motores de electrodomésticos recuperados. Las estadísticas muestran que el abuso de agroquímicos daña la tierra y es económicamente insostenible para el pequeño agricultor. Y la alternativa es producir composta propia con residuos que ya se tienen, como el rastrovo, mazorca, zacate y caña. Pero para llevarse a cabo, hace falta una herramienta accesible que acelere la degradación de la materia y haga viable producir abono propio. Es ahí donde entra ReVolt, un sistema que integra tres máquinas de compostaje. Una trituradora agrícola con motor de lavadora reutilizado, una trituradora doméstica con motor de licuadora y una mezcladora que combina los residuos triturados con tierra, estiércol y agua para producir composta. El primer elemento es la trituradora agrícola ReVolt. Utiliza un motor de lavadora reutilizado y cuchillas de acero reciclado para triturar residuos agrícolas en trozos pequeños, facilitando la etapa inicial del compostaje al acelerar la descomposición de los materiales orgánicos y favorecer la producción de abono natural. Luego, el segundo elemento es la trituradora doméstica ReVolt. Utiliza un motor de licuadora reutilizado y también cuchillas de acero reciclado para procesar cáscaras y aprovechar los residuos orgánicos que normalmente terminan en la basura. Y el último elemento es la mezcladora, que combina los residuos orgánicos triturados con tierra, estiércol y agua, distribuyendo los materiales de manera uniforme para una composta de mejor calidad. Esto es ReVolt, una mezcla de beneficios ambientales, económicos y sociales, porque una segunda vida para los motores es una nueva oportunidad para la tierra.",
+ "segments": [
+  {
+   "start": 0.08,
+   "end": 6.94,
+   "text": "¿Alguna vez te has preguntado qué sucede con los motores eléctricos domésticos cuando ya no están en uso?"
+  },
+  {
+   "start": 6.94,
+   "end": 11.12,
+   "text": "Pues nosotros sí, pero la respuesta no es tan buena."
+  },
+  {
+   "start": 11.12,
+   "end": 18.72,
+   "text": "Es por ello que creamos ReVolt, un sistema de compostaje con motores de electrodomésticos recuperados."
+  },
+  {
+   "start": 18.72,
+   "end": 26.48,
+   "text": "Las estadísticas muestran que el abuso de agroquímicos daña la tierra y es económicamente insostenible para el pequeño agricultor."
+  },
+  {
+   "start": 26.68,
+   "end": 34.92,
+   "text": "Y la alternativa es producir composta propia con residuos que ya se tienen, como el rastrovo, mazorca, zacate y caña."
+  },
+  {
+   "start": 34.92,
+   "end": 43.28,
+   "text": "Pero para llevarse a cabo, hace falta una herramienta accesible que acelere la degradación de la materia y haga viable producir abono propio."
+  },
+  {
+   "start": 43.28,
+   "end": 49.48,
+   "text": "Es ahí donde entra ReVolt, un sistema que integra tres máquinas de compostaje."
+  },
+  {
+   "start": 49.48,
+   "end": 56.28,
+   "text": "Una trituradora agrícola con motor de lavadora reutilizado, una trituradora doméstica con motor de licuadora"
+  },
+  {
+   "start": 56.28,
+   "end": 63.28,
+   "text": "y una mezcladora que combina los residuos triturados con tierra, estiércol y agua para producir composta."
+  },
+  {
+   "start": 63.28,
+   "end": 66.88,
+   "text": "El primer elemento es la trituradora agrícola ReVolt."
+  },
+  {
+   "start": 66.88,
+   "end": 74.58,
+   "text": "Utiliza un motor de lavadora reutilizado y cuchillas de acero reciclado para triturar residuos agrícolas en trozos pequeños,"
+  },
+  {
+   "start": 74.78,
+   "end": 82.78,
+   "text": "facilitando la etapa inicial del compostaje al acelerar la descomposición de los materiales orgánicos y favorecer la producción de abono natural."
+  },
+  {
+   "start": 82.78,
+   "end": 87.38,
+   "text": "Luego, el segundo elemento es la trituradora doméstica ReVolt."
+  },
+  {
+   "start": 87.38,
+   "end": 98.58,
+   "text": "Utiliza un motor de licuadora reutilizado y también cuchillas de acero reciclado para procesar cáscaras y aprovechar los residuos orgánicos que normalmente terminan en la basura."
+  },
+  {
+   "start": 98.58,
+   "end": 105.18,
+   "text": "Y el último elemento es la mezcladora, que combina los residuos orgánicos triturados con tierra, estiércol y agua,"
+  },
+  {
+   "start": 105.18,
+   "end": 110.18,
+   "text": "distribuyendo los materiales de manera uniforme para una composta de mejor calidad."
+  },
+  {
+   "start": 110.18,
+   "end": 115.18,
+   "text": "Esto es ReVolt, una mezcla de beneficios ambientales, económicos y sociales,"
+  },
+  {
+   "start": 115.18,
+   "end": 120.18,
+   "text": "porque una segunda vida para los motores es una nueva oportunidad para la tierra."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.9
+}

@@ -1,0 +1,169 @@
+{
+ "video_id": "SjQaQeALKLU",
+ "url": "https://youtu.be/SjQaQeALKLU",
+ "year": 2026,
+ "collection": "nacional",
+ "country": "VENEZUELA",
+ "team": "PROYECTONIC",
+ "place_label": "TERCER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "nacional",
+   "place_label": "TERCER LUGAR",
+   "team": "PROYECTONIC",
+   "challenge": "09 - OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA"
+  },
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "PROYECTONIC",
+   "challenge": "09 - OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA"
+  }
+ ],
+ "fetched_at": "2026-11-06T20:31:49+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Tras un evento catastrófico, como un terremoto, una inundación o un deslave, las comunicaciones colapsan por completo y los accesos quedan bloqueados. En esas primeras horas críticas, los comités de rescate se desbordan y toman decisiones a ciegas, sin saber en qué sector actuarán primero. Para resolverlo desarrollamos un sistema de monitoreo multiriesgo mediante red de sensores para la coordinación de equipos de rescate post-desastre. Es una solución autónoma que opera sin internet ni red celular. Desplegamos una red de malla de radiofrecuencia de 10 km para emitir datos de impacto contínuo. Nuestro sistema mantiene un diseño práctico de fácil mantenimiento y componentes accesibles, además del bajo costo, y la confiabilidad de enviar datos clave y así salvaguardar a la población. Este dispositivo utiliza un ESP32S3 como controlante principal, sensores de movimiento para vibraciones y sismos, además de módulos para detectar sonidos y lluvias. Transmiten mediante comunicación en long range sin internet y cuenta con alimentación solar, además de una batería de recuadro. Esta información llega directamente a nuestro software, el cual también fue entregado a las autoridades locales. En sismos o terremotos prioriza zonas con edificaciones verticales por riesgo de aplastamiento estructural. En deslaves e inundaciones redirige botes y bombas a viviendas bajas y centro de salud, asignando recursos de inmediato. Este sistema reúne una cantidad de datos de la zona y realiza una precisión adaptativa según el evento detectado, ya sea en sismos, terremotos, deslaves o inundaciones. Con un costo de 260 dólares al de tal y 175 dólares a mayor a partir de 5 en unidad, permitimos que los municipios desplieguen redes completas que evitan gastos al enviar recursos a ciegas. Socialmente nos encargamos de localizar en minutos a comunidades que no tienen comunicación donde el tiempo es vida. Transformamos datos en decisiones rápidas que salvan vidas. Nosotros somos el equipo Proyectroni. Bienvenidos al Comunitar de Innovación 2016. Este es nuestro diseño productoral.",
+ "segments": [
+  {
+   "start": 0.66,
+   "end": 5.06,
+   "text": "Tras un evento catastrófico, como un terremoto, una inundación o un deslave,"
+  },
+  {
+   "start": 5.06,
+   "end": 9.06,
+   "text": "las comunicaciones colapsan por completo y los accesos quedan bloqueados."
+  },
+  {
+   "start": 9.06,
+   "end": 14.26,
+   "text": "En esas primeras horas críticas, los comités de rescate se desbordan y toman decisiones a ciegas,"
+  },
+  {
+   "start": 14.26,
+   "end": 17.06,
+   "text": "sin saber en qué sector actuarán primero."
+  },
+  {
+   "start": 18.06,
+   "end": 23.66,
+   "text": "Para resolverlo desarrollamos un sistema de monitoreo multiriesgo mediante red de sensores"
+  },
+  {
+   "start": 23.66,
+   "end": 27.26,
+   "text": "para la coordinación de equipos de rescate post-desastre."
+  },
+  {
+   "start": 27.26,
+   "end": 31.06,
+   "text": "Es una solución autónoma que opera sin internet ni red celular."
+  },
+  {
+   "start": 31.06,
+   "end": 37.06,
+   "text": "Desplegamos una red de malla de radiofrecuencia de 10 km para emitir datos de impacto contínuo."
+  },
+  {
+   "start": 38.06,
+   "end": 42.46,
+   "text": "Nuestro sistema mantiene un diseño práctico de fácil mantenimiento y componentes accesibles,"
+  },
+  {
+   "start": 42.46,
+   "end": 48.66,
+   "text": "además del bajo costo, y la confiabilidad de enviar datos clave y así salvaguardar a la población."
+  },
+  {
+   "start": 48.66,
+   "end": 56.66,
+   "text": "Este dispositivo utiliza un ESP32S3 como controlante principal,"
+  },
+  {
+   "start": 57.06,
+   "end": 62.66,
+   "text": "sensores de movimiento para vibraciones y sismos, además de módulos para detectar sonidos y lluvias."
+  },
+  {
+   "start": 62.66,
+   "end": 65.26,
+   "text": "Transmiten mediante comunicación en long range sin internet"
+  },
+  {
+   "start": 65.26,
+   "end": 68.86,
+   "text": "y cuenta con alimentación solar, además de una batería de recuadro."
+  },
+  {
+   "start": 68.86,
+   "end": 73.46,
+   "text": "Esta información llega directamente a nuestro software, el cual también fue entregado a las autoridades locales."
+  },
+  {
+   "start": 73.46,
+   "end": 78.46,
+   "text": "En sismos o terremotos prioriza zonas con edificaciones verticales por riesgo de aplastamiento estructural."
+  },
+  {
+   "start": 78.46,
+   "end": 82.46,
+   "text": "En deslaves e inundaciones redirige botes y bombas a viviendas bajas y centro de salud,"
+  },
+  {
+   "start": 82.46,
+   "end": 84.46,
+   "text": "asignando recursos de inmediato."
+  },
+  {
+   "start": 84.46,
+   "end": 88.66,
+   "text": "Este sistema reúne una cantidad de datos de la zona y realiza una precisión adaptativa"
+  },
+  {
+   "start": 88.66,
+   "end": 92.66,
+   "text": "según el evento detectado, ya sea en sismos, terremotos, deslaves o inundaciones."
+  },
+  {
+   "start": 92.66,
+   "end": 97.46,
+   "text": "Con un costo de 260 dólares al de tal y 175 dólares a mayor a partir de 5 en unidad,"
+  },
+  {
+   "start": 97.46,
+   "end": 102.46,
+   "text": "permitimos que los municipios desplieguen redes completas que evitan gastos al enviar recursos a ciegas."
+  },
+  {
+   "start": 102.46,
+   "end": 107.66,
+   "text": "Socialmente nos encargamos de localizar en minutos a comunidades que no tienen comunicación donde el tiempo es vida."
+  },
+  {
+   "start": 107.66,
+   "end": 111.26,
+   "text": "Transformamos datos en decisiones rápidas que salvan vidas."
+  },
+  {
+   "start": 111.26,
+   "end": 113.66,
+   "text": "Nosotros somos el equipo Proyectroni."
+  },
+  {
+   "start": 113.86,
+   "end": 116.86,
+   "text": "Bienvenidos al Comunitar de Innovación 2016."
+  },
+  {
+   "start": 116.86,
+   "end": 118.86,
+   "text": "Este es nuestro diseño productoral."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.0
+}

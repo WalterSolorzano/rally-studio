@@ -1,0 +1,159 @@
+{
+ "video_id": "NEiomDWHBj4",
+ "url": "https://youtu.be/NEiomDWHBj4?si=1YoOs7fOshClZO0J",
+ "year": 2025,
+ "collection": "nacional",
+ "country": "COSTA RICA",
+ "team": "BUMBLEBLEE",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "BUMBLEBLEE",
+   "challenge": "05 - HUERTOS VERTICALES"
+  },
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "BUMBLEBLEE",
+   "challenge": "05 - HUERTOS VERTICALES"
+  }
+ ],
+ "fetched_at": "2026-11-06T20:43:59+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "El desafío es huertas verticales. La problemática es el poco espacio en las zonas urbanas y la escasez de agua para el cultivo de alimentos, la cual es causado por el crecimiento de la población, la expansión de la infraestructura, espacios cada vez más pequeños para distribuir de mejor manera las viviendas y también la falta de conciencia ambiental. Por ello, como solución se propone crear una techno biojardinera con materiales reciclados y con algunas plantas que funcionen para absorber químicos y minerales de las aguas residuales y con la inclusión de tecnología que permita que funcione de manera efectiva. Esta propuesta tiene como impacto social fomentar la educación ambiental y promover la convivencia comunitaria, proporciona también alimentos frescos y orgánicos, además de que contribuye con el reciclaje y reduce el consumo de agua potable para el cuidado de las huertas. Esta propuesta es innovadora ya que combina la tecnología con plantas de manera eficaz. Entre los materiales reciclados podemos contar con el bambú y como parte tecnológica se cuenta con sensores que ayudan a controlar el nivel del agua almacenada para el riego. Estos pueden ser el arduino y sensores como bluetooth. Además permite que las personas puedan participar activamente en el cuidado de la huerta, lo que contribuye a la educación ambiental de los más pequeños y crear conciencia ecológica en la comunidad. Esta propuesta es sostenible y económica ya que los componentes necesarios no son tan costosos y permiten que resalten aspectos positivos tales como el fortalecimiento intrapersonales de las comunidades y estimula la creatividad y la innovación al buscar soluciones tecnológicas sostenibles adaptadas a las necesidades locales.",
+ "segments": [
+  {
+   "start": 0.21,
+   "end": 4.83,
+   "text": "El desafío es huertas verticales. La problemática es el poco espacio en las"
+  },
+  {
+   "start": 4.83,
+   "end": 9.31,
+   "text": "zonas urbanas y la escasez de agua para el cultivo de alimentos, la cual es"
+  },
+  {
+   "start": 9.31,
+   "end": 13.13,
+   "text": "causado por el crecimiento de la población, la expansión de la"
+  },
+  {
+   "start": 13.13,
+   "end": 17.31,
+   "text": "infraestructura, espacios cada vez más pequeños para distribuir de mejor"
+  },
+  {
+   "start": 17.31,
+   "end": 23.39,
+   "text": "manera las viviendas y también la falta de conciencia ambiental. Por ello,"
+  },
+  {
+   "start": 23.39,
+   "end": 29.33,
+   "text": "como solución se propone crear una techno biojardinera con materiales"
+  },
+  {
+   "start": 29.33,
+   "end": 35.25,
+   "text": "reciclados y con algunas plantas que funcionen para absorber químicos y"
+  },
+  {
+   "start": 35.25,
+   "end": 39.85,
+   "text": "minerales de las aguas residuales y con la inclusión de tecnología que"
+  },
+  {
+   "start": 39.85,
+   "end": 44.81,
+   "text": "permita que funcione de manera efectiva. Esta propuesta tiene como"
+  },
+  {
+   "start": 44.81,
+   "end": 50.53,
+   "text": "impacto social fomentar la educación ambiental y promover la convivencia"
+  },
+  {
+   "start": 50.53,
+   "end": 54.61,
+   "text": "comunitaria, proporciona también alimentos frescos y orgánicos,"
+  },
+  {
+   "start": 54.61,
+   "end": 59.57,
+   "text": "además de que contribuye con el reciclaje y reduce el consumo de agua"
+  },
+  {
+   "start": 59.57,
+   "end": 65.65,
+   "text": "potable para el cuidado de las huertas. Esta propuesta es innovadora ya que"
+  },
+  {
+   "start": 65.65,
+   "end": 70.73,
+   "text": "combina la tecnología con plantas de manera eficaz. Entre los materiales"
+  },
+  {
+   "start": 70.73,
+   "end": 75.41,
+   "text": "reciclados podemos contar con el bambú y como parte tecnológica se"
+  },
+  {
+   "start": 75.41,
+   "end": 79.33,
+   "text": "cuenta con sensores que ayudan a controlar el nivel del agua almacenada"
+  },
+  {
+   "start": 79.33,
+   "end": 86.05,
+   "text": "para el riego. Estos pueden ser el arduino y sensores como bluetooth. Además"
+  },
+  {
+   "start": 86.05,
+   "end": 90.53,
+   "text": "permite que las personas puedan participar activamente en el cuidado de"
+  },
+  {
+   "start": 90.53,
+   "end": 93.69,
+   "text": "la huerta, lo que contribuye a la educación ambiental de los más"
+  },
+  {
+   "start": 93.69,
+   "end": 97.77,
+   "text": "pequeños y crear conciencia ecológica en la comunidad. Esta propuesta es"
+  },
+  {
+   "start": 97.77,
+   "end": 101.21,
+   "text": "sostenible y económica ya que los componentes necesarios no son tan"
+  },
+  {
+   "start": 101.21,
+   "end": 105.01,
+   "text": "costosos y permiten que resalten aspectos positivos tales como el"
+  },
+  {
+   "start": 105.05,
+   "end": 109.89,
+   "text": "fortalecimiento intrapersonales de las comunidades y estimula la"
+  },
+  {
+   "start": 109.89,
+   "end": 114.05,
+   "text": "creatividad y la innovación al buscar soluciones tecnológicas"
+  },
+  {
+   "start": 114.05,
+   "end": 117.69,
+   "text": "sostenibles adaptadas a las necesidades locales."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 117.7
+}

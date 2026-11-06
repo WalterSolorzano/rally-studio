@@ -1,0 +1,199 @@
+{
+ "video_id": "26OAqWcfCek",
+ "url": "https://youtu.be/26OAqWcfCek?si=huuio_jsBG9dGfWW",
+ "year": 2023,
+ "collection": "nacional",
+ "country": "COSTA RICA",
+ "team": "GEOPIN",
+ "place_label": "TERCER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "nacional",
+   "place_label": "TERCER LUGAR",
+   "team": "GEOPIN",
+   "challenge": "02 - SIEMPRE EN CONTACTO"
+  },
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "GEOPIN",
+   "challenge": "02 - SIEMPRE EN CONTACTO"
+  }
+ ],
+ "fetched_at": "2026-11-06T21:25:41+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "¿Sabías que, según el Consejo Nacional de Viajes y Turismos, el turismo en Latinoamérica representará el 7.9% de su economía total en 2023? Según la Organización Internacional de Turismo, un alto porcentaje de turismo de aventura en Latinoamérica se ve expuesto a sufrir accidentes, esto debido a la cantidad de fenómenos climatológicos que se enfrentan y también por no poder pedir ayuda a tiempo debido a opciones de localización. Lo anteriormente mencionado también aplica a trabajadores que operan en zonas ineditas, es por eso que hemos decidido crear un dispositivo de bajo costo sin acceso de internet que nos permita localizar y también identificar si su vida está en peligro. Déjame contarnos. La propuesta se basa en un cover de teléfono que integre ondas cortas que funcione con frecuencia AM, amplitud modulada, y que adicionalmente en la parte inferior tenga un panel solar que sirva para transmitirle carga al teléfono a través de tecnología NFC. Lo anteriormente mencionado servirá para que el usuario pueda enviar mensajes de SOS, señal internacional de ayuda al oprimir un botón al equipo internacional de rescate a través de ondas satelitales para que lo puedan localizar con mayor precisión. Adicionalmente le permitirá al usuario también tener su teléfono celular con carga. Este cover se prevé que sea de un material liviano y también responsable con el medio ambiente. Nuestra solución planteada impactará a nivel social en bienestar, seguridad y respuesta rápida, rescatando vidas y mitigando riesgos en el turismo de aventura y también en el trabajo en zonas idélicas. A nivel ambiental también tendrá un impacto positivo ya que no necesita infraestructuras, preserva la naturaleza y conserva los ecosistemas. Se presenta una idea innovadora, multifacética y colaborativa que rescate tecnologías de vanguardia e incluye otras tecnologías bajo un principio sostenible. Somos Geopin, de Universidad Latina de Costa Rica. Eligimos el desafío número dos y trabajamos en una propuesta que incluye la sostenibilidad, aceptabilidad social y viabilidad económica.",
+ "segments": [
+  {
+   "start": 0.21,
+   "end": 5.29,
+   "text": "¿Sabías que, según el Consejo Nacional de Viajes y Turismos, el turismo en Latinoamérica"
+  },
+  {
+   "start": 5.29,
+   "end": 10.37,
+   "text": "representará el 7.9% de su economía total en 2023?"
+  },
+  {
+   "start": 10.37,
+   "end": 15.13,
+   "text": "Según la Organización Internacional de Turismo, un alto porcentaje de turismo de"
+  },
+  {
+   "start": 15.13,
+   "end": 19.89,
+   "text": "aventura en Latinoamérica se ve expuesto a sufrir accidentes, esto debido a la"
+  },
+  {
+   "start": 19.89,
+   "end": 23.41,
+   "text": "cantidad de fenómenos climatológicos que se enfrentan y también por no poder"
+  },
+  {
+   "start": 23.41,
+   "end": 26.61,
+   "text": "pedir ayuda a tiempo debido a opciones de localización."
+  },
+  {
+   "start": 27.09,
+   "end": 31.17,
+   "text": "Lo anteriormente mencionado también aplica a trabajadores que operan en zonas ineditas,"
+  },
+  {
+   "start": 31.17,
+   "end": 35.65,
+   "text": "es por eso que hemos decidido crear un dispositivo de bajo costo sin acceso de internet"
+  },
+  {
+   "start": 35.65,
+   "end": 39.97,
+   "text": "que nos permita localizar y también identificar si su vida está en peligro."
+  },
+  {
+   "start": 39.97,
+   "end": 40.97,
+   "text": "Déjame contarnos."
+  },
+  {
+   "start": 41.65,
+   "end": 45.61,
+   "text": "La propuesta se basa en un cover de teléfono que integre ondas cortas que"
+  },
+  {
+   "start": 45.61,
+   "end": 50.01,
+   "text": "funcione con frecuencia AM, amplitud modulada, y que adicionalmente en la"
+  },
+  {
+   "start": 50.01,
+   "end": 53.69,
+   "text": "parte inferior tenga un panel solar que sirva para transmitirle carga al"
+  },
+  {
+   "start": 53.69,
+   "end": 56.21,
+   "text": "teléfono a través de tecnología NFC."
+  },
+  {
+   "start": 56.81,
+   "end": 60.09,
+   "text": "Lo anteriormente mencionado servirá para que el usuario pueda enviar"
+  },
+  {
+   "start": 60.09,
+   "end": 64.37,
+   "text": "mensajes de SOS, señal internacional de ayuda al oprimir un botón al"
+  },
+  {
+   "start": 64.37,
+   "end": 67.85,
+   "text": "equipo internacional de rescate a través de ondas satelitales para que lo"
+  },
+  {
+   "start": 67.85,
+   "end": 70.09,
+   "text": "puedan localizar con mayor precisión."
+  },
+  {
+   "start": 70.09,
+   "end": 73.05,
+   "text": "Adicionalmente le permitirá al usuario también tener su teléfono"
+  },
+  {
+   "start": 73.05,
+   "end": 74.05,
+   "text": "celular con carga."
+  },
+  {
+   "start": 74.81,
+   "end": 77.85,
+   "text": "Este cover se prevé que sea de un material liviano y también"
+  },
+  {
+   "start": 77.85,
+   "end": 79.45,
+   "text": "responsable con el medio ambiente."
+  },
+  {
+   "start": 80.21,
+   "end": 84.01,
+   "text": "Nuestra solución planteada impactará a nivel social en bienestar,"
+  },
+  {
+   "start": 84.01,
+   "end": 88.53,
+   "text": "seguridad y respuesta rápida, rescatando vidas y mitigando riesgos en el"
+  },
+  {
+   "start": 88.53,
+   "end": 92.17,
+   "text": "turismo de aventura y también en el trabajo en zonas idélicas."
+  },
+  {
+   "start": 92.85,
+   "end": 96.77,
+   "text": "A nivel ambiental también tendrá un impacto positivo ya que no necesita"
+  },
+  {
+   "start": 96.77,
+   "end": 100.69,
+   "text": "infraestructuras, preserva la naturaleza y conserva los ecosistemas."
+  },
+  {
+   "start": 101.09,
+   "end": 105.09,
+   "text": "Se presenta una idea innovadora, multifacética y colaborativa que"
+  },
+  {
+   "start": 105.09,
+   "end": 109.21,
+   "text": "rescate tecnologías de vanguardia e incluye otras tecnologías bajo un"
+  },
+  {
+   "start": 109.21,
+   "end": 110.41,
+   "text": "principio sostenible."
+  },
+  {
+   "start": 111.37,
+   "end": 114.01,
+   "text": "Somos Geopin, de Universidad Latina de Costa Rica."
+  },
+  {
+   "start": 114.05,
+   "end": 117.57,
+   "text": "Eligimos el desafío número dos y trabajamos en una propuesta que"
+  },
+  {
+   "start": 117.57,
+   "end": 121.85,
+   "text": "incluye la sostenibilidad, aceptabilidad social y viabilidad económica."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 122.6
+}

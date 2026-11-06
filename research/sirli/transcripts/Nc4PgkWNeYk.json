@@ -1,0 +1,164 @@
+{
+ "video_id": "Nc4PgkWNeYk",
+ "url": "https://youtu.be/Nc4PgkWNeYk?feature=shared",
+ "year": 2023,
+ "collection": "nacional",
+ "country": "MÉXICO",
+ "team": "BIOMECH",
+ "place_label": "TERCER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "nacional",
+   "place_label": "TERCER LUGAR",
+   "team": "BIOMECH",
+   "challenge": "05 - VIVIENDA DIGNA"
+  },
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "BIOMECH",
+   "challenge": "05 - VIVIENDA DIGNA"
+  }
+ ],
+ "fetched_at": "2026-11-06T21:31:26+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "En la actualidad, existe una gran cantidad de asentamientos con viviendas precarias en todo Latinoamérica. En años anteriores, se estimaba que en el año 2020, aproximadamente 163 millones de personas habitarían en una vivienda precaria. Estas son viviendas que carecen de distintos tipos de accesos esenciales, como el acceso al agua, drenajes, saneamiento adecuado, entre otros. Generalmente tienen defectos conformados a los materiales con los que están construidas, y también en estos lugares surgen muchas enfermedades como la malaria, zika, dengue, tuberculosis, etc. El objetivo de este proyecto fue encontrar una solución constructiva para este tipo de viviendas y mejorar la calidad de vivienda en las personas que las habitan. Así que se desarrolló el diseño de un proyecto, el cual consiste en un modelo de hogar hecho a base de bloques celulares fabricados con agua, cemento y jabón, mucho más económicos que los bloques de hormigón, sin contar que el peso de este se disminuye exponencialmente, no guarda humedad e nive el calor dentro de la casa. Además contará un sistema para el desecho de las heces por medio de un biodigestor, el cual procesará los desechos mediante un sistema anaeróbico para depositarlos bajo el suelo, utilizándolo como composta, reduciendo si la tasa de enfermedades que se presentan en una vivienda sin drenaje. Otro punto muy importante es que se utilizarán paneles solares para producir energía limpia en toda la casa y a su vez toda la comunidad tendrá en su posesión un sistema de tratamiento de agua proveniente de la lluvia, el cual se basa en grandes canales recolectores que, mediante distintos filtros primarios como piedra, grava y arena, separarán el agua de distintos objetos del lugar como ramas, organismos, etcétera. Seguido de esto, pasará por un filtro secundario para separar organismos microscópicos como parásitos o bacterias, resultando en una fuente de agua limpia para su uso. Así que, si comparamos el proyecto desarrollado con una casa promedio en relación a los costos, saldría más factible el proyecto porque el costo de una casa promedio es de aproximadamente 700 mil pesos mexicanos y el costo de la construcción del proyecto es de aproximadamente 560 mil pesos.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 3.72,
+   "text": "En la actualidad, existe una gran cantidad de asentamientos con viviendas precarias en"
+  },
+  {
+   "start": 3.72,
+   "end": 8.92,
+   "text": "todo Latinoamérica. En años anteriores, se estimaba que en el año 2020, aproximadamente"
+  },
+  {
+   "start": 8.92,
+   "end": 13.52,
+   "text": "163 millones de personas habitarían en una vivienda precaria. Estas son viviendas"
+  },
+  {
+   "start": 13.52,
+   "end": 17.96,
+   "text": "que carecen de distintos tipos de accesos esenciales, como el acceso al agua, drenajes,"
+  },
+  {
+   "start": 17.96,
+   "end": 22.4,
+   "text": "saneamiento adecuado, entre otros. Generalmente tienen defectos conformados a los materiales"
+  },
+  {
+   "start": 22.4,
+   "end": 26.2,
+   "text": "con los que están construidas, y también en estos lugares surgen muchas enfermedades"
+  },
+  {
+   "start": 26.2,
+   "end": 32.28,
+   "text": "como la malaria, zika, dengue, tuberculosis, etc. El objetivo de este proyecto fue encontrar"
+  },
+  {
+   "start": 32.28,
+   "end": 35.88,
+   "text": "una solución constructiva para este tipo de viviendas y mejorar la calidad de vivienda"
+  },
+  {
+   "start": 35.88,
+   "end": 39.96,
+   "text": "en las personas que las habitan. Así que se desarrolló el diseño de un proyecto,"
+  },
+  {
+   "start": 39.96,
+   "end": 43.36,
+   "text": "el cual consiste en un modelo de hogar hecho a base de bloques celulares fabricados"
+  },
+  {
+   "start": 43.36,
+   "end": 47.32,
+   "text": "con agua, cemento y jabón, mucho más económicos que los bloques de hormigón,"
+  },
+  {
+   "start": 47.32,
+   "end": 52.28,
+   "text": "sin contar que el peso de este se disminuye exponencialmente, no guarda humedad e"
+  },
+  {
+   "start": 52.28,
+   "end": 57.36,
+   "text": "nive el calor dentro de la casa. Además contará un sistema para el desecho de las heces"
+  },
+  {
+   "start": 57.36,
+   "end": 62.0,
+   "text": "por medio de un biodigestor, el cual procesará los desechos mediante un sistema anaeróbico"
+  },
+  {
+   "start": 62.0,
+   "end": 66.6,
+   "text": "para depositarlos bajo el suelo, utilizándolo como composta, reduciendo si la tasa de"
+  },
+  {
+   "start": 66.6,
+   "end": 71.72,
+   "text": "enfermedades que se presentan en una vivienda sin drenaje. Otro punto muy importante"
+  },
+  {
+   "start": 71.72,
+   "end": 76.16,
+   "text": "es que se utilizarán paneles solares para producir energía limpia en toda la casa"
+  },
+  {
+   "start": 76.16,
+   "end": 80.12,
+   "text": "y a su vez toda la comunidad tendrá en su posesión un sistema de tratamiento"
+  },
+  {
+   "start": 80.12,
+   "end": 83.96,
+   "text": "de agua proveniente de la lluvia, el cual se basa en grandes canales recolectores que,"
+  },
+  {
+   "start": 83.96,
+   "end": 90.16,
+   "text": "mediante distintos filtros primarios como piedra, grava y arena, separarán el agua de distintos"
+  },
+  {
+   "start": 90.16,
+   "end": 95.12,
+   "text": "objetos del lugar como ramas, organismos, etcétera. Seguido de esto, pasará por un"
+  },
+  {
+   "start": 95.12,
+   "end": 99.88,
+   "text": "filtro secundario para separar organismos microscópicos como parásitos o bacterias,"
+  },
+  {
+   "start": 99.88,
+   "end": 104.68,
+   "text": "resultando en una fuente de agua limpia para su uso. Así que, si comparamos el"
+  },
+  {
+   "start": 104.68,
+   "end": 108.62,
+   "text": "proyecto desarrollado con una casa promedio en relación a los costos, saldría más"
+  },
+  {
+   "start": 108.62,
+   "end": 111.46,
+   "text": "factible el proyecto porque el costo de una casa promedio es de aproximadamente"
+  },
+  {
+   "start": 111.46,
+   "end": 117.78,
+   "text": "700 mil pesos mexicanos y el costo de la construcción del proyecto es de aproximadamente 560 mil pesos."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 118.0
+}

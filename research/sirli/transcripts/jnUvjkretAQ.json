@@ -1,0 +1,89 @@
+{
+ "video_id": "jnUvjkretAQ",
+ "url": "https://youtu.be/jnUvjkretAQ",
+ "year": 2022,
+ "collection": "nacional",
+ "country": "EL SALVADOR",
+ "team": "TECNOINNOVA-CRO",
+ "place_label": "TERCER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "nacional",
+   "place_label": "TERCER LUGAR",
+   "team": "TECNOINNOVA-CRO",
+   "challenge": "07 - ALUDES DE BARRO"
+  },
+  {
+   "year": 2022,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "TECNOINNOVA-CRO",
+   "challenge": "07 - ALUDES DE BARRO"
+  }
+ ],
+ "fetched_at": "2026-11-06T21:53:15+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Esto obliga a buscar una verdadera solución creando un sistema que detecte deslizamientos en las comunidades y alerte a las personas que viven o transiten en zonas de alto riesgo, para facilitar su vacación temprana a zonas seguras. AlertU emite alertas a las comunidades y autoridades para dar mayor seguridad a los habitantes que residen en zonas con probabilidades de deslizamientos, así las autoridades podrán tomar medidas preventivas que salven vidas. Esta solución innovadora cuenta con componentes tecnológicos como un mini panel solar, placa de Arduino, sensor de humedad, sensor de movimiento y conectada a una aplicación móvil que mostrará estadísticas obtenidas de los sensores. Además, posee un sistema de geolocalización e inteligencia artificial que muestra las rutas de evacuación disponibles.",
+ "segments": [
+  {
+   "start": 0.46,
+   "end": 59.49,
+   "text": "Esto obliga a buscar una verdadera solución creando un sistema que detecte deslizamientos"
+  },
+  {
+   "start": 59.49,
+   "end": 64.89,
+   "text": "en las comunidades y alerte a las personas que viven o transiten en zonas de alto riesgo,"
+  },
+  {
+   "start": 64.89,
+   "end": 67.49,
+   "text": "para facilitar su vacación temprana a zonas seguras."
+  },
+  {
+   "start": 67.49,
+   "end": 73.97,
+   "text": "AlertU emite alertas a las comunidades y autoridades para dar mayor seguridad a los"
+  },
+  {
+   "start": 73.97,
+   "end": 77.65,
+   "text": "habitantes que residen en zonas con probabilidades de deslizamientos,"
+  },
+  {
+   "start": 77.65,
+   "end": 82.49,
+   "text": "así las autoridades podrán tomar medidas preventivas que salven vidas."
+  },
+  {
+   "start": 82.49,
+   "end": 88.53,
+   "text": "Esta solución innovadora cuenta con componentes tecnológicos como un mini panel solar,"
+  },
+  {
+   "start": 88.53,
+   "end": 94.25,
+   "text": "placa de Arduino, sensor de humedad, sensor de movimiento y conectada a una"
+  },
+  {
+   "start": 94.29,
+   "end": 97.77,
+   "text": "aplicación móvil que mostrará estadísticas obtenidas de los sensores."
+  },
+  {
+   "start": 97.77,
+   "end": 103.05,
+   "text": "Además, posee un sistema de geolocalización e inteligencia artificial que muestra las"
+  },
+  {
+   "start": 103.05,
+   "end": 105.01,
+   "text": "rutas de evacuación disponibles."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 113.9
+}

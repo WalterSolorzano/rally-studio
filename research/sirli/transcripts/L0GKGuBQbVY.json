@@ -1,0 +1,109 @@
+{
+ "video_id": "L0GKGuBQbVY",
+ "url": "https://youtu.be/L0GKGuBQbVY?si=1a_dN7LDzRXva7Vt",
+ "year": 2026,
+ "collection": "nacional",
+ "country": "EL SALVADOR",
+ "team": "FRANCISQUITOS",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "FRANCISQUITOS",
+   "challenge": "05 - MONITOREO INTELIGENTE E INFRAESTRUCTURA VERDE EN RESERVORIOS PLUVIALES"
+  },
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "FRANCISQUITOS",
+   "challenge": "05 - MONITOREO INTELIGENTE E INFRAESTRUCTURA VERDE EN RESERVORIOS PLUVIALES"
+  }
+ ],
+ "fetched_at": "2026-11-06T20:24:49+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Las plantas no hablan, estas. Empieza a llover, una zona baja en una colonia de Ilobango en Salvador. Cada invierno el agua llega sin aviso. Más de un metro, dicen reportes ciudadanos. Tres personas atrapadas en un vehículo. Las notas de 2022, 2024 y 2026 cuentan la misma historia. Hubo obras y las inundaciones siguen en las noticias. Cuando el agua llega nadie pudo avisar. ¿Y si el lugar avisaran? Aquadetect convierte años de noticias en un mapa de zonas y épocas críticas. Plantas, barreras vivas que frenan el agua y retienen seguimiento. Y dentro de ellas, sensores solares que miden y envían datos en tiempo real. Empieza a llover. Las plantas frenan el primer golpe de agua y hablan. El teléfono vibra. Vecinos e instituciones ven en el mapa donde sube el agua. Hay tiempo para actuar y por la mañana, ningún titular. La mejor inundación es la que nunca llega a las noticias. Esta colonia es una entre miles de Latinoamérica. ¿Qué lluvia prefieres para la tuya?",
+ "segments": [
+  {
+   "start": 1.68,
+   "end": 10.99,
+   "text": "Las plantas no hablan, estas. Empieza a llover, una zona baja en una colonia de Ilobango en Salvador."
+  },
+  {
+   "start": 10.99,
+   "end": 15.99,
+   "text": "Cada invierno el agua llega sin aviso. Más de un metro, dicen reportes ciudadanos."
+  },
+  {
+   "start": 15.99,
+   "end": 23.99,
+   "text": "Tres personas atrapadas en un vehículo. Las notas de 2022, 2024 y 2026 cuentan la misma historia."
+  },
+  {
+   "start": 23.99,
+   "end": 27.99,
+   "text": "Hubo obras y las inundaciones siguen en las noticias."
+  },
+  {
+   "start": 27.99,
+   "end": 31.99,
+   "text": "Cuando el agua llega nadie pudo avisar."
+  },
+  {
+   "start": 31.99,
+   "end": 35.37,
+   "text": "¿Y si el lugar avisaran?"
+  },
+  {
+   "start": 36.37,
+   "end": 41.37,
+   "text": "Aquadetect convierte años de noticias en un mapa de zonas y épocas críticas."
+  },
+  {
+   "start": 41.37,
+   "end": 45.37,
+   "text": "Plantas, barreras vivas que frenan el agua y retienen seguimiento."
+  },
+  {
+   "start": 45.37,
+   "end": 50.37,
+   "text": "Y dentro de ellas, sensores solares que miden y envían datos en tiempo real."
+  },
+  {
+   "start": 51.37,
+   "end": 58.37,
+   "text": "Empieza a llover. Las plantas frenan el primer golpe de agua y hablan. El teléfono vibra."
+  },
+  {
+   "start": 59.37,
+   "end": 63.37,
+   "text": "Vecinos e instituciones ven en el mapa donde sube el agua."
+  },
+  {
+   "start": 63.37,
+   "end": 68.37,
+   "text": "Hay tiempo para actuar y por la mañana, ningún titular."
+  },
+  {
+   "start": 68.37,
+   "end": 72.37,
+   "text": "La mejor inundación es la que nunca llega a las noticias."
+  },
+  {
+   "start": 72.37,
+   "end": 75.37,
+   "text": "Esta colonia es una entre miles de Latinoamérica."
+  },
+  {
+   "start": 75.37,
+   "end": 78.37,
+   "text": "¿Qué lluvia prefieres para la tuya?"
+  }
+ ],
+ "has_info": false,
+ "duration_s": 79.4
+}

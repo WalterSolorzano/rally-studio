@@ -6,6 +6,28 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="kit.css">
+<style>
+/* Imagen protagonista: cubre la tarjeta y se desvanece hacia el papel para
+   que el titular siga siendo lo primero que se lee. */
+.thumb-card .hero{position:absolute;inset:0;z-index:2;background-size:cover;background-position:center;background-repeat:no-repeat}
+/* Con imagen, el velo es oscuro: el titular blanco se lee sobre la foto. */
+.thumb-card.has-hero .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,12,24,.84) 0%,rgba(6,12,24,.52) 36%,rgba(6,12,24,.1) 64%,transparent 82%)}
+/* Minimal es papel claro: tinta oscura. Editorial es fondo oscuro: titular claro.
+   Nunca tinta oscura sobre fondo oscuro (fallo que rompía el contraste). */
+.thumb-card[data-style="minimal"]:not(.has-hero) .title{color:var(--t-ink);text-shadow:none}
+.thumb-card[data-style="editorial"]:not(.has-hero) .title{color:#fff;text-shadow:0 6px 40px rgba(0,0,0,.34)}
+.thumb-card.has-hero .title{color:#fff;text-shadow:0 8px 44px rgba(0,0,0,.5)}
+/* Sin franja de color pegada al borde: el borde no es un adorno. */
+.thumb-card .bar{display:none}
+/* Efectos de la foto: movimiento y desenfoque, nunca sobre el texto. */
+.thumb-card.fx-zoom .hero{animation:thZoom 14s ease-in-out infinite alternate}
+.thumb-card.fx-barrido .hero{animation:thPan 16s ease-in-out infinite alternate}
+.thumb-card.fx-blur .hero{filter:blur(3px) saturate(1.06);transform:scale(1.07)}
+.thumb-card.fx-foco .hero{filter:saturate(1.05)}
+@keyframes thZoom{from{transform:scale(1)}to{transform:scale(1.13)}}
+@keyframes thPan{from{background-position:18% 50%}to{background-position:82% 50%}}
+.hero-thumb{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border:1px solid var(--rs-border);border-radius:6px;background:var(--rs-bg-subtle)}
+</style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head><body>
@@ -37,6 +59,7 @@
           <div class="thumb-card" id="thumbPreview" data-style="editorial">
             <div class="bg"></div>
             <div class="mapni"></div>
+            <div class="hero" hidden></div>
             <div class="bar"></div>
             <div class="top-row">
               <div class="brand">
@@ -132,6 +155,32 @@
           <div class="field"><label>Reto (etiqueta de la esquina)</label><input type="text" id="thRetoInput"></div>
         </div>
       </details>
+      <details class="ctrl" open>
+        <summary>Imagen protagonista (reto → solución → impacto)</summary>
+        <div class="body">
+          <div class="field">
+            <label>Imagen de la portada</label>
+            <img class="hero-thumb" id="thHeroPreview" alt="" hidden>
+            <div class="logo-pick-side">
+              <label class="upload-btn" for="thHeroFile">Subir imagen</label>
+              <input type="file" id="thHeroFile" accept="image/*" hidden>
+              <button type="button" class="sec" id="thHeroIA">Sugerir con IA</button>
+              <button type="button" class="sec" id="thHeroCopy">Copiar prompt</button>
+              <button type="button" class="sec" id="thHeroReset">Quitar imagen</button>
+            </div>
+          </div>
+          <div class="field"><label>Concepto: qué debe mostrar</label><textarea id="thHeroConcept" rows="4"></textarea></div>
+          <div class="field"><label>Efecto de la foto</label>
+            <select id="thHeroFx">
+              <option value="foco">Nítida</option>
+              <option value="zoom">Zoom lento</option>
+              <option value="barrido">Barrido lateral</option>
+              <option value="blur">Desenfoque de fondo</option>
+            </select>
+          </div>
+          <p class="note" id="thHeroMsg">Sin imagen, la portada se queda en el territorio. Prioriza una foto real de la problemática y del reto (Unsplash / Pexels): la fotografía documental vende más que una ilustración. La imagen muestra el reto ya resuelto y su impacto: no es decoración.</p>
+        </div>
+      </details>
       <details class="ctrl">
         <summary>Exportar thumbnail</summary>
         <div class="body">
@@ -158,6 +207,8 @@
             <li><b>El evento se identifica una vez.</b> Logo del certamen o etiqueta de texto, nunca los dos: repetir el mismo dato es ruido.</li>
             <li><b>Una banda de papel.</b> La firma vive en una franja blanca al pie: la portada se lee como prensa, no como diapositiva.</li>
             <li><b>Dos tipografías, tres tamaños.</b> Titular, apoyo y metadatos. Una familia display para el titular y una de texto para lo demás.</li>
+            <li><b>La imagen prueba, no decora.</b> La portada muestra el reto ya resuelto y su impacto; si la foto no lo cuenta, no entra.</li>
+            <li><b>Nada de figuras básicas.</b> Prohibido cuadrados, rectángulos, círculos o triángulos como gráfico. Se usan vectores complejos, un modelo de Blender o una foto de un banco de imágenes.</li>
             <li><b>El logo se usa como es.</b> Sin recortes, sin recolorear, sin deformar: se sube o se toma el oficial del certamen.</li>
           </ul>
         </div>
@@ -167,6 +218,8 @@
 </section>
 
 <script src="shared.js"></script>
+<script src="config.js"></script>
+<script src="ia.js"></script>
 <script src="contenido.js"></script>
 <script src="fonts.js"></script>
 <script src="mapa_ni.js"></script>

@@ -1,0 +1,149 @@
+{
+ "video_id": "enAoU67JDqs",
+ "url": "https://youtu.be/enAoU67JDqs",
+ "year": 2026,
+ "collection": "nacional",
+ "country": "COLOMBIA",
+ "team": "LUMBRE",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "nacional",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "LUMBRE",
+   "challenge": "02 - SENSORES AL SERVICIO DE LA COMUNIDAD"
+  },
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "LUMBRE",
+   "challenge": "02 - SENSORES AL SERVICIO DE LA COMUNIDAD"
+  }
+ ],
+ "fetched_at": "2026-11-06T20:22:04+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Y si la basura que dejamos atrás pudiera ayudar a alguien a encontrar su camino? En Colombia, una estimación histórica calculó que en 2016 se desecharon cerca de 20 millones de celulares. Mientras los componentes de estos residuos electrónicos todavía pueden representar una oportunidad. ¿Qué tal si les diéramos una segunda vida para construir tecnología que contribuya a la autonomía de las personas con discapacidad? En Colombia hay 2.65 millones de personas con discapacidad, 1.5 millones con dificultad para ver, 820.000 para moverse y 395.000 para entender, recordar y tomar decisiones. Y en América Latina esta cifra aumenta a aproximadamente 103.6 millones de personas. Estas poblaciones enfrentan barreras para desplazarse de manera segura y accesible por la ciudad, lo que limita su autonomía y le impide participar en la vida cotidiana. Dos problemas que parecen distintos, pero ¿y si pudieran conectarse? Creamos Lumbre, la luz del camino. Recuperamos componentes funcionales de celulares en desuso, como sus sensores de movimiento y sistemas de localización, para integrarlos en un dispositivo de asistencia adaptable a superficies que los requieran, como bastones, caminadores, sillas de ruedas y múltiples dispositivos de asistencia. Su acelerómetro y giroscopio registran movimientos e impactos, el magnetómetro, aporto de orientación y el GPS ubica los eventos. Cuando una secuencia de movimientos es compatible con una posible barrera, por medio del comando de voz Lumbre puede generar alertas y permitir que las personas puedan reportar obstáculos. Es decir, sus sensores registran movimientos y cambian orientación para identificar posibles obstáculos o desniveles. Pero la segunda vía de estas componentes no termina en un dispositivo. Lumbre se conecta con una página web que integra los reportes de la comunidad en un mapa colaborativo que identifica las barreras de accesibilidad. Así, la tecnología recuperada no se lo busca apoyar a la autonomía de quien la utiliza. Esta es economía circular, recuperar recursos, darles un nuevo propósito y prolongar su vida útil. Lumbre transformamos residuos electrónicos en oportunidades para iluminar nuevos caminos.",
+ "segments": [
+  {
+   "start": 0.08,
+   "end": 3.8,
+   "text": "Y si la basura que dejamos atrás pudiera ayudar a alguien a encontrar su camino?"
+  },
+  {
+   "start": 3.8,
+   "end": 8.86,
+   "text": "En Colombia, una estimación histórica calculó que en 2016 se desecharon cerca de 20 millones de celulares."
+  },
+  {
+   "start": 8.86,
+   "end": 13.72,
+   "text": "Mientras los componentes de estos residuos electrónicos todavía pueden representar una oportunidad."
+  },
+  {
+   "start": 13.72,
+   "end": 20.5,
+   "text": "¿Qué tal si les diéramos una segunda vida para construir tecnología que contribuya a la autonomía de las personas con discapacidad?"
+  },
+  {
+   "start": 20.5,
+   "end": 26.9,
+   "text": "En Colombia hay 2.65 millones de personas con discapacidad, 1.5 millones con dificultad para ver,"
+  },
+  {
+   "start": 26.9,
+   "end": 32.42,
+   "text": "820.000 para moverse y 395.000 para entender, recordar y tomar decisiones."
+  },
+  {
+   "start": 32.42,
+   "end": 38.14,
+   "text": "Y en América Latina esta cifra aumenta a aproximadamente 103.6 millones de personas."
+  },
+  {
+   "start": 38.14,
+   "end": 42.46,
+   "text": "Estas poblaciones enfrentan barreras para desplazarse de manera segura y accesible por la ciudad,"
+  },
+  {
+   "start": 42.46,
+   "end": 46.26,
+   "text": "lo que limita su autonomía y le impide participar en la vida cotidiana."
+  },
+  {
+   "start": 46.26,
+   "end": 50.96,
+   "text": "Dos problemas que parecen distintos, pero ¿y si pudieran conectarse?"
+  },
+  {
+   "start": 50.96,
+   "end": 53.14,
+   "text": "Creamos Lumbre, la luz del camino."
+  },
+  {
+   "start": 53.18,
+   "end": 58.94,
+   "text": "Recuperamos componentes funcionales de celulares en desuso, como sus sensores de movimiento y sistemas de localización,"
+  },
+  {
+   "start": 58.94,
+   "end": 63.14,
+   "text": "para integrarlos en un dispositivo de asistencia adaptable a superficies que los requieran,"
+  },
+  {
+   "start": 63.14,
+   "end": 68.26,
+   "text": "como bastones, caminadores, sillas de ruedas y múltiples dispositivos de asistencia."
+  },
+  {
+   "start": 68.26,
+   "end": 75.82,
+   "text": "Su acelerómetro y giroscopio registran movimientos e impactos, el magnetómetro, aporto de orientación y el GPS ubica los eventos."
+  },
+  {
+   "start": 75.82,
+   "end": 79.5,
+   "text": "Cuando una secuencia de movimientos es compatible con una posible barrera,"
+  },
+  {
+   "start": 79.5,
+   "end": 85.02,
+   "text": "por medio del comando de voz Lumbre puede generar alertas y permitir que las personas puedan reportar obstáculos."
+  },
+  {
+   "start": 85.02,
+   "end": 90.42,
+   "text": "Es decir, sus sensores registran movimientos y cambian orientación para identificar posibles obstáculos o desniveles."
+  },
+  {
+   "start": 90.42,
+   "end": 94.46,
+   "text": "Pero la segunda vía de estas componentes no termina en un dispositivo."
+  },
+  {
+   "start": 94.46,
+   "end": 101.14,
+   "text": "Lumbre se conecta con una página web que integra los reportes de la comunidad en un mapa colaborativo que identifica las barreras de accesibilidad."
+  },
+  {
+   "start": 101.14,
+   "end": 105.86,
+   "text": "Así, la tecnología recuperada no se lo busca apoyar a la autonomía de quien la utiliza."
+  },
+  {
+   "start": 105.9,
+   "end": 110.78,
+   "text": "Esta es economía circular, recuperar recursos, darles un nuevo propósito y prolongar su vida útil."
+  },
+  {
+   "start": 110.78,
+   "end": 115.74,
+   "text": "Lumbre transformamos residuos electrónicos en oportunidades para iluminar nuevos caminos."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 117.6
+}

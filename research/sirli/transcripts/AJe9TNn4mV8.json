@@ -1,0 +1,159 @@
+{
+ "video_id": "AJe9TNn4mV8",
+ "url": "https://youtu.be/AJe9TNn4mV8",
+ "year": 2022,
+ "collection": "nacional",
+ "country": "EL SALVADOR",
+ "team": "TEAM CILANTRO",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "nacional",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "TEAM CILANTRO",
+   "challenge": "07 - ALUDES DE BARRO"
+  },
+  {
+   "year": 2022,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "TEAM CILANTRO",
+   "challenge": "07 - ALUDES DE BARRO"
+  }
+ ],
+ "fetched_at": "2026-11-06T21:52:38+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Según la Oficina de Asuntos Humanitarios de la UNO, América Latina y el Caribe es la segunda región más propensa de desastres naturales en el mundo. Desde el año 2000 hasta el 2020, 152 millones de latinoamericanos y caribeños fueron afectados por 1.205 desastres en los que se cuentan inundaciones, huracanes, tormentas, terremotos, sequía, aludes, incendios y eventos volcánicos. Motivados por los efectos climáticos recurrentes en nuestra región, principalmente deslaves o derrumbes de heladeras en carreteras o viviendas, surge la necesidad de obtener información en tiempo real del comportamiento de estos fenómenos, con la finalidad de prevenir, reducir y evitar pérdidas humanas. Así que, como equipo Tin-Cilantro, proponemos... GeoMacer Pro GeoMacer Pro está compuesto por un microcontralador ESP32, quien será el cerebro de la solución, sensor de vibración MiniCC100, el cual permitirá estudiar los movimientos telúricos, sensor de humedad DHT11 para monitorizar los niveles de precipitación pluvial y el módulo ADX-HELD345 encargado de medir las variaciones en la gravedad. Es importante mencionar que el ESP32 tiene integrada la tecnología WIFI, de la cual será uso para obtener reportes sobre parámetros recopilados en cada sensor. Además, integrará el módulo SIM800L para proveer de conexión a la red en caso de que falle la WIFI. Los dispositivos GeoMacer Pro estarán colocados en puntos estratégicos en las zonas en riesgo de deslizamiento. Esta red de dispositivos generará alertas e informará a la comunidad y a las autoridades sobre la probabilidad de deslizamiento de tierra. GeoMacer Pro incluirá un algoritmo de inteligencia artificial, el cual será cargado de realizar un pronóstico preciso para predecir en cuánto tiempo puede suceder un deslado, utilizando valores históricos y recolectados por los sensores. Su encasulado será construido con materiales resistentes a los efectos climáticos, y no contaminantes con el medio ambiente. Es una solución económica que goza de los beneficios de las herramientas de uso libre, es decir, que cualquier persona u organización pueda adquirir los recursos e implementar la solución.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 7.48,
+   "text": "Según la Oficina de Asuntos Humanitarios de la UNO, América Latina y el Caribe es la segunda región más propensa de desastres naturales en el mundo."
+  },
+  {
+   "start": 7.48,
+   "end": 15.0,
+   "text": "Desde el año 2000 hasta el 2020, 152 millones de latinoamericanos y caribeños fueron afectados por 1.205 desastres"
+  },
+  {
+   "start": 15.0,
+   "end": 22.24,
+   "text": "en los que se cuentan inundaciones, huracanes, tormentas, terremotos, sequía, aludes, incendios y eventos volcánicos."
+  },
+  {
+   "start": 22.24,
+   "end": 29.48,
+   "text": "Motivados por los efectos climáticos recurrentes en nuestra región, principalmente deslaves o derrumbes de heladeras en carreteras o viviendas,"
+  },
+  {
+   "start": 29.48,
+   "end": 34.16,
+   "text": "surge la necesidad de obtener información en tiempo real del comportamiento de estos fenómenos,"
+  },
+  {
+   "start": 34.16,
+   "end": 37.92,
+   "text": "con la finalidad de prevenir, reducir y evitar pérdidas humanas."
+  },
+  {
+   "start": 37.92,
+   "end": 41.92,
+   "text": "Así que, como equipo Tin-Cilantro, proponemos..."
+  },
+  {
+   "start": 41.92,
+   "end": 43.92,
+   "text": "GeoMacer Pro"
+  },
+  {
+   "start": 43.92,
+   "end": 49.76,
+   "text": "GeoMacer Pro está compuesto por un microcontralador ESP32, quien será el cerebro de la solución,"
+  },
+  {
+   "start": 49.76,
+   "end": 54.16,
+   "text": "sensor de vibración MiniCC100, el cual permitirá estudiar los movimientos telúricos,"
+  },
+  {
+   "start": 54.16,
+   "end": 58.64,
+   "text": "sensor de humedad DHT11 para monitorizar los niveles de precipitación pluvial"
+  },
+  {
+   "start": 58.68,
+   "end": 63.28,
+   "text": "y el módulo ADX-HELD345 encargado de medir las variaciones en la gravedad."
+  },
+  {
+   "start": 63.28,
+   "end": 67.4,
+   "text": "Es importante mencionar que el ESP32 tiene integrada la tecnología WIFI,"
+  },
+  {
+   "start": 67.4,
+   "end": 71.72,
+   "text": "de la cual será uso para obtener reportes sobre parámetros recopilados en cada sensor."
+  },
+  {
+   "start": 71.72,
+   "end": 77.44,
+   "text": "Además, integrará el módulo SIM800L para proveer de conexión a la red en caso de que falle la WIFI."
+  },
+  {
+   "start": 77.44,
+   "end": 83.0,
+   "text": "Los dispositivos GeoMacer Pro estarán colocados en puntos estratégicos en las zonas en riesgo de deslizamiento."
+  },
+  {
+   "start": 83.0,
+   "end": 87.72,
+   "text": "Esta red de dispositivos generará alertas e informará a la comunidad y a las autoridades"
+  },
+  {
+   "start": 87.76,
+   "end": 89.96,
+   "text": "sobre la probabilidad de deslizamiento de tierra."
+  },
+  {
+   "start": 89.96,
+   "end": 93.48,
+   "text": "GeoMacer Pro incluirá un algoritmo de inteligencia artificial,"
+  },
+  {
+   "start": 93.48,
+   "end": 99.16,
+   "text": "el cual será cargado de realizar un pronóstico preciso para predecir en cuánto tiempo puede suceder un deslado,"
+  },
+  {
+   "start": 99.16,
+   "end": 102.36,
+   "text": "utilizando valores históricos y recolectados por los sensores."
+  },
+  {
+   "start": 102.36,
+   "end": 106.52,
+   "text": "Su encasulado será construido con materiales resistentes a los efectos climáticos,"
+  },
+  {
+   "start": 106.52,
+   "end": 108.4,
+   "text": "y no contaminantes con el medio ambiente."
+  },
+  {
+   "start": 108.4,
+   "end": 112.16,
+   "text": "Es una solución económica que goza de los beneficios de las herramientas de uso libre,"
+  },
+  {
+   "start": 112.16,
+   "end": 117.08,
+   "text": "es decir, que cualquier persona u organización pueda adquirir los recursos e implementar la solución."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.9
+}

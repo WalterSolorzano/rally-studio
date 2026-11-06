@@ -1,0 +1,239 @@
+{
+ "video_id": "JXlFBC8STyQ",
+ "url": "https://youtu.be/JXlFBC8STyQ",
+ "year": 2022,
+ "collection": "nacional",
+ "country": "MÉXICO",
+ "team": "EQUIPO TECPUE7",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "nacional",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "EQUIPO TECPUE7",
+   "challenge": "04 - AHORRO ENERGÉTICO EN EL SECTOR GASTRONÓMICO"
+  },
+  {
+   "year": 2022,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "EQUIPO TECPUE7",
+   "challenge": "04 - AHORRO ENERGÉTICO EN EL SECTOR GASTRONÓMICO"
+  }
+ ],
+ "fetched_at": "2026-11-06T21:57:23+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Luz en el 2010 costaba 148 pesos el promedio por casa, en el 17 202 y en el 22 272 según datos del Inegi. Nosotros creemos que debemos valorar lo que la naturaleza nos regala, sin embargo no lo hacemos. Una tercera parte de toda la comida producida se vuelve desperdicio. Es por ello que a través de un proceso de gasificación de la biomasa generada por estos desperdicios desarrollamos Héctor. Héctor es un generador compacto de energía impulsado por los desechos orgánicos de los restaurantes, cuyo sobrante del proceso lo usaremos para abono que será donado a las comunidades. Este dispositivo tritura los desperdicios orgánicos y realiza un proceso aeróbico para producir metano, el cual se aprovecha como combustible para generar vapor y mover una turbina, así originando una corriente alterna. Para estándares de seguridad resguardamos la máquina en un contenedor de aleación de aluminio. El sistema generará 130 kilovatts hora a día con solo 31 kilos de basura orgánica, lo que se traduce en un ahorro de más de 3 mil pesos, datos calculados con la ayuda de Journal of Cleaner Production. La corriente es regulada, se almacena en baterías y es conectada a la red eléctrica mediante un inversor durante ciertos periodos del día. El costo de la luz varía de acuerdo a la hora del día, en la madrugada es más barata y durante la noche es hasta seis veces más cara. Esta variabilidad de precios pasa en varios países de Latinoamérica. Héctor aprovecha esta área de oportunidad para almacenar la energía en una batería. La pila empezará a suministrar corriente empezando desde las 6 hasta las 10 de la noche, las cuales son las horas más caras. Se automatizará mediante un reloj y contador de pulsador que activará la salida del inversor sincronizado a la red eléctrica. Para el ser humano el valor más importante es ayudar a la comunidad y al medio ambiente. Héctor crea una nueva fuente de energía, eficiencia energética que crea rentabilidad, brinda un mundo más verde y ayuda a las comunidades.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 4.0,
+   "text": "Luz en el 2010 costaba 148 pesos el promedio por casa,"
+  },
+  {
+   "start": 4.0,
+   "end": 9.3,
+   "text": "en el 17 202 y en el 22 272 según datos del Inegi."
+  },
+  {
+   "start": 9.3,
+   "end": 13.0,
+   "text": "Nosotros creemos que debemos valorar lo que la naturaleza nos regala,"
+  },
+  {
+   "start": 13.0,
+   "end": 14.9,
+   "text": "sin embargo no lo hacemos."
+  },
+  {
+   "start": 14.9,
+   "end": 18.8,
+   "text": "Una tercera parte de toda la comida producida se vuelve desperdicio."
+  },
+  {
+   "start": 18.8,
+   "end": 22.3,
+   "text": "Es por ello que a través de un proceso de gasificación de la biomasa"
+  },
+  {
+   "start": 22.3,
+   "end": 25.9,
+   "text": "generada por estos desperdicios desarrollamos Héctor."
+  },
+  {
+   "start": 25.9,
+   "end": 28.5,
+   "text": "Héctor es un generador compacto de energía"
+  },
+  {
+   "start": 28.6,
+   "end": 31.3,
+   "text": "impulsado por los desechos orgánicos de los restaurantes,"
+  },
+  {
+   "start": 31.3,
+   "end": 34.3,
+   "text": "cuyo sobrante del proceso lo usaremos para abono"
+  },
+  {
+   "start": 34.3,
+   "end": 36.3,
+   "text": "que será donado a las comunidades."
+  },
+  {
+   "start": 36.3,
+   "end": 39.3,
+   "text": "Este dispositivo tritura los desperdicios orgánicos"
+  },
+  {
+   "start": 39.3,
+   "end": 42.3,
+   "text": "y realiza un proceso aeróbico para producir metano,"
+  },
+  {
+   "start": 42.3,
+   "end": 45.1,
+   "text": "el cual se aprovecha como combustible para generar vapor"
+  },
+  {
+   "start": 45.1,
+   "end": 48.3,
+   "text": "y mover una turbina, así originando una corriente alterna."
+  },
+  {
+   "start": 48.3,
+   "end": 51.5,
+   "text": "Para estándares de seguridad resguardamos la máquina"
+  },
+  {
+   "start": 51.5,
+   "end": 53.5,
+   "text": "en un contenedor de aleación de aluminio."
+  },
+  {
+   "start": 53.5,
+   "end": 56.8,
+   "text": "El sistema generará 130 kilovatts hora a día"
+  },
+  {
+   "start": 56.8,
+   "end": 59.6,
+   "text": "con solo 31 kilos de basura orgánica,"
+  },
+  {
+   "start": 59.6,
+   "end": 62.6,
+   "text": "lo que se traduce en un ahorro de más de 3 mil pesos,"
+  },
+  {
+   "start": 62.6,
+   "end": 66.1,
+   "text": "datos calculados con la ayuda de Journal of Cleaner Production."
+  },
+  {
+   "start": 66.1,
+   "end": 69.1,
+   "text": "La corriente es regulada, se almacena en baterías"
+  },
+  {
+   "start": 69.1,
+   "end": 71.9,
+   "text": "y es conectada a la red eléctrica mediante un inversor"
+  },
+  {
+   "start": 71.9,
+   "end": 74.1,
+   "text": "durante ciertos periodos del día."
+  },
+  {
+   "start": 74.1,
+   "end": 76.6,
+   "text": "El costo de la luz varía de acuerdo a la hora del día,"
+  },
+  {
+   "start": 76.6,
+   "end": 78.1,
+   "text": "en la madrugada es más barata"
+  },
+  {
+   "start": 78.1,
+   "end": 81.2,
+   "text": "y durante la noche es hasta seis veces más cara."
+  },
+  {
+   "start": 81.2,
+   "end": 85.1,
+   "text": "Esta variabilidad de precios pasa en varios países de Latinoamérica."
+  },
+  {
+   "start": 85.2,
+   "end": 87.6,
+   "text": "Héctor aprovecha esta área de oportunidad"
+  },
+  {
+   "start": 87.6,
+   "end": 89.9,
+   "text": "para almacenar la energía en una batería."
+  },
+  {
+   "start": 89.9,
+   "end": 92.2,
+   "text": "La pila empezará a suministrar corriente"
+  },
+  {
+   "start": 92.2,
+   "end": 95.1,
+   "text": "empezando desde las 6 hasta las 10 de la noche,"
+  },
+  {
+   "start": 95.1,
+   "end": 96.9,
+   "text": "las cuales son las horas más caras."
+  },
+  {
+   "start": 96.9,
+   "end": 99.9,
+   "text": "Se automatizará mediante un reloj y contador de pulsador"
+  },
+  {
+   "start": 99.9,
+   "end": 101.6,
+   "text": "que activará la salida del inversor"
+  },
+  {
+   "start": 101.6,
+   "end": 103.4,
+   "text": "sincronizado a la red eléctrica."
+  },
+  {
+   "start": 103.4,
+   "end": 106.4,
+   "text": "Para el ser humano el valor más importante"
+  },
+  {
+   "start": 106.4,
+   "end": 109.2,
+   "text": "es ayudar a la comunidad y al medio ambiente."
+  },
+  {
+   "start": 109.2,
+   "end": 112.0,
+   "text": "Héctor crea una nueva fuente de energía,"
+  },
+  {
+   "start": 112.0,
+   "end": 114.9,
+   "text": "eficiencia energética que crea rentabilidad,"
+  },
+  {
+   "start": 114.9,
+   "end": 118.0,
+   "text": "brinda un mundo más verde y ayuda a las comunidades."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 118.5
+}

@@ -1,0 +1,159 @@
+{
+ "video_id": "NuXqBa2119s",
+ "url": "https://www.youtube.com/watch?v=NuXqBa2119s",
+ "year": 2019,
+ "collection": "nacional",
+ "country": "CHILE",
+ "team": "KOLIBRI VERDES",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2019,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "KOLIBRI VERDES",
+   "challenge": "07 - NUEVAS FORMAS DE PRODUCCIÓN HORTÍCOLA"
+  },
+  {
+   "year": 2019,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "KOLIBRI VERDES",
+   "challenge": "07 - NUEVAS FORMAS DE PRODUCCIÓN HORTÍCOLA"
+  }
+ ],
+ "fetched_at": "2026-11-06T22:35:29+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "En la actualidad, según estadísticas de Comisión Nacional de Hortalisas, se proyecta una producción de 70.707 hectáreas de hortalisas, aproximadamente, de las cuales sólo un 13% presenta un riesgo técnico certificado. Además, el 64% de la superficie de Hortalisas corresponde a la zona centro. Esto sumaba que cerca del 40% de estas superficies pertenece a la explotación de pequeños y medianos horticultores, entre 5 y 12 hectáreas en promedio, lo cual genera una desventaja competitiva en relación a los grandes horticultores. Es por esto que nace el Centro de Acopio y Distribución Don Papa, esperando equiparar la carrera con estas grandes empresas. Este proyecto se desarrolla con cuatro ejes centrales. El primero corresponde a los productores de las pequeñas y medias familias horticultoras, los cuales concentran más de un tercio del mercado de producción de hortalisas y los cuales presentan complicaciones para competir en el mercado. Debido a sus bajos volúmenes per cápita de producción en comparación con las grandes empresas, para equiparar esta cifra nace el Centro de Acopio y Distribución Don Papa, los cuales tienen por misión desarrollar una recolección y conservación de los productos, además de administrar los volúmenes masivos de hortalisas por medio de inventarios. Organizados virtualmente en una aplicación, la cual genera una conexión directa entre el consumidor y productor, disminuyendo tiempos y costos, además optimizando la gestión comercial, la cual no garantiza la entrega de productos frescos y de calidad al consumidor de hortalisas. Nuestro modelo de negocios, además de considerar todo lo anteriormente mencionado, se encarga de la correcta gestión de los residuos orgánicos generados en las distintas etapas de la cadena productiva. Esta correcta gestión se lleva a cabo con un plan de generación de composta, en base a los residuos recolectados, generando así un valor agregado, además de una sustentabilidad del producto, logrando así completar el ciclo correspondiente a una economía circular, contribuyendo directamente al ecosistema y a su vez al negocio horticultor.",
+ "segments": [
+  {
+   "start": 0.91,
+   "end": 8.35,
+   "text": "En la actualidad, según estadísticas de Comisión Nacional de Hortalisas, se proyecta una producción de 70.707 hectáreas de hortalisas,"
+  },
+  {
+   "start": 9.19,
+   "end": 14.25,
+   "text": "aproximadamente, de las cuales sólo un 13% presenta un riesgo técnico certificado."
+  },
+  {
+   "start": 14.71,
+   "end": 19.41,
+   "text": "Además, el 64% de la superficie de Hortalisas corresponde a la zona centro."
+  },
+  {
+   "start": 20.11,
+   "end": 27.07,
+   "text": "Esto sumaba que cerca del 40% de estas superficies pertenece a la explotación de pequeños y medianos horticultores,"
+  },
+  {
+   "start": 27.51,
+   "end": 29.67,
+   "text": "entre 5 y 12 hectáreas en promedio,"
+  },
+  {
+   "start": 30.27,
+   "end": 34.35,
+   "text": "lo cual genera una desventaja competitiva en relación a los grandes horticultores."
+  },
+  {
+   "start": 34.95,
+   "end": 38.39,
+   "text": "Es por esto que nace el Centro de Acopio y Distribución Don Papa,"
+  },
+  {
+   "start": 38.99,
+   "end": 41.67,
+   "text": "esperando equiparar la carrera con estas grandes empresas."
+  },
+  {
+   "start": 42.47,
+   "end": 45.19,
+   "text": "Este proyecto se desarrolla con cuatro ejes centrales."
+  },
+  {
+   "start": 45.59,
+   "end": 49.83,
+   "text": "El primero corresponde a los productores de las pequeñas y medias familias horticultoras,"
+  },
+  {
+   "start": 50.15,
+   "end": 56.75,
+   "text": "los cuales concentran más de un tercio del mercado de producción de hortalisas y los cuales presentan complicaciones para competir en el mercado."
+  },
+  {
+   "start": 57.71,
+   "end": 62.07,
+   "text": "Debido a sus bajos volúmenes per cápita de producción en comparación con las grandes empresas,"
+  },
+  {
+   "start": 62.39,
+   "end": 65.87,
+   "text": "para equiparar esta cifra nace el Centro de Acopio y Distribución Don Papa,"
+  },
+  {
+   "start": 66.03,
+   "end": 70.39,
+   "text": "los cuales tienen por misión desarrollar una recolección y conservación de los productos,"
+  },
+  {
+   "start": 70.55,
+   "end": 74.15,
+   "text": "además de administrar los volúmenes masivos de hortalisas por medio de inventarios."
+  },
+  {
+   "start": 74.59,
+   "end": 80.11,
+   "text": "Organizados virtualmente en una aplicación, la cual genera una conexión directa entre el consumidor y productor,"
+  },
+  {
+   "start": 80.43,
+   "end": 84.55,
+   "text": "disminuyendo tiempos y costos, además optimizando la gestión comercial,"
+  },
+  {
+   "start": 85.11,
+   "end": 90.27,
+   "text": "la cual no garantiza la entrega de productos frescos y de calidad al consumidor de hortalisas."
+  },
+  {
+   "start": 90.71,
+   "end": 94.63,
+   "text": "Nuestro modelo de negocios, además de considerar todo lo anteriormente mencionado,"
+  },
+  {
+   "start": 94.87,
+   "end": 100.15,
+   "text": "se encarga de la correcta gestión de los residuos orgánicos generados en las distintas etapas de la cadena productiva."
+  },
+  {
+   "start": 100.71,
+   "end": 104.07,
+   "text": "Esta correcta gestión se lleva a cabo con un plan de generación de composta,"
+  },
+  {
+   "start": 104.39,
+   "end": 105.87,
+   "text": "en base a los residuos recolectados,"
+  },
+  {
+   "start": 106.31,
+   "end": 109.55,
+   "text": "generando así un valor agregado, además de una sustentabilidad del producto,"
+  },
+  {
+   "start": 109.55,
+   "end": 113.19,
+   "text": "logrando así completar el ciclo correspondiente a una economía circular,"
+  },
+  {
+   "start": 113.63,
+   "end": 117.91,
+   "text": "contribuyendo directamente al ecosistema y a su vez al negocio horticultor."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.0
+}

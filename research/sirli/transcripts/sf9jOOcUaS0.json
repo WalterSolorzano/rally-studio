@@ -1,0 +1,129 @@
+{
+ "video_id": "sf9jOOcUaS0",
+ "url": "https://youtu.be/sf9jOOcUaS0",
+ "year": 2023,
+ "collection": "nacional",
+ "country": "COSTA RICA",
+ "team": "LOS CHAKALITOS",
+ "place_label": "TERCER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "nacional",
+   "place_label": "TERCER LUGAR",
+   "team": "LOS CHAKALITOS",
+   "challenge": "08 - TRATAR DE ESTAR MEJOR"
+  },
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "LOS CHAKALITOS",
+   "challenge": "08 - TRATAR DE ESTAR MEJOR"
+  }
+ ],
+ "fetched_at": "2026-11-06T21:26:40+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "La depresión en los jóvenes luego de la pandemia COVID-19 es algo sumamente preocupante, ya que afecta directamente en el rendimiento académico, en las habilidades para socializar y en el peor de los casos algunos llegan a quitarse la vida. Se propone como solución el uso de inteligencia artificial para analizar los datos en las diversas redes sociales que los adolescentes utilizan, esto con el fin de poder identificar signos relacionados a problemas de salud mental. Esto va a generar un impacto en la detección temprana y proactiva de los síntomas relacionados con salud mental y también va a ofrecer un enfoque discreto y confidencial. Esta propuesta representa una solución innovadora porque combina varias tecnologías y enfoques de manera integral para abordar un problema salud mental creciente en la sociedad. La utilización de la inteligencia artificial para analizar el contenido de las redes sociales en tiempo real y detectar patrones es innovadora en sí misma. La notificación confidencial y provisión de recursos para buscar ayuda profesional demuestran un enfoque proactivo. La colaboración con profesionales de salud mental y las campañas de concienciación amplían aún más la solución. Economic, utilización de tecnología existente como la inteligencia artificial que ya está ampliamente desarrollada y accesible. Esto reduce los costos de desarrollo y mantenimiento. El enfoque en la privacidad, el consentimiento a los adolescentes y la notificación confidencial garantiza que la plataforma sea ética y respetuosa. La infraestructura tecnológica existente y el uso eficiente de recursos digitales minimizan la huella ambiental.",
+ "segments": [
+  {
+   "start": 2.03,
+   "end": 8.23,
+   "text": "La depresión en los jóvenes luego de la pandemia COVID-19 es algo sumamente preocupante,"
+  },
+  {
+   "start": 8.23,
+   "end": 14.43,
+   "text": "ya que afecta directamente en el rendimiento académico, en las habilidades para socializar"
+  },
+  {
+   "start": 14.43,
+   "end": 19.33,
+   "text": "y en el peor de los casos algunos llegan a quitarse la vida."
+  },
+  {
+   "start": 19.33,
+   "end": 25.65,
+   "text": "Se propone como solución el uso de inteligencia artificial para analizar los datos en las"
+  },
+  {
+   "start": 25.65,
+   "end": 31.31,
+   "text": "diversas redes sociales que los adolescentes utilizan, esto con el fin de poder identificar"
+  },
+  {
+   "start": 31.31,
+   "end": 38.7,
+   "text": "signos relacionados a problemas de salud mental. Esto va a generar un impacto en la"
+  },
+  {
+   "start": 38.7,
+   "end": 44.06,
+   "text": "detección temprana y proactiva de los síntomas relacionados con salud mental y también"
+  },
+  {
+   "start": 44.06,
+   "end": 52.7,
+   "text": "va a ofrecer un enfoque discreto y confidencial. Esta propuesta representa una solución innovadora"
+  },
+  {
+   "start": 52.7,
+   "end": 57.06,
+   "text": "porque combina varias tecnologías y enfoques de manera integral para abordar un problema"
+  },
+  {
+   "start": 57.06,
+   "end": 61.82,
+   "text": "salud mental creciente en la sociedad. La utilización de la inteligencia artificial"
+  },
+  {
+   "start": 61.82,
+   "end": 65.98,
+   "text": "para analizar el contenido de las redes sociales en tiempo real y detectar patrones"
+  },
+  {
+   "start": 65.98,
+   "end": 72.16,
+   "text": "es innovadora en sí misma. La notificación confidencial y provisión de recursos para buscar"
+  },
+  {
+   "start": 72.16,
+   "end": 77.02,
+   "text": "ayuda profesional demuestran un enfoque proactivo. La colaboración con profesionales"
+  },
+  {
+   "start": 77.02,
+   "end": 81.82,
+   "text": "de salud mental y las campañas de concienciación amplían aún más la solución."
+  },
+  {
+   "start": 81.82,
+   "end": 90.52,
+   "text": "Economic, utilización de tecnología existente como la inteligencia artificial que ya está"
+  },
+  {
+   "start": 90.52,
+   "end": 95.2,
+   "text": "ampliamente desarrollada y accesible. Esto reduce los costos de desarrollo y mantenimiento."
+  },
+  {
+   "start": 95.2,
+   "end": 101.04,
+   "text": "El enfoque en la privacidad, el consentimiento a los adolescentes y la notificación confidencial"
+  },
+  {
+   "start": 101.04,
+   "end": 106.72,
+   "text": "garantiza que la plataforma sea ética y respetuosa. La infraestructura tecnológica"
+  },
+  {
+   "start": 106.72,
+   "end": 111.56,
+   "text": "existente y el uso eficiente de recursos digitales minimizan la huella ambiental."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 114.8
+}

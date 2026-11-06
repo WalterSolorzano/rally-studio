@@ -23,9 +23,24 @@ var RallyIA = (function () {
     card: ['diagonal', 'right', 'band', 'circle', 'sticker'],
     deco: ['none', 'orbit', 'circuit', 'halftone', 'dots', 'grid', 'blob'],
     titleFont: ['Oswald', 'Archivo Narrow', 'Anton', 'Space Grotesk', 'Barlow Condensed',
-      'Instrument Serif', 'Archivo', 'Fredoka', 'Bangers', 'Barlow'],
-    bodyFont: ['Barlow', 'Archivo', 'Plus Jakarta Sans', 'Space Grotesk', 'Oswald', 'Archivo Narrow']
+      'Instrument Serif', 'Fredoka', 'Bangers', 'Barlow'],
+    bodyFont: ['Barlow', 'Plus Jakarta Sans', 'Space Grotesk', 'Oswald', 'Archivo Narrow']
   };
+
+  /* La biblioteca real vive en fonts.js y puede cargarse despues de este archivo.
+     Si existe, manda ella; si no, queda el vocabulario minimo de arriba. */
+  function _deCategoria(cats) {
+    if (typeof FONT_LIBRARY === 'undefined' || !FONT_LIBRARY.length) return null;
+    var out = FONT_LIBRARY.filter(function (f) { return cats.indexOf(f.category) >= 0; })
+      .map(function (f) { return f.family; });
+    return out.length ? out : null;
+  }
+  function _titulos() {
+    return _deCategoria(['display', 'cartoon', 'experimental', 'condensada', 'manuscrita', 'elegante']) || SPEC.titleFont;
+  }
+  function _cuerpos() {
+    return _deCategoria(['sans', 'serif', 'mono', 'tecnica']) || SPEC.bodyFont;
+  }
 
   function url(path) { return BASE + path; }
   function today() {
@@ -152,7 +167,7 @@ var RallyIA = (function () {
       'ac (acento), ink (texto principal sobre bg), mu (texto suave) y gl (formas de fondo). ' +
       'ink y bg deben contrastar (WCAG AA o mejor). Nada de morado (#7c3aed ni similares). ' +
       'Elige un par de tipografías de Google Fonts (title, body) coherentes con el estilo del logo, ' +
-      'de esta lista de titulares: ' + SPEC.titleFont.join(', ') + '.\n' +
+      'de esta lista de titulares: ' + _titulos().join(', ') + '.\n' +
       'Responde SOLO con JSON válido, sin markdown: ' +
       '{"palette":{"primary":"#hex","secondary":"#hex","accent":"#hex","bg":"#hex","text":"#hex"},' +
       '"fonts":{"title":"NombreFuente","body":"NombreFuente"},"rationale":"texto breve"}';
@@ -294,7 +309,7 @@ var RallyIA = (function () {
       '"cover":"' + SPEC.cover.join('|') + '","card":"' + SPEC.card.join('|') + '",' +
       '"deco":"' + SPEC.deco.join('|') + '",' +
       '"pal":{"bg":"#hex","bg2":"#hex","ac":"#hex","ink":"#hex","mu":"#hex","gl":"#hex"},' +
-      '"fonts":{"t":"' + SPEC.titleFont.join('|') + '","b":"' + SPEC.bodyFont.join('|') + '"},' +
+      '"fonts":{"t":"' + _titulos().join('|') + '","b":"' + _cuerpos().join('|') + '"},' +
       '"css":"reglas CSS opcionales que se aplican dentro de la lámina (.sl), sin etiquetas html",' +
       '"notes":"una frase breve, máximo 140 caracteres, explicando la decisión"}\n\n' +
       'Reglas: bg es el color de la portada, bg2 el de las láminas de integrante, ac el acento, ink el texto principal sobre bg, mu el texto suave y gl las formas de fondo. ' +

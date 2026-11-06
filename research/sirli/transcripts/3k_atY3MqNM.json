@@ -1,0 +1,114 @@
+{
+ "video_id": "3k_atY3MqNM",
+ "url": "https://youtu.be/3k_atY3MqNM",
+ "year": 2023,
+ "collection": "nacional",
+ "country": "EL SALVADOR",
+ "team": "TECH PIONEERS",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "nacional",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "TECH PIONEERS",
+   "challenge": "02 - SIEMPRE EN CONTACTO"
+  },
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "TECH PIONEERS",
+   "challenge": "02 - SIEMPRE EN CONTACTO"
+  }
+ ],
+ "fetched_at": "2026-11-06T21:30:19+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Como sabemos, el turismo es uno de los rubros que toma fuerza día a día en nuestros países de Latinoamérica. A diario se reportan casos de turistas desaparecidos o que sufren accidentes en sus visitas turísticas y no hay una forma eficiente de ayudar o de saber si el turista está con vida o si su vida corra peligro. Por eso proponemos Life Saver Band, un brazalete resistente al agua y a los golpes que cuenta con un GPS para obtener la ubicación precisa del portador. Propocionará una alerta de emergencia que permitirá una respuesta rápida en caso de detectar signos vitales ya sea altos o bajos en el usuario y ofrecer atención médica en el menor tiempo posible. Además, en situaciones de extravío, el usuario podrá pedir ayuda pulsando un botón, compartiendo así su ubicación exacta a través de radiofrenuencia, enviando sus datos hacia la base receptor. Este dispositivo tendrá un impacto positivo en el medio ambiente, ya que se propone utilizar plástico reciclado para su producción. Además, su batería cinética autorecargable garantizará que el dispositivo no se quede sin energía, prolongando su uso y reduciendo así la necesidad de baterías desechables. De esta manera evitamos la acumulación de más basura tecnológica. LifeSaver Band. Su seguridad en cada aventura.",
+ "segments": [
+  {
+   "start": 17.14,
+   "end": 23.64,
+   "text": "Como sabemos, el turismo es uno de los rubros que toma fuerza día a día en nuestros países de Latinoamérica."
+  },
+  {
+   "start": 23.64,
+   "end": 30.64,
+   "text": "A diario se reportan casos de turistas desaparecidos o que sufren accidentes en sus visitas turísticas"
+  },
+  {
+   "start": 30.64,
+   "end": 37.14,
+   "text": "y no hay una forma eficiente de ayudar o de saber si el turista está con vida o si su vida corra peligro."
+  },
+  {
+   "start": 37.14,
+   "end": 43.14,
+   "text": "Por eso proponemos Life Saver Band, un brazalete resistente al agua y a los golpes"
+  },
+  {
+   "start": 43.14,
+   "end": 48.14,
+   "text": "que cuenta con un GPS para obtener la ubicación precisa del portador."
+  },
+  {
+   "start": 48.14,
+   "end": 55.14,
+   "text": "Propocionará una alerta de emergencia que permitirá una respuesta rápida en caso de detectar signos vitales"
+  },
+  {
+   "start": 55.14,
+   "end": 62.14,
+   "text": "ya sea altos o bajos en el usuario y ofrecer atención médica en el menor tiempo posible."
+  },
+  {
+   "start": 62.14,
+   "end": 68.14,
+   "text": "Además, en situaciones de extravío, el usuario podrá pedir ayuda pulsando un botón,"
+  },
+  {
+   "start": 68.14,
+   "end": 71.14,
+   "text": "compartiendo así su ubicación exacta a través de radiofrenuencia,"
+  },
+  {
+   "start": 71.14,
+   "end": 74.14,
+   "text": "enviando sus datos hacia la base receptor."
+  },
+  {
+   "start": 74.14,
+   "end": 78.14,
+   "text": "Este dispositivo tendrá un impacto positivo en el medio ambiente,"
+  },
+  {
+   "start": 78.14,
+   "end": 83.14,
+   "text": "ya que se propone utilizar plástico reciclado para su producción."
+  },
+  {
+   "start": 83.14,
+   "end": 90.14,
+   "text": "Además, su batería cinética autorecargable garantizará que el dispositivo no se quede sin energía,"
+  },
+  {
+   "start": 90.14,
+   "end": 94.14,
+   "text": "prolongando su uso y reduciendo así la necesidad de baterías desechables."
+  },
+  {
+   "start": 94.14,
+   "end": 99.14,
+   "text": "De esta manera evitamos la acumulación de más basura tecnológica."
+  },
+  {
+   "start": 99.14,
+   "end": 103.14,
+   "text": "LifeSaver Band. Su seguridad en cada aventura."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 118.0
+}

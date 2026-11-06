@@ -20,29 +20,29 @@ var RALLY_PRESETS = [
     card: "diagonal",
     deco: "orbit",
     notes: "Referencia de marca: fondo casi negro azulado, acento rojo ladrillo, titular condensado de trazo medio y retícula de integrantes.",
-    pal: { bg: "#0a0c12", bg2: "#12100f", ac: "#b8392e", ink: "#ece6d9", mu: "#8c9199", gl: "#1b2130" },
+    pal: { bg: "#0A0C12", bg2: "#12141A", ac: "#B8392E", ink: "#E9EDF3", mu: "#8C9199", gl: "#1B2130" },
     fonts: { t: "Archivo Narrow", b: "Barlow", l: "JetBrains Mono" }
   },
   {
     id: "papel",
-    name: "Papel",
+    name: "Editorial",
     skin: "refined",
     cover: "b",
     card: "right",
     deco: "none",
-    notes: "Editorial claro: papel crema, titular en serifa y mucho aire. Para equipos que quieren leer, no gritar.",
-    pal: { bg: "#f2ede3", bg2: "#e9e2d5", ac: "#b8392e", ink: "#1b1712", mu: "#6d665a", gl: "#d9d1c0" },
-    fonts: { t: "Instrument Serif", b: "Barlow", l: "JetBrains Mono" }
+    notes: "Revista en papel frío: titular contenido a la izquierda, cifras en columna a la derecha y nómina de integrantes con aire. Se lee, no grita.",
+    pal: { bg: "#F5F6F8", bg2: "#E9ECF0", ac: "#A63A30", ink: "#171A20", mu: "#555D6A", gl: "#D7DCE3" },
+    fonts: { t: "Bricolage Grotesque", b: "Barlow", l: "JetBrains Mono" }
   },
   {
     id: "cartel",
-    name: "Cartel",
+    name: "Afiche",
     skin: "bold",
     cover: "c",
     card: "band",
     deco: "none",
-    notes: "Cartel de cartelera: titular condensado enorme en negativo, filete de acento y datos en bloque. Lectura a un metro de distancia.",
-    pal: { bg: "#14100c", bg2: "#1d1710", ac: "#d1662a", ink: "#f4ece1", mu: "#9a9084", gl: "#241d14" },
+    notes: "Afiche nocturno: fondo tinta, titular condensado medido, cifras y nómina centradas en el bloque medio. Impacto sin huecos muertos.",
+    pal: { bg: "#12151A", bg2: "#191D24", ac: "#E07A3C", ink: "#EEF1F5", mu: "#97A0AB", gl: "#242A33" },
     fonts: { t: "Anton", b: "Archivo", l: "JetBrains Mono" }
   },
   {
@@ -69,14 +69,14 @@ var RALLY_PRESETS = [
   },
   {
     id: "comic",
-    name: "Cómic",
+    name: "Tinta",
     skin: "comic",
     cover: "f",
     card: "cutout",
-    deco: "dots",
-    notes: "Viñeta: crema y tinta, titular de rotulación, bocadillo para la etiqueta y fotos recortadas con borde inclinado, tipo personaje.",
-    pal: { bg: "#fff7ea", bg2: "#f6e7ce", ac: "#e63946", ink: "#1a1512", mu: "#7b6a55", gl: "#e6d3b4" },
-    fonts: { t: "Bangers", b: "Barlow", l: "JetBrains Mono" }
+    deco: "none",
+    notes: "Tinta sobre papel frío, sin trama ni estallidos: titular sólido, filetes finos y acento solo en las cifras. La versión adulta del trazo.",
+    pal: { bg: "#F7F8FA", bg2: "#E9ECF1", ac: "#A8322E", ink: "#15181D", mu: "#525A66", gl: "#D9DEE6" },
+    fonts: { t: "Archivo Black", b: "Barlow", l: "JetBrains Mono" }
   },
   {
     id: "estudio",

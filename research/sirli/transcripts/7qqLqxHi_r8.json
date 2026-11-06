@@ -1,0 +1,124 @@
+{
+ "video_id": "7qqLqxHi_r8",
+ "url": "https://youtu.be/7qqLqxHi_r8?si=DxfaRSSlEu1LC_0X",
+ "year": 2023,
+ "collection": "nacional",
+ "country": "BOLIVIA",
+ "team": "ALFA",
+ "place_label": "TERCER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "nacional",
+   "place_label": "TERCER LUGAR",
+   "team": "ALFA",
+   "challenge": "09 - GRIS A VERDE"
+  },
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "ALFA",
+   "challenge": "09 - GRIS A VERDE"
+  }
+ ],
+ "fetched_at": "2026-11-06T21:15:11+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Hola, mi nombre es Johanna. Antes que nada quiero hacerte una pregunta. Dime si tú eres una de las personas que al momento de ducharse deja caer el agua mientras está se calienta. Si tu respuesta es un sí, pues déjame decirte que esta información te interesará. ¿Sabías que al menos por los dos primeros minutos de agua que cae de la ducha se desperdicia un litro de agua? Pues sí, te traigo la revolución en la ducha. Imagínate entrar a la ducha y que el agua empiece a fluir a la temperatura que tú deseas sin desperdiciar ni una gota de agua. Tú me dirás cómo es posible esto. SmartDouche es un sistema que te permitirá calibrar la temperatura que tú deseas, la temperatura exacta. Y no sólo eso, vendrá acompañado de un sensor de movimiento que sólo dejará fluir el agua cuando estés debajo de la regadera. Y eso no es todo. SmartDouche viene acompañado de un reciclador de agua, una plataforma donde tú podrás ducharte y el agua que dejes caer será reciclada y filtrada para luego ser redirigida a un inodoro y poder así conservar el agua. Este sistema podrá ser adaptable a cualquier tipo de baño sin la necesidad de hacer cambios estructurales. Con SmartDouche estamos contribuyendo activamente a la conservación del agua y a evitar el desperdicio del mismo.",
+ "segments": [
+  {
+   "start": 0.27,
+   "end": 5.75,
+   "text": "Hola, mi nombre es Johanna. Antes que nada quiero hacerte una pregunta. Dime si tú"
+  },
+  {
+   "start": 5.75,
+   "end": 9.27,
+   "text": "eres una de las personas que al momento de ducharse deja caer el agua mientras"
+  },
+  {
+   "start": 9.27,
+   "end": 13.23,
+   "text": "está se calienta. Si tu respuesta es un sí, pues déjame decirte que esta"
+  },
+  {
+   "start": 13.23,
+   "end": 16.67,
+   "text": "información te interesará. ¿Sabías que al menos por los dos primeros"
+  },
+  {
+   "start": 16.67,
+   "end": 21.35,
+   "text": "minutos de agua que cae de la ducha se desperdicia un litro de agua? Pues"
+  },
+  {
+   "start": 21.35,
+   "end": 26.91,
+   "text": "sí, te traigo la revolución en la ducha. Imagínate entrar a la ducha y"
+  },
+  {
+   "start": 26.91,
+   "end": 31.11,
+   "text": "que el agua empiece a fluir a la temperatura que tú deseas sin desperdiciar"
+  },
+  {
+   "start": 31.11,
+   "end": 35.27,
+   "text": "ni una gota de agua. Tú me dirás cómo es posible esto. SmartDouche es un"
+  },
+  {
+   "start": 35.27,
+   "end": 38.99,
+   "text": "sistema que te permitirá calibrar la temperatura que tú deseas, la"
+  },
+  {
+   "start": 38.99,
+   "end": 43.23,
+   "text": "temperatura exacta. Y no sólo eso, vendrá acompañado de un sensor de"
+  },
+  {
+   "start": 43.23,
+   "end": 47.95,
+   "text": "movimiento que sólo dejará fluir el agua cuando estés debajo de la"
+  },
+  {
+   "start": 47.95,
+   "end": 51.55,
+   "text": "regadera. Y eso no es todo. SmartDouche viene acompañado de un"
+  },
+  {
+   "start": 51.55,
+   "end": 55.39,
+   "text": "reciclador de agua, una plataforma donde tú podrás ducharte y el agua que"
+  },
+  {
+   "start": 55.39,
+   "end": 60.95,
+   "text": "dejes caer será reciclada y filtrada para luego ser redirigida a un"
+  },
+  {
+   "start": 60.95,
+   "end": 67.31,
+   "text": "inodoro y poder así conservar el agua. Este sistema podrá ser adaptable a"
+  },
+  {
+   "start": 67.31,
+   "end": 70.63,
+   "text": "cualquier tipo de baño sin la necesidad de hacer cambios"
+  },
+  {
+   "start": 70.63,
+   "end": 74.59,
+   "text": "estructurales. Con SmartDouche estamos contribuyendo activamente a"
+  },
+  {
+   "start": 74.59,
+   "end": 80.15,
+   "text": "la conservación del agua y a evitar el desperdicio del mismo."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 78.4
+}

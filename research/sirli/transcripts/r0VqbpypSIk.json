@@ -1,0 +1,164 @@
+{
+ "video_id": "r0VqbpypSIk",
+ "url": "https://www.youtube.com/watch?v=r0VqbpypSIk",
+ "year": 2022,
+ "collection": "nacional",
+ "country": "MÉXICO",
+ "team": "EQUIPO 6 - UANL",
+ "place_label": "TERCER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2022,
+   "collection": "nacional",
+   "place_label": "TERCER LUGAR",
+   "team": "EQUIPO 6 - UANL",
+   "challenge": "04 - AHORRO ENERGÉTICO EN EL SECTOR GASTRONÓMICO"
+  },
+  {
+   "year": 2022,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "EQUIPO 6 - UANL",
+   "challenge": "04 - AHORRO ENERGÉTICO EN EL SECTOR GASTRONÓMICO"
+  }
+ ],
+ "fetched_at": "2026-11-06T21:56:06+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "La reactivación económica tras los confinamientos de la pandemia incrementó la demanda de energía a un punto que las reservas no esperaban. En realidad la energía no es abundante, nunca lo ha sido, es un recurso escaso. Aún así los expertos creen que lo peor de esta crisis energética mundial vendrá en invierno. Y a las empresas intenta concienciarlas de que es necesario recortar el consumo energético por las buenas antes de que por las malas haya recortes forzados. La única opción que hay hoy día en términos de un desarrollo que sea compatible con un desarrollo sustentable y con un costo de la energía razonable y a la baja son las energías renovables. Bio-ON es un sistema de optimización y gestión bioenergética para el sector gastronómico. Cuenta con un sistema de gestión y optimización de la energía proporcionada al restaurante por medio de paneles fotovoltaicos y biogás producido por un biodigestor de desechos orgánicos. Por medio de inteligencia artificial es un sistema de retroalimentación lazo cerrado. Este aprende cómo distribuir la energía eficientemente, señala fugas energéticas, programa mantenimiento de los equipos, entrega datos de consumo y señala el estado de los paneles fotovoltaicos y del biodigestor. Los paneles fotovoltaicos van conectados on grid para sufrir la demanda energética en ausencia de la radiación solar. El biodigestor funciona con los propios desechos orgánicos del restaurante, proporcionando biogás el cual es usado para sufrir la demanda de gas del recinto. De esta manera se logra un ahorro del 83% del total de los costos energía del restaurante que equivalen en promedio de $3,400 anualmente, disminuyendo así sus costos de producción, aumentando su rentabilidad y haciendo el restaurante sustentable y ecológico.",
+ "segments": [
+  {
+   "start": 1.17,
+   "end": 6.09,
+   "text": "La reactivación económica tras los confinamientos de la pandemia incrementó la demanda de"
+  },
+  {
+   "start": 6.09,
+   "end": 9.05,
+   "text": "energía a un punto que las reservas no esperaban."
+  },
+  {
+   "start": 9.05,
+   "end": 14.97,
+   "text": "En realidad la energía no es abundante, nunca lo ha sido, es un recurso escaso."
+  },
+  {
+   "start": 14.97,
+   "end": 19.05,
+   "text": "Aún así los expertos creen que lo peor de esta crisis energética mundial vendrá"
+  },
+  {
+   "start": 19.05,
+   "end": 20.05,
+   "text": "en invierno."
+  },
+  {
+   "start": 20.05,
+   "end": 26.29,
+   "text": "Y a las empresas intenta concienciarlas de que es necesario recortar el consumo"
+  },
+  {
+   "start": 26.29,
+   "end": 31.09,
+   "text": "energético por las buenas antes de que por las malas haya recortes forzados."
+  },
+  {
+   "start": 33.68,
+   "end": 37.52,
+   "text": "La única opción que hay hoy día en términos de un desarrollo que sea compatible con"
+  },
+  {
+   "start": 37.52,
+   "end": 43.2,
+   "text": "un desarrollo sustentable y con un costo de la energía razonable y a la baja son"
+  },
+  {
+   "start": 43.2,
+   "end": 44.2,
+   "text": "las energías renovables."
+  },
+  {
+   "start": 44.2,
+   "end": 55.05,
+   "text": "Bio-ON es un sistema de optimización y gestión bioenergética para el sector gastronómico."
+  },
+  {
+   "start": 55.05,
+   "end": 60.45,
+   "text": "Cuenta con un sistema de gestión y optimización de la energía proporcionada al restaurante"
+  },
+  {
+   "start": 60.45,
+   "end": 66.57,
+   "text": "por medio de paneles fotovoltaicos y biogás producido por un biodigestor de desechos"
+  },
+  {
+   "start": 66.57,
+   "end": 67.57,
+   "text": "orgánicos."
+  },
+  {
+   "start": 67.57,
+   "end": 73.13,
+   "text": "Por medio de inteligencia artificial es un sistema de retroalimentación lazo cerrado."
+  },
+  {
+   "start": 73.13,
+   "end": 78.25,
+   "text": "Este aprende cómo distribuir la energía eficientemente, señala fugas energéticas,"
+  },
+  {
+   "start": 78.25,
+   "end": 82.33,
+   "text": "programa mantenimiento de los equipos, entrega datos de consumo y señala el"
+  },
+  {
+   "start": 82.33,
+   "end": 86.17,
+   "text": "estado de los paneles fotovoltaicos y del biodigestor."
+  },
+  {
+   "start": 86.17,
+   "end": 91.65,
+   "text": "Los paneles fotovoltaicos van conectados on grid para sufrir la demanda energética"
+  },
+  {
+   "start": 91.65,
+   "end": 93.97,
+   "text": "en ausencia de la radiación solar."
+  },
+  {
+   "start": 93.97,
+   "end": 99.09,
+   "text": "El biodigestor funciona con los propios desechos orgánicos del restaurante, proporcionando"
+  },
+  {
+   "start": 99.09,
+   "end": 103.09,
+   "text": "biogás el cual es usado para sufrir la demanda de gas del recinto."
+  },
+  {
+   "start": 103.09,
+   "end": 108.37,
+   "text": "De esta manera se logra un ahorro del 83% del total de los costos energía del"
+  },
+  {
+   "start": 108.37,
+   "end": 113.85,
+   "text": "restaurante que equivalen en promedio de $3,400 anualmente, disminuyendo así"
+  },
+  {
+   "start": 113.85,
+   "end": 118.37,
+   "text": "sus costos de producción, aumentando su rentabilidad y haciendo el restaurante"
+  },
+  {
+   "start": 118.37,
+   "end": 119.85,
+   "text": "sustentable y ecológico."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.9
+}

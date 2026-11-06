@@ -1,0 +1,184 @@
+{
+ "video_id": "BHbCEoErIbU",
+ "url": "https://youtu.be/BHbCEoErIbU?si=0LbakiQpaulhT1E7",
+ "year": 2026,
+ "collection": "nacional",
+ "country": "ARGENTINA",
+ "team": "LOS SENSORIALES",
+ "place_label": "TERCER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "nacional",
+   "place_label": "TERCER LUGAR",
+   "team": "LOS SENSORIALES",
+   "challenge": "09 - OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA"
+  },
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "LOS SENSORIALES",
+   "challenge": "09 - OPTIMIZACIÓN Y PRIORIZACIÓN DE RECURSOS Y ESFUERZOS EN LA POST-EMERGENCIA"
+  }
+ ],
+ "fetched_at": "2026-11-06T20:12:28+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "En los primeros minutos de un desastre, Sal de ahí, sal de ahí, sal de ahí, sal de ahí. la toma de decisiones rápidas y certeras es de vital importancia. Sin embargo, las líneas telefónicas se sobresaturan y el internet colapsa. Mientras el ciudadano queda aislado, las unidades de emergencia actúan a ciegas. Esto genera desconexión entre ambas partes y así les dificulta a las autoridades el saber por dónde y a quién empezar a auxiliar. Es así que el caos puede costar vidas. Se propone señal al rescate. Una progresiva web que el ciudadano instala en segundo y ante cualquier urgencia solo tiene que escribir o dictar su situación. No importa si las redes telefónicas cayeron, la plataforma está diseñada para funcionar offline. Nuestro objetivo es optimizar la infraestructura tradicional utilizando la aplicación ServiceWorkers, que al recibir una señal de emergencia la va a redireccionar en forma de una red independiente de radiofrecuencia que va a rebotar de nodo en nodo a través de la ciudad apagada, atravesando toda la interferencia de las llamadas hasta llegar a nuestro getaway. Cuando se pierden los sistemas de conexión utilizamos sistemas offline. Un dispositivo que al conectarse con el celular le permite a la aplicación enviar señales de radiofrecuencia que codifican de manera automática la ubicación, el id de usuario y el tipo de ayuda que necesitan. La transmite a través de transistores que envían señales que rebotan entre nodos ubicados en partes estratégicas de la ciudad para llegar a las sedes. Y eso ayudaría un montón porque en el caso de que cubra un fenómeno natural que provoca un impacto en la que se pierden líneas telefónicas, corte de energía, que sería algo muy importante. No proponemos solamente una aplicación, proponemos un nuevo sistema nervioso de gestión de desastres. Y transformamos el caos de las líneas colapsadas en una respuesta inteligente, sencilla y simple. Somos Los Sensoriales, estudiantes de ingeniería mecatrónica y en alimentos. Y favorecemos la supervivencia cuando el mundo se desconecta. Todo desde nuestra facultad.",
+ "segments": [
+  {
+   "start": 5.39,
+   "end": 7.39,
+   "text": "En los primeros minutos de un desastre,"
+  },
+  {
+   "start": 7.39,
+   "end": 10.39,
+   "text": "Sal de ahí, sal de ahí, sal de ahí, sal de ahí."
+  },
+  {
+   "start": 10.39,
+   "end": 14.9,
+   "text": "la toma de decisiones rápidas y certeras es de vital importancia."
+  },
+  {
+   "start": 14.9,
+   "end": 18.9,
+   "text": "Sin embargo, las líneas telefónicas se sobresaturan y el internet colapsa."
+  },
+  {
+   "start": 18.9,
+   "end": 22.9,
+   "text": "Mientras el ciudadano queda aislado, las unidades de emergencia actúan a ciegas."
+  },
+  {
+   "start": 22.9,
+   "end": 25.9,
+   "text": "Esto genera desconexión entre ambas partes"
+  },
+  {
+   "start": 25.9,
+   "end": 29.9,
+   "text": "y así les dificulta a las autoridades el saber por dónde y a quién empezar a auxiliar."
+  },
+  {
+   "start": 29.9,
+   "end": 32.9,
+   "text": "Es así que el caos puede costar vidas."
+  },
+  {
+   "start": 33.9,
+   "end": 35.9,
+   "text": "Se propone señal al rescate."
+  },
+  {
+   "start": 35.9,
+   "end": 38.9,
+   "text": "Una progresiva web que el ciudadano instala en segundo y ante cualquier urgencia"
+  },
+  {
+   "start": 38.9,
+   "end": 40.9,
+   "text": "solo tiene que escribir o dictar su situación."
+  },
+  {
+   "start": 40.9,
+   "end": 45.9,
+   "text": "No importa si las redes telefónicas cayeron, la plataforma está diseñada para funcionar offline."
+  },
+  {
+   "start": 45.9,
+   "end": 49.9,
+   "text": "Nuestro objetivo es optimizar la infraestructura tradicional utilizando la aplicación ServiceWorkers,"
+  },
+  {
+   "start": 49.9,
+   "end": 53.9,
+   "text": "que al recibir una señal de emergencia la va a redireccionar"
+  },
+  {
+   "start": 53.9,
+   "end": 55.9,
+   "text": "en forma de una red independiente de radiofrecuencia"
+  },
+  {
+   "start": 55.9,
+   "end": 58.9,
+   "text": "que va a rebotar de nodo en nodo a través de la ciudad apagada,"
+  },
+  {
+   "start": 58.9,
+   "end": 62.9,
+   "text": "atravesando toda la interferencia de las llamadas hasta llegar a nuestro getaway."
+  },
+  {
+   "start": 63.9,
+   "end": 66.9,
+   "text": "Cuando se pierden los sistemas de conexión utilizamos sistemas offline."
+  },
+  {
+   "start": 66.9,
+   "end": 72.9,
+   "text": "Un dispositivo que al conectarse con el celular le permite a la aplicación enviar señales de radiofrecuencia"
+  },
+  {
+   "start": 72.9,
+   "end": 77.9,
+   "text": "que codifican de manera automática la ubicación, el id de usuario y el tipo de ayuda que necesitan."
+  },
+  {
+   "start": 77.9,
+   "end": 82.9,
+   "text": "La transmite a través de transistores que envían señales que rebotan entre nodos"
+  },
+  {
+   "start": 82.9,
+   "end": 86.9,
+   "text": "ubicados en partes estratégicas de la ciudad para llegar a las sedes."
+  },
+  {
+   "start": 88.9,
+   "end": 91.9,
+   "text": "Y eso ayudaría un montón porque en el caso de que cubra un fenómeno natural"
+  },
+  {
+   "start": 91.9,
+   "end": 95.9,
+   "text": "que provoca un impacto en la que se pierden líneas telefónicas, corte de energía,"
+  },
+  {
+   "start": 95.9,
+   "end": 97.9,
+   "text": "que sería algo muy importante."
+  },
+  {
+   "start": 97.9,
+   "end": 102.9,
+   "text": "No proponemos solamente una aplicación, proponemos un nuevo sistema nervioso de gestión de desastres."
+  },
+  {
+   "start": 102.9,
+   "end": 108.9,
+   "text": "Y transformamos el caos de las líneas colapsadas en una respuesta inteligente, sencilla y simple."
+  },
+  {
+   "start": 109.9,
+   "end": 113.9,
+   "text": "Somos Los Sensoriales, estudiantes de ingeniería mecatrónica y en alimentos."
+  },
+  {
+   "start": 113.9,
+   "end": 117.9,
+   "text": "Y favorecemos la supervivencia cuando el mundo se desconecta."
+  },
+  {
+   "start": 117.9,
+   "end": 119.9,
+   "text": "Todo desde nuestra facultad."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.4
+}

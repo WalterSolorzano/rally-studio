@@ -1,0 +1,149 @@
+{
+ "video_id": "O7pA5yCy0ho",
+ "url": "https://youtu.be/O7pA5yCy0ho",
+ "year": 2026,
+ "collection": "nacional",
+ "country": "EL SALVADOR",
+ "team": "KINETIX",
+ "place_label": "TERCER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "nacional",
+   "place_label": "TERCER LUGAR",
+   "team": "KINETIX",
+   "challenge": "07 - REUTILIZACIÓN DE ACEITE DOMÉSTICO"
+  },
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "KINETIX",
+   "challenge": "07 - REUTILIZACIÓN DE ACEITE DOMÉSTICO"
+  }
+ ],
+ "fetched_at": "2026-11-06T20:25:53+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "¿Sabías que en El Salvador, tirar un solo litro de aceite usado al drenaje contamina hasta 40 mil litros de agua? En El Salvador, esa mala práctica obstruye las tuberías, provoca inundaciones y destruye nuestros recursos hídricos. En Kinetics, integramos de colección comunitaria, educación ambiental y aprovechamiento productivo en un solo sistema. No somos una campaña de acopio aislada, combinamos incentivos para la comunidad salvadoreña como un modelo de negocio sostenible. Instalamos casetas de acopio en las comunidades autorizadas por las alcaldías. Entregas tu aceite y un empleado de Kinetics te muestra un código QR, lo escaneas con la aplicación Kinetics, ingresas los litros y ves los puntos que ganarás. Al guardar, se suman a tu perfil donde también encuentras el mapa de sieres y sus horarios. Después, canjeas tus puntos en empresas aliadas. Asimismo, los establecimientos comerciales de alimentos se incorporan a la iniciativa mediante la venta de su aceite y su participación directa en nuestro sistema de canje. El aceite recolectado pasa por un proceso donde secuela, se decanta de 24 a 48 horas, se filtra y se seca. Posteriormente, medimos su acidez, lo calentamos de 50 a 55 grados y lo mezclamos con metóxido durante 60 a 90 minutos y reposa de 8 a 12 horas. Después, se lava con agua tibia hasta quedar claro, así obtenemos biodiesel. Lo vendemos a empresas para transporte y maquinaria, manteniendo un modelo de negocio sostenible. Por esto podemos escalar a todo el país. Kinetics, talento que impulsa un futuro verde. Descarga la aplicación Kinetics y dale una segunda vida a tu aceite.",
+ "segments": [
+  {
+   "start": 0.11,
+   "end": 5.55,
+   "text": "¿Sabías que en El Salvador, tirar un solo litro de aceite usado al drenaje"
+  },
+  {
+   "start": 5.55,
+   "end": 11.51,
+   "text": "contamina hasta 40 mil litros de agua? En El Salvador, esa mala práctica"
+  },
+  {
+   "start": 11.51,
+   "end": 15.67,
+   "text": "obstruye las tuberías, provoca inundaciones y destruye nuestros"
+  },
+  {
+   "start": 15.67,
+   "end": 20.47,
+   "text": "recursos hídricos. En Kinetics, integramos de colección comunitaria,"
+  },
+  {
+   "start": 20.47,
+   "end": 25.43,
+   "text": "educación ambiental y aprovechamiento productivo en un solo sistema."
+  },
+  {
+   "start": 25.43,
+   "end": 30.59,
+   "text": "No somos una campaña de acopio aislada, combinamos incentivos para la comunidad"
+  },
+  {
+   "start": 30.59,
+   "end": 34.11,
+   "text": "salvadoreña como un modelo de negocio sostenible."
+  },
+  {
+   "start": 34.11,
+   "end": 38.99,
+   "text": "Instalamos casetas de acopio en las comunidades autorizadas por las alcaldías."
+  },
+  {
+   "start": 38.99,
+   "end": 43.39,
+   "text": "Entregas tu aceite y un empleado de Kinetics te muestra un código QR,"
+  },
+  {
+   "start": 43.39,
+   "end": 48.99,
+   "text": "lo escaneas con la aplicación Kinetics, ingresas los litros y ves los puntos que ganarás."
+  },
+  {
+   "start": 48.99,
+   "end": 55.23,
+   "text": "Al guardar, se suman a tu perfil donde también encuentras el mapa de sieres y sus horarios."
+  },
+  {
+   "start": 55.27,
+   "end": 60.4,
+   "text": "Después, canjeas tus puntos en empresas aliadas."
+  },
+  {
+   "start": 60.4,
+   "end": 65.6,
+   "text": "Asimismo, los establecimientos comerciales de alimentos se incorporan a la iniciativa"
+  },
+  {
+   "start": 65.6,
+   "end": 72.32,
+   "text": "mediante la venta de su aceite y su participación directa en nuestro sistema de canje."
+  },
+  {
+   "start": 72.32,
+   "end": 79.68,
+   "text": "El aceite recolectado pasa por un proceso donde secuela, se decanta de 24 a 48 horas,"
+  },
+  {
+   "start": 79.76,
+   "end": 81.72,
+   "text": "se filtra y se seca."
+  },
+  {
+   "start": 81.72,
+   "end": 89.72,
+   "text": "Posteriormente, medimos su acidez, lo calentamos de 50 a 55 grados y lo mezclamos con metóxido"
+  },
+  {
+   "start": 89.72,
+   "end": 96.24,
+   "text": "durante 60 a 90 minutos y reposa de 8 a 12 horas."
+  },
+  {
+   "start": 96.24,
+   "end": 102.76,
+   "text": "Después, se lava con agua tibia hasta quedar claro, así obtenemos biodiesel."
+  },
+  {
+   "start": 102.76,
+   "end": 108.72,
+   "text": "Lo vendemos a empresas para transporte y maquinaria, manteniendo un modelo de negocio sostenible."
+  },
+  {
+   "start": 108.76,
+   "end": 111.16,
+   "text": "Por esto podemos escalar a todo el país."
+  },
+  {
+   "start": 111.16,
+   "end": 114.64,
+   "text": "Kinetics, talento que impulsa un futuro verde."
+  },
+  {
+   "start": 114.64,
+   "end": 118.88,
+   "text": "Descarga la aplicación Kinetics y dale una segunda vida a tu aceite."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.9
+}

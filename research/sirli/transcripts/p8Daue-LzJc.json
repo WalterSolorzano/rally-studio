@@ -1,0 +1,84 @@
+{
+ "video_id": "p8Daue-LzJc",
+ "url": "https://youtu.be/p8Daue-LzJc",
+ "year": 2021,
+ "collection": "nacional",
+ "country": "ARGENTINA",
+ "team": "CABDA WATERTEAM",
+ "place_label": "TERCER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "nacional",
+   "place_label": "TERCER LUGAR",
+   "team": "CABDA WATERTEAM",
+   "challenge": "03 - AGUA PARA SOÑAR"
+  },
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "CABDA WATERTEAM",
+   "challenge": "03 - AGUA PARA SOÑAR"
+  }
+ ],
+ "fetched_at": "2026-11-06T22:01:32+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Sabemos que en la actualidad el problema de la escasez del agua es grave, siendo las comunidades con bajos recursos la más afectadas y esto en medida que pasa el tiempo, empeora. Ellos no cuentan con un sistema de agua potable y deben adaptarse a beberlo sin un tratamiento previo, desde pozos hasta aquellos provenientes de la lluvia. Por eso desde Capda Water Team proponemos una solución utilizando agua de lluvia, la cual cuenta de un sistema de captación de la misma a través de canaletas que descargan sobre un filtro de bidones de 20 litros, conformado por partículas de distinta granulometría. El agua desemboca un depósito subterráneo, el cual dispone una bomba dosificadora de cloro para llevar a cabo su potabilización. Luego pasa a su almacenamiento que serán tanques de 1000 litros enrejados, muy comunes en la zona patagónica. Acto seguido mediante bombas de impulsión alimentadas por energía solar llega a una canilla comunitaria donde todos los habitantes tendrán acceso. Este sistema presenta una mejora en la calidad de vida, ya que el producto obtenido es agua apta para el consumo humano. Optamos por un depósito hermético subterráneo para evitar que el material plástico se degrade con el sol, conservar el agua, disminuir el ingreso de virus y bacterias y evitar la eutrofización. Adicionalmente, en los tanques finales de almacenamiento se colocarán sensores que mediante un circuito eléctrico conectado a energía solar indicarán con colores el nivel del agua actual. Esta es la solución más viable encontrada por Carda Waterton. Gracias por su atención.",
+ "segments": [
+  {
+   "start": 6.99,
+   "end": 18.31,
+   "text": "Sabemos que en la actualidad el problema de la escasez del agua es grave, siendo las comunidades con bajos recursos la más afectadas y esto en medida que pasa el tiempo, empeora."
+  },
+  {
+   "start": 18.31,
+   "end": 35.21,
+   "text": "Ellos no cuentan con un sistema de agua potable y deben adaptarse a beberlo sin un tratamiento previo, desde pozos hasta aquellos provenientes de la lluvia."
+  },
+  {
+   "start": 35.41,
+   "end": 53.53,
+   "text": "Por eso desde Capda Water Team proponemos una solución utilizando agua de lluvia, la cual cuenta de un sistema de captación de la misma a través de canaletas que descargan sobre un filtro de bidones de 20 litros, conformado por partículas de distinta granulometría."
+  },
+  {
+   "start": 53.53,
+   "end": 61.53,
+   "text": "El agua desemboca un depósito subterráneo, el cual dispone una bomba dosificadora de cloro para llevar a cabo su potabilización."
+  },
+  {
+   "start": 61.85,
+   "end": 69.49,
+   "text": "Luego pasa a su almacenamiento que serán tanques de 1000 litros enrejados, muy comunes en la zona patagónica."
+  },
+  {
+   "start": 69.49,
+   "end": 79.49,
+   "text": "Acto seguido mediante bombas de impulsión alimentadas por energía solar llega a una canilla comunitaria donde todos los habitantes tendrán acceso."
+  },
+  {
+   "start": 80.45,
+   "end": 88.45,
+   "text": "Este sistema presenta una mejora en la calidad de vida, ya que el producto obtenido es agua apta para el consumo humano."
+  },
+  {
+   "start": 88.45,
+   "end": 102.45,
+   "text": "Optamos por un depósito hermético subterráneo para evitar que el material plástico se degrade con el sol, conservar el agua, disminuir el ingreso de virus y bacterias y evitar la eutrofización."
+  },
+  {
+   "start": 103.41,
+   "end": 113.41,
+   "text": "Adicionalmente, en los tanques finales de almacenamiento se colocarán sensores que mediante un circuito eléctrico conectado a energía solar indicarán con colores el nivel del agua actual."
+  },
+  {
+   "start": 113.41,
+   "end": 119.41,
+   "text": "Esta es la solución más viable encontrada por Carda Waterton. Gracias por su atención."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.2
+}

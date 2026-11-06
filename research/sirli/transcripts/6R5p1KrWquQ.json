@@ -1,0 +1,149 @@
+{
+ "video_id": "6R5p1KrWquQ",
+ "url": "https://youtu.be/6R5p1KrWquQ",
+ "year": 2025,
+ "collection": "nacional",
+ "country": "ARGENTINA",
+ "team": "GEO ALERT",
+ "place_label": "TERCER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "nacional",
+   "place_label": "TERCER LUGAR",
+   "team": "GEO ALERT",
+   "challenge": "04 - SISTEMA DE ALERTA TEMPRANA"
+  },
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "GEO ALERT",
+   "challenge": "04 - SISTEMA DE ALERTA TEMPRANA"
+  }
+ ],
+ "fetched_at": "2026-11-06T20:33:45+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Sistema de alerta temprana En Corrientes, Argentina, miles de hectáreas de bosques nativos, pastizales y vida silvestre están bajo amenaza constante. Una provincia en llamas es el corazón del problema. ¿Qué alimenta los incendios? Sequías, altas temperaturas, quemas incontroladas, falta de vigilancia rural y escasez de recursos. El problema es la ausencia de un sistema de alerta temprana para detectar, prevenir y responder. ¿Una red para un bosque? ¿Qué proponemos? Una red inteligente de dispositivos de bajo costo y bajo consumo que actúa como el sistema de alerta del bosque. La tecnología explicada. ¿Cómo funciona? LoRa es un protocolo de comunicación de largo alcance y bajo consumo, ideal para zonas rurales o sin conectividad. El sensor detecta, piensa, comunica y se alimenta. El área a cubrir es de 5000 km² mediante 250 dispositivos. Un sistema nervioso digital para el bosque, susurrando advertencias de nodo a nodo. Más inteligencia, no más fuerza. ¿Por qué no usar redes móviles o wifi? La red LoRa genera más cobertura, menos costo y menos consumo. La solución correcta no es la más común, es la que se ajusta perfectamente al problema. Un futuro sostenible, más allá de apagar fuegos. Cada dispositivo tiene un costo de 100 dólares. Un modelo de sostenibilidad triple que asegura la viabilidad del proyecto a largo plazo, en términos económicos, sociales y ambientales. El efecto dominó positivo, reduce deforestación, protege cuencas hídricas, disminuye emisiones G. Problemas resueltos con inteligencia, no con potencia. Muchas gracias.",
+ "segments": [
+  {
+   "start": 1.26,
+   "end": 3.26,
+   "text": "Sistema de alerta temprana"
+  },
+  {
+   "start": 4.66,
+   "end": 11.46,
+   "text": "En Corrientes, Argentina, miles de hectáreas de bosques nativos, pastizales y vida silvestre están bajo amenaza constante."
+  },
+  {
+   "start": 11.46,
+   "end": 14.06,
+   "text": "Una provincia en llamas es el corazón del problema."
+  },
+  {
+   "start": 14.06,
+   "end": 15.66,
+   "text": "¿Qué alimenta los incendios?"
+  },
+  {
+   "start": 15.66,
+   "end": 21.06,
+   "text": "Sequías, altas temperaturas, quemas incontroladas, falta de vigilancia rural y escasez de recursos."
+  },
+  {
+   "start": 21.06,
+   "end": 26.66,
+   "text": "El problema es la ausencia de un sistema de alerta temprana para detectar, prevenir y responder."
+  },
+  {
+   "start": 26.66,
+   "end": 29.46,
+   "text": "¿Una red para un bosque? ¿Qué proponemos?"
+  },
+  {
+   "start": 30.26,
+   "end": 36.26,
+   "text": "Una red inteligente de dispositivos de bajo costo y bajo consumo que actúa como el sistema de alerta del bosque."
+  },
+  {
+   "start": 36.26,
+   "end": 39.26,
+   "text": "La tecnología explicada. ¿Cómo funciona?"
+  },
+  {
+   "start": 39.26,
+   "end": 46.26,
+   "text": "LoRa es un protocolo de comunicación de largo alcance y bajo consumo, ideal para zonas rurales o sin conectividad."
+  },
+  {
+   "start": 46.26,
+   "end": 53.71,
+   "text": "El sensor detecta, piensa, comunica y se alimenta."
+  },
+  {
+   "start": 53.71,
+   "end": 58.91,
+   "text": "El área a cubrir es de 5000 km² mediante 250 dispositivos."
+  },
+  {
+   "start": 59.11,
+   "end": 66.94,
+   "text": "Un sistema nervioso digital para el bosque, susurrando advertencias de nodo a nodo."
+  },
+  {
+   "start": 66.94,
+   "end": 69.94,
+   "text": "Más inteligencia, no más fuerza."
+  },
+  {
+   "start": 70.94,
+   "end": 75.48,
+   "text": "¿Por qué no usar redes móviles o wifi?"
+  },
+  {
+   "start": 75.48,
+   "end": 84.09,
+   "text": "La red LoRa genera más cobertura, menos costo y menos consumo."
+  },
+  {
+   "start": 84.09,
+   "end": 89.09,
+   "text": "La solución correcta no es la más común, es la que se ajusta perfectamente al problema."
+  },
+  {
+   "start": 90.09,
+   "end": 94.29,
+   "text": "Un futuro sostenible, más allá de apagar fuegos."
+  },
+  {
+   "start": 94.29,
+   "end": 98.86,
+   "text": "Cada dispositivo tiene un costo de 100 dólares."
+  },
+  {
+   "start": 98.86,
+   "end": 105.86,
+   "text": "Un modelo de sostenibilidad triple que asegura la viabilidad del proyecto a largo plazo, en términos económicos, sociales y ambientales."
+  },
+  {
+   "start": 105.86,
+   "end": 113.81,
+   "text": "El efecto dominó positivo, reduce deforestación, protege cuencas hídricas, disminuye emisiones G."
+  },
+  {
+   "start": 113.81,
+   "end": 119.64,
+   "text": "Problemas resueltos con inteligencia, no con potencia."
+  },
+  {
+   "start": 119.64,
+   "end": 121.64,
+   "text": "Muchas gracias."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 121.5
+}

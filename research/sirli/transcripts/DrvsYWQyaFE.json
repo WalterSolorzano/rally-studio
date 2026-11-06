@@ -1,0 +1,94 @@
+{
+ "video_id": "DrvsYWQyaFE",
+ "url": "https://youtu.be/DrvsYWQyaFE",
+ "year": 2026,
+ "collection": "nacional",
+ "country": "COLOMBIA",
+ "team": "INNOVACIÓN SIN LÍMITE VOL2.0",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "INNOVACIÓN SIN LÍMITE VOL2.0",
+   "challenge": "02 - SENSORES AL SERVICIO DE LA COMUNIDAD"
+  },
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "INNOVACIÓN SIN LÍMITE VOL2.0",
+   "challenge": "02 - SENSORES AL SERVICIO DE LA COMUNIDAD"
+  }
+ ],
+ "fetched_at": "2026-11-06T20:20:57+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Cada día, miles de personas recorren calles que esconden un problema. Baches y grietas que afectan la movilidad y ponen en riesgo la seguridad vial. Pero detectarlos a tiempo es costoso y lento. ¿Y si pudiéramos usar este potencial tecnológico olvidado para ayudar a nuestras comunidades? Así nace VIAsense, una propuesta que reutiliza celulares funcionales para identificar posibles anomalías en las vías durante los recorridos cotidianos. El acelerómetro detecta cambios en el movimiento del vehículo y el GPS los ubica. Si no hay internet, los datos se almacenan para sincronizarse después. Luego, nuestra plataforma reúne todos los registros para identificar puntos que necesitan una inspección técnica. Esto podría ayudar a priorizar inspecciones, optimizar recursos y promover la reutilización de dispositivos, contribuyendo a una movilidad más segura. Porque la innovación consiste en darle un nuevo propósito a lo que ya tenemos, VIAsense.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 5.0,
+   "text": "Cada día, miles de personas recorren calles que esconden un problema."
+  },
+  {
+   "start": 5.0,
+   "end": 11.0,
+   "text": "Baches y grietas que afectan la movilidad y ponen en riesgo la seguridad vial."
+  },
+  {
+   "start": 11.0,
+   "end": 15.0,
+   "text": "Pero detectarlos a tiempo es costoso y lento."
+  },
+  {
+   "start": 15.0,
+   "end": 21.0,
+   "text": "¿Y si pudiéramos usar este potencial tecnológico olvidado para ayudar a nuestras comunidades?"
+  },
+  {
+   "start": 21.0,
+   "end": 27.0,
+   "text": "Así nace VIAsense, una propuesta que reutiliza celulares funcionales"
+  },
+  {
+   "start": 27.0,
+   "end": 33.0,
+   "text": "para identificar posibles anomalías en las vías durante los recorridos cotidianos."
+  },
+  {
+   "start": 33.0,
+   "end": 39.0,
+   "text": "El acelerómetro detecta cambios en el movimiento del vehículo y el GPS los ubica."
+  },
+  {
+   "start": 39.0,
+   "end": 44.0,
+   "text": "Si no hay internet, los datos se almacenan para sincronizarse después."
+  },
+  {
+   "start": 44.0,
+   "end": 51.0,
+   "text": "Luego, nuestra plataforma reúne todos los registros para identificar puntos que necesitan una inspección técnica."
+  },
+  {
+   "start": 51.0,
+   "end": 59.0,
+   "text": "Esto podría ayudar a priorizar inspecciones, optimizar recursos y promover la reutilización de dispositivos,"
+  },
+  {
+   "start": 59.0,
+   "end": 62.0,
+   "text": "contribuyendo a una movilidad más segura."
+  },
+  {
+   "start": 62.0,
+   "end": 69.0,
+   "text": "Porque la innovación consiste en darle un nuevo propósito a lo que ya tenemos, VIAsense."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 69.1
+}

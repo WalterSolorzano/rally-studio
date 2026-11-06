@@ -1,0 +1,182 @@
+{
+ "video_id": "jabtdy0MvSI",
+ "url": "https://www.youtube.com/watch?v=jabtdy0MvSI&feature=youtu.be",
+ "year": 2021,
+ "collection": "nacional",
+ "country": "ARGENTINA",
+ "team": "TEAM SOLUTIONS",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "nacional",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "TEAM SOLUTIONS",
+   "challenge": "02 - LA CIRCULARIDAD Y RECUPERACIÓN DE ENVASES DESCARTABLES"
+  }
+ ],
+ "fetched_at": "2026-11-06T22:04:24+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Consumir en lata es cada vez un hábito más frecuente debido a sus particularidades ventajas. Las empresas tienen a su uso por la facilidad que les brinda la logística de envasado. El aluminio se obtiene en la extracción de la alumina a partir de la bauzita y posteriormente se somete una electrónisis. Todo esto tiene un costo energético alto. Al reciclar aluminio estamos reciclando estos dos procesos. Por eso podemos decir que reciclar aluminio es reciclar energía. Este proceso además conlleva un impacto ambiental muy grande. ¿Qué proponemos para solucionar esta problemática? Nuestra propuesta son estaciones SWAP. Las mismas están compuestas por una compuerta donde se ingresa la lata. Al ingresar se acciona manualmente una prensa compactadora que permite reducir el volumen para aumentar la eficiencia del depósito. Una vez comprimida se acciona el botón que vincula la compuerta con el depósito. Debajo de la compuerta hay un sensor óptico que cuenta las latas incorporadas. El sensor emite una señal a un controlador y esta almacena la información que luego será utilizada por el sistema SWAP. Pero ahora ¿cómo hacemos para motivar a los consumidores a usar los SWAP? Las estaciones SWAP están dispuestas en lugares concurridos como playas, plazas y eventos varios. Cuenta con una aplicación gratuita que requiere la creación de una cuenta. Previo a colocar las latas en el dispositivo se debe ingresar el sistema escaneando el código QR de la aplicación. Según la cantidad de latas depositadas, la plataforma recompensa al usuario con un proporcional en una billetera virtual de la aplicación. La misma le permite a la persona utilizar su dinero para pagar servicios, cargar el saldo de transporte celular y obtener descuentos de empresas en convenio con el sistema SWAP. Finalmente el aluminio se recoge para venderse las fábricas que le den un valor agregado al material y así cerrar el ciclo. De esta forma obtuvimos un sistema de recolección que no sólo ayuda al ambiente sino que también genera eficiencia energética para las empresas. Con las estaciones SWAP dejaremos de ver las latas como desechos y las veremos como un beneficio.",
+ "segments": [
+  {
+   "start": 0.91,
+   "end": 5.49,
+   "text": "Consumir en lata es cada vez un hábito más frecuente debido a sus particularidades"
+  },
+  {
+   "start": 5.49,
+   "end": 9.77,
+   "text": "ventajas. Las empresas tienen a su uso por la facilidad que les brinda la"
+  },
+  {
+   "start": 9.77,
+   "end": 13.21,
+   "text": "logística de envasado. El aluminio se obtiene en la extracción de la alumina"
+  },
+  {
+   "start": 13.21,
+   "end": 16.63,
+   "text": "a partir de la bauzita y posteriormente se somete una electrónisis."
+  },
+  {
+   "start": 16.63,
+   "end": 20.29,
+   "text": "Todo esto tiene un costo energético alto. Al reciclar aluminio estamos"
+  },
+  {
+   "start": 20.29,
+   "end": 23.25,
+   "text": "reciclando estos dos procesos. Por eso podemos decir que reciclar"
+  },
+  {
+   "start": 23.25,
+   "end": 27.81,
+   "text": "aluminio es reciclar energía. Este proceso además conlleva un impacto"
+  },
+  {
+   "start": 27.81,
+   "end": 31.97,
+   "text": "ambiental muy grande. ¿Qué proponemos para solucionar esta"
+  },
+  {
+   "start": 31.97,
+   "end": 36.09,
+   "text": "problemática? Nuestra propuesta son estaciones SWAP. Las mismas están"
+  },
+  {
+   "start": 36.09,
+   "end": 40.21,
+   "text": "compuestas por una compuerta donde se ingresa la lata. Al ingresar se acciona"
+  },
+  {
+   "start": 40.21,
+   "end": 43.89,
+   "text": "manualmente una prensa compactadora que permite reducir el volumen para"
+  },
+  {
+   "start": 43.89,
+   "end": 48.17,
+   "text": "aumentar la eficiencia del depósito. Una vez comprimida se acciona el botón"
+  },
+  {
+   "start": 48.17,
+   "end": 51.61,
+   "text": "que vincula la compuerta con el depósito. Debajo de la compuerta hay un"
+  },
+  {
+   "start": 51.61,
+   "end": 55.33,
+   "text": "sensor óptico que cuenta las latas incorporadas. El sensor emite una"
+  },
+  {
+   "start": 55.33,
+   "end": 58.97,
+   "text": "señal a un controlador y esta almacena la información que luego será"
+  },
+  {
+   "start": 58.97,
+   "end": 63.09,
+   "text": "utilizada por el sistema SWAP. Pero ahora ¿cómo hacemos para motivar a los"
+  },
+  {
+   "start": 63.09,
+   "end": 67.33,
+   "text": "consumidores a usar los SWAP? Las estaciones SWAP están dispuestas en"
+  },
+  {
+   "start": 67.33,
+   "end": 71.59,
+   "text": "lugares concurridos como playas, plazas y eventos varios. Cuenta con una"
+  },
+  {
+   "start": 71.59,
+   "end": 75.05,
+   "text": "aplicación gratuita que requiere la creación de una cuenta. Previo a"
+  },
+  {
+   "start": 75.05,
+   "end": 78.37,
+   "text": "colocar las latas en el dispositivo se debe ingresar el sistema escaneando"
+  },
+  {
+   "start": 78.37,
+   "end": 82.53,
+   "text": "el código QR de la aplicación. Según la cantidad de latas depositadas, la"
+  },
+  {
+   "start": 82.53,
+   "end": 85.77,
+   "text": "plataforma recompensa al usuario con un proporcional en una billetera"
+  },
+  {
+   "start": 85.77,
+   "end": 89.69,
+   "text": "virtual de la aplicación. La misma le permite a la persona utilizar su"
+  },
+  {
+   "start": 89.69,
+   "end": 93.17,
+   "text": "dinero para pagar servicios, cargar el saldo de transporte celular y"
+  },
+  {
+   "start": 93.17,
+   "end": 96.85,
+   "text": "obtener descuentos de empresas en convenio con el sistema SWAP."
+  },
+  {
+   "start": 96.85,
+   "end": 100.73,
+   "text": "Finalmente el aluminio se recoge para venderse las fábricas que le den un"
+  },
+  {
+   "start": 100.73,
+   "end": 104.73,
+   "text": "valor agregado al material y así cerrar el ciclo. De esta forma"
+  },
+  {
+   "start": 104.73,
+   "end": 107.61,
+   "text": "obtuvimos un sistema de recolección que no sólo ayuda al"
+  },
+  {
+   "start": 107.61,
+   "end": 110.89,
+   "text": "ambiente sino que también genera eficiencia energética para las"
+  },
+  {
+   "start": 110.89,
+   "end": 114.55,
+   "text": "empresas. Con las estaciones SWAP dejaremos de ver las latas como"
+  },
+  {
+   "start": 114.55,
+   "end": 118.61,
+   "text": "desechos y las veremos como un beneficio."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 118.7
+}

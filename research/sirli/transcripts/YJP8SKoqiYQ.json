@@ -1,0 +1,227 @@
+{
+ "video_id": "YJP8SKoqiYQ",
+ "url": "https://youtu.be/YJP8SKoqiYQ?si=lUJa3zutLcPbwjll",
+ "year": 2026,
+ "collection": "nacional",
+ "country": "VENEZUELA",
+ "team": "LOS AURINEGROS",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "nacional",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "LOS AURINEGROS",
+   "challenge": "05 - MONITOREO INTELIGENTE E INFRAESTRUCTURA VERDE EN RESERVORIOS PLUVIALES"
+  }
+ ],
+ "fetched_at": "2026-11-06T20:30:15+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Nos encontramos en la quebrada de la Blanquita, esa queda situada exactamente en la avenida Las Lomas. En justamente en este punto es donde vamos a aplicar nuestra intervención. Hola, somos Auri Negro y presentamos Hidro Verde 360. ¿Qué sucede cuando una lluvia intensa aumenta el caudal de una quebrada y no contamos con herramientas para anticipar sus riesgos? En la quebrada de la Blanquita de San Cristóbal de Estado Tachera, las crecidas pueden incrementar la erosión, debilitar los saludes y provocar desbordamientos que comprometan la seguridad de la comunidad. Protección vegetal de los saludes. Incorporamos guadua en sus bases donde contribuye a proteger las margenes frente a la erosión y pasto vetiver sobre las pendientes, cuyo sistema de raíces ayuda a sujetar el suelo y disminuir su desgaste. De esta manera buscamos recuperar la vegetación ribereña y reforzar la protección natural del cauce. Continuamos con las torrenteras ecológicas de sección trapezoidal diseñadas para conducir el agua por su recorrido habitual, sin desviarla ni almacenarla. Su configuración busca mejorar la conducción hidráulica y permitir que las intervenciones ecológicas se integren a la protección del canal. En puntos estratégicos proponemos compuertas hidráulicas que permitan regular el paso del agua dentro del mismo cauce. Su funcionamiento se definiría mediante estudios hidráulicos para evitar obstrucciones y represamientos peligrosos. Incorporamos módulos flotantes geométricos interconectados y sujetos mediante emplajes. Están concebidos con una estructura de materiales reciclados y rellenos de musgo o fibra de coco. Su diseño busca generar una resistencia controlada y disipar parte de la energía de la corriente, reduciendo su capacidad erosiva sin interrumpir el flujo. La prevención comienza con nuestro transmisor de nivel hídrico, un pluviómetro modificado con sensores de lluvia y nivel de agua instalado en un punto estratégico de la torrentera. Cuando el nivel se aproxima a un umbral crítico de desbordamiento, el sistema transmite información a nuestra plataforma web diseñada para emitir alertas a la comunidad y a los organismos competentes, facilitando una respuesta anticipada. Hidro Verde 360, una propuesta que une naturaleza, ingeniería y tecnología para proteger el entorno y anticipar emergencias.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 2.0,
+   "text": "Nos encontramos en la quebrada de la Blanquita,"
+  },
+  {
+   "start": 2.0,
+   "end": 5.0,
+   "text": "esa queda situada exactamente en la avenida Las Lomas."
+  },
+  {
+   "start": 5.0,
+   "end": 10.0,
+   "text": "En justamente en este punto es donde vamos a aplicar nuestra intervención."
+  },
+  {
+   "start": 10.0,
+   "end": 13.0,
+   "text": "Hola, somos Auri Negro y presentamos Hidro Verde 360."
+  },
+  {
+   "start": 13.0,
+   "end": 17.0,
+   "text": "¿Qué sucede cuando una lluvia intensa aumenta el caudal de una quebrada"
+  },
+  {
+   "start": 17.0,
+   "end": 20.0,
+   "text": "y no contamos con herramientas para anticipar sus riesgos?"
+  },
+  {
+   "start": 20.0,
+   "end": 22.0,
+   "text": "En la quebrada de la Blanquita de San Cristóbal de Estado Tachera,"
+  },
+  {
+   "start": 22.0,
+   "end": 25.0,
+   "text": "las crecidas pueden incrementar la erosión, debilitar los saludes"
+  },
+  {
+   "start": 25.0,
+   "end": 29.0,
+   "text": "y provocar desbordamientos que comprometan la seguridad de la comunidad."
+  },
+  {
+   "start": 29.0,
+   "end": 31.0,
+   "text": "Protección vegetal de los saludes."
+  },
+  {
+   "start": 31.0,
+   "end": 35.0,
+   "text": "Incorporamos guadua en sus bases donde contribuye a proteger las margenes"
+  },
+  {
+   "start": 35.0,
+   "end": 38.0,
+   "text": "frente a la erosión y pasto vetiver sobre las pendientes,"
+  },
+  {
+   "start": 38.0,
+   "end": 42.0,
+   "text": "cuyo sistema de raíces ayuda a sujetar el suelo y disminuir su desgaste."
+  },
+  {
+   "start": 42.0,
+   "end": 45.0,
+   "text": "De esta manera buscamos recuperar la vegetación ribereña"
+  },
+  {
+   "start": 45.0,
+   "end": 47.0,
+   "text": "y reforzar la protección natural del cauce."
+  },
+  {
+   "start": 47.0,
+   "end": 50.0,
+   "text": "Continuamos con las torrenteras ecológicas de sección trapezoidal"
+  },
+  {
+   "start": 50.0,
+   "end": 53.0,
+   "text": "diseñadas para conducir el agua por su recorrido habitual,"
+  },
+  {
+   "start": 53.0,
+   "end": 54.0,
+   "text": "sin desviarla ni almacenarla."
+  },
+  {
+   "start": 54.0,
+   "end": 57.0,
+   "text": "Su configuración busca mejorar la conducción hidráulica"
+  },
+  {
+   "start": 57.0,
+   "end": 61.0,
+   "text": "y permitir que las intervenciones ecológicas se integren a la protección del canal."
+  },
+  {
+   "start": 61.0,
+   "end": 64.0,
+   "text": "En puntos estratégicos proponemos compuertas hidráulicas"
+  },
+  {
+   "start": 64.0,
+   "end": 68.0,
+   "text": "que permitan regular el paso del agua dentro del mismo cauce."
+  },
+  {
+   "start": 68.0,
+   "end": 71.0,
+   "text": "Su funcionamiento se definiría mediante estudios hidráulicos"
+  },
+  {
+   "start": 71.0,
+   "end": 74.0,
+   "text": "para evitar obstrucciones y represamientos peligrosos."
+  },
+  {
+   "start": 74.0,
+   "end": 76.0,
+   "text": "Incorporamos módulos flotantes geométricos"
+  },
+  {
+   "start": 76.0,
+   "end": 78.0,
+   "text": "interconectados y sujetos mediante emplajes."
+  },
+  {
+   "start": 78.0,
+   "end": 81.0,
+   "text": "Están concebidos con una estructura de materiales reciclados"
+  },
+  {
+   "start": 81.0,
+   "end": 83.0,
+   "text": "y rellenos de musgo o fibra de coco."
+  },
+  {
+   "start": 83.0,
+   "end": 86.0,
+   "text": "Su diseño busca generar una resistencia controlada"
+  },
+  {
+   "start": 86.0,
+   "end": 88.0,
+   "text": "y disipar parte de la energía de la corriente,"
+  },
+  {
+   "start": 88.0,
+   "end": 91.0,
+   "text": "reduciendo su capacidad erosiva sin interrumpir el flujo."
+  },
+  {
+   "start": 91.0,
+   "end": 93.0,
+   "text": "La prevención comienza con nuestro transmisor de nivel hídrico,"
+  },
+  {
+   "start": 93.0,
+   "end": 96.0,
+   "text": "un pluviómetro modificado con sensores de lluvia y nivel de agua"
+  },
+  {
+   "start": 96.0,
+   "end": 98.0,
+   "text": "instalado en un punto estratégico de la torrentera."
+  },
+  {
+   "start": 98.0,
+   "end": 102.0,
+   "text": "Cuando el nivel se aproxima a un umbral crítico de desbordamiento,"
+  },
+  {
+   "start": 102.0,
+   "end": 105.0,
+   "text": "el sistema transmite información a nuestra plataforma web"
+  },
+  {
+   "start": 105.0,
+   "end": 109.0,
+   "text": "diseñada para emitir alertas a la comunidad y a los organismos competentes,"
+  },
+  {
+   "start": 109.0,
+   "end": 111.0,
+   "text": "facilitando una respuesta anticipada."
+  },
+  {
+   "start": 111.0,
+   "end": 115.0,
+   "text": "Hidro Verde 360, una propuesta que une naturaleza, ingeniería y tecnología"
+  },
+  {
+   "start": 115.0,
+   "end": 118.0,
+   "text": "para proteger el entorno y anticipar emergencias."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 118.8
+}

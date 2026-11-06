@@ -72,10 +72,20 @@ verificadas. Esta en el registro como pendiente, no como opcion.
 
 ## Contadores del Acto IV
 
-`plantillas/contadores/index.html` es una pieza autocontenida para grabar con Playwright u
-OBS. Si `plantillas/gsap.min.js` no existe, muestra los valores finales sin animacion: nunca
-rompe la grabacion. GSAP 3.13.0 ya esta incluido en `plantillas/gsap.min.js` bajo la
-GSAP Standard License (no es MIT); el banner de licencia se conserva.
+`plantillas/contadores/index.html` es la base de la pieza del Acto IV. No trae colores ni
+cifras propias: toma el fondo, el texto y el acento de `brand/tokens.css` (los escribe
+`gen_palette.py` desde la paleta del grupo) y los datos de `?data=<JSON>`; sin ese parametro
+cae en los valores de ejemplo, marcados `[SIMULADO]`. Si `plantillas/gsap.min.js` no existe,
+muestra los valores finales sin animacion: nunca rompe la grabacion. GSAP 3.13.0 ya esta
+incluido en `plantillas/gsap.min.js` bajo la GSAP Standard License (no es MIT); el banner de
+licencia se conserva.
+
+La graba el **grafista2d** con `scripts/render_contadores.py` (`assets/2d/`), que arma el
+tercer contador con el total real de `budget/budget.json` y transcodifica con el ffmpeg de
+`imageio_ffmpeg` bajo `gpu_lock`. El script **no graba** mientras el presupuesto no exista,
+no pase `validate_budget.py` o falte `--aprobado`: la base espera a que el humano apruebe y
+a que haya un proyecto real. Un JSON opcional `--data` reemplaza las tarjetas de ejemplo por
+cifras de `research/claims.json`.
 
 ## Lo que no se trajo del kit
 

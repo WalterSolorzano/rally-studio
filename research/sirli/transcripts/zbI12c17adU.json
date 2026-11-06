@@ -1,0 +1,129 @@
+{
+ "video_id": "zbI12c17adU",
+ "url": "https://youtu.be/zbI12c17adU?si=wtuvOe5n9qZQsxeK",
+ "year": 2025,
+ "collection": "nacional",
+ "country": "ARGENTINA",
+ "team": "DROPPERS",
+ "place_label": "TERCER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "nacional",
+   "place_label": "TERCER LUGAR",
+   "team": "DROPPERS",
+   "challenge": "04 - SISTEMA DE ALERTA TEMPRANA"
+  },
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "DROPPERS",
+   "challenge": "04 - SISTEMA DE ALERTA TEMPRANA"
+  }
+ ],
+ "fetched_at": "2026-11-06T20:32:49+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "En el último año, América Latina vio una de las temporadas más críticas de su historia. Más de 60.000 incendios forestales arrasaron selvas, campos y reservas naturales. Mientras unas zonas ardían, otras se inundaban. Solo en 2025, más de 600.000 personas fueron afectadas por inundaciones en la región, causando grandes perdidas. El verdadero problema es la falta de detección. Las alertas llegan tarde, cuando ya no hay tiempo de reaccionar. Entonces, ¿qué pasaría si pudiéramos anticiparnos? ¿Y si la naturaleza misma nos avisara antes del desastre? Así nace SAMI, una innovación completamente nueva en el mundo, que es una biología viva y una tecnología sustentable para convertir los hongos del suelo en sensores naturales, capaces de detectar los primeros signos de peligro. El miscelio actúa como un sistema nervioso del ecosistema, respondiendo ante el calor y la humedad, enviando impulsos eléctricos, interpretando esas señales naturales y las transforman en alertas reales, con una hora de anticipación antes de que una inundación o incendio se agrara. Con materiales simples y accesibles, cualquier comunidad puede adquirir sus propios sensores sin necesidad de internet ni satélites. Cuando el miscelio percibe peligro, el sistema activa sirenas de advertencia en cuestión de segundos. SAMI, no es solo tecnología, es una forma completamente nueva de convivir con la naturaleza. Es viva y agradable, autoregenerativo y 100% ecológico. Su bajo costo y sencilla instalación, flotos en accesibles para comunidades rurales o zonas vulnerables. Funciona con energía solar y no depende de internet ni mantenimiento constante. Y lo más importante, la inversión con innovación científica sin precedentes. Combina tanto el lenguaje de la naturaleza como la inteligencia humana, para así poder proteger al planeta. Porque cuando la tierra habla, debemos escuchar. Y ahora, con SAMI, la naturaleza tiene voz.",
+ "segments": [
+  {
+   "start": 0.02,
+   "end": 5.02,
+   "text": "En el último año, América Latina vio una de las temporadas más críticas de su historia."
+  },
+  {
+   "start": 5.02,
+   "end": 11.02,
+   "text": "Más de 60.000 incendios forestales arrasaron selvas, campos y reservas naturales."
+  },
+  {
+   "start": 11.02,
+   "end": 14.02,
+   "text": "Mientras unas zonas ardían, otras se inundaban."
+  },
+  {
+   "start": 14.02,
+   "end": 21.02,
+   "text": "Solo en 2025, más de 600.000 personas fueron afectadas por inundaciones en la región, causando grandes perdidas."
+  },
+  {
+   "start": 21.02,
+   "end": 27.02,
+   "text": "El verdadero problema es la falta de detección. Las alertas llegan tarde, cuando ya no hay tiempo de reaccionar."
+  },
+  {
+   "start": 27.02,
+   "end": 34.02,
+   "text": "Entonces, ¿qué pasaría si pudiéramos anticiparnos? ¿Y si la naturaleza misma nos avisara antes del desastre?"
+  },
+  {
+   "start": 34.02,
+   "end": 41.02,
+   "text": "Así nace SAMI, una innovación completamente nueva en el mundo, que es una biología viva y una tecnología sustentable"
+  },
+  {
+   "start": 41.02,
+   "end": 47.02,
+   "text": "para convertir los hongos del suelo en sensores naturales, capaces de detectar los primeros signos de peligro."
+  },
+  {
+   "start": 47.02,
+   "end": 55.02,
+   "text": "El miscelio actúa como un sistema nervioso del ecosistema, respondiendo ante el calor y la humedad, enviando impulsos eléctricos,"
+  },
+  {
+   "start": 55.02,
+   "end": 65.02,
+   "text": "interpretando esas señales naturales y las transforman en alertas reales, con una hora de anticipación antes de que una inundación o incendio se agrara."
+  },
+  {
+   "start": 65.02,
+   "end": 73.02,
+   "text": "Con materiales simples y accesibles, cualquier comunidad puede adquirir sus propios sensores sin necesidad de internet ni satélites."
+  },
+  {
+   "start": 73.02,
+   "end": 79.02,
+   "text": "Cuando el miscelio percibe peligro, el sistema activa sirenas de advertencia en cuestión de segundos."
+  },
+  {
+   "start": 79.02,
+   "end": 84.02,
+   "text": "SAMI, no es solo tecnología, es una forma completamente nueva de convivir con la naturaleza."
+  },
+  {
+   "start": 84.02,
+   "end": 88.02,
+   "text": "Es viva y agradable, autoregenerativo y 100% ecológico."
+  },
+  {
+   "start": 88.02,
+   "end": 93.02,
+   "text": "Su bajo costo y sencilla instalación, flotos en accesibles para comunidades rurales o zonas vulnerables."
+  },
+  {
+   "start": 93.02,
+   "end": 97.02,
+   "text": "Funciona con energía solar y no depende de internet ni mantenimiento constante."
+  },
+  {
+   "start": 97.02,
+   "end": 100.02,
+   "text": "Y lo más importante, la inversión con innovación científica sin precedentes."
+  },
+  {
+   "start": 100.02,
+   "end": 105.02,
+   "text": "Combina tanto el lenguaje de la naturaleza como la inteligencia humana, para así poder proteger al planeta."
+  },
+  {
+   "start": 105.02,
+   "end": 112.02,
+   "text": "Porque cuando la tierra habla, debemos escuchar. Y ahora, con SAMI, la naturaleza tiene voz."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 115.3
+}

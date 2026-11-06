@@ -1,0 +1,129 @@
+{
+ "video_id": "HQWkUlGLl0w",
+ "url": "https://www.youtube.com/watch?v=HQWkUlGLl0w",
+ "year": 2026,
+ "collection": "nacional",
+ "country": "ARGENTINA",
+ "team": "E.A.B.M.O.D.E.L.",
+ "place_label": "TERCER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2026,
+   "collection": "nacional",
+   "place_label": "TERCER LUGAR",
+   "team": "E.A.B.M.O.D.E.L.",
+   "challenge": "01 - SEGUNDA VIDA DE LOS MOTORES ELÉCTRICOS DOMÉSTICOS"
+  },
+  {
+   "year": 2026,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "E.A.B.M.O.D.E.L.",
+   "challenge": "01 - SEGUNDA VIDA DE LOS MOTORES ELÉCTRICOS DOMÉSTICOS"
+  }
+ ],
+ "fetched_at": "2026-11-06T20:11:20+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Hola, son Voss en Model, y hoy les presento una solución nacida en la Universidad para transformar residuos electrónicos en tecnología agrícola accesible. ¿Cómo lo hacemos? Coordinamos recolección de motores por zonas y pedidos en alianza con el municipio. Rescatamos amoladoras, bombas de agua, aspiradoras, taladros, licuadoras, caminadoras, lavavropas antes de que se conviertan en basura. Luego, en nuestro taller pasamos al proceso de recondicionamiento y adaptación. Diagnósticamos cada motor, reparamos su bobinado o rodamientos y re-higienizamos su fuerza y revoluciones según la necesidad del cultivo. Y así creamos equipamiento de alto valor. Por ejemplo, las máquinas de alta velocidad, como las moladoras, pasan a trituradoras de cáscara de maní, y los motores de alto torque pasan a máquinas como asadas eléctricas para el trabajo del suelo. Logramos una reducción de costo de hasta un 25% frente a la maquinera tradicional, democratizando la tecnología para el pequeño productor y cerrando el ciclo de la economía circular. En este rally de innovación demostramos que la clave no es inventar desde cero, sino conectar la logística municipal con las necesidades reales del campo. Con EdModel la innovación se mueve motor a motor. Muchas gracias.",
+ "segments": [
+  {
+   "start": 7.15,
+   "end": 12.87,
+   "text": "Hola, son Voss en Model, y hoy les presento una solución nacida en la Universidad para"
+  },
+  {
+   "start": 12.87,
+   "end": 19.88,
+   "text": "transformar residuos electrónicos en tecnología agrícola accesible."
+  },
+  {
+   "start": 19.88,
+   "end": 20.88,
+   "text": "¿Cómo lo hacemos?"
+  },
+  {
+   "start": 20.88,
+   "end": 25.48,
+   "text": "Coordinamos recolección de motores por zonas y pedidos en alianza con el municipio."
+  },
+  {
+   "start": 25.48,
+   "end": 33.08,
+   "text": "Rescatamos amoladoras, bombas de agua, aspiradoras, taladros, licuadoras, caminadoras,"
+  },
+  {
+   "start": 33.08,
+   "end": 38.66,
+   "text": "lavavropas antes de que se conviertan en basura."
+  },
+  {
+   "start": 38.66,
+   "end": 43.94,
+   "text": "Luego, en nuestro taller pasamos al proceso de recondicionamiento y adaptación."
+  },
+  {
+   "start": 43.94,
+   "end": 49.78,
+   "text": "Diagnósticamos cada motor, reparamos su bobinado o rodamientos y re-higienizamos"
+  },
+  {
+   "start": 49.78,
+   "end": 55.86,
+   "text": "su fuerza y revoluciones según la necesidad del cultivo."
+  },
+  {
+   "start": 55.86,
+   "end": 58.26,
+   "text": "Y así creamos equipamiento de alto valor."
+  },
+  {
+   "start": 58.26,
+   "end": 63.18,
+   "text": "Por ejemplo, las máquinas de alta velocidad, como las moladoras, pasan a trituradoras"
+  },
+  {
+   "start": 63.18,
+   "end": 78.38,
+   "text": "de cáscara de maní, y los motores de alto torque pasan a máquinas como asadas"
+  },
+  {
+   "start": 78.42,
+   "end": 85.86,
+   "text": "eléctricas para el trabajo del suelo."
+  },
+  {
+   "start": 85.86,
+   "end": 91.22,
+   "text": "Logramos una reducción de costo de hasta un 25% frente a la maquinera tradicional,"
+  },
+  {
+   "start": 91.22,
+   "end": 98.5,
+   "text": "democratizando la tecnología para el pequeño productor y cerrando el ciclo de la economía circular."
+  },
+  {
+   "start": 98.5,
+   "end": 103.1,
+   "text": "En este rally de innovación demostramos que la clave no es inventar desde cero,"
+  },
+  {
+   "start": 103.1,
+   "end": 107.86,
+   "text": "sino conectar la logística municipal con las necesidades reales del campo."
+  },
+  {
+   "start": 107.86,
+   "end": 111.02,
+   "text": "Con EdModel la innovación se mueve motor a motor."
+  },
+  {
+   "start": 111.02,
+   "end": 111.74,
+   "text": "Muchas gracias."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 117.5
+}

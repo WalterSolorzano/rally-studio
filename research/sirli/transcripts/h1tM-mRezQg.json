@@ -1,0 +1,174 @@
+{
+ "video_id": "h1tM-mRezQg",
+ "url": "https://youtu.be/h1tM-mRezQg",
+ "year": 2025,
+ "collection": "nacional",
+ "country": "COSTA RICA",
+ "team": "DINAMITA",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "nacional",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "DINAMITA",
+   "challenge": "07 - SALUD MÓVIL PARA MUJERES EN ZONAS RURALES"
+  },
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "DINAMITA",
+   "challenge": "07 - SALUD MÓVIL PARA MUJERES EN ZONAS RURALES"
+  }
+ ],
+ "fetched_at": "2026-11-06T20:45:28+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Equipo Dinamita presenta Salud Móvil para Mujeres en Zonas Rurales. En las zonas rurales, muchas personas tienen dificultades para acceder a la atención médica por la falta de transporte, infraestructura y recursos. Las mujeres rurales enfrentan una doble vulnerabilidad por su ubicación y por su género. Las responsabilidades domésticas y las condiciones laborales les impiden dedicar tiempo a su salud, lo que aumenta los riesgos para ellas y sus familias. Para enfrentar esas dificultades proponemos una solución que se redica en una sola, pero que se compone de dos métodos. La implementación de un carrito de salud y una plataforma digital para gestionar citas. Proponemos una solución basada en un carrito de salud, una unidad que se traslade a zonas rurales centrales para brindar atención médica básica. El vehículo estará altamente capacitado con equipos básicos y con actividad a internet para registrar los datos. Una plataforma en línea para consultar horarios de la unidad, agendar citas médicas según el lugar de procedencia y evitar desplazamientos innecesarios. El impacto de este proyecto será reducir las barreras de acceso a los servicios médicos en comunidades rurales, mejorando la atención preventiva y la atención de las mujeres. La parte innovadora trata de convertir todo lo necesario para atención médica que se encuentra en consultorios de estructura permanente en una unidad móvil para así lograr un mayor alcance de atención. El proyecto también tendrá grandes beneficios como evitar la construcción de una estructura permanente y el traslado de personas de bajos recursos económicos, así como una gran aceptación social por el beneficio que dará a las mujeres en mayor constancia y calidad. Y también consideramos una unidad móvil de combustible alternativo que permita una circulación amigable con el medio ambiente.",
+ "segments": [
+  {
+   "start": 0.3,
+   "end": 5.1,
+   "text": "Equipo Dinamita presenta Salud Móvil para Mujeres en Zonas Rurales."
+  },
+  {
+   "start": 5.1,
+   "end": 9.42,
+   "text": "En las zonas rurales, muchas personas tienen dificultades para acceder a la atención médica"
+  },
+  {
+   "start": 9.42,
+   "end": 12.78,
+   "text": "por la falta de transporte, infraestructura y recursos."
+  },
+  {
+   "start": 12.78,
+   "end": 17.06,
+   "text": "Las mujeres rurales enfrentan una doble vulnerabilidad por su ubicación y por su"
+  },
+  {
+   "start": 17.06,
+   "end": 18.06,
+   "text": "género."
+  },
+  {
+   "start": 18.06,
+   "end": 21.3,
+   "text": "Las responsabilidades domésticas y las condiciones laborales les impiden dedicar"
+  },
+  {
+   "start": 21.3,
+   "end": 25.26,
+   "text": "tiempo a su salud, lo que aumenta los riesgos para ellas y sus familias."
+  },
+  {
+   "start": 25.26,
+   "end": 31.38,
+   "text": "Para enfrentar esas dificultades proponemos una solución que se redica en una sola,"
+  },
+  {
+   "start": 31.38,
+   "end": 33.94,
+   "text": "pero que se compone de dos métodos."
+  },
+  {
+   "start": 33.94,
+   "end": 40.82,
+   "text": "La implementación de un carrito de salud y una plataforma digital para gestionar citas."
+  },
+  {
+   "start": 40.82,
+   "end": 44.34,
+   "text": "Proponemos una solución basada en un carrito de salud, una unidad que se traslade"
+  },
+  {
+   "start": 44.34,
+   "end": 48.14,
+   "text": "a zonas rurales centrales para brindar atención médica básica."
+  },
+  {
+   "start": 48.14,
+   "end": 52.82,
+   "text": "El vehículo estará altamente capacitado con equipos básicos y con actividad a"
+  },
+  {
+   "start": 52.82,
+   "end": 54.98,
+   "text": "internet para registrar los datos."
+  },
+  {
+   "start": 55.9,
+   "end": 60.1,
+   "text": "Una plataforma en línea para consultar horarios de la unidad, agendar citas médicas según"
+  },
+  {
+   "start": 60.1,
+   "end": 63.86,
+   "text": "el lugar de procedencia y evitar desplazamientos innecesarios."
+  },
+  {
+   "start": 63.86,
+   "end": 70.1,
+   "text": "El impacto de este proyecto será reducir las barreras de acceso a los servicios"
+  },
+  {
+   "start": 70.1,
+   "end": 75.7,
+   "text": "médicos en comunidades rurales, mejorando la atención preventiva y la atención de"
+  },
+  {
+   "start": 75.7,
+   "end": 76.9,
+   "text": "las mujeres."
+  },
+  {
+   "start": 76.9,
+   "end": 82.42,
+   "text": "La parte innovadora trata de convertir todo lo necesario para atención médica que"
+  },
+  {
+   "start": 82.42,
+   "end": 88.3,
+   "text": "se encuentra en consultorios de estructura permanente en una unidad móvil para así"
+  },
+  {
+   "start": 88.3,
+   "end": 91.54,
+   "text": "lograr un mayor alcance de atención."
+  },
+  {
+   "start": 91.54,
+   "end": 97.18,
+   "text": "El proyecto también tendrá grandes beneficios como evitar la construcción de una estructura"
+  },
+  {
+   "start": 97.18,
+   "end": 103.1,
+   "text": "permanente y el traslado de personas de bajos recursos económicos, así como una"
+  },
+  {
+   "start": 103.1,
+   "end": 108.66,
+   "text": "gran aceptación social por el beneficio que dará a las mujeres en mayor constancia"
+  },
+  {
+   "start": 108.66,
+   "end": 109.66,
+   "text": "y calidad."
+  },
+  {
+   "start": 109.66,
+   "end": 115.74,
+   "text": "Y también consideramos una unidad móvil de combustible alternativo que permita"
+  },
+  {
+   "start": 115.74,
+   "end": 119.1,
+   "text": "una circulación amigable con el medio ambiente."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.2
+}

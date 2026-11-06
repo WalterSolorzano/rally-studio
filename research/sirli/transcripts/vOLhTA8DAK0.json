@@ -1,0 +1,169 @@
+{
+ "video_id": "vOLhTA8DAK0",
+ "url": "https://youtu.be/vOLhTA8DAK0",
+ "year": 2025,
+ "collection": "nacional",
+ "country": "BOLIVIA",
+ "team": "ZONA ALFA",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "ZONA ALFA",
+   "challenge": "07 - SALUD MÓVIL PARA MUJERES EN ZONAS RURALES"
+  },
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "ZONA ALFA",
+   "challenge": "07 - SALUD MÓVIL PARA MUJERES EN ZONAS RURALES"
+  }
+ ],
+ "fetched_at": "2026-11-06T20:37:08+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "¿Sabías que las mujeres en áreas rurales tienen hasta tres veces menos probabilidades de recibir atención médica preventiva que las de zonas urbanas? ¿O que la mortalidad materna en estas regiones puede ser el doble que en las ciudades, simplemente por las barreras de distancia, costo y falta de información? Cada año miles de mujeres mueren por enfermedades que son prevenibles o tratables, como el cáncer de cuello uterino o complicaciones durante el embarazo. El problema no es la enfermedad, es la falta de acceso. Pero hoy esta realidad tiene solución. Así nació Doctora Atika, una aplicación móvil, ligera, multicanal y multilingüe que rompe las barreras de la distancia y acerca la salud femenina a cada rincón del país. Doctora Atika permite identificar dolencias en un modelo anatómico interactivo, recibir un pre-diagnóstico con inteligencia artificial y conectarse directamente con profesionales de salud, incluso en zonas con poca señal. Además, con su sistema de geolocalización, Doctora Atika muestra los centros de salud más cercanos, permite solicitar citas y guarda la historia del médico, garantizando un acompañamiento continuo. Todo esto protegido por encriptación de datos, porque cuidar la salud también es cuidar la privacidad. Su impacto va más allá de la tecnología. Doctora Atika, empodera a las mujeres rurales, reduce los traslados, el consumo de combustible y la huella de carbono. Y dime, ¿te sumarías a una iniciativa digital que da esperanza a miles de personas? Únete a Atika, salud femenina que llega a donde nadie llega, porque toda mujer, sin importar dónde viva, merece ser atendida, escuchada y cuidada.",
+ "segments": [
+  {
+   "start": 0.11,
+   "end": 6.11,
+   "text": "¿Sabías que las mujeres en áreas rurales tienen hasta tres veces menos probabilidades"
+  },
+  {
+   "start": 6.11,
+   "end": 9.79,
+   "text": "de recibir atención médica preventiva que las de zonas urbanas?"
+  },
+  {
+   "start": 9.79,
+   "end": 14.95,
+   "text": "¿O que la mortalidad materna en estas regiones puede ser el doble que en las ciudades,"
+  },
+  {
+   "start": 14.95,
+   "end": 19.75,
+   "text": "simplemente por las barreras de distancia, costo y falta de información?"
+  },
+  {
+   "start": 19.75,
+   "end": 25.07,
+   "text": "Cada año miles de mujeres mueren por enfermedades que son prevenibles o tratables,"
+  },
+  {
+   "start": 25.07,
+   "end": 29.65,
+   "text": "como el cáncer de cuello uterino o complicaciones durante el embarazo."
+  },
+  {
+   "start": 29.65,
+   "end": 33.13,
+   "text": "El problema no es la enfermedad, es la falta de acceso."
+  },
+  {
+   "start": 33.13,
+   "end": 37.96,
+   "text": "Pero hoy esta realidad tiene solución."
+  },
+  {
+   "start": 37.96,
+   "end": 42.12,
+   "text": "Así nació Doctora Atika, una aplicación móvil,"
+  },
+  {
+   "start": 42.12,
+   "end": 47.08,
+   "text": "ligera, multicanal y multilingüe que rompe las barreras de la distancia"
+  },
+  {
+   "start": 47.08,
+   "end": 50.16,
+   "text": "y acerca la salud femenina a cada rincón del país."
+  },
+  {
+   "start": 50.16,
+   "end": 55.48,
+   "text": "Doctora Atika permite identificar dolencias en un modelo anatómico interactivo,"
+  },
+  {
+   "start": 55.48,
+   "end": 58.88,
+   "text": "recibir un pre-diagnóstico con inteligencia artificial"
+  },
+  {
+   "start": 58.88,
+   "end": 64.8,
+   "text": "y conectarse directamente con profesionales de salud, incluso en zonas con poca señal."
+  },
+  {
+   "start": 64.8,
+   "end": 68.44,
+   "text": "Además, con su sistema de geolocalización,"
+  },
+  {
+   "start": 68.44,
+   "end": 72.1,
+   "text": "Doctora Atika muestra los centros de salud más cercanos,"
+  },
+  {
+   "start": 72.1,
+   "end": 75.56,
+   "text": "permite solicitar citas y guarda la historia del médico,"
+  },
+  {
+   "start": 75.56,
+   "end": 78.24,
+   "text": "garantizando un acompañamiento continuo."
+  },
+  {
+   "start": 78.24,
+   "end": 81.96,
+   "text": "Todo esto protegido por encriptación de datos,"
+  },
+  {
+   "start": 81.96,
+   "end": 85.12,
+   "text": "porque cuidar la salud también es cuidar la privacidad."
+  },
+  {
+   "start": 85.12,
+   "end": 87.88,
+   "text": "Su impacto va más allá de la tecnología."
+  },
+  {
+   "start": 88.32,
+   "end": 91.56,
+   "text": "Doctora Atika, empodera a las mujeres rurales,"
+  },
+  {
+   "start": 91.56,
+   "end": 96.52,
+   "text": "reduce los traslados, el consumo de combustible y la huella de carbono."
+  },
+  {
+   "start": 96.52,
+   "end": 103.92,
+   "text": "Y dime, ¿te sumarías a una iniciativa digital que da esperanza a miles de personas?"
+  },
+  {
+   "start": 103.92,
+   "end": 108.92,
+   "text": "Únete a Atika, salud femenina que llega a donde nadie llega,"
+  },
+  {
+   "start": 108.92,
+   "end": 111.64,
+   "text": "porque toda mujer, sin importar dónde viva,"
+  },
+  {
+   "start": 111.64,
+   "end": 115.64,
+   "text": "merece ser atendida, escuchada y cuidada."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 116.7
+}

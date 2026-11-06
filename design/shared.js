@@ -166,7 +166,13 @@ function loadIdentity() {
 }
 
 function saveIdentity(obj) {
-  try { localStorage.setItem(KEY, JSON.stringify(obj)); } catch (e) {}
+  try {
+    localStorage.setItem(KEY, JSON.stringify(obj));
+    return true;
+  } catch (e) {
+    console.warn('No se pudo guardar la identidad (espacio del navegador lleno): ' + (e && e.name));
+    return false;
+  }
 }
 
 // Compatibilidad con el codigo existente de index.html
@@ -673,36 +679,25 @@ function legibleInk(paper) {
   var cr = contrastRatio(ink, bg);
   if (cr == null) return ink;
   if (cr >= 4.5) return ink;
-  var f = 0.4;
-  while (f > 0.05) {
-    var cand = darken(ink, f);
-    if (contrastRatio(cand, bg) >= 4.5) return cand;
-    f -= 0.05;
-  }
-  return '#0D1B35';
+  if (lumOf(ink) > 0.5) return ensureContrast('#0D1B35', bg, 4.5) || '#0D1B35';
+  return ensureContrast(ink, bg, 4.5) || '#0D1B35';
 }
 
-// Color de marca fuerte (acento) legible sobre papel claro.
+// Color de marca fuerte (acento) legible sobre el papel.
 function brandColor(paper) {
   var ac = (S && S.pal && S.pal.ac) || '#0866F5';
   var bg = paper || '#FFFFFF';
   var cr = contrastRatio(ac, bg);
   if (cr == null || cr >= 4.5) return ac;
-  var f = 0.5;
-  while (f > 0.05) {
-    var cand = darken(ac, f);
-    if (contrastRatio(cand, bg) >= 4.5) return cand;
-    f -= 0.05;
-  }
-  return '#0D1B35';
+  return ensureContrast(ac, bg, 4.5) || colorDeMarcaSeguro(legibleInk(bg), bg);
 }
 
-// Papel claro para superficiesKIT/thumb: usa bg2 si es claro, si no blanco.
+// Papel de la pieza: el fondo real de la identidad. Si falta, un blanco seguro.
+// La legibilidad la garantizan legibleInk/brandColor, no un blanco forzado.
 function paperColor() {
   var p = (S && S.pal) || {};
-  var c2 = p.bg2, c1 = p.bg;
-  if (lumOf(c2) != null && lumOf(c2) > 0.85) return c2;
-  if (lumOf(c1) != null && lumOf(c1) > 0.85) return c1;
+  if (lumOf(p.bg) != null) return p.bg;
+  if (lumOf(p.bg2) != null) return p.bg2;
   return '#FFFFFF';
 }
 
@@ -729,3 +724,413 @@ function cargarBrief(ident, cb) {
   }
   siguiente();
 }
+
+// ---------- Puente IA <-> diseno (estandar) ----------
+// Una sola API para que la IA lea, proponga y aplique cambios de identidad,
+// venga del panel de la pagina o de la consola del agente. Todo cambio pasa
+// por aplicarPatch(): claves permitidas, paleta saneada y aviso al modulo.
+var RallyDiseno = (function () {
+  'use strict';
+
+  var SECCION = 'design_identity';
+  var CLAVES = ['style', 'pal', 'fonts', 'team', 'mem', 'styles', 'decor', 'bio', 'impacto'];
+  var oyentes = [];
+  var temporizador = null;
+
+  var MAPA = {
+    identidad: 'localStorage["rally_design_v5"] - navegador del usuario, por perfil',
+    seccion: '/api/sections/' + SECCION + ' - dashboard/data/sections.db (SQLite)',
+    espejo: 'dashboard/data/state.json - copia de secciones para el tablero',
+    buzon: 'dashboard/data/content/<id>.json - propuestas Aceptar/Descartar',
+    aplicadas: 'dashboard/data/applied/ - propuestas aceptadas',
+    descartadas: 'dashboard/data/discarded/ - propuestas descartadas',
+    assets: 'design/assets/ - logos, fotos y capturas que sube el usuario',
+    codigo: 'design/ - shared.js (identidad), ia.js (RallyIA), ventana.js (secciones)'
+  };
+
+  function _clonar(o) { return JSON.parse(JSON.stringify(o)); }
+
+  function _fusionar(dst, src) {
+    for (var k in src) {
+      if (!Object.prototype.hasOwnProperty.call(src, k)) continue;
+      var v = src[k];
+      if (v && typeof v === 'object' && !Array.isArray(v) &&
+          dst[k] && typeof dst[k] === 'object' && !Array.isArray(dst[k])) {
+        _fusionar(dst[k], v);
+      } else {
+        dst[k] = v;
+      }
+    }
+    return dst;
+  }
+
+  function leer() { return normalizeIdentity(loadIdentity()); }
+
+  // Estado compacto: sin logos en dataURL (pesan y no son editables por texto).
+  function estadoParaIA(ident) {
+    var s = ident || leer();
+    var t = s.team || {};
+    var imp = s.impacto || {};
+    return {
+      pal: s.pal,
+      fonts: s.fonts,
+      style: s.style,
+      team: {
+        name: t.name || '', tag: t.tag || '', title: t.title || '',
+        kicker: t.kicker || '', university: t.university || '', city: t.city || ''
+      },
+      decor: s.decor || '',
+      bio: s.bio || '',
+      thumb: {
+        concepto: s.thHeroConcept || '',
+        efecto: s.thHeroFx || 'foco',
+        tieneImagen: !!s.thHeroImg
+      },
+      impacto: { preset: imp.preset || '', dur: imp.dur, plan: imp.plan || {} }
+    };
+  }
+
+  function validar(patch) {
+    if (!patch || typeof patch !== 'object' || Array.isArray(patch)) {
+      return { ok: false, errores: ['La respuesta debe ser un objeto JSON de cambios.'] };
+    }
+    var errores = [];
+    for (var k in patch) {
+      if (Object.prototype.hasOwnProperty.call(patch, k) && CLAVES.indexOf(k) < 0) {
+        errores.push('Clave no permitida: ' + k);
+      }
+    }
+    return { ok: !errores.length, errores: errores };
+  }
+
+  function _espejar(ident) {
+    if (typeof window === 'undefined') return;
+    // Se muta el objeto vivo (no se reemplaza): el modulo guarda referencias.
+    var destinos = [];
+    if (window.S && typeof window.S === 'object') destinos.push(window.S);
+    if (window.IMP && typeof window.IMP === 'object' && window.IMP !== window.S) destinos.push(window.IMP);
+    for (var i = 0; i < destinos.length; i++) {
+      var dst = destinos[i];
+      for (var k in dst) if (Object.prototype.hasOwnProperty.call(dst, k)) delete dst[k];
+      for (var j in ident) if (Object.prototype.hasOwnProperty.call(ident, j)) dst[j] = ident[j];
+    }
+  }
+
+  function _refrescar() {
+    var nombres = ['__rallyDisenoRefresh', 'all', 'renderKit', 'renderThumb', 'pintar', 'renderPresets', 'syncControls', 'fitAll'];
+    for (var i = 0; i < nombres.length; i++) {
+      var fn = window[nombres[i]];
+      if (typeof fn === 'function') {
+        try { fn(); } catch (e) {}
+      }
+    }
+  }
+
+  function _avisar(ident, patch) {
+    for (var i = 0; i < oyentes.length; i++) {
+      try { oyentes[i](ident, patch); } catch (e) {}
+    }
+    try {
+      document.dispatchEvent(new CustomEvent('rally:diseno', { detail: { identidad: ident, patch: patch } }));
+    } catch (e2) {}
+  }
+
+  function _hexOk(c) { return typeof c === 'string' && lumOf(c) != null; }
+
+  function _ladoClaro(c) { return lumOf(c) > 0.5; }
+
+  function _legible(fg, bg, min) {
+    return ensureContrast(fg, bg, min) || fg;
+  }
+
+  function _sanearPal(p) {
+    p = p || {};
+    var bg = _hexOk(p.bg) ? p.bg : '#FFFFFF';
+    var claro = _ladoClaro(bg);
+    var ink = _hexOk(p.ink) ? p.ink : legibleInk(bg);
+    if (isPurpleHex(ink)) ink = legibleInk(bg);
+    ink = _legible(ink, bg, 4.5);
+    var ac = _hexOk(p.ac) ? p.ac : brandColor(bg);
+    if (isPurpleHex(ac)) ac = rotateHue(ac, 214);
+    ac = _legible(ac, bg, 3);
+    var bg2 = _hexOk(p.bg2) && _ladoClaro(p.bg2) === claro
+      ? p.bg2
+      : (claro ? darken(bg, 0.96) : lighten(bg, 0.08));
+    var mu = _legible(_hexOk(p.mu) ? p.mu : ink, bg2, 3);
+    var gl = _hexOk(p.gl) && _ladoClaro(p.gl) === claro
+      ? p.gl
+      : (claro ? darken(bg, 0.9) : lighten(bg, 0.12));
+    return { bg: bg, bg2: bg2, ac: ac, ink: ink, mu: mu, gl: gl };
+  }
+
+  function aplicarPatch(patch, sinSync) {
+    var v = validar(patch);
+    if (!v.ok) return { ok: false, errores: v.errores };
+    var nuevo = _fusionar(_clonar(leer()), _clonar(patch));
+    if (patch.pal) nuevo.pal = _sanearPal(nuevo.pal);
+    nuevo = normalizeIdentity(nuevo);
+    saveIdentity(nuevo);
+    _espejar(nuevo);
+    _avisar(nuevo, patch);
+    _refrescar();
+    if (!sinSync) _programarSync();
+    return { ok: true, identidad: nuevo };
+  }
+
+  function alCambiar(fn) {
+    if (typeof fn !== 'function') return function () {};
+    oyentes.push(fn);
+    return function () {
+      var i = oyentes.indexOf(fn);
+      if (i >= 0) oyentes.splice(i, 1);
+    };
+  }
+
+  function parseJSON(texto) {
+    if (typeof RallyIA !== 'undefined' && RallyIA.parseJSON) return RallyIA.parseJSON(texto);
+    if (!texto) return null;
+    var a = texto.indexOf('{'), b = texto.lastIndexOf('}');
+    if (a < 0 || b <= a) return null;
+    try { return JSON.parse(texto.slice(a, b + 1)); } catch (e) { return null; }
+  }
+
+  function promptEdicion(instruccion) {
+    return [
+      'Eres el editor de identidad visual del modulo de diseno del rally.',
+      'Estado actual (JSON): ' + JSON.stringify(estadoParaIA()),
+      'Peticion del usuario: ' + String(instruccion || '').trim(),
+      'Responde SOLO con un objeto JSON de cambios parciales.',
+      'Claves permitidas: ' + CLAVES.join(', ') + '.',
+      'Ejemplos: {"pal":{"ac":"#0F766E"}} o {"team":{"name":"..."},"fonts":{"t":"Archivo"}}.',
+      'No expliques, no uses markdown, no devuelvas el objeto completo.'
+    ].join('\n');
+  }
+
+  function pedirEdicion(instruccion, cb) {
+    var prompt = promptEdicion(instruccion);
+    if (typeof RallyIA === 'undefined' || !RallyIA.job) {
+      if (cb) cb({ status: 'manual', prompt: prompt });
+      return;
+    }
+    RallyIA.job(prompt, function (t) { if (cb) cb({ status: 'tick', texto: t, prompt: prompt }); })
+      .then(function (res) {
+        if (!res || res.status !== 'ok') {
+          if (cb) cb({ status: (res && res.status) || 'error', message: (res && res.message) || 'Sin respuesta.', prompt: prompt });
+          return;
+        }
+        var obj = parseJSON(res.text);
+        if (!obj) {
+          if (cb) cb({ status: 'error', message: 'La IA no devolvio JSON valido.', raw: res.text, prompt: prompt });
+          return;
+        }
+        var r = aplicarPatch(obj);
+        if (cb) cb({ status: r.ok ? 'ok' : 'error', patch: obj, errores: r.errores, prompt: prompt });
+      })
+      .catch(function (e) {
+        if (cb) cb({ status: 'error', message: e.message, prompt: prompt });
+      });
+  }
+
+  function sugerir(cb) {
+    pedirEdicion('Propón el cambio de mayor impacto visual para esta identidad, en una sola pasada.', cb);
+  }
+
+  function servidorLocal() {
+    if (typeof location === 'undefined') return false;
+    if (location.protocol !== 'http:' && location.protocol !== 'https:') return false;
+    var h = location.hostname;
+    return h === 'localhost' || h === '127.0.0.1' || h === '::1' || /^192\.168\./.test(h) || /^10\./.test(h);
+  }
+
+  // La identidad viaja como seccion; el 409 nunca pisa lo que otro guardo.
+  function sincronizar(cb) {
+    if (!servidorLocal()) {
+      if (cb) cb({ ok: false, error: 'Abre el modulo desde http://127.0.0.1:8000/design/ para sincronizar.' });
+      return;
+    }
+    fetch('/api/sections?since=0', { cache: 'no-store' })
+      .then(function (r) { return r.json(); })
+      .then(function (m) {
+        var secs = (m && m.sections) || {};
+        var sec = secs[SECCION] || null;
+        var version = (sec && typeof sec.version === 'number') ? sec.version : 0;
+        return fetch('/api/sections/' + encodeURIComponent(SECCION), {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            data: { identidad: estadoParaIA(), actualizado: new Date().toISOString() },
+            base_version: version,
+            actor: 'IA',
+            actor_id: 'ia'
+          })
+        });
+      })
+      .then(function (r) {
+        if (r.status === 409) throw new Error('Otra persona guardo antes; tu copia local se conserva.');
+        if (!r.ok) throw new Error('http ' + r.status);
+        return r.json().catch(function () { return null; });
+      })
+      .then(function (b) {
+        var sec = b && (b.section || b);
+        var v = sec && typeof sec.version === 'number' ? sec.version : 0;
+        _recordarVersion(v);
+        if (cb) cb({ ok: true, version: v });
+      })
+      .catch(function (e) { if (cb) cb({ ok: false, error: e.message }); });
+  }
+
+  var SYNC_KEY = 'rally_design_sync_v';
+
+  function _versionAplicada() {
+    try { return parseInt(localStorage.getItem(SYNC_KEY), 10) || 0; } catch (e) { return 0; }
+  }
+
+  function _recordarVersion(v) {
+    try { localStorage.setItem(SYNC_KEY, String(v || 0)); } catch (e) {}
+  }
+
+  function leerSeccion(cb) {
+    if (!servidorLocal()) {
+      if (cb) cb({ ok: false, error: 'Abre el modulo desde http://127.0.0.1:8000/design/ para leer la seccion.' });
+      return;
+    }
+    fetch('/api/sections?since=0', { cache: 'no-store' })
+      .then(function (r) { return r.json(); })
+      .then(function (m) {
+        var sec = ((m && m.sections) || {})[SECCION] || null;
+        if (cb) cb({ ok: true, version: sec ? sec.version : 0, data: sec ? sec.data : null });
+      })
+      .catch(function (e) { if (cb) cb({ ok: false, error: e.message }); });
+  }
+
+  // Lo que escribio la IA en la consola entra al modulo, salvo que lo local sea mas nuevo.
+  function cargarRemoto(cb) {
+    leerSeccion(function (res) {
+      if (!res.ok) { if (cb) cb(res); return; }
+      if (!res.data || !res.data.identidad) { if (cb) cb({ ok: true, aplicado: false }); return; }
+      if (res.version <= _versionAplicada()) {
+        if (cb) cb({ ok: true, aplicado: false, version: res.version });
+        return;
+      }
+      var r = aplicarPatch(res.data.identidad, true);
+      if (r.ok) _recordarVersion(res.version);
+      if (cb) cb({ ok: r.ok, aplicado: r.ok, version: res.version, errores: r.errores });
+    });
+  }
+
+  function _programarSync() {
+    if (!servidorLocal()) return;
+    if (temporizador) clearTimeout(temporizador);
+    temporizador = setTimeout(function () { temporizador = null; sincronizar(); }, 1200);
+  }
+
+  // Panel minimo en todas las paginas de design/: escribir, sugerir o pegar JSON.
+  function panel() {
+    if (typeof document === 'undefined' || document.getElementById('rd-btn')) return;
+    var css = document.createElement('style');
+    css.textContent =
+      '#rd-btn{position:fixed;left:16px;bottom:16px;z-index:90;background:#0D1B35;color:#fff;' +
+      'border:0;border-radius:8px;padding:9px 13px;font:600 12px/1 system-ui,sans-serif;cursor:pointer}' +
+      '#rd-panel{position:fixed;left:16px;bottom:58px;z-index:91;width:320px;max-height:70vh;overflow:auto;' +
+      'background:#fff;color:#0D1B35;border:1px solid #DCE7F5;border-radius:10px;padding:12px;' +
+      'font:13px/1.4 system-ui,sans-serif;box-shadow:0 12px 32px rgba(13,27,53,.18);display:none}' +
+      '#rd-panel.on{display:block}#rd-panel b{display:block;margin-bottom:6px}' +
+      '#rd-panel textarea{width:100%;box-sizing:border-box;margin:6px 0;padding:6px;border:1px solid #DCE7F5;' +
+      'border-radius:6px;font:12px/1.4 ui-monospace,monospace;resize:vertical}' +
+      '#rd-panel button{background:#0866F5;color:#fff;border:0;border-radius:6px;padding:6px 9px;' +
+      'font:600 12px/1 system-ui,sans-serif;cursor:pointer;margin:0 6px 6px 0}' +
+      '#rd-panel button.alt{background:#F0F6FF;color:#0D1B35;border:1px solid #DCE7F5}' +
+      '#rd-out{white-space:pre-wrap;font:12px/1.4 ui-monospace,monospace;margin:6px 0 0;color:#5C7193}' +
+      '#rd-nota{color:#5C7193;margin:0 0 4px}';
+    document.head.appendChild(css);
+
+    var btn = document.createElement('button');
+    btn.id = 'rd-btn';
+    btn.type = 'button';
+    btn.textContent = 'IA diseno';
+    document.body.appendChild(btn);
+
+    var box = document.createElement('div');
+    box.id = 'rd-panel';
+    box.innerHTML =
+      '<b>Editar con IA</b>' +
+      '<p id="rd-nota">Pide un cambio o deja que la IA proponga. Se aplica en esta misma pagina.</p>' +
+      '<textarea id="rd-in" rows="3" placeholder="Ej: acento verde y titular Archivo"></textarea>' +
+      '<button id="rd-go">Pedir cambio</button>' +
+      '<button id="rd-sug" class="alt">Sugerir</button>' +
+      '<button id="rd-copy" class="alt">Copiar prompt</button>' +
+      '<textarea id="rd-json" rows="3" placeholder=\'JSON de cambios, ej: {"pal":{"ac":"#0F766E"}}\'></textarea>' +
+      '<button id="rd-apply" class="alt">Aplicar JSON</button>' +
+      '<button id="rd-sync" class="alt">Sincronizar</button>' +
+      '<pre id="rd-out"></pre>';
+    document.body.appendChild(box);
+
+    function $(id) { return document.getElementById(id); }
+    function decir(t) { $('rd-out').textContent = t || ''; }
+    function abrir(on) { box.className = on ? 'on' : ''; }
+
+    btn.addEventListener('click', function () { abrir(box.className !== 'on'); });
+    $('rd-go').addEventListener('click', function () {
+      var instr = $('rd-in').value;
+      if (!instr.trim()) { decir('Escribe que quieres cambiar.'); return; }
+      decir('Consultando...');
+      pedirEdicion(instr, function (res) {
+        if (res.status === 'tick') { decir('Trabajando...'); return; }
+        if (res.status === 'ok') { decir('Aplicado. Revisa la lamina.'); abrir(false); return; }
+        if (res.status === 'manual') { decir('Sin IA en esta pagina. Este es el prompt:\n\n' + res.prompt); return; }
+        decir((res.message || res.status) + '\n\nPrompt:\n' + (res.prompt || ''));
+      });
+    });
+    $('rd-sug').addEventListener('click', function () {
+      decir('Pensando una propuesta...');
+      sugerir(function (res) {
+        if (res.status === 'tick') return;
+        if (res.status === 'ok') { decir('Aplicada la propuesta. Revisa la lamina.'); abrir(false); return; }
+        if (res.status === 'manual') { decir('Sin IA en esta pagina. Este es el prompt:\n\n' + res.prompt); return; }
+        decir((res.message || res.status) + '\n\nPrompt:\n' + (res.prompt || ''));
+      });
+    });
+    $('rd-copy').addEventListener('click', function () {
+      var p = promptEdicion($('rd-in').value);
+      $('rd-json').value = p;
+      decir('Prompt puesto en el campo de abajo. Copialo a tu IA de consola.');
+      try { if (navigator.clipboard) navigator.clipboard.writeText(p); } catch (e) {}
+    });
+    $('rd-apply').addEventListener('click', function () {
+      var obj = parseJSON($('rd-json').value);
+      if (!obj) { decir('JSON invalido.'); return; }
+      var r = aplicarPatch(obj);
+      decir(r.ok ? 'Aplicado.' : r.errores.join('\n'));
+      if (r.ok) abrir(false);
+    });
+    $('rd-sync').addEventListener('click', function () {
+      decir('Sincronizando...');
+      sincronizar(function (r) { decir(r.ok ? 'Sincronizado con la ventana.' : r.error); });
+    });
+  }
+
+  if (typeof document !== 'undefined') {
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', panel);
+    else panel();
+    setTimeout(function () { cargarRemoto(); }, 0);
+  }
+
+  return {
+    MAPA: MAPA,
+    SECCION: SECCION,
+    CLAVES: CLAVES,
+    leer: leer,
+    estadoParaIA: estadoParaIA,
+    validar: validar,
+    aplicarPatch: aplicarPatch,
+    alCambiar: alCambiar,
+    promptEdicion: promptEdicion,
+    pedirEdicion: pedirEdicion,
+    sugerir: sugerir,
+    sincronizar: sincronizar,
+    leerSeccion: leerSeccion,
+    cargarRemoto: cargarRemoto,
+    parseJSON: parseJSON,
+    panel: panel
+  };
+})();

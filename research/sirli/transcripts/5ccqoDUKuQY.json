@@ -1,0 +1,174 @@
+{
+ "video_id": "5ccqoDUKuQY",
+ "url": "https://youtu.be/5ccqoDUKuQY",
+ "year": 2024,
+ "collection": "nacional",
+ "country": "COLOMBIA",
+ "team": "UBARÉ DEL INGENIO",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "UBARÉ DEL INGENIO",
+   "challenge": "01 - MICROPRESAS O MICROEMBALSES"
+  },
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "UBARÉ DEL INGENIO",
+   "challenge": "01 - MICROPRESAS O MICROEMBALSES"
+  }
+ ],
+ "fetched_at": "2026-11-06T21:04:34+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Don Juan, pero que le pasó, porque está peleando con el cuaderno. Es que estas cuentas no me están dando. Pero por qué. Porque se está yendo perdidas porque hace rato no llueve y además el suelo no lo sigue entendiendo. Que raro, espere yo consigo un contacto a ver de unos estudiantes que están haciendo algo para eso. Mire Don Juan, veamos este video a ver que dice. El agua es el eje fundamental de todas nuestras actividades y sin ella no podríamos vivir, pero realmente se está utilizando de forma correcta. Las Naciones Unidas prevé que para el 2050 más de la mitad de la población sufrirá escasez de agua. Es por ello que en tiempos de sequía se necesita una solución urgente para la aprovecha dentro de aguas lluvias por parte de los campesinos y comunidades en diferentes zonas. Por esta razón se plantea un sistema de captación de aguas lluvias sostenible y de bajo costo para su implementación. El diseño va enfocado a comunidades que tengan tasa de precipitación anual inferior a 500 milímetros de agua, también que cuenten con suelos arcillosos y limosos. Se puede observar que se cuenta con una canaleta la cual tiene una malla, un filtro, ductos conectados a tanques de almacenamiento con una ligera pendiente y por último un sistema de riego combinado junto a la hidrogel con el objetivo de generar una recirculación del agua. Para su diseño se tuvieron en cuenta factores que mejorarán la viabilidad y la eficiencia del sistema, por ende cuenta con la integración de sistemas que previenen el ingreso de contaminantes externos como las mallas para el material particulado y las hojas que caigan, un sistema de filtrado de zeolita y la esterización mediante rayos UV y los tanques de almacenamiento inclinados con piedra lumbre, contando con materiales hidrofóbicos que previenen la poloriferación de mosquitos.",
+ "segments": [
+  {
+   "start": 5.65,
+   "end": 9.01,
+   "text": "Don Juan, pero que le pasó, porque está peleando con el cuaderno."
+  },
+  {
+   "start": 9.01,
+   "end": 10.73,
+   "text": "Es que estas cuentas no me están dando."
+  },
+  {
+   "start": 10.73,
+   "end": 11.73,
+   "text": "Pero por qué."
+  },
+  {
+   "start": 11.73,
+   "end": 15.85,
+   "text": "Porque se está yendo perdidas porque hace rato no llueve y además el suelo no lo"
+  },
+  {
+   "start": 15.85,
+   "end": 16.85,
+   "text": "sigue entendiendo."
+  },
+  {
+   "start": 16.85,
+   "end": 21.09,
+   "text": "Que raro, espere yo consigo un contacto a ver de unos estudiantes que están haciendo"
+  },
+  {
+   "start": 21.09,
+   "end": 22.09,
+   "text": "algo para eso."
+  },
+  {
+   "start": 22.09,
+   "end": 24.69,
+   "text": "Mire Don Juan, veamos este video a ver que dice."
+  },
+  {
+   "start": 24.69,
+   "end": 28.37,
+   "text": "El agua es el eje fundamental de todas nuestras actividades y sin ella no podríamos"
+  },
+  {
+   "start": 28.37,
+   "end": 31.73,
+   "text": "vivir, pero realmente se está utilizando de forma correcta."
+  },
+  {
+   "start": 31.73,
+   "end": 37.17,
+   "text": "Las Naciones Unidas prevé que para el 2050 más de la mitad de la población sufrirá"
+  },
+  {
+   "start": 37.17,
+   "end": 38.93,
+   "text": "escasez de agua."
+  },
+  {
+   "start": 38.93,
+   "end": 43.21,
+   "text": "Es por ello que en tiempos de sequía se necesita una solución urgente para la aprovecha"
+  },
+  {
+   "start": 43.21,
+   "end": 47.29,
+   "text": "dentro de aguas lluvias por parte de los campesinos y comunidades en diferentes zonas."
+  },
+  {
+   "start": 47.29,
+   "end": 51.85,
+   "text": "Por esta razón se plantea un sistema de captación de aguas lluvias sostenible"
+  },
+  {
+   "start": 51.85,
+   "end": 53.69,
+   "text": "y de bajo costo para su implementación."
+  },
+  {
+   "start": 53.69,
+   "end": 58.41,
+   "text": "El diseño va enfocado a comunidades que tengan tasa de precipitación anual inferior"
+  },
+  {
+   "start": 58.41,
+   "end": 63.41,
+   "text": "a 500 milímetros de agua, también que cuenten con suelos arcillosos y limosos."
+  },
+  {
+   "start": 63.41,
+   "end": 68.17,
+   "text": "Se puede observar que se cuenta con una canaleta la cual tiene una malla, un filtro, ductos"
+  },
+  {
+   "start": 68.17,
+   "end": 72.97,
+   "text": "conectados a tanques de almacenamiento con una ligera pendiente y por último un sistema"
+  },
+  {
+   "start": 72.97,
+   "end": 78.41,
+   "text": "de riego combinado junto a la hidrogel con el objetivo de generar una recirculación"
+  },
+  {
+   "start": 78.41,
+   "end": 79.41,
+   "text": "del agua."
+  },
+  {
+   "start": 79.41,
+   "end": 82.57,
+   "text": "Para su diseño se tuvieron en cuenta factores que mejorarán la viabilidad"
+  },
+  {
+   "start": 82.57,
+   "end": 86.91,
+   "text": "y la eficiencia del sistema, por ende cuenta con la integración de sistemas que"
+  },
+  {
+   "start": 86.91,
+   "end": 90.51,
+   "text": "previenen el ingreso de contaminantes externos como las mallas para el material"
+  },
+  {
+   "start": 90.51,
+   "end": 95.95,
+   "text": "particulado y las hojas que caigan, un sistema de filtrado de zeolita y la esterización"
+  },
+  {
+   "start": 95.95,
+   "end": 99.99,
+   "text": "mediante rayos UV y los tanques de almacenamiento inclinados con piedra lumbre,"
+  },
+  {
+   "start": 99.99,
+   "end": 104.71,
+   "text": "contando con materiales hidrofóbicos que previenen la poloriferación de mosquitos."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.1
+}

@@ -90,10 +90,18 @@ function bestOn(bg, list) {
   return best;
 }
 
+function thumbPaper() {
+  var p = paperColor();
+  var l = (typeof lumOf === 'function') ? lumOf(p) : null;
+  return (l != null && l < 0.55) ? '#FFFFFF' : p;
+}
+
 function paintVars(el) {
   var p = S.pal || {};
   // Roles canonicos (shared.js): bg/bg2 superficies, ac marca, ink texto.
-  var paper = paperColor();
+  // La pieza se lee sobre papel claro: si la identidad es oscura, el "papel"
+  // de la tarjeta se fuerza a blanco para que la tinta no caiga sobre negro.
+  var paper = thumbPaper();
   var brand = brandColor(paper);
   var ink = legibleInk(paper);
   var accent = p.ac || brand;
@@ -171,6 +179,79 @@ function teamInitials() {
   return (parts[0][0] + parts[1][0]).toUpperCase();
 }
 
+// --- imagen protagonista: reto -> solucion -> impacto ------------------------
+// La foto no es adorno: tiene que mostrar el problema ya resuelto y a quien
+// beneficia. El concepto se escribe solo desde la identidad; si falta, se pide.
+function heroDatos() {
+  var i = S.impacto || {};
+  var plan = i.plan || {};
+  var txt = i.textos || {};
+  return {
+    reto: (S.team && S.team.reto) || S.thReto || (S.team && S.team.title) || '',
+    solucion: (S.team && S.team.title) || S.thTitle || '',
+    impacto: plan.cifra || plan.texto || txt.impacto || '',
+    lugar: (S.team && S.team.city) || ''
+  };
+}
+
+function heroConcepto() {
+  if (S.thHeroConcept) return S.thHeroConcept;
+  var d = heroDatos();
+  if (!d.reto && !d.solucion) return '';
+  var partes = [];
+  if (d.reto) partes.push('reto: ' + d.reto);
+  if (d.solucion) partes.push('solución: ' + d.solucion);
+  if (d.impacto) partes.push('impacto: ' + d.impacto);
+  if (d.lugar) partes.push('lugar: ' + d.lugar);
+  return partes.join(' · ');
+}
+
+function heroPrompt() {
+  var d = heroDatos();
+  var concepto = $('thHeroConcept') ? $('thHeroConcept').value.trim() : heroConcepto();
+  return [
+    'Diseña UNA imagen para la portada de un video de innovación (16:9, 1920x1080).',
+    'PRIORIDAD: si existe una fotografía real del problema (personas, oficio, territorio, comunidad), úsala. Una foto documental honesta vende más que cualquier ilustración.',
+    'La imagen debe hacer visible el reto ya resuelto y su impacto real, en una sola escena clara.',
+    'Datos del proyecto — ' + (concepto || 'reto, solución e impacto del proyecto.'),
+    'Reglas: una sola escena, un sujeto protagonista, luz natural, profundidad real, cero texto, cero logos, cero marcas de agua.',
+    'Prohibido resolver la portada con figuras geométricas básicas (cuadrados, rectángulos, círculos, triángulos): la imagen debe ser una escena compleja y detallada, con volumen, textura y perspectiva. Si hace falta un objeto, se modela en Blender o se busca una foto real en un banco de imágenes.',
+    'Estilo: fotografía documental honesta o ilustración vectorial detallada; nada de collages ni gradientes morados.',
+    'Composición: el sujeto a la derecha, aire limpio a la izquierda para el titular.'
+  ].join(' ');
+}
+
+function paintHero(el) {
+  var hero = el.querySelector('.hero');
+  if (!hero) return;
+  var src = S.thHeroImg || '';
+  hero.hidden = !src;
+  hero.style.backgroundImage = src ? 'url("' + src + '")' : '';
+  el.classList.toggle('has-hero', !!src);
+  ['fx-foco', 'fx-zoom', 'fx-barrido', 'fx-blur'].forEach(function (c) {
+    el.classList.toggle(c, !!src && c === 'fx-' + (S.thHeroFx || 'foco'));
+  });
+}
+
+function syncHero() {
+  var img = $('thHeroPreview');
+  if (img) {
+    img.hidden = !S.thHeroImg;
+    img.src = S.thHeroImg || '';
+  }
+  var ta = $('thHeroConcept');
+  if (ta && !ta.value) ta.value = heroConcepto();
+  var fx = $('thHeroFx');
+  if (fx) fx.value = S.thHeroFx || 'foco';
+}
+
+function heroMsg(t, error) {
+  var el = $('thHeroMsg');
+  if (!el) return;
+  el.textContent = t;
+  el.style.color = error ? '#B91C1C' : '';
+}
+
 // --- pintado de una tarjeta (preview grande y miniaturas usan la misma) -------
 function paintCard(el, c) {
   if (!el) return;
@@ -193,13 +274,13 @@ function paintCard(el, c) {
   }
 
   // Firma institucional: los tres logos al mismo nivel, en una sola banda.
+  // Sin logo no se dibuja una figura geometrica: se usa el monograma del equipo.
   var sigTeam = q('.sig-team');
   if (sigTeam) {
     var tl = teamLogoSrc();
     var ini = teamInitials();
     sigTeam.innerHTML = tl ? '<img src="' + esc(tl) + '" alt="">'
-      : (ini ? '<span class="initials">' + esc(ini) + '</span>'
-        : '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="16" cy="16" r="5"/><ellipse cx="16" cy="16" rx="14" ry="6" transform="rotate(-24 16 16)"/></svg>');
+      : (ini ? '<span class="initials">' + esc(ini) + '</span>' : '');
   }
   var ev = q('.sig-event');
   if (ev) {
@@ -229,6 +310,7 @@ function paintCard(el, c) {
       ? '<svg viewBox="' + MAPA_NI.vb + '" preserveAspectRatio="xMidYMid meet"><path d="' + MAPA_NI.path + '"/></svg>'
       : '';
   }
+  paintHero(el);
   paintVars(el);
 }
 
@@ -239,16 +321,29 @@ function paintCard(el, c) {
 function kickerText() {
   var team = (S.team && S.team.name) ? String(S.team.name) : '';
   var uni = uniName();
-  if (S.thKicker) {
-    // Si el kicker guardado traía la universidad, se limpia.
-    var k = String(S.thKicker);
-    if (uni && k.indexOf(uni) !== -1) {
-      k = k.split(uni).join('').replace(/\s*·\s*$/, '').replace(/^\s*·\s*/, '').trim();
-    }
-    if (team && k === team) return team;
-    return k || team || TH_DEFAULTS.kicker;
+  var city = (S.team && S.team.city) ? String(S.team.city) : '';
+  var k = S.thKicker ? String(S.thKicker) : '';
+  // Si el kicker guardado traía la universidad, se limpia.
+  if (uni && k.indexOf(uni) !== -1) {
+    k = k.split(uni).join('').replace(/\s*·\s*$/, '').replace(/^\s*·\s*/, '').trim();
   }
-  return team || TH_DEFAULTS.kicker;
+  k = k.trim();
+  // El nombre del grupo ya vive en la cabecera: el pie no lo repite.
+  // Si no hay etiqueta propia, se usa la ciudad; nunca el nombre duplicado.
+  if (!k || (team && k === team)) return city || TH_DEFAULTS.kicker;
+  return k;
+}
+
+// Etiqueta de la esquina. El número de reto ("01") no dice nada a un jurado:
+// se usa una etiqueta de texto; si no hay, el hashtag del equipo.
+function retoLabel() {
+  var r = S.thReto ? String(S.thReto).trim() : '';
+  if (r && !/^\d+$/.test(r)) return r;
+  var fromTeam = (S.team && S.team.reto) ? String(S.team.reto).trim() : '';
+  if (fromTeam && !/^\d+$/.test(fromTeam)) return fromTeam;
+  var tag = (S.team && S.team.tag) ? String(S.team.tag).trim() : '';
+  if (tag && !(S.team && tag === S.team.name)) return tag;
+  return '';
 }
 
 function content() {
@@ -259,7 +354,7 @@ function content() {
     // El nombre de la universidad ya vive junto a su logo en la banda de
     // firma: aquí no se repite (ley de no duplicar datos).
     kicker: kickerText(),
-    reto: S.thReto || (S.team && S.team.reto) || ''
+    reto: retoLabel()
   };
 }
 
@@ -437,6 +532,7 @@ function saveAll() {
   S.thSub = $('thSub').value;
   S.thKicker = $('thKickerInput').value;
   S.thReto = $('thRetoInput').value;
+  S.thHeroConcept = $('thHeroConcept') ? $('thHeroConcept').value : (S.thHeroConcept || '');
   saveIdentity(S);
 }
 
@@ -465,17 +561,46 @@ function snapshot() {
   return { box: box, el: clone };
 }
 
+function guardarArchivo(nombre, blob, statusEl, texto) {
+  if (!blob || !blob.size) {
+    if (statusEl) statusEl.textContent = 'El archivo salió vacío. Recarga e intenta otra vez.';
+    return false;
+  }
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.download = nombre;
+  a.rel = 'noopener';
+  a.href = url;
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(function () { a.remove(); }, 30000);
+  if (statusEl) {
+    statusEl.innerHTML = (texto || 'Archivo listo') +
+      ' · <a href="' + url + '" download="' + nombre + '" style="color:inherit;text-decoration:underline">Guardar otra vez</a>' +
+      ' · <a href="' + url + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Abrir</a>';
+  }
+  return true;
+}
+
 function exportPNG(targetId, filename, statusId) {
   var el = $(targetId);
   $(statusId).textContent = 'Generando PNG…';
   el.classList.add('exporting');
   var snap = snapshot();
   html2canvas(snap.el, { scale: 2, useCORS: true, backgroundColor: null }).then(function (canvas) {
-    var link = document.createElement('a');
-    link.download = filename + '.png';
-    link.href = canvas.toDataURL('image/png');
-    link.click();
-    $(statusId).textContent = 'PNG descargado (' + canvas.width + '×' + canvas.height + ').';
+    if (canvas.toBlob) {
+      canvas.toBlob(function (blob) {
+        guardarArchivo(filename + '.png', blob, $(statusId), 'PNG listo (' + canvas.width + '×' + canvas.height + ')');
+      }, 'image/png');
+    } else {
+      var link = document.createElement('a');
+      link.download = filename + '.png';
+      link.href = canvas.toDataURL('image/png');
+      document.body.appendChild(link);
+      link.click();
+      setTimeout(function () { link.remove(); }, 30000);
+      $(statusId).textContent = 'PNG descargado (' + canvas.width + '×' + canvas.height + ').';
+    }
   }).catch(function (e) {
     $(statusId).textContent = 'Error: ' + e.message;
   }).finally(function () {
@@ -486,17 +611,21 @@ function exportPNG(targetId, filename, statusId) {
 
 function exportPDF(targetId, filename, statusId) {
   var el = $(targetId);
+  if (!window.html2canvas || !window.jspdf) {
+    $(statusId).textContent = 'Faltan las librerías de exportación. Recarga la página.';
+    return;
+  }
   $(statusId).textContent = 'Generando PDF…';
   el.classList.add('exporting');
   var snap = snapshot();
-  html2canvas(snap.el, { scale: 2, useCORS: true, backgroundColor: null }).then(function (canvas) {
-    var imgData = canvas.toDataURL('image/png');
-    var pdf = new jspdf.jsPDF({ orientation: 'landscape', unit: 'px', format: [canvas.width / 2, canvas.height / 2] });
-    pdf.addImage(imgData, 'PNG', 0, 0, canvas.width / 2, canvas.height / 2);
-    pdf.save(filename + '.pdf');
-    $(statusId).textContent = 'PDF descargado.';
+  // JPEG + compresión: un PNG embebido pesaba 14 MB y algunos visores no lo abrían.
+  html2canvas(snap.el, { scale: 2, useCORS: true, backgroundColor: '#0D1B35' }).then(function (canvas) {
+    var pdf = new jspdf.jsPDF({ orientation: 'landscape', unit: 'pt', format: [960, 540], compress: true });
+    pdf.addImage(canvas.toDataURL('image/jpeg', 0.92), 'JPEG', 0, 0, 960, 540, undefined, 'FAST');
+    var blob = pdf.output('blob');
+    guardarArchivo(filename + '.pdf', blob, $(statusId), 'PDF listo: ' + filename + '.pdf');
   }).catch(function (e) {
-    $(statusId).textContent = 'Error: ' + e.message;
+    $(statusId).textContent = 'Error al generar el PDF: ' + e.message;
   }).finally(function () {
     document.body.removeChild(snap.box);
     el.classList.remove('exporting');
@@ -613,6 +742,92 @@ function bindRally() {
   }
 }
 
+function bindHero() {
+  var f = $('thHeroFile');
+  if (f) {
+    f.addEventListener('change', function (e) {
+      var file = e.target.files && e.target.files[0];
+      if (!file) return;
+      if (!/^image\//.test(file.type || '')) {
+        heroMsg('Solo imagenes: JPG, PNG o WebP.', true);
+        f.value = '';
+        return;
+      }
+      if (file.size > 3.5 * 1024 * 1024) {
+        heroMsg('Imagen de ' + Math.round(file.size / 1048576 * 10) / 10 + ' MB. Maximo 3.5 MB: comprime o recorta antes de cargarla.', true);
+        f.value = '';
+        return;
+      }
+      readImage(file, function (data) {
+        S.thHeroImg = data;
+        saveIdentity(S);
+        syncHero();
+        renderThumb();
+        renderPresets();
+        heroMsg('Imagen cargada. Revisa que el titular siga legible.');
+      });
+    });
+  }
+  var reset = $('thHeroReset');
+  if (reset) {
+    reset.addEventListener('click', function () {
+      S.thHeroImg = '';
+      saveIdentity(S);
+      syncHero();
+      renderThumb();
+      renderPresets();
+      heroMsg('Sin imagen, la portada se queda en el territorio. Sube una foto real de la problemática y del reto: la imagen muestra el reto ya resuelto y su impacto, no es decoración.');
+    });
+  }
+  var fx = $('thHeroFx');
+  if (fx) {
+    fx.addEventListener('change', function () {
+      S.thHeroFx = fx.value;
+      saveIdentity(S);
+      renderThumb();
+      renderPresets();
+    });
+  }
+  var copy = $('thHeroCopy');
+  if (copy) {
+    copy.addEventListener('click', function () {
+      var texto = heroPrompt();
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(texto).then(function () {
+          heroMsg('Prompt copiado: pégalo en tu generador de imágenes.');
+        }, function () {
+          heroMsg(texto);
+        });
+      } else {
+        heroMsg(texto);
+      }
+    });
+  }
+  var ia = $('thHeroIA');
+  if (ia) {
+    ia.addEventListener('click', function () {
+      if (typeof RallyIA === 'undefined' || !RallyIA.job) {
+        heroMsg('Abre esta página desde el servidor local para pedir la sugerencia a la IA. Mientras tanto, usa "Copiar prompt".', true);
+        return;
+      }
+      heroMsg('Pensando la imagen…');
+      ia.disabled = true;
+      RallyIA.job(heroPrompt(), function (t) { heroMsg(t.message || t.status); }).then(function (r) {
+        ia.disabled = false;
+        if (r.status === 'ok' && r.text) {
+          var ta = $('thHeroConcept');
+          if (ta) ta.value = r.text.trim();
+          saveAll();
+          heroMsg('Concepto sugerido. Ahora genera la imagen con ese texto o súbela tú.');
+        } else {
+          heroMsg(r.message || ('No se pudo: ' + r.status), true);
+        }
+      });
+    });
+  }
+  syncHero();
+}
+
 function bind() {
   ['thTitleInput', 'thEm', 'thSub', 'thKickerInput', 'thRetoInput'].forEach(function (id) {
     var el = $(id);
@@ -621,6 +836,7 @@ function bind() {
     el.addEventListener('change', function () { saveAll(); renderThumb(); renderPresets(); });
   });
   bindRally();
+  bindHero();
   $('exportPngThumb').addEventListener('click', function () { exportPNG('thumbPreview', 'thumbnail-youtube', 'statusThumb'); });
   $('exportPdfThumb').addEventListener('click', function () { exportPDF('thumbPreview', 'thumbnail-youtube', 'statusThumb'); });
   window.addEventListener('resize', fitAll);
@@ -636,4 +852,4 @@ renderPresets();
 renderThumb();
 
 // brief.json -> identidad compartida (mismo cargador que el carrusel y el kit).
-cargarBrief(S, function () { syncControls(); renderThumb(); renderPresets(); });
+cargarBrief(S, function () { syncControls(); syncHero(); renderThumb(); renderPresets(); });

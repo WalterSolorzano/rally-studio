@@ -1,0 +1,139 @@
+{
+ "video_id": "_GVizBy8wgM",
+ "url": "https://youtu.be/_GVizBy8wgM",
+ "year": 2021,
+ "collection": "nacional",
+ "country": "MÉXICO",
+ "team": "INNOVATIONMIXJOI",
+ "place_label": "TERCER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "nacional",
+   "place_label": "TERCER LUGAR",
+   "team": "INNOVATIONMIXJOI",
+   "challenge": "08 - TECNOLOGÍAS DE EFICIENCIA ENERGÉTICA APLICADA A VIVIENDAS"
+  },
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "INNOVATIONMIXJOI",
+   "challenge": "08 - TECNOLOGÍAS DE EFICIENCIA ENERGÉTICA APLICADA A VIVIENDAS"
+  }
+ ],
+ "fetched_at": "2026-11-06T22:29:40+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Actualmente las viviendas que se encuentran en zonas húmedas rodeadas de árboles y con abastecimiento de agua no pueden tener un sistema de energía eficiente que les permite realizar sus actividades con el menor gasto de energía posible. Innovation Me job busca que las construcciones de las casas sean totalmente sustentables y se aprovechen los recursos en los alrededores de la zona en la que se construirá. Se han creado dos distintos sistemas que unidos generan electricidad por medio del aire y el agua. El primer sistema consiste en la implementación de túlbinas con raspas. Esto permite que, sin importar la dirección en la que entre el aire, éstas se muevan y generen electricidad. El segundo sistema es la captación de agua por medio de canaleta transportada a un tubo con hélices, las cuales provocan el movimiento del agua y generan electricidad. El diseño de la casa incluye un desnivel entre las habitaciones, esto para generar una caída, la cual promueve que la conducción de agua vaya con más velocidad y genere mayor energía. Los materiales con los que está hecha la casa ayudan a controlar la humedad, tener mayor iluminación y climatización. La losa está recubierta por hipermobilizante y aislamiento térmico. Por otra parte, los muros están hechos de un bloc llamado Bloc M3T, el cual es una mezcla de cal y callamisa que es resistente al fuego y al agua. No es tóxico y tiene eficiencia de energía. El interior de la casa tiene una variación de ventanales para aportar iluminación natural y ventilación cruzada. Por último, los muros interiores de la casa tendrán pigmento de fotoluminiscencia, esto absorbe la luz del sol y hace que brillen los muros en la noche. Nuestra propuesta favorece a la sociedad pues brindamos un sistema de energía que es segura, limpia, ahorrativa y estable. Innovation Meet Job, una solución sustentable, amigable con el medio ambiente y socialmente responsable.",
+ "segments": [
+  {
+   "start": 2.51,
+   "end": 9.51,
+   "text": "Actualmente las viviendas que se encuentran en zonas húmedas rodeadas de árboles y con abastecimiento de agua"
+  },
+  {
+   "start": 9.51,
+   "end": 17.51,
+   "text": "no pueden tener un sistema de energía eficiente que les permite realizar sus actividades con el menor gasto de energía posible."
+  },
+  {
+   "start": 17.51,
+   "end": 23.51,
+   "text": "Innovation Me job busca que las construcciones de las casas sean totalmente sustentables"
+  },
+  {
+   "start": 23.51,
+   "end": 29.51,
+   "text": "y se aprovechen los recursos en los alrededores de la zona en la que se construirá."
+  },
+  {
+   "start": 29.51,
+   "end": 42.59,
+   "text": "Se han creado dos distintos sistemas que unidos generan electricidad por medio del aire y el agua."
+  },
+  {
+   "start": 42.59,
+   "end": 46.59,
+   "text": "El primer sistema consiste en la implementación de túlbinas con raspas."
+  },
+  {
+   "start": 46.59,
+   "end": 52.59,
+   "text": "Esto permite que, sin importar la dirección en la que entre el aire, éstas se muevan y generen electricidad."
+  },
+  {
+   "start": 52.59,
+   "end": 57.59,
+   "text": "El segundo sistema es la captación de agua por medio de canaleta transportada a un tubo con hélices,"
+  },
+  {
+   "start": 57.59,
+   "end": 61.59,
+   "text": "las cuales provocan el movimiento del agua y generan electricidad."
+  },
+  {
+   "start": 61.59,
+   "end": 66.59,
+   "text": "El diseño de la casa incluye un desnivel entre las habitaciones, esto para generar una caída,"
+  },
+  {
+   "start": 66.59,
+   "end": 70.59,
+   "text": "la cual promueve que la conducción de agua vaya con más velocidad y genere mayor energía."
+  },
+  {
+   "start": 70.59,
+   "end": 76.59,
+   "text": "Los materiales con los que está hecha la casa ayudan a controlar la humedad, tener mayor iluminación y climatización."
+  },
+  {
+   "start": 76.59,
+   "end": 81.59,
+   "text": "La losa está recubierta por hipermobilizante y aislamiento térmico."
+  },
+  {
+   "start": 81.59,
+   "end": 86.59,
+   "text": "Por otra parte, los muros están hechos de un bloc llamado Bloc M3T,"
+  },
+  {
+   "start": 86.59,
+   "end": 90.59,
+   "text": "el cual es una mezcla de cal y callamisa que es resistente al fuego y al agua."
+  },
+  {
+   "start": 90.59,
+   "end": 93.59,
+   "text": "No es tóxico y tiene eficiencia de energía."
+  },
+  {
+   "start": 93.59,
+   "end": 99.59,
+   "text": "El interior de la casa tiene una variación de ventanales para aportar iluminación natural y ventilación cruzada."
+  },
+  {
+   "start": 99.59,
+   "end": 104.59,
+   "text": "Por último, los muros interiores de la casa tendrán pigmento de fotoluminiscencia,"
+  },
+  {
+   "start": 104.59,
+   "end": 107.59,
+   "text": "esto absorbe la luz del sol y hace que brillen los muros en la noche."
+  },
+  {
+   "start": 107.59,
+   "end": 116.59,
+   "text": "Nuestra propuesta favorece a la sociedad pues brindamos un sistema de energía que es segura, limpia, ahorrativa y estable."
+  },
+  {
+   "start": 116.59,
+   "end": 123.59,
+   "text": "Innovation Meet Job, una solución sustentable, amigable con el medio ambiente y socialmente responsable."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 124.3
+}

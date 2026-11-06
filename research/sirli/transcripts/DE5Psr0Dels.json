@@ -1,0 +1,124 @@
+{
+ "video_id": "DE5Psr0Dels",
+ "url": "https://youtu.be/DE5Psr0Dels",
+ "year": 2023,
+ "collection": "nacional",
+ "country": "MÉXICO",
+ "team": "LOS FILEMONES",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "nacional",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "LOS FILEMONES",
+   "challenge": "03 - AGUA SEGURA"
+  },
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "LOS FILEMONES",
+   "challenge": "03 - AGUA SEGURA"
+  }
+ ],
+ "fetched_at": "2026-11-06T21:32:45+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Como bien se sabe, el acceso al agua potable se ha vuelto cada vez más difícil. Según el censo publicado por la Organización Mundial de la Salud, se determinó que alrededor del 161 millones de personas en Latinoamérica no cuentan con acceso a agua potable, lo que es equivalente a una cuarta parte de la población actual. Dentro de las principales causas que provocan este problema, podemos encontrar la mala distribución del recurso vital, la baja accesibilidad en algunas zonas, la contaminación de los cuerpos acuáticos, entre otras muchas más. Se decidió atacar el problema realizando filtros de agua que eliminan metales, residuos sólidos y aumentan el pH del fluido, para volverlo potable. Para ello requerimos un medio para captar agua. En este caso se eligió una trapanielas. Sin embargo, existen otras formas de recolección de agua en las que funciona el dispositivo. El proceso comienza por la captación de agua. Una vez que va captando el fluido, se desplaza por una canaleta que se dirige a una pila de agua, la cual funge como almacenamiento de la misma. Posterior a esto, el agua fluye a través de una tubería hacia el primer filtro, el cual es un filtro biológico. Este contiene capas de grava, tierra, piedra caliza, arena, carbono activado, tela y algodón. Al pasar por este filtro, pasa por un tubo de vidrio en el cual se realizan las concentraciones de rayos UV, desinfectando así el agua. Al concluir el recorrido en el tubo, llega a su destino final, el cual es su consumo humano. Los costos para llevar a cabo dicha propuesta son los presentados en pantalla, donde se abarcan los insumos necesarios para el filtro biológico, además de los componentes para el sistema del fluido, así como las cisternas y válvulas de descarga. De parte de Los Filemones, agradecemos su tiempo y atención.",
+ "segments": [
+  {
+   "start": 5.42,
+   "end": 13.42,
+   "text": "Como bien se sabe, el acceso al agua potable se ha vuelto cada vez más difícil. Según el censo publicado por la Organización Mundial de la Salud,"
+  },
+  {
+   "start": 13.42,
+   "end": 20.42,
+   "text": "se determinó que alrededor del 161 millones de personas en Latinoamérica no cuentan con acceso a agua potable,"
+  },
+  {
+   "start": 20.42,
+   "end": 24.42,
+   "text": "lo que es equivalente a una cuarta parte de la población actual."
+  },
+  {
+   "start": 24.42,
+   "end": 30.42,
+   "text": "Dentro de las principales causas que provocan este problema, podemos encontrar la mala distribución del recurso vital,"
+  },
+  {
+   "start": 30.42,
+   "end": 36.42,
+   "text": "la baja accesibilidad en algunas zonas, la contaminación de los cuerpos acuáticos, entre otras muchas más."
+  },
+  {
+   "start": 36.42,
+   "end": 43.42,
+   "text": "Se decidió atacar el problema realizando filtros de agua que eliminan metales, residuos sólidos y aumentan el pH del fluido,"
+  },
+  {
+   "start": 43.42,
+   "end": 50.42,
+   "text": "para volverlo potable. Para ello requerimos un medio para captar agua. En este caso se eligió una trapanielas."
+  },
+  {
+   "start": 50.42,
+   "end": 55.42,
+   "text": "Sin embargo, existen otras formas de recolección de agua en las que funciona el dispositivo."
+  },
+  {
+   "start": 55.42,
+   "end": 60.42,
+   "text": "El proceso comienza por la captación de agua. Una vez que va captando el fluido, se desplaza por una canaleta"
+  },
+  {
+   "start": 60.42,
+   "end": 65.42,
+   "text": "que se dirige a una pila de agua, la cual funge como almacenamiento de la misma."
+  },
+  {
+   "start": 65.42,
+   "end": 70.42,
+   "text": "Posterior a esto, el agua fluye a través de una tubería hacia el primer filtro, el cual es un filtro biológico."
+  },
+  {
+   "start": 70.42,
+   "end": 78.42,
+   "text": "Este contiene capas de grava, tierra, piedra caliza, arena, carbono activado, tela y algodón."
+  },
+  {
+   "start": 78.42,
+   "end": 83.42,
+   "text": "Al pasar por este filtro, pasa por un tubo de vidrio en el cual se realizan las concentraciones de rayos UV,"
+  },
+  {
+   "start": 83.42,
+   "end": 90.42,
+   "text": "desinfectando así el agua. Al concluir el recorrido en el tubo, llega a su destino final, el cual es su consumo humano."
+  },
+  {
+   "start": 90.42,
+   "end": 94.42,
+   "text": "Los costos para llevar a cabo dicha propuesta son los presentados en pantalla,"
+  },
+  {
+   "start": 94.42,
+   "end": 97.42,
+   "text": "donde se abarcan los insumos necesarios para el filtro biológico,"
+  },
+  {
+   "start": 97.42,
+   "end": 102.42,
+   "text": "además de los componentes para el sistema del fluido, así como las cisternas y válvulas de descarga."
+  },
+  {
+   "start": 102.42,
+   "end": 106.42,
+   "text": "De parte de Los Filemones, agradecemos su tiempo y atención."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 108.1
+}

@@ -1,0 +1,169 @@
+{
+ "video_id": "n5WnOTs2QaA",
+ "url": "https://youtu.be/n5WnOTs2QaA",
+ "year": 2019,
+ "collection": "nacional",
+ "country": "EL SALVADOR",
+ "team": "TEAM ALFA",
+ "place_label": "PRIMER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2019,
+   "collection": "nacional",
+   "place_label": "PRIMER LUGAR",
+   "team": "TEAM ALFA",
+   "challenge": "03 - S.O.S. AQUÍ ESTOY!"
+  },
+  {
+   "year": 2019,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "TEAM ALFA",
+   "challenge": "03 - S.O.S. AQUÍ ESTOY!"
+  }
+ ],
+ "fetched_at": "2026-11-06T22:37:17+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Los desastres naturales, según Naciones Unidas 2014, son consecuencia de fenómenos naturales desencadenantes de procesos que provocan daños físicos y pérdidas de vidas humanas y de capital, al tiempo que alteran la vida de comunidades y personas y la actividad económica de los territorios afectados. Esto trajo como consecuencia que al nivel mundial estos fenómenos, terremotos, huracanes, tsunamis, entre otros, causaran que un total de 10.373 personas fallecieron en desastres naturales en el mundo en 2018, siendo un número superior a los 8.500 fallecidos de 2016 y los 9.700 de 2017. Como lo menciona el ex secretario general de Naciones Unidas, Ban Ki-moon, las primeras 72 horas son esenciales para encontrar a muchos desaparecidos con vida. Por consiguiente, es de suma importancia que se desarrollen tecnologías capaces de agilizar el proceso de localización de estas personas. Por esto mismo se crea la aplicación FindMe, la cual es una nueva tecnología moderna de alta calidad con el único objetivo de salvaguardar la vida de las personas que se encuentran en situaciones de peligro. FindMe es una pulsera hecha a base de material resistente en condiciones extremas, tales como altas y bajas temperaturas, golpes, entre otros. Esta pulsera está diseñada con paneles solares que le brindará una carga de 45 miliamperios que mantienen condiciones óptimas de su funcionamiento. Asimismo, cuenta con un chip especializado el cual permite triangular la posición en tiempo real del usuario. Esta información está almacenada en la nube el cual permitirá una actualización constante de los datos personales, los cuales incluyen nombre, tipo de sangre y edad. En adición, esta pulsera cuenta con un mecanismo que mide las pulsaciones cardíacas, el cual permite al rescatista reconocer si el usuario aún está copida y así priorizar su búsqueda. Esta activación estará sujeta a las identidades encargadas de dictaminar estados de emergencia. En caso de catástrofes naturales, el rango de acción será delimitado según sea requerido.",
+ "segments": [
+  {
+   "start": 8.53,
+   "end": 13.57,
+   "text": "Los desastres naturales, según Naciones Unidas 2014, son consecuencia de fenómenos naturales"
+  },
+  {
+   "start": 13.57,
+   "end": 18.05,
+   "text": "desencadenantes de procesos que provocan daños físicos y pérdidas de vidas humanas y"
+  },
+  {
+   "start": 18.05,
+   "end": 23.09,
+   "text": "de capital, al tiempo que alteran la vida de comunidades y personas y la actividad"
+  },
+  {
+   "start": 23.09,
+   "end": 27.45,
+   "text": "económica de los territorios afectados. Esto trajo como consecuencia que al nivel"
+  },
+  {
+   "start": 27.45,
+   "end": 32.85,
+   "text": "mundial estos fenómenos, terremotos, huracanes, tsunamis, entre otros, causaran que un"
+  },
+  {
+   "start": 32.85,
+   "end": 39.33,
+   "text": "total de 10.373 personas fallecieron en desastres naturales en el mundo en 2018, siendo un"
+  },
+  {
+   "start": 39.33,
+   "end": 46.33,
+   "text": "número superior a los 8.500 fallecidos de 2016 y los 9.700 de 2017."
+  },
+  {
+   "start": 46.41,
+   "end": 51.61,
+   "text": "Como lo menciona el ex secretario general de Naciones Unidas, Ban Ki-moon, las primeras"
+  },
+  {
+   "start": 51.61,
+   "end": 56.97,
+   "text": "72 horas son esenciales para encontrar a muchos desaparecidos con vida."
+  },
+  {
+   "start": 56.97,
+   "end": 60.69,
+   "text": "Por consiguiente, es de suma importancia que se desarrollen tecnologías capaces"
+  },
+  {
+   "start": 60.69,
+   "end": 65.01,
+   "text": "de agilizar el proceso de localización de estas personas. Por esto mismo se crea"
+  },
+  {
+   "start": 65.01,
+   "end": 70.29,
+   "text": "la aplicación FindMe, la cual es una nueva tecnología moderna de alta calidad con el"
+  },
+  {
+   "start": 70.29,
+   "end": 75.29,
+   "text": "único objetivo de salvaguardar la vida de las personas que se encuentran en situaciones de peligro."
+  },
+  {
+   "start": 75.29,
+   "end": 80.29,
+   "text": "FindMe es una pulsera hecha a base de material resistente en condiciones extremas,"
+  },
+  {
+   "start": 80.29,
+   "end": 84.73,
+   "text": "tales como altas y bajas temperaturas, golpes, entre otros."
+  },
+  {
+   "start": 84.73,
+   "end": 89.93,
+   "text": "Esta pulsera está diseñada con paneles solares que le brindará una carga de 45 miliamperios"
+  },
+  {
+   "start": 89.97,
+   "end": 93.17,
+   "text": "que mantienen condiciones óptimas de su funcionamiento."
+  },
+  {
+   "start": 93.17,
+   "end": 97.93,
+   "text": "Asimismo, cuenta con un chip especializado el cual permite triangular la posición en"
+  },
+  {
+   "start": 97.93,
+   "end": 100.21,
+   "text": "tiempo real del usuario."
+  },
+  {
+   "start": 100.21,
+   "end": 104.13,
+   "text": "Esta información está almacenada en la nube el cual permitirá una actualización"
+  },
+  {
+   "start": 104.13,
+   "end": 108.81,
+   "text": "constante de los datos personales, los cuales incluyen nombre, tipo de sangre"
+  },
+  {
+   "start": 108.81,
+   "end": 109.81,
+   "text": "y edad."
+  },
+  {
+   "start": 109.81,
+   "end": 114.09,
+   "text": "En adición, esta pulsera cuenta con un mecanismo que mide las pulsaciones"
+  },
+  {
+   "start": 114.09,
+   "end": 119.09,
+   "text": "cardíacas, el cual permite al rescatista reconocer si el usuario aún está copida"
+  },
+  {
+   "start": 119.09,
+   "end": 121.69,
+   "text": "y así priorizar su búsqueda."
+  },
+  {
+   "start": 121.69,
+   "end": 127.25,
+   "text": "Esta activación estará sujeta a las identidades encargadas de dictaminar estados de emergencia."
+  },
+  {
+   "start": 127.25,
+   "end": 133.69,
+   "text": "En caso de catástrofes naturales, el rango de acción será delimitado según sea requerido."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 133.7
+}

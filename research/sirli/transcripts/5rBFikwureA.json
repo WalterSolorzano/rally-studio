@@ -1,0 +1,169 @@
+{
+ "video_id": "5rBFikwureA",
+ "url": "https://youtu.be/5rBFikwureA",
+ "year": 2024,
+ "collection": "nacional",
+ "country": "EL SALVADOR",
+ "team": "DYNAMITE TEAM",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2024,
+   "collection": "nacional",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "DYNAMITE TEAM",
+   "challenge": "07 - PARQUÍMETRO DESATENDIDO"
+  },
+  {
+   "year": 2024,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "DYNAMITE TEAM",
+   "challenge": "07 - PARQUÍMETRO DESATENDIDO"
+  }
+ ],
+ "fetched_at": "2026-11-06T21:08:26+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "En este Rally 2024 nos hemos propuesto encontrar una solución al desafío del parquímetro desatendido, buscando mejorar este servicio público para hacerlo más automatizado y moderno para así reducir el uso de agentes de la ley. Adimate que sea más preciso detectar si se incumpla alguna norma para el buen uso del parquímetro. Como bien se sabe, las metrópolis, ciudades grandes e incluso las pequeñas sufren de una gran aglomeración de vehículos. Esto provoca que algunas personas dejen sus autos en zonas no permitidas, algo que los parquímetros ayudan a reducir al proporcionar una zona de parqueo por cierto tiempo y a un precio accesible. Sin embargo, algunas personas cometen incumplimientos al no pagar el parquímetro o excederse del tiempo por el que habían pagado. Esto hace que las zonas con parquímetros deban estar vigiladas por agentes encargados de hacer cumplir las normas. Nuestra propuesta busca reducir el uso de agentes mediante la implementación de sensores y cámaras que permitan mantener una gestión automatizada, verificando que el vehículo en su zona haya cumplido con el tiempo establecido y el pago. En caso de que el propietario del vehículo haya excedido el tiempo establecido, se le irá aumentando un coste que debería pagar al regreso al parquímetro. Pero en caso de incumplimiento de que esto no se pague, se le aplicará una multa utilizando los datos que recolectó la cámara como la placa del vehículo. Por esto mismo se aplican los vehículos que se estacionen sin pagar el uso del parquímetro. Adicionalmente, gracias a la ayuda de los sensores, se puede implementar una aplicación que permita a los usuarios verificar que parquímetros están disponibles en la zona o ciudad donde se encuentren, o en una ubicación que el usuario quiere saber que parquímetros están disponibles. Y esta sería nuestra propuesta de solución al desafío número 7 del Rally 2024.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 6.98,
+   "text": "En este Rally 2024 nos hemos propuesto encontrar una solución al desafío del parquímetro"
+  },
+  {
+   "start": 6.98,
+   "end": 11.56,
+   "text": "desatendido, buscando mejorar este servicio público para hacerlo más automatizado y"
+  },
+  {
+   "start": 11.56,
+   "end": 15.52,
+   "text": "moderno para así reducir el uso de agentes de la ley."
+  },
+  {
+   "start": 15.52,
+   "end": 19.56,
+   "text": "Adimate que sea más preciso detectar si se incumpla alguna norma para el buen uso"
+  },
+  {
+   "start": 19.56,
+   "end": 21.46,
+   "text": "del parquímetro."
+  },
+  {
+   "start": 21.46,
+   "end": 26.0,
+   "text": "Como bien se sabe, las metrópolis, ciudades grandes e incluso las pequeñas sufren de"
+  },
+  {
+   "start": 26.0,
+   "end": 28.52,
+   "text": "una gran aglomeración de vehículos."
+  },
+  {
+   "start": 28.52,
+   "end": 32.68,
+   "text": "Esto provoca que algunas personas dejen sus autos en zonas no permitidas, algo que los"
+  },
+  {
+   "start": 32.68,
+   "end": 37.56,
+   "text": "parquímetros ayudan a reducir al proporcionar una zona de parqueo por cierto tiempo y a"
+  },
+  {
+   "start": 37.56,
+   "end": 39.56,
+   "text": "un precio accesible."
+  },
+  {
+   "start": 39.56,
+   "end": 44.16,
+   "text": "Sin embargo, algunas personas cometen incumplimientos al no pagar el parquímetro"
+  },
+  {
+   "start": 44.16,
+   "end": 47.0,
+   "text": "o excederse del tiempo por el que habían pagado."
+  },
+  {
+   "start": 47.0,
+   "end": 51.12,
+   "text": "Esto hace que las zonas con parquímetros deban estar vigiladas por agentes encargados"
+  },
+  {
+   "start": 51.12,
+   "end": 53.44,
+   "text": "de hacer cumplir las normas."
+  },
+  {
+   "start": 53.44,
+   "end": 56.72,
+   "text": "Nuestra propuesta busca reducir el uso de agentes mediante la implementación"
+  },
+  {
+   "start": 56.72,
+   "end": 62.56,
+   "text": "de sensores y cámaras que permitan mantener una gestión automatizada, verificando que"
+  },
+  {
+   "start": 62.56,
+   "end": 68.08,
+   "text": "el vehículo en su zona haya cumplido con el tiempo establecido y el pago."
+  },
+  {
+   "start": 68.08,
+   "end": 71.6,
+   "text": "En caso de que el propietario del vehículo haya excedido el tiempo establecido, se"
+  },
+  {
+   "start": 71.6,
+   "end": 75.52,
+   "text": "le irá aumentando un coste que debería pagar al regreso al parquímetro."
+  },
+  {
+   "start": 75.52,
+   "end": 79.12,
+   "text": "Pero en caso de incumplimiento de que esto no se pague, se le aplicará una"
+  },
+  {
+   "start": 79.12,
+   "end": 84.28,
+   "text": "multa utilizando los datos que recolectó la cámara como la placa del vehículo."
+  },
+  {
+   "start": 84.28,
+   "end": 90.0,
+   "text": "Por esto mismo se aplican los vehículos que se estacionen sin pagar el uso del parquímetro."
+  },
+  {
+   "start": 90.0,
+   "end": 95.0,
+   "text": "Adicionalmente, gracias a la ayuda de los sensores, se puede implementar una aplicación"
+  },
+  {
+   "start": 95.0,
+   "end": 98.84,
+   "text": "que permita a los usuarios verificar que parquímetros están disponibles en"
+  },
+  {
+   "start": 98.84,
+   "end": 103.2,
+   "text": "la zona o ciudad donde se encuentren, o en una ubicación que el usuario quiere"
+  },
+  {
+   "start": 103.2,
+   "end": 106.0,
+   "text": "saber que parquímetros están disponibles."
+  },
+  {
+   "start": 106.0,
+   "end": 111.56,
+   "text": "Y esta sería nuestra propuesta de solución al desafío número 7 del Rally 2024."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 113.3
+}

@@ -1,0 +1,214 @@
+{
+ "video_id": "YPNJ8HetrGk",
+ "url": "https://youtu.be/YPNJ8HetrGk?si=s8Fomw0NyTJ3DQTs",
+ "year": 2025,
+ "collection": "nacional",
+ "country": "EL SALVADOR",
+ "team": "THE FALCONS IT",
+ "place_label": "TERCER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2025,
+   "collection": "nacional",
+   "place_label": "TERCER LUGAR",
+   "team": "THE FALCONS IT",
+   "challenge": "05 - HUERTOS VERTICALES"
+  },
+  {
+   "year": 2025,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "THE FALCONS IT",
+   "challenge": "05 - HUERTOS VERTICALES"
+  }
+ ],
+ "fetched_at": "2026-11-06T20:48:01+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Detente un momento. ¿Sabías que la creciente urbanización en Latinoamérica limita cada vez más el acceso a alimentos frescos? Este es el desafío que asumimos. El desafío número 5. En las ciudades, el espacio y el agua son recursos limitados. Necesitábamos un sistema modular de agricultura vertical que optimizara el espacio y garantizara la seguridad alimentaria, pero sobre todo, que incorporara un mecanismo eficiente y seguro de riego con agua recuperada. Nuestra innovación se centra en la eficiencia y la sostenibilidad. El corazón del sistema es la reutilización de agua. Hemos integrado un mecanismo que recolecta y recircula diversas fuentes de agua, como la lluvia y el agua gris proveniente de lavamanos. Para garantizar la salud del cultivo, esta agua pasa por un sistema de filtrado casero que la deja en condiciones óptimas para nutrir plantas como tomate, pepino y hortalices. El funcionamiento es autónomo y de bajo mantenimiento. Utilizamos dos recipientes o contenedores para la recolección y distribución, junto con tuberías de PVC o mangueras. La estructura que sostiene las plantas está construida con botellas recicladas o más tubo PVC. El sistema de riego está impulsado por una pequeña bomba de agua, alimentada por una batería de litio recargable que, a su vez, se mantiene cargada mediante un panel solar pequeño. Esta propuesta de ingeniería y sostenibilidad nos permitió reducir los costos al mínimo, afrontando la problemática de manera eficiente. Combatimos directamente tres problemáticas críticas. La falta de espacio, el desperdicio de agua, evitando que cientos de litros se pierdan en actividades diarias, y la acumulación de residuos plásticos que tardan siglos en degradarse. Ofrecemos un sistema simple y replicable de triple beneficio, ideal para hogares, escuelas y hospitales. Somos el equipo The Falcons IT.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 2.0,
+   "text": "Detente un momento."
+  },
+  {
+   "start": 2.0,
+   "end": 4.7,
+   "text": "¿Sabías que la creciente urbanización en Latinoamérica"
+  },
+  {
+   "start": 4.7,
+   "end": 8.3,
+   "text": "limita cada vez más el acceso a alimentos frescos?"
+  },
+  {
+   "start": 8.3,
+   "end": 10.8,
+   "text": "Este es el desafío que asumimos."
+  },
+  {
+   "start": 10.8,
+   "end": 13.4,
+   "text": "El desafío número 5."
+  },
+  {
+   "start": 13.4,
+   "end": 17.8,
+   "text": "En las ciudades, el espacio y el agua son recursos limitados."
+  },
+  {
+   "start": 17.8,
+   "end": 20.8,
+   "text": "Necesitábamos un sistema modular de agricultura vertical"
+  },
+  {
+   "start": 20.8,
+   "end": 24.4,
+   "text": "que optimizara el espacio y garantizara la seguridad alimentaria,"
+  },
+  {
+   "start": 24.4,
+   "end": 27.4,
+   "text": "pero sobre todo, que incorporara un mecanismo eficiente"
+  },
+  {
+   "start": 27.4,
+   "end": 30.2,
+   "text": "y seguro de riego con agua recuperada."
+  },
+  {
+   "start": 30.2,
+   "end": 34.2,
+   "text": "Nuestra innovación se centra en la eficiencia y la sostenibilidad."
+  },
+  {
+   "start": 34.2,
+   "end": 37.5,
+   "text": "El corazón del sistema es la reutilización de agua."
+  },
+  {
+   "start": 37.5,
+   "end": 41.6,
+   "text": "Hemos integrado un mecanismo que recolecta y recircula diversas fuentes de agua,"
+  },
+  {
+   "start": 41.6,
+   "end": 45.5,
+   "text": "como la lluvia y el agua gris proveniente de lavamanos."
+  },
+  {
+   "start": 45.5,
+   "end": 47.6,
+   "text": "Para garantizar la salud del cultivo,"
+  },
+  {
+   "start": 47.6,
+   "end": 50.1,
+   "text": "esta agua pasa por un sistema de filtrado casero"
+  },
+  {
+   "start": 50.1,
+   "end": 52.7,
+   "text": "que la deja en condiciones óptimas para nutrir plantas"
+  },
+  {
+   "start": 52.7,
+   "end": 56.0,
+   "text": "como tomate, pepino y hortalices."
+  },
+  {
+   "start": 56.0,
+   "end": 59.3,
+   "text": "El funcionamiento es autónomo y de bajo mantenimiento."
+  },
+  {
+   "start": 59.3,
+   "end": 63.6,
+   "text": "Utilizamos dos recipientes o contenedores para la recolección y distribución,"
+  },
+  {
+   "start": 63.6,
+   "end": 66.4,
+   "text": "junto con tuberías de PVC o mangueras."
+  },
+  {
+   "start": 66.4,
+   "end": 68.0,
+   "text": "La estructura que sostiene las plantas"
+  },
+  {
+   "start": 68.0,
+   "end": 71.9,
+   "text": "está construida con botellas recicladas o más tubo PVC."
+  },
+  {
+   "start": 71.9,
+   "end": 75.3,
+   "text": "El sistema de riego está impulsado por una pequeña bomba de agua,"
+  },
+  {
+   "start": 75.3,
+   "end": 78.9,
+   "text": "alimentada por una batería de litio recargable que, a su vez,"
+  },
+  {
+   "start": 78.9,
+   "end": 82.4,
+   "text": "se mantiene cargada mediante un panel solar pequeño."
+  },
+  {
+   "start": 82.4,
+   "end": 85.0,
+   "text": "Esta propuesta de ingeniería y sostenibilidad"
+  },
+  {
+   "start": 85.0,
+   "end": 87.3,
+   "text": "nos permitió reducir los costos al mínimo,"
+  },
+  {
+   "start": 87.3,
+   "end": 90.5,
+   "text": "afrontando la problemática de manera eficiente."
+  },
+  {
+   "start": 90.5,
+   "end": 93.9,
+   "text": "Combatimos directamente tres problemáticas críticas."
+  },
+  {
+   "start": 93.9,
+   "end": 96.9,
+   "text": "La falta de espacio, el desperdicio de agua,"
+  },
+  {
+   "start": 96.9,
+   "end": 100.6,
+   "text": "evitando que cientos de litros se pierdan en actividades diarias,"
+  },
+  {
+   "start": 100.6,
+   "end": 105.0,
+   "text": "y la acumulación de residuos plásticos que tardan siglos en degradarse."
+  },
+  {
+   "start": 105.0,
+   "end": 108.6,
+   "text": "Ofrecemos un sistema simple y replicable de triple beneficio,"
+  },
+  {
+   "start": 108.6,
+   "end": 115.77,
+   "text": "ideal para hogares, escuelas y hospitales."
+  },
+  {
+   "start": 115.77,
+   "end": 118.07,
+   "text": "Somos el equipo The Falcons IT."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 118.1
+}

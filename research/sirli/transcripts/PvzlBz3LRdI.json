@@ -1,0 +1,154 @@
+{
+ "video_id": "PvzlBz3LRdI",
+ "url": "https://youtu.be/PvzlBz3LRdI",
+ "year": 2023,
+ "collection": "nacional",
+ "country": "BOLIVIA",
+ "team": "ENJAMBRE",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2023,
+   "collection": "nacional",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "ENJAMBRE",
+   "challenge": "07 - CROWDSENSING"
+  },
+  {
+   "year": 2023,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "ENJAMBRE",
+   "challenge": "07 - CROWDSENSING"
+  }
+ ],
+ "fetched_at": "2026-11-06T21:16:36+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "Aplicación móvil de crowd sensing. Está con el fin de tener información para formar ciudades inteligentes. Lo que buscamos con la implementación de nuestra aplicación es recopilar información en tiempo real y que ésta sea confiable y actualizada. Lo que se busca con ello es tener un impacto social, ambiental y económico. Es decir, en lo social se prevé de que los ciudadanos puedan contribuir con su información en lo ambiental, de que con la información recopilada se pueda tomar decisiones más oportunas sobre el cuidado del medio ambiente y en lo económico ya que se utilizará los dispositivos móviles de los ciudadanos. Las tecnologías que usaremos para la implementación de nuestra propuesta es el desarrollo de una aplicación móvil para recopilar la información y hacer uso de los sensores que tienen para que tengamos información más precisa y adecuada. La implementación de APIs para que pueda hacer uso de los sensores de manera más eficiente y el procesamiento y análisis de datos para que se tenga una idea de cómo se puede utilizar la información de manera más adecuada, tratando la información previamente. La implementación requerirá el compromiso y el interés de los diferentes niveles de los estados gubernamentales. Para concluir, la aplicación tiene planteado mejorar la calidad de vida de los ciudadanos aprovechando la información que se ha recopilado para que en un futuro se pueda tener una transición segura y rápida hacia lo que son las ciudades inteligentes. Como primer vista del proyecto hemos creado unos sencillos landings para la aplicación que hemos llamado Crowdy con el slogan detecta decidis fruta que permite escanear un entorno ahora y tiene las configuraciones para detectar entornos automáticos, notificaciones y localizaciones cercanas escaneadas. Así también tenemos unas primeras vistas de lo que son los mapas que se van a generar con vistas cercanas y localizaciones que son más transitadas o más transitadas y se va a poder marcar áreas para ver en qué lugar hay más flujo de gente o flujo vehicular y es más factible transitar o no ya sea como peatón o como conductor de un vehículo.",
+ "segments": [
+  {
+   "start": 1.52,
+   "end": 7.04,
+   "text": "Aplicación móvil de crowd sensing. Está con el fin de tener información para formar ciudades"
+  },
+  {
+   "start": 7.04,
+   "end": 13.4,
+   "text": "inteligentes. Lo que buscamos con la implementación de nuestra aplicación es recopilar información en"
+  },
+  {
+   "start": 13.4,
+   "end": 19.64,
+   "text": "tiempo real y que ésta sea confiable y actualizada. Lo que se busca con ello es tener un impacto"
+  },
+  {
+   "start": 19.64,
+   "end": 24.84,
+   "text": "social, ambiental y económico. Es decir, en lo social se prevé de que los ciudadanos puedan"
+  },
+  {
+   "start": 24.84,
+   "end": 29.08,
+   "text": "contribuir con su información en lo ambiental, de que con la información recopilada se pueda"
+  },
+  {
+   "start": 29.08,
+   "end": 34.6,
+   "text": "tomar decisiones más oportunas sobre el cuidado del medio ambiente y en lo económico ya que se"
+  },
+  {
+   "start": 34.6,
+   "end": 41.1,
+   "text": "utilizará los dispositivos móviles de los ciudadanos. Las tecnologías que usaremos para"
+  },
+  {
+   "start": 41.1,
+   "end": 46.14,
+   "text": "la implementación de nuestra propuesta es el desarrollo de una aplicación móvil para recopilar"
+  },
+  {
+   "start": 46.14,
+   "end": 49.7,
+   "text": "la información y hacer uso de los sensores que tienen para que tengamos información más"
+  },
+  {
+   "start": 49.7,
+   "end": 54.94,
+   "text": "precisa y adecuada. La implementación de APIs para que pueda hacer uso de los sensores"
+  },
+  {
+   "start": 55.54,
+   "end": 61.78,
+   "text": "de manera más eficiente y el procesamiento y análisis de datos para que se tenga una idea de"
+  },
+  {
+   "start": 61.78,
+   "end": 66.34,
+   "text": "cómo se puede utilizar la información de manera más adecuada, tratando la información previamente."
+  },
+  {
+   "start": 67.5,
+   "end": 72.58,
+   "text": "La implementación requerirá el compromiso y el interés de los diferentes niveles de los"
+  },
+  {
+   "start": 72.58,
+   "end": 80.66,
+   "text": "estados gubernamentales. Para concluir, la aplicación tiene planteado mejorar la calidad"
+  },
+  {
+   "start": 80.66,
+   "end": 85.5,
+   "text": "de vida de los ciudadanos aprovechando la información que se ha recopilado para que en"
+  },
+  {
+   "start": 85.5,
+   "end": 90.54,
+   "text": "un futuro se pueda tener una transición segura y rápida hacia lo que son las ciudades"
+  },
+  {
+   "start": 90.54,
+   "end": 94.66,
+   "text": "inteligentes. Como primer vista del proyecto hemos creado unos sencillos landings para"
+  },
+  {
+   "start": 94.66,
+   "end": 98.46,
+   "text": "la aplicación que hemos llamado Crowdy con el slogan detecta decidis fruta que permite"
+  },
+  {
+   "start": 98.46,
+   "end": 101.66,
+   "text": "escanear un entorno ahora y tiene las configuraciones para detectar entornos automáticos,"
+  },
+  {
+   "start": 101.66,
+   "end": 105.62,
+   "text": "notificaciones y localizaciones cercanas escaneadas. Así también tenemos unas primeras"
+  },
+  {
+   "start": 105.62,
+   "end": 109.66,
+   "text": "vistas de lo que son los mapas que se van a generar con vistas cercanas y localizaciones"
+  },
+  {
+   "start": 109.66,
+   "end": 113.42,
+   "text": "que son más transitadas o más transitadas y se va a poder marcar áreas para ver en qué lugar"
+  },
+  {
+   "start": 113.42,
+   "end": 118.38,
+   "text": "hay más flujo de gente o flujo vehicular y es más factible transitar o no ya sea como peatón"
+  },
+  {
+   "start": 118.38,
+   "end": 119.5,
+   "text": "o como conductor de un vehículo."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.6
+}

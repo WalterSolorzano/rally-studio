@@ -1,0 +1,174 @@
+{
+ "video_id": "JXF7ovWQ3ks",
+ "url": "https://youtu.be/JXF7ovWQ3ks",
+ "year": 2021,
+ "collection": "nacional",
+ "country": "COLOMBIA",
+ "team": "STARS-TO FLY INNOVATION",
+ "place_label": "TERCER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "nacional",
+   "place_label": "TERCER LUGAR",
+   "team": "STARS-TO FLY INNOVATION",
+   "challenge": "06 - SOSTENIBILIDAD AMBIENTAL ORIENTADA AL APROVECHAMIENTO DE RESIDUOS PLÁSTICOS EN FRANJAS COSTERAS"
+  },
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "STARS-TO FLY INNOVATION",
+   "challenge": "06 - SOSTENIBILIDAD AMBIENTAL ORIENTADA AL APROVECHAMIENTO DE RESIDUOS PLÁSTICOS EN FRANJAS COSTERAS"
+  }
+ ],
+ "fetched_at": "2026-11-06T22:17:10+00:00",
+ "caption_source": "whisper-medium-local",
+ "language": "es",
+ "text": "La problemática se basa en los residuos plásticos que están presentes en las zonas costeras, ya que han sido focos de atención debido a su rango de alteración tanto ambiental como la integridad física del ser humano. Nuestro sistema de innovación Amtamsepti cuenta con un procesamiento de limpieza que es de recuperación de todos los materiales reciclables, en especial los polímeros que van a los acueductos y zonas costeras de las comunidades, en donde este mecanismo en primer lugar está conectado en la parte finales de la tubería que desembocan al mar. En esta parte contamos con un filtro de carcasa que es de fácil adaptación para los acueductos y este filtro está unido a un sensor de compuerta el cual está programado para que la compuerta se abra y se cierre en una secuencia de 15 minutos. En el momento que desembocan estos residuos a nuestro tanque resistente al calor y frío, el cual tiene un recubrimiento para evitar corrosiones en el transcurso del tiempo, ya sí cologando su vida útil de nuestro depósito. Cabe mencionar que este tanque está conectado a tres partes, la primera es el sistema de salida de agua que alcanza a entrar en nuestro depósito, el segundo de la entrada de residuos que vienen de las zonas costeras las cual tienen funcionamiento mediante la inyección de aire. Se hace de manera externa debido a que la circulación del mismo en el tubo genera burbujas de extracción para los polímeros en el cual recolectores se van a encargar de tomar todos estos polímeros para llevar canales de expulsión hacia el tanque y la tercera es la salida de los sólidos que van por medios de canales de expulsión hacia las bandas transportadoras magnéticas en la cual se va a poder separar contaminantes, polímeros y metales, en especial los polímeros van a ser pasados a otra máquina la cual es un tanque de flotación para la separación de plásticos. Su principal funcionamiento es realizar la separación de plásticos de acuerdo su espeso específico.",
+ "segments": [
+  {
+   "start": 3.5,
+   "end": 7.98,
+   "text": "La problemática se basa en los residuos plásticos que están presentes en las"
+  },
+  {
+   "start": 7.98,
+   "end": 12.58,
+   "text": "zonas costeras, ya que han sido focos de atención debido a su rango de"
+  },
+  {
+   "start": 12.58,
+   "end": 17.34,
+   "text": "alteración tanto ambiental como la integridad física del ser humano."
+  },
+  {
+   "start": 17.34,
+   "end": 22.06,
+   "text": "Nuestro sistema de innovación Amtamsepti cuenta con un procesamiento"
+  },
+  {
+   "start": 22.06,
+   "end": 25.92,
+   "text": "de limpieza que es de recuperación de todos los materiales reciclables, en"
+  },
+  {
+   "start": 25.92,
+   "end": 29.38,
+   "text": "especial los polímeros que van a los acueductos y zonas costeras de las"
+  },
+  {
+   "start": 29.38,
+   "end": 33.5,
+   "text": "comunidades, en donde este mecanismo en primer lugar está conectado en la"
+  },
+  {
+   "start": 33.5,
+   "end": 37.14,
+   "text": "parte finales de la tubería que desembocan al mar. En esta parte"
+  },
+  {
+   "start": 37.14,
+   "end": 41.1,
+   "text": "contamos con un filtro de carcasa que es de fácil adaptación para los acueductos"
+  },
+  {
+   "start": 41.1,
+   "end": 45.98,
+   "text": "y este filtro está unido a un sensor de compuerta el cual está programado"
+  },
+  {
+   "start": 45.98,
+   "end": 49.94,
+   "text": "para que la compuerta se abra y se cierre en una secuencia de 15 minutos."
+  },
+  {
+   "start": 49.94,
+   "end": 54.22,
+   "text": "En el momento que desembocan estos residuos a nuestro tanque resistente"
+  },
+  {
+   "start": 54.22,
+   "end": 57.3,
+   "text": "al calor y frío, el cual tiene un recubrimiento para evitar"
+  },
+  {
+   "start": 57.3,
+   "end": 61.7,
+   "text": "corrosiones en el transcurso del tiempo, ya sí cologando su vida útil"
+  },
+  {
+   "start": 61.9,
+   "end": 66.34,
+   "text": "de nuestro depósito. Cabe mencionar que este tanque está conectado a tres partes,"
+  },
+  {
+   "start": 66.34,
+   "end": 70.06,
+   "text": "la primera es el sistema de salida de agua que alcanza a entrar en nuestro"
+  },
+  {
+   "start": 70.06,
+   "end": 73.74,
+   "text": "depósito, el segundo de la entrada de residuos que vienen de las zonas"
+  },
+  {
+   "start": 73.74,
+   "end": 78.1,
+   "text": "costeras las cual tienen funcionamiento mediante la inyección de aire."
+  },
+  {
+   "start": 78.1,
+   "end": 82.18,
+   "text": "Se hace de manera externa debido a que la circulación del mismo en el tubo"
+  },
+  {
+   "start": 82.18,
+   "end": 85.9,
+   "text": "genera burbujas de extracción para los polímeros en el cual"
+  },
+  {
+   "start": 85.9,
+   "end": 90.42,
+   "text": "recolectores se van a encargar de tomar todos estos polímeros para"
+  },
+  {
+   "start": 90.42,
+   "end": 95.06,
+   "text": "llevar canales de expulsión hacia el tanque y la tercera es la salida de los"
+  },
+  {
+   "start": 95.06,
+   "end": 98.34,
+   "text": "sólidos que van por medios de canales de expulsión hacia las bandas"
+  },
+  {
+   "start": 98.34,
+   "end": 102.06,
+   "text": "transportadoras magnéticas en la cual se va a poder separar"
+  },
+  {
+   "start": 102.06,
+   "end": 106.1,
+   "text": "contaminantes, polímeros y metales, en especial los polímeros van a ser"
+  },
+  {
+   "start": 106.1,
+   "end": 110.7,
+   "text": "pasados a otra máquina la cual es un tanque de flotación para la"
+  },
+  {
+   "start": 110.7,
+   "end": 114.34,
+   "text": "separación de plásticos. Su principal funcionamiento es realizar la"
+  },
+  {
+   "start": 114.34,
+   "end": 119.58,
+   "text": "separación de plásticos de acuerdo su espeso específico."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 120.3
+}
