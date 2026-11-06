@@ -77,6 +77,31 @@ defina su reto. Nunca se rellena con un proyecto de ejemplo.
 
 Cada skill `skills/<nombre>/SKILL.md` incluye bloques para llevar el contenido a otra IA (prompts estructurados en JSON), nombrado de proyecto (patrones SIRLI), enseñanza visual (rótulos, contraste, elementos gráficos), redacción de guiones (pronunciación, orden de palabras, flujo de ideas), creación de modelos 3D (Blender) y sugerencia de elementos gráficos. Estos bloques permiten que otro modelo de IA reproduzca los criterios de Rally Studio fuera de este repositorio.
 
+## El cerebro: mapa de conocimiento
+
+El cerebro vive en `brain/corpus/` y se compila en `graphify-out/`. Contiene solo conocimiento de dominio: rúbricas, ganadores, retos, claims y patrones de pitch. No contiene el motor, ni instrucciones de instalación, ni proyectos anteriores.
+
+<div align="center">
+
+![Mapa de Conocimiento](../graphify_knowledge_graph.png)
+
+*Figura: Grafo del conocimiento compilado — 294 nodos, 272 aristas, 34 comunidades. Abre el visualizador interactivo en `graphify-out/graph.html`.*
+
+</div>
+
+| Archivo en `graphify-out/` | Para qué |
+|---|---|
+| `graph.json` | el grafo (nodos, aristas, comunidades) |
+| `graph.html` | visualizador interactivo |
+| `GRAPH_REPORT.md` | comunidades, nodos centrales y preguntas |
+| `.graphify_labels.json` | nombres de las comunidades |
+
+**Entra** conocimiento que gana: rúbricas oficiales, banco de retos, análisis de ganadores 2014–2026, casos internacionales, patrones de pitch, claims con fuente, estructura del pautado y del video de 120 s.
+
+**No entra** (y es deliberado): el motor (`scripts/rally_service.py`, `dashboard/app.js`), cálculos de rúbrica, reglas de negocio del evento, `localStorage`, ni proyectos anteriores.
+
+Reconstruir el cerebro completo: `python brain/sync_corpus.py` y luego `graphify update brain/corpus`. Detalle en `brain/README.md`.
+
 ## Fusión de entidades
 
 `sync_corpus.py` deja el corpus listo, pero la extracción se hace por archivo, así que
