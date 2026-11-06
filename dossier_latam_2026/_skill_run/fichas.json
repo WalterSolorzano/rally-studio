@@ -2,9 +2,9 @@
   "retos": [
     {
       "reto_id": "DESAFIO_01",
-      "reto_enunciado": "Segunda vida de los motores elÃ©ctricos domÃ©sticos Reto del comité sobre Segunda vida de los motores elÃ©ctricos domÃ©sticos. Sector declarado: electrodomÃ©sticos en desuso.",
-      "title": "Segunda vida de los motores elÃ©ctricos domÃ©sticos",
-      "description": "Reto del comité sobre Segunda vida de los motores elÃ©ctricos domÃ©sticos. Sector declarado: electrodomÃ©sticos en desuso.",
+      "reto_enunciado": "Segunda vida de los motores eléctricos domésticos Reto del comité sobre Segunda vida de los motores eléctricos domésticos. Sector declarado: electrodomésticos en desuso.",
+      "title": "Segunda vida de los motores eléctricos domésticos",
+      "description": "Reto del comité sobre Segunda vida de los motores eléctricos domésticos. Sector declarado: electrodomésticos en desuso.",
       "opciones": [
         {
           "id": "ruta-1",
@@ -54,9 +54,9 @@
     },
     {
       "reto_id": "DESAFIO_03",
-      "reto_enunciado": "ProtecciÃ³n y fomento de polinizadores Reto del comité sobre ProtecciÃ³n y fomento de polinizadores. Sector declarado: entornos agrÃ­cola/urbano.",
-      "title": "ProtecciÃ³n y fomento de polinizadores",
-      "description": "Reto del comité sobre ProtecciÃ³n y fomento de polinizadores. Sector declarado: entornos agrÃ­cola/urbano.",
+      "reto_enunciado": "Protección y fomento de polinizadores Reto del comité sobre Protección y fomento de polinizadores. Sector declarado: entornos agrícola/urbano.",
+      "title": "Protección y fomento de polinizadores",
+      "description": "Reto del comité sobre Protección y fomento de polinizadores. Sector declarado: entornos agrícola/urbano.",
       "opciones": [
         {
           "id": "ruta-exploratoria",
@@ -80,9 +80,9 @@
     },
     {
       "reto_id": "DESAFIO_04",
-      "reto_enunciado": "Manejo ecolÃ³gico de residuos de poda y biomasa vegetal urbana Reto del comité sobre Manejo ecolÃ³gico de residuos de poda y biomasa vegetal urbana. Sector declarado: biomasa urbana.",
-      "title": "Manejo ecolÃ³gico de residuos de poda y biomasa vegetal urbana",
-      "description": "Reto del comité sobre Manejo ecolÃ³gico de residuos de poda y biomasa vegetal urbana. Sector declarado: biomasa urbana.",
+      "reto_enunciado": "Manejo ecológico de residuos de poda y biomasa vegetal urbana Reto del comité sobre Manejo ecológico de residuos de poda y biomasa vegetal urbana. Sector declarado: biomasa urbana.",
+      "title": "Manejo ecológico de residuos de poda y biomasa vegetal urbana",
+      "description": "Reto del comité sobre Manejo ecológico de residuos de poda y biomasa vegetal urbana. Sector declarado: biomasa urbana.",
       "opciones": [
         {
           "id": "ruta-1",
@@ -124,9 +124,9 @@
     },
     {
       "reto_id": "DESAFIO_05",
-      "reto_enunciado": "Monitoreo inteligente e infraestructura verde en reservorios pluviales Reto del comité sobre Monitoreo inteligente e infraestructura verde en reservorios pluviales. Sector declarado: riesgo hÃ­drico.",
+      "reto_enunciado": "Monitoreo inteligente e infraestructura verde en reservorios pluviales Reto del comité sobre Monitoreo inteligente e infraestructura verde en reservorios pluviales. Sector declarado: riesgo hídrico.",
       "title": "Monitoreo inteligente e infraestructura verde en reservorios pluviales",
-      "description": "Reto del comité sobre Monitoreo inteligente e infraestructura verde en reservorios pluviales. Sector declarado: riesgo hÃ­drico.",
+      "description": "Reto del comité sobre Monitoreo inteligente e infraestructura verde en reservorios pluviales. Sector declarado: riesgo hídrico.",
       "opciones": [
         {
           "id": "ruta-exploratoria",
@@ -150,9 +150,9 @@
     },
     {
       "reto_id": "DESAFIO_06",
-      "reto_enunciado": "RemociÃ³n y extracciÃ³n de barro en viviendas anegadas Reto del comité sobre RemociÃ³n y extracciÃ³n de barro en viviendas anegadas. Sector declarado: post-emergencia.",
-      "title": "RemociÃ³n y extracciÃ³n de barro en viviendas anegadas",
-      "description": "Reto del comité sobre RemociÃ³n y extracciÃ³n de barro en viviendas anegadas. Sector declarado: post-emergencia.",
+      "reto_enunciado": "Remoción y extracción de barro en viviendas anegadas Reto del comité sobre Remoción y extracción de barro en viviendas anegadas. Sector declarado: post-emergencia.",
+      "title": "Remoción y extracción de barro en viviendas anegadas",
+      "description": "Reto del comité sobre Remoción y extracción de barro en viviendas anegadas. Sector declarado: post-emergencia.",
       "opciones": [
         {
           "id": "ruta-exploratoria",
@@ -176,9 +176,9 @@
     },
     {
       "reto_id": "DESAFIO_07",
-      "reto_enunciado": "ReutilizaciÃ³n de aceite domÃ©stico Reto del comité sobre ReutilizaciÃ³n de aceite domÃ©stico. Sector declarado: aceite de cocina.",
-      "title": "ReutilizaciÃ³n de aceite domÃ©stico",
-      "description": "Reto del comité sobre ReutilizaciÃ³n de aceite domÃ©stico. Sector declarado: aceite de cocina.",
+      "reto_enunciado": "Reutilización de aceite doméstico Reto del comité sobre Reutilización de aceite doméstico. Sector declarado: aceite de cocina.",
+      "title": "Reutilización de aceite doméstico",
+      "description": "Reto del comité sobre Reutilización de aceite doméstico. Sector declarado: aceite de cocina.",
       "opciones": [
         {
           "id": "ruta-exploratoria",
@@ -246,9 +246,9 @@
     },
     {
       "reto_id": "DESAFIO_09",
-      "reto_enunciado": "OptimizaciÃ³n y priorizaciÃ³n de recursos y esfuerzos en la post-emergencia Reto del comité sobre OptimizaciÃ³n y priorizaciÃ³n de recursos y esfuerzos en la post-emergencia. Sector declarado: coordinaciÃ³n de respuesta.",
-      "title": "OptimizaciÃ³n y priorizaciÃ³n de recursos y esfuerzos en la post-emergencia",
-      "description": "Reto del comité sobre OptimizaciÃ³n y priorizaciÃ³n de recursos y esfuerzos en la post-emergencia. Sector declarado: coordinaciÃ³n de respuesta.",
+      "reto_enunciado": "Optimización y priorización de recursos y esfuerzos en la post-emergencia Reto del comité sobre Optimización y priorización de recursos y esfuerzos en la post-emergencia. Sector declarado: coordinación de respuesta.",
+      "title": "Optimización y priorización de recursos y esfuerzos en la post-emergencia",
+      "description": "Reto del comité sobre Optimización y priorización de recursos y esfuerzos en la post-emergencia. Sector declarado: coordinación de respuesta.",
       "opciones": [
         {
           "id": "ruta-exploratoria",

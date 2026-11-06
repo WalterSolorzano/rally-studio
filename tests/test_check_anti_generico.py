@@ -9,6 +9,8 @@ Casos tomados de GOAL_INSTALACION.md del paquete proponer-retos-pulido:
 """
 
 import json
+import re
+from pathlib import Path
 
 from scripts.check_anti_generico import (
     chequear_opcion,
@@ -16,6 +18,33 @@ from scripts.check_anti_generico import (
     main,
     normalizar_reto,
 )
+
+# JSON vivos del pipeline de dossier que deben estar en UTF-8 limpio.
+RAIZ = Path(__file__).resolve().parents[1]
+ARCHIVOS_PIPELINE = [
+    "dossier_latam_2026/_skill_run/research/challenges.json",
+    "dossier_latam_2026/_skill_run/dossier_content.json",
+    "dossier_latam_2026/_skill_run/fichas_merged.json",
+    "dossier_latam_2026/_skill_run/fichas2.json",
+    "dossier_latam_2026/_skill_run/fichas.json",
+]
+# UTF-8 doble-codificado: bytes UTF-8 decodificados como latin-1 (Ã© → é).
+MOJIBAKE_RX = re.compile("[\u00c3\u00c2][\x80-\xff]")
+
+def test_pipeline_json_sin_mojibake():
+    """Los JSON vivos del pipeline no contienen UTF-8 doble-codificado."""
+    sucios = []
+    for rel in ARCHIVOS_PIPELINE:
+        ruta = RAIZ / rel
+        assert ruta.exists(), f"falta {rel}"
+        texto = ruta.read_text(encoding="utf-8")
+        m = MOJIBAKE_RX.search(texto)
+        if m:
+            i = m.start()
+            ctx = texto[max(0, i - 25):i + 25]
+            sucios.append("%s: %r ...%r..." % (rel, m.group(0), ctx))
+    assert not sucios, "mojibake en pipeline:\n" + "\n".join(sucios)
+
 
 ENUNCIADO_PASS = (
     "Los mercados generan residuos organicos que van al botadero."

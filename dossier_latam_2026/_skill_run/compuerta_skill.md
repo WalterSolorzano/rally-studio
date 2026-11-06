@@ -6,7 +6,7 @@
 
 ## DESAFIO_01 · Opción ruta-1
 
-> **Enunciado del comité:** Segunda vida de los motores elÃ©ctricos domÃ©sticos Reto del comité sobre Segunda vida de los motores elÃ©ctricos domÃ©sticos. Sector declarado: electrodomÃ©sticos en desuso.
+> **Enunciado del comité:** Segunda vida de los motores eléctricos domésticos Reto del comité sobre Segunda vida de los motores eléctricos domésticos. Sector declarado: electrodomésticos en desuso.
 
 
 ❌ **RECHAZADA** — motivos:
@@ -40,7 +40,7 @@
 
 ## DESAFIO_03 · Opción ruta-exploratoria
 
-> **Enunciado del comité:** ProtecciÃ³n y fomento de polinizadores Reto del comité sobre ProtecciÃ³n y fomento de polinizadores. Sector declarado: entornos agrÃ­cola/urbano.
+> **Enunciado del comité:** Protección y fomento de polinizadores Reto del comité sobre Protección y fomento de polinizadores. Sector declarado: entornos agrícola/urbano.
 
 
 ❌ **RECHAZADA** — motivos:
@@ -54,7 +54,7 @@
 
 ## DESAFIO_04 · Opción ruta-1
 
-> **Enunciado del comité:** Manejo ecolÃ³gico de residuos de poda y biomasa vegetal urbana Reto del comité sobre Manejo ecolÃ³gico de residuos de poda y biomasa vegetal urbana. Sector declarado: biomasa urbana.
+> **Enunciado del comité:** Manejo ecológico de residuos de poda y biomasa vegetal urbana Reto del comité sobre Manejo ecológico de residuos de poda y biomasa vegetal urbana. Sector declarado: biomasa urbana.
 
 
 ❌ **RECHAZADA** — motivos:
@@ -70,7 +70,7 @@
 
 ## DESAFIO_04 · Opción ruta-2
 
-> **Enunciado del comité:** Manejo ecolÃ³gico de residuos de poda y biomasa vegetal urbana Reto del comité sobre Manejo ecolÃ³gico de residuos de poda y biomasa vegetal urbana. Sector declarado: biomasa urbana.
+> **Enunciado del comité:** Manejo ecológico de residuos de poda y biomasa vegetal urbana Reto del comité sobre Manejo ecológico de residuos de poda y biomasa vegetal urbana. Sector declarado: biomasa urbana.
 
 
 ❌ **RECHAZADA** — motivos:
@@ -86,7 +86,7 @@
 
 ## DESAFIO_05 · Opción ruta-exploratoria
 
-> **Enunciado del comité:** Monitoreo inteligente e infraestructura verde en reservorios pluviales Reto del comité sobre Monitoreo inteligente e infraestructura verde en reservorios pluviales. Sector declarado: riesgo hÃ­drico.
+> **Enunciado del comité:** Monitoreo inteligente e infraestructura verde en reservorios pluviales Reto del comité sobre Monitoreo inteligente e infraestructura verde en reservorios pluviales. Sector declarado: riesgo hídrico.
 
 
 ❌ **RECHAZADA** — motivos:
@@ -100,7 +100,7 @@
 
 ## DESAFIO_06 · Opción ruta-exploratoria
 
-> **Enunciado del comité:** RemociÃ³n y extracciÃ³n de barro en viviendas anegadas Reto del comité sobre RemociÃ³n y extracciÃ³n de barro en viviendas anegadas. Sector declarado: post-emergencia.
+> **Enunciado del comité:** Remoción y extracción de barro en viviendas anegadas Reto del comité sobre Remoción y extracción de barro en viviendas anegadas. Sector declarado: post-emergencia.
 
 
 ❌ **RECHAZADA** — motivos:
@@ -114,7 +114,7 @@
 
 ## DESAFIO_07 · Opción ruta-exploratoria
 
-> **Enunciado del comité:** ReutilizaciÃ³n de aceite domÃ©stico Reto del comité sobre ReutilizaciÃ³n de aceite domÃ©stico. Sector declarado: aceite de cocina.
+> **Enunciado del comité:** Reutilización de aceite doméstico Reto del comité sobre Reutilización de aceite doméstico. Sector declarado: aceite de cocina.
 
 
 ❌ **RECHAZADA** — motivos:
@@ -160,7 +160,7 @@
 
 ## DESAFIO_09 · Opción ruta-exploratoria
 
-> **Enunciado del comité:** OptimizaciÃ³n y priorizaciÃ³n de recursos y esfuerzos en la post-emergencia Reto del comité sobre OptimizaciÃ³n y priorizaciÃ³n de recursos y esfuerzos en la post-emergencia. Sector declarado: coordinaciÃ³n de respuesta.
+> **Enunciado del comité:** Optimización y priorización de recursos y esfuerzos en la post-emergencia Reto del comité sobre Optimización y priorización de recursos y esfuerzos en la post-emergencia. Sector declarado: coordinación de respuesta.
 
 
 ❌ **RECHAZADA** — motivos:

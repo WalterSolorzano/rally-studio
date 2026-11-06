@@ -7,7 +7,7 @@
    "id": "01",
    "titulo": "Segunda vida de los motores eléctricos domésticos",
    "categoria": "innovacion",
-   "descripcion": "Reto del comité sobre Segunda vida de los motores elÃ©ctricos domÃ©sticos. Sector declarado: electrodomÃ©sticos en desuso.",
+   "descripcion": "Reto del comité sobre Segunda vida de los motores eléctricos domésticos. Sector declarado: electrodomésticos en desuso.",
    "ods": [
     [
      "ODS 12",
@@ -254,7 +254,7 @@
    "id": "03",
    "titulo": "Protección y fomento de polinizadores",
    "categoria": "innovacion",
-   "descripcion": "Reto del comité sobre ProtecciÃ³n y fomento de polinizadores. Sector declarado: entornos agrÃ­cola/urbano.",
+   "descripcion": "Reto del comité sobre Protección y fomento de polinizadores. Sector declarado: entornos agrícola/urbano.",
    "ods": [
     [
      "ODS 15",
@@ -349,7 +349,7 @@
     "b": "Supuesto: la floración escalonada cubre meses sin flor natural; prueba barata: sembrar un tramo de 10 metros y contar visitas un mes."
    },
    "cadena": {
-    "problema": "Reto del comité sobre ProtecciÃ³n y fomento de polinizadores. Sector declarado: entornos agrÃ­cola/urbano.",
+    "problema": "Reto del comité sobre Protección y fomento de polinizadores. Sector declarado: entornos agrícola/urbano.",
     "causa_raiz": "Por validar con el beneficiario.",
     "insight": "Sin precedente en el corpus de ganadores.",
     "solucion": "Hipótesis a validar.",
@@ -373,7 +373,7 @@
    "id": "04",
    "titulo": "Manejo ecológico de residuos de poda y biomasa vegetal urbana",
    "categoria": "innovacion",
-   "descripcion": "Reto del comité sobre Manejo ecolÃ³gico de residuos de poda y biomasa vegetal urbana. Sector declarado: biomasa urbana.",
+   "descripcion": "Reto del comité sobre Manejo ecológico de residuos de poda y biomasa vegetal urbana. Sector declarado: biomasa urbana.",
    "ods": [
     [
      "ODS 12",
@@ -501,7 +501,7 @@
    "id": "05",
    "titulo": "Monitoreo inteligente e infraestructura verde en reservorios pluviales",
    "categoria": "innovacion",
-   "descripcion": "Reto del comité sobre Monitoreo inteligente e infraestructura verde en reservorios pluviales. Sector declarado: riesgo hÃ­drico.",
+   "descripcion": "Reto del comité sobre Monitoreo inteligente e infraestructura verde en reservorios pluviales. Sector declarado: riesgo hídrico.",
    "ods": [
     [
      "ODS 6",
@@ -596,7 +596,7 @@
     "b": "Supuesto: el techo rinde agua suficiente para notar la diferencia; prueba barata: colocar un bidón en el desagüe y medir los litros de una tormenta."
    },
    "cadena": {
-    "problema": "Reto del comité sobre Monitoreo inteligente e infraestructura verde en reservorios pluviales. Sector declarado: riesgo hÃ­drico.",
+    "problema": "Reto del comité sobre Monitoreo inteligente e infraestructura verde en reservorios pluviales. Sector declarado: riesgo hídrico.",
     "causa_raiz": "Por validar con el beneficiario.",
     "insight": "Sin precedente en el corpus de ganadores.",
     "solucion": "Hipótesis a validar.",
@@ -629,7 +629,7 @@
    "id": "06",
    "titulo": "Remoción y extracción de barro en viviendas anegadas",
    "categoria": "innovacion",
-   "descripcion": "Reto del comité sobre RemociÃ³n y extracciÃ³n de barro en viviendas anegadas. Sector declarado: post-emergencia.",
+   "descripcion": "Reto del comité sobre Remoción y extracción de barro en viviendas anegadas. Sector declarado: post-emergencia.",
    "ods": [
     [
      "ODS 11",
@@ -724,7 +724,7 @@
     "b": "Supuesto: el dintel aguanta el torno cargado sin soltarse; prueba barata: izar un balde de arena desde un patio antes de llevarlo a la vivienda."
    },
    "cadena": {
-    "problema": "Reto del comité sobre RemociÃ³n y extracciÃ³n de barro en viviendas anegadas. Sector declarado: post-emergencia.",
+    "problema": "Reto del comité sobre Remoción y extracción de barro en viviendas anegadas. Sector declarado: post-emergencia.",
     "causa_raiz": "Por validar con el beneficiario.",
     "insight": "Sin precedente en el corpus de ganadores.",
     "solucion": "Hipótesis a validar.",
@@ -757,7 +757,7 @@
    "id": "07",
    "titulo": "Reutilización de aceite doméstico",
    "categoria": "innovacion",
-   "descripcion": "Reto del comité sobre ReutilizaciÃ³n de aceite domÃ©stico. Sector declarado: aceite de cocina.",
+   "descripcion": "Reto del comité sobre Reutilización de aceite doméstico. Sector declarado: aceite de cocina.",
    "ods": [
     [
      "ODS 12",
@@ -852,7 +852,7 @@
     "b": "Supuesto: la empresa recolectora compra el aceite gastado de estas cocinas; prueba barata: pesar un bidón completo y llamar a dos empresas antes de prometer el ingreso."
    },
    "cadena": {
-    "problema": "Reto del comité sobre ReutilizaciÃ³n de aceite domÃ©stico. Sector declarado: aceite de cocina.",
+    "problema": "Reto del comité sobre Reutilización de aceite doméstico. Sector declarado: aceite de cocina.",
     "causa_raiz": "Por validar con el beneficiario.",
     "insight": "Sin precedente en el corpus de ganadores.",
     "solucion": "Hipótesis a validar.",
@@ -1013,7 +1013,7 @@
    "id": "09",
    "titulo": "Optimización y priorización de recursos y esfuerzos en la post-emergencia",
    "categoria": "innovacion",
-   "descripcion": "Reto del comité sobre OptimizaciÃ³n y priorizaciÃ³n de recursos y esfuerzos en la post-emergencia. Sector declarado: coordinaciÃ³n de respuesta.",
+   "descripcion": "Reto del comité sobre Optimización y priorización de recursos y esfuerzos en la post-emergencia. Sector declarado: coordinación de respuesta.",
    "ods": [
     [
      "ODS 13",
@@ -1108,7 +1108,7 @@
     "b": "Supuesto: las cuadrillas siguen la ruta más corta sin atajos no marcados; prueba barata: cronometrar dos cuadrillas en la siguiente simulación."
    },
    "cadena": {
-    "problema": "Reto del comité sobre OptimizaciÃ³n y priorizaciÃ³n de recursos y esfuerzos en la post-emergencia. Sector declarado: coordinaciÃ³n de respuesta.",
+    "problema": "Reto del comité sobre Optimización y priorización de recursos y esfuerzos en la post-emergencia. Sector declarado: coordinación de respuesta.",
     "causa_raiz": "Por validar con el beneficiario.",
     "insight": "Sin precedente en el corpus de ganadores.",
     "solucion": "Hipótesis a validar.",

@@ -1,8 +1,8 @@
 [
     {
         "id":  "DESAFIO_01",
-        "title":  "Segunda vida de los motores elÃ©ctricos domÃ©sticos",
-        "description":  "Reto del comité sobre Segunda vida de los motores elÃ©ctricos domÃ©sticos. Sector declarado: electrodomÃ©sticos en desuso.",
+        "title":  "Segunda vida de los motores eléctricos domésticos",
+        "description":  "Reto del comité sobre Segunda vida de los motores eléctricos domésticos. Sector declarado: electrodomésticos en desuso.",
         "category_fit":  "",
         "ods_ids":  [
 
@@ -27,8 +27,8 @@
     },
     {
         "id":  "DESAFIO_03",
-        "title":  "ProtecciÃ³n y fomento de polinizadores",
-        "description":  "Reto del comité sobre ProtecciÃ³n y fomento de polinizadores. Sector declarado: entornos agrÃ­cola/urbano.",
+        "title":  "Protección y fomento de polinizadores",
+        "description":  "Reto del comité sobre Protección y fomento de polinizadores. Sector declarado: entornos agrícola/urbano.",
         "category_fit":  "",
         "ods_ids":  [
 
@@ -40,8 +40,8 @@
     },
     {
         "id":  "DESAFIO_04",
-        "title":  "Manejo ecolÃ³gico de residuos de poda y biomasa vegetal urbana",
-        "description":  "Reto del comité sobre Manejo ecolÃ³gico de residuos de poda y biomasa vegetal urbana. Sector declarado: biomasa urbana.",
+        "title":  "Manejo ecológico de residuos de poda y biomasa vegetal urbana",
+        "description":  "Reto del comité sobre Manejo ecológico de residuos de poda y biomasa vegetal urbana. Sector declarado: biomasa urbana.",
         "category_fit":  "",
         "ods_ids":  [
 
@@ -54,7 +54,7 @@
     {
         "id":  "DESAFIO_05",
         "title":  "Monitoreo inteligente e infraestructura verde en reservorios pluviales",
-        "description":  "Reto del comité sobre Monitoreo inteligente e infraestructura verde en reservorios pluviales. Sector declarado: riesgo hÃ­drico.",
+        "description":  "Reto del comité sobre Monitoreo inteligente e infraestructura verde en reservorios pluviales. Sector declarado: riesgo hídrico.",
         "category_fit":  "",
         "ods_ids":  [
 
@@ -66,8 +66,8 @@
     },
     {
         "id":  "DESAFIO_06",
-        "title":  "RemociÃ³n y extracciÃ³n de barro en viviendas anegadas",
-        "description":  "Reto del comité sobre RemociÃ³n y extracciÃ³n de barro en viviendas anegadas. Sector declarado: post-emergencia.",
+        "title":  "Remoción y extracción de barro en viviendas anegadas",
+        "description":  "Reto del comité sobre Remoción y extracción de barro en viviendas anegadas. Sector declarado: post-emergencia.",
         "category_fit":  "",
         "ods_ids":  [
 
@@ -79,8 +79,8 @@
     },
     {
         "id":  "DESAFIO_07",
-        "title":  "ReutilizaciÃ³n de aceite domÃ©stico",
-        "description":  "Reto del comité sobre ReutilizaciÃ³n de aceite domÃ©stico. Sector declarado: aceite de cocina.",
+        "title":  "Reutilización de aceite doméstico",
+        "description":  "Reto del comité sobre Reutilización de aceite doméstico. Sector declarado: aceite de cocina.",
         "category_fit":  "",
         "ods_ids":  [
 
@@ -105,8 +105,8 @@
     },
     {
         "id":  "DESAFIO_09",
-        "title":  "OptimizaciÃ³n y priorizaciÃ³n de recursos y esfuerzos en la post-emergencia",
-        "description":  "Reto del comité sobre OptimizaciÃ³n y priorizaciÃ³n de recursos y esfuerzos en la post-emergencia. Sector declarado: coordinaciÃ³n de respuesta.",
+        "title":  "Optimización y priorización de recursos y esfuerzos en la post-emergencia",
+        "description":  "Reto del comité sobre Optimización y priorización de recursos y esfuerzos en la post-emergencia. Sector declarado: coordinación de respuesta.",
         "category_fit":  "",
         "ods_ids":  [
 
