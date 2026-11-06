@@ -244,8 +244,11 @@ distinto. Si la propuesta sigue sirviendo igual, es genérica: rehazla desde el 
 
 ### El «qué es»: escena, no ficha técnica
 
-El «qué es» es un **párrafo narrativo de 150 a 250 palabras** (cuenta las palabras, no lo
-estimes). Conteo obligatorio antes de maquetar.
+El «qué es» es un **párrafo narrativo de 80 a 150 palabras** (cuenta las palabras, no lo
+estimes). Conteo obligatorio antes de maquetar. **Primera frase = qué es en términos
+físicos**: el objeto o sistema nombrado de una, sin contexto previo. Prueba: alguien que
+lee una sola vez entiende la idea y quiere seguirla; si no la entiende de una, no vende y
+se reescribe.
 
 - **Cuenta una escena**: quién la usa, qué hace con ella, qué cambia en su vida.
 - **Dentro del párrafo no van precios, componentes ni métricas.** Esos datos van en sus
@@ -254,8 +257,35 @@ estimes). Conteo obligatorio antes de maquetar.
 - El párrafo cierra con **por qué esto no es lo que ya existe**.
 - El término técnico se traduce en la misma frase (el nombre del instrumento seguido de lo
   que mide y cómo se usa).
+- **Sin name-dropping**: nombre de ganador, premio o caso ajeno prohibido dentro de `que_es`
+  y `claim`. La idea se desarrolla propia, completa e independiente; la similitud con un
+  caso conocido se menciona solo al final, en el campo de analogías/precedentes, con año,
+  equipo y qué hizo ese caso.
 - Debajo del párrafo, en campos aparte: claim, cómo funciona (4 pasos), beneficiario,
   componentes, costo estimado y métricas.
+
+**`como` accionable**: los 4 pasos nombran quién hace qué con qué objeto, en orden
+operable. «Desmontar / acoplar / probar / entregar» sin actor ni destino es genérico y se
+rechaza.
+
+**La señal resuelve, no cuenta**: resumen/señal del reto debe decir cómo la opción
+agiliza, sustituye o resuelve algo que hoy no se hace. «Contar cosas», «mapear lo obvio» o
+«tablero de prioridades» cuando el reto pide otra cosa = no resuelve.
+
+**Insumo real (análisis sistémico)**: antes de idear, validar que el insumo existe de
+verdad y que alguien lo entrega —nadie dona un celular que vale C$2500+, hay que
+venderlo—. No asumir sensores ni capacidades de hardware sin fuente que lo diga. Si el
+insumo es dudoso, la opción se descarta o cambia de insumo.
+
+**Opciones gemelas**: opción 01 y 02 con el mismo objeto o el mismo mecanismo = una sola
+idea disfrazada de dos. Objeto Y mecanismo distintos, ambos mostrables como
+producto/servicio («no parece producto» se rechaza).
+
+**Barra de calidad de la idea** (forma, no contenido): mecanismo **nuevo, barato y
+masivo** que usa algo que todos ya tienen —p. ej. un dispositivo con Bluetooth/WiFi que
+aprovecha que toda persona lleva celular (el celular ajeno solo como identificador
+pasivo, nunca como hardware donado)—. No es plantilla: es la altura mínima de
+imaginación esperada.
 
 **Ejemplo de forma (plantilla, no texto para copiar):**
 
@@ -424,8 +454,8 @@ bisturí», de arriba. La ley solo se dispara con rechazo explícito del PDF com
    (número grande + título, ODS, insignias, dos opciones, métricas, señal, precedentes,
    pitch, comentarios). Cero CSS propio.
 2. 3 páginas por reto, sin huérfanas; revisar el `y` máximo de cada página.
-3. **Narrativa**: cada «qué es» tiene entre 150 y 250 palabras, cuenta una escena y no
-   contiene precios ni componentes dentro del párrafo.
+3. **Narrativa**: cada «qué es» tiene entre 80 y 150 palabras, abre con el qué es físico,
+   se entiende de una lectura y no contiene precios ni componentes dentro del párrafo.
 4. **Jerga**: cero apariciones de nómina, jugador, canal, nodo, sesgo, ticket, mecanismo,
    «est. canon», `saturacion`, `probabilidad`, `win rate`, `score` ni «No documentado».
 5. **No taller / no servicio**: ningún nombre de opción es taller, servicio, mesa de desarme
@@ -481,6 +511,10 @@ bisturí», de arriba. La ley solo se dispara con rechazo explícito del PDF com
     conserva escena, objeto, costo, ODS, insignia o precedente heredado.
 29. **Compuerta completa**: las tablas por reto están llenas y ninguna opción con celda
     «rechaza» llegó al PDF.
+30. **UTF-8 limpio**: ningún JSON de entrada contiene mojibake (`Ã©`, `Ã­`, «ProtecciÃ³n»);
+    si aparece, se repara en origen antes de generar.
+31. **Insumo real**: el insumo de cada opción existe y alguien lo entrega (análisis
+    sistémico); sin hardware asumido sin fuente ni donaciones de objetos de valor.
 
 ## Calibrar la compuerta
 
