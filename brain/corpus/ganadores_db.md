@@ -129,7 +129,7 @@
 
 ### budget
 
-- **key rule [EQUIPO]**: Rango de referencia $4,000–$6,000 USD de puesta en marcha (no es ley de rúbrica; no hay monto oficial). URLs reales de mayoristas (Alibaba/AliExpress/LCSC). Línea obligatoria de flete/aranceles (15-20%).
+- **key rule [EQUIPO]**: Rango de referencia $4,000–$6,000 USD de puesta en marcha (no es ley de rúbrica; no hay monto oficial). URLs reales de mayoristas (Alibaba/AliExpress/LCSC).
 
 #### winning cases
 
