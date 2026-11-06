@@ -138,6 +138,8 @@ FORBIDDEN_PATTERNS: list[tuple[str, str, str]] = [
         "1.4c_hardware_donado",
         r"\b(telefonos? donados?|celulares? donados?|smartphones? donados?|"
         r"celulares? usados?|telefonos? usados?|"
+        r"celulares? en desuso|telefonos? en desuso|celulares? desechad[oa]s?|"
+        r"telefonos? desechad[oa]s?|celular en desuso|telefono en desuso|"
         r"donacion de (equipo|dispositivo|telefono|celular|computadora|laptop|tablet)|"
         r"reusar (telefono|celular|smartphone|laptop|tablet))\b",
         "Hardware donado/usado como núcleo (dependencia logística disfrazada de solución)",
@@ -200,6 +202,14 @@ GENERIC_SMELL_PATTERNS: list[tuple[str, str, str]] = [
         "Verbo de intención seguido de categoría abstracta (sin objeto físico directo)",
     ),
 ]
+
+# UTF-8 doble-codificado (Ã© → é): prohibido en cualquier campo del dossier.
+MOJIBAKE_RX = re.compile("[\u00c3\u00c2][\x80-\xff]")
+
+# Nombre de ganador/marca ajena: solo permitido en el campo de precedente/analogía.
+NAME_DROPPING_RX = re.compile(r"tetra\s*pak", re.IGNORECASE)
+
+QUE_ES_MAX_PALABRAS = 150
 
 
 # ---------------------------------------------------------------------------
@@ -459,10 +469,62 @@ def chequear_opcion(reto_id: str, enunciado: str, opcion: dict) -> Rechazo:
                 f"«Comunidad», «junta», «pago simbólico» no cuentan."
             )
 
+    # 7. Mojibake: UTF-8 doble-codificado en cualquier campo
+    if MOJIBAKE_RX.search(texto):
+        m = MOJIBAKE_RX.search(texto)
+        rechazo.motivos.append(
+            f"[MOJIBAKE] UTF-8 doble-codificado en el texto: {m.group(0)!r}. "
+            f"Reparar el JSON en origen antes de entregar."
+        )
+
+    # 8. que_es excede el límite de palabras (80-150; el mínimo se valida en gen_dossier)
+    que_es = opcion.get("que_es", "") or ""
+    n_que_es = len(que_es.split())
+    if n_que_es > QUE_ES_MAX_PALABRAS:
+        rechazo.motivos.append(
+            f"[QUE_ES_LARGO] que_es tiene {n_que_es} palabras (máx {QUE_ES_MAX_PALABRAS}). "
+            f"Acortar a 80-150: primera frase = qué es físico, leer una vez y entender de una."
+        )
+
+    # 9. Name-dropping fuera del campo de precedente/analogía
+    texto_sin_precedente = " \n ".join(
+        p for p in (
+            opcion.get("titulo", ""),
+            que_es,
+            " ".join(opcion.get("como_funciona", []) or []),
+            opcion.get("pitch", ""),
+        ) if p
+    )
+    nd = NAME_DROPPING_RX.search(_normalizar(texto_sin_precedente))
+    if nd:
+        rechazo.motivos.append(
+            f"[NAME_DROPPING] «{nd.group(0)}» aparece dentro de la idea. "
+            f"El caso ajeno solo va en el campo de precedente/analogía, con año y equipo."
+        )
+
     # Estado final
     if rechazo.motivos:
         rechazo.estado = "RECHAZADA"
     return rechazo
+
+
+def chequear_gemelas(opciones: list[dict]) -> list[str]:
+    """Dos opciones del mismo reto con el mismo objeto (que_es casi idéntico) = una idea."""
+    if len(opciones) < 2:
+        return []
+    a = {t for t in re.findall(r"\b[a-z]{5,}\b", _normalizar(opciones[0].get("que_es", "") or ""))}
+    b = {t for t in re.findall(r"\b[a-z]{5,}\b", _normalizar(opciones[1].get("que_es", "") or ""))}
+    if not a or not b:
+        return []
+    jaccard = len(a & b) / len(a | b)
+    if jaccard >= 0.5:
+        ids = f"{opciones[0].get('id', '?')} y {opciones[1].get('id', '?')}"
+        return [
+            f"[OPCIONES_GEMELAS] que_es de las opciones {ids} comparten "
+            f"{jaccard:.0%} del vocabulario: misma idea disfrazada de dos. "
+            f"Objeto Y mecanismo distintos."
+        ]
+    return []
 
 
 # ---------------------------------------------------------------------------
@@ -594,8 +656,12 @@ def main(argv: list[str] | None = None) -> int:
         # Si el reto trae una sola opción suelta (no en lista)
         if not opciones and "opcion_id" in reto:
             opciones = [normalizar_opcion(reto)]
+        gemelas = chequear_gemelas(opciones)
         for opcion in opciones:
             r = chequear_opcion(rid, enunciado, opcion)
+            r.motivos.extend(gemelas)
+            if gemelas:
+                r.estado = "RECHAZADA"
             rechazos.append(r)
 
     # Reporte markdown

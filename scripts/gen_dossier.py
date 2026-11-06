@@ -753,6 +753,18 @@ def cargar(ruta: Path) -> None:
     datos = json.loads(ruta.read_text(encoding="utf-8"))
     META = datos.get("meta", {})
     RETOS = datos["retos"]
+    # que_es: 80-150 palabras (regla de venta — leer una vez y entender de una)
+    for reto in RETOS:
+        for clave in ("propuesta", "alterna"):
+            sol = reto.get(clave)
+            if not isinstance(sol, dict) or "que_es" not in sol:
+                continue
+            n = len((sol.get("que_es") or "").split())
+            if n < 80 or n > 150:
+                raise ValueError(
+                    f"reto {reto.get('id', '?')} {clave}: que_es tiene {n} palabras "
+                    f"(rango 80-150). Acortar o alargar antes de maquetar."
+                )
 
 
 def main(argv: list[str] | None = None) -> int:

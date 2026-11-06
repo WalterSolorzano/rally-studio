@@ -13,7 +13,17 @@ def reto() -> dict:
     solucion = {
         "nombre": "Solucion de prueba",
         "claim": "Una frase que dice que hace.",
-        "que_es": "Que es: un objeto concreto que se instala y se usa todos los dias.",
+        "que_es": (
+            "Que es: un equipo de riego con motor electrico rescatado que la asociacion "
+            "de productores instala en su parcela. El motor de la lavadora vieja gira la "
+            "bomba de impulsion y lleva agua desde el canal hasta los surcos sin pagar "
+            "bombero ni renta diaria. La presidenta de la asociacion enciende el "
+            "interruptor cada manana y el caudal sale por la manguera durante las horas "
+            "de calor. En lugar de alquilar una bomba por hora, la asociacion riega con "
+            "un activo propio que reparan ellos mismos con piezas del mercado. Por eso no "
+            "es el servicio de riego que hoy se renta: el equipo es suyo, funciona sin "
+            "operador externo y el costo por quintal baja."
+        ),
         "como": ["Paso uno.", "Paso dos.", "Paso tres.", "Paso cuatro."],
         "beneficiario": "Cuarenta familias del barrio.",
         "componentes": ["Componente uno", "Componente dos"],
@@ -88,6 +98,25 @@ def test_generador_no_trae_contenido(datos: Path):
 
     for palabra in ("MotorListo", "Molino Vecinal", "Abono de Mercado", "Retencion"):
         assert palabra not in fuente
+
+
+def test_que_es_rango_palabras_rechaza_corto(tmp_path: Path):
+    """que_es fuera de 80-150 palabras hace fallar la carga."""
+    data = {"meta": {"titulo": "X"}, "retos": [reto()]}
+    data["retos"][0]["propuesta"]["que_es"] = "Que es corto."
+    ruta = tmp_path / "corto.json"
+    ruta.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+    with pytest.raises(ValueError, match="80"):
+        gen_dossier.cargar(ruta)
+
+
+def test_que_es_rango_palabras_rechaza_largo(tmp_path: Path):
+    data = {"meta": {"titulo": "X"}, "retos": [reto()]}
+    data["retos"][0]["alterna"]["que_es"] = " ".join(["palabra"] * 160)
+    ruta = tmp_path / "largo.json"
+    ruta.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+    with pytest.raises(ValueError, match="150"):
+        gen_dossier.cargar(ruta)
 
 
 @pytest.mark.skipif(shutil.which("chrome") is None and not gen_dossier.CHROME.exists(),

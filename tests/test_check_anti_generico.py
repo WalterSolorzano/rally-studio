@@ -13,6 +13,7 @@ import re
 from pathlib import Path
 
 from scripts.check_anti_generico import (
+    chequear_gemelas,
     chequear_opcion,
     cargar_solutions,
     main,
@@ -199,3 +200,73 @@ def test_cargar_solutions_acepta_formato_motor(tmp_path):
     assert rid == "DESAFIO_01"
     assert enunciado == "T D"
     assert opciones[0]["id"] == "ruta-1"
+
+
+# --- Reglas nuevas (corrección dossier 2026-01-05) ---
+
+def _opcion_base(**kw):
+    o = {
+        "id": "01",
+        "titulo": "Equipo de riego para la asociacion",
+        "que_es": "Bomba de riego con motor electrico que la asociacion opera en la parcela todos los dias de riego.",
+        "como_funciona": ["Paso uno.", "Paso dos.", "Paso tres.", "Paso cuatro."],
+        "pagador": "Asociacion · partida de riego · Presidente · bomba",
+        "metrica": "10 quintales/semana · fuente: por validar",
+        "precedente": "—",
+        "pitch": "Bomba que riega con motor rescatado.",
+    }
+    o.update(kw)
+    return o
+
+
+def test_que_es_largo_rechazado():
+    largo = " ".join(["palabra"] * 160)
+    r = chequear_opcion("T_LARGO", "motores domesticos en desuso", _opcion_base(que_es=largo))
+    assert r.estado == "RECHAZADA", r.motivos
+    assert any("QUE_ES_LARGO" in m for m in r.motivos), r.motivos
+
+
+def test_mojibake_rechazado():
+    r = chequear_opcion(
+        "T_MOJI",
+        "proteccion de polinizadores",
+        _opcion_base(que_es="Refugio de polinizadores: ProtecciÃ³n de abejas en el municipio."),
+    )
+    assert r.estado == "RECHAZADA", r.motivos
+    assert any("MOJIBAKE" in m for m in r.motivos), r.motivos
+
+
+def test_celular_desuso_rechazado():
+    r = chequear_opcion(
+        "T_CEL",
+        "sensores para agricultura",
+        _opcion_base(que_es="Estacion que usa celulares en desuso como sensor de humedad del suelo."),
+    )
+    assert r.estado == "RECHAZADA", r.motivos
+    assert any("1.4c" in m for m in r.motivos), r.motivos
+
+
+def test_tetrapak_fuera_de_precedente_rechazado():
+    r = chequear_opcion(
+        "T_TP",
+        "empaque de alimentos",
+        _opcion_base(que_es="Empaque que sigue el metodo Tetra Pak 2025 para conservar alimentos en la comunidad."),
+    )
+    assert r.estado == "RECHAZADA", r.motivos
+    assert any("NAME_DROPPING" in m for m in r.motivos), r.motivos
+
+
+def test_tetrapak_en_precedente_no_name_dropping():
+    r = chequear_opcion(
+        "T_TP2",
+        "empaque de alimentos",
+        _opcion_base(precedente="Tetra Pak · 2025 · equipo X · empaque de alimentos"),
+    )
+    assert not any("NAME_DROPPING" in m for m in r.motivos), r.motivos
+
+
+def test_opciones_gemelas_rechazadas():
+    a = _opcion_base(id="01", que_es="Tablero de prioridades que ordena las tareas del rescate en la comunidad.")
+    b = _opcion_base(id="02", que_es="Tablero de prioridades que ordena las tareas del rescate en la comunidad.")
+    motivos = chequear_gemelas([a, b])
+    assert motivos, "opciones gemelas deben rechazarse"
