@@ -100,6 +100,18 @@ def test_generador_no_trae_contenido(datos: Path):
         assert palabra not in fuente
 
 
+def test_insignias_con_color_por_tipo(datos: Path, tmp_path: Path):
+    """Las insignias llevan clase según tipo: premio, fondo, marco."""
+    destino = tmp_path / "dossier.pdf"
+    gen_dossier.main(["--json", str(datos), "--pdf", str(destino), "--html-only"])
+    html = destino.with_suffix(".html").read_text(encoding="utf-8")
+    assert "insignia--premio" in html
+    assert "insignia--fondo" in html
+    css = Path("docs/assets/dossier.css").read_text(encoding="utf-8")
+    for clase in ("insignia--premio", "insignia--fondo", "insignia--marco"):
+        assert clase in css, f"CSS sin {clase}"
+
+
 def test_que_es_rango_palabras_rechaza_corto(tmp_path: Path):
     """que_es fuera de 80-150 palabras hace fallar la carga."""
     data = {"meta": {"titulo": "X"}, "retos": [reto()]}

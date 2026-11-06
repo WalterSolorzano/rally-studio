@@ -95,6 +95,19 @@ def html_metricas(titulo: str, lista: list[str]) -> str:
     return f'<div class="mgroup"><div class="sub">{e(titulo)}</div><ol class="pasos">{items}</ol></div>'
 
 
+def clase_insignia(nombre: str, tag: str) -> str:
+    """Color por tipo de insignia: premio, fondo/convocatoria o marco/estándar."""
+    s = f"{nombre} {tag}".lower()
+    if any(k in s for k in ("premio", "ganador", "podio", "1er lugar", "primer lugar")):
+        return "insignia--premio"
+    if any(k in s for k in ("fondo", "grant", "convocatoria", "subsidio", "beca")):
+        return "insignia--fondo"
+    if any(k in s for k in ("marco", "unesco", "pacto", "sendai", "red de",
+                            "naciones unidas", "onu", "pnud", "pnuma")):
+        return "insignia--marco"
+    return ""
+
+
 def html_retos() -> str:
     partes: list[str] = []
     for i, r in enumerate(RETOS, 1):
@@ -110,7 +123,8 @@ def html_retos() -> str:
             for k, t in r["detalles"]
         )
         insignias = "".join(
-            f'<span class="insignia"><span class="n">{e(n)}</span><span class="t">{e(t)}</span></span>'
+            f'<span class="insignia {clase_insignia(n, t)}">'
+            f'<span class="n">{e(n)}</span><span class="t">{e(t)}</span></span>'
             for n, t in r["insignias"]
         )
         analogias = "".join(

@@ -38,9 +38,15 @@ h3 { font-family: 'Mono'; font-size: 7.3pt; font-weight: 600; letter-spacing: .1
 /* Insignias y programas aplicables */
 .insignias { margin-top: 2.0mm; display: flex; flex-wrap: wrap; align-items: center; gap: 1.8mm 2.4mm; break-inside: avoid; }
 .insignias .lbl { font-family: 'Mono'; font-size: 6.6pt; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #0D1B35; }
-.insignia { display: inline-flex; align-items: baseline; gap: 1.6mm; border: 1px solid #C8D8EE; border-radius: 1mm; padding: .9mm 2.2mm; }
+.insignia { display: inline-flex; align-items: baseline; gap: 1.6mm; border: 1px solid #C8D8EE; border-radius: 1mm; padding: .9mm 2.2mm; background: #F7FAFD; border-left-width: 2.6mm; border-left-style: solid; border-left-color: #C8D8EE; }
 .insignia .n { font-family: 'Mono'; font-size: 6.8pt; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #0D1B35; }
 .insignia .t { font-size: 7.1pt; color: #5C7193; }
+.insignia--premio { background: #FEF6E7; border-color: #F0C36D; border-left-color: #B45309; }
+.insignia--premio .n { color: #92400E; }
+.insignia--fondo { background: #E9F7EE; border-color: #9ED8B4; border-left-color: #15803D; }
+.insignia--fondo .n { color: #14532D; }
+.insignia--marco { background: #E7F1FF; border-color: #A9C6F5; border-left-color: #0866F5; }
+.insignia--marco .n { color: #0D1B35; }
 
 /* Propuesta */
 .prop { margin-top: 4mm; }
