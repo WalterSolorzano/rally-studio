@@ -1,0 +1,112 @@
+{
+ "video_id": "sVKyFRYJQ2U",
+ "url": "https://youtu.be/sVKyFRYJQ2U",
+ "year": 2021,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "TLÁLOC (DIOS DEL RAYO Y DE LA LLUVIA DE LOS TOLTECAS)",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "TLÁLOC (DIOS DEL RAYO Y DE LA LLUVIA DE LOS TOLTECAS)",
+   "challenge": "03 - AGUA PARA SOÑAR"
+  }
+ ],
+ "fetched_at": "2026-11-06T18:48:50+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Sabías que en América Latina existe 37 millones de personas que carecen del acceso a agua potable? Y esto no lo es todo, también existen 83 millones de personas que no cuentan con un sistema de saneamiento mejorado que ha provocado la muerte de 7.600 niños menores de 5 años asociadas al consumo del agua contaminada. La Lock Pluff tiene como objetivo establecer un sistema de cosecha potabilización, almacenamiento de agua para el consumo domiciliar y humano. El sistema cuenta con tres filtros, red de retención, filtro de arsía, plata coloridal, carbon activado y el filtro de celulota. Cuenta con una cámara UV para la eliminación de cualquier microorganismo. ¿Y dónde se almacena? Se almacena un barril con una capacidad de 42 galones. Parte de nuestra innovación es la implementación de un sistema de sensores que es monitoreada por nuestra aplicación móvil, la Lock Pluff App. Para la medición de volumen disponible con alertas colorimétricas y un sistema de voz para notificar al usuario. ¿Y cómo funciona este sistema de saneamiento? Bueno, funciona de la siguiente manera. Existen dos contenedores. El primero con una altura de metro y medio a nivel del piso para el consumo humano. El segundo contenedor está a 0.40 metros del piso destinado para funciones domésticas. Ambas suministran por gravedad y no presentan ningún gasto energético para la familia. La Lock Pluff es tu opción innovadora. Agua para sueñar, agua para ti.",
+ "segments": [
+  {
+   "start": 0.14,
+   "end": 7.62,
+   "text": "¿Sabías que en América Latina existe 37 millones de personas que carecen del acceso a agua potable?"
+  },
+  {
+   "start": 7.62,
+   "end": 16.38,
+   "text": "Y esto no lo es todo, también existen 83 millones de personas que no cuentan con un sistema de saneamiento mejorado"
+  },
+  {
+   "start": 16.38,
+   "end": 25.02,
+   "text": "que ha provocado la muerte de 7.600 niños menores de 5 años asociadas al consumo del agua contaminada."
+  },
+  {
+   "start": 25.02,
+   "end": 35.74,
+   "text": "La Lock Pluff tiene como objetivo establecer un sistema de cosecha potabilización, almacenamiento de agua para el consumo domiciliar y humano."
+  },
+  {
+   "start": 35.74,
+   "end": 45.58,
+   "text": "El sistema cuenta con tres filtros, red de retención, filtro de arsía, plata coloridal, carbon activado y el filtro de celulota."
+  },
+  {
+   "start": 45.58,
+   "end": 51.38,
+   "text": "Cuenta con una cámara UV para la eliminación de cualquier microorganismo."
+  },
+  {
+   "start": 51.38,
+   "end": 52.82,
+   "text": "¿Y dónde se almacena?"
+  },
+  {
+   "start": 52.82,
+   "end": 57.46,
+   "text": "Se almacena un barril con una capacidad de 42 galones."
+  },
+  {
+   "start": 57.46,
+   "end": 68.02,
+   "text": "Parte de nuestra innovación es la implementación de un sistema de sensores que es monitoreada por nuestra aplicación móvil, la Lock Pluff App."
+  },
+  {
+   "start": 68.02,
+   "end": 75.26,
+   "text": "Para la medición de volumen disponible con alertas colorimétricas y un sistema de voz para notificar al usuario."
+  },
+  {
+   "start": 75.26,
+   "end": 77.86,
+   "text": "¿Y cómo funciona este sistema de saneamiento?"
+  },
+  {
+   "start": 77.94,
+   "end": 82.82,
+   "text": "Bueno, funciona de la siguiente manera. Existen dos contenedores."
+  },
+  {
+   "start": 82.82,
+   "end": 88.82,
+   "text": "El primero con una altura de metro y medio a nivel del piso para el consumo humano."
+  },
+  {
+   "start": 88.82,
+   "end": 96.34,
+   "text": "El segundo contenedor está a 0.40 metros del piso destinado para funciones domésticas."
+  },
+  {
+   "start": 96.34,
+   "end": 102.26,
+   "text": "Ambas suministran por gravedad y no presentan ningún gasto energético para la familia."
+  },
+  {
+   "start": 102.26,
+   "end": 105.26,
+   "text": "La Lock Pluff es tu opción innovadora."
+  },
+  {
+   "start": 105.26,
+   "end": 107.34,
+   "text": "Agua para sueñar, agua para ti."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 114.6
+}

@@ -1,0 +1,92 @@
+{
+ "video_id": "bJutRsziD7Q",
+ "url": "https://www.youtube.com/watch?v=bJutRsziD7Q&f",
+ "year": 2017,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "UML-ST INSTINTO JMS",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2017,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "UML-ST INSTINTO JMS",
+   "challenge": "04 - GENERACIÓN DE ENERGÍA ALTERNA A PARTIR DE ACTIVIDADES COTIDIANAS"
+  }
+ ],
+ "fetched_at": "2026-11-06T18:58:17+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "El desafío, generación de energía alterna a partir de actividades cotidianas. Uso cotidiano. En nuestros hogares se realizan actividades a diario como lavar trastos, abrir puertas, lavar ropa, bañarse, entre otros. Debido a esto, el costo de nuestros recursos como energía, agua y otros aumentan día a día. Para esto, proponemos el uso de dinamos en la generación de energías alternas a través de actividades cotidianas. Los dinamos. Es un generador eléctrico destinado a la transformación de flujo magnético trabajando a través de la rotación de ellos. Su uso en nuestra propuesta se hace de la siguiente manera. Colocando dinamos en todas las redes de desabue tratando de aprovechar todo el flujo de agua para luego dirigirla a un almacenamiento en celdas y posteriormente su utilización. Otros usos que podemos implementar para la generación de energía es aprovechando el movimiento de objetos como las puertas, lavadoras, ventanas, etc. En nuestro prototipo nos enfocamos en la reutilización de materiales desechados, tales como tubos PVC, bobinas de equipos electrónicos, obsoletos, plásticos, entre otros, para favorecer a su bajo costo de fabricación y evitar el desperdicio de elementos no degradables, beneficiando al cuido de nuestro medio ambiente. Todo esto beneficia, en primer lugar, a la disminución en gastos de servicio de energía y, en segundo lugar, a la mejor utilización de agua como fuente generadora de energía y sacar provecho de nuestras actividades diarias.",
+ "segments": [
+  {
+   "start": 14.48,
+   "end": 33.2,
+   "text": "El desafío, generación de energía alterna a partir de actividades cotidianas."
+  },
+  {
+   "start": 33.2,
+   "end": 35.2,
+   "text": "Uso cotidiano."
+  },
+  {
+   "start": 35.2,
+   "end": 48.85,
+   "text": "En nuestros hogares se realizan actividades a diario como lavar trastos, abrir puertas, lavar ropa, bañarse, entre otros."
+  },
+  {
+   "start": 48.85,
+   "end": 56.85,
+   "text": "Debido a esto, el costo de nuestros recursos como energía, agua y otros aumentan día a día."
+  },
+  {
+   "start": 56.85,
+   "end": 69.85,
+   "text": "Para esto, proponemos el uso de dinamos en la generación de energías alternas a través de actividades cotidianas."
+  },
+  {
+   "start": 69.85,
+   "end": 77.38,
+   "text": "Los dinamos."
+  },
+  {
+   "start": 77.38,
+   "end": 86.38,
+   "text": "Es un generador eléctrico destinado a la transformación de flujo magnético trabajando a través de la rotación de ellos."
+  },
+  {
+   "start": 86.38,
+   "end": 94.74,
+   "text": "Su uso en nuestra propuesta se hace de la siguiente manera."
+  },
+  {
+   "start": 94.74,
+   "end": 113.05,
+   "text": "Colocando dinamos en todas las redes de desabue tratando de aprovechar todo el flujo de agua para luego dirigirla a un almacenamiento en celdas y posteriormente su utilización."
+  },
+  {
+   "start": 113.05,
+   "end": 133.2,
+   "text": "Otros usos que podemos implementar para la generación de energía es aprovechando el movimiento de objetos como las puertas, lavadoras, ventanas, etc."
+  },
+  {
+   "start": 133.2,
+   "end": 146.2,
+   "text": "En nuestro prototipo nos enfocamos en la reutilización de materiales desechados, tales como tubos PVC, bobinas de equipos electrónicos, obsoletos, plásticos, entre otros,"
+  },
+  {
+   "start": 146.2,
+   "end": 156.2,
+   "text": "para favorecer a su bajo costo de fabricación y evitar el desperdicio de elementos no degradables, beneficiando al cuido de nuestro medio ambiente."
+  },
+  {
+   "start": 156.2,
+   "end": 179.86,
+   "text": "Todo esto beneficia, en primer lugar, a la disminución en gastos de servicio de energía y, en segundo lugar, a la mejor utilización de agua como fuente generadora de energía y sacar provecho de nuestras actividades diarias."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 180.8
+}

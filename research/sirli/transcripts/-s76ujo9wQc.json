@@ -1,0 +1,137 @@
+{
+ "video_id": "-s76ujo9wQc",
+ "url": "https://www.youtube.com/watch?v=-s76ujo9wQc",
+ "year": 2021,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "PINEROS",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "PINEROS",
+   "challenge": "05 - SISTEMA DE RECICLADO DE RESIDUOS PATOLÓGICOS DE CASAS DE SALUD PARA ANCIANOS"
+  }
+ ],
+ "fetched_at": "2026-11-06T18:46:55+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Actualmente estamos viviendo un alza en la contaminación ambiental. Por no tener conciencia de la gran cantidad de productos que desechamos al medio ambiente, la mayoría de estos productos pueden ser reutilizados pudiendo darles un valor agregado aún cuando su vida útil ha llegado a su fin. Nuestra propuesta se enfoca en reciclar los pañales desechables utilizados por las personas, tanto en las casas particulares como en los centros de atención del adulto mayor. Pero, ¿cómo aprovechar este producto? Los pañales usados se llevarán a un proceso desecado con el calor del sol y se aplica cal. Esta servirá para anular el mal olor que podría llegar a producirse por las eses fecales y la orina y además evitará la acumulación de insectos. Luego, con la materia fecal, el poliacirato y las celes de calcios de la orina se elaborará un compost mezclándolo con una porción de tierra. Luego esperamos su fermentación que dure entre 22 y 30 días. Una vez listo, el producto es empacado y queda disponible para la venta a pequeños productores agrícolas y públicos en general. ¿Cómo se utiliza este producto? Se mezcla con la tierra donde vamos a cultivar, también puede aplicarse de manera directa con las semillas a sembrar, el poliacirato absorberá el agua y la mantendrá por más tiempo en sus hortalizas o plantas ornamentales, permitiendo que exista una mejora en la producción y se ahorre agua. ¿Qué impacto tendría? Beneficia a los hogares de ancianos hospitales, casas maternas y población en general. Se generan empleos para el grupo emprendedor, se abre una opción para los estudiantes que desean completar su servicio comunitario. Organic Diapers, una nueva perspectiva ambiental.",
+ "segments": [
+  {
+   "start": 0.66,
+   "end": 18.38,
+   "text": "Actualmente estamos viviendo un alza en la contaminación ambiental. Por no tener"
+  },
+  {
+   "start": 18.38,
+   "end": 22.16,
+   "text": "conciencia de la gran cantidad de productos que desechamos al medio ambiente,"
+  },
+  {
+   "start": 22.16,
+   "end": 26.24,
+   "text": "la mayoría de estos productos pueden ser reutilizados pudiendo darles un valor"
+  },
+  {
+   "start": 26.24,
+   "end": 30.62,
+   "text": "agregado aún cuando su vida útil ha llegado a su fin. Nuestra propuesta se"
+  },
+  {
+   "start": 30.62,
+   "end": 34.3,
+   "text": "enfoca en reciclar los pañales desechables utilizados por las personas,"
+  },
+  {
+   "start": 34.3,
+   "end": 37.86,
+   "text": "tanto en las casas particulares como en los centros de atención del adulto"
+  },
+  {
+   "start": 37.86,
+   "end": 43.78,
+   "text": "mayor. Pero, ¿cómo aprovechar este producto? Los pañales usados se llevarán a un proceso"
+  },
+  {
+   "start": 43.78,
+   "end": 49.14,
+   "text": "desecado con el calor del sol y se aplica cal. Esta servirá para anular el mal olor"
+  },
+  {
+   "start": 49.14,
+   "end": 54.3,
+   "text": "que podría llegar a producirse por las eses fecales y la orina y además evitará la"
+  },
+  {
+   "start": 54.3,
+   "end": 59.22,
+   "text": "acumulación de insectos. Luego, con la materia fecal, el poliacirato y las"
+  },
+  {
+   "start": 59.22,
+   "end": 64.58,
+   "text": "celes de calcios de la orina se elaborará un compost mezclándolo con una porción de"
+  },
+  {
+   "start": 64.58,
+   "end": 70.26,
+   "text": "tierra. Luego esperamos su fermentación que dure entre 22 y 30 días. Una vez listo,"
+  },
+  {
+   "start": 70.26,
+   "end": 74.54,
+   "text": "el producto es empacado y queda disponible para la venta a pequeños productores"
+  },
+  {
+   "start": 74.54,
+   "end": 79.58,
+   "text": "agrícolas y públicos en general. ¿Cómo se utiliza este producto? Se mezcla con la"
+  },
+  {
+   "start": 79.58,
+   "end": 83.82,
+   "text": "tierra donde vamos a cultivar, también puede aplicarse de manera directa con las"
+  },
+  {
+   "start": 83.82,
+   "end": 88.14,
+   "text": "semillas a sembrar, el poliacirato absorberá el agua y la mantendrá por"
+  },
+  {
+   "start": 88.14,
+   "end": 92.18,
+   "text": "más tiempo en sus hortalizas o plantas ornamentales, permitiendo que exista una"
+  },
+  {
+   "start": 92.18,
+   "end": 97.62,
+   "text": "mejora en la producción y se ahorre agua. ¿Qué impacto tendría? Beneficia a los hogares"
+  },
+  {
+   "start": 97.62,
+   "end": 102.06,
+   "text": "de ancianos hospitales, casas maternas y población en general. Se generan empleos"
+  },
+  {
+   "start": 102.06,
+   "end": 106.22,
+   "text": "para el grupo emprendedor, se abre una opción para los estudiantes que desean"
+  },
+  {
+   "start": 106.22,
+   "end": 111.5,
+   "text": "completar su servicio comunitario. Organic Diapers, una nueva perspectiva"
+  },
+  {
+   "start": 111.5,
+   "end": 113.98,
+   "text": "ambiental."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 118.0
+}

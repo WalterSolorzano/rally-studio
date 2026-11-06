@@ -1,0 +1,202 @@
+{
+ "video_id": "qAcZGy4WMqw",
+ "url": "https://www.youtube.com/watch?v=qAcZGy4WMqw",
+ "year": 2019,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "NICBLUE",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2019,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "NICBLUE",
+   "challenge": "09 - AUTISMO E INCLUSIÓN DIGITAL"
+  }
+ ],
+ "fetched_at": "2026-11-06T18:52:04+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Sabes qué es el autismo? Se llama Trastorno del espectro autista, conocido como TEA. Es un grupo de afecciones caracterizadas por algún grado de alteración del comportamiento social, comunicativo y lenguaje. Según datos de la OMS, al rededor del mundo, uno de cada 160 niños padece de TEA y solo en Managua, capital de Nicaragua, se determinó según el Ministerio de Salud que uno por cada 2.257 individuos, 608 padecen de estas afecciones. Cada persona con TEA al enfrentarse a entornos sociales bullisuyosos o muy concurridos puede adoptar un comportamiento agresivo o inestable, llevándolo a aislarse y ser rechazado por la sociedad. Como respuesta a esta problemática de inclusión social, el grupo NickBlue diseñamos una aplicación que satisfaces la mayoría de las dificultades que se presentan, disponiendo herramientas que permitan que cada persona con TEA consiga la máxima independencia y autobalimiento posible. La ejecución de este proyecto será de manera virtual y la app tendrá garantía. Existirá una relación social mediante los esplicios de videollamadas y mensajería, donde esto le permitirá a los usuarios autistas poder integrarse a la app a través de sus padres o tutores y así interactuar con una persona igual o incluso diferente a ella. Diseñemos este prototipo de aplicación, Autism Plus, que contiene 5 funciones esenciales para la interacción y desarrollo de las personas autistas. Tenemos primeramente el logo oficial de la aplicación, que cuenta con una interfaz de registro para iniciar sesión o crear una cuenta. Al crear una cuenta nueva se habilitará un formulario para que el tutor a padre inscriba al niño o joven autista. Dentro de la primera función contamos con distintas actividades recreativas, en donde el joven autista puede seleccionar la que más le traiga. Esta función principal incentiva a la persona autista a integrarse con un grupo de personas que compartan sus mismas afecciones. Como segunda función, se implementó el control parental sobre el joven autista en cuanto a la interacción social con colaboradores. La multimedia desplegará una serie de videos educativos que ayudará a la comprensión de esta condición neurológica. La función de la mini-rec social ayudará al joven autista a interactuar con más frecuencia a la selección de amigos que él o ella haya agregado. En la función de contactos el tutor a padre de familia tendrá el acceso a los colaboradores que haya contactado su hijo o hija para conocer el avance o percances que haya desarrollado. Esta app contará con un espacio para la actualización y evaluación que aporten los usuarios para mejorar su contenido. Haz un mundo mejor sin distinción. Las personas con autismo no son diferentes, son auténticas.",
+ "segments": [
+  {
+   "start": 4.53,
+   "end": 9.53,
+   "text": "¿Sabes qué es el autismo? Se llama Trastorno del espectro autista, conocido como TEA."
+  },
+  {
+   "start": 9.53,
+   "end": 13.73,
+   "text": "Es un grupo de afecciones caracterizadas por algún grado de alteración del comportamiento"
+  },
+  {
+   "start": 13.73,
+   "end": 19.17,
+   "text": "social, comunicativo y lenguaje. Según datos de la OMS, al rededor del mundo, uno de cada"
+  },
+  {
+   "start": 19.17,
+   "end": 24.33,
+   "text": "160 niños padece de TEA y solo en Managua, capital de Nicaragua, se determinó según"
+  },
+  {
+   "start": 24.33,
+   "end": 31.85,
+   "text": "el Ministerio de Salud que uno por cada 2.257 individuos, 608 padecen de estas afecciones."
+  },
+  {
+   "start": 31.85,
+   "end": 36.65,
+   "text": "Cada persona con TEA al enfrentarse a entornos sociales bullisuyosos o muy concurridos puede"
+  },
+  {
+   "start": 36.65,
+   "end": 41.75,
+   "text": "adoptar un comportamiento agresivo o inestable, llevándolo a aislarse y ser rechazado por la"
+  },
+  {
+   "start": 41.75,
+   "end": 47.05,
+   "text": "sociedad. Como respuesta a esta problemática de inclusión social, el grupo NickBlue diseñamos"
+  },
+  {
+   "start": 47.05,
+   "end": 51.37,
+   "text": "una aplicación que satisfaces la mayoría de las dificultades que se presentan, disponiendo"
+  },
+  {
+   "start": 51.37,
+   "end": 56.01,
+   "text": "herramientas que permitan que cada persona con TEA consiga la máxima independencia y"
+  },
+  {
+   "start": 56.01,
+   "end": 60.45,
+   "text": "autobalimiento posible. La ejecución de este proyecto será de manera virtual y la"
+  },
+  {
+   "start": 60.45,
+   "end": 65.61,
+   "text": "app tendrá garantía. Existirá una relación social mediante los esplicios de videollamadas"
+  },
+  {
+   "start": 65.61,
+   "end": 70.65,
+   "text": "y mensajería, donde esto le permitirá a los usuarios autistas poder integrarse a la app"
+  },
+  {
+   "start": 70.65,
+   "end": 75.93,
+   "text": "a través de sus padres o tutores y así interactuar con una persona igual o incluso diferente"
+  },
+  {
+   "start": 75.93,
+   "end": 80.37,
+   "text": "a ella."
+  },
+  {
+   "start": 80.37,
+   "end": 86.13,
+   "text": "Diseñemos este prototipo de aplicación, Autism Plus, que contiene 5 funciones esenciales"
+  },
+  {
+   "start": 86.13,
+   "end": 90.41,
+   "text": "para la interacción y desarrollo de las personas autistas. Tenemos primeramente"
+  },
+  {
+   "start": 90.41,
+   "end": 95.57,
+   "text": "el logo oficial de la aplicación, que cuenta con una interfaz de registro para iniciar sesión"
+  },
+  {
+   "start": 95.57,
+   "end": 100.53,
+   "text": "o crear una cuenta. Al crear una cuenta nueva se habilitará un formulario para que el tutor"
+  },
+  {
+   "start": 100.53,
+   "end": 103.45,
+   "text": "a padre inscriba al niño o joven autista."
+  },
+  {
+   "start": 103.45,
+   "end": 107.81,
+   "text": "Dentro de la primera función contamos con distintas actividades recreativas, en donde"
+  },
+  {
+   "start": 107.81,
+   "end": 112.69,
+   "text": "el joven autista puede seleccionar la que más le traiga. Esta función principal"
+  },
+  {
+   "start": 112.69,
+   "end": 117.49,
+   "text": "incentiva a la persona autista a integrarse con un grupo de personas que compartan"
+  },
+  {
+   "start": 117.49,
+   "end": 126.06,
+   "text": "sus mismas afecciones."
+  },
+  {
+   "start": 126.06,
+   "end": 130.62,
+   "text": "Como segunda función, se implementó el control parental sobre el joven autista en cuanto a la"
+  },
+  {
+   "start": 130.62,
+   "end": 135.62,
+   "text": "interacción social con colaboradores. La multimedia desplegará una serie de videos"
+  },
+  {
+   "start": 135.62,
+   "end": 139.9,
+   "text": "educativos que ayudará a la comprensión de esta condición neurológica."
+  },
+  {
+   "start": 139.9,
+   "end": 145.06,
+   "text": "La función de la mini-rec social ayudará al joven autista a interactuar con más frecuencia"
+  },
+  {
+   "start": 145.06,
+   "end": 149.58,
+   "text": "a la selección de amigos que él o ella haya agregado. En la función de contactos"
+  },
+  {
+   "start": 149.62,
+   "end": 153.3,
+   "text": "el tutor a padre de familia tendrá el acceso a los colaboradores que haya"
+  },
+  {
+   "start": 153.3,
+   "end": 158.42,
+   "text": "contactado su hijo o hija para conocer el avance o percances que haya desarrollado."
+  },
+  {
+   "start": 158.42,
+   "end": 163.9,
+   "text": "Esta app contará con un espacio para la actualización y evaluación que aporten"
+  },
+  {
+   "start": 163.9,
+   "end": 167.06,
+   "text": "los usuarios para mejorar su contenido."
+  },
+  {
+   "start": 167.06,
+   "end": 171.54,
+   "text": "Haz un mundo mejor sin distinción. Las personas con autismo no son diferentes,"
+  },
+  {
+   "start": 171.54,
+   "end": 172.54,
+   "text": "son auténticas."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 173.0
+}

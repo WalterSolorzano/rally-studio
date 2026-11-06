@@ -66,14 +66,14 @@ DESCRIPCIONES: dict[str, tuple[str, str, str]] = {
         "Si ya está cubierto por el manual maestro nacional.",
     ),
     "Proyectos Ganadores de Rally Latam.md": (
-        "Catálogo extenso de proyectos premiados en Latinoamérica.",
-        "Buscar patrones de lo que gana (hibridación ciberfísica, enfoque territorial).",
-        "Para detalles de un proyecto puntual: usar winners_database.json.",
+        "Deep research de Gemini (251 KB): gobernanza SIRLI, registro de ganadores y arquitectura de guion. Fuente T2, no verdad paralela.",
+        "Rastrear de dónde salió una cifra o un patrón narrativo concreto.",
+        "Como evidencia: lo consolida `docs/INFORME_INVESTIGACION.md` v3. Su escala «1.425 sedes / 65.000 jóvenes» no está en el banco verificado.",
     ),
     "chatgptdeep-research-report.md": (
-        "Informe de investigación profunda: fórmula PAS-V de 120 s y errores de descalificación.",
-        "Diseñar o auditar el guion del video.",
-        "Para presupuesto o pauta técnica.",
+        "Deep research de GPT: casos de ganadores 2019–2025 y anatomía del video de 120 s. Fuente T2, no verdad paralela.",
+        "Rastrear el origen de un caso o de una afirmación sobre el guion.",
+        "Como evidencia: lo consolida `docs/INFORME_INVESTIGACION.md` v3. Contiene la errata «Ollnari 2023» (es 2025) y análisis especulativos marcados como tales.",
     ),
     "Operación Titan_UNI_Documento pautado_2025.docx": (
         "Documento pautado real de un equipo de la UNI (referencia de formato y tono).",
@@ -222,6 +222,11 @@ DESCRIPCIONES: dict[str, tuple[str, str, str]] = {
         "Explicación del cerebro Graphify y sus comunidades de conocimiento.",
         "Entender cómo se relacionan certamen, rúbricas y ganadores.",
         "Para redactar contenido del proyecto.",
+    ),
+    "docs/INFORME_INVESTIGACION.md": (
+        "Investigación canónica única (v3): consolida los informes de GPT y Gemini, declara la jerarquía de fuentes contra el banco verificado `research/sirli/` y registra qué se descartó por falta de respaldo.",
+        "Antes de citar cualquier cifra del certamen o de un ganador, y al auditar un entregable contra la evidencia.",
+        "Para el detalle estadístico completo: usar `research/sirli/analisis/investigacion_profunda.md`.",
     ),
     "docs/MANUAL_MAESTRO_RALLY_INNOVACION_2026.md": (
         "Manual maestro del Rally de Innovación (versión texto).",

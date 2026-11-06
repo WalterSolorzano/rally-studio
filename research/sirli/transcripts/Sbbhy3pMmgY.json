@@ -1,0 +1,112 @@
+{
+ "video_id": "Sbbhy3pMmgY",
+ "url": "https://www.youtube.com/watch?v=Sbbhy3pMmgY",
+ "year": 2020,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "SACUANJOCHE",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2020,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "SACUANJOCHE",
+   "challenge": "05 - ¿AYUDARÍA UN SISTEMA O DISPOSITIVO HOGAREÑO A EVITAR QUE EL ACEITE DE FRITURA USADO TERMINE EN LA RED PÚBLICA?"
+  }
+ ],
+ "fetched_at": "2026-11-06T18:50:23+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Sabías que una gota de aceite contamina hasta mil litros de agua? Actualmente el aceite de fritura usado es depositado en acueductos comunes que termina en la república, generando obstrucción del alcantarillado y contaminación de los grandes cuerpos de agua como ríos, lagos y mares. Esta problemática genera necesidad de crear un nuevo sistema de tuberías como lo es RIDUS Oil. Este proyecto viene a innovar el sistema de tuberías estándar de las urbanizaciones actuales proporcionando un pantry doble salida que filtra las grasas del agua residual y el aceite en parte separadas, evitando que esto se descarguen en desagües públicos y permitiendo su reutilización. Pero cómo funciona RIDUS Oil? Este sistema de recolección moderno de tuberías cuenta con un desagüe específico para el aceite. Este es transportado mediante un tubo de acero inoxidable con certificación IC304 y IC316 hacia un almacenamiento totalmente sellado. Por otro lado, los restos de grasa que se van en el desagüe del pantry son separados de lago residual mediante un mecanismo de tres compartimentos que separan materias por densidad, quedando las grasas al ser menos densas en el primer espacio que posteriormente es transportada mediante un tubo PVC hacia un almacenamiento que cuenta con un respiradero, eliminando gases y olores mientras que el agua es evacuada sin peligro de contaminación ambiental por parte de grasas o aceites. RIDUS Oil, el futuro en tu hogar.",
+ "segments": [
+  {
+   "start": 15.06,
+   "end": 19.4,
+   "text": "¿Sabías que una gota de aceite contamina hasta mil litros de agua?"
+  },
+  {
+   "start": 19.4,
+   "end": 24.64,
+   "text": "Actualmente el aceite de fritura usado es depositado en acueductos comunes que"
+  },
+  {
+   "start": 24.64,
+   "end": 29.5,
+   "text": "termina en la república, generando obstrucción del alcantarillado y"
+  },
+  {
+   "start": 29.5,
+   "end": 33.82,
+   "text": "contaminación de los grandes cuerpos de agua como ríos, lagos y mares."
+  },
+  {
+   "start": 33.82,
+   "end": 40.1,
+   "text": "Esta problemática genera necesidad de crear un nuevo sistema de tuberías como lo es RIDUS Oil."
+  },
+  {
+   "start": 40.1,
+   "end": 45.54,
+   "text": "Este proyecto viene a innovar el sistema de tuberías estándar de las urbanizaciones actuales"
+  },
+  {
+   "start": 45.54,
+   "end": 51.66,
+   "text": "proporcionando un pantry doble salida que filtra las grasas del agua residual y el aceite en parte"
+  },
+  {
+   "start": 51.66,
+   "end": 56.86,
+   "text": "separadas, evitando que esto se descarguen en desagües públicos y permitiendo su reutilización."
+  },
+  {
+   "start": 56.86,
+   "end": 62.74,
+   "text": "Pero cómo funciona RIDUS Oil? Este sistema de recolección moderno de tuberías"
+  },
+  {
+   "start": 62.74,
+   "end": 68.94,
+   "text": "cuenta con un desagüe específico para el aceite. Este es transportado mediante un tubo de acero"
+  },
+  {
+   "start": 68.94,
+   "end": 76.7,
+   "text": "inoxidable con certificación IC304 y IC316 hacia un almacenamiento totalmente sellado."
+  },
+  {
+   "start": 76.7,
+   "end": 82.54,
+   "text": "Por otro lado, los restos de grasa que se van en el desagüe del pantry son separados de lago"
+  },
+  {
+   "start": 82.54,
+   "end": 87.42,
+   "text": "residual mediante un mecanismo de tres compartimentos que separan materias por densidad,"
+  },
+  {
+   "start": 87.42,
+   "end": 93.34,
+   "text": "quedando las grasas al ser menos densas en el primer espacio que posteriormente es transportada"
+  },
+  {
+   "start": 93.34,
+   "end": 99.5,
+   "text": "mediante un tubo PVC hacia un almacenamiento que cuenta con un respiradero, eliminando gases y"
+  },
+  {
+   "start": 99.5,
+   "end": 105.3,
+   "text": "olores mientras que el agua es evacuada sin peligro de contaminación ambiental por parte de grasas"
+  },
+  {
+   "start": 105.3,
+   "end": 108.46,
+   "text": "o aceites. RIDUS Oil, el futuro en tu hogar."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 113.2
+}

@@ -1,0 +1,159 @@
+{
+ "video_id": "wDKG5njVlM8",
+ "url": "https://youtu.be/wDKG5njVlM8",
+ "year": 2021,
+ "collection": "nacional",
+ "country": "NICARAGUA",
+ "team": "CEA_STUDIO",
+ "place_label": "SEGUNDO LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "nacional",
+   "place_label": "SEGUNDO LUGAR",
+   "team": "CEA_STUDIO",
+   "challenge": "08 - TECNOLOGÍAS DE EFICIENCIA ENERGÉTICA APLICADA A VIVIENDAS"
+  },
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "CEA_STUDIO",
+   "challenge": "08 - TECNOLOGÍAS DE EFICIENCIA ENERGÉTICA APLICADA A VIVIENDAS"
+  }
+ ],
+ "fetched_at": "2026-11-06T18:40:45+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Los humedales son ecosistemas de vital importancia para el planeta. Latinoamérica ha perdido el 59% de sus humedales en los últimos 50 años. Esto debido a la intervención humana de manera indiscriminada. Los humedales de San Miguelito, Río San Juan y Caragua comparten características similares con algunos países latinoamericanos. La sostenibilidad ambiental, económica y social a través de proyectos de tecnología enfocados en la eficiencia energética aplicada a viviendas con estas características de sitio y así da respuesta a asentamientos emergentes y comunidades. Por tanto, se crea ecochante, enfocado en los objetivos de desarrollo sostenible generando conciencia y sensibilidad ambiental. El proyecto consta de cinco principales sistemas que trabajan en conjunto para cumplir con todas las necesidades que se presentan en una vivienda de esta índole. Con el sistema de un aerogenerador producirá 3 kW como máximo diario. Un sistema de recolección de agua pluvial para el consumo del hogar filtraba mediante tres etapas para su potabilización. Climatización de la vivienda a través de bloques tipo PET compuesto parcialmente por un 20% de polvo de plástico reciclado y un 80% de arena y aglomerante, rellenado con barro para que cumpla la función de aislante térmico y acústico. Un fogón mejorado con chimenea integrado reduciendo el uso de leña. Mejora la accesibilidad hacia el sitio, utilizando bolones para aumentar la firmeza del suelo arceós.",
+ "segments": [
+  {
+   "start": 5.2,
+   "end": 9.4,
+   "text": "Los humedales son ecosistemas de vital importancia para el planeta."
+  },
+  {
+   "start": 9.4,
+   "end": 15.4,
+   "text": "Latinoamérica ha perdido el 59% de sus humedales en los últimos 50 años."
+  },
+  {
+   "start": 15.4,
+   "end": 19.6,
+   "text": "Esto debido a la intervención humana de manera indiscriminada."
+  },
+  {
+   "start": 19.6,
+   "end": 23.2,
+   "text": "Los humedales de San Miguelito, Río San Juan y Caragua"
+  },
+  {
+   "start": 23.2,
+   "end": 27.6,
+   "text": "comparten características similares con algunos países latinoamericanos."
+  },
+  {
+   "start": 27.6,
+   "end": 31.4,
+   "text": "La sostenibilidad ambiental, económica y social"
+  },
+  {
+   "start": 31.4,
+   "end": 36.2,
+   "text": "a través de proyectos de tecnología enfocados en la eficiencia energética"
+  },
+  {
+   "start": 36.2,
+   "end": 40.4,
+   "text": "aplicada a viviendas con estas características de sitio"
+  },
+  {
+   "start": 40.4,
+   "end": 44.8,
+   "text": "y así da respuesta a asentamientos emergentes y comunidades."
+  },
+  {
+   "start": 44.8,
+   "end": 47.2,
+   "text": "Por tanto, se crea ecochante,"
+  },
+  {
+   "start": 47.2,
+   "end": 50.2,
+   "text": "enfocado en los objetivos de desarrollo sostenible"
+  },
+  {
+   "start": 50.2,
+   "end": 53.6,
+   "text": "generando conciencia y sensibilidad ambiental."
+  },
+  {
+   "start": 53.6,
+   "end": 57.0,
+   "text": "El proyecto consta de cinco principales sistemas"
+  },
+  {
+   "start": 57.0,
+   "end": 60.6,
+   "text": "que trabajan en conjunto para cumplir con todas las necesidades"
+  },
+  {
+   "start": 60.6,
+   "end": 63.6,
+   "text": "que se presentan en una vivienda de esta índole."
+  },
+  {
+   "start": 63.6,
+   "end": 68.6,
+   "text": "Con el sistema de un aerogenerador producirá 3 kW como máximo diario."
+  },
+  {
+   "start": 68.6,
+   "end": 75.15,
+   "text": "Un sistema de recolección de agua pluvial para el consumo del hogar"
+  },
+  {
+   "start": 75.15,
+   "end": 82.76,
+   "text": "filtraba mediante tres etapas para su potabilización."
+  },
+  {
+   "start": 82.76,
+   "end": 86.16,
+   "text": "Climatización de la vivienda a través de bloques tipo PET"
+  },
+  {
+   "start": 86.16,
+   "end": 90.76,
+   "text": "compuesto parcialmente por un 20% de polvo de plástico reciclado"
+  },
+  {
+   "start": 90.76,
+   "end": 93.76,
+   "text": "y un 80% de arena y aglomerante,"
+  },
+  {
+   "start": 93.76,
+   "end": 98.76,
+   "text": "rellenado con barro para que cumpla la función de aislante térmico y acústico."
+  },
+  {
+   "start": 98.76,
+   "end": 107.74,
+   "text": "Un fogón mejorado con chimenea integrado reduciendo el uso de leña."
+  },
+  {
+   "start": 107.74,
+   "end": 110.34,
+   "text": "Mejora la accesibilidad hacia el sitio,"
+  },
+  {
+   "start": 110.34,
+   "end": 114.34,
+   "text": "utilizando bolones para aumentar la firmeza del suelo arceós."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.1
+}

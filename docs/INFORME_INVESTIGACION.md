@@ -2,12 +2,19 @@
 
 **Rally de Innovación: qué hemos encontrado, por qué gana quien gana y cómo se sostiene**
 
+> **DOCUMENTO CANÓNICO ÚNICO.** Esta es la única investigación vigente del repositorio.
+> Los informes de otras IA (`chatgptdeep-research-report.md`,
+> `Proyectos Ganadores de Rally Latam.md`, `PROYECTO_DOSSIER_COMPLETO.md`,
+> `dossier_latam_2026/`) quedan como **fuente citada, no como verdad paralela**: solo
+> entran aquí si sobreviven al contraste con el banco verificado. Ver §0.2.
+
 | Campo | Valor |
 |---|---|
-| Versión | 2.0 |
-| Fecha de corte | 19 de octubre de 2026 |
+| Versión | 3.0 |
+| Fecha de corte | 6 de noviembre de 2026 |
 | Ámbito | Rally Latinoamericano de Innovación (28 h) y Rally Nacional de Innovación Nicaragua Innova (24 h) |
 | Audiencia | Integrantes del repositorio, equipos concursantes, docentes y jurados |
+| Banco verificado | `research/sirli/` — 5.136 premios scrapeados de `sirli.org/ganadores`, 2017–2026 |
 | Documento hermano | [`docs/MANUAL_MAESTRO_RALLY_LATAM_Y_NICARAGUA_INNOVA_2026.md`](MANUAL_MAESTRO_RALLY_LATAM_Y_NICARAGUA_INNOVA_2026.md) (operativo) |
 
 ---
@@ -26,6 +33,68 @@ Este documento reúne, en un solo lugar, la investigación que alimenta a Rally 
 La regla es simple: **un dato [C] se presenta como interpretación, nunca como estadística oficial**. Las cifras de participación y los nombres de equipos provienen de fuentes primarias o de registros contrastados; los porcentajes que describen tendencias son nuestros y se explican como tales.
 
 Cuando dos documentos del corpus discrepan, manda la fuente primaria más reciente. Esa regla se aplicó en todo el informe, sin necesidad de señalar cada corrección en el cuerpo: el lector encuentra aquí la versión que consideramos correcta.
+
+### 0.1 Jerarquía de fuentes (v3)
+
+Desde el 6 de noviembre de 2026 existe un **banco verificado** que no existía cuando se escribió la v2.0. La jerarquía completa, de mayor a menor autoridad:
+
+| Nivel | Qué es | Dónde vive | Cómo se usa |
+|---|---|---|---|
+| **T0 — Banco verificado** | Scrape íntegro de `sirli.org/ganadores` (colecciones `sede`, `nacional`, `internacional`): 5.136 premios, 4.709 videos, HTML original archivado y hash SHA-256 por colección y año. | `research/sirli/winners.jsonl`, `winners.csv`, `manifest.json`, `raw/*.gz` | **Manda sobre todo.** Si un informe de IA dice otra cosa, gana T0. |
+| **T1 — Fuente primaria** | Publicación del organizador, la sede o un medio oficial consultado directamente. | `research/sirli/raw/*.gz`, `nicaraguacreativa.com`, CONFEDI, ANFEI | Confirma o amplía T0 cuando T0 no trae el dato. |
+| **T2 — Registro contrastado** | Dato de un informe de IA que coincide con T0 o T1. | `chatgptdeep-research-report.md`, `Proyectos Ganadores de Rally Latam.md` | Citable **solo** en la parte que T0/T1 confirma. |
+| **T3 — Análisis propio** | Patrón que construimos al cruzar registros, con el método explicado. | `research/sirli/analisis/*.md` | Se presenta como interpretación, nunca como estadística oficial. |
+| **T4 — Sin respaldo** | Afirmación de un informe de IA que ningún registro sostiene. | — | **No se cita.** Queda registrada en §0.2 para que no vuelva. |
+
+Las etiquetas **[A] [B] [C] [D]** de la §0 son la versión antigua de esta misma escala y se leen así: A→T1, B→T2, C→T3, D→T1 pendiente de lectura. Cuando el cuerpo del informe diga [B] sobre un dato que T0 ya cubre, **vale el número de T0**.
+
+### 0.2 Consolidación de los markdowns dispersos (06/11/2026)
+
+Había cinco investigaciones en paralelo, de tres IA distintas, con cifras que no coincidían entre sí y ninguna trazabilidad al banco. Todas quedan resueltas aquí:
+
+| Archivo | SHA-256 (12) | Qué era | Veredicto | Destino |
+|---|---|---|---|---|
+| `chatgptdeep-research-report.md` | `894D58355C4D` | Deep research GPT: casos 2019–2025 y anatomía del video | **T2 parcial.** Los casos coinciden con T0; «Ollnari 2023» es errata (es 2025). | Fuente citada. Copia espejo en `brain/corpus/investigacion_pitch.md`. |
+| `Proyectos Ganadores de Rally Latam.md` | `4A196E7F1864` | Deep research Gemini, 251 KB: gobernanza, registro maestro, guion | **T2 parcial.** Lo estructural (sede→nacional→internacional, 28 h, video de 2 min) lo confirma T0. La escala «1.425 sedes / 65.000 jóvenes» **no** está en T0 → T4. | Fuente citada. Duplicado byte a byte en `knowledge/winners_latam.md`. |
+| `PROYECTO_DOSSIER_COMPLETO.md` | `FAF57B374831` | Dossier de un equipo concreto (UNI RUPAP, «Operación Titán») | **Fuera del cerebro.** Regla 11: el cerebro se distribuye sin proyectos anteriores. | Se queda como referencia local; no se cita como evidencia. |
+| `docs/INFORME_INVESTIGACION.md` | este archivo | v2.0, escrita el 19/10 **antes** del banco SIRLI | **CANÓNICO.** Es el único que se actualiza. | → `brain/corpus/informe_investigacion.md` vía `brain/sync_corpus.py`. |
+| `research/sirli/analisis/patrones.md` | `447A5A05A7D3` | Primer análisis, 26 transcripciones, sin control de sesgo | **SUPERSEDIDO** por `investigacion_profunda.md`. | Ya marcado dentro del archivo. |
+| `research/sirli/analisis/hipotesis.md` | `99D6B25C0ACA` | Informe intermedio de hipótesis | **SUPERSEDIDO** por `investigacion_profunda.md`. | Ya marcado dentro del archivo. |
+| `dossier_latam_2026/archivado_2026-11-05/dossier_latam_2026.md` | `6ABEBA5BFB24` | Dossier previo, ya archivado el 05/11 | Histórico. | Se queda en `archivado_2026-11-05/`. |
+
+**Regla de oro que sale de esta consolidación:** un dato de T2 o T4 que no aparezca en T0/T1 **no se usa**. No se borra el archivo de origen, porque sirve para rastrear de dónde salió la confusión; se deja de tratar como verdad.
+
+**Decisión del 06/11/2026 (equipo):** los dos informes de IA se conservan **como están**, sin stub ni borrado. Motivo: son la fuente de la que `brain/sync_corpus.py` copia `investigacion_pitch.md` y `ganadores_latam.md`; reemplazarlos por punteros rompería el corpus. Su desactivación como verdad paralela ya está hecha en tres sitios: el banner de la cabecera, esta tabla y las descripciones de `knowledge/INDICE.md`.
+
+### 0.3 Lo que el banco verificado cambió
+
+Cifras de T0 que reemplazan cualquier estimación anterior:
+
+| Dato | Valor | Nota |
+|---|---|---|
+| Premios registrados | **5.136** (2017–2026, 14 países) | SIRLI solo publica podio: no hay perdedores. |
+| Premios de Nicaragua | **1.259** | |
+| Primeros lugares | **2.425** | Antes de 2021 casi solo hay primeros puestos → toda tasa se calcula con 2021+. |
+| Videos únicos | **4.709**; con miniatura **4.196** | |
+| Transcripciones con texto | **906** | |
+| Corte válido | **5.117** ediciones; **4.181** de sede 2021+ | Base P(1.º) = 41,1 %. |
+
+De **42 hipótesis** probadas con corrección por comparaciones múltiples, solo tres sobrevivieron:
+
+| ID | Hallazgo | Δ |
+|---|---|---|
+| H01 | Más integrantes nombrados en el equipo | +19,3 pp |
+| H30 | Nombrar el proyecto en la descripción del video | +10,1 pp |
+| H42 | Quedarse muy por debajo de los 120 s (≤110 s) cuesta | −6,0 pp |
+
+Consecuencias que este informe asume a partir de ahora:
+
+1. **El video no se distingue por nada de lo que se pudo medir** (duración, miniatura, título, subtítulos, descripción, marcadores de guion): todo cae en el ruido. Las secciones §9 y §10 describen **lo que dicen los ganadores**, no lo que predice el resultado. Léanse como T3.
+2. **El 0 % de los guiones pone a hablar a un usuario real.** Es el hueco más rentable del certamen.
+3. **El tamaño del desafío no afecta** la probabilidad (quintiles 39,9 / 39,5 / 43,7 / 41,1 / 40,8 %). Elegir desafío «de nicho» no da ventaja.
+4. **La competencia se endurece:** en sede Nicaragua, la tasa de primer lugar pasó de 54,4 % (2021) a 38,6 % (2026).
+
+Detalle completo, tablas y reservas metodológicas: `research/sirli/analisis/investigacion_profunda.md` (informe profundo) y `research/sirli/MAPA.md` (qué se planeó y qué se entregó).
 
 ---
 
@@ -95,12 +164,12 @@ El trabajo tuvo cinco pasos:
 
 La transparencia del método exige decirlo:
 
-- No se pudieron extraer transcripciones automáticas de los videos. El análisis oral se apoya en descripciones, títulos, metadata y observación de miniaturas.
+- No se pudieron extraer transcripciones automáticas de los videos. El análisis oral se apoya en descripciones, títulos, metadata y observación de miniaturas. *(v3: superado — el banco SIRLI aporta 906 transcripciones con texto y 583 rasgos de audio; ver §0.3.)*
 - Dos videos del corpus ya no están disponibles o nunca lo estuvieron: el pitch de MT Soluciones Creativas (2021) y el de STEM Synergy (2025), cuyo acceso devuelve error.
 - El video de Volca-Tech (2025) no tiene identificador válido en el corpus.
 - El sitio `rallydeinnovacion.org` devolvió error 500 durante el corte; los resultados internacionales se reconstruyeron con CONFEDI, ANFEI y la Comisión Nacional.
 - Los ganadores internacionales de la XIII edición (2026) aún no estaban publicados al cierre.
-- No se consultó SIRLI de forma directa; se usaron sus registros citados por las fuentes nacionales.
+- No se consultó SIRLI de forma directa; se usaron sus registros citados por las fuentes nacionales. *(v3: superado — `research/sirli/` scrapea las tres colecciones completas, 5.136 premios, con HTML archivado. Ver §0.1 y §0.3.)*
 
 Ninguna de estas limitaciones cambia las conclusiones estructurales, pero sí acota el detalle de algunos casos.
 

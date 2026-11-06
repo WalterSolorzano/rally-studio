@@ -69,6 +69,23 @@ def corre(nombre: str, args: list[str], timeout: int = 7200) -> bool:
     return True
 
 
+def corre_exe(nombre: str, cmd: list[str], timeout: int = 600) -> bool:
+    """Ejecuta un binario externo (pandoc), no un modulo de Python."""
+    log(f"▶ {nombre}")
+    t0 = time.time()
+    import os
+    e = {**os.environ, "PYTHONIOENCODING": "utf-8", "PYTHONUTF8": "1"}
+    p = subprocess.run(cmd, cwd=str(ROOT), capture_output=True, text=True,
+                       encoding="utf-8", errors="replace", timeout=timeout, env=e)
+    if p.returncode != 0:
+        log(f"✗ {nombre} rc={p.returncode}")
+        for l in (p.stderr or "").strip().splitlines()[-6:]:
+            log("   " + l[:200])
+        return False
+    log(f"✓ {nombre} en {time.time() - t0:.0f}s")
+    return True
+
+
 def corre_paralelo(nombre: str, args: list[str], n: int, timeout: int = 172800) -> bool:
     """Lanza n procesos del mismo script con --shard/--shards y espera a todos."""
     import os
@@ -176,9 +193,9 @@ def main() -> int:
                            ("html", ["--standalone", "--embed-resources", "--toc",
                                      "--toc-depth=2", "--css=libro.css",
                                      "-M", "title=Anatomía de un ganador"])]:
-            corre(f"libro.{ext}", ["-m", "pandoc", str(libro), "-o", str(libro.with_suffix("." + ext)),
-                                   *extra, "-f", "markdown+pipe_tables", "--resource-path=.",
-                                   "-M", "lang=es"])
+            corre_exe(f"libro.{ext}", ["pandoc", str(libro), "-o", str(libro.with_suffix("." + ext)),
+                                       *extra, "-f", "markdown+pipe_tables", "--resource-path=.",
+                                       "-M", "lang=es"])
 
     resumen = {
         "terminado": datetime.now(timezone.utc).isoformat(timespec="seconds"),

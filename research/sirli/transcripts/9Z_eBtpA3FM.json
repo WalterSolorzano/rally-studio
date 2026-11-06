@@ -1,0 +1,109 @@
+{
+ "video_id": "9Z_eBtpA3FM",
+ "url": "https://youtu.be/9Z_eBtpA3FM",
+ "year": 2021,
+ "collection": "nacional",
+ "country": "NICARAGUA",
+ "team": "ESNIC",
+ "place_label": "TERCER LUGAR",
+ "priority": 1,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "nacional",
+   "place_label": "TERCER LUGAR",
+   "team": "ESNIC",
+   "challenge": "03 - AGUA PARA SOÑAR"
+  },
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "ESNIC",
+   "challenge": "03 - AGUA PARA SOÑAR"
+  }
+ ],
+ "fetched_at": "2026-11-06T18:40:46+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "El acceso a la hués es una de las necesidades humanas más básicas e indispensable en casi todas las actividades. El problema de no poder acceder a un adecuado suministro de agua potable se agudiza cuando este viene acompañado a largo periodo de sequía. ESNIC propone la construcción de un sistema comunitario para la recolección, almacenamiento y conservación de agua pluvial para el periodo de la época seca. El sistema contará con canaletas conectadas del techo a un filtro de grava por medio de tuberías para retener las partículas en suspensión. Una cisterna de concreto donde se almacenará el agua a la que se le adicionará una solución de hipoclorito de sodio para potabilizarla. Dispondrá de un tubo acrílico transparente graduado para informar la disponibilidad de agua en tiempo real. Además se construirá una pila como rebalce para periodos de abundantes lluvias. El sistema de almacenamiento cuenta con una capacidad de 17 metros cúbicos de agua potable. Este tendría un uso por seis familias con un promedio de seis integrantes en cada una, teniendo un consumo por persona 2.5 litros mínimos al día. Este sistema no necesitará de un mantenimiento eléctrico de modo que llegue a ser más accesible en zonas rurales en las cuales no tienen la capacidad suficiente para mover una bomba con electricidad. La construcción del sistema supone un costo aproximado de 1500 dólares, considerando la construcción en un lugar comunitario para seis familias. El ahorro por familia sería de 1.250 dólares. La inversión puede recuperarse a un mediano plazo y la mano de obra no cualificada sería aportada por las familias beneficiarias. El seguimiento a la recuperación de la inversión y al mantenimiento estará a cargo de las organizaciones comunitarias. Es una solución factible económicamente, puesto que la inversión es compartida, es útil y amigable con el medio ambiente.",
+ "segments": [
+  {
+   "start": 0.08,
+   "end": 15.36,
+   "text": "El acceso a la hués es una de las necesidades humanas más básicas e indispensable en casi todas las actividades."
+  },
+  {
+   "start": 15.36,
+   "end": 22.36,
+   "text": "El problema de no poder acceder a un adecuado suministro de agua potable se agudiza cuando este viene acompañado a largo periodo de sequía."
+  },
+  {
+   "start": 22.36,
+   "end": 33.77,
+   "text": "ESNIC propone la construcción de un sistema comunitario para la recolección, almacenamiento y conservación de agua pluvial para el periodo de la época seca."
+  },
+  {
+   "start": 33.77,
+   "end": 42.46,
+   "text": "El sistema contará con canaletas conectadas del techo a un filtro de grava por medio de tuberías para retener las partículas en suspensión."
+  },
+  {
+   "start": 42.46,
+   "end": 50.46,
+   "text": "Una cisterna de concreto donde se almacenará el agua a la que se le adicionará una solución de hipoclorito de sodio para potabilizarla."
+  },
+  {
+   "start": 50.46,
+   "end": 55.46,
+   "text": "Dispondrá de un tubo acrílico transparente graduado para informar la disponibilidad de agua en tiempo real."
+  },
+  {
+   "start": 55.46,
+   "end": 60.46,
+   "text": "Además se construirá una pila como rebalce para periodos de abundantes lluvias."
+  },
+  {
+   "start": 61.46,
+   "end": 66.46,
+   "text": "El sistema de almacenamiento cuenta con una capacidad de 17 metros cúbicos de agua potable."
+  },
+  {
+   "start": 66.46,
+   "end": 75.46,
+   "text": "Este tendría un uso por seis familias con un promedio de seis integrantes en cada una, teniendo un consumo por persona 2.5 litros mínimos al día."
+  },
+  {
+   "start": 75.46,
+   "end": 86.46,
+   "text": "Este sistema no necesitará de un mantenimiento eléctrico de modo que llegue a ser más accesible en zonas rurales en las cuales no tienen la capacidad suficiente para mover una bomba con electricidad."
+  },
+  {
+   "start": 87.46,
+   "end": 95.46,
+   "text": "La construcción del sistema supone un costo aproximado de 1500 dólares, considerando la construcción en un lugar comunitario para seis familias."
+  },
+  {
+   "start": 95.46,
+   "end": 98.46,
+   "text": "El ahorro por familia sería de 1.250 dólares."
+  },
+  {
+   "start": 98.46,
+   "end": 105.46,
+   "text": "La inversión puede recuperarse a un mediano plazo y la mano de obra no cualificada sería aportada por las familias beneficiarias."
+  },
+  {
+   "start": 105.46,
+   "end": 113.46,
+   "text": "El seguimiento a la recuperación de la inversión y al mantenimiento estará a cargo de las organizaciones comunitarias."
+  },
+  {
+   "start": 113.46,
+   "end": 120.46,
+   "text": "Es una solución factible económicamente, puesto que la inversión es compartida, es útil y amigable con el medio ambiente."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 122.6
+}

@@ -1,0 +1,147 @@
+{
+ "video_id": "en4PWVtimNE",
+ "url": "https://youtu.be/en4PWVtimNE",
+ "year": 2021,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "HISBUCANE",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "HISBUCANE",
+   "challenge": "04 - OTRA VUELTA DE TUERCA CON LAS PILAS"
+  }
+ ],
+ "fetched_at": "2026-11-06T18:45:53+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Somos el equipo Esbucandé de la Universidad Nacional Agraria. Elegimos el desafío, otra vuelta de tuerca con las pilas. A continuación les presentamos nuestra idea innovadora, Ecoferpo, para reciclar el residuo de las pilas de carpertilizante a base de hidróxido de potasio, uno de los principales componentes de las pilas. Y así evitar la contaminación de los recursos naturales por los desechos de las pilas. Para resolver esta problemática se requiere de una infraestructura para acopiar los desechos de pilas AA, AAA y CR2032. Las cuales serán clasificadas para su posterior tratamiento con el fin de descomponer sus elementos. Las cuales serán clasificadas para su posterior tratamiento con el fin de separar sus componentes. Una vez obtenido los componentes como el mercurio, carbono, zinc y dióxido de manganes, se procederá a comercializarlos a las industrias que lo requieren como base para la elaboración de sus productos. En el caso de hidróxido de potasio se elaborará fertilizante foliar para cultivo, a base de este componente mezclándolo con ácido cítrico, lo que permitirá una mejor arsucción por parte de la planta. Con Ecoferpo se pretende disminuir la contaminación ambiental provocada por los desechos de las pilas y evitar efectos nocivos para la salud de las personas que consumen alimentos que contienen residuos de las pilas. Ecoferpo presenta gran rentabilidad debido a la alta demanda de fertilizantes potásicos de parte de los agricultores latinoamericanos.",
+ "segments": [
+  {
+   "start": 4.94,
+   "end": 8.2,
+   "text": "Somos el equipo Esbucandé de la Universidad Nacional Agraria."
+  },
+  {
+   "start": 8.2,
+   "end": 11.2,
+   "text": "Elegimos el desafío, otra vuelta de tuerca con las pilas."
+  },
+  {
+   "start": 11.2,
+   "end": 25.5,
+   "text": "A continuación les presentamos nuestra idea innovadora, Ecoferpo,"
+  },
+  {
+   "start": 25.5,
+   "end": 30.36,
+   "text": "para reciclar el residuo de las pilas de carpertilizante a base de hidróxido de potasio,"
+  },
+  {
+   "start": 30.36,
+   "end": 32.36,
+   "text": "uno de los principales componentes de las pilas."
+  },
+  {
+   "start": 32.36,
+   "end": 36.86,
+   "text": "Y así evitar la contaminación de los recursos naturales por los desechos de las pilas."
+  },
+  {
+   "start": 36.86,
+   "end": 43.26,
+   "text": "Para resolver esta problemática se requiere de una infraestructura"
+  },
+  {
+   "start": 43.26,
+   "end": 49.52,
+   "text": "para acopiar los desechos de pilas AA, AAA y CR2032."
+  },
+  {
+   "start": 49.52,
+   "end": 53.52,
+   "text": "Las cuales serán clasificadas para su posterior tratamiento"
+  },
+  {
+   "start": 53.52,
+   "end": 58.12,
+   "text": "con el fin de descomponer sus elementos."
+  },
+  {
+   "start": 58.12,
+   "end": 61.72,
+   "text": "Las cuales serán clasificadas para su posterior tratamiento"
+  },
+  {
+   "start": 61.72,
+   "end": 65.02,
+   "text": "con el fin de separar sus componentes."
+  },
+  {
+   "start": 65.02,
+   "end": 69.86,
+   "text": "Una vez obtenido los componentes como el mercurio, carbono,"
+  },
+  {
+   "start": 69.86,
+   "end": 73.46,
+   "text": "zinc y dióxido de manganes, se procederá a comercializarlos"
+  },
+  {
+   "start": 73.46,
+   "end": 78.56,
+   "text": "a las industrias que lo requieren como base para la elaboración de sus productos."
+  },
+  {
+   "start": 78.56,
+   "end": 84.96,
+   "text": "En el caso de hidróxido de potasio se elaborará fertilizante foliar para cultivo,"
+  },
+  {
+   "start": 84.96,
+   "end": 88.86,
+   "text": "a base de este componente mezclándolo con ácido cítrico,"
+  },
+  {
+   "start": 88.86,
+   "end": 94.36,
+   "text": "lo que permitirá una mejor arsucción por parte de la planta."
+  },
+  {
+   "start": 94.36,
+   "end": 98.06,
+   "text": "Con Ecoferpo se pretende disminuir la contaminación ambiental"
+  },
+  {
+   "start": 98.06,
+   "end": 100.26,
+   "text": "provocada por los desechos de las pilas"
+  },
+  {
+   "start": 100.26,
+   "end": 104.86,
+   "text": "y evitar efectos nocivos para la salud de las personas que consumen alimentos"
+  },
+  {
+   "start": 104.86,
+   "end": 107.26,
+   "text": "que contienen residuos de las pilas."
+  },
+  {
+   "start": 107.26,
+   "end": 113.16,
+   "text": "Ecoferpo presenta gran rentabilidad debido a la alta demanda de fertilizantes potásicos"
+  },
+  {
+   "start": 113.16,
+   "end": 116.26,
+   "text": "de parte de los agricultores latinoamericanos."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 116.4
+}

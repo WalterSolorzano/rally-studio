@@ -6,15 +6,15 @@ si falta un archivo o su descripción, se corrige en `DESCRIPCIONES`.
 Regla de uso: leer primero este índice y abrir solo lo que la tarea pida.
 Si un archivo no está aquí, no es corpus: es código o artefacto.
 
-Archivos indexados: 5362
+Archivos indexados: 5363
 
 | Ruta | Qué es | Cuándo sí | Cuándo no |
 |---|---|---|---|
 | `brief.json` | Fuente única de verdad del proyecto en curso (certamen, equipo, reto, ciudad, ODS). | Siempre, antes de generar cualquier contenido. | Nunca se omite: si falta un campo, se pregunta al humano. |
 | `Análisis del Rally de Innovación.txt` | Análisis largo del Rally Nacional y del Rally Latam: reglas, criterios, errores típicos. | Dudas de reglamento, formato de entrega o criterios de jurado. | Para redactar texto final: se usan las rúbricas destiladas. |
 | `Rally_Innovacion_Nicaragua_Analisis.pdf` | Investigación en PDF sobre el Rally Nacional de Nicaragua. | Cuando se necesita contexto del certamen nacional y su ecosistema. | Si ya está cubierto por el manual maestro nacional. |
-| `Proyectos Ganadores de Rally Latam.md` | Catálogo extenso de proyectos premiados en Latinoamérica. | Buscar patrones de lo que gana (hibridación ciberfísica, enfoque territorial). | Para detalles de un proyecto puntual: usar winners_database.json. |
-| `chatgptdeep-research-report.md` | Informe de investigación profunda: fórmula PAS-V de 120 s y errores de descalificación. | Diseñar o auditar el guion del video. | Para presupuesto o pauta técnica. |
+| `Proyectos Ganadores de Rally Latam.md` | Deep research de Gemini (251 KB): gobernanza SIRLI, registro de ganadores y arquitectura de guion. Fuente T2, no verdad paralela. | Rastrear de dónde salió una cifra o un patrón narrativo concreto. | Como evidencia: lo consolida `docs/INFORME_INVESTIGACION.md` v3. Su escala «1.425 sedes / 65.000 jóvenes» no está en el banco verificado. |
+| `chatgptdeep-research-report.md` | Deep research de GPT: casos de ganadores 2019–2025 y anatomía del video de 120 s. Fuente T2, no verdad paralela. | Rastrear el origen de un caso o de una afirmación sobre el guion. | Como evidencia: lo consolida `docs/INFORME_INVESTIGACION.md` v3. Contiene la errata «Ollnari 2023» (es 2025) y análisis especulativos marcados como tales. |
 | `rubrica_oficial_latam.jpeg` | Imagen de la rúbrica oficial del Rally Latam (19 ítems y puntajes). | Verificar ponderaciones exactas antes de auditar un entregable. | Si ya se consultó rubric_matrices.md en esta sesión. |
 | `PRODUCT.md` | Definición de producto: usuarios, propósito, posicionamiento, marca, accesibilidad. | Cambiar la interfaz, el tono o la identidad visual. | Para contenido del certamen. |
 | `DESIGN.md` | Decisiones de diseño visual y sistema de componentes. | Tocar presentación, layout o estilos. | Para lógica o datos. |
@@ -164,6 +164,7 @@ Archivos indexados: 5362
 | `research/sirli/frames/ZECqk711kwc.jpg` | (sin describir — añadir a DESCRIPCIONES) | — | — |
 | `research/sirli/frames/zo2KR-YF3Ok.jpg` | (sin describir — añadir a DESCRIPCIONES) | — | — |
 | `research/sirli/manifest.json` | (sin describir — añadir a DESCRIPCIONES) | — | — |
+| `research/sirli/MAPA.md` | (sin describir — añadir a DESCRIPCIONES) | — | — |
 | `research/sirli/meta/thumbs/--mz94-nApA.jpg` | (sin describir — añadir a DESCRIPCIONES) | — | — |
 | `research/sirli/meta/thumbs/-0iq-zP2xZ8.jpg` | (sin describir — añadir a DESCRIPCIONES) | — | — |
 | `research/sirli/meta/thumbs/-27r4DBEf_A.jpg` | (sin describir — añadir a DESCRIPCIONES) | — | — |
@@ -5344,10 +5345,10 @@ Archivos indexados: 5362
 | `docs/canvas.md` | Modelo Canvas del proyecto en curso. | Completar o revisar el modelo de negocio. | Para el pautado técnico. |
 | `docs/DESCARGA.md` | Qué trae el paquete de descarga y cómo empezar en cinco pasos. | Primera sesión tras clonar o descargar el ZIP. | Para trabajo avanzado: usar el manual de IA o el de despliegue. |
 | `docs/DESPLEGAR_GRATIS.md` | (sin describir — añadir a DESCRIPCIONES) | — | — |
-| `docs/Dossier_Soluciones_nacional.pdf` | (sin describir — añadir a DESCRIPCIONES) | — | — |
 | `docs/EQUIPO_AGENTES.md` | (sin describir — añadir a DESCRIPCIONES) | — | — |
+| `docs/EQUIPO_ESTUDIANTIL.md` | (sin describir — añadir a DESCRIPCIONES) | — | — |
 | `docs/herramientas.json` | (sin describir — añadir a DESCRIPCIONES) | — | — |
-| `docs/INFORME_INVESTIGACION.md` | (sin describir — añadir a DESCRIPCIONES) | — | — |
+| `docs/INFORME_INVESTIGACION.md` | Investigación canónica única (v3): consolida los informes de GPT y Gemini, declara la jerarquía de fuentes contra el banco verificado `research/sirli/` y registra qué se descartó por falta de respaldo. | Antes de citar cualquier cifra del certamen o de un ganador, y al auditar un entregable contra la evidencia. | Para el detalle estadístico completo: usar `research/sirli/analisis/investigacion_profunda.md`. |
 | `docs/INFORME_INVESTIGACION.pdf` | (sin describir — añadir a DESCRIPCIONES) | — | — |
 | `docs/INSTALACION_AGENTE.md` | Detalle técnico de la capa de agente: skills, reglas, MCP y límites de Antigravity. | Depurar la instalación del agente o añadir skills y MCPs. | Para el flujo de trabajo diario: basta MANUAL_IA.md. |
 | `docs/INSTALACION_Y_DESPLIEGUE.md` | Guía de instalación, ejecución y despliegue del sistema. | Instalar, arrancar o publicar el sistema. | Para contenido del certamen. |

@@ -23,6 +23,9 @@ CORPUS = ROOT / "brain" / "corpus"
 # Fuente -> nombre limpio dentro del corpus.
 # Nombres en ASCII a proposito: el graphify deriva los IDs de nodo de la ruta.
 COPY = {
+    # Documento canonico unico de investigacion (v3): consolida los informes de otras IA
+    # y declara la jerarquia de fuentes contra el banco verificado research/sirli/.
+    "docs/INFORME_INVESTIGACION.md": "informe_investigacion.md",
     "knowledge/winners_latam.md": "ganadores_latam.md",
     "knowledge/winners_analysis.md": "ganadores_analisis.md",
     "knowledge/rally_analysis.txt": "rally_analisis.txt",

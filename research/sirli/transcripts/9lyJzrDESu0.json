@@ -1,0 +1,97 @@
+{
+ "video_id": "9lyJzrDESu0",
+ "url": "https://youtu.be/9lyJzrDESu0",
+ "year": 2021,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "GUERREROS DEL AGUA",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "GUERREROS DEL AGUA",
+   "challenge": "03 - AGUA PARA SOÑAR"
+  }
+ ],
+ "fetched_at": "2026-11-06T18:45:52+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "La situación del agua potable en América Latina es alarmante. La Organización Agua de México nos brinde estadísticas que el Banco Mundial provee asegurando que 30 millones de latinoamericanos no tienen el acceso a agua potable. Asimismo, el periódico del país manifiesta que los países con menor acceso al de tal líquido son Haití, República Dominicana, Nicaragua, Ecuador, Perú y Bolivia. Este periódico también revela que a pesar de que la región posee las mayores reservas de agua dulce, sus habitantes sufren por escasez de agua potable. Niambura, es el nombre que les mostrado a este proyecto. Este proyecto propone una solución centrada en la filtración y purificación del agua de lluvia, la cual será utilizada en las comunidades que no cuentan con el servicio de agua potable. Este proyecto estará compuesto por pileta elaborada de concretos para el almacenamiento del agua de lluvia, a través de un sistema de bombeo a un tanque clorinador, que a su vez procesará el agua a filtros de purificación. Una vez realizado este proceso, el agua será almacenada en tanques para su conservación y así pasará el sistema de bombeo que facilite la red de distribución a las comunidades. Niambura, purificando caragota de lluvia.",
+ "segments": [
+  {
+   "start": 3.44,
+   "end": 7.06,
+   "text": "La situación del agua potable en América Latina es alarmante."
+  },
+  {
+   "start": 7.06,
+   "end": 17.06,
+   "text": "La Organización Agua de México nos brinde estadísticas que el Banco Mundial provee asegurando que 30 millones de latinoamericanos no tienen el acceso a agua potable."
+  },
+  {
+   "start": 17.06,
+   "end": 23.14,
+   "text": "Asimismo, el periódico del país manifiesta que los países con menor acceso al de tal líquido son"
+  },
+  {
+   "start": 23.14,
+   "end": 28.78,
+   "text": "Haití, República Dominicana, Nicaragua, Ecuador, Perú y Bolivia."
+  },
+  {
+   "start": 28.78,
+   "end": 34.12,
+   "text": "Este periódico también revela que a pesar de que la región posee las mayores reservas de agua dulce,"
+  },
+  {
+   "start": 34.12,
+   "end": 37.68,
+   "text": "sus habitantes sufren por escasez de agua potable."
+  },
+  {
+   "start": 37.68,
+   "end": 43.98,
+   "text": "Niambura, es el nombre que les mostrado a este proyecto."
+  },
+  {
+   "start": 45.48,
+   "end": 50.38,
+   "text": "Este proyecto propone una solución centrada en la filtración y purificación del agua de lluvia,"
+  },
+  {
+   "start": 50.38,
+   "end": 54.98,
+   "text": "la cual será utilizada en las comunidades que no cuentan con el servicio de agua potable."
+  },
+  {
+   "start": 55.58,
+   "end": 62.78,
+   "text": "Este proyecto estará compuesto por pileta elaborada de concretos para el almacenamiento del agua de lluvia,"
+  },
+  {
+   "start": 62.78,
+   "end": 69.98,
+   "text": "a través de un sistema de bombeo a un tanque clorinador, que a su vez procesará el agua a filtros de purificación."
+  },
+  {
+   "start": 69.98,
+   "end": 75.98,
+   "text": "Una vez realizado este proceso, el agua será almacenada en tanques para su conservación"
+  },
+  {
+   "start": 75.98,
+   "end": 80.98,
+   "text": "y así pasará el sistema de bombeo que facilite la red de distribución a las comunidades."
+  },
+  {
+   "start": 80.98,
+   "end": 84.98,
+   "text": "Niambura, purificando caragota de lluvia."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 96.7
+}

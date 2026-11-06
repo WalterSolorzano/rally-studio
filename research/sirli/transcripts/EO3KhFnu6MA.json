@@ -1,0 +1,102 @@
+{
+ "video_id": "EO3KhFnu6MA",
+ "url": "https://youtu.be/EO3KhFnu6MA",
+ "year": 2020,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "MENTES BRILLANTES",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2020,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "MENTES BRILLANTES",
+   "challenge": "05 - ¿AYUDARÍA UN SISTEMA O DISPOSITIVO HOGAREÑO A EVITAR QUE EL ACEITE DE FRITURA USADO TERMINE EN LA RED PÚBLICA?"
+  }
+ ],
+ "fetched_at": "2026-11-06T18:49:50+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Sabías que actualmente un litro de aceite utilizado puede contaminar hasta 40 mil litros de agua, que equivale a lo que consumiría una persona de manera anual, desde su hogar. Esto quiere decir que es más de 5 mil veces más contaminantes que las aguas putrefactas de alcantarías. El aceite es el mayor invasor y contaminante que afecta a nuestra flora y fauna, terrestre y aquífera. Pero un aceite usado no solo resulta peligroso para los acuíferos, también es capaz de estropear los alimentos que acerven más aceite. No se cocinan de forma uniforme, aparecen sabores y olores raros y causar contaminación cruzada, eso sin mencionar que puede resultar más peligroso a reducirse al punto de inicio. Por eso hemos creado el dispositivo Oil-Reuse, que consiste en destilar el aceite con un sistema de filtros biodegradables compuesto por un cartucho extraíble de tela, donde se depositará el aceite seguidamente. Pasará por el filtro de arena, posterior a un filtro de hormigón y luego a un filtro de carbono activado. El aceite filtrado pasará por un conducto, todo esto con el fin de erradicar el uso irracional del aceite de futuras y volver a reutilizar el aceite de manera domiciliar. Este aceite puede ser convertido en cera, a través de este mismo mecanismo o dispositivo, que ayudará a transformarlo y seremos capaces de inventar nuestras propias alternativas de autosostenimiento económico. Y mantendremos mejoras en nuestro medio ambiente.",
+ "segments": [
+  {
+   "start": 2.51,
+   "end": 8.51,
+   "text": "Sabías que actualmente un litro de aceite utilizado puede contaminar hasta 40 mil litros de agua,"
+  },
+  {
+   "start": 8.51,
+   "end": 13.51,
+   "text": "que equivale a lo que consumiría una persona de manera anual, desde su hogar."
+  },
+  {
+   "start": 13.51,
+   "end": 20.51,
+   "text": "Esto quiere decir que es más de 5 mil veces más contaminantes que las aguas putrefactas de alcantarías."
+  },
+  {
+   "start": 20.51,
+   "end": 28.51,
+   "text": "El aceite es el mayor invasor y contaminante que afecta a nuestra flora y fauna, terrestre y aquífera."
+  },
+  {
+   "start": 28.51,
+   "end": 37.51,
+   "text": "Pero un aceite usado no solo resulta peligroso para los acuíferos, también es capaz de estropear los alimentos que acerven más aceite."
+  },
+  {
+   "start": 37.51,
+   "end": 46.51,
+   "text": "No se cocinan de forma uniforme, aparecen sabores y olores raros y causar contaminación cruzada,"
+  },
+  {
+   "start": 46.51,
+   "end": 52.51,
+   "text": "eso sin mencionar que puede resultar más peligroso a reducirse al punto de inicio."
+  },
+  {
+   "start": 52.51,
+   "end": 61.51,
+   "text": "Por eso hemos creado el dispositivo Oil-Reuse, que consiste en destilar el aceite con un sistema de filtros biodegradables"
+  },
+  {
+   "start": 61.51,
+   "end": 68.51,
+   "text": "compuesto por un cartucho extraíble de tela, donde se depositará el aceite seguidamente."
+  },
+  {
+   "start": 68.51,
+   "end": 78.51,
+   "text": "Pasará por el filtro de arena, posterior a un filtro de hormigón y luego a un filtro de carbono activado."
+  },
+  {
+   "start": 78.51,
+   "end": 85.51,
+   "text": "El aceite filtrado pasará por un conducto, todo esto con el fin de erradicar el uso irracional del aceite de futuras"
+  },
+  {
+   "start": 85.51,
+   "end": 90.51,
+   "text": "y volver a reutilizar el aceite de manera domiciliar."
+  },
+  {
+   "start": 90.51,
+   "end": 96.51,
+   "text": "Este aceite puede ser convertido en cera, a través de este mismo mecanismo o dispositivo,"
+  },
+  {
+   "start": 96.51,
+   "end": 107.51,
+   "text": "que ayudará a transformarlo y seremos capaces de inventar nuestras propias alternativas de autosostenimiento económico."
+  },
+  {
+   "start": 107.51,
+   "end": 112.51,
+   "text": "Y mantendremos mejoras en nuestro medio ambiente."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 113.9
+}

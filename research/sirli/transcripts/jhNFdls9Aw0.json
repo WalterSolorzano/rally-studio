@@ -1,0 +1,137 @@
+{
+ "video_id": "jhNFdls9Aw0",
+ "url": "https://www.youtube.com/watch?v=jhNFdls9Aw0",
+ "year": 2017,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "VIXX",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2017,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "VIXX",
+   "challenge": "07 - REUTILIZACIÓN DE MATERIALES PLÁSTICOS TERMOESTABLES"
+  }
+ ],
+ "fetched_at": "2026-11-06T18:57:54+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En Nicaragua no se cuenta con una empresa enfocada en reciclaje de desechos de llantas, lo cual es una problemática, tomando en cuenta que una llanta demora más de 500 años en degradarse. En 2013 el recambio mensual de llantas rondaba las 10.700 unidades y anualmente la cifra era de 128.500 unidades en Managua. Entonces, ¿dónde van a parar todos los desechos de llantas? A nivel regional estos desechos se encuentran en versederos de basuras, ríos, lotes baldíos, patios de casas o son quemados. Asimismo aumentan la contaminación visual y al estar expuestos permiten la proliferación de creaderos de mosquitos. Con la reutilización de plásticos termoestables decidimos reciclar las llantas dando uso útil en zonas recreativas como colegios públicos y parques locales, con el propósito de reducir costos, la contaminación y enfermedades. De igual manera, ayudar al desarrollo de los niños. Para ello, contamos con dos propuestas que son viables para nuestro país. 1. Termo Parques. Esto consiste en construir un parque a base de llantas reutilizables, contando con columpios, túneles, pirámides para escalar, asientos, suba y baja, con el objetivo de promover para los niños en su creatividad. 2. Recipientes de basura. Esta será una de las herramientas dentro de los termo parques y colegios públicos para incentivar y contribuir para gozar de un país más limpio y enseñándoles a reciclar y depositar la basura en su lugar.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 5.16,
+   "text": "En Nicaragua no se cuenta con una empresa enfocada en reciclaje de desechos de llantas,"
+  },
+  {
+   "start": 5.16,
+   "end": 11.24,
+   "text": "lo cual es una problemática, tomando en cuenta que una llanta demora más de 500 años en degradarse."
+  },
+  {
+   "start": 11.24,
+   "end": 15.92,
+   "text": "En 2013 el recambio mensual de llantas rondaba las 10.700 unidades"
+  },
+  {
+   "start": 15.92,
+   "end": 20.4,
+   "text": "y anualmente la cifra era de 128.500 unidades en Managua."
+  },
+  {
+   "start": 20.4,
+   "end": 23.88,
+   "text": "Entonces, ¿dónde van a parar todos los desechos de llantas?"
+  },
+  {
+   "start": 23.88,
+   "end": 27.88,
+   "text": "A nivel regional estos desechos se encuentran en versederos de basuras,"
+  },
+  {
+   "start": 27.88,
+   "end": 31.56,
+   "text": "ríos, lotes baldíos, patios de casas o son quemados."
+  },
+  {
+   "start": 31.56,
+   "end": 35.68,
+   "text": "Asimismo aumentan la contaminación visual y al estar expuestos"
+  },
+  {
+   "start": 35.68,
+   "end": 38.56,
+   "text": "permiten la proliferación de creaderos de mosquitos."
+  },
+  {
+   "start": 38.56,
+   "end": 44.0,
+   "text": "Con la reutilización de plásticos termoestables decidimos reciclar las llantas"
+  },
+  {
+   "start": 44.0,
+   "end": 48.44,
+   "text": "dando uso útil en zonas recreativas como colegios públicos y parques locales,"
+  },
+  {
+   "start": 48.44,
+   "end": 53.0,
+   "text": "con el propósito de reducir costos, la contaminación y enfermedades."
+  },
+  {
+   "start": 53.0,
+   "end": 55.84,
+   "text": "De igual manera, ayudar al desarrollo de los niños."
+  },
+  {
+   "start": 56.04,
+   "end": 59.84,
+   "text": "Para ello, contamos con dos propuestas que son viables para nuestro país."
+  },
+  {
+   "start": 59.84,
+   "end": 61.84,
+   "text": "1. Termo Parques."
+  },
+  {
+   "start": 61.84,
+   "end": 65.84,
+   "text": "Esto consiste en construir un parque a base de llantas reutilizables,"
+  },
+  {
+   "start": 65.84,
+   "end": 71.32,
+   "text": "contando con columpios, túneles, pirámides para escalar, asientos, suba y baja,"
+  },
+  {
+   "start": 71.32,
+   "end": 74.84,
+   "text": "con el objetivo de promover para los niños en su creatividad."
+  },
+  {
+   "start": 74.84,
+   "end": 77.04,
+   "text": "2. Recipientes de basura."
+  },
+  {
+   "start": 77.04,
+   "end": 81.44,
+   "text": "Esta será una de las herramientas dentro de los termo parques y colegios públicos"
+  },
+  {
+   "start": 81.44,
+   "end": 84.44,
+   "text": "para incentivar y contribuir para gozar de un país más limpio"
+  },
+  {
+   "start": 84.44,
+   "end": 87.44,
+   "text": "y enseñándoles a reciclar y depositar la basura en su lugar."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 105.8
+}

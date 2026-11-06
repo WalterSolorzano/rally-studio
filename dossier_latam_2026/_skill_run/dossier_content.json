@@ -7,6 +7,7 @@
    "id": "01",
    "titulo": "Segunda vida de los motores eléctricos domésticos",
    "categoria": "innovacion",
+   "categoria_porque": "Categoría innovación porque la rúbrica premia la transformación técnica de un residuo en producto de uso, y esta opción convierte un motor descartado en equipo de riego probado y entregado.",
    "descripcion": "Reto del comité sobre Segunda vida de los motores eléctricos domésticos. Sector declarado: electrodomésticos en desuso.",
    "ods": [
     [
@@ -42,73 +43,75 @@
     ],
     [
      "Sustituto existente",
-     "por validar con el equipo"
+     "Bomba de riego eléctrica comercial, ~USD 400 en la ferretería del sector; no basta porque la asociación no la financia y el motor rescatado evita esa compra. Estimación a cotizar."
     ],
     [
      "Costo de referencia",
-     "por validar con el equipo"
+     "USD 170 estimación para el grupo motriz (bomba 90 + base 40 + manguera 40); el motor se recibe en el acopio."
     ]
    ],
    "propuesta": {
-    "nombre": "Motores eléctricos domésticos en desuso convertidos en bombas de riego",
-    "claim": "Motores de lavadora en desuso mueven la bomba de riego que la asociación de productores necesita para su parcela.",
-    "que_es": "Un grupo motriz de bomba de riego armado con motores eléctricos que ya cumplieron su vida en lavadoras y ventiladores de la casa. La asociación de productores lo opera en su parcela: el motor rescatado gira la bomba de impulsión que sube agua del pozo o del arroyo al área de riego, sin comprar un equipo nuevo y sin gastar combustible. El grupo se fabrica con piezas que llegan gratis desde el desecho doméstico: el motor, su capacitor, el cableado y el eje se recuperan del electrodoméstico desmontado, y solo se compran la bomba de impulsión y las abrazaderas que unen ambas piezas. El problema que resuelve es concreto: la asociación hoy depende de bombas caras o riega a mano, mientras el desecho de los hogares del municipio se acumula en el basurero. Cada grupo se prueba antes de salir del taller: se mide el caudal en un banco de medición con agua, se revisa que el acople no vibre y se ajusta la alineación del eje. El entregable es el equipo montado con su manual de operación, la lista de piezas usadas y la fecha de la prueba de caudal, para que la asociación sepa qué revisar cada temporada.",
+    "nombre": "Grupo motriz de riego con motor doméstico rescatado",
+    "claim": "El motor de una lavadora que el taller recibía como chatarra mueve la bomba de riego de la asociación de productores.",
+    "que_es": "Grupo motriz de riego: un motor eléctrico rescatado de una lavadora o un ventilador del hogar, montado sobre una base con una bomba de impulsión que sube el agua del pozo al área de riego de la parcela. La asociación de productores lo opera en su terreno: el taller del municipio recibe los electrodomésticos que los vecinos ya no usan, extrae el motor con su cableado y su eje, lo acopla a la bomba y lo prueba con agua en un banco antes de entregarlo. El productor conecta la manguera, enciende y riega sin comprar equipo nuevo y sin gastar combustible. No es una bomba comercial que nadie puede pagar ni un motor tirado en el botadero: es un equipo montado, probado y entregado con su ficha de operación.",
     "como": [
-     "Desmontar motores de lavadoras y ventiladores descartados sin piezas nuevas.",
-     "Acoplar el eje del motor a una bomba de impulsión para riego de parcelas.",
-     "Probar el caudal en un banco de medición antes de instalar en el campo.",
-     "Entregar el equipo montado a la asociación de productores con su manual de operación."
+     "El vecino entrega su lavadora o ventilador quemado en el punto de acopio del taller municipal, donde el técnico desmonta el motor con su cableado y su eje.",
+     "El técnico del taller acopla el eje del motor a la bomba de impulsión sobre la base de riego y aprieta las abrazaderas.",
+     "El operario monta el grupo en el banco de prueba, lo enciende con agua y anota el caudal y la vibración del acople.",
+     "El taller entrega el equipo probado a la asociación de productores con su ficha de operación y la lista de piezas para el primer riego."
     ],
-    "beneficiario": "Alcaldía · partida de agua potable · alcalde · equipo de bombeo para parcelas",
+    "beneficiario": "Asociación de productores · partida de agua potable del municipio · gerente · equipo de bombeo para sus parcelas",
     "componentes": [
      "Motor de lavadora o ventilador rescatado",
      "Bomba de impulsión de riego",
-     "Eje acoplado con abrazaderas",
-     "Banco de medición de caudal",
-     "Manual de operación y lista de piezas"
+     "Base con abrazaderas de acople",
+     "Banco de prueba de caudal",
+     "Ficha de operación y lista de piezas"
     ],
-    "costo": "por validar con el equipo",
+    "costo": "Estimación a cotizar (USD): bomba de impulsión 1 × 90 + base y abrazaderas 1 × 40 + manguera de 20 m 1 × 40 = 170; el motor sale del acopio sin costo.",
     "metricas": [
-     "por validar · fuente: research/claims.json",
-     "Por validar con el equipo"
+     "Caudal en litros por minuto medido en el banco de prueba",
+     "Vibración del acople antes y después de alinear el eje",
+     "Motores rescatados por mes que dejan de ir al botadero"
     ]
    },
    "alterna": {
-    "nombre": "Carretilla de carga con motor de lavadora doméstica para el mercado",
+    "nombre": "Carretilla de tracción eléctrica para el mercado municipal",
     "claim": "El motor de lavadora en desuso tira de la carretilla que el jefe del mercado hoy empuja a mano.",
-    "que_es": "Carretilla de tracción eléctrica armada con el motor de una lavadora doméstica que ya no funciona, para mover carga en el mercado municipal. El jefe del mercado la opera en el patio de acopio: el motor rescatado tira del eje trasero y la carretilla arrastra sacos de producto desde la entrada hasta el puesto, sin combustible y sin empujar a mano. El chasis se monta con las ruedas del carrito de mano que el mercado ya usa, así la reparación se hace con piezas locales. El problema concreto es que hoy los cargadores empujan carretillas a mano con sacos pesados y el desecho de electrodomésticos de los hogares no se aprovecha. Antes de entregarla, la carretilla pasa una prueba en el patio: se carga con dos sacos de prueba, se mide cuánto arrastra el motor en cada arranque y se revisa que el eje trasero no se desalinee. La entrega incluye la carretilla montada, su ficha de carga y operación, y la lista de piezas recuperadas del electrodoméstico, para que el mercado sepa qué cambiar cuando algo falle.",
+    "que_es": "Carretilla de tracción eléctrica armada con el motor de una lavadora doméstica que ya no funciona, para mover carga en el patio del mercado municipal. El jefe del mercado la opera enchufando el cable al tomacorriente del patio: el motor rescatado tira del eje trasero y la carretilla arrastra sacos de producto desde la entrada hasta los puestos, sin combustible y sin empujar a mano. El chasis se monta con las ruedas del carrito de mano que el mercado ya usa. Antes de entregarla, la carretilla pasa una prueba en el patio: se carga con sacos de prueba, se mide cuánto arrastra en cada arranque y se revisa que el eje no se desalinee. No es un carrito de mano, que depende del brazo del cargador, ni una carretilla motorizada importada: es equipo montado y probado antes de entrar a trabajar.",
     "como": [
-     "Desmontar el motor de lavadora doméstico en desuso y acoplarlo al eje trasero.",
-     "Montar el chasis de la carretilla con ruedas del carrito de mano existente.",
-     "Probar la carga en patio con sacos de prueba antes de entrar al mercado.",
-     "Ceder la carretilla al jefe del mercado con su ficha de carga y operación."
+     "El jefe del mercado entrega el motor de la lavadora quemada que guardó en la bodega, y el técnico del taller lo desmonta con su cableado y su eje.",
+     "El técnico del taller monta el chasis con las ruedas del carrito de mano existente y sujeta el motor al eje trasero con las abrazaderas.",
+     "El operario conecta el cable al tomacorriente del patio y prueba la carretilla con dos sacos de prueba, midiendo el arranque y la alineación del eje.",
+     "El taller cede la carretilla probada al jefe del mercado con su ficha de carga y la lista de piezas recuperadas."
     ],
-    "beneficiario": "Mercado municipal · cuota de puestos · jefe del mercado · carretillas de carga para el acopio",
+    "beneficiario": "Mercado municipal · cuota de operación · jefe del mercado · carretillas de carga para su acopio",
     "componentes": [
      "Motor de lavadora en desuso",
-     "Eje trasero con ruedas del carrito de mano",
-     "Chasis de carga con plataforma",
-     "Sacos de prueba para el ensayo de patio",
+     "Chasis con ruedas del carrito de mano",
+     "Eje trasero con abrazaderas",
+     "Cable y enchufe del patio de acopio",
      "Ficha de carga y operación"
     ],
-    "costo": "por validar con el equipo",
+    "costo": "Estimación a cotizar (USD): chasis y plataforma 1 × 150 + eje y ruedas 1 × 70 + cable y protección 1 × 30 = 250; el motor sale del acopio sin costo.",
     "metricas": [
-     "por validar · fuente: research/claims.json",
-     "Por validar con el equipo"
+     "Sacos movidos por hora en el patio del mercado",
+     "Minutos que el cargador deja de empujar por turno",
+     "Arranques del motor medidos en la prueba de patio"
     ]
    },
    "realidad": {
-    "a": "Supuesto: el motor de lavadora rinde caudal suficiente en campo; prueba barata: medir caudal en banco con un motor rescatado antes de fabricar más.",
-    "b": "Supuesto: el motor de lavadora mueve la carretilla con carga del mercado; prueba barata: arrastrar dos sacos en el patio con el motor montado antes de entregarla."
+    "a": "Supuesto: el motor rescatado rinde caudal suficiente para riego; prueba barata: medir caudal en banco con un motor antes de fabricar más grupos.",
+    "b": "Supuesto: el motor mueve la carretilla con carga en el patio; prueba barata: arrastrar dos sacos en el patio con el motor montado antes de entregarla."
    },
    "cadena": {
-    "problema": "Motores eléctricos domésticos en desuso y falta de maquinaria de bajo costo para comunidades vulnerables (Desafío 01).",
-    "causa_raiz": "Por validar con el equipo.",
-    "insight": "Aplicó economía circular directa: rescatar motores de electrodomésticos descartados para reconvertirlos en maquinaria productiva y energética de bajo costo.",
-    "solucion": "Reutilización de motores eléctricos en desuso para tracción comunitaria rural.",
-    "metrica": "por validar · fuente: research/claims.json"
+    "problema": "Los motores de lavadora y ventilador de los hogares terminan en el botadero con el bobinado útil, mientras la asociación de productores no puede comprar bomba ni pagar combustible para riego.",
+    "causa_raiz": "Nadie desarma el electrodoméstico en el sitio: el taller que lo recibe lo vende como chatarra y el productor se queda sin equipo de bombeo de bajo costo.",
+    "insight": "El motor doméstico ya tiene la potencia justa para el trabajo bajo que pide la parcela; lo que falta no es motor, sino el acople a la bomba y una prueba de caudal antes de salir del taller.",
+    "solucion": "Grupo motriz de riego armado con el motor rescatado y probado en banco, entregado a la asociación con su ficha de operación; la opción 02 usa el mismo rescate para traccionar la carretilla del mercado.",
+    "metrica": "Litros por minuto medidos en el banco de prueba y motores rescatados por mes que dejan de ir al botadero."
    },
-   "senal": "AVOCADO 2026 rescató motores de electrodomésticos descartados y los reconvirtió en maquinaria productiva de bajo costo.",
+   "senal": "La asociación deja de esperar bomba comprada ni regar a mano: el motor que el taller recibía como desecho sale convertido en equipo de riego probado la misma semana del rescate.",
    "analogias": [
     {
      "year": 2026,
@@ -116,32 +119,33 @@
      "puesto": "1er lugar nacional Impacto Social",
      "proyecto": "Segunda vida de motores eléctricos domésticos",
      "que_hicieron": "Reutilizó motores eléctricos en desuso para tracción comunitaria rural.",
-     "por_que": "Es el caso que documenta la segunda vida de los motores domésticos que esta opción repite.",
+     "por_que": "Rescató motores de electrodomésticos descartados para reconvertirlos en maquinaria productiva de bajo costo; esta opción aplica el mismo rescate al bombeo de riego de la parcela.",
      "video": ""
     }
    ],
-   "pitch": "Motores de lavadora en desuso mueven la bomba de riego que la asociación de productores necesita para su parcela."
+   "pitch": "El motor de una lavadora que el taller recibía como chatarra mueve la bomba de riego de la asociación de productores, que hoy no puede comprar equipo ni pagar combustible."
   },
   {
    "id": "02",
    "titulo": "Sensores al servicio de la comunidad",
    "categoria": "impacto_social",
+   "categoria_porque": "Categoría impacto social porque la rúbrica premia soluciones que mejoran la vida de una comunidad con beneficio medible, y esta opción da a la junta y al mercado instrumentos de lectura que hoy no tienen.",
    "descripcion": "Reto del comité sobre Sensores al servicio de la comunidad. Sector declarado: celulares en desuso.",
    "ods": [
     [
      "ODS 11",
      "Ciudades y comunidades sostenibles",
-     "Da a la junta de agua lectura de humedad en sus barrios sin comprar estación nueva."
+     "Da a la junta del barrio lectura de fugas y a las neveras del mercado aviso de temperatura."
     ],
     [
      "ODS 6",
      "Agua limpia y saneamiento",
-     "Ajusta el riego a la humedad real de la parcela y evita gastar agua de más."
+     "Recupera el agua potable que hoy se pierde por fugas de la red del barrio."
     ],
     [
      "ODS 9",
      "Industria, innovación e infraestructura",
-     "Arma la red de medición con piezas de celulares descartados."
+     "Instrumentos que la junta arma, lee y mantiene en el taller del barrio."
     ]
    ],
    "insignias": [
@@ -151,109 +155,111 @@
     ],
     [
      "Fondos de Agua (The Nature Conservancy)",
-     "Aplica por la medición de agua en las parcelas de la junta."
+     "Aplica por la medición de agua en las redes de la junta del barrio."
     ]
    ],
    "detalles": [
     [
      "Quién paga",
-     "Junta de agua potable · cuota de mantenimiento · coordinador · red de medición en barrios"
+     "Junta de agua potable · cuota de mantenimiento · coordinador · varilla de escucha para su red"
     ],
     [
      "Sustituto existente",
-     "por validar con el equipo"
+     "Correlador acústico portátil de contratista, ~USD 2,500 la visita; no basta porque la junta no lo contrata para cada fuga. Estimación a cotizar."
     ],
     [
      "Costo de referencia",
-     "por validar con el equipo"
+     "USD 100 estimación para la varilla (varilla 60 + aro 25 + guía 15); termómetro de nevera: USD 50."
     ]
    ],
    "propuesta": {
-    "nombre": "Medidor de humedad de parcelas con lectura en celulares en desuso",
-    "claim": "La junta de agua ve la humedad de sus parcelas en el celular que ya tiene, sin comprar estación nueva.",
-    "que_es": "Red de sensores de humedad de parcela hecha con piezas de celulares en desuso, cuyas lecturas llegan al celular que la junta de agua ya tiene en la oficina. La junta la opera: la placa de humedad extraída de un celular descartado se sella con resina, se deja en la parcela a la intemperie y manda la lectura por el módulo de comunicación del mismo celular. El coordinador ve en su pantalla si el suelo está seco o húmedo y decide cuándo regar sin recorrer la parcela. El problema que resuelve es simple: la junta no sabe cuándo bajar el agua a los barrios y pierde tiempo o riega de más. Cada red se prueba antes de crecer: el equipo deja un módulo sellado en la parcela durante una semana, lo lee cada día y compara la lectura con la humedad medida a mano. Solo si las lecturas se mantienen, se arma la red completa. El registro de una temporada completa queda en la libreta de la junta antes de comprar el siguiente equipo.",
+    "nombre": "Varilla de escucha de fugas para la junta de agua del barrio",
+    "claim": "La junta localiza la fuga bajo la calle con una varilla de escucha, sin abrir la calle ni contratar equipo electrónico.",
+    "que_es": "Varilla de escucha de fugas: un tubo de acero con punta en el suelo y auricular de contacto en el asa, que amplifica el ruido del agua escapando de la tubería enterrada. El operador designado por la junta de agua la recorre con la varilla clavada en el piso a lo largo de la red del barrio: donde el ruido cambia de tono, ahí está la fuga, y se marca con un aro para la brigada de reparación. Hoy la junta solo descubre la fuga cuando la pérdida sube en la medición o cuando el agua aparece en la superficie; con la varilla la encuentra en una caminata. No es un equipo electrónico de gran precio que la junta no puede comprar, ni una prueba de presión que exige abrir la calle: es un instrumento físico que opera el vecino designado y se calibra comparándolo con una fuga abierta.",
     "como": [
-     "Extraer la placa de humedad y el módulo de comunicación de celulares en desuso.",
-     "Sellar la electrónica con resina para dejarla a la intemperie en la parcela.",
-     "Configurar el envío de lecturas al celular de la junta de agua.",
-     "Registrar una temporada completa de lecturas antes de decidir la compra del siguiente equipo."
+     "La junta de agua designa al operador y le entrega la varilla con el aro de marcado en el punto de mantenimiento.",
+     "El operador camina la red del barrio con la varilla clavada en el piso y detiene el paso donde el ruido de la tubería cambia de tono.",
+     "El operador marca el punto con el aro y anota la cuadra en la hoja de reparación de la brigada.",
+     "La brigada de la junta abre solo el tramo marcado, repara la unión y vuelve a pasar la varilla para confirmar que el ruido desapareció."
     ],
-    "beneficiario": "Junta de agua potable · cuota de mantenimiento · coordinador · red de medición en barrios",
+    "beneficiario": "Junta de agua del barrio · cuota de mantenimiento · coordinador · varillas de escucha para sus operadores",
     "componentes": [
-     "Placa de humedad de un celular en desuso",
-     "Módulo de comunicación del mismo celular",
-     "Resina selladora para dejarla a la intemperie",
-     "Celular de la junta de agua que recibe las lecturas",
-     "Libreta de una temporada de lecturas"
+     "Varilla de acero con punta y auricular de contacto",
+     "Aro de marcado de puntos",
+     "Hoja de reparación por cuadra",
+     "Guía de umbrales de ruido",
+     "Taller de calibración de la junta"
     ],
-    "costo": "por validar con el equipo",
+    "costo": "Estimación a cotizar (USD): varilla con auricular de contacto 1 × 60 + aro de marcado 1 × 25 + guía impresa 1 × 15 = 100.",
     "metricas": [
-     "por validar · fuente: research/claims.json",
-     "Por validar con el equipo"
+     "Metros de tubería revisados por caminata del operador",
+     "Fugas localizadas sin abrir la calle por mes",
+     "Horas entre la marca de la varilla y la reparación"
     ]
    },
    "alterna": {
-    "nombre": "Reloj de riego con alarma de celulares en desuso para la parcela",
-    "claim": "La asociación riega a la hora programada con un reloj armado de celulares en desuso, sin comprar controlador nuevo.",
-    "que_es": "Reloj de riego armado con la alarma y la pantalla de un celular en desuso, que enciende la bomba de la parcela a la hora fija que la asociación ya usa. El gerente de la asociación lo opera: se toma el horario de riego del cuaderno, se programa la alarma diaria en el celular recuperado y el aviso de esa alarma pasa por un relé de arranque que prende la bomba. La parcela riega sola a la hora sin que nadie tenga que estar en el botón. El problema concreto es que el riego depende de que una persona llegue puntual, y si se olvida la parcela se seca. Antes de copiarlo a otras parcelas, el equipo mide: cuenta los arranques de bomba durante una semana, anota las horas de bomba y los litros por turno y compara con el riego manual. Si el reloj enciende todos los días sin fallar bajo la humedad del campo, la asociación pide más unidades. La entrega llega con el celular ya programado, el relé montado y la hoja de horas y litros de la semana de prueba.",
+    "nombre": "Termómetro de máximo-mínimo para las neveras del mercado",
+    "claim": "Cada mañana el jefe del mercado lee la temperatura más alta de la noche en la nevera y llama al técnico antes de perder la mercadería.",
+    "que_es": "Termómetro de máximo-mínimo: un instrumento de líquido con dos escalas que conserva la lectura más alta y más baja desde la última vez que se reinicia, colgado en la puerta de la nevera. El jefe del mercado lo instala en la nevera de la pescadería, lo baja a cero cada noche al cerrar y cada mañana lee la máxima que marcó durante la noche; si pasó el umbral acordado, llama al técnico ese mismo día. La nevera del mercado falla sin avisar y la mercadería se pierde de madrugada, cuando nadie la revisa. No es un registrador electrónico con alarma que necesita batería y programación, ni una libreta de temperaturas que depende de que alguien apunte a hora fija: es una lectura física que conserva el pico sin energía y se entiende de un vistazo.",
     "como": [
-     "Leer el horario de riego que la asociación ya usa en su parcela.",
-     "Poner la alarma de un celular en desuso a la hora de riego diaria.",
-     "Acoplar el aviso de la alarma a la bomba con un relé de arranque.",
-     "Medir horas de bomba y litros por turno antes de copiar el reloj a otras parcelas."
+     "El jefe del mercado cuelga el termómetro en la puerta de la nevera de la pescadería, a la altura del ojo.",
+     "La pescadería reinicia la aguja a cero cada noche al cerrar la nevera.",
+     "El jefe del mercado lee la máxima de la noche cada mañana al abrir y la anota en la ficha de la nevera.",
+     "Si la máxima supera el umbral acordado, el jefe llama al técnico ese mismo día y retira la mercadería en riesgo antes de que se pierda."
     ],
-    "beneficiario": "Asociación de productores · cobro por horario de riego · gerente · relojes de encendido para sus bombas",
+    "beneficiario": "Pescadería del mercado · ingreso propio por su mercadería · dueño · termómetro para su nevera",
     "componentes": [
-     "Celular en desuso con alarma programada",
-     "Relé de arranque conectado a la alarma",
-     "Bomba de la parcela",
-     "Horario de riego que la asociación ya usa",
-     "Contador de horas de bomba y litros por turno"
+     "Termómetro de máximo-mínimo con gancho",
+     "Ficha de lectura diaria de la nevera",
+     "Umbral acordado con el técnico",
+     "Guía de reinicio nocturno"
     ],
-    "costo": "por validar con el equipo",
+    "costo": "Estimación a cotizar (USD): termómetro de máximo-mínimo 1 × 35 + gancho y ficha 1 × 15 = 50.",
     "metricas": [
-     "por validar · fuente: research/claims.json",
-     "Por validar con el equipo"
+     "Mañanas con lectura anotada por semana",
+     "Fallas de nevera detectadas antes de perder mercadería",
+     "Horas entre el pico de temperatura y la llamada al técnico"
     ]
    },
    "realidad": {
-    "a": "Supuesto: los celulares en desuso aportan piezas que aguantan humedad de campo; prueba barata: dejar un módulo sellado en una parcela una semana y leerlo.",
-    "b": "Supuesto: el reloj enciende la bomba sin fallar bajo humedad; prueba barata: programar un encendido diario durante una semana y contar los arranques."
+    "a": "Supuesto: la varilla distingue el ruido de una fuga del ruido de fondo de la calle; prueba barata: pasar la varilla sobre una fuga abierta conocida y comparar el tono.",
+    "b": "Supuesto: la lectura máxima coincide con la temperatura real de la noche; prueba barata: dejar el termómetro en hielo y verificar el marcador antes de instalarlo."
    },
    "cadena": {
-    "problema": "Sensores al servicio de la comunidad (Desafío 02), aplicados al monitoreo agrícola.",
-    "causa_raiz": "Por validar con el equipo.",
-    "insight": "Por validar con el equipo.",
-    "solucion": "Red de sensores agrícolas de bajo costo.",
-    "metrica": "por validar · fuente: research/claims.json"
+    "problema": "Las decisiones de agua y de frío del barrio se toman sin instrumento: la fuga se descubre cuando sube la pérdida y la nevera se da cuenta cuando ya se perdió el lote.",
+    "causa_raiz": "La medición hoy depende de equipo caro que la junta no contrata o de que alguien abra el registro y mire a mano; sin lectura barata y diaria no hay umbral para actuar a tiempo.",
+    "insight": "Dos problemas invisibles del barrio, una fuga bajo tierra y un pico de temperatura en la nevera, se hacen visibles con instrumentos físicos que se leen sin electricidad y opera el vecino designado.",
+    "solucion": "Varilla de escucha de contacto para localizar fugas en la red del barrio y termómetro de máximo-mínimo para las neveras del mercado, ambos leídos por la junta en su recorrido.",
+    "metrica": "Metros de tubería revisados por caminata y mañanas con la temperatura máxima anotada."
    },
-   "senal": "Techriders 2024 instrumentó la obra hidráulica con sensores y telemetría en vez de dejarla sin lectura.",
+   "senal": "La junta localiza la fuga sin abrir la calle ni contratar equipo electrónico, y la nevera del mercado avisa el pico de temperatura de la noche aunque se haya ido la luz.",
    "analogias": [
     {
      "year": 2026,
      "equipo": "Steel Innovators (CUR UNI Juigalpa)",
      "puesto": "2do lugar nacional Innovación",
      "proyecto": "Red de sensores agrícolas de bajo costo",
-     "que_hicieron": "Armó una red de sensores agrícolas de bajo costo.",
-     "por_que": "Su proyecto es la red de sensores de bajo costo que la opción 01 arma con celulares en desuso.",
+     "que_hicieron": "Armó una red de sensores agrícolas de bajo costo para lectura de la comunidad.",
+     "por_que": "Construyó sensores de bajo costo que el vecino opera en el sitio donde se decide; esta opción lleva esa misma lectura barata a la red de agua y a la nevera del mercado.",
      "video": ""
     },
     {
-     "year": 2026,
-     "equipo": "Nanobots (UNI RUPAP)",
-     "puesto": "3er lugar nacional Innovación",
-     "proyecto": "Módulos de filtración con nanomateriales reciclados",
-     "que_hicieron": "Construyó módulos de filtración con nanomateriales reciclados.",
-     "por_que": "Fue el precedente de la opción 02: módulos hechos con material reciclado para el agua.",
-     "video": ""
+     "year": 2024,
+     "equipo": "Techriders (UNI-RUSB)",
+     "puesto": "1er lugar internacional Innovación y 1er lugar nacional",
+     "proyecto": "Micropresas telemetradas",
+     "que_hicieron": "Instrumentó la obra hidráulica con sensores de nivel y telemetría en vez de dejarla sin lectura.",
+     "por_que": "Su salto fue dar lectura a una obra de agua que antes se operaba a la vista; esta opción da lectura a la red del barrio con un instrumento físico que la junta lee en su recorrido.",
+     "video": "https://www.youtube.com/watch?v=MIvlD31HfIk"
     }
    ],
-   "pitch": "La junta de agua ve la humedad de sus parcelas en el celular que ya tiene, sin comprar estación nueva."
+   "pitch": "La junta localiza la fuga bajo la calle con una varilla de escucha y la nevera del mercado avisa su pico de temperatura de la noche, sin abrir la calle, sin batería y sin programar nada."
   },
   {
    "id": "03",
    "titulo": "Protección y fomento de polinizadores",
    "categoria": "innovacion",
+   "categoria_porque": "Categoría innovación porque la rúbrica premia una solución técnica nueva ante un problema no resuelto, y esta opción devuelve abrigo y alimento a los polinizadores con material del lugar.",
    "descripcion": "Reto del comité sobre Protección y fomento de polinizadores. Sector declarado: entornos agrícola/urbano.",
    "ods": [
     [
@@ -289,73 +295,74 @@
     ],
     [
      "Sustituto existente",
-     "por validar con el equipo"
+     "Nido de madera comercial para jardín, ~USD 25 la pieza; no basta porque no mide visitas ni cubre el borde de la parcela. Estimación a cotizar."
     ],
     [
      "Costo de referencia",
-     "por validar con el equipo"
+     "USD 75 estimación por tres refugios (25 c/u); bancal de floración continua: USD 90."
     ]
    ],
    "propuesta": {
-    "nombre": "Refugios para polinizadores en entornos agrícolas y bordes de parcela",
-    "claim": "Con madera y barro locales, la cooperativa hospeda en su ladera a los polinizadores de la parcela.",
-    "que_es": "Refugios para polinizadores construidos con madera y barro locales, que replican el micro-refugio del caso Ignis Code y se instalan en los bordes de parcela del sector cafetalero. El equipo de la cooperativa y los productores los levantan: cada refugio lleva aberturas del tamaño de las abejas locales, un interior de barro que conserva la temperatura y una cubierta de madera que aguanta la lluvia. Se instalan tres en la ladera y se registran las visitas de polinizadores durante la temporada. El problema que resuelve es que la parcela cafetalera pierde polinizadores cuando se limpia el borde y la flor baja. Antes de escalar, se compara: un refugio queda instalado, otro tramo queda igual y el equipo cuenta visitas en ambos durante una temporada. Con ese conteo se lleva al productor un resultado en números: si el refugio recibe más visitas, la cooperativa repite el modelo en las laderas siguientes. El entregable es el refugio montado con sus aberturas medidas, la hoja de visitas por semana y el dibujo de montaje para copiarlo.",
+    "nombre": "Refugio de polinizadores de madera y barro para el borde de la parcela",
+    "claim": "Con madera y barro del lugar, la cooperativa monta en la ladera el abrigo que la abeja perdió al limpiar el borde.",
+    "que_es": "Refugio de polinizadores: una caja de madera con aberturas del tamaño de las abejas locales, interior de barro que conserva la temperatura y cubierta que aguanta la lluvia, instalada en el borde de la parcela cafetalera. El equipo de la cooperativa la monta con madera y barro del lugar y la clava en la ladera junto al cultivo; adentro, la abeja encuentra cavidad para anidar cuando la limpieza del lindero le quitó el tronco donde vivía. El productor revisa la puerta del refugio al final de la semana y anota las visitas que observa. No es un nido comprado para el jardín ni una campaña de conciencia: es un abrigo medido, instalado en la parcela, que se compara con un tramo sin refugio para mostrar cuántas más abejas llegan.",
     "como": [
-     "Levantar con el equipo un inventario de polinizadores y sombra en la parcela.",
-     "Construir refugios de madera y barro con aberturas del tamaño de las abejas locales.",
-     "Instalar tres refugios y registrar visitas de polinizadores durante la temporada.",
-     "Comparar visitas con y sin refugio y llevar el resultado al productor."
+     "El equipo de la cooperativa corta la madera del lugar y prepara las aberturas del tamaño de las abejas locales según la guía de montaje.",
+     "El equipo mezcla el barro del lindero y lo sella en el interior de cada caja antes de cerrar la cubierta.",
+     "El productor instala tres refugios en la ladera de la parcela, a la altura indicada, junto al cultivo.",
+     "El productor revisa la puerta de cada refugio cada semana, anota las visitas en la hoja de la temporada y lleva el comparativo al gerente de la cooperativa."
     ],
-    "beneficiario": "Cooperativa cafetalera · fondo de proyectos · gerente · refugios para polinizadores en sus laderas",
+    "beneficiario": "Cooperativa cafetalera · fondo de proyectos · gerente · refugios para sus laderas",
     "componentes": [
-     "Refugio de madera con aberturas del tamaño de las abejas locales",
-     "Barro para sellar el interior",
-     "Inventario de polinizadores y sombra de la parcela",
+     "Caja de madera con aberturas del tamaño de las abejas locales",
+     "Barro del lindero para el interior",
      "Tres refugios instalados en la ladera",
-     "Registro de visitas con y sin refugio"
+     "Guía de montaje y hoja de visitas"
     ],
-    "costo": "por validar con el equipo",
+    "costo": "Estimación a cotizar (USD): madera y barro del lugar 0 + tela, clavos y guía por refugio 1 × 25 × 3 refugios = 75.",
     "metricas": [
-     "por validar · fuente: research/claims.json",
-     "Por validar con el equipo"
+     "Visitas de polinizadores por semana en el refugio y en el tramo testigo",
+     "Refugios instalados por ladera",
+     "Semanas de revisión completa de la puerta"
     ]
    },
    "alterna": {
-    "nombre": "Franja de floración continua para polinizadores en el patio urbano",
-    "claim": "Con plantas nativas de floración escalonada, el lindero de la finca da néctar cuando la flor natural ya se acabó.",
-    "que_es": "Franja de floración continua sembrada con plantas nativas que florecen en meses distintos, para dar néctar al polinizador cuando la flor natural ya se acabó. El productor la maneja en el lindero de la finca: escoge con el equipo los plantones nativos según el calendario de floración, los siembra en la franja del borde y riega solo lo necesario hasta que arraigan. La franja queda entre el cultivo y el camino, de modo que el polinizador encuentra comida todo el año sin entrar a la parcela. El problema concreto es que la floración se concentra en pocos meses y el resto del año no hay néctar. Para medirlo, el equipo siembra la franja y deja un tramo del lindero sin sembrar: cuenta visitas de polinizadores en ambos tramos, anota la floración por mes y compara. Al final de la temporada lleva al productor el calendario de floración con las visitas registradas por mes, que es lo que decide si la franja se amplía. La entrega incluye los plantones sembrados, el tramo testigo marcado y la hoja mensual de conteo.",
+    "nombre": "Bancal de floración continua con riego por olla para el lindero",
+    "claim": "Plantas nativas de floración escalonada y una olla enterrada dejan néctar en el lindero todo el año, también en la estación seca.",
+    "que_es": "Bancal de floración continua: una franja sembrada con plantas nativas que florecen en meses distintos y regada por una olla de barro enterrada que libera agua por capilaridad. El productor la prepara en el lindero de la finca con el equipo: se eligen los plantones según el calendario de floración, se entierra la olla junto a cada mata y se rellena cada semana. Cuando la flor del cultivo se acaba, el bancal sigue dando néctar y el polinizador se queda en el borde en vez de irse de la finca. No es un maceto de ornamento que depende del riego manual y se seca en verano: es una franja calculada para cubrir los meses vacíos de flor y que se sostiene sola con el agua enterrada.",
     "como": [
-     "Escoger con el productor plantas nativas que florecen en meses distintos.",
-     "Sembrar la franja en el lindero de la finca con esos plantones.",
-     "Contar visitas de polinizadores en la franja y en un tramo sin sembrar.",
-     "Comparar floración por mes y llevar el calendario al productor."
+     "El productor y el equipo arman el calendario de floración con los plantones nativos disponibles en el vivero del sector.",
+     "El equipo prepara la franja en el lindero, entierra una olla de barro junto a cada mata y siembra los plantones según el calendario.",
+     "El productor rellena las ollas cada semana con la regadera hasta que las plantas arraigan.",
+     "El productor compara la floración por mes con el tramo de lindero sin sembrar y lleva el calendario al gerente para ampliar la franja."
     ],
-    "beneficiario": "Instituto agrícola · fondo de proyectos · rector · franja de floración continua en su patio",
+    "beneficiario": "Instituto agrícola · fondo de proyectos · rector · bancal de floración en su patio",
     "componentes": [
-     "Plantones nativos que florecen en meses distintos",
-     "Franja sembrada en el lindero de la finca",
-     "Tramo testigo sin sembrar para comparar",
-     "Calendario de floración por mes",
-     "Conteo de visitas de polinizadores"
+     "Plantones nativos de floración escalonada",
+     "Ollas de barro enterradas para riego por capilaridad",
+     "Franja preparada en el lindero",
+     "Tramo testigo sin sembrar",
+     "Calendario de floración por mes"
     ],
-    "costo": "por validar con el equipo",
+    "costo": "Estimación a cotizar (USD): 30 plantones × 1.50 = 45 + 10 ollas de barro × 3 = 30 + surco y riego inicial = 15; total 90.",
     "metricas": [
-     "por validar · fuente: research/claims.json",
-     "Por validar con el equipo"
+     "Meses del año con flor abierta en el bancal",
+     "Visitas de polinizadores por semana en el bancal y en el tramo testigo",
+     "Riegos manuales que la olla deja de pedir por semana"
     ]
    },
    "realidad": {
-    "a": "Supuesto: el refugio atrae más polinizadores que la parcela testigo; prueba barata: instalar un refugio y contar visitas durante una temporada.",
-    "b": "Supuesto: la floración escalonada cubre meses sin flor natural; prueba barata: sembrar un tramo de 10 metros y contar visitas un mes."
+    "a": "Supuesto: el refugio recibe más visitas que el tramo sin refugio; prueba barata: instalar un refugio y contar visitas durante una temporada.",
+    "b": "Supuesto: la olla sostiene la franja en la estación seca; prueba barata: enterrar una olla en un tramo de 10 metros y anotar los riegos de un mes."
    },
    "cadena": {
-    "problema": "Reto del comité sobre Protección y fomento de polinizadores. Sector declarado: entornos agrícola/urbano.",
-    "causa_raiz": "Por validar con el beneficiario.",
-    "insight": "Sin precedente en el corpus de ganadores.",
-    "solucion": "Hipótesis a validar.",
-    "metrica": "por validar · fuente: research/claims.json"
+    "problema": "La parcela cafetalera pierde polinizadores cuando se limpia el borde y el resto del año no hay néctar en el lindero.",
+    "causa_raiz": "El manejo del borde elimina troncos y cavidades donde la abeja anida, y la floración del cultivo se concentra en pocos meses, dejando el resto del año sin alimento.",
+    "insight": "El borde de la parcela es el sitio más barato para devolver las dos cosas que faltan: abrigo físico para anidar y floración escalonada para comer cuando la flor del cultivo no existe.",
+    "solucion": "Refugios de madera y barro instalados en la ladera y un bancal de floración continua con olla enterrada en el lindero.",
+    "metrica": "Visitas de polinizadores por semana en el refugio y en el tramo testigo durante una temporada."
    },
-   "senal": "Ignis Code 2026 tomó un desafío de nicho que pocos equipos tomaron y se diferenció por completo.",
+   "senal": "El borde de la parcela deja de quedar sin abrigo ni flor: el refugio se monta en un día y el bancal cubre con néctar los meses en que la flor del cultivo no existe.",
    "analogias": [
     {
      "year": 2026,
@@ -363,16 +370,17 @@
      "puesto": "1er lugar nacional Innovación",
      "proyecto": "Micro-refugios bio-climáticos para polinizadores",
      "que_hicieron": "Construyó micro-refugios bio-climáticos autónomos para la protección de polinizadores.",
-     "por_que": "Es el caso de micro-refugios para polinizadores del que parte la opción 01 de este reto.",
+     "por_que": "Construyó micro-refugios bio-climáticos para la protección de polinizadores; comparte el mismo salto de dar abrigo físico en la parcela en vez de esperar a que el polinizador regrese.",
      "video": ""
     }
    ],
-   "pitch": "Con madera y barro locales, la cooperativa hospeda en su ladera a los polinizadores de la parcela."
+   "pitch": "Con madera y barro del lugar, la cooperativa monta en la ladera el abrigo que la abeja perdió al limpiar el borde, y lo mide contra un tramo sin refugio."
   },
   {
    "id": "04",
    "titulo": "Manejo ecológico de residuos de poda y biomasa vegetal urbana",
    "categoria": "innovacion",
+   "categoria_porque": "Categoría innovación porque convierte un residuo urbano en material de obra con proceso propio, y la rúbrica premia la transformación técnica con destino de compra.",
    "descripcion": "Reto del comité sobre Manejo ecológico de residuos de poda y biomasa vegetal urbana. Sector declarado: biomasa urbana.",
    "ods": [
     [
@@ -408,73 +416,74 @@
     ],
     [
      "Sustituto existente",
-     "por validar con el equipo"
+     "Losa de fibrocemento importada, ~USD 18 la pieza; no basta porque se paga en dólares y no absorbe la poda del barrio. Estimación a cotizar."
     ],
     [
      "Costo de referencia",
-     "por validar con el equipo"
+     "USD 370 estimación para prensa y primer lote (prensa 220 + moldes 60 + insumos 90); trituradora: USD 200."
     ]
    ],
    "propuesta": {
-    "nombre": "Paneles de Tetra Pak prensados con residuos de poda y biomasa",
-    "claim": "La municipalidad ya recoge residuos de poda; con el método Tetra Pak 2025 esos barrios arman techos en vez de tirarlos.",
-    "que_es": "Plancha de techo modular hecha con residuos de poda prensados y biomasa seca, siguiendo el método estructural del caso Tetra Pak 2025. La municipalidad la recoge en los barrios: la poda se seca, se tritura y se mezcla con el compuesto multicapa del caso, y la prensa la convierte en planchas que el proveedor de techos de la alcaldía monta en mercados. La plancha aguanta carga y baja el golpe de la lluvia sobre el techo. El problema que resuelve es que la poda de los barrios se quema o se entierra mientras los techos del municipio se compran caros. Antes de prometer techos, el equipo prueba en banco: prensa una plancha, la moja durante una semana y mide si aguanta la carga y si el ruido de las gotas baja respecto a una lámina común. Con ese resultado, el equipo lleva al proveedor la plancha y su ficha de recolección, que indica de qué barrio salió cada lote. El entregable incluye la plancha probada, la ficha de material y la ruta de recolección de los barrios.",
+    "nombre": "Plancha de madera y cemento fabricada con la poda del barrio",
+    "claim": "La municipalidad ya recoge la poda; con ella, cemento y una prensa de mano, el taller del barrio fabrica la plancha que cubre los puestos del mercado.",
+    "que_es": "Plancha de techo y tabique hecha con la poda del barrio: las ramas se secan, se trocean y se mezclan con cemento, y una prensa de mano las convierte en una losa que se cura al sol antes de salir a la obra. La brigada de aseo entrega la poda ya seca al taller, que fabrica la plancha y la entrega al proveedor de obras de la alcaldía para los puestos del mercado. La pieza aguanta la lluvia, no se pudre con la humedad del techo y baja el golpe de la gota respecto a la lámina metálica. No es una tabla de madera, que se pudre en la humedad, ni una losa de fibrocemento importada, que se paga en dólares: es material del propio barrio convertido en obra.",
     "como": [
-     "Secar y triturar los residuos de poda que la municipalidad recolecta en los barrios.",
-     "Prensar la biomasa con el compuesto multicapa del caso Tetra Pak en planchas de techo.",
-     "Probar carga y ruido de gotas en un panel de banco antes de montar el techo.",
-     "Entregar el panel y su ficha de recolección al proveedor de techos de la alcaldía."
+     "La brigada de aseo entrega la poda de los barrios ya seca en el punto de recolección del taller.",
+     "El operario del taller trocea la poda, la mezcla con cemento y agua y llena el molde de la prensa.",
+     "El operario prensa la losa, la saca al patio y la cura al sol durante la semana indicada.",
+     "El taller entrega la plancha curada al proveedor de obras de la alcaldía con su ficha de material y la fecha de curado."
     ],
-    "beneficiario": "Alcaldía · partida de manejo de residuos · alcalde · planchas de techo para mercados",
+    "beneficiario": "Alcaldía · partida de manejo de residuos · alcalde · planchas para los puestos del mercado",
     "componentes": [
-     "Residuos de poda secos y triturados",
-     "Compuesto multicapa del caso Tetra Pak 2025",
-     "Prensa para planchas de techo",
-     "Panel de banco para probar carga y ruido de gotas",
-     "Ficha de recolección de los barrios"
+     "Poda de los barrios secada en el punto de recolección",
+     "Cemento y arena para la mezcla",
+     "Prensa de mano con molde de losa",
+     "Patio de curado al sol",
+     "Ficha de material y fecha de curado"
     ],
-    "costo": "por validar con el equipo",
+    "costo": "Estimación a cotizar (USD): prensa de mano 1 × 220 + moldes 1 × 60 + cemento y arena para 50 planchas 1 × 90 = 370.",
     "metricas": [
-     "por validar · fuente: research/claims.json",
-     "Por validar con el equipo"
+     "Kilos de poda que dejan de quemarse por mes",
+     "Planchas curadas por lote",
+     "Días de curado antes de la entrega al proveedor"
     ]
    },
    "alterna": {
-    "nombre": "Estructura de acopio de biomasa urbana armada con envases plásticos",
-    "claim": "La brigada de aseo de la alcaldía recibe contenedores de acopio que arman con los envases que ya separa en cada barrio.",
-    "que_es": "Contenedor modular para la biomasa de los barrios, armado con los envases plásticos que la brigada ya separa en el punto de recolección de poda. La brigada de aseo de la alcaldía lo opera: los envases entrelazados forman las paredes sin adhesivos ni piezas metálicas, y el interior recibe la poda que llega de los patios. El contenedor queda junto al punto de recolección y evita que la biomasa se apile en la calle. El problema concreto es que la poda y los envases terminan en el mismo monte y nadie tiene dónde acopiarlos limpios. Antes de entregarlo, el equipo carga el contenedor con poda de dos patios y lo pesa cada semana durante un mes, anotando si las paredes se hinchan o ceden. Con ese registro, la brigada decide dónde colocar los siguientes. El entregable es el contenedor armado con su ficha de carga, el peso semanal anotado y la instrucción de montaje con los envases entrelazados, para que la brigada repita la pieza sin ayuda del equipo.",
+    "nombre": "Trituradora de poda de manivela para la brigada del barrio",
+    "claim": "La brigada tritura la poda de dos patios en un saco de aserrín con la trituradora de manivela, en vez de quemarla en la calle.",
+    "que_es": "Trituradora de poda de manivela: una máquina con dos ejes dentados montada sobre un marco con ruedas, que se mueve girando una manivela y reduce las ramas de hasta cuatro dedos de diámetro a aserrín. La brigada de aseo la empuja hasta el punto de recolección, introduce las ramas, gira la manivela y llena el saco con el aserrín, que se guarda para el compost del huerto municipal. Con eso el volumen de la poda baja de un montón que ocupa la calle a un saco que cabe en la bodega. No es una pala ni un hacha, que tardan y dejan ramas largas imposibles de compostar, y no necesita gasolina ni electricidad para funcionar en cualquier barrio.",
     "como": [
-     "Separar los envases plásticos en el mismo punto de recolección de la poda de los barrios.",
-     "Ensamblar el contenedor con envases entrelazados, sin adhesivos ni piezas metálicas.",
-     "Cargar con residuos de poda y medir hinchazón y carga durante un mes.",
-     "Entregar el contenedor a la brigada de aseo de la alcaldía con su ficha de carga."
+     "La brigada de aseo empuja la trituradora hasta el punto de recolección de poda del barrio.",
+     "El operario de la brigada introduce las ramas por la boca de los ejes y gira la manivela hasta reducirlas a aserrín.",
+     "El operario llena el saco con el aserrín y lo lleva a la bodega del huerto municipal.",
+     "El responsable del huerto mezcla el aserrín con los residuos orgánicos y anota los sacos producidos por semana."
     ],
-    "beneficiario": "Alcaldía · partida de aseo urbano · alcalde · contenedores de acopio para barrios",
+    "beneficiario": "Alcaldía · partida de aseo urbano · alcalde · trituradoras para sus brigadas de barrio",
     "componentes": [
-     "Envases plásticos del punto de recolección",
-     "Contenedor modular ensamblado sin adhesivos ni piezas metálicas",
-     "Poda de los barrios para cargarlo",
-     "Balanza y registro semanal de peso",
-     "Ficha de carga para la brigada de aseo"
+     "Ejes dentados con cuchillas endurecidas",
+     "Marco soldado con ruedas y manivela",
+     "Sacos para el aserrín",
+     "Bodega del huerto municipal para el compost"
     ],
-    "costo": "por validar con el equipo",
+    "costo": "Estimación a cotizar (USD): ejes y cuchillas 1 × 90 + marco con ruedas 1 × 70 + manivela y engranes 1 × 40 = 200.",
     "metricas": [
-     "por validar · fuente: research/claims.json",
-     "Por validar con el equipo"
+     "Sacos de aserrín producidos por semana",
+     "Metros cúbicos de poda que dejan de apilarse en la calle",
+     "Horas de la brigada por saco de aserrín"
     ]
    },
    "realidad": {
-    "a": "Supuesto: la biomasa de poda prensada aguanta carga y lluvia como el Tetra Pak; prueba barata: prensar una plancha y mojarla una semana antes de prometer techos.",
-    "b": "Supuesto: un contenedor de envases aguanta la biomasa húmeda un mes sin colapsar; prueba barata: llenarlo con poda de dos patios y pesarlo cada semana."
+    "a": "Supuesto: la plancha aguanta carga y lluvia sin desgranarse; prueba barata: prensar una muestra, mojarla una semana y medir si aguanta antes de prometer techos.",
+    "b": "Supuesto: la manivela tritura ramas de hasta cuatro dedos sin trabarse; prueba barata: triturar un saco de ramas del patio y anotar el tiempo y los atascos."
    },
    "cadena": {
-    "problema": "Aprovechamiento de Tetra Pak como pasivo ambiental de gran volumen (Desafío 01).",
-    "causa_raiz": "Por validar con el equipo.",
-    "insight": "Evitar el reciclaje artesanal de bajo valor agregado y montar una ruta de procesamiento industrializable que explote las propiedades térmicas, acústicas e impermeables del compuesto multicapa de celulosa, polietileno y aluminio.",
-    "solucion": "Paneles constructivos modulares sismorresistentes fabricados con Tetra Pak revalorizado, con ruta de recolección inclusiva vinculada a la manufactura.",
-    "metrica": "por validar · fuente: research/claims.json"
+    "problema": "La poda de los barrios se quema o se apila en la calle mientras el mercado compra techos y tabiques caros.",
+    "causa_raiz": "La recolección existe pero termina en el botadero: nadie transforma la biomasa seca en un material de obra con destino de compra.",
+    "insight": "La poda seca triturada y mezclada con cemento pierde su carácter de residuo: se convierte en una plancha con valor de compra, y el mismo material baja de volumen cuando sale triturado para el compost.",
+    "solucion": "Plancha de madera y cemento prensada con la poda del barrio para el techo del mercado, y trituradora de manivela que reduce la poda a aserrín para el compost.",
+    "metrica": "Kilos de poda que dejan de quemarse por mes y planchas producidas por lote."
    },
-   "senal": "Mentes Volcánicas 2025 evitó el reciclaje artesanal de bajo valor y montó una ruta de procesamiento industrializable.",
+   "senal": "La poda que hoy se quema en el patio sale del barrio convertida en plancha para el mercado y en aserrín para el compost, con la misma recolección que la municipalidad ya hace.",
    "analogias": [
     {
      "year": 2025,
@@ -482,7 +491,7 @@
      "puesto": "1er lugar internacional Impacto Social y 1er lugar nacional",
      "proyecto": "Paneles constructivos de Tetra Pak",
      "que_hicieron": "Fabricó paneles constructivos modulares sismorresistentes con Tetra Pak revalorizado.",
-     "por_que": "Su método de panel prensado es el que copia la opción 01 con residuos de poda.",
+     "por_que": "Fabricó paneles constructivos modulares con un residuo de gran volumen revalorizado; comparte el salto de convertir residuo de barrio en material de obra prensado.",
      "video": "https://www.youtube.com/watch?v=_JSUKR1bPnE"
     },
     {
@@ -491,16 +500,17 @@
      "puesto": "1er lugar internacional Impacto Social",
      "proyecto": "BottleLife",
      "que_hicieron": "Reutilizó envases plásticos estructuralmente para fines de construcción.",
-     "por_que": "Su estructura de envases entrelazados es la que copia la opción 02 del contenedor de acopio.",
+     "por_que": "Reutilizó envases plásticos descartados como material con uso directo de construcción; comparte el salto de dar uso de obra a un residuo que hoy termina en el botadero.",
      "video": "https://www.youtube.com/watch?v=yhVE1ZRDQZk"
     }
    ],
-   "pitch": "La municipalidad ya recoge residuos de poda; con el método Tetra Pak 2025 esos barrios arman techos en vez de tirarlos."
+   "pitch": "La municipalidad ya recoge la poda; con ella, cemento y una prensa de mano, el taller del barrio fabrica la plancha que cubre los puestos del mercado."
   },
   {
    "id": "05",
    "titulo": "Monitoreo inteligente e infraestructura verde en reservorios pluviales",
    "categoria": "innovacion",
+   "categoria_porque": "Categoría innovación porque instrumenta una obra hidráulica del barrio con lectura en el puesto de guardia y suma infraestructura verde, según la rúbrica de solución técnica nueva.",
    "descripcion": "Reto del comité sobre Monitoreo inteligente e infraestructura verde en reservorios pluviales. Sector declarado: riesgo hídrico.",
    "ods": [
     [
@@ -536,46 +546,47 @@
     ],
     [
      "Sustituto existente",
-     "por validar con el equipo"
+     "Estación con sonda de nivel y alarma, ~USD 900 la unidad; no basta porque la municipalidad no la instala en cada reservorio del barrio. Estimación a cotizar."
     ],
     [
      "Costo de referencia",
-     "por validar con el equipo; referencia: 4,500 usd cotizó el lote piloto de Micropresas telemetradas (2024) · fuente: knowledge/retos_razonamiento.json"
+     "USD 280 estimación para regleta y jardín (regleta 180 + instalación 40 + plantones 60); referencia real: 4,500 USD cotizó el lote piloto de micropresas telemetradas (2024) · fuente: knowledge/retos_razonamiento.json"
     ]
    ],
    "propuesta": {
-    "nombre": "Nivel del agua en reservorios pluviales con lectura automática y jardines",
-    "claim": "El nivel del reservorio avisa a la brigada antes que la lluvia, y los jardines de borde absorben el escurrimiento del barrio.",
-    "que_es": "Instrumentación de nivel para el reservorio pluvial del barrio, con lectura automática hacia el puesto de la brigada de bomberos, sumada a jardines de borde que frenan el escurrimiento. La municipalidad la opera: una regleta queda instalada en el reservorio, manda la lectura por radio al puesto de la brigada y el jefe de guardia ve el nivel sin salir a caminar hasta el tanque. En el borde del reservorio se siembran jardines con plantas nativas que absorben el agua que baja de la calle. El problema que resuelve es que la lluvia llena el reservorio sin aviso y el escurrimiento arrastra barro al barrio. Antes de ampliar, el equipo mide durante una temporada de lluvias: registra el nivel, compara el aviso de la regleta con la lectura manual y anota cuánto baja el escurrimiento con los jardines puestos. Con esos números, la municipalidad decide si repite el sistema en otros reservorios. La entrega incluye la regleta instalada, el enlace de radio probado, los jardines sembrados y la hoja de lecturas de la temporada.",
+    "nombre": "Nivel del reservorio pluvial con lectura en el puesto y jardines de borde",
+    "claim": "El nivel del reservorio llega al puesto de la brigada antes que la lluvia, y los jardines de borde frenan el escurrimiento del barrio.",
+    "que_es": "Instrumento de nivel para el reservorio pluvial del barrio: una regleta flotante instalada en el tanque que manda la lectura por enlace de radio al puesto de la brigada de bomberos, sumada a jardines de borde con plantas nativas que absorben el agua que baja de la calle. El jefe de guardia la opera: ve el nivel en la pantalla del puesto sin salir a caminar hasta el tanque y cierra la compuerta antes de la tormenta grande. Los jardines, sembrados en el borde del reservorio, frenan el escurrimiento y reducen el barro que la lluvia arrastra al barrio. No es un registro que solo se sabe abriendo la tapa a mano, ni un jardín decorativo: es lectura en el puesto y control del agua de lluvia en el mismo sistema.",
     "como": [
-     "Instalar una regleta de nivel en el reservorio pluvial del barrio.",
-     "Enviar la lectura por radio al puesto de la brigada de bomberos.",
-     "Sembrar jardines de borde con plantas nativas para frenar el escurrimiento.",
-     "Medir nivel y escurrimiento durante la temporada de lluvias antes de ampliar."
+     "El técnico de la brigada instala la regleta flotante en el reservorio pluvial del barrio y la conecta al enlace de radio del puesto.",
+     "El jefe de guardia revisa la lectura del nivel en la pantalla del puesto cada tarde y antes de cada tormenta anunciada.",
+     "El jardinero de la municipalidad siembra los jardines de borde con plantas nativas en el perímetro del reservorio.",
+     "El jefe de guardia cierra la compuerta cuando la lectura pasa el umbral acordado y anota la lectura de cada tormenta en la hoja del puesto."
     ],
     "beneficiario": "Municipalidad · partida de infraestructura verde · alcalde · medición de nivel y jardines de borde",
     "componentes": [
-     "Regleta de nivel instalada en el reservorio",
-     "Enlace por radio al puesto de la brigada",
+     "Regleta flotante de nivel en el reservorio",
+     "Enlace de radio al puesto de la brigada",
      "Jardines de borde con plantas nativas",
-     "Registro de nivel y escurrimiento de la temporada",
-     "Comparación con la lectura manual"
+     "Hoja de lecturas por tormenta",
+     "Carpeta de umbrales acordados"
     ],
-    "costo": "por validar con el equipo; referencia: 4,500 usd cotizó el lote piloto de Micropresas telemetradas (2024) · fuente: knowledge/retos_razonamiento.json",
+    "costo": "Estimación a cotizar (USD): regleta con enlace de radio 1 × 180 + instalación y soporte 1 × 40 + plantones para el jardín 1 × 60 = 280.",
     "metricas": [
-     "por validar · fuente: research/claims.json",
-     "Por validar con el equipo"
+     "Lecturas de nivel anotadas antes de cada tormenta",
+     "Litros de escurrimiento frenados por el jardín en la temporada",
+     "Minutos entre la lectura alta y el cierre de la compuerta"
     ]
    },
    "alterna": {
-    "nombre": "Canaleta de techo que alimenta el reservorio pluvial con agua de lluvia",
-    "claim": "La canaleta convierte el agua del techo de la escuela en litros guardados en el reservorio pluvial.",
-    "que_es": "Canaleta de techo con filtro de hojas que suma el agua de lluvia de la escuela al reservorio pluvial existente y marca cuántos litros entran en cada tormenta. El rector y el personal de mantenimiento la operan: primero se mide el área de techo y la entrada de agua por lluvia, después se monta la canaleta con su filtro de hojas hacia el reservorio que ya está, y se marca el nivel de entrada. Cada tormenta deja un número anotado en la bitácora. El problema concreto es que el agua del techo sale por el desagüe y la escuela compra agua que la lluvia regalaba. Antes de repetir la canaleta en otras escuelas, se registran los litros por tormenta durante la temporada y se compara con el gasto de compra de agua. Si la diferencia se nota en la libreta del mantenimiento, el equipo lleva la canaleta y su ficha de montaje a la siguiente escuela. El entregable incluye la canaleta montada, el filtro de hojas limpio y la bitácora de litros por tormenta.",
+    "nombre": "Canaleta de techo con filtro que alimenta el reservorio pluvial",
+    "claim": "La canaleta convierte el agua del techo de la escuela en litros guardados en el reservorio pluvial que ya existe.",
+    "que_es": "Canaleta de techo con filtro de hojas que lleva el agua de lluvia de la escuela al reservorio pluvial existente y marca cuántos litros entran en cada tormenta. El rector y el personal de mantenimiento la operan: primero se mide el área de techo, después se monta la canaleta con su filtro hacia el tanque que ya está y se coloca la marca de nivel de entrada. Cada tormenta deja un número anotado en la bitácora del mantenimiento. Con eso la escuela deja de comprar agua que la lluvia regalaba y el tanque se llena sin bomba. No es un sistema de bombeo comprado ni un tanque nuevo: es una obra de captación que usa el techo que ya existe y el reservorio que ya está.",
     "como": [
-     "Medir el área de techo de la escuela y la entrada de agua por lluvia.",
-     "Montar la canaleta con filtro de hojas hacia el reservorio pluvial existente.",
-     "Marcar el nivel de entrada y registrar litros por tormenta durante la temporada.",
-     "Comparar el agua captada con la compra de agua antes de repetir en otras escuelas."
+     "El personal de mantenimiento de la escuela mide el área de techo y calcula la entrada de agua por tormenta.",
+     "El operario monta la canaleta con su filtro de hojas hacia el reservorio pluvial que ya existe.",
+     "El rector revisa la marca de nivel después de cada tormenta y anota los litros en la bitácora del mantenimiento.",
+     "El rector compara los litros captados con el gasto de compra de agua del mes antes de repetir la canaleta en otra escuela."
     ],
     "beneficiario": "Escuela · partida de mantenimiento · rector · canaleta de captación para su reservorio",
     "componentes": [
@@ -585,24 +596,25 @@
      "Marca de nivel de entrada",
      "Bitácora de litros por tormenta"
     ],
-    "costo": "por validar con el equipo",
+    "costo": "Estimación a cotizar (USD): canaleta de 15 m 1 × 120 + filtro de hojas 1 × 25 + marca de nivel 1 × 15 = 160.",
     "metricas": [
-     "por validar · fuente: research/claims.json",
-     "Por validar con el equipo"
+     "Litros captados por tormenta en la canaleta",
+     "Metros cúbicos de agua comprada que la escuela deja de pagar por mes",
+     "Tormentas registradas en la bitácora"
     ]
    },
    "realidad": {
-    "a": "Supuesto: la lectura de nivel llega sin cable hasta la brigada; prueba barata: dejar la regleta una semana de lluvias y comparar el aviso con la lectura manual.",
+    "a": "Supuesto: la lectura de nivel llega por radio hasta el puesto; prueba barata: dejar la regleta una semana de lluvias y comparar el aviso con la lectura manual.",
     "b": "Supuesto: el techo rinde agua suficiente para notar la diferencia; prueba barata: colocar un bidón en el desagüe y medir los litros de una tormenta."
    },
    "cadena": {
-    "problema": "Reto del comité sobre Monitoreo inteligente e infraestructura verde en reservorios pluviales. Sector declarado: riesgo hídrico.",
-    "causa_raiz": "Por validar con el beneficiario.",
-    "insight": "Sin precedente en el corpus de ganadores.",
-    "solucion": "Hipótesis a validar.",
-    "metrica": "por validar · fuente: research/claims.json"
+    "problema": "La lluvia llena el reservorio pluvial del barrio sin aviso y el escurrimiento de la calle arrastra barro, mientras el jefe de guardia solo sabe el nivel caminando hasta el tanque.",
+    "causa_raiz": "El reservorio se opera a la vista: sin lectura en el puesto de guardia, el cierre de compuerta llega tarde y el agua del techo sale por el desagüe en vez de entrar al reservorio.",
+    "insight": "Nivel y escurrimiento se resuelven juntos: una regleta que manda la lectura al puesto decide el cierre antes de la tormenta, y los jardines de borde frenan el agua que baja de la calle.",
+    "solucion": "Regleta de nivel con enlace al puesto de la brigada más jardines de borde con plantas nativas; la opción 02 capta el agua del techo de la escuela con canaleta y filtro.",
+    "metrica": "Nivel registrado por tormenta en el puesto y litros captados por tormenta en la canaleta."
    },
-   "senal": "Techriders 2024 instrumentó la captación del agua con sensores, compuertas y telemetría, no solo el muro.",
+   "senal": "El jefe de guardia ve el nivel del reservorio sin caminar hasta el tanque y decide el cierre de compuerta antes de la tormenta; hoy el nivel solo se sabe abriendo la tapa a mano.",
    "analogias": [
     {
      "year": 2024,
@@ -610,7 +622,7 @@
      "puesto": "1er lugar internacional Innovación y 1er lugar nacional",
      "proyecto": "Micropresas telemetradas",
      "que_hicieron": "Instrumentó la micropresa con válvulas automatizadas, sensores de nivel y telemetría.",
-     "por_que": "Es el precedente telemetrado de la opción 01: nivel de agua medido y enviado a distancia.",
+     "por_que": "Instrumentó la obra hidráulica con sensores de nivel y telemetría en vez de dejarla sin lectura; esta opción lleva esa lectura de nivel al reservorio del barrio y al puesto de guardia.",
      "video": "https://www.youtube.com/watch?v=MIvlD31HfIk"
     },
     {
@@ -619,16 +631,17 @@
      "puesto": "1er lugar internacional Innovación y 1er lugar nacional",
      "proyecto": "Huertos verticales con recirculación hídrica",
      "que_hicieron": "Armó huertos verticales modulares con recirculación automatizada de agua recuperada.",
-     "por_que": "Su recirculación mide y reutiliza el agua, misma lógica de captar y contar cada gota de la opción 02.",
+     "por_que": "Su proyecto mide y reutiliza el agua recuperada; comparte la lógica de captar, medir y reusar cada gota que esta opción aplica al techo de la escuela.",
      "video": "https://www.youtube.com/watch?v=JhqjBm20DXo"
     }
    ],
-   "pitch": "El nivel del reservorio avisa a la brigada antes que la lluvia, y los jardines de borde absorben el escurrimiento del barrio."
+   "pitch": "El nivel del reservorio llega al puesto de la brigada antes que la lluvia, y los jardines de borde frenan el escurrimiento del barrio."
   },
   {
    "id": "06",
    "titulo": "Remoción y extracción de barro en viviendas anegadas",
    "categoria": "innovacion",
+   "categoria_porque": "Categoría innovación porque sustituye la remoción manual con equipo portátil diseñado para la vivienda anegada, y la rúbrica premia la solución técnica ante la emergencia.",
    "descripcion": "Reto del comité sobre Remoción y extracción de barro en viviendas anegadas. Sector declarado: post-emergencia.",
    "ods": [
     [
@@ -664,46 +677,46 @@
     ],
     [
      "Sustituto existente",
-     "por validar con el equipo"
+     "Camión poza con bomba de succión, ~USD 4,000 la unidad; no basta porque no entra a la vivienda ni llega a los cuartos. Estimación a cotizar."
     ],
     [
      "Costo de referencia",
-     "por validar con el equipo"
+     "USD 610 estimación para la bomba portátil (bomba 450 + manguera 120 + boquillas 40); torno manual: USD 140."
     ]
    ],
    "propuesta": {
-    "nombre": "Bombeo portátil que saca barro de viviendas inundadas sin maquinaria pesada",
+    "nombre": "Bomba de succión portátil para sacar barro de las viviendas anegadas",
     "claim": "Una succión portátil vacía el barro de una vivienda sin traer maquinaria pesada a la calle.",
-    "que_es": "Bomba de succión movida por un motor de gasolina que saca el barro de las viviendas anegadas, operada por la brigada de la municipalidad sin maquinaria pesada en la calle. La brigada la conecta a una manguera rígida, mete la boquilla en el cuarto inundado y vacía el barro en el bote que espera en la vía contigua. Cada vivienda se descompone por cuartos para medir cuánto barro hay en cada piso. El problema que resuelve es que después de la inundación el barro se seca dentro de la casa y la remoción a mano tarda días. Antes de pedir más equipos, la brigada compara: cuenta los metros cúbicos extraídos por vivienda, anota las horas de trabajo y las pone junto a las horas que usaba la remoción manual. Si la bomba vacía barro espeso sin atascarse y el tiempo baja, la municipalidad pide unidades para las siguientes emergencias. El entregable es la bomba con su manguera, la hoja de metros cúbicos y horas por vivienda, y la prueba de succión hecha en un patio antes de entrar a la casa.",
+    "que_es": "Bomba de succión portátil movida por un motor de gasolina que saca el barro de las viviendas anegadas, operada por la brigada de la municipalidad sin maquinaria pesada en la calle. El operario de la brigada conecta la manguera rígida, mete la boquilla en el cuarto inundado y vacía el barro en el bote que espera en la vía contigua; cada cuarto se descompone para medir cuánto barro sale de cada piso. Después de la inundación el barro se seca dentro de la casa y la remoción a mano tarda días en devolver la vivienda. Antes de pedir más equipos, la brigada compara las horas de trabajo con las que usaba la remoción manual. No es una pala y un costal, que tardan, ni una máquina pesada que no entra por la puerta: es equipo que cabe en la camioneta y vacía el cuarto en una pasada.",
     "como": [
-     "Descomponer la vivienda anegada por cuartos para medir cuánto barro hay en cada piso.",
-     "Conectar la succión a la manguera rígida y vaciar el barro en la calle contigua.",
-     "Contar los metros cúbicos extraídos por vivienda con el registro de la brigada.",
-     "Comparar horas de trabajo con la remoción manual antes de pedir más equipos."
+     "El jefe de la brigada entrega la bomba y la manguera rígida al operario en el punto de reunión de la emergencia.",
+     "El operario mete la boquilla en el cuarto inundado, vacía el barro en el bote de la calle y repite cuarto por cuarto.",
+     "El registrador de la brigada anota los metros cúbicos extraídos y las horas de trabajo en la hoja de la vivienda.",
+     "El jefe de la brigada compara las horas con la remoción manual y pide más equipos a la municipalidad solo si el tiempo baja."
     ],
-    "beneficiario": "Municipalidad · partida de emergencias · alcalde · bomba de succión para la brigada",
+    "beneficiario": "Municipalidad · partida de emergencias · alcalde · bombas de succión para sus brigadas",
     "componentes": [
-     "Bomba de succión movida por motor de gasolina",
-     "Manguera rígida de succión",
-     "Registro de metros cúbicos por vivienda",
-     "Hoja de horas de la brigada",
-     "Comparación con la remoción manual"
+     "Bomba de succión con motor de gasolina",
+     "Manguera rígida con boquillas",
+     "Bote de recepción en la calle",
+     "Hoja de metros cúbicos y horas por vivienda"
     ],
-    "costo": "por validar con el equipo",
+    "costo": "Estimación a cotizar (USD): bomba de succión con motor 1 × 450 + manguera rígida de 10 m 1 × 120 + boquillas 1 × 40 = 610.",
     "metricas": [
-     "por validar · fuente: research/claims.json",
-     "Por validar con el equipo"
+     "Metros cúbicos extraídos por vivienda",
+     "Horas de brigada por casa comparadas con la remoción manual",
+     "Minutos de la primera pasada de succión por cuarto"
     ]
    },
    "alterna": {
-    "nombre": "Torno manual para izar baldes de barro de viviendas anegadas",
+    "nombre": "Torno manual de manivela para izar baldes de barro",
     "claim": "Con manivela y cuerda, la junta de barrio vacía el barro de la vivienda sin esperar la bomba de la municipalidad.",
-    "que_es": "Torno de manivela con cuerda y gancho que sube baldes de barro desde la vivienda anegada hasta el bote de la calle, para que la junta de barrio quite el barro sin esperar la bomba de la municipalidad. El secretario de la junta lo ancla al dintel firme de la puerta, engancha el balde, gira la manivela y el balde sube por la fachada hasta el bote. Cada balde queda contado en la hoja de la brigada. El problema concreto es que la vivienda anegada tiene el barro en el piso y bajarlo a mano cansa y ensucia el patio. Antes de pedir más tornos, la junta compara: cuenta baldes y horas por vivienda y las pone junto a las horas de la remoción a mano. El equipo también prueba el anclaje antes de usarlo: iza un balde de arena desde un patio para ver si el dintel aguanta el torno cargado. El entregable es el torno montado con su cuerda y gancho, la hoja de baldes y horas y la prueba de anclaje anotada.",
+    "que_es": "Torno de manivela con cuerda y gancho que sube baldes de barro desde la vivienda anegada hasta el bote de la calle, para que la junta de barrio quite el barro sin esperar la bomba de la municipalidad. El secretario de la junta lo ancla al dintel firme de la puerta, engancha el balde, gira la manivela y el balde sube por la fachada hasta el bote; cada balde queda anotado en la hoja de la brigada. Bajar el barro a mano cansa y ensucia el patio dos veces. Antes de pedir más tornos, la junta prueba el anclaje izando un balde de arena desde un patio para ver si el dintel aguanta cargado. No es una escalera y un costal, que obliga a subir con peso en la espalda, ni un equipo que solo tiene la municipalidad: es pieza que la junta monta en la puerta en minutos.",
     "como": [
-     "Anclar el torno al dintel firme de la puerta de la vivienda anegada.",
-     "Subir baldes de barro de a uno con la manivela hasta el bote.",
-     "Contar baldes y horas por vivienda con la hoja de la brigada.",
-     "Comparar horas con la remoción a mano antes de pedir más tornos."
+     "El secretario de la junta lleva el torno al punto de la vivienda anegada y lo ancla al dintel firme de la puerta.",
+     "El operario de la junta engancha el balde de barro en el gancho y gira la manivela hasta dejarlo en el bote de la calle.",
+     "El registrador de la junta anota los baldes y las horas de cada vivienda en la hoja de la brigada.",
+     "El secretario compara las horas con la remoción a mano y pide más tornos a la municipalidad solo si el tiempo baja."
     ],
     "beneficiario": "Junta de barrio · cuota de emergencia · secretario · tornos manuales para su brigada",
     "componentes": [
@@ -713,10 +726,11 @@
      "Bote de la calle",
      "Hoja de conteo de baldes y horas"
     ],
-    "costo": "por validar con el equipo",
+    "costo": "Estimación a cotizar (USD): torno de manivela con cuerda y gancho 1 × 90 + anclajes 1 × 30 + baldes 1 × 20 = 140.",
     "metricas": [
-     "por validar · fuente: research/claims.json",
-     "Por validar con el equipo"
+     "Baldes extraídos por vivienda",
+     "Horas de la junta por casa comparadas con la remoción a mano",
+     "Minutos por balde en la primera vivienda de prueba"
     ]
    },
    "realidad": {
@@ -724,13 +738,13 @@
     "b": "Supuesto: el dintel aguanta el torno cargado sin soltarse; prueba barata: izar un balde de arena desde un patio antes de llevarlo a la vivienda."
    },
    "cadena": {
-    "problema": "Reto del comité sobre Remoción y extracción de barro en viviendas anegadas. Sector declarado: post-emergencia.",
-    "causa_raiz": "Por validar con el beneficiario.",
-    "insight": "Sin precedente en el corpus de ganadores.",
-    "solucion": "Hipótesis a validar.",
-    "metrica": "por validar · fuente: research/claims.json"
+    "problema": "Después de la inundación el barro se seca dentro de las viviendas y la remoción a mano tarda días en devolver la casa a la familia.",
+    "causa_raiz": "La brigada solo tiene pala y costal: sin succión ni izado, el barro se saca cuarto por cuarto a mano y la vivienda tarda en volver a usarse.",
+    "insight": "El barro húmedo se vacía mejor por succión que por pala, y subirlo en balde por el dintel evita cargarlo por la escalera; los dos trabajos caben en un equipo portátil de camioneta.",
+    "solucion": "Bomba de succión portátil con manguera rígida para vaciar el barro en el bote de la calle; la opción 02 es un torno de manivela que iza los baldes desde la vivienda.",
+    "metrica": "Metros cúbicos extraídos por vivienda y horas de brigada por casa."
    },
-   "senal": "Alertar 2021 convirtió la restricción de quien lo usa en un dispositivo físico discreto y camuflado.",
+   "senal": "La brigada vacía el barro de una vivienda en horas en vez de días, sin traer maquinaria pesada a la calle ni esperar a que el barro se seque.",
    "analogias": [
     {
      "year": 2021,
@@ -738,7 +752,7 @@
      "puesto": "1er lugar internacional Impacto Social y 1er lugar nacional Argentina",
      "proyecto": "Alertar",
      "que_hicieron": "Creó un dispositivo físico discreto de auxilio silencioso.",
-     "por_que": "Es un caso de emergencia resuelto con un dispositivo físico simple, como la bomba portátil de la opción 01.",
+     "por_que": "Creó un dispositivo físico discreto de auxilio silencioso para una emergencia; comparte el salto de resolver la emergencia con un artefacto portátil que se opera sin esperar ayuda.",
      "video": "https://www.youtube.com/watch?v=mgAvnq8aTJs"
     },
     {
@@ -747,7 +761,7 @@
      "puesto": "1er lugar internacional Innovación",
      "proyecto": "Solución para mordeduras de serpientes",
      "que_hicieron": "Atendió mordeduras de serpientes en zonas rurales desatendidas.",
-     "por_que": "Atiende una emergencia rural con recursos limitados, igual que el torno manual de la opción 02.",
+     "por_que": "Atendió una emergencia en zonas rurales desatendidas con recursos limitados; comparte el contexto de respuesta con equipo que cabe en el transporte local.",
      "video": ""
     }
    ],
@@ -757,6 +771,7 @@
    "id": "07",
    "titulo": "Reutilización de aceite doméstico",
    "categoria": "innovacion",
+   "categoria_porque": "Categoría innovación porque transforma un residuo doméstico en dos productos con uso directo, según la rúbrica de solución técnica nueva con economía circular.",
    "descripcion": "Reto del comité sobre Reutilización de aceite doméstico. Sector declarado: aceite de cocina.",
    "ods": [
     [
@@ -792,73 +807,74 @@
     ],
     [
      "Sustituto existente",
-     "por validar con el equipo"
+     "Jabón comercial para el mercado, ~USD 1.20 la barra; no basta porque el mercado lo compra mientras su aceite se tira al desagüe. Estimación a cotizar."
     ],
     [
      "Costo de referencia",
-     "por validar con el equipo"
+     "USD 100 estimación para la planta de banco (moldes 40 + sosa 20 + balanza 25 + bidones 15); unidad de filtrado: USD 105."
     ]
    ],
    "propuesta": {
     "nombre": "Aceite de cocina gastado convertido en jabón para el mercado",
-    "claim": "La panadería ya tira su aceite gastado; con cal local ese aceite vuelve al mercado convertido en jabón.",
-    "que_es": "Planta de banco que transforma el aceite doméstico gastado en jabón vendible, probada con la dueña de la panadería antes de ampliar. El equipo y la panadería la operan: el aceite de las cocinas de la panadería y los comercios del sector se recoge en bidón, se filtra en la planta de banco, se mezcla con cal local y se deja endurecer en molde. La barra resultante se prueba en el lavado de trastes del mercado. El problema que resuelve es que el aceite gastado se tira al desagüe y tapa las tuberías, mientras el mercado compra jabón. Antes de ampliar la recolección, el equipo pesa el jabón producido, anota el costo por kilo y registra la venta en el mercado durante un período de prueba. Con esas tres cifras en la libreta, la panadería y el equipo deciden si el lote crece o se ajusta la mezcla. El entregable incluye la planta de banco montada, la receta de mezcla con cal, la balanza y la hoja de costo por kilo y venta.",
+    "claim": "La panadería ya tira su aceite gastado; con sosa y molde local, ese aceite vuelve al mercado convertido en jabón.",
+    "que_es": "Planta de banco que transforma el aceite doméstico gastado en jabón en barra, probada con la dueña de la panadería antes de ampliar. El equipo y la panadería la operan: el aceite de las cocinas de la panadería y los comercios del sector se recoge en bidón, se filtra en la planta de banco, se mezcla con sosa cáustica y agua y se deja endurecer en molde. La barra resultante se prueba en el lavado de trastes del mercado. El problema que resuelve es simple: el aceite gastado se tira al desagüe y tapa las tuberías, mientras el mercado compra jabón nuevo. Antes de ampliar la recolección, el equipo pesa el jabón producido, compara el rendimiento con el aceite recibido y registra la venta durante un período de prueba. El entregable incluye la planta de banco montada, la receta de mezcla y la hoja de venta y rendimiento.",
     "como": [
-     "Recolectar aceite gastado de las cocinas de la panadería y los comercios del sector.",
-     "Filtrar el aceite en la planta de banco y mezclarlo con cal para hacer jabón.",
-     "Pesar el jabón producido y probarlo en el lavado de trastes del mercado.",
-     "Registrar costo por kilo y venta en el mercado antes de ampliar la recolección."
+     "La panadería y los comercios del sector guardan su aceite gastado en bidón y lo entregan en el punto de acopio del mercado.",
+     "El equipo filtra el aceite en la planta de banco, lo mezcla con sosa cáustica y agua y lo vierte en el molde.",
+     "El equipo deja endurecer las barras, las pesa y las lleva al puesto de lavado de trastes del mercado para la prueba.",
+     "La dueña del mercado anota la venta de las barras durante el período de prueba y decide con el equipo si el lote crece."
     ],
     "beneficiario": "Mercado municipal · cuota de aseo · jefe del mercado · planta de jabón con recolección de aceite",
     "componentes": [
      "Aceite gastado de la panadería y los comercios",
      "Filtro para el aceite",
-     "Cal local para la mezcla",
+     "Sosa cáustica y agua para la mezcla",
      "Planta de banco con molde",
-     "Balanza y prueba de lavado en el mercado"
+     "Balanza y hoja de venta"
     ],
-    "costo": "por validar con el equipo",
+    "costo": "Estimación a cotizar (USD): moldes y bandeja 1 × 40 + sosa cáustica para 50 barras 1 × 20 + balanza 1 × 25 + bidones y filtro 1 × 15 = 100; el aceite se recibe sin costo.",
     "metricas": [
-     "por validar · fuente: research/claims.json",
-     "Por validar con el equipo"
+     "Kilos de jabón producidos por lote",
+     "Litros de aceite que no llegan al desagüe por semana",
+     "Barras vendidas en el mercado durante la prueba"
     ]
    },
    "alterna": {
-    "nombre": "Recolección pagada de aceite de cocina gastado en bidones cerrados",
-    "claim": "Cada cocina guarda su aceite gastado en un bidón, lo pesa y lo vende por kilo en vez de tirarlo al desagüe.",
-    "que_es": "Sistema de recolección pagada de aceite gastado: un bidón cerrado con etiqueta en cada cocina, una balanza en el mercado y una libreta donde se anota el kilo que la empresa recolectora compra cada semana. La panadería y los comercios del sector lo operan: guardan el aceite en el bidón en vez de tirarlo al desagüe, llevan el bidón a la balanza del mercado, pesan y anotan, y la empresa se lleva el producto y paga por kilo. El problema concreto es que el aceite de cocina se pierde en la tubería y nadie cobra por él. Antes de sumar más cocinas, el equipo pesa un bidón completo, llama a dos empresas recolectoras y confirma que compran ese volumen, y anota el ingreso por kilo durante la semana de prueba. Si la empresa confirma la compra y el ingreso cuadra, se reparten más bidones. La entrega incluye el bidón cerrado con etiqueta, la balanza calibrada, la libreta de kilos y el contacto de la empresa recolectora.",
+    "nombre": "Unidad de filtrado de aceite con bomba de mano para la panadería",
+    "claim": "La panadería filtra su aceite con bomba de mano y sigue usándolo en vez de tirarlo y comprar más.",
+    "que_es": "Unidad de filtrado de aceite con bomba de mano: un recipiente con papel de filtro y una bomba que mueve el aceite gastado de la freidora al bidón de vuelta, sin electricidad. La dueña de la panadería la opera en la cocina: vacía el aceite de la freidora en el recipiente, gira la bomba y el aceite vuelve limpio de partículas al mismo caldero, alargando su vida de uso. Cuando ya no sirve, el aceite filtrado se guarda en el bidón cerrado y lo recoge la empresa de aceites que compra el producto en vez de irse al desagüe. No es un aceite nuevo comprado cada semana ni un filtro comercial que exige cambiar cartuchos caros: es una unidad que la panadería opera sin electricidad y que devuelve el aceite al caldero el mismo día.",
     "como": [
-     "Ubicar el bidón cerrado con etiqueta en la cocina de la panadería y los comercios.",
-     "Pesar el bidón en la balanza del mercado y anotar el kilo en la libreta.",
-     "Vender el aceite a la empresa recolectora cada semana.",
-     "Contar el ingreso por kilo y el volumen guardado antes de sumar más cocinas."
+     "La dueña de la panadería monta la unidad junto a la freidora y llena el recipiente con el aceite de la cocina.",
+     "La dueña gira la bomba de mano y el aceite vuelve filtrado al mismo caldero de freír.",
+     "La panadería repite el filtrado cada semana y anota en la hoja de la cocina cuántos litros recupera por vez.",
+     "Cuando el aceite ya no sirve, la panadería lo guarda en el bidón cerrado y lo entrega a la empresa de aceites que lo compra por kilo."
     ],
-    "beneficiario": "Empresa de aceites · compra por kilo · gerente · aceite gastado en bidón cerrado",
+    "beneficiario": "Panadería · ahorro en compra de aceite · dueña · unidad de filtrado para su cocina",
     "componentes": [
-     "Bidón cerrado con etiqueta",
-     "Balanza del mercado",
-     "Libreta de registro de kilos",
-     "Empresa recolectora que paga cada semana",
-     "Conteo de ingreso por kilo"
+     "Recipiente con papel de filtro",
+     "Bomba de mano",
+     "Bidón cerrado para el aceite agotado",
+     "Hoja de litros recuperados por semana"
     ],
-    "costo": "por validar con el equipo",
+    "costo": "Estimación a cotizar (USD): bomba de mano 1 × 60 + recipiente con soporte 1 × 25 + papeles de filtro para 3 meses 1 × 20 = 105.",
     "metricas": [
-     "por validar · fuente: research/claims.json",
-     "Por validar con el equipo"
+     "Litros de aceite recuperados por filtrado",
+     "Semanas de uso alargadas por lote de aceite",
+     "Litros que la panadería deja de comprar por mes"
     ]
    },
    "realidad": {
-    "a": "Supuesto: el aceite gastado saponifica bien con cal local; prueba barata: hacer un lote de jabón con aceite de una panadería y pesar la barra.",
-    "b": "Supuesto: la empresa recolectora compra el aceite gastado de estas cocinas; prueba barata: pesar un bidón completo y llamar a dos empresas antes de prometer el ingreso."
+    "a": "Supuesto: la sosa saponifica bien el aceite de la panadería; prueba barata: hacer un lote de jabón con aceite de una semana y pesar la barra.",
+    "b": "Supuesto: el filtrado alarga la vida del aceite lo bastante para notarlo; prueba barata: filtrar un lote y comparar color y olor con un lote sin filtrar durante una semana."
    },
    "cadena": {
-    "problema": "Reto del comité sobre Reutilización de aceite doméstico. Sector declarado: aceite de cocina.",
-    "causa_raiz": "Por validar con el beneficiario.",
-    "insight": "Sin precedente en el corpus de ganadores.",
-    "solucion": "Hipótesis a validar.",
-    "metrica": "por validar · fuente: research/claims.json"
+    "problema": "El aceite doméstico gastado llega al desagüe y tapa las tuberías del mercado, que además compra jabón nuevo.",
+    "causa_raiz": "Tirar el aceite es la salida más fácil: nadie lo guarda, nadie lo filtra y no hay quien lo compre en la cocina.",
+    "insight": "El aceite tiene dos vidas: filtrado sigue sirviendo en la freidora de la panadería, y lo que ya no sirve se saponifica con sosa y vuelve al mercado como jabón.",
+    "solucion": "Planta de banco que convierte el aceite gastado en jabón para el mercado; la opción 02 es una unidad de filtrado con bomba de mano que alarga la vida del aceite en la cocina.",
+    "metrica": "Litros de aceite que no llegan al desagüe por semana y kilos de jabón por lote."
    },
-   "senal": "BottleLife 2017 reutilizó el envase plástico descartado como material de construcción.",
+   "senal": "La panadería deja de tirar aceite al desagüe: lo filtra y sigue usándolo, y lo que ya no sirve se convierte en jabón que el mercado vende en vez de pagar jabón nuevo.",
    "analogias": [
     {
      "year": 2017,
@@ -866,7 +882,7 @@
      "puesto": "1er lugar internacional Impacto Social",
      "proyecto": "BottleLife",
      "que_hicieron": "Reutilizó envases plásticos estructuralmente para fines de construcción.",
-     "por_que": "Convierte un residuo doméstico descartado en material con uso directo, misma lógica del jabón de la opción 01.",
+     "por_que": "Reutilizó un residuo doméstico descartado como producto con uso directo; comparte el salto de convertir lo que se tira en algo que se usa y se vende.",
      "video": "https://www.youtube.com/watch?v=yhVE1ZRDQZk"
     },
     {
@@ -875,16 +891,17 @@
      "puesto": "1er lugar nacional Innovación de Procesos u Organizacional",
      "proyecto": "Ollnari",
      "que_hicieron": "Conectó artesanos con mercados con un catálogo de origen garantizado y mapa interactivo.",
-     "por_que": "Muestra que un producto hecho en el lugar se vende en el mercado local, como el aceite en bidón de la opción 02.",
+     "por_que": "Conectó artesanos con mercados para que el producto hecho en el lugar se venda localmente; muestra el camino de venta que sigue la barra de jabón de esta opción.",
      "video": "https://www.youtube.com/watch?v=v4kZD-S1NHk"
     }
    ],
-   "pitch": "La panadería ya tira su aceite gastado; con cal local ese aceite vuelve al mercado convertido en jabón."
+   "pitch": "La panadería ya tira su aceite gastado; con sosa y molde local, ese aceite vuelve al mercado convertido en jabón."
   },
   {
    "id": "08",
    "titulo": "Desechos de basura verde (residuos fotovoltaicos)",
    "categoria": "innovacion",
+   "categoria_porque": "Categoría innovación porque separa y reintegra los tres materiales del panel retirado en dos productos con destino de compra, según la rúbrica de transformación técnica de residuo.",
    "descripcion": "Reto del comité sobre Desechos de basura verde (residuos fotovoltaicos). Sector declarado: paneles solares retirados.",
    "ods": [
     [
@@ -900,7 +917,7 @@
     [
      "ODS 9",
      "Industria, innovación e infraestructura",
-     "Fabrica la plancha con el método constructivo del caso Tetra Pak 2025."
+     "Fabrica el módulo de luz y la techumbre en el taller con los paneles retirados."
     ]
    ],
    "insignias": [
@@ -916,77 +933,79 @@
    "detalles": [
     [
      "Quién paga",
-     "Empresa de energía · contrato de retiro de equipos · gerente · planchas de techo para sedes y escuelas"
+     "Empresa de energía · contrato de retiro de equipos · gerente · módulos de luz y techumbre para el mercado"
     ],
     [
      "Sustituto existente",
-     "por validar con el equipo"
+     "Panel solar nuevo de baja potencia, ~USD 90 la unidad; no basta porque el mercado paga factura de luz mientras sus paneles retirados esperan en el patio. Estimación a cotizar."
     ],
     [
      "Costo de referencia",
-     "por validar con el equipo"
+     "USD 100 estimación para el módulo de luz (soldadura 30 + placa 30 + LED 25 + resina 15); techumbre: USD 140."
     ]
    ],
    "propuesta": {
-    "nombre": "Planchas de techo prensadas con residuos fotovoltaicos y Tetra Pak",
-    "claim": "La cooperativa ya retira paneles solares; con el método Tetra Pak 2025 esos residuos salen del techo como planchas de construcción.",
-    "que_es": "Plancha constructiva sismorresistente que aplica el método del caso Tetra Pak 2025 a los residuos de paneles solares retirados de la cooperativa eléctrica. La cooperativa entrega los paneles al equipo, que separa vidrio, marco y encapsulante, tritura los fragmentos y los prensa con el compuesto multicapa del caso para formar la plancha de techo. La plancha se ofrece al proveedor de techos de la alcaldía, que ya compra cubierta para los mercados. El problema que resuelve es que el panel retirado no tiene dónde reciclarse y el techo del municipio se compra nuevo. Antes de montarla en un techo, el equipo prueba la plancha en banco: le aplica carga, la moja durante una semana y anota si aguanta y si la humedad entra. Con ese resultado, la cooperativa decide si sigue retirando paneles para este fin. El entregable incluye la plancha probada, la ficha de material que indica qué salió de cada panel y la ruta de retiro acordada con la cooperativa.",
+    "nombre": "Módulo de luz fabricado con células de paneles solares retirados",
+    "claim": "La cooperativa ya retira paneles solares; con sus células, el taller fabrica el módulo que enciende el mercado.",
+    "que_es": "Módulo de luz de baja potencia fabricado con las células de los paneles solares que la cooperativa eléctrica retira de los techos. El taller separa las células del panel, las suelda en un tablero del tamaño de una hoja, lo cubre con placa transparente y lo monta con un LED en el marco del propio panel; el módulo se instala en el techo del mercado y enciende el pasillo cada noche. El panel retirado espera en el patio de la cooperativa sin destino y el mercado paga factura de luz cada mes. Antes de producir más, el equipo mide en el banco la luz que entrega el módulo durante una noche completa. No es un panel solar nuevo, que se compra caro, ni un componente del panel que se vende como chatarra: es el material retirado convertido en luz para el mercado.",
     "como": [
-     "Recolectar paneles solares retirados de los techos con la cooperativa eléctrica.",
-     "Segregar vidrio, marco y encapsulante, y prensar los fragmentos con el compuesto del caso Tetra Pak.",
-     "Probar carga y humedad en una plancha de banco antes de montarla en un techo.",
-     "Entregar la plancha y su ficha de material al proveedor de techos de la alcaldía."
+     "La cooperativa eléctrica entrega los paneles solares retirados al taller en el día del retiro.",
+     "El técnico del taller separa las células del vidrio y del marco y las suelda en el tablero del módulo.",
+     "El operario cubre el tablero con la placa transparente, monta el LED en el marco del panel y prueba la luz en el banco durante una noche.",
+     "El taller instala el módulo en el techo del mercado y entrega la ficha de material con la lista de paneles usados."
     ],
-    "beneficiario": "Empresa de energía · contrato de retiro de equipos · gerente · planchas de techo para sedes y escuelas",
+    "beneficiario": "Empresa de energía · contrato de retiro de equipos · gerente · módulos de luz para sedes y mercados",
     "componentes": [
-     "Paneles solares retirados de los techos",
-     "Segregación de vidrio, marco y encapsulante",
-     "Compuesto multicapa del caso Tetra Pak 2025",
-     "Prensa y banco de prueba de carga y humedad",
-     "Ficha de material para el proveedor de techos"
+     "Células de paneles solares retirados",
+     "Tablero y soldadura para el módulo",
+     "Placa transparente de cubierta",
+     "LED y cableado del módulo",
+     "Marco del panel para el montaje"
     ],
-    "costo": "por validar con el equipo",
+    "costo": "Estimación a cotizar (USD): soldadura y conectores 1 × 30 + placa transparente 1 × 30 + LED y cableado 1 × 25 + resina de sellado 1 × 15 = 100; las células se reciben en el retiro sin costo.",
     "metricas": [
-     "por validar · fuente: research/claims.json",
-     "Por validar con el equipo"
+     "Células recuperadas por panel retirado",
+     "Horas de luz por noche con el módulo en el mercado",
+     "Paneles que dejan de ir al botadero por mes"
     ]
    },
    "alterna": {
-    "nombre": "Estructura de canope para mercados armada con residuos fotovoltaicos",
-    "claim": "Los paneles solares retirados ya llegan de la cooperativa; sus marcos y vidrio techan el mercado con el método BottleLife.",
-    "que_es": "Techumbre de canope para el mercado municipal, armada con los marcos y vidrios de paneles solares retirados que la cooperativa eléctrica entrega, según la reutilización estructural del caso BottleLife 2017. Los operarios del mercado y el equipo desmontan marco, vidrio y célula, clasifican cada material en el patio y arman la techumbre con los marcos enlazados; el vidrio sin célula queda como panel translúcido que da sombra y luz al puesto. El problema concreto es que el panel retirado se descarta y el mercado necesita cubierta para sus puestos. Antes de entregar la techumbre, el equipo la carga con agua y registra las filtraciones punto por punto, como hace el caso BottleLife con sus piezas. Si no entra agua, la techumbre se entrega al mercado con su ficha de material y la lista de paneles retirados que la cubren. El entregable incluye la techumbre montada, la clasificación de marcos y vidrios por panel retirado y la hoja de filtraciones de la prueba con agua.",
+    "nombre": "Techumbre translúcida armada con vidrios y marcos de paneles retirados",
+    "claim": "Los vidrios y marcos de los paneles retirados techan los puestos del mercado con luz natural y sin compra de lámina.",
+    "que_es": "Techumbre translúcida para los puestos del mercado, armada con los vidrios y los marcos de aluminio de los paneles solares que la cooperativa retira. Los operarios del mercado y el equipo desmontan el panel en el patio, separan marco, vidrio y célula, enlazan los marcos como estructura y colocan el vidrio sin célula como cubierta que deja pasar la luz. El puesto queda techado y con luz natural todo el día. El panel retirado se descarta hoy y el mercado compra lámina nueva para sus puestos. Antes de entregar la obra, el equipo carga el techo con agua y anota las filtraciones punto por punto. No es una lámina comprada que llega en camión ni un panel entero montado sobre el techo: es material retirado clasificado y armado en obra.",
     "como": [
-     "Recoger con la cooperativa los paneles solares retirados de sus techos.",
-     "Desmontar marco, vidrio y célula, y clasificar cada material en el patio.",
-     "Armar la techumbre con marcos enlazados y vidrio como panel translúcido.",
-     "Cargar el techo con agua y registrar filtraciones antes de entregarlo al mercado."
+     "La cooperativa entrega los paneles retirados y el equipo los desmonta en el patio del mercado.",
+     "El operario separa marco, vidrio y célula y clasifica cada material en su pila.",
+     "El equipo enlaza los marcos como estructura del techo y coloca el vidrio sin célula como cubierta translúcida en los puestos.",
+     "El equipo carga el techo con agua, anota las filtraciones y entrega la techumbre al mercado con su ficha de material."
     ],
-    "beneficiario": "Mercado municipal · partida de obras · concejal · techumbre de canope para sus puestos",
+    "beneficiario": "Mercado municipal · partida de obras · alcalde · techumbre para sus puestos",
     "componentes": [
-     "Marcos de paneles solares retirados",
-     "Vidrios sin célula como panel translúcido",
-     "Enlace de marcos sin piezas metálicas",
-     "Prueba de carga con agua y registro de filtraciones",
-     "Ficha de material de la cooperativa"
+     "Marcos de aluminio de paneles retirados",
+     "Vidrios sin célula como cubierta translúcida",
+     "Enlace de marcos con pernos",
+     "Junta y sellado contra lluvia",
+     "Ficha de material por panel"
     ],
-    "costo": "por validar con el equipo",
+    "costo": "Estimación a cotizar (USD): pernos y juntas 1 × 80 + sellado y canaleta 1 × 60 = 140; los marcos y vidrios se reciben en el retiro sin costo.",
     "metricas": [
-     "por validar · fuente: research/claims.json",
-     "Por validar con el equipo"
+     "Paneles retirados desmontados por semana",
+     "Metros cuadrados de techumbre entregados",
+     "Filtraciones detectadas en la prueba de agua"
     ]
    },
    "realidad": {
-    "a": "Supuesto: los fragmentos fotovoltaicos prensados aguantan carga y lluvia como el compuesto Tetra Pak; prueba barata: prensar una muestra y mojarla una semana.",
-    "b": "Supuesto: el vidrio fotovoltaico sin célula sirve de panel translúcido en la techumbre; prueba barata: montar un cuadro de un metro con un vidrio retirado y mojarlo."
+    "a": "Supuesto: el módulo con células retiradas da luz suficiente para el pasillo; prueba barata: montar un módulo y medir la luz durante una noche antes de producir más.",
+    "b": "Supuesto: el vidrio sin célula aguanta la lluvia como cubierta; prueba barata: montar un cuadro de un metro y mojarlo una semana antes de entregar la obra."
    },
    "cadena": {
-    "problema": "Aprovechamiento de Tetra Pak como pasivo ambiental de gran volumen (Desafío 01).",
-    "causa_raiz": "Por validar con el equipo.",
-    "insight": "Evitar el reciclaje artesanal de bajo valor agregado y montar una ruta de procesamiento industrializable que explote las propiedades térmicas, acústicas e impermeables del compuesto multicapa de celulosa, polietileno y aluminio.",
-    "solucion": "Paneles constructivos modulares sismorresistentes fabricados con Tetra Pak revalorizado, con ruta de recolección inclusiva vinculada a la manufactura.",
-    "metrica": "por validar · fuente: research/claims.json"
+    "problema": "El panel solar retirado no tiene destino: la cooperativa lo entrega y los materiales terminan en el botadero mientras el mercado compra cubierta y paga luz.",
+    "causa_raiz": "El retiro es obligación de la empresa pero el desmontaje en el sitio no existe: sin separar célula, vidrio y marco, todo el panel vale chatarra.",
+    "insight": "Las tres partes del panel tienen usos distintos si se separan en el sitio: la célula aún da luz de baja potencia, el vidrio sirve de cubierta translúcida y el marco de aluminio sostiene la obra.",
+    "solucion": "Módulo de luz fabricado con células retiradas para el mercado y techumbre translúcida armada con los vidrios y marcos del mismo panel.",
+    "metrica": "Células recuperadas por panel y horas de luz por noche con el módulo."
    },
-   "senal": "Mentes Volcánicas 2025 mostró que el residuo de gran volumen sirve como material constructivo si se procesa.",
+   "senal": "El panel retirado sale del botadero el mismo día del retiro y llega al mercado como luz de noche y como cubierta de día, con ficha de qué material salió de cada equipo.",
    "analogias": [
     {
      "year": 2025,
@@ -994,25 +1013,26 @@
      "puesto": "1er lugar internacional Impacto Social y 1er lugar nacional",
      "proyecto": "Paneles constructivos de Tetra Pak",
      "que_hicieron": "Fabricó paneles constructivos modulares sismorresistentes con Tetra Pak revalorizado.",
-     "por_que": "Su método de panel prensado es el que copia la opción 01 con fragmentos de paneles solares.",
+     "por_que": "Fabricó paneles constructivos modulares con un residuo de gran volumen revalorizado; comparte el salto de convertir un residuo de gran volumen en material con uso de obra.",
      "video": "https://www.youtube.com/watch?v=_JSUKR1bPnE"
     },
     {
-     "year": 2017,
-     "equipo": "BottleLife (Montevideo, Uruguay)",
-     "puesto": "1er lugar internacional Impacto Social",
-     "proyecto": "BottleLife",
-     "que_hicieron": "Reutilizó envases plásticos estructuralmente para fines de construcción.",
-     "por_que": "Su estructura reutilizada es la que copia la opción 02 para la techumbre del mercado.",
-     "video": "https://www.youtube.com/watch?v=yhVE1ZRDQZk"
+     "year": 2025,
+     "equipo": "STEM Synergy (UAM - DIEM)",
+     "puesto": "1er lugar internacional Innovación y 1er lugar nacional",
+     "proyecto": "Huertos verticales con recirculación hídrica",
+     "que_hicieron": "Armó huertos verticales modulares con recirculación automatizada de agua recuperada.",
+     "por_que": "Su proyecto usa materiales compuestos reciclados como componente de una estructura; comparte el uso de material recuperado dentro de una obra armada.",
+     "video": "https://www.youtube.com/watch?v=JhqjBm20DXo"
     }
    ],
-   "pitch": "La cooperativa ya retira paneles solares; con el método Tetra Pak 2025 esos residuos salen del techo como planchas de construcción."
+   "pitch": "La cooperativa ya retira paneles solares; con sus células, el taller fabrica el módulo que enciende el mercado."
   },
   {
    "id": "09",
    "titulo": "Optimización y priorización de recursos y esfuerzos en la post-emergencia",
    "categoria": "innovacion",
+   "categoria_porque": "Categoría innovación porque resuelve la coordinación de la respuesta con dos artefactos físicos nuevos que sustituyen la reunión y el reporte por radio, según la rúbrica de solución técnica ante la emergencia.",
    "descripcion": "Reto del comité sobre Optimización y priorización de recursos y esfuerzos en la post-emergencia. Sector declarado: coordinación de respuesta.",
    "ods": [
     [
@@ -1028,7 +1048,7 @@
     [
      "ODS 16",
      "Paz, justicia e instituciones sólidas",
-     "Deja reglas de prioridad escritas que toda la brigada sigue igual."
+     "Deja el reparto de ayuda con marcas visibles que toda la brigada aplica igual."
     ]
    ],
    "insignias": [
@@ -1044,77 +1064,77 @@
    "detalles": [
     [
      "Quién paga",
-     "Protección Civil municipal · partida de emergencias · coordinador · tablero y reglas de prioridad"
+     "Protección Civil municipal · partida de emergencias · coordinador · kits de estacas y cédulas"
     ],
     [
      "Sustituto existente",
-     "por validar con el equipo"
+     "Radio de mano para coordinar por voz, ~USD 120 la unidad; no basta porque la prioridad sigue esperando la reunión y la memoria del coordinador. Estimación a cotizar."
     ],
     [
      "Costo de referencia",
-     "por validar con el equipo"
+     "USD 65 estimación para el kit de estacas (estacas 30 + cajón 20 + guía 15); cédulas: USD 70."
     ]
    ],
    "propuesta": {
-    "nombre": "Tablero de prioridades de recursos para brigadas en post-emergencia",
-    "claim": "El tablero le dice a la brigada qué recurso va primero en cada turno, sin reunión ni radio de por medio.",
-    "que_es": "Tablero físico con reglas de prioridad escrito para la coordinación municipal de post-emergencia, que ordena los recursos y las cuadrillas de cada turno. El coordinador de Protección Civil lo opera en la sala de reuniones: primero se mapea con la brigada qué recursos quedan disponibles después de la emergencia, después se escriben las reglas de prioridad, población en riesgo, agua, alojamiento y acceso, y en cada turno se acomodan las cuadrillas en el tablero según esas reglas. El problema que resuelve es que la llegada de recursos depende de la reunión y del radio, y ese tiempo se pierde. Antes de usarlo en una emergencia real, la brigada hace una simulación de una hora con el tablero en la sala y compara las horas de respuesta con el método anterior. Si las cuadrillas siguen las reglas bajo presión, el tablero queda fijado en la pared de la coordinación. El entregable es el tablero montado, las reglas escritas en tarjetas y la hoja de horas de la simulación comparada.",
+    "nombre": "Estacas numeradas de cobertura para la brigada en post-emergencia",
+    "claim": "La brigada clava una estaca en cada vivienda atendida y el coordinador envía el próximo camión al primer tramo sin estaca, sin reunión ni radio.",
+    "que_es": "Estaca numerada de cobertura: una vara de PVC con el número grabado que la brigada clava en la puerta de cada vivienda atendida en la post-emergencia. El coordinador de Protección Civil la opera desde la camioneta: recorre la cuadra, ve el primer tramo sin estaca y manda el próximo camión de agua y techo a esa calle en la misma hora. Hoy la prioridad se decide en una reunión con reportes sueltos por radio y las cuadrillas re-visitan casas ya atendidas mientras otras esperan. No es una lista que se escribe en la sala ni una reunión que decide quién va primero: es el estado de la respuesta clavado en el terreno, visible desde la camioneta y legible sin luz ni señal.",
     "como": [
-     "Mapear con la coordinación municipal qué recursos quedan disponibles tras la emergencia.",
-     "Escribir reglas de prioridad: población en riesgo, agua, alojamiento y acceso.",
-     "Ordenar las cuadrillas en el tablero según esas reglas en cada turno.",
-     "Comparar horas de respuesta con el método anterior durante la siguiente simulación."
+     "El coordinador de la brigada entrega el cajón de estacas numeradas a la cuadrilla en el punto de reunión de la emergencia.",
+     "El operario de la cuadrilla clava una estaca en la puerta de cada vivienda que atiende, con el número de la vivienda en la vara.",
+     "El coordinador recorre la cuadra en camioneta, identifica el primer tramo sin estaca y envía el próximo camión de agua y techo a esa calle.",
+     "El coordinador anota en la hoja del turno las cuadrillas con estaca y las cuadrillas sin marca para el siguiente reparto."
     ],
-    "beneficiario": "Protección Civil municipal · partida de emergencias · coordinador · tablero y reglas de prioridad",
+    "beneficiario": "Protección Civil municipal · partida de emergencias · coordinador · kits de estacas para sus brigadas",
     "componentes": [
-     "Tablero físico con reglas de prioridad escritas",
-     "Lista de recursos disponibles tras la emergencia",
-     "Tarjetas: población en riesgo, agua, alojamiento y acceso",
-     "Cuadrillas acomodadas por turno",
-     "Hoja de horas de la simulación comparada"
+     "Estacas de PVC numeradas",
+     "Cajón portátil para la cuadrilla",
+     "Hoja de tramos por turno",
+     "Guía de entrega de estacas"
     ],
-    "costo": "por validar con el equipo",
+    "costo": "Estimación a cotizar (USD): 50 estacas numeradas × 0.60 = 30 + cajón portátil 1 × 20 + guía y hojas 1 × 15 = 65.",
     "metricas": [
-     "por validar · fuente: research/claims.json",
-     "Por validar con el equipo"
+     "Tramos sin estaca recorridos en la primera vuelta del camión",
+     "Viviendas atendidas sin repetir visita",
+     "Minutos entre la lectura de la cuadra y la salida del próximo camión"
     ]
    },
    "alterna": {
-    "nombre": "Mapa de cuadrantes con rutas cortas para la respuesta en post-emergencia",
-    "claim": "El mapa reparte las cuadrillas por el municipio para que cada turno llegue antes al punto que más urge.",
-    "que_es": "Mapa del municipio dividido en cuadrantes que reparte los recursos y las cuadrillas para acortar la llegada en post-emergencia. La empresa de logística y la coordinación municipal lo operan: el municipio se divide con las cuadrillas que ya existen, en cada cuadrante se marca la ruta más corta entre el puesto y los puntos de agua, y en cada turno se asigna la cuadrilla al cuadrante más cercano con el mapa impreso en la mano. El problema concreto es que dos cuadrillas salen al mismo punto mientras otro se queda sin cubrir. Antes de ampliar el mapa, el equipo cronometra: cuenta los minutos de llegada a tres puntos del cuadrante con el mapa nuevo y los compara con la ruta que se usaba antes. Si el tiempo baja, la empresa de logística pide copias del mapa para los demás turnos. El entregable incluye el mapa impreso por cuadrante, las rutas marcadas entre puesto y puntos de agua y la hoja de minutos de llegada de la prueba.",
+    "nombre": "Cédula de necesidad con perforaciones para cada familia",
+    "claim": "Cada familia recibe una cédula con perforaciones por necesidad pendiente; la entrega se ordena al leer las perforaciones que quedan.",
+    "que_es": "Cédula de necesidad: una tarjeta rígida con cordón para el cuello y perforaciones de colores por tipo de ayuda, que cada familia recibe en el primer contacto con la brigada en la post-emergencia. Lo que la familia ya recibió se desgarra de la tarjeta y lo que falta queda perforado a la vista. En el punto de reparto, el operario lee las perforaciones que quedan y carga el carro con eso, sin lista, sin reunión y sin escribir nada. La tarjeta viaja con la familia y evita que le entreguen dos veces lo mismo mientras otra casa sigue esperando. No es una libreta donde alguien anota a mano, que se moja y se pierde, ni una fila que decide quien llega primero: es la necesidad de cada casa visible en el cuello y legible de un brazo.",
     "como": [
-     "Dividir el municipio en cuadrantes con las cuadrillas que ya existen.",
-     "Marcar en cada cuadrante la ruta más corta entre el puesto y los puntos de agua.",
-     "Asignar la cuadrilla al cuadrante más cercano en cada turno con el mapa impreso.",
-     "Contar minutos de llegada a tres puntos del cuadrante antes de ampliar el mapa."
+     "El coordinador de Protección Civil entrega las cédulas a cada familia en el primer contacto con la brigada.",
+     "La familia cuelga la cédula en el cuello y conserva en la tarjeta lo que ya recibió.",
+     "El operario del reparto lee las perforaciones pendientes de cada cédula en el punto y carga el carro con ese tipo de ayuda.",
+     "El coordinador anota en la hoja del turno los tipos de ayuda que quedaron pendientes para el siguiente reparto."
     ],
-    "beneficiario": "Empresa de logística · convenio de apoyo · gerente · rutas de cuadrante para la respuesta",
+    "beneficiario": "Protección Civil municipal · partida de emergencias · coordinador · cédulas para las familias del barrio",
     "componentes": [
-     "Mapa impreso del municipio en cuadrantes",
-     "Ruta más corta entre el puesto y los puntos de agua",
-     "Asignación de cuadrilla por turno",
-     "Cronómetro para los minutos de llegada",
-     "Hoja de minutos de la prueba"
+     "Cédulas rígidas con perforaciones de colores",
+     "Cordones para el cuello",
+     "Guía de colores por tipo de ayuda",
+     "Hoja de pendientes por turno"
     ],
-    "costo": "por validar con el equipo",
+    "costo": "Estimación a cotizar (USD): 500 cédulas impresas × 0.10 = 50 + cordones 1 × 10 + guía y hojas 1 × 10 = 70.",
     "metricas": [
-     "por validar · fuente: research/claims.json",
-     "Por validar con el equipo"
+     "Familias con cédula entregada en el primer contacto",
+     "Viviendas servidas sin entrega repetida",
+     "Tipos de ayuda pendientes leídos por el reparto"
     ]
    },
    "realidad": {
-    "a": "Supuesto: las brigadas siguen las reglas del tablero bajo presión; prueba barata: una simulación de una hora con la brigada y el tablero en la sala.",
-    "b": "Supuesto: las cuadrillas siguen la ruta más corta sin atajos no marcados; prueba barata: cronometrar dos cuadrillas en la siguiente simulación."
+    "a": "Supuesto: la estaca se lee desde la camioneta aunque llueva; prueba barata: clavar diez estacas en un patio y mirarlas desde la calle.",
+    "b": "Supuesto: la familia conserva la cédula durante la emergencia; prueba barata: entregar veinte cédulas en una cuadra y revisar al día siguiente cuántas vuelven."
    },
    "cadena": {
-    "problema": "Reto del comité sobre Optimización y priorización de recursos y esfuerzos en la post-emergencia. Sector declarado: coordinación de respuesta.",
-    "causa_raiz": "Por validar con el beneficiario.",
-    "insight": "Sin precedente en el corpus de ganadores.",
-    "solucion": "Hipótesis a validar.",
-    "metrica": "por validar · fuente: research/claims.json"
+    "problema": "En la post-emergencia la prioridad se decide en una reunión con reportes sueltos y las cuadrillas re-visitan casas ya atendidas mientras otras esperan.",
+    "causa_raiz": "El estado de la respuesta solo vive en el radio y en la memoria del coordinador: sin una marca física en el terreno, nadie sabe en el momento qué tramo falta y qué casa ya fue servida.",
+    "insight": "La respuesta se ordena sola cuando el estado de la cobertura se clava en el terreno y la necesidad pendiente viaja con la familia: la cuadra se lee desde la camioneta y el reparto se ordena al pasar.",
+    "solucion": "Estacas numeradas que la brigada deja en cada vivienda atendida para enviar el próximo recurso al primer tramo sin marca; la opción 02 entrega a cada familia una cédula con perforaciones por necesidad pendiente.",
+    "metrica": "Tramos sin estaca recorridos por el camión en la primera vuelta y viviendas servidas sin repetir visita."
    },
-   "senal": "Alertar 2021 documentó la causa raíz del caso antes de escoger el dispositivo que resolvía el problema.",
+   "senal": "La cuadra se lee desde la camioneta y el próximo camión sale al primer tramo sin estaca en la misma hora; hoy esa decisión espera la reunión y el reporte por radio.",
    "analogias": [
     {
      "year": 2023,
@@ -1122,7 +1142,7 @@
      "puesto": "1er lugar internacional Innovación y 1er lugar nacional",
      "proyecto": "DIGNA",
      "que_hicieron": "Fijó las restricciones numéricas del brief desde la hora 2.",
-     "por_que": "Fija las reglas de trabajo desde la hora 2, igual que las reglas de prioridad de la opción 01.",
+     "por_que": "Fijó las reglas numéricas del trabajo desde la hora 2 para que todo el equipo actuara igual; comparte el salto de reemplazar la discusión por reglas claras y visibles desde el inicio.",
      "video": "https://www.youtube.com/watch?v=AjtVryXaGDc"
     },
     {
@@ -1131,11 +1151,11 @@
      "puesto": "1er lugar internacional Impacto Social y 1er lugar nacional Argentina",
      "proyecto": "Alertar",
      "que_hicieron": "Creó un dispositivo físico discreto de auxilio silencioso.",
-     "por_que": "Atiende una situación de emergencia con respuesta inmediata, como la cuadrilla que llega por la ruta más corta de la opción 02.",
+     "por_que": "Creó un dispositivo físico discreto de auxilio silencioso en una emergencia; comparte el uso de un artefacto físico simple que resuelve sin electricidad ni señal.",
      "video": "https://www.youtube.com/watch?v=mgAvnq8aTJs"
     }
    ],
-   "pitch": "El tablero le dice a la brigada qué recurso va primero en cada turno, sin reunión ni radio de por medio."
+   "pitch": "La brigada clava una estaca en cada vivienda atendida y el coordinador envía el próximo camión al primer tramo sin estaca, sin reunión ni radio."
   }
  ]
 }

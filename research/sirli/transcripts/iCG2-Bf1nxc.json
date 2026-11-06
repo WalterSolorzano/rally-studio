@@ -1,0 +1,122 @@
+{
+ "video_id": "iCG2-Bf1nxc",
+ "url": "https://youtu.be/iCG2-Bf1nxc",
+ "year": 2021,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "TENMECI HEALTH",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "TENMECI HEALTH",
+   "challenge": "09 - IDENTIFICADOR PRÁCTICO Y ECONÓMICO DEL AEROSOL DE CO2 EN ESPACIOS CERRADOS"
+  }
+ ],
+ "fetched_at": "2026-11-06T18:48:12+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "La educación es una herramienta clave en la lucha contra la pobreza y las desigualdades sociales. La ausencia de ella tiene grandes repercusiones en ámbitos tan variados como la democracia y la defensa de los derechos humanos, el desarrollo económico y la equidad de género. Según la ONU, Latinoamérica es la región con más estudiantes sin clases presenciales debido a la pandemia de la COVID-19. Según la directora general de la UNESCO, hay 500 millones de alumnos en todo el mundo que no pudieron empezar escuela por la crisis educativa que ha originado la pandemia. La pandemia del coronavirus pone en una incrucijada a los sistemas educativos alrededor del mundo y exige respuesta contundente de los gobiernos para ofrecer una continuidad en la enseñanza durante los confinamientos. La pandemia ha hecho que en muchos lugares del mundo las clases presenciales sean canceladas para evitar una mayor propagación de la COVID-19. Ante esta situación, los sistemas escolares buscan alternativas para continuar su vida educativa. Es por eso que hemos creado un dispositivo encargado de captar los niveles de CO2 en una habitación para su posterior purificación. Hablamos de 10MH, que se basa en un sensor encargado de percibir la cantidad de partículas de CO2 en una habitación, el cual activará un sistema de purificación y extracción de carbono que utiliza placas de una piedra de origen volcánico llamadas sebolitas que tiene la capacidad de actuar como filtro natural que atrapa el carbono y deja fluir oxígeno de retorno a la habitación, liberando oxígeno de alta pureza.",
+ "segments": [
+  {
+   "start": 3.5,
+   "end": 9.5,
+   "text": "La educación es una herramienta clave en la lucha contra la pobreza y las desigualdades sociales."
+  },
+  {
+   "start": 9.5,
+   "end": 15.34,
+   "text": "La ausencia de ella tiene grandes repercusiones en ámbitos tan variados como la democracia"
+  },
+  {
+   "start": 15.34,
+   "end": 20.3,
+   "text": "y la defensa de los derechos humanos, el desarrollo económico y la equidad de género."
+  },
+  {
+   "start": 20.3,
+   "end": 26.3,
+   "text": "Según la ONU, Latinoamérica es la región con más estudiantes sin clases presenciales"
+  },
+  {
+   "start": 26.3,
+   "end": 30.82,
+   "text": "debido a la pandemia de la COVID-19. Según la directora general de la UNESCO,"
+  },
+  {
+   "start": 30.82,
+   "end": 36.42,
+   "text": "hay 500 millones de alumnos en todo el mundo que no pudieron empezar escuela por la crisis"
+  },
+  {
+   "start": 36.42,
+   "end": 41.3,
+   "text": "educativa que ha originado la pandemia. La pandemia del coronavirus pone en una"
+  },
+  {
+   "start": 41.3,
+   "end": 47.18,
+   "text": "incrucijada a los sistemas educativos alrededor del mundo y exige respuesta contundente de"
+  },
+  {
+   "start": 47.18,
+   "end": 51.3,
+   "text": "los gobiernos para ofrecer una continuidad en la enseñanza durante los confinamientos."
+  },
+  {
+   "start": 51.3,
+   "end": 56.98,
+   "text": "La pandemia ha hecho que en muchos lugares del mundo las clases presenciales sean"
+  },
+  {
+   "start": 56.98,
+   "end": 60.74,
+   "text": "canceladas para evitar una mayor propagación de la COVID-19."
+  },
+  {
+   "start": 60.74,
+   "end": 67.18,
+   "text": "Ante esta situación, los sistemas escolares buscan alternativas para continuar su vida educativa."
+  },
+  {
+   "start": 67.18,
+   "end": 73.22,
+   "text": "Es por eso que hemos creado un dispositivo encargado de captar los niveles de CO2 en una"
+  },
+  {
+   "start": 73.22,
+   "end": 80.02,
+   "text": "habitación para su posterior purificación. Hablamos de 10MH, que se basa en un sensor"
+  },
+  {
+   "start": 80.02,
+   "end": 84.22,
+   "text": "encargado de percibir la cantidad de partículas de CO2 en una habitación,"
+  },
+  {
+   "start": 84.42,
+   "end": 90.14,
+   "text": "el cual activará un sistema de purificación y extracción de carbono que utiliza placas de"
+  },
+  {
+   "start": 90.14,
+   "end": 95.78,
+   "text": "una piedra de origen volcánico llamadas sebolitas que tiene la capacidad de actuar como filtro"
+  },
+  {
+   "start": 95.78,
+   "end": 100.74,
+   "text": "natural que atrapa el carbono y deja fluir oxígeno de retorno a la habitación,"
+  },
+  {
+   "start": 100.74,
+   "end": 103.26,
+   "text": "liberando oxígeno de alta pureza."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 111.8
+}

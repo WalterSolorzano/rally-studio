@@ -1,0 +1,112 @@
+{
+ "video_id": "BWZLQhNH1Qc",
+ "url": "https://www.youtube.com/watch?v=BWZLQhNH1Qc&feature=youtu.be",
+ "year": 2019,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "SAAP-TUC",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2019,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "SAAP-TUC",
+   "challenge": "08 - PARADAS DE AUTOBÚS SUSTENTABLE"
+  }
+ ],
+ "fetched_at": "2026-11-06T18:53:07+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "A medida que pasa el tiempo, el desarrollo y el crecimiento poblacional se ve cada vez más excesivo. Datos y estadísticas demuestran que el crecimiento de la población va en aumento y en una constante búsqueda de oportunidades. El proyecto SAP TUC es una iniciativa con enfoque urbano que mejora el sistema de transporte público actual. Consiste en el diseño de estaciones de autobuses que a través de diferentes mecanismos puedan abastecer y suplir necesidades de consumo energético. Entre estos tenemos paneles fotovoltaicos, los cuales están instalados al diseño de el entechado, que cuentan con un área de 14.54 metros cuadrado. Estas paradas desarrollarán alrededor de 15 voltios o más, alimentando todos los aparatos electrónicos que contengan. A través de turbinas eólicas de 0.81 metros de diámetro, alimentarán de energía a las estaciones de manera directa, con una generación de 10 voltios o más, complementando a los paneles fotovoltaicos. Las estaciones de buses propuestas están compuestas por columnas de concreto de 15 x 40 centímetros y vigas metálicas de 2 pulgadas por 4 pulgadas. Además de esto, cuenta con la característica de ser modular, adaptable al aire y al sol. Esta parada tiene las siguientes medidas, 2.50 metros de altura por 2.65 metros de largo y 6.55 de ancho. Dicha propuesta será diseñada con un sistema inteligente que faculta a los usuarios toda la información necesaria que estos necesiten. Entre estas se encuentran 1. pantalla LED que genera información de la localización de las rutas, distancias aproximadas y tiempo de duración en llegada a la estación. 2. sistema auditivo para las personas no videntes, extranjeras y al usuario en general. Este sistema consiste en proporcionar la información necesaria mediante transmisores de sonido. 3. abastecedores de carga para celulares. Es por esto y más razones que creemos que el proyecto SAP TUC innovará y satisfacerá las necesidades de los usuarios.",
+ "segments": [
+  {
+   "start": 8.46,
+   "end": 15.46,
+   "text": "A medida que pasa el tiempo, el desarrollo y el crecimiento poblacional se ve cada vez más excesivo."
+  },
+  {
+   "start": 15.46,
+   "end": 23.46,
+   "text": "Datos y estadísticas demuestran que el crecimiento de la población va en aumento y en una constante búsqueda de oportunidades."
+  },
+  {
+   "start": 23.46,
+   "end": 51.73,
+   "text": "El proyecto SAP TUC es una iniciativa con enfoque urbano que mejora el sistema de transporte público actual."
+  },
+  {
+   "start": 51.73,
+   "end": 61.73,
+   "text": "Consiste en el diseño de estaciones de autobuses que a través de diferentes mecanismos puedan abastecer y suplir necesidades de consumo energético."
+  },
+  {
+   "start": 61.73,
+   "end": 73.73,
+   "text": "Entre estos tenemos paneles fotovoltaicos, los cuales están instalados al diseño de el entechado, que cuentan con un área de 14.54 metros cuadrado."
+  },
+  {
+   "start": 73.73,
+   "end": 81.73,
+   "text": "Estas paradas desarrollarán alrededor de 15 voltios o más, alimentando todos los aparatos electrónicos que contengan."
+  },
+  {
+   "start": 81.73,
+   "end": 92.33,
+   "text": "A través de turbinas eólicas de 0.81 metros de diámetro, alimentarán de energía a las estaciones de manera directa,"
+  },
+  {
+   "start": 92.33,
+   "end": 99.33,
+   "text": "con una generación de 10 voltios o más, complementando a los paneles fotovoltaicos."
+  },
+  {
+   "start": 99.33,
+   "end": 110.33,
+   "text": "Las estaciones de buses propuestas están compuestas por columnas de concreto de 15 x 40 centímetros y vigas metálicas de 2 pulgadas por 4 pulgadas."
+  },
+  {
+   "start": 110.33,
+   "end": 117.33,
+   "text": "Además de esto, cuenta con la característica de ser modular, adaptable al aire y al sol."
+  },
+  {
+   "start": 117.33,
+   "end": 129.33,
+   "text": "Esta parada tiene las siguientes medidas, 2.50 metros de altura por 2.65 metros de largo y 6.55 de ancho."
+  },
+  {
+   "start": 129.33,
+   "end": 137.33,
+   "text": "Dicha propuesta será diseñada con un sistema inteligente que faculta a los usuarios toda la información necesaria que estos necesiten."
+  },
+  {
+   "start": 137.33,
+   "end": 148.33,
+   "text": "Entre estas se encuentran 1. pantalla LED que genera información de la localización de las rutas, distancias aproximadas y tiempo de duración en llegada a la estación."
+  },
+  {
+   "start": 148.33,
+   "end": 155.33,
+   "text": "2. sistema auditivo para las personas no videntes, extranjeras y al usuario en general."
+  },
+  {
+   "start": 155.33,
+   "end": 161.33,
+   "text": "Este sistema consiste en proporcionar la información necesaria mediante transmisores de sonido."
+  },
+  {
+   "start": 161.33,
+   "end": 164.33,
+   "text": "3. abastecedores de carga para celulares."
+  },
+  {
+   "start": 164.33,
+   "end": 173.33,
+   "text": "Es por esto y más razones que creemos que el proyecto SAP TUC innovará y satisfacerá las necesidades de los usuarios."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 177.7
+}

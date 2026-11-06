@@ -1,0 +1,187 @@
+{
+ "video_id": "Cyy4Q7LmdVg",
+ "url": "https://youtu.be/Cyy4Q7LmdVg",
+ "year": 2019,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "FORZA-RUACS",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2019,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "FORZA-RUACS",
+   "challenge": "08 - PARADAS DE AUTOBÚS SUSTENTABLE"
+  }
+ ],
+ "fetched_at": "2026-11-06T18:51:25+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Considerando que nos encontramos en una etapa de cambio climático, con efectos negativos para la humanidad, debido al uso insilminado del carbón y de los hidrocarbures, para la generación de energía eléctrica. Se han recomendado el uso de energías alternativas o renovables, para el uso del transporte y del mobiliario de apoyo, como son las paradas de autobuses de los sistemas de transporte público, en las grandes ciudades o en las zonas metropolitanas. Dada a estas por elemáticas, damos la solución con Electric Stage, una parada de autobuses diseñada para hacer un espacio público, multifuncional, con un uso social y colectivo. Destinado a recibir pasajeros en espera de un transporte público, con máquinas expandedoras de tíquets y la incorporación de limpiadores de calzado, donde pueden cargar sus dispositivos móviles en espera de autobús respectivo. Todo esto suministrado por la energía limpia y sin combustibles fósiles, a través de bicicletas estáticas, que generarán energía eléctrica con un sistema de dovinas que sermos heredas en baterías, luego convirtiendo la corriente en alterna para alimentar toda la estación y a su vez la propia iluminación de la estación para la noche. Esa alternativa de energía es más favorable por ser más económica, que paneles solares o aspaseólicas, al igual brinda una forma de ejercicio para los pasantes y un medio para reducir el consumo de energía de combustibles fósiles.",
+ "segments": [
+  {
+   "start": 14.13,
+   "end": 17.75,
+   "text": "Considerando que nos encontramos en una etapa de cambio climático,"
+  },
+  {
+   "start": 17.75,
+   "end": 19.75,
+   "text": "con efectos negativos para la humanidad,"
+  },
+  {
+   "start": 19.75,
+   "end": 23.25,
+   "text": "debido al uso insilminado del carbón y de los hidrocarbures,"
+  },
+  {
+   "start": 23.25,
+   "end": 25.55,
+   "text": "para la generación de energía eléctrica."
+  },
+  {
+   "start": 25.55,
+   "end": 29.13,
+   "text": "Se han recomendado el uso de energías alternativas o renovables,"
+  },
+  {
+   "start": 29.13,
+   "end": 32.35,
+   "text": "para el uso del transporte y del mobiliario de apoyo,"
+  },
+  {
+   "start": 32.35,
+   "end": 36.23,
+   "text": "como son las paradas de autobuses de los sistemas de transporte público,"
+  },
+  {
+   "start": 36.23,
+   "end": 42.38,
+   "text": "en las grandes ciudades o en las zonas metropolitanas."
+  },
+  {
+   "start": 42.38,
+   "end": 44.58,
+   "text": "Dada a estas por elemáticas,"
+  },
+  {
+   "start": 44.58,
+   "end": 47.2,
+   "text": "damos la solución con Electric Stage,"
+  },
+  {
+   "start": 47.2,
+   "end": 50.58,
+   "text": "una parada de autobuses diseñada para hacer un espacio público,"
+  },
+  {
+   "start": 50.58,
+   "end": 51.84,
+   "text": "multifuncional,"
+  },
+  {
+   "start": 51.84,
+   "end": 54.88,
+   "text": "con un uso social y colectivo."
+  },
+  {
+   "start": 56.2,
+   "end": 68.09,
+   "text": "Destinado a recibir pasajeros en espera de un transporte público,"
+  },
+  {
+   "start": 68.09,
+   "end": 72.4,
+   "text": "con máquinas expandedoras de tíquets"
+  },
+  {
+   "start": 72.4,
+   "end": 78.08,
+   "text": "y la incorporación de limpiadores de calzado,"
+  },
+  {
+   "start": 78.08,
+   "end": 80.44,
+   "text": "donde pueden cargar sus dispositivos móviles"
+  },
+  {
+   "start": 80.44,
+   "end": 82.94,
+   "text": "en espera de autobús respectivo."
+  },
+  {
+   "start": 82.94,
+   "end": 90.1,
+   "text": "Todo esto suministrado por la energía limpia"
+  },
+  {
+   "start": 90.1,
+   "end": 91.72,
+   "text": "y sin combustibles fósiles,"
+  },
+  {
+   "start": 91.72,
+   "end": 93.72,
+   "text": "a través de bicicletas estáticas,"
+  },
+  {
+   "start": 93.72,
+   "end": 95.72,
+   "text": "que generarán energía eléctrica"
+  },
+  {
+   "start": 95.72,
+   "end": 97.22,
+   "text": "con un sistema de dovinas"
+  },
+  {
+   "start": 97.22,
+   "end": 99.06,
+   "text": "que sermos heredas en baterías,"
+  },
+  {
+   "start": 99.06,
+   "end": 101.96,
+   "text": "luego convirtiendo la corriente en alterna"
+  },
+  {
+   "start": 101.96,
+   "end": 104.32,
+   "text": "para alimentar toda la estación"
+  },
+  {
+   "start": 104.32,
+   "end": 107.9,
+   "text": "y a su vez la propia iluminación de la estación para la noche."
+  },
+  {
+   "start": 109.02,
+   "end": 112.1,
+   "text": "Esa alternativa de energía es más favorable"
+  },
+  {
+   "start": 112.1,
+   "end": 113.42,
+   "text": "por ser más económica,"
+  },
+  {
+   "start": 113.42,
+   "end": 115.82,
+   "text": "que paneles solares o aspaseólicas,"
+  },
+  {
+   "start": 115.82,
+   "end": 119.46,
+   "text": "al igual brinda una forma de ejercicio para los pasantes"
+  },
+  {
+   "start": 119.46,
+   "end": 123.58,
+   "text": "y un medio para reducir el consumo de energía de combustibles fósiles."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 125.3
+}

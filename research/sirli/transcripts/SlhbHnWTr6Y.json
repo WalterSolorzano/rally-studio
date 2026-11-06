@@ -1,0 +1,87 @@
+{
+ "video_id": "SlhbHnWTr6Y",
+ "url": "https://youtu.be/SlhbHnWTr6Y",
+ "year": 2021,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "RAYA KA LAYA.",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2021,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "RAYA KA LAYA.",
+   "challenge": "03 - AGUA PARA SOÑAR"
+  }
+ ],
+ "fetched_at": "2026-11-06T18:47:14+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Sabías que, 3 de cada 10 personas carecen del servicio de agua potable, que para el año 2030, 8500 millones de personas requerirán del vital líquido. Que las poblaciones más vulnerables son los habitantes de comunidades rurales, que su única fuente de agua es la que cae por medio de las lluvias. Y que estas no cuentan con almacenamientos, potabilizaciones y que puedan mantener agua potable en periodes de sequías. Raya Calaya tiene la solución. Hemos creado un sistema de almacenamiento de agua de lluvia, con mecanismo de purificación y un diseño que garantiza el abastecimiento de agua potable hasta por un periodo de 90 días. Este está diseñado con cuatro piletas construidas del adrillo de barro, que sirve a su vez como filtro y que, con la implementación de tecnología, garantizan la calidad del agua para el consumo humano mediante sensores que posibilitan información en tiempo real. El uso de energía eléctrica es generado mediante paneles solares. Este será de utilidad para impulsar los sistemas automatizados bombeo que garantizan la oxigenación al agua almacenada. La implementación de este sistema es integral, de viabilidad económica y sostenible al utilizar una estructura de almacenamiento con recursos de fácil obtención, con costes minimizados de menor daño ambiental. Y sabías que con esta implementación el 80% de los hogares en comunidades rurales donde las mujeres y niñas caminan grande distancia para traer agua a su hogare son vulnerable a acoso sexual, violaciones y hasta de femicidio. Estamos a su vez resolviendo esta problemática.",
+ "segments": [
+  {
+   "start": 3.28,
+   "end": 13.78,
+   "text": "Sabías que, 3 de cada 10 personas carecen del servicio de agua potable, que para el año 2030, 8500 millones de personas requerirán del vital líquido."
+  },
+  {
+   "start": 13.78,
+   "end": 20.98,
+   "text": "Que las poblaciones más vulnerables son los habitantes de comunidades rurales, que su única fuente de agua es la que cae por medio de las lluvias."
+  },
+  {
+   "start": 20.98,
+   "end": 28.28,
+   "text": "Y que estas no cuentan con almacenamientos, potabilizaciones y que puedan mantener agua potable en periodes de sequías."
+  },
+  {
+   "start": 28.28,
+   "end": 30.28,
+   "text": "Raya Calaya tiene la solución."
+  },
+  {
+   "start": 30.28,
+   "end": 42.28,
+   "text": "Hemos creado un sistema de almacenamiento de agua de lluvia, con mecanismo de purificación y un diseño que garantiza el abastecimiento de agua potable hasta por un periodo de 90 días."
+  },
+  {
+   "start": 42.28,
+   "end": 59.28,
+   "text": "Este está diseñado con cuatro piletas construidas del adrillo de barro, que sirve a su vez como filtro y que, con la implementación de tecnología, garantizan la calidad del agua para el consumo humano mediante sensores que posibilitan información en tiempo real."
+  },
+  {
+   "start": 60.28,
+   "end": 64.28,
+   "text": "El uso de energía eléctrica es generado mediante paneles solares."
+  },
+  {
+   "start": 64.28,
+   "end": 73.28,
+   "text": "Este será de utilidad para impulsar los sistemas automatizados bombeo que garantizan la oxigenación al agua almacenada."
+  },
+  {
+   "start": 73.28,
+   "end": 85.28,
+   "text": "La implementación de este sistema es integral, de viabilidad económica y sostenible al utilizar una estructura de almacenamiento con recursos de fácil obtención,"
+  },
+  {
+   "start": 85.28,
+   "end": 89.28,
+   "text": "con costes minimizados de menor daño ambiental."
+  },
+  {
+   "start": 89.28,
+   "end": 104.28,
+   "text": "Y sabías que con esta implementación el 80% de los hogares en comunidades rurales donde las mujeres y niñas caminan grande distancia para traer agua a su hogare son vulnerable a acoso sexual, violaciones y hasta de femicidio."
+  },
+  {
+   "start": 104.28,
+   "end": 107.28,
+   "text": "Estamos a su vez resolviendo esta problemática."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 107.5
+}

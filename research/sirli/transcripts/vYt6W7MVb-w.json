@@ -1,0 +1,147 @@
+{
+ "video_id": "vYt6W7MVb-w",
+ "url": "https://www.youtube.com/watch?v=vYt6W7MVb-w",
+ "year": 2017,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "3JS",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2017,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "3JS",
+   "challenge": "04 - GENERACIÓN DE ENERGÍA ALTERNA A PARTIR DE ACTIVIDADES COTIDIANAS"
+  }
+ ],
+ "fetched_at": "2026-11-06T18:53:40+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "En los últimos años se ha experimentado un incremento en los costos de producción y consumo de energía eléctrica representando un problema económico para la población. En Latinoamérica se consumen en promedio alrededor de 1663 kWh por cada familia, siendo Haití, Guatemala y Nicaragua los más bajos consumidores según datos de la cepal. En cambio, Chile, Argentina y Venezuela son los más consumidores per cápita. Por otro lado, en cuanto a costos, Chile es el que tiene el menor por kiloguad por hora contra el enicar agua que tiene uno de los más altos costos con 0.29 centavos de dólar por kiloguad hora consumidos. A partir de esto, hemos pensado en fabricar un generador de energía eléctrica que utiliza el movimiento de un ducto de agua, producto de las tareas cotidianas de un hogar, una industria o oficina. Para esto utilizamos material de tubería PVC, 3 metros de cable número 12, un dinamo de 12 voltios y 40 watts, 2 tuberías de 12 voltios y 3.5 amperes y reutilizando dos rines de bicicleta número 10 y lates de aluminio para elaborar los hélices que se adaptaran a los rayos del rin. Realizando pequeñas adaptaciones en la tubería, se realiza una excavación de 50 centímetros de profundidad por debajo del nivel del tubo de sago, con 20 centímetros de ancho en forma de un escalón donde la parte superior del escalón se instalara el primer reinfijado, su eje en la pared, aproximadamente 12 centímetros de la zona de caída de agua. Inmediatamente por debajo de este se encuentra un canal que capta la caída de agua, conduciéndola hacia el segundo rin que se instalara de igual manera que el primero. Estos rines contienen un dispositivo que crea una resistencia al movimiento del mismo, creando una corriente de 12 voltios y 40 watts. Esta es conducida por un cable número 12 que está conectada en paralelo a cada rin a una batería de 12 voltios y 3.5 amperes. Almacenando una carga diaria de 40 watts, se acumulará al mes 2.4 kW generados, los cuales pueden ser utilizados en cualquier área, ahorrando así la misma cantidad del consumo mensual de los usuarios de la energía convencional.",
+ "segments": [
+  {
+   "start": 4.91,
+   "end": 10.01,
+   "text": "En los últimos años se ha experimentado un incremento en los costos de producción y consumo de energía"
+  },
+  {
+   "start": 10.01,
+   "end": 15.35,
+   "text": "eléctrica representando un problema económico para la población. En Latinoamérica se consumen en"
+  },
+  {
+   "start": 15.35,
+   "end": 22.39,
+   "text": "promedio alrededor de 1663 kWh por cada familia, siendo Haití, Guatemala y Nicaragua los más"
+  },
+  {
+   "start": 22.39,
+   "end": 27.43,
+   "text": "bajos consumidores según datos de la cepal. En cambio, Chile, Argentina y Venezuela son los"
+  },
+  {
+   "start": 27.43,
+   "end": 32.15,
+   "text": "más consumidores per cápita. Por otro lado, en cuanto a costos, Chile es el que tiene el menor"
+  },
+  {
+   "start": 32.15,
+   "end": 36.11,
+   "text": "por kiloguad por hora contra el enicar agua que tiene uno de los más altos costos con"
+  },
+  {
+   "start": 36.11,
+   "end": 41.87,
+   "text": "0.29 centavos de dólar por kiloguad hora consumidos. A partir de esto, hemos pensado en fabricar"
+  },
+  {
+   "start": 41.87,
+   "end": 46.03,
+   "text": "un generador de energía eléctrica que utiliza el movimiento de un ducto de agua, producto"
+  },
+  {
+   "start": 46.03,
+   "end": 51.19,
+   "text": "de las tareas cotidianas de un hogar, una industria o oficina. Para esto utilizamos material"
+  },
+  {
+   "start": 51.19,
+   "end": 57.63,
+   "text": "de tubería PVC, 3 metros de cable número 12, un dinamo de 12 voltios y 40 watts, 2 tuberías"
+  },
+  {
+   "start": 57.63,
+   "end": 63.03,
+   "text": "de 12 voltios y 3.5 amperes y reutilizando dos rines de bicicleta número 10 y lates de"
+  },
+  {
+   "start": 63.03,
+   "end": 67.71,
+   "text": "aluminio para elaborar los hélices que se adaptaran a los rayos del rin. Realizando pequeñas"
+  },
+  {
+   "start": 67.71,
+   "end": 72.47,
+   "text": "adaptaciones en la tubería, se realiza una excavación de 50 centímetros de profundidad"
+  },
+  {
+   "start": 72.47,
+   "end": 76.67,
+   "text": "por debajo del nivel del tubo de sago, con 20 centímetros de ancho en forma de un"
+  },
+  {
+   "start": 76.67,
+   "end": 81.47,
+   "text": "escalón donde la parte superior del escalón se instalara el primer reinfijado, su eje"
+  },
+  {
+   "start": 81.47,
+   "end": 85.79,
+   "text": "en la pared, aproximadamente 12 centímetros de la zona de caída de agua."
+  },
+  {
+   "start": 85.83,
+   "end": 89.95,
+   "text": "Inmediatamente por debajo de este se encuentra un canal que capta la caída de agua,"
+  },
+  {
+   "start": 89.95,
+   "end": 94.15,
+   "text": "conduciéndola hacia el segundo rin que se instalara de igual manera que el primero."
+  },
+  {
+   "start": 94.15,
+   "end": 98.51,
+   "text": "Estos rines contienen un dispositivo que crea una resistencia al movimiento del mismo,"
+  },
+  {
+   "start": 98.51,
+   "end": 103.71,
+   "text": "creando una corriente de 12 voltios y 40 watts. Esta es conducida por un cable número 12"
+  },
+  {
+   "start": 103.71,
+   "end": 109.23,
+   "text": "que está conectada en paralelo a cada rin a una batería de 12 voltios y 3.5 amperes."
+  },
+  {
+   "start": 109.23,
+   "end": 114.79,
+   "text": "Almacenando una carga diaria de 40 watts, se acumulará al mes 2.4 kW generados,"
+  },
+  {
+   "start": 114.83,
+   "end": 116.79,
+   "text": "los cuales pueden ser utilizados en cualquier área,"
+  },
+  {
+   "start": 116.79,
+   "end": 121.43,
+   "text": "ahorrando así la misma cantidad del consumo mensual de los usuarios de la energía convencional."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 124.0
+}

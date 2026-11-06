@@ -1,0 +1,187 @@
+{
+ "video_id": "VseLbvvWlJc",
+ "url": "https://www.youtube.com/watch?v=VseLbvvWlJc",
+ "year": 2019,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "RCC ENERGY",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2019,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "RCC ENERGY",
+   "challenge": "02 - REDUCCIÓN DE CONEXIONES CLANDESTINAS EN LAS REDES DE DISTRIBUCIÓN DE ENERGÍA ELÉCTRICA"
+  }
+ ],
+ "fetched_at": "2026-11-06T18:52:24+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "¿Te has puesto a pensar cómo las conexiones clandestinas en las redes de distribución energética afectan a la población? Durante los últimos años el hurto de energía eléctrica ha incrementado excesivamente debido a personas que se encuentran en situaciones muy vulnerables o individuos que únicamente quieren ahorrar dinero, hecho que genera pérdidas millonarias para el sistema eléctrico, fallas en el tendido eléctrico debido a instalaciones ilegales, riesgos elevados de seguridad y accidentes potenciales. Según el diario El País, el costo por conexiones ilegales es millonario el cual se presenta más en los barrios pobres y en los barrios adinerados de América Latina y esto provoca que se acorte la vida útil de los transformadores, aparatos electrónicos y que se generen incendios, en el peor de los casos la pérdida de la vida humana. Según estadísticas, en todo Brasil la cifra asciende a 4,7 mil millones de dólares en pérdidas, por otra parte, Nicaragua se había afectado por lo mismo y prueba de estos son los constantes incendios por conexiones clandestinas, el más reciente e impactante de lugar en el mercado oriental en abril de 2017 donde más de 74 tramos se vieron afectados. Pensando en la solución a esta problemática, nuestro equipo RCC Energy ha creado un dispositivo capaz de poseer una interconexión de tres subsistemas los cuales realizarán las siguientes funciones. Los endpoints instalados en cada uno de los domicilios tienen la capacidad de medir el flujo de corriente y el disferecial de su voltaje, lo cual será comparado con las lecturas de los endpoints de la ramificación, lo que permite detectar una irregularidad de las conexiones del sistema energético. Esto es posible mediante el uso del módulo PZM004T. El transporte de los datos se produce por la conexión del micro controlador, a través del protocolo SPI y el protocolo UART. Se tiene la capacidad de enviar los datos muestrales al módulo IM282A. El módulo IM282A se encarga de aplicar la capa LORA, por ende esos dispositivos tendrán la capacidad de interconexión con otros dispositivos hacia el host que se encarga de conectar a la red el internet o al servidor de la empresa reguladora, entendiendo y recibiendo los datos que indicarán el voltaje y la corriente, por ende se tendrán valores como su potencia y su gasto de cada uno de los endpoints. Y el costo de producción por unidad es $107 dólares.",
+ "segments": [
+  {
+   "start": 1.74,
+   "end": 7.66,
+   "text": "¿Te has puesto a pensar cómo las conexiones clandestinas en las redes de distribución"
+  },
+  {
+   "start": 7.66,
+   "end": 12.14,
+   "text": "energética afectan a la población?"
+  },
+  {
+   "start": 12.14,
+   "end": 18.78,
+   "text": "Durante los últimos años el hurto de energía eléctrica ha incrementado excesivamente debido"
+  },
+  {
+   "start": 18.78,
+   "end": 24.66,
+   "text": "a personas que se encuentran en situaciones muy vulnerables o individuos que únicamente"
+  },
+  {
+   "start": 24.66,
+   "end": 30.38,
+   "text": "quieren ahorrar dinero, hecho que genera pérdidas millonarias para el sistema eléctrico,"
+  },
+  {
+   "start": 30.38,
+   "end": 35.74,
+   "text": "fallas en el tendido eléctrico debido a instalaciones ilegales, riesgos elevados de"
+  },
+  {
+   "start": 35.74,
+   "end": 39.66,
+   "text": "seguridad y accidentes potenciales."
+  },
+  {
+   "start": 39.66,
+   "end": 46.86,
+   "text": "Según el diario El País, el costo por conexiones ilegales es millonario el cual se presenta"
+  },
+  {
+   "start": 46.86,
+   "end": 52.9,
+   "text": "más en los barrios pobres y en los barrios adinerados de América Latina y esto provoca"
+  },
+  {
+   "start": 52.9,
+   "end": 58.54,
+   "text": "que se acorte la vida útil de los transformadores, aparatos electrónicos y que se generen"
+  },
+  {
+   "start": 58.54,
+   "end": 64.98,
+   "text": "incendios, en el peor de los casos la pérdida de la vida humana."
+  },
+  {
+   "start": 64.98,
+   "end": 71.62,
+   "text": "Según estadísticas, en todo Brasil la cifra asciende a 4,7 mil millones de dólares en"
+  },
+  {
+   "start": 71.62,
+   "end": 77.74,
+   "text": "pérdidas, por otra parte, Nicaragua se había afectado por lo mismo y prueba de estos"
+  },
+  {
+   "start": 77.74,
+   "end": 84.58,
+   "text": "son los constantes incendios por conexiones clandestinas, el más reciente e impactante"
+  },
+  {
+   "start": 84.58,
+   "end": 93.62,
+   "text": "de lugar en el mercado oriental en abril de 2017 donde más de 74 tramos se vieron afectados."
+  },
+  {
+   "start": 93.62,
+   "end": 99.82,
+   "text": "Pensando en la solución a esta problemática, nuestro equipo RCC Energy ha creado un dispositivo"
+  },
+  {
+   "start": 99.82,
+   "end": 105.46,
+   "text": "capaz de poseer una interconexión de tres subsistemas los cuales realizarán las siguientes"
+  },
+  {
+   "start": 105.46,
+   "end": 107.3,
+   "text": "funciones."
+  },
+  {
+   "start": 107.3,
+   "end": 112.22,
+   "text": "Los endpoints instalados en cada uno de los domicilios tienen la capacidad de medir el"
+  },
+  {
+   "start": 112.22,
+   "end": 117.58,
+   "text": "flujo de corriente y el disferecial de su voltaje, lo cual será comparado con las lecturas de"
+  },
+  {
+   "start": 117.58,
+   "end": 122.9,
+   "text": "los endpoints de la ramificación, lo que permite detectar una irregularidad de las conexiones"
+  },
+  {
+   "start": 122.9,
+   "end": 124.74,
+   "text": "del sistema energético."
+  },
+  {
+   "start": 124.74,
+   "end": 131.58,
+   "text": "Esto es posible mediante el uso del módulo PZM004T."
+  },
+  {
+   "start": 131.58,
+   "end": 136.9,
+   "text": "El transporte de los datos se produce por la conexión del micro controlador, a través"
+  },
+  {
+   "start": 136.9,
+   "end": 140.54,
+   "text": "del protocolo SPI y el protocolo UART."
+  },
+  {
+   "start": 140.54,
+   "end": 146.86,
+   "text": "Se tiene la capacidad de enviar los datos muestrales al módulo IM282A."
+  },
+  {
+   "start": 146.86,
+   "end": 154.5,
+   "text": "El módulo IM282A se encarga de aplicar la capa LORA, por ende esos dispositivos tendrán"
+  },
+  {
+   "start": 154.5,
+   "end": 160.34,
+   "text": "la capacidad de interconexión con otros dispositivos hacia el host que se encarga de conectar"
+  },
+  {
+   "start": 160.34,
+   "end": 166.3,
+   "text": "a la red el internet o al servidor de la empresa reguladora, entendiendo y recibiendo"
+  },
+  {
+   "start": 166.3,
+   "end": 172.18,
+   "text": "los datos que indicarán el voltaje y la corriente, por ende se tendrán valores como su potencia"
+  },
+  {
+   "start": 172.18,
+   "end": 174.94,
+   "text": "y su gasto de cada uno de los endpoints."
+  },
+  {
+   "start": 174.94,
+   "end": 178.66,
+   "text": "Y el costo de producción por unidad es $107 dólares."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 179.4
+}

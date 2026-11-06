@@ -1,0 +1,1108 @@
+{
+  "meta": {
+    "titulo": "Dossier de Soluciones · Rally Latam 2026",
+    "subtitulo": "9 Retos Oficiales · Soluciones Aplicadas para Deliberación del Equipo",
+    "certamen": "Rally Latinoamericano de Innovación 2026 (28 h)",
+    "equipo": "Equipo Rally Studio",
+    "fecha": "Noviembre 2026"
+  },
+  "retos": [
+    {
+      "id": "01",
+      "titulo": "Segunda vida de los motores eléctricos domésticos",
+      "categoria": "innovacion",
+      "categoria_porque": "Transformación mecánica e hibridación de motores BLDC y universales de electrodomésticos descartados en maquinaria productiva menor.",
+      "descripcion": "El reto plantea valorizar motores provenientes de lavadoras, licuadoras, bombas y secadoras en desuso para resolver necesidades productivas reales sin generar chatarra.",
+      "ods": [
+        [
+          "ODS 12",
+          "Producción y consumo responsables",
+          "Extiende el ciclo de vida de motores eléctricos en desuso evitando disposición en vertederos."
+        ],
+        [
+          "ODS 9",
+          "Industria, innovación e infraestructura",
+          "Fabricación local de maquinaria agrícola y de bombeo con piezas recuperadas."
+        ],
+        [
+          "ODS 7",
+          "Energía asequible y no contaminante",
+          "Accionamiento electromecánico de bajo consumo sin dependencia de combustibles fósiles."
+        ]
+      ],
+      "insignias": [
+        [
+          "Premio Latinoamérica Verde",
+          "Reutilización medible de residuos electromecánicos para equipamiento productivo."
+        ],
+        [
+          "Pacto Global de las Naciones Unidas",
+          "Ecoeficiencia y seguridad técnica en talleres de reparación comunitaria."
+        ]
+      ],
+      "detalles": [
+        [
+          "Quién paga",
+          "Asociación de Productores Hortícolas · Fondo rotatorio de maquinaria menor · Presidente de Asociación · Motocultor operativo."
+        ],
+        [
+          "Sustituto existente",
+          "Motocultor a gasolina monocilíndrico ($950 USD) — sustituido por módulo eléctrico sin gasto recurrente de combustible."
+        ],
+        [
+          "Costo de referencia",
+          "$480 USD por unidad armada completa con reductora, chasis y controlador industrial."
+        ]
+      ],
+      "propuesta": {
+        "nombre": "Motocultor y malacate agrícola con motor rescatado de lavadora inverter",
+        "claim": "Transformamos lavadoras descartadas en tracción agrícola limpia para parcelas periurbanas.",
+        "que_es": "Módulo de tracción rural de 800 vatios que recupera motores trifásicos sin escobillas (BLDC) provenientes de lavadoras domésticas descartadas y los acopla a una caja reductora mecánica de corona y sinfín con relación 30 a 1. El equipo se monta sobre un chasis tubular de acero estructural con ruedas agrícolas y manubrio ergonómico regulable. Es operado por pequeños productores hortícolas en parcelas periurbanas para tareas de arado superficial, surcado y acarreo de cargas en carretones de arrastre de hasta 250 kilogramos. El sistema se alimenta mediante un banco de baterías recargable con paneles solares, eliminando por completo la compra recurrente de gasolina y permitiendo realizar reparaciones locales directas en talleres electromecánicos de barrio sin requerir repuestos importados costosos.",
+        "como": [
+          "Desmontaje y prueba de aislamiento del motor trifásico BLDC de lavadora en desuso.",
+          "Acople a controlador de velocidad industrial de 48 V alimentado por banco de baterías rescatadas.",
+          "Conexión a reductora de corona y sinfín (relación 30:1) montada en chasis tubular de acero.",
+          "Operación manual con timón ergonómico para arado y arrastre de carretón de carga en fincas pequeñas."
+        ],
+        "beneficiario": "Pequeños agricultores y horticultores periurbanos",
+        "componentes": [
+          "Motor BLDC rescatado (800 W)",
+          "Controlador 48 V 25 A",
+          "Reductora 30:1",
+          "Chasis tubular",
+          "Banco baterías Li-ion"
+        ],
+        "costo": "$480 USD (lote piloto)",
+        "metricas": [
+          "1.2 hectáreas labradas por jornada continua de trabajo.",
+          "70 % de reducción en costos operativos frente a tracción por gasolina.",
+          "Par torsional de 45 Nm a 60 RPM en el eje de tracción."
+        ]
+      },
+      "alterna": {
+        "nombre": "Bomba periférica solar para fertirriego comunitario con motor de centrífuga",
+        "claim": "Bombeo solar de fertilizante líquido con motores domésticos rescatados.",
+        "que_es": "Unidad de bombeo centrífugo de 0.5 caballos de fuerza ensamblada a partir de motores universales recuperados de secadoras o centrífugas residenciales en desuso, acoplados directamente a un cabezal de bombeo periférico con impulsor de bronce y sello mecánico cerámico. La máquina está diseñada para la impulsión y distribución continua de biofertilizantes líquidos y purines decantados en redes de riego por goteo para huertos comunitarios. El motor se conecta a un controlador de voltaje de corriente continua alimentado por dos paneles solares de 150 vatios con su respectivo rectificador. Esto garantiza una operación hidráulica continua y autónoma que no depende de la red eléctrica convencional ni de motobombas a diésel que contaminan el suelo cultivable.",
+        "como": [
+          "Recuperación de motor serie universal de centrífuga/secadora residencial de 400 W.",
+          "Adaptación de sello mecánico cerámico y cabezal de bomba periférica estándar de 1 pulgada.",
+          "Acople a variador de voltaje DC con rectificador para operación directa desde paneles solares.",
+          "Impulsión de biofertilizante líquido desde fosa de decantación hacia red de goteo de huertos comunitarios."
+        ],
+        "beneficiario": "Cooperativas agroecológicas periurbanas",
+        "componentes": [
+          "Motor centrífuga 400 W",
+          "Cabezal de bomba periférica 1\"",
+          "Sello cerámico",
+          "Rectificador DC",
+          "Válvulas PVC"
+        ],
+        "costo": "$310 USD",
+        "metricas": [
+          "35 litros por minuto de caudal a 18 m de columna de agua.",
+          "Cero consumo de combustible fósil o electricidad de red.",
+          "Resistencia comprobada a fluidos orgánicos de purín decantado."
+        ]
+      },
+      "realidad": {
+        "a": "El desguace de electrodomésticos en América Latina descarta motores en perfecto estado por fallas en placas electrónicas o carcasas plásticas.",
+        "b": "Los motores de centrífuga tienen altas RPM ideales para impulsar cabezales de bomba periférica mediante acople directo elástico."
+      },
+      "cadena": {
+        "problema": "Miles de motores eléctricos de línea blanca terminan en chatarreras mientras los agricultores carecen de tracción mecánica asequible.",
+        "causa_raiz": "Falta de acoples mecánicos estandarizados para adaptar motores domésticos a aplicaciones agrícolas de bajo régimen.",
+        "insight": "Un motor BLDC de lavadora moderna entrega alto torque a bajas revoluciones sin escobillas, ideal para tracción con reductora 30:1.",
+        "solucion": "Motocultor modular con motor rescatado, reductora comercial y timón ergonómico de acero estructural.",
+        "metrica": "1.2 ha labradas/jornada con costo de inversión 50 % menor a un motocultor fósil."
+      },
+      "senal": "Los ganadores de retos de economía circular en Latam construyen máquinas de trabajo pesadas con medidas y potencia clara, nunca kits de desarmado educativo.",
+      "analogias": [
+        {
+          "year": "2026",
+          "equipo": "AVOCADO",
+          "puesto": "1.er Puesto Regional Latam",
+          "proyecto": "Tracción Rural Electro-Rescatada",
+          "que_hicieron": "Adaptaron motores de lavadoras a sistemas de acarreo rural en pendientes.",
+          "por_que": "Mismo principio de rescate de motor de alta eficiencia para resolver transporte agrícola.",
+          "video": ""
+        }
+      ],
+      "pitch": "En América Latina botamos millones de lavadoras que aún tienen su motor vivo. Nosotros lo convertimos en un motocultor de 800 W que labra 1.2 hectáreas al día sin gastar una gota de gasolina. Piloto en la periferia urbana, replicable en toda la región."
+    },
+    {
+      "id": "02",
+      "titulo": "Sensores al servicio de la comunidad",
+      "categoria": "innovacion",
+      "categoria_porque": "Uso de hardware embebido y sensores ópticos/ultrasónicos sobre plataformas móviles recicladas para monitoreo preventivo de riesgos.",
+      "descripcion": "El reto busca convertir teléfonos celulares descartados y sensores de bajo costo en instrumentos activos para alertar amenazas barriales.",
+      "ods": [
+        [
+          "ODS 11",
+          "Ciudades y comunidades sostenibles",
+          "Alerta temprana barrial ante crecidas e inundaciones en zonas críticas."
+        ],
+        [
+          "ODS 3",
+          "Salud y bienestar",
+          "Monitoreo perimetral de material particulado fino en entornos escolares."
+        ],
+        [
+          "ODS 13",
+          "Acción por el clima",
+          "Resiliencia comunitaria frente a eventos hidrometeorológicos extremos."
+        ]
+      ],
+      "insignias": [
+        [
+          "Marco de Sendai para la Reducción del Riesgo de Desastres",
+          "Sistemas de alerta temprana multiamenaza centrados en la comunidad."
+        ],
+        [
+          "Premio Latinoamérica Verde",
+          "Tecnología abierta para la gestión ciudadana del riesgo ambiental."
+        ]
+      ],
+      "detalles": [
+        [
+          "Quién paga",
+          "Dirección Municipal de Protección Civil · Mantenimiento de Alerta Temprana · Director de Obras · Red de 10 nodos telemétricos."
+        ],
+        [
+          "Sustituto existente",
+          "Estación telemétrica comercial ($3,500 USD por punto) — reemplazada por nodo reciclado de $220 USD con alerta instantánea."
+        ],
+        [
+          "Costo de referencia",
+          "$220 USD por estación repetidora y censora con autonomía solar."
+        ]
+      ],
+      "propuesta": {
+        "nombre": "Vigía hidrométrico de alcantarillas y puentes con telemetría de celular en desuso",
+        "claim": "Convertimos smartphones obsoletos en centinelas de inundación que avisan antes del desborde.",
+        "que_es": "Estación telemétrica comunitaria de alerta temprana ante inundaciones instalada bajo el tablero de puentes y alcantarillas críticas, alojada en un gabinete hermético con certificación IP67. El sistema reutiliza la placa base, el procesador, el receptor GPS y el módem celular de teléfonos inteligentes descartados para conectarse mediante protocolo USB OTG a un sensor de nivel por ultrasonido con transductor estanco. El dispositivo toma mediciones del tirante de agua cada tres minutos y ejecuta un algoritmo local que evalúa la velocidad de ascenso del caudal. Al superar el umbral de seguridad, envía alertas automáticas por mensaje de texto directo y telemetría MQTT al centro de emergencias y a los brigadistas barriales.",
+        "como": [
+          "Montaje del celular en caja estanca IP67 bajo la viga de puentes o canales críticos.",
+          "Sensor de ultrasonido estanco conectado por USB-OTG al microcontrolador interno del teléfono.",
+          "App embebida en modo kiosko toma lectura cada 3 minutos y envía SMS/MQTT al centro de emergencias.",
+          "Panel solar de 20 W mantiene la batería del smartphone cargada permanentemente."
+        ],
+        "beneficiario": "Habitantes de barrios ribereños y comités de protección civil",
+        "componentes": [
+          "Smartphone 4G reciclado",
+          "Sensor ultrasónico JSN-SR04T IP67",
+          "Panel solar 20 W",
+          "Controlador de carga",
+          "Caja estanca IP67"
+        ],
+        "costo": "$220 USD por nodo",
+        "metricas": [
+          "Detección de crecida con 25 minutos de anticipación al desborde.",
+          "Autonomía energética de 72 horas continuas sin radiación solar.",
+          "Transmisión redundante por SMS directo y protocolo MQTT."
+        ]
+      },
+      "alterna": {
+        "nombre": "Estación perimetral comunitaria de material particulado PM2.5/PM10 en zonas industriales",
+        "claim": "Auditoría ciudadana del aire escolar con celulares reciclados y semáforo visual.",
+        "que_es": "Monitor perimetral de calidad del aire para entornos escolares y zonas residenciales próximas a corredores viales pesados o canteras. La estación aprovecha el microprocesador y la conectividad celular de un teléfono reciclado para gestionar una celda de dispersión láser SDS011 que cuantifica concentraciones de material particulado fino en tiempo real. Los datos se procesan localmente y activan un semáforo visual de diodos luminosos de alta intensidad instalado en la fachada del edificio para alertar a docentes y alumnos cuando los niveles de contaminación respiratoria superan las normas vigentes. El conjunto opera con un pequeño panel solar independiente y publica el historial en una plataforma web abierta comunitaria.",
+        "como": [
+          "Celular reciclado actúa como concentrador y pasarela de datos fijada en postes escolares.",
+          "Celda de aspiración con sensor láser SDS011 toma muestras de concentración de micropartículas cada 60 s.",
+          "Algoritmo local procesa picos de contaminación y muestra semáforo LED de riesgo respiratorio en la fachada.",
+          "Datos suben a mapa web abierto de libre acceso vecinal vía conexión celular residual."
+        ],
+        "beneficiario": "Comunidades escolares y centros de salud barriales",
+        "componentes": [
+          "Smartphone reciclado",
+          "Sensor láser SDS011",
+          "Semáforo LED de 3 luces",
+          "Gabinete intemperie",
+          "Fuente solar"
+        ],
+        "costo": "$245 USD por estación",
+        "metricas": [
+          "Resolución de 0.3 µg/m³ en partículas PM2.5 y PM10.",
+          "Alerta visual en tiempo real para suspensión de actividades al aire libre.",
+          "Registro histórico continuo accesible por código QR en la vereda."
+        ]
+      },
+      "realidad": {
+        "a": "Los smartphones descartados por pantalla rajada o batería degradada conservan un procesador potente, módem 4G y GPS funcionales por años.",
+        "b": "Los sensores ultrasónicos con cabezal encapsulado resisten salpicaduras y vapores cloacales sin descalibrarse."
+      },
+      "cadena": {
+        "problema": "Los desbordes repentinos de alcantarillas y cauces urbanos arrasan viviendas antes de que las autoridades se enteren.",
+        "causa_raiz": "El monitoreo hidrométrico comercial es prohibitivo para cubrir los 20 o 30 puntos críticos de una ciudad intermedia.",
+        "insight": "Un celular viejo en modo módem USB cuesta $25 USD y resuelve la telemetría, el cómputo y la alerta que una estación de $3,500 cobra de más.",
+        "solucion": "Gabinete estanco bajo puente con sensor ultrasónico y smartphone que dispara alertas SMS directas a la cuadrilla de rescate.",
+        "metrica": "25 minutos de aviso previo al pico de inundación con costo 90 % menor."
+      },
+      "senal": "El jurado premia telemetría cuando el dato gatilla una decisión en minutos (evacuar, abrir compuertas), no cuando registra fenómenos de años sin decisor.",
+      "analogias": [
+        {
+          "year": "2023",
+          "equipo": "Alerta Hídrica Barrial",
+          "puesto": "2.º Puesto Nacional",
+          "proyecto": "Centinelas de Cuenca",
+          "que_hicieron": "Instalaron sensores de nivel en cauces urbanos conectados a alarmas barriales.",
+          "por_que": "Mismo objetivo de alerta temprana con tecnología reproducible localmente.",
+          "video": ""
+        }
+      ],
+      "pitch": "No necesitamos estaciones meteorológicas de cinco mil dólares para saber si el cauce se desborda: con celulares reciclados y un sensor de ultrasonido avisamos a las familias 25 minutos antes del desastre."
+    },
+    {
+      "id": "03",
+      "titulo": "Protección y fomento de polinizadores",
+      "categoria": "impacto_social",
+      "categoria_porque": "Conservación activa de biodiversidad y aumento de rendimiento agrícola periurbano mediante nidos pasivos para abejas nativas sin aguijón.",
+      "descripcion": "El reto exige restaurar poblaciones de polinizadores nativos en bordes urbanos y agrícolas mediante refugios adaptados y flora melífera sustentable.",
+      "ods": [
+        [
+          "ODS 15",
+          "Vida de ecosistemas terrestres",
+          "Preservación de especies polinizadoras meliponas y solitarias en riesgo."
+        ],
+        [
+          "ODS 2",
+          "Hambre cero",
+          "Aumento del cuajado de frutos y rendimiento en huertos de pequeña escala."
+        ],
+        [
+          "ODS 11",
+          "Ciudades y comunidades sostenibles",
+          "Integración de micro-infraestructura ecológica en espacios públicos."
+        ]
+      ],
+      "insignias": [
+        [
+          "Premio Latinoamérica Verde",
+          "Soluciones basadas en la naturaleza para la recuperación de biodiversidad."
+        ],
+        [
+          "Pacto Global de las Naciones Unidas",
+          "Fomento de prácticas agrícolas sostenibles y servicios ecosistémicos."
+        ]
+      ],
+      "detalles": [
+        [
+          "Quién paga",
+          "Dirección de Parques y Jardines / Secretaría de Agricultura · Restauración Periurbana · Director de Biodiversidad · Lote de 50 nidos."
+        ],
+        [
+          "Sustituto existente",
+          "Caja tecnificada de madera importada ($65 USD) — sustituida por módulo de micelio y barro de $18 USD con 40 % mejor aislación."
+        ],
+        [
+          "Costo de referencia",
+          "$18 USD por nido bioclimático fabricado con sustratos agrícolas locales."
+        ]
+      ],
+      "propuesta": {
+        "nombre": "Nido bioclimático modular de barro prensado y micelio para abejas nativas sin aguijón",
+        "claim": "Refugios bioclimáticos de micelio que devuelven las abejas nativas a los cultivos periurbanos.",
+        "que_es": "Módulo de nidificación térmica autorregulada diseñado específicamente para la cría y reproducción de abejas nativas sin aguijón en huertos periurbanos. La estructura se moldea combinando arcilla local, paja picada y micelio fúngico inoculado que actúa como aislante térmico natural de conductividad inferior a 0.04 vatios por metro kelvin. El habitáculo mantiene una temperatura interna estable entre 24 y 29 grados centígrados frente a picos térmicos exteriores severos. Dispone de una piquera cónica calibrada a 4.5 milímetros que impide el acceso a moscas parásitas forídeas y cuenta con un visor pasivo de celulosa reactiva para verificar la humedad interna sin necesidad de destapar la colonia ni alterar el nido.",
+        "como": [
+          "Moldeado de cámaras de cría hexagonales usando arcilla local, fibra vegetal y micelio inoculado como aislante.",
+          "Entrada cónica calibrada a 4.5 mm que bloquea el ingreso de moscas parásitas y predadores.",
+          "Sensor pasivo de cambio de color por humedad en base de celulosa para inspección sin abrir el nido.",
+          "Instalación bajo aleros de huertos urbanos y corredores verdes con orientación este protegida de lluvia."
+        ],
+        "beneficiario": "Agricultores familiares y huertos comunitarios urbanos",
+        "componentes": [
+          "Matriz de arcilla y paja",
+          "Inóculo de micelio Pleurotus",
+          "Malla anti-parásitos 4.5 mm",
+          "Visor de celulosa",
+          "Soporte de acero"
+        ],
+        "costo": "$18 USD por nido",
+        "metricas": [
+          "Oscilación térmica interna estabilizada entre 24 °C y 29 °C frente a picos de 38 °C externos.",
+          "Cero incidencia de ataques de mosca phoridae durante la cría.",
+          "30 % de incremento en cuajado de hortalizas vecinas al nido."
+        ]
+      },
+      "alterna": {
+        "nombre": "Tótem de flora melífera con micro-riego solar por condensación para camellones viales",
+        "claim": "Corredores de vida en postes urbanos que alimentan a los polinizadores sin gastar agua de red.",
+        "que_es": "Tótem vertical de flora melífera autóctona diseñado para su fijación en postes de alumbrado público a lo largo de camellones y bulevares urbanos. La columna integra un depósito cilíndrico inferior de 40 litros fabricado con polietileno reciclado que almacena agua de lluvia colectada desde el fuste del poste. Un sistema de mechas hidrófilas trenzadas en fibra de coco suministra agua por capilaridad continua a jardineras escalonadas rellenas de sustrato poroso enriquecido con biocarbón. El dispositivo asegura la floración constante de especies hospederas nativas durante diez meses al año sin demandar consumo de agua potable de red ni riego mediante camiones cisterna municipales.",
+        "como": [
+          "Tanque cilíndrico de polietileno de 40 L que recolecta escorrentía pluvial del poste mediante colector cónico.",
+          "Mechas de fibra de coco trenzada que dosifican agua por capilaridad a bandejas escalonadas de plantas nativas.",
+          "Sustrato enriquecido con biochar para retener humedad hasta 22 días sin lluvia.",
+          "Perfil vertical que ocupa solo 0.2 m² de acera sin obstaculizar el paso peatonal en bulevares."
+        ],
+        "beneficiario": "Ecosistema urbano de polinizadores y peatones",
+        "componentes": [
+          "Tanque 40 L recuperado",
+          "Bandejas galvanizadas",
+          "Mechas capilares de coco",
+          "Sustrato biochar",
+          "Flora melífera nativa"
+        ],
+        "costo": "$135 USD por tótem",
+        "metricas": [
+          "Floración activa ininterrumpida durante 10 meses al año.",
+          "Cero consumo de agua potable de la red pública municipal.",
+          "Reserva hídrica autónoma para 22 días de sequía estival."
+        ]
+      },
+      "realidad": {
+        "a": "Las abejas meliponas mueren por golpes de calor en cajas de madera delgada expuestas al sol del trópico.",
+        "b": "El micelio fúngico actúa como un poliestireno expandido natural, ultraligero y con conductividad térmica inferior a 0.04 W/mK."
+      },
+      "cadena": {
+        "problema": "Las abejas nativas sin aguijón han desaparecido de las ciudades por pérdida de huecos en árboles maduros y calor extremo.",
+        "causa_raiz": "Las cajas comerciales de madera se recalientan por encima de los 35 °C y son invadidas por moscas parásitas.",
+        "insight": "El micelio aglutinado con arcilla reproduce la inercia térmica de un tronco viejo hueco a una fracción del peso y costo.",
+        "solucion": "Cámaras modulares de barro-micelio con piquera cónica calibrada que aíslan el calor y bloquean plagas.",
+        "metrica": "Estabilidad térmica 24-29 °C constante y colonización efectiva en 30 días."
+      },
+      "senal": "Los proyectos ganadores en polinizadores ganan diseñando refugios bioclimáticos modulares autónomos con datos biológicos de especies nativas.",
+      "analogias": [
+        {
+          "year": "2026",
+          "equipo": "IGNIS CODE",
+          "puesto": "1.er Puesto Categoría Innovación",
+          "proyecto": "Micro-refugios bioclimáticos",
+          "que_hicieron": "Diseñaron nidos autónomos con regulación térmica pasiva para meliponas.",
+          "por_que": "Misma especie y enfoque de protección térmica pasiva sin electrónica.",
+          "video": ""
+        }
+      ],
+      "pitch": "Las abejas nativas no necesitan cajas caras de pino importado: creamos nidos de barro y micelio que mantienen la temperatura exacta de un tronco vivo para que polinicen nuestros huertos en plena ciudad."
+    },
+    {
+      "id": "04",
+      "titulo": "Manejo ecológico de residuos de poda y biomasa vegetal urbana",
+      "categoria": "innovacion",
+      "categoria_porque": "Valorización termoquímica y mecánica de restos leñosos urbanos convertidos en biocombustible sólido y enmienda agrícola regenerativa.",
+      "descripcion": "El reto busca evitar la quema al aire libre y la saturación de botaderos municipales transformando la poda urbana en recursos de alto valor.",
+      "ods": [
+        [
+          "ODS 12",
+          "Producción y consumo responsables",
+          "Aprovechamiento integral de biomasa residual urbana."
+        ],
+        [
+          "ODS 7",
+          "Energía asequible y no contaminante",
+          "Sustitución de leña silvestre por briquetas prensadas."
+        ],
+        [
+          "ODS 13",
+          "Acción por el clima",
+          "Fijación permanente de carbono en suelos mediante biochar."
+        ]
+      ],
+      "insignias": [
+        [
+          "Premio Latinoamérica Verde",
+          "Gestión circular de residuos leñosos y descarbonización."
+        ],
+        [
+          "Pacto Global de las Naciones Unidas",
+          "Mitigación de emisiones de gases de efecto invernadero en ciudades."
+        ]
+      ],
+      "detalles": [
+        [
+          "Quién paga",
+          "Empresa Municipal de Aseo Urbano / Cooperativa de Panificadores · Valorización de Residuos · Director de Servicios · Planta modular."
+        ],
+        [
+          "Sustituto existente",
+          "Peletizadora industrial trifásica ($4,200 USD) — sustituida por prensa de palanca excéntrica de $580 USD sin motor eléctrico."
+        ],
+        [
+          "Costo de referencia",
+          "$580 USD por prensa mecánica de alta densidad para producción comunitaria."
+        ]
+      ],
+      "propuesta": {
+        "nombre": "Briquetadora manual de tornillo excéntrico para combustible limpio en panaderías comunitarias",
+        "claim": "Convertimos ramas de poda urbana en briquetas que reemplazan la leña en panaderías de barrio.",
+        "que_es": "Prensa mecánica compacta de palanca excéntrica fabricada con perfiles de acero estructural para la densificación de biomasa vegetal leñosa triturada procedente del mantenimiento del arbolado urbano. El equipo procesa ramas y hojas previamente reducidas a granulometría homogénea y mezcladas con un cinco por ciento de almidón de yuca como aglutinante natural. Mediante un mecanismo desmultiplicador manual, el operario ejerce ocho megapascales de compresión axial en una matriz cilíndrica templada de 75 milímetros. Las briquetas resultantes alcanzan una densidad superior a mil kilogramos por metro cúbico y sustituyen la leña silvestre en panaderías artesanales y hornos comunitarios con un poder calorífico de cuatro mil doscientas kilocalorías por kilo.",
+        "como": [
+          "Trituración de ramas de poda urbana hasta granulometría menor a 5 mm.",
+          "Mezcla de biomasa seca con aglutinante natural (almidón de yuca residual al 5 %) y 15 % de humedad.",
+          "Compactación mecánica por palanca excéntrica alcanzando 8 MPa de presión en matriz cilíndrica de 75 mm.",
+          "Secado solar pasivo durante 48 horas hasta alcanzar dureza de transporte y quema sin humo visible."
+        ],
+        "beneficiario": "Panaderías comunitarias, ladrilleras artesanales y servicios de aseo",
+        "componentes": [
+          "Estructura de perfiles UPN",
+          "Palanca de cizalla excéntrica",
+          "Matriz de compresión 75 mm",
+          "Pistón de acero templado",
+          "Bandejas solares"
+        ],
+        "costo": "$580 USD",
+        "metricas": [
+          "Poder calorífico superior a 4,200 kcal/kg.",
+          "65 % de reducción en emisiones de material particulado frente a leña húmeda.",
+          "Capacidad de compactación de 40 kg/hora por operador manual."
+        ]
+      },
+      "alterna": {
+        "nombre": "Reactor pirolítico barrial de biochar para enmienda de suelos agrícolas degradados",
+        "claim": "Biochar de poda urbana que retiene agua en fincas secas y fija carbono para siempre.",
+        "que_es": "Reactor pirolítico de tiro invertido construido con tambores concéntricos de chapa naval de 3 milímetros para la transformación de poda urbana gruesa en biocarbón agrícola de alta porosidad. La cámara interna de 200 litros se carga con trozas secas de madera, mientras que la cámara anular exterior utiliza restos de hojarasca para iniciar una combustión controlada a 450 grados centígrados en ausencia de oxígeno interno. Los gases de síntesis desprendidos se recirculan hacia la base del reactor como autocombustible limpio, reduciendo las emisiones visibles de humo. El producto final mejora la retención de agua en suelos agrícolas arenosos y fija carbono orgánico de forma permanente en la parcela productiva.",
+        "como": [
+          "Llenado del tambor interior de 200 L con restos de ramas secas troceadas de poda vial.",
+          "Encendido en cámara anular exterior alimentada con follaje menudo para alcanzar 450 °C sin oxígeno.",
+          "Desprendimiento y recirculación de gases de síntesis como autocombustible, minimizando humo exterior.",
+          "Enfriamiento y apagado con agua residual enriquecida con melaza para inocular microbiología benéfica."
+        ],
+        "beneficiario": "Agricultores de hortalizas en suelos arenosos o degradados",
+        "componentes": [
+          "Tambor interno 200 L acero naval",
+          "Camisa exterior aislada",
+          "Chimenea de tiro con recuperador",
+          "Válvulas guillotina"
+        ],
+        "costo": "$490 USD",
+        "metricas": [
+          "Rendimiento de 28 kg de biochar por cada 100 kg de poda seca procesada.",
+          "Incremento del 35 % en la capacidad de retención de humedad en suelos arenosos.",
+          "Fijación de 2.2 kg de CO2 equivalente por kg de biochar aplicado."
+        ]
+      },
+      "realidad": {
+        "a": "Las ramas podadas en ciudades representan el 20 % del volumen transportado a vertederos, pagando fletes inútiles de biomasa húmeda.",
+        "b": "El biochar aplicado a cultivos periurbanos reduce a la mitad la necesidad de riego por su estructura microporosa."
+      },
+      "cadena": {
+        "problema": "La poda de árboles urbanos se acumula en botaderos o se quema ilegalmente emitiendo humo y metano.",
+        "causa_raiz": "Falta de maquinaria de densificación a escala barrial para transformar volumen leñoso en combustible transportable.",
+        "insight": "Con 8 MPa de presión y almidón de yuca residual, la madera triturada se compacta sin resinas sintéticas y quema sin humo.",
+        "solucion": "Briquetadora de accionamiento mecánico por palanca que produce tacos combustibles estándar de 75 mm.",
+        "metrica": "4,200 kcal/kg sustituyendo 100 % la compra de leña talada en bosques nativos."
+      },
+      "senal": "Los proyectos que ganan en manejo de biomasa muestran una briqueta o un fertilizante con forma, densidad y poder calórico medido, no composteras lentas sin cliente.",
+      "analogias": [
+        {
+          "year": "2023",
+          "equipo": "BioInnova",
+          "puesto": "1.er Puesto Territorial",
+          "proyecto": "Ciclo Biomasa Urbana",
+          "que_hicieron": "Diseñaron aprovechamiento térmico de residuos agrícolas y de poda para hornos.",
+          "por_que": "Mismo encaje de sustitución de leña por subproductos urbanos densificados.",
+          "video": ""
+        }
+      ],
+      "pitch": "En vez de pagar camiones para enterrar ramas de poda, las prensamos en briquetas de alto poder calorífico que le ahorran el costo de leña a las panaderías de barrio y limpian el aire de la ciudad."
+    },
+    {
+      "id": "05",
+      "titulo": "Monitoreo inteligente e infraestructura verde en reservorios pluviales",
+      "categoria": "innovacion",
+      "categoria_porque": "Integración de hidráulica pasiva autorregulable con boyas telemétricas LoRa para amortiguamiento y control de sedimentos en lagunas urbanas.",
+      "descripcion": "El reto exige proteger reservorios pluviales urbanos del azolve y desborde combinando obras verdes y telemetría de bajo consumo.",
+      "ods": [
+        [
+          "ODS 6",
+          "Agua limpia y saneamiento",
+          "Protección de cuerpos hídricos receptores de escorrentía pluvial."
+        ],
+        [
+          "ODS 11",
+          "Ciudades y comunidades sostenibles",
+          "Drenaje urbano resiliente y prevención de inundaciones catastróficas."
+        ],
+        [
+          "ODS 9",
+          "Industria, innovación e infraestructura",
+          "Infraestructura hidráulica pasiva y telemetría autónoma."
+        ]
+      ],
+      "insignias": [
+        [
+          "Marco de Sendai para la Reducción del Riesgo de Desastres",
+          "Gestión preventiva del drenaje y amortiguamiento de crecidas."
+        ],
+        [
+          "Premio Latinoamérica Verde",
+          "Soluciones basadas en la naturaleza para la gestión hídrica urbana."
+        ]
+      ],
+      "detalles": [
+        [
+          "Quién paga",
+          "Empresa Municipal de Acueductos y Alcantarillado · Mantenimiento Drenaje Mayor · Jefe de Cuenca · 3 compuertas flotantes."
+        ],
+        [
+          "Sustituto existente",
+          "Rejilla motorizada limpia-canales ($14,000 USD) — sustituida por barrera basculante 100 % pasiva de $1,450 USD sin consumo eléctrico."
+        ],
+        [
+          "Costo de referencia",
+          "$1,450 USD por módulo de compuerta flotante con cortina geotextil de retención."
+        ]
+      ],
+      "propuesta": {
+        "nombre": "Compuerta flotante basculante para retención y decantación de sedimentos en lagunas pluviales",
+        "claim": "Compuertas pasivas que limpian los reservorios antes de que el lodo y la basura saturen la ciudad.",
+        "que_es": "Barrera flotante basculante modular construida con tuberías tubulares de polietileno de alta densidad de 250 milímetros, unidas mediante bisagras de caucho reforzado y anclajes lastrados en el fondo del cauce. La estructura sostiene una cortina subsuperficial de geotextil no tejido de 1.2 metros de profundidad que retiene plásticos flotantes, botellas y sedimentos arrastrados por la corriente superficial antes del ingreso al reservorio pluvial. Ante avenidas extraordinarias de agua, la fuerza hidrodinámica bascula la compuerta de alivio por sobrepresión para permitir el desagüe sin causar represamientos aguas arriba, operando de manera cien por ciento pasiva sin depender de motores eléctricos ni mantenimiento complejo.",
+        "como": [
+          "Flotadores tubulares de HDPE de 250 mm unidos por bisagras flexibles de caucho armado en el ingreso al reservorio.",
+          "Cortina geotextil sumergida de 1.2 m que frena microplásticos y detritos suspendidos sin frenar el flujo.",
+          "Mecanismo de basculamiento que abre compuerta de alivio por sobrepresión únicamente en caudales de retorno de 10 años.",
+          "Mástil perimetral con escala graduada de fácil lectura visual para inspección de sedimentación acumulada."
+        ],
+        "beneficiario": "Población ribereña aguas abajo y operadores de plantas de tratamiento",
+        "componentes": [
+          "Tubos flotadores HDPE 250 mm",
+          "Cortina geotextil no tejida",
+          "Lastre de hormigón premoldeado",
+          "Bisagras de caucho reforzado",
+          "Cables de fondeo"
+        ],
+        "costo": "$1,450 USD por unidad",
+        "metricas": [
+          "Retención del 85 % de plásticos flotantes y 40 % de sedimentos pesados.",
+          "Operación 100 % autónoma sin motores, sensores eléctricos ni red de energía.",
+          "Capacidad de amortiguamiento de crecidas de hasta 2 m/s de velocidad superficial."
+        ]
+      },
+      "alterna": {
+        "nombre": "Sonda autónoma LoRaWAN de perfil batimétrico y volumen útil en lagunas de tormenta",
+        "claim": "Monitoreo continuo de la capacidad real del reservorio antes de la tormenta con boyas solares.",
+        "que_es": "Boya hidrométrica solar rotomoldeada en polietileno de media densidad para el monitoreo batimétrico autónomo en lagunas de amortiguamiento pluvial y reservorios urbanos. La unidad incorpora un transductor sonar monohaz estanco orientado hacia el fondo cenagoso que registra la distancia exacta al lecho de lodos cada seis horas. Un microcontrolador de ultrabajo consumo transmite los datos de cota de sedimento y nivel superficial mediante modulación de radio LoRaWAN a una pasarela municipal situada a cuatro kilómetros de distancia. La información permite planificar las campañas de dragado preventivo antes de la temporada lluviosa para garantizar que el volumen útil del embalse esté completamente disponible.",
+        "como": [
+          "Boya anclada en el centro geométrico del reservorio con panel solar de 10 W y batería LiFePO4.",
+          "Transductor ultrasónico orientado al lecho mide distancia al fondo de lodo cada 6 horas.",
+          "Transmisor LoRaWAN envía nivel hidrométrico y cota de sedimento a pasarela municipal a 4 km.",
+          "Panel de visualización grafica el porcentaje de volumen de amortiguamiento pluvial disponible."
+        ],
+        "beneficiario": "Dirección de Obras Hidráulicas y cuadrillas de dragado municipal",
+        "componentes": [
+          "Cuerpo boya rotomoldeada",
+          "Transductor sonar monohaz",
+          "ESP32 LoRa 915 MHz",
+          "Panel solar 10 W",
+          "Batería LiFePO4"
+        ],
+        "costo": "$380 USD por boya",
+        "metricas": [
+          "Precisión batimétrica de ±2 cm en profundidades de hasta 6 m de agua turbia.",
+          "Transmisión de datos a 4 km sin línea de vista directa hacia el municipio.",
+          "Autonomía energética continua de 5 años sin cambio de baterías."
+        ]
+      },
+      "realidad": {
+        "a": "Los reservorios pluviales en América Latina se llenan de botellas y ramas en la primera tormenta, perdiendo el 50 % de su capacidad de retención.",
+        "b": "Las compuertas motorizadas fallan porque el corte de luz coincide siempre con el momento exacto de la tormenta más fuerte."
+      },
+      "cadena": {
+        "problema": "Los reservorios pluviales colapsan por acumulación de azolve y basura flotante, provocando desbordes en barrios bajos.",
+        "causa_raiz": "No existen trampas pasivas en el ingreso de los reservorios ni mediciones frecuentes del volumen de lodo acumulado.",
+        "insight": "Un sistema flotante basculante usa el mismo empuje hidrostático del agua para elevarse y retener detritos sin ningún motor.",
+        "solucion": "Barrera de HDPE basculante combinada con boya sonar LoRaWAN que alerta cuándo dragar antes de la temporada de lluvias.",
+        "metrica": "85 % de basura retenida y monitoreo batimétrico continuo a un costo 80 % menor."
+      },
+      "senal": "Los proyectos hídricos exitosos combinan una estructura física simple de retención con un sensor de bajo consumo que dispara la cuadrilla de limpieza.",
+      "analogias": [
+        {
+          "year": "2024",
+          "equipo": "Techriders",
+          "puesto": "1.er Puesto Innovación",
+          "proyecto": "Micropresas Telemetradas",
+          "que_hicieron": "Construyeron gaviones filtrantes con telemetría LoRaWAN en microcuencas.",
+          "por_que": "Misma articulación de obra civil pasiva y sensorización inalámbrica de largo alcance.",
+          "video": ""
+        }
+      ],
+      "pitch": "Evitamos que las lagunas de tormenta se desborden combinando compuertas flotantes que atrapan la basura sin gastar luz y boyas solares que avisan cuándo hay que dragar antes de que caiga la lluvia."
+    },
+    {
+      "id": "06",
+      "titulo": "Remoción y extracción de barro en viviendas anegadas",
+      "categoria": "impacto_social",
+      "categoria_porque": "Herramientas mecánicas portátiles de extracción de fluidos de alta viscosidad para rehabilitación habitacional inmediata post-huracán.",
+      "descripcion": "El reto busca solucionar la evacuación rápida de lodo arcilloso y sedimentos densos del interior de viviendas inundadas sin energía de red.",
+      "ods": [
+        [
+          "ODS 11",
+          "Ciudades y comunidades sostenibles",
+          "Recuperación rápida y habitabilidad de viviendas tras desastres hidrológicos."
+        ],
+        [
+          "ODS 3",
+          "Salud y bienestar",
+          "Prevención de infecciones micóticas, bacterianas y leptospirosis asociadas a lodo estancado."
+        ],
+        [
+          "ODS 9",
+          "Industria, innovación e infraestructura",
+          "Equipamiento de socorro adaptado a callejones y viviendas populares."
+        ]
+      ],
+      "insignias": [
+        [
+          "Marco de Sendai para la Reducción del Riesgo de Desastres",
+          "Rehabilitación y reconstrucción rápida en la fase de respuesta inmediata."
+        ],
+        [
+          "Premio Latinoamérica Verde",
+          "Tecnología humanitaria de bajo costo para adaptación climática."
+        ]
+      ],
+      "detalles": [
+        [
+          "Quién paga",
+          "Comité de Operaciones de Emergencia (COE) / Cruz Roja · Dotación de Respuesta Rápida · Coordinador de Logística · 15 extractores."
+        ],
+        [
+          "Sustituto existente",
+          "Bomba sumergible para aguas sucias ($420 USD) — falla al instante: se quema con lodo denso (>1,500 cP) y requiere 220 V."
+        ],
+        [
+          "Costo de referencia",
+          "$195 USD por extractor helicoidal continuo con desmultiplicador manual de engranajes."
+        ]
+      ],
+      "propuesta": {
+        "nombre": "Extractor manual de tornillo helicoidal continuo para lodos de alta densidad post-inundación",
+        "claim": "Sacamos el lodo espeso de las casas cuatro veces más rápido, sin luz eléctrica y sin palas lentas.",
+        "que_es": "Barrena mecánica portátil de tornillo helicoidal continuo contenida en una carcasa cilíndrica modular desmontable de tres metros de longitud, diseñada para evacuar lodos de alta densidad y sedimentos pesados del interior de viviendas anegadas tras desbordamientos de ríos o deslaves. El dispositivo cuenta con un mecanismo desmultiplicador manual de engranajes planetarios con relación 4 a 1 que permite a dos operadores girar el sinfín sin fatiga excesiva. La zapata cónica de admisión licúa el barro arcilloso por cizallamiento y lo transporta por empuje positivo hacia una manguera de descarga exterior, desalojando casi dos metros cúbicos de fango por hora sin necesidad de suministro eléctrico ni combustible.",
+        "como": [
+          "Carcasa tubular flexible y desmontable de 3 metros con espiral de fleje de acero templado en su interior.",
+          "Manivela de doble empuñadura con reducción de engranajes planetarios que desmultiplica el esfuerzo 4:1.",
+          "Admisión con zapata cónica que licúa el fango denso por cizallamiento al girar la manivela.",
+          "Descarga continua por manguera plana hacia canaleta exterior de desagüe sin entrar baldes a la vivienda."
+        ],
+        "beneficiario": "Familias damnificadas por desbordes de ríos y cuadrillas de voluntarios",
+        "componentes": [
+          "Fleje helicoidal de acero soldado",
+          "Tubo PVC sanitario 110 mm reforzado",
+          "Caja reductora 4:1",
+          "Manivela doble empuñadura",
+          "Manga de lona de descarga"
+        ],
+        "costo": "$195 USD",
+        "metricas": [
+          "Evacuación de 1.8 m³ de lodo por hora con esfuerzo sostenido de dos personas.",
+          "Desalojo directo a 6 metros de distancia sin cargar baldes dentro de la casa.",
+          "Operación 100 % mecánica sin combustible ni cableado eléctrico."
+        ]
+      },
+      "alterna": {
+        "nombre": "Carretilla eyectora de fango por venturi con lanza de agua a presión mínima",
+        "claim": "Succión venturi portátil que saca el barro de cuartos estrechos donde un camión jamás entra.",
+        "que_es": "Carretilla eyectora hidrodinámica montada sobre bastidor rodante estrecho de 55 centímetros de ancho para operar dentro de habitaciones y pasillos estrechos en viviendas afectadas por inundaciones. El equipo dispone de una tolva de recepción a ras de suelo donde se introduce el fango denso con jaladores de goma, acoplada a una tobera venturi de bronce maquinado. Al recibir agua a baja presión suministrada por una manguera de jardín estándar, la tobera crea una depresión por vacío que succiona el sedimento pastoso, lo mezcla en proporción volumétrica uno a uno y lo expulsa de manera continua a través de una manguera flexible plana de dos pulgadas hacia la canaleta de la calle.",
+        "como": [
+          "Tolva de recepción baja montada en bastidor de carretilla que permite empujar el barro con jalador de goma.",
+          "Tobera hidrodinámica venturi conectada a motobomba de jardín genera vacío en el cuello de succión.",
+          "Mezcla instantánea del barro espeso con agua a razón 1:1 para volverlo fluido bombeable.",
+          "Manguera de descarga de 2 pulgadas evacua la mezcla hacia el cordón cuneta sin salpicaduras."
+        ],
+        "beneficiario": "Equipos de rescate y propietarios de viviendas anegadas",
+        "componentes": [
+          "Tolva de chapa galvanizada",
+          "Tobera venturi de bronce maquinado",
+          "Chasis rodante",
+          "Mangueras planas de 2\"",
+          "Acoples rápidos Camlock"
+        ],
+        "costo": "$230 USD",
+        "metricas": [
+          "Desalojo continuo de 45 litros/minuto de lodo arcilloso.",
+          "Uso eficiente de agua a razón de solo 15 litros/minuto de fluido impulsor.",
+          "Ancho de trocha de 55 cm para ingresar por puertas interiores estándar."
+        ]
+      },
+      "realidad": {
+        "a": "Tras un huracán o riada, el lodo se seca en menos de 48 horas formando una costra de arcilla cementada casi imposible de picar a mano.",
+        "b": "Las bombas eléctricas y motobombas centrífugas se bloquean porque el barro arrastrado tiene viscosidad de pasta dental con arena."
+      },
+      "cadena": {
+        "problema": "Las familias tardan hasta 3 semanas en sacar el barro de sus casas con baldes y palas, perdiendo enseres y enfermando.",
+        "causa_raiz": "El barro post-inundación es un fluido no newtoniano que se compacta con el bombeo convencional y requiere desplazamiento positivo.",
+        "insight": "Un tornillo de Arquímedes con reducción 4:1 cizalla el barro en la admisión y lo transporta por empuje axial sin atascos.",
+        "solucion": "Barrena portátil manual de 3 metros que succiona el fango a ras del piso y lo expulsa directamente a la calle.",
+        "metrica": "1.8 m³/hora desalojados permitiendo secar la vivienda en menos de 24 horas."
+      },
+      "senal": "Los mejores proyectos de ayuda en desastres evitan camiones gigantes y diseñan artefactos que una persona puede cargar al hombro por pasadizos estrechos.",
+      "analogias": [
+        {
+          "year": "2023",
+          "equipo": "DIGNA",
+          "puesto": "1.er Puesto Impacto Social",
+          "proyecto": "Vivienda Post-Desastre",
+          "que_hicieron": "Diseñaron kits modulares de recuperación higiénica y estructural inmediata para inundaciones.",
+          "por_que": "Mismo rigor en ergonomía, velocidad de respuesta y ausencia de dependencia eléctrica.",
+          "video": ""
+        }
+      ],
+      "pitch": "Cuando el río se mete a la casa, el lodo se endurece en dos días. Nuestro extractor helicoidal manual saca casi dos metros cúbicos de fango por hora sin necesidad de luz eléctrica ni camiones cisterna."
+    },
+    {
+      "id": "07",
+      "titulo": "Reutilización de aceite doméstico",
+      "categoria": "innovacion",
+      "categoria_porque": "Transformación química sencilla de aceite residual de cocina en insumos industriales de construcción y mantenimiento municipal.",
+      "descripcion": "El reto busca detener la contaminación masiva de redes de alcantarillado y mantos acuíferos valorizando el aceite de fritura residencial.",
+      "ods": [
+        [
+          "ODS 6",
+          "Agua limpia y saneamiento",
+          "Protección de aguas subterráneas (1 litro de aceite contamina 40,000 L de agua potable)."
+        ],
+        [
+          "ODS 12",
+          "Producción y consumo responsables",
+          "Cierre de ciclo de residuos grasos domésticos en insumos de obra civil."
+        ],
+        [
+          "ODS 9",
+          "Industria, innovación e infraestructura",
+          "Fabricación local de desmoldantes ecológicos para bloqueras municipales."
+        ]
+      ],
+      "insignias": [
+        [
+          "Premio Latinoamérica Verde",
+          "Valorización de pasivos ambientales líquidos y protección de recursos hídricos."
+        ],
+        [
+          "Pacto Global de las Naciones Unidas",
+          "Sustitución de productos químicos derivados del petróleo por alternativas biológicas."
+        ]
+      ],
+      "detalles": [
+        [
+          "Quién paga",
+          "Dirección de Obras Públicas Municipales · Insumos para Bloquera Municipal · Director de Infraestructura · 400 L/mes de desmoldante."
+        ],
+        [
+          "Sustituto existente",
+          "Desmoldante químico de base petróleo ($65 USD / garrafa de 20 L) — reemplazado por formulación bio de $28 USD sin vapores tóxicos."
+        ],
+        [
+          "Costo de referencia",
+          "$850 USD para la planta de filtración y reactor térmico de 200 L/batch."
+        ]
+      ],
+      "propuesta": {
+        "nombre": "Reactor solar térmico para producción de desmoldante ecológico de hormigón",
+        "claim": "Cambiamos el aceite quemado que contamina los ríos por desmoldante ecológico para obras públicas.",
+        "que_es": "Planta solar térmica modular para la transformación de aceite vegetal usado de fritura en desmoldante biodegradable para encofrados de hormigón y fábricas municipales de adoquines. El sistema consta de una etapa inicial de filtrado progresivo hasta 50 micras para retener restos sólidos de alimentos y un concentrador solar parabólico que calienta el fluido a 75 grados centígrados para evaporar agua residual. En un tanque agitador de acero de 200 litros, el aceite se somete a una saponificación parcial controlada con álcali diluido y adición de alcohol vegetal al diez por ciento. El fluido resultante evita la adherencia del mortero en moldes metálicos o de madera sin emitir solventes tóxicos derivados del petróleo.",
+        "como": [
+          "Filtrado mecánico progresivo del aceite usado hasta 50 micras para retirar restos de comida y salmuera.",
+          "Decantación térmica pasiva en concentrador solar parabólico alcanzando 75 °C para evaporar humedad residual.",
+          "Saponificación parcial controlada con lejía diluida y aditivado de 10 % de alcohol vegetal para estabilizar viscosidad.",
+          "Envasado en bidones reutilizables de 20 L para suministro directo a obras públicas y fábricas locales de adoquines."
+        ],
+        "beneficiario": "Fábricas de adoquines municipales y albañiles de obra civil",
+        "componentes": [
+          "Filtro prensa manual 4 marcos",
+          "Tanque agitador 200 L acero",
+          "Concentrador solar parabólico",
+          "Densímetro industrial",
+          "Bidones retornables"
+        ],
+        "costo": "$850 USD",
+        "metricas": [
+          "Rendimiento de 1 litro de desmoldante por cada 1.05 litros de aceite usado recolectado.",
+          "Desmolde limpio de adoquines de hormigón sin adherencias ni manchas grasas en 24 horas.",
+          "Cero emisiones de compuestos orgánicos volátiles para los operarios de encofrado."
+        ]
+      },
+      "alterna": {
+        "nombre": "Módulo saponificador de pasta desengrasante para talleres mecánicos municipales",
+        "claim": "El aceite vegetal quemado limpia los motores pesados del municipio sin solventes tóxicos.",
+        "que_es": "Unidad de neutralización y cocción en tina encamisada de 120 litros para la fabricación de pasta desengrasante industrial destinada al lavado de motores y piezas mecánicas en talleres de maestranzas municipales. El proceso aprovecha el aceite residual de cocina recolectado en comedores populares, el cual se hace reaccionar a 65 grados centígrados con hidróxido de potasio y agitación mecánica constante durante noventa minutos. La formulación incorpora harina de cuarzo cribada como agente abrasivo suave para facilitar el desprendimiento de grasas minerales densas sin dañar las superficies metálicas ni irritar las manos del personal técnico durante las faenas de mantenimiento de la flota vehicular.",
+        "como": [
+          "Neutralización de acidez libre del aceite usado mediante valoración rápida y agregado de hidróxido de potasio disuelto.",
+          "Calentamiento a 65 °C con resistencia encamisada y agitación mecánica constante durante 90 minutos.",
+          "Agregado de polvo de cuarzo fino o aserrín cribado como agente abrasivo natural para potenciar corte de grasa.",
+          "Fraccionamiento en potes de 1 kg para uso en los talleres mecánicos de flotas municipales y maestranzas."
+        ],
+        "beneficiario": "Mecánicos de maestranzas municipales y cooperativas de transporte",
+        "componentes": [
+          "Tina de cocción encamisada 120 L",
+          "Motorreductor de agitación",
+          "Balanza de precisión",
+          "Paleta mezcladora de acero inoxidable",
+          "Envases de 1 kg"
+        ],
+        "costo": "$620 USD",
+        "metricas": [
+          "Remoción total de grasa pesada mineral con solo 30 g de pasta por pieza de motor.",
+          "Biodegradabilidad completa del residuo de lavado en separadores de hidrocarburos.",
+          "pH neutro en producto terminado (7.5 - 8.5) evitando dermatitis ocupacional."
+        ]
+      },
+      "realidad": {
+        "a": "El aceite vertido al fregadero solidifica con los detergentes formando tapones gigantes de grasa que revientan las tuberías municipales.",
+        "b": "Las empresas de adoquines y hormigón gastan miles de dólares al mes en desmoldantes importados de base parafínica que contaminan el suelo."
+      },
+      "cadena": {
+        "problema": "El aceite de cocina desechado por comedores y hogares envenena las fuentes de agua y bloquea las cloacas de la ciudad.",
+        "causa_raiz": "El biodiésel artesanal exige metanol y soda cáustica peligrosa; faltan rutas de transformación física que no demanden químicos caros.",
+        "insight": "El aceite vegetal filtrado y mezclado con alcohol vegetal forma un desmoldante hidrófobo perfecto para desencofrar hormigón sin mancharlo.",
+        "solucion": "Reactor solar de filtrado y homogenización que entrega desmoldante directo a las bloqueras del municipio.",
+        "metrica": "1 litro de desmoldante producido por cada 1.05 L de aceite con ahorro del 50 % frente al producto fósil."
+      },
+      "senal": "El jurado premia proyectos de aceite cuando tienen un cliente industrial claro (la bloquera, la pavimentación) y no botellitas de jabón artesanal para ferias de domingo.",
+      "analogias": [
+        {
+          "year": "2023",
+          "equipo": "BioInnova",
+          "puesto": "1.er Puesto Ambiental",
+          "proyecto": "Biolubricantes Territoriales",
+          "que_hicieron": "Formularon lubricantes para cadenas agrícolas a partir de aceites reciclados.",
+          "por_que": "Mismo modelo de sustitución de insumo fósil por residuo graso valorizado con cliente cautivo.",
+          "video": ""
+        }
+      ],
+      "pitch": "Un solo litro de aceite contamina 40,000 litros de agua limpia. Nosotros lo recolectamos en comedores populares y lo transformamos en desmoldante ecológico para fabricar los adoquines que pavimentan la misma ciudad."
+    },
+    {
+      "id": "08",
+      "titulo": "Desechos de basura verde (residuos fotovoltaicos)",
+      "categoria": "innovacion",
+      "categoria_porque": "Desensamble mecánico y remanufactura de celdas intactas de paneles solares descartados para luminarias y obras civiles.",
+      "descripcion": "El reto aborda el dilema emergente de los paneles solares retirados de servicio, recuperando silicio activo y metales de alto valor.",
+      "ods": [
+        [
+          "ODS 7",
+          "Energía asequible y no contaminante",
+          "Prolongación de la generación solar fotovoltaica con componentes recuperados."
+        ],
+        [
+          "ODS 12",
+          "Producción y consumo responsables",
+          "Gestión y reciclaje de residuos de aparatos eléctricos y electrónicos (RAEE)."
+        ],
+        [
+          "ODS 11",
+          "Ciudades y comunidades sostenibles",
+          "Alumbrado público autónomo de emergencia en callejones desatendidos."
+        ]
+      ],
+      "insignias": [
+        [
+          "Premio Latinoamérica Verde",
+          "Economía circular en tecnologías de transición energética."
+        ],
+        [
+          "Pacto Global de las Naciones Unidas",
+          "Gestión responsable de residuos peligrosos y minería urbana."
+        ]
+      ],
+      "detalles": [
+        [
+          "Quién paga",
+          "Secretaría de Energía y Alumbrado Público · Mantenimiento de Alumbrado Autónomo · Director de Electrificación · 50 luminarias."
+        ],
+        [
+          "Sustituto existente",
+          "Panel solar nuevo de 15 W ($28 USD la unidad) — sustituido por módulo remanufacturado de $6 USD a partir de paneles de descarte."
+        ],
+        [
+          "Costo de referencia",
+          "$720 USD para el banco de corte térmico, trazador I-V y laminación al vacío."
+        ]
+      ],
+      "propuesta": {
+        "nombre": "Cortadora térmica de celdas sanas para módulos fotovoltaicos de emergencia comunitaria",
+        "claim": "Revivimos el silicio de paneles solares rotos para iluminar barrios periféricos sin generar chatarra.",
+        "que_es": "Banco de trabajo especializado para el desensamblaje y corte térmico de paneles solares fotovoltaicos retirados de servicio por rotura de vidrio frontal o degradación perimetral. El equipo utiliza un bastidor con hilo de nicrom electrificado que alcanza 140 grados centígrados para reblandecer y cortar con precisión la lámina de etilvinilacetato (EVA), separando el vidrio fragmentado sin fracturar las celdas de silicio subyacentes. Las celdas intactas se inspeccionan con un trazador de curvas corriente-voltaje para verificar su potencia remanente y se interconectan en serie de doce unidades sobre soportes de policarbonato para fabricar luminarias solares comunitarias de 15 vatios destinadas a callejones desprovistos de red eléctrica.",
+        "como": [
+          "Inspección termográfica de panel dañado para identificar cadenas de silicio sin microfisuras ni puntos calientes.",
+          "Corte térmico por hilo de nicrom para fundir la lámina de EVA y separar el vidrio roto sin astillar el silicio.",
+          "Testeo de curva I-V individual por celda para agrupar unidades con corriente homogénea.",
+          "Soldadura en serie de 12 celdas remanentes sobre soporte de policarbonato reciclado para luminarias de emergencia."
+        ],
+        "beneficiario": "Barrios populares sin red de alumbrado y centros comunitarios",
+        "componentes": [
+          "Mesa de corte con hilo de nicrom",
+          "Trazador de curvas I-V y multímetro",
+          "Laminadora de vacío de mesa",
+          "Soportes de policarbonato",
+          "LEDs de 12 V"
+        ],
+        "costo": "$720 USD (banco de taller)",
+        "metricas": [
+          "Recuperación del 45 % de la potencia nominal de paneles declarados en desuso.",
+          "Costo de remanufactura de solo $6 USD por luminaria de 15 W.",
+          "Desvío de plomo y antimonio tóxico de los vertederos a cielo abierto."
+        ]
+      },
+      "alterna": {
+        "nombre": "Estación desbastadora de marcos de aluminio y trituradora de vidrio fotovoltaico para gaviones",
+        "claim": "Desarmamos paneles solares descartados en 4 minutos para recuperar aluminio puro y árido de construcción.",
+        "que_es": "Estación mecánica desmanteladora de paneles solares fotovoltaicos fuera de uso para la recuperación limpia de perfiles de aluminio estructural y trituración de vidrio templado. El dispositivo cuenta con mordazas de desanclaje rápido accionadas por palancas manuales que extraen el marco perimetral sin doblar el perfil de aleación 6063, facilitando su venta directa como chatarra de alto valor comercial. El vidrio solar remanente se conduce hacia un molino de rodillos estriados de acero templado que fragmenta las láminas hasta convertirlas en árido redondeado de cinco a diez milímetros, apto para ser utilizado como material de drenaje o relleno granular en gaviones de protección de laderas urbanas.",
+        "como": [
+          "Desencofrado rápido del marco de aluminio anodizado con mordazas de desenclavamiento manual sin doblar el perfil.",
+          "Separación manual de la caja de conexiones y diodos de bypass para entrega directa a recuperadores de cobre.",
+          "Fragmentación del vidrio frontal con rodillos estriados hasta convertirlo en grano de 5 a 10 mm sin aristas cortantes.",
+          "Mezcla del árido de vidrio con gravilla para relleno de gaviones de contención y estabilización de taludes ribereños."
+        ],
+        "beneficiario": "Plantas municipales de reciclaje y cooperativas de recolectores de chatarra",
+        "componentes": [
+          "Mesa desbastadora de marcos",
+          "Triturador de rodillos de acero templado",
+          "Motor 1.5 HP monofásico",
+          "Tamiz vibratorio",
+          "Caja recolectora"
+        ],
+        "costo": "$890 USD",
+        "metricas": [
+          "Despiece completo de 1 panel solar estándar (2 m²) en 3.5 minutos.",
+          "Recuperación de 2.8 kg de aluminio estructural 6063-T5 de alta pureza por panel.",
+          "15 kg de árido de vidrio templado reciclado para gaviones por panel."
+        ]
+      },
+      "realidad": {
+        "a": "Muchos paneles solares se descartan porque un rayo o una piedra rompió una esquina del vidrio, aunque el 70 % de sus celdas genera corriente intacta.",
+        "b": "Los centros de reciclaje en América Latina quiebran los paneles a mazazos arruinando el silicio y contaminando el suelo con plomo de soldadura."
+      },
+      "cadena": {
+        "problema": "Los parques solares y techos comerciales empiezan a acumular toneladas de paneles de descarte sin plantas de reciclaje cercanas.",
+        "causa_raiz": "El encapsulante EVA pega el silicio al vidrio como pegamento estructural y solo cede con calor controlado.",
+        "insight": "Un hilo térmico a 140 °C corta el EVA como mantequilla, permitiendo extraer las celdas de silicio sanas como obleas intactas.",
+        "solucion": "Mesa de corte térmico y ensamblaje de mini-módulos de 15 W para alumbrado comunitario seguro.",
+        "metrica": "45 % de potencia recuperada a $6 USD por lámpara solar comunitaria."
+      },
+      "senal": "El jurado premia propuestas de basura fotovoltaica que rescatan la función eléctrica de las celdas, no solo el aluminio fácil del marco.",
+      "analogias": [
+        {
+          "year": "2019",
+          "equipo": "LexoStop",
+          "puesto": "1.er Puesto Innovación",
+          "proyecto": "Parada Solar Autosuficiente",
+          "que_hicieron": "Construyeron infraestructura urbana alimentada con paneles solares optimizados.",
+          "por_que": "Misma aplicación de energía fotovoltaica descentralizada para resolver servicios públicos.",
+          "video": ""
+        }
+      ],
+      "pitch": "Los paneles solares rotos no son basura, son minas de silicio puro. Diseñamos un cortador térmico que separa las celdas sanas en minutos y las convierte en faroles solares para iluminar pasajes oscuros donde no llega el cable de luz."
+    },
+    {
+      "id": "09",
+      "titulo": "Optimización y priorización de recursos y esfuerzos en la post-emergencia",
+      "categoria": "impacto_social",
+      "categoria_porque": "Sistemas tácticos de telecomunicación por radiofrecuencia y dosificación mecánica estricta para auxilio humanitario sin dependencia de internet.",
+      "descripcion": "El reto exige organizar el socorro y la entrega de suministros vitales tras desastres climáticos cuando las redes eléctricas y celulares han colapsado.",
+      "ods": [
+        [
+          "ODS 11",
+          "Ciudades y comunidades sostenibles",
+          "Gestión integral y respuesta coordinada ante desastres humanitarios."
+        ],
+        [
+          "ODS 6",
+          "Agua limpia y saneamiento",
+          "Distribución equitativa y trazable de agua potable en campamentos de damnificados."
+        ],
+        [
+          "ODS 16",
+          "Paz, justicia e instituciones sólidas",
+          "Transparencia y control anticorrupción en la entrega de víveres de socorro."
+        ]
+      ],
+      "insignias": [
+        [
+          "Marco de Sendai para la Reducción del Riesgo de Desastres",
+          "Fortalecimiento de los sistemas logísticos y de triaje en emergencia."
+        ],
+        [
+          "Pacto Global de las Naciones Unidas",
+          "Equidad en la distribución de recursos humanitarios esenciales."
+        ]
+      ],
+      "detalles": [
+        [
+          "Quién paga",
+          "Sistema Nacional de Gestión de Riesgos / Cruz Roja · Adquisición de Telecomunicaciones Tácticas · Director de Emergencias · Kit de campaña."
+        ],
+        [
+          "Sustituto existente",
+          "Teléfono satelital Iridium ($1,200 USD + $150 USD/mes de tarifa) — sustituido por malla LoRa táctica de $640 USD sin abono recurrente."
+        ],
+        [
+          "Costo de referencia",
+          "$640 USD por maleta táctica con 6 repetidores solares y 4 terminales de brigada."
+        ]
+      ],
+      "propuesta": {
+        "nombre": "Red de balizas tácticas LoRa con terminales de triaje físico para zonas sin señal celular",
+        "claim": "Coordinación de socorro infalible cuando se caen todas las antenas: radio-malla táctica para salvar vidas.",
+        "que_es": "Maleta táctica hermética de despliegue rápido que contiene seis repetidores de radioenlace solar en malla bajo protocolo LoRa a 915 megahercios y cuatro terminales portátiles de triaje con pantalla de tinta electrónica para brigadas de rescate. El sistema restablece la comunicación operativa en zonas devastadas por huracanes o terremotos tras la caída total de las torres de telefonía celular. Los brigadistas envían reportes codificados de necesidades críticas de agua, alimentos, atención médica y refugio mediante botones físicos resistentes a golpes y humedad. Los paquetes de datos cifrados saltan entre nodos hasta la estación base del puesto de mando, generando un mapa interactivo de prioridades logísticas en tiempo real.",
+        "como": [
+          "Despliegue de nodos repetidores solares autónomos fijados en postes o árboles en lomas estratégicas del área afectada.",
+          "Brigadistas portan terminales de mano con botones físicos codificados por color (agua, rescate, alimentos, techo).",
+          "Transmisión de paquetes cifrados vía radiofrecuencia a 915 MHz alcanzando un radio de cobertura de 12 km entre nodos.",
+          "Receptor base en el Puesto de Mando Unificado genera tablero georreferenciado automático de prioridades de despacho."
+        ],
+        "beneficiario": "Brigadistas de emergencia, personal médico y familias incomunicadas",
+        "componentes": [
+          "6 repetidores LoRa 915 MHz solares",
+          "4 terminales de mano con pantalla e-ink",
+          "Antenas colineales 5 dBi",
+          "Baterías LiFePO4",
+          "Maleta estanca Pelican"
+        ],
+        "costo": "$640 USD (kit completo)",
+        "metricas": [
+          "Transmisión de alerta en menos de 4 segundos a través de 3 saltos de malla.",
+          "12 km de radio de cobertura en topografía montañosa sin señal celular.",
+          "Autonomía operativa continua de 7 días sin luz solar directa."
+        ]
+      },
+      "alterna": {
+        "nombre": "Dispensador volumétrico con tarjeta perforada infalsificable para entrega equitativa de agua potable",
+        "claim": "Entrega de agua rápida, justa y sin peleas en albergues: control mecánico que no necesita electricidad.",
+        "que_es": "Válvula dosificadora volumétrica calibrada para el acople directo a la salida de camiones cisterna o tanques de agua en albergues temporales y centros de evacuación humanitaria. El mecanismo es completamente mecánico y opera mediante un pistón temporizado que suministra una ración exacta de veinte litros de agua potable por beneficiario al accionar una palanca. Para evitar el acaparamiento o la duplicidad de reclamos en la fila de reparto, el dispositivo requiere la inserción de una tarjeta plástica codificada que se perfora mecánicamente al completarse el ciclo de llenado. El sistema funciona sin baterías ni conexiones eléctricas, garantizando un reparto equitativo y transparente bajo condiciones severas de barro y lluvia.",
+        "como": [
+          "Instalación de la válvula de compuerta temporizada de 20 litros en la salida del camión cisterna o reservorio de socorro.",
+          "El beneficiario inserta su tarjeta plástica codificada que acciona el pistón de llenado mediante ranura unidireccional.",
+          "La máquina perfora físicamente el casillero diario de la tarjeta impidiendo dobles raciones fraudulentas en el mismo día.",
+          "Corte automático por flotador hidráulico tras entregar exactamente 20 L sin requerir electricidad ni control biométrico."
+        ],
+        "beneficiario": "Comités de albergue temporal y familias damnificadas",
+        "componentes": [
+          "Válvula dosificadora de latón temporizada",
+          "Mecanismo punzonador mecánico de acero",
+          "Tarjetas de PVC troqueladas",
+          "Acoples rápidos Camlock 2\"",
+          "Estructura antivandálica"
+        ],
+        "costo": "$160 USD por punto de despacho",
+        "metricas": [
+          "Despacho exacto de 20 litros en 45 segundos por familia sin rebalses.",
+          "Reducción del tiempo de espera en fila de 45 minutos a 3 minutos por persona.",
+          "Cero fraudes o duplicidad de entrega sin computadoras ni baterías."
+        ]
+      },
+      "realidad": {
+        "a": "En una catástrofe real las torres celulares colapsan en la primera hora y las brigadas caminan a ciegas sin poder pedir ambulancias o víveres.",
+        "b": "El reparto de agua en albergues genera riñas y acaparamientos violentos si no hay un control físico rápido que toda la fila considere transparente."
+      },
+      "cadena": {
+        "problema": "La ayuda humanitaria post-desastre llega tarde y desordenada por falta de comunicaciones y descontrol en los puntos de entrega.",
+        "causa_raiz": "Los sistemas de ayuda asumen que habrá señal 4G o electricidad para celulares y tablets, colapsando al primer corte de energía.",
+        "insight": "La modulación de radio LoRa viaja kilómetros entre cerros con baterías de linterna, y una tarjeta perforada mecánicamente no miente ni se queda sin pila.",
+        "solucion": "Maleta táctica de radio-malla y dosificador volumétrico mecánico para tanques cisterna de agua.",
+        "metrica": "Mensajes entregados en 4 segundos y agua dosificada con cero fraude en 3 minutos por familia."
+      },
+      "senal": "Los ganadores en gestión de desastres presentan herramientas robustas a prueba de agua y golpes que funcionan cuando no hay luz, internet ni combustible.",
+      "analogias": [
+        {
+          "year": "2024",
+          "equipo": "Techriders",
+          "puesto": "1.er Puesto Resiliencia",
+          "proyecto": "Malla Táctica de Emergencia",
+          "que_hicieron": "Implementaron comunicación de emergencia con tecnología LoRa en zonas sin cobertura.",
+          "por_que": "Mismo estándar de telemetría resiliente y bajo costo de despliegue en campo.",
+          "video": ""
+        }
+      ],
+      "pitch": "Cuando un huracán tumba las antenas celulares, el socorro se vuelve un caos a ciegas. Nuestra maleta de radio-malla táctica restablece las comunicaciones en 10 minutos para saber exactamente dónde falta agua, comida o medicinas sin depender de internet."
+    }
+  ]
+}

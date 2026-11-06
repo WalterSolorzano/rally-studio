@@ -524,3 +524,67 @@ dzvJdvrhrG4	ERROR: [youtube] dzvJdvrhrG4: This video is not available
 rq5GjHZQOWc	ERROR: [youtube] rq5GjHZQOWc: This video is not available
 R43xNivIUGA	ERROR: [youtube] R43xNivIUGA: Private video. If the owner of this video has granted you access, please sign in. Use --co
 I7_Nj3NaCa4	ERROR: [youtube] I7_Nj3NaCa4: This video is not available
+wcupeqOKayw	ERROR: [youtube] wcupeqOKayw: This video is unavailable
+6_YBx2TpCA8	ERROR: [youtube] 6_YBx2TpCA8: This video is not available
+fsCmgfOpa3Y	ERROR: [youtube] fsCmgfOpa3Y: This video is not available
+TnakFgANBCQ	ERROR: [youtube] TnakFgANBCQ: This video is not available
+DFc8eh5lQbk	ERROR: [youtube] DFc8eh5lQbk: This video is not available
+p3lmfu-IDVk	ERROR: [youtube] p3lmfu-IDVk: This video is not available
+bkGEpmlNbRg	ERROR: [youtube] bkGEpmlNbRg: This video is not available
+eaf2Ic32C0E	ERROR: [youtube] eaf2Ic32C0E: This video is not available
+7gT7DNVeF_A	ERROR: [youtube] 7gT7DNVeF_A: This video is not available
+sWKtTrX-yO0	ERROR: [youtube] sWKtTrX-yO0: This video is not available
+i6S_FI-zkow	ERROR: [youtube] i6S_FI-zkow: This video is not available
+uXBJH6BPnt4	ERROR: [youtube] uXBJH6BPnt4: This video is not available
+D6Cps8_Kd0o	ERROR: [youtube] D6Cps8_Kd0o: This video is not available
+qWUmiwn3dyo	ERROR: [youtube] qWUmiwn3dyo: This video is not available
+Xf9qmc3d7Es	ERROR: [youtube] Xf9qmc3d7Es: This video is not available
+jJQUUrDCne4	ERROR: [youtube] jJQUUrDCne4: This video is not available
+ti-6bPRvN1Q	ERROR: [youtube] ti-6bPRvN1Q: This video is not available
+tG9PG5IacdM	ERROR: [youtube] tG9PG5IacdM: This video is not available
+NLwwnRNRP3g	ERROR: [youtube] NLwwnRNRP3g: This video is not available
+ZYDlHAU8lUw	ERROR: [youtube] ZYDlHAU8lUw: This video is unavailable
+h3MAK-Xvn3A	ERROR: [youtube] h3MAK-Xvn3A: This video is not available
+-VajKBSdzhU	ERROR: [youtube] -VajKBSdzhU: This video is not available
+I7LmlYRdkN0	ERROR: [youtube] I7LmlYRdkN0: This video is not available
+M_yzJtxlrWc	ERROR: [youtube] M_yzJtxlrWc: This video is not available
+5xYWFjLXcbc	ERROR: [youtube] 5xYWFjLXcbc: This video is not available
+jjLVeFleZn0	ERROR: [youtube] jjLVeFleZn0: This video is not available
+gDur5-7natU	ERROR: [youtube] gDur5-7natU: This video is unavailable
+2c16-rS_Y_U	ERROR: [youtube] 2c16-rS_Y_U: This video is not available
+uLBmYi5JYsk	ERROR: [youtube] uLBmYi5JYsk: This video is not available
+d9hvLU81724	ERROR: [youtube] d9hvLU81724: This video is not available
+5tbUKKYDmXA	ERROR: [youtube] 5tbUKKYDmXA: This video is not available
+N6OmNuDox78	ERROR: [youtube] N6OmNuDox78: This video is unavailable
+m_q506xlDPs	ERROR: [youtube] m_q506xlDPs: This video is not available
+8m8VCZ2SZL0	ERROR: [youtube] 8m8VCZ2SZL0: This video is not available
+VEAMQwrHetk	ERROR: [youtube] VEAMQwrHetk: This video is not available
+R2mjfSD1NIU	ERROR: [youtube] R2mjfSD1NIU: This video is not available
+q7C5A0AD2n8	ERROR: [youtube] q7C5A0AD2n8: This video is not available
+BwW3Vm0Ym9Y	ERROR: [youtube] BwW3Vm0Ym9Y: This video is not available
+Q_fzD2DTe6E	ERROR: [youtube] Q_fzD2DTe6E: This video is not available
+PviWX2bvo1A	ERROR: [youtube] PviWX2bvo1A: This video is not available
+SnzfTyXYuhY	ERROR: [youtube] SnzfTyXYuhY: This video is not available
+57U9s1QdEX4	ERROR: [youtube] 57U9s1QdEX4: This video is unavailable
+aZCLGOH-CtA	ERROR: [youtube] aZCLGOH-CtA: This video is not available
+-hBcly1aUko	ERROR: [youtube] -hBcly1aUko: Private video. If the owner of this video has granted you access, please sign in. Use --co
+CQfNq_w-QUM	ERROR: [youtube] CQfNq_w-QUM: This video is not available
+TMVlNuYTwQk	ERROR: [youtube] TMVlNuYTwQk: This video is not available
+tSm_0idaGXQ	ERROR: [youtube] tSm_0idaGXQ: This video is not available
+sZf7RT3p4dQ	ERROR: [youtube] sZf7RT3p4dQ: This video is not available
+pOMxFdIVPac	ERROR: [youtube] pOMxFdIVPac: This video is not available
+lXVIejCW52g	ERROR: [youtube] lXVIejCW52g: This video is not available
+aY4u1d75dlw	ERROR: [youtube] aY4u1d75dlw: This video is unavailable
+R_D8PvheD1g	ERROR: [youtube] R_D8PvheD1g: This video is not available
+6Xs3w2p1ncY	ERROR: [youtube] 6Xs3w2p1ncY: This video is not available
+AtqXBlQOtzE	ERROR: [youtube] AtqXBlQOtzE: This video is unavailable
+H7aup6rd5DI	ERROR: [youtube] H7aup6rd5DI: Video unavailable. This video is no longer available because the YouTube account associate
+MPA1pZKVGRM	ERROR: [youtube] MPA1pZKVGRM: Private video. If the owner of this video has granted you access, please sign in. Use --co
+Ini97i9SbiY	ERROR: [youtube] Ini97i9SbiY: This video is unavailable
+VPi3HEtd4-w	ERROR: [youtube] VPi3HEtd4-w: This video is unavailable
+pGekxPPi7g4	ERROR: [youtube] pGekxPPi7g4: Video unavailable. This video is no longer available because the YouTube account associate
+VBWqrB5UOFY	ERROR: [youtube] VBWqrB5UOFY: This video is unavailable
+zwZ_4gOeD0k	ERROR: [youtube] zwZ_4gOeD0k: Video unavailable. This video is no longer available because the YouTube account associate
+yr4OWor4KHg	ERROR: [youtube] yr4OWor4KHg: Video unavailable. This video is no longer available because the YouTube account associate
+m-hPSptr_UY	ERROR: [youtube] m-hPSptr_UY: Private video. If the owner of this video has granted you access, please sign in. Use --co
+vvZA3o2Jrj8	ERROR: [youtube] vvZA3o2Jrj8: Private video. If the owner of this video has granted you access, please sign in. Use --co

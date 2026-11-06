@@ -1,0 +1,162 @@
+{
+ "video_id": "MHYv1Xn_AYk",
+ "url": "https://www.youtube.com/watch?v=MHYv1Xn_AYk",
+ "year": 2017,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "NICASTREET",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2017,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "NICASTREET",
+   "challenge": "02 - CONSTRUIR UN PROYECTO DE CALLE INTELIGENTE"
+  }
+ ],
+ "fetched_at": "2026-11-06T18:56:42+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Año 2017, 8 de cada 10 personas poseen un teléfono inteligente, aprovechando esta estadística a través de esta tecnología podemos crear un entorno más seguro. Y aunque ya existen aplicaciones que faciliten el tráfico y la ubicación por GPS, todas esas trabajan de manera aislada y olvidan cierta información, la cual incluye monitoreo en tiempo real del transporte público. Esta te informa el tiempo que resta en llegar el autobús que necesitas. Atención a tragedias, informa o pide ayuda en caso de accidentes de tránsito, incendios o conflictos armados. Optimiza la recolección de residuos, ya que la AAP también anuncia la hora en la cual pasará el camión recolector de basura. Turismo. Las ciudades actualmente están llenas de restaurantes y hoteles, los cuales se pueden visitar durante su estadía en las mismas. Todas estas sugerencias a través de una sola AAP. Puedes compartir tu ubicación con otros usuarios que tengas aprobados, para que sepan en todo momento donde te encuentras. Además puedes encontrar la ubicación de todos los basureros para que no tengas que encierrar la basura en lugares equivocados. Encuentra códigos QR en lugares gubernamentales y turísticos, escanelos para obtener información sobre el lugar, desde curiosidades, historia, servicios que te ofrece y mucho más. Pies, marca tu destino y sigue las instrucciones para llegar seguro y sin complicaciones. Infórmate del tráfico en cualquier momento para no entrar en embotellamientos. Street. Safe. Smart. Street. Descarga la ya desde tu navegador favorito.",
+ "segments": [
+  {
+   "start": 0.37,
+   "end": 7.73,
+   "text": "Año 2017, 8 de cada 10 personas poseen un teléfono inteligente, aprovechando esta estadística"
+  },
+  {
+   "start": 7.73,
+   "end": 11.25,
+   "text": "a través de esta tecnología podemos crear un entorno más seguro."
+  },
+  {
+   "start": 11.25,
+   "end": 15.33,
+   "text": "Y aunque ya existen aplicaciones que faciliten el tráfico y la ubicación por GPS, todas"
+  },
+  {
+   "start": 15.33,
+   "end": 26.84,
+   "text": "esas trabajan de manera aislada y olvidan cierta información, la cual incluye monitoreo"
+  },
+  {
+   "start": 26.84,
+   "end": 29.28,
+   "text": "en tiempo real del transporte público."
+  },
+  {
+   "start": 29.28,
+   "end": 49.94,
+   "text": "Esta te informa el tiempo que resta en llegar el autobús que necesitas."
+  },
+  {
+   "start": 49.94,
+   "end": 55.54,
+   "text": "Atención a tragedias, informa o pide ayuda en caso de accidentes de tránsito, incendios"
+  },
+  {
+   "start": 55.54,
+   "end": 65.08,
+   "text": "o conflictos armados."
+  },
+  {
+   "start": 65.08,
+   "end": 69.16,
+   "text": "Optimiza la recolección de residuos, ya que la AAP también anuncia la hora en la cual"
+  },
+  {
+   "start": 69.16,
+   "end": 71.36,
+   "text": "pasará el camión recolector de basura."
+  },
+  {
+   "start": 71.36,
+   "end": 72.36,
+   "text": "Turismo."
+  },
+  {
+   "start": 72.36,
+   "end": 76.52,
+   "text": "Las ciudades actualmente están llenas de restaurantes y hoteles, los cuales se pueden"
+  },
+  {
+   "start": 76.52,
+   "end": 78.8,
+   "text": "visitar durante su estadía en las mismas."
+  },
+  {
+   "start": 78.8,
+   "end": 82.68,
+   "text": "Todas estas sugerencias a través de una sola AAP."
+  },
+  {
+   "start": 82.68,
+   "end": 88.0,
+   "text": "Puedes compartir tu ubicación con otros usuarios que tengas aprobados, para que sepan en todo"
+  },
+  {
+   "start": 88.0,
+   "end": 90.08,
+   "text": "momento donde te encuentras."
+  },
+  {
+   "start": 90.08,
+   "end": 94.76,
+   "text": "Además puedes encontrar la ubicación de todos los basureros para que no tengas que encierrar"
+  },
+  {
+   "start": 94.76,
+   "end": 97.2,
+   "text": "la basura en lugares equivocados."
+  },
+  {
+   "start": 97.2,
+   "end": 103.44,
+   "text": "Encuentra códigos QR en lugares gubernamentales y turísticos, escanelos para obtener información"
+  },
+  {
+   "start": 103.44,
+   "end": 108.64,
+   "text": "sobre el lugar, desde curiosidades, historia, servicios que te ofrece y mucho más."
+  },
+  {
+   "start": 108.64,
+   "end": 113.88,
+   "text": "Pies, marca tu destino y sigue las instrucciones para llegar seguro y sin complicaciones."
+  },
+  {
+   "start": 113.88,
+   "end": 117.92,
+   "text": "Infórmate del tráfico en cualquier momento para no entrar en embotellamientos."
+  },
+  {
+   "start": 117.92,
+   "end": 119.92,
+   "text": "Street."
+  },
+  {
+   "start": 119.92,
+   "end": 120.92,
+   "text": "Safe."
+  },
+  {
+   "start": 120.92,
+   "end": 121.92,
+   "text": "Smart."
+  },
+  {
+   "start": 121.92,
+   "end": 122.92,
+   "text": "Street."
+  },
+  {
+   "start": 122.92,
+   "end": 125.04,
+   "text": "Descarga la ya desde tu navegador favorito."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 126.2
+}

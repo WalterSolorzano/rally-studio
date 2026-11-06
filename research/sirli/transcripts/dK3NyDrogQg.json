@@ -1,0 +1,97 @@
+{
+ "video_id": "dK3NyDrogQg",
+ "url": "https://youtu.be/dK3NyDrogQg",
+ "year": 2020,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "MIRADORES DEL FUTURO",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2020,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "MIRADORES DEL FUTURO",
+   "challenge": "05 - ¿AYUDARÍA UN SISTEMA O DISPOSITIVO HOGAREÑO A EVITAR QUE EL ACEITE DE FRITURA USADO TERMINE EN LA RED PÚBLICA?"
+  }
+ ],
+ "fetched_at": "2026-11-06T18:49:38+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Esa en las casas donde se genera la mayor cantidad de residuos de aceites vegetales, muy por encima de la cantidad producida por los establecimientos del sector terciario. Mil litros de agua pueden ser contaminados por un microlitro de aceite. Se creó un sistema que separe el aceite del agua y en ese proceso crear otro material reutilizable del aceite y otro proceso de saneamiento del agua. El sistema tendrá una medida de 1 metro de altura y 0.5 metros de ancho. La cámara de retención de materiales primarios en esta cámara se estará implementando el sistema de filtración donde estarán ubicados tres filtros que se encargarán de extraer el aceite con su movilidad. Para la implementación de dicho sistema de separación de aceites del agua, utilizamos los materiales como una caja principal, sistema de cilindros y tubos PVC de 3 pulgadas. La composición de estos filtros tendrá una medida de 0.48 metros de largo y esa base de material primario que es el coco. Habrá una gaveta extraíble donde al acumularse todo el material grueso se podrá extraer con facilidad al final de la cámara.",
+ "segments": [
+  {
+   "start": 8.08,
+   "end": 15.08,
+   "text": "Esa en las casas donde se genera la mayor cantidad de residuos de aceites vegetales,"
+  },
+  {
+   "start": 15.08,
+   "end": 23.36,
+   "text": "muy por encima de la cantidad producida por los establecimientos del sector terciario."
+  },
+  {
+   "start": 23.36,
+   "end": 29.36,
+   "text": "Mil litros de agua pueden ser contaminados por un microlitro de aceite."
+  },
+  {
+   "start": 29.36,
+   "end": 37.36,
+   "text": "Se creó un sistema que separe el aceite del agua y en ese proceso crear otro material reutilizable del aceite"
+  },
+  {
+   "start": 37.36,
+   "end": 40.36,
+   "text": "y otro proceso de saneamiento del agua."
+  },
+  {
+   "start": 40.36,
+   "end": 51.05,
+   "text": "El sistema tendrá una medida de 1 metro de altura y 0.5 metros de ancho."
+  },
+  {
+   "start": 51.05,
+   "end": 60.05,
+   "text": "La cámara de retención de materiales primarios en esta cámara se estará implementando el sistema de filtración"
+  },
+  {
+   "start": 60.05,
+   "end": 67.05,
+   "text": "donde estarán ubicados tres filtros que se encargarán de extraer el aceite con su movilidad."
+  },
+  {
+   "start": 67.05,
+   "end": 74.52,
+   "text": "Para la implementación de dicho sistema de separación de aceites del agua,"
+  },
+  {
+   "start": 74.52,
+   "end": 86.06,
+   "text": "utilizamos los materiales como una caja principal, sistema de cilindros y tubos PVC de 3 pulgadas."
+  },
+  {
+   "start": 86.06,
+   "end": 93.06,
+   "text": "La composición de estos filtros tendrá una medida de 0.48 metros de largo"
+  },
+  {
+   "start": 93.06,
+   "end": 97.06,
+   "text": "y esa base de material primario que es el coco."
+  },
+  {
+   "start": 97.06,
+   "end": 103.06,
+   "text": "Habrá una gaveta extraíble donde al acumularse todo el material grueso"
+  },
+  {
+   "start": 103.06,
+   "end": 108.06,
+   "text": "se podrá extraer con facilidad al final de la cámara."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 119.7
+}

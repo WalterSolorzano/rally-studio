@@ -1,0 +1,67 @@
+{
+ "video_id": "EToPpiuAvF4",
+ "url": "https://youtu.be/EToPpiuAvF4",
+ "year": 2017,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "LOS ESTIGIA",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2017,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "LOS ESTIGIA",
+   "challenge": "07 - REUTILIZACIÓN DE MATERIALES PLÁSTICOS TERMOESTABLES"
+  }
+ ],
+ "fetched_at": "2026-11-06T18:56:35+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "Los materiales termosables los encontramos en cosas tan sencillas como el mango de un sarten, material de computadora, el control de un televisor, entre otros. El problema radica en que una vez que este material se rompe, no puede volver a cumplir con su función original, debido a que son polímeros infusibles. Por ello se propone la iniciativa NOVA PLAS, que se enfoca en crear una alternativa de reutilización de este material. Consiste en la reutilización de productos elaborados a base de material termoestables con diseños exclusivos, originales y creativos, siendo amigables con el medio ambiente. Para lograr la reutilización de este material, primeramente se debe recolectar y triturar, para convertirlo en pequeño fragmento que posteriormente se mezcla con la resina Xbox, obteniendo así una nueva materia prima. Este producto es amigable con el medio ambiente, debido a que reduce la contaminación por los plásticos termoestables, genera una alternativa ecológica para materiales de construcción. Este producto va orientado al área de construcción de infraestructura, porque brinda los beneficios de durabilidad. Es ligero, práctico y con mayor versatilidad, que otros más ideales plásticos utilizados en este ámbito, y presentando un menor costo para estas empresas.",
+ "segments": [
+  {
+   "start": 7.92,
+   "end": 18.92,
+   "text": "Los materiales termosables los encontramos en cosas tan sencillas como el mango de un sarten, material de computadora, el control de un televisor, entre otros."
+  },
+  {
+   "start": 18.92,
+   "end": 28.92,
+   "text": "El problema radica en que una vez que este material se rompe, no puede volver a cumplir con su función original, debido a que son polímeros infusibles."
+  },
+  {
+   "start": 28.92,
+   "end": 40.64,
+   "text": "Por ello se propone la iniciativa NOVA PLAS, que se enfoca en crear una alternativa de reutilización de este material."
+  },
+  {
+   "start": 40.64,
+   "end": 52.64,
+   "text": "Consiste en la reutilización de productos elaborados a base de material termoestables con diseños exclusivos, originales y creativos, siendo amigables con el medio ambiente."
+  },
+  {
+   "start": 52.64,
+   "end": 72.77,
+   "text": "Para lograr la reutilización de este material, primeramente se debe recolectar y triturar, para convertirlo en pequeño fragmento que posteriormente se mezcla con la resina Xbox, obteniendo así una nueva materia prima."
+  },
+  {
+   "start": 72.77,
+   "end": 89.25,
+   "text": "Este producto es amigable con el medio ambiente, debido a que reduce la contaminación por los plásticos termoestables, genera una alternativa ecológica para materiales de construcción."
+  },
+  {
+   "start": 89.25,
+   "end": 99.33,
+   "text": "Este producto va orientado al área de construcción de infraestructura, porque brinda los beneficios de durabilidad."
+  },
+  {
+   "start": 99.33,
+   "end": 110.33,
+   "text": "Es ligero, práctico y con mayor versatilidad, que otros más ideales plásticos utilizados en este ámbito, y presentando un menor costo para estas empresas."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 135.5
+}

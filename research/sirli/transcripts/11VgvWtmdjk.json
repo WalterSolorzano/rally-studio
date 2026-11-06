@@ -1,0 +1,142 @@
+{
+ "video_id": "11VgvWtmdjk",
+ "url": "https://youtu.be/11VgvWtmdjk",
+ "year": 2017,
+ "collection": "sede",
+ "country": "NICARAGUA",
+ "team": "DECAPECK",
+ "place_label": "PRIMER LUGAR",
+ "priority": 2,
+ "awards": [
+  {
+   "year": 2017,
+   "collection": "sede",
+   "place_label": "PRIMER LUGAR",
+   "team": "DECAPECK",
+   "challenge": "04 - GENERACIÓN DE ENERGÍA ALTERNA A PARTIR DE ACTIVIDADES COTIDIANAS"
+  }
+ ],
+ "fetched_at": "2026-11-06T18:54:08+00:00",
+ "caption_source": "whisper-small-local",
+ "language": "es",
+ "text": "El grupo de Capec está conformado por Eugenio Sacasa, tamboramente Roberto Hernández, Alexa García, Katherine Ortega, Derlin Pichardo y Jamie Ruiz. Hola, mi nombre es Eugenio Sacasa, representante del grupo de Capec. El reto que decidimos enfrentar es la generación de energía alterna a través de la vida cotidiana. La problemática que deseamos resolver es el mal uso de las fuentes energéticas de los equipos mecánicos por medio de EcoParc. Ahora, ¿crees que puedes transformar energía a través de juegos de niños? ¿Será posible? ¿Cómo? ¿De Capec te lo demostrarán? Como todos sabemos, los niños en los parques crean energía a través del movimiento por los juegos mecánicos que están en dicho lugar. Esta energía no se reutiliza siendo valiosa. Por esta razón decidimos innovar un parque modelo en el cual sus elementos de recreación puedan captar la energía mecánica producida por las personas. Todos esos elementos de recreación contendrán una manívela la cual tiene como función transformar la energía mecánica como energía potencial. Nuestro parque está conformado por una manzana la cual se divide entre secciones, recreación infantil, llena artesanal, apto para toda edad, recreación inclusiva, donde también las personas con capacidad diferente pueden disfrutar de EcoParc. El modelo EcoParc está enfocado en la parte del desarrollo ambiental. Como pueden ver, círculos y las partes verde son árboles y césped. Los puntos azules son los equipos didácticos que generan la energía a través de la manívela, la cual conduce la energía potencial por los cables negros para llegar y generar un sistema de respaldo llamado también batería de almacenamiento. Luego, con una caja de distribución y un cableado que está diferenciado por el color verde tierno, en el cual se transmitirá la energía eléctrica renovable que abastecerá los faros de luz representado con los puntos amarillos y los toma corriente los cuales serán ocupados para recargar celulares y computadoras. Teniendo como resultado que el parque sea autosostenible energéticamente.",
+ "segments": [
+  {
+   "start": 0.34,
+   "end": 6.88,
+   "text": "El grupo de Capec está conformado por Eugenio Sacasa,"
+  },
+  {
+   "start": 6.88,
+   "end": 10.0,
+   "text": "tamboramente Roberto Hernández, Alexa García,"
+  },
+  {
+   "start": 10.0,
+   "end": 13.2,
+   "text": "Katherine Ortega, Derlin Pichardo y Jamie Ruiz."
+  },
+  {
+   "start": 13.2,
+   "end": 18.4,
+   "text": "Hola, mi nombre es Eugenio Sacasa, representante del grupo de Capec."
+  },
+  {
+   "start": 18.4,
+   "end": 24.6,
+   "text": "El reto que decidimos enfrentar es la generación de energía alterna a través de la vida cotidiana."
+  },
+  {
+   "start": 24.6,
+   "end": 30.8,
+   "text": "La problemática que deseamos resolver es el mal uso de las fuentes energéticas de los equipos mecánicos"
+  },
+  {
+   "start": 30.8,
+   "end": 32.8,
+   "text": "por medio de EcoParc."
+  },
+  {
+   "start": 32.8,
+   "end": 37.8,
+   "text": "Ahora, ¿crees que puedes transformar energía a través de juegos de niños?"
+  },
+  {
+   "start": 37.8,
+   "end": 41.8,
+   "text": "¿Será posible? ¿Cómo? ¿De Capec te lo demostrarán?"
+  },
+  {
+   "start": 41.8,
+   "end": 50.59,
+   "text": "Como todos sabemos, los niños en los parques crean energía a través del movimiento por los juegos mecánicos que están en dicho lugar."
+  },
+  {
+   "start": 50.59,
+   "end": 54.59,
+   "text": "Esta energía no se reutiliza siendo valiosa."
+  },
+  {
+   "start": 54.59,
+   "end": 66.59,
+   "text": "Por esta razón decidimos innovar un parque modelo en el cual sus elementos de recreación puedan captar la energía mecánica producida por las personas."
+  },
+  {
+   "start": 66.59,
+   "end": 77.59,
+   "text": "Todos esos elementos de recreación contendrán una manívela la cual tiene como función transformar la energía mecánica como energía potencial."
+  },
+  {
+   "start": 77.59,
+   "end": 87.59,
+   "text": "Nuestro parque está conformado por una manzana la cual se divide entre secciones, recreación infantil, llena artesanal, apto para toda edad, recreación inclusiva,"
+  },
+  {
+   "start": 87.59,
+   "end": 93.59,
+   "text": "donde también las personas con capacidad diferente pueden disfrutar de EcoParc."
+  },
+  {
+   "start": 93.59,
+   "end": 99.59,
+   "text": "El modelo EcoParc está enfocado en la parte del desarrollo ambiental."
+  },
+  {
+   "start": 99.59,
+   "end": 105.59,
+   "text": "Como pueden ver, círculos y las partes verde son árboles y césped."
+  },
+  {
+   "start": 105.59,
+   "end": 112.59,
+   "text": "Los puntos azules son los equipos didácticos que generan la energía a través de la manívela,"
+  },
+  {
+   "start": 112.59,
+   "end": 123.59,
+   "text": "la cual conduce la energía potencial por los cables negros para llegar y generar un sistema de respaldo llamado también batería de almacenamiento."
+  },
+  {
+   "start": 124.59,
+   "end": 129.59,
+   "text": "Luego, con una caja de distribución y un cableado que está diferenciado por el color verde tierno,"
+  },
+  {
+   "start": 129.59,
+   "end": 138.59,
+   "text": "en el cual se transmitirá la energía eléctrica renovable que abastecerá los faros de luz representado con los puntos amarillos"
+  },
+  {
+   "start": 138.59,
+   "end": 145.59,
+   "text": "y los toma corriente los cuales serán ocupados para recargar celulares y computadoras."
+  },
+  {
+   "start": 145.59,
+   "end": 151.59,
+   "text": "Teniendo como resultado que el parque sea autosostenible energéticamente."
+  }
+ ],
+ "has_info": false,
+ "duration_s": 157.4
+}
