@@ -12,6 +12,27 @@
     {"reto": "R06", "opcion": "Trineo Filtrante", "motivo": "Alquiler por día; no hay producto que se venda."},
     {"reto": "R07", "opcion": "Garrafa con Depósito", "motivo": "Costo imposible (USD 4 por garrafa + depósito 200 L) y comisión por litro; precedente."},
     {"reto": "R07", "opcion": "Aceite para Cadena", "motivo": "Aceite de cocina usado como lubricante: acidez/polimerización; estado del arte."},
-    {"reto": "R09", "opcion": "Tablero de Manzana", "motivo": "Jefe sin sueldo; precedente; pagador."}
+    {"reto": "R09", "opcion": "Tablero de Manzana", "motivo": "Jefe sin sueldo; precedente; pagador."},
+
+    {"reto": "R02", "opcion": "celular en desuso como insumo (ambas)", "motivo": "Premisa inválida: nadie dona un celular que vale C$2500+ (se vendería); configurar batería/hardware es inviable; asumir sensor de humedad sin fuente = inventar."},
+    {"reto": "R02", "opcion": "opciones gemelas", "motivo": "Opción 1 y 2 con el mismo objeto (celular) y mecanismo: una sola idea disfrazada de dos."},
+    {"reto": "R03", "opcion": "name-dropping en que_es", "motivo": "«Caso Ignis Code» dentro de la idea sin explicar; el caso ajeno solo va en analogías con año+equipo."},
+    {"reto": "R03", "opcion": "señal que no resuelve", "motivo": "«Contar cosas» no soluciona nada; la señal debe decir cómo la opción resuelve/agiliza."},
+    {"reto": "R04", "opcion": "método Tetra Pak 2025 en la idea", "motivo": "Nombre de ganador/marca sin explicar y idea ajena reutilizada; desarrollar idea propia e independiente, similitud solo al final en analogías."},
+    {"reto": "R04", "opcion": "opción 2 no parece producto", "motivo": "No se puede mostrar ni tocar: si no es producto/servicio accionable, no entra."},
+    {"reto": "R09", "opcion": "tablero de prioridades", "motivo": "Lo que la gente ya hace; no agiliza nada — reto pide algo fuera de lo estándar."},
+    {"reto": "R09", "opcion": "mapear la zona", "motivo": "Obvio: eso ya se debe hacer; no es la solución pedida."},
+    {"reto": "todos", "opcion": "que_es inmenso", "motivo": "Párrafos de 162-200 palabras que no se entienden de una lectura y no venden; regla nueva: 80-150, primera frase = qué es físico."},
+    {"reto": "todos", "opcion": "mojibake", "motivo": "UTF-8 doble-codificado visible («ProtecciÃ³n», «agrÃ­») en challenges/fichas/reportes; reparado 2026-01-05 + test anti-regresión."}
+  ],
+  "patrones_nuevos": [
+    {"id": "celular_desecho_como_insumo", "motivo": "crítica usuario: teléfonos no se donan (≥C$2500), hardware inviable, sensores asumidos sin fuente"},
+    {"id": "idea_ajena_reutilizada_sin_desarrollo", "motivo": "crítica usuario: usar «Tetra Pak 2025» como método propio sin explicar; desarrollar idea propia primero"},
+    {"id": "name_dropping_sin_explicar", "motivo": "crítica usuario: ganador/caso en que_es/claim sin año+equipo+qué hizo; solo en analogías"},
+    {"id": "senal_que_no_resuelve", "motivo": "crítica usuario: contar/mapear lo obvio no resuelve el reto"},
+    {"id": "que_es_inmenso", "motivo": "crítica usuario: párrafo inmenso, no vende, no se entiende de una"},
+    {"id": "opciones_gemelas", "motivo": "crítica usuario: opción 1 y 2 muy parecidas"},
+    {"id": "no_producto", "motivo": "crítica usuario: «no entiendo, no parece un producto»"},
+    {"id": "barra_calidad_idea", "motivo": "crítica usuario: falta imaginación — idea nueva, barata y masiva que usa algo que todos tienen (forma de ejemplo, no hardcodear)"}
   ]
 }
