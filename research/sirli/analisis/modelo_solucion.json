@@ -1,0 +1,154 @@
+{
+  "n_total": 949,
+  "n_con_texto": 949,
+  "tipo_distribucion": {
+    "dispositivo_fisico": 368,
+    "material_producto": 258,
+    "sistema_digital": 127,
+    "proceso_servicio": 73,
+    "infraestructura": 69,
+    "otro_no_clasificado": 54
+  },
+  "por_tipo_y_coleccion": {
+    "sede": {
+      "dispositivo_fisico": {
+        "n": 313,
+        "gana": 210
+      },
+      "infraestructura": {
+        "n": 63,
+        "gana": 33
+      },
+      "material_producto": {
+        "n": 218,
+        "gana": 117
+      },
+      "otro_no_clasificado": {
+        "n": 50,
+        "gana": 31
+      },
+      "proceso_servicio": {
+        "n": 67,
+        "gana": 38
+      },
+      "sistema_digital": {
+        "n": 114,
+        "gana": 72
+      }
+    },
+    "nacional": {
+      "dispositivo_fisico": {
+        "n": 36,
+        "gana": 16
+      },
+      "infraestructura": {
+        "n": 6,
+        "gana": 3
+      },
+      "material_producto": {
+        "n": 24,
+        "gana": 11
+      },
+      "otro_no_clasificado": {
+        "n": 3,
+        "gana": 1
+      },
+      "proceso_servicio": {
+        "n": 2,
+        "gana": 1
+      },
+      "sistema_digital": {
+        "n": 11,
+        "gana": 4
+      }
+    },
+    "internacional": {
+      "dispositivo_fisico": {
+        "n": 19,
+        "gana": 5
+      },
+      "material_producto": {
+        "n": 16,
+        "gana": 4
+      },
+      "otro_no_clasificado": {
+        "n": 1,
+        "gana": 0
+      },
+      "proceso_servicio": {
+        "n": 4,
+        "gana": 2
+      },
+      "sistema_digital": {
+        "n": 2,
+        "gana": 1
+      }
+    }
+  },
+  "nacional_nic_vs_latam": {
+    "nacional_nic": {
+      "dispositivo_fisico": {
+        "n": 224,
+        "gana": 121,
+        "won_rate": 0.5401785714285714
+      },
+      "infraestructura": {
+        "n": 48,
+        "gana": 18,
+        "won_rate": 0.375
+      },
+      "material_producto": {
+        "n": 172,
+        "gana": 71,
+        "won_rate": 0.4127906976744186
+      },
+      "otro_no_clasificado": {
+        "n": 39,
+        "gana": 20,
+        "won_rate": 0.5128205128205128
+      },
+      "proceso_servicio": {
+        "n": 53,
+        "gana": 24,
+        "won_rate": 0.4528301886792453
+      },
+      "sistema_digital": {
+        "n": 84,
+        "gana": 42,
+        "won_rate": 0.5
+      }
+    },
+    "latam": {
+      "dispositivo_fisico": {
+        "n": 55,
+        "gana": 21,
+        "won_rate": 0.38181818181818183
+      },
+      "infraestructura": {
+        "n": 6,
+        "gana": 3,
+        "won_rate": 0.5
+      },
+      "material_producto": {
+        "n": 40,
+        "gana": 15,
+        "won_rate": 0.375
+      },
+      "otro_no_clasificado": {
+        "n": 4,
+        "gana": 1,
+        "won_rate": 0.25
+      },
+      "proceso_servicio": {
+        "n": 6,
+        "gana": 3,
+        "won_rate": 0.5
+      },
+      "sistema_digital": {
+        "n": 13,
+        "gana": 5,
+        "won_rate": 0.38461538461538464
+      }
+    }
+  }
+}
