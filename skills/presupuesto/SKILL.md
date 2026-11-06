@@ -3,7 +3,7 @@ name: presupuesto
 description: Arma el presupuesto del prototipo con filas justificadas, precios creíbles y enlace de respaldo, en la moneda del certamen activo. Úsala cuando haya que cotizar componentes, servicios o el piloto completo.
 ---
 
-# Presupuesto del prototipo
+# Don Cangrejo (El Palmado) — Presupuesto del prototipo
 
 ## Cuándo usarla
 

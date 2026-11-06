@@ -3,7 +3,7 @@ name: proponer-retos
 description: Genera soluciones aplicables para los retos que da el usuario, con precedentes ganadores, razonamiento problema-causa-insight-solución y dossier PDF. Úsala cuando el equipo ya tiene retos del comité y necesita propuestas sustentadas.
 ---
 
-# Soluciones para retos
+# La Ruleta Rusa — Soluciones para retos
 
 ## 1. Misión
 

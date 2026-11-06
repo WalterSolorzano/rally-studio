@@ -3,7 +3,7 @@ name: ingestar-investigacion
 description: Procesa un PDF, DOCX o MD que trae el usuario desde fuera (por ejemplo una investigación hecha en z.ai), extrae el contenido, lo contrasta, lo alinea a la rúbrica y lo sirve como propuesta. Úsala cuando el usuario adjunte un documento o diga "te traje la investigación".
 ---
 
-# Ingestar investigación externa
+# La Chismosa del Barrio — Ingestar investigación externa
 
 ## Cuándo usarla
 

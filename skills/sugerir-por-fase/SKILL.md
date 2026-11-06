@@ -3,7 +3,7 @@ name: sugerir-por-fase
 description: Da sugerencias cortas y accionables para una etapa concreta del flujo (certamen, equipo, retos, solución, impacto, despacho, pautado, presupuesto, recursos, canvas, guion, prototipo, checklist). Úsala cuando el usuario pide "qué me falta aquí" o "cómo mejoro esto".
 ---
 
-# Sugerir por fase
+# Café Presto con Ansiedad — Sugerir por fase
 
 ## Cuándo usarla
 

@@ -3,7 +3,7 @@ name: contexto-rally
 description: Carga el contexto del proyecto antes de trabajar. Lee brief.json, el índice del corpus y el estado vivo de la ventana, y decide qué documentos abrir. Úsala al empezar una sesión, antes de producir contenido o cuando falte un dato.
 ---
 
-# Contexto del rally
+# San Google de los Ganadores — Contexto del rally
 
 ## Cuándo usarla
 

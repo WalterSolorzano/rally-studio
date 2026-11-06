@@ -3,7 +3,7 @@ name: guiar-usuario
 description: Lleva al usuario por las 13 etapas del workbench, detecta qué falta en cada una y lo pregunta de a una. Úsala cuando el usuario no sepa por dónde empezar, cuando pida "qué sigue" o cuando una pestaña esté incompleta.
 ---
 
-# Guiar al usuario
+# Tu Última Neurona — Guiar al usuario
 
 ## Cuándo usarla
 

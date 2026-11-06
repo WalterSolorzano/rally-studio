@@ -3,7 +3,7 @@ name: orquestador
 description: Orquesta agentes especialistas (investigador, guionista, modeler 3D, pautador, presupuestador, grafista, web, voz, editor y auditor) que trabajan a la vez sin chocarse, con contratos por archivo y guardia de recursos. Úsala cuando el humano pida despachar al equipo o que varios trabajen en paralelo.
 ---
 
-# Orquestador: director + especialistas
+# El Admin del Grupo — Orquestador: director + especialistas
 
 Reglas completas y decisiones D1–D7 en
 `docs/superpowers/specs/2026-10-21-orquestacion-especialistas-design.md`.

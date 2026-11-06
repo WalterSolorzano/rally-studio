@@ -3,7 +3,7 @@ name: sharktank
 description: Úsala cuando el equipo tenga una idea de proyecto (reto + solución) y pida ver sus fallas, riesgos o puntos débiles antes de avanzar; también cuando pregunte "¿esto aguanta?", "¿qué puede salir mal?", "¿algo así ya existe?" o "¿ya está patentado?".
 ---
 
-# Sharktank — salud de la idea
+# El Destructor de Sueños — Shark Tank: salud de la idea
 
 Detector de fallas de la idea, **no juez**. No simula jurado, no da puntaje, no obliga a
 criticar: si algo está sólido, se dice sólido. Fallas de la idea inicial, no exigencia de

@@ -3,7 +3,7 @@ name: servir-a-ventana
 description: Entrega una propuesta a la interfaz para que el usuario la acepte o la descarte. Arma el sobre, elige pestaña y ranura correctas y ejecuta servir_propuesta.py. Úsala siempre que produzcas contenido que deba aparecer en la ventana.
 ---
 
-# Servir a la ventana
+# PedidosYa — Servir a la ventana
 
 ## Cuándo usarla
 

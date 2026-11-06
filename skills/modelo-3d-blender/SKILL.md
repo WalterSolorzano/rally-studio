@@ -3,7 +3,7 @@ name: modelo-3d-blender
 description: Genera modelos o renders 3D con Blender para el video, con ficha técnica previa justificada por la rúbrica y sin improvisación. Úsala solo para piezas 3D; nunca para texto, diagramas ni diseño plano.
 ---
 
-# Modelo 3D con Blender
+# El Quemador de Tostadas — Modelo 3D con Blender
 
 ## Cuándo usarla
 

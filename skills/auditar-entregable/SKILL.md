@@ -3,7 +3,7 @@ name: auditar-entregable
 description: Revisa un entregable contra la rúbrica del certamen, las bases del evento y el propósito del grupo, y devuelve hallazgos ordenados por gravedad sin reescribir nada. Úsala antes de dar algo por terminado o cuando el usuario pida una revisión.
 ---
 
-# Auditar un entregable
+# La Tóxica que Revisa el Chat — Auditar un entregable
 
 ## Cuándo usarla
 

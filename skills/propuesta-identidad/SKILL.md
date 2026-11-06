@@ -3,7 +3,7 @@ name: propuesta-identidad
 description: Convierte el nombre, logo o una idea del equipo en propuestas de identidad visual (paleta, tipografías, tokens, dirección de logotipo). Úsala cuando el usuario no tiene marca, no le gusta la que tiene o pide que la interfaz se vea mejor.
 ---
 
-# Propuesta de identidad visual
+# El Diseñador de Carretera Masaya — Propuesta de identidad visual
 
 ## Cuándo usarla
 

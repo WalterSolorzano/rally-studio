@@ -3,7 +3,7 @@ name: publicar-sitio
 description: Construye y publica la web demo del proyecto en GitHub Pages o Netlify. Úsala cuando el usuario quiere que su prototipo tenga una URL pública para el video o la entrega.
 ---
 
-# Publicar sitio
+# El del Ciber del Barrio — Publicar sitio
 
 ## Cuándo usarla
 

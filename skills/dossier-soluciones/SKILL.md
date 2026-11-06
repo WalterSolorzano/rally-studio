@@ -3,7 +3,7 @@ name: dossier-soluciones
 description: Convierte los retos del comité o del usuario en soluciones sustentadas y un dossier de 3 páginas por reto (PDF, Word, Excel), con precedentes ganadores y razonamiento problema-causa-insight-solución-métrica.
 ---
 
-# Dossier de soluciones
+# Labia Interna — Dossier de soluciones
 
 Este sistema **no crea retos**: los entrega el usuario o el comité. Sin retos no hay dossier.
 
