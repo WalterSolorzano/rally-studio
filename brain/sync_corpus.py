@@ -42,6 +42,7 @@ COPY = {
     "rubrica_oficial_latam.jpeg": "rubrica_oficial.jpeg",
     "knowledge/retos_razonamiento.json": "casos_ganadores.json",
     "knowledge/analisis_buenas_soluciones.md": "patrones_buenas_soluciones.md",
+    "knowledge/ERRATAS.md": "erratas.md",
 }
 
 # JSON -> Markdown legible (si van como .json, graphify los trata como codigo/AST).
@@ -50,6 +51,7 @@ JSON_DOCS = {
     "knowledge/winners_database.json": ("ganadores_db.md", "Casos ganadores por fase"),
     "research/challenges.json": ("retos.md", "Banco de retos"),
     "research/challenges_ranked.json": ("retos_ranked.md", "Retos priorizados"),
+    "knowledge/insignias.json": ("insignias.md", "Marcos y referencias externas verificadas"),
 }
 
 # DOCX -> Markdown (texto plano, sin formato). Mas determinista para extraer.

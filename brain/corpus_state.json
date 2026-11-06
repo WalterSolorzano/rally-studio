@@ -1,5 +1,5 @@
 {
-  "corpus_files": 23,
+  "corpus_files": 27,
   "project_file": null,
   "missing_sources": [],
   "files": [
@@ -14,6 +14,10 @@
     {
       "name": "claims_datos.md",
       "bytes": 23
+    },
+    {
+      "name": "erratas.md",
+      "bytes": 2866
     },
     {
       "name": "ganadores_analisis.md",
@@ -34,6 +38,10 @@
     {
       "name": "informe_investigacion.md",
       "bytes": 84784
+    },
+    {
+      "name": "insignias.md",
+      "bytes": 2448
     },
     {
       "name": "investigacion_pitch.md",
@@ -61,7 +69,7 @@
     },
     {
       "name": "retos_ranked.md",
-      "bytes": 21
+      "bytes": 3699
     },
     {
       "name": "retos_reporte.md",
