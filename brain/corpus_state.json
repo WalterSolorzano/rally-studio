@@ -1,11 +1,15 @@
 {
-  "corpus_files": 17,
+  "corpus_files": 22,
   "project_file": null,
   "missing_sources": [],
   "files": [
     {
       "name": "analisis_nicaragua.pdf",
       "bytes": 231056
+    },
+    {
+      "name": "casos_ganadores.json",
+      "bytes": 113150
     },
     {
       "name": "claims_datos.md",
@@ -29,11 +33,15 @@
     },
     {
       "name": "informe_investigacion.md",
-      "bytes": 84359
+      "bytes": 84784
     },
     {
       "name": "investigacion_pitch.md",
       "bytes": 25779
+    },
+    {
+      "name": "patrones_buenas_soluciones.md",
+      "bytes": 2823
     },
     {
       "name": "pautado_latam_ref.md",

@@ -64,6 +64,8 @@ Había cinco investigaciones en paralelo, de tres IA distintas, con cifras que n
 
 **Regla de oro que sale de esta consolidación:** un dato de T2 o T4 que no aparezca en T0/T1 **no se usa**. No se borra el archivo de origen, porque sirve para rastrear de dónde salió la confusión; se deja de tratar como verdad.
 
+**Decisión del 06/11/2026 (equipo):** los dos informes de IA se conservan **como están**, sin stub ni borrado. Motivo: son la fuente de la que `brain/sync_corpus.py` copia `investigacion_pitch.md` y `ganadores_latam.md`; reemplazarlos por punteros rompería el corpus. Su desactivación como verdad paralela ya está hecha en tres sitios: el banner de la cabecera, esta tabla y las descripciones de `knowledge/INDICE.md`.
+
 ### 0.3 Lo que el banco verificado cambió
 
 Cifras de T0 que reemplazan cualquier estimación anterior:

@@ -40,6 +40,8 @@ COPY = {
     "chatgptdeep-research-report.md": "investigacion_pitch.md",
     "Rally_Innovacion_Nicaragua_Analisis.pdf": "analisis_nicaragua.pdf",
     "rubrica_oficial_latam.jpeg": "rubrica_oficial.jpeg",
+    "knowledge/retos_razonamiento.json": "casos_ganadores.json",
+    "knowledge/analisis_buenas_soluciones.md": "patrones_buenas_soluciones.md",
 }
 
 # JSON -> Markdown legible (si van como .json, graphify los trata como codigo/AST).
