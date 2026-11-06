@@ -64,6 +64,74 @@ python -c "import pdfplumber,sys; pdf=pdfplumber.open(sys.argv[1]); t='\n'.join(
 - Si la extracción falla (PDF escaneado), dilo: ofrece OCR (`/api/ocr`) o pide una versión
   con texto.
 
+## Generación de prompts para llevar la investigación a otra IA
+
+Cuando el usuario quiera exportar el documento extraído a otra IA
+(OpenAI, Claude, Gemini, OpenCode, Antigravity…), genera el prompt con esta
+estructura:
+
+```
+Rol: analista de investigación externa para rallues de innovación.
+Contexto: Certamen <rally_type>, documento <nombre_archivo>, tipo <pdf|docx|md>.
+Entrada: `extraido.txt` (texto extraído en UTF-8), `research/claims.json`,
+  `.agents/rules/modos-rally.md`, `.agents/rules/rubricas-y-puntajes.md`.
+Tarea: Extraer contenido, contrastar con la rúbrica y alinearlo al certamen
+  activo para servir como propuesta.
+Restricciones:
+  - Extrae el texto sin IA; no dependas del modelo para leer el archivo.
+  - Toda cifra que se use debe existir en `research/claims.json` o venir con
+    fuente y año en el documento. Si no, márcala como estimación.
+  - Alinea al certamen activo (`brief.json` → `rally_type`).
+  - Si `rally_type` está vacío: no adivines — pregunta el certamen.
+  - Sin emojis, sin degradados estilo IA, sin glassmorphism.
+  - Idioma: español.
+Formato de salida: JSON con claves archivo, tipo, hechos ([]), opiniones ([]),
+  cifras_con_fuente ([]), estimaciones ([]), destino_pestana, destino_slot,
+  simulado.
+Idioma: español.
+```
+
+## Cómo sugerir un título o nombre de proyecto o producto
+
+Sigue los patrones reales del banco SIRLI (`research/sirli/winners.jsonl`):
+
+- **Inventado**: NEXORA, KINETIX
+- **Objeto**: AVOCADO, LUMBRE
+- **Compuesto**: NEXO-SOSTENIBLE
+- **Territorio + número**: ALTIPLANO 360
+- **Sufijo técnico**: BIOINNOVATECH
+- **Juego**: DESUCHO, ERROR 404
+
+Reglas:
+- Nunca repites el nombre del proyecto más de una vez por sección.
+- No hardcodees el nombre en scripts; léelo siempre de `brief.json`.
+
+## Cómo enseñar visualmente
+
+- Contraste garantizado: texto claro sobre fondo oscuro, o sombra de texto
+  desplazada.
+- Elementos gráficos se exportan como PNG 2048×2048 con fondo transparente.
+- Sin emojis como íconos en la web demo.
+
+## Cómo redactar guiones cuidando la pronunciación y el orden de palabras
+
+- Escribe para ser escuchado, no leído: oraciones cortas, sujeto-verbo-objeto,
+  evita subordinadas encajadas.
+- Acentos reales en español; acrónimos se deletrean si no son de uso común.
+- Cada cambio de idea necesita una pausa o transición explícita.
+- Máximo 240-270 palabras (≈130-140 WPM) para ≤ 120 s de audio.
+
+## Cómo crear modelos 3D (referencia)
+
+Ver `skills/modelo-3d-blender/SKILL.md` para el procedimiento completo de
+modelado 3D con Blender y generación de renders para el video.
+
+## Cómo sugerir elementos gráficos
+
+- Sin emojis como íconos en la web demo.
+- Sin cards genéricas, sin morado (#7c3aed o similar), sin fuentes fuera de
+  `brand/tokens.css`.
+
 ## Punteros
 
 - Estadísticas citables: `research/claims.json`

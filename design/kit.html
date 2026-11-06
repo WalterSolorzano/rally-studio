@@ -39,10 +39,14 @@
 <div class="scrim" id="scrim" hidden></div>
 
 <section>
+  <div class="view-switch" role="tablist" aria-label="Vista de identidad">
+    <button type="button" class="view-btn is-on" data-view="equipo" role="tab" aria-selected="true">Diseño del grupo</button>
+    <button type="button" class="view-btn" data-view="proyecto" role="tab" aria-selected="false">Diseño del proyecto</button>
+  </div>
   <div class="layout">
     <div class="preview-col">
       <div class="preview-frame">
-        <div class="kit-card" id="kitPreview">
+        <div class="kit-card view-equipo" id="kitPreview">
           <div class="kit-hdr">
             <div>
               <div class="name" id="kitName"></div>
@@ -52,7 +56,7 @@
           </div>
           <div class="kit-body">
             <div class="kit-col">
-            <div class="kit-section">
+            <div class="kit-section kit-section--team">
               <h4 style="color:var(--primary)">01 · Logo del equipo</h4>
               <div class="logo-variants">
                 <div class="logo-box" id="lv1" style="background:var(--primary);color:#fff"></div>
@@ -60,7 +64,7 @@
                 <div class="logo-box" id="lv3" style="background:var(--navy);color:#fff"></div>
               </div>
             </div>
-            <div class="kit-section">
+            <div class="kit-section kit-section--team">
               <h4 style="color:var(--primary)">02 · Tipografía del equipo</h4>
               <div class="fonts">
                 <div class="font-row"><span class="tag">H1</span><span class="sample h1" id="fH1">Título principal del proyecto</span></div>
@@ -70,67 +74,61 @@
                 <div class="font-row"><span class="tag">Mono</span><span class="sample mono" id="fMono">ETIQUETA · CÓDIGO · DATO</span></div>
               </div>
             </div>
-            <div class="kit-section">
+            <div class="kit-section kit-section--team">
               <h4 style="color:var(--primary)">03 · Paleta del equipo</h4>
               <div class="palette-row" id="kitPal"></div>
             </div>
-            <div class="kit-section">
+            <div class="kit-section kit-section--team">
               <h4 style="color:var(--primary)">04 · Datos del equipo</h4>
               <div class="team-grid" id="kitTeam"></div>
             </div>
             </div>
             <div class="kit-col">
-              <div class="kit-section kit-section--wide">
+              <div class="kit-section kit-section--wide kit-section--team">
               <h4 style="color:var(--primary)">05 · Bio del equipo</h4>
               <div class="bio" id="kitBio"></div>
             </div>
             <div class="kit-section kit-section--proj">
-              <div class="proj-head">
-                <div>
-                  <h4 style="color:var(--primary);margin-bottom:4px">06 · Proyecto · marca de la solución</h4>
-                  <p class="proj-lede">Segunda marca, independiente de la del equipo. Es la que va en el producto, el video, el canvas y la web.</p>
+              <div class="proj-card proj-card--id">
+                <h4 style="color:var(--proj-ac)">06 · Proyecto</h4>
+                <div id="kitProj" class="kit-proj-id">
+                  <div id="kitProjLogo" style="flex:0 0 auto;width:64px;height:64px;border-radius:12px;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:21px;overflow:hidden"></div>
+                  <div style="min-width:0">
+                    <div id="kitProjName" style="font-weight:800;line-height:1.05;color:var(--navy)">—</div>
+                    <div id="kitProjSlogan" style="font-size:13px;color:var(--navy);opacity:.66;margin-top:4px"></div>
+                    <div id="kitProjSector" style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--proj-ac);margin-top:6px"></div>
+                    <div id="kitProjStyle" style="display:none;margin-top:6px;font-size:10px;letter-spacing:.06em;border-radius:99px;padding:3px 8px"></div>
+                  </div>
                 </div>
-                <span class="proj-badge">Marca propia</span>
-              </div>
-              <div id="kitProj" class="kit-proj-id">
-                <div id="kitProjLogo" style="flex:0 0 auto;width:54px;height:54px;border-radius:10px;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;overflow:hidden"></div>
-                <div style="min-width:0">
-                  <div id="kitProjName" style="font-size:19px;font-weight:800;line-height:1.15;color:var(--navy)">—</div>
-                  <div id="kitProjSlogan" style="font-size:12px;color:var(--navy);opacity:.66;margin-top:2px"></div>
-                  <div id="kitProjSector" style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--primary);margin-top:5px"></div>
-                  <div id="kitProjStyle" style="display:none;margin-top:6px;font-size:10px;letter-spacing:.06em;border-radius:99px;padding:3px 8px"></div>
+                <div id="kitProjPurpose" style="display:grid;gap:9px">
+                  <div style="display:none"><span style="display:block;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--proj-ac)">Misión</span><p id="kitProjMission" style="margin:3px 0 0;font-size:12px;line-height:1.45;color:var(--navy)"></p></div>
+                  <div style="display:none"><span style="display:block;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--proj-ac)">Visión</span><p id="kitProjVision" style="margin:3px 0 0;font-size:12px;line-height:1.45;color:var(--navy)"></p></div>
+                  <div style="display:none"><span style="display:block;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--proj-ac)">Inspiración visual</span><p id="kitProjInspiration" style="margin:3px 0 0;font-size:12px;line-height:1.45;color:var(--navy);opacity:.8"></p></div>
                 </div>
+                <div id="kitProjExistingRow" style="display:none;font-size:10px;color:var(--navy);opacity:.8">Producto existente: <a id="kitProjExisting" target="_blank" rel="noopener" style="color:var(--proj-ac);word-break:break-all"></a></div>
               </div>
-              <div id="kitProjPurpose" style="margin-top:10px;display:grid;gap:7px">
-                <div style="display:none"><span style="display:block;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--primary)">Misión</span><p id="kitProjMission" style="margin:2px 0 0;font-size:11px;line-height:1.4;color:var(--navy)"></p></div>
-                <div style="display:none"><span style="display:block;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--primary)">Visión</span><p id="kitProjVision" style="margin:2px 0 0;font-size:11px;line-height:1.4;color:var(--navy)"></p></div>
-                <div style="display:none"><span style="display:block;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--primary)">Inspiración visual</span><p id="kitProjInspiration" style="margin:2px 0 0;font-size:11px;line-height:1.4;color:var(--navy);opacity:.8"></p></div>
+              <div class="proj-block proj-block--fonts proj-card proj-card--fonts">
+                <span class="proj-label">Tipografía</span>
+                <div id="kitProjType" class="fonts"></div>
+                <div id="kitProjFontWhy" style="font-size:10px;line-height:1.45;color:var(--rs-muted);margin-top:10px"></div>
               </div>
-              <div id="kitProjExistingRow" style="display:none;margin-top:8px;font-size:10px;color:var(--navy);opacity:.8">Producto existente: <a id="kitProjExisting" target="_blank" rel="noopener" style="color:var(--primary);word-break:break-all"></a></div>
-              <div class="proj-block proj-block--fonts">
-                <span class="proj-label">Tipografía · propuesta y razón</span>
-                <div id="kitProjFonts" style="font-size:10px;line-height:1.4;color:var(--navy);opacity:.85;margin:3px 0 4px"></div>
-                <div id="kitProjFontWhy" style="font-size:10px;line-height:1.45;color:var(--navy);opacity:.75;margin-bottom:8px"></div>
-                <div id="kitProjType" style="border-left:3px solid var(--primary);padding-left:11px"></div>
-              </div>
-              <div class="proj-block proj-block--pal">
-                <span class="proj-label">Paleta completa</span>
+              <div class="proj-block proj-block--pal proj-card proj-card--pal">
+                <span class="proj-label">Paleta</span>
                 <div id="kitProjPal" class="proj-pal"></div>
               </div>
-              <div class="proj-block proj-block--tex">
-                <span class="proj-label">Elementos gráficos · descargables</span>
+              <div class="proj-block proj-block--tex proj-card proj-card--tex">
+                <span class="proj-label">Elementos gráficos</span>
                 <div id="kitProjPatterns" class="proj-tex-grid"></div>
-                <p id="kitProjTextureNote" style="margin:6px 0 0;font-size:10px;line-height:1.4;color:var(--navy);opacity:.8"></p>
+                <p id="kitProjTextureNote" style="margin:8px 0 0;font-size:10px;line-height:1.4;color:var(--rs-muted)"></p>
                 <div class="btn-row" style="margin-top:8px">
                   <button class="sec" id="descargarMosaico">Mosaico PNG</button>
                   <button class="sec" id="descargarMotivo">Motivo PNG</button>
                   <button class="sec" id="descargarMotivoBlanco">Motivo blanco PNG</button>
                 </div>
-                <p class="note" style="margin:6px 0 0">PNG 2048×2048 con fondo transparente. El mosaico repite el patrón; el motivo va centrado. Sirven para canvas, video o diapositiva.</p>
                 <p class="status" id="statusTexturas"></p>
               </div>
             </div>
-            <div class="kit-section kit-section--wide">
+            <div class="kit-section kit-section--wide kit-section--team">
               <h4 style="color:var(--primary)">07 · Contacto</h4>
               <div class="contact-grid">
                 <div class="contact-cell uni-cell"><div class="uni-mark" id="kitUniMark"></div><div><div class="lbl">Universidad</div><div class="val" id="kitUni">—</div></div></div>
@@ -324,6 +322,24 @@
   if (x) x.addEventListener('click', close);
   if (scrim) scrim.addEventListener('click', close);
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+
+  // vista exclusiva: diseno del grupo o diseno del proyecto
+  var kit = document.getElementById('kitPreview');
+  var views = document.querySelectorAll('.view-btn');
+  function setView(v) {
+    if (!kit) return;
+    var proj = v === 'proyecto';
+    kit.classList.toggle('view-proyecto', proj);
+    kit.classList.toggle('view-equipo', !proj);
+    Array.prototype.forEach.call(views, function (b) {
+      var on = b.getAttribute('data-view') === v;
+      b.classList.toggle('is-on', on);
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+  }
+  Array.prototype.forEach.call(views, function (b) {
+    b.addEventListener('click', function () { setView(b.getAttribute('data-view')); });
+  });
 })();
 </script>
 </body></html>

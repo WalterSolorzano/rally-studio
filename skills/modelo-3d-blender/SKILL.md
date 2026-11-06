@@ -333,6 +333,121 @@ plugin, decimación de polígonos (LOD) y arquitectura modular del build.
 - **Techo global de horas 3D**: `blender/horas_3d.csv` acumula minutos;
   `orchestrate.py status` los compara con `caps.max_3d_hours_total` de
   `env.json`. Al llegar al techo: bajar detalle o eliminar piezas. Nunca exceder.
+
+## Generación de prompts para llevar el contenido a otra IA
+
+Cuando el usuario quiera exportar el modelo, la ficha o el render a otra IA
+(OpenAI, Claude, Gemini, OpenCode, Antigravity…), genera el prompt con esta
+estructura:
+
+```
+Rol: [arquitecto 3D / modelador Blender / especialista en render]
+Contexto: Proyecto de rally de innovación, toma <shot_id>, acto <act>,
+  duración <dur> s, rubric_item <rubric_item>.
+Entrada: Ficha técnica `blender/ficha_<shot_id>.md` + BOM `budget/bom.csv`
+  (dimensiones dim_*_mm, materiales, colores).
+Tarea: Describir el modelo 3D, sus medidas, materiales, encuadre de cámara,
+  luces y qué debe comunicar en 3 segundos.
+Restricciones: Sin texto inventado, sin medidas a ojo, sin hardware asumido sin
+  fuente, sin emojis, sin degradados estilo IA, sin glassmorphism.
+Formato de salida: JSON con claves shot_id, acto, duracion_s, proposito,
+  materiales (pieza/material/por qué/color), dimensiones (dim_ancho_mm,
+  dim_alto_mm, dim_fondo_mm), tornillos (M3/M4/M5, largo, cabeza, xyz),
+  cables (origen, destino, diámetro, holgura), tolerancias (holgura >=0.5 mm),
+  interfaces, diseno_para_camara (encuadre, luz 3 puntos, fondo, escala),
+  presupuesto_por_pieza, sostenibilidad.
+Idioma: español.
+Límite: ≤ 120 s equivalente de audio si el modelo aparece en el video.
+```
+
+## Cómo sugerir un título o nombre de proyecto o producto
+
+Sigue los patrones reales del banco SIRLI (`research/sirli/winners.jsonl`):
+
+- **Inventado**: NEXORA, KINETIX
+- **Objeto**: AVOCADO, LUMBRE
+- **Compuesto**: NEXO-SOSTENIBLE
+- **Territorio + número**: ALTIPLANO 360
+- **Sufijo técnico**: BIOINNOVATECH
+- **Juego**: DESUCHO, ERROR 404
+
+Reglas:
+- Nunca repites el nombre del proyecto más de una vez por sección.
+- No hardcodees el nombre en scripts; léelo siempre de `brief.json`.
+- El nombre debe entenderse fuera del país (Latam) o tener arraigo cultural
+  (Nacional).
+- El nombre no va en los primeros 20 s del video.
+
+## Cómo enseñar visualmente (materiales didácticos)
+
+- Una sola distancia focal por secuencia con rótulos.
+- Antes de dar por bueno un rótulo, mídelo: proyecta su caja a coordenadas de
+  pantalla (u,v) y comprueba que queda dentro del cuadro con margen ≥6 %.
+- Contraste garantizado: texto claro emisivo sobre placa oscura propia, o sombra
+  de texto desplazada. Nunca texto gris sobre fondo iluminado.
+- Un rótulo sin flecha que apunte a la pieza no dice nada.
+- Varios rótulos en el mismo lado se pisan: lleva un registro por lado y reubica
+  el siguiente candidato vertical hasta que no choque.
+- Vídeo de montaje: producto armado primero, explosión por capas (no piezas
+  sueltas), interior sale por encima del borde de la carcasa, muestra el sentido
+  de extracción de tornillos, luego zoom por componente, reproduce el cierre.
+- Ritmo medido: ~7 s de giro del producto armado, ~40 fotogramas por pieza,
+  4 s para la explosión, ~1.8 s por zoom, cierre con la vuelta al armado.
+
+## Cómo redactar guiones cuidando la pronunciación y el orden de palabras
+
+- Escribe para ser escuchado, no leído: oraciones cortas, sujeto-verbo-objeto,
+  evita subordinadas encajadas.
+- Acentos reales en español; acrónimos se deletrean si no son de uso común.
+- Cada cambio de idea necesita una pausa o transición explícita.
+- Máximo 240-270 palabras (≈130-140 WPM) para ≤ 120 s de audio.
+- No repitas el nombre del proyecto más de una vez por sección.
+- Coherencia total: los números del guion coinciden exactamente con
+  `budget/budget.json`.
+- Cada dato o porcentaje proviene de `research/claims.json`.
+
+## Cómo sugerir elementos gráficos
+
+- Thumbnail y piezas de portada: prohibido resolver con cuadrados, rectángulos,
+  círculos o triángulos. Usa foto real, vector complejo o un modelo de Blender.
+- La imagen del thumbnail muestra el reto ya resuelto y su impacto, no
+  decoración.
+- Prioriza una foto real de la problemática y del reto (personas, oficio,
+  territorio, comunidad) sobre cualquier ilustración o render.
+- La imagen no lleva texto, logos ni marcas de agua: el texto lo pone la
+  plantilla.
+- Elementos gráficos se exportan como PNG 2048×2048 con fondo transparente.
+- Sin emojis como íconos en la web demo.
+- Sin cards genéricas, sin morado (#7c3aed o similar), sin fuentes fuera de
+  `brand/tokens.css`.
+
+## Cómo crear modelos 3D (resumen para otra IA)
+
+1. **Confirma la toma**: lee tu fila en `script/shotlist.csv` (rubric_item,
+   quality_tier, depends_on, duración en cámara). Sin rubric_item la pieza no
+   se produce.
+2. **Compila los contratos**: `python scripts/build_shotlist.py` debe escribir
+   `script/shotlist.csv` sin errores.
+3. **Busca antes de modelar**: modelos CC0 (Poly Haven, Kenney) o del proyecto.
+   Solo se modela lo que no existe o debe seguir el diseño propio con exactitud.
+4. **Escribe la ficha** `blender/ficha_<shot_id>.md` y pide al director que la
+   apruebe antes de reservar GPU.
+5. **Toma el guardia**: `python scripts/gpu_lock.py run --owner modeler_<pieza>
+   --priority media -- <comando>`.
+6. **pre_render_check**: `python scripts/pre_render_check.py <shot_id>` debe
+   salir 0 antes de abrir Blender o renderizar.
+7. **Modela con script reproducible**, no a mano. Dimensiones desde
+   `budget/bom.csv` (dim_*_mm).
+8. **Renderiza en el tier de la toma** (env.json): draft EEVEE 50 % ≤5 min;
+   revisar EEVEE 100 % ≤20 min; final Cycles solo pasado ~75 % del tiempo.
+9. **Bucle de crítica (máx. 2 vueltas)**: render revisar, lista en la ficha qué
+   no se lee en cámara y corrige.
+10. **Auditoría geométrica**: antes del final, verifica que nada atraviesa ni se
+    superpone y que ningún componente interno sale de su contenedor.
+11. **Entrega**: salida en `dashboard/assets/` como
+    `asset_<shotlist_id>_<descripcion>.<ext>`, servir a la ventana
+    (`--tab resources --slot main`) y anotar minutos en `blender/horas_3d.csv`.
+
 - Un proceso pesado a la vez por recurso, garantizado por el guardia; nunca en
   paralelo con TTS, Playwright o ffmpeg si estos compiten por el mismo slot.
 - Menos de 4 GB de VRAM (dato de `env.json`): dilo y propón alternativa 2D o

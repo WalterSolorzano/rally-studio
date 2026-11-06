@@ -174,3 +174,124 @@ En lugar de buscar fotos al azar en internet, el sistema conecta los materiales 
 - **Funciona sin internet:** Si se cae el WiFi del campus durante la madrugada, el sistema guarda todo en tu navegador y en tu computadora.
 - **Comparte en red local:** Puedes compartir el espacio con tus compañeros de equipo mediante un enlace sencillo (`python scripts/crear_proyecto.py`).
 - **Respaldo en USB:** Puedes guardar todo el proyecto en un archivo `.json` liviano para pasarlo por memoria USB cuando quieras.
+
+---
+
+## Llevar el contenido a otra IA (prompts listos)
+
+Cada skill de Rally Studio trae un bloque "Generación de prompts para llevar el contenido a otra IA" con la estructura lista para copiar y pegar en OpenAI, Claude, Gemini, OpenCode o Antigravity. Cada prompt incluye:
+
+- **Rol:** quién debe ser la IA (guionista, modelador 3D, diseñador, presupuestador, auditor…)
+- **Contexto:** certamen, horas, proyecto, equipo, ciudad, reto.
+- **Entrada:** los archivos de origen exactos (`brief.json`, `budget/budget.json`, `brand/palette.json`, `research/claims.json`, etc.).
+- **Tarea:** qué debe hacer la IA con ese contenido.
+- **Restricciones:** límites del certamen, prohibiciones de estilo (sin emojis, sin morado, sin glassmorphism, sin cards), contraste WCAG, fuentes solo de `brand/tokens.css`.
+- **Formato de salida:** JSON con claves nombradas.
+- **Idioma:** español.
+
+Ejemplo rápido (guion a otra IA):
+
+```
+Rol: guionista de pitch de innovación, especialista en locución y pronunciación en español.
+Contexto: Rally de innovación, certamen latam (28 h), acto 3, duración objetivo 40 s.
+Entrada: script/script.md, budget/budget.json, research/claims.json.
+Tarea: Escribir el acto 3 (Solución) del guion PAS-V, cuidando pronunciación, orden de palabras y flujo de ideas.
+Restricciones: ≤ 120 s de audio; números coinciden con budget/budget.json; cada dato de research/claims.json; sin emojis; cierre: "piloto en [ciudad], replicable en toda América Latina".
+Formato de salida: JSON con claves acto, nombre, duracion_s, texto, palabras_estimadas, wpm, numeros_coherentes, claims_usados, cierre_certamen.
+Idioma: español.
+```
+
+---
+
+## Sugerir un título o nombre de proyecto o producto
+
+Sigue los patrones reales del banco SIRLI (`research/sirli/winners.jsonl`):
+
+- **Inventado:** NEXORA, KINETIX
+- **Objeto:** AVOCADO, LUMBRE
+- **Compuesto:** NEXO-SOSTENIBLE
+- **Territorio + número:** ALTIPLANO 360
+- **Sufijo técnico:** BIOINNOVATECH
+- **Juego:** DESUCHO, ERROR 404
+
+Reglas:
+- Nunca repites el nombre del proyecto más de una vez por sección.
+- No hardcodees el nombre en scripts; léelo siempre de `brief.json`.
+- El nombre debe entenderse fuera del país (Latam) o tener arraigo cultural (Nacional).
+- El nombre no va en los primeros 20 s del video.
+
+---
+
+## Enseñar visualmente (materiales didácticos y elementos gráficos)
+
+- Una sola distancia focal por secuencia con rótulos.
+- Antes de dar por bueno un rótulo, mídelo: proyecta su caja a coordenadas de pantalla (u,v) y comprueba que queda dentro del cuadro con margen ≥6 %.
+- Contraste garantizado: texto claro emisivo sobre placa oscura propia, o sombra de texto desplazada. Nunca texto gris sobre fondo iluminado.
+- Un rótulo sin flecha que apunte a la pieza no dice nada.
+- Varios rótulos en el mismo lado se pisan: lleva un registro por lado y reubica el siguiente candidato vertical hasta que no choque.
+- Tipografía: regular antes que bold (el bold a 540p embota los acentos), acentos reales en español, tamaño ≥2 % de la altura del cuadro.
+- Thumbnail y piezas de portada: prohibido resolver con cuadrados, rectángulos, círculos o triángulos. Usa foto real, vector complejo o un modelo de Blender.
+- La imagen del thumbnail muestra el reto ya resuelto y su impacto, no decoración.
+- Prioriza foto real de la problemática y del reto sobre ilustración o render.
+- La imagen no lleva texto, logos ni marcas de agua: el texto lo pone la plantilla.
+- Elementos gráficos se exportan como PNG 2048×2048 con fondo transparente.
+- Sin emojis como íconos en la web demo.
+- Sin cards genéricas, sin morado (#7c3aed o similar), sin fuentes fuera de `brand/tokens.css`.
+- Nombrado de assets: `asset_<shotlist_id>_<descripcion>.<ext>`.
+
+---
+
+## Redactar guiones cuidando la pronunciación, el orden de palabras y las ideas
+
+- Escribe para ser escuchado, no leído: oraciones cortas, sujeto-verbo-objeto, evita subordinadas encajadas.
+- Acentos reales en español; acrónimos se deletrean si no son de uso común.
+- Cada cambio de idea necesita una pausa o transición explícita.
+- Máximo 240-270 palabras (≈130-140 WPM) para ≤ 120 s de audio.
+- Los números se dicen completos ("cuatro mil quinientos", no "4.500" leído en voz alta).
+- No repitas el nombre del proyecto más de una vez por sección del pautado.
+- Coherencia total: los números del guion coinciden exactamente con `budget/budget.json`.
+- Cada dato o porcentaje proviene de `research/claims.json`.
+- Cierre según certamen: Nacional → municipio + Plan Nacional/ODS; Latam → "piloto en [ciudad], replicable en toda América Latina".
+
+---
+
+## Crear modelos 3D (Blender)
+
+La skill `modelo-3d-blender` genera modelos o renders 3D con Blender para el video, con ficha técnica previa justificada por la rúbrica. Resumen del procedimiento:
+
+1. **Confirma la toma:** lee tu fila en `script/shotlist.csv` (rubric_item, quality_tier, depends_on, duración).
+2. **Compila los contratos:** `python scripts/build_shotlist.py` sin errores.
+3. **Busca antes de modelar:** modelos CC0 (Poly Haven, Kenney) o del proyecto.
+4. **Escribe la ficha:** `blender/ficha_<shot_id>.md`, aprobada por el director antes de reservar GPU.
+5. **Toma el guardia:** `python scripts/gpu_lock.py run --owner modeler_<pieza> --priority media -- <comando>`.
+6. **pre_render_check:** `python scripts/pre_render_check.py <shot_id>` debe salir 0.
+7. **Modela con script reproducible**, no a mano. Dimensiones desde `budget/bom.csv` (dim_*_mm).
+8. **Renderiza en el tier de la toma:** draft EEVEE 50 % ≤5 min; revisar EEVEE 100 % ≤20 min; final Cycles solo pasado ~75 % del tiempo.
+9. **Bucle de crítica (máx. 2 vueltas):** render revisar, lista en la ficha qué no se lee en cámara y corrige.
+10. **Auditoría geométrica:** nada atraviesa ni se superpone; ningún componente interno sale de su contenedor.
+11. **Entrega:** `dashboard/assets/` como `asset_<shotlist_id>_<descripcion>.<ext>`, servir a la ventana (`--tab resources --slot main`), anotar minutos en `blender/horas_3d.csv`.
+
+---
+
+## Los 16 asistentes (skills)
+
+Cada asistente tiene un trabajo puntual y ahora incluye bloques de: **prompts para otra IA**, **nombrado de proyecto**, **enseñanza visual**, **guion con pronunciación**, **modelos 3D** y **elementos gráficos**.
+
+| Asistente | Nombre de Guerra | Qué hace por ti |
+|---|---|---|
+| `guiar-usuario` | Tu Última Neurona | Te acompaña paso a paso por las 13 etapas. |
+| `orquestador` | El Admin del Grupo | Reparte tareas y cuida que no se pegue la computadora. |
+| `sharktank` | El Destructor de Sueños | Analiza tu idea con sinceridad: fallas, riesgos, patentes. |
+| `auditar-entregable` | La Tóxica que Revisa el Chat | Revisa entregables contra la rúbrica sin reescribir. |
+| `presupuesto` | Don Cangrejo (El Palmado) | Cotiza componentes con precios creíbles y enlaces. |
+| `modelo-3d-blender` | El Quemador de Tostadas | Modela y renderiza en Blender para el video. |
+| `dossier-soluciones` | Labia Interna | Estructura propuestas problema → causa → insight → solución → métrica. |
+| `proponer-retos` | La Ruleta Rusa | Genera soluciones para retos del comité con precedentes. |
+| `ingestar-investigación`| La Chismosa del Barrio | Procesa PDF/DOCX/MD externos y los alinea a la rúbrica. |
+| `contexto-rally` | San Google de los Ganadores | Carga contexto del proyecto antes de trabajar. |
+| `publicar-sitio` | El del Ciber del Barrio | Sube la web demo a GitHub Pages o Netlify. |
+| `servir-a-ventana` | PedidosYa | Entrega propuestas a la interfaz (Aceptar / Descartar). |
+| `sugerir-por-fase` | Café Presto con Ansiedad | Sugerencias cortas por etapa del flujo. |
+| `propuesta-identidad` | El Diseñador de Carretera Masaya | Paleta, tipografías, tokens, dirección de logotipo. |
+| `control-tiempo-entrega` | — | Cronómetro, congelamiento al 75 %, checklist SIRLI. |
+| `brainstorming` | — | Lluvia de ideas antes de crear funcionalidad nueva. |

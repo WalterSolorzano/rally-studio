@@ -167,10 +167,100 @@ no solo en la activa:
    croquis debe reconocerse completo en cada una, sin "01" en la esquina ni nombre de grupo
    repetido en el pie.
 
-## Reglas
+## Generación de prompts para llevar la identidad a otra IA
 
-- Prohibido el morado `#7c3aed` y sus parientes, los degradados "estilo IA", el
-  glassmorphism y las tarjetas repetidas.
+Cuando el usuario quiera exportar la paleta, tipografías o tokens a otra IA
+(OpenAI, Claude, Gemini, OpenCode, Antigravity…), genera el prompt con esta
+estructura:
+
+```
+Rol: diseñador de identidad visual para proyectos de innovación universitaria.
+Contexto: Rally de innovación, certamen <rally_type>, proyecto <project_name>,
+  equipo <team_name>, ciudad <city>.
+Entrada: `brand/palette.json`, `brand/tokens.css`, `design/fonts.js` (FONT_LIBRARY),
+  `PRODUCT.md`, `DESIGN.md`.
+Tarea: Generar propuestas de identidad visual (paleta, tipografías, tokens,
+  dirección de logotipo, elementos gráficos).
+Restricciones:
+  - Sin morado (#7c3aed o similar), sin degradados estilo IA, sin glassmorphism,
+    sin tarjetas repetidas.
+  - Sin emojis como íconos en la web demo.
+  - Fuentes solo de `FONT_LIBRARY` (243 familias verificadas).
+  - Contraste WCAG AA como piso, AAA como meta.
+  - Paleta de 5 colores con HEX y contraste del primario sobre el fondo
+    (mínimo 4.5:1, objetivo 7:1).
+  - Nombrado de assets: asset_<shotlist_id>_<descripcion>.<ext>.
+Formato de salida: JSON con claves proyecto, equipo, ciudad, direccion (2
+  opciones), paleta (5 colores HEX), tipografias (titulos/cuerpo/datos),
+  personalidad (3 palabras), anti_ejemplos (2), concepto_logo, elementos_graficos
+  (descripción de cada uno), contraste_verificado.
+Idioma: español.
+```
+
+## Cómo sugerir un título o nombre de proyecto o producto
+
+Sigue los patrones reales del banco SIRLI (`research/sirli/winners.jsonl`):
+
+- **Inventado**: NEXORA, KINETIX
+- **Objeto**: AVOCADO, LUMBRE
+- **Compuesto**: NEXO-SOSTENIBLE
+- **Territorio + número**: ALTIPLANO 360
+- **Sufijo técnico**: BIOINNOVATECH
+- **Juego**: DESUCHO, ERROR 404
+
+Reglas:
+- Nunca repites el nombre del proyecto más de una vez por sección.
+- No hardcodees el nombre en scripts; léelo siempre de `brief.json`.
+- El nombre debe entenderse fuera del país (Latam) o tener arraigo cultural
+  (Nacional).
+- El nombre no va en los primeros 20 s del video.
+- Slogan, misión, visión e inspiración se recombina solo con lo que el usuario
+  escribió. No inventas proyecto, público ni cifras.
+
+## Cómo enseñar visualmente (identidad y materiales didácticos)
+
+- Una sola distancia focal por secuencia con rótulos.
+- Antes de dar por bueno un rótulo, mídelo: proyecta su caja a coordenadas de
+  pantalla (u,v) y comprueba que queda dentro del cuadro con margen ≥6 %.
+- Contraste garantizado: texto claro emisivo sobre placa oscura propia, o sombra
+  de texto desplazada. Nunca texto gris sobre fondo iluminado.
+- Un rótulo sin flecha que apunte a la pieza no dice nada.
+- Varios rótulos en el mismo lado se pisan: lleva un registro por lado y reubica
+  el siguiente candidato vertical hasta que no choque.
+- Tipografía: regular antes que bold (el bold a 540p embota los acentos),
+  acentos reales en español, tamaño ≥2 % de la altura del cuadro.
+- El croquis de Nicaragua siempre visible y completo, sin recortes en los bordes.
+
+## Cómo redactar guiones cuidando la pronunciación y el orden de palabras
+
+- Escribe para ser escuchado, no leído: oraciones cortas, sujeto-verbo-objeto,
+  evita subordinadas encajadas.
+- Acentos reales en español; acrónimos se deletrean si no son de uso común.
+- Cada cambio de idea necesita una pausa o transición explícita.
+- Máximo 240-270 palabras (≈130-140 WPM) para ≤ 120 s de audio.
+- No repitas el nombre del proyecto más de una vez por sección.
+
+## Cómo sugerir elementos gráficos
+
+- Thumbnail y piezas de portada: prohibido resolver con cuadrados, rectángulos,
+  círculos o triángulos. Usa foto real, vector complejo o un modelo de Blender.
+- La imagen del thumbnail muestra el reto ya resuelto y su impacto, no
+  decoración.
+- Prioriza una foto real de la problemática y del reto (personas, oficio,
+  territorio, comunidad) sobre cualquier ilustración o render.
+- La imagen no lleva texto, logos ni marcas de agua: el texto lo pone la
+  plantilla.
+- Elementos gráficos se exportan como PNG 2048×2048 con fondo transparente.
+- Sin emojis como íconos en la web demo.
+- Sin cards genéricas, sin morado (#7c3aed o similar), sin fuentes fuera de
+  `brand/tokens.css`.
+
+## Cómo crear modelos 3D (referencia)
+
+Cuando la identidad necesite un modelo 3D para el video, la skill
+`modelo-3d-blender` genera modelos o renders 3D con Blender, con ficha técnica
+previa justificada por la rúbrica. Ver `skills/modelo-3d-blender/SKILL.md`.
+
 - Nada de fuentes fuera de las declaradas en `brand/tokens.css` sin decirlo y justificarlo.
 - Propón; no cambies la identidad del usuario sin que la acepte.
 - Contraste WCAG AA como piso, AAA como meta.

@@ -204,6 +204,19 @@ brand/tokens.css     → variables CSS derivadas de palette.json
 
 ---
 
+## Capacidades transversales de las skills (todas las 16)
+
+Cada skill `skills/<nombre>/SKILL.md` incluye ahora estos bloques adicionales, para que el usuario pueda llevar el contenido a otra IA o reusar los criterios fuera de este repositorio:
+
+- **Generación de prompts para otra IA:** cada skill trae una plantilla estructurada (rol, contexto, entrada, tarea, restricciones, formato de salida JSON, idioma español) lista para copiar y pegar en OpenAI, Claude, Gemini, OpenCode o Antigravity.
+- **Nombrado de proyecto o producto:** patrones del banco SIRLI (inventado, objeto, compuesto, territorio+número, sufijo técnico, juego). Nunca hardcodear el nombre en scripts; leerlo siempre de `brief.json`. Nunca repetir el nombre más de una vez por sección. El nombre no va en los primeros 20 s del video.
+- **Enseñanza visual:** una distancia focal por secuencia, medir rótulos en coordenadas de pantalla (margen ≥6 %), contraste garantizado (texto claro sobre placa oscura), rótulos siempre con flecha, tipografía regular antes que bold, acentos reales en español, tamaño ≥2 % del cuadro, assets como `asset_<shotlist_id>_<descripcion>.<ext>`.
+- **Redacción de guiones (pronunciación y orden):** escribir para ser escuchado (sujeto-verbo-objeto, oraciones cortas), acentos reales en español, pausa o transición por cambio de idea, máximo 240-270 palabras (≈130-140 WPM) para ≤ 120 s, números dichos completos, coherencia con `budget/budget.json`, datos de `research/claims.json`.
+- **Creación de modelos 3D (Blender):** ver `skills/modelo-3d-blender/SKILL.md` — ficha técnica aprobada antes de GPU, modelo reproducible por script, dimensiones desde `budget/bom.csv`, auditoría geométrica, entrega en `dashboard/assets/` con nombrado `asset_<shotlist_id>_<descripcion>.<ext>`.
+- **Elementos gráficos:** thumbnail y portada sin figuras básicas (cuadrados, rectángulos, círculos, triángulos), foto real de la problemática sobre ilustración, sin texto/logos/marcas de agua en la imagen, PNG 2048×2048 fondo transparente, sin emojis, sin morado (#7c3aed), sin cards genéricas, sin glassmorphism, fuentes solo de `brand/tokens.css`.
+
+---
+
 ## Ahorro de tokens
 
 - Lee solo los rangos necesarios de archivos grandes.

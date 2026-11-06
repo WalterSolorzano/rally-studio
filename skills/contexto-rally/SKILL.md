@@ -47,6 +47,78 @@ Confirmar `rally_type` en `brief.json` antes de leer cualquier fuente del otro c
   sin siglas gubernamentales locales, cierre del video: "piloto en [ciudad], replicable en toda
   América Latina".
 
+## Generación de prompts para llevar el contexto a otra IA
+
+Cuando el usuario quiera exportar el estado del proyecto a otra IA
+(OpenAI, Claude, Gemini, OpenCode, Antigravity…), genera el prompt con esta
+estructura:
+
+```
+Rol: asistente de proyecto de rally de innovación.
+Contexto: Certamen <rally_type> (<hours_total> h), categoría <category>,
+  reto <challenge_title>, equipo <team_name>, universidad <university>,
+  ciudad <city>.
+Entrada: `brief.json`, `knowledge/INDICE.md`, `research/claims.json`.
+Tarea: Resumir el estado del proyecto y los próximos pasos, respetando las
+  reglas del certamen activo.
+Restricciones:
+  - Sin inventar datos. Cada estadística debe existir en
+    `research/claims.json`.
+  - No hardcodees el nombre del proyecto; léelo de `brief.json`.
+  - Sin emojis, sin degradados estilo IA, sin glassmorphism.
+  - Idioma: español.
+Formato de salida: JSON con claves rally_type, hours_total, category,
+  challenge_title, project_name, team_name, university, city,
+  description_one_line, proximos_pasos, huecos_pendientes.
+Idioma: español.
+```
+
+## Cómo sugerir un título o nombre de proyecto o producto
+
+Sigue los patrones reales del banco SIRLI (`research/sirli/winners.jsonl`):
+
+- **Inventado**: NEXORA, KINETIX
+- **Objeto**: AVOCADO, LUMBRE
+- **Compuesto**: NEXO-SOSTENIBLE
+- **Territorio + número**: ALTIPLANO 360
+- **Sufijo técnico**: BIOINNOVATECH
+- **Juego**: DESUCHO, ERROR 404
+
+Reglas:
+- Nunca repites el nombre del proyecto más de una vez por sección.
+- No hardcodees el nombre en scripts; léelo siempre de `brief.json`.
+- El nombre debe entenderse fuera del país (Latam) o tener arraigo cultural
+  (Nacional).
+
+## Cómo enseñar visualmente
+
+- Una sola distancia focal por secuencia con rótulos.
+- Contraste garantizado: texto claro sobre fondo oscuro, o sombra de texto
+  desplazada. Nunca texto gris sobre fondo iluminado.
+- Elementos gráficos se exportan como PNG 2048×2048 con fondo transparente.
+- Sin emojis como íconos en la web demo.
+
+## Cómo redactar guiones cuidando la pronunciación y el orden de palabras
+
+- Escribe para ser escuchado, no leído: oraciones cortas, sujeto-verbo-objeto,
+  evita subordinadas encajadas.
+- Acentos reales en español; acrónimos se deletrean si no son de uso común.
+- Cada cambio de idea necesita una pausa o transición explícita.
+- Máximo 240-270 palabras (≈130-140 WPM) para ≤ 120 s de audio.
+
+## Cómo crear modelos 3D (referencia)
+
+Ver `skills/modelo-3d-blender/SKILL.md` para el procedimiento completo de
+modelado 3D con Blender y generación de renders para el video.
+
+## Cómo sugerir elementos gráficos
+
+- Thumbnail y piezas de portada: prohibido resolver con cuadrados, rectángulos,
+  círculos o triángulos. Usa foto real, vector complejo o un modelo de Blender.
+- Sin emojis como íconos en la web demo.
+- Sin cards genéricas, sin morado (#7c3aed o similar), sin fuentes fuera de
+  `brand/tokens.css`.
+
 ## Punteros
 
 - Estado del proyecto: `brief.json`

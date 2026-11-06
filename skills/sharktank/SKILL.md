@@ -86,6 +86,83 @@ Guardas anti-tokens (obligatorias):
    El `sobre.json` lleva `{"text": "<resumen en 10 líneas + ruta del PDF>"}`. El PDF se
    conserva en `docs/` aunque el usuario descarte en la ventana.
 
+## Generación de prompts para llevar el análisis sharktank a otra IA
+
+Cuando el usuario quiera exportar el análisis de fallas a otra IA
+(OpenAI, Claude, Gemini, OpenCode, Antigravity…), genera el prompt con esta
+estructura:
+
+```
+Rol: analista de salud de ideas de innovación, especialista en patentes.
+Contexto: Proyecto <project_name>, certamen <rally_type>, reto <reto_id>.
+Entrada: `research/claims.json`, `knowledge/retos_razonamiento.json`,
+  pautado ya escrito.
+Tarea: Detectar fallas de la idea (lógica, técnica, social, económica) y
+  hacer barrido de patentes y proyectos parecidos.
+Restricciones:
+  - Nada de web para lo ya cubierto por `claims.json` o el corpus.
+  - Una query por ángulo, sin repetir sinónimos. Ángulos: mecanismo, campo de
+    aplicación, formato de producto (patente / app / startup / ONG).
+  - Fuentes: Google Patents, WIPO PatentScope, Lens.org.
+  - Cada coincidencia: número de publicación, año, titular, una frase de
+    diferencia. Sin número → marcar `sin número verificado`.
+  - Tras 6 queries bien formadas sin coincidencias claras, declarar
+    "sin coincidencias claras en las fuentes consultadas". Nunca inventar
+    patentes.
+  - Separar Hecho (fuente en `claims.json` o web) de Supuesto (sin datos).
+  - Máximo 8 hallazgos; sin puntajes, sin probabilidades de victoria.
+  - Sin emojis, sin degradados estilo IA, sin glassmorphism.
+  - Idioma: español.
+Formato de salida: JSON con claves project, rally, date, summary, solid ([],
+  finders ([]), prior_art ([]), queries ([]).
+Idioma: español.
+```
+
+## Cómo sugerir un título o nombre de proyecto o producto
+
+Sigue los patrones reales del banco SIRLI (`research/sirli/winners.jsonl`):
+
+- **Inventado**: NEXORA, KINETIX
+- **Objeto**: AVOCADO, LUMBRE
+- **Compuesto**: NEXO-SOSTENIBLE
+- **Territorio + número**: ALTIPLANO 360
+- **Sufijo técnico**: BIOINNOVATECH
+- **Juego**: DESUCHO, ERROR 404
+
+Reglas:
+- Nunca repites el nombre del proyecto más de una vez por sección.
+- No hardcodees el nombre en scripts; léelo siempre de `brief.json`.
+- El nombre debe entenderse fuera del país (Latam) o tener arraigo cultural
+  (Nacional).
+
+## Cómo enseñar visualmente
+
+- Contraste garantizado: texto claro sobre fondo oscuro, o sombra de texto
+  desplazada.
+- Elementos gráficos se exportan como PNG 2048×2048 con fondo transparente.
+- Sin emojis como íconos en la web demo.
+- PDF con diseño del sistema (`brand/tokens.css`: primary #1d45b9, secondary
+  #f81110, accent #2aa7ad; sin morado, sin cards genéricas, sin emojis).
+
+## Cómo redactar guiones cuidando la pronunciación y el orden de palabras
+
+- Escribe para ser escuchado, no leído: oraciones cortas, sujeto-verbo-objeto,
+  evita subordinadas encajadas.
+- Acentos reales en español; acrónimos se deletrean si no son de uso común.
+- Cada cambio de idea necesita una pausa o transición explícita.
+- Máximo 240-270 palabras (≈130-140 WPM) para ≤ 120 s de audio.
+
+## Cómo crear modelos 3D (referencia)
+
+Ver `skills/modelo-3d-blender/SKILL.md` para el procedimiento completo de
+modelado 3D con Blender y generación de renders para el video.
+
+## Cómo sugerir elementos gráficos
+
+- Sin emojis como íconos en la web demo.
+- Sin cards genéricas, sin morado (#7c3aed o similar), sin fuentes fuera de
+  `brand/tokens.css`.
+
 ## Errores comunes
 
 - Inventar números de patente → invalida todo el informe.

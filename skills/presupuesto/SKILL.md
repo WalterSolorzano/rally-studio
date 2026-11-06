@@ -167,6 +167,80 @@ mezclan monedas en la misma tabla.
 7. Existe la vista por producto (`budget_por_producto.json`) y su suma
    cuadra con la vista de proyecto completo.
 
+## Generación de prompts para llevar el presupuesto a otra IA
+
+Cuando el usuario quiera exportar el presupuesto a otra IA
+(OpenAI, Claude, Gemini, OpenCode, Antigravity…), genera el prompt con esta
+estructura:
+
+```
+Rol: presupuestador de prototipos para rallues de innovación.
+Contexto: Certamen <rally_type> (<hours_total> h), moneda <moneda>,
+  proyecto <project_name>.
+Entrada: `budget/budget.json`, `budget/budget_por_producto.json`,
+  `budget/bom.csv`, `research/claims.json`.
+Tarea: Generar filas de presupuesto justificadas, con precios creíbles y
+  enlace de respaldo, en la moneda del certamen activo.
+Restricciones:
+  - Cada línea sale de `budget/bom.csv`, ficha del modeler o componentes del
+    pautado. Nadie presupuesta en el aire.
+  - Precios creíbles: ni regalados ni inflados; se busca la página del vendedor
+    y se copia el precio de hoy.
+  - Enlace obligatorio y concreto: página del producto o del servicio, nunca
+    URL genérica.
+  - Toda fila lleva `date` en el JSON (la exige el validador).
+  - Sin TIR, VAN ni ROI complejo. Presupuesto de implementación superficial.
+  - Element en lenguaje normal; detalle técnico en `description`.
+  - Cifras coherentes con video, pautado y canvas.
+  - Mano de obra: contrato mensual permanente y salario completo digno.
+  - Sin emojis, sin degradados estilo IA, sin glassmorphism.
+  - Idioma: español.
+Formato de salida: JSON con claves proyecto, moneda, rally_type, filas ([]),
+  cada una con element, category, tipo, description, units, unit_cost, total,
+  url, date, nota; total_proyecto, rango_referencia.
+Idioma: español.
+```
+
+## Cómo sugerir un título o nombre de proyecto o producto
+
+Sigue los patrones reales del banco SIRLI (`research/sirli/winners.jsonl`):
+
+- **Inventado**: NEXORA, KINETIX
+- **Objeto**: AVOCADO, LUMBRE
+- **Compuesto**: NEXO-SOSTENIBLE
+- **Territorio + número**: ALTIPLANO 360
+- **Sufijo técnico**: BIOINNOVATECH
+- **Juego**: DESUCHO, ERROR 404
+
+Reglas:
+- Nunca repites el nombre del proyecto más de una vez por sección.
+- No hardcodees el nombre en scripts; léelo siempre de `brief.json`.
+
+## Cómo enseñar visualmente
+
+- Contraste garantizado: texto claro sobre fondo oscuro, o sombra de texto
+  desplazada.
+- Elementos gráficos se exportan como PNG 2048×2048 con fondo transparente.
+- Sin emojis como íconos en la web demo.
+- Tabla de presupuesto con paleta variable por equipo desde `brand/palette.json`.
+
+## Cómo redactar guiones cuidando la pronunciación y el orden de palabras
+
+- Los números del presupuesto deben coincidir exactamente con el guion.
+- Escribe para ser escuchado: cifras dichas completas, no leídas de la tabla.
+- Máximo 240-270 palabras (≈130-140 WPM) para ≤ 120 s de audio.
+
+## Cómo crear modelos 3D (referencia)
+
+Ver `skills/modelo-3d-blender/SKILL.md` para el procedimiento completo de
+modelado 3D con Blender y generación de renders para el video.
+
+## Cómo sugerir elementos gráficos
+
+- Sin emojis como íconos en la web demo.
+- Sin cards genéricas, sin morado (#7c3aed o similar), sin fuentes fuera de
+  `brand/tokens.css`.
+
 ## Punteros
 
 - Datos: `budget/budget.json`, `budget/budget_por_producto.json`, `budget/bom.csv`.

@@ -282,10 +282,11 @@ var FONT_VETADAS = [
    las lee como Times New Roman generico. La biblioteca queda en sans, display,
    condensada, tecnica y cartoon, que son las que dan identidad propia. */
 var FONT_CATS_VETADAS = ['serif', 'elegante'];
+var FONT_DISPLAY_SERIF = ['Cinzel', 'Cinzel Decorative', 'Rye', 'Sancreek', 'Alfa Slab One', 'Ultra', 'Special Elite'];
 (function retirarFamiliasGenericas() {
   var out = [];
   FONT_LIBRARY.forEach(function (f) {
-    if (FONT_CATS_VETADAS.indexOf(f.category) >= 0 || f.family === 'Public Sans') {
+    if (FONT_CATS_VETADAS.indexOf(f.category) >= 0 || FONT_DISPLAY_SERIF.indexOf(f.family) >= 0 || f.family === 'Public Sans') {
       FONT_VETADAS.push(f.family.toLowerCase());
       return;
     }

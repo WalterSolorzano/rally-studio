@@ -516,6 +516,92 @@ bisturí», de arriba. La ley solo se dispara con rechazo explícito del PDF com
 31. **Insumo real**: el insumo de cada opción existe y alguien lo entrega (análisis
     sistémico); sin hardware asumido sin fuente ni donaciones de objetos de valor.
 
+## Generación de prompts para llevar el dossier a otra IA
+
+Cuando el usuario quiera exportar el dossier de soluciones a otra IA
+(OpenAI, Claude, Gemini, OpenCode, Antigravity…), genera el prompt con esta
+estructura:
+
+```
+Rol: redactor de dossiers de soluciones para rallues de innovación.
+Contexto: Certamen <rally_type> (<hours_total> h), reto <reto_id>,
+  categoría <categoria>, municipio <municipio>.
+Entrada: `knowledge/retos_razonamiento.json`, `research/claims.json`,
+  `knowledge/insignias.json`, `knowledge/ERRATAS.md`.
+Tarea: Generar dossier de 3 páginas por reto con razonamiento
+  problema → causa raíz → insight → solución → métrica, con precedentes
+  ganadores y métrica de impacto.
+Restricciones:
+  - Diseño del PDF ya está decidido: usar `scripts/gen_dossier.py`, nunca CSS
+    propio ni plantillas nuevas.
+  - Sin portada ni índice; abre en el reto 01. Tres páginas por reto.
+  - Cada "qué es" es párrafo narrativo de 80 a 150 palabras, abre con el qué es
+    físico, no contiene precios ni componentes dentro del párrafo.
+  - Cifras solo de `research/claims.json` o con fuente y año.
+  - Sin emojis, sin degradados estilo IA, sin glassmorphism, sin cards.
+  - Idioma: español.
+Formato de salida: JSON con claves reto_id, descripcion, ods, insignias,
+  soluciones (2), cada una con que_es, claim, como_funciona (4 pasos),
+  beneficiario, componentes, costo_estimado, metricas, ya_existe, quien_paga,
+  por_validar, precedente, pitch_60s.
+Idioma: español.
+```
+
+## Cómo sugerir un título o nombre de proyecto o producto
+
+Sigue los patrones reales del banco SIRLI (`research/sirli/winners.jsonl`):
+
+- **Inventado**: NEXORA, KINETIX
+- **Objeto**: AVOCADO, LUMBRE
+- **Compuesto**: NEXO-SOSTENIBLE
+- **Territorio + número**: ALTIPLANO 360
+- **Sufijo técnico**: BIOINNOVATECH
+- **Juego**: DESUCHO, ERROR 404
+
+Reglas:
+- Nunca repites el nombre del proyecto más de una vez por sección.
+- No hardcodees el nombre en scripts; léelo siempre de `brief.json`.
+- El nombre debe entenderse fuera del país (Latam) o tener arraigo cultural
+  (Nacional).
+
+## Cómo enseñar visualmente (dossier y presentación)
+
+- Jerarquía visual: rótulos navy `#0D1B35`; cuerpo `#334155`; metadatos `#5C7193`;
+  cobalto `#0866F5` solo para número de reto, métrica clave, pasos y links.
+- Secciones con regla hairline 1 px + rótulo mono. Sin tarjetas, sombras, emojis
+  ni degradados. `break-inside: avoid` en filas y grupos.
+- ODS: figura oficial de la ONU (`E_SDG_Icons-NN.jpg`), nombre oficial en
+  español y una línea específica.
+- Insignias: 2 o 3 por reto desde `knowledge/insignias.json`, solo
+  `verified: true`.
+- Renderizar a PNG: sin cortes ni grupos partidos.
+
+## Cómo redactar guiones cuidando la pronunciación y el orden de palabras
+
+- Escribe para ser escuchado, no leído: oraciones cortas, sujeto-verbo-objeto,
+  evita subordinadas encajadas.
+- Acentos reales en español; acrónimos se deletrean si no son de uso común.
+- Cada cambio de idea necesita una pausa o transición explícita.
+- Máximo 240-270 palabras (≈130-140 WPM) para ≤ 120 s de audio.
+- No repitas el nombre del proyecto más de una vez por sección.
+- Coherencia total: los números del guion coinciden exactamente con
+  `budget/budget.json`.
+- Cada dato o porcentaje proviene de `research/claims.json`.
+
+## Cómo crear modelos 3D (referencia)
+
+Ver `skills/modelo-3d-blender/SKILL.md` para el procedimiento completo de
+modelado 3D con Blender y generación de renders para el video.
+
+## Cómo sugerir elementos gráficos
+
+- Thumbnail y piezas de portada: prohibido resolver con cuadrados, rectángulos,
+  círculos o triángulos. Usa foto real, vector complejo o un modelo de Blender.
+- Elementos gráficos se exportan como PNG 2048×2048 con fondo transparente.
+- Sin emojis como íconos en la web demo.
+- Sin cards genéricas, sin morado (#7c3aed o similar), sin fuentes fuera de
+  `brand/tokens.css`.
+
 ## Calibrar la compuerta
 
 Antes de confiar en la compuerta, pásale una solución que ya sabes que no sirve —de un

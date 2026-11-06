@@ -631,16 +631,25 @@ function renderProyecto() {
   var sector = (p.sector || '').trim();
   var mark = (p.logoText || _iniNombre(name)).toUpperCase();
   var pp = p.pal || {};
-  var ac = pp.ac || brandColor(kitPaper());
-  var ink = pp.ink || legibleInk(kitPaper());
-  var mu = pp.mu || '#5C7193';
+  var stBase = estiloDe(p);
+  if (!stBase) {
+    var recId = estiloRecomendado(p);
+    stBase = PROJ_STYLES.filter(function (x) { return x.id === recId; })[0] || PROJ_STYLES[0];
+  }
+  var ac = pp.ac || (stBase && stBase.pal.ac) || brandColor(kitPaper());
+  var ink = pp.ink || (stBase && stBase.pal.ink) || legibleInk(kitPaper());
+  var mu = pp.mu || (stBase && stBase.pal.mu) || '#5C7193';
+  var kitRoot = $('kitPreview');
+  if (kitRoot) kitRoot.style.setProperty('--proj-ac', ac);
 
   var nameEl = $('kitProjName');
   if (nameEl) {
     nameEl.textContent = name || '—';
     nameEl.style.color = ink;
-    nameEl.style.fontFamily = p.fonts && p.fonts.t ? "'" + p.fonts.t + "',sans-serif" : '';
-    nameEl.style.fontWeight = p.fonts && p.fonts.t ? '700' : '800';
+    var ftName = p.fonts && p.fonts.t ? p.fonts.t : '';
+    if (ftName && typeof esFuenteVetada === 'function' && esFuenteVetada(ftName)) ftName = '';
+    nameEl.style.fontFamily = ftName ? "'" + ftName + "',sans-serif" : '';
+    nameEl.style.fontWeight = ftName ? '700' : '800';
   }
   var sloganEl = $('kitProjSlogan');
   if (sloganEl) { sloganEl.textContent = slogan; sloganEl.style.color = mu; }
@@ -702,6 +711,10 @@ function renderEscalaProyecto(p) {
   if (!base) { if (ftEl) ftEl.textContent = ''; if (typeEl) typeEl.innerHTML = ''; return; }
   var ft = (p.fonts && p.fonts.t) || base.fonts.t;
   var fb = (p.fonts && p.fonts.b) || base.fonts.b;
+  if (typeof esFuenteVetada === 'function') {
+    if (esFuenteVetada(ft)) ft = base.fonts.t;
+    if (esFuenteVetada(fb)) fb = base.fonts.b;
+  }
   if (typeof loadFont === 'function') { loadFont(ft); loadFont(fb); }
   if (ftEl) {
     ftEl.textContent = 'Títulos: ' + ft + ' · Cuerpo: ' + fb + (st ? '' : ' · sugeridas, elige un estilo para aplicarlas');
@@ -737,9 +750,9 @@ function renderPaletaProyecto(p) {
     ['Tinte +20', lighten(pal.ac, .2)], ['Sombra -20', darken(pal.ac, .2)]
   ];
   box.innerHTML = roles.map(function (r) {
-    return '<div class="proj-sw" style="background:#FFFFFF;color:#0D1B35">' +
-      '<span style="display:block;height:26px;border-radius:5px;background:' + r[1] + ';border:1px solid rgba(0,0,0,.08)"></span>' +
-      '<b>' + r[0] + '</b><i style="color:#475569">' + r[1].toUpperCase() + '</i></div>';
+    return '<div class="proj-sw">' +
+      '<span class="proj-chip" style="background:' + r[1] + '"></span>' +
+      '<b>' + r[0] + '</b><i>' + r[1].toUpperCase() + '</i></div>';
   }).join('');
 }
 
@@ -809,9 +822,11 @@ function _descargarPNG(nombre, svg, opts) {
       a.click();
       setTimeout(function () { a.remove(); }, 30000);
       if (opts.statusEl) {
-        opts.statusEl.innerHTML = 'Listo: ' + nombre + '.png · 2048×2048 · fondo transparente' +
-          ' · <a href="' + href + '" download="' + nombre + '.png" style="color:inherit;text-decoration:underline">Guardar otra vez</a>' +
-          ' · <a href="' + href + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Abrir</a>';
+        opts.statusEl.innerHTML = '<span class="tex-done">' +
+          '<img class="tex-thumb" src="' + href + '" alt="PNG generado" />' +
+          '<span>Listo: ' + nombre + '.png · 2048×2048 · fondo transparente<br>' +
+          '<a href="' + href + '" download="' + nombre + '.png">Descargar PNG</a>' +
+          ' · <a href="' + href + '" target="_blank" rel="noopener">Abrir</a></span></span>';
       }
       if (opts.onDone) opts.onDone();
     }

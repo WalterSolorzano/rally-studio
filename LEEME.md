@@ -22,6 +22,43 @@ probabilidad tienen de gustarte para narracion.
 La misma narracion, en todas: `narracion.txt` (7 parrafos).
 Ajustes: intensidad 0,8 / fidelidad 0,45 / ritmo pausado.
 
+## Prompts para otra IA (bloque compartido por todas las skills)
+
+Cada skill en `skills/<nombre>/SKILL.md` incluye un bloque "Generación de prompts para llevar el contenido a otra IA" con rol, contexto, entrada, tarea, restricciones, formato de salida JSON e idioma español. Listo para copiar y pegar en OpenAI, Claude, Gemini, OpenCode o Antigravity.
+
+## Nombrado de proyecto o producto
+
+Patrones del banco SIRLI (`research/sirli/winners.jsonl`):
+- Inventado: NEXORA, KINETIX
+- Objeto: AVOCADO, LUMBRE
+- Compuesto: NEXO-SOSTENIBLE
+- Territorio + número: ALTIPLANO 360
+- Sufijo técnico: BIOINNOVATECH
+- Juego: DESUCHO, ERROR 404
+
+Reglas: nunca hardcodear el nombre en scripts (leer de `brief.json`), no repetir el nombre más de una vez por sección, el nombre no va en los primeros 20 s del video.
+
+## Enseñanza visual y elementos gráficos
+
+- Una distancia focal por secuencia con rótulos; medir rótulos en pantalla (margen ≥6 %).
+- Contraste garantizado: texto claro sobre placa oscura, rótulos siempre con flecha.
+- Thumbnail y portada: sin figuras básicas (cuadrados, círculos, triángulos); foto real de la problemática; sin texto/logos/marcas de agua en la imagen; PNG 2048×2048 fondo transparente.
+- Sin emojis, sin morado (#7c3aed), sin cards genéricas, sin glassmorphism, fuentes solo de `brand/tokens.css`.
+- Assets nombrados: `asset_<shotlist_id>_<descripcion>.<ext>`.
+
+## Redacción de guiones (pronunciación y orden de palabras)
+
+- Escribir para ser escuchado: sujeto-verbo-objeto, oraciones cortas, acentos reales en español.
+- Pausa o transición por cada cambio de idea.
+- Máximo 240-270 palabras (≈130-140 WPM) para ≤ 120 s de audio.
+- Números dichos completos; coherencia con `budget/budget.json`; datos de `research/claims.json`.
+
+## Crear modelos 3D (Blender)
+
+Ver `skills/modelo-3d-blender/SKILL.md`: ficha técnica aprobada antes de GPU, modelo reproducible por script, dimensiones desde `budget/bom.csv`, auditoría geométrica, entrega en `dashboard/assets/`.
+
+---
+
 ## Otras carpetas
 
 - `emocion/`: la frase mas emocional del texto (la de Ruben Dario),

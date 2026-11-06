@@ -45,6 +45,70 @@ python scripts/servir_propuesta.py --tab pautado --slot problema --kind text \
 - No sobrescribas nada por tu cuenta: el buzón existe para que el humano decida.
 - Si el payload supera 5 MB, no lo sirvas: resume o divide.
 
+## Generación de prompts para llevar la propuesta a otra IA
+
+Cuando el usuario quiera exportar el contenido servido a otra IA
+(OpenAI, Claude, Gemini, OpenCode, Antigravity…), genera el prompt con esta
+estructura:
+
+```
+Rol: puente de entrega de contenido para rally de innovación.
+Contexto: Pestaña <tab>, ranura <slot>, certamen <rally_type>.
+Entrada: payload JSON del sobre (`{"text": "..."}` o `{"items": [...]}`).
+Tarea: Revisar el contenido antes de servirlo a la ventana del dashboard.
+Restricciones:
+  - Una propuesta = un slot. No mezcles dos secciones en un mismo sobre.
+  - No sobrescribas nada por tu cuenta: el buzón existe para que el humano decida.
+  - Si el payload supera 5 MB, resúmelo o divídelo.
+  - Marca `--simulated` si el contenido no es real.
+  - Sin emojis, sin degradados estilo IA, sin glassmorphism.
+  - Idioma: español.
+Formato de salida: JSON con claves tab, slot, kind, title, source, payload,
+  simulado, ruta_escrita.
+Idioma: español.
+```
+
+## Cómo sugerir un título o nombre de proyecto o producto
+
+Sigue los patrones reales del banco SIRLI (`research/sirli/winners.jsonl`):
+
+- **Inventado**: NEXORA, KINETIX
+- **Objeto**: AVOCADO, LUMBRE
+- **Compuesto**: NEXO-SOSTENIBLE
+- **Territorio + número**: ALTIPLANO 360
+- **Sufijo técnico**: BIOINNOVATECH
+- **Juego**: DESUCHO, ERROR 404
+
+Reglas:
+- Nunca repites el nombre del proyecto más de una vez por sección.
+- No hardcodees el nombre en scripts; léelo siempre de `brief.json`.
+
+## Cómo enseñar visualmente
+
+- Contraste garantizado: texto claro sobre fondo oscuro, o sombra de texto
+  desplazada.
+- Elementos gráficos se exportan como PNG 2048×2048 con fondo transparente.
+- Sin emojis como íconos en la web demo.
+
+## Cómo redactar guiones cuidando la pronunciación y el orden de palabras
+
+- Escribe para ser escuchado, no leído: oraciones cortas, sujeto-verbo-objeto,
+  evita subordinadas encajadas.
+- Acentos reales en español; acrónimos se deletrean si no son de uso común.
+- Cada cambio de idea necesita una pausa o transición explícita.
+- Máximo 240-270 palabras (≈130-140 WPM) para ≤ 120 s de audio.
+
+## Cómo crear modelos 3D (referencia)
+
+Ver `skills/modelo-3d-blender/SKILL.md` para el procedimiento completo de
+modelado 3D con Blender y generación de renders para el video.
+
+## Cómo sugerir elementos gráficos
+
+- Sin emojis como íconos en la web demo.
+- Sin cards genéricas, sin morado (#7c3aed o similar), sin fuentes fuera de
+  `brand/tokens.css`.
+
 ## Punteros
 
 - Validador y esquema: `scripts/content_store.py` (`ALLOWED_TABS`, `SLOTS_BY_TAB`).

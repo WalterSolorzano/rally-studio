@@ -73,6 +73,10 @@ Regla para el agente (también en `AGENTS.md`): **no inventar un proyecto**. Si
 `brief.json` está vacío, el cerebro se queda esperando y se le dice al usuario que
 defina su reto. Nunca se rellena con un proyecto de ejemplo.
 
+## Capacidades transversales del cerebro y las skills
+
+Cada skill `skills/<nombre>/SKILL.md` incluye bloques para llevar el contenido a otra IA (prompts estructurados en JSON), nombrado de proyecto (patrones SIRLI), enseñanza visual (rótulos, contraste, elementos gráficos), redacción de guiones (pronunciación, orden de palabras, flujo de ideas), creación de modelos 3D (Blender) y sugerencia de elementos gráficos. Estos bloques permiten que otro modelo de IA reproduzca los criterios de Rally Studio fuera de este repositorio.
+
 ## Fusión de entidades
 
 `sync_corpus.py` deja el corpus listo, pero la extracción se hace por archivo, así que
