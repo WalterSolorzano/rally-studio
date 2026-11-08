@@ -5,6 +5,20 @@ description: Construye y publica la web demo del proyecto en GitHub Pages o Netl
 
 # El del Ciber del Barrio — Publicar sitio
 
+## Navegador obligatorio (browser MCP)
+
+Publicar y **verificar** el sitio no se hace sin el navegador.
+
+1. Usa la sesión ya abierta del Chrome del usuario para activar GitHub Pages o
+   Netlify y disparar el deploy. **Nunca pidas tokens ni credenciales.**
+2. Verificación obligatoria tras publicar: abre la URL definitiva en el navegador
+   MCP, comprueba que carga, que la consola no tiene errores y guarda una captura
+   (`audit/site/<sha>.png`).
+3. La URL solo cuenta si se vio funcionando; sin captura no se declara publicada.
+4. Si el navegador MCP no está conectado, detente y pide instalar la extensión y
+   abrir la sesión.
+5. `handoff` solo para login/2FA; nunca resuelvas captchas.
+
 ## Cuándo usarla
 
 - El usuario termina el prototipo y necesita una URL pública.

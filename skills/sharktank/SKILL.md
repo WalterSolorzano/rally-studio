@@ -9,6 +9,21 @@ Detector de fallas de la idea, **no juez**. No simula jurado, no da puntaje, no 
 criticar: si algo está sólido, se dice sólido. Fallas de la idea inicial, no exigencia de
 implementación perfecta. La auditoría contra la rúbrica la hace `auditar-entregable`.
 
+## Navegador obligatorio (browser MCP)
+
+El barrido de patentes **no se completa sin el navegador**. Google Patents, WIPO
+PatentScope y Lens.org son aplicaciones JS que bloquean `requests`: la única
+lectura fiable es la del navegador real.
+
+1. Por cada ángulo, abre el buscador en el navegador MCP y ejecuta la query ahí.
+2. De cada resultado extrae **número de publicación, titular, año y URL**, y
+   guarda una captura PNG de respaldo (`audit/patentes/<publicacion>.png`).
+3. Sin número verificado en pantalla **no se afirma** la patente: se marca como
+   pendiente o exploratoria.
+4. Si el navegador MCP no está conectado, detente y pide instalar la extensión y
+   abrir la sesión. No sustituyas la verificación por memoria del modelo.
+5. `handoff` solo para login/2FA; nunca resuelvas captchas.
+
 ## Entrada
 
 1. `brief.json` (reto, `rally_type`, proyecto). Si está vacío, pedir al usuario: reto,

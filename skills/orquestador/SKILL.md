@@ -8,6 +8,66 @@ description: Orquesta agentes especialistas (investigador, guionista, modeler 3D
 Reglas completas y decisiones D1–D7 en
 `docs/superpowers/specs/2026-10-21-orquestacion-especialistas-design.md`.
 
+## Navegador obligatorio (browser MCP)
+
+Todo especialista cuyo rol implique salir a la web (investigador, presupuesto,
+sharktank, publicar-sitio, auditoría, recursos-video) trabaja **con el navegador
+MCP**, no con memoria.
+
+1. El director verifica que la sesión de navegador esté conectada antes de
+   despachar esos roles. Si no lo está, pide al usuario instalar la extensión y
+   abrir la sesión, y **no despacha**.
+2. Todo claim, precio, patente o URL vuelve con evidencia capturada (PNG + URL +
+   fecha). Sin evidencia, el director lo devuelve.
+3. `handoff` solo para login/2FA; nunca resuelvas captchas.
+
+## Rol: recursos-video (recopilación de recursos para el video)
+
+Se despliega **solo cuando ya existen**: solución aprobada, pautado cerrado,
+guion PAS-V con `script/shotlist.csv` y presupuesto. Antes de eso, no arranca.
+
+- **Qué busca:** video de stock (Pexels, Pixabay, Mixkit, Coverr), video de
+  YouTube y Facebook, GIF (Giphy, Tenor), imágenes (Unsplash, Pexels), audio
+  libre, y assets ya presentes en `assets/`. Cada shot del shotlist recibe al
+  menos una opción.
+- **Descarga:** se baja el archivo con `yt-dlp` (YouTube, Facebook y los sitios
+  de stock cuando lo permiten) a `assets/video/<shotlist_id>/`, y se anota el
+  minuto exacto del clip que sirve al shot.
+- **Método por fuente (código para bytes, ventana para criterio):**
+  - **YouTube** → código. Búsqueda sin navegador:
+    `yt-dlp "ytsearch10:<consulta>" --print "%(id)s %(duration)s %(title)s"`.
+    Recorte exacto:
+    `yt-dlp --download-sections "*MM:SS-MM:SS" -f "bv*[height<=1080]+ba/b"`.
+    La ventana solo se abre para confirmar el clip a ojo o para pasar cookies
+    (`--cookies-from-browser chrome`) si el video pide sesión.
+  - **Facebook** → híbrido. Ventana primero: abrir el post o reel, copiar la URL
+    exacta y confirmar que es el clip correcto. Después código:
+    `yt-dlp --cookies-from-browser chrome "<url>"`.
+  - **Stock** → Pexels y Pixabay por API oficial en código (JSON + URL directa).
+    Mixkit y Coverr sin API: leer el HTML o el endpoint con código y, si el sitio
+    es JS puro, abrir la ventana y sacar el `src` del reproductor.
+  - **GIF** → Giphy y Tenor por API pública en código; se baja el `.mp4`.
+  - **Google** → **solo descubrimiento en ventana**. Nunca se descarga desde
+    Google: se identifica la página de origen y se baja de ahí.
+  - **Otro sitio** → `yt-dlp` (más de mil extractores); si el extractor falla,
+    abrir la ventana, leer la URL del media en el panel de red y bajarla con
+    `curl` o `yt-dlp` sobre esa URL directa.
+  - **Regla:** si el paso necesita login, JS o criterio visual, ventana; si solo
+    necesita bytes, código. Nunca se descarga a ciegas desde un resultado de
+    buscador.
+  - Requiere `yt-dlp` y `ffmpeg` en el PATH.
+- **Licencia obligatoria:** dominio público, CC0 o CC-BY con atribución
+  registrada. Prohibido material con marca de agua o licencia dudosa.
+- **Registro:** cada recurso queda en `assets/credits.json` con
+  `{shotlist_id, file, url, author, license, date}`.
+- **Nombrado:** `asset_<shotlist_id>_<descripcion>.<ext>`.
+- **Verificación con navegador:** el recurso se descarga desde la página real y
+  se captura la ficha (licencia + autor) como respaldo.
+- **Límite duro:** este rol **crea recursos**, nunca el video final. No renderiza,
+  no edita, no hace montaje; eso es de `guion-pas-v` y el pipeline de export.
+- Prohibido: morado #7c3aed, cards genéricas, emojis como íconos, stock sin
+  licencia.
+
 ## Cuándo usarla
 
 - El humano pide despachar a varios agentes ("que trabajen a la vez").

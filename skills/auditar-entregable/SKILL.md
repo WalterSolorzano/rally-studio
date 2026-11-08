@@ -5,6 +5,19 @@ description: Revisa un entregable contra la rúbrica del certamen, las bases del
 
 # La Tóxica que Revisa el Chat — Auditar un entregable
 
+## Navegador obligatorio (browser MCP)
+
+La auditoría visual se hace **con el navegador, no de memoria**.
+
+1. Abre el entregable en el navegador MCP y recorre las vistas que exige la
+   auditoría (desktop y mobile, todas las pestañas del dashboard).
+2. Cada hallazgo se sostiene con **captura PNG en `audit/`** (móvil, tabs,
+   estados vacíos). Sin captura, el hallazgo no se reporta.
+3. Verifica también la consola del navegador: los errores JS son hallazgo.
+4. Si el navegador MCP no está conectado, detente y pide instalar la extensión y
+   abrir la sesión.
+5. `handoff` solo para login/2FA; nunca resuelvas captchas.
+
 ## Cuándo usarla
 
 - Antes de cerrar una etapa o de exportar.

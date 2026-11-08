@@ -5,6 +5,22 @@ description: Procesa un PDF, DOCX o MD que trae el usuario desde fuera (por ejem
 
 # La Chismosa del Barrio — Ingestar investigación externa
 
+## Navegador obligatorio (browser MCP)
+
+Ninguna cifra entra a `research/claims.json` sin haber sido abierta en el
+navegador real.
+
+1. Cada estadística del documento externo se contrasta contra su **fuente
+   primaria** abierta en el navegador MCP; se copian `stat`, `source`, `url`,
+   `year` y `accessed` de lo que se ve en pantalla.
+2. Guarda captura PNG de la fuente (`research/shots/<slug>.png`) cuando el dato
+   sea central para el pautado.
+3. Si la cifra no se puede verificar, **no se inventa**: se marca `[SIMULADO]` o
+   se sirve con `--simulated`.
+4. Si el navegador MCP no está conectado, detente y pide instalar la extensión y
+   abrir la sesión.
+5. `handoff` solo para login/2FA; nunca resuelvas captchas.
+
 ## Cuándo usarla
 
 - El usuario entrega un PDF, DOCX o MD producido fuera (z.ai, ChatGPT, un informe propio).

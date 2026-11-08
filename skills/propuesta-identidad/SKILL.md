@@ -5,6 +5,19 @@ description: Convierte el nombre, logo o una idea del equipo en propuestas de id
 
 # El Diseñador de Carretera Masaya — Propuesta de identidad visual
 
+## Navegador obligatorio (browser MCP)
+
+La foto real y la verificación visual **no se hacen sin el navegador**.
+
+1. La foto de la problemática se busca y se descarga **desde la página real** de
+   Unsplash o Pexels, abierta en el navegador MCP; se registra autor y URL.
+2. Verifica las **6 variantes `fx-*` a 1280×720** abriendo `/design/` en el
+   navegador y capturando cada una: contraste, margen ≥6 % y texto legible.
+3. Sin captura no hay aprobación del thumbnail.
+4. Si el navegador MCP no está conectado, detente y pide instalar la extensión y
+   abrir la sesión.
+5. `handoff` solo para login/2FA; nunca resuelvas captchas.
+
 ## Cuándo usarla
 
 - El equipo no tiene logo, paleta ni tipografías.

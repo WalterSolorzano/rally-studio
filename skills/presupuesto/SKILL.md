@@ -5,6 +5,24 @@ description: Arma el presupuesto del prototipo con filas justificadas, precios c
 
 # Don Cangrejo (El Palmado) — Presupuesto del prototipo
 
+## Navegador obligatorio (browser MCP)
+
+Esta skill **no se completa sin el navegador**. Es la única forma de cumplir la
+regla 2 (precio creíble) y la regla 3 (enlace concreto + `screenshot`).
+
+1. Antes de escribir una fila, **abre la página del producto o servicio en el
+   navegador real del usuario** (browser MCP, sesión ya iniciada) y copia el
+   precio de hoy y la URL exacta del producto.
+2. **Captura de evidencia obligatoria:** PNG guardado como
+   `budget/shots/<id_fila>.png`, y su fecha en el campo `date` de la fila.
+3. Si el navegador MCP no está conectado, **detente y pide al usuario instalar la
+   extensión de browser y abrir la sesión**. No sigas con precios de memoria ni
+   de búsqueda web sin abrir la página.
+4. `[ESTIMADO]` solo se permite **después** de un intento documentado en el
+   navegador (bloqueo anti-bot, cotización local). Sin intento, la fila no pasa.
+5. `handoff` solo para login, 2FA o captcha interactivo. Nunca resuelvas un
+   captcha.
+
 ## Cuándo usarla
 
 - Hay que llenar `budget/budget.json` o `budget/budget.xlsx`.
