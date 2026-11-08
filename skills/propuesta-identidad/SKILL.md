@@ -29,22 +29,26 @@ No la uses para el dossier de soluciones ni para contenido de retos: eso es
 
 ## Procedimiento
 
-1. Haz las preguntas de diseño antes de proponer: nombre del proyecto, a qué se dedica,
+1. **Primera pregunta, siempre: ¿ya existe una paleta aprobada?** Lee
+   `brand/palette.json` y `brand/tokens.css` y pregúntalo explícito. Si ya hay
+   paleta aprobada, se usa esa y aquí solo se verifica contraste y tokens; no se
+   propone otra.
+2. Haz las preguntas de diseño antes de proponer: nombre del proyecto, a qué se dedica,
    público, tono (sobrio / cálido / técnico), si hay logo o color obligatorio y en qué
    dispositivo se verá. Si el usuario ya las respondió en la conversación, no las repitas.
-2. Si hay logo (`brand/logo.png` o el que indique), extrae 2–3 colores dominantes. Si no
+3. Si hay logo (`brand/logo.png` o el que indique), extrae 2–3 colores dominantes. Si no
    hay, parte del nombre y del sector.
-3. Propón **2 direcciones** distintas, no una. Cada una trae:
+4. Propón **2 direcciones** distintas, no una. Cada una trae:
    - paleta de 5 colores con HEX y contraste del primario sobre el fondo (mínimo 4.5:1,
      objetivo 7:1);
    - pareja tipográfica (títulos + UI + datos) justificada en una línea;
    - 3 palabras de personalidad y 2 anti-ejemplos ("esto no es");
    - una frase de concepto para el logotipo.
-4. Recomienda una y explica por qué en dos líneas.
-5. Cuando el usuario elija, escribe `brand/palette.json` y `brand/tokens.css`, y sirve la
+5. Recomienda una y explica por qué en dos líneas.
+6. Cuando el usuario elija, escribe `brand/palette.json` y `brand/tokens.css`, y sirve la
    propuesta a la ventana (`--tab team --slot main` para identidad, `--tab resources
    --slot main` para piezas gráficas).
-6. Verifica contraste antes de dar por buena una paleta.
+7. Verifica contraste antes de dar por buena una paleta.
 
 ## El módulo de diseño (`design/`)
 
@@ -279,12 +283,43 @@ previa justificada por la rúbrica. Ver `skills/modelo-3d-blender/SKILL.md`.
 - Contraste WCAG AA como piso, AAA como meta.
 - Si el equipo ya fijó marca y no quiere cambiarla, esta skill no se ejecuta.
 
-## Herramientas opcionales
+## Criterios de diseño de UI (obligatorios)
 
-`ui-ux-pro-max`, `impeccable` y `design-system` **no son requisitos**. Si hacen falta,
-consúltalas con `python scripts/herramientas.py necesita "<tarea>"` e instala solo esa,
-una por tarea. Sin ellas la skill funciona: la identidad se resuelve con preguntas,
-contraste medido y tokens escritos a mano.
+Valen para cualquier app móvil, página web o prototipo de `site/`:
+
+1. **Plan antes de ejecutar.** No se escribe HTML ni CSS sin un plan aprobado de
+   una página: qué pantallas hay, qué muestra cada una, qué acción simula y qué
+   se ve primero. Sin plan aprobado no arranca el código.
+2. **Impeccable siempre.** Toda pregunta o decisión de diseño se resuelve con la
+   skill `impeccable` cargada; si no está disponible, `ui-ux-pro-max` o
+   `design-system`. Nunca se diseña de memoria.
+3. **Paleta primero.** Si `brand/palette.json` ya está aprobada, se usa; solo se
+   propone paleta nueva si no existe o el usuario pide cambiarla.
+4. **Responsive obligatorio.** Se prueban tres anchos en el navegador: 375 px
+   (móvil), 768 px (tablet) y 1280 px (desktop), con captura de cada uno. Sin los
+   tres, no está entregado.
+5. **Espaciado estandarizado.** Solo la escala de `DESIGN.md` (`xs 4, sm 8,
+   md 12, lg 16, xl 24`). Sin márgenes inventados por elemento.
+6. **Baneado lo genérico de IA:** cards como contenedor por defecto, morado
+   #7c3aed, glassmorphism, degradados decorativos, emojis como íconos, sombras
+   difusas y bordes redondeados en todo. La estructura se hace con jerarquía
+   tipográfica, filas y divisores hairline (doctrina cardless de `DESIGN.md`).
+7. **Visual antes que mecánico.** Lo que se entrega es un **recorrido por la UI
+   que simula cómo funciona**: el estado se ve en pantalla con datos de ejemplo
+   del brief, no formularios vacíos que solo existen para verse.
+8. **Poco y claro.** Cada página muestra solo lo que el jurado necesita para
+   entender el producto. Si un dato no ayuda, no va; nada de relleno.
+9. **Recursos.** Si falta imagen, ícono, modelo o patrón, se genera con
+   `modelo-3d-blender` o con un subagente y se sirve desde `assets/`.
+
+## Herramientas de diseño
+
+`impeccable` es **obligatoria** para todo criterio de diseño: se carga antes de
+opinar. `ui-ux-pro-max` y `design-system` son refuerzos que se consultan con
+`python scripts/herramientas.py necesita "<tarea>"` solo si impeccable no cubre
+la tarea. La identidad se resuelve igual con preguntas, contraste medido y tokens
+escritos a mano; esas herramientas guían el criterio, no sustituyen
+`brand/tokens.css`.
 
 ## Punteros
 

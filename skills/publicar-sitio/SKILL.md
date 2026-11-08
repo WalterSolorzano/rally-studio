@@ -24,6 +24,27 @@ Publicar y **verificar** el sitio no se hace sin el navegador.
 - El usuario termina el prototipo y necesita una URL pública.
 - Pide "súbelo", "publícalo" o "que tenga link".
 
+## Compuerta de diseño (antes de construir)
+
+No se construye ni publica la web demo sin cumplir esto:
+
+1. **Plan aprobado primero:** pantallas, qué muestra cada una, qué acción simula
+   y orden de aparición. Sin plan aceptado por el usuario no se escribe código.
+2. **Preguntar si ya hay paleta aprobada** (`brand/palette.json`, `brand/tokens.css`)
+   antes de proponer colores nuevos.
+3. **Preguntas de diseño con `impeccable`** (o `ui-ux-pro-max` / `design-system`
+   si no está), no de memoria. Criterios completos en
+   `skills/propuesta-identidad/SKILL.md` → "Criterios de diseño de UI".
+4. **Responsive obligatorio:** 375 / 768 / 1280 px verificados en el navegador,
+   con captura de cada ancho.
+5. **Cardless y sin genérico de IA:** sin cards por defecto, sin morado #7c3aed,
+   sin glassmorphism, sin emojis como íconos. Espaciado solo con la escala de
+   `DESIGN.md` (4/8/12/16/24).
+6. **Se entrega un recorrido visual**, no un formulario: el sitio simula el
+   producto con datos del brief. Poco contenido, cero relleno.
+7. **Recursos faltantes:** `modelo-3d-blender` o un subagente los genera y quedan
+   en `assets/` con el nombrado `asset_<shotlist_id>_<descripcion>.<ext>`.
+
 ## Procedimiento
 
 1. Verifica que `site/index.html` existe y abre bien en local.
