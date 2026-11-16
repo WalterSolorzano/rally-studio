@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- El nombre que aparece bajo el icono en el teléfono. -->
+    <string name="app_name">Rally</string>
+
+    <!--
+      La única línea que hay que editar para usar esta app con otro proyecto.
+
+      Acepta cualquier dirección que el teléfono pueda abrir:
+        - un servidor en la misma red:  http://192.168.1.50:8000/
+        - un túnel privado:             https://algo.ts.net/
+        - un sitio publicado:           https://usuario.github.io/repo/dashboard/
+
+      Si se deja tal cual (texto ADDR), la app abre una pantalla para escribir la
+      dirección a mano y la recuerda. Sirve para probar sin recompilar.
+    -->
+    <string name="app_url" translatable="false">ADDR</string>
+</resources>
