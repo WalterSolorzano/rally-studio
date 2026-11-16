@@ -60,7 +60,6 @@ import sys
 import unicodedata
 from dataclasses import dataclass, field, asdict
 from pathlib import Path
-from typing import Iterable
 
 
 # ---------------------------------------------------------------------------

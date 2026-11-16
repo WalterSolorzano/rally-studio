@@ -7,8 +7,10 @@ con IA gratis limitada, sin servidor local por proyecto.
 ## Arquitectura
 - **Frontend (isla):** páginas estáticas en GitHub Pages/Netlify generadas por proyecto
   (`scripts/gen_pagina_diseno.py`). Cada página llama a la isla.
-- **Backend único:** `scripts/rally_service.py` desplegado una vez en Render/Fly/Railway
-  (`deploy/Dockerfile` + `deploy/render.yaml`).
+- **Backend único:** `scripts/rally_service.py`. Ya **no se aloja en Render** (retirado
+  en 2026-11: dormía a los 15 min y obligaba a un `deploy/Dockerfile`). Corría una sola
+  vez por equipo, y para que otras máquinas lo alcancen se abre con un túnel privado
+  (Tailscale) o se expone la misma URL con `RALLY_AI_URL` apuntando a él.
   Secretos del host, nunca en el repo: `RALLY_AI_URL`, `RALLY_AI_KEY`, `RALLY_AI_MODEL`,
   `RALLY_VISION_MODEL`.
 - **CORS:** dominios de las páginas publicadas vía `RALLY_ALLOWED_ORIGINS` (CSV).
@@ -42,7 +44,7 @@ con IA gratis limitada, sin servidor local por proyecto.
 | Panel "Estilo con IA" en el editor | `design/index.html` | Hecho |
 | Endpoint `/api/ai/design` (paleta + fuentes, con visión) | `scripts/rally_service.py` | Ya existía (diff local) |
 | Generador de página por proyecto | `scripts/gen_pagina_diseno.py` | Hecho |
-| Artefactos de despliegue | `deploy/Dockerfile`, `deploy/render.yaml`, `.env.example` | Hecho |
+| Artefactos de despliegue | `.env.example`, túnel privado (Tailscale) | Render retirado 2026-11 |
 | Publicación con la isla configurada | `.github/workflows/pages.yml` | Hecho |
 | Rate limit por IP y ventana en la isla | `scripts/rally_service.py` | Hecho (autorizado) |
 | Rotación de claves en la isla | `scripts/rally_service.py` | Hecho (autorizado) |
@@ -50,22 +52,23 @@ con IA gratis limitada, sin servidor local por proyecto.
 
 ## Cómo se usa
 
-1. **Levantar la isla** (una vez, gratis):
+1. **Levantar el servicio** (una vez, en tu máquina):
    ```bash
-   docker build -f deploy/Dockerfile -t rally-ia-isla .
-   docker run -p 8080:8080 --env-file .env rally-ia-isla
+   python scripts/rally_service.py
    ```
-   O desplegar `deploy/render.yaml` en Render y setear los secretos
-   `RALLY_AI_URL`, `RALLY_AI_KEY`, `RALLY_AI_MODEL`, `RALLY_VISION_MODEL`
-   y la variable `RALLY_ALLOWED_ORIGINS` con los dominios publicados.
+   Imprime la llave maestra del proyecto (`data/acceso.txt`). Desde ahí se reparten
+   invitaciones en `admin.html`. Para que otra persona lo alcance sin publicar nada,
+   abre la misma URL con un túnel privado. Si algún día quieres hosting, la variable
+   `RALLY_ALLOWED_ORIGINS` del servicio es la que autoriza dominios publicados.
 
 2. **Publicar la página de un proyecto:**
    ```bash
-   set RALLY_AI_BASE_URL=https://ralli-ia-isla.onrender.com
+   set RALLY_AI_BASE_URL=https://<tu-tunel-o-tu-url>/api/ai
    python scripts/gen_pagina_diseno.py --slug equipo-nicaragua
    ```
    La carpeta `site/diseno/` queda lista (estática) con `config.js` apuntando a la isla.
-   GitHub Pages la publica en el mismo push (`design/` y `site/`).
+   GitHub Pages la publica en el mismo push (`design/` y `site/`). Sin `RALLY_AI_BASE_URL`
+   la página sale sin IA: las llamadas al backend se omiten y el panel ofrece el prompt.
 
 3. **Rotar la clave:** cambiar `RALLY_AI_KEY` en el panel del host. Nunca está en el repo.
    Para tener respaldo automático, setear `RALLY_AI_KEYS=clave2,clave3`; la isla

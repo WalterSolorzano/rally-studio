@@ -36,7 +36,6 @@ import shutil
 import subprocess
 import sys
 import tempfile
-import wave
 from pathlib import Path
 
 import numpy as np

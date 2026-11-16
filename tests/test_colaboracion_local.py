@@ -1,4 +1,4 @@
-from tests.support import auth, bootstrap, call, claim
+from tests.support import auth, bootstrap, call, claim, entrar
 
 
 def test_dos_miembros_editan_y_el_segundo_recibe_conflicto(servidor):
@@ -27,7 +27,11 @@ def test_revocado_pierde_acceso(servidor):
     assert status == 401
 
 
-def test_proyecto_sin_miembros_sigue_abierto(servidor):
-    base, _ = servidor
-    status, body, _ = call("GET", base + "/api/sections?project=main")
-    assert status == 200
+def test_proyecto_sin_miembros_exige_llave(servidor):
+    base, data_dir = servidor
+    status, _, _ = call("GET", base + "/api/sections?project=main")
+    assert status == 401
+    session = entrar(base, data_dir)
+    status, body, _ = call("GET", base + "/api/sections?project=main",
+                           headers=auth(session))
+    assert status == 200 and body["ok"] is True

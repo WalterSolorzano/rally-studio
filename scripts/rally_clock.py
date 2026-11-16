@@ -6,11 +6,8 @@ import time
 import datetime
 import json
 import pathlib
-import sys
-import io
-
-if sys.platform == "win32":
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+from comun import utf8
+utf8()
 
 BRIEF_PATH = pathlib.Path("brief.json")
 

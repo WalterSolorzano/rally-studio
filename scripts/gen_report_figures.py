@@ -20,6 +20,11 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "docs" / "figures"
 PREVIEW = Path.home() / "AppData" / "Local" / "Temp" / "opencode" / "rally_fig_preview"
 
+import sys  # noqa: E402
+
+sys.path.insert(0, str(ROOT / "scripts"))
+from comun import COLORES, ventanas  # noqa: E402  (fracciones de la rubrica)
+
 palette = json.loads((ROOT / "brand" / "palette.json").read_text(encoding="utf-8"))
 PRIMARY = palette["primary"]
 SECONDARY = palette["secondary"]
@@ -204,11 +209,14 @@ def fig04_pautado() -> None:
 
 # ---------------------------------------------------------------- figura 5
 def fig05_pasv() -> None:
+    # Antes estas cifras estaban a mano y no cuadraban con la rubrica: el Acto III
+    # arrancaba en el segundo 60 y el IV en el 95, cuando los cortes reales son
+    # 39.6 y 74.4. Ahora salen de `comun.ventanas()`.
+    palabras_totales = 255
     acts = [
-        ("I · Dolor", 0, 20, "45 palabras", SECONDARY),
-        ("II · Caja negra", 20, 40, "90 palabras", PRIMARY),
-        ("III · Prefactibilidad", 60, 35, "75 palabras", ACCENT),
-        ("IV · Cierre", 95, 25, "55 palabras", INK),
+        ("%s · %s" % (v["id"], v["etiqueta"]), v["ini"], v["dur"],
+         "%d palabras" % round(palabras_totales * v["fraccion"]), COLORES[v["id"]])
+        for v in ventanas()
     ]
     fig, ax = plt.subplots(figsize=(7.0, 1.95))
     for name, start, width, words, color in acts:

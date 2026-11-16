@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """Arma el Excel del banco de ganadores SIRLI.
 
 Cruza winners.jsonl + meta/videos.jsonl + transcripts/*.json y escribe

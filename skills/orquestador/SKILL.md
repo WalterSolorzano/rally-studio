@@ -324,21 +324,7 @@ Idioma: español.
 ```
 
 ## Cómo sugerir un título o nombre de proyecto o producto
-
-Sigue los patrones reales del banco SIRLI (`research/sirli/winners.jsonl`):
-
-- **Inventado**: NEXORA, KINETIX
-- **Objeto**: AVOCADO, LUMBRE
-- **Compuesto**: NEXO-SOSTENIBLE
-- **Territorio + número**: ALTIPLANO 360
-- **Sufijo técnico**: BIOINNOVATECH
-- **Juego**: DESUCHO, ERROR 404
-
-Reglas:
-- Nunca repites el nombre del proyecto más de una vez por sección.
-- No hardcodees el nombre en scripts; léelo siempre de `brief.json`.
-- El nombre debe entenderse fuera del país (Latam) o tener arraigo cultural
-  (Nacional).
+Compartido: `skills/_comun/nombres.md`. Léelo antes de aplicar esta sección.
 
 ## Cómo enseñar visualmente
 
@@ -350,12 +336,7 @@ Reglas:
 - Nombrado de assets: `asset_<shotlist_id>_<descripcion>.<ext>`.
 
 ## Cómo redactar guiones cuidando la pronunciación y el orden de palabras
-
-- Escribe para ser escuchado, no leído: oraciones cortas, sujeto-verbo-objeto,
-  evita subordinadas encajadas.
-- Acentos reales en español; acrónimos se deletrean si no son de uso común.
-- Cada cambio de idea necesita una pausa o transición explícita.
-- Máximo 240-270 palabras (≈130-140 WPM) para ≤ 120 s de audio.
+Compartido: `skills/_comun/guiones.md`. Léelo antes de aplicar esta sección.
 
 ## Cómo crear modelos 3D (referencia para el director)
 

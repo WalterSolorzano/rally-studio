@@ -62,6 +62,7 @@
   let statusEl = null;
   let hasMeta = false;
   let triedInitialSave = false;
+  let primeraCarga = true;     // el primer barrido no avisa: es el estado que ya había
   let accessRevoked = false;
   let serverHasContent = false;
 
@@ -195,6 +196,18 @@
     statusEl.hidden = false;
   }
 
+  // "Alguien tocó algo": la app escucha este evento y avisa en el teléfono.
+  // No notifica los cambios propios (sería ruido constante al escribir).
+  function avisarCambio(titulo, texto, clave) {
+    try {
+      document.dispatchEvent(new CustomEvent("rally:aviso", {
+        detail: { tipo: "cambio", id: "sec-" + clave + "-" + Date.now(), titulo: titulo, texto: texto, tab: "pautado", slot: clave, fuente: "equipo", url: "" },
+      }));
+    } catch (e) {
+      /* sin CustomEvent no hay aviso: el cambio se aplica igual */
+    }
+  }
+
   function withProject(path) {
     const sep = path.indexOf("?") >= 0 ? "&" : "?";
     return path + sep + "project=" + encodeURIComponent(projectId());
@@ -322,6 +335,7 @@
     if (res && res.body) lastSeq = Number(res.body.seq) || lastSeq;
     writeState(state);
     ready = true;
+    primeraCarga = false;
     saveMeta();
     renderLocks();
     setStatus("Sincronizado · equipo en vivo", "ok");
@@ -376,6 +390,7 @@
     Object.keys(changed).forEach(function (key) {
       const item = changed[key];
       if (!item || LOCAL_ONLY.has(key)) return;
+      const antes = Number(versions[key] || 0);
       versions[key] = Number(item.version) || 0;
       locks[key] = item;
       renderLockBadge(key, item);
@@ -388,6 +403,9 @@
       if (baseline[key] !== undefined && JSON.stringify(item.data) === baseline[key]) return;
       incoming[key] = item.data;
       baseline[key] = JSON.stringify(item.data);
+      if (Number(item.version) > antes && item.updated_by && String(item.updated_by) !== actor()) {
+        avisarCambio(labelFor(key), String(item.updated_by) + " actualizó " + labelFor(key), key);
+      }
     });
     if (Object.keys(incoming).length) {
       Object.keys(incoming).forEach(function (key) { applySection(state, key, incoming[key]); });

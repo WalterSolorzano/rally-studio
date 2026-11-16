@@ -76,6 +76,29 @@
     return leerVistos().indexOf(id) !== -1;
   }
 
+  // Todo lo que entra por el buzón avisa a la app. `notify.js` escucha este
+  // evento y decide si muestra una notificación del sistema; el puente no
+  // necesita permiso ni sabe si el navegador lo concede.
+  function avisar(env, tipo) {
+    try {
+      var payload = env && env.payload && typeof env.payload === "object" ? env.payload : {};
+      var texto = textoDe(payload);
+      var detalle = {
+        tipo: tipo || "entrega",
+        id: String((env && env.id) || ""),
+        titulo: String((env && (env.title || env.source)) || "Rally Studio"),
+        texto: texto,
+        tab: String((env && env.tab) || ""),
+        slot: String((env && env.slot) || ""),
+        fuente: String((env && env.source) || ""),
+        url: typeof payload.url === "string" ? payload.url : ""
+      };
+      document.dispatchEvent(new CustomEvent("rally:aviso", { detail: detalle }));
+    } catch (e) {
+      /* sin CustomEvent: la notificación es un extra, no un requisito */
+    }
+  }
+
   function textoDe(payload) {
     if (!payload || typeof payload !== "object") return "";
     if (typeof payload.text === "string") return payload.text;
@@ -213,6 +236,28 @@
         st.budget = filas;
         cambio = true;
       }
+    } else if (tab === "timeline") {
+      // La pestaña de cierre no tiene un campo de texto: sus avisos son del
+      // tipo "ya terminó, mira el resumen". Se guardan en `avisos` para no
+      // perderlos y, si traen `payload.url`, el botón los abre.
+      var previos = Array.isArray(st.avisos) ? st.avisos : [];
+      // Un mismo aviso puede volver en cada sondeo: entra una sola vez por id.
+      var repetido = previos.some(function (a) {
+        return a && a.id && a.id === env.id;
+      });
+      if (repetido) return false;
+      var aviso = {
+        id: String(env.id || ""),
+        title: String(env.title || ""),
+        text: textoDe(payload),
+        url: payload && typeof payload.url === "string" ? payload.url : "",
+        source: String(env.source || ""),
+        ts: Date.now()
+      };
+      if (!Array.isArray(st.avisos)) st.avisos = [];
+      st.avisos.unshift(aviso);
+      st.avisos = st.avisos.slice(0, 20);
+      cambio = true;
     } else if (CAMPOS_POR_TAB[tab] && payload && typeof payload === "object") {
       var campos = CAMPOS_POR_TAB[tab];
       for (var i = 0; i < campos.length; i++) {
@@ -304,6 +349,7 @@
 
   function puedeAceptar(tab) {
     if (tab === "pautado" || tab === "script" || tab === "budget") return true;
+    if (tab === "timeline") return true; // aviso de cierre: queda guardado y abre el resumen
     return !!CAMPOS_POR_TAB[tab];
   }
 
@@ -341,7 +387,7 @@
       var apply = document.createElement("button");
       apply.type = "button";
       apply.setAttribute("data-action", "apply");
-      apply.textContent = "Aceptar";
+      apply.textContent = item.tab === "timeline" ? "Abrir" : "Aceptar";
       actions.appendChild(apply);
     }
 
@@ -396,9 +442,30 @@
       var item = items[i];
       if (!item || !item.id) continue;
       vivos[item.id] = true;
+      if (item.kind === "notice") {
+        // Avance de un agente: no es una propuesta que se acepta o se descarta,
+        // es bitácora. Se pliega sola y el sobre queda en el buzón hasta que
+        // expire, así el teléfono también la ve al abrir.
+        var cid = item.id;
+        if (!rendered[cid]) {
+          rendered[cid] = true;
+          pedirJSON("/api/content/" + encodeURIComponent(cid))
+            .then(function (env) {
+              if (fusionar(env)) {
+                marcarVisto(cid);
+                avisar(env, "avance");
+              }
+            })
+            .catch(function () {
+              delete rendered[cid];
+            });
+        }
+        continue;
+      }
       if (yaVisto(item.id) || rendered[item.id]) continue;
       cont.appendChild(crearTarjeta(item));
       rendered[item.id] = true;
+      avisar(item, "propuesta");
     }
 
     // Lo que ya no está en el manifiesto deja de mostrarse.
@@ -421,6 +488,16 @@
       .then(function (env) {
         return postear("/api/content/" + encodeURIComponent(id) + "/apply").then(function () {
           if (env) fusionar(env);
+          // Un aviso de cierre trae a dónde ir (normalmente el resumen de la
+          // partida). Se abre al aceptar, en otra pestaña.
+          try {
+            var destino = env && env.payload && env.payload.url;
+            if (env && env.tab === "timeline" && typeof destino === "string" && destino) {
+              window.open(destino, "_blank");
+            }
+          } catch (e) {
+            /* sin permiso de ventana: el aviso queda guardado igual */
+          }
           marcarVisto(id);
           quitarTarjeta(id);
           ok = true;

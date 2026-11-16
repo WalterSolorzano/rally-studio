@@ -1,12 +1,24 @@
 import urllib.error
 import urllib.request
 
-from tests.support import auth, bootstrap, call
+from tests.support import auth, bootstrap, call, entrar
 
 
-def _status(url):
+class _SinRedireccion(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, *args, **kwargs):
+        return None
+
+
+def _status(url, headers=None, sin_redireccion=False):
+    req = urllib.request.Request(url)
+    for key, value in (headers or {}).items():
+        req.add_header(key, value)
+    opener = (
+        urllib.request.build_opener(_SinRedireccion) if sin_redireccion
+        else urllib.request.build_opener()
+    )
     try:
-        with urllib.request.urlopen(url, timeout=6) as resp:
+        with opener.open(req, timeout=6) as resp:
             resp.read(64)
             return resp.status
     except urllib.error.HTTPError as exc:
@@ -33,9 +45,12 @@ def test_private_project_files_are_not_served(servidor):
          {"data": {"text": "secreto"}, "base_version": 0},
          headers=auth(boot["admin_token"]))
 
-    assert _status(base + "/data/state.json") == 404
-    assert _status(base + "/data/members.db") == 404
-    assert _status(base + "/data/sections.db") == 404
+    cabeceras = auth(boot["admin_token"])
+    assert _status(base + "/data/state.json?project=equipo01", cabeceras) == 404
+    assert _status(base + "/data/members.db?project=equipo01", cabeceras) == 404
+    assert _status(base + "/data/sections.db?project=equipo01", cabeceras) == 404
+    # Sin sesion ni se llega al archivo: la puerta manda al login.
+    assert _status(base + "/data/state.json", sin_redireccion=True) == 302
 
 
 def test_asset_upload_requires_a_session(servidor):
@@ -51,13 +66,19 @@ def test_invalid_project_id_is_rejected(servidor):
 
 
 def test_empty_project_does_not_return_another_projects_state(servidor):
-    base, _ = servidor
+    base, data_dir = servidor
     boot = bootstrap(base, "equipo01", "Ana")
     call("POST", base + "/api/sections/pautado.problema?project=equipo01",
          {"data": {"text": "solo de equipo01"}, "base_version": 0},
          headers=auth(boot["admin_token"]))
 
-    status, body, _ = call("GET", base + "/api/state?project=equipo02")
+    # equipo02 no tiene miembros: sin llave no se ve nada, ni el estado ajeno.
+    status, _, _ = call("GET", base + "/api/state?project=equipo02")
+    assert status == 401
+
+    session = entrar(base, data_dir, project="equipo02")
+    status, body, _ = call("GET", base + "/api/state?project=equipo02",
+                           headers=auth(session))
     assert status == 200
     assert body["state"] == {}
 

@@ -6,12 +6,10 @@ Delegado en checks/campo_chars.py: una sola fuente de verdad para los limites.
 Lee los limites de docs/pautado_template.docx cuando la plantilla los declara.
 Regla innegociable: si alguna seccion excede el maximo, devuelve codigo 1.
 """
-import io
 import pathlib
 import sys
-
-if sys.platform == "win32":
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+from comun import utf8
+utf8()
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 if str(RAIZ) not in sys.path:

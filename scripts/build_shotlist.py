@@ -22,8 +22,10 @@ import csv
 import json
 import re
 import sys
-import io
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from comun import utf8  # noqa: E402
 
 RAIZ = Path(__file__).resolve().parents[1]
 DIR_SHOTS = RAIZ / "shots"
@@ -189,6 +191,5 @@ def compilar() -> int:
 
 
 if __name__ == "__main__":
-    if sys.platform == "win32":
-        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+    utf8()
     sys.exit(compilar())

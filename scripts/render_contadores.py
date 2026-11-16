@@ -12,7 +12,6 @@ Sin esas tres cosas no graba nada: imprime el motivo y sale con codigo 2.
 Salida: assets/2d/asset_A4_contadores.mp4
 """
 from __future__ import annotations
-
 import argparse
 import json
 import subprocess
@@ -20,11 +19,8 @@ import sys
 import tempfile
 from pathlib import Path
 from urllib.parse import quote
-
-if sys.platform == "win32":
-    import io
-
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+from comun import utf8
+utf8()
 
 ROOT = Path(__file__).resolve().parents[1]
 BUDGET_JSON = ROOT / "budget" / "budget.json"
@@ -34,7 +30,7 @@ PLANTILLA = ROOT / "plantillas" / "contadores" / "index.html"
 SALIDA = ROOT / "assets" / "2d" / "asset_A4_contadores.mp4"
 
 sys.path.insert(0, str(ROOT / "scripts"))
-from moneda import contexto, costo_unitario, formato  # noqa: E402
+from moneda import contexto, costo_unitario  # noqa: E402
 
 
 def _leer_json(ruta: Path, default):

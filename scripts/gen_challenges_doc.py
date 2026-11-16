@@ -12,16 +12,14 @@ Estructura:
 import json
 import pathlib
 import sys
-import io
 import docx
 from docx.shared import Pt, Inches, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.oxml import OxmlElement, parse_xml
 from docx.oxml.ns import nsdecls, qn
-
-if sys.platform == "win32":
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+from comun import utf8
+utf8()
 
 CHALLENGES_PATH = pathlib.Path("research/challenges.json")
 BRIEF_PATH = pathlib.Path("brief.json")

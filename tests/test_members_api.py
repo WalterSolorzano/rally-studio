@@ -1,4 +1,4 @@
-from tests.support import auth, bootstrap, call, claim
+from tests.support import auth, bootstrap, call, claim, entrar
 
 
 def test_claim_returns_session_and_second_claim_fails(servidor):
@@ -50,9 +50,13 @@ def test_admin_revokes_member_and_token_dies(servidor):
     assert status2 == 401
 
 
-def test_project_without_members_stays_open(servidor):
-    base, _ = servidor
-    status, body, _ = call("GET", base + "/api/sections?project=main")
+def test_project_without_members_requires_the_key(servidor):
+    base, data_dir = servidor
+    status, _, _ = call("GET", base + "/api/sections?project=main")
+    assert status == 401
+    session = entrar(base, data_dir)
+    status, body, _ = call("GET", base + "/api/sections?project=main",
+                           headers=auth(session))
     assert status == 200
     assert body["ok"] is True
 

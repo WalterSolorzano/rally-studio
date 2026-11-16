@@ -29,6 +29,17 @@
   var lastEditing = "";
   var editingAt = 0;
   var seenCursor = null;
+  var vistos = Object.create(null);   // actores ya anunciados
+  var primeraVez = true;              // el primer sondeo siembra la lista sin avisar
+
+  // Aviso para el teléfono: lo recoge notify.js y decide si suena.
+  function avisar(tipo, titulo, texto, url) {
+    try {
+      document.dispatchEvent(new CustomEvent("rally:aviso", {
+        detail: { tipo: tipo, id: "pre-" + Date.now() + "-" + Math.random().toString(36).slice(2, 6), titulo: titulo, texto: texto, tab: "", slot: "", fuente: "equipo", url: url || "" },
+      }));
+    } catch (e) {}
+  }
 
   function editingKeyFrom(target) {
     var node = target;
@@ -71,6 +82,14 @@
       (document.body || document.documentElement).appendChild(bar);
     }
     var otros = (list || []).filter(function (a) { return a.actor !== myName; });
+    // Quién entra por primera vez se avisa una sola vez por sesión.
+    otros.forEach(function (a) {
+      var clave = String(a.actor || "");
+      if (!clave || vistos[clave]) return;
+      if (!primeraVez) { vistos[clave] = true; return; }
+      vistos[clave] = true;
+      avisar("equipo", clave + " entró al proyecto", clave + " ya está en línea", "");
+    });
     bar.textContent = "";
     otros.forEach(function (a) {
       var chip = document.createElement("span");
@@ -87,6 +106,7 @@
       }
       bar.appendChild(chip);
     });
+    primeraVez = false;
   }
 
   function pollPresence() {
@@ -112,9 +132,11 @@
         var cambios = data.changes || [];
         cambios.forEach(function (ch) {
           if (ch.id <= (seenCursor || 0)) return;
+          var que = humanPath(ch.path);
           if (typeof showToast === "function") {
-            showToast("🌐 " + ch.actor + " actualizó " + humanPath(ch.path));
+            showToast(ch.actor + " actualizó " + que);
           }
+          avisar("cambio", ch.actor + " actualizó " + que, String(ch.path || ""), "");
         });
         seenCursor = Math.max(seenCursor, data.cursor || 0);
       })

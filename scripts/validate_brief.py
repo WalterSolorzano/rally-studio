@@ -6,10 +6,9 @@ Ejecutar antes de cualquier generador.
 import json
 import sys
 import pathlib
-import io
 
-# Forzar UTF-8 en stdout para Windows
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+from comun import utf8
+utf8()
 
 BRIEF_PATH = pathlib.Path("brief.json")
 

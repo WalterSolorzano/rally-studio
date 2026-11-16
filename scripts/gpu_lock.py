@@ -57,15 +57,17 @@ import shlex
 import subprocess
 import sys
 import time
-import io
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from comun import utf8  # noqa: E402
 
 RAIZ = Path(__file__).resolve().parents[1]
 DIR_LOCKS = RAIZ / "locks"
 ARCHIVO_ENV = RAIZ / "env.json"
 
 PRIORIDADES = ("baja", "media", "alta")
-RECURSOS_DEFecto = ("gpu", "cpu", "ram")
+RECURSOS_DEFECTO = ("gpu", "cpu", "ram")
 SLOTS_DEFECTO = {"gpu": 1, "cpu": 1, "ram": 1}
 TTL_DEFAULT_MIN = 25  # > presupuesto de 20 min de render_watch.py
 ROBO_PACIENCIA_S = 5 * 60  # un esperador alta espera 5 min antes de robar a baja
@@ -74,9 +76,8 @@ ROBO_PACIENCIA_S = 5 * 60  # un esperador alta espera 5 min antes de robar a baj
 # ---------------------------------------------------------------- infra ------
 
 def _salida_utf8() -> None:
-    if sys.platform == "win32":
-        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
-        sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
+    """Consola en UTF-8 (la implementacion vive en `comun.utf8`)."""
+    utf8()
 
 
 def _env() -> dict:
@@ -333,7 +334,7 @@ def acquire(resources: list, owner: str, priority: str = "media",
 
 def release(owner: str, resources: list | None = None) -> bool:
     """Libera los recursos del propio proceso (o huerfanos que limpite)."""
-    recursos = resources or RECURSOS_DEFecto
+    recursos = resources or RECURSOS_DEFECTO
     ok = True
     for recurso in recursos:
         datos = _leer(recurso)
@@ -372,7 +373,7 @@ def _estado_texto() -> int:
     slots = _slots()
     salio_aviso = 0
     hay = 0
-    for recurso in RECURSOS_DEFecto:
+    for recurso in RECURSOS_DEFECTO:
         datos = _leer(recurso)
         cap = slots.get(recurso, 1)
         if datos is None:
@@ -401,16 +402,36 @@ def _estado_texto() -> int:
 
 
 def _run(args: argparse.Namespace, cmd: list, recursos: list) -> int:
-    """Toma los locks y lanza el hijo: el lock vive mientras vive el hijo."""
+    """Toma los locks y lanza el hijo: el lock vive mientras vive el hijo.
+
+    Cada lanzamiento deja un renglon en `logs/produccion.jsonl` (ver
+    `registro_produccion.py`): asi el resumen de cierre sabe cuantos renders
+    hubo, cuanto tiempo de maquina costaron y si hubo que rehacer alguno.
+    """
+    try:
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        from registro_produccion import registrar
+    except Exception:  # noqa: BLE001
+        registrar = None
+
     hijo = subprocess.Popen(cmd)
     print(f"[GPU-LOCK] Comando: {shlex.join(cmd)} (pid hijo={hijo.pid})")
+    inicio = time.time()
     ok = acquire(recursos, args.owner, args.priority,
                  timeout_s=args.timeout, child_pid=hijo.pid)
     if not ok:
         hijo.kill()
+        if registrar:
+            registrar("bloqueo", comando=shlex.join(cmd), owner=args.owner,
+                      segundos=round(time.time() - inicio, 1))
         return 3
     codigo = hijo.wait()
     release(args.owner, recursos)
+    if registrar:
+        registrar("render", comando=shlex.join(cmd), owner=args.owner,
+                  ok=(codigo == 0), rc=codigo,
+                  segundos=round(time.time() - inicio, 1),
+                  recursos=",".join(recursos))
     return codigo
 
 
@@ -430,7 +451,7 @@ def main() -> None:
     r = sp.add_parser("release", help="Liberar (propio o huerfano); --force solo director")
     r.add_argument("--owner", default=None)
     r.add_argument("--resource", "--resources", dest="resources",
-                   default=",".join(RECURSOS_DEFecto))
+                   default=",".join(RECURSOS_DEFECTO))
     r.add_argument("--force", action="store_true")
 
     sp.add_parser("status", help="Estado de los recursos")

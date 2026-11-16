@@ -63,9 +63,36 @@ def servidor(tmp_path):
         proc.kill()
 
 
+_SESION = {"token": ""}
+
+
+@pytest.fixture(autouse=True)
+def sesion(servidor):
+    """La puerta del servicio exige llave: cada prueba abre sesion con la maestra."""
+    base, content_dir = servidor
+    llave = (content_dir.parent / "acceso.txt").read_text(encoding="utf-8").strip()
+    estado, cuerpo = post_json(
+        base + "/api/entrar?project=main", {"llave": llave, "nombre": "Admin"}
+    )
+    assert estado == 200, cuerpo
+    _SESION["token"] = cuerpo["session"]
+    yield
+    _SESION["token"] = ""
+
+
+def _abrir(url, data=None, metodo="GET", cabeceras=None):
+    req = urllib.request.Request(url, data=data, method=metodo)
+    req.add_header("Content-Type", "application/json")
+    if _SESION["token"]:
+        req.add_header("Authorization", "Bearer " + _SESION["token"])
+    for clave, valor in (cabeceras or {}).items():
+        req.add_header(clave, valor)
+    return req
+
+
 def get_json(url):
     try:
-        with urllib.request.urlopen(url, timeout=5) as resp:
+        with urllib.request.urlopen(_abrir(url), timeout=5) as resp:
             return resp.status, json.loads(resp.read().decode("utf-8"))
     except urllib.error.HTTPError as exc:
         cuerpo = exc.read().decode("utf-8")
@@ -74,9 +101,7 @@ def get_json(url):
 
 def post_json(url, payload=None):
     data = b"" if payload is None else json.dumps(payload).encode("utf-8")
-    req = urllib.request.Request(
-        url, data=data, method="POST", headers={"Content-Type": "application/json"}
-    )
+    req = _abrir(url, data=data, metodo="POST")
     try:
         with urllib.request.urlopen(req, timeout=5) as resp:
             return resp.status, json.loads(resp.read().decode("utf-8"))
@@ -158,10 +183,7 @@ def test_content_schema_lists_tabs(servidor):
 
 def _request(base, path, metodo="GET", cuerpo=None, cabeceras=None):
     data = json.dumps(cuerpo).encode("utf-8") if cuerpo is not None else None
-    req = urllib.request.Request(base + path, data=data, method=metodo)
-    req.add_header("Content-Type", "application/json")
-    for clave, valor in (cabeceras or {}).items():
-        req.add_header(clave, valor)
+    req = _abrir(base + path, data=data, metodo=metodo, cabeceras=cabeceras)
     try:
         with urllib.request.urlopen(req, timeout=10) as resp:
             return resp.status, dict(resp.headers), resp.read().decode("utf-8")

@@ -14,7 +14,6 @@ import html
 import json
 import shutil
 import subprocess
-import sys
 import tempfile
 from datetime import date
 from pathlib import Path

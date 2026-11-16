@@ -19,17 +19,24 @@ import argparse
 import csv
 import html
 import re
+import sys
 from pathlib import Path
+
+RAIZ = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(RAIZ / "scripts"))
+from comun import ventanas  # noqa: E402  (base compartida: fracciones y colores)
 
 CSV = Path("script/shotlist.csv")
 SALIDA = Path("docs/storyboard_visual.html")
 TITULO = "Storyboard de rodaje"
 
+# Ventanas y colores salen de la base compartida. Antes estaban escritos a mano
+# aqui y el Acto I salia de rojo, que este proyecto reserva para "grabando".
 ACTOS = {
-    "I": ("#f81110", "Acto I · Dolor", "0:00.0 – 0:20.4"),
-    "II": ("#1d45b9", "Acto II · Caja negra", "0:20.4 – 1:00.0"),
-    "III": ("#2aa7ad", "Acto III · Prefactibilidad", "1:00.0 – 1:34.8"),
-    "IV": ("#111111", "Acto IV · Cierre", "1:34.8 – 2:00.0"),
+    v["id"]: (v["color"], "Acto %s · %s" % (v["id"], v["etiqueta"]),
+              "%d:%04.1f – %d:%04.1f" % (v["ini"] // 60, v["ini"] % 60,
+                                          v["fin"] // 60, v["fin"] % 60))
+    for v in ventanas()
 }
 
 CAMAS = {
@@ -389,7 +396,7 @@ def fila_plan(fila: dict) -> str:
         <p class="no"><b>No debe verse:</b> {html.escape(ficha.get("no", ""))}</p>
         <details><summary>Cámara, rúbrica y dueño</summary>
           <p>{html.escape(ficha.get("camara", ""))}</p>
-          <p class="chips">{chips}<span class="chip">{html.escape(fila["owner"])}</span></p>
+          <p class="chips">{chips}<span class="chip">{html.escape(fila.get("owner") or "sin dueño")}</span></p>
         </details>
       </div>
       <div class="col-buscar"><h4>Qué buscar</h4><ul>{buscar}</ul></div>

@@ -63,6 +63,21 @@ def bootstrap(base, project, name):
     }
 
 
+def llave(data_dir):
+    """La llave maestra que el servidor escribe al arrancar."""
+    return (Path(data_dir) / "acceso.txt").read_text(encoding="utf-8").strip()
+
+
+def entrar(base, data_dir, project="main", nombre="Admin"):
+    """Abre sesion con la llave maestra y devuelve el token de sesion."""
+    status, body, _ = call(
+        "POST", base + "/api/entrar?project=" + project,
+        {"llave": llave(data_dir), "nombre": nombre},
+    )
+    assert status == 200, body
+    return body["session"]
+
+
 def claim(base, invite_token, name):
     status, body, _ = call("POST", base + "/api/project/claim",
                            {"token": invite_token, "name": name, "device_id": "dev-" + name})

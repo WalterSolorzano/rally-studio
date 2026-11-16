@@ -583,6 +583,49 @@
       : `<li class="achievement"><span class="achievement-icon" aria-hidden="true">${svgUse("i-spark")}</span><div><h3>Sin logros registrados</h3><p>Cuando la sesión registre entregables o material, aparecerán aquí.</p></div></li>`;
   }
 
+  function renderProduccion() {
+    const list = $("#produccion-filas");
+    if (!list) return;
+    const prod = data.produccion || {};
+    const renders = Number(prod.renders) || 0;
+    const minutos = Math.round(Number(prod.minutos) || 0);
+    const fallidos = Number(prod.renders_fallidos) || 0;
+    const correcciones = Number(prod.correcciones) || 0;
+    const bloqueos = Number(prod.bloqueos) || 0;
+
+    const filas = [
+      {
+        valor: renders,
+        rotulo: "renders lanzados",
+        nota: renders ? `${nf(prod.renders_ok || 0)} salieron sin error` : "ninguno en esta sesión"
+      },
+      {
+        valor: minutos,
+        unidad: "min",
+        rotulo: "la máquina trabajando",
+        nota: minutos ? `${nf(prod.segundos || 0)} s de reloj` : "sin trabajo registrado"
+      },
+      {
+        valor: correcciones,
+        rotulo: "hubo que rehacer",
+        nota: correcciones ? "mismo comando lanzado otra vez" : "nada repetido"
+      },
+      {
+        valor: fallidos,
+        rotulo: "salieron mal",
+        nota: bloqueos ? `${nf(bloqueos)} esperas por GPU ocupada` : "sin esperas de GPU"
+      }
+    ];
+
+    list.innerHTML = filas.map((fila) => `
+      <li>
+        <span class="valor">${nf(fila.valor)}${fila.unidad ? `<span class="unidad">${esc(fila.unidad)}</span>` : ""}</span>
+        <span class="rotulo">${esc(fila.rotulo)}</span>
+        <span class="nota">${esc(fila.nota)}</span>
+      </li>
+    `).join("");
+  }
+
   function renderClosing() {
     const h = data.headline || {};
     const hours = Number(h.hours_remaining || 0);
@@ -698,6 +741,7 @@
     renderMvp();
     renderRoster();
     renderSplit();
+    renderProduccion();
     renderClosing();
     renderProvenance();
   }

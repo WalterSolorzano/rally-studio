@@ -152,6 +152,30 @@ class MemberStore:
             "session": session,
         }
 
+    def abrir_sesion_admin(self, project_id: str) -> dict:
+        """Token nuevo para el primer admin del proyecto.
+
+        Se usa con la llave maestra: no crea miembros ni cambia roles, solo
+        reabre la sesion del dueno cuando pierde el navegador.
+        """
+        token = secrets.token_urlsafe(32)
+        now = time.time()
+        with self._connect() as conn:
+            row = conn.execute(
+                "SELECT * FROM members WHERE project_id = ? AND role = 'admin' AND revoked = 0"
+                " ORDER BY created_at ASC LIMIT 1",
+                (project_id,),
+            ).fetchone()
+            if row is None:
+                raise ValueError("sin-admin")
+            conn.execute(
+                "UPDATE members SET token_hash = ?, last_seen = ? WHERE id = ?",
+                (_hash(token), now, row["id"]),
+            )
+            conn.commit()
+            row = conn.execute("SELECT * FROM members WHERE id = ?", (row["id"],)).fetchone()
+        return {"project": project_id, "member": self._member(row), "session": token}
+
     def authenticate(self, project_id: str, token: str) -> dict | None:
         if not token:
             return None

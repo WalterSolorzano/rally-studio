@@ -5,15 +5,12 @@ y la plantilla oficial del certamen correspondiente (Nacional o Latam).
 """
 import json
 import pathlib
-import shutil
 import sys
-import io
 import docx
-from docx.shared import Pt, Inches, RGBColor
+from docx.shared import Inches
 from docx.enum.text import WD_ALIGN_PARAGRAPH
-
-if sys.platform == "win32":
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+from comun import utf8
+utf8()
 
 BRIEF_PATH = pathlib.Path("brief.json")
 CLAIMS_PATH = pathlib.Path("research/claims.json")

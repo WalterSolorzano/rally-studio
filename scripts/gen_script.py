@@ -11,7 +11,6 @@ Reglas de contenido:
   - La cifra de costo sale de budget/budget.json; no se hardcodea.
 """
 import csv
-import io
 import json
 import pathlib
 import re
@@ -19,10 +18,10 @@ import sys
 import unicodedata
 
 from moneda import contexto, costo_unitario, costo_unitario_usd
+from comun import utf8
+utf8()
 
 # Windows UTF-8 safety
-if sys.platform == "win32":
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
 BRIEF_PATH = pathlib.Path("brief.json")
 CLAIMS_PATH = pathlib.Path("research/claims.json")

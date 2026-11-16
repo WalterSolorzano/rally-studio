@@ -3,7 +3,12 @@ name: storyboard
 description: Convierte el guion PAS-V y la rúbrica del certamen en el storyboard de grabación del video de 120 s: tomas con contrato, dueño, tiempo y criterio de rúbrica, compiladas con build_shotlist.py, con referencias visuales encontradas o creadas para cada toma y un tablero compacto de qué buscar y qué crear. Úsala cuando haya que decidir qué se ve en cada segundo, repartir el trabajo entre especialistas, buscar o crear referencias, o auditar un shotlist.
 ---
 
-# Storyboard — qué se ve en cada segundo
+# Storyboard - qué se ve en cada segundo
+
+> **Consolidada en `guion-storyboard`.** El entregable de rodaje (Ritmo, Tomas y Rodar) se
+> genera con `skills/guion-storyboard/gen_teleprompter.py`. `gen_storyboard_visual.py` sigue
+> sirviendo como hoja visual para imprimir. Esta skill queda como referencia de criterio;
+> si hay conflicto, manda `guion-storyboard`.
 
 El storyboard no es un guion con dibujos: es **el contrato entre el director y cada
 especialista**. Una toma sin `rubric_item` es trabajo que no suma puntos; una toma sin

@@ -5,7 +5,6 @@ quedan en analisis/figuras/<nombre>.csv para que sea reproducible.
 """
 from __future__ import annotations
 
-import json
 import math
 import sys
 from pathlib import Path

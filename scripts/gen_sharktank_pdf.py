@@ -13,7 +13,6 @@ import argparse
 import html
 import json
 import re
-import shutil
 import subprocess
 import sys
 import tempfile

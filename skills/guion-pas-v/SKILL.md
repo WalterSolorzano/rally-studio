@@ -3,7 +3,12 @@ name: guion-pas-v
 description: Escribe o revisa el guion del pitch en 4 actos (PAS-V), respetando el límite estricto de 120 segundos, coherencia de cifras con presupuesto y claims, y especificidad al reto y la solución (sin frases de plantilla ni secciones genéricas).
 ---
 
-# Guion PAS-V — Pitch de 120 segundos
+> **Consolidada en `guion-storyboard`.** El guion y el plan de tomas se producen y se revisan
+> con `skills/guion-storyboard/gen_teleprompter.py`, que entrega un solo HTML con Ritmo, Tomas
+> y Rodar. Esta skill queda como referencia de redacción; si hay conflicto, manda
+> `guion-storyboard`.
+
+# Guion PAS-V - Pitch de 120 segundos
 
 ## Cuándo usarla
 - Redacción o ajuste del guion de video (`script/script.md` o por actos).

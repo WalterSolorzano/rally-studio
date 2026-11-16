@@ -14,8 +14,8 @@ from __future__ import annotations
 import argparse
 import csv
 import json
-import os
 import re
+import sys
 import unicodedata
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -746,6 +746,21 @@ def main(phase_override: str | None = None) -> None:
             "illustrative": ["Avatares"],
         },
     }
+
+    # Produccion de maquina: renders, tiempo y rehaceres de la sesion.
+    # Sale de `logs/produccion.jsonl`, que escribe `scripts/gpu_lock.py` cada vez
+    # que lanza un comando pesado (Blender, ffmpeg, TTS, grabacion).
+    try:
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from registro_produccion import resumen as resumen_produccion
+
+        desde = float(state.get("start_timestamp", 0) or 0) / 1000.0
+        prod = resumen_produccion(desde)
+    except Exception:  # noqa: BLE001
+        prod = {"renders": 0, "renders_ok": 0, "renders_fallidos": 0, "segundos": 0.0,
+                "minutos": 0.0, "bloqueos": 0, "limpiezas": 0, "correcciones": 0,
+                "fallos": 0, "ultimo": ""}
+    data["produccion"] = prod
 
     OUT_JSON.parent.mkdir(parents=True, exist_ok=True)
     OUT_JSON.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

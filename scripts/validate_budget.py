@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 validate_budget.py -- Valida rigurosamente budget/budget.json contra las reglas de rally:
 1. URLs reales y obligatorias en cada renglon.
@@ -9,12 +9,9 @@ validate_budget.py -- Valida rigurosamente budget/budget.json contra las reglas 
 import json
 import pathlib
 import sys
-import io
-
 from moneda import contexto, costo_unitario, costo_unitario_usd, formato
-
-if sys.platform == "win32":
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+from comun import utf8
+utf8()
 
 BUDGET_JSON = pathlib.Path("budget/budget.json")
 BRIEF_JSON = pathlib.Path("brief.json")

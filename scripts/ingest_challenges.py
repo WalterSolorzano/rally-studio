@@ -11,14 +11,12 @@ el Word editable 'docs/Matriz_Seleccion_Desafios_2026.docx'.
 Con --dossier --certamen nacional|latam genera además el dossier PDF de soluciones.
 """
 import sys
-import io
 import json
 import re
 import pathlib
 import subprocess
-
-if sys.platform == "win32":
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+from comun import utf8
+utf8()
 
 CHALLENGES_JSON = pathlib.Path("research/challenges.json")
 

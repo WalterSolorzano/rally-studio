@@ -89,19 +89,7 @@ Idioma: español.
 ```
 
 ## Cómo sugerir un título o nombre de proyecto o producto
-
-Sigue los patrones reales del banco SIRLI (`research/sirli/winners.jsonl`):
-
-- **Inventado**: NEXORA, KINETIX
-- **Objeto**: AVOCADO, LUMBRE
-- **Compuesto**: NEXO-SOSTENIBLE
-- **Territorio + número**: ALTIPLANO 360
-- **Sufijo técnico**: BIOINNOVATECH
-- **Juego**: DESUCHO, ERROR 404
-
-Reglas:
-- Nunca repites el nombre del proyecto más de una vez por sección.
-- No hardcodees el nombre en scripts; léelo siempre de `brief.json`.
+Compartido: `skills/_comun/nombres.md`. Léelo antes de aplicar esta sección.
 
 ## Cómo enseñar visualmente
 
@@ -122,15 +110,10 @@ Reglas:
   `budget/budget.json`.
 
 ## Cómo crear modelos 3D (referencia)
-
-Ver `skills/modelo-3d-blender/SKILL.md` para el procedimiento completo de
-modelado 3D con Blender y generación de renders para el video.
+Compartido: `skills/_comun/modelos-3d.md`. Léelo antes de aplicar esta sección.
 
 ## Cómo sugerir elementos gráficos
-
-- Sin emojis como íconos en la web demo.
-- Sin cards genéricas, sin morado (#7c3aed o similar), sin fuentes fuera de
-  `brand/tokens.css`.
+Compartido: `skills/_comun/elementos-graficos.md`. Léelo antes de aplicar esta sección.
 
 ## Punteros
 

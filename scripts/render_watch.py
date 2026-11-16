@@ -4,12 +4,9 @@ render_watch.py -- Monitor de recursos (RAM y GPU) en tiempo real.
 Previene desbordamiento y congelamiento de la PC durante renders pesados (Blender / TTS / Video).
 """
 import time
-import sys
-import io
 import psutil
-
-if sys.platform == "win32":
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+from comun import utf8
+utf8()
 
 RAM_ALERT_THRESHOLD = 85.0  # 85% de RAM
 RAM_PANIC_THRESHOLD = 92.0  # 92% de RAM

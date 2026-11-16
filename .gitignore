@@ -26,6 +26,10 @@ docs/_build/
 # Recursos subidos por el equipo en el Estudio de Video (datos de usuario, pesados)
 dashboard/assets_uploads/
 
+# Bitácora de producción: la escribe gpu_lock.py en cada trabajo pesado. Es
+# registro de la sesión, no código.
+logs/produccion.jsonl
+
 # Buzón de propuestas del agente y espejo de estado (datos del usuario, efímeros)
 dashboard/data/content/
 .rally-nube.json
@@ -110,3 +114,8 @@ blender/tmp/
 # Derivados del corpus SIRLI: se regeneran con scripts/sirli_thumbs.py
 research/sirli/meta/thumbs/
 tools/__pycache__/
+
+# App Android: el código y las instrucciones van al repositorio, lo compilado no
+apk/build/
+apk/**/*.apk
+apk/**/*.keystore

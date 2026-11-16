@@ -20,7 +20,6 @@ import argparse
 import json
 import os
 import shutil
-import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent

@@ -12,6 +12,9 @@ import pytest
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
+# El servicio exige llave desde 2026-11: cada prueba abre sesion con la maestra.
+_SESION = {"token": ""}
+
 
 def _free_port() -> int:
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -57,10 +60,26 @@ def servidor(tmp_path):
         proc.kill()
 
 
-def call(method, url, payload=None, origin=None):
+@pytest.fixture(autouse=True)
+def sesion(servidor):
+    base, data_dir = servidor
+    llave = (Path(data_dir) / "acceso.txt").read_text(encoding="utf-8").strip()
+    status, body, _ = call(
+        "POST", base + "/api/entrar?project=main", {"llave": llave, "nombre": "Ana"}
+    )
+    assert status == 200, body
+    _SESION["token"] = body["session"]
+    yield
+    _SESION["token"] = ""
+
+
+def call(method, url, payload=None, origin=None, token=None):
     data = None if payload is None else json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(url, data=data, method=method)
     req.add_header("Content-Type", "application/json")
+    elegido = _SESION["token"] if token is None else token
+    if elegido:
+        req.add_header("Authorization", "Bearer " + elegido)
     if origin:
         req.add_header("Origin", origin)
     try:
@@ -105,10 +124,21 @@ def test_sections_conflict_lock_and_events(servidor):
     assert status == 200 and body["section"]["lock_owner"] == "Ana"
     assert 9.5 * 60 <= body["section"]["lock_until"] - time.time() <= 10.5 * 60
 
+    # Un segundo miembro de verdad (no un `actor` de mentira) choca con el bloqueo.
+    status, body, _ = call("POST", base + "/api/invites", {"ttl_hours": 2})
+    assert status == 200
+    status, body, _ = call(
+        "POST", base + "/api/project/claim",
+        {"token": body["url_path"].split("t=", 1)[1], "name": "Bea", "device_id": "dev-bea"},
+        token="",
+    )
+    assert status == 200, body
+    bea = body["session"]
+
     status, body, _ = call("POST", base + "/api/sections/team", {
         "data": {"team_name": "Bea"}, "base_version": 2,
         "actor": "Bea", "actor_id": "b",
-    })
+    }, token=bea)
     assert status == 423 and body["lock"]["lock_owner"] == "Ana"
 
     status, _, _ = call("POST", base + "/api/sections/team/unlock", {
@@ -119,7 +149,7 @@ def test_sections_conflict_lock_and_events(servidor):
     status, body, _ = call("POST", base + "/api/sections/team", {
         "data": {"team_name": "Bea"}, "base_version": 2,
         "actor": "Bea", "actor_id": "b",
-    })
+    }, token=bea)
     assert status == 200 and body["section"]["version"] == 3
 
     status, body, _ = call("GET", base + "/api/state")

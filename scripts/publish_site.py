@@ -6,10 +6,8 @@ import subprocess
 import shutil
 import pathlib
 import sys
-import io
-
-if sys.platform == "win32":
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+from comun import utf8
+utf8()
 
 SITE_DIR = pathlib.Path("site")
 

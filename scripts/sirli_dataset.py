@@ -13,7 +13,6 @@ import re
 import sys
 import unicodedata
 from collections import defaultdict
-from datetime import date
 from pathlib import Path
 
 import pandas as pd

@@ -11,6 +11,8 @@ Provee:
 import http.server
 import socketserver
 import socket
+import hashlib
+import secrets
 import json
 import os
 import sys
@@ -121,6 +123,49 @@ CONTENT_STORE = ContentStore(DATA_DIR)
 NUBE_STORE = NubeStore(DATA_DIR / "nube.db")
 SECTION_STORE = SQLiteSectionStore(DATA_DIR / "sections.db")
 MEMBER_STORE = MemberStore(DATA_DIR / "members.db")
+
+# --- Puerta de acceso: nadie entra sin credencial ----------------------------
+# Regla: la primera vez se abre con la llave maestra (se imprime en consola y
+# queda en data/acceso.txt). Esa llave crea el administrador. De ahí en
+# adelante solo pasan los miembros: enlace de invitacion o su token personal.
+COOKIE_SESION = "rally_sesion"
+COOKIE_DIAS = 30
+# Lo unico que se sirve sin credencial: la pantalla de entrada y su pintura.
+RUTAS_LIBRES = {
+    "/login.html", "/login.js",
+    "/join.html", "/join.js",
+    "/api/entrar", "/api/acceso/estado", "/api/project/claim",
+    "/health", "/api/health",
+    "/favicon.svg", "/manifest.webmanifest", "/sw.js", "/style.css",
+}
+PREFIJOS_LIBRES = ("/assets/",)
+
+
+def llave_maestra() -> str:
+    """Llave de apertura del proyecto. Se crea una vez y no se cambia sola."""
+    ruta = DATA_DIR / "acceso.txt"
+    try:
+        if ruta.exists():
+            guardada = ruta.read_text(encoding="utf-8").strip()
+            if guardada:
+                return guardada
+    except OSError:
+        pass
+    nueva = "-".join(secrets.token_hex(3).upper() for _ in range(3))
+    try:
+        ruta.parent.mkdir(parents=True, exist_ok=True)
+        ruta.write_text(nueva + "\n", encoding="utf-8")
+    except OSError:
+        pass
+    return nueva
+
+
+def huella(texto: str) -> bytes:
+    return hashlib.sha256(texto.encode("utf-8")).digest()
+
+
+def llave_correcta(candidata: str) -> bool:
+    return secrets.compare_digest(huella((candidata or "").strip().upper()), huella(llave_maestra()))
 
 # --- Presencia en vivo (Fase 2.2): quien esta en la pizarra y que edita ------
 _PRESENCE_LOCK = threading.Lock()
@@ -361,6 +406,8 @@ RALLY_RUBRICS = {
 RALLY_RUBRIC_SPEC = RALLY_RUBRICS["latam"]["criteria"]
 
 class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
+    _sesion_nueva = ""
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=str(DASHBOARD_DIR), **kwargs)
 
@@ -380,6 +427,8 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
         url = urllib.parse.urlparse(self.path)
         req_path = urllib.parse.unquote(url.path)
         if not self.project_param_ok(url.query):
+            return
+        if not self.paso_la_puerta(req_path, self.project_id(url.query)):
             return
         if req_path == "/api/telemetry":
             self.send_telemetry()
@@ -466,6 +515,8 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
                 "ok": True, "project": project,
                 "events": SECTION_STORE.events(project, since, limit),
             }, cors=True)
+        elif req_path == "/api/acceso/estado":
+            self.handle_acceso_estado(url)
         elif req_path == "/api/session":
             project = self.project_id(url.query)
             member = self.require_member(project)
@@ -569,7 +620,11 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
         url = urllib.parse.urlparse(self.path)
         if not self.project_param_ok(url.query):
             return
-        if url.path == "/api/ai":
+        if not self.paso_la_puerta(url.path, self.project_id(url.query)):
+            return
+        if url.path == "/api/entrar":
+            self.handle_entrar()
+        elif url.path == "/api/ai":
             ok, extra, msg = ai_rate_check(self)
             if not ok:
                 body = json.dumps({"status": "rate-limit", "message": msg}).encode("utf-8")
@@ -853,6 +908,114 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
         self.send_json_response(400, {"ok": False, "error": "proyecto-invalido"}, cors=True)
         return False
 
+    # ── Puerta de acceso ────────────────────────────────────────────────────
+    def cookie_token(self) -> str:
+        for trozo in (self.headers.get("Cookie") or "").split(";"):
+            nombre, _, valor = trozo.strip().partition("=")
+            if nombre == COOKIE_SESION:
+                return valor.strip()
+        return ""
+
+    def credencial(self) -> str:
+        return self.cookie_token() or self.bearer_token()
+
+    def miembro_actual(self, project: str) -> dict | None:
+        token = self.credencial()
+        if not token:
+            return None
+        return MEMBER_STORE.authenticate(project, token)
+
+    def poner_cookie_sesion(self) -> None:
+        """Cookie de sesion. Sin `Secure` porque en la red local no hay HTTPS;
+        el token sigue siendo secreto y el navegador no lo expone a scripts."""
+        self.send_header(
+            "Set-Cookie",
+            f"{COOKIE_SESION}={self._sesion_nueva}; Path=/; Max-Age="
+            f"{COOKIE_DIAS * 86400}; HttpOnly; SameSite=Lax",
+        )
+
+    def paso_la_puerta(self, req_path: str, project: str) -> bool:
+        """True si sigue. False si ya respondio (redirige al login o 401)."""
+        if req_path in RUTAS_LIBRES or req_path.startswith(PREFIJOS_LIBRES):
+            return True
+        if self.miembro_actual(project) is not None:
+            return True
+        if req_path.startswith("/api/"):
+            self.send_json_response(
+                401, {"ok": False, "error": "no-autenticado", "entrar": "login.html"}, cors=True
+            )
+            return False
+        volver = req_path if req_path not in ("/", "/index.html") else ""
+        destino = "/login.html" + ("?volver=" + urllib.parse.quote(volver) if volver else "")
+        self.send_response(302)
+        self.send_header("Location", destino)
+        self.send_header("Content-Length", "0")
+        self.end_headers()
+        return False
+
+    def handle_entrar(self) -> None:
+        """Entrada por llave maestra (abre el proyecto) o por token personal."""
+        if not self.origen_permitido():
+            self.send_json_response(403, {"ok": False, "error": "origen-no-permitido"}, cors=True)
+            return
+        data = self.read_json_body()
+        project = self.project_id(urllib.parse.urlparse(self.path).query)
+        llave = str(data.get("llave") or "").strip()
+        nombre = str(data.get("nombre") or "").strip()[:40]
+        if not llave:
+            self.send_json_response(400, {"ok": False, "error": "llave-vacia"}, cors=True)
+            return
+
+        abriendo = llave_correcta(llave)
+        try:
+            if abriendo:
+                if MEMBER_STORE.has_members(project):
+                    resultado = MEMBER_STORE.abrir_sesion_admin(project)
+                else:
+                    resultado = MEMBER_STORE.bootstrap(project, nombre or "Admin", "primer-acceso")
+                    resultado["session"] = resultado.pop("token")
+            else:
+                miembro = MEMBER_STORE.authenticate(project, llave)
+                if miembro is None:
+                    self.send_json_response(401, {"ok": False, "error": "llave-invalida"}, cors=True)
+                    return
+                resultado = {"project": project, "member": miembro, "session": llave}
+        except ValueError as exc:
+            self.send_json_response(400, {"ok": False, "error": str(exc)}, cors=True)
+            return
+        except Exception as exc:  # noqa: BLE001
+            print(f"[acceso] entrar fallo: {exc}", flush=True)
+            self.send_json_response(500, {"ok": False, "error": "error-interno"}, cors=True)
+            return
+
+        self._sesion_nueva = str(resultado.get("session") or "")
+        self.send_json_response(
+            200,
+            {
+                "ok": True,
+                "project": resultado.get("project", project),
+                "member": resultado.get("member"),
+                "session": self._sesion_nueva,
+                "rol": (resultado.get("member") or {}).get("role", "member"),
+            },
+            cors=True,
+            con_cookie=True,
+        )
+
+    def handle_acceso_estado(self, url) -> None:
+        project = self.project_id(url.query)
+        protegido = MEMBER_STORE.has_members(project)
+        self.send_json_response(
+            200,
+            {
+                "ok": True,
+                "project": project,
+                "protegido": protegido,
+                "miembros": len(MEMBER_STORE.list_members(project)) if protegido else 0,
+            },
+            cors=True,
+        )
+
     def private_static(self, rel: str) -> bool:
         """Nada privado del proyecto se sirve como archivo estático."""
         rel = (rel or "").replace("\\", "/").lower()
@@ -861,6 +1024,8 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
             if rel.startswith("data/content/"):
                 return True
             if name == "state.json" or name.startswith("state_") and name.endswith(".json"):
+                return True
+            if name == "acceso.txt":
                 return True
             if name.endswith((".db", ".db-wal", ".db-shm", ".sqlite")):
                 return True
@@ -891,7 +1056,7 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
     def require_member(self, project: str, roles: tuple[str, ...] = ()) -> dict | None:
         if not MEMBER_STORE.has_members(project):
             return {"id": "legacy", "name": "Local", "role": "legacy"}
-        member = MEMBER_STORE.authenticate(project, self.bearer_token())
+        member = MEMBER_STORE.authenticate(project, self.credencial())
         if member is None:
             self.send_json_response(401, {"ok": False, "error": "no-autenticado"}, cors=True)
             return None
@@ -932,7 +1097,8 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
             print(f"[miembros] claim fallo: {exc}", flush=True)
             self.send_json_response(500, {"ok": False, "error": "error-interno"}, cors=True)
             return
-        self.send_json_response(200, {"ok": True, **result}, cors=True)
+        self._sesion_nueva = str(result.get("session") or "")
+        self.send_json_response(200, {"ok": True, **result}, cors=True, con_cookie=True)
 
     def handle_create_invite(self, url) -> None:
         if not self.origen_permitido():
@@ -1204,7 +1370,11 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
             ".xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
             ".pdf": "application/pdf",
             ".md": "text/markdown; charset=utf-8",
-            ".txt": "text/plain; charset=utf-8"
+            ".txt": "text/plain; charset=utf-8",
+            ".webmanifest": "application/manifest+json; charset=utf-8",
+            ".webp": "image/webp",
+            ".mp4": "video/mp4",
+            ".csv": "text/csv; charset=utf-8"
         }
         mime = mimetypes_map.get(target_path.suffix.lower(), "application/octet-stream")
 
@@ -1275,11 +1445,13 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
         self.send_header("Content-Length", "0")
         self.end_headers()
 
-    def send_json_response(self, code, obj, cors=True):
+    def send_json_response(self, code, obj, cors=True, con_cookie=False):
         body = json.dumps(obj).encode("utf-8")
         self.send_response(code)
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Content-Length", str(len(body)))
+        if con_cookie and self._sesion_nueva:
+            self.poner_cookie_sesion()
         # Las rutas del buzon y del espejo no se anuncian a otros origenes.
         if cors:
             self.send_cors_headers()
@@ -2589,6 +2761,15 @@ if __name__ == "__main__":
 
     if httpd and selected_port:
         print(f"Rally Service activo y escuchando en http://localhost:{selected_port}", flush=True)
+        clave = llave_maestra()
+        print("", flush=True)
+        print("  +----------------------------------------------+", flush=True)
+        print(f"  |  LLAVE DE ACCESO:  {clave:<26}|", flush=True)
+        print("  +----------------------------------------------+", flush=True)
+        print(f"  Guardada en: {DATA_DIR / 'acceso.txt'}", flush=True)
+        print("  Esa llave abre el proyecto la primera vez y crea el", flush=True)
+        print("  administrador. Despues reparte invitaciones desde admin.html.", flush=True)
+        print("", flush=True)
         while True:
             try:
                 httpd.serve_forever()

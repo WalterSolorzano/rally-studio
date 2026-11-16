@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """Descarga metadatos de los videos del banco SIRLI sin usar la API de reproductor.
 
 Lee la pagina publica del video y extrae titulo, descripcion, duracion, fecha,

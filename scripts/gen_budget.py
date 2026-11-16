@@ -1,19 +1,17 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 gen_budget.py -- Genera budget/budget.xlsx con formato formal a partir de budget/budget.json.
 """
 import json
 import pathlib
 import sys
-import io
 import openpyxl
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 from openpyxl.utils import get_column_letter
 
 from moneda import contexto, costo_unitario, formato, numero_excel
-
-if sys.platform == "win32":
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+from comun import utf8
+utf8()
 
 BUDGET_JSON = pathlib.Path("budget/budget.json")
 BUDGET_XLSX = pathlib.Path("budget/budget.xlsx")

@@ -1,0 +1,1211 @@
+{
+  "skills": [
+    {
+      "id": "auditar-entregable",
+      "descripcion": "Revisa un entregable contra la rúbrica del certamen, las bases del evento y el propósito del grupo, y devuelve hallazgos ordenados por gravedad sin reescribir nada. Úsala antes de dar algo por terminado o cuando el usuario pida una revisión.",
+      "lineas": 123,
+      "scripts": [],
+      "skills_citadas": [],
+      "extras": [],
+      "secciones_boilerplate": [
+        "Cómo sugerir un título o nombre de proyecto o producto",
+        "Cómo enseñar visualmente",
+        "Cómo redactar guiones cuidando la pronunciación",
+        "Cómo crear modelos 3D",
+        "Cómo sugerir elementos gráficos"
+      ],
+      "titulos": [
+        "Navegador obligatorio (browser MCP)",
+        "Cuándo usarla",
+        "Procedimiento",
+        "Reglas",
+        "Generación de prompts para llevar la auditoría a otra IA",
+        "Cómo sugerir un título o nombre de proyecto o producto",
+        "Cómo enseñar visualmente",
+        "Cómo redactar guiones cuidando la pronunciación y el orden de palabras",
+        "Cómo crear modelos 3D (referencia)",
+        "Cómo sugerir elementos gráficos",
+        "Punteros"
+      ]
+    },
+    {
+      "id": "contexto-rally",
+      "descripcion": "Carga el contexto del proyecto antes de trabajar. Lee brief.json, el índice del corpus y el estado vivo de la ventana, y decide qué documentos abrir. Úsala al empezar una sesión, antes de producir contenido o cuando falte un dato.",
+      "lineas": 106,
+      "scripts": [],
+      "skills_citadas": [],
+      "extras": [],
+      "secciones_boilerplate": [
+        "Cómo sugerir un título o nombre de proyecto o producto",
+        "Cómo enseñar visualmente",
+        "Cómo redactar guiones cuidando la pronunciación",
+        "Cómo crear modelos 3D",
+        "Cómo sugerir elementos gráficos"
+      ],
+      "titulos": [
+        "Cuándo usarla",
+        "Procedimiento",
+        "Reglas",
+        "Modo del certamen",
+        "Generación de prompts para llevar el contexto a otra IA",
+        "Cómo sugerir un título o nombre de proyecto o producto",
+        "Cómo enseñar visualmente",
+        "Cómo redactar guiones cuidando la pronunciación y el orden de palabras",
+        "Cómo crear modelos 3D (referencia)",
+        "Cómo sugerir elementos gráficos",
+        "Punteros"
+      ]
+    },
+    {
+      "id": "control-tiempo-entrega",
+      "descripcion": "Controla el cronómetro del certamen, avisa estado horario, congela entregables al 75% del tiempo y valida el checklist SIRLI con arsenal.py.",
+      "lineas": 77,
+      "scripts": [],
+      "skills_citadas": [],
+      "extras": [],
+      "secciones_boilerplate": [
+        "Cómo sugerir un título o nombre de proyecto o producto",
+        "Cómo enseñar visualmente",
+        "Cómo redactar guiones cuidando la pronunciación",
+        "Cómo crear modelos 3D",
+        "Cómo sugerir elementos gráficos"
+      ],
+      "titulos": [
+        "Cuándo usarla",
+        "Estados del Certamen",
+        "Auditoría Final Obligatoria",
+        "Generación de prompts para llevar el estado de tiempo a otra IA",
+        "Cómo sugerir un título o nombre de proyecto o producto",
+        "Cómo enseñar visualmente",
+        "Cómo redactar guiones cuidando la pronunciación y el orden de palabras",
+        "Cómo crear modelos 3D (referencia)",
+        "Cómo sugerir elementos gráficos",
+        "Monitoreo Automático Activo"
+      ]
+    },
+    {
+      "id": "dossier-soluciones",
+      "descripcion": "Convierte los retos del comité o del usuario en soluciones sustentadas y un dossier de 3 páginas por reto (PDF, Word, Excel), con precedentes ganadores y razonamiento problema-causa-insight-solución-métrica.",
+      "lineas": 595,
+      "scripts": [
+        "scripts/gen_dossier.py",
+        "scripts/gen_soluciones_pdf.py",
+        "scripts/soluciones_motor.py"
+      ],
+      "skills_citadas": [],
+      "extras": [],
+      "secciones_boilerplate": [
+        "Cómo sugerir un título o nombre de proyecto o producto",
+        "Cómo enseñar visualmente",
+        "Cómo redactar guiones cuidando la pronunciación",
+        "Cómo crear modelos 3D",
+        "Cómo sugerir elementos gráficos"
+      ],
+      "titulos": [
+        "Regla dura: el diseño del PDF ya está decidido",
+        "Cuándo usarla",
+        "Modo según certamen",
+        "Compuerta de contenido: nueve campos antes de escribir",
+        "Cómo se razona una solución",
+        "Contenido",
+        "El «qué es»: escena, no ficha técnica",
+        "Jerga interna: prohibida en lo que lee el jurado",
+        "Tres campos fijos por solución",
+        "Resto del contenido",
+        "Cuatro reglas que evitan el dossier incoherente",
+        "Corregir con bisturí, no con hacha",
+        "Ley de rechazo total (anti-contaminación)",
+        "Anatomía de página",
+        "Jerarquía visual",
+        "Entregables",
+        "Validación antes de entregar",
+        "Generación de prompts para llevar el dossier a otra IA",
+        "Cómo sugerir un título o nombre de proyecto o producto",
+        "Cómo enseñar visualmente (dossier y presentación)",
+        "Cómo redactar guiones cuidando la pronunciación y el orden de palabras",
+        "Cómo crear modelos 3D (referencia)",
+        "Cómo sugerir elementos gráficos",
+        "Calibrar la compuerta"
+      ]
+    },
+    {
+      "id": "guiar-usuario",
+      "descripcion": "Lleva al usuario por las 13 etapas del workbench, detecta qué falta en cada una y lo pregunta de a una. Úsala cuando el usuario no sepa por dónde empezar, cuando pida \"qué sigue\" o cuando una pestaña esté incompleta.",
+      "lineas": 82,
+      "scripts": [],
+      "skills_citadas": [],
+      "extras": [],
+      "secciones_boilerplate": [
+        "Cómo sugerir un título o nombre de proyecto o producto",
+        "Cómo enseñar visualmente",
+        "Cómo redactar guiones cuidando la pronunciación",
+        "Cómo crear modelos 3D",
+        "Cómo sugerir elementos gráficos"
+      ],
+      "titulos": [
+        "Cuándo usarla",
+        "Procedimiento",
+        "Reglas",
+        "Generación de prompts para llevar el guiado a otra IA",
+        "Cómo sugerir un título o nombre de proyecto o producto",
+        "Cómo enseñar visualmente",
+        "Cómo redactar guiones cuidando la pronunciación y el orden de palabras",
+        "Cómo crear modelos 3D (referencia)",
+        "Cómo sugerir elementos gráficos",
+        "Punteros"
+      ]
+    },
+    {
+      "id": "guion-pas-v",
+      "descripcion": "Escribe o revisa el guion del pitch en 4 actos (PAS-V), respetando el límite estricto de 120 segundos, coherencia de cifras con presupuesto y claims, y especificidad al reto y la solución (sin frases de plantilla ni secciones genéricas).",
+      "lineas": 221,
+      "scripts": [
+        "scripts/servir_propuesta.py"
+      ],
+      "skills_citadas": [
+        "skills/guion-storyboard/",
+        "skills/modelo-3d-blender/"
+      ],
+      "extras": [],
+      "secciones_boilerplate": [
+        "Cómo sugerir un título o nombre de proyecto o producto",
+        "Cómo enseñar visualmente",
+        "Cómo redactar guiones cuidando la pronunciación",
+        "Cómo crear modelos 3D",
+        "Cómo sugerir elementos gráficos"
+      ],
+      "titulos": [
+        "Cuándo usarla",
+        "Estructura de 4 Actos (PAS-V)",
+        "El guion no se rellena: se deduce",
+        "Frases que delatan un guion genérico",
+        "El guion se adapta al tipo de reto",
+        "El storyboard va después del guion",
+        "Reglas Innegociables",
+        "Generación de prompts para llevar el guion a otra IA",
+        "Cómo redactar guiones cuidando la pronunciación, el orden de palabras y el orden de ideas",
+        "Pronunciación",
+        "Orden de palabras",
+        "Cambio de ideas",
+        "Cómo sugerir un título o nombre de proyecto o producto",
+        "Cómo enseñar visualmente (aplicado al guion y storyboard)",
+        "Cómo sugerir elementos gráficos (para el video y el guion)",
+        "Cómo crear modelos 3D (referencia para el guion)",
+        "Servir a la ventana"
+      ]
+    },
+    {
+      "id": "guion-storyboard",
+      "descripcion": "Escribe el guion PAS-V y el plan de tomas como un solo entregable de rodaje (script/teleprompter.html) con dos modos, Tomas y Rodar. Úsala cuando haya que escribir o revisar el guion del video, decidir qué se ve en cada segundo, comprobar si el texto entra en 120 s, exigir movimiento en cada toma, o preparar el teléfono para grabar con teleprompter. Reemplaza a guion-pas-v y storyboard.",
+      "lineas": 202,
+      "scripts": [
+        "scripts/build_shotlist.py",
+        "scripts/rally_service.py",
+        "tools/a11y_plantilla.py",
+        "tools/dibujar_storyboard.py",
+        "tools/exportar_pdf.py",
+        "tools/servir_rodaje.py"
+      ],
+      "skills_citadas": [
+        "skills/guion-storyboard/"
+      ],
+      "extras": [
+        "fuentes.css",
+        "gen_teleprompter.py",
+        "plantilla_teleprompter.html"
+      ],
+      "secciones_boilerplate": [],
+      "titulos": [
+        "Regla de oro del video: movimiento o muerte",
+        "Cómo se produce",
+        "La hoja en papel (para quien graba sin la interfaz)",
+        "Referencias visuales (el storyboard se ve)",
+        "Los cuatro actos (rúbrica Latam, §3)",
+        "Qué muestra cada modo",
+        "Contrato del sidecar `script/movimiento.json`",
+        "Grabación desde la página: qué hace cada pieza",
+        "App en el teléfono (se actualiza desde la PC, gratis)",
+        "Interfaz",
+        "Límites"
+      ]
+    },
+    {
+      "id": "ingestar-investigacion",
+      "descripcion": "Procesa un PDF, DOCX o MD que trae el usuario desde fuera (por ejemplo una investigación hecha en z.ai), extrae el contenido, lo contrasta, lo alinea a la rúbrica y lo sirve como propuesta. Úsala cuando el usuario adjunte un documento o diga \"te traje la investigación\".",
+      "lineas": 130,
+      "scripts": [
+        "scripts/herramientas.py"
+      ],
+      "skills_citadas": [],
+      "extras": [],
+      "secciones_boilerplate": [
+        "Cómo sugerir un título o nombre de proyecto o producto",
+        "Cómo enseñar visualmente",
+        "Cómo redactar guiones cuidando la pronunciación",
+        "Cómo crear modelos 3D",
+        "Cómo sugerir elementos gráficos"
+      ],
+      "titulos": [
+        "Navegador obligatorio (browser MCP)",
+        "Cuándo usarla",
+        "Procedimiento",
+        "Reglas",
+        "Generación de prompts para llevar la investigación a otra IA",
+        "Cómo sugerir un título o nombre de proyecto o producto",
+        "Cómo enseñar visualmente",
+        "Cómo redactar guiones cuidando la pronunciación y el orden de palabras",
+        "Cómo crear modelos 3D (referencia)",
+        "Cómo sugerir elementos gráficos",
+        "Punteros"
+      ]
+    },
+    {
+      "id": "modelo-3d-blender",
+      "descripcion": "Genera modelos o renders 3D con Blender para el video, con ficha técnica previa justificada por la rúbrica y sin improvisación. Úsala solo para piezas 3D; nunca para texto, diagramas ni diseño plano.",
+      "lineas": 485,
+      "scripts": [
+        "scripts/blender_addons.py",
+        "scripts/build_shotlist.py",
+        "scripts/gpu_lock.py",
+        "scripts/herramientas.py",
+        "scripts/orchestrate.py",
+        "scripts/pre_render_check.py"
+      ],
+      "skills_citadas": [],
+      "extras": [
+        "anexos-3d.md"
+      ],
+      "secciones_boilerplate": [
+        "Cómo sugerir un título o nombre de proyecto o producto",
+        "Cómo enseñar visualmente",
+        "Cómo redactar guiones cuidando la pronunciación",
+        "Cómo crear modelos 3D",
+        "Cómo sugerir elementos gráficos"
+      ],
+      "titulos": [
+        "Cuándo usarla",
+        "Antes de modelar: jerarquía de restricciones",
+        "Procedimiento (en orden; sin saltar pasos)",
+        "Ficha técnica obligatoria (antes de modelar)",
+        "Checklist de realismo (antes del render de `revisar`)",
+        "Auditoría geométrica: que la guarda pueda ver el fallo",
+        "Cámara, rótulos y HUD",
+        "Método de verificación (no confiar en la vista)",
+        "Despiece y video de montaje",
+        "Video con HUD: las trampas que cuestan un render",
+        "Estimador de tiempo",
+        "Jerarquía de assets (orden de decisión, no de gustos)",
+        "Arquitectura modular del build (subagentes)",
+        "Anexos 3D (bajo demanda)",
+        "Reglas",
+        "Generación de prompts para llevar el contenido a otra IA",
+        "Cómo sugerir un título o nombre de proyecto o producto",
+        "Cómo enseñar visualmente (materiales didácticos)",
+        "Cómo redactar guiones cuidando la pronunciación y el orden de palabras",
+        "Cómo sugerir elementos gráficos",
+        "Cómo crear modelos 3D (resumen para otra IA)",
+        "Punteros"
+      ]
+    },
+    {
+      "id": "orquestador",
+      "descripcion": "Orquesta agentes especialistas (investigador, guionista, modeler 3D, pautador, presupuestador, grafista, web, voz, editor y auditor) que trabajan a la vez sin chocarse, con contratos por archivo y guardia de recursos. Úsala cuando el humano pida despachar al equipo o que varios trabajen en paralelo.",
+      "lineas": 373,
+      "scripts": [
+        "scripts/build_shotlist.py",
+        "scripts/gen_script.py",
+        "scripts/gpu_lock.py",
+        "scripts/heavy_guard.py",
+        "scripts/herramientas.py",
+        "scripts/orchestrate.py",
+        "scripts/render_contadores.py",
+        "tools/remix_audio.py"
+      ],
+      "skills_citadas": [
+        "skills/modelo-3d-blender/",
+        "skills/presupuesto/",
+        "skills/storyboard/"
+      ],
+      "extras": [],
+      "secciones_boilerplate": [
+        "Cómo sugerir un título o nombre de proyecto o producto",
+        "Cómo enseñar visualmente",
+        "Cómo redactar guiones cuidando la pronunciación",
+        "Cómo crear modelos 3D",
+        "Cómo sugerir elementos gráficos"
+      ],
+      "titulos": [
+        "Navegador obligatorio (browser MCP)",
+        "Rol: recursos-video (recopilación de recursos para el video)",
+        "Cuándo usarla",
+        "Palabras fijas",
+        "Reglas duras (cada una tiene respaldo en un archivo)",
+        "Protocolo del director (en orden)",
+        "Cómo se lanza un especialista, por host (D5)",
+        "Tabla de coordinación (anti-improvisación)",
+        "Grafo de dependencias (orden de despacho)",
+        "Precios",
+        "Generación de prompts para llevar el despacho a otra IA",
+        "Cómo sugerir un título o nombre de proyecto o producto",
+        "Cómo enseñar visualmente",
+        "Cómo redactar guiones cuidando la pronunciación y el orden de palabras",
+        "Cómo crear modelos 3D (referencia para el director)",
+        "Cómo sugerir elementos gráficos",
+        "Anti-objetivos (lo que el director NO hace)",
+        "Checklist de despacho rápido"
+      ]
+    },
+    {
+      "id": "presupuesto",
+      "descripcion": "Arma el presupuesto del prototipo con filas justificadas, precios creíbles y enlace de respaldo, en la moneda del certamen activo. Úsala cuando haya que cotizar componentes, servicios o el piloto completo.",
+      "lineas": 250,
+      "scripts": [
+        "scripts/validate_budget.py"
+      ],
+      "skills_citadas": [
+        "skills/dossier-soluciones/"
+      ],
+      "extras": [],
+      "secciones_boilerplate": [
+        "Cómo sugerir un título o nombre de proyecto o producto",
+        "Cómo enseñar visualmente",
+        "Cómo redactar guiones cuidando la pronunciación",
+        "Cómo crear modelos 3D",
+        "Cómo sugerir elementos gráficos"
+      ],
+      "titulos": [
+        "Navegador obligatorio (browser MCP)",
+        "Cuándo usarla",
+        "Moneda y modo",
+        "Reglas de precio",
+        "Formato de cada fila",
+        "Tabla xlsx (formato visible)",
+        "Rango de referencia",
+        "Verificación antes de entregar",
+        "Generación de prompts para llevar el presupuesto a otra IA",
+        "Cómo sugerir un título o nombre de proyecto o producto",
+        "Cómo enseñar visualmente",
+        "Cómo redactar guiones cuidando la pronunciación y el orden de palabras",
+        "Cómo crear modelos 3D (referencia)",
+        "Cómo sugerir elementos gráficos",
+        "Punteros"
+      ]
+    },
+    {
+      "id": "proponer-retos",
+      "descripcion": "Genera soluciones aplicables para los retos que da el usuario, con precedentes ganadores, razonamiento problema-causa-insight-solución y dossier PDF. Úsala cuando el equipo ya tiene retos del comité y necesita propuestas sustentadas.",
+      "lineas": 178,
+      "scripts": [
+        "scripts/check_anti_generico.py",
+        "scripts/gen_soluciones_pdf.py",
+        "scripts/soluciones_motor.py"
+      ],
+      "skills_citadas": [
+        "skills/dossier-soluciones/"
+      ],
+      "extras": [],
+      "secciones_boilerplate": [
+        "Cómo sugerir un título o nombre de proyecto o producto",
+        "Cómo enseñar visualmente",
+        "Cómo redactar guiones cuidando la pronunciación",
+        "Cómo crear modelos 3D",
+        "Cómo sugerir elementos gráficos"
+      ],
+      "titulos": [
+        "1. Misión",
+        "2. Regla dura",
+        "3. Cuándo usarla",
+        "4. Goal jerárquico",
+        "5. Procedimiento",
+        "6. Compuertas en cascada (anti-genérico)",
+        "7. Formato de cada solución (ficha rápida en chat)",
+        "8. Qué no hacer",
+        "9. Punteros",
+        "Generación de prompts para llevar las soluciones a otra IA",
+        "Cómo sugerir un título o nombre de proyecto o producto",
+        "Cómo enseñar visualmente",
+        "Cómo redactar guiones cuidando la pronunciación y el orden de palabras",
+        "Cómo crear modelos 3D (referencia)",
+        "Cómo sugerir elementos gráficos",
+        "10. Calibrar la compuerta"
+      ]
+    },
+    {
+      "id": "propuesta-identidad",
+      "descripcion": "Convierte el nombre, logo o una idea del equipo en propuestas de identidad visual (paleta, tipografías, tokens, dirección de logotipo). Úsala cuando el usuario no tiene marca, no le gusta la que tiene o pide que la interfaz se vea mejor.",
+      "lineas": 329,
+      "scripts": [
+        "scripts/gen_palette.py",
+        "scripts/herramientas.py"
+      ],
+      "skills_citadas": [
+        "skills/modelo-3d-blender/"
+      ],
+      "extras": [],
+      "secciones_boilerplate": [
+        "Cómo sugerir un título o nombre de proyecto o producto",
+        "Cómo enseñar visualmente",
+        "Cómo redactar guiones cuidando la pronunciación",
+        "Cómo crear modelos 3D",
+        "Cómo sugerir elementos gráficos"
+      ],
+      "titulos": [
+        "Navegador obligatorio (browser MCP)",
+        "Cuándo usarla",
+        "Procedimiento",
+        "El módulo de diseño (`design/`)",
+        "Marca del proyecto (no la del equipo)",
+        "Fuentes",
+        "Prohibiciones gráficas",
+        "Reglas del thumbnail (fallos reales que no se repiten)",
+        "Prueba antes de entregar",
+        "Generación de prompts para llevar la identidad a otra IA",
+        "Cómo sugerir un título o nombre de proyecto o producto",
+        "Cómo enseñar visualmente (identidad y materiales didácticos)",
+        "Cómo redactar guiones cuidando la pronunciación y el orden de palabras",
+        "Cómo sugerir elementos gráficos",
+        "Cómo crear modelos 3D (referencia)",
+        "Criterios de diseño de UI (obligatorios)",
+        "Herramientas de diseño",
+        "Punteros"
+      ]
+    },
+    {
+      "id": "publicar-sitio",
+      "descripcion": "Construye y publica la web demo del proyecto en GitHub Pages o Netlify. Úsala cuando el usuario quiere que su prototipo tenga una URL pública para el video o la entrega.",
+      "lineas": 120,
+      "scripts": [
+        "scripts/publish_site.py"
+      ],
+      "skills_citadas": [
+        "skills/propuesta-identidad/"
+      ],
+      "extras": [],
+      "secciones_boilerplate": [
+        "Cómo sugerir un título o nombre de proyecto o producto",
+        "Cómo enseñar visualmente",
+        "Cómo redactar guiones cuidando la pronunciación",
+        "Cómo crear modelos 3D",
+        "Cómo sugerir elementos gráficos"
+      ],
+      "titulos": [
+        "Navegador obligatorio (browser MCP)",
+        "Cuándo usarla",
+        "Compuerta de diseño (antes de construir)",
+        "Procedimiento",
+        "Reglas",
+        "Generación de prompts para llevar el sitio a otra IA",
+        "Cómo sugerir un título o nombre de proyecto o producto",
+        "Cómo enseñar visualmente",
+        "Cómo redactar guiones cuidando la pronunciación y el orden de palabras",
+        "Cómo crear modelos 3D (referencia)",
+        "Cómo sugerir elementos gráficos",
+        "Punteros"
+      ]
+    },
+    {
+      "id": "servir-a-ventana",
+      "descripcion": "Entrega una propuesta a la interfaz para que el usuario la acepte o la descarte. Arma el sobre, elige pestaña y ranura correctas y ejecuta servir_propuesta.py. Úsala siempre que produzcas contenido que deba aparecer en la ventana.",
+      "lineas": 90,
+      "scripts": [
+        "scripts/content_store.py",
+        "scripts/servir_propuesta.py"
+      ],
+      "skills_citadas": [],
+      "extras": [],
+      "secciones_boilerplate": [
+        "Cómo sugerir un título o nombre de proyecto o producto",
+        "Cómo enseñar visualmente",
+        "Cómo redactar guiones cuidando la pronunciación",
+        "Cómo crear modelos 3D",
+        "Cómo sugerir elementos gráficos"
+      ],
+      "titulos": [
+        "Cuándo usarla",
+        "Procedimiento",
+        "Reglas",
+        "Generación de prompts para llevar la propuesta a otra IA",
+        "Cómo sugerir un título o nombre de proyecto o producto",
+        "Cómo enseñar visualmente",
+        "Cómo redactar guiones cuidando la pronunciación y el orden de palabras",
+        "Cómo crear modelos 3D (referencia)",
+        "Cómo sugerir elementos gráficos",
+        "Punteros"
+      ]
+    },
+    {
+      "id": "sharktank",
+      "descripcion": "Úsala cuando el equipo tenga una idea de proyecto (reto + solución) y pida ver sus fallas, riesgos o puntos débiles antes de avanzar; también cuando pregunte \"¿esto aguanta?\", \"¿qué puede salir mal?\", \"¿algo así ya existe?\" o \"¿ya está patentado?\".",
+      "lineas": 162,
+      "scripts": [
+        "scripts/gen_sharktank_pdf.py",
+        "scripts/servir_propuesta.py"
+      ],
+      "skills_citadas": [],
+      "extras": [],
+      "secciones_boilerplate": [
+        "Cómo sugerir un título o nombre de proyecto o producto",
+        "Cómo enseñar visualmente",
+        "Cómo redactar guiones cuidando la pronunciación",
+        "Cómo crear modelos 3D",
+        "Cómo sugerir elementos gráficos"
+      ],
+      "titulos": [
+        "Navegador obligatorio (browser MCP)",
+        "Entrada",
+        "Análisis — 4 lentes",
+        "Barrido profundo de patentes y proyectos parecidos",
+        "Salida",
+        "Generación de prompts para llevar el análisis sharktank a otra IA",
+        "Cómo sugerir un título o nombre de proyecto o producto",
+        "Cómo enseñar visualmente",
+        "Cómo redactar guiones cuidando la pronunciación y el orden de palabras",
+        "Cómo crear modelos 3D (referencia)",
+        "Cómo sugerir elementos gráficos",
+        "Errores comunes"
+      ]
+    },
+    {
+      "id": "storyboard",
+      "descripcion": "Convierte el guion PAS-V y la rúbrica del certamen en el storyboard de grabación del video de 120 s: tomas con contrato, dueño, tiempo y criterio de rúbrica, compiladas con build_shotlist.py, con referencias visuales encontradas o creadas para cada toma y un tablero compacto de qué buscar y qué crear. Úsala cuando haya que decidir qué se ve en cada segundo, repartir el trabajo entre especialistas, buscar o crear referencias, o auditar un shotlist.",
+      "lineas": 522,
+      "scripts": [
+        "scripts/build_shotlist.py",
+        "scripts/gen_script.py",
+        "tools/remix_audio.py"
+      ],
+      "skills_citadas": [
+        "skills/guion-storyboard/",
+        "skills/storyboard/"
+      ],
+      "extras": [
+        "gen_storyboard_visual.py"
+      ],
+      "secciones_boilerplate": [],
+      "titulos": [
+        "Cuándo usarla",
+        "Frontera con los motores",
+        "Precondición dura",
+        "Los tres datos que bloquean tomas",
+        "Procedimiento",
+        "0. El guion manda; el storyboard traduce",
+        "1. Fija los segundos, no los minutos",
+        "2. Diseña por acto con la gramática del corpus",
+        "2b. Innova en la forma, no en los datos",
+        "2c. Diseña el sonido y las transiciones, no solo la imagen",
+        "3. Escribe una toma por archivo",
+        "4. Asigna el dueño por tipo de asset",
+        "5. Si el dueño es `modeler`, mira el BOM",
+        "6. Consigue la referencia: buscarla o crearla",
+        "7. Compila",
+        "8. Cuenta la cobertura leyendo el CSV, no la tabla",
+        "9. Entrega el tablero visual, no un muro de texto",
+        "Las reglas que no se negocian",
+        "Errores que este skill previene",
+        "Auditoría rápida de un shotlist ajeno",
+        "Prompt para llevar esto a otra IA"
+      ]
+    },
+    {
+      "id": "sugerir-por-fase",
+      "descripcion": "Da sugerencias cortas y accionables para una etapa concreta del flujo (certamen, equipo, retos, solución, impacto, despacho, pautado, presupuesto, recursos, canvas, guion, prototipo, checklist). Úsala cuando el usuario pide \"qué me falta aquí\" o \"cómo mejoro esto\".",
+      "lineas": 94,
+      "scripts": [],
+      "skills_citadas": [],
+      "extras": [],
+      "secciones_boilerplate": [
+        "Cómo sugerir un título o nombre de proyecto o producto",
+        "Cómo enseñar visualmente",
+        "Cómo redactar guiones cuidando la pronunciación",
+        "Cómo crear modelos 3D",
+        "Cómo sugerir elementos gráficos"
+      ],
+      "titulos": [
+        "Cuándo usarla",
+        "Procedimiento",
+        "Reglas",
+        "Generación de prompts para llevar las sugerencias a otra IA",
+        "Cómo sugerir un título o nombre de proyecto o producto",
+        "Cómo enseñar visualmente",
+        "Cómo redactar guiones cuidando la pronunciación y el orden de palabras",
+        "Cómo crear modelos 3D (referencia)",
+        "Cómo sugerir elementos gráficos",
+        "Punteros"
+      ]
+    }
+  ],
+  "tabs": [
+    {
+      "id": "resumen",
+      "label": "Resumen del Rally",
+      "level": 0,
+      "check": "() => true, summary: true"
+    },
+    {
+      "id": "certamen",
+      "label": "00 Certamen",
+      "level": 0,
+      "check": "() => true"
+    },
+    {
+      "id": "team",
+      "label": "01 Identidad de Equipo",
+      "level": 1,
+      "check": "() => !!state.rally_type"
+    },
+    {
+      "id": "challenges",
+      "label": "02 Retos del Comité",
+      "level": 2,
+      "check": "() => !!state.rally_type && !!state.team_name"
+    },
+    {
+      "id": "solution",
+      "label": "03 Taller de Solución",
+      "level": 3,
+      "check": "() => !!state.challenge_id"
+    },
+    {
+      "id": "impact",
+      "label": "04 Impacto, ODS & Plan País",
+      "level": 3,
+      "check": "() => !!state.challenge_id"
+    },
+    {
+      "id": "multi_ai",
+      "label": "05 Despacho Multi-IA",
+      "level": 4,
+      "check": "() => state.solution_approved"
+    },
+    {
+      "id": "pautado",
+      "label": "06 Pautado Oficial",
+      "level": 4,
+      "check": "() => state.solution_approved && isPautadoComplete()"
+    },
+    {
+      "id": "budget",
+      "label": "07 Presupuesto de Marcha",
+      "level": 4,
+      "check": "() => state.solution_approved && isBudgetValid()"
+    },
+    {
+      "id": "resources",
+      "label": "08 Bóveda de Recursos",
+      "level": 4,
+      "check": "() => state.solution_approved"
+    },
+    {
+      "id": "canvas",
+      "label": "09 Modelo Canvas",
+      "level": 4,
+      "check": "() => state.solution_approved"
+    },
+    {
+      "id": "script",
+      "label": "10 Guion 120s (4 Actos)",
+      "level": 5,
+      "check": "() => isPautadoComplete() && isBudgetValid()"
+    },
+    {
+      "id": "webdemo",
+      "label": "11 Prototipo para Video",
+      "level": 5,
+      "check": "() => isPautadoComplete() && isBudgetValid()"
+    },
+    {
+      "id": "timeline",
+      "label": "12 Checklist de Entrega",
+      "level": 1,
+      "check": "() => !!state.rally_type"
+    }
+  ],
+  "scripts": [
+    {
+      "archivo": "blender_addons.py",
+      "lineas": 110,
+      "doc": "blender_addons.py -- Instala el addon de Blender segun el tipo de proyecto."
+    },
+    {
+      "archivo": "build_report_pdf.py",
+      "lineas": 161,
+      "doc": "Construye docs/INFORME_INVESTIGACION.pdf con la identidad del proyecto."
+    },
+    {
+      "archivo": "build_shotlist.py",
+      "lineas": 194,
+      "doc": "build_shotlist.py -- Compila los contratos de tomas en la shotlist del video."
+    },
+    {
+      "archivo": "build_stats.py",
+      "lineas": 777,
+      "doc": "Generate dashboard/data/stats.generated.js from the current project."
+    },
+    {
+      "archivo": "check_anti_generico.py",
+      "lineas": 701,
+      "doc": "check_anti_generico.py"
+    },
+    {
+      "archivo": "content_store.py",
+      "lineas": 222,
+      "doc": "Almacén de propuestas de contenido y espejo del estado del usuario."
+    },
+    {
+      "archivo": "crear_proyecto.py",
+      "lineas": 65,
+      "doc": "Crea el proyecto local, su admin y la primera invitación."
+    },
+    {
+      "archivo": "gen_bibliography.py",
+      "lineas": 67,
+      "doc": "gen_bibliography.py -- Genera docs/bibliography.md en formato APA 7 a partir de"
+    },
+    {
+      "archivo": "gen_budget.py",
+      "lineas": 182,
+      "doc": ""
+    },
+    {
+      "archivo": "gen_canvas.py",
+      "lineas": 143,
+      "doc": "gen_canvas.py -- Genera docs/canvas.md a partir de brief.json y budget/budget.json."
+    },
+    {
+      "archivo": "gen_challenges_doc.py",
+      "lineas": 229,
+      "doc": "gen_challenges_doc.py -- Genera el documento Word editable oficial de deliberación del equipo:"
+    },
+    {
+      "archivo": "gen_dossier.py",
+      "lineas": 822,
+      "doc": "Genera el dossier de soluciones en PDF, Word y Excel a partir de un JSON."
+    },
+    {
+      "archivo": "gen_indice.py",
+      "lineas": 380,
+      "doc": "Genera `knowledge/INDICE.md`: el mapa del corpus para el agente (b)."
+    },
+    {
+      "archivo": "gen_mapa_nicaragua.py",
+      "lineas": 103,
+      "doc": "Genera la silueta de Nicaragua (path SVG) para el modulo design/."
+    },
+    {
+      "archivo": "gen_ods_data.py",
+      "lineas": 70,
+      "doc": "Genera design/ods_data.js desde el catalogo ODS del dashboard."
+    },
+    {
+      "archivo": "gen_pagina_diseno.py",
+      "lineas": 201,
+      "doc": "Genera la página online de un proyecto de Rally Design."
+    },
+    {
+      "archivo": "gen_palette.py",
+      "lineas": 184,
+      "doc": "gen_palette.py -- Genera paleta de colores desde el logo del proyecto."
+    },
+    {
+      "archivo": "gen_pautado.py",
+      "lineas": 122,
+      "doc": "gen_pautado.py -- Genera docs/pautado_draft.docx a partir de brief.json, claims.json"
+    },
+    {
+      "archivo": "gen_presets_json.py",
+      "lineas": 42,
+      "doc": "Genera design/presets.json a partir de design/presets.js (fuente de verdad)."
+    },
+    {
+      "archivo": "gen_readme.py",
+      "lineas": 122,
+      "doc": "gen_readme.py -- Genera y actualiza dinamicamente el README.md maestro del proyecto."
+    },
+    {
+      "archivo": "gen_report_figures.py",
+      "lineas": 540,
+      "doc": "Genera las figuras del informe de investigacion."
+    },
+    {
+      "archivo": "gen_script.py",
+      "lineas": 560,
+      "doc": "gen_script.py -- Genera script/script.md, script/shotlist.csv y script/narration.txt"
+    },
+    {
+      "archivo": "gen_sharktank_pdf.py",
+      "lineas": 210,
+      "doc": "Genera el PDF de salud de la idea (skill sharktank)."
+    },
+    {
+      "archivo": "gen_soluciones_pdf.py",
+      "lineas": 285,
+      "doc": "Genera el dossier PDF de soluciones para los retos del usuario."
+    },
+    {
+      "archivo": "gen_voice.py",
+      "lineas": 300,
+      "doc": "gen_voice.py -- Sintetizador de voz adaptativo para el video pitch (<= 120s)."
+    },
+    {
+      "archivo": "generate_master_pdf.py",
+      "lineas": 591,
+      "doc": ""
+    },
+    {
+      "archivo": "gpu_lock.py",
+      "lineas": 476,
+      "doc": "gpu_lock.py -- Guardia de recursos (gpu / cpu / ram) para procesos pesados."
+    },
+    {
+      "archivo": "heavy_guard.py",
+      "lineas": 83,
+      "doc": "heavy_guard.py -- Bloquea llamadas DIRECTAS a binarios pesados."
+    },
+    {
+      "archivo": "herramientas.py",
+      "lineas": 137,
+      "doc": "herramientas.py -- Caja de herramientas externa bajo demanda."
+    },
+    {
+      "archivo": "ingest_challenges.py",
+      "lineas": 166,
+      "doc": "ingest_challenges.py -- Ingesta de desafíos desde múltiples formatos:"
+    },
+    {
+      "archivo": "init_brief.py",
+      "lineas": 114,
+      "doc": "init_brief.py — Entrevista interactiva para poblar brief.json"
+    },
+    {
+      "archivo": "member_store.py",
+      "lineas": 221,
+      "doc": "Miembros, invitaciones y sesiones de un proyecto local."
+    },
+    {
+      "archivo": "moneda.py",
+      "lineas": 120,
+      "doc": "moneda.py -- Resuelve la moneda del presupuesto segun el certamen."
+    },
+    {
+      "archivo": "nube_store.py",
+      "lineas": 265,
+      "doc": "Sincronizacion de archivos del rally entre host local y la isla (Fase 2.1)."
+    },
+    {
+      "archivo": "orchestrate.py",
+      "lineas": 186,
+      "doc": "orchestrate.py -- Tablero de solo lectura del equipo de especialistas."
+    },
+    {
+      "archivo": "pre_render_check.py",
+      "lineas": 78,
+      "doc": "pre_render_check.py -- Bloquea el render si las dependencias de una toma no"
+    },
+    {
+      "archivo": "publicar_seccion.py",
+      "lineas": 153,
+      "doc": "Escribe una sección directamente en el servidor de Rally Studio."
+    },
+    {
+      "archivo": "publish_site.py",
+      "lineas": 45,
+      "doc": "publish_site.py -- Script de publicacion y despliegue para la web demo en Netlify CLI o GitHub Pages."
+    },
+    {
+      "archivo": "rally_clock.py",
+      "lineas": 73,
+      "doc": "rally_clock.py -- Cronometro regresivo inteligente y avisos criticos para competencias de 24h/28h."
+    },
+    {
+      "archivo": "rally_service.py",
+      "lineas": 2605,
+      "doc": "rally_service.py -- Backend HTTP ligero y autónomo para Rally Studio & Workbench."
+    },
+    {
+      "archivo": "render_contadores.py",
+      "lineas": 184,
+      "doc": "render_contadores.py -- Graba plantillas/contadores/index.html como MP4 del Acto IV."
+    },
+    {
+      "archivo": "render_watch.py",
+      "lineas": 68,
+      "doc": "render_watch.py -- Monitor de recursos (RAM y GPU) en tiempo real."
+    },
+    {
+      "archivo": "score_challenges.py",
+      "lineas": 169,
+      "doc": "score_challenges.py -- Motor analitico de clasificacion y probabilidad de victoria para desafios."
+    },
+    {
+      "archivo": "scrape_ganadores_sirli.py",
+      "lineas": 321,
+      "doc": "Extractor del banco de ganadores de SIRLI (sirli.org)."
+    },
+    {
+      "archivo": "section_store.py",
+      "lineas": 417,
+      "doc": "Almacen de secciones versionadas para Rally Studio."
+    },
+    {
+      "archivo": "servir_propuesta.py",
+      "lineas": 145,
+      "doc": "Deja una propuesta de contenido en el buzón de Rally Studio."
+    },
+    {
+      "archivo": "sincronizar_nube.py",
+      "lineas": 427,
+      "doc": "sincronizar_nube.py -- Puente entre los archivos del rally (local) y la isla."
+    },
+    {
+      "archivo": "sirli_analisis.py",
+      "lineas": 160,
+      "doc": "Analisis del corpus de videos ganadores SIRLI."
+    },
+    {
+      "archivo": "sirli_asr.py",
+      "lineas": 418,
+      "doc": "Transcribe en local los videos que YouTube no expone con subtitulos."
+    },
+    {
+      "archivo": "sirli_cierre.py",
+      "lineas": 42,
+      "doc": "Orquesta el cierre del pipeline y apaga la maquina al terminar."
+    },
+    {
+      "archivo": "sirli_dataset.py",
+      "lineas": 249,
+      "doc": "Construye el dataset de modelado: una fila por video con sus caracteristicas."
+    },
+    {
+      "archivo": "sirli_excel.py",
+      "lineas": 302,
+      "doc": ""
+    },
+    {
+      "archivo": "sirli_figuras.py",
+      "lineas": 302,
+      "doc": "Genera las figuras 1-8 del plan de investigacion a partir del dataset."
+    },
+    {
+      "archivo": "sirli_final2.py",
+      "lineas": 219,
+      "doc": "Cierra la fase grande: espera al ASR, saca fotogramas y regenera todo el libro."
+    },
+    {
+      "archivo": "sirli_finalizar.py",
+      "lineas": 107,
+      "doc": "Espera a que terminen metadatos y transcripciones, arma el Excel, limpia y apaga."
+    },
+    {
+      "archivo": "sirli_hipotesis.py",
+      "lineas": 288,
+      "doc": "Calcula la evidencia de las hipotesis de la investigacion y escribe hipotesis.md."
+    },
+    {
+      "archivo": "sirli_libro.py",
+      "lineas": 69,
+      "doc": "Ensambla el libro completo a partir de las partes en `scripts/libro/`."
+    },
+    {
+      "archivo": "sirli_meta.py",
+      "lineas": 207,
+      "doc": ""
+    },
+    {
+      "archivo": "sirli_modelo.py",
+      "lineas": 143,
+      "doc": "Linea base del modelo: predecir primer lugar con variables de evento y de video."
+    },
+    {
+      "archivo": "sirli_modelo_solucion.py",
+      "lineas": 293,
+      "doc": "Modelo de tipo de solución SIRLI."
+    },
+    {
+      "archivo": "sirli_pares.py",
+      "lineas": 46,
+      "doc": "Genera la lista de contrapartes emparejadas para la familia D."
+    },
+    {
+      "archivo": "sirli_probabilidad.py",
+      "lineas": 270,
+      "doc": "Probabilidad absoluta de ganar: qué se puede identificar y qué no."
+    },
+    {
+      "archivo": "sirli_probe_intl.py",
+      "lineas": 124,
+      "doc": "Sonda lenta de los 58 videos internacionales."
+    },
+    {
+      "archivo": "sirli_queue_frames2.py",
+      "lineas": 67,
+      "doc": "Prepara la cola de fotogramas para los videos que aún no tienen hoja de contacto."
+    },
+    {
+      "archivo": "sirli_resumen_ejecutivo.py",
+      "lineas": 165,
+      "doc": "Resumen ejecutivo de una página y tabla de hipótesis en CSV."
+    },
+    {
+      "archivo": "sirli_sistemico.py",
+      "lineas": 1219,
+      "doc": "Investigación profunda SIRLI: biblioteca de hipótesis + análisis sistémico."
+    },
+    {
+      "archivo": "sirli_thumbs.py",
+      "lineas": 55,
+      "doc": "Baja la miniatura de cada video ganador a research/sirli/meta/thumbs/."
+    },
+    {
+      "archivo": "sirli_videos.py",
+      "lineas": 453,
+      "doc": ""
+    },
+    {
+      "archivo": "sirli_visual_resumen.py",
+      "lineas": 53,
+      "doc": "Consolida las descripciones visuales de research/sirli/visual/*.json."
+    },
+    {
+      "archivo": "sirli_visual_stats.py",
+      "lineas": 208,
+      "doc": "Mide color, brillo, saturacion, densidad de bordes y caras en miniaturas y fotogramas."
+    },
+    {
+      "archivo": "soluciones_motor.py",
+      "lineas": 646,
+      "doc": "Motor de soluciones para retos del Rally."
+    },
+    {
+      "archivo": "sync_skills.py",
+      "lineas": 44,
+      "doc": "Sincroniza la carpeta madre skills/ hacia .agents/skills/ y .opencode/skills/."
+    },
+    {
+      "archivo": "validate_brief.py",
+      "lineas": 91,
+      "doc": "validate_brief.py -- Falla con SystemExit si brief.json esta incompleto."
+    },
+    {
+      "archivo": "validate_budget.py",
+      "lineas": 106,
+      "doc": ""
+    },
+    {
+      "archivo": "validate_pautado.py",
+      "lineas": 60,
+      "doc": "validate_pautado.py -- Valida y cuenta caracteres (con espacios) por seccion en docs/pautado_draft.docx."
+    },
+    {
+      "archivo": "watch_stats.py",
+      "lineas": 219,
+      "doc": "Watch the live rally state and generate the recap automatically."
+    }
+  ],
+  "entregables": [
+    "brief.json",
+    "pautado (5 secciones)",
+    "budget/budget.json + xlsx",
+    "budget/bom.csv",
+    "docs/canvas.md",
+    "script/script.md",
+    "shots/*.yaml -> script/shotlist.csv",
+    "docs/storyboard_visual.html",
+    "assets/voice/narration.mp4",
+    "video final",
+    "site/ publicado",
+    "dossier (PDF/Word/Excel)",
+    "docs/STORYBOARD.md",
+    "knowledge/INDICE.md"
+  ],
+  "modulos": [
+    "dashboard/app.js",
+    "dashboard/content_bridge.js",
+    "dashboard/section_sync.js",
+    "dashboard/super_agents.js",
+    "dashboard/super_agents_rubrics.js",
+    "dashboard/challenge_parser.js",
+    "dashboard/stats.html/.js",
+    "dashboard/graph.html",
+    "dashboard/dossier_preview.html",
+    "dashboard/join.html/.js",
+    "dashboard/admin.html/.js",
+    "dashboard/presence.js"
+  ],
+  "cruces": {
+    "scripts_total": 76,
+    "scripts_citados": 25,
+    "scripts_huerfanos": [
+      "build_report_pdf.py",
+      "build_stats.py",
+      "crear_proyecto.py",
+      "gen_bibliography.py",
+      "gen_budget.py",
+      "gen_canvas.py",
+      "gen_challenges_doc.py",
+      "gen_indice.py",
+      "gen_mapa_nicaragua.py",
+      "gen_ods_data.py",
+      "gen_pagina_diseno.py",
+      "gen_pautado.py",
+      "gen_presets_json.py",
+      "gen_readme.py",
+      "gen_report_figures.py",
+      "gen_voice.py",
+      "generate_master_pdf.py",
+      "ingest_challenges.py",
+      "init_brief.py",
+      "member_store.py",
+      "moneda.py",
+      "nube_store.py",
+      "publicar_seccion.py",
+      "rally_clock.py",
+      "render_watch.py",
+      "score_challenges.py",
+      "scrape_ganadores_sirli.py",
+      "section_store.py",
+      "sincronizar_nube.py",
+      "sirli_analisis.py",
+      "sirli_asr.py",
+      "sirli_cierre.py",
+      "sirli_dataset.py",
+      "sirli_excel.py",
+      "sirli_figuras.py",
+      "sirli_final2.py",
+      "sirli_finalizar.py",
+      "sirli_hipotesis.py",
+      "sirli_libro.py",
+      "sirli_meta.py",
+      "sirli_modelo.py",
+      "sirli_modelo_solucion.py",
+      "sirli_pares.py",
+      "sirli_probabilidad.py",
+      "sirli_probe_intl.py",
+      "sirli_queue_frames2.py",
+      "sirli_resumen_ejecutivo.py",
+      "sirli_sistemico.py",
+      "sirli_thumbs.py",
+      "sirli_videos.py",
+      "sirli_visual_resumen.py",
+      "sirli_visual_stats.py",
+      "sync_skills.py",
+      "validate_brief.py",
+      "validate_pautado.py",
+      "watch_stats.py"
+    ],
+    "skills_sin_script": [
+      "auditar-entregable",
+      "contexto-rally",
+      "control-tiempo-entrega",
+      "guiar-usuario",
+      "sugerir-por-fase"
+    ],
+    "boilerplate_por_seccion": {
+      "Cómo sugerir un título o nombre de proyecto o producto": 16,
+      "Cómo enseñar visualmente": 16,
+      "Cómo redactar guiones cuidando la pronunciación": 16,
+      "Cómo crear modelos 3D": 16,
+      "Cómo sugerir elementos gráficos": 16
+    }
+  }
+}

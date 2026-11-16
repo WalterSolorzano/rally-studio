@@ -1,5 +1,10 @@
 # Desplegar el sistema sin pagar nada
 
+> **Render retirado (2026-11).** `deploy/render.yaml` y `deploy/Dockerfile` ya no
+> existen. El sistema es local: `scripts/rally_service.py` en tu máquina, con la
+> puerta de acceso (`login.html` + llave en `dashboard/data/acceso.txt`). Para
+> llegar desde fuera de tu red se usa un túnel privado (Tailscale), no un hosting.
+
 > Ruta 0-costo cuando quieras pasar de local a en línea. No hace falta tarjeta
 > en ninguno de los 3 servicios: son plan free real (con límites honestos, ver abajo).
 

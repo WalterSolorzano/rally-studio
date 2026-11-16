@@ -1,0 +1,12 @@
+{
+  "_tipos": {
+    "camara": "la camara se mueve (paneo, dolly, seguimiento, handheld)",
+    "objeto": "el mecanismo o el material se mueve dentro del cuadro",
+    "motion2d": "graficos animados, contadores, barras, mapas",
+    "persona": "accion real de una persona (no posado)",
+    "transicion": "movimiento generado por el corte (match cut, whip pan, J-cut)",
+    "3d": "orbit, explosionada, corte animado del modelo",
+    "estatico": "plano fijo: solo se admite si dura menos de 2.5 s"
+  },
+  "_regla": "toda toma declara tipo y detalle; estatico solo si dura menos de 2.5 s"
+}

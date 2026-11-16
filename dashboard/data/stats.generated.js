@@ -4,7 +4,7 @@ window.RALLY_STATS = {
     "kind": "project_recap_generated",
     "simulated": false,
     "schema_version": 2,
-    "generated_at": "2026-10-22T15:23:04-06:00",
+    "generated_at": "2026-11-16T16:56:23-06:00",
     "generator": "scripts/build_stats.py",
     "phase": "idle",
     "note": "Todos los números se derivan de state.json y de los archivos del proyecto. Los avatares son ilustrativos.",
@@ -121,7 +121,7 @@ window.RALLY_STATS = {
       "label": "Sesión",
       "path": "dashboard/data/state.json",
       "exists": true,
-      "mtime": "2026-10-22 14:48"
+      "mtime": "2026-11-06 15:36"
     },
     {
       "label": "Claims",
@@ -139,7 +139,7 @@ window.RALLY_STATS = {
       "label": "Shotlist",
       "path": "script/shotlist.csv",
       "exists": true,
-      "mtime": "2026-10-22 15:22"
+      "mtime": "2026-11-16 00:20"
     },
     {
       "label": "Guion",
@@ -175,7 +175,7 @@ window.RALLY_STATS = {
       "label": "Brief",
       "path": "brief.json",
       "exists": true,
-      "mtime": "2026-10-19 10:31"
+      "mtime": "2026-11-01 18:22"
     }
   ],
   "material": {
@@ -207,5 +207,17 @@ window.RALLY_STATS = {
     "illustrative": [
       "Avatares"
     ]
+  },
+  "produccion": {
+    "renders": 0,
+    "renders_ok": 0,
+    "renders_fallidos": 0,
+    "segundos": 0.0,
+    "bloqueos": 0,
+    "limpiezas": 0,
+    "correcciones": 0,
+    "fallos": 0,
+    "ultimo": "",
+    "minutos": 0.0
   }
 };

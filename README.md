@@ -237,13 +237,16 @@ Piezas que trae:
 | Archivo | Para qué |
 |---|---|
 | `skills/storyboard/SKILL.md` | Procedimiento completo: reparto 17/33/29/21, 3D como tronco del Acto II, referencias reales (video del territorio, noticia, documental, foro), selección de música por tono y lugar, cobertura de rúbrica contada desde el CSV |
-| `skills/storyboard/gen_storyboard_visual.py` | Genera el tablero: hoja de contactos, una fila por toma, pista de sonido por acto |
-| `plantillas/storyboard_ejemplo/` | Ejemplo completo con proyecto ficticio: 14 tomas, 120,0 s, 17/19 ítems de rúbrica, HTML y PDF del tablero |
+| `skills/storyboard/gen_storyboard_visual.py` | Genera el tablero imprimible: hoja de contactos, una fila por toma, pista de sonido por acto |
 
 ```powershell
 python scripts/build_shotlist.py
-python skills/storyboard/gen_storyboard_visual.py --csv script/shotlist.csv --out docs/storyboard_visual.html
+python skills/guion-storyboard/gen_teleprompter.py   # entregable de rodaje (tomas + teleprompter)
+python tools/exportar_pdf.py                          # la misma hoja en papel
 ```
+
+El ejemplo con proyecto ficticio que antes vivía en `plantillas/storyboard_ejemplo/` se retiró:
+el modo demo de `gen_teleprompter.py --demo` hace ese trabajo sin guardar 15 MB de material ajeno.
 
 Reglas que no se negocian: cero nombres de proyecto en los primeros 20 s, tres cifras de dinero máximo en el Acto III (cada una con base), una sola transición llamativa por acto y la cifra clave sin música.
 

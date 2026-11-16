@@ -32,6 +32,8 @@ const SVG = {
   dotsVertical: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1.5"></circle><circle cx="12" cy="5" r="1.5"></circle><circle cx="12" cy="19" r="1.5"></circle></svg>`,
   shieldCheck: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>`,
   network: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>`,
+  chart: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="20" x2="6" y2="13"></line><line x1="12" y1="20" x2="12" y2="7"></line><line x1="18" y1="20" x2="18" y2="10"></line></svg>`,
+  users: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>`,
   close: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`,
   trash: `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>`,
   edit: `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>`,
@@ -1822,13 +1824,21 @@ function renderMobileBottomBar() {
       ${SVG.shieldCheck}
       <span>Auditoría (${score}%)</span>
     </button>
-    <button class="mobile-bottom-tab ${activeTab === 'timeline' ? 'active' : ''}" onclick="switchTab('timeline')" title="Cronómetro">
+    <button class="mobile-bottom-tab ${activeTab === 'timeline' ? 'active' : ''}" onclick="switchTab('timeline')" title="Checklist de entrega y avisos">
       ${SVG.clock}
       <span>Tiempo</span>
     </button>
-    <a href="graph.html" target="_blank" class="mobile-bottom-tab" title="Grafo">
+    <a href="entregables/index.html" target="_blank" class="mobile-bottom-tab" title="Entregables listos para el teléfono">
+      ${SVG.download}
+      <span>Entregas</span>
+    </a>
+    <a href="graph.html" target="_blank" class="mobile-bottom-tab" title="Grafo del corpus">
       ${SVG.network}
       <span>Grafo</span>
+    </a>
+    <a href="stats.html" target="_blank" class="mobile-bottom-tab" title="Debrief de la partida">
+      ${SVG.chart}
+      <span>Debrief</span>
     </a>
   `;
 }
@@ -1924,6 +1934,14 @@ function renderTopbar() {
 
       <a href="graph.html" target="_blank" class="btn-pill-ghost btn-graph-link" title="Explorar Grafo de Conocimiento (177 nodos, rúbricas y ganadores)" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
         ${SVG.network} <span class="graph-btn-label">Grafo</span>
+      </a>
+
+      <a href="stats.html" target="_blank" class="btn-pill-ghost btn-graph-link" title="Resumen de partida: horas, entregables, quién tomó qué" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+        ${SVG.chart} <span class="graph-btn-label">Resumen</span>
+      </a>
+
+      <a href="admin.html" class="btn-pill-ghost btn-graph-link" title="Accesos del equipo: invitar, revisar quién entró y retirar acceso" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+        ${SVG.users} <span class="graph-btn-label">Accesos</span>
       </a>
 
       <div class="timer-pill-navy" id="timer-pill" onclick="openTimerSettingsModal()" style="cursor:pointer;" title="Clic para calibrar o ajustar cronómetro">
@@ -2607,6 +2625,9 @@ function renderViewResumen() {
     : `<span class="rs-muted">Todavía nadie ha definido su nombre. Cada persona debe poner el suyo una vez.</span>`;
 
   return `
+    <!-- Bitácora viva de los agentes: siempre visible, sin depender de la fase -->
+    ${renderAvisosIA()}
+    ${renderNotificar()}
     <div class="rs-summary">
       <section class="rs-hero">
         <div class="rs-hero-main">
@@ -2741,6 +2762,9 @@ function openIdentityModal() {
             </button>`).join("")}
           </div>
         </div>` : ""}
+      <a href="admin.html" style="display:inline-flex; align-items:center; gap:6px; margin-top:16px; font-size:12px; font-weight:700; color:#64748b; text-decoration:none; border-bottom:1px solid #e2e8f0; padding-bottom:3px;" title="Invitar personas, revisar quién entró y retirar acceso">
+        ${SVG.users} Accesos del equipo
+      </a>
     </div>
   `;
   document.body.appendChild(modal);
@@ -7996,6 +8020,9 @@ function renderViewResources() {  return `
       <button class="btn-primary" onclick="saveTeamHubLinks()">Guardar Enlaces de Equipo</button>
     </div>
 
+    <!-- La bitácora de los agentes se ve aquí, sin esperar a la fase de cierre -->
+    ${renderAvisosIA()}
+
     <div class="workbench-card" id="video-studio">
       <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:14px; margin-bottom:4px;">
         <div>
@@ -8072,6 +8099,30 @@ function renderViewResources() {  return `
           <strong style="font-size:11px; display:block;">Emblema de Equipo</strong>
           <span style="font-size:10px; color:var(--text-muted);">${state.team_name || 'Nombre de Equipo'}</span>
         </div>
+      </div>
+    </div>
+
+    <div class="workbench-card" id="entregables-ia">
+      <div class="table-responsive" style="margin-bottom:0;">
+        <table class="data-table">
+          <thead>
+            <tr><th style="width:40px;"></th><th>Entregables de la IA</th><th style="width:90px;"></th></tr>
+          </thead>
+          <tbody>
+            ${[
+              { icon: SVG.external, nombre: "guion_rodaje.pdf", href: "entregables/guion_rodaje.pdf", nota: "ficha" },
+              { icon: SVG.clock, nombre: "teleprompter.html", href: "entregables/teleprompter.html", nota: "rodaje" },
+              { icon: SVG.folder, nombre: "bandeja completa", href: "entregables/index.html", nota: "todo" },
+            ].map(f => `
+              <tr>
+                <td style="color:var(--color-primary);">${f.icon}</td>
+                <td style="font-family:var(--font-mono); font-size:11.5px; color:#091e42;">${f.nombre}</td>
+                <td style="text-align:right;">
+                  <a href="${f.href}" target="_blank" rel="noopener" class="btn-secondary" style="padding:3px 8px; font-size:11px; text-decoration:none; display:inline-flex; align-items:center; gap:4px;">${SVG.download} ${f.nota}</a>
+                </td>
+              </tr>`).join("")}
+          </tbody>
+        </table>
       </div>
     </div>
 
@@ -9510,6 +9561,99 @@ function removeScheduleMilestone(idx) {
   }
 }
 
+// ── AVISOS DE LA IA (bandeja de cierre) ──────────────────────────────────────
+// `content_bridge.js` guarda en `state.avisos` lo que llega por la pestaña de
+// cierre (máximo 5). Sin este bloque el aviso se aplicaba y nadie lo volvía a
+// ver: era el único destino posible de un entregable que no cabe en un campo.
+function renderNotificar() {
+  if (!window.RallyNotificar) return "";
+  const api = window.RallyNotificar;
+  if (!api.soportado()) return "";
+  const pref = api.prefs();
+  const estado = api.permiso();
+  const activo = pref.activo && estado === "granted";
+
+  const filas = [
+    { clave: "propuesta", icono: SVG.spark, texto: "Propuestas de la IA" },
+    { clave: "avance", icono: SVG.download, texto: "Entregas" },
+    { clave: "cambio", icono: SVG.edit, texto: "Cambios del equipo" },
+    { clave: "equipo", icono: SVG.users, texto: "Entradas al proyecto" },
+  ].map(f => {
+    const on = !!pref[f.clave];
+    return `
+      <div onclick="alternarAviso('${f.clave}')" style="display:flex; align-items:center; gap:10px; padding:9px 0; border-top:1px solid var(--border-light); cursor:pointer;">
+        <span style="color:${on ? "var(--color-primary)" : "var(--text-faint)"}; flex:none;">${f.icono}</span>
+        <span style="flex:1; font-size:12px; color:#091e42;">${f.texto}</span>
+        <span style="width:15px; height:15px; flex:none; border:1px solid ${on ? "var(--color-primary)" : "var(--border-strong)"}; display:inline-flex; align-items:center; justify-content:center; color:var(--color-primary);">${on ? SVG.check : ""}</span>
+      </div>`;
+  }).join("");
+
+  const boton = estado === "denied"
+    ? `<span style="font-size:11px; font-family:var(--font-mono); color:var(--text-faint);">bloqueado</span>`
+    : activo
+      ? `<button class="btn-secondary" style="padding:4px 10px; font-size:11px;" onclick="probarAviso()">Probar</button>`
+      : `<button class="btn-primary" style="padding:4px 10px; font-size:11px;" onclick="activarAvisos()">Activar</button>`;
+
+  return `
+    <div class="workbench-card" id="notificar">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <span style="color:var(--color-primary); flex:none;">${SVG.bell}</span>
+        <span style="flex:1; font-size:12.5px; font-weight:700; color:#091e42;">Notificaciones</span>
+        ${boton}
+      </div>
+      ${activo ? filas : ""}
+    </div>`;
+}
+
+function activarAvisos() {
+  const api = window.RallyNotificar;
+  if (!api) return;
+  api.pedir().then(function () {
+    renderTab(activeTab);
+  });
+}
+
+function alternarAviso(clave) {
+  const api = window.RallyNotificar;
+  if (!api) return;
+  const pref = api.prefs();
+  const cambios = {};
+  cambios[clave] = !pref[clave];
+  api.guardar(cambios);
+  renderTab(activeTab);
+}
+
+function probarAviso() {
+  const api = window.RallyNotificar;
+  if (api) api.probar();
+}
+
+function renderAvisosIA() {
+  const avisos = Array.isArray(state.avisos) ? state.avisos : [];
+  if (!avisos.length) return "";
+  const filas = avisos.map(a => {
+    const titulo = escapeHtml(a.title || "Aviso de la IA");
+    const texto = a.text ? escapeHtml(a.text) : "";
+    const fuente = a.source ? escapeHtml(a.source) : "";
+    const url = typeof a.url === "string" && /^https?:\/\//i.test(a.url) ? a.url : "";
+    return `
+      <div style="display:flex; gap:10px; align-items:flex-start; padding:10px 0; border-top:1px solid var(--border-light);">
+        <span style="color:var(--color-primary); flex:none; margin-top:2px;">${SVG.download}</span>
+        <div style="min-width:0; flex:1;">
+          <div style="font-size:12.5px; font-weight:700; color:#091e42;">${titulo}</div>
+          ${texto ? `<div style="font-size:11.5px; color:#475569; margin-top:2px;">${texto}</div>` : ""}
+          ${fuente ? `<div style="font-size:10px; color:#94a3b8; font-family:var(--font-mono); margin-top:2px;">${fuente}</div>` : ""}
+        </div>
+        ${url ? `<a href="${url}" target="_blank" rel="noopener" class="btn-secondary" style="flex:none; padding:4px 8px; font-size:11px; text-decoration:none;">Abrir</a>` : ""}
+      </div>`;
+  }).join("");
+  return `
+    <div class="workbench-card" id="avisos-ia">
+      <h3 style="margin:0 0 4px 0;">Avisos de la IA · ${avisos.length}</h3>
+      ${filas}
+    </div>`;
+}
+
 function renderViewTimeline() {
   const isLatam = state.rally_type === "latam";
   const nom = getOfficialNomenclatures();
@@ -9735,6 +9879,9 @@ function renderViewTimeline() {
         ${currentDeadline.desc}
       </div>
     </div>
+
+    <!-- Avisos que la IA madre dejó para el cierre -->
+    ${renderAvisosIA()}
 
     <!-- Sub-navegación Limpia y Cohesiva -->
     <div class="timeline-subnav">

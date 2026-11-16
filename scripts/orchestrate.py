@@ -17,7 +17,6 @@ import csv
 import json
 import subprocess
 import sys
-import io
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parents[1]
@@ -25,6 +24,7 @@ sys.path.insert(0, str(RAIZ / "scripts"))
 
 import gpu_lock  # noqa: E402
 import build_shotlist as bs  # noqa: E402
+from comun import utf8  # noqa: E402
 
 ZONAS = {
     "tomas (shots/)": ["shots/"],
@@ -171,8 +171,7 @@ def _zonas() -> None:
 
 
 def main() -> None:
-    if sys.platform == "win32":
-        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+    utf8()
     print("ORQUESTRATE -- tablero de solo lectura")
     _brief()
     _env()

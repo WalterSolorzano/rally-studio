@@ -10,13 +10,11 @@ con los campos opcionales:
     canvas_cost_notes, canvas_revenue
 Cada uno acepta lista de strings o un string con bullets separados por "|".
 """
-import io
 import json
 import pathlib
 import sys
-
-if sys.platform == "win32":
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+from comun import utf8
+utf8()
 
 BRIEF_PATH = pathlib.Path("brief.json")
 BUDGET_PATH = pathlib.Path("budget/budget.json")

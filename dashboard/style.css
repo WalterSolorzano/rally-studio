@@ -3369,6 +3369,24 @@ body.panel-drawer-open .drawer-backdrop {
 
   .mobile-bottom-bar {
     display: flex;
+    padding: 4px 4px env(safe-area-inset-bottom, 4px) 4px;
+  }
+
+  /* Siete accesos en 360 px: se reparten el ancho en vez de desbordar. */
+  .mobile-bottom-tab {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 4px 2px;
+    gap: 1px;
+  }
+
+  .mobile-bottom-tab span {
+    font-size: 9px;
+    line-height: 1.1;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .certamen-grid {

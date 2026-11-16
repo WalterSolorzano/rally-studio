@@ -130,7 +130,7 @@ def test_proposal_appears_and_accepts(page, servidor):
     page.wait_for_selector(card, state="detached", timeout=15000)
 
     estado = page.evaluate(
-        "() => JSON.parse(localStorage.getItem('rally_studio_production_state_2026_v3') || '{}')"
+        "() => JSON.parse(localStorage.getItem('rally_studio_production_state_2026_v4') || '{}')"
     )
     assert estado["pautado"]["problema"] == "Propuesta viva"
 

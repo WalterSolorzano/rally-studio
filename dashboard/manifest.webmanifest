@@ -1,0 +1,24 @@
+{
+  "name": "Rally Studio · Workbench de Innovación",
+  "short_name": "Rally",
+  "description": "Workbench del rally: fases, pautado, entregables y avisos de la IA en el teléfono.",
+  "start_url": "./",
+  "scope": "./",
+  "id": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#0e0e0f",
+  "lang": "es",
+  "dir": "ltr",
+  "categories": ["productivity", "education"],
+  "icons": [
+    { "src": "assets/app-icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/app-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/app-icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Entregas", "short_name": "Entregas", "url": "./entregables/index.html" },
+    { "name": "Plan de rodaje", "short_name": "Rodaje", "url": "./entregables/teleprompter.html" }
+  ]
+}

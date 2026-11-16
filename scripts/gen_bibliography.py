@@ -6,11 +6,8 @@ research/claims.json y anade la declaracion etica obligatoria de uso de IA.
 import json
 import pathlib
 import datetime
-import sys
-import io
-
-if sys.platform == "win32":
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+from comun import utf8
+utf8()
 
 CLAIMS_PATH = pathlib.Path("research/claims.json")
 BRIEF_PATH = pathlib.Path("brief.json")

@@ -7,10 +7,8 @@ Genera estadisticas, graficos de barras en terminal y reporte Markdown detallado
 import json
 import pathlib
 import sys
-import io
-
-if sys.platform == "win32":
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+from comun import utf8
+utf8()
 
 CHALLENGES_PATH = pathlib.Path("research/challenges.json")
 BRIEF_PATH = pathlib.Path("brief.json")

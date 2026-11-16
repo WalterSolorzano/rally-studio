@@ -91,7 +91,9 @@ python scripts/servir_propuesta.py --tab pautado --slot problema --kind text \
 - Instalador: `scripts/setup_agente.ps1` (idempotente; deja skills y MCP listos).
 - Skills en `skills/<nombre>/SKILL.md`; se reflejan en `.opencode/skills/` y `.agents/skills/`.
 - Reglas profundas por tema en `.agents/rules/` (frontera, modos de rally, rúbricas, pautado
-  y guion). Consúltalas cuando la tarea las toque.
+  y guion, interfaz mínima). Consúltalas cuando la tarea las toque.
+- **Ley de interfaz mínima** (`.agents/rules/ui-minima.md`): en toda pantalla, cero párrafos,
+  cero datos técnicos visibles, icono antes que palabra, número solo si acciona una decisión.
 
 ---
 

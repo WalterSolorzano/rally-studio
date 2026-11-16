@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Entrar · Rally Studio</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/app-icon-192.png">
+  <meta name="theme-color" content="#0e0e0f">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=20261116_rev1">
+  <style>
+    .puerta { min-height: 100vh; display: grid; place-items: center; background: var(--bg-app); }
+    .puerta-forma { width: min(360px, calc(100vw - 48px)); }
+    .puerta-marca { display: block; width: 56px; height: 56px; margin-bottom: 28px; }
+    .puerta-titulo {
+      font: 800 19px/1.2 var(--font-ui); color: var(--text-title);
+      letter-spacing: -0.01em; margin: 0 0 4px;
+    }
+    .puerta-nota {
+      font: 400 11px/1.5 var(--font-mono); color: var(--text-muted);
+      margin: 0 0 22px; text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .puerta-campo {
+      width: 100%; box-sizing: border-box; padding: 13px 0;
+      border: 0; border-bottom: 1px solid var(--border-strong);
+      background: transparent; color: var(--text-title);
+      font: 600 15px/1 var(--font-mono); letter-spacing: 0.08em;
+      text-transform: uppercase; outline: none;
+    }
+    .puerta-campo::placeholder { color: var(--text-faint); font-weight: 400; letter-spacing: 0.02em; text-transform: none; }
+    .puerta-campo:focus { border-bottom-color: var(--border-focus); }
+    .puerta-nombre { text-transform: none; letter-spacing: 0; font-size: 13px; }
+    .puerta-accion {
+      width: 100%; margin-top: 20px; padding: 13px;
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      border: 0; background: var(--color-primary); color: #fff;
+      font: 700 13px var(--font-ui); cursor: pointer;
+    }
+    .puerta-accion:disabled { background: var(--border-strong); cursor: progress; }
+    .puerta-estado {
+      margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border-light);
+      font: 400 11px/1.5 var(--font-mono); color: var(--text-muted);
+      min-height: 18px;
+    }
+    .puerta-estado[data-tono="error"] { color: var(--status-err-text); }
+    .puerta-pie {
+      margin-top: 26px; display: flex; align-items: center; gap: 8px;
+      font: 400 11px var(--font-mono); color: var(--text-faint);
+    }
+  </style>
+</head>
+<body>
+  <main class="puerta">
+    <form class="puerta-forma" id="puerta-form" autocomplete="off">
+      <img class="puerta-marca" src="assets/app-mark.svg" alt="" width="56" height="56">
+      <h1 class="puerta-titulo">Llave de acceso</h1>
+      <p class="puerta-nota" id="puerta-nota">Cargando…</p>
+
+      <input class="puerta-campo" id="puerta-llave" name="llave" type="password"
+             placeholder="XXXX-XXXX-XXXX" spellcheck="false" autocapitalize="characters" required>
+      <input class="puerta-campo puerta-nombre" id="puerta-nombre" name="nombre" type="text"
+             placeholder="Tu nombre (solo la primera vez)" style="display:none; margin-top:10px;">
+
+      <button class="puerta-accion" id="puerta-entrar" type="submit">Entrar</button>
+      <div class="puerta-estado" id="puerta-estado" role="status"></div>
+
+      <div class="puerta-pie">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <rect x="4" y="10" width="16" height="10" rx="2"></rect>
+          <path d="M8 10V7a4 4 0 0 1 8 0v3"></path>
+        </svg>
+        <span id="puerta-miembros">—</span>
+      </div>
+    </form>
+  </main>
+  <script src="login.js?v=20261116_rev1"></script>
+</body>
+</html>
