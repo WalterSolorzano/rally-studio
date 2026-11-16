@@ -3,7 +3,7 @@
 [![Plataforma](https://img.shields.io/badge/Plataforma-Web%20Local-0866F5.svg)](#inicio-rapido)
 [![Certámenes](https://img.shields.io/badge/Certamen-Rally%20Latam%20%2828h%29%20%7C%20Nacional%20%2824h%29-1D4ED8.svg)](#certamenes)
 [![Base de Datos](https://img.shields.io/badge/Base%20de%20Datos-Ganadores%20y%20R%C3%BAbricas-6366F1.svg)](#cerebro)
-[![Asistentes IA](https://img.shields.io/badge/Asistentes%20IA-16%20Ayudantes-16a34a.svg)](#asistentes)
+[![Asistentes IA](https://img.shields.io/badge/Asistentes%20IA-17%20Ayudantes-16a34a.svg)](#asistentes)
 [![Pruebas](https://img.shields.io/badge/Pruebas-6%2F6%20pasan-22c55e.svg)](#pruebas)
 
 > **Un espacio de trabajo creado por un estudiante universitario que ya vivió y ganó un rally, diseñado para ayudar a otros equipos a no perder la cabeza en maratones de 24h y 28h (Rally Latinoamericano y Rally Nacional Nicaragua Innova). No te promete ganar por arte de magia, pero te ahorra horas de caos, organiza a tu grupo y evita que te descalifiquen por un error tonto.**
@@ -97,7 +97,7 @@ En lugar de carpetas con documentos sueltos que nadie lee a medianoche:
 
 ---
 
-## Los 16 asistentes (el dream team del desvelo)
+## Los 17 asistentes (el dream team del desvelo)
 
 Cada asistente tiene un trabajo puntual para que tu equipo se reparta la carga. Todos incluyen ahora bloques de **prompts para otra IA**, **nombrado de proyecto**, **enseñanza visual**, **guion con pronunciación**, **modelos 3D** y **elementos gráficos**.
 
@@ -118,7 +118,8 @@ Cada asistente tiene un trabajo puntual para que tu equipo se reparta la carga. 
 | `sugerir-por-fase` | **Café Presto con Ansiedad** | Te recuerda cuánto tiempo queda en el reloj para que no dejes todo a última hora. |
 | `propuesta-identidad` | **El Diseñador de Carretera Masaya** | Te ayuda a elegir colores y letras que se vean limpias y fáciles de leer. |
 | `control-tiempo-entrega` | **—** | Cronómetro, congelamiento de assets al 75 % y checklist SIRLI. |
-| `brainstorming` | **—** | Lluvia de ideas antes de crear funcionalidad nueva. |
+| `guion-pas-v` | **—** | Guion de 4 actos en ≤120 s, con cifras coherentes al presupuesto y los claims. |
+| `storyboard` | **El Jefe de Rodaje** | Convierte el guion en tomas con contrato, dueño y criterio de rúbrica; busca referencias reales y entrega un tablero visual con sonido y transiciones. |
 
 ---
 
@@ -224,6 +225,27 @@ Reglas:
 - Máximo 240-270 palabras (≈130-140 WPM) para ≤ 120 s de audio.
 - Números dichos completos; coherencia con `budget/budget.json`; datos de `research/claims.json`.
 - Cierre según certamen: Nacional → municipio + Plan Nacional/ODS; Latam → "piloto en [ciudad], replicable en toda América Latina".
+
+---
+
+## Storyboard: qué se ve, qué se oye y qué se corta en cada segundo
+
+La skill `storyboard` traduce el guion a **tomas con contrato** (`shots/<id>.yaml`) y las compila a `script/shotlist.csv`. Cada toma declara tiempo, dueño, criterio de rúbrica y las tres decisiones que se olvidan: **qué buscar** (referencia real con URL y minuto), **qué crear** (orden al especialista) y **qué se oye** (música, sonido del objeto, silencio, transición).
+
+Piezas que trae:
+
+| Archivo | Para qué |
+|---|---|
+| `skills/storyboard/SKILL.md` | Procedimiento completo: reparto 17/33/29/21, 3D como tronco del Acto II, referencias reales (video del territorio, noticia, documental, foro), selección de música por tono y lugar, cobertura de rúbrica contada desde el CSV |
+| `skills/storyboard/gen_storyboard_visual.py` | Genera el tablero: hoja de contactos, una fila por toma, pista de sonido por acto |
+| `plantillas/storyboard_ejemplo/` | Ejemplo completo con proyecto ficticio: 14 tomas, 120,0 s, 17/19 ítems de rúbrica, HTML y PDF del tablero |
+
+```powershell
+python scripts/build_shotlist.py
+python skills/storyboard/gen_storyboard_visual.py --csv script/shotlist.csv --out docs/storyboard_visual.html
+```
+
+Reglas que no se negocian: cero nombres de proyecto en los primeros 20 s, tres cifras de dinero máximo en el Acto III (cada una con base), una sola transición llamativa por acto y la cifra clave sin música.
 
 ---
 

@@ -1,0 +1,13 @@
+id: S13
+act: IV
+description: "Tres contadores animados con las metricas auditables del impacto, entrando uno por uno con su fuente al pie."
+asset_id: asset_s13_contadores_metricas
+asset_type: motion_2d
+duration_s: 9
+status: pendiente
+notes: "Los campeones cierran con tres metricas (INFORME_INVESTIGACION §9.5). Numeros de research/claims.json, hoy vacio: BLOQUEADA. No se rellena con estimaciones."
+rubric_item: "e1 La presentacion demuestra capacidad de sintesis"
+claim_ids: ""
+owner: grafista2d
+depends_on: S12
+quality_tier: draft

@@ -1,0 +1,13 @@
+id: S09
+act: III
+description: "Costo del piloto y costo por beneficiario: las dos unicas cifras que quedan, una por placa."
+asset_id: asset_s09_alcance_piloto
+asset_type: motion_2d
+duration_s: 9
+status: pendiente
+notes: "Cifras 2 y 3 de 3 del Acto III. El alcance se dice en palabras ('un lote piloto en un mercado municipal'), no con mas numeros. Sin TIR ni VAN (regla de oro 5). Bloqueada: falta budget/budget.json."
+rubric_item: "c1 La propuesta es sustentable desde el punto de vista economico"
+claim_ids: ""
+owner: presupuestador
+depends_on: S08
+quality_tier: draft

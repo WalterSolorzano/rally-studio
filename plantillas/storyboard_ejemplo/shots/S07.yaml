@@ -1,0 +1,13 @@
+id: S07
+act: II
+description: "Demo real funcionando: captura de la interfaz o del equipo en operacion, con al menos 4 s sin narracion."
+asset_id: asset_s07_demo_funcionando
+asset_type: captura_ui
+duration_s: 10
+status: pendiente
+notes: "Mostrar, no explicar: 8 s de demo valen mas que 20 s de narracion sobre la demo (investigacion_profunda.md §7.2). Dejar respirar el audio: solo SFX de clic y tecleo."
+rubric_item: "a4 Grado de usabilidad de la solucion; d3 La propuesta es acorde a las necesidades de los usuarios; d4 La solucion es tecnicamente validada"
+claim_ids: ""
+owner: grafista2d
+depends_on: S06
+quality_tier: draft

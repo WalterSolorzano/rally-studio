@@ -1,0 +1,13 @@
+id: S03
+act: I
+description: "Rotulo de territorio: mapa del municipio piloto con un solo punto marcado y la poblacion afectada."
+asset_id: asset_s03_mapa_territorio
+asset_type: motion_2d
+duration_s: 7
+status: pendiente
+notes: "Tipografia de brand/tokens.css, texto claro sobre placa oscura, rotulo con flecha. Sin emojis. El nombre del proyecto NO aparece aqui. Si no hay cifra de poblacion, el rotulo queda con [PENDIENTE] y no se rueda."
+rubric_item: "e4 Las ilustraciones son claras y pertinentes; b1 La propuesta da solucion a una problematica especifica"
+claim_ids: ""
+owner: grafista2d
+depends_on: ""
+quality_tier: draft

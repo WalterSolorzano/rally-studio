@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Storyboard visual — 14 tomas · 120 s</title>
+<style>
+:root{--pri:#1d45b9;--sec:#f81110;--acc:#2aa7ad;--ink:#111;--paper:#faf9f5;--line:#e2ded3;--mut:#6b675c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 24px 64px}
+header{border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:18px}
+h1{font-size:clamp(26px,3.4vw,40px);line-height:1.04;letter-spacing:-.02em;margin:0 0 6px;font-weight:800}
+.sub{color:var(--mut);margin:0;max-width:76ch;font-size:14.5px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 0}
+.chips .chip{font-size:11px;letter-spacing:.04em;text-transform:uppercase;border:1px solid var(--line);background:#fff;border-radius:2px;padding:2px 7px;color:var(--mut)}
+.bar{display:flex;height:34px;margin:18px 0 6px;border-radius:2px;overflow:hidden}
+.bar div{display:flex;align-items:center;justify-content:space-between;padding:0 8px;color:#fff;font-size:11px;font-weight:700;letter-spacing:.03em;white-space:nowrap;overflow:hidden}
+.bar .t{background:var(--acc)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--mut);margin-bottom:22px}
+.legend b{color:var(--ink)}
+h2{font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin:34px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.sheet{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.sheet .marco{width:100%;margin:0}
+.marco .lienzo{width:100%}
+.cel{display:block;text-decoration:none;color:inherit}
+.cel .credit{display:none}
+.cel .lienzo{border-top-width:2px}
+.cel:hover .lienzo{outline:2px solid var(--c);outline-offset:-2px}
+.lienzo{position:relative;aspect-ratio:16/9;background:#000;overflow:hidden;border-top:3px solid var(--c)}
+.lienzo img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.95)}
+.placa{width:100%;height:100%;display:grid;place-items:center;background:#141414;color:#f4f3ee;text-align:center;padding:8px}
+.placa b{font-size:clamp(11px,1.4vw,20px);letter-spacing:.02em;line-height:1.1}
+.placa.sm b{font-size:9px;letter-spacing:.06em}
+.sid{position:absolute;left:0;bottom:0;background:var(--c);color:#fff;font-size:10px;font-weight:800;letter-spacing:.06em;padding:1px 5px}
+.sdur{position:absolute;right:0;bottom:0;background:rgba(0,0,0,.72);color:#fff;font-size:10px;font-variant-numeric:tabular-nums;padding:1px 5px}
+.credit{display:block;font-size:10px;color:var(--mut);margin-top:4px;line-height:1.3}
+.act{display:flex;align-items:baseline;gap:10px;border-left:5px solid var(--c);padding-left:10px;margin:36px 0 4px}
+.act h2{border:0;margin:0;padding:0;font-size:14px;letter-spacing:.06em;color:var(--ink)}
+.act span{font-size:11.5px;color:var(--mut);font-variant-numeric:tabular-nums}
+.row{display:grid;grid-template-columns:170px 1.5fr 1fr 1.2fr;gap:14px;background:#fff;border:1px solid var(--line);border-left:5px solid var(--c);padding:12px;margin:8px 0;align-items:start}
+.row .marco{margin:0}
+.col-frame .credit{display:none}
+.col-meta h3{margin:0 0 2px;font-size:14.5px;line-height:1.25;font-weight:700}
+.sid-b{display:inline-block;background:var(--c);color:#fff;font-size:10.5px;font-weight:800;letter-spacing:.06em;padding:1px 5px;margin-right:5px;vertical-align:1px}
+.tc{margin:0 0 5px;font-size:11.5px;color:var(--mut);font-variant-numeric:tabular-nums}
+.desc{margin:0 0 5px;font-size:13px;line-height:1.42}
+.ref{margin:0 0 6px;font-size:11.5px;line-height:1.35;color:var(--mut);border-left:2px solid var(--line);padding-left:7px}
+.no{margin:0;font-size:12px;color:#a1120f;line-height:1.35}
+.son{margin:5px 0 0;font-size:11px;line-height:1.3;color:#0f3f43;background:#e6f4f4;border-left:2px solid var(--acc);padding:3px 7px}
+.son b{font-weight:700;color:var(--pri)}
+.tr{display:none}
+.snd{display:flex;gap:4px;margin:6px 0 6px}
+.snd div{flex:1;min-width:0;background:#fff;border:1px solid var(--line);border-top:4px solid var(--c);padding:7px 8px;overflow:hidden}
+.snd b{display:block;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--c)}
+.snd span{display:block;font-size:12px;font-weight:600;margin-top:2px}
+.snd em{display:block;font-size:11px;color:var(--mut);font-style:normal;margin-top:3px;line-height:1.3}
+.snd-nota{margin:0 0 8px;font-size:11.5px;color:var(--mut)}
+.no b{font-weight:700}
+details{margin-top:6px;font-size:12px;color:var(--mut)}
+summary{cursor:pointer;color:var(--pri);font-weight:600;font-size:11.5px}
+details p{margin:5px 0 0}
+.chips .chip{display:inline-block;margin:3px 3px 0 0;font-size:10px;border:1px solid var(--line);color:var(--ink);padding:0 5px;border-radius:2px}
+h4{margin:0 0 5px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+.col-buscar ul,.col-crear ul{margin:0;padding-left:15px;font-size:12.2px;line-height:1.4}
+.col-buscar li{margin-bottom:5px}
+.col-buscar a{color:var(--pri);text-decoration:none;border-bottom:1px solid #cfd6ea}
+.col-buscar a:hover{border-color:var(--pri)}
+.col-crear li{margin-bottom:4px}
+footer{margin-top:40px;border-top:1px solid var(--line);padding-top:12px;font-size:11.5px;color:var(--mut);line-height:1.5}
+code{font:11.5px ui-monospace,Consolas,monospace;background:#fff;border:1px solid var(--line);padding:1px 4px}
+@media (max-width:1000px){.row{grid-template-columns:150px 1fr}.col-buscar,.col-crear{grid-column:2}}
+@media (max-width:720px){.sheet{grid-template-columns:repeat(4,1fr)}.row{grid-template-columns:1fr}.col-buscar,.col-crear{grid-column:1}}
+@media print{body{background:#fff}.row{break-inside:avoid}.sheet{grid-template-columns:repeat(7,1fr)}details{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Storyboard de rodaje</h1>
+  <p class="sub">14 tomas de 120.0 s. Cada fila dice qué buscar, dónde verlo y qué crear. Los fotogramas
+  son <b>referencia</b> de encuadre y luz: no son material del video. Tiempos, dueños y rúbrica salen de
+  <code>script/shotlist.csv</code>.</p>
+  <div class="chips"><span class="chip">14 tomas</span>
+  <span class="chip">120.0 s</span><span class="chip">Rúbrica 17/19</span></div>
+  <div class="bar"><div style="flex:0.16666666666666666;background:#f81110"><span>I</span><span>20.0 s · 17 %</span></div><div style="flex:0.3333333333333333;background:#1d45b9"><span>II</span><span>40.0 s · 33 %</span></div><div style="flex:0.2916666666666667;background:#2aa7ad"><span>III</span><span>35.0 s · 29 %</span></div><div style="flex:0.20833333333333334;background:#111111"><span>IV</span><span>25.0 s · 21 %</span></div></div>
+  <div class="legend"><span><b>Hoja de contactos</b> — clic en un cuadro para bajar a su ficha</span>
+  <span><b>Qué buscar</b> — enlace real, abrir y comparar</span><span><b>Qué crear</b> — orden al especialista</span></div>
+</header>
+<h2>Hoja de contactos</h2><div class="sheet"><a class="cel" href="#s01" title="S01 · Primer plano humano, 50 mm"><figure class="marco " style="--c:#f81110"><div class="lienzo"><img src="img/ref/frames/yt_SVqM_100.png" alt="S01" loading="lazy"><span class="sid">S01</span><span class="sdur">6 s</span></div><span class="credit">Fotograma de «Familia prepara menú con desperdicios de la Central de Abasto» (1:40): rostro </span></figure></a><a class="cel" href="#s02" title="S02 · Detalle macro, 85 mm, cenital 45°"><figure class="marco " style="--c:#f81110"><div class="lienzo"><img src="img/ref/frames/yt_SVqM_55.png" alt="S02" loading="lazy"><span class="sid">S02</span><span class="sdur">7 s</span></div><span class="credit">Fotograma del mismo reportaje (0:55): una persona sobre el montón de descarte real.</span></figure></a><a class="cel" href="#s03" title="S03 · Plano general de territorio, 24 mm"><figure class="marco " style="--c:#f81110"><div class="lienzo"><img src="img/ref/frames/yt_9qdj_70.png" alt="S03" loading="lazy"><span class="sid">S03</span><span class="sdur">7 s</span></div><span class="credit">Fotograma de Canal 4 Nicaragua en el Mercado El Mayoreo: calle, puestos, rótulo del mercado.</span></figure></a><a class="cel" href="#s04" title="S04 · Placa tipográfica, sin imagen"><figure class="marco " style="--c:#1d45b9"><div class="lienzo"><div class="placa" style="--c:#1d45b9"><b>NOMBRE</b></div><span class="sid">S04</span><span class="sdur">7 s</span></div><span class="credit">Placa a crear · sin imagen de archivo</span></figure></a><a class="cel" href="#s05" title="S05 · Render 3D, vista 3/4 girando"><figure class="marco " style="--c:#1d45b9"><div class="lienzo"><img src="img/ref/yt/BfTzgOrywio.jpg" alt="S05" loading="lazy"><span class="sid">S05</span><span class="sdur">11 s</span></div><span class="credit">Miniatura de SAECSA: deshidratador solar industrial. Referencia de encuadre y escala, no de </span></figure></a><a class="cel" href="#s06" title="S06 · Vista explosionada, 4 componentes"><figure class="marco " style="--c:#1d45b9"><div class="lienzo"><img src="img/ref/yt/HwYmBYWIOw4.jpg" alt="S06" loading="lazy"><span class="sid">S06</span><span class="sdur">12 s</span></div><span class="credit">Miniatura de SAECSA: colector y cámara de secado reales, para entender qué piezas se separan</span></figure></a><a class="cel" href="#s07" title="S07 · Demo real en operación, 35 mm"><figure class="marco " style="--c:#1d45b9"><div class="lienzo"><img src="img/ref/yt/E_x65qzcSNY.jpg" alt="S07" loading="lazy"><span class="sid">S07</span><span class="sdur">10 s</span></div><span class="credit">Miniatura de la deshidratadora solar en Perú: bandejas cargadas y operarios reales.</span></figure></a><a class="cel" href="#s08" title="S08 · Placa de cifra única"><figure class="marco " style="--c:#2aa7ad"><div class="lienzo"><div class="placa" style="--c:#2aa7ad"><b>US$ 0,00</b></div><span class="sid">S08</span><span class="sdur">11 s</span></div><span class="credit">Placa a crear · sin imagen de archivo</span></figure></a><a class="cel" href="#s09" title="S09 · Dos placas de costo"><figure class="marco " style="--c:#2aa7ad"><div class="lienzo"><img src="img/ref/1006060.jpg" alt="S09" loading="lazy"><span class="sid">S09</span><span class="sdur">9 s</span></div><span class="credit">Foto de archivo de monedas: sirve para el tratamiento de dinero, no como plano del video.</span></figure></a><a class="cel" href="#s10" title="S10 · Tres nodos de contraprestación"><figure class="marco " style="--c:#2aa7ad"><div class="lienzo"><img src="img/ref/33175650.jpg" alt="S10" loading="lazy"><span class="sid">S10</span><span class="sdur">7 s</span></div><span class="credit">Foto de archivo de un acuerdo: referencia de tono para «quién paga», no plano del video.</span></figure></a><a class="cel" href="#s11" title="S11 · Ciclo ambiental, dos flujos"><figure class="marco " style="--c:#2aa7ad"><div class="lienzo"><div class="placa" style="--c:#2aa7ad"><b>RESIDUO → INSUMO</b></div><span class="sid">S11</span><span class="sdur">8 s</span></div><span class="credit">Placa a crear · sin imagen de archivo</span></figure></a><a class="cel" href="#s12" title="S12 · Mismo encuadre que S01, 50 mm"><figure class="marco " style="--c:#111111"><div class="lienzo"><img src="img/ref/frames/yt_SVqM_100.png" alt="S12" loading="lazy"><span class="sid">S12</span><span class="sdur">9 s</span></div><span class="credit">Mismo fotograma que S01: la toma repite persona, altura y luz. Ese es el contrato.</span></figure></a><a class="cel" href="#s13" title="S13 · Tres contadores animados"><figure class="marco " style="--c:#111111"><div class="lienzo"><div class="placa" style="--c:#111111"><b>+0 %</b></div><span class="sid">S13</span><span class="sdur">9 s</span></div><span class="credit">Placa a crear · sin imagen de archivo</span></figure></a><a class="cel" href="#s14" title="S14 · Placa de cierre + territorio"><figure class="marco " style="--c:#111111"><div class="lienzo"><img src="img/ref/20711805.jpg" alt="S14" loading="lazy"><span class="sid">S14</span><span class="sdur">7 s</span></div><span class="credit">Foto de archivo de un poblado desde el aire: referencia de escala regional, no plano del vid</span></figure></a></div>
+<h2>Pista de sonido</h2><div class="snd"><div style="flex:20.0;--c:#f81110"><b>I · 20.0 s · triste / real</b><span>Sin música — ambiente real</span><em>Ambiente de mercado, sin música · Sonido real de la caja al soltar la fruta</em></div><div style="flex:40.0;--c:#1d45b9"><b>II · 40.0 s · local / movimiento</b><span>Música local del lugar, 90 bpm</span><em>Entra la cama local del acto (instrumento del lugar, 90 bpm) · Cama baja + zumbido real de ventilador: aterriza el 3D</em></div><div style="flex:35.0;--c:#2aa7ad"><b>III · 35.0 s · sobrio / confianza</b><span>Cuerdas graves, sin percusión</span><em>Voz sola en la cifra; la cama vuelve al terminar la frase · Cuerdas graves, sin percusión</em></div><div style="flex:25.0;--c:#111111"><b>IV · 25.0 s · esperanza</b><span>La misma música local, cálida</span><em>Vuelve la música local del Acto II, más cálida · Tres golpes, uno por métrica, sincronizados</em></div></div><p class="snd-nota">La cifra clave del Acto III va sin música. Una sola transición efectista por acto; el resto, corte seco.</p>
+<div class="act" style="--c:#f81110"><h2>Acto I · Dolor</h2><span>0:00.0 – 0:20.4 · 20.0 s · 17 % · S01–S03</span></div>
+    <div class="row" id="s01" style="--c:#f81110">
+      <div class="col-frame"><figure class="marco " style="--c:#f81110"><div class="lienzo"><img src="img/ref/frames/yt_SVqM_100.png" alt="S01" loading="lazy"><span class="sid">S01</span><span class="sdur">6 s</span></div><span class="credit">Fotograma de «Familia prepara menú con desperdicios de la Central de Abasto» (1:40): rostro </span></figure></div>
+      <div class="col-meta">
+        <h3><span class="sid-b">S01</span>Primer plano humano, 50 mm</h3>
+        <p class="tc">0:00.0 → 0:06.0 · 6.0 s</p>
+        <p class="desc">Rostro del beneficiario en su contexto real: primer plano humano, sin logo, sin nombre de equipo ni de proyecto.</p>
+        <p class="ref">Fotograma de «Familia prepara menú con desperdicios de la Central de Abasto» (1:40): rostro real, nombre en pantalla, el mismo problema.</p>
+        <p class="son"><b>♪</b> Ambiente de mercado, sin música. Voz desde 0:02. <b>→</b> J-cut: el mercado se oye antes de verse.</p>
+        <p class="no"><b>No debe verse:</b> Logo, nombre del equipo, diapositiva de objetivos, voz en off que se presente.</p>
+        <details><summary>Cámara, rúbrica y dueño</summary>
+          <p>Fijo a la altura de los ojos. Sin zoom. 6 s de los cuales ≥3 s con el rostro en cuadro.</p>
+          <p class="chips"><span class="chip">b1</span><span class="chip">director</span></p>
+        </details>
+      </div>
+      <div class="col-buscar"><h4>Qué buscar</h4><ul><li><a href="https://www.youtube.com/watch?v=SVqMpgbS24g&amp;t=100s">Vendedora o vendedor en su puesto, mirando a cámara</a></li><li><a href="https://www.youtube.com/watch?v=9qdjHj0bZlA&amp;t=70s">Rostros en mercado de tu municipio</a></li></ul></div>
+      <div class="col-crear"><h4>Qué crear</h4><ul><li>Grabar a la persona real que pierde producto, 3 minutos, dos tomas: mirando a cámara y trabajando.</li><li>Luz natural lateral, fondo de puesto legible, micrófono de corbata.</li><li>Pedir autorización de imagen por escrito antes de grabar.</li></ul></div>
+    </div>
+    <div class="row" id="s02" style="--c:#f81110">
+      <div class="col-frame"><figure class="marco " style="--c:#f81110"><div class="lienzo"><img src="img/ref/frames/yt_SVqM_55.png" alt="S02" loading="lazy"><span class="sid">S02</span><span class="sdur">7 s</span></div><span class="credit">Fotograma del mismo reportaje (0:55): una persona sobre el montón de descarte real.</span></figure></div>
+      <div class="col-meta">
+        <h3><span class="sid-b">S02</span>Detalle macro, 85 mm, cenital 45°</h3>
+        <p class="tc">0:06.0 → 0:13.0 · 7.0 s</p>
+        <p class="desc">Plano detalle de la perdida concreta: manos, herramienta o residuo que hoy cuesta dinero o salud.</p>
+        <p class="ref">Fotograma del mismo reportaje (0:55): una persona sobre el montón de descarte real.</p>
+        <p class="son"><b>♪</b> Sonido real de la caja al soltar la fruta. Sin música. <b>→</b> Corte seco desde el rostro.</p>
+        <p class="no"><b>No debe verse:</b> Basura genérica de banco. El descarte tiene que ser del producto del reto.</p>
+        <details><summary>Cámara, rúbrica y dueño</summary>
+          <p>Macro con trípode, foco en la mano. 7 s, el gesto completo de soltar.</p>
+          <p class="chips"><span class="chip">b1</span><span class="chip">director</span></p>
+        </details>
+      </div>
+      <div class="col-buscar"><h4>Qué buscar</h4><ul><li><a href="https://www.youtube.com/watch?v=SVqMpgbS24g&amp;t=55s">Descarte real en el mercado, antes de la basura</a></li><li><a href="https://www.youtube.com/watch?v=9qdjHj0bZlA&amp;t=45s">Cajas y pilas de producto del puesto</a></li></ul></div>
+      <div class="col-crear"><h4>Qué crear</h4><ul><li>Grabar la mano dejando el producto en la caja de descarte. Una sola acción, sin cortes.</li><li>Fondo oscuro, producto iluminado por ventana o reflector.</li><li>Grabar también el sonido de la caja al recibir el producto: sirve para el corte.</li></ul></div>
+    </div>
+    <div class="row" id="s03" style="--c:#f81110">
+      <div class="col-frame"><figure class="marco " style="--c:#f81110"><div class="lienzo"><img src="img/ref/frames/yt_9qdj_70.png" alt="S03" loading="lazy"><span class="sid">S03</span><span class="sdur">7 s</span></div><span class="credit">Fotograma de Canal 4 Nicaragua en el Mercado El Mayoreo: calle, puestos, rótulo del mercado.</span></figure></div>
+      <div class="col-meta">
+        <h3><span class="sid-b">S03</span>Plano general de territorio, 24 mm</h3>
+        <p class="tc">0:13.0 → 0:20.0 · 7.0 s</p>
+        <p class="desc">Rotulo de territorio: mapa del municipio piloto con un solo punto marcado y la poblacion afectada.</p>
+        <p class="ref">Fotograma de Canal 4 Nicaragua en el Mercado El Mayoreo: calle, puestos, rótulo del mercado.</p>
+        <p class="son"><b>♪</b> Ambiente de calle, +2 dB al entrar el general. Sin música. <b>→</b> Barrido horizontal: única transición llamativa del acto.</p>
+        <p class="no"><b>No debe verse:</b> Mapamundi, pin genérico de Google Maps sin contexto, ciudad que no es la del piloto.</p>
+        <details><summary>Cámara, rúbrica y dueño</summary>
+          <p>Gran angular a la altura del pecho. 7 s. El rótulo debe leerse sin pausar.</p>
+          <p class="chips"><span class="chip">e4</span><span class="chip">b1</span><span class="chip">grafista2d</span></p>
+        </details>
+      </div>
+      <div class="col-buscar"><h4>Qué buscar</h4><ul><li><a href="https://www.youtube.com/watch?v=9qdjHj0bZlA&amp;t=70s">Calle o entrada del mercado de tu municipio</a></li><li><a href="https://www.youtube.com/watch?v=L72s1rNshUk">Rótulo del mercado con el nombre visible</a></li></ul></div>
+      <div class="col-crear"><h4>Qué crear</h4><ul><li>Grabar la entrada del mercado a la hora de mayor movimiento, con el rótulo legible.</li><li>Plano fijo de 8 s; luego un barrido lento de 3 s para el rótulo animado.</li><li>Rotular el municipio en pantalla: nombre y población con fuente.</li></ul></div>
+    </div><div class="act" style="--c:#1d45b9"><h2>Acto II · Caja negra</h2><span>0:20.4 – 1:00.0 · 40.0 s · 33 % · S04–S07</span></div>
+    <div class="row" id="s04" style="--c:#1d45b9">
+      <div class="col-frame"><figure class="marco " style="--c:#1d45b9"><div class="lienzo"><div class="placa" style="--c:#1d45b9"><b>NOMBRE</b></div><span class="sid">S04</span><span class="sdur">7 s</span></div><span class="credit">Placa a crear · sin imagen de archivo</span></figure></div>
+      <div class="col-meta">
+        <h3><span class="sid-b">S04</span>Placa tipográfica, sin imagen</h3>
+        <p class="tc">0:20.0 → 0:27.0 · 7.0 s</p>
+        <p class="desc">Placa con una sola frase de tesis. El nombre del proyecto aparece como rotulo escrito, nunca hablado.</p>
+        <p class="ref">Placa de tesis: una frase, fondo oscuro, nombre del proyecto una sola vez en todo el video.</p>
+        <p class="son"><b>♪</b> Entra la cama local del acto (instrumento del lugar, 90 bpm). Golpe seco con el nombre. <b>→</b> Negro de 3 frames: el acto cambia de oído.</p>
+        <p class="no"><b>No debe verse:</b> Segunda aparición del nombre, lista de características, íconos decorativos.</p>
+        <details><summary>Cámara, rúbrica y dueño</summary>
+          <p>Animación de 7 s: la frase entra en dos tiempos, sin rebote.</p>
+          <p class="chips"><span class="chip">e3</span><span class="chip">guionista</span></p>
+        </details>
+      </div>
+      <div class="col-buscar"><h4>Qué buscar</h4><ul><li><a href="https://www.youtube.com/watch?v=tXOlQSexopg&amp;t=0s">Placas de cifra y tesis de pitch técnico</a></li></ul></div>
+      <div class="col-crear"><h4>Qué crear</h4><ul><li>Escribir una sola frase de tesis de máximo 12 palabras.</li><li>Componer en la paleta del proyecto, fondo oscuro, texto claro, sin sombras ni degradados.</li><li>El nombre del proyecto entra aquí: única aparición en pantalla.</li></ul></div>
+    </div>
+    <div class="row" id="s05" style="--c:#1d45b9">
+      <div class="col-frame"><figure class="marco " style="--c:#1d45b9"><div class="lienzo"><img src="img/ref/yt/BfTzgOrywio.jpg" alt="S05" loading="lazy"><span class="sid">S05</span><span class="sdur">11 s</span></div><span class="credit">Miniatura de SAECSA: deshidratador solar industrial. Referencia de encuadre y escala, no de </span></figure></div>
+      <div class="col-meta">
+        <h3><span class="sid-b">S05</span>Render 3D, vista 3/4 girando</h3>
+        <p class="tc">0:27.0 → 0:38.0 · 11.0 s</p>
+        <p class="desc">Render 3D del prototipo, vista 3/4 girando 30 grados, escala legible contra una mano o un escritorio.</p>
+        <p class="ref">Miniatura de SAECSA: deshidratador solar industrial. Referencia de encuadre y escala, no de diseño.</p>
+        <p class="son"><b>♪</b> Cama baja + zumbido real de ventilador: aterriza el 3D. <b>→</b> Match cut: mismo eje que la placa anterior.</p>
+        <p class="no"><b>No debe verse:</b> Render plástico brillante, pieza sin escala, cámara que atraviesa el objeto.</p>
+        <details><summary>Cámara, rúbrica y dueño</summary>
+          <p>Órbita de 30° en 11 s, velocidad constante, sin aceleración.</p>
+          <p class="chips"><span class="chip">a1</span><span class="chip">a2</span><span class="chip">modeler</span></p>
+        </details>
+      </div>
+      <div class="col-buscar"><h4>Qué buscar</h4><ul><li><a href="https://www.youtube.com/watch?v=BfTzgOrywio">Deshidrotador solar industrial en operación</a></li><li><a href="https://www.youtube.com/watch?v=HwYmBYWIOw4">Secador solar semi-industrial</a></li></ul></div>
+      <div class="col-crear"><h4>Qué crear</h4><ul><li>Render del prototipo propio en vista 3/4, giro de 30° sobre fondo neutro.</li><li>Poner una mano o una persona al lado para dar escala.</li><li>Materiales con rugosidad real: chapa, policarbonato, madera. Nada flotante.</li></ul></div>
+    </div>
+    <div class="row" id="s06" style="--c:#1d45b9">
+      <div class="col-frame"><figure class="marco " style="--c:#1d45b9"><div class="lienzo"><img src="img/ref/yt/HwYmBYWIOw4.jpg" alt="S06" loading="lazy"><span class="sid">S06</span><span class="sdur">12 s</span></div><span class="credit">Miniatura de SAECSA: colector y cámara de secado reales, para entender qué piezas se separan</span></figure></div>
+      <div class="col-meta">
+        <h3><span class="sid-b">S06</span>Vista explosionada, 4 componentes</h3>
+        <p class="tc">0:38.0 → 0:50.0 · 12.0 s</p>
+        <p class="desc">Abrir la caja negra: vista explosionada con cuatro componentes resaltados y, al final, diagrama de bloques entra-proceso-sale.</p>
+        <p class="ref">Miniatura de SAECSA: colector y cámara de secado reales, para entender qué piezas se separan.</p>
+        <p class="son"><b>♪</b> Clic metálico por pieza; la cama se corta en la explosión. <b>→</b> Whip pan corto; luego corte seco.</p>
+        <p class="no"><b>No debe verse:</b> Cinco o más piezas, rótulos con párrafos, beneficios antes del mecanismo.</p>
+        <details><summary>Cámara, rúbrica y dueño</summary>
+          <p>Explosión en 9 s, pausa de 2 s con las piezas separadas, rearme en 1 s.</p>
+          <p class="chips"><span class="chip">a3</span><span class="chip">d1</span><span class="chip">modeler</span></p>
+        </details>
+      </div>
+      <div class="col-buscar"><h4>Qué buscar</h4><ul><li><a href="https://www.youtube.com/watch?v=HwYmBYWIOw4">Equipo solar armado y desarmado</a></li><li><a href="https://www.youtube.com/watch?v=E_x65qzcSNY">Interior de cámara de secado con bandejas</a></li></ul></div>
+      <div class="col-crear"><h4>Qué crear</h4><ul><li>Explosionar el prototipo en cuatro piezas numeradas 1-4, en el orden del proceso.</li><li>Cada pieza con su rótulo corto: qué es y qué hace, sin adjetivos.</li><li>Cerrar con el flujo entra → proceso → sale sobre el equipo ya armado.</li></ul></div>
+    </div>
+    <div class="row" id="s07" style="--c:#1d45b9">
+      <div class="col-frame"><figure class="marco " style="--c:#1d45b9"><div class="lienzo"><img src="img/ref/yt/E_x65qzcSNY.jpg" alt="S07" loading="lazy"><span class="sid">S07</span><span class="sdur">10 s</span></div><span class="credit">Miniatura de la deshidratadora solar en Perú: bandejas cargadas y operarios reales.</span></figure></div>
+      <div class="col-meta">
+        <h3><span class="sid-b">S07</span>Demo real en operación, 35 mm</h3>
+        <p class="tc">0:50.0 → 1:00.0 · 10.0 s</p>
+        <p class="desc">Demo real funcionando: captura de la interfaz o del equipo en operacion, con al menos 4 s sin narracion.</p>
+        <p class="ref">Miniatura de la deshidratadora solar en Perú: bandejas cargadas y operarios reales.</p>
+        <p class="son"><b>♪</b> Música fuera: solo voz (≥4 s sin corte). <b>→</b> Corte seco, misma orientación.</p>
+        <p class="no"><b>No debe verse:</b> Mockup de Figma con cursor falso, capturas con datos inventados sin marcar.</p>
+        <details><summary>Cámara, rúbrica y dueño</summary>
+          <p>Cámara en mano sobre el hombro del operario. 10 s, sin estabilizador visible.</p>
+          <p class="chips"><span class="chip">a4</span><span class="chip">d3</span><span class="chip">d4</span><span class="chip">grafista2d</span></p>
+        </details>
+      </div>
+      <div class="col-buscar"><h4>Qué buscar</h4><ul><li><a href="https://www.youtube.com/watch?v=E_x65qzcSNY&amp;t=0s">Equipo propio funcionando, bandejas cargadas</a></li><li>Panel de control o app del equipo, en un proyecto real</li></ul></div>
+      <div class="col-crear"><h4>Qué crear</h4><ul><li>Grabar la pantalla del sensor o la app mientras alguien la usa, sin cortar.</li><li>Dejar al menos 4 s sin voz: solo el sonido del equipo y del mercado.</li><li>Si aún no hay interfaz, grabar el prototipo con una etiqueta escrita a mano y decirlo.</li></ul></div>
+    </div><div class="act" style="--c:#2aa7ad"><h2>Acto III · Prefactibilidad</h2><span>1:00.0 – 1:34.8 · 35.0 s · 29 % · S08–S11</span></div>
+    <div class="row" id="s08" style="--c:#2aa7ad">
+      <div class="col-frame"><figure class="marco " style="--c:#2aa7ad"><div class="lienzo"><div class="placa" style="--c:#2aa7ad"><b>US$ 0,00</b></div><span class="sid">S08</span><span class="sdur">11 s</span></div><span class="credit">Placa a crear · sin imagen de archivo</span></figure></div>
+      <div class="col-meta">
+        <h3><span class="sid-b">S08</span>Placa de cifra única</h3>
+        <p class="tc">1:00.0 → 1:11.0 · 11.0 s</p>
+        <p class="desc">Costo unitario: una sola cifra grande y, debajo, el desglose en barras proporcionales sin numeros.</p>
+        <p class="ref">Cifra grande con base pequeña debajo. Una sola cifra en cuadro.</p>
+        <p class="son"><b>♪</b> Voz sola en la cifra; la cama vuelve al terminar la frase. <b>→</b> Fade de 6 frames.</p>
+        <p class="no"><b>No debe verse:</b> Tres cifras juntas, TIR, VAN, porcentajes sin base.</p>
+        <details><summary>Cámara, rúbrica y dueño</summary>
+          <p>La cifra entra contando en 1 s y se queda 10 s. Sin rebote.</p>
+          <p class="chips"><span class="chip">c1</span><span class="chip">presupuestador</span></p>
+        </details>
+      </div>
+      <div class="col-buscar"><h4>Qué buscar</h4><ul><li><a href="https://www.youtube.com/watch?v=tXOlQSexopg&amp;t=0s">Placa de cifra de reportaje económico</a></li></ul></div>
+      <div class="col-crear"><h4>Qué crear</h4><ul><li>Una cifra grande: costo unitario, con su unidad (por kilo, por caja).</li><li>Debajo, desglose en barras proporcionales sin números.</li><li>Fuente de la cifra en 12 px, legible al pausar.</li></ul></div>
+    </div>
+    <div class="row" id="s09" style="--c:#2aa7ad">
+      <div class="col-frame"><figure class="marco " style="--c:#2aa7ad"><div class="lienzo"><img src="img/ref/1006060.jpg" alt="S09" loading="lazy"><span class="sid">S09</span><span class="sdur">9 s</span></div><span class="credit">Foto de archivo de monedas: sirve para el tratamiento de dinero, no como plano del video.</span></figure></div>
+      <div class="col-meta">
+        <h3><span class="sid-b">S09</span>Dos placas de costo</h3>
+        <p class="tc">1:11.0 → 1:20.0 · 9.0 s</p>
+        <p class="desc">Costo del piloto y costo por beneficiario: las dos unicas cifras que quedan, una por placa.</p>
+        <p class="ref">Foto de archivo de monedas: sirve para el tratamiento de dinero, no como plano del video.</p>
+        <p class="son"><b>♪</b> Cuerdas graves, sin percusión. La cifra se dice sin música. <b>→</b> Corte seco: el acto baja el ritmo.</p>
+        <p class="no"><b>No debe verse:</b> Cuarta cifra, gráfico de torta, proyección a cinco años.</p>
+        <details><summary>Cámara, rúbrica y dueño</summary>
+          <p>Corte directo entre placas. 9 s repartidos 4 / 5.</p>
+          <p class="chips"><span class="chip">c1</span><span class="chip">presupuestador</span></p>
+        </details>
+      </div>
+      <div class="col-buscar"><h4>Qué buscar</h4><ul><li><a href="https://www.youtube.com/watch?v=tXOlQSexopg&amp;t=0s">Costo del piloto y costo por beneficiario, ya calculados</a></li></ul></div>
+      <div class="col-crear"><h4>Qué crear</h4><ul><li>Placa 2: costo total del piloto. Placa 3: costo por beneficiario.</li><li>Cada cifra con su base en una línea, no en un párrafo.</li><li>Cerrar el acto con quien paga: usuario, aliado o institución.</li></ul></div>
+    </div>
+    <div class="row" id="s10" style="--c:#2aa7ad">
+      <div class="col-frame"><figure class="marco " style="--c:#2aa7ad"><div class="lienzo"><img src="img/ref/33175650.jpg" alt="S10" loading="lazy"><span class="sid">S10</span><span class="sdur">7 s</span></div><span class="credit">Foto de archivo de un acuerdo: referencia de tono para «quién paga», no plano del video.</span></figure></div>
+      <div class="col-meta">
+        <h3><span class="sid-b">S10</span>Tres nodos de contraprestación</h3>
+        <p class="tc">1:20.0 → 1:27.0 · 7.0 s</p>
+        <p class="desc">Quien paga y por que: tres nodos (usuario, aliado, institucion) con la contraprestacion social escrita en cada flecha.</p>
+        <p class="ref">Foto de archivo de un acuerdo: referencia de tono para «quién paga», no plano del video.</p>
+        <p class="son"><b>♪</b> Cama sobria + ambiente del puesto del usuario. <b>→</b> J-cut: la voz entra antes que la imagen.</p>
+        <p class="no"><b>No debe verse:</b> Logos de instituciones sin convenio firmado, promesas sin contraprestación.</p>
+        <details><summary>Cámara, rúbrica y dueño</summary>
+          <p>Los tres nodos entran en 3 s y quedan 4 s quietos.</p>
+          <p class="chips"><span class="chip">b2</span><span class="chip">pautador</span></p>
+        </details>
+      </div>
+      <div class="col-buscar"><h4>Qué buscar</h4><ul><li><a href="https://www.youtube.com/watch?v=6_g78EC7RiQ&amp;t=0s">Convenio o aliado real del piloto</a></li></ul></div>
+      <div class="col-crear"><h4>Qué crear</h4><ul><li>Diagrama de tres nodos: usuario, aliado, institución, con la contraprestación escrita.</li><li>Flecha en un solo sentido: quien recibe y quien sostiene.</li><li>Si el aliado no está confirmado, rotular «por confirmar» en pantalla.</li></ul></div>
+    </div>
+    <div class="row" id="s11" style="--c:#2aa7ad">
+      <div class="col-frame"><figure class="marco " style="--c:#2aa7ad"><div class="lienzo"><div class="placa" style="--c:#2aa7ad"><b>RESIDUO → INSUMO</b></div><span class="sid">S11</span><span class="sdur">8 s</span></div><span class="credit">Placa a crear · sin imagen de archivo</span></figure></div>
+      <div class="col-meta">
+        <h3><span class="sid-b">S11</span>Ciclo ambiental, dos flujos</h3>
+        <p class="tc">1:27.0 → 1:35.0 · 8.0 s</p>
+        <p class="desc">Ciclo ambiental: residuo que entra, insumo que sale, con los dos flujos dibujados sobre una sola linea y el ahorro en palabras.</p>
+        <p class="ref">Diagrama circular de dos flujos: lo que entra y lo que sale, sin adornos.</p>
+        <p class="son"><b>♪</b> Sonido del material en la bandeja; corta 0,5 s antes del cierre. <b>→</b> Fundido a negro de 4 frames.</p>
+        <p class="no"><b>No debe verse:</b> Anillo decorativo, iconos genéricos, cifras sin fuente.</p>
+        <details><summary>Cámara, rúbrica y dueño</summary>
+          <p>El anillo se dibuja en 5 s y respira 3 s.</p>
+          <p class="chips"><span class="chip">c4</span><span class="chip">c3</span><span class="chip">grafista2d</span></p>
+        </details>
+      </div>
+      <div class="col-buscar"><h4>Qué buscar</h4><ul><li><a href="https://www.youtube.com/watch?v=j4E2F0Vd02Q&amp;t=0s">Diagramas de economía circular en reportajes</a></li></ul></div>
+      <div class="col-crear"><h4>Qué crear</h4><ul><li>Dibujar el anillo residuo → proceso → insumo → mercado → residuo.</li><li>Dos flechas de distinto grosor según el volumen real medido.</li><li>Sin íconos de hoja verde ni emojis.</li></ul></div>
+    </div><div class="act" style="--c:#111111"><h2>Acto IV · Cierre</h2><span>1:34.8 – 2:00.0 · 25.0 s · 21 % · S12–S14</span></div>
+    <div class="row" id="s12" style="--c:#111111">
+      <div class="col-frame"><figure class="marco " style="--c:#111111"><div class="lienzo"><img src="img/ref/frames/yt_SVqM_100.png" alt="S12" loading="lazy"><span class="sid">S12</span><span class="sdur">9 s</span></div><span class="credit">Mismo fotograma que S01: la toma repite persona, altura y luz. Ese es el contrato.</span></figure></div>
+      <div class="col-meta">
+        <h3><span class="sid-b">S12</span>Mismo encuadre que S01, 50 mm</h3>
+        <p class="tc">1:35.0 → 1:44.0 · 9.0 s</p>
+        <p class="desc">Regreso a la misma persona del Acto I, mismo encuadre y misma luz, mostrando la transformacion.</p>
+        <p class="ref">Mismo fotograma que S01: la toma repite persona, altura y luz. Ese es el contrato.</p>
+        <p class="son"><b>♪</b> Vuelve la música local del Acto II, más cálida. Ambiente presente. <b>→</b> Match cut con el fotograma del Acto I.</p>
+        <p class="no"><b>No debe verse:</b> Otra persona, otra locación, otro encuadre: rompe el antes y después.</p>
+        <details><summary>Cámara, rúbrica y dueño</summary>
+          <p>Idéntico a S01. 9 s, ≥4 s con el rostro y el producto en cuadro.</p>
+          <p class="chips"><span class="chip">b3</span><span class="chip">director</span></p>
+        </details>
+      </div>
+      <div class="col-buscar"><h4>Qué buscar</h4><ul><li><a href="https://www.youtube.com/watch?v=SVqMpgbS24g&amp;t=100s">La misma persona de S01, misma hora y misma luz</a></li><li><a href="https://www.youtube.com/watch?v=E_x65qzcSNY&amp;t=0s">Transformación visible: producto ya clasificado o empaquetado</a></li></ul></div>
+      <div class="col-crear"><h4>Qué crear</h4><ul><li>Volver al mismo puesto, misma altura de cámara y misma hora del día que S01.</li><li>La persona muestra el producto que ahora sí se vende.</li><li>Una frase suya, en sus palabras, no en boca de un actor.</li></ul></div>
+    </div>
+    <div class="row" id="s13" style="--c:#111111">
+      <div class="col-frame"><figure class="marco " style="--c:#111111"><div class="lienzo"><div class="placa" style="--c:#111111"><b>+0 %</b></div><span class="sid">S13</span><span class="sdur">9 s</span></div><span class="credit">Placa a crear · sin imagen de archivo</span></figure></div>
+      <div class="col-meta">
+        <h3><span class="sid-b">S13</span>Tres contadores animados</h3>
+        <p class="tc">1:44.0 → 1:53.0 · 9.0 s</p>
+        <p class="desc">Tres contadores animados con las metricas auditables del impacto, entrando uno por uno con su fuente al pie.</p>
+        <p class="ref">Contadores que entran uno por uno, cada uno con su unidad y su fuente.</p>
+        <p class="son"><b>♪</b> Tres golpes, uno por métrica, sincronizados. Sin voz. <b>→</b> Corte seco entre métricas.</p>
+        <p class="no"><b>No debe verse:</b> Cuatro o más contadores, métricas sin unidad, cifras redondeadas sin base.</p>
+        <details><summary>Cámara, rúbrica y dueño</summary>
+          <p>Un contador cada 3 s. Sin sonido de máquina registradora.</p>
+          <p class="chips"><span class="chip">e1</span><span class="chip">grafista2d</span></p>
+        </details>
+      </div>
+      <div class="col-buscar"><h4>Qué buscar</h4><ul><li><a href="https://www.youtube.com/watch?v=tXOlQSexopg&amp;t=0s">Contadores de impacto en reportajes de datos</a></li></ul></div>
+      <div class="col-crear"><h4>Qué crear</h4><ul><li>Tres métricas auditables: ambiental, económica, social. Una por una.</li><li>Cada contador con su unidad y su fuente debajo, en 12 px.</li><li>Si una métrica es estimada, rotularla «estimado» en pantalla.</li></ul></div>
+    </div>
+    <div class="row" id="s14" style="--c:#111111">
+      <div class="col-frame"><figure class="marco " style="--c:#111111"><div class="lienzo"><img src="img/ref/20711805.jpg" alt="S14" loading="lazy"><span class="sid">S14</span><span class="sdur">7 s</span></div><span class="credit">Foto de archivo de un poblado desde el aire: referencia de escala regional, no plano del vid</span></figure></div>
+      <div class="col-meta">
+        <h3><span class="sid-b">S14</span>Placa de cierre + territorio</h3>
+        <p class="tc">1:53.0 → 2:00.0 · 7.0 s</p>
+        <p class="desc">Cierre: frase memorable y linea de escalabilidad regional, sobre placa limpia con la paleta del proyecto.</p>
+        <p class="ref">Foto de archivo de un poblado desde el aire: referencia de escala regional, no plano del video.</p>
+        <p class="son"><b>♪</b> Cierre en el acorde inicial; la última frase va en voz, sin cama. <b>→</b> Fundido a negro de 6 frames. Sin logo.</p>
+        <p class="no"><b>No debe verse:</b> «Gracias», logo final, música que sube, créditos.</p>
+        <details><summary>Cámara, rúbrica y dueño</summary>
+          <p>7 s fijos. La frase entra en 2 s y se queda hasta el corte.</p>
+          <p class="chips"><span class="chip">e2</span><span class="chip">guionista</span></p>
+        </details>
+      </div>
+      <div class="col-buscar"><h4>Qué buscar</h4><ul><li>Vista aérea del municipio del piloto (Google Earth o dron propio)</li></ul></div>
+      <div class="col-crear"><h4>Qué crear</h4><ul><li>Frase de cierre: «Piloto en [municipio], replicable en toda América Latina».</li><li>Mapa mínimo de la región con el punto del piloto y nada más.</li><li>Cortar en seco sobre la frase. Sin despedida.</li></ul></div>
+    </div>
+<footer>
+  Regenerar: <code>python skills/storyboard/gen_storyboard_visual.py --csv script/shotlist.csv --out docs/storyboard_visual.html</code>.<br>
+  Los fotogramas son referencia de encuadre; las tomas bloqueadas por datos faltantes están marcadas y no se
+  rellenan con estimaciones.
+</footer>
+</div>
+</body>
+</html>

@@ -26,10 +26,29 @@ MCP**, no con memoria.
 Se despliega **solo cuando ya existen**: solución aprobada, pautado cerrado,
 guion PAS-V con `script/shotlist.csv` y presupuesto. Antes de eso, no arranca.
 
-- **Qué busca:** video de stock (Pexels, Pixabay, Mixkit, Coverr), video de
-  YouTube y Facebook, GIF (Giphy, Tenor), imágenes (Unsplash, Pexels), audio
-  libre, y assets ya presentes en `assets/`. Cada shot del shotlist recibe al
-  menos una opción.
+- **Qué busca, en este orden:** video del propio territorio (YouTube y Facebook
+  local, noticiero municipal, canal de la alcaldía, cuenta del mercado); noticia o
+  reportaje del mismo problema en el mismo país; documental, ONG, FAO, universidad
+  o tesis en video; canal técnico, foro o fabricante para el mecanismo; y **solo
+  al final** banco genérico (Pexels, Pixabay, Mixkit, Coverr), que da textura, no
+  territorio. También GIF (Giphy, Tenor), audio libre y assets ya presentes en
+  `assets/`. Cada shot del shotlist recibe al menos una referencia.
+- **También puede crear la referencia:** si el material no existe, el rol no se
+  queda esperando. Produce un *reference frame* propio — boceto del encuadre,
+  render 3D con las dimensiones del BOM, diagrama de bloques, placa con el texto
+  en pantalla o montaje de referencia — y lo entrega declarado como referencia
+  creada. Condición: una referencia creada **nunca** se presenta como registro del
+  lugar; si la toma exige el territorio real, se planifica con el boceto y se
+  pide la grabación.
+- **Regla territorial:** un banco genérico no se hace pasar por el territorio.
+  Si no hay material del lugar ni referencia creada que sirva, la toma queda
+  `bloqueada` y se pide grabación propia; no se rellena con un mercado de otro
+  continente. El material filmado por el equipo es la referencia de nivel 0 y
+  manda sobre todo lo demás.
+- **Ficha de referencia:** cada hallazgo o pieza creada se registra con `toma,
+  ruta (A encontrada / B creada), url o archivo, título, autor, fecha, minuto
+  útil, qué se ve, para qué sirve, uso`. Un enlace que no se abrió no es una
+  referencia: se salta al minuto y se confirma en pantalla.
 - **Descarga:** se baja el archivo con `yt-dlp` (YouTube, Facebook y los sitios
   de stock cuando lo permiten) a `assets/video/<shotlist_id>/`, y se anota el
   minuto exacto del clip que sirve al shot.
@@ -88,8 +107,17 @@ guion PAS-V con `script/shotlist.csv` y presupuesto. Antes de eso, no arranca.
    universidad, ciudad, rally_type). Si está vacío: NO despachar. Pregunta al
    humano y espera. La base se monta sin abrir proyecto.
 2. **El director escribe los contratos**: `brief.json`, `shots/*.yaml`,
-   `budget/bom.csv` y `script/shotlist.csv` (compilado). Ningún especialista
-   edita esos cuatro caminos por su cuenta.
+   `budget/bom.csv`, `script/shotlist.csv` (compilado) y
+   `docs/storyboard_visual.html` (generado). Ningún especialista
+   edita esos caminos por su cuenta.
+2b. **Frontera con el motor**: el director y los especialistas producen
+   contenido, no tocan `scripts/`, `tools/`, `dashboard/` ni los cálculos de
+   rúbrica. El guion (`scripts/gen_script.py`), el compilador de tomas
+   (`scripts/build_shotlist.py`) y el audio (`tools/remix_audio.py`) se leen y
+   se usan como caja negra. Si un tiempo, un whitelist o una regla del motor
+   estorba, se reporta al humano con la línea exacta y se pide permiso; no se
+   edita. La investigación profunda y el guion son fuente de verdad: el
+   storyboard los lee, nunca los reescribe.
 3. **Zonas de escritura exclusivas** (cada quien escribe solo ahí):
    - `guionista` → `script/` (salvo `shotlist.csv`, que compila el director)
    - `modeler` → `blender/` (fichas, scripts `.py`, `.blend`, `horas_3d.csv`)
@@ -102,6 +130,35 @@ guion PAS-V con `script/shotlist.csv` y presupuesto. Antes de eso, no arranca.
    - `voz` → `assets/voice/`
    - `editor` → `video/`
    - `auditor` → `reports/` (solo informes; no corrige nada)
+
+   **Ojo con el campo `owner` de las tomas.** El compilador `build_shotlist.py` solo
+   acepta: `guionista`, `modeler`, `pautador`, `presupuestador`, `investigador`,
+   `grafista2d`, `director`. Las zonas `web`, `voz`, `editor`, `auditor` y
+   `recursos-video` **no son dueños válidos de una toma**: si una toma le
+   corresponde a uno de ellos, se le pone el dueño legal más cercano
+   (`director` para material filmado y stock, `grafista2d` para captura de
+   interfaz) y se anota el rol real en `notes`. No dejes diez tipos de toma con
+   el mismo dueño para que compile: se satura un especialista y el resto queda
+   sin trabajo. Procedimiento completo en `skills/storyboard/SKILL.md`.
+
+   **El storyboard es del director y se entrega en dos piezas.** Los contratos en
+   `shots/<id>.yaml` (compilados a `script/shotlist.csv` con
+   `python scripts/build_shotlist.py`) y un **tablero visual** en
+   `docs/storyboard_visual.html`, generado desde el CSV por
+   `docs/_gen_storyboard_visual.py`, con hoja de contactos, una fila por toma y
+   las columnas «qué buscar» y «qué crear». Sin tablero, el equipo graba a
+   ciegas; con tarjetas gigantes, tampoco lo lee. Detalle en
+   `skills/storyboard/SKILL.md`.
+
+   **Referencias visuales: buscarlas o crearlas, nunca fingirlas.** Cada toma se
+   planifica con una referencia encontrada (video del territorio, noticia del
+   mismo problema en el mismo país, documental, ONG, tesis, foro técnico) o con
+   una referencia **creada** por el equipo: boceto, render 3D, corte, diagrama,
+   placa gráfica o montaje. Las dos rutas son válidas; la jerarquía de búsqueda
+   solo ordena el material existente. Banco genérico al final y marcado: da
+   textura, no territorio. Lo prohibido es hacer pasar stock por el lugar o un
+   render por registro del lugar. Ficha obligatoria con URL y minuto verificado
+   (encontrada) o archivo, autor y herramienta (creada).
 4. **Todo binario pesado pasa por el guardia**:
    ```bash
    python scripts/gpu_lock.py run --owner <agente> --priority <baja|media|alta> -- <comando>
@@ -205,13 +262,14 @@ por carpeta compartida; el equipo lo decide al abrir el proyecto.
 | voz | `assets/voice/` | narración MP4/AAC ≤ 120 s | guion aprobado | guionista, editor |
 | editor | `video/` | video final, cortes, exportación | `script/shotlist.csv`, renders, narración | voz, modeler, guionista |
 | auditor | `reports/` | informe de rúbrica y huecos | todo lo entregado + `knowledge/rubric_matrices.md` | director |
+| storyboard (director) | `shots/`, `docs/storyboard_visual.*`, `reports/referencias/` | contratos de toma, shotlist compilado, tablero visual y fichas de referencia | guion, claims, budget, `knowledge/rubric_matrices.md`, `INFORME_INVESTIGACION` §9 | todos los dueños de toma |
 
 ## Grafo de dependencias (orden de despacho)
 
 ```
 investigador → claims
       ↓
-    brief → tomas → shotlist
+    brief → tomas → shotlist → storyboard visual
       ↓
 modeler → ficha/BOM → presupuestador → budget
       ↓                    ↓

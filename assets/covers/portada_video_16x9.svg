@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <title>Portada video - motor de lavadora reconvertido en molino de maiz</title>
+
+  <!-- ===== Fondo: muro limpio a la izquierda, taller a la derecha ===== -->
+  <rect x="0" y="0" width="1920" height="1080" fill="#EFE4D2"/>
+  <rect x="980" y="0" width="940" height="920" fill="#E6D7C0"/>
+  <rect x="980" y="0" width="14" height="920" fill="#D8C5A8"/>
+  <rect x="0" y="900" width="1920" height="20" fill="#DCCBAF"/>
+  <rect x="0" y="920" width="1920" height="160" fill="#C9B394"/>
+  <rect x="980" y="920" width="940" height="160" fill="#BFAA8B"/>
+
+  <!-- ===== Ventana con luz natural (derecha) ===== -->
+  <rect x="1728" y="76" width="176" height="352" fill="#6E4F35"/>
+  <rect x="1744" y="92" width="144" height="320" fill="#FBF3E1"/>
+  <rect x="1808" y="92" width="10" height="320" fill="#6E4F35"/>
+  <rect x="1744" y="248" width="144" height="10" fill="#6E4F35"/>
+
+  <!-- ===== Estante con motores recuperados ===== -->
+  <rect x="1046" y="332" width="452" height="18" fill="#7A5C3E"/>
+  <rect x="1046" y="350" width="452" height="10" fill="#66492F"/>
+  <path d="M1074 360 L1074 396 L1100 360 Z" fill="#66492F"/>
+  <path d="M1470 360 L1470 396 L1444 360 Z" fill="#66492F"/>
+
+  <!-- motor recuperado 1 -->
+  <rect x="1070" y="276" width="112" height="56" rx="6" fill="#55606A"/>
+  <rect x="1082" y="282" width="12" height="44" rx="4" fill="#B87333"/>
+  <rect x="1102" y="282" width="12" height="44" rx="4" fill="#B87333"/>
+  <rect x="1122" y="282" width="12" height="44" rx="4" fill="#B87333"/>
+  <circle cx="1070" cy="304" r="16" fill="#7C8892"/>
+  <!-- motor recuperado 2 -->
+  <rect x="1210" y="262" width="128" height="70" rx="8" fill="#4C555E"/>
+  <rect x="1222" y="270" width="14" height="54" rx="5" fill="#B87333"/>
+  <rect x="1246" y="270" width="14" height="54" rx="5" fill="#B87333"/>
+  <rect x="1270" y="270" width="14" height="54" rx="5" fill="#B87333"/>
+  <rect x="1294" y="270" width="14" height="54" rx="5" fill="#B87333"/>
+  <circle cx="1338" cy="297" r="20" fill="#6B7681"/>
+  <!-- motor recuperado 3 -->
+  <rect x="1372" y="286" width="96" height="46" rx="6" fill="#6B7681"/>
+  <circle cx="1372" cy="309" r="14" fill="#55606A"/>
+
+  <!-- ===== Herramientas colgadas ===== -->
+  <rect x="1566" y="250" width="8" height="120" rx="4" fill="#6E5A48"/>
+  <circle cx="1570" cy="248" r="13" fill="none" stroke="#6E5A48" stroke-width="8"/>
+  <rect x="1608" y="270" width="10" height="150" rx="5" fill="#6E5A48"/>
+  <rect x="1596" y="258" width="34" height="18" rx="6" fill="#6E5A48"/>
+  <circle cx="1660" cy="330" r="38" fill="none" stroke="#B87333" stroke-width="13"/>
+  <circle cx="1660" cy="330" r="12" fill="none" stroke="#B87333" stroke-width="10"/>
+
+  <!-- ===== La tecnica (sujeto protagonista, derecha) ===== -->
+  <g id="tecnica">
+    <!-- pelo recogido -->
+    <path d="M1508 470 q0 -86 60 -92 q62 -6 70 66 q4 40 -18 60 q-12 -52 -58 -58 q-42 -6 -54 24 z" fill="#241C17"/>
+    <circle cx="1616" cy="446" r="31" fill="#241C17"/>
+    <!-- cuello -->
+    <rect x="1546" y="520" width="36" height="52" rx="10" fill="#9E6845"/>
+    <!-- torso / camisa -->
+    <path d="M1446 590 q40 -26 106 -26 q66 0 108 26 l18 214 h-250 z" fill="#F2E9DA"/>
+    <!-- delantal -->
+    <path d="M1452 646 h244 l10 236 h-262 z" fill="#2F6B6B"/>
+    <path d="M1470 646 l-8 -34" stroke="#2F6B6B" stroke-width="9" fill="none"/>
+    <path d="M1676 646 l8 -34" stroke="#2F6B6B" stroke-width="9" fill="none"/>
+    <!-- cabeza -->
+    <ellipse cx="1564" cy="470" rx="54" ry="64" fill="#B67C55"/>
+    <!-- perfil: nariz, boca, ojo, ceja, oreja -->
+    <path d="M1512 470 q-16 8 -14 20 q2 8 12 8" fill="#B67C55"/>
+    <path d="M1524 506 q12 6 22 0" stroke="#8E5638" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <circle cx="1538" cy="462" r="6" fill="#2E2620"/>
+    <path d="M1526 444 q14 -8 26 -2" stroke="#241C17" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <ellipse cx="1602" cy="486" rx="12" ry="16" fill="#A96F4A"/>
+    <!-- brazo derecho (al cuerpo) -->
+    <path d="M1666 604 l22 96 l-16 84" stroke="#F2E9DA" stroke-width="40" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M1672 780 l-14 6" stroke="#B67C55" stroke-width="34" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- ===== Banco de trabajo ===== -->
+  <rect x="960" y="780" width="960" height="30" fill="#8A6746"/>
+  <rect x="960" y="810" width="960" height="90" fill="#7A5A3C"/>
+  <rect x="998" y="810" width="24" height="150" fill="#6E4F35"/>
+  <rect x="1858" y="810" width="24" height="150" fill="#6E4F35"/>
+  <ellipse cx="1420" cy="962" rx="470" ry="26" fill="#000000" opacity="0.08"/>
+
+  <!-- ===== Molino de maiz accionado por el motor ===== -->
+  <path d="M1500 566 h104 l40 92 h-184 z" fill="#9A7752"/>
+  <path d="M1508 574 h88 l10 22 h-108 z" fill="#D8A33F"/>
+  <rect x="1476" y="650" width="152" height="130" rx="6" fill="#8A6746"/>
+  <rect x="1492" y="668" width="120" height="94" fill="#9A7752"/>
+  <circle cx="1552" cy="714" r="34" fill="#6E4F35"/>
+  <circle cx="1552" cy="714" r="12" fill="#B87333"/>
+  <rect x="1628" y="726" width="52" height="16" fill="#6E4F35"/>
+  <!-- tolva lateral -->
+  <path d="M1476 700 l-34 0 l0 60 l34 20 z" fill="#7A5A3C"/>
+
+  <!-- ===== Motor de lavadora rebobinado (heroe) ===== -->
+  <rect x="1200" y="700" width="180" height="72" rx="8" fill="#4C555E"/>
+  <rect x="1212" y="708" width="16" height="56" rx="5" fill="#B87333"/>
+  <rect x="1236" y="708" width="16" height="56" rx="5" fill="#B87333"/>
+  <rect x="1260" y="708" width="16" height="56" rx="5" fill="#B87333"/>
+  <rect x="1284" y="708" width="16" height="56" rx="5" fill="#B87333"/>
+  <rect x="1308" y="708" width="16" height="56" rx="5" fill="#B87333"/>
+  <rect x="1332" y="708" width="16" height="56" rx="5" fill="#B87333"/>
+  <circle cx="1382" cy="736" r="26" fill="#6B7681"/>
+  <circle cx="1382" cy="736" r="9" fill="#3E4750"/>
+  <!-- polea del motor y correa al molino -->
+  <circle cx="1408" cy="736" r="22" fill="#7C8892"/>
+  <circle cx="1408" cy="736" r="7" fill="#3E4750"/>
+  <path d="M1408 714 L1620 682" stroke="#2E2620" stroke-width="7" fill="none"/>
+  <path d="M1408 758 L1620 748" stroke="#2E2620" stroke-width="7" fill="none"/>
+  <!-- base -->
+  <rect x="1190" y="772" width="200" height="10" fill="#3E4750"/>
+
+  <!-- ===== Mano de la tecnica sobre el motor ===== -->
+  <path d="M1450 640 l-42 62" stroke="#F2E9DA" stroke-width="42" fill="none" stroke-linecap="round"/>
+  <path d="M1408 702 l-22 26" stroke="#B67C55" stroke-width="34" fill="none" stroke-linecap="round"/>
+  <ellipse cx="1384" cy="726" rx="24" ry="18" fill="#B67C55"/>
+
+  <!-- ===== Maiz molido cayendo al recipiente ===== -->
+  <path d="M1636 742 q10 14 6 30" stroke="#D8A33F" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <path d="M1622 744 q6 16 2 30" stroke="#D8A33F" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <ellipse cx="1700" cy="792" rx="52" ry="18" fill="#7C8892"/>
+  <ellipse cx="1700" cy="786" rx="44" ry="14" fill="#D8A33F"/>
+  <path d="M1668 792 q32 -18 64 0" stroke="#7C8892" stroke-width="6" fill="none"/>
+
+  <!-- ===== Luz natural: velo calido desde la ventana ===== -->
+  <path d="M1744 92 L1900 92 L1900 470 L1200 1080 L640 1080 Z" fill="#FFF6E3" opacity="0.10"/>
+  <path d="M1744 92 L1900 92 L1900 300 L900 1080 L520 1080 Z" fill="#FFF6E3" opacity="0.06"/>
+</svg>

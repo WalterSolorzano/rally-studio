@@ -1,0 +1,13 @@
+id: S11
+act: III
+description: "Ciclo ambiental: residuo que entra, insumo que sale, con los dos flujos dibujados sobre una sola linea y el ahorro en palabras."
+asset_id: asset_s11_ciclo_ambiental
+asset_type: motion_2d
+duration_s: 8
+status: pendiente
+notes: "Economia circular explicita (c4) y muestra de que el proceso optimiza recursos (c3). Sin cifras nuevas: conectar con la barra de desglose de S08."
+rubric_item: "c4 La propuesta presenta alternativas de mejora a una problematica ambiental especifica; c3 La propuesta optimiza el uso de los recursos"
+claim_ids: ""
+owner: grafista2d
+depends_on: S10
+quality_tier: draft

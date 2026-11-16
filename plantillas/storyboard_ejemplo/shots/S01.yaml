@@ -1,0 +1,13 @@
+id: S01
+act: I
+description: "Rostro del beneficiario en su contexto real: primer plano humano, sin logo, sin nombre de equipo ni de proyecto."
+asset_id: asset_s01_rostro_beneficiario
+asset_type: video_real
+duration_s: 6
+status: pendiente
+notes: "§9.2 exige primera frase con cifra o consecuencia fisica; hoy no hay claims, asi que la frase va con [PENDIENTE]. Requiere consentimiento escrito de la persona filmada. Cero marcas en cuadro."
+rubric_item: "b1 La propuesta da solucion a una problematica especifica"
+claim_ids: ""
+owner: director
+depends_on: ""
+quality_tier: draft

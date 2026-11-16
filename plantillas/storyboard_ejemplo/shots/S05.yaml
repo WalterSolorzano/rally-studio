@@ -1,0 +1,13 @@
+id: S05
+act: II
+description: "Render 3D del prototipo, vista 3/4 girando 30 grados, escala legible contra una mano o un escritorio."
+asset_id: carcasa_principal
+asset_type: render_3d
+duration_s: 11
+status: pendiente
+notes: "El render 3D es el lenguaje comun del pitch tecnico (INFORME_INVESTIGACION §8.5, punto 3). Dimensiones desde budget/bom.csv: 150x80x30 mm. Una sola distancia focal por secuencia."
+rubric_item: "a1 La solucion es innovadora; a2 El equipo mostro capacidad creativa"
+claim_ids: ""
+owner: modeler
+depends_on: S04
+quality_tier: draft

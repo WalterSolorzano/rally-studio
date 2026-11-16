@@ -1,0 +1,13 @@
+id: S08
+act: III
+description: "Costo unitario: una sola cifra grande y, debajo, el desglose en barras proporcionales sin numeros."
+asset_id: asset_s08_costo_unitario
+asset_type: motion_2d
+duration_s: 11
+status: pendiente
+notes: "Regla del acto: tres cifras de dinero como maximo en todo el Acto III (INFORME_INVESTIGACION §9.4). Esta es la cifra 1 de 3. Las barras del desglose van sin etiqueta numerica para no sumar cifras. Dato desde budget/budget.json, hoy vacio: bloqueada."
+rubric_item: "c1 La propuesta es sustentable desde el punto de vista economico"
+claim_ids: ""
+owner: presupuestador
+depends_on: S07
+quality_tier: draft

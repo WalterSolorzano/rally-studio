@@ -1,0 +1,13 @@
+id: S10
+act: III
+description: "Quien paga y por que: tres nodos (usuario, aliado, institucion) con la contraprestacion social escrita en cada flecha."
+asset_id: asset_s10_quien_paga
+asset_type: motion_2d
+duration_s: 7
+status: pendiente
+notes: "Sin cifras: el acto ya gasto sus tres numeros. Lo que este plano prueba es que el retorno es social antes que comercial (b2), no el flujo de dinero. Si el canvas no cuadra con el presupuesto, no se graba."
+rubric_item: "b2 La propuesta tiene un valor social por encima de su valor de mercado"
+claim_ids: ""
+owner: pautador
+depends_on: S09
+quality_tier: draft
