@@ -1772,6 +1772,9 @@ AI_PROVIDER_TIMEOUT_GENERATE = 600
 AI_PROVIDER_TIMEOUT_PROBE = 8
 AI_MODELS_TTL = 600
 AI_ARG_CHAR_LIMIT = 7000  # limite practico de argumentos en Windows
+# Modelo por defecto del CLI de OpenCode (la sesion la autentica el usuario con
+# `/connect`; aqui no se guarda ninguna clave). RALLY_AI_MODEL lo sobreescribe.
+AI_DEFAULT_MODEL = (os.environ.get("RALLY_AI_MODEL") or "").strip() or "opencode-go/deepseek-v4.1-flash"
 
 AI_JOBS = {}
 AI_MODELS_CACHE = {"ts": 0.0, "models": [], "source": ""}
@@ -2061,7 +2064,7 @@ def _pick_models_for(purpose, models, limit=3):
     """
     patterns = {
         "vision": ["gemini", "flash", "vision", "gpt-4o", "glm-4v", "pixtral", "llava", "internvl", "qwen2-vl"],
-        "quick": ["flash", "haiku", "mini", "fast", "turbo", "1b", "3b", "8b"],
+        "quick": ["deepseek-v4.1-flash", "flash", "haiku", "mini", "fast", "turbo", "1b", "3b", "8b"],
     }.get(purpose, [])
     ranked, seen = [], set()
     free = [m for m in models if "free" in m.lower()]
@@ -2673,6 +2676,9 @@ def _ai_job_worker(job_id, prompt, model):
         if exe.lower().endswith((".cmd", ".bat", ".ps1")):
             cmd = ["cmd", "/c", exe, "run"]
         if model:
+            cmd += ["--model", model]
+        else:
+            model = AI_DEFAULT_MODEL
             cmd += ["--model", model]
         if len(prompt) <= AI_ARG_CHAR_LIMIT:
             cmd.append(prompt)

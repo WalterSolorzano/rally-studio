@@ -55,7 +55,7 @@ La etapa siguiente se abre cuando el entregable existe. Si falta, la app lo dice
 ## Dieciocho asistentes, cada uno con su oficio
 
 <div align="center">
-  <img src="assets/readme/asistentes.png" alt="Los dieciocho asistentes del sistema, cada uno con su avatar" width="100%">
+  <img src="assets/readme/asistentes.png" alt="Los dieciocho asistentes del sistema, cada uno con su avatar y su nombre" width="100%">
 </div>
 
 Se invocan a demanda desde `skills/` y se reflejan en `.opencode/skills` y `.agents/skills`. Investigan, cotizan, auditan y rompen la idea antes de que lo haga el jurado.

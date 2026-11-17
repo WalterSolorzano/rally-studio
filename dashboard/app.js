@@ -4701,6 +4701,8 @@ const AI_MODEL_PATTERNS = {
 
 let _aiModelsCache = null;
 let _aiModelsPromise = null;
+// Modelo del proyecto: va primero en la sugerencia por defecto.
+const AI_PREFERRED_MODEL = "deepseek-v4.1-flash";
 
 async function fetchAIModels() {
   if (_aiModelsCache && _aiModelsCache.length) return _aiModelsCache;
@@ -4720,6 +4722,12 @@ function suggestAIModel(key, models) {
   const pats = AI_MODEL_PATTERNS[key] || [];
   const isFree = m => m.toLowerCase().includes("free");
   const freeModels = models.filter(isFree);
+  // 1. El modelo del proyecto manda: deepseek 4.1 flash, primero.
+  const pref =
+    models.find(m => m === "opencode-go/" + AI_PREFERRED_MODEL) ||
+    models.find(m => m.toLowerCase().includes(AI_PREFERRED_MODEL) && !isFree(m)) ||
+    freeModels.find(m => m.toLowerCase().includes(AI_PREFERRED_MODEL));
+  if (pref) return pref;
   for (const p of pats) {
     const hitFree = freeModels.find(m => m.toLowerCase().includes(p));
     if (hitFree) return hitFree;
