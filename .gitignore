@@ -32,6 +32,10 @@ logs/produccion.jsonl
 
 # Buzón de propuestas del agente y espejo de estado (datos del usuario, efímeros)
 dashboard/data/content/
+# Llave maestra del proyecto y contadores de gasto de la IA: estado de ESTA
+# máquina, nunca al repositorio (si se sube, cualquiera abre el proyecto).
+dashboard/data/acceso.txt
+dashboard/data/ai_usage.json
 .rally-nube.json
 .rally-nube/
 dashboard/data/state.json

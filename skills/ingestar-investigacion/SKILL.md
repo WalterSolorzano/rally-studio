@@ -26,6 +26,26 @@ navegador real.
 - El usuario entrega un PDF, DOCX o MD producido fuera (z.ai, ChatGPT, un informe propio).
 - Pide "analiza esto", "límpialo", "pásalo al presupuesto" o "corrige esto contra las bases".
 
+## Retos del comité: PDF oficial o video de YouTube
+
+Cuando lo que llega son **los retos** (no una investigación), el destino no es el pautado:
+es `research/challenges.json` y la pestaña `challenges`.
+
+### PDF de retos
+1. Extráelo a texto sin IA:
+   `python -c "import pdfplumber,sys; pdf=pdfplumber.open(sys.argv[1]); open(sys.argv[2],'w',encoding='utf-8').write('\n'.join((p.extract_text() or '') for p in pdf.pages))" retos.pdf retos.txt`
+2. Ingiere: `python scripts/ingest_challenges.py retos.txt --certamen nacional|latam`
+   (con `--dossier` sale además el PDF de soluciones).
+3. Verifica el conteo: `research/challenges.json` debe tener tantos `id` como retos oficiales.
+4. Sirve la lista a la pestaña `challenges` con la skill `servir-a-ventana`.
+
+### Video de YouTube con los retos
+1. Baja los subtítulos (no el video):
+   `yt-dlp --skip-download --write-auto-subs --write-subs --sub-langs "es.*,en.*" --sub-format vtt -o "%(id)s" "<URL>"`
+2. Ingiere el `.vtt` (o `.srt`): `python scripts/ingest_challenges.py archivo.es.vtt --certamen nacional|latam`
+3. Si el video no trae subtítulos, **no inventes retos**: pide la transcripción, el PDF o el
+   enlace del acta. Los retos se guardan literales, nunca resumidos.
+
 ## Procedimiento
 
 1. **Extrae el texto sin IA.** No dependas del modelo para leer el archivo. Escribe el

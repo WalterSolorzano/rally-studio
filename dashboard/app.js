@@ -4820,6 +4820,11 @@ async function watchAIJob(key, jobId, onTick) {
 // Motor compartido: copiloto y tarjetas multi-IA usan el mismo flujo
 // arrancar job → texto aterriza en vivo → estado final + chips si falla.
 async function _runAIJob(key, prompt, hooks) {
+  // Un job viejo del mismo panel no debe seguir corriendo (gasta cuota y su
+  // texto nunca llegaria a la caja).
+  if (_aiJobs[key]) {
+    try { fetch(`/api/ai/cancel?job=${encodeURIComponent(_aiJobs[key])}`); } catch (e) { /* servicio apagado */ }
+  }
   const model = getAIModelPref(key) || "";
   let started = null;
   try {

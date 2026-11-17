@@ -83,6 +83,22 @@ def _extraer_opcion(args, nombre):
     return None
 
 
+def _limpiar_subtitulos(raw):
+    """Convierte un .vtt/.srt en texto corrido (sin tiempos, indices ni duplicados)."""
+    lineas, previas = [], []
+    for linea in (raw or "").splitlines():
+        t = linea.strip()
+        if not t or t == "WEBVTT" or t.isdigit():
+            continue
+        if "-->" in t:
+            continue
+        t = re.sub(r"<[^>]+>", "", t).strip()
+        if t and t not in previas[-3:]:
+            lineas.append(t)
+            previas.append(t)
+    return "\n".join(lineas)
+
+
 def main():
     # Opciones propias (no afectan el parseo posicional existente)
     argv = sys.argv[1:]
@@ -99,7 +115,7 @@ def main():
     if len(sys.argv) > 1:
         if sys.argv[1] in ("--help", "-h"):
             print("Uso:")
-            print("  python scripts/ingest_challenges.py [archivo.txt|.json|.md]")
+            print("  python scripts/ingest_challenges.py [archivo.txt|.json|.md|.pdf|.vtt|.srt]")
             print("  python scripts/ingest_challenges.py --text \"Desafio 01: ...\"")
             print("  python scripts/ingest_challenges.py (modo interactivo stdin)")
             sys.exit(0)
@@ -115,6 +131,19 @@ def main():
             print(f"Leyendo desafíos desde: {target_path}...")
             if target_path.suffix.lower() == ".json":
                 challenges = json.loads(target_path.read_text(encoding="utf-8"))
+            elif target_path.suffix.lower() == ".pdf":
+                try:
+                    import pdfplumber
+                except ImportError:
+                    print("ERROR: falta pdfplumber para leer PDF (pip install pdfplumber).")
+                    sys.exit(1)
+                with pdfplumber.open(str(target_path)) as pdf:
+                    text = "\n".join((p.extract_text() or "") for p in pdf.pages)
+                challenges = parse_raw_text(text)
+            elif target_path.suffix.lower() in (".vtt", ".srt"):
+                challenges = parse_raw_text(
+                    _limpiar_subtitulos(target_path.read_text(encoding="utf-8", errors="replace"))
+                )
             else:
                 text = target_path.read_text(encoding="utf-8", errors="replace")
                 challenges = parse_raw_text(text)

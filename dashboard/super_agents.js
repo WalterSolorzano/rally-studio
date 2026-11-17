@@ -414,6 +414,9 @@
     if (res.status === 429 && body.status === "rate-limit") {
       return { kind: "rate-limit", message: body.message || "l\u00edmite de uso alcanzado" };
     }
+    if (res.status === 400 && body.status === "modelo-no-permitido") {
+      return { kind: "model-no-permitido", message: body.message || "ese modelo no est\u00e1 en la lista barata" };
+    }
     if (typeof body.status === "string") {
       if (body.status === "started") return { kind: "started", job: body.job, provider: body.provider || body.model || "" };
       if (body.status === "done") return { kind: "done", text: body.text || "", provider: body.provider || body.model || "" };
@@ -445,9 +448,23 @@
     }
   }
   MOD.cancelAnalysis = function cancelAnalysis() {
-    if (activeRun) { activeRun.cancelled = true; activeRun = null; }
+    if (activeRun) {
+      const job = activeRun.job;
+      activeRun.cancelled = true;
+      activeRun = null;
+      // Sin esto el `opencode run` del servidor sigue vivo gastando cuota
+      // aunque la UI ya se olvido del trabajo.
+      killJob(job);
+    }
     agentBusy = 0; if (typeof window !== "undefined" && window.rsAgentActivity) window.rsAgentActivity(false);
   };
+
+  function killJob(job) {
+    if (!job) return;
+    try {
+      fetch(AI_BASE + "/cancel?job=" + encodeURIComponent(job)).catch(function () {});
+    } catch (e) { /* servicio apagado */ }
+  }
 
   // analyze(promptText, onProgress?) → Promise<{ok:true,text,provider} | {ok:false,status,message}>
   MOD.analyze = function analyze(promptText, onProgress) {
@@ -473,6 +490,7 @@
         .then(function (cls) {
           if (run.cancelled) { resolve({ ok: false, status: "cancelled", message: "análisis cancelado" }); return; }
           if (cls.kind !== "started") { p(cls); resolve(fail(cls)); return; }
+          run.job = cls.job;
           pollJob(cls.job, p, resolve, run, 0);
         })
         .catch(function (err) {
@@ -492,6 +510,7 @@
     if (run.cancelled) { resolve({ ok: false, status: "cancelled", message: "análisis cancelado" }); return; }
     if (count >= MAX_POLLS) {
       const cls = { kind: "timeout", message: "la IA lleva más de 5 minutos sin terminar; revisa el proveedor y vuelve a intentar" };
+      killJob(job); // el techo de espera también mata el proceso, no solo el poll
       p(cls);
       resolve({ ok: false, status: "timeout", message: cls.message });
       return;
