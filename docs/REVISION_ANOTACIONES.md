@@ -259,14 +259,35 @@ horas, jurado y etiquetas; y la sede, la ciudad y el año se leen del estado del
 Verificación: 14 vistas a 1600 y a 433 con `bad: []` y `errs: []`; los diez guardarraíles
 cambian de texto al alternar certamen; el nombre del PDF y del video no arrastran el otro modo.
 
+## 29. Escala de pantallas: tres anchos y cero `!important`
+
+Antes había **21 anchos de `@media`** (420, 560, 640, 700, 720, 760, 768, 860, 900, 960, 980,
+1000, 1024, 1100, 1220, 1240, 1241, 1280, 1350, 1360, 1550). Nadie puede sostener eso: cada
+regla nueva se peleaba con la anterior y por eso el archivo acumuló **138 `!important`**.
+
+- Quedan tres anchos: **640** (teléfono), **900** (tableta, la navegación pasa a cajones) y
+  **1280** (portátil reducido; debajo se ocultan telemetría, migas y emblemas del topbar).
+  El único `min-width` sobrevive en `1281px`. Los `prefers-reduced-motion` no se tocan.
+- Los bloques repetidos de 1280 se fusionaron en uno: la telemetría se declaraba dos veces con
+  el mismo valor.
+- Se borró una rejilla muerta de `body` que el propio bloque de cajones sobreescribía.
+- **`!important`: 138 → 0.** Antes de quitarlos se comparó, elemento por elemento, la huella
+  de 23 propiedades calculadas en las 14 vistas: 6 diferencias, todas de altura subpíxel
+  (~2 px) en impacto, pautado y presupuesto. Ningún cambio de color, tipografía, columna ni
+  visibilidad. Si un `!important` hiciera falta, ahora se nota y se puede razonar.
+
+Verificación: 14 vistas a 433 y a 1600 sin desborde ni `<h1>` repetido; las vistas pesadas
+(presupuesto, canvas, cronograma, recursos, multi-IA, pautado, resumen) también a 777; y a
+1111 las tres columnas se sostienen (`240px / 571px / 300px`) sin scroll lateral.
+
 ## Barrido final
 
-Las 14 vistas se recorrieron a 1600 px y a 433 px midiendo tres cosas por vista: un solo `<h1>`, sin desborde horizontal de la página y sin desborde horizontal del contenedor con scroll. Resultado en ambos anchos: **0 vistas con problemas, 0 errores de JavaScript**.
+Las 14 vistas se recorrieron a 1600 px y a 433 px midiendo tres cosas por vista: un solo `<h1>`, sin desborde horizontal de la página y sin desborde horizontal del contenedor con scroll. Resultado en ambos anchos: **0 vistas con problemas, 0 errores de JavaScript**. Tras unificar la escala se repitió el barrido a 433, 777, 1111 y 1600 con el mismo resultado.
 
 ## No tocado (y por qué)
 
 - **~405 colores hex inline en app.js (84 distintos).** Cambiarlos por variables toca 405 puntos y varios están dentro de cálculos de color y SVG; el riesgo de romper supera la ganancia visual. Los 17 verdes/rojos/azules de los ODS son oficiales y no se tocan.
-- **63 bloques `@media` con 12 breakpoints y 132 `!important` en style.css.** Fusionar bloques `@media` cambia el orden entre reglas del mismo breakpoint: es reescritura de escala, no una corrección.
+- ~~63 bloques `@media` con 12 breakpoints y 132 `!important`~~ **Resuelto en la sección 29**: tres anchos (640 / 900 / 1280) y cero `!important`.
 - **18 hex en línea de estado** (ámbar, verde, rojo, muestra de paleta). No tienen token equivalente.
 - **Nodos, grafo, sedes y banderas.** Pedido explícito de omitirlo.
 
