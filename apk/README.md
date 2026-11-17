@@ -39,9 +39,10 @@ python apk/build.py --url http://192.168.1.50:8000/    # app ya apuntando a tu s
 python apk/build.py --url https://mi-sitio/ --salida MiEquipo.apk
 ```
 
-El APK queda en `apk/build/`, firmado con una llave de depuración que el script
-crea la primera vez. Esa firma sirve para instalar en un teléfono propio; para
-publicar en una tienda hay que firmar con una llave real (ver abajo).
+`--salida` acepta un nombre (queda en `apk/build/`) o una ruta. El APK queda
+firmado con una llave de depuración que el script crea la primera vez. Esa firma
+sirve para instalar en un teléfono propio; para publicar en una tienda hay que
+firmar con una llave real (ver abajo).
 
 Si el SDK no está completo:
 

@@ -212,7 +212,11 @@ def main(argv=None) -> int:
     nombre = args.salida or "Rally.apk"
     if not nombre.lower().endswith(".apk"):
         nombre += ".apk"
-    final = BUILD_DIR / nombre
+    # `--salida` puede venir con ruta (absoluta o relativa al directorio actual):
+    # si no, el APK queda junto al resto de la compilación.
+    destino = Path(nombre)
+    final = destino if destino.is_absolute() else (BUILD_DIR / destino)
+    final.parent.mkdir(parents=True, exist_ok=True)
     correr([
         apksigner, "sign",
         "--ks", llave, "--ks-pass", "pass:android", "--key-pass", "pass:android",
