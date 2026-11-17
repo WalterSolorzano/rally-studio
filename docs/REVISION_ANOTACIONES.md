@@ -220,6 +220,45 @@ sub-pestañas.
 Verificado a 1600 y 433: h1n 1, over 0, mainOver 0, y el contador de la
 sub-pestaña pasa de 1/10 a 2/10 al marcar un guardarraíl (y vuelve).
 
+## 27. Icono de YouTube donde va el enlace
+
+El título del video y la ficha impresa de entregables ya no dicen «YouTube» a secas:
+llevan el icono de la plataforma delante. Se reconoce de un vistazo y el texto se acorta
+sin perder la referencia. El icono es monocromo (currentColor) salvo el rojo de marca de
+la plataforma, que es lo único que se permite fuera de los tokens porque es el sello de
+un tercero.
+
+- `SVG.youtube` nuevo en el bloque de iconos.
+- `.naming-yt-label` con el icono antes del texto; el rótulo pasa de «Título Reglamentario
+  para YouTube (Pitch 120s)» a «Título para YouTube (Pitch 120s)».
+- `print-deliv-type` del dossier impreso también con el icono.
+- CSS: dos reglas nuevas al final de `style.css`.
+
+## 28. Fuera los datos fijos de rally y de proyecto
+
+El sistema tenía repartido por el código el nombre de un certamen concreto, una sede
+concreta, un año y hasta un presupuesto de ejemplo. Eso hacía que el modo Nacional y el
+modo Latam se mezclaran y que cualquier proyecto nuevo naciera con datos ajenos.
+
+Ahora hay un solo perfil por certamen (`RALLY_PROFILES` + `rallyProfile()`) con nombre,
+horas, jurado y etiquetas; y la sede, la ciudad y el año se leen del estado del equipo:
+
+- `getInitialState()` ya no trae universidad escrita: `university: ""`.
+- `saveTeamAndProceed()` no impone la sede; el paso de equipo tiene dos campos nuevos,
+  «Universidad o sede» y «Ciudad», que escriben `state.university` y `state.city`.
+- `sedeName()` y `sedeTag()` derivan la sede y su hashtag del nombre que escribe el equipo.
+- `rallyTags()` compone los hashtags del certamen activo sin repetir lista en cada sitio.
+- Guardarraíles por certamen: `guardrailDefs()` devuelve textos distintos para Nacional y
+  Latam (plataforma, formato de nomenclatura, hashtags, moneda y el entregable de TikTok).
+- Nomenclaturas: el nombre del PDF y el título del video salen del perfil y del año único
+  `RALLY_YEAR`, no de literales repetidos.
+- Fuera el presupuesto de ejemplo del dossier, el reto «01» por defecto, el placeholder con
+  nombres de equipos reales y la mención fija a la universidad en guardarraíles, cronograma,
+  pie impreso, topbar, canvas y prompts.
+
+Verificación: 14 vistas a 1600 y a 433 con `bad: []` y `errs: []`; los diez guardarraíles
+cambian de texto al alternar certamen; el nombre del PDF y del video no arrastran el otro modo.
+
 ## Barrido final
 
 Las 14 vistas se recorrieron a 1600 px y a 433 px midiendo tres cosas por vista: un solo `<h1>`, sin desborde horizontal de la página y sin desborde horizontal del contenedor con scroll. Resultado en ambos anchos: **0 vistas con problemas, 0 errores de JavaScript**.

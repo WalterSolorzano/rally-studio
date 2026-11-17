@@ -1447,10 +1447,10 @@ textarea {
 
 .team-preview-card,
 .team-preview-panel {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 16px;
-  padding: 36px 24px;
+  background: var(--bg-subtle);
+  border: 0;
+  border-radius: 0;
+  padding: 28px 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6878,3 +6878,8 @@ body.rs-sheet-open { overflow: hidden; }
     padding-top: 12px;
   }
 }
+
+/* ── Título de YouTube: el icono identifica la plataforma sin repetir el nombre ── */
+.naming-yt-label { display: inline-flex; align-items: center; gap: 6px; }
+.naming-yt-label svg { color: #FF0000; flex: 0 0 auto; }
+.print-deliv-type svg { vertical-align: -2px; margin-right: 4px; color: #FF0000; }

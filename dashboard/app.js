@@ -4,6 +4,7 @@
 
 // ── ICONOS SVG VECTORIALES (CERO EMOJIS) ──────────────────────────────────────
 const SVG = {
+  youtube: `<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="vertical-align:middle;"><path d="M21.6 7.2a2.7 2.7 0 0 0-1.9-1.9C18 4.9 12 4.9 12 4.9s-6 0-7.7.4A2.7 2.7 0 0 0 2.4 7.2 28 28 0 0 0 2 12a28 28 0 0 0 .4 4.8 2.7 2.7 0 0 0 1.9 1.9c1.7.4 7.7.4 7.7.4s6 0 7.7-.4a2.7 2.7 0 0 0 1.9-1.9A28 28 0 0 0 22 12a28 28 0 0 0-.4-4.8ZM10 15.1V8.9l5.2 3.1Z"/></svg>`,
   logo: `<svg width="24" height="22" viewBox="0 0 24 22" fill="none" style="vertical-align:middle;"><line x1="5" y1="20" x2="13" y2="2" stroke="#0066FF" stroke-width="4.5" stroke-linecap="round"/><line x1="13" y1="20" x2="21" y2="2" stroke="#0066FF" stroke-width="4.5" stroke-linecap="round"/></svg>`,
   folder: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>`,
   sync: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>`,
@@ -41,7 +42,7 @@ const SVG = {
 
   rallyLatamEmblem: `<svg width="26" height="26" viewBox="0 0 32 32" fill="none" style="vertical-align:middle;" title="Rally Latinoamericano de Innovación"><circle cx="16" cy="16" r="14" fill="#FFF1F2" stroke="#FECDD3" stroke-width="1.5"/><path d="M12 9C14 11 16 13 15 16C14 19 18 23 20 22C22 20 23 16 21 13C19 10 17 8 13 8Z" fill="#E11D48"/><ellipse cx="16" cy="16" rx="14" ry="5.5" stroke="#E11D48" stroke-width="1.2" stroke-dasharray="3 2" transform="rotate(-25 16 16)"/><circle cx="21" cy="12" r="1.8" fill="#F43F5E"/></svg>`,
   rallyNacEmblem: `<svg width="26" height="26" viewBox="0 0 32 32" fill="none" style="vertical-align:middle;" title="Rally Nacional Nicaragua Innova"><circle cx="16" cy="16" r="14" fill="#F8FAFD" stroke="#CBD5E1" stroke-width="1.5"/><path d="M16 8L10.5 22H21.5L16 8Z" fill="#0D1B35"/><circle cx="21" cy="11" r="2.8" fill="#0866F5"/><path d="M9 22C12 20.5 20 20.5 23 22" stroke="#0284C7" stroke-width="1.5"/></svg>`,
-  uniCrestEmblem: `<svg width="26" height="26" viewBox="0 0 32 32" fill="none" style="vertical-align:middle;" title="Universidad Nacional de Ingeniería (UNI)"><circle cx="16" cy="16" r="14" fill="#003366"/><circle cx="16" cy="16" r="12.5" stroke="#FFB800" stroke-width="1.2"/><path d="M16 7L23 11V18C23 22 16 26 16 26C16 26 9 22 9 18V11L16 7Z" fill="#002244" stroke="#FFB800" stroke-width="1.2"/><path d="M16 11L18.5 16H13.5L16 11Z" fill="#FFB800"/><path d="M13 18H19" stroke="#FFB800" stroke-width="1.5"/></svg>`,
+  uniCrestEmblem: `<svg width="26" height="26" viewBox="0 0 32 32" fill="none" style="vertical-align:middle;" title="Emblema de la sede"><circle cx="16" cy="16" r="14" fill="#003366"/><circle cx="16" cy="16" r="12.5" stroke="#FFB800" stroke-width="1.2"/><path d="M16 7L23 11V18C23 22 16 26 16 26C16 26 9 22 9 18V11L16 7Z" fill="#002244" stroke="#FFB800" stroke-width="1.2"/><path d="M16 11L18.5 16H13.5L16 11Z" fill="#FFB800"/><path d="M13 18H19" stroke="#FFB800" stroke-width="1.5"/></svg>`,
 
   latinAmericaIllustration: `
 <svg width="290" height="170" viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width:100%; height:auto;">
@@ -232,6 +233,53 @@ const SVG = {
 // ── CATÁLOGO HISTÓRICO DE REFERENCIA (RALLY 2026) ────────────────────────────
 let OFFICIAL_CHALLENGES_2026 = []; // datos externos (challenge_bank.json)
 
+// ── PERFIL DEL CERTAMEN ──────────────────────────────────────────────────────
+// Un solo lugar para nombres, horas y año. El equipo y su sede salen del estado,
+// nunca de un texto fijo.
+const RALLY_YEAR = "2026";
+
+const RALLY_PROFILES = {
+  nacional: {
+    id: "nacional",
+    name: "Rally Nacional Nicaragua Innova",
+    short: "Rally Nacional",
+    hours: 24,
+    jury: "CNU / MINJUVE / TELCOR / INATEC / MEFCCA",
+    tags: ["#NicaraguaInnova2026", "#RallyNacionalInnova"]
+  },
+  latam: {
+    id: "latam",
+    name: "Rally Latinoamericano de Innovación",
+    short: "Rally Latinoamericano",
+    hours: 28,
+    jury: "CONFEDI / ACOFI / SIRLI",
+    tags: ["#RallyLatinoamericano2026", "#RallyLatam"]
+  }
+};
+
+function rallyProfile() {
+  return RALLY_PROFILES[state.rally_type === "latam" ? "latam" : "nacional"];
+}
+
+function rallyName() { return rallyProfile().name; }
+
+// La sede la escribe el equipo; si aún no la escribió, se habla en genérico.
+function sedeName() { return (state.university || "").trim() || "la sede"; }
+
+// Etiqueta de sede para hashtags: «Universidad Nacional de Ingeniería» → #SedeUNI
+function sedeTag() {
+  const words = (state.university || "").match(/[A-ZÁÉÍÓÚÑ]/g);
+  const sigla = words ? words.join("").slice(0, 6) : "";
+  return sigla ? `#Sede${sigla}` : "";
+}
+
+function rallyTags() {
+  const base = rallyProfile().tags.slice();
+  const sede = sedeTag();
+  if (sede) base.push(sede);
+  return base;
+}
+
 // ── BANCO DE RETOS + RANKING (DATOS EXTERNOS, sin hardcode) ──────────────────
 // Contenido en dashboard/data/challenge_bank.json (investigación, no lógica).
 let _bankPromise = null;
@@ -340,7 +388,7 @@ function getInitialState() {
     start_timestamp: null,
     official_start_time: "08:00 AM",
     team_name: "",
-    university: "Universidad Nacional de Ingeniería (UNI)",
+    university: "",
     city: "",
     team_logo: "shield",
     team_logo_img: "",
@@ -863,24 +911,18 @@ function exportProjectJson() {
 
 function generateProjectMarkdown() {
   const isLatam = state.rally_type === "latam";
-  const rallyTitle = isLatam ? "Rally Latinoamericano de Innovación (28h)" : "Rally Nacional Nicaragua Innova (24h)";
-  const teamName = state.team_name || "Equipo de Innovación UNI";
-  const uni = state.university || "Universidad Nacional de Ingeniería (UNI)";
+  const rallyTitle = `${rallyProfile().name} (${rallyProfile().hours}h)`;
+  const teamName = state.team_name || "Equipo de Innovación";
+  const uni = state.university || "la sede";
   const projName = state.project_name || state.team_name || "PROYECTO DE INNOVACIÓN";
   const cat = state.category || "Innovación";
-  const challengeId = state.challenge_id || (state.challenges && state.challenges[0] ? state.challenges[0].id : "01");
+  const challengeId = state.challenge_id || (state.challenges && state.challenges[0] ? state.challenges[0].id : "");
   const selectedCh = (state.challenges && state.challenges.find(c => c.id === challengeId)) || OFFICIAL_CHALLENGES_2026.find(c => c.id === challengeId) || OFFICIAL_CHALLENGES_2026[0];
-  const challengeTitle = state.challenge_title || selectedCh.title;
+  const challengeTitle = state.challenge_title || (selectedCh ? selectedCh.title : "Sin reto elegido");
 
   const paut = state.pautado || {};
   const scr = state.script || {};
-  const budgetList = Array.isArray(state.budget) && state.budget.length > 0 ? state.budget : [
-    { concept: "Diseño y Prototipado Rápido (Materiales / Maqueta)", category: "Prototipado", units: 1, unit_cost: 250 },
-    { concept: "Componentes Electromecánicos / Hardware Base", category: "Hardware Base", units: 1, unit_cost: 320 },
-    { concept: "Pruebas de Campo y Validación Operativa", category: "Validación", units: 1, unit_cost: 180 },
-    { concept: "Herramientas de Ensamblaje y Gabinetes de Protección", category: "Fabricación", units: 1, unit_cost: 140 },
-    { concept: "Talleres y Metodología de Apropiación Comunitaria", category: "Impacto Social", units: 1, unit_cost: 150 }
-  ];
+  const budgetList = Array.isArray(state.budget) ? state.budget : [];
   const budgetTotal = budgetList.reduce((acc, b) => acc + (Number(b.units || 1) * Number(b.unit_cost || 0)), 0);
   const bctx = budgetCurrency();
   const challengesList = (state.challenges && state.challenges.length > 0) ? state.challenges : OFFICIAL_CHALLENGES_2026;
@@ -938,7 +980,7 @@ function generateProjectMarkdown() {
 
   md += `### 7. Guion Audiovisual de 120 Segundos (4 Actos)\n\n`;
   md += `- **Acto 1 (00:00 - 00:20):** ${scr.acto1 || "Exposición del problema en el territorio, datos críticos y urgencia de solución."}\n\n`;
-  md += `- **Acto 2 (00:20 - 00:55):** ${scr.acto2 || "Presentación de la propuesta de innovación desarrollada por el equipo de la UNI."}\n\n`;
+  md += `- **Acto 2 (00:20 - 00:55):** ${scr.acto2 || `Presentación de la propuesta de innovación desarrollada por el equipo de ${sedeName()}.`}\n\n`;
   md += `- **Acto 3 (00:55 - 01:30):** ${scr.acto3 || "Demostración operativa del prototipo, prefactibilidad económica y validación de campo."}\n\n`;
   md += `- **Acto 4 (01:30 - 02:00):** ${scr.acto4 || "Impacto transformador, escalabilidad y llamado a la acción del equipo en el certamen."}\n\n`;
 
@@ -963,15 +1005,15 @@ function exportProjectMarkdown() {
 
 function preparePrintDossierHTML() {
   const isLatam = state.rally_type === "latam";
-  const rallyTitle = isLatam ? "Rally Latinoamericano de Innovación (28 Horas)" : "Rally Nacional Nicaragua Innova (24 Horas)";
-  const teamName = state.team_name || "Equipo de Innovación UNI";
-  const uni = state.university || "Universidad Nacional de Ingeniería (UNI)";
+  const rallyTitle = `${rallyProfile().name} (${rallyProfile().hours} Horas)`;
+  const teamName = state.team_name || "Equipo de Innovación";
+  const uni = state.university || "la sede";
   const city = state.city || "Managua, Nicaragua";
   const projName = state.project_name || state.team_name || "PROYECTO DE INNOVACIÓN";
   const cat = state.category || "Innovación";
-  const challengeId = state.challenge_id || (state.challenges && state.challenges[0] ? state.challenges[0].id : "01");
+  const challengeId = state.challenge_id || (state.challenges && state.challenges[0] ? state.challenges[0].id : "");
   const selectedCh = (state.challenges && state.challenges.find(c => c.id === challengeId)) || OFFICIAL_CHALLENGES_2026.find(c => c.id === challengeId) || OFFICIAL_CHALLENGES_2026[0];
-  const challengeTitle = state.challenge_title || selectedCh.title;
+  const challengeTitle = state.challenge_title || (selectedCh ? selectedCh.title : "Sin reto elegido");
 
   const paut = state.pautado || {};
   const scr = state.script || {};
@@ -991,13 +1033,13 @@ function preparePrintDossierHTML() {
   // Claims de Respaldo Fáctico / Propiedad Intelectual
   const claimsList = (Array.isArray(state.claims) && state.claims.length > 0) ? state.claims : [];
 
-  // Matriz de 10 Guardarraíles de Rúbrica SIRLI
+  // Matriz de 10 guardarraíles de rúbrica
   const guardrailsDef = [
-    { key: "team_sirli_registered", name: "Inscripción Formal en Plataforma SIRLI", req: "Equipo registrado y verificado en el sistema oficial del certamen." },
+    { key: "team_sirli_registered", name: "Inscripción Formal en la Plataforma del Certamen", req: "Equipo registrado y verificado en el sistema oficial del certamen." },
     { key: "video_duration_ok", name: "Duración Estricta de Video (≤ 120s)", req: "Minutaje total de video exactamente calibrado a 120 segundos sin exceder." },
     { key: "video_unlisted_or_public", name: "Visibilidad de Enlace Audiovisual", req: "Alojado en YouTube como 'No Listado' o 'Público', reproducible sin login." },
-    { key: "naming_pdf_ok", name: "Nomenclatura Oficial de Archivos", req: "Estructura estricta según bases (ej: RETO02_EQUIPO_UNI.pdf)." },
-    { key: "hashtags_included", name: "Hashtags Oficiales del Certamen", req: "#RallyLatam2026, #NicaraguaInnova2026 y etiquetas requeridas." },
+    { key: "naming_pdf_ok", name: "Nomenclatura Oficial de Archivos", req: "Estructura estricta según las bases: reto, equipo y documento, separados por guion bajo." },
+    { key: "hashtags_included", name: "Hashtags Oficiales del Certamen", req: `${rallyTags().join(", ")} y etiquetas requeridas.` },
     { key: "pautado_chars_ok", name: "Límites de Caracteres en Pautado", req: "Límites respetados en las 5 secciones (1,250 y 1,000 caracteres)." },
     { key: "pdf_video_numbers_synced", name: "Sincronización Numérica (0 Discrepancias)", req: "Montos, unidades y beneficiarios idénticos en guion audiovisual y pautado." },
     { key: "youtube_channel_brand", name: "Branding en Canal Audiovisual", req: "Canal institucional del equipo con título, miniatura y descripción técnica." },
@@ -1305,7 +1347,7 @@ function preparePrintDossierHTML() {
       </div>
       <div class="print-deliverables-grid">
         <div class="print-deliv-card">
-          <div class="print-deliv-type">Video Oficial de YouTube</div>
+          <div class="print-deliv-type">${SVG.youtube} Video Oficial de YouTube</div>
           <div class="print-deliv-name">Pitch Audiovisual 120s</div>
           <div class="print-deliv-url">${videoUrl}</div>
           <div style="font-size:7pt; color:var(--status-ok-text); margin-top:4px; font-weight:600;">✓ Modo: No Listado / Calidad 1080p</div>
@@ -1467,7 +1509,7 @@ function preparePrintDossierHTML() {
       <!-- PIE DE PÁGINA TÉCNICO OFICIAL -->
       <div class="print-official-footer">
         <div>RALLY STUDIO · MISSION CONTROL WORKBENCH · /IMPECCABLE SWISS DESIGN</div>
-        <div>UNIVERSIDAD NACIONAL DE INGENIERÍA (UNI) · CERTÁMENES OFICIALES 2026</div>
+        <div>${escapeHtml((state.university || "SEDE POR DEFINIR").toUpperCase())} · CERTÁMENES OFICIALES ${RALLY_YEAR}</div>
       </div>
     </div>
   `;
@@ -1608,7 +1650,7 @@ function getCurrentDeadlineAlert() {
     return { 
       label: "Inscripción Oficial", 
       time: `${timeStr} (${rh}h ${rm}m)`, 
-      desc: "Límite de registro de integrantes y sede UNI en plataforma oficial" 
+      desc: "Límite de registro de integrantes y sede en la plataforma oficial" 
     };
   }
   if (elapsedHours < 12) {
@@ -1856,11 +1898,11 @@ function renderTopbar() {
         <div class="topbar-emblems-group" title="${certamen}">
           <img src="${state.rally_type === 'latam' ? 'assets/logo_rally_latam.png' : 'assets/logo_rally_nacional.png'}" 
                class="topbar-emblem-img" 
-               alt="${state.rally_type === 'latam' ? 'Rally Latinoamericano' : 'Rally Nacional Innova'}">
+               alt="${rallyProfile().short}">
           <span class="topbar-emblem-divider"></span>
           <img src="assets/logo_uni_official.png" 
                class="topbar-uni-img" 
-               alt="Universidad Nacional de Ingeniería (UNI)">
+               alt="Logo de la universidad">
           ${state.team_logo_img ? `
             <span class="topbar-emblem-divider"></span>
             <img src="${state.team_logo_img}" class="topbar-team-avatar" alt="Team Logo" title="${state.team_name || 'Equipo'}">
@@ -2633,7 +2675,7 @@ function renderViewResumen() {
             <span class="rs-challenge-num">#${escapeHtml(String(challengeNum))}</span>
             <div>
               <p class="rs-challenge-title">${escapeHtml(challengeTitle)}</p>
-              <span class="rs-challenge-meta">${escapeHtml(state.rally_type === "latam" ? "Rally Latinoamericano 28h" : state.rally_type === "nacional" ? "Rally Nacional 24h" : "Certamen por definir")} · ${escapeHtml(category)}</span>
+              <span class="rs-challenge-meta">${escapeHtml(state.rally_type ? `${rallyProfile().short} ${rallyProfile().hours}h` : "Certamen por definir")} · ${escapeHtml(category)}</span>
             </div>
           </div>
           <div class="rs-solution ${state.solution_approved ? "is-approved" : ""}">
@@ -2953,8 +2995,8 @@ function editSetup(which) {
 
 function renderCertamenSummary() {
   const esLatam = state.rally_type === "latam";
-  const nombre = esLatam ? "Rally Latinoamericano de Innovación" : "Rally Nacional Nicaragua Innova";
-  const horas = esLatam ? "28 horas" : "24 horas";
+  const nombre = rallyProfile().name;
+  const horas = `${rallyProfile().hours} horas`;
   return `
     <div class="phase-header">
       <div>
@@ -3038,7 +3080,7 @@ function renderViewCertamen() {
             </div>
 
             <div class="certamen-meta-tag latam">RALLY LATINOAMERICANO</div>
-            <h2 class="certamen-card-title">Rally Latinoamericano<br>de Innovación</h2>
+            <h2 class="certamen-card-title">${RALLY_PROFILES.latam.name}</h2>
             <p class="certamen-card-desc">Competencia internacional entre 8 países de América Latina.</p>
           </div>
 
@@ -3056,7 +3098,7 @@ function renderViewCertamen() {
               <div class="hours-badge nacional" title="Régimen de 24 horas continuas">
                 <span class="hours-num">24</span><span class="hours-unit">H</span>
               </div>
-              <img src="assets/logo_rally_nacional.png" class="certamen-header-logo" alt="Rally Nacional Nicaragua Innova">
+              <img src="assets/logo_rally_nacional.png" class="certamen-header-logo" alt="${RALLY_PROFILES.nacional.name}">
               <div>${isNac ? checkCirclePurple : SVG.uncheckedCircle}</div>
             </div>
 
@@ -3065,7 +3107,7 @@ function renderViewCertamen() {
             </div>
 
             <div class="certamen-meta-tag nacional">RALLY NACIONAL</div>
-            <h2 class="certamen-card-title">Rally Nacional Nicaragua<br>Innova</h2>
+            <h2 class="certamen-card-title">${RALLY_PROFILES.nacional.name}</h2>
             <p class="certamen-card-desc">Certamen universitario territorial de 24 horas.</p>
           </div>
 
@@ -3138,7 +3180,7 @@ function renderViewTeam() {
 
       <h1 class="wizard-hero-title" style="margin-bottom:24px;">Identidad del <span class="title-accent">Equipo</span></h1>
 
-      <div class="workbench-card" style="border:1px solid var(--border-light); border-radius:8px; padding:32px 28px; background:var(--bg-surface); max-width:960px; margin:0 auto;">
+      <div style="padding:0; max-width:960px; margin:0 auto;">
         <div class="team-step-grid">
           <!-- Columna Izquierda: Formulario de Datos -->
           <div style="display:flex; flex-direction:column; justify-content:space-between;">
@@ -3146,10 +3188,26 @@ function renderViewTeam() {
               <!-- Nombre del Squad (la marca del proyecto se define a partir del reto elegido) -->
               <div class="form-group" style="margin-bottom:16px;">
                 <label style="font-weight:700; color:var(--text-title); font-size:12px; display:block; margin-bottom:6px;">NOMBRE DE SQUAD (EQUIPO)</label>
-                <input type="text" id="tm-name" placeholder="Ej: Techriders, Pinoleros Tech, Mentes Volcánicas" value="${state.team_name || ''}"
+                <input type="text" id="tm-name" placeholder="Nombre del equipo" value="${state.team_name || ''}"
                   style="width:100%; box-sizing:border-box; padding:10px 12px; border:1.5px solid var(--border-strong); border-radius:8px; font-size:13px; font-weight:600; color:var(--text-title);"
                   oninput="updateTeamName(this.value);">
-                <span style="font-size:11px; color:var(--text-muted); margin-top:6px; display:block;">El nombre de la marca/proyecto se decide en el Taller de Solución, cuando ya conozcan el reto elegido.</span>
+                <span style="font-size:11px; color:var(--text-muted); margin-top:6px; display:block;">El nombre de la marca/proyecto se decide en el Taller de Solución.</span>
+              </div>
+
+              <div class="form-group" style="margin-bottom:16px;">
+                <label style="font-weight:700; color:var(--text-title); font-size:12px; display:block; margin-bottom:6px;">UNIVERSIDAD O SEDE</label>
+                <input type="text" id="tm-university" value="${escapeHtml(state.university || '')}"
+                  placeholder="Escribe el nombre completo de tu universidad"
+                  style="width:100%; box-sizing:border-box; padding:10px 12px; border:1.5px solid var(--border-strong); border-radius:8px; font-size:13px;"
+                  oninput="state.university = this.value.trim(); saveState();">
+              </div>
+
+              <div class="form-group" style="margin-bottom:16px;">
+                <label style="font-weight:700; color:var(--text-title); font-size:12px; display:block; margin-bottom:6px;">CIUDAD</label>
+                <input type="text" id="tm-city" value="${escapeHtml(state.city || '')}"
+                  placeholder="Ciudad donde se corre el rally"
+                  style="width:100%; box-sizing:border-box; padding:10px 12px; border:1.5px solid var(--border-strong); border-radius:8px; font-size:13px;"
+                  oninput="state.city = this.value.trim(); saveState();">
               </div>
 
               <div class="form-group full">
@@ -3230,7 +3288,7 @@ function renderViewTeam() {
                 ${state.university || ''}
               </div>
               <div style="font-family:var(--font-ui); font-size:11px; font-weight:600; color:var(--text-muted); margin-top:4px;">
-                ${state.rally_type === 'latam' ? 'Rally Latinoamericano de Innovación 28h' : 'Rally Nacional Nicaragua Innova 24h'}
+                ${rallyProfile().name} ${rallyProfile().hours}h
               </div>
             </div>
           </div>
@@ -3333,7 +3391,6 @@ function saveTeamAndProceed() {
   }
 
   state.team_name = name;
-  state.university = "Universidad Nacional de Ingeniería (UNI)";
   saveState();
   activeTab = "challenges";
   syncUI();
@@ -6143,7 +6200,7 @@ const ODS_CATALOG = [
     shortTarget: "Meta 17.6: Cooperación científica, tecnológica y de innovación",
     unTarget: "Mejorar la cooperación en materia de ciencia, tecnología e innovación y aumentar el intercambio de conocimientos especializados.",
     diagnostic: "Desarticulación histórica entre la investigación académica universitaria y las demandas operativas de los programas del Estado.",
-    mechanism: "Alianza cuádruple hélice (Universidad UNI, CNU, Comisiones de Economía Creativa y Comunidades de Base) para despliegue real."
+    mechanism: "Alianza cuádruple hélice: universidad sede, comité del certamen, comisiones de economía creativa y comunidades de base."
   }
 ];
 
@@ -6792,7 +6849,7 @@ function generateSpecificMegaPrompt(taskId) {
   const chTitle = ch.title || state.challenge_title || "Innovación";
   const thesis = state.solution_thesis || state.solution_raw_input || "";
   const isNac = state.rally_type === "nacional";
-  const cert = isNac ? "Rally Nacional Nicaragua Innova (24h - CNU / Economía Creativa)" : "Rally Latinoamericano de Innovación (28h - CONFEDI / ACOFI / SIRLI)";
+  const cert = `${rallyName()} (${rallyProfile().hours}h - ${rallyProfile().jury})`;
 
   if (taskId === "stats_poverty") {
     if (isNac) {
@@ -6800,10 +6857,10 @@ function generateSpecificMegaPrompt(taskId) {
 Proyecto: "${pName}" enfocado en el reto: "${chTitle}".
 Tesis: "${thesis}".
 Criterio Rúbrica Oficial Jurado Nacional: Impacto Social, Territorial y Alineación con Políticas Públicas (25 Puntos).
-Patrón de Ganadores Nacionales (Nicaragua Innova):
+Patrón de Ganadores de ${RALLY_PROFILES.nacional.name}:
 1. Extrae 3 estadísticas cuantitativas auditables de fuentes oficiales nicaragüenses y regionales (Banco Central de Nicaragua BCN, INIDE, CEPAL, MINSA o alcaldías).
 2. Vincula directamente con un Eje específico del Plan Nacional de Lucha contra la Pobreza y Desarrollo Humano 2022–2026 (PNDH), Ciudades Creativas o Restitución de Derechos (Ley 763).
-3. Especifica el anclaje territorial concreto en Nicaragua (municipio, comunidad vulnerable o zona productiva: ej. Waslala, San Juan de Oriente, Monimbó, Estelí, Bilwi).
+3. Especifica el anclaje territorial concreto en ${state.city || "el municipio donde corre el equipo"} (municipio, comunidad o zona productiva).
 4. Cuantifica los beneficiarios directos (familias nicaragüenses, cooperativas de base, empleos directos e indirectos).
 5. Proporciona citas en formato APA 7 y una síntesis para el Documento Técnico de Solución (máximo 1,250 caracteres con espacios, sin retórica vacía).`;
     }
@@ -7101,7 +7158,7 @@ function renderViewPautado() {
         </div>
       </div>
       <p class="pa-template-text">
-        Sube el Word (.docx) que entrega el evento (${state.rally_type === 'nacional' ? 'Rally Nacional Nicaragua Innova' : 'Rally Latinoamericano'}).
+        Sube el Word (.docx) que entrega el evento (${rallyName()}).
         Al compilar, los textos de abajo se insertan automáticamente bajo cada encabezado oficial, respetando las reglas de la rúbrica.
       </p>
       <div id="pautado-template-status" class="pa-template-status">Consultando plantilla…</div>
@@ -8821,68 +8878,83 @@ function setSiteUrl(value) {
 // ═════════════════════════════════════════════════════════════════════════════
 // 11 CRONOGRAMA DE ENTREGA, NOMENCLATURAS Y REQUISITOS CRÍTICOS
 // ═════════════════════════════════════════════════════════════════════════════
-const GUARDRAILS_DEFINITIONS = [
-  {
-    key: "team_sirli_registered",
-    title: "1. Registro del Equipo en Plataforma Oficial (Límite: 12:00 PM)",
-    desc: "Todos los integrantes y la sede Universidad Nacional de Ingeniería (UNI) deben estar confirmados en la plataforma antes de mediodía.",
-    risk: "Equipos no validados a las 12:00 PM quedan inhabilitados por el sistema central."
-  },
-  {
-    key: "video_duration_ok",
-    title: "2. Duración del Video Pitch (Estrictamente ≤ 119 Segundos)",
-    desc: "El video no debe exceder los 2 minutos exactos (120s). Recomendado exportar a 1:55 - 1:58 min.",
-    risk: "El límite es 120 segundos de audio: se mide con ffprobe antes de subir. Pasarse deja el video fuera de las bases, así que no se apuesta al margen."
-  },
-  {
-    key: "video_unlisted_or_public",
-    title: "3. Privacidad de YouTube: 'No listado' (Oculto) o 'Público'",
-    desc: "Comprobar el enlace abriéndolo en una ventana de incógnito sin sesión de Google iniciada.",
-    risk: "Subir el video en 'Privado' impide al jurado calificador reproducirlo, otorgando 0 puntos en el pitch."
-  },
-  {
-    key: "naming_pdf_ok",
-    title: "4. Nomenclatura Oficial del Archivo PDF Pautado",
-    desc: "Nombrar el archivo exportado exactamente con el formato reglamentario generado en esta pantalla.",
-    risk: "Nombres genéricos (ej. 'documento_final.pdf' o 'tarea.pdf') sufren penalización en la etapa de auditoría documental."
-  },
-  {
-    key: "hashtags_included",
-    title: "5. Hashtags Oficiales en YouTube y TikTok",
-    desc: "Incluir en la descripción y título del video los tags oficiales requeridos para el certamen activo.",
-    risk: "La omisión de los hashtags reglamentarios o de la etiqueta de la sede UNI invalida los puntos de interacción y difusión."
-  },
-  {
-    key: "pautado_chars_ok",
-    title: "6. Respeto Estricto de Caracteres en el Documento Pautado",
-    desc: `Problema (≤${PAUTADO_LIMITS.problema}), Solución (≤${PAUTADO_LIMITS.solucion}), Prefactibilidad (≤${PAUTADO_LIMITS.prefactibilidad}), Innovación (≤${PAUTADO_LIMITS.innovacion}), Impacto (≤${PAUTADO_LIMITS.impacto}).`,
-    risk: "La plataforma de entrega trunca o rechaza textos que excedan el límite oficial de caracteres con espacios."
-  },
-  {
-    key: "pdf_video_numbers_synced",
-    title: "7. Sincronía Numérica Estricta PDF vs Video (Cero Discrepancia)",
-    desc: "Todas las cifras de costos unitarios, inversión de lote piloto ($4k-$6k USD), beneficiarios y métricas del guion deben coincidir exactamente con el PDF.",
-    risk: "La discrepancia numérica entre el video y el PDF es el riesgo más frecuente en prefactibilidad económica: el jurado cruza las cifras."
-  },
-  {
-    key: "youtube_channel_brand",
-    title: "8. Canal Oficial de Marca-Equipo en YouTube (No canal personal)",
-    desc: "Canal bautizado con el nombre del equipo/marca (@TechridersUNI, @GuegueenseDigna), con avatar y título canónico: [RETO XX] - EQUIPO - PROYECTO.",
-    risk: "Subir desde cuentas personales desarticuladas proyecta informalidad y reduce la legitimidad visual ante jurados internacionales."
-  },
-  {
-    key: "tiktok_submitted",
-    title: "9. Video TikTok de Interacción Internacional (Obligatorio SIRLI)",
-    desc: "Cápsula lúdico-creativa de vinculación con equipos de otras sedes o países publicada antes de las 08:00 PM con los hashtags oficiales.",
-    risk: "En el Rally Latam, la interacción en TikTok es un entregable auditable que habilita puntajes decisivos de integración."
-  },
-  {
-    key: "loser_patterns_checked",
-    title: "10. Auditoría de los 11 Patrones Perdedores (Anti-patrones descartados)",
-    desc: "Descartar: app móvil genérica para crisis complejas, video >120s, logos en 0:00-0:20, sufijo -INNOVA trillado o falta de cotización mayorista.",
-    risk: "Incurrir en cualquiera de estos 11 patrones condena la propuesta al promedio o al descarte inmediato por el tribunal."
-  }
-];
+function guardrailDefs() {
+  const isLatam = state.rally_type === "latam";
+  return [
+    {
+      key: "team_sirli_registered",
+      title: isLatam
+        ? "1. Registro del Equipo en la Plataforma Latam (Límite: 12:00 PM)"
+        : "1. Registro del Equipo en la Plataforma Nacional (Límite: 12:00 PM)",
+      desc: `Todos los integrantes y la sede ${sedeName()} deben estar confirmados en la plataforma de ${rallyName()} antes de mediodía.`,
+      risk: "Equipos no validados a las 12:00 PM quedan inhabilitados por el sistema central."
+    },
+    {
+      key: "video_duration_ok",
+      title: "2. Duración del Video Pitch (Estrictamente ≤ 119 Segundos)",
+      desc: "El video no debe exceder los 2 minutos exactos (120s). Recomendado exportar a 1:55 - 1:58 min.",
+      risk: "El límite es 120 segundos de audio: se mide con ffprobe antes de subir. Pasarse deja el video fuera de las bases, así que no se apuesta al margen."
+    },
+    {
+      key: "video_unlisted_or_public",
+      title: "3. Privacidad de YouTube: 'No listado' (Oculto) o 'Público'",
+      desc: "Comprobar el enlace abriéndolo en una ventana de incógnito sin sesión de Google iniciada.",
+      risk: "Subir el video en 'Privado' impide al jurado calificador reproducirlo, otorgando 0 puntos en el pitch."
+    },
+    {
+      key: "naming_pdf_ok",
+      title: isLatam
+        ? "4. Nomenclatura Oficial del PDF Pautado (Formato Latam)"
+        : "4. Nomenclatura Oficial del PDF Pautado (Formato Nacional)",
+      desc: "Nombrar el archivo exportado exactamente con el formato reglamentario generado en esta pantalla.",
+      risk: "Nombres genéricos (ej. 'documento_final.pdf' o 'tarea.pdf') sufren penalización en la etapa de auditoría documental."
+    },
+    {
+      key: "hashtags_included",
+      title: "5. Hashtags Oficiales en YouTube y TikTok",
+      desc: `Incluir en la descripción y título del video los tags ${rallyTags().join(" y ")}, más la etiqueta de la sede.`,
+      risk: "La omisión de los hashtags reglamentarios o de la etiqueta de la sede invalida los puntos de interacción y difusión."
+    },
+    {
+      key: "pautado_chars_ok",
+      title: "6. Respeto Estricto de Caracteres en el Documento Pautado",
+      desc: `Problema (≤${PAUTADO_LIMITS.problema}), Solución (≤${PAUTADO_LIMITS.solucion}), Prefactibilidad (≤${PAUTADO_LIMITS.prefactibilidad}), Innovación (≤${PAUTADO_LIMITS.innovacion}), Impacto (≤${PAUTADO_LIMITS.impacto}).`,
+      risk: "La plataforma de entrega trunca o rechaza textos que excedan el límite oficial de caracteres con espacios."
+    },
+    {
+      key: "pdf_video_numbers_synced",
+      title: "7. Sincronía Numérica Estricta PDF vs Video (Cero Discrepancia)",
+      desc: isLatam
+        ? "Las cifras de costos unitarios, la inversión del piloto y los beneficiarios citados en el video deben coincidir al dólar con el PDF: más de una cifra distinta resta credibilidad de inmediato."
+        : "Las cifras de costos unitarios, la inversión del piloto y los beneficiarios citados en el video deben coincidir al córdoba con el PDF: más de una cifra distinta resta credibilidad de inmediato.",
+      risk: "La discrepancia numérica entre el video y el PDF es el riesgo más frecuente en prefactibilidad económica: el jurado cruza las cifras."
+    },
+    {
+      key: "youtube_channel_brand",
+      title: "8. Canal Oficial de Marca-Equipo en YouTube (No canal personal)",
+      desc: "Canal bautizado con el nombre del equipo, avatar propio y títulos con el formato [RETO] - EQUIPO - PROYECTO.",
+      risk: "Subir desde cuentas personales desarticuladas proyecta informalidad y reduce la legitimidad visual ante el jurado."
+    },
+    {
+      key: "tiktok_submitted",
+      title: isLatam
+        ? "9. Video TikTok de Interacción Internacional (Obligatorio SIRLI)"
+        : "9. Video TikTok del Prototipo en Territorio (Obligatorio)",
+      desc: isLatam
+        ? "Cápsula lúdico-creativa de vinculación con equipos de otras sedes o países, publicada antes de las 08:00 PM con los hashtags oficiales."
+        : "Cápsula del prototipo en el municipio piloto, publicada antes de las 08:00 PM con los hashtags oficiales del Rally Nacional.",
+      risk: isLatam
+        ? "En el Rally Latam, la interacción en TikTok es un entregable auditable que habilita puntajes decisivos de integración."
+        : "En el Rally Nacional, la difusión territorial del prototipo es un entregable auditable que suma en la rúbrica de impacto."
+    },
+    {
+      key: "loser_patterns_checked",
+      title: "10. Auditoría de los 11 Patrones Perdedores (Anti-patrones descartados)",
+      desc: "Descartar: app móvil genérica para crisis complejas, video >120s, logos en 0:00-0:20, sufijo -INNOVA trillado o falta de cotización mayorista.",
+      risk: "Incurrir en cualquiera de estos 11 patrones condena la propuesta al promedio o al descarte inmediato por el tribunal."
+    }
+  ];
+}
 
 function getOfficialNomenclatures() {
   const isLatam = state.rally_type === "latam";
@@ -8894,31 +8966,19 @@ function getOfficialNomenclatures() {
 
   if (isLatam) {
     return {
-      pdfName: `UNI_Reto${chalId}_${teamClean}_PAUTADO.pdf`,
-      ytTitle: `Rally Latinoamericano de Innovación 2026 - Desafío ${chalId}: ${shortTitle} - Equipo ${teamClean}`,
-      hashtags: [
-        "#RallyLatinoamericano2026",
-        "#RallyLatam",
-        "#InnovacionLatam",
-        "#SedeUNI",
-        "#NicaraguaInnova"
-      ],
+      pdfName: `${(state.university || "SEDE").split(/\s+/)[0].toUpperCase()}_Reto${chalId}_${teamClean}_PAUTADO.pdf`,
+      ytTitle: `${rallyProfile().name} ${RALLY_YEAR} - Desafío ${chalId}: ${shortTitle} - Equipo ${teamClean}`,
+      hashtags: rallyTags(),
       tiktokTip: "Subir video de interacción lúdica antes de las 08:00 PM (Viernes) para garantizar indexación en el feed y acumulación de métricas antes de la deliberación del jurado.",
-      regimenDesc: "Certamen internacional de 28 horas continuas. Exige estricta coincidencia de datos y link público/no listado."
+      regimenDesc: `Certamen internacional de ${RALLY_PROFILES.latam.hours} horas continuas. Exige estricta coincidencia de datos y link público/no listado.`
     };
   } else {
     return {
-      pdfName: `Innova2026_Desafio${chalId}_${teamClean}_PAUTADO.pdf`,
-      ytTitle: `Rally Nacional Nicaragua Innova 2026 - Reto ${chalId}: ${shortTitle} - ${teamClean}`,
-      hashtags: [
-        "#NicaraguaInnova2026",
-        "#RallyNacionalInnova",
-        "#UNI_Nicaragua",
-        "#JuventudInnovadora",
-        "#InnovacionUNI"
-      ],
+      pdfName: `${RALLY_YEAR}_Desafio${chalId}_${teamClean}_PAUTADO.pdf`,
+      ytTitle: `${rallyProfile().name} ${RALLY_YEAR} - Reto ${chalId}: ${shortTitle} - ${teamClean}`,
+      hashtags: rallyTags(),
       tiktokTip: "Subir cápsula audiovisual de prototipo antes de las 08:00 PM para verificación temprana de los enlaces en la plataforma territorial.",
-      regimenDesc: "Certamen nacional territorial de 24 horas continuas con sede oficial UNI."
+      regimenDesc: `Certamen nacional territorial de ${RALLY_PROFILES.nacional.hours} horas continuas con sede oficial.`
     };
   }
 }
@@ -8927,7 +8987,7 @@ function getOfficialNomenclatures() {
 const DEFAULT_SCHEDULES = {
   nacional: [
     { time: "08:00 AM (Vie)", action: "Apertura oficial de retos en plataforma central y descarga de matrices.", risk: "Elegir reto sin evaluar precedentes satura la ideación.", level: "info" },
-    { time: "12:00 PM (Vie)", action: "Límite fatal de inscripción de equipo y validación con sede UNI.", risk: "Descalificación automática si no hay registro al mediodía.", level: "critical" },
+    { time: "12:00 PM (Vie)", action: "Límite fatal de inscripción de equipo y validación en la sede.", risk: "Descalificación automática si no hay registro al mediodía.", level: "critical" },
     { time: "08:00 PM (Vie)", action: "Ventana óptima para video TikTok de interacción lúdica.", risk: "Subir tarde resta visibilidad antes de la deliberación.", level: "warning" },
     { time: "T-6 Horas", action: "Congelamiento de claims y arquitectura técnica de la propuesta.", risk: "Cambiar arquitectura a última hora arruina guiones y renders.", level: "warning" },
     { time: "T-4 Horas", action: "Pautado oficial auditado (5 bloques) y presupuesto verificado con cotizaciones.", risk: "Exceder caracteres con espacios trunca el guardado.", level: "warning" },
@@ -8988,7 +9048,7 @@ function toggleGuardrail(key, event) {
   }
 
   const verified = Object.values(state.guardrails || {}).filter(Boolean).length;
-  const total = GUARDRAILS_DEFINITIONS.length;
+  const total = guardrailDefs().length;
   const subnavCounter = document.getElementById("timeline-subnav-verified");
   if (subnavCounter) subnavCounter.textContent = `${verified}/${total}`;
 
@@ -9009,7 +9069,7 @@ function toggleGuardrailAccordion(key) {
 
 function toggleAllGuardrails(expand) {
   state.expanded_guardrails = {};
-  GUARDRAILS_DEFINITIONS.forEach(g => {
+  guardrailDefs().forEach(g => {
     state.expanded_guardrails[g.key] = !!expand;
     const card = document.getElementById(`guardrail-card-${g.key}`);
     if (card) card.classList.toggle("expanded", !!expand);
@@ -9300,7 +9360,7 @@ function renderViewTimeline() {
     subtabContent = `
       <div class="ts-section">
         <div class="guardrail-accordion">
-          ${GUARDRAILS_DEFINITIONS.map(g => {
+          ${guardrailDefs().map(g => {
             const isChecked = !!guardrails[g.key];
             const isExpanded = !!expandedGuardrails[g.key];
             return `
@@ -9412,7 +9472,7 @@ function renderViewTimeline() {
 
           <div class="naming-field-group">
             <div class="naming-field-label">
-              <span>Título Reglamentario para YouTube (Pitch 120s)</span>
+              <span class="naming-yt-label">${SVG.youtube} Título para YouTube (Pitch 120s)</span>
               <span style="font-size:11px; color:var(--text-muted); text-transform:none; font-weight:600;">1080p · No Listado</span>
             </div>
             <div class="naming-input-row">
@@ -9465,7 +9525,7 @@ function renderViewTimeline() {
     <div class="timeline-subnav">
       <button class="timeline-subnav-btn ${currentSubtab === 'checklist' ? 'active' : ''}" onclick="switchTimelineSubtab('checklist')">
         <span>Checklist de Requisitos</span>
-        <span id="timeline-subnav-verified" class="timeline-subnav-count">${verifiedCount}/${GUARDRAILS_DEFINITIONS.length}</span>
+        <span id="timeline-subnav-verified" class="timeline-subnav-count">${verifiedCount}/${guardrailDefs().length}</span>
       </button>
       <button class="timeline-subnav-btn ${currentSubtab === 'schedule' ? 'active' : ''}" onclick="switchTimelineSubtab('schedule')">
         <span>Cronograma & IA</span>
@@ -9573,7 +9633,7 @@ function updateInspector() {
 
   const guardrails = state.guardrails || {};
   const guardrailsCount = Object.values(guardrails).filter(Boolean).length;
-  const guardrailsTotal = GUARDRAILS_DEFINITIONS.length;
+  const guardrailsTotal = guardrailDefs().length;
   const guardrailsOk = guardrailsCount === guardrailsTotal;
 
   const points = calculateAuditScore();
