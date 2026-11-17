@@ -676,7 +676,7 @@ const NAV_TABS = [
   { id: "canvas",     label: "09 Modelo Canvas",        level: 4, check: () => state.solution_approved },
   { id: "script",     label: "10 Guion del Video", level: 5, check: () => isPautadoComplete() && isBudgetValid() },
   { id: "webdemo",    label: "11 Prototipo para Video", level: 5, check: () => isPautadoComplete() && isBudgetValid() },
-  { id: "timeline",   label: "12 Checklist de Entrega", level: 1, check: () => !!state.rally_type }
+  { id: "timeline",   label: "12 Cierre", level: 1, check: () => !!state.rally_type }
 ];
 
 function isPautadoComplete() {
@@ -2972,9 +2972,10 @@ function renderCertamenSummary() {
 }
 
 function renderTeamSummary() {
+  // Sin logo cargado no se dibuja un cuadro vacío: el panel ya dice que falta.
   const logo = state.team_logo_img
     ? `<img src="${escapeHtml(state.team_logo_img)}" alt="Logo del equipo" class="setup-logo">`
-    : `<span class="setup-logo is-empty" aria-hidden="true"></span>`;
+    : "";
   return `
     <div class="phase-header">
       <div>
@@ -7063,6 +7064,8 @@ const PAUTADO_HINTS = {
   impacto: "ODS oficial + beneficio anual cuantificado: familias, ahorro o hectáreas. Citas el plan de lucha contra la pobreza."
 };
 
+const PAUTADO_LABELS = { problema: "Problema", solucion: "Solución", impacto: "Impacto", innovacion: "Innovación", prefactibilidad: "Prefactibilidad" };
+
 function renderViewPautado() {
   const authorship = (state.authorship && state.authorship.pautado) || {};
 
@@ -7089,77 +7092,62 @@ function renderViewPautado() {
       ${onlineLinkRow("pautado", "Pega el enlace de Canva, Google Docs o Figma del pautado", "ENLACE AL PAUTADO EN LÍNEA")}
     </div>
 
-    <div class="workbench-card" style="margin-bottom:16px;">
-      <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px; flex-wrap:wrap;">
-        <div style="min-width:0;">
-          <div style="font-size:13px; font-weight:800;  letter-spacing:0.02em; color:var(--text-main);">Plantilla oficial del evento</div>
-          <p style="font-size:12px; color:var(--text-muted); margin:4px 0 0 0; max-width:660px; line-height:1.45;">
-            Sube el Word (.docx) que entrega el evento (${state.rally_type === 'nacional' ? 'Rally Nacional Nicaragua Innova' : 'Rally Latinoamericano'}).
-            Al compilar, los textos de abajo se insertan automáticamente bajo cada encabezado oficial, respetando las reglas de la rúbrica.
-          </p>
-          <div id="pautado-template-status" style="font-size:12px; font-weight:700; color:var(--text-muted); margin-top:6px;">Consultando plantilla…</div>
-        </div>
-        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+    <section class="pa-template">
+      <div class="pa-template-head">
+        <span class="pa-k">Plantilla oficial del evento</span>
+        <div class="pa-template-actions">
           <button class="btn-secondary" type="button" onclick="document.getElementById('pautado-template-input').click()">${SVG.upload} Subir plantilla Word (.docx)</button>
           <button class="btn-secondary" type="button" onclick="clearPautadoTemplate()">Quitar</button>
         </div>
       </div>
+      <p class="pa-template-text">
+        Sube el Word (.docx) que entrega el evento (${state.rally_type === 'nacional' ? 'Rally Nacional Nicaragua Innova' : 'Rally Latinoamericano'}).
+        Al compilar, los textos de abajo se insertan automáticamente bajo cada encabezado oficial, respetando las reglas de la rúbrica.
+      </p>
+      <div id="pautado-template-status" class="pa-template-status">Consultando plantilla…</div>
       <input type="file" id="pautado-template-input" aria-label="Subir plantilla Word del evento" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" style="display:none;" onchange="handlePautadoTemplateUpload(event)">
-    </div>
+    </section>
 
-    <div class="rubric-callout">
+    <p class="pa-note">
       <strong>${getPautadoLimit("problema") === null ? "DOCUMENTO OFICIAL DEL EVENTO:" : "CONTEO ESTRICTO DE CARACTERES:"}</strong>
       ${getPautadoLimit("problema") === null
         ? "El Rally Nacional evalúa un documento técnico de hasta 10 páginas; el sistema inserta cada sección bajo su encabezado oficial sin recortar texto."
         : "Evaluado con la matriz oficial (100 pts). Si sobrepasas el límite estipulado, el sistema corta el texto al límite o anula la sección en la rúbrica de evaluación."}
-    </div>
+    </p>
 
-    <div style="display:flex; flex-direction:column; gap:16px;">
+    <div class="pa-list">
       ${Object.keys(PAUTADO_LIMITS).map(k => {
         const val = state.pautado[k] || "";
         const len = val.length;
         const max = getPautadoLimit(k);
         const pct = max ? Math.min(100, Math.round((len / max) * 100)) : null;
         const isOver = max ? len > max : false;
-        const color = isOver ? '#b42318' : (pct !== null && pct >= 92) ? '#0D1B35' : 'var(--text-muted)';
+        const isNear = !isOver && pct !== null && pct >= 92;
         const counter = max ? `${len} / ${max} caracteres (${pct}%)` : `${len} caracteres`;
         const authorMascot = authorship[k] || null;
-        const secMeta = {
-          problema:        { icon: SVG.target,      color: "#0D1B35" },
-          solucion:        { icon: SVG.spark,       color: "#0866F5" },
-          impacto:         { icon: SVG.globe,       color: "#0284C7" },
-          innovacion:      { icon: SVG.network,     color: "#475569" },
-          prefactibilidad: { icon: SVG.shieldCheck, color: "#0D1B35" }
-        }[k] || { icon: "", color: "var(--text-muted)" };
+        const icon = {
+          problema: SVG.target,
+          solucion: SVG.spark,
+          impacto: SVG.globe,
+          innovacion: SVG.network,
+          prefactibilidad: SVG.shieldCheck
+        }[k] || "";
 
         return `
-          <div class="workbench-card" style="margin-bottom:0;" data-lockable="pautado-${k}">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-              <div style="display:flex; align-items:center; gap:8px;">
-                <span class="pautado-sec-label" style="--sec:${secMeta.color};">
-                  <span class="pautado-sec-bar"></span>
-                  ${secMeta.icon}
-                  <span>${k}</span>
-                </span>
-                ${authorMascot ? `
-                  <span class="collaborator-stamp" title="Última edición por ${authorMascot.name}">
-                    ${authorMascot.icon} ${authorMascot.name}
-                  </span>
-                ` : ""}
-                <span id="lock-tag-pautado-${k}"></span>
-              </div>
-              <span class="pautado-counter" style="font-family:var(--font-mono); font-size:11px; font-weight:700; color:${color}; font-variant-numeric:tabular-nums;">
-                ${counter}
-              </span>
-            </div>
-            <p style="font-size:11px; color:var(--text-muted); line-height:1.45; margin:0 0 6px 0;">${PAUTADO_HINTS[k] || ""}</p>
-            <textarea id="pt-${k}" rows="5"
-              style="width:100%; max-width:860px; border:1px solid ${isOver ? '#b42318' : 'var(--border-light)'}; border-radius:4px; padding:10px; font-size:13px; line-height:1.55; font-family:var(--font-ui); box-sizing:border-box;"
-              placeholder="Escribe la sección ${k}..."
+          <article class="pa-section" data-lockable="pautado-${k}">
+            <header class="pa-head">
+              <span class="pa-label">${icon}<span>${PAUTADO_LABELS[k] || k}</span></span>
+              ${authorMascot ? `<span class="collaborator-stamp" title="Última edición por ${authorMascot.name}">${authorMascot.icon} ${authorMascot.name}</span>` : ""}
+              <span id="lock-tag-pautado-${k}"></span>
+              <span class="pautado-counter ${isOver ? "is-over" : isNear ? "is-near" : ""}" style="font-variant-numeric:tabular-nums;">${counter}</span>
+            </header>
+            <p class="pa-hint">${PAUTADO_HINTS[k] || ""}</p>
+            <textarea id="pt-${k}" rows="5" class="pa-input ${isOver ? "is-over" : ""}"
+              placeholder="Escribe la sección ${(PAUTADO_LABELS[k] || k).toLowerCase()}…"
               onfocus="broadcastLock('pautado-${k}')"
               onblur="broadcastRelease('pautado-${k}')"
               oninput="updateCharCount('${k}', this)">${val}</textarea>
-          </div>
+          </article>
         `;
       }).join("")}
     </div>
@@ -7174,13 +7162,14 @@ function updateCharCount(k, el) {
   const len = el.value.length;
   const pct = max ? Math.min(100, Math.round((len / max) * 100)) : null;
   const isOver = max ? len > max : false;
-  const color = isOver ? '#b42318' : (pct !== null && pct >= 92) ? '#0D1B35' : 'var(--text-muted)';
-  const labelEl = el.closest(".workbench-card") ? el.closest(".workbench-card").querySelector(".pautado-counter") : null;
+  const isNear = !isOver && pct !== null && pct >= 92;
+  const labelEl = el.closest(".pa-section") ? el.closest(".pa-section").querySelector(".pautado-counter") : null;
   if (labelEl) {
     labelEl.innerText = max ? `${len} / ${max} caracteres (${pct}%)` : `${len} caracteres`;
-    labelEl.style.color = color;
+    labelEl.classList.toggle("is-over", isOver);
+    labelEl.classList.toggle("is-near", isNear);
   }
-  el.style.borderColor = isOver ? '#b42318' : 'var(--border-light)';
+  el.classList.toggle("is-over", isOver);
 }
 
 // ── Plantilla .docx del evento: se guarda en el servidor y se cachea en memoria ──
@@ -7398,24 +7387,16 @@ function renderViewBudget() {
     </div>
 
     ${!ctx.listo ? `
-      <div class="rubric-callout" style="border-left-color:#f59e0b; background:#fffdf5;">
-        <strong>Falta la tasa del BCN:</strong> el Rally Nacional exige el presupuesto en córdobas.
-        Escribe la tasa oficial vigente arriba para convertir las partidas. Mientras tanto se muestran en USD.
-      </div>
+      <p class="bu-note is-warn"><strong>Falta la tasa del BCN.</strong> El certamen exige el presupuesto en córdobas: escríbela arriba y las partidas se convierten.</p>
     ` : ""}
 
     ${hasNotice ? `
-      <div class="rubric-callout" style="border-left-color:${isTooHigh ? '#f59e0b' : '#3b82f6'}; background:#fffdf5;">
-        <strong>Aviso de Consistencia Presupuestaria:</strong>
-        ${isTooHigh 
-          ? 'El monto total actual es elevado para una puesta en marcha piloto. Si tu solución requiere equipamiento industrial mayor, asegúrate de justificarlo claramente en la sección de Prefactibilidad del pautado.'
-          : 'El monto total actual es bajo para un desarrollo técnico completo. Asegúrate de incluir partidas esenciales como flete internacional o contingencia para evitar observaciones del jurado.'
-        }
-      </div>
+      <p class="bu-note ${isTooHigh ? "is-warn" : "is-info"}">${isTooHigh
+        ? "<strong>Monto alto para un piloto.</strong> Si el equipo necesita equipamiento industrial, justifícalo en Prefactibilidad."
+        : "<strong>Monto bajo para un desarrollo completo.</strong> Incluye flete internacional o contingencia."}</p>
     ` : `
-      <div class="rubric-callout" style="border-left-color:var(--status-ok-text); background:var(--status-ok-bg);">
-        <strong>Presupuesto equilibrado:</strong> el total cae dentro de la banda del certamen y cada partida tiene respaldo. Falta revisar que costos e impacto del video digan lo mismo.${ctx.nacional && ctx.rate ? ` Equivale a $${total.toFixed(2)} USD a la tasa declarada.` : ""}
-      </div>
+      <p class="bu-note is-ok"><strong>Presupuesto equilibrado.</strong> El total cae en la banda del certamen y cada partida tiene respaldo.
+        ${ctx.nacional && ctx.rate ? ` Equivale a $${total.toFixed(2)} USD a la tasa declarada.` : ""}</p>
     `}
 
     <div class="table-plate" style="padding:0;">
@@ -7468,9 +7449,12 @@ function renderViewBudget() {
           </tbody>
           <tfoot>
             <tr style="background:var(--bg-subtle); font-weight:800;">
-              <td colspan="3" style="text-align:right; font-size:12px;">TOTAL PRESUPUESTO PUESTA EN MARCHA:</td>
-              <td style="text-align:right; font-family:var(--font-mono); font-size:14px; color:var(--color-primary);">${budgetFmt(total, ctx, true)}</td>
-              <td></td>
+              <td colspan="5">
+                <div class="bu-total">
+                  <span class="bu-total-k">Total puesta en marcha</span>
+                  <span class="bu-total-v">${budgetFmt(total, ctx, true)}</span>
+                </div>
+              </td>
             </tr>
           </tfoot>
         </table>
@@ -7719,8 +7703,8 @@ function renderViewResources() {  return `
           ${SVG.sync} Escanear
         </button>
       </div>
-      <div id="sources-scan-container" style="max-height:180px; overflow-y:auto; border:1px solid var(--border-light); border-radius:6px; padding:8px;">
-        <span style="font-size:11px; color:var(--text-muted);">Cargando catálogo de archivos fuente...</span>
+      <div id="sources-scan-container" class="src-scan">
+        <span class="src-scan-idle">Sin escanear todavía. Pulsa Escanear para listar lo que hay en la carpeta.</span>
       </div>
     </div>
 
@@ -8096,10 +8080,6 @@ function handleCanvasCellInput(key, el) {
   const val = raw.replace(/\n{3,}/g, "\n\n").trim();
   if (val) state.model_canvas[key] = val; else delete state.model_canvas[key];
   saveState();
-  const filled = ["socios","actividades","propuesta","relaciones","segmentos","recursos","canales","costes","ingresos"]
-    .filter(k => String((state.model_canvas || {})[k] || "").trim() !== "").length;
-  const counter = document.getElementById("canvas-filled-count");
-  if (counter) counter.textContent = `${filled} de 9 con contenido`;
 }
 
 function resetCanvasToBase() {
@@ -8130,9 +8110,6 @@ function renderViewCanvas() {
     { n: 9, key: "ingresos", title: "Fuentes de Ingresos", fallback: "Fondos de cooperación, presupuesto municipal de inversión y tarifas de servicio." }
   ];
   const isDefaultCell = (cell) => String(canvas[cell.key] || "").trim() === "";
-  const filledCount = cells.filter(c => !isDefaultCell(c)).length;
-
-  const presetName = preset.name;
   return `
     <div class="phase-header">
       <div>
@@ -8153,16 +8130,11 @@ function renderViewCanvas() {
       </div>
     </div>
 
-    <div class="canvas-status">
-      <span id="canvas-filled-count">${filledCount} de 9 con contenido</span>
-      <span class="canvas-status-hint">Plantilla: ${escapeHtml(presetName)}</span>
-    </div>
-
     <div class="canvas-board">
       ${cells.map(cell => `
         <div class="canvas-slot canvas-slot-${cell.key}">
           <label class="canvas-slot-label" for="cv-${cell.key}">
-            <span class="canvas-slot-n">${cell.n}</span>${cell.title}
+            ${cell.title}
           </label>
           <textarea id="cv-${cell.key}" class="canvas-input${isDefaultCell(cell) ? " is-empty" : ""}" rows="3" spellcheck="false"
             placeholder="${escapeHtml(hintOf(cell.key, cell.fallback))}"
@@ -9017,12 +8989,6 @@ function toggleGuardrail(key, event) {
 
   const verified = Object.values(state.guardrails || {}).filter(Boolean).length;
   const total = GUARDRAILS_DEFINITIONS.length;
-  const counter = document.getElementById("guardrail-verified-count");
-  if (counter) {
-    counter.textContent = `${verified} / ${total} Verificados`;
-    counter.style.background = verified === total ? "var(--status-ok-bg)" : "#eff6ff";
-    counter.style.color = verified === total ? "#166534" : "#003366";
-  }
   const subnavCounter = document.getElementById("timeline-subnav-verified");
   if (subnavCounter) subnavCounter.textContent = `${verified}/${total}`;
 
@@ -9333,17 +9299,6 @@ function renderViewTimeline() {
   if (currentSubtab === "checklist") {
     subtabContent = `
       <div class="ts-section">
-        <div class="ts-section-head">
-          <div>
-            <div style="display:flex; align-items:baseline; gap:10px;">
-              <h2 class="ts-section-title">Checklist de entrega</h2>
-              <span id="guardrail-verified-count" class="timeline-subnav-count" style="background:${verifiedCount === GUARDRAILS_DEFINITIONS.length ? 'var(--status-ok-bg); color:#166534;' : '#eff6ff; color:var(--color-navy);'}">
-                ${verifiedCount} / ${GUARDRAILS_DEFINITIONS.length} Verificados
-              </span>
-            </div>
-          </div>
-        </div>
-
         <div class="guardrail-accordion">
           ${GUARDRAILS_DEFINITIONS.map(g => {
             const isChecked = !!guardrails[g.key];
@@ -9377,14 +9332,7 @@ function renderViewTimeline() {
     subtabContent = `
       <div class="ts-section">
         <div class="schedule-toolbar">
-          <div>
-            <div style="display:flex; align-items:center; gap:8px;">
-              <h2 class="ts-section-title">Hitos y tiempos críticos</h2>
-              <span class="timeline-subnav-count">
-                ${milestones.length} hitos ${isCustomSchedule ? '(Personalizado IA)' : '(Oficial)'}
-              </span>
-            </div>
-          </div>
+          <span class="timeline-subnav-count">${isCustomSchedule ? 'Cronograma personalizado' : 'Cronograma oficial'}</span>
           <div style="display:flex; gap:8px; align-items:center;">
             <button class="btn-ai-action" onclick="toggleScheduleAIPanel()">
               ${SVG.spark} ${state.schedule_ai_open ? 'Cerrar Pegador IA' : 'Pegar Cronograma / IA'}
@@ -9448,12 +9396,6 @@ function renderViewTimeline() {
     subtabContent = `
       <div class="timeline-grid" style="margin-top:0;">
         <div class="ts-section">
-          <div class="ts-section-head">
-            <div>
-              <h2 class="ts-section-title">Nomenclaturas oficiales</h2>
-            </div>
-            <span class="timeline-subnav-count">Reglamento UNI</span>
-          </div>
 
           <div class="naming-field-group">
             <div class="naming-field-label">
@@ -9505,8 +9447,8 @@ function renderViewTimeline() {
   return `
     <div class="phase-header">
       <div>
-        <h1 class="phase-title">Cronograma de Entrega <span class="phase-title-accent">& Requisitos Críticos</span></h1>
-        <p class="phase-subtitle">Qué falta, qué revisa el jurado y cuándo cierra cada cosa.</p>
+        <h1 class="phase-title">Qué falta para <span class="phase-title-accent">entregar</span></h1>
+        <p class="phase-subtitle">Guarda-raíles del jurado, tiempos y nombres oficiales.</p>
       </div>
     </div>
 

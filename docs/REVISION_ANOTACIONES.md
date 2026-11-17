@@ -157,6 +157,73 @@ Verificado en navegador real (Playwright) a 1600 px y a 390 px. Cambios **sin co
 - **Reloj en vivo.** El resumen muestra el tiempo que corre y la siguiente fecha límite, y se actualiza cada segundo sin recargar.
 - **Superficies del navegador.** La selección de texto, el cursor de escritura y la barra de desplazamiento se pintan con la paleta del proyecto en lugar de los valores por defecto del navegador.
 
+## 20. Pautado oficial sin tarjetas ni barra de acento
+
+**Anotación:** «quita las tarjetas, los acentos a la izquierda y el gris para todo».
+
+- Cada sección del pautado dejó de ser una tarjeta con borde, radio y barra de color a la izquierda. Ahora es una fila separada por una línea fina: etiqueta con su icono, contador de caracteres a la derecha, la pista en una línea y el área de escritura debajo.
+- La barra de acento (`span.pautado-sec-bar`) se eliminó del marcado y del CSS.
+- El contador de caracteres cambia de color cuando la sección se acerca al límite o lo pasa, sin escribir hex en línea: usa `--text-title` y `--status-err-text`.
+- La plantilla oficial quedó como una sola fila con su descarga, sin caja contenedora. La nota normativa va sobre fondo suave, sin borde ni radio.
+
+## 21. Presupuesto: notas sin recuadro y total legible
+
+- Las dos advertencias (falta la tasa del BCN, monto fuera de rango) dejaron de ser recuadros con borde de color en línea. Son párrafos sobre fondo suave, con clase de estado (`is-warn`, `is-info`, `is-ok`) y textos más cortos.
+- La regla `.rubric-callout` se borró de `style.css`: ya no la usa nadie.
+- El pie de la tabla pasó de tres celdas vacías a una sola fila con la etiqueta «Total puesta en marcha» y la cifra en monoespaciado. En teléfono la etiqueta y la cifra se reparten en la misma línea en vez de partirse en cuatro renglones.
+
+## 22. Canvas: fuera números, conteo y plantilla repetida
+
+- Los nueve cuadrantes ya no llevan número: solo su nombre. La numeración sobraba porque el orden del tablero de modelo de negocio es conocido.
+- Se eliminó «N de 9 con contenido» del tablero: repetía el «0 de 9 cuadrantes escritos» del panel lateral.
+- Se eliminó la línea «Plantilla: X» debajo del tablero: el selector de plantilla que está arriba ya lo dice.
+
+## 23. Prototipo: el visor no es una tarjeta
+
+- El marco del visor perdió el radio y el borde; el fondo es el mismo tono suave de las otras superficies planas.
+- El estado vacío («Todavía no hay prototipo») sigue tapando el marco cuando no hay sitio publicado, con el título un punto más grande.
+
+## 24. Recursos: la ingesta ya no parece colgada
+
+- El cajón de archivos fuente decía «Cargando catálogo de archivos fuente…» para siempre, porque nadie lo llenaba hasta pulsar Escanear. Ahora dice «Sin escanear todavía. Pulsa Escanear para listar lo que hay en la carpeta».
+- El cajón perdió el borde y el radio: el título y el botón de arriba ya delimitan la zona.
+
+## 25. Guion, impacto, multi-IA, equipo y certamen
+
+- **Guion:** cuatro actos de corrido, sin cajas alrededor de cada acto; los actos se numeran en romano en la cabecera y el texto va directo sobre la página.
+- **Impacto y multi-IA:** revisadas a 1600 px y 433 px, sin ningún elemento con radio y sombra a la vez (lo que en este proyecto significa «tarjeta»).
+- **Equipo y certamen:** las fichas de datos ya resueltas pasaron de rejilla con fondo gris y borde exterior a filas separadas por líneas finas, sin radio. En una columna el separador lateral se convierte en línea superior.
+- **Logo vacío:** si el equipo no ha cargado logo, no se dibuja un cuadro punteado; el panel lateral ya dice que falta.
+
+## 26. Repeticiones de título y contador en la pestaña de cierre
+
+El usuario detectó el mismo dato dos veces seguidas: la sub-pestaña decía
+«Checklist de Requisitos 1/10» y, justo debajo, el bloque se titulaba
+«Checklist de entrega» con otro «1 / 10 Verificados». Pasaba en las tres
+sub-pestañas.
+
+- El nombre de la sección vive solo en la sub-pestaña; dentro no se repite.
+- Checklist: fuera el bloque de título y el contador guardrail-verified-count
+  (y su actualización en toggleGuardrail). Queda un único contador, el de la
+  sub-pestaña, que ya se refrescaba al marcar un guardarraíl.
+- Cronograma: fuera «Hitos y tiempos críticos» y el «N eventos». En su lugar,
+  a la izquierda de la barra de acciones, una sola marca de estado:
+  «Cronograma oficial» o «Cronograma personalizado».
+- Nomenclaturas: fuera «Nomenclaturas oficiales» y la etiqueta «Reglamento UNI».
+- El h1 de la pestaña decía «Cronograma de Entrega & Requisitos Críticos»,
+  repitiendo dos de las tres sub-pestañas. Ahora: «Qué falta para entregar»,
+  con subtítulo «Guarda-raíles del jurado, tiempos y nombres oficiales».
+- La entrada del menú lateral pasó de «12 Checklist de Entrega» a «12 Cierre»
+  para no repetir el h1 ni el título del panel derecho.
+- Se quitó el color en línea del contador borrado (#eff6ff, #166534, #003366).
+
+Verificado a 1600 y 433: h1n 1, over 0, mainOver 0, y el contador de la
+sub-pestaña pasa de 1/10 a 2/10 al marcar un guardarraíl (y vuelve).
+
+## Barrido final
+
+Las 14 vistas se recorrieron a 1600 px y a 433 px midiendo tres cosas por vista: un solo `<h1>`, sin desborde horizontal de la página y sin desborde horizontal del contenedor con scroll. Resultado en ambos anchos: **0 vistas con problemas, 0 errores de JavaScript**.
+
 ## No tocado (y por qué)
 
 - **~405 colores hex inline en app.js (84 distintos).** Cambiarlos por variables toca 405 puntos y varios están dentro de cálculos de color y SVG; el riesgo de romper supera la ganancia visual. Los 17 verdes/rojos/azules de los ODS son oficiales y no se tocan.
@@ -166,4 +233,4 @@ Verificado en navegador real (Playwright) a 1600 px y a 390 px. Cambios **sin co
 
 ## Archivos con cambios
 
-`dashboard/app.js`, `dashboard/style.css`, `dashboard/content_bridge.js`, `dashboard/index.html`, `dashboard/section_sync.js`, `dashboard/super_agents.js`, `dashboard/assets/ods/` (nuevo), `research/soluciones_actuales.json` (leído por la mesa), `docs/Dossier_Soluciones_Actuales.pdf` (generado).
+`dashboard/app.js`, `dashboard/style.css`, `dashboard/content_bridge.js`, `dashboard/index.html`, `dashboard/section_sync.js`, `docs/REVISION_ANOTACIONES.md`, `dashboard/super_agents.js`, `dashboard/assets/ods/` (nuevo), `research/soluciones_actuales.json` (leído por la mesa), `docs/Dossier_Soluciones_Actuales.pdf` (generado).

@@ -42,6 +42,9 @@ dashboard/data/members.db
 dashboard/data/members.db-shm
 dashboard/data/members.db-wal
 dashboard/data/nube.db
+dashboard/data/*.db-journal
+dashboard/data/*.db-shm
+dashboard/data/*.db-wal
 dashboard/data/content_decisiones/
 dashboard/data/applied/
 dashboard/data/discarded/

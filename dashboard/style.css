@@ -507,33 +507,6 @@ body.sidebar-collapsed.panel-collapsed #panel {
 .tactical-status-pill.compact { padding: 0; gap: 0; background: none; border: none; }
 .nav-link .tactical-status-pill.compact .status-dot { width: 6px; height: 6px; animation: none; }
 
-/* Secciones del pautado: identidad por color de paleta + icono, barra 1px tenue */
-.pautado-sec-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-}
-.pautado-sec-bar {
-  width: 3px;
-  height: 14px;
-  border-radius: 2px;
-  background: var(--sec, #64748B);
-  flex: 0 0 auto;
-}
-.pautado-sec-label svg {
-  width: 13px;
-  height: 13px;
-  color: var(--sec, #64748B);
-}
-.pautado-sec-label > span:last-child {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--sec, var(--text-main));
-}
-
 /* ── FILOSOFÍA SIN CARDS: ARQUITECTURA TABULAR Y DE FILAS ABIERTAS ──── */
 .cardless-container {
   display: flex;
@@ -800,16 +773,7 @@ body.sidebar-collapsed.panel-collapsed #panel {
 }
 
 /* Banner de Regla de Oro / Rúbrica */
-.rubric-callout {
-  background: var(--bg-subtle);
-  border: 1px solid var(--border-light);
-  padding: 12px 16px;
-  border-radius: var(--radius-sm);
-  font-size: 12px;
-  line-height: 1.5;
-  color: var(--text-body);
-  margin-bottom: 18px;
-}
+
 
 /* Formularios y Controles */
 .form-grid {
@@ -3608,7 +3572,7 @@ body.panel-drawer-open .drawer-backdrop {
     content: "Unidades";
   }
   .table-plate .table-responsive tbody td:nth-child(3)::before {
-    content: "Costo unit. (USD)";
+    content: "Costo unit.";
   }
   .table-plate .table-responsive tbody td:nth-child(4)::before {
     content: "Subtotal";
@@ -3639,6 +3603,8 @@ body.panel-drawer-open .drawer-backdrop {
     position: absolute;
     top: 10px;
     right: 8px;
+    width: auto;
+    padding: 0;
   }
   .table-plate .table-responsive tbody td:nth-child(5) button {
     width: 40px;
@@ -5634,9 +5600,6 @@ h3 {
 .canvas-tools { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 .canvas-preset { font-family: var(--font-ui); font-size: 12px; padding: 6px 10px; min-width: 190px;
   border: 1px solid var(--border-light); border-radius: 6px; background: var(--bg-surface); color: var(--text-body); }
-.canvas-status { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin: 0 0 10px; }
-.canvas-status > span:first-child { font-size: 12px; font-weight: 700; color: var(--text-title); }
-.canvas-status-hint { font-size: 11.5px; color: var(--text-muted); }
 
 .canvas-board { display: grid; gap: 1px; background: var(--border-light); border: 1px solid var(--border-light);
   border-radius: 10px; overflow: hidden; grid-template-columns: repeat(5, minmax(0, 1fr)); }
@@ -5654,7 +5617,6 @@ h3 {
 
 .canvas-slot-label { display: flex; align-items: baseline; gap: 6px; font-family: var(--font-ui);
   font-size: 11px; font-weight: 700; letter-spacing: 0.02em; color: var(--text-muted); cursor: pointer; }
-.canvas-slot-n { font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: var(--text-faint); }
 .canvas-slot-propuesta .canvas-slot-label { color: var(--color-primary); }
 .canvas-input { width: 100%; flex: 0 0 auto; min-height: 46px; border: none; background: transparent; resize: none; overflow: hidden;
   font-family: var(--font-ui); font-size: 12.5px; line-height: 1.5; color: var(--text-body); padding: 0; }
@@ -6116,16 +6078,18 @@ h3 {
 .nav-link.is-cfg .nav-dot { opacity: .35; }
 
 /* ── Fichas de los pasos ya resueltos (certamen, equipo) ───────────────────── */
-.setup-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px;
-  margin: 0; background: var(--border-light); border: 1px solid var(--border-light); border-radius: 10px; overflow: hidden; }
-.setup-facts > div { background: var(--bg-surface); padding: 14px 16px; }
+.setup-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0;
+  margin: 0; background: none; border: 0; border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light); }
+.setup-facts > div { background: none; padding: 14px 18px 14px 0; }
+.setup-facts > div + div { border-left: 1px solid var(--border-light); padding-left: 18px; }
 .setup-facts dt { font-size: 10.5px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase;
   color: var(--text-faint); margin-bottom: 5px; }
 .setup-facts dd { margin: 0; font-size: 14px; font-weight: 600; color: var(--text-title); line-height: 1.35; }
 
 .setup-team { display: flex; align-items: flex-start; gap: 18px; flex-wrap: wrap; }
 .setup-team .setup-facts { flex: 1 1 420px; min-width: 0; }
-.setup-logo { width: 72px; height: 72px; flex: 0 0 auto; object-fit: contain; border-radius: 10px;
+.setup-logo { width: 72px; height: 72px; flex: 0 0 auto; object-fit: contain; border-radius: 6px;
   border: 1px solid var(--border-light); background: var(--bg-surface); padding: 6px; }
 .setup-logo.is-empty { background: var(--bg-subtle); border-style: dashed; }
 @media (max-width: 640px) {
@@ -6793,3 +6757,124 @@ body.rs-sheet-open { overflow: hidden; }
   border-radius: 8px;
 }
 #main::-webkit-scrollbar-thumb:hover { background: var(--text-faint); }
+
+/* ── Pautado oficial: secciones planas, una tras otra ─────────────────────── */
+.pa-template { padding: 0 0 18px; border-bottom: 1px solid var(--border-light); margin-bottom: 18px; }
+.pa-template-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.pa-k { font-family: var(--font-ui); font-size: 13px; font-weight: 700; color: var(--text-title); }
+.pa-template-text { margin: 6px 0 0; font-size: 12px; line-height: 1.5; color: var(--text-muted); max-width: 660px; }
+.pa-template-status { margin-top: 8px; font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--text-muted); }
+.pa-template-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.pa-note {
+  margin: 0 0 18px;
+  padding: 12px 14px;
+  background: var(--bg-subtle);
+  border-radius: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-body);
+}
+.pa-note strong { color: var(--text-title); }
+
+.pa-list { display: flex; flex-direction: column; }
+.pa-section { padding: 18px 0 20px; border-bottom: 1px solid var(--border-light); }
+.pa-section:last-child { border-bottom: 0; padding-bottom: 4px; }
+
+.pa-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.pa-label {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--font-ui); font-size: 14px; font-weight: 700;
+  color: var(--text-title); letter-spacing: -0.01em;
+}
+.pa-label svg { color: var(--color-primary); flex: 0 0 auto; }
+.pa-head .pautado-counter {
+  margin-left: auto; font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+  color: var(--text-muted); white-space: nowrap;
+}
+.pa-head .pautado-counter.is-near { color: var(--text-title); }
+.pa-head .pautado-counter.is-over { color: var(--status-err-text); }
+
+.pa-hint { margin: 4px 0 8px; font-size: 11.5px; line-height: 1.45; color: var(--text-muted); }
+
+.pa-input {
+  display: block;
+  width: 100%;
+  max-width: 860px;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  background: var(--bg-surface);
+  color: var(--text-body);
+  font-family: var(--font-ui);
+  font-size: 13px;
+  line-height: 1.55;
+  resize: vertical;
+}
+.pa-input:focus { outline: none; border-color: var(--border-strong); }
+.pa-input.is-over { border-color: var(--status-err-text); }
+
+@media (max-width: 640px) {
+  .pa-template-head { flex-direction: column; align-items: flex-start; }
+  .pa-input { font-size: 16px; }
+  .pa-head .pautado-counter { margin-left: 0; width: 100%; }
+}
+
+/* ── Presupuesto: avisos como notas de una línea, no cajas ────────────────── */
+.bu-note {
+  margin: 0 0 10px;
+  padding: 10px 14px;
+  background: var(--bg-subtle);
+  border-radius: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-body);
+}
+.bu-note strong { color: var(--text-title); }
+.bu-note.is-warn { background: var(--status-warn-bg); }
+.bu-note.is-warn strong { color: var(--status-warn-text); }
+.bu-note.is-ok { background: var(--status-ok-bg); }
+.bu-note.is-info { background: var(--bg-secondary); }
+
+/* ── Presupuesto en teléfono: el total se lee de un tirón ─────────────────── */
+@media (max-width: 640px) {
+  .bu-total-k { text-align: left !important; white-space: normal; }
+  .bu-total-v { font-size: 16px !important; }
+}
+
+/* ── Total del presupuesto: una sola celda, etiqueta y cifra en la misma línea ── */
+.bu-total {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.bu-total-k { font-size: 12px; font-weight: 800; color: var(--text-title); }
+.bu-total-v { font-family: var(--font-mono); font-size: 14px; font-weight: 700; color: var(--color-primary); }
+@media (max-width: 640px) {
+  .bu-total { justify-content: space-between; }
+  .bu-total-k { font-size: 12.5px; }
+  .bu-total-v { font-size: 16px; }
+}
+
+/* ── Prototipo: el marco del visor no es una tarjeta ─────────────────────── */
+.wd-stage { border-radius: 0; background: var(--bg-subtle); }
+.wd-empty { background: var(--bg-subtle); }
+.wd-empty-title { font-size: 15px; }
+
+/* ── Ingesta por carpeta: el cajón de resultados, sin marco de tarjeta ────── */
+.src-scan { max-height: 180px; overflow-y: auto; padding: 2px 0; }
+.src-scan-idle { font-size: 11.5px; color: var(--text-muted); }
+
+/* ── Ficha de equipo/certamen: en una columna no hay separador lateral ────── */
+@media (max-width: 640px) {
+  .setup-facts > div + div {
+    border-left: 0;
+    padding-left: 0;
+    border-top: 1px solid var(--border-light);
+    margin-top: 12px;
+    padding-top: 12px;
+  }
+}
