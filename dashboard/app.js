@@ -48,7 +48,7 @@ const SVG = {
   <defs>
     <!-- Paleta oficial Latam: Grises de precisión técnica y Rosa/Magenta vibrante -->
     <linearGradient id="latamGrayLand" x1="120" y1="10" x2="220" y2="190" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#64748B"/>
+      <stop offset="0%" stop-color="var(--text-muted)"/>
       <stop offset="40%" stop-color="#475569"/>
       <stop offset="85%" stop-color="#334155"/>
       <stop offset="100%" stop-color="#1E293B"/>
@@ -71,7 +71,7 @@ const SVG = {
 
   <g filter="url(#latamSoftShadow)">
     <!-- Península de Baja California -->
-    <path d="M84 24 C82 32, 86 42, 92 50 C94 54, 96 52, 94 44 C92 36, 88 28, 86 22 Z" fill="#64748B"/>
+    <path d="M84 24 C82 32, 86 42, 92 50 C94 54, 96 52, 94 44 C92 36, 88 28, 86 22 Z" fill="var(--text-muted)"/>
 
     <!-- México continental y Península de Yucatán -->
     <path d="M88 22 C96 22, 108 26, 116 32 C124 38, 130 36, 134 44 C138 48, 148 44, 154 44 C158 44, 160 48, 156 52 C152 56, 146 54, 142 58 C138 62, 134 68, 130 70 C124 68, 118 64, 112 56 C106 48, 98 42, 90 32 Z" fill="url(#latamGrayLand)"/>
@@ -80,7 +80,7 @@ const SVG = {
     <path d="M130 70 C136 70, 142 74, 148 78 C154 82, 160 84, 166 84 C172 84, 176 80, 182 82 C184 84, 184 88, 180 88 C174 88, 166 88, 160 86 C152 84, 144 80, 138 74 Z" fill="#475569"/>
 
     <!-- Islas del Caribe -->
-    <path d="M148 50 C156 52, 168 56, 176 60 C174 62, 164 58, 152 54 Z" fill="#94A3B8"/>
+    <path d="M148 50 C156 52, 168 56, 176 60 C174 62, 164 58, 152 54 Z" fill="var(--text-muted)"/>
     <ellipse cx="184" cy="64" rx="4" ry="2" fill="#0866F5"/>
     <ellipse cx="194" cy="67" rx="2.5" ry="1.5" fill="#0284C7"/>
 
@@ -111,7 +111,7 @@ const SVG = {
              C228 88, 246 98, 258 114 
              C262 120, 256 134, 246 148 
              C254 136, 258 124, 256 116 
-             C250 104, 236 94, 218 86 Z" fill="#94A3B8" fill-opacity="0.45"/>
+             C250 104, 236 94, 218 86 Z" fill="var(--text-muted)" fill-opacity="0.45"/>
   </g>
 
   <!-- Nodos satelitales Azul/Cyan con animación -->
@@ -198,15 +198,15 @@ const SVG = {
   <path d="M164 56 Q156 88 146 126" stroke="#1E40AF" stroke-width="1.5" stroke-linecap="round" stroke-opacity="0.5"/>
 
   <!-- FRANJA DE VEGETACIÓN VERDE EN LA BASE DEL VOLCÁN -->
-  <path d="M80 120 C100 114, 130 116, 165 114 C200 114, 230 116, 250 120 L250 126 L80 126 Z" fill="#047857"/>
+  <path d="M80 120 C100 114, 130 116, 165 114 C200 114, 230 116, 250 120 L250 126 L80 126 Z" fill="var(--status-ok-text)"/>
 
   <!-- PLAYA ARENOSA DORADA A LO LARGO DE LA ORILLA (Visible en el recorte) -->
   <path d="M130 124 L240 124 L240 128 L130 128 Z" fill="#FDE68A"/>
 
   <!-- CADENA DE COLINAS Y PROMONTORIOS VERDES A LA IZQUIERDA -->
   <path d="M20 134 C40 116, 65 120, 95 126 C125 132, 145 122, 175 130 L175 142 L20 142 Z" fill="#0D9488"/>
-  <path d="M40 136 C65 122, 90 126, 120 132 C140 136, 160 128, 180 136 L180 146 L40 146 Z" fill="#059669"/>
-  <path d="M60 142 C85 130, 110 132, 135 138 C155 142, 175 136, 195 144 L195 152 L60 152 Z" fill="#10B981"/>
+  <path d="M40 136 C65 122, 90 126, 120 132 C140 136, 160 128, 180 136 L180 146 L40 146 Z" fill="var(--status-ok-text)"/>
+  <path d="M60 142 C85 130, 110 132, 135 138 C155 142, 175 136, 195 144 L195 152 L60 152 Z" fill="var(--status-ok-text)"/>
 
   <!-- AGUAS DEL LAGO XOLOTLÁN A LA DERECHA Y FRENTE -->
   <path d="M140 128 C200 126, 260 128, 335 128 L335 158 C260 162, 180 160, 140 158 Z" fill="url(#lakeWaterRef)"/>
@@ -664,8 +664,8 @@ function getWorkflowStage() {
 // ── NAVEGACIÓN MODULAR Y DEPENDENCIAS ─────────────────────────────────────────
 const NAV_TABS = [
   { id: "resumen",    label: "Resumen del Rally",        level: 0, check: () => true, summary: true },
-  { id: "certamen",   label: "00 Certamen",             level: 0, check: () => true },
-  { id: "team",       label: "01 Identidad de Equipo",  level: 1, check: () => !!state.rally_type },
+  { id: "certamen",   label: "00 Certamen",             level: 0, setup: true, check: () => true },
+  { id: "team",       label: "01 Identidad de Equipo",  level: 1, setup: true, check: () => !!state.rally_type },
   { id: "challenges", label: "02 Retos del Comité",     level: 2, check: () => !!state.rally_type && !!state.team_name },
   { id: "solution",   label: "03 Taller de Solución",   level: 3, check: () => !!state.challenge_id },
   { id: "impact",     label: "04 Impacto, ODS & Plan País", level: 3, check: () => !!state.challenge_id },
@@ -674,7 +674,7 @@ const NAV_TABS = [
   { id: "budget",     label: "07 Presupuesto de Marcha",level: 4, check: () => state.solution_approved && isBudgetValid() },
   { id: "resources",  label: "08 Bóveda de Recursos",   level: 4, check: () => state.solution_approved },
   { id: "canvas",     label: "09 Modelo Canvas",        level: 4, check: () => state.solution_approved },
-  { id: "script",     label: "10 Guion 120s (4 Actos)", level: 5, check: () => isPautadoComplete() && isBudgetValid() },
+  { id: "script",     label: "10 Guion del Video", level: 5, check: () => isPautadoComplete() && isBudgetValid() },
   { id: "webdemo",    label: "11 Prototipo para Video", level: 5, check: () => isPautadoComplete() && isBudgetValid() },
   { id: "timeline",   label: "12 Checklist de Entrega", level: 1, check: () => !!state.rally_type }
 ];
@@ -688,10 +688,14 @@ function isPautadoComplete() {
   });
 }
 
+// Banda única del piloto: la usan el sello de validez, el aviso de la vista y
+// la pista del pautado. Un solo número manda en todo el producto.
+const BUDGET_TARGET = { min: 4000, max: 6000 };
+
 function isBudgetValid() {
   if (!state.budget || state.budget.length === 0) return false;
   const total = state.budget.reduce((acc, it) => acc + (it.units * it.unit_cost), 0);
-  return total >= 500 && total <= 15000;
+  return total >= BUDGET_TARGET.min && total <= BUDGET_TARGET.max;
 }
 
 function isScriptComplete() {
@@ -1038,7 +1042,7 @@ function preparePrintDossierHTML() {
       </div>
       <div class="print-stat-card">
         <div class="print-stat-label">Reglas SIRLI</div>
-        <div class="print-stat-val" style="color:#047857;">100% ELEGIBLE</div>
+        <div class="print-stat-val" style="color:var(--status-ok-text);">100% ELEGIBLE</div>
         <div class="print-stat-sub">${state.team_members_count || 6} Miembros · Cuota Femenina: ${state.team_has_female ? 'Sí' : 'No'} · Ing: ${state.team_has_engineering ? 'Sí' : 'No'}</div>
       </div>
       <div class="print-stat-card">
@@ -1068,14 +1072,14 @@ function preparePrintDossierHTML() {
         <span>1. Reto Oficial & Diagnóstico Estratégico</span>
         <span class="print-badge print-badge-navy">RETO #${challengeId} · WIN-RATE ${selectedCh.winRate || 85}%</span>
       </div>
-      <div style="background:#FAFBFD; border:1px solid #DCE7F5; border-radius:4px; padding:8px 11px; font-size:8.3pt; line-height:1.45; margin-bottom:8px;">
+      <div style="background:var(--bg-subtle); border:1px solid var(--border-light); border-radius:4px; padding:8px 11px; font-size:8.3pt; line-height:1.45; margin-bottom:8px;">
         <div style="margin-bottom:5px;"><strong>Expectativa Oficial del Jurado:</strong> ${selectedCh.officialExpectation || 'Resolución técnica de impacto territorial y viabilidad demostrada bajo límites presupuestarios.'}</div>
         <div style="margin-bottom:5px;"><strong>Anclaje Territorial (Nicaragua / Región):</strong> ${selectedCh.nicaraguaAdaptation || 'Despliegue coordinado con autoridades locales, cooperativas y comités comunitarios.'}</div>
         <div style="margin-bottom:5px;"><strong>Razón de Novedad & WOW Factor:</strong> ${selectedCh.noveltyReason || 'Diferenciación técnica radical eliminando cuellos de botella convencionales.'}</div>
         <div><strong>Patrón Ganador de Referencia:</strong> ${selectedCh.winnerPattern || selectedCh.precedent || 'Alineación estricta con ejes de impacto y modelo de marcha autosostenible.'}</div>
       </div>
       ${deliberationIdeas.length > 0 ? `
-        <div style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:4px; padding:6px 10px; font-size:7.8pt; line-height:1.4; color:#334155;">
+        <div style="background:var(--bg-surface); border:1px solid var(--border-light); border-radius:4px; padding:6px 10px; font-size:7.8pt; line-height:1.4; color:var(--text-body);">
           <strong>Deliberaciones Internas del Equipo:</strong>
           ${deliberationIdeas.map(idItem => ` · "${idItem.text}" (${idItem.author || 'Equipo'})`).join('')}
         </div>
@@ -1235,14 +1239,14 @@ function preparePrintDossierHTML() {
                 <td class="num-cell" style="text-align:center;">${units}</td>
                 <td class="num-cell" style="text-align:right;">${budgetFmt(unitCost, bctx)}</td>
                 <td class="num-cell" style="text-align:right; font-weight:700;">${budgetFmt(lineTotal, bctx)}</td>
-                <td style="font-size:7.5pt; color:#64748B;">${b.url ? 'Cotizado' : 'COTS Local'}</td>
+                <td style="font-size:7.5pt; color:var(--text-muted);">${b.url ? 'Cotizado' : 'COTS Local'}</td>
               </tr>
             `;
           }).join('')}
-          <tr style="background:#F8FAFD; font-weight:800;">
+          <tr style="background:var(--bg-subtle); font-weight:800;">
             <td colspan="5" style="text-align:right;">PRESUPUESTO GENERAL CONSOLIDADO:</td>
-            <td class="num-cell" style="text-align:right; color:#0D1B35; font-size:9.5pt;">${budgetFmt(budgetTotal, bctx, true)}</td>
-            <td style="font-size:7.5pt; color:#047857; font-weight:700;">✓ Rango Apto</td>
+            <td class="num-cell" style="text-align:right; color:var(--text-title); font-size:9.5pt;">${budgetFmt(budgetTotal, bctx, true)}</td>
+            <td style="font-size:7.5pt; color:var(--status-ok-text); font-weight:700;">✓ Rango Apto</td>
           </tr>
         </tbody>
       </table>
@@ -1254,23 +1258,23 @@ function preparePrintDossierHTML() {
         <span>6. Guion Audiovisual Oficial de 120 Segundos (4 Actos)</span>
         <span class="print-badge print-badge-cyan">120 SEGUNDOS EXACTOS</span>
       </div>
-      <div style="font-size:8.3pt; line-height:1.45; color:#1E293B;">
-        <div style="margin-bottom:6px; padding:6px 9px; background:#FAFBFD; border-left:3px solid #0866F5; border-radius:0 4px 4px 0;">
+      <div style="font-size:8.3pt; line-height:1.45; color:var(--text-title);">
+        <div style="margin-bottom:6px; padding:6px 9px; background:var(--bg-subtle); border-radius:4px;">
           <strong>[00:00 - 00:20] Acto 1 (Herida Social / Diagnóstico):</strong> ${scr.acto1 || 'Exposición contundente del problema territorial, las vidas en riesgo y la brecha técnica que motiva la innovación formulada por el equipo.'}
         </div>
-        <div style="margin-bottom:6px; padding:6px 9px; background:#FAFBFD; border-left:3px solid #0866F5; border-radius:0 4px 4px 0;">
+        <div style="margin-bottom:6px; padding:6px 9px; background:var(--bg-subtle); border-radius:4px;">
           <strong>[00:20 - 00:55] Acto 2 (Solución Innovadora / WOW):</strong> ${scr.acto2 || 'Presentación de la propuesta tecnológica y metodológica, diferenciación técnica y demostración de su funcionamiento autónomo en terreno.'}
         </div>
-        <div style="margin-bottom:6px; padding:6px 9px; background:#FAFBFD; border-left:3px solid #0866F5; border-radius:0 4px 4px 0;">
+        <div style="margin-bottom:6px; padding:6px 9px; background:var(--bg-subtle); border-radius:4px;">
           <strong>[00:55 - 01:30] Acto 3 (Demostración y Prefactibilidad):</strong> ${scr.acto3 || 'Demostración operativa del modelo, sustentación presupuestaria con componentes COTS disponibles y modelo de viabilidad económica sin subsidios.'}
         </div>
-        <div style="margin-bottom:6px; padding:6px 9px; background:#FAFBFD; border-left:3px solid #0866F5; border-radius:0 4px 4px 0;">
+        <div style="margin-bottom:6px; padding:6px 9px; background:var(--bg-subtle); border-radius:4px;">
           <strong>[01:30 - 02:00] Acto 4 (Impacto Humano, ODS y Cierre):</strong> ${scr.acto4 || 'Transformación social cuantificable, alineación con la Agenda 2030 y llamado inspirador a la acción institucional y comunitaria.'}
         </div>
       </div>
       ${shotList.length > 0 ? `
         <div style="margin-top:8px;">
-          <div style="font-size:7.5pt; font-weight:800; color:#5C7193; text-transform:uppercase; font-family:'JetBrains Mono',monospace; margin-bottom:4px;">Plan de Tomas Audiovisuales (Shotlist Calibrado)</div>
+          <div style="font-size:7.5pt; font-weight:800; color:var(--text-muted);  font-family:'JetBrains Mono',monospace; margin-bottom:4px;">Plan de Tomas Audiovisuales (Shotlist Calibrado)</div>
           <table class="print-table" style="font-size:8pt; margin-top:2px;">
             <thead>
               <tr>
@@ -1284,7 +1288,7 @@ function preparePrintDossierHTML() {
                 <tr>
                   <td><strong>${s.acto || 'Acto'}</strong></td>
                   <td>${s.label || s.desc || 'Toma técnica'}</td>
-                  <td style="color:#64748B;">${s.status ? 'Verificada' : 'Planificada'}</td>
+                  <td style="color:var(--text-muted);">${s.status ? 'Verificada' : 'Planificada'}</td>
                 </tr>
               `).join('')}
             </tbody>
@@ -1304,19 +1308,19 @@ function preparePrintDossierHTML() {
           <div class="print-deliv-type">Video Oficial de YouTube</div>
           <div class="print-deliv-name">Pitch Audiovisual 120s</div>
           <div class="print-deliv-url">${videoUrl}</div>
-          <div style="font-size:7pt; color:#047857; margin-top:4px; font-weight:600;">✓ Modo: No Listado / Calidad 1080p</div>
+          <div style="font-size:7pt; color:var(--status-ok-text); margin-top:4px; font-weight:600;">✓ Modo: No Listado / Calidad 1080p</div>
         </div>
         <div class="print-deliv-card">
           <div class="print-deliv-type">Demo Web / Prototipo</div>
           <div class="print-deliv-name">Dashboard Interactivo</div>
           <div class="print-deliv-url">${siteUrl}</div>
-          <div style="font-size:7pt; color:#047857; margin-top:4px; font-weight:600;">✓ Interfaz /impeccable en vivo</div>
+          <div style="font-size:7pt; color:var(--status-ok-text); margin-top:4px; font-weight:600;">✓ Interfaz /impeccable en vivo</div>
         </div>
         <div class="print-deliv-card">
           <div class="print-deliv-type">Bóveda Cloud & Archivos</div>
           <div class="print-deliv-name">Drive, Canva & Esquemas</div>
           <div class="print-deliv-url">${driveUrl}</div>
-          <div style="font-size:7pt; color:#475569; margin-top:4px;">Canva: ${canvaUrl}</div>
+          <div style="font-size:7pt; color:var(--text-muted); margin-top:4px;">Canva: ${canvaUrl}</div>
         </div>
       </div>
     </div>
@@ -1398,22 +1402,22 @@ function preparePrintDossierHTML() {
       </div>
       <div class="print-swatches-grid">
         <div class="print-swatch-card">
-          <div class="print-swatch-color" style="background:#0D1B35;"></div>
+          <div class="print-swatch-color" style="background:var(--color-navy);"></div>
           <div class="print-swatch-name">Navy Dark</div>
           <div class="print-swatch-hex">#0D1B35</div>
         </div>
         <div class="print-swatch-card">
-          <div class="print-swatch-color" style="background:#0866F5;"></div>
+          <div class="print-swatch-color" style="background:var(--color-primary);"></div>
           <div class="print-swatch-name">Azul Primario</div>
           <div class="print-swatch-hex">#0866F5</div>
         </div>
         <div class="print-swatch-card">
-          <div class="print-swatch-color" style="background:#1D4ED8;"></div>
+          <div class="print-swatch-color" style="background:var(--color-primary);"></div>
           <div class="print-swatch-name">Cobalto</div>
           <div class="print-swatch-hex">#1D4ED8</div>
         </div>
         <div class="print-swatch-card">
-          <div class="print-swatch-color" style="background:#0284C7;"></div>
+          <div class="print-swatch-color" style="background:var(--color-accent);"></div>
           <div class="print-swatch-name">Acento Radio</div>
           <div class="print-swatch-hex">#0284C7</div>
         </div>
@@ -1423,7 +1427,7 @@ function preparePrintDossierHTML() {
           <div class="print-swatch-hex">#2AA7AD</div>
         </div>
         <div class="print-swatch-card">
-          <div class="print-swatch-color" style="background:#F8FAFD; border:1px solid #CBD5E1;"></div>
+          <div class="print-swatch-color" style="background:var(--bg-subtle); border:1px solid var(--border-strong);"></div>
           <div class="print-swatch-name">Lienzo Sutil</div>
           <div class="print-swatch-hex">#F8FAFD</div>
         </div>
@@ -1450,10 +1454,10 @@ function preparePrintDossierHTML() {
         </thead>
         <tbody>
           ${challengesList.slice(0, 9).map(ch => `
-            <tr ${ch.id === challengeId ? 'style="background:#EFF6FF; font-weight:600;"' : ''}>
+            <tr ${ch.id === challengeId ? 'style="background:var(--status-ok-bg); font-weight:600;"' : ''}>
               <td class="num-cell"><strong>#${ch.id}</strong></td>
               <td>${ch.title} ${ch.id === challengeId ? '<span class="print-badge print-badge-blue" style="margin-left:4px;">SELECCIONADO</span>' : ''}</td>
-              <td>${ch.category}<br><span style="font-size:7.5pt; color:#64748b; font-family:'JetBrains Mono',monospace;">${Array.isArray(ch.ods) ? ch.ods.join(', ') : (ch.ods || '')}</span></td>
+              <td>${ch.category}<br><span style="font-size:7.5pt; color:var(--text-muted); font-family:'JetBrains Mono',monospace;">${Array.isArray(ch.ods) ? ch.ods.join(', ') : (ch.ods || '')}</span></td>
               <td>${ch.wowProposal || ch.proposal || 'Solución estructurada por Rally Studio.'}</td>
             </tr>
           `).join('')}
@@ -1690,7 +1694,7 @@ function getTimerString() {
   const h = Math.floor(remainSec / 3600).toString().padStart(2, "0");
   const m = Math.floor((remainSec % 3600) / 60).toString().padStart(2, "0");
   const s = Math.floor(remainSec % 60).toString().padStart(2, "0");
-  return { time: `${h}:${m}:${s}`, status: "EN CURSO" };
+  return { time: `${h}:${m}:${s}`, status: "En curso" };
 }
 
 function startTimer() {
@@ -1820,26 +1824,14 @@ function renderMobileBottomBar() {
       ${SVG.menu}
       <span>Fases</span>
     </button>
-    <button class="mobile-bottom-tab ${isPanelOpen ? 'active' : ''}" onclick="togglePanel()" title="Auditoría">
+    <button class="mobile-bottom-tab ${isPanelOpen ? 'active' : ''}" onclick="togglePanel()" title="Auditoría del entregable">
       ${SVG.shieldCheck}
-      <span>Auditoría (${score}%)</span>
+      <span>Auditoría</span>
     </button>
     <button class="mobile-bottom-tab ${activeTab === 'timeline' ? 'active' : ''}" onclick="switchTab('timeline')" title="Checklist de entrega y avisos">
       ${SVG.clock}
-      <span>Tiempo</span>
+      <span>Checklist</span>
     </button>
-    <a href="entregables/index.html" target="_blank" class="mobile-bottom-tab" title="Entregables listos para el teléfono">
-      ${SVG.download}
-      <span>Entregas</span>
-    </a>
-    <a href="graph.html" target="_blank" class="mobile-bottom-tab" title="Grafo del corpus">
-      ${SVG.network}
-      <span>Grafo</span>
-    </a>
-    <a href="stats.html" target="_blank" class="mobile-bottom-tab" title="Debrief de la partida">
-      ${SVG.chart}
-      <span>Debrief</span>
-    </a>
   `;
 }
 
@@ -1850,7 +1842,6 @@ function renderTopbar() {
   const certamen = state.rally_type === "latam" ? "Rally Latam 28h" : state.rally_type === "nacional" ? "Rally Nacional 24h" : "";
   const pName = state.team_name || state.project_name || "";
   const timerData = getTimerString();
-  const deadlineData = getCurrentDeadlineAlert();
   const auditPoints = calculateAuditScore();
 
   el.innerHTML = `
@@ -1890,28 +1881,16 @@ function renderTopbar() {
         </button>
       ` : ""}
 
-      ${state.rally_type ? `
-        <div id="topbar-deadline-pill" 
-             class="deadline-pill ${state.rally_type === 'latam' ? 'latam' : 'nacional'}" 
-             onclick="switchTab('timeline')" 
-             title="${deadlineData.desc}">
-          <span class="deadline-pill-dot"></span>
-          <span class="deadline-pill-label">${deadlineData.label}</span>
-          <span class="deadline-pill-time">${deadlineData.time}</span>
-        </div>
-      ` : ""}
-
       <!-- Identidad de esta persona: nombre real, definido por ella misma -->
       <button class="collaborator-avatar-badge" onclick="openIdentityModal()" title="${amINamed() ? `Trabajas como ${currentClientMascot.name}. Clic para cambiar de persona.` : 'Define tu nombre para que el equipo sepa quién eres.'}">
-        <span class="collaborator-avatar-icon">${currentClientMascot.icon}</span>
+        <span class="collaborator-avatar-icon">${amINamed() ? escapeHtml((currentClientMascot.name || "?").trim().charAt(0).toUpperCase()) : SVG.users}</span>
         <span class="collaborator-name-label ${amINamed() ? '' : 'is-unset'}">${escapeHtml(currentClientMascot.name)}</span>
       </button>
 
-      <!-- Telemetría del Sistema en Tiempo Real -->
-      <div class="telemetry-chip" id="topbar-telemetry-chip" title="Métricas de hardware y estado del motor en tiempo real">
-        <span class="telemetry-pulse"></span>
-        <span>CPU <strong id="telemetry-cpu-val">--%</strong></span>
-        <span>RAM <strong id="telemetry-ram-val">--%</strong></span>
+      <div class="timer-pill-navy" id="timer-pill" onclick="openTimerSettingsModal()" style="cursor:pointer;" title="Clic para calibrar o ajustar cronómetro">
+        ${SVG.clock}
+        <span id="clock-timer">${timerData.time}</span>
+        <span id="clock-status-tag" style="font-size:11px; opacity:0.75; font-weight:700; margin-left:4px;">${timerData.status}</span>
       </div>
 
       <div class="dropdown-wrapper">
@@ -1919,35 +1898,23 @@ function renderTopbar() {
           ${SVG.dotsVertical}
         </button>
         <div id="project-dropdown" class="dropdown-menu-box" style="display:none; right:0; left:auto;">
+          <a href="#" onclick="if (window.RSA && RSA.openMenu) RSA.openMenu(); return false;">${SVG.spark} Herramientas de IA</a>
+          <div style="border-top:1px solid var(--border-light); margin:6px 0;"></div>
           <a href="#" onclick="startOfficialRallyTimer(); return false;">${SVG.spark} Iniciar Cronómetro (Inicio Oficial 08:00 AM)</a>
           <a href="#" onclick="state.rally_started=false; state.start_timestamp=null; saveState(); startTimer(); return false;">Pausar / Standby</a>
           <a href="#" onclick="resetProject(); return false;">Reiniciar Certamen (T=0)</a>
           <a href="#" onclick="exportProjectMarkdown(); return false;">${SVG.copy} Exportar Dossier (.md)</a>
           <a href="#" onclick="printProjectDossier(); return false;">${SVG.download} Imprimir / Guardar como PDF</a>
           <a href="#" onclick="exportProjectJson(); return false;">${SVG.download} Exportar Proyecto (.json)</a>
-          <label style="cursor:pointer; display:flex; align-items:center; gap:8px; padding:9px 14px; font-size:12px; color:#1e293b;">
+          <label style="cursor:pointer; display:flex; align-items:center; gap:8px; padding:9px 14px; font-size:12px; color:var(--text-title);">
             ${SVG.upload} Importar Proyecto (.json)
             <input type="file" accept=".json" style="display:none;" onchange="importProjectJson(event)">
           </label>
+          <div style="border-top:1px solid var(--border-light); margin:6px 0;"></div>
+          <a href="stats.html" target="_blank" title="Resumen de partida: horas, entregables, quién tomó qué">${SVG.chart} Debrief de la partida</a>
+          <a href="graph.html" target="_blank" title="Grafo de conocimiento: rúbricas y ganadores">${SVG.network} Grafo de conocimiento</a>
+          <a href="admin.html" title="Accesos del equipo: invitar, revisar quién entró, retirar acceso">${SVG.users} Accesos del equipo</a>
         </div>
-      </div>
-
-      <a href="graph.html" target="_blank" class="btn-pill-ghost btn-graph-link" title="Explorar Grafo de Conocimiento (177 nodos, rúbricas y ganadores)" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
-        ${SVG.network} <span class="graph-btn-label">Grafo</span>
-      </a>
-
-      <a href="stats.html" target="_blank" class="btn-pill-ghost btn-graph-link" title="Resumen de partida: horas, entregables, quién tomó qué" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
-        ${SVG.chart} <span class="graph-btn-label">Resumen</span>
-      </a>
-
-      <a href="admin.html" class="btn-pill-ghost btn-graph-link" title="Accesos del equipo: invitar, revisar quién entró y retirar acceso" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
-        ${SVG.users} <span class="graph-btn-label">Accesos</span>
-      </a>
-
-      <div class="timer-pill-navy" id="timer-pill" onclick="openTimerSettingsModal()" style="cursor:pointer;" title="Clic para calibrar o ajustar cronómetro">
-        ${SVG.clock}
-        <span id="clock-timer">${timerData.time}</span>
-        <span id="clock-status-tag" style="font-size:9.5px; opacity:0.75; font-weight:700; margin-left:4px;">${timerData.status}</span>
       </div>
     </div>
   `;
@@ -1990,20 +1957,20 @@ function openTimerSettingsModal() {
       <div class="modal-header" style="margin-bottom:12px;">
         <div style="display:flex; align-items:center; gap:8px;">
           ${SVG.clock}
-          <h3 class="modal-title" style="margin:0; font-size:16px; font-weight:800; color:#0D1B35;">Calibrar Hora de Inicio y Cronómetro</h3>
+          <h3 class="modal-title" style="margin:0; font-size:16px; font-weight:800; color:var(--text-title);">Calibrar Hora de Inicio y Cronómetro</h3>
         </div>
-        <button class="btn-icon-discreet" onclick="closeTimerSettingsModal()" style="font-size:18px; line-height:1;">&times;</button>
+        <button class="btn-icon-discreet" onclick="closeTimerSettingsModal()" style="font-size:16px; line-height:1;">&times;</button>
       </div>
       
-      <p style="font-size:12px; color:#5C7193; margin-bottom:14px; line-height:1.45;">
+      <p style="font-size:12px; color:var(--text-muted); margin-bottom:14px; line-height:1.45;">
         Define con exactitud a qué hora empezó o empezará la competencia para calcular las alertas reglamentarias y el tiempo restante.
       </p>
 
       <div style="margin-bottom:12px;">
-        <label style="font-size:11px; font-weight:700; color:#13213A; display:block; margin-bottom:5px;">
+        <label style="font-size:11px; font-weight:700; color:var(--text-main); display:block; margin-bottom:5px;">
           Hora Oficial de Inicio (Empieza o Empezó)
         </label>
-        <input type="datetime-local" id="timer-input-start-datetime" value="${currentStartFormatted}" oninput="updateTimerModalPreview()" style="width:100%; padding:9px 12px; border:1px solid #DCE7F5; border-radius:8px; font-size:13px; font-weight:700; font-family:var(--font-mono); background:#F8FAFD; box-sizing:border-box;">
+        <input type="datetime-local" id="timer-input-start-datetime" value="${currentStartFormatted}" oninput="updateTimerModalPreview()" style="width:100%; padding:9px 12px; border:1px solid var(--border-light); border-radius:8px; font-size:13px; font-weight:700; font-family:var(--font-mono); background:var(--bg-subtle); box-sizing:border-box;">
       </div>
 
       <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px;">
@@ -2016,11 +1983,11 @@ function openTimerSettingsModal() {
 
       <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-bottom:14px;">
         <div>
-          <label style="font-size:11px; font-weight:700; color:#13213A; display:block; margin-bottom:4px;">Régimen Total (Horas)</label>
-          <input type="number" id="timer-input-hours-total" value="${currentTotal}" min="1" max="72" oninput="updateTimerModalPreview()" style="width:100%; padding:8px 10px; border:1px solid #DCE7F5; border-radius:8px; font-size:13px; font-weight:700; font-family:var(--font-mono); background:#F8FAFD; box-sizing:border-box;">
+          <label style="font-size:11px; font-weight:700; color:var(--text-main); display:block; margin-bottom:4px;">Régimen Total (Horas)</label>
+          <input type="number" id="timer-input-hours-total" value="${currentTotal}" min="1" max="72" oninput="updateTimerModalPreview()" style="width:100%; padding:8px 10px; border:1px solid var(--border-light); border-radius:8px; font-size:13px; font-weight:700; font-family:var(--font-mono); background:var(--bg-subtle); box-sizing:border-box;">
         </div>
         <div>
-          <label style="font-size:11px; font-weight:700; color:#13213A; display:block; margin-bottom:4px;">Certamen Predeterminado</label>
+          <label style="font-size:11px; font-weight:700; color:var(--text-main); display:block; margin-bottom:4px;">Certamen Predeterminado</label>
           <div style="display:flex; gap:6px;">
             <button type="button" class="btn-pill-light" style="flex:1; font-size:11px; padding:8px 4px;" onclick="setTimerPreset(24)">24h (Nac.)</button>
             <button type="button" class="btn-pill-light" style="flex:1; font-size:11px; padding:8px 4px;" onclick="setTimerPreset(28)">28h (Latam)</button>
@@ -2028,11 +1995,11 @@ function openTimerSettingsModal() {
         </div>
       </div>
 
-      <div id="timer-modal-preview-box" style="padding:10px 12px; background:var(--bg-subtle); border:1px solid var(--border-light); border-radius:8px; margin-bottom:16px; font-size:11.5px; color:#1E3A8A; line-height:1.5;">
+      <div id="timer-modal-preview-box" style="padding:10px 12px; background:var(--bg-subtle); border:1px solid var(--border-light); border-radius:8px; margin-bottom:16px; font-size:12px; color:#1E3A8A; line-height:1.5;">
         <!-- Se rellena con updateTimerModalPreview() -->
       </div>
 
-      <div style="display:flex; justify-content:space-between; align-items:center; padding-top:14px; border-top:1px solid #DCE7F5;">
+      <div style="display:flex; justify-content:space-between; align-items:center; padding-top:14px; border-top:1px solid var(--border-light);">
         <button type="button" class="btn-pill-ghost" style="color:${state.rally_started ? '#DC2626' : '#0866F5'}; font-size:12px; font-weight:700;" onclick="toggleTimerRunning()">
           ${state.rally_started ? 'Pausar Reloj' : 'Activar Reloj'}
         </button>
@@ -2067,17 +2034,17 @@ function updateTimerModalPreview() {
     const diff = Math.floor((startTs - now) / 1000);
     const dh = Math.floor(diff / 3600);
     const dm = Math.floor((diff % 3600) / 60);
-    statusText = `<span style="color:#0284C7; font-weight:700;">POR INICIAR</span> (empieza en ${dh}h ${dm}m)`;
+    statusText = `<span style="color:var(--color-accent); font-weight:700;">POR INICIAR</span> (empieza en ${dh}h ${dm}m)`;
   } else {
     const elapsed = Math.floor((now - startTs) / 1000);
     const total = hours * 3600;
     const remain = Math.max(0, total - elapsed);
     if (remain <= 0) {
-      statusText = `<span style="color:#DC2626; font-weight:700;">TIEMPO CUMPLIDO</span>`;
+      statusText = `<span style="color:var(--status-err-text); font-weight:700;">TIEMPO CUMPLIDO</span>`;
     } else {
       const rh = Math.floor(remain / 3600);
       const rm = Math.floor((remain % 3600) / 60);
-      statusText = `<span style="color:#0284C7; font-weight:700;">EN CURSO</span> (restan ${rh}h ${rm}m de ${hours}h)`;
+      statusText = `<span style="color:var(--color-accent); font-weight:700;">EN CURSO</span> (restan ${rh}h ${rm}m de ${hours}h)`;
     }
   }
 
@@ -2189,17 +2156,23 @@ function renderNavigation() {
       <a href="#" class="nav-link ${activeClass} ${!isUnlocked ? 'locked' : ''}"
          style="${!isUnlocked ? 'opacity:0.45; cursor:not-allowed;' : ''}"
          onclick="${isUnlocked ? `switchTab('${t.id}', event)` : 'event.preventDefault()'}">
-        <span style="display:flex; align-items:center; gap:6px;">${t.label}</span>
+        <span style="display:flex; align-items:center; gap:6px;">${t.label.replace(/^\d+\s*/, "")}</span>
         ${statusMarkup}
       </a>
     `;
   };
 
-  // Las fases ya cerradas no estorban: se pliegan al final, pero siguen accesibles.
-  // El resumen aparece cuando el equipo ya terminó la puesta en marcha.
+  // Todas las fases visibles en orden. Las ya cerradas se atenúan, no se esconden:
+  // esconderlas obligaba a abrir un desplegable para volver a una fase hecha.
   const tabs = NAV_TABS.filter(t => !t.summary || currentStage >= 2);
-  const closed = tabs.filter(t => !t.summary && t.level <= currentStage && t.id !== activeTab && rsPhaseState(t.id, map).code === "done");
-  const mainTabs = tabs.filter(t => !closed.includes(t));
+  // La configuración deja de competir con el flujo en cuanto está resuelta.
+  const setupReady = setupIsDone();
+  const flowTabs = setupReady ? tabs.filter(function (t) { return !t.setup; }) : tabs;
+  const cfgTabs = setupReady ? tabs.filter(function (t) { return t.setup; }) : [];
+  const cfgMarkup = cfgTabs.length
+    ? '<div class="sidebar-heading sidebar-heading-cfg">Configuracion</div>' +
+      cfgTabs.map(function (t) { return linkFor(t, true).replace('class="nav-link ', 'class="nav-link is-cfg '); }).join("")
+    : "";
   const lockedCount = tabs.filter(t => t.level > currentStage).length;
 
   nav.innerHTML = `
@@ -2208,13 +2181,12 @@ function renderNavigation() {
       <button class="btn-close-drawer" onclick="closeAllDrawers()" aria-label="Cerrar menú lateral">${SVG.close}</button>
     </div>
     <div class="sidebar-heading">Fases de Trabajo</div>
-    ${mainTabs.map(t => linkFor(t, t.level <= currentStage)).join("")}
-    ${closed.length ? `
-      <details class="nav-closed-group">
-        <summary>Fases cerradas (${closed.length})</summary>
-        ${closed.map(t => linkFor(t, true)).join("")}
-      </details>
-    ` : ""}
+    ${flowTabs.map(t => {
+      const unlocked = t.level <= currentStage;
+      const done = !t.summary && rsPhaseState(t.id, map).code === "done";
+      return linkFor(t, unlocked).replace('class="nav-link ', `class="nav-link ${done ? 'is-done' : ''} `);
+    }).join("")}
+    ${cfgMarkup}
     ${lockedCount ? `<div class="nav-locked-hint">${lockedCount} fases se abren al avanzar</div>` : ""}
   `;
 }
@@ -2249,6 +2221,53 @@ function switchTab(tabId, ev) {
 // (orden de NAV_TABS). Avanzar → entrada desde la derecha; retroceder → izquierda.
 let rsPrevTabId = null;
 
+// Indicador de agentes trabajando (mascota construyendo).
+// Se muestra cuando algún agente está ejecutándose y desaparece al terminar.
+let rsAgentBusy = false;
+let rsAgentTimer = null;
+
+window.rsAgentActivity = function rsAgentActivity(on, label) {
+  on = !!on;
+  if (on === rsAgentBusy) return;
+  rsAgentBusy = on;
+  clearTimeout(rsAgentTimer);
+  let el = document.getElementById("agent-activity");
+  if (!on) {
+    if (el) {
+      el.classList.remove("is-on");
+      rsAgentTimer = setTimeout(() => { el.remove(); }, 400);
+    }
+    return;
+  }
+  if (!el) {
+    el = document.createElement("div");
+    el.id = "agent-activity";
+    el.setAttribute("role", "status");
+    el.setAttribute("aria-live", "polite");
+    document.body.appendChild(el);
+  }
+  el.innerHTML = `
+    <span class="aa-robot" aria-hidden="true">
+      <svg viewBox="0 0 40 40" width="34" height="34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="5" r="2" fill="currentColor" />
+        <line x1="20" y1="7" x2="20" y2="11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+        <rect x="9" y="11" width="22" height="16" rx="5" fill="currentColor" />
+        <rect x="12" y="14" width="16" height="8" rx="2.5" fill="#fff" opacity=".92" />
+        <circle cx="16.5" cy="18" r="1.7" fill="currentColor" />
+        <circle cx="23.5" cy="18" r="1.7" fill="currentColor" />
+        <rect x="17" y="27" width="6" height="2.6" rx="1.2" fill="currentColor" opacity=".5" />
+        <rect x="8" y="29.6" width="24" height="8" rx="3" fill="currentColor" opacity=".85" />
+        <g class="aa-arm">
+          <line x1="32" y1="30" x2="36" y2="22" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
+          <rect x="33.4" y="16.6" width="6" height="4.4" rx="1.2" fill="currentColor" transform="rotate(22 36.4 18.8)" />
+        </g>
+      </svg>
+      <span class="aa-spark"></span>
+    </span>
+    <span class="aa-text"><b>Agentes en marcha</b><span>${label || "Redactando la propuesta…"}</span></span>`;
+  requestAnimationFrame(() => el.classList.add("is-on"));
+};
+
 function renderTab(tabId) {
   const main = document.getElementById("main");
   const renderers = {
@@ -2275,6 +2294,9 @@ function renderTab(tabId) {
   }
   rsPrevTabId = tabId;
   main.innerHTML = `<div class="content-wrapper rs-view${dirCls}">${(renderers[tabId] || renderViewCertamen)()}</div>`;
+  if (tabId === "canvas") requestAnimationFrame(fitAllCanvasInputs);
+  if (tabId === "script") requestAnimationFrame(updateScriptMeters);
+  updateInspector();
   attachTabListeners(tabId);
 }
 
@@ -2522,6 +2544,10 @@ function renderViewResumen() {
   const solution = state.solution_thesis || state.solution_simple || "";
   const timer = getTimerString();
   const roster = getRoster();
+  const currentDeadline = getCurrentDeadlineAlert();
+  const _rsStart = tsStartDate();
+  const _rsEnd = tsDeadlineDate();
+  const _rsPct = Math.max(0, Math.min(100, Math.round(((Date.now() - _rsStart.getTime()) / Math.max(1, _rsEnd.getTime() - _rsStart.getTime())) * 100)));
 
   const filterMatch = (def, st) => {
     if (rsFilter === "mine") return st.record && (st.record.assignees || []).includes(currentClientMascot.name);
@@ -2538,66 +2564,34 @@ function renderViewResumen() {
     const meta = RS_STATUS[ps.code] || RS_STATUS.pending;
     return `
       <button class="rs-phase ${meta.cls}" onclick="rsGoTab('${t.id}', event)" title="Abrir ${escapeHtml(t.label)}">
-        <span class="rs-phase-top">
-          <span class="rs-phase-dot"></span>
-          <span class="rs-phase-name">${escapeHtml(t.label)}</span>
-        </span>
-        <span class="rs-phase-meta">${ps.total ? `${ps.done}/${ps.total}` : "—"} · ${meta.label}</span>
-        <span class="rs-phase-bar"><i style="width:${ps.total ? Math.round((ps.done / ps.total) * 100) : 0}%"></i></span>
+        <span class="rs-phase-dot"></span>
+        <span class="rs-phase-name">${escapeHtml(t.label)}</span>
+        <span class="rs-phase-state">${meta.label}</span>
       </button>
     `;
   }).join("");
 
-  const deliverableCards = defs.filter(d => {
-    const st = rsDefState(d, map);
-    const s = Object.assign({}, st, { record: st.record });
-    return filterMatch(d, s);
-  }).map(d => {
-    const st = rsDefState(d, map);
-    const meta = RS_STATUS[st.code] || RS_STATUS.pending;
-    const rec = st.record || {};
-    const assignees = (rec.assignees || []).filter(Boolean);
-    const mine = assignees.includes(currentClientMascot.name);
-    const last = (rec.history || [])[0];
+  const delivRows = defs.filter(d => filterMatch(d, rsDefState(d, map))).map(d => ({ d, st: rsDefState(d, map) }));
+  const deliverableCards = delivRows.map(({ d, st }) => {
+    const assignees = ((st.record || {}).assignees || []).filter(Boolean);
+    const last = ((st.record || {}).history || [])[0];
     const phaseTab = NAV_TABS.find(t => t.id === d.phase);
-    const assignOptions = roster.map(m => `<option value="${escapeHtml(m.name)}" ${assignees.includes(m.name) ? "disabled" : ""}>${escapeHtml(m.name)}${assignees.includes(m.name) ? " (ya está)" : ""}</option>`).join("");
-    const needsText = st.code === "waiting" && st.missing && st.missing.length
-      ? `Espera: ${st.missing.join(" · ")}`
-      : d.needs;
-
+    const phaseLabel = phaseTab ? phaseTab.label : d.phase;
     return `
-      <article class="rs-deliv ${meta.cls}">
-        <div class="rs-deliv-head">
-          <div>
-            <span class="rs-deliv-phase">${escapeHtml(phaseTab ? phaseTab.label : d.phase)}</span>
-            <h3 class="rs-deliv-title">${escapeHtml(d.title)}</h3>
-          </div>
-          ${rsPill(st.code, { label: meta.label, title: meta.label })}
-        </div>
-        <p class="rs-deliv-needs">${escapeHtml(needsText)}</p>
-        <div class="rs-deliv-people">
+      <button class="rs-tile is-${st.code}" onclick="rsOpenDeliverable('${d.id}')" title="Abrir ${escapeHtml(d.title)}">
+        <span class="rs-tile-top">
+          <span class="rs-tile-dot"></span>
+          <span class="rs-tile-state">${escapeHtml((RS_STATUS[st.code] || RS_STATUS.pending).label)}</span>
+        </span>
+        <span class="rs-tile-title">${escapeHtml(d.title)}</span>
+        <span class="rs-tile-foot">
+          <span class="rs-tile-phase">${escapeHtml(String(phaseLabel).replace(/^\\d+\\s*/, ""))}</span>
           ${assignees.length
-            ? assignees.map(n => `<span class="rs-person" style="--person-color:${_userColor(n)}">
-                 <span class="rs-person-dot"></span>${escapeHtml(n)}
-                 <button class="rs-person-x" onclick="rsRemoveAssignee('${d.id}','${escapeHtml(n)}')" title="Quitar a ${escapeHtml(n)}" aria-label="Quitar a ${escapeHtml(n)}">×</button>
-               </span>`).join("")
-            : `<span class="rs-muted">Nadie asignado todavía</span>`}
-        </div>
-        ${last ? `<p class="rs-deliv-history">${escapeHtml(last.name)} ${escapeHtml(last.action)} · ${rsRelativeTime(last.at)}</p>` : `<p class="rs-deliv-history rs-muted">Sin actividad registrada</p>`}
-        <div class="rs-deliv-actions">
-          ${st.code === "done" && st.auto
-            ? `<span class="rs-auto-tag">Completado automáticamente</span>`
-            : `<button class="rs-btn ${mine ? "is-ghost" : "is-primary"}" onclick="rsTakeDeliverable('${d.id}')">${mine ? "Soltar" : "Tomar yo"}</button>
-               <button class="rs-btn is-ghost" onclick="rsFinishDeliverable('${d.id}')">${rec.status === "done" ? "Reabrir" : "Marcar terminado"}</button>`}
-          ${st.code !== "done" && roster.length
-            ? `<select class="rs-select" onchange="rsAssignDeliverable('${d.id}', this.value)" title="Asignar a alguien del equipo">
-                 <option value="">Asignar a…</option>
-                 ${assignOptions}
-               </select>`
-            : ""}
-        </div>
-      </article>
-    `;
+            ? `<span class="rs-tile-people">${assignees.map(n => `<span class="rs-tile-ava" style="--person-color:${_userColor(n)}" title="${escapeHtml(n)}">${escapeHtml(String(n).trim().charAt(0).toUpperCase())}</span>`).join("")}</span>`
+            : `<span class="rs-tile-free">libre</span>`}
+        </span>
+        ${last ? `<span class="rs-tile-when">${rsRelativeTime(last.at)}</span>` : ""}
+      </button>`;
   }).join("");
 
   const closedPhases = NAV_TABS.filter(t => !t.summary && t.level <= stage && rsPhaseState(t.id, map).code === "done");
@@ -2624,37 +2618,38 @@ function renderViewResumen() {
       }).join("")
     : `<span class="rs-muted">Todavía nadie ha definido su nombre. Cada persona debe poner el suyo una vez.</span>`;
 
+  const hasSolution = !!(solution && String(solution).trim());
+  const solutionLabel = hasSolution
+    ? (state.solution_approved ? "Solución aprobada" : "Solución en borrador")
+    : "Sin solución todavía";
+
+  rsStartLive();
   return `
-    <!-- Bitácora viva de los agentes: siempre visible, sin depender de la fase -->
-    ${renderAvisosIA()}
-    ${renderNotificar()}
     <div class="rs-summary">
       <section class="rs-hero">
         <div class="rs-hero-main">
+          <h1 class="rs-page-title">Resumen del rally</h1>
           <div class="rs-challenge-row">
             <span class="rs-challenge-num">#${escapeHtml(String(challengeNum))}</span>
             <div>
-              <h1 class="rs-challenge-title">${escapeHtml(challengeTitle)}</h1>
+              <p class="rs-challenge-title">${escapeHtml(challengeTitle)}</p>
               <span class="rs-challenge-meta">${escapeHtml(state.rally_type === "latam" ? "Rally Latinoamericano 28h" : state.rally_type === "nacional" ? "Rally Nacional 24h" : "Certamen por definir")} · ${escapeHtml(category)}</span>
             </div>
           </div>
           <div class="rs-solution ${state.solution_approved ? "is-approved" : ""}">
-            <span class="rs-solution-label">${state.solution_approved ? "Solución aprobada" : "Solución en construcción"}</span>
+            <span class="rs-solution-label">${solutionLabel}</span>
             <p>${solution ? escapeHtml(solution) : "Aún no hay tesis de solución. Se define en el Taller de Solución (fase 03)."}</p>
             <button class="rs-link" onclick="rsGoTab('solution', event)">Abrir taller de solución →</button>
           </div>
         </div>
         <div class="rs-hero-stats">
-          <div class="rs-hardbar">
-            <div class="rs-hard"><span class="rs-hard-num">${timer.time}</span><span class="rs-hard-label">tiempo restante</span></div>
-            <div class="rs-hard"><span class="rs-hard-num">${pct}%</span><span class="rs-hard-label">avance de rúbrica</span></div>
-            <div class="rs-hard"><span class="rs-hard-num">${escapeHtml(currentPhase ? currentPhase.label : "—")}</span><span class="rs-hard-label">fase actual</span></div>
-          </div>
-          <div class="rs-kpi-row">
-            <div class="rs-kpi-mini"><strong>${doneCount}/${defs.length}</strong><span>entregables cerrados</span></div>
-            <div class="rs-kpi-mini"><strong>${openCount}</strong><span>abiertos</span></div>
-            <div class="rs-kpi-mini"><strong>${workingDefs.length}</strong><span>en progreso ahora</span></div>
-            <div class="rs-kpi-mini"><strong>${closedPhases.length}</strong><span>fases cerradas</span></div>
+          <div class="rs-progress">
+            <div class="rs-progress-head">
+              <span class="rs-progress-num">${pct}%</span>
+              <span class="rs-progress-label">avance de rúbrica</span>
+            </div>
+            <div class="rs-progress-track"><span style="width:${Math.max(0, Math.min(100, pct))}%"></span></div>
+            <p class="rs-progress-line">${doneCount} de ${defs.length} entregables cerrados${workingDefs.length ? ` · ${workingDefs.length} en progreso` : ""}${closedPhases.length ? ` · ${closedPhases.length} fases cerradas` : ""}</p>
           </div>
           <button class="rs-btn is-primary rs-identity-cta" onclick="openIdentityModal()">
             ${amINamed() ? `Trabajando como ${escapeHtml(currentClientMascot.name)}` : "Definir mi nombre para trabajar"}
@@ -2662,25 +2657,16 @@ function renderViewResumen() {
         </div>
       </section>
 
-      <section class="rs-section">
-        <div class="rs-section-head">
-          <h2>Fases del rally</h2>
-          <span class="rs-section-sub">${visiblePhases.length + pendingPhases.length} fases · ${closedPhases.length} cerradas · ${pendingPhases.length} bloqueadas</span>
-        </div>
-        <div class="rs-phases">${phaseCards}</div>
-        ${closedPhases.length ? `
-          <details class="rs-closed">
-            <summary>Fases ya cerradas (${closedPhases.length}) — ocultas para no estorbar</summary>
-            <div class="rs-closed-list">
-              ${closedPhases.map(t => `<button class="rs-closed-chip" onclick="rsGoTab('${t.id}', event)">${SVG.check} ${escapeHtml(t.label)}</button>`).join("")}
-            </div>
-          </details>` : ""}
-      </section>
+      <div class="rs-live">
+        <span class="rs-live-k">Reloj</span>
+        <span class="rs-live-clock" id="rs-live-clock">${timer.time}</span>
+        <span class="rs-live-bar"><span id="rs-live-fill" style="width:${_rsPct}%"></span></span>
+        <span class="rs-live-next">${escapeHtml(currentDeadline.label)} · ${escapeHtml(currentDeadline.time)}</span>
+      </div>
 
-      <section class="rs-section">
+      <section class="rs-section rs-next-only">
         <div class="rs-section-head">
-          <h2>Accionables ahora</h2>
-          <span class="rs-section-sub">las 3 piezas que desbloquean más de inmediato</span>
+          <h2>Siguiente paso</h2>
         </div>
         <div class="rs-action-list">
           ${actionableNow.length ? actionableNow.map(x => {
@@ -2698,7 +2684,7 @@ function renderViewResumen() {
       </section>
 
       <section class="rs-section">
-        <details class="rs-collapsible">
+        <details class="rs-collapsible" open>
           <summary>Entregables y responsables <span class="rs-mini-count">${openCount} abiertos · ${doneCount}/${defs.length} cerrados</span></summary>
           <div class="rs-section-head" style="margin-top:14px;">
           <div class="rs-filters">
@@ -2709,7 +2695,7 @@ function renderViewResumen() {
             <button class="rs-filter ${rsFilter === "done" ? "is-active" : ""}" onclick="rsSetFilter('done')">Terminados</button>
           </div>
         </div>
-        <div class="rs-deliv-grid">
+        <div class="rs-tile-grid">
           ${deliverableCards || `<p class="rs-empty">No hay entregables en este filtro.</p>`}
         </div>
         </details>
@@ -2722,8 +2708,156 @@ function renderViewResumen() {
         </div>
         <div class="rs-roster">${rosterStrip}</div>
       </section>
+
+      <section class="rs-section">
+        ${renderAvisosIA()}
+        ${renderNotificar()}
+      </section>
     </div>
   `;
+}
+
+/* ── Entregable: ficha de trabajo (quién, qué falta, historial, enlaces) ──── */
+let _rsSheetId = null;
+let _rsLiveTimer = null;
+
+function rsTimePct() {
+  const start = tsStartDate();
+  const end = tsDeadlineDate();
+  const total = Math.max(1, end.getTime() - start.getTime());
+  return Math.max(0, Math.min(100, Math.round(((Date.now() - start.getTime()) / total) * 100)));
+}
+
+function rsStartLive() {
+  if (_rsLiveTimer) { clearInterval(_rsLiveTimer); _rsLiveTimer = null; }
+  const tick = () => {
+    const clock = document.getElementById("rs-live-clock");
+    if (!clock) { clearInterval(_rsLiveTimer); _rsLiveTimer = null; return; }
+    clock.textContent = getTimerString().time;
+    const fill = document.getElementById("rs-live-fill");
+    if (fill) fill.style.width = rsTimePct() + "%";
+  };
+  tick();
+  _rsLiveTimer = setInterval(tick, 1000);
+}
+
+function rsCloseDeliverable() {
+  const sheet = document.getElementById("rs-deliv-sheet");
+  if (sheet) sheet.remove();
+  document.body.classList.remove("rs-sheet-open");
+  _rsSheetId = null;
+}
+
+function rsOpenDeliverable(id) {
+  const map = rsDefMap();
+  const d = map[id];
+  if (!d) return;
+  const st = rsDefState(d, map);
+  const rec = st.record || {};
+  const meta = RS_STATUS[st.code] || RS_STATUS.pending;
+  const assignees = (rec.assignees || []).filter(Boolean);
+  const roster = getRoster();
+  const me = currentClientMascot.name;
+  const mine = assignees.includes(me);
+  const phaseTab = NAV_TABS.find(t => t.id === d.phase);
+  const phaseLabel = phaseTab ? phaseTab.label : d.phase;
+  const history = (rec.history || []).slice(0, 8);
+  const missing = (st.missing || []).filter(Boolean);
+
+  const prev = document.getElementById("rs-deliv-sheet");
+  if (prev) prev.remove();
+  _rsSheetId = id;
+  document.body.classList.add("rs-sheet-open");
+
+  const html = `
+    <div class="rs-sheet-backdrop" id="rs-deliv-sheet" onclick="if (event.target === this) rsCloseDeliverable()">
+      <div class="rs-sheet" role="dialog" aria-label="${escapeHtml(d.title)}">
+        <div class="rs-sheet-top">
+          <span class="rs-sheet-phase">${escapeHtml(phaseLabel)}</span>
+          <button class="rs-sheet-x" onclick="rsCloseDeliverable()" aria-label="Cerrar">✕</button>
+        </div>
+        <h2 class="rs-sheet-title">${escapeHtml(d.title)}</h2>
+        <div class="rs-sheet-state is-${st.code}">
+          <span class="rs-sheet-dot"></span>${escapeHtml(meta.label)}
+        </div>
+
+        <div class="rs-sheet-block">
+          <span class="rs-sheet-k">Qué falta</span>
+          ${missing.length
+            ? `<ul class="rs-sheet-list">${missing.map(x => `<li>${escapeHtml(x)}</li>`).join("")}</ul>`
+            : `<p class="rs-sheet-p">${escapeHtml(d.needs || "Sin requisitos pendientes.")}</p>`}
+        </div>
+
+        <div class="rs-sheet-block">
+          <span class="rs-sheet-k">Quién está</span>
+          <div class="rs-sheet-people">
+            ${assignees.length
+              ? assignees.map(n => `<span class="rs-sheet-person" style="--person-color:${_userColor(n)}">
+                   <span class="rs-tile-ava">${escapeHtml(String(n).trim().charAt(0).toUpperCase())}</span>${escapeHtml(n)}
+                   <button onclick="rsSheetUnassign('${escapeHtml(n)}')" aria-label="Quitar a ${escapeHtml(n)}">×</button>
+                 </span>`).join("")
+              : `<span class="rs-sheet-p">Nadie todavía.</span>`}
+          </div>
+          ${roster.length ? `<select class="rs-select" onchange="if (this.value) rsSheetAssign(this.value)" aria-label="Asignar a alguien">
+            <option value="">Asignar a…</option>
+            ${roster.map(m => `<option value="${escapeHtml(m.name)}" ${assignees.includes(m.name) ? "disabled" : ""}>${escapeHtml(m.name)}${assignees.includes(m.name) ? " (ya está)" : ""}</option>`).join("")}
+          </select>` : ""}
+        </div>
+
+        <div class="rs-sheet-block">
+          <span class="rs-sheet-k">Qué cambió</span>
+          ${history.length
+            ? `<ol class="rs-sheet-log">${history.map(h => `<li>
+                 <span class="rs-sheet-log-name">${escapeHtml(h.name || "Equipo")}</span>
+                 <span class="rs-sheet-log-act">${escapeHtml(h.action || "actualizó")}</span>
+                 <span class="rs-sheet-log-at">${rsRelativeTime(h.at)}</span>
+               </li>`).join("")}</ol>`
+            : `<p class="rs-sheet-p">Sin actividad registrada.</p>`}
+        </div>
+
+        <div class="rs-sheet-actions">
+          ${st.code === "done" && st.auto
+            ? `<span class="rs-auto-tag">Completado automáticamente</span>`
+            : `<button class="rs-btn ${mine ? "is-ghost" : "is-primary"}" onclick="rsSheetTake()">${mine ? "Soltar" : "Tomar yo"}</button>
+               <button class="rs-btn is-ghost" onclick="rsSheetFinish()">${rec.status === "done" ? "Reabrir" : "Marcar terminado"}</button>`}
+          <button class="rs-btn is-ghost" onclick="rsCloseDeliverable(); rsGoTab('${d.phase}', event);">Abrir ${escapeHtml(phaseLabel)} →</button>
+        </div>
+      </div>
+    </div>
+  `;
+  document.body.insertAdjacentHTML("beforeend", html);
+}
+
+function rsSheetRefresh() {
+  if (_rsSheetId) rsOpenDeliverable(_rsSheetId);
+}
+
+function rsSheetTake() {
+  const id = _rsSheetId;
+  if (!id) return;
+  rsTakeDeliverable(id);
+  rsSheetRefresh();
+}
+
+function rsSheetFinish() {
+  const id = _rsSheetId;
+  if (!id) return;
+  rsFinishDeliverable(id);
+  rsSheetRefresh();
+}
+
+function rsSheetAssign(name) {
+  const id = _rsSheetId;
+  if (!id || !name) return;
+  rsAssignDeliverable(id, name);
+  rsSheetRefresh();
+}
+
+function rsSheetUnassign(name) {
+  const id = _rsSheetId;
+  if (!id || !name) return;
+  rsRemoveAssignee(id, name);
+  rsSheetRefresh();
 }
 
 // ── IDENTIDAD: NOMBRE ÚNICO POR PERSONA ─────────────────────────────────────
@@ -2762,7 +2896,7 @@ function openIdentityModal() {
             </button>`).join("")}
           </div>
         </div>` : ""}
-      <a href="admin.html" style="display:inline-flex; align-items:center; gap:6px; margin-top:16px; font-size:12px; font-weight:700; color:#64748b; text-decoration:none; border-bottom:1px solid #e2e8f0; padding-bottom:3px;" title="Invitar personas, revisar quién entró y retirar acceso">
+      <a href="admin.html" style="display:inline-flex; align-items:center; gap:6px; margin-top:16px; font-size:12px; font-weight:700; color:var(--text-muted); text-decoration:none; border-bottom:1px solid var(--border-light); padding-bottom:3px;" title="Invitar personas, revisar quién entró y retirar acceso">
         ${SVG.users} Accesos del equipo
       </a>
     </div>
@@ -2805,7 +2939,63 @@ function adoptIdentityFromModal(id) {
 // ═════════════════════════════════════════════════════════════════════════════
 
 
+// Cuando el certamen y el equipo ya están definidos dejan de ser pasos del
+// flujo: se muestran como una ficha escueta y se editan a pedido.
+function setupIsDone() {
+  return !!state.rally_type && !!state.team_name && !!state.university && !!state.challenge_id;
+}
+
+function editSetup(which) {
+  state.setup_editing = which || "";
+  saveState();
+  renderTab(which || "certamen");
+}
+
+function renderCertamenSummary() {
+  const esLatam = state.rally_type === "latam";
+  const nombre = esLatam ? "Rally Latinoamericano de Innovación" : "Rally Nacional Nicaragua Innova";
+  const horas = esLatam ? "28 horas" : "24 horas";
+  return `
+    <div class="phase-header">
+      <div>
+        <h1 class="phase-title">Certamen <span class="phase-title-accent">elegido</span></h1>
+        <p class="phase-subtitle">Ya quedó definido. Se cambia desde aquí cuando haga falta.</p>
+      </div>
+      <button class="btn-secondary" onclick="editSetup('certamen')">Cambiar certamen</button>
+    </div>
+    <dl class="setup-facts">
+      <div><dt>Certamen</dt><dd>${escapeHtml(nombre)}</dd></div>
+      <div><dt>Duración</dt><dd>${escapeHtml(horas)}</dd></div>
+      <div><dt>Categoría</dt><dd>${escapeHtml(state.category || "Sin definir")}</dd></div>
+    </dl>
+  `;
+}
+
+function renderTeamSummary() {
+  const logo = state.team_logo_img
+    ? `<img src="${escapeHtml(state.team_logo_img)}" alt="Logo del equipo" class="setup-logo">`
+    : `<span class="setup-logo is-empty" aria-hidden="true"></span>`;
+  return `
+    <div class="phase-header">
+      <div>
+        <h1 class="phase-title">Identidad <span class="phase-title-accent">del equipo</span></h1>
+        <p class="phase-subtitle">Ya quedó definida. Se cambia desde aquí cuando haga falta.</p>
+      </div>
+      <button class="btn-secondary" onclick="editSetup('team')">Editar equipo</button>
+    </div>
+    <div class="setup-team">
+      ${logo}
+      <dl class="setup-facts setup-facts-inline">
+        <div><dt>Squad</dt><dd>${escapeHtml(state.team_name || "—")}</dd></div>
+        <div><dt>Universidad</dt><dd>${escapeHtml(state.university || "—")}</dd></div>
+        <div><dt>Ciudad</dt><dd>${escapeHtml(state.city || "—")}</dd></div>
+      </dl>
+    </div>
+  `;
+}
+
 function renderViewCertamen() {
+  if (setupIsDone() && state.setup_editing !== "certamen") return renderCertamenSummary();
   const isLatam = state.rally_type === 'latam';
   const isNac = state.rally_type === 'nacional';
 
@@ -2817,10 +3007,9 @@ function renderViewCertamen() {
       ${SVG.landscapeBg}
 
       <div class="stepper-header">
-        <span class="stepper-pill"><span class="pill-dim">PASO</span> <strong class="pill-num">01</strong> <span class="pill-dim">DE 03</span></span>
+        <span class="stepper-pill"><span class="pill-dim">PASO</span> <strong class="pill-num">01</strong> <span class="pill-dim">DE 02</span></span>
         <div class="stepper-bars">
           <div class="stepper-bar-segment active"></div>
-          <div class="stepper-bar-segment"></div>
           <div class="stepper-bar-segment"></div>
         </div>
       </div>
@@ -2889,8 +3078,9 @@ function renderViewCertamen() {
 
       <!-- Botón de Continuar Centrado -->
       <div style="display:flex; justify-content:center; margin-top:32px;">
-        <button id="btnProceedCertamen" class="btn-select-card ${isLatam ? 'filled-primary' : 'filled-navy'}" 
-                style="padding:12px 48px; font-size:14px; font-weight:700; border-radius:8px;" 
+        <button id="btnProceedCertamen" class="btn-select-card ${isLatam ? 'filled-primary' : 'filled-navy'}"
+                style="padding:12px 48px; font-size:14px; font-weight:700; border-radius:8px;"
+                ${state.rally_type ? "" : 'disabled aria-disabled="true" title="Elige un certamen para continuar"'}
                 onclick="proceedFromCertamen()">
           Continuar ${SVG.arrowRight}
         </button>
@@ -2911,10 +3101,10 @@ function selectCertamen(type, ev) {
 }
 
 function proceedFromCertamen() {
+  // Sin certamen elegido no se avanza: el tipo define horas, moneda y rúbrica.
   if (!state.rally_type) {
-    state.rally_type = "nacional";
-    state.hours_total = 24;
-    state.hours_remaining = 24;
+    renderTab("certamen");
+    return;
   }
   saveState();
   activeTab = "team";
@@ -2925,6 +3115,7 @@ function proceedFromCertamen() {
 // 01 NIVEL 1: IDENTIDAD DE EQUIPO & LOGOS
 // ═════════════════════════════════════════════════════════════════════════════
 function renderViewTeam() {
+  if (setupIsDone() && state.setup_editing !== "team") return renderTeamSummary();
   const certLabel = state.rally_type === "latam" ? "Rally Latinoamericano (28h)" : "Rally Nacional (24h)";
   const rallyLogoSrc = state.rally_type === "latam" ? "assets/logo_rally_latam.png" : "assets/logo_rally_nacional.png";
 
@@ -2932,11 +3123,10 @@ function renderViewTeam() {
     <div class="wizard-canvas">
       <div class="stepper-header" style="justify-content:space-between;">
         <div style="display:flex; align-items:center; gap:14px;">
-          <span class="stepper-pill"><span class="pill-dim">PASO</span> <strong class="pill-num">02</strong> <span class="pill-dim">DE 03</span></span>
+          <span class="stepper-pill"><span class="pill-dim">PASO</span> <strong class="pill-num">02</strong> <span class="pill-dim">DE 02</span></span>
           <div class="stepper-bars">
             <div class="stepper-bar-segment completed"></div>
             <div class="stepper-bar-segment active"></div>
-            <div class="stepper-bar-segment"></div>
           </div>
         </div>
         <button class="btn-minimal-back" onclick="switchTab('certamen')" title="Volver a selección de certamen">
@@ -2947,30 +3137,30 @@ function renderViewTeam() {
 
       <h1 class="wizard-hero-title" style="margin-bottom:24px;">Identidad del <span class="title-accent">Equipo</span></h1>
 
-      <div class="workbench-card" style="border:1px solid #DCE7F5; border-radius:8px; padding:32px 28px; background:#fff; max-width:960px; margin:0 auto;">
+      <div class="workbench-card" style="border:1px solid var(--border-light); border-radius:8px; padding:32px 28px; background:var(--bg-surface); max-width:960px; margin:0 auto;">
         <div class="team-step-grid">
           <!-- Columna Izquierda: Formulario de Datos -->
           <div style="display:flex; flex-direction:column; justify-content:space-between;">
             <div>
               <!-- Nombre del Squad (la marca del proyecto se define a partir del reto elegido) -->
               <div class="form-group" style="margin-bottom:16px;">
-                <label style="font-weight:700; color:#091e42; font-size:12px; display:block; margin-bottom:6px;">NOMBRE DE SQUAD (EQUIPO)</label>
+                <label style="font-weight:700; color:var(--text-title); font-size:12px; display:block; margin-bottom:6px;">NOMBRE DE SQUAD (EQUIPO)</label>
                 <input type="text" id="tm-name" placeholder="Ej: Techriders, Pinoleros Tech, Mentes Volcánicas" value="${state.team_name || ''}"
-                  style="width:100%; box-sizing:border-box; padding:10px 12px; border:1.5px solid #cbd5e1; border-radius:8px; font-size:13.5px; font-weight:600; color:#091e42;"
+                  style="width:100%; box-sizing:border-box; padding:10px 12px; border:1.5px solid var(--border-strong); border-radius:8px; font-size:13px; font-weight:600; color:var(--text-title);"
                   oninput="updateTeamName(this.value);">
-                <span style="font-size:11px; color:#64748b; margin-top:6px; display:block;">El nombre de la marca/proyecto se decide en el Taller de Solución, cuando ya conozcan el reto elegido.</span>
+                <span style="font-size:11px; color:var(--text-muted); margin-top:6px; display:block;">El nombre de la marca/proyecto se decide en el Taller de Solución, cuando ya conozcan el reto elegido.</span>
               </div>
 
               <div class="form-group full">
-                <label style="font-weight:700; color:#091e42; font-size:12px; display:block; margin-bottom:6px;">LOGO OFICIAL DEL EQUIPO (IMAGEN PNG / JPG / SVG / WEBP)</label>
+                <label style="font-weight:700; color:var(--text-title); font-size:12px; display:block; margin-bottom:6px;">LOGO OFICIAL DEL EQUIPO (IMAGEN PNG / JPG / SVG / WEBP)</label>
                 ${state.team_logo_img ? `
                   <div class="logo-preview-box">
-                    <img src="${state.team_logo_img}" alt="Logo de Equipo" style="max-height:56px; max-width:90px; object-fit:contain; border-radius:6px; border:1px solid #e2e8f0; background:#fff; padding:4px;">
+                    <img src="${state.team_logo_img}" alt="Logo de Equipo" style="max-height:56px; max-width:90px; object-fit:contain; border-radius:6px; border:1px solid var(--border-light); background:var(--bg-surface); padding:4px;">
                     <div style="flex:1;">
-                      <div style="font-size:13px; font-weight:700; color:#0f172a;">Logo Cargado Exitosamente</div>
-                      <div style="font-size:11px; color:#64748b;">Visible en la credencial y el topbar.</div>
+                      <div style="font-size:13px; font-weight:700; color:var(--text-title);">Logo Cargado Exitosamente</div>
+                      <div style="font-size:11px; color:var(--text-muted);">Visible en la credencial y el topbar.</div>
                     </div>
-                    <button type="button" class="btn-pill-light" style="font-size:11px; color:#ef4444;" onclick="removeTeamLogo()">Quitar</button>
+                    <button type="button" class="btn-pill-light" style="font-size:11px; color:var(--status-err-text);" onclick="removeTeamLogo()">Quitar</button>
                     <label class="btn-pill-light" style="font-size:11px; cursor:pointer;">
                       Cambiar
                       <input type="file" accept="image/png, image/jpeg, image/svg+xml, image/webp" style="display:none;" onchange="handleTeamLogoUpload(event)">
@@ -2982,17 +3172,17 @@ function renderViewTeam() {
                     ondragleave="this.style.borderColor='#cbd5e1'; this.style.background='#f8fafc';"
                     ondrop="event.preventDefault(); this.style.borderColor='#cbd5e1'; this.style.background='#f8fafc'; handleTeamLogoUpload({target:{files:event.dataTransfer.files}});">
                     <input type="file" id="team-logo-file-input" accept="image/png, image/jpeg, image/svg+xml, image/webp" style="display:none;" onchange="handleTeamLogoUpload(event)">
-                    <div style="width:40px; height:40px; border-radius:50%; background:#eff6ff; display:flex; align-items:center; justify-content:center; color:#0066ff;">
+                    <div style="width:40px; height:40px; border-radius:50%; background:var(--status-ok-bg); display:flex; align-items:center; justify-content:center; color:#0066ff;">
                       ${SVG.upload}
                     </div>
-                    <div style="font-size:12.5px; font-weight:700; color:#1e293b;">Haz clic o arrastra aquí el logo oficial</div>
-                    <div style="font-size:11px; color:#64748b;">Formatos: PNG, JPG, SVG o WebP (alta resolución)</div>
+                    <div style="font-size:13px; font-weight:700; color:var(--text-title);">Haz clic o arrastra aquí el logo oficial</div>
+                    <div style="font-size:11px; color:var(--text-muted);">Formatos: PNG, JPG, SVG o WebP (alta resolución)</div>
                   </label>
                 `}
               </div>
             </div>
 
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:24px; border-top:1px solid #f1f5f9; padding-top:16px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:24px; border-top:1px solid var(--border-light); padding-top:16px;">
               <button class="btn-minimal-back" onclick="switchTab('certamen')">
                 ${SVG.arrowLeft}
                 <span>Regresar</span>
@@ -3005,15 +3195,15 @@ function renderViewTeam() {
 
           <!-- Columna Derecha: Previsualización de Identidad -->
           <div class="team-preview-panel">
-            <div style="font-size:11px; font-weight:800; letter-spacing:0.08em; color:#64748b; text-transform:uppercase; margin-bottom:22px;">
+            <div style="font-size:11px; font-weight:800; letter-spacing:0.08em; color:var(--text-muted);  margin-bottom:22px;">
               Previsualización de Identidad
             </div>
 
             <!-- 1. Logo del grupo en grande -->
-            <div style="width:130px; height:130px; margin:0 auto; border-radius:18px; border:2px ${state.team_logo_img ? 'solid #003366' : 'dashed #cbd5e1'}; background:#ffffff; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+            <div style="width:130px; height:130px; margin:0 auto; border-radius:18px; border:2px ${state.team_logo_img ? 'solid #003366' : 'dashed var(--border-strong)'}; background:var(--bg-surface); display:flex; align-items:center; justify-content:center; overflow:hidden;">
               ${state.team_logo_img 
                 ? `<img id="preview-team-logo" src="${state.team_logo_img}" style="width:100%; height:100%; object-fit:contain; padding:10px;" alt="Logo Equipo">`
-                : `<div style="text-align:center; color:#94a3b8; font-size:11px; padding:8px;">
+                : `<div style="text-align:center; color:var(--text-muted); font-size:11px; padding:8px;">
                      <div style="margin-bottom:6px; opacity:0.6;">${SVG.upload}</div>
                      <div style="font-weight:700;">Logo del Equipo</div>
                    </div>`
@@ -3023,22 +3213,22 @@ function renderViewTeam() {
             <!-- 2. Abajo los 2 logos UNI y Rally en más pequeño -->
             <div style="display:flex; align-items:center; justify-content:center; gap:16px; margin-top:20px;">
               <img src="assets/logo_uni_official.png" style="height:32px; width:auto; max-width:75px; object-fit:contain;" alt="Universidad Nacional de Ingeniería">
-              <span style="color:#cbd5e1; font-weight:300; font-size:16px;">|</span>
+              <span style="color:var(--text-faint); font-weight:300; font-size:16px;">|</span>
               <img src="${rallyLogoSrc}" style="height:28px; width:auto; max-width:125px; object-fit:contain;" alt="Rally Oficial">
             </div>
 
             <!-- 3. Nombre del grupo y marca de la solución -->
             <div style="margin-top:22px; text-align:center;">
-              <h2 id="preview-team-name" style="font-family:var(--font-sans); font-size:22px; font-weight:900; color:#091e42; margin-bottom:4px; letter-spacing:-0.03em; word-break:break-word; text-transform:uppercase;">
+              <h2 id="preview-team-name" style="font-family:var(--font-ui); font-size:22px; font-weight:800; color:var(--text-title); margin-bottom:4px; letter-spacing:-0.02em; word-break:break-word;">
                 ${state.team_name || 'NOMBRE DEL EQUIPO'}
               </h2>
-              <div id="preview-solution-brand" style="display:${state.project_name ? 'inline-block' : 'none'}; font-size:12px; font-weight:800; color:#0866F5; background:#EFF6FF; border:1px solid #BFDBFE; border-radius:6px; padding:3px 10px; margin-bottom:8px; text-transform:uppercase;">
+              <div id="preview-solution-brand" style="display:${state.project_name ? 'inline-block' : 'none'}; font-size:12px; font-weight:800; color:var(--color-primary); background:var(--bg-secondary); border:1px solid var(--border-light); border-radius:6px; padding:3px 10px; margin-bottom:8px;">
                 ${state.project_name ? `PROYECTO: ${state.project_name}` : ''}
               </div>
-              <div style="font-family:var(--font-sans); font-size:12px; font-weight:800; color:#003366; text-transform:uppercase; letter-spacing:0.05em;">
-                Universidad Nacional de Ingeniería
+              <div style="font-family:var(--font-ui); font-size:12px; font-weight:600; color:var(--text-muted);">
+                ${state.university || ''}
               </div>
-              <div style="font-family:var(--font-sans); font-size:11px; font-weight:600; color:#64748b; margin-top:4px;">
+              <div style="font-family:var(--font-ui); font-size:11px; font-weight:600; color:var(--text-muted); margin-top:4px;">
                 ${state.rally_type === 'latam' ? 'Rally Latinoamericano de Innovación 28h' : 'Rally Nacional Nicaragua Innova 24h'}
               </div>
             </div>
@@ -3098,9 +3288,9 @@ function renderSirliBadge() {
   const badge = document.getElementById("sirli-compliance-badge");
   if (badge) {
     if (allOk) {
-      badge.style.background = "#dcfce7";
-      badge.style.color = "#15803d";
-      badge.style.borderColor = "#bbf7d0";
+      badge.style.background = "var(--status-ok-bg)";
+      badge.style.color = "var(--status-ok-text)";
+      badge.style.borderColor = "var(--status-ok-border)";
       badge.innerHTML = "✓ Conforme con Bases SIRLI";
     } else {
       badge.style.background = "#fff1f2";
@@ -3179,7 +3369,7 @@ function _me() {
 }
 
 // Color estable por persona (hash del nombre): mismo usuario = mismo color en notas y votos.
-const USER_COLOR_PALETTE = ["#0866F5", "#0284C7", "#7C3AED", "#0D9488", "#D97706", "#E11D48", "#4F46E5", "#6D28D9"];
+const USER_COLOR_PALETTE = ["#0866F5", "#0057E7", "#1D4ED8", "#0369A1", "#0D9488", "#0F766E", "#334155", "#E11D48"];
 function _userColor(name) {
   let h = 0;
   const s = String(name || "");
@@ -3328,7 +3518,7 @@ function mesaSeats() {
   const size = Math.min(10, Math.max(6, m.size));
   const seats = TEAM_MASCOTS.slice(0, Math.min(6, size)).map(x => ({ id: x.id, label: x.name, color: x.color }));
   for (let i = seats.length; i < size; i++) {
-    seats.push({ id: "seat_" + (i + 1), label: MESA_EXTRA_SEATS[i - 6] || ("Integrante " + (i + 1)), color: "#64748B" });
+    seats.push({ id: "seat_" + (i + 1), label: MESA_EXTRA_SEATS[i - 6] || ("Integrante " + (i + 1)), color: "var(--text-muted)" });
   }
   return seats;
 }
@@ -3435,70 +3625,9 @@ function mesaGo(chId) {
   renderTab("challenges");
 }
 
-function renderMesaNav(list, activeId, total) {
-  const totalActivos = Number.isFinite(total) ? total : list.length;
-  return `
-    <aside class="deliberation-nav">
-      <div class="deliberation-nav-header">
-        <span>CATÁLOGO DE RETOS</span>
-        <span style="font-family:var(--font-mono); font-size:11px; color:#5C7193;">${totalActivos} ACTIVOS</span>
-      </div>
-      <div class="deliberation-nav-list">
-        ${list.map(ch => {
-          const t = mesaTally(ch.id);
-          const isCur = ch.id === activeId;
-          const isSel = state.challenge_id === ch.id;
-          const ideas = (state.challenge_ideas && state.challenge_ideas[ch.id]) || [];
-          const chip = t.discarded
-            ? `<span class="cr-chip is-out">descartado ${t.no}/${t.size}</span>`
-            : t.approved
-              ? `<span class="cr-chip is-keep">aprobado ${t.yes}/${t.size}</span>`
-              : t.res
-                ? `<span class="cr-chip">reserva ${t.res}/${t.size}</span>`
-                : `<span class="cr-chip">en debate ${t.yes}/${t.size}</span>`;
-          return `
-            <div class="deliberation-nav-item ${isCur ? 'active' : ''}" role="button" tabindex="0" aria-current="${isCur ? "page" : "false"}" aria-label="Reto ${ch.id}: ${ch.title}. ${t.discarded ? "descartado" : t.approved ? "aprobado" : "en debate"}, ${t.yes} a favor de ${t.size}." onclick="mesaGo('${ch.id}')">
-              <div style="min-width:0; flex:1; padding-right:6px;">
-                <div class="cr-nav-meta">
-                  <span class="nav-item-num cr-nav-num">#${ch.id}</span>
-                  <span class="nav-item-cat">${categoryBadge(ch.category)}</span>
-                  ${isSel ? `<span class="cr-chip is-sel">ELEGIDO</span>` : ""}
-                  ${chip}
-                </div>
-                <div class="nav-item-title">${ch.title}</div>
-              </div>
-              <div class="cr-nav-right">
-                <span class="cr-nav-via">${ch.winRate || 90}%</span>
-                <span class="cr-nav-notes">Notas: ${ideas.length}</span>
-              </div>
-            </div>
-          `;
-        }).join("")}
-      </div>
-    </aside>
-  `;
-}
-
-function renderMesaBar(list, ch, idx) {
-  const t = mesaTally(ch.id);
-  const prev = idx > 0 ? list[idx - 1] : null;
-  const next = idx < list.length - 1 ? list[idx + 1] : null;
+function renderMesaBar(list, ch) {
   return `
     <div class="cr-bar">
-      <div class="cr-bar-nav">
-        <button class="cr-arrow" ${prev ? `onclick="mesaGo('${prev.id}')"` : "disabled"} title="Reto anterior" aria-label="Reto anterior">←</button>
-        <span class="cr-count">RETO #${ch.id} <span class="cr-count-dim">/ ${String(idx + 1).padStart(2, "0")} de ${String(list.length).padStart(2, "0")}</span></span>
-        <button class="cr-arrow" ${next ? `onclick="mesaGo('${next.id}')"` : "disabled"} title="Reto siguiente" aria-label="Reto siguiente">→</button>
-      </div>
-
-      <div class="cr-bar-team">
-        <span class="cr-bar-k">en la mesa</span>
-        <button class="cr-step" onclick="mesaSetSize(${t.size - 1})" ${t.size <= 6 ? "disabled" : ""} title="Un integrante menos" aria-label="Un integrante menos">−</button>
-        <span class="cr-size">${t.size}</span>
-        <button class="cr-step" onclick="mesaSetSize(${t.size + 1})" ${t.size >= 10 ? "disabled" : ""} title="Un integrante más" aria-label="Un integrante más">+</button>
-        <span class="cr-need">${t.need} votos para aprobar · ${t.need} para descartar</span>
-      </div>
-
       <div class="cr-map">
         ${list.map((c, i) => {
           const ct = mesaTally(c.id);
@@ -3510,11 +3639,9 @@ function renderMesaBar(list, ch, idx) {
             !ct.approved && !ct.discarded && ct.res ? "is-res" : "",
             state.challenge_id === c.id ? "is-sel" : ""
           ].filter(Boolean).join(" ");
-          return `<button class="${cls}" onclick="mesaGo('${c.id}')" title="Reto #${c.id} · ${ct.yes}/${ct.size} a favor${ct.discarded ? " · descartado" : ""}">${String(i + 1).padStart(2, "0")}</button>`;
+          return `<button class="${cls}" onclick="mesaGo('${c.id}')" aria-current="${c.id === ch.id ? "true" : "false"}" title="Reto ${i + 1} de ${list.length}${ct.discarded ? " · descartado" : ct.approved ? " · aprobado" : ""}">${String(i + 1).padStart(2, "0")}</button>`;
         }).join("")}
       </div>
-
-      <div class="cr-rule">Se aprueba con <b>la mitad a favor</b>; se descarta con <b>la mitad a descarte</b> — el sistema lo mueve al embudo y se puede renovar. La IA propone, no vota.</div>
     </div>
   `;
 }
@@ -3524,7 +3651,7 @@ function renderMesaNotes(ch) {
   const others = (state.challenges || []).filter(c => c.id !== ch.id);
   return `
     <section class="cr-panel cr-notes">
-      <div class="cr-block"><span class="cr-num">03</span> Nuestras redacciones <span class="cr-count-chip">${ideas.length}</span><span class="cr-tag">se guarda solo</span></div>
+      <div class="cr-block">Comentarios del equipo <span class="cr-count-chip">${ideas.length}</span><span class="cr-tag">se guarda solo</span></div>
       <div class="cr-note-grid">
         ${ideas.length === 0 ? `<p class="cr-pending">Todavía no hay redacciones para este reto. La primera la escribe cualquiera.</p>` : ideas.map(idea => `
           <article class="cr-note ${idea.merged_to ? "is-merged" : ""}">
@@ -3548,7 +3675,7 @@ function renderMesaNotes(ch) {
       <div class="cr-compose">
         <span class="cr-dot" style="background:${_userColor(_me())}"></span>
         <input type="text" id="new-idea-input-${ch.id}" placeholder="Escribe la idea, el pro o el contra y queda pegada a este reto…" onkeydown="if(event.key==='Enter') addChallengeIdea('${ch.id}')">
-        <button class="btn-select-card filled" style="padding:6px 14px; font-size:11.5px; font-weight:700;" onclick="addChallengeIdea('${ch.id}')">+ pegar redacción</button>
+        <button class="btn-select-card filled" style="padding:6px 14px; font-size:12px; font-weight:700;" onclick="addChallengeIdea('${ch.id}')">+ pegar redacción</button>
       </div>
     </section>
   `;
@@ -3559,7 +3686,6 @@ function renderMesaVote(ch) {
   const b = mesaBallot(ch.id);
   const seats = mesaSeats();
   const meId = mesaMe();
-  const pct = n => Math.round((n / Math.max(1, t.size)) * 100);
   const stance = seatId => b.yes.includes(seatId) ? "yes" : b.no.includes(seatId) ? "no" : b.res.includes(seatId) ? "res" : "wait";
   const stanceLabel = s => s === "yes" ? "aprueba" : s === "no" ? "descarta" : s === "res" ? "reserva" : "sin decidir";
   const verdict = t.discarded
@@ -3567,26 +3693,12 @@ function renderMesaVote(ch) {
     : t.approved
       ? `<span class="cr-verdict-main is-in">APROBADO</span> <span class="cr-verdict-sub">${t.yes} de ${t.size} a favor (necesitaba ${t.need})</span>`
       : `<span class="cr-verdict-main">EN DEBATE</span> <span class="cr-verdict-sub">${t.yes} de ${t.size} a favor · faltan ${Math.max(0, t.need - t.yes)} para ${t.need}</span>`;
-  const group = (arr, label, cls) => arr.length ? `<span class="cr-rec ${cls}"><span class="cr-rec-k">${label} <b>${arr.length}</b></span>${arr.map(id => `<span class="cr-rec-name">${mesaSeatName(id)} <span class="cr-rec-at">${b.at[id] || ""}</span></span>`).join("")}</span>` : "";
   const renews = (getMesa().renews[ch.id] || []);
   return `
     <section class="cr-panel cr-vote" id="mesa-vote-${ch.id}">
-      <div class="cr-block"><span class="cr-num">04</span> La mesa vota <span class="cr-tag">${t.size} en la mesa · mayoría: ${t.need}</span></div>
+      <div class="cr-block">La mesa vota <span class="cr-tag">${t.size} en la mesa · mayoría: ${t.need}</span></div>
 
       <div class="cr-verdict">${verdict}</div>
-
-      <div class="cr-bars">
-        <div class="cr-bar-row">
-          <span class="cr-bar-label">a favor</span>
-          <span class="cr-bar-track"><span class="cr-bar-fill" style="width:${pct(t.yes)}%"></span><span class="cr-bar-mark" style="left:50%"></span></span>
-          <span class="cr-bar-n">${t.yes}/${t.size}</span>
-        </div>
-        <div class="cr-bar-row">
-          <span class="cr-bar-label">a descarte</span>
-          <span class="cr-bar-track"><span class="cr-bar-fill is-no" style="width:${pct(t.no)}%"></span><span class="cr-bar-mark" style="left:50%"></span></span>
-          <span class="cr-bar-n">${t.no}/${t.size}</span>
-        </div>
-      </div>
 
       <div class="cr-voters">
         ${seats.map(seat => {
@@ -3603,109 +3715,71 @@ function renderMesaVote(ch) {
         }).join("")}
       </div>
 
-      <div class="cr-record">
-        <span class="cr-rec-tag">constancia</span>
-        ${group(b.no, "lo tiran", "is-no")}
-        ${group(b.yes, "lo salvan", "is-yes")}
-        ${group(b.res, "en reserva", "is-res")}
-        ${group(seats.map(s => s.id).filter(id => stance(id) === "wait"), "sin decidir", "is-wait")}
-      </div>
-
       ${renews.map(r => `<div class="cr-rec-log">renovado por ${r.by} · ${r.at} — se borraron los votos de descarte${r.removed && r.removed.length ? " de " + r.removed.join(", ") : ""}</div>`).join("")}
 
       <div class="cr-vote-actions">
         ${t.discarded ? `<button class="btn-pill-light cr-renew-btn" onclick="mesaRenew('${ch.id}')">Renovar este reto</button>` : ""}
-        ${state.challenge_id !== ch.id
-          ? `<button class="btn-select-card filled" style="padding:8px 18px; font-size:12px; font-weight:800;" onclick="selectChallenge('${ch.id}', false)">Elegir Reto #${ch.id}</button>`
-          : `<span class="cr-held">Reto #${ch.id} está elegido</span>`}
-        <button class="btn-pill-light" style="font-size:11.5px; padding:5px 12px;" onclick="showToast('Escucha de 2 minutos abierta para el Reto #${ch.id}.')">Pedir 2 min de escucha</button>
+        ${state.challenge_id === ch.id ? `<span class="cr-held">Este es el reto elegido</span>` : ""}
       </div>
 
-      <p class="cr-consequence">Sin quórum: vota quien quiera. Con <b>≥50 %</b> del equipo a favor entra; con <b>≥50 %</b> a descarte el sistema lo mueve al embudo y se puede renovar cuando quieran. Equipo impar: pasa el voto que cruza la mitad (${t.need} de ${t.size}). La IA no vota: solo propone arriba.</p>
+      <p class="cr-rule-line">Se aprueba con la mitad a favor; se descarta con la mitad en contra. Un voto por persona.</p>
     </section>
   `;
 }
 
 function renderMesaSlide(ch, list, idx) {
-  const info = challengeRankFor(ch);
-  const ideas = (state.challenge_ideas && state.challenge_ideas[ch.id]) || [];
-  const rows = list.map(c => ({ id: c.id, score: challengeRankFor(c).score })).sort((a, b) => b.score - a.score || (a.id > b.id ? 1 : -1));
-  const rank = rows.findIndex(r => r.id === ch.id) + 1;
   const isSel = state.challenge_id === ch.id;
-  const isSat = (ch.compDensity || "").toLowerCase().includes("alta") || (ch.winRate && ch.winRate < 86);
   const odsList = Array.isArray(ch.ods) ? ch.ods : String(ch.ods || "").split(/,\s*/).filter(Boolean);
   const sourceText = ch.officialExpectation || ch.demandaComite || ch.description || "";
   const ang = winnerAngleFor(ch);
-  const reasonLines = info.reasonLines || [];
+  if (!SOLUCIONES_DATOS) cargarSoluciones();
+  const sol = solucionDeReto(ch.id);
+  const pr = sol && sol.propuesta ? sol.propuesta : null;
+  const pos = String(idx + 1).padStart(2, "0");
 
   return `
     <div class="cr-slide-head">
       <div class="cr-head-meta">
         <div class="cr-head-row">
           ${categoryBadge(ch.category)}
-          <span class="cr-desafio">DESAFÍO #${ch.id}</span>
           ${isSel ? `<span class="cr-chip is-sel">ELEGIDO</span>` : ""}
         </div>
         <div class="cr-ods">
           ${odsList.map(o => {
             const num = String(o).replace(/[^\d]/g, "");
             const odsObj = (typeof ODS_CATALOG !== "undefined" ? ODS_CATALOG : []).find(x => String(x.id) === num);
-            return `<button class="btn-pill-light cr-ods-pill" onclick="openImpactDetailModal('ods', ${num || 12})" title="Ver por qué y cómo cumple este ODS">${odsObj && odsObj.icon ? `<svg width="10" height="10" viewBox="0 0 12 12" fill="${odsObj.color}">${odsObj.icon}</svg>` : ""}${o}</button>`;
+            return `<button class="btn-pill-light cr-ods-pill" onclick="openImpactDetailModal('ods', ${num || 12})" title="Ver por qué y cómo cumple este ODS">${odsIcon(num || 1, odsObj && odsObj.color, 14)}${o}</button>`;
           }).join("")}
-        </div>
-        <div class="cr-head-note">
-          <span class="cr-niche">${isSat ? "ALTA CONCURRENCIA" : "NICHO TÉCNICO"}</span>
-          <span class="cr-niche-why">${isSat ? "Exige ≥2 capas tecnológicas para superar la saturación de sedes." : "Baja rivalidad de sedes: ventaja directa si la factibilidad es sólida."}</span>
         </div>
       </div>
       <div class="cr-head-actions">
-        <button class="btn-pill-light" style="font-size:11.5px; padding:5px 12px;" onclick="openEditChallengeModal('${ch.id}')" title="Modificar título, demanda u ODS">${SVG.edit} Editar Reto</button>
-        <button class="btn-select-card ${isSel ? "filled" : "outline"}" style="padding:6px 14px; font-size:12px; font-weight:700;" onclick="selectChallenge('${ch.id}', ${isSel ? "true" : "false"})">${isSel ? "Reto Seleccionado" : "Elegir para Desarrollar"}</button>
-        <button class="btn-pill-ghost" style="font-size:11px; padding:5px 10px; color:#DC2626;" onclick="deleteChallenge('${ch.id}')" title="Quitar del radar">${SVG.close}</button>
+        <button class="link-quiet" onclick="openEditChallengeModal('${ch.id}')" title="Modificar título, demanda u ODS">Editar</button>
+        <button class="cr-remove" onclick="deleteChallenge('${ch.id}')" title="Quitar del radar" aria-label="Quitar del radar">✕</button>
       </div>
     </div>
 
     <h2 class="cr-title">${ch.title}</h2>
 
-    <div class="cr-metrics">
-      <span class="cr-metric"><b>${info.score}</b> <span class="cr-metric-k">${info.scoreBasis === "historico" ? "pts del motor" : "pts por criterios"}</span></span>
-      <span class="cr-metric"><b>#${rank}</b> <span class="cr-metric-k">de ${list.length}</span></span>
-      <span class="cr-metric-reason">${(reasonLines[0] || "Delibera en equipo: el motor no tiene una razón dominante para este reto.").replace(/\(\s*[+-]?[\d.]+\s*pts\s*\)/i, "").trim()}</span>
-    </div>
-
     <div class="cr-body">
       <section class="cr-panel is-src">
-        <div class="cr-block"><span class="cr-num">01</span> Lo que pide el comité <span class="cr-tag is-lock">fuente bloqueada · no editable</span></div>
-        ${ch.imageUrl ? `<button class="cr-thumb" onclick="openLightbox('${ch.imageUrl}')" title="Ampliar el cartel oficial"><img src="${ch.imageUrl}" alt="Cartel oficial del reto ${ch.id}"></button>` : ""}
+        <div class="cr-block">Lo que pide el comité <span class="cr-tag is-lock">fuente · no editable</span></div>
+        ${ch.imageUrl ? `<button class="cr-thumb" onclick="openLightbox('${ch.imageUrl}')" title="Ampliar el cartel oficial"><img src="${ch.imageUrl}" alt="Cartel oficial del reto"></button>` : ""}
         ${sourceText
           ? `<p class="cr-quote">${sourceText}</p>`
           : `<p class="cr-pending">Descripción oficial pendiente de transcribir. Pega el texto del comité para que quede como fuente.</p>`}
-        ${ch.ods && !odsList.length ? `<p class="cr-tag is-lock">ODS por transcribir</p>` : ""}
       </section>
 
       <section class="cr-panel">
-        <div class="cr-block"><span class="cr-num">02</span> Lo que propone la IA <span class="cr-tag">propone · no vota</span></div>
-        ${ch.wowProposal
+        <div class="cr-block">La propuesta del motor <span class="cr-tag">propone · no vota</span></div>
+        ${pr ? `
+          <h3 class="cr-prop-name">${escapeHtml(pr.nombre || "Propuesta sin nombre")}</h3>
+          ${pr.claim ? `<p class="cr-thesis">${escapeHtml(pr.claim)}</p>` : ""}
+          ${pr.beneficiario ? `<p class="cr-fact">${escapeHtml(pr.beneficiario)}</p>` : ""}
+          <a class="cr-link" href="/docs/Dossier_Soluciones_Actuales.pdf" target="_blank" rel="noopener noreferrer">Ver la ficha completa en el dossier →</a>
+        ` : ch.wowProposal
           ? `<p class="cr-thesis">${ch.wowProposal}</p>`
-          : `<p class="cr-pending">Sin tesis formulada todavía. Usa <button class="cr-link" onclick="openAIThesisFormulatorModal('${ch.id}')">IA Copilot</button> para estructurarla contra la rúbrica.</p>`}
-        ${ch.nicaraguaAdaptation ? `<p class="cr-fact"><b>Factibilidad & despliegue:</b> ${ch.nicaraguaAdaptation}</p>` : ""}
-        ${(ch.winnerPattern || ch.precedent) ? `<p class="cr-precedent"><b>Precedente:</b> ${ch.winnerPattern || ch.precedent}</p>` : ""}
-        ${reasonLines.length ? `
-          <div class="cr-pts">
-            ${reasonLines.map(line => {
-              const m = line.match(/\(\s*([+-]?\d+(?:\.\d+)?)\s*pts\s*\)/i);
-              const val = m ? parseFloat(m[1]) : 0;
-              const label = line.replace(/\(\s*[+-]?\d+(?:\.\d+)?\s*pts\s*\)/i, "").trim();
-              const w = Math.min(100, Math.round((Math.abs(val) / 20) * 100));
-              return `<div class="cr-pt ${val < 0 ? "is-neg" : "is-pos"}">
-                <span class="cr-pt-k">${label}</span>
-                <span class="cr-pt-track"><span class="cr-pt-fill" style="width:${w}%"></span></span>
-                <span class="cr-pt-v">${val > 0 ? "+" : ""}${val}</span>
-              </div>`;
-            }).join("")}
-          </div>
-        ` : ""}
-        <p class="cr-angle">${ang.bullets.slice(0, 2).map(b => `<span class="cr-angle-i">${b}</span>`).join("")}</p>
+          : `<p class="cr-pending">Sin propuesta escrita para este reto todavía. <button class="cr-link" onclick="openAIThesisFormulatorModal('${ch.id}')">Formular con IA Copilot</button></p>`}
+        ${ang.bullets && ang.bullets.length && !pr ? `<p class="cr-angle">${ang.bullets.slice(0, 1).map(b => `<span class="cr-angle-i">${b}</span>`).join("")}</p>` : ""}
       </section>
     </div>
 
@@ -3758,200 +3832,68 @@ function renderViewChallenges() {
   const mesaIndex = mesaActive ? mesaList.indexOf(mesaActive) : 0;
 
   return `
-    <div class="wizard-canvas" style="max-width:min(1760px, 98vw); width:100%; margin:0 auto; padding-bottom:60px; box-sizing:border-box;">
-      <div class="stepper-header" style="justify-content:space-between; margin-bottom:18px;">
-        <div style="display:flex; align-items:center; gap:14px;">
-          <span class="stepper-pill"><span class="pill-dim">PASO</span> <strong class="pill-num">03</strong> <span class="pill-dim">DE 12</span> <span class="pill-dot">·</span> <span class="pill-label">RETOS DEL COMITÉ</span></span>
-        </div>
-        <div style="display:flex; align-items:center; gap:8px;">
-          <button class="btn-minimal-back" onclick="switchTab('team')" title="Volver a identidad de equipo">
-            ${SVG.arrowLeft}
-            <span>Editar equipo</span>
-          </button>
-          <a href="docs/Matriz_Seleccion_Desafios_2026.docx" download="Matriz_Seleccion_Desafios_2026.docx" class="btn-pill-light" style="font-size:11.5px; padding:6px 14px; text-decoration:none;">
-            ${SVG.download} Matriz Word (.docx)
-          </a>
-        </div>
-      </div>
-
-      ${state.challenge_id && selectedChallengeObj ? `
-        <!-- Banner de Reto Seleccionado -->
-        <div style="background:#F0F6FF; border:1.5px solid #BFDBFE; border-radius:14px; padding:16px 20px; margin-bottom:22px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
-          <div style="display:flex; align-items:center; gap:12px;">
-            <span style="background:#0866F5; color:#ffffff; font-family:var(--font-mono); font-size:12px; font-weight:800; padding:4px 10px; border-radius:8px;">
-              RETO SELECCIONADO #${selectedChallengeObj.id}
-            </span>
-            <div>
-              <div style="font-size:14px; font-weight:800; color:#0D1B35;">${selectedChallengeObj.title}</div>
-              <div style="font-size:12px; color:#5C7193;">${selectedChallengeObj.category} · Viabilidad estimada: ${selectedChallengeObj.winRate || 90}%</div>
-            </div>
-          </div>
-          <div style="display:flex; gap:8px;">
-            <button class="btn-pill-light" onclick="clearSelectedChallenge()" style="font-size:12px; font-weight:700;">
-              Cambiar de Reto
-            </button>
-            <button class="btn-select-card filled" style="padding:8px 18px; font-size:12px; font-weight:800;" onclick="switchTab('solution')">
-              Continuar a Taller de Solución ${SVG.arrowRight}
-            </button>
-          </div>
-        </div>
-      ` : ""}
+    <div class="wizard-canvas" style="max-width:min(1760px, 100%); width:100%; margin:0 auto; padding-bottom:60px; box-sizing:border-box;">
 
       ${!hasChallenges ? `
-        <!-- Estado Inicial: Espera de Retos del Evento en Vivo (Sin asumir retos ni inventar) -->
-        <div class="phase-header" style="margin-bottom:20px;">
-          <h1 class="phase-title" style="font-size:28px; font-weight:900; color:#0D1B35; margin-bottom:6px; letter-spacing:-0.02em;">
-            Retos del <span class="phase-title-accent" style="color:#0866F5;">Comité en Vivo</span>
-          </h1>
-          <p class="phase-subtitle" style="font-size:13.5px; color:#5C7193; line-height:1.45;">
-            El sistema no asume ni inventa retos por anticipado. Cuando el comité del certamen libere los desafíos de este año, pega el texto aquí para que el motor formule soluciones tácticas sugeridas para cada uno.
-          </p>
-        </div>
-
-        <div style="display:grid; grid-template-columns: minmax(0, 1fr) 320px; gap:20px; align-items:start; margin-bottom:24px;">
-          <!-- Columna Principal: Ingreso de Retos -->
-          <div style="background:#FFFFFF; border:1px solid var(--border-light); border-radius:14px; padding:22px; box-shadow:0 1px 3px rgba(0, 0, 0, 0.02);">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-              <div style="font-size:13.5px; font-weight:800; color:#0D1B35;">Ingreso e Importación Oficial de Retos</div>
-              <span class="tactical-status-pill status-pending"><span class="status-dot"></span>Importador Multiformato</span>
-            </div>
-            <p style="font-size:12px; color:#5C7193; margin-bottom:14px; line-height:1.5;">
-              Importa los retos subiendo un archivo comprimido <strong>.ZIP</strong> (con fotos o documentos), <strong>imágenes</strong> (.png, .jpg), documento <strong>PDF</strong>, archivo <strong>Word (.docx)</strong> o pega el comunicado oficial.
-            </p>
-
-            <div class="tribunal-mission">
-              <div class="tribunal-mission-step"><span class="tm-num">1</span><span>Carga las fotos o PDF del comité (o pega el texto si el OCR falla — el cuadro de pegar siempre está aquí).</span></div>
-              <div class="tribunal-mission-step"><span class="tm-num">2</span><span><strong>Leer</strong>: revisa cada reto con su descripción completa y el Ángulo Ganador sugerido.</span></div>
-              <div class="tribunal-mission-step"><span class="tm-num">3</span><span><strong>Embudo</strong>: Descartar → Votar (3 puntos por persona) → Decidir. Cada integrante da su voz individual.</span></div>
-            </div>
-
-            <!-- Dropzone Universal Compacta -->
-            <div id="challenge-dropzone" 
-                 style="border:2px dashed #93C5FD; background:#F8FAFD; border-radius:10px; padding:16px 14px; text-align:center; margin-bottom:14px; cursor:pointer; transition:all 150ms ease;"
-                 onclick="document.getElementById('challenge-file-input').click()"
-                 ondragover="event.preventDefault(); this.style.borderColor='#0866F5'; this.style.background='#EFF6FF';"
-                 ondragleave="event.preventDefault(); this.style.borderColor='#93C5FD'; this.style.background='#F8FAFD';"
-                 ondrop="handleChallengeDrop(event)">
-              <input type="file" id="challenge-file-input" style="display:none;" multiple accept=".zip,.pdf,.docx,.doc,.txt,.png,.jpg,.jpeg,.webp" onclick="event.stopPropagation()" onchange="handleChallengeFileSelect(this.files)">
-              <div style="display:flex; justify-content:center; align-items:center; gap:8px; margin-bottom:4px; color:#0866F5;">
-                ${SVG.upload}
-                <span style="font-size:13px; font-weight:800; color:#0D1B35;">Arrastra aquí o haz clic para subir archivo</span>
-              </div>
-              <div style="font-size:11px; color:#64748B;">
-                Soporta <strong>.ZIP</strong>, <strong>Imágenes (.png, .jpg)</strong>, <strong>PDF</strong>, <strong>Word (.docx)</strong> y <strong>Texto</strong>.
-              </div>
-              <div id="import-status-indicator" style="display:none; margin-top:8px; font-size:11.5px; font-weight:700; color:#0866F5;"></div>
-            </div>
-
-            <textarea id="raw-committee-challenges" rows="7" style="width:100%; border:1px solid #CBD5E1; border-radius:8px; padding:12px; font-size:12px; font-family:var(--font-mono); box-sizing:border-box; background:#F8FAFD; line-height:1.5; resize:vertical;"
-              placeholder="O pega aquí el comunicado oficial de retos del comité...&#10;&#10;Ejemplo:&#10;RETO 01: Reconversión y segunda vida de motores&#10;Demanda del comité: Diseñar sistemas que reutilicen motores eléctricos en desuso para tracción agrícola...&#10;&#10;RETO 02: Red comunitaria para prevención de inundaciones&#10;Demanda del comité: Alerta temprana de crecidas de ríos con tecnología local..."></textarea>
-            
-            <div style="display:flex; justify-content:flex-end; align-items:center; margin-top:14px;">
-              <button id="btn-process-challenges" class="btn-select-card filled" style="padding:10px 24px; font-size:13px; font-weight:800; width:100%; justify-content:center;" onclick="processCommitteeChallengesInput()">
-                Cargar Retos en Vivo y Sugerir Soluciones ${SVG.arrowRight}
-              </button>
-            </div>
-          </div>
-
-          <!-- Columna Lateral: Mascota y Orientación -->
-          <div style="display:flex; flex-direction:column; gap:14px;">
-            <div style="background:#FFFFFF; border:1px solid var(--border-light); border-radius:14px; padding:18px; text-align:center; box-shadow:0 1px 3px rgba(0, 0, 0, 0.02);">
-              <!-- Mascota Robot / Rally Bot Vectorial Saludando -->
-              <div style="display:inline-flex; justify-content:center; align-items:center; width:90px; height:90px; background:linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%); border-radius:50%; margin-bottom:12px; border:2px solid #BFDBFE; position:relative;">
-                <svg width="60" height="60" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <!-- Antena -->
-                  <circle cx="36" cy="10" r="3.5" fill="#0866F5" />
-                  <line x1="36" y1="13" x2="36" y2="20" stroke="#0866F5" stroke-width="2.5" stroke-linecap="round" />
-                  <!-- Cabeza -->
-                  <rect x="18" y="20" width="36" height="28" rx="8" fill="#1D4ED8" />
-                  <rect x="22" y="24" width="28" height="14" rx="4" fill="#0B1329" />
-                  <!-- Ojos alegres / pantalla -->
-                  <circle cx="29" cy="31" r="3" fill="#60A5FA" />
-                  <circle cx="43" cy="31" r="3" fill="#60A5FA" />
-                  <!-- Sonrisa -->
-                  <path d="M33 42 C34.5 44 37.5 44 39 42" stroke="#93C5FD" stroke-width="2" stroke-linecap="round" />
-                  <!-- Cuello -->
-                  <rect x="32" y="48" width="8" height="4" rx="2" fill="#93C5FD" />
-                  <!-- Cuerpo -->
-                  <rect x="16" y="52" width="40" height="16" rx="6" fill="#2563EB" />
-                  <!-- Medalla / Logo rally -->
-                  <circle cx="36" cy="60" r="4" fill="#F59E0B" />
-                  <!-- Brazo saludando animado -->
-                  <g style="transform-origin: 54px 54px; animation: rallyWave 1.8s infinite ease-in-out;">
-                    <path d="M54 54 Q65 44 64 32" stroke="#1D4ED8" stroke-width="4.5" stroke-linecap="round" />
-                    <!-- Mano saludando -->
-                    <circle cx="64" cy="30" r="4" fill="#F59E0B" />
-                  </g>
-                  <!-- Brazo izquierdo quieto -->
-                  <path d="M18 54 Q10 60 12 68" stroke="#1D4ED8" stroke-width="4" stroke-linecap="round" />
-                </svg>
-                <style>
-                  @keyframes rallyWave {
-                    0%, 100% { transform: rotate(0deg); }
-                    25% { transform: rotate(18deg); }
-                    75% { transform: rotate(-8deg); }
-                  }
-                </style>
-              </div>
-
-              <!-- Bocadillo de diálogo -->
-              <div style="background:#F0F6FF; border:1px solid #BFDBFE; border-radius:10px; padding:10px 12px; margin-bottom:12px; position:relative; text-align:left;">
-                <div style="font-size:12px; font-weight:800; color:#1D4ED8; margin-bottom:3px; display:flex; align-items:center; gap:5px;">
-                  <span>RallyBot en guardia</span>
-                </div>
-                <div style="font-size:11.5px; color:#334155; line-height:1.4;">
-                  "¡Hora del certamen! Sube las bases o pega el comunicado para que pasemos al selector de retos."
-                </div>
-              </div>
-
-              <div style="text-align:left; font-size:11px; color:#64748B; line-height:1.45; background:#F8FAFD; border:1px solid #E2E8F0; border-radius:8px; padding:10px;">
-                <div style="font-weight:700; color:#334155; margin-bottom:4px;">Tips para este paso:</div>
-                <ul style="margin:0; padding-left:14px;">
-                  <li>Reconoce formato <strong>RETO 01: ...</strong> automáticamente.</li>
-                  <li>Puedes arrastrar documentos oficiales en <strong>PDF</strong> o <strong>Word</strong>.</li>
-                  <li>En el siguiente paso podrás revisar y elegir cuál abordar.</li>
-                </ul>
-              </div>
-            </div>
+        <div class="phase-header">
+          <div>
+            <h1 class="phase-title">Retos del <span class="phase-title-accent">comité</span></h1>
+            <p class="phase-subtitle">El comité todavía no los ha publicado. Súbelos cuando los tengas y aquí mismo se ordenan.</p>
           </div>
         </div>
+
+        <section class="ch-import">
+          <div id="challenge-dropzone" class="ch-drop"
+               onclick="document.getElementById('challenge-file-input').click()"
+               ondragover="event.preventDefault(); this.classList.add('is-over');"
+               ondragleave="event.preventDefault(); this.classList.remove('is-over');"
+               ondrop="handleChallengeDrop(event)">
+            <input type="file" id="challenge-file-input" aria-label="Subir archivos del comité" style="display:none;" multiple accept=".zip,.pdf,.docx,.doc,.txt,.png,.jpg,.jpeg">
+            <span class="ch-drop-icon">${SVG.upload}</span>
+            <span class="ch-drop-title">Arrastra los archivos o toca para elegirlos</span>
+            <span class="ch-drop-hint">ZIP, imágenes, PDF, Word o texto. La IA los lee y los numera.</span>
+            <div id="import-status-indicator" style="display:none; margin-top:8px; font-size:12px; font-weight:700; color:var(--color-primary);"></div>
+          </div>
+
+          <label class="ch-paste-label" for="raw-committee-challenges">O pega el comunicado del comité</label>
+          <textarea id="raw-committee-challenges" class="ch-paste" rows="6"
+            placeholder="RETO 01: ...&#10;RETO 02: ..."></textarea>
+
+          <div class="ch-import-foot">
+            <button id="btn-process-challenges" class="btn-select-card filled" style="padding:10px 22px; font-size:13px; font-weight:700;">
+              Cargar los retos y proponer soluciones ${SVG.arrowRight}
+            </button>
+          </div>
+        </section>
       ` : `
-        <div class="phase-header" style="margin-bottom:16px;">
-          <h1 class="phase-title" style="font-size:28px; font-weight:900; color:#0F172A; margin-bottom:4px; letter-spacing:-0.02em;">
-            Retos Oficiales & <span class="phase-title-accent">Mesa de Decisión</span>
-          </h1>
-          <p class="phase-subtitle" style="font-size:13px; color:#475569; line-height:1.45;">
-            ${list.length} retos en radar. Pasan uno a uno: lo que pide el comité, lo que propone la IA, lo que redacta el equipo y cómo vota la mesa.
-          </p>
+        <div class="phase-header">
+          <div>
+            <h1 class="phase-title">Retos del comité</h1>
+            <p class="phase-subtitle">${list.length} retos cargados. Abre uno, léelo y elige el que van a desarrollar.</p>
+          </div>
+          <div class="cr-top-actions">
+            <a class="link-quiet" href="/docs/Dossier_Soluciones_Actuales.pdf" target="_blank" rel="noopener noreferrer">Dossier de soluciones</a>
+            <button class="link-quiet" onclick="switchTab('team')">Editar equipo</button>
+          </div>
         </div>
 
-        <details class="rk-fold">
-          <summary>
-            <span class="rk-fold-k">Ranking de retos</span>
-            <span class="rk-fold-n">· ${list.length} evaluados</span>
-            <span class="rk-fold-h">el pronóstico del motor, por si quieren comparar antes de votar</span>
-            <span class="rk-fold-go">ver ▾</span>
-          </summary>
-          ${renderChallengeRanking()}
-        </details>
-
-        <!-- Barra de Control y Filtros (Estilo Editorial Sobrio) -->
+        <!-- Filtros: fila plana, sin caja -->
         ${tri.step !== "vote" ? `
-        <div style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:8px; padding:10px 14px; margin-bottom:14px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-          <div style="display:flex; align-items:center; gap:6px;">
-            <button class="btn-pill-light" style="${challengeFilter === 'all' ? 'background:#0F172A; color:#fff; border-color:#0F172A;' : ''} padding:5px 12px; font-size:11.5px; font-weight:700;" onclick="challengeFilter='all'; renderTab('challenges');">
+        <div class="cr-filters">
+          <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
+            <button class="btn-pill-light" style="${challengeFilter === 'all' ? 'background:var(--color-navy); color:var(--bg-surface); border-color:var(--color-navy);' : ''} padding:5px 12px; font-size:12px; font-weight:700;" onclick="challengeFilter='all'; renderTab('challenges');">
               Todos (${list.length})
             </button>
-            <button class="btn-pill-light" style="${challengeFilter === 'innovación' ? 'background:#0F172A; color:#fff; border-color:#0F172A;' : ''} padding:5px 12px; font-size:11.5px; font-weight:700;" onclick="challengeFilter='innovación'; renderTab('challenges');">
+            <button class="btn-pill-light" style="${challengeFilter === 'innovación' ? 'background:var(--color-navy); color:var(--bg-surface); border-color:var(--color-navy);' : ''} padding:5px 12px; font-size:12px; font-weight:700;" onclick="challengeFilter='innovación'; renderTab('challenges');">
               Innovación
             </button>
-            <button class="btn-pill-light" style="${challengeFilter === 'impacto social' ? 'background:#0F172A; color:#fff; border-color:#0F172A;' : ''} padding:5px 12px; font-size:11.5px; font-weight:700;" onclick="challengeFilter='impacto social'; renderTab('challenges');">
+            <button class="btn-pill-light" style="${challengeFilter === 'impacto social' ? 'background:var(--color-navy); color:var(--bg-surface); border-color:var(--color-navy);' : ''} padding:5px 12px; font-size:12px; font-weight:700;" onclick="challengeFilter='impacto social'; renderTab('challenges');">
               Impacto Social
             </button>
           </div>
 
           <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
-            <button class="btn-pill-light" style="padding:5px 12px; font-size:11.5px; font-weight:700; display:inline-flex; align-items:center; gap:6px;" onclick="openChallengeImportBox()" title="Ver los retos cargados e importar otros sin borrarlos">
+            <button class="btn-pill-light" style="padding:5px 12px; font-size:12px; font-weight:700; display:inline-flex; align-items:center; gap:6px;" onclick="openChallengeImportBox()" title="Ver los retos cargados e importar otros sin borrarlos">
               ${SVG.upload}<span>Importar retos</span>
             </button>
           <details class="rank-tools rs-tools">
@@ -3961,9 +3903,6 @@ function renderViewChallenges() {
               <span class="rs-tools-chevron">${SVG.chevronDown}</span>
             </summary>
             <div class="rs-tools-menu" role="menu" aria-label="Herramientas de retos">
-              <button class="rs-tools-item" role="menuitem" onclick="openChallengeImportBox()">
-                ${SVG.upload}<span>Importar o re-pegar retos</span>
-              </button>
               <button class="rs-tools-item" role="menuitem" onclick="reScanChallengesWithOCR()" title="Re-escanear imágenes adjuntas con IA visual (modelo vision gratuito); red de seguridad EasyOCR si no hay IA conectada">
                 ${SVG.refresh}<span>Re-escanear OCR</span>
               </button>
@@ -3979,53 +3918,55 @@ function renderViewChallenges() {
           </div>
         </div>
         ` : ""}
-        <div id="custom-challenge-input-box" style="display:none; background:#FFFFFF; border:1px solid #CBD5E1; border-radius:8px; padding:14px; margin-bottom:14px;"
+        <div id="custom-challenge-input-box" style="display:none; background:var(--bg-surface); border:1px solid var(--border-strong); border-radius:8px; padding:14px; margin-bottom:14px;"
              ondragover="event.preventDefault(); this.style.borderColor='#0866F5';"
              ondragleave="event.preventDefault(); this.style.borderColor='#CBD5E1';"
              ondrop="handleChallengeDrop(event)">
           <div id="challenge-import-current" style="margin-bottom:12px;"></div>
-          <div style="border:1.5px dashed #CBD5E1; background:#F8FAFC; border-radius:6px; padding:14px; text-align:center; margin-bottom:10px; cursor:pointer;"
+          <div style="border:1.5px dashed var(--border-strong); background:var(--bg-subtle); border-radius:6px; padding:14px; text-align:center; margin-bottom:10px; cursor:pointer;"
                onclick="document.getElementById('challenge-file-input-inline').click()">
             <input type="file" id="challenge-file-input-inline" aria-label="Subir archivos de retos" style="display:none;" multiple accept=".zip,.pdf,.docx,.doc,.txt,.png,.jpg,.jpeg,.webp" onclick="event.stopPropagation()" onchange="handleChallengeFileSelect(this.files)">
-            <div style="font-size:12.5px; font-weight:700; color:#0F172A;">Arrastra aquí o haz clic para subir archivo ZIP, imágenes, PDF o Word</div>
-            <div style="font-size:11px; color:#64748B; margin-top:2px;">La IA visual jerarquizará automáticamente todos los retos contenidos (EasyOCR local como red de seguridad).</div>
+            <div style="font-size:13px; font-weight:700; color:var(--text-title);">Arrastra aquí o haz clic para subir archivo ZIP, imágenes, PDF o Word</div>
+            <div style="font-size:11px; color:var(--text-muted); margin-top:2px;">La IA visual jerarquizará automáticamente todos los retos contenidos (EasyOCR local como red de seguridad).</div>
           </div>
-          <div id="custom-import-status-indicator" style="display:none; margin-bottom:10px; font-size:12px; font-weight:700; color:#0866F5;"></div>
-          <textarea id="raw-committee-challenges" rows="4" style="width:100%; border:1px solid #CBD5E1; border-radius:6px; padding:10px; font-size:12px; font-family:var(--font-mono); box-sizing:border-box; background:#F8FAFC;"
+          <div id="custom-import-status-indicator" style="display:none; margin-bottom:10px; font-size:12px; font-weight:700; color:var(--color-primary);"></div>
+          <textarea id="raw-committee-challenges" rows="4" style="width:100%; border:1px solid var(--border-strong); border-radius:6px; padding:10px; font-size:12px; font-family:var(--font-mono); box-sizing:border-box; background:var(--bg-subtle);"
             placeholder="O pega aquí el texto del comunicado oficial..."></textarea>
-          <label style="display:flex; align-items:center; gap:8px; margin-top:10px; font-size:12px; color:#334155; cursor:pointer;">
+          <label style="display:flex; align-items:center; gap:8px; margin-top:10px; font-size:12px; color:var(--text-body); cursor:pointer;">
             <input type="checkbox" id="challenge-append-mode" checked style="cursor:pointer;">
             <span>Agregar a los retos cargados (si lo desmarcas, este comunicado <strong>reemplaza</strong> la lista actual)</span>
           </label>
           <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:8px;">
-            <button class="btn-secondary" style="font-size:11.5px; padding:5px 12px;" onclick="toggleCustomChallengeInput()">Cancelar</button>
+            <button class="btn-secondary" style="font-size:12px; padding:5px 12px;" onclick="toggleCustomChallengeInput()">Cancelar</button>
             <button class="btn-select-card filled" style="padding:6px 16px; font-size:12px; font-weight:700;" onclick="processCommitteeChallengesInput()">Procesar Retos</button>
           </div>
         </div>
 
         ${mesaActive ? `
           <div class="deliberation-container">
-            ${renderMesaNav(mesaList, mesaActive.id, list.length)}
             <section class="deliberation-sheet cr-sheet">
               ${renderMesaBar(mesaList, mesaActive, mesaIndex)}
               ${renderMesaSlide(mesaActive, mesaList, mesaIndex)}
 
               <div class="cr-cta">
-                <div>
-                  ${mesaIndex > 0 ? `<button class="btn-pill-light" style="font-size:12px; font-weight:700; padding:6px 14px;" onclick="mesaGo('${mesaList[mesaIndex - 1].id}')">← Reto #${mesaList[mesaIndex - 1].id}</button>` : `<span style="width:80px; display:inline-block;"></span>`}
-                </div>
-                <button class="btn-select-card filled" style="padding:10px 22px; font-size:13px; font-weight:800;" onclick="selectChallenge('${mesaActive.id}', true)">
-                  Elegir Reto #${mesaActive.id} e Ir a Solución →
+                <button class="cr-cta-btn" onclick="selectChallenge('${mesaActive.id}', true)">
+                  ${state.challenge_id === mesaActive.id ? "Seguir con este reto →" : "Elegir este reto y escribir la solución →"}
                 </button>
-                <div>
-                  ${mesaIndex < mesaList.length - 1 ? `<button class="btn-pill-light" style="font-size:12px; font-weight:700; padding:6px 14px;" onclick="mesaGo('${mesaList[mesaIndex + 1].id}')">Reto #${mesaList[mesaIndex + 1].id} →</button>` : `<span style="width:80px; display:inline-block;"></span>`}
-                </div>
               </div>
             </section>
           </div>
         ` : `
-          <div style="padding:30px; text-align:center; color:#64748B;">No hay retos en esta categoría.</div>
+          <div style="padding:30px; text-align:center; color:var(--text-muted);">No hay retos en esta categoría.</div>
         `}
+
+        <details class="rk-fold">
+          <summary>
+            <span class="rk-fold-k">Las nueve propuestas juntas</span>
+            <span class="rk-fold-n">· ${list.length}</span>
+            <span class="rk-fold-go">ver ▾</span>
+          </summary>
+          ${renderChallengeRanking()}
+        </details>
       `}
     </div>
   `;
@@ -4135,8 +4076,8 @@ function openLightbox(src) {
     document.body.appendChild(modal);
   }
   modal.innerHTML = `
-    <div style="background:#0F172A; padding:16px; border-radius:10px; max-width:92vw; max-height:92vh; display:flex; flex-direction:column; align-items:center; position:relative;">
-      <button style="position:absolute; top:12px; right:12px; background:#334155; color:#fff; border:none; border-radius:6px; padding:6px 12px; cursor:pointer; font-weight:800;" onclick="document.getElementById('img-lightbox-modal').style.display='none'">Cerrar</button>
+    <div style="background:var(--color-navy); padding:16px; border-radius:10px; max-width:92vw; max-height:92vh; display:flex; flex-direction:column; align-items:center; position:relative;">
+      <button style="position:absolute; top:12px; right:12px; background:var(--text-body); color:var(--bg-surface); border:none; border-radius:6px; padding:6px 12px; cursor:pointer; font-weight:800;" onclick="document.getElementById('img-lightbox-modal').style.display='none'">Cerrar</button>
       <img src="${src}" style="max-width:100%; max-height:85vh; object-fit:contain; border-radius:4px;">
     </div>
   `;
@@ -4155,33 +4096,33 @@ function openEditChallengeModal(chId) {
     document.body.appendChild(modal);
   }
   modal.innerHTML = `
-    <div class="modal-card" style="max-width:560px; width:95%; background:#FFFFFF; border-radius:10px; padding:22px; box-shadow:0 8px 30px rgba(0,0,0,0.15);">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid #E2E8F0;">
-        <h3 style="font-size:16px; font-weight:800; color:#0F172A; margin:0;">Editar Desafío #${ch.id}</h3>
+    <div class="modal-card" style="max-width:560px; width:95%; background:var(--bg-surface); border-radius:10px; padding:22px; box-shadow:0 8px 30px rgba(0,0,0,0.15);">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid var(--border-light);">
+        <h3 style="font-size:16px; font-weight:800; color:var(--text-title); margin:0;">Editar Desafío #${ch.id}</h3>
         <button class="btn-icon-discreet" onclick="document.getElementById('edit-challenge-modal').style.display='none'">${SVG.close}</button>
       </div>
       <div style="display:flex; flex-direction:column; gap:12px;">
         <div>
-          <label style="font-size:11px; font-weight:800; color:#475569; text-transform:uppercase; margin-bottom:4px; display:block;">Título del Desafío</label>
-          <input type="text" id="edit-ch-title" value="${ch.title || ''}" style="width:100%; padding:8px 10px; font-size:13px; border:1px solid #CBD5E1; border-radius:6px; box-sizing:border-box;">
+          <label style="font-size:11px; font-weight:800; color:var(--text-muted);  margin-bottom:4px; display:block;">Título del Desafío</label>
+          <input type="text" id="edit-ch-title" value="${ch.title || ''}" style="width:100%; padding:8px 10px; font-size:13px; border:1px solid var(--border-strong); border-radius:6px; box-sizing:border-box;">
         </div>
         <div>
-          <label style="font-size:11px; font-weight:800; color:#475569; text-transform:uppercase; margin-bottom:4px; display:block;">Categoría</label>
-          <select id="edit-ch-cat" style="width:100%; padding:8px 10px; font-size:12px; border:1px solid #CBD5E1; border-radius:6px; box-sizing:border-box;">
+          <label style="font-size:11px; font-weight:800; color:var(--text-muted);  margin-bottom:4px; display:block;">Categoría</label>
+          <select id="edit-ch-cat" style="width:100%; padding:8px 10px; font-size:12px; border:1px solid var(--border-strong); border-radius:6px; box-sizing:border-box;">
             <option value="Innovación" ${ch.category === 'Innovación' ? 'selected' : ''}>Innovación</option>
             <option value="Impacto Social" ${ch.category === 'Impacto Social' ? 'selected' : ''}>Impacto Social</option>
           </select>
         </div>
         <div>
-          <label style="font-size:11px; font-weight:800; color:#475569; text-transform:uppercase; margin-bottom:4px; display:block;">Demanda Oficial del Comité</label>
-          <textarea id="edit-ch-demand" rows="3" style="width:100%; padding:8px 10px; font-size:12.5px; border:1px solid #CBD5E1; border-radius:6px; box-sizing:border-box; line-height:1.4;">${ch.officialExpectation || ''}</textarea>
+          <label style="font-size:11px; font-weight:800; color:var(--text-muted);  margin-bottom:4px; display:block;">Demanda Oficial del Comité</label>
+          <textarea id="edit-ch-demand" rows="3" style="width:100%; padding:8px 10px; font-size:13px; border:1px solid var(--border-strong); border-radius:6px; box-sizing:border-box; line-height:1.4;">${ch.officialExpectation || ''}</textarea>
         </div>
         <div>
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-            <label style="font-size:11px; font-weight:800; color:#475569; text-transform:uppercase; margin-bottom:0;">Tesis de Solución Sugerida</label>
-            <button type="button" class="btn-pill-light" style="font-size:10.5px; font-weight:700; color:#1D4ED8; padding:2px 8px; border:1px solid #BFDBFE; background:#EFF6FF; border-radius:4px; cursor:pointer;" onclick="openAIThesisFormulatorModal('${ch.id}', true)">Formular con IA</button>
+            <label style="font-size:11px; font-weight:800; color:var(--text-muted);  margin-bottom:0;">Tesis de Solución Sugerida</label>
+            <button type="button" class="btn-pill-light" style="font-size:11px; font-weight:700; color:var(--color-primary); padding:2px 8px; border:1px solid var(--status-ok-border); background:var(--status-ok-bg); border-radius:4px; cursor:pointer;" onclick="openAIThesisFormulatorModal('${ch.id}', true)">Formular con IA</button>
           </div>
-          <textarea id="edit-ch-wow" rows="3" style="width:100%; padding:8px 10px; font-size:12.5px; border:1px solid #CBD5E1; border-radius:6px; box-sizing:border-box; line-height:1.4;">${ch.wowProposal || ''}</textarea>
+          <textarea id="edit-ch-wow" rows="3" style="width:100%; padding:8px 10px; font-size:13px; border:1px solid var(--border-strong); border-radius:6px; box-sizing:border-box; line-height:1.4;">${ch.wowProposal || ''}</textarea>
         </div>
       </div>
       <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:16px;">
@@ -4288,7 +4229,7 @@ function renderRankingChartSvg(rows) {
     const isSel = state.challenge_id === r.ch.id;
     const y = TOP + i * ROW_H;
     const yBar = y + 18;
-    const color = isSel ? "#0F172A" : (i === 0 ? "#0866F5" : (i < 3 ? "#2563EB" : (i < 6 ? "#64748B" : "#94A3B8")));
+    const color = isSel ? "#0F172A" : (i === 0 ? "#0866F5" : (i < 3 ? "#2563EB" : (i < 6 ? "var(--text-muted)" : "var(--text-muted)")));
     const trackColor = isSel ? "#CBD5E1" : "#EDF2F7";
     const title = formatChallengeTitle(r.ch, 95);
     const scoreVal = Math.max(0, Math.min(100, r.info.score));
@@ -4300,8 +4241,8 @@ function renderRankingChartSvg(rows) {
       svg += `<rect x="0" y="${y - 4}" width="${W}" height="${ROW_H - 2}" rx="5" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1"/>`;
     }
     svg += `<text x="8" y="${y + 11}" font-family="JetBrains Mono, monospace" font-size="10" font-weight="800" fill="${isSel ? "#0F172A" : "#0866F5"}">#${posNum}</text>`;
-    svg += `<text x="38" y="${y + 11}" font-family="var(--font-sans)" font-size="11" font-weight="${isSel ? 700 : 600}" fill="${isSel ? "#0F172A" : "#334155"}">${title.replace(/&/g, "&amp;").replace(/</g, "&lt;")}</text>`;
-    svg += `<text x="${W - 8}" y="${y + 11}" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10.5" font-weight="800" fill="${isSel ? "#0F172A" : "#1E293B"}">${r.info.score}<tspan font-size="8.5" font-weight="600" fill="#94A3B8"> pts</tspan></text>`;
+    svg += `<text x="38" y="${y + 11}" font-family="Plus Jakarta Sans, sans-serif" font-size="11" font-weight="${isSel ? 700 : 600}" fill="${isSel ? "#0F172A" : "#334155"}">${title.replace(/&/g, "&amp;").replace(/</g, "&lt;")}</text>`;
+    svg += `<text x="${W - 8}" y="${y + 11}" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10.5" font-weight="800" fill="${isSel ? "#0F172A" : "#1E293B"}">${r.info.score}<tspan font-size="8.5" font-weight="600" fill="var(--text-muted)"> pts</tspan></text>`;
     svg += `<rect x="${BAR_X0}" y="${yBar}" width="${BAR_W}" height="${BAR_H}" rx="3" fill="${trackColor}"/>`;
     svg += `<rect x="${BAR_X0}" y="${yBar}" width="${barWidth}" height="${BAR_H}" rx="3" fill="${color}"/>`;
     svg += `</g>`;
@@ -4310,68 +4251,74 @@ function renderRankingChartSvg(rows) {
   return `<div class="rank-chart-wrap">${svg}</div>`;
 }
 
+// ── SOLUCIONES POR RETO (research/soluciones_actuales.json) ──────────────────
+// Las propuestas las escribe el motor de soluciones; aquí solo se muestran.
+let SOLUCIONES_DATOS = null;
+let solucionesCargando = false;
+
+function normalizarIdReto(id) {
+  return String(id == null ? "" : id).replace(/[^\d]/g, "");
+}
+
+function solucionDeReto(id) {
+  if (!SOLUCIONES_DATOS || !Array.isArray(SOLUCIONES_DATOS.retos)) return null;
+  const n = normalizarIdReto(id);
+  if (!n) return null;
+  return SOLUCIONES_DATOS.retos.find(r => normalizarIdReto(r.id) === n) || null;
+}
+
+function cargarSoluciones() {
+  if (SOLUCIONES_DATOS || solucionesCargando) return;
+  solucionesCargando = true;
+  fetch("/research/soluciones_actuales.json", { cache: "no-store" })
+    .then(r => (r.ok ? r.json() : null))
+    .then(j => {
+      solucionesCargando = false;
+      if (!j || !Array.isArray(j.retos)) return;
+      SOLUCIONES_DATOS = j;
+      if (rsPrevTabId === "challenges") renderTab("challenges");
+    })
+    .catch(() => { solucionesCargando = false; });
+}
+
 function renderChallengeRanking() {
-  const list = (state.challenges && state.challenges.length ? state.challenges : OFFICIAL_CHALLENGES_2026).slice();
-  const rows = list.map(ch => ({ ch, info: challengeRankFor(ch) }))
-    .sort((a, b) => b.info.score - a.info.score || (a.ch.id > b.ch.id ? 1 : -1));
-  const chosen = state.challenge_id ? rows.find(r => r.ch.id === state.challenge_id) : null;
-  // El ranking es pronóstico, no segunda papeleta: solo el podio; el resto vive en el catálogo de abajo.
-  const podium = rows.slice(0, Math.min(5, rows.length));
+  const list = state.challenges || [];
+  if (!SOLUCIONES_DATOS) {
+    cargarSoluciones();
+    return '<p class="sol-board-empty">Cargando las propuestas del motor…</p>';
+  }
+  const filas = list
+    .map(ch => ({ ch, sol: solucionDeReto(ch.id) }))
+    .filter(r => r.sol && r.sol.propuesta);
+
+  if (!filas.length) {
+    return '<p class="sol-board-empty">Todavía no hay propuestas escritas para estos retos.</p>';
+  }
+
   return `
-    <section class="ranking-panel">
-      <div class="ranking-head">
-        <div>
-          <h2 class="ranking-title">Ranking de retos <span class="ranking-title-mono">· ${rows.length} evaluados</span></h2>
-          <p class="ranking-sub">Ordenados por pronóstico de victoria, según el análisis de 8 años de ganadores (2019–2026): rivalidad de sedes, cobertura ODS, factibilidad 24/28 h, anclaje territorial y precedente ganador.</p>
-        </div>
-        ${!state.challenge_id ? `
-          <div class="ranking-cta">
-            <button class="btn-primary" style="padding:7px 16px; font-size:12px;" onclick="selectChallenge('${rows[0].ch.id}', false)">
-              Decisión del equipo → Adoptar el #1
-            </button>
-            <span style="font-size:11px; color:var(--text-muted); display:block; margin-top:4px;">Recomendado por el ranking. Puedes elegir otro después.</span>
-          </div>
-        ` : `
-          <div class="ranking-cta is-chosen">
-            <span style="font-size:12px; font-weight:800; color:#0F172A;">Ya decidieron: Reto #${chosen ? chosen.ch.id : state.challenge_id}</span>
-            <span style="font-size:11px; color:var(--text-muted); display:block; margin-top:4px;">Puedes compararlo con el resto o cambiar abajo.</span>
-          </div>
-        `}
-      </div>
-      ${renderRankingChartSvg(podium)}
-      <div class="ranking-rows">
-        ${podium.map((r, i) => {
-          const isSel = state.challenge_id === r.ch.id;
-          const topReason = r.info.reasonLines
-            ? r.info.reasonLines.find(rr => rr.includes("+")) || r.info.reasonLines[0]
-            : ((r.info.criteria.find(c => c.ok && c.icon !== "Rivalidad") || r.info.criteria.find(c => c.ok) || {text: "Delibera en equipo: despliega los criterios de abajo"})).text;
-          return `
-            <div class="rank-row ${isSel ? "is-chosen" : ""}" onclick="toggleRankingDetail('${r.ch.id}')" role="button" tabindex="0">
-              <span class="rank-pos">${String(i + 1).padStart(2, "0")}</span>
-              <div class="rank-main">
-                <div class="rank-title">${formatChallengeTitle(r.ch, 110)}</div>
-                <div class="rank-reason">${topReason}</div>
-              </div>
-              <div class="rank-score">
-                <div class="rank-bar"><span style="width:${Math.max(6, Math.min(100, r.info.score))}%"></span></div>
-                <span class="rank-num">${r.info.score}</span>
-              </div>
+    <div class="sol-board">
+      ${filas.map(({ ch, sol }) => {
+        const pr = sol.propuesta || {};
+        const isSel = state.challenge_id === ch.id;
+        return `
+          <section class="sol-item${isSel ? " is-chosen" : ""}">
+            <div class="sol-item-head">
+              <span class="sol-item-n">#${ch.id}</span>
+              <h3 class="sol-item-title">${pr.nombre ? escapeHtml(pr.nombre) : formatChallengeTitle(ch, 90)}</h3>
+              ${isSel ? '<span class="cr-chip is-sel">ELEGIDO</span>' : ""}
             </div>
-            <div class="rank-detail" id="rank-detail-${r.ch.id}" style="display:none;">
-              <div class="rank-crit-grid">
-                ${r.info.criteria.map(c => `<span class="rank-crit ${c.ok ? "ok" : "warn"}">${c.icon}: ${c.text}</span>`).join("")}
-              </div>
-              ${r.info.reasonLines ? `
-                <ol class="rank-reasons-full">
-                  ${r.info.reasonLines.map(l => `<li>${l}</li>`).join("")}
-                </ol>
-              ` : ""}
+            <p class="sol-item-retos">${formatChallengeTitle(ch, 140)}</p>
+            ${pr.claim ? `<p class="sol-item-claim">${escapeHtml(pr.claim)}</p>` : ""}
+            <div class="sol-item-actions">
+              <button class="btn-pill-light sol-item-btn" onclick="mesaGo('${ch.id}')">Ver el reto</button>
+              ${!isSel ? `<button class="btn-pill-light sol-item-btn" onclick="selectChallenge('${ch.id}', false)">Elegir para desarrollar</button>` : ""}
             </div>
-          `;
-        }).join("")}
-      </div>
-      <p class="ranking-sub" style="margin-top:8px;">Podio de ${rows.length}: el resto se delibera en el catálogo de abajo. Aquí solo se pronostica; la decisión se toma en la mesa.</p>
-    </section>
+          </section>
+        `;
+      }).join("")}
+      ${filas.length % 2 === 1 ? '<div class="sol-item sol-item-filler" aria-hidden="true"></div>' : ""}
+    </div>
+    <p class="sol-board-foot">Una propuesta por reto. El dossier completo, con precedentes y cifras, está en el botón <b>Dossier de soluciones</b>.</p>
   `;
 }
 
@@ -4528,7 +4475,7 @@ Entrega formato sin relleno, con citas verificables tipo APA.`;
               <span>Respuesta Generada por la IA</span>
             </div>
             <select id="ai-model-copilot" class="ai-model-select" onchange="modelPrefChanged('copilot', this.value)" title="Modelo de IA a usar (descubierto dinámicamente)"></select>
-            <button type="button" class="copilot-paste-btn" onclick="runCopilotWithAI()" id="copilot-generate-btn" style="background:var(--color-primary); color:#fff; border-color:var(--color-primary);">
+            <button type="button" class="copilot-paste-btn" onclick="runCopilotWithAI()" id="copilot-generate-btn" style="background:var(--color-primary); color:var(--bg-surface); border-color:var(--color-primary);">
               ${SVG.check} Generar con IA Automática
             </button>
             <button type="button" class="copilot-paste-btn" onclick="polishLandingWithAI()" id="copilot-polish-btn" title="Corrige redacción, ortografía y jerarquía del texto con una IA rápida (no agrega contenido)">
@@ -4541,7 +4488,7 @@ Entrega formato sin relleno, con citas verificables tipo APA.`;
           <div class="copilot-landing-container">
             <textarea id="ai-thesis-input-result" class="copilot-landing-result" placeholder="Pega aquí la respuesta generada por tu IA de elección (Claude 3.7, o3, Antigravity o ChatGPT)...">${(ch.wowProposal && !ch.wowProposal.includes('Pendiente de formulación')) ? ch.wowProposal : ''}</textarea>
           </div>
-          <div id="copilot-ai-status" style="display:none; margin-top:10px; font-size:11.5px; color:var(--text-muted);"></div>
+          <div id="copilot-ai-status" style="display:none; margin-top:10px; font-size:12px; color:var(--text-muted);"></div>
         </div>
       </div>
 
@@ -5083,6 +5030,10 @@ async function processImageFileWithOcr(fileOrBlob, fileName, onProgress) {
   }
 
   // 2. Motor secundario fallback: Tesseract.js en el navegador
+  if (!ocrText && typeof Tesseract === "undefined") {
+    if (onProgress) onProgress("Preparando el lector de imágenes...");
+    await ensureIngestLibs("ocr");
+  }
   if (!ocrText && typeof Tesseract !== "undefined") {
     try {
       if (onProgress) onProgress(`OCR en ${fileName} (motor Tesseract)...`);
@@ -5395,6 +5346,9 @@ async function handleChallengeFileSelect(files) {
 
 async function extractTextFromZip(file) {
   if (typeof JSZip === "undefined") {
+    await ensureIngestLibs("zip");
+  }
+  if (typeof JSZip === "undefined") {
     throw new Error("Librería de descompresión no disponible en el navegador.");
   }
   const zip = await JSZip.loadAsync(file);
@@ -5413,7 +5367,8 @@ async function extractTextFromZip(file) {
       const text = await zipEntry.async("string");
       content += "\n" + text;
     } else if (lower.endsWith(".docx")) {
-      if (typeof mammoth !== "undefined") {
+      await ensureIngestLibs("docx");
+    if (typeof mammoth !== "undefined") {
         const arrayBuffer = await zipEntry.async("arraybuffer");
         const res = await mammoth.extractRawText({ arrayBuffer });
         content += "\n" + (res.value || "");
@@ -5442,7 +5397,35 @@ async function extractTextFromZip(file) {
   return content;
 }
 
+// Las librerías de ingesta pesan varios MB entre las cuatro. No se piden al
+// abrir el workbench: se cargan la primera vez que el equipo importa algo, y
+// solo la que ese archivo necesita.
+const INGEST_LIBS = {
+  zip: "https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js",
+  pdf: "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js",
+  docx: "https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js",
+  ocr: "https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"
+};
+const ingestLoaded = {};
+
+function ensureIngestLibs(kind) {
+  const pedidos = [].concat(kind);
+  return Promise.all(pedidos.map(function (k) {
+    return new Promise(function (resolve) {
+      if (!INGEST_LIBS[k] || ingestLoaded[k] || typeof document === "undefined") return resolve(true);
+      const sc = document.createElement("script");
+      sc.src = INGEST_LIBS[k];
+      sc.onload = function () { ingestLoaded[k] = true; resolve(true); };
+      sc.onerror = function () { console.warn("No se pudo cargar la librería de ingesta:", k); resolve(false); };
+      document.head.appendChild(sc);
+    });
+  }));
+}
+
 async function extractTextFromPdf(file) {
+  if (typeof pdfjsLib === "undefined") {
+    await ensureIngestLibs("pdf");
+  }
   if (typeof pdfjsLib === "undefined") {
     throw new Error("Visor PDF no inicializado.");
   }
@@ -5460,6 +5443,9 @@ async function extractTextFromPdf(file) {
 }
 
 async function extractTextFromDocx(file) {
+  if (typeof mammoth === "undefined") {
+    await ensureIngestLibs("docx");
+  }
   if (typeof mammoth === "undefined") {
     throw new Error("Lector Word no inicializado.");
   }
@@ -5491,23 +5477,23 @@ function renderChallengeImportBox() {
   if (!box) return;
   const list = Array.isArray(state.challenges) ? state.challenges : [];
   if (!list.length) {
-    box.innerHTML = '<div style="font-size:12px; color:#64748B; padding:8px 10px; background:#F8FAFC; border:1px solid #E2E8F0; border-radius:6px;">No hay retos cargados todavía.</div>';
+    box.innerHTML = '<div style="font-size:12px; color:var(--text-muted); padding:8px 10px; background:var(--bg-subtle); border:1px solid var(--border-light); border-radius:6px;">No hay retos cargados todavía.</div>';
     return;
   }
   const rows = list.map(ch => {
     const id = String(ch.id || "");
     const title = String(ch.title || "sin título");
-    return '<div style="display:flex; align-items:center; justify-content:space-between; gap:10px; padding:6px 2px; border-bottom:1px solid #F1F5F9;">' +
-      '<span style="font-size:12px; color:#0F172A; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">' +
-      '<strong style="font-family:var(--font-mono); color:#0866F5;">#' + escapeHtml(id) + '</strong> · ' + escapeHtml(title) +
+    return '<div style="display:flex; align-items:center; justify-content:space-between; gap:10px; padding:6px 2px; border-bottom:1px solid var(--border-light);">' +
+      '<span style="font-size:12px; color:var(--text-title); min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">' +
+      '<strong style="font-family:var(--font-mono); color:var(--color-primary);">#' + escapeHtml(id) + '</strong> · ' + escapeHtml(title) +
       '</span>' +
-      '<button class="btn-pill-light" data-challenge-remove="' + escapeHtml(id) + '" style="font-size:10.5px; padding:3px 10px; flex:none;">Borrar</button>' +
+      '<button class="btn-pill-light" data-challenge-remove="' + escapeHtml(id) + '" style="font-size:11px; padding:3px 10px; flex:none;">Borrar</button>' +
       '</div>';
   }).join("");
   box.innerHTML =
     '<div style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:4px;">' +
-    '<span style="font-size:11.5px; font-weight:800; color:#0F172A;">Retos cargados (' + list.length + ')</span>' +
-    '<button class="btn-pill-light" style="font-size:10.5px; padding:3px 10px;" onclick="clearAllChallenges()">Limpiar todos</button>' +
+    '<span style="font-size:12px; font-weight:800; color:var(--text-title);">Retos cargados (' + list.length + ')</span>' +
+    '<button class="btn-pill-light" style="font-size:11px; padding:3px 10px;" onclick="clearAllChallenges()">Limpiar todos</button>' +
     '</div>' + rows;
   box.querySelectorAll("[data-challenge-remove]").forEach(function (btn) {
     btn.addEventListener("click", function () { removeChallenge(btn.getAttribute("data-challenge-remove")); });
@@ -5674,64 +5660,64 @@ function openChallengeDetailModal(chId) {
 
   modal.innerHTML = `
     <div class="challenge-detail-modal-card">
-      <div class="modal-header" style="margin-bottom:18px; padding-bottom:14px; border-bottom:1px solid #DCE7F5;">
+      <div class="modal-header" style="margin-bottom:18px; padding-bottom:14px; border-bottom:1px solid var(--border-light);">
         <div style="display:flex; align-items:center; gap:10px;">
           <span class="tactical-status-pill">
             Reto #${ch.id}
           </span>
-          <span style="font-size:12px; font-weight:700; color:#5C7193;">${ch.category} · ${odsStr}</span>
+          <span style="font-size:12px; font-weight:700; color:var(--text-muted);">${ch.category} · ${odsStr}</span>
         </div>
-        <button class="btn-icon-discreet" onclick="closeChallengeDetailModal()" style="font-size:18px; line-height:1;">✕</button>
+        <button class="btn-icon-discreet" onclick="closeChallengeDetailModal()" style="font-size:16px; line-height:1;">✕</button>
       </div>
 
-      <h2 style="font-size:20px; font-weight:800; color:#0D1B35; line-height:1.3; margin-bottom:16px;">
+      <h2 style="font-size:16px; font-weight:800; color:var(--text-title); line-height:1.3; margin-bottom:16px;">
         ${ch.title}
       </h2>
 
       <!-- Tarjeta 1: Propuesta Técnica de Vanguardia -->
-      <div class="strategy-breakdown-box" style="border-left:4px solid #0866F5; background:#F8FAFD;">
-        <div class="strategy-breakdown-title" style="color:#0866F5;">
+      <div class="strategy-breakdown-box" style="background:var(--bg-subtle);">
+        <div class="strategy-breakdown-title" style="color:var(--color-primary);">
           ${SVG.spark} Solución Técnica Sugerida por el Sistema
         </div>
-        <p style="font-size:13px; color:#0D1B35; font-weight:600; line-height:1.55; margin:0;">
+        <p style="font-size:13px; color:var(--text-title); font-weight:600; line-height:1.55; margin:0;">
           ${ch.wowProposal || 'Arquitectura técnica modular con hardware comercial de bajo costo y telemetría autónoma.'}
         </p>
       </div>
 
       <!-- Tarjeta 2: Adaptación Territorial y Factibilidad Local -->
-      <div class="strategy-breakdown-box" style="border-left:4px solid #1D4ED8; background:#F8FAFD;">
-        <div class="strategy-breakdown-title" style="color:#1D4ED8;">
+      <div class="strategy-breakdown-box" style="background:var(--bg-subtle);">
+        <div class="strategy-breakdown-title" style="color:var(--color-primary);">
           ${SVG.shield} Factibilidad Territorial y Adaptación Local
         </div>
-        <p style="font-size:12.5px; color:#334155; line-height:1.5; margin:0;">
+        <p style="font-size:13px; color:var(--text-body); line-height:1.5; margin:0;">
           ${ch.nicaraguaAdaptation || 'Alineado a las necesidades de municipios y cooperativas locales, reduciendo costos con insumos accesibles en el mercado nacional.'}
         </p>
       </div>
 
       <!-- Tarjeta 3: Factor de Novedad y Diferenciación ante el Jurado -->
-      <div class="strategy-breakdown-box" style="border-left:4px solid #0284C7; background:#F8FAFD;">
-        <div class="strategy-breakdown-title" style="color:#0284C7;">
+      <div class="strategy-breakdown-box" style="background:var(--bg-subtle);">
+        <div class="strategy-breakdown-title" style="color:var(--color-accent);">
           ${SVG.chevronRight} Factor de Novedad y Diferenciación Técnica
         </div>
-        <p style="font-size:12.5px; color:#334155; line-height:1.5; margin:0;">
+        <p style="font-size:13px; color:var(--text-body); line-height:1.5; margin:0;">
           ${ch.noveltyReason || 'Diseño modular parametrizado que elimina la complejidad excesiva y permite una puesta en marcha real accesible.'}
         </p>
       </div>
 
       <!-- Tarjeta 4: Patrón de Ganadores Históricos -->
-      <div class="strategy-breakdown-box" style="border-left:4px solid #334155; background:#F8FAFD;">
-        <div class="strategy-breakdown-title" style="color:#334155;">
+      <div class="strategy-breakdown-box" style="background:var(--bg-subtle);">
+        <div class="strategy-breakdown-title" style="color:var(--text-body);">
           ${SVG.info} Patrón Histórico de Victoria y Precedente
         </div>
-        <p style="font-size:12px; color:#475569; line-height:1.5; margin:0 0 6px 0;">
+        <p style="font-size:12px; color:var(--text-muted); line-height:1.5; margin:0 0 6px 0;">
           ${ch.winnerPattern || 'Soluciones ganadoras previas combinaron hardware tangible con métricas de impacto verificables en campo.'}
         </p>
-        <span style="font-size:11px; font-weight:700; color:#5C7193; font-family:var(--font-mono);">
+        <span style="font-size:11px; font-weight:700; color:var(--text-muted); font-family:var(--font-mono);">
           Precedente de referencia: ${ch.precedent || 'Casos de éxito Rally'}
         </span>
       </div>
 
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:24px; padding-top:16px; border-top:1px solid #DCE7F5;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:24px; padding-top:16px; border-top:1px solid var(--border-light);">
         <button class="btn-secondary" onclick="closeChallengeDetailModal()" style="font-size:12px; padding:8px 16px;">
           Cerrar Análisis
         </button>
@@ -5754,191 +5740,86 @@ function closeChallengeDetailModal() {
 // 03 NIVEL 3: TALLER DE SOLUCIÓN & PROMPT BUILDER
 // ═════════════════════════════════════════════════════════════════════════════
 function renderViewSolution() {
+  const boosters = Array.isArray(state.solution_boosters) ? state.solution_boosters : [];
+  const { mappedOdsIds, mappedEjeIds } = getChallengeImpactDetails(state.challenge_id);
+  const odsTxt = mappedOdsIds.map(oid => {
+    const o = ODS_CATALOG.find(x => x.id === oid);
+    return o ? o.code : "";
+  }).filter(Boolean).join(" · ");
+
+  const boostList = [
+    { key: "ods", title: "Alineación ODS", desc: "Ata la tesis a una meta concreta." },
+    { key: "nacional_plan", title: state.rally_type === "nacional" ? "Eje del Plan Nacional" : "Escalamiento Latam", desc: state.rally_type === "nacional" ? "Conecta con el plan país." : "Diseño transferible a otros municipios." },
+    { key: "sensors", title: "Hardware y telemetría", desc: "Suma sensores y energía autónoma." },
+    { key: "visuals", title: "Pieza visual para el video", desc: "Pauta una toma de pantalla o un 3D." },
+    { key: "waste_capital", title: "Pasivo convertido en capital", desc: "Residuo que se vuelve insumo." },
+    { key: "cyber_physical", title: "Hibridación ciber-física", desc: "Lo físico con sensado o IA." }
+  ];
+  const marcados = boostList.filter(b => boosters.includes(b.key)).length;
+
   return `
-    <div class="phase-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:14px; margin-bottom:24px; padding-bottom:14px; border-bottom:1px solid var(--border-light);">
+    <div class="phase-header">
       <div>
-        <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
-          <span class="badge-status badge-ok" style="font-family:var(--font-mono); font-size:10px; font-weight:800;">RETO ACTIVO #${state.challenge_id}</span>
-          <span style="font-size:11.5px; font-weight:700; color:var(--text-muted);">${state.category}</span>
-        </div>
-        <h1 class="phase-title">
-          03 · Taller <span class="phase-title-accent">Describe tu Solución</span>
-        </h1>
-        <p class="phase-subtitle">${state.challenge_title}</p>
+        <h1 class="phase-title">Describe tu <span class="phase-title-accent">solución</span></h1>
+        <p class="phase-subtitle">${escapeHtml(state.challenge_title || "Elige un reto para empezar")}</p>
       </div>
-      <div style="display:flex; gap:10px; align-items:center;">
-        <button class="btn-pill-light" onclick="clearSelectedChallenge(); switchTab('challenges');" style="font-size:12px; padding:8px 14px; display:inline-flex; align-items:center; gap:6px;" title="Volver al catálogo para elegir o cambiar de reto">
-          ← Cambiar Reto
-        </button>
-        <button class="btn-pill-light" onclick="switchTab('impact');" style="font-size:12px; padding:8px 14px; display:inline-flex; align-items:center; gap:6px; font-weight:700; color:#0866F5; border-color:#BFDBFE; background:#EFF6FF;" title="Ver alineación con ODS, Plan de Lucha contra la Pobreza y Leyes">
-          ${SVG.arrowRight} Impacto, ODS & Políticas
-        </button>
-        <button class="btn-primary" onclick="approveSolutionAndUnlock()" style="padding:8px 16px; font-size:12px;">
-          ${state.solution_approved ? 'Actualizar Tesis' : 'Aprobar Solución & Desbloquear Espacio'}
-        </button>
+      <div class="sol-head-actions">
+        <button class="link-quiet" onclick="clearSelectedChallenge(); switchTab('challenges');">← Cambiar reto</button>
+        <button class="btn-primary" onclick="approveSolutionAndUnlock()">${state.solution_approved ? "Actualizar" : "Aprobar y continuar"}</button>
       </div>
     </div>
 
-    <!-- Banner de Alineación Estratégica & ODS -->
-    ${(() => {
-      const { mappedOdsIds, mappedEjeIds } = getChallengeImpactDetails(state.challenge_id);
-      return `
-        <div style="background:#F0F6FF; border:1px solid #BFDBFE; border-radius:10px; padding:12px 16px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
-          <div style="display:flex; align-items:center; flex-wrap:wrap; gap:10px;">
-            <div style="font-size:12px; font-weight:800; color:#0D1B35; font-family:var(--font-mono); display:flex; align-items:center; gap:6px;">
-              // ALINEACIÓN ESTRATÉGICA OFICIAL:
-            </div>
-            <div style="display:flex; align-items:center; flex-wrap:wrap; gap:6px;">
-              ${mappedOdsIds.map(oid => {
-                const o = ODS_CATALOG.find(x => x.id === oid);
-                if (!o) return '';
-                return `
-                  <span class="btn-pill-light" onclick="switchTab('impact'); openImpactDetailModal('ods', ${o.id});" style="background:${o.color}; color:#fff; border-color:${o.color}; font-size:11px; font-weight:800; padding:3px 10px; border-radius:4px; font-family:var(--font-mono); cursor:pointer;" title="${o.name} - Clic para ver Por Qué y Cómo">
-                    ${o.code}
-                  </span>
-                `;
-              }).join("")}
-            </div>
-            <span style="font-size:11.5px; color:#475569;">
-              ${mappedEjeIds.length ? `· Plan Nacional: ${mappedEjeIds.map(e => e.toUpperCase()).join(", ")}` : ''}
-            </span>
-          </div>
-          <button class="btn-pill-light" onclick="switchTab('impact')" style="font-size:11.5px; font-weight:700; color:#0866F5; border-color:#93C5FD; background:#ffffff;">
-            Ver Menú Completo de ODS & Plan País ➔
-          </button>
-        </div>
-      `;
-    })()}
-
-    <!-- Nombre Comercial del Proyecto -->
-    <div class="workbench-card">
-      <div class="form-grid">
-        <div class="form-group full">
-          <label style="font-weight:800;">Nombre Comercial del Proyecto</label>
-          <input type="text" id="sol-proj-name" placeholder="Ej: AGRO-DRIVE, ECO-BOBINA, RE-PLAST, SOLARDIGNA" value="${state.project_name || ''}"
-            oninput="updateProjectNameLive(this.value)"
-            style="font-size:14px; font-weight:800; letter-spacing:0.02em;">
-          <span style="font-size:11px; color:var(--text-muted); margin-top:2px; display:block;">
-            El nombre definitivo que figurará en el documento pautado, presupuesto y video pitch.
-          </span>
-        </div>
+    <section class="sol-sec">
+      <label class="sol-label" for="raw-sol-input">Tu idea, con tus palabras</label>
+      <p class="sol-hint">Sin tecnicismos. Lo que le contarías a un vecino.</p>
+      <textarea id="raw-sol-input" class="sol-input sol-input-lg" rows="3" placeholder="Ej: Secamos fruta con aire caliente y un sensor, para que el productor no pierda la cosecha."
+        oninput="updateSolutionFieldLive('raw_input', this.value)">${escapeHtml(state.solution_raw_input || "")}</textarea>
+      <div class="sol-inline-action">
+        <button class="link-quiet" onclick="synthesizeSolutionFromRaw()">${SVG.spark} Estructurar tesis y pitch</button>
       </div>
-    </div>
+    </section>
 
-    <!-- Entrada Libre del Equipo -->
-    <div class="workbench-card">
-      <label style="font-size:12px; font-weight:800; color:var(--text-main); display:block; margin-bottom:6px;">
-        1. Escribe la idea de tu equipo con sus propias palabras (sin miedo a tecnicismos):
-      </label>
-      <textarea id="raw-sol-input" rows="3" style="width:100%; border:1px solid var(--border-light); border-radius:4px; padding:10px; font-size:12px; font-family:var(--font-ui); box-sizing:border-box;"
-        placeholder="Ej: Vamos a construir un secador solar de frutas que usa aire caliente concentrado y un sensor para que los productores no pierdan la cosecha..."
-        oninput="updateSolutionFieldLive('raw_input', this.value)">${state.solution_raw_input || ''}</textarea>
-      
-      <div style="display:flex; justify-content:flex-end; margin-top:8px;">
-        <button class="btn-primary" style="padding:6px 14px; font-size:11px;" onclick="synthesizeSolutionFromRaw()">
-          Estructurar Tesis Técnica & Pitch Exprés ${SVG.spark}
-        </button>
-      </div>
-    </div>
+    <section class="sol-sec">
+      <label class="sol-label" for="sol-thesis">Tesis técnica</label>
+      <p class="sol-hint">Una sola oración densa, sin nombre comercial. Va al documento pautado.</p>
+      <textarea id="sol-thesis" class="sol-input" rows="3" placeholder="Tesis estructurada…"
+        oninput="updateSolutionFieldLive('thesis', this.value)">${escapeHtml(state.solution_thesis || "")}</textarea>
 
-    <!-- Split: Propuesta Pulida vs Potenciadores Estratégicos -->
-    <div class="solution-split">
-      <div class="workbench-card" style="margin-bottom:0;">
-        <h3 style="font-size:13px; font-weight:800; margin-bottom:4px;">Tesis Técnica Estructurada (Para el Pautado)</h3>
-        <p style="font-size:11px; color:var(--text-muted); margin-bottom:10px;">Una oración densa y libre de nombres comerciales que condensa el sistema.</p>
-        
-        <textarea id="sol-thesis" rows="4" style="width:100%; border:1px solid var(--border-light); border-radius:4px; padding:10px; font-size:12px; font-family:var(--font-ui); box-sizing:border-box;"
-          placeholder="Tesis estructurada..."
-          oninput="updateSolutionFieldLive('thesis', this.value)">${state.solution_thesis || ''}</textarea>
+      <label class="sol-label" for="sol-simple" style="margin-top:18px;">Pitch de cinco segundos</label>
+      <p class="sol-hint">Para el jurado que no es ingeniero.</p>
+      <textarea id="sol-simple" class="sol-input" rows="2" placeholder="Explicación accesible…"
+        oninput="updateSolutionFieldLive('simple', this.value)">${escapeHtml(state.solution_simple || "")}</textarea>
+    </section>
 
-        <h3 style="font-size:13px; font-weight:800; margin:14px 0 4px 0;">Elevator Pitch Simple (Para No Ingenieros / Jurado Exprés)</h3>
-        <p style="font-size:11px; color:var(--text-muted); margin-bottom:10px;">Comprensible en 5 segundos sin jerga técnica.</p>
-        
-        <textarea id="sol-simple" rows="2" style="width:100%; border:1px solid var(--border-light); border-radius:4px; padding:8px; font-size:12px; font-family:var(--font-ui); box-sizing:border-box;"
-          placeholder="Explicación accesible..."
-          oninput="updateSolutionFieldLive('simple', this.value)">${state.solution_simple || ''}</textarea>
-      </div>
+    <section class="sol-sec">
+      <label class="sol-label" for="sol-proj-name">Nombre del proyecto</label>
+      <p class="sol-hint">El que aparecerá en el pautado, el presupuesto y el video.</p>
+      <input type="text" id="sol-proj-name" class="sol-input" placeholder="Ej: AGRO-DRIVE, RE-PLAST, SOLARDIGNA"
+        value="${escapeHtml(state.project_name || "")}" oninput="updateProjectNameLive(this.value)">
+    </section>
 
-      <div class="workbench-card" style="margin-bottom:0;">
-        <h3 style="font-size:13px; font-weight:800; margin-bottom:4px;">Potenciadores Estratégicos Recomendados</h3>
-        <p style="font-size:11px; color:var(--text-muted); margin-bottom:12px;">Marca los componentes que deseas inyectar en el Prompt Maestro:</p>
-
-        <div class="booster-list">
-          <label class="booster-card ${state.solution_boosters.includes('ods') ? 'active' : ''}">
-            <input type="checkbox" ${state.solution_boosters.includes('ods') ? 'checked' : ''} onchange="toggleBooster('ods')">
-            <div>
-              <div class="booster-title">Alineación ODS Oficial</div>
-              <div class="booster-desc">Vincula directamente las metas de desarrollo sostenible específicas a la tesis.</div>
-            </div>
-          </label>
-
-          <label class="booster-card ${state.solution_boosters.includes('nacional_plan') ? 'active' : ''}">
-            <input type="checkbox" ${state.solution_boosters.includes('nacional_plan') ? 'checked' : ''} onchange="toggleBooster('nacional_plan')">
-            <div>
-              <div class="booster-title">${state.rally_type === 'nacional' ? 'Eje Plan Nacional de Lucha contra la Pobreza' : 'Escalamiento Modular Latam'}</div>
-              <div class="booster-desc">${state.rally_type === 'nacional' ? 'Alinea con resiliencia climática y producción territorial en Nicaragua.' : 'Diseño estándar transferible a municipios piloto de la región.'}</div>
-            </div>
-          </label>
-
-          <label class="booster-card ${state.solution_boosters.includes('sensors') ? 'active' : ''}">
-            <input type="checkbox" ${state.solution_boosters.includes('sensors') ? 'checked' : ''} onchange="toggleBooster('sensors')">
-            <div>
-              <div class="booster-title">Hardware / Telemetría Autónoma</div>
-              <div class="booster-desc">Suma microcontrolador de bajo consumo, alimentación solar LiFePO4 y conectividad robusta.</div>
-            </div>
-          </label>
-
-          <label class="booster-card ${state.solution_boosters.includes('visuals') ? 'active' : ''}">
-            <input type="checkbox" ${state.solution_boosters.includes('visuals') ? 'checked' : ''} onchange="toggleBooster('visuals')">
-            <div>
-              <div class="booster-title">Recurso Visual WOW para Video Pitch</div>
-              <div class="booster-desc">Genera pauta para tomas de pantalla interactiva y modelo de pieza técnica en 3D.</div>
-            </div>
-          </label>
-
-          <label class="booster-card ${state.solution_boosters.includes('waste_capital') ? 'active' : ''}">
-            <input type="checkbox" ${state.solution_boosters.includes('waste_capital') ? 'checked' : ''} onchange="toggleBooster('waste_capital')">
-            <div>
-              <div class="booster-title">Reingeniería: Pasivo a Capital (Wow Dim 2)</div>
-              <div class="booster-desc">Revaloriza residuos masivos (cacao, café, Tetra Pak o chatarra) como insumo productivo.</div>
-            </div>
-          </label>
-
-          <label class="booster-card ${state.solution_boosters.includes('cyber_physical') ? 'active' : ''}">
-            <input type="checkbox" ${state.solution_boosters.includes('cyber_physical') ? 'checked' : ''} onchange="toggleBooster('cyber_physical')">
-            <div>
-              <div class="booster-title">Hibridación Ciber-Física (Wow Dim 1)</div>
-              <div class="booster-desc">Articula una infraestructura física o biológica con sensado, automatización o IA en tiempo real.</div>
-            </div>
-          </label>
+    <section class="sol-sec">
+      <div class="sol-sec-head">
+        <div>
+          <span class="sol-label">Potenciadores</span>
+          <p class="sol-hint">Lo que el motor tiene en cuenta al escribir la tesis.</p>
         </div>
+        <span class="sol-count">${marcados} de ${boostList.length}</span>
       </div>
-    </div>
+      <div class="sol-boosters">
+        ${boostList.map(b => `
+          <label class="sol-booster${boosters.includes(b.key) ? " is-on" : ""}">
+            <input type="checkbox" ${boosters.includes(b.key) ? "checked" : ""} onchange="toggleBooster('${b.key}')">
+            <span class="sol-booster-title">${b.title}</span>
+            <span class="sol-booster-desc">${b.desc}</span>
+          </label>
+        `).join("")}
+      </div>
+    </section>
 
-    <!-- Guía y Auditoría Táctica: Las 3 Dimensiones del Efecto Wow -->
-    <div class="workbench-card" style="margin-top:16px; background:#F8FAFC; border:1px solid #E2E8F0;">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-        <div style="font-size:12px; font-weight:800; color:#0F172A; text-transform:uppercase; letter-spacing:0.04em;">
-          Filtro Táctico: Las 3 Dimensiones del «Efecto Wow» (PDF v2)
-        </div>
-        <span style="font-size:11px; font-weight:700; color:#059669; background:#DCFCE7; border:1px solid #BBF7D0; padding:2px 8px; border-radius:4px;">
-          Guía Heurística de Jurado
-        </span>
-      </div>
-      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:10px; font-size:11.5px; line-height:1.45;">
-        <div style="background:#FFF; border:1px solid #E2E8F0; border-radius:6px; padding:10px;">
-          <strong style="color:#0F172A; display:block; margin-bottom:2px;">1. Hibridación Ciber-Física:</strong>
-          <span style="color:#475569;">Supera las soluciones lineales monodisciplinarias combinando diseño estructural con telemetría/sensores (ej. Techriders).</span>
-        </div>
-        <div style="background:#FFF; border:1px solid #E2E8F0; border-radius:6px; padding:10px;">
-          <strong style="color:#0F172A; display:block; margin-bottom:2px;">2. Pasivo a Capital Comunitario:</strong>
-          <span style="color:#475569;">Convierte un problema de descarte o pasivo en un activo productivo resiliente (ej. Mentes Volcánicas con Tetra Pak).</span>
-        </div>
-        <div style="background:#FFF; border:1px solid #E2E8F0; border-radius:6px; padding:10px;">
-          <strong style="color:#0F172A; display:block; margin-bottom:2px;">3. Rigor Técnico Tangible:</strong>
-          <span style="color:#475569;">Frente a crisis complejas, descarta apps pasivas de reportes. Desarrolla dispositivos físicos o biomateriales testeables.</span>
-        </div>
-      </div>
+    <div class="sol-foot">
+      <span>${odsTxt ? `Alineado a ${odsTxt}` : "Sin ODS vinculados todavía"}${mappedEjeIds.length ? ` · Plan país: ${mappedEjeIds.map(e => e.toUpperCase()).join(", ")}` : ""}</span>
+      <button class="link-quiet" onclick="switchTab('impact')">Ajustar impacto →</button>
     </div>
   `;
 }
@@ -6055,6 +5936,24 @@ const CATEGORY_META = {
 function categoryBadge(category) {
   const m = CATEGORY_META[category] || CATEGORY_META["Innovación"];
   return `<span class="cat-badge" style="background:${m.tint}; color:${m.stroke};">${m.icon} ${category}</span>`;
+}
+
+// Iconos oficiales de los ODS guardados en assets/ods/ods-NN.jpg
+function odsIconUrl(id) {
+  const n = String(id || "").trim().replace(/^ods\s*-?\s*/i, "");
+  const num = parseInt(n, 10);
+  if (!num || num < 1 || num > 17) return "";
+  return `assets/ods/ods-${String(num).padStart(2, "0")}.jpg`;
+}
+
+function odsIcon(id, arg2, arg3) {
+  const url = odsIconUrl(id);
+  const px = typeof arg3 === "number" ? arg3 : (typeof arg2 === "number" ? arg2 : 40);
+  const n = String(id || "").replace(/[^0-9]/g, "");
+  if (!url) return `<span class="ods-icon-fallback" style="width:${px}px; height:${px}px;">${escapeHtml(n)}</span>`;
+  return `<img class="ods-icon" src="${url}" alt="ODS ${escapeHtml(n)}" width="${px}" height="${px}" loading="lazy"
+    style="width:${px}px; height:${px}px;"
+    onerror="this.outerHTML='<span class=\\'ods-icon-fallback\\' style=\\'width:${px}px; height:${px}px;\\'>${escapeHtml(n)}</span>'">`;
 }
 
 const ODS_CATALOG = [
@@ -6505,46 +6404,26 @@ function renderViewImpact() {
     <div class="phase-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:14px; margin-bottom:18px; padding-bottom:14px; border-bottom:1px solid var(--border-light);">
       <div>
         <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
-          <span class="badge-status badge-ok" style="font-family:var(--font-mono); font-size:10px; font-weight:800;">
-            FASE 04 · IMPACTO PAÍS
-          </span>
-          <span style="font-size:11.5px; font-weight:700; color:var(--text-muted); font-family:var(--font-mono);">
-            RÚBRICA OFICIAL: FACTIBILIDAD & IMPACTO (30 PTS)
-          </span>
-        </div>
-        <div style="font-family:var(--font-mono); font-size:11px; font-weight:800; color:#0866F5; letter-spacing:0.04em; margin-bottom:2px;">
-          // RALLY STUDIO · ALINEACIÓN ESTRATÉGICA & POLÍTICAS NACIONALES
-        </div>
         <h1 class="phase-title" style="margin:0;">
-          Impacto Estratégico, <span class="phase-title-accent">ODS & Políticas País</span>
+          Impacto<span class="phase-title-accent"> · ODS y plan país</span>
         </h1>
-        <p class="phase-subtitle" style="margin-top:4px;">
-          ${activeCh.title ? `Reto #${activeCh.id}: ${activeCh.title}` : 'Alinea tu propuesta técnica con la Agenda 2030 (ONU), el Plan Nacional de Desarrollo y el marco institucional.'}
-        </p>
-      </div>
-      <div style="display:flex; gap:8px; align-items:center;">
-        <button class="btn-pill-light" onclick="switchTab('solution')" style="font-size:12px; padding:8px 14px; display:inline-flex; align-items:center; gap:6px;">
-          ${SVG.arrowLeft} Volver a Solución
-        </button>
-        <button class="btn-primary" onclick="switchTab('multi_ai')" style="font-size:12px; padding:8px 16px;">
-          Continuar a Despacho Multi-IA ${SVG.arrowRight}
-        </button>
+        ${activeCh.title ? `<p class="phase-subtitle" style="margin-top:4px;">Reto #${activeCh.id}: ${escapeHtml(activeCh.title)}</p>` : ""}
       </div>
     </div>
 
-    <!-- Submenú de Navegación Temática Impeccable -->
+    <!-- Submenú de Navegación Temática -->
     <div class="impact-subnav">
       <button class="impact-subnav-btn ${impactActiveSubTab === 'ods' ? 'active' : ''}" onclick="switchImpactSubTab('ods')">
-        ODS · Agenda 2030 (ONU)
+        ODS
       </button>
       <button class="impact-subnav-btn ${impactActiveSubTab === 'plan' ? 'active' : ''}" onclick="switchImpactSubTab('plan')">
-        Plan de Lucha contra la Pobreza (2022-2026)
+        Plan país
       </button>
       <button class="impact-subnav-btn ${impactActiveSubTab === 'leyes' ? 'active' : ''}" onclick="switchImpactSubTab('leyes')">
-        Leyes & Programas Nacionales ("Otros")
+        Leyes
       </button>
       <button class="impact-subnav-btn ${impactActiveSubTab === 'sintesis' ? 'active' : ''}" onclick="switchImpactSubTab('sintesis')">
-        Síntesis para Pautado & Pitch
+        Síntesis
       </button>
     </div>
 
@@ -6560,132 +6439,68 @@ function renderImpactSubTabContent(subTab, activeCh, mappedOdsIds, mappedEjeIds,
 
     return `
       <div>
-        <div style="margin-bottom:16px;">
-          <h1 style="font-size:24px; font-weight:900; color:var(--text-title); letter-spacing:-0.02em; margin:0 0 4px 0;">
-            ODS · Objetivos de Desarrollo Sostenible
-          </h1>
-          <p style="font-size:13px; color:var(--text-muted); line-height:1.45; margin:0;">
-            Alineación directa del reto y de tu propuesta técnica con metas oficiales de la Agenda 2030 (ONU). Haz clic en cualquier tarjeta de ODS para abrir el desglose editable de Por Qué y Cómo.
-          </p>
-        </div>
-
-        <!-- Barra de Control y Filtros ODS -->
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; background:#F8FAFD; border:1px solid var(--border-light); padding:10px 16px; border-radius:8px; margin-bottom:18px;">
-          <div style="display:flex; align-items:center; gap:8px;">
-            <button class="btn-pill-light" style="${odsFilterScope === 'matched' ? 'background:#0D1B35; color:#fff; border-color:#0D1B35;' : ''} font-size:11.5px; font-weight:700;" onclick="toggleOdsFilter('matched')">
-              ODS que Cumple Tu Reto (${mappedOdsIds.length})
-            </button>
-            <button class="btn-pill-light" style="${odsFilterScope === 'all' ? 'background:#0D1B35; color:#fff; border-color:#0D1B35;' : ''} font-size:11.5px; font-weight:700;" onclick="toggleOdsFilter('all')">
-              Ver los 17 ODS de la ONU
-            </button>
-          </div>
-          <div style="font-size:11.5px; font-family:var(--font-mono); font-weight:700; color:#0866F5;">
-            PROYECTO: ${state.project_name || 'EN FORMULACIÓN'}
-          </div>
+        <div class="ods-scope">
+          <span class="ods-scope-count">${mappedOdsIds.length} de 17 ODS vinculados a tu reto</span>
+          <button type="button" class="ods-scope-btn" onclick="toggleOdsFilter('${odsFilterScope === 'matched' ? 'all' : 'matched'}')">
+            ${odsFilterScope === 'matched' ? 'Ver los 17' : 'Ver solo los de mi reto'}
+          </button>
         </div>
 
         <!-- Grid de Tarjetas ODS -->
-        <div class="ods-grid">
+        <div class="ods-list ods-list-icons">
           ${odsList.map(ods => {
+            const idOf = o => Number(o && o.id !== undefined ? o.id : String(o).replace(/[^\d]/g, ""));
+            const allMatch = odsList.every(o => mappedOdsIds.includes(idOf(o)));
             const isMatch = mappedOdsIds.includes(ods.id);
             const customWhy = getImpactCustom(`ods_${ods.id}`, "porque", ods.diagnostic);
             const customHow = getImpactCustom(`ods_${ods.id}`, "como", ods.mechanism);
-
             return `
-              <div class="ods-card ${isMatch ? 'is-active-match' : ''}" onclick="openImpactDetailModal('ods', ${ods.id})" title="Haz clic para ver y editar el Por Qué y Cómo">
-                <div class="ods-card-header" style="background:${ods.color};">
-                  <div style="display:flex; align-items:center; gap:8px;">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">${ods.icon}</svg>
-                    <span style="font-family:var(--font-mono); font-weight:900; font-size:13px; letter-spacing:0.04em;">ODS ${ods.id}</span>
-                  </div>
-                  ${isMatch 
-                    ? `<span style="background:rgba(255,255,255,0.25); color:#fff; font-size:10px; font-weight:800; padding:2px 8px; border-radius:4px; font-family:var(--font-mono); backdrop-filter:blur(2px);">✓ CUMPLE DIRECTO</span>`
-                    : `<span style="font-size:10px; color:rgba(255,255,255,0.7); font-family:var(--font-mono);">AGENDA 2030</span>`}
-                </div>
-                <div class="ods-card-body">
-                  <div style="font-size:13.5px; font-weight:800; color:var(--text-title); line-height:1.3; min-height:36px;">
-                    ${ods.name}
-                  </div>
-                  <div style="font-size:11px; font-family:var(--font-mono); font-weight:700; color:#0866F5; line-height:1.35;">
-                    ${ods.shortTarget}
-                  </div>
-                  <div style="background:#F8FAFD; border:1px solid #E2E8F0; border-radius:6px; padding:8px 10px; font-size:11.5px; color:#475569; line-height:1.45;">
-                    <strong style="color:#0D1B35; font-size:10.5px; text-transform:uppercase; display:block; margin-bottom:2px;">¿Por qué cumple?</strong>
-                    ${customWhy.slice(0, 115)}${customWhy.length > 115 ? '...' : ''}
-                  </div>
-                  <div style="background:#F8FAFD; border:1px solid #E2E8F0; border-radius:6px; padding:8px 10px; font-size:11.5px; color:#475569; line-height:1.45;">
-                    <strong style="color:#0D1B35; font-size:10.5px; text-transform:uppercase; display:block; margin-bottom:2px;">¿Cómo lo cumple tu solución?</strong>
-                    ${customHow.slice(0, 115)}${customHow.length > 115 ? '...' : ''}
-                  </div>
-                  <div style="margin-top:auto; padding-top:6px; font-size:11.5px; font-weight:800; color:#0866F5; display:flex; align-items:center; justify-content:space-between;">
-                    <span>Toca para ver Por Qué & Cómo</span>
-                    ${SVG.arrowRight}
-                  </div>
+              <div class="ods-row ${isMatch ? 'is-match' : ''}">
+                <button class="ods-row-head" onclick="openImpactDetailModal('ods', ${ods.id})" title="Ver y editar el Por Qué y Cómo">
+                  ${odsIcon(ods.id, ods.color, 40)}
+                  <span class="ods-row-text">
+                    <span class="ods-row-name">${escapeHtml(ods.name)}</span>
+                    <span class="ods-row-target">${escapeHtml(ods.shortTarget)}</span>
+                  </span>
+                  ${isMatch && !allMatch ? `<span class="ods-badge-match">Cumple</span>` : ''}
+                  ${SVG.arrowRight}
+                </button>
+                <div class="ods-row-why">
+                  <div><span class="ods-row-k">Por qué</span>${escapeHtml(customWhy)}</div>
+                  <div><span class="ods-row-k">Cómo</span>${escapeHtml(customHow)}</div>
                 </div>
               </div>
             `;
           }).join("")}
         </div>
-      </div>
     `;
   }
 
   if (subTab === "plan") {
     return `
-      <div>
-        <div style="margin-bottom:16px;">
-          <h1 style="font-size:24px; font-weight:900; color:var(--text-title); letter-spacing:-0.02em; margin:0 0 4px 0;">
-            Plan Nacional de Lucha contra la Pobreza y para el Desarrollo Humano (2022-2026)
-          </h1>
-          <p style="font-size:13px; color:var(--text-muted); line-height:1.45; margin:0;">
-            Lineamientos y Ejes Estratégicos nacionales de Nicaragua que fundamentan la pertinencia territorial de tu solución ante los evaluadores institucionales (CNU, TELCOR, MEFCCA, INATEC).
-          </p>
-        </div>
-
-        <div class="ods-grid">
-          ${PLAN_EJES_CATALOG.map(eje => {
-            const isMatch = mappedEjeIds.includes(eje.id);
-            const customWhy = getImpactCustom(`plan_${eje.id}`, "porque", eje.porque);
-            const customHow = getImpactCustom(`plan_${eje.id}`, "como", eje.como);
-
-            return `
-              <div class="ods-card ${isMatch ? 'is-active-match' : ''}" onclick="openImpactDetailModal('plan', '${eje.id}')" title="Haz clic para ver y editar el Por Qué y Cómo">
-                <div class="ods-card-header" style="background:#0D1B35;">
-                  <div style="display:flex; align-items:center; gap:8px;">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">${eje.icon}</svg>
-                    <span style="font-family:var(--font-mono); font-weight:900; font-size:12.5px;">EJE ESTRATÉGICO #${eje.num}</span>
-                  </div>
-                  ${isMatch 
-                    ? `<span style="background:#0866F5; color:#fff; font-size:10px; font-weight:800; padding:2px 8px; border-radius:4px; font-family:var(--font-mono);">✓ PRIORITARIO</span>`
-                    : `<span style="font-size:10px; color:#94A3B8; font-family:var(--font-mono);">PLAN PAÍS</span>`}
-                </div>
-                <div class="ods-card-body">
-                  <div style="font-size:13.5px; font-weight:800; color:var(--text-title); line-height:1.3; min-height:36px;">
-                    ${eje.title}
-                  </div>
-                  <div style="font-size:11px; font-family:var(--font-mono); color:#059669; font-weight:700;">
-                    Métrica esperada: ${eje.metrica}
-                  </div>
-                  <div style="background:#F8FAFD; border:1px solid #E2E8F0; border-radius:6px; padding:8px 10px; font-size:11.5px; color:#475569; line-height:1.45;">
-                    <strong style="color:#0D1B35; font-size:10.5px; text-transform:uppercase; display:block; margin-bottom:2px;">¿Por qué se vincula?</strong>
-                    ${customWhy.slice(0, 115)}${customWhy.length > 115 ? '...' : ''}
-                  </div>
-                  <div style="background:#F8FAFD; border:1px solid #E2E8F0; border-radius:6px; padding:8px 10px; font-size:11.5px; color:#475569; line-height:1.45;">
-                    <strong style="color:#0D1B35; font-size:10.5px; text-transform:uppercase; display:block; margin-bottom:2px;">¿Cómo responde en el territorio?</strong>
-                    ${customHow.slice(0, 115)}${customHow.length > 115 ? '...' : ''}
-                  </div>
-                  <div style="font-size:10.5px; color:#64748B; font-family:var(--font-mono);">
-                    <strong>Contrapartes:</strong> ${eje.instituciones}
-                  </div>
-                  <div style="margin-top:auto; padding-top:6px; font-size:11.5px; font-weight:800; color:#0866F5; display:flex; align-items:center; justify-content:space-between;">
-                    <span>Toca para ver y editar</span>
-                    ${SVG.arrowRight}
-                  </div>
-                </div>
+      <div class="ods-list">
+        ${PLAN_EJES_CATALOG.map(eje => {
+          const isMatch = mappedEjeIds.includes(eje.id);
+          const customWhy = getImpactCustom(`plan_${eje.id}`, "porque", eje.porque);
+          const customHow = getImpactCustom(`plan_${eje.id}`, "como", eje.como);
+          return `
+            <div class="ods-row ${isMatch ? "is-match" : ""}">
+              <button class="ods-row-head" onclick="openImpactDetailModal('plan', '${eje.id}')" title="Ver y editar el por qué y el cómo">
+                <span class="ods-row-icon">${SVG.document || ""}</span>
+                <span class="ods-row-text">
+                  <span class="ods-row-name">Eje ${eje.num} · ${escapeHtml(eje.title)}</span>
+                  <span class="ods-row-target">${escapeHtml(eje.metrica)}</span>
+                </span>
+                ${isMatch ? '<span class="ods-badge-match">Prioritario</span>' : ""}
+                ${SVG.arrowRight}
+              </button>
+              <div class="ods-row-why">
+                <div><span class="ods-row-k">Por qué</span>${escapeHtml(customWhy)}</div>
+                <div><span class="ods-row-k">Cómo</span>${escapeHtml(customHow)}</div>
               </div>
-            `;
-          }).join("")}
-        </div>
+            </div>
+          `;
+        }).join("")}
       </div>
     `;
   }
@@ -6693,97 +6508,33 @@ function renderImpactSubTabContent(subTab, activeCh, mappedOdsIds, mappedEjeIds,
   if (subTab === "leyes") {
     const leyes = LEYES_PROGRAMAS_CATALOG.filter(x => x.type === "ley");
     const programas = LEYES_PROGRAMAS_CATALOG.filter(x => x.type === "programa");
-
+    const fila = (item, tipo) => {
+      const isMatch = mappedLeyIds.includes(item.id);
+      const customWhy = getImpactCustom(`ley_${item.id}`, "porque", item.porque);
+      const customHow = getImpactCustom(`ley_${item.id}`, "como", item.como);
+      return `
+        <div class="ods-row ${isMatch ? "is-match" : ""}">
+          <button class="ods-row-head" onclick="openImpactDetailModal('${tipo}', '${item.id}')" title="Ver y editar el por qué y el cómo">
+            <span class="ods-row-text">
+              <span class="ods-row-name">${escapeHtml(item.title)}</span>
+              <span class="ods-row-target">${escapeHtml(item.entidad || "")}</span>
+            </span>
+            ${isMatch ? '<span class="ods-badge-match">Acople</span>' : ""}
+            ${SVG.arrowRight}
+          </button>
+          <div class="ods-row-why">
+            <div><span class="ods-row-k">Por qué</span>${escapeHtml(customWhy)}</div>
+            <div><span class="ods-row-k">Cómo</span>${escapeHtml(customHow)}</div>
+          </div>
+        </div>
+      `;
+    };
     return `
       <div>
-        <div style="margin-bottom:16px;">
-          <h1 style="font-size:24px; font-weight:900; color:var(--text-title); letter-spacing:-0.02em; margin:0 0 4px 0;">
-            Marco Legal, Institucional & Programas Nacionales que Impulsa
-          </h1>
-          <p style="font-size:13px; color:var(--text-muted); line-height:1.45; margin:0;">
-            Leyes de la República y programas gubernamentales donde la innovación se acopla técnicamente. Demostrar acople institucional otorga la máxima calificación en viabilidad y reduce barreras de adopción.
-          </p>
-        </div>
-
-        <h3 style="font-size:13.5px; font-weight:800; color:#0D1B35; text-transform:uppercase; letter-spacing:0.04em; margin:20px 0 10px 0; display:flex; align-items:center; gap:6px;">
-          ${SVG.document} Leyes de la República de Nicaragua
-        </h3>
-        <div class="ods-grid">
-          ${leyes.map(item => {
-            const isMatch = mappedLeyIds.includes(item.id);
-            const customWhy = getImpactCustom(`ley_${item.id}`, "porque", item.porque);
-            const customHow = getImpactCustom(`ley_${item.id}`, "como", item.como);
-
-            return `
-              <div class="ods-card ${isMatch ? 'is-active-match' : ''}" onclick="openImpactDetailModal('ley', '${item.id}')" title="Haz clic para ver y editar el Por Qué y Cómo">
-                <div class="ods-card-header" style="background:#1E293B;">
-                  <span style="font-family:var(--font-mono); font-weight:800; font-size:12px;">MARCO JURÍDICO</span>
-                  ${isMatch ? `<span style="background:#0866F5; color:#fff; font-size:10px; font-weight:800; padding:2px 8px; border-radius:4px; font-family:var(--font-mono);">✓ ACOPLE DIRECTO</span>` : ''}
-                </div>
-                <div class="ods-card-body">
-                  <div style="font-size:13px; font-weight:800; color:var(--text-title); line-height:1.3; min-height:36px;">
-                    ${item.title}
-                  </div>
-                  <div style="font-size:11px; font-family:var(--font-mono); color:#0866F5; font-weight:700;">
-                    ${item.entidad}
-                  </div>
-                  <div style="background:#F8FAFD; border:1px solid #E2E8F0; border-radius:6px; padding:8px 10px; font-size:11.5px; color:#475569; line-height:1.45;">
-                    <strong style="color:#0D1B35; font-size:10.5px; text-transform:uppercase; display:block; margin-bottom:2px;">¿Por qué convence al jurado?</strong>
-                    ${customWhy.slice(0, 115)}${customWhy.length > 115 ? '...' : ''}
-                  </div>
-                  <div style="background:#F8FAFD; border:1px solid #E2E8F0; border-radius:6px; padding:8px 10px; font-size:11.5px; color:#475569; line-height:1.45;">
-                    <strong style="color:#0D1B35; font-size:10.5px; text-transform:uppercase; display:block; margin-bottom:2px;">¿Cómo se inserta la solución?</strong>
-                    ${customHow.slice(0, 115)}${customHow.length > 115 ? '...' : ''}
-                  </div>
-                  <div style="margin-top:auto; padding-top:6px; font-size:11.5px; font-weight:800; color:#0866F5; display:flex; align-items:center; justify-content:space-between;">
-                    <span>Toca para ver y editar</span>
-                    ${SVG.arrowRight}
-                  </div>
-                </div>
-              </div>
-            `;
-          }).join("")}
-        </div>
-
-        <h3 style="font-size:13.5px; font-weight:800; color:#0D1B35; text-transform:uppercase; letter-spacing:0.04em; margin:28px 0 10px 0; display:flex; align-items:center; gap:6px;">
-          ${SVG.spark} Programas Nacionales & Plataformas de Gobierno ("Otros")
-        </h3>
-        <div class="ods-grid">
-          ${programas.map(item => {
-            const isMatch = mappedLeyIds.includes(item.id);
-            const customWhy = getImpactCustom(`ley_${item.id}`, "porque", item.porque);
-            const customHow = getImpactCustom(`ley_${item.id}`, "como", item.como);
-
-            return `
-              <div class="ods-card ${isMatch ? 'is-active-match' : ''}" onclick="openImpactDetailModal('ley', '${item.id}')" title="Haz clic para ver y editar el Por Qué y Cómo">
-                <div class="ods-card-header" style="background:#0F172A;">
-                  <span style="font-family:var(--font-mono); font-weight:800; font-size:12px;">PROGRAMA NACIONAL</span>
-                  ${isMatch ? `<span style="background:#0866F5; color:#fff; font-size:10px; font-weight:800; padding:2px 8px; border-radius:4px; font-family:var(--font-mono);">✓ CANAL ACTIVO</span>` : ''}
-                </div>
-                <div class="ods-card-body">
-                  <div style="font-size:13px; font-weight:800; color:var(--text-title); line-height:1.3; min-height:36px;">
-                    ${item.title}
-                  </div>
-                  <div style="font-size:11px; font-family:var(--font-mono); color:#0866F5; font-weight:700;">
-                    ${item.entidad}
-                  </div>
-                  <div style="background:#F8FAFD; border:1px solid #E2E8F0; border-radius:6px; padding:8px 10px; font-size:11.5px; color:#475569; line-height:1.45;">
-                    <strong style="color:#0D1B35; font-size:10.5px; text-transform:uppercase; display:block; margin-bottom:2px;">¿Por qué convence al jurado?</strong>
-                    ${customWhy.slice(0, 115)}${customWhy.length > 115 ? '...' : ''}
-                  </div>
-                  <div style="background:#F8FAFD; border:1px solid #E2E8F0; border-radius:6px; padding:8px 10px; font-size:11.5px; color:#475569; line-height:1.45;">
-                    <strong style="color:#0D1B35; font-size:10.5px; text-transform:uppercase; display:block; margin-bottom:2px;">¿Cómo se inserta la solución?</strong>
-                    ${customHow.slice(0, 115)}${customHow.length > 115 ? '...' : ''}
-                  </div>
-                  <div style="margin-top:auto; padding-top:6px; font-size:11.5px; font-weight:800; color:#0866F5; display:flex; align-items:center; justify-content:space-between;">
-                    <span>Toca para ver y editar</span>
-                    ${SVG.arrowRight}
-                  </div>
-                </div>
-              </div>
-            `;
-          }).join("")}
-        </div>
+        <h2 class="impact-group-title">Leyes</h2>
+        <div class="ods-list">${leyes.map(x => fila(x, "ley")).join("")}</div>
+        <h2 class="impact-group-title">Programas</h2>
+        <div class="ods-list">${programas.map(x => fila(x, "ley")).join("")}</div>
       </div>
     `;
   }
@@ -6791,65 +6542,22 @@ function renderImpactSubTabContent(subTab, activeCh, mappedOdsIds, mappedEjeIds,
   if (subTab === "sintesis") {
     const pautText = generateImpactPautadoText(activeCh, mappedOdsIds, mappedEjeIds, mappedLeyIds);
     const scriptText = generateImpactScriptText(activeCh, mappedOdsIds, mappedEjeIds, mappedLeyIds);
-
     return `
-      <div>
-        <div style="margin-bottom:16px;">
-          <h1 style="font-size:24px; font-weight:900; color:var(--text-title); letter-spacing:-0.02em; margin:0 0 4px 0;">
-            Síntesis de Impacto para Pautado Oficial y Guion Pitch
-          </h1>
-          <p style="font-size:13px; color:var(--text-muted); line-height:1.45; margin:0;">
-            Párrafos integrados redactados con máxima densidad de rúbrica. Inyéctalos directamente en la Sección 1.5 del Pautado Oficial y en el Acto 4 del Guion de 120s.
-          </p>
-        </div>
-
-        <div style="display:grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap:20px; align-items:start;">
-          <!-- Bloque Pautado 1.5 -->
-          <div style="background:#FFFFFF; border:1px solid var(--border-light); border-radius:10px; padding:18px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-              <div>
-                <strong style="font-size:13.5px; color:#0D1B35;">Sección 1.5 Pautado Oficial</strong>
-                <div style="font-size:11px; color:#64748B;">Impacto Social y Sostenibilidad Ambiental</div>
-              </div>
-              <span id="pautado-synth-chars" style="font-family:var(--font-mono); font-size:11.5px; font-weight:700; color:#0866F5;">
-                ${pautText.length} / 1,500 caracteres
-              </span>
-            </div>
-            <textarea id="impact-synth-pautado" rows="10" style="width:100%; border:1px solid #CBD5E1; border-radius:6px; padding:10px; font-size:12px; font-family:var(--font-ui); line-height:1.55; box-sizing:border-box;"
-              oninput="document.getElementById('pautado-synth-chars').textContent = this.value.length + ' / 1,500 caracteres'">${state.pautado.impacto || pautText}</textarea>
-            <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:10px;">
-              <button class="btn-pill-light" onclick="navigator.clipboard.writeText(document.getElementById('impact-synth-pautado').value); alert('Copiado al portapapeles');">
-                ${SVG.copy} Copiar
-              </button>
-              <button class="btn-primary" onclick="injectImpactIntoPautado(document.getElementById('impact-synth-pautado').value)">
-                Inyectar en Pautado Oficial ➔
-              </button>
-            </div>
+      <div class="impact-synth">
+        <section class="impact-synth-block">
+          <div class="impact-synth-head">
+            <h2 class="impact-group-title">Para el pautado</h2>
+            <button type="button" class="btn-secondary" onclick="injectImpactIntoPautado(document.getElementById('impact-synth-pautado').value)">Usar en pautado</button>
           </div>
-
-          <!-- Bloque Guion Acto 4 -->
-          <div style="background:#FFFFFF; border:1px solid var(--border-light); border-radius:10px; padding:18px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-              <div>
-                <strong style="font-size:13.5px; color:#0D1B35;">Guion Pitch 120s · Acto 4 (01:30 - 02:00)</strong>
-                <div style="font-size:11px; color:#64748B;">Impacto Humano, Políticas Públicas & Cierre</div>
-              </div>
-              <span id="script-synth-words" style="font-family:var(--font-mono); font-size:11.5px; font-weight:700; color:#0866F5;">
-                ${(state.script.acto4 || scriptText).split(/\s+/).filter(Boolean).length} palabras · ~28 seg
-              </span>
-            </div>
-            <textarea id="impact-synth-script" rows="10" style="width:100%; border:1px solid #CBD5E1; border-radius:6px; padding:10px; font-size:12px; font-family:var(--font-ui); line-height:1.55; box-sizing:border-box;"
-              oninput="const words = this.value.split(/\s+/).filter(Boolean).length; document.getElementById('script-synth-words').textContent = words + ' palabras · ~' + Math.round(words/2.5) + ' seg'">${state.script.acto4 || scriptText}</textarea>
-            <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:10px;">
-              <button class="btn-pill-light" onclick="navigator.clipboard.writeText(document.getElementById('impact-synth-script').value); alert('Copiado al portapapeles');">
-                ${SVG.copy} Copiar
-              </button>
-              <button class="btn-primary" onclick="injectImpactIntoScript(document.getElementById('impact-synth-script').value)">
-                Inyectar en Guion de Video ➔
-              </button>
-            </div>
+          <textarea id="impact-synth-pautado" rows="7" class="impact-synth-input">${escapeHtml(state.pautado.impacto || pautText)}</textarea>
+        </section>
+        <section class="impact-synth-block">
+          <div class="impact-synth-head">
+            <h2 class="impact-group-title">Para el cierre del video</h2>
+            <button type="button" class="btn-secondary" onclick="injectImpactIntoScript(document.getElementById('impact-synth-script').value)">Usar en guion</button>
           </div>
-        </div>
+          <textarea id="impact-synth-script" rows="5" class="impact-synth-input">${escapeHtml(state.script.acto4 || scriptText)}</textarea>
+        </section>
       </div>
     `;
   }
@@ -6951,74 +6659,41 @@ function openImpactDetailModal(type, key) {
 
   modal.innerHTML = `
     <div class="impact-modal-card">
-      <div class="impact-modal-header" style="background:${bannerColor};">
-        <div style="display:flex; align-items:center; gap:12px;">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">${iconSvg}</svg>
+      <div class="impact-modal-header">
+        <div class="impact-modal-headmain">
+          <span class="impact-modal-icon" style="color:${bannerColor};"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">${iconSvg}</svg></span>
           <div>
-            <div style="font-family:var(--font-mono); font-size:10px; font-weight:800; letter-spacing:0.04em; opacity:0.85; text-transform:uppercase;">
-              ${badgeLabel}
-            </div>
-            <h2 style="font-size:16px; font-weight:900; margin:2px 0 0 0; line-height:1.25; color:#ffffff;">
-              ${title}
-            </h2>
+            <h2 class="impact-modal-title">${title}</h2>
+            <div class="impact-modal-badge">${badgeLabel}</div>
           </div>
         </div>
-        <button class="btn-icon-discreet" style="color:#ffffff;" onclick="closeImpactModal()">${SVG.close}</button>
+        <button class="btn-icon-discreet" onclick="closeImpactModal()" aria-label="Cerrar">${SVG.close}</button>
       </div>
 
       <div class="impact-modal-body">
         <!-- 01. Por qué cumple / se vincula -->
         <div>
-          <div class="impact-section-label">
-            ${SVG.spark} 01. ¿Por qué cumple este punto? (Diagnóstico & Pertinencia de Rúbrica)
-          </div>
-          <textarea id="modal-impact-why" rows="3" style="width:100%; border:1px solid #CBD5E1; border-radius:6px; padding:10px; font-size:12.5px; font-family:var(--font-ui); line-height:1.5; box-sizing:border-box; background:#F8FAFD;"
+          <label class="impact-field-label" for="modal-impact-why">Por qué cumple</label>
+          <textarea id="modal-impact-why" class="impact-modal-input" rows="4"
             oninput="saveImpactCustomField('${stateKey}', 'porque', this.value)">${whyText}</textarea>
-          <div style="font-size:10.5px; color:#64748B; margin-top:2px;">
-            Explica la problemática real en el territorio y la razón por la que el jurado evaluador asigna puntaje positivo a este criterio.
-          </div>
         </div>
 
         <!-- 02. Cómo lo cumple tu solución -->
         <div>
-          <div class="impact-section-label">
-            ${SVG.spark} 02. ¿Cómo lo cumple tu solución? (Mecanismo Técnico & Despliegue)
-          </div>
-          <textarea id="modal-impact-how" rows="3" style="width:100%; border:1px solid #CBD5E1; border-radius:6px; padding:10px; font-size:12.5px; font-family:var(--font-ui); line-height:1.5; box-sizing:border-box; background:#F8FAFD;"
+          <label class="impact-field-label" for="modal-impact-how">Cómo lo cumple</label>
+          <textarea id="modal-impact-how" class="impact-modal-input" rows="4"
             oninput="saveImpactCustomField('${stateKey}', 'como', this.value)">${howText}</textarea>
-          <div style="font-size:10.5px; color:#64748B; margin-top:2px;">
-            Describe el mecanismo técnico exacto (materiales, sensores, proceso, manufactura o economía circular) con que tu equipo lo ejecuta.
-          </div>
         </div>
 
         <!-- Meta o Cita Formal -->
-        <div style="background:#F1F5F9; border:1px solid #E2E8F0; border-radius:6px; padding:10px 12px; font-size:11.5px; line-height:1.45; color:#334155;">
-          <strong style="color:#0F172A; font-family:var(--font-mono); font-size:10.5px; display:block; margin-bottom:2px; text-transform:uppercase;">
-            Referencia Oficial para Jurados:
-          </strong>
-          ${metaInfo}
-        </div>
+        <p class="impact-modal-meta">${metaInfo}</p>
 
         <!-- Botones de Acción -->
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; padding-top:12px; border-top:1px solid #E2E8F0;">
-          <div>
-            ${type === 'ods' ? `
-              <button class="btn-pill-light" onclick="toggleOdsSelection(${item.id}); openImpactDetailModal('ods', ${item.id});" style="font-size:11.5px; font-weight:700;">
-                ${isSelectedOds ? '✓ Desmarcar de Mi Reto' : '+ Marcar ODS para Mi Reto'}
-              </button>
-            ` : ''}
-          </div>
-          <div style="display:flex; gap:8px;">
-            <button class="btn-pill-light" onclick="navigator.clipboard.writeText(document.getElementById('modal-impact-why').value + '\n\n' + document.getElementById('modal-impact-how').value); alert('Copiado al portapapeles');" style="font-size:11.5px;">
-              ${SVG.copy} Copiar
-            </button>
-            <button class="btn-primary" onclick="injectImpactIntoPautado(document.getElementById('modal-impact-why').value + ' ' + document.getElementById('modal-impact-how').value); closeImpactModal();" style="font-size:11.5px; padding:6px 14px;">
-              Inyectar en Pautado 1.5 ➔
-            </button>
-            <button class="btn-secondary" onclick="closeImpactModal()" style="font-size:11.5px;">
-              Cerrar
-            </button>
-          </div>
+        <div class="impact-modal-actions">
+          <button type="button" class="link-quiet" onclick="navigator.clipboard.writeText(document.getElementById('modal-impact-why').value + '\n\n' + document.getElementById('modal-impact-how').value);">Copiar texto</button>
+          ${type === 'ods' ? `<button type="button" class="link-quiet" onclick="toggleOdsSelection(${item.id}); openImpactDetailModal('ods', ${item.id});">${isSelectedOds ? 'Quitar de mi reto' : 'Marcar para mi reto'}</button>` : ''}
+          <button type="button" class="btn-secondary" onclick="closeImpactModal()">Volver</button>
+          <button type="button" class="btn-primary" onclick="injectImpactIntoPautado(document.getElementById('modal-impact-why').value + ' ' + document.getElementById('modal-impact-how').value); closeImpactModal();">Usar en pautado</button>
         </div>
       </div>
     </div>
@@ -7037,101 +6712,68 @@ function closeImpactModal() {
 // ═════════════════════════════════════════════════════════════════════════════
 function renderViewMultiAI() {
   const tasks = state.tasks || getDefaultMultiAITasks();
+  const done = tasks.filter(t => t.status === "completed").length;
+  const promptDe = (t) => generateSpecificMegaPrompt(t.id);
 
-  const html = `
-    <div class="phase-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:14px; margin-bottom:24px; padding-bottom:14px; border-bottom:1px solid var(--border-light);">
+  return `
+    <div class="phase-header">
       <div>
-        <h1 class="phase-title">05 · Despacho Multi-IA <span class="phase-title-accent">& Coordinación en Paralelo</span></h1>
-        <p class="phase-subtitle">Coordina OpenCode, Antigravity y modelos externos gratuitos (Gemini, Perplexity, Alibaba) sin duplicar trabajo.</p>
+        <h1 class="phase-title">Despacho <span class="phase-title-accent">Multi-IA</span></h1>
+        <p class="phase-subtitle">Cada tarea tiene su IA y su prompt listo. Copia, pega la respuesta y vuelve al proyecto.</p>
       </div>
-      <div style="display:flex; gap:8px;">
-        <button class="btn-primary" onclick="copySyncToken()">${SVG.copy} Copiar Token para WhatsApp</button>
-        <button class="btn-secondary" onclick="pasteSyncToken()">${SVG.upload} Pegar Token de Equipo</button>
+      <div class="dispatch-tools">
+        <button class="btn-secondary" onclick="copySyncToken()">${SVG.copy} Token para WhatsApp</button>
+        <button class="btn-secondary" onclick="pasteSyncToken()">${SVG.upload} Pegar token</button>
       </div>
     </div>
 
-    <!-- Banner de Seguridad para Wi-Fi Universitario -->
-    <div class="wifi-bypass-card">
-      <div>
-        <strong style="font-size:12px; color:var(--text-main); display:block;">Colaboración en Red Universitaria (Bypass de Aislamiento Wi-Fi)</strong>
-        <p style="font-size:11px; color:var(--text-muted); margin:0;">
-          Si la red de la universidad bloquea la conexión IP local directa, compartan el Token por WhatsApp o utilicen la sincronización de archivos JSON en Google Drive.
-        </p>
-      </div>
-      <div style="display:flex; gap:8px;">
-        <a href="${state.google_drive_url}" target="_blank" class="btn-secondary" style="font-size:11px; text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
-          Abrir Google Drive ${SVG.external}
-        </a>
-        <button class="btn-secondary" style="font-size:11px;" onclick="exportProjectJson()">Exportar JSON</button>
-      </div>
+    <div class="dispatch-status">
+      <span>${done} de ${tasks.length} tareas con respuesta</span>
+      <button type="button" class="link-quiet" onclick="exportProjectJson()">Exportar JSON</button>
+      <a href="${state.google_drive_url}" target="_blank" rel="noopener noreferrer" class="link-quiet">Google Drive ${SVG.external}</a>
     </div>
 
-    <!-- Cuadrícula de Tareas Multi-IA en Paralelo -->
-    <div class="task-dispatch-grid">
-      ${tasks.map(t => {
-        let statusBadge = "";
-        let cardClass = "";
-        if (t.status === "in_progress") {
-          statusBadge = rsPill("working", { label: "Trabajando" });
-          cardClass = "in-progress";
-        } else if (t.status === "completed") {
-          statusBadge = rsPill("done", { label: "Completado", title: "Completado" });
-          cardClass = "completed";
-        } else {
-          statusBadge = rsPill("pending", { label: "Pendiente", title: "Pendiente" });
-        }
-
-        const promptText = generateSpecificMegaPrompt(t.id);
-
+    <ol class="dispatch-list">
+      ${tasks.map((t, i) => {
+        let pill = rsPill("pending", { label: "Pendiente" });
+        if (t.status === "in_progress") pill = rsPill("working", { label: "En curso" });
+        if (t.status === "completed") pill = rsPill("done", { label: "Lista" });
+        const hecha = t.status === "completed";
         return `
-          <div class="task-dispatch-card ${cardClass}">
-            <div>
-              <div class="task-header">
-                <span class="task-ai-tag">${t.ai}</span>
-                <select id="ai-model-${t.id}" class="ai-model-select" onchange="modelPrefChanged('${t.id}', this.value)" title="Modelo especializado para esta tarea (descubierto dinámicamente)"></select>
-                ${statusBadge}
-              </div>
-              <h3 class="task-title">${t.title}</h3>
-              <p class="task-desc">${t.desc}</p>
-
-              <!-- Vista previa del Prompt -->
-              <div class="prompt-snippet-box">
-                ${promptText}
-              </div>
-
-              <div style="display:flex; gap:8px; margin-bottom:12px;">
-                <button class="btn-primary" style="flex:1.2; font-size:11px; padding:4px 8px;" onclick="runTaskWithAI('${t.id}')">
-                  ${SVG.check} Generar con IA
-                </button>
-                <button class="btn-secondary" style="flex:1; font-size:11px; padding:4px 8px;" onclick="copySpecificMegaPrompt('${t.id}')">
-                  ${SVG.copy} Copiar
-                </button>
-                <button class="btn-secondary" style="font-size:11px; padding:4px 8px; color:#d97706;" onclick="setTaskStatus('${t.id}', 'in_progress')" title="Modo manual: marcar mientras trabajas fuera">
-                  Manual
-                </button>
-              </div>
-
-              <div id="ai-chips-${t.id}" class="ai-external-chips" style="display:none;"></div>
-
-              <!-- Caja de Aterrizaje Ctrl+V -->
-              <div>
-                <textarea id="paste-result-${t.id}" class="landing-paste-area" placeholder="Pega aquí la respuesta generada por ${t.ai} (Ctrl+V)...">${t.result || ''}</textarea>
-              </div>
-            </div>
-
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px; pt:8px; border-top:1px solid var(--border-light);">
-              <span style="font-size:10px; color:var(--text-muted); font-family:var(--font-mono);">Inyección automática</span>
-              <button class="btn-primary" style="font-size:11px; padding:4px 10px;" onclick="injectTaskResult('${t.id}')">
-                Inyectar Datos al Proyecto ${SVG.arrowRight}
-              </button>
-            </div>
+        <li class="dispatch-item${hecha ? " is-done" : ""}">
+          <div class="di-head">
+            <span class="di-num">${String(i + 1).padStart(2, "0")}</span>
+            <h2 class="di-title">${t.title}</h2>
+            ${pill}
           </div>
-        `;
+          <p class="di-desc">${t.desc}</p>
+          <div class="di-meta">
+            <span class="di-ai">${t.ai}</span>
+            <select id="ai-model-${t.id}" class="ai-model-select" onchange="modelPrefChanged('${t.id}', this.value)" aria-label="Modelo para ${escapeHtml(t.title)}"></select>
+          </div>
+          <div class="di-actions">
+            <button class="btn-primary" onclick="runTaskWithAI('${t.id}')">${SVG.spark} Generar</button>
+            <button class="btn-secondary" onclick="copySpecificMegaPrompt('${t.id}')">${SVG.copy} Copiar prompt</button>
+            ${t.status === "completed"
+              ? `<button class="btn-secondary" onclick="setTaskStatus('${t.id}', 'pending')">Reiniciar</button>`
+              : `<button class="btn-secondary" onclick="setTaskStatus('${t.id}', 'in_progress')">Marcar en curso</button>`}
+          </div>
+          <details class="di-fold">
+            <summary>Ver prompt completo</summary>
+            <pre class="di-prompt">${escapeHtml(promptDe(t))}</pre>
+          </details>
+          <details class="di-fold">
+            <summary>Pegar la respuesta</summary>
+            <textarea id="paste-result-${t.id}" class="landing-paste-area" rows="4" placeholder="Pega aquí lo que devolvió ${escapeHtml(t.ai)}">${escapeHtml(t.result || "")}</textarea>
+            <div class="di-landing-row">
+              <div id="ai-chips-${t.id}" class="ai-external-chips" style="display:none;"></div>
+              <button class="btn-primary" onclick="injectTaskResult('${t.id}')">Guardar en el proyecto ${SVG.arrowRight}</button>
+            </div>
+          </details>
+        </li>`;
       }).join("")}
-    </div>
+    </ol>
   `;
-  setTimeout(() => tasks.forEach(t => populateModelSelect(t.id)), 0);
-  return html;
 }
 
 function setTaskStatus(taskId, status) {
@@ -7416,7 +7058,7 @@ function injectTaskResult(taskId) {
 const PAUTADO_HINTS = {
   problema: "Fórmulalo con una cifra verificable: quién sufre el problema, cuánto pierde y por qué nadie lo ha resuelto.",
   solucion: "Una frase densa: qué hace el sistema, con qué hardware y qué desbloquea. Sin nombres comerciales.",
-  prefactibilidad: "Costos de proveedores reales (Alibaba) con flete 18%. El total debe cuadrar entre $4,000 y $6,000 USD.",
+  prefactibilidad: `Costos de proveedores reales (Alibaba) con flete 18%. El total debe cuadrar entre $${BUDGET_TARGET.min.toLocaleString("en-US")} y $${BUDGET_TARGET.max.toLocaleString("en-US")} USD.`,
   innovacion: "Por qué no existe aún: dimensión Wow 1 (ciber-física) o Wow 2 (pasivo convertido en capital).",
   impacto: "ODS oficial + beneficio anual cuantificado: familias, ahorro o hectáreas. Citas el plan de lucha contra la pobreza."
 };
@@ -7427,8 +7069,8 @@ function renderViewPautado() {
   return `
     <div class="phase-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:14px; margin-bottom:24px; padding-bottom:14px; border-bottom:1px solid var(--border-light);">
       <div>
-        <h1 class="phase-title">06 · Documento <span class="phase-title-accent">Pautado Oficial</span></h1>
-        <p class="phase-subtitle">5 secciones evaluadas por el jurado con conteo estricto de caracteres y compilación directa en la plantilla oficial.</p>
+        <h1 class="phase-title">Documento <span class="phase-title-accent">Pautado Oficial</span></h1>
+        <p class="phase-subtitle">Cinco secciones que el jurado califica una por una. Al compilar, cada texto cae bajo su encabezado oficial.</p>
       </div>
       <div style="display:flex; gap:8px; flex-wrap:wrap;">
         <button class="btn-primary" onclick="compileAndDownloadDocx()" id="btn-compile-docx">
@@ -7450,12 +7092,12 @@ function renderViewPautado() {
     <div class="workbench-card" style="margin-bottom:16px;">
       <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px; flex-wrap:wrap;">
         <div style="min-width:0;">
-          <div style="font-size:12.5px; font-weight:800; text-transform:uppercase; letter-spacing:0.02em; color:var(--text-main);">Plantilla oficial del evento</div>
-          <p style="font-size:11.5px; color:#94A3B8; margin:4px 0 0 0; max-width:660px; line-height:1.45;">
+          <div style="font-size:13px; font-weight:800;  letter-spacing:0.02em; color:var(--text-main);">Plantilla oficial del evento</div>
+          <p style="font-size:12px; color:var(--text-muted); margin:4px 0 0 0; max-width:660px; line-height:1.45;">
             Sube el Word (.docx) que entrega el evento (${state.rally_type === 'nacional' ? 'Rally Nacional Nicaragua Innova' : 'Rally Latinoamericano'}).
             Al compilar, los textos de abajo se insertan automáticamente bajo cada encabezado oficial, respetando las reglas de la rúbrica.
           </p>
-          <div id="pautado-template-status" style="font-size:11.5px; font-weight:700; color:#64748B; margin-top:6px;">Consultando plantilla…</div>
+          <div id="pautado-template-status" style="font-size:12px; font-weight:700; color:var(--text-muted); margin-top:6px;">Consultando plantilla…</div>
         </div>
         <div style="display:flex; gap:8px; flex-wrap:wrap;">
           <button class="btn-secondary" type="button" onclick="document.getElementById('pautado-template-input').click()">${SVG.upload} Subir plantilla Word (.docx)</button>
@@ -7479,7 +7121,7 @@ function renderViewPautado() {
         const max = getPautadoLimit(k);
         const pct = max ? Math.min(100, Math.round((len / max) * 100)) : null;
         const isOver = max ? len > max : false;
-        const color = isOver ? '#b42318' : (pct !== null && pct >= 92) ? '#0D1B35' : '#64748B';
+        const color = isOver ? '#b42318' : (pct !== null && pct >= 92) ? '#0D1B35' : 'var(--text-muted)';
         const counter = max ? `${len} / ${max} caracteres (${pct}%)` : `${len} caracteres`;
         const authorMascot = authorship[k] || null;
         const secMeta = {
@@ -7488,7 +7130,7 @@ function renderViewPautado() {
           impacto:         { icon: SVG.globe,       color: "#0284C7" },
           innovacion:      { icon: SVG.network,     color: "#475569" },
           prefactibilidad: { icon: SVG.shieldCheck, color: "#0D1B35" }
-        }[k] || { icon: "", color: "#64748B" };
+        }[k] || { icon: "", color: "var(--text-muted)" };
 
         return `
           <div class="workbench-card" style="margin-bottom:0;" data-lockable="pautado-${k}">
@@ -7510,7 +7152,7 @@ function renderViewPautado() {
                 ${counter}
               </span>
             </div>
-            <p style="font-size:11px; color:#94A3B8; line-height:1.45; margin:0 0 6px 0;">${PAUTADO_HINTS[k] || ""}</p>
+            <p style="font-size:11px; color:var(--text-muted); line-height:1.45; margin:0 0 6px 0;">${PAUTADO_HINTS[k] || ""}</p>
             <textarea id="pt-${k}" rows="5"
               style="width:100%; max-width:860px; border:1px solid ${isOver ? '#b42318' : 'var(--border-light)'}; border-radius:4px; padding:10px; font-size:13px; line-height:1.55; font-family:var(--font-ui); box-sizing:border-box;"
               placeholder="Escribe la sección ${k}..."
@@ -7532,7 +7174,7 @@ function updateCharCount(k, el) {
   const len = el.value.length;
   const pct = max ? Math.min(100, Math.round((len / max) * 100)) : null;
   const isOver = max ? len > max : false;
-  const color = isOver ? '#b42318' : (pct !== null && pct >= 92) ? '#0D1B35' : '#64748B';
+  const color = isOver ? '#b42318' : (pct !== null && pct >= 92) ? '#0D1B35' : 'var(--text-muted)';
   const labelEl = el.closest(".workbench-card") ? el.closest(".workbench-card").querySelector(".pautado-counter") : null;
   if (labelEl) {
     labelEl.innerText = max ? `${len} / ${max} caracteres (${pct}%)` : `${len} caracteres`;
@@ -7550,7 +7192,7 @@ function _pautadoRallyType() {
 
 function _setPautadoTemplateStatus(html, color) {
   const el = document.getElementById("pautado-template-status");
-  if (el) { el.innerHTML = html; el.style.color = color || "#64748B"; }
+  if (el) { el.innerHTML = html; el.style.color = color || "var(--text-muted)"; }
 }
 
 function _readFileAsBase64(file) {
@@ -7574,7 +7216,7 @@ async function refreshPautadoTemplateStatus() {
     } else if (hasLocal) {
       _setPautadoTemplateStatus("Plantilla cargada en esta sesión (aún sin guardar en el servidor).", "#0D1B35");
     } else if (info.reference) {
-      _setPautadoTemplateStatus(`Sin subir: se usará la plantilla de referencia del evento (${info.reference}).`, "#64748B");
+      _setPautadoTemplateStatus(`Sin subir: se usará la plantilla de referencia del evento (${info.reference}).`, "var(--text-muted)");
     } else {
       _setPautadoTemplateStatus("Sin subir y sin plantilla de referencia disponible.", "#b42318");
     }
@@ -7703,17 +7345,38 @@ function updateExchangeRate(val) {
   renderTab("budget");
 }
 
+let budgetUrlEditIdx = -1;
+
+function budgetSourceHost(url) {
+  try {
+    return String(new URL(String(url)).hostname || "").replace(/^www\./i, "").toLowerCase();
+  } catch (e) { return ""; }
+}
+
+// Chip de la tienda de donde salió el precio: logo del sitio + dominio, todo
+// el chip es el enlace al producto (tap en teléfono → abre la ficha real).
+function budgetSourceChip(url) {
+  const raw = String(url || "").trim();
+  const host = budgetSourceHost(raw);
+  if (!host) return `<span class="src-chip is-empty" title="Agrega el enlace del producto para sustentar el precio">Sin enlace</span>`;
+  const initial = escapeHtml(host.charAt(0).toUpperCase());
+  return `<a class="src-chip" href="${escapeHtml(raw)}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(raw)}">
+    <span class="src-logo"><span class="src-mono" aria-hidden="true">${initial}</span><img src="https://www.google.com/s2/favicons?sz=64&domain=${encodeURIComponent(host)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"></span>
+    <span class="src-host">${escapeHtml(host)}</span>${SVG.external}
+  </a>`;
+}
+
 function renderViewBudget() {
   const total = state.budget.reduce((a, b) => a + (b.units * b.unit_cost), 0);
   const ctx = budgetCurrency();
-  const isTooLow = total < 3000;
-  const isTooHigh = total > 6500;
+  const isTooLow = total < BUDGET_TARGET.min;
+  const isTooHigh = total > BUDGET_TARGET.max;
   const hasNotice = isTooLow || isTooHigh;
 
   return `
     <div class="phase-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:14px; margin-bottom:24px; padding-bottom:14px; border-bottom:1px solid var(--border-light);">
       <div>
-        <h1 class="phase-title">07 · Presupuesto de <span class="phase-title-accent">Puesta en Marcha</span></h1>
+        <h1 class="phase-title">Presupuesto de <span class="phase-title-accent">Puesta en Marcha</span></h1>
         <p class="phase-subtitle">Insumos mayoristas para el prototipo inicial o lote piloto verificables con proveedores reales.</p>
         ${ctx.nacional ? `
           <label style="display:inline-flex; align-items:center; gap:6px; margin-top:8px; font-size:11px; font-weight:700; color:var(--text-muted);">
@@ -7750,8 +7413,8 @@ function renderViewBudget() {
         }
       </div>
     ` : `
-      <div class="rubric-callout" style="border-left-color:#10b981; background:#f0fdf4;">
-        <strong>Presupuesto Equilibrado y Sustentado:</strong> El monto actual de <strong>${budgetFmt(total, ctx, true)}</strong> refleja un balance creíble entre viabilidad económica y rigor técnico.${ctx.nacional && ctx.rate ? ` Equivale a $${total.toFixed(2)} USD a la tasa declarada.` : ""}
+      <div class="rubric-callout" style="border-left-color:var(--status-ok-text); background:var(--status-ok-bg);">
+        <strong>Presupuesto equilibrado:</strong> el total cae dentro de la banda del certamen y cada partida tiene respaldo. Falta revisar que costos e impacto del video digan lo mismo.${ctx.nacional && ctx.rate ? ` Equivale a $${total.toFixed(2)} USD a la tasa declarada.` : ""}
       </div>
     `}
 
@@ -7771,7 +7434,7 @@ function renderViewBudget() {
             ${state.budget.length === 0 ? `
               <tr>
                 <td colspan="5" style="padding:40px 16px; text-align:center;">
-                  <div style="font-size:13px; font-weight:800; color:var(--text-primary); margin-bottom:6px;">Sin partidas todavía</div>
+                  <div style="font-size:13px; font-weight:800; color:var(--text-title); margin-bottom:6px;">Sin partidas todavía</div>
                   <div style="font-size:12px; color:var(--text-muted); max-width:420px; margin:0 auto; line-height:1.55;">
                     Aún no hay insumos registrados. Agrega la primera partida con <strong>+ Agregar Partida</strong> e incluye el enlace al proveedor real para sustentar cada costo ante el jurado.
                   </div>
@@ -7781,8 +7444,12 @@ function renderViewBudget() {
             ${state.budget.map((it, idx) => `
               <tr>
                 <td>
-                  <input type="text" value="${it.element}" aria-label="Concepto de la partida ${idx + 1}" style="width:100%; border:none; background:transparent; font-size:12px; font-weight:600;" onchange="updateBudgetItem(${idx}, 'element', this.value)">
-                  <div style="font-size:10px; color:var(--text-muted);">${it.url ? `<a href="${it.url}" target="_blank" style="color:var(--color-primary); text-decoration:none;">Enlace proveedor ${SVG.external}</a>` : 'Sin enlace'}</div>
+                  <input type="text" value="${escapeHtml(it.element || "")}" aria-label="Concepto de la partida ${idx + 1}" style="width:100%; border:none; background:transparent; font-size:12px; font-weight:600;" onchange="updateBudgetItem(${idx}, 'element', this.value)">
+                  <div class="budget-src">
+                    ${it.url && budgetUrlEditIdx !== idx
+                      ? `${budgetSourceChip(it.url)}<button type="button" class="budget-url-edit" onclick="startBudgetUrlEdit(${idx})" aria-label="Cambiar el enlace de la partida ${idx + 1}">Cambiar</button>`
+                      : `<input type="url" inputmode="url" class="budget-url" value="${escapeHtml(it.url || "")}" placeholder="Pega el enlace del producto (Alibaba, Amazon…)" aria-label="Enlace del producto de la partida ${idx + 1}" onchange="updateBudgetItem(${idx}, 'url', this.value)">`}
+                  </div>
                 </td>
                 <td style="text-align:center;">
                   <input type="number" value="${it.units}" aria-label="Unidades de la partida ${idx + 1}" style="width:60px; text-align:center; border:1px solid var(--border-light); border-radius:3px; padding:2px;" onchange="updateBudgetItem(${idx}, 'units', this.value)">
@@ -7794,13 +7461,13 @@ function renderViewBudget() {
                   ${budgetFmt(it.units * it.unit_cost, ctx)}
                 </td>
                 <td style="text-align:center;">
-                  <button type="button" class="btn-secondary" style="padding:2px 6px; font-size:10px; color:#ef4444;" aria-label="Eliminar partida ${idx + 1}" title="Eliminar partida ${idx + 1}" onclick="removeBudgetItem(${idx})">${SVG.close}</button>
+                  <button type="button" class="btn-secondary" style="padding:2px 6px; font-size:11px; color:var(--status-err-text);" aria-label="Eliminar partida ${idx + 1}" title="Eliminar partida ${idx + 1}" onclick="removeBudgetItem(${idx})">${SVG.close}</button>
                 </td>
               </tr>
             `).join("")}
           </tbody>
           <tfoot>
-            <tr style="background:#f8fafc; font-weight:800;">
+            <tr style="background:var(--bg-subtle); font-weight:800;">
               <td colspan="3" style="text-align:right; font-size:12px;">TOTAL PRESUPUESTO PUESTA EN MARCHA:</td>
               <td style="text-align:right; font-family:var(--font-mono); font-size:14px; color:var(--color-primary);">${budgetFmt(total, ctx, true)}</td>
               <td></td>
@@ -7810,6 +7477,15 @@ function renderViewBudget() {
       </div>
     </div>
   `;
+}
+
+function startBudgetUrlEdit(idx) {
+  budgetUrlEditIdx = idx;
+  renderTab("budget");
+  requestAnimationFrame(() => {
+    const el = document.querySelector(".budget-url");
+    if (el) { el.focus(); el.select && el.select(); }
+  });
 }
 
 function updateBudgetItem(idx, field, val) {
@@ -7824,6 +7500,7 @@ function updateBudgetItem(idx, field, val) {
     state.budget[idx][field] = val;
   }
   saveState();
+  budgetUrlEditIdx = -1;
   renderTab("budget");
 }
 
@@ -7939,8 +7616,8 @@ function renderVideoStudio() {
     return `
       <label class="shot-plan-row ${done ? "done" : ""}" style="padding:8px 0; display:flex; gap:10px; align-items:flex-start; border-bottom:1px solid var(--border-light); cursor:pointer;">
         <input type="checkbox" ${done ? "checked" : ""} onchange="toggleShotPlan('${p.id}')" style="margin-top:2px; accent-color:var(--color-primary);">
-        <span style="font-size:11.5px; ${done ? "color:var(--color-primary); font-weight:600;" : "color:var(--text-main);"} font-family:var(--font-ui);">
-          <span style="font-family:var(--font-mono); font-size:10px; color:var(--text-muted); margin-right:6px;">${p.acto}</span>${p.label}
+        <span style="font-size:12px; ${done ? "color:var(--color-primary); font-weight:600;" : "color:var(--text-main);"} font-family:var(--font-ui);">
+          <span style="font-family:var(--font-mono); font-size:11px; color:var(--text-muted); margin-right:6px;">${p.acto}</span>${p.label}
         </span>
       </label>`;
   }).join("");
@@ -7957,7 +7634,7 @@ function renderVideoStudio() {
     return `
       <div style="margin-bottom:14px;">
         <div style="display:flex; justify-content:space-between; align-items:center; margin:10px 0 6px 0; border-bottom:1px solid var(--border-light); padding-bottom:4px;">
-          <span style="font-size:11px; font-weight:800; letter-spacing:0.05em; color:var(--text-muted); text-transform:uppercase;">${acto} · ${items.length} recurso(s)</span>
+          <span style="font-size:11px; font-weight:800; letter-spacing:0.05em; color:var(--text-muted); ">${acto} · ${items.length} recurso(s)</span>
         </div>
         <div class="asset-grid">
           ${items.map(it => {
@@ -7965,17 +7642,17 @@ function renderVideoStudio() {
             let thumb = "";
             if ((it.type || "").startsWith("image/")) thumb = `<img class="asset-thumb" src="${it.url}" loading="lazy" alt="">`;
             else if ((it.type || "").startsWith("video/")) thumb = `<video class="asset-thumb" src="${it.url}" controls preload="metadata" muted></video>`;
-            else if ((it.type || "").startsWith("audio/")) thumb = `<div class="asset-thumb asset-thumb-fallback"><div style="font-size:10px; font-weight:700; color:#94A3B8;">AUDIO</div><audio src="${it.url}" controls style="width:90%;"></audio></div>`;
-            else thumb = `<div class="asset-thumb asset-thumb-fallback"><div style="font-size:10px; font-weight:700; color:#94A3B8; text-transform:uppercase;">${kb}</div></div>`;
+            else if ((it.type || "").startsWith("audio/")) thumb = `<div class="asset-thumb asset-thumb-fallback"><div style="font-size:11px; font-weight:700; color:var(--text-muted);">AUDIO</div><audio src="${it.url}" controls style="width:90%;"></audio></div>`;
+            else thumb = `<div class="asset-thumb asset-thumb-fallback"><div style="font-size:11px; font-weight:700; color:var(--text-muted); ">${kb}</div></div>`;
             return `
               <div class="asset-card">
                 ${thumb}
                 <div style="padding:7px 9px;">
                   <div style="font-size:11px; font-weight:700; color:var(--text-main); word-break:break-all; line-height:1.3;">${it.name}</div>
-                  <div style="font-size:10px; color:var(--text-muted); margin-top:3px; font-family:var(--font-mono);">${kb} · ${currentClientMascot && it.owner === currentClientMascot.name ? "tuyo" : it.owner}</div>
+                  <div style="font-size:11px; color:var(--text-muted); margin-top:3px; font-family:var(--font-mono);">${kb} · ${currentClientMascot && it.owner === currentClientMascot.name ? "tuyo" : it.owner}</div>
                   <div style="display:flex; gap:6px; margin-top:6px;">
-                    <button class="btn-secondary" style="font-size:10.5px; padding:3px 8px;" onclick="downloadAsset('${it.url}','${it.name.replace(/'/g, "\\'")}')">${SVG.download || "⬇"} Original</button>
-                    <button class="btn-secondary" style="font-size:10.5px; padding:3px 8px; color:#b42318;" onclick="deleteVideoAsset('${it.id}')">Quitar</button>
+                    <button class="btn-secondary" style="font-size:11px; padding:3px 8px;" onclick="downloadAsset('${it.url}','${it.name.replace(/'/g, "\\'")}')">${SVG.download || "⬇"} Original</button>
+                    <button class="btn-secondary" style="font-size:11px; padding:3px 8px; color:var(--status-err-text);" onclick="deleteVideoAsset('${it.id}')">Quitar</button>
                   </div>
                 </div>
               </div>`;
@@ -7986,11 +7663,11 @@ function renderVideoStudio() {
   }).join("");
 
   return `
-    <div style="display:grid; grid-template-columns:1fr 1.6fr; gap:22px;">
+    <div class="video-studio-grid" style="display:grid; grid-template-columns:1fr 1.6fr; gap:22px;">
       <div>
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-          <span style="font-size:11px; font-weight:800; letter-spacing:0.05em; color:var(--text-muted); text-transform:uppercase;">Plan de Tomas (del guion oficial)</span>
-          <span style="font-family:var(--font-mono); font-size:10.5px; color:var(--color-primary);">${doneCount}/${DEFAULT_SHOT_PLAN.length} (${pct}%)</span>
+          <span style="font-size:12px; font-weight:700; color:var(--text-title);">Plan de tomas</span>
+          <span style="font-size:11px; color:var(--text-muted);">${doneCount} de ${DEFAULT_SHOT_PLAN.length}${doneCount ? ` · ${pct}%` : ""}</span>
         </div>
         ${planRows}
       </div>
@@ -8003,7 +7680,7 @@ function renderVideoStudio() {
           <select id="video-upload-acto" aria-label="Acto del video al que pertenece el recurso" onchange="setAssetUploadActo(this.value)" style="font-size:11px; padding:4px 8px; border:1px solid var(--border-light); border-radius:5px;">
             ${[... new Set(DEFAULT_SHOT_PLAN.map(p => p.acto))].map(a => `<option value="${a}" ${a === _assetUploadActo ? "selected" : ""}>${a}</option>`).join("")}
           </select>
-          <span style="font-size:10.5px; color:var(--text-muted);">Sube original sin recortar; la editora lo exporta a CapCut.</span>
+          <span style="font-size:11px; color:var(--text-muted);">Sube original sin recortar; la editora lo exporta a CapCut.</span>
         </div>
         ${gal}
       </div>
@@ -8012,59 +7689,56 @@ function renderVideoStudio() {
 }
 
 function renderViewResources() {  return `
-    <div class="phase-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:14px; margin-bottom:24px; padding-bottom:14px; border-bottom:1px solid var(--border-light);">
+    <div class="phase-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:14px; margin-bottom:8px; padding-bottom:14px; border-bottom:1px solid var(--border-light);">
       <div>
-        <h1 class="phase-title">08 · Bóveda de Recursos, <span class="phase-title-accent">Logos & Entregables</span></h1>
-        <p class="phase-subtitle">Repositorio unificado de archivos para video pitch, enlaces de equipo y entregables oficiales.</p>
+        <h1 class="phase-title">Recursos<span class="phase-title-accent"> y entregables</span></h1>
+        <p class="phase-subtitle">Archivos para el video, enlaces del equipo y entregables oficiales en un solo lugar.</p>
       </div>
-      <button class="btn-primary" onclick="saveTeamHubLinks()">Guardar Enlaces de Equipo</button>
     </div>
 
-    <!-- La bitácora de los agentes se ve aquí, sin esperar a la fase de cierre -->
-    ${renderAvisosIA()}
-
-    <div class="workbench-card" id="video-studio">
+    <div class="wb-section" id="video-studio">
       <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:14px; margin-bottom:4px;">
         <div>
-          <h3 style="margin:0;">Estudio de Video · Plan de Tomas & Recursos del Equipo</h3>
-          <p style="font-size:11px; color:var(--text-muted); margin:3px 0 0 0;">
-            Cada integrante sube aquí sus tomas y recursos; la editora entra, los previsualiza tipo galería y los descarga directo a CapCut en calidad original (sin recomprimir).
-          </p>
+          <h3 class="wb-section-title" style="margin:0;">Estudio de video</h3>
+          <p class="wb-note" style="margin:3px 0 12px;">Cada integrante sube sus tomas; la editora las previsualiza y las descarga en calidad original.</p>
         </div>
         <span style="font-size:11px; font-weight:700; color:var(--color-primary); white-space:nowrap;" id="video-plan-badge"></span>
       </div>
       <div id="video-studio-body">${renderVideoStudio()}</div>
     </div>
 
-    <div class="workbench-card">
+    <div class="wb-section">
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
         <div>
-          <h3 style="margin:0;">Ingesta Automática por Carpeta Fuente</h3>
-          <p style="font-size:11px; color:var(--text-muted); margin:2px 0 0 0;">
-            Documentos, patentes, actas previas e imágenes detectadas automáticamente en el directorio de trabajo.
+          <h3 class="wb-section-title">Ingesta por carpeta fuente</h3>
+          <p class="wb-note">
+            Documentos, patentes, actas previas e imágenes detectadas en el directorio de trabajo.
           </p>
         </div>
         <button class="btn-secondary" onclick="scanFolderSources()" id="btn-scan-sources" style="font-size:11px;">
-          ${SVG.sync} Escanear Fuentes
+          ${SVG.sync} Escanear
         </button>
       </div>
-      <div id="sources-scan-container" style="max-height:180px; overflow-y:auto; border:1px solid var(--border-light); border-radius:6px; padding:8px; background:#f8fafc;">
+      <div id="sources-scan-container" style="max-height:180px; overflow-y:auto; border:1px solid var(--border-light); border-radius:6px; padding:8px;">
         <span style="font-size:11px; color:var(--text-muted);">Cargando catálogo de archivos fuente...</span>
       </div>
     </div>
 
-    <div class="workbench-card">
-      <h3 style="margin-bottom:12px;">Enlaces Fijos del Equipo (Cloud Workspace)</h3>
+    <div class="wb-section">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px;">
+        <h3 class="wb-section-title" style="margin:0;">Enlaces del equipo</h3>
+        <button class="btn-primary" onclick="saveTeamHubLinks()" style="font-size:11px; padding:6px 12px;">Guardar enlaces</button>
+      </div>
       <div class="form-grid">
         <div class="form-group full">
-          <label>Carpeta Oficial de Google Drive (Videos crudos, fotos y audios)</label>
+          <label>Google Drive · videos crudos, fotos y audios</label>
           <div style="display:flex; gap:8px;">
             <input type="url" id="hub-drive-url" aria-label="URL de la carpeta oficial de Google Drive" value="${state.google_drive_url}" style="flex:1;">
             <a href="${state.google_drive_url}" target="_blank" class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">Abrir Drive ${SVG.external}</a>
           </div>
         </div>
         <div class="form-group full">
-          <label>Espacio de Trabajo Canva (Láminas, diapositivas y overlays del video)</label>
+          <label>Canva · láminas, diapositivas y overlays</label>
           <div style="display:flex; gap:8px;">
             <input type="url" id="hub-canva-url" aria-label="URL del espacio de trabajo Canva" value="${state.canva_url}" style="flex:1;">
             <a href="${state.canva_url}" target="_blank" class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">Abrir Canva ${SVG.external}</a>
@@ -8073,72 +7747,61 @@ function renderViewResources() {  return `
       </div>
     </div>
 
-    <div class="workbench-card">
-      <h3 style="margin-bottom:12px;">Logos Oficiales para el Video Pitch (Acto 2 al 4)</h3>
+    <div class="wb-section">
+      <h3 class="wb-section-title">Logos para el video</h3>
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:12px;">
-        <div style="border:1px solid var(--border-light); padding:12px; border-radius:6px; background:#f8fafc; text-align:center;">
+        <div style="border:1px solid var(--border-light); padding:12px; border-radius:8px; background:var(--bg-surface); text-align:center;">
           <div style="height:48px; display:flex; align-items:center; justify-content:center; gap:8px;">
             <img src="assets/logo_uni_official.png" style="max-height:44px; max-width:100px; object-fit:contain;" alt="Universidad Nacional de Ingeniería">
           </div>
-          <strong style="font-size:11px; display:block;">Logo Institucional Sede</strong>
-          <span style="font-size:10px; color:var(--text-muted);">${state.university || 'Universidad Nacional de Ingeniería'}</span>
+          <strong style="font-size:11px; display:block;">Logo institucional</strong>
+          <span style="font-size:11px; color:var(--text-muted);">${state.university || 'Universidad'}</span>
         </div>
 
-        <div style="border:1px solid var(--border-light); padding:12px; border-radius:6px; background:#f8fafc; text-align:center;">
+        <div style="border:1px solid var(--border-light); padding:12px; border-radius:8px; background:var(--bg-surface); text-align:center;">
           <div style="height:48px; display:flex; align-items:center; justify-content:center; gap:8px;">
             <img src="${state.rally_type === 'latam' ? 'assets/logo_rally_latam.png' : 'assets/logo_rally_nacional.png'}" style="max-height:44px; max-width:140px; object-fit:contain;" alt="Rally Oficial">
           </div>
-          <strong style="font-size:11px; display:block;">Logo Oficial del Evento</strong>
-          <span style="font-size:10px; color:var(--text-muted);">${state.rally_type === 'latam' ? 'Edición Continental (28h)' : 'Nacional Innova (24h)'}</span>
+          <strong style="font-size:11px; display:block;">Logo del evento</strong>
+          <span style="font-size:11px; color:var(--text-muted);">${state.rally_type === 'latam' ? 'Edición continental (28 h)' : 'Nacional (24 h)'}</span>
         </div>
 
-        <div style="border:1px solid var(--border-light); padding:12px; border-radius:6px; background:#f8fafc; text-align:center;">
+        <div style="border:1px solid var(--border-light); padding:12px; border-radius:8px; background:var(--bg-surface); text-align:center;">
           <div style="height:48px; display:flex; align-items:center; justify-content:center; color:var(--text-main); font-weight:800; font-size:14px;">
             ${state.team_logo_img ? `<img src="${state.team_logo_img}" style="max-height:44px; max-width:120px; object-fit:contain;" alt="Logo Equipo">` : `${SVG.spark} ${state.team_name || 'EQUIPO'}`}
           </div>
           <strong style="font-size:11px; display:block;">Emblema de Equipo</strong>
-          <span style="font-size:10px; color:var(--text-muted);">${state.team_name || 'Nombre de Equipo'}</span>
+          <span style="font-size:11px; color:var(--text-muted);">${state.team_name || 'Nombre de Equipo'}</span>
         </div>
       </div>
     </div>
 
-    <div class="workbench-card" id="entregables-ia">
+    <div class="wb-section" id="entregables-ia">
+      <h3 class="wb-section-title">Entregables generados</h3>
+      <p class="wb-note">Descarga directa de cada archivo que produce el sistema.</p>
       <div class="table-responsive" style="margin-bottom:0;">
-        <table class="data-table">
-          <thead>
-            <tr><th style="width:40px;"></th><th>Entregables de la IA</th><th style="width:90px;"></th></tr>
-          </thead>
-          <tbody>
-            ${[
-              { icon: SVG.external, nombre: "guion_rodaje.pdf", href: "entregables/guion_rodaje.pdf", nota: "ficha" },
-              { icon: SVG.clock, nombre: "teleprompter.html", href: "entregables/teleprompter.html", nota: "rodaje" },
-              { icon: SVG.folder, nombre: "bandeja completa", href: "entregables/index.html", nota: "todo" },
-            ].map(f => `
-              <tr>
-                <td style="color:var(--color-primary);">${f.icon}</td>
-                <td style="font-family:var(--font-mono); font-size:11.5px; color:#091e42;">${f.nombre}</td>
-                <td style="text-align:right;">
-                  <a href="${f.href}" target="_blank" rel="noopener" class="btn-secondary" style="padding:3px 8px; font-size:11px; text-decoration:none; display:inline-flex; align-items:center; gap:4px;">${SVG.download} ${f.nota}</a>
-                </td>
-              </tr>`).join("")}
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="workbench-card">
-      <h3 style="margin-bottom:12px;">Descarga Directa de Entregables Generados (1-Click)</h3>
-      <div class="table-responsive" style="margin-bottom:0;">
-        <table class="data-table">
+        <table class="data-table dl-table">
           <thead>
             <tr>
-              <th>Documento / Recurso</th>
+              <th>Documento / recurso</th>
               <th>Formato</th>
-              <th>Uso en Competencia</th>
+              <th>Uso en competencia</th>
               <th>Descarga</th>
             </tr>
           </thead>
           <tbody>
+            <tr>
+              <td><strong>Ficha de rodaje</strong></td>
+              <td><code>.PDF</code></td>
+              <td>Guion y plan de tomas para el equipo de grabación</td>
+              <td><a href="entregables/guion_rodaje.pdf" target="_blank" rel="noopener" class="btn-secondary" style="padding:4px 8px; font-size:11px; text-decoration:none;">Abrir ↓</a></td>
+            </tr>
+            <tr>
+              <td><strong>Teleprompter</strong></td>
+              <td><code>HTML</code></td>
+              <td>Texto a pantalla completa para grabar la locución</td>
+              <td><a href="entregables/teleprompter.html" target="_blank" rel="noopener" class="btn-secondary" style="padding:4px 8px; font-size:11px; text-decoration:none;">Abrir ↓</a></td>
+            </tr>
             <tr>
               <td><strong>Matriz de Deliberación de Retos</strong></td>
               <td><code>.DOCX</code></td>
@@ -8206,14 +7869,14 @@ function scanFolderSources() {
       cont.innerHTML = `
         <div style="display:flex; flex-direction:column; gap:6px;">
           ${data.sources.map(s => `
-            <div style="display:flex; justify-content:space-between; align-items:center; background:#ffffff; padding:6px 10px; border-radius:4px; border:1px solid var(--border-light);">
+            <div style="display:flex; justify-content:space-between; align-items:center; background:var(--bg-surface); padding:6px 10px; border-radius:4px; border:1px solid var(--border-light);">
               <div style="display:flex; align-items:center; gap:6px; overflow:hidden;">
-                <span class="badge-status badge-ok" style="font-size:9px;">${s.category.toUpperCase()}</span>
+                <span class="badge-status badge-ok" style="font-size:11px;">${s.category.toUpperCase()}</span>
                 <span style="font-size:11px; font-weight:600; color:var(--text-main); white-space:nowrap; text-overflow:ellipsis; overflow:hidden;" title="${s.path}">
                   ${s.name}
                 </span>
               </div>
-              <span style="font-family:var(--font-mono); font-size:10px; color:var(--text-muted); font-variant-numeric:tabular-nums;">
+              <span style="font-family:var(--font-mono); font-size:11px; color:var(--text-muted); font-variant-numeric:tabular-nums;">
                 ${(s.size / 1024).toFixed(1)} KB
               </span>
             </div>
@@ -8223,7 +7886,7 @@ function scanFolderSources() {
       showToast(`Escaneo completado: ${data.total} recursos detectados`);
     })
     .catch(() => {
-      if (cont) cont.innerHTML = `<span style="font-size:11px; color:#ef4444;">No fue posible contactar el servicio de escaneo local.</span>`;
+      if (cont) cont.innerHTML = `<span style="font-size:11px; color:var(--status-err-text);">No fue posible contactar el servicio de escaneo local.</span>`;
     });
 }
 
@@ -8235,7 +7898,8 @@ function escapeHtml(text) {
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }
 // Plantillas preestablecidas de Canvas (solo cambian la guía por casilla; los datos del equipo se conservan)
 const CANVAS_PRESETS = [
@@ -8387,10 +8051,10 @@ function onlineLinkRow(key, placeholder, title) {
   const url = state.delivery_links && state.delivery_links[key] ? String(state.delivery_links[key]) : "";
   return `
     <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:10px; padding-top:10px; border-top:1px dashed var(--border-light);">
-      <label style="font-size:10.5px; color:var(--text-muted); font-family:var(--font-mono); font-weight:700;">${title}</label>
+      <label style="font-size:11px; color:var(--text-muted); font-family:var(--font-mono); font-weight:700;">${title}</label>
       <input type="url" inputmode="url" placeholder="${escapeHtml(placeholder)}" value="${escapeHtml(url)}"
              onchange="onlineUrlChanged('${key}', this.value)"
-             style="flex:1 1 260px; min-width:0; font-size:11.5px; padding:5px 9px; border:1px solid var(--border-light); border-radius:var(--radius-sm); background:var(--bg-surface); color:var(--text-body);">
+             style="flex:1 1 260px; min-width:0; font-size:12px; padding:5px 9px; border:1px solid var(--border-light); border-radius:var(--radius-sm); background:var(--bg-surface); color:var(--text-body);">
       ${url ? `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px; font-size:11px;">${SVG.external} Ver en línea</a>` : ""}
     </div>`;
 }
@@ -8409,16 +8073,33 @@ function populateCanvasCell(key, el) {
   else { el.textContent = ""; el.classList.add("is-empty"); el.setAttribute("data-ph", preset.hints[key] || "Escribe aquí..."); }
 }
 
+function fitCanvasInput(el) {
+  if (!el) return;
+  el.style.flex = "0 0 auto";
+  el.style.height = "auto";
+  el.style.height = Math.max(46, el.scrollHeight) + "px";
+}
+
+function fitAllCanvasInputs() {
+  document.querySelectorAll(".canvas-input").forEach(fitCanvasInput);
+}
+
+window.addEventListener("resize", () => {
+  if (document.querySelector(".canvas-input")) fitAllCanvasInputs();
+});
+
 function handleCanvasCellInput(key, el) {
   el.classList.remove("is-empty");
+  if (el.tagName === "TEXTAREA") fitCanvasInput(el);
   if (!state.model_canvas || typeof state.model_canvas !== "object") state.model_canvas = {};
-  const val = el.innerText.replace(/\n{3,}/g, "\n\n").trim();
+  const raw = (el.tagName === "TEXTAREA" ? el.value : el.innerText) || "";
+  const val = raw.replace(/\n{3,}/g, "\n\n").trim();
   if (val) state.model_canvas[key] = val; else delete state.model_canvas[key];
   saveState();
   const filled = ["socios","actividades","propuesta","relaciones","segmentos","recursos","canales","costes","ingresos"]
     .filter(k => String((state.model_canvas || {})[k] || "").trim() !== "").length;
   const counter = document.getElementById("canvas-filled-count");
-  if (counter) counter.textContent = `${filled} de 9 cuadrantes personalizados`;
+  if (counter) counter.textContent = `${filled} de 9 con contenido`;
 }
 
 function resetCanvasToBase() {
@@ -8451,47 +8132,51 @@ function renderViewCanvas() {
   const isDefaultCell = (cell) => String(canvas[cell.key] || "").trim() === "";
   const filledCount = cells.filter(c => !isDefaultCell(c)).length;
 
+  const presetName = preset.name;
   return `
-    <div class="phase-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:14px; margin-bottom:18px; padding-bottom:14px; border-bottom:1px solid var(--border-light);">
+    <div class="phase-header">
       <div>
-        <h1 class="phase-title">09 · Matriz de Negocio <span class="phase-title-accent">Canvas</span></h1>
-        <p class="phase-subtitle">9 cuadrantes editables sincronizados con la tesis del proyecto y el pautado.</p>
+        <h1 class="phase-title">Modelo de negocio <span class="phase-title-accent">Canvas</span></h1>
+        <p class="phase-subtitle">Nueve cuadrantes que se guardan solos. Los vacíos muestran la pregunta que deben responder.</p>
       </div>
-      <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
-        <label style="font-size:10.5px; color:var(--text-muted); font-family:var(--font-mono); font-weight:700;">PLANTILLA</label>
-        <select onchange="canvasPresetChanged(this.value)" class="ai-model-select" aria-label="Plantilla de Modelo Canvas" style="display:inline-block; min-width:200px;">
+      <div class="canvas-tools">
+        <select onchange="canvasPresetChanged(this.value)" class="canvas-preset" aria-label="Plantilla de modelo de negocio">
           ${CANVAS_PRESETS.map(p => `<option value="${p.id}" ${p.id === getCurrentCanvasPresetId() ? "selected" : ""}>${p.name}</option>`).join("")}
         </select>
-        <button class="btn-secondary" style="font-size:11px; padding:4px 10px; display:inline-flex; align-items:center; gap:4px;" onclick="copyCanvasExternalPrompt()" title="Arma el contexto completo (brief, reto, cifras, presupuesto) y lo copia para que otra IA prepare su propuesta de canvas">
-          ${SVG.copy} Copiar contexto para otra IA
+        <button class="btn-secondary" onclick="copyCanvasExternalPrompt()" title="Copia brief, reto, cifras y presupuesto para que otra IA escriba el canvas completo">
+          ${SVG.copy} Contexto para IA
         </button>
-        <button class="btn-secondary" style="font-size:11px; padding:4px 10px;" onclick="resetCanvasToBase()">Restablecer</button>
+        <button class="btn-secondary" onclick="resetCanvasToBase()" title="Vacía los nueve cuadrantes">Restablecer</button>
         <a href="/docs/canvas.md" download class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
-          ${SVG.download} Markdown (.md)
+          ${SVG.download} Markdown
         </a>
       </div>
     </div>
 
-    <div class="canvas-grid-responsive canvas-matrix">
+    <div class="canvas-status">
+      <span id="canvas-filled-count">${filledCount} de 9 con contenido</span>
+      <span class="canvas-status-hint">Plantilla: ${escapeHtml(presetName)}</span>
+    </div>
+
+    <div class="canvas-board">
       ${cells.map(cell => `
-        <div class="canvas-cell${isDefaultCell(cell) ? " canvas-cell-default" : ""}">
-          <strong>${cell.n}. ${cell.title}</strong>
-          <p class="canvas-cell-edit${isDefaultCell(cell) ? " is-empty" : ""}" contenteditable="true" spellcheck="false"
-             data-ph="${escapeHtml(hintOf(cell.key, cell.fallback))}"
-             oninput="handleCanvasCellInput('${cell.key}', this)"
-             onblur="handleCanvasCellInput('${cell.key}', this)">${escapeHtml(String(canvas[cell.key] || "").trim())}</p>
+        <div class="canvas-slot canvas-slot-${cell.key}">
+          <label class="canvas-slot-label" for="cv-${cell.key}">
+            <span class="canvas-slot-n">${cell.n}</span>${cell.title}
+          </label>
+          <textarea id="cv-${cell.key}" class="canvas-input${isDefaultCell(cell) ? " is-empty" : ""}" rows="3" spellcheck="false"
+            placeholder="${escapeHtml(hintOf(cell.key, cell.fallback))}"
+            oninput="handleCanvasCellInput('${cell.key}', this)">${escapeHtml(String(canvas[cell.key] || "").trim())}</textarea>
         </div>
       `).join("")}
     </div>
 
-    <div style="margin-top:14px; padding:10px 0; border-top:1px solid var(--border-light); font-size:12px; color:var(--text-muted);">
-      <span id="canvas-filled-count">${filledCount} de 9 cuadrantes personalizados</span> — haz clic en cualquier cuadrante para escribir en él (se guarda solo, en vivo).
-      <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:10px; padding-top:10px; border-top:1px dashed var(--border-light);">
-        <label style="font-size:10.5px; color:var(--text-muted); font-family:var(--font-mono); font-weight:700;">ENLACE AL TRABAJO EN LÍNEA</label>
-        <input type="url" inputmode="url" placeholder="Pega el enlace de Canva, Figma, Lucid o Slides" value="${escapeHtml(String(state.canvas_online_url || ""))}"
-               onchange="canvasOnlineUrlChanged(this.value)"
-               style="flex:1 1 260px; min-width:0; font-size:11.5px; padding:5px 9px; border:1px solid var(--border-light); border-radius:var(--radius-sm); background:var(--bg-surface); color:var(--text-body);">
-        ${state.canvas_online_url ? `<a href="${escapeHtml(state.canvas_online_url)}" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px; font-size:11px;">${SVG.external} Ver en línea</a>` : ""}
+    <div class="canvas-foot">
+      <label class="canvas-foot-label" for="canvas-online-url">Enlace al trabajo en línea</label>
+      <div class="canvas-foot-row">
+        <input id="canvas-online-url" type="url" inputmode="url" placeholder="Canva, Figma, Lucid o Slides" value="${escapeHtml(String(state.canvas_online_url || ""))}"
+               onchange="canvasOnlineUrlChanged(this.value)" class="canvas-foot-input">
+        ${state.canvas_online_url ? `<a href="${escapeHtml(state.canvas_online_url)}" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">${SVG.external} Ver</a>` : ""}
       </div>
     </div>
   `;
@@ -8963,138 +8648,101 @@ El entregable oficial es \`assets/voice/narration.mp4\`: MP4 con audio AAC, sin 
 }
 
 function renderViewScript() {
-  const wordsA1 = (state.script.acto1 || "").trim().split(/\s+/).filter(Boolean).length;
-  const wordsA2 = (state.script.acto2 || "").trim().split(/\s+/).filter(Boolean).length;
-  const wordsA3 = (state.script.acto3 || "").trim().split(/\s+/).filter(Boolean).length;
-  const wordsA4 = (state.script.acto4 || "").trim().split(/\s+/).filter(Boolean).length;
-  const words = wordsA1 + wordsA2 + wordsA3 + wordsA4;
-  const estSeconds = Math.round((words / 135) * 60);
+  const actos = [
+    { key: "acto1", n: "I", title: "Problema", ph: "El problema, con una persona y una cifra reales." },
+    { key: "acto2", n: "II", title: "Solución", ph: "Qué construyeron y cómo funciona, en tres frases." },
+    { key: "acto3", n: "III", title: "Factibilidad", ph: "Cuánto cuesta el piloto y de dónde sale cada precio." },
+    { key: "acto4", n: "IV", title: "Cierre", ph: "El impacto en números y la frase que cierra." }
+  ];
   const authorship = (state.authorship && state.authorship.script) || {};
+  const lleno = actos.some(x => String(state.script[x.key] || "").trim() !== "");
 
   return `
-    <div class="phase-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:14px; margin-bottom:24px; padding-bottom:14px; border-bottom:1px solid var(--border-light);">
+    <div class="phase-header">
       <div>
-        <h1 class="phase-title">10 · Guion Audiovisual <span class="phase-title-accent">120 Segundos (PAS-V)</span></h1>
-        <p class="phase-subtitle" id="script-subtitle">Calibración oral a 135 ppm: ${words} palabras (~${estSeconds} segundos / 120s reglamentarios).</p>
+        <h1 class="phase-title">Guion <span class="phase-title-accent">del video</span></h1>
+        <p class="phase-subtitle">Cuatro actos, de corrido. Escribes aquí y el teleprompter lo lee en pantalla.</p>
       </div>
-      <div style="display:flex; gap:8px;">
-        <button class="btn-primary" onclick="saveScript()">Guardar Guion</button>
-        <button class="btn-secondary" onclick="document.getElementById('voice-engine-title').scrollIntoView({behavior:'smooth',block:'start'})" title="Elige el motor de voz y copia el prompt de instalación para tu IA">Motor de voz</button>
-        <a href="/assets/voice/narration.mp4" download id="narration-download-link" onclick="return handleNarrationDownload(event)" class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;" title="Descarga la locución en MP4 (AAC) si ya fue generada para este proyecto">
-          ${SVG.download} Descargar Locución (.mp4)
+      <div class="script-tools">
+        <a class="btn-primary" href="/script/teleprompter.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+          ${SVG.play || ""} Abrir teleprompter
         </a>
+        <button class="btn-secondary" onclick="copyFullScript()" title="Copia el guion entero para pegarlo en otra IA o en el teleprompter">Copiar</button>
+        <button class="btn-secondary" onclick="saveScript()">Guardar</button>
       </div>
     </div>
 
-    <!-- Medidor PAS-V Global -->
-    <div id="script-global-meter" style="background:${words > 280 ? '#FEF2F2' : words >= 230 ? '#F0FDF4' : '#F8FAFC'}; border:1px solid ${words > 280 ? '#FCA5A5' : words >= 230 ? '#86EFAC' : '#E2E8F0'}; border-radius:8px; padding:10px 14px; margin-bottom:16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
-      <div>
-        <div id="script-global-copy" style="font-weight:800; font-size:12.5px; color:${words > 280 ? '#DC2626' : words >= 230 ? '#15803D' : '#0F172A'};">
-          ${words > 280 ? `[EXCESO DE PALABRAS] ${words}/280 máx (~${estSeconds}s). Riesgo de superar 120s o dicción ininteligible.` : words >= 230 ? `[CADENCIA PAS-V ÓPTIMA] ${words}/280 palabras (~${estSeconds}s a 135 ppm).` : `[GUION EN CONSTRUCCIÓN] ${words}/280 palabras (Aceptación: 120–280 palabras totales).`}
-        </div>
-        <div style="font-size:11px; color:#64748B; margin-top:2px;">
-          Cuotas recomendadas: Acto I (45 pal.) + Acto II (90 pal.) + Acto III (75 pal.) + Acto IV (55 pal.) = ~265 palabras totales.
-        </div>
-      </div>
-      <span id="script-global-seconds" style="font-family:var(--font-mono); font-size:12px; font-weight:900; background:#0F172A; color:#FFF; padding:4px 10px; border-radius:6px;">
-        ${estSeconds}s / 120s
-      </span>
+    <div class="script-mode">
+      <button type="button" class="script-mode-btn is-on" data-mode="edit" onclick="setScriptMode('edit')" id="script-mode-edit">Escribir</button>
+      <button type="button" class="script-mode-btn" data-mode="read" onclick="setScriptMode('read')" id="script-mode-read">Leer completo</button>
+      <a class="script-audio" href="/assets/voice/narration.mp4" download onclick="return handleNarrationDownload(event)">${SVG.download} Locución</a>
     </div>
 
-    <div class="rubric-callout" style="margin-bottom:16px;">
-      <strong>REGLA DE ORO ACTO I:</strong> Durante los primeros 20 segundos está PROHIBIDO mencionar el nombre del proyecto o mostrar logos. El inicio debe centrarse 100% en el dolor humano, el territorio y la cifra cuantificada.
+    <div id="script-edit" class="script-acts${lleno ? "" : " is-empty"}">
+      ${actos.map(x => `
+        <section class="script-act" data-lockable="script-${x.key}">
+          <div class="script-act-head">
+            <span class="script-act-n">${x.n}</span>
+            <h2 class="script-act-title">${x.title}</h2>
+            ${authorship[x.key] ? `<span class="collaborator-stamp">${authorship[x.key].icon} ${authorship[x.key].name}</span>` : ""}
+            <span id="lock-tag-script-${x.key}"></span>
+          </div>
+          <textarea id="sc-${x.key}" class="script-input" rows="3" spellcheck="false"
+            placeholder="${x.ph}"
+            onfocus="broadcastLock('script-${x.key}')"
+            onblur="broadcastRelease('script-${x.key}')"
+            oninput="handleScriptInput('${x.key}', this)">${escapeHtml(String(state.script[x.key] || ""))}</textarea>
+        </section>
+      `).join("")}
     </div>
 
-    <div style="display:flex; flex-direction:column; gap:16px;">
-      <!-- Acto I: Problema -->
-      <div class="script-acto-block" data-lockable="script-acto1">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap; gap:6px;">
-          <div style="display:flex; align-items:center; gap:8px;">
-            <strong style="font-size:12px;">Acto I: Dolor Humano y Problema Cuantificado (0–20 seg)</strong>
-            ${authorship.acto1 ? `<span class="collaborator-stamp">${authorship.acto1.icon} ${authorship.acto1.name}</span>` : ""}
-            <span id="lock-tag-script-acto1"></span>
-          </div>
-          <div style="display:flex; align-items:center; gap:8px;">
-            <span id="script-counter-acto1" style="font-family:var(--font-mono); font-size:11px; font-weight:800; color:${wordsA1 > 55 ? '#DC2626' : wordsA1 > 0 ? '#059669' : '#64748B'};">${wordsA1}/45 pal.</span>
-            <span class="rubric-tag">IMPACTO SOCIAL + PITCH</span>
-            <span style="font-size:10.5px; color:${wordsA1 > 0 ? '#ef4444' : '#64748B'}; font-weight:700;">PROHIBIDO LOGOS</span>
-          </div>
-        </div>
-        <div style="font-size:11px; color:var(--text-muted); margin-bottom:6px;">Patrón ganador: testimonio o cifra humana del territorio en los primeros 10 segundos — SIRLI premia emociones realistas, no tecnología.</div>
-        <textarea id="sc-a1" rows="3" style="width:100%; border:1px solid var(--border-light); border-radius:4px; padding:8px; font-size:12px; font-family:var(--font-ui); box-sizing:border-box;"
-          placeholder="Ej: «En Jinotega, una de cada tres cosechas se pudre antes de llegar al mercado...» — persona concreta + cifra nacional. Sin nombres ni logos."
-          onfocus="broadcastLock('script-acto1')"
-          onblur="broadcastRelease('script-acto1')"
-          oninput="handleScriptInput('acto1', this)">${state.script.acto1 || ""}</textarea>
-      </div>
-
-      <!-- Acto II: Acción y Solución -->
-      <div class="script-acto-block" data-lockable="script-acto2">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap; gap:6px;">
-          <div style="display:flex; align-items:center; gap:8px;">
-            <strong style="font-size:12px;">Acto II: Solución Técnica y Demostración de Hardware (20–60 seg)</strong>
-            ${authorship.acto2 ? `<span class="collaborator-stamp">${authorship.acto2.icon} ${authorship.acto2.name}</span>` : ""}
-            <span id="lock-tag-script-acto2"></span>
-          </div>
-          <div style="display:flex; align-items:center; gap:8px;">
-            <span id="script-counter-acto2" style="font-family:var(--font-mono); font-size:11px; font-weight:800; color:${wordsA2 > 105 ? '#DC2626' : wordsA2 > 0 ? '#059669' : '#64748B'};">${wordsA2}/90 pal.</span>
-            <span class="rubric-tag">30 PTS INNOVACIÓN + VIABILIDAD</span>
-          </div>
-        </div>
-        <div style="font-size:11px; color:var(--text-muted); margin-bottom:6px;">Patrón ganador: los equipos premiados muestran maqueta o prototipo funcionando en los primeros 40s, con demostración visual y provocando preguntas del jurado.</div>
-        <textarea id="sc-a2" rows="3" style="width:100%; border:1px solid var(--border-light); border-radius:4px; padding:8px; font-size:12px; font-family:var(--font-ui); box-sizing:border-box;"
-          placeholder="Demostración temprana: maqueta o prototipo real en pantalla + cómo funciona en 3 frases. Aquí sí puede aparecer el nombre del proyecto por primera vez."
-          onfocus="broadcastLock('script-acto2')"
-          onblur="broadcastRelease('script-acto2')"
-          oninput="handleScriptInput('acto2', this)">${state.script.acto2 || ""}</textarea>
-      </div>
-
-      <!-- Acto III: Factibilidad y Números -->
-      <div class="script-acto-block" data-lockable="script-acto3">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap; gap:6px;">
-          <div style="display:flex; align-items:center; gap:8px;">
-            <strong style="font-size:12px;">Acto III: Prefactibilidad y Presupuesto Sustentado (60–95 seg)</strong>
-            ${authorship.acto3 ? `<span class="collaborator-stamp">${authorship.acto3.icon} ${authorship.acto3.name}</span>` : ""}
-            <span id="lock-tag-script-acto3"></span>
-          </div>
-          <div style="display:flex; align-items:center; gap:8px;">
-            <span id="script-counter-acto3" style="font-family:var(--font-mono); font-size:11px; font-weight:800; color:${wordsA3 > 85 ? '#DC2626' : wordsA3 > 0 ? '#059669' : '#64748B'};">${wordsA3}/75 pal.</span>
-            <span class="rubric-tag">20 PTS PREFACTIBILIDAD (CAUSA #1 DESCARTE)</span>
-          </div>
-        </div>
-        <div style="font-size:11px; color:var(--text-muted); margin-bottom:6px;">Patrón ganador: cifras exactas en pantalla ($ por partida, % de flete). Una prefactibilidad vaga es el punto más débil del pitch.</div>
-        <textarea id="sc-a3" rows="3" style="width:100%; border:1px solid var(--border-light); border-radius:4px; padding:8px; font-size:12px; font-family:var(--font-ui); box-sizing:border-box;"
-          placeholder="Ej: «15 módulos a $12.80, gateway a $290, flete del 18%...» — total del piloto entre $4,000 y $6,000 USD, con fuente verificable."
-          onfocus="broadcastLock('script-acto3')"
-          onblur="broadcastRelease('script-acto3')"
-          oninput="handleScriptInput('acto3', this)">${state.script.acto3 || ""}</textarea>
-      </div>
-
-      <!-- Acto IV: Verificación y Cierre -->
-      <div class="script-acto-block" data-lockable="script-acto4">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap; gap:6px;">
-          <div style="display:flex; align-items:center; gap:8px;">
-            <strong style="font-size:12px;">Acto IV: Cierre de Alto Impacto, ODS y Frase Memorable (95–120 seg)</strong>
-            ${authorship.acto4 ? `<span class="collaborator-stamp">${authorship.acto4.icon} ${authorship.acto4.name}</span>` : ""}
-            <span id="lock-tag-script-acto4"></span>
-          </div>
-          <div style="display:flex; align-items:center; gap:8px;">
-            <span id="script-counter-acto4" style="font-family:var(--font-mono); font-size:11px; font-weight:800; color:${wordsA4 > 65 ? '#DC2626' : wordsA4 > 0 ? '#059669' : '#64748B'};">${wordsA4}/55 pal.</span>
-            <span class="rubric-tag">INTEGRACIÓN 5 CRITERIOS + ODS</span>
-          </div>
-        </div>
-        <div style="font-size:11px; color:var(--text-muted); margin-bottom:6px;">Patrón ganador: arco problema → solución → impacto cuantificado, cerrando con identidad nacional (símbolo local u ODS real) y frase memorable.</div>
-        <textarea id="sc-a4" rows="3" style="width:100%; border:1px solid var(--border-light); border-radius:4px; padding:8px; font-size:12px; font-family:var(--font-ui); box-sizing:border-box;"
-          placeholder="Impacto esperado con número (ej: «300 productores menos pérdidas»), ODS real del proyecto y frase memorable de identidad nicaragüense al cerrar."
-          onfocus="broadcastLock('script-acto4')"
-          onblur="broadcastRelease('script-acto4')"
-          oninput="handleScriptInput('acto4', this)">${state.script.acto4 || ""}</textarea>
-      </div>
-    </div>
-
-    ${renderVoiceEnginePanel()}
+    <div id="script-read" class="script-read" hidden>
+      <article id="script-read-body"></article>
+      <p class="script-read-empty" id="script-read-empty">El guion está vacío. Escribe los cuatro actos y aquí se leen de corrido.</p>
     </div>
   `;
+}
+
+function scriptFullText() {
+  const orden = ["acto1", "acto2", "acto3", "acto4"];
+  return orden.map(k => String((state.script && state.script[k]) || "").trim()).filter(Boolean).join("\n\n");
+}
+
+function copyFullScript() {
+  const txt = scriptFullText();
+  if (!txt) { showToast("El guion está vacío todavía."); return; }
+  navigator.clipboard.writeText(txt)
+    .then(() => showToast("Guion completo copiado."))
+    .catch(() => showToast("No se pudo copiar el guion."));
+}
+
+function setScriptMode(mode) {
+  const edit = document.getElementById("script-edit");
+  const read = document.getElementById("script-read");
+  if (!edit || !read) return;
+  const isRead = mode === "read";
+  edit.hidden = isRead;
+  read.hidden = !isRead;
+  document.getElementById("script-mode-edit").classList.toggle("is-on", !isRead);
+  document.getElementById("script-mode-read").classList.toggle("is-on", isRead);
+  if (isRead) renderScriptRead();
+  else requestAnimationFrame(updateScriptMeters);
+}
+
+function renderScriptRead() {
+  const body = document.getElementById("script-read-body");
+  const empty = document.getElementById("script-read-empty");
+  if (!body) return;
+  const actos = [["I", "acto1"], ["II", "acto2"], ["III", "acto3"], ["IV", "acto4"]];
+  const partes = actos
+    .map(([n, k]) => {
+      const t = String((state.script && state.script[k]) || "").trim();
+      if (!t) return "";
+      return `<section class="script-read-act"><span class="script-act-n">${n}</span><p>${escapeHtml(t).replace(/\n{2,}/g, "</p><p>").replace(/\n/g, "<br>")}</p></section>`;
+    })
+    .filter(Boolean);
+  body.innerHTML = partes.join("");
+  if (empty) empty.hidden = partes.length > 0;
 }
 
 function handleScriptInput(key, el) {
@@ -9105,47 +8753,12 @@ function handleScriptInput(key, el) {
 }
 
 function updateScriptMeters() {
-  const quotas = { acto1: 45, acto2: 90, acto3: 75, acto4: 55 };
-  const redLines = { acto1: 55, acto2: 105, acto3: 85, acto4: 65 };
-  let words = 0;
-
-  Object.keys(quotas).forEach(key => {
-    const n = (state.script[key] || "").trim().split(/\s+/).filter(Boolean).length;
-    words += n;
-    const el = document.getElementById(`script-counter-${key}`);
-    if (el) {
-      el.textContent = `${n}/${quotas[key]} pal.`;
-      el.style.color = n > redLines[key] ? "#DC2626" : n > 0 ? "#059669" : "#64748B";
-    }
+  document.querySelectorAll(".script-input").forEach(el => {
+    el.style.height = "auto";
+    el.style.height = Math.max(52, el.scrollHeight) + "px";
   });
-
-  const seconds = Math.round((words / 135) * 60);
-  const over = words > 280;
-  const good = words >= 230;
-
-  const subtitle = document.getElementById("script-subtitle");
-  if (subtitle) {
-    subtitle.textContent = `Calibración oral a 135 ppm: ${words} palabras (~${seconds} segundos / 120s reglamentarios).`;
-  }
-
-  const meter = document.getElementById("script-global-meter");
-  if (meter) {
-    meter.style.background = over ? "#FEF2F2" : good ? "#F0FDF4" : "#F8FAFC";
-    meter.style.borderColor = over ? "#FCA5A5" : good ? "#86EFAC" : "#E2E8F0";
-  }
-
-  const copy = document.getElementById("script-global-copy");
-  if (copy) {
-    copy.style.color = over ? "#DC2626" : good ? "#15803D" : "#0F172A";
-    copy.textContent = over
-      ? `[EXCESO DE PALABRAS] ${words}/280 máx (~${seconds}s). Riesgo de superar 120s o dicción ininteligible.`
-      : good
-        ? `[CADENCIA PAS-V ÓPTIMA] ${words}/280 palabras (~${seconds}s a 135 ppm).`
-        : `[GUION EN CONSTRUCCIÓN] ${words}/280 palabras (Aceptación: 120–280 palabras totales).`;
-  }
-
-  const secondsEl = document.getElementById("script-global-seconds");
-  if (secondsEl) secondsEl.textContent = `${seconds}s / 120s`;
+  const read = document.getElementById("script-read");
+  if (read && !read.hidden) renderScriptRead();
 }
 
 function handleNarrationDownload(event) {
@@ -9177,83 +8790,60 @@ function saveScript() {
 // 10 PROTOTIPO DIGITAL PARA TOMAS DE VIDEO
 // ═════════════════════════════════════════════════════════════════════════════
 function renderViewWebDemo() {
-  const pName = state.project_name || "PROTOTIPO_ACTIVO";
-  const isSocial = state.category === "Impacto Social";
-  const budgetTotal = (state.budget || []).reduce((acc, it) => acc + (Number(it.units || 0) * Number(it.unit_cost || 0)), 0);
-  const pautadoDone = Object.keys(state.pautado || {}).filter(k => (state.pautado[k] || "").length >= 150).length;
-  const pautadoTotal = Object.keys(state.pautado || {}).length || 5;
-  const scriptWords = Object.values(state.script || {}).join(" ").trim().split(/\s+/).filter(Boolean).length;
-  const odsList = (state.impact_alignment && state.impact_alignment.selected_ods || []).map(n => `ODS ${n}`).join(" · ") || "ODS pendiente";
-  const budgetLabel = budgetTotal ? `$${budgetTotal.toLocaleString("en-US", { maximumFractionDigits: 0 })} USD` : "Sin presupuesto";
-  const phasesDone = [
-    !!state.rally_type,
-    !!(state.team_name && state.university),
-    !!state.challenge_id,
-    !!state.solution_approved,
-    !!(state.impact_alignment && state.impact_alignment.selected_ods && state.impact_alignment.selected_ods.length),
-    false,
-    (typeof isPautadoComplete === "function" && isPautadoComplete()),
-    (typeof isBudgetValid === "function" && isBudgetValid()),
-    !!(state.resources && state.resources.items && state.resources.items.length),
-    false,
-    (typeof isScriptComplete === "function" && isScriptComplete()),
-    false,
-    false
-  ].filter(Boolean).length;
-
+  const siteUrl = String(state.site_url || "").trim();
   return `
-    <div class="phase-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:14px; margin-bottom:24px; padding-bottom:14px; border-bottom:1px solid var(--border-light);">
+    <div class="phase-header">
       <div>
-        <h1 class="phase-title">11 · Prototipo Digital <span class="phase-title-accent">para Tomas de Video</span></h1>
-        <p class="phase-subtitle">Interfaz operativa reactiva para grabar planos de pantalla de alto impacto para el video pitch.</p>
+        <h1 class="phase-title">Prototipo <span class="phase-title-accent">para el video</span></h1>
+        <p class="phase-subtitle">${siteUrl ? "Lo que se graba en pantalla. Ábrelo en pestaña completa para grabar sin barras." : "Aquí se ve el prototipo que se graba para el video."}</p>
       </div>
-      <a href="/site/" target="_blank" class="btn-primary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
-        Abrir Prototipo en Pestaña Completa ${SVG.external}
-      </a>
+      <div class="wd-tools">
+        <button class="wd-chip is-on" data-dev="escritorio" onclick="setWebDemoDevice('escritorio')">Escritorio</button>
+        <button class="wd-chip" data-dev="movil" onclick="setWebDemoDevice('movil')">Móvil</button>
+        <a href="${escapeHtml(siteUrl || "/site/")}" target="_blank" rel="noopener noreferrer" class="btn-primary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">Abrir ${SVG.external}</a>
+      </div>
     </div>
 
-    <div class="workbench-card" style="padding:0; overflow:hidden;">
-      <div style="background:#0f172a; padding:10px 16px; display:flex; justify-content:space-between; align-items:center; color:#fff;">
-        <div style="display:flex; align-items:center; gap:8px;">
-          <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#10b981;"></span>
-          <span style="font-family:var(--font-mono); font-size:12px; font-weight:700;">${pName} · PANEL DE CONTROL OPERATIVO</span>
-        </div>
-        <span style="font-size:11px; font-family:var(--font-mono); color:#94a3b8;">SISTEMA ACTIVO [ESTADO: NOMINAL]</span>
+    <div class="wd-stage" id="wd-stage">
+      <iframe id="wd-frame" class="wd-frame" src="${escapeHtml(siteUrl || "/site/")}" title="Prototipo del proyecto" loading="lazy" onload="wdCheckFrame(this)"></iframe>
+      <div class="wd-empty" id="wd-empty" hidden>
+        <p class="wd-empty-title">Todavía no hay prototipo</p>
+        <p class="wd-empty-text">Se genera cuando el reto, la solución y el presupuesto están definidos. Si ya lo publicaste, pega la dirección aquí abajo.</p>
       </div>
+    </div>
 
-      <div style="padding:20px; background:#f8fafc;">
-        <div class="telemetry-kpi-grid">
-          <div style="background:#fff; border:1px solid var(--border-light); padding:14px; border-radius:6px;">
-            <div style="font-size:10px; font-weight:800; color:var(--text-muted); text-transform:uppercase;">Fases completadas</div>
-            <div style="font-size:24px; font-weight:800; font-family:var(--font-mono); color:var(--color-primary); margin:4px 0;">${phasesDone}/13</div>
-            <div style="font-size:11px; color:#047857; font-weight:600;">Flujo guiado de punta a punta</div>
-          </div>
-
-          <div style="background:#fff; border:1px solid var(--border-light); padding:14px; border-radius:6px;">
-            <div style="font-size:10px; font-weight:800; color:var(--text-muted); text-transform:uppercase;">Pautado validado</div>
-            <div style="font-size:24px; font-weight:800; font-family:var(--font-mono); color:var(--text-main); margin:4px 0;">${pautadoDone}/${pautadoTotal}</div>
-            <div style="font-size:11px; color:var(--text-muted);">Secciones dentro de los límites</div>
-          </div>
-
-          <div style="background:#fff; border:1px solid var(--border-light); padding:14px; border-radius:6px;">
-            <div style="font-size:10px; font-weight:800; color:var(--text-muted); text-transform:uppercase;">Presupuesto del piloto</div>
-            <div style="font-size:24px; font-weight:800; font-family:var(--font-mono); color:#047857; margin:4px 0;">${budgetLabel}</div>
-            <div style="font-size:11px; color:var(--text-muted);">Partidas con enlace de respaldo</div>
-          </div>
-        </div>
-
-        <div style="background:#fff; border:1px solid var(--border-light); border-radius:6px; padding:14px;">
-          <div style="font-size:11px; font-weight:800; color:var(--text-main); margin-bottom:8px;">REGISTRO DE OPERACIÓN DEL FLUJO</div>
-          <div style="font-family:var(--font-mono); font-size:11px; color:var(--text-muted); line-height:1.6;">
-            <div>[06] Pautado: ${pautadoDone}/${pautadoTotal} secciones validadas | Límites de carácter verificados</div>
-            <div>[07] Presupuesto: ${(state.budget || []).length} partidas | ${budgetLabel} | Enlaces de respaldo</div>
-            <div>[10] Guion: ${scriptWords} palabras | ${Math.round(scriptWords / 135 * 60)} s estimados | Cadencia 135 ppm</div>
-            <div>[04] Impacto: ${odsList} | Alineación verificada</div>
-          </div>
-        </div>
-      </div>
+    <div class="wd-link">
+      <label for="site-url" class="wd-link-label">Dirección publicada</label>
+      <input id="site-url" type="url" inputmode="url" class="wd-link-input" value="${escapeHtml(siteUrl)}" placeholder="https://tu-proyecto.netlify.app" onchange="setSiteUrl(this.value)">
+      <span class="wd-link-hint">Se usa en el checklist de entrega y abre desde el video.</span>
     </div>
   `;
+}
+
+function wdCheckFrame(frame) {
+  let vacio = false;
+  try {
+    const doc = frame.contentDocument;
+    const texto = doc && doc.body ? String(doc.body.innerText || "") : "";
+    if (/Prototipo pendiente/i.test(texto)) vacio = true;
+  } catch (e) { vacio = false; }
+  const empty = document.getElementById("wd-empty");
+  if (!empty) return;
+  empty.hidden = !vacio;
+  frame.style.display = vacio ? "none" : "";
+}
+
+function setWebDemoDevice(dev) {
+  const stage = document.getElementById("wd-stage");
+  if (!stage) return;
+  stage.classList.toggle("is-movil", dev === "movil");
+  document.querySelectorAll(".wd-chip").forEach(b => b.classList.toggle("is-on", b.dataset.dev === dev));
+}
+
+function setSiteUrl(value) {
+  state.site_url = String(value || "").trim();
+  saveState();
+  renderTab("webdemo");
 }
 
 // ═════════════════════════════════════════════════════════════════════════════
@@ -9293,7 +8883,7 @@ const GUARDRAILS_DEFINITIONS = [
   {
     key: "pautado_chars_ok",
     title: "6. Respeto Estricto de Caracteres en el Documento Pautado",
-    desc: "Problema (≤1000), Solución (≤1500), Prefactibilidad (≤1500), Innovación (≤1000), Impacto (≤1000).",
+    desc: `Problema (≤${PAUTADO_LIMITS.problema}), Solución (≤${PAUTADO_LIMITS.solucion}), Prefactibilidad (≤${PAUTADO_LIMITS.prefactibilidad}), Innovación (≤${PAUTADO_LIMITS.innovacion}), Impacto (≤${PAUTADO_LIMITS.impacto}).`,
     risk: "La plataforma de entrega trunca o rechaza textos que excedan el límite oficial de caracteres con espacios."
   },
   {
@@ -9430,7 +9020,7 @@ function toggleGuardrail(key, event) {
   const counter = document.getElementById("guardrail-verified-count");
   if (counter) {
     counter.textContent = `${verified} / ${total} Verificados`;
-    counter.style.background = verified === total ? "#dcfce7" : "#eff6ff";
+    counter.style.background = verified === total ? "var(--status-ok-bg)" : "#eff6ff";
     counter.style.color = verified === total ? "#166534" : "#003366";
   }
   const subnavCounter = document.getElementById("timeline-subnav-verified");
@@ -9583,7 +9173,7 @@ function renderNotificar() {
     return `
       <div onclick="alternarAviso('${f.clave}')" style="display:flex; align-items:center; gap:10px; padding:9px 0; border-top:1px solid var(--border-light); cursor:pointer;">
         <span style="color:${on ? "var(--color-primary)" : "var(--text-faint)"}; flex:none;">${f.icono}</span>
-        <span style="flex:1; font-size:12px; color:#091e42;">${f.texto}</span>
+        <span style="flex:1; font-size:12px; color:var(--text-title);">${f.texto}</span>
         <span style="width:15px; height:15px; flex:none; border:1px solid ${on ? "var(--color-primary)" : "var(--border-strong)"}; display:inline-flex; align-items:center; justify-content:center; color:var(--color-primary);">${on ? SVG.check : ""}</span>
       </div>`;
   }).join("");
@@ -9595,10 +9185,10 @@ function renderNotificar() {
       : `<button class="btn-primary" style="padding:4px 10px; font-size:11px;" onclick="activarAvisos()">Activar</button>`;
 
   return `
-    <div class="workbench-card" id="notificar">
+    <div class="rs-section" id="notificar">
       <div style="display:flex; align-items:center; gap:10px;">
         <span style="color:var(--color-primary); flex:none;">${SVG.bell}</span>
-        <span style="flex:1; font-size:12.5px; font-weight:700; color:#091e42;">Notificaciones</span>
+        <span style="flex:1; font-size:13px; font-weight:700; color:var(--text-title);">Notificaciones</span>
         ${boton}
       </div>
       ${activo ? filas : ""}
@@ -9629,29 +9219,101 @@ function probarAviso() {
 }
 
 function renderAvisosIA() {
-  const avisos = Array.isArray(state.avisos) ? state.avisos : [];
-  if (!avisos.length) return "";
-  const filas = avisos.map(a => {
+  const crudos = Array.isArray(state.avisos) ? state.avisos : [];
+  if (!crudos.length) return "";
+  // El mismo aviso llegaba repetido (agente, sync, recarga). Se muestra una vez.
+  const vistos = new Set();
+  const avisos = [];
+  for (let i = crudos.length - 1; i >= 0; i--) {
+    const a = crudos[i];
+    const clave = [a.title || "", a.text || "", a.source || "", a.url || ""].join("|");
+    if (vistos.has(clave)) continue;
+    vistos.add(clave);
+    avisos.unshift(a);
+  }
+  const filas = avisos.slice(-6).reverse().map(a => {
     const titulo = escapeHtml(a.title || "Aviso de la IA");
     const texto = a.text ? escapeHtml(a.text) : "";
     const fuente = a.source ? escapeHtml(a.source) : "";
     const url = typeof a.url === "string" && /^https?:\/\//i.test(a.url) ? a.url : "";
     return `
       <div style="display:flex; gap:10px; align-items:flex-start; padding:10px 0; border-top:1px solid var(--border-light);">
-        <span style="color:var(--color-primary); flex:none; margin-top:2px;">${SVG.download}</span>
+        <span class="status-dot" style="flex:none; margin-top:6px;"></span>
         <div style="min-width:0; flex:1;">
-          <div style="font-size:12.5px; font-weight:700; color:#091e42;">${titulo}</div>
-          ${texto ? `<div style="font-size:11.5px; color:#475569; margin-top:2px;">${texto}</div>` : ""}
-          ${fuente ? `<div style="font-size:10px; color:#94a3b8; font-family:var(--font-mono); margin-top:2px;">${fuente}</div>` : ""}
+          <div style="font-size:12px; font-weight:700; color:var(--text-title);">${titulo}</div>
+          ${texto ? `<div style="font-size:12px; color:var(--text-body); margin-top:2px;">${texto}</div>` : ""}
+          ${fuente ? `<div style="font-size:11px; color:var(--text-muted); margin-top:2px;">${fuente}</div>` : ""}
         </div>
         ${url ? `<a href="${url}" target="_blank" rel="noopener" class="btn-secondary" style="flex:none; padding:4px 8px; font-size:11px; text-decoration:none;">Abrir</a>` : ""}
       </div>`;
   }).join("");
   return `
-    <div class="workbench-card" id="avisos-ia">
-      <h3 style="margin:0 0 4px 0;">Avisos de la IA · ${avisos.length}</h3>
+    <section class="rs-section" id="avisos-ia">
+      <div class="rs-section-head"><h2>Avisos de la IA${avisos.length > 6 ? ` · ${avisos.length}` : ""}</h2></div>
       ${filas}
-    </div>`;
+    </section>`;
+}
+
+/* ── Cronograma: base de tiempo para dibujar el camino ─────────────────────── */
+function tsStartDate() {
+  if (state.start_timestamp) {
+    const d = new Date(state.start_timestamp);
+    if (!isNaN(d.getTime())) return d;
+  }
+  const raw = String(state.official_start_time || "08:00 AM");
+  const mt = raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+  const d = new Date();
+  d.setSeconds(0, 0);
+  if (mt) {
+    let h = parseInt(mt[1], 10) % 12;
+    if (/pm/i.test(mt[3])) h += 12;
+    d.setHours(h, parseInt(mt[2], 10), 0, 0);
+  } else {
+    d.setHours(8, 0, 0, 0);
+  }
+  return d;
+}
+
+function tsDeadlineDate() {
+  const start = tsStartDate();
+  const hours = Number(state.hours_total) || 24;
+  return new Date(start.getTime() + hours * 3600 * 1000);
+}
+
+function tsStopTime(timeText) {
+  const start = tsStartDate();
+  const end = tsDeadlineDate();
+  const t = String(timeText || "");
+  const rel = t.match(/T-\s*(\d+(?:[.,]\d+)?)\s*H/i);
+  if (rel) {
+    const h = parseFloat(rel[1].replace(",", "."));
+    return new Date(end.getTime() - h * 3600 * 1000);
+  }
+  const abs = t.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+  if (abs) {
+    let h = parseInt(abs[1], 10) % 12;
+    if (/pm/i.test(abs[3])) h += 12;
+    const d = new Date(start.getTime());
+    d.setHours(h, parseInt(abs[2], 10), 0, 0);
+    if (d.getTime() < start.getTime()) d.setDate(d.getDate() + 1);
+    return d;
+  }
+  return null;
+}
+
+function tsPathState(milestones) {
+  const start = tsStartDate();
+  const end = tsDeadlineDate();
+  const now = Date.now();
+  const total = Math.max(1, end.getTime() - start.getTime());
+  const pct = Math.max(0, Math.min(100, Math.round(((now - start.getTime()) / total) * 100)));
+  const stamps = milestones.map(m => {
+    const d = tsStopTime(m.time);
+    return d ? d.getTime() : null;
+  });
+  let current = stamps.findIndex(t => t !== null && t > now);
+  if (current === -1) current = stamps.length;
+  return { pct, stamps, now, current, started: now >= start.getTime() };
 }
 
 function renderViewTimeline() {
@@ -9670,24 +9332,15 @@ function renderViewTimeline() {
 
   if (currentSubtab === "checklist") {
     subtabContent = `
-      <div class="naming-box-card">
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px; border-bottom:1px solid #f1f5f9; padding-bottom:12px;">
+      <div class="ts-section">
+        <div class="ts-section-head">
           <div>
-            <div style="display:flex; align-items:center; gap:8px;">
-              <h3 style="font-size:14px; font-weight:700; color:#0f172a; margin:0;">Checklist de Entrega Oficial</h3>
-              <span id="guardrail-verified-count" class="timeline-subnav-count" style="background:${verifiedCount === GUARDRAILS_DEFINITIONS.length ? '#dcfce7; color:#166534;' : '#eff6ff; color:#003366;'}">
+            <div style="display:flex; align-items:baseline; gap:10px;">
+              <h2 class="ts-section-title">Checklist de entrega</h2>
+              <span id="guardrail-verified-count" class="timeline-subnav-count" style="background:${verifiedCount === GUARDRAILS_DEFINITIONS.length ? 'var(--status-ok-bg); color:#166534;' : '#eff6ff; color:var(--color-navy);'}">
                 ${verifiedCount} / ${GUARDRAILS_DEFINITIONS.length} Verificados
               </span>
             </div>
-            <p style="font-size:12px; color:#64748b; margin:3px 0 0 0;">Haz clic en cada fila para desplegar detalles normativos y evitar descalificaciones.</p>
-          </div>
-          <div style="display:flex; gap:6px;">
-            <button class="btn-secondary-action" onclick="toggleAllGuardrails(true)" style="padding:6px 10px; font-size:11.5px;">
-              Desplegar todo
-            </button>
-            <button class="btn-secondary-action" onclick="toggleAllGuardrails(false)" style="padding:6px 10px; font-size:11.5px;">
-              Colapsar todo
-            </button>
           </div>
         </div>
 
@@ -9702,7 +9355,6 @@ function renderViewTimeline() {
                     ${isChecked ? SVG.check : ''}
                   </div>
                   <div class="guardrail-row-title">${g.title}</div>
-                  <span class="guardrail-badge-risk">Riesgo Alto</span>
                   <div class="guardrail-chevron">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
                   </div>
@@ -9710,7 +9362,7 @@ function renderViewTimeline() {
                 <div class="guardrail-expand-body">
                   <div>${g.desc}</div>
                   <div class="guardrail-risk-notice">
-                    <span style="font-weight:700; color:#DC2626;">!</span>
+                    <span style="font-weight:700; color:var(--status-err-text);">!</span>
                     <span>${g.risk}</span>
                   </div>
                 </div>
@@ -9721,17 +9373,17 @@ function renderViewTimeline() {
       </div>
     `;
   } else if (currentSubtab === "schedule") {
+    const pathInfo = tsPathState(milestones);
     subtabContent = `
-      <div class="schedule-panel">
+      <div class="ts-section">
         <div class="schedule-toolbar">
           <div>
             <div style="display:flex; align-items:center; gap:8px;">
-              <h3 style="font-size:14px; font-weight:700; color:#0f172a; margin:0;">Cronograma de Hitos y Tiempos Críticos</h3>
+              <h2 class="ts-section-title">Hitos y tiempos críticos</h2>
               <span class="timeline-subnav-count">
                 ${milestones.length} hitos ${isCustomSchedule ? '(Personalizado IA)' : '(Oficial)'}
               </span>
             </div>
-            <p style="font-size:12px; color:#64748b; margin:3px 0 0 0;">Secuencia temporal para coordinar el trabajo en equipo sin saturación.</p>
           </div>
           <div style="display:flex; gap:8px; align-items:center;">
             <button class="btn-ai-action" onclick="toggleScheduleAIPanel()">
@@ -9746,11 +9398,8 @@ function renderViewTimeline() {
         </div>
 
         <div class="schedule-ai-box ${state.schedule_ai_open ? '' : 'collapsed'}">
-          <div style="font-size:12px; font-weight:700; color:#0f172a; margin-bottom:4px; display:flex; align-items:center; gap:6px;">
-            ${SVG.upload} Pegar Texto de Cronograma (Circular Oficial, WhatsApp, PDF o Boletín)
-          </div>
-          <div style="font-size:11.5px; color:#64748b; margin-bottom:8px;">
-            Pega el itinerario tal como te lo compartieron. La IA extraerá automáticamente las horas, acciones y niveles de riesgo:
+          <div class="ts-ai-label">
+            ${SVG.upload} Pegar el cronograma del comité
           </div>
           <textarea id="input-schedule-raw" class="schedule-textarea" placeholder="Ejemplo:&#10;08:00 AM Apertura y selección de retos&#10;12:00 PM Límite fatal de registro de equipo&#10;T-4 Horas Entrega de pautado y presupuesto&#10;T-0 Cierre definitivo">${state.schedule_raw_text || ""}</textarea>
           <div style="display:flex; justify-content:flex-end; gap:8px;">
@@ -9761,39 +9410,47 @@ function renderViewTimeline() {
           </div>
         </div>
 
-        <div style="border:1px solid #e2e8f0; border-radius:10px; overflow:hidden;">
-          ${milestones.map((m, idx) => {
-            const isCrit = m.level === "critical" || /descalificaci|fatal|cierre|0 puntos/i.test(m.risk || "");
-            return `
-              <div class="schedule-item-row" style="${isCrit ? 'background:#fffafa;' : ''}">
-                <span class="schedule-tag-time" style="${isCrit ? 'background:#fef2f2; border-color:#fee2e2; color:#991b1b;' : ''}">
-                  ${m.time}
-                </span>
-                <div class="schedule-item-content">
-                  <div class="schedule-item-title">${m.action}</div>
-                  <div class="schedule-item-risk" style="${isCrit ? 'color:#b91c1c; font-weight:600;' : ''}">
-                    ${isCrit ? '[ALERTA] ' : '[INFO] '}${m.risk}
+        <div class="ts-clock">
+          <span class="ts-clock-k">Reloj del certamen</span>
+          <span class="ts-clock-bar"><span class="ts-clock-fill" style="width:${pathInfo.pct}%"></span></span>
+          <span class="ts-clock-v">${pathInfo.started ? pathInfo.pct + '%' : 'sin arrancar'}</span>
+        </div>
+
+        <div class="ts-path">
+          <span class="ts-path-rail"><span class="ts-path-fill" style="height:${pathInfo.pct}%"></span></span>
+          <ol class="ts-path-list">
+            ${milestones.map((m, idx) => {
+              const isCrit = m.level === "critical" || /descalificaci|fatal|cierre|0 puntos/i.test(m.risk || "");
+              const stamp = pathInfo.stamps[idx];
+              const done = stamp !== null && stamp <= pathInfo.now;
+              const isNow = !done && idx === pathInfo.current;
+              const cls = ["ts-stop", done ? "is-done" : "", isNow ? "is-now" : "", isCrit ? "is-crit" : ""].filter(Boolean).join(" ");
+              return `
+                <li class="${cls}">
+                  <span class="ts-stop-dot">${done ? SVG.check : ""}</span>
+                  <div class="ts-stop-body">
+                    <span class="ts-stop-time">${m.time}</span>
+                    <span class="ts-stop-action">${m.action}</span>
                   </div>
-                </div>
-                ${isCustomSchedule ? `
-                  <button class="btn-icon-del" onclick="removeScheduleMilestone(${idx})" title="Eliminar hito">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                  </button>
-                ` : ''}
-              </div>
-            `;
-          }).join("")}
+                  ${isCustomSchedule ? `
+                    <button class="btn-icon-del" onclick="removeScheduleMilestone(${idx})" title="Eliminar hito" aria-label="Eliminar hito">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    </button>
+                  ` : ""}
+                </li>
+              `;
+            }).join("")}
+          </ol>
         </div>
       </div>
     `;
   } else if (currentSubtab === "naming") {
     subtabContent = `
       <div class="timeline-grid" style="margin-top:0;">
-        <div class="naming-box-card">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; border-bottom:1px solid #f1f5f9; padding-bottom:8px;">
+        <div class="ts-section">
+          <div class="ts-section-head">
             <div>
-              <h3 style="font-size:14px; font-weight:700; color:#0f172a; margin:0;">Nomenclaturas Oficiales Reglamentarias</h3>
-              <p style="font-size:12px; color:#64748b; margin:2px 0 0 0;">Copia y pega los nombres reglamentarios con 1 clic para evitar penalizaciones por formato.</p>
+              <h2 class="ts-section-title">Nomenclaturas oficiales</h2>
             </div>
             <span class="timeline-subnav-count">Reglamento UNI</span>
           </div>
@@ -9801,7 +9458,7 @@ function renderViewTimeline() {
           <div class="naming-field-group">
             <div class="naming-field-label">
               <span>Nombre Oficial del Archivo PDF (Pautado Oficial)</span>
-              <span style="font-size:10.5px; color:#64748b; text-transform:none; font-weight:600;">Máx 15 MB · PDF</span>
+              <span style="font-size:11px; color:var(--text-muted); text-transform:none; font-weight:600;">Máx 15 MB · PDF</span>
             </div>
             <div class="naming-input-row">
               <input type="text" class="naming-input-readonly" readonly value="${nom.pdfName}" id="input-pdf-name">
@@ -9814,7 +9471,7 @@ function renderViewTimeline() {
           <div class="naming-field-group">
             <div class="naming-field-label">
               <span>Título Reglamentario para YouTube (Pitch 120s)</span>
-              <span style="font-size:10.5px; color:#64748b; text-transform:none; font-weight:600;">1080p · No Listado</span>
+              <span style="font-size:11px; color:var(--text-muted); text-transform:none; font-weight:600;">1080p · No Listado</span>
             </div>
             <div class="naming-input-row">
               <input type="text" class="naming-input-readonly" readonly value="${nom.ytTitle}" id="input-yt-title">
@@ -9825,11 +9482,10 @@ function renderViewTimeline() {
           </div>
         </div>
 
-        <div class="naming-box-card">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; border-bottom:1px solid #f1f5f9; padding-bottom:8px;">
+        <div class="ts-section">
+          <div class="ts-section-head">
             <div>
-              <h3 style="font-size:14px; font-weight:700; color:#0f172a; margin:0;">Hashtags Obligatorios (YouTube & TikTok)</h3>
-              <p style="font-size:12px; color:#64748b; margin:2px 0 0 0;">Etiquetas exigidas por la rúbrica oficial del certamen.</p>
+              <h2 class="ts-section-title">Hashtags obligatorios</h2>
             </div>
             <button class="btn-copy-action" onclick="copyToClipboardWithFeedback('${allHashtagsStr}', 'Todos los hashtags copiados')">
               ${SVG.copy} Copiar Todos
@@ -9840,49 +9496,29 @@ function renderViewTimeline() {
             ${nom.hashtags.map(t => `<span class="hashtag-pill">${t}</span>`).join("")}
           </div>
 
-          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 12px; font-size:11.5px; color:#475569; line-height:1.45;">
-            <strong>Directriz de Impacto en Redes:</strong> ${nom.tiktokTip}
-          </div>
+          <p class="ts-note"><strong>Directriz de impacto:</strong> ${nom.tiktokTip}</p>
         </div>
       </div>
     `;
   }
 
   return `
-    <div class="phase-header" style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:14px; margin-bottom:16px;">
+    <div class="phase-header">
       <div>
-        <h1 class="phase-title">12 · Cronograma de Entrega <span class="phase-title-accent">& Requisitos Críticos</span></h1>
-        <p class="phase-subtitle">Horarios oficiales de Nicaragua (UTC-6), checklist desplegable y nomenclaturas reglamentarias.</p>
-      </div>
-      <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
-        <span class="tactical-status-pill">
-          <span class="status-dot"></span>HORA NICARAGUA (UTC-6)
-        </span>
-        <span class="tactical-status-pill">
-          <span class="status-dot"></span>${isLatam ? 'Rally Latam (28 Horas)' : 'Rally Nacional (24 Horas)'}
-        </span>
+        <h1 class="phase-title">Cronograma de Entrega <span class="phase-title-accent">& Requisitos Críticos</span></h1>
+        <p class="phase-subtitle">Qué falta, qué revisa el jurado y cuándo cierra cada cosa.</p>
       </div>
     </div>
 
-    <!-- Banner Suave y Limpio de Próximo Hito -->
-    <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; padding:12px 18px; margin-bottom:16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
-      <div style="display:flex; align-items:center; gap:12px;">
-        <div style="width:34px; height:34px; border-radius:8px; background:var(--bg-subtle); color:var(--color-primary); border:1px solid var(--border-light); display:flex; align-items:center; justify-content:center;">
-          ${SVG.clock}
-        </div>
-        <div>
-          <div style="font-size:10.5px; font-weight:700; text-transform:uppercase; color:#64748b; letter-spacing:0.04em;">PRÓXIMO HITO CRÍTICO</div>
-          <div style="font-size:13.5px; font-weight:700; color:#091e42;">${currentDeadline.label} — <span style="color:#003366; font-family:var(--font-mono);">${currentDeadline.time}</span></div>
-        </div>
-      </div>
-      <div style="font-size:12px; color:#475569; max-width:440px; line-height:1.4;">
-        ${currentDeadline.desc}
-      </div>
+    <!-- Próximo hito: una sola línea, sin banner -->
+    <div class="timeline-next">
+      <span class="timeline-next-label">Siguiente</span>
+      <span class="timeline-next-name">${escapeHtml(currentDeadline.label)}</span>
+      <span class="timeline-next-time">${escapeHtml(currentDeadline.time)}</span>
+      <span class="timeline-next-desc">${escapeHtml(currentDeadline.desc)}</span>
     </div>
 
-    <!-- Avisos que la IA madre dejó para el cierre -->
-    ${renderAvisosIA()}
-
+    <!-- Avisos de los agentes viven en el Resumen para no repetirse en cada pestaña -->
     <!-- Sub-navegación Limpia y Cohesiva -->
     <div class="timeline-subnav">
       <button class="timeline-subnav-btn ${currentSubtab === 'checklist' ? 'active' : ''}" onclick="switchTimelineSubtab('checklist')">
@@ -9900,25 +9536,89 @@ function renderViewTimeline() {
 
     ${subtabContent}
 
-    <!-- Bloque de Empaquetado y Exportación Final -->
-    <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:18px 20px; margin-top:20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+    <!-- Empaquetado: fila plana al pie, sin tarjeta -->
+    <div class="ts-pack">
       <div>
-        <div style="display:flex; align-items:center; gap:8px;">
-          <h3 style="font-size:14px; font-weight:800; color:#0f172a; margin:0;">Empaquetado Oficial y Exportación del Dossier</h3>
-          <span class="stepper-pill" style="background:#eff6ff; color:#003366; font-size:10.5px; font-weight:700;">Formatos MD & PDF</span>
-        </div>
-        <p style="font-size:12px; color:#64748b; margin:4px 0 0 0;">Genera la memoria técnica consolidada con logos institucionales, catálogo de retos, propuestas IA, pautado y rúbricas.</p>
+        <h2 class="ts-section-title">Empaquetado y exportación</h2>
       </div>
       <div style="display:flex; gap:10px; flex-wrap:wrap;">
-        <button class="btn-primary" onclick="exportProjectMarkdown()" style="padding:9px 16px; font-size:12.5px; font-weight:700;">
+        <button class="btn-primary" onclick="exportProjectMarkdown()" style="padding:9px 16px; font-size:13px; font-weight:700;">
           ${SVG.copy} Exportar Dossier (.md)
         </button>
-        <button class="btn-select-card filled" onclick="printProjectDossier()" style="padding:9px 16px; font-size:12.5px; font-weight:700; background:#0D1B35; color:#fff; border-color:#0D1B35;">
+        <button class="btn-select-card filled" onclick="printProjectDossier()" style="padding:9px 16px; font-size:13px; font-weight:700; background:var(--color-navy); color:var(--bg-surface); border-color:var(--color-navy);">
           ${SVG.download} Imprimir / Guardar como PDF
         </button>
       </div>
     </div>
   `;
+}
+
+// Lo que falta en la fase abierta. El panel lateral no repite el porcentaje
+// global (ya está en la barra superior): dice qué cerrar aquí y ahora.
+function panelPendingItems(tabId) {
+  const t = (v) => String(v == null ? "" : v).trim() !== "";
+  const items = [];
+  const add = (ok, text, tab) => items.push({ ok: !!ok, text, tab: tab || tabId });
+
+  if (tabId === "resumen") {
+    add(t(state.rally_type) && t(state.team_name), "Definir certamen y equipo", "certamen");
+    add(t(state.challenge_id), "Elegir el reto", "challenges");
+    add(state.solution_approved, "Aprobar la solución", "solution");
+    add(typeof isBudgetValid === "function" && isBudgetValid(), "Cerrar el presupuesto", "budget");
+    add(t(state.video_url), "Subir el video", "timeline");
+  } else if (tabId === "certamen") {
+    add(t(state.rally_type), "Elegir el certamen");
+    add(t(state.category), "Elegir la categoría");
+  } else if (tabId === "team") {
+    add(t(state.team_name), "Nombre del squad");
+    add(t(state.university), "Universidad");
+    add(t(state.city), "Ciudad o municipio");
+    add(t(state.team_logo_img), "Logo del equipo");
+  } else if (tabId === "challenges") {
+    add(t(state.challenge_id), "Elegir el reto a desarrollar");
+    add(Array.isArray(state.challenges) && state.challenges.length > 0, "Cargar los retos del comité");
+  } else if (tabId === "solution") {
+    add(t(state.solution_raw_input), "La idea con tus palabras");
+    add(t(state.solution_thesis), "La tesis técnica");
+    add(t(state.solution_simple), "El pitch de cinco segundos");
+    add(t(state.project_name), "El nombre del proyecto");
+    add(state.solution_approved, "Aprobarla para desbloquear lo que sigue");
+  } else if (tabId === "impact") {
+    const { mappedOdsIds, mappedEjeIds } = getChallengeImpactDetails(state.challenge_id);
+    add((mappedOdsIds || []).length > 0, "Al menos un ODS vinculado");
+    if (state.rally_type === "nacional") add((mappedEjeIds || []).length > 0, "Un eje del plan país");
+  } else if (tabId === "multi_ai") {
+    const tasks = Array.isArray(state.tasks) ? state.tasks : [];
+    add(tasks.some(x => t(x && x.result)), "Al menos una respuesta pegada");
+  } else if (tabId === "pautado") {
+    if (typeof PAUTADO_LIMITS === "object") {
+      Object.keys(PAUTADO_LIMITS).forEach(k => {
+        const len = String((state.pautado || {})[k] || "").trim().length;
+        add(len > 0, k.charAt(0).toUpperCase() + k.slice(1) + " escrito");
+      });
+    }
+  } else if (tabId === "budget") {
+    const rows = Array.isArray(state.budget) ? state.budget : [];
+    add(rows.length > 0, "Al menos una partida");
+    add(rows.length > 0 && rows.every(r => t(r.url)), "Enlace de compra en cada partida");
+    add(typeof isBudgetValid === "function" && isBudgetValid(), "Total dentro de la banda del certamen");
+  } else if (tabId === "resources") {
+    add(t(state.team_logo_img), "Logo del equipo");
+  } else if (tabId === "canvas") {
+    const c = state.model_canvas || {};
+    const keys = ["socios", "actividades", "propuesta", "relaciones", "segmentos", "recursos", "canales", "costes", "ingresos"];
+    const n = keys.filter(k => t(c[k])).length;
+    add(n === keys.length, `${n} de 9 cuadrantes escritos`);
+  } else if (tabId === "script") {
+    const s = state.script || {};
+    ["acto1", "acto2", "acto3", "acto4"].forEach((k, i) => add(t(s[k]), `Acto ${i + 1} escrito`));
+  } else if (tabId === "webdemo") {
+    add(t(state.site_url), "URL del prototipo publicado");
+  } else if (tabId === "timeline") {
+    add(t(state.video_url), "Video en YouTube");
+    add(t(state.site_url), "Prototipo publicado");
+  }
+  return items;
 }
 
 // ── INSPECTOR LATERAL DE AUDITORÍA ───────────────────────────────────────────
@@ -9935,7 +9635,7 @@ function updateInspector() {
   const guardrailsOk = guardrailsCount === guardrailsTotal;
 
   const points = calculateAuditScore();
-  const topbarBadge = document.getElementById("topbar-audit-badge");
+  const topbarBadge = document.getElementById("topbar-audit-badge") || document.querySelector(".topbar-chip-num");
   if (topbarBadge) topbarBadge.textContent = `${points}%`;
 
   const hasBudgetItems = Array.isArray(state.budget) && state.budget.length > 0;
@@ -9947,57 +9647,29 @@ function updateInspector() {
       <button class="btn-close-drawer" onclick="closeAllDrawers()" aria-label="Cerrar panel de auditoría">${SVG.close}</button>
     </div>
 
-    <div class="prep-console">
-      <div class="prep-console-header">
-        <span class="prep-console-title">Preparación Oficial</span>
-        <span class="prep-console-pct">${points}%</span>
-      </div>
-      <div class="prep-progress-track">
-        <div class="prep-progress-bar" style="width:${points}%;"></div>
-      </div>
-
-      <div class="prep-table">
-        <div class="prep-row ${state.team_name ? 'is-complete' : ''}" onclick="switchTab('team')" title="Identidad del Equipo">
-          <span class="prep-col-name">01. Equipo y Sede</span>
-          <span class="prep-col-status">${rsPill(state.team_name ? "done" : "pending", state.team_name ? { label: "CONFIRMADO" } : { label: "INCOMPLETO" })}</span>
+    ${(() => {
+      const tabId = rsPrevTabId || "resumen";
+      const label = String((NAV_TABS.find(t => t.id === tabId) || {}).label || "Esta fase").replace(/^\d+\s*/, "");
+      const items = panelPendingItems(tabId);
+      if (!items.length) return "";
+      const faltan = items.filter(x => !x.ok).length;
+      return `
+        <div class="panel-todo-head">
+          <span class="panel-todo-title">${escapeHtml(label)}</span>
+          <span class="panel-todo-count">${faltan === 0 ? "completa" : faltan + " por cerrar"}</span>
         </div>
-        <div class="prep-row ${state.challenge_id ? 'is-complete' : ''}" onclick="switchTab('challenges')" title="Selección de Reto">
-          <span class="prep-col-name">02. Reto en Vivo</span>
-          <span class="prep-col-status">${rsPill(state.challenge_id ? "done" : "pending", state.challenge_id ? { label: "#" + state.challenge_id, title: "Reto activo" } : { label: "SIN ELEGIR" })}</span>
-        </div>
-        <div class="prep-row ${state.solution_approved ? 'is-complete' : ''}" onclick="switchTab('solution')" title="Taller de Solución">
-          <span class="prep-col-name">03. Solución Técnica</span>
-          <span class="prep-col-status">${rsPill(state.solution_approved ? "done" : (stage >= 3 ? "working" : "pending"), { label: state.solution_approved ? "APROBADA" : (stage >= 3 ? "BORRADOR" : "PENDIENTE"), title: "Solución técnica" })}</span>
-        </div>
-        <div class="prep-row ${state.challenge_id && state.solution_approved ? 'is-complete' : ''}" onclick="switchTab('impact')" title="Impacto ODS y Políticas Nacionales">
-          <span class="prep-col-name">04. ODS &amp; Plan País</span>
-          <span class="prep-col-status">${rsPill(state.challenge_id && state.solution_approved ? "done" : (state.challenge_id ? "working" : "pending"), { label: state.challenge_id ? (state.solution_approved ? "ALINEADO" : "CONFIGURAR") : "PENDIENTE", title: "Impacto ODS y Plan País" })}</span>
-        </div>
-        <div class="prep-row ${isPautadoComplete() ? 'is-complete' : ''}" onclick="switchTab('pautado')" title="Documento Pautado">
-          <span class="prep-col-name">05. Pautado Oficial</span>
-          <span class="prep-col-status">${rsPill(isPautadoComplete() ? "done" : (stage >= 5 ? "working" : "pending"), { label: isPautadoComplete() ? "AUDITADO" : (stage >= 5 ? "REVISAR" : "PENDIENTE"), title: "Documento Pautado" })}</span>
-        </div>
-        <div class="prep-row ${hasBudgetItems && isBudgetValid() ? 'is-complete' : ''}" onclick="switchTab('budget')" title="Presupuesto">
-          <span class="prep-col-name">06. Presupuesto</span>
-          <span class="prep-col-status">${rsPill(hasBudgetItems && isBudgetValid() ? "done" : (hasBudgetItems ? "working" : "pending"), { label: hasBudgetItems ? "$" + Math.round(totalBudget).toLocaleString() + " USD" : "SIN COTIZAR", title: "Presupuesto" })}</span>
-        </div>
-        <div class="prep-row ${isScriptComplete() ? 'is-complete' : ''}" onclick="switchTab('script')" title="Guion de Video">
-          <span class="prep-col-name">07. Guion 120s</span>
-          <span class="prep-col-status">${rsPill(isScriptComplete() ? "done" : (stage >= 9 ? "working" : "pending"), { label: isScriptComplete() ? "120s OK" : (stage >= 9 ? "EN CURSO" : "PENDIENTE"), title: "Guion de video" })}</span>
-        </div>
-        <div class="prep-row ${guardrailsOk ? 'is-complete' : ''}" onclick="switchTab('timeline')" title="Requisitos de Entrega">
-          <span class="prep-col-name">08. Checklist de Entrega</span>
-          <span class="prep-col-status">${rsPill(guardrailsOk ? "done" : (guardrailsCount > 0 ? "working" : "pending"), { label: `${guardrailsCount}/${guardrailsTotal} VERIFICADOS`, title: "Checklist de entrega" })}</span>
-        </div>
-      </div>
-    </div>
-
-    <div style="margin-top:12px; padding:8px 10px; background:#F8FAFC; border:1px solid #E2E8F0; border-radius:6px; font-size:10.5px; line-height:1.35; color:#475569;">
-      <div style="font-weight:700; color:#0866F5; font-size:10px; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:3px; display:flex; align-items:center; gap:4px;">
-        ${SVG.spark} Criterio Jurado: Coherencia (100 Pts)
-      </div>
-      Costos e impacto del video de 120s deben cuadrar exactos con el presupuesto del documento pautado.
-    </div>
+        <ul class="panel-todo">
+          ${items.map(it => `
+            <li class="panel-todo-item${it.ok ? " is-done" : ""}">
+              <button type="button" onclick="switchTab('${it.tab}')" title="${it.ok ? "Listo" : "Ir a la fase"}">
+                <span class="panel-todo-dot" aria-hidden="true"></span>
+                <span class="panel-todo-text">${escapeHtml(it.text)}</span>
+              </button>
+            </li>
+          `).join("")}
+        </ul>
+      `;
+    })()}
   `;
 }
 

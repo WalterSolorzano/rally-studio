@@ -1,282 +1,181 @@
-# Rally Studio · Tu Copiloto para el Rally de Innovación
+<div align="center">
+  <img src="assets/readme/hero.png" alt="Rally Studio abierto en el navegador, en la etapa de Pautado Oficial con conteo de caracteres por sección" width="100%">
+</div>
 
-[![Plataforma](https://img.shields.io/badge/Plataforma-Web%20Local-0866F5.svg)](#inicio-rapido)
-[![Certámenes](https://img.shields.io/badge/Certamen-Rally%20Latam%20%2828h%29%20%7C%20Nacional%20%2824h%29-1D4ED8.svg)](#certamenes)
-[![Base de Datos](https://img.shields.io/badge/Base%20de%20Datos-Ganadores%20y%20R%C3%BAbricas-6366F1.svg)](#cerebro)
-[![Asistentes IA](https://img.shields.io/badge/Asistentes%20IA-17%20Ayudantes-16a34a.svg)](#asistentes)
-[![Pruebas](https://img.shields.io/badge/Pruebas-6%2F6%20pasan-22c55e.svg)](#pruebas)
+# Rally Studio
 
-> **Un espacio de trabajo creado por un estudiante universitario que ya vivió y ganó un rally, diseñado para ayudar a otros equipos a no perder la cabeza en maratones de 24h y 28h (Rally Latinoamericano y Rally Nacional Nicaragua Innova). No te promete ganar por arte de magia, pero te ahorra horas de caos, organiza a tu grupo y evita que te descalifiquen por un error tonto.**
+**El workbench local donde un rally de innovación se termina.** Trece etapas, dieciocho asistentes y un solo estado compartido: el pautado con conteo de caracteres, el presupuesto con proveedor, el guion de 120 segundos y el render 3D salen del mismo lugar, no de cinco pestañas distintas a las tres de la mañana.
+
+<p align="center">
+  <img alt="web" src="https://img.shields.io/badge/web-localhost%3A8000-0866F5?style=flat-square&labelColor=0D1B35">
+  <img alt="certámenes" src="https://img.shields.io/badge/cert%C3%A1menes-latam%2028h%20%C2%B7%20nacional%2024h-10213F?style=flat-square">
+  <img alt="asistentes" src="https://img.shields.io/badge/asistentes-18-2AA7AD?style=flat-square">
+  <img alt="pruebas" src="https://img.shields.io/badge/pruebas-6%2F6-1D4ED8?style=flat-square">
+  <img alt="local" src="https://img.shields.io/badge/sin%20API%20obligatoria-100%25%20local-0D1B35?style=flat-square">
+</p>
+
+> Lo construyó un estudiante que ganó un rally y no quería volver a perder un certamen por un número desincronizado entre el PDF y el video.
+
+**Qué deja de pasar:** el presupuesto del documento no coincide con el del video. El pautado se pasa de caracteres y nadie lo nota. El guion dura 140 segundos. La web demo se cae el día de la entrega. Y a las 2 a.m. alguien pregunta "¿quién tiene la última versión el canvas?".
+
+**Qué hay en su lugar:** una etapa no se abre si el entregable no existe, las cifras se cruzan solas entre archivos y cada pieza tiene un dueño con nombre.
+
+---
+
+## El workbench, en movimiento
 
 <div align="center">
+  <img src="assets/readme/workbench.gif" alt="Recorrido por el workbench: resumen, pautado, presupuesto, guion y checklist" width="840">
+</div>
 
-![Rally Studio](site/rally_studio_logo.svg)
+Cada pantalla es una etapa real, con el estado del proyecto demo de ejemplo: reto `#R-07`, cinco secciones de pautado dentro del tope, presupuesto de `$5,760 USD` y checklist en `8/10`.
 
-**Instala en 1 minuto y empieza a trabajar:**
+---
+
+## Del reto al video, sin saltos
+
+<div align="center">
+  <img src="assets/readme/cadena.png" alt="Cadena: leer el reto, formular la tesis, escribir el pautado, cotizar, guionar, publicar" width="100%">
+</div>
+
+Cada eslabón deja un archivo verificable, y el sistema cruza las cifras entre ellos **antes** de que las vea el jurado.
+
+---
+
+## Trece etapas, un solo hilo
+
+<div align="center">
+  <img src="assets/readme/flujo.png" alt="Las trece etapas del rally agrupadas en setup, tesis, producción y cierre" width="100%">
+</div>
+
+La etapa siguiente se abre cuando el entregable existe. Si falta, la app lo dice y no deja avanzar: el pestillo es la rúbrica, no la buena voluntad.
+
+---
+
+## Dieciocho asistentes, cada uno con su oficio
+
+<div align="center">
+  <img src="assets/readme/asistentes.png" alt="Los dieciocho asistentes del sistema, cada uno con su avatar" width="100%">
+</div>
+
+Se invocan a demanda desde `skills/` y se reflejan en `.opencode/skills` y `.agents/skills`. Investigan, cotizan, auditan y rompen la idea antes de que lo haga el jurado.
+
+<details>
+<summary><b>Quién hace qué</b></summary>
+
+| Oficio | Asistente | Qué entrega |
+|---|---|---|
+| Contexto | San Google de los Ganadores | Lee brief, corpus y estado de la ventana |
+| Coordinación | El Admin del Grupo | Reparte trabajo en paralelo sin choques |
+| Ruta | Tu Última Neurona | Dice qué etapa sigue y qué falta |
+| Retos | La Ruleta Rusa | Convierte retos del comité en soluciones |
+| Crítica | El Destructor de Sueños | Rompe la idea: patentes, competencia, agujeros |
+| Dossier | Labia Interna | Tres páginas por reto, con precedentes |
+| Auditoría | La Tóxica que Revisa el Chat | Revisa contra la rúbrica del certamen activo |
+| Dinero | Don Cangrejo (El Palmado) | Partidas con unidades, precio y enlace |
+| Marca | El Diseñador de Carretera Masaya | Paleta, logo y tokens de diseño |
+| Guion | El que Habla Bonito | Pitch PAS-V calibrado a 120 s |
+| Rodaje | El Jefe de Rodaje / El Storyboardista | Guion y plan de tomas en un solo HTML |
+| 3D | El Quemador de Tostadas | Modela, audita y renderiza en Blender |
+| Investigación | La Chismosa del Barrio | Procesa el PDF o DOCX que traes de fuera |
+| Publicación | El del Ciber del Barrio | Web demo en GitHub Pages o Netlify |
+| Interfaz | PedidosYa | Sirve propuestas a la ventana como Aceptar/Descartar |
+| Reloj | El Relojero del Rally | Cronómetro, avisos y congelado al 75 % |
+| Mejora | Café Presto con Ansiedad | Sugerencias cortas por etapa |
+
+</details>
+
+---
+
+## Lo que sale de una corrida real
+
+<div align="center">
+  <img src="assets/readme/ui-presupuesto.png" alt="Presupuesto de marcha con cinco partidas y total en dólares" width="100%">
+  <img src="assets/readme/ui-guion.png" alt="Guion de 120 segundos dividido en cuatro actos con reglas del jurado" width="100%">
+</div>
+
+Presupuesto con unidades, precio unitario y enlace de respaldo, sin TIR ni VAN que nadie va a leer. Guion en cuatro actos medido sobre el audio, no sobre la página.
+
+*Proyecto demo `[SIMULADO]`: el reto, la solución y las cifras son de ejemplo. La app, el conteo, el cruce de cifras y el render son reales.*
+
+---
+
+## Se ve en el escritorio y en el teléfono
+
+<div align="center">
+  <table>
+    <tr>
+      <td width="70%"><img src="assets/readme/maqueta-desktop.png" alt="El workbench en el navegador, etapa 12 con el checklist de entrega en 8 de 10" width="100%"></td>
+      <td width="30%"><img src="assets/readme/maqueta-mobile.png" alt="El workbench instalado como PWA en el teléfono" width="100%"></td>
+    </tr>
+    <tr>
+      <td align="center"><sub><b>Escritorio.</b> Checklist de entrega: qué falta, quién lo revisa y cuándo cierra.</sub></td>
+      <td align="center"><sub><b>Teléfono.</b> PWA, sin tienda: se instala desde el navegador.</sub></td>
+    </tr>
+  </table>
+</div>
+
+---
+
+## El cerebro: todo lo que ya ganó
+
+<div align="center">
+  <img src="assets/readme/cerebro.png" alt="Mapa radial del corpus con la cobertura mapeada: 420 nodos, 29 comunidades, 4.715 sedes y banderas de los diez países con podios" width="100%">
+</div>
+
+Rúbricas de los dos certámenes, casos ganadores, claims con fuente, anatomía del pitch y patrones que el jurado premia: **420 nodos, 732 aristas, 29 comunidades** compiladas en `graphify-out/`. Se consulta sin subir el proyecto a ninguna nube.
+
+<div align="center">
+  <img src="assets/readme/cobertura.png" alt="Cobertura del corpus: 363 podios nacionales y 58 internacionales por país, 252 sedes con podio y el desglose de las 41 victorias nicaragüenses por universidad" width="100%">
+</div>
+
+**4.715 sedes** mapeadas, **363 podios nacionales**, **58 internacionales** en diez países y **diez años** de casos. No es una lista de ideas: es lo que ya ganó, con año, equipo y sede.
+
+---
+
+## 3D con ficha técnica
+
+<div align="center">
+  <img src="assets/readme/blender.png" alt="El nodo de riego: render sólido, despiece por capas y el mismo modelo en el visor web" width="100%">
+</div>
+
+Cada pieza nace de una ficha aprobada —dimensiones desde el BOM, materiales y presupuesto de GPU— y se entrega en tres pasadas sobre la misma malla: **sólido** para vender, **despiece** para mostrar que el interior existe (placas, batería, cableado, prensaestopas) y **visor web** con el GLB exportado: el mismo archivo sirve para el render y para la página. Un render a la vez, con `gpu_lock`, tiers de calidad y `pre_render_check` antes de gastar la tarjeta.
+
+---
+
+## Arrancarlo
 
 ```powershell
 pip install -r requirements.txt
 .\iniciar_rally.ps1
 ```
-Abre en tu navegador: **http://localhost:8000/dashboard/**
 
-</div>
-
----
-
-## El problema: a las 3:00 AM nadie sabe qué preguntarle a la IA
-
-Durante un rally de 28 horas el equipo no pierde el tiempo programando, pierde el tiempo **decidiendo**: ¿qué reto elegir, cómo justificar el impacto, cuánto cuesta cada pieza, si el video pasa de 120 segundos, si las cifras del documento cuadran con el presupuesto, si el nombre ya existe en otro país. Rally Studio resuelve eso: estructura el trabajo en 13 etapas, te da los prompts listos, revisa los entregables contra la rúbrica y te avisa antes de que te descalifiquen.
-
----
-
-## El sistema en acción
-
-<div align="center">
-
-![Rally Studio en funcionamiento](assets/gif/funcionamiento.gif)
-
-*GIF real: pantallas del dashboard — pautado, resumen, arquitectura y flujo de despacho de las IAs.*
-
-</div>
-
-<div align="center">
-
-![Pantalla de pautado](dash-pautado.png)
-
-*Figura 1: Pautado — las cinco secciones del documento técnico con sus límites de caracteres y el cronómetro del certamen.*
-
-</div>
-
-<div align="center">
-
-![Resumen de etapas](dash-resumen.png)
-
-*Figura 2: Resumen — qué etapa está completa, qué falta y quién se encarga de cada parte.*
-
-</div>
-
-<div align="center">
-
-![Flujo de despacho multi-IA](docs/img/05-flujo.png)
-
-*Figura 3: Cómo te asisten las IAs — sugerencias en pantalla que aceptas o descartas con un botón; nada se sobrescribe sin tu permiso.*
-
-</div>
-
----
-
-## Cómo funciona: las 13 etapas, paso a paso
-
-```
-[00 Certamen] ──> [01 Equipo] ──> [02 Retos] ──> [03 Solución] ──> [04 Impacto/ODS]
-                                                                           │
-[09 Canvas]   <── [08 Recursos]<── [07 Budget] <── [06 Pautado] <── [05 Multi-IA]
-     │
-     └──> [10 Guion 120s] ──> [11 Web Demo] ──> [12 Checklist Final] ──> ¡A tiempo!
-```
-
-En cada etapa el sistema hace tres cosas: **pregunta lo que falte**, **propone** (marcado como propuesta) y **verifica** contra la rúbrica del certamen activo. Nunca avanza inventando datos.
-
----
-
-## El cerebro: mapa de conocimiento de ganadores y rúbricas
-
-<div align="center">
-
-![Mapa de Conocimiento](graphify_knowledge_graph.png)
-
-*Figura 4: Grafo del conocimiento — proyectos premiados de años anteriores, rúbricas de evaluación, antecedentes de solución y comunidades detectadas (294 nodos, 272 aristas, 34 comunidades). Puedes abrir el visualizador interactivo en `graphify-out/graph.html`.*
-
-</div>
-
-En lugar de carpetas con documentos sueltos que nadie lee a medianoche:
-- Revisa cómo resolvieron problemas técnicos otros equipos universitarios en ediciones anteriores.
-- Cada estadística citable vive en `research/claims.json` con fuente, año y URL.
-- Si un dato no está en el corpus, el sistema lo dice y te pregunta; no se inventa nada.
-
----
-
-## Los 17 asistentes (el dream team del desvelo)
-
-Cada asistente tiene un trabajo puntual para que tu equipo se reparta la carga. Todos incluyen ahora bloques de **prompts para otra IA**, **nombrado de proyecto**, **enseñanza visual**, **guion con pronunciación**, **modelos 3D** y **elementos gráficos**.
-
-| Asistente | Nombre de Guerra | Qué hace por ti |
-|---|---|---|
-| `guiar-usuario` | **Tu Última Neurona** | Te acompaña paso a paso por las 13 etapas para que no te pierdas a las 4 AM. |
-| `orquestador` | **El Admin del Grupo** | Reparte las tareas y cuida que tu computadora no se pegue con procesos pesados. |
-| `sharktank` | **El Destructor de Sueños** | Analiza tu idea con total sinceridad: busca si ya existe en otro país o qué fallas tiene antes de que pierdas 10 horas. |
-| `auditar-entregable` | **La Tóxica que Revisa el Chat** | Busca cualquier contradicción en los números del documento o límites de palabras y te avisa a tiempo. |
-| `presupuesto` | **Don Cangrejo (El Palmado)** | Cotiza componentes reales con proveedores y enlaces para que el jurado verifique los precios. |
-| `modelo-3d-blender` | **El Quemador de Tostadas** | Arma el modelo 3D y las imágenes para el video basándose en la lista de materiales. |
-| `dossier-soluciones` | **Labia Interna** | Estructura propuestas lógicas y creíbles (problema, causa, idea y cómo medirla). |
-| `proponer-retos` | **La Ruleta Rusa** | Lee los retos que publica el comité y ayuda al grupo a descartar los más complicados. |
-| `ingestar-investigacion`| **La Chismosa del Barrio** | Procesa PDF/DOCX/MD externos y los alinea a la rúbrica. |
-| `contexto-rally` | **San Google de los Ganadores** | Recuerda las reglas oficiales y ejemplos ganadores anteriores para no inventar ruedas cuadradas. |
-| `publicar-sitio` | **El del Ciber del Barrio** | Te ayuda a subir la web demo a GitHub Pages o Netlify. |
-| `servir-a-ventana` | **PedidosYa** | Te muestra las sugerencias en pantalla para que solo tengas que darle a "Aceptar" o "Descartar". |
-| `sugerir-por-fase` | **Café Presto con Ansiedad** | Te recuerda cuánto tiempo queda en el reloj para que no dejes todo a última hora. |
-| `propuesta-identidad` | **El Diseñador de Carretera Masaya** | Te ayuda a elegir colores y letras que se vean limpias y fáciles de leer. |
-| `control-tiempo-entrega` | **—** | Cronómetro, congelamiento de assets al 75 % y checklist SIRLI. |
-| `guion-pas-v` | **—** | Guion de 4 actos en ≤120 s, con cifras coherentes al presupuesto y los claims. |
-| `storyboard` | **El Jefe de Rodaje** | Convierte el guion en tomas con contrato, dueño y criterio de rúbrica; busca referencias reales y entrega un tablero visual con sonido y transiciones. |
-
----
-
-## Pruebas y validación (verificables)
-
-El sistema incluye un arsenal de pruebas de humo que corren sin GPU ni red. Resultado real de `python smoke.py`:
-
-```
-SMOKE -- arsenal de Rally Studio
-
-  [PASA] ffmpeg localizado        ...\imageio_ffmpeg\binaries\ffmpeg-win-x86_64-v7.1.exe
-  [PASA] medicion de duracion     1.00 s via ffmpeg
-  [PASA] caracteres por campo     marcadores y exceso detectados
-  [PASA] coherencia de cifras     2 discrepancias, miles normalizados
-  [PASA] registro arsenal         arsenal.lock.yaml legible
-  [PASA] brief                    brief.json legible (vacio es valido: el cerebro espera)
-
-  6/6 pruebas pasan.
-```
-
-Antes de entregar a SIRLI se ejecuta `python arsenal.py check-todo`, que verifica:
-- Duración del video ≤ 120 segundos.
-- Coherencia de cifras entre guion, pautado y presupuesto.
-- Límites de caracteres por campo del pautado.
-
-> **Transparencia:** este es un proyecto independiente de un estudiante universitario basado en su experiencia en competencia. No es una herramienta oficial de ninguna universidad, comité organizador ni institución.
-
----
-
-## ¿En qué certamen vas a competir?
-
-| Certamen | Tiempo | Moneda | Enfoque Principal |
-|---|:---:|:---:|---|
-| **Rally Latinoamericano** | **28 h** | **Dólares (USD)** | Solución replicable en varios países de la región, técnica clara y modelo sostenible. |
-| **Rally Nacional (Nicaragua Innova)** | **24 h** | **Córdobas (C$)** | Aplicado a un municipio real de Nicaragua, conectado con el Plan Nacional de Lucha contra la Pobreza y ODS relevantes. |
-
----
-
-## Lo que entregas al final (checklist SIRLI)
-
-- [ ] `brief.json` completo y validado
-- [ ] `docs/pautado_draft.docx` — caracteres dentro del límite
-- [ ] `budget/budget.xlsx` — rango $4,000–$6,000 USD con URLs de respaldo
-- [ ] `docs/canvas.md` — coherente con el presupuesto
-- [ ] `script/script.md` — guion 4 actos (PAS-V) ≤ 120 s
-- [ ] `assets/voice/narration.mp4` — locución MP4 (AAC) ≤ 120 s
-- [ ] Video final en YouTube (URL en `brief.json` → `video_url`)
-- [ ] Web demo publicada (URL en `brief.json` → `site_url`)
-
----
-
-## Llevar el contenido a otra IA (prompts listos)
-
-Cada skill trae un bloque "Generación de prompts para llevar el contenido a otra IA" con rol, contexto, entrada, tarea, restricciones, formato de salida JSON e idioma español. Listo para copiar y pegar en OpenAI, Claude, Gemini, OpenCode o Antigravity.
-
-Ejemplo rápido (guion a otra IA):
-
-```
-Rol: guionista de pitch de innovación, especialista en locución y pronunciación en español.
-Contexto: Rally de innovación, certamen latam (28 h), acto 3, duración objetivo 40 s.
-Entrada: script/script.md, budget/budget.json, research/claims.json.
-Tarea: Escribir el acto 3 (Solución) del guion PAS-V, cuidando pronunciación, orden de palabras y flujo de ideas.
-Restricciones: ≤ 120 s de audio; números coinciden con budget/budget.json; cada dato de research/claims.json; sin emojis; cierre: "piloto en [ciudad], replicable en toda América Latina".
-Formato de salida: JSON con claves acto, nombre, duracion_s, texto, palabras_estimadas, wpm, numeros_coherentes, claims_usados, cierre_certamen.
-Idioma: español.
-```
-
----
-
-## Sugerir un título o nombre de proyecto o producto
-
-Sigue los patrones reales del banco SIRLI (`research/sirli/winners.jsonl`):
-
-- **Inventado:** NEXORA, KINETIX
-- **Objeto:** AVOCADO, LUMBRE
-- **Compuesto:** NEXO-SOSTENIBLE
-- **Territorio + número:** ALTIPLANO 360
-- **Sufijo técnico:** BIOINNOVATECH
-- **Juego:** DESUCHO, ERROR 404
-
-Reglas:
-- Nunca repites el nombre del proyecto más de una vez por sección.
-- No hardcodees el nombre en scripts; léelo siempre de `brief.json`.
-- El nombre debe entenderse fuera del país (Latam) o tener arraigo cultural (Nacional).
-- El nombre no va en los primeros 20 s del video.
-
----
-
-## Enseñar visualmente y elementos gráficos
-
-- Una sola distancia focal por secuencia con rótulos; mide rótulos en pantalla (margen ≥6 %).
-- Contraste garantizado: texto claro sobre placa oscura, rótulos siempre con flecha.
-- Thumbnail y portada: sin figuras básicas (cuadrados, círculos, triángulos); foto real de la problemática; sin texto/logos/marcas de agua en la imagen; PNG 2048×2048 fondo transparente.
-- Sin emojis, sin morado (#7c3aed), sin cards genéricas, sin glassmorphism, fuentes solo de `brand/tokens.css`.
-- Assets nombrados: `asset_<shotlist_id>_<descripcion>.<ext>`.
-
----
-
-## Redactar guiones cuidando la pronunciación y el orden de palabras
-
-- Escribe para ser escuchado: sujeto-verbo-objeto, oraciones cortas, acentos reales en español.
-- Pausa o transición por cada cambio de idea.
-- Máximo 240-270 palabras (≈130-140 WPM) para ≤ 120 s de audio.
-- Números dichos completos; coherencia con `budget/budget.json`; datos de `research/claims.json`.
-- Cierre según certamen: Nacional → municipio + Plan Nacional/ODS; Latam → "piloto en [ciudad], replicable en toda América Latina".
-
----
-
-## Storyboard: qué se ve, qué se oye y qué se corta en cada segundo
-
-La skill `storyboard` traduce el guion a **tomas con contrato** (`shots/<id>.yaml`) y las compila a `script/shotlist.csv`. Cada toma declara tiempo, dueño, criterio de rúbrica y las tres decisiones que se olvidan: **qué buscar** (referencia real con URL y minuto), **qué crear** (orden al especialista) y **qué se oye** (música, sonido del objeto, silencio, transición).
-
-Piezas que trae:
-
-| Archivo | Para qué |
-|---|---|
-| `skills/storyboard/SKILL.md` | Procedimiento completo: reparto 17/33/29/21, 3D como tronco del Acto II, referencias reales (video del territorio, noticia, documental, foro), selección de música por tono y lugar, cobertura de rúbrica contada desde el CSV |
-| `skills/storyboard/gen_storyboard_visual.py` | Genera el tablero imprimible: hoja de contactos, una fila por toma, pista de sonido por acto |
+Abre `http://localhost:8000/dashboard/`. La llave de acceso de la primera vez está en `dashboard/data/acceso.txt`; después se reparten invitaciones desde `admin.html`. Todo corre en tu máquina: sin cuenta, sin nube obligatoria.
 
 ```powershell
-python scripts/build_shotlist.py
-python skills/guion-storyboard/gen_teleprompter.py   # entregable de rodaje (tomas + teleprompter)
-python tools/exportar_pdf.py                          # la misma hoja en papel
+python smoke.py        # 6/6: ffmpeg, duración, caracteres, cifras, arsenal, brief
+python arsenal.py check-todo   # antes de subir a SIRLI
 ```
 
-El ejemplo con proyecto ficticio que antes vivía en `plantillas/storyboard_ejemplo/` se retiró:
-el modo demo de `gen_teleprompter.py --demo` hace ese trabajo sin guardar 15 MB de material ajeno.
+---
 
-Reglas que no se negocian: cero nombres de proyecto en los primeros 20 s, tres cifras de dinero máximo en el Acto III (cada una con base), una sola transición llamativa por acto y la cifra clave sin música.
+## Dos certámenes, un mismo motor
+
+| | Rally Latam · 28 h | Rally Nacional · 24 h |
+|---|---|---|
+| **Qué cambia** | Laboratorio piloto replicable en toda América Latina | Municipio real, eje del Plan Nacional 2022–2026 |
+| **Presupuesto** | USD, sin tasas locales | Córdobas con tasa del BCN declarada |
+| **Cierre del video** | "piloto en [ciudad], replicable en la región" | ODS animados con la paleta del proyecto |
 
 ---
 
-## Crear modelos 3D (Blender)
+## Más adentro
 
-La skill `modelo-3d-blender` genera modelos o renders 3D con Blender para el video, con ficha técnica previa justificada por la rúbrica. Resumen:
+- [`DESIGN.md`](DESIGN.md) — el sistema visual (cardless, navy + cobalt, cero emojis).
+- [`PRODUCT.md`](PRODUCT.md) — qué es, para quién y qué no hace.
+- [`docs/INSTALACION_AGENTE.md`](docs/INSTALACION_AGENTE.md) — skills, MCPs y el setup completo.
+- [`docs/MOTOR_SOLUCIONES.md`](docs/MOTOR_SOLUCIONES.md) — de reto a solución con precedentes.
+- [`docs/CAJA_HERRAMIENTAS.md`](docs/CAJA_HERRAMIENTAS.md) — instalar solo lo que la tarea pide.
+- [`knowledge/INDICE.md`](knowledge/INDICE.md) — el mapa del corpus.
 
-1. **Confirma la toma** en `script/shotlist.csv` (rubric_item, calidad, duración).
-2. **Compila contratos:** `python scripts/build_shotlist.py` sin errores.
-3. **Busca antes de modelar:** modelos CC0 o del proyecto; solo modela lo que no existe.
-4. **Escribe la ficha** `blender/ficha_<shot_id>.md` y hazla aprobar antes de reservar GPU.
-5. **Toma el guardia:** `python scripts/gpu_lock.py run --owner modeler_<pieza> --priority media -- <comando>`.
-6. **pre_render_check:** `python scripts/pre_render_check.py <shot_id>` debe salir 0.
-7. **Modela con script reproducible**, no a mano. Dimensiones desde `budget/bom.csv`.
-8. **Renderiza en el tier de la toma:** draft EEVEE 50 % ≤5 min; EEVEE 100 % ≤20 min; Cycles solo pasado ~75 % del tiempo.
-9. **Bucle de crítica (máx. 2 vueltas):** corrige lo que no se lee en cámara.
-10. **Entrega:** `dashboard/assets/` como `asset_<shotlist_id>_<descripcion>.<ext>` y anota minutos en `blender/horas_3d.csv`.
-
----
-
-## Instalación rápida
-
-1. Python 3.10+: `pip install -r requirements.txt`
-2. Inicia: `.\iniciar_rally.ps1` (o doble clic en `Iniciar Rally.bat`)
-3. Abre: `http://localhost:8000/dashboard/`
-
-Funciona sin internet: guarda todo en tu navegador y en tu computadora; comparte en red local con `python scripts/crear_proyecto.py` y respalda en USB con un archivo `.json`.
-
----
-
-¿Listo para empezar? Ejecuta `.\iniciar_rally.ps1` y abre el dashboard. Si algo falla, corre `python smoke.py` para verificar que las piezas críticas funcionan en tu máquina.
+<div align="center"><sub>Rally Studio · se construyó durante un rally, para no volver a improvisar uno.</sub></div>

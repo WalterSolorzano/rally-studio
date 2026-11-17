@@ -17,8 +17,9 @@
   var SEEN_KEY = "rally_content_seen";
   var DOCK_ID = "rally-content-dock";
 
-  // Pestañas cuyo contenido va a un campo concreto del estado. Las que no
-  // están aquí (canvas, timeline) todavía no tienen destino: no se aceptan.
+  // Pestañas cuyo contenido va a un campo concreto del estado. `canvas` se
+  // trata aparte porque escribe dentro de `model_canvas` (un objeto de 9
+  // cuadrantes), no un campo plano.
   var CAMPOS_POR_TAB = {
     certamen: ["rally_type", "category", "hours_total"],
     team: ["team_name", "university", "city", "project_name", "team_logo_img"],
@@ -27,7 +28,22 @@
     impact: ["ods_ids", "national_plan_axis"],
     multi_ai: ["tasks"],
     resources: ["team_logo_img"],
+    canvas: [],
     webdemo: ["site_url"]
+  };
+
+  // Nombres legibles: el dock no debe hablarle al usuario en jerga interna.
+  var ETIQUETA_TAB = {
+    certamen: "Certamen", team: "Equipo", challenges: "Reto", solution: "Solución",
+    impact: "Impacto", multi_ai: "Despacho", pautado: "Documento pautado",
+    budget: "Presupuesto", resources: "Recursos", canvas: "Canvas",
+    script: "Guion", webdemo: "Prototipo", timeline: "Entrega", resumen: "Resumen"
+  };
+  var ETIQUETA_SLOT = {
+    problema: "Problema", solucion: "Solución", impacto: "Impacto",
+    innovacion: "Innovación", prefactibilidad: "Prefactibilidad",
+    acto1: "Acto 1", acto2: "Acto 2", acto3: "Acto 3", acto4: "Acto 4",
+    costos: "Costos", main: ""
   };
 
   var SUBIR_MS = 800;
@@ -258,6 +274,24 @@
       st.avisos.unshift(aviso);
       st.avisos = st.avisos.slice(0, 20);
       cambio = true;
+    } else if (tab === "canvas") {
+      // La IA devuelve los cuadrantes ya redactados para el reto elegido:
+      // { cells: { socios: "...", propuesta: "...", ... } } o model_canvas.
+      var cellsIn = (payload && (payload.cells || payload.model_canvas)) || null;
+      if (cellsIn && typeof cellsIn === "object") {
+        var keysCanvas = ["socios", "actividades", "propuesta", "relaciones", "segmentos", "recursos", "canales", "costes", "ingresos"];
+        var nextCanvas = Object.assign({}, st.model_canvas || {});
+        var tocado = false;
+        for (var kc = 0; kc < keysCanvas.length; kc++) {
+          var cellKey = keysCanvas[kc];
+          var valCell = cellsIn[cellKey];
+          if (typeof valCell === "string" && valCell.trim()) {
+            nextCanvas[cellKey] = valCell.trim();
+            tocado = true;
+          }
+        }
+        if (tocado) { st.model_canvas = nextCanvas; cambio = true; }
+      }
     } else if (CAMPOS_POR_TAB[tab] && payload && typeof payload === "object") {
       var campos = CAMPOS_POR_TAB[tab];
       for (var i = 0; i < campos.length; i++) {
@@ -314,32 +348,90 @@
       document.body.appendChild(dock);
     }
     inyectarEstilos();
+    asegurarCabecera();
     return dock;
+  }
+
+  // El buzón arranca cerrado: es un aviso, no un panel que tape la pantalla.
+  function asegurarCabecera() {
+    if (!dock || dock.querySelector(".dock-head")) return;
+    var head = document.createElement("button");
+    head.type = "button";
+    head.className = "dock-head";
+    head.addEventListener("click", function () {
+      dock.classList.toggle("is-open");
+      actualizarCabecera();
+    });
+    dock.insertBefore(head, dock.firstChild);
+    actualizarCabecera();
+  }
+
+  function actualizarCabecera() {
+    if (!dock) return;
+    var head = dock.querySelector(".dock-head");
+    if (!head) return;
+    var n = dock.querySelectorAll(".rally-content-card").length;
+    var abierto = dock.classList.contains("is-open");
+    head.innerHTML = "";
+    var txt = document.createElement("span");
+    txt.className = "dock-head-txt";
+    txt.textContent = n === 0 ? "Buzón vacío" : n === 1 ? "1 propuesta" : n + " propuestas";
+    head.appendChild(txt);
+    var caret = document.createElement("span");
+    caret.className = "dock-head-caret";
+    caret.textContent = abierto ? "▾" : "▴";
+    head.appendChild(caret);
+    head.style.display = n === 0 ? "none" : "";
   }
 
   function inyectarEstilos() {
     if (document.getElementById(DOCK_ID + "-styles")) return;
     var css =
       "#" + DOCK_ID + "{position:fixed;right:18px;bottom:18px;z-index:2147483000;" +
-      "display:flex;flex-direction:column;gap:10px;max-width:360px;" +
-      "font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}" +
+      "display:flex;flex-direction:column;gap:8px;width:352px;max-width:calc(100vw - 36px);" +
+      "max-height:calc(100vh - 140px);overflow-y:auto;overscroll-behavior:contain;" +
+      "pointer-events:none;" +
+      "font-family:var(--font-ui,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif)}" +
       "#" + DOCK_ID + ":empty{display:none}" +
-      "#" + DOCK_ID + " .rally-content-card{background:#ffffff;border:1px solid #d7dced;" +
-      "border-left:3px solid #1d45b9;border-radius:6px;padding:12px 14px;" +
-      "box-shadow:0 8px 24px rgba(16,24,40,.18);color:#111827}" +
+      "#" + DOCK_ID + " .rally-content-card{pointer-events:auto;background:var(--bg-surface,#fff);border:1px solid var(--border-light,#d7dced);" +
+      "border-left:2px solid var(--color-primary,#0866F5);border-radius:8px;padding:12px 14px;" +
+      "box-shadow:0 4px 12px rgba(13,27,53,.10);color:var(--text-main,#111827)}" +
       "#" + DOCK_ID + " .rcc-head{display:flex;align-items:baseline;gap:8px;justify-content:space-between}" +
       "#" + DOCK_ID + " .rcc-title{font-size:13px;font-weight:700;line-height:1.3}" +
-      "#" + DOCK_ID + " .rcc-badge{font-size:9px;letter-spacing:.08em;text-transform:uppercase;" +
-      "background:#fde68a;color:#7c4a03;border-radius:3px;padding:2px 5px;white-space:nowrap}" +
-      "#" + DOCK_ID + " .rcc-meta{font-size:11px;color:#5b6478;margin-top:4px;line-height:1.35}" +
-      "#" + DOCK_ID + " .rcc-status{font-size:10px;color:#5b6478;background:#f6f7fb;" +
-      "border:1px dashed #c7cede;border-radius:4px;padding:6px 8px;text-align:center}" +
-      "#" + DOCK_ID + " .rcc-note{font-size:10px;color:#7c4a03;margin-top:8px}" +
+      "#" + DOCK_ID + " .rcc-meta{font-size:11px;color:var(--text-muted,#5b6478);margin-top:4px;line-height:1.35}" +
+      "#" + DOCK_ID + " .rcc-status{font-size:11px;color:var(--text-muted,#5b6478);background:var(--bg-subtle,#f6f7fb);" +
+      "border:1px solid var(--border-light,#DCE7F5);border-radius:4px;padding:6px 8px;text-align:center}" +
+      "#" + DOCK_ID + " .rcc-note{font-size:11px;color:var(--text-muted,#7c4a03);margin-top:8px}" +
       "#" + DOCK_ID + " .rcc-actions{display:flex;gap:8px;margin-top:10px}" +
-      "#" + DOCK_ID + " button{font:inherit;font-size:11px;font-weight:600;cursor:pointer;" +
-      "border-radius:4px;padding:5px 10px;border:1px solid #c7cede;background:#f6f7fb;color:#1f2937}" +
-      "#" + DOCK_ID + " button[data-action='apply']{background:#1d45b9;border-color:#1d45b9;color:#fff}" +
-      "#" + DOCK_ID + " button[disabled]{opacity:.55;cursor:default}";
+      "#" + DOCK_ID + " button{font:inherit;font-size:11.5px;font-weight:600;cursor:pointer;" +
+      "border-radius:6px;padding:6px 12px;border:1px solid var(--border-strong,#c7cede);" +
+      "background:var(--bg-surface,#fff);color:var(--text-body,#1f2937)}" +
+      "#" + DOCK_ID + " button[data-action='apply']{background:var(--color-primary,#0866F5);" +
+      "border-color:var(--color-primary,#0866F5);color:#fff}" +
+      "#" + DOCK_ID + " button[disabled]{opacity:.55;cursor:default}" +
+      "#" + DOCK_ID + " .dock-head{pointer-events:auto;display:flex;align-items:center;justify-content:space-between;" +
+      "gap:10px;padding:7px 12px;border:1px solid var(--border-strong,#DCE7F5);border-radius:999px;" +
+      "background:var(--bg-surface,#fff);box-shadow:0 2px 10px rgba(13,27,53,.12);font:inherit;font-size:12px;" +
+      "font-weight:700;color:var(--text-title,#13213A);cursor:pointer;align-self:flex-end;width:100%}" +
+      "#" + DOCK_ID + " .dock-head-caret{font-size:10px;color:var(--text-muted,#5C7193)}" +
+      "#" + DOCK_ID + ":not(.is-open){width:auto;max-width:min(240px,calc(100vw - 36px));background:none;overflow:visible}" +
+      "#" + DOCK_ID + ":not(.is-open) .rally-content-card{display:none}" +
+      "#" + DOCK_ID + " .rally-content-card{cursor:pointer}" +
+      "#" + DOCK_ID + " .rally-content-card.is-collapsed{padding:9px 12px}" +
+      "#" + DOCK_ID + " .rally-content-card.is-collapsed .rcc-meta," +
+      "#" + DOCK_ID + " .rally-content-card.is-collapsed .rcc-actions," +
+      "#" + DOCK_ID + " .rally-content-card.is-collapsed .rcc-note{display:none}" +
+      "#" + DOCK_ID + " .rally-content-card.is-collapsed .rcc-title{" +
+      "white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12px;font-weight:600}" +
+      "@media (min-width:1100px){" +
+      "#" + DOCK_ID + "{right:calc(300px + 18px)}" +
+      "body.panel-collapsed #" + DOCK_ID + "{right:18px}" +
+      "}" +
+      "@media (max-width:768px){" +
+      "#" + DOCK_ID + "{left:10px;right:10px;bottom:calc(66px + env(safe-area-inset-bottom));width:auto;" +
+      "max-width:none;max-height:42vh}" +
+      "#" + DOCK_ID + " .rally-content-card{padding:10px 12px}" +
+      "}";
 
     var style = document.createElement("style");
     style.id = DOCK_ID + "-styles";
@@ -363,22 +455,16 @@
 
     var title = document.createElement("span");
     title.className = "rcc-title";
-    title.textContent = item.title || "Propuesta";
+    // El título que llega trae el archivo de origen pegado ("… desde pautado_latam_ref").
+    title.textContent = String(item.title || "Propuesta").replace(/\s+desde\s+[^\s]+$/i, "");
     head.appendChild(title);
-
-    if (item.simulated) {
-      var badge = document.createElement("span");
-      badge.className = "rcc-badge";
-      badge.textContent = "Simulado";
-      head.appendChild(badge);
-    }
 
     var meta = document.createElement("div");
     meta.className = "rcc-meta";
-    var partes = [item.tab, item.slot, item.source].filter(function (p) {
+    var donde = [ETIQUETA_TAB[item.tab] || item.tab, ETIQUETA_SLOT[item.slot] || ""].filter(function (p) {
       return p;
-    });
-    meta.textContent = partes.join(" · ");
+    }).join(" · ");
+    meta.textContent = donde;
 
     var actions = document.createElement("div");
     actions.className = "rcc-actions";
@@ -408,7 +494,21 @@
       nota.textContent = "Esta pestaña todavía no tiene un campo donde mostrarla.";
       card.appendChild(nota);
     }
+
+    // Solo la propuesta más reciente se abre; el resto queda en una línea.
+    card.addEventListener("click", function (ev) {
+      if (ev.target.closest("button")) return;
+      card.classList.toggle("is-collapsed");
+    });
     return card;
+  }
+
+  function plegarDock(cont) {
+    var cards = cont.querySelectorAll(".rally-content-card");
+    for (var i = 0; i < cards.length; i++) {
+      if (i === cards.length - 1) cards[i].classList.remove("is-collapsed");
+      else cards[i].classList.add("is-collapsed");
+    }
   }
 
   function actualizarSalud() {
@@ -431,6 +531,7 @@
     delete rendered[id];
     var nodo = dock && dock.querySelector("[data-proposal-id='" + id + "']");
     if (nodo && nodo.parentNode) nodo.parentNode.removeChild(nodo);
+    actualizarCabecera();
   }
 
   function render(items) {
@@ -472,6 +573,9 @@
     for (var id in rendered) {
       if (!vivos[id]) quitarTarjeta(id);
     }
+
+    plegarDock(cont);
+    actualizarCabecera();
   }
 
   // -- acciones ---------------------------------------------------------

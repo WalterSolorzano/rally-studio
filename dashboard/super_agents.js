@@ -436,16 +436,32 @@
   // Un solo análisis activo: abrir/cerrar el panel o lanzar otro corta el poll
   // (sin jobs huérfanos ni resultado de un run viejo pisando el panel nuevo).
   let activeRun = null;
+  // Un solo contador: si hay cualquier análisis vivo, la mascota construye.
+  let agentBusy = 0;
+  function setAgentBusy(delta) {
+    agentBusy = Math.max(0, agentBusy + delta);
+    if (typeof window !== "undefined" && window.rsAgentActivity) {
+      window.rsAgentActivity(agentBusy > 0, "Redactando la propuesta\u2026");
+    }
+  }
   MOD.cancelAnalysis = function cancelAnalysis() {
     if (activeRun) { activeRun.cancelled = true; activeRun = null; }
+    agentBusy = 0; if (typeof window !== "undefined" && window.rsAgentActivity) window.rsAgentActivity(false);
   };
 
   // analyze(promptText, onProgress?) → Promise<{ok:true,text,provider} | {ok:false,status,message}>
   MOD.analyze = function analyze(promptText, onProgress) {
     MOD.cancelAnalysis();
-    const run = { cancelled: false };
+    const run = { cancelled: false, settled: false };
+    setAgentBusy(1);
     activeRun = run;
-    return new Promise(function (resolve) {
+    return new Promise(function (resolveRaw) {
+      const resolve = function (v) {
+        if (run.settled) return;
+        run.settled = true;
+        setAgentBusy(-1);
+        resolveRaw(v);
+      };
       let p = typeof onProgress === "function" ? onProgress : function () {};
       fetchWithTimeout(AI_BASE, {
         method: "POST",
@@ -532,10 +548,16 @@
   MOD.DOC_MAX = DOC_MAX;
 
   // extractDoc(file, onStage) → {text, source:"pdf"|"docx"|"ocr", pages, truncated}
-  // Solo navegador: requiere FileReader / pdf.js / mammoth / tesseract.js (ya cargadas).
+  // Solo navegador: FileReader + pdf.js / mammoth / tesseract.js, cargadas bajo demanda.
   MOD.extractDoc = function extractDoc(file, onStage) {
     const stage = (typeof onStage === "function") ? onStage : function () {};
-    return new Promise(function (resolve, reject) {
+    // Las librerías (pdf.js, mammoth, tesseract) se piden al importar, no al
+    // abrir el workbench: aquí se esperan antes de leer el archivo.
+    const necesita = (file && file.name && /\.pdf$/i.test(file.name)) ? ["pdf", "ocr"] : ["docx"];
+    const listo = (typeof window !== "undefined" && window.ensureIngestLibs)
+      ? window.ensureIngestLibs(necesita)
+      : Promise.resolve(true);
+    return Promise.resolve(listo).then(function () { return new Promise(function (resolve, reject) {
       if (!file || !file.name) { reject(new Error("no se reconoció el archivo")); return; }
       const ext = (file.name.split(".").pop() || "").toLowerCase();
       const reader = new FileReader();
@@ -636,7 +658,7 @@
       }
 
       reject(new Error("formato no soportado (" + (ext || "desconocido") + "). Sube PDF, DOCX, TXT o MD."));
-    });
+    }); });
   };
 
   globalThis.RSA = MOD;
@@ -792,14 +814,12 @@
       b.addEventListener("click", openMenu);
       return b;
     }
+    // El menú de herramientas vive dentro del menú de proyecto (un solo ⋯ en
+    // la barra). Antes se inyectaba un segundo botón con llave inglesa y la
+    // barra quedaba con dos menús distintos pegados al logo.
     function ensureSquare() {
-      const topbar = document.getElementById("topbar");
-      if (!topbar) return;
-      if (document.getElementById("rsa-tools-btn")) return;
-      // #topbar es flex space-between con 2 hijos: agregarlo como 3er hijo lo
-      // deja flotando al centro. Va dentro del bloque de acciones de la derecha.
-      const host = topbar.querySelector(".topbar-actions") || topbar;
-      host.appendChild(makeSquare());
+      const legacy = document.getElementById("rsa-tools-btn");
+      if (legacy && legacy.parentNode) legacy.parentNode.removeChild(legacy);
     }
     // El topbar lo pinta app.js: observa hasta que exista y sigue vivo por si
     // la carcasa lo re-renderiza (re-append idempotente por id).

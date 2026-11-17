@@ -193,6 +193,17 @@
     if (!statusEl) return;
     statusEl.textContent = text;
     statusEl.dataset.mood = mood || "idle";
+    // "Todo sincronizado" es la situación normal: se confirma y desaparece.
+    // Solo se queda en pantalla cuando hay algo que el equipo debe atender.
+    if (mood === "ok") {
+      statusEl.hidden = false;
+      clearTimeout(statusEl._hideTimer);
+      statusEl._hideTimer = setTimeout(function () {
+        statusEl.hidden = true;
+      }, 2600);
+      return;
+    }
+    clearTimeout(statusEl._hideTimer);
     statusEl.hidden = false;
   }
 

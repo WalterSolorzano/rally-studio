@@ -65,6 +65,34 @@ python scripts/publish_site.py
    - Si no hay credenciales listas, no pidas tokens: explica los dos caminos en 4 líneas y deja el `site/` listo para que el usuario publique desde su cuenta.
    - Escribe la URL resultante en `brief.json` (`site_url`) y sirve el enlace al checklist (`--tab timeline --slot main`).
 
+## Capturas de la página para el video y el README
+
+Publicar la URL no termina el trabajo: el sitio se juzga por la captura que va al video
+o al README. Reglas obligatorias (detalle y receta en `skills/_comun/capturas.md`):
+
+1. **Limpiar antes de disparar**: fuera barra de sync, toasts, banners de demo,
+   scrollbars y bloques de configuración inicial. Lo escrito en runtime se oculta por
+   contenido con JS, no con CSS, y se verifica sobre el PNG.
+2. **Siempre dentro de un marco**: navegador con barra de URL para escritorio, bisel de
+   teléfono con notch para móvil (`is_mobile`, `has_touch`, UA de iPhone).
+3. **El texto vive fuera de la imagen**: títulos y pies de foto van en el README o en el
+   video; dentro solo el texto que ya es UI.
+4. **Nada de capturas sueltas ni GIF con fundido cruzado**: entre pantallas se desplaza
+   la imagen, no se mezcla (el crossfade deja texto fantasma).
+5. **Una sola carpeta de salida** por pieza; el generador de GIF y el pie del README leen
+   de ahí.
+6. Verificar con el ojo el PNG final: truncados, solapes, imágenes sin cargar.
+
+Receta:
+
+```python
+page.add_style_tag(content=CLEAN_CSS)   # oculta sync, scrollbars, setup
+page.evaluate(CLEAN_JS)                 # oculta por texto lo escrito en runtime
+page.screenshot(path="assets/readme/app_escritorio.png")
+```
+
+Escritorio 1440×900 @2×; móvil 390×844 @3×.
+
 ## Reglas
 
 - Nunca publiques credenciales, `.env`, `scripts/freellmapi.key` ni el buzón de propuestas.
@@ -118,3 +146,4 @@ Compartido: `skills/_comun/elementos-graficos.md`. Léelo antes de aplicar esta 
 - Script: `scripts/publish_site.py`.
 - Workflow de Pages: `.github/workflows/pages.yml`.
 - Guía manual: `docs/INSTALACION_Y_DESPLIEGUE.md`, sección 8.
+- Capturas para video y README: `skills/_comun/capturas.md`.

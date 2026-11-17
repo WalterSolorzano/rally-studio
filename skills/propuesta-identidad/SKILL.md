@@ -169,6 +169,33 @@ no solo en la activa:
 - **Titular centrado verticalmente** entre la cabecera y la banda de firma, no pegado arriba.
 - **Sin figuras básicas** (círculos, discos, triángulos) como decoración de portada.
 
+## Rostros e iconos de asistente
+
+Cuando una pieza lleva caras (avatares de asistentes, mascotas, iconos con carácter):
+
+- **La cara se deriva del dibujo, no se pone a ojo.** Ojos y boca se calculan desde el
+  radio del objeto (`er = r*0.135`, `ex = r*0.42`, boca `mw = r*0.42`). Coordenadas
+  sueltas terminan con ojos flotando fuera de la figura o encima de un trazo.
+- **Placa blanca detrás de la cara** antes de dibujar ojos y boca: ningún trazo del
+  objeto puede cruzar el rostro.
+- **Ojos chicos y asimétricos** (uno ~20% mayor). Ojos gigantes con brillo se leen como
+  dibujo animado infantil, no como humor. La gracia va en lo que hace el objeto, no en
+  la cara: cara muerta, situación absurda.
+- Ceja solo si cambia el significado (duda, sospecha), nunca como adorno.
+- Verificar sobre una hoja de contactos renderizada, no sobre el código: un `<rect>` o
+  `<path>` sin `fill` sale **negro** en Chromium, y un `fill` duplicado invalida el SVG
+  entero y lo deja en blanco.
+
+## Banderas de país
+
+Los emoji de bandera **no existen en Chromium sobre Windows**: salen las dos letras del
+código de país. Nunca uses emoji para un dato.
+
+- Dibuja la bandera como SVG de franjas (`<rect>` horizontales o verticales) y, cuando
+  aplique, el cantón y el emblema simplificado (sol, rombo, escudo).
+- Tamaño mínimo legible: 24×17 px. Va acompañada del número o del nombre, nunca sola.
+- Si el país no tiene bandera dibujada, usa el nombre; no inventes una bandera genérica.
+
 
 ## Prueba antes de entregar
 

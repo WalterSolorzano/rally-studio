@@ -52,7 +52,7 @@ activan o se usan, no se instalan.
 | `geonodes` | variantes paramétricas | discurso modular/replicable |
 | `mpfb2` | personas en escena | figuras humanas libres, licencia limpia |
 | `rigify` | animar personaje | rig incluido en Blender |
-| `gltf-export` | asset para la web demo | un modelo sirve para render y web |
+| `gltf-export` | asset para la web demo | un modelo sirve para render y web; flujo GLB → visor three.js → captura en `SKILL.md` → "Del render a la web" |
 | `blender-mcp` | iterar geometría en vivo con el humano | control interactivo; exige permiso |
 
 - **Blender Extensions** (`blender --command extension install <id>`): vía

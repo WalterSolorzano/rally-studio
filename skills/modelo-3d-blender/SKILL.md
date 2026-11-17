@@ -118,6 +118,39 @@ un criterio de la rúbrica:
 - **Lectura en 3 segundos**: si no se entiende qué es, se corrige el encuadre o se
   simplifica la geometría.
 
+## Prueba de reconocibilidad (antes de decir "está listo")
+
+Una malla limpia, iluminada y con materiales correctos **no garantiza que se entienda
+qué es**. Pasó: un render técnicamente impecable se leyó como "objeto de videojuego"
+y el trabajo se perdió entero.
+
+Se comprueba así, en este orden:
+
+1. **Pregunta a alguien que no participó**: "¿qué es esto?". Si duda, no está listo.
+   No vale la respuesta "es como un cilindro con cosas".
+2. **Contexto funcional, no detalle**: un objeto se reconoce por lo que tiene alrededor
+   (tubería que entra y sale, llave de paso, tornillos a la vista, cable, panel,
+   etiqueta, escala). Detalle fino en un volumen abstracto no ayuda: lo hace parecer
+   un juguete.
+3. **Escala en cuadro**: al menos un elemento con medida conocida (tornillo M5, tuerca,
+   cable, mano) para que el ojo calcule el tamaño.
+4. **Función declarada en la ficha**: la ficha dice qué hace la pieza en el sistema y
+   qué partes lo demuestran. Si la ficha no lo puede decir, el modelo tampoco.
+5. **Prueba del plano de producto**: si el render se pudiera confundir con un render
+   genérico de banco de assets, falta contexto funcional, no más polígonos.
+
+## Materiales: el ruido de superficie se lee como plástico barato
+
+- El micro-relieve por ruido (`bump` + variación de rugosidad) en EEVEE, a escala de
+  producto, se ve como **estuco, cuero o plástico inyectado sucio**. Rompe el realismo
+  más de lo que lo mejora.
+- Regla: amplitud de bump **≤ 0.012** con escala **≥ 400** (relieve casi invisible), o
+  sin bump. La rugosidad varía poco: `rough_var` ≤ 0.06.
+- Lo que sí vende material es lo de siempre: rugosidad y color correctos, reflejo
+  coherente con el metal declarado, biseles finos en las aristas, y sombra de contacto.
+- Si dudas, quita el ruido. Un material liso y bien iluminado se lee; uno texturado
+  de más se lee como maqueta.
+
 ## Auditoría geométrica: que la guarda pueda ver el fallo
 
 Una comprobación exime exactamente lo que no mira. Si tu auditoría ignora los
@@ -184,6 +217,11 @@ que viendo el video entero. Si sospechas de un objeto animado, lee sus **fcurves
 - **Explosión por capas**, no por piezas sueltas: el bloque interior sube
   completo —PCB, módulos, batería, separadores y **todo el cableado**— para que
   cada cable conserve sus dos extremos y se vea a qué conecta.
+- **Encuadre de la pila explotada**: las separaciones se eligen cortas (offsets de
+  fracción de la altura de la pieza, no múltiplos) y la cámara se calcula con el
+  **alto total de la pila explotada**, no con el del objeto armado. Si separas de
+  más, la tapa se sale del cuadro y el despiece deja de leerse. Verifica la
+  envolvente explotada en los números del script antes de renderizar.
 - El interior debe **salir por encima del borde** de la carcasa: metido en una
   cavidad profunda no se ve desde ninguna cámara razonable.
 - Muestra el **sentido de extracción** de los tornillos con guías punteadas desde
@@ -312,6 +350,33 @@ guion monolítico. Así cambiar una medida no obliga a reconstruir todo.
   el alcance de su archivo, nunca destruye el `.blend` armado.
 
 Detalle (layout de archivos y ejemplo): `anexos-3d.md`.
+
+## Del render a la web: `gltf-export` (un modelo, dos salidas)
+
+`gltf-export` es la única herramienta de `anexos-3d.md` que sirve para la web demo y
+la skill no explica el flujo. Receta mínima, toda local, sin servicios externos:
+
+1. **Exporta GLB desde el mismo script que construye la escena.** No reabras el `.blend`
+   a mano: importa el módulo del modelo (`import render_nodo`), reconstruye con las
+   mismas funciones y exporta. Así render y web nunca divergen.
+2. **Antes de exportar**: borra piso, pared de fondo y luces de estudio (el visor pone
+   las suyas), y convierte las curvas (cables) a malla, o el GLB sale vacío en esa parte.
+3. **Exporta** con `bpy.ops.export_scene.gltf(filepath=..., export_format='GLB')` a una
+   carpeta que el visor servirá por HTTP.
+4. **Visor propio con `three.js`** (`GLTFLoader` + `RoomEnvironment` + tone mapping ACES),
+   servido con `http.server` en un puerto fijo. El visor expone banderas
+   `window.__ready` / `window.__error` para que la captura espere de verdad.
+5. **Captura con Chromium en modo software GL** si no hay GPU en el runner:
+   `--use-gl=angle --use-angle=swiftshader --enable-unsafe-swiftshader`.
+6. **Verifica el 404 antes de culpar al visor**: si el GLB se exportó a otra carpeta, el
+   loader pide `/nodo.glb` y devuelve 404 sin ruido. Copia el GLB junto al HTML y
+   comprueba tamaño (`> 500 KB` para una pieza con detalle).
+7. La captura del visor se enmarca igual que las demás piezas (marco o placa de fondo) y
+   se usa en el README o el video junto al render sólido y al despiece: **tres pasadas
+   del mismo archivo** (sólido, despiece, web).
+
+No hace falta el visor si el modelo solo va al video; sí si la web demo debe mostrar el
+producto y no una foto.
 
 ## Anexos 3D (bajo demanda)
 
