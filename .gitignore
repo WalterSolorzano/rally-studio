@@ -23,6 +23,9 @@ __pycache__/
 # Salidas intermedias del motor de soluciones
 docs/_build/
 
+# Prompt de encargo para otra IA: material de trabajo, no va al repositorio
+docs/PROMPT_OTRA_IA.md
+
 # Recursos subidos por el equipo en el Estudio de Video (datos de usuario, pesados)
 dashboard/assets_uploads/
 
