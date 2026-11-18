@@ -29,18 +29,49 @@ def get_reference_template(rally_type):
         ref = PLANTILLA_UNICA
     return ref if ref.exists() else None
 
+def _costo_declarado(items):
+    """Suma de las partidas: usa `total` si viene, si no unidades x costo unitario.
+
+    Antes solo leia `total`, que gen_budget calcula al exportar; con un
+    budget.json escrito a mano el pautado decia "el costo total del presupuesto
+    auditado", que no es una cifra.
+    """
+    total = 0.0
+    moneda = "USD"
+    for x in items:
+        if not isinstance(x, dict):
+            continue
+        try:
+            if x.get("total"):
+                total += float(x["total"])
+                continue
+            unidades = float(x.get("units") or 0)
+            unitario = x.get("unit_cost") or x.get("unit_cost_usd") or x.get("unit_cost_nio")
+            if unitario:
+                total += unidades * float(unitario)
+            if x.get("unit_cost_nio"):
+                moneda = "C$"
+        except (TypeError, ValueError):
+            continue
+    return (total, moneda) if total > 0 else (None, moneda)
+
+
 def create_default_document(brief, claims):
     import json as _j, pathlib as _p
-    _total = None
+    _total, _moneda = None, "USD"
     _bp = _p.Path("budget/budget.json")
     if _bp.exists():
         try:
             _data = _j.loads(_bp.read_text(encoding="utf-8"))
             _items = _data if isinstance(_data, list) else _data.get("items", [])
-            _total = sum(float(x.get("total", 0) or 0) for x in _items)
+            _total, _moneda = _costo_declarado(_items)
         except Exception:
             _total = None
-    cost_str = f"${_total:,.0f} USD" if _total else "el costo total del presupuesto auditado"
+    # Sin partidas no se escribe una frase que parezca un monto.
+    if _total:
+        cost_str = (f"{_total:,.0f} C$" if _moneda == "C$" else f"${_total:,.0f} USD")
+    else:
+        cost_str = "[PENDIENTE] Falta el costo de implementacion: sale de budget/budget.json"
     doc = docx.Document()
     # Margenes
     for section in doc.sections:
@@ -69,7 +100,8 @@ def create_default_document(brief, claims):
                    "[PENDIENTE] Falta la cifra con fuente: que dato, de que ano y de que "
                    "organismo. Sale de research/claims.json.")
     try:
-        solution_text = brief.get("solution_detail") or brief.get("description_one_line") or ""
+        solution_text = (brief.get("solution_detail") or brief.get("solution")
+                         or brief.get("description_one_line") or "")
     except AttributeError:
         solution_text = ""
     falta_solucion = ("" if solution_text.strip() else

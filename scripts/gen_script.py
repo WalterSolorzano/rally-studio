@@ -232,14 +232,13 @@ def _textos_actos(brief: dict, claims: list, costo: str | None) -> dict:
         )
     else:
         a1_req = [
-            f"El reto tiene nombre: {challenge}. En {city} todavia se resuelve con "
-            "datos dispersos, llamadas y decisiones que llegan tarde.",
-            "El problema no es la falta de esfuerzo. Es la falta de una respuesta "
-            "simple, medible y a tiempo.",
+            f"El reto tiene nombre: {challenge}. En {city} esto se vive todos los dias.",
+            "[PENDIENTE] Que se pierde hoy por no tener la solucion: horas, dinero o "
+            "producto. Escribirlo con un numero del brief, no con una impresion.",
         ]
         a1_opt = [
-            "Cuando la informacion no esta a tiempo, se duplican tareas, se pierden "
-            "decisiones y se llega tarde a la entrega.",
+            "Cuando no hay respuesta a tiempo, se duplican tareas y se pierden "
+            "decisiones.",
         ]
         hook_onscreen = f"{challenge.upper()}\n{city}"
         hook_visual = (
@@ -252,17 +251,21 @@ def _textos_actos(brief: dict, claims: list, costo: str | None) -> dict:
     ]
     if desc:
         a2_req.append(desc if desc.endswith((".", "!", "?")) else desc + ".")
+    # «captura de informacion, procesamiento y una interfaz» es el vocabulario de
+    # un producto de software: un molino o un filtro no se describen asi. Si el
+    # brief no trae la solucion, se pide, no se rellena.
     a2_req.append(
-        "La solucion se organiza en tres capas: captura de informacion, procesamiento "
-        "y una interfaz que convierte los datos en decisiones."
+        brief.get("solution_detail") or brief.get("solution") or
+        "[PENDIENTE] Que hace la solucion, paso por paso, sin siglas. "
+        "Sale de brief.json (solution) o del pautado ya escrito."
     )
     a2_opt = [
-        "Cada modulo es independiente: si una pieza falla, el resto sigue operando, "
-        "y el despliegue crece por etapas sin rehacer toda la infraestructura.",
-        "El prototipo ya se puede probar: flujo completo de punta a punta, datos "
-        "reales y un panel con historial y alertas en tiempo real.",
-        "La innovacion esta en la arquitectura: parametros configurables, insumos de "
-        "mercado local y mantenimiento que el propio equipo puede ejecutar.",
+        "Cada parte se puede construir por separado: si una pieza falla, el resto "
+        "sigue funcionando y el despliegue crece por etapas.",
+        "El prototipo ya se puede probar: funciona de punta a punta con casos reales "
+        "del lugar donde se instala.",
+        "La innovacion esta en la adaptacion local: piezas e insumos de mercado local "
+        "y mantenimiento que el propio equipo puede ejecutar.",
     ]
 
     a3_req = [
@@ -271,18 +274,18 @@ def _textos_actos(brief: dict, claims: list, costo: str | None) -> dict:
         "de respaldo, no con estimaciones al aire.",
     ]
     a3_opt = [
-        "La operacion se financia con una cuota mensual por usuario o sitio activo, y "
-        "con servicios de instalacion y capacitacion para cooperativas y gobiernos locales.",
-        "Los componentes y licencias se reutilizan y se reparan por modulo, lo que baja "
-        "el costo de reposicion y alarga la vida util del piloto.",
+        "[PENDIENTE] De donde sale el dinero para sostenerlo: cuota por uso, venta del "
+        "producto o aporte de una institucion. Si no hay ingreso, decirlo.",
+        "Los repuestos y piezas se consiguen en el mercado local y se reparan por "
+        "parte, lo que baja el costo de reposicion y alarga la vida del piloto.",
         "Cada rubro se puede auditar: unidades, costo unitario, proveedor y fecha de "
         "consulta quedan a la vista del jurado.",
     ]
 
     if rally == "latam":
         a4_req = [
-            f"El piloto arranca en {city} y se mide con tres indicadores: tiempo de "
-            "respuesta, usuarios o sitios activos y costo por unidad operativa.",
+            f"El piloto arranca en {city} y se mide con tres indicadores que el jurado "
+            "puede auditar: uso, costo por unidad y cambio en el problema.",
             f"Aporta directamente a {ods_list} y a las metas regionales de desarrollo."
             if ods_list
             else "Aporta directamente a los ODS priorizados y a las metas regionales de resiliencia.",
@@ -296,8 +299,8 @@ def _textos_actos(brief: dict, claims: list, costo: str | None) -> dict:
     else:
         axis_txt = axis if axis.lower().startswith("eje") else f"eje {axis}"
         a4_req = [
-            f"El piloto arranca en {city} y se mide con tres indicadores: tiempo de "
-            "respuesta, usuarios o sitios activos y costo por unidad operativa.",
+            f"El piloto arranca en {city} y se mide con tres indicadores que el jurado "
+            "puede auditar: uso, costo por unidad y cambio en el problema.",
             (
                 f"Aporta a {ods_list} y al Plan Nacional de Lucha Contra la Pobreza, "
                 f"{axis_txt}."

@@ -273,6 +273,15 @@ def main(argv=None) -> int:
         print("ALTO: script/narration.txt sin texto. assets/voice se queda como esta.")
         return 1
 
+    if "[PENDIENTE]" in text.upper():
+        # Los marcadores son instrucciones para el equipo, no frases para leer:
+        # sintetizarlas deja una locucion que dice "PENDIENTE" en el video.
+        print(
+            "ALTO: script/narration.txt conserva marcadores [PENDIENTE]. "
+            "Completa esas frases en el guion antes de sintetizar la voz."
+        )
+        return 1
+
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     brief = json.loads(BRIEF_PATH.read_text(encoding="utf-8")) if BRIEF_PATH.exists() else {}
     vram = float(brief.get("pc_gpu_vram_gb", 0))

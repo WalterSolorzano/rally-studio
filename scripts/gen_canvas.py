@@ -61,10 +61,26 @@ def main(argv=None):
         return 1
     budget_items = json.loads(BUDGET_PATH.read_text(encoding="utf-8")) if BUDGET_PATH.exists() else []
 
-    total_budget = sum(
-        float(it.get("units", 1)) * float(it.get("unit_cost_usd") or it.get("unit_cost", 0))
-        for it in budget_items
-    )
+    # `unit_cost_nio` era invisible: con el presupuesto en cordobas el canvas
+    # decia "$0.00 USD" y el jurado leia un costo que no existe.
+    total_budget = 0.0
+    moneda = "USD"
+    for it in budget_items:
+        try:
+            unidades = float(it.get("units") or 1)
+            if it.get("total"):
+                total_budget += float(it["total"])
+                continue
+            costo = it.get("unit_cost_usd") or it.get("unit_cost") or it.get("unit_cost_nio")
+            if costo:
+                total_budget += unidades * float(costo)
+            if it.get("unit_cost_nio"):
+                moneda = "C$"
+        except (TypeError, ValueError):
+            continue
+    monto = f"{total_budget:,.2f} C$" if moneda == "C$" else f"${total_budget:,.2f} USD"
+    if not total_budget:
+        monto = "[PENDIENTE] ver budget/budget.json"
 
     project = brief.get("project_name", "PROYECTO").upper()
     team = brief.get("team_name", "EQUIPO")
@@ -90,44 +106,33 @@ def main(argv=None):
     ])
     resources = _lista(brief.get("canvas_resources"), [
         f"Equipo multidisciplinario: {team}.",
-        f"Presupuesto de puesta en marcha: ${total_budget:,.2f} USD.",
+        f"Presupuesto de puesta en marcha: {monto}.",
         "Plataforma, prototipo y datos del piloto.",
         "Mentoría, red de aliados y conocimiento del certamen.",
     ])
     value_bullets = _lista(brief.get("canvas_value_bullets"), [
-        "Reduce el tiempo y el costo de operar un rally de innovación.",
-        "Centraliza brief, documentos, presupuesto, guion y video en un solo flujo.",
-        "Es replicable: cada equipo lo configura con su propio reto.",
+        "[PENDIENTE] Que gana el usuario, en una frase por beneficio: menos tiempo, menos costo o mejor resultado. Sale del brief (description_one_line) y de lo que ya existe hoy.",
     ])
     relationships = _lista(brief.get("canvas_relationships"), [
-        "Acompañamiento durante el rally y soporte posterior.",
-        "Comunidad de equipos y mejora continua.",
-        "Alianzas con universidades y organizadores.",
+        "[PENDIENTE] Como se acompana al usuario: quien responde, cada cuanto y por que medio. Un piloto de barrio no atiende igual que una universidad.",
     ])
     channels = _lista(brief.get("canvas_channels"), [
-        "Plataforma web y demos en vivo.",
-        "Ferias de innovación y universidades.",
-        "Programas de emprendimiento y convocatorias.",
+        "[PENDIENTE] Donde se consigue el producto o servicio: el punto fisico, la feria, el grupo de mensajes o la oficina que de verdad se usa.",
     ])
     segments = _lista(brief.get("canvas_segments"), [
-        "Equipos que compiten en rallies de innovación.",
-        "Universidades y organizadores de certámenes.",
-        "Programas de fomento y aceleradoras.",
+        "[PENDIENTE] Quien lo usa y quien paga: no es el mismo grupo. Describir el primero con un dato del brief (city, sector).",
     ])
     cost_notes = _lista(brief.get("canvas_cost_notes"), [
-        f"Puesta en marcha del piloto: ${total_budget:,.2f} USD (ver `budget/budget.xlsx`).",
-        "Operación, soporte y mejora continua del producto.",
-        "Comercialización y alianzas.",
+        f"Puesta en marcha del piloto: {monto} (ver `budget/budget.xlsx`).",
+        "[PENDIENTE] Costo de operar un mes: quien lo atiende, que se gasta en insumos y cuando se repone el equipo.",
     ])
     revenue = _lista(brief.get("canvas_revenue"), [
-        "Suscripción por equipo o por certamen.",
-        "Servicios de acompañamiento y capacitación.",
-        "Licenciamiento a universidades y organizadores.",
+        "[PENDIENTE] De donde entra el dinero: cobro por uso, cuota mensual, venta del producto o aporte de una institucion. Si no hay ingreso, decirlo.",
     ])
 
     canvas_content = f"""# Business Model Canvas -- {project}
 **Certamen:** Rally {rally} | **Equipo:** {team} | **Ciudad Piloto:** {city} | **Categoria:** {category}
-**ODS Vinculados:** {ods} | **Costo de Puesta en Marcha:** ${total_budget:,.2f} USD
+**ODS Vinculados:** {ods} | **Costo de Puesta en Marcha:** {monto}
 
 ---
 
@@ -147,7 +152,7 @@ def main(argv=None):
 
 ## Verificacion de Consistencia con Otros Entregables
 - [x] **Video (Acto II):** La propuesta de valor refleja fielmente la solucion audiovisual.
-- [x] **Presupuesto (budget.xlsx):** La estructura de costos coincide exactamente con los ${total_budget:,.2f} USD cotizados.
+- [x] **Presupuesto (budget.xlsx):** La estructura de costos coincide exactamente con los {monto} cotizados.
 - [x] **Pautado (Solucion y Prefactibilidad):** Los socios y actividades clave corresponden a la descripcion tecnica del documento Word.
 """
 

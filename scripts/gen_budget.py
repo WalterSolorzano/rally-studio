@@ -82,7 +82,8 @@ def main(argv=None):
 
     COLOR_PRIMARIO = _rgb("primary")
     COLOR_ACENTO = _rgb("accent")
-    COLOR_TEXTO = _rgb("text")
+    clave_texto = next((k for k in ("text", "text_main", "text_body") if palette.get(k)), "text")
+    COLOR_TEXTO = _rgb(clave_texto)
     hex_primary = "%02X%02X%02X" % COLOR_PRIMARIO
     hex_acento = "%02X%02X%02X" % COLOR_ACENTO
     hex_texto = "%02X%02X%02X" % COLOR_TEXTO
@@ -199,6 +200,12 @@ def main(argv=None):
     wb.save(BUDGET_XLSX)
     print(f"OK: {BUDGET_XLSX} generado exitosamente.")
     print(f"Total Presupuestado: {formato(total_general, ctx)}")
+
+    if ctx.get("code") == "NIO" and not ctx.get("tasa"):
+        # Sin tasa del BCN no se puede decir cuanto es en dolares: decir
+        # "C$16.200 = $16.200" es una cifra inventada que el jurado leeria.
+        print("WARN: No se compara con la banda en USD: falta exchange_rate_bcn en brief.json.")
+        return 0
 
     total_usd = total_general / ctx["tasa"] if ctx.get("code") == "NIO" and ctx.get("tasa") else total_general
     if total_usd < 4000:
