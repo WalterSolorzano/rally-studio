@@ -289,7 +289,6 @@ gen_report_figures.py     sin-cli,sin-compuerta                      savefig
 gen_script.py             sin-cli,sin-compuerta                      write_text
 gen_sharktank_pdf.py      no-valida-datos                            write_text
 gen_site.py               sin-cli                                    write_bytes,write_text
-gen_soluciones_pdf.py     ok                                         write_text
 gen_storyboard_visual.py  no-valida-datos                            write_text
 gen_voice.py              sin-cli,sin-compuerta                      save,write,write_text
 

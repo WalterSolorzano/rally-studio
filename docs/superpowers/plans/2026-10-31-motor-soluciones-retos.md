@@ -4,7 +4,7 @@
 
 **Goal:** Dado un reto que aporta el usuario, generar 2–3 soluciones aplicables y defendibles, fundadas en casos ganadores 2017–2026, y exportarlas a un dossier PDF que venda la idea con datos verificables.
 
-**Architecture:** Un motor determinista (`scripts/soluciones_motor.py`) cruza el reto con un corpus curado de razonamiento de ganadores (`knowledge/retos_razonamiento.json`) y el índice real de 5,136 ganadores (`research/sirli/winners.jsonl`). Un generador (`scripts/gen_soluciones_pdf.py`) convierte la salida a HTML y luego a PDF con Chrome headless. El motor nunca inventa retos, cifras ni precedentes: lo que no tiene fuente se etiqueta.
+**Architecture:** Un motor determinista (`scripts/soluciones_motor.py`) cruza el reto con un corpus curado de razonamiento de ganadores (`knowledge/retos_razonamiento.json`) y el índice real de 5,136 ganadores (`research/sirli/winners.jsonl`). Un generador (`scripts/gen_dossier.py`) convierte la salida a HTML y luego a PDF con Chrome headless. El motor nunca inventa retos, cifras ni precedentes: lo que no tiene fuente se etiqueta.
 
 **Tech Stack:** Python 3.10+, stdlib, Chrome/Edge headless. Sin dependencias nuevas.
 
@@ -56,9 +56,9 @@
 ### Task 3: Dossier PDF
 
 **Files:**
-- Create: `scripts/gen_soluciones_pdf.py`
-- Create: `docs/assets/soluciones.css`
-- Create: `tests/test_gen_soluciones_pdf.py`
+- Create: `scripts/gen_dossier.py`
+- Create: `docs/assets/dossier.css`
+- Create: `tests/test_gen_dossier.py`
 
 **Interfaces:**
 - Consume la salida JSON del motor.

@@ -145,7 +145,7 @@ Reportar PASS/RECHAZADAS.
 
 ## Fora de alcance
 - Motor `scripts/soluciones_motor.py`, dashboard, máquina de estado — no tocar.
-- `gen_soluciones_pdf.py` sigue baneado para entrega.
+- El dossier se entrega solo con `scripts/gen_dossier.py`.
 - Video (siguiente etapa después de este plan).
 
 ## Cadena de ejecución
