@@ -730,7 +730,6 @@ function renderViewCanvas() {
     <div class="phase-header">
       <div>
         <h1 class="phase-title">Modelo de negocio <span class="phase-title-accent">Canvas</span></h1>
-        <p class="phase-subtitle">Nueve cuadrantes que se guardan solos. Los vacíos muestran la pregunta que deben responder.</p>
       </div>
       <div class="canvas-tools">
         <select onchange="canvasPresetChanged(this.value)" class="canvas-preset" aria-label="Plantilla de modelo de negocio">
