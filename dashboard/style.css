@@ -6713,6 +6713,10 @@ button[disabled]:active {
 .rs-tile-group-k { margin: 0 0 7px; font-size: 10.5px; font-weight: 700; letter-spacing: .06em;
   text-transform: uppercase; color: var(--text-muted); }
 .rs-tile-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.rs-tile-cell { position: relative; display: flex; }
+.rs-tile-cell .rs-tile { flex: 1; }
+.rs-tile-cell .rs-tile-top { padding-right: 50px; }
+.rs-tile-take { position: absolute; top: 6px; right: 6px; }
 .rs-tile { display: flex; flex-direction: column; gap: 7px; text-align: left; padding: 10px 11px;
   min-height: 92px; background: var(--bg-surface); border: 1px solid var(--border-light);
   border-radius: 6px; cursor: pointer; font-family: var(--font-ui); }
@@ -6734,6 +6738,27 @@ button[disabled]:active {
   justify-content: center; text-transform: uppercase; }
 .rs-tile-free { font-size: 10.5px; font-weight: 600; color: var(--text-faint); }
 .rs-tile-when { font-family: var(--font-mono); font-size: 10px; color: var(--text-faint); }
+
+/* ── Tomar el trabajo: nadie da por entregado lo que hizo la IA ───────────── */
+.rs-take-bar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 0 0 16px;
+  padding: 0 0 12px; border-bottom: 1px solid var(--border-light); }
+.rs-take-chip { display: inline-flex; align-items: center; gap: 8px; padding: 5px 6px 5px 10px;
+  border: 1px solid var(--border-light); border-radius: 8px; background: var(--bg-surface);
+  font-family: var(--font-ui); }
+.rs-take-chip.is-mine { border-color: var(--color-primary); background: var(--bg-secondary); }
+.rs-take-chip.is-done { padding: 5px 10px; background: var(--bg-subtle); }
+.rs-take-title { font-size: 12px; font-weight: 700; color: var(--text-body); }
+.rs-take-chip.is-done .rs-take-title { color: var(--text-muted); }
+.rs-take-who { font-size: 11.5px; color: var(--text-faint); }
+.rs-take-chip.is-mine .rs-take-who { color: var(--color-primary); font-weight: 700; }
+.rs-take-done { font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .05em; color: var(--text-faint); }
+.rs-take-btn { font-family: var(--font-ui); font-size: 11.5px; font-weight: 800; padding: 5px 11px;
+  border: 1px solid var(--border-strong); border-radius: 6px; background: var(--bg-surface);
+  color: var(--text-body); cursor: pointer; transition: background 120ms, border-color 120ms; }
+.rs-take-btn:hover { border-color: var(--color-primary); color: var(--color-primary); }
+.rs-take-btn.is-mine { background: var(--color-primary); border-color: var(--color-primary); color: #fff; }
+.rs-tile-take { padding: 3px 8px; font-size: 10.5px; }
 
 /* ── Ficha del entregable ─────────────────────────────────────────────────── */
 body.rs-sheet-open { overflow: hidden; }

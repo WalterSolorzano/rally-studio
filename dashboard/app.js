@@ -644,6 +644,7 @@ try {
     } else if (data && data.type === "DELIVERABLES_UPDATE") {
       state.deliverables = data.value || {};
       if (activeTab === "resumen") renderTab("resumen");
+      else rsRepaintTakeBar();
     } else if (data && data.type === "FIELD_UPDATE") {
       if (data.category === "pautado") {
         state.pautado[data.key] = data.value;
@@ -2460,6 +2461,7 @@ function renderTab(tabId) {
   if (tabId === "challenges") requestAnimationFrame(() => {
     document.querySelectorAll('[id^="new-idea-input-"]').forEach(el => ajustarAltoTexto(el, 34));
   });
+  if (tabId !== "resumen") requestAnimationFrame(() => rsMountTakeBar(tabId));
   updateInspector();
   attachTabListeners(tabId);
 }
@@ -2689,6 +2691,65 @@ function rsGoTab(tab, ev) {
   switchTab(tab, ev);
 }
 
+// ── TOMAR UN ENTREGABLE DESDE SU PROPIA FASE ────────────────────────────────
+// El trabajo de la IA nunca se da por entregado: alguien del equipo lo toma,
+// lo revisa y lo limpia. Quien lo toma se ve en todas las ventanas.
+function rsToggleTake(id, ev) {
+  if (ev) { ev.preventDefault(); ev.stopPropagation(); }
+  if (!amINamed()) { rsRequireName(); return; }
+  const yo = currentClientMascot.name;
+  const antes = (rsRecord(id).assignees || []).includes(yo);
+  rsTakeDeliverable(id);
+  showToast(antes ? "Soltaste este entregable: quedó libre." : "Lo tomaste. El equipo ve que estás en esto.");
+  rsRepaintTakeBar();
+}
+
+function rsTakeChip(id) {
+  const def = rsDefMap()[id];
+  if (!def) return "";
+  const st = rsDefState(def);
+  const rec = rsRecord(id);
+  const nombres = (rec.assignees || []).filter(Boolean);
+  const me = currentClientMascot.name;
+  const mio = me && nombres.includes(me);
+  if (st.code === "done") {
+    return `<span class="rs-take-chip is-done" title="${escapeHtml(def.title)}: terminado">
+      <span class="rs-take-title">${escapeHtml(def.title)}</span>
+      <span class="rs-take-done">listo</span>
+    </span>`;
+  }
+  return `<span class="rs-take-chip${mio ? " is-mine" : ""}">
+    <span class="rs-take-title" title="${escapeHtml(def.title)}">${escapeHtml(def.title)}</span>
+    <span class="rs-take-who">${nombres.length ? escapeHtml(nombres.join(", ")) : "libre"}</span>
+    <button class="rs-take-btn${mio ? " is-mine" : ""}" onclick="rsToggleTake('${id}', event)">${mio ? "Soltar" : "Tomar"}</button>
+  </span>`;
+}
+
+function rsTakeBarHtml(tabId) {
+  const defs = rsPhaseDefs(tabId);
+  if (!defs.length) return "";
+  return `<div class="rs-take-bar" id="rs-take-bar">${defs.map(d => rsTakeChip(d.id)).join("")}</div>`;
+}
+
+function rsMountTakeBar(tabId) {
+  const main = document.getElementById("main");
+  if (!main) return;
+  const prev = main.querySelector("#rs-take-bar");
+  const html = rsTakeBarHtml(tabId);
+  if (!html) { if (prev) prev.remove(); return; }
+  if (prev) { prev.outerHTML = html; return; }
+  const header = main.querySelector(".phase-header");
+  if (header && header.parentElement) header.insertAdjacentHTML("afterend", html);
+  else {
+    const wrap = main.querySelector(".content-wrapper") || main;
+    wrap.insertAdjacentHTML("afterbegin", html);
+  }
+}
+
+function rsRepaintTakeBar() {
+  if (activeTab && activeTab !== "resumen") rsMountTakeBar(activeTab);
+}
+
 // ── VISTA: RESUMEN DEL RALLY ────────────────────────────────────────────────
 function renderViewResumen() {
   const map = rsDefMap();
@@ -2741,7 +2802,9 @@ function renderViewResumen() {
     const last = ((st.record || {}).history || [])[0];
     const phaseTab = NAV_TABS.find(t => t.id === d.phase);
     const phaseLabel = phaseTab ? phaseTab.label : d.phase;
+    const mine = !!currentClientMascot.name && assignees.includes(currentClientMascot.name);
     return `
+      <div class="rs-tile-cell">
       <button class="rs-tile is-${st.code}" onclick="rsOpenDeliverable('${d.id}')" title="Abrir ${escapeHtml(d.title)}">
         <span class="rs-tile-top">
           <span class="rs-tile-dot"></span>
@@ -2755,7 +2818,9 @@ function renderViewResumen() {
             : `<span class="rs-tile-free">libre</span>`}
         </span>
         ${last ? `<span class="rs-tile-when">${rsRelativeTime(last.at)}</span>` : ""}
-      </button>`;
+      </button>
+      ${st.code === "done" ? "" : `<button class="rs-take-btn rs-tile-take${mine ? " is-mine" : ""}" onclick="rsToggleTake('${d.id}', event)" title="${mine ? "Soltar este entregable" : "Tomar este entregable"}">${mine ? "Soltar" : "Tomar"}</button>`}
+      </div>`;
   }).join("");
 
   const closedPhases = NAV_TABS.filter(t => !t.summary && t.level <= stage && rsPhaseState(t.id, map).code === "done");
