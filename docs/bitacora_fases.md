@@ -58,3 +58,33 @@ qué preguntar en la fase que sigue.
 
 | fase | artefacto | compuerta | decisión | construyó | auditó |
 |---|---|---|---|---|---|
+
+*(vacío a propósito: ninguna etapa se cierra sin artefacto, compuerta en verde y decisión
+humana. Con `brief.json` en blanco no hay etapa que cerrar.)*
+
+## Revisiones del sistema
+
+No son fases del certamen: son auditorías del propio motor. Se registran aquí porque
+prueban el mecanismo antes de que exista un proyecto, y porque cada una dejó informe.
+
+| fecha | alcance | construyó | auditó | informe |
+|---|---|---|---|---|
+| 2026-11-18 | Candado de escritura, orden 409/423, W04, W05 | profe | subagente general (rol auditor) | `audit/sistema-auditor.md` |
+| 2026-11-18 | Prueba de novato: contexto cero, primer arranque | subagente general (rol usuario) | profe | `audit/prueba-novato.md` |
+
+Lo que encontró la prueba de novato y cómo se cerró:
+
+- **Atascos en el motor** (pendientes de autorización, tocan `rally_service.py` y `dashboard/app.js`):
+  «Compilar en Word (.docx)» y «Descargar Excel» dejan la barra en «Compilando…» sin fin,
+  sueltan `*.tmp` en Descargas y los borran solos; y lo que se completa en la interfaz vive
+  solo en `localStorage`, así que `brief.json` no recibe nada y los generadores exigen editar
+  el JSON a mano.
+- **Corregido**: `gen_pautado.py` ya no revienta cuando `ods_ids` son números; `validate_budget.py`
+  exige una descripción de ≥6 palabras por fila («sensor» solo no pasa); `requirements.txt`
+  separa el núcleo de cinco paquetes de lo opcional —`playwright`, `soundfile`, `pdfplumber`—
+  que antes se instalaban siempre y bajaban cientos de MB.
+
+Regla de la revisión: la hace alguien distinto de quien construyó, y su veredicto puede ser
+FALLA. La del 18 de noviembre encontró un candado huérfano en `publicar_seccion.py` que
+dejaba la sección bloqueada quince minutos; se corrigió en el commit siguiente.
+

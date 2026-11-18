@@ -1,13 +1,24 @@
-# Python
+# ─────────────────────────────────────────────────────────────────────────────
+# RUTA CORTA — lo unico que hace falta para el pautado y el presupuesto.
+# Si tienes prisa: instala SOLO el bloque A.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# [A] NUCLEO: documentos y planillas. Son segundos, no minutos.
 python-docx>=1.1
 openpyxl>=3.1
-requests>=2.31
 pillow>=10.0
-playwright>=1.44
+requests>=2.31
 psutil>=5.9
-soundfile>=0.12
-# Lectura de PDF/DOCX del corpus y de lo que traiga el humano (skills del agente)
-pdfplumber>=0.11
+
+# ─────────────────────────────────────────────────────────────────────────────
+# [B] OPCIONAL — cada linea baja cientos de MB. Instala solo si vas a usar esa parte.
+#     playwright  -> navegador completo para capturas del sitio
+#     soundfile   -> medir audio de la locucion
+#     pdfplumber  -> leer PDF que traiga una persona
+# ─────────────────────────────────────────────────────────────────────────────
+# playwright>=1.44
+# soundfile>=0.12
+# pdfplumber>=0.11
 
 # OCR local (red de seguridad del tablero /api/ocr cuando no hay endpoint IA conectado)
 # easyocr           # instala PyTorch (~2GB); solo si quieres OCR neuronal sin IA en la nube

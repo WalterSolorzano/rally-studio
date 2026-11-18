@@ -69,6 +69,16 @@ def main():
         if not date:
             errors.append(f"Fila {i} ({name}): Fecha de cotizacion ausente.")
 
+        # Chequeo explicacion: "sensor" no le dice nada a quien lee el documento.
+        # El jurado no comparte el vocabulario del equipo; la fila se explica sola.
+        descripcion = str(it.get("description", "")).strip()
+        if len(descripcion.split()) < 6:
+            errors.append(
+                f"Fila {i} ({name}): la descripcion no explica nada "
+                f"({len(descripcion.split())} palabras). Escribe que es, para que sirve "
+                "y quien lo usa, sin siglas ni nombres tecnicos sueltos."
+            )
+
         # Chequeo Flete: el presupuesto es de lanzamiento, no de importacion.
         # Aduanas y aranceles son ruido para el jurado: si aparecen, se avisa.
         elem_lower = name.lower() + " " + it.get("description", "").lower()
