@@ -749,7 +749,7 @@ function renderViewCanvas() {
       ${cells.map(cell => `
         <div class="canvas-slot canvas-slot-${cell.key}">
           <label class="canvas-slot-label" for="cv-${cell.key}">
-            ${cell.title}
+            <span class="canvas-slot-num">${cell.n}</span>${cell.title}
           </label>
           <textarea id="cv-${cell.key}" class="canvas-input${isDefaultCell(cell) ? " is-empty" : ""}" rows="3" spellcheck="false"
             placeholder="${escapeHtml(hintOf(cell.key, cell.fallback))}"

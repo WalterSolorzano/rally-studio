@@ -5655,28 +5655,36 @@ h3 {
 .canvas-preset { font-family: var(--font-ui); font-size: 12px; padding: 6px 10px; min-width: 190px;
   border: 1px solid var(--border-light); border-radius: 6px; background: var(--bg-surface); color: var(--text-body); }
 
-.canvas-board { display: grid; gap: 1px; background: var(--border-light); border: 1px solid var(--border-light);
-  border-radius: 10px; overflow: hidden; grid-template-columns: repeat(5, minmax(0, 1fr)); }
-.canvas-slot { display: flex; flex-direction: column; gap: 6px; padding: 12px 13px; min-height: 158px;
-  background: var(--bg-surface); }
-.canvas-slot-socios    { grid-area: 1 / 1 / 3 / 2; }
-.canvas-slot-actividades { grid-area: 1 / 2 / 2 / 3; }
-.canvas-slot-propuesta { grid-area: 1 / 3 / 3 / 4; background: var(--bg-subtle); }
-.canvas-slot-relaciones { grid-area: 1 / 4 / 2 / 5; }
-.canvas-slot-segmentos { grid-area: 1 / 5 / 3 / 6; }
-.canvas-slot-recursos  { grid-area: 2 / 2 / 3 / 3; }
-.canvas-slot-canales   { grid-area: 2 / 4 / 3 / 5; }
-.canvas-slot-costes    { grid-area: 3 / 1 / 4 / 3; }
-.canvas-slot-ingresos  { grid-area: 3 / 3 / 4 / 6; }
+/* La mesa: fondo propio y piezas sueltas encima, no una rejilla de líneas. */
+.canvas-board { display: grid; gap: 10px; padding: 14px; background: var(--bg-subtle);
+  border: 1px solid var(--border-light); border-radius: 14px;
+  grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.canvas-slot { display: flex; flex-direction: column; gap: 8px; padding: 14px 15px; min-height: 196px;
+  background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: 10px;
+  border-top: 3px solid var(--cv-ink, var(--color-primary)); }
+/* Cada bloque tiene su tono, sacado de la paleta: primary -> accent, sin colores ajenos. */
+.canvas-slot-socios    { grid-area: 1 / 1 / 3 / 2; --cv-ink: var(--color-primary); }
+.canvas-slot-actividades { grid-area: 1 / 2 / 2 / 3; --cv-ink: color-mix(in srgb, var(--color-primary) 80%, var(--color-accent)); }
+.canvas-slot-propuesta { grid-area: 1 / 3 / 3 / 4; --cv-ink: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 7%, var(--bg-surface)); }
+.canvas-slot-relaciones { grid-area: 1 / 4 / 2 / 5; --cv-ink: color-mix(in srgb, var(--color-primary) 60%, var(--color-accent)); }
+.canvas-slot-segmentos { grid-area: 1 / 5 / 3 / 6; --cv-ink: color-mix(in srgb, var(--color-primary) 50%, var(--color-accent)); }
+.canvas-slot-recursos  { grid-area: 2 / 2 / 3 / 3; --cv-ink: color-mix(in srgb, var(--color-primary) 40%, var(--color-accent)); }
+.canvas-slot-canales   { grid-area: 2 / 4 / 3 / 5; --cv-ink: color-mix(in srgb, var(--color-primary) 30%, var(--color-accent)); }
+.canvas-slot-costes    { grid-area: 3 / 1 / 4 / 3; --cv-ink: color-mix(in srgb, var(--color-primary) 20%, var(--color-accent)); }
+.canvas-slot-ingresos  { grid-area: 3 / 3 / 4 / 6; --cv-ink: color-mix(in srgb, var(--color-primary) 10%, var(--color-accent)); }
 
-.canvas-slot-label { display: flex; align-items: baseline; gap: 6px; font-family: var(--font-ui);
-  font-size: 11px; font-weight: 700; letter-spacing: 0.02em; color: var(--text-muted); cursor: pointer; }
-.canvas-slot-propuesta .canvas-slot-label { color: var(--color-primary); }
-.canvas-input { width: 100%; flex: 0 0 auto; min-height: 46px; border: none; background: transparent; resize: none; overflow: hidden;
-  font-family: var(--font-ui); font-size: 12.5px; line-height: 1.5; color: var(--text-body); padding: 0; }
+.canvas-slot-label { display: flex; align-items: center; gap: 7px; font-family: var(--font-ui);
+  font-size: 12.5px; font-weight: 800; letter-spacing: 0.01em; color: var(--text-body);
+  cursor: pointer; }
+.canvas-slot-num { font-family: var(--font-mono); font-size: 10px; font-weight: 700; line-height: 1;
+  color: var(--bg-surface); background: var(--cv-ink, var(--color-primary));
+  padding: 3px 5px; border-radius: 4px; }
+.canvas-input { width: 100%; flex: 0 0 auto; min-height: 96px; border: none; background: transparent; resize: none; overflow: hidden;
+  font-family: var(--font-ui); font-size: 13px; line-height: 1.6; color: var(--text-body); padding: 0; }
 .canvas-input:focus { outline: none; }
 .canvas-input::placeholder { color: var(--text-faint); font-style: italic; }
-.canvas-slot:focus-within { background: #FCFDFF; box-shadow: inset 0 0 0 1px var(--color-primary); }
+.canvas-slot:focus-within { border-color: var(--cv-ink, var(--color-primary)); }
 .canvas-slot-propuesta:focus-within { background: var(--bg-subtle); }
 
 .canvas-foot { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border-light); }
@@ -5696,22 +5704,22 @@ h3 {
   .canvas-slot-canales { grid-area: 3 / 1 / 4 / 2; }
   .canvas-slot-costes { grid-area: 3 / 2 / 4 / 3; }
   .canvas-slot-ingresos { grid-area: 3 / 3 / 4 / 4; }
-  .canvas-slot { min-height: 120px; }
+  .canvas-slot { min-height: 168px; }
 }
 @media (max-width: 900px) {
   .canvas-tools { width: 100%; }
   .canvas-preset { flex: 1 1 100%; min-width: 0; }
-  .canvas-board { grid-template-columns: 1fr; gap: 0; background: transparent; border: none;
+  .canvas-board { grid-template-columns: 1fr; gap: 0; padding: 0; background: transparent; border: none;
     border-top: 1px solid var(--border-light); border-radius: 0; }
   .canvas-slot, .canvas-slot-socios, .canvas-slot-actividades, .canvas-slot-propuesta,
   .canvas-slot-relaciones, .canvas-slot-segmentos, .canvas-slot-recursos, .canvas-slot-canales,
   .canvas-slot-costes, .canvas-slot-ingresos {
     grid-area: auto; min-height: 0; padding: 12px 2px; background: none;
-    border-bottom: 1px solid var(--border-light);
+    border: 0; border-bottom: 1px solid var(--border-light); border-radius: 0;
   }
   .canvas-slot-propuesta { background: none; }
-  .canvas-slot:focus-within, .canvas-slot-propuesta:focus-within { background: none; box-shadow: none; }
-  .canvas-input { font-size: 13px; min-height: 44px; }
+  .canvas-slot:focus-within, .canvas-slot-propuesta:focus-within { background: none; border-color: transparent; }
+  .canvas-input { font-size: 13px; min-height: 76px; }
   .canvas-foot-input { flex: 1 1 100%; }
 }
 
