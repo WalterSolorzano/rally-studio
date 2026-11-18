@@ -2167,6 +2167,8 @@ PAUTADO_SECTIONS = {
                             "anchors": ["INNOVACION"]},
         "prefactibilidad": {"label": "Prefactibilidad y Sostenibilidad", "limit": 1500,
                             "anchors": ["PRE FACTIBILIDAD", "PREFACTIBILIDAD", "FACTIBILIDAD"]},
+        "referencias":     {"label": "Referencias", "limit": None,
+                            "anchors": ["REFERENCIAS", "BIBLIOGRAFIA"]},
     },
     "nacional": {
         "problema":        {"label": "Planteamiento del Problema", "limit": None,
@@ -2179,14 +2181,20 @@ PAUTADO_SECTIONS = {
                             "anchors": ["EVALUACION DE IMPACTO", "IMPACTO"]},
         "prefactibilidad": {"label": "Prefactibilidad y Sostenibilidad", "limit": None,
                             "anchors": ["PRESUPUESTO", "PLAN DE IMPLEMENTACION", "PREFACTIBILIDAD"]},
+        "referencias":     {"label": "Referencias", "limit": None,
+                            "anchors": ["REFERENCIAS", "BIBLIOGRAFIA"]},
     },
 }
 
-# Orden de las 5 secciones tal como se escriben en la plataforma.
-PAUTADO_ORDER = ["problema", "solucion", "impacto", "innovacion", "prefactibilidad"]
+# Orden de las secciones tal como se escriben en la plataforma.
+PAUTADO_ORDER = ["problema", "solucion", "impacto", "innovacion", "prefactibilidad", "referencias"]
 
 # Palabras que delatan un párrafo de instrucciones (no es la respuesta del equipo).
 _PAUTADO_INSTRUCTION_MARKERS = ("DESCRIBA", "FUNDAMENTE", "ENUMERE", "ESCRIBA", "MENCIONE", "JUSTIFIQUE")
+
+# Bloques de la plantilla que la plataforma no llena y el Word no debe entregar.
+_PAUTADO_IGNORED = ("PROPUESTAS QUE DESCARTARON", "PROPUESTAS DESCARTADAS")
+_PAUTADO_BOILERPLATE = ("DOCUMENTO EN BLANCO", "SE LLENA CON")
 
 
 def _plain(text):
@@ -2290,6 +2298,41 @@ def _is_heading(paragraph, anchor):
     return not any(marker in norm for marker in _PAUTADO_INSTRUCTION_MARKERS)
 
 
+def _heading_rank(paragraph, anchors):
+    """0 = no es encabezado, 1 = flojo, 2 = negrita, 3 = mayúsculas de sección."""
+    norm = _plain(paragraph.text)
+    if not norm or any(marker in norm for marker in _PAUTADO_INSTRUCTION_MARKERS):
+        return 0
+    if not any(a in norm for a in anchors):
+        return 0
+    if _looks_like_heading(paragraph):
+        return 3
+    runs = getattr(paragraph, "runs", None) or []
+    if runs and runs[0].bold:
+        return 2
+    return 1
+
+
+def _prune_template_noise(paragraphs, rally_type):
+    """Quita del entregable lo que la plantilla trae y nadie llenó.
+
+    Los párrafos de presentación («Documento en blanco. Se llena con…») y las
+    secciones que la plataforma no escribe («Propuestas que descartaron») no son
+    contenido del equipo: en el Word sólo deben quedar las respuestas.
+    """
+    for para in list(paragraphs):
+        txt = _plain(para.text)
+        if txt and any(txt.startswith(m) for m in _PAUTADO_BOILERPLATE):
+            _drop_paragraph(para)
+    for anchor in _PAUTADO_IGNORED:
+        idx = next((i for i, p in enumerate(paragraphs) if _is_heading(p, anchor)), -1)
+        if idx < 0:
+            continue
+        end = _region_end(paragraphs, idx, rally_type)
+        for para in paragraphs[idx:end]:
+            _drop_paragraph(para)
+
+
 def _section_heading_index(paragraphs, key, rally_type):
     """Devuelve el índice del encabezado de la sección `key`, o -1."""
     anchors = _event_sections(rally_type).get(key, {}).get("anchors", [])
@@ -2298,7 +2341,11 @@ def _section_heading_index(paragraphs, key, rally_type):
         norm = _plain(para.text)
         if any(a in norm for a in anchors) and "CARACTERES" in norm:
             return idx
-    # 2ª pasada: cualquier bloque con el anclaje y sin texto de instrucciones.
+    # 2ª pasada: encabezado real (negrita o mayúsculas) con el anclaje; las
+    # líneas de instrucción de la plantilla quedan fuera aunque nombren la sección.
+    for idx, para in enumerate(paragraphs):
+        if _heading_rank(para, anchors) >= 2:
+            return idx
     for idx, para in enumerate(paragraphs):
         if any(_is_heading(para, a) for a in anchors):
             return idx
@@ -2306,17 +2353,44 @@ def _section_heading_index(paragraphs, key, rally_type):
 
 
 def _region_end(paragraphs, start, rally_type):
-    """Primer encabezado (de cualquier sección) tras `start`: delimita el casillero."""
+    """Primer encabezado de otra sección tras `start`: delimita el casillero.
+
+    Se buscan primero los anclajes de la rúbrica: las líneas de instrucción de la
+    plantilla («Impacto social: a quién le cambia el día…») parecen encabezados y
+    cortaban la región antes de tiempo, dejándolas en el entregable.
+    """
     anchors = _event_anchors(rally_type)
     for idx in range(start + 1, len(paragraphs)):
-        para = paragraphs[idx]
-        if any(_is_heading(para, a) for a in anchors) or _looks_like_heading(para):
+        if _heading_rank(paragraphs[idx], anchors) >= 2:
+            return idx
+    for idx in range(start + 1, len(paragraphs)):
+        if _looks_like_heading(paragraphs[idx]):
             return idx
     return len(paragraphs)
 
 
+def _norm_text(value):
+    """Un espacio entre palabras, líneas limpias: el Word no debe salir con huecos."""
+    lines = [re.sub(r"[ \t]+", " ", line).strip() for line in str(value or "").splitlines()]
+    return "\n".join(line for line in lines if line)
+
+
+def _drop_paragraph(paragraph):
+    el = paragraph._element
+    if el is not None and el.getparent() is not None:
+        el.getparent().remove(el)
+
+
+def _clean_region(region, keep):
+    """Deja solo la respuesta: fuera casilleros vacíos y frases de instrucción."""
+    for para in region:
+        if para is not keep:
+            _drop_paragraph(para)
+
+
 def _fill_section(paragraphs, key, value, rally_type, warnings):
     """Escribe `value` en el casillero de la sección `key` del documento."""
+    value = _norm_text(value)
     start = _section_heading_index(paragraphs, key, rally_type)
     if start < 0:
         warnings.append(f"No se encontró el encabezado de '{key}' en la plantilla; se adjuntó al final.")
@@ -2330,16 +2404,14 @@ def _fill_section(paragraphs, key, value, rally_type, warnings):
     long_slots = sorted(content_slots, key=lambda p: len(p.text.strip()), reverse=True)
     if long_slots and len(long_slots[0].text.strip()) >= 40:
         long_slots[0].text = value
-        # Limpiar respuestas sobrantes de la misma sección (plantillas ya rellenadas).
-        for extra in long_slots[1:]:
-            if len(extra.text.strip()) >= 40:
-                extra.text = ""
+        _clean_region(region, long_slots[0])
         return True
 
     # 2) Usar el primer casillero vacío que dejó la plantilla en blanco.
     for p in content_slots:
         if not p.text.strip():
             p.text = value
+            _clean_region(region, p)
             return True
 
     # 3) Insertar un párrafo nuevo justo después del encabezado.
@@ -2348,7 +2420,9 @@ def _fill_section(paragraphs, key, value, rally_type, warnings):
         from docx.text.paragraph import Paragraph
         new_el = paragraphs[start]._p.makeelement(qn("w:p"), {})
         paragraphs[start]._p.addnext(new_el)
-        Paragraph(new_el, paragraphs[start]._parent).text = value
+        nuevo = Paragraph(new_el, paragraphs[start]._parent)
+        nuevo.text = value
+        _clean_region(region, nuevo)
         return True
     except Exception as exc:
         warnings.append(f"No se pudo insertar '{key}' en la plantilla: {exc}")
@@ -2436,6 +2510,8 @@ def compile_pautado_docx(data):
             if clean.get(key):
                 doc.add_heading(sections[key]["label"], level=1)
                 doc.add_paragraph(clean[key])
+    else:
+        _prune_template_noise(doc.paragraphs, rally_type)
 
     out_path = DASHBOARD_DIR / "docs" / "pautado_draft.docx"
     out_path.parent.mkdir(parents=True, exist_ok=True)

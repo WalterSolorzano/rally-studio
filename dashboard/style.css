@@ -6922,7 +6922,7 @@ body.rs-sheet-open { overflow: hidden; }
 .pa-section { padding: 18px 0 20px; border-bottom: 1px solid var(--border-light); }
 .pa-section:last-child { border-bottom: 0; padding-bottom: 4px; }
 
-.pa-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.pa-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
 .pa-label {
   display: inline-flex; align-items: center; gap: 7px;
   font-family: var(--font-ui); font-size: 14px; font-weight: 700;
@@ -6936,12 +6936,44 @@ body.rs-sheet-open { overflow: hidden; }
 .pa-head .pautado-counter.is-near { color: var(--text-title); }
 .pa-head .pautado-counter.is-over { color: var(--status-err-text); }
 
+/* Quién edita cada sección: se ve al lado del título, con avatar y nombre */
+.pa-take { display: inline-flex; align-items: center; gap: 8px; margin-left: 4px; }
+.pa-take-people { display: inline-flex; align-items: center; gap: 6px; }
+.pa-take-ava { width: 18px; height: 18px; border-radius: 50%; display: inline-flex;
+  align-items: center; justify-content: center; background: var(--person-color, var(--color-primary));
+  color: #fff; font-family: var(--font-ui); font-size: 10px; font-weight: 800; }
+.pa-take-names { font-size: 11.5px; color: var(--text-muted); }
+.pa-take.is-mine .pa-take-names { color: var(--color-primary); font-weight: 700; }
+.pa-take-btn { padding: 4px 9px; border: 1px solid var(--border-strong); border-radius: 6px;
+  background: var(--bg-surface); color: var(--text-muted); font-family: var(--font-ui);
+  font-size: 11.5px; font-weight: 700; cursor: pointer;
+  transition: background 120ms, border-color 120ms, color 120ms; }
+.pa-take-btn:hover { border-color: var(--color-primary); color: var(--color-primary); }
+.pa-take-btn.is-mine { background: var(--color-primary); border-color: var(--color-primary); color: #fff; }
+
+/* Lectura y aprobación: el texto lo cierra el equipo, no el contador */
+.pa-approve { display: inline-flex; align-items: center; gap: 6px; margin-left: 2px; }
+.pa-approve-btn {
+  display: inline-flex; align-items: center; gap: 5px; padding: 4px 9px;
+  border: 1px solid var(--border-strong); border-radius: 6px; background: var(--bg-surface);
+  color: var(--text-muted); font-family: var(--font-ui); font-size: 11.5px; font-weight: 700;
+  cursor: pointer; transition: background 120ms, border-color 120ms, color 120ms;
+}
+.pa-approve-btn svg { width: 12px; height: 12px; }
+.pa-approve-btn:hover { border-color: var(--color-primary); color: var(--color-primary); }
+.pa-approve-btn.is-mine { background: var(--color-primary); border-color: var(--color-primary); color: #fff; }
+.pa-approve-count { font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; color: var(--text-faint); }
+.pa-approve.is-ok .pa-approve-btn { border-color: var(--color-primary); color: var(--color-primary); }
+.pa-approve.is-ok .pa-approve-btn.is-mine { color: #fff; }
+.pa-approve.is-ok .pa-approve-count { color: var(--color-primary); }
+
+.pa-refs-tools { display: flex; gap: 8px; margin: 10px 0 2px; }
+
 .pa-hint { margin: 4px 0 8px; font-size: 11.5px; line-height: 1.45; color: var(--text-muted); }
 
 .pa-input {
   display: block;
   width: 100%;
-  max-width: 760px;
   box-sizing: border-box;
   min-height: 96px;
   padding: 0;

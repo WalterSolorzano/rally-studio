@@ -306,7 +306,8 @@ const PAUTADO_LIMITS = {
   solucion: 1250,
   impacto: 1000,
   innovacion: 1000,
-  prefactibilidad: 1500
+  prefactibilidad: 1500,
+  referencias: null
 };
 
 // Tope efectivo de una sección según el certamen activo (null = sin tope por sección).
@@ -2480,7 +2481,54 @@ function rsWordCount(text) {
 function rsPautadoSectionDone(key) {
   const len = (state.pautado[key] || "").length;
   const limit = getPautadoLimit(key);
-  return limit === null ? len > 0 : (len >= 150 && len <= limit);
+  const escrito = limit === null ? len > 0 : (len >= 150 && len <= limit);
+  return escrito && rsPautadoApproved(key);
+}
+
+// ── APROBACIÓN DEL PAUTADO: texto escrito no es texto aprobado ───────────────
+// Cada sección se cierra cuando dos personas del equipo la leen y la aprueban.
+const RS_APPROVALS_MIN = 2;
+
+function rsPautadoStore() {
+  if (!state.pautado_approvals || typeof state.pautado_approvals !== "object") state.pautado_approvals = {};
+  return state.pautado_approvals;
+}
+
+function rsPautadoApprovals(key) {
+  const rec = rsPautadoStore()[key];
+  const nombres = rec && Array.isArray(rec.names) ? rec.names.filter(Boolean) : [];
+  return { names: nombres, snapshot: (rec && rec.snapshot) || "" };
+}
+
+function rsPautadoApproved(key) {
+  return rsPautadoApprovals(key).names.length >= RS_APPROVALS_MIN;
+}
+
+function rsApprovePautado(key, ev) {
+  if (ev) ev.preventDefault();
+  if (!amINamed()) { rsRequireName(); return; }
+  const yo = currentClientMascot.name;
+  const texto = state.pautado[key] || "";
+  if (!texto.trim()) { showToast("Primero escribe la sección: no se aprueba lo vacío."); return; }
+  const { names } = rsPautadoApprovals(key);
+  const store = rsPautadoStore();
+  const yaEsta = names.includes(yo);
+  const nuevos = yaEsta ? names.filter(n => n !== yo) : names.concat([yo]);
+  store[key] = { names: nuevos, snapshot: yaEsta ? (store[key] || {}).snapshot || texto : texto };
+  saveState();
+  if (!yaEsta) showToast(`Aprobaste ${PAUTADO_LABELS[key] || key}. ${nuevos.length} de ${RS_APPROVALS_MIN} lecturas.`);
+  else showToast(`Retiraste tu aprobación de ${PAUTADO_LABELS[key] || key}.`);
+  if (activeTab === "pautado") renderTab("pautado");
+  else rsRepaintTakeBar();
+}
+
+// Si el texto cambia después de aprobado, las aprobaciones viejas no valen.
+function rsResetApprovalsIfEdited(key, texto) {
+  const store = rsPautadoStore();
+  const rec = store[key];
+  if (!rec || !Array.isArray(rec.names) || !rec.names.length) return;
+  if ((rec.snapshot || "") === texto) return;
+  store[key] = { names: [], snapshot: "" };
 }
 
 function rsCanvasFilledCount() {
@@ -2691,9 +2739,30 @@ function rsGoTab(tab, ev) {
   switchTab(tab, ev);
 }
 
-// ── TOMAR UN ENTREGABLE DESDE SU PROPIA FASE ────────────────────────────────
-// El trabajo de la IA nunca se da por entregado: alguien del equipo lo toma,
-// lo revisa y lo limpia. Quien lo toma se ve en todas las ventanas.
+// Quién está editando una sección del pautado: avatar, nombre y el botón.
+// El trabajo de la IA no se da por entregado hasta que alguien lo toma.
+function rsPautadoTakeHtml(key) {
+  const id = `pautado_${key}`;
+  const nombres = (rsRecord(id).assignees || []).filter(Boolean);
+  const me = amINamed() ? currentClientMascot.name : "";
+  const mine = !!me && nombres.includes(me);
+  const gente = nombres.length
+    ? `<span class="pa-take-people">${nombres.map(n =>
+        `<span class="pa-take-ava" style="--person-color:${_userColor(n)}" title="${escapeHtml(n)}">${escapeHtml(String(n).trim().charAt(0).toUpperCase())}</span>`
+      ).join("")}<span class="pa-take-names">${escapeHtml(nombres.join(", "))} editando</span></span>`
+    : "";
+  return `<span class="pa-take${mine ? " is-mine" : ""}" id="pa-take-${key}" data-pa-take="${key}">${gente}
+    <button class="pa-take-btn${mine ? " is-mine" : ""}" type="button" onclick="rsToggleTake('${id}', event)">${mine ? "Soltar" : "Tomar"}</button>
+  </span>`;
+}
+
+function rsRefreshPautadoTakes() {
+  document.querySelectorAll("[data-pa-take]").forEach(el => {
+    el.outerHTML = rsPautadoTakeHtml(el.getAttribute("data-pa-take"));
+  });
+}
+
+// Función «Tomar» en cada fase -------------------------------------------------
 function rsToggleTake(id, ev) {
   if (ev) { ev.preventDefault(); ev.stopPropagation(); }
   if (!amINamed()) { rsRequireName(); return; }
@@ -2715,7 +2784,7 @@ function rsTakeChip(id) {
   if (st.code === "done") {
     return `<span class="rs-take-chip is-done" title="${escapeHtml(def.title)}: terminado">
       <span class="rs-take-title">${escapeHtml(def.title)}</span>
-      <span class="rs-take-done">listo</span>
+      <span class="rs-take-done">terminado</span>
     </span>`;
   }
   return `<span class="rs-take-chip${mio ? " is-mine" : ""}">
@@ -2735,6 +2804,8 @@ function rsMountTakeBar(tabId) {
   const main = document.getElementById("main");
   if (!main) return;
   const prev = main.querySelector("#rs-take-bar");
+  // Pautado lleva el «Tomar» en cada sección, junto a su título.
+  if (tabId === "pautado") { if (prev) prev.remove(); return; }
   const html = rsTakeBarHtml(tabId);
   if (!html) { if (prev) prev.remove(); return; }
   if (prev) { prev.outerHTML = html; return; }
@@ -2747,7 +2818,9 @@ function rsMountTakeBar(tabId) {
 }
 
 function rsRepaintTakeBar() {
-  if (activeTab && activeTab !== "resumen") rsMountTakeBar(activeTab);
+  if (!activeTab) return;
+  if (activeTab === "pautado") { rsRefreshPautadoTakes(); return; }
+  if (activeTab !== "resumen") rsMountTakeBar(activeTab);
 }
 
 // ── VISTA: RESUMEN DEL RALLY ────────────────────────────────────────────────
@@ -7916,7 +7989,7 @@ function injectTaskResult(taskId) {
 // ═════════════════════════════════════════════════════════════════════════════
 // 05 NIVEL 4: PAUTADO OFICIAL (< LÍMITES CON ESPACIOS)
 // ═════════════════════════════════════════════════════════════════════════════
-const PAUTADO_LABELS = { problema: "Problema", solucion: "Solución", impacto: "Impacto", innovacion: "Innovación", prefactibilidad: "Prefactibilidad" };
+const PAUTADO_LABELS = { problema: "Problema", solucion: "Solución", impacto: "Impacto", innovacion: "Innovación", prefactibilidad: "Prefactibilidad", referencias: "Referencias" };
 
 function renderViewPautado() {
   const authorship = (state.authorship && state.authorship.pautado) || {};
@@ -7975,17 +8048,27 @@ function renderViewPautado() {
           solucion: SVG.spark,
           impacto: SVG.globe,
           innovacion: SVG.network,
-          prefactibilidad: SVG.shieldCheck
+          prefactibilidad: SVG.shieldCheck,
+          referencias: SVG.external
         }[k] || "";
+        const ap = rsPautadoApprovals(k);
+        const aprobado = ap.names.length >= RS_APPROVALS_MIN;
+        const miAprobacion = !!currentClientMascot.name && ap.names.includes(currentClientMascot.name);
 
         return `
           <article class="pa-section" data-lockable="pautado-${k}">
             <header class="pa-head">
               <span class="pa-label">${icon}<span>${PAUTADO_LABELS[k] || k}</span></span>
+              ${rsPautadoTakeHtml(k)}
               ${authorMascot ? `<span class="collaborator-stamp" title="Última edición por ${authorMascot.name}">${authorMascot.icon} ${authorMascot.name}</span>` : ""}
               <span id="lock-tag-pautado-${k}"></span>
+              <span class="pa-approve${aprobado ? " is-ok" : ""}" title="${ap.names.length ? "Leída por " + ap.names.join(", ") : "Nadie la ha leído todavía"}">
+                <button class="pa-approve-btn${miAprobacion ? " is-mine" : ""}" type="button" onclick="rsApprovePautado('${k}', event)">${SVG.check}${miAprobacion ? "Aprobada" : "Aprobar"}</button>
+                <span class="pa-approve-count">${ap.names.length}/${RS_APPROVALS_MIN}</span>
+              </span>
               <span class="pautado-counter ${isOver ? "is-over" : isNear ? "is-near" : ""}" title="${counterTitle}">${counter}</span>
             </header>
+            ${k === "referencias" ? `<div class="pa-refs-tools"><button class="btn-secondary" type="button" onclick="rsArmarReferencias(event)">${SVG.folder} Traer fuentes del proyecto</button></div>` : ""}
             <textarea id="pt-${k}" rows="1" class="pa-input ${isOver ? "is-over" : ""}"
               placeholder="Escribe la sección ${(PAUTADO_LABELS[k] || k).toLowerCase()}…"
               onfocus="broadcastLock('pautado-${k}')"
@@ -8018,6 +8101,7 @@ window.addEventListener("resize", () => {
 
 function updateCharCount(k, el) {
   state.pautado[k] = el.value;
+  rsResetApprovalsIfEdited(k, el.value);
   broadcastFieldChange("pautado", k, el.value);
   saveState();
   const max = getPautadoLimit(k);
@@ -8033,6 +8117,55 @@ function updateCharCount(k, el) {
     labelEl.classList.toggle("is-near", isNear);
   }
   el.classList.toggle("is-over", isOver);
+  const badge = el.closest(".pa-section") ? el.closest(".pa-section").querySelector(".pa-approve-count") : null;
+  if (badge) badge.innerText = `${rsPautadoApprovals(k).names.length}/${RS_APPROVALS_MIN}`;
+}
+
+// ── REFERENCIAS: una fuente por línea, orden alfabético, con año y URL ───────
+// Se arma desde research/claims.json (lo único verificable) y queda editable:
+// el equipo agrega a mano lo que consultó fuera del proyecto.
+function rsLineaReferencia(claim) {
+  const fuente = String(claim.source || claim.autor || "").trim();
+  const anio = claim.year || claim.anio || "";
+  const titulo = String(claim.stat || claim.titulo || "").trim().replace(/\s+/g, " ");
+  const url = String(claim.url || "").trim();
+  if (!titulo && !fuente) return "";
+  const partes = [];
+  if (fuente) partes.push(fuente.replace(/\.$/, "") + ".");
+  if (anio) partes.push(`(${anio}).`);
+  if (titulo) partes.push(titulo.replace(/\.$/, "") + ".");
+  if (url) partes.push(url);
+  return partes.join(" ");
+}
+
+function rsArmarReferencias(ev) {
+  if (ev) ev.preventDefault();
+  fetch("/research/claims.json", { cache: "no-store" })
+    .then(r => r.ok ? r.json() : [])
+    .then(claims => {
+      const lista = (Array.isArray(claims) ? claims : []).map(rsLineaReferencia).filter(Boolean);
+      const unicas = [];
+      const vistas = new Set();
+      lista.forEach(linea => { if (!vistas.has(linea)) { vistas.add(linea); unicas.push(linea); } });
+      const historial = state.ai_edit_history && typeof state.ai_edit_history === "object" ? state.ai_edit_history : {};
+      if (Object.keys(historial).some(k => (historial[k] || []).length)) {
+        unicas.push("Rally Studio, asistente de IA (2026). Apoyo de redacción y edición del documento. Registro interno de ediciones de la plataforma.");
+      }
+      unicas.sort((a, b) => a.localeCompare(b, "es"));
+      if (!unicas.length) {
+        showToast("No hay fuentes en research/claims.json: agrégalas a mano en esta sección.");
+        return;
+      }
+      const el = document.getElementById("pt-referencias");
+      if (!el) return;
+      const texto = unicas.join("\n");
+      const proto = Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, "value").set;
+      proto.call(el, texto);
+      el.dispatchEvent(new Event("input", { bubbles: true }));
+      ajustarAltoTexto(el);
+      showToast(`${unicas.length} fuentes cargadas. Revísalas y añade las que falten.`);
+    })
+    .catch(() => showToast("No se pudo leer research/claims.json."));
 }
 
 // ── Plantilla .docx del evento: se guarda en el servidor y se cachea en memoria ──
