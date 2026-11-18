@@ -6228,24 +6228,37 @@ function closeChallengeDetailModal() {
 // 03 NIVEL 3: TALLER DE SOLUCIÓN & PROMPT BUILDER
 // ═════════════════════════════════════════════════════════════════════════════
 function renderViewSolution() {
-  const boosters = Array.isArray(state.solution_boosters) ? state.solution_boosters : [];
+  const boosters = boostersDelProyecto();
   const { mappedOdsIds, mappedEjeIds } = getChallengeImpactDetails(state.challenge_id);
   const odsTxt = mappedOdsIds.map(oid => {
     const o = ODS_CATALOG.find(x => x.id === oid);
     return o ? o.code : "";
   }).filter(Boolean).join(" · ");
 
-  const boostList = [
-    { key: "ods", title: "Alineación ODS", desc: "Ata la tesis a una meta concreta." },
-    { key: "nacional_plan", title: state.rally_type === "nacional" ? "Eje del Plan Nacional" : "Escalamiento Latam", desc: state.rally_type === "nacional" ? "Conecta con el plan país." : "Diseño transferible a otros municipios." },
-    { key: "sensors", title: "Hardware y telemetría", desc: "Suma sensores y energía autónoma." },
-    { key: "visuals", title: "Pieza visual para el video", desc: "Pauta una toma de pantalla o un 3D." },
-    { key: "waste_capital", title: "Pasivo convertido en capital", desc: "Residuo que se vuelve insumo." },
-    { key: "cyber_physical", title: "Hibridación ciber-física", desc: "Lo físico con sensado o IA." }
-  ];
-  const marcados = boostList.filter(b => boosters.includes(b.key)).length;
-
+  const activos = boosters.filter(b => b.why);
   const aprobada = !!state.solution_approved;
+  const editando = !aprobada || !!state.solution_editing;
+
+  // Los potenciadores salen del proyecto: la tesis, el reto y los ODS deciden
+  // cuáles aplican. Aquí solo se muestran y se explica por qué entró cada uno.
+  const bloqueBoosters = `
+    <section class="sol-sec">
+      <div class="sol-sec-head">
+        <div>
+          <span class="sol-label">Lo que el motor tiene en cuenta</span>
+          <p class="sol-hint">Se deduce de la tesis, el reto y los ODS. No se marca a mano.</p>
+        </div>
+        <span class="sol-count">${activos.length} de ${boosters.length}</span>
+      </div>
+      <div class="sol-boosters">
+        ${boosters.map(b => `
+          <div class="sol-booster${b.why ? " is-on" : ""}" style="grid-template-columns:1fr; cursor:default;">
+            <span class="sol-booster-title">${b.title}</span>
+            <span class="sol-booster-desc">${escapeHtml(b.why || b.desc)}</span>
+          </div>`).join("")}
+      </div>
+    </section>
+  `;
 
   return `
     <div class="phase-header">
@@ -6257,18 +6270,11 @@ function renderViewSolution() {
       </div>
       <div class="sol-head-actions">
         <button class="link-quiet" onclick="clearSelectedChallenge(); switchTab('challenges');">← Cambiar reto</button>
-        <button class="btn-primary" onclick="approveSolutionAndUnlock()">${state.solution_approved ? "Actualizar" : "Aprobar y continuar"}</button>
+        <button class="btn-primary" onclick="${aprobada && !editando ? "abrirEditorSolucion(true)" : "approveSolutionAndUnlock()"}">${aprobada && !editando ? "Editar" : (state.solution_approved ? "Guardar cambios" : "Aprobar y continuar")}</button>
       </div>
     </div>
 
-    ${aprobada && (state.solution_raw_input || "").trim() ? `
-      <details class="sol-sec">
-        <summary class="sol-label">Tu idea original, con tus palabras</summary>
-        <p class="sol-hint">Ya está aprobada y no hace falta reescribirla. Ábrela solo si quieres ajustarla.</p>
-        <textarea id="raw-sol-input" class="sol-input sol-input-lg" rows="3" placeholder="Ej: Secamos fruta con aire caliente y un sensor, para que el productor no pierda la cosecha."
-          oninput="updateSolutionFieldLive('raw_input', this.value)">${escapeHtml(state.solution_raw_input || "")}</textarea>
-      </details>
-    ` : `
+    ${editando ? `
     <section class="sol-sec">
       <label class="sol-label" for="raw-sol-input">Tu idea, con tus palabras</label>
       <p class="sol-hint">Sin tecnicismos. Lo que le contarías a un vecino.</p>
@@ -6278,7 +6284,6 @@ function renderViewSolution() {
         <button class="link-quiet" onclick="synthesizeSolutionFromRaw()">${SVG.spark} Estructurar tesis y pitch</button>
       </div>
     </section>
-    `}
 
     <section class="sol-sec">
       <label class="sol-label" for="sol-thesis">Tesis técnica</label>
@@ -6290,7 +6295,6 @@ function renderViewSolution() {
       <p class="sol-hint">Para el jurado que no es ingeniero.</p>
       <textarea id="sol-simple" class="sol-input" rows="2" placeholder="Explicación accesible…"
         oninput="updateSolutionFieldLive('simple', this.value)">${escapeHtml(state.solution_simple || "")}</textarea>
-      <div style="margin-top:8px;">${aiEditPanel("solution")}</div>
     </section>
 
     <section class="sol-sec">
@@ -6299,41 +6303,87 @@ function renderViewSolution() {
       <input type="text" id="sol-proj-name" class="sol-input" placeholder="Dos palabras, sin genéricos"
         value="${escapeHtml(state.project_name || "")}" oninput="updateProjectNameLive(this.value)">
     </section>
+    ` : `
+    <section class="sol-sec">
+      <span class="sol-label">Tesis técnica</span>
+      <div class="sol-input" style="white-space:pre-wrap;">${escapeHtml(state.solution_thesis || "Sin tesis todavía.")}</div>
+      <span class="sol-label" style="margin-top:18px; display:block;">Pitch de cinco segundos</span>
+      <div class="sol-input" style="white-space:pre-wrap;">${escapeHtml(state.solution_simple || "Sin pitch todavía.")}</div>
+      <p class="sol-hint" style="margin-top:10px;">Proyecto: <strong>${escapeHtml(state.project_name || "sin nombre")}</strong></p>
+    </section>
+    `}
+
+    ${bloqueBoosters}
 
     <section class="sol-sec">
-      <div class="sol-sec-head">
-        <div>
-          <span class="sol-label">Potenciadores</span>
-          <p class="sol-hint">Lo que el motor tiene en cuenta al escribir la tesis.</p>
-        </div>
-        <span class="sol-count">${marcados} de ${boostList.length}</span>
-      </div>
-      <div class="sol-boosters">
-        ${boostList.map(b => `
-          <label class="sol-booster${boosters.includes(b.key) ? " is-on" : ""}">
-            <input type="checkbox" ${boosters.includes(b.key) ? "checked" : ""} onchange="toggleBooster('${b.key}')">
-            <span class="sol-booster-title">${b.title}</span>
-            <span class="sol-booster-desc">${b.desc}</span>
-          </label>
-        `).join("")}
-      </div>
+      <span class="sol-label">Pedirle un cambio a la IA</span>
+      <p class="sol-hint">Di qué ajustar y acepta la propuesta. Lo que no pidas no se toca.</p>
+      ${aiEditPanel("solution")}
     </section>
 
     <div class="sol-foot">
       <span>${odsTxt ? `Alineado a ${odsTxt}` : "Sin ODS vinculados todavía"}${mappedEjeIds.length ? ` · Plan país: ${mappedEjeIds.map(e => e.toUpperCase()).join(", ")}` : ""}</span>
-      <button class="link-quiet" onclick="switchTab('impact')">Ajustar impacto →</button>
+      <span style="display:flex; gap:14px; align-items:center;">
+        ${aprobada ? `<button class="link-quiet" onclick="abrirEditorSolucion(${editando ? "false" : "true"})">${SVG.edit} ${editando ? "Cerrar el editor" : "Editar la solución"}</button>` : ""}
+        <button class="link-quiet" onclick="switchTab('impact')">${odsTxt ? "Ver el impacto →" : "Ajustar el impacto →"}</button>
+      </span>
     </div>
   `;
 }
 
-function toggleBooster(key) {
-  if (state.solution_boosters.includes(key)) {
-    state.solution_boosters = state.solution_boosters.filter(b => b !== key);
-  } else {
-    state.solution_boosters.push(key);
-  }
+function abrirEditorSolucion(abrir) {
+  state.solution_editing = !!abrir;
   saveState();
   renderTab("solution");
+}
+
+// Un potenciador entra si el proyecto lo pide, no si al equipo le gusta. Cada
+// uno cita la evidencia que lo activó; sin evidencia queda apagado y visible,
+// para que se vea qué falta para ganarlo.
+function boostersDelProyecto() {
+  const texto = [
+    state.solution_thesis, state.solution_raw_input, state.solution_simple,
+    state.challenge_title, state.description_one_line
+  ].filter(Boolean).join(" ").toLowerCase();
+  const { mappedOdsIds, mappedEjeIds } = getChallengeImpactDetails(state.challenge_id);
+  const ods = mappedOdsIds.length || (Array.isArray(state.ods_ids) ? state.ods_ids.length : 0);
+  const buscar = (re) => {
+    const m = texto.match(re);
+    return m ? m[0] : "";
+  };
+  const lista = [
+    {
+      key: "ods", title: "Alineación ODS", desc: "Se ata a una meta concreta.",
+      why: ods ? "El reto trae ODS mapeados." : ""
+    },
+    {
+      key: "nacional_plan",
+      title: state.rally_type === "nacional" ? "Eje del Plan Nacional" : "Escalamiento Latam",
+      desc: state.rally_type === "nacional" ? "Conecta con el plan país." : "Diseño transferible a otros municipios.",
+      why: state.rally_type === "nacional"
+        ? (mappedEjeIds.length ? `Eje mapeado: ${mappedEjeIds.map(e => e.toUpperCase()).join(", ")}` : "")
+        : (buscar(/replic\w*|escal\w*|transfer\w*|param[ée]tric\w*/) ? `La tesis lo declara: «${buscar(/replic\w*|escal\w*|transfer\w*|param[ée]tric\w*/)}»` : "")
+    },
+    {
+      key: "sensors", title: "Hardware y telemetría", desc: "Suma sensores y energía autónoma.",
+      why: buscar(/sensor\w*|telemetr\w*|nodo|iot|gps|esp32|arduino|lora|bater[íi]a|solar/) ? `La tesis nombra «${buscar(/sensor\w*|telemetr\w*|nodo|iot|gps|esp32|arduino|lora|bater[íi]a|solar/)}»` : ""
+    },
+    {
+      key: "visuals", title: "Pieza visual para el video", desc: "Pauta una toma de pantalla o un 3D.",
+      why: buscar(/\bapp\b|aplicaci[óo]n|plataforma|\bweb\b|software|panel|tablero/) ? "Hay pantalla que mostrar: toma de interfaz."
+        : (buscar(/nodo|dispositivo|prototipo|m[óo]dulo|estructura|contenedor/) ? "Hay objeto físico: modelo 3D para el video." : "")
+    },
+    {
+      key: "waste_capital", title: "Pasivo convertido en capital", desc: "Residuo que se vuelve insumo.",
+      why: buscar(/residuo\w*|merma\w*|compost\w*|recicl\w*|biomasa|c[áa]scara\w*|aserr[íi]n|suero|esti[ée]rcol|org[áa]nic\w*/) ? `La tesis nombra «${buscar(/residuo\w*|merma\w*|compost\w*|recicl\w*|biomasa|c[áa]scara\w*|aserr[íi]n|suero|esti[ée]rcol|org[áa]nic\w*/)}»` : ""
+    },
+    {
+      key: "cyber_physical", title: "Hibridación ciber-física", desc: "Lo físico con sensado o IA.",
+      why: buscar(/\bia\b|algoritm\w*|clasific\w*|modelo|predic\w*|visi[óo]n|automat\w*|machine learning|sensado/) ? `La tesis nombra «${buscar(/\bia\b|algoritm\w*|clasific\w*|modelo|predic\w*|visi[óo]n|automat\w*|machine learning|sensado/)}»` : ""
+    }
+  ];
+  state.solution_boosters = lista.filter(b => b.why).map(b => b.key);
+  return lista;
 }
 
 // ── COLABORACIÓN EN VIVO · TALLER DE SOLUCIÓN ──────────────────────────────
@@ -6407,6 +6457,7 @@ function approveSolutionAndUnlock() {
   }
 
   state.solution_approved = true;
+  state.solution_editing = false;
   state.description_one_line = state.solution_thesis;
 
   if (!state.pautado.solucion) {

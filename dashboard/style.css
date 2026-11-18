@@ -6120,6 +6120,8 @@ h3 {
 .sol-booster-desc { font-size: 11.5px; color: var(--text-faint); line-height: 1.4; margin-top: 1px; }
 .sol-booster.is-on { background: var(--bg-subtle); }
 .sol-booster.is-on .sol-booster-title { color: var(--text-title); font-weight: 700; }
+.sol-booster:not(.is-on) .sol-booster-title { color: var(--text-muted); font-weight: 600; }
+.sol-booster.is-on { border-left: 2px solid var(--color-primary); padding-left: 11px; }
 
 .sol-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
   padding: 14px 0 8px; font-size: 11.5px; color: var(--text-muted); }
