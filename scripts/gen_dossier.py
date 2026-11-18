@@ -258,28 +258,10 @@ def _docx_api(doc):
         bordes.append(linea)
         pPr.append(bordes)
 
-    def tabla_dos(filas, ancho_k=4.6):
-        t = doc.add_table(rows=len(filas), cols=2)
-        t.alignment = WD_TABLE_ALIGNMENT.CENTER
-        for i, (k, v) in enumerate(filas):
-            c0, c1 = t.rows[i].cells
-            c0.width = Cm(ancho_k)
-            c1.width = Cm(14.6)
-            c0.text = ""
-            r0 = c0.paragraphs[0].add_run(k.upper())
-            r0.bold = True
-            r0.font.size = Pt(7.5)
-            r0.font.color.rgb = azul
-            c1.text = ""
-            r1 = c1.paragraphs[0].add_run(str(v))
-            r1.font.size = Pt(9.5)
-        return t
-
     return {
         "p": p,
         "rotulo": rotulo,
         "borde_inferior": borde_inferior,
-        "tabla_dos": tabla_dos,
         "azul": azul,
         "cobalt": cobalt,
         "cyan": cyan,
@@ -296,8 +278,8 @@ def _docx_reto(doc, api, r):
     from docx.oxml.ns import qn
     from docx.shared import Cm, Pt, RGBColor
 
-    p, rotulo, tabla_dos, borde_inferior = (
-        api["p"], api["rotulo"], api["tabla_dos"], api["borde_inferior"]
+    p, rotulo, borde_inferior = (
+        api["p"], api["rotulo"], api["borde_inferior"]
     )
     azul, cobalt, cyan = api["azul"], api["cobalt"], api["cyan"]
     gris, suave = api["gris"], api["suave"]
@@ -364,12 +346,6 @@ def _docx_reto(doc, api, r):
             rn.font.color.rgb = cobalt
             rp = par.add_run(paso)
             rp.font.size = Pt(9.5)
-        p("DATOS DE LA SOLUCIÓN", 7.5, True, color=azul, before=2, after=2)
-        tabla_dos([
-            ("Beneficiario", prop["beneficiario"]),
-            ("Componentes", ", ".join(prop["componentes"])),
-            ("Costo estimado", prop["costo"]),
-        ])
         par = doc.add_paragraph()
         par.paragraph_format.left_indent = Cm(0.3)
         par.paragraph_format.space_before = Pt(4)
