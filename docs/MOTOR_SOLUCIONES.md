@@ -4,12 +4,13 @@ Los retos los entrega el usuario o el comité. Este motor **no crea retos**: tom
 existentes y produce soluciones aplicables, sustentadas en casos ganadores, con razonamiento
 explícito y un dossier listo para deliberar.
 
-## Dos rutas, no una
+## Una ruta de entrega
 
-| Ruta | Script | Qué produce |
+| Paso | Script | Qué produce |
 |---|---|---|
-| Dossier pulido (el que se entrega) | `scripts/gen_dossier.py` | PDF de 3 páginas por reto + Word editable + Excel por hoja |
-| Borrador automático | `scripts/soluciones_motor.py` + `scripts/gen_soluciones_pdf.py` | tarjetas rápidas por reto para revisar antes de curar — **BORRADOR BANEADO para entrega**: su diseño no es el aprobado; entregar solo con `gen_dossier.py` |
+| 1. Motor | `scripts/soluciones_motor.py` | JSON de trabajo por reto (materia prima, sin diseño) |
+| 2. Fichas | `scripts/dossier_desde_motor.py` | JSON curado con la forma que exige el maquetador |
+| 3. Dossier | `scripts/gen_dossier.py` | PDF de 3 páginas por reto + Word editable + Excel por hoja |
 
 El dossier pulido **no se escribe en el Python**: el contenido vive en un JSON y el script solo
 maqueta. Cambiar texto es editar el JSON, nunca el generador.
@@ -26,11 +27,9 @@ python scripts/gen_dossier.py --json research/soluciones_actuales.json `
 # Solo el HTML, para revisar antes de imprimir
 python scripts/gen_dossier.py --json research/soluciones_actuales.json --pdf docs/x.pdf --html-only
 
-# Borrador automático del motor (antes de curar)
-python scripts/soluciones_motor.py --todos --certamen nacional --grafo `
-  --json docs/_build/soluciones.json
-python scripts/gen_soluciones_pdf.py --json docs/_build/soluciones.json `
-  --out docs/_build/Dossier_borrador.pdf
+# Fichas curadas a partir del motor
+python scripts/dossier_desde_motor.py --extra research/dossier_extra.json
+python scripts/gen_dossier.py --json research/dossier_fichas.json --pdf docs/Dossier_Soluciones.pdf
 ```
 
 Opciones del motor: `--reto DESAFIO_01`, `--propuestas N`, `--categoria social`

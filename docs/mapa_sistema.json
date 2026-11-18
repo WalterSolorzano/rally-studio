@@ -86,10 +86,9 @@
     {
       "id": "dossier-soluciones",
       "descripcion": "Convierte los retos del comité o del usuario en un dossier formal de 3 páginas por reto (PDF, Word, Excel) con precedentes ganadores y razonamiento problema-causa-insight-solución-métrica. Úsala cuando piden el documento entregable. Si solo quieren ideas en el chat, usa `proponer-retos`.",
-      "lineas": 76,
+      "lineas": 75,
       "scripts": [
         "scripts/gen_dossier.py",
-        "scripts/gen_soluciones_pdf.py",
         "scripts/soluciones_motor.py"
       ],
       "skills_citadas": [],
@@ -605,7 +604,7 @@
     },
     {
       "archivo": "gen_dossier.py",
-      "lineas": 936,
+      "lineas": 937,
       "doc": "Genera el dossier de soluciones en PDF, Word y Excel a partir de un JSON."
     },
     {
@@ -677,11 +676,6 @@
       "archivo": "gen_site.py",
       "lineas": 373,
       "doc": "Genera site/index.html a partir del brief y de la identidad aprobada."
-    },
-    {
-      "archivo": "gen_soluciones_pdf.py",
-      "lineas": 301,
-      "doc": "Genera el dossier PDF de soluciones para los retos del usuario."
     },
     {
       "archivo": "gen_storyboard_visual.py",
@@ -1009,8 +1003,8 @@
     "dashboard/presence.js"
   ],
   "cruces": {
-    "scripts_total": 89,
-    "scripts_citados": 31,
+    "scripts_total": 88,
+    "scripts_citados": 30,
     "scripts_huerfanos": [
       "build_report_pdf.py",
       "build_stats.py",

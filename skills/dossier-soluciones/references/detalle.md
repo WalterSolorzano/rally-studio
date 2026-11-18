@@ -381,8 +381,8 @@ bisturí», de arriba. La ley solo se dispara con rechazo explícito del PDF com
 - **PDF** A4 por Chrome headless (fuentes locales Plus Jakarta Sans + JetBrains Mono);
   **Word** espejo, con ODS como tabla de imagen oficial; **Excel** con Panel + una hoja por
   reto (ambas soluciones, detalles, métricas, comentarios editables).
-- Comandos: `scripts/gen_dossier.py` (dossier curado) o `scripts/soluciones_motor.py` +
-  `scripts/gen_soluciones_pdf.py` (borrador). Especificación de diseño: `references/dossier-soluciones.md`; doctrina: `docs/MOTOR_SOLUCIONES.md`.
+- Comandos: `scripts/dossier_desde_motor.py` (motor → fichas) y `scripts/gen_dossier.py`
+  (fichas → PDF/Word/Excel). Especificación de diseño: `references/dossier-soluciones.md`; doctrina: `docs/MOTOR_SOLUCIONES.md`.
 
 ## Validación antes de entregar
 

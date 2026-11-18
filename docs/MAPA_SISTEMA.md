@@ -2,7 +2,7 @@
 
 Generado por `python tools/mapa_sistema.py`. No editar a mano: se regenera.
 
-Conteo: **16 skills**, **15 pestanas**, **89 scripts**, **13 entregables**.
+Conteo: **16 skills**, **15 pestanas**, **88 scripts**, **13 entregables**.
 
 ## Pestanas de la ventana (13 etapas + resumen)
 
@@ -31,7 +31,7 @@ Conteo: **16 skills**, **15 pestanas**, **89 scripts**, **13 entregables**.
 | `auditar-entregable` | 123 | Revisa un entregable contra la rúbrica del certamen, las bases del evento y el propósito del grupo, y devuelve | — | — |
 | `contexto-rally` | 113 | Carga el contexto del proyecto antes de trabajar. Lee brief.json, el índice del corpus y el estado vivo de la  | — | — |
 | `control-tiempo-entrega` | 77 | Controla el cronómetro del certamen, avisa estado horario, congela entregables al 75% del tiempo y valida el c | — | — |
-| `dossier-soluciones` | 76 | Convierte los retos del comité o del usuario en un dossier formal de 3 páginas por reto (PDF, Word, Excel) con | `gen_dossier.py`, `gen_soluciones_pdf.py`, `soluciones_motor.py` | — |
+| `dossier-soluciones` | 75 | Convierte los retos del comité o del usuario en un dossier formal de 3 páginas por reto (PDF, Word, Excel) con | `gen_dossier.py`, `soluciones_motor.py` | — |
 | `guiar-usuario` | 82 | Lleva al usuario por las 13 etapas del workbench, detecta qué falta en cada una y lo pregunta de a una. Úsala  | — | — |
 | `guion-storyboard` | 227 | Escribe el guion PAS-V y el plan de tomas como un solo entregable de rodaje (script/teleprompter.html) con dos | `build_shotlist.py`, `rally_service.py`, `a11y_plantilla.py`, `dibujar_storyboard.py`, `exportar_pdf.py`, `servir_rodaje.py` | fuentes.css, gen_teleprompter.py, plantilla_teleprompter.html |
 | `ingestar-investigacion` | 107 | Procesa un PDF, DOCX o MD que trae el usuario desde fuera (por ejemplo una investigación hecha en z.ai), extra | `herramientas.py`, `ingest_challenges.py` | — |
@@ -98,7 +98,7 @@ Conteo: **16 skills**, **15 pestanas**, **89 scripts**, **13 entregables**.
 | `gen_budget.py` | 244 | gen_budget.py -- Genera budget/budget.xlsx con formato formal a partir de budget/budget.json. | si |
 | `gen_canvas.py` | 166 | gen_canvas.py -- Genera docs/canvas.md a partir de brief.json y budget/budget.json. |  |
 | `gen_challenges_doc.py` | 245 | gen_challenges_doc.py -- Genera el documento Word editable oficial de deliberación del equipo: |  |
-| `gen_dossier.py` | 936 | Genera el dossier de soluciones en PDF, Word y Excel a partir de un JSON. |  |
+| `gen_dossier.py` | 937 | Genera el dossier de soluciones en PDF, Word y Excel a partir de un JSON. |  |
 | `gen_indice.py` | 436 | Genera `knowledge/INDICE.md`: el mapa del corpus para el agente (b). |  |
 | `gen_mapa_nicaragua.py` | 108 | Genera la silueta de Nicaragua (path SVG) para el modulo design/. |  |
 | `gen_ods_data.py` | 80 | Genera design/ods_data.js desde el catalogo ODS del dashboard. |  |
@@ -113,7 +113,6 @@ Conteo: **16 skills**, **15 pestanas**, **89 scripts**, **13 entregables**.
 | `gen_script.py` | 573 | gen_script.py -- Genera script/script.md, script/shotlist.csv y script/narration.txt | si |
 | `gen_sharktank_pdf.py` | 236 | Genera el PDF de salud de la idea (skill sharktank). |  |
 | `gen_site.py` | 373 | Genera site/index.html a partir del brief y de la identidad aprobada. |  |
-| `gen_soluciones_pdf.py` | 301 | Genera el dossier PDF de soluciones para los retos del usuario. |  |
 | `gen_storyboard_visual.py` | 606 | Genera el tablero visual de rodaje (hoja de contactos + una fila por toma). |  |
 | `gen_voice.py` | 323 | gen_voice.py -- Sintetizador de voz adaptativo para el video pitch (<= 120s). | si |
 | `generate_master_pdf.py` | 640 | — |  |
