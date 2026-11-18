@@ -20,6 +20,7 @@ import csv
 import html
 import re
 import sys
+import unicodedata
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parents[1]
@@ -43,6 +44,30 @@ ACTOS = {
                                           v["fin"] // 60, v["fin"] % 60))
     for v in ventanas()
 }
+
+
+def _sin_acentos(texto: str) -> str:
+    return "".join(
+        c for c in unicodedata.normalize("NFKD", texto or "") if not unicodedata.combining(c)
+    )
+
+
+def _acto(clave: str) -> str:
+    """El acto del shotlist puede venir como 'I', 'Acto I' o el nombre del acto.
+
+    El CSV lo escribe quien graba; sin esto, un `act` con nombre humano revienta
+    el tablero con `KeyError: 'Gancho y Dolor Real'`.
+    """
+    texto = (clave or "").strip()
+    if texto.upper() in ACTOS:
+        return texto.upper()
+    limpio = _sin_acentos(texto).lower()
+    for clave_acto, (_, nombre, _) in ACTOS.items():
+        etiqueta = _sin_acentos(nombre.split("·", 1)[-1]).strip().lower()
+        if etiqueta and (etiqueta in limpio or limpio in etiqueta):
+            return clave_acto
+    return next(iter(ACTOS))
+
 
 CAMAS = {
     "I": (PALETA.get("secondary") or "#4A5468", "Sin música — ambiente real", "triste / real"),
@@ -317,6 +342,7 @@ def leer(ruta: Path | None = None) -> list[dict]:
         filas = list(csv.DictReader(f))
     t = 0.0
     for fila in filas:
+        fila["act"] = _acto(fila.get("act", ""))
         fila["dur"] = float(fila["duration_s"])
         fila["ini"] = t
         t += fila["dur"]
@@ -387,7 +413,7 @@ def fila_plan(fila: dict) -> str:
         for t, u in ficha.get("buscar", [])
     )
     crear = "".join(f"<li>{html.escape(c)}</li>" for c in ficha.get("crear", []))
-    items = [i.strip() for i in re.split(r"[;,]", fila["rubric_item"]) if i.strip()]
+    items = [i.strip() for i in re.split(r"[;,]", fila.get("rubric_item", "")) if i.strip()]
     chips = "".join(f'<span class="chip">{html.escape(i.split()[0])}</span>' for i in items)
     return f"""
     <div class="row" id="{fila["id"].lower()}" style="--c:{color}">
@@ -498,7 +524,7 @@ def construir(filas: list[dict]) -> str:
     actos: dict[str, float] = {a: 0.0 for a in ACTOS}
     for f in filas:
         actos[f["act"]] = actos.get(f["act"], 0.0) + f["dur"]
-    items = sorted({t for f in filas for t in re.findall(r"([a-e]\d)\b", f["rubric_item"])})
+    items = sorted({t for f in filas for t in re.findall(r"([a-e]\d)\b", f.get("rubric_item", ""))})
 
     # la barra usa el color del acto
     barra = "".join(
@@ -572,7 +598,7 @@ def main() -> None:
     SALIDA.parent.mkdir(parents=True, exist_ok=True)
     SALIDA.write_text(construir(datos), encoding="utf-8")
     total = sum(f["dur"] for f in datos)
-    items = {t for f in datos for t in re.findall(r"([a-e]\d)\b", f["rubric_item"])}
+    items = {t for f in datos for t in re.findall(r"([a-e]\d)\b", f.get("rubric_item", ""))}
     print(f"OK: {SALIDA} · {len(datos)} tomas · {total:.1f} s · {len(items)} items de rubrica")
 
 
