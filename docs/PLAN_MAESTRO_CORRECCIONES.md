@@ -535,11 +535,15 @@ Una corrida está completa solo si:
       ahora `checks/coherencia.py` convierte las cifras dichas con letra y el mismo triplete
       da `['30','40','4200']` en guion, narración y pautado con cero hallazgos. En el paquete
       en blanco sigue saliendo REVISAR, que es correcto: no hay proyecto ni locución)*
-- [x] `audit/` con capturas de todas las pestañas que el paquete deja abrir (1440 y 390) y
-      consola limpia. *(12 capturas `tab-<pestaña>-{1440,390}.png` de resumen, certamen,
-      team, identidad, challenges y cierre. Las siete pestañas de nivel 3+ no abren sin
-      `challenge_id` real: `switchTab` aborta si `target.level > getWorkflowStage()`; es
-      gating por datos, no defecto de layout)*
+- [x] `audit/` con capturas de las 13 pestañas (1440 y 390) y consola limpia.
+      *(32 capturas `tab-<pestaña>-{1440,390}.png`: resumen, certamen, team, identidad,
+      retos, solución, impacto, multi-IA, pautado, presupuesto, recursos, canvas, guion,
+      prototipo y cierre. Para llegar a las de nivel 3+ hubo que cargar un reto por la
+      pestaña **Retos**: el botón «Cargar los retos y proponer soluciones» no tenía
+      `onclick` y no hacía nada con el comunicado pegado — defecto corregido en
+      `dashboard/app.js`. Después, aprobar la solución, escribir las cinco secciones del
+      pautado y una partida de presupuesto. Medido: `over = 0` en las 15 vistas a 1440 y a
+      390, y cero prosa bajo 14 px salvo los rótulos y cifras de tarjeta del resumen)*
 
 ### Evidencia de la auditoría del 18 de noviembre
 
@@ -563,6 +567,9 @@ cuarta corrida generó la cadena completa con un proyecto de prueba
 | el sitio cortaba la promesa y su tabla de costos no mostraba dinero | descripción de una línea + `unit_cost_nio`/`usd` |
 | `gen_voice` leía los `[PENDIENTE]` en voz alta | compuerta: no sintetiza con marcadores |
 | `verificar_fases` daba la fase 00 por imposible | el certamen confirmado en el panel cuenta como etapa |
+| el botón «Cargar los retos» de la pestaña Retos no tenía `onclick`: pegabas el comunicado y no pasaba nada | el reto nunca se cargaba, así que medio panel quedaba cerrado; ahora el botón procesa el texto |
+| el piso de lectura no alcanzaba el texto escrito con `style` inline en `app.js` | clases propias + `!important` en el bloque móvil: cero prosa bajo 14 px en las 15 vistas |
+| la coherencia de cifras nunca podía pasar: el extractor solo veía dígitos | las cifras dichas con letra se convierten antes de comparar |
 
 ### Qué NO hacer
 - No crear un segundo `DESIGN.md` ni una segunda paleta: `DESIGN.md` es capa producto (fija); la

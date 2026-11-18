@@ -77,6 +77,7 @@ prueban el mecanismo antes de que exista un proyecto, y porque cada una dejó in
 | 2026-11-18 | Cadena completa con proyecto de prueba y auditoría de cierre | profe | profe | `audit/informe-auditoria-exhaustiva.md` |
 | 2026-11-18 | Medición en navegador real: piso de lectura móvil, caché de la hoja y verificador de fases | profe | navegador (Chrome, instancia limpia) | `audit/g3-390.png`, `audit/g3-1440.png` |
 | 2026-11-18 | Recorrido de pestañas a 1440 y 390, y arsenal sobre artefactos reales | profe | navegador + `arsenal.py` en copia con proyecto de prueba | `audit/tab-*.png`, `audit/informe-auditoria-exhaustiva.md` |
+| 2026-11-18 | Las trece pestañas medidas con proyecto de prueba; botón de retos sin `onclick` corregido | profe | navegador (Chrome, instancia limpia) | `audit/tab-*-{1440,390}.png` |
 
 Lo que encontró la prueba de novato y cómo se cerró:
 

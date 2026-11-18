@@ -6959,5 +6959,28 @@ body.rs-sheet-open { overflow: hidden; }
   .timeline-next-desc,
   .guardrail-row-title,
   .ch-drop-title,
-  .ch-drop-hint { font-size: 14px !important; line-height: 1.5; }
+  .ch-drop-hint,
+  .sol-booster-desc,
+  .sol-booster-title,
+  .ods-scope-count,
+  .ods-row-name,
+  .ods-row-target,
+  .panel-todo-text,
+  .pa-k,
+  .pa-template-status,
+  .pautado-counter,
+  .src-scan-idle,
+  .video-studio-grid span,
+  .di-ai,
+  .wd-link-hint,
+  .bu-total-k,
+  .panel-todo-title,
+  .cr-verdict-sub,
+  .cr-held,
+  .rk-fold-k { font-size: 14px !important; line-height: 1.5; }
+  /* Una celda de tabla es contenido, no un rotulo. */
+  .rs-view td { font-size: 14px !important; line-height: 1.5; }
+  /* Un span sin clase dentro del contenido es texto suelto, no un rotulo. */
+  .rs-view span:not([class]) { font-size: 14px !important; line-height: 1.5; }
+  .rally-conflict p { font-size: 14px !important; line-height: 1.5; }
 }

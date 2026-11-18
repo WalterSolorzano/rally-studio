@@ -4333,7 +4333,7 @@ function renderViewChallenges() {
             placeholder="RETO 01: ...&#10;RETO 02: ..."></textarea>
 
           <div class="ch-import-foot">
-            <button id="btn-process-challenges" class="btn-select-card filled" style="padding:10px 22px; font-size:13px; font-weight:700;">
+            <button id="btn-process-challenges" class="btn-select-card filled" style="padding:10px 22px; font-size:13px; font-weight:700;" onclick="processCommitteeChallengesInput()">
               Cargar los retos y proponer soluciones ${SVG.arrowRight}
             </button>
           </div>
