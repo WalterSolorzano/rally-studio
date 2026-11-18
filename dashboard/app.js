@@ -649,7 +649,7 @@ try {
         state.pautado[data.key] = data.value;
         state.authorship.pautado[data.key] = data.mascot;
         const el = document.getElementById(`pt-${data.key}`);
-        if (el && document.activeElement !== el) el.value = data.value;
+        if (el && document.activeElement !== el) { el.value = data.value; ajustarAltoTexto(el); }
       } else if (data.category === "script") {
         state.script[data.key] = data.value;
         state.authorship.script[data.key] = data.mascot;
@@ -2456,6 +2456,10 @@ function renderTab(tabId) {
   main.innerHTML = `<div class="content-wrapper rs-view${dirCls}">${(renderers[tabId] || renderViewCertamen)()}</div>`;
   if (tabId === "canvas") requestAnimationFrame(fitAllCanvasInputs);
   if (tabId === "script") requestAnimationFrame(updateScriptMeters);
+  if (tabId === "pautado") requestAnimationFrame(() => { ajustarAltoTodos(".pa-input"); refreshPautadoTemplateStatus(); });
+  if (tabId === "challenges") requestAnimationFrame(() => {
+    document.querySelectorAll('[id^="new-idea-input-"]').forEach(el => ajustarAltoTexto(el, 34));
+  });
   updateInspector();
   attachTabListeners(tabId);
 }
@@ -3296,7 +3300,10 @@ function aiEditBody(key) {
   const t = aiEditTarget(key);
   if (!t) return "";
   if (!st.open) {
-    return `<button class="link-quiet" onclick="aiEditToggle('${key}')" title="Hablar con la IA sobre este texto">${SVG.sparkles || SVG.check} Editar con IA</button>`;
+    return `<button class="ai-chat-mini" onclick="aiEditToggle('${key}')" title="Hablar con la IA sobre este texto">
+      ${_botAvatar("ai-chat-mini-avatar")}
+      <span><strong>Copiloto</strong><em>Editar con IA</em></span>
+    </button>`;
   }
   const historial = aiEditHist(key);
   return `
@@ -4235,7 +4242,9 @@ function renderMesaNotes(ch) {
       </div>
       <div class="cr-compose">
         <span class="cr-dot" style="background:${_userColor(_me())}"></span>
-        <input type="text" id="new-idea-input-${ch.id}" placeholder="Escribe la idea, el pro o el contra y queda pegada a este reto…" onkeydown="if(event.key==='Enter') addChallengeIdea('${ch.id}')">
+        <textarea id="new-idea-input-${ch.id}" rows="1" placeholder="Escribe la idea, el pro o el contra y queda pegada a este reto…"
+          oninput="ajustarAltoTexto(this, 34)"
+          onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();addChallengeIdea('${ch.id}')}"></textarea>
         <button class="btn-select-card filled" style="padding:6px 14px; font-size:12px; font-weight:700;" onclick="addChallengeIdea('${ch.id}')">+ pegar redacción</button>
       </div>
     </section>
@@ -4267,9 +4276,15 @@ function renderMesaVote(ch) {
         <span class="cr-ballot-q">Tu voto en el reto #${ch.id}</span>
         ${meId ? `
         <div class="cr-ballot-actions">
-          <button class="cr-ballot-btn is-yes ${mio === "yes" ? "is-active" : ""}" onclick="mesaVote('${ch.id}', '${meId}', 'yes')">Apruebo</button>
-          <button class="cr-ballot-btn is-no ${mio === "no" ? "is-active" : ""}" onclick="mesaVote('${ch.id}', '${meId}', 'no')">Descarto</button>
-          <button class="cr-ballot-btn is-res ${mio === "res" ? "is-active" : ""}" onclick="mesaVote('${ch.id}', '${meId}', 'res')">Me reservo</button>
+          <button class="cr-ballot-btn is-yes ${mio === "yes" ? "is-active" : ""}" onclick="mesaVote('${ch.id}', '${meId}', 'yes')" aria-label="Apruebo este reto" title="Apruebo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          </button>
+          <button class="cr-ballot-btn is-no ${mio === "no" ? "is-active" : ""}" onclick="mesaVote('${ch.id}', '${meId}', 'no')" aria-label="Descarto este reto" title="Descarto">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+          <button class="cr-ballot-btn is-res ${mio === "res" ? "is-active" : ""}" onclick="mesaVote('${ch.id}', '${meId}', 'res')" aria-label="Me reservo el voto" title="Me reservo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 13.8"/></svg>
+          </button>
         </div>
         <p class="cr-ballot-wait">${faltan.length ? "Faltan por votar: " + faltan.join(", ") : "Ya votaron todos los de la mesa."}</p>
         ` : `<p class="cr-rule-line">Escribe tu nombre en el equipo y aquí aparece tu botón para votar.</p>`}
@@ -7836,63 +7851,47 @@ function injectTaskResult(taskId) {
 // ═════════════════════════════════════════════════════════════════════════════
 // 05 NIVEL 4: PAUTADO OFICIAL (< LÍMITES CON ESPACIOS)
 // ═════════════════════════════════════════════════════════════════════════════
-const PAUTADO_HINTS = {
-  problema: "Quién sufre, cuánto pierde y con qué cifra verificada se demuestra. Nombra el lugar una sola vez y escribe para que lo entienda alguien de fuera del rubro.",
-  solucion: "Qué hace tu sistema, con qué piezas y qué cambia para la gente. Frases cortas, sin nombres comerciales ni siglas que nadie explique.",
-  prefactibilidad: "Cuéntalo como se lo dirías a un vecino: quién paga, con qué se arranca, qué se gasta cada mes y qué parte se sostiene sola. Habla de personas, insumos y trabajo; no llenes de montos.",
-  innovacion: "Por qué no existe todavía: qué nadie ha juntado (Wow 1, ciber-física) o qué residuo convertiste en capital (Wow 2).",
-  impacto: "A quién le cambia la vida, cuántas familias o hectáreas y en qué eje del plan país encaja. El ODS se cita una vez y las cifras salen de tu propio proyecto."
-};
-
 const PAUTADO_LABELS = { problema: "Problema", solucion: "Solución", impacto: "Impacto", innovacion: "Innovación", prefactibilidad: "Prefactibilidad" };
 
 function renderViewPautado() {
   const authorship = (state.authorship && state.authorship.pautado) || {};
 
   return `
-    <div class="phase-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:14px; margin-bottom:24px; padding-bottom:14px; border-bottom:1px solid var(--border-light);">
+    <div class="phase-header pa-page-head">
       <div>
         <h1 class="phase-title">Documento <span class="phase-title-accent">Pautado Oficial</span></h1>
-        <p class="phase-subtitle">Escribe cada sección en texto corrido, como va en el documento. El conteo de caracteres es la única regla.</p>
       </div>
-      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+      <div class="pa-tools">
         <button class="btn-primary" onclick="compileAndDownloadDocx()" id="btn-compile-docx">
-          ${SVG.spark} Compilar en Word (.docx)
+          ${SVG.spark} Compilar Word
         </button>
-        <button class="btn-secondary" onclick="exportProjectMarkdown()" style="display:inline-flex; align-items:center; gap:5px;">
-          ${SVG.copy} Exportar Dossier (.md)
-        </button>
-        <button class="btn-secondary" onclick="printProjectDossier()" style="display:inline-flex; align-items:center; gap:5px;">
-          ${SVG.download} Imprimir / PDF
-        </button>
-        <a href="../plantillas/pautado_template.docx" id="direct-docx-link" download="Plantilla_Pautado_Oficial.docx" class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;" title="Descarga la plantilla oficial vacía para revisarla antes de compilar">
-          ${SVG.download} Plantilla Word (vacía)
-        </a>
+        <button class="pa-tool" onclick="exportProjectMarkdown()" title="Exportar el dossier en Markdown" aria-label="Exportar dossier en Markdown">${SVG.copy}</button>
+        <button class="pa-tool" onclick="printProjectDossier()" title="Imprimir o guardar en PDF" aria-label="Imprimir o guardar en PDF">${SVG.download}</button>
+        <a href="../plantillas/pautado_template.docx" id="direct-docx-link" download="Plantilla_Pautado_Oficial.docx" class="pa-tool" title="Descargar la plantilla Word vacía" aria-label="Descargar la plantilla Word vacía">${SVG.folder}</a>
       </div>
       ${onlineLinkRow("pautado", "Pega el enlace de Canva, Google Docs o Figma del pautado", "ENLACE AL PAUTADO EN LÍNEA")}
     </div>
 
-    <section class="pa-template">
-      <div class="pa-template-head">
+    <details class="pa-template">
+      <summary class="pa-template-head">
         <span class="pa-k">Plantilla oficial del evento</span>
-        <div class="pa-template-actions">
-          <button class="btn-secondary" type="button" onclick="document.getElementById('pautado-template-input').click()">${SVG.upload} Subir plantilla Word (.docx)</button>
-          <button class="btn-secondary" type="button" onclick="clearPautadoTemplate()">Quitar</button>
-        </div>
+        <span id="pautado-template-status" class="pa-template-status">Consultando plantilla…</span>
+      </summary>
+      <div class="pa-template-actions">
+        <button class="btn-secondary" type="button" onclick="document.getElementById('pautado-template-input').click()">${SVG.upload} Subir plantilla Word (.docx)</button>
+        <button class="btn-secondary" type="button" onclick="clearPautadoTemplate()">Quitar</button>
       </div>
       <p class="pa-template-text">
         Sube el Word (.docx) que entrega el evento (${rallyName()}).
-        Al compilar, los textos de abajo se insertan automáticamente bajo cada encabezado oficial, respetando las reglas de la rúbrica.
+        Al compilar, los textos se insertan bajo cada encabezado oficial.
       </p>
-      <div id="pautado-template-status" class="pa-template-status">Consultando plantilla…</div>
       <input type="file" id="pautado-template-input" aria-label="Subir plantilla Word del evento" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" style="display:none;" onchange="handlePautadoTemplateUpload(event)">
-    </section>
+    </details>
 
     <p class="pa-note">
-      <strong>${getPautadoLimit("problema") === null ? "DOCUMENTO OFICIAL DEL EVENTO:" : "CONTEO ESTRICTO DE CARACTERES:"}</strong>
       ${getPautadoLimit("problema") === null
-        ? "El Rally Nacional evalúa un documento técnico de hasta 10 páginas; el sistema inserta cada sección bajo su encabezado oficial sin recortar texto."
-        : "Evaluado con la matriz oficial (100 pts). Si sobrepasas el límite estipulado, el sistema corta el texto al límite o anula la sección en la rúbrica de evaluación."}
+        ? "Documento técnico de hasta 10 páginas: el texto se inserta completo."
+        : "Matriz oficial: si pasas el límite, el sistema corta el texto."}
     </p>
 
     <div class="pa-list">
@@ -7903,7 +7902,8 @@ function renderViewPautado() {
         const pct = max ? Math.min(100, Math.round((len / max) * 100)) : null;
         const isOver = max ? len > max : false;
         const isNear = !isOver && pct !== null && pct >= 92;
-        const counter = max ? `${len} / ${max} caracteres (${pct}%)` : `${len} caracteres`;
+        const counter = max ? `${len} / ${max}` : `${len}`;
+        const counterTitle = max ? `${len} de ${max} caracteres (${pct}%)` : `${len} caracteres`;
         const authorMascot = authorship[k] || null;
         const icon = {
           problema: SVG.target,
@@ -7919,14 +7919,13 @@ function renderViewPautado() {
               <span class="pa-label">${icon}<span>${PAUTADO_LABELS[k] || k}</span></span>
               ${authorMascot ? `<span class="collaborator-stamp" title="Última edición por ${authorMascot.name}">${authorMascot.icon} ${authorMascot.name}</span>` : ""}
               <span id="lock-tag-pautado-${k}"></span>
-              <span class="pautado-counter ${isOver ? "is-over" : isNear ? "is-near" : ""}" style="font-variant-numeric:tabular-nums;">${counter}</span>
+              <span class="pautado-counter ${isOver ? "is-over" : isNear ? "is-near" : ""}" title="${counterTitle}">${counter}</span>
             </header>
-            <p class="pa-hint">${PAUTADO_HINTS[k] || ""}</p>
-            <textarea id="pt-${k}" rows="5" class="pa-input ${isOver ? "is-over" : ""}"
+            <textarea id="pt-${k}" rows="1" class="pa-input ${isOver ? "is-over" : ""}"
               placeholder="Escribe la sección ${(PAUTADO_LABELS[k] || k).toLowerCase()}…"
               onfocus="broadcastLock('pautado-${k}')"
               onblur="broadcastRelease('pautado-${k}')"
-              oninput="updateCharCount('${k}', this)">${val}</textarea>
+              oninput="updateCharCount('${k}', this); ajustarAltoTexto(this)">${val}</textarea>
             <div>${aiEditPanel("pautado:" + k)}</div>
           </article>
         `;
@@ -7934,6 +7933,23 @@ function renderViewPautado() {
     </div>
   `;
 }
+
+// Texto largo sin scroll interno: la caja crece con el contenido, como en Word.
+function ajustarAltoTexto(el, min) {
+  if (!el) return;
+  el.style.height = "auto";
+  el.style.height = Math.max(min || 96, el.scrollHeight + 2) + "px";
+}
+
+function ajustarAltoTodos(selector) {
+  document.querySelectorAll(selector || ".pa-input").forEach(ajustarAltoTexto);
+}
+
+// Al cambiar el ancho, el texto se reacomoda: hay que volver a medir.
+window.addEventListener("resize", () => {
+  ajustarAltoTodos(".pa-input");
+  document.querySelectorAll('[id^="new-idea-input-"]').forEach(el => ajustarAltoTexto(el, 34));
+});
 
 function updateCharCount(k, el) {
   state.pautado[k] = el.value;
@@ -7946,7 +7962,8 @@ function updateCharCount(k, el) {
   const isNear = !isOver && pct !== null && pct >= 92;
   const labelEl = el.closest(".pa-section") ? el.closest(".pa-section").querySelector(".pautado-counter") : null;
   if (labelEl) {
-    labelEl.innerText = max ? `${len} / ${max} caracteres (${pct}%)` : `${len} caracteres`;
+    labelEl.innerText = max ? `${len} / ${max}` : `${len}`;
+    labelEl.title = max ? `${len} de ${max} caracteres (${pct}%)` : `${len} caracteres`;
     labelEl.classList.toggle("is-over", isOver);
     labelEl.classList.toggle("is-near", isNear);
   }
@@ -7982,18 +7999,18 @@ async function refreshPautadoTemplateStatus() {
     const data = await res.json();
     const info = (data.templates || {})[rallyType] || {};
     if (info.user) {
-      _setPautadoTemplateStatus(`${SVG.check} Cargada: ${info.user.name} · ${Math.round(info.user.size / 1024)} KB${hasLocal ? " (en esta sesión)" : ""}`, "#0D1B35");
+      _setPautadoTemplateStatus(`${SVG.check} Cargada: ${info.user.name}`, "var(--text-title)");
     } else if (hasLocal) {
-      _setPautadoTemplateStatus("Plantilla cargada en esta sesión (aún sin guardar en el servidor).", "#0D1B35");
+      _setPautadoTemplateStatus("Cargada, sin guardar en el servidor", "var(--text-title)");
     } else if (info.reference) {
-      _setPautadoTemplateStatus(`Sin subir: se usará la plantilla de referencia del evento (${info.reference}).`, "var(--text-muted)");
+      _setPautadoTemplateStatus("De referencia, sin subir", "var(--text-muted)");
     } else {
-      _setPautadoTemplateStatus("Sin subir y sin plantilla de referencia disponible.", "#b42318");
+      _setPautadoTemplateStatus("Sin plantilla", "var(--status-err-text)");
     }
   } catch (e) {
     _setPautadoTemplateStatus(
-      hasLocal ? "Plantilla cargada en esta sesión (servicio local no disponible)." : "Servicio local no disponible: activa el servidor para guardar/compilar la plantilla.",
-      hasLocal ? "#0D1B35" : "#b42318"
+      hasLocal ? "Cargada en esta sesión" : "Servicio local apagado",
+      hasLocal ? "var(--text-title)" : "var(--status-err-text)"
     );
   }
 }
@@ -8006,7 +8023,7 @@ async function handlePautadoTemplateUpload(event) {
   let b64 = "";
   try { b64 = await _readFileAsBase64(file); } catch (e) { showToast("No se pudo leer el archivo."); return; }
   _pautadoTemplateB64[rallyType] = b64;
-  _setPautadoTemplateStatus(`${SVG.check} Cargada: ${file.name} · ${Math.round(file.size / 1024)} KB`, "#0D1B35");
+  _setPautadoTemplateStatus(`${SVG.check} Cargada: ${file.name}`, "var(--text-title)");
   try {
     const res = await fetch("/api/template-upload", {
       method: "POST",
