@@ -3,11 +3,10 @@ Generador de Matriz de Deliberación y Selección de Desafíos 2026 (.docx)
 Oficial para Certámenes de Innovación (Rally Latinoamericano & Rally Nacional)
 """
 import os
-import docx
 from docx import Document
 from docx.shared import Inches, Pt, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
-from docx.enum.table import WD_TABLE_ALIGNMENT, WD_ALIGN_VERTICAL
+from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.oxml import OxmlElement, parse_xml
 from docx.oxml.ns import nsdecls, qn
 
@@ -39,22 +38,16 @@ def set_table_borders(table, color="CBD5E1", sz="4", val="single"):
     )
     tblPr.append(borders)
 
-def create_matriz_document(output_path):
-    doc = Document()
 
-    # 1. Page Margins
-    for section in doc.sections:
-        section.top_margin = Inches(0.8)
-        section.bottom_margin = Inches(0.8)
-        section.left_margin = Inches(0.8)
-        section.right_margin = Inches(0.8)
+# Paleta oficial del documento (constantes de modulo).
+# Palette
+C_NAVY = RGBColor(13, 27, 53)      # #0D1B35
+C_PRIMARY = RGBColor(8, 102, 245)  # #0866F5
+C_SLATE = RGBColor(92, 113, 147)   # #5C7193
+C_BODY = RGBColor(30, 41, 59)      # #1E293B
 
-    # Palette
-    C_NAVY = RGBColor(13, 27, 53)      # #0D1B35
-    C_PRIMARY = RGBColor(8, 102, 245)  # #0866F5
-    C_SLATE = RGBColor(92, 113, 147)   # #5C7193
-    C_BODY = RGBColor(30, 41, 59)      # #1E293B
 
+def _seccion_banner(doc):
     # ── HEADER / BANNER ──
     p_header = doc.add_paragraph()
     p_header.paragraph_format.space_before = Pt(0)
@@ -84,6 +77,8 @@ def create_matriz_document(output_path):
     run_sub.font.size = Pt(10)
     run_sub.font.color.rgb = C_SLATE
 
+
+def _seccion_meta(doc):
     # ── METADATA BOX (EQUIPO / CERTAMEN) ──
     table_meta = doc.add_table(rows=2, cols=4)
     table_meta.alignment = WD_TABLE_ALIGNMENT.CENTER
@@ -113,6 +108,8 @@ def create_matriz_document(output_path):
 
     doc.add_paragraph().paragraph_format.space_after = Pt(12)
 
+
+def _seccion_protocolo(doc):
     # ── SECCIÓN 1: PROTOCOLO DE DECISIÓN EN 60 MINUTOS ──
     p_s1 = doc.add_paragraph()
     p_s1.paragraph_format.space_before = Pt(14)
@@ -152,6 +149,8 @@ def create_matriz_document(output_path):
         r_fd.font.size = Pt(9)
         r_fd.font.color.rgb = C_BODY
 
+
+def _seccion_matriz(doc):
     # ── SECCIÓN 2: TABLA DE EVALUACIÓN MULTICRITERIO ──
     p_s2 = doc.add_paragraph()
     p_s2.paragraph_format.space_before = Pt(16)
@@ -223,6 +222,8 @@ def create_matriz_document(output_path):
             else:
                 r.font.color.rgb = C_BODY
 
+
+def _seccion_fichas(doc):
     # ── SECCIÓN 3: FICHAS TÉCNICAS ESTRATÉGICAS DE LOS 9 RETOS ──
     doc.add_page_break()
 
@@ -387,6 +388,8 @@ def create_matriz_document(output_path):
 
         doc.add_paragraph().paragraph_format.space_after = Pt(8)
 
+
+def _seccion_acta(doc):
     # ── SECCIÓN 4: ACTA DE VOTACIÓN Y CONSENSO FINAL ──
     doc.add_page_break()
 
@@ -471,6 +474,23 @@ def create_matriz_document(output_path):
     r_res_body.font.name = "Segoe UI"
     r_res_body.font.size = Pt(9)
     r_res_body.font.color.rgb = C_NAVY
+
+def create_matriz_document(output_path):
+    doc = Document()
+
+    # 1. Page Margins
+    for section in doc.sections:
+        section.top_margin = Inches(0.8)
+        section.bottom_margin = Inches(0.8)
+        section.left_margin = Inches(0.8)
+        section.right_margin = Inches(0.8)
+
+    _seccion_banner(doc)
+    _seccion_meta(doc)
+    _seccion_protocolo(doc)
+    _seccion_matriz(doc)
+    _seccion_fichas(doc)
+    _seccion_acta(doc)
 
     # Ensure directories exist
     os.makedirs(os.path.dirname(output_path), exist_ok=True)

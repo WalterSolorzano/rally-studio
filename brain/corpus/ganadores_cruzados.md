@@ -32,3 +32,9 @@ fila de sede correspondiente).
 - Cierre: "LexoStop cambia la experiencia de las antiguas estaciones de autobuses por un espacio seguro, informativo y de satisfactoria estadía mientras se espera su transporte urbano."
 
 **Uso:** Estas aperturas siguen el patrón Micro-Acto I (gancho + dolor cuantificado) y cierres siguen Micro-Acto IV (impacto + llamado a la acción). Ver `script/guion_guia.md`.
+
+<!-- relacionado:inicio -->
+
+## Relacionado
+
+- [glosario_instancias.md](glosario_instancias.md) — que significa cada instancia.

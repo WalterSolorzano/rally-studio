@@ -70,3 +70,9 @@
 - **verified**: no
 - **aplica a**: solo si el equipo confirma convocatoria vigente y requisitos
 - **calificador**: innovación nacional
+
+<!-- relacionado:inicio -->
+
+## Relacionado
+
+- [patrones_buenas_soluciones.md](patrones_buenas_soluciones.md) — patrones verificados.

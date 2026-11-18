@@ -211,10 +211,13 @@ def build_pdf() -> None:
 
 
 # ---------------------------------------------------------------- DOCX
-def build_docx() -> None:
-    from docx import Document
+def _docx_api(doc):
+    """Paleta y helpers de parrafo del DOCX del dossier.
+
+    Devuelve un diccionario para que el cuerpo por reto los reciba sin
+    redefinirlos en cada llamada.
+    """
     from docx.enum.table import WD_TABLE_ALIGNMENT
-    from docx.enum.text import WD_ALIGN_PARAGRAPH
     from docx.oxml import OxmlElement
     from docx.oxml.ns import qn
     from docx.shared import Cm, Pt, RGBColor
@@ -225,16 +228,6 @@ def build_docx() -> None:
     gris = RGBColor(0x33, 0x41, 0x55)
     suave = RGBColor(0x5C, 0x71, 0x93)
 
-    doc = Document()
-    s = doc.sections[0]
-    s.page_width, s.page_height = Cm(21), Cm(29.7)
-    s.left_margin = s.right_margin = Cm(2.0)
-    s.top_margin = Cm(1.8)
-    s.bottom_margin = Cm(1.8)
-    normal = doc.styles["Normal"]
-    normal.font.name = "Segoe UI"
-    normal.font.size = Pt(10)
-    normal.paragraph_format.space_after = Pt(4)
 
     def p(texto="", size=10, bold=False, italic=False, color=gris, before=0, after=4, align=None):
         par = doc.add_paragraph()
@@ -251,13 +244,6 @@ def build_docx() -> None:
 
     def rotulo(texto):
         return p(texto.upper(), size=8, bold=True, color=azul, before=10, after=2)
-
-    def sombrear(celda, hex_color):
-        shd = OxmlElement("w:shd")
-        shd.set(qn("w:val"), "clear")
-        shd.set(qn("w:color"), "auto")
-        shd.set(qn("w:fill"), hex_color)
-        celda._tc.get_or_add_tcPr().append(shd)
 
     def borde_inferior(par):
         pPr = par._p.get_or_add_pPr()
@@ -287,167 +273,206 @@ def build_docx() -> None:
             r1.font.size = Pt(9.5)
         return t
 
-    # Inicio directo: sin portada ni índice
-    for r in RETOS:
-        p(r["id"], 56, True, color=cobalt, after=0)
-        p(r["titulo"], 21, True, color=azul, after=4)
-        par = doc.add_paragraph()
-        par.paragraph_format.space_after = Pt(8)
-        chip = par.add_run(f" {r['categoria'].upper()} · RETO {r['id']}/09 ")
-        chip.bold = True
-        chip.font.name = "Consolas"
-        chip.font.size = Pt(7.5)
-        chip.font.color.rgb = RGBColor(0xFF, 0xFF, 0xFF)
-        sombrear_run = OxmlElement("w:shd")
-        sombrear_run.set(qn("w:val"), "clear")
-        sombrear_run.set(qn("w:fill"), "0D1B35")
-        par._p.get_or_add_pPr().append(sombrear_run)
-        p(r["descripcion"], 10, color=gris, after=4)
+    return {
+        "p": p,
+        "rotulo": rotulo,
+        "borde_inferior": borde_inferior,
+        "tabla_dos": tabla_dos,
+        "azul": azul,
+        "cobalt": cobalt,
+        "cyan": cyan,
+        "gris": gris,
+        "suave": suave,
+    }
 
-        rotulo("ODS elegidos y por qué")
-        for c, n, j in r["ods"]:
-            t = doc.add_table(rows=1, cols=2)
-            t.alignment = WD_TABLE_ALIGNMENT.CENTER
-            c0, c1 = t.rows[0].cells
-            c0.width = Cm(1.6)
-            c1.width = Cm(15.4)
-            c0.text = ""
-            par0 = c0.paragraphs[0]
-            par0.alignment = WD_ALIGN_PARAGRAPH.CENTER
-            num = c.split()[-1]
-            par0.add_run().add_picture(str(ODS_DIR / f"ods{num}.jpg"), width=Cm(1.15))
-            c1.text = ""
-            rn = c1.paragraphs[0].add_run(f"{n}. ")
-            rn.bold = True
-            rn.font.size = Pt(9)
-            rj = c1.paragraphs[0].add_run(j)
-            rj.font.size = Pt(9)
-            doc.add_paragraph().paragraph_format.space_after = Pt(0)
 
-        par = doc.add_paragraph()
-        par.paragraph_format.space_after = Pt(6)
-        rl = par.add_run("INSIGNIAS QUE APLICAN: ")
-        rl.bold = True
-        rl.font.name = "Consolas"
-        rl.font.size = Pt(7.5)
-        rl.font.color.rgb = azul
-        ri = par.add_run(" · ".join(f"{n} ({t})" for n, t in r["insignias"]))
-        ri.font.size = Pt(9)
+def _docx_reto(doc, api, r):
+    """Escribe un reto completo en el DOCX."""
+    from docx.enum.text import WD_ALIGN_PARAGRAPH
+    from docx.oxml import OxmlElement
+    from docx.shared import Cm, Pt, RGBColor
 
-        def solucion(prop, etiqueta, real, grande=True):
-            p(etiqueta.upper(), 7.5, True, color=cobalt, after=1)
-            p(prop["nombre"], 19, True, color=azul, after=2)
-            p(prop["claim"], 11, True, color=azul, after=4)
-            p(prop["que_es"], 10, color=gris, after=4)
-            p("CÓMO FUNCIONA", 7.5, True, color=azul, before=2, after=2)
-            for i, paso in enumerate(prop["como"], 1):
-                par = doc.add_paragraph()
-                par.paragraph_format.left_indent = Cm(0.9)
-                par.paragraph_format.space_after = Pt(2)
-                rn = par.add_run(f"0{i}  ")
-                rn.font.name = "Consolas"
-                rn.font.size = Pt(8)
-                rn.bold = True
-                rn.font.color.rgb = cobalt
-                rp = par.add_run(paso)
-                rp.font.size = Pt(9.5)
-            p("DATOS DE LA SOLUCIÓN", 7.5, True, color=azul, before=2, after=2)
-            tabla_dos([
-                ("Beneficiario", prop["beneficiario"]),
-                ("Componentes", ", ".join(prop["componentes"])),
-                ("Costo estimado", prop["costo"]),
-            ])
+    p, rotulo, tabla_dos, borde_inferior = (
+        api["p"], api["rotulo"], api["tabla_dos"], api["borde_inferior"]
+    )
+    azul, cobalt, cyan = api["azul"], api["cobalt"], api["cyan"]
+    gris, suave = api["gris"], api["suave"]
+
+    p(r["id"], 56, True, color=cobalt, after=0)
+    p(r["titulo"], 21, True, color=azul, after=4)
+    par = doc.add_paragraph()
+    par.paragraph_format.space_after = Pt(8)
+    chip = par.add_run(f" {r['categoria'].upper()} · RETO {r['id']}/09 ")
+    chip.bold = True
+    chip.font.name = "Consolas"
+    chip.font.size = Pt(7.5)
+    chip.font.color.rgb = RGBColor(0xFF, 0xFF, 0xFF)
+    sombrear_run = OxmlElement("w:shd")
+    sombrear_run.set(qn("w:val"), "clear")
+    sombrear_run.set(qn("w:fill"), "0D1B35")
+    par._p.get_or_add_pPr().append(sombrear_run)
+    p(r["descripcion"], 10, color=gris, after=4)
+
+    rotulo("ODS elegidos y por qué")
+    for c, n, j in r["ods"]:
+        t = doc.add_table(rows=1, cols=2)
+        t.alignment = WD_TABLE_ALIGNMENT.CENTER
+        c0, c1 = t.rows[0].cells
+        c0.width = Cm(1.6)
+        c1.width = Cm(15.4)
+        c0.text = ""
+        par0 = c0.paragraphs[0]
+        par0.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        num = c.split()[-1]
+        par0.add_run().add_picture(str(ODS_DIR / f"ods{num}.jpg"), width=Cm(1.15))
+        c1.text = ""
+        rn = c1.paragraphs[0].add_run(f"{n}. ")
+        rn.bold = True
+        rn.font.size = Pt(9)
+        rj = c1.paragraphs[0].add_run(j)
+        rj.font.size = Pt(9)
+        doc.add_paragraph().paragraph_format.space_after = Pt(0)
+
+    par = doc.add_paragraph()
+    par.paragraph_format.space_after = Pt(6)
+    rl = par.add_run("INSIGNIAS QUE APLICAN: ")
+    rl.bold = True
+    rl.font.name = "Consolas"
+    rl.font.size = Pt(7.5)
+    rl.font.color.rgb = azul
+    ri = par.add_run(" · ".join(f"{n} ({t})" for n, t in r["insignias"]))
+    ri.font.size = Pt(9)
+
+    def solucion(prop, etiqueta, real, grande=True):
+        p(etiqueta.upper(), 7.5, True, color=cobalt, after=1)
+        p(prop["nombre"], 19, True, color=azul, after=2)
+        p(prop["claim"], 11, True, color=azul, after=4)
+        p(prop["que_es"], 10, color=gris, after=4)
+        p("CÓMO FUNCIONA", 7.5, True, color=azul, before=2, after=2)
+        for i, paso in enumerate(prop["como"], 1):
             par = doc.add_paragraph()
-            par.paragraph_format.left_indent = Cm(0.3)
-            par.paragraph_format.space_before = Pt(4)
-            par.paragraph_format.space_after = Pt(4)
-            rk = par.add_run("EN LA PRÁCTICA  ")
-            rk.font.name = "Consolas"
-            rk.font.size = Pt(7)
-            rk.bold = True
-            rk.font.color.rgb = azul
-            rt = par.add_run(real)
-            rt.font.size = Pt(9.5)
-            rt.font.color.rgb = gris
-
-        rotulo("Dos soluciones posibles para este reto")
-        solucion(r["propuesta"], "Opción 01", r["realidad"]["a"])
-        solucion(r["alterna"], "Opción 02", r["realidad"]["b"], grande=False)
-
-        rotulo("Detalles que suman")
-        for k, t in r["detalles"]:
-            par = doc.add_paragraph(style="List Bullet")
+            par.paragraph_format.left_indent = Cm(0.9)
             par.paragraph_format.space_after = Pt(2)
-            rk = par.add_run(f"{k}: ")
-            rk.bold = True
-            rk.font.size = Pt(9.5)
-            rk.font.color.rgb = azul
-            rt = par.add_run(t)
-            rt.font.size = Pt(9.5)
-
-        rotulo("Cadena de razonamiento")
+            rn = par.add_run(f"0{i}  ")
+            rn.font.name = "Consolas"
+            rn.font.size = Pt(8)
+            rn.bold = True
+            rn.font.color.rgb = cobalt
+            rp = par.add_run(paso)
+            rp.font.size = Pt(9.5)
+        p("DATOS DE LA SOLUCIÓN", 7.5, True, color=azul, before=2, after=2)
         tabla_dos([
-            ("Problema", r["cadena"]["problema"]),
-            ("Causa raíz", r["cadena"]["causa_raiz"]),
-            ("Insight", r["cadena"]["insight"]),
-            ("Solución", r["cadena"]["solucion"]),
-            ("Métrica", r["cadena"]["metrica"]),
+            ("Beneficiario", prop["beneficiario"]),
+            ("Componentes", ", ".join(prop["componentes"])),
+            ("Costo estimado", prop["costo"]),
         ])
-
-        rotulo("Métricas para demostrar en el prototipo")
-        for etiqueta, prop in [("Opción 01", r["propuesta"]), ("Opción 02", r["alterna"])]:
-            p(f"{etiqueta} · {prop['nombre']}", 8, True, color=azul, before=4, after=2)
-            for m in prop["metricas"]:
-                par = doc.add_paragraph(style="List Bullet")
-                par.paragraph_format.space_after = Pt(1)
-                run = par.add_run(m)
-                run.font.size = Pt(9.5)
-
-        rotulo("Señal que se repite en los ganadores")
         par = doc.add_paragraph()
-        par.paragraph_format.left_indent = Cm(0.4)
-        par.paragraph_format.space_after = Pt(6)
-        run = par.add_run(r["senal"])
-        run.italic = True
-        run.bold = True
-        run.font.size = Pt(10)
-        run.font.color.rgb = azul
+        par.paragraph_format.left_indent = Cm(0.3)
+        par.paragraph_format.space_before = Pt(4)
+        par.paragraph_format.space_after = Pt(4)
+        rk = par.add_run("EN LA PRÁCTICA  ")
+        rk.font.name = "Consolas"
+        rk.font.size = Pt(7)
+        rk.bold = True
+        rk.font.color.rgb = azul
+        rt = par.add_run(real)
+        rt.font.size = Pt(9.5)
+        rt.font.color.rgb = gris
 
-        rotulo("Precedentes por tipo de solución, no por nombre del reto")
-        for a in r["analogias"]:
-            p(f"{a['year']} · {a['equipo']} · {a['puesto']}", 8.5, True, color=cyan, before=6, after=1)
-            p(a["proyecto"], 11, True, color=azul, after=2)
-            p("Qué hicieron", 7.5, True, color=suave, after=1)
-            p(a["que_hicieron"], 9.5, color=gris, after=3)
-            p("Por qué se parece a este reto", 7.5, True, color=suave, after=1)
-            p(a["por_que"], 9.5, color=gris, after=2)
-            p(f"Video: {a['video']}", 7.5, color=cyan, after=2) if a["video"] else None
+    rotulo("Dos soluciones posibles para este reto")
+    solucion(r["propuesta"], "Opción 01", r["realidad"]["a"])
+    solucion(r["alterna"], "Opción 02", r["realidad"]["b"], grande=False)
 
-        rotulo(f"Comentarios · Reto {r['id']}")
-        p("Anoten aquí sus ideas, dudas y ajustes a la propuesta.", 8, italic=True, color=suave, after=3)
-        for _ in range(10):
-            par = doc.add_paragraph()
-            par.paragraph_format.space_before = Pt(10)
-            par.paragraph_format.space_after = Pt(10)
-            borde_inferior(par)
+    rotulo("Detalles que suman")
+    for k, t in r["detalles"]:
+        par = doc.add_paragraph(style="List Bullet")
+        par.paragraph_format.space_after = Pt(2)
+        rk = par.add_run(f"{k}: ")
+        rk.bold = True
+        rk.font.size = Pt(9.5)
+        rk.font.color.rgb = azul
+        rt = par.add_run(t)
+        rt.font.size = Pt(9.5)
 
-        if r is not RETOS[-1]:
-            doc.add_page_break()
+    rotulo("Cadena de razonamiento")
+    tabla_dos([
+        ("Problema", r["cadena"]["problema"]),
+        ("Causa raíz", r["cadena"]["causa_raiz"]),
+        ("Insight", r["cadena"]["insight"]),
+        ("Solución", r["cadena"]["solucion"]),
+        ("Métrica", r["cadena"]["metrica"]),
+    ])
+
+    rotulo("Métricas para demostrar en el prototipo")
+    for etiqueta, prop in [("Opción 01", r["propuesta"]), ("Opción 02", r["alterna"])]:
+        p(f"{etiqueta} · {prop['nombre']}", 8, True, color=azul, before=4, after=2)
+        for m in prop["metricas"]:
+            par = doc.add_paragraph(style="List Bullet")
+            par.paragraph_format.space_after = Pt(1)
+            run = par.add_run(m)
+            run.font.size = Pt(9.5)
+
+    rotulo("Señal que se repite en los ganadores")
+    par = doc.add_paragraph()
+    par.paragraph_format.left_indent = Cm(0.4)
+    par.paragraph_format.space_after = Pt(6)
+    run = par.add_run(r["senal"])
+    run.italic = True
+    run.bold = True
+    run.font.size = Pt(10)
+    run.font.color.rgb = azul
+
+    rotulo("Precedentes por tipo de solución, no por nombre del reto")
+    for a in r["analogias"]:
+        p(f"{a['year']} · {a['equipo']} · {a['puesto']}", 8.5, True, color=cyan, before=6, after=1)
+        p(a["proyecto"], 11, True, color=azul, after=2)
+        p("Qué hicieron", 7.5, True, color=suave, after=1)
+        p(a["que_hicieron"], 9.5, color=gris, after=3)
+        p("Por qué se parece a este reto", 7.5, True, color=suave, after=1)
+        p(a["por_que"], 9.5, color=gris, after=2)
+        p(f"Video: {a['video']}", 7.5, color=cyan, after=2) if a["video"] else None
+
+    rotulo(f"Comentarios · Reto {r['id']}")
+    p("Anoten aquí sus ideas, dudas y ajustes a la propuesta.", 8, italic=True, color=suave, after=3)
+    for _ in range(10):
+        par = doc.add_paragraph()
+        par.paragraph_format.space_before = Pt(10)
+        par.paragraph_format.space_after = Pt(10)
+        borde_inferior(par)
+
+    if r is not RETOS[-1]:
+        doc.add_page_break()
+
+
+
+def build_docx() -> None:
+    from docx import Document
+    from docx.shared import Cm, Pt
+
+    doc = Document()
+    s = doc.sections[0]
+    s.page_width, s.page_height = Cm(21), Cm(29.7)
+    s.left_margin = s.right_margin = Cm(2.0)
+    s.top_margin = Cm(1.8)
+    s.bottom_margin = Cm(1.8)
+    normal = doc.styles["Normal"]
+    normal.font.name = "Segoe UI"
+    normal.font.size = Pt(10)
+    normal.paragraph_format.space_after = Pt(4)
+
+    api = _docx_api(doc)
+
+    for r in RETOS:
+        _docx_reto(doc, api, r)
 
     doc.save(DOCX)
     print(f"DOCX : {DOCX} ({DOCX.stat().st_size // 1024} KB)")
 
 
 # ---------------------------------------------------------------- XLSX
-def build_xlsx() -> None:
-    from openpyxl import Workbook
-    from openpyxl.drawing.image import Image as XLImage
+def _xlsx_api():
+    """Estilos, bordes y helpers de fila del XLSX del dossier."""
     from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
-    from openpyxl.utils import get_column_letter
-
-    wb = Workbook()
-    ws = wb.active
-    ws.title = "Panel"
 
     navy = PatternFill("solid", fgColor=NAVY)
     cobalt_fill = PatternFill("solid", fgColor=COBALT)
@@ -490,7 +515,38 @@ def build_xlsx() -> None:
         b.alignment = wrap
         return fila + 1
 
-    # Panel
+    return {
+        "navy": navy,
+        "cobalt_fill": cobalt_fill,
+        "soft": soft,
+        "idea_fill": idea_fill,
+        "blanco": blanco,
+        "titulo_font": titulo_font,
+        "sub_font": sub_font,
+        "key_font": key_font,
+        "cuerpo": cuerpo,
+        "link_font": link_font,
+        "borde": borde,
+        "wrap": wrap,
+        "cabecera": cabecera,
+        "seccion": seccion,
+        "par": par,
+    }
+
+
+def _xlsx_panel(ws, api) -> None:
+
+    from openpyxl.styles import Alignment, Font, PatternFill
+    from openpyxl.utils import get_column_letter
+
+    navy, cobalt_fill, soft, idea_fill = (
+        api["navy"], api["cobalt_fill"], api["soft"], api["idea_fill"]
+    )
+    blanco, key_font, cuerpo = api["blanco"], api["key_font"], api["cuerpo"]
+    link_font, borde, wrap = api["link_font"], api["borde"], api["wrap"]
+    cabecera, seccion, par = api["cabecera"], api["seccion"], api["par"]
+    sub_font = api["sub_font"]
+
     cabecera(ws, 1, "RALLY STUDIO // PANEL DE SOLUCIONES", 9)
     ws.merge_cells("A2:I2")
     ws["A2"] = META["subtitulo"]
@@ -540,223 +596,249 @@ def build_xlsx() -> None:
         ws.column_dimensions[get_column_letter(j)].width = a
     ws.freeze_panes = "A6"
 
-    # Hojas por reto
-    for r in RETOS:
-        corto = f"{r['id']} {r['propuesta']['nombre']}"[:28]
-        h = wb.create_sheet(corto)
-        h.sheet_view.showGridLines = False
-        h.column_dimensions["A"].width = 26
-        h.column_dimensions["B"].width = 52
-        h.column_dimensions["C"].width = 30
-        h.column_dimensions["D"].width = 24
 
-        cabecera(h, 1, f"RETO {r['id']} · {r['titulo'].upper()}", 4)
-        h.merge_cells("A2:D2")
-        h["A2"] = f"{r['categoria']} · {r['categoria_porque']}"
-        h["A2"].font = Font(color="5C7193", size=9, italic=True)
-        h["A2"].alignment = wrap
-        h.row_dimensions[2].height = 30
 
-        f = 4
-        f = seccion(h, f, "Descripción del reto")
-        h.merge_cells(start_row=f, start_column=1, end_row=f, end_column=4)
-        c = h.cell(row=f, column=1, value=r["descripcion"])
-        c.font = cuerpo
-        c.alignment = wrap
-        h.row_dimensions[f].height = 48
-        f += 2
+def _xlsx_ficha_solucion(h, f, prop, api, titulo) -> int:
+    """Ficha de 6 campos de una solución (se repite para la propuesta y la alterna)."""
+    from openpyxl.styles import Font
 
-        f = seccion(h, f, "Propuesta de solución")
-        f = par(h, f, "Nombre", r["propuesta"]["nombre"])
-        f = par(h, f, "Claim", r["propuesta"]["claim"])
-        f = par(h, f, "Qué es", r["propuesta"]["que_es"])
-        f = par(h, f, "Beneficiario", r["propuesta"]["beneficiario"])
-        f = par(h, f, "Componentes", ", ".join(r["propuesta"]["componentes"]))
-        f = par(h, f, "Costo estimado", r["propuesta"]["costo"])
-        h.cell(row=f - 6, column=2).font = Font(color=NAVY, bold=True, size=14)
+    par, seccion = api["par"], api["seccion"]
+    f = seccion(h, f, titulo)
+    f = par(h, f, "Nombre", prop["nombre"])
+    f = par(h, f, "Claim", prop["claim"])
+    f = par(h, f, "Qué es", prop["que_es"])
+    f = par(h, f, "Beneficiario", prop["beneficiario"])
+    f = par(h, f, "Componentes", ", ".join(prop["componentes"]))
+    f = par(h, f, "Costo estimado", prop["costo"])
+    h.cell(row=f - 6, column=2).font = Font(color=NAVY, bold=True, size=14)
+    return f
+
+
+def _xlsx_pasos(h, f, prop, api, titulo) -> int:
+    """Lista numerada de pasos de una solución (se repite como la ficha)."""
+    key_font, cuerpo, wrap, seccion = api["key_font"], api["cuerpo"], api["wrap"], api["seccion"]
+    f = seccion(h, f, titulo)
+    for i, paso in enumerate(prop["como"], 1):
+        a = h.cell(row=f, column=1, value=f"Paso 0{i}")
+        a.font = key_font
+        a.alignment = wrap
+        h.merge_cells(start_row=f, start_column=2, end_row=f, end_column=4)
+        b = h.cell(row=f, column=2, value=paso)
+        b.font = cuerpo
+        b.alignment = wrap
+        h.row_dimensions[f].height = 32
         f += 1
+    return f
 
-        f = seccion(h, f, "Cómo funciona")
-        for i, paso in enumerate(r["propuesta"]["como"], 1):
-            a = h.cell(row=f, column=1, value=f"Paso 0{i}")
-            a.font = key_font
-            a.alignment = wrap
-            h.merge_cells(start_row=f, start_column=2, end_row=f, end_column=4)
-            b = h.cell(row=f, column=2, value=paso)
-            b.font = cuerpo
-            b.alignment = wrap
-            h.row_dimensions[f].height = 32
-            f += 1
+
+def _xlsx_hoja(wb, r, api) -> None:
+
+    from openpyxl.drawing.image import Image as XLImage
+    from openpyxl.styles import Alignment, Font
+
+    navy, cobalt_fill, soft, idea_fill = (
+        api["navy"], api["cobalt_fill"], api["soft"], api["idea_fill"]
+    )
+    blanco, key_font, cuerpo = api["blanco"], api["key_font"], api["cuerpo"]
+    link_font, borde, wrap = api["link_font"], api["borde"], api["wrap"]
+    cabecera, seccion, par = api["cabecera"], api["seccion"], api["par"]
+
+    corto = f"{r['id']} {r['propuesta']['nombre']}"[:28]
+    h = wb.create_sheet(corto)
+    h.sheet_view.showGridLines = False
+    h.column_dimensions["A"].width = 26
+    h.column_dimensions["B"].width = 52
+    h.column_dimensions["C"].width = 30
+    h.column_dimensions["D"].width = 24
+
+    cabecera(h, 1, f"RETO {r['id']} · {r['titulo'].upper()}", 4)
+    h.merge_cells("A2:D2")
+    h["A2"] = f"{r['categoria']} · {r['categoria_porque']}"
+    h["A2"].font = Font(color="5C7193", size=9, italic=True)
+    h["A2"].alignment = wrap
+    h.row_dimensions[2].height = 30
+
+    f = 4
+    f = seccion(h, f, "Descripción del reto")
+    h.merge_cells(start_row=f, start_column=1, end_row=f, end_column=4)
+    c = h.cell(row=f, column=1, value=r["descripcion"])
+    c.font = cuerpo
+    c.alignment = wrap
+    h.row_dimensions[f].height = 48
+    f += 2
+
+    f = _xlsx_ficha_solucion(h, f, r["propuesta"], api, "Propuesta de solución")
+    f += 1
+
+    f = _xlsx_pasos(h, f, r["propuesta"], api, "Cómo funciona")
+    f += 1
+
+    f = seccion(h, f, "En la práctica · Opción 01")
+    h.merge_cells(start_row=f, start_column=1, end_row=f, end_column=4)
+    c = h.cell(row=f, column=1, value=r["realidad"]["a"])
+    c.font = cuerpo
+    c.alignment = wrap
+    h.row_dimensions[f].height = 62
+    f += 2
+
+    f = _xlsx_ficha_solucion(h, f, r["alterna"], api, "Segunda solución posible")
+    f += 1
+    f = _xlsx_pasos(h, f, r["alterna"], api, "Cómo funciona la segunda solución")
+    f += 1
+
+    f = seccion(h, f, "En la práctica · Opción 02")
+    h.merge_cells(start_row=f, start_column=1, end_row=f, end_column=4)
+    c = h.cell(row=f, column=1, value=r["realidad"]["b"])
+    c.font = cuerpo
+    c.alignment = wrap
+    h.row_dimensions[f].height = 62
+    f += 2
+
+    f = seccion(h, f, "Detalles que suman")
+    for k, t in r["detalles"]:
+        a = h.cell(row=f, column=1, value=k)
+        a.font = key_font
+        a.alignment = wrap
+        h.merge_cells(start_row=f, start_column=2, end_row=f, end_column=4)
+        b = h.cell(row=f, column=2, value=t)
+        b.font = cuerpo
+        b.alignment = wrap
+        h.row_dimensions[f].height = 34
         f += 1
+    f += 1
 
-        f = seccion(h, f, "En la práctica · Opción 01")
-        h.merge_cells(start_row=f, start_column=1, end_row=f, end_column=4)
-        c = h.cell(row=f, column=1, value=r["realidad"]["a"])
-        c.font = cuerpo
-        c.alignment = wrap
-        h.row_dimensions[f].height = 62
-        f += 2
-
-        f = seccion(h, f, "Segunda solución posible")
-        f = par(h, f, "Nombre", r["alterna"]["nombre"])
-        f = par(h, f, "Claim", r["alterna"]["claim"])
-        f = par(h, f, "Qué es", r["alterna"]["que_es"])
-        f = par(h, f, "Beneficiario", r["alterna"]["beneficiario"])
-        f = par(h, f, "Componentes", ", ".join(r["alterna"]["componentes"]))
-        f = par(h, f, "Costo estimado", r["alterna"]["costo"])
-        h.cell(row=f - 6, column=2).font = Font(color=NAVY, bold=True, size=14)
+    f = seccion(h, f, "ODS seleccionados y por qué")
+    for cod, nom, why in r["ods"]:
+        num = cod.split()[-1]
+        a = h.cell(row=f, column=1, value=cod)
+        a.font = Font(color=COBALT, bold=True, size=10)
+        a.alignment = Alignment(vertical="center")
+        b = h.cell(row=f, column=2, value=f"{nom}. {why}")
+        h.merge_cells(start_row=f, start_column=2, end_row=f, end_column=4)
+        b.font = cuerpo
+        b.alignment = wrap
+        h.row_dimensions[f].height = 34
+        img = XLImage(str(ODS_DIR / f"ods{num}.jpg"))
+        img.width = 26
+        img.height = 26
+        img.anchor = f"A{f}"
+        h.add_image(img)
         f += 1
-        f = seccion(h, f, "Cómo funciona la segunda solución")
-        for i, paso in enumerate(r["alterna"]["como"], 1):
-            a = h.cell(row=f, column=1, value=f"Paso 0{i}")
-            a.font = key_font
-            a.alignment = wrap
-            h.merge_cells(start_row=f, start_column=2, end_row=f, end_column=4)
-            b = h.cell(row=f, column=2, value=paso)
-            b.font = cuerpo
-            b.alignment = wrap
-            h.row_dimensions[f].height = 32
-            f += 1
-        f += 1
+    f += 1
 
-        f = seccion(h, f, "En la práctica · Opción 02")
-        h.merge_cells(start_row=f, start_column=1, end_row=f, end_column=4)
-        c = h.cell(row=f, column=1, value=r["realidad"]["b"])
-        c.font = cuerpo
-        c.alignment = wrap
-        h.row_dimensions[f].height = 62
-        f += 2
-
-        f = seccion(h, f, "Detalles que suman")
-        for k, t in r["detalles"]:
-            a = h.cell(row=f, column=1, value=k)
-            a.font = key_font
-            a.alignment = wrap
-            h.merge_cells(start_row=f, start_column=2, end_row=f, end_column=4)
-            b = h.cell(row=f, column=2, value=t)
-            b.font = cuerpo
-            b.alignment = wrap
-            h.row_dimensions[f].height = 34
-            f += 1
-        f += 1
-
-        f = seccion(h, f, "ODS seleccionados y por qué")
-        for cod, nom, why in r["ods"]:
-            num = cod.split()[-1]
-            a = h.cell(row=f, column=1, value=cod)
-            a.font = Font(color=COBALT, bold=True, size=10)
-            a.alignment = Alignment(vertical="center")
-            b = h.cell(row=f, column=2, value=f"{nom}. {why}")
-            h.merge_cells(start_row=f, start_column=2, end_row=f, end_column=4)
-            b.font = cuerpo
-            b.alignment = wrap
-            h.row_dimensions[f].height = 34
-            img = XLImage(str(ODS_DIR / f"ods{num}.jpg"))
-            img.width = 26
-            img.height = 26
-            img.anchor = f"A{f}"
-            h.add_image(img)
-            f += 1
-        f += 1
-
-        f = seccion(h, f, "Insignias y programas que aplican")
-        for nom, tag in r["insignias"]:
-            a = h.cell(row=f, column=1, value=nom)
-            a.font = key_font
-            a.alignment = wrap
-            h.merge_cells(start_row=f, start_column=2, end_row=f, end_column=4)
-            b = h.cell(row=f, column=2, value=tag)
-            b.font = cuerpo
-            b.alignment = wrap
-            h.row_dimensions[f].height = 22
-            f += 1
-        f += 1
-
-        f = seccion(h, f, "Cadena de razonamiento")
-        for clave, etiqueta in [("problema", "Problema"), ("causa_raiz", "Causa raíz"), ("insight", "Insight"), ("solucion", "Solución"), ("metrica", "Métrica")]:
-            a = h.cell(row=f, column=1, value=etiqueta)
-            a.font = key_font
-            a.alignment = wrap
-            h.merge_cells(start_row=f, start_column=2, end_row=f, end_column=4)
-            b = h.cell(row=f, column=2, value=r["cadena"][clave])
-            b.font = cuerpo
-            b.alignment = wrap
-            h.row_dimensions[f].height = 40
-            f += 1
-        f += 1
-
-        f = seccion(h, f, "Métricas para demostrar en el prototipo")
-        for etiqueta, prop in [("01", r["propuesta"]), ("02", r["alterna"])]:
-            h.merge_cells(start_row=f, start_column=1, end_row=f, end_column=4)
-            c = h.cell(row=f, column=1, value=f"Opción {etiqueta} · {prop['nombre']}")
-            c.font = key_font
-            f += 1
-            for m in prop["metricas"]:
-                h.merge_cells(start_row=f, start_column=1, end_row=f, end_column=4)
-                c = h.cell(row=f, column=1, value="•  " + m)
-                c.font = cuerpo
-                c.alignment = wrap
-                f += 1
-        f += 1
-
-        f = seccion(h, f, "Señal que se repite en los ganadores")
-        h.merge_cells(start_row=f, start_column=1, end_row=f, end_column=4)
-        c = h.cell(row=f, column=1, value=r["senal"])
-        c.font = Font(color=INK, size=10, italic=True, bold=True)
-        c.alignment = wrap
-        h.row_dimensions[f].height = 38
-        f += 2
-
-        f = seccion(h, f, "Precedentes por tipo de solución")
-        for a in r["analogias"]:
-            h.merge_cells(start_row=f, start_column=1, end_row=f, end_column=4)
-            c = h.cell(row=f, column=1, value=f"{a['year']} · {a['equipo']} · {a['proyecto']}")
-            c.font = Font(color=CYAN, bold=True, size=10)
-            c.alignment = wrap
-            f += 1
-            h.merge_cells(start_row=f, start_column=1, end_row=f, end_column=4)
-            c = h.cell(row=f, column=1, value=f"Qué hicieron: {a['que_hicieron']}")
-            c.font = cuerpo
-            c.alignment = wrap
-            h.row_dimensions[f].height = 32
-            f += 1
-            h.merge_cells(start_row=f, start_column=1, end_row=f, end_column=4)
-            c = h.cell(row=f, column=1, value=f"Por qué se parece: {a['por_que']}")
-            c.font = cuerpo
-            c.alignment = wrap
-            h.row_dimensions[f].height = 38
-            f += 1
-            h.merge_cells(start_row=f, start_column=1, end_row=f, end_column=4)
-            c = h.cell(row=f, column=1, value=f"Video: {a['video']}" if a["video"] else "Sin video de referencia")
-            if a["video"]:
-                c.hyperlink = a["video"]
-            c.font = link_font
-            f += 1
-        f += 1
-
-        # Ideas
-        f = seccion(h, f, "Comentarios e ideas del equipo")
-        h.merge_cells(start_row=f, start_column=1, end_row=f, end_column=4)
-        c = h.cell(row=f, column=1, value="Escriban una idea por fila. La propuesta de arriba es el punto de partida, no el techo.")
-        c.font = Font(color="5C7193", size=9, italic=True)
-        c.alignment = wrap
-        f += 1
-        for j, titulo in enumerate(["Idea / variante", "Responsable", "Cómo se mide", "Fecha"], 1):
-            c = h.cell(row=f, column=j, value=titulo.upper())
-            c.fill = cobalt_fill
-            c.font = blanco
-            c.border = borde
-            c.alignment = Alignment(vertical="center")
+    f = seccion(h, f, "Insignias y programas que aplican")
+    for nom, tag in r["insignias"]:
+        a = h.cell(row=f, column=1, value=nom)
+        a.font = key_font
+        a.alignment = wrap
+        h.merge_cells(start_row=f, start_column=2, end_row=f, end_column=4)
+        b = h.cell(row=f, column=2, value=tag)
+        b.font = cuerpo
+        b.alignment = wrap
         h.row_dimensions[f].height = 22
         f += 1
-        for _ in range(14):
-            for j in range(1, 5):
-                c = h.cell(row=f, column=j)
-                c.border = borde
-                c.fill = idea_fill
-                c.alignment = wrap
-            h.row_dimensions[f].height = 26
+    f += 1
+
+    f = seccion(h, f, "Cadena de razonamiento")
+    for clave, etiqueta in [("problema", "Problema"), ("causa_raiz", "Causa raíz"), ("insight", "Insight"), ("solucion", "Solución"), ("metrica", "Métrica")]:
+        a = h.cell(row=f, column=1, value=etiqueta)
+        a.font = key_font
+        a.alignment = wrap
+        h.merge_cells(start_row=f, start_column=2, end_row=f, end_column=4)
+        b = h.cell(row=f, column=2, value=r["cadena"][clave])
+        b.font = cuerpo
+        b.alignment = wrap
+        h.row_dimensions[f].height = 40
+        f += 1
+    f += 1
+
+    f = seccion(h, f, "Métricas para demostrar en el prototipo")
+    for etiqueta, prop in [("01", r["propuesta"]), ("02", r["alterna"])]:
+        h.merge_cells(start_row=f, start_column=1, end_row=f, end_column=4)
+        c = h.cell(row=f, column=1, value=f"Opción {etiqueta} · {prop['nombre']}")
+        c.font = key_font
+        f += 1
+        for m in prop["metricas"]:
+            h.merge_cells(start_row=f, start_column=1, end_row=f, end_column=4)
+            c = h.cell(row=f, column=1, value="•  " + m)
+            c.font = cuerpo
+            c.alignment = wrap
             f += 1
+    f += 1
+
+    f = seccion(h, f, "Señal que se repite en los ganadores")
+    h.merge_cells(start_row=f, start_column=1, end_row=f, end_column=4)
+    c = h.cell(row=f, column=1, value=r["senal"])
+    c.font = Font(color=INK, size=10, italic=True, bold=True)
+    c.alignment = wrap
+    h.row_dimensions[f].height = 38
+    f += 2
+
+    f = seccion(h, f, "Precedentes por tipo de solución")
+    for a in r["analogias"]:
+        h.merge_cells(start_row=f, start_column=1, end_row=f, end_column=4)
+        c = h.cell(row=f, column=1, value=f"{a['year']} · {a['equipo']} · {a['proyecto']}")
+        c.font = Font(color=CYAN, bold=True, size=10)
+        c.alignment = wrap
+        f += 1
+        h.merge_cells(start_row=f, start_column=1, end_row=f, end_column=4)
+        c = h.cell(row=f, column=1, value=f"Qué hicieron: {a['que_hicieron']}")
+        c.font = cuerpo
+        c.alignment = wrap
+        h.row_dimensions[f].height = 32
+        f += 1
+        h.merge_cells(start_row=f, start_column=1, end_row=f, end_column=4)
+        c = h.cell(row=f, column=1, value=f"Por qué se parece: {a['por_que']}")
+        c.font = cuerpo
+        c.alignment = wrap
+        h.row_dimensions[f].height = 38
+        f += 1
+        h.merge_cells(start_row=f, start_column=1, end_row=f, end_column=4)
+        c = h.cell(row=f, column=1, value=f"Video: {a['video']}" if a["video"] else "Sin video de referencia")
+        if a["video"]:
+            c.hyperlink = a["video"]
+        c.font = link_font
+        f += 1
+    f += 1
+
+    # Ideas
+    f = seccion(h, f, "Comentarios e ideas del equipo")
+    h.merge_cells(start_row=f, start_column=1, end_row=f, end_column=4)
+    c = h.cell(row=f, column=1, value="Escriban una idea por fila. La propuesta de arriba es el punto de partida, no el techo.")
+    c.font = Font(color="5C7193", size=9, italic=True)
+    c.alignment = wrap
+    f += 1
+    for j, titulo in enumerate(["Idea / variante", "Responsable", "Cómo se mide", "Fecha"], 1):
+        c = h.cell(row=f, column=j, value=titulo.upper())
+        c.fill = cobalt_fill
+        c.font = blanco
+        c.border = borde
+        c.alignment = Alignment(vertical="center")
+    h.row_dimensions[f].height = 22
+    f += 1
+    for _ in range(14):
+        for j in range(1, 5):
+            c = h.cell(row=f, column=j)
+            c.border = borde
+            c.fill = idea_fill
+            c.alignment = wrap
+        h.row_dimensions[f].height = 26
+        f += 1
+
+
+
+def build_xlsx() -> None:
+    from openpyxl import Workbook
+
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Panel"
+
+    api = _xlsx_api()
+    _xlsx_panel(ws, api)
+
+    for r in RETOS:
+        _xlsx_hoja(wb, r, api)
 
     wb.save(XLSX)
     print(f"XLSX : {XLSX} ({XLSX.stat().st_size // 1024} KB)")

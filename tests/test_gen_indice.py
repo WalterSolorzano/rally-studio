@@ -51,3 +51,34 @@ def test_indice_is_under_token_budget(tmp_path):
     out = generar_indice(tmp_path)
 
     assert out.stat().st_size < 40 * 1024
+
+
+def test_grupo_grande_se_parte_en_su_propio_indice(tmp_path):
+    """5.559 filas en un archivo no se leen: cada grupo grande va aparte."""
+    meta = tmp_path / "research" / "sirli" / "meta"
+    meta.mkdir(parents=True)
+    for i in range(200):
+        (meta / f"doc_{i}.md").write_text("x", encoding="utf-8")
+
+    out = generar_indice(tmp_path)
+    texto = out.read_text(encoding="utf-8")
+
+    parte = tmp_path / "knowledge" / "indice" / "research_sirli_meta.md"
+    assert parte.is_file()
+    assert "knowledge/indice/research_sirli_meta.md" in texto
+    assert "research/sirli/meta/doc_0.md" in parte.read_text(encoding="utf-8")
+    # El índice general no repite las 200 filas.
+    assert "research/sirli/meta/doc_0.md" not in texto
+
+
+def test_partes_viejas_se_borran_y_thumbs_no_entra(tmp_path):
+    (tmp_path / "knowledge" / "indice").mkdir(parents=True)
+    (tmp_path / "knowledge" / "indice" / "obsoleto.md").write_text("x", encoding="utf-8")
+    thumbs = tmp_path / "research" / "sirli" / "meta" / "thumbs"
+    thumbs.mkdir(parents=True)
+    (thumbs / "abc.jpg").write_bytes(b"\xff\xd8")
+
+    generar_indice(tmp_path)
+
+    assert not (tmp_path / "knowledge" / "indice" / "obsoleto.md").exists()
+    assert "thumbs/abc.jpg" not in (tmp_path / "knowledge" / "INDICE.md").read_text(encoding="utf-8")

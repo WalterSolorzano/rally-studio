@@ -1,6 +1,6 @@
 ---
 name: sugerir-por-fase
-description: Da sugerencias cortas y accionables para una etapa concreta del flujo (certamen, equipo, retos, solución, impacto, despacho, pautado, presupuesto, recursos, canvas, guion, prototipo, checklist). Úsala cuando el usuario pide "qué me falta aquí" o "cómo mejoro esto".
+description: Da sugerencias cortas y accionables para una etapa concreta del flujo (certamen, equipo, retos, solución, impacto, despacho, pautado, presupuesto, recursos, canvas, guion, prototipo, checklist). Úsala cuando el usuario pide "qué me falta aquí" o "cómo mejoro esto" dentro de una pestaña. El recorrido completo de las 13 etapas es `guiar-usuario`.
 ---
 
 # Café Presto con Ansiedad — Sugerir por fase

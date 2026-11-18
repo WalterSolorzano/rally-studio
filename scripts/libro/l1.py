@@ -4,9 +4,9 @@ from __future__ import annotations
 
 from collections import Counter, defaultdict
 
-from base import (ANIOS, AUDIO, CORE, DF, HIP, INTL, META, NAC, NIC, NIC_SEDE, SIS,
-                  TXT, VIDEOS, WINNERS, fig, fp, media, mediana, nombre_pais, num,
-                  pct, pp, tabla, tasa, tasa_por)
+from base import (ANIOS, AUDIO, CORE, DF, HIP, META,
+                  TXT, VIDEOS, WINNERS, fig, nombre_pais, num,
+                  pct, tabla, tasa, wilson)
 
 
 def cap0() -> str:
@@ -345,7 +345,7 @@ def cap4() -> str:
         g = [r for r in CORE if r["country"] == p]
         if len(g) >= 30:
             k, nn, t = tasa(g)
-            lo, hi = _wilson(k, nn)
+            lo, hi = wilson(k, nn)
             filas.append([nombre_pais(p), num(n), num(nn), pct(t), f"{pct(lo)} – {pct(hi)}"])
         else:
             filas.append([nombre_pais(p), num(n), num(len(g)), "—" if not g else pct(tasa(g)[2]), "muestra pequeña"])
@@ -397,11 +397,6 @@ Ese volumen tiene una explicación simple: el rally nació en Nicaragua y el pa�
 red de sedes más densa. No es una ventaja competitiva, es una ventaja de origen. El
 capítulo 15 está dedicado por completo a esta población.
 """
-
-
-def _wilson(k: int, n: int):
-    from base import wilson
-    return wilson(k, n)
 
 
 def _tasa_pais(p: str) -> str:

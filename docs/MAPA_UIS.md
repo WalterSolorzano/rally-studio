@@ -22,7 +22,8 @@ Medición del 2026-11-16: **2110 archivos versionados, 112.5 MB**.
 | `dashboard/index.html` | 1.7 | shell del workbench (14 pestañas) | MOTOR |
 | `dashboard/join.html` | 2.6 | `scripts/member_store.py` arma la invitación | producto |
 | `dashboard/admin.html` | 4.8 | control de miembros e invitaciones | producto |
-| `dashboard/graph.html` | 188.7 | `app.js:1829` y `app.js:1925` (grafo del corpus) | producto |
+| `dashboard/graph.html` | 496.1 | `app.js` menú ⋮ → «Grafo de conocimiento» (cerebro del corpus, 642 nodos) | producto |
+| `dashboard/chat.js` | 25.7 | botón flotante «Preguntar al proyecto» (panel lateral, no pestaña) | producto |
 | `dashboard/stats.html` | 16.6 | **debrief de después del rally**: horas de sesión, entregables cerrados, pautado, preparación, equipo, hora pico, frentes abiertos, MVP, quién tomó qué, reparto y procedencia. La abre `scripts/watch_stats.py` y nadie la enlaza desde las pestañas | producto, le falta la puerta |
 | `dashboard/dossier_preview.html` | 5.8 | **nadie dentro del workbench** | huérfana |
 
@@ -32,7 +33,7 @@ Medición del 2026-11-16: **2110 archivos versionados, 112.5 MB**.
 |---|---|---|
 | `script/teleprompter.html` | `skills/guion-storyboard/gen_teleprompter.py` | un solo archivo, 0 red |
 | `script/guion_rodaje.pdf` | `tools/exportar_pdf.py` | papel para grabar |
-| `docs/storyboard_visual.html` | `skills/storyboard/gen_storyboard_visual.py` | hoja de contactos imprimible |
+| `docs/storyboard_visual.html` | `scripts/gen_storyboard_visual.py` | hoja de contactos imprimible |
 | `design/index.html`, `kit`, `thumb`, `impacto` | `scripts/gen_pagina_diseno.py` (+ `design/*.js`) | kit de prensa y portada del video |
 | `site/index.html` | `scripts/publish_site.py` | web demo publicada |
 | `docs/assets/informe_template.html` | `scripts/build_report_pdf.py` | plantilla del informe |

@@ -64,7 +64,7 @@ Había cinco investigaciones en paralelo, de tres IA distintas, con cifras que n
 
 **Regla de oro que sale de esta consolidación:** un dato de T2 o T4 que no aparezca en T0/T1 **no se usa**. No se borra el archivo de origen, porque sirve para rastrear de dónde salió la confusión; se deja de tratar como verdad.
 
-**Decisión del 06/11/2026 (equipo):** los dos informes de IA se conservan **como están**, sin stub ni borrado. Motivo: son la fuente de la que `brain/sync_corpus.py` copia `investigacion_pitch.md` y `ganadores_latam.md`; reemplazarlos por punteros rompería el corpus. Su desactivación como verdad paralela ya está hecha en tres sitios: el banner de la cabecera, esta tabla y las descripciones de `knowledge/INDICE.md`.
+**Decisión del 06/11/2026 (equipo):** los dos informes de IA se conservan **como están**, sin stub ni borrado. Motivo: son la fuente de la que `brain/sync_corpus.py` copia `investigacion_pitch.md` y parte `winners_latam.md` en `ganadores_latam_internacional.md` y `ganadores_latam_instancia_nacional.md`; reemplazarlos por punteros rompería el corpus. Su desactivación como verdad paralela ya está hecha en tres sitios: el banner de la cabecera, esta tabla y las descripciones de `knowledge/INDICE.md`.
 
 ### 0.3 Lo que el banco verificado cambió
 
@@ -971,7 +971,7 @@ Los tres deben ser coherentes entre sí y con el video.
 
 - **Techriders:** lote piloto de 4.500 USD para micropresas telemetradas.
 - **SITRA (referencia):** 204,94 USD por nodo con ESP32, LoRa, panel solar de 5 W y batería de 2.500 mAh.
-- **Presupuesto modelo:** 4.450 USD en ocho líneas, dentro del rango de 4.000 a 6.000 que usan los equipos nicaragüenses.
+- **Presupuesto modelo:** 4.450 USD en ocho líneas, dentro del rango de referencia 4.000–6.000 USD [EQUIPO] (hábito de equipos nicaragüenses, no ley de rúbrica).
 
 ![Figura 12. Estructura del presupuesto modelo por línea.](figures/fig06_presupuesto.svg)
 
@@ -1073,7 +1073,7 @@ Lo que estas reglas **no** dicen es que ganar sea predecible. El IPC muestra que
 
 **Primarias:** Comisión Nacional de Economía Creativa (`nicaraguacreativa.com`), artículos de 2023, 2025 y 2026; CONFEDI (`confedi.org.ar`), resultados 2024 y apertura 2026; ANFEI (`anfei.mx`), resultados 2016; SIRLI (`sirli.org`), registros citados por las fuentes nacionales.
 
-**Corpus interno:** `brain/corpus/ganadores_latam.md`, `ganadores_analisis.md`, `analisis_nicaragua.pdf`, `investigacion_pitch.md`, `rubricas_matrices.md`, `pautado_latam_ref.md`, `pautado_nacional_ref.md`, `retos.md`.
+**Corpus interno:** `brain/corpus/ganadores_latam_internacional.md`, `ganadores_latam_instancia_nacional.md`, `ganadores_analisis.md`, `casos_ganadores.md`, `analisis_nicaragua.pdf`, `investigacion_pitch.md`, `rubricas_matrices.md`, `pautado_latam_ref.md`, `pautado_nacional_ref.md`, `retos.md`.
 
 **Metadata audiovisual:** YouTube oEmbed y miniaturas públicas, consultadas en octubre de 2026.
 

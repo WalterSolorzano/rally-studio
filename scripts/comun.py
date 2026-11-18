@@ -5,7 +5,7 @@
 Antes de este archivo, las fracciones de los cuatro actos y su color vivian
 repetidos en varios generadores, y ya habian derivado:
 
-* `skills/storyboard/gen_storyboard_visual.py:29` pintaba el Acto I de rojo
+* `scripts/gen_storyboard_visual.py:43` pintaba el Acto I de rojo
   (`#f81110`), que el proyecto reserva para "grabando".
 * `scripts/gen_report_figures.py:208` ubicaba el Acto III en el segundo 60 y el
   IV en el 95, cuando la rubrica dice 39.6 y 74.4.
@@ -24,6 +24,7 @@ Uso desde cualquier script del repo:
 from __future__ import annotations
 
 import json
+import math
 import re
 import sys
 from pathlib import Path
@@ -105,6 +106,32 @@ def utf8() -> None:
         sys.stderr.reconfigure(encoding="utf-8", errors="replace")
     except Exception:  # noqa: BLE001
         pass
+
+
+def lista_de(valor) -> list[str]:
+    """Lista de textos a partir de `None`, lista o cadena separada por comas.
+
+    Antes vivia copiada en `build_shotlist._v` y `pre_render_check._v`.
+    """
+    if valor is None:
+        return []
+    if isinstance(valor, list):
+        return [str(x).strip() for x in valor if str(x).strip()]
+    return [t.strip() for t in str(valor).split(",") if t.strip()]
+
+
+def wilson(k: int, n: int, z: float = 1.96) -> tuple[float, float]:
+    """Intervalo de confianza de Wilson para una proporcion k/n.
+
+    Antes vivia copiada en `sirli_modelo.py` y `sirli_modelo_solucion.py`.
+    """
+    if n == 0:
+        return (0.0, 0.0)
+    p = k / n
+    d = 1 + z * z / n
+    c = (p + z * z / (2 * n)) / d
+    m = z * math.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / d
+    return (max(0.0, c - m), min(1.0, c + m))
 
 
 def leer_json(ruta: Path | str, defecto=None):

@@ -3,9 +3,7 @@
 No toca la red: simula el handler HTTP y el endpoint de IA.
 """
 import importlib.util
-import os
 import sys
-import types
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -66,15 +64,17 @@ def test_ventana_expira():
     assert rs.ai_rate_check(h)[0], "tras la ventana vuelve a pasar"
 
 
-def test_respeta_proxy():
-    rs.AI_RATE_LIMIT = 1
-    rs.AI_RATE_WINDOW = 60
-    rs.AI_RATE_STATE.clear()
-    rs.AI_USER_RATE_LIMIT = 0
-    a = FakeHandler(ip="10.0.0.1", fwd="198.51.100.20")
-    b = FakeHandler(ip="10.0.0.2", fwd="198.51.100.20")
-    assert rs.ai_rate_check(a)[0]
-    assert not rs.ai_rate_check(b)[0], "X-Forwarded-For manda sobre la IP del socket"
+def test_no_confia_en_cabecera_de_proxy(monkeypatch):
+    """La cabecera la escribe el cliente: sin RALLY_TRUST_PROXY se ignora.
+
+    Confiarla dejaba que cualquiera mandara `X-Forwarded-For: 127.0.0.1` y
+    pasara por local en /api/sync/*.
+    """
+    monkeypatch.delenv("RALLY_TRUST_PROXY", raising=False)
+    a = FakeHandler(ip="10.0.0.1", fwd="127.0.0.1")
+    assert rs._client_ip(a) == "10.0.0.1"
+    monkeypatch.setenv("RALLY_TRUST_PROXY", "1")
+    assert rs._client_ip(a) == "127.0.0.1"
 
 
 def test_cuota_por_usuario_rebota_y_aisla():

@@ -41,6 +41,43 @@ def test_coherencia_ignora_limites_y_marcas_de_tiempo():
     assert "0" not in numeros and "20" not in numeros
 
 
+def test_topes_de_pautado_coinciden_en_todo_el_sistema():
+    """Un solo juego de topes: validador, servicio y dashboard.
+
+    El fallo real fue que prefactibilidad vivía con 1,000 en el validador y en
+    la hoja imprimible mientras la maqueta oficial fija 1,500 (y el impacto
+    quedó intercambiado con ella).
+    """
+    import re
+
+    esperado = {
+        "problema": 1250,
+        "solucion": 1250,
+        "impacto": 1000,
+        "innovacion": 1000,
+        "prefactibilidad": 1500,
+    }
+    assert campo_chars.LIMITS == esperado
+
+    servicio = (RAIZ / "scripts" / "rally_service.py").read_text(encoding="utf-8")
+    inicio = servicio.index("PAUTADO_SECTIONS = {")
+    latam = servicio[inicio:servicio.index('"nacional"', inicio)]
+    for clave, tope in esperado.items():
+        assert re.search(
+            r'"%s":\s*\{"label":[^}]*?"limit":\s*%d,' % (clave, tope), latam, re.S
+        ), (clave, tope)
+
+    app = (RAIZ / "dashboard" / "app.js").read_text(encoding="utf-8")
+    inicio = app.index("const PAUTADO_LIMITS")
+    bloque = app[inicio:app.index("}", inicio)]
+    for clave, tope in esperado.items():
+        assert re.search(r"^\s*%s:\s*%d" % (clave, tope), bloque, re.M), (clave, tope)
+
+    # La hoja imprimible no puede volver a escribir el tope a mano.
+    assert "/ 1,000 caracteres" not in app
+    assert "/ 1,250 caracteres" not in app
+
+
 def test_coherencia_pasa_si_las_cifras_coinciden():
     a = coherencia.desde_texto("Ahorra 1,250 litros y cubre 64%.")
     b = coherencia.desde_texto("Ahorra 1250 litros y cubre 64 %.")
@@ -81,6 +118,21 @@ def test_limites_desde_plantilla(tmp_path):
     doc.save(str(ruta))
     limites = campo_chars.limites_desde_plantilla(ruta)
     assert limites == {"problema": 1100, "impacto": 1400}
+
+
+def test_nacional_no_aplica_topes_de_latam(tmp_path):
+    """El Rally Nacional no fija tope: un texto largo no puede salir excedido."""
+    assert campo_chars.limites_para("nacional") == {}
+    assert campo_chars.limites_para("latam") == campo_chars.LIMITS
+
+    ruta = tmp_path / "nacional.docx"
+    _docx_con_marcadores(ruta, impacto_chars=4000)
+    hallazgos, conteos = campo_chars.revisar(ruta, tmp_path / "sin_plantilla.docx", "nacional")
+    assert not [h for h in hallazgos if h["gravedad"] == "critico"]
+    assert conteos["impacto"] >= 4000
+
+    latam, _ = campo_chars.revisar(ruta, tmp_path / "sin_plantilla.docx", "latam")
+    assert [h for h in latam if h["gravedad"] == "critico"]
 
 
 def _wav(ruta: pathlib.Path, segundos: float):

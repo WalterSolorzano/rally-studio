@@ -76,3 +76,9 @@ Contiene 16 casos con reto+solución extraídos de transcripciones nuevas (2017�
 - `research/sirli/transcripts/*.json` — 994 transcripciones en disco
 - `research/sirli/asr_dead.txt` — 527 videos muertos
 - `research/sirli/cierre2.json` — pipeline terminado 2026-11-06T17:42:50
+
+<!-- relacionado:inicio -->
+
+## Relacionado
+
+- [transcripciones_primeros_lugares_nic.md](transcripciones_primeros_lugares_nic.md) — transcripciones que resume.

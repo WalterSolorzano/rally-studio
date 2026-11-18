@@ -3,12 +3,10 @@
 from __future__ import annotations
 
 import csv
-import statistics
-from collections import Counter
 
-from base import (AN, AUDIO, CORE, DF, HIP, INTL, META, NAC, NIC, NIC_SEDE, SIS, TXT,
-                  VIDEOS, WINNERS, fig, fp, media, mediana, nombre_pais, num, pct, pp,
-                  tabla, tasa, tasa_por)
+from base import (AN, AUDIO, CORE, DF, HIP, META, TXT,
+                  VIDEOS, WINNERS, fig, fp, media, mediana, num, pareadas_nic, pct,
+                  pp, tabla, tasa)
 
 PARTE = """
 ---
@@ -91,7 +89,7 @@ contra» de los primeros, podría ser el sesgo y no el guion. Por eso la familia
 
 Para comparar guiones sin confundir el puesto con el contexto se construyeron parejas:
 mismo año, misma sede, mismo desafío, un primer lugar y un segundo o tercero. Resultado:
-**{num(len(_pares()))} ediciones emparejadas**. Es poco para detectar efectos pequeños, y el
+**{num(len(pareadas_nic()))} ediciones emparejadas**. Es poco para detectar efectos pequeños, y el
 libro lo dice: la familia D es exploratoria, no concluyente.
 
 ### 10.6 Los rasgos de audio
@@ -113,15 +111,6 @@ el mismo procedimiento. El capítulo 13 los usa.
 Ninguna ejecución usa GPU. Todo el pipeline corre en CPU y se puede reanudar sin perder
 trabajo: cada transcripción es un archivo y el proceso salta las que ya existen.
 """
-
-
-def _pares() -> list[dict]:
-    nic = [r for r in TXT if r["country"] == "NICARAGUA" and r["collection"] == "sede"
-           and (r["year"] or 0) >= 2022]
-    k1 = {(r["year"], r["sede"], r["challenge_name"]) for r in nic if r["place_best"] == 1}
-    kn = {(r["year"], r["sede"], r["challenge_name"]) for r in nic if r["place_best"] != 1}
-    m = k1 & kn
-    return [r for r in nic if (r["year"], r["sede"], r["challenge_name"]) in m]
 
 
 def cap11() -> str:
@@ -439,7 +428,7 @@ tecnología. Los guiones hablan de personas y de territorio antes que de product
 
 ### 13.7 Lo que el texto no puede probar
 
-Con {num(len(_pares()))} ediciones emparejadas, el poder estadístico para detectar una
+Con {num(len(pareadas_nic()))} ediciones emparejadas, el poder estadístico para detectar una
 diferencia de 10 puntos es bajo. Los resultados de la familia D son **exploratorios**. Un
 informe serio diría: «no encontramos evidencia», no «no hay efecto».
 """

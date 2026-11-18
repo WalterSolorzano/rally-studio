@@ -2,11 +2,11 @@
 
 from __future__ import annotations
 
-from collections import Counter, defaultdict
+from collections import Counter
 
-from base import (AN, AUDIO, CORE, DF, HIP, INTL, META, NAC, NIC, NIC_SEDE, SIS, TXT,
-                  VIDEOS, WINNERS, fig, fp, media, mediana, nombre_pais, num, pct, pp,
-                  tabla, tasa, tasa_por, wilson)
+from base import (AN, AUDIO, CORE, DF, HIP, INTL, META, NAC, NIC_SEDE, SIS, TXT,
+                  VIDEOS, WINNERS, fig, fp, media, mediana, num, pareadas_nic, pct,
+                  pp, tabla, tasa)
 
 import json
 
@@ -186,7 +186,7 @@ La solución que adopta este libro es doble:
 | Nicaragüense | sede Nicaragua 2021–2026 | {num(len(NIC_SEDE))} | retrato de país |
 | Internacional | colección internacional | {num(len(INTL))} | escaparate latinoamericano |
 | Textual | transcripción > 20 palabras | {num(len(TXT))} | guion |
-| Emparejada | 1.º y 2.º/3.º del mismo desafío | {num(len(_pareadas()))} | familia D |
+| Emparejada | 1.º y 2.º/3.º del mismo desafío | {num(len(pareadas_nic()))} | familia D |
 
 ### 7.3 Los tests
 
@@ -234,15 +234,6 @@ por un reparto. Si la tasa observada coincide con 1/n, es artefacto.
 - **No** se puede comparar 2017–2020 con 2021–2026 sin declarar el sesgo de registro.
 - **No** se puede generalizar a otros rallies sin replicar el pipeline.
 """
-
-
-def _pareadas() -> list[dict]:
-    nic = [r for r in TXT if r["country"] == "NICARAGUA" and r["collection"] == "sede"
-           and (r["year"] or 0) >= 2022]
-    k1 = {(r["year"], r["sede"], r["challenge_name"]) for r in nic if r["place_best"] == 1}
-    kn = {(r["year"], r["sede"], r["challenge_name"]) for r in nic if r["place_best"] != 1}
-    m = k1 & kn
-    return [r for r in nic if (r["year"], r["sede"], r["challenge_name"]) in m]
 
 
 def cap8() -> str:

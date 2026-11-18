@@ -15,7 +15,7 @@ Etiquetas de procedencia:
 
 | Matriz | Estado | Fuente | Qué falta |
 |---|---|---|---|
-| Rally Latinoamericano (28 h) | **verificada** | `rubrica_oficial_latam.jpeg` (imagen oficial, 5 criterios / 19 ítems) | nada |
+| Rally Latinoamericano (28 h) | **verificada** | transcripción literal de la imagen oficial, abajo (5 criterios / 19 ítems) | nada |
 | Nicaragua Innova (24 h) | **no verificada** | ninguna en el repositorio | bases o rúbrica oficial del año |
 
 La matriz Nacional que circulaba antes (25/25/20/15/15 con ESP32/LoRa, «naming dual»,
@@ -29,7 +29,9 @@ como hipótesis de trabajo, no como rúbrica. Mientras no lleguen las bases:
 
 ## 1. Rally Latinoamericano — rúbrica oficial (100 puntos)
 
-Fuente: `rubrica_oficial_latam.jpeg`. Se transcribe literal, incluidas las erratas
+Fuente: transcripción literal de la imagen oficial de la rúbrica. La imagen no
+entra al corpus (el cerebro lee texto); este apartado es la autoridad. Se
+transcribe tal cual, incluidas las erratas
 marcadas `[sic]`. Son **19 ítems**, no 17.
 
 ### a) Grado de innovación de la solución propuesta — 30 puntos
@@ -114,7 +116,8 @@ cifras que el jurado puede cruzar entre video y documento. Nunca se puntúan.
 
 - Cinco secciones: `problema`, `solucion`, `impacto`, `innovacion`, `prefactibilidad`.
 - Mínimo 150 caracteres por sección.
-- Topes por sección en Latam **[PATRÓN/POR VERIFICAR]**: 1250 / 1250 / 1000 / 1000 / 1500
+- Topes por sección en Latam (verificados, ver `brain/corpus/pautado_latam_ref.md` y
+  `brain/corpus/informe_investigacion.md`): 1250 / 1250 / 1000 / 1000 / 1500
   caracteres con espacios. En Nacional, sin tope declarado.
 - Una estadística por afirmación, con fuente en `research/claims.json`. Sin fuente: se
   pide o se marca `[SIMULADO]`.
@@ -132,3 +135,13 @@ cifras que el jurado puede cruzar entre video y documento. Nunca se puntúan.
 
 Nada de esta lista se presenta como «causa #1 de eliminación»: son riesgos, no reglas
 escritas en las bases.
+
+<!-- relacionado:inicio -->
+
+## Relacionado
+
+- [rubrica_latam.md](rubrica_latam.md) — puntero que manda aqui.
+- [pautado_nacional_ref.md](pautado_nacional_ref.md) — plantilla que la rubrica nacional califica.
+- [pautado_latam_ref.md](pautado_latam_ref.md) — plantilla que la rubrica Latam califica.
+- [erratas.md](erratas.md) — erratas detectadas en el texto oficial.
+- [patrones_buenas_soluciones.md](patrones_buenas_soluciones.md) — lo que el jurado premia en la practica.

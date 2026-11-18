@@ -23,7 +23,11 @@ RETOS_PATH = ROOT / "research" / "challenges.json"
 CASOS_PATH = ROOT / "knowledge" / "retos_razonamiento.json"
 BRIEF_PATH = ROOT / "brief.json"
 WINNERS_PATH = ROOT / "research" / "sirli" / "winners.jsonl"
-GRAFO_PATH = ROOT / "graphify-out" / "graph.json"
+GRAFO_CEREBRO = ROOT / "brain" / "corpus" / "graphify-out" / "graph.json"
+GRAFO_REPO = ROOT / "graphify-out" / "graph.json"
+# El cerebro es el corpus, no el codigo: buscar evidencia en el grafo del repo
+# devuelve `Path`, `Counter` y funciones del motor, que no son conocimiento.
+GRAFO_PATH = GRAFO_CEREBRO if GRAFO_CEREBRO.exists() else GRAFO_REPO
 
 CATEGORIAS = {
     "nacional": ["tecnologica", "social", "procesos"],
@@ -575,7 +579,10 @@ def main(argv: list[str] | None = None) -> int:
         help="archivo JSON entregado por el usuario o comité; no se usa un banco activo por defecto",
     )
     parser.add_argument("--json", dest="salida", help="archivo JSON de salida")
-    parser.add_argument("--grafo", action="store_true", help="enriquece con graphify-out/graph.json")
+    parser.add_argument(
+        "--grafo", action="store_true",
+        help="enriquece con el grafo del cerebro (brain/corpus/graphify-out/graph.json)",
+    )
     args = parser.parse_args(argv)
 
     if args.importar_brain:

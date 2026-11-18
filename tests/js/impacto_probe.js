@@ -42,9 +42,13 @@ const sandbox = {
     readyState: "complete",
     addEventListener: () => {},
     querySelector: () => null,
-    getElementById: () => null,
+    getElementById: () => ({}),
     createElement: () => ({ style: {}, setAttribute() {}, appendChild() {} }),
+    head: { appendChild: () => {} },
+    body: { appendChild: () => {} },
   },
+  setTimeout: () => 0,
+  clearTimeout: () => {},
   fetch: () => Promise.reject(new Error("sin red en la sonda")),
 };
 sandbox.window = sandbox;

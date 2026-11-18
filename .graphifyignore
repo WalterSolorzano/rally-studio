@@ -1,0 +1,24 @@
+# Lo que el grafo no indexa. Syntax es la de .gitignore.
+#
+# El grafo no se analiza a si mismo: graph.json de 390 KB entraba como 155
+# nodos y los pautados convertidos de ediciones anteriores (regla 11 de
+# AGENTS.md) como otro documento mas. Ojo: `graphify update` solo vuelve a
+# extraer codigo, asi que los nodos de documento que ya estan en el grafo solo
+# salen en una reconstruccion completa con el pase semantico.
+graphify-out/
+brain/corpus/graphify-out/
+
+# Restos de ejecuciones fallidas y comprimidos sueltos.
+*.failed
+*.gz
+
+# Tablas de datos sin estructura: producen nodos y ninguna relacion. Son los
+# huerfanos que aparecian en GRAPH_REPORT.md. Siguen en el repositorio; solo
+# no se grafican.
+design/config.js
+design/contenido.js
+design/mapa_ni.js
+design/ods_data.js
+design/presets.js
+dashboard/data/stats.generated.js
+dashboard/super_agents_rubrics.js

@@ -134,3 +134,10 @@ Cada entrada sigue el patrón: problema real → solución técnica → métrica
 
 **Archivo fuente:** `brain/corpus/transcripciones_primeros_lugares_nic.md`
 **Videos transcritos:** `research/sirli/transcripts/<video_id>.json`
+
+<!-- relacionado:inicio -->
+
+## Relacionado
+
+- [videos_sin_audio.md](videos_sin_audio.md) — videos sin audio.
+- [casos_ganadores.md](casos_ganadores.md) — ficha del mismo caso.

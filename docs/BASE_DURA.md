@@ -51,7 +51,7 @@ generadores y ya había derivado. Medido:
 
 | archivo | qué decía | qué dice la rúbrica |
 |---|---|---|
-| `skills/storyboard/gen_storyboard_visual.py:29` | Acto I en rojo `#f81110` | el rojo se reserva para "grabando" |
+| `scripts/gen_storyboard_visual.py:43` | Acto I en rojo `#f81110` | el rojo se reserva para "grabando" |
 | `scripts/gen_report_figures.py:208` | Acto III empieza en 60 s, IV en 95 s | 39.6 s y 74.4 s |
 
 Arreglo: **`scripts/comun.py`**. No guarda los números: los **lee** de
@@ -68,7 +68,7 @@ actos    I=Dolor 17%  II=Caja negra 33%  III=Prefactibilidad 29%  IV=Cierre 21%
 ```
 
 Ya lo usan: `skills/guion-storyboard/gen_teleprompter.py`,
-`skills/storyboard/gen_storyboard_visual.py`, `scripts/gen_report_figures.py`.
+`scripts/gen_storyboard_visual.py`, `scripts/gen_report_figures.py`.
 Regla desde hoy: **ningún script vuelve a escribir 0.17/0.33/0.29/0.21 ni un color de acto.**
 
 Lo que sigue copiado, medido con `tools/auditar_repeticiones.py` (311 archivos de código):
@@ -93,15 +93,16 @@ de trabajo ya hecho, no basura: `.plan-ia-gratis.md` (integración IA gratuita, 
 evidencia) y `PLAN_README_PULIDO.md`. Se quedan hasta que decidas si van a `docs/planes/`.
 
 Archivos idénticos que **se quedan** porque son espejos deliberados: `brain/corpus/*` copia
-`knowledge/*` para que el cerebro se distribuya solo; `docs/MANUAL_MAESTRO_RALLY_INNOVACION_2026.md`
-y su versión LATAM salen del mismo generador (`generate_master_pdf.py:590` copia el PDF).
+`knowledge/*` para que el cerebro se distribuya solo. El manual maestro tiene un solo PDF
+(`MANUAL_MAESTRO_RALLY_LATAM_Y_NICARAGUA_INNOVA_2026.pdf`): la copia "de compatibilidad"
+que hacía `generate_master_pdf.py` ya no existe.
 
 ## 5. Fallas de lógica encontradas y corregidas
 
 | dónde | falla | arreglo |
 |---|---|---|
-| `skills/storyboard/gen_storyboard_visual.py:399` | `KeyError: 'owner'` y el tablero entero no se generaba si el CSV no traía la columna | `.get("owner") or "sin dueño"` |
-| `skills/storyboard/gen_storyboard_visual.py:29` | Acto I de rojo | color de `comun.COLORES` |
+| `scripts/gen_storyboard_visual.py:399` | `KeyError: 'owner'` y el tablero entero no se generaba si el CSV no traía la columna | `.get("owner") or "sin dueño"` |
+| `scripts/gen_storyboard_visual.py:43` | Acto I de rojo | color de `comun.COLORES` |
 | `scripts/gen_report_figures.py:208` | cortes de acto en 0/20/60/95 s | `comun.ventanas()` → 0/20.4/60.0/94.8 s |
 | `scripts/watch_stats.py:81-128` | manda el aviso del resumen a `timeline`, y `content_bridge.js` no tenía rama para esa pestaña: el aviso se descartaba | rama `timeline` en `fusionar()`: guarda en `state.avisos` (máx. 5) y el botón dice «Abrir»; al aceptar abre `payload.url` |
 | `dashboard/stats.html` | no había contadores de render, fallos ni correcciones, y el modelo no los registraba | `scripts/registro_produccion.py` + instrumentación de `gpu_lock.py run` → `logs/produccion.jsonl` → `build_stats.py` → bloque «La máquina también trabajó» |
@@ -115,7 +116,7 @@ OK  tomas=6  palabras=149  metraje=30.2s  movimiento=89.4%
     I       18.2        10.0         20.4  La voz no cabe: ...
     TOTAL voz=66.2s metraje=30.2s objetivo=120s  Corto: 149 palabras (minimo 240).
 
-$ python skills/storyboard/gen_storyboard_visual.py --csv tmp/csv_prueba.csv --out tmp/sb_prueba.html
+$ python scripts/gen_storyboard_visual.py --csv tmp/csv_prueba.csv --out tmp/sb_prueba.html
 OK: tmp/sb_prueba.html · 6 tomas · 30.2 s · 6 items de rubrica
   <div class="act" style="--c:#0d1b35"><h2>Acto I · Dolor</h2><span>0:00.0 – 0:20.4 ...
   <div class="act" style="--c:#0866f5"><h2>Acto II · Caja negra</h2><span>0:20.4 – 1:00.0 ...

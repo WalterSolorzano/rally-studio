@@ -14,14 +14,18 @@ utf8()
 
 BRIEF_PATH = pathlib.Path("brief.json")
 CLAIMS_PATH = pathlib.Path("research/claims.json")
-TEMPLATE_PATH = pathlib.Path("docs/pautado_template.docx")
+TEMPLATE_PATH = pathlib.Path("plantillas/pautado_template.docx")
 DRAFT_PATH = pathlib.Path("docs/pautado_draft.docx")
+
+# Un solo Word de plantilla manda: `plantillas/pautado_template.docx`. Las copias
+# que vivían en `docs/` y `knowledge/` eran los mismos bytes con otro nombre.
+PLANTILLA_UNICA = pathlib.Path("plantillas/pautado_template.docx")
 
 def get_reference_template(rally_type):
     if rally_type == "latam":
         ref = pathlib.Path("knowledge/pautado_latam_ref.docx")
     else:
-        ref = pathlib.Path("knowledge/pautado_nacional_ref.docx")
+        ref = PLANTILLA_UNICA
     return ref if ref.exists() else None
 
 def create_default_document(brief, claims):
@@ -62,13 +66,15 @@ def create_default_document(brief, claims):
     sections = [
         ("PROBLEMA", 1250, f"{{SEC_PROBLEMA}}\n{stats_text} La ausencia de soluciones accesibles y descentralizadas agrava la brecha, requiriendo intervencion inmediata.\n{{SEC_END}}"),
         ("SOLUCION", 1250, f"{{SEC_SOLUCION}}\n{brief.get('solution_detail') or (brief.get('description_one_line','Solucion tecnica') + ' El diseno optimiza el rendimiento mediante una arquitectura modular y componentes estandarizados.')}\n{{SEC_END}}"),
-        ("PREFACTIBILIDAD", 1000, f"{{SEC_PREFACTIBILIDAD}}\nCosto estimado de implementacion inicial: {cost_str}. La estructura de insumos se basa en suministros de escala con enlaces de respaldo verificables.\n{{SEC_END}}"),
+        ("PREFACTIBILIDAD", 1500, f"{{SEC_PREFACTIBILIDAD}}\nCosto estimado de implementacion inicial: {cost_str}. La estructura de insumos se basa en suministros de escala con enlaces de respaldo verificables.\n{{SEC_END}}"),
         ("INNOVACION", 1000, f"{{SEC_INNOVACION}}\n{brief.get('innovation_detail') or 'A diferencia de las alternativas convencionales, nuestra propuesta integra tecnologia accesible y adaptacion local de materiales, reduciendo tiempos de despliegue.'}\n{{SEC_END}}"),
-        ("IMPACTO", 1500, f"{{SEC_IMPACTO}}\nAlineado directamente con {', '.join(brief.get('ods_ids',['ODS 11']))} y la estrategia de desarrollo del piloto. El impacto se medira con indicadores auditables durante y despues del rally.\n{{SEC_END}}")
+        ("IMPACTO", 1000, f"{{SEC_IMPACTO}}\nAlineado directamente con {', '.join(brief.get('ods_ids',['ODS 11']))} y la estrategia de desarrollo del piloto. El impacto se medira con indicadores auditables durante y despues del rally.\n{{SEC_END}}")
     ]
 
+    sin_tope = (brief.get("rally_type") or "latam").strip().lower() != "latam"
     for sec_title, limit, content in sections:
-        h = doc.add_heading(f"{sec_title} (Limite: {limit} caracteres con espacios)", level=1)
+        tope = "sin limite de caracteres" if sin_tope else f"Limite: {limit} caracteres con espacios"
+        h = doc.add_heading(f"{sec_title} ({tope})", level=1)
         p = doc.add_paragraph(content)
 
     doc.save(DRAFT_PATH)

@@ -2,10 +2,8 @@
 """Tests de blender_addons.py."""
 
 import json
-from pathlib import Path
 
 from scripts.blender_addons import addons_para_tipo, instalar, main
-
 
 def test_addons_por_tipo():
     assert addons_para_tipo("producto") == ["BlenderKit"]

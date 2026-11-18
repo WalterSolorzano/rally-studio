@@ -4,9 +4,9 @@ from __future__ import annotations
 
 from collections import Counter
 
-from base import (ANIOS, CORE, DF, HIP, INTL, META, NAC, NIC, NIC_SEDE, SIS, TXT, VIDEOS,
-                  WINNERS, fig, fp, media, mediana, nombre_pais, num, pct, pp, tabla,
-                  tasa, tasa_por, wilson)
+from base import (CORE, DF, INTL, NIC,
+                  WINNERS, fig, mediana, nombre_pais, num, pct, tabla,
+                  tasa, wilson)
 
 PARTE = """
 ---

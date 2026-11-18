@@ -157,62 +157,8 @@ def detect_artifact_project(*texts: str) -> str:
     return ""
 
 
-def main(phase_override: str | None = None) -> None:
-    state = read_json(STATE_PATH, {}) or {}
-    brief = read_json(ROOT / "brief.json", {}) or {}
-    claims = read_json(CLAIMS_PATH, []) or []
-    budget = read_json(BUDGET_PATH, []) or []
-    shotlist = []
-    if SHOTLIST_PATH.exists():
-        with SHOTLIST_PATH.open("r", encoding="utf-8-sig", newline="") as handle:
-            shotlist = list(csv.DictReader(handle))
-
-    script_text = read_text(SCRIPT_PATH)
-    script_words = len(re.findall(r"\b\w+\b", script_text))
-    narration_text = read_text(NARRATION_PATH)
-    canvas_text = read_text(CANVAS_PATH)
-    bibliography_text = read_text(BIBLIOGRAPHY_PATH)
-    site_text = read_text(SITE_PATH)
-    dossier_text = read_text(DOSSIER_PATH)
-
-    project_declared = clean(state.get("project_name"))
-    artifact_project = detect_artifact_project(script_text, canvas_text, dossier_text) if project_declared else ""
-
-    team_name = clean(state.get("team_name")) or "Tu equipo"
-    project_name = project_declared or "Tu proyecto"
-    university = clean(state.get("university")) or "Universidad sin registrar"
-    city = clean(state.get("city")) or "Ciudad sin registrar"
-    challenge_title = clean(state.get("challenge_title")) or "Reto sin registrar"
-    challenge_id = clean(state.get("challenge_id"))
-    category = clean(state.get("category")) or "Sin categoría"
-    rally_type = clean(state.get("rally_type")) or "general"
-    duration_h = float(state.get("hours_total") or 0)
-    hours_remaining = float(state.get("hours_remaining") or 0)
-    elapsed_h = round(max(0.0, duration_h - hours_remaining), 1)
-    elapsed_pct = pct(elapsed_h, duration_h)
-
-    start_dt = dt_from_ms(state.get("start_timestamp"))
-    end_dt = start_dt + timedelta(hours=duration_h) if start_dt else None
-
-    roster = [p for p in (state.get("team_roster") or []) if clean(p.get("name"))]
-    roster_by_name = {clean(p.get("name")): p for p in roster}
-    deliverables = state.get("deliverables") or {}
-
-    done_keys = [k for k, v in deliverables.items() if clean((v or {}).get("status")).lower() in {"done", "completed"}]
-    progress_keys = [k for k, v in deliverables.items() if clean((v or {}).get("status")).lower() in {"in_progress", "doing"}]
-    deliverable_total = len(deliverables)
-    has_project_context = bool(project_declared or roster or deliverables)
-
-    pautado = state.get("pautado") or {}
-    pautado_sections = [k for k in PAUTADO_KEYS if len(clean(pautado.get(k))) > 0]
-    script = state.get("script") or {}
-    script_acts = [k for k in SCRIPT_KEYS if len(clean(script.get(k))) > 0]
-    state_budget = state.get("budget") or []
-    state_claims = state.get("claims") or []
-    guardrails = state.get("guardrails") or {}
-    guardrails_checked = sum(1 for value in guardrails.values() if value)
-
-    # Signals: session start, roster joins, and every deliverable history event.
+def _senales(roster, deliverables, start_dt):
+    """Linea de tiempo: arranque de sesión, ingresos del equipo y cada evento."""
     signals = []
     if start_dt:
         signals.append({
@@ -246,10 +192,11 @@ def main(phase_override: str | None = None) -> None:
                 "deliverable": label,
             })
     signals.sort(key=lambda item: item["at"])
+    return signals, (signals[-1]["at"] if signals else start_dt)
 
-    last_signal_dt = signals[-1]["at"] if signals else start_dt
 
-    # Per-person activity.
+def _personas(roster, deliverables, signals, deliverable_total):
+    """Actividad por persona y la persona con más frentes (MVP operativo)."""
     people = []
     for index, person in enumerate(roster):
         name = clean(person.get("name"))
@@ -298,20 +245,11 @@ def main(phase_override: str | None = None) -> None:
         for person in people:
             if person["id"] == mvp["id"]:
                 person["mvp"] = True
+    return people, mvp
 
-    team_declared = int(state.get("team_members_count") or 0) or len(roster)
-    missing_people = max(0, team_declared - len(roster))
-    placeholders = [
-        {
-            "id": f"sin-registro-{index + 1}",
-            "name": "Sin registro",
-            "initials": "—",
-            "avatar": "assets/stats/avatar-empty.svg",
-        }
-        for index in range(missing_people)
-    ]
 
-    # Hourly rhythm: 28 slots from the start hour. Count signals per slot.
+def _ritmo(signals, start_dt, duration_h, last_signal_dt):
+    """Ritmo por hora: un bloque por hora de certamen, contando señales."""
     hour_slots = []
     if start_dt:
         cursor = start_dt.replace(minute=0, second=0, microsecond=0)
@@ -336,15 +274,15 @@ def main(phase_override: str | None = None) -> None:
     peak = max(hour_slots, key=lambda slot: (slot["count"], -int(slot["label"]))) if hour_slots else None
     peak_hour = f"{peak['label']}:00" if peak else "—"
     peak_count = peak["count"] if peak else 0
+    peak_people = []
+    peak_frentes = []
     if peak and peak["count"]:
         peak_start = start_dt.replace(minute=0, second=0, microsecond=0) + timedelta(hours=hour_slots.index(peak))
         peak_end = peak_start + timedelta(hours=1)
         peak_signals = [signal for signal in signals if peak_start <= signal["at"] < peak_end]
-        peak_people = []
         for signal in peak_signals:
             if signal["kind"] == "deliverable" and signal["name"] not in peak_people:
                 peak_people.append(signal["name"])
-        peak_frentes = []
         for signal in peak_signals:
             if signal["deliverable"] and signal["deliverable"] not in peak_frentes:
                 peak_frentes.append(signal["deliverable"])
@@ -355,27 +293,56 @@ def main(phase_override: str | None = None) -> None:
         )
     else:
         peak_note = "Todavía no hay suficientes señales para trazar un pico."
-    threshold = 50 if peak_count else 0
+    return {
+        "hours": hour_slots,
+        "max_count": max_count,
+        "peak": peak,
+        "peak_hour": peak_hour,
+        "peak_count": peak_count,
+        "peak_note": peak_note,
+        "peak_people": peak_people,
+        "peak_frentes": peak_frentes,
+        "threshold": 50 if peak_count else 0,
+    }
 
-    # Readiness index: live session only. Artifacts from another project do not count.
-    readiness_parts = [
-        {"label": "Entregables", "weight": 35, "value": pct(len(done_keys), deliverable_total), "points": round(35 * (len(done_keys) / deliverable_total), 1) if deliverable_total else 0},
-        {"label": "Pautado", "weight": 20, "value": pct(len(pautado_sections), 5), "points": round(20 * (len(pautado_sections) / 5), 1)},
-        {"label": "Guion", "weight": 15, "value": pct(len(script_acts), 4), "points": round(15 * (len(script_acts) / 4), 1)},
-        {"label": "Presupuesto", "weight": 15, "value": 100 if state_budget else 0, "points": 15 if state_budget else 0},
-        {"label": "Fuentes", "weight": 10, "value": 100 if len(state_claims) >= 3 else pct(len(state_claims), 3), "points": round(10 * min(len(state_claims) / 3, 1), 1)},
-        {"label": "Guardrails", "weight": 5, "value": pct(guardrails_checked, 10), "points": round(5 * min(guardrails_checked / 10, 1), 1)},
+
+def _reparto(deliverables, deliverable_total):
+    """Reparto de frentes registrados, no horas inventadas."""
+    split_groups = [
+        ("Pautado", "Pautado", "#0866F5"),
+        ("Reto", "Reto", "#0284C7"),
+        ("Presupuesto", "Presupuesto", "#0D1B35"),
+        ("Canvas", "Canvas", "#2AA7AD"),
+        ("Despacho", "Despacho", "#64748B"),
     ]
-    readiness = round(sum(part["points"] for part in readiness_parts))
+    split = []
+    for label, prefix, color in split_groups:
+        count = sum(1 for key, item in deliverables.items() if DELIVERABLE_LABELS.get(key, "").startswith(prefix) or (prefix == "Pautado" and key.startswith("pautado_")))
+        if count:
+            split.append({"label": label, "count": count, "pct": pct(count, deliverable_total), "color": color})
+    # Fold the 1-point groups into a clean 100% bar without losing the labels.
+    if split:
+        total_pct = sum(item["pct"] for item in split)
+        if total_pct != 100:
+            split[-1]["pct"] += 100 - total_pct
+    return split
 
-    identity_conflict = bool(project_declared and artifact_project) and artifact_project.casefold() != project_name.casefold()
-    budget_conflict = has_project_context and bool(budget) and len(state_budget) != len(budget)
-    claims_conflict = has_project_context and bool(claims) and len(state_claims) != len(claims)
-    team_gap = has_project_context and len(roster) < team_declared
-    brief_gap = has_project_context and not any(clean(brief.get(key)) for key in ("project_name", "team_name", "university", "city"))
-    budget_total = sum(float(row.get("total") or 0) for row in budget)
 
-    # Critical gaps: only what is actually open in the live session.
+def _gaps_criticos(ctx):
+    """Frentes abiertos de la sesión viva: solo lo que de verdad falta."""
+    state_budget = ctx["state_budget"]
+    budget = ctx["budget"]
+    budget_total = ctx["budget_total"]
+    identity_conflict = ctx["identity_conflict"]
+    script_acts = ctx["script_acts"]
+    script_words = ctx["script_words"]
+    pautado_sections = ctx["pautado_sections"]
+    state_claims = ctx["state_claims"]
+    claims = ctx["claims"]
+    roster = ctx["roster"]
+    team_declared = ctx["team_declared"]
+    has_project_context = ctx["has_project_context"]
+
     critical_all = []
     if not state_budget:
         budget_desc = f"La sesión tiene 0 filas de presupuesto."
@@ -446,20 +413,20 @@ def main(phase_override: str | None = None) -> None:
             "action": "Cargar al menos tres fuentes con URL y año.",
         })
 
-    if identity_conflict or team_gap:
+    if identity_conflict or ctx["team_gap"]:
         identity_desc = []
         if identity_conflict:
             identity_desc.append(
                 "La sesión y los artefactos en disco no coinciden."
             )
-        if team_gap:
+        if ctx["team_gap"]:
             identity_desc.append(
                 f"Hay {len(roster)} personas con nombre de {team_declared} declaradas."
             )
         critical_all.append({
-            "time": f"{len(roster)} / {team_declared}" if team_gap else "—",
+            "time": f"{len(roster)} / {team_declared}" if ctx["team_gap"] else "—",
             "severity": "alta" if identity_conflict else "media",
-            "title": "Identidad y equipo" if (identity_conflict and team_gap) else "Identidad del proyecto" if identity_conflict else "Equipo incompleto",
+            "title": "Identidad y equipo" if (identity_conflict and ctx["team_gap"]) else "Identidad del proyecto" if identity_conflict else "Equipo incompleto",
             "desc": " ".join(identity_desc),
             "status": "abierto",
             "action": (
@@ -472,26 +439,24 @@ def main(phase_override: str | None = None) -> None:
     if not has_project_context:
         critical_all = []
     critical_all.sort(key=lambda item: 0 if item["severity"] == "alta" else 1)
-    critical = critical_all[:4]
+    return critical_all, critical_all[:4]
 
-    # Distribution of registered frentes, not invented hours.
-    split_groups = [
-        ("Pautado", "Pautado", "#0866F5"),
-        ("Reto", "Reto", "#0284C7"),
-        ("Presupuesto", "Presupuesto", "#0D1B35"),
-        ("Canvas", "Canvas", "#2AA7AD"),
-        ("Despacho", "Despacho", "#64748B"),
-    ]
-    split = []
-    for label, prefix, color in split_groups:
-        count = sum(1 for key, item in deliverables.items() if DELIVERABLE_LABELS.get(key, "").startswith(prefix) or (prefix == "Pautado" and key.startswith("pautado_")))
-        if count:
-            split.append({"label": label, "count": count, "pct": pct(count, deliverable_total), "color": color})
-    # Fold the 1-point groups into a clean 100% bar without losing the labels.
-    if split:
-        total_pct = sum(item["pct"] for item in split)
-        if total_pct != 100:
-            split[-1]["pct"] += 100 - total_pct
+
+def _logros(ctx):
+    """Lo que el equipo sí puede mostrar cerrado."""
+    state = ctx["state"]
+    deliverables = ctx["deliverables"]
+    done_keys = ctx["done_keys"]
+    deliverable_total = ctx["deliverable_total"]
+    pautado_sections = ctx["pautado_sections"]
+    claims = ctx["claims"]
+    budget = ctx["budget"]
+    shotlist = ctx["shotlist"]
+    identity_conflict = ctx["identity_conflict"]
+    roster = ctx["roster"]
+    team_declared = ctx["team_declared"]
+    project_name = ctx["project_name"]
+    has_project_context = ctx["has_project_context"]
 
     reto_event = None
     for event in (deliverables.get("reto") or {}).get("history") or []:
@@ -555,41 +520,50 @@ def main(phase_override: str | None = None) -> None:
             "title": "Equipo registrado",
             "desc": f"{len(roster)} de {team_declared} integrantes tienen nombre y señal en la sesión.",
         })
+    return achievements
 
+
+def _conflictos(ctx):
+    """Choques entre la sesión viva y lo que hay en disco."""
     conflicts = []
+    identity_conflict = ctx["identity_conflict"]
     if identity_conflict:
         conflicts.append({
             "title": "Identidad del proyecto",
             "detail": "La sesión y los artefactos en disco no coinciden. No se mezclan; revisa cuál es la versión vigente.",
             "severity": "alta",
         })
-    if budget_conflict:
+    if ctx["budget_conflict"]:
         conflicts.append({
             "title": "Presupuesto",
-            "detail": f"state.json: {len(state_budget)} filas. budget/budget.json: {len(budget)} filas por USD {budget_total:,.0f}.",
+            "detail": f"state.json: {len(ctx['state_budget'])} filas. budget/budget.json: {len(ctx['budget'])} filas por USD {ctx['budget_total']:,.0f}.",
             "severity": "alta",
         })
-    if claims_conflict:
+    if ctx["claims_conflict"]:
         conflicts.append({
             "title": "Fuentes",
-            "detail": f"state.json: {len(state_claims)} claims. research/claims.json: {len(claims)} claims con URL.",
+            "detail": f"state.json: {len(ctx['state_claims'])} claims. research/claims.json: {len(ctx['claims'])} claims con URL.",
             "severity": "alta",
         })
-    if team_gap:
+    if ctx["team_gap"]:
         conflicts.append({
             "title": "Equipo",
-            "detail": f"state.json declara {team_declared} integrantes; team_roster tiene {len(roster)}.",
+            "detail": f"state.json declara {ctx['team_declared']} integrantes; team_roster tiene {len(ctx['roster'])}.",
             "severity": "media",
         })
-    if brief_gap:
+    if ctx["brief_gap"]:
         conflicts.append({
             "title": "Brief",
             "detail": "brief.json está incompleto; la identidad vive solo en state.json.",
             "severity": "media",
         })
-    if not has_project_context:
+    if not ctx["has_project_context"]:
         conflicts = []
+    return conflicts
 
+
+def _fuentes():
+    """Estado de cada archivo del que salen las cifras."""
     source_specs = [
         ("Sesión", STATE_PATH),
         ("Claims", CLAIMS_PATH),
@@ -602,7 +576,7 @@ def main(phase_override: str | None = None) -> None:
         ("Sitio", SITE_PATH),
         ("Brief", ROOT / "brief.json"),
     ]
-    sources = [
+    return [
         {
             "label": label,
             "path": str(path.relative_to(ROOT)).replace("\\", "/"),
@@ -611,6 +585,126 @@ def main(phase_override: str | None = None) -> None:
         }
         for label, path in source_specs
     ]
+
+
+def main(phase_override: str | None = None) -> None:
+    state = read_json(STATE_PATH, {}) or {}
+    brief = read_json(ROOT / "brief.json", {}) or {}
+    claims = read_json(CLAIMS_PATH, []) or []
+    budget = read_json(BUDGET_PATH, []) or []
+    shotlist = []
+    if SHOTLIST_PATH.exists():
+        with SHOTLIST_PATH.open("r", encoding="utf-8-sig", newline="") as handle:
+            shotlist = list(csv.DictReader(handle))
+
+    script_text = read_text(SCRIPT_PATH)
+    script_words = len(re.findall(r"\b\w+\b", script_text))
+    narration_text = read_text(NARRATION_PATH)
+    canvas_text = read_text(CANVAS_PATH)
+    bibliography_text = read_text(BIBLIOGRAPHY_PATH)
+    site_text = read_text(SITE_PATH)
+    dossier_text = read_text(DOSSIER_PATH)
+
+    project_declared = clean(state.get("project_name"))
+    artifact_project = detect_artifact_project(script_text, canvas_text, dossier_text) if project_declared else ""
+
+    team_name = clean(state.get("team_name")) or "Tu equipo"
+    project_name = project_declared or "Tu proyecto"
+    university = clean(state.get("university")) or "Universidad sin registrar"
+    city = clean(state.get("city")) or "Ciudad sin registrar"
+    challenge_title = clean(state.get("challenge_title")) or "Reto sin registrar"
+    challenge_id = clean(state.get("challenge_id"))
+    category = clean(state.get("category")) or "Sin categoría"
+    rally_type = clean(state.get("rally_type")) or "general"
+    duration_h = float(state.get("hours_total") or 0)
+    hours_remaining = float(state.get("hours_remaining") or 0)
+    elapsed_h = round(max(0.0, duration_h - hours_remaining), 1)
+    elapsed_pct = pct(elapsed_h, duration_h)
+
+    start_dt = dt_from_ms(state.get("start_timestamp"))
+    end_dt = start_dt + timedelta(hours=duration_h) if start_dt else None
+
+    roster = [p for p in (state.get("team_roster") or []) if clean(p.get("name"))]
+    roster_by_name = {clean(p.get("name")): p for p in roster}
+    deliverables = state.get("deliverables") or {}
+
+    done_keys = [k for k, v in deliverables.items() if clean((v or {}).get("status")).lower() in {"done", "completed"}]
+    progress_keys = [k for k, v in deliverables.items() if clean((v or {}).get("status")).lower() in {"in_progress", "doing"}]
+    deliverable_total = len(deliverables)
+    has_project_context = bool(project_declared or roster or deliverables)
+
+    pautado = state.get("pautado") or {}
+    pautado_sections = [k for k in PAUTADO_KEYS if len(clean(pautado.get(k))) > 0]
+    script = state.get("script") or {}
+    script_acts = [k for k in SCRIPT_KEYS if len(clean(script.get(k))) > 0]
+    state_budget = state.get("budget") or []
+    state_claims = state.get("claims") or []
+    guardrails = state.get("guardrails") or {}
+    guardrails_checked = sum(1 for value in guardrails.values() if value)
+
+    team_declared = int(state.get("team_members_count") or 0) or len(roster)
+    missing_people = max(0, team_declared - len(roster))
+    placeholders = [
+        {
+            "id": f"sin-registro-{index + 1}",
+            "name": "Sin registro",
+            "initials": "—",
+            "avatar": "assets/stats/avatar-empty.svg",
+        }
+        for index in range(missing_people)
+    ]
+
+    identity_conflict = bool(project_declared and artifact_project) and artifact_project.casefold() != project_name.casefold()
+    budget_conflict = has_project_context and bool(budget) and len(state_budget) != len(budget)
+    claims_conflict = has_project_context and bool(claims) and len(state_claims) != len(claims)
+    team_gap = has_project_context and len(roster) < team_declared
+    brief_gap = has_project_context and not any(clean(brief.get(key)) for key in ("project_name", "team_name", "university", "city"))
+    budget_total = sum(float(row.get("total") or 0) for row in budget)
+
+    ctx = {
+        "state": state,
+        "claims": claims,
+        "budget": budget,
+        "shotlist": shotlist,
+        "roster": roster,
+        "deliverables": deliverables,
+        "done_keys": done_keys,
+        "deliverable_total": deliverable_total,
+        "has_project_context": has_project_context,
+        "identity_conflict": identity_conflict,
+        "budget_conflict": budget_conflict,
+        "claims_conflict": claims_conflict,
+        "team_gap": team_gap,
+        "brief_gap": brief_gap,
+        "team_declared": team_declared,
+        "project_name": project_name,
+        "pautado_sections": pautado_sections,
+        "script_acts": script_acts,
+        "script_words": script_words,
+        "state_budget": state_budget,
+        "state_claims": state_claims,
+        "budget_total": budget_total,
+    }
+
+    signals, last_signal_dt = _senales(roster, deliverables, start_dt)
+    people, mvp = _personas(roster, deliverables, signals, deliverable_total)
+    ritmo = _ritmo(signals, start_dt, duration_h, last_signal_dt)
+
+    readiness_parts = [
+        {"label": "Entregables", "weight": 35, "value": pct(len(done_keys), deliverable_total), "points": round(35 * (len(done_keys) / deliverable_total), 1) if deliverable_total else 0},
+        {"label": "Pautado", "weight": 20, "value": pct(len(pautado_sections), 5), "points": round(20 * (len(pautado_sections) / 5), 1)},
+        {"label": "Guion", "weight": 15, "value": pct(len(script_acts), 4), "points": round(15 * (len(script_acts) / 4), 1)},
+        {"label": "Presupuesto", "weight": 15, "value": 100 if state_budget else 0, "points": 15 if state_budget else 0},
+        {"label": "Fuentes", "weight": 10, "value": 100 if len(state_claims) >= 3 else pct(len(state_claims), 3), "points": round(10 * min(len(state_claims) / 3, 1), 1)},
+        {"label": "Guardrails", "weight": 5, "value": pct(guardrails_checked, 10), "points": round(5 * min(guardrails_checked / 10, 1), 1)},
+    ]
+    readiness = round(sum(part["points"] for part in readiness_parts))
+
+    critical_all, critical = _gaps_criticos(ctx)
+    split = _reparto(deliverables, deliverable_total)
+    achievements = _logros(ctx)
+    conflicts = _conflictos(ctx)
+    sources = _fuentes()
 
     start_label = hhmm(start_dt)
     end_label = hhmm(end_dt)
@@ -693,14 +787,14 @@ def main(phase_override: str | None = None) -> None:
             "team_declared": team_declared,
         },
         "rhythm": {
-            "peak_hour": peak_hour,
-            "peak_count": peak_count,
-            "peak_note": peak_note,
-            "peak_people": peak_people if peak and peak["count"] else [],
-            "peak_frentes": peak_frentes if peak and peak["count"] else [],
-            "threshold": threshold,
-            "max_count": max_count,
-            "hours": hour_slots,
+            "peak_hour": ritmo["peak_hour"],
+            "peak_count": ritmo["peak_count"],
+            "peak_note": ritmo["peak_note"],
+            "peak_people": ritmo["peak_people"] if ritmo["peak"] and ritmo["peak"]["count"] else [],
+            "peak_frentes": ritmo["peak_frentes"] if ritmo["peak"] and ritmo["peak"]["count"] else [],
+            "threshold": ritmo["threshold"],
+            "max_count": ritmo["max_count"],
+            "hours": ritmo["hours"],
         },
         "critical": critical,
         "mvp": None if not mvp else {
@@ -775,7 +869,7 @@ def main(phase_override: str | None = None) -> None:
     print(f"identity: {team_name} / {project_name} / {university} / {city}")
     print(f"session: {elapsed_h:g}h elapsed of {duration_h:g}h, {hours_remaining:g}h remaining")
     print(f"deliverables: {len(done_keys)}/{deliverable_total} done; pautado {len(pautado_sections)}/5; script {len(script_acts)}/4")
-    print(f"signals: {len(signals)}; peak: {peak_hour} ({peak_count}); readiness: {readiness}")
+    print(f"signals: {len(signals)}; peak: {ritmo['peak_hour']} ({ritmo['peak_count']}); readiness: {readiness}")
     print(f"people: {', '.join(p['name'] + '=' + str(p['frentes']) for p in people)}")
     print(f"artifact project: {artifact_project or 'none'}; conflicts: {len(conflicts)}")
 

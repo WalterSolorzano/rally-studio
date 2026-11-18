@@ -55,11 +55,8 @@
   // Escapa TODO texto no controlado antes de innerHTML. El valor de la IA, el
   // texto extraído de un documento y la respuesta externa son datos hostiles:
   // un prompt-injection puede devolver <img onerror=…> dentro del JSON.
-  function esc(s) {
-    return String(s == null ? "" : s)
-      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
-  }
+  // La implementación es única y vive en `escape.js`.
+  var esc = window.RallyEsc.esc;
   MOD.esc = esc;
   // Las rúbricas piden "Crítico"/"Cumple"; la IA puede devolver "critico" o
   // "Cumple " — se compara normalizado, se muestra el texto original.
@@ -266,7 +263,7 @@
     const ids = Array.from(seen);
     // Los ids vienen del estado (sincronizado/importado): escapar antes de
     // meterlos en un RegExp o un id como "a1(" rompe el panel entero.
-    const escRe = (s) => String(s).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const escRe = window.RallyEsc.escRe;
     const re = ids.length
       ? new RegExp("^asset_(" + ids.map(escRe).join("|") + ")_[a-z0-9_\\-]+\\.[a-z0-9]+$", "i")
       : null;
@@ -399,8 +396,9 @@
     return h[agentId];
   };
 
-  // ── Task 4: cliente IA local (solo el servicio :8000, sin claves ni fallback duplicado) ──
-  const AI_BASE = "http://localhost:8000/api/ai";
+  // ── Task 4: cliente IA del servicio (mismo origen; en GitHub Pages no hay servicio) ──
+  // Antes decia http://localhost:8000 fijo: en el puerto real (8797, 8000, Pages) no respondia.
+  const AI_BASE = (location.protocol === "file:" ? "http://localhost:8000" : location.origin) + "/api/ai";
   const FETCH_TIMEOUT_MS = 10000;
   const POST_TIMEOUT_MS = 45000; // POST /api/ai puede listar modelos del CLI (cold cache)
   const POLL_MS = 2000;
@@ -443,8 +441,10 @@
   let agentBusy = 0;
   function setAgentBusy(delta) {
     agentBusy = Math.max(0, agentBusy + delta);
+    // El tercer argumento es el total: sin él, con dos agentes el aviso se
+    // apagaba en cuanto terminaba el primero.
     if (typeof window !== "undefined" && window.rsAgentActivity) {
-      window.rsAgentActivity(agentBusy > 0, "Redactando la propuesta\u2026");
+      window.rsAgentActivity(agentBusy > 0, "Redactando la propuesta\u2026", agentBusy);
     }
   }
   MOD.cancelAnalysis = function cancelAnalysis() {
@@ -456,7 +456,7 @@
       // aunque la UI ya se olvido del trabajo.
       killJob(job);
     }
-    agentBusy = 0; if (typeof window !== "undefined" && window.rsAgentActivity) window.rsAgentActivity(false);
+    agentBusy = 0; if (typeof window !== "undefined" && window.rsAgentActivity) window.rsAgentActivity(false, "", 0);
   };
 
   function killJob(job) {
@@ -1241,7 +1241,7 @@
         busyBtn(ctx.btn, false);
         const parsed = RSA.renderAnalysis(resultEl, res);
         if (res.ok) {
-          RSA.historyAdd(ctx.agentId, { mode: ctx.docText ? "documento" : "directo", resumen: resumenDe(parsed, res), veredicto: parsed && parsed.format });
+          RSA.historyAdd(ctx.agentId, { mode: ctx.docText ? "documento" : "directo", resumen: resumenDe(parsed, res), veredicto: parsed && parsed.format, pregunta: String(promptText || "").slice(0, 800) });
         }
       });
     };
@@ -1278,7 +1278,7 @@
         busyBtn(ctx.btn, false);
         const parsed = RSA.renderAnalysis(resultEl, res);
         if (res.ok) {
-          RSA.historyAdd(ctx.agentId, { mode: "externa", resumen: resumenDe(parsed, res), veredicto: parsed && parsed.format });
+          RSA.historyAdd(ctx.agentId, { mode: "externa", resumen: resumenDe(parsed, res), veredicto: parsed && parsed.format, pregunta: String(promptText || "").slice(0, 800) });
         }
       });
     };

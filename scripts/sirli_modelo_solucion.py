@@ -28,10 +28,14 @@ Salidas:
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from comun import wilson  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 AN = ROOT / "research" / "sirli" / "analisis"
@@ -125,16 +129,6 @@ def carga() -> pd.DataFrame:
     df["tipo"] = df.apply(clasifica_tipo, axis=1)
     df["es_latam"] = df["collection"].apply(es_latam)
     return df
-
-
-def wilson(k: int, n: int, z: float = 1.96) -> tuple[float, float]:
-    if n == 0:
-        return (0.0, 0.0)
-    p = k / n
-    d = 1 + z * z / n
-    c = (p + z * z / (2 * n)) / d
-    m = z * np.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / d
-    return (max(0.0, c - m), min(1.0, c + m))
 
 
 def fmt_pct(x: float) -> str:

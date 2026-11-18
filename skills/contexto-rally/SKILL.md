@@ -22,7 +22,13 @@ description: Carga el contexto del proyecto antes de trabajar. Lee brief.json, e
 4. **Di en voz alta qué vas a leer y por qué**, una línea por archivo. El usuario debe poder
    corregirte antes de que gastes contexto.
 5. Abre solo esos archivos, y por rangos si son grandes.
-6. Si un dato no está en ninguna fuente, anótalo como hueco. No lo rellenes con lo que
+6. Si el tema está en el corpus pero no sabes en qué archivo vive, pregúntale al cerebro en
+   vez de abrirlo entero:
+   `graphify query "<tema, con las palabras del usuario>" --graph brain/corpus/graphify-out/graph.json`
+   Es local y no cuesta API: devuelve los nodos que tratan el tema y su archivo de origen.
+7. Al abrir un documento, mira su bloque `## Relacionado` (al final). Son los vecinos que el
+   corpus declara con una razón; el dato que falta suele estar en uno de ellos.
+8. Si un dato no está en ninguna fuente, anótalo como hueco. No lo rellenes con lo que
    "suena bien".
 
 ## Reglas
@@ -102,5 +108,6 @@ Compartido: `skills/_comun/modelos-3d.md`. Léelo antes de aplicar esta sección
 
 - Estado del proyecto: `brief.json`
 - Mapa del corpus: `knowledge/INDICE.md`
+- Cerebro consultable: `graphify query "<tema>" --graph brain/corpus/graphify-out/graph.json`
 - Estadísticas citables: `research/claims.json`
 - Reglas del evento: `AGENTS.md` y `.agents/rules/`

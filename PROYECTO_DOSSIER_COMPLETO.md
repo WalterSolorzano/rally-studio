@@ -125,7 +125,7 @@ Diagnóstico cuantitativo del problema identificado en el territorio nacional o 
 ### 5.2 Solución Propuesta (Límite: 1,250 caracteres con espacios)
 Arquitectura integral de la solución formulada por el equipo multidisciplinario, describiendo los componentes técnicos, flujo operativo, materiales accesibles en la región y el mecanismo de interacción con los usuarios o comunidades beneficiarias. Se enfatiza la viabilidad de despliegue en condiciones de infraestructura limitada.
 
-### 5.3 Prefactibilidad y Presupuesto de Marcha (Límite: 1,000 caracteres con espacios)
+### 5.3 Prefactibilidad y Presupuesto de Marcha (Límite: 1,500 caracteres con espacios)
 Estructura detallada de costos de puesta en marcha, abastecimiento de insumos locales y modelo de sostenibilidad económica. El presupuesto de inversión inicial se mantiene estrictamente dentro del rango de viabilidad reglamentaria (\$500 a \$15,000 USD), asegurando retorno social o financiero y bajo costo de mantenimiento operativo.
 
 ### 5.4 Grado de Innovación y Creatividad (Límite: 1,000 caracteres con espacios)

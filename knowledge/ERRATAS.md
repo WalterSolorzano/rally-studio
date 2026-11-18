@@ -13,7 +13,7 @@ Formato: fecha · archivo afectado · qué decía · qué dice · fuente.
 - **Antes**: `rubric_matrices.md` presentaba como oficiales ítems reescritos (ergonomía,
   patentes internacionales, rango $4,000–$6,000 USD, CAD/despiece, renders 3D, límites
   de 1250/1000/1500 caracteres, «120 s exactos»).
-- **Ahora**: 19 ítems literales de `rubrica_oficial_latam.jpeg`, con erratas marcadas
+- **Ahora**: 19 ítems literales de la rúbrica oficial, con erratas marcadas
   `[sic]`. Lo demás quedó etiquetado `[PATRÓN]` o `[EQUIPO]`.
 - **Fuente**: imagen oficial en la raíz del repositorio.
 

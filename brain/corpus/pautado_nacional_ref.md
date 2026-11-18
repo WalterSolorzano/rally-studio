@@ -108,3 +108,10 @@ Banco Central de Nicaragua (BCN). (2023). Informe sobre los ingresos por turismo
 | Licencia anual para programas de edición (Adobe) | 1 | Licencia | C$ 8,832.00 | C$ 8,832.00 |
 
 | TOTAL |  |  |  | C$ 219,532.00 |
+
+<!-- relacionado:inicio -->
+
+## Relacionado
+
+- [rubricas_matrices.md](rubricas_matrices.md) — rubrica que lo califica.
+- [pautado_latam_ref.md](pautado_latam_ref.md) — la variante Latam.

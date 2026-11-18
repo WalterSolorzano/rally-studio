@@ -13,7 +13,7 @@ Formato: fecha · archivo afectado · qué decía · qué dice · fuente.
 - **Antes**: `rubric_matrices.md` presentaba como oficiales ítems reescritos (ergonomía,
   patentes internacionales, rango $4,000–$6,000 USD, CAD/despiece, renders 3D, límites
   de 1250/1000/1500 caracteres, «120 s exactos»).
-- **Ahora**: 19 ítems literales de `rubrica_oficial_latam.jpeg`, con erratas marcadas
+- **Ahora**: 19 ítems literales de la rúbrica oficial, con erratas marcadas
   `[sic]`. Lo demás quedó etiquetado `[PATRÓN]` o `[EQUIPO]`.
 - **Fuente**: imagen oficial en la raíz del repositorio.
 
@@ -47,15 +47,6 @@ Formato: fecha · archivo afectado · qué decía · qué dice · fuente.
   La rúbrica oficial no lo menciona. Las menciones en documentos históricos se dejan
   como referencia, sin exigencia operativa.
 
-### Presupuesto $4,000–$6,000
-
-- **Antes**: `informe_investigacion.md` y `ganadores_db.md` presentaban el rango
-  $4,000–$6,000 USD como regla estricta / ley de los equipos nicaragüenses.
-- **Ahora**: rango de referencia [EQUIPO], no ley de rúbrica. La rúbrica oficial no
-  fija monto en USD. Ver `rubricas_matrices.md` §"Lo que la rúbrica oficial NO dice".
-- Hardcodeos resueltos: `ganadores_db.md` (rango estricto → referencia [EQUIPO]) y
-  `informe_investigacion.md` (rango de 4.000 a 6.000 → rango de referencia [EQUIPO]).
-
 ### Casos ganadores
 
 - **Ollnari** (equipo Operación Titán, UNI-RUPAP / INATEC): **2025, Rally Nacional,
@@ -65,9 +56,12 @@ Formato: fecha · archivo afectado · qué decía · qué dice · fuente.
 - **BioInnova** (equipo Nicarq Sinergy, UNI-RUSB): se mantiene como **2023, Rally
   Latam, 2do lugar internacional Impacto Social**. Es contexto de ganadores del cerebro,
   no una cifra que se cite en el pautado del proyecto actual.
-- Nota: Ollnari y BioInnova son solo los **casos con corrección de fecha/dato**, no el
-  catálogo completo. Los 421 casos mapeados (58 LATAM + 363 Nacional) con año, puesto,
-  equipo, reto, solución y video están en `ganadores_analisis.md` y `winners.jsonl`.
 - Regla general: un caso se cita con año, rally, equipo y puesto **solo si** el dato
   aparece en una fuente del repositorio. Si no, se marca como no verificado y no se usa
   como precedente.
+
+<!-- relacionado:inicio -->
+
+## Relacionado
+
+- [rubricas_matrices.md](rubricas_matrices.md) — texto normativo donde estan las erratas.

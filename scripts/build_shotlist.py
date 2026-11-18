@@ -25,7 +25,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from comun import utf8  # noqa: E402
+from comun import lista_de, utf8  # noqa: E402
 
 RAIZ = Path(__file__).resolve().parents[1]
 DIR_SHOTS = RAIZ / "shots"
@@ -140,7 +140,7 @@ def cargar_shots(dir_shots: Path | None = None, bom_path: Path | None = None) ->
                 errores.append(f"{ruta.name}: duration_s negativo")
         except (TypeError, ValueError):
             errores.append(f"{ruta.name}: duration_s no es numero")
-        claims = _v(d.get("claim_ids"))
+        claims = lista_de(d.get("claim_ids"))
         if ids_utc:
             for c in claims:
                 if c not in ids_utc:
@@ -149,25 +149,17 @@ def cargar_shots(dir_shots: Path | None = None, bom_path: Path | None = None) ->
         fila = {k: d.get(k, "") for k in COLUMNAS}
         fila["id"] = fid
         fila["status"] = status or "pendiente"
-        fila["depends_on"] = ", ".join(_v(d.get("depends_on")))
+        fila["depends_on"] = ", ".join(lista_de(d.get("depends_on")))
         fila["claim_ids"] = ", ".join(claims)
         filas.append(fila)
 
     # depende de tomas que existan
     ids = {f["id"] for f in filas}
     for f in filas:
-        for dep in _v(f["depends_on"]):
+        for dep in lista_de(f["depends_on"]):
             if dep not in ids:
                 errores.append(f"S{f['id']}: depends_on '{dep}' no apunta a toma existente")
     return filas, errores
-
-
-def _v(valor) -> list:
-    if valor is None:
-        return []
-    if isinstance(valor, list):
-        return [str(x).strip() for x in valor if str(x).strip()]
-    return [t.strip() for t in str(valor).split(",") if t.strip()]
 
 
 def compilar() -> int:

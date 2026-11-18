@@ -14,8 +14,9 @@ CARPETAS_PROFUNDAS = ["research", "knowledge", "docs", "brand"]
 CARPETAS_PLANAS = ["graphify-out"]
 
 # Ruido de build o de proceso: no es corpus y no debe ocupar presupuesto.
-EXCLUIR_PARTES = {"cache", "__pycache__"}
-EXCLUIR_PREFIJOS = ("docs/superpowers/",)
+# `thumbs` son las miniaturas de YouTube: 4.196 JPG que no aportan conocimiento.
+EXCLUIR_PARTES = {"cache", "__pycache__", "thumbs"}
+EXCLUIR_PREFIJOS = ("docs/superpowers/", "knowledge/indice/")
 
 ARCHIVOS_RAIZ = [
     "brief.json",
@@ -25,7 +26,6 @@ ARCHIVOS_RAIZ = [
     "chatgptdeep-research-report.md",
     "Operación Titan_UNI_Documento pautado_2025.docx",
     "Reporte_Pautado_Rally_2026.docx",
-    "rubrica_oficial_latam.jpeg",
     "PRODUCT.md",
     "DESIGN.md",
 ]
@@ -44,6 +44,11 @@ EXTENSIONES = {
 }
 
 SALIDA = "knowledge/INDICE.md"
+
+# Un índice de 5.559 líneas no se lee: se ignora. Los grupos grandes se parten
+# en `knowledge/indice/<grupo>.md` y en el índice quedan su conteo y su enlace.
+DIR_PARTES = "knowledge/indice"
+GRUPO_MAX = 150
 
 SIN_DESCRIBIR = "(sin describir — añadir a DESCRIPCIONES)"
 
@@ -84,11 +89,6 @@ DESCRIPCIONES: dict[str, tuple[str, str, str]] = {
         "Reporte pautado de referencia del ciclo 2026.",
         "Comparar estructura y nivel de detalle esperado.",
         "Como fuente de datos: no es evidencia.",
-    ),
-    "rubrica_oficial_latam.jpeg": (
-        "Imagen de la rúbrica oficial del Rally Latam (19 ítems y puntajes).",
-        "Verificar ponderaciones exactas antes de auditar un entregable.",
-        "Si ya se consultó rubric_matrices.md en esta sesión.",
     ),
     "PRODUCT.md": (
         "Definición de producto: usuarios, propósito, posicionamiento, marca, accesibilidad.",
@@ -172,10 +172,10 @@ DESCRIPCIONES: dict[str, tuple[str, str, str]] = {
         "Calibrar estructura y longitud del pautado latam.",
         "Para copiar texto.",
     ),
-    "knowledge/pautado_nacional_ref.docx": (
-        "Pautado de referencia del Rally Nacional.",
-        "Calibrar estructura y longitud del pautado nacional.",
-        "Para copiar texto.",
+    "plantillas/pautado_template.docx": (
+        "Pautado de referencia y plantilla DOCX del Rally Nacional (único Word de plantilla).",
+        "Calibrar el pautado nacional y compilar el entregable con el formato oficial.",
+        "Para redactar: el contenido va en brief y pautado.",
     ),
     # --- docs -----------------------------------------------------------
     "docs/INSTALACION_Y_DESPLIEGUE.md": (
@@ -228,16 +228,6 @@ DESCRIPCIONES: dict[str, tuple[str, str, str]] = {
         "Antes de citar cualquier cifra del certamen o de un ganador, y al auditar un entregable contra la evidencia.",
         "Para el detalle estadístico completo: usar `research/sirli/analisis/investigacion_profunda.md`.",
     ),
-    "docs/MANUAL_MAESTRO_RALLY_INNOVACION_2026.md": (
-        "Manual maestro del Rally de Innovación (versión texto).",
-        "Reglamento, fases y entregables del certamen.",
-        "Si ya se consultó el manual del certamen activo.",
-    ),
-    "docs/MANUAL_MAESTRO_RALLY_INNOVACION_2026.pdf": (
-        "Manual maestro del Rally de Innovación (versión PDF).",
-        "Compartir o imprimir el manual.",
-        "Para consulta del agente: usar el .md, pesa menos.",
-    ),
     "docs/MANUAL_MAESTRO_RALLY_LATAM_Y_NICARAGUA_INNOVA_2026.md": (
         "Manual maestro combinado: Rally Latam y Nicaragua Innova (texto).",
         "Reglas y entregables de ambos certámenes en un solo lugar.",
@@ -247,11 +237,6 @@ DESCRIPCIONES: dict[str, tuple[str, str, str]] = {
         "Manual maestro combinado (PDF).",
         "Compartir o imprimir.",
         "Para consulta del agente: usar el .md.",
-    ),
-    "docs/pautado_template.docx": (
-        "Plantilla DOCX del documento pautado.",
-        "Compilar el entregable con el formato oficial.",
-        "Para redactar: el contenido va en brief y pautado.",
     ),
     # --- graphify -------------------------------------------------------
     "graphify-out/GRAPH_REPORT.md": (
@@ -345,9 +330,60 @@ def _fila(rel: str) -> str:
     return f"| `{rel}` | {que} | {cuando_si} | {cuando_no} |"
 
 
+def _grupo(rel: str) -> str:
+    """Carpeta que manda en el índice: `research/sirli/meta` se parte aparte."""
+    partes = rel.split("/")
+    if len(partes) == 1:
+        return "raíz"
+    if len(partes) >= 3 and partes[:2] == ["research", "sirli"]:
+        return "/".join(partes[:3])
+    return partes[0]
+
+
+def _tabla(rels: list[str]) -> list[str]:
+    filas = ["| Ruta | Qué es | Cuándo sí | Cuándo no |", "|---|---|---|---|"]
+    filas.extend(_fila(rel) for rel in rels)
+    return filas
+
+
+def _escribir(destino: Path, lineas: list[str]) -> None:
+    contenido = "\n".join(lineas)
+    if not destino.is_file() or destino.read_text(encoding="utf-8") != contenido:
+        destino.parent.mkdir(parents=True, exist_ok=True)
+        destino.write_text(contenido, encoding="utf-8")
+
+
 def generar_indice(root: Path) -> Path:
     root = Path(root)
     entradas = _entradas(root)
+
+    grupos: dict[str, list[str]] = {}
+    for rel in entradas:
+        grupos.setdefault(_grupo(rel), []).append(rel)
+
+    partes_dir = root / DIR_PARTES
+    escritas: set[str] = set()
+    enlaces: list[str] = []
+
+    for grupo, rels in grupos.items():
+        if len(rels) <= GRUPO_MAX:
+            continue
+        slug = grupo.replace("/", "_").replace(" ", "_")
+        rel_parte = f"{DIR_PARTES}/{slug}.md"
+        escritas.add(f"{slug}.md")
+        _escribir(
+            root / rel_parte,
+            [f"# Índice · {grupo}", "",
+             f"{len(rels)} archivos de `{grupo}/`. Parte del mapa del corpus",
+             "(`knowledge/INDICE.md`). Generado por `python scripts/gen_indice.py`.",
+             "", *_tabla(rels), ""],
+        )
+        enlaces.append(f"| `{grupo}/` | {len(rels)} | [`{rel_parte}`]({rel_parte}) |")
+
+    if partes_dir.is_dir():
+        for viejo in partes_dir.glob("*.md"):
+            if viejo.name not in escritas:
+                viejo.unlink()
 
     lineas = [
         "# Índice de contexto del corpus",
@@ -359,20 +395,30 @@ def generar_indice(root: Path) -> Path:
         "Si un archivo no está aquí, no es corpus: es código o artefacto.",
         "",
         f"Archivos indexados: {len(entradas)}",
-        "",
-        "| Ruta | Qué es | Cuándo sí | Cuándo no |",
-        "|---|---|---|---|",
     ]
-    lineas.extend(_fila(rel) for rel in entradas)
-    lineas.append("")
 
-    contenido = "\n".join(lineas)
+    if enlaces:
+        lineas.extend([
+            "",
+            "## Carpetas grandes (índice propio)",
+            "",
+            "Cada una tiene su propio archivo: se abre solo la que la tarea pida.",
+            "",
+            "| Carpeta | Archivos | Índice |",
+            "|---|---|---|",
+            *enlaces,
+        ])
+
+    for grupo in sorted(grupos):
+        rels = grupos[grupo]
+        if len(rels) > GRUPO_MAX:
+            continue
+        lineas.extend(["", f"## {grupo}", "", *_tabla(rels)])
+
+    lineas.append("")
     destino = root / SALIDA
     destino.parent.mkdir(parents=True, exist_ok=True)
-
-    if not destino.is_file() or destino.read_text(encoding="utf-8") != contenido:
-        destino.write_text(contenido, encoding="utf-8")
-
+    _escribir(destino, lineas)
     return destino
 
 

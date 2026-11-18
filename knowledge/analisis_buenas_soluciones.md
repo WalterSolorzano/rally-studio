@@ -45,7 +45,7 @@ Estos patrones aparecen repetidamente en los videos de primero lugar con transcr
 
 ## 5. Uso en skills
 
-Las skills (`proponer-retos`, `dossier-soluciones`, `guion-pas-v`) deben:
+Las skills (`proponer-retos`, `dossier-soluciones`, `guion-storyboard`) deben:
 - Leer los datos de `knowledge/retos_razonamiento.json` y `research/sirli/winners.jsonl`.
 - Aplicar los patrones de esta guia para evaluar si una solucion propuesta es buena.
 - NO hardcodear proyectos especificos de ediciones anteriores como ejemplos a copiar.

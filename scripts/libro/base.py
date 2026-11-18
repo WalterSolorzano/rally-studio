@@ -11,8 +11,12 @@ import csv
 import json
 import math
 import statistics
-from collections import Counter, defaultdict
+import sys
+from collections import defaultdict
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from comun import wilson  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
 SIRLI = ROOT / "research" / "sirli"
@@ -143,15 +147,15 @@ ANIOS = sorted({int(r["year"]) for r in DF if r["year"]})
 # --------------------------------------------------------------------------
 
 
-def wilson(k: int, n: int) -> tuple[float, float]:
-    if not n:
-        return (0.0, 0.0)
-    z = 1.96
-    p = k / n
-    d = 1 + z * z / n
-    c = p + z * z / (2 * n)
-    m = z * math.sqrt(p * (1 - p) / n + z * z / (4 * n * n))
-    return ((c - m) / d, (c + m) / d)
+def pareadas_nic() -> list[dict]:
+    """Ediciones de Nicaragua (sede, 2022+) donde un equipo de 1.er lugar y otro
+    no ganador enfrentaron el mismo desafio. Antes vivia copiada en l2 y l3."""
+    nic = [r for r in TXT if r["country"] == "NICARAGUA" and r["collection"] == "sede"
+           and (r["year"] or 0) >= 2022]
+    k1 = {(r["year"], r["sede"], r["challenge_name"]) for r in nic if r["place_best"] == 1}
+    kn = {(r["year"], r["sede"], r["challenge_name"]) for r in nic if r["place_best"] != 1}
+    m = k1 & kn
+    return [r for r in nic if (r["year"], r["sede"], r["challenge_name"]) in m]
 
 
 def tasa(filas: list[dict]) -> tuple[int, int, float]:

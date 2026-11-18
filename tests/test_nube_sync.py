@@ -7,7 +7,6 @@ import json
 import os
 import sys
 import tempfile
-import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -18,8 +17,6 @@ spec = importlib.util.spec_from_file_location("rally_service", ROOT / "scripts" 
 rs = importlib.util.module_from_spec(spec)
 sys.modules["rally_service"] = rs
 spec.loader.exec_module(rs)
-
-from importlib import import_module
 
 # Clases del MISMO modulo nube_store que el ya importe rally_service,
 # sin importar como se haya resuelto la ruta (top-level vs paquete scripts).

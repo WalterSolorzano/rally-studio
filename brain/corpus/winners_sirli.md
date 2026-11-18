@@ -16,4 +16,11 @@
 - Cobertura de solucion: ~21.6 %
 
 ## Uso en el grafo
-Nodo de referencia cruzada para `ganadores_latam.md`, `ganadores_analisis.md`, `patrones_buenas_soluciones.md` y `transcripciones_primeros_lugares_nic.md`. Permite vincular equipo → reto → solución → video.
+Nodo de referencia cruzada para `ganadores_latam_internacional.md`, `ganadores_nacional.md`, `ganadores_analisis.md`, `patrones_buenas_soluciones.md` y `transcripciones_primeros_lugares_nic.md`. Permite vincular equipo → reto → solución → video.
+
+<!-- relacionado:inicio -->
+
+## Relacionado
+
+- [casos_ganadores.md](casos_ganadores.md) — ficha completa del caso.
+- [ganadores_db.md](ganadores_db.md) — podio por fase.

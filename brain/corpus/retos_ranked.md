@@ -95,3 +95,10 @@
 - **notes**: Excelente para impacto social; demanda justificar maquinaria real o proceso de prensado local.
 - **rank**: 5
 - **orden sugerido**: No factible en 24h (hardware_feasible_24h=false); dejar para pista larga
+
+<!-- relacionado:inicio -->
+
+## Relacionado
+
+- [retos.md](retos.md) — banco completo.
+- [casos_ganadores.md](casos_ganadores.md) — quien gano con cada reto.

@@ -12,6 +12,7 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+
 from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import HistGradientBoostingClassifier
 from sklearn.impute import SimpleImputer
@@ -31,16 +32,6 @@ NUM = [
     "title_len", "title_words", "desc_len", "desc_lines",
     "desc_util", "desc_has_url", "desc_credits", "desc_specificity",
 ]
-
-
-def wilson(k: int, n: int, z: float = 1.96) -> tuple[float, float]:
-    if n == 0:
-        return (0.0, 0.0)
-    p = k / n
-    d = 1 + z * z / n
-    c = (p + z * z / (2 * n)) / d
-    m = z * np.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / d
-    return (max(0.0, c - m), min(1.0, c + m))
 
 
 def dentro_de_grupo(df: pd.DataFrame, prob: np.ndarray, group_cols: list[str]) -> pd.DataFrame:

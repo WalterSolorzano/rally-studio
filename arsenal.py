@@ -17,7 +17,6 @@ from __future__ import annotations
 
 import argparse
 import importlib.util
-import json
 import pathlib
 import re
 import shutil
@@ -200,12 +199,19 @@ def cmd_coherencia(args: argparse.Namespace) -> int:
 def cmd_campo(args: argparse.Namespace) -> int:
     docx_path = pathlib.Path(args.docx)
     plantilla = pathlib.Path(args.plantilla)
+    evento = getattr(args, "evento", "latam")
     if not docx_path.exists():
         print(f"  PENDIENTE: {docx_path} no existe.")
         return 1
-    hallazgos, conteos = campo_chars.revisar(docx_path, plantilla)
+    hallazgos, conteos = campo_chars.revisar(docx_path, plantilla, evento)
+    limites = campo_chars.limites_para(evento)
+    if not limites:
+        print(f"  Evento '{evento}': sin tope por seccion. Solo se cuentan caracteres.")
+        for campo, cuenta in sorted(conteos.items()):
+            print(f"  {campo.upper():<16} {cuenta:>6}")
+        return 0
     print("  CAMPO            CUENTA / LIMITE")
-    for campo, limite in campo_chars.LIMITS.items():
+    for campo, limite in limites.items():
         cuenta = conteos.get(campo)
         if cuenta is None:
             print(f"  [.] {campo.upper():<13} {'--':>6} / {limite:<6}")
@@ -231,7 +237,9 @@ def cmd_todo(args: argparse.Namespace) -> int:
         guion=args.guion, narracion=args.narracion, pautado=args.pautado, ignorar=args.ignorar,
     ))
     print("\n== 3. Caracteres por campo ==")
-    resultados["campo"] = cmd_campo(argparse.Namespace(docx=args.docx, plantilla=args.plantilla))
+    resultados["campo"] = cmd_campo(argparse.Namespace(
+        docx=args.docx, plantilla=args.plantilla, evento=getattr(args, "evento", "latam"),
+    ))
 
     print("\n== RESUMEN ==")
     for nombre, codigo in resultados.items():
@@ -259,7 +267,9 @@ def construir_parser() -> argparse.ArgumentParser:
 
     p = sub.add_parser("check-campo", help="Caracteres por campo del pautado")
     p.add_argument("--docx", default="docs/pautado_draft.docx")
-    p.add_argument("--plantilla", default="docs/pautado_template.docx")
+    p.add_argument("--plantilla", default="plantillas/pautado_template.docx")
+    p.add_argument("--evento", choices=["latam", "nacional"], default="latam",
+                   help="Latam aplica topes por seccion; Nacional no los fija.")
     p.set_defaults(func=cmd_campo)
 
     p = sub.add_parser("check-todo", help="Los tres checks antes de SIRLI")
@@ -268,7 +278,8 @@ def construir_parser() -> argparse.ArgumentParser:
     p.add_argument("--narracion", default="script/narration.txt")
     p.add_argument("--pautado", default="docs/pautado_draft.docx")
     p.add_argument("--docx", default="docs/pautado_draft.docx")
-    p.add_argument("--plantilla", default="docs/pautado_template.docx")
+    p.add_argument("--plantilla", default="plantillas/pautado_template.docx")
+    p.add_argument("--evento", choices=["latam", "nacional"], default="latam")
     p.add_argument("--ignorar", default="")
     p.set_defaults(func=cmd_todo)
 

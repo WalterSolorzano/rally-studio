@@ -2,7 +2,7 @@
 
 Generado por `python tools/mapa_sistema.py`. No editar a mano: se regenera.
 
-Conteo: **18 skills**, **14 pestanas**, **76 scripts**, **14 entregables**.
+Conteo: **16 skills**, **14 pestanas**, **80 scripts**, **13 entregables**.
 
 ## Pestanas de la ventana (13 etapas + resumen)
 
@@ -19,9 +19,9 @@ Conteo: **18 skills**, **14 pestanas**, **76 scripts**, **14 entregables**.
 | `budget` | 07 Presupuesto de Marcha | 4 | () => state.solution_approved && isBudgetValid() |
 | `resources` | 08 Bóveda de Recursos | 4 | () => state.solution_approved |
 | `canvas` | 09 Modelo Canvas | 4 | () => state.solution_approved |
-| `script` | 10 Guion 120s (4 Actos) | 5 | () => isPautadoComplete() && isBudgetValid() |
+| `script` | 10 Guion del Video | 5 | () => isPautadoComplete() && isBudgetValid() |
 | `webdemo` | 11 Prototipo para Video | 5 | () => isPautadoComplete() && isBudgetValid() |
-| `timeline` | 12 Checklist de Entrega | 1 | () => !!state.rally_type |
+| `timeline` | 12 Cierre | 1 | () => !!state.rally_type |
 
 ## Skills
 
@@ -30,20 +30,18 @@ Conteo: **18 skills**, **14 pestanas**, **76 scripts**, **14 entregables**.
 | `auditar-entregable` | 123 | Revisa un entregable contra la rúbrica del certamen, las bases del evento y el propósito del grupo, y devuelve | — | — |
 | `contexto-rally` | 106 | Carga el contexto del proyecto antes de trabajar. Lee brief.json, el índice del corpus y el estado vivo de la  | — | — |
 | `control-tiempo-entrega` | 77 | Controla el cronómetro del certamen, avisa estado horario, congela entregables al 75% del tiempo y valida el c | — | — |
-| `dossier-soluciones` | 595 | Convierte los retos del comité o del usuario en soluciones sustentadas y un dossier de 3 páginas por reto (PDF | `gen_dossier.py`, `gen_soluciones_pdf.py`, `soluciones_motor.py` | — |
+| `dossier-soluciones` | 69 | Convierte los retos del comité o del usuario en un dossier formal de 3 páginas por reto (PDF, Word, Excel) con | `gen_dossier.py` | — |
 | `guiar-usuario` | 82 | Lleva al usuario por las 13 etapas del workbench, detecta qué falta en cada una y lo pregunta de a una. Úsala  | — | — |
-| `guion-pas-v` | 221 | Escribe o revisa el guion del pitch en 4 actos (PAS-V), respetando el límite estricto de 120 segundos, coheren | `servir_propuesta.py` | — |
-| `guion-storyboard` | 202 | Escribe el guion PAS-V y el plan de tomas como un solo entregable de rodaje (script/teleprompter.html) con dos | `build_shotlist.py`, `rally_service.py`, `a11y_plantilla.py`, `dibujar_storyboard.py`, `exportar_pdf.py`, `servir_rodaje.py` | fuentes.css, gen_teleprompter.py, plantilla_teleprompter.html |
-| `ingestar-investigacion` | 130 | Procesa un PDF, DOCX o MD que trae el usuario desde fuera (por ejemplo una investigación hecha en z.ai), extra | `herramientas.py` | — |
-| `modelo-3d-blender` | 485 | Genera modelos o renders 3D con Blender para el video, con ficha técnica previa justificada por la rúbrica y s | `blender_addons.py`, `build_shotlist.py`, `gpu_lock.py`, `herramientas.py`, `orchestrate.py`, `pre_render_check.py` | anexos-3d.md |
-| `orquestador` | 373 | Orquesta agentes especialistas (investigador, guionista, modeler 3D, pautador, presupuestador, grafista, web,  | `build_shotlist.py`, `gen_script.py`, `gpu_lock.py`, `heavy_guard.py`, `herramientas.py`, `orchestrate.py`, `render_contadores.py`, `remix_audio.py` | — |
-| `presupuesto` | 250 | Arma el presupuesto del prototipo con filas justificadas, precios creíbles y enlace de respaldo, en la moneda  | `validate_budget.py` | — |
-| `proponer-retos` | 178 | Genera soluciones aplicables para los retos que da el usuario, con precedentes ganadores, razonamiento problem | `check_anti_generico.py`, `gen_soluciones_pdf.py`, `soluciones_motor.py` | — |
-| `propuesta-identidad` | 329 | Convierte el nombre, logo o una idea del equipo en propuestas de identidad visual (paleta, tipografías, tokens | `gen_palette.py`, `herramientas.py` | — |
-| `publicar-sitio` | 120 | Construye y publica la web demo del proyecto en GitHub Pages o Netlify. Úsala cuando el usuario quiere que su  | `publish_site.py` | — |
+| `guion-storyboard` | 227 | Escribe el guion PAS-V y el plan de tomas como un solo entregable de rodaje (script/teleprompter.html) con dos | `build_shotlist.py`, `rally_service.py`, `a11y_plantilla.py`, `dibujar_storyboard.py`, `exportar_pdf.py`, `servir_rodaje.py` | fuentes.css, gen_teleprompter.py, plantilla_teleprompter.html |
+| `ingestar-investigacion` | 107 | Procesa un PDF, DOCX o MD que trae el usuario desde fuera (por ejemplo una investigación hecha en z.ai), extra | `herramientas.py`, `ingest_challenges.py` | — |
+| `modelo-3d-blender` | 115 | Genera modelos o renders 3D con Blender para el video, con ficha técnica previa justificada por la rúbrica y s | `blender_addons.py`, `build_shotlist.py`, `gpu_lock.py`, `herramientas.py`, `pre_render_check.py` | anexos-3d.md |
+| `orquestador` | 384 | Orquesta agentes especialistas con contratos por archivo y guardia de recursos. La fase base son dos roles (di | `build_shotlist.py`, `gen_script.py`, `gen_storyboard_visual.py`, `gpu_lock.py`, `heavy_guard.py`, `herramientas.py`, `orchestrate.py`, `render_contadores.py`, `remix_audio.py` | — |
+| `presupuesto` | 127 | Arma el presupuesto del prototipo con filas justificadas, precios creíbles y enlace de respaldo, en la moneda  | — | — |
+| `proponer-retos` | 119 | Genera soluciones aplicables para los retos que da el usuario, con precedentes ganadores y razonamiento proble | `check_anti_generico.py`, `gen_soluciones_pdf.py`, `soluciones_motor.py` | — |
+| `propuesta-identidad` | 117 | Convierte el nombre, logo o una idea del equipo en propuestas de identidad visual (paleta, tipografías, tokens | — | — |
+| `publicar-sitio` | 149 | Construye y publica la web demo del proyecto en GitHub Pages o Netlify. Úsala cuando el usuario quiere que su  | `publish_site.py` | — |
 | `servir-a-ventana` | 90 | Entrega una propuesta a la interfaz para que el usuario la acepte o la descarte. Arma el sobre, elige pestaña  | `content_store.py`, `servir_propuesta.py` | — |
 | `sharktank` | 162 | Úsala cuando el equipo tenga una idea de proyecto (reto + solución) y pida ver sus fallas, riesgos o puntos dé | `gen_sharktank_pdf.py`, `servir_propuesta.py` | — |
-| `storyboard` | 522 | Convierte el guion PAS-V y la rúbrica del certamen en el storyboard de grabación del video de 120 s: tomas con | `build_shotlist.py`, `gen_script.py`, `remix_audio.py` | gen_storyboard_visual.py |
 | `sugerir-por-fase` | 94 | Da sugerencias cortas y accionables para una etapa concreta del flujo (certamen, equipo, retos, solución, impa | — | — |
 
 ## Modulos del dashboard
@@ -73,13 +71,12 @@ Conteo: **18 skills**, **14 pestanas**, **76 scripts**, **14 entregables**.
 | `budget/bom.csv` | piezas y dimensiones para modelar | skills/presupuesto + modeler | skills/modelo-3d-blender |
 | `docs/canvas.md` | modelo de negocio | scripts/gen_canvas.py | tab canvas |
 | `script/script.md` | guion PAS-V 4 actos <=120 s | scripts/gen_script.py | tab script |
-| `shots/*.yaml -> script/shotlist.csv` | contrato de tomas | scripts/build_shotlist.py | skills/storyboard |
-| `docs/storyboard_visual.html` | tablero de rodaje | skills/storyboard/gen_storyboard_visual.py | generado desde el CSV |
+| `shots/*.yaml -> script/shotlist.csv` | contrato de tomas | scripts/build_shotlist.py | skills/guion-storyboard |
+| `docs/storyboard_visual.html` | tablero de rodaje | scripts/gen_storyboard_visual.py | generado desde el CSV |
 | `assets/voice/narration.mp4` | locucion <=120 s | scripts/gen_voice.py | etapa voz |
 | `video final` | YouTube con URL en brief.json | editor + arsenal.py check-duracion | tab timeline |
 | `site/ publicado` | web demo | scripts/publish_site.py | tab webdemo |
 | `dossier (PDF/Word/Excel)` | soluciones sustentadas | scripts/gen_dossier.py, gen_soluciones_pdf.py | skills/dossier-soluciones |
-| `docs/STORYBOARD.md` | indice del rodaje | skills/storyboard | documento |
 | `knowledge/INDICE.md` | mapa del corpus | scripts/gen_indice.py | documento |
 
 ## Scripts
@@ -87,48 +84,52 @@ Conteo: **18 skills**, **14 pestanas**, **76 scripts**, **14 entregables**.
 | Script | Lineas | Que hace | Critico |
 |---|---|---|---|
 | `blender_addons.py` | 110 | blender_addons.py -- Instala el addon de Blender segun el tipo de proyecto. |  |
-| `build_report_pdf.py` | 161 | Construye docs/INFORME_INVESTIGACION.pdf con la identidad del proyecto. |  |
-| `build_shotlist.py` | 194 | build_shotlist.py -- Compila los contratos de tomas en la shotlist del video. | si |
-| `build_stats.py` | 777 | Generate dashboard/data/stats.generated.js from the current project. |  |
-| `check_anti_generico.py` | 701 | check_anti_generico.py |  |
+| `build_report_pdf.py` | 160 | Construye docs/INFORME_INVESTIGACION.pdf con la identidad del proyecto. |  |
+| `build_shotlist.py` | 187 | build_shotlist.py -- Compila los contratos de tomas en la shotlist del video. | si |
+| `build_stats.py` | 792 | Generate dashboard/data/stats.generated.js from the current project. |  |
+| `check_anti_generico.py` | 700 | check_anti_generico.py |  |
+| `comun.py` | 168 | Base compartida del sistema: una sola fuente para lo que estaba copiado. |  |
 | `content_store.py` | 222 | Almacén de propuestas de contenido y espejo del estado del usuario. |  |
-| `crear_proyecto.py` | 65 | Crea el proyecto local, su admin y la primera invitación. |  |
-| `gen_bibliography.py` | 67 | gen_bibliography.py -- Genera docs/bibliography.md en formato APA 7 a partir de |  |
-| `gen_budget.py` | 182 | — | si |
-| `gen_canvas.py` | 143 | gen_canvas.py -- Genera docs/canvas.md a partir de brief.json y budget/budget.json. |  |
-| `gen_challenges_doc.py` | 229 | gen_challenges_doc.py -- Genera el documento Word editable oficial de deliberación del equipo: |  |
+| `crear_proyecto.py` | 64 | Crea el proyecto local, su admin y la primera invitación. |  |
+| `gen_bibliography.py` | 64 | gen_bibliography.py -- Genera docs/bibliography.md en formato APA 7 a partir de |  |
+| `gen_budget.py` | 180 | gen_budget.py -- Genera budget/budget.xlsx con formato formal a partir de budget/budget.json. | si |
+| `gen_canvas.py` | 141 | gen_canvas.py -- Genera docs/canvas.md a partir de brief.json y budget/budget.json. |  |
+| `gen_challenges_doc.py` | 227 | gen_challenges_doc.py -- Genera el documento Word editable oficial de deliberación del equipo: |  |
 | `gen_dossier.py` | 822 | Genera el dossier de soluciones en PDF, Word y Excel a partir de un JSON. |  |
 | `gen_indice.py` | 380 | Genera `knowledge/INDICE.md`: el mapa del corpus para el agente (b). |  |
 | `gen_mapa_nicaragua.py` | 103 | Genera la silueta de Nicaragua (path SVG) para el modulo design/. |  |
 | `gen_ods_data.py` | 70 | Genera design/ods_data.js desde el catalogo ODS del dashboard. |  |
-| `gen_pagina_diseno.py` | 201 | Genera la página online de un proyecto de Rally Design. |  |
+| `gen_pagina_diseno.py` | 200 | Genera la página online de un proyecto de Rally Design. |  |
 | `gen_palette.py` | 184 | gen_palette.py -- Genera paleta de colores desde el logo del proyecto. |  |
-| `gen_pautado.py` | 122 | gen_pautado.py -- Genera docs/pautado_draft.docx a partir de brief.json, claims.json | si |
+| `gen_pautado.py` | 119 | gen_pautado.py -- Genera docs/pautado_draft.docx a partir de brief.json, claims.json | si |
 | `gen_presets_json.py` | 42 | Genera design/presets.json a partir de design/presets.js (fuente de verdad). |  |
-| `gen_readme.py` | 122 | gen_readme.py -- Genera y actualiza dinamicamente el README.md maestro del proyecto. |  |
-| `gen_report_figures.py` | 540 | Genera las figuras del informe de investigacion. |  |
-| `gen_script.py` | 560 | gen_script.py -- Genera script/script.md, script/shotlist.csv y script/narration.txt | si |
-| `gen_sharktank_pdf.py` | 210 | Genera el PDF de salud de la idea (skill sharktank). |  |
-| `gen_soluciones_pdf.py` | 285 | Genera el dossier PDF de soluciones para los retos del usuario. |  |
-| `gen_voice.py` | 300 | gen_voice.py -- Sintetizador de voz adaptativo para el video pitch (<= 120s). | si |
-| `generate_master_pdf.py` | 591 | — |  |
-| `gpu_lock.py` | 476 | gpu_lock.py -- Guardia de recursos (gpu / cpu / ram) para procesos pesados. |  |
+| `gen_readme.py` | 120 | gen_readme.py -- Genera y actualiza dinamicamente el README.md maestro del proyecto. |  |
+| `gen_report_figures.py` | 548 | Genera las figuras del informe de investigacion. |  |
+| `gen_script.py` | 559 | gen_script.py -- Genera script/script.md, script/shotlist.csv y script/narration.txt | si |
+| `gen_sharktank_pdf.py` | 209 | Genera el PDF de salud de la idea (skill sharktank). |  |
+| `gen_soluciones_pdf.py` | 284 | Genera el dossier PDF de soluciones para los retos del usuario. |  |
+| `gen_storyboard_visual.py` | 562 | Genera el tablero visual de rodaje (hoja de contactos + una fila por toma). |  |
+| `gen_voice.py` | 298 | gen_voice.py -- Sintetizador de voz adaptativo para el video pitch (<= 120s). | si |
+| `generate_master_pdf.py` | 590 | — |  |
+| `gpu_lock.py` | 497 | gpu_lock.py -- Guardia de recursos (gpu / cpu / ram) para procesos pesados. |  |
 | `heavy_guard.py` | 83 | heavy_guard.py -- Bloquea llamadas DIRECTAS a binarios pesados. |  |
 | `herramientas.py` | 137 | herramientas.py -- Caja de herramientas externa bajo demanda. |  |
-| `ingest_challenges.py` | 166 | ingest_challenges.py -- Ingesta de desafíos desde múltiples formatos: |  |
+| `ingest_challenges.py` | 193 | ingest_challenges.py -- Ingesta de desafíos desde múltiples formatos: |  |
 | `init_brief.py` | 114 | init_brief.py — Entrevista interactiva para poblar brief.json |  |
-| `member_store.py` | 221 | Miembros, invitaciones y sesiones de un proyecto local. |  |
+| `member_store.py` | 245 | Miembros, invitaciones y sesiones de un proyecto local. |  |
 | `moneda.py` | 120 | moneda.py -- Resuelve la moneda del presupuesto segun el certamen. |  |
-| `nube_store.py` | 265 | Sincronizacion de archivos del rally entre host local y la isla (Fase 2.1). |  |
-| `orchestrate.py` | 186 | orchestrate.py -- Tablero de solo lectura del equipo de especialistas. |  |
-| `pre_render_check.py` | 78 | pre_render_check.py -- Bloquea el render si las dependencias de una toma no |  |
+| `nube_store.py` | 264 | Sincronizacion de archivos del rally entre host local y la isla (Fase 2.1). |  |
+| `orchestrate.py` | 185 | orchestrate.py -- Tablero de solo lectura del equipo de especialistas. |  |
+| `pre_render_check.py` | 73 | pre_render_check.py -- Bloquea el render si las dependencias de una toma no |  |
+| `publicar_avance.py` | 163 | Publica un avance de agente en la bitacora viva de Rally Studio. |  |
 | `publicar_seccion.py` | 153 | Escribe una sección directamente en el servidor de Rally Studio. |  |
-| `publish_site.py` | 45 | publish_site.py -- Script de publicacion y despliegue para la web demo en Netlify CLI o GitHub Pages. |  |
-| `rally_clock.py` | 73 | rally_clock.py -- Cronometro regresivo inteligente y avisos criticos para competencias de 24h/28h. |  |
-| `rally_service.py` | 2605 | rally_service.py -- Backend HTTP ligero y autónomo para Rally Studio & Workbench. |  |
-| `render_contadores.py` | 184 | render_contadores.py -- Graba plantillas/contadores/index.html como MP4 del Acto IV. |  |
-| `render_watch.py` | 68 | render_watch.py -- Monitor de recursos (RAM y GPU) en tiempo real. |  |
-| `score_challenges.py` | 169 | score_challenges.py -- Motor analitico de clasificacion y probabilidad de victoria para desafios. |  |
+| `publish_site.py` | 43 | publish_site.py -- Script de publicacion y despliegue para la web demo en Netlify CLI o GitHub Pages. |  |
+| `rally_clock.py` | 70 | rally_clock.py -- Cronometro regresivo inteligente y avisos criticos para competencias de 24h/28h. |  |
+| `rally_service.py` | 3165 | rally_service.py -- Backend HTTP ligero y autónomo para Rally Studio & Workbench. |  |
+| `registro_produccion.py` | 145 | registro_produccion.py -- bitacora de los trabajos pesados. |  |
+| `render_contadores.py` | 180 | render_contadores.py -- Graba plantillas/contadores/index.html como MP4 del Acto IV. |  |
+| `render_watch.py` | 65 | render_watch.py -- Monitor de recursos (RAM y GPU) en tiempo real. |  |
+| `score_challenges.py` | 167 | score_challenges.py -- Motor analitico de clasificacion y probabilidad de victoria para desafios. |  |
 | `scrape_ganadores_sirli.py` | 321 | Extractor del banco de ganadores de SIRLI (sirli.org). |  |
 | `section_store.py` | 417 | Almacen de secciones versionadas para Rally Studio. |  |
 | `servir_propuesta.py` | 145 | Deja una propuesta de contenido en el buzón de Rally Studio. | si |
@@ -136,31 +137,31 @@ Conteo: **18 skills**, **14 pestanas**, **76 scripts**, **14 entregables**.
 | `sirli_analisis.py` | 160 | Analisis del corpus de videos ganadores SIRLI. |  |
 | `sirli_asr.py` | 418 | Transcribe en local los videos que YouTube no expone con subtitulos. |  |
 | `sirli_cierre.py` | 42 | Orquesta el cierre del pipeline y apaga la maquina al terminar. |  |
-| `sirli_dataset.py` | 249 | Construye el dataset de modelado: una fila por video con sus caracteristicas. |  |
-| `sirli_excel.py` | 302 | — |  |
-| `sirli_figuras.py` | 302 | Genera las figuras 1-8 del plan de investigacion a partir del dataset. |  |
+| `sirli_dataset.py` | 248 | Construye el dataset de modelado: una fila por video con sus caracteristicas. |  |
+| `sirli_excel.py` | 302 | Arma el Excel del banco de ganadores SIRLI. |  |
+| `sirli_figuras.py` | 301 | Genera las figuras 1-8 del plan de investigacion a partir del dataset. |  |
 | `sirli_final2.py` | 219 | Cierra la fase grande: espera al ASR, saca fotogramas y regenera todo el libro. |  |
 | `sirli_finalizar.py` | 107 | Espera a que terminen metadatos y transcripciones, arma el Excel, limpia y apaga. |  |
 | `sirli_hipotesis.py` | 288 | Calcula la evidencia de las hipotesis de la investigacion y escribe hipotesis.md. |  |
 | `sirli_libro.py` | 69 | Ensambla el libro completo a partir de las partes en `scripts/libro/`. |  |
-| `sirli_meta.py` | 207 | — |  |
-| `sirli_modelo.py` | 143 | Linea base del modelo: predecir primer lugar con variables de evento y de video. |  |
-| `sirli_modelo_solucion.py` | 293 | Modelo de tipo de solución SIRLI. |  |
+| `sirli_meta.py` | 207 | Descarga metadatos de los videos del banco SIRLI sin usar la API de reproductor. |  |
+| `sirli_modelo.py` | 134 | Linea base del modelo: predecir primer lugar con variables de evento y de video. |  |
+| `sirli_modelo_solucion.py` | 285 | Modelo de tipo de solución SIRLI. |  |
 | `sirli_pares.py` | 46 | Genera la lista de contrapartes emparejadas para la familia D. |  |
 | `sirli_probabilidad.py` | 270 | Probabilidad absoluta de ganar: qué se puede identificar y qué no. |  |
 | `sirli_probe_intl.py` | 124 | Sonda lenta de los 58 videos internacionales. |  |
-| `sirli_queue_frames2.py` | 67 | Prepara la cola de fotogramas para los videos que aún no tienen hoja de contacto. |  |
+| `sirli_queue_frames2.py` | 66 | Prepara la cola de fotogramas para los videos que aún no tienen hoja de contacto. |  |
 | `sirli_resumen_ejecutivo.py` | 165 | Resumen ejecutivo de una página y tabla de hipótesis en CSV. |  |
 | `sirli_sistemico.py` | 1219 | Investigación profunda SIRLI: biblioteca de hipótesis + análisis sistémico. |  |
 | `sirli_thumbs.py` | 55 | Baja la miniatura de cada video ganador a research/sirli/meta/thumbs/. |  |
-| `sirli_videos.py` | 453 | — |  |
+| `sirli_videos.py` | 452 | Pipeline de video del banco de ganadores SIRLI. |  |
 | `sirli_visual_resumen.py` | 53 | Consolida las descripciones visuales de research/sirli/visual/*.json. |  |
 | `sirli_visual_stats.py` | 208 | Mide color, brillo, saturacion, densidad de bordes y caras en miniaturas y fotogramas. |  |
 | `soluciones_motor.py` | 646 | Motor de soluciones para retos del Rally. |  |
 | `sync_skills.py` | 44 | Sincroniza la carpeta madre skills/ hacia .agents/skills/ y .opencode/skills/. |  |
-| `validate_brief.py` | 91 | validate_brief.py -- Falla con SystemExit si brief.json esta incompleto. | si |
-| `validate_budget.py` | 106 | — | si |
-| `validate_pautado.py` | 60 | validate_pautado.py -- Valida y cuenta caracteres (con espacios) por seccion en docs/pautado_draft.docx. | si |
+| `validate_brief.py` | 90 | validate_brief.py -- Falla con SystemExit si brief.json esta incompleto. | si |
+| `validate_budget.py` | 103 | validate_budget.py -- Valida rigurosamente budget/budget.json contra las reglas de rally: | si |
+| `validate_pautado.py` | 58 | validate_pautado.py -- Valida y cuenta caracteres (con espacios) por seccion en docs/pautado_draft.docx. | si |
 | `watch_stats.py` | 219 | Watch the live rally state and generate the recap automatically. |  |
 
 ## Herramientas de analisis (`tools/`)
@@ -170,26 +171,28 @@ No son motor: son inspectores de solo lectura que se corren a mano.
 | Archivo | Uso |
 |---|---|
 | `tools/a11y_plantilla.py` | Pone aria-label en cada boton y aria-hidden en cada icono de la plantilla. |
+| `tools/auditar_repeticiones.py` | Busca repeticiones y fallas estructurales en el repositorio. |
 | `tools/dibujar_storyboard.py` | dibujar_storyboard.py -- compone las referencias visuales del storyboard demo. |
 | `tools/embeber_fuentes.py` | Genera la hoja @font-face con las fuentes de la marca incrustadas en base64. |
 | `tools/exportar_pdf.py` | Exporta el plan de rodaje a PDF sin abrir el navegador a mano. |
 | `tools/make_audio_assets.py` | Genera la banda sonora y los SFX del video (100% sintesis DSP, sin samples de terceros). |
 | `tools/mapa_sistema.py` | mapa_sistema.py -- Inventario verificable de Rally Studio. |
 | `tools/parse_detect.py` | — |
+| `tools/publicar_entregables.py` | Publica los entregables dentro de la unica raiz que sirve el workbench. |
 | `tools/remix_audio.py` | Mezclador de audio del video: cues por acto + ducking contra la voz + SFX. |
 | `tools/servir_rodaje.py` | Sirve el plan de rodaje en la red local para abrirlo desde el telefono. |
 | `tools/unificar_comun.py` | Extrae las secciones repetidas de skills/*/SKILL.md a skills/_comun/ y deja un puntero. |
 
 ## Cruces automaticos
 
-- Scripts sin skill que los cite: **56** (build_report_pdf.py, build_stats.py, crear_proyecto.py, gen_bibliography.py, gen_budget.py, gen_canvas.py, gen_challenges_doc.py, gen_indice.py, gen_mapa_nicaragua.py, gen_ods_data.py, gen_pagina_diseno.py, gen_pautado.py…)
-- Skills sin ningun script: auditar-entregable, contexto-rally, control-tiempo-entrega, guiar-usuario, sugerir-por-fase
+- Scripts sin skill que los cite: **60** (build_report_pdf.py, build_stats.py, comun.py, crear_proyecto.py, gen_bibliography.py, gen_budget.py, gen_canvas.py, gen_challenges_doc.py, gen_indice.py, gen_mapa_nicaragua.py, gen_ods_data.py, gen_pagina_diseno.py…)
+- Skills sin ningun script: auditar-entregable, contexto-rally, control-tiempo-entrega, guiar-usuario, presupuesto, propuesta-identidad, sugerir-por-fase
 - Boilerplate repetido por skill:
-  - Cómo sugerir un título o nombre de proyecto o producto: en 16 de 18 skills
-  - Cómo enseñar visualmente: en 16 de 18 skills
-  - Cómo redactar guiones cuidando la pronunciación: en 16 de 18 skills
-  - Cómo crear modelos 3D: en 16 de 18 skills
-  - Cómo sugerir elementos gráficos: en 16 de 18 skills
+  - Cómo sugerir un título o nombre de proyecto o producto: en 8 de 16 skills
+  - Cómo enseñar visualmente: en 8 de 16 skills
+  - Cómo redactar guiones cuidando la pronunciación: en 8 de 16 skills
+  - Cómo crear modelos 3D: en 8 de 16 skills
+  - Cómo sugerir elementos gráficos: en 8 de 16 skills
 
 
 ## 1. Como se encadena hoy (una sola ruta)
@@ -251,8 +254,9 @@ a 4K). El guion y el CSV siguen siendo la fuente de verdad; el HTML es la vista 
 Ver `skills/guion-storyboard/SKILL.md`.
 
 Estado: construido. `gen_teleprompter.py` + `plantilla_teleprompter.html` generan el HTML,
-`script/movimiento.json` declara el movimiento por toma, `guion-pas-v` y `storyboard` quedan
-consolidadas. La regla de movimiento (fija > 2.5 s = tiempo muerto) y el ritmo (240-270
+`script/movimiento.json` declara el movimiento por toma. Las antiguas `guion-pas-v` y
+`storyboard` quedaron consolidadas en `guion-storyboard` y ya no existen como carpetas.
+La regla de movimiento (fija > 2.5 s = tiempo muerto) y el ritmo (240-270
 palabras, 135 ppm) se auditan en la consola del generador: son decisiones del especialista,
 no campos que el equipo ajuste.
 

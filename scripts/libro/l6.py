@@ -6,8 +6,8 @@ import json
 import statistics
 from collections import Counter
 
-from base import (AN, CORE, DF, HIP, INTL, META, NIC, NIC_SEDE, SIRLI, SIS, TXT, TRANS,
-                  VIDEOS, WINNERS, fig, fp, num, pct, pp, tabla, tasa, wilson)
+from base import (AN, CORE, DF, HIP, META, SIRLI, SIS, TXT, TRANS,
+                  WINNERS, fp, num, pct, pp, tabla, tasa, wilson)
 
 PROB = json.loads((AN / "probabilidad.json").read_text(encoding="utf-8"))
 

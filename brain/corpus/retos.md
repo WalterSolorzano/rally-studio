@@ -85,3 +85,10 @@
 - **hardware feasible 24h**: si
 - **prior winner precedent**: STEM Synergy 2025 (1er Lugar Latam Innovacion)
 - **notes**: Desafio con alta concurrencia internacional; solo gana con hibridacion IoT o recirculacion de agua de desecho comprobada.
+
+<!-- relacionado:inicio -->
+
+## Relacionado
+
+- [retos_ranked.md](retos_ranked.md) — los mismos retos priorizados.
+- [retos_reporte.md](retos_reporte.md) — informe del banco de retos.

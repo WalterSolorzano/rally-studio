@@ -10,7 +10,7 @@ Es una plantilla: el diccionario FICHAS es lo unico que se reescribe por proyect
 El resto (tiempos, actos, cobertura, ids) sale del CSV.
 
 Uso:
-  python skills/storyboard/gen_storyboard_visual.py \
+  python scripts/gen_storyboard_visual.py \
       --csv script/shotlist.csv --out docs/storyboard_visual.html
 """
 from __future__ import annotations
@@ -22,7 +22,7 @@ import re
 import sys
 from pathlib import Path
 
-RAIZ = Path(__file__).resolve().parents[2]
+RAIZ = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(RAIZ / "scripts"))
 from comun import ventanas  # noqa: E402  (base compartida: fracciones y colores)
 
@@ -528,7 +528,7 @@ def construir(filas: list[dict]) -> str:
 {pista(filas)}
 {''.join(cuerpo)}
 <footer>
-  Regenerar: <code>python skills/storyboard/gen_storyboard_visual.py --csv script/shotlist.csv --out docs/storyboard_visual.html</code>.<br>
+  Regenerar: <code>python scripts/gen_storyboard_visual.py --csv script/shotlist.csv --out docs/storyboard_visual.html</code>.<br>
   Los fotogramas son referencia de encuadre; las tomas bloqueadas por datos faltantes están marcadas y no se
   rellenan con estimaciones.
 </footer>

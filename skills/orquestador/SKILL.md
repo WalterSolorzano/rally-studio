@@ -1,12 +1,29 @@
 ---
 name: orquestador
-description: Orquesta agentes especialistas (investigador, guionista, modeler 3D, pautador, presupuestador, grafista, web, voz, editor y auditor) que trabajan a la vez sin chocarse, con contratos por archivo y guardia de recursos. Úsala cuando el humano pida despachar al equipo o que varios trabajen en paralelo.
+description: Orquesta agentes especialistas con contratos por archivo y guardia de recursos. La fase base son dos roles (director + soluciones); el resto (investigador, guionista, modeler 3D, pautador, presupuestador, grafista, web, voz, editor, auditor) es fase extendida. Úsala cuando el humano pida despachar al equipo o que varios trabajen en paralelo.
 ---
 
 # El Admin del Grupo — Orquestador: director + especialistas
 
 Reglas completas y decisiones D1–D7 en
 `docs/superpowers/specs/2026-10-21-orquestacion-especialistas-design.md`.
+
+## Fase base: dos roles (modo por defecto)
+
+El trabajo arranca con **dos agentes y nadie más** hasta que esa base esté cerrada:
+
+1. **director** — arma `brief.json`, la solución aprobada y los contratos. No produce contenido.
+2. **soluciones** — `proponer-retos` para la ficha rápida en el chat y `dossier-soluciones`
+   cuando el humano pide el documento formal.
+
+En cuanto la solución está aprobada, el director cierra además la **identidad** (nombre, logo
+y paleta con `propuesta-identidad`): es el insumo de toda pieza visual y cambiar después
+obliga a rehacer pautado, dossier, contadores y web.
+
+Todo lo demás (investigador, presupuestador, modeler, grafista, guionista, pautador, web, voz,
+editor, auditor) es **fase extendida**: se despacha solo cuando la base ya existe y el humano
+lo pide. Diez roles sobre un proyecto sin reto ni solución aprobada producen diez archivos
+incoherentes y ningún entregable.
 
 ## Navegador obligatorio (browser MCP)
 
@@ -83,7 +100,7 @@ guion PAS-V con `script/shotlist.csv` y presupuesto. Antes de eso, no arranca.
 - **Verificación con navegador:** el recurso se descarga desde la página real y
   se captura la ficha (licencia + autor) como respaldo.
 - **Límite duro:** este rol **crea recursos**, nunca el video final. No renderiza,
-  no edita, no hace montaje; eso es de `guion-pas-v` y el pipeline de export.
+  no edita, no hace montaje; eso es de `guion-storyboard` y el pipeline de export.
 - Prohibido: morado #7c3aed, cards genéricas, emojis como íconos, stock sin
   licencia.
 
@@ -139,16 +156,16 @@ guion PAS-V con `script/shotlist.csv` y presupuesto. Antes de eso, no arranca.
    (`director` para material filmado y stock, `grafista2d` para captura de
    interfaz) y se anota el rol real en `notes`. No dejes diez tipos de toma con
    el mismo dueño para que compile: se satura un especialista y el resto queda
-   sin trabajo. Procedimiento completo en `skills/storyboard/SKILL.md`.
+   sin trabajo. Procedimiento completo en `skills/guion-storyboard/SKILL.md`.
 
    **El storyboard es del director y se entrega en dos piezas.** Los contratos en
    `shots/<id>.yaml` (compilados a `script/shotlist.csv` con
    `python scripts/build_shotlist.py`) y un **tablero visual** en
    `docs/storyboard_visual.html`, generado desde el CSV por
-   `docs/_gen_storyboard_visual.py`, con hoja de contactos, una fila por toma y
+   `scripts/gen_storyboard_visual.py`, con hoja de contactos, una fila por toma y
    las columnas «qué buscar» y «qué crear». Sin tablero, el equipo graba a
    ciegas; con tarjetas gigantes, tampoco lo lee. Detalle en
-   `skills/storyboard/SKILL.md`.
+   `skills/guion-storyboard/SKILL.md`.
 
    **Referencias visuales: buscarlas o crearlas, nunca fingirlas.** Cada toma se
    planifica con una referencia encontrada (video del territorio, noticia del
@@ -159,6 +176,10 @@ guion PAS-V con `script/shotlist.csv` y presupuesto. Antes de eso, no arranca.
    textura, no territorio. Lo prohibido es hacer pasar stock por el lugar o un
    render por registro del lugar. Ficha obligatoria con URL y minuto verificado
    (encontrada) o archivo, autor y herramienta (creada).
+3b. **Nadie inventa un insumo que falta.** Si un rol necesita un archivo que no existe, está
+   en borrador o contradice lo que leyó, **detiene su trabajo y pregunta** al director; el
+   director pregunta al humano. Un número supuesto contamina presupuesto, pautado y guion a
+   la vez, y se descubre cuando ya no hay tiempo de rehacerlo.
 4. **Todo binario pesado pasa por el guardia**:
    ```bash
    python scripts/gpu_lock.py run --owner <agente> --priority <baja|media|alta> -- <comando>
@@ -200,6 +221,9 @@ Nunca llamar a blender, ffmpeg ni TTS directo. Si el recurso está ocupado, el g
    (`knowledge/rubric_matrices.md`; `rally_type` decide qué matriz aplica) y
    `env.json` si existe (si no, `env.example.json`). Nunca se bloquea el
    despacho por faltar un archivo de capacidades.
+1b. **Cerrar la identidad** en cuanto haya solución aprobada: nombre, logo y paleta en
+   `brand/palette.json` + `brand/tokens.css` (sección «Identidad primero»). Sin ese archivo
+   no se despacha nada visual.
 2. **Armar las tomas**: crea o edita `shots/<id>.yaml`, con campos
    `id, act, description, asset_id, asset_type, duration_s, status, notes` y
    `rubric_item, claim_ids, owner, depends_on, quality_tier`.
@@ -253,9 +277,9 @@ por carpeta compartida; el equipo lo decide al abrir el proyecto.
 | Especialista | Zona | Produce | Lee | Coordina con |
 |---|---|---|---|---|
 | investigador | `research/` | claims con fuente, URL y año | fuentes citables | guionista, pautador, dossier |
-| guionista | `script/` | actos del guion | tomas (shots + shotlist), fichas `blender/ficha_*.md`, claims | modeler (piezas en cámara), investigador (números) |
+| guionista | `script/` | actos del guion | tomas (shots + shotlist), fichas `blender/ficha_*.md`, claims, `budget/budget.json` (cifras dichas), `brand/tokens.css` + nombre/logo | modeler (piezas en cámara), investigador (números), presupuestador (cero cifras que no estén en su tabla) |
 | modeler | `blender/` + renders en `dashboard/assets/` | ficha, `.blend`, scripts, renders | tomas (acto, duración, cámara), `budget/bom.csv` (dimensiones y materiales), `env.json` (tier) | guionista, presupuestador (la ficha alimenta los precios), director (`rubric_item`) |
-| pautador | `docs/` | secciones del pautado, canvas | brief, claims, budget | presupuestador |
+| pautador | `docs/` | secciones del pautado, canvas | brief, claims, `budget/budget.json`, solución aprobada, identidad | presupuestador, investigador, director |
 | presupuestador | `budget/` (salvo `bom.csv`) | `budget/budget.json` | `budget/bom.csv`, fichas `blender/ficha_*.md`, claims, proveedores con URL | modeler, pautador, director |
 | grafista | `assets/2d/` | piezas 2D, íconos, diagramas; MP4 de contadores del Acto IV con `scripts/render_contadores.py` (solo con presupuesto aprobado) | tomas con owner grafista, `brand/tokens.css`, `budget/budget.json` | guionista, web, presupuestador |
 | web | `site/` | prototipo y sitio demo | brief, `brand/tokens.css`, datos del pautado | grafista, guionista |
@@ -266,24 +290,66 @@ por carpeta compartida; el equipo lo decide al abrir el proyecto.
 
 ## Grafo de dependencias (orden de despacho)
 
+Ningún rol arranca con un insumo pendiente. Si al despacharlo le falta algo de la columna
+"necesita", **devuelve el despacho con la lista de lo que falta**; no lo rellena con supuestos
+ni con un número inventado. Un insumo inventado se detecta tarde y contamina presupuesto,
+pautado y guion a la vez.
+
+| Rol | Necesita sí o sí | Entrega | Sus consumidores |
+|---|---|---|---|
+| director | brief con proyecto | `shots/*.yaml`, `budget/bom.csv`, `script/shotlist.csv`, tablero visual | todos |
+| identidad (`propuesta-identidad`) | reto + solución aprobada + `rally_type` + territorio | `brand/palette.json`, `brand/tokens.css`, logo, nombre | grafista, web, pautado, dossier, contadores |
+| investigador | reto + solución aprobada | `research/claims.json` (fuente, URL, año) | guionista, pautador, presupuesto, dossier |
+| modeler | tomas + `bom.csv` (`dim_*_mm`) + `env.json` | `blender/ficha_*.md`, `.blend`, renders | presupuestador, guionista, editor |
+| presupuestador | `bom.csv` + fichas del modeler (si hay 3D) + proveedores + claims | `budget/budget.json` | pautado, canvas, guionista, grafista, web |
+| guionista | `shotlist.csv` + fichas 3D + claims + `budget.json` + identidad | `script/` | voz, editor, web |
+| grafista | identidad + `budget.json` aprobado + tomas | `assets/2d/` | web, editor |
+| pautador | claims + `budget.json` + solución aprobada + canvas | `docs/` | web, director |
+| web | pautado cerrado + identidad + tomas | `site/` | editor |
+| voz | guion aprobado y medido | `assets/voice/` | editor |
+| editor | `shotlist.csv` + renders + voz + grafista | `video/` | auditor |
+| auditor | todo lo anterior + rúbrica | `reports/` | director |
+
+**Las tres preguntas que siempre se hacen mal:**
+
+- **3D y presupuesto no se esperan uno al otro: los dos salen del mismo `bom.csv`.** El
+  modeler no inventa precios y el presupuestador no inventa milímetros. La ficha del modeler
+  alimenta los precios, así que el presupuesto **cierra después** de la ficha; si el precio
+  final obliga a cambiar un componente, el director corrige `bom.csv` y ambos vuelven a correr.
+- **El guion es de los últimos, no de los primeros.** Dice cifras que deben existir en
+  `budget.json` y en `claims.json`, y describe piezas que deben existir en las fichas 3D. Un
+  guion escrito antes de eso se reescribe entero.
+- **El pautado también es de los últimos.** Necesita el presupuesto cerrado y los claims
+  citados; si se escribe antes, las cifras no cuadran con la tabla y el video dice otra cosa.
+
+### Olas de despacho
+
 ```
-investigador → claims
-      ↓
-    brief → tomas → shotlist → storyboard visual
-      ↓
-modeler → ficha/BOM → presupuestador → budget
-      ↓                    ↓
-   renders            pautado/canvas
-      ↓                    ↓
-   guionista → voz → editor → video
-      ↓
- grafista → web → sitio
-      ↓
-   auditor (informe final)
+Ola 0  director: brief → solución aprobada → IDENTIDAD → tomas → bom.csv → shotlist
+Ola 1  en paralelo: investigador · modeler (con bom) · presupuestador (filas provisionales)
+Ola 2  presupuesto cierra con las fichas · guionista · grafista · pautado/canvas
+Ola 3  voz (tras guion) · web (tras pautado e identidad)
+Ola 4  editor (tras renders + voz + grafista) → auditor → director integra
 ```
 
-Se despacha lo que no tiene dependencia pendiente. Si una pieza espera a otra,
-el director no la lanza "por adelantado": la deja en cola y avisa.
+Se despacha lo que no tiene dependencia pendiente. Lo que espera queda en cola y el director
+lo dice en voz alta; no se lanza "por adelantado" para ir más rápido.
+
+## Identidad primero (fase 0, no es opcional)
+
+La paleta, el nombre y el logo **se deciden al inicio**, con el reto y la solución ya
+aprobados, y antes de producir cualquier pieza visual. Son la base de todo: `brand/tokens.css`
+manda sobre el pautado, el dossier, los contadores y la web demo.
+
+1. Lee reto, solución, `rally_type` y territorio. El nombre y la paleta salen de ahí, no de un
+   gusto: Nacional admite arraigo cultural; Latam exige que se entienda fuera del país.
+2. Corre `propuesta-identidad` con el navegador conectado y fija `brand/palette.json`,
+   `brand/tokens.css` y el logo. Prohibido morado #7c3aed y fuentes fuera de tokens.
+3. Sin identidad cerrada **no se despacha** a grafista, web, pautado ni dossier. Cambiar la
+   paleta después obliga a rehacer todas esas piezas.
+4. Si el humano todavía no tiene reto o solución aprobada, la identidad espera: se propone y
+   se somete a su decisión, no se elige sola.
+
 
 ## Precios
 
@@ -291,66 +357,11 @@ La doctrina de precios vive en `skills/presupuesto/SKILL.md`. Esta skill solo
 despacha al presupuestador y verifica que cada fila traiga `units`, `unit_cost`
 y URL de respaldo.
 
-## Generación de prompts para llevar el despacho a otra IA
+## Detalle compartido (leído antes de despachar)
 
-Cuando el usuario quiera exportar los contratos, tomas o el estado del
-despacho a otra IA (OpenAI, Claude, Gemini, OpenCode, Antigravity…), genera el
-prompt con esta estructura:
-
-```
-Rol: director de producción de rally de innovación, especialista en orquestación
-  de especialistas.
-Contexto: Certamen <rally_type> (<hours_total> h), proyecto <project_name>,
-  equipo <team_name>, ciudad <city>.
-Entrada: `brief.json`, `shots/*.yaml`, `budget/bom.csv`,
-  `script/shotlist.csv`, `research/claims.json`.
-Tarea: Integrar contratos de tomas, verificar cobertura de rúbrica y coordinar
-  especialistas (investigador, guionista, modeler 3D, pautador, presupuestador,
-  grafista, web, voz, editor, auditor).
-Restricciones:
-  - `brief.json` debe tener proyecto (nombre, equipo, universidad, ciudad,
-    rally_type). Si está vacío: NO despachar.
-  - El director escribe los contratos; ningún especialista edita los cuatro
-    caminos por su cuenta.
-  - Zonas de escritura exclusivas por especialista.
-  - Todo binario pesado pasa por el guardia `gpu_lock.py`.
-  - Máximo 3 especialistas concurrentes.
-  - No inventa datos: toda cifra nace de `research/claims.json`.
-  - Sin emojis, sin degradados estilo IA, sin glassmorphism.
-  - Idioma: español.
-Formato de salida: JSON con claves proyecto, rally_type, tomas ([]), cobertura_rubrica,
-  especialistas_desapachados, zonas_escritura, estado_guardia, pendiente.
-Idioma: español.
-```
-
-## Cómo sugerir un título o nombre de proyecto o producto
-Compartido: `skills/_comun/nombres.md`. Léelo antes de aplicar esta sección.
-
-## Cómo enseñar visualmente
-
-- Una sola distancia focal por secuencia con rótulos.
-- Contraste garantizado: texto claro sobre fondo oscuro, o sombra de texto
-  desplazada.
-- Elementos gráficos se exportan como PNG 2048×2048 con fondo transparente.
-- Sin emojis como íconos en la web demo.
-- Nombrado de assets: `asset_<shotlist_id>_<descripcion>.<ext>`.
-
-## Cómo redactar guiones cuidando la pronunciación y el orden de palabras
-Compartido: `skills/_comun/guiones.md`. Léelo antes de aplicar esta sección.
-
-## Cómo crear modelos 3D (referencia para el director)
-
-El modeler 3D genera modelos o renders 3D con Blender, con ficha técnica previa
-justificada por la rúbrica. Ver `skills/modelo-3d-blender/SKILL.md`. El director
-coordina el guardia de recursos y verifica que cada ficha esté aprobada antes de
-reservar GPU.
-
-## Cómo sugerir elementos gráficos
-
-- Sin emojis como íconos en la web demo.
-- Sin cards genéricas, sin morado (#7c3aed o similar), sin fuentes fuera de
-  `brand/tokens.css`.
-- Nombrado de assets: `asset_<shotlist_id>_<descripcion>.<ext>`.
+El bloque de guías comunes (prompts para otra IA, nombres, enseñanza visual, guiones, 3D
+como referencia, elementos gráficos) está en `references/comun.md` y viene de `skills/_comun/`.
+Se lee antes de escribir el despacho, no después.
 
 ## Anti-objetivos (lo que el director NO hace)
 

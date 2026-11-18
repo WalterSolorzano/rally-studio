@@ -28,3 +28,11 @@ Ajustes: intensidad 0,8 / fidelidad 0,45 / ritmo pausado.
   con 3 voces y varias intensidades para comparar de oido.
   El nombre dice la intensidad: `__e0.65`, `__e0.8`, `__e1`.
 - `candidatos/`: pruebas cortas anteriores (voz cortada: arreglado).
+
+<!-- relacionado:inicio -->
+
+## Relacionado
+
+- [investigacion_pitch.md](investigacion_pitch.md) — hallazgos sobre el pitch.
+- [videos_sin_audio.md](videos_sin_audio.md) — que se ve y no se oye en los videos de referencia.
+- [rubricas_matrices.md](rubricas_matrices.md) — reglas de duracion del entregable audiovisual.

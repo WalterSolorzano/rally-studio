@@ -4,8 +4,6 @@ import os
 import subprocess
 import sys
 
-import pytest
-
 
 def _corre(slug, out):
     env = dict(os.environ, PYTHONIOENCODING="utf-8")

@@ -7,7 +7,7 @@ const fs = require("fs");
 const path = require("path");
 const vm = require("vm");
 
-const KEY = "rally_studio_production_state_2026_v3";
+const KEY = "rally_studio_production_state_2026_v4";
 
 const store = Object.create(null);
 const session = Object.create(null);

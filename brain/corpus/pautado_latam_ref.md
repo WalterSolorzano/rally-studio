@@ -119,3 +119,10 @@ DeepSeek. (2026). DeepSeek [Modelo de lenguaje grande]. https://chat.deepseek.co
 Google. (2026). Gemini [Modelo de lenguaje grande]. https://gemini.google.com/
 
 OpenAI. (2026). ChatGPT [Modelo de lenguaje grande]. https://chatgpt.com/
+
+<!-- relacionado:inicio -->
+
+## Relacionado
+
+- [rubricas_matrices.md](rubricas_matrices.md) — rubrica que lo califica.
+- [pautado_nacional_ref.md](pautado_nacional_ref.md) — la variante nacional.

@@ -16,14 +16,27 @@ import pathlib
 import re
 import sys
 
-# Limites vigentes con espacios. Fuente: encabezados de la maqueta oficial.
+# Limites vigentes del Rally LATINOAMERICANO, con espacios. Fuente:
+# brain/corpus/pautado_latam_ref.md, que reproduce la maqueta oficial:
+# impacto 1000 y prefactibilidad 1500. El Rally Nacional no fija topes.
 LIMITS: dict[str, int] = {
     "problema": 1250,
     "solucion": 1250,
-    "prefactibilidad": 1000,
+    "impacto": 1000,
     "innovacion": 1000,
-    "impacto": 1500,
+    "prefactibilidad": 1500,
 }
+
+# Solo el Rally Latinoamericano fija tope por seccion. El Rally Nacional de
+# Innovacion no los declara en su documento de referencia, asi que un pautado
+# nacional nunca debe marcarse como excedido.
+LIMITES_POR_EVENTO: dict[str, dict[str, int]] = {"latam": LIMITS, "nacional": {}}
+
+
+def limites_para(evento: str | None = "latam") -> dict[str, int]:
+    """Topes del evento pedido; vacio cuando el evento no fija topes."""
+    clave = (evento or "latam").strip().lower()
+    return dict(LIMITES_POR_EVENTO.get(clave, LIMITS))
 
 _ALIAS = {
     "problema": "problema",
@@ -116,9 +129,12 @@ def contar(texto: str) -> dict[str, int]:
     return {campo: len(valor.strip()) for campo, valor in secciones.items()}
 
 
-def revisar(docx_path: pathlib.Path, plantilla: pathlib.Path | None = None) -> tuple[list[dict], dict[str, int]]:
-    plantilla = plantilla or pathlib.Path("docs/pautado_template.docx")
-    limites = {**LIMITS, **limites_desde_plantilla(plantilla)}
+def revisar(docx_path: pathlib.Path, plantilla: pathlib.Path | None = None,
+            evento: str | None = "latam") -> tuple[list[dict], dict[str, int]]:
+    plantilla = plantilla or pathlib.Path("plantillas/pautado_template.docx")
+    limites = limites_para(evento)
+    if limites:
+        limites.update(limites_desde_plantilla(plantilla))
     texto = texto_docx(docx_path)
     conteos = contar(texto)
     hallazgos: list[dict] = []
@@ -152,13 +168,20 @@ def revisar(docx_path: pathlib.Path, plantilla: pathlib.Path | None = None) -> t
 def main(argv: list[str] | None = None) -> int:
     argv = list(sys.argv[1:] if argv is None else argv)
     docx_path = pathlib.Path(argv[0]) if argv else pathlib.Path("docs/pautado_draft.docx")
-    plantilla = pathlib.Path(argv[1]) if len(argv) > 1 else pathlib.Path("docs/pautado_template.docx")
+    plantilla = pathlib.Path(argv[1]) if len(argv) > 1 else pathlib.Path("plantillas/pautado_template.docx")
+    evento = argv[2] if len(argv) > 2 else "latam"
     if not docx_path.exists():
         print(f"  PENDIENTE: {docx_path} no existe. Ejecuta python scripts/gen_pautado.py primero.")
         return 1
-    hallazgos, conteos = revisar(docx_path, plantilla)
+    hallazgos, conteos = revisar(docx_path, plantilla, evento)
+    limites = limites_para(evento)
+    if not limites:
+        print(f"  Evento '{evento}': sin tope por seccion. Solo se cuentan caracteres.")
+        for campo, cuenta in sorted(conteos.items()):
+            print(f"  {campo.upper():<16} {cuenta:>6}")
+        return 0
     print("  CAMPO            CUENTA / LIMITE")
-    for campo, limite in LIMITS.items():
+    for campo, limite in limites.items():
         cuenta = conteos.get(campo)
         if cuenta is None:
             print(f"  {campo.upper():<16} {'--':>6} / {limite:<6}  ausente")

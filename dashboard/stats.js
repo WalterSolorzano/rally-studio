@@ -11,13 +11,7 @@
   const params = new URLSearchParams(window.location.search);
   const captureMode = params.has("capture") || params.has("snapshot") || navigator.webdriver;
 
-  const esc = (value) => String(value ?? "").replace(/[&<>"']/g, (ch) => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;"
-  }[ch]));
+  const esc = window.RallyEsc.esc;
 
   const nf = (value, digits = 0) => Number(value || 0).toLocaleString("es-NI", {
     minimumFractionDigits: digits,

@@ -23,3 +23,10 @@ Referencia cruzada con `8. Los videos: catálogo y lectura caso por caso` y `gan
 
 ## Captions pendientes por año
 2020: 15 · 2021: 35 · 2022: 44 · 2023: 63 · 2024: 87 · 2025: 69 · 2026: 112
+
+<!-- relacionado:inicio -->
+
+## Relacionado
+
+- [transcripciones_primeros_lugares_nic.md](transcripciones_primeros_lugares_nic.md) — transcripcion de esos videos.
+- [guion_voz.md](guion_voz.md) — guion que se escribe.

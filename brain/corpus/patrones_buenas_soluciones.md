@@ -45,7 +45,7 @@ Estos patrones aparecen repetidamente en los videos de primero lugar con transcr
 
 ## 5. Uso en skills
 
-Las skills (`proponer-retos`, `dossier-soluciones`, `guion-pas-v`) deben:
+Las skills (`proponer-retos`, `dossier-soluciones`, `guion-storyboard`) deben:
 - Leer los datos de `knowledge/retos_razonamiento.json` y `research/sirli/winners.jsonl`.
 - Aplicar los patrones de esta guia para evaluar si una solucion propuesta es buena.
 - NO hardcodear proyectos especificos de ediciones anteriores como ejemplos a copiar.
@@ -54,5 +54,13 @@ Las skills (`proponer-retos`, `dossier-soluciones`, `guion-pas-v`) deben:
 ## Archivos de datos
 
 - `knowledge/retos_razonamiento.json` — 101 casos (version 2), 91 con video_url
-- `research/sirli/videos_sin_audio.tsv` — 182 videos sin audio (has_captions=false|null) + `research/sirli/datos/captions_pendientes.tsv` — 425 con captions disponibles sin descargar (total 607 revisados)
+- `research/sirli/videos_sin_audio.tsv` — 607 videos sin audio (grupo, url, motivo)
 - `research/sirli/analisis/modelo_solucion.json` — analisis de tipos de solucion
+
+<!-- relacionado:inicio -->
+
+## Relacionado
+
+- [casos_ganadores.md](casos_ganadores.md) — casos de los que salen los patrones.
+- [rubricas_matrices.md](rubricas_matrices.md) — como se puntua cada patron.
+- [insignias.md](insignias.md) — referencias externas verificadas.

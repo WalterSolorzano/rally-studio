@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """
-validate_budget.py -- Valida rigurosamente budget/budget.json contra las reglas de rally:
+validate_budget.py -- Valida budget/budget.json contra las reglas de rally:
 1. URLs reales y obligatorias en cada renglon.
 2. Fechas de cotizacion presentes.
-3. Rango global admisible ($3,000 - $7,000 USD; ideal $4,000 - $6,000 USD).
+3. Banda de precio sugerida ($3,000 - $7,000 USD; punto dulce $4,000 - $6,000):
+   avisa, nunca bloquea. El monto lo decide el equipo.
 4. Presencia de flete/arancel de importacion.
 """
 import json
@@ -76,12 +77,16 @@ def main():
     if not has_shipping:
         warnings.append("No se detecto linea de 'Flete / Aranceles de Importacion'. Los jurados penalizan cotizaciones de Alibaba sin gastos de internacion.")
 
-    if total_usd < 3000:
-        errors.append(f"Total {formato(total, ctx)} (${total_usd:,.2f} USD) es demasiado bajo e inverosimil para un prototipo operativo.")
-    elif total_usd > 7000:
-        errors.append(f"Total {formato(total, ctx)} (${total_usd:,.2f} USD) excede el presupuesto prudencial de hackathon (maximo $6,000-$7,000 USD).")
+    # La banda de precio es SUGERENCIA, no ley: un piloto de $2.500 puede ser
+    # mejor que uno de $6.000, y un proyecto muy innovador puede costar $9.000.
+    # Por eso todo lo economico va a ALERTAS y nunca bloquea la entrega.
+    if total_usd < 3000 or total_usd > 7000:
+        warnings.append(
+            f"Total {formato(total, ctx)} (${total_usd:,.2f} USD) esta fuera de la banda "
+            "habitual ($3,000 - $7,000 USD). Valido si el equipo lo justifica en Prefactibilidad."
+        )
     elif total_usd < 4000 or total_usd > 6000:
-        warnings.append(f"Total {formato(total, ctx)} (${total_usd:,.2f} USD) fuera del punto dulce optimo ($4,000 - $6,000 USD).")
+        warnings.append(f"Total {formato(total, ctx)} (${total_usd:,.2f} USD) fuera del punto dulce optimo ($4,000 - $6,000 USD). Es solo sugerencia.")
 
     print(f"  Total auditado: {formato(total, ctx)} (${total_usd:,.2f} USD, {len(items)} partidas)")
 

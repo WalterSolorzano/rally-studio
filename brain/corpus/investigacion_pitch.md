@@ -118,3 +118,10 @@ timeline
 *Nota:* los enlaces de video llevan el código de YouTube entre corchetes y, cuando se pudo, la duración aproximada. “N/A” indica información no disponible en las fuentes consultadas. Las etiquetas cortas resumen el foco temático de cada proyecto. 
 
 **Fuentes:** Información oficial de la Comisión Nacional de Economía Creativa y prensa nicaragüense. Enlaces de videos obtenidos de YouTube (citado cuando fue posible) como se indica en las referencias. Los hallazgos y análisis se basan en el contenido de dichas fuentes y observaciones de los videos oficiales.
+
+<!-- relacionado:inicio -->
+
+## Relacionado
+
+- [guion_voz.md](guion_voz.md) — guion de 120 s.
+- [patrones_buenas_soluciones.md](patrones_buenas_soluciones.md) — patrones de pitch que premia el jurado.

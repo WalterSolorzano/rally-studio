@@ -3,10 +3,9 @@
 from __future__ import annotations
 
 import json
-from collections import Counter
 
-from base import (AN, AUDIO, CORE, DF, HIP, INTL, META, NIC, NIC_SEDE, SIS, TXT, VIDEOS,
-                  WINNERS, fig, fp, media, mediana, num, pct, pp, tabla, tasa)
+from base import (AN, HIP, META, SIS, TXT, VIDEOS,
+                  fig, num, pct, tabla)
 
 PROB = json.loads((AN / "probabilidad.json").read_text(encoding="utf-8"))
 

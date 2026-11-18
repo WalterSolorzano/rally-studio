@@ -51,15 +51,14 @@ ENTREGABLES = [
     ("docs/canvas.md", "modelo de negocio", "scripts/gen_canvas.py", "tab canvas"),
     ("script/script.md", "guion PAS-V 4 actos <=120 s", "scripts/gen_script.py", "tab script"),
     ("shots/*.yaml -> script/shotlist.csv", "contrato de tomas", "scripts/build_shotlist.py",
-     "skills/storyboard"),
-    ("docs/storyboard_visual.html", "tablero de rodaje", "skills/storyboard/gen_storyboard_visual.py",
+     "skills/guion-storyboard"),
+    ("docs/storyboard_visual.html", "tablero de rodaje", "scripts/gen_storyboard_visual.py",
      "generado desde el CSV"),
     ("assets/voice/narration.mp4", "locucion <=120 s", "scripts/gen_voice.py", "etapa voz"),
     ("video final", "YouTube con URL en brief.json", "editor + arsenal.py check-duracion", "tab timeline"),
     ("site/ publicado", "web demo", "scripts/publish_site.py", "tab webdemo"),
     ("dossier (PDF/Word/Excel)", "soluciones sustentadas", "scripts/gen_dossier.py, gen_soluciones_pdf.py",
      "skills/dossier-soluciones"),
-    ("docs/STORYBOARD.md", "indice del rodaje", "skills/storyboard", "documento"),
     ("knowledge/INDICE.md", "mapa del corpus", "scripts/gen_indice.py", "documento"),
 ]
 
@@ -303,8 +302,9 @@ a 4K). El guion y el CSV siguen siendo la fuente de verdad; el HTML es la vista 
 Ver `skills/guion-storyboard/SKILL.md`.
 
 Estado: construido. `gen_teleprompter.py` + `plantilla_teleprompter.html` generan el HTML,
-`script/movimiento.json` declara el movimiento por toma, `guion-pas-v` y `storyboard` quedan
-consolidadas. La regla de movimiento (fija > 2.5 s = tiempo muerto) y el ritmo (240-270
+`script/movimiento.json` declara el movimiento por toma. Las antiguas `guion-pas-v` y
+`storyboard` quedaron consolidadas en `guion-storyboard` y ya no existen como carpetas.
+La regla de movimiento (fija > 2.5 s = tiempo muerto) y el ritmo (240-270
 palabras, 135 ppm) se auditan en la consola del generador: son decisiones del especialista,
 no campos que el equipo ajuste.
 

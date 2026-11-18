@@ -5,13 +5,15 @@ con pixeles sinteticos: se cargan en Node con tests/js/palette_probe.js.
 El backend (scripts/rally_service.py) replica el mismo saneo, asi que
 tambien se prueba su version en Python.
 """
-import json
 import shutil
 import subprocess
 import sys
+from functools import partial
 from pathlib import Path
 
 import pytest
+
+from tests.support import correr_node
 
 NODE = shutil.which("node")
 PROBE = Path(__file__).parent / "js" / "palette_probe.js"
@@ -20,13 +22,7 @@ RAIZ = Path(__file__).parent.parent
 pytestmark = pytest.mark.skipif(NODE is None, reason="node no disponible para probar la paleta")
 
 
-def correr(comando, arg=None):
-    args = [NODE, str(PROBE), comando]
-    if arg is not None:
-        args.append(json.dumps(arg, ensure_ascii=False))
-    salida = subprocess.run(args, capture_output=True, text=True, encoding="utf-8", timeout=30)
-    assert salida.returncode == 0, salida.stderr
-    return json.loads(salida.stdout)
+correr = partial(correr_node, NODE, PROBE)
 
 
 def extraer(pixeles):

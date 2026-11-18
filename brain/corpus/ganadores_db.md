@@ -129,7 +129,7 @@
 
 ### budget
 
-- **key rule [EQUIPO]**: Rango de referencia $4,000–$6,000 USD de puesta en marcha (no es ley de rúbrica; no hay monto oficial). URLs reales de mayoristas (Alibaba/AliExpress/LCSC).
+- **key rule**: Rango estricto $4,000–$6,000 USD de puesta en marcha. URLs reales de mayoristas (Alibaba/AliExpress/LCSC). Línea obligatoria de flete/aranceles (15-20%).
 
 #### winning cases
 
@@ -255,3 +255,9 @@
 - **team**: Varios
 - **scope**: Fallo común
 - **lesson**: Más de 30 equipos quedan descalificados cada año por dejar el video de YouTube en modo Privado impidiendo la vista del jurado.
+
+<!-- relacionado:inicio -->
+
+## Relacionado
+
+- [casos_ganadores.md](casos_ganadores.md) — los mismos casos con razonamiento.

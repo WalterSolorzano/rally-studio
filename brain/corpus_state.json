@@ -1,15 +1,15 @@
 {
-  "corpus_files": 27,
+  "corpus_files": 39,
   "project_file": null,
   "missing_sources": [],
   "files": [
     {
       "name": "analisis_nicaragua.pdf",
-      "bytes": 231056
+      "bytes": 124336
     },
     {
-      "name": "casos_ganadores.json",
-      "bytes": 113150
+      "name": "casos_ganadores.md",
+      "bytes": 104031
     },
     {
       "name": "claims_datos.md",
@@ -17,7 +17,7 @@
     },
     {
       "name": "erratas.md",
-      "bytes": 2866
+      "bytes": 2857
     },
     {
       "name": "ganadores_analisis.md",
@@ -32,12 +32,60 @@
       "bytes": 129887
     },
     {
+      "name": "ganadores_latam_instancia_nacional.md",
+      "bytes": 1386
+    },
+    {
+      "name": "ganadores_latam_instancia_nacional_2017.md",
+      "bytes": 5140
+    },
+    {
+      "name": "ganadores_latam_instancia_nacional_2018.md",
+      "bytes": 4648
+    },
+    {
+      "name": "ganadores_latam_instancia_nacional_2019.md",
+      "bytes": 5141
+    },
+    {
+      "name": "ganadores_latam_instancia_nacional_2020.md",
+      "bytes": 3644
+    },
+    {
+      "name": "ganadores_latam_instancia_nacional_2021.md",
+      "bytes": 16910
+    },
+    {
+      "name": "ganadores_latam_instancia_nacional_2022.md",
+      "bytes": 16544
+    },
+    {
+      "name": "ganadores_latam_instancia_nacional_2023.md",
+      "bytes": 15549
+    },
+    {
+      "name": "ganadores_latam_instancia_nacional_2024.md",
+      "bytes": 12899
+    },
+    {
+      "name": "ganadores_latam_instancia_nacional_2025.md",
+      "bytes": 14942
+    },
+    {
+      "name": "ganadores_latam_instancia_nacional_2026.md",
+      "bytes": 18034
+    },
+    {
+      "name": "ganadores_latam_internacional.md",
+      "bytes": 22600
+    },
+    {
       "name": "guion_voz.md",
       "bytes": 1814
     },
     {
       "name": "informe_investigacion.md",
-      "bytes": 84784
+      "bytes": 84989
     },
     {
       "name": "insignias.md",
@@ -49,7 +97,7 @@
     },
     {
       "name": "patrones_buenas_soluciones.md",
-      "bytes": 2823
+      "bytes": 2828
     },
     {
       "name": "pautado_latam_ref.md",
@@ -77,15 +125,41 @@
     },
     {
       "name": "rubrica_latam.md",
-      "bytes": 622
-    },
-    {
-      "name": "rubrica_oficial.jpeg",
-      "bytes": 207578
+      "bytes": 626
     },
     {
       "name": "rubricas_matrices.md",
-      "bytes": 7042
+      "bytes": 7234
+    }
+  ],
+  "manual": [
+    {
+      "name": "analisis_nicaragua.md",
+      "bytes": 63450
+    },
+    {
+      "name": "ganadores_cruzados.md",
+      "bytes": 3041
+    },
+    {
+      "name": "glosario_instancias.md",
+      "bytes": 2732
+    },
+    {
+      "name": "transcripciones_primeros_lugares_nic.md",
+      "bytes": 21657
+    },
+    {
+      "name": "videos_sin_audio.md",
+      "bytes": 2070
+    },
+    {
+      "name": "informe_estado_nic_transcripciones.md",
+      "bytes": 4244
+    },
+    {
+      "name": "winners_sirli.md",
+      "bytes": 1159
     }
   ]
 }

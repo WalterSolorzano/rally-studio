@@ -6,10 +6,12 @@ si fueran retos del comité, con IDs repetidos y votos huérfanos.
 
 import json
 import shutil
-import subprocess
+from functools import partial
 from pathlib import Path
 
 import pytest
+
+from tests.support import correr_node
 
 NODE = shutil.which("node")
 PROBE = Path(__file__).parent / "js" / "challenge_parser_probe.js"
@@ -48,13 +50,7 @@ ODS: 11, 13, 3
 """
 
 
-def correr(comando, arg=None):
-    args = [NODE, str(PROBE), comando]
-    if arg is not None:
-        args.append(json.dumps(arg, ensure_ascii=False))
-    salida = subprocess.run(args, capture_output=True, text=True, encoding="utf-8", timeout=30)
-    assert salida.returncode == 0, salida.stderr
-    return json.loads(salida.stdout)
+correr = partial(correr_node, NODE, PROBE)
 
 
 def test_informe_no_produce_retos():
@@ -150,13 +146,23 @@ def test_app_ya_no_usa_regex_permisivo_de_ingesta():
 def test_app_no_reimprime_el_anclaje_territorial():
     js = APP.read_text(encoding="utf-8")
     assert "Anclaje territorial listo" not in js
-    assert "Factibilidad & despliegue" in js
+    # El rótulo planificado "Factibilidad & despliegue" nunca llegó a la UI;
+    # el bloque territorial vivo es este (app.js:1119).
+    assert "Anclaje Territorial (Nicaragua /" in js
 
 
 def test_nav_cuenta_el_total_y_no_el_filtrado():
     js = APP.read_text(encoding="utf-8")
     assert "${list.length} ACTIVOS" not in js
-    assert "renderMesaNav(mesaList, mesaActive.id, list.length)" in js
+    # La barra de la mesa recibe la lista COMPLETA como cuarto argumento:
+    # los pips conservan su número real aunque haya un filtro activo.
+    assert "const mesaList = filtered;" in js
+    assert "renderMesaBar(mesaList, mesaActive, mesaIndex, list)" in js
+    assert "renderMesaSlide(mesaActive, mesaList, mesaIndex, list)" in js
+    assert "renderMesaBar(mesaList, mesaActive, mesaIndex, filtered)" not in js
+    # Y los pips numeran con la lista de orden, no con el índice del filtro.
+    assert "const base = orden || list;" in js
+    assert "const num = gi >= 0 ? gi + 1 : i + 1;" in js
 
 
 def test_index_carga_el_parser_antes_de_app():

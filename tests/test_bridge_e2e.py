@@ -57,6 +57,8 @@ def servidor(tmp_path):
     (content / "p1.json").write_text(
         json.dumps(_propuesta(), ensure_ascii=False), encoding="utf-8"
     )
+    # La puerta de acceso exige llave: se fija una conocida para poder entrar.
+    (data_dir / "acceso.txt").write_text("PYTEST-LLAVE\n", encoding="utf-8")
 
     port = _free_port()
     env = {
@@ -123,8 +125,20 @@ def page():
 
 
 def test_proposal_appears_and_accepts(page, servidor):
+    page.goto(f"{servidor}/login.html")
+    pagina = page.evaluate(
+        "async () => {"
+        " const r = await fetch('/api/entrar', {"
+        "  method: 'POST', headers: {'Content-Type': 'application/json'},"
+        "  body: JSON.stringify({llave: 'PYTEST-LLAVE', nombre: 'pytest'})});"
+        " return r.status; }"
+    )
+    assert pagina == 200
     page.goto(f"{servidor}/dashboard/")
     card = "#rally-content-dock [data-proposal-id='p1']"
+    # El buzón arranca plegado a propósito: primero se abre su cabecera.
+    page.wait_for_selector("#rally-content-dock .dock-head", timeout=15000)
+    page.click("#rally-content-dock .dock-head")
     page.wait_for_selector(card, timeout=15000)
     page.click(f"{card} button[data-action='apply']")
     page.wait_for_selector(card, state="detached", timeout=15000)

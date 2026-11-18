@@ -21,6 +21,11 @@ import sqlite3
 import time
 from pathlib import Path
 
+try:
+    from store_base import SqliteStore
+except ImportError:  # importado como paquete (scripts.nube_store)
+    from scripts.store_base import SqliteStore
+
 # Archivos que la nube sincroniza. Ruta relativa a la raiz del repo,
 # con "/" como separador. Lo demas se rechaza con honestidad.
 SYNCABLE_PATHS = (
@@ -86,17 +91,8 @@ class NubeError(Exception):
     """Datos invalidos: ruta no permitida, contenido vacio, demasiado grande."""
 
 
-class NubeStore:
-    def __init__(self, path: str | Path):
-        self.path = Path(path)
-        self.path.parent.mkdir(parents=True, exist_ok=True)
-        with self._connect() as conn:
-            conn.executescript(SCHEMA)
-
-    def _connect(self) -> sqlite3.Connection:
-        conn = sqlite3.connect(str(self.path), timeout=10)
-        conn.row_factory = sqlite3.Row
-        return conn
+class NubeStore(SqliteStore):
+    ESQUEMA = SCHEMA
 
     # ---------------------------------------------------------------- rutas
 

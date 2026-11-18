@@ -1,9 +1,10 @@
-import json
 import shutil
-import subprocess
+from functools import partial
 from pathlib import Path
 
 import pytest
+
+from tests.support import correr_node
 
 NODE = shutil.which("node")
 PROBE = Path(__file__).parent / "js" / "bridge_probe.js"
@@ -11,13 +12,7 @@ PROBE = Path(__file__).parent / "js" / "bridge_probe.js"
 pytestmark = pytest.mark.skipif(NODE is None, reason="node no disponible para probar el puente")
 
 
-def correr(comando, arg=None):
-    args = [NODE, str(PROBE), comando]
-    if arg is not None:
-        args.append(json.dumps(arg, ensure_ascii=False))
-    salida = subprocess.run(args, capture_output=True, text=True, encoding="utf-8", timeout=30)
-    assert salida.returncode == 0, salida.stderr
-    return json.loads(salida.stdout)
+correr = partial(correr_node, NODE, PROBE)
 
 
 def test_budget_rows_fill_element_and_concept():
