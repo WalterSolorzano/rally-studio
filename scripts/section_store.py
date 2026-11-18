@@ -51,6 +51,10 @@ class SectionLocked(Exception):
 
 def validar_clave(key: str) -> str:
     key = (key or "").strip()
+    # Las claves locales de la ventana (active_tab, _sync_ts, ...) no son
+    # contenido del entregable y no siguen la gramatica de una seccion.
+    if key in CLAVES_LOCALES:
+        return key
     if not CLAVE_VALIDA.match(key):
         raise ValueError("clave-de-seccion-invalida")
     return key

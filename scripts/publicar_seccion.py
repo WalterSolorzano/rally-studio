@@ -60,24 +60,30 @@ def _request(method: str, url: str, payload, token: str, timeout: float = 8.0):
 
 
 def publicar(server: str, project: str, section: str, data, token: str,
-             base_version: int | None = None, actor: str = "IA") -> dict:
+             base_version: int | None = None, actor: str = "IA",
+             actor_id: str = "ia") -> dict:
     base = server.rstrip("/")
     query = urllib.parse.urlencode({"project": project})
-    if base_version is None:
-        status, body = _request(
-            "GET", f"{base}/api/sections?{query}&since=0", None, token
-        )
-        if status in (401, 403):
-            raise NoAutorizado(body)
-        if status >= 400:
-            raise RuntimeError(f"servidor respondió {status}")
-        current = (body.get("sections") or {}).get(section) or {}
-        base_version = int(current.get("version") or 0)
+    ruta = f"{base}/api/sections/{urllib.parse.quote(section, safe='')}"
 
+    # 1. Leer la version ANTES de tocar el candado: una version vieja es un
+    # conflicto (409), no un bloqueo (423). Si se pidiera el candado primero,
+    # una seccion ajena bloqueada ocultaria el conflicto real.
+    status, body = _request("GET", f"{base}/api/sections?{query}&since=0", None, token)
+    if status in (401, 403):
+        raise NoAutorizado(body)
+    if status >= 400:
+        raise RuntimeError(f"servidor respondió {status}")
+    current = (body.get("sections") or {}).get(section) or {}
+    version_actual = int(current.get("version") or 0)
+    if base_version is not None and int(base_version) != version_actual:
+        raise Conflicto({"current": current, "base_version": int(base_version)})
+    base_version = version_actual
+
+    # 2. Candado, siempre; y siempre se suelta, escriba o falle.
     status, body = _request(
-        "POST",
-        f"{base}/api/sections/{urllib.parse.quote(section, safe='')}/lock?{query}",
-        {"actor": actor, "actor_id": "ia"},
+        "POST", f"{ruta}/lock?{query}",
+        {"actor": actor, "actor_id": actor_id},
         token,
     )
     if status == 423:
@@ -87,26 +93,35 @@ def publicar(server: str, project: str, section: str, data, token: str,
     if status >= 400:
         raise RuntimeError(f"servidor respondió {status} al pedir el candado: {body}")
 
-    status, body = _request(
-        "POST",
-        f"{base}/api/sections/{urllib.parse.quote(section, safe='')}?{query}",
-        {
-            "data": data,
-            "base_version": base_version,
-            "actor": actor,
-            "actor_id": "ia",
-        },
-        token,
-    )
-    if status == 409:
-        raise Conflicto(body)
-    if status == 423:
-        raise Bloqueada(body)
-    if status in (401, 403):
-        raise NoAutorizado(body)
-    if status >= 400:
-        raise RuntimeError(f"servidor respondió {status}: {body}")
-    return body
+    try:
+        status, body = _request(
+            "POST",
+            f"{ruta}?{query}",
+            {
+                "data": data,
+                "base_version": base_version,
+                "actor": actor,
+                "actor_id": actor_id,
+            },
+            token,
+        )
+        if status == 409:
+            raise Conflicto(body)
+        if status == 423:
+            raise Bloqueada(body)
+        if status in (401, 403):
+            raise NoAutorizado(body)
+        if status >= 400:
+            raise RuntimeError(f"servidor respondió {status}: {body}")
+        return body
+    finally:
+        # Soltar el candado aunque la escritura haya fallado: un candado
+        # huerfano deja la seccion bloqueada para el humano hasta que expire.
+        try:
+            _request("POST", f"{ruta}/unlock?{query}",
+                     {"actor": actor, "actor_id": actor_id}, token)
+        except Exception:
+            pass
 
 
 def main(argv=None) -> int:

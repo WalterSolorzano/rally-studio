@@ -17,7 +17,7 @@
   opacity: 0.4;
   cursor: pointer;
   align-self: center;
-  transition: opacity 150ms ease, color 150ms ease, background 150ms ease;
+  transition: opacity 160ms ease, color 160ms ease, background 160ms ease;
 }
 #rsa-tools-btn:hover,
 #rsa-tools-btn:focus-visible {

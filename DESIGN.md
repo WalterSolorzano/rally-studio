@@ -170,9 +170,12 @@ El movimiento responde, no decora. Cada animación del sistema cae en una fila d
 | Hover / foco / respuesta táctil | `120ms` | `ease-out` | confirmar que el puntero está sobre algo accionable |
 | Cambio de estado (chip, fila, chevron) | `160ms` | `ease-out` | confirmar que algo cambió |
 | Entrada de datos (fila nueva, toast, modal) | `200ms` | `ease-out` | mostrar de dónde vino |
+| Entrada de gráfico o barra de datos | `600ms–1s` | `ease-out` | mostrar de dónde vino el dato |
 | Progreso de tarea en curso (barra, llenado) | `700–900ms` | `cubic-bezier(0.16, 1, 0.3, 1)` | avance real, no adorno |
+| Micro-movimiento de actividad (indicador que trabaja) | `1.1s` | `ease-in-out`, `infinite` | señalar trabajo en curso, no resultado |
 | Pulso de estado vivo (baliza, fase, cronómetro) | `1.8–2.5s` | `ease-in-out`, `infinite` | indicar que algo está corriendo ahora |
 | Bucle ambiental de escena ilustrada (mapa, clima) | `3–8s` | `ease-in-out`, `infinite` | dar vida a una ilustración que significa «en vivo» |
+| Rotación de escena de fondo | `18–34s` | `linear`, `infinite` | profundidad sin robar atención |
 | Prohibido | `>300ms` decorativo | — | retrasa la lectura sin informar nada |
 
 ### Named Rules

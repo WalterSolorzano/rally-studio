@@ -486,6 +486,7 @@ Una corrida está completa solo si:
 - [ ] G1 verde: la capa proyecto nace vacía (`_status: pendiente`), cero hex literal en `site/`,
       y los generadores fallan si falta la paleta en vez de inventar un azul.
 - [ ] G2 verde: planta 60-30-10 generada desde el reto (no fija) y aplicada por pantalla.
+      *(bloqueado: la planta se deriva de `challenge_id`, `category` y `ods_ids`; `brief.json` vacío)*
 - [ ] G3 verde: cuerpo ≥14 px a 390 px, sin scroll horizontal, capturas tomadas.
 - [ ] G4 verde: Rally Design generado y 3 rutas de marca servidas, 1 aceptada. *(enlace listo en
       `renderViewIdentidad`; falta la ruta aceptada: bloqueado por datos del proyecto)*
@@ -493,8 +494,13 @@ Una corrida está completa solo si:
       `prefers-reduced-motion`. *(30 animaciones / 10 bloques reduced; escalones 120/160/200 ms
       normalizados en `dashboard/style.css`)*
 - [ ] G6 verde: wireframes móvil y escritorio aprobados antes de implementar.
+      *(bloqueado: ningún wireframe se aprueba sin identidad del proyecto aceptada; depende de G4)*
 - [ ] G7 verde: `site/` con los 6 bloques de marketing y ≥1 cifra con URL.
+      *(bloqueado: `gen_site.py` exige tres claims con URL y `research/claims.json` está vacío)*
 - [ ] G8 verde: K1-K7 con decisión registrada.
+      *(bloqueado: K1–K7 son decisiones humanas sobre un proyecto real — certamen, reto, solución,
+      ruta de marca, pautado, guion y checklist. El mecanismo existe y está en el mapa; sin
+      `brief.json` no hay nada que aprobar)*
 - [ ] G9 verde: bitácora con ≥2 skills y ≥1 subagente auditor.
 - [ ] 3D (si aplica) con ficha aprobada y asset nombrado por `shotlist_id`.
 - [ ] Animatic aprobado antes de voz y render.
