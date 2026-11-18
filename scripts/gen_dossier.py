@@ -845,6 +845,48 @@ def build_xlsx() -> None:
     print(f"XLSX : {XLSX} ({XLSX.stat().st_size // 1024} KB)")
 
 
+def _faltantes(reto: dict) -> list[str]:
+    """Claves que la maquetacion usa y la ficha no trae, con su ruta completa.
+
+    Se revisa antes de escribir el primer documento: el KeyError a mitad de la
+    maquetacion dejaba medio PDF y el equipo creia que el dossier estaba listo.
+    """
+    spec = {
+        "id": str,
+        "categoria": str,
+        "categoria_porque": str,
+        "titulo": str,
+        "descripcion": str,
+        "pitch": str,
+        "senal": str,
+        "analogias": list,
+        "detalles": list,
+        "insignias": list,
+        "ods": list,
+        "realidad": {"a": str, "b": str},
+        "cadena": {"problema": str, "causa_raiz": str, "insight": str,
+                   "solucion": str, "metrica": str},
+    }
+    solucion = {"nombre": str, "claim": str, "que_es": str, "como": list,
+                "beneficiario": str, "componentes": list, "costo": str,
+                "metricas": list}
+    spec["propuesta"] = solucion
+    spec["alterna"] = solucion
+
+    def revisar(datos: dict, plantilla: dict, prefijo: str = "") -> list[str]:
+        faltan = []
+        for clave, esperado in plantilla.items():
+            ruta = f"{prefijo}{clave}"
+            if clave not in datos or datos[clave] in ("", None, [], {}):
+                faltan.append(ruta)
+                continue
+            if isinstance(esperado, dict) and isinstance(datos[clave], dict):
+                faltan.extend(revisar(datos[clave], esperado, ruta + "."))
+        return faltan
+
+    return revisar(reto, spec)
+
+
 def cargar(ruta: Path) -> None:
     global META, RETOS
     datos = json.loads(ruta.read_text(encoding="utf-8"))
@@ -865,6 +907,18 @@ def cargar(ruta: Path) -> None:
         if not isinstance(reto, dict) or not reto.get("titulo"):
             raise SystemExit(
                 f"reto sin 'titulo' en el JSON ({reto!r}): no hay ficha que maquetar."
+            )
+        # Las fichas las escribe `scripts/soluciones_motor.py`; una armada a mano
+        # llega incompleta y cada `r['algo']` suelto reventaba con KeyError a
+        # mitad de la maquetacion, dejando medio PDF en disco. Se revisa el
+        # esquema antes de tocar un documento.
+        faltan = _faltantes(reto)
+        if faltan:
+            raise SystemExit(
+                f"reto {reto.get('id', '?')}: faltan {', '.join(faltan)}. "
+                "Este dossier maqueta research/soluciones_actuales.json tal como lo "
+                "genera `python scripts/soluciones_motor.py`; completar esas claves "
+                "antes de maquetar."
             )
     # que_es: 80-150 palabras (regla de venta — leer una vez y entender de una)
     for reto in RETOS:
