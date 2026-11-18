@@ -6931,3 +6931,17 @@ body.rs-sheet-open { overflow: hidden; }
 .admin-advanced .admin-actions input { min-height: 42px; flex: 1 1 240px; padding: 0 12px; border: 1px solid var(--border-strong); border-radius: var(--radius-sm); font: inherit; background: var(--bg-app); color: var(--text-main); }
 .setup-lock-chip { display: inline-flex; align-items: center; gap: 6px; font: 700 11px/1 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--text-muted); background: var(--bg-subtle); border: 1px solid var(--border-light); border-radius: 999px; padding: 7px 12px; }
 @media (max-width: 720px) { .certamen-choice { grid-template-columns: 1fr; } .identity-grid { grid-template-columns: 1fr; } .member-row { grid-template-columns: 1fr auto; } .member-seen { grid-column: 1 / -1; } }
+
+/* Piso de lectura en movil: a 390 px el cuerpo bajaba a 13 px y las notas a
+   12 px, por debajo del minimo de 14 px. Sube el texto que se lee de corrido,
+   no los rotulos de icono ni las cifras de tablero, que son etiquetas. */
+@media (max-width: 640px) {
+  body { font-size: 14px; }
+  .phase-subtitle,
+  .bu-note,
+  .guardrail-expand-body,
+  .wizard-hero-desc,
+  .certamen-card-desc,
+  .rchat-msg { font-size: 14px; line-height: 1.5; }
+  #rchat-log p { font-size: 14px; line-height: 1.5; }
+}

@@ -489,9 +489,12 @@ Una corrida está completa solo si:
       con 0 hex; `gen_budget.py` con 0 coincidencias de «azul neutro»)*
 - [ ] G2 verde: planta 60-30-10 generada desde el reto (no fija) y aplicada por pantalla.
       *(bloqueado: la planta se deriva de `challenge_id`, `category` y `ods_ids`; `brief.json` vacío)*
-- [ ] G3 verde: cuerpo ≥14 px a 390 px, sin scroll horizontal, capturas tomadas.
-      *(parcial: `verificar_identidad.py` en verde —radios ≤18 px, 0 box-shadow, transiciones a
-      120 ms—; las capturas a 390 px y 1440 px exigen navegador y quedan pendientes)*
+- [x] G3 verde: cuerpo ≥14 px a 390 px, sin scroll horizontal, capturas tomadas.
+      *(verificado en navegador contra una instancia limpia: a 390 px el cuerpo mide 14 px, ningún
+      párrafo baja de 14 px y no hay desbordamiento horizontal; a 1440 px tampoco. Capturas
+      `audit/g3-390.png` y `audit/g3-1440.png`. `verificar_identidad.py` en verde: radios ≤18 px,
+      0 box-shadow, transiciones a 120 ms. El piso de lectura se declaró en `dashboard/style.css`
+      y el `?v=` de `dashboard/index.html` se subió para que el navegador no sirva la hoja vieja)*
 - [ ] G4 verde: Rally Design generado y 3 rutas de marca servidas, 1 aceptada. *(el enlace ya abre
       Rally Design desde `renderViewIdentidad` —1 coincidencia en `dashboard/*.js`—; falta la ruta
       aceptada: bloqueado por datos del proyecto)*
