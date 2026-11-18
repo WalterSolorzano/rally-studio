@@ -80,6 +80,7 @@ prueban el mecanismo antes de que exista un proyecto, y porque cada una dejó in
 | 2026-11-18 | Las trece pestañas medidas con proyecto de prueba; botón de retos sin `onclick` corregido | profe | navegador (Chrome, instancia limpia) | `audit/tab-*-{1440,390}.png` |
 | 2026-11-18 | Flujo con reto real en copia aislada: coherencia de cifras y pautado sin marcadores | profe | profe (fixture `rallysistem_lab/auditoria/`) | `rallysistem_lab/auditoria/fixture/final/` |
 | 2026-11-18 | Barrido genérico de nombres demo y acentos reales en el pautado | profe | profe (`rallysistem_lab/auditoria/detector_hardcodes.py`) | `rallysistem_lab/auditoria/` |
+| 2026-11-18 | Segunda pasada: marcas de ejemplo fuera del kit y teleprompter de muestra vacío | profe | profe (`rallysistem_lab/auditoria/detector_hardcodes.py`) | `rallysistem_lab/auditoria/` |
 
 Lo que encontró la prueba de novato y cómo se cerró:
 
@@ -107,6 +108,11 @@ Lo que encontró la prueba de novato y cómo se cerró:
   tres marcas de ejemplo) y la copia suelta del teleprompter, que llevaba un guion de café con
   «Doña Marta» y Jinotega. El pautado ya escribe acentos reales: «Límite», «Categoría», «Desafío»,
   «implementación», «de qué año», «cómo funciona», «por qué aquí sí funciona».
+- **Segunda pasada del barrido**: el kit de diseño proponía marcas concretas como ejemplo
+  (siete nombres de fantasía) y la copia suelta del teleprompter conservaba un guion de café
+  entero; ambas quedaron sin nombres propios. Los 70 hallazgos restantes son precedentes de
+  ganadores, ejes del Plan Nacional, etiquetas de candado, `XXXX-XXXX-XXXX` del login y un
+  `ROC-AUC` que el detector confunde con marca: ningún dato de proyecto impuesto al usuario.
 
 Regla de la revisión: la hace alguien distinto de quien construyó, y su veredicto puede ser
 FALLA. La del 18 de noviembre encontró un candado huérfano en `publicar_seccion.py` que

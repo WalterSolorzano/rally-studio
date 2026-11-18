@@ -353,27 +353,27 @@ function sugerirNombres() {
     used[name.toLowerCase()] = 1;
     out.push({ name: name, pattern: pattern, why: why });
   }
-  // 1 · marca inventada (NEXORA, KINETIX, INIVEZ)
+  // 1 · marca inventada (raíz + sufijo sonoro)
   add(_cap(_stem(_pick(lex.roots, r))) + _pick(['ora', 'era', 'aria', 'alia', 'iva', 'ix'], r), 'inventado',
-    'Raíz de ' + lex.label + ' + sufijo sonoro: el patrón de NEXORA o KINETIX.');
-  // 2 · objeto cotidiano como marca (AVOCADO, LUMBRE, HOOKE)
-  add(_pick(lex.objects, r), 'objeto', 'Un objeto concreto como marca: así funcionan AVOCADO o LUMBRE.');
+    'Raíz de ' + lex.label + ' + sufijo sonoro: una palabra que no existe y suena a marca.');
+  // 2 · objeto cotidiano como marca (una cosa concreta, sin adjetivos)
+  add(_pick(lex.objects, r), 'objeto', 'Un objeto concreto como marca: la cosa que el equipo ya sabe nombrar.');
   // 3 · compuesto en red / 360
   add(_cap(_pick(lex.roots, r)) + ' ' + _pick(['en Red', '360', 'Sin Límites', 'Común'], r), 'compuesto',
-    'Dos piezas que se explican solas, como NEXO-SOSTENIBLE o ALTIPLANO 360.');
+    'Dos piezas que se explican solas, sin guion y sin siglas.');
   // 4 · territorio real o genérico + número
   var terr = (S.team.city || '').trim() || _pick(['Territorio', 'Comunidad', 'Ruta', 'Origen', 'Altiplano'], r);
   add(_cap(terr) + ' ' + _pick(['360', '+', '2.0', 'Vivo'], r), 'territorio',
-    (S.team.city ? 'Ancla en la ciudad real del equipo' : 'Ancla en territorio') + ', como ALTIPLANO 360.');
+    (S.team.city ? 'Ancla en la ciudad real del equipo' : 'Ancla en territorio') + ' más un número corto.');
   // 5 · técnico bilingüe
   add(_cap(_pick(lex.roots, r)) + _pick(['Lab', 'Tech', 'IA', 'Link', 'Móvil'], r), 'técnico',
-    'Raíz local + sufijo técnico: el patrón de BIOINNOVATECH o TECNO-ING.');
+    'Raíz local + sufijo técnico: la raíz del territorio delante, el sufijo en inglés detrás.');
   // 6 · descriptivo con beneficio
   add(_cap(lex.benefit), 'descriptivo',
     'Marca que declara el beneficio de frente, sin adjetivo de relleno.');
   // 7 · humor o juego de palabras (solo si el tono lo permite)
   if (p.tone !== 'serio' && p.tone !== 'institucional') {
-    add(lex.pun, 'juego', 'Un guiño memorable, como DESUCHO o ERROR 404.');
+    add(lex.pun, 'juego', 'Un guiño memorable: dos palabras que chocan y se recuerdan.');
   }
   p.nameIdeas = out;
   return out;
