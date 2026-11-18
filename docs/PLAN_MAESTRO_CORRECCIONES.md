@@ -519,9 +519,14 @@ Una corrida está completa solo si:
 - [x] G9 verde: bitácora con ≥2 skills y ≥1 subagente auditor. *(`audit/sistema-auditor.md`,
       `audit/prueba-novato.md` y las tres auditorías de fase del 18 de noviembre, cada una con su
       fila en `docs/bitacora_fases.md`)*
-- [ ] 3D (si aplica) con ficha aprobada y asset nombrado por `shotlist_id`.
-- [ ] Animatic aprobado antes de voz y render.
-- [ ] Login remoto probado por URL pública antes de entregar enlace.
+- [ ] 3D (si aplica) con ficha aprobada y asset nombrado por `shotlist_id`. *(bloqueado: la ficha
+      se deriva de la shotlist de un proyecto real; el paquete se distribuye sin proyecto y la
+      cadena de prueba solo produce 4 tomas de guion, ninguna 3D)*
+- [ ] Animatic aprobado antes de voz y render. *(bloqueado: mismo motivo — sin ficha de rodaje no
+      hay animatic que aprobar; `gen_storyboard_visual` sí corre sobre la shotlist de prueba)*
+- [ ] Login remoto probado por URL pública antes de entregar enlace. *(bloqueado: exige publicar
+      con `cloudflared tunnel --url http://localhost:8000`, que abre un túnel hacia la máquina del
+      usuario. No se puede cerrar desde aquí y no se inventa una URL)*
 - [x] `python arsenal.py check-todo` sin errores propios de la herramienta.
       *(medido sobre copia con proyecto de prueba y locución real: `duracion PASA` —63,4 s en
       `assets/voice/narration.mp4`—, `campo PASA` —267/1250, 96/1250, 45/1000, 109/1000,
