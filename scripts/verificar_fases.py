@@ -149,6 +149,17 @@ ETAPAS = [
 
 CAMPOS_LLENOS = lambda v: bool(v) and v not in ("", [], 0, {}, None)
 
+# Campos que el equipo escribe en la interfaz y que el espejo de estado copia a
+# brief.json (ver CAMPOS_BRIEF en scripts/rally_service.py). Cuando una etapa
+# existe por uno de estos campos, la escritura en el panel es el registro: no se
+# puede pedir ademas una fila escrita a mano en un archivo que ninguna pantalla
+# menciona.
+CAMPOS_PANEL = frozenset({
+    "rally_type", "category", "challenge_id", "challenge_title", "project_name",
+    "team_name", "university", "city", "description_one_line", "ods_ids",
+    "national_plan_axis", "exchange_rate_bcn", "video_url", "site_url",
+})
+
 # Cada etapa admite solo la compuerta que prueba SU artefacto. Citar la de otra
 # fase no cierra nada: el trabajo que se dice probado esta en otro lado.
 COMPUERTAS_DE = {
@@ -376,9 +387,11 @@ def main() -> int:
             continue
         fila = bitacora.get(e["id"])
         if not fila:
-            if e.get("panel_evidencia"):
-                # El certamen se confirma en la pestana, no en la bitacora: la
-                # fase 00 queda registrada por la eleccion del panel.
+            if e.get("panel_evidencia") or e.get("campo") in CAMPOS_PANEL:
+                # Lo que el equipo llena en pantalla llega a brief.json por el
+                # espejo de estado: esa escritura es el registro. La fila de la
+                # bitacora se pide para los entregables, que si exigen que
+                # alguien los produzca y los apruebe a mano.
                 continue
             fail("sin bitacora: etapa %s %s no dejo linea" % (e["id"], e["nombre"]))
             continue
