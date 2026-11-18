@@ -17,6 +17,30 @@ utf8()
 BUDGET_JSON = pathlib.Path("budget/budget.json")
 BUDGET_XLSX = pathlib.Path("budget/budget.xlsx")
 BRIEF_JSON = pathlib.Path("brief.json")
+STATE_JSON = pathlib.Path("dashboard/data/state.json")
+
+
+def con_estado_vivo(items):
+    """La tabla de la ventana manda: si el equipo edito ahi, el Excel lo respeta.
+
+    budget.json es la semilla; state.json guarda lo que se cambio en la UI.
+    Se cruzan por nombre de partida y se conservan descripcion, categoria y fecha.
+    """
+    if not STATE_JSON.exists():
+        return items
+    try:
+        vivo = json.loads(STATE_JSON.read_text(encoding="utf-8-sig")).get("budget") or []
+    except Exception:
+        return items
+    if not vivo:
+        return items
+    semilla = {str(i.get("element", "")).strip().lower(): i for i in items}
+    salida = []
+    for fila in vivo:
+        base = dict(semilla.get(str(fila.get("element", "")).strip().lower(), {}))
+        base.update({k: fila[k] for k in ("element", "units", "unit_cost", "url") if k in fila})
+        salida.append(base)
+    return salida
 
 def main(argv=None):
     parser = argparse.ArgumentParser(
@@ -33,7 +57,7 @@ def main(argv=None):
         print("ERROR: budget/budget.json no existe.")
         sys.exit(1)
 
-    items = json.loads(BUDGET_JSON.read_text(encoding="utf-8-sig"))
+    items = con_estado_vivo(json.loads(BUDGET_JSON.read_text(encoding="utf-8-sig")))
     brief = json.loads(BRIEF_JSON.read_text(encoding="utf-8-sig")) if BRIEF_JSON.exists() else {}
     if not args.si and (
         not (brief.get("project_name") and brief.get("team_name")) or not items

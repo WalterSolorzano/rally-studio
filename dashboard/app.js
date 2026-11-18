@@ -4614,7 +4614,6 @@ function renderViewChallenges() {
         <div class="phase-header">
           <div>
             <h1 class="phase-title">Retos del comité</h1>
-            <p class="phase-subtitle">${list.length} retos cargados. Abre uno, léelo y elige el que van a desarrollar.</p>
           </div>
           <div class="cr-top-actions">
             <a class="link-quiet" href="../docs/Dossier_Soluciones_Actuales.pdf" target="_blank" rel="noopener noreferrer">Dossier de soluciones</a>
@@ -4629,12 +4628,10 @@ function renderViewChallenges() {
             <button class="btn-pill-light" style="${challengeFilter === 'all' ? 'background:var(--color-navy); color:var(--bg-surface); border-color:var(--color-navy);' : ''} padding:5px 12px; font-size:12px; font-weight:700;" onclick="challengeFilter='all'; renderTab('challenges');">
               Todos (${list.length})
             </button>
-            <button class="btn-pill-light" style="${challengeFilter === 'innovación' ? 'background:var(--color-navy); color:var(--bg-surface); border-color:var(--color-navy);' : ''} padding:5px 12px; font-size:12px; font-weight:700;" onclick="challengeFilter='innovación'; renderTab('challenges');">
-              Innovación
-            </button>
-            <button class="btn-pill-light" style="${challengeFilter === 'impacto social' ? 'background:var(--color-navy); color:var(--bg-surface); border-color:var(--color-navy);' : ''} padding:5px 12px; font-size:12px; font-weight:700;" onclick="challengeFilter='impacto social'; renderTab('challenges');">
-              Impacto Social
-            </button>
+            ${[...new Set(list.map(c => (c.category || "").trim()).filter(Boolean))].map(cat => `
+            <button class="btn-pill-light" style="${challengeFilter === cat.toLowerCase() ? 'background:var(--color-navy); color:var(--bg-surface); border-color:var(--color-navy);' : ''} padding:5px 12px; font-size:12px; font-weight:700;" onclick="challengeFilter='${escapeHtml(cat.toLowerCase())}'; renderTab('challenges');">
+              ${escapeHtml(cat)} (${list.filter(c => (c.category || "").toLowerCase() === cat.toLowerCase()).length})
+            </button>`).join("")}
           </div>
 
           <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
@@ -6524,7 +6521,7 @@ function renderViewSolution() {
       </div>
       <div class="sol-boosters">
         ${boosters.map(b => `
-          <button type="button" class="sol-booster tone-${b.tone}${b.why ? " is-on" : ""}" onclick="abrirDetalleBooster('${b.key}')" title="Ver en grande">
+          <button type="button" class="sol-booster tone-${b.tone}${b.why ? " is-on" : ""}" onclick="abrirDetalleBooster('${b.key}', event)" title="Ver en grande">
             ${_boosterFigura(b.symbol)}
             <span class="sol-booster-title">${b.title}</span>
             <span class="sol-booster-desc">${escapeHtml(b.why || b.desc)}</span>
@@ -6685,7 +6682,9 @@ const _BOOSTER_EXIGE = {
   cyber_physical: "Lo físico se vuelve dato: clasificación, modelo, predicción o automatización."
 };
 
-function abrirDetalleBooster(key) {
+let _boosterOpener = null;
+
+function abrirDetalleBooster(key, ev) {
   const b = boostersDelProyecto().find(x => x.key === key);
   if (!b) return;
   let modal = document.getElementById("booster-modal-overlay");
@@ -6693,9 +6692,10 @@ function abrirDetalleBooster(key) {
     modal = document.createElement("div");
     modal.id = "booster-modal-overlay";
     modal.className = "booster-modal-overlay";
-    modal.addEventListener("click", ev => { if (ev.target === modal) cerrarDetalleBooster(); });
+    modal.addEventListener("click", ev2 => { if (ev2.target === modal) cerrarDetalleBooster(); });
     document.body.appendChild(modal);
   }
+  _boosterOpener = (ev && ev.currentTarget) || document.activeElement;
   modal.innerHTML = `
     <div class="booster-modal tone-${b.tone}" role="dialog" aria-modal="true" aria-label="${escapeHtml(b.title)}">
       <header class="booster-modal-head">
@@ -6717,12 +6717,40 @@ function abrirDetalleBooster(key) {
       </div>
     </div>`;
   modal.style.display = "flex";
+  const cerrar = modal.querySelector(".booster-modal-close");
+  if (cerrar) cerrar.focus();
 }
 
 function cerrarDetalleBooster() {
   const modal = document.getElementById("booster-modal-overlay");
-  if (modal) modal.style.display = "none";
+  if (!modal) return;
+  modal.style.display = "none";
+  if (_boosterOpener && _boosterOpener.focus) {
+    _boosterOpener.focus();
+    _boosterOpener = null;
+  }
 }
+
+// Esc cierra la capa de arriba: el foco vuelve a donde estaba.
+// Tab no se escapa del diálogo abierto.
+document.addEventListener("keydown", ev => {
+  const overlay = document.getElementById("booster-modal-overlay");
+  const modalAbierto = !!overlay && overlay.style.display !== "none";
+  if (ev.key === "Escape") {
+    if (modalAbierto) { ev.preventDefault(); cerrarDetalleBooster(); return; }
+    const abierto = Object.keys(_aiEditState).find(k => _aiEditState[k] && _aiEditState[k].open
+      && document.getElementById("ae-box-" + aiEditId(k)));
+    if (abierto) { ev.preventDefault(); aiEditToggle(abierto); }
+    return;
+  }
+  if (ev.key !== "Tab" || !modalAbierto) return;
+  const foco = overlay.querySelectorAll("button, [href], input, textarea, select, [tabindex]:not([tabindex='-1'])");
+  if (!foco.length) return;
+  const primero = foco[0];
+  const ultimo = foco[foco.length - 1];
+  if (!ev.shiftKey && document.activeElement === ultimo) { ev.preventDefault(); primero.focus(); }
+  else if (ev.shiftKey && document.activeElement === primero) { ev.preventDefault(); ultimo.focus(); }
+});
 
 // ── COLABORACIÓN EN VIVO · TALLER DE SOLUCIÓN ──────────────────────────────
 // Cada tecla en el taller se difunde por BroadcastChannel: los demás

@@ -4709,7 +4709,7 @@ body.panel-drawer-open .drawer-backdrop {
 .cr-metric-reason { font-size: 12px; color: var(--text-body); }
 
 /* Cuerpo 2 columnas */
-.cr-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+.cr-body { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 28px; align-items: start; }
 .cr-panel { border: 0; border-radius: 0; background: transparent; padding: 0; min-width: 0; }
 .cr-body > .cr-panel + .cr-panel { border-left: 1px solid var(--border-light); padding-left: 20px; }
 .cr-panel.is-src { background: transparent; }
@@ -4718,7 +4718,7 @@ body.panel-drawer-open .drawer-backdrop {
 .cr-tag { font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0; text-transform: none; color: var(--text-muted); }
 .cr-tag.is-lock { color: #475569; }
 .cr-count-chip { font-family: var(--font-mono); font-size: 11px; font-weight: 800; color: var(--text-title); background: var(--bg-muted); border-radius: 4px; padding: 0 5px; }
-.cr-quote { font-size: 13px; line-height: 1.6; color: var(--text-body); margin: 0; }
+.cr-quote { font-size: 16px; line-height: 1.7; color: var(--text-body); margin: 0; max-width: 44em; }
 .cr-pending { font-size: 12px; line-height: 1.55; color: var(--text-muted); margin: 0; }
 .cr-thesis { font-size: 13px; font-weight: 600; line-height: 1.55; color: var(--text-title); margin: 0 0 8px; }
 .cr-fact, .cr-precedent { font-size: 12px; line-height: 1.5; color: var(--text-body); margin: 0 0 8px; }
@@ -6465,13 +6465,14 @@ button[disabled]:active {
   color: var(--text-faint); cursor: pointer; }
 .cr-remove:hover { color: #DC2626; }
 
-.cr-title {
-  font-size: 22px;
+#main .cr-title {
+  font-size: 27px;
   font-weight: 900;
   color: var(--text-title);
   line-height: 1.2;
   letter-spacing: -0.02em;
-  margin: 6px 0 20px;
+  margin: 8px 0 22px;
+  max-width: 34em;
 }
 
 .cr-prop-name { margin: 0 0 6px; font-family: var(--font-ui); font-size: 17px; font-weight: 700;

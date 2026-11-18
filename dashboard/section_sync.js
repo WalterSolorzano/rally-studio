@@ -711,7 +711,7 @@
     const lockable = el.closest("[data-lockable]");
     if (lockable) return fieldToSection(lockable.getAttribute("data-lockable"));
     if (el.id && el.id.indexOf("pt-") === 0) return "pautado." + el.id.slice(3);
-    if (el.id && /^sc-a[1-4]$/.test(el.id)) return "script.acto" + el.id.slice(-1);
+    if (el.id && /^sc-acto[1-4]$/.test(el.id)) return "script.acto" + el.id.slice(-1);
     if (el.closest(".budget-table, #budget-table, [data-view='budget']")) return "budget";
     if (el.id && el.id.indexOf("sol-") === 0) return "solution";
     if (el.closest(".canvas-grid, #canvas-grid")) return "model_canvas";
