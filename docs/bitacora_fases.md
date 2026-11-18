@@ -75,6 +75,7 @@ prueban el mecanismo antes de que exista un proyecto, y porque cada una dejó in
 | 2026-11-18 | Generadores en copia limpia: 23 generadores y validadores | subagente general (rol usuario) | profe | `audit/fase-b-generadores.md` |
 | 2026-11-18 | Web demo en copia limpia: identidad, paleta, sitio | subagente general (rol usuario) | profe | `audit/fase-c-webdemo.md` |
 | 2026-11-18 | Cadena completa con proyecto de prueba y auditoría de cierre | profe | profe | `audit/informe-auditoria-exhaustiva.md` |
+| 2026-11-18 | Medición en navegador real: piso de lectura móvil, caché de la hoja y verificador de fases | profe | navegador (Chrome, instancia limpia) | `audit/g3-390.png`, `audit/g3-1440.png` |
 
 Lo que encontró la prueba de novato y cómo se cerró:
 
