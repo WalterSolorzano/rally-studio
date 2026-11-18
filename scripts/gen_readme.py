@@ -81,7 +81,7 @@ Este repositorio contiene la arquitectura completa de ingenieria, documentacion 
 - {check_file_status("brand/palette.json")} **Identidad y Tokens:** `brand/palette.json` y `brand/tokens.css` (Contraste WCAG AA).
 - {check_file_status("research/claims.json")} **Evidencia e Investigacion:** `research/claims.json` con fuentes verificables.
 - {check_file_status("docs/pautado_draft.docx")} **Reporte Pautado Oficial:** `docs/pautado_draft.docx` (limite estricto de caracteres).
-- {check_file_status("budget/budget.xlsx")} **Presupuesto Mayorista:** `budget/budget.xlsx` ($4,000 - $6,000 USD con enlaces y flete).
+- {check_file_status("budget/budget.xlsx")} **Presupuesto Mayorista:** `budget/budget.xlsx` ($4,000 - $6,000 USD con enlaces y cantidades del canvas).
 - {check_file_status("docs/canvas.md")} **Modelo Canvas:** `docs/canvas.md` coherente con costos y propuesta de valor.
 - {check_file_status("docs/bibliography.md")} **Referencias APA 7:** `docs/bibliography.md` con declaracion etica de uso de IA.
 - {check_file_status("script/script.md")} **Guion de Produccion:** `script/script.md` estructurado en 4 actos (120s exactos).

@@ -126,6 +126,8 @@
     letter-spacing:.004em;text-shadow:0 2px 20px #000}
   .tel-scroll p.leido{opacity:.3}
   .tel-scroll p.ahora{color:#fff}
+  .tel-scroll .w.dicho{color:var(--faint)}
+  .tel-scroll .w.ahora{color:var(--cyan)}
   .tel-hud{position:relative;z-index:3;border-top:1px solid var(--line);background:#000b;padding:9px 13px;
     display:flex;align-items:center;gap:12px;font-size:12px;min-height:42px}
   .tel-hud .now{font-family:var(--mono);color:var(--ink);white-space:nowrap;letter-spacing:.04em}
@@ -529,12 +531,16 @@ function pintarTel() {
     ? Math.min(1, MIC.dicho / TEL.pal.length)
     : Math.min(1, Math.max(0, (TEL.t - b.ini) / Math.max(0.1, b.fin - b.ini)));
   const maxScroll = Math.max(0, sc.scrollHeight - caja.clientHeight);
-  if (MIC.on && TEL.pal.length) {
-    const k = Math.min(TEL.pal.length - 1, MIC.dicho);
+  // La palabra en curso se marca siempre: con micro la manda la voz, sin micro
+  // la manda el reloj. Si solo se marcara el parrafo, rodar no se veria avanzar.
+  const dicho = MIC.on && TEL.pal.length
+    ? MIC.dicho
+    : Math.floor(fracTexto * TEL.pal.length);
+  if (TEL.pal.length) {
+    const k = Math.min(TEL.pal.length - 1, dicho);
     TEL.pal.forEach((p, i) => {
-      p.el.className = "w" + (i < MIC.dicho ? " dicho" : i === k ? " ahora" : "");
+      p.el.className = "w" + (i < dicho ? " dicho" : i === k ? " ahora" : "");
     });
-    $$("p", sc).forEach(p => p.className = "");
   } else {
     const ps = sc.children;
     if (ps.length) {

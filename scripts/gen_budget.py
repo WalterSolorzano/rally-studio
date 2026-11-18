@@ -19,6 +19,21 @@ BUDGET_XLSX = pathlib.Path("budget/budget.xlsx")
 BRIEF_JSON = pathlib.Path("brief.json")
 STATE_JSON = pathlib.Path("dashboard/data/state.json")
 
+# Regla de skills/presupuesto: el presupuesto es de lanzamiento, no de importacion.
+# Una fila de aduana hace que el jurado lea un estudio de importacion y descuadra
+# las cifras contra lo que el equipo puede comprar de verdad.
+LINEAS_PROHIBIDAS = ("flete", "arancel", "aduan", "importaci")
+
+
+def filas_prohibidas(items):
+    """Devuelve los nombres de partida que no son cosas que se compran."""
+    malas = []
+    for it in items:
+        texto = (str(it.get("element", "")) + " " + str(it.get("description", ""))).lower()
+        if any(w in texto for w in LINEAS_PROHIBIDAS):
+            malas.append(str(it.get("element", "")))
+    return malas
+
 
 def con_estado_vivo(items):
     """La tabla de la ventana manda: si el equipo edito ahi, el Excel lo respeta.
@@ -58,6 +73,14 @@ def main(argv=None):
         sys.exit(1)
 
     items = con_estado_vivo(json.loads(BUDGET_JSON.read_text(encoding="utf-8-sig")))
+    malas = filas_prohibidas(items)
+    if malas:
+        print(
+            "ALTO: hay partidas de importacion en el presupuesto (" + " | ".join(malas) + "). "
+            "Flete, aranceles, aduanas y tramites no son cosas que se compran: quitalas de "
+            "budget.json y de la tabla de la ventana. budget/budget.xlsx se queda como esta."
+        )
+        return 1
     brief = json.loads(BRIEF_JSON.read_text(encoding="utf-8-sig")) if BRIEF_JSON.exists() else {}
     if not args.si and (
         not (brief.get("project_name") and brief.get("team_name")) or not items

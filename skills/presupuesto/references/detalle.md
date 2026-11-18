@@ -19,7 +19,9 @@
   `pago_unico` (equipo/material que se compra una vez), `suscripcion`
   (plan anual/mensual), `salario` (mano de obra por horas), `servicio`
   (trabajo contratado por pieza: impresión 3D, maquila), `logistica`
-  (flete, arancel, transporte).
+  (transporte local dentro del piloto; nunca flete internacional, arancel,
+  aduana ni trámite: esas filas hacen que el jurado lea un estudio de
+  importación).
 - En filas `salario`: `units` = meses de contrato y `unit_cost` = salario
   mensual completo (contrato permanente; nunca por hora).
 - `unit_cost_nio` en Nacional, `unit_cost_usd` en Latam (el campo genérico

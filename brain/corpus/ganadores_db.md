@@ -129,7 +129,7 @@
 
 ### budget
 
-- **key rule**: Rango estricto $4,000–$6,000 USD de puesta en marcha. URLs reales de mayoristas (Alibaba/AliExpress/LCSC). Línea obligatoria de flete/aranceles (15-20%).
+- **key rule**: Rango estricto $4,000–$6,000 USD de puesta en marcha. URLs reales de mayoristas (Alibaba/AliExpress/LCSC). Sin línea de flete, aranceles ni aduanas: el presupuesto es de lanzamiento, no de importación; esa línea descuadra y resta.
 
 #### winning cases
 

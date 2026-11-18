@@ -82,7 +82,9 @@ mezclan monedas en la misma tabla.
 10. **Cantidad justificada.** Un `units` grande (p. ej. 10 nodos) solo pasa si
     `nota` explica el porqué: cobertura del sitio piloto, escenario de rescate,
     BOM del modeler o mínimo viable de la red. La cantidad no se elige "para
-    cuadrar con el rango".
+    cuadrar con el rango". La fuente de la cantidad es el canvas
+    (`model_canvas`, p. ej. "25 colmenas") o el BOM: si el número no sale de
+    ahí, es inventado.
 11. **Sin obra indirecta ni herramientas.** No van filas de "flete y
     aranceles" ni "herramienta del taller": los presupuestos de los
     ganadores no las incluyen. En su lugar van **personas**: `tipo: salario`
