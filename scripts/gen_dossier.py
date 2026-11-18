@@ -42,6 +42,11 @@ RETOS: list = []
 PDF = HTML = DOCX = XLSX = Path("dossier.pdf")
 
 
+def total_retos() -> str:
+    """Cuantos retos trae el JSON, con dos digitos: el dossier no siempre es de nueve."""
+    return f"{len(RETOS):02d}"
+
+
 NAVY = "0D1B35"
 COBALT = "0866F5"
 CYAN = "0284C7"
@@ -147,7 +152,7 @@ def html_retos() -> str:
             f'<div class="num">{r["id"]}</div>'
             f'<div class="hdr">'
             f'<h2>{e(r["titulo"])}</h2>'
-            f'<div class="cat">{e(r["categoria"])} · {r["id"]}/09</div>'
+            f'<div class="cat">{e(r["categoria"])} · {r["id"]}/{total_retos()}</div>'
             f'</div>'
             f'</div>'
             f'<p class="desc">{e(r["descripcion"])}</p>'
@@ -303,7 +308,7 @@ def _docx_reto(doc, api, r):
     p(r["titulo"], 21, True, color=azul, after=4)
     par = doc.add_paragraph()
     par.paragraph_format.space_after = Pt(8)
-    chip = par.add_run(f" {r['categoria'].upper()} · RETO {r['id']}/09 ")
+    chip = par.add_run(f" {r['categoria'].upper()} · RETO {r['id']}/{total_retos()} ")
     chip.bold = True
     chip.font.name = "Consolas"
     chip.font.size = Pt(7.5)
