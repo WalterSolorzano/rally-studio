@@ -125,4 +125,4 @@ table.datos.compact td { padding: 1.3mm 0; font-size: 8.2pt; }
 .comentarios { margin-top: 5mm; border-top: 2px solid #0D1B35; padding-top: 3mm; break-inside: avoid; }
 .comentarios .t { font-family: 'Mono'; font-size: 7.8pt; font-weight: 600; letter-spacing: .14em; color: #0866F5; text-transform: uppercase; }
 .comentarios .h { font-size: 7.8pt; color: #5C7193; margin-top: 1mm; margin-bottom: 2mm; }
-.comentarios .linea { border-bottom: 1px solid #DCE7F5; height: 9.5mm; }
+.comentarios .linea { border-bottom: 1px solid #DCE7F5; height: 8.6mm; }

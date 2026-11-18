@@ -133,13 +133,15 @@ def test_que_es_rango_palabras_rechaza_largo(tmp_path: Path):
 
 @pytest.mark.skipif(shutil.which("chrome") is None and not gen_dossier.CHROME.exists(),
                     reason="sin Chrome no se puede comprobar el PDF")
-def test_pdf_tres_paginas_por_reto(datos: Path, tmp_path: Path):
+def test_pdf_dos_paginas_por_reto_sin_huecos(datos: Path, tmp_path: Path):
     fitz = pytest.importorskip("fitz")
     destino = tmp_path / "dossier.pdf"
     assert gen_dossier.main(["--json", str(datos), "--pdf", str(destino)]) == 0
 
     documento = fitz.open(str(destino))
-    assert documento.page_count == 3
+    assert documento.page_count == 2
     texto = "".join(p.get_text() for p in documento)
     assert texto.lower().count("en la pr") >= 2
+    # Ninguna pagina se queda casi vacia: el reto se lee de corrido.
+    assert min(len(p.get_text().strip()) for p in documento) > 500
     assert sum(len(p.get_images()) for p in documento) == 3

@@ -73,13 +73,6 @@ def e(texto) -> str:
 
 def html_solucion(etiqueta: str, prop: dict, real: str = "", compacto: bool = False) -> str:
     pasos = "".join(f"<li>{e(p)}</li>" for p in prop["como"])
-    tabla = (
-        f'<table class="datos{" compact" if compacto else ""}">'
-        f'<tr><td class="k">Beneficiario</td><td>{e(prop["beneficiario"])}</td></tr>'
-        f'<tr><td class="k">Componentes</td><td>{e(", ".join(prop["componentes"]))}</td></tr>'
-        f'<tr><td class="k">Costo estimado</td><td>{e(prop["costo"])}</td></tr>'
-        f"</table>"
-    )
     return (
         f'<div class="sol{" b" if compacto else ""}">'
         f'<div class="sol-head">'
@@ -89,15 +82,9 @@ def html_solucion(etiqueta: str, prop: dict, real: str = "", compacto: bool = Fa
         f'<p class="what">{e(prop["que_es"])}</p></div>'
         f'</div>'
         f'<div class="sub">Cómo funciona</div><ol class="pasos">{pasos}</ol>'
-        f'<div class="sub">Datos de la solución</div>{tabla}'
         + (f'<p class="real"><span class="k">En la práctica</span> {e(real)}</p>' if real else "")
         + f"</div>"
     )
-
-
-def html_metricas(titulo: str, lista: list[str]) -> str:
-    items = "".join(f"<li>{e(m)}</li>" for m in lista)
-    return f'<div class="mgroup"><div class="mname">{e(titulo)}</div><ol class="pasos">{items}</ol></div>'
 
 
 def clase_insignia(nombre: str, tag: str) -> str:
@@ -159,8 +146,6 @@ def html_retos() -> str:
             + f'</div>'
             for a in r["analogias"]
         )
-        metricas = html_metricas(r["propuesta"]["nombre"], r["propuesta"]["metricas"])
-        metricas += html_metricas(r["alterna"]["nombre"], r["alterna"]["metricas"])
         partes.append(
             f'<section class="reto">'
             f'<div class="intro">'
@@ -179,11 +164,10 @@ def html_retos() -> str:
             f'{html_solucion("Opción 01", r["propuesta"], r["realidad"]["a"])}'
             f'{html_solucion("Reto " + r["id"] + " · Opción 02", r["alterna"], r["realidad"]["b"], compacto=True)}'
             f'{"<h3>Detalles que suman</h3><div class=\"detalles\">" + detalles + "</div>" if detalles else ""}'
-            f'<h3>Métricas para demostrar en el prototipo</h3>{metricas}'
             f'<h3>Señal que se repite en los ganadores</h3>'
             f'<div class="senal">{e(r["senal"])}</div>'
             f'<h3>Precedentes por tipo de solución</h3>{comun}{analogias}'
-            f'<div class="pitch"><div class="t">Pitch de 60 segundos · Opción 01</div><p>{e(r["pitch"])}</p></div>'
+            f'<div class="pitch"><div class="t">Pitch de 60 segundos</div><p>{e(r["pitch"])}</p></div>'
             f'<div class="comentarios">'
             f'<div class="t">Comentarios · Reto {r["id"]}</div>'
             f'{"".join("<div class=\'linea\'></div>" for _ in range(4))}'
