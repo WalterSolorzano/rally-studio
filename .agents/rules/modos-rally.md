@@ -35,3 +35,19 @@ El modo manda `brief.json` → `rally_type`. Nunca asumas: si está vacío, preg
 - Mezclar modos: presupuesto en córdobas para jurado internacional, o siglas del PNDH en Latam.
 - Escribir "Nicaragua" como único mercado en Latam.
 - Escribir una solución genérica en Nacional sin municipio ni actor local.
+
+## Ganadores: tres cosas distintas, nunca "nacionales" a secas
+
+| Cómo se llama | Qué es | Dónde vive |
+|---|---|---|
+| Podio internacional del Rally Latinoamericano | Ganadores continentales por edición (2017–2026) | `ganadores_latam_internacional.md` |
+| Ronda nacional del Rally Latinoamericano | Clasificación por país de la **misma** competencia (41 filas de Nicaragua); un archivo por año | `ganadores_latam_instancia_nacional.md` (+ `…_<año>.md`) |
+| Rally Nacional Nicaragua Innova | Certamen **distinto** (2023+, 24 h, categorías Tecnológica/Social/Procesos u Organizacional) | `informe_investigacion.md` §3 |
+
+- Escribe siempre cuál de los tres es: "ganadores nacionales" a secas es la frase
+  que provoca el error.
+- No cites un caso de Nicaragua Innova como antecedente del Latinoamericano, ni
+  al revés.
+- Un ganador de la ronda nacional de otro país es referencia regional, no prueba
+  local nicaragüense.
+- Detalle completo: `brain/corpus/glosario_instancias.md`.

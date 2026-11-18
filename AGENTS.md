@@ -25,7 +25,10 @@ investigación. Tu trabajo es **guiar al usuario, producir contenido y servirlo 
 2. Este archivo — las reglas.
 3. `knowledge/INDICE.md` — qué hay en el corpus y cuándo leerlo.
 4. Solo los documentos que el índice marque como relevantes.
-5. `GET http://localhost:8000/api/state` — lo que el usuario tiene ahora en la ventana.
+5. Si el tema está en el corpus pero no sabes en qué archivo, pregúntale al cerebro antes de
+   abrir a ciegas: `graphify query "<tema>" --graph brain/corpus/graphify-out/graph.json`
+   (local, sin coste). Devuelve los nodos que tratan el tema; de ahí, al archivo.
+6. `GET http://localhost:8000/api/state` — lo que el usuario tiene ahora en la ventana.
 
 Si un dato no está en el corpus, no lo inventes: dilo y pregúntalo.
 
@@ -94,6 +97,10 @@ python scripts/servir_propuesta.py --tab pautado --slot problema --kind text \
   y guion, interfaz mínima). Consúltalas cuando la tarea las toque.
 - **Ley de interfaz mínima** (`.agents/rules/ui-minima.md`): en toda pantalla, cero párrafos,
   cero datos técnicos visibles, icono antes que palabra, número solo si acciona una decisión.
+- **Candado de conexión** (`docs/tunel_seguro.svg`): el workbench se publica con
+  `cloudflared tunnel --url http://localhost:8000`, levantado una vez y sin reiniciar. El motor y los
+  datos se quedan en la máquina; la llave maestra sigue siendo solo local y la IP del visitante
+  se lee de `X-Forwarded-For` únicamente cuando la conexión viene de la propia máquina.
 
 ---
 
@@ -197,7 +204,7 @@ brand/tokens.css     → variables CSS derivadas de palette.json
 
 - [ ] brief.json completo y validado
 - [ ] docs/pautado_draft.docx — caracteres dentro del límite
-- [ ] budget/budget.xlsx — rango $4,000–$6,000 USD con URLs
+- [ ] budget/budget.xlsx — cada partida con URL; la banda $4,000–$6,000 USD es sugerencia, no ley
 - [ ] docs/canvas.md — coherente con presupuesto
 - [ ] script/script.md — guion 4 actos ≤ 120 s
 - [ ] assets/voice/narration.mp4 — locución MP4 (AAC) ≤ 120 s

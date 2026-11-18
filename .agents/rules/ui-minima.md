@@ -1,3 +1,8 @@
+---
+trigger: model_decision
+description: Aplica cuando la tarea produce o revisa una pantalla, un HTML o una pieza servida a la ventana, y hay que decidir qué texto, iconos o datos se ven.
+---
+
 # Ley de interfaz mínima
 
 Aplica a **toda** interfaz del repositorio: `dashboard/`, `site/`, `dossier_preview.html`,

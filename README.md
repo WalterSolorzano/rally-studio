@@ -1,16 +1,16 @@
-<div align="center">
+﻿<div align="center">
   <img src="assets/readme/hero.png" alt="Rally Studio abierto en el navegador, en la etapa de Pautado Oficial con conteo de caracteres por sección" width="100%">
 </div>
 
 # Rally Studio
 
-**El workbench local donde un rally de innovación se termina.** Trece etapas, dieciocho asistentes y un solo estado compartido: el pautado con conteo de caracteres, el presupuesto con proveedor, el guion de 120 segundos y el render 3D salen del mismo lugar, no de cinco pestañas distintas a las tres de la mañana.
+**El workbench local donde un rally de innovación se termina.** Trece etapas, dieciséis asistentes y un solo estado compartido: el pautado con conteo de caracteres, el presupuesto con proveedor, el guion de 120 segundos y el render 3D salen del mismo lugar, no de cinco pestañas distintas a las tres de la mañana.
 
 <p align="center">
   <img alt="web" src="https://img.shields.io/badge/web-localhost%3A8000-0866F5?style=flat-square&labelColor=0D1B35">
   <img alt="certámenes" src="https://img.shields.io/badge/cert%C3%A1menes-latam%2028h%20%C2%B7%20nacional%2024h-10213F?style=flat-square">
-  <img alt="asistentes" src="https://img.shields.io/badge/asistentes-18-2AA7AD?style=flat-square">
-  <img alt="pruebas" src="https://img.shields.io/badge/pruebas-6%2F6-1D4ED8?style=flat-square">
+  <img alt="asistentes" src="https://img.shields.io/badge/asistentes-16-2AA7AD?style=flat-square">
+  <img alt="pruebas" src="https://github.com/WalterSolorzano/rally-studio/actions/workflows/tests.yml/badge.svg?branch=main">
   <img alt="local" src="https://img.shields.io/badge/sin%20API%20obligatoria-100%25%20local-0D1B35?style=flat-square">
 </p>
 
@@ -52,10 +52,10 @@ La etapa siguiente se abre cuando el entregable existe. Si falta, la app lo dice
 
 ---
 
-## Dieciocho asistentes, cada uno con su oficio
+## Dieciséis asistentes, cada uno con su oficio
 
 <div align="center">
-  <img src="assets/readme/asistentes.png" alt="Los dieciocho asistentes del sistema, cada uno con su avatar y su nombre" width="100%">
+  <img src="assets/readme/asistentes.png" alt="Los dieciséis asistentes del sistema, cada uno con su avatar y su nombre" width="100%">
 </div>
 
 Se invocan a demanda desde `skills/` y se reflejan en `.opencode/skills` y `.agents/skills`. Investigan, cotizan, auditan y rompen la idea antes de que lo haga el jurado.
@@ -120,10 +120,10 @@ Presupuesto con unidades, precio unitario y enlace de respaldo, sin TIR ni VAN q
 ## El cerebro: todo lo que ya ganó
 
 <div align="center">
-  <img src="assets/readme/cerebro.png" alt="Mapa radial del corpus con la cobertura mapeada: 420 nodos, 29 comunidades, 4.715 sedes y banderas de los diez países con podios" width="100%">
+  <img src="assets/readme/cerebro.png" alt="Mapa radial del corpus: 36 documentos, 642 nodos, 650 relaciones y 129 comunidades; a la izquierda, 4.715 sedes, 363 podios nacionales y 58 internacionales de diez países" width="100%">
 </div>
 
-Rúbricas de los dos certámenes, casos ganadores, claims con fuente, anatomía del pitch y patrones que el jurado premia: **420 nodos, 732 aristas, 29 comunidades** compiladas en `graphify-out/`. Se consulta sin subir el proyecto a ninguna nube.
+Rúbricas de los dos certámenes, casos ganadores, claims con fuente, anatomía del pitch y patrones que el jurado premia: **36 documentos, 642 nodos, 650 relaciones y 129 comunidades** compilados en `brain/corpus/graphify-out/`. Cada documento cierra con un bloque `## Relacionado`, y de ahí salen las 44 relaciones que cruzan de un documento a otro; el resto (606) es jerarquía de títulos. Se consulta sin subir el proyecto a ninguna nube.
 
 <div align="center">
   <img src="assets/readme/cobertura.png" alt="Cobertura del corpus: 363 podios nacionales y 58 internacionales por país, 252 sedes con podio y el desglose de las 41 victorias nicaragüenses por universidad" width="100%">
@@ -156,6 +156,32 @@ Abre `http://localhost:8000/dashboard/`. La llave de acceso de la primera vez es
 python smoke.py        # 6/6: ffmpeg, duración, caracteres, cifras, arsenal, brief
 python arsenal.py check-todo   # antes de subir a SIRLI
 ```
+
+---
+
+## Conexión con candado, sin instalar certificados
+
+<div align="center">
+  <img src="docs/tunel_seguro.svg" alt="El candado baja y se cierra sobre el túnel entre el teléfono y la computadora del equipo" width="720">
+</div>
+
+El motor se queda en tu computadora —ahí vive la IA de `opencode`, ahí están los datos— y el candado lo pone un túnel de un solo comando. Los teléfonos abren un `https://` normal: no hay que instalar nada ni aceptar avisos de certificado.
+
+```powershell
+python scripts/rally_service.py                        # el workbench
+cloudflared tunnel --url http://localhost:8000         # la puerta con candado
+```
+
+La segunda consola imprime una dirección `https://algo.trycloudflare.com`: esa va en el QR de invitación. La dirección es la misma mientras ese proceso siga vivo, así que se levanta una vez y no se toca; si se reinicia, sale una nueva y hay que volver a repartir el link desde `administrar`. Para una dirección fija de verdad, un túnel con nombre de Cloudflare y dominio propio.
+
+Reglas que el motor respeta aunque llegue por el túnel:
+
+- La **llave maestra sigue siendo solo local**: pedirla desde la dirección pública responde `llave-solo-local` (403). Se entra con ella en la computadora del servidor y de ahí salen las invitaciones.
+- La **IP real del visitante se lee de `X-Forwarded-For`**, pero solo cuando la conexión viene de la propia máquina —donde corre el túnel—; un vecino del WiFi no puede fingir ser local.
+- El **contador de sondas** y el **registro de descargas** siguen viendo a quién hay que anotar.
+- Cada persona necesita su usuario aprobado por el admin; el túnel no salta la aprobación.
+
+Si cambias de red (WiFi → datos), la sesión queda atada a la IP anterior: vuelve a entrar con tu clave. Con `RALLY_AI_USER_RATE_LIMIT=20` pones techo al gasto de IA por persona mientras el enlace está abierto.
 
 ---
 

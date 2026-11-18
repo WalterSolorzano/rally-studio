@@ -138,7 +138,44 @@ python3 scripts/rally_service.py
 
 ---
 
-## 8. Si algo falla
+## 8. Abrir el workbench con candado (túnel)
+
+<div align="center">
+  <img src="tunel_seguro.svg" alt="El candado baja y se cierra sobre el túnel entre el teléfono y la computadora" width="620">
+</div>
+
+El motor se queda en tu computadora: ahí vive la IA de `opencode` y ahí están `dashboard/data/` y los assets. El HTTPS lo pone un túnel, así que los teléfonos entran por una dirección `https://` normal sin instalar certificados.
+
+```powershell
+python scripts/rally_service.py
+cloudflared tunnel --url http://localhost:8000
+```
+
+La segunda consola imprime `https://algo.trycloudflare.com`. Esa dirección, con `?t=<invitación>`, es la que se comparte. Dura lo que dure el proceso: si se reinicia, cambia y hay que repartir el link otra vez. Para una dirección fija, túnel con nombre de Cloudflare y dominio propio.
+
+Qué cambia y qué no:
+
+| | Sin túnel | Con túnel |
+|---|---|---|
+| Cifrado | ninguno (texto plano en el WiFi) | HTTPS de extremo a extremo: navegador → túnel |
+| Llave maestra | solo desde la computadora | igual: el túnel devuelve `llave-solo-local` (403) |
+| IP del visitante | la del WiFi | la real, leída de `X-Forwarded-For` |
+| Datos y IA | en tu máquina | igual, en tu máquina |
+| Usuarios | con aprobación del admin | igual, la aprobación no se salta |
+
+Variables que conviene tocar al abrir el enlace:
+
+| Variable | Para qué |
+|---|---|
+| `RALLY_AI_USER_RATE_LIMIT=20` | techo de pedidos de IA por persona (por defecto 0 = sin techo) |
+| `RALLY_TRUST_PROXY=0` | desconfía de la cabecera del proxy (todo se ve como local) |
+| `RALLY_TRUST_PROXY=1` | fuerza a creer la cabecera aunque el túnel viva en otra máquina |
+
+La cabecera `X-Forwarded-For` solo se cree cuando la conexión viene de la propia máquina —que es donde corre el túnel—; un vecino del WiFi no puede hacerse pasar por local. Si alguien cambia de red (WiFi → datos), la sesión queda atada a la IP anterior: vuelve a entrar con su clave.
+
+---
+
+## 9. Si algo falla
 
 | Síntoma | Qué revisar |
 |---|---|
@@ -148,10 +185,13 @@ python3 scripts/rally_service.py
 | El servidor no responde | `python scripts/rally_service.py` a mano y mira la consola. ¿Puerto ocupado? |
 | La ventana no muestra propuestas | ¿Está el servidor Python levantado? Sin servidor, el buzón no existe (y la ventana lo avisa). |
 | `pip install` falla | Usa un entorno virtual: `python -m venv .venv` y actívalo. |
+| La llave maestra no abre desde el link del túnel | Es a propósito (`llave-solo-local`): se entra con ella en la computadora del servidor y de ahí salen las invitaciones. |
+| `cloudflared` no está | `winget install Cloudflare.cloudflared` y vuelve a abrir la consola. |
+| El link del túnel abrió y luego murió | Los túneles rápidos de Cloudflare cambian de dirección al reiniciar: vuelve a leer la consola. |
 
 ---
 
-## 9. Qué queda listo al terminar
+## 10. Qué queda listo al terminar
 
 - La IA sabe quién es, qué certamen corre y qué debe existir en cada una de las 13 etapas.
 - Sabe qué tocar (contenido y presentación) y qué no (el motor).

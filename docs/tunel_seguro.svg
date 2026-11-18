@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" width="720" height="320" role="img" aria-labelledby="t d">
+  <title id="t">Túnel HTTPS: el candado se cierra sobre la conexión</title>
+  <desc id="d">Un teléfono y la computadora del equipo se conectan por un túnel cifrado. El candado baja y se cierra, y la conexión queda protegida.</desc>
+  <style>
+    .bg { fill: #0b1220; }
+    .rail { fill: none; stroke: #334155; stroke-width: 2; stroke-dasharray: 8 10; animation: flow 1.6s linear infinite; }
+    .tube {
+      fill: none; stroke: #2dd4bf; stroke-width: 3; stroke-linecap: round;
+      stroke-dasharray: 420; stroke-dashoffset: 420;
+      animation: draw 6s ease-in-out infinite;
+    }
+    .body { fill: #fbbf24; opacity: 0; animation: apar 6s ease-in-out infinite; }
+    .shackle {
+      fill: none; stroke: #fbbf24; stroke-width: 6; stroke-linecap: round;
+      transform-box: fill-box; transform-origin: 50% 100%;
+      animation: cerrar 6s cubic-bezier(.2,1.4,.4,1) infinite;
+    }
+    .kh { fill: #0b1220; opacity: 0; animation: apar 6s ease-in-out infinite; }
+    .ring {
+      fill: none; stroke: #34d399; stroke-width: 3; opacity: 0;
+      transform-box: fill-box; transform-origin: 50% 50%;
+      animation: latir 6s ease-out infinite;
+    }
+    .nodo { fill: none; stroke: #94a3b8; stroke-width: 3; }
+    .pantalla { fill: #1e293b; }
+    .destello { fill: #64748b; animation: parpadeo 2.4s ease-in-out infinite; }
+    .rotulo { fill: #e2e8f0; font: 600 17px/1 "Segoe UI", system-ui, sans-serif; text-anchor: middle; }
+    .sub { fill: #4ade80; font: 700 15px/1 "Segoe UI", system-ui, sans-serif; text-anchor: middle; opacity: 0; animation: titulo 6s ease-in-out infinite; }
+    .chico { fill: #94a3b8; font: 500 13px/1 "Segoe UI", system-ui, sans-serif; text-anchor: middle; }
+
+    @keyframes flow { to { stroke-dashoffset: -36; } }
+    @keyframes draw { 0%,12% { stroke-dashoffset: 420; } 34%,88% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 420; } }
+    @keyframes apar { 0%,34% { opacity: 0; } 46%,92% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes cerrar {
+      0%,36% { transform: translateY(-9px) rotate(-16deg); opacity: 0; }
+      46% { transform: translateY(-9px) rotate(-16deg); opacity: 1; }
+      62%,92% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { opacity: 0; }
+    }
+    @keyframes latir {
+      0%,60% { opacity: 0; transform: scale(.7); }
+      72% { opacity: .9; transform: scale(1.35); }
+      92% { opacity: 0; transform: scale(1.7); }
+      100% { opacity: 0; }
+    }
+    @keyframes parpadeo { 0%,100% { opacity: .35; } 50% { opacity: 1; } }
+    @keyframes titulo { 0%,62% { opacity: 0; } 76%,92% { opacity: 1; } 100% { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) {
+      .rail, .tube, .body, .shackle, .kh, .ring, .destello, .sub { animation: none; }
+      .tube { stroke-dashoffset: 0; } .body, .shackle, .sub { opacity: 1; } .shackle { transform: none; }
+    }
+  </style>
+
+  <rect class="bg" x="0" y="0" width="720" height="320" rx="24"/>
+
+  <!-- túnel -->
+  <line class="rail" x1="190" y1="160" x2="530" y2="160"/>
+  <path class="tube" d="M190 160 H530"/>
+
+  <!-- teléfono -->
+  <rect class="nodo" x="86" y="96" width="86" height="128" rx="14"/>
+  <rect class="pantalla" x="98" y="112" width="62" height="88" rx="8"/>
+  <circle class="destello" cx="129" cy="212" r="3"/>
+  <text class="rotulo" x="129" y="252">Tu teléfono</text>
+
+  <!-- computadora del equipo -->
+  <rect class="nodo" x="548" y="104" width="122" height="86" rx="10"/>
+  <rect class="pantalla" x="560" y="116" width="98" height="62" rx="6"/>
+  <path class="nodo" d="M580 190 h58 l10 20 h-78 z"/>
+  <text class="rotulo" x="609" y="252">Tu compu</text>
+  <text class="chico" x="609" y="272">programa + IA + datos</text>
+
+  <!-- candado -->
+  <circle class="ring" cx="360" cy="152" r="34"/>
+  <path class="shackle" d="M344 146 v-12 a16 16 0 0 1 32 0 v12"/>
+  <rect class="body" x="338" y="144" width="44" height="34" rx="8"/>
+  <circle class="kh" cx="360" cy="158" r="4.5"/>
+  <path class="kh" d="M360 162 v8"/>
+
+  <text class="sub" x="360" y="220">https · conexión cifrada</text>
+</svg>
