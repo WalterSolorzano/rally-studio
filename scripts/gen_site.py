@@ -113,7 +113,12 @@ def tabla_costos(presupuesto) -> str:
         if not concepto:
             continue
         unidades = fila.get("units")
-        costo = fila.get("unit_cost") or fila.get("total") or ""
+        costo = (fila.get("unit_cost") or fila.get("unit_cost_usd")
+                 or fila.get("unit_cost_nio") or fila.get("total") or "")
+        if costo and fila.get("unit_cost_nio"):
+            costo = "%s C$" % costo
+        elif costo and fila.get("unit_cost_usd"):
+            costo = "%s USD" % costo
         partes = []
         if unidades:
             partes.append("%sx" % unidades)
@@ -140,11 +145,10 @@ def unidad_de_venta(brief: dict, presupuesto) -> str:
     declarada = (brief.get("unidad_venta") or "").strip()
     if declarada:
         return declarada
-    if isinstance(presupuesto, list) and presupuesto:
-        primero = presupuesto[0].get("element") or presupuesto[0].get("concept") or ""
-        if primero:
-            return "El cliente paga por: %s." % primero
-    return ""
+    # El primer renglon del presupuesto es un insumo, no lo que se vende:
+    # decia "El cliente paga por: Motor electrico de lavadora recuperado".
+    return ("[PENDIENTE] Qué compra el cliente y cada cuánto: el servicio, la pieza o el "
+            "uso. Sale de brief.json (unidad_venta).")
 
 
 def pasos(brief: dict) -> list[str]:
@@ -197,7 +201,9 @@ def construir(brief: dict, claims: list[dict], presupuesto) -> str:
     # El hero vende la solución; el bloque Problema describe la falla.
     # Si se usara el mismo texto, el hero no diría nada nuevo y el jurado
     # leería el diagnóstico dos veces.
-    promesa = frase(solucion_txt, 14)
+    # La promesa es la frase del proyecto, no un recorte: cortar la solucion a
+    # 14 palabras dejaba titulares cojos ("Un taller de barrio recibe los motores").
+    promesa = frase(brief.get("description_one_line") or "", 18) or frase(solucion_txt, 18)
     if not promesa:
         promesa = ("%s en %s" % (sector, ciudad)).strip() if (sector or ciudad) else ""
     if not promesa:
@@ -205,7 +211,12 @@ def construir(brief: dict, claims: list[dict], presupuesto) -> str:
             "brief.json sin solution ni sector/ciudad: el hero no puede repetir el problema."
         )
 
-    problema = frase(problema_txt, 40) or promesa
+    # Si falta la descripción del reto no se repite la promesa del hero: el
+    # bloque Problema quedaría diciendo lo mismo y el jurado lee dos veces el diagnóstico.
+    problema = frase(problema_txt, 40) or (
+        "[PENDIENTE] Describir el problema con un dato: qué se pierde, cuánta gente lo vive "
+        "y de dónde sale la cifra. Sale de brief.json (challenge_description) y de research/claims.json."
+    )
     fuente = claims[0]
 
     pasos_html = "".join(
