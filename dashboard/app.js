@@ -3647,7 +3647,7 @@ function renderViewTeam() {
 
           <!-- Columna Derecha: Previsualización de Identidad -->
           <div class="team-preview-panel">
-            <div style="font-size:11px; font-weight:800; letter-spacing:0.08em; color:var(--text-muted);  margin-bottom:22px;">
+            <div class="team-preview-caption" style="font-size:11px; font-weight:800; letter-spacing:0.08em; color:var(--text-muted);  margin-bottom:22px;">
               Previsualización de Identidad
             </div>
 
@@ -3680,7 +3680,7 @@ function renderViewTeam() {
               <div style="font-family:var(--font-ui); font-size:12px; font-weight:600; color:var(--text-muted);">
                 ${escapeHtml(state.university || '')}
               </div>
-              <div style="font-family:var(--font-ui); font-size:11px; font-weight:600; color:var(--text-muted); margin-top:4px;">
+              <div class="team-preview-rally" style="font-family:var(--font-ui); font-size:11px; font-weight:600; color:var(--text-muted); margin-top:4px;">
                 ${rallyProfile().name} ${rallyProfile().hours}h
               </div>
             </div>

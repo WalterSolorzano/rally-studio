@@ -6944,4 +6944,20 @@ body.rs-sheet-open { overflow: hidden; }
   .certamen-card-desc,
   .rchat-msg { font-size: 14px; line-height: 1.5; }
   #rchat-log p { font-size: 14px; line-height: 1.5; }
+  .logo-dropzone div,
+  .nav-locked-hint,
+  .team-step-grid .form-group span,
+  .team-preview-caption,
+  .team-preview-rally { font-size: 14px !important; line-height: 1.5; }
+  /* Un parrafo es prosa por definicion: en movil se lee, no se decora. */
+  .rs-view p { font-size: 14px !important; line-height: 1.55; }
+  .sol-hint,
+  .rs-challenge-meta,
+  .rs-progress-line,
+  .rs-action-title,
+  .rs-tile-title,
+  .timeline-next-desc,
+  .guardrail-row-title,
+  .ch-drop-title,
+  .ch-drop-hint { font-size: 14px !important; line-height: 1.5; }
 }

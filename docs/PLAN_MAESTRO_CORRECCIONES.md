@@ -490,11 +490,16 @@ Una corrida está completa solo si:
 - [ ] G2 verde: planta 60-30-10 generada desde el reto (no fija) y aplicada por pantalla.
       *(bloqueado: la planta se deriva de `challenge_id`, `category` y `ods_ids`; `brief.json` vacío)*
 - [x] G3 verde: cuerpo ≥14 px a 390 px, sin scroll horizontal, capturas tomadas.
-      *(verificado en navegador contra una instancia limpia: a 390 px el cuerpo mide 14 px, ningún
-      párrafo baja de 14 px y no hay desbordamiento horizontal; a 1440 px tampoco. Capturas
-      `audit/g3-390.png` y `audit/g3-1440.png`. `verificar_identidad.py` en verde: radios ≤18 px,
-      0 box-shadow, transiciones a 120 ms. El piso de lectura se declaró en `dashboard/style.css`
-      y el `?v=` de `dashboard/index.html` se subió para que el navegador no sirva la hoja vieja)*
+      *(recorridas en Chrome contra una instancia limpia las seis pestañas que el paquete en blanco
+      deja abrir —`certamen`, `resumen`, `team`, `identidad`, `challenges`, `cierre`—: a 390 px
+      `scrollWidth − clientWidth = 0` y cero párrafos bajo 14 px; a 1440 px tampoco. Capturas
+      `audit/tab-<pestaña>-390.png` y `-1440.png`. Los restos que quedan bajo 14 px son rótulos de
+      icono y cifras de tablero, excluidos por la regla del piso. El `?v=` de `style.css` se subió
+      y los textos con `style` inline de 11 px recibieron clase para poder subirlos en móvil)*
+      *(las siete pestañas restantes —solución, impacto, multi-IA, pautado, presupuesto, recursos,
+      canvas, guion, prototipo— no se abren sin `challenge_id`: `switchTab` aborta cuando
+      `target.level > getWorkflowStage()`, y sin proyecto ni retos cargados el nivel es 2. Es el
+      bloqueo por datos, no un defecto de layout)*
 - [ ] G4 verde: Rally Design generado y 3 rutas de marca servidas, 1 aceptada. *(el enlace ya abre
       Rally Design desde `renderViewIdentidad` —1 coincidencia en `dashboard/*.js`—; falta la ruta
       aceptada: bloqueado por datos del proyecto)*
