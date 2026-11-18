@@ -84,6 +84,23 @@ def test_coherencia_pasa_si_las_cifras_coinciden():
     assert coherencia.comparar({"guion": a, "pautado": b}) == []
 
 
+def test_coherencia_ignora_codigos_ods_id_de_reto_y_segundos_de_acto():
+    guion = coherencia.desde_texto("Acto 1 (20s) ODS 11 y ODS 13, reto DESAFIO_02.")
+    pautado = coherencia.desde_texto("Alineado al ODS 11.")
+    assert coherencia.comparar({"guion": guion, "pautado": pautado}) == []
+
+
+def test_coherencia_ignora_cifras_con_fuente_en_claims(monkeypatch):
+    monkeypatch.setattr(
+        coherencia,
+        "_cifras_de_claims",
+        lambda ruta=None: set(coherencia.desde_texto("560 desastres al año")),
+    )
+    a = coherencia.desde_texto("Cada año ocurren 560 desastres.")
+    b = coherencia.desde_texto("El alerta temprana cuesta menos.")
+    assert coherencia.comparar({"guion": a, "pautado": b}) == []
+
+
 def _docx_con_marcadores(ruta: pathlib.Path, impacto_chars: int = 10):
     import docx
 

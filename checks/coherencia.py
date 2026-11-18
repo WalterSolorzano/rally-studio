@@ -12,6 +12,7 @@ menores para no llenar la salida de ruido.
 """
 from __future__ import annotations
 
+import json
 import pathlib
 import re
 import sys
@@ -31,6 +32,11 @@ _ESTRUCTURAL = re.compile(
 )
 _HORA = re.compile(r"\b\d{1,2}:\d{2}(?::\d{2})?\b")
 _MARCADOR = re.compile(r"\{/?SEC_[A-Z_]+\}", re.IGNORECASE)
+# Lo que no es una cifra del pitch: codigos de ODS, ids de reto y el conteo de
+# segundos que el guion anota entre parentesis para cada acto.
+_CODIGO_ODS = re.compile(r"\bods\s*\d+(?:\s*(?:,|y|/)\s*\bods\s*\d+)*", re.IGNORECASE)
+_ID_RETO = re.compile(r"\b[A-ZÁÉÍÓÚÑ]+_\d+\b")
+_SEGUNDOS_ACTO = re.compile(r"\(\s*\d{1,3}\s*s\s*\)")
 
 # Un guion se escribe para ser escuchado, asi que sus cifras van con letra
 # ("treinta por ciento", "cuarenta motores"). Si solo se miran digitos, una
@@ -105,6 +111,9 @@ def extraer(texto: str) -> dict[str, dict]:
     """Devuelve {numero_canonico: {significativo, moneda, porcentaje, muestras}}."""
     texto = _HORA.sub(" ", texto)
     texto = _MARCADOR.sub(" ", texto)
+    texto = _CODIGO_ODS.sub(" ", texto)
+    texto = _ID_RETO.sub(" ", texto)
+    texto = _SEGUNDOS_ACTO.sub(" ", texto)
     texto = _cifras_habladas(texto)
     encontrados: dict[str, dict] = {}
     for match in _TOKEN_RE.finditer(texto):
@@ -165,8 +174,29 @@ def desde_archivo(ruta: pathlib.Path) -> dict[str, dict]:
     return desde_texto(ruta.read_text(encoding="utf-8", errors="replace"))
 
 
+def _cifras_de_claims(ruta: pathlib.Path | None = None) -> set[str]:
+    """Cifras citadas en research/claims.json: tienen fuente, no son invención.
+
+    El video puede sostener una cifra y el PDF sostener tres; eso no es la
+    contradicción que el jurado castiga. Solo se persigue el número que ningún
+    claim respalda.
+    """
+    ruta = ruta or pathlib.Path("research/claims.json")
+    if not ruta.exists():
+        return set()
+    try:
+        claims = json.loads(ruta.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return set()
+    cifras: set[str] = set()
+    for claim in claims if isinstance(claims, list) else []:
+        if isinstance(claim, dict):
+            cifras |= set(desde_texto(str(claim.get("stat") or "")))
+    return cifras
+
+
 def comparar(fuentes: dict[str, dict[str, dict]], ignorar: set[str] | None = None) -> list[dict]:
-    ignorar = ignorar or set()
+    ignorar = (ignorar or set()) | _cifras_de_claims()
     nombres = list(fuentes)
     if len(nombres) < 2:
         return []
