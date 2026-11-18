@@ -97,7 +97,7 @@ def html_solucion(etiqueta: str, prop: dict, real: str = "", compacto: bool = Fa
 
 def html_metricas(titulo: str, lista: list[str]) -> str:
     items = "".join(f"<li>{e(m)}</li>" for m in lista)
-    return f'<div class="mgroup"><div class="sub">{e(titulo)}</div><ol class="pasos">{items}</ol></div>'
+    return f'<div class="mgroup"><div class="mname">{e(titulo)}</div><ol class="pasos">{items}</ol></div>'
 
 
 def clase_insignia(nombre: str, tag: str) -> str:
@@ -125,26 +125,42 @@ def html_retos() -> str:
         )
         detalles = "".join(
             f'<div class="detalle"><div class="k">{e(k)}</div><p>{e(t)}</p></div>'
-            for k, t in r["detalles"]
+            for k, t in r["detalles"] if str(t).strip()
         )
-        insignias = "".join(
-            f'<span class="insignia {clase_insignia(n, t)}">'
-            f'<span class="n">{e(n)}</span><span class="t">{e(t)}</span></span>'
-            for n, t in r["insignias"]
-        )
+        vistas = set()
+        insignias = ""
+        for n, t in r["insignias"]:
+            if (n, t) in vistas:
+                continue
+            vistas.add((n, t))
+            insignias += (
+                f'<span class="insignia {clase_insignia(n, t)}">'
+                f'<span class="n">{e(n)}</span><span class="t">{e(t)}</span></span>'
+            )
+        # Lo que comparten todos los precedentes se dice una vez, no en cada ficha.
+        unos = {a["que_hicieron"] for a in r["analogias"]}
+        parecidos = {a["por_que"] for a in r["analogias"]}
+        bases = {a["proyecto"].rsplit(" · ", 1)[0] for a in r["analogias"]}
+        base_comun = next(iter(bases)) if len(bases) == 1 else ""
+        comun = ""
+        if len(r["analogias"]) > 1 and len(unos) == 1:
+            comun += f'<p class="comun"><b>Qué hicieron</b> {e(next(iter(unos)))}</p>'
+        if len(r["analogias"]) > 1 and len(parecidos) == 1:
+            comun += f'<p class="comun"><b>Por qué se parece</b> {e(next(iter(parecidos)))}</p>'
         analogias = "".join(
             f'<div class="analogia">'
-            f'<div class="top"><div class="id">{a["year"]} · {e(a["equipo"])}</div>'
-            f'<div class="puesto">{e(a["puesto"])}</div></div>'
-            f'<div class="proy">{e(a["proyecto"])}</div>'
-            f'<p class="txt"><span class="lbl-in">Qué hicieron · </span>{e(a["que_hicieron"])}</p>'
-            f'<p class="txt"><span class="lbl-in">Por qué se parece · </span>{e(a["por_que"])}</p>'
-            + (f'<div class="link"><span>Video · </span>{e(a["video"])}</div>' if a["video"] else "") +
-            f'</div>'
+            f'<div class="top"><div class="id">{a["year"]} · {e(a["equipo"])}'
+            + (f' · {e(a["proyecto"].rsplit(" · ", 1)[1])}' if base_comun and " · " in a["proyecto"] else "")
+            + f'</div><div class="puesto">{e(a["puesto"])}</div></div>'
+            + ("" if base_comun else f'<div class="proy">{e(a["proyecto"])}</div>')
+            + ("" if len(unos) == 1 else f'<p class="txt">{e(a["que_hicieron"])}</p>')
+            + ("" if len(parecidos) == 1 else f'<p class="txt">{e(a["por_que"])}</p>')
+            + (f'<div class="link"><span>Video · </span>{e(a["video"])}</div>' if a["video"] else "")
+            + f'</div>'
             for a in r["analogias"]
         )
-        metricas = html_metricas(f"Opción 01 · {r['propuesta']['nombre']}", r["propuesta"]["metricas"])
-        metricas += html_metricas(f"Opción 02 · {r['alterna']['nombre']}", r["alterna"]["metricas"])
+        metricas = html_metricas(r["propuesta"]["nombre"], r["propuesta"]["metricas"])
+        metricas += html_metricas(r["alterna"]["nombre"], r["alterna"]["metricas"])
         partes.append(
             f'<section class="reto">'
             f'<div class="intro">'
@@ -156,30 +172,21 @@ def html_retos() -> str:
             f'</div>'
             f'</div>'
             f'<p class="desc">{e(r["descripcion"])}</p>'
-            f'<div class="ods"><h3 style="margin-top:0">ODS elegidos y por qué</h3><div class="ods-grid">{ods}</div>'
+            f'<div class="ods"><h3>ODS elegidos y por qué</h3><div class="ods-grid">{ods}</div>'
             f'<div class="insignias"><span class="lbl">Insignias que aplican</span>{insignias}</div></div>'
             f'</div>'
             f'<h3>Dos soluciones posibles para este reto</h3>'
             f'{html_solucion("Opción 01", r["propuesta"], r["realidad"]["a"])}'
             f'{html_solucion("Reto " + r["id"] + " · Opción 02", r["alterna"], r["realidad"]["b"], compacto=True)}'
-            f'<h3>Detalles que suman</h3><div class="detalles">{detalles}</div>'
-            f'<h3>Cadena de razonamiento</h3>'
-            f'<table class="cadena">'
-            f'<tr><td class="k">Problema</td><td>{e(r["cadena"]["problema"])}</td></tr>'
-            f'<tr><td class="k">Causa raíz</td><td>{e(r["cadena"]["causa_raiz"])}</td></tr>'
-            f'<tr><td class="k">Insight</td><td>{e(r["cadena"]["insight"])}</td></tr>'
-            f'<tr><td class="k">Solución</td><td>{e(r["cadena"]["solucion"])}</td></tr>'
-            f'<tr><td class="k">Métrica</td><td class="metric">{e(r["cadena"]["metrica"])}</td></tr>'
-            f'</table>'
+            f'{"<h3>Detalles que suman</h3><div class=\"detalles\">" + detalles + "</div>" if detalles else ""}'
             f'<h3>Métricas para demostrar en el prototipo</h3>{metricas}'
             f'<h3>Señal que se repite en los ganadores</h3>'
             f'<div class="senal">{e(r["senal"])}</div>'
-            f'<h3>Precedentes por tipo de solución</h3>{analogias}'
+            f'<h3>Precedentes por tipo de solución</h3>{comun}{analogias}'
             f'<div class="pitch"><div class="t">Pitch de 60 segundos · Opción 01</div><p>{e(r["pitch"])}</p></div>'
             f'<div class="comentarios">'
             f'<div class="t">Comentarios · Reto {r["id"]}</div>'
-            f'<div class="h">Anoten aquí sus ideas, dudas y ajustes a las propuestas.</div>'
-            f'{"".join("<div class=\'linea\'></div>" for _ in range(10))}'
+            f'{"".join("<div class=\'linea\'></div>" for _ in range(4))}'
             f'</div>'
             f'</section>'
         )
