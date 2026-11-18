@@ -624,6 +624,13 @@ REGLAS DE PRECIO
 - Precios creíbles: ni locos ni regalados; si es digital, membresías anuales o planes por uso.
 - Coherencia total con el presupuesto de arriba (mismos números).
 
+REGLAS DE CADA CUADRANTE (cada uno responde su pregunta, no la del vecino)
+- Segmentos: personas u organizaciones concretas (meliponicultores, cooperativas, técnicos de campo, profesores, estudiantes). No tareas ni hábitos ("revisan colmena por colmena" es una actividad, no un segmento).
+- Recursos clave: lo que el proyecto necesita para funcionar (diseño, firmware, biblioteca de datos, colmenas prestadas). No repitas al equipo ni cites el presupuesto como recurso.
+- Socios clave: quién coopera y qué aporta. Nada de "plataformas citadas en el documento".
+- Sin muletillas de referencia interna: prohibido "citado en documento", "ver presupuesto", "según el pautado".
+- Veto de redacción de skills/_comun/patrones-ia.md: sin adjetivos de relleno, sin "no es solo X, es Y", sin tríadas, sin cierre "en conclusión". Si una frase no trae un dato, se borra.
+
 Nuestro borrador (para que lo compares y lo mejores, no lo repitas):
 ${JSON.stringify(canvas, null, 2)}`;
 }
@@ -705,6 +712,151 @@ function resetCanvasToBase() {
   showToast("Canvas restablecido a las guías base.");
 }
 
+function downloadCanvasPng() {
+  const canvasData = (state.model_canvas && typeof state.model_canvas === "object") ? state.model_canvas : {};
+  const cs = getComputedStyle(document.documentElement);
+  const varOf = (name, fb) => (cs.getPropertyValue(name).trim() || fb);
+  const primary = varOf("--color-primary", "#1f2937");
+  const accent = varOf("--color-accent", "#b45309");
+  const papel = varOf("--bg-surface", "#ffffff");
+  const mesa = varOf("--bg-subtle", "#f4f5f7");
+  const tinta = varOf("--text-title", "#0f172a");
+  const cuerpo = varOf("--text-body", "#334155");
+  const tenue = varOf("--border-light", "#e2e8f0");
+  const fuente = '"Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif';
+  const mono = '"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace';
+
+  const rgb = (h) => {
+    const x = String(h || "").replace("#", "");
+    if (!/^[0-9a-fA-F]{6}$/.test(x)) return [31, 41, 55];
+    return [0, 2, 4].map(i => parseInt(x.slice(i, i + 2), 16));
+  };
+  const mezcla = (a, b, pctA) => {
+    const A = rgb(a), B = rgb(b);
+    return `rgb(${A.map((v, i) => Math.round(v * (pctA / 100) + B[i] * (1 - pctA / 100))).join(",")})`;
+  };
+
+  const slots = [
+    { key: "socios", n: 1, title: "Socios Clave", c: 1, r: 1, cw: 1, rh: 2, pct: 100 },
+    { key: "actividades", n: 2, title: "Actividades Clave", c: 2, r: 1, cw: 1, rh: 1, pct: 80 },
+    { key: "propuesta", n: 3, title: "Propuesta de Valor", c: 3, r: 1, cw: 1, rh: 2, pct: 0 },
+    { key: "relaciones", n: 4, title: "Relaciones con Clientes", c: 4, r: 1, cw: 1, rh: 1, pct: 60 },
+    { key: "segmentos", n: 5, title: "Segmentos de Clientes", c: 5, r: 1, cw: 1, rh: 2, pct: 50 },
+    { key: "recursos", n: 6, title: "Recursos Clave", c: 2, r: 2, cw: 1, rh: 1, pct: 40 },
+    { key: "canales", n: 7, title: "Canales", c: 4, r: 2, cw: 1, rh: 1, pct: 30 },
+    { key: "costes", n: 8, title: "Estructura de Costes", c: 1, r: 3, cw: 2, rh: 1, pct: 20 },
+    { key: "ingresos", n: 9, title: "Fuentes de Ingresos", c: 3, r: 3, cw: 3, rh: 1, pct: 10 }
+  ];
+
+  const W = 1800, PAD = 40, GAP = 10, BOARD_PAD = 14, HEAD = 92;
+  const colW = (W - PAD * 2 - BOARD_PAD * 2 - GAP * 4) / 5;
+  const rowH = 300;
+  const mesaH = rowH * 3 + GAP * 2 + BOARD_PAD * 2;
+  const H = PAD + HEAD + mesaH + PAD;
+
+  const cv = document.createElement("canvas");
+  cv.width = W; cv.height = H;
+  const g = cv.getContext("2d");
+  g.fillStyle = papel; g.fillRect(0, 0, W, H);
+
+  // Encabezado: el mismo nombre que el proyecto, no un título inventado.
+  g.fillStyle = tinta;
+  g.font = `800 34px ${fuente}`;
+  g.fillText(String(state.project_name || state.challenge_title || "Modelo de negocio"), PAD, PAD + 30);
+  g.fillStyle = cuerpo;
+  g.font = `400 15px ${fuente}`;
+  g.fillText("Modelo de negocio · " + (state.team_name || "equipo"), PAD, PAD + 56);
+  g.fillStyle = mono;
+  g.font = `700 12px ${mono}`;
+  g.textAlign = "right";
+  g.fillText(String(state.city || ""), W - PAD, PAD + 56);
+  g.textAlign = "left";
+
+  const boardY = PAD + HEAD;
+  g.fillStyle = mesa;
+  g.strokeStyle = tenue; g.lineWidth = 1;
+  g.beginPath();
+  if (g.roundRect) g.roundRect(PAD, boardY, W - PAD * 2, mesaH, 14);
+  else g.rect(PAD, boardY, W - PAD * 2, mesaH);
+  g.fill(); g.stroke();
+
+  const cortar = (texto, ancho, font) => {
+    g.font = font;
+    const palabras = String(texto).split(/\s+/).filter(Boolean);
+    const lineas = [];
+    let linea = "";
+    for (const p of palabras) {
+      const prueba = linea ? linea + " " + p : p;
+      if (g.measureText(prueba).width > ancho && linea) { lineas.push(linea); linea = p; }
+      else linea = prueba;
+    }
+    if (linea) lineas.push(linea);
+    return lineas;
+  };
+
+  slots.forEach(slot => {
+    const x = PAD + BOARD_PAD + (slot.c - 1) * (colW + GAP);
+    const y = boardY + BOARD_PAD + (slot.r - 1) * (rowH + GAP);
+    const w = colW * slot.cw + GAP * (slot.cw - 1);
+    const h = rowH * slot.rh + GAP * (slot.rh - 1);
+    const color = slot.pct === 0 ? accent : mezcla(primary, accent, slot.pct);
+    const fondo = slot.key === "propuesta" ? mezcla(papel, accent, 93) : papel;
+
+    g.fillStyle = fondo;
+    g.strokeStyle = tenue; g.lineWidth = 1;
+    g.beginPath();
+    if (g.roundRect) g.roundRect(x, y, w, h, 10); else g.rect(x, y, w, h);
+    g.fill(); g.stroke();
+
+    g.save();
+    g.beginPath();
+    if (g.roundRect) g.roundRect(x, y, w, h, 10); else g.rect(x, y, w, h);
+    g.clip();
+    g.fillStyle = color;
+    g.fillRect(x, y, w, 3);
+    g.restore();
+
+    // Número en placa, como en la mesa.
+    g.fillStyle = color;
+    g.beginPath();
+    if (g.roundRect) g.roundRect(x + 15, y + 16, 21, 14, 4); else g.rect(x + 15, y + 16, 21, 14);
+    g.fill();
+    g.fillStyle = papel;
+    g.font = `700 10px ${mono}`;
+    g.textAlign = "center";
+    g.fillText(String(slot.n), x + 25.5, y + 26.5);
+    g.textAlign = "left";
+
+    g.fillStyle = tinta;
+    g.font = `800 13px ${fuente}`;
+    const titulo = cortar(slot.title, w - 60, `800 13px ${fuente}`)[0];
+    g.fillText(titulo, x + 44, y + 27);
+
+    const texto = String(canvasData[slot.key] || "").trim();
+    g.fillStyle = texto ? cuerpo : tenue;
+    g.font = `400 13px ${fuente}`;
+    const lineas = cortar(texto || "Sin contenido todavía.", w - 30, `400 13px ${fuente}`);
+    const alto = 20.8;
+    const tope = Math.max(1, Math.floor((h - 56) / alto));
+    lineas.slice(0, tope).forEach((l, j) => g.fillText(l, x + 15, y + 56 + j * alto));
+    if (lineas.length > tope) g.fillText("…", x + 15, y + 56 + tope * alto);
+  });
+
+  const nombre = (state.project_name || "canvas").replace(/[^\w\-]+/g, "_");
+  cv.toBlob(blob => {
+    if (!blob) { showToast("No se pudo dibujar el canvas."); return; }
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `Canvas_${nombre}.png`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 30000);
+    showToast("Canvas descargado en PNG.");
+  }, "image/png");
+}
+
 function renderViewCanvas() {
   const preset = CANVAS_PRESETS.find(p => p.id === getCurrentCanvasPresetId()) || CANVAS_PRESETS[0];
   const canvas = (state.model_canvas && typeof state.model_canvas === "object") ? state.model_canvas : {};
@@ -739,6 +891,9 @@ function renderViewCanvas() {
           ${SVG.copy} Contexto para IA
         </button>
         <button class="btn-secondary" onclick="resetCanvasToBase()" title="Vacía los nueve cuadrantes">Restablecer</button>
+        <button class="btn-secondary" onclick="downloadCanvasPng()" title="Descarga el canvas como imagen PNG con la paleta del proyecto">
+          ${SVG.download} PNG
+        </button>
         <a href="../docs/canvas.md" download class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
           ${SVG.download} Markdown
         </a>
@@ -1242,12 +1397,15 @@ const GUION_WPM = 135;
 const GUION_MIN_PALABRAS = 240;
 const GUION_MAX_PALABRAS = 280;
 
-function scriptPalabras() {
-  const texto = scriptFullText();
+function scriptPalabrasDe(texto) {
   if (!texto) return 0;
   return typeof rsWordCount === "function"
     ? rsWordCount(texto)
     : texto.trim().split(/\s+/).filter(Boolean).length;
+}
+
+function scriptPalabras() {
+  return scriptPalabrasDe(scriptFullText());
 }
 
 function scriptMeterTexto() {
@@ -1266,14 +1424,14 @@ function scriptMeterTexto() {
 }
 
 function renderViewScript() {
-  const actos = [
-    { key: "acto1", n: "I", title: "Acto I", ph: "Escribe este acto como lo dirías en voz alta. [pausa] donde respires." },
-    { key: "acto2", n: "II", title: "Acto II", ph: "Lo que sigue, en frases cortas." },
-    { key: "acto3", n: "III", title: "Acto III", ph: "Lo que falta contar, con las cifras dichas completas." },
-    { key: "acto4", n: "IV", title: "Acto IV", ph: "El cierre, con la frase final marcada. [pausa] antes de ella." }
+  const bloques = [
+    { key: "acto1", ph: "Escribe cómo lo dirías en voz alta. [pausa] donde respires." },
+    { key: "acto2", ph: "Lo que sigue, en frases cortas." },
+    { key: "acto3", ph: "Lo que falta contar, con las cifras dichas completas." },
+    { key: "acto4", ph: "El cierre, con la frase final marcada. [pausa] antes de ella." }
   ];
   const authorship = (state.authorship && state.authorship.script) || {};
-  const lleno = actos.some(x => String(state.script[x.key] || "").trim() !== "");
+  const lleno = bloques.some(x => String(state.script[x.key] || "").trim() !== "");
   return `
     <div class="phase-header">
       <div>
@@ -1297,28 +1455,30 @@ function renderViewScript() {
 
     <p class="bu-note is-info" id="script-meter">${escapeHtml(scriptMeterTexto())}</p>
 
-    <div id="script-edit" class="script-acts${lleno ? "" : " is-empty"}">
-      ${actos.map(x => `
-        <section class="script-act" data-lockable="script-${x.key}">
-          <div class="script-act-head">
-            <span class="script-act-n">${x.n}</span>
-            <h2 class="script-act-title">${x.title}</h2>
-            ${rsTakeInlineHtml("guion_" + x.key, "script-" + x.key)}
-            <span id="lock-tag-script-${x.key}"></span>
-          </div>
+    <div id="script-edit" class="script-flow${lleno ? "" : " is-empty"}">
+      ${bloques.map(x => `
+        <div class="script-block" data-lockable="script-${x.key}">
           <textarea id="sc-${x.key}" class="script-input" rows="3" spellcheck="false"
             placeholder="${x.ph}"
             onfocus="broadcastLock('script-${x.key}')"
             onblur="broadcastRelease('script-${x.key}')"
             oninput="handleScriptInput('${x.key}', this)">${escapeHtml(String(state.script[x.key] || ""))}</textarea>
-          <div style="margin-top:6px;">${aiEditPanel("script:" + x.key)}</div>
-        </section>
+          <div class="script-block-tools">
+            ${rsTakeInlineHtml("guion_" + x.key, "script-" + x.key)}
+            <span id="lock-tag-script-${x.key}"></span>
+            ${aiEditPanel("script:" + x.key)}
+          </div>
+        </div>
       `).join("")}
+    </div>
+
+    <div class="script-board" id="script-board" aria-label="Plan de rodaje en miniatura">
+      ${scriptBoardHtml()}
     </div>
 
     <div id="script-read" class="script-read" hidden>
       <article id="script-read-body"></article>
-      <p class="script-read-empty" id="script-read-empty">El guion está vacío. Escribe los cuatro actos y aquí se leen de corrido.</p>
+      <p class="script-read-empty" id="script-read-empty">El guion está vacío. Escribe y aquí se lee de corrido.</p>
     </div>
   `;
 }
@@ -1326,6 +1486,20 @@ function renderViewScript() {
 function scriptFullText() {
   const orden = ["acto1", "acto2", "acto3", "acto4"];
   return orden.map(k => String((state.script && state.script[k]) || "").trim()).filter(Boolean).join("\n\n");
+}
+
+// Tira de miniaturas: cuánto dura cada bloque y con qué palabras abre.
+function scriptBoardHtml() {
+  return ["acto1", "acto2", "acto3", "acto4"].map(k => {
+    const t = String((state.script && state.script[k]) || "").trim();
+    const n = t ? scriptPalabrasDe(t) : 0;
+    const s = n ? Math.round((n / GUION_WPM) * 60) : 0;
+    const txt = t ? t.split(/\s+/).slice(0, 8).join(" ") : "Sin texto todavía.";
+    return `<div class="script-board-card">
+      <div class="script-board-sec">${s} s</div>
+      <p class="script-board-txt${t ? "" : " is-empty"}">${escapeHtml(txt)}</p>
+    </div>`;
+  }).join("");
 }
 
 function copyFullScript() {
@@ -1381,12 +1555,12 @@ function renderScriptRead() {
   const body = document.getElementById("script-read-body");
   const empty = document.getElementById("script-read-empty");
   if (!body) return;
-  const actos = [["I", "acto1"], ["II", "acto2"], ["III", "acto3"], ["IV", "acto4"]];
+  const actos = ["acto1", "acto2", "acto3", "acto4"];
   const partes = actos
-    .map(([n, k]) => {
+    .map(k => {
       const t = String((state.script && state.script[k]) || "").trim();
       if (!t) return "";
-      return `<section class="script-read-act"><span class="script-act-n">${n}</span><p>${escapeHtml(t).replace(/\n{2,}/g, "</p><p>").replace(/\n/g, "<br>")}</p></section>`;
+      return `<section class="script-read-act"><p>${escapeHtml(t).replace(/\n{2,}/g, "</p><p>").replace(/\n/g, "<br>")}</p></section>`;
     })
     .filter(Boolean);
   body.innerHTML = partes.join("");
@@ -1407,6 +1581,8 @@ function updateScriptMeters() {
   });
   const meter = document.getElementById("script-meter");
   if (meter) meter.textContent = scriptMeterTexto();
+  const board = document.getElementById("script-board");
+  if (board) board.innerHTML = scriptBoardHtml();
   const read = document.getElementById("script-read");
   if (read && !read.hidden) renderScriptRead();
 }

@@ -8,6 +8,11 @@ description: Aplica al escribir o revisar el pautado oficial y el guion del vide
 Reglas canónicas: `knowledge/rubric_matrices.md`, secciones 3 y 4. Este archivo no las
 repite; solo dice cómo se usan.
 
+**Veto de redacción:** todo lo que se escribe aquí pasa por `skills/_comun/patrones-ia.md`.
+Si una palabra o frase de esa lista aparece, se cambia por el dato concreto o se borra.
+`scripts/verificar_identidad.py` (G4) lo comprueba en `state.json` y falla nombrando
+palabra y sección.
+
 ## Pautado: cinco secciones
 
 `problema`, `solucion`, `impacto`, `innovacion`, `prefactibilidad`.

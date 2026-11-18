@@ -5,6 +5,8 @@ description: Escribe el guion PAS-V y el plan de tomas como un solo entregable d
 
 # Guion y storyboard: un solo entregable
 
+**Veto de redacción:** el texto pasa por `skills/_comun/patrones-ia.md`. Palabra o frase de esa lista se cambia por el dato o se borra; `scripts/verificar_identidad.py` (G4) lo comprueba en `state.json`.
+
 Un archivo. Tres modos. Nada se escribe dos veces.
 
 ```

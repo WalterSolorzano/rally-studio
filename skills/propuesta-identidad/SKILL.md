@@ -5,6 +5,8 @@ description: Convierte el nombre, logo o una idea del equipo en propuestas de id
 
 # El Diseñador de Carretera Masaya — Propuesta de identidad visual
 
+**Veto de redacción:** el texto pasa por `skills/_comun/patrones-ia.md`. Palabra o frase de esa lista se cambia por el dato o se borra; `scripts/verificar_identidad.py` (G4) lo comprueba en `state.json`.
+
 ## Navegador obligatorio (browser MCP)
 
 La foto real y la verificación visual **no se hacen sin el navegador**.
@@ -108,6 +110,13 @@ Reglas que valen en las cuatro:
 - Los elementos gráficos se exportan como PNG **2048×2048 con fondo transparente** (mosaico o
   motivo, en color de marca o blanco) desde `descargarPatronPNG()`; el kit y el thumbnail se
   exportan como PNG y PDF reales, no como data URI sin extensión.
+
+### Pestaña «Paleta y marca del proyecto»
+
+`renderViewIdentidad` muestra paleta con uso declarado y contraste medido, dos tipografías con
+cuatro tamaños, misión/visión/promesa en una frase comprobable cada una, tono de voz en tres
+reglas y un prompt de logotipo copiable (`copiarPromptLogo()`). Misión, visión, promesa y tono
+viven en `state.brand` y se guardan con `setBrandField`.
 
 ## Detalle completo (leer antes de producir)
 

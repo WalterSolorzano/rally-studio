@@ -5,6 +5,8 @@ description: Convierte los retos del comité o del usuario en un dossier formal 
 
 # Labia Interna — Dossier de soluciones
 
+**Veto de redacción:** el texto pasa por `skills/_comun/patrones-ia.md`. Palabra o frase de esa lista se cambia por el dato o se borra; `scripts/verificar_identidad.py` (G4) lo comprueba en `state.json`.
+
 Este sistema **no crea retos**: los entrega el usuario o el comité. Sin retos no hay dossier.
 
 ## Regla dura: el diseño del PDF ya está decidido

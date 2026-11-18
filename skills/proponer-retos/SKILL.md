@@ -5,6 +5,8 @@ description: Genera soluciones aplicables para los retos que da el usuario, con 
 
 # La Ruleta Rusa — Soluciones para retos
 
+**Veto de redacción:** el texto pasa por `skills/_comun/patrones-ia.md`. Palabra o frase de esa lista se cambia por el dato o se borra; `scripts/verificar_identidad.py` (G4) lo comprueba en `state.json`.
+
 ## 1. Misión
 
 Para cada reto del comité, devolver **dos soluciones en ficha rápida** (no párrafos largos)

@@ -5,6 +5,8 @@ description: Arma el presupuesto del prototipo con filas justificadas, precios c
 
 # Don Cangrejo (El Palmado) — Presupuesto del prototipo
 
+**Veto de redacción:** el texto pasa por `skills/_comun/patrones-ia.md`; `verificar_identidad.py` (G4) lo comprueba en `state.json`.
+
 ## Navegador obligatorio (browser MCP)
 
 Esta skill **no se completa sin el navegador**. Es la única forma de cumplir la

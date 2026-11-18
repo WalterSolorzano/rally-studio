@@ -5,6 +5,8 @@ description: Revisa un entregable contra la rúbrica del certamen, las bases del
 
 # La Tóxica que Revisa el Chat — Auditar un entregable
 
+**Veto de redacción:** el texto pasa por `skills/_comun/patrones-ia.md`. Palabra o frase de esa lista se cambia por el dato o se borra; `scripts/verificar_identidad.py` (G4) lo comprueba en `state.json`.
+
 ## Navegador obligatorio (browser MCP)
 
 La auditoría visual se hace **con el navegador, no de memoria**.

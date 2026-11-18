@@ -15,6 +15,7 @@ Salida: lineas "OK/FAIL <chequeo>" y codigo 1 si algo falla.
 from __future__ import annotations
 
 import json
+import os
 import pathlib
 import re
 import sys
@@ -23,6 +24,9 @@ RAIZ = pathlib.Path(__file__).resolve().parent.parent
 PALETTE = RAIZ / "brand" / "palette.json"
 TOKENS = RAIZ / "brand" / "tokens.css"
 SITE = RAIZ / "site"
+STATE = pathlib.Path(
+    os.environ.get("RALLY_DATA_DIR", str(RAIZ / "dashboard" / "data"))
+) / "state.json"
 
 HEX = re.compile(r"#[0-9a-fA-F]{6}\b")
 REQUERIDAS = [
@@ -114,7 +118,86 @@ def verificar_gramatica() -> None:
             fail(f"{nombre}: sin font-variant-numeric (SS2.2 regla 3)")
 
 
+def _texto(valor) -> str:
+    if isinstance(valor, str):
+        return valor
+    if isinstance(valor, dict):
+        return " ".join(_texto(v) for v in valor.values())
+    if isinstance(valor, list):
+        return " ".join(_texto(v) for v in valor)
+    return ""
+
+
+# Palabras que no tienen uso honesto en un pautado: si aparecen, hay que poner el dato.
+DUROS = """paradigma sinergia sinérgico holístico transversal multifacético invaluable
+imprescindible zeitgeist crisol pináculo embarcarse conceptualizar desbloquear empoderar
+beneficubrimiento influenciativa emocionabilidad intelligentización""".split()
+
+# Se aceptan en su sentido técnico, pero se avisan para que nadie las use de relleno.
+BLANDOS = """fundamental crucial clave esencial vital robusto estimulante ejemplar emocionante
+transformador innovador dinámico versátil integral exhaustivo estratégico óptimo meticuloso
+vibrante ecosistema panorama paisaje tapiz catalizador ámbito reino mosaico nexo trayectoria
+esfera terreno profundizar desglosar destacar explorar aprovechar potenciar impulsar maximizar
+optimizar navegar elevar además asimismo diversos numerosos múltiples encapsula notable
+subrayar escrutinio perfecto interrelación testimonio legado""".split()
+
+FRASES_PROHIBIDAS = [
+    "no es solo", "es importante destacar", "al final del día",
+    "juega un papel fundamental", "marca un hito", "sin más preámbulos",
+    "profundicemos en", "claro, aquí tienes", "espero que esto te ayude",
+    "como modelo de lenguaje", "en conclusión", "en definitiva",
+    "cabe destacar", "vale la pena", "en última instancia",
+    "en el panorama actual", "en un mundo cada vez más",
+    "utm_source=chatgpt.com", "turn0search0", "oaicite",
+]
+
+SECCIONES_REDACCION = ("pautado", "script", "model_canvas", "challenges",
+                       "solution_simple", "solution_thesis", "description_one_line")
+
+
+def verificar_redaccion() -> None:
+    """G4 -- el texto del proyecto no habla como una IA (skills/_comun/patrones-ia.md)."""
+    if not STATE.exists():
+        ok("G4 redaccion: sin state.json, no hay texto que revisar")
+        return
+    try:
+        datos = json.loads(STATE.read_text(encoding="utf-8-sig"))
+    except (OSError, ValueError) as exc:
+        fail(f"G4 redaccion: state.json ilegible ({exc})")
+        return
+
+    duros: list[str] = []
+    blandos: list[str] = []
+    frases: list[str] = []
+    for seccion in SECCIONES_REDACCION:
+        blob = _texto(datos.get(seccion)).lower()
+        if not blob:
+            continue
+        for palabra in DUROS:
+            if re.search(rf"\b{re.escape(palabra)}\b", blob):
+                duros.append(f"{seccion}:{palabra}")
+        for palabra in BLANDOS:
+            if re.search(rf"\b{re.escape(palabra)}\b", blob):
+                blandos.append(f"{seccion}:{palabra}")
+        for frase in FRASES_PROHIBIDAS:
+            if frase in blob:
+                frases.append(f"{seccion}:'{frase}'")
+
+    if duros or frases:
+        if duros:
+            fail(f"G4 redaccion: {len(duros)} palabra(s) vetada(s) -- {', '.join(duros[:6])}")
+        if frases:
+            fail(f"G4 redaccion: {len(frases)} frase(s) de IA -- {', '.join(frases[:6])}")
+    else:
+        ok("G4 redaccion: sin patrones de IA vetados")
+
+    if blandos:
+        print(f"AVISO G4 redaccion: {len(blandos)} palabra(s) de relleno -- {', '.join(blandos[:8])}")
+
+
 def main() -> int:
+    verificar_redaccion()
+
     if not PALETTE.exists():
         fail("brand/palette.json no existe: la capa proyecto debe declarar su estado")
         return 1

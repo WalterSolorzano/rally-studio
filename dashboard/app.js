@@ -2461,7 +2461,7 @@ function renderTab(tabId) {
     dirCls = nextIdx > prevIdx ? " rs-fwd" : " rs-back";
   }
   rsPrevTabId = tabId;
-  main.innerHTML = `<div class="content-wrapper rs-view${dirCls}">${(renderers[tabId] || renderViewCertamen)()}</div>`;
+  main.innerHTML = `<div class="content-wrapper rs-view${dirCls}${tabId === "challenges" ? " is-wide" : ""}">${(renderers[tabId] || renderViewCertamen)()}</div>`;
   if (tabId === "canvas") requestAnimationFrame(fitAllCanvasInputs);
   if (tabId === "script") requestAnimationFrame(updateScriptMeters);
   if (tabId === "pautado") requestAnimationFrame(() => { ajustarAltoTodos(".pa-input"); refreshPautadoTemplateStatus(); });
@@ -3529,7 +3529,8 @@ Texto actual de ${t.nombre}:
 """
 ${t.leer() || "(vacío)"}
 """
-Devuelve SOLO el texto nuevo, sin explicaciones ni markdown. Conserva las cifras y las fuentes que ya estaban y no inventes datos. Español de Nicaragua, frases cortas. No repitas el nombre del proyecto ni el país más de una vez.`;
+Devuelve SOLO el texto nuevo, sin explicaciones ni markdown. Conserva las cifras y las fuentes que ya estaban y no inventes datos. Español de Nicaragua, frases cortas. No repitas el nombre del proyecto ni el país más de una vez.
+Prohibido: palabras de relleno (fundamental, crucial, clave, esencial, vital, robusto, innovador, transformador, integral, exhaustivo, estratégico, holístico, sinérgico, versátil, multifacético), sustantivos gastados (paradigma, sinergia, ecosistema, panorama, mosaico, nexo, ámbito, trayectoria), verbos corporativos (profundizar, potenciar, impulsar, maximizar, optimizar, aprovechar, desbloquear, empoderar, destacar, explorar), conectores huecos (además, asimismo, no obstante, sin embargo, en consecuencia, cabe destacar, en este sentido, por otro lado, en última instancia), frases «no es solo X, es Y», «es importante destacar», «al final del día», «juega un papel fundamental», «marca un hito», «en conclusión», tríadas forzadas, frase de una palabra como párrafo, pregunta retórica de gancho, raya larga de adorno, negrita al inicio de cada viñeta, emojis como viñeta. Si un adjetivo no trae un dato, se borra.`;
   await _runAIJob("aiedit-" + key, prompt, {
     onNoProvider: (data) => {
       st.busy = false;
@@ -3589,6 +3590,38 @@ function aiEditCopiar(key) {
 
 // Vista de identidad del PROYECTO (no del producto): paleta, marca y
 // tipografía. Se llega desde Identidad del equipo y desde el menú de fases.
+
+function identityBrand() {
+  if (!state.brand || typeof state.brand !== "object") state.brand = {};
+  return state.brand;
+}
+
+function setBrandField(clave, valor) {
+  identityBrand()[clave] = valor;
+  saveState();
+}
+
+function promptLogoProyecto() {
+  const nombre = state.project_name || state.challenge_title || "el proyecto";
+  const reto = state.challenge_title && state.challenge_title !== nombre ? `, solución al reto «${state.challenge_title}»` : "";
+  const sector = state.category ? `Sector: ${state.category}.` : "";
+  const ciudad = state.city ? `Se usa primero en ${state.city}.` : "";
+  return [
+    `Diseña un logotipo vectorial para ${nombre}${reto}.`,
+    sector,
+    ciudad,
+    "Marca simple, legible a 24 px y en un solo color; sin degradados, sin sombras, sin texto pequeño.",
+    "Formas tomadas del oficio de quien lo usa: herramienta, materia prima o gesto de trabajo, no iconos genéricos de tecnología.",
+    "Entrega: SVG con fondo transparente, versión en el color principal del proyecto y versión en negativo, más una variante cuadrada para avatar.",
+    "Sin letras inventadas, sin parecido con marcas existentes y sin claims dentro de la imagen."
+  ].filter(Boolean).join(" ");
+}
+
+function copiarPromptLogo() {
+  navigator.clipboard.writeText(promptLogoProyecto());
+  showToast("Prompt del logotipo copiado. Pégalo en la IA que dibuja.");
+}
+
 function renderViewIdentidad() {
   const pal = state.palette || {};
   const roles = [
@@ -3600,6 +3633,13 @@ function renderViewIdentidad() {
   const fuenteUi = cs.getPropertyValue("--font-ui").trim() || "—";
   const fuenteNum = cs.getPropertyValue("--font-mono").trim() || "—";
   const hayPaleta = !!(pal.primary || pal.secondary || pal.accent);
+  const brand = identityBrand();
+  const escala = [
+    { uso: "Título de pantalla", fam: "Titulares", size: "32 px", peso: "800" },
+    { uso: "Subtítulo de sección", fam: "Titulares", size: "20 px", peso: "700" },
+    { uso: "Cuerpo y texto del pautado", fam: "Texto", size: "15 px", peso: "400" },
+    { uso: "Cifras, tiempo y precios", fam: "Números", size: "28 px", peso: "800" }
+  ];
 
   const filas = roles.map(r => {
     const hex = String(pal[r.key] || "").trim();
@@ -3656,10 +3696,46 @@ function renderViewIdentidad() {
     <section class="sol-sec">
       <label class="sol-label">Tipografía</label>
       <dl class="setup-facts setup-facts-inline">
-        <div><dt>Texto</dt><dd>${escapeHtml(fuenteUi)}</dd></div>
+        <div><dt>Titulares y texto</dt><dd>${escapeHtml(fuenteUi)}</dd></div>
         <div><dt>Números</dt><dd>${escapeHtml(fuenteNum)}</dd></div>
       </dl>
-      <p class="sol-hint">Las cifras van siempre con números de ancho fijo para que no bailen al actualizarse.</p>
+      <table class="brand-scale">
+        <thead><tr><th>Uso</th><th>Familia</th><th>Tamaño</th><th>Peso</th></tr></thead>
+        <tbody>${escala.map(e => `<tr><td>${escapeHtml(e.uso)}</td><td>${escapeHtml(e.fam)}</td><td>${escapeHtml(e.size)}</td><td>${escapeHtml(e.peso)}</td></tr>`).join("")}</tbody>
+      </table>
+      <p class="sol-hint">Dos familias y cuatro tamaños. Las cifras van con números de ancho fijo para que no bailen al actualizarse; nada fuera de esta escala.</p>
+    </section>
+
+    <section class="sol-sec">
+      <label class="sol-label">Misión, visión y promesa</label>
+      <div class="brand-fields">
+        <div class="brand-field">
+          <span class="brand-field-k">Misión</span>
+          <textarea class="sol-input" rows="3" placeholder="Qué cambia el proyecto en la vida de quien lo usa, en una frase con sujeto y verbo." oninput="setBrandField('mision', this.value)">${escapeHtml(brand.mision || "")}</textarea>
+        </div>
+        <div class="brand-field">
+          <span class="brand-field-k">Visión</span>
+          <textarea class="sol-input" rows="3" placeholder="Dónde está el proyecto en cinco años y cuántas personas lo usan." oninput="setBrandField('vision', this.value)">${escapeHtml(brand.vision || "")}</textarea>
+        </div>
+        <div class="brand-field">
+          <span class="brand-field-k">Promesa</span>
+          <textarea class="sol-input" rows="3" placeholder="Lo que el proyecto garantiza y puede comprobarse, sin adjetivos." oninput="setBrandField('promesa', this.value)">${escapeHtml(brand.promesa || "")}</textarea>
+        </div>
+        <div class="brand-field">
+          <span class="brand-field-k">Tono de voz</span>
+          <textarea class="sol-input" rows="3" placeholder="Tres reglas de cómo habla el proyecto. Ej: habla como el técnico; dice cifras completas; no promete lo que no midió." oninput="setBrandField('tono', this.value)">${escapeHtml(brand.tono || "")}</textarea>
+        </div>
+      </div>
+      <p class="sol-hint">Se escriben desde el reto y el usuario real. Si una frase no se puede comprobar, no va.</p>
+    </section>
+
+    <section class="sol-sec">
+      <label class="sol-label">Logotipo</label>
+      <p class="sol-hint">El prompt se arma con el reto, el sector y la ciudad del proyecto. Cópialo y pégalo en la IA que dibuja.</p>
+      <pre class="brand-prompt">${escapeHtml(promptLogoProyecto())}</pre>
+      <div class="sol-inline-action">
+        <button class="link-quiet" onclick="copiarPromptLogo()">${SVG.copy} Copiar el prompt del logotipo</button>
+      </div>
     </section>
 
     <section class="sol-sec">
@@ -4446,7 +4522,9 @@ function renderMesaVote(ch) {
       <div class="cr-voters">
         ${seats.length === 0
           ? `<p class="cr-rule-line">Nadie se ha nombrado todavía. Escribe tu nombre en el equipo y la mesa se llena con las personas reales.</p>`
-          : seats.map(seat => {
+          : `<details class="cr-fold cr-fold-quiet">
+              <summary>${seats.length} en la mesa · quién votó</summary>
+              <div class="cr-voters-grid">${seats.map(seat => {
           const s = stance(seat.id);
           const isMe = seat.id === meId;
           return `
@@ -4457,7 +4535,8 @@ function renderMesaVote(ch) {
               <span class="cr-voter-at">${b.at[seat.id] || "—"}</span>
             </div>
           `;
-        }).join("")}
+        }).join("")}</div>
+            </details>`}
       </div>
 
       ${renews.map(r => `<div class="cr-rec-log">renovado por ${r.by} · ${r.at} — se borraron los votos de descarte${r.removed && r.removed.length ? " de " + r.removed.join(", ") : ""}</div>`).join("")}
@@ -4528,7 +4607,13 @@ function renderMesaSlide(ch, list, idx, orden) {
       </section>
     </div>
 
-    ${renderMesaNotes(ch)}
+    ${(() => {
+      const nIdeas = ((state.challenge_ideas && state.challenge_ideas[ch.id]) || []).length;
+      return `<details class="cr-fold">
+        <summary>Ver y escribir comentarios <span class="cr-count-chip">${nIdeas}</span></summary>
+        ${renderMesaNotes(ch)}
+      </details>`;
+    })()}
     ${renderMesaVote(ch)}
   `;
 }
