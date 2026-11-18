@@ -7817,6 +7817,38 @@ async function clearPautadoTemplate() {
   refreshPautadoTemplateStatus();
 }
 
+// Baja un archivo del servidor meciante blob: si la sesion caduco, el fetch trae
+// el JSON del login y se avisa; nunca se guarda una pagina web con extension .docx.
+async function descargarArchivo(url, nombre) {
+  try {
+    const r = await fetch(url);
+    const tipo = (r.headers.get("content-type") || "").toLowerCase();
+    if (!r.ok || tipo.includes("text/html") || tipo.includes("application/json")) {
+      showToast("El archivo no esta disponible. Vuelve a entrar y compila de nuevo.");
+      return false;
+    }
+    const blob = await r.blob();
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = nombre;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(link.href), 4000);
+    return true;
+  } catch (e) {
+    showToast("No se pudo bajar el archivo. Revisa la conexion con el servidor.");
+    return false;
+  }
+}
+
+async function descargarBudgetXlsx() {
+  const ok = await descargarArchivo("../budget/budget.xlsx", "Presupuesto_Rally.xlsx");
+  if (!ok) {
+    showToast("Aun no existe el Excel: corre python scripts/gen_budget.py y vuelve a bajar.");
+  }
+}
+
 function compileAndDownloadDocx() {
   const btn = document.getElementById("btn-compile-docx");
   if (btn) btn.innerHTML = `Compilando en plantilla oficial...`;
@@ -7838,10 +7870,7 @@ function compileAndDownloadDocx() {
     if (btn) btn.innerHTML = `${SVG.spark} Compilar en Plantilla Word (.docx)`;
     if (res.status === "ok") {
       showToast("Documento pautado compilado exitosamente dentro de la plantilla oficial");
-      const a = document.createElement("a");
-      a.href = res.file;
-      a.download = `Pautado_${(state.project_name || 'Rally').replace(/\s+/g, '_')}_Oficial.docx`;
-      a.click();
+      descargarArchivo(res.file, `Pautado_${(state.project_name || 'Rally').replace(/\s+/g, '_')}_Oficial.docx`);
     } else {
       alert("Error al compilar documento: " + (res.message || "desconocido"));
     }
@@ -7951,9 +7980,9 @@ function renderViewBudget() {
       </div>
       <div style="display:flex; gap:8px;">
         <button class="btn-primary" onclick="addBudgetItem()">+ Agregar Partida</button>
-        <a href="../budget/budget.xlsx" download class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
+        <button class="btn-secondary" onclick="descargarBudgetXlsx()">
           ${SVG.download} Descargar Excel (.xlsx)
-        </a>
+        </button>
       </div>
       ${onlineLinkRow("budget", "Pega el enlace de Canva o Google Sheets del presupuesto", "ENLACE AL PRESUPUESTO EN LÍNEA")}
     </div>

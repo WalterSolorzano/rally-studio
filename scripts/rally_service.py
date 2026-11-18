@@ -285,6 +285,63 @@ def ensure_section_migration() -> None:
         _SECTION_MIGRATED = True
 
 
+CAMPOS_BRIEF = (
+    "rally_type",
+    "category",
+    "challenge_id",
+    "challenge_title",
+    "project_name",
+    "team_name",
+    "university",
+    "city",
+    "description_one_line",
+    "ods_ids",
+    "national_plan_axis",
+    "exchange_rate_bcn",
+    "video_url",
+    "site_url",
+)
+
+
+def sync_brief_from_state(state: dict) -> None:
+    """Lo que el equipo escribe en la interfaz tambien queda en brief.json.
+
+    Los generadores leen brief.json, no el navegador: sin este puente lo escrito
+    en pantalla vivia solo en localStorage y cada script pedia editar el JSON a
+    mano. Solo se copian campos con valor, y un campo vacio en pantalla nunca
+    borra lo que ya estaba escrito.
+    """
+    if not isinstance(state, dict) or not state:
+        return
+    ruta = BASE_DIR / "brief.json"
+    actual: dict = {}
+    try:
+        if ruta.exists():
+            cargado = json.loads(ruta.read_text(encoding="utf-8"))
+            if isinstance(cargado, dict):
+                actual = cargado
+    except (OSError, ValueError):
+        actual = {}
+    cambios = 0
+    for campo in CAMPOS_BRIEF:
+        valor = state.get(campo)
+        if valor in (None, "", [], {}):
+            continue
+        if actual.get(campo) == valor:
+            continue
+        actual[campo] = valor
+        cambios += 1
+    if not cambios:
+        return
+    actual["_generated_at"] = time.strftime("%Y-%m-%dT%H:%M:%S")
+    try:
+        ruta.write_text(
+            json.dumps(actual, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+        )
+    except OSError as exc:
+        print(f"[brief] no se pudo sincronizar brief.json: {exc}", flush=True)
+
+
 def mirror_state_to_disk(project_id: str = "main") -> None:
     """Mantiene dashboard/data/state.json como espejo legible/exportable.
 
@@ -297,6 +354,7 @@ def mirror_state_to_disk(project_id: str = "main") -> None:
         state = SECTION_STORE.read_state(project_id)
         if state:
             CONTENT_STORE.write_state(state)
+            sync_brief_from_state(state)
     except Exception as exc:
         print(f"[secciones] no se pudo actualizar el espejo state.json: {exc}", flush=True)
 
@@ -1228,6 +1286,14 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
             )
             return False
         if req_path.startswith("/api/"):
+            self.send_json_response(
+                401, {"ok": False, "error": "no-autenticado", "entrar": "login.html"}, cors=True
+            )
+            return False
+        if req_path.lower().endswith((".docx", ".xlsx", ".pptx", ".pdf", ".zip")):
+            # Un documento pedido sin sesion no se redirige al login: el navegador
+            # guardaria la pantalla de entrada con extension .docx y el equipo
+            # entregaria un archivo que Word no abre. Se corta con un 401 claro.
             self.send_json_response(
                 401, {"ok": False, "error": "no-autenticado", "entrar": "login.html"}, cors=True
             )
