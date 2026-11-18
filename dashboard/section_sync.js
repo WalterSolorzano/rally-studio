@@ -224,6 +224,18 @@
     return path + sep + "project=" + encodeURIComponent(projectId());
   }
 
+  // Una sesion vencida no deja la pantalla en blanco: se vuelve a la puerta,
+  // y al entrar de nuevo se regresa a la misma pestaña.
+  let yendoAlLogin = false;
+  function volverAlLogin() {
+    if (yendoAlLogin) return;
+    if (/login\.html|join\.html/.test(location.pathname)) return;
+    yendoAlLogin = true;
+    const volver = location.pathname.replace(/^\/+/, "") === "" ? "" : location.pathname;
+    const destino = "/login.html" + (volver ? "?volver=" + encodeURIComponent(volver) : "");
+    setTimeout(function () { location.href = destino; }, 1400);
+  }
+
   async function api(path, options) {
     const controller = new AbortController();
     const timer = setTimeout(function () { controller.abort(); }, 6000);
@@ -245,6 +257,7 @@
         accessRevoked = true;
         serverAvailable = false;
         setStatus("Acceso revocado · tus cambios quedan en este equipo", "offline");
+        volverAlLogin();
       }
       return { status: res.status, ok: res.ok, body: body };
     } finally {
