@@ -7962,6 +7962,8 @@ function renderViewBudget() {
   const isTooLow = total < BUDGET_TARGET.min;
   const isTooHigh = total > BUDGET_TARGET.max;
   const hasNotice = isTooLow || isTooHigh;
+  const pal = state.palette || {};
+  const hayPaleta = !!(pal.primary || pal.secondary || pal.accent);
 
   return `
     <div class="phase-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:14px; margin-bottom:24px; padding-bottom:14px; border-bottom:1px solid var(--border-light);">
@@ -7990,6 +7992,10 @@ function renderViewBudget() {
     ${!ctx.listo ? `
       <p class="bu-note is-warn"><strong>Falta la tasa del BCN.</strong> El certamen exige el presupuesto en córdobas: escríbela arriba y las partidas se convierten.</p>
     ` : ""}
+
+    ${hayPaleta ? "" : `
+      <p class="bu-note is-info"><strong>El presupuesto hereda los colores del proyecto.</strong> Aprueba primero una ruta en Identidad visual: sin paleta aprobada el generador se niega a cotizar.</p>
+    `}
 
     ${hasNotice ? `
       <p class="bu-note ${isTooHigh ? "is-warn" : "is-info"}">${isTooHigh

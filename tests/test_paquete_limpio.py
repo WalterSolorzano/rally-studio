@@ -31,6 +31,52 @@ def test_artefactos_son_plantillas_vacias():
     assert json.loads(Path("budget/budget.json").read_text(encoding="utf-8")) == []
 
 
+def test_teleprompter_de_muestra_no_trae_guion_ajeno():
+    """La copia suelta del teleprompter es una muestra: el guion lo escribe el equipo.
+
+    Se vigila porque un arreglo anterior quedo sin efecto y nada lo notó: el
+    archivo seguia con el guion de cafe completo.
+    """
+    texto = Path("dashboard/entregables/teleprompter.html").read_text(encoding="utf-8")
+    inicio = texto.index("const DATA = ") + len("const DATA = ")
+    profundidad = 0
+    fin = inicio
+    for i, ch in enumerate(texto[inicio:], start=inicio):
+        profundidad += (ch == "{") - (ch == "}")
+        if profundidad == 0:
+            fin = i + 1
+            break
+    datos = json.loads(texto[inicio:fin])
+    assert datos["demo"] is True
+    assert datos["total_palabras"] == 0
+    for acto, cuerpo in datos["textos"].items():
+        assert not cuerpo.strip(), f"el acto {acto} trae guion demo"
+    volcado = json.dumps(datos, ensure_ascii=False)
+    for prohibido in ("Marta", "Jinotega", "Alibaba", "cosechas"):
+        assert prohibido not in volcado, f"teleprompter de muestra con residuo: {prohibido}"
+
+
+def test_generadores_no_fijan_municipio_ni_marca_de_ejemplo():
+    """Los generadores leen ciudad y nombre de brief.json; jamas los proponen."""
+    import re
+
+    cadena = re.compile(r'"[^"\n]*"|\'[^\'\n]*\'')
+    marca = re.compile(r"\b[A-ZÁÉÍÓÚÑ]{3,}-[A-ZÁÉÍÓÚÑ]{2,}\b")
+    municipio = re.compile(
+        r"\b(?:Managua|Waslala|Matagalpa|Jinotega|Estelí|Granada|Masaya|León|Bluefields)\b"
+    )
+    # Unico archivo exento: cita precedentes reales de ganadores (UNI-RUPAP,
+    # UNAN-FAREM, TECHRIDERS), que son conocimiento del certamen, no proyecto.
+    exento = {"gen_report_figures.py"}
+    hallazgos = []
+    for ruta in sorted(Path("scripts").glob("gen_*.py")):
+        if ruta.name in exento:
+            continue
+        for m in cadena.finditer(ruta.read_text(encoding="utf-8", errors="replace")):
+            hallazgos += [(ruta.name, x) for x in marca.findall(m.group(0)) + municipio.findall(m.group(0))]
+    assert hallazgos == [], f"ejemplo fijado en el codigo: {hallazgos}"
+
+
 def test_no_demo_content_in_artefactos():
     """El paquete base no puede traer el proyecto demo en ningun entregable."""
     prohibidos = (

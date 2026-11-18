@@ -37,6 +37,19 @@ _MARCADOR = re.compile(r"\{/?SEC_[A-Z_]+\}", re.IGNORECASE)
 _CODIGO_ODS = re.compile(r"\bods\s*\d+(?:\s*(?:,|y|/)\s*\bods\s*\d+)*", re.IGNORECASE)
 _ID_RETO = re.compile(r"\b[A-ZÁÉÍÓÚÑ]+_\d+\b")
 _SEGUNDOS_ACTO = re.compile(r"\(\s*\d{1,3}\s*s\s*\)")
+# Una indicacion de tempo ("(80-90 bpm)") vive en la columna de sonido del
+# shotlist: es una instruccion de montaje, no una cifra del pitch.
+_TEMPO = re.compile(r"\b\d{2,3}\s*(?:-|–|a)\s*\d{2,3}\s*(?:bpm|lpm|ppm)\b", re.IGNORECASE)
+# Numeral de lista al inicio de linea y numero de paso entre parentesis: el
+# orden de un procedimiento, no una cifra que el jurado vaya a cruzar.
+_ENUMERACION = re.compile(r"(?m)^\s*\d{1,2}[.)]\s+")
+_PASO = re.compile(r"\(\s*\d{1,2}\s*\)")
+# La etiqueta del acto ("A2", "[A3 - 1:00 - 1:35]") lleva un digito que no es
+# una cifra del pitch: es el numero de acto.
+_ETIQUETA_ACTO = re.compile(r"\bA\d{1,2}\b")
+# El nombre del asset (asset_A1_hook_dolor.png) viaja en el shotlist: el digito
+# del acto dentro del nombre no es una cifra del pitch.
+_NOMBRE_ASSET = re.compile(r"\basset_[A-Za-z0-9_]+(?:\.\w{2,5})?", re.IGNORECASE)
 
 # Un guion se escribe para ser escuchado, asi que sus cifras van con letra
 # ("treinta por ciento", "cuarenta motores"). Si solo se miran digitos, una
@@ -114,6 +127,11 @@ def extraer(texto: str) -> dict[str, dict]:
     texto = _CODIGO_ODS.sub(" ", texto)
     texto = _ID_RETO.sub(" ", texto)
     texto = _SEGUNDOS_ACTO.sub(" ", texto)
+    texto = _TEMPO.sub(" ", texto)
+    texto = _ENUMERACION.sub("", texto)
+    texto = _PASO.sub(" ", texto)
+    texto = _ETIQUETA_ACTO.sub(" ", texto)
+    texto = _NOMBRE_ASSET.sub(" ", texto)
     texto = _cifras_habladas(texto)
     encontrados: dict[str, dict] = {}
     for match in _TOKEN_RE.finditer(texto):

@@ -61,7 +61,11 @@ def main():
 
     deliverable = brief.get("deliverable_type", "")
     if deliverable not in VALID_DELIVERABLE_TYPES:
-        errors.append(f"deliverable_type='{deliverable}' inválido. Debe ser: {VALID_DELIVERABLE_TYPES}")
+        errors.append(
+            f"deliverable_type='{deliverable}' inválido. Debe ser uno de: "
+            "3d (solo modelo 3D), web (solo sitio demo), both (las dos cosas) "
+            "o none (ninguna)."
+        )
 
     hours = brief.get("hours_total", 0)
     if not isinstance(hours, (int, float)) or hours <= 0:

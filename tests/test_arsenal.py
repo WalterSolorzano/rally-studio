@@ -90,6 +90,24 @@ def test_coherencia_ignora_codigos_ods_id_de_reto_y_segundos_de_acto():
     assert coherencia.comparar({"guion": guion, "pautado": pautado}) == []
 
 
+def test_coherencia_ignora_indicacion_de_tempo_y_numerales_de_lista():
+    guion = coherencia.desde_texto("1. Arranque. Pulso grave, bajo sintetizado tenue (80-90 bpm).")
+    pautado = coherencia.desde_texto("1. Problema.\n3. Impacto.")
+    assert coherencia.comparar({"guion": guion, "pautado": pautado}) == []
+
+
+def test_coherencia_ignora_la_etiqueta_del_acto():
+    guion = coherencia.desde_texto("[A1 - 0:00 - 0:20] Alerta con 24 horas de aviso.")
+    pautado = coherencia.desde_texto("Alerta con 24 horas de aviso.")
+    assert coherencia.comparar({"guion": guion, "pautado": pautado}) == []
+
+
+def test_coherencia_ignora_el_nombre_del_asset():
+    guion = coherencia.desde_texto("Plano: `asset_A1_hook_dolor.png` con 24 horas de aviso.")
+    pautado = coherencia.desde_texto("Alerta con 24 horas de aviso.")
+    assert coherencia.comparar({"guion": guion, "pautado": pautado}) == []
+
+
 def test_coherencia_ignora_cifras_con_fuente_en_claims(monkeypatch):
     monkeypatch.setattr(
         coherencia,
