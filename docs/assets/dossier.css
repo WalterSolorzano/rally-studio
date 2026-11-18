@@ -17,16 +17,22 @@ a { color: #0866F5; text-decoration: none; }
 strong { font-weight: 700; }
 
 /* Reto: cabecera */
-.reto { break-before: auto; padding-top: 4mm; }
-.reto + .reto { margin-top: 12mm; }
+.reto { break-before: page; padding-top: 4mm; }
+.reto + .reto { margin-top: 0; }
 .reto h2 { break-after: avoid; }
 .reto .cabeza { break-inside: avoid; }
 .cabeza { border-top: 4px solid #0866F5; padding-top: 4mm; break-after: avoid; display: grid; grid-template-columns: 36mm 1fr; gap: 6mm; align-items: start; }
-.cabeza .num { font-family: 'Jakarta'; font-size: 64pt; font-weight: 800; line-height: .78; color: #0866F5; letter-spacing: -.04em; }
-.cabeza h2 { font-size: 21pt; font-weight: 800; line-height: 1.08; letter-spacing: -.015em; color: #0D1B35; margin: 0 0 3mm; max-width: 138mm; }
+.cabeza .num { font-family: 'Jakarta'; font-size: 76pt; font-weight: 800; line-height: .78; color: #0866F5; letter-spacing: -.04em; }
+.cabeza h2 { font-size: 25pt; font-weight: 800; line-height: 1.06; letter-spacing: -.015em; color: #0D1B35; margin: 0 0 3mm; max-width: 132mm; }
 .cabeza .cat { display: inline-block; font-family: 'Mono'; font-size: 7pt; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; color: #ffffff; background: #0D1B35; padding: 1.4mm 3mm; border-radius: 1mm; white-space: nowrap; }
-.desc { font-size: 8.8pt; color: #334155; max-width: 170mm; margin-top: 3mm; }
-.intro { break-after: auto; }
+.desc { font-size: 12.4pt; line-height: 1.62; color: #1E3050; max-width: 152mm; margin-top: 6mm; }
+.intro { break-after: page; break-inside: avoid; }
+.intro .desc { margin-bottom: 10mm; }
+.intro .ods { margin-top: 9mm; }
+.intro .ods-name { font-size: 9.6pt; }
+.intro .ods-why { font-size: 8.8pt; line-height: 1.45; }
+.intro .ods-logo { width: 13mm; height: 13mm; }
+.intro .insignias { margin-top: 7mm; }
 h3 { font-family: 'Mono'; font-size: 7.3pt; font-weight: 600; letter-spacing: .13em; color: #0D1B35; text-transform: uppercase; border-top: 1px solid #0D1B35; padding-top: 2.4mm; margin: 7mm 0 2.6mm; break-after: avoid; }
 
 /* ODS */

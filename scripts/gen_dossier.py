@@ -71,6 +71,12 @@ def e(texto) -> str:
     return html.escape(str(texto), quote=False)
 
 
+def categoria(tag: str) -> str:
+    """`impacto_social` se imprime como `Impacto social`: la etiqueta es para leer."""
+    limpio = str(tag or "").replace("_", " ").strip()
+    return limpio[:1].upper() + limpio[1:].lower() if limpio else limpio
+
+
 def html_solucion(etiqueta: str, prop: dict, real: str = "", compacto: bool = False) -> str:
     pasos = "".join(f"<li>{e(p)}</li>" for p in prop["como"])
     return (
@@ -153,7 +159,7 @@ def html_retos() -> str:
             f'<div class="num">{r["id"]}</div>'
             f'<div class="hdr">'
             f'<h2>{e(r["titulo"])}</h2>'
-            f'<div class="cat">{e(r["categoria"])} · {r["id"]}/{total_retos()}</div>'
+            f'<div class="cat">{e(categoria(r["categoria"]))} · {r["id"]}/{total_retos()}</div>'
             f'</div>'
             f'</div>'
             f'<p class="desc">{e(r["descripcion"])}</p>'
