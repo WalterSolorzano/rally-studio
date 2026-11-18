@@ -3228,7 +3228,7 @@ function aiEditTarget(key) {
     }
   };
   if (kind === "solution") return {
-    tab: "solution", nombre: "el pitch de la solución",
+    tab: "solution", nombre: "lo que le explicas al asesor",
     leer: () => state.solution_simple || "",
     escribir: t => { state.solution_simple = t; }
   };
@@ -3269,39 +3269,81 @@ function aiEditRepaint(key) {
   if (host) host.innerHTML = aiEditBody(key);
 }
 
+// Historial del chat por campo: vive en el estado, así que sobrevive al
+// recargar y lo ve todo el equipo. Los últimos 24 turnos bastan.
+function aiEditHist(key) {
+  if (!state.ai_edit_history || typeof state.ai_edit_history !== "object") state.ai_edit_history = {};
+  const h = state.ai_edit_history[key];
+  return Array.isArray(h) ? h : (state.ai_edit_history[key] = []);
+}
+
+function aiEditHistPush(key, quien, texto) {
+  const h = aiEditHist(key);
+  h.push({ r: quien, t: String(texto || ""), at: _mesaTime() });
+  while (h.length > 24) h.shift();
+  saveState();
+}
+
+function _botAvatar(cls) {
+  return `<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="16" height="11" rx="3"/><path d="M12 8V4M9 19v2M15 19v2"/><circle cx="9.5" cy="13" r="1"/><circle cx="14.5" cy="13" r="1"/></svg>`;
+}
+
 function aiEditBody(key) {
   const id = aiEditId(key);
-  const st = _aiEditState[key] || {};
+  const st = _aiEditState[key] || (_aiEditState[key] = {});
+  // El chat de la solución se ve de entrada: ahí el equipo pide cambios a mano.
+  if (st.open === undefined) st.open = key === "solution";
   const t = aiEditTarget(key);
   if (!t) return "";
   if (!st.open) {
-    return `<button class="link-quiet" onclick="aiEditToggle('${key}')" title="Pedirle un cambio a la IA sobre este texto">${SVG.sparkles || SVG.check} Editar con IA</button>`;
+    return `<button class="link-quiet" onclick="aiEditToggle('${key}')" title="Hablar con la IA sobre este texto">${SVG.sparkles || SVG.check} Editar con IA</button>`;
   }
-  const tieneTexto = String(t.leer()).trim().length > 0;
-  const propuesta = st.result ? `
-    <div class="bu-note" style="margin-top:8px;">
-      <strong>Propuesta de la IA.</strong> No reemplaza nada hasta que la aceptes.
-      <div id="ae-res-${id}" style="margin-top:6px; white-space:pre-wrap; font-size:12px; line-height:1.6;">${escapeHtml(st.result)}</div>
-      <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
-        <button class="btn-primary" style="font-size:11px; padding:5px 10px;" onclick="aiEditAceptar('${key}')">${SVG.check} Aceptar</button>
-        <button class="btn-secondary" style="font-size:11px; padding:5px 10px;" onclick="aiEditDescartar('${key}')">Descartar</button>
-        <button class="link-quiet" onclick="aiEditCopiar('${key}')">Copiar</button>
-      </div>
-    </div>` : "";
+  const historial = aiEditHist(key);
   return `
-    <div style="margin-top:8px; padding:10px; border:1px solid var(--border-light); border-radius:8px;">
-      <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
-        <input id="ae-in-${id}" value="${escapeHtml(st.instr || "")}" oninput="aiEditInstr('${key}', this.value)"
-          placeholder="Qué cambia y qué se queda (ej.: más corto, sin cifras, tono hablado)"
-          aria-label="Instrucción para la IA" style="flex:1; min-width:200px; font-size:12px;">
-        <button class="btn-secondary" style="font-size:11px; padding:5px 10px;" onclick="aiEditRun('${key}')" ${st.busy ? "disabled" : ""}>${st.busy ? (SVG.spinner || "") + " Pensando…" : "Pedir cambio"}</button>
+    <div class="ai-chat" id="ae-box-${id}">
+      <header class="ai-chat-head">
+        ${_botAvatar("ai-chat-avatar")}
+        <div class="ai-chat-id">
+          <strong>Copiloto</strong>
+          <span>${tieneTextoAI(t)}</span>
+        </div>
         <button class="link-quiet" onclick="aiEditToggle('${key}')">Cerrar</button>
+      </header>
+
+      <div class="ai-chat-log" id="ae-log-${id}">
+        ${historial.length === 0 ? `<p class="ai-chat-empty">Pídele un cambio con tus palabras. No toca el texto hasta que tú lo aceptes.</p>` : ""}
+        ${historial.map(m => m.r === "u"
+          ? `<div class="ai-msg is-user"><p>${escapeHtml(m.t)}</p><span>${m.at}</span></div>`
+          : `<div class="ai-msg is-bot">${_botAvatar("ai-msg-avatar")}<p>${escapeHtml(m.t)}</p><span>${m.at}</span></div>`).join("")}
+        ${st.busy ? `<div class="ai-msg is-bot is-live">${_botAvatar("ai-msg-avatar")}<p id="ae-res-live-${id}">${escapeHtml(st.live || "Leyendo el texto…")}</p><span>escribiendo</span></div>` : ""}
+        ${st.result ? `
+        <div class="ai-msg is-bot is-proposal">
+          ${_botAvatar("ai-msg-avatar")}
+          <div>
+            <p id="ae-res-${id}">${escapeHtml(st.result)}</p>
+            <div class="ai-proposal-actions">
+              <button class="btn-primary" onclick="aiEditAceptar('${key}')">${SVG.check} Aplicar al campo</button>
+              <button class="btn-secondary" onclick="aiEditDescartar('${key}')">Descartar</button>
+              <button class="link-quiet" onclick="aiEditCopiar('${key}')">Copiar</button>
+            </div>
+          </div>
+        </div>` : ""}
       </div>
-      ${st.msg ? `<p class="sol-hint" style="margin:6px 0 0;">${escapeHtml(st.msg)}</p>` : ""}
-      ${!tieneTexto && !st.result ? `<p class="sol-hint" style="margin:6px 0 0;">Este campo está vacío: la IA escribe desde cero.</p>` : ""}
-      ${st.busy && st.live ? `<div id="ae-res-live-${id}" style="margin-top:6px; white-space:pre-wrap; font-size:12px; line-height:1.6; color:var(--text-muted);">${escapeHtml(st.live)}</div>` : ""}
-      ${propuesta}
+
+      ${st.msg ? `<p class="ai-chat-note">${escapeHtml(st.msg)}</p>` : ""}
+
+      <div class="ai-chat-compose">
+        <textarea id="ae-in-${id}" rows="2" placeholder="Qué cambia y qué se queda (ej.: más corto, sin cifras, tono hablado)"
+          oninput="aiEditInstr('${key}', this.value)" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();aiEditRun('${key}');}">${escapeHtml(st.instr || "")}</textarea>
+        <button class="ai-send" onclick="aiEditRun('${key}')" ${st.busy ? "disabled" : ""} aria-label="Enviar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l16-8-6 8 6 8z"/></svg>
+        </button>
+      </div>
     </div>`;
+}
+
+function tieneTextoAI(t) {
+  return String(t.leer()).trim() ? "sobre " + t.nombre : "escribe desde cero: " + t.nombre;
 }
 
 function aiEditPanel(key) {
@@ -3315,9 +3357,11 @@ async function aiEditRun(key) {
   const instr = String(st.instr || "").trim();
   if (!instr) { showToast("Escribe qué quieres cambiar antes de pedirlo."); return; }
   st.busy = true;
-  st.msg = "Pidiendo el cambio a la IA…";
+  st.msg = "";
   st.result = "";
   st.live = "";
+  aiEditHistPush(key, "u", instr);
+  st.instr = "";
   aiEditRepaint(key);
   const prompt = `Actúa como editor del equipo. Proyecto: "${state.project_name || state.challenge_title || "el proyecto"}" (${state.rally_type === "latam" ? "Rally Latam" : "Rally Nacional"}).
 Instrucción del equipo: ${instr}
@@ -3336,14 +3380,20 @@ Devuelve SOLO el texto nuevo, sin explicaciones ni markdown. Conserva las cifras
     boxTick: (texto) => {
       st.live = texto || "";
       const caja = document.getElementById("ae-res-live-" + aiEditId(key));
-      if (caja) caja.textContent = st.live;
+      if (caja) {
+        caja.textContent = st.live;
+        const log = document.getElementById("ae-log-" + aiEditId(key));
+        if (log) log.scrollTop = log.scrollHeight;
+      }
     },
     onFinish: (final) => {
       st.busy = false;
       st.live = "";
       st.result = String((final && final.text) || "").trim();
-      st.msg = st.result ? "Revisa la propuesta antes de aceptarla." : "La IA no devolvió texto. Prueba otro modelo.";
+      st.msg = st.result ? "" : "La IA no devolvió texto. Prueba otro modelo.";
       aiEditRepaint(key);
+      const log = document.getElementById("ae-log-" + aiEditId(key));
+      if (log) log.scrollTop = log.scrollHeight;
     }
   });
 }
@@ -3352,6 +3402,7 @@ function aiEditAceptar(key) {
   const st = _aiEditState[key];
   const t = aiEditTarget(key);
   if (!st || !st.result || !t) return;
+  aiEditHistPush(key, "a", "Aplicado al campo: " + st.result);
   t.escribir(st.result);
   saveState();
   st.result = ""; st.instr = ""; st.msg = ""; st.open = false;
@@ -3363,6 +3414,7 @@ function aiEditAceptar(key) {
 function aiEditDescartar(key) {
   const st = _aiEditState[key];
   if (!st) return;
+  aiEditHistPush(key, "a", "Propuesta descartada. El texto quedó como estaba.");
   st.result = "";
   st.msg = "Propuesta descartada. El texto quedó como estaba.";
   aiEditRepaint(key);
@@ -4074,7 +4126,7 @@ function _mesaTime() {
   return String(d.getHours()).padStart(2, "0") + ":" + String(d.getMinutes()).padStart(2, "0");
 }
 
-function mesaVote(chId, seatId) {
+function mesaVote(chId, seatId, stance) {
   // Un voto por persona: cada cual vota el suyo, nunca el de otro.
   const yo = mesaMe();
   if (!yo) {
@@ -4090,7 +4142,9 @@ function mesaVote(chId, seatId) {
   b.yes = b.yes.filter(x => x !== seatId);
   b.no = b.no.filter(x => x !== seatId);
   b.res = b.res.filter(x => x !== seatId);
-  const next = cur === null ? "yes" : cur === "yes" ? "no" : cur === "no" ? "res" : null;
+  const next = stance
+    ? (cur === stance ? null : stance)
+    : (cur === null ? "yes" : cur === "yes" ? "no" : cur === "no" ? "res" : null);
   if (next === "yes") b.yes.push(seatId);
   if (next === "no") b.no.push(seatId);
   if (next === "res") b.res.push(seatId);
@@ -4194,6 +4248,8 @@ function renderMesaVote(ch) {
   const seats = mesaSeats();
   const meId = mesaMe();
   const stance = seatId => b.yes.includes(seatId) ? "yes" : b.no.includes(seatId) ? "no" : b.res.includes(seatId) ? "res" : "wait";
+  const mio = meId ? (b.yes.includes(meId) ? "yes" : b.no.includes(meId) ? "no" : b.res.includes(meId) ? "res" : "") : "";
+  const faltan = seats.filter(s => stance(s.id) === "wait").map(s => s.label);
   const stanceLabel = s => s === "yes" ? "aprueba" : s === "no" ? "descarta" : s === "res" ? "reserva" : "sin decidir";
   const verdict = t.discarded
     ? `<span class="cr-verdict-main is-out">DESCARTADO</span> <span class="cr-verdict-sub">${t.no} de ${t.size} a descarte · el sistema lo movió al embudo</span>`
@@ -4207,6 +4263,18 @@ function renderMesaVote(ch) {
 
       <div class="cr-verdict">${verdict}</div>
 
+      <div class="cr-ballot">
+        <span class="cr-ballot-q">Tu voto en el reto #${ch.id}</span>
+        ${meId ? `
+        <div class="cr-ballot-actions">
+          <button class="cr-ballot-btn is-yes ${mio === "yes" ? "is-active" : ""}" onclick="mesaVote('${ch.id}', '${meId}', 'yes')">Apruebo</button>
+          <button class="cr-ballot-btn is-no ${mio === "no" ? "is-active" : ""}" onclick="mesaVote('${ch.id}', '${meId}', 'no')">Descarto</button>
+          <button class="cr-ballot-btn is-res ${mio === "res" ? "is-active" : ""}" onclick="mesaVote('${ch.id}', '${meId}', 'res')">Me reservo</button>
+        </div>
+        <p class="cr-ballot-wait">${faltan.length ? "Faltan por votar: " + faltan.join(", ") : "Ya votaron todos los de la mesa."}</p>
+        ` : `<p class="cr-rule-line">Escribe tu nombre en el equipo y aquí aparece tu botón para votar.</p>`}
+      </div>
+
       <div class="cr-voters">
         ${seats.length === 0
           ? `<p class="cr-rule-line">Nadie se ha nombrado todavía. Escribe tu nombre en el equipo y la mesa se llena con las personas reales.</p>`
@@ -4214,12 +4282,12 @@ function renderMesaVote(ch) {
           const s = stance(seat.id);
           const isMe = seat.id === meId;
           return `
-            <button class="cr-voter is-${s} ${isMe ? "is-you" : ""}" aria-label="${seat.label}: ${stanceLabel(s)}${b.at[seat.id] ? " a las " + b.at[seat.id] : ""}. ${isMe ? "Toca para cambiar tu voto." : "Solo esa persona puede cambiar su voto."}"${isMe ? ` onclick="mesaVote('${ch.id}', '${seat.id}')" title="Toca para cambiar tu voto"` : ` disabled title="${seat.label} vota por sí mismo"`}>
+            <div class="cr-voter is-${s} ${isMe ? "is-you" : ""}" aria-label="${seat.label}: ${stanceLabel(s)}${b.at[seat.id] ? " a las " + b.at[seat.id] : ""}">
               <span class="cr-dot" style="background:${seat.color}"></span>
               <span class="cr-voter-name">${seat.label}${isMe ? " · tú" : ""}</span>
-              <span class="cr-voter-stance">${stanceLabel(s)}</span>
+              <span class="cr-voter-stance">${s === "wait" ? "falta" : stanceLabel(s)}</span>
               <span class="cr-voter-at">${b.at[seat.id] || "—"}</span>
-            </button>
+            </div>
           `;
         }).join("")}
       </div>
@@ -6288,10 +6356,11 @@ function renderViewSolution() {
       </div>
       <div class="sol-boosters">
         ${boosters.map(b => `
-          <div class="sol-booster${b.why ? " is-on" : ""}" style="grid-template-columns:1fr; cursor:default;">
+          <button type="button" class="sol-booster tone-${b.tone}${b.why ? " is-on" : ""}" onclick="abrirDetalleBooster('${b.key}')" title="Ver en grande">
+            ${_boosterFigura(b.symbol)}
             <span class="sol-booster-title">${b.title}</span>
             <span class="sol-booster-desc">${escapeHtml(b.why || b.desc)}</span>
-          </div>`).join("")}
+          </button>`).join("")}
       </div>
     </section>
   `;
@@ -6345,7 +6414,7 @@ function renderViewSolution() {
       <div class="sol-input" style="white-space:pre-wrap;">${escapeHtml(state.solution_thesis || "Sin tesis todavía.")}</div>
       <span class="sol-label" style="margin-top:18px; display:block;">Cómo se lo explicas a un asesor</span>
       <div class="sol-input" style="white-space:pre-wrap;">${escapeHtml(state.solution_simple || "Sin explicación todavía.")}</div>
-      <p class="sol-hint" style="margin-top:10px;">Proyecto: <strong>${escapeHtml(state.project_name || "sin nombre")}</strong></p>
+      <p class="sol-hint" style="margin-top:10px;">Proyecto: <strong class="sol-project-name">${escapeHtml(state.project_name || "sin nombre")}</strong></p>
     </section>
     `}
 
@@ -6418,8 +6487,73 @@ function boostersDelProyecto() {
       why: buscar(/\bia\b|algoritm\w*|clasific\w*|modelo|predic\w*|visi[óo]n|automat\w*|machine learning|sensado/) ? `La tesis nombra «${buscar(/\bia\b|algoritm\w*|clasific\w*|modelo|predic\w*|visi[óo]n|automat\w*|machine learning|sensado/)}»` : ""
     }
   ];
+  const tono = { ods: "ods", nacional_plan: "plan", sensors: "tech", visuals: "visual", waste_capital: "bio", cyber_physical: "cyber" };
+  const simbolo = { ods: "globe", nacional_plan: "route", sensors: "waves", visuals: "frame", waste_capital: "leaf", cyber_physical: "chip" };
+  lista.forEach(b => { b.tone = tono[b.key] || "plan"; b.symbol = simbolo[b.key] || "globe"; });
   state.solution_boosters = lista.filter(b => b.why).map(b => b.key);
   return lista;
+}
+
+// Cada cuadrito abre en grande: qué exige, qué evidencia lo encendió y qué
+// falta si está apagado. Se lee sin salir del taller.
+const _BOOSTER_FIGURA = {
+  globe: '<circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2.5 2.4 2.5 13.6 0 16M12 4c-2.5 2.4-2.5 13.6 0 16"/>',
+  route: '<circle cx="6" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 6h6a3 3 0 0 1 0 6H9a3 3 0 0 0 0 6h7"/>',
+  waves: '<path d="M3 12h3l2-6 3 12 3-9 2 5h5"/>',
+  frame: '<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M5 17l4-4 3 3 3-2 4 3"/>',
+  leaf: '<path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14H5z"/><path d="M5 19c3-5 6-7 10-9"/>',
+  chip: '<rect x="7" y="7" width="10" height="10" rx="2"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/>'
+};
+function _boosterFigura(symbol, cls) {
+  return `<svg class="${cls || "sol-booster-fig"}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${_BOOSTER_FIGURA[symbol] || _BOOSTER_FIGURA.globe}</svg>`;
+}
+
+const _BOOSTER_EXIGE = {
+  ods: "El reto tiene que venir con ODS asignados por el comité, o el equipo declara a cuál meta responde la solución.",
+  nacional_plan: "En Nacional, el reto trae ejes del plan país. En Latam, la tesis declara que el diseño se replica o se transfiere.",
+  sensors: "La tesis nombra el sensor, el nodo o la fuente de energía que hace medible la solución.",
+  visuals: "Hay pantalla que grabar (interfaz) o un objeto físico que modelar en 3D para el video.",
+  waste_capital: "La solución usa un residuo real como insumo, y la tesis lo nombra.",
+  cyber_physical: "Lo físico se vuelve dato: clasificación, modelo, predicción o automatización."
+};
+
+function abrirDetalleBooster(key) {
+  const b = boostersDelProyecto().find(x => x.key === key);
+  if (!b) return;
+  let modal = document.getElementById("booster-modal-overlay");
+  if (!modal) {
+    modal = document.createElement("div");
+    modal.id = "booster-modal-overlay";
+    modal.className = "booster-modal-overlay";
+    modal.addEventListener("click", ev => { if (ev.target === modal) cerrarDetalleBooster(); });
+    document.body.appendChild(modal);
+  }
+  modal.innerHTML = `
+    <div class="booster-modal tone-${b.tone}" role="dialog" aria-modal="true" aria-label="${escapeHtml(b.title)}">
+      <header class="booster-modal-head">
+        ${_boosterFigura(b.symbol, "booster-modal-fig")}
+        <div>
+          <h3>${escapeHtml(b.title)}</h3>
+          <span class="booster-modal-state ${b.why ? "is-on" : "is-off"}">${b.why ? "Entra en el video" : "Todavía no entra"}</span>
+        </div>
+        <button class="booster-modal-close" onclick="cerrarDetalleBooster()" aria-label="Cerrar">×</button>
+      </header>
+      <p class="booster-modal-desc">${escapeHtml(b.desc)}</p>
+      <div class="booster-modal-block">
+        <span class="booster-modal-label">Qué tiene que pasar</span>
+        <p>${escapeHtml(_BOOSTER_EXIGE[b.key] || "")}</p>
+      </div>
+      <div class="booster-modal-block">
+        <span class="booster-modal-label">${b.why ? "Por qué está encendido" : "Qué falta"}</span>
+        <p>${escapeHtml(b.why || "El motor no encontró la evidencia en la tesis ni en el reto. Escribe esa parte en la tesis y el cuadrito se enciende solo.")}</p>
+      </div>
+    </div>`;
+  modal.style.display = "flex";
+}
+
+function cerrarDetalleBooster() {
+  const modal = document.getElementById("booster-modal-overlay");
+  if (modal) modal.style.display = "none";
 }
 
 // ── COLABORACIÓN EN VIVO · TALLER DE SOLUCIÓN ──────────────────────────────
