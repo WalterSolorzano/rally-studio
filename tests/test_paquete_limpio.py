@@ -43,6 +43,7 @@ def test_no_demo_content_in_artefactos():
         "script/script.md", "script/narration.txt", "script/shotlist.csv",
         "site/index.html", "docs/canvas.md", "docs/bibliography.md",
         "dashboard/data/stats.generated.js", "dashboard/data/stats.generated.json",
+        "dashboard/app_video.js",
     )
     for ruta in rutas:
         p = Path(ruta)

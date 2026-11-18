@@ -313,7 +313,10 @@ def sync_brief_from_state(state: dict) -> None:
     """
     if not isinstance(state, dict) or not state:
         return
-    ruta = BASE_DIR / "brief.json"
+    # Una instancia con directorio de datos propio es un sandbox: su brief.json
+    # vive junto a esos datos y nunca escribe el brief.json del repositorio.
+    _sandbox = os.environ.get("RALLY_DATA_DIR") or os.environ.get("RALLY_TEST_DATA_DIR")
+    ruta = pathlib.Path(_sandbox) / "brief.json" if _sandbox else BASE_DIR / "brief.json"
     actual: dict = {}
     try:
         if ruta.exists():
@@ -335,6 +338,7 @@ def sync_brief_from_state(state: dict) -> None:
         return
     actual["_generated_at"] = time.strftime("%Y-%m-%dT%H:%M:%S")
     try:
+        ruta.parent.mkdir(parents=True, exist_ok=True)
         ruta.write_text(
             json.dumps(actual, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
         )

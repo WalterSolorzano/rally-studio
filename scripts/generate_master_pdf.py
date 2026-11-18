@@ -1,3 +1,4 @@
+import json
 import os
 from reportlab.lib.pagesizes import letter
 from reportlab.lib import colors
@@ -329,6 +330,16 @@ def _seccion_marco_y_teorias(story, st):
     story.append(PageBreak())
 
 
+def _nombre_proyecto():
+    raiz = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    try:
+        with open(os.path.join(raiz, "brief.json"), encoding="utf-8") as f:
+            nombre = (json.load(f).get("project_name") or "").strip()
+    except (OSError, ValueError):
+        nombre = ""
+    return nombre or "[PENDIENTE: nombre del proyecto]"
+
+
 def _seccion_guion_pasv(story, st):
 
     # ═════════════════════════════════════════════════════════════════════════
@@ -391,10 +402,11 @@ def _seccion_guion_pasv(story, st):
     story.append(Paragraph("<b>Ejemplo Canónico de Guion PAS-V (Total: 263 palabras a 135 ppm / 1:57 min):</b>", st["body_bold"]))
     guion_sample = """
     <b>[0:00–0:20 | 44 palabras]:</b> «En el corredor seco centroamericano, más de cuatrocientas mil familias pierden hasta el sesenta por ciento de sus cosechas por variabilidad hídrica extrema. Don Manuel, agricultor de Waslala, gasta tres dólares diarios en combustible diésel para bombear agua turbia que arruina sus suelos.»<br/><br/>
-    <b>[0:20–1:00 | 88 palabras]:</b> «Para romper este ciclo diseñamos HIDRO-NEXUS, un sistema modular de micropresas telemetradas con bio-filtros de zeolita natural y bombeo fotovoltaico autónomo. El dispositivo captura escorrentías mediante una compuerta basculante pasiva calibrada por contrapeso gravitatorio, reteniendo sedimentos pesados mientras un sensor ultrasónico LoRaWAN transmite el nivel de caudal en tiempo real sin requerir red celular. La zeolita local elimina el noventa y dos por ciento de metales pesados, presurizando un circuito de goteo que opera veinticuatro horas continuas impulsado por paneles solares bifaciales de alta eficiencia.»<br/><br/>
-    <b>[1:00–1:35 | 76 palabras]:</b> «La prefactibilidad económica de HIDRO-NEXUS está validada con cotizaciones reales de distribuidores mayoristas. El costo unitario de fabricación del módulo es de cuatrocientos ochenta dólares, con un lote piloto inicial de diez unidades presupuestado en cinco mil doscientos dólares, incluyendo dieciocho por ciento de flete y aranceles. Mediante un modelo cooperativo B2B con amortización por micro-cuotas agrícolas, el productor recupera la inversión en siete meses gracias al incremento de productividad.»<br/><br/>
-    <b>[1:35–1:58 | 55 palabras]:</b> «Con el despliegue de cincuenta módulos en su primer año, HIDRO-NEXUS garantizará tres millones de litros de agua segura, mitigando doscientas toneladas de CO2 y tributando directamente a los ODS dos, seis y trece. La ingeniería nicaragüense responde al cambio climático con ciencia rigurosa. HIDRO-NEXUS: Sembrando agua, cosechando soberanía continental.»
+    <b>[0:20–1:00 | 88 palabras]:</b> «Para romper este ciclo diseñamos {{PROYECTO}}, un sistema modular de micropresas telemetradas con bio-filtros de zeolita natural y bombeo fotovoltaico autónomo. El dispositivo captura escorrentías mediante una compuerta basculante pasiva calibrada por contrapeso gravitatorio, reteniendo sedimentos pesados mientras un sensor ultrasónico de largo alcance transmite el nivel de caudal en tiempo real sin requerir red celular. La zeolita local elimina el noventa y dos por ciento de metales pesados, presurizando un circuito de goteo que opera veinticuatro horas continuas impulsado por paneles solares bifaciales de alta eficiencia.»<br/><br/>
+    <b>[1:00–1:35 | 76 palabras]:</b> «La prefactibilidad económica de {{PROYECTO}} está validada con cotizaciones reales de distribuidores mayoristas. El costo unitario de fabricación del módulo es de cuatrocientos ochenta dólares, con un lote piloto inicial de diez unidades presupuestado en cinco mil doscientos dólares, incluyendo dieciocho por ciento de flete y aranceles. Mediante un modelo cooperativo B2B con amortización por micro-cuotas agrícolas, el productor recupera la inversión en siete meses gracias al incremento de productividad.»<br/><br/>
+    <b>[1:35–1:58 | 55 palabras]:</b> «Con el despliegue de cincuenta módulos en su primer año, {{PROYECTO}} garantizará tres millones de litros de agua segura, mitigando doscientas toneladas de CO2 y tributando directamente a los ODS dos, seis y trece. La ingeniería nicaragüense responde al cambio climático con ciencia rigurosa. {{PROYECTO}}: Sembrando agua, cosechando soberanía continental.»
     """
+    guion_sample = guion_sample.replace("{{PROYECTO}}", _nombre_proyecto())
     g_table = Table([[Paragraph(guion_sample, st["callout"])]], colWidths=[504])
     g_table.setStyle(TableStyle([
         ('BACKGROUND', (0,0), (-1,-1), BG_LIGHT),

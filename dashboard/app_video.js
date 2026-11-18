@@ -913,7 +913,7 @@ NO HAGAS
 
 const VOICE_PRESETS = {
   proyecto: {
-    label: "Hidro Vigía · locución final",
+    label: "Locución final del proyecto",
     short: "Locución del proyecto",
     src: "/assets/voice/narration.mp4",
     meta: "77.8 s · MP4 AAC · voz interna · énfasis 0.80 / ritmo 0.45 · semilla 7",
