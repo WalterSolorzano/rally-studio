@@ -31,7 +31,7 @@
     {
       "id": "contexto-rally",
       "descripcion": "Carga el contexto del proyecto antes de trabajar. Lee brief.json, el índice del corpus y el estado vivo de la ventana, y decide qué documentos abrir. Úsala al empezar una sesión, antes de producir contenido o cuando falte un dato.",
-      "lineas": 106,
+      "lineas": 113,
       "scripts": [],
       "skills_citadas": [],
       "extras": [],
@@ -86,9 +86,11 @@
     {
       "id": "dossier-soluciones",
       "descripcion": "Convierte los retos del comité o del usuario en un dossier formal de 3 páginas por reto (PDF, Word, Excel) con precedentes ganadores y razonamiento problema-causa-insight-solución-métrica. Úsala cuando piden el documento entregable. Si solo quieren ideas en el chat, usa `proponer-retos`.",
-      "lineas": 69,
+      "lineas": 76,
       "scripts": [
-        "scripts/gen_dossier.py"
+        "scripts/gen_dossier.py",
+        "scripts/gen_soluciones_pdf.py",
+        "scripts/soluciones_motor.py"
       ],
       "skills_citadas": [],
       "extras": [],
@@ -213,7 +215,7 @@
     {
       "id": "orquestador",
       "descripcion": "Orquesta agentes especialistas con contratos por archivo y guardia de recursos. La fase base son dos roles (director + soluciones); el resto (investigador, guionista, modeler 3D, pautador, presupuestador, grafista, web, voz, editor, auditor) es fase extendida. Úsala cuando el humano pida despachar al equipo o que varios trabajen en paralelo.",
-      "lineas": 384,
+      "lineas": 389,
       "scripts": [
         "scripts/build_shotlist.py",
         "scripts/gen_script.py",
@@ -223,6 +225,7 @@
         "scripts/herramientas.py",
         "scripts/orchestrate.py",
         "scripts/render_contadores.py",
+        "scripts/verificar_fases.py",
         "tools/remix_audio.py"
       ],
       "skills_citadas": [
@@ -272,7 +275,8 @@
       "lineas": 119,
       "scripts": [
         "scripts/check_anti_generico.py",
-        "scripts/gen_soluciones_pdf.py",
+        "scripts/dossier_desde_motor.py",
+        "scripts/gen_dossier.py",
         "scripts/soluciones_motor.py"
       ],
       "skills_citadas": [],
@@ -293,8 +297,11 @@
     {
       "id": "propuesta-identidad",
       "descripcion": "Convierte el nombre, logo o una idea del equipo en propuestas de identidad visual (paleta, tipografías, tokens, dirección de logotipo). Úsala cuando el usuario no tiene marca, no le gusta la que tiene o pide que la interfaz se vea mejor.",
-      "lineas": 117,
-      "scripts": [],
+      "lineas": 116,
+      "scripts": [
+        "scripts/gen_palette.py",
+        "scripts/verificar_identidad.py"
+      ],
       "skills_citadas": [],
       "extras": [],
       "secciones_boilerplate": [],
@@ -310,8 +317,10 @@
     {
       "id": "publicar-sitio",
       "descripcion": "Construye y publica la web demo del proyecto en GitHub Pages o Netlify. Úsala cuando el usuario quiere que su prototipo tenga una URL pública para el video o la entrega.",
-      "lineas": 149,
+      "lineas": 154,
       "scripts": [
+        "scripts/gen_site.py",
+        "scripts/probar_responsive.py",
         "scripts/publish_site.py"
       ],
       "skills_citadas": [
@@ -451,6 +460,12 @@
       "check": "() => !!state.rally_type"
     },
     {
+      "id": "identidad",
+      "label": "Paleta y marca del proyecto",
+      "level": 1,
+      "check": "() => !!state.rally_type"
+    },
+    {
       "id": "challenges",
       "label": "02 Retos del Comité",
       "level": 2,
@@ -502,13 +517,13 @@
       "id": "script",
       "label": "10 Guion del Video",
       "level": 5,
-      "check": "() => isPautadoComplete() && isBudgetValid()"
+      "check": "() => isPautadoWritten() && isBudgetValid()"
     },
     {
       "id": "webdemo",
       "label": "11 Prototipo para Video",
       "level": 5,
-      "check": "() => isPautadoComplete() && isBudgetValid()"
+      "check": "() => isPautadoWritten() && isBudgetValid()"
     },
     {
       "id": "timeline",
@@ -535,7 +550,7 @@
     },
     {
       "archivo": "build_stats.py",
-      "lineas": 792,
+      "lineas": 886,
       "doc": "Generate dashboard/data/stats.generated.js from the current project."
     },
     {
@@ -545,7 +560,7 @@
     },
     {
       "archivo": "comun.py",
-      "lineas": 168,
+      "lineas": 178,
       "doc": "Base compartida del sistema: una sola fuente para lo que estaba copiado."
     },
     {
@@ -555,107 +570,132 @@
     },
     {
       "archivo": "crear_proyecto.py",
-      "lineas": 64,
+      "lineas": 69,
       "doc": "Crea el proyecto local, su admin y la primera invitación."
     },
     {
+      "archivo": "dossier_desde_motor.py",
+      "lineas": 301,
+      "doc": "Convierte la salida del motor de soluciones en las fichas que maqueta gen_dossier.py."
+    },
+    {
+      "archivo": "gen_analisis_pdf.py",
+      "lineas": 436,
+      "doc": "Genera el PDF de investigacion de ganadores con la identidad del proyecto."
+    },
+    {
       "archivo": "gen_bibliography.py",
-      "lineas": 64,
+      "lineas": 85,
       "doc": "gen_bibliography.py -- Genera docs/bibliography.md en formato APA 7 a partir de"
     },
     {
       "archivo": "gen_budget.py",
-      "lineas": 180,
+      "lineas": 244,
       "doc": "gen_budget.py -- Genera budget/budget.xlsx con formato formal a partir de budget/budget.json."
     },
     {
       "archivo": "gen_canvas.py",
-      "lineas": 141,
+      "lineas": 166,
       "doc": "gen_canvas.py -- Genera docs/canvas.md a partir de brief.json y budget/budget.json."
     },
     {
       "archivo": "gen_challenges_doc.py",
-      "lineas": 227,
+      "lineas": 245,
       "doc": "gen_challenges_doc.py -- Genera el documento Word editable oficial de deliberación del equipo:"
     },
     {
       "archivo": "gen_dossier.py",
-      "lineas": 822,
+      "lineas": 936,
       "doc": "Genera el dossier de soluciones en PDF, Word y Excel a partir de un JSON."
     },
     {
       "archivo": "gen_indice.py",
-      "lineas": 380,
+      "lineas": 436,
       "doc": "Genera `knowledge/INDICE.md`: el mapa del corpus para el agente (b)."
     },
     {
       "archivo": "gen_mapa_nicaragua.py",
-      "lineas": 103,
+      "lineas": 108,
       "doc": "Genera la silueta de Nicaragua (path SVG) para el modulo design/."
     },
     {
       "archivo": "gen_ods_data.py",
-      "lineas": 70,
+      "lineas": 80,
       "doc": "Genera design/ods_data.js desde el catalogo ODS del dashboard."
     },
     {
       "archivo": "gen_pagina_diseno.py",
-      "lineas": 200,
+      "lineas": 267,
       "doc": "Genera la página online de un proyecto de Rally Design."
     },
     {
       "archivo": "gen_palette.py",
-      "lineas": 184,
-      "doc": "gen_palette.py -- Genera paleta de colores desde el logo del proyecto."
+      "lineas": 293,
+      "doc": "gen_palette.py -- Deriva la identidad cromatica del proyecto desde el reto."
     },
     {
       "archivo": "gen_pautado.py",
-      "lineas": 119,
+      "lineas": 210,
       "doc": "gen_pautado.py -- Genera docs/pautado_draft.docx a partir de brief.json, claims.json"
     },
     {
       "archivo": "gen_presets_json.py",
-      "lineas": 42,
+      "lineas": 50,
       "doc": "Genera design/presets.json a partir de design/presets.js (fuente de verdad)."
     },
     {
       "archivo": "gen_readme.py",
-      "lineas": 120,
+      "lineas": 143,
       "doc": "gen_readme.py -- Genera y actualiza dinamicamente el README.md maestro del proyecto."
     },
     {
+      "archivo": "gen_readme_cerebro.py",
+      "lineas": 345,
+      "doc": "Genera `assets/readme/cerebro.png` desde los datos reales del repositorio."
+    },
+    {
+      "archivo": "gen_recursos.py",
+      "lineas": 120,
+      "doc": "Inventario de recursos que el chat puede mostrar: `assets/recursos.json`."
+    },
+    {
       "archivo": "gen_report_figures.py",
-      "lineas": 548,
+      "lineas": 574,
       "doc": "Genera las figuras del informe de investigacion."
     },
     {
       "archivo": "gen_script.py",
-      "lineas": 559,
+      "lineas": 573,
       "doc": "gen_script.py -- Genera script/script.md, script/shotlist.csv y script/narration.txt"
     },
     {
       "archivo": "gen_sharktank_pdf.py",
-      "lineas": 209,
+      "lineas": 236,
       "doc": "Genera el PDF de salud de la idea (skill sharktank)."
     },
     {
+      "archivo": "gen_site.py",
+      "lineas": 373,
+      "doc": "Genera site/index.html a partir del brief y de la identidad aprobada."
+    },
+    {
       "archivo": "gen_soluciones_pdf.py",
-      "lineas": 284,
+      "lineas": 301,
       "doc": "Genera el dossier PDF de soluciones para los retos del usuario."
     },
     {
       "archivo": "gen_storyboard_visual.py",
-      "lineas": 562,
+      "lineas": 606,
       "doc": "Genera el tablero visual de rodaje (hoja de contactos + una fila por toma)."
     },
     {
       "archivo": "gen_voice.py",
-      "lineas": 298,
+      "lineas": 323,
       "doc": "gen_voice.py -- Sintetizador de voz adaptativo para el video pitch (<= 120s)."
     },
     {
       "archivo": "generate_master_pdf.py",
-      "lineas": 590,
+      "lineas": 640,
       "doc": ""
     },
     {
@@ -675,7 +715,7 @@
     },
     {
       "archivo": "ingest_challenges.py",
-      "lineas": 193,
+      "lineas": 197,
       "doc": "ingest_challenges.py -- Ingesta de desafíos desde múltiples formatos:"
     },
     {
@@ -685,7 +725,7 @@
     },
     {
       "archivo": "member_store.py",
-      "lineas": 245,
+      "lineas": 582,
       "doc": "Miembros, invitaciones y sesiones de un proyecto local."
     },
     {
@@ -695,7 +735,7 @@
     },
     {
       "archivo": "nube_store.py",
-      "lineas": 264,
+      "lineas": 260,
       "doc": "Sincronizacion de archivos del rally entre host local y la isla (Fase 2.1)."
     },
     {
@@ -709,13 +749,18 @@
       "doc": "pre_render_check.py -- Bloquea el render si las dependencias de una toma no"
     },
     {
+      "archivo": "probar_responsive.py",
+      "lineas": 94,
+      "doc": "Prueba de responsive del sitio del proyecto."
+    },
+    {
       "archivo": "publicar_avance.py",
       "lineas": 163,
       "doc": "Publica un avance de agente en la bitacora viva de Rally Studio."
     },
     {
       "archivo": "publicar_seccion.py",
-      "lineas": 153,
+      "lineas": 181,
       "doc": "Escribe una sección directamente en el servidor de Rally Studio."
     },
     {
@@ -730,7 +775,7 @@
     },
     {
       "archivo": "rally_service.py",
-      "lineas": 3165,
+      "lineas": 4046,
       "doc": "rally_service.py -- Backend HTTP ligero y autónomo para Rally Studio & Workbench."
     },
     {
@@ -760,7 +805,7 @@
     },
     {
       "archivo": "section_store.py",
-      "lineas": 417,
+      "lineas": 451,
       "doc": "Almacen de secciones versionadas para Rally Studio."
     },
     {
@@ -890,8 +935,13 @@
     },
     {
       "archivo": "soluciones_motor.py",
-      "lineas": 646,
+      "lineas": 653,
       "doc": "Motor de soluciones para retos del Rally."
+    },
+    {
+      "archivo": "store_base.py",
+      "lineas": 31,
+      "doc": "Base comun de los almacenes SQLite del proyecto."
     },
     {
       "archivo": "sync_skills.py",
@@ -900,18 +950,28 @@
     },
     {
       "archivo": "validate_brief.py",
-      "lineas": 90,
+      "lineas": 94,
       "doc": "validate_brief.py -- Falla con SystemExit si brief.json esta incompleto."
     },
     {
       "archivo": "validate_budget.py",
-      "lineas": 103,
-      "doc": "validate_budget.py -- Valida rigurosamente budget/budget.json contra las reglas de rally:"
+      "lineas": 119,
+      "doc": "validate_budget.py -- Valida budget/budget.json contra las reglas de rally:"
     },
     {
       "archivo": "validate_pautado.py",
-      "lineas": 58,
+      "lineas": 100,
       "doc": "validate_pautado.py -- Valida y cuenta caracteres (con espacios) por seccion en docs/pautado_draft.docx."
+    },
+    {
+      "archivo": "verificar_fases.py",
+      "lineas": 453,
+      "doc": "verificar_fases.py -- Compuerta de orden y dependencia entre las 13 etapas."
+    },
+    {
+      "archivo": "verificar_identidad.py",
+      "lineas": 177,
+      "doc": "verificar_identidad.py -- Compuerta G1 del plan."
     },
     {
       "archivo": "watch_stats.py",
@@ -949,13 +1009,14 @@
     "dashboard/presence.js"
   ],
   "cruces": {
-    "scripts_total": 80,
-    "scripts_citados": 25,
+    "scripts_total": 89,
+    "scripts_citados": 31,
     "scripts_huerfanos": [
       "build_report_pdf.py",
       "build_stats.py",
       "comun.py",
       "crear_proyecto.py",
+      "gen_analisis_pdf.py",
       "gen_bibliography.py",
       "gen_budget.py",
       "gen_canvas.py",
@@ -964,10 +1025,11 @@
       "gen_mapa_nicaragua.py",
       "gen_ods_data.py",
       "gen_pagina_diseno.py",
-      "gen_palette.py",
       "gen_pautado.py",
       "gen_presets_json.py",
       "gen_readme.py",
+      "gen_readme_cerebro.py",
+      "gen_recursos.py",
       "gen_report_figures.py",
       "gen_voice.py",
       "generate_master_pdf.py",
@@ -1007,6 +1069,7 @@
       "sirli_videos.py",
       "sirli_visual_resumen.py",
       "sirli_visual_stats.py",
+      "store_base.py",
       "sync_skills.py",
       "validate_brief.py",
       "validate_budget.py",
@@ -1019,7 +1082,6 @@
       "control-tiempo-entrega",
       "guiar-usuario",
       "presupuesto",
-      "propuesta-identidad",
       "sugerir-por-fase"
     ],
     "boilerplate_por_seccion": {
