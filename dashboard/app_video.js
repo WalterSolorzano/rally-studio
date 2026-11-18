@@ -1268,19 +1268,17 @@ function scriptMeterTexto() {
 
 function renderViewScript() {
   const actos = [
-    { key: "acto1", n: "I", title: "Problema", ph: "El problema, con una persona y una cifra reales. [pausa] después de la cifra." },
-    { key: "acto2", n: "II", title: "Solución", ph: "Qué construyeron y cómo funciona, en tres frases cortas." },
-    { key: "acto3", n: "III", title: "Factibilidad", ph: "Cuánto cuesta arrancar, quién lo paga y qué se sostiene solo. Sin leer cifras de una tabla." },
-    { key: "acto4", n: "IV", title: "Cierre", ph: "El impacto en números y la frase que cierra. [pausa] antes de la última frase." }
+    { key: "acto1", n: "I", title: "Acto I", ph: "Escribe este acto como lo dirías en voz alta. [pausa] donde respires." },
+    { key: "acto2", n: "II", title: "Acto II", ph: "Lo que sigue, en frases cortas." },
+    { key: "acto3", n: "III", title: "Acto III", ph: "Lo que falta contar, con las cifras dichas completas." },
+    { key: "acto4", n: "IV", title: "Acto IV", ph: "El cierre, con la frase final marcada. [pausa] antes de ella." }
   ];
   const authorship = (state.authorship && state.authorship.script) || {};
   const lleno = actos.some(x => String(state.script[x.key] || "").trim() !== "");
-
   return `
     <div class="phase-header">
       <div>
         <h1 class="phase-title">Guion <span class="phase-title-accent">del video</span></h1>
-        <p class="phase-subtitle">Cuatro actos, de corrido. Escribes aquí y el teleprompter lo lee en pantalla.</p>
       </div>
       <div class="script-tools">
         <a class="btn-primary" href="../script/teleprompter.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
@@ -1305,7 +1303,7 @@ function renderViewScript() {
           <div class="script-act-head">
             <span class="script-act-n">${x.n}</span>
             <h2 class="script-act-title">${x.title}</h2>
-            ${authorship[x.key] ? `<span class="collaborator-stamp">${authorship[x.key].icon} ${authorship[x.key].name}</span>` : ""}
+            ${rsTakeInlineHtml("guion_" + x.key, "script-" + x.key)}
             <span id="lock-tag-script-${x.key}"></span>
           </div>
           <textarea id="sc-${x.key}" class="script-input" rows="3" spellcheck="false"

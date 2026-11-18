@@ -733,7 +733,7 @@ function getWorkflowStage() {
   if (!state.team_name || !state.university) return 1; // Equipo
   if (!state.challenge_id) return 2; // Retos del comité
   if (!state.solution_approved) return 3; // Taller Solución
-  return isPautadoComplete() && isBudgetValid() ? 5 : 4; // Despacho → Guion cuando pautado+presupuesto OK
+  return isPautadoWritten() && isBudgetValid() ? 5 : 4; // Despacho → Guion cuando pautado+presupuesto OK
 }
 
 // ── NAVEGACIÓN MODULAR Y DEPENDENCIAS ─────────────────────────────────────────
@@ -750,10 +750,16 @@ const NAV_TABS = [
   { id: "budget",     label: "07 Presupuesto de Marcha",level: 4, check: () => state.solution_approved && isBudgetValid() },
   { id: "resources",  label: "08 Bóveda de Recursos",   level: 4, check: () => state.solution_approved },
   { id: "canvas",     label: "09 Modelo Canvas",        level: 4, check: () => state.solution_approved },
-  { id: "script",     label: "10 Guion del Video", level: 5, check: () => isPautadoComplete() && isBudgetValid() },
-  { id: "webdemo",    label: "11 Prototipo para Video", level: 5, check: () => isPautadoComplete() && isBudgetValid() },
+  { id: "script",     label: "10 Guion del Video", level: 5, check: () => isPautadoWritten() && isBudgetValid() },
+  { id: "webdemo",    label: "11 Prototipo para Video", level: 5, check: () => isPautadoWritten() && isBudgetValid() },
   { id: "timeline",   label: "12 Cierre", level: 1, check: () => !!state.rally_type }
 ];
+
+function isPautadoWritten() {
+  // Para abrir la fase siguiente basta con que el texto esté escrito:
+  // las dos lecturas cierran el entregable, no bloquean el trabajo del equipo.
+  return Object.keys(PAUTADO_LIMITS).every(rsPautadoSectionFilled);
+}
 
 function isPautadoComplete() {
   // Misma regla que la pista de cada sección: una sola definición.
@@ -2478,11 +2484,15 @@ function rsWordCount(text) {
   return String(text || "").trim().split(/\s+/).filter(Boolean).length;
 }
 
-function rsPautadoSectionDone(key) {
+function rsPautadoSectionFilled(key) {
   const len = (state.pautado[key] || "").length;
   const limit = getPautadoLimit(key);
-  const escrito = limit === null ? len > 0 : (len >= 150 && len <= limit);
-  return escrito && rsPautadoApproved(key);
+  return limit === null ? len > 0 : (len >= 150 && len <= limit);
+}
+
+// Escribir abre la siguiente fase; dar por terminada exige dos lecturas.
+function rsPautadoSectionDone(key) {
+  return rsPautadoSectionFilled(key) && rsPautadoApproved(key);
 }
 
 // ── APROBACIÓN DEL PAUTADO: texto escrito no es texto aprobado ───────────────
@@ -2741,8 +2751,9 @@ function rsGoTab(tab, ev) {
 
 // Quién está editando una sección del pautado: avatar, nombre y el botón.
 // El trabajo de la IA no se da por entregado hasta que alguien lo toma.
-function rsPautadoTakeHtml(key) {
-  const id = `pautado_${key}`;
+// Chip «Tomar» en línea: avatar, quién está en ello y el botón.
+// Sirve para una sección del pautado, un acto del guion o cualquier pieza.
+function rsTakeInlineHtml(id, slot) {
   const nombres = (rsRecord(id).assignees || []).filter(Boolean);
   const me = amINamed() ? currentClientMascot.name : "";
   const mine = !!me && nombres.includes(me);
@@ -2751,14 +2762,18 @@ function rsPautadoTakeHtml(key) {
         `<span class="pa-take-ava" style="--person-color:${_userColor(n)}" title="${escapeHtml(n)}">${escapeHtml(String(n).trim().charAt(0).toUpperCase())}</span>`
       ).join("")}<span class="pa-take-names">${escapeHtml(nombres.join(", "))} editando</span></span>`
     : "";
-  return `<span class="pa-take${mine ? " is-mine" : ""}" id="pa-take-${key}" data-pa-take="${key}">${gente}
+  return `<span class="pa-take${mine ? " is-mine" : ""}" id="pa-take-${slot}" data-take-slot="${slot}" data-take-id="${id}">${gente}
     <button class="pa-take-btn${mine ? " is-mine" : ""}" type="button" onclick="rsToggleTake('${id}', event)">${mine ? "Soltar" : "Tomar"}</button>
   </span>`;
 }
 
-function rsRefreshPautadoTakes() {
-  document.querySelectorAll("[data-pa-take]").forEach(el => {
-    el.outerHTML = rsPautadoTakeHtml(el.getAttribute("data-pa-take"));
+function rsPautadoTakeHtml(key) {
+  return rsTakeInlineHtml(`pautado_${key}`, `pautado-${key}`);
+}
+
+function rsRefreshTakes() {
+  document.querySelectorAll("[data-take-slot]").forEach(el => {
+    el.outerHTML = rsTakeInlineHtml(el.getAttribute("data-take-id"), el.getAttribute("data-take-slot"));
   });
 }
 
@@ -2804,8 +2819,8 @@ function rsMountTakeBar(tabId) {
   const main = document.getElementById("main");
   if (!main) return;
   const prev = main.querySelector("#rs-take-bar");
-  // Pautado lleva el «Tomar» en cada sección, junto a su título.
-  if (tabId === "pautado") { if (prev) prev.remove(); return; }
+  // Pautado y guion llevan el «Tomar» en cada pieza, junto a su título.
+  if (tabId === "pautado" || tabId === "script") { if (prev) prev.remove(); return; }
   const html = rsTakeBarHtml(tabId);
   if (!html) { if (prev) prev.remove(); return; }
   if (prev) { prev.outerHTML = html; return; }
@@ -2819,7 +2834,7 @@ function rsMountTakeBar(tabId) {
 
 function rsRepaintTakeBar() {
   if (!activeTab) return;
-  if (activeTab === "pautado") { rsRefreshPautadoTakes(); return; }
+  if (activeTab === "pautado" || activeTab === "script") { rsRefreshTakes(); return; }
   if (activeTab !== "resumen") rsMountTakeBar(activeTab);
 }
 
@@ -7992,8 +8007,6 @@ function injectTaskResult(taskId) {
 const PAUTADO_LABELS = { problema: "Problema", solucion: "Solución", impacto: "Impacto", innovacion: "Innovación", prefactibilidad: "Prefactibilidad", referencias: "Referencias" };
 
 function renderViewPautado() {
-  const authorship = (state.authorship && state.authorship.pautado) || {};
-
   return `
     <div class="phase-header pa-page-head">
       <div>
@@ -8042,7 +8055,6 @@ function renderViewPautado() {
         const isNear = !isOver && pct !== null && pct >= 92;
         const counter = max ? `${len} / ${max}` : `${len}`;
         const counterTitle = max ? `${len} de ${max} caracteres (${pct}%)` : `${len} caracteres`;
-        const authorMascot = authorship[k] || null;
         const icon = {
           problema: SVG.target,
           solucion: SVG.spark,
@@ -8060,7 +8072,6 @@ function renderViewPautado() {
             <header class="pa-head">
               <span class="pa-label">${icon}<span>${PAUTADO_LABELS[k] || k}</span></span>
               ${rsPautadoTakeHtml(k)}
-              ${authorMascot ? `<span class="collaborator-stamp" title="Última edición por ${authorMascot.name}">${authorMascot.icon} ${authorMascot.name}</span>` : ""}
               <span id="lock-tag-pautado-${k}"></span>
               <span class="pa-approve${aprobado ? " is-ok" : ""}" title="${ap.names.length ? "Leída por " + ap.names.join(", ") : "Nadie la ha leído todavía"}">
                 <button class="pa-approve-btn${miAprobacion ? " is-mine" : ""}" type="button" onclick="rsApprovePautado('${k}', event)">${SVG.check}${miAprobacion ? "Aprobada" : "Aprobar"}</button>
