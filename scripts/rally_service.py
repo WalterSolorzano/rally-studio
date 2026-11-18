@@ -2009,6 +2009,23 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
         except Exception:
             pass
 
+    # El sello del cache lo pone el servidor: manda la fecha del archivo, no la mano.
+    _SELLO_ASSETS = re.compile(
+        r'(src|href)="(?!https?:|//|data:|#)([^"?]+\.(?:css|js))(?:\?v=[^"]*)?"'
+    )
+
+    def _sellar_assets(self, html):
+        def _sub(m):
+            rel = m.group(2).lstrip("/")
+            if rel.startswith("dashboard/"):
+                rel = rel[len("dashboard/"):]
+            try:
+                stamp = int((DASHBOARD_DIR / rel).stat().st_mtime)
+            except OSError:
+                return m.group(0)
+            return f'{m.group(1)}="{m.group(2)}?v={stamp}"'
+        return self._SELLO_ASSETS.sub(_sub, html)
+
     def serve_custom_file(self, target_path):
         self.anotar_descarga(target_path)
         mimetypes_map = {
@@ -2033,6 +2050,8 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
         mime = mimetypes_map.get(target_path.suffix.lower(), "application/octet-stream")
 
         content = target_path.read_bytes()
+        if target_path.suffix.lower() == ".html":
+            content = self._sellar_assets(content.decode("utf-8", "replace")).encode("utf-8")
         self.send_response(200)
         self.send_header("Content-Type", mime)
         self.send_header("Content-Length", str(len(content)))
