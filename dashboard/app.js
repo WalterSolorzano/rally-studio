@@ -8064,14 +8064,13 @@ function renderViewPautado() {
         Sube el Word (.docx) que entrega el evento (${rallyName()}).
         Al compilar, los textos se insertan bajo cada encabezado oficial.
       </p>
+      <p class="pa-template-text">
+        ${getPautadoLimit("problema") === null
+          ? "Documento técnico de hasta 10 páginas: el texto se inserta completo."
+          : "Matriz oficial: si pasas el límite, el sistema corta el texto."}
+      </p>
       <input type="file" id="pautado-template-input" aria-label="Subir plantilla Word del evento" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" style="display:none;" onchange="handlePautadoTemplateUpload(event)">
     </details>
-
-    <p class="pa-note">
-      ${getPautadoLimit("problema") === null
-        ? "Documento técnico de hasta 10 páginas: el texto se inserta completo."
-        : "Matriz oficial: si pasas el límite, el sistema corta el texto."}
-    </p>
 
     <div class="pa-list">
       ${Object.keys(PAUTADO_LIMITS).map(k => {
@@ -8099,13 +8098,13 @@ function renderViewPautado() {
           <article class="pa-section" data-lockable="pautado-${k}">
             <header class="pa-head">
               <span class="pa-label">${icon}<span>${PAUTADO_LABELS[k] || k}</span></span>
+              <span class="pautado-counter ${isOver ? "is-over" : isNear ? "is-near" : ""}" title="${counterTitle}">${counter}</span>
               ${rsPautadoTakeHtml(k)}
               <span id="lock-tag-pautado-${k}"></span>
               <span class="pa-approve${aprobado ? " is-ok" : ""}" title="${ap.names.length ? "Leída por " + ap.names.join(", ") : "Nadie la ha leído todavía"}">
                 <button class="pa-approve-btn${miAprobacion ? " is-mine" : ""}" type="button" onclick="rsApprovePautado('${k}', event)">${SVG.check}${miAprobacion ? "Aprobada" : "Aprobar"}</button>
                 <span class="pa-approve-count">${ap.names.length}/${RS_APPROVALS_MIN}</span>
               </span>
-              <span class="pautado-counter ${isOver ? "is-over" : isNear ? "is-near" : ""}" title="${counterTitle}">${counter}</span>
             </header>
             ${k === "referencias" ? `<div class="pa-refs-tools"><button class="btn-secondary" type="button" onclick="rsArmarReferencias(event)">${SVG.folder} Traer fuentes del proyecto</button></div>` : ""}
             <textarea id="pt-${k}" rows="1" class="pa-input ${isOver ? "is-over" : ""}"
