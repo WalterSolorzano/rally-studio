@@ -24,7 +24,12 @@ from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(RAIZ / "scripts"))
-from comun import ventanas  # noqa: E402  (base compartida: fracciones y colores)
+from comun import paleta as paleta_proyecto, ventanas  # noqa: E402
+
+try:
+    PALETA = paleta_proyecto()
+except SystemExit:  # sin paleta aprobada: `--help` debe poder responder
+    PALETA = {}
 
 CSV = Path("script/shotlist.csv")
 SALIDA = Path("docs/storyboard_visual.html")
@@ -40,10 +45,10 @@ ACTOS = {
 }
 
 CAMAS = {
-    "I": ("#f81110", "Sin música — ambiente real", "triste / real"),
-    "II": ("#1d45b9", "Música local del lugar, 90 bpm", "local / movimiento"),
-    "III": ("#2aa7ad", "Cuerdas graves, sin percusión", "sobrio / confianza"),
-    "IV": ("#111111", "La misma música local, cálida", "esperanza"),
+    "I": (PALETA.get("secondary") or "#4A5468", "Sin música — ambiente real", "triste / real"),
+    "II": (PALETA.get("primary") or "#4A5468", "Música local del lugar, 90 bpm", "local / movimiento"),
+    "III": (PALETA.get("accent") or "#4A5468", "Cuerdas graves, sin percusión", "sobrio / confianza"),
+    "IV": (PALETA.get("text_main") or "#111111", "La misma música local, cálida", "esperanza"),
 }
 
 # Fotograma + plano + busqueda real + orden de creacion + lo que no debe verse.
@@ -404,8 +409,21 @@ def fila_plan(fila: dict) -> str:
     </div>"""
 
 
+def _css() -> str:
+    """CSS del tablero con los colores aprobados del proyecto."""
+    reemplazos = {
+        "__PRI__": PALETA.get("primary") or "#4A5468",
+        "__SEC__": PALETA.get("secondary") or "#4A5468",
+        "__ACC__": PALETA.get("accent") or "#4A5468",
+    }
+    css = CSS
+    for marca, valor in reemplazos.items():
+        css = css.replace(marca, str(valor))
+    return css
+
+
 CSS = """
-:root{--pri:#1d45b9;--sec:#f81110;--acc:#2aa7ad;--ink:#111;--paper:#faf9f5;--line:#e2ded3;--mut:#6b675c}
+:root{--pri:__PRI__;--sec:__SEC__;--acc:__ACC__;--ink:#111;--paper:#faf9f5;--line:#e2ded3;--mut:#6b675c}
 *{box-sizing:border-box}
 body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
 .wrap{max-width:1180px;margin:0 auto;padding:28px 24px 64px}
@@ -509,7 +527,7 @@ def construir(filas: list[dict]) -> str:
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Storyboard visual — {len(filas)} tomas · {total:.0f} s</title>
-<style>{CSS}</style>
+<style>{_css()}</style>
 </head>
 <body>
 <div class="wrap">

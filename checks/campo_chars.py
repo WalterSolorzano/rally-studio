@@ -112,8 +112,10 @@ def secciones_por_encabezado(texto: str) -> dict[str, str]:
         limpia = linea.strip()
         if not limpia:
             continue
-        candidato = _normalizar(re.sub(r"[:.].*$", "", limpia))
-        if candidato in LIMITS and len(limpia) <= 60:
+        # El encabezado puede traer el tope entre parentesis: "PROBLEMA (Limite: 1250 ...)".
+        # Sin quitarlo, la seccion no se reconocia y el conteo decia "campo no encontrado".
+        candidato = _normalizar(re.sub(r"\(.*?\)|\s*[:.].*$", "", limpia))
+        if candidato in LIMITS and len(limpia) <= 90:
             actual = candidato
             secciones.setdefault(actual, [])
             continue

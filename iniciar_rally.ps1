@@ -38,8 +38,10 @@ if ($ocupado) {
   $proc = Get-Process -Id $ocupado.OwningProcess -ErrorAction SilentlyContinue
   Write-Host "El puerto $Puerto ya esta en uso por PID $($ocupado.OwningProcess) ($($proc.ProcessName))." -ForegroundColor Yellow
   Write-Host "Si es una instancia vieja del servicio, cierrala y vuelve a ejecutar este lanzador." -ForegroundColor Yellow
-  Write-Host "Abrir el panel: http://localhost:$Puerto/dashboard/"
-  exit 0
+  Write-Host "Si el panel responde en http://localhost:$Puerto/dashboard/ ya hay una instancia viva." -ForegroundColor Yellow
+  # Salir con 0 hacia creer al lanzador que el servicio arranco: si el puerto esta
+  # ocupado no se arranco nada, y el error tiene que llegar a quien llamo.
+  exit 1
 }
 
 # ── IA gratis local (FreeLLMAPI) · opcional, nunca bloquea el arranque ───────

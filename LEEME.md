@@ -1,3 +1,16 @@
+# Empieza aquí
+
+Estás en **Rally Studio**. Tres pasos y estás trabajando:
+
+1. `README.md` — qué es y qué hace.
+2. `docs/INSTALACION_AGENTE.md` — instalar el agente, las skills y las conexiones.
+3. `iniciar_rally.ps1` — abrir el tablero en `http://localhost:8000`.
+
+Antes de generar cualquier entregable, `brief.json` tiene que tener proyecto, equipo,
+universidad, ciudad y reto. El paquete se distribuye en blanco a propósito.
+
+---
+
 # Voces y archivos
 
 Cada MP3 aparece en esta carpeta en cuanto su voz termina la narracion

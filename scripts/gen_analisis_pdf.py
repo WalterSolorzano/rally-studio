@@ -74,6 +74,11 @@ TENUE = colors.HexColor("#4A5468")
 LINEA = colors.HexColor("#C9D0DB")
 VELO = colors.HexColor("#EEF2FB")
 
+# Los mismos colores aprobados, en texto: reportlab los pide dentro del marcado.
+HEX_PRIMARIO = str(PALETA.get("primary") or "#4A5468").lstrip("#")
+HEX_ACENTO = str(PALETA.get("accent") or "#4A5468").lstrip("#")
+HEX_TINTA = str(PALETA.get("text_title") or PALETA.get("text_main") or "#4A5468").lstrip("#")
+
 for archivo, alias in (
     ("PlusJakartaSans-400.ttf", "PJS"),
     ("PlusJakartaSans-600.ttf", "PJS-Semi"),
@@ -208,7 +213,7 @@ def escapar(texto: str) -> str:
     texto = texto.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
     texto = re.sub(
         r"(https?://[^\s<]+)",
-        r'<link href="\1" color="#1d45b9">\1</link>',
+        r'<link href="\1" color="#' + HEX_PRIMARIO + r'">\1</link>',
         texto,
     )
     return texto
@@ -313,8 +318,8 @@ def seccion_indice(doc: Documento) -> list[Flowable]:
     ]
     for _, numero, titulo, pagina in doc.indice:
         filas.append(Paragraph(
-            '<font name="Mono" color="#2aa7ad" size="8.5">%s</font>'
-            '&nbsp;&nbsp;&nbsp;%s<span color="#4a5468"><font name="Mono" size="8.5">'
+            '<font name="Mono" color="#' + HEX_ACENTO + '" size="8.5">%s</font>'
+            '&nbsp;&nbsp;&nbsp;%s<span color="#' + HEX_TINTA + '"><font name="Mono" size="8.5">'
             '&nbsp;&nbsp;·&nbsp;&nbsp;%02d</font></span>'
             % (numero or "·", escapar(titulo), pagina),
             ParagraphStyle("ind0", fontName="PJS-Bold", fontSize=12.5, leading=26, textColor=TINTA),
@@ -368,7 +373,7 @@ def historia(bloques: list[tuple[str, str]]) -> list[Flowable]:
             flujo.append(marcada)
         elif clase == "oli":
             numero, resto = partir(texto)
-            fila = Paragraph('<font color="#1d45b9"><b>%s.</b></font>&nbsp;&nbsp;%s'
+            fila = Paragraph('<font color="#' + HEX_PRIMARIO + '"><b>%s.</b></font>&nbsp;&nbsp;%s'
                              % (numero, escapar(resto)), st["vineta_num"])
             fila.bulletText = ""
             flujo.append(fila)

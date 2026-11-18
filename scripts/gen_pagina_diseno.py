@@ -34,6 +34,60 @@ COPIAR_JS = [
 ]
 COPIAR_CSS = ["kit.css", "impacto.css"]
 
+# Variables que consume la página de diseño. Se sobrescriben con la paleta
+# aprobada del proyecto: sin esto la página sale con los colores de la plantilla
+# y el equipo entrega una identidad que nunca eligió.
+VARS_DISENO = {
+    "--bg": ("bg", "bg_app"),
+    "--bg2": ("bg_subtle", "bg_secondary"),
+    "--ink": ("text_title", "text_main"),
+    "--mu": ("text_muted", "text_body"),
+    "--ac": ("primary", "accent"),
+}
+
+
+def escribir_paleta(dest: Path) -> str:
+    """Vuelca la paleta aprobada sobre las variables de la página de diseño.
+
+    Devuelve el aviso si no hay paleta aprobada: sin ella la página sale con los
+    colores de la plantilla, y eso es identidad ajena.
+    """
+    try:
+        from comun import paleta as paleta_proyecto
+
+        colores = paleta_proyecto()
+    except SystemExit:
+        return "paleta pendiente: correr scripts/gen_palette.py y aprobar una ruta A/B/C"
+    pares = []
+    for var, claves in VARS_DISENO.items():
+        for clave in claves:
+            valor = colores.get(clave)
+            if valor:
+                pares.append("%s:%s" % (var, valor))
+                break
+    if not pares:
+        return "paleta aprobada sin colores utiles para la página"
+    (dest / "tokens.css").write_text(":root{%s}\n" % ";".join(pares), encoding="utf-8")
+    return ""
+
+
+def enlazar_tokens(dest: Path) -> int:
+    """Enlaza tokens.css al final del head: gana sobre el estilo de la plantilla."""
+    enlazados = 0
+    for nombre in COPIAR_HTML:
+        archivo = dest / nombre
+        if not archivo.exists():
+            continue
+        html = archivo.read_text(encoding="utf-8")
+        if "tokens.css" in html or "</head>" not in html:
+            continue
+        html = html.replace(
+            "</head>", '<link rel="stylesheet" href="tokens.css">\n</head>', 1
+        )
+        archivo.write_text(html, encoding="utf-8")
+        enlazados += 1
+    return enlazados
+
 
 def _safe_slug(s: str) -> str:
     out = "".join(c if (c.isalnum() or c in "-_") else "-" for c in (s or "").strip().lower())
@@ -99,9 +153,9 @@ def escribir_contenido(dest: Path, contenido: dict) -> None:
         )
         bloque = "  mem: [\n%s\n  ]" % filas
     else:
-        bloque = ("  mem: [\n"
-                  "    { n: 'Nombre', s: 'Apellido', c: 'Carrera', r: 'Rol', e: '', photo: '', ac: '', bg: '' }\n"
-                  "  ]")
+        # Sin integrantes declarados no se pone una persona de ejemplo: "Nombre
+        # Apellido | Rol" se graba en el video y parece un dato real.
+        bloque = "  mem: []"
     texto = (
         "/* Contenido del proyecto (generado por scripts/gen_pagina_diseno.py).\n"
         "   Editable en el navegador: el editor guarda los cambios en su navegador. */\n"
@@ -185,13 +239,26 @@ def main(argv=None) -> int:
     base = args.base if args.base is not None else os.environ.get("RALLY_AI_BASE_URL", "")
     escribir_config(out, base or "", args.cuota, args.model or "")
 
+    avisos = []
+    if not base:
+        avisos.append("Sin RALLY_AI_BASE_URL: la página se publica sin IA (modo manual).")
+    aviso_paleta = escribir_paleta(out)
+    if aviso_paleta:
+        avisos.append(aviso_paleta)
+    else:
+        enlazar_tokens(out)
+    if not (brief.get("project_name") or brief.get("team_name")):
+        avisos.append(
+            "brief.json vacío: la página sale con marcadores en lugar del proyecto."
+        )
+
     print(json.dumps({
         "ok": True,
         "slug": slug,
         "out": str(out),
         "isla": base or "",
         "ia": bool(base),
-        "advertencia": "" if base else "Sin RALLY_AI_BASE_URL: la página se publica sin IA (modo manual).",
+        "advertencia": " ".join(avisos),
     }, ensure_ascii=False))
     return 0
 

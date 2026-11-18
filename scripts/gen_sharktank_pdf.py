@@ -4,7 +4,8 @@
 Entrada: JSON con project, rally, date, summary, solid, findings, prior_art, queries.
 Salida:  docs/sharktank_<slug>.pdf (Chrome/Edge headless).
 
-Diseño: brand/tokens.css (primary #1d45b9, secondary #f81110, accent #2aa7ad).
+Diseño: `brand/palette.json` del proyecto. Este script no trae colores propios:
+si la paleta no está aprobada, avisa y se detiene.
 No imprime puntajes ni probabilidades: solo hallazgos, supuestos y prior art verificable.
 """
 from __future__ import annotations
@@ -22,6 +23,15 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = ROOT / "docs"
 
+sys.path.insert(0, str(ROOT / "scripts"))
+try:
+    from comun import paleta as _paleta_proyecto
+
+    COLORES = _paleta_proyecto()
+except SystemExit as exc:
+    COLORES = {}
+    MOTIVO_PALETA = str(exc)
+
 CHROME_CANDIDATES = [
     Path(r"C:\Program Files\Google\Chrome\Application\chrome.exe"),
     Path(r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"),
@@ -31,7 +41,7 @@ CHROME_CANDIDATES = [
 
 CSS = """
 :root {
-  --primary: #1d45b9; --secondary: #f81110; --accent: #2aa7ad;
+  --primary: __PRIMARY__; --secondary: __SECONDARY__; --accent: __ACCENT__;
   --bg: #ffffff; --ink: #111111; --muted: #626a7a; --grid: #e2e5ee; --wash: #f4f6fb;
   --sans: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 }
@@ -77,6 +87,23 @@ td { border-bottom: 1px solid var(--grid); padding: 2mm; vertical-align: top; }
 
 def e(valor) -> str:
     return html.escape(str(valor if valor is not None else ""))
+
+
+def _css() -> str:
+    """El CSS del informe con los colores aprobados del proyecto.
+
+    Sin paleta aprobada se usa tinta neutra y se avisa: heredar los colores de
+    Rally Studio haria que todos los equipos entreguen el mismo informe.
+    """
+    reemplazos = {
+        "__PRIMARY__": COLORES.get("primary") or "#4A5468",
+        "__SECONDARY__": COLORES.get("secondary") or "#4A5468",
+        "__ACCENT__": COLORES.get("accent") or "#4A5468",
+    }
+    css = CSS
+    for marca, valor in reemplazos.items():
+        css = css.replace(marca, str(valor))
+    return css
 
 
 def slugify(texto: str) -> str:
@@ -148,7 +175,7 @@ def build_html(data: dict) -> str:
     return f"""<!DOCTYPE html>
 <html lang="es"><head><meta charset="utf-8">
 <title>Sharktank · {e(data.get('project', ''))}</title>
-<style>{CSS}</style></head><body>
+<style>{_css()}</style></head><body>
 <header class="cover">
   <p class="kicker">Rally Studio · Salud de la idea</p>
   <h1>{e(data.get('project', 'Proyecto sin nombre'))}</h1>

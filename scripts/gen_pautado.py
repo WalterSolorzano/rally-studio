@@ -62,14 +62,30 @@ def create_default_document(brief, claims):
 
     doc.add_paragraph("─" * 45)
 
-    stats_text = " ".join([f"{c['stat']} ({c['source']}, {c['year']})." for c in claims]) if claims else "Segun registros oficiales, la problematica afecta de manera directa a los usuarios del piloto."
+    stats_text = " ".join([f"{c['stat']} ({c['source']}, {c['year']})." for c in claims]) if claims else ""
+    # Sin cifras declaradas no se inventa una: se pide la que falta. Un jurado
+    # que pregunta por la fuente no acepta "segun registros oficiales".
+    falta_cifra = ("" if stats_text else
+                   "[PENDIENTE] Falta la cifra con fuente: que dato, de que ano y de que "
+                   "organismo. Sale de research/claims.json.")
+    try:
+        solution_text = brief.get("solution_detail") or brief.get("description_one_line") or ""
+    except AttributeError:
+        solution_text = ""
+    falta_solucion = ("" if solution_text.strip() else
+                      "[PENDIENTE] Falta describir como funciona la solucion, paso por paso, "
+                      "y quien la opera.")
+    falta_innovacion = ("" if (brief.get("innovation_detail") or "").strip() else
+                        "[PENDIENTE] Falta decir que hace esto que no haga ya la alternativa "
+                        "convencional, y por que aqui si funciona.")
+    ods_texto = ", ".join(str(o) for o in (brief.get("ods_ids") or [])) or "[PENDIENTE] Elegir los ODS"
 
     sections = [
-        ("PROBLEMA", 1250, f"{{SEC_PROBLEMA}}\n{stats_text} La ausencia de soluciones accesibles y descentralizadas agrava la brecha, requiriendo intervencion inmediata.\n{{SEC_END}}"),
-        ("SOLUCION", 1250, f"{{SEC_SOLUCION}}\n{brief.get('solution_detail') or (brief.get('description_one_line','Solucion tecnica') + ' El diseno optimiza el rendimiento mediante una arquitectura modular y componentes estandarizados.')}\n{{SEC_END}}"),
-        ("PREFACTIBILIDAD", 1500, f"{{SEC_PREFACTIBILIDAD}}\nCosto estimado de implementacion inicial: {cost_str}. La estructura de insumos se basa en suministros de escala con enlaces de respaldo verificables.\n{{SEC_END}}"),
-        ("INNOVACION", 1000, f"{{SEC_INNOVACION}}\n{brief.get('innovation_detail') or 'A diferencia de las alternativas convencionales, nuestra propuesta integra tecnologia accesible y adaptacion local de materiales, reduciendo tiempos de despliegue.'}\n{{SEC_END}}"),
-        ("IMPACTO", 1000, f"{{SEC_IMPACTO}}\nAlineado directamente con {', '.join(str(o) for o in (brief.get('ods_ids') or ['ODS 11']))} y la estrategia de desarrollo del piloto. El impacto se medira con indicadores auditables durante y despues del rally.\n{{SEC_END}}")
+        ("PROBLEMA", 1250, (stats_text + " " + falta_cifra).strip()),
+        ("SOLUCION", 1250, (solution_text + " " + falta_solucion).strip()),
+        ("PREFACTIBILIDAD", 1500, f"Costo estimado de implementacion inicial: {cost_str}."),
+        ("INNOVACION", 1000, ((brief.get("innovation_detail") or "") + " " + falta_innovacion).strip()),
+        ("IMPACTO", 1000, f"ODS a los que responde: {ods_texto}."),
     ]
 
     sin_tope = (brief.get("rally_type") or "latam").strip().lower() != "latam"

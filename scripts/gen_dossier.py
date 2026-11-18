@@ -290,6 +290,7 @@ def _docx_reto(doc, api, r):
     """Escribe un reto completo en el DOCX."""
     from docx.enum.text import WD_ALIGN_PARAGRAPH
     from docx.oxml import OxmlElement
+    from docx.oxml.ns import qn
     from docx.shared import Cm, Pt, RGBColor
 
     p, rotulo, tabla_dos, borde_inferior = (

@@ -74,11 +74,13 @@ prueban el mecanismo antes de que exista un proyecto, y porque cada una dejó in
 
 Lo que encontró la prueba de novato y cómo se cerró:
 
-- **Atascos en el motor** (pendientes de autorización, tocan `rally_service.py` y `dashboard/app.js`):
-  «Compilar en Word (.docx)» y «Descargar Excel» dejan la barra en «Compilando…» sin fin,
-  sueltan `*.tmp` en Descargas y los borran solos; y lo que se completa en la interfaz vive
-  solo en `localStorage`, así que `brief.json` no recibe nada y los generadores exigen editar
-  el JSON a mano.
+- **Cerrado después, con autorización** (toca el motor): la descarga no era un cuelgue sino un
+  302 al login —`/docs/pautado_draft.docx` exigía sesión y el navegador guardaba la pantalla de
+  entrada con extensión `.docx`—. Ahora un documento sin sesión responde 401 en JSON, el botón baja
+  el archivo por `fetch` y lo entrega como blob con su nombre, y «Descargar Excel» avisa que hay
+  que generar el Excel en vez de dejar un enlace muerto. El otro: lo escrito en la interfaz vivía
+  solo en `localStorage`; el espejo de estado ahora copia los campos de identidad, reto, impacto y
+  enlaces a `brief.json`, sin borrar lo ya escrito con un campo vacío.
 - **Corregido**: `gen_pautado.py` ya no revienta cuando `ods_ids` son números; `validate_budget.py`
   exige una descripción de ≥6 palabras por fila («sensor» solo no pasa); `requirements.txt`
   separa el núcleo de cinco paquetes de lo opcional —`playwright`, `soundfile`, `pdfplumber`—

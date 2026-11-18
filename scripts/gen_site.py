@@ -332,11 +332,17 @@ def main(argv=None) -> int:
     utf8()
     brief = cargar(BRIEF, {}) or {}
     if not (brief.get("project_name") or brief.get("challenge_title")):
+        campos = ("project_name, team_name, university, city, challenge_title, "
+                  "challenge_description, solution (o pasos), sector, contact_email")
         if not args.si:
             # Sin reto no hay pagina: escribir aqui deja un sitio vacio publicado.
             print("ALTO: brief.json vacío. site/index.html se queda como esta.")
+            print("Completa en brief.json: " + campos + ".")
             return 1
-        raise SystemExit("brief.json vacío: el sitio se genera desde el reto, no se rellena solo.")
+        raise SystemExit(
+            "brief.json vacío: el sitio se genera desde el reto, no se rellena solo. "
+            "Completa: " + campos + "."
+        )
     paleta()
     claims = claims_con_fuente()
     presupuesto = cargar(BUDGET, [])

@@ -64,6 +64,28 @@ def main():
             pct = (cuenta / limite) * 100
             print(f"  [v] {campo.upper():<16}: {cuenta:>5} / {limite:<5} ({pct:5.1f}%) -> OK")
 
+    # Marcadores internos a la vista son sintoma de documento sin rellenar:
+    # `{SEC_PROBLEMA}` no es texto para el jurado, y contarlos como contenido
+    # hacia que un pautado vacio pasara la validacion.
+    try:
+        import docx as _docx
+
+        texto_doc = "\n".join(p.text for p in _docx.Document(str(DRAFT_PATH)).paragraphs)
+    except Exception:
+        texto_doc = ""
+    marcadores = sorted({t for t in ("{SEC_PROBLEMA}", "{SEC_SOLUCION}", "{SEC_IMPACTO}",
+                                     "{SEC_INNOVACION}", "{SEC_PREFACTIBILIDAD}", "{SEC_END}",
+                                     "[PENDIENTE]")
+                         if t in texto_doc})
+    if marcadores:
+        print()
+        print("  [X] El documento conserva marcadores de plantilla sin reemplazar:")
+        for marca in marcadores:
+            print(f"      {marca}")
+        print("  -> Escribe el texto de cada seccion en la interfaz o en "
+              "docs/pautado_draft.docx antes de enviar a SIRLI.")
+        sys.exit(1)
+
     if hallazgos:
         print()
         for hallazgo in hallazgos:

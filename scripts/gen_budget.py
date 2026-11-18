@@ -62,7 +62,13 @@ def main(argv=None):
             "brand/palette.json pendiente: aprobar una ruta A/B/C "
             "antes de generar el presupuesto."
         )
-    faltan = [k for k in ("primary", "accent", "text") if not palette.get(k)]
+    # `gen_palette.py` escribe text_title/text_main/text_body; "text" no existe
+    # en ese esquema, asi que el chequeo pedia una clave que el generador nunca
+    # produce y el presupuesto quedaba imposible de generar.
+    texto = palette.get("text") or palette.get("text_main") or palette.get("text_body")
+    faltan = [k for k in ("primary", "accent") if not palette.get(k)]
+    if not texto:
+        faltan.append("text_main")
     if faltan:
         raise SystemExit("brand/palette.json incompleto: faltan " + ", ".join(faltan) + ".")
 

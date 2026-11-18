@@ -483,13 +483,16 @@ Auditorías de `auditar-entregable` por pestaña, capturas en `audit/`, ajustes 
 
 Una corrida está completa solo si:
 
-- [ ] G1 verde: la capa proyecto nace vacía (`_status: pendiente`), cero hex literal en `site/`,
+- [x] G1 verde: la capa proyecto nace vacía (`_status: pendiente`), cero hex literal en `site/`,
       y los generadores fallan si falta la paleta en vez de inventar un azul.
+      *(verificado: `brand/palette.json` con `_status: pendiente`; `site/*.css` y `site/*.html`
+      con 0 hex; `gen_budget.py` con 0 coincidencias de «azul neutro»)*
 - [ ] G2 verde: planta 60-30-10 generada desde el reto (no fija) y aplicada por pantalla.
       *(bloqueado: la planta se deriva de `challenge_id`, `category` y `ods_ids`; `brief.json` vacío)*
 - [ ] G3 verde: cuerpo ≥14 px a 390 px, sin scroll horizontal, capturas tomadas.
-- [ ] G4 verde: Rally Design generado y 3 rutas de marca servidas, 1 aceptada. *(enlace listo en
-      `renderViewIdentidad`; falta la ruta aceptada: bloqueado por datos del proyecto)*
+- [ ] G4 verde: Rally Design generado y 3 rutas de marca servidas, 1 aceptada. *(el enlace ya abre
+      Rally Design desde `renderViewIdentidad` —1 coincidencia en `dashboard/*.js`—; falta la ruta
+      aceptada: bloqueado por datos del proyecto)*
 - [x] G5 verde: política de movimiento declarada en `DESIGN.md` y todo `@keyframes` con su
       `prefers-reduced-motion`. *(30 animaciones / 10 bloques reduced; escalones 120/160/200 ms
       normalizados en `dashboard/style.css`)*
@@ -501,7 +504,9 @@ Una corrida está completa solo si:
       *(bloqueado: K1–K7 son decisiones humanas sobre un proyecto real — certamen, reto, solución,
       ruta de marca, pautado, guion y checklist. El mecanismo existe y está en el mapa; sin
       `brief.json` no hay nada que aprobar)*
-- [ ] G9 verde: bitácora con ≥2 skills y ≥1 subagente auditor.
+- [x] G9 verde: bitácora con ≥2 skills y ≥1 subagente auditor. *(`audit/sistema-auditor.md`,
+      `audit/prueba-novato.md` y las tres auditorías de fase del 18 de noviembre, cada una con su
+      fila en `docs/bitacora_fases.md`)*
 - [ ] 3D (si aplica) con ficha aprobada y asset nombrado por `shotlist_id`.
 - [ ] Animatic aprobado antes de voz y render.
 - [ ] Login remoto probado por URL pública antes de entregar enlace.
