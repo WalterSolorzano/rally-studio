@@ -2,6 +2,7 @@
 """
 gen_budget.py -- Genera budget/budget.xlsx con formato formal a partir de budget/budget.json.
 """
+import argparse
 import json
 import pathlib
 import sys
@@ -17,44 +18,69 @@ BUDGET_JSON = pathlib.Path("budget/budget.json")
 BUDGET_XLSX = pathlib.Path("budget/budget.xlsx")
 BRIEF_JSON = pathlib.Path("brief.json")
 
-def main():
+def main(argv=None):
+    parser = argparse.ArgumentParser(
+        description="Genera budget/budget.xlsx desde budget/budget.json y la paleta aprobada."
+    )
+    parser.add_argument(
+        "--si",
+        action="store_true",
+        help="escribe aunque falten project_name, team_name o partidas",
+    )
+    args = parser.parse_args(argv)
+
     if not BUDGET_JSON.exists():
         print("ERROR: budget/budget.json no existe.")
         sys.exit(1)
 
     items = json.loads(BUDGET_JSON.read_text(encoding="utf-8-sig"))
     brief = json.loads(BRIEF_JSON.read_text(encoding="utf-8-sig")) if BRIEF_JSON.exists() else {}
+    if not args.si and (
+        not (brief.get("project_name") and brief.get("team_name")) or not items
+    ):
+        # Sin partidas el Excel sale en cero y sin proyecto sale sin encabezado:
+        # eso no es un presupuesto, es una planilla vacia que parece entregable.
+        print(
+            "ALTO: brief.json sin project_name/team_name o budget.json sin partidas. "
+            "budget/budget.xlsx se queda como esta."
+        )
+        return 1
     ctx = contexto(brief)
 
     # Paleta de diseno del proyecto/grupo (brand/palette.json).
-    # El color de la tabla NUNCA se hardcodea: varia segun los tokens del equipo.
-    palette = {}
+    # El color de la tabla NUNCA se hardcodea y NUNCA se inventa un default:
+    # si no hay paleta aprobada, el generador se detiene.
     palette_path = pathlib.Path("brand/palette.json")
-    if palette_path.exists():
-        try:
-            palette = json.loads(palette_path.read_text(encoding="utf-8-sig"))
-        except Exception:
-            palette = {}
+    if not palette_path.exists():
+        raise SystemExit(
+            "brand/palette.json pendiente: correr scripts/gen_palette.py "
+            "y aprobar una ruta A/B/C antes de generar el presupuesto."
+        )
+    palette = json.loads(palette_path.read_text(encoding="utf-8-sig"))
+    if palette.get("_status") != "aprobada":
+        raise SystemExit(
+            "brand/palette.json pendiente: aprobar una ruta A/B/C "
+            "antes de generar el presupuesto."
+        )
+    faltan = [k for k in ("primary", "accent", "text") if not palette.get(k)]
+    if faltan:
+        raise SystemExit("brand/palette.json incompleto: faltan " + ", ".join(faltan) + ".")
 
-    def _rgb(key, default):
-        try:
-            h = str(palette.get(key, "")).lstrip("#")
-            if len(h) != 6:
-                return default
-            return tuple(int(h[i:i + 2], 16) for i in (0, 2, 4))
-        except Exception:
-            return default
+    def _rgb(key):
+        h = str(palette.get(key, "")).lstrip("#")
+        if len(h) != 6:
+            raise SystemExit(
+                "brand/palette.json: valor invalido en '%s' (%r)." % (key, palette.get(key))
+            )
+        return tuple(int(h[i:i + 2], 16) for i in (0, 2, 4))
 
-    COLOR_PRIMARIO = _rgb("primary", (0x1F, 0x49, 0x7D))
-    COLOR_ACENTO = _rgb("accent", (0xE2, 0xEF, 0xDA))
-    COLOR_TEXTO = _rgb("text", (0x1F, 0x49, 0x7D))
+    COLOR_PRIMARIO = _rgb("primary")
+    COLOR_ACENTO = _rgb("accent")
+    COLOR_TEXTO = _rgb("text")
     hex_primary = "%02X%02X%02X" % COLOR_PRIMARIO
     hex_acento = "%02X%02X%02X" % COLOR_ACENTO
     hex_texto = "%02X%02X%02X" % COLOR_TEXTO
-    if palette.get("primary"):
-        print(f"OK: paleta del proyecto aplicada (primary #{hex_primary}).")
-    else:
-        print("WARN: brand/palette.json no encontrado; se usa azul neutro.")
+    print(f"OK: paleta del proyecto aplicada (primary #{hex_primary}).")
     unidad = "C$" if ctx.get("code") == "NIO" else "USD"
     if ctx["advertencia"]:
         print(f"WARN: {ctx['advertencia']}")
@@ -175,6 +201,7 @@ def main():
         print(f"WARN: Presupuesto ({formato(total_general, ctx)} = ${total_usd:,.2f} USD) excede el techo recomendado ($6,000 USD).")
     else:
         print(f"VALIDACION: Presupuesto dentro del rango ideal de victoria ($4,000 - $6,000 USD).")
+    return 0
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

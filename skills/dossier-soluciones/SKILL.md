@@ -17,6 +17,13 @@ PDF de referencia aprobado (`Soluciones_Prueba_09_Retos.pdf`, o el que indique e
   del diseño».
 - Prohibido cambiar márgenes, tipografías, colores, rejillas o el orden de las secciones para
   esta entrega concreta.
+- **La cadena es una sola.** El dossier pulido sale de
+  `python scripts/gen_dossier.py --json research/soluciones_actuales.json --pdf docs/Dossier_Soluciones.pdf`
+  (añade `--docx` y `--xlsx` si se piden). `scripts/soluciones_motor.py` +
+  `scripts/gen_soluciones_pdf.py` son el **borrador** de tarjetas, otro modelo: no se
+  entrega como dossier ni se mezcla con el curado.
+- Si el comando se detiene diciendo «JSON sin 'retos'», «retos vacío» o «reto sin título»,
+  el entregable no existe: se arregla el JSON, no se maqueta en blanco.
 - Si el texto nuevo no entra en el diseño, se recorta el texto; nunca se rediseña la página.
 - Antes de dar el PDF por terminado: abrir la referencia y el PDF generado, comparar página
   por página, y renderizar a PNG. Si la anatomía no calza, el entregable está mal aunque el

@@ -3,6 +3,7 @@
 gen_readme.py -- Genera y actualiza dinamicamente el README.md maestro del proyecto.
 Funciona como la 'Biblia del Proyecto' y se sincroniza con brief.json y el estado de entregables.
 """
+import argparse
 import json
 import pathlib
 import datetime
@@ -17,12 +18,30 @@ def check_file_status(path_str):
     p = pathlib.Path(path_str)
     return "[x]" if (p.exists() and p.stat().st_size > 50) else "[ ]"
 
-def main():
+def main(argv=None):
+    parser = argparse.ArgumentParser(
+        description="Regenera README.md desde brief.json. Sin proyecto definido no escribe."
+    )
+    parser.add_argument(
+        "--si",
+        action="store_true",
+        help="escribe aunque falten project_name y team_name",
+    )
+    args = parser.parse_args(argv)
+
     if not BRIEF_PATH.exists():
         print("ERROR: brief.json no existe. Ejecuta python scripts/init_brief.py primero.")
         sys.exit(1)
 
     brief = json.loads(BRIEF_PATH.read_text(encoding="utf-8"))
+    if not (brief.get("project_name") and brief.get("team_name")) and not args.si:
+        # Con el brief vacio este generador escribia un README de relleno y
+        # borraba la portada real (paso en la auditoria: 236 lineas perdidas).
+        print(
+            "ALTO: brief.json sin project_name/team_name. Todavia no hay proyecto "
+            "que documentar; README.md se queda como esta."
+        )
+        return 1
     today_str = datetime.date.today().strftime("%d/%m/%Y")
 
     project = brief.get("project_name", "PROYECTO RALLY").upper()
@@ -80,7 +99,9 @@ python scripts/init_brief.py            # Entrevista inicial guiada
 python scripts/validate_brief.py        # Validador previo a generacion
 
 # Identidad Visual y Scoring
-python scripts/gen_palette.py brand/logo.png  # Extraccion de paleta y tokens CSS
+python scripts/gen_palette.py                 # Propone rutas A/B/C desde el reto
+python scripts/gen_palette.py --ruta B --si   # Aprueba B y escribe tokens CSS
+python scripts/verificar_identidad.py         # Compuerta G1 de la capa proyecto
 python scripts/score_challenges.py      # Ranking predictivo de desafios 2014-2026
 
 # Documentos Ejecutivos
@@ -115,6 +136,7 @@ python scripts/publish_site.py          # Despliegue de demo a Netlify / Pages
 
     README_PATH.write_text(readme_content, encoding="utf-8")
     print(f"OK: {README_PATH} actualizado exitosamente.")
+    return 0
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

@@ -295,6 +295,11 @@ Ningún rol arranca con un insumo pendiente. Si al despacharlo le falta algo de 
 ni con un número inventado. Un insumo inventado se detecta tarde y contamina presupuesto,
 pautado y guion a la vez.
 
+Esta tabla tiene su versión ejecutable: `python scripts/verificar_fases.py --mapa` imprime
+para las 13 etapas quién construye, quién audita y de qué depende. Antes de despachar un
+especialista se corre `python scripts/verificar_fases.py`; si marca etapa saltada o bitácora
+sin línea, el despacho no sale.
+
 | Rol | Necesita sí o sí | Entrega | Sus consumidores |
 |---|---|---|---|
 | director | brief con proyecto | `shots/*.yaml`, `budget/bom.csv`, `script/shotlist.csv`, tablero visual | todos |

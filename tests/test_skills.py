@@ -94,7 +94,7 @@ def test_login_funciona_sin_servidor_estatico():
     assert "github\\.io$" in js
     assert "LLAVE_ESTATICA_SHA256" in js
     # La rama estática devuelve antes de llamar a /api/acceso/estado.
-    assert js.index("if (ESTATICO) {") < js.index('fetch("/api/acceso/estado"')
+    assert js.index("if (ESTATICO) {") < js.index('fetch(conProyecto("/api/acceso/estado")')
 
 
 def test_cliente_de_ia_no_apunta_a_localhost_fijo():

@@ -123,7 +123,13 @@
   }
 
   function pollChanges() {
-    var url = "/api/sync/changes?project=main&since=" + (seenCursor === null ? 0 : seenCursor);
+    var proyecto = "main";
+    try {
+      proyecto = (new URLSearchParams(location.search).get("project") ||
+        localStorage.getItem("rally_project") || "main").trim() || "main";
+    } catch (e) { /* sin almacenamiento: queda main */ }
+    var url = "/api/sync/changes?project=" + encodeURIComponent(proyecto) +
+      "&since=" + (seenCursor === null ? 0 : seenCursor);
     fetch(url)
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (data) {

@@ -50,6 +50,12 @@ su propio reto y su propio equipo.
 
 ## El flujo (13 etapas)
 
+Rige `.agents/rules/proceso-obligatorio.md`: presupuesto de tiempo por fase, estándares
+medibles, prohibiciones (textos que un icono resuelve, emojis, colores ajenos, comentarios
+inútiles, alta carga cognitiva) y subagentes obligatorios. Una corrida que termina en
+minutos no ejecutó el proceso: saltó fases.
+
+
 | # | Pestaña | Al terminarla debe existir | Si falta, pregunta |
 |---|---|---|---|
 | 00 | `certamen` | `rally_type`: `nacional` (24 h) o `latam` (28 h) | qué certamen |
@@ -95,6 +101,9 @@ python scripts/servir_propuesta.py --tab pautado --slot problema --kind text \
 - Skills en `skills/<nombre>/SKILL.md`; se reflejan en `.opencode/skills/` y `.agents/skills/`.
 - Reglas profundas por tema en `.agents/rules/` (frontera, modos de rally, rúbricas, pautado
   y guion, interfaz mínima). Consúltalas cuando la tarea las toque.
+- **Escribir una sección exige candado** (`.agents/rules/escritura-con-candado.md`): `lock` →
+  escribir con `base_version` → `unlock`. Ante un 423 no se escribe ni se esquiva el bloqueo:
+  se avisa al humano. Para proponer contenido va el buzón, no una escritura directa.
 - **Ley de interfaz mínima** (`.agents/rules/ui-minima.md`): en toda pantalla, cero párrafos,
   cero datos técnicos visibles, icono antes que palabra, número solo si acciona una decisión.
 - **Candado de conexión** (`docs/tunel_seguro.svg`): el workbench se publica con

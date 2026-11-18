@@ -10,6 +10,7 @@ Reglas de contenido:
   - La narracion apunta a 240-270 palabras para llenar 120 segundos.
   - La cifra de costo sale de budget/budget.json; no se hardcodea.
 """
+import argparse
 import csv
 import json
 import pathlib
@@ -447,7 +448,16 @@ def _armar_narracion(partes: dict) -> dict:
     }
 
 
-def main():
+def main(argv=None) -> int:
+    parser = argparse.ArgumentParser(
+        description="Genera script/script.md, shotlist.csv y narration.txt (4 actos, <=120 s)."
+    )
+    parser.add_argument(
+        "--si",
+        action="store_true",
+        help="escribe aunque el brief este incompleto",
+    )
+    args = parser.parse_args(argv)
     brief, claims = _load_data()
 
     faltantes = [
@@ -455,7 +465,7 @@ def main():
         for campo in ("project_name", "team_name", "city", "challenge_title")
         if not str(brief.get(campo, "")).strip()
     ]
-    if faltantes:
+    if faltantes and not args.si:
         print(
             "ERROR: brief.json esta incompleto (falta: "
             + ", ".join(faltantes)
@@ -553,7 +563,8 @@ def main():
     narration_txt = "\n\n".join([f"[{a['id']} - {a['time']}]\n{a['narration']}" for a in acts])
     (script_dir / "narration.txt").write_text(narration_txt, encoding="utf-8")
     print("OK: script/narration.txt")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

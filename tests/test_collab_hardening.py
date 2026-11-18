@@ -68,6 +68,8 @@ def test_invalid_project_id_is_rejected(servidor):
 def test_empty_project_does_not_return_another_projects_state(servidor):
     base, data_dir = servidor
     boot = bootstrap(base, "equipo01", "Ana")
+    call("POST", base + "/api/sections/pautado.problema/lock?project=equipo01",
+         {}, headers=auth(boot["admin_token"]))
     call("POST", base + "/api/sections/pautado.problema?project=equipo01",
          {"data": {"text": "solo de equipo01"}, "base_version": 0},
          headers=auth(boot["admin_token"]))
@@ -86,6 +88,9 @@ def test_empty_project_does_not_return_another_projects_state(servidor):
 def test_ai_writes_keep_their_authorship(servidor):
     base, _ = servidor
     boot = bootstrap(base, "equipo01", "Ana")
+    call("POST", base + "/api/sections/pautado.problema/lock?project=equipo01",
+         {"actor": "IA:gen_pautado", "actor_id": "ia"},
+         headers=auth(boot["admin_token"]))
     status, _, _ = call("POST", base + "/api/sections/pautado.problema?project=equipo01",
                         {"data": {"text": "texto de la IA"}, "base_version": 0,
                          "actor": "IA:gen_pautado", "actor_id": "ia"},

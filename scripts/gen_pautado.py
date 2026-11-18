@@ -3,6 +3,7 @@
 gen_pautado.py -- Genera docs/pautado_draft.docx a partir de brief.json, claims.json
 y la plantilla oficial del certamen correspondiente (Nacional o Latam).
 """
+import argparse
 import json
 import pathlib
 import sys
@@ -80,20 +81,43 @@ def create_default_document(brief, claims):
     doc.save(DRAFT_PATH)
     print(f"OK: Creado documento base en {DRAFT_PATH}")
 
-def main():
+def main(argv=None):
+    parser = argparse.ArgumentParser(
+        description="Genera el borrador del pautado oficial desde brief.json y claims.json."
+    )
+    parser.add_argument(
+        "--clean",
+        action="store_true",
+        help="ignora la plantilla y crea el documento base estandarizado",
+    )
+    parser.add_argument(
+        "--si",
+        action="store_true",
+        help="escribe aunque falten project_name y team_name",
+    )
+    args = parser.parse_args(argv)
+
     if not BRIEF_PATH.exists():
         print("ERROR: brief.json no existe.")
         sys.exit(1)
 
     brief = json.loads(BRIEF_PATH.read_text(encoding="utf-8"))
+    if not (brief.get("project_name") and brief.get("team_name")) and not args.si:
+        # Con el brief vacio salia un Word con «REPORTE PAUTADO --» y el equipo en
+        # blanco: se entregaba un documento falso. Mejor no escribirlo.
+        print(
+            "ALTO: brief.json sin project_name/team_name. El pautado necesita "
+            "proyecto y equipo; docs/pautado_draft.docx se queda como esta."
+        )
+        return 1
     claims = json.loads(CLAIMS_PATH.read_text(encoding="utf-8")) if CLAIMS_PATH.exists() else []
 
     pathlib.Path("docs").mkdir(exist_ok=True)
-    force_clean = "--clean" in sys.argv
+    force_clean = args.clean
 
     if force_clean or not TEMPLATE_PATH.exists():
         create_default_document(brief, claims)
-        return
+        return 0
 
     try:
         doc = docx.Document(TEMPLATE_PATH)
@@ -114,12 +138,15 @@ def main():
         if replaced > 0:
             doc.save(DRAFT_PATH)
             print(f"OK: {DRAFT_PATH} generado a partir de plantilla ({replaced} etiquetas reemplazadas).")
+            return 0
         else:
             print("INFO: La plantilla no tenia etiquetas {{...}}. Generando borrador pautado limpio estandarizado.")
             create_default_document(brief, claims)
+            return 0
     except Exception as e:
         print(f"WARN: Error al procesar template ({e}). Generando documento estandar...")
         create_default_document(brief, claims)
+        return 0
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

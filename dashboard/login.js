@@ -20,6 +20,7 @@
   var clave = document.getElementById("puerta-clave");
   var modoBtn = document.getElementById("puerta-modo");
   var boton = document.getElementById("puerta-entrar");
+var verBtn = document.getElementById("puerta-ver");
   var estado = document.getElementById("puerta-estado");
   var nota = document.getElementById("puerta-nota");
   var miembros = document.getElementById("puerta-miembros");
@@ -90,9 +91,30 @@
   }
 
   function destino() {
-    if (!volver) return "/";
-    if (/^[a-z]+:/i.test(volver) || volver.indexOf("//") === 0) return "/";
-    return volver.charAt(0) === "/" ? volver : "/" + volver;
+    var base = "/";
+    if (volver && !/^[a-z]+:/i.test(volver) && volver.indexOf("//") !== 0) {
+      base = volver.charAt(0) === "/" ? volver : "/" + volver;
+    }
+    return conProyecto(base);
+  }
+
+  // El proyecto no puede vivir solo en la URL: la sesion se valida contra el
+  // proyecto del query o de la cookie del servidor. Si aqui se pierde, el
+  // tablero rebota al login aunque la clave sea correcta.
+  function proyectoActual() {
+    var deUrl = (params.get("project") || "").trim();
+    if (deUrl) return deUrl;
+    try {
+      return (localStorage.getItem("rally_project") || "main").trim() || "main";
+    } catch (e) {
+      return "main";
+    }
+  }
+
+  function conProyecto(ruta) {
+    var proyecto = proyectoActual();
+    if (!proyecto || proyecto === "main" || /[?&]project=/.test(ruta)) return ruta;
+    return ruta + (ruta.indexOf("?") === -1 ? "?" : "&") + "project=" + encodeURIComponent(proyecto);
   }
 
   // Si el enlace trae invitacion, no hay nada que teclear aqui.
@@ -102,7 +124,7 @@
     return;
   }
 
-  fetch("/api/acceso/estado", { headers: { "Accept": "application/json" } })
+  fetch(conProyecto("/api/acceso/estado"), { headers: { "Accept": "application/json" } })
     .then(function (r) { return r.json(); })
     .then(function (body) {
       if (!body || !body.ok) {
@@ -144,8 +166,10 @@
 
   var TEXTOS_ERROR = {
     "llave-invalida": "Esa llave no abre esta puerta.",
+    "llave-solo-local": "La llave maestra solo abre en la máquina del servidor. Usa tu nombre y clave.",
     "llave-vacia": "Escribe tu llave.",
     "clave-invalida": "Ese nombre y esa clave no coinciden.",
+    "pendiente": "Tu clave es correcta. El coordinador todavía no aprueba tu entrada; avísale y vuelve a intentar.",
     "sin-admin": "El proyecto existe pero sin administrador. Corre crear_proyecto.py.",
     "origen-no-permitido": "Entrada desde otro origen bloqueada.",
     "demasiados-intentos": "Demasiados intentos. Espera unos minutos."
@@ -173,6 +197,18 @@
     ponerModo(modo === "persona" ? "llave" : "persona");
   });
 
+  function alternarVer() {
+    var visible = verBtn.getAttribute("aria-pressed") !== "true";
+    verBtn.setAttribute("aria-pressed", visible ? "true" : "false");
+    var etiqueta = visible ? "Ocultar la clave" : "Mostrar la clave";
+    verBtn.setAttribute("aria-label", etiqueta);
+    verBtn.setAttribute("title", etiqueta);
+    llave.type = visible ? "text" : "password";
+    clave.type = visible ? "text" : "password";
+    (modo === "persona" ? clave : llave).focus();
+  }
+  verBtn.addEventListener("click", alternarVer);
+
   function entrarConClave() {
     var quien = (persona.value || "").trim();
     var secreto = clave.value || "";
@@ -188,7 +224,7 @@
     }
     boton.disabled = true;
     decir("Comprobando…");
-    fetch("/api/entrar", {
+    fetch(conProyecto("/api/entrar"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ nombre: quien, clave: secreto })
@@ -223,7 +259,7 @@
     boton.disabled = true;
     decir("Comprobando…");
 
-    fetch("/api/entrar", {
+    fetch(conProyecto("/api/entrar"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ llave: valor, nombre: (nombre.value || "").trim() })

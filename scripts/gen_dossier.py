@@ -847,8 +847,24 @@ def build_xlsx() -> None:
 def cargar(ruta: Path) -> None:
     global META, RETOS
     datos = json.loads(ruta.read_text(encoding="utf-8"))
+    if not isinstance(datos, dict) or not isinstance(datos.get("retos"), list):
+        raise SystemExit(
+            "JSON sin 'retos': no es el contenido del dossier. "
+            "Un borrador del motor (retos/soluciones anidados) tampoco sirve aquí: "
+            "este generador maqueta research/soluciones_actuales.json."
+        )
     META = datos.get("meta", {})
     RETOS = datos["retos"]
+    if not RETOS:
+        raise SystemExit(
+            "JSON con 'retos' vacio: el dossier saldria en blanco. "
+            "Rellena research/soluciones_actuales.json antes de maquetar."
+        )
+    for reto in RETOS:
+        if not isinstance(reto, dict) or not reto.get("titulo"):
+            raise SystemExit(
+                f"reto sin 'titulo' en el JSON ({reto!r}): no hay ficha que maquetar."
+            )
     # que_es: 80-150 palabras (regla de venta — leer una vez y entender de una)
     for reto in RETOS:
         for clave in ("propuesta", "alterna"):

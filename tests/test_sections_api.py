@@ -89,11 +89,21 @@ def test_sections_conflict_lock_and_events(servidor):
     status, body, _ = call("GET", base + "/api/sections?since=0")
     assert status == 200 and body["sections"] == {}
 
+    status, body, _ = call("POST", base + "/api/sections/team/lock", {
+        "actor": "Ana", "actor_id": "a", "ttl_minutes": 10,
+    })
+    assert status == 200
+
     status, body, _ = call("POST", base + "/api/sections/team", {
         "data": {"team_name": "Ana"}, "base_version": 0,
         "actor": "Ana", "actor_id": "a",
     })
     assert status == 200 and body["section"]["version"] == 1
+
+    status, _, _ = call("POST", base + "/api/sections/team/unlock", {
+        "actor": "Ana", "actor_id": "a",
+    })
+    assert status == 200
 
     # Otra persona edito sobre la version 0: no puede pisar.
     status, body, _ = call("POST", base + "/api/sections/team", {
@@ -103,12 +113,20 @@ def test_sections_conflict_lock_and_events(servidor):
     assert status == 409
     assert body["current"]["data"]["team_name"] == "Ana"
 
-    # Con la version correcta si guarda.
+    # Con la version correcta si guarda, y con el candado tomado.
+    status, _, _ = call("POST", base + "/api/sections/team/lock", {
+        "actor": "Bea", "actor_id": "b", "ttl_minutes": 10,
+    })
+    assert status == 200
     status, body, _ = call("POST", base + "/api/sections/team", {
         "data": {"team_name": "Bea"}, "base_version": 1,
         "actor": "Bea", "actor_id": "b",
     })
     assert status == 200 and body["section"]["version"] == 2
+    status, _, _ = call("POST", base + "/api/sections/team/unlock", {
+        "actor": "Bea", "actor_id": "b",
+    })
+    assert status == 200
 
     # Bloqueo visible y expirable.
     status, body, _ = call("POST", base + "/api/sections/team/lock", {
@@ -143,6 +161,11 @@ def test_sections_conflict_lock_and_events(servidor):
     status, _, _ = call("POST", base + "/api/sections/team/unlock", {
         "actor": "Ana", "actor_id": "a",
     })
+    assert status == 200
+
+    status, _, _ = call("POST", base + "/api/sections/team/lock", {
+        "actor": "Bea", "actor_id": "b", "ttl_minutes": 10,
+    }, token=bea)
     assert status == 200
 
     status, body, _ = call("POST", base + "/api/sections/team", {
@@ -186,6 +209,10 @@ def test_cors_private_only(servidor):
     assert "Access-Control-Allow-Origin" not in headers
 
     # El dashboard se sirve del mismo host: escribir desde ahi funciona.
+    status, _, _ = call("POST", base + "/api/sections/team/lock", {
+        "actor": "Ana", "actor_id": "a",
+    }, origin=base)
+    assert status == 200
     status, body, _ = call("POST", base + "/api/sections/team", {
         "data": {"team_name": "Lan"}, "base_version": 0,
         "actor": "Ana", "actor_id": "a",

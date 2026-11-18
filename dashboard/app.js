@@ -345,15 +345,15 @@ function getDefaultMultiAITasks() {
       id: "blender_3d",
       title: "Modelo 3D y Script Paramétrico en Blender",
       ai: "OpenCode / ChatGPT",
-      desc: "Genera script bpy con biseles mecánicos, carcasas y materiales realistas para planos de video.",
+      desc: "Dos propuestas del modelo (sobria y expresiva) con el mismo encuadre, para que el equipo elija una y marque en qué acto entra.",
       status: "pending",
       result: ""
     },
     {
       id: "budget_alibaba",
-      title: "Cotización Mayorista de Hardware & Partidas",
+      title: "Partidas del Presupuesto con Proveedor Real",
       ai: "Z.ai / Perplexity / Alibaba",
-      desc: "Localiza proveedores mayoristas reales, calcula unidades para prototipo y flete del 18%.",
+      desc: "Dos cosas y nada más: lo que hay que comprar para arrancar y a quién se le paga, por cuánto tiempo. Los precios se copian de la ficha real abierta en el navegador, no de memoria.",
       status: "pending",
       result: ""
     },
@@ -739,6 +739,7 @@ const NAV_TABS = [
   { id: "resumen",    label: "Resumen del Rally",        level: 0, check: () => true, summary: true },
   { id: "certamen",   label: "00 Certamen",             level: 0, setup: true, check: () => true },
   { id: "team",       label: "01 Identidad de Equipo",  level: 1, setup: true, check: () => !!state.rally_type },
+  { id: "identidad",  label: "Paleta y marca del proyecto", level: 1, check: () => !!state.rally_type },
   { id: "challenges", label: "02 Retos del Comité",     level: 2, check: () => !!state.rally_type && !!state.team_name },
   { id: "solution",   label: "03 Taller de Solución",   level: 3, check: () => !!state.challenge_id },
   { id: "impact",     label: "04 Impacto, ODS & Plan País", level: 3, check: () => !!state.challenge_id },
@@ -1027,7 +1028,7 @@ function generateProjectMarkdown() {
   md += `### 5. Pautado Oficial Homologado (Rúbrica Oficial)\n\n`;
   md += `#### 5.1 Definición del Problema\n${paut.problema || "Diagnóstico cuantitativo y delimitación del problema territorial, identificando causas raíz, población vulnerada y la brecha técnica que motiva la innovación."}\n\n`;
   md += `#### 5.2 Solución Propuesta\n${paut.solucion || "Arquitectura de la solución planteada por el equipo, detallando los módulos funcionales, diferenciación técnica y cómo resuelve directamente el reto oficial."}\n\n`;
-  md += `#### 5.3 Prefactibilidad y Presupuesto de Marcha\n${paut.prefactibilidad || "Estructura de costos, componentes requeridos, proveedores locales y modelo financiero de puesta en marcha bajo los topes normativos."}\n\n`;
+  md += `#### 5.3 Prefactibilidad y Presupuesto de Marcha\n${paut.prefactibilidad || "Qué se necesita para arrancar, cuánto cuesta el primer piloto, quién paga y qué parte se sostiene sola con el tiempo. Escrito en palabras simples: personas, insumos y trabajo."}\n\n`;
   md += `#### 5.4 Grado de Innovación y Creatividad\n${paut.innovacion || "Elementos diferenciales y disruptivos de la solución, barreras tecnológicas superadas y valor agregado frente a alternativas existentes."}\n\n`;
   md += `#### 5.5 Impacto Social y Sostenibilidad Ambiental\n${paut.impacto || "Medición de beneficios cuantificables para la comunidad, alineación con la Agenda 2030 (ODS) y viabilidad ecológica a largo plazo."}\n\n`;
 
@@ -1245,7 +1246,7 @@ function preparePrintDossierHTML() {
           <span>3.3 Prefactibilidad y Presupuesto de Marcha</span>
           <span>${pautadoConteo('prefactibilidad', paut.prefactibilidad)}</span>
         </div>
-        <p class="print-pautado-text">${paut.prefactibilidad || 'Estructura de costos, componentes requeridos, disponibilidad regional de proveedores y modelo financiero de puesta en marcha sustentado bajo los topes de la rúbrica...'}</p>
+        <p class="print-pautado-text">${paut.prefactibilidad || 'Qué se necesita para arrancar, cuánto cuesta el primer piloto, quién paga y qué parte se sostiene sola con el tiempo. Escrito en palabras simples: personas, insumos y trabajo...'}</p>
       </div>
       <div class="print-pautado-block">
         <div class="print-pautado-header">
@@ -1868,7 +1869,9 @@ function closeAllDrawers() {
 
 function toggleSidebar() {
   const body = document.getElementById("app-body") || document.body;
-  if (window.innerWidth <= 1024) {
+  // El mismo umbral que dibuja el drawer en style.css (900 px). Con 1024 aqui,
+  // entre 901 y 1024 el boton anadia una clase que el CSS no conoce: no abria.
+  if (window.innerWidth <= 900) {
     body.classList.remove("panel-drawer-open");
     body.classList.toggle("sidebar-drawer-open");
   } else {
@@ -1879,7 +1882,7 @@ function toggleSidebar() {
 
 function togglePanel() {
   const body = document.getElementById("app-body") || document.body;
-  if (window.innerWidth <= 1024) {
+  if (window.innerWidth <= 900) {
     body.classList.remove("sidebar-drawer-open");
     body.classList.toggle("panel-drawer-open");
   } else {
@@ -2250,6 +2253,9 @@ function renderNavigation() {
       statusMarkup = "";
     } else if (!isUnlocked) {
       statusMarkup = rsPill("waiting", { compact: true, label: "En espera" });
+    } else if (!rsPhaseDefs(t.id, map).length) {
+      // Vista sin entregables (identidad visual): no hay nada que medir.
+      statusMarkup = "";
     } else if (isCompleted) {
       statusMarkup = rsPill("done", { compact: true, label: "Terminado" });
     } else if (rsPhaseState(t.id, map).code === "waiting") {
@@ -2391,6 +2397,7 @@ function renderTab(tabId) {
     resumen: renderViewResumen,
     certamen: renderViewCertamen,
     team: renderViewTeam,
+    identidad: renderViewIdentidad,
     challenges: renderViewChallenges,
     solution: renderViewSolution,
     impact: renderViewImpact,
@@ -3113,6 +3120,7 @@ function renderTeamSummary() {
         <p class="phase-subtitle">${canEditSetup() ? "Ya quedó definida. Se cambia desde aquí cuando haga falta." : "Definida por el admin del equipo."}</p>
       </div>
       ${canEditSetup() ? `<button class="btn-secondary" onclick="editSetup('team')">Editar equipo</button>` : setupLockChip()}
+      <button class="btn-secondary" onclick="switchTab('identidad')">Paleta y marca</button>
     </div>
     <div class="setup-team">
       ${logo}
@@ -3122,6 +3130,287 @@ function renderTeamSummary() {
         <div><dt>Ciudad</dt><dd>${escapeHtml(state.city || "—")}</dd></div>
       </dl>
     </div>
+  `;
+}
+
+// Contraste WCAG real para no aprobar una paleta a ojo.
+function luminanciaHex(hex) {
+  const h = String(hex || "").replace("#", "");
+  if (!/^[0-9a-fA-F]{6}$/.test(h)) return null;
+  const canales = [0, 2, 4].map(i => parseInt(h.slice(i, i + 2), 16) / 255)
+    .map(v => (v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4)));
+  return 0.2126 * canales[0] + 0.7152 * canales[1] + 0.0722 * canales[2];
+}
+
+function contrasteHex(a, b) {
+  const la = luminanciaHex(a);
+  const lb = luminanciaHex(b);
+  if (la === null || lb === null) return null;
+  const alto = Math.max(la, lb);
+  const bajo = Math.min(la, lb);
+  return (alto + 0.05) / (bajo + 0.05);
+}
+
+function copiarComandoPaleta() {
+  const cmd = "python scripts/gen_palette.py --ruta A --si";
+  navigator.clipboard.writeText(cmd);
+  showToast("Comando copiado. Cambia la ruta (A, B o C) por la que apruebe el equipo.");
+}
+
+// ════════════ EDITAR CON IA: una caja de instrucción por recurso ════════════
+// El resultado NUNCA pisa el texto: entra como propuesta y el equipo acepta o
+// descarta. Usa el mismo motor que el copiloto (_runAIJob).
+const _aiEditState = {};
+
+function aiEditTarget(key) {
+  const partes = String(key || "").split(":");
+  const kind = partes[0];
+  const sub = partes[1] || "";
+  if (kind === "pautado") return {
+    tab: "pautado", nombre: "esta sección del pautado",
+    leer: () => (state.pautado || {})[sub] || "",
+    escribir: t => { if (!state.pautado) state.pautado = {}; state.pautado[sub] = t; }
+  };
+  if (kind === "script") return {
+    tab: "script", nombre: "este acto del guion",
+    leer: () => (state.script || {})[sub] || "",
+    escribir: t => { if (!state.script) state.script = {}; state.script[sub] = t; }
+  };
+  if (kind === "canvas") return {
+    tab: "canvas", nombre: "este bloque del canvas",
+    leer: () => (state.model_canvas || {})[sub] || "",
+    escribir: t => {
+      if (!state.model_canvas) state.model_canvas = {};
+      if (t) state.model_canvas[sub] = t; else delete state.model_canvas[sub];
+    }
+  };
+  if (kind === "solution") return {
+    tab: "solution", nombre: "el pitch de la solución",
+    leer: () => state.solution_simple || "",
+    escribir: t => { state.solution_simple = t; }
+  };
+  if (kind === "budget") return {
+    tab: "budget", nombre: "el presupuesto",
+    leer: () => (state.budget || []).map(it =>
+      `${it.element || "partida"} | ${it.units || 1} | ${it.unit_cost || 0} | ${it.url || ""}`).join("\n"),
+    escribir: t => {
+      const filas = String(t).split(/\r?\n/).map(l => l.split("|"))
+        .filter(c => c.length >= 3 && String(c[0]).trim());
+      if (!filas.length) return;
+      state.budget = filas.map(c => ({
+        element: String(c[0]).trim(),
+        units: parseFloat(String(c[1]).replace(/[^0-9.]/g, "")) || 1,
+        unit_cost: parseFloat(String(c[2]).replace(/[^0-9.]/g, "")) || 0,
+        url: String(c[3] || "").trim()
+      }));
+    }
+  };
+  return null;
+}
+
+function aiEditId(key) { return String(key).replace(/[^a-zA-Z0-9_-]/g, "-"); }
+
+function aiEditInstr(key, valor) {
+  const st = _aiEditState[key] || (_aiEditState[key] = {});
+  st.instr = valor;
+}
+
+function aiEditToggle(key) {
+  const st = _aiEditState[key] || (_aiEditState[key] = {});
+  st.open = !st.open;
+  aiEditRepaint(key);
+}
+
+function aiEditRepaint(key) {
+  const host = document.getElementById("ae-host-" + aiEditId(key));
+  if (host) host.innerHTML = aiEditBody(key);
+}
+
+function aiEditBody(key) {
+  const id = aiEditId(key);
+  const st = _aiEditState[key] || {};
+  const t = aiEditTarget(key);
+  if (!t) return "";
+  if (!st.open) {
+    return `<button class="link-quiet" onclick="aiEditToggle('${key}')" title="Pedirle un cambio a la IA sobre este texto">${SVG.sparkles || SVG.check} Editar con IA</button>`;
+  }
+  const tieneTexto = String(t.leer()).trim().length > 0;
+  const propuesta = st.result ? `
+    <div class="bu-note" style="margin-top:8px;">
+      <strong>Propuesta de la IA.</strong> No reemplaza nada hasta que la aceptes.
+      <div id="ae-res-${id}" style="margin-top:6px; white-space:pre-wrap; font-size:12px; line-height:1.6;">${escapeHtml(st.result)}</div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+        <button class="btn-primary" style="font-size:11px; padding:5px 10px;" onclick="aiEditAceptar('${key}')">${SVG.check} Aceptar</button>
+        <button class="btn-secondary" style="font-size:11px; padding:5px 10px;" onclick="aiEditDescartar('${key}')">Descartar</button>
+        <button class="link-quiet" onclick="aiEditCopiar('${key}')">Copiar</button>
+      </div>
+    </div>` : "";
+  return `
+    <div style="margin-top:8px; padding:10px; border:1px solid var(--border-light); border-radius:8px;">
+      <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+        <input id="ae-in-${id}" value="${escapeHtml(st.instr || "")}" oninput="aiEditInstr('${key}', this.value)"
+          placeholder="Qué cambia y qué se queda (ej.: más corto, sin cifras, tono hablado)"
+          aria-label="Instrucción para la IA" style="flex:1; min-width:200px; font-size:12px;">
+        <button class="btn-secondary" style="font-size:11px; padding:5px 10px;" onclick="aiEditRun('${key}')" ${st.busy ? "disabled" : ""}>${st.busy ? (SVG.spinner || "") + " Pensando…" : "Pedir cambio"}</button>
+        <button class="link-quiet" onclick="aiEditToggle('${key}')">Cerrar</button>
+      </div>
+      ${st.msg ? `<p class="sol-hint" style="margin:6px 0 0;">${escapeHtml(st.msg)}</p>` : ""}
+      ${!tieneTexto && !st.result ? `<p class="sol-hint" style="margin:6px 0 0;">Este campo está vacío: la IA escribe desde cero.</p>` : ""}
+      ${st.busy && st.live ? `<div id="ae-res-live-${id}" style="margin-top:6px; white-space:pre-wrap; font-size:12px; line-height:1.6; color:var(--text-muted);">${escapeHtml(st.live)}</div>` : ""}
+      ${propuesta}
+    </div>`;
+}
+
+function aiEditPanel(key) {
+  return `<span id="ae-host-${aiEditId(key)}">${aiEditBody(key)}</span>`;
+}
+
+async function aiEditRun(key) {
+  const st = _aiEditState[key] || (_aiEditState[key] = {});
+  const t = aiEditTarget(key);
+  if (!t) return;
+  const instr = String(st.instr || "").trim();
+  if (!instr) { showToast("Escribe qué quieres cambiar antes de pedirlo."); return; }
+  st.busy = true;
+  st.msg = "Pidiendo el cambio a la IA…";
+  st.result = "";
+  st.live = "";
+  aiEditRepaint(key);
+  const prompt = `Actúa como editor del equipo. Proyecto: "${state.project_name || state.challenge_title || "el proyecto"}" (${state.rally_type === "latam" ? "Rally Latam" : "Rally Nacional"}).
+Instrucción del equipo: ${instr}
+Texto actual de ${t.nombre}:
+"""
+${t.leer() || "(vacío)"}
+"""
+Devuelve SOLO el texto nuevo, sin explicaciones ni markdown. Conserva las cifras y las fuentes que ya estaban y no inventes datos. Español de Nicaragua, frases cortas. No repitas el nombre del proyecto ni el país más de una vez.`;
+  await _runAIJob("aiedit-" + key, prompt, {
+    onNoProvider: (data) => {
+      st.busy = false;
+      st.live = "";
+      st.msg = _aiStatusMessage(data);
+      aiEditRepaint(key);
+    },
+    boxTick: (texto) => {
+      st.live = texto || "";
+      const caja = document.getElementById("ae-res-live-" + aiEditId(key));
+      if (caja) caja.textContent = st.live;
+    },
+    onFinish: (final) => {
+      st.busy = false;
+      st.live = "";
+      st.result = String((final && final.text) || "").trim();
+      st.msg = st.result ? "Revisa la propuesta antes de aceptarla." : "La IA no devolvió texto. Prueba otro modelo.";
+      aiEditRepaint(key);
+    }
+  });
+}
+
+function aiEditAceptar(key) {
+  const st = _aiEditState[key];
+  const t = aiEditTarget(key);
+  if (!st || !st.result || !t) return;
+  t.escribir(st.result);
+  saveState();
+  st.result = ""; st.instr = ""; st.msg = ""; st.open = false;
+  renderTab(t.tab);
+  if (t.tab === "script" && typeof updateScriptMeters === "function") { try { updateScriptMeters(); } catch (e) { /* vista cambiada */ } }
+  showToast("Cambio aplicado al campo.");
+}
+
+function aiEditDescartar(key) {
+  const st = _aiEditState[key];
+  if (!st) return;
+  st.result = "";
+  st.msg = "Propuesta descartada. El texto quedó como estaba.";
+  aiEditRepaint(key);
+}
+
+function aiEditCopiar(key) {
+  const st = _aiEditState[key];
+  if (!st || !st.result) return;
+  navigator.clipboard.writeText(st.result);
+  showToast("Propuesta copiada.");
+}
+
+// Vista de identidad del PROYECTO (no del producto): paleta, marca y
+// tipografía. Se llega desde Identidad del equipo y desde el menú de fases.
+function renderViewIdentidad() {
+  const pal = state.palette || {};
+  const roles = [
+    { key: "primary", label: "Color principal", uso: "Titulares y el acento que se recuerda." },
+    { key: "secondary", label: "Color de apoyo", uso: "Bloques secundarios y series de datos." },
+    { key: "accent", label: "Acento", uso: "Un dato que debe saltar a la vista. Se usa poco." }
+  ];
+  const cs = getComputedStyle(document.documentElement);
+  const fuenteUi = cs.getPropertyValue("--font-ui").trim() || "—";
+  const fuenteNum = cs.getPropertyValue("--font-mono").trim() || "—";
+  const hayPaleta = !!(pal.primary || pal.secondary || pal.accent);
+
+  const filas = roles.map(r => {
+    const hex = String(pal[r.key] || "").trim();
+    const sobreBlanco = contrasteHex(hex, "#ffffff");
+    const sobreTinta = contrasteHex(hex, "#0f172a");
+    const veredicto = (sobreBlanco === null)
+      ? "Sin definir"
+      : (sobreBlanco >= 4.5 ? `Legible sobre blanco (${sobreBlanco.toFixed(1)}:1)`
+        : (sobreTinta !== null && sobreTinta >= 4.5 ? `Solo legible sobre tinta (${sobreTinta.toFixed(1)}:1)` : "Contraste bajo: cámbialo"));
+    return `
+      <div style="display:flex; gap:14px; align-items:flex-start; padding:12px 0; border-bottom:1px solid var(--border-light);">
+        <div style="flex:0 0 auto; width:56px; height:56px; border-radius:4px; background:${hex || "transparent"}; ${hex ? "" : "border:1px dashed var(--border-strong);"}"></div>
+        <div>
+          <h2 style="margin:0; font-size:13px; font-weight:700; color:var(--text-title);">${r.label}</h2>
+          <p style="margin:2px 0 0; font-family:var(--font-mono); font-size:12px; font-weight:700; color:var(--text-title);">${hex ? escapeHtml(hex.toUpperCase()) : "sin aprobar"}</p>
+          <p style="margin:4px 0 0; font-size:12px; color:var(--text-muted);">${escapeHtml(r.uso)}</p>
+          <p style="margin:2px 0 0; font-size:12px; font-weight:700; color:var(--text-muted);">${escapeHtml(veredicto)}</p>
+        </div>
+      </div>`;
+  }).join("");
+
+  const marca = state.team_logo_img
+    ? `<img src="${escapeHtml(state.team_logo_img)}" alt="Marca del equipo" style="max-height:64px; max-width:120px; object-fit:contain;">`
+    : `<span style="font-family:var(--font-mono); font-size:12px; color:var(--text-muted);">${escapeHtml(state.team_logo || "sin marca")}</span>`;
+
+  return `
+    <div class="phase-header">
+      <div>
+        <h1 class="phase-title">Identidad <span class="phase-title-accent">visual</span></h1>
+        <p class="phase-subtitle">Lo que hace que el proyecto se vea como suyo y no como la herramienta.</p>
+      </div>
+      <button class="link-quiet" onclick="switchTab('team')">← Identidad del equipo</button>
+    </div>
+
+    ${hayPaleta ? "" : `
+      <p class="bu-note is-warn"><strong>Todavía no hay paleta aprobada.</strong> Se deriva del reto, el sector y la ciudad; nunca se elige por moda. Corre el generador, elige una ruta y apruébala.</p>
+    `}
+
+    <section class="sol-sec">
+      <label class="sol-label">Paleta del proyecto</label>
+      <div>${filas}</div>
+      <div class="sol-inline-action">
+        <button class="link-quiet" onclick="copiarComandoPaleta()">${SVG.copy} Copiar el comando de la paleta</button>
+      </div>
+      <p class="sol-hint">El generador lee el reto del proyecto y propone tres rutas. Aprobar una es un acto humano: nadie la elige por ti.</p>
+    </section>
+
+    <section class="sol-sec">
+      <label class="sol-label">Marca del equipo</label>
+      <div style="display:flex; align-items:center; gap:14px;">${marca}<span style="font-size:13px; font-weight:700; color:var(--text-title);">${escapeHtml(state.team_name || "equipo sin nombre")}</span></div>
+      <p class="sol-hint">${state.team_logo_img ? "La imagen que subió el equipo." : "Sin imagen subida: sube el logo desde Identidad del equipo."}</p>
+    </section>
+
+    <section class="sol-sec">
+      <label class="sol-label">Tipografía</label>
+      <dl class="setup-facts setup-facts-inline">
+        <div><dt>Texto</dt><dd>${escapeHtml(fuenteUi)}</dd></div>
+        <div><dt>Números</dt><dd>${escapeHtml(fuenteNum)}</dd></div>
+      </dl>
+      <p class="sol-hint">Las cifras van siempre con números de ancho fijo para que no bailen al actualizarse.</p>
+    </section>
+
+    <section class="sol-sec">
+      <label class="sol-label">Dónde se aplica</label>
+      <p class="sol-hint">El pautado, el presupuesto, el prototipo web y los planos del video usan estos tres colores y estas dos tipografías. El cobalto de la herramienta nunca aparece en el entregable.</p>
+    </section>
   `;
 }
 
@@ -3208,9 +3497,9 @@ function renderViewCertamen() {
       </div>
 
       <!-- Botón de Continuar Centrado -->
-      <div style="display:flex; justify-content:center; margin-top:32px;">
+      <div style="display:flex; margin-top:32px;">
         <button id="btnProceedCertamen" class="btn-select-card ${isLatam ? 'filled-primary' : 'filled-navy'}"
-                style="padding:12px 48px; font-size:14px; font-weight:700; border-radius:8px;"
+                style="width:100%; justify-content:space-between; text-align:left; padding:12px 18px; font-size:14px; font-weight:700; border-radius:8px;"
                 ${state.rally_type ? "" : 'disabled aria-disabled="true" title="Elige un certamen para continuar"'}
                 onclick="proceedFromCertamen()">
           Continuar ${SVG.arrowRight}
@@ -3279,6 +3568,7 @@ function renderViewTeam() {
                 <input type="text" id="tm-name" placeholder="Nombre del equipo" value="${state.team_name || ''}"
                   style="width:100%; box-sizing:border-box; padding:10px 12px; border:1.5px solid var(--border-strong); border-radius:8px; font-size:13px; font-weight:600; color:var(--text-title);"
                   oninput="updateTeamName(this.value);">
+                <span id="tm-name-aviso" style="font-size:11px; color:var(--status-err-text); margin-top:4px; display:block;"></span>
                 <span style="font-size:11px; color:var(--text-muted); margin-top:6px; display:block;">El nombre de la marca/proyecto se decide en el Taller de Solución.</span>
               </div>
 
@@ -3386,9 +3676,30 @@ function renderViewTeam() {
   `;
 }
 
+// Nombres que ya usó un equipo en rallies anteriores. Se avisa, no se bloquea:
+// repetir un nombre hace que el jurado confunda dos proyectos.
+const EQUIPOS_YA_USADOS = ["sinergia09", "sinergia", "umbral09"];
+
+function equipoNombreNormalizado(txt) {
+  return String(txt || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+}
+
+function equipoNombreRepetido(txt) {
+  const n = equipoNombreNormalizado(txt);
+  if (!n) return false;
+  return EQUIPOS_YA_USADOS.some(u => u === n);
+}
+
 function updateTeamName(val) {
   state.team_name = val;
   saveState();
+  const aviso = document.getElementById("tm-name-aviso");
+  if (aviso) {
+    const repetido = equipoNombreRepetido(val);
+    aviso.textContent = repetido
+      ? "Ese nombre ya lo usó un equipo en un rally anterior. Si lo mantienes, que tu marca lo distinga."
+      : "";
+  }
   const el = document.getElementById("preview-team-name");
   if (el) {
     el.innerText = val.trim() || "NOMBRE DEL EQUIPO";
@@ -3653,24 +3964,26 @@ function getMesa() {
   const m = state.challenge_mesa;
   if (!m.votes) m.votes = {};
   if (!m.renews) m.renews = {};
-  if (!m.size) m.size = Math.min(10, Math.max(6, Number(state.team_members_count) || 6));
+  if (!m.size) m.size = getRoster().length;
   return m;
 }
 
-const MESA_EXTRA_SEATS = ["Integrante 7", "Integrante 8", "Integrante 9", "Integrante 10"];
-
 function mesaSeats() {
-  const m = getMesa();
-  const size = Math.min(10, Math.max(6, m.size));
-  const seats = TEAM_MASCOTS.slice(0, Math.min(6, size)).map(x => ({ id: x.id, label: x.name, color: x.color }));
-  for (let i = seats.length; i < size; i++) {
-    seats.push({ id: "seat_" + (i + 1), label: MESA_EXTRA_SEATS[i - 6] || ("Integrante " + (i + 1)), color: "var(--text-muted)" });
-  }
-  return seats;
+  // La mesa son los usuarios reales del roster. Si nadie se ha nombrado,
+  // la mesa está vacía: no se inventan estaciones ni integrantes de relleno.
+  return getRoster()
+    .filter(m => m && m.id && m.name)
+    .map(m => ({ id: String(m.id), label: String(m.name), color: _userColor(m.name) }));
 }
 
 function mesaMe() {
-  return (currentClientMascot && currentClientMascot.id) || (TEAM_MASCOTS[0] && TEAM_MASCOTS[0].id) || "seat_1";
+  const seats = mesaSeats();
+  const ident = currentClientMascot || {};
+  const porId = seats.find(s => s.id === String(ident.id || ""));
+  if (porId) return porId.id;
+  const clave = personNameKey(ident.name || "");
+  const porNombre = clave ? seats.find(s => personNameKey(s.label) === clave) : null;
+  return porNombre ? porNombre.id : "";
 }
 
 function mesaSeatName(seatId) {
@@ -3695,13 +4008,13 @@ function mesaTally(chId) {
   const yes = b.yes.length;
   const no = b.no.length;
   const res = b.res.length;
-  const need = Math.ceil(size / 2);
+  const need = size > 0 ? Math.ceil(size / 2) : 0;
   return {
     size, yes, no, res,
     wait: Math.max(0, size - yes - no - res),
     need,
-    approved: yes >= need,
-    discarded: no >= need
+    approved: size > 0 && yes >= need,
+    discarded: size > 0 && no >= need
   };
 }
 
@@ -3711,6 +4024,16 @@ function _mesaTime() {
 }
 
 function mesaVote(chId, seatId) {
+  // Un voto por persona: cada cual vota el suyo, nunca el de otro.
+  const yo = mesaMe();
+  if (!yo) {
+    showToast("Ponte un nombre en el equipo antes de votar.", true);
+    return;
+  }
+  if (String(seatId) !== yo) {
+    showToast("Un voto por persona: ese voto no es tuyo.", true);
+    return;
+  }
   const b = mesaBallot(chId);
   const cur = b.yes.includes(seatId) ? "yes" : b.no.includes(seatId) ? "no" : b.res.includes(seatId) ? "res" : null;
   b.yes = b.yes.filter(x => x !== seatId);
@@ -3747,22 +4070,6 @@ function mesaRenew(chId) {
   saveState();
   broadcastFieldChange("tribunal", "state", state.challenge_tribunal);
   showToast("Reto #" + chId + " renovado: vuelve a la mesa sin los votos de descarte.");
-  renderTab("challenges");
-}
-
-function mesaSetSize(n) {
-  const size = Math.min(10, Math.max(6, Number(n) || 6));
-  const m = getMesa();
-  m.size = size;
-  state.team_members_count = size;
-  const ids = mesaSeats().map(s => s.id);
-  Object.keys(m.votes).forEach(chId => {
-    const b = m.votes[chId];
-    b.yes = b.yes.filter(x => ids.includes(x));
-    b.no = b.no.filter(x => ids.includes(x));
-    b.res = b.res.filter(x => ids.includes(x));
-  });
-  saveState();
   renderTab("challenges");
 }
 
@@ -3845,16 +4152,18 @@ function renderMesaVote(ch) {
   const renews = (getMesa().renews[ch.id] || []);
   return `
     <section class="cr-panel cr-vote" id="mesa-vote-${ch.id}">
-      <div class="cr-block">La mesa vota <span class="cr-tag">${t.size} en la mesa · mayoría: ${t.need}</span></div>
+      <div class="cr-block">La mesa vota <span class="cr-tag">${t.size ? t.size + " en la mesa · mayoría: " + t.need : "sin equipo nombrado"}</span></div>
 
       <div class="cr-verdict">${verdict}</div>
 
       <div class="cr-voters">
-        ${seats.map(seat => {
+        ${seats.length === 0
+          ? `<p class="cr-rule-line">Nadie se ha nombrado todavía. Escribe tu nombre en el equipo y la mesa se llena con las personas reales.</p>`
+          : seats.map(seat => {
           const s = stance(seat.id);
           const isMe = seat.id === meId;
           return `
-            <button class="cr-voter is-${s} ${isMe ? "is-you" : ""}" aria-label="${seat.label}: ${stanceLabel(s)}${b.at[seat.id] ? " a las " + b.at[seat.id] : ""}. Toca para cambiar el voto." onclick="mesaVote('${ch.id}', '${seat.id}')" title="Toca para cambiar el voto de ${seat.label}">
+            <button class="cr-voter is-${s} ${isMe ? "is-you" : ""}" aria-label="${seat.label}: ${stanceLabel(s)}${b.at[seat.id] ? " a las " + b.at[seat.id] : ""}. ${isMe ? "Toca para cambiar tu voto." : "Solo esa persona puede cambiar su voto."}"${isMe ? ` onclick="mesaVote('${ch.id}', '${seat.id}')" title="Toca para cambiar tu voto"` : ` disabled title="${seat.label} vota por sí mismo"`}>
               <span class="cr-dot" style="background:${seat.color}"></span>
               <span class="cr-voter-name">${seat.label}${isMe ? " · tú" : ""}</span>
               <span class="cr-voter-stance">${stanceLabel(s)}</span>
@@ -5921,10 +6230,14 @@ function renderViewSolution() {
   ];
   const marcados = boostList.filter(b => boosters.includes(b.key)).length;
 
+  const aprobada = !!state.solution_approved;
+
   return `
     <div class="phase-header">
       <div>
-        <h1 class="phase-title">Describe tu <span class="phase-title-accent">solución</span></h1>
+        <h1 class="phase-title">${aprobada
+          ? 'Solución <span class="phase-title-accent">aprobada</span>'
+          : 'Describe tu <span class="phase-title-accent">solución</span>'}</h1>
         <p class="phase-subtitle">${escapeHtml(state.challenge_title || "Elige un reto para empezar")}</p>
       </div>
       <div class="sol-head-actions">
@@ -5933,6 +6246,14 @@ function renderViewSolution() {
       </div>
     </div>
 
+    ${aprobada && (state.solution_raw_input || "").trim() ? `
+      <details class="sol-sec">
+        <summary class="sol-label">Tu idea original, con tus palabras</summary>
+        <p class="sol-hint">Ya está aprobada y no hace falta reescribirla. Ábrela solo si quieres ajustarla.</p>
+        <textarea id="raw-sol-input" class="sol-input sol-input-lg" rows="3" placeholder="Ej: Secamos fruta con aire caliente y un sensor, para que el productor no pierda la cosecha."
+          oninput="updateSolutionFieldLive('raw_input', this.value)">${escapeHtml(state.solution_raw_input || "")}</textarea>
+      </details>
+    ` : `
     <section class="sol-sec">
       <label class="sol-label" for="raw-sol-input">Tu idea, con tus palabras</label>
       <p class="sol-hint">Sin tecnicismos. Lo que le contarías a un vecino.</p>
@@ -5942,6 +6263,7 @@ function renderViewSolution() {
         <button class="link-quiet" onclick="synthesizeSolutionFromRaw()">${SVG.spark} Estructurar tesis y pitch</button>
       </div>
     </section>
+    `}
 
     <section class="sol-sec">
       <label class="sol-label" for="sol-thesis">Tesis técnica</label>
@@ -5953,6 +6275,7 @@ function renderViewSolution() {
       <p class="sol-hint">Para el jurado que no es ingeniero.</p>
       <textarea id="sol-simple" class="sol-input" rows="2" placeholder="Explicación accesible…"
         oninput="updateSolutionFieldLive('simple', this.value)">${escapeHtml(state.solution_simple || "")}</textarea>
+      <div style="margin-top:8px;">${aiEditPanel("solution")}</div>
     </section>
 
     <section class="sol-sec">
@@ -6578,15 +6901,27 @@ function renderViewImpact() {
     <!-- Submenú de Navegación Temática -->
     <div class="impact-subnav">
       <button class="impact-subnav-btn ${impactActiveSubTab === 'ods' ? 'active' : ''}" onclick="switchImpactSubTab('ods')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="8"></circle><circle cx="12" cy="12" r="4"></circle><circle cx="12" cy="12" r="1"></circle>
+        </svg>
         ODS
       </button>
       <button class="impact-subnav-btn ${impactActiveSubTab === 'plan' ? 'active' : ''}" onclick="switchImpactSubTab('plan')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="8"></circle><path d="M4 12h16"></path><path d="M12 4a13 13 0 0 1 0 16a13 13 0 0 1 0-16z"></path>
+        </svg>
         Plan país
       </button>
       <button class="impact-subnav-btn ${impactActiveSubTab === 'leyes' ? 'active' : ''}" onclick="switchImpactSubTab('leyes')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+          <path d="M6 3h9l4 4v14H6z"></path><path d="M15 3v4h4"></path><path d="M9 13h7M9 17h5"></path>
+        </svg>
         Leyes
       </button>
       <button class="impact-subnav-btn ${impactActiveSubTab === 'sintesis' ? 'active' : ''}" onclick="switchImpactSubTab('sintesis')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+          <path d="M4 19V9M10 19V5M16 19v-7M21 19V8"></path>
+        </svg>
         Síntesis
       </button>
     </div>
@@ -6883,7 +7218,7 @@ function renderViewMultiAI() {
     <div class="phase-header">
       <div>
         <h1 class="phase-title">Despacho <span class="phase-title-accent">Multi-IA</span></h1>
-        <p class="phase-subtitle">Cada tarea tiene su IA y su prompt listo. Copia, pega la respuesta y vuelve al proyecto.</p>
+        <p class="phase-subtitle">Generar le pide el encargo a la IA que tengas conectada y va escribiendo la respuesta abajo. Si no hay IA conectada, deja el prompt listo para pegarlo a mano en la IA web.</p>
       </div>
       <div class="dispatch-tools">
         <button class="btn-secondary" onclick="copySyncToken()">${SVG.copy} Token para WhatsApp</button>
@@ -7016,37 +7351,50 @@ Requisitos estrictos:
 3. Materiales PBR mediante nodos: plástico industrial rugoso, metal anodizado, panel solar hasta microcontrolador visible si la tesis lo incluye.
 4. Cámara en encuadre de 3/4 e iluminación de estudio de 3 luces; fondo neutro oscuro para insertar el render en el video.
 5. Configura el render (EEVEE o Cycles con 128 muestras máx.) y ejecuta bpy.ops.render.render(write_still=True) al final del script.
-6. Código único, sin dependencias externas, sin addons, con comentarios breves en español; termina imprimiendo 'RENDER OK'.`;
+6. Código único, sin dependencias externas, sin addons, con comentarios breves en español; termina imprimiendo 'RENDER OK'.
+7. DOS PROPUESTAS, no una: entrega dos scripts completos —PROPUESTA 1 (sobria, lectura institucional) y PROPUESTA 2 (expresiva, lectura de producto)— con la misma escala, el mismo encuadre de cámara y la misma iluminación, para que el equipo compare solo el diseño. Cada propuesta escribe su render como render_propuesta_1.png y render_propuesta_2.png.
+8. Cierra con una línea por propuesta diciendo qué cambia entre ellas y para qué acto del video sirve cada una. El equipo elige; tú no eliges por él.`;
   }
 
   if (taskId === "budget_alibaba") {
     if (isNac) {
-      return `Actúa como Ingeniero de Costos y Modelo de Negocio Canvas para el ${cert}.
+      return `Actúa como alguien que arma el presupuesto de lanzamiento de un piloto para el ${cert}.
 Proyecto: "${pName}" (${chTitle}).
 Tesis: "${thesis}".
 Criterio Rúbrica Oficial Jurado Nacional: Prefactibilidad Económica, Sostenibilidad y Modelo Comunitario/Canvas (15 Puntos).
-Patrón de Ganadores Nacionales:
-Elabora la Estructura Presupuestaria y Plan de Inversión para el piloto operativo y escala a 12 meses.
-Reglas estrictas de evaluación nacional:
-1. Cotiza en Córdobas (C$) y equivalente en USD ($4,000 - $6,000 USD de referencia para el piloto).
-2. Detalla insumos obtenibles en el mercado nicaragüense o mayoristas internacionales de fácil desaduanaje.
-3. Especifica el modelo de sostenibilidad financiera viable (convenio con alcaldías municipales, cooperativas, programas MEFCCA o venta de servicios).
-4. Incluye desglose por fases a 12 meses (Fase 1: Prototipo y Pruebas M1-M3; Fase 2: Despliegue Piloto M4-M7; Fase 3: Escalamiento M8-M12).`;
+Presupuesto ya registrado por el equipo (edítalo solo si falta algo):
+${(state.budget || []).map(it => `- ${it.element}: ${it.units} × $${it.unit_cost} = $${(it.units * it.unit_cost).toFixed(2)} (${it.url || 'sin enlace'})`).join("\n") || "(vacío — propón el lanzamiento completo)"}
+El presupuesto es de superficie, no un estudio de costos. Dos tipos de partida y nada más:
+- COMPRAS: lo que hay que comprar para arrancar (equipos, materiales, insumos, herramientas).
+- SALARIOS: quién se paga, durante cuántos días o meses y a cómo.
+Reglas estrictas:
+1. Cotiza en Córdobas (C$) y su equivalente en USD. El total lo fija el tamaño del piloto, no una cifra redonda.
+2. De 6 a 8 partidas cortas. Cada una con una frase que diga qué es y para qué se usa. Nada de desgloses técnicos.
+3. Prohibido incluir aduanas, aranceles, flete internacional, impuestos, seguros, trámites ni ninguna otra línea administrativa o técnica. Si lo mencionas, el jurado lee un estudio de importación, no un lanzamiento.
+4. Cada compra lleva el enlace de la ficha del producto (nombre o SKU en la URL, nunca la portada) y la fecha en que viste ese precio.
+5. CÓMO SE CONSIGUE CADA PRECIO (obligatorio): abre un navegador real —MCP browser, Playwright o Chrome— y busca el producto donde se vende de verdad: Alibaba, Amazon, MercadoLibre o el distribuidor local. Abre la ficha, copia la URL exacta del artículo, el precio que muestra hoy, el vendedor y la fecha. Un precio que no salió de una ficha abierta no entra al presupuesto.
+6. Si no tienes navegador, dilo en una línea al final y entrega solo las partidas que puedas sustentar. Prohibido rellenar con dominios raíz o con precios estimados.
+7. Cierra con dos líneas: con qué dinero se sostiene el mes siguiente y qué parte se paga sola.
+8. Formato de salida: una partida por línea con el formato "Elemento | unidades | costo_unitario | enlace" para pegar directo en el dashboard.`;
     }
-    return `Actúa como Ingeniero de Costos y Abastecimiento Internacional para el ${cert}.
+    return `Actúa como alguien que arma el presupuesto de lanzamiento de un piloto para el ${cert}.
 Proyecto: "${pName}" (${chTitle}).
 Tesis: "${thesis}".
 Criterio Rúbrica Oficial: Prefactibilidad Económica y Sustentabilidad (20 Puntos).
-Presupuesto ya registrado por el equipo (edítalo solo si falta algo o está fuera de rango):
-${(state.budget || []).map(it => `- ${it.element}: ${it.units} × $${it.unit_cost} = $${(it.units * it.unit_cost).toFixed(2)} (${it.url || 'sin enlace'})`).join("\n") || "(vacío — propon el lote piloto completo)"}
-Patrón de Ganadores Latam/Nacional:
-Elabora el Presupuesto de Puesta en Marcha para el lote piloto de 10 unidades.
-Reglas estrictas de evaluación:
-1. Cotiza 5 a 6 insumos reales de distribuidores mayoristas (Alibaba / componentes de escala comercial).
-2. Proporciona: Elemento, Unidades requeridas, Costo unitario en USD y Enlace de búsqueda real por partida.
-3. Incluye una partida obligatoria para Flete Internacional y Aranceles de Importación (18%).
-4. El monto total final debe situarse estrictamente en el rango óptimo de $4,000 a $6,000 USD (ni inflando ni omitiendo costos críticos).
-5. Formato de salida: una partida por línea con el formato "Elemento | unidades | costo_unitario | enlace" para pegar directo en el dashboard.`;
+Presupuesto ya registrado por el equipo (edítalo solo si falta algo):
+${(state.budget || []).map(it => `- ${it.element}: ${it.units} × $${it.unit_cost} = $${(it.units * it.unit_cost).toFixed(2)} (${it.url || 'sin enlace'})`).join("\n") || "(vacío — propón el lanzamiento completo)"}
+El presupuesto es de superficie, no un estudio de costos. Dos tipos de partida y nada más:
+- COMPRAS: lo que hay que comprar para arrancar (equipos, materiales, insumos, herramientas).
+- SALARIOS: quién se paga, durante cuántos días o meses y a cómo.
+Reglas estrictas:
+1. De 5 a 8 partidas cortas, en USD, con unidades justificadas por el alcance del piloto.
+2. Cada partida con una frase que diga qué es y para qué se usa. Nada de desgloses técnicos.
+3. Prohibido incluir aduanas, aranceles, flete internacional, impuestos, seguros ni trámites: son líneas administrativas que el jurado no evalúa y que hacen ver el presupuesto como un estudio de importación.
+4. Cada compra lleva el enlace de la ficha del producto (nombre o SKU en la URL, nunca la portada del sitio) y la fecha en que viste ese precio. Si no puedes pegar la ficha, no inventes el precio: deja la partida fuera y dilo.
+5. CÓMO SE CONSIGUE CADA PRECIO (obligatorio): abre un navegador real —MCP browser, Playwright o Chrome— y busca el producto donde se vende de verdad: Alibaba, Amazon, MercadoLibre o el distribuidor local. Abre la ficha, copia la URL exacta del artículo, el precio que muestra hoy, el vendedor y la fecha. Un precio que no salió de una ficha abierta no entra al presupuesto.
+6. Si no tienes navegador, dilo en una línea al final y entrega solo las partidas que puedas sustentar. Prohibido rellenar con dominios raíz o con precios estimados.
+7. El total lo fija el alcance del piloto, no una cifra redonda. Cierra con dos líneas sobre quién sostiene el mes siguiente.
+8. Formato de salida: una partida por línea con el formato "Elemento | unidades | costo_unitario | enlace" para pegar directo en el dashboard.`;
   }
 
   if (taskId === "voice_audio") {
@@ -7055,12 +7403,20 @@ Reglas estrictas de evaluación:
 Proyecto: "${pName}" (${chTitle}).
 Tesis: "${thesis}".
 Criterio Rúbrica Oficial Jurado Nacional: Calidad del Video Pitch (15 Puntos) e Identidad Territorial.
-Patrón de Ganadores Nacionales (Fórmula 120 Segundos):
-Genera el texto de locución continuo para los 4 actos. Límite legal: 120 segundos de audio. Referencia de escritura: 250 a 270 palabras a 135 ppm; si el texto se pasa de esa referencia, avisa que costará grabarlo dentro de los 120 s.
-- Acto 1 (0–20s): Apertura empática en territorio real de Nicaragua con cifra contundente. PROHIBIDO nombre del proyecto o logos.
-- Acto 2 (20–60s): Explicación técnica de la solución, nombre identitario/marca registrable y demostración del mecanismo funcional/prototipo (los ganadores muestran la maqueta temprano).
-- Acto 3 (60–95s): Prefactibilidad económica y sostenibilidad con actores del entorno local (alcaldías, cooperativas, MEFCCA) y cifras exactas del pautado.
-- Acto 4 (95–120s): Cierre memorable de impacto humano, empleo y orgullo del talento nicaragüense (identidad cultural real, no retórica vacía).
+Los cuatro actos son la estructura del documento, no un molde de longitud: lo único que se mide al final es el audio de 120 segundos.
+CÓMO SE ESCRIBE PARA SER ESCUCHADO (obligatorio):
+- Frases de 8 a 14 palabras, una idea por frase. Sujeto, verbo, objeto.
+- Palabra o frase corta cuando la idea golpea; frase larga solo para explicar.
+- Marca con / cada pausa: después de toda cifra y en cada cambio de acto.
+- Números dichos completos («cuatro mil quinientos dólares»), nunca leídos como cifra de tabla.
+- Prohibido repetir la ciudad o el país más de una vez en todo el guion, y prohibido nombrar el proyecto antes del segundo 20.
+- Nada de siglas sin explicar y nada de enumerar partidas del presupuesto: en el acto 3 se dice en palabras llanas quién paga y qué se sostiene solo.
+- Los ganadores muestran la maqueta temprano, una cifra contundente al inicio y un cierre humano; imita ese orden, no su vocabulario.
+Extensión: 250 a 270 palabras a 130–140 palabras por minuto. Si te pasas, avisa cuántos segundos sobra.
+- Acto 1 (0–20 s): una persona real, una cifra verificable, el lugar nombrado una sola vez.
+- Acto 2 (20–60 s): qué construyeron y cómo funciona, con la maqueta a la vista desde temprano.
+- Acto 3 (60–95 s): qué cuesta arrancar, quién lo paga y qué parte se sostiene sola, en lenguaje llano.
+- Acto 4 (95–120 s): el impacto en números auditables y la frase que cierra.
 Distribución de referencia (no regla): Acto 1 ≈45, Acto 2 ≈90, Acto 3 ≈75, Acto 4 ≈55 palabras. Lo que se verifica al final es la duración real del audio: ≤120 s.
 Entrega solo el texto continuo para el locutor o sintetizador TTS, sin acotaciones teatrales ni corchetes.
 
@@ -7074,12 +7430,19 @@ Si no puedes ejecutar el motor, entrega el texto y las instrucciones exactas par
 Proyecto: "${pName}" (${chTitle}).
 Tesis: "${thesis}".
 Criterio Rúbrica Oficial: Calidad de la Presentación y Estructura Audiovisual (10 Puntos).
-Patrón de Ganadores (Anatomía de 120 segundos):
-Genera el texto de locución continuo para los 4 actos. Límite legal: 120 segundos de audio. Referencia de escritura: 250 a 270 palabras a 135 ppm; si el texto se pasa de esa referencia, avisa que costará grabarlo dentro de los 120 s.
-- Acto 1 (0–20s): Dolor humano y cifras cuantificadas. PROHIBIDO mencionar el nombre del proyecto o mostrar logos.
-- Acto 2 (20–60s): Explicación técnica de la solución y mecanismo funcional; los ganadores Latam muestran la demo visual de forma temprana y usualen un nombre memorable de identidad regional.
-- Acto 3 (60–95s): Prefactibilidad y desglose del presupuesto en ${isNac ? "córdobas (C$)" : "USD"} coincidente con el documento pautado.
-- Acto 4 (95–120s): Cierre de impacto, métricas auditables y proyección regional, con identidad nicaragüense (símbolo o cifra de orgullo local) como en los videos ganadores.
+Los cuatro actos son la estructura del documento, no un molde de longitud: lo único que se mide al final es el audio de 120 segundos.
+CÓMO SE ESCRIBE PARA SER ESCUCHADO (obligatorio):
+- Frases de 8 a 14 palabras, una idea por frase. Sujeto, verbo, objeto.
+- Marca con / cada pausa: después de toda cifra y en cada cambio de acto.
+- Números dichos completos, nunca leídos como cifra de tabla.
+- Prohibido repetir la ciudad o el país más de una vez en todo el guion, y prohibido nombrar el proyecto antes del segundo 20.
+- Nada de siglas sin explicar y nada de enumerar partidas: en el acto 3 se explica en palabras llanas quién paga y qué se sostiene solo.
+- Los ganadores muestran la maqueta temprano y cierran con un rostro y una cifra; imita ese orden, no su vocabulario.
+Extensión: 250 a 270 palabras a 130–140 palabras por minuto. Si te pasas, avisa cuántos segundos sobra.
+- Acto 1 (0–20 s): dolor humano y una cifra cuantificada. PROHIBIDO el nombre del proyecto y los logos.
+- Acto 2 (20–60 s): qué hace la solución y cómo se ve funcionando; la demo entra temprano.
+- Acto 3 (60–95 s): qué cuesta arrancar, quién lo paga y qué se sostiene solo, en ${isNac ? "córdobas (C$)" : "USD"} y sin leer una tabla.
+- Acto 4 (95–120 s): impacto con métricas auditables y proyección regional, en una sola frase final.
 Distribución de referencia (no regla): Acto 1 ≈45, Acto 2 ≈90, Acto 3 ≈75, Acto 4 ≈55 palabras. Lo que se verifica al final es la duración real del audio: ≤120 s.
 Entrega solo el texto continuo para el locutor o sintetizador TTS, sin acotaciones teatrales ni corchetes.
 
@@ -7115,21 +7478,39 @@ Entrega tu veredicto en viñetas directas: [APROBADO / RIESGOS DETECTADOS / CORR
   }
 
   if (taskId === "web_prototype") {
-    const pctx = budgetCurrency();
-    const budgetLines = (state.budget || []).map(it => `${it.element} ×${it.units} — ${budgetFmt(it.units * it.unit_cost, pctx)}`).join("; ") || "(sin partidas aún)";
-    return `Actúa como Desarrollador Web Frontend Senior especializado en dashboards televisivos.
+    // La identidad sale del proyecto, nunca de la marca del producto: heredar
+    // el cobalto #0866F5 hacia que todos los prototipos salieran iguales.
+    const pal = state.palette || {};
+    const paleta = ["primary", "secondary", "accent"]
+      .filter(k => pal[k])
+      .map(k => `${k} ${pal[k]}`)
+      .join(", ") || "(sin paleta aprobada: elige una y justifícala, no improvises)";
+    return `Actúa como Diseñador de Interfaz y Desarrollador Frontend Senior para el ${cert}.
 Proyecto: "${pName}" (${chTitle}).
 Tesis: "${thesis}".
-Toma el sitio existente de prototipo digital (/site) como referencia de estilo: tela suiza de datos (Estación y cobertura territorial), azul cobalto #0866F5, tipografía Plus Jakarta Sans, JetBrains Mono para números.
-Presupuesto actual del equipo: ${budgetLines}.
-Misión: genera UN SOLO archivo HTML autocontenido (con <style> y <script> incrustados, sin CDN ni fuentes externas) que sirva como panel de monitoreo del prototipo para grabar planos de pantalla.
-Requisitos estrictos:
-1. Hero con nombre del proyecto, la tesis condensada y 3 métricas grandes en tipografía mono (ej. unidades del piloto, cobertura, ahorro estimado) tomadas de la tesis y del presupuesto.
-2. Panel "Telemetría en Vivo" con datos simulados en JS (setInterval) que cambien cada 2s: señal, batería, nivel, temperatura — números plausibles para el hardware de la tesis.
-3. Tabla de partidas mayoristas con los datos de presupuesto dados (elemento, unidades, costo) + total calculado en ${pctx.rotulo}.
-4. Barra inferior con pulso de "Registro Territorial" y estado del prototipo.
-5. Estética: fondo blanco, 1 línea de acento cobalto, sin gradientes chillones, sin emojis, sin imágenes externas; texto legible en 4K (para grabar a 1080p/4K).
-6. Todo debe correr en un solo archivo, responsive, sin errores de consola.
+Misión: genera UN SOLO archivo HTML autocontenido (con <style> y <script> incrustados, sin CDN ni fuentes externas) que funcione como pantalla del prototipo para grabar planos de video.
+
+IDENTIDAD DEL PROYECTO — obligatoria:
+- Paleta aprobada por el equipo: ${paleta}.
+- Marca: ${state.team_name || "(el equipo aún no tiene nombre)"}${state.team_logo ? `, símbolo de marca "${state.team_logo}"` : ""}.
+- Prohibido caer en azul cobalto #0866F5 o morado #7c3aed: son la marca de la herramienta, no la del proyecto. Prohibido también gradientes llamativos, glassmorphism y emojis como iconos.
+
+QUÉ MUESTRA LA PANTALLA:
+1. Cabecera con el nombre del proyecto y la tesis en una línea de 12 a 18 palabras.
+2. Tres indicadores grandes del sistema en operación (por ejemplo: cobertura, unidades desplegadas, tiempo de respuesta). Números plausibles, tipografía mono, cada uno con su unidad.
+3. Un bloque de estado en vivo con datos simulados en JS (setInterval cada 2 s) que correspondan al hardware o al flujo real de la tesis.
+4. Una lista o tabla de lo que el sistema registra en su uso normal.
+5. Barra inferior con estado del prototipo y nota de "datos simulados".
+
+REGLAS DE DISEÑO (no las negocies):
+- Fondo neutro claro, texto oscuro, un solo color de acento de la paleta; el resto gris.
+- Nada de cifras de dinero ni tablas de presupuesto: esta pantalla enseña el sistema funcionando, no las cuentas.
+- Jerarquía real: un titular, tres números, el resto en cuerpo pequeño pero legible a 1080p (mínimo 14 px en pantalla).
+- Contraste mínimo 4.5:1 en todo texto. Radios de esquina de 0 a 8 px como máximo.
+- Sin imágenes externas, sin iconos de librerías, sin dependencias: todo dibujado con HTML, CSS y SVG inline.
+- Responsive de 390 a 1920 px, sin errores de consola, y los números siempre con tabular-nums.
+
+REFINAMIENTO: si algo no encaja con la identidad o con la tesis, cambia solo esa pieza y explica en una línea qué cambiaste y por qué.
 Entrega SOLO el código completo del archivo HTML.`;
   }
 
@@ -7220,11 +7601,11 @@ function injectTaskResult(taskId) {
 // 05 NIVEL 4: PAUTADO OFICIAL (< LÍMITES CON ESPACIOS)
 // ═════════════════════════════════════════════════════════════════════════════
 const PAUTADO_HINTS = {
-  problema: "Fórmulalo con una cifra verificable: quién sufre el problema, cuánto pierde y por qué nadie lo ha resuelto.",
-  solucion: "Una frase densa: qué hace el sistema, con qué hardware y qué desbloquea. Sin nombres comerciales.",
-  prefactibilidad: `Costos de proveedores reales (Alibaba) con flete 18%. La banda sugerida es $${BUDGET_TARGET.min.toLocaleString("en-US")}–$${BUDGET_TARGET.max.toLocaleString("en-US")} USD, no una regla: si tu piloto es más barato o más ambicioso, justifícalo.`,
-  innovacion: "Por qué no existe aún: dimensión Wow 1 (ciber-física) o Wow 2 (pasivo convertido en capital).",
-  impacto: "ODS oficial + beneficio anual cuantificado: familias, ahorro o hectáreas. Citas el plan de lucha contra la pobreza."
+  problema: "Quién sufre, cuánto pierde y con qué cifra verificada se demuestra. Nombra el lugar una sola vez y escribe para que lo entienda alguien de fuera del rubro.",
+  solucion: "Qué hace tu sistema, con qué piezas y qué cambia para la gente. Frases cortas, sin nombres comerciales ni siglas que nadie explique.",
+  prefactibilidad: "Cuéntalo como se lo dirías a un vecino: quién paga, con qué se arranca, qué se gasta cada mes y qué parte se sostiene sola. Habla de personas, insumos y trabajo; no llenes de montos.",
+  innovacion: "Por qué no existe todavía: qué nadie ha juntado (Wow 1, ciber-física) o qué residuo convertiste en capital (Wow 2).",
+  impacto: "A quién le cambia la vida, cuántas familias o hectáreas y en qué eje del plan país encaja. El ODS se cita una vez y las cifras salen de tu propio proyecto."
 };
 
 const PAUTADO_LABELS = { problema: "Problema", solucion: "Solución", impacto: "Impacto", innovacion: "Innovación", prefactibilidad: "Prefactibilidad" };
@@ -7236,7 +7617,7 @@ function renderViewPautado() {
     <div class="phase-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:14px; margin-bottom:24px; padding-bottom:14px; border-bottom:1px solid var(--border-light);">
       <div>
         <h1 class="phase-title">Documento <span class="phase-title-accent">Pautado Oficial</span></h1>
-        <p class="phase-subtitle">Cinco secciones que el jurado califica una por una. Al compilar, cada texto cae bajo su encabezado oficial.</p>
+        <p class="phase-subtitle">Escribe cada sección en texto corrido, como va en el documento. El conteo de caracteres es la única regla.</p>
       </div>
       <div style="display:flex; gap:8px; flex-wrap:wrap;">
         <button class="btn-primary" onclick="compileAndDownloadDocx()" id="btn-compile-docx">
@@ -7310,6 +7691,7 @@ function renderViewPautado() {
               onfocus="broadcastLock('pautado-${k}')"
               onblur="broadcastRelease('pautado-${k}')"
               oninput="updateCharCount('${k}', this)">${val}</textarea>
+            <div>${aiEditPanel("pautado:" + k)}</div>
           </article>
         `;
       }).join("")}
@@ -7505,12 +7887,24 @@ function budgetSourceHost(url) {
   } catch (e) { return ""; }
 }
 
+// Un enlace a portada (https://tienda.com) no sustenta un precio: el jurado
+// no puede abrir la ficha. Solo cuenta la URL del producto con su ruta.
+function budgetUrlGenerico(url) {
+  try {
+    const u = new URL(String(url));
+    return u.pathname.replace(/\/+$/, "") === "" && !u.search;
+  } catch (e) { return false; }
+}
+
 // Chip de la tienda de donde salió el precio: logo del sitio + dominio, todo
 // el chip es el enlace al producto (tap en teléfono → abre la ficha real).
 function budgetSourceChip(url) {
   const raw = String(url || "").trim();
   const host = budgetSourceHost(raw);
   if (!host) return `<span class="src-chip is-empty" title="Agrega el enlace del producto para sustentar el precio">Sin enlace</span>`;
+  if (budgetUrlGenerico(raw)) {
+    return `<span class="src-chip is-empty" title="Ese enlace es la portada del sitio: abre la ficha del producto y pega esa URL"><span class="src-host">${escapeHtml(host)} · portada, no ficha</span></span>`;
+  }
   const initial = escapeHtml(host.charAt(0).toUpperCase());
   return `<a class="src-chip" href="${escapeHtml(raw)}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(raw)}">
     <span class="src-logo"><span class="src-mono" aria-hidden="true">${initial}</span><img src="https://www.google.com/s2/favicons?sz=64&domain=${encodeURIComponent(host)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"></span>
@@ -7529,7 +7923,7 @@ function renderViewBudget() {
     <div class="phase-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:14px; margin-bottom:24px; padding-bottom:14px; border-bottom:1px solid var(--border-light);">
       <div>
         <h1 class="phase-title">Presupuesto de <span class="phase-title-accent">Puesta en Marcha</span></h1>
-        <p class="phase-subtitle">Insumos mayoristas para el prototipo inicial o lote piloto verificables con proveedores reales.</p>
+        <p class="phase-subtitle">Solo dos cosas: lo que se compra para arrancar y a quién se le paga. Sin aduanas, sin impuestos, sin desgloses técnicos.</p>
         ${ctx.nacional ? `
           <label style="display:inline-flex; align-items:center; gap:6px; margin-top:8px; font-size:11px; font-weight:700; color:var(--text-muted);">
             Tasa BCN (C$ por USD)
@@ -7556,11 +7950,13 @@ function renderViewBudget() {
     ${hasNotice ? `
       <p class="bu-note ${isTooHigh ? "is-warn" : "is-info"}">${isTooHigh
         ? "<strong>Monto alto para un piloto.</strong> Si el equipo necesita equipamiento industrial, justifícalo en Prefactibilidad."
-        : "<strong>Monto bajo para un desarrollo completo.</strong> Incluye flete internacional o contingencia."}</p>
+        : "<strong>Monto bajo para un lanzamiento.</strong> Revisa si faltan las compras de arranque o el pago de quienes trabajan en el piloto."}</p>
     ` : `
       <p class="bu-note is-ok"><strong>Presupuesto equilibrado.</strong> El total cae en la banda sugerida y cada partida tiene respaldo.
         ${ctx.nacional && ctx.rate ? ` Equivale a $${total.toFixed(2)} USD a la tasa declarada.` : ""}</p>
     `}
+
+    <div style="margin:0 0 14px;">${aiEditPanel("budget")}</div>
 
     <div class="table-plate" style="padding:0;">
       <div class="table-responsive" style="margin-bottom:0;">
@@ -7652,7 +8048,7 @@ function updateBudgetItem(idx, field, val) {
 }
 
 function addBudgetItem() {
-  state.budget.push({ element: "Nuevo Insumo Técnico", units: 1, unit_cost: 50.00, url: "https://alibaba.com" });
+  state.budget.push({ element: "", units: 1, unit_cost: 0, url: "" });
   saveState();
   renderTab("budget");
 }

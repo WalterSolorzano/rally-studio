@@ -10,6 +10,7 @@ con los campos opcionales:
     canvas_cost_notes, canvas_revenue
 Cada uno acepta lista de strings o un string con bullets separados por "|".
 """
+import argparse
 import json
 import pathlib
 import sys
@@ -34,12 +35,30 @@ def _bullets(items):
     return "<br>".join(f"• {item}" for item in items)
 
 
-def main():
+def main(argv=None):
+    parser = argparse.ArgumentParser(
+        description="Genera docs/canvas.md desde brief.json y budget/budget.json."
+    )
+    parser.add_argument(
+        "--si",
+        action="store_true",
+        help="escribe aunque falten project_name y team_name",
+    )
+    args = parser.parse_args(argv)
+
     if not BRIEF_PATH.exists():
         print("ERROR: brief.json no existe.")
         sys.exit(1)
 
     brief = json.loads(BRIEF_PATH.read_text(encoding="utf-8"))
+    if not (brief.get("project_name") and brief.get("team_name")) and not args.si:
+        # Con el brief vacio el canvas salia con «PROYECTO / EQUIPO» y costos en
+        # cero: entregable falso. Mejor no tocarlo.
+        print(
+            "ALTO: brief.json sin project_name/team_name. El canvas necesita un "
+            "proyecto real; docs/canvas.md se queda como esta."
+        )
+        return 1
     budget_items = json.loads(BUDGET_PATH.read_text(encoding="utf-8")) if BUDGET_PATH.exists() else []
 
     total_budget = sum(
@@ -135,7 +154,8 @@ def main():
     pathlib.Path("docs").mkdir(exist_ok=True)
     CANVAS_PATH.write_text(canvas_content, encoding="utf-8")
     print(f"OK: {CANVAS_PATH} generado exitosamente.")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

@@ -2,6 +2,7 @@
 
 Uso: python scripts/gen_presets_json.py
 """
+import argparse
 import json
 import re
 from pathlib import Path
@@ -11,11 +12,18 @@ JS = ROOT / "design" / "presets.js"
 OUT = ROOT / "design" / "presets.json"
 
 
-def main() -> int:
+def main(argv=None) -> int:
+    parser = argparse.ArgumentParser(
+        description="Regenera design/presets.json desde design/presets.js."
+    )
+    parser.parse_args(argv)
+    if not JS.is_file():
+        print("ALTO: design/presets.js no existe. design/presets.json se queda como esta.")
+        return 1
     raw = JS.read_text(encoding="utf-8")
     m = re.search(r"var\s+RALLY_PRESETS\s*=\s*(\[.*?\])\s*;", raw, re.S)
     if not m:
-        print("No se encontro RALLY_PRESETS en presets.js")
+        print("ALTO: no se encontro RALLY_PRESETS en presets.js. design/presets.json se queda como esta.")
         return 1
     body = m.group(1)
     # convierte el literal JS a JSON: claves sin comillas -> claves entrecomilladas

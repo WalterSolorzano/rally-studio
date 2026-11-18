@@ -69,13 +69,14 @@ def main():
         if not date:
             errors.append(f"Fila {i} ({name}): Fecha de cotizacion ausente.")
 
-        # Chequeo Flete
+        # Chequeo Flete: el presupuesto es de lanzamiento, no de importacion.
+        # Aduanas y aranceles son ruido para el jurado: si aparecen, se avisa.
         elem_lower = name.lower() + " " + it.get("description", "").lower()
-        if any(w in elem_lower for w in ["flete", "importacion", "envio", "arancel", "aduan"]):
+        if any(w in elem_lower for w in ["flete", "importacion", "arancel", "aduan"]):
             has_shipping = True
 
-    if not has_shipping:
-        warnings.append("No se detecto linea de 'Flete / Aranceles de Importacion'. Los jurados penalizan cotizaciones de Alibaba sin gastos de internacion.")
+    if has_shipping:
+        warnings.append("Hay una linea de aduana, flete o arancel. El presupuesto de lanzamiento solo lleva compras y salarios: quitala.")
 
     # La banda de precio es SUGERENCIA, no ley: un piloto de $2.500 puede ser
     # mejor que uno de $6.000, y un proyecto muy innovador puede costar $9.000.

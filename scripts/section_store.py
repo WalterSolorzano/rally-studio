@@ -118,6 +118,10 @@ class SectionStore(ABC):
         ...
 
     @abstractmethod
+    def lock_held_by(self, project_id: str, key: str, actor_id: str) -> bool:
+        ...
+
+    @abstractmethod
     def import_state(self, project_id: str, state: dict[str, Any], actor: str,
                      actor_id: str) -> dict:
         ...
@@ -296,6 +300,10 @@ class SQLiteSectionStore(SectionStore):
                 raise SectionConflict(key, int(base_version), current)
             if self._lock_active(current) and (current or {}).get("lock_owner_id") != actor_id:
                 raise SectionLocked(key, current)
+            if (key not in CLAVES_LOCALES
+                    and not (self._lock_active(current)
+                             and (current or {}).get("lock_owner_id") == actor_id)):
+                raise SectionLocked(key, current)
             now = time.time()
             version = current_version + 1
             seq = self._seq(conn, project_id)
@@ -373,6 +381,21 @@ class SQLiteSectionStore(SectionStore):
             updated = self._current(conn, project_id, key)
             conn.commit()
             return updated or {}
+
+    def lock_held_by(self, project_id: str, key: str, actor_id: str) -> bool:
+        """True solo si la seccion tiene un candado vivo del mismo actor.
+
+        Sirve para exigir el candado antes de escribir: pedir la seccion no basta,
+        hace falta que el actor que escribe lo tenga tomado en este momento.
+        """
+        key = validar_clave(key)
+        with self._lock, self._connect() as conn:
+            current = self._current(conn, project_id, key)
+        return bool(
+            current
+            and self._lock_active(current)
+            and (current.get("lock_owner_id") or "") == (actor_id or "")
+        )
 
     def import_state(self, project_id: str, state: dict[str, Any], actor: str,
                      actor_id: str) -> dict:

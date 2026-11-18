@@ -36,19 +36,18 @@ No la uses para el dossier de soluciones ni para contenido de retos: eso es
 2. Haz las preguntas de diseño antes de proponer: nombre del proyecto, a qué se dedica,
    público, tono (sobrio / cálido / técnico), si hay logo o color obligatorio y en qué
    dispositivo se verá. Si el usuario ya las respondió en la conversación, no las repitas.
-3. Si hay logo (`brand/logo.png` o el que indique), extrae 2–3 colores dominantes. Si no
-   hay, parte del nombre y del sector.
-4. Propón **2 direcciones** distintas, no una. Cada una trae:
-   - paleta de 5 colores con HEX y contraste del primario sobre el fondo (mínimo 4.5:1,
-     objetivo 7:1);
-   - pareja tipográfica (títulos + UI + datos) justificada en una línea;
-   - 3 palabras de personalidad y 2 anti-ejemplos ("esto no es");
-   - una frase de concepto para el logotipo.
-5. Recomienda una y explica por qué en dos líneas.
-6. Cuando el usuario elija, escribe `brand/palette.json` y `brand/tokens.css`, y sirve la
-   propuesta a la ventana (`--tab team --slot main` para identidad, `--tab resources
-   --slot main` para piezas gráficas).
-7. Verifica contraste antes de dar por buena una paleta.
+3. La paleta se deriva **del reto**, no del logo. `python scripts/gen_palette.py` lee
+   `brief.json` (`challenge_title`, sector, ciudad) y propone tres rutas A/B/C con el
+   contraste WCAG de cada una. El logo, si existe, solo ajusta el ancla: nunca la define.
+4. Sirve las **tres rutas** al buzón (`--tab team --slot main`) con su contraste impreso.
+   El humano compara y elige una. Sin elección no se escriben tokens.
+5. Aprobación explícita: `python scripts/gen_palette.py --ruta B --si`. Solo entonces se
+   escriben `brand/palette.json` (`_status: "aprobada"`) y `brand/tokens.css`.
+6. Verifica: `python scripts/verificar_identidad.py` debe imprimir `OK` (contraste >= 4.5,
+   cero hex literal en `site/`, tokens completos).
+7. Esto no se hace en un solo paso ni en un minuto: sin tres rutas servidas y una aceptada,
+   escribir en `site/`, `script/` o `budget/` está prohibido. Ver
+   `.agents/rules/proceso-obligatorio.md`.
 
 ## El módulo de diseño (`design/`)
 

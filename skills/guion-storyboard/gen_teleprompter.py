@@ -176,6 +176,19 @@ def leer_guion(ruta: Path) -> dict[str, str]:
             if clave in actos and not actos[clave]:
                 cuerpo = "\n".join(bloque.splitlines()[1:])
                 actos[clave] = _limpiar(cuerpo)
+
+    # 3) respaldo: el guion que el equipo escribio en el workbench.
+    #    El tablero guarda su espejo en dashboard/data/state.json; si
+    #    script/script.md esta vacio el teleprompter salia en blanco aunque
+    #    el guion existiera en pantalla.
+    if not any(actos.values()):
+        estado = _json(RAIZ / "dashboard/data/state.json", {})
+        guion = estado.get("script") if isinstance(estado, dict) else None
+        if isinstance(guion, dict):
+            for acto, clave in (("I", "acto1"), ("II", "acto2"), ("III", "acto3"), ("IV", "acto4")):
+                texto = _limpiar(str(guion.get(clave) or ""))
+                if texto:
+                    actos[acto] = texto
     return actos
 
 

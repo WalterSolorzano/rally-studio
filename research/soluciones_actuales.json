@@ -34,7 +34,7 @@
    "propuesta": {
     "nombre": "Molino Vecinal",
     "claim": "Los motores que se tiran mueven el molino del barrio: maíz, café y grano molidos por cuota, con corte calibrado a la potencia medida.",
-    "que_es": "Un motor de cualquier aparato se tira porque nadie sabe cuánta fuerza le queda, y el molino del barrio cobra caro. Qué es: un punto de molienda donde el motor rescatado del acopio mueve el molino de grano, con un protector térmico calibrado al amperaje medido en el banco de prueba. Ese corte evita que se queme otra vez, sin importar marca ni año. Muele 8 a 12 quintales por semana para 40 familias, con cuota por quintal.",
+    "que_es": "Un motor de cualquier aparato se tira porque nadie sabe cuánta fuerza le queda, y el molino del barrio cobra caro. Qué es: un punto de molienda donde el motor rescatado del acopio mueve el molino de grano, con un protector térmico calibrado al amperaje medido en el banco de prueba. Ese corte evita que se queme otra vez, sin importar marca ni año. Muele 8 a 12 quintales por semana para 40 familias, con cuota por quintal. El acopio se llena con los motores que los talleres desechan.",
     "como": [
      "Acopio: los motores llegan del punto limpio, de talleres y de las casas a cambio de un vale de molienda.",
      "Prueba en banco: se mide aislamiento, consumo en vacío y vueltas por minuto. El motor que pasa se queda; el que no, va a recuperación de cobre.",
@@ -1013,7 +1013,7 @@
    "alterna": {
     "nombre": "Estación Solar de Barrio",
     "claim": "Un panel que ya no sirve para techo sí sirve para cargar: estación pública con panel de segunda vida y baterías recuperadas que alquila linternas y radios.",
-    "que_es": "Un panel descartado sigue cargando, y con eso se arma un puesto de carga. Qué es: un puesto en mercado, escuela o plaza con un panel fuera de garantía, un banco de baterías de portátil recuperadas y un tablero de ocho salidas. Alquila linternas y radios por jornada a tarifa simbólica y carga celulares de los vecinos. Antes de armar el banco se mide cada celda: la que no retiene carga se descarta. La estructura es de andamio reciclado.",
+    "que_es": "Un panel descartado sigue cargando, y con eso se arma un puesto de carga. Qué es: un puesto en mercado, escuela o plaza con un panel fuera de garantía, un banco de baterías de portátil recuperadas y un tablero de ocho salidas. Alquila linternas y radios por jornada a tarifa simbólica y carga celulares de los vecinos. Antes de armar el banco se mide cada celda: la que no retiene carga se descarta. La estructura es de andamio reciclado. Se cobra por jornada, no por carga.",
     "como": [
      "Prueba y selección: se mide potencia real del panel y capacidad de cada celda recuperada antes de armar el banco.",
      "Montaje del puesto: estructura de andamio reciclado, regulador, banco de baterías y tablero de ocho salidas.",

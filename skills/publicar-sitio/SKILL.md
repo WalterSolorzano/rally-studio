@@ -35,8 +35,9 @@ No se construye ni publica la web demo sin cumplir esto:
 3. **Preguntas de diseño con `impeccable`** (o `ui-ux-pro-max` / `design-system`
    si no está), no de memoria. Criterios completos en
    `skills/propuesta-identidad/SKILL.md` → "Criterios de diseño de UI".
-4. **Responsive obligatorio:** 375 / 768 / 1280 px verificados en el navegador,
-   con captura de cada ancho.
+4. **Responsive obligatorio:** 390 / 768 / 1440 px verificados con
+   `python scripts/probar_responsive.py` (falla con scroll horizontal, cuerpo < 14 px
+   o consola con errores) y captura de cada ancho en `audit/`.
 5. **Cardless y sin genérico de IA:** sin cards por defecto, sin morado #7c3aed,
    sin glassmorphism, sin emojis como íconos. Espaciado solo con la escala de
    `DESIGN.md` (4/8/12/16/24).
@@ -47,7 +48,11 @@ No se construye ni publica la web demo sin cumplir esto:
 
 ## Procedimiento
 
-1. Verifica que `site/index.html` existe y abre bien en local.
+1. Verifica que `site/index.html` existe y abre bien en local. Si es el stub de
+   "Prototipo pendiente de generar", primero genéralo con el paso a paso de
+   `.agents/rules/proceso-obligatorio.md` §1.5:
+   `python scripts/gen_site.py` (exige identidad aprobada y 3 cifras con URL)
+   y luego `python scripts/probar_responsive.py`.
 2. Revisa lo mínimo antes de publicar:
    - no hay rutas absolutas rotas (`/assets/...` que solo existan en tu máquina),
    - no hay datos personales ni rutas de usuario,

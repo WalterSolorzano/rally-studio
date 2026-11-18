@@ -5,6 +5,7 @@
 Fuente: geoBoundaries gbOpen NIC ADM0 (Public Domain, Wikimedia).
 Salida: design/mapa_ni.js  ->  var MAPA_NI = {path:"...", vb:"0 0 W H"}
 """
+import argparse
 import json
 import math
 import os
@@ -51,11 +52,15 @@ def rings(geo):
     return out
 
 
-def main():
+def main(argv=None) -> int:
+    parser = argparse.ArgumentParser(
+        description="Regenera design/mapa_ni.js desde geoBoundaries NIC ADM0 (cachea el GeoJSON)."
+    )
+    parser.parse_args(argv)
     geo = load()
     polys = rings(geo)
     if not polys:
-        print("ERROR: sin geometria")
+        print("ALTO: sin geometria. design/mapa_ni.js se queda como esta.")
         return 1
     poly = max(polys, key=lambda r: len(r))
 
@@ -100,4 +105,4 @@ def main():
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    raise SystemExit(main())

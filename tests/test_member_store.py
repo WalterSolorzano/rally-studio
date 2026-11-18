@@ -183,6 +183,34 @@ def test_login_con_nombre_y_clave(tmp_path):
     assert store.login("main", "Nadie", "girasol7") is None
 
 
+def test_login_no_abre_sesion_a_un_pendiente(tmp_path):
+    """La clave buena de una solicitud sin aprobar no es una entrada."""
+    store = MemberStore(tmp_path / "members.db")
+    out = store.bootstrap("main", "Ana", "dev-admin")
+    store.claim_invite(
+        store.create_invite("main", out["member"]["id"])["token"],
+        "Luis",
+        "dev-luis",
+        password="girasol8",
+    )
+    assert store.login("main", "Luis", "girasol8") is None
+    assert store.pop_pendiente()["name"] == "Luis"
+    assert store.login("main", "Luis", "mala") is None
+    assert store.pop_pendiente() is None
+
+
+def test_sesion_no_se_cae_al_cambiar_de_ip_desde_el_tunel(tmp_path):
+    """Otra pestana por cloudflared trae otra IP: la sesion se muda, no muere."""
+    store = MemberStore(tmp_path / "members.db")
+    out = store.bootstrap("main", "Ana", "dev-admin", password="girasol9")
+    dentro = store.login("main", "Ana", "girasol9", ip="127.0.0.1")
+    assert store.authenticate("main", dentro["session"], "190.10.20.30") is None
+    assert store.pop_conflicto()["vista"] == "190.10.20.30"
+    assert store.authenticate("main", dentro["session"], "190.10.20.30",
+                              via_proxy=True)["name"] == "Ana"
+    assert store.authenticate("main", dentro["session"], "190.10.20.30")["name"] == "Ana"
+
+
 def test_sin_clave_no_se_puede_entrar_por_login(tmp_path):
     store = MemberStore(tmp_path / "members.db")
     out = store.bootstrap("main", "Ana", "dev-admin")

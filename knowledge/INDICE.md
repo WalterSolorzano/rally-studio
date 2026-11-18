@@ -6,7 +6,7 @@ si falta un archivo o su descripción, se corrige en `DESCRIPCIONES`.
 Regla de uso: leer primero este índice y abrir solo lo que la tarea pida.
 Si un archivo no está aquí, no es corpus: es código o artefacto.
 
-Archivos indexados: 1351
+Archivos indexados: 1358
 
 ## Carpetas grandes (índice propio)
 
@@ -26,6 +26,8 @@ Cada una tiene su propio archivo: se abre solo la que la tarea pida.
 
 | Ruta | Qué es | Cuándo sí | Cuándo no |
 |---|---|---|---|
+| `docs/_build/Dossier_prueba.html` | (sin describir — añadir a DESCRIPCIONES) | — | — |
+| `docs/ADMIN_UI_PLAN.md` | (sin describir — añadir a DESCRIPCIONES) | — | — |
 | `docs/APP_MOVIL.md` | (sin describir — añadir a DESCRIPCIONES) | — | — |
 | `docs/ARSENAL.md` | (sin describir — añadir a DESCRIPCIONES) | — | — |
 | `docs/assets/fuentes/ods/ods11.jpg` | (sin describir — añadir a DESCRIPCIONES) | — | — |
@@ -44,6 +46,7 @@ Cada una tiene su propio archivo: se abre solo la que la tarea pida.
 | `docs/auditoria.json` | (sin describir — añadir a DESCRIPCIONES) | — | — |
 | `docs/BASE_DURA.md` | (sin describir — añadir a DESCRIPCIONES) | — | — |
 | `docs/bibliography.md` | Bibliografía del proyecto en curso. | Citar fuentes o revisar respaldos del pautado. | Para cifras nuevas: usar research/claims.json. |
+| `docs/bitacora_fases.md` | (sin describir — añadir a DESCRIPCIONES) | — | — |
 | `docs/CAJA_HERRAMIENTAS.md` | (sin describir — añadir a DESCRIPCIONES) | — | — |
 | `docs/canvas.md` | Modelo Canvas del proyecto en curso. | Completar o revisar el modelo de negocio. | Para el pautado técnico. |
 | `docs/DESCARGA.md` | Qué trae el paquete de descarga y cómo empezar en cinco pasos. | Primera sesión tras clonar o descargar el ZIP. | Para trabajo avanzado: usar el manual de IA o el de despliegue. |
@@ -64,12 +67,16 @@ Cada una tiene su propio archivo: se abre solo la que la tarea pida.
 | `docs/mapa_sistema.json` | (sin describir — añadir a DESCRIPCIONES) | — | — |
 | `docs/MAPA_SISTEMA.md` | (sin describir — añadir a DESCRIPCIONES) | — | — |
 | `docs/MAPA_UIS.md` | (sin describir — añadir a DESCRIPCIONES) | — | — |
+| `docs/Matriz_Seleccion_Desafios_2026.docx` | Matriz oficial de selección de desafíos. | Elegir reto con criterios del comité. | Si el reto ya está fijado. |
 | `docs/MEJORAS_IA.md` | (sin describir — añadir a DESCRIPCIONES) | — | — |
 | `docs/MOTOR_SOLUCIONES.md` | (sin describir — añadir a DESCRIPCIONES) | — | — |
 | `docs/paso-03-mesa-contrato.md` | (sin describir — añadir a DESCRIPCIONES) | — | — |
+| `docs/pautado_draft.docx` | Borrador del documento pautado. | Revisar avance o compilar el entregable. | Como fuente de verdad: usar brief.json. |
 | `docs/PLAN_BACKEND_COOPERATIVO.md` | (sin describir — añadir a DESCRIPCIONES) | — | — |
 | `docs/PLAN_BACKEND_ISLA.md` | (sin describir — añadir a DESCRIPCIONES) | — | — |
 | `docs/PLAN_CORRECCIONES_VIDEO_VOZ.md` | (sin describir — añadir a DESCRIPCIONES) | — | — |
+| `docs/PLAN_MAESTRO_CORRECCIONES.md` | (sin describir — añadir a DESCRIPCIONES) | — | — |
+| `docs/planes/plan-chat-opencode.md` | (sin describir — añadir a DESCRIPCIONES) | — | — |
 | `docs/planes/plan-ia-gratis.md` | (sin describir — añadir a DESCRIPCIONES) | — | — |
 | `docs/planes/plan-readme-pulido.md` | (sin describir — añadir a DESCRIPCIONES) | — | — |
 | `docs/PUENTE_IA_DISENO.md` | (sin describir — añadir a DESCRIPCIONES) | — | — |

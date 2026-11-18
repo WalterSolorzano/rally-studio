@@ -129,6 +129,9 @@ MEMBER_STORE = MemberStore(DATA_DIR / "members.db")
 # queda en data/acceso.txt). Esa llave crea el administrador. De ahí en
 # adelante solo pasan los miembros: enlace de invitacion o su token personal.
 COOKIE_SESION = "rally_sesion"
+# El proyecto viaja tambien en cookie: sin ella, la sesion de `umbral` se
+# validaba contra `main` y el tablero rebotaba al login (simulacro Latam 2026).
+COOKIE_PROYECTO = "rally_proyecto"
 COOKIE_DIAS = 30
 # Lo unico que se sirve sin credencial: la pantalla de entrada y su pintura.
 RUTAS_LIBRES = {
@@ -137,6 +140,7 @@ RUTAS_LIBRES = {
     "/api/entrar", "/api/acceso/estado", "/api/project/claim",
     "/health", "/api/health",
     "/favicon.svg", "/manifest.webmanifest", "/sw.js", "/style.css",
+    "/brand_board.css", "/super_agents.css",
 }
 # Antes era todo `/assets/`: cualquiera en la red podia leer fotos, audios y
 # videos del proyecto sin sesion. Ahora solo lo que pinta la puerta de entrada.
@@ -416,6 +420,7 @@ RALLY_RUBRIC_SPEC = RALLY_RUBRICS["latam"]["criteria"]
 
 class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
     _sesion_nueva = ""
+    _proyecto_nuevo = ""
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=str(DASHBOARD_DIR), **kwargs)
@@ -1137,7 +1142,10 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
 
     def project_id(self, query: str = "") -> str:
         params = urllib.parse.parse_qs(query or "")
-        project = (params.get("project", ["main"])[0] or "main").strip()
+        project = (params.get("project", [""])[0] or "").strip()
+        if not project:
+            project = self.cookie_proyecto()
+        project = project or "main"
         if not re.match(r"^[A-Za-z0-9_-]{1,64}$", project):
             return "main"
         return project
@@ -1161,6 +1169,14 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
                 return valor.strip()
         return ""
 
+    def cookie_proyecto(self) -> str:
+        """Proyecto de la cookie: los recursos estaticos no llevan query."""
+        for trozo in (self.headers.get("Cookie") or "").split(";"):
+            nombre, _, valor = trozo.strip().partition("=")
+            if nombre == COOKIE_PROYECTO:
+                return valor.strip()
+        return ""
+
     def credencial(self) -> str:
         return self.cookie_token() or self.bearer_token()
 
@@ -1168,7 +1184,9 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
         token = self.credencial()
         if not token:
             return None
-        return MEMBER_STORE.authenticate(project, token, _client_ip(self))
+        return MEMBER_STORE.authenticate(
+            project, token, _client_ip(self), via_proxy=_via_proxy_local(self)
+        )
 
     def poner_cookie_sesion(self) -> None:
         """Cookie de sesion. Sin `Secure` porque en la red local no hay HTTPS;
@@ -1178,6 +1196,14 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
             f"{COOKIE_SESION}={self._sesion_nueva}; Path=/; Max-Age="
             f"{COOKIE_DIAS * 86400}; HttpOnly; SameSite=Lax",
         )
+        if self._proyecto_nuevo:
+            # Sin esta cookie, la siguiente peticion sin query vuelve a `main`
+            # y la sesion recien abierta no vale para nada.
+            self.send_header(
+                "Set-Cookie",
+                f"{COOKIE_PROYECTO}={self._proyecto_nuevo}; Path=/; Max-Age="
+                f"{COOKIE_DIAS * 86400}; SameSite=Lax",
+            )
 
     def paso_la_puerta(self, req_path: str, project: str) -> bool:
         """True si sigue. False si ya respondio (redirige al login o 401)."""
@@ -1208,6 +1234,8 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
             return False
         volver = req_path if req_path not in ("/", "/index.html") else ""
         destino = "/login.html" + ("?volver=" + urllib.parse.quote(volver) if volver else "")
+        if project and project != "main":
+            destino += ("&" if "?" in destino else "?") + "project=" + urllib.parse.quote(project)
         self.send_response(302)
         self.send_header("Location", destino)
         self.send_header("Content-Length", "0")
@@ -1238,11 +1266,25 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
                 return
             resultado = MEMBER_STORE.login(project, nombre, clave, ip)
             if resultado is None:
+                pendiente = MEMBER_STORE.pop_pendiente()
+                if pendiente:
+                    # Clave correcta, aprobacion pendiente: no es un fallo de clave.
+                    self.send_json_response(
+                        403,
+                        {
+                            "ok": False,
+                            "error": "pendiente",
+                            "message": "Tu clave es correcta. El coordinador todavia no aprueba tu entrada.",
+                        },
+                        cors=True,
+                    )
+                    return
                 entrar_anotar_fallo(ip)
                 self.send_json_response(401, {"ok": False, "error": "clave-invalida"}, cors=True)
                 return
             entrar_limpiar(ip)
             self._sesion_nueva = str(resultado.get("session") or "")
+            self._proyecto_nuevo = str(resultado.get("project") or project)
             self.send_json_response(
                 200,
                 {
@@ -1270,7 +1312,9 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
                     resultado = MEMBER_STORE.bootstrap(project, nombre or "Admin", "primer-acceso")
                     resultado["session"] = resultado.pop("token")
             else:
-                miembro = MEMBER_STORE.authenticate(project, llave, ip)
+                miembro = MEMBER_STORE.authenticate(
+                    project, llave, ip, via_proxy=_via_proxy_local(self)
+                )
                 if miembro is None:
                     entrar_anotar_fallo(ip)
                     self.send_json_response(401, {"ok": False, "error": "llave-invalida"}, cors=True)
@@ -1286,6 +1330,7 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
 
         entrar_limpiar(ip)
         self._sesion_nueva = str(resultado.get("session") or "")
+        self._proyecto_nuevo = str(resultado.get("project") or project)
         self.send_json_response(
             200,
             {
@@ -1399,7 +1444,9 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
         # aunque sea una solicitud pendiente: si alguien ya pidio entrar, hay puerta.
         if not MEMBER_STORE.has_any_members(project):
             return {"id": "legacy", "name": "Local", "role": "legacy"}
-        member = MEMBER_STORE.authenticate(project, self.credencial(), _client_ip(self))
+        member = MEMBER_STORE.authenticate(
+            project, self.credencial(), _client_ip(self), via_proxy=_via_proxy_local(self)
+        )
         if member is None:
             self.send_json_response(401, {"ok": False, "error": "no-autenticado"}, cors=True)
             return None
@@ -2712,6 +2759,29 @@ def _client_ip(handler):
         return handler.client_address[0]
     except Exception:
         return "desconocida"
+
+
+def _via_proxy_local(handler) -> bool:
+    """True si la peticion trae cabecera de proxy desde esta misma maquina.
+
+    Es el caso del tunel cloudflared apuntando a localhost: la sesion debe
+    sobrevivir al cambio de IP (otra pestana, el telefono). Un vecino del WiFi
+    llega con su propia IP como peer, no por loopback, y no entra aqui.
+    """
+    modo = (os.environ.get("RALLY_TRUST_PROXY") or "").strip().lower()
+    if modo in ("0", "false", "no"):
+        return False
+    try:
+        peer = handler.client_address[0]
+    except Exception:
+        return False
+    if not (modo in ("1", "true", "yes") or _es_loopback(peer)):
+        return False
+    try:
+        return any((handler.headers.get(c) or "").strip()
+                   for c in ("X-Forwarded-For", "CF-Connecting-IP", "X-Real-IP"))
+    except Exception:
+        return False
 
 
 def sync_authorized(handler) -> bool:

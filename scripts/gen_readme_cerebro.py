@@ -10,6 +10,7 @@ El PNG se dibuja con el token del proyecto (`brand/tokens.css`) y las fuentes de
 
 from __future__ import annotations
 
+import argparse
 import collections
 import json
 import random
@@ -306,7 +307,14 @@ h2{{margin-top:64px;padding-top:34px;border-top:1px solid var(--linea);font-fami
 </div></body></html>"""
 
 
-def main() -> None:
+def main(argv=None) -> int:
+    parser = argparse.ArgumentParser(
+        description="Dibuja assets/readme/cerebro.png con el grafo del cerebro (requiere playwright)."
+    )
+    parser.parse_args(argv)
+    if not WINNERS.exists():
+        print(f"ALTO: falta {WINNERS}. assets/readme/cerebro.png se queda como esta.")
+        return 1
     grafo = leer_grafo()
     gan = leer_ganadores()
     SALIDA.parent.mkdir(parents=True, exist_ok=True)
@@ -330,7 +338,8 @@ def main() -> None:
         f"{grafo['comunidades']} comunidades, {grafo['docs']} documentos, "
         f"{gan['sedes']} sedes, {gan['nacional']} nacionales, {gan['internacional']} internacionales"
     )
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

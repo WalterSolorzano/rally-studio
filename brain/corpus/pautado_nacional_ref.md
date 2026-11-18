@@ -1,113 +1,90 @@
 RALLY NACIONAL DE INNOVACIÓN
 
-PROYECTO OLLNARY
+Documento en blanco. Se llena con el desafío y los datos del proyecto actual (brief.json y research/claims.json). Las consignas de cada sección son las del formulario oficial; el texto de abajo dice qué se espera en cada párrafo. No trae contenido de otros equipos.
 
-DESAFÍO: GESTIÓN DEL TALENTO LOCAL EN CIUDADES CREATIVAS
+PROYECTO (project_name de brief.json)
+
+DESAFÍO: (challenge_title de brief.json)
 
 Elaborado por:
 
 Planteamiento del problema
 
-En Nicaragua, las alcaldías y comisiones locales carecen de una herramienta integral para identificar, visibilizar y conectar de forma eficiente a los artesanos y protagonistas con los mercados y espacios de promoción. Esta carencia dificulta la gestión del talento local, limita el comercio de productos culturales y debilita la economía creativa, especialmente en las Ciudades Creativas, donde preservar la identidad cultural es una prioridad.
+Causa raíz: qué falla hoy y por qué. No el síntoma.
 
-Según Murillo Dávila, en lugares como San Juan de Oriente —donde el 80% de los negocios dependen de la artesanía— los emprendedores enfrentan grandes obstáculos para promocionar sus productos. A pesar de que el 64.6% tiene acceso a telefonía móvil y la cobertura nacional de internet alcanza el 90%, el Banco Central de Nicaragua reportó en 2017 que ninguno de los establecimientos contaba con correo electrónico o sitio web. Muchos apenas mantienen cuentas en redes sociales, lo que reduce significativamente su alcance y capacidad de comercialización.
+Una cifra con fuente, año y URL de research/claims.json. Una por párrafo.
 
-Este problema se repite en comunidades como Monimbó, donde artesanos han solicitado apoyo para promoción y espacios de exhibición. López señala que, aunque a nivel nacional la economía creativa genera miles de empleos y cuenta con programas institucionales de apoyo, la falta de un sistema integrado desde las alcaldías impide aprovechar plenamente este potencial.
+Dónde se repite el problema y quién lo ha señalado.
 
-Además, la sostenibilidad del patrimonio cultural está en riesgo. López Irías advierte que un 20% de los artesanos en Monimbó no está transmitiendo su conocimiento ancestral, lo que evidencia una posible pérdida cultural si no se implementan mecanismos efectivos de gestión local.
+Qué se pierde si nada cambia.
 
-A pesar de iniciativas como la Red de Ciudades Creativas, la ausencia de una herramienta de gestión local limita el desarrollo sostenible de la economía creativa y la protección activa del patrimonio cultural nicaragüense.
+El problema en una frase.
 
-Propuesta de Valor – Plataforma Ollnari
+Propuesta de valor
 
-Ollnari es una aplicación móvil y plataforma web diseñada para transformar la forma en que se gestiona, promueve y comercializa el talento artesanal en las Ciudades Creativas de Nicaragua. Nuestra solución responde a una necesidad urgente: la falta de herramientas tecnológicas que permitan visibilizar, conectar y fortalecer a los pequeños negocios y emprendimientos culturales del país.
+Qué es, en una frase, y a quién sirve.
 
-La plataforma facilita una conexión directa, transparente y sin intermediarios entre artesanos nicaragüenses y consumidores nacionales e internacionales. Ollnari no solo impulsa el comercio justo mediante la venta de productos auténticos, sino que también actúa como una herramienta de preservación cultural, incorporando descripciones detalladas, trazabilidad y un sello digital de autenticidad: “Origen Garantizado”.
+Cómo conecta a las partes sin intermediarios que encarezcan.
 
-Además, integra turismo cultural virtual y talleres interactivos donde los mismos protagonistas pueden compartir sus conocimientos, técnicas y experiencias, generando una conexión emocional entre el cliente y la historia detrás de cada producto.
+Qué añade además de vender: trazabilidad, origen, formación.
 
-Esta propuesta busca dinamizar la economía local, empoderar a los artesanos como protagonistas del desarrollo creativo y reforzar el orgullo e identidad cultural. Al centralizar información, facilitar procesos logísticos y ofrecer un escaparate digital para el talento local, Ollnari convierte a las Ciudades Creativas en verdaderos motores de transformación social y económica.
+Qué dinamiza en la economía local y con qué evidencia.
 
-Ollnari es más que una plataforma de comercio: es una comunidad digital que valora lo hecho a mano, lo auténtico, lo nuestro.
+La frase que cierra la sección, en una línea.
 
 Contribución Innovadora
 
-"Ollnari" es una aplicación innovadora que combina geolocalización, comercio digital y preservación cultural para visibilizar a los artesanos nicaragüenses, A diferencia de plataformas tradicionales, ofrece un mapa interactivo que permite explorar ciudades creativas y acceder a productos culturales con su historia y trazabilidad, fortaleciendo el turismo cultural y el consumo consciente. Incluye talleres digitales para preservar y reproducir el conocimiento ancestral, contribuyendo a la transmisión intergeneracional de la artesanía.
+Qué combina que otras plataformas no combinan, y el enlace con el plan nacional y con los ODS que correspondan.
 
-Se diferencia de marketplaces genéricos al enfocarse exclusivamente en la economía creativa nicaragüense. Esto se alinea con el Plan Nacional de Lucha contra la Pobreza y Desarrollo Humano 2022-2026 en: digitalización empresarial, fomento del emprendimiento cultural y rescate del patrimonio. También responde a los ODS, destacando: trabajo decente (ODS 8), digitalización inclusiva (ODS 9), protección del patrimonio cultural (ODS 11) y consumo sostenible (ODS 12). Así, Ollnari no es solo una plataforma comercial, sino una herramienta de desarrollo local, inclusión digital y salvaguarda cultural.
+Por qué no es un marketplace genérico: el enfoque y a quién deja fuera.
 
 Presupuesto
 
 Plan de implementación
 
-La ejecución se divide en tres fases a lo largo de 12 meses:
+La ejecución se divide en las fases que fije el equipo:
 
-Fase 1 – Diseño y validación (Meses 1-3):
- Se desarrollará el diseño de la plataforma, validado con artesanos y usuarios. Se definirán los módulos de productos, cursos y membresías. Se establecerán alianzas estratégicas con socios logísticos, el Ministerio de Turismo y otras instituciones culturales.
+Fase 1 - Diseño y validación (meses): qué se diseña y con quién se valida.
 
-Fase 2 – Desarrollo y capacitación (Meses 4-8):
- Se desarrollará la plataforma web y móvil, con funciones de carrito de compras, acceso a cursos, membresías y gestión de pedidos. Se capacitará a artesanos en uso de la plataforma, comercio electrónico y mejora de habilidades técnicas.
+Fase 2 - Desarrollo y capacitación (meses): qué se construye y a quién se capacita.
 
-Fase 3 – Lanzamiento y evaluación (Meses 9-12):
- Se hará el lanzamiento oficial y una campaña de promoción nacional a través de redes sociales y medios oficiales. Se implementará un sistema de atención al cliente, seguimiento y ajustes.
+Fase 3 - Lanzamiento y evaluación (meses): lanzamiento, campaña y atención.
 
-Evaluación de indicadores (Meses 10-12):
- Se establecerán indicadores clave como:
+Evaluación de indicadores (meses): solo números que ya existan o se puedan contar.
 
-Número de ventas mensuales por artesano.
+Indicador 1: qué se cuenta y de dónde sale el dato.
 
-Número de usuarios con membresía activa.
+Indicador 2: qué se cuenta y de dónde sale el dato.
 
-Participación en cursos (artesanos inscritos y completados).
+Indicador 3: qué se cuenta y de dónde sale el dato.
 
-Tiempos promedio de entrega y satisfacción del cliente.
+Indicador 4: qué se cuenta y de dónde sale el dato.
 
-Estos indicadores serán evaluados trimestralmente para ajustar estrategias y garantizar el cumplimiento de objetivos.
+Cada cuánto se revisan los indicadores y quién ajusta la estrategia.
 
 Evaluación de impacto
 
-Impacto social:
- Según el Banco Central de Nicaragua (2024), en 2023 ingresaron al país 1,102,300 turistas. Esta plataforma busca conectar a esos visitantes con productos culturales y artísticos locales, permitiéndoles llevarse un recuerdo auténtico del país. Así se fortalece la identidad cultural y se promueve el orgullo por las tradiciones nicaragüenses. Además, se contribuye a reducir la migración de talentos locales al generar oportunidades sostenibles en sus comunidades.
+Impacto social: a quién le cambia el día, con una cifra del proyecto.
 
-Impacto económico:
- La plataforma servirá como vitrina para emprendedores de las ciudades creativas, facilitando el acceso a nuevos mercados. Esto impulsará la generación de ingresos, fomentará la creación de empleos directos e indirectos, y permitirá mejorar técnicas productivas a través del incentivo económico. A mediano y largo plazo, se espera un efecto multiplicador en las economías locales, fortaleciendo el ecosistema emprendedor.
+Impacto económico: ingresos, empleos o costo evitado, con la cuenta.
 
-Impacto ambiental:
- Aunque la plataforma tiene un enfoque cultural y económico, se promueve el consumo responsable y la valoración de productos hechos a mano, mayoritariamente con materiales sostenibles. Asimismo, al centralizar la promoción digital, se reduce el uso de materiales impresos y se estimula la logística local, ayudando a minimizar la huella ambiental del proceso comercial
+Impacto ambiental: materiales, energía y residuos.
 
 BIBLIOGRAFÍA
 
-Murillo Dávila, B. D., Cerda González, M. F., & Castillo Arias, M. A. (2023). Desarrollo e Implementación de un Plan de Marketing para Potenciar la Promoción de Productos Artesanales de PYMES a través del Blog BUSINESS-505 en San Juan de Oriente [Review of Desarrollo e Implementación de un Plan de Marketing para Potenciar la Promoción de Productos Artesanales de PYMES a través del Blog BUSINESS-505 en San Juan de Oriente].
+Una línea por fuente, en orden alfabético, con año y URL. Las herramientas de IA también se declaran.
 
-López , W. (2021). Economía Creativa y su contribución al cumplimiento de los Objetivos de Desarrollo Sostenible (ODS) en Nicaragua [Review of Economía Creativa y su contribución al cumplimiento de los Objetivos de Desarrollo Sostenible (ODS) en Nicaragua].
-
-López Irías, N. S. (n.d.). Gestión cultural para la actividad artesanal de la comunidad indígena de Monimbó, Masaya, Nicaragua [Review of Gestión cultural para la actividad artesanal de la comunidad indígena de Monimbó, Masaya, Nicaragua].
-
-Banco Central de Nicaragua (BCN). (2023). Informe sobre los ingresos por turismo en 2023. Banco Central de Nicaragua. https://www.bcn.gob.ni/divulgacion-prensa/bcn-publica-informe-sobre-los-ingresos-por-turismo-en-2023
-
-‌
+Formato: Autor. (año). Título. Medio o sitio. URL
 
 | Descripción | Unidad | Unidad | Precio unitario C$ | Precio total C$ |
 
-| Creación de la página web/Aplicación | 1 | Proyecto | C$ 75,000.00 | C$ 75,000.00 |
+| Descripción del gasto (solo compras y salarios de lanzamiento, con URL de respaldo) |  |  |  |  |
 
-| Marketing inicial (Divulgación) | 1 | Proyecto | C$ 30,000.00 | C$ 30,000.00 |
+|  |  |  |  |  |
 
-| Registro de dominio (anual) | 1 | Proyecto | C$ 1,000.00 | C$ 1,000.00 |
+|  |  |  |  |  |
 
-| Hosting/Servidores (Anual) | 1 | Proyecto | C$ 5,000.00 | C$ 5,000.00 |
-
-| Pago de personal administrativo (Editores, Servicio al cliente, IT,) | 1 | Proyecto | C$ 40,000.00 | C$ 40,000.00 |
-
-| Alquiler de módulo de oficinas | 1 | Proyecto | C$ 18,400.00 | C$ 18,400.00+ |
-
-| Base de datos en la nube (Google cloud) | 1 | Proyecto | C$ 3,700.00 | C$ 3,700.00 |
-
-| Compra de equipo de grabación (Cámaras, Micrófonos, Luces, Fondos) | 1 | Proyecto | C$ 34,000.00 | C$ 34,000.00 |
-
-| Licencia anual para programas de edición (Adobe) | 1 | Licencia | C$ 8,832.00 | C$ 8,832.00 |
-
-| TOTAL |  |  |  | C$ 219,532.00 |
+|  |  |  |  |  |
 
 <!-- relacionado:inicio -->
 

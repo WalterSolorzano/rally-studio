@@ -10,6 +10,7 @@ oficial `ResembleAI/Chatterbox-Multilingual-es-mx-latam` (MIT).
 | `narration.mp4` | Entregable oficial: MP4 con audio AAC, sin video, 77.8 s |
 | `previews/chatterbox_interna.mp3` | Muestra de la voz interna, 62 s |
 | `previews/chatterbox_interna_e080_c045.mp3` | Muestra expresiva, 9 s |
+| `voz_ejemplo_tiktok_40s.wav` | Voz de ejemplo para clonar, 40 s, mono, sin música |
 
 ## Preset exacto
 
@@ -60,6 +61,23 @@ masteriza:
 ffmpeg -i narracion.wav -af "loudnorm=I=-16:TP=-1.5:LRA=11" `
   -c:a aac -b:a 192k -ar 48000 -ac 1 -movflags +faststart -f mp4 assets/voice/narration.mp4
 ```
+
+## Voz de ejemplo incluida (`voz_ejemplo_tiktok_40s.wav`)
+
+Muestra de 40 s, ya limpia (sin música ni ruido de fondo), para probar la clonación sin
+grabar nada. Úsala como `audio_prompt_path`:
+
+```powershell
+python -c "from chatterbox.tts import ChatterboxTTS as T; t=T.from_pretrained('models/latam'); t.generate('Texto de prueba', audio_prompt_path='assets/voice/voz_ejemplo_tiktok_40s.wav').write('prueba.wav')"
+```
+
+En el panel **Guion > Motor y preset de voz** también puedes pedirle al chat que prepare el
+comando con esta muestra; el archivo se puede descargar desde la bóveda de recursos.
+
+Aviso de uso: la muestra salió de un video público. Sirve para probar el motor, **no** para
+publicar el video del rally: para el entregable usa la voz interna del finetune o una voz
+propia, con permiso escrito de quien la presta. Si la persona del video no autorizó el uso,
+clonarla en el video final es un problema legal, no un detalle.
 
 ## Usar tu propia voz
 

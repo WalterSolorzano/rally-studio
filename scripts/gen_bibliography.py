@@ -3,9 +3,11 @@
 gen_bibliography.py -- Genera docs/bibliography.md en formato APA 7 a partir de
 research/claims.json y anade la declaracion etica obligatoria de uso de IA.
 """
+import argparse
 import json
 import pathlib
 import datetime
+import sys
 from comun import utf8
 utf8()
 
@@ -13,10 +15,28 @@ CLAIMS_PATH = pathlib.Path("research/claims.json")
 BRIEF_PATH = pathlib.Path("brief.json")
 BIB_PATH = pathlib.Path("docs/bibliography.md")
 
-def main():
+def main(argv=None):
+    parser = argparse.ArgumentParser(
+        description="Genera docs/bibliography.md en APA 7 desde research/claims.json."
+    )
+    parser.add_argument(
+        "--si",
+        action="store_true",
+        help="escribe aunque falten project_name y team_name",
+    )
+    args = parser.parse_args(argv)
+
     claims = json.loads(CLAIMS_PATH.read_text(encoding="utf-8")) if CLAIMS_PATH.exists() else []
     brief = json.loads(BRIEF_PATH.read_text(encoding="utf-8")) if BRIEF_PATH.exists() else {}
 
+    if not (brief.get("project_name") and brief.get("team_name")) and not args.si:
+        # Con el brief vacio la bibliografia salia titulada «-- PROYECTO» y sin
+        # fuentes: un entregable falso con la declaracion de IA dentro.
+        print(
+            "ALTO: brief.json sin project_name/team_name. La bibliografia necesita "
+            "un proyecto real; docs/bibliography.md se queda como esta."
+        )
+        return 1
     project = brief.get("project_name", "PROYECTO").upper()
     today_str = datetime.date.today().strftime("%d de %B de %Y")
 
@@ -50,7 +70,7 @@ def main():
         "",
         "1. **Google DeepMind Antigravity:** Empleado como entorno de desarrollo agéntico y analisis comparativo de bases de datos historicas de proyectos ganadores.",
         "2. **OpenCode / Modelos de Lenguaje:** Utilizado para la revision sintactica de limites de caracteres en el documento pautado y estructuracion inicial de scripts de automatizacion.",
-        "3. **Colormind API:** Utilizado para la armonizacion algoritmica de la paleta de colores y verificacion de contraste WCAG AA a partir del logo del proyecto.",
+        "3. **Generacion cromatica derivada:** La paleta del proyecto se deriva del reto y del sector (no de una plantilla fija); cada ruta candidata se contrasta con la formula WCAG 2.1 y se aprueba por decision del equipo.",
         "4. **Herramientas de Sintesis de Voz (TTS):** Empleado exclusivamente para el prototipado y renderizado del borrador de locucion de la pista guia del video pitch.",
         "",
         "> **Nota de Integridad:** Todos los datos estadisticos, cotizaciones comerciales mayoristas, calculos de viabilidad y conceptos de diseno fueron supervisados, auditados y validados por el equipo de participantes humanos."
@@ -59,6 +79,7 @@ def main():
     pathlib.Path("docs").mkdir(exist_ok=True)
     BIB_PATH.write_text("\n".join(lines), encoding="utf-8")
     print(f"OK: {BIB_PATH} generado exitosamente ({len(claims)} referencias citadas).")
+    return 0
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

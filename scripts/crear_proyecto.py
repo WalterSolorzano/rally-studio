@@ -30,6 +30,11 @@ def main(argv=None) -> int:
     parser.add_argument("--name", required=True, help="nombre del admin")
     parser.add_argument("--data-dir", default=None)
     parser.add_argument("--ttl-hours", type=int, default=48)
+    parser.add_argument(
+        "--clave",
+        default="",
+        help="clave personal del dueno: con ella entra por nombre y clave, sin reclamar la invitacion",
+    )
     args = parser.parse_args(argv)
 
     project = (args.project or "main").strip()
@@ -44,7 +49,7 @@ def main(argv=None) -> int:
         return 2
 
     try:
-        created = store.bootstrap(project, args.name, "admin-cli")
+        created = store.bootstrap(project, args.name, "admin-cli", args.clave)
         invite = store.create_invite(project, created["member"]["id"], args.ttl_hours)
     except ValueError as exc:
         print(json.dumps({"error": str(exc)}, ensure_ascii=False))

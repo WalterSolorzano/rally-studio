@@ -41,6 +41,18 @@ function setAssetUploadActo(val) {
   if (box) box.innerHTML = renderVideoStudio();
 }
 
+// Nombra la pieza como propuesta del acto que eligió el equipo. Si ya viene
+// nombrada desde la IA (asset_<shotlist_id>[_pN]_...), se respeta.
+function assetNombrePropuesta(name, va, acto) {
+  const limpio = String(name || "recurso").replace(/[^\w.\-]+/g, "_");
+  if (/^asset_[a-z0-9]+(_p\d+)?_/i.test(limpio)) return limpio;
+  const ext = (limpio.match(/\.[a-z0-9]+$/i) || [""])[0];
+  const desc = limpio.slice(0, limpio.length - ext.length) || "recurso";
+  const nivel = (acto || "plan").replace(/[^\w]/g, "").toLowerCase();
+  const hermanas = va.items.filter(it => /^asset_/i.test(it.name) && it.acto === acto).length;
+  return `asset_${nivel}_p${hermanas + 1}_${desc}${ext}`;
+}
+
 async function uploadVideoAssets(inputEl) {
   const files = Array.from(inputEl.files || []);
   inputEl.value = "";
@@ -51,11 +63,12 @@ async function uploadVideoAssets(inputEl) {
   const va = getVideoAssets();
   for (const file of files) {
     try {
+      const nombre = assetNombrePropuesta(file.name, va, acto);
       const resp = await fetch("/api/asset-upload", {
         method: "POST",
         headers: {
           "Content-Type": "application/octet-stream",
-          "X-Asset-Name": encodeURIComponent(file.name),
+          "X-Asset-Name": encodeURIComponent(nombre),
           "X-Asset-Acto": encodeURIComponent(acto)
         },
         body: file
@@ -63,12 +76,12 @@ async function uploadVideoAssets(inputEl) {
       const data = await resp.json();
       if (data.status === "ok") {
         va.items.push({
-          id: data.id, name: file.name, size: file.size, type: file.type || "",
+          id: data.id, name: nombre, size: file.size, type: file.type || "",
           acto, owner: currentClientMascot.name, ts: data.timestamp,
           url: data.url
         });
       } else {
-        showToast(`No se pudo subir ${file.name}. Isla del servidor activa?`, true);
+        showToast(`No se pudo subir ${nombre}. Isla del servidor activa?`, true);
       }
     } catch (e) {
       showToast(`No se pudo subir ${file.name} (servidor apagado).`, true);
@@ -83,9 +96,102 @@ async function uploadVideoAssets(inputEl) {
 function deleteVideoAsset(id) {
   const va = getVideoAssets();
   va.items = va.items.filter(it => it.id !== id);
+  if (va.approved) { Object.keys(va.approved).forEach(k => { if (va.approved[k] === id) delete va.approved[k]; }); }
+  if (va.feedback) delete va.feedback[id];
   saveState();
   broadcastFieldChange("video_assets", "state", va);
   fetch("/api/asset-delete", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id }) });
+  renderTab("resources");
+}
+
+// Un mismo plano puede tener varias propuestas: se agrupan por el shotlist_id
+// del nombre (asset_<shotlist_id>_<propuesta>_<descripcion>.<ext>).
+function assetBase(name) {
+  const n = String(name || "").replace(/\.[a-z0-9]+$/i, "");
+  const m = n.match(/^asset_([a-z0-9]+)(?:_p\d+)?_/i);
+  return (m ? m[1] : n).toLowerCase();
+}
+
+function assetAprobada(va, it) {
+  const aprob = va.approved || {};
+  return aprob[assetBase(it.name)] === it.id;
+}
+
+function approveVideoAsset(id) {
+  const va = getVideoAssets();
+  if (!va.approved || typeof va.approved !== "object") va.approved = {};
+  const it = va.items.find(x => x.id === id);
+  if (!it) return;
+  const base = assetBase(it.name);
+  if (va.approved[base] === id) delete va.approved[base];
+  else va.approved[base] = id;
+  saveState();
+  broadcastFieldChange("video_assets", "state", va);
+  renderTab("resources");
+}
+
+// El feedback del equipo se convierte en el encargo exacto para la IA que
+// rehace la pieza. Nunca toca el recurso aprobado: se copia y se manda fuera.
+async function pedirCambioIA(id) {
+  const va = getVideoAssets();
+  const it = va.items.find(x => x.id === id);
+  const caja = document.getElementById("fbc-" + id);
+  const nota = document.getElementById("fb-" + id);
+  if (!it || !caja) return;
+  const texto = (nota ? nota.value : (va.feedback && va.feedback[id]) || "").trim();
+  if (!texto) {
+    showToast("Escribe primero qué cambia y qué se queda.", true);
+    return;
+  }
+  if (!va.feedback || typeof va.feedback !== "object") va.feedback = {};
+  va.feedback[id] = texto;
+  saveState();
+  caja.style.display = "block";
+  caja.innerHTML = `<p class="bu-note is-info" id="fbc-msg-${id}">Redactando el encargo para la IA…</p>`;
+  const prompt = `Actúa como director de arte del video del equipo.
+Proyecto: "${state.project_name || state.challenge_title || "el proyecto"}".
+Recurso: ${it.name} (acto ${it.acto}).
+Lo que el equipo pide: ${texto}
+Devuelve SOLO el encargo para la IA que genera la pieza, en tres líneas: 1) qué se conserva, 2) qué cambia, 3) formato de salida (PNG cuadrado o render de Blender). Sin explicaciones, sin markdown.`;
+  await _runAIJob("asset-" + id, prompt, {
+    onNoProvider: (data) => {
+      const m = document.getElementById(`fbc-msg-${id}`);
+      if (m) m.textContent = _aiStatusMessage(data);
+    },
+    boxTick: (t) => {
+      const m = document.getElementById(`fbc-msg-${id}`);
+      if (m) m.textContent = t || "";
+    },
+    onFinish: (final) => {
+      const out = String((final && final.text) || "").trim();
+      if (!out || !caja) return;
+      va.encargos = va.encargos || {};
+      va.encargos[id] = out;
+      saveState();
+      caja.innerHTML = `<p class="bu-note is-info">${escapeHtml(out)}</p>`
+        + `<button class="btn-secondary" style="font-size:11px; padding:3px 8px;" onclick="copiarEncargo('${id}')">Copiar el encargo</button>`;
+    }
+  });
+}
+
+function copiarEncargo(id) {
+  const va = getVideoAssets();
+  const texto = (va.encargos && va.encargos[id]) || "";
+  if (!texto) return;
+  navigator.clipboard.writeText(texto)
+    .then(() => showToast("Encargo copiado. Pégalo en la IA de imágenes o de 3D."))
+    .catch(() => showToast("No se pudo copiar el encargo.", true));
+}
+
+function saveAssetFeedback(id) {
+  const va = getVideoAssets();
+  const box = document.getElementById(`fb-${id}`);
+  if (!va.feedback || typeof va.feedback !== "object") va.feedback = {};
+  const texto = box ? box.value.trim() : "";
+  if (texto) va.feedback[id] = texto; else delete va.feedback[id];
+  saveState();
+  broadcastFieldChange("video_assets", "state", va);
+  showToast(texto ? "Retroalimentación guardada con el recurso." : "Retroalimentación borrada.");
   renderTab("resources");
 }
 
@@ -120,7 +226,7 @@ function renderVideoStudio() {
     return `
       <div style="margin-bottom:14px;">
         <div style="display:flex; justify-content:space-between; align-items:center; margin:10px 0 6px 0; border-bottom:1px solid var(--border-light); padding-bottom:4px;">
-          <span style="font-size:11px; font-weight:800; letter-spacing:0.05em; color:var(--text-muted); ">${acto} · ${items.length} recurso(s)</span>
+          <span style="font-size:11px; font-weight:800; letter-spacing:0.05em; color:var(--text-muted); ">${acto} · ${items.length} recurso(s) · ${items.filter(x => assetAprobada(va, x)).length} aprobado(s)</span>
         </div>
         <div class="asset-grid">
           ${items.map(it => {
@@ -136,10 +242,24 @@ function renderVideoStudio() {
                 <div style="padding:7px 9px;">
                   <div style="font-size:11px; font-weight:700; color:var(--text-main); word-break:break-all; line-height:1.3;">${it.name}</div>
                   <div style="font-size:11px; color:var(--text-muted); margin-top:3px; font-family:var(--font-mono);">${kb} · ${currentClientMascot && it.owner === currentClientMascot.name ? "tuyo" : it.owner}</div>
+                  <div style="display:flex; align-items:center; justify-content:space-between; gap:6px; margin-top:5px;">
+                    <span class="src-chip ${assetAprobada(va, it) ? "" : "is-empty"}">${assetAprobada(va, it) ? "Aprobada" : "Propuesta"}</span>
+                    <button class="link-quiet" onclick="approveVideoAsset('${it.id}')">${assetAprobada(va, it) ? "Quitar" : "Aprobar"}</button>
+                  </div>
                   <div style="display:flex; gap:6px; margin-top:6px;">
                     <button class="btn-secondary" style="font-size:11px; padding:3px 8px;" onclick="downloadAsset('${it.url}','${it.name.replace(/'/g, "\\'")}')">${SVG.download || "⬇"} Original</button>
                     <button class="btn-secondary" style="font-size:11px; padding:3px 8px; color:var(--status-err-text);" onclick="deleteVideoAsset('${it.id}')">Quitar</button>
                   </div>
+                  <details class="di-fold" style="margin-top:6px;">
+                    <summary>Retroalimentación</summary>
+                    <textarea id="fb-${it.id}" rows="2" placeholder="Qué cambia y qué se queda" aria-label="Retroalimentación de este recurso"
+                      style="width:100%; margin-top:5px; font-size:11px; padding:5px 7px; border:1px solid var(--border-light); border-radius:5px;">${escapeHtml((va.feedback && va.feedback[it.id]) || "")}</textarea>
+                    <div style="display:flex; gap:6px; margin-top:5px;">
+                      <button class="btn-secondary" style="font-size:11px; padding:3px 8px;" onclick="saveAssetFeedback('${it.id}')">Guardar</button>
+                      <button class="btn-secondary" style="font-size:11px; padding:3px 8px;" onclick="pedirCambioIA('${it.id}')">Pedir el cambio a la IA</button>
+                    </div>
+                    <div id="fbc-${it.id}" style="display:none; margin-top:6px;"></div>
+                  </details>
                 </div>
               </div>`;
           }).join("")}
@@ -149,14 +269,12 @@ function renderVideoStudio() {
   }).join("");
 
   return `
-    <div class="video-studio-grid" style="display:grid; grid-template-columns:1fr 1.6fr; gap:22px;">
-      <div>
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-          <span style="font-size:12px; font-weight:700; color:var(--text-title);">Plan de tomas</span>
-          <span style="font-size:11px; color:var(--text-muted);">${doneCount} de ${DEFAULT_SHOT_PLAN.length}${doneCount ? ` · ${pct}%` : ""}</span>
-        </div>
-        ${planRows}
-      </div>
+    <details class="di-fold" style="margin:0 0 16px;">
+      <summary style="font-size:12px; font-weight:700; color:var(--text-title);">Plan de tomas · ${DEFAULT_SHOT_PLAN.length} planos · ${doneCount} hechos</summary>
+      <div style="margin-top:8px;">${planRows}</div>
+    </details>
+
+    <div class="video-studio-grid" style="display:grid; grid-template-columns:1fr; gap:22px;">
       <div>
         <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;">
           <label class="btn-secondary" style="cursor:pointer; font-size:11px; display:inline-flex; align-items:center; gap:6px;">
@@ -303,7 +421,7 @@ function renderViewResources() {  return `
             <tr>
               <td><strong>Presupuesto Puesta en Marcha</strong></td>
               <td><code>.XLSX</code></td>
-              <td>Partidas sustentadas con proveedores Alibaba y flete de importación</td>
+              <td>Compras de arranque y pago de quienes trabajan en el piloto</td>
               <td><a href="../budget/budget.xlsx" download class="btn-secondary" style="padding:4px 8px; font-size:11px; text-decoration:none;">Descargar Excel ↓</a></td>
             </tr>
             <tr>
@@ -396,7 +514,7 @@ const CANVAS_PRESETS = [
       segmentos: "¿Quién sufre el problema exactamente? Cifra del segmento y ubicación.",
       recursos: "¿Qué necesitas tener? Hardware, firmware, laboratorio, equipo multidisciplinario.",
       canales: "¿Por donde llega la solución? Red comunitaria, app, alertas, visitas.",
-      costes: "Costos de montar y operar: componentes mayoristas, ensamblaje, flete, logística.",
+      costes: "Qué se compra para arrancar y a quién se le paga. Compras y salarios, nada técnico.",
       ingresos: "¿Quién paga y cómo? Fondos de cooperación, presupuesto municipal, tarifas."
     }
   },
@@ -637,6 +755,8 @@ function renderViewCanvas() {
           <textarea id="cv-${cell.key}" class="canvas-input${isDefaultCell(cell) ? " is-empty" : ""}" rows="3" spellcheck="false"
             placeholder="${escapeHtml(hintOf(cell.key, cell.fallback))}"
             oninput="handleCanvasCellInput('${cell.key}', this)">${escapeHtml(String(canvas[cell.key] || "").trim())}</textarea>
+          <div style="margin-top:4px;">${aiEditPanel("canvas:" + cell.key)}</div>
+          ${cell.key === "costes" ? `<button class="link-quiet" onclick="switchTab('budget')">Ver las partidas del presupuesto</button>` : ""}
         </div>
       `).join("")}
     </div>
@@ -1117,12 +1237,41 @@ El entregable oficial es \`assets/voice/narration.mp4\`: MP4 con audio AAC, sin 
   showToast("Guía descargada. Pásasela a tu IA junto con el guion.");
 }
 
+// Ritmo de voz para 120 s. El guion no se mide en "cuatro puntos": se mide
+// en palabras, porque lo que califica el jurado es el audio final.
+const GUION_WPM = 135;
+const GUION_MIN_PALABRAS = 240;
+const GUION_MAX_PALABRAS = 280;
+
+function scriptPalabras() {
+  const texto = scriptFullText();
+  if (!texto) return 0;
+  return typeof rsWordCount === "function"
+    ? rsWordCount(texto)
+    : texto.trim().split(/\s+/).filter(Boolean).length;
+}
+
+function scriptMeterTexto() {
+  const n = scriptPalabras();
+  if (!n) {
+    return "Aún no hay guion. El video dura 120 s: a ritmo de conversación son unas 270 palabras.";
+  }
+  const s = Math.round((n / GUION_WPM) * 60);
+  if (n < GUION_MIN_PALABRAS) {
+    return `${n} palabras ≈ ${s} s de voz. Faltan ${GUION_MIN_PALABRAS - n} para llenar los 120 s: alarga una historia o un dato, no repitas el nombre del lugar.`;
+  }
+  if (n > GUION_MAX_PALABRAS) {
+    return `${n} palabras ≈ ${s} s de voz. Sobran ${n - GUION_MAX_PALABRAS}: el corte se hace en lo que no sostiene la historia.`;
+  }
+  return `${n} palabras ≈ ${s} s de voz. Entra en los 120 s. Marca con / cada pausa y no repitas el lugar más de una vez.`;
+}
+
 function renderViewScript() {
   const actos = [
-    { key: "acto1", n: "I", title: "Problema", ph: "El problema, con una persona y una cifra reales." },
-    { key: "acto2", n: "II", title: "Solución", ph: "Qué construyeron y cómo funciona, en tres frases." },
-    { key: "acto3", n: "III", title: "Factibilidad", ph: "Cuánto cuesta el piloto y de dónde sale cada precio." },
-    { key: "acto4", n: "IV", title: "Cierre", ph: "El impacto en números y la frase que cierra." }
+    { key: "acto1", n: "I", title: "Problema", ph: "El problema, con una persona y una cifra reales. [pausa] después de la cifra." },
+    { key: "acto2", n: "II", title: "Solución", ph: "Qué construyeron y cómo funciona, en tres frases cortas." },
+    { key: "acto3", n: "III", title: "Factibilidad", ph: "Cuánto cuesta arrancar, quién lo paga y qué se sostiene solo. Sin leer cifras de una tabla." },
+    { key: "acto4", n: "IV", title: "Cierre", ph: "El impacto en números y la frase que cierra. [pausa] antes de la última frase." }
   ];
   const authorship = (state.authorship && state.authorship.script) || {};
   const lleno = actos.some(x => String(state.script[x.key] || "").trim() !== "");
@@ -1148,6 +1297,8 @@ function renderViewScript() {
       <a class="script-audio" href="../assets/voice/narration.mp4" download onclick="return handleNarrationDownload(event)">${SVG.download} Locución</a>
     </div>
 
+    <p class="bu-note is-info" id="script-meter">${escapeHtml(scriptMeterTexto())}</p>
+
     <div id="script-edit" class="script-acts${lleno ? "" : " is-empty"}">
       ${actos.map(x => `
         <section class="script-act" data-lockable="script-${x.key}">
@@ -1162,6 +1313,7 @@ function renderViewScript() {
             onfocus="broadcastLock('script-${x.key}')"
             onblur="broadcastRelease('script-${x.key}')"
             oninput="handleScriptInput('${x.key}', this)">${escapeHtml(String(state.script[x.key] || ""))}</textarea>
+          <div style="margin-top:6px;">${aiEditPanel("script:" + x.key)}</div>
         </section>
       `).join("")}
     </div>
@@ -1227,6 +1379,8 @@ function updateScriptMeters() {
     el.style.height = "auto";
     el.style.height = Math.max(52, el.scrollHeight) + "px";
   });
+  const meter = document.getElementById("script-meter");
+  if (meter) meter.textContent = scriptMeterTexto();
   const read = document.getElementById("script-read");
   if (read && !read.hidden) renderScriptRead();
 }

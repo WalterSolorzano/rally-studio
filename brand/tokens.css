@@ -1,7 +1,27 @@
+/* brand/tokens.css — PLANTILLA VACÍA (capa proyecto).
+ *
+ * A propósito no hay un solo color aquí. Este archivo lo escribe
+ * scripts/gen_palette.py cuando el humano aprueba una ruta A/B/C.
+ * Si ves un hex en este archivo sin que se haya corrido el generador,
+ * la capa proyecto heredó identidad ajena y hay que vaciarla.
+ *
+ * Estructura obligatoria de la planta (60-30-10), en este orden:
+ *
+ *   60 %  SUPERFICIE   --bg-app, --bg-subtle, --bg-secondary, --bg-muted
+ *   30 %  TINTA        --text-title, --text-main, --text-body,
+ *                      --text-muted, --text-faint,
+ *                      --border-light, --border-strong
+ *   10 %  ACCIÓN       --color-primary, --color-primary-hover,
+ *                      --color-accent, --border-focus
+ *   <1 %  SEMÁNTICA    --status-ok-*, --status-warn-*, --status-err-*
+ *                      (el rojo de error no es identidad: es semántica)
+ *
+ * El generador emite además:
+ *   --font-ui, --font-mono, --radius-sm|md|lg, --space-1..7, escala tipográfica.
+ *
+ * Regla: ningún entregable escribe un color literal. Solo var(--…).
+ */
+
 :root {
-  --color-primary: #1d45b9;
-  --color-secondary: #f81110;
-  --color-accent: #2aa7ad;
-  --color-bg: #ffffff;
-  --color-text: #111111;
+  /* vacío hasta que se genere la identidad del proyecto */
 }

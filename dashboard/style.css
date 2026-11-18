@@ -2855,7 +2855,7 @@ body.panel-drawer-open .drawer-backdrop {
 }
 .asset-thumb {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   display: block;
   background: #0F172A;
@@ -6779,18 +6779,19 @@ body.rs-sheet-open { overflow: hidden; }
   width: 100%;
   max-width: 860px;
   box-sizing: border-box;
-  padding: 10px 12px;
-  border: 1px solid var(--border-light);
-  border-radius: 6px;
-  background: var(--bg-surface);
+  min-height: 96px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   color: var(--text-body);
   font-family: var(--font-ui);
-  font-size: 13px;
-  line-height: 1.55;
+  font-size: 14px;
+  line-height: 1.7;
   resize: vertical;
 }
-.pa-input:focus { outline: none; border-color: var(--border-strong); }
-.pa-input.is-over { border-color: var(--status-err-text); }
+.pa-input:focus { outline: none; }
+.pa-input.is-over { color: var(--status-err-text); }
 
 @media (max-width: 640px) {
   .pa-template-head { flex-direction: column; align-items: flex-start; }

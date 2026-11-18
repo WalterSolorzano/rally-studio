@@ -8,6 +8,7 @@ misma entrada -> misma salida con formato estable.
 Regla del proyecto: dashboard/app.js es fuente unica del catalogo; este
 archivo NUNCA se edita a mano. Correr: python scripts/gen_ods_data.py
 """
+import argparse
 import re
 from pathlib import Path
 
@@ -56,15 +57,24 @@ def serializar(filas):
     return CABECERA + "var ODS_DATA = [\n" + ",\n".join(lineas) + "\n];\n"
 
 
-def main():
+def main(argv=None) -> int:
+    parser = argparse.ArgumentParser(
+        description="Regenera design/ods_data.js desde el catalogo ODS de dashboard/app.js."
+    )
+    parser.parse_args(argv)
+    if not APPS.is_file():
+        print("ALTO: dashboard/app.js no existe. design/ods_data.js se queda como esta.")
+        return 1
     texto = APPS.read_text(encoding="utf-8")
     filas = extraer_catalogo(texto)
     if not filas:
-        raise SystemExit("ODS_CATALOG vacio")
+        print("ALTO: ODS_CATALOG vacio. design/ods_data.js se queda como esta.")
+        return 1
     SALIDA.parent.mkdir(parents=True, exist_ok=True)
     SALIDA.write_text(serializar(filas), encoding="utf-8")
     print(f"design/ods_data.js con {len(filas)} entradas ODS")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

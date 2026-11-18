@@ -23,14 +23,20 @@ PREVIEW = Path.home() / "AppData" / "Local" / "Temp" / "opencode" / "rally_fig_p
 import sys  # noqa: E402
 
 sys.path.insert(0, str(ROOT / "scripts"))
-from comun import COLORES, ventanas  # noqa: E402  (fracciones de la rubrica)
+from comun import COLORES, ventanas, paleta as paleta_proyecto  # noqa: E402
 
-palette = json.loads((ROOT / "brand" / "palette.json").read_text(encoding="utf-8"))
-PRIMARY = palette["primary"]
-SECONDARY = palette["secondary"]
-ACCENT = palette["accent"]
-INK = palette["text"]
+try:
+    palette = paleta_proyecto()
+except SystemExit as exc:  # sin paleta aprobada: `--help` debe poder responder
+    palette = {}
+    _MOTIVO_PALETA = str(exc)
+else:
+    _MOTIVO_PALETA = ""
+PRIMARY = palette.get("primary", "")
+SECONDARY = palette.get("bg_secondary") or palette.get("bg") or ""
+ACCENT = palette.get("accent", "")
 MUTED = "#6b7280"
+INK = palette.get("text_title") or palette.get("text_main") or MUTED
 GRID = "#e3e6ef"
 TINT = "#c7d1ee"
 
@@ -530,7 +536,22 @@ def fig15_ipc() -> None:
     save(fig, "fig15_ipc")
 
 
-if __name__ == "__main__":
+def main(argv=None) -> int:
+    import argparse
+
+    parser = argparse.ArgumentParser(
+        description="Dibuja las figuras del informe en docs/figures/ (solo lee cifras ya verificadas)."
+    )
+    parser.add_argument(
+        "--si",
+        action="store_true",
+        help="sin efecto hoy: las figuras no tocan datos del proyecto",
+    )
+    args = parser.parse_args(argv)
+    if not palette:
+        # Sin paleta el SVG saldria con colores vacios: no se dibuja.
+        print("ALTO: " + (_MOTIVO_PALETA or "brand/palette.json pendiente."))
+        return 1
     fig01_escala_nacional()
     fig02_podios_latam()
     fig03_rubricas()
@@ -546,3 +567,8 @@ if __name__ == "__main__":
     fig14_forest()
     fig15_ipc()
     print("figuras generadas en", OUT)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -149,9 +149,19 @@ def escribir_json(ruta: Path | str, datos) -> Path:
 
 
 def paleta() -> dict:
-    """Colores del proyecto. `brand/palette.json` manda; esto solo lo lee."""
+    """Colores del proyecto. `brand/palette.json` manda; esto solo lo lee.
+
+    Si la paleta no existe o no está aprobada, falla. La capa proyecto nace
+    vacía: el default silencioso ("azul neutro") está prohibido.
+    """
     datos = leer_json(PALETA, {}) or {}
-    return {k: v for k, v in datos.items() if not k.startswith("_")}
+    colores = {k: v for k, v in datos.items() if not k.startswith("_")}
+    if not colores or datos.get("_status") != "aprobada":
+        raise SystemExit(
+            "brand/palette.json pendiente: correr scripts/gen_palette.py "
+            "y aprobar una ruta A/B/C antes de generar contenido."
+        )
+    return colores
 
 
 def main() -> int:

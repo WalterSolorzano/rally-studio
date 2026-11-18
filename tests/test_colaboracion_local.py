@@ -8,6 +8,8 @@ def test_dos_miembros_editan_y_el_segundo_recibe_conflicto(servidor):
     approve(base, "equipo01", luis["member"]["id"], boot["admin_token"])
     headers_a = auth(boot["admin_token"])
     headers_l = auth(luis["session"])
+    call("POST", base + "/api/sections/pautado.problema/lock?project=equipo01",
+         {}, headers=headers_a)
     call("POST", base + "/api/sections/pautado.problema?project=equipo01",
          {"data": {"text": "A"}, "base_version": 0}, headers=headers_a)
     status, body, _ = call("POST", base + "/api/sections/pautado.problema?project=equipo01",

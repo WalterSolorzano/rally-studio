@@ -12,6 +12,7 @@ Los motores generan WAV/MP3 temporales y se transcodifican con ffmpeg.
 Toda voz sintetica deja constancia en assets/voice/voice_manifest.json y en
 assets/voice/declaracion_ia.txt. El pautado debe declarar el uso de IA.
 """
+import argparse
 import json
 import pathlib
 import shutil
@@ -255,12 +256,27 @@ def escribir_manifest(texto):
         print("  AVISO: la pista es guia. No la presentes como locucion final.")
 
 
-def main():
+def main(argv=None) -> int:
+    parser = argparse.ArgumentParser(
+        description="Sintetiza script/narration.txt a assets/voice/narration.mp4 (un proceso GPU a la vez)."
+    )
+    parser.add_argument(
+        "--si",
+        action="store_true",
+        help="sintetiza aunque narration.txt salga vacio",
+    )
+    args = parser.parse_args(argv)
+
+    text = get_clean_narration_text()
+    if not text.strip() and not args.si:
+        # Sin guion la sintesis deja audio y manifiesto de relleno que parecen entregables.
+        print("ALTO: script/narration.txt sin texto. assets/voice se queda como esta.")
+        return 1
+
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     brief = json.loads(BRIEF_PATH.read_text(encoding="utf-8")) if BRIEF_PATH.exists() else {}
     vram = float(brief.get("pc_gpu_vram_gb", 0))
 
-    text = get_clean_narration_text()
     word_count = len(text.split())
     print("\n" + "═" * 60)
     print("  MOTOR DE SINTESIS DE VOZ Y LOCUCION (RALLY STUDIO)")
@@ -290,9 +306,9 @@ def main():
                 temp.unlink()
         size_mb = OUT_MP4.stat().st_size / (1024 * 1024)
         print(f"\n  OK: Locucion MP4 (AAC) lista en {OUT_MP4} ({size_mb:.2f} MB)")
-    else:
-        print("\n  ERROR: No se pudo generar la locucion en MP4.")
-        sys.exit(1)
+        return 0
+    print("\n  ERROR: No se pudo generar la locucion en MP4.")
+    return 1
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

@@ -9,6 +9,7 @@ Estructura:
 3. Transcripción 100% FIEL, ÍNTEGRA Y LITERAL de cada desafío (sin alterar una sola coma),
    con casillas de votación, rúbricas de debate y notas del equipo para deliberar juntos.
 """
+import argparse
 import json
 import pathlib
 import sys
@@ -42,13 +43,29 @@ def set_cell_margins(cell, top=120, bottom=120, left=150, right=150):
         tcMar.append(node)
     tcPr.append(tcMar)
 
-def main():
+def main(argv=None) -> int:
+    parser = argparse.ArgumentParser(
+        description="Genera docs/Matriz_Seleccion_Desafios_2026.docx desde research/challenges.json."
+    )
+    parser.add_argument(
+        "--si",
+        action="store_true",
+        help="escribe aunque falten retos, proyecto o equipo",
+    )
+    args = parser.parse_args(argv)
     if not CHALLENGES_PATH.exists():
         print(f"ERROR: {CHALLENGES_PATH} no existe.")
         sys.exit(1)
 
     challenges = json.loads(CHALLENGES_PATH.read_text(encoding="utf-8"))
     brief = json.loads(BRIEF_PATH.read_text(encoding="utf-8")) if BRIEF_PATH.exists() else {}
+    if not args.si and (not challenges or not (brief.get("project_name") or brief.get("team_name"))):
+        # Sin retos la matriz sale vacia y el equipo firmaria como «Equipo de Innovación».
+        print(
+            "ALTO: research/challenges.json vacío o brief.json sin project_name/team_name. "
+            "docs/Matriz_Seleccion_Desafios_2026.docx se queda como esta."
+        )
+        return 1
 
     rally_type = brief.get("rally_type", "latam").upper()
     team_name = brief.get("team_name", "Equipo de Innovación")
@@ -222,6 +239,7 @@ def main():
     pathlib.Path("docs").mkdir(exist_ok=True)
     doc.save(OUT_DOCX)
     print(f"OK: Generado documento Word editable en {OUT_DOCX.resolve()}")
+    return 0
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

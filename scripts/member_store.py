@@ -124,6 +124,8 @@ class MemberStore(SqliteStore):
     def __init__(self, path: str | Path):
         super().__init__(path)
         self._conflicto = None
+        # Ultimo acceso con clave correcta pero sin aprobacion del coordinador.
+        self._pendiente = None
         # Bases creadas antes de los avatares y claves: se completan al abrir.
         with self._connect() as conn:
             columnas = {row["name"] for row in conn.execute("PRAGMA table_info(members)")}
@@ -178,10 +180,14 @@ class MemberStore(SqliteStore):
             ).fetchone()
         return row is not None
 
-    def bootstrap(self, project_id: str, admin_name: str, device_id: str) -> dict:
+    def bootstrap(self, project_id: str, admin_name: str, device_id: str,
+                  password: str = "") -> dict:
         name = (admin_name or "").strip()
         if not name:
             raise ValueError("nombre-requerido")
+        clave = (password or "").strip()
+        if clave and len(clave) < 6:
+            raise ValueError("clave-corta")
         if self.has_members(project_id):
             raise ValueError("proyecto-existente")
         token = secrets.token_urlsafe(32)
@@ -190,8 +196,9 @@ class MemberStore(SqliteStore):
         with self._connect() as conn:
             conn.execute(
                 "INSERT INTO members (id, project_id, name, role, device_id, token_hash,"
-                " created_at, last_seen, revoked) VALUES (?, ?, ?, 'admin', ?, ?, ?, ?, 0)",
-                (member_id, project_id, name, device_id, _hash(token), now, now),
+                " created_at, last_seen, revoked, password_hash) VALUES (?, ?, ?, 'admin', ?, ?, ?, ?, 0, ?)",
+                (member_id, project_id, name, device_id, _hash(token), now, now,
+                 _hash_clave(clave) if clave else ""),
             )
             conn.commit()
             row = conn.execute("SELECT * FROM members WHERE id = ?", (member_id,)).fetchone()
@@ -282,7 +289,7 @@ class MemberStore(SqliteStore):
             "project": inv["project_id"],
             "member": self._member(row),
             "session": session,
-            "pending": True,
+            "pending": not bool(row["approved"]),
         }
 
     def set_approved(self, project_id: str, member_id: str, approved: bool = True) -> dict:
@@ -319,13 +326,15 @@ class MemberStore(SqliteStore):
     def login(self, project_id: str, name: str, password: str, ip: str = "") -> dict | None:
         """Entra con nombre y clave personal, sin pedir un enlace nuevo.
 
-        Devuelve None si el nombre no existe, no tiene clave o la clave no
-        coincide. La sesion se guarda aparte, igual que con la llave maestra.
+        Devuelve None si el nombre no existe, no tiene clave, la clave no
+        coincide o el miembro aun no esta aprobado. Antes devolvia sesion a los
+        pendientes: el tablero rebotaba al login en cada pestana nueva.
         """
         limpio = (name or "").strip()
         clave = password or ""
         if not limpio or not clave:
             return None
+        self._pendiente = None
         with self._connect() as conn:
             filas = conn.execute(
                 "SELECT * FROM members WHERE project_id = ? AND revoked = 0"
@@ -335,6 +344,10 @@ class MemberStore(SqliteStore):
             for fila in filas:
                 if not _clave_ok(clave, fila["password_hash"]):
                     continue
+                if not int(fila["approved"] or 0):
+                    # La clave es buena: no es un intento fallido, es una espera.
+                    self._pendiente = {"name": fila["name"], "member_id": fila["id"]}
+                    return None
                 token = self._nueva_sesion(conn, project_id, fila["id"], ip)
                 conn.execute(
                     "UPDATE members SET last_seen = ? WHERE id = ?", (time.time(), fila["id"])
@@ -449,12 +462,25 @@ class MemberStore(SqliteStore):
         self._conflicto = None
         return conflicto
 
-    def authenticate(self, project_id: str, token: str, ip: str = "") -> dict | None:
+    def pop_pendiente(self) -> dict | None:
+        """Ultimo acceso con clave buena de un miembro sin aprobar."""
+        pendiente = self._pendiente
+        self._pendiente = None
+        return pendiente
+
+    def authenticate(self, project_id: str, token: str, ip: str = "",
+                     via_proxy: bool = False) -> dict | None:
         """Devuelve el miembro solo si esta aprobado y la sesion es de esta IP.
 
         La IP se guarda al abrir la sesion. Una sesion vista desde otra IP (por
         ejemplo un token copiado de la red) no vale: eso es lo que hace inutil
         espiar el WiFi sin cifrar.
+
+        `via_proxy` llega cuando la peticion entro por un tunel que corre en
+        esta misma maquina (cloudflared). Ahi la IP de la cabecera cambia al
+        abrir otra pestana o al pasar del telefono al portatil, y la sesion
+        buena se caia. En ese caso la sesion se muda a la IP nueva; el vecino
+        del WiFi, que llega directo, sigue bloqueado.
         """
         if not token:
             return None
@@ -471,11 +497,17 @@ class MemberStore(SqliteStore):
             if row is not None:
                 guardada = (row["session_ip"] or "").strip()
                 if guardada and ip and guardada != ip:
-                    self._conflicto = {
-                        "member_id": row["id"], "name": row["name"],
-                        "esperada": guardada, "vista": ip,
-                    }
-                    return None
+                    if via_proxy:
+                        # Tunel en esta maquina: la sesion se muda, no se rompe.
+                        conn.execute(
+                            "UPDATE sessions SET ip = ? WHERE token_hash = ?", (ip, digest)
+                        )
+                    else:
+                        self._conflicto = {
+                            "member_id": row["id"], "name": row["name"],
+                            "esperada": guardada, "vista": ip,
+                        }
+                        return None
                 conn.execute(
                     "UPDATE sessions SET last_seen = ? WHERE token_hash = ?", (now, digest)
                 )

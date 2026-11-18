@@ -8,6 +8,7 @@ Idempotente: si el contenido no cambia, no reescribe el archivo.
 
 from __future__ import annotations
 
+import argparse
 from pathlib import Path
 
 CARPETAS_PROFUNDAS = ["research", "knowledge", "docs", "brand"]
@@ -422,5 +423,14 @@ def generar_indice(root: Path) -> Path:
     return destino
 
 
-if __name__ == "__main__":
+def main(argv=None) -> int:
+    parser = argparse.ArgumentParser(
+        description="Regenera knowledge/INDICE.md con lo que existe en disco."
+    )
+    parser.parse_args(argv)
     print(generar_indice(Path(__file__).resolve().parent.parent))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -50,11 +50,26 @@ MD = RAIZ / "brain" / "corpus" / "analisis_nicaragua.md"
 SALIDA = RAIZ / "Rally_Innovacion_Nicaragua_Analisis.pdf"
 
 # --- identidad -----------------------------------------------------------------
-PALETA = json.loads((RAIZ / "brand" / "palette.json").read_text(encoding="utf-8"))
-PRIMARIO = colors.HexColor(PALETA["primary"])
-SECUNDARIO = colors.HexColor(PALETA["secondary"])
-ACENTO = colors.HexColor(PALETA["accent"])
-TINTA = colors.HexColor(PALETA["text"])
+from comun import paleta as paleta_proyecto
+
+try:
+    PALETA = paleta_proyecto()
+except SystemExit as exc:  # sin paleta aprobada: `--help` debe poder responder
+    PALETA = {}
+    _MOTIVO_PALETA = str(exc)
+else:
+    _MOTIVO_PALETA = ""
+
+
+def _color(clave: str, respaldo: str):
+    valor = PALETA.get(clave) or respaldo
+    return colors.HexColor(valor)
+
+
+PRIMARIO = _color("primary", "#4A5468")
+SECUNDARIO = _color("bg_secondary", PALETA.get("bg") or "#EEF2FB")
+ACENTO = _color("accent", "#4A5468")
+TINTA = _color("text_title", PALETA.get("text_main") or "#4A5468")
 TENUE = colors.HexColor("#4A5468")
 LINEA = colors.HexColor("#C9D0DB")
 VELO = colors.HexColor("#EEF2FB")
@@ -398,8 +413,15 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--md", type=Path, default=MD)
     ap.add_argument("--out", type=Path, default=SALIDA)
     args = ap.parse_args(argv)
+    if not PALETA:
+        # Sin identidad aprobada el PDF saldria en gris: no se dibuja.
+        print("ALTO: " + (_MOTIVO_PALETA or "brand/palette.json pendiente."))
+        return 1
     if not args.md.is_file():
         print("Falta el contenido: %s" % args.md)
+        return 1
+    if not args.md.read_text(encoding="utf-8").strip():
+        print("ALTO: %s esta vacio. El PDF se queda como esta." % args.md)
         return 1
     construir(args.out, args.md)
     return 0

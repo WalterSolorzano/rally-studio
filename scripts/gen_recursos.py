@@ -13,6 +13,7 @@ Se vuelve a correr cuando entren assets nuevos. No borra nada.
 
 from __future__ import annotations
 
+import argparse
 import datetime as dt
 import json
 from pathlib import Path
@@ -84,8 +85,21 @@ def recorrer() -> list[dict]:
     return filas
 
 
-def main() -> int:
+def main(argv=None) -> int:
+    parser = argparse.ArgumentParser(
+        description="Reinventaria assets/recursos.json para el chat del workbench."
+    )
+    parser.add_argument(
+        "--si",
+        action="store_true",
+        help="escribe aunque el inventario salga vacio",
+    )
+    args = parser.parse_args(argv)
     filas = recorrer()
+    if not filas and not args.si:
+        # Un inventario vacio deja el panel sin recursos y parece un fallo del motor.
+        print("ALTO: sin archivos que inventariar. assets/recursos.json se queda como esta.")
+        return 1
     conteo: dict[str, int] = {}
     for f in filas:
         conteo[f["t"]] = conteo.get(f["t"], 0) + 1

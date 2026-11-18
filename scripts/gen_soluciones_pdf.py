@@ -266,6 +266,23 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     payload = json.loads(Path(args.json).read_text(encoding="utf-8"))
+    # Un dossier sin retos es un PDF vacio que parece entregable. Se detiene.
+    retos = payload.get("retos")
+    if not isinstance(retos, list):
+        retos = payload.get("soluciones") if isinstance(payload.get("soluciones"), list) else None
+        if retos is not None:
+            raise SystemExit(
+                "JSON con el modelo viejo: trae 'soluciones' sueltas y no 'retos'. "
+                "Vuelve a correr scripts/soluciones_motor.py y usa su salida."
+            )
+        raise SystemExit(
+            "JSON sin 'retos': no es la salida de scripts/soluciones_motor.py."
+        )
+    if not retos:
+        raise SystemExit(
+            "JSON con 'retos' vacio: el motor no encontro retos para ese certamen. "
+            "Revisa research/challenges.json y corre --todos."
+        )
     doc = render_html(payload, stats=stats_winners())
     certamen = payload.get("certamen", "rally")
     pdf = Path(args.out) if args.out else ROOT / "docs" / f"Dossier_Soluciones_{certamen}.pdf"

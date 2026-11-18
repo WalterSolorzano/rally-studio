@@ -76,6 +76,19 @@ def publicar(server: str, project: str, section: str, data, token: str,
 
     status, body = _request(
         "POST",
+        f"{base}/api/sections/{urllib.parse.quote(section, safe='')}/lock?{query}",
+        {"actor": actor, "actor_id": "ia"},
+        token,
+    )
+    if status == 423:
+        raise Bloqueada(body)
+    if status in (401, 403):
+        raise NoAutorizado(body)
+    if status >= 400:
+        raise RuntimeError(f"servidor respondió {status} al pedir el candado: {body}")
+
+    status, body = _request(
+        "POST",
         f"{base}/api/sections/{urllib.parse.quote(section, safe='')}?{query}",
         {
             "data": data,

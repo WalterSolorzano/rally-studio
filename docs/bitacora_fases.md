@@ -1,0 +1,60 @@
+# Bitácora de fases
+
+Registro vivo de las 13 etapas. Lo lee `scripts/verificar_fases.py`: una etapa con
+artefacto y sin línea aquí **no cuenta como cerrada**.
+
+## Qué se anota y qué se transmite
+
+Una línea por etapa cerrada. Seis campos separados por `|`, sin encabezado repetido:
+
+```
+fase | artefacto | compuerta | decisión | construyó | auditó
+```
+
+- **fase** — dos dígitos de la etapa (`00` … `12`).
+- **artefacto** — qué quedó escrito y dónde (`brief.rally_type`, `budget/budget.json`).
+- **compuerta** — qué comando lo probó (`validate_budget.py`, `verificar_identidad.py`).
+  Solo scripts registrados y existentes: la compuerta se demuestra, no se declara.
+  Además debe ser **la compuerta de esa etapa** y el `verificar_fases.py` la corre de
+  nuevo: si no es de la fase o no sale en verde, la etapa no cierra.
+- **decisión** — `aceptada` o `descartada` por el humano. Sin esto la fase no avanza.
+- **construyó** — quién lo produjo (skill o agente).
+- **auditó** — quién lo revisó: exactamente lo que el mapa declara en la columna
+  «audita». **Debe ser distinto** de quien construyó, y ese auditor debe dejar su
+  informe en `audit/NN-auditor.md` (con contenido real, no plantilla). Sin informe la
+  fase no cierra, igual que sin compuerta en verde.
+
+La línea es el mensaje entre fases: la etapa siguiente la lee para saber qué hereda.
+Si un dato falta, no se escribe la línea: se pregunta y se anota la pregunta abajo.
+
+## Mapa de dependencias
+
+```
+fase | etapa      | depende de | construye              | audita
+00   | certamen   | -          | profe                  | humano
+01   | team       | 00         | propuesta-identidad    | impeccable
+02   | challenges | 00         | proponer-retos         | sharktank
+03   | solution   | 02         | profe                  | sharktank
+04   | impact     | 03         | profe                  | auditar-entregable
+05   | multi_ai   | 03         | orquestador            | auditar-entregable
+06   | pautado    | 03,04      | profe                  | auditar-entregable
+07   | budget     | 03         | presupuesto            | auditar-entregable
+08   | resources  | 01         | profe                  | auditar-entregable
+09   | canvas     | 07         | profe                  | auditar-entregable
+10   | script     | 06,09      | guion-storyboard       | auditar-entregable
+11   | webdemo    | 01,09      | publicar-sitio         | impeccable + responsive
+12   | timeline   | 10,11      | control-tiempo-entrega | auditar-entregable
+```
+
+Regla: ninguna etapa se escribe si una de sus dependencias no tiene artefacto.
+`python scripts/verificar_fases.py` lo comprueba y nombra la etapa saltada.
+
+## Preguntas abiertas
+
+Nada definido todavía: `brief.json` está vacío por diseño. La compuerta imprime
+qué preguntar en la fase que sigue.
+
+## Registro
+
+| fase | artefacto | compuerta | decisión | construyó | auditó |
+|---|---|---|---|---|---|

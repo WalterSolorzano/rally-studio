@@ -95,6 +95,15 @@
     .puerta-forma[data-modo="llave"] #puerta-persona,
     .puerta-forma[data-modo="llave"] #puerta-clave { display: none; }
     .puerta-persona { text-transform: none; letter-spacing: 0; font-size: var(--text-md); font-family: var(--font-ui); }
+
+    /* Ojo para ver la clave: evita reescribir a ciegas cuando falla la entrada. */
+    .puerta-ver {
+      align-self: flex-end; margin-top: -4px; padding: 6px 2px;
+      border: 0; background: none; color: var(--color-primary);
+      cursor: pointer; line-height: 0;
+    }
+    .puerta-ver:focus-visible { outline: 2px solid var(--border-focus); outline-offset: 2px; }
+    .puerta-ver[aria-pressed="true"] { color: var(--text-body); }
   </style>
 </head>
 <body>
@@ -114,6 +123,14 @@
              placeholder="Tu clave" autocomplete="current-password">
 
       <button class="puerta-accion" id="puerta-entrar" type="submit">Entrar</button>
+      <button class="puerta-ver" id="puerta-ver" type="button"
+              aria-label="Mostrar la clave" aria-pressed="false" title="Mostrar la clave">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"></path>
+          <circle cx="12" cy="12" r="2.6"></circle>
+        </svg>
+      </button>
       <button class="puerta-alterno" id="puerta-modo" type="button">Entrar con mi nombre y clave</button>
       <div class="puerta-estado" id="puerta-estado" role="status"></div>
 

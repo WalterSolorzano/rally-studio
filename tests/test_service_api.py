@@ -262,6 +262,9 @@ def test_miembro_no_edita_identidad_ni_cambia_roles(servidor):
     member_id, member_token = _claim_member(base)
     admin_token = _SESION["token"]
 
+    est, _ = post_json(base + "/api/sections/team_name/lock?project=main",
+                       {"data": None, "base_version": 0})
+    assert est == 200
     est, _ = post_json(base + "/api/sections/team_name?project=main",
                        {"data": "Squad", "base_version": 0})
     assert est == 200
@@ -277,6 +280,8 @@ def test_miembro_no_edita_identidad_ni_cambia_roles(servidor):
         assert est == 403
 
         # Las secciones de contenido siguen abiertas para el miembro.
+        est, _ = post_json(base + "/api/sections/solution/lock?project=main", {})
+        assert est == 200
         est, _ = post_json(base + "/api/sections/solution?project=main",
                            {"data": {"texto": "ok"}, "base_version": 0})
         assert est == 200
