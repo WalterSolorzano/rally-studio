@@ -10,52 +10,99 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css?v=20261019_rev10">
   <style>
+    body { display: block; margin: 0; }
     .join-shell {
       min-height: 100vh;
       display: grid;
       place-items: center;
-      padding: 24px;
-      background: var(--bg, #f6f4ef);
+      padding: var(--space-5, 24px);
+      background: var(--bg-subtle);
     }
     .join-card {
-      width: min(440px, 100%);
-      background: var(--surface, #fff);
-      border: 1px solid var(--line, #d9d4c8);
-      border-radius: 12px;
-      padding: 32px;
-      box-shadow: 0 18px 40px rgba(20, 24, 28, .08);
+      width: min(560px, 100%);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: var(--space-7, 32px);
     }
     .join-card h1 {
+      margin: 0 0 var(--space-2);
+      font-family: var(--font-ui);
       font-size: 24px;
       line-height: 1.2;
-      margin: 0 0 8px;
+      color: var(--text-title);
     }
-    .join-card p { margin: 0 0 20px; color: var(--muted, #5c625f); line-height: 1.5; }
-    .join-card label { display: block; font-weight: 700; margin-bottom: 8px; }
+    .join-card p { margin: 0 0 var(--space-5); color: var(--text-muted); line-height: 1.5; }
+    .join-card label { display: block; font-weight: 700; margin-bottom: var(--space-2); color: var(--text-main); }
     .join-card input {
       width: 100%;
       padding: 12px 14px;
-      border: 1px solid var(--line, #d9d4c8);
-      border-radius: 8px;
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-sm);
       font: inherit;
-      background: var(--bg, #f6f4ef);
-      color: inherit;
+      background: var(--bg-app);
+      color: var(--text-main);
     }
-    .join-card input:focus { outline: 2px solid var(--accent, #1f6f5c); outline-offset: 2px; }
+    .join-card input:focus { outline: 2px solid var(--color-primary); outline-offset: 2px; }
     .join-card button {
       width: 100%;
-      margin-top: 16px;
+      margin-top: var(--space-4, 16px);
       padding: 12px 16px;
-      border: 0;
-      border-radius: 8px;
+      border: 1px solid var(--color-primary);
+      border-radius: var(--radius-sm);
       font: inherit;
       font-weight: 800;
       cursor: pointer;
-      background: var(--accent, #1f6f5c);
+      background: var(--color-primary);
       color: #fff;
     }
+    .join-card button:hover { background: var(--color-primary-hover); }
     .join-card button:disabled { opacity: .6; cursor: wait; }
-    #join-status { margin: 16px 0 0; min-height: 20px; color: var(--danger, #a3341f); }
+    .join-card fieldset { border: 0; padding: 0; margin: var(--space-4, 16px) 0; }
+    .join-card legend { font-weight: 700; margin-bottom: var(--space-2); color: var(--text-main); }
+    .join-avatars { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: var(--space-2); }
+    .join-avatars input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+    .join-avatars label {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      margin: 0;
+      padding: 8px 10px;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      background: var(--bg-app);
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--text-title);
+      cursor: pointer;
+    }
+    .join-roles { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+    .join-roles input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+    .join-roles label {
+      margin: 0;
+      padding: 7px 12px;
+      border: 1px solid var(--border-light);
+      border-radius: 999px;
+      background: var(--bg-app);
+      font: 700 12.5px/1 var(--font-ui);
+      color: var(--text-body);
+      cursor: pointer;
+    }
+    .join-roles input:checked + label {
+      border-color: var(--color-primary);
+      background: var(--bg-secondary);
+      color: var(--color-primary);
+    }
+    .join-roles input:focus-visible + label { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+    .join-avatars .rav-avatar { width: 34px; height: 34px; flex: 0 0 auto; }
+    .join-avatars input:checked + label {
+      border-color: var(--color-primary);
+      background: var(--bg-secondary);
+      box-shadow: inset 0 0 0 1px var(--color-primary);
+    }
+    .join-avatars input:focus-visible + label { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+    .join-hint { margin: var(--space-2) 0 0; font-size: 12px; color: var(--text-faint); }
+    #join-status { margin: var(--space-4, 16px) 0 0; min-height: 20px; color: var(--status-err-text); }
   </style>
 </head>
 <body>
@@ -66,11 +113,23 @@
       <form id="join-form" novalidate>
         <label for="join-name">Tu nombre</label>
         <input id="join-name" name="name" type="text" maxlength="40" autocomplete="name" required>
+        <fieldset>
+          <legend>Tus roles</legend>
+          <div class="join-roles" id="join-roles" role="group" aria-label="Tus roles"></div>
+        </fieldset>
+        <fieldset>
+          <legend>Tu personaje</legend>
+          <div class="join-avatars" id="join-avatares" role="radiogroup" aria-label="Tu personaje"></div>
+        </fieldset>
+        <label for="join-clave">Tu clave (opcional)</label>
+        <input id="join-clave" name="clave" type="password" minlength="6" maxlength="80" autocomplete="new-password">
+        <p class="join-hint">Con nombre y clave puedes volver a entrar sin pedir otro enlace.</p>
         <button id="join-submit" type="submit">Entrar</button>
         <p id="join-status" role="status" aria-live="polite"></p>
       </form>
     </section>
   </main>
-  <script src="join.js?v=20261019_rev12" defer></script>
+  <script src="avatars.js?v=20261117_rev6" defer></script>
+  <script src="join.js?v=20261117_rev4" defer></script>
 </body>
 </html>

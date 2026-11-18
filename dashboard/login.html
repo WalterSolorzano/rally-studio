@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="robots" content="noindex">
   <title>Entrar · Rally Studio</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
@@ -14,49 +14,92 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css?v=20261116_rev1">
   <style>
-    .puerta { min-height: 100vh; display: grid; place-items: center; background: var(--bg-app); }
-    .puerta-forma { width: min(360px, calc(100vw - 48px)); }
-    .puerta-marca { display: block; width: 56px; height: 56px; margin-bottom: 28px; }
+    /* style.css dibuja el workbench como una grilla de 3 columnas
+       (240 | área | 300). Sin esto, la puerta cae en la columna del menú
+       lateral: queda pegada a la izquierda y la tarjeta se sale del cuadro. */
+    body {
+      display: block;
+      height: auto;
+      min-height: 100vh;
+      overflow: auto;
+      grid-template-columns: none;
+      grid-template-rows: none;
+      grid-template-areas: none;
+    }
+    .puerta { min-height: 100vh; display: grid; place-items: center; background: var(--bg-subtle); padding: 24px; }
+    .puerta-forma {
+      width: min(384px, calc(100vw - 48px));
+      padding: 28px 26px 22px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+    }
+    .puerta-marca { display: block; width: 44px; height: 44px; margin-bottom: 18px; }
     .puerta-titulo {
-      font: 800 19px/1.2 var(--font-ui); color: var(--text-title);
+      font: 800 var(--text-xl)/1.2 var(--font-ui); color: var(--text-title);
       letter-spacing: -0.01em; margin: 0 0 4px;
     }
     .puerta-nota {
-      font: 400 11px/1.5 var(--font-mono); color: var(--text-muted);
+      font: 400 var(--text-xs)/1.5 var(--font-mono); color: var(--text-faint);
       margin: 0 0 22px; text-transform: uppercase; letter-spacing: 0.06em;
     }
     .puerta-campo {
-      width: 100%; box-sizing: border-box; padding: 13px 0;
-      border: 0; border-bottom: 1px solid var(--border-strong);
-      background: transparent; color: var(--text-title);
-      font: 600 15px/1 var(--font-mono); letter-spacing: 0.08em;
+      width: 100%; box-sizing: border-box; padding: 11px 12px;
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-sm);
+      background: var(--bg-surface); color: var(--text-title);
+      font: 600 15px/1.2 var(--font-mono); letter-spacing: 0.08em;
       text-transform: uppercase; outline: none;
+      transition: border-color .15s ease, box-shadow .15s ease;
     }
     .puerta-campo::placeholder { color: var(--text-faint); font-weight: 400; letter-spacing: 0.02em; text-transform: none; }
-    .puerta-campo:focus { border-bottom-color: var(--border-focus); }
-    .puerta-nombre { text-transform: none; letter-spacing: 0; font-size: 13px; }
-    .puerta-accion {
-      width: 100%; margin-top: 20px; padding: 13px;
-      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-      border: 0; background: var(--color-primary); color: #fff;
-      font: 700 13px var(--font-ui); cursor: pointer;
+    .puerta-campo:focus {
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 3px rgba(8, 102, 245, .16);
     }
+    .puerta-nombre { text-transform: none; letter-spacing: 0; font-size: var(--text-md); font-family: var(--font-ui); }
+    .puerta-accion {
+      width: 100%; margin-top: 18px; padding: 12px;
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      border: 0; border-radius: var(--radius-sm);
+      background: var(--color-primary); color: #fff;
+      font: 700 var(--text-md) var(--font-ui); cursor: pointer;
+      transition: background .15s ease;
+    }
+    .puerta-accion:hover { background: var(--color-primary-hover); }
+    .puerta-accion:focus-visible { outline: 2px solid var(--border-focus); outline-offset: 2px; }
     .puerta-accion:disabled { background: var(--border-strong); cursor: progress; }
     .puerta-estado {
-      margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border-light);
-      font: 400 11px/1.5 var(--font-mono); color: var(--text-muted);
-      min-height: 18px;
+      margin-top: 16px; min-height: 18px;
+      font: 400 var(--text-xs)/1.5 var(--font-mono); color: var(--text-muted);
     }
-    .puerta-estado[data-tono="error"] { color: var(--status-err-text); }
+    .puerta-estado[data-tono="error"] {
+      padding: 8px 10px; border-radius: var(--radius-sm);
+      background: var(--status-err-bg); color: var(--status-err-text);
+      border: 1px solid var(--status-err-border);
+    }
     .puerta-pie {
-      margin-top: 26px; display: flex; align-items: center; gap: 8px;
-      font: 400 11px var(--font-mono); color: var(--text-faint);
+      margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--border-light);
+      display: flex; align-items: center; gap: 8px;
+      font: 400 var(--text-xs) var(--font-mono); color: var(--text-faint);
     }
+    .puerta-alterno {
+      margin-top: 12px; padding: 0; border: 0; background: none;
+      font: 600 var(--text-xs) var(--font-ui); color: var(--color-primary);
+      cursor: pointer; text-decoration: underline; text-underline-offset: 3px;
+    }
+
+    /* Modo «nombre y clave»: dos campos más, sin recargar la página. */
+    .puerta-forma[data-modo="persona"] #puerta-llave,
+    .puerta-forma[data-modo="llave"] #puerta-persona,
+    .puerta-forma[data-modo="llave"] #puerta-clave { display: none; }
+    .puerta-persona { text-transform: none; letter-spacing: 0; font-size: var(--text-md); font-family: var(--font-ui); }
   </style>
 </head>
 <body>
   <main class="puerta">
-    <form class="puerta-forma" id="puerta-form" autocomplete="off">
+    <form class="puerta-forma" id="puerta-form" autocomplete="off" data-modo="llave">
       <img class="puerta-marca" src="assets/app-mark.svg" alt="" width="56" height="56">
       <h1 class="puerta-titulo">Llave de acceso</h1>
       <p class="puerta-nota" id="puerta-nota">Cargando…</p>
@@ -65,8 +108,13 @@
              placeholder="XXXX-XXXX-XXXX" spellcheck="false" autocapitalize="characters" required>
       <input class="puerta-campo puerta-nombre" id="puerta-nombre" name="nombre" type="text"
              placeholder="Tu nombre (solo la primera vez)" style="display:none; margin-top:10px;">
+      <input class="puerta-campo puerta-persona" id="puerta-persona" name="persona" type="text"
+             placeholder="Tu nombre" autocomplete="username">
+      <input class="puerta-campo puerta-persona" id="puerta-clave" name="clave" type="password"
+             placeholder="Tu clave" autocomplete="current-password">
 
       <button class="puerta-accion" id="puerta-entrar" type="submit">Entrar</button>
+      <button class="puerta-alterno" id="puerta-modo" type="button">Entrar con mi nombre y clave</button>
       <div class="puerta-estado" id="puerta-estado" role="status"></div>
 
       <div class="puerta-pie">
@@ -79,6 +127,6 @@
       </div>
     </form>
   </main>
-  <script src="login.js?v=20261116_rev1"></script>
+  <script src="login.js?v=20261117_rev1"></script>
 </body>
 </html>

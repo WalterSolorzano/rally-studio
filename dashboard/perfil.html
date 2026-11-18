@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi avatar y mi clave · Rally Studio</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=20261019_rev10">
+  <style>
+    body { display: block; margin: 0; }
+    .perfil-shell {
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: var(--space-7, 32px) var(--space-5, 20px) var(--space-9, 64px);
+    }
+    .perfil-head { display: flex; flex-wrap: wrap; gap: var(--space-4, 16px); align-items: flex-end; justify-content: space-between; margin-bottom: var(--space-2); }
+    .perfil-head h1 { margin: 0; font-size: 26px; line-height: 1.2; color: var(--text-title); }
+    .perfil-head a { color: var(--color-primary); font-weight: 700; text-decoration: none; }
+    .perfil-lead { margin: 0 0 var(--space-5); color: var(--text-muted); line-height: 1.55; max-width: 66ch; }
+    .perfil-panel { border: 1px solid var(--border-light); background: var(--bg-surface); border-radius: var(--radius-lg); padding: var(--space-5, 20px); margin-bottom: var(--space-4, 20px); }
+    .perfil-panel h2 { margin: 0 0 var(--space-1); font-family: var(--font-mono); font-size: var(--text-sm); letter-spacing: .08em; text-transform: uppercase; color: var(--text-faint); }
+    .perfil-panel .perfil-lead { margin-bottom: var(--space-4, 16px); font-size: 14px; }
+    .perfil-avatares { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: var(--space-2); }
+    .perfil-avatares input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+    .perfil-avatares label {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3, 12px);
+      padding: var(--space-3, 12px) var(--space-4, 14px);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      background: var(--bg-app);
+      font-weight: 700;
+      color: var(--text-title);
+      cursor: pointer;
+    }
+    .perfil-avatares .rav-avatar { width: 40px; height: 40px; flex: 0 0 auto; }
+    .perfil-roles { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+    .perfil-roles input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+    .perfil-roles label {
+      padding: 8px 14px;
+      border: 1px solid var(--border-light);
+      border-radius: 999px;
+      background: var(--bg-app);
+      font: 700 13px/1 var(--font-ui);
+      color: var(--text-body);
+      cursor: pointer;
+    }
+    .perfil-roles input:checked + label {
+      border-color: var(--color-primary);
+      background: var(--bg-secondary);
+      color: var(--color-primary);
+    }
+    .perfil-roles input:focus-visible + label { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+    .perfil-avatares input:checked + label {
+      border-color: var(--color-primary);
+      background: var(--bg-secondary);
+      box-shadow: inset 0 0 0 1px var(--color-primary);
+    }
+    .perfil-avatares input:focus-visible + label { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+    .perfil-clave { display: flex; flex-wrap: wrap; gap: var(--space-3, 10px); align-items: center; }
+    .perfil-clave input {
+      flex: 1 1 240px;
+      min-height: 42px;
+      padding: 0 var(--space-3, 12px);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-sm);
+      font: inherit;
+      background: var(--bg-app);
+      color: var(--text-main);
+    }
+    .perfil-clave input:focus { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+    button.primary, button.ghost {
+      min-height: 42px; padding: 0 var(--space-4, 16px); border-radius: var(--radius-sm); font: inherit; font-weight: 800; cursor: pointer;
+    }
+    button.primary { border: 1px solid var(--color-primary); background: var(--color-primary); color: #fff; }
+    button.primary:hover { background: var(--color-primary-hover); }
+    button.ghost { border: 1px solid var(--border-strong); background: transparent; color: var(--text-main); }
+    button:disabled { opacity: .55; cursor: wait; }
+    .perfil-estado { margin: var(--space-3, 12px) 0 0; font-size: 13px; color: var(--text-muted); }
+    #perfil-status { min-height: 22px; margin: 0 0 var(--space-4, 16px); color: var(--status-err-text); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <main class="perfil-shell">
+    <header class="perfil-head">
+      <div>
+        <h1>Mi avatar y mi clave</h1>
+        <p class="perfil-lead">Cómo apareces en la pizarra y cómo vuelves a entrar sin pedir otro enlace.</p>
+      </div>
+      <a href="/">Volver al trabajo</a>
+    </header>
+
+    <p id="perfil-status" role="status" aria-live="polite"></p>
+
+    <section class="perfil-panel" aria-labelledby="quien-title">
+      <h2 id="quien-title">Quién eres</h2>
+      <p class="perfil-lead" id="quien-nombre">Cargando…</p>
+    </section>
+
+    <section class="perfil-panel" aria-labelledby="roles-title">
+      <h2 id="roles-title">Tus roles</h2>
+      <p class="perfil-lead">Lo que haces en el equipo. Puedes marcar más de uno; no dependen del personaje.</p>
+      <div class="perfil-roles" id="perfil-roles" role="group" aria-labelledby="roles-title"></div>
+      <p class="perfil-estado" id="roles-estado" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="perfil-panel" aria-labelledby="avatar-title">
+      <h2 id="avatar-title">Tu personaje</h2>
+      <p class="perfil-lead">El dibujo con el que te ven los demás. Elige uno y se guarda al instante.</p>
+      <div class="perfil-avatares" id="perfil-avatares" role="radiogroup" aria-labelledby="avatar-title"></div>
+      <p class="perfil-estado" id="avatar-estado" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="perfil-panel" aria-labelledby="clave-title">
+      <h2 id="clave-title">Tu clave</h2>
+      <p class="perfil-lead">Con nombre y clave entras desde cualquier dispositivo sin pedir enlace. Opcional.</p>
+      <form class="perfil-clave" id="clave-form" novalidate>
+        <input id="perfil-clave" type="password" minlength="6" maxlength="80" autocomplete="new-password" placeholder="Nueva clave (mínimo 6)" aria-label="Nueva clave">
+        <button class="primary" id="clave-guardar" type="submit">Guardar clave</button>
+        <button class="ghost" id="clave-quitar" type="button" hidden>Quitar mi clave</button>
+      </form>
+      <p class="perfil-estado" id="clave-estado"></p>
+    </section>
+  </main>
+  <script src="avatars.js?v=20261117_rev6" defer></script>
+  <script src="perfil.js?v=20261117_rev3" defer></script>
+</body>
+</html>

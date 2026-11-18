@@ -1,10 +1,11 @@
-from tests.support import auth, bootstrap, call, claim, entrar
+from tests.support import auth, bootstrap, call, claim, approve, entrar
 
 
 def test_dos_miembros_editan_y_el_segundo_recibe_conflicto(servidor):
     base, _ = servidor
     boot = bootstrap(base, "equipo01", "Ana")
     luis = claim(base, boot["join_token"], "Luis")
+    approve(base, "equipo01", luis["member"]["id"], boot["admin_token"])
     headers_a = auth(boot["admin_token"])
     headers_l = auth(luis["session"])
     call("POST", base + "/api/sections/pautado.problema?project=equipo01",

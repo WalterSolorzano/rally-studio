@@ -5,7 +5,7 @@
  * cuanto hay red pide la versión viva al servidor: los cambios que publica la
  * IA madre no pueden quedar atrapados en una copia vieja.
  */
-var CACHE = "rally-studio-v3";
+var CACHE = "rally-studio-v5";
 var CASCARON = [
   "./",
   "./index.html",
@@ -18,6 +18,7 @@ var CASCARON = [
   "./notify.js",
   "./super_agents.css",
   "./super_agents.js",
+  "./chat.js",
   "./manifest.webmanifest",
   "./assets/app-icon-192.png",
   "./assets/app-icon-512.png",

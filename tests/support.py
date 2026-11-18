@@ -18,6 +18,20 @@ def free_port() -> int:
     return port
 
 
+def correr_node(node, probe, comando, arg=None):
+    """Corre una sonda de Node y devuelve su JSON.
+
+    Antes vivia copiada en cuatro pruebas (challenges_parse, content_bridge,
+    design_impacto, design_palette), palabra por palabra.
+    """
+    args = [node, str(probe), comando]
+    if arg is not None:
+        args.append(json.dumps(arg, ensure_ascii=False))
+    salida = subprocess.run(args, capture_output=True, text=True, encoding="utf-8", timeout=30)
+    assert salida.returncode == 0, salida.stderr
+    return json.loads(salida.stdout)
+
+
 def call(method, url, payload=None, headers=None, origin=None):
     data = None if payload is None else json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(url, data=data, method=method)
@@ -81,5 +95,14 @@ def entrar(base, data_dir, project="main", nombre="Admin"):
 def claim(base, invite_token, name):
     status, body, _ = call("POST", base + "/api/project/claim",
                            {"token": invite_token, "name": name, "device_id": "dev-" + name})
+    assert status == 200, body
+    return body
+
+
+def approve(base, project, member_id, admin_token, approved=True):
+    status, body, _ = call(
+        "POST", base + "/api/members/" + member_id + "/approve?project=" + project,
+        {"approved": approved}, headers=auth(admin_token),
+    )
     assert status == 200, body
     return body

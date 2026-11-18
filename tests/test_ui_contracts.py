@@ -128,3 +128,57 @@ def test_kit_hides_university_and_city_by_default():
     assert "Institución (oculto)" in html
     assert 'id="kitUniMark"' in html
     assert 'id="kitCityCell"' in html
+
+
+def test_escape_es_uno_solo_y_carga_primero():
+    # Cuatro copias del mismo escapador (app, stats, section_sync, super_agents):
+    # basta que una se quede atras para abrir un XSS. Una sola, cargada primero.
+    esc = (DASH / 'escape.js').read_text(encoding='utf-8')
+    assert 'window.RallyEsc' in esc and 'escRe' in esc
+    for pagina in ('index.html', 'stats.html'):
+        html = (DASH / pagina).read_text(encoding='utf-8')
+        assert html.index('escape.js') < html.index('</body>'), pagina
+        # Y antes que cualquier otro script del dashboard.
+        for otro in ('app.js', 'app_video.js', 'stats.js', 'section_sync.js', 'super_agents.js'):
+            marca = 'src="' + otro
+            if marca in html:
+                assert html.index('src="escape.js') < html.index(marca), (pagina, otro)
+    js = (DASH / 'stats.js').read_text(encoding='utf-8')
+    assert 'window.RallyEsc.esc' in js
+    js = (DASH / 'section_sync.js').read_text(encoding='utf-8')
+    assert 'window.RallyEsc.esc' in js
+
+
+def test_admin_page_manages_certamen_identity_and_roles():
+    html = (DASH / "admin.html").read_text(encoding="utf-8")
+    js = (DASH / "admin.js").read_text(encoding="utf-8")
+    assert 'data-rally="latam"' in html
+    assert 'data-rally="nacional"' in html
+    assert 'id="identity-form"' in html
+    assert 'id="id-squad"' in html
+    assert 'id="save-certamen"' in html
+    assert "api/sections/" in js
+    assert "/role" in js
+
+
+def test_admin_aprueba_solicitudes_pendientes():
+    js = (DASH / "admin.js").read_text(encoding="utf-8")
+    join = (DASH / "join.js").read_text(encoding="utf-8")
+    assert "/approve" in js
+    assert "Aprobar" in js and "Rechazar" in js
+    assert "pending" in join and "location.replace" in join
+
+
+def test_workbench_locks_setup_for_plain_members():
+    js = (DASH / "app.js").read_text(encoding="utf-8")
+    assert "canEditSetup" in js
+    assert "setup-lock-chip" in js
+
+
+def test_admin_cierra_todo_y_ve_el_registro():
+    html = (DASH / "admin.html").read_text(encoding="utf-8")
+    js = (DASH / "admin.js").read_text(encoding="utf-8")
+    assert 'id="close-all"' in html
+    assert 'id="load-audit"' in html
+    assert "/api/admin/panic" in js
+    assert "/api/events" in js

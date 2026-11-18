@@ -1,6 +1,5 @@
 import json
 import os
-import socket
 import subprocess
 import sys
 import time
@@ -10,23 +9,17 @@ from pathlib import Path
 
 import pytest
 
+from tests.support import free_port
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
 # El servicio exige llave desde 2026-11: cada prueba abre sesion con la maestra.
 _SESION = {"token": ""}
 
 
-def _free_port() -> int:
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.bind(("127.0.0.1", 0))
-    port = s.getsockname()[1]
-    s.close()
-    return port
-
-
 @pytest.fixture
 def servidor(tmp_path):
-    port = _free_port()
+    port = free_port()
     data_dir = tmp_path / "data"
     data_dir.mkdir()
     env = os.environ.copy()
@@ -134,6 +127,12 @@ def test_sections_conflict_lock_and_events(servidor):
     )
     assert status == 200, body
     bea = body["session"]
+    # Aprobacion del admin: sin ella la solicitud no ve el proyecto.
+    status, body, _ = call(
+        "POST", base + "/api/members/" + body["member"]["id"] + "/approve",
+        {"approved": True},
+    )
+    assert status == 200, body
 
     status, body, _ = call("POST", base + "/api/sections/team", {
         "data": {"team_name": "Bea"}, "base_version": 2,
@@ -171,19 +170,33 @@ def test_sections_conflict_lock_and_events(servidor):
 
 def test_cors_private_only(servidor):
     base, _ = servidor
-    status, _, headers = call("OPTIONS", base + "/api/sections", origin="http://192.168.1.50:8099")
+    host = base.split("//", 1)[1]
+    # Mismo host: la peticion normal del dashboard, siempre permitida.
+    status, _, headers = call("OPTIONS", base + "/api/sections", origin=base)
     assert status == 204
-    assert headers.get("Access-Control-Allow-Origin") == "http://192.168.1.50:8099"
+    assert headers.get("Access-Control-Allow-Origin") == base
+
+    # Otra IP privada: solo si el proyecto declara RALLY_CORS_LAN.
+    status, _, headers = call("OPTIONS", base + "/api/sections", origin="http://192.168.1.50:8099")
+    assert status == 403
+    assert "Access-Control-Allow-Origin" not in headers
 
     status, _, headers = call("OPTIONS", base + "/api/sections", origin="http://evil.example")
     assert status == 403
     assert "Access-Control-Allow-Origin" not in headers
 
+    # El dashboard se sirve del mismo host: escribir desde ahi funciona.
     status, body, _ = call("POST", base + "/api/sections/team", {
         "data": {"team_name": "Lan"}, "base_version": 0,
         "actor": "Ana", "actor_id": "a",
-    }, origin="http://192.168.1.50:8099")
+    }, origin=base)
     assert status == 200 and body["ok"] is True
+
+    # Y desde otra IP privada, sin RALLY_CORS_LAN, no.
+    status, _, _ = call("POST", base + "/api/sections/team", {
+        "data": {"team_name": "Intruso"}, "base_version": 1,
+    }, origin="http://192.168.1.50:8099")
+    assert status == 403
 
 
 def test_legacy_state_json_se_migra_sin_perder(servidor):

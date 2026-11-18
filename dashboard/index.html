@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Rally Studio · Workbench de Innovación</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="manifest" href="manifest.webmanifest">
@@ -27,14 +27,18 @@
   <!-- Las librerías de ingesta (jszip, pdf.js, mammoth, tesseract) ya no se
        cargan al abrir: app.js las pide con ensureIngestLibs() la primera vez
        que se importa un archivo. -->
+  <script src="escape.js?v=20261117"></script>
   <script src="challenge_parser.js?v=20261021_v1"></script>
   <script src="notify.js?v=20261116c_rev4"></script>
-  <script src="app.js?v=20261116c_rev4"></script>
+  <script src="avatars.js?v=20261117_rev6"></script>
+  <script src="app.js?v=20261117_rev3"></script>
+<script src="app_video.js?v=20261117"></script>
   <script src="section_sync.js?v=20261116c_rev4" defer></script>
   <script src="content_bridge.js?v=20261116c_rev4" defer></script>
   <script src="presence.js?v=20261116c_rev4" defer></script>
   <link rel="stylesheet" href="super_agents.css?v=20261116c_rev4">
   <script src="super_agents.js?v=20261116c_rev4" defer></script>
+  <script src="chat.js?v=20261117" defer></script>
   <script>
     // Instalación en el teléfono (PWA). Fuera de localhost el navegador exige
     // HTTPS; en LAN por HTTP el registro falla y la app sigue funcionando igual.

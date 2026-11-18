@@ -224,6 +224,13 @@ class SQLiteSectionStore(SectionStore):
              time.time(), json.dumps(detail or {}, ensure_ascii=False)),
         )
 
+    def log_event(self, project_id: str, key: str, actor: str, actor_id: str,
+                  action: str, detail: dict | None = None) -> None:
+        """Evento suelto fuera de una seccion (cambio de rol, etc.)."""
+        with self._lock, self._connect() as conn:
+            self._event(conn, project_id, key, actor, actor_id, action, 0, detail)
+            conn.commit()
+
     def _current(self, conn: sqlite3.Connection, project_id: str, key: str) -> dict | None:
         row = conn.execute(
             "SELECT * FROM sections WHERE project_id = ? AND key = ?",

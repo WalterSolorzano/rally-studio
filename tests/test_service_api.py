@@ -1,6 +1,5 @@
 import json
 import os
-import socket
 import subprocess
 import sys
 import time
@@ -10,20 +9,14 @@ from pathlib import Path
 
 import pytest
 
+from tests.support import bootstrap, call, free_port, llave
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
-
-
-def _free_port() -> int:
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.bind(("127.0.0.1", 0))
-    port = s.getsockname()[1]
-    s.close()
-    return port
 
 
 @pytest.fixture
 def servidor(tmp_path):
-    port = _free_port()
+    port = free_port()
     data_dir = tmp_path / "data"
     data_dir.mkdir()
 
@@ -205,3 +198,177 @@ def test_post_from_foreign_origin_is_rejected(servidor):
     estado_propio, _, _ = _request(base, "/api/state", "POST", {"state": {"a": 1}}, {"Origin": base})
     assert estado_propio == 200
 
+
+
+def test_no_se_puede_salir_de_la_carpeta_con_dos_puntos(servidor):
+    """`..` en la ruta no puede esquivar la lista de archivos privados.
+
+    Antes, `/dashboard/../dashboard/data/members.db` no empezaba por `data/`,
+    así que `private_static` lo dejaba pasar y entregaba la base de miembros.
+    """
+    base, _ = servidor
+    for ruta in (
+        "/dashboard/../dashboard/data/members.db",
+        "/dashboard/../dashboard/data/state.json",
+        "/dashboard/../../brief.json",
+    ):
+        estado, _, _ = _request(base, ruta)
+        assert estado in (400, 403, 404), f"{ruta} devolvió {estado}"
+
+
+def test_ruta_absoluta_y_archivos_ocultos_no_se_sirven(servidor):
+    """`/C:/...` pasa `PurePosixPath` y `DASHBOARD_DIR / rel` devuelve la ruta
+    absoluta: se servía cualquier archivo del disco. Y `.git/`, `.env` y `*.key`
+    son configuración, no contenido del proyecto."""
+    base, _ = servidor
+    for ruta in (
+        "/C:/Windows/win.ini",
+        "/dashboard/C:/Windows/win.ini",
+        "//servidor/recurso",
+        "/dashboard/.env",
+        "/.git/config",
+        "/scripts/freellmapi.key",
+    ):
+        estado, _, cuerpo = _request(base, ruta)
+        assert estado in (400, 403, 404), f"{ruta} devolvió {estado}"
+        assert "win.ini" not in cuerpo and "[core]" not in cuerpo
+
+
+def test_asset_delete_exige_id_valido_y_rol(servidor):
+    """`aid="*"` en `glob(aid + "__*")` borraba TODOS los recursos del equipo."""
+    base, _ = servidor
+    estado, _, _ = _request(base, "/api/asset-delete", "POST", {"id": "*"})
+    assert estado == 400
+
+
+def _claim_member(base, name="Miembro"):
+    est, inv = post_json(base + "/api/invites?project=main", {"ttl_hours": 48})
+    assert est == 200, inv
+    est, claimed = post_json(
+        base + "/api/project/claim?project=main", {"token": inv["token"], "name": name}
+    )
+    assert est == 200, claimed
+    # El que se une queda pendiente: el admin lo aprueba y solo entonces entra.
+    est, aprobado = post_json(
+        base + "/api/members/" + claimed["member"]["id"] + "/approve?project=main",
+        {"approved": True},
+    )
+    assert est == 200, aprobado
+    return claimed["member"]["id"], claimed["session"]
+
+
+def test_miembro_no_edita_identidad_ni_cambia_roles(servidor):
+    base, _ = servidor
+    member_id, member_token = _claim_member(base)
+    admin_token = _SESION["token"]
+
+    est, _ = post_json(base + "/api/sections/team_name?project=main",
+                       {"data": "Squad", "base_version": 0})
+    assert est == 200
+
+    _SESION["token"] = member_token
+    try:
+        est, body = post_json(base + "/api/sections/team_name?project=main",
+                              {"data": "Hack", "base_version": 1})
+        assert est == 403 and body["error"] == "sin-permiso"
+
+        est, _ = post_json(base + "/api/sections/rally_type?project=main",
+                           {"data": "latam", "base_version": 0})
+        assert est == 403
+
+        # Las secciones de contenido siguen abiertas para el miembro.
+        est, _ = post_json(base + "/api/sections/solution?project=main",
+                           {"data": {"texto": "ok"}, "base_version": 0})
+        assert est == 200
+
+        est, _ = post_json(
+            base + "/api/members/" + member_id + "/role?project=main", {"role": "admin"}
+        )
+        assert est == 403
+    finally:
+        _SESION["token"] = admin_token
+
+    est, body = post_json(
+        base + "/api/members/" + member_id + "/role?project=main", {"role": "operator"}
+    )
+    assert est == 200 and body["member"]["role"] == "operator"
+
+
+# --- tunel con HTTPS: la IP real del visitante ---
+
+class _Falso:
+    """Lo minimo que _client_ip lee de un handler."""
+
+    def __init__(self, peer, headers=None):
+        self.client_address = (peer, 54321)
+        self.headers = headers or {}
+
+
+def _rs():
+    import sys as _sys
+
+    _sys.path.insert(0, str(REPO_ROOT / "scripts"))
+    import rally_service as rs  # noqa: E402
+
+    return rs
+
+
+def test_cabecera_de_proxy_se_ignora_si_no_viene_de_la_maquina(monkeypatch):
+    """Un vecino del WiFi no puede hacerse pasar por local."""
+    rs = _rs()
+    monkeypatch.delenv("RALLY_TRUST_PROXY", raising=False)
+    falso = _Falso("192.168.1.50", {"X-Forwarded-For": "127.0.0.1"})
+    assert rs._client_ip(falso) == "192.168.1.50"
+
+
+def test_cabecera_de_proxy_se_cree_cuando_viene_del_tunel_local(monkeypatch):
+    rs = _rs()
+    monkeypatch.delenv("RALLY_TRUST_PROXY", raising=False)
+    assert rs._client_ip(_Falso("127.0.0.1", {"X-Forwarded-For": "203.0.113.9"})) == "203.0.113.9"
+    assert rs._client_ip(_Falso("::1", {"CF-Connecting-IP": "198.51.100.7"})) == "198.51.100.7"
+    # basura en la cabecera: se ignora y queda el par real
+    assert rs._client_ip(_Falso("127.0.0.1", {"X-Forwarded-For": "no-soy-ip"})) == "127.0.0.1"
+
+
+def test_trust_proxy_en_cero_apaga_la_lectura(monkeypatch):
+    rs = _rs()
+    monkeypatch.setenv("RALLY_TRUST_PROXY", "0")
+    assert rs._client_ip(_Falso("127.0.0.1", {"X-Forwarded-For": "203.0.113.9"})) == "127.0.0.1"
+
+
+def test_llave_maestra_no_abre_desde_ip_publica(servidor):
+    """Aunque llegue por el tunel, la llave maestra sigue siendo solo local."""
+    base, content = servidor
+    data_dir = content.parent
+    status, body, _ = call(
+        "POST", base + "/api/entrar?project=main",
+        {"llave": llave(str(data_dir)), "nombre": "Admin"},
+        headers={"X-Forwarded-For": "203.0.113.9"},
+    )
+    assert status == 403, body
+    assert body["error"] == "llave-solo-local"
+
+
+def test_la_llave_maestra_sigue_abriendo_desde_la_maquina(servidor):
+    base, content = servidor
+    data_dir = content.parent
+    status, body, _ = call(
+        "POST", base + "/api/entrar?project=main",
+        {"llave": llave(str(data_dir)), "nombre": "Admin"},
+    )
+    assert status == 200, body
+    assert body["session"]
+
+
+def test_sondas_desde_ip_publica_terminan_en_bloqueo(servidor, monkeypatch):
+    """Veinte pedidos privados sin sesion y el que insiste queda fuera."""
+    base, content = servidor
+    monkeypatch.setenv("RALLY_TEST_DATA_DIR", str(content.parent))
+    bootstrap(base, "tunel", "Ana")
+    visto = None
+    for _ in range(30):
+        visto, _, _ = call(
+            "GET", base + "/api/sections?project=tunel",
+            headers={"X-Forwarded-For": "198.51.100.44"},
+        )
+    assert visto == 429

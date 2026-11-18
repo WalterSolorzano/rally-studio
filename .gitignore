@@ -101,6 +101,7 @@ desktop.ini
 
 # Cache interno que graphify crea dentro del corpus al reconstruir
 brain/corpus/graphify-out/
+graphify-out/
 
 # Locks de recursos del orquestador: por maquina, nunca al repo
 locks/
