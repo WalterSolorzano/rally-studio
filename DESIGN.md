@@ -161,6 +161,27 @@ Rally Studio implementa una estrategia de profundidad completamente plana y basa
 3. Filas tabulares interactivas con hover en `var(--bg-subtle)`.
 4. Espacio negativo rítmico que agrupa lógicamente sin encerrar en cajas.
 
+## Motion
+
+El movimiento responde, no decora. Cada animación del sistema cae en una fila de esta tabla; si no encaja, no se escribe.
+
+| Interacción | Duración | Easing | Propósito |
+|---|---|---|---|
+| Hover / foco / respuesta táctil | `120ms` | `ease-out` | confirmar que el puntero está sobre algo accionable |
+| Cambio de estado (chip, fila, chevron) | `160ms` | `ease-out` | confirmar que algo cambió |
+| Entrada de datos (fila nueva, toast, modal) | `200ms` | `ease-out` | mostrar de dónde vino |
+| Progreso de tarea en curso (barra, llenado) | `700–900ms` | `cubic-bezier(0.16, 1, 0.3, 1)` | avance real, no adorno |
+| Pulso de estado vivo (baliza, fase, cronómetro) | `1.8–2.5s` | `ease-in-out`, `infinite` | indicar que algo está corriendo ahora |
+| Bucle ambiental de escena ilustrada (mapa, clima) | `3–8s` | `ease-in-out`, `infinite` | dar vida a una ilustración que significa «en vivo» |
+| Prohibido | `>300ms` decorativo | — | retrasa la lectura sin informar nada |
+
+### Named Rules
+**The Answer-Only Rule.** No hay animación de bienvenida, ni de carga artificial, ni de énfasis. Si un elemento no cambia de estado, no se mueve.
+
+**The Reduced-Motion Rule.** Todo archivo CSS de UI que declare `@keyframes` declara también su bloque `@media (prefers-reduced-motion: reduce)` que lleva las duraciones a `0ms` y deja el estado final visible. Una animación sin su salida accesible es un fallo, no un detalle.
+
+**The No-Delay Rule.** Ninguna transición se aplica a la lectura de datos: las filas y las cifras aparecen en su estado final. El movimiento nunca se interpone entre el jurado y el número.
+
 ## Shapes
 
 - **Radio de Esquinas:** Reducido y funcional (solo para elementos interactivos, nunca para encerrar páginas):

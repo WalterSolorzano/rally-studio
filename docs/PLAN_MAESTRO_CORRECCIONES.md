@@ -487,8 +487,11 @@ Una corrida está completa solo si:
       y los generadores fallan si falta la paleta en vez de inventar un azul.
 - [ ] G2 verde: planta 60-30-10 generada desde el reto (no fija) y aplicada por pantalla.
 - [ ] G3 verde: cuerpo ≥14 px a 390 px, sin scroll horizontal, capturas tomadas.
-- [ ] G4 verde: Rally Design generado y 3 rutas de marca servidas, 1 aceptada.
-- [ ] G5 verde: política de movimiento declarada en `DESIGN.md` y todo `@keyframes` con su `prefers-reduced-motion`.
+- [ ] G4 verde: Rally Design generado y 3 rutas de marca servidas, 1 aceptada. *(enlace listo en
+      `renderViewIdentidad`; falta la ruta aceptada: bloqueado por datos del proyecto)*
+- [x] G5 verde: política de movimiento declarada en `DESIGN.md` y todo `@keyframes` con su
+      `prefers-reduced-motion`. *(30 animaciones / 10 bloques reduced; escalones 120/160/200 ms
+      normalizados en `dashboard/style.css`)*
 - [ ] G6 verde: wireframes móvil y escritorio aprobados antes de implementar.
 - [ ] G7 verde: `site/` con los 6 bloques de marketing y ≥1 cifra con URL.
 - [ ] G8 verde: K1-K7 con decisión registrada.

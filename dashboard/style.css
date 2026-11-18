@@ -321,7 +321,7 @@ body.sidebar-collapsed.panel-collapsed #panel {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  transition: all 140ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 160ms cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
 }
 .btn-minimal-back:hover {
@@ -329,7 +329,7 @@ body.sidebar-collapsed.panel-collapsed #panel {
   background: rgba(241, 245, 249, 0.9);
 }
 .btn-minimal-back svg {
-  transition: transform 140ms ease;
+  transition: transform 160ms ease;
 }
 .btn-minimal-back:hover svg {
   transform: translateX(-3px);
@@ -378,7 +378,7 @@ body.sidebar-collapsed.panel-collapsed #panel {
   color: #1e293b;
   text-decoration: none;
   cursor: pointer;
-  transition: background 100ms ease;
+  transition: background 120ms ease;
 }
 
 .dropdown-menu-box a:hover, .dropdown-menu-box label:hover {
@@ -521,7 +521,7 @@ body.sidebar-collapsed.panel-collapsed #panel {
   padding: 14px 0;
   border-bottom: 1px solid var(--border-light);
   background: transparent;
-  transition: background-color 100ms ease;
+  transition: background-color 120ms ease;
 }
 
 .cardless-row:hover {
@@ -654,9 +654,9 @@ body.sidebar-collapsed.panel-collapsed #panel {
 
 /* Transición de fase: llegada con dirección. Avanzar en el flujo (fase
    siguiente) entra desde la derecha; retroceder, desde la izquierda.
-   240ms, desaceleración exponencial, sin rebotes. */
+   200ms, desaceleración exponencial, sin rebotes. */
 .content-wrapper.rs-view {
-  animation: rsViewIn 240ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: rsViewIn 200ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 .content-wrapper.rs-view.rs-fwd { --rs-view-shift: 14px; }
 .content-wrapper.rs-view.rs-back { --rs-view-shift: -14px; }
@@ -816,7 +816,7 @@ input[type="text"], input[type="number"], select, textarea {
   font-family: var(--font-ui);
   font-size: 13px;
   color: var(--text-main);
-  transition: border-color 100ms ease;
+  transition: border-color 120ms ease;
 }
 input:focus, select:focus, textarea:focus {
   outline: none;
@@ -847,7 +847,7 @@ textarea {
 .progress-fill {
   height: 100%;
   background: var(--color-primary);
-  transition: width 150ms ease, background-color 150ms ease;
+  transition: width 160ms ease, background-color 160ms ease;
 }
 .progress-fill.warn { background: #64748B; }
 .progress-fill.over { background: #ef4444; }
@@ -1228,7 +1228,7 @@ textarea {
   border-radius: var(--radius-sm);
   padding: 24px 24px 20px 24px;
   cursor: pointer;
-  transition: border-color 140ms ease;
+  transition: border-color 160ms ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1411,7 +1411,7 @@ textarea {
   text-align: center;
   background: #f8fafc;
   cursor: pointer;
-  transition: all 140ms ease;
+  transition: all 160ms ease;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1466,7 +1466,7 @@ textarea {
   border-radius: var(--radius-md);
   margin-bottom: 16px;
   overflow: hidden;
-  transition: border-color 140ms ease;
+  transition: border-color 160ms ease;
 }
 
 .challenge-box.active {
@@ -1656,7 +1656,7 @@ textarea {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: all 140ms ease;
+  transition: all 160ms ease;
 }
 
 .task-dispatch-card:hover {
@@ -1769,7 +1769,7 @@ textarea {
   font-size: 12px;
   font-weight: 700;
   cursor: pointer;
-  transition: all 140ms ease;
+  transition: all 160ms ease;
   user-select: none;
   line-height: 1.2;
 }
@@ -1868,7 +1868,7 @@ textarea {
   font-weight: 700;
   cursor: pointer;
   white-space: nowrap;
-  transition: background 140ms ease;
+  transition: background 160ms ease;
 }
 .btn-copy-action:hover {
   background: #002244;
@@ -2053,7 +2053,7 @@ textarea {
   display: flex;
   align-items: center;
   color: #64748b;
-  transition: transform 140ms ease;
+  transition: transform 160ms ease;
 }
 .guardrail-card.expanded .guardrail-chevron {
   transform: rotate(180deg);
@@ -2229,7 +2229,7 @@ textarea {
   align-items: center;
   gap: 8px;
   z-index: 99999;
-  animation: toastIn 180ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: toastIn 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 @keyframes toastIn {
   from { opacity: 0; transform: translateY(12px) scale(0.96); }
@@ -2246,7 +2246,7 @@ textarea {
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  animation: fadeIn 150ms ease;
+  animation: fadeIn 160ms ease;
 }
 @keyframes fadeIn {
   from { opacity: 0; }
@@ -2260,7 +2260,7 @@ textarea {
   padding: 24px;
   width: 90%;
   max-width: 440px;
-  animation: modalPop 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  animation: modalPop 200ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 @keyframes modalPop {
   from { opacity: 0; transform: scale(0.95) translateY(8px); }
@@ -2283,7 +2283,7 @@ textarea {
   max-width: 760px;
   max-height: 88vh;
   overflow-y: auto;
-  animation: modalPop 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  animation: modalPop 200ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 .rank-badge-pill {
   font-family: var(--font-mono);
@@ -2402,7 +2402,7 @@ textarea {
   z-index: 990;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 220ms ease;
+  transition: opacity 200ms ease;
 }
 
 body.sidebar-drawer-open .drawer-backdrop,
@@ -2993,7 +2993,7 @@ body.panel-drawer-open .drawer-backdrop {
   font-size: 12px;
   font-weight: 700;
   cursor: pointer;
-  transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
 }
 .rs-tools > summary:hover { background: var(--bg-subtle); border-color: var(--border-strong); }
 .rs-tools[open] > summary { color: var(--color-primary); border-color: #BBD3FA; background: #F0F6FF; }
@@ -3013,7 +3013,7 @@ body.panel-drawer-open .drawer-backdrop {
   display: flex;
   flex-direction: column;
   gap: 2px;
-  animation: rsToolsIn 150ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: rsToolsIn 160ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 @keyframes rsToolsIn {
   from { opacity: 0; transform: translateY(-4px); }
@@ -3043,7 +3043,7 @@ body.panel-drawer-open .drawer-backdrop {
 .rs-tools-danger:hover { background: #FEF3F2; color: #912018; }
 .rs-tools-sep { height: 1px; background: var(--border-light); margin: 4px 6px; }
 @media (prefers-reduced-motion: reduce) {
-  .rs-tools-menu { animation-duration: 90ms; }
+  .rs-tools-menu { animation-duration: 120ms; }
   .rs-tools-chevron { transition: none; }
 }
 @media (max-width: 900px) {
@@ -3125,7 +3125,7 @@ body.panel-drawer-open .drawer-backdrop {
   border: 1px solid transparent;
   cursor: pointer;
   background: #FFFFFF;
-  transition: all 100ms ease-out;
+  transition: all 120ms ease-out;
   text-align: left;
   user-select: none;
 }
@@ -3201,7 +3201,7 @@ body.panel-drawer-open .drawer-backdrop {
     z-index: 1000;
     background: #ffffff;
     transform: translateX(-100%);
-    transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
     box-shadow: 4px 0 24px rgba(15, 23, 42, 0.16);
     border-right: 1px solid var(--border-light);
   }
@@ -3220,7 +3220,7 @@ body.panel-drawer-open .drawer-backdrop {
     z-index: 1000;
     background: #ffffff;
     transform: translateX(100%);
-    transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
     box-shadow: -4px 0 24px rgba(15, 23, 42, 0.16);
     border-left: 1px solid var(--border-light);
   }
@@ -4607,7 +4607,7 @@ body.panel-drawer-open .drawer-backdrop {
   max-width: 680px;
   max-height: 90vh;
   overflow-y: auto;
-  animation: modalPop 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  animation: modalPop 160ms cubic-bezier(0.16, 1, 0.3, 1);
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -5015,7 +5015,7 @@ body.panel-drawer-open .drawer-backdrop {
   font-family: var(--font-mono);
   font-size: 12px;
   color: var(--text-muted);
-  transition: transform 140ms ease;
+  transition: transform 160ms ease;
 }
 .rs-collapsible[open] > summary::before { content: "▾"; }
 .rs-mini-count {
@@ -6235,7 +6235,7 @@ button,
 .ods-row-head,
 .di-actions button,
 summary {
-  transition: transform 90ms ease, background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+  transition: transform 120ms ease, background-color 120ms ease, border-color 120ms ease, color 120ms ease;
   -webkit-tap-highlight-color: transparent;
 }
 button:active,
@@ -6611,7 +6611,7 @@ button[disabled]:active {
 /* ── Ficha del entregable ─────────────────────────────────────────────────── */
 body.rs-sheet-open { overflow: hidden; }
 .rs-sheet-backdrop { position: fixed; inset: 0; background: rgba(13, 27, 53, .28);
-  display: flex; justify-content: flex-end; z-index: 1200; animation: rsFade 140ms ease-out; }
+  display: flex; justify-content: flex-end; z-index: 1200; animation: rsFade 160ms ease-out; }
 .rs-sheet { width: 420px; max-width: 92vw; height: 100%; overflow-y: auto;
   background: var(--bg-surface); border-left: 1px solid var(--border-light);
   padding: 18px 20px 28px; animation: rsSlide 200ms cubic-bezier(.16, 1, .3, 1); }
@@ -6699,7 +6699,7 @@ body.rs-sheet-open { overflow: hidden; }
   border-right: 1.5px solid var(--text-muted);
   border-bottom: 1.5px solid var(--text-muted);
   transform: rotate(-45deg);
-  transition: transform 140ms ease;
+  transition: transform 160ms ease;
 }
 .rs-collapsible[open] > summary::before {
   content: "";

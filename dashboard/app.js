@@ -3157,6 +3157,13 @@ function copiarComandoPaleta() {
   showToast("Comando copiado. Cambia la ruta (A, B o C) por la que apruebe el equipo.");
 }
 
+function copiarComandoDiseno() {
+  const slug = (state.project_name || state.team_name || "proyecto_rally").toLowerCase().replace(/\s+/g, "_");
+  const cmd = `python scripts/gen_pagina_diseno.py --slug ${slug}`;
+  navigator.clipboard.writeText(cmd);
+  showToast("Comando copiado. La página hereda la paleta y el logo aprobados.");
+}
+
 // ════════════ EDITAR CON IA: una caja de instrucción por recurso ════════════
 // El resultado NUNCA pisa el texto: entra como propuesta y el equipo acepta o
 // descarta. Usa el mismo motor que el copiloto (_runAIJob).
@@ -3410,6 +3417,14 @@ function renderViewIdentidad() {
     <section class="sol-sec">
       <label class="sol-label">Dónde se aplica</label>
       <p class="sol-hint">El pautado, el presupuesto, el prototipo web y los planos del video usan estos tres colores y estas dos tipografías. El cobalto de la herramienta nunca aparece en el entregable.</p>
+    </section>
+
+    <section class="sol-sec">
+      <label class="sol-label">Rally Design</label>
+      <div class="sol-inline-action">
+        <a class="link-quiet" href="../site/diseno/index.html" target="_blank" rel="noopener" title="Carrusel de equipo, kit de prensa, thumbnail e impacto con la identidad del proyecto">${SVG.external} Abrir la página del proyecto</a>
+        <button class="link-quiet" onclick="copiarComandoDiseno()">${SVG.copy} Copiar el comando</button>
+      </div>
     </section>
   `;
 }
