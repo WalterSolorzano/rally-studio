@@ -71,6 +71,10 @@ prueban el mecanismo antes de que exista un proyecto, y porque cada una dejó in
 |---|---|---|---|---|
 | 2026-11-18 | Candado de escritura, orden 409/423, W04, W05 | profe | subagente general (rol auditor) | `audit/sistema-auditor.md` |
 | 2026-11-18 | Prueba de novato: contexto cero, primer arranque | subagente general (rol usuario) | profe | `audit/prueba-novato.md` |
+| 2026-11-18 | Arranque en copia limpia: dependencias, llave, descargas | subagente general (rol usuario) | profe | `audit/fase-a-arranque.md` |
+| 2026-11-18 | Generadores en copia limpia: 23 generadores y validadores | subagente general (rol usuario) | profe | `audit/fase-b-generadores.md` |
+| 2026-11-18 | Web demo en copia limpia: identidad, paleta, sitio | subagente general (rol usuario) | profe | `audit/fase-c-webdemo.md` |
+| 2026-11-18 | Cadena completa con proyecto de prueba y auditoría de cierre | profe | profe | `audit/informe-auditoria-exhaustiva.md` |
 
 Lo que encontró la prueba de novato y cómo se cerró:
 

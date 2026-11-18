@@ -490,6 +490,8 @@ Una corrida está completa solo si:
 - [ ] G2 verde: planta 60-30-10 generada desde el reto (no fija) y aplicada por pantalla.
       *(bloqueado: la planta se deriva de `challenge_id`, `category` y `ods_ids`; `brief.json` vacío)*
 - [ ] G3 verde: cuerpo ≥14 px a 390 px, sin scroll horizontal, capturas tomadas.
+      *(parcial: `verificar_identidad.py` en verde —radios ≤18 px, 0 box-shadow, transiciones a
+      120 ms—; las capturas a 390 px y 1440 px exigen navegador y quedan pendientes)*
 - [ ] G4 verde: Rally Design generado y 3 rutas de marca servidas, 1 aceptada. *(el enlace ya abre
       Rally Design desde `renderViewIdentidad` —1 coincidencia en `dashboard/*.js`—; falta la ruta
       aceptada: bloqueado por datos del proyecto)*
@@ -499,7 +501,9 @@ Una corrida está completa solo si:
 - [ ] G6 verde: wireframes móvil y escritorio aprobados antes de implementar.
       *(bloqueado: ningún wireframe se aprueba sin identidad del proyecto aceptada; depende de G4)*
 - [ ] G7 verde: `site/` con los 6 bloques de marketing y ≥1 cifra con URL.
-      *(bloqueado: `gen_site.py` exige tres claims con URL y `research/claims.json` está vacío)*
+      *(el generador ya no es el bloqueo: con brief real produce 6 bloques, 3 cifras con URL,
+      0 hex, 0 `style` inline y 0 emoji. Falta el contenido: `research/claims.json` vacío es
+      decisión del paquete, que se distribuye sin proyecto)*
 - [ ] G8 verde: K1-K7 con decisión registrada.
       *(bloqueado: K1–K7 son decisiones humanas sobre un proyecto real — certamen, reto, solución,
       ruta de marca, pautado, guion y checklist. El mecanismo existe y está en el mapa; sin
@@ -512,6 +516,29 @@ Una corrida está completa solo si:
 - [ ] Login remoto probado por URL pública antes de entregar enlace.
 - [ ] `python arsenal.py check-todo` sin errores.
 - [ ] `audit/` con capturas de todas las pestañas (1440 y 390) y consola limpia.
+
+### Evidencia de la auditoría del 18 de noviembre
+
+Tres subagentes sin contexto trabajaron sobre copias limpias del paquete
+(`audit/fase-a-arranque.md`, `fase-b-generadores.md`, `fase-c-webdemo.md`) y una
+cuarta corrida generó la cadena completa con un proyecto de prueba
+(`tmp/sandbox_f`). Lo que se rompía y se cerró:
+
+| Hallazgo | Cierre |
+|---|---|
+| `gen_dossier` moría con `NameError: qn` y después con `KeyError` a media maquetación | imports completos + `_faltantes()` que avisa el esquema antes de escribir |
+| `gen_budget` exigía la clave `text`, que `gen_palette.py` nunca escribe | acepta `text`/`text_main`/`text_body` |
+| el presupuesto comparaba C$ con USD 1:1 cuando faltaba la tasa | avisa que falta `exchange_rate_bcn` y no convierte |
+| el pautado llevaba `{SEC_PROBLEMA}` visible y el validador lo aprobaba | sin marcadores, `[PENDIENTE]` con instrucción, validador se niega |
+| canvas y guion traían el modelo de negocio y el vocabulario de Rally Studio | `[PENDIENTE]` o texto del brief |
+| seis generadores con hex de Rally Studio escrito a mano | leen `brand/palette.json` |
+| `gen_pagina_diseno` escribía una persona inventada y no usaba la paleta | `mem: []` + `tokens.css` enlazado |
+| `iniciar_rally.ps1` salía con 0 si el puerto estaba ocupado | `exit 1` |
+| el paquete viajaba con 61 secciones y 272 eventos de otro proyecto | `sections.db` y `nube.db` vaciados |
+| `gen_storyboard_visual` reventaba con el shotlist de `gen_script` | `.get()` + normalización del acto |
+| el sitio cortaba la promesa y su tabla de costos no mostraba dinero | descripción de una línea + `unit_cost_nio`/`usd` |
+| `gen_voice` leía los `[PENDIENTE]` en voz alta | compuerta: no sintetiza con marcadores |
+| `verificar_fases` daba la fase 00 por imposible | el certamen confirmado en el panel cuenta como etapa |
 
 ### Qué NO hacer
 - No crear un segundo `DESIGN.md` ni una segunda paleta: `DESIGN.md` es capa producto (fija); la
