@@ -38,18 +38,24 @@ Opciones del motor: `--reto DESAFIO_01`, `--propuestas N`, `--categoria social`
 
 ## Qué contiene cada reto del dossier
 
-Tres páginas, sin portada ni índice:
+Tres páginas, sin portada ni índice, y ninguna se parte a la mitad:
 
-1. Cabecera con número de reto, título, categoría, descripción, 3 ODS con la **figura oficial
-   de la ONU**, 2 o 3 insignias que aplican y la **Opción 01** completa.
-2. **Opción 02** (mecanismo distinto, no depende de la 01), 3 «Detalles que suman», cadena de
-   razonamiento y métricas agrupadas por opción.
-3. Señal que se repite en ganadores, precedentes por mecanismo con video, pitch de 60 segundos y
-   bloque de COMENTARIOS con líneas regladas.
+1. **La hoja del reto**: número, título, categoría en palabras, la descripción del comité en
+   cuerpo de lectura, 3 ODS con la **figura oficial de la ONU** y 2 o 3 insignias que aplican.
+   Nada más: la hoja se lee como una ficha, no como un formulario.
+2. **Las dos soluciones**, separadas y de la misma jerarquía: **Opción 01** y **Opción 02** con
+   mecanismo distinto, cada una con su «Cómo funciona» en cuatro pasos y su párrafo «En la
+   práctica». Cierra la señal que se repite en los ganadores.
+3. **Precedentes por mecanismo** con link de video, pitch de 60 segundos y bloque de COMENTARIOS
+   con líneas regladas.
 
 Cada solución lleva: nombre, claim, qué es, cómo funciona (4 pasos), beneficiario, componentes,
-costo estimado, métricas y un párrafo **«En la práctica»** con quién la opera, quién paga y
-cuánto gana, de dónde salen los insumos y qué esfuerzo exige arrancar.
+costo estimado y un párrafo **«En la práctica»** con quién la opera, quién paga y cuánto gana, de
+dónde salen los insumos y qué esfuerzo exige arrancar.
+
+`detalles` es opcional: si sus valores llegan vacíos, la sección «Detalles que suman» no se
+imprime. Las métricas del prototipo y la cadena de razonamiento son material de trabajo del
+equipo: **no se imprimen** en el PDF, el Word ni el Excel.
 
 ## Reglas
 

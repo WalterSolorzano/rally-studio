@@ -182,9 +182,13 @@ def main():
                     "--certamen", certamen, "--json", "docs/_build/soluciones.json",
                 ], check=True)
                 subprocess.run([
-                    sys.executable, "scripts/gen_soluciones_pdf.py",
-                    "--json", "docs/_build/soluciones.json",
-                    "--out", f"docs/Dossier_Soluciones_{certamen}.pdf",
+                    sys.executable, "scripts/dossier_desde_motor.py", "--extra",
+                    "research/dossier_extra.json",
+                ], check=True)
+                subprocess.run([
+                    sys.executable, "scripts/gen_dossier.py",
+                    "--json", "research/dossier_fichas.json",
+                    "--pdf", f"docs/Dossier_Soluciones_{certamen}.pdf",
                 ], check=True)
     else:
         print("WARN: No se detectaron desafíos estructurados.")

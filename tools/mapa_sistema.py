@@ -57,7 +57,7 @@ ENTREGABLES = [
     ("assets/voice/narration.mp4", "locucion <=120 s", "scripts/gen_voice.py", "etapa voz"),
     ("video final", "YouTube con URL en brief.json", "editor + arsenal.py check-duracion", "tab timeline"),
     ("site/ publicado", "web demo", "scripts/publish_site.py", "tab webdemo"),
-    ("dossier (PDF/Word/Excel)", "soluciones sustentadas", "scripts/gen_dossier.py, gen_soluciones_pdf.py",
+    ("dossier (PDF/Word/Excel)", "soluciones sustentadas", "scripts/gen_dossier.py",
      "skills/dossier-soluciones"),
     ("knowledge/INDICE.md", "mapa del corpus", "scripts/gen_indice.py", "documento"),
 ]

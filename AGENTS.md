@@ -258,15 +258,16 @@ Cada skill `skills/<nombre>/SKILL.md` incluye ahora estos bloques adicionales, p
 | ffmpeg | Edición y exportación de video | Última etapa |
 | `scripts/herramientas.py` | Caja de herramientas externa bajo demanda | Solo cuando la tarea dispara una |
 | `scripts/soluciones_motor.py` | Soluciones para los retos que da el usuario | Cuando ya existen retos y piden propuestas |
-| `scripts/gen_soluciones_pdf.py` | Dossier PDF de soluciones | Después de generar el JSON |
+| `scripts/gen_dossier.py` | Dossier de soluciones en PDF, Word y Excel | Después de curar el JSON de contenido |
 
 ### Motor de soluciones
 
 Detalle: `docs/MOTOR_SOLUCIONES.md`.
 
 - Los retos los da el usuario o el comité. El sistema **no crea retos**: propone soluciones.
-- Cadena obligatoria: problema → causa raíz → insight → solución → métrica, con precedente
-  (año, equipo, proyecto) o etiqueta `exploratoria`.
+- Cadena de razonamiento obligatoria: problema → causa raíz → insight → solución → métrica, con
+  precedente (año, equipo, proyecto) o etiqueta `exploratoria`. Se razona para descartar y
+  afinar; **no se imprime** en el PDF, el Word ni el Excel.
 - Nunca mostrar estadísticas internas (saturación, score, probabilidad de victoria):
   el dossier solo usa datos de impacto con fuente para vender la idea.
 - Si `research/challenges.json` está vacío: `python scripts/soluciones_motor.py --importar-brain`.

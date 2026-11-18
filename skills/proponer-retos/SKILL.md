@@ -84,10 +84,10 @@ El detalle del goal y el sistema de razonamiento forzado están en `references/g
    tecnologías: solo las de una fuente abrible.
 8. **Devuelve las fichas en el chat** (formato `references/ficha-y-cascada.md` §2). No
    maquetes el PDF: el equipo revisa y selecciona primero.
-9. **Si el equipo selecciona opciones**: genera el PDF solo con las seleccionadas:
+9. **Si el equipo selecciona opciones**: el dossier final lo arma `dossier-soluciones`:
    ```bash
-   python scripts/gen_soluciones_pdf.py --json docs/_build/soluciones_seleccionadas.json \
-     --out docs/Dossier_Soluciones_<certamen>.pdf
+   python scripts/dossier_desde_motor.py --extra research/dossier_extra.json
+   python scripts/gen_dossier.py --json research/dossier_fichas.json --pdf docs/Dossier_Soluciones.pdf
    ```
    Entrega la ruta; no pegues el JSON crudo en el chat.
    **Rechazo total del PDF** → ley de `dossier-soluciones/SKILL.md` «Ley de rechazo total»:

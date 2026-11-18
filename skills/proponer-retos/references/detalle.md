@@ -1,6 +1,6 @@
 ## 9. Punteros
 
-- Motor: `scripts/soluciones_motor.py` · PDF: `scripts/gen_soluciones_pdf.py` + `docs/assets/soluciones.css`
+- Motor: `scripts/soluciones_motor.py` · PDF: `scripts/gen_dossier.py` + `docs/assets/dossier.css`
 - Casos: `knowledge/retos_razonamiento.json` · Erratas: `knowledge/ERRATAS.md` · Ganadores: `research/sirli/winners.jsonl`
 - Doctrina completa: `skills/dossier-soluciones/SKILL.md`
 - **Goal maestro**: `references/goal.md` · **Detector anti-genérico**: `references/anti-generico.md`

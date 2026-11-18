@@ -290,6 +290,7 @@ def _docx_api(doc):
 
 def _docx_reto(doc, api, r):
     """Escribe un reto completo en el DOCX."""
+    from docx.enum.table import WD_TABLE_ALIGNMENT
     from docx.enum.text import WD_ALIGN_PARAGRAPH
     from docx.oxml import OxmlElement
     from docx.oxml.ns import qn
@@ -386,34 +387,18 @@ def _docx_reto(doc, api, r):
     solucion(r["propuesta"], "Opción 01", r["realidad"]["a"])
     solucion(r["alterna"], "Opción 02", r["realidad"]["b"], grande=False)
 
-    rotulo("Detalles que suman")
-    for k, t in r["detalles"]:
-        par = doc.add_paragraph(style="List Bullet")
-        par.paragraph_format.space_after = Pt(2)
-        rk = par.add_run(f"{k}: ")
-        rk.bold = True
-        rk.font.size = Pt(9.5)
-        rk.font.color.rgb = azul
-        rt = par.add_run(t)
-        rt.font.size = Pt(9.5)
-
-    rotulo("Cadena de razonamiento")
-    tabla_dos([
-        ("Problema", r["cadena"]["problema"]),
-        ("Causa raíz", r["cadena"]["causa_raiz"]),
-        ("Insight", r["cadena"]["insight"]),
-        ("Solución", r["cadena"]["solucion"]),
-        ("Métrica", r["cadena"]["metrica"]),
-    ])
-
-    rotulo("Métricas para demostrar en el prototipo")
-    for etiqueta, prop in [("Opción 01", r["propuesta"]), ("Opción 02", r["alterna"])]:
-        p(f"{etiqueta} · {prop['nombre']}", 8, True, color=azul, before=4, after=2)
-        for m in prop["metricas"]:
+    detalles = [(k, t) for k, t in r["detalles"] if str(t).strip()]
+    if detalles:
+        rotulo("Detalles que suman")
+        for k, t in detalles:
             par = doc.add_paragraph(style="List Bullet")
-            par.paragraph_format.space_after = Pt(1)
-            run = par.add_run(m)
-            run.font.size = Pt(9.5)
+            par.paragraph_format.space_after = Pt(2)
+            rk = par.add_run(f"{k}: ")
+            rk.bold = True
+            rk.font.size = Pt(9.5)
+            rk.font.color.rgb = azul
+            rt = par.add_run(t)
+            rt.font.size = Pt(9.5)
 
     rotulo("Señal que se repite en los ganadores")
     par = doc.add_paragraph()
@@ -697,18 +682,20 @@ def _xlsx_hoja(wb, r, api) -> None:
     h.row_dimensions[f].height = 62
     f += 2
 
-    f = seccion(h, f, "Detalles que suman")
-    for k, t in r["detalles"]:
-        a = h.cell(row=f, column=1, value=k)
-        a.font = key_font
-        a.alignment = wrap
-        h.merge_cells(start_row=f, start_column=2, end_row=f, end_column=4)
-        b = h.cell(row=f, column=2, value=t)
-        b.font = cuerpo
-        b.alignment = wrap
-        h.row_dimensions[f].height = 34
+    detalles = [(k, t) for k, t in r["detalles"] if str(t).strip()]
+    if detalles:
+        f = seccion(h, f, "Detalles que suman")
+        for k, t in detalles:
+            a = h.cell(row=f, column=1, value=k)
+            a.font = key_font
+            a.alignment = wrap
+            h.merge_cells(start_row=f, start_column=2, end_row=f, end_column=4)
+            b = h.cell(row=f, column=2, value=t)
+            b.font = cuerpo
+            b.alignment = wrap
+            h.row_dimensions[f].height = 34
+            f += 1
         f += 1
-    f += 1
 
     f = seccion(h, f, "ODS seleccionados y por qué")
     for cod, nom, why in r["ods"]:
@@ -740,33 +727,6 @@ def _xlsx_hoja(wb, r, api) -> None:
         b.alignment = wrap
         h.row_dimensions[f].height = 22
         f += 1
-    f += 1
-
-    f = seccion(h, f, "Cadena de razonamiento")
-    for clave, etiqueta in [("problema", "Problema"), ("causa_raiz", "Causa raíz"), ("insight", "Insight"), ("solucion", "Solución"), ("metrica", "Métrica")]:
-        a = h.cell(row=f, column=1, value=etiqueta)
-        a.font = key_font
-        a.alignment = wrap
-        h.merge_cells(start_row=f, start_column=2, end_row=f, end_column=4)
-        b = h.cell(row=f, column=2, value=r["cadena"][clave])
-        b.font = cuerpo
-        b.alignment = wrap
-        h.row_dimensions[f].height = 40
-        f += 1
-    f += 1
-
-    f = seccion(h, f, "Métricas para demostrar en el prototipo")
-    for etiqueta, prop in [("01", r["propuesta"]), ("02", r["alterna"])]:
-        h.merge_cells(start_row=f, start_column=1, end_row=f, end_column=4)
-        c = h.cell(row=f, column=1, value=f"Opción {etiqueta} · {prop['nombre']}")
-        c.font = key_font
-        f += 1
-        for m in prop["metricas"]:
-            h.merge_cells(start_row=f, start_column=1, end_row=f, end_column=4)
-            c = h.cell(row=f, column=1, value="•  " + m)
-            c.font = cuerpo
-            c.alignment = wrap
-            f += 1
     f += 1
 
     f = seccion(h, f, "Señal que se repite en los ganadores")
