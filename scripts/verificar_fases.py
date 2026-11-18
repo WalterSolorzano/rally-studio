@@ -55,10 +55,14 @@ TIMEOUT_COMPUERTA = 180
 # quien la audita y que hay que preguntar si el artefacto no existe.
 ETAPAS = [
     {
-        # El certamen cuenta solo cuando el humano lo confirmo en la bitacora:
-        # brief.json trae un rally_type heredado que no es una decision.
+        # El certamen lo confirma el humano en la pestana `certamen`, y esa
+        # eleccion llega a brief.json por el espejo de estado (rally_type y
+        # hours_total). Antes solo contaba una linea escrita a mano en la
+        # bitacora: ningun boton la creaba, asi que la fase 00 no podia pasar
+        # nunca y toda etapa posterior salia como "etapa saltada".
         "id": "00", "nombre": "certamen", "prev": [],
         "campo": None, "archivo": None, "solo_bitacora": True,
+        "panel_evidencia": ("rally_type", "hours_total"),
         "construye": "profe", "audita": "humano",
         "pregunta": ["Que certamen corre: nacional (24 h) o latam (28 h)?"],
     },
@@ -189,8 +193,12 @@ def _carpeta_con_assets(carpeta: pathlib.Path) -> bool:
 
 def existe(etapa: dict, brief: dict, bitacora: dict) -> bool:
     """Una etapa existe si su campo del brief esta lleno o su artefacto vivo tiene contenido."""
+    if etapa["id"] in bitacora:
+        return True
+    if etapa.get("panel_evidencia"):
+        return all(CAMPOS_LLENOS(brief.get(c)) for c in etapa["panel_evidencia"])
     if etapa.get("solo_bitacora"):
-        return etapa["id"] in bitacora
+        return False
     if etapa["campo"] and CAMPOS_LLENOS(brief.get(etapa["campo"])):
         return True
     destino = etapa["archivo"]
@@ -368,6 +376,10 @@ def main() -> int:
             continue
         fila = bitacora.get(e["id"])
         if not fila:
+            if e.get("panel_evidencia"):
+                # El certamen se confirma en la pestana, no en la bitacora: la
+                # fase 00 queda registrada por la eleccion del panel.
+                continue
             fail("sin bitacora: etapa %s %s no dejo linea" % (e["id"], e["nombre"]))
             continue
         vacios = [k for k, v in fila.items() if not v]
