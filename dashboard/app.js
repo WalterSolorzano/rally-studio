@@ -787,6 +787,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initClock();
   syncUI();
   avisoModoCopia();
+  hidratarRetosDelComite();
 });
 
 // Copia estática del dashboard (GitHub Pages, Netlify, archivo local): el
@@ -819,6 +820,41 @@ function avisoModoCopia() {
     '<button type="button" style="background:transparent;border:1px solid #c8a15a;color:#f4e9d8;border-radius:6px;padding:4px 10px;font:inherit;cursor:pointer">Entendido</button>';
   bar.querySelector("button").addEventListener("click", () => bar.remove());
   document.body.appendChild(bar);
+}
+
+// Los retos del comité viven en `research/challenges.json`, que deja ahí el
+// ingest. La ventana los lee de ese archivo la primera vez: si el equipo ya
+// tiene retos en su estado, no se toca nada.
+async function hidratarRetosDelComite() {
+  if (state.challenges_hydrated) return;
+  if (Array.isArray(state.challenges) && state.challenges.length) return;
+  if (enModoCopia()) return;
+  // El servidor manda: si la primera sincronización trae los retos del equipo,
+  // hay que dejar que los aplique antes de escribir los del corpus.
+  const sync = window.RallySectionSync;
+  if (sync && typeof sync.status === "function") {
+    for (let i = 0; i < 40 && !sync.status().ready; i++) {
+      await new Promise(r => setTimeout(r, 250));
+    }
+  }
+  if (Array.isArray(state.challenges) && state.challenges.length) return;
+  try {
+    const r = await fetch("research/challenges.json", { cache: "no-store" });
+    if (!r.ok) return;
+    const lista = await r.json();
+    const retos = (Array.isArray(lista) ? lista : []).filter(c => c && c.id && c.title);
+    if (!retos.length) return;
+    if (Array.isArray(state.challenges) && state.challenges.length) return;
+    state.challenges = retos;
+    state.challenges_hydrated = true;
+    if (!state.active_deliberation_challenge_id) {
+      state.active_deliberation_challenge_id = retos[0].id;
+    }
+    saveState();
+    renderTab(activeTab);
+  } catch (e) {
+    // Sin corpus en disco la pestaña sigue pidiendo los retos; no es un fallo.
+  }
 }
 
 function syncUI() {
@@ -1197,7 +1233,7 @@ function preparePrintDossierHTML() {
         <span class="print-badge ${state.solution_approved ? 'print-badge-green' : 'print-badge-blue'}">${state.solution_approved ? 'APROBADO POR EL EQUIPO' : 'SOLUCIÓN CALIBRADA'}</span>
       </div>
       <div class="print-meta-grid" style="margin-bottom:8px;">
-        <div style="grid-column:1/-1;"><strong>Pitch de Solución (Comprensible en 15 segundos):</strong> ${state.solution_simple || 'Sistema integral de monitoreo y alerta temprana de bajo costo operando con energía solar y radiofrecuencia comunitaria.'}</div>
+        <div style="grid-column:1/-1;"><strong>Cómo se le explica a un asesor:</strong> ${state.solution_simple || 'Sin explicación todavía.'}</div>
         <div><strong>Potenciadores Tecnológicos Activos:</strong> ${(state.solution_boosters || ['ods', 'sensors']).join(' · ').toUpperCase()}</div>
         <div><strong>Estado de Propiedad Intelectual:</strong> ${claimsList.length} Fuentes Técnicas Verificadas</div>
       </div>
@@ -6291,8 +6327,8 @@ function renderViewSolution() {
       <textarea id="sol-thesis" class="sol-input" rows="3" placeholder="Tesis estructurada…"
         oninput="updateSolutionFieldLive('thesis', this.value)">${escapeHtml(state.solution_thesis || "")}</textarea>
 
-      <label class="sol-label" for="sol-simple" style="margin-top:18px;">Pitch de cinco segundos</label>
-      <p class="sol-hint">Para el jurado que no es ingeniero.</p>
+      <label class="sol-label" for="sol-simple" style="margin-top:18px;">Cómo se lo explicas a un asesor</label>
+      <p class="sol-hint">Sin tecnicismos: qué es, qué problema resuelve y qué cambia. Se lee en voz alta en una conversación.</p>
       <textarea id="sol-simple" class="sol-input" rows="2" placeholder="Explicación accesible…"
         oninput="updateSolutionFieldLive('simple', this.value)">${escapeHtml(state.solution_simple || "")}</textarea>
     </section>
@@ -6307,8 +6343,8 @@ function renderViewSolution() {
     <section class="sol-sec">
       <span class="sol-label">Tesis técnica</span>
       <div class="sol-input" style="white-space:pre-wrap;">${escapeHtml(state.solution_thesis || "Sin tesis todavía.")}</div>
-      <span class="sol-label" style="margin-top:18px; display:block;">Pitch de cinco segundos</span>
-      <div class="sol-input" style="white-space:pre-wrap;">${escapeHtml(state.solution_simple || "Sin pitch todavía.")}</div>
+      <span class="sol-label" style="margin-top:18px; display:block;">Cómo se lo explicas a un asesor</span>
+      <div class="sol-input" style="white-space:pre-wrap;">${escapeHtml(state.solution_simple || "Sin explicación todavía.")}</div>
       <p class="sol-hint" style="margin-top:10px;">Proyecto: <strong>${escapeHtml(state.project_name || "sin nombre")}</strong></p>
     </section>
     `}
@@ -8568,7 +8604,7 @@ function panelPendingItems(tabId) {
   } else if (tabId === "solution") {
     add(t(state.solution_raw_input), "La idea con tus palabras");
     add(t(state.solution_thesis), "La tesis técnica");
-    add(t(state.solution_simple), "El pitch de cinco segundos");
+    add(t(state.solution_simple), "Cómo se lo explicas a un asesor");
     add(t(state.project_name), "El nombre del proyecto");
     add(state.solution_approved, "Aprobarla para desbloquear lo que sigue");
   } else if (tabId === "impact") {

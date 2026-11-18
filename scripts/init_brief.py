@@ -25,7 +25,7 @@ def ensure_env_file() -> bool:
 QUESTIONS = [
     ("rally_type",          "¿Nacional (24h) o Latam (28h)? [nacional/latam]",      ["nacional", "latam"]),
     ("hours_total",         "¿Cuántas horas quedan desde ahora? (número):",          None),
-    ("category",            "Categoría:\n  Nacional → tecnologica / social / procesos\n  Latam   → innovacion / impacto\n  Tu respuesta:", None),
+    ("category",            "Categoría:\n  Nacional: tecnologica / social / procesos\n  Latam:    innovacion / impacto\n  Tu respuesta:", None),
     ("challenge_id",        "ID del desafío elegido (ej. 03):",                      None),
     ("challenge_title",     "Título completo del desafío:",                           None),
     ("project_name",        "Nombre comercial del proyecto:",                         None),
@@ -55,20 +55,20 @@ def ask(key: str, question: str, options: list | None) -> str:
         print(f"\n  {question}")
         if options:
             print(f"  [{'/'.join(options)}]")
-        val = input("  → ").strip()
+        val = input("  > ").strip()
         if not val and key not in ("national_plan_axis",):
-            print("  ⚠ Campo obligatorio. Vuelve a intentar.")
+            print("  [!] Campo obligatorio. Vuelve a intentar.")
             continue
         if options and val.lower() not in options:
-            print(f"  ⚠ Opciones válidas: {options}")
+            print(f"  [!] Opciones válidas: {options}")
             continue
         return val
 
 
 def main():
-    print("\n" + "═" * 55)
-    print("  🚀  RALLY STUDIO — Entrevista Inicial")
-    print("═" * 55)
+    print("\n" + "=" * 55)
+    print("  RALLY STUDIO — Entrevista Inicial")
+    print("=" * 55)
     print("  Responde cada pregunta. Sin brief completo,")
     print("  ningún generador arranca.\n")
 
@@ -84,7 +84,7 @@ def main():
             try:
                 val = float(val)
             except ValueError:
-                print(f"  ⚠ Se esperaba un número para '{key}'. Usando 0.")
+                print(f"  [!] Se esperaba un número para '{key}'. Usando 0.")
                 val = 0.0
         elif key in LIST_KEYS:
             val = [x.strip() for x in val.split(",") if x.strip()]
@@ -101,9 +101,9 @@ def main():
         json.dumps(brief, ensure_ascii=False, indent=2),
         encoding="utf-8",
     )
-    print(f"\n  ✅ brief.json guardado en {BRIEF_PATH.resolve()}")
+    print(f"\n  [ok] brief.json guardado en {BRIEF_PATH.resolve()}")
     if ensure_env_file():
-        print("  ✅ env.json creado desde env.example.json (edita hardware si aplica).")
+        print("  [ok] env.json creado desde env.example.json (edita hardware si aplica).")
     print("  Siguiente paso:")
     print("    python scripts/validate_brief.py")
     print("    python scripts/gen_readme.py")
