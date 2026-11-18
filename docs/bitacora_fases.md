@@ -78,6 +78,7 @@ prueban el mecanismo antes de que exista un proyecto, y porque cada una dejó in
 | 2026-11-18 | Medición en navegador real: piso de lectura móvil, caché de la hoja y verificador de fases | profe | navegador (Chrome, instancia limpia) | `audit/g3-390.png`, `audit/g3-1440.png` |
 | 2026-11-18 | Recorrido de pestañas a 1440 y 390, y arsenal sobre artefactos reales | profe | navegador + `arsenal.py` en copia con proyecto de prueba | `audit/tab-*.png`, `audit/informe-auditoria-exhaustiva.md` |
 | 2026-11-18 | Las trece pestañas medidas con proyecto de prueba; botón de retos sin `onclick` corregido | profe | navegador (Chrome, instancia limpia) | `audit/tab-*-{1440,390}.png` |
+| 2026-11-18 | Flujo con reto real en copia aislada: coherencia de cifras y pautado sin marcadores | profe | profe (fixture `rallysistem_lab/auditoria/`) | `rallysistem_lab/auditoria/fixture/final/` |
 
 Lo que encontró la prueba de novato y cómo se cerró:
 
@@ -92,6 +93,11 @@ Lo que encontró la prueba de novato y cómo se cerró:
   exige una descripción de ≥6 palabras por fila («sensor» solo no pasa); `requirements.txt`
   separa el núcleo de cinco paquetes de lo opcional —`playwright`, `soundfile`, `pdfplumber`—
   que antes se instalaban siempre y bajaban cientos de MB.
+- **Corregido en copia aislada** (`rallysistem_lab/auditoria/`): `check-coherencia` ya no cuenta
+  códigos de ODS, ids de reto, segundos de acto, cifras con fuente en `research/claims.json` ni
+  partidas con URL de `budget/budget.json` como contradicciones del pitch; y `gen_pautado.py`
+  acepta `impact_detail` y `prefactibilidad_detail`, para que el usuario redacte esas dos
+  secciones en lugar de quedarse con el ODS suelto y el total del presupuesto.
 
 Regla de la revisión: la hace alguien distinto de quien construyó, y su veredicto puede ser
 FALLA. La del 18 de noviembre encontró un candado huérfano en `publicar_seccion.py` que

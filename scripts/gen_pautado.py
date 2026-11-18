@@ -111,13 +111,23 @@ def create_default_document(brief, claims):
                         "[PENDIENTE] Falta decir que hace esto que no haga ya la alternativa "
                         "convencional, y por que aqui si funciona.")
     ods_texto = ", ".join(str(o) for o in (brief.get("ods_ids") or [])) or "[PENDIENTE] Elegir los ODS"
+    # El usuario escribe su impacto y su prefactibilidad; sin eso el campo se queda
+    # en el ODS suelto y en la cifra del presupuesto, que no explica nada.
+    impacto_texto = f"ODS a los que responde: {ods_texto}."
+    detalle_impacto = (brief.get("impact_detail") or "").strip()
+    if detalle_impacto:
+        impacto_texto = f"{impacto_texto} {detalle_impacto}"
+    prefactibilidad_texto = f"Costo estimado de implementacion inicial: {cost_str}."
+    detalle_prefactibilidad = (brief.get("prefactibilidad_detail") or "").strip()
+    if detalle_prefactibilidad:
+        prefactibilidad_texto = f"{prefactibilidad_texto} {detalle_prefactibilidad}"
 
     sections = [
         ("PROBLEMA", 1250, (stats_text + " " + falta_cifra).strip()),
         ("SOLUCION", 1250, (solution_text + " " + falta_solucion).strip()),
-        ("PREFACTIBILIDAD", 1500, f"Costo estimado de implementacion inicial: {cost_str}."),
+        ("PREFACTIBILIDAD", 1500, prefactibilidad_texto),
         ("INNOVACION", 1000, ((brief.get("innovation_detail") or "") + " " + falta_innovacion).strip()),
-        ("IMPACTO", 1000, f"ODS a los que responde: {ods_texto}."),
+        ("IMPACTO", 1000, impacto_texto),
     ]
 
     sin_tope = (brief.get("rally_type") or "latam").strip().lower() != "latam"

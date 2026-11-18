@@ -195,8 +195,40 @@ def _cifras_de_claims(ruta: pathlib.Path | None = None) -> set[str]:
     return cifras
 
 
+def _cifras_de_presupuesto(ruta: pathlib.Path | None = None) -> set[str]:
+    """Cifras de budget/budget.json: las partidas y su total, con precio y URL.
+
+    El pautado declara el costo de implementación y el guion de 120 s no lo dice:
+    eso es reparto de espacio, no una cifra inventada.
+    """
+    ruta = ruta or pathlib.Path("budget/budget.json")
+    if not ruta.exists():
+        return set()
+    try:
+        partidas = json.loads(ruta.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return set()
+    cifras: set[str] = set()
+    total = 0.0
+    for partida in partidas if isinstance(partidas, list) else []:
+        if not isinstance(partida, dict):
+            continue
+        costo = partida.get("unit_cost_usd", partida.get("unit_cost_nio", partida.get("unit_cost")))
+        try:
+            unidades = float(partida.get("units") or 1)
+            costo = float(costo)
+        except (TypeError, ValueError):
+            continue
+        total += unidades * costo
+        cifras |= set(desde_texto(str(costo)))
+        cifras |= set(desde_texto(f"{unidades:g}"))
+    if total:
+        cifras |= set(desde_texto(str(round(total))))
+    return cifras
+
+
 def comparar(fuentes: dict[str, dict[str, dict]], ignorar: set[str] | None = None) -> list[dict]:
-    ignorar = (ignorar or set()) | _cifras_de_claims()
+    ignorar = (ignorar or set()) | _cifras_de_claims() | _cifras_de_presupuesto()
     nombres = list(fuentes)
     if len(nombres) < 2:
         return []

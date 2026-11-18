@@ -101,6 +101,19 @@ def test_coherencia_ignora_cifras_con_fuente_en_claims(monkeypatch):
     assert coherencia.comparar({"guion": a, "pautado": b}) == []
 
 
+def test_coherencia_ignora_cifras_de_la_partida_del_presupuesto(monkeypatch):
+    monkeypatch.setattr(coherencia, "_cifras_de_claims", lambda ruta=None: set())
+    monkeypatch.setattr(
+        coherencia,
+        "_cifras_de_presupuesto",
+        lambda ruta=None: set(coherencia.desde_texto("2210 25")),
+    )
+    a = coherencia.desde_texto("Costo total 2,210 USD y 25 puntos de medicion.")
+    b = coherencia.desde_texto("Cubre 56 viviendas.")
+    hallazgos = coherencia.comparar({"pautado": a, "guion": b})
+    assert not [h for h in hallazgos if h["numero"] in ("2210", "25")]
+
+
 def _docx_con_marcadores(ruta: pathlib.Path, impacto_chars: int = 10):
     import docx
 
