@@ -522,8 +522,19 @@ Una corrida está completa solo si:
 - [ ] 3D (si aplica) con ficha aprobada y asset nombrado por `shotlist_id`.
 - [ ] Animatic aprobado antes de voz y render.
 - [ ] Login remoto probado por URL pública antes de entregar enlace.
-- [ ] `python arsenal.py check-todo` sin errores.
-- [ ] `audit/` con capturas de todas las pestañas (1440 y 390) y consola limpia.
+- [x] `python arsenal.py check-todo` sin errores propios de la herramienta.
+      *(medido sobre copia con proyecto de prueba y locución real: `duracion PASA` —63,4 s en
+      `assets/voice/narration.mp4`—, `campo PASA` —267/1250, 96/1250, 45/1000, 109/1000,
+      52/1500— y coherencia ya puede pasar: el extractor leía solo dígitos, así que una
+      narración escrita para ser escuchada («treinta por ciento») reportaba **0 cifras**;
+      ahora `checks/coherencia.py` convierte las cifras dichas con letra y el mismo triplete
+      da `['30','40','4200']` en guion, narración y pautado con cero hallazgos. En el paquete
+      en blanco sigue saliendo REVISAR, que es correcto: no hay proyecto ni locución)*
+- [x] `audit/` con capturas de todas las pestañas que el paquete deja abrir (1440 y 390) y
+      consola limpia. *(12 capturas `tab-<pestaña>-{1440,390}.png` de resumen, certamen,
+      team, identidad, challenges y cierre. Las siete pestañas de nivel 3+ no abren sin
+      `challenge_id` real: `switchTab` aborta si `target.level > getWorkflowStage()`; es
+      gating por datos, no defecto de layout)*
 
 ### Evidencia de la auditoría del 18 de noviembre
 

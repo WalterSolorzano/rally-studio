@@ -32,6 +32,37 @@ _ESTRUCTURAL = re.compile(
 _HORA = re.compile(r"\b\d{1,2}:\d{2}(?::\d{2})?\b")
 _MARCADOR = re.compile(r"\{/?SEC_[A-Z_]+\}", re.IGNORECASE)
 
+# Un guion se escribe para ser escuchado, asi que sus cifras van con letra
+# ("treinta por ciento", "cuarenta motores"). Si solo se miran digitos, una
+# narracion correcta reporta cero cifras y la coherencia nunca puede pasar.
+_HABLADO = {
+    "dos": 2, "tres": 3, "cuatro": 4, "cinco": 5, "seis": 6, "siete": 7,
+    "ocho": 8, "nueve": 9, "diez": 10, "once": 11, "doce": 12, "trece": 13,
+    "catorce": 14, "quince": 15, "dieciseis": 16, "dieciséis": 16,
+    "diecisiete": 17, "dieciocho": 18, "diecinueve": 19, "veinte": 20,
+    "veintena": 20, "treinta": 30, "cuarenta": 40, "cincuenta": 50,
+    "sesenta": 60, "setenta": 70, "ochenta": 80, "noventa": 90,
+    "cien": 100, "ciento": 100, "docena": 12, "mil": 1000,
+}
+_NUMERO_HABLADO = re.compile(
+    r"\b(" + "|".join(sorted(_HABLADO, key=len, reverse=True)) + r")\b",
+    re.IGNORECASE,
+)
+_POR_CIENTO = re.compile(r"\b(\d+)\s+por\s+ciento\b", re.IGNORECASE)
+_POR_CIENTO_HABLADO = re.compile(
+    r"\b(" + "|".join(sorted(_HABLADO, key=len, reverse=True)) + r")\s+por\s+ciento\b",
+    re.IGNORECASE,
+)
+
+
+def _cifras_habladas(texto: str) -> str:
+    """Pasa a digitos las cifras dichas con letra, sin tocar el resto del texto."""
+    texto = _POR_CIENTO_HABLADO.sub(
+        lambda m: " %d %%" % _HABLADO[m.group(1).lower()], texto
+    )
+    texto = _NUMERO_HABLADO.sub(lambda m: " %d " % _HABLADO[m.group(1).lower()], texto)
+    return _POR_CIENTO.sub(r"\1 %", texto)
+
 
 def _normalizar_token(token: str) -> str:
     """Convierte 1,250 / 1.250 / 1 250 / 1250.00 a una forma canonica."""
@@ -74,6 +105,7 @@ def extraer(texto: str) -> dict[str, dict]:
     """Devuelve {numero_canonico: {significativo, moneda, porcentaje, muestras}}."""
     texto = _HORA.sub(" ", texto)
     texto = _MARCADOR.sub(" ", texto)
+    texto = _cifras_habladas(texto)
     encontrados: dict[str, dict] = {}
     for match in _TOKEN_RE.finditer(texto):
         token = match.group(0)
