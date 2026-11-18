@@ -71,7 +71,7 @@ def create_default_document(brief, claims):
     if _total:
         cost_str = (f"{_total:,.0f} C$" if _moneda == "C$" else f"${_total:,.0f} USD")
     else:
-        cost_str = "[PENDIENTE] Falta el costo de implementacion: sale de budget/budget.json"
+        cost_str = "[PENDIENTE] Falta el costo de implementación: sale de budget/budget.json"
     doc = docx.Document()
     # Margenes
     for section in doc.sections:
@@ -87,8 +87,8 @@ def create_default_document(brief, claims):
     p_meta = doc.add_paragraph()
     p_meta.add_run(f"Equipo: {brief.get('team_name','--')}\n").bold = True
     p_meta.add_run(f"Universidad / Sede: {brief.get('university','--')}\n")
-    p_meta.add_run(f"Ciudad Piloto: {brief.get('city','--')} | Categoria: {brief.get('category','--')}\n")
-    p_meta.add_run(f"Desafio #{brief.get('challenge_id','--')}: {brief.get('challenge_title','--')}\n")
+    p_meta.add_run(f"Ciudad Piloto: {brief.get('city','--')} | Categoría: {brief.get('category','--')}\n")
+    p_meta.add_run(f"Desafío #{brief.get('challenge_id','--')}: {brief.get('challenge_title','--')}\n")
     p_meta.add_run(f"Rally: {brief.get('rally_type','--').upper()}\n")
 
     doc.add_paragraph("─" * 45)
@@ -97,7 +97,7 @@ def create_default_document(brief, claims):
     # Sin cifras declaradas no se inventa una: se pide la que falta. Un jurado
     # que pregunta por la fuente no acepta "segun registros oficiales".
     falta_cifra = ("" if stats_text else
-                   "[PENDIENTE] Falta la cifra con fuente: que dato, de que ano y de que "
+                   "[PENDIENTE] Falta la cifra con fuente: qué dato, de qué año y de qué "
                    "organismo. Sale de research/claims.json.")
     try:
         solution_text = (brief.get("solution_detail") or brief.get("solution")
@@ -105,11 +105,11 @@ def create_default_document(brief, claims):
     except AttributeError:
         solution_text = ""
     falta_solucion = ("" if solution_text.strip() else
-                      "[PENDIENTE] Falta describir como funciona la solucion, paso por paso, "
-                      "y quien la opera.")
+                      "[PENDIENTE] Falta describir cómo funciona la solución, paso por paso, "
+                      "y quién la opera.")
     falta_innovacion = ("" if (brief.get("innovation_detail") or "").strip() else
-                        "[PENDIENTE] Falta decir que hace esto que no haga ya la alternativa "
-                        "convencional, y por que aqui si funciona.")
+                        "[PENDIENTE] Falta decir qué hace esto que no haga ya la alternativa "
+                        "convencional, y por qué aquí sí funciona.")
     ods_texto = ", ".join(str(o) for o in (brief.get("ods_ids") or [])) or "[PENDIENTE] Elegir los ODS"
     # El usuario escribe su impacto y su prefactibilidad; sin eso el campo se queda
     # en el ODS suelto y en la cifra del presupuesto, que no explica nada.
@@ -117,7 +117,7 @@ def create_default_document(brief, claims):
     detalle_impacto = (brief.get("impact_detail") or "").strip()
     if detalle_impacto:
         impacto_texto = f"{impacto_texto} {detalle_impacto}"
-    prefactibilidad_texto = f"Costo estimado de implementacion inicial: {cost_str}."
+    prefactibilidad_texto = f"Costo estimado de implementación inicial: {cost_str}."
     detalle_prefactibilidad = (brief.get("prefactibilidad_detail") or "").strip()
     if detalle_prefactibilidad:
         prefactibilidad_texto = f"{prefactibilidad_texto} {detalle_prefactibilidad}"
@@ -132,7 +132,7 @@ def create_default_document(brief, claims):
 
     sin_tope = (brief.get("rally_type") or "latam").strip().lower() != "latam"
     for sec_title, limit, content in sections:
-        tope = "sin limite de caracteres" if sin_tope else f"Limite: {limit} caracteres con espacios"
+        tope = "sin límite de caracteres" if sin_tope else f"Límite: {limit} caracteres con espacios"
         h = doc.add_heading(f"{sec_title} ({tope})", level=1)
         p = doc.add_paragraph(content)
 

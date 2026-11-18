@@ -79,6 +79,7 @@ prueban el mecanismo antes de que exista un proyecto, y porque cada una dejó in
 | 2026-11-18 | Recorrido de pestañas a 1440 y 390, y arsenal sobre artefactos reales | profe | navegador + `arsenal.py` en copia con proyecto de prueba | `audit/tab-*.png`, `audit/informe-auditoria-exhaustiva.md` |
 | 2026-11-18 | Las trece pestañas medidas con proyecto de prueba; botón de retos sin `onclick` corregido | profe | navegador (Chrome, instancia limpia) | `audit/tab-*-{1440,390}.png` |
 | 2026-11-18 | Flujo con reto real en copia aislada: coherencia de cifras y pautado sin marcadores | profe | profe (fixture `rallysistem_lab/auditoria/`) | `rallysistem_lab/auditoria/fixture/final/` |
+| 2026-11-18 | Barrido genérico de nombres demo y acentos reales en el pautado | profe | profe (`rallysistem_lab/auditoria/detector_hardcodes.py`) | `rallysistem_lab/auditoria/` |
 
 Lo que encontró la prueba de novato y cómo se cerró:
 
@@ -98,6 +99,14 @@ Lo que encontró la prueba de novato y cómo se cerró:
   partidas con URL de `budget/budget.json` como contradicciones del pitch; y `gen_pautado.py`
   acepta `impact_detail` y `prefactibilidad_detail`, para que el usuario redacte esas dos
   secciones en lugar de quedarse con el ODS suelto y el total del presupuesto.
+- **Barrido genérico** (`rallysistem_lab/auditoria/detector_hardcodes.py`): busca marcas con guion,
+  nombres de persona, municipios concretos y siglas de producto dentro de cadenas, en `scripts/`,
+  `checks/`, `dashboard/`, `plantillas/` y `site/`. De 73 hallazgos, la mayoría son precedentes de
+  ganadores y vocabulario del certamen; se limpiaron `gen_readme.py` (ciudad y país inventados en
+  la portada del README), `app.js` (ciudad piloto `Managua` por defecto y el campo de nombre con
+  tres marcas de ejemplo) y la copia suelta del teleprompter, que llevaba un guion de café con
+  «Doña Marta» y Jinotega. El pautado ya escribe acentos reales: «Límite», «Categoría», «Desafío»,
+  «implementación», «de qué año», «cómo funciona», «por qué aquí sí funciona».
 
 Regla de la revisión: la hace alguien distinto de quien construyó, y su veredicto puede ser
 FALLA. La del 18 de noviembre encontró un candado huérfano en `publicar_seccion.py` que

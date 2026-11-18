@@ -47,7 +47,8 @@ def main(argv=None):
     project = brief.get("project_name", "PROYECTO RALLY").upper()
     team = brief.get("team_name", "EQUIPO DE INNOVACION")
     university = brief.get("university", "Universidad Sede")
-    city = brief.get("city", "Managua")
+    city = (brief.get("city") or "").strip()
+    sede = f" ({city})" if city else ""
     rally = brief.get("rally_type", "nacional").upper()
     hours = brief.get("hours_total", 24)
     cat = brief.get("category", "General")
@@ -60,7 +61,7 @@ def main(argv=None):
     readme_content = f"""# {project} -- {team}
 
 > **Certamen:** Rally {rally} ({hours} horas continuas)  
-> **Sede / Universidad:** {university} ({city}, Nicaragua)  
+> **Sede / Universidad:** {university}{sede}  
 > **Categoria:** {cat.capitalize()} | **Desafio #{ch_id}:** {ch_title}  
 > **Alineacion Estrategica:** {ods} | **Eje Plan Nacional:** {axis}  
 > **Ultima sincronizacion:** {today_str} (generado automaticamente por Rally Studio)

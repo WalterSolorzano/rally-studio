@@ -1070,7 +1070,7 @@ function preparePrintDossierHTML() {
   const rallyTitle = `${rallyProfile().name} (${rallyProfile().hours} Horas)`;
   const teamName = state.team_name || "Equipo de Innovación";
   const uni = state.university || "la sede";
-  const city = state.city || "Managua, Nicaragua";
+  const city = state.city || "ciudad piloto";
   const projName = state.project_name || state.team_name || "PROYECTO DE INNOVACIÓN";
   const cat = state.category || "Innovación";
   const challengeId = state.challenge_id || (state.challenges && state.challenges[0] ? state.challenges[0].id : "");
@@ -6296,7 +6296,7 @@ function renderViewSolution() {
     <section class="sol-sec">
       <label class="sol-label" for="sol-proj-name">Nombre del proyecto</label>
       <p class="sol-hint">El que aparecerá en el pautado, el presupuesto y el video.</p>
-      <input type="text" id="sol-proj-name" class="sol-input" placeholder="Ej: AGRO-DRIVE, RE-PLAST, SOLARDIGNA"
+      <input type="text" id="sol-proj-name" class="sol-input" placeholder="Dos palabras, sin genéricos"
         value="${escapeHtml(state.project_name || "")}" oninput="updateProjectNameLive(this.value)">
     </section>
 
