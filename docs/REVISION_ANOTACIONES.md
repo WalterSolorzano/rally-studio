@@ -119,7 +119,7 @@ Verificado en navegador real (Playwright) a 1600 px y a 390 px. Cambios **sin co
 
 ## 15. Dossier de soluciones enlazado desde la UI
 
-- `scripts/gen_soluciones_pdf.py` genera `docs/Dossier_Soluciones_Actuales.pdf` (68 KB) a partir de `research/soluciones_actuales.json`.
+- `scripts/gen_dossier.py` genera `docs/Dossier_Soluciones.pdf` (PDF, Word y Excel) a partir de `research/soluciones_actuales.json`.
 - El botón «Dossier de soluciones» de la cabecera de Retos abre ese PDF, y cada reto tiene su propio enlace «Ver la ficha completa en el dossier →».
 - La matriz Word (.docx) que colgaba de esa cabecera se retiró: apuntaba a un archivo que no existe en el repo.
 
