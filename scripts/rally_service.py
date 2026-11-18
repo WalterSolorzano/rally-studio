@@ -25,6 +25,7 @@ import urllib.parse
 import urllib.request
 import urllib.error
 import shutil
+import csv
 import subprocess
 import threading
 import uuid
@@ -807,6 +808,7 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
         "/api/ai": "post_ai",
         "/api/ai/design": "post_ai_design",
         "/api/compile-docx": "post_compile_docx",
+        "/api/compile-guion-docx": "post_compile_guion_docx",
         "/api/template-upload": "post_template_upload",
         "/api/presence": "post_presence",
         "/api/sync/push": "post_sync_push",
@@ -992,6 +994,17 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
         try:
             data = json.loads(body)
             result = compile_pautado_docx(data)
+            self.send_json_response(200, result)
+        except Exception as e:
+            self.send_json_response(500, {"status": "error", "message": str(e)})
+
+    def post_compile_guion_docx(self, url):
+        if self.require_member(self.project_id(url.query), ("admin", "operator")) is None:
+            return
+        body = self.leer_cuerpo()
+        try:
+            data = json.loads(body)
+            result = compile_guion_docx(data)
             self.send_json_response(200, result)
         except Exception as e:
             self.send_json_response(500, {"status": "error", "message": str(e)})
@@ -2542,6 +2555,81 @@ def compile_pautado_docx(data):
         "filled_sections": filled,
         "counts": counts,
         "warnings": warnings,
+        "size": out_path.stat().st_size,
+        "timestamp": int(time.time()),
+    }
+
+GUION_ORDER = ["acto1", "acto2", "acto3", "acto4"]
+GUION_WPM = 135
+
+
+def _guion_planos():
+    """Planos del plan de rodaje. Si no hay shotlist, la lista sale vacía."""
+    ruta = BASE_DIR / "script" / "shotlist.csv"
+    if not ruta.exists():
+        return []
+    try:
+        with ruta.open(encoding="utf-8-sig", newline="") as fh:
+            return [f for f in csv.DictReader(fh) if (f.get("id") or "").strip()]
+    except Exception:
+        return []
+
+
+def compile_guion_docx(data):
+    """El guion como documento del equipo: texto corrido y, si lo hay, plan de rodaje.
+
+    Los actos existen para medir el tiempo; el .docx no los impone como ley:
+    el jurado lee un texto seguido, igual que lo dirá en voz alta.
+    """
+    script = data.get("script") or {}
+    equipo = (data.get("team_name") or "EQUIPO").strip()
+    sede = (data.get("university") or "").strip()
+    proj = (data.get("project_name") or "").strip()
+    desafio = (data.get("challenge_title") or "").strip()
+
+    partes = [_norm_text(script.get(k) or "") for k in GUION_ORDER]
+    cuerpo = "\n\n".join(p for p in partes if p)
+    palabras = len(re.findall(r"[^\s]+", cuerpo))
+    segundos = palabras / GUION_WPM * 60 if palabras else 0.0
+
+    doc = docx.Document()
+    doc.add_heading(proj or "Guion del video", level=0)
+    linea = " | ".join(x for x in (equipo, sede, desafio) if x)
+    if linea:
+        doc.add_paragraph(linea)
+    if cuerpo:
+        for parrafo in cuerpo.split("\n\n"):
+            doc.add_paragraph(parrafo)
+        doc.add_paragraph(
+            f"{palabras} palabras, unos {segundos:.0f} s a {GUION_WPM} palabras por minuto."
+        )
+    else:
+        doc.add_paragraph("Sin texto todavía: escribe el guion en la ventana y vuelve a compilar.")
+
+    planos = _guion_planos()
+    if planos:
+        doc.add_heading("Plan de rodaje", level=1)
+        tabla = doc.add_table(rows=1, cols=5)
+        for celda, titulo in zip(
+            tabla.rows[0].cells, ("Plano", "Segundos", "Qué se ve", "Tipo", "Estado")
+        ):
+            celda.text = titulo
+        for f in planos:
+            celdas = tabla.add_row().cells
+            for celda, clave in zip(
+                celdas, ("id", "duration_s", "description", "asset_type", "status")
+            ):
+                celda.text = str(f.get(clave) or "")
+
+    out_path = DASHBOARD_DIR / "docs" / "guion_draft.docx"
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    doc.save(str(out_path))
+    return {
+        "status": "ok",
+        "file": "/docs/guion_draft.docx",
+        "words": palabras,
+        "seconds": round(segundos, 1),
+        "shots": len(planos),
         "size": out_path.stat().st_size,
         "timestamp": int(time.time()),
     }

@@ -1284,6 +1284,7 @@ function renderViewScript() {
           ${SVG.play || ""} Abrir teleprompter
         </a>
         <button class="btn-secondary" onclick="copyFullScript()" title="Copia el guion entero para pegarlo en otra IA o en el teleprompter">Copiar</button>
+        <button class="btn-secondary" id="btn-compile-guion" onclick="compileScriptDocx()" title="Compila el guion como documento Word, con el plan de rodaje">${SVG.download || ""} Word</button>
         <button class="btn-secondary" onclick="saveScript()">Guardar</button>
       </div>
     </div>
@@ -1333,6 +1334,34 @@ function copyFullScript() {
   navigator.clipboard.writeText(txt)
     .then(() => showToast("Guion completo copiado."))
     .catch(() => showToast("No se pudo copiar el guion."));
+}
+
+function compileScriptDocx() {
+  const btn = document.getElementById("btn-compile-guion");
+  if (btn) btn.disabled = true;
+  fetch("/api/compile-guion-docx", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      team_name: state.team_name || "EQUIPO",
+      university: state.university || "",
+      project_name: state.project_name || "",
+      challenge_title: state.challenge_title || "",
+      rally_type: state.rally_type || "latam",
+      script: state.script || {}
+    })
+  })
+    .then(r => r.json())
+    .then(res => {
+      if (res.status === "ok") {
+        showToast(`Guion compilado: ${res.words} palabras, ${res.seconds} s.`);
+        descargarArchivo(res.file, `Guion_${(state.project_name || "Rally").replace(/\s+/g, "_")}.docx`);
+      } else {
+        showToast("No se pudo compilar el guion: " + (res.message || "error del servicio"));
+      }
+    })
+    .catch(() => showToast("No hay servicio que compile: el guion sigue aquí, en la ventana."))
+    .finally(() => { if (btn) btn.disabled = false; });
 }
 
 function setScriptMode(mode) {
