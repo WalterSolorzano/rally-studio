@@ -586,6 +586,25 @@ function getCurrentCanvasPresetId() {
   return valid.includes(state.canvas_preset) ? state.canvas_preset : "sirli";
 }
 
+// Piel del tablero: cambia cómo se ve (fondo, filetes, placa del número), no el contenido.
+const CANVAS_STYLES = [
+  { id: "mesa", name: "Mesa de trabajo", note: "Tarjetas blancas sobre mesa gris, color en el borde superior." },
+  { id: "plano", name: "Tarjetas hundidas", note: "Sin filetes: cada fase se separa por fondo gris." },
+  { id: "solido", name: "Bloques de color", note: "Cada cuadrante con su tono de fondo, sin filetes." },
+  { id: "contraste", name: "Alto contraste", note: "Tablero oscuro para proyectar; texto claro." }
+];
+
+function getCanvasStyleId() {
+  const valid = CANVAS_STYLES.map(s => s.id);
+  return valid.includes(state.canvas_style) ? state.canvas_style : "mesa";
+}
+
+function canvasStyleChanged(val) {
+  state.canvas_style = val;
+  saveState();
+  renderTab("canvas");
+}
+
 // Mega-prompt: arma el contexto completo (brief + reto + solución + presupuesto + formato)
 // para que otra IA haga su propuesta de canvas y el equipo la compare aquí.
 function buildCanvasExternalPrompt() {
@@ -672,17 +691,22 @@ function canvasPresetChanged(val) {
   renderTab("canvas");
 }
 
+// Un punto por línea: la tarjeta respira en vertical en vez de amontonar viñetas.
+function canvasPuntos(txt) {
+  const puntos = String(txt || "").split("•").map(s => s.trim()).filter(Boolean);
+  return puntos.length ? puntos.map(p => "• " + p).join("\n") : String(txt || "").trim();
+}
+
 function populateCanvasCell(key, el) {
   const preset = CANVAS_PRESETS.find(p => p.id === getCurrentCanvasPresetId()) || CANVAS_PRESETS[0];
   const canvas = (state.model_canvas && typeof state.model_canvas === "object") ? state.model_canvas : {};
-  const val = String(canvas[key] || "").trim();
+  const val = canvasPuntos(canvas[key] || "");
   if (val) { el.textContent = val; el.classList.remove("is-empty"); }
   else { el.textContent = ""; el.classList.add("is-empty"); el.setAttribute("data-ph", preset.hints[key] || "Escribe aquí..."); }
 }
 
 function fitCanvasInput(el) {
   if (!el) return;
-  el.style.flex = "0 0 auto";
   el.style.height = "auto";
   el.style.height = Math.max(46, el.scrollHeight) + "px";
 }
@@ -736,6 +760,32 @@ function downloadCanvasPng() {
     return `rgb(${A.map((v, i) => Math.round(v * (pctA / 100) + B[i] * (1 - pctA / 100))).join(",")})`;
   };
 
+  // Misma piel que el tablero en pantalla: el estilo cambia fondo, filete y placa.
+  const estilo = getCanvasStyleId();
+  const tema = (() => {
+    if (estilo === "plano") return {
+      pagina: papel, mesa: papel, mesaBorde: papel, radio: 0, slotRadio: 8,
+      fondo: () => mesa, borde: null, barra: 0, placa: "line",
+      titulo: tinta, cuerpo, suave: tenue, placaTexto: null, tituloFondo: null, tituloPlaca: tinta
+    };
+    if (estilo === "solido") return {
+      pagina: papel, mesa: mezcla(primary, papel, 6), mesaBorde: mezcla(primary, papel, 22), radio: 12, slotRadio: 8,
+      fondo: (c) => mezcla(c, papel, 12), borde: null, barra: 0, placa: "fill",
+      titulo: tinta, cuerpo, suave: mezcla(cuerpo, papel, 45), placaTexto: papel, tituloFondo: null, tituloPlaca: tinta
+    };
+    if (estilo === "contraste") return {
+      pagina: tinta, mesa: mezcla(tinta, "#000000", 80), mesaBorde: mezcla(papel, tinta, 25), radio: 12, slotRadio: 8,
+      fondo: (c) => mezcla(tinta, c, 70), borde: (c) => mezcla(c, tinta, 45), barra: 0, placa: "fill",
+      titulo: papel, cuerpo: mezcla(papel, tinta, 76), suave: mezcla(papel, tinta, 40), placaTexto: tinta,
+      tituloFondo: papel, tituloPlaca: tinta
+    };
+    return {
+      pagina: papel, mesa, mesaBorde: tenue, radio: 14, slotRadio: 10,
+      fondo: () => papel, borde: tenue, barra: 3, placa: "fill",
+      titulo: tinta, cuerpo, suave: tenue, placaTexto: papel, tituloFondo: null, tituloPlaca: tinta
+    };
+  })();
+
   const slots = [
     { key: "socios", n: 1, title: "Socios Clave", c: 1, r: 1, cw: 1, rh: 2, pct: 100 },
     { key: "actividades", n: 2, title: "Actividades Clave", c: 2, r: 1, cw: 1, rh: 1, pct: 80 },
@@ -757,13 +807,13 @@ function downloadCanvasPng() {
   const cv = document.createElement("canvas");
   cv.width = W; cv.height = H;
   const g = cv.getContext("2d");
-  g.fillStyle = papel; g.fillRect(0, 0, W, H);
+  g.fillStyle = tema.pagina; g.fillRect(0, 0, W, H);
 
   // Encabezado: el mismo nombre que el proyecto, no un título inventado.
-  g.fillStyle = tinta;
+  g.fillStyle = tema.titulo;
   g.font = `800 34px ${fuente}`;
   g.fillText(String(state.project_name || state.challenge_title || "Modelo de negocio"), PAD, PAD + 30);
-  g.fillStyle = cuerpo;
+  g.fillStyle = tema.cuerpo;
   g.font = `400 15px ${fuente}`;
   g.fillText("Modelo de negocio · " + (state.team_name || "equipo"), PAD, PAD + 56);
   g.fillStyle = mono;
@@ -773,10 +823,10 @@ function downloadCanvasPng() {
   g.textAlign = "left";
 
   const boardY = PAD + HEAD;
-  g.fillStyle = mesa;
-  g.strokeStyle = tenue; g.lineWidth = 1;
+  g.fillStyle = tema.mesa;
+  g.strokeStyle = tema.mesaBorde; g.lineWidth = 1;
   g.beginPath();
-  if (g.roundRect) g.roundRect(PAD, boardY, W - PAD * 2, mesaH, 14);
+  if (g.roundRect) g.roundRect(PAD, boardY, W - PAD * 2, mesaH, tema.radio);
   else g.rect(PAD, boardY, W - PAD * 2, mesaH);
   g.fill(); g.stroke();
 
@@ -800,46 +850,84 @@ function downloadCanvasPng() {
     const w = colW * slot.cw + GAP * (slot.cw - 1);
     const h = rowH * slot.rh + GAP * (slot.rh - 1);
     const color = slot.pct === 0 ? accent : mezcla(primary, accent, slot.pct);
-    const fondo = slot.key === "propuesta" ? mezcla(papel, accent, 93) : papel;
+    const fondo = (slot.key === "propuesta" && estilo === "mesa") ? mezcla(accent, papel, 7) : tema.fondo(color);
+    const borde = typeof tema.borde === "function" ? tema.borde(color) : tema.borde;
 
     g.fillStyle = fondo;
-    g.strokeStyle = tenue; g.lineWidth = 1;
+    g.strokeStyle = borde || fondo; g.lineWidth = 1;
     g.beginPath();
-    if (g.roundRect) g.roundRect(x, y, w, h, 10); else g.rect(x, y, w, h);
+    if (g.roundRect) g.roundRect(x, y, w, h, tema.slotRadio); else g.rect(x, y, w, h);
     g.fill(); g.stroke();
 
     g.save();
     g.beginPath();
-    if (g.roundRect) g.roundRect(x, y, w, h, 10); else g.rect(x, y, w, h);
+    if (g.roundRect) g.roundRect(x, y, w, h, tema.slotRadio); else g.rect(x, y, w, h);
     g.clip();
     g.fillStyle = color;
-    g.fillRect(x, y, w, 3);
+    if (tema.barra > 0) g.fillRect(x, y, w, tema.barra);
     g.restore();
 
-    // Número en placa, como en la mesa.
-    g.fillStyle = color;
-    g.beginPath();
-    if (g.roundRect) g.roundRect(x + 15, y + 16, 21, 14, 4); else g.rect(x + 15, y + 16, 21, 14);
-    g.fill();
-    g.fillStyle = papel;
+    // Número: placa rellena o marco, según el estilo.
+    if (tema.placa === "line") {
+      g.strokeStyle = color; g.lineWidth = 1;
+      g.beginPath();
+      if (g.roundRect) g.roundRect(x + 15, y + 16, 21, 14, 4); else g.rect(x + 15, y + 16, 21, 14);
+      g.stroke();
+    } else {
+      g.fillStyle = color;
+      g.beginPath();
+      if (g.roundRect) g.roundRect(x + 15, y + 16, 21, 14, 4); else g.rect(x + 15, y + 16, 21, 14);
+      g.fill();
+    }
+    g.fillStyle = tema.placa === "line" ? color : tema.placaTexto;
     g.font = `700 10px ${mono}`;
     g.textAlign = "center";
     g.fillText(String(slot.n), x + 25.5, y + 26.5);
     g.textAlign = "left";
 
-    g.fillStyle = tinta;
     g.font = `800 13px ${fuente}`;
     const titulo = cortar(slot.title, w - 60, `800 13px ${fuente}`)[0];
-    g.fillText(titulo, x + 44, y + 27);
+    if (tema.tituloFondo) {
+      const anchoTitulo = Math.ceil(g.measureText(titulo).width);
+      g.fillStyle = tema.tituloFondo;
+      g.beginPath();
+      if (g.roundRect) g.roundRect(x + 38, y + 11, anchoTitulo + 14, 21, 5); else g.rect(x + 38, y + 11, anchoTitulo + 14, 21);
+      g.fill();
+      g.fillStyle = tema.tituloPlaca;
+    } else {
+      g.fillStyle = tema.titulo;
+    }
+    g.fillText(titulo, x + 45, y + 27);
 
-    const texto = String(canvasData[slot.key] || "").trim();
-    g.fillStyle = texto ? cuerpo : tenue;
+    const texto = canvasPuntos(String(canvasData[slot.key] || "")).trim();
+    g.fillStyle = texto ? tema.cuerpo : tema.suave;
     g.font = `400 13px ${fuente}`;
-    const lineas = cortar(texto || "Sin contenido todavía.", w - 30, `400 13px ${fuente}`);
-    const alto = 20.8;
-    const tope = Math.max(1, Math.floor((h - 56) / alto));
-    lineas.slice(0, tope).forEach((l, j) => g.fillText(l, x + 15, y + 56 + j * alto));
-    if (lineas.length > tope) g.fillText("…", x + 15, y + 56 + tope * alto);
+    const bloques = texto ? texto.split(/\n+/) : ["Sin contenido todavía."];
+    const parrafos = bloques.map(b => cortar(b, w - 30, `400 13px ${fuente}`));
+    const totalLineas = parrafos.reduce((a, p) => a + p.length, 0);
+    const hueco = 8;
+    const altoDisponible = h - 72;
+    const alto = totalLineas > 1
+      ? Math.min(29, Math.max(18.4, (altoDisponible - hueco * (parrafos.length - 1)) / totalLineas))
+      : 20.8;
+
+    g.save();
+    g.beginPath();
+    g.rect(x + 12, y + 40, w - 24, h - 66);
+    g.clip();
+    let ty = y + 56;
+    let dibujadas = 0;
+    parrafos.forEach((lineasParrafo, i) => {
+      lineasParrafo.forEach(l => {
+        if (ty > y + h - 26) return;
+        g.fillText(l, x + 15, ty);
+        ty += alto;
+        dibujadas++;
+      });
+      if (i < parrafos.length - 1) ty += hueco;
+    });
+    if (dibujadas < totalLineas) g.fillText("…", x + 15, ty);
+    g.restore();
   });
 
   const nombre = (state.project_name || "canvas").replace(/[^\w\-]+/g, "_");
@@ -887,6 +975,9 @@ function renderViewCanvas() {
         <select onchange="canvasPresetChanged(this.value)" class="canvas-preset" aria-label="Plantilla de modelo de negocio">
           ${CANVAS_PRESETS.map(p => `<option value="${p.id}" ${p.id === getCurrentCanvasPresetId() ? "selected" : ""}>${p.name}</option>`).join("")}
         </select>
+        <select onchange="canvasStyleChanged(this.value)" class="canvas-preset" aria-label="Estilo visual del tablero" title="Cambia solo la presentación del tablero">
+          ${CANVAS_STYLES.map(s => `<option value="${s.id}" ${s.id === getCanvasStyleId() ? "selected" : ""}>Estilo: ${s.name}</option>`).join("")}
+        </select>
         <button class="btn-secondary" onclick="copyCanvasExternalPrompt()" title="Copia brief, reto, cifras y presupuesto para que otra IA escriba el canvas completo">
           ${SVG.copy} Contexto para IA
         </button>
@@ -900,7 +991,7 @@ function renderViewCanvas() {
       </div>
     </div>
 
-    <div class="canvas-board">
+    <div class="canvas-board is-style-${getCanvasStyleId()}">
       ${cells.map(cell => `
         <div class="canvas-slot canvas-slot-${cell.key}">
           <label class="canvas-slot-label" for="cv-${cell.key}">
@@ -908,7 +999,7 @@ function renderViewCanvas() {
           </label>
           <textarea id="cv-${cell.key}" class="canvas-input${isDefaultCell(cell) ? " is-empty" : ""}" rows="3" spellcheck="false"
             placeholder="${escapeHtml(hintOf(cell.key, cell.fallback))}"
-            oninput="handleCanvasCellInput('${cell.key}', this)">${escapeHtml(String(canvas[cell.key] || "").trim())}</textarea>
+            oninput="handleCanvasCellInput('${cell.key}', this)">${escapeHtml(canvasPuntos(canvas[cell.key] || ""))}</textarea>
           <div style="margin-top:4px;">${aiEditPanel("canvas:" + cell.key)}</div>
           ${cell.key === "costes" ? `<button class="link-quiet" onclick="switchTab('budget')">Ver las partidas del presupuesto</button>` : ""}
         </div>

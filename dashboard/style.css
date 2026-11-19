@@ -5694,11 +5694,37 @@ h3 {
   color: var(--bg-surface); background: var(--cv-ink, var(--color-primary));
   padding: 3px 5px; border-radius: 4px; }
 .canvas-input { width: 100%; flex: 0 0 auto; min-height: 96px; border: none; background: transparent; resize: none; overflow: hidden;
-  font-family: var(--font-ui); font-size: 13px; line-height: 1.6; color: var(--text-body); padding: 0; }
+  font-family: var(--font-ui); font-size: 13px; line-height: 1.9; color: var(--text-body); padding: 2px 0 0; }
 .canvas-input:focus { outline: none; }
+/* El botón del copiloto se ancla al pie de la tarjeta: el aire sobrante queda
+   entre el texto y el botón, no arrinconado arriba. */
+.canvas-slot > *:last-child { margin-top: auto; }
 .canvas-input::placeholder { color: var(--text-faint); font-style: italic; }
 .canvas-slot:focus-within { border-color: var(--cv-ink, var(--color-primary)); }
 .canvas-slot-propuesta:focus-within { background: var(--bg-subtle); }
+
+/* Piel del tablero: mismo contenido, otra presentación. Las fases se separan
+   por fondo, nunca por una barra de color en el canto. */
+.canvas-board.is-style-plano { gap: 12px; padding: 12px; background: var(--bg-surface); border-color: transparent; border-radius: 0; }
+.canvas-board.is-style-plano .canvas-slot { border: 0; border-radius: 8px; background: var(--bg-subtle); }
+.canvas-board.is-style-plano .canvas-slot-propuesta { background: color-mix(in srgb, var(--bg-subtle) 80%, var(--color-accent)); }
+.canvas-board.is-style-plano .canvas-slot-num { color: var(--cv-ink); background: transparent; box-shadow: inset 0 0 0 1px var(--cv-ink); }
+
+.canvas-board.is-style-solido { background: color-mix(in srgb, var(--color-primary) 6%, var(--bg-surface));
+  border-color: color-mix(in srgb, var(--color-primary) 22%, var(--bg-surface)); }
+.canvas-board.is-style-solido .canvas-slot { border: 0; border-radius: 8px;
+  background: color-mix(in srgb, var(--cv-ink) 12%, var(--bg-surface)); }
+
+.canvas-board.is-style-contraste { background: var(--text-title);
+  border-color: color-mix(in srgb, var(--bg-surface) 22%, var(--text-title)); }
+.canvas-board.is-style-contraste .canvas-slot { border: 0; border-radius: 8px;
+  background: color-mix(in srgb, var(--cv-ink) 34%, var(--text-title)); }
+.canvas-board.is-style-contraste .canvas-slot-label { align-self: flex-start; padding: 4px 9px 4px 5px;
+  border-radius: 5px; background: var(--bg-surface); color: var(--text-title); }
+.canvas-board.is-style-contraste .canvas-input { color: color-mix(in srgb, var(--bg-surface) 78%, var(--text-title)); }
+.canvas-board.is-style-contraste .canvas-input::placeholder { color: color-mix(in srgb, var(--bg-surface) 46%, var(--text-title)); }
+.canvas-board.is-style-contraste .link-quiet { color: color-mix(in srgb, var(--bg-surface) 70%, var(--text-title)); }
+.canvas-board.is-style-contraste .canvas-slot:focus-within { background: color-mix(in srgb, var(--cv-ink) 46%, var(--text-title)); }
 
 .canvas-foot { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border-light); }
 .canvas-foot-label { display: block; font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 5px; }
@@ -5734,6 +5760,15 @@ h3 {
   .canvas-slot:focus-within, .canvas-slot-propuesta:focus-within { background: none; border-color: transparent; }
   .canvas-input { font-size: 13px; min-height: 76px; }
   .canvas-foot-input { flex: 1 1 100%; }
+  /* En móvil manda la lista: cualquier piel vuelve al mismo listado legible. */
+  .canvas-board.is-style-plano, .canvas-board.is-style-solido, .canvas-board.is-style-contraste {
+    gap: 0; padding: 0; background: transparent; border: none; border-top: 1px solid var(--border-light); border-radius: 0; }
+  .canvas-board.is-style-plano .canvas-slot, .canvas-board.is-style-solido .canvas-slot,
+  .canvas-board.is-style-contraste .canvas-slot {
+    grid-area: auto; min-height: 0; padding: 12px 2px; background: none;
+    border: 0; border-bottom: 1px solid var(--border-light); border-radius: 0; }
+  .canvas-board.is-style-contraste .canvas-slot-label { color: var(--text-body); }
+  .canvas-board.is-style-contraste .canvas-input { color: var(--text-body); }
 }
 
 .budget-url-edit { border: none; background: none; padding: 0 2px; font-family: var(--font-ui);

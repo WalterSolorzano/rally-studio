@@ -138,6 +138,25 @@ Cada punto dice qué se toca y cómo se comprueba. Nada se da por hecho sin capt
     `data:` de 4 bytes se queda en `.tmp` y desaparece), así que la prueba es el render del blob,
     no el archivo en Descargas.
 
+18. [x] **Canvas: estilos visuales del tablero.** El `select` de plantilla cambia el contenido;
+    el segundo `select` (`.canvas-preset`, `onchange="canvasStyleChanged"`) cambia la piel. Cuatro
+    estilos en `CANVAS_STYLES` + `getCanvasStyleId()` (`state.canvas_style`, default `mesa`), y el
+    mismo juego se replica en el PNG con el objeto `tema` de `downloadCanvasPng()`:
+    - `mesa` — «Mesa de trabajo»: tarjetas blancas sobre mesa gris, filete tenue y barra de acento
+      arriba (el de antes).
+    - `plano` — «Tarjetas hundidas»: página y mesa en blanco, tarjetas con fondo `--bg-subtle`,
+      sin filetes ni barras; el numeral queda en marco (`placa: "line"`).
+    - `solido` — «Bloques de color»: cada cuadrante teñido al 12 % con su `--cv-ink` sobre mesa
+      teñida al 6 % de primary.
+    - `contraste` — «Alto contraste»: mesa en `--text-title`, tarjetas al 34 % de tinta en pantalla
+      (70 % en el PNG), título del cuadrante en placa blanca (`tituloFondo`), texto claro.
+    Sin `border-left` ni barra lateral en ningún estilo: la separación de fases es por fondo.
+    Aire vertical: `canvasPuntos()` deja una viñeta por línea, `.canvas-input` va a
+    `line-height: 1.9` y `.canvas-slot > *:last-child { margin-top: auto }` ancla el copiloto al
+    pie; el PNG reparte las líneas dentro de la tarjeta (clip propio) y separa párrafos con 8 px.
+    Verificado en pantalla y en el PNG dibujado (`st3_*`, `st4_*`, `st5_*`, `st6_*`, `st7_*` con sus
+    `png_*`) con datos del lab, `node --check` OK y `verificar_identidad.py` sin avisos nuevos.
+
 ## Pregunta pendiente: A3 / B / C
 
 - **A3 en `script`**: conviene repetirlo **después** del punto 14; el 7 ya cambió la vista. El de
