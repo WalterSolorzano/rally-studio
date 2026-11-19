@@ -4,11 +4,11 @@ window.RALLY_STATS = {
     "kind": "project_recap_generated",
     "simulated": false,
     "schema_version": 2,
-    "generated_at": "2026-11-16T16:56:23-06:00",
+    "generated_at": "2026-11-19T00:48:02-06:00",
     "generator": "scripts/build_stats.py",
     "phase": "idle",
     "note": "Todos los números se derivan de state.json y de los archivos del proyecto. Los avatares son ilustrativos.",
-    "description": "Resumen real de Tu proyecto: 0 de 0 h, 0/0 entregables, 0/5 secciones de pautado y 0 frentes abiertos.",
+    "description": "Resumen real de Tu proyecto: 0 de 28 h, 0/0 entregables, 0/5 secciones de pautado y 0 frentes abiertos.",
     "formula": "Preparación = 35% entregables + 20% pautado + 15% guion + 15% presupuesto + 10% fuentes + 5% guardrails. Solo cuenta la sesión viva; el material de otro proyecto no suma."
   },
   "phase": "idle",
@@ -22,26 +22,26 @@ window.RALLY_STATS = {
     "challenge_id": "",
     "category": "Sin categoría",
     "rally_type": "general",
-    "duration_h": 0.0,
-    "hours_remaining": 0.0,
+    "duration_h": 28.0,
+    "hours_remaining": 28.0,
     "elapsed_h": 0.0,
     "elapsed_pct": 0,
-    "start_label": "18:00",
-    "end_label": "18:00",
-    "date_label": "31—31 DEC 1969",
-    "last_signal_label": "18:00",
+    "start_label": "—",
+    "end_label": "—",
+    "date_label": "",
+    "last_signal_label": "—",
     "solution": "",
     "solution_simple": "",
     "solution_approved": false,
     "ods": [],
-    "team_declared": 0,
+    "team_declared": 6,
     "team_registered": 0
   },
   "headline": {
     "elapsed_h": 0.0,
     "elapsed_pct": 0,
-    "duration_h": 0.0,
-    "hours_remaining": 0.0,
+    "duration_h": 28.0,
+    "hours_remaining": 28.0,
     "deliverables_done": 0,
     "deliverables_total": 0,
     "pautado_sections": 0,
@@ -50,7 +50,7 @@ window.RALLY_STATS = {
     "script_total": 4,
     "critical_count": 0,
     "critical_shown": 0,
-    "signals": 1,
+    "signals": 0,
     "readiness": 0,
     "readiness_parts": [
       {
@@ -86,12 +86,12 @@ window.RALLY_STATS = {
       {
         "label": "Guardrails",
         "weight": 5,
-        "value": 0,
-        "points": 0.0
+        "value": 10,
+        "points": 0.5
       }
     ],
     "active_people": 0,
-    "team_declared": 0
+    "team_declared": 6
   },
   "rhythm": {
     "peak_hour": "—",
@@ -106,12 +106,49 @@ window.RALLY_STATS = {
   "critical": [],
   "mvp": null,
   "people": [],
-  "placeholders": [],
+  "placeholders": [
+    {
+      "id": "sin-registro-1",
+      "name": "Sin registro",
+      "initials": "—",
+      "avatar": "assets/stats/avatar-empty.svg"
+    },
+    {
+      "id": "sin-registro-2",
+      "name": "Sin registro",
+      "initials": "—",
+      "avatar": "assets/stats/avatar-empty.svg"
+    },
+    {
+      "id": "sin-registro-3",
+      "name": "Sin registro",
+      "initials": "—",
+      "avatar": "assets/stats/avatar-empty.svg"
+    },
+    {
+      "id": "sin-registro-4",
+      "name": "Sin registro",
+      "initials": "—",
+      "avatar": "assets/stats/avatar-empty.svg"
+    },
+    {
+      "id": "sin-registro-5",
+      "name": "Sin registro",
+      "initials": "—",
+      "avatar": "assets/stats/avatar-empty.svg"
+    },
+    {
+      "id": "sin-registro-6",
+      "name": "Sin registro",
+      "initials": "—",
+      "avatar": "assets/stats/avatar-empty.svg"
+    }
+  ],
   "roster_gap": {
-    "declared": 0,
+    "declared": 6,
     "registered": 0,
-    "missing": 0,
-    "note": "Todos los integrantes declarados tienen registro."
+    "missing": 6,
+    "note": "6 integrantes declarados todavía no tienen nombre ni señal en la sesión."
   },
   "time_split": [],
   "achievements": [],
@@ -121,13 +158,13 @@ window.RALLY_STATS = {
       "label": "Sesión",
       "path": "dashboard/data/state.json",
       "exists": true,
-      "mtime": "2026-11-06 15:36"
+      "mtime": "2026-11-18 20:07"
     },
     {
       "label": "Claims",
       "path": "research/claims.json",
       "exists": true,
-      "mtime": "2026-10-22 15:22"
+      "mtime": "2026-11-18 01:08"
     },
     {
       "label": "Presupuesto",
@@ -157,25 +194,25 @@ window.RALLY_STATS = {
       "label": "Canvas",
       "path": "docs/canvas.md",
       "exists": true,
-      "mtime": "2026-10-22 15:22"
+      "mtime": "2026-11-18 00:24"
     },
     {
       "label": "Bibliografía",
       "path": "docs/bibliography.md",
       "exists": true,
-      "mtime": "2026-10-22 15:22"
+      "mtime": "2026-11-18 00:24"
     },
     {
       "label": "Sitio",
       "path": "site/index.html",
       "exists": true,
-      "mtime": "2026-10-22 15:22"
+      "mtime": "2026-11-17 22:09"
     },
     {
       "label": "Brief",
       "path": "brief.json",
       "exists": true,
-      "mtime": "2026-11-01 18:22"
+      "mtime": "2026-11-18 20:10"
     }
   ],
   "material": {

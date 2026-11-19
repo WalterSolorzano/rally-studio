@@ -4,8 +4,9 @@
 
 > **DOCUMENTO CANÓNICO ÚNICO.** Esta es la única investigación vigente del repositorio.
 > Los informes de otras IA (`chatgptdeep-research-report.md`,
-> `Proyectos Ganadores de Rally Latam.md`, `PROYECTO_DOSSIER_COMPLETO.md`,
-> `dossier_latam_2026/`) quedan como **fuente citada, no como verdad paralela**: solo
+
+> `Proyectos Ganadores de Rally Latam.md`, `dossier_latam_2026/`)
+ quedan como **fuente citada, no como verdad paralela**: solo
 > entran aquí si sobreviven al contraste con el banco verificado. Ver §0.2.
 
 | Campo | Valor |
@@ -56,7 +57,7 @@ Había cinco investigaciones en paralelo, de tres IA distintas, con cifras que n
 |---|---|---|---|---|
 | `chatgptdeep-research-report.md` | `894D58355C4D` | Deep research GPT: casos 2019–2025 y anatomía del video | **T2 parcial.** Los casos coinciden con T0; «Ollnari 2023» es errata (es 2025). | Fuente citada. Copia espejo en `brain/corpus/investigacion_pitch.md`. |
 | `Proyectos Ganadores de Rally Latam.md` | `4A196E7F1864` | Deep research Gemini, 251 KB: gobernanza, registro maestro, guion | **T2 parcial.** Lo estructural (sede→nacional→internacional, 28 h, video de 2 min) lo confirma T0. La escala «1.425 sedes / 65.000 jóvenes» **no** está en T0 → T4. | Fuente citada. Duplicado byte a byte en `knowledge/winners_latam.md`. |
-| `PROYECTO_DOSSIER_COMPLETO.md` | `FAF57B374831` | Dossier de un equipo concreto (UNI RUPAP, «Operación Titán») | **Fuera del cerebro.** Regla 11: el cerebro se distribuye sin proyectos anteriores. | Se queda como referencia local; no se cita como evidencia. |
+| ~~`PROYECTO_DOSSIER_COMPLETO.md`~~ | `FAF57B374831` | Dossier de un equipo concreto (UNI RUPAP, «Operación Titán») | **ELIMINADO** del paquete: residuo de prueba que sesgaba al agente. | Ya no existe en disco; solo en el historial de git. |
 | `docs/INFORME_INVESTIGACION.md` | este archivo | v2.0, escrita el 19/10 **antes** del banco SIRLI | **CANÓNICO.** Es el único que se actualiza. | → `brain/corpus/informe_investigacion.md` vía `brain/sync_corpus.py`. |
 | `research/sirli/analisis/patrones.md` | `447A5A05A7D3` | Primer análisis, 26 transcripciones, sin control de sesgo | **SUPERSEDIDO** por `investigacion_profunda.md`. | Ya marcado dentro del archivo. |
 | `research/sirli/analisis/hipotesis.md` | `99D6B25C0ACA` | Informe intermedio de hipótesis | **SUPERSEDIDO** por `investigacion_profunda.md`. | Ya marcado dentro del archivo. |

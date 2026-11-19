@@ -30,7 +30,6 @@ NARRATION_PATH = ROOT / "script" / "narration.txt"
 CANVAS_PATH = ROOT / "docs" / "canvas.md"
 BIBLIOGRAPHY_PATH = ROOT / "docs" / "bibliography.md"
 SITE_PATH = ROOT / "site" / "index.html"
-DOSSIER_PATH = ROOT / "PROYECTO_DOSSIER_COMPLETO.md"
 OUT_JSON = ROOT / "dashboard" / "data" / "stats.generated.json"
 OUT_JS = ROOT / "dashboard" / "data" / "stats.generated.js"
 
@@ -603,10 +602,9 @@ def main(phase_override: str | None = None) -> None:
     canvas_text = read_text(CANVAS_PATH)
     bibliography_text = read_text(BIBLIOGRAPHY_PATH)
     site_text = read_text(SITE_PATH)
-    dossier_text = read_text(DOSSIER_PATH)
 
     project_declared = clean(state.get("project_name"))
-    artifact_project = detect_artifact_project(script_text, canvas_text, dossier_text) if project_declared else ""
+    artifact_project = detect_artifact_project(script_text, canvas_text) if project_declared else ""
 
     team_name = clean(state.get("team_name")) or "Tu equipo"
     project_name = project_declared or "Tu proyecto"
