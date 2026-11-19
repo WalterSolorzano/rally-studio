@@ -1,6 +1,6 @@
-# Preset de voz · Hidro Vigía
+# Preset de voz · narración
 
-Locución oficial del proyecto, generada con Chatterbox Multilingual V3 y el finetune
+Locución del guion, generada con Chatterbox Multilingual V3 y el finetune
 oficial `ResembleAI/Chatterbox-Multilingual-es-mx-latam` (MIT).
 
 ## Archivos
