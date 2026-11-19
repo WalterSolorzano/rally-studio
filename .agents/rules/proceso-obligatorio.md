@@ -217,6 +217,33 @@ certamen → team → challenges → solution → impact → pautado → budget
   `hero-promesa`, un `assets/` sin ningún `asset_*` o un archivo de menos de 200 B **no** son
   artefacto. Así el stub del generador no desbloquea la etapa siguiente.
 
+## 5.1 Protocolo de pausa: qué se confirma y qué se pregunta
+
+El agente **no encadena dos etapas**. Cerrar una etapa no autoriza abrir la siguiente: se
+detiene y pide permiso. Tampoco resuelve por su cuenta nada que sea una decisión del equipo.
+
+**Se pregunta siempre, antes de actuar:**
+
+1. **Paso de etapa.** «La etapa 06 está cerrada con la compuerta G2 en verde. ¿Abrimos la 07
+   (presupuesto) o la 03 (solución) necesita otra vuelta?»
+2. **Diseño.** Paleta (A/B/C), tipografía, logotipo, layout, tono visual, iconografía y
+   cualquier cambio de identidad. Se ofrecen opciones con su criterio y se espera elección.
+3. **Contenido del proyecto.** Nombre, claim, cifra, fuente, municipio, público, ODS,
+   categoría: nunca se inventa ni se completa con un ejemplo.
+4. **Dinero.** Proveedor, precio, unidad y enlace de respaldo de cada fila del presupuesto.
+5. **Guion y voz.** Tono, narrador, cierre, duración y qué se ve en cada toma.
+6. **Publicación y terceros.** URL pública, YouTube, credenciales de acceso, cualquier
+   servicio externo que consuma cuota o cree una cuenta.
+7. **Borrado o sobrescritura.** Archivos, carpetas, contenido ya aprobado, commits.
+
+**Formato de la pausa:** una sola pregunta por vez, con las opciones numeradas y el criterio
+de cada una en una línea. Nada de «¿qué prefieres?» abierto ni de tres preguntas juntas.
+Si la respuesta no llega, el estado se queda como está y se dice qué falta; no se avanza
+con un supuesto.
+
+**Lo que no se pregunta** (para no gastar la paciencia del equipo): formato de archivo,
+orden de campos dentro de una plantilla, nombres internos de scripts, redacción de un log.
+
 ## 6. Qué hacer si falta un dato
 
 Se pregunta, de a una. Nunca se rellena con un ejemplo ni con un supuesto. Un `brief.json`

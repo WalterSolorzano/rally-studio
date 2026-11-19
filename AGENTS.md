@@ -75,6 +75,11 @@ minutos no ejecutó el proceso: saltó fases.
 En cada etapa haz tres cosas: **pregunta lo que falte**, **propone** (marcado como propuesta)
 y **verifica** contra la rúbrica del certamen activo. Nunca avances inventando.
 
+**Nunca encadenes dos etapas.** Al cerrar una, detente y pide permiso para abrir la siguiente.
+Decisiones de diseño (paleta, tipografía, logo, layout, tono), datos del proyecto, dinero,
+guion y voz, publicación, y todo borrado o sobrescritura: se preguntan antes de actuar, de a
+una, con opciones numeradas. Regla completa: `.agents/rules/proceso-obligatorio.md` §5.1.
+
 ## Cómo servir a la ventana
 
 Todo lo que produzcas entra por el buzón y la ventana lo muestra como **Aceptar / Descartar**
