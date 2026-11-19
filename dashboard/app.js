@@ -401,7 +401,7 @@ function getInitialState() {
     team_logo: "shield",
     team_logo_img: "",
     project_name: "",
-    category: "Innovación",
+    category: "",
     challenge_id: "",
     challenge_title: "",
 
@@ -438,11 +438,11 @@ function getInitialState() {
     // Preset de voz audible incluido en el proyecto
     voice_preset: "proyecto",
 
-    // Identidad cromática
+    // Identidad cromática (la llena el equipo en identidad; no trae marca por defecto)
     palette: {
-      primary: "#1e40af",
-      secondary: "#3b82f6",
-      accent: "#0ea5e9"
+      primary: "",
+      secondary: "",
+      accent: ""
     },
 
     claims: [],
@@ -490,10 +490,10 @@ function getInitialState() {
     active_locks: {},
 
     // Enlaces de colaboración y nube (Bypass para Wi-Fi universitario)
-    google_drive_url: "https://drive.google.com",
-    canva_url: "https://canva.com",
+    google_drive_url: "",
+    canva_url: "",
     figma_url: "",
-    local_ip: "192.168.1.50"
+    local_ip: ""
   };
 }
 
@@ -6633,7 +6633,7 @@ function renderViewSolution() {
     <section class="sol-sec">
       <label class="sol-label" for="raw-sol-input">Tu idea, con tus palabras</label>
       <p class="sol-hint">Sin tecnicismos. Lo que le contarías a un vecino.</p>
-      <textarea id="raw-sol-input" class="sol-input sol-input-lg" rows="3" placeholder="Ej: Secamos fruta con aire caliente y un sensor, para que el productor no pierda la cosecha."
+      <textarea id="raw-sol-input" class="sol-input sol-input-lg" rows="3" placeholder="Ej: Una pieza simple que se arma en el taller del barrio y resuelve en minutos lo que hoy toma horas."
         oninput="updateSolutionFieldLive('raw_input', this.value)">${escapeHtml(state.solution_raw_input || "")}</textarea>
       <div class="sol-inline-action">
         <button class="link-quiet" onclick="synthesizeSolutionFromRaw()">${SVG.spark} Estructurar tesis y pitch</button>
@@ -6981,7 +6981,7 @@ const ODS_CATALOG = [
     shortTarget: "Meta 2.1 & 2.4: Acceso a alimentos sanos y agricultura resiliente",
     unTarget: "Poner fin al hambre y asegurar el acceso de todas las personas a una alimentación sana, nutritiva y suficiente todo el año mediante prácticas sostenibles.",
     diagnostic: "Pérdida de toneladas de frutas y verduras frescas en centros de abasto y reducción de rendimientos agropecuarios por falta de polinización tecnificada.",
-    mechanism: "Rescate y deshidratación solar de excedentes frutales para comedores escolares, y tecnificación de colmenas de abejas nativas meliponas en parcelas campesinas."
+    mechanism: "Rescate de excedentes alimentarios con conservación solar y manejo del suelo que sostiene el rendimiento de los cultivos."
   },
   {
     id: 3,
@@ -7124,7 +7124,7 @@ const ODS_CATALOG = [
     shortTarget: "Meta 15.5: Detener la pérdida de biodiversidad y degradación biológica",
     unTarget: "Adoptar medidas urgentes para reducir la degradación de los hábitats naturales y frenar la pérdida de biodiversidad biológica.",
     diagnostic: "Mortalidad masiva de polinizadores nativos por agroquímicos y degradación acelerada de la fertilidad de los suelos volcánicos.",
-    mechanism: "Bioprotección pasiva para abejas meliponas y enriquecimiento biológico de suelos con biochar activado con micorrizas."
+    mechanism: "Protección de polinizadores nativos y recuperación de la fertilidad del suelo con biochar activado con micorrizas."
   },
   {
     id: 16,
@@ -7746,7 +7746,7 @@ function renderViewMultiAI() {
     <div class="dispatch-status">
       <span>${done} de ${tasks.length} tareas con respuesta</span>
       <button type="button" class="link-quiet" onclick="exportProjectJson()">Exportar JSON</button>
-      <a href="${state.google_drive_url}" target="_blank" rel="noopener noreferrer" class="link-quiet">Google Drive ${SVG.external}</a>
+      <a href="${state.google_drive_url || "https://drive.google.com"}" target="_blank" rel="noopener noreferrer" class="link-quiet">Google Drive ${SVG.external}</a>
     </div>
 
     <ol class="dispatch-list">

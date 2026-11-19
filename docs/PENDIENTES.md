@@ -157,6 +157,26 @@ Cada punto dice qué se toca y cómo se comprueba. Nada se da por hecho sin capt
     Verificado en pantalla y en el PNG dibujado (`st3_*`, `st4_*`, `st5_*`, `st6_*`, `st7_*` con sus
     `png_*`) con datos del lab, `node --check` OK y `verificar_identidad.py` sin avisos nuevos.
 
+19. [x] **Auditoría base vs. carpeta simulada: nada hardcodeado ni restos de pruebas.**
+    La base `rallysistem` es la fuente y la carpeta `_lab` un snapshot anterior (2072 de 2185
+    archivos tracked iguales; `app_video.js` de la base 103902 bytes con `CANVAS_STYLES`, el del
+    lab 90770 sin ellos). Cambios de la carpeta simulada que **no** se portan, por decisión ya
+    tomada: `scripts/gen_soluciones_pdf.py` y su test salieron en `149cbd2` (los reemplaza
+    `scripts/gen_dossier.py`), y `site/prueba/*` es salida de una corrida de prueba.
+    Restos quitados del producto:
+    - `dashboard/app_video.js`: el prompt externo del canvas ya no nombra meliponicultores,
+      colmenas prestadas ni "revisan colmena por colmena"; los ejemplos son genéricos.
+    - `dashboard/app.js`: la paleta nace vacía (sin `#1e40af/#3b82f6/#0ea5e9`), `local_ip` vacía,
+      `google_drive_url` y `canva_url` vacías, `category` vacía en vez de "Innovación"; el
+      `placeholder` del taller de solución ya no describe el secado de fruta; ODS 2 y ODS 15
+      dejaron de citar meliponas; el enlace de Drive usa su valor o la portada del servicio.
+    - `dashboard/data/`: se limpiaron `state.json`, `sections.db`, `nube.db`, `content/*`,
+      `applied/*`, avisos falsos y sesiones/invitaciones de prueba (respaldos en
+      `%TEMP%\\opencode\\data_backup_*`). `brief.json` vuelve a plantilla vacía.
+    Verificado: `360 passed`, `node --check` OK ambos JS, `verificar_identidad.py` EXIT=0, y la
+    app recién abierta con `localStorage` limpio cae en la primera pantalla (¿Qué Rally es?) sin
+    paleta, sin proyecto y sin avisos.
+
 ## Pregunta pendiente: A3 / B / C
 
 - **A3 en `script`**: conviene repetirlo **después** del punto 14; el 7 ya cambió la vista. El de

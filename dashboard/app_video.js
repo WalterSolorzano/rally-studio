@@ -644,8 +644,8 @@ REGLAS DE PRECIO
 - Coherencia total con el presupuesto de arriba (mismos números).
 
 REGLAS DE CADA CUADRANTE (cada uno responde su pregunta, no la del vecino)
-- Segmentos: personas u organizaciones concretas (meliponicultores, cooperativas, técnicos de campo, profesores, estudiantes). No tareas ni hábitos ("revisan colmena por colmena" es una actividad, no un segmento).
-- Recursos clave: lo que el proyecto necesita para funcionar (diseño, firmware, biblioteca de datos, colmenas prestadas). No repitas al equipo ni cites el presupuesto como recurso.
+- Segmentos: personas u organizaciones concretas (un tipo de productor, una cooperativa, un negocio del barrio, una escuela pública). No tareas ni hábitos: la actividad es lo que hacen, no a quién se atiende.
+- Recursos clave: lo que el proyecto necesita para funcionar (planos, piezas, licencias, equipos compartidos). No repitas al equipo ni cites el presupuesto como recurso.
 - Socios clave: quién coopera y qué aporta. Nada de "plataformas citadas en el documento".
 - Sin muletillas de referencia interna: prohibido "citado en documento", "ver presupuesto", "según el pautado".
 - Veto de redacción de skills/_comun/patrones-ia.md: sin adjetivos de relleno, sin "no es solo X, es Y", sin tríadas, sin cierre "en conclusión". Si una frase no trae un dato, se borra.
