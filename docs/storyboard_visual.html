@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Storyboard visual — 0 tomas · 0 s</title>
+<style>
+:root{--pri:#4A5468;--sec:#4A5468;--acc:#4A5468;--ink:#111;--paper:#faf9f5;--line:#e2ded3;--mut:#6b675c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 24px 64px}
+header{border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:18px}
+h1{font-size:clamp(26px,3.4vw,40px);line-height:1.04;letter-spacing:-.02em;margin:0 0 6px;font-weight:800}
+.sub{color:var(--mut);margin:0;max-width:76ch;font-size:14.5px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 0}
+.chips .chip{font-size:11px;letter-spacing:.04em;text-transform:uppercase;border:1px solid var(--line);background:#fff;border-radius:2px;padding:2px 7px;color:var(--mut)}
+.bar{display:flex;height:34px;margin:18px 0 6px;border-radius:2px;overflow:hidden}
+.bar div{display:flex;align-items:center;justify-content:space-between;padding:0 8px;color:#fff;font-size:11px;font-weight:700;letter-spacing:.03em;white-space:nowrap;overflow:hidden}
+.bar .t{background:var(--acc)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--mut);margin-bottom:22px}
+.legend b{color:var(--ink)}
+h2{font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin:34px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.sheet{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.sheet .marco{width:100%;margin:0}
+.marco .lienzo{width:100%}
+.cel{display:block;text-decoration:none;color:inherit}
+.cel .credit{display:none}
+.cel .lienzo{border-top-width:2px}
+.cel:hover .lienzo{outline:2px solid var(--c);outline-offset:-2px}
+.lienzo{position:relative;aspect-ratio:16/9;background:#000;overflow:hidden;border-top:3px solid var(--c)}
+.lienzo img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.95)}
+.placa{width:100%;height:100%;display:grid;place-items:center;background:#141414;color:#f4f3ee;text-align:center;padding:8px}
+.placa b{font-size:clamp(11px,1.4vw,20px);letter-spacing:.02em;line-height:1.1}
+.placa.sm b{font-size:9px;letter-spacing:.06em}
+.sid{position:absolute;left:0;bottom:0;background:var(--c);color:#fff;font-size:10px;font-weight:800;letter-spacing:.06em;padding:1px 5px}
+.sdur{position:absolute;right:0;bottom:0;background:rgba(0,0,0,.72);color:#fff;font-size:10px;font-variant-numeric:tabular-nums;padding:1px 5px}
+.credit{display:block;font-size:10px;color:var(--mut);margin-top:4px;line-height:1.3}
+.act{display:flex;align-items:baseline;gap:10px;border-left:5px solid var(--c);padding-left:10px;margin:36px 0 4px}
+.act h2{border:0;margin:0;padding:0;font-size:14px;letter-spacing:.06em;color:var(--ink)}
+.act span{font-size:11.5px;color:var(--mut);font-variant-numeric:tabular-nums}
+.row{display:grid;grid-template-columns:170px 1.5fr 1fr 1.2fr;gap:14px;background:#fff;border:1px solid var(--line);border-left:5px solid var(--c);padding:12px;margin:8px 0;align-items:start}
+.row .marco{margin:0}
+.col-frame .credit{display:none}
+.col-meta h3{margin:0 0 2px;font-size:14.5px;line-height:1.25;font-weight:700}
+.sid-b{display:inline-block;background:var(--c);color:#fff;font-size:10.5px;font-weight:800;letter-spacing:.06em;padding:1px 5px;margin-right:5px;vertical-align:1px}
+.tc{margin:0 0 5px;font-size:11.5px;color:var(--mut);font-variant-numeric:tabular-nums}
+.desc{margin:0 0 5px;font-size:13px;line-height:1.42}
+.ref{margin:0 0 6px;font-size:11.5px;line-height:1.35;color:var(--mut);border-left:2px solid var(--line);padding-left:7px}
+.no{margin:0;font-size:12px;color:#a1120f;line-height:1.35}
+.son{margin:5px 0 0;font-size:11px;line-height:1.3;color:#0f3f43;background:#e6f4f4;border-left:2px solid var(--acc);padding:3px 7px}
+.son b{font-weight:700;color:var(--pri)}
+.tr{display:none}
+.snd{display:flex;gap:4px;margin:6px 0 6px}
+.snd div{flex:1;min-width:0;background:#fff;border:1px solid var(--line);border-top:4px solid var(--c);padding:7px 8px;overflow:hidden}
+.snd b{display:block;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--c)}
+.snd span{display:block;font-size:12px;font-weight:600;margin-top:2px}
+.snd em{display:block;font-size:11px;color:var(--mut);font-style:normal;margin-top:3px;line-height:1.3}
+.snd-nota{margin:0 0 8px;font-size:11.5px;color:var(--mut)}
+.no b{font-weight:700}
+details{margin-top:6px;font-size:12px;color:var(--mut)}
+summary{cursor:pointer;color:var(--pri);font-weight:600;font-size:11.5px}
+details p{margin:5px 0 0}
+.chips .chip{display:inline-block;margin:3px 3px 0 0;font-size:10px;border:1px solid var(--line);color:var(--ink);padding:0 5px;border-radius:2px}
+h4{margin:0 0 5px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+.col-buscar ul,.col-crear ul{margin:0;padding-left:15px;font-size:12.2px;line-height:1.4}
+.col-buscar li{margin-bottom:5px}
+.col-buscar a{color:var(--pri);text-decoration:none;border-bottom:1px solid #cfd6ea}
+.col-buscar a:hover{border-color:var(--pri)}
+.col-crear li{margin-bottom:4px}
+footer{margin-top:40px;border-top:1px solid var(--line);padding-top:12px;font-size:11.5px;color:var(--mut);line-height:1.5}
+code{font:11.5px ui-monospace,Consolas,monospace;background:#fff;border:1px solid var(--line);padding:1px 4px}
+@media (max-width:1000px){.row{grid-template-columns:150px 1fr}.col-buscar,.col-crear{grid-column:2}}
+@media (max-width:720px){.sheet{grid-template-columns:repeat(4,1fr)}.row{grid-template-columns:1fr}.col-buscar,.col-crear{grid-column:1}}
+@media print{body{background:#fff}.row{break-inside:avoid}.sheet{grid-template-columns:repeat(7,1fr)}details{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Storyboard de rodaje</h1>
+  <p class="sub">0 tomas de 0.0 s. Cada fila dice qué buscar, dónde verlo y qué crear. Los fotogramas
+  son <b>referencia</b> de encuadre y luz: no son material del video. Tiempos, dueños y rúbrica salen de
+  <code>script/shotlist.csv</code>.</p>
+  <div class="chips"><span class="chip">0 tomas</span>
+  <span class="chip">0.0 s</span><span class="chip">Rúbrica 0/19</span></div>
+  <div class="bar"><div style="flex:1;background:#0d1b35"><span>I</span><span>0.0 s · 0 %</span></div><div style="flex:1;background:#0866f5"><span>II</span><span>0.0 s · 0 %</span></div><div style="flex:1;background:#0284c7"><span>III</span><span>0.0 s · 0 %</span></div><div style="flex:1;background:#94a3b8"><span>IV</span><span>0.0 s · 0 %</span></div></div>
+  <div class="legend"><span><b>Hoja de contactos</b> — clic en un cuadro para bajar a su ficha</span>
+  <span><b>Qué buscar</b> — enlace real, abrir y comparar</span><span><b>Qué crear</b> — orden al especialista</span></div>
+</header>
+<h2>Hoja de contactos</h2><div class="sheet"></div>
+<h2>Pista de sonido</h2><div class="snd"></div><p class="snd-nota">La cifra clave del Acto III va sin música. Una sola transición efectista por acto; el resto, corte seco.</p>
+
+<footer>
+  Regenerar: <code>python scripts/gen_storyboard_visual.py --csv script/shotlist.csv --out docs/storyboard_visual.html</code>.<br>
+  Los fotogramas son referencia de encuadre; las tomas bloqueadas por datos faltantes están marcadas y no se
+  rellenan con estimaciones.
+</footer>
+</div>
+</body>
+</html>
