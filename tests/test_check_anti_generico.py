@@ -22,22 +22,16 @@ from scripts.check_anti_generico import (
 
 # JSON vivos del pipeline de dossier que deben estar en UTF-8 limpio.
 RAIZ = Path(__file__).resolve().parents[1]
-ARCHIVOS_PIPELINE = [
-    "dossier_latam_2026/_skill_run/research/challenges.json",
-    "dossier_latam_2026/_skill_run/dossier_content.json",
-    "dossier_latam_2026/_skill_run/fichas_merged.json",
-    "dossier_latam_2026/_skill_run/fichas2.json",
-    "dossier_latam_2026/_skill_run/fichas.json",
-]
+# JSON del pipeline de dossier que existan en disco (la carpeta es opcional).
+PATRON_PIPELINE = "dossier*/_skill_run/**/*.json"
 # UTF-8 doble-codificado: bytes UTF-8 decodificados como latin-1 (Ã© → é).
 MOJIBAKE_RX = re.compile("[\u00c3\u00c2][\x80-\xff]")
 
 def test_pipeline_json_sin_mojibake():
-    """Los JSON vivos del pipeline no contienen UTF-8 doble-codificado."""
+    """Los JSON del pipeline, si hay carpeta de dossier, no traen UTF-8 doble-codificado."""
     sucios = []
-    for rel in ARCHIVOS_PIPELINE:
-        ruta = RAIZ / rel
-        assert ruta.exists(), f"falta {rel}"
+    for ruta in sorted(RAIZ.glob(PATRON_PIPELINE)):
+        rel = ruta.relative_to(RAIZ).as_posix()
         texto = ruta.read_text(encoding="utf-8")
         m = MOJIBAKE_RX.search(texto)
         if m:

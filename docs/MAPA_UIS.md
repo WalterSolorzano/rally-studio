@@ -39,7 +39,6 @@ Medición del 2026-11-16: **2110 archivos versionados, 112.5 MB**.
 | `docs/assets/informe_template.html` | `scripts/build_report_pdf.py` | plantilla del informe |
 | `assets/covers/_render.html` | render de portada 16:9 | auxiliar |
 | `research/sirli/analisis/libro.html` | análisis del corpus SIRLI | documento de investigación |
-| `dossier_latam_2026/*.html` | `dossier_latam_2026/build_dossier_latam_oficial.py` | **proyecto de referencia**: el sistema espera un proyecto, esto es uno resuelto de punta a punta |
 
 ## 3. Demo y desarrollo (no van al repositorio)
 
@@ -57,7 +56,6 @@ era que **tres pantallas de demo estaban versionadas como si fueran producto**.
 | ruta | peso | motivo |
 |---|---|---|
 | `plantillas/storyboard_ejemplo/` (61 archivos) | 15.28 MB | el storyboard viejo: 14 tomas de un proyecto ficticio, con un PDF de 3.4 MB y 40 fotogramas de YouTube. Sustituido por `gen_teleprompter.py --demo`, que produce el mismo ejemplo sin guardar material ajeno |
-| `dossier_latam_2026/archivado_2026-11-05/dossier_latam_2026.html` | 105 kB | duplicado byte a byte de `dossier_latam_2026_regenerado.html` (mismo MD5) |
 
 `README.md` §Storyboard se actualizó: ya no ofrece el ejemplo borrado y apunta a
 `gen_teleprompter.py` y a `tools/exportar_pdf.py`.
@@ -66,7 +64,7 @@ era que **tres pantallas de demo estaban versionadas como si fueran producto**.
 
 | ruta | peso | qué es en realidad |
 |---|---|---|
-| `dossier_latam_2026/` (54 archivos) | 7.34 MB | **proyecto de referencia**: el sistema espera un proyecto con todo resuelto; este lo es, con sus `_skill_run/` completos. También lo exige `tests/test_check_anti_generico.py:26`. Se queda |
+| ~~`dossier_latam_2026/`~~ | — | **borrado**: dossier de un rally pasado (7.34 MB) que sesgaba al agente con soluciones inventadas. `tests/test_check_anti_generico.py` ya no lo exige; valida cualquier `dossier*/_skill_run/**/*.json` que exista |
 | `graphify-out/` (20 archivos) | 0.93 MB | **el cerebro**: grafo de la investigación profunda (`brain/corpus/` compilado) que la IA consulta para saber cómo moverse. `graphify-out/graph.html` (403 kB) es su vista y no es el mismo build que `dashboard/graph.html` (188 kB). Se queda |
 | `dashboard/stats.html` | 16.6 kB | **debrief de después del rally**: lo que se mira al cerrar, no durante. Que ninguna pestaña la enlace no es un descuido del archivo, es que falta el botón de entrada |
 

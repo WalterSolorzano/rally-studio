@@ -23,8 +23,7 @@ Seis pestañas en la barra móvil caben: medido con el CSS real a 360, 390 y 430
 Fuera de `dashboard/` no hay interfaz de producto. Hay **entregables**, que son archivos
 sueltos porque se publican, se imprimen o se copian al teléfono:
 `script/teleprompter.html` (autocontenido, 0 red) y `script/guion_rodaje.pdf`.
-Y hay **material de trabajo**, que no se sirve: `dossier_latam_2026/` (proyecto de
-referencia) y `graphify-out/` (el cerebro compilado).
+Y hay **material de trabajo**, que no se sirve: `graphify-out/` (el cerebro compilado).
 
 ## 2. Cómo se refresca sin que nadie apriete nada
 
@@ -85,7 +84,7 @@ Lo que sigue copiado, medido con `tools/auditar_repeticiones.py` (311 archivos d
 | ruta | peso | motivo |
 |---|---|---|
 | `plantillas/storyboard_ejemplo/` (61 archivos) | 15.28 MB | storyboard viejo de un proyecto ficticio; lo reemplaza `gen_teleprompter.py --demo` |
-| `dossier_latam_2026/archivado_2026-11-05/dossier_latam_2026.html` | 105 kB | duplicado byte a byte (mismo MD5) |
+| ~~`dossier_latam_2026/archivado_2026-11-05/dossier_latam_2026.html`~~ | 105 kB | borrado con la carpeta: era duplicado byte a byte (mismo MD5) |
 | `dashboard/dossier_preview.html` | 5.8 kB | huérfano real: 0 referencias en todo el repo |
 
 Dos planes sueltos en la raíz tampoco los lee nadie (`git grep` = 0), pero son el registro

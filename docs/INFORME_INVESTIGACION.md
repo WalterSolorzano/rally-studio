@@ -4,7 +4,7 @@
 
 > **DOCUMENTO CANÓNICO ÚNICO.** Esta es la única investigación vigente del repositorio.
 > Los informes de otras IA (`chatgptdeep-research-report.md`,
-> `Proyectos Ganadores de Rally Latam.md`, `dossier_latam_2026/`) quedan como **fuente citada, no como verdad paralela**: solo
+> `Proyectos Ganadores de Rally Latam.md`) quedan como **fuente citada, no como verdad paralela**: solo
 > entran aquí si sobreviven al contraste con el banco verificado. Ver §0.2.
 
 | Campo | Valor |
@@ -59,7 +59,7 @@ Había cinco investigaciones en paralelo, de tres IA distintas, con cifras que n
 | `docs/INFORME_INVESTIGACION.md` | este archivo | v2.0, escrita el 19/10 **antes** del banco SIRLI | **CANÓNICO.** Es el único que se actualiza. | → `brain/corpus/informe_investigacion.md` vía `brain/sync_corpus.py`. |
 | `research/sirli/analisis/patrones.md` | `447A5A05A7D3` | Primer análisis, 26 transcripciones, sin control de sesgo | **SUPERSEDIDO** por `investigacion_profunda.md`. | Ya marcado dentro del archivo. |
 | `research/sirli/analisis/hipotesis.md` | `99D6B25C0ACA` | Informe intermedio de hipótesis | **SUPERSEDIDO** por `investigacion_profunda.md`. | Ya marcado dentro del archivo. |
-| `dossier_latam_2026/archivado_2026-11-05/dossier_latam_2026.md` | `6ABEBA5BFB24` | Dossier previo, ya archivado el 05/11 | Histórico. | Se queda en `archivado_2026-11-05/`. |
+| ~~`dossier_latam_2026/`~~ | — | Dossier de un rally pasado (9 retos, soluciones inventadas) | **ELIMINADO** del paquete: residuo de prueba que sesgaba al agente. | Ya no existe en disco; solo en el historial de git. |
 
 **Regla de oro que sale de esta consolidación:** un dato de T2 o T4 que no aparezca en T0/T1 **no se usa**. No se borra el archivo de origen, porque sirve para rastrear de dónde salió la confusión; se deja de tratar como verdad.
 
