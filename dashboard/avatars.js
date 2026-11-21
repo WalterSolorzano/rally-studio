@@ -62,96 +62,133 @@
   /* ------------------------------ piezas ------------------------------ */
 
   function camisa(color) {
-    // Camiseta con cuello redondo y costura de manga: menos bloque, mas prenda.
+    // Camiseta con cuello, costura de manga y cuello del personaje: no un bloque plano.
     return (
-      '<path d="M13 96 C13 79 27 70 48 70 C69 70 83 79 83 96 Z" fill="' + color +
+      '<path d="M44 52 h8 v20 h-8 Z" fill="' + BLANCO + '"/>' +
+      '<path d="M12 96 C12 79 26 72 48 72 C70 72 84 79 84 96 Z" fill="' + color +
       '" stroke="' + TINTA + '" stroke-width="' + G + '" stroke-linejoin="round"/>' +
-      '<path d="M38 71 Q48 84 58 71" fill="none" stroke="' + TINTA +
+      '<path d="M37 73 Q48 87 59 73" fill="none" stroke="' + TINTA +
       '" stroke-width="2.6" stroke-linecap="round"/>' +
-      '<path d="M29 76 C25 82 24 89 24 96 M67 76 C71 82 72 89 72 96" fill="none" stroke="' +
-      TINTA + '" stroke-width="2" stroke-linecap="round" opacity=".35"/>' +
-      '<path d="M40 79 Q48 87 56 79" fill="none" stroke="' + BLANCO +
-      '" stroke-width="1.8" stroke-linecap="round" opacity=".28"/>'
+      '<path d="M12 96 C12 79 26 72 48 72 C70 72 84 79 84 96 Z" fill="none" stroke="' + BLANCO +
+      '" stroke-width="1.6" stroke-linejoin="round" opacity=".22"/>' +
+      '<path d="M28 78 C24 84 23 91 23 96 M68 78 C72 84 73 91 73 96" fill="none" stroke="' +
+      TINTA + '" stroke-width="2" stroke-linecap="round" opacity=".32"/>' +
+      '<path d="M41 77 Q48 84 55 77" fill="none" stroke="' + BLANCO +
+      '" stroke-width="1.8" stroke-linecap="round" opacity=".3"/>'
     );
   }
 
   function cara() {
     return (
-      '<circle cx="26" cy="43" r="4.6" fill="' + BLANCO + '" stroke="' + TINTA +
+      '<circle cx="23" cy="44" r="5" fill="' + BLANCO + '" stroke="' + TINTA +
       '" stroke-width="' + G + '"/>' +
-      '<circle cx="70" cy="43" r="4.6" fill="' + BLANCO + '" stroke="' + TINTA +
+      '<circle cx="73" cy="44" r="5" fill="' + BLANCO + '" stroke="' + TINTA +
       '" stroke-width="' + G + '"/>' +
-      '<ellipse cx="48" cy="41" rx="21" ry="22.5" fill="' + BLANCO +
+      '<ellipse cx="48" cy="40" rx="23" ry="23.5" fill="' + BLANCO +
       '" stroke="' + TINTA + '" stroke-width="' + G + '"/>'
     );
   }
 
   function ojos() {
-    // Ojo de dibujo: punto con brillo. Un aro dentro de otro aro se lee mal.
+    // Ojo de dibujo: punto grande con brillo y parpado.
     function uno(x, y) {
       return (
-        '<circle cx="' + x + '" cy="' + y + '" r="3.4" fill="' + TINTA + '"/>' +
-        '<circle cx="' + (x - 1) + '" cy="' + (y - 1.2) + '" r="1" fill="' + BLANCO + '"/>'
+        '<circle cx="' + x + '" cy="' + y + '" r="4" fill="' + TINTA + '"/>' +
+        '<circle cx="' + (x - 1.3) + '" cy="' + (y - 1.4) + '" r="1.3" fill="' + BLANCO + '"/>'
       );
     }
-    return uno(40, 42) + uno(56, 42);
+    return uno(39, 41) + uno(57, 41);
+  }
+
+  function cejas() {
+    return (
+      '<path d="M33 32.5 C36 30 41 29.6 44 31.4" fill="none" stroke="' + TINTA +
+      '" stroke-width="2.6" stroke-linecap="round"/>' +
+      '<path d="M52 31.4 C55 29.6 60 30 63 32.5" fill="none" stroke="' + TINTA +
+      '" stroke-width="2.6" stroke-linecap="round"/>'
+    );
+  }
+
+  function nariz() {
+    return '<path d="M48 43 C50 46.6 50 48.4 47.6 49.2" fill="none" stroke="' + TINTA +
+      '" stroke-width="2.2" stroke-linecap="round"/>';
   }
 
   function boca() {
     return (
-      '<path d="M41 52 q7 6 14 0" fill="none" stroke="' + TINTA +
-      '" stroke-width="2.6" stroke-linecap="round"/>' +
-      '<ellipse cx="30" cy="48" rx="3.4" ry="2" fill="#0866F5" opacity=".14"/>' +
-      '<ellipse cx="66" cy="48" rx="3.4" ry="2" fill="#0866F5" opacity=".14"/>'
+      '<path d="M41 52.5 q7 6.5 14 0" fill="none" stroke="' + TINTA +
+      '" stroke-width="2.8" stroke-linecap="round"/>' +
+      '<ellipse cx="29" cy="48" rx="3.6" ry="2.2" fill="#0866F5" opacity=".16"/>' +
+      '<ellipse cx="67" cy="48" rx="3.6" ry="2.2" fill="#0866F5" opacity=".16"/>'
     );
   }
 
-  function pelo(tipo) {
+  function peloAtras(tipo) {
     var trazo = ' stroke="' + TINTA + '" stroke-width="' + G + '" stroke-linejoin="round"';
     var negro = ' fill="' + TINTA + '"';
-    var brillo = '<path d="M34 27 C40 23 56 23 62 27" fill="none" stroke="' + BLANCO +
-      '" stroke-width="1.8" stroke-linecap="round" opacity=".3"/>';
-    if (tipo === "p0") {
-      // Rapado: pelo corto pegado, pero con volumen: nunca una calva.
+    if (tipo === "p3") {
+      // Melena: dos mechones anchos a los lados; en la cara no se ve nada de esto.
       return (
-        '<path d="M26 42 C26 22 70 22 70 42 C67 33 62 30 56 29.5 C47 29 33 32 29 36 ' +
-        'C27 38 26.5 40 26 42 Z"' + negro + trazo + "/>" + brillo
+        '<path d="M17 33 C17 16 79 16 79 33 L79 62 Q79 68 72 68 L67 68 L67 37 ' +
+        'C67 30 59 27 48 27 C37 27 29 30 29 37 L29 68 L24 68 Q17 68 17 62 Z"' + negro + trazo + "/>"
+      );
+    }
+    if (tipo === "p4") {
+      return '<circle cx="48" cy="13" r="7.4"' + negro + trazo + "/>";
+    }
+    return "";
+  }
+
+  function peloFrente(tipo) {
+    var trazo = ' stroke="' + TINTA + '" stroke-width="' + G + '" stroke-linejoin="round"';
+    var negro = ' fill="' + TINTA + '"';
+    var brillo = '<path d="M35 24 C41 20 56 20 62 24" fill="none" stroke="' + BLANCO +
+      '" stroke-width="1.9" stroke-linecap="round" opacity=".3"/>';
+    if (tipo === "p0") {
+      // Rapado: pegado al craneo, con volumen minimo.
+      return (
+        '<path d="M25 41 C25 21 71 21 71 41 C70 32 65 27.5 57 27 C48 26.2 36 29 30 34 ' +
+        'C27.5 36.4 25.6 38.6 25 41 Z"' + negro + trazo + "/>" +
+        '<path d="M36 25 C42 22 54 22 60 25" fill="none" stroke="' + BLANCO +
+        '" stroke-width="1.6" stroke-linecap="round" opacity=".22"/>'
       );
     }
     if (tipo === "p1") {
       return (
-        '<path d="M25 44 C25 18 71 18 71 44 C68 33 64 29 56 28 C48 27 36 30 30 34 ' +
-        'C27 36 26 40 25 44 Z"' + negro + trazo + "/>" + brillo
+        '<path d="M24 43 C24 19 72 19 72 43 C71 32 66 26.5 57 25.8 C47 25 35 28.5 29 33.6 ' +
+        'C26.4 36.2 24.6 39.6 24 43 Z"' + negro + trazo + "/>" +
+        '<path d="M33 29.5 C38 26 44 25 49 25.4" fill="none" stroke="' + BLANCO +
+        '" stroke-width="2.2" stroke-linecap="round" opacity=".4"/>'
       );
     }
     if (tipo === "p2") {
-      var out = '<path d="M26 33 C26 20 70 20 70 33 Z"' + negro + trazo + "/>";
-      var xs = [28, 35, 42, 49, 56, 63, 68];
+      var out = '<path d="M25 30 C25 17 71 17 71 30 Z"' + negro + trazo + "/>";
+      var xs = [27, 34, 41, 48, 55, 62, 69];
       for (var i = 0; i < xs.length; i++) {
-        out += '<circle cx="' + xs[i] + '" cy="' + (26 - (i % 2) * 5) + '" r="5.8"' + negro + trazo + "/>";
+        out += '<circle cx="' + xs[i] + '" cy="' + (23 - (i % 2) * 4) + '" r="5.6"' + negro + trazo + "/>";
       }
-      return out;
+      return out + brillo;
     }
     if (tipo === "p3") {
+      // Flequillo: tapa la frente sin comerse la cara.
       return (
-        '<path d="M22 62 L22 33 C22 15 74 15 74 33 L74 62 L65 62 L65 36 C65 27 55 23 48 23 ' +
-        'C41 23 31 27 31 36 L31 62 Z"' + negro + trazo + "/>" +
-        '<path d="M31 30 C38 24 58 24 65 30" fill="none" stroke="' + BLANCO +
-        '" stroke-width="1.8" stroke-linecap="round" opacity=".25"/>'
+        '<path d="M24 31 C25 16 72 17 70 30 C66 24 58 22.5 48 23.5 C38 24.5 29 27 24 31 Z"' +
+        negro + trazo + "/>" +
+        '<path d="M32 26 C42 22 58 22 66 26" fill="none" stroke="' + BLANCO +
+        '" stroke-width="1.9" stroke-linecap="round" opacity=".26"/>'
       );
     }
     if (tipo === "p4") {
       return (
-        '<path d="M25 40 C25 18 71 18 71 40 C66 28 30 28 25 40 Z"' + negro + trazo + "/>" +
-        '<circle cx="48" cy="15" r="6.6"' + negro + trazo + "/>" +
-        '<path d="M43 21 q5 2 10 0" fill="none" stroke="' + TINTA + '" stroke-width="2.2"/>' + brillo
+        '<path d="M25 37 C25 18 71 18 71 37 C67 27 29 27 25 37 Z"' + negro + trazo + "/>" +
+        '<path d="M43 20 q5 -3 10 0" fill="none" stroke="' + TINTA + '" stroke-width="2.2"/>' + brillo
       );
     }
     return (
-      '<path d="M25 44 C25 18 71 18 71 44 C68 33 64 29 56 28 C48 27 36 30 30 34 ' +
-      'C27 36 26 40 25 44 Z"' + negro + trazo + "/>" +
-      '<path d="M36 27 C44 23 56 23 64 28" fill="none" stroke="' + BLANCO +
-      '" stroke-width="2.2" stroke-linecap="round" opacity=".55"/>'
+      '<path d="M24 43 C24 19 72 19 72 43 C71 32 66 26.5 57 25.8 C47 25 35 28.5 29 33.6 ' +
+      'C26.4 36.2 24.6 39.6 24 43 Z"' + negro + trazo + "/>" +
+      '<path d="M36 26 C44 22 56 22 64 27" fill="none" stroke="' + BLANCO +
+      '" stroke-width="2.4" stroke-linecap="round" opacity=".55"/>'
     );
   }
 
@@ -160,50 +197,55 @@
     if (tipo === "a1") {
       // Los anteojos son solo el aro: los ojos de abajo se siguen viendo.
       return (
-        '<circle cx="40" cy="42" r="6.6" fill="none"' + trazo + "/>" +
-        '<circle cx="56" cy="42" r="6.6" fill="none"' + trazo + "/>" +
-        '<path d="M46.8 42 h2.8" stroke="' + TINTA + '" stroke-width="2.6" stroke-linecap="round"/>'
+        '<circle cx="39" cy="41" r="7" fill="none"' + trazo + "/>" +
+        '<circle cx="57" cy="41" r="7" fill="none"' + trazo + "/>" +
+        '<path d="M46 41 h4" stroke="' + TINTA + '" stroke-width="2.6" stroke-linecap="round"/>' +
+        '<path d="M32 39.5 L27 38 M64 39.5 L69 38" stroke="' + TINTA +
+        '" stroke-width="2.4" stroke-linecap="round"/>'
       );
     }
     if (tipo === "a2") {
       return (
-        '<rect x="31" y="34" width="18" height="15" rx="5" fill="#22304A" stroke="' + TINTA +
+        '<rect x="29.5" y="33" width="18.5" height="16" rx="5.5" fill="#22304A" stroke="' + TINTA +
         '" stroke-width="2.8"/>' +
-        '<rect x="47" y="34" width="18" height="15" rx="5" fill="#22304A" stroke="' + TINTA +
+        '<rect x="48" y="33" width="18.5" height="16" rx="5.5" fill="#22304A" stroke="' + TINTA +
         '" stroke-width="2.8"/>' +
-        '<path d="M47 40 h2" stroke="' + TINTA + '" stroke-width="2.8"/>'
+        '<path d="M48 39 h0.5" stroke="' + TINTA + '" stroke-width="3" stroke-linecap="round"/>' +
+        '<path d="M34 37 L39 36" stroke="' + BLANCO + '" stroke-width="2" opacity=".5" stroke-linecap="round"/>'
       );
     }
-    // Casco de ingeniero: mismo dibujo, cuatro tonos de la paleta.
+    // Casco de ingeniero: copa con cresta, ala ancha y cuatro tonos de la paleta.
     var CASCOS = { a3: "#F0B429", a4: "#EF7A22", a7: "#FFFFFF", a8: "#0866F5" };
     if (CASCOS[tipo]) {
       var tono = CASCOS[tipo];
       return (
-        '<path d="M26 32 C26 10 70 10 70 32 Z" fill="' + tono + '" stroke="' + TINTA +
+        '<path d="M26 31 C26 8 70 8 70 31 Z" fill="' + tono + '" stroke="' + TINTA +
         '" stroke-width="' + G + '" stroke-linejoin="round"/>' +
-        '<rect x="19" y="29" width="58" height="8" rx="4" fill="' + tono + '" stroke="' + TINTA +
+        '<rect x="17" y="29" width="62" height="8.5" rx="4.25" fill="' + tono + '" stroke="' + TINTA +
         '" stroke-width="' + G + '"/>' +
-        '<path d="M48 11 v18" fill="none" stroke="' + TINTA + '" stroke-width="2.4" opacity=".45"/>' +
-        '<path d="M33 20 C29 23 27 27 27 31" fill="none" stroke="' + BLANCO +
-        '" stroke-width="2" stroke-linecap="round" opacity=".45"/>'
+        '<path d="M48 9.5 v20" fill="none" stroke="' + TINTA + '" stroke-width="2.6" opacity=".4"/>' +
+        '<path d="M33 17 C30 20 28 25 27.5 29" fill="none" stroke="' + BLANCO +
+        '" stroke-width="2.2" stroke-linecap="round" opacity=".5"/>' +
+        '<circle cx="57" cy="20" r="2" fill="' + TINTA + '" opacity=".25"/>'
       );
     }
     if (tipo === "a5") {
       return (
-        '<path d="M27 31 C27 13 69 13 69 31 Z" fill="' + camisaColor + '" stroke="' + TINTA +
+        '<path d="M25 32 C25 14 71 14 71 32 Z" fill="' + camisaColor + '" stroke="' + TINTA +
         '" stroke-width="' + G + '" stroke-linejoin="round"/>' +
-        '<path d="M69 30 q13 2 13 7 h-13 Z" fill="' + camisaColor + '" stroke="' + TINTA +
+        '<path d="M70 31 q14 2 14 8 h-14 Z" fill="' + camisaColor + '" stroke="' + TINTA +
         '" stroke-width="' + G + '" stroke-linejoin="round"/>' +
-        '<circle cx="48" cy="16" r="2.4" fill="' + BLANCO + '"/>'
+        '<path d="M25 30 L25 34" stroke="' + TINTA + '" stroke-width="3" stroke-linecap="round"/>' +
+        '<circle cx="48" cy="17" r="2.6" fill="' + BLANCO + '"/>'
       );
     }
     if (tipo === "a6") {
       return (
-        '<path d="M27 44 C27 14 69 14 69 44" fill="none" stroke="' + TINTA + '" stroke-width="' + G +
+        '<path d="M25 46 C25 11 71 11 71 46" fill="none" stroke="' + TINTA + '" stroke-width="' + G +
         '" stroke-linecap="round"/>' +
-        '<rect x="21" y="36" width="10" height="16" rx="4.5" fill="#22304A" stroke="' + TINTA +
+        '<rect x="17.5" y="35" width="11" height="17" rx="5" fill="#22304A" stroke="' + TINTA +
         '" stroke-width="2.6"/>' +
-        '<rect x="65" y="36" width="10" height="16" rx="4.5" fill="#22304A" stroke="' + TINTA +
+        '<rect x="67.5" y="35" width="11" height="17" rx="5" fill="#22304A" stroke="' + TINTA +
         '" stroke-width="2.6"/>'
       );
     }
@@ -214,17 +256,16 @@
 
   function pintar(partes) {
     var color = (CAMISA_POR_ID[partes.camisa] || CAMISAS[0]).color;
-    var capaPelo = partes.pelo;
-    var atras = capaPelo === "p3" ? pelo(capaPelo) : "";
-    var adelante = atras ? "" : pelo(capaPelo);
     return (
       '<svg class="rav-avatar" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" ' +
       'aria-hidden="true" focusable="false">' +
       camisa(color) +
-      atras +
+      peloAtras(partes.pelo) +
       cara() +
-      adelante +
+      peloFrente(partes.pelo) +
+      cejas() +
       ojos() +
+      nariz() +
       boca() +
       accesorio(partes.accesorio, color) +
       "</svg>"
