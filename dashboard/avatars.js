@@ -339,7 +339,56 @@
         '<path d="M48 8 L48 2 M24 14 L17 7 M72 14 L79 7 M8 48 L1 48 M88 48 L95 48 M24 82 L17 89 M72 82 L79 89 M48 88 L48 94" ' +
         'stroke="' + N + '" stroke-width="4.4" stroke-linecap="round"/>',
     },
+    {
+      id: "av_mentor",
+      rol: "Mentor",
+      porque: "El profe con birrete y libreta: no produce, pregunta y desbloquea.",
+      cuerpo:
+        torso(OLIVA) +
+        '<path d="M22 24 L48 12 L74 24 L48 36 Z" fill="' + AZUL + '" stroke="' + N + '" stroke-width="' + G + '" stroke-linejoin="round"/>' +
+        '<path d="M70 26 L70 40" stroke="' + N + '" stroke-width="3.4"/>' +
+        '<circle cx="70" cy="42" r="3.4" fill="' + OR + '" stroke="' + N + '" stroke-width="2"/>' +
+        '<path d="M22 36 C22 16 74 16 74 36 C66 27 30 27 22 36 Z" fill="' + GRIS + '"/>' +
+        cara(48, 46, 26, 23) +
+        ojo(38, 44, 3.4) +
+        ojo(59, 44, 3.4) +
+        '<path d="M33 35 L44 35 M53 35 L64 35" stroke="' + N + '" stroke-width="3" stroke-linecap="round"/>' +
+        boca(48, 57, 24, 8, false) +
+        '<rect x="12" y="70" width="26" height="18" rx="2" fill="' + HUMO + '" stroke="' + N + '" stroke-width="' + G + '" transform="rotate(-8 25 79)"/>' +
+        '<path d="M17 75 L33 73 M17 80 L31 79" stroke="' + BL + '" stroke-width="2.2"/>',
+    },
+    {
+      id: "av_visitante",
+      rol: "Visitante",
+      porque: "El que pasa a mirar con su gafete: ve todo, no toca nada.",
+      cuerpo:
+        torso(GRIS) +
+        '<path d="M20 34 C20 15 76 15 76 34 Z" fill="' + BL + '" stroke="' + N + '" stroke-width="' + G + '" stroke-linejoin="round"/>' +
+        '<path d="M76 34 L88 40 L76 44 Z" fill="' + BL + '" stroke="' + N + '" stroke-width="' + G + '" stroke-linejoin="round"/>' +
+        cara(48, 48, 25, 22) +
+        ojo(38, 46, 3.6) +
+        ojo(59, 46, 3.6) +
+        boca(48, 58, 22, 7, false) +
+        '<rect x="61" y="72" width="18" height="13" rx="2" fill="#fff" stroke="' + N + '" stroke-width="3"/>' +
+        '<path d="M70 72 L70 65" stroke="' + N + '" stroke-width="2.6"/>' +
+        '<path d="M65 78 L75 78" stroke="' + BL + '" stroke-width="2.2"/>',
+    },
+    {
+      id: "av_admin",
+      rol: "Admin",
+      porque: "El que abre y cierra la puerta: lleva la llave y el registro.",
+      cuerpo:
+        torso(AZUL) +
+        '<path d="M22 36 C22 15 74 15 74 36 C66 27 30 27 22 36 Z" fill="' + N + '"/>' +
+        cara(48, 46, 26, 23) +
+        ojo(38, 44, 3.4) +
+        ojo(59, 44, 3.4) +
+        boca(48, 57, 26, 9, false) +
+        '<circle cx="24" cy="76" r="7" fill="none" stroke="' + OR + '" stroke-width="4.2"/>' +
+        '<path d="M29 81 L44 96 M36 88 L40 84 M40 92 L44 88" stroke="' + OR + '" stroke-width="4.2" stroke-linecap="round"/>',
+    },
   ];
+  var POR_ROL = { admin: "av_admin", mentor: "av_mentor", visitor: "av_visitante" };
 
   var POR_ID = {};
   LISTA.forEach(function (a) {
@@ -380,7 +429,9 @@
 
   window.RAV = {
     lista: LISTA.map(function (a) {
-      return { id: a.id, rol: a.rol, porque: a.porque };
+      // `nombre` es lo que la pagina pinta bajo cada avatar (join y perfil):
+      // el rotulo del personaje es su rol, no un nombre propio.
+      return { id: a.id, nombre: a.rol, rol: a.rol, porque: a.porque };
     }),
     roles: ROLES,
     svg: function (id) {
@@ -404,6 +455,9 @@
       if (POR_ID[id]) return id;
       if (LEGADO[id]) return LEGADO[id];
       return LISTA[0].id;
+    },
+    porRol: function (role) {
+      return POR_ROL[role] || "";
     },
   };
 })();

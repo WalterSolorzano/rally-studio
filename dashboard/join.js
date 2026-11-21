@@ -10,6 +10,16 @@
   const status = document.getElementById("join-status");
   const contenedor = document.getElementById("join-avatares");
   const contenedorRoles = document.getElementById("join-roles");
+  const quien = document.getElementById("join-quien");
+  const rolesFieldset = document.getElementById("join-roles-fieldset");
+
+  /* Como entra el invitado lo decide el enlace, no el invitado: el motor
+   * guarda el rol en la invitacion y aqui solo se anuncia. */
+  const ROLES_ENTRADA = {
+    mentor: { titulo: "Mentor", detalle: "revisa y aprueba", avatar: "av_mentor" },
+    visitor: { titulo: "Visitante", detalle: "solo lectura", avatar: "av_visitante" },
+    member: { titulo: "Miembro", detalle: "", avatar: "" },
+  };
 
   function pintarAvatares() {
     if (!contenedor || !window.RAV) return;
@@ -40,8 +50,57 @@
   pintarAvatares();
   pintarRoles();
 
+  function anunciarRol(rol) {
+    const ficha = ROLES_ENTRADA[rol] || ROLES_ENTRADA.member;
+    const linea = "Entras como " + ficha.titulo.toLowerCase() +
+      (ficha.detalle ? " \u00b7 " + ficha.detalle : "");
+    if (quien) {
+      quien.setAttribute("aria-label", linea);
+      quien.innerHTML = (ficha.avatar && window.RAV ? RAV.svg(ficha.avatar) : "") +
+        "<span>" + linea + "</span>";
+    }
+    if (rol === "visitor" && rolesFieldset) rolesFieldset.hidden = true;
+    if (ficha.avatar) {
+      const radio = form.querySelector('input[name="avatar"][value="' + ficha.avatar + '"]');
+      if (radio) radio.checked = true;
+    }
+  }
+
+  if (token) {
+    fetch("/api/invite?t=" + encodeURIComponent(token))
+      .then(function (res) { return res.ok ? res.json() : null; })
+      .then(function (info) { if (info && info.ok) anunciarRol(info.role); })
+      .catch(function () { /* sin aviso, la entrada sigue funcionando */ });
+  }
+
   function mostrar(text) {
     status.textContent = text || "";
+  }
+
+  // Los errores del motor viajan como codigos cortos ("invite-usado"). Un
+  // codigo en pantalla no le dice nada a quien esta entrando: se traduce a una
+  // frase que le diga que hacer.
+  var TEXTOS = {
+    "invite-usado": "Ese enlace ya se usó. Pide uno nuevo al administrador del equipo.",
+    "invite-expirado": "Ese enlace venció. Pide uno nuevo al administrador del equipo.",
+    "invite-invalido": "Ese enlace no es válido. Pide uno nuevo al administrador del equipo.",
+    "nombre-invalido": "Escribe tu nombre (entre 1 y 40 caracteres).",
+    "nombre-requerido": "Escribe tu nombre.",
+    "nombre-largo": "El nombre tiene más de 40 caracteres. Acórtalo.",
+    "clave-corta": "La clave necesita al menos 6 caracteres.",
+    "avatar-largo": "Ese avatar no existe en esta versión. Recarga la página y elige otro.",
+    "sin-permiso": "Tu usuario no tiene permiso para entrar a este proyecto.",
+    "no-autenticado": "Tu sesión venció. Vuelve a entrar con el enlace.",
+    "origen-no-permitido": "El enlace se abrió desde otro sitio. Copia la dirección completa y ábrela de nuevo.",
+  };
+
+  function mensajeDe(codigo) {
+    var clave = String(codigo || "").trim();
+    if (TEXTOS[clave]) return TEXTOS[clave];
+    if (/^[a-z0-9-]+$/.test(clave)) {
+      return "No se pudo entrar. El enlace pudo vencer o ya fue usado. Pide uno nuevo al administrador.";
+    }
+    return clave || "No se pudo entrar. El enlace pudo vencer o ya fue usado.";
   }
 
   if (!token) {
@@ -53,10 +112,25 @@
 
   function deviceId() {
     let id = localStorage.getItem("rally_device_id");
-    if (!id) {
-      id = "dev_" + crypto.randomUUID();
-      localStorage.setItem("rally_device_id", id);
+    if (id) return id;
+    // crypto.randomUUID solo existe en contexto seguro (https o localhost).
+    // En una red local por http el navegador no lo ofrece y el enlace de
+    // invitacion tiene que seguir funcionando: se cae a un id simple. No es un
+    // secreto, es la marca del equipo.
+    let uuid = "";
+    try {
+      if (window.crypto && typeof window.crypto.randomUUID === "function") {
+        uuid = window.crypto.randomUUID();
+      }
+    } catch (error) {
+      uuid = "";
     }
+    if (!uuid) {
+      uuid =
+        Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 10);
+    }
+    id = "dev_" + uuid;
+    localStorage.setItem("rally_device_id", id);
     return id;
   }
 
@@ -97,13 +171,20 @@
       });
       const body = await res.json().catch(function () { return {}; });
       if (!res.ok) {
-        mostrar(body.error || "No se pudo entrar. El enlace pudo vencer o ya fue usado.");
+        mostrar(mensajeDe(body.error));
         button.disabled = false;
         return;
       }
       if (body.pending) {
         // La sesion todavia no sirve: el admin tiene que aprobar la solicitud.
         mostrar("Solicitud enviada. Tu admin la aprueba y entras.");
+        button.disabled = false;
+        return;
+      }
+      if (!body.session || !body.member) {
+        // Sin sesion o sin miembro no hay a donde ir: mejor decirlo que
+        // guardar "undefined" y romper la siguiente pantalla.
+        mostrar("El servidor respondió sin sesión. Recarga e intenta de nuevo.");
         button.disabled = false;
         return;
       }

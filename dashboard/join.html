@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Entrar al proyecto · Rally Studio</title>
+  <title>Entrar al proyecto Â· Rally Studio</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -102,6 +102,20 @@
     }
     .join-avatars input:focus-visible + label { outline: 2px solid var(--color-primary); outline-offset: 2px; }
     .join-hint { margin: var(--space-2) 0 0; font-size: 12px; color: var(--text-faint); }
+    .join-quien {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      margin: 0 0 var(--space-3);
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-md, 12px);
+      background: var(--bg-secondary);
+      box-shadow: inset 0 0 0 1px var(--color-primary);
+      font-weight: 600;
+      color: var(--text-title);
+    }
+    .join-quien svg { width: 44px; height: 44px; flex: none; }
+    .join-quien:empty { display: none; }
     #join-status { margin: var(--space-4, 16px) 0 0; min-height: 20px; color: var(--status-err-text); }
   </style>
 </head>
@@ -109,11 +123,12 @@
   <main class="join-shell">
     <section class="join-card">
       <h1>Entrar al proyecto</h1>
+      <p class="join-quien" id="join-quien" role="status" aria-live="polite"></p>
       <p>Este enlace es personal. Escribe el nombre con el que vas a aparecer en el trabajo del equipo.</p>
       <form id="join-form" novalidate>
         <label for="join-name">Tu nombre</label>
         <input id="join-name" name="name" type="text" maxlength="40" autocomplete="name" required>
-        <fieldset>
+        <fieldset id="join-roles-fieldset">
           <legend>Tus roles</legend>
           <div class="join-roles" id="join-roles" role="group" aria-label="Tus roles"></div>
         </fieldset>
@@ -129,7 +144,7 @@
       </form>
     </section>
   </main>
-  <script src="avatars.js?v=20261117_rev6" defer></script>
-  <script src="join.js?v=20261117_rev4" defer></script>
+  <script src="avatars.js?v=20261117_rev7" defer></script>
+  <script src="join.js?v=20261117_rev5" defer></script>
 </body>
 </html>

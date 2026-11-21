@@ -7191,6 +7191,8 @@ body.rs-sheet-open { overflow: hidden; }
 .role-chip.is-admin { background: var(--bg-secondary); color: var(--color-primary); }
 .role-chip.is-operator { background: var(--bg-secondary); color: var(--color-accent); }
 .role-chip.is-member { background: var(--bg-subtle); color: var(--text-muted); }
+.role-chip.is-mentor { background: var(--bg-secondary); color: var(--text-title); }
+.role-chip.is-visitor { background: var(--bg-subtle); color: var(--text-faint); }
 .role-chip.is-pending { background: var(--bg-subtle); color: var(--color-accent); }
 .member-row.is-pending { border-color: var(--color-accent); }
 .member-actions { display: inline-flex; gap: var(--space-2); }

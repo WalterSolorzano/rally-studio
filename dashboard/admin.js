@@ -7,6 +7,7 @@
   const copyBtn = document.getElementById("copy-invite");
   const inviteOut = document.getElementById("invite-url");
   const ttlSel = document.getElementById("invite-ttl");
+  const inviteRoleSel = document.getElementById("invite-role");
   const tokenInput = document.getElementById("admin-token");
   const saveTokenBtn = document.getElementById("save-token");
   const sessionState = document.getElementById("session-state");
@@ -47,6 +48,16 @@
   function puedeEditar() {
     const r = role();
     return r === "admin" || r === "operator";
+  }
+
+  function puedeVerMiembros() {
+    const r = role();
+    return r === "admin" || r === "operator" || r === "mentor";
+  }
+
+  function puedeAprobar() {
+    const r = role();
+    return r === "admin" || r === "mentor";
   }
 
   function status(text) {
@@ -105,19 +116,27 @@
 
   function pintarQuien(member) {
     if (!member) return;
-    const etiqueta = member.role === "operator" ? "operador" : member.role === "admin" ? "admin" : "miembro";
+    const etiqueta = etiquetaRol(member.role);
     whoEl.textContent = member.name + " · " + etiqueta;
   }
 
   async function guardarSesion() {
     const value = (tokenInput.value || "").trim();
     if (!value) { status("Pega el token."); return; }
+    const previo = localStorage.getItem("rally_session_token") || "";
     localStorage.setItem("rally_session_token", value);
     saveTokenBtn.disabled = true;
     const ok = await cargarSesion();
     saveTokenBtn.disabled = false;
-    tokenInput.value = "";
-    if (ok) { status(""); arrancar(); }
+    if (ok) { tokenInput.value = ""; status(""); arrancar(); return; }
+    // Un token equivocado no puede llevarse por delante la sesión que sí servía:
+    // se devuelve el anterior y se dice qué pasó, en vez de dejar la pantalla muda.
+    if (previo) localStorage.setItem("rally_session_token", previo);
+    else localStorage.removeItem("rally_session_token");
+    await cargarSesion();
+    status(previo
+      ? "Ese token no sirve. Se conservó la sesión anterior."
+      : "Ese token no sirve. Pide uno nuevo al administrador.");
   }
 
   // ── Identidad + certamen ────────────────────────────────────────────
@@ -239,7 +258,11 @@
   }
 
   function etiquetaRol(role) {
-    return role === "operator" ? "operador" : role === "admin" ? "admin" : "miembro";
+    if (role === "operator") return "operador";
+    if (role === "admin") return "admin";
+    if (role === "mentor") return "mentor";
+    if (role === "visitor") return "visitante";
+    return "miembro";
   }
 
   function fila(member, unicoAdmin) {
@@ -261,7 +284,8 @@
       const sel = document.createElement("select");
       sel.className = "role-select";
       sel.setAttribute("aria-label", "Rol de " + member.name);
-      [["admin", "Admin"], ["operator", "Operador"], ["member", "Miembro"]].forEach(function (opt) {
+      [["admin", "Admin"], ["operator", "Operador"], ["mentor", "Mentor"],
+       ["member", "Miembro"], ["visitor", "Visitante"]].forEach(function (opt) {
         const o = document.createElement("option");
         o.value = opt[0];
         o.textContent = opt[1];
@@ -293,7 +317,7 @@
     row.appendChild(rol);
     row.appendChild(seen);
 
-    if (!member.revoked && member.pending && role() === "admin") {
+    if (!member.revoked && member.pending && puedeAprobar()) {
       const acciones = document.createElement("span");
       acciones.className = "member-actions";
       const si = document.createElement("button");
@@ -316,7 +340,7 @@
       espera.className = "role-chip is-pending";
       espera.textContent = "Pendiente";
       row.appendChild(espera);
-    } else if (!member.revoked && !unicoAdmin) {
+    } else if (!member.revoked && !unicoAdmin && puedeEditar()) {
       const btn = document.createElement("button");
       btn.type = "button";
       btn.className = "danger";
@@ -379,14 +403,15 @@
     inviteBtn.disabled = true;
     status("Creando enlace...");
     const ttl = Number(ttlSel && ttlSel.value) || 48;
+    const rolInvitado = (inviteRoleSel && inviteRoleSel.value) || "member";
     try {
-      const res = await api("/api/invites", { method: "POST", body: JSON.stringify({ ttl_hours: ttl }) });
+      const res = await api("/api/invites", { method: "POST", body: JSON.stringify({ ttl_hours: ttl, role: rolInvitado }) });
       if (!res.ok) { status("No se pudo crear el enlace."); return; }
       const url = location.origin + "/" + res.body.url_path;
       inviteOut.textContent = url;
       copyBtn.hidden = false;
       copyBtn.dataset.url = url;
-      status("Enlace creado. Sirve una sola vez.");
+      status("Enlace creado para " + etiquetaRol(rolInvitado).toLowerCase() + ". Sirve una sola vez.");
     } catch (e) {
       status("Sin conexión.");
     } finally {
@@ -500,10 +525,11 @@
   });
 
   async function arrancar() {
+    if (role() === "visitor") { location.replace("/"); return; }
     const ok = await cargarSesion();
     if (!ok) { status("Entra con tu enlace o token."); return; }
     await cargarIdentidad();
-    if (puedeEditar()) cargarMiembros();
+    if (puedeVerMiembros()) cargarMiembros();
   }
 
   arrancar();

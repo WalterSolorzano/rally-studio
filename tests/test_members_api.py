@@ -185,3 +185,102 @@ def test_solo_admin_aprieta_el_panico(servidor):
     status, _, _ = call("POST", base + "/api/admin/panic?project=equipo01", {},
                         headers=auth(member["session"]))
     assert status in (401, 403)
+
+
+def _invitar(base, boot, rol, proyecto="equipo01"):
+    status, body, _ = call(
+        "POST", base + "/api/invites?project=" + proyecto,
+        {"ttl_hours": 2, "role": rol}, headers=auth(boot["admin_token"]),
+    )
+    assert status == 200, body
+    assert body["role"] == rol
+    return body["token"]
+
+
+def test_la_invitacion_declara_el_rol_y_el_claim_lo_respeta(servidor):
+    """Un enlace de mentor no puede nacer miembro: el rol viaja en el invite."""
+    base, _ = servidor
+    boot = bootstrap(base, "equipo01", "Ana")
+    token = _invitar(base, boot, "mentor")
+
+    status, info, _ = call("GET", base + "/api/invite?t=" + token)
+    assert status == 200, info
+    assert info["role"] == "mentor"
+
+    body = claim(base, token, "Profe")
+    assert body["member"]["role"] == "mentor"
+    approve(base, "equipo01", body["member"]["id"], boot["admin_token"])
+    status, yo, _ = call("GET", base + "/api/member/yo?project=equipo01",
+                         headers=auth(body["session"]))
+    assert status == 200
+    assert yo["member"]["role"] == "mentor"
+
+
+def test_una_invitacion_que_no_existe_no_se_puede_leer(servidor):
+    base, _ = servidor
+    bootstrap(base, "equipo01", "Ana")
+    status, body, _ = call("GET", base + "/api/invite?t=no-existe")
+    assert status == 404
+    assert body["error"] == "invite-invalido"
+
+
+def test_no_se_reparte_admin_por_enlace(servidor):
+    base, _ = servidor
+    boot = bootstrap(base, "equipo01", "Ana")
+    status, body, _ = call(
+        "POST", base + "/api/invites?project=equipo01",
+        {"role": "admin"}, headers=auth(boot["admin_token"]),
+    )
+    assert status == 400
+    assert body["error"] == "rol-invalido"
+
+
+def test_visitante_mira_pero_no_escribe(servidor):
+    base, _ = servidor
+    boot = bootstrap(base, "equipo01", "Ana")
+    token = _invitar(base, boot, "visitor")
+    body = claim(base, token, "Visita")
+    approve(base, "equipo01", body["member"]["id"], boot["admin_token"])
+    token_visita = body["session"]
+
+    status, _, _ = call("GET", base + "/api/sections?project=equipo01",
+                        headers=auth(token_visita))
+    assert status == 200
+
+    status, error, _ = call(
+        "POST", base + "/api/sections/pautado.problema?project=equipo01",
+        {"data": {"text": "Quiero escribir"}}, headers=auth(token_visita),
+    )
+    assert status == 403
+    assert error["error"] == "solo-lectura"
+
+
+def test_mentor_aprueba_solicitudes(servidor):
+    base, _ = servidor
+    boot = bootstrap(base, "equipo01", "Ana")
+    mentor = claim(base, _invitar(base, boot, "mentor"), "Profe")
+    approve(base, "equipo01", mentor["member"]["id"], boot["admin_token"])
+
+    invitado = claim(base, boot["join_token"], "Luis")
+    status, body, _ = call(
+        "POST", base + "/api/members/" + invitado["member"]["id"] + "/approve?project=equipo01",
+        {"approved": True}, headers=auth(mentor["session"]),
+    )
+    assert status == 200, body
+    assert body["member"]["approved"] is True
+
+
+def test_miembro_corrige_su_nombre(servidor):
+    base, _ = servidor
+    boot = bootstrap(base, "equipo01", "Ana")
+    body = claim(base, boot["join_token"], "Luis")
+    approve(base, "equipo01", body["member"]["id"], boot["admin_token"])
+    status, out, _ = call(
+        "POST", base + "/api/member/nombre?project=equipo01",
+        {"name": "Luis Pérez"}, headers=auth(body["session"]),
+    )
+    assert status == 200, out
+    assert out["name"] == "Luis Pérez"
+    status, yo, _ = call("GET", base + "/api/member/yo?project=equipo01",
+                         headers=auth(body["session"]))
+    assert yo["member"]["name"] == "Luis Pérez"

@@ -739,13 +739,13 @@ function getWorkflowStage() {
 // ── NAVEGACIÓN MODULAR Y DEPENDENCIAS ─────────────────────────────────────────
 const NAV_TABS = [
   { id: "resumen",    label: "Resumen del Rally",        level: 0, check: () => true, summary: true },
-  { id: "certamen",   label: "00 Certamen",             level: 0, setup: true, check: () => true },
-  { id: "team",       label: "01 Identidad de Equipo",  level: 1, setup: true, check: () => !!state.rally_type },
+  { id: "certamen",   label: "00 Certamen",             level: 0, setup: true, visitante: false, check: () => true },
+  { id: "team",       label: "01 Identidad de Equipo",  level: 1, setup: true, visitante: false, check: () => !!state.rally_type },
   { id: "identidad",  label: "Paleta y marca del proyecto", level: 1, check: () => !!state.rally_type },
   { id: "challenges", label: "02 Retos del Comité",     level: 2, check: () => !!state.rally_type && !!state.team_name },
   { id: "solution",   label: "03 Taller de Solución",   level: 3, check: () => !!state.challenge_id },
   { id: "impact",     label: "04 Impacto, ODS & Plan País", level: 3, check: () => !!state.challenge_id },
-  { id: "multi_ai",   label: "05 Despacho Multi-IA",    level: 4, check: () => state.solution_approved },
+  { id: "multi_ai",   label: "05 Despacho Multi-IA",    level: 4, visitante: false, check: () => state.solution_approved },
   { id: "pautado",    label: "06 Pautado Oficial",      level: 4, check: () => state.solution_approved && isPautadoComplete() },
   { id: "budget",     label: "07 Presupuesto de Marcha",level: 4, check: () => state.solution_approved && isBudgetValid() },
   { id: "resources",  label: "08 Bóveda de Recursos",   level: 4, check: () => state.solution_approved },
@@ -754,6 +754,45 @@ const NAV_TABS = [
   { id: "webdemo",    label: "11 Prototipo para Video", level: 5, check: () => isPautadoWritten() && isBudgetValid() },
   { id: "timeline",   label: "12 Cierre", level: 1, check: () => !!state.rally_type }
 ];
+
+// Cada rol entra a un menú distinto. El motor ya bloquea las escrituras del
+// visitante; aquí solo se le deja ver lo que puede leer.
+function rolActual() {
+  try { return (localStorage.getItem("rally_member_role") || "").trim(); } catch (e) { return ""; }
+}
+
+function esVisitante() {
+  return rolActual() === "visitor";
+}
+
+function esMentor() {
+  return rolActual() === "mentor";
+}
+
+function navTabsVisibles() {
+  return NAV_TABS.filter(t => !esVisitante() || t.visitante !== false);
+}
+
+function rolEtiqueta() {
+  const r = rolActual();
+  if (r === "admin") return "Admin";
+  if (r === "operator") return "Operador";
+  if (r === "mentor") return "Mentor";
+  if (r === "visitor") return "Visitante";
+  return "";
+}
+
+function rolChip() {
+  const r = rolActual();
+  if (!r) return "";
+  return `<span class="role-chip is-${r}">${rolEtiqueta()}</span>`;
+}
+
+function rolAviso() {
+  if (esVisitante()) return '<div class="sidebar-heading">Solo lectura</div>';
+  if (esMentor()) return '<div class="sidebar-heading">Mentor: revisas y apruebas</div>';
+  return "";
+}
 
 function isPautadoWritten() {
   // Para abrir la fase siguiente basta con que el texto esté escrito:
@@ -784,9 +823,10 @@ function isBudgetValid() {
 
 function isScriptComplete() {
   const totalWords = rsWordCount([state.script.acto1, state.script.acto2, state.script.acto3, state.script.acto4].join(" "));
-  // El guion se escribe para 120 s: la referencia del propio motor es 250-270
-  // palabras a 130 ppm. Con 120 palabras el video dura la mitad.
-  return totalWords >= 240 && totalWords <= 280;
+  // El guion se escribe para 120 s. El techo sale del tiempo y del ritmo del
+  // medidor del guion (135 palabras por minuto): 120 s son 270 palabras. Antes
+  // eran 280 y el tablero daba por completo un guion de 124 s, que descalifica.
+  return totalWords >= 240 && totalWords <= 270;
 }
 
 // ── INICIALIZACIÓN ───────────────────────────────────────────────────────────
@@ -997,6 +1037,7 @@ function saveState() {
 }
 
 function resetProject() {
+  if (esVisitante()) return;
   if (confirm("¿Iniciar nuevo proyecto desde cero? Se limpiarán los datos locales para arrancar una nueva competencia.")) {
     localStorage.removeItem("rally_studio_production_state_2026_v4");
     state = getInitialState();
@@ -1018,9 +1059,10 @@ function exportProjectJson() {
 function generateProjectMarkdown() {
   const isLatam = state.rally_type === "latam";
   const rallyTitle = `${rallyProfile().name} (${rallyProfile().hours}h)`;
-  const teamName = state.team_name || "Equipo de Innovación";
-  const uni = state.university || "la sede";
-  const projName = state.project_name || state.team_name || "PROYECTO DE INNOVACIÓN";
+  const falta = (etiqueta) => `[FALTA: ${etiqueta}]`;
+  const teamName = state.team_name || falta("nombre del equipo");
+  const uni = state.university || falta("universidad");
+  const projName = state.project_name || state.team_name || falta("nombre del proyecto");
   const cat = state.category || "Innovación";
   const challengeId = state.challenge_id || (state.challenges && state.challenges[0] ? state.challenges[0].id : "");
   const selectedCh = (state.challenges && state.challenges.find(c => c.id === challengeId)) || OFFICIAL_CHALLENGES_2026.find(c => c.id === challengeId) || OFFICIAL_CHALLENGES_2026[0];
@@ -1112,10 +1154,14 @@ function exportProjectMarkdown() {
 function preparePrintDossierHTML() {
   const isLatam = state.rally_type === "latam";
   const rallyTitle = `${rallyProfile().name} (${rallyProfile().hours} Horas)`;
-  const teamName = state.team_name || "Equipo de Innovación";
-  const uni = state.university || "la sede";
-  const city = state.city || "ciudad piloto";
-  const projName = state.project_name || state.team_name || "PROYECTO DE INNOVACIÓN";
+  // Un dato que el equipo no escribio no se rellena con una frase que parece
+  // real: el dossier se imprime para el jurado y "ciudad piloto" pasa por un
+  // municipio. Lo que falta se declara faltante.
+  const falta = (etiqueta) => `[FALTA: ${etiqueta}]`;
+  const teamName = state.team_name || falta("nombre del equipo");
+  const uni = state.university || falta("universidad");
+  const city = state.city || falta("ciudad o municipio");
+  const projName = state.project_name || state.team_name || falta("nombre del proyecto");
   const cat = state.category || "Innovación";
   const challengeId = state.challenge_id || (state.challenges && state.challenges[0] ? state.challenges[0].id : "");
   const selectedCh = (state.challenges && state.challenges.find(c => c.id === challengeId)) || OFFICIAL_CHALLENGES_2026.find(c => c.id === challengeId) || OFFICIAL_CHALLENGES_2026[0];
@@ -1640,6 +1686,65 @@ function printProjectDossier() {
 }
 
 
+// ── IMPORTAR: VALIDAR Y RESPALDAR ANTES DE REEMPLAZAR ───────────────────────
+// Un JSON importado no puede reemplazar el estado a ciegas: se valida contra la
+// forma del estado inicial y el estado anterior queda guardado como respaldo.
+function validarProyectoImportado(imported) {
+  if (!imported || typeof imported !== "object" || Array.isArray(imported)) {
+    throw new Error("El archivo no contiene un objeto de proyecto.");
+  }
+  const base = getInitialState();
+  const limpio = {};
+  const desconocidas = [];
+  const tiposMalos = [];
+  Object.keys(imported).forEach(function(clave) {
+    if (!Object.prototype.hasOwnProperty.call(base, clave)) {
+      desconocidas.push(clave);
+      return;
+    }
+    const valor = imported[clave];
+    const esperado = base[clave];
+    if (valor === null) {
+      limpio[clave] = null;
+      return;
+    }
+    if (esperado !== null && typeof valor !== typeof esperado) {
+      tiposMalos.push(clave);
+      return;
+    }
+    if (Array.isArray(esperado) !== Array.isArray(valor)) {
+      tiposMalos.push(clave);
+      return;
+    }
+    limpio[clave] = valor;
+  });
+  return { limpio: limpio, desconocidas: desconocidas, tiposMalos: tiposMalos };
+}
+
+function respaldarEstadoActual(motivo) {
+  try {
+    localStorage.setItem(
+      "rally_state_backup",
+      JSON.stringify({ motivo: motivo, fecha: new Date().toISOString(), estado: state })
+    );
+    return true;
+  } catch (err) {
+    return false;
+  }
+}
+
+function aplicarProyectoImportado(imported, motivo) {
+  const revisado = validarProyectoImportado(imported);
+  if (revisado.tiposMalos.length) {
+    throw new Error("Tipos inválidos en: " + revisado.tiposMalos.join(", ") + ".");
+  }
+  const respaldo = respaldarEstadoActual(motivo);
+  state = Object.assign(getInitialState(), revisado.limpio);
+  saveState();
+  syncUI();
+  return { desconocidas: revisado.desconocidas, respaldo: respaldo };
+}
+
 function importProjectJson(ev) {
   const file = ev.target.files[0];
   if (!file) return;
@@ -1647,10 +1752,15 @@ function importProjectJson(ev) {
   reader.onload = function(e) {
     try {
       const imported = JSON.parse(e.target.result);
-      state = Object.assign(getInitialState(), imported);
-      saveState();
-      syncUI();
-      alert("Proyecto importado con éxito.");
+      const resultado = aplicarProyectoImportado(imported, "import");
+      let aviso = "Proyecto importado con éxito.";
+      if (resultado.desconocidas.length) {
+        aviso += "\nCampos ignorados (no existen en esta versión): " + resultado.desconocidas.join(", ") + ".";
+      }
+      if (resultado.respaldo) {
+        aviso += "\nEl estado anterior quedó guardado como respaldo (rally_state_backup).";
+      }
+      alert(aviso);
     } catch (err) {
       alert("Error al leer archivo JSON: " + err.message);
     }
@@ -1671,10 +1781,15 @@ function pasteSyncToken() {
   try {
     const jsonStr = decodeURIComponent(atob(token.trim()));
     const imported = JSON.parse(jsonStr);
-    state = Object.assign(getInitialState(), imported);
-    saveState();
-    syncUI();
-    alert("Dashboard sincronizado exitosamente con el equipo.");
+    const resultado = aplicarProyectoImportado(imported, "sync");
+    let aviso = "Dashboard sincronizado exitosamente con el equipo.";
+    if (resultado.desconocidas.length) {
+      aviso += "\nCampos ignorados (no existen en esta versión): " + resultado.desconocidas.join(", ") + ".";
+    }
+    if (resultado.respaldo) {
+      aviso += "\nEl estado anterior quedó guardado como respaldo (rally_state_backup).";
+    }
+    alert(aviso);
   } catch (err) {
     alert("Token inválido o corrupto: " + err.message);
   }
@@ -1893,6 +2008,7 @@ function startTimer() {
 }
 
 function startOfficialRallyTimer() {
+  if (esVisitante()) return;
   state.rally_started = true;
   const official = new Date();
   official.setHours(8, 0, 0, 0);
@@ -2035,6 +2151,7 @@ function renderTopbar() {
       <button class="collaborator-avatar-badge" onclick="openIdentityModal()" title="${amINamed() ? `Trabajas como ${currentClientMascot.name}. Clic para cambiar de persona.` : 'Define tu nombre para que el equipo sepa quién eres.'}">
         <span class="collaborator-avatar-icon">${amINamed() ? currentClientMascot.icon : SVG.users}</span>
         <span class="collaborator-name-label ${amINamed() ? '' : 'is-unset'}">${escapeHtml(currentClientMascot.name)}</span>
+        ${rolChip()}
       </button>
 
       <div class="timer-pill-navy" id="timer-pill" onclick="openTimerSettingsModal()" style="cursor:pointer;" title="Clic para calibrar o ajustar cronómetro">
@@ -2065,7 +2182,7 @@ function renderTopbar() {
           <a href="graph.html" target="_blank" title="Grafo del corpus: rúbricas, ganadores y retos, ya compilado">${SVG.network} Grafo de conocimiento</a>
           <a href="../design/index.html" target="_blank" title="Kit de marca: carrusel del equipo, kit de prensa, thumbnail e impacto">${SVG.spark} Diseño del proyecto</a>
           <a href="../script/teleprompter.html" target="_blank" rel="noopener" title="Teleprompter del guion de 120 s, listo para grabar">${SVG.external} Teleprompter</a>
-          <a href="admin.html" title="Accesos del equipo: invitar, revisar quién entró, retirar acceso">${SVG.users} Accesos del equipo</a>
+          ${esVisitante() ? "" : `<a href="admin.html" title="Accesos del equipo: invitar, revisar quién entró, retirar acceso">${SVG.users} ${esMentor() ? "Revisar accesos del equipo" : "Accesos del equipo"}</a>`}
         </div>
       </div>
     </div>
@@ -2319,7 +2436,7 @@ function renderNavigation() {
 
   // Todas las fases visibles en orden. Las ya cerradas se atenúan, no se esconden:
   // esconderlas obligaba a abrir un desplegable para volver a una fase hecha.
-  const tabs = NAV_TABS.filter(t => !t.summary || currentStage >= 2);
+  const tabs = navTabsVisibles().filter(t => !t.summary || currentStage >= 2);
   // La configuración deja de competir con el flujo en cuanto está resuelta.
   const setupReady = setupIsDone();
   const flowTabs = setupReady ? tabs.filter(function (t) { return !t.setup; }) : tabs;
@@ -2336,6 +2453,7 @@ function renderNavigation() {
       <button class="btn-close-drawer" onclick="closeAllDrawers()" aria-label="Cerrar menú lateral">${SVG.close}</button>
     </div>
     <div class="sidebar-heading">Fases de Trabajo</div>
+    ${rolAviso()}
     ${flowTabs.map(t => {
       const unlocked = t.level <= currentStage;
       const done = !t.summary && rsPhaseState(t.id, map).code === "done";
@@ -2870,7 +2988,7 @@ function renderViewResumen() {
     return true;
   };
 
-  const visiblePhases = NAV_TABS.filter(t => !t.summary && t.level <= stage);
+  const visiblePhases = navTabsVisibles().filter(t => !t.summary && t.level <= stage);
 
   const phaseCards = visiblePhases.map(t => {
     const ps = rsPhaseState(t.id, map);
@@ -3213,9 +3331,9 @@ function openIdentityModal() {
             </button>`).join("")}
           </div>
         </div>` : ""}
-      <a href="admin.html" style="display:inline-flex; align-items:center; gap:6px; margin-top:16px; font-size:12px; font-weight:700; color:var(--text-muted); text-decoration:none; border-bottom:1px solid var(--border-light); padding-bottom:3px;" title="Invitar personas, revisar quién entró y retirar acceso">
-        ${SVG.users} Accesos del equipo
-      </a>
+      ${esVisitante() ? "" : `<a href="admin.html" style="display:inline-flex; align-items:center; gap:6px; margin-top:16px; font-size:12px; font-weight:700; color:var(--text-muted); text-decoration:none; border-bottom:1px solid var(--border-light); padding-bottom:3px;" title="Invitar personas, revisar quién entró y retirar acceso">
+        ${SVG.users} ${esMentor() ? "Revisar accesos del equipo" : "Accesos del equipo"}
+      </a>`}
     </div>
   `;
   document.body.appendChild(modal);

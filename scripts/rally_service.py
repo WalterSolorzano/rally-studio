@@ -138,7 +138,7 @@ COOKIE_DIAS = 30
 RUTAS_LIBRES = {
     "/login.html", "/login.js",
     "/join.html", "/join.js", "/avatars.js",
-    "/api/entrar", "/api/acceso/estado", "/api/project/claim",
+    "/api/entrar", "/api/acceso/estado", "/api/project/claim", "/api/invite",
     "/health", "/api/health",
     "/favicon.svg", "/manifest.webmanifest", "/sw.js", "/style.css",
     "/brand_board.css", "/super_agents.css",
@@ -524,6 +524,7 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
         "/api/session": "get_session",
         "/api/members": "get_members",
         "/api/member/yo": "get_member_yo",
+        "/api/invite": "get_invite",
         "/api/content/schema": "get_content_schema",
         "/api/content/manifest": "get_content_manifest",
         "/api/presence": "get_presence",
@@ -680,9 +681,23 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
             "ok": True, "project": project, "member": member,
         }, cors=True)
 
+    def get_invite(self, url):
+        """Sin credencial: la puerta de entrada pregunta como va a entrar el invitado."""
+        token = (urllib.parse.parse_qs(url.query).get("t") or [""])[0]
+        try:
+            info = MEMBER_STORE.leer_invite(token)
+        except ValueError as exc:
+            self.send_json_response(404, {"ok": False, "error": str(exc)}, cors=True)
+            return
+        except Exception as exc:
+            print(f"[miembros] invitacion ilegible: {exc}", flush=True)
+            self.send_json_response(500, {"ok": False, "error": "error-interno"}, cors=True)
+            return
+        self.send_json_response(200, {"ok": True, **info}, cors=True)
+
     def get_members(self, url):
         project = self.project_id(url.query)
-        if self.require_member(project, ("admin", "operator")) is None:
+        if self.require_member(project, ("admin", "operator", "mentor")) is None:
             return
         self.send_json_response(200, {
             "ok": True, "project": project, "members": MEMBER_STORE.list_members(project),
@@ -821,16 +836,64 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
         "/api/member/avatar": "post_member_avatar",
         "/api/member/clave": "post_member_clave",
         "/api/member/roles": "post_member_roles",
+        "/api/member/nombre": "post_member_nombre",
         "/api/state": "post_state",
         "/api/sections/import": "post_sections_import",
     }
+
+    # El invitado de solo lectura se presenta y se pinta; no escribe el proyecto.
+    POST_DE_VISITANTE = {
+        "/api/entrar", "/api/project/claim", "/api/presence",
+        "/api/member/avatar", "/api/member/clave", "/api/member/nombre",
+    }
+
+    def visitante_bloqueado(self, url) -> bool:
+        if url.path in self.POST_DE_VISITANTE:
+            return False
+        project = self.project_id(url.query)
+        if not MEMBER_STORE.has_any_members(project):
+            return False
+        member = MEMBER_STORE.authenticate(
+            project, self.credencial(), _client_ip(self), via_proxy=_via_proxy_local(self)
+        )
+        if member is None or member.get("role") != "visitor":
+            return False
+        self.send_json_response(
+            403, {"ok": False, "error": "solo-lectura",
+                  "message": "entraste como visitante: mira, no escribas"},
+            cors=True,
+        )
+        return True
 
     def do_POST(self):
         try:
             largo = int(self.headers.get("Content-Length", 0) or 0)
         except (TypeError, ValueError):
-            largo = -1
-        if largo < 0 or largo > MAX_BODY_BYTES:
+            # Una cabecera que no es un numero no es un cuerpo enorme: es una
+            # peticion mal armada. Decirle "demasiado grande" al cliente lo
+            # manda a recortar un archivo que no tiene nada que ver (H-65).
+            self.close_connection = True
+            self.send_json_response(
+                400,
+                {
+                    "ok": False,
+                    "error": "cuerpo-invalido",
+                    "message": "Content-Length no es un numero",
+                },
+            )
+            return
+        if largo < 0:
+            self.close_connection = True
+            self.send_json_response(
+                400,
+                {
+                    "ok": False,
+                    "error": "cuerpo-invalido",
+                    "message": "Content-Length negativo",
+                },
+            )
+            return
+        if largo > MAX_BODY_BYTES:
             self.close_connection = True
             self.send_json_response(
                 413,
@@ -845,6 +908,8 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
         if not self.project_param_ok(url.query):
             return
         if not self.paso_la_puerta(url.path, self.project_id(url.query)):
+            return
+        if self.visitante_bloqueado(url):
             return
         nombre = self.RUTAS_POST.get(url.path)
         if nombre:
@@ -872,11 +937,12 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
         if not ok:
             self.rechazo_rate_limit(extra, msg)
             return
-        body = self.leer_cuerpo()
+        data = self.cuerpo_objeto()
+        if data is None:
+            return
         try:
-            data = json.loads(body)
-            prompt = (data.get("prompt") or "").strip()
-            model = (data.get("model") or "").strip()
+            prompt = (data.get("prompt") or "").strip() if isinstance(data.get("prompt"), str) else ""
+            model = (data.get("model") or "").strip() if isinstance(data.get("model"), str) else ""
             if not prompt:
                 self.send_json_response(400, {"status": "error", "message": "Prompt vacio"})
                 return
@@ -977,61 +1043,71 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
         if not ok:
             self.rechazo_rate_limit(extra, msg)
             return
-        body = self.leer_cuerpo()
+        data = self.cuerpo_objeto()
+        if data is None:
+            return
         try:
-            data = json.loads(body) if body else {}
             colors = data.get("colors") or []
             image = data.get("image")
             result = ai_design_suggest(colors, image=image)
             self.send_json_response(200, result)
         except Exception as e:
-            self.send_json_response(500, {"status": "error", "message": str(e)})
+            self.send_json_response(500, {"status": "error", "message": "error-interno"})
+            print(f"[ai] design fallo: {e}", flush=True)
 
     def post_compile_docx(self, url):
         if self.require_member(self.project_id(url.query), ("admin", "operator")) is None:
             return
-        body = self.leer_cuerpo()
+        data = self.cuerpo_objeto()
+        if data is None:
+            return
         try:
-            data = json.loads(body)
             result = compile_pautado_docx(data)
             self.send_json_response(200, result)
         except Exception as e:
-            self.send_json_response(500, {"status": "error", "message": str(e)})
+            self.send_json_response(500, {"status": "error", "message": "error-interno"})
+            print(f"[docx] pautado fallo: {e}", flush=True)
 
     def post_compile_guion_docx(self, url):
         if self.require_member(self.project_id(url.query), ("admin", "operator")) is None:
             return
-        body = self.leer_cuerpo()
+        data = self.cuerpo_objeto()
+        if data is None:
+            return
         try:
-            data = json.loads(body)
             result = compile_guion_docx(data)
             self.send_json_response(200, result)
         except Exception as e:
-            self.send_json_response(500, {"status": "error", "message": str(e)})
+            self.send_json_response(500, {"status": "error", "message": "error-interno"})
+            print(f"[docx] guion fallo: {e}", flush=True)
 
     def post_template_upload(self, url):
         # La plantilla Word la cambia quien administra, no cualquier miembro:
         # una plantilla mala arruina el entregable de todo el equipo.
         if self.require_member(self.project_id(url.query), ("admin", "operator")) is None:
             return
-        body = self.leer_cuerpo()
+        data = self.cuerpo_objeto()
+        if data is None:
+            return
         try:
-            data = json.loads(body)
             result = save_pautado_template(data)
             self.send_json_response(200 if result.get("status") == "ok" else 400, result)
         except Exception as e:
-            self.send_json_response(500, {"status": "error", "message": str(e)})
+            self.send_json_response(500, {"status": "error", "message": "error-interno"})
+            print(f"[docx] plantilla fallo: {e}", flush=True)
 
     def post_presence(self, url):
-        body = self.leer_cuerpo()
-        try:
-            data = json.loads(body) if body else {}
-        except Exception:
-            data = {}
-        if not isinstance(data, dict):
-            data = {}
-        presence_beat(data.get("actor"), data.get("tab", ""), data.get("editing", ""))
-        self.send_json_response(200, {"ok": True}, cors=True)
+        data = self.cuerpo_objeto()
+        if data is None:
+            # Un latido sin actor no dice de quien es: antes se registraba como
+            # "anonimo" y la pizarra mostraba a alguien que no existe.
+            return
+        actor = data.get("actor")
+        if not isinstance(actor, str) or not actor.strip():
+            self.send_json_response(400, {"ok": False, "error": "actor-requerido"}, cors=True)
+            return
+        fila = presence_beat(actor, data.get("tab", ""), data.get("editing", ""))
+        self.send_json_response(200, {"ok": True, "presence": fila}, cors=True)
 
     def post_sync_push(self, url):
         if not sync_authorized(self):
@@ -1108,9 +1184,10 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
         # Sin validar el id, `aid="*"` borra TODOS los recursos del equipo.
         if self.require_member(self.project_id(url.query), ("admin", "operator")) is None:
             return
-        body = self.leer_cuerpo()
+        data = self.cuerpo_objeto()
+        if data is None:
+            return
         try:
-            data = json.loads(body)
             aid = str(data.get("id", "")).strip()
             if not re.fullmatch(r"[0-9a-f]{8}", aid):
                 self.send_json_response(400, {"status": "error", "message": "id invalido"})
@@ -1127,13 +1204,20 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
                     pass
             self.send_json_response(200, {"status": "ok", "removed": removed})
         except Exception as e:
-            self.send_json_response(500, {"status": "error", "message": str(e)})
+            self.send_json_response(500, {"status": "error", "message": "error-interno"})
+            print(f"[assets] borrar fallo: {e}", flush=True)
 
     def post_ocr(self, url):
-        body = self.leer_cuerpo()
+        data = self.cuerpo_objeto()
+        if data is None:
+            return
+        img_data = data.get("image", "")
+        if not isinstance(img_data, str) or not img_data.strip():
+            # Un cuerpo sin imagen no es una imagen dañada: es una petición mal
+            # armada, y decírselo al cliente evita que persiga el archivo.
+            self.send_json_response(400, {"status": "error", "message": "imagen-requerida"})
+            return
         try:
-            data = json.loads(body)
-            img_data = data.get("image", "")
             # Capa 1: OCR semantico con modelo vision (endpoint de entorno)
             vision = None
             try:
@@ -1162,24 +1246,32 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
             # Imagen danada o ilegible: avisar con claridad (la UI ofrece pegar el texto a mano)
             self.send_json_response(422, {"status": "bad-image", "message": str(e)})
         except Exception as e:
-            self.send_json_response(500, {"status": "error", "message": str(e)})
+            self.send_json_response(500, {"status": "error", "message": "error-interno"})
+            print(f"[ocr] fallo: {e}", flush=True)
 
     def post_ai_quick(self, url):
         ok, extra, msg = ai_rate_check(self)
         if not ok:
             self.rechazo_rate_limit(extra, msg)
             return
-        body = self.leer_cuerpo()
+        data = self.cuerpo_objeto()
+        if data is None:
+            return
+        raw_text = data.get("text")
+        if raw_text is not None and not isinstance(raw_text, str):
+            self.send_json_response(400, {"status": "error", "message": "texto-no-es-cadena"})
+            return
+        text = (raw_text or "").strip()
+        raw_task = data.get("task")
+        task = (raw_task if isinstance(raw_task, str) else "").strip() or "polish"
+        if not text:
+            self.send_json_response(400, {"status": "error", "message": "Texto vacio"})
+            return
         try:
-            data = json.loads(body)
-            text = (data.get("text") or "").strip()
-            task = (data.get("task") or "polish").strip()
-            if not text:
-                self.send_json_response(400, {"status": "error", "message": "Texto vacio"})
-                return
             self.send_json_response(200, ai_quick_task(task, text))
         except Exception as e:
-            self.send_json_response(500, {"status": "error", "message": str(e)})
+            self.send_json_response(500, {"status": "error", "message": "error-interno"})
+            print(f"[ai] quick fallo: {e}", flush=True)
 
     def post_claim(self, url):
         self.handle_claim_invite()
@@ -1195,6 +1287,9 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
 
     def post_member_roles(self, url):
         self.handle_member_roles(url)
+
+    def post_member_nombre(self, url):
+        self.handle_member_nombre(url)
 
     def post_state(self, url):
         self.handle_post_state()
@@ -1593,7 +1688,9 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
             ttl_hours = 48
         ttl_hours = max(1, min(168, ttl_hours))
         try:
-            result = MEMBER_STORE.create_invite(project, member["id"], ttl_hours)
+            result = MEMBER_STORE.create_invite(
+                project, member["id"], ttl_hours, str(data.get("role") or "member")
+            )
         except ValueError as exc:
             self.send_json_response(400, {"ok": False, "error": str(exc)}, cors=True)
             return
@@ -1676,6 +1773,29 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
             return
         self.send_json_response(200, {"ok": True, "project": project, **result}, cors=True)
 
+    def handle_member_nombre(self, url) -> None:
+        if not self.origen_permitido():
+            self.send_json_response(403, {"ok": False, "error": "origen-no-permitido"}, cors=True)
+            return
+        project = self.project_id(url.query)
+        member = self.require_member(project)
+        if member is None:
+            return
+        if member["id"] == "legacy":
+            self.send_json_response(403, {"ok": False, "error": "sin-permiso"}, cors=True)
+            return
+        data = self.read_json_body()
+        try:
+            result = MEMBER_STORE.rename(project, member["id"], str(data.get("name") or ""))
+        except ValueError as exc:
+            self.send_json_response(400, {"ok": False, "error": str(exc)}, cors=True)
+            return
+        except Exception as exc:
+            print(f"[miembros] nombre fallo: {exc}", flush=True)
+            self.send_json_response(500, {"ok": False, "error": "error-interno"}, cors=True)
+            return
+        self.send_json_response(200, {"ok": True, "project": project, **result}, cors=True)
+
     def handle_revoke_member(self, url) -> None:
         if not self.origen_permitido():
             self.send_json_response(403, {"ok": False, "error": "origen-no-permitido"}, cors=True)
@@ -1729,7 +1849,7 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
             self.send_json_response(403, {"ok": False, "error": "origen-no-permitido"}, cors=True)
             return
         project = self.project_id(url.query)
-        member = self.require_member(project, ("admin",))
+        member = self.require_member(project, ("admin", "mentor"))
         if member is None:
             return
         rest = urllib.parse.unquote(url.path[len("/api/members/"):])
@@ -1808,6 +1928,13 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
             ensure_section_migration()
             result = SECTION_STORE.import_state(project, state, "cliente-legado", "legacy")
             mirror_state_to_disk(project)
+        except ValueError as exc:
+            # La clave de una seccion la escribe el cliente. Si no cumple la
+            # gramatica es su cuerpo, no una caida del motor: la ruta moderna
+            # (`/api/sections/import`) ya respondia asi, y esta devolvia 500
+            # por el mismo estado (H-66).
+            self.send_json_response(400, {"ok": False, "error": str(exc)}, cors=True)
+            return
         except Exception as exc:
             print(f"[secciones] no se pudo importar el estado legado: {exc}", flush=True)
             self.send_json_response(500, {"ok": False, "error": "error-interno"}, cors=True)
@@ -1831,6 +1958,9 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
             ensure_section_migration()
             result = SECTION_STORE.import_state(project, state, actor, actor_id)
             mirror_state_to_disk(project)
+        except ValueError as exc:
+            self.send_json_response(400, {"ok": False, "error": str(exc)}, cors=True)
+            return
         except Exception as exc:
             print(f"[secciones] import fallo: {exc}", flush=True)
             self.send_json_response(500, {"ok": False, "error": "error-interno"}, cors=True)
@@ -2154,6 +2284,22 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
         if largo <= 0:
             return ""
         return self.rfile.read(largo).decode("utf-8", errors="replace")
+
+    def cuerpo_objeto(self) -> dict | None:
+        """El JSON del cuerpo como objeto; si no lo es, responde 400 y da None.
+
+        Un cuerpo mal formado lo escribio el cliente: 500 con la traza de Python
+        dentro del mensaje se lee como "el sistema esta roto" (H-61).
+        """
+        try:
+            data = json.loads(self.leer_cuerpo() or "null")
+        except ValueError:
+            self.send_json_response(400, {"ok": False, "status": "error", "message": "cuerpo-json-invalido"})
+            return None
+        if not isinstance(data, dict):
+            self.send_json_response(400, {"ok": False, "status": "error", "message": "se-esperaba-un-objeto"})
+            return None
+        return data
 
     def rechazo_rate_limit(self, extra: dict, mensaje: str) -> None:
         """429 con las cabeceras de cuota (Retry-After y compania)."""
@@ -2915,14 +3061,21 @@ def _ai_spend_load():
         data = json.loads(AI_USAGE_FILE.read_text(encoding="utf-8"))
         AI_SPEND["day"] = str(data.get("day") or "")
         AI_SPEND["count"] = int(data.get("count") or 0)
-    except Exception:
+    except FileNotFoundError:
         pass
+    except Exception as exc:
+        # Un archivo truncado no puede dejar el tope diario en cero sin avisar:
+        # el cupo se infla en silencio y nadie sabe por que.
+        print(f"[aviso] ai_usage.json ilegible ({exc}); cupo diario reiniciado.", file=sys.stderr)
 
 
 def _ai_spend_save():
     try:
         AI_USAGE_FILE.parent.mkdir(parents=True, exist_ok=True)
-        AI_USAGE_FILE.write_text(json.dumps(AI_SPEND), encoding="utf-8")
+        # Escritura atomica: un corte a mitad deja el archivo viejo, no uno truncado.
+        temporal = AI_USAGE_FILE.with_suffix(AI_USAGE_FILE.suffix + ".tmp")
+        temporal.write_text(json.dumps(AI_SPEND), encoding="utf-8")
+        os.replace(temporal, AI_USAGE_FILE)
     except Exception:
         pass
 
@@ -2949,7 +3102,7 @@ def _ai_spend_check(cuenta_dia=True):
                 "Sube RALLY_AI_DAILY_MAX si necesitas mas."
             )
         AI_SPEND["count"] += 1
-    _ai_spend_save()
+        _ai_spend_save()
     return True, ""
 
 

@@ -5,6 +5,9 @@
   const quienEl = document.getElementById("quien-nombre");
   const avatarEstado = document.getElementById("avatar-estado");
   const claveEstado = document.getElementById("clave-estado");
+  const nombreForm = document.getElementById("nombre-form");
+  const nombreInput = document.getElementById("perfil-nombre");
+  const nombreEstado = document.getElementById("nombre-estado");
   const claveInput = document.getElementById("perfil-clave");
   const claveForm = document.getElementById("clave-form");
   const quitarBtn = document.getElementById("clave-quitar");
@@ -17,6 +20,8 @@
   const TEXTOS = {
     "clave-corta": "La clave necesita al menos 6 caracteres.",
     "avatar-largo": "Ese avatar no es válido.",
+    "nombre-requerido": "Escribe tu nombre.",
+    "nombre-largo": "El nombre tiene más de 40 caracteres. Acórtalo.",
     "miembro-inexistente": "Tu acceso ya no está activo. Pide un enlace nuevo.",
     "no-autenticado": "Tu acceso ya no está activo. Pide un enlace nuevo.",
     "sin-permiso": "Este proyecto no tiene cuentas por persona.",
@@ -82,6 +87,7 @@
   function pintar(member) {
     quienEl.textContent = (member.name || "Sin nombre") +
       (member.has_password ? " · con clave" : " · solo con enlace");
+    if (nombreInput) nombreInput.value = member.name || "";
     const elegido = window.RAV ? RAV.normalizar(member.avatar) : (member.avatar || "");
     radios.forEach(function (radio) {
       radio.checked = radio.value === elegido;
@@ -93,6 +99,10 @@
       casilla.disabled = false;
     });
     pintarClave(!!member.has_password);
+    const panelRoles = rolesContenedor && typeof rolesContenedor.closest === "function"
+      ? rolesContenedor.closest(".perfil-panel")
+      : null;
+    if (panelRoles) panelRoles.hidden = member.role === "visitor";
     recordar(member);
   }
 
@@ -172,6 +182,10 @@
     const res = await api("/api/member/yo");
     if (res.status === 401) { irAlLogin(); return; }
     if (!res.ok || !res.body.member) {
+      // Si la lectura falla, la página no puede quedarse congelada: los
+      // controles vuelven a estar disponibles para reintentar.
+      radios.forEach(function (radio) { radio.disabled = false; });
+      casillasRoles.forEach(function (casilla) { casilla.disabled = false; });
       status("No se pudo leer tu perfil. Recarga la página.");
       return;
     }
@@ -181,6 +195,38 @@
     }
     pintar(res.body.member);
   }
+
+  if (nombreForm) nombreForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
+    const nombre = (nombreInput.value || "").trim();
+    if (!nombre) {
+      nota(nombreEstado, TEXTOS["nombre-requerido"]);
+      nombreInput.focus();
+      return;
+    }
+    if (nombre.length > 40) {
+      nota(nombreEstado, TEXTOS["nombre-largo"]);
+      return;
+    }
+    nombreInput.disabled = true;
+    nota(nombreEstado, "Guardando…");
+    const res = await api("/api/member/nombre", {
+      method: "POST",
+      body: JSON.stringify({ name: nombre }),
+    });
+    nombreInput.disabled = false;
+    if (res.status === 401) { irAlLogin(); return; }
+    if (!res.ok) {
+      nota(nombreEstado, mensaje(res.body, res));
+      return;
+    }
+    try {
+      localStorage.setItem("rally_member_name", nombre);
+      localStorage.setItem("rally_user_name", nombre);
+    } catch (e) { /* sin almacenamiento: el servidor ya lo guardó */ }
+    await cargar();
+    nota(nombreEstado, "Nombre guardado.");
+  });
 
   claveForm.addEventListener("submit", async function (event) {
     event.preventDefault();

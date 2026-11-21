@@ -18,7 +18,8 @@ try:
 except ImportError:  # importado como paquete (scripts.member_store)
     from scripts.store_base import SqliteStore
 
-ROLES = ("admin", "operator", "member")
+ROLES = ("admin", "operator", "mentor", "member", "visitor")
+ROLES_INVITABLES = ("mentor", "member", "visitor")
 SENAL_DIAS = 30  # vida util de una sesion paralela (la cookie dura lo mismo)
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS members (
@@ -43,7 +44,8 @@ CREATE TABLE IF NOT EXISTS invites (
     created_at REAL NOT NULL,
     expires_at REAL NOT NULL,
     used_by TEXT,
-    used_at REAL
+    used_at REAL,
+    role TEXT NOT NULL DEFAULT 'member'
 );
 CREATE TABLE IF NOT EXISTS sessions (
     token_hash TEXT PRIMARY KEY,
@@ -145,6 +147,11 @@ class MemberStore(SqliteStore):
             sesiones = {row["name"] for row in conn.execute("PRAGMA table_info(sessions)")}
             if "ip" not in sesiones:
                 conn.execute("ALTER TABLE sessions ADD COLUMN ip TEXT NOT NULL DEFAULT ''")
+            invitaciones = {row["name"] for row in conn.execute("PRAGMA table_info(invites)")}
+            if "role" not in invitaciones:
+                conn.execute(
+                    "ALTER TABLE invites ADD COLUMN role TEXT NOT NULL DEFAULT 'member'"
+                )
             conn.commit()
 
     @staticmethod
@@ -204,7 +211,12 @@ class MemberStore(SqliteStore):
             row = conn.execute("SELECT * FROM members WHERE id = ?", (member_id,)).fetchone()
         return {"project": project_id, "member": self._member(row), "token": token}
 
-    def create_invite(self, project_id: str, actor_id: str, ttl_hours: int = 48) -> dict:
+    def create_invite(self, project_id: str, actor_id: str, ttl_hours: int = 48,
+                      role: str = "member") -> dict:
+        invitado = (role or "member").strip().lower()
+        if invitado not in ROLES_INVITABLES:
+            # Un enlace no reparte admin: ese rol se asigna despues, a mano.
+            raise ValueError("rol-invalido")
         with self._connect() as conn:
             actor = conn.execute(
                 "SELECT * FROM members WHERE id = ? AND project_id = ? AND revoked = 0",
@@ -217,13 +229,14 @@ class MemberStore(SqliteStore):
             expires = now + float(ttl_hours) * 3600
             conn.execute(
                 "INSERT INTO invites (token_hash, project_id, created_by, created_at,"
-                " expires_at) VALUES (?, ?, ?, ?, ?)",
-                (_hash(token), project_id, actor_id, now, expires),
+                " expires_at, role) VALUES (?, ?, ?, ?, ?, ?)",
+                (_hash(token), project_id, actor_id, now, expires, invitado),
             )
             conn.commit()
         return {
             "token": token,
             "url_path": "join.html?t=" + token,
+            "role": invitado,
             "expires_at": expires,
         }
 
@@ -262,14 +275,18 @@ class MemberStore(SqliteStore):
                 raise ValueError("invite-expirado")
             member_id = "mem_" + secrets.token_hex(8)
             session = secrets.token_urlsafe(32)
+            rol = inv["role"] if "role" in inv.keys() else "member"
+            if rol not in ROLES_INVITABLES:
+                rol = "member"
             conn.execute(
                 "INSERT INTO members (id, project_id, name, role, device_id, token_hash,"
                 " created_at, last_seen, revoked, avatar, password_hash, roles, approved)"
-                " VALUES (?, ?, ?, 'member', ?, ?, ?, ?, 0, ?, ?, ?, 0)",
+                " VALUES (?, ?, ?, ?, ?, ?, ?, ?, 0, ?, ?, ?, 0)",
                 (
                     member_id,
                     inv["project_id"],
                     clean_name,
+                    rol,
                     device_id,
                     _hash(session),
                     ahora,
@@ -370,6 +387,43 @@ class MemberStore(SqliteStore):
             conn.execute("UPDATE members SET avatar = ? WHERE id = ?", (limpio, member_id))
             conn.commit()
         return {"id": member_id, "avatar": limpio}
+
+    def rename(self, project_id: str, member_id: str, name: str) -> dict:
+        """El nombre se puede corregir despues de entrar; la firma sigue siendo la misma."""
+        limpio = (name or "").strip()
+        if not limpio:
+            raise ValueError("nombre-requerido")
+        if len(limpio) > 40:
+            raise ValueError("nombre-largo")
+        with self._connect() as conn:
+            row = conn.execute(
+                "SELECT 1 FROM members WHERE id = ? AND project_id = ? AND revoked = 0",
+                (member_id, project_id),
+            ).fetchone()
+            if row is None:
+                raise ValueError("miembro-inexistente")
+            conn.execute("UPDATE members SET name = ? WHERE id = ?", (limpio, member_id))
+            conn.commit()
+        return {"id": member_id, "name": limpio}
+
+    def leer_invite(self, token: str) -> dict:
+        """Lo que la pagina de entrada necesita: a que proyecto va y como entra."""
+        with self._connect() as conn:
+            inv = conn.execute(
+                "SELECT * FROM invites WHERE token_hash = ?", (_hash(token or ""),)
+            ).fetchone()
+            if inv is None:
+                raise ValueError("invite-invalido")
+            if inv["used_at"] is not None:
+                raise ValueError("invite-usado")
+            if inv["expires_at"] <= time.time():
+                raise ValueError("invite-expirado")
+            rol = inv["role"] if "role" in inv.keys() else "member"
+        return {
+            "project": inv["project_id"],
+            "role": rol if rol in ROLES_INVITABLES else "member",
+            "expires_at": inv["expires_at"],
+        }
 
     def set_roles(self, project_id: str, member_id: str, roles) -> dict:
         limpios = _limpiar_roles(roles)
