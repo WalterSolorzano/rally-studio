@@ -773,6 +773,19 @@ function navTabsVisibles() {
   return NAV_TABS.filter(t => !esVisitante() || t.visitante !== false);
 }
 
+// Una pestaña que el menú no muestra no se abre por una URL guardada.
+function tabPermitida(id) {
+  const t = NAV_TABS.find(x => x.id === id);
+  return !!t && (!esVisitante() || t.visitante !== false);
+}
+
+function tabInicial(stage) {
+  const preferida = stage === 0 ? "certamen" : stage === 1 ? "team" : stage === 2 || stage > 3 ? "challenges" : "solution";
+  if (tabPermitida(preferida)) return preferida;
+  const alcanzables = navTabsVisibles().filter(t => t.level <= stage);
+  return (alcanzables[0] || navTabsVisibles()[0] || NAV_TABS[0]).id;
+}
+
 function rolEtiqueta() {
   const r = rolActual();
   if (r === "admin") return "Admin";
@@ -971,20 +984,9 @@ function loadSavedState() {
         }
       }
       const stage = getWorkflowStage();
-      if (state.active_tab) {
-        const target = NAV_TABS.find(t => t.id === state.active_tab);
-        if (target && target.level <= stage) {
-          activeTab = state.active_tab;
-        } else {
-          activeTab = stage === 0 ? "certamen" : stage === 1 ? "team" : stage === 2 ? "challenges" : "solution";
-        }
-      } else {
-        if (stage === 0) activeTab = "certamen";
-        else if (stage === 1) activeTab = "team";
-        else if (stage === 2) activeTab = "challenges";
-        else if (stage === 3) activeTab = "solution";
-        else activeTab = "challenges";
-      }
+      activeTab = state.active_tab && tabPermitida(state.active_tab) ? state.active_tab : tabInicial(stage);
+      const target = NAV_TABS.find(t => t.id === activeTab);
+      if (target && target.level > stage) activeTab = tabInicial(stage);
       // Con el reto ya elegido, la primera pantalla es el resumen: las fases de
       // setup (certamen, equipo, retos) dejan de ocupar el campo de trabajo.
       if (stage >= 3 && ["certamen", "team", "challenges"].includes(activeTab)) {
