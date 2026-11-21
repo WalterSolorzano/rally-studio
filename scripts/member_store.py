@@ -226,7 +226,10 @@ class MemberStore(SqliteStore):
                 raise ValueError("sin-permiso")
             token = secrets.token_urlsafe(24)
             now = time.time()
-            expires = now + float(ttl_hours) * 3600
+            # El visitante solo mira un rato: su enlace no vive mas de una hora
+            # aunque el admin pida mas, y sirve una sola vez.
+            horas = 1 if invitado == "visitor" else ttl_hours
+            expires = now + float(horas) * 3600
             conn.execute(
                 "INSERT INTO invites (token_hash, project_id, created_by, created_at,"
                 " expires_at, role) VALUES (?, ?, ?, ?, ?, ?)",

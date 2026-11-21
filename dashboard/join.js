@@ -21,23 +21,80 @@
     member: { titulo: "Miembro", detalle: "", avatar: "" },
   };
 
-  function pintarAvatares() {
-    if (!contenedor || !window.RAV) return;
-    // La cara de admin no se elige aqui: el rol ya lo trae el enlace y una
-    // cara que dice "Admin" confunde a quien solo entra como miembro.
-    const caras = RAV.lista.filter(function (avatar) {
-      return avatar.id !== "av_admin";
-    });
-    contenedor.innerHTML = caras
-      .map(function (avatar, i) {
+  /* El personaje se arma por capas: pelo, accesorio y camisa sobre una cara. No
+   * depende del rol ni del oficio: eso lo dice la etiqueta, no el dibujo. */
+  var BASE_POR_ROL = { mentor: "av_mentor", visitor: "av_visitante", member: "av_profe" };
+  var basePersonaje = "av_profe";
+  var capas = { pelo: "p1", accesorio: "a0", camisa: "c1" };
+  var vistaCara = document.getElementById("join-cara");
+  var vistaNom = document.getElementById("join-cara-nom");
+  var filas = {
+    pelo: document.getElementById("join-pelos"),
+    accesorio: document.getElementById("join-accesorios"),
+    camisa: document.getElementById("join-camisas"),
+  };
+
+  function ravOk() {
+    return !!(window.RAV && typeof RAV.espec === "function" && RAV.capas && RAV.partes);
+  }
+
+  function specActual() {
+    if (!ravOk()) return basePersonaje;
+    return RAV.espec(basePersonaje, capas);
+  }
+
+  function pintarVista() {
+    if (!vistaCara || !window.RAV) return;
+    const spec = specActual();
+    vistaCara.innerHTML = RAV.svg(spec);
+    if (vistaNom && ravOk()) vistaNom.textContent = RAV.etiqueta(RAV.partes(spec));
+  }
+
+  function pintarCapa(nombre, opciones, esColor) {
+    const caja = filas[nombre];
+    if (!caja || !window.RAV) return;
+    caja.innerHTML = opciones
+      .map(function (avatar) {
+        const id = nombre + "-" + avatar.id;
+        const muestra = esColor
+          ? '<span class="join-tono" style="background:' + avatar.color + '"></span>'
+          : RAV.svg(RAV.espec(basePersonaje, {
+              pelo: nombre === "pelo" ? avatar.id : capas.pelo,
+              accesorio: nombre === "accesorio" ? avatar.id : capas.accesorio,
+              camisa: capas.camisa,
+            }));
         return (
-          '<input type="radio" id="av-' + avatar.id + '" name="avatar" value="' + avatar.id + '"' +
-          (i === 0 ? " checked" : "") + ">" +
-          '<label for="av-' + avatar.id + '">' + RAV.svg(avatar.id) +
-          "<span>" + avatar.nombre + "</span></label>"
+          '<input type="radio" id="' + id + '" name="' + nombre + '" value="' + avatar.id + '"' +
+          (capas[nombre] === avatar.id ? " checked" : "") + ">" +
+          '<label for="' + id + '"' + (esColor ? ' class="is-tono" title="' + avatar.nombre + '"' : "") + ">" +
+          muestra + "<span>" + avatar.nombre + "</span></label>"
         );
       })
       .join("");
+  }
+
+  function pintarPersonaje() {
+    if (!ravOk() || !filas.pelo) return;
+    capas = RAV.partes(RAV.espec(basePersonaje, capas));
+    pintarCapa("pelo", RAV.capas.pelos, false);
+    pintarCapa("accesorio", RAV.capas.accesorios, false);
+    pintarCapa("camisa", RAV.capas.camisas, true);
+    pintarVista();
+  }
+
+  if (filas.pelo) {
+    filas.pelo.addEventListener("change", function (e) { cambioCapa("pelo", e); });
+    filas.accesorio.addEventListener("change", function (e) { cambioCapa("accesorio", e); });
+    filas.camisa.addEventListener("change", function (e) { cambioCapa("camisa", e); });
+  }
+
+  function cambioCapa(nombre, event) {
+    const casilla = event.target;
+    if (!casilla || !casilla.value || !ravOk()) return;
+    capas[nombre] = casilla.value;
+    if (nombre === "camisa") pintarCapa("pelo", RAV.capas.pelos, false);
+    if (nombre === "camisa") pintarCapa("accesorio", RAV.capas.accesorios, false);
+    pintarVista();
   }
 
   /* Icono por rol: una figura antes que la palabra, no emoji. */
@@ -74,7 +131,7 @@
       .join("");
   }
 
-  pintarAvatares();
+  pintarPersonaje();
   pintarRoles();
 
   // --- Cargador: el logo se dibuja y no se va antes de que se pueda leer ---
@@ -106,7 +163,7 @@
 
   var rolEntrada = "";
 
-  function anunciarRol(rol) {
+  function anunciarRol(rol, info) {
     const ficha = ROLES_ENTRADA[rol] || ROLES_ENTRADA.member;
     rolEntrada = rol;
     if (quien) {
@@ -132,11 +189,13 @@
       const guia = document.getElementById("join-guia");
       if (guia) guia.textContent = "Entras como visitante: ves todo el tablero y no escribes nada.";
       button.textContent = "Entrar como visitante";
+      bienvenida(info);
+      contarTiempo(info && info.expires_at);
       return;
     }
     if (ficha.avatar) {
-      const radio = form.querySelector('input[name="avatar"][value="' + ficha.avatar + '"]');
-      if (radio) radio.checked = true;
+      basePersonaje = BASE_POR_ROL[rol] || "av_profe";
+      pintarPersonaje();
     }
     if (rol === "mentor") cargarRoster();
   }
@@ -203,10 +262,50 @@
       });
   }
 
+  /* El visitante no llena nada: entra por un rato y se va. Primero ve un
+   * anuncio corto con el grupo y el logo de Rally, y arriba le queda el tiempo
+   * que le falta en el enlace. */
+  function bienvenida(info) {
+    const capa = document.getElementById("join-anuncio");
+    if (!capa) return;
+    const nombre = document.getElementById("join-anuncio-nombre");
+    if (nombre && info && info.project) {
+      nombre.textContent = String(info.project).replace(/[-_]+/g, " ");
+    }
+    capa.hidden = false;
+    const quitar = function () { capa.hidden = true; };
+    programar(quitar, 2600);
+    capa.addEventListener("click", quitar);
+  }
+
+  var relojTiempo = 0;
+  function contarTiempo(expira) {
+    const caja = document.getElementById("join-tiempo");
+    if (!caja || !expira) return;
+    const fin = Number(expira) * 1000;
+    const pintar = function () {
+      const resto = Math.max(0, Math.floor((fin - Date.now()) / 1000));
+      if (!resto) {
+        caja.innerHTML = "<b>El enlace venció.</b> Pide otro al admin del equipo.";
+        return;
+      }
+      const min = Math.ceil(resto / 60);
+      const hora = Math.floor(min / 60);
+      const texto = hora >= 1
+        ? hora + (hora === 1 ? " h" : " h") + (min % 60 ? " " + (min % 60) + " min" : "")
+        : min + " min";
+      caja.innerHTML = "Te queda <b>" + texto + "</b> como visitante";
+    };
+    pintar();
+    caja.hidden = false;
+    if (relojTiempo) clearInterval(relojTiempo);
+    relojTiempo = setInterval(pintar, 20000);
+  }
+
   if (token) {
     fetch("/api/invite?t=" + encodeURIComponent(token))
       .then(function (res) { return res.ok ? res.json() : null; })
-      .then(function (info) { if (info && info.ok) anunciarRol(info.role); })
+      .then(function (info) { if (info && info.ok) anunciarRol(info.role, info); })
       .catch(function () { /* sin aviso, la entrada sigue funcionando */ });
   }
 
@@ -312,8 +411,10 @@
     const esVisitante = rolEntrada === "visitor";
     const name = esVisitante ? "Visitante" : (input.value || "").trim();
     const password = esVisitante ? "" : (clave.value || "").trim();
-    const avatarInput = esVisitante ? null : form.querySelector('input[name="avatar"]:checked');
-    const avatar = esVisitante ? "av_visitante" : (avatarInput ? avatarInput.value : "");
+    const avatarInput = null;
+    const avatar = esVisitante
+      ? "av_visitante"
+      : (avatarInput ? avatarInput.value : specActual());
     const roles = esVisitante ? [] : Array.prototype.map.call(
       form.querySelectorAll('input[name="rol"]:checked'),
       function (casilla) { return casilla.value; }

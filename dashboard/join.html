@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -332,6 +332,7 @@
       .join-card, .join-card > *, #join-campos > *, .join-quien.is-lleno,
       #join-status.is-entra, .join-avatars input:checked + label .rav-avatar,
       .join-espera-marca, .join-espera-marca line, .join-espera-barra::after,
+      .join-anuncio-lado, .join-anuncio-bien, .join-anuncio-linea, .join-anuncio-marca line,
       .join-card button.is-cargando::before { animation: none !important; }
       .join-loader-mark line, .join-espera-marca line { stroke-dashoffset: 0; }
     }
@@ -389,8 +390,175 @@
       animation: join-corre 1.2s ease-in-out infinite;
     }
 
+    /* --- Bienvenida del visitante: el grupo a la izquierda, Rally a la derecha --- */
+    .join-anuncio {
+      position: fixed;
+      inset: 0;
+      z-index: 120;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: clamp(16px, 4vw, 56px);
+      padding: clamp(20px, 6vw, 72px);
+      background: radial-gradient(circle at 50% 40%, #ffffff, var(--bg-app) 72%);
+    }
+    .join-anuncio[hidden] { display: none; }
+    .join-anuncio-lado {
+      display: grid;
+      justify-items: center;
+      gap: 14px;
+      animation: join-anuncio-entra .7s cubic-bezier(.2, .8, .2, 1) both;
+    }
+    .join-anuncio-grupo { animation-delay: .1s; }
+    .join-anuncio-rally { animation-delay: .4s; }
+    .join-anuncio-escudo {
+      display: grid;
+      place-items: center;
+      min-width: 116px;
+      max-width: 260px;
+      height: 116px;
+      padding: 0 18px;
+      border: 2px solid var(--border-strong);
+      border-radius: 28px;
+      background: var(--bg-surface);
+      font: 900 24px/1.1 var(--font-ui);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      text-align: center;
+      color: var(--text-title);
+    }
+    .join-anuncio-marca {
+      width: 132px;
+      height: 88px;
+      stroke: var(--color-primary);
+      stroke-width: 9;
+      stroke-linecap: round;
+      stroke-dasharray: 36;
+      animation: join-traza 1.1s ease-out .4s both;
+    }
+    .join-anuncio-pie {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+    }
+    .join-anuncio-medio { display: grid; justify-items: center; gap: 12px; }
+    .join-anuncio-bien {
+      font: 900 clamp(22px, 3.4vw, 34px)/1 var(--font-ui);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      animation: join-anuncio-entra .6s ease .55s both;
+    }
+    .join-anuncio-linea {
+      width: 0;
+      height: 3px;
+      border-radius: 3px;
+      background: var(--border-strong);
+      animation: join-anuncio-linea 1s ease .6s both;
+    }
+    @keyframes join-anuncio-entra {
+      from { opacity: 0; transform: translateY(10px) scale(.96); }
+      to { opacity: 1; transform: none; }
+    }
+    @keyframes join-anuncio-linea { from { width: 0; } to { width: 90px; } }
+    .join-tiempo {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0;
+      padding: 6px 12px;
+      border: 1px solid var(--border-light);
+      border-radius: 999px;
+      background: var(--bg-subtle);
+      font: 700 12px/1 var(--font-mono);
+      color: var(--text-title);
+    }
+    .join-tiempo[hidden] { display: none; }
+    .join-tiempo b { color: var(--color-primary); }
+
+    /* --- Personaje por capas: vista grande + tres filas de opciones --- */
+    .join-personaje {
+      display: grid;
+      grid-template-columns: 132px minmax(0, 1fr);
+      gap: var(--space-4, 16px);
+      align-items: start;
+    }
+    .join-personaje-vista {
+      display: grid;
+      justify-items: center;
+      gap: 6px;
+      padding: 10px 8px;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      background: var(--bg-app);
+    }
+    .join-personaje-cara { display: block; line-height: 0; }
+    .join-personaje-cara svg { width: 96px; height: 96px; }
+    .join-personaje-nom {
+      font-size: 11px;
+      line-height: 1.3;
+      color: var(--text-faint);
+      text-align: center;
+    }
+    .join-capas { display: grid; gap: 6px; }
+    .join-capa-tit {
+      margin: 0;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+    }
+    .join-capa { display: flex; flex-wrap: wrap; gap: 6px; }
+    .join-capa input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+    .join-capa label {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 9px 3px 4px;
+      border: 1px solid var(--border-light);
+      border-radius: 999px;
+      background: var(--bg-surface);
+      font-size: 11.5px;
+      color: var(--text-body);
+      cursor: pointer;
+      transition: border-color .2s ease, box-shadow .2s ease, transform .15s ease;
+    }
+    .join-capa label svg { width: 26px; height: 26px; flex: none; }
+    .join-capa label:active { transform: scale(.97); }
+    .join-capa input:checked + label {
+      border-color: var(--color-primary);
+      box-shadow: inset 0 0 0 1px var(--color-primary);
+      color: var(--text-title);
+    }
+    .join-capa input:focus-visible + label { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+    .join-capa label.is-tono { padding: 3px; border-radius: 50%; }
+    .join-capa label.is-tono span:last-child {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+    }
+    .join-tono {
+      display: block;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 1px solid rgba(13, 27, 53, .18);
+    }
+
     /* --- Telefono: el menu cabe en una pantalla sin scroll eterno --- */
     @media (max-width: 700px) {
+      .join-anuncio { grid-template-columns: 1fr; justify-items: center; gap: 22px; }
+      .join-anuncio-escudo { min-width: 92px; height: 92px; font-size: 19px; }
+      .join-anuncio-marca { width: 104px; height: 70px; }
+      .join-personaje { grid-template-columns: 88px minmax(0, 1fr); gap: 10px; }
+      .join-personaje-cara svg { width: 64px; height: 64px; }
+      .join-personaje-nom { font-size: 10px; }
       .join-avatars {
         grid-template-columns: repeat(3, minmax(0, 1fr));
         max-height: 200px;
@@ -427,6 +595,23 @@
       <span class="join-espera-barra" aria-hidden="true"></span>
     </div>
   </div>
+  <div class="join-anuncio" id="join-anuncio" hidden aria-hidden="true">
+    <div class="join-anuncio-lado join-anuncio-grupo">
+      <span class="join-anuncio-escudo" id="join-anuncio-nombre">EQUIPO</span>
+      <span class="join-anuncio-pie">te invita</span>
+    </div>
+    <div class="join-anuncio-medio">
+      <span class="join-anuncio-bien">Bienvenido</span>
+      <span class="join-anuncio-linea"></span>
+    </div>
+    <div class="join-anuncio-lado join-anuncio-rally">
+      <svg class="join-anuncio-marca" viewBox="0 0 60 40" fill="none" aria-hidden="true">
+        <line x1="14" y1="34" x2="26" y2="6"></line>
+        <line x1="30" y1="34" x2="42" y2="6"></line>
+      </svg>
+      <span class="join-anuncio-pie">Rally Studio</span>
+    </div>
+  </div>
   <main class="join-shell">
     <div class="join-layout">
     <section class="join-card">
@@ -442,7 +627,20 @@
           </fieldset>
           <fieldset id="join-avatares-fieldset">
             <legend>Tu personaje: la cara que verá el equipo</legend>
-            <div class="join-avatars" id="join-avatares" role="radiogroup" aria-label="Tu personaje"></div>
+            <div class="join-personaje">
+              <div class="join-personaje-vista">
+                <span class="join-personaje-cara" id="join-cara" aria-hidden="true"></span>
+                <span class="join-personaje-nom" id="join-cara-nom"></span>
+              </div>
+              <div class="join-capas">
+                <p class="join-capa-tit">Pelo</p>
+                <div class="join-capa" id="join-pelos" role="radiogroup" aria-label="Pelo"></div>
+                <p class="join-capa-tit">Accesorio</p>
+                <div class="join-capa" id="join-accesorios" role="radiogroup" aria-label="Accesorio"></div>
+                <p class="join-capa-tit">Camisa</p>
+                <div class="join-capa" id="join-camisas" role="radiogroup" aria-label="Camisa"></div>
+              </div>
+            </div>
           </fieldset>
           <label for="join-clave">Tu clave (opcional)</label>
           <div class="join-fila">
@@ -458,6 +656,7 @@
     </section>
     <aside class="join-aside">
       <p class="join-quien" id="join-quien" role="status" aria-live="polite"></p>
+      <p class="join-tiempo" id="join-tiempo" hidden></p>
       <section class="join-panel" id="join-panel-mentor" hidden>
         <h2>Quién ya entró</h2>
         <ul class="join-roster" id="join-roster"></ul>
@@ -477,7 +676,7 @@
     </aside>
     </div>
   </main>
-  <script src="avatars.js?v=20261117_rev7" defer></script>
-  <script src="join.js?v=20261121_rev11" defer></script>
+  <script src="avatars.js?v=20261121_rev8" defer></script>
+  <script src="join.js?v=20261122_rev12" defer></script>
 </body>
 </html>

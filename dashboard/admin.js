@@ -416,7 +416,10 @@
       inviteOut.textContent = url;
       copyBtn.hidden = false;
       copyBtn.dataset.url = url;
-      status("Enlace creado para " + etiquetaRol(rolInvitado).toLowerCase() + ". Sirve una sola vez.");
+      const vida = rolInvitado === "visitor"
+        ? "Sirve una sola vez y caduca en 1 hora."
+        : "Sirve una sola vez.";
+      status("Enlace creado para " + etiquetaRol(rolInvitado).toLowerCase() + ". " + vida);
     } catch (e) {
       status("Sin conexión.");
     } finally {
