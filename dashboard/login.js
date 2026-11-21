@@ -25,7 +25,9 @@ var verBtn = document.getElementById("puerta-ver");
   var nota = document.getElementById("puerta-nota");
   var miembros = document.getElementById("puerta-miembros");
   var protegido = true;
-  var modo = "llave";
+  // Casi todo el que llega aqui ya tiene nombre y clave: esa es la puerta por
+  // defecto. La llave maestra solo aparece cuando el proyecto aun no tiene gente.
+  var modo = "persona";
 
   // GitHub Pages y Netlify no tienen servidor: no hay /api/entrar ni llave maestra.
   // En ese caso la llave se comprueba en el navegador. Ojo: eso NO protege nada
@@ -40,7 +42,9 @@ var verBtn = document.getElementById("puerta-ver");
   var LLAVE_ESTATICA_SHA256 = "21d70e7f8425a06e794a985ce2b1b5974a49f1e8e390ff0db73382cf9c033eed";
 
   function huella(texto) {
-    if (!(window.crypto && crypto.subtle)) return Promise.resolve("");
+    // Sin crypto.subtle (contexto no seguro) no se puede comprobar la llave.
+    // Devolver "" la marcaba como incorrecta y culpaba a quien escribía la buena.
+    if (!(window.crypto && crypto.subtle)) return Promise.reject(new Error("sin-crypto"));
     return crypto.subtle.digest("SHA-256", new TextEncoder().encode(texto))
       .then(function (buf) {
         return Array.prototype.map.call(new Uint8Array(buf), function (b) {
@@ -54,6 +58,7 @@ var verBtn = document.getElementById("puerta-ver");
     miembros.textContent = "la llave se comprueba en tu navegador, no protege el contenido";
     llave.placeholder = "Tu llave";
     nombre.style.display = "block";
+    form.setAttribute("data-modo", "llave");
     modoBtn.style.display = "none";
     form.addEventListener("submit", function (evento) {
       evento.preventDefault();
@@ -79,6 +84,9 @@ var verBtn = document.getElementById("puerta-ver");
         } catch (e) { /* sin almacenamiento */ }
         decir("Adentro. Abriendo el workbench…");
         location.replace(destino());
+      }).catch(function () {
+        decir("Este navegador no puede comprobar la llave aquí: abre el enlace desde https o desde localhost.", "error");
+        boton.disabled = false;
       });
     });
     return;
@@ -92,9 +100,16 @@ var verBtn = document.getElementById("puerta-ver");
 
   function destino() {
     var base = "/";
-    if (volver && !/^[a-z]+:/i.test(volver) && volver.indexOf("//") !== 0) {
-      base = volver.charAt(0) === "/" ? volver : "/" + volver;
-    }
+    // `volver` es una ruta de este sitio, nunca un destino libre: `/\evil.example`
+    // lo lee el navegador como `//evil.example`, asi que un enlace de login
+    // podia terminar en otro sitio con la sesion ya guardada.
+    var ruta = String(volver || "").trim();
+    var segura =
+      ruta.charAt(0) === "/" &&
+      ruta.charAt(1) !== "/" &&
+      ruta.charAt(1) !== "\\" &&
+      ruta.indexOf("\\") === -1;
+    if (segura) base = ruta;
     return conProyecto(base);
   }
 
@@ -136,13 +151,15 @@ var verBtn = document.getElementById("puerta-ver");
         ? body.miembros + (body.miembros === 1 ? " persona adentro" : " personas adentro")
         : "sin accesos todavía";
       if (protegido) {
-        nota.textContent = "Pega tu llave o tu enlace de invitación";
+        nota.textContent = "Tu nombre y tu clave";
         llave.placeholder = "Tu llave";
+        ponerModo("persona");
       } else {
         nota.textContent = "Primera vez · abre el proyecto";
         llave.placeholder = "XXXX-XXXX-XXXX";
         nombre.style.display = "block";
         miembros.textContent = "la llave está en data/acceso.txt";
+        ponerModo("llave");
       }
     })
     .catch(function () {
@@ -177,6 +194,11 @@ var verBtn = document.getElementById("puerta-ver");
 
   function fallar(res) {
     var codigo = (res.body && res.body.error) || "llave-invalida";
+    if (codigo === "clave-invalida" && proyectoActual() === "main") {
+      decir("Ese nombre y esa clave no coinciden. Si vienes de un enlace de invitación, ábrelo otra vez: este navegador no sabe a qué proyecto entras.", "error");
+      boton.disabled = false;
+      return;
+    }
     decir(TEXTOS_ERROR[codigo] || "No se pudo entrar.", "error");
     boton.disabled = false;
   }
@@ -275,6 +297,6 @@ var verBtn = document.getElementById("puerta-ver");
       });
   });
 
-  llave.focus();
-  if (!protegido) nombre.value = "";
+  ponerModo(modo);
+  (modo === "persona" ? persona : llave).focus();
 })();
