@@ -47,7 +47,7 @@ def test_cli_escribe_directo_cuando_hay_token(servidor, tmp_path):
         [sys.executable, "scripts/servir_propuesta.py",
          "--tab", "pautado", "--slot", "problema", "--kind", "text",
          "--title", "Problema", "--payload", str(payload),
-         "--directo",
+         "--directo", "--actor-id", "pautador",
          "--server", base, "--project", "equipo01", "--token", boot["admin_token"]],
         cwd=str(REPO_ROOT), capture_output=True, text=True, encoding="utf-8", timeout=30,
     )
@@ -79,3 +79,39 @@ def test_sin_directo_escribe_buzon_aunque_haya_token(servidor, tmp_path):
                            headers=auth(boot["admin_token"]))
     assert status == 200
     assert "pautado.problema" not in (body["sections"] or {})
+
+
+def test_directo_sin_actor_id_es_rechazado(servidor, tmp_path):
+    base, data_dir = servidor
+    boot = bootstrap(base, "equipo01", "Ana")
+    payload = tmp_path / "p.json"
+    payload.write_text(json.dumps({"text": "Sin firma"}), encoding="utf-8")
+    env = {k: v for k, v in os.environ.items() if k != "RALLY_ACTOR_ID"}
+    env["RALLY_DATA_DIR"] = str(data_dir)
+    out = subprocess.run(
+        [sys.executable, "scripts/servir_propuesta.py",
+         "--tab", "pautado", "--slot", "problema", "--kind", "text",
+         "--title", "T", "--payload", str(payload),
+         "--server", base, "--project", "equipo01",
+         "--token", boot["admin_token"], "--directo"],
+        cwd=str(REPO_ROOT), capture_output=True, text=True, encoding="utf-8",
+        timeout=30, env=env,
+    )
+    assert out.returncode == 5, out.stderr
+    assert "actor-id" in out.stderr
+
+
+def test_el_sobre_del_buzon_firma_al_autor(tmp_path, monkeypatch):
+    payload = tmp_path / "p.json"
+    payload.write_text(json.dumps({"text": "Firmado"}), encoding="utf-8")
+    monkeypatch.setenv("RALLY_DATA_DIR", str(tmp_path / "datos"))
+    codigo = main([
+        "--tab", "pautado", "--slot", "problema", "--kind", "text",
+        "--title", "T", "--payload", str(payload),
+        "--actor", "presupuestador", "--actor-id", "presupuestador",
+    ])
+    assert codigo == 0
+    sobres = list((tmp_path / "datos" / "content").glob("*.json"))
+    env = json.loads(sobres[0].read_text(encoding="utf-8"))
+    assert env["actor"] == "presupuestador"
+    assert env["actor_id"] == "presupuestador"

@@ -21,10 +21,10 @@ from datetime import datetime
 from pathlib import Path
 
 try:
-    from content_store import ALLOWED_TABS, SLOTS_BY_TAB, validate_envelope
+    from content_store import ALLOWED_TABS, SLOTS_BY_TAB, revisar_contenido, validate_envelope
     from publicar_seccion import Bloqueada, Conflicto, NoAutorizado, publicar
 except ImportError:  # cuando se ejecuta desde la raíz del repo
-    from scripts.content_store import ALLOWED_TABS, SLOTS_BY_TAB, validate_envelope
+    from scripts.content_store import ALLOWED_TABS, SLOTS_BY_TAB, revisar_contenido, validate_envelope
     from scripts.publicar_seccion import Bloqueada, Conflicto, NoAutorizado, publicar
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -68,6 +68,8 @@ def construir_sobre(args) -> dict:
         "title": args.title,
         "source": args.source,
         "created_at": datetime.now().astimezone().isoformat(timespec="seconds"),
+        "actor": args.actor,
+        "actor_id": args.actor_id,
         "confidence": args.confidence,
         "simulated": bool(args.simulated),
         "payload": payload,
@@ -76,7 +78,7 @@ def construir_sobre(args) -> dict:
 
 BANDERAS_CON_VALOR = (
     "--tab", "--slot", "--kind", "--title", "--payload", "--source",
-    "--confidence", "--token", "--server", "--project",
+    "--confidence", "--token", "--server", "--project", "--actor", "--actor-id",
 )
 
 
@@ -110,6 +112,9 @@ def main(argv=None) -> int:
     parser.add_argument("--payload", required=True, help="archivo JSON con el payload")
     parser.add_argument("--source", default="")
     parser.add_argument("--confidence", default="media")
+    parser.add_argument("--actor", default="IA", help="rol que firma la propuesta")
+    parser.add_argument("--actor-id", default=os.environ.get("RALLY_ACTOR_ID", ""),
+                        help="identificador del rol (obligatorio con --directo)")
     parser.add_argument("--simulated", action="store_true", help="marcar como dato simulado")
     parser.add_argument("--token", default=os.environ.get("RALLY_SESSION_TOKEN", ""))
     parser.add_argument("--server", default=os.environ.get("RALLY_SERVER", "http://127.0.0.1:8000"))
@@ -136,13 +141,32 @@ def main(argv=None) -> int:
         )
         return 1
 
+    evento = "latam"
+    brief = REPO_ROOT / "brief.json"
+    if brief.is_file():
+        try:
+            evento = json.loads(brief.read_text(encoding="utf-8-sig")).get("rally_type") or "latam"
+        except (OSError, ValueError):
+            pass
+    problemas = revisar_contenido(sobre["tab"], sobre["slot"], sobre["payload"], evento)
+    if problemas:
+        for p in problemas:
+            print(f"- {p}", file=sys.stderr)
+        print("Propuesta rechazada por contenido: corrige y vuelve a servir.", file=sys.stderr)
+        return 5
+
     seccion = seccion_destino(args.tab, args.slot)
+    if args.directo and str(args.actor_id).strip().lower() in ("", "ia"):
+        print("Falta --actor-id: la escritura directa firma al especialista, no 'ia'",
+              file=sys.stderr)
+        return 5
     if seccion and args.token and args.directo and not args.simulated:
         try:
             body = publicar(
                 args.server, args.project, seccion,
                 dato_directo(args.tab, sobre["payload"]),
                 args.token,
+                actor=args.actor, actor_id=args.actor_id,
             )
         except Conflicto as exc:
             print(json.dumps({"ok": False, "error": "conflicto", **exc.body}, ensure_ascii=False))
@@ -152,6 +176,9 @@ def main(argv=None) -> int:
             return 3
         except NoAutorizado as exc:
             print(json.dumps({"ok": False, "error": "no-autorizado", **exc.body}, ensure_ascii=False))
+            return 4
+        except (OSError, RuntimeError) as exc:
+            print(f"No se pudo publicar: {exc}", file=sys.stderr)
             return 4
         section = body.get("section") or {}
         print(json.dumps({

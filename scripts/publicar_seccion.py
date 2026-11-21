@@ -134,6 +134,7 @@ def main(argv=None) -> int:
     parser.add_argument("--server", default=os.environ.get("RALLY_SERVER", "http://127.0.0.1:8000"))
     parser.add_argument("--base-version", type=int)
     parser.add_argument("--actor", default="IA")
+    parser.add_argument("--actor-id", default=os.environ.get("RALLY_ACTOR_ID", "ia"))
     args = parser.parse_args(argv)
 
     if args.text is None and not args.payload:
@@ -154,7 +155,7 @@ def main(argv=None) -> int:
 
     try:
         body = publicar(args.server, args.project, args.section, data,
-                        args.token, args.base_version, args.actor)
+                        args.token, args.base_version, args.actor, args.actor_id)
     except Conflicto as exc:
         print(json.dumps({"ok": False, "error": "conflicto", **exc.body}, ensure_ascii=False))
         return 2

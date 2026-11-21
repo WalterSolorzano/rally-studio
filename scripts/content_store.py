@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import json
 import re
+import sys
 import uuid
 from pathlib import Path
 
@@ -79,6 +80,54 @@ def validate_envelope(env: dict) -> list[str]:
         errors.append("payload debe ser un objeto")
 
     return errors
+
+
+def _raiz_en_path() -> None:
+    raiz = str(Path(__file__).resolve().parent.parent)
+    if raiz not in sys.path:
+        sys.path.insert(0, raiz)
+
+
+def revisar_contenido(tab: str, slot: str, payload: dict, evento: str = "latam") -> list[str]:
+    """Lo que el humano va a leer se revisa antes de llegar a la ventana.
+
+    Slop de IA y topes de caracteres salen de su fuente unica: no se repiten
+    aqui ni se relajan para que pase una propuesta.
+    """
+    if not isinstance(payload, dict):
+        return ["payload debe ser un objeto"]
+    _raiz_en_path()
+    from check_anti_generico import chequear_slop_ia
+    from checks.campo_chars import limites_para
+
+    problemas: list[str] = []
+    if tab in ("pautado", "script"):
+        texto = payload.get("text")
+        if not isinstance(texto, str):
+            return ["falta texto"]
+        for _, patron, _desc in chequear_slop_ia(texto):
+            problemas.append(f"slop: {patron}")
+        if tab == "pautado":
+            tope = limites_para(evento or "latam").get(slot)
+            if tope and len(texto) > tope:
+                problemas.append(f"{slot}: {len(texto)} > {tope} caracteres")
+        return problemas
+
+    if tab == "budget":
+        items = payload.get("items")
+        if not isinstance(items, list) or not items:
+            return ["budget sin items"]
+        for i, fila in enumerate(items):
+            if not isinstance(fila, dict):
+                problemas.append(f"fila {i}: no es un objeto")
+                continue
+            for campo in ("element", "units", "unit_cost", "url"):
+                valor = fila.get(campo)
+                if valor is None or (isinstance(valor, str) and not valor.strip()):
+                    problemas.append(f"fila {i}: falta {campo}")
+        return problemas
+
+    return problemas
 
 
 class ContentStore:
