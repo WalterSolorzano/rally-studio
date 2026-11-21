@@ -3341,6 +3341,9 @@ function openIdentityModal() {
       ${esVisitante() ? "" : `<a href="admin.html" style="display:inline-flex; align-items:center; gap:6px; margin-top:16px; font-size:12px; font-weight:700; color:var(--text-muted); text-decoration:none; border-bottom:1px solid var(--border-light); padding-bottom:3px;" title="Invitar personas, revisar quién entró y retirar acceso">
         ${SVG.users} ${esMentor() ? "Revisar accesos del equipo" : "Accesos del equipo"}
       </a>`}
+      <a href="perfil.html" style="display:inline-flex; align-items:center; gap:6px; margin-top:16px; margin-left:14px; font-size:12px; font-weight:700; color:var(--text-muted); text-decoration:none; border-bottom:1px solid var(--border-light); padding-bottom:3px;" title="Tu nombre, tu personaje y tu clave">
+        ${SVG.edit} Mi perfil
+      </a>
     </div>
   `;
   document.body.appendChild(modal);
