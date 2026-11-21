@@ -739,13 +739,13 @@ function getWorkflowStage() {
 // ── NAVEGACIÓN MODULAR Y DEPENDENCIAS ─────────────────────────────────────────
 const NAV_TABS = [
   { id: "resumen",    label: "Resumen del Rally",        level: 0, check: () => true, summary: true },
-  { id: "certamen",   label: "00 Certamen",             level: 0, setup: true, visitante: false, check: () => true },
-  { id: "team",       label: "01 Identidad de Equipo",  level: 1, setup: true, visitante: false, check: () => !!state.rally_type },
+  { id: "certamen",   label: "00 Certamen",             level: 0, setup: true, check: () => true },
+  { id: "team",       label: "01 Identidad de Equipo",  level: 1, setup: true, check: () => !!state.rally_type },
   { id: "identidad",  label: "Paleta y marca del proyecto", level: 1, check: () => !!state.rally_type },
   { id: "challenges", label: "02 Retos del Comité",     level: 2, check: () => !!state.rally_type && !!state.team_name },
   { id: "solution",   label: "03 Taller de Solución",   level: 3, check: () => !!state.challenge_id },
   { id: "impact",     label: "04 Impacto, ODS & Plan País", level: 3, check: () => !!state.challenge_id },
-  { id: "multi_ai",   label: "05 Despacho Multi-IA",    level: 4, visitante: false, check: () => state.solution_approved },
+  { id: "multi_ai",   label: "05 Despacho Multi-IA",    level: 4, check: () => state.solution_approved },
   { id: "pautado",    label: "06 Pautado Oficial",      level: 4, check: () => state.solution_approved && isPautadoComplete() },
   { id: "budget",     label: "07 Presupuesto de Marcha",level: 4, check: () => state.solution_approved && isBudgetValid() },
   { id: "resources",  label: "08 Bóveda de Recursos",   level: 4, check: () => state.solution_approved },
@@ -1025,6 +1025,11 @@ if (typeof window !== "undefined" && window.addEventListener) {
 }
 
 function saveState() {
+  if (esVisitante()) {
+    // El visitante ve todo el tablero, pero no deja rastro: ni en su copia.
+    showToast("Entraste como visitante: miras todo, no escribes.");
+    return;
+  }
   try {
     localStorage.setItem("rally_studio_production_state_2026_v4", JSON.stringify(state));
     if (syncBroadcastChannel) {
