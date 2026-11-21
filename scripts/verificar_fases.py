@@ -44,6 +44,7 @@ COMPUERTAS = {
     "validate_pautado.py",
     "verificar_identidad.py",
     "probar_responsive.py",
+    "verificar_canal.py",
     "verificar_fases.py",
 }
 DECISIONES = ("aceptada", "descartada")
@@ -83,8 +84,13 @@ ETAPAS = [
         "pregunta": ["Que reto eligio el equipo de la lista del comite?"],
     },
     {
+        # La solucion no vive en brief.json como `solution`: el puente de estado
+        # copia `description_one_line` (y el tablero la exige antes de aprobar la
+        # etapa). Antes el campo era "solution", una clave que ni brief.json ni
+        # CAMPOS_BRIEF tienen, asi que la fase 03 no podia pasar nunca y toda
+        # etapa posterior salia como "etapa saltada".
         "id": "03", "nombre": "solution", "prev": ["02"],
-        "campo": "solution", "archivo": None,
+        "campo": "description_one_line", "archivo": None,
         "construye": "profe", "audita": "sharktank",
         "pregunta": [
             "Como resuelve el reto, en una frase?",
@@ -197,9 +203,59 @@ def _texto_util(ruta: pathlib.Path) -> bool:
     return vacias / len(lineas) < 0.4
 
 
+ASSET_RX = re.compile(r"^asset_[A-Za-z0-9]+_[A-Za-z0-9][A-Za-z0-9_-]*\.[A-Za-z0-9]{1,5}$")
+
+
+def _assets_bien_nombrados(carpeta: pathlib.Path) -> list[pathlib.Path]:
+    """Assets con el nombre completo de la regla 7: asset_<shotlist_id>_<descripcion>.<ext>."""
+    return [
+        p for p in carpeta.rglob("*")
+        if p.is_file() and ASSET_RX.match(p.name)
+    ]
+
+
 def _carpeta_con_assets(carpeta: pathlib.Path) -> bool:
-    """Solo cuenta un asset nombrado como manda la regla: asset_<shot>_<desc>.<ext>."""
-    return any(p.is_file() and p.name.startswith("asset_") for p in carpeta.rglob("*"))
+    """Solo cuenta un asset nombrado como manda la regla: asset_<shot>_<desc>.<ext>.
+
+    Antes bastaba el prefijo `asset_`: `asset_1.png` contaba como entregable. La regla 7
+    pide el identificador de la toma y la descripcion, y sin ellos el archivo no se puede
+    remontar al shotlist.
+    """
+    return bool(_assets_bien_nombrados(carpeta))
+
+
+ENTREGABLES_AGENTS = (
+    ("brief.json validado", "brief", ""),
+    ("docs/pautado_draft.docx", "archivo", "docs/pautado_draft.docx"),
+    ("budget/budget.xlsx", "archivo", "budget/budget.xlsx"),
+    ("docs/canvas.md", "archivo", "docs/canvas.md"),
+    ("script/script.md", "archivo", "script/script.md"),
+    ("assets/voice/narration.mp4", "archivo", "assets/voice/narration.mp4"),
+    ("video_url en YouTube", "brief", "video_url"),
+    ("site_url publicada", "brief", "site_url"),
+)
+
+
+def checklist_entrega(brief: dict, raiz: pathlib.Path | None = None) -> list[dict]:
+    """Los 8 entregables de la tabla de AGENTS.md, cada uno medido por separado.
+
+    Este checklist es el de la entrega a SIRLI, no la compuerta de fases: se informa
+    siempre, sin sumar fallos, porque un equipo a mitad de rally tiene casi todo pendiente.
+    """
+    raiz = raiz or RAIZ
+    resultado = []
+    for nombre, tipo, dato in ENTREGABLES_AGENTS:
+        if tipo == "archivo":
+            ruta = raiz / dato
+            existe_ya = ruta.exists() and (ruta.is_dir() or ruta.stat().st_size > 0)
+        elif tipo == "brief" and not dato:
+            existe_ya = bool(brief.get("rally_type")) and bool(brief.get("hours_total"))
+        elif tipo == "brief":
+            existe_ya = bool(str(brief.get(dato) or "").strip())
+        else:
+            existe_ya = False
+        resultado.append({"nombre": nombre, "existe": existe_ya})
+    return resultado
 
 
 def existe(etapa: dict, brief: dict, bitacora: dict) -> bool:
@@ -333,6 +389,25 @@ def mapa() -> None:
             e["id"], e["nombre"], ",".join(e["prev"]) or "-", e["construye"], e["audita"]))
 
 
+def revisar_canal(raiz: pathlib.Path) -> str:
+    """El canal de contratos se audita con la compuerta, no a ojo.
+
+    Sin carpeta `canal/` no hay nada que revisar: el equipo aun no lo abrio.
+    """
+    carpeta = raiz / "canal"
+    if not carpeta.is_dir():
+        return ""
+    if str(SCRIPTS) not in sys.path:
+        sys.path.insert(0, str(SCRIPTS))
+    import verificar_canal
+
+    brief = raiz / "brief.json"
+    fallos = verificar_canal.verificar(carpeta, brief if brief.is_file() else None)
+    if not fallos:
+        return ""
+    return "canal entre roles roto (%d fallo(s)): %s" % (len(fallos), fallos[0][:120])
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--mapa", action="store_true")
@@ -432,6 +507,13 @@ def main() -> int:
         ok("bitacora %s %s -> %s construyo, %s audito" % (
             e["id"], e["nombre"], e["construye"], e["audita"]))
 
+    # 3c. el canal de contratos entre roles pasa su propio auditor
+    motivo = revisar_canal(RAIZ)
+    if motivo:
+        fail(motivo)
+    else:
+        ok("canal entre roles")
+
     # 4. siguiente etapa, con las preguntas que desbloquean
     siguiente = next((e for e in ETAPAS if not existe(e, brief, bitacora)), None)
     if siguiente is None:
@@ -441,6 +523,11 @@ def main() -> int:
             siguiente["id"], siguiente["nombre"], siguiente["construye"], siguiente["audita"]))
         for i, p in enumerate(siguiente["pregunta"], 1):
             print("  pregunta %d: %s" % (i, p))
+
+    # 5. checklist de entrega: los 8 items de AGENTS.md, informados uno por uno
+    print("\nCHECKLIST DE ENTREGA (AGENTS.md)")
+    for item in checklist_entrega(brief):
+        print("  [%s] %s" % ("v" if item["existe"] else " ", item["nombre"]))
 
     if fallos:
         print("\n%d fallo(s)" % len(fallos))
