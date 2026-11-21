@@ -7,6 +7,9 @@ Uso:
 
 La IA no pasa por Aceptar/Descartar. Si otra persona guardó antes, el servidor
 responde 409 y este script termina con código 2 sin pisar nada.
+
+Códigos de salida: 0 publicada, 1 argumentos inválidos, 2 conflicto,
+3 bloqueada, 4 falta token, 6 falta --actor-id.
 """
 
 from __future__ import annotations
@@ -155,7 +158,7 @@ def main(argv=None) -> int:
     if str(args.actor_id).strip().lower() in ("", "ia"):
         print("Falta --actor-id: la escritura directa firma al especialista, no 'ia'",
               file=sys.stderr)
-        return 5
+        return 6
 
     try:
         body = publicar(args.server, args.project, args.section, data,

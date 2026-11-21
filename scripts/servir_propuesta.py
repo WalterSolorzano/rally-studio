@@ -8,6 +8,9 @@ Uso:
 El archivo --payload es el `payload` del sobre (JSON). La propuesta aparece en
 la ventana (a) como aceptar/descartar; no se aplica sola. Solo con `--directo`,
 token y sin `--simulated` escribe la sección en el servidor sin revisión humana.
+
+Códigos de salida: 0 servida, 1 sobre inválido, 2 conflicto, 3 bloqueada,
+4 no autorizada, 5 contenido rechazado (slop, tope, URL), 6 falta autor.
 """
 
 from __future__ import annotations
@@ -57,8 +60,6 @@ def dato_directo(tab: str, payload):
 def construir_sobre(args) -> dict:
     payload_path = Path(args.payload)
     payload = json.loads(payload_path.read_text(encoding="utf-8-sig"))
-    if not isinstance(payload, dict):
-        payload = {"value": payload}
 
     return {
         "id": f"{args.tab}-{args.slot}-{uuid.uuid4().hex[:8]}",
@@ -156,11 +157,12 @@ def main(argv=None) -> int:
         return 5
 
     seccion = seccion_destino(args.tab, args.slot)
-    if args.directo and str(args.actor_id).strip().lower() in ("", "ia"):
+    directo = bool(seccion and args.token and args.directo and not args.simulated)
+    if directo and str(args.actor_id).strip().lower() in ("", "ia"):
         print("Falta --actor-id: la escritura directa firma al especialista, no 'ia'",
               file=sys.stderr)
-        return 5
-    if seccion and args.token and args.directo and not args.simulated:
+        return 6
+    if directo:
         try:
             body = publicar(
                 args.server, args.project, seccion,

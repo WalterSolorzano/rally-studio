@@ -97,8 +97,29 @@ def test_directo_sin_actor_id_es_rechazado(servidor, tmp_path):
         cwd=str(REPO_ROOT), capture_output=True, text=True, encoding="utf-8",
         timeout=30, env=env,
     )
-    assert out.returncode == 5, out.stderr
+    assert out.returncode == 6, out.stderr
     assert "actor-id" in out.stderr
+
+
+def test_simulado_directo_sin_actor_cae_al_buzon(servidor, tmp_path):
+    """--simulated nunca escribe directo: la falta de firma no aplica."""
+    base, data_dir = servidor
+    boot = bootstrap(base, "equipo01", "Ana")
+    payload = tmp_path / "p.json"
+    payload.write_text(json.dumps({"text": "Simulado"}), encoding="utf-8")
+    env = {k: v for k, v in os.environ.items() if k != "RALLY_ACTOR_ID"}
+    env["RALLY_DATA_DIR"] = str(data_dir)
+    out = subprocess.run(
+        [sys.executable, "scripts/servir_propuesta.py",
+         "--tab", "pautado", "--slot", "problema", "--kind", "text",
+         "--title", "T", "--payload", str(payload),
+         "--server", base, "--project", "equipo01",
+         "--token", boot["admin_token"], "--directo", "--simulated"],
+        cwd=str(REPO_ROOT), capture_output=True, text=True, encoding="utf-8",
+        timeout=30, env=env,
+    )
+    assert out.returncode == 0, out.stderr
+    assert len(list((data_dir / "content").glob("*.json"))) == 1
 
 
 def test_el_sobre_del_buzon_firma_al_autor(tmp_path, monkeypatch):
@@ -115,3 +136,17 @@ def test_el_sobre_del_buzon_firma_al_autor(tmp_path, monkeypatch):
     env = json.loads(sobres[0].read_text(encoding="utf-8"))
     assert env["actor"] == "presupuestador"
     assert env["actor_id"] == "presupuestador"
+
+
+def test_payload_que_no_es_objeto_se_rechaza(tmp_path, monkeypatch, capsys):
+    """Un array no se envuelve en {"value": ...}: el sobre lo rechaza."""
+    payload = tmp_path / "p.json"
+    payload.write_text(json.dumps([1, 2]), encoding="utf-8")
+    monkeypatch.setenv("RALLY_DATA_DIR", str(tmp_path / "datos"))
+    codigo = main([
+        "--tab", "pautado", "--slot", "problema", "--kind", "text",
+        "--title", "T", "--payload", str(payload),
+    ])
+    assert codigo == 1
+    assert "payload debe ser un objeto" in capsys.readouterr().err
+    assert not (tmp_path / "datos" / "content").exists()

@@ -28,4 +28,4 @@ def test_cli_exige_actor_id(monkeypatch):
     monkeypatch.delenv("RALLY_ACTOR_ID", raising=False)
     codigo = main(["--project", "equipo01", "--section", "pautado.problema",
                    "--text", "Hola", "--token", "token-de-prueba"])
-    assert codigo == 5
+    assert codigo == 6
