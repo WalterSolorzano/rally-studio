@@ -6,6 +6,7 @@
   const form = document.getElementById("join-form");
   const input = document.getElementById("join-name");
   const clave = document.getElementById("join-clave");
+  const verClave = document.getElementById("join-ver");
   const button = document.getElementById("join-submit");
   const status = document.getElementById("join-status");
   const contenedor = document.getElementById("join-avatares");
@@ -23,7 +24,12 @@
 
   function pintarAvatares() {
     if (!contenedor || !window.RAV) return;
-    contenedor.innerHTML = RAV.lista
+    // La cara de admin no se elige aqui: el rol ya lo trae el enlace y una
+    // cara que dice "Admin" confunde a quien solo entra como miembro.
+    const caras = RAV.lista.filter(function (avatar) {
+      return avatar.id !== "av_admin";
+    });
+    contenedor.innerHTML = caras
       .map(function (avatar, i) {
         return (
           '<input type="radio" id="av-' + avatar.id + '" name="avatar" value="' + avatar.id + '"' +
@@ -73,8 +79,11 @@
       .catch(function () { /* sin aviso, la entrada sigue funcionando */ });
   }
 
-  function mostrar(text) {
+  function mostrar(text, esError) {
     status.textContent = text || "";
+    if (!status.classList) return;
+    if (esError) status.classList.add("is-error");
+    else status.classList.remove("is-error");
   }
 
   // Los errores del motor viajan como codigos cortos ("invite-usado"). Un
@@ -104,10 +113,25 @@
   }
 
   if (!token) {
-    mostrar("Este enlace no trae invitación. Pide uno nuevo al administrador del equipo.");
+    mostrar("Este enlace no trae invitación. Pide uno nuevo al administrador del equipo.", true);
     button.disabled = true;
   } else {
     input.focus();
+  }
+
+  // Escribir una clave nueva a ciegas termina en "no me acuerdo qué puse":
+  // el boton la muestra mientras se escribe.
+  if (verClave) {
+    verClave.addEventListener("click", function () {
+      const visible = verClave.getAttribute("aria-pressed") !== "true";
+      verClave.setAttribute("aria-pressed", visible ? "true" : "false");
+      const etiqueta = visible ? "Ocultar la clave" : "Mostrar la clave";
+      verClave.setAttribute("aria-label", etiqueta);
+      verClave.setAttribute("title", etiqueta);
+      verClave.textContent = visible ? "Ocultar" : "Ver";
+      clave.type = visible ? "text" : "password";
+      clave.focus();
+    });
   }
 
   function deviceId() {
@@ -145,12 +169,12 @@
       function (casilla) { return casilla.value; }
     );
     if (!name) {
-      mostrar("Escribe tu nombre.");
+      mostrar("Escribe tu nombre.", true);
       input.focus();
       return;
     }
     if (password && password.length < 6) {
-      mostrar("La clave necesita al menos 6 caracteres.");
+      mostrar("La clave necesita al menos 6 caracteres.", true);
       clave.focus();
       return;
     }
@@ -171,20 +195,26 @@
       });
       const body = await res.json().catch(function () { return {}; });
       if (!res.ok) {
-        mostrar(mensajeDe(body.error));
+        mostrar(mensajeDe(body.error), true);
         button.disabled = false;
         return;
       }
       if (body.pending) {
         // La sesion todavia no sirve: el admin tiene que aprobar la solicitud.
-        mostrar("Solicitud enviada. Tu admin la aprueba y entras.");
+        mostrar("Solicitud enviada. Tu usuario ya está creado; el admin del equipo lo aprueba y entras con tu nombre y clave.");
+        const irLogin = document.getElementById("join-ir-login");
+        const enlaceLogin = document.getElementById("join-ir-login-a");
+        if (irLogin && enlaceLogin) {
+          enlaceLogin.href = "login.html?project=" + encodeURIComponent(body.project || "main");
+          irLogin.hidden = false;
+        }
         button.disabled = false;
         return;
       }
       if (!body.session || !body.member) {
         // Sin sesion o sin miembro no hay a donde ir: mejor decirlo que
         // guardar "undefined" y romper la siguiente pantalla.
-        mostrar("El servidor respondió sin sesión. Recarga e intenta de nuevo.");
+        mostrar("El servidor respondió sin sesión. Recarga e intenta de nuevo.", true);
         button.disabled = false;
         return;
       }
@@ -202,7 +232,7 @@
       if (body.member.avatar) localStorage.setItem("rally_user_mascot_id", body.member.avatar);
       location.replace("/?project=" + encodeURIComponent(body.project));
     } catch (error) {
-      mostrar("No se pudo contactar al servidor. Revisa la conexión e intenta de nuevo.");
+      mostrar("No se pudo contactar al servidor. Revisa la conexión e intenta de nuevo.", true);
       button.disabled = false;
     }
   });
