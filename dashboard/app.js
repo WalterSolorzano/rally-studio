@@ -2154,6 +2154,12 @@ function renderTopbar() {
         </button>
       ` : ""}
 
+      <!-- Perfil de esta persona: nombre, personaje y clave -->
+      <a href="perfil.html" class="topbar-chip" style="display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:700; color:var(--text-muted); text-decoration:none;" title="Tu nombre, tu personaje y tu clave" aria-label="Mi perfil">
+        ${SVG.edit}
+        <span>Mi perfil</span>
+      </a>
+
       <!-- Identidad de esta persona: nombre real, definido por ella misma -->
       <button class="collaborator-avatar-badge" onclick="openIdentityModal()" title="${amINamed() ? `Trabajas como ${currentClientMascot.name}. Clic para cambiar de persona.` : 'Define tu nombre para que el equipo sepa quién eres.'}">
         <span class="collaborator-avatar-icon">${amINamed() ? currentClientMascot.icon : SVG.users}</span>
