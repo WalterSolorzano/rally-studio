@@ -41,13 +41,35 @@
       .join("");
   }
 
+  /* Icono por rol: una figura antes que la palabra, no emoji. */
+  var ICONOS = {
+    director: '<path d="M3 8h18v12H3z"/><path d="M3 8l3-4h13l-3 4"/><path d="M9 12h6M9 16h6"/>',
+    guion: '<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12h6M9 16h6"/>',
+    presupuesto: '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="9" cy="16" r="1"/><circle cx="15" cy="16" r="1"/>',
+    pautado: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 10v10"/>',
+    canvas: '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/>',
+    documentos: '<path d="M3 6h6l2 3h10v11H3z"/>',
+    "editor-video": '<rect x="3" y="5" width="12" height="14" rx="2"/><path d="M15 9l6-3v12l-6-3z"/>',
+    investigacion: '<circle cx="11" cy="11" r="6"/><path d="M15.5 15.5L21 21"/>',
+    voz: '<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/>',
+    "modelo-3d": '<path d="M12 3l8 4.5-8 4.5-8-4.5z"/><path d="M4 7.5v9L12 21l8-4.5v-9"/><path d="M12 12v9"/>',
+    web: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><circle cx="6.5" cy="6.5" r=".8"/>',
+    auditor: '<path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+  };
+
+  function iconoRol(id) {
+    var trazo = ICONOS[id];
+    if (!trazo) return "";
+    return '<svg class="join-rol-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' + trazo + "</svg>";
+  }
+
   function pintarRoles() {
     if (!contenedorRoles || !window.RAV) return;
     contenedorRoles.innerHTML = RAV.roles
       .map(function (rol) {
         return (
           '<input type="checkbox" id="rol-' + rol.id + '" name="rol" value="' + rol.id + '">' +
-          '<label for="rol-' + rol.id + '">' + rol.nombre + "</label>"
+          '<label for="rol-' + rol.id + '">' + iconoRol(rol.id) + "<span>" + rol.nombre + "</span></label>"
         );
       })
       .join("");
@@ -85,12 +107,19 @@
 
   function anunciarRol(rol) {
     const ficha = ROLES_ENTRADA[rol] || ROLES_ENTRADA.member;
-    const linea = "Entras como " + ficha.titulo.toLowerCase() +
-      (ficha.detalle ? " \u00b7 " + ficha.detalle : "");
     if (quien) {
-      quien.setAttribute("aria-label", linea);
-      quien.innerHTML = (ficha.avatar && window.RAV ? RAV.svg(ficha.avatar) : "") +
-        "<span>" + linea + "</span>";
+      quien.setAttribute(
+        "aria-label",
+        "Entras como " + ficha.titulo + (ficha.detalle ? " · " + ficha.detalle : "")
+      );
+      quien.innerHTML =
+        (ficha.avatar && window.RAV ? RAV.svg(ficha.avatar) : "") +
+        "<span>" +
+        '<i class="join-quien-kicker">Entras como</i>' +
+        '<strong class="join-quien-rol">' + ficha.titulo + "</strong>" +
+        '<em class="join-quien-det">' +
+        (ficha.detalle || "el enlace lo trae") +
+        "</em></span>";
       if (quien.classList) quien.classList.add("is-lleno");
     }
     if (rol === "visitor" && rolesFieldset) rolesFieldset.hidden = true;
@@ -98,6 +127,75 @@
       const radio = form.querySelector('input[name="avatar"][value="' + ficha.avatar + '"]');
       if (radio) radio.checked = true;
     }
+    if (rol === "mentor") cargarRoster();
+  }
+
+  /* Roster: el mentor ve quien ya creo su usuario. La lista exige sesion, asi
+   * que si no la hay la nota lo dice en vez de dejar el panel vacio. */
+  function cabecera() {
+    const s = (localStorage.getItem("rally_session_token") || "").trim();
+    return s ? { Authorization: "Bearer " + s } : {};
+  }
+
+  var NOMBRE_ROL = {
+    admin: "Admin",
+    operator: "Operador",
+    mentor: "Mentor",
+    member: "Miembro",
+    visitor: "Visitante",
+  };
+
+  function nombreRol(rol) {
+    var clave = String(rol || "").trim().toLowerCase();
+    if (NOMBRE_ROL[clave]) return NOMBRE_ROL[clave];
+    if (window.RAV) {
+      var r = RAV.rolNombre(clave);
+      if (r && r !== clave) return r;
+    }
+    return clave ? clave.charAt(0).toUpperCase() + clave.slice(1) : "Sin rol";
+  }
+
+  function cargarRoster() {
+    const panel = document.getElementById("join-panel-mentor");
+    const lista = document.getElementById("join-roster");
+    const nota = document.getElementById("join-roster-nota");
+    if (!panel || !lista) return;
+    panel.hidden = false;
+    const proyecto = (localStorage.getItem("rally_project") || params.get("project") || "").trim();
+    if (!proyecto) {
+      if (nota) nota.textContent = "Entra con tu nombre y clave para ver la lista completa.";
+      return;
+    }
+    fetch("/api/members?project=" + encodeURIComponent(proyecto), { headers: cabecera() })
+      .then(function (res) { return res.ok ? res.json() : null; })
+      .then(function (cuerpo) {
+        const gente = (cuerpo && (cuerpo.members || cuerpo.items || cuerpo)) || null;
+        if (!Array.isArray(gente)) {
+          if (nota) nota.textContent = "Entra con tu nombre y clave para ver la lista completa.";
+          return;
+        }
+        if (!gente.length) {
+          if (nota) nota.textContent = "Todavía no hay nadie. Sé el primero.";
+          return;
+        }
+        if (nota) nota.textContent = "";
+        lista.innerHTML = gente
+          .map(function (m) {
+            const cara = window.RAV ? RAV.svg(window.RAV.normalizar(m.avatar)) : "";
+            const rol = nombreRol(m.role);
+            const dentro = m.approved ? "Dentro" : "Pendiente";
+            return (
+              '<li>' + cara +
+              '<span class="join-roster-txt"><strong>' + (m.name || "Sin nombre") + "</strong>" +
+              "<em>" + rol + "</em></span>" +
+              '<span class="join-estado' + (m.approved ? " is-dentro" : "") + '">' + dentro + "</span></li>"
+            );
+          })
+          .join("");
+      })
+      .catch(function () {
+        if (nota) nota.textContent = "Entra con tu nombre y clave para ver la lista completa.";
+      });
   }
 
   if (token) {

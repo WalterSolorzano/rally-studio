@@ -22,15 +22,75 @@
       min-height: 100vh;
       display: grid;
       place-items: center;
-      padding: var(--space-5, 24px);
+      padding: clamp(16px, 3vw, 40px);
       background: var(--bg-subtle);
     }
+    /* En escritorio el ancho se reparte: formulario a la izquierda, contexto
+       y roster a la derecha. En movil cae a una sola columna. */
+    .join-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr);
+      gap: clamp(16px, 2vw, 28px);
+      align-items: start;
+      width: min(1140px, 100%);
+    }
     .join-card {
-      width: min(560px, 100%);
       background: var(--bg-surface);
       border: 1px solid var(--border-light);
       border-radius: var(--radius-lg);
-      padding: var(--space-7, 32px);
+      padding: clamp(24px, 2.6vw, 40px);
+    }
+    .join-aside {
+      display: grid;
+      gap: 14px;
+      position: sticky;
+      top: clamp(16px, 3vw, 40px);
+    }
+    .join-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+    }
+    .join-panel[hidden] { display: none; }
+    .join-panel h2 {
+      margin: 0 0 12px;
+      font: 800 13px/1.2 var(--font-ui);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+    }
+    .join-datos { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+    .join-datos li { font: 500 13.5px/1.45 var(--font-ui); color: var(--text-body); }
+    .join-datos b { color: var(--text-title); font-weight: 700; }
+    .join-roster { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+    .join-roster li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: var(--radius-md);
+      background: var(--bg-app);
+    }
+    .join-roster .rav-avatar { width: 34px; height: 34px; flex: none; }
+    .join-roster .join-roster-txt { min-width: 0; }
+    .join-roster strong { display: block; font: 700 13px/1.25 var(--font-ui); color: var(--text-title); }
+    .join-roster em { display: block; font: 600 11.5px/1.25 var(--font-ui); font-style: normal; color: var(--text-muted); }
+    .join-estado {
+      margin-left: auto;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: var(--bg-secondary);
+      font: 700 10px/1 var(--font-ui);
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .join-estado.is-dentro { background: rgba(8,102,245,.12); color: var(--color-primary); }
+    @media (max-width: 980px) {
+      .join-layout { grid-template-columns: 1fr; }
+      .join-aside { order: -1; position: static; }
     }
     .join-card h1 {
       margin: 0 0 var(--space-2);
@@ -96,14 +156,25 @@
     .join-roles { display: flex; flex-wrap: wrap; gap: var(--space-2); }
     .join-roles input { position: absolute; opacity: 0; width: 1px; height: 1px; }
     .join-roles label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       margin: 0;
-      padding: 7px 12px;
+      padding: 7px 13px 7px 10px;
       border: 1px solid var(--border-light);
       border-radius: 999px;
       background: var(--bg-app);
       font: 700 12.5px/1 var(--font-ui);
       color: var(--text-body);
       cursor: pointer;
+    }
+    .join-rol-ico { width: 16px; height: 16px; flex: none; }
+    .join-rol-ico path, .join-rol-ico circle, .join-rol-ico rect {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
     .join-roles input:checked + label {
       border-color: var(--color-primary);
@@ -122,16 +193,37 @@
     .join-quien {
       display: flex;
       align-items: center;
-      gap: var(--space-2);
-      margin: 0 0 var(--space-3);
-      padding: var(--space-2) var(--space-3);
-      border-radius: var(--radius-md, 12px);
-      background: var(--bg-secondary);
-      box-shadow: inset 0 0 0 1px var(--color-primary);
-      font-weight: 600;
+      gap: 14px;
+      margin: 0;
+      padding: 16px 18px;
+      border-radius: var(--radius-lg, 16px);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      box-shadow: inset 4px 0 0 var(--color-primary);
+    }
+    .join-quien svg { width: 54px; height: 54px; flex: none; }
+    .join-quien .join-quien-kicker {
+      display: block;
+      font: 700 10px/1 var(--font-ui);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-bottom: 4px;
+    }
+    .join-quien .join-quien-rol {
+      display: block;
+      font: 900 20px/1.1 var(--font-ui);
+      letter-spacing: .02em;
+      text-transform: uppercase;
       color: var(--text-title);
     }
-    .join-quien svg { width: 44px; height: 44px; flex: none; }
+    .join-quien .join-quien-det {
+      display: block;
+      margin-top: 3px;
+      font: 600 12.5px/1.3 var(--font-ui);
+      font-style: normal;
+      color: var(--text-muted);
+    }
     .join-quien:empty { display: none; }
     #join-status { margin: var(--space-4, 16px) 0 0; min-height: 20px; color: var(--text-body); }
     #join-status.is-error { color: var(--status-err-text); }
@@ -234,9 +326,9 @@
     <span class="join-loader-barra" aria-hidden="true"></span>
   </div>
   <main class="join-shell">
+    <div class="join-layout">
     <section class="join-card">
       <h1>Entrar al proyecto</h1>
-      <p class="join-quien" id="join-quien" role="status" aria-live="polite"></p>
       <p>Este enlace es personal y sirve una sola vez. Aquí creas tu usuario: nombre, clave y personaje.</p>
       <form id="join-form" novalidate>
         <label for="join-name">Tu nombre</label>
@@ -258,13 +350,30 @@
         <p class="join-hint">Con nombre y clave puedes volver a entrar sin pedir otro enlace.</p>
         <button id="join-submit" type="submit">Crear mi usuario y entrar</button>
         <p id="join-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+    <aside class="join-aside">
+      <p class="join-quien" id="join-quien" role="status" aria-live="polite"></p>
+      <section class="join-panel" id="join-panel-mentor" hidden>
+        <h2>Quién ya entró</h2>
+        <ul class="join-roster" id="join-roster"></ul>
+        <p class="join-hint" id="join-roster-nota"></p>
+      </section>
+      <section class="join-panel">
+        <h2>Este enlace</h2>
+        <ul class="join-datos">
+          <li><b>Una sola vez.</b> Cuando lo usas, deja de servir.</li>
+          <li><b>Nombre y clave.</b> Con ellos vuelves a entrar sin otro enlace.</li>
+          <li><b>Personaje.</b> Es la cara con la que te verá el equipo.</li>
+        </ul>
         <p class="join-hint" id="join-ir-login" hidden>
           <a id="join-ir-login-a" href="login.html">Ya me aprobaron: entrar con mi nombre y clave</a>
         </p>
-      </form>
-    </section>
+      </section>
+    </aside>
+    </div>
   </main>
   <script src="avatars.js?v=20261117_rev7" defer></script>
-  <script src="join.js?v=20261121_rev8" defer></script>
+  <script src="join.js?v=20261121_rev9" defer></script>
 </body>
 </html>
