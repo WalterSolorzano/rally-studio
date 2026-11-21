@@ -1,9 +1,8 @@
 /* Puerta de acceso del proyecto.
  *
- * Tres formas de entrar, una sola comprobacion:
- *   1. Llave maestra (data/acceso.txt) -> abre el proyecto y crea el admin.
- *   2. Token personal -> la sesion que devolvio tu invitacion.
- *   3. Enlace de invitacion pegado completo -> se manda a join.html.
+ * Una sola forma visible: nombre y clave. La llave maestra vive en un
+ * desplegable al pie y solo se necesita la primera vez, para abrir un
+ * proyecto recien creado.
  *
  * La sesion queda en una cookie HttpOnly que pone el servidor: los scripts
  * de la pagina no pueden leerla ni robarla.
@@ -14,20 +13,18 @@
   var params = new URLSearchParams(location.search);
   var volver = (params.get("volver") || "").trim();
   var form = document.getElementById("puerta-form");
+  var formLlave = document.getElementById("puerta-form-llave");
+  var panelLlave = document.getElementById("puerta-panel-llave");
   var llave = document.getElementById("puerta-llave");
   var nombre = document.getElementById("puerta-nombre");
   var persona = document.getElementById("puerta-persona");
   var clave = document.getElementById("puerta-clave");
-  var modoBtn = document.getElementById("puerta-modo");
+  var verBtn = document.getElementById("puerta-ver");
   var boton = document.getElementById("puerta-entrar");
-var verBtn = document.getElementById("puerta-ver");
+  var botonLlave = document.getElementById("puerta-entrar-llave");
   var estado = document.getElementById("puerta-estado");
   var nota = document.getElementById("puerta-nota");
   var miembros = document.getElementById("puerta-miembros");
-  var protegido = true;
-  // Casi todo el que llega aqui ya tiene nombre y clave: esa es la puerta por
-  // defecto. La llave maestra solo aparece cuando el proyecto aun no tiene gente.
-  var modo = "persona";
 
   // GitHub Pages y Netlify no tienen servidor: no hay /api/entrar ni llave maestra.
   // En ese caso la llave se comprueba en el navegador. Ojo: eso NO protege nada
@@ -53,14 +50,21 @@ var verBtn = document.getElementById("puerta-ver");
       });
   }
 
+  function decir(texto, tono) {    estado.textContent = texto || "";
+    if (tono) estado.setAttribute("data-tono", tono);
+    else estado.removeAttribute("data-tono");
+  }
+
   if (ESTATICO) {
+    // Sin servidor solo existe la llave: la forma de nombre y clave no aplica.
     nota.textContent = "Modo estático · sin servidor";
     miembros.textContent = "la llave se comprueba en tu navegador, no protege el contenido";
     llave.placeholder = "Tu llave";
     nombre.style.display = "block";
-    form.setAttribute("data-modo", "llave");
-    modoBtn.style.display = "none";
-    form.addEventListener("submit", function (evento) {
+    panelLlave.open = true;
+    form.hidden = true;
+    boton.disabled = true;
+    formLlave.addEventListener("submit", function (evento) {
       evento.preventDefault();
       var valor = (llave.value || "").trim();
       if (!valor) {
@@ -68,12 +72,12 @@ var verBtn = document.getElementById("puerta-ver");
         llave.focus();
         return;
       }
-      boton.disabled = true;
+      botonLlave.disabled = true;
       decir("Comprobando…");
       huella(valor).then(function (h) {
         if (h !== LLAVE_ESTATICA_SHA256) {
           decir("Esa llave no abre esta puerta.", "error");
-          boton.disabled = false;
+          botonLlave.disabled = false;
           return;
         }
         try {
@@ -86,16 +90,10 @@ var verBtn = document.getElementById("puerta-ver");
         location.replace(destino());
       }).catch(function () {
         decir("Este navegador no puede comprobar la llave aquí: abre el enlace desde https o desde localhost.", "error");
-        boton.disabled = false;
+        botonLlave.disabled = false;
       });
     });
     return;
-  }
-
-  function decir(texto, tono) {
-    estado.textContent = texto || "";
-    if (tono) estado.setAttribute("data-tono", tono);
-    else estado.removeAttribute("data-tono");
   }
 
   function destino() {
@@ -146,20 +144,18 @@ var verBtn = document.getElementById("puerta-ver");
         nota.textContent = "Servidor sin respuesta";
         return;
       }
-      protegido = !!body.protegido;
-      miembros.textContent = protegido
+      miembros.textContent = body.protegido
         ? body.miembros + (body.miembros === 1 ? " persona adentro" : " personas adentro")
         : "sin accesos todavía";
-      if (protegido) {
+      if (body.protegido) {
         nota.textContent = "Tu nombre y tu clave";
-        llave.placeholder = "Tu llave";
-        ponerModo("persona");
       } else {
+        // Proyecto recien creado: la llave maestra es la unica entrada.
         nota.textContent = "Primera vez · abre el proyecto";
-        llave.placeholder = "XXXX-XXXX-XXXX";
+        panelLlave.open = true;
         nombre.style.display = "block";
         miembros.textContent = "la llave está en data/acceso.txt";
-        ponerModo("llave");
+        llave.focus();
       }
     })
     .catch(function () {
@@ -193,31 +189,23 @@ var verBtn = document.getElementById("puerta-ver");
   };
 
   function fallar(res) {
-    var codigo = (res.body && res.body.error) || "llave-invalida";
+    var codigo = (res.body && res.body.error) || "clave-invalida";
     if (codigo === "clave-invalida" && proyectoActual() === "main") {
       decir("Ese nombre y esa clave no coinciden. Si vienes de un enlace de invitación, ábrelo otra vez: este navegador no sabe a qué proyecto entras.", "error");
-      boton.disabled = false;
       return;
     }
     decir(TEXTOS_ERROR[codigo] || "No se pudo entrar.", "error");
-    boton.disabled = false;
   }
 
-  function ponerModo(nuevo) {
-    modo = nuevo === "persona" ? "persona" : "llave";
-    form.setAttribute("data-modo", modo);
-    llave.required = modo === "llave";
-    persona.required = modo === "persona";
-    clave.required = modo === "persona";
-    modoBtn.textContent =
-      modo === "persona" ? "Entrar con la llave del equipo" : "Entrar con mi nombre y clave";
-    decir("");
-    (modo === "persona" ? persona : llave).focus();
+  function irAlDestino(res, botonActivo) {
+    if (!res.ok) {
+      fallar(res);
+      botonActivo.disabled = false;
+      espera(false);
+      return;
+    }
+    guardarSesion(res.body);
   }
-
-  modoBtn.addEventListener("click", function () {
-    ponerModo(modo === "persona" ? "llave" : "persona");
-  });
 
   function alternarVer() {
     var visible = verBtn.getAttribute("aria-pressed") !== "true";
@@ -225,15 +213,25 @@ var verBtn = document.getElementById("puerta-ver");
     var etiqueta = visible ? "Ocultar la clave" : "Mostrar la clave";
     verBtn.setAttribute("aria-label", etiqueta);
     verBtn.setAttribute("title", etiqueta);
-    llave.type = visible ? "text" : "password";
+    verBtn.textContent = visible ? "Ocultar" : "Ver";
     clave.type = visible ? "text" : "password";
-    (modo === "persona" ? clave : llave).focus();
+    clave.focus();
   }
   verBtn.addEventListener("click", alternarVer);
 
-  function entrarConClave() {
+  // Pegar un enlace de invitacion en cualquiera de los dos campos tambien entra.
+  function esEnlace(valor) {
+    return /[?&]t=/.test(valor);
+  }
+
+  form.addEventListener("submit", function (evento) {
+    evento.preventDefault();
     var quien = (persona.value || "").trim();
     var secreto = clave.value || "";
+    if (esEnlace(quien)) {
+      location.replace("join.html?t=" + encodeURIComponent(quien.split("t=").pop()));
+      return;
+    }
     if (!quien) {
       decir("Escribe tu nombre.", "error");
       persona.focus();
@@ -246,57 +244,73 @@ var verBtn = document.getElementById("puerta-ver");
     }
     boton.disabled = true;
     decir("Comprobando…");
+    espera(true);
     fetch(conProyecto("/api/entrar"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ nombre: quien, clave: secreto })
     })
       .then(function (r) { return r.json().then(function (b) { return { ok: r.ok, body: b || {} }; }); })
-      .then(function (res) {
-        if (!res.ok) { fallar(res); return; }
-        guardarSesion(res.body);
-      })
-      .catch(function () {
-        decir("No se pudo contactar al servidor.", "error");
-        boton.disabled = false;
-      });
-  }
-
-  form.addEventListener("submit", function (evento) {
-    evento.preventDefault();
-    if (modo === "persona") {
-      entrarConClave();
-      return;
-    }
-    var valor = (llave.value || "").trim();
-    if (!valor) {
-      decir("Escribe tu llave.", "error");
-      llave.focus();
-      return;
-    }
-    if (/[?&]t=/.test(valor)) {
-      location.replace("join.html?t=" + encodeURIComponent(valor.split("t=").pop()));
-      return;
-    }
-    boton.disabled = true;
-    decir("Comprobando…");
-
-    fetch(conProyecto("/api/entrar"), {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ llave: valor, nombre: (nombre.value || "").trim() })
-    })
-      .then(function (r) { return r.json().then(function (b) { return { ok: r.ok, body: b || {} }; }); })
-      .then(function (res) {
-        if (!res.ok) { fallar(res); return; }
-        guardarSesion(res.body);
-      })
+      .then(function (res) { irAlDestino(res, boton); })
       .catch(function () {
         decir("No se pudo contactar al servidor.", "error");
         boton.disabled = false;
       });
   });
 
-  ponerModo(modo);
-  (modo === "persona" ? persona : llave).focus();
+  formLlave.addEventListener("submit", function (evento) {
+    evento.preventDefault();
+    var valor = (llave.value || "").trim();
+    if (!valor) {
+      decir("Escribe tu llave.", "error");
+      llave.focus();
+      return;
+    }
+    if (esEnlace(valor)) {
+      location.replace("join.html?t=" + encodeURIComponent(valor.split("t=").pop()));
+      return;
+    }
+    botonLlave.disabled = true;
+    decir("Comprobando…");
+    espera(true);
+    fetch(conProyecto("/api/entrar"), {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ llave: valor, nombre: (nombre.value || "").trim() })
+    })
+      .then(function (r) { return r.json().then(function (b) { return { ok: r.ok, body: b || {} }; }); })
+      .then(function (res) { irAlDestino(res, botonLlave); })
+      .catch(function () {
+        decir("No se pudo contactar al servidor.", "error");
+        botonLlave.disabled = false;
+      });
+  });
+
+  // Carga y espera: la marca se dibuja mientras abre la puerta y mientras entra.
+  var capaCarga = document.getElementById("puerta-carga");
+  var capaEspera = document.getElementById("puerta-entrando");
+  var naceCarga = Date.now();
+
+  function quitarCarga() {
+    if (!capaCarga || !capaCarga.classList) return;
+    if (capaCarga.classList.contains("is-oculto")) return;
+    capaCarga.classList.add("is-oculto");
+  }
+
+  function espera(encendida) {
+    if (!capaEspera || !capaEspera.classList) return;
+    if (encendida) capaEspera.removeAttribute("hidden");
+    else capaEspera.setAttribute("hidden", "");
+  }
+
+  // Menos de medio segundo se siente un salto; mas de dos, se siente colgado.
+  function abrirPuerta() {
+    var falta = Math.max(0, 520 - (Date.now() - naceCarga));
+    setTimeout(quitarCarga, falta);
+  }
+  if (document.readyState === "complete" || !window.addEventListener) abrirPuerta();
+  else window.addEventListener("load", abrirPuerta);
+  setTimeout(quitarCarga, 2600);
+
+  persona.focus();
 })();

@@ -425,6 +425,23 @@ class MemberStore(SqliteStore):
             "expires_at": inv["expires_at"],
         }
 
+    def leer_roster(self, token: str) -> dict:
+        """Quien ya entro, para quien llega con el enlace y aun no tiene sesion.
+
+        El token manda: solo se devuelve nombre, rol, avatar y si esta aprobado.
+        """
+        info = self.leer_invite(token)
+        gente = [
+            {
+                "name": m.get("name", ""),
+                "role": m.get("role", ""),
+                "avatar": m.get("avatar", ""),
+                "approved": bool(m.get("approved")),
+            }
+            for m in self.list_members(info["project"])
+        ]
+        return {"project": info["project"], "role": info["role"], "members": gente}
+
     def set_roles(self, project_id: str, member_id: str, roles) -> dict:
         limpios = _limpiar_roles(roles)
         with self._connect() as conn:

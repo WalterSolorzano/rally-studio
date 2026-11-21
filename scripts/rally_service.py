@@ -139,6 +139,7 @@ RUTAS_LIBRES = {
     "/login.html", "/login.js",
     "/join.html", "/join.js", "/avatars.js",
     "/api/entrar", "/api/acceso/estado", "/api/project/claim", "/api/invite",
+    "/api/invite/roster",
     "/health", "/api/health",
     "/favicon.svg", "/manifest.webmanifest", "/sw.js", "/style.css",
     "/brand_board.css", "/super_agents.css",
@@ -526,6 +527,7 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
         "/api/members": "get_members",
         "/api/member/yo": "get_member_yo",
         "/api/invite": "get_invite",
+        "/api/invite/roster": "get_invite_roster",
         "/api/content/schema": "get_content_schema",
         "/api/content/manifest": "get_content_manifest",
         "/api/presence": "get_presence",
@@ -692,6 +694,20 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
             return
         except Exception as exc:
             print(f"[miembros] invitacion ilegible: {exc}", flush=True)
+            self.send_json_response(500, {"ok": False, "error": "error-interno"}, cors=True)
+            return
+        self.send_json_response(200, {"ok": True, **info}, cors=True)
+
+    def get_invite_roster(self, url):
+        """Quien ya entro al proyecto, sin credencial: la lleva el propio token."""
+        token = (urllib.parse.parse_qs(url.query).get("t") or [""])[0]
+        try:
+            info = MEMBER_STORE.leer_roster(token)
+        except ValueError as exc:
+            self.send_json_response(404, {"ok": False, "error": str(exc)}, cors=True)
+            return
+        except Exception as exc:
+            print(f"[miembros] roster de invitacion ilegible: {exc}", flush=True)
             self.send_json_response(500, {"ok": False, "error": "error-interno"}, cors=True)
             return
         self.send_json_response(200, {"ok": True, **info}, cors=True)

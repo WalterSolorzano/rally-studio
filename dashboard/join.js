@@ -12,7 +12,6 @@
   const contenedor = document.getElementById("join-avatares");
   const contenedorRoles = document.getElementById("join-roles");
   const quien = document.getElementById("join-quien");
-  const rolesFieldset = document.getElementById("join-roles-fieldset");
 
   /* Como entra el invitado lo decide el enlace, no el invitado: el motor
    * guarda el rol en la invitacion y aqui solo se anuncia. */
@@ -105,8 +104,11 @@
   }
   programar(quitarCargador, 2600);
 
+  var rolEntrada = "";
+
   function anunciarRol(rol) {
     const ficha = ROLES_ENTRADA[rol] || ROLES_ENTRADA.member;
+    rolEntrada = rol;
     if (quien) {
       quien.setAttribute(
         "aria-label",
@@ -122,7 +124,16 @@
         "</em></span>";
       if (quien.classList) quien.classList.add("is-lleno");
     }
-    if (rol === "visitor" && rolesFieldset) rolesFieldset.hidden = true;
+    // El visitante entra por un enlace que arma el admin: no pone nombre, no
+    // marca roles y no elige personaje. Solo mira.
+    if (rol === "visitor") {
+      const campos = document.getElementById("join-campos");
+      if (campos) campos.hidden = true;
+      const guia = document.getElementById("join-guia");
+      if (guia) guia.textContent = "Entras como visitante: ves todo el tablero y no escribes nada.";
+      button.textContent = "Entrar como visitante";
+      return;
+    }
     if (ficha.avatar) {
       const radio = form.querySelector('input[name="avatar"][value="' + ficha.avatar + '"]');
       if (radio) radio.checked = true;
@@ -130,13 +141,8 @@
     if (rol === "mentor") cargarRoster();
   }
 
-  /* Roster: el mentor ve quien ya creo su usuario. La lista exige sesion, asi
-   * que si no la hay la nota lo dice en vez de dejar el panel vacio. */
-  function cabecera() {
-    const s = (localStorage.getItem("rally_session_token") || "").trim();
-    return s ? { Authorization: "Bearer " + s } : {};
-  }
-
+  /* Roster: quien ya creo su usuario. La lista viaja atada al token del enlace,
+   * asi que el mentor la ve antes de tener sesion. */
   var NOMBRE_ROL = {
     admin: "Admin",
     operator: "Operador",
@@ -161,17 +167,16 @@
     const nota = document.getElementById("join-roster-nota");
     if (!panel || !lista) return;
     panel.hidden = false;
-    const proyecto = (localStorage.getItem("rally_project") || params.get("project") || "").trim();
-    if (!proyecto) {
-      if (nota) nota.textContent = "Entra con tu nombre y clave para ver la lista completa.";
+    if (!token) {
+      if (nota) nota.textContent = "Este enlace no trae invitación: pide uno nuevo al admin.";
       return;
     }
-    fetch("/api/members?project=" + encodeURIComponent(proyecto), { headers: cabecera() })
+    fetch("/api/invite/roster?t=" + encodeURIComponent(token))
       .then(function (res) { return res.ok ? res.json() : null; })
       .then(function (cuerpo) {
-        const gente = (cuerpo && (cuerpo.members || cuerpo.items || cuerpo)) || null;
+        const gente = (cuerpo && (cuerpo.members || cuerpo.items)) || null;
         if (!Array.isArray(gente)) {
-          if (nota) nota.textContent = "Entra con tu nombre y clave para ver la lista completa.";
+          if (nota) nota.textContent = "No se pudo leer la lista. Recarga la página.";
           return;
         }
         if (!gente.length) {
@@ -194,7 +199,7 @@
           .join("");
       })
       .catch(function () {
-        if (nota) nota.textContent = "Entra con tu nombre y clave para ver la lista completa.";
+        if (nota) nota.textContent = "No se pudo leer la lista. Recarga la página.";
       });
   }
 
@@ -304,11 +309,12 @@
 
   form.addEventListener("submit", async function (event) {
     event.preventDefault();
-    const name = (input.value || "").trim();
-    const password = (clave.value || "").trim();
-    const avatarInput = form.querySelector('input[name="avatar"]:checked');
-    const avatar = avatarInput ? avatarInput.value : "";
-    const roles = Array.prototype.map.call(
+    const esVisitante = rolEntrada === "visitor";
+    const name = esVisitante ? "Visitante" : (input.value || "").trim();
+    const password = esVisitante ? "" : (clave.value || "").trim();
+    const avatarInput = esVisitante ? null : form.querySelector('input[name="avatar"]:checked');
+    const avatar = esVisitante ? "av_visitante" : (avatarInput ? avatarInput.value : "");
+    const roles = esVisitante ? [] : Array.prototype.map.call(
       form.querySelectorAll('input[name="rol"]:checked'),
       function (casilla) { return casilla.value; }
     );

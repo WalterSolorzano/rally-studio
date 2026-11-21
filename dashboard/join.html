@@ -95,8 +95,22 @@
     }
     .join-estado.is-dentro { background: rgba(8,102,245,.12); color: var(--color-primary); }
     @media (max-width: 980px) {
-      .join-layout { grid-template-columns: 1fr; }
+      .join-layout { grid-template-columns: 1fr; gap: 12px; }
       .join-aside { order: -1; position: static; }
+      /* En el telefono el menu es corto: la banda de rol y el formulario. */
+      .join-aside .join-panel { display: none; }
+    }
+    @media (max-width: 560px) {
+      .join-shell { padding: 12px; }
+      .join-card { padding: 18px 16px; border-radius: 16px; }
+      .join-avatars { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .join-avatars label { padding: 6px; gap: 6px; font-size: 11.5px; }
+      .join-avatars .rav-avatar { width: 28px; height: 28px; }
+      .join-quien { padding: 12px 14px; gap: 10px; }
+      .join-quien svg { width: 40px; height: 40px; }
+      .join-quien .join-quien-rol { font-size: 17px; }
+      .join-card p { margin-bottom: 10px; }
+      .join-card fieldset { margin: 12px 0; }
     }
     .join-card h1 {
       margin: 0 0 var(--space-2);
@@ -205,7 +219,6 @@
       border-radius: var(--radius-lg, 16px);
       background: var(--bg-surface);
       border: 1px solid var(--border-light);
-      box-shadow: inset 4px 0 0 var(--color-primary);
     }
     .join-quien svg { width: 54px; height: 54px; flex: none; }
     .join-quien .join-quien-kicker {
@@ -280,14 +293,15 @@
     .join-card { animation: join-entra .5s ease both; }
     .join-card > h1 { animation: join-entra .45s ease both .08s; }
     .join-card > p { animation: join-entra .45s ease both .14s; }
-    .join-card form > * { animation: join-entra .4s ease both; }
-    .join-card form > *:nth-child(1) { animation-delay: .18s; }
-    .join-card form > *:nth-child(2) { animation-delay: .22s; }
-    .join-card form > *:nth-child(3) { animation-delay: .26s; }
-    .join-card form > *:nth-child(4) { animation-delay: .30s; }
-    .join-card form > *:nth-child(5) { animation-delay: .34s; }
-    .join-card form > *:nth-child(6) { animation-delay: .38s; }
-    .join-card form > *:nth-child(n+7) { animation-delay: .42s; }
+    #join-campos > * { animation: join-entra .4s ease both; }
+    #join-campos > *:nth-child(1) { animation-delay: .18s; }
+    #join-campos > *:nth-child(2) { animation-delay: .22s; }
+    #join-campos > *:nth-child(3) { animation-delay: .26s; }
+    #join-campos > *:nth-child(4) { animation-delay: .30s; }
+    #join-campos > *:nth-child(5) { animation-delay: .34s; }
+    #join-campos > *:nth-child(6) { animation-delay: .38s; }
+    #join-campos > *:nth-child(n+7) { animation-delay: .42s; }
+    #join-campos[hidden] { display: none; }
     .join-quien.is-lleno { animation: join-entra .35s ease both; }
     #join-status.is-entra { animation: join-entra .3s ease both; }
     #join-status.is-exito { color: var(--color-primary); font-weight: 600; }
@@ -315,7 +329,7 @@
 
     @media (prefers-reduced-motion: reduce) {
       .join-loader, .join-loader-mark, .join-loader-mark line, .join-loader-barra::after,
-      .join-card, .join-card > *, .join-card form > *, .join-quien.is-lleno,
+      .join-card, .join-card > *, #join-campos > *, .join-quien.is-lleno,
       #join-status.is-entra, .join-avatars input:checked + label .rav-avatar,
       .join-espera-marca, .join-espera-marca line, .join-espera-barra::after,
       .join-card button.is-cargando::before { animation: none !important; }
@@ -374,6 +388,23 @@
       background: var(--color-primary);
       animation: join-corre 1.2s ease-in-out infinite;
     }
+
+    /* --- Telefono: el menu cabe en una pantalla sin scroll eterno --- */
+    @media (max-width: 700px) {
+      .join-avatars {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        max-height: 200px;
+        overflow-y: auto;
+        padding-right: 4px;
+      }
+      .join-avatars label { padding: 6px; gap: 6px; font-size: 11px; }
+      .join-avatars .rav-avatar { width: 26px; height: 26px; }
+      .join-roles label { padding: 6px 10px 6px 8px; font-size: 11.5px; }
+      .join-quien .join-quien-rol { font-size: 17px; }
+      #join-guia { font-size: 13px; }
+      .join-card fieldset { margin: 12px 0; }
+      .join-card h1 { font-size: 21px; }
+    }
   </style>
 </head>
 <body>
@@ -400,25 +431,27 @@
     <div class="join-layout">
     <section class="join-card">
       <h1>Entrar al proyecto</h1>
-      <p>Este enlace es personal y sirve una sola vez. Aquí creas tu usuario: nombre, clave y personaje.</p>
+      <p id="join-guia">Este enlace es personal y sirve una sola vez. Aquí creas tu usuario: nombre, clave y personaje.</p>
       <form id="join-form" novalidate>
-        <label for="join-name">Tu nombre</label>
-        <input id="join-name" name="name" type="text" maxlength="40" autocomplete="name" required>
-        <fieldset id="join-roles-fieldset">
-          <legend>Tus roles: ¿en qué trabajas? (puedes marcar varios)</legend>
-          <div class="join-roles" id="join-roles" role="group" aria-label="Tus roles"></div>
-        </fieldset>
-        <fieldset>
-          <legend>Tu personaje: la cara que verá el equipo</legend>
-          <div class="join-avatars" id="join-avatares" role="radiogroup" aria-label="Tu personaje"></div>
-        </fieldset>
-        <label for="join-clave">Tu clave (opcional)</label>
-        <div class="join-fila">
-          <input id="join-clave" name="clave" type="password" minlength="6" maxlength="80" autocomplete="new-password">
-          <button class="join-ver" id="join-ver" type="button" aria-pressed="false"
-                  aria-label="Mostrar la clave" title="Mostrar la clave">Ver</button>
+        <div id="join-campos">
+          <label for="join-name">Tu nombre</label>
+          <input id="join-name" name="name" type="text" maxlength="40" autocomplete="name" required>
+          <fieldset id="join-roles-fieldset">
+            <legend>Tus roles: ¿en qué trabajas? (puedes marcar varios)</legend>
+            <div class="join-roles" id="join-roles" role="group" aria-label="Tus roles"></div>
+          </fieldset>
+          <fieldset id="join-avatares-fieldset">
+            <legend>Tu personaje: la cara que verá el equipo</legend>
+            <div class="join-avatars" id="join-avatares" role="radiogroup" aria-label="Tu personaje"></div>
+          </fieldset>
+          <label for="join-clave">Tu clave (opcional)</label>
+          <div class="join-fila">
+            <input id="join-clave" name="clave" type="password" minlength="6" maxlength="80" autocomplete="new-password">
+            <button class="join-ver" id="join-ver" type="button" aria-pressed="false"
+                    aria-label="Mostrar la clave" title="Mostrar la clave">Ver</button>
+          </div>
+          <p class="join-hint">Con nombre y clave puedes volver a entrar sin pedir otro enlace.</p>
         </div>
-        <p class="join-hint">Con nombre y clave puedes volver a entrar sin pedir otro enlace.</p>
         <button id="join-submit" type="submit">Crear mi usuario y entrar</button>
         <p id="join-status" role="status" aria-live="polite"></p>
       </form>
@@ -445,6 +478,6 @@
     </div>
   </main>
   <script src="avatars.js?v=20261117_rev7" defer></script>
-  <script src="join.js?v=20261121_rev10" defer></script>
+  <script src="join.js?v=20261121_rev11" defer></script>
 </body>
 </html>
