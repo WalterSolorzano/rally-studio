@@ -56,6 +56,33 @@
   pintarAvatares();
   pintarRoles();
 
+  // --- Cargador: el logo se dibuja y no se va antes de que se pueda leer ---
+  const cargador = document.getElementById("join-loader");
+  const nace = Date.now();
+  function programar(fn, ms) {
+    if (typeof window.setTimeout === "function") return window.setTimeout(fn, ms);
+    if (typeof setTimeout === "function") return setTimeout(fn, ms);
+    return 0;
+  }
+  function quitarCargador() {
+    if (!cargador || !cargador.classList) return;
+    if (cargador.classList.contains("is-oculto")) return;
+    cargador.classList.add("is-oculto");
+    programar(function () {
+      if (cargador.parentNode) cargador.parentNode.removeChild(cargador);
+    }, 500);
+  }
+  // Menos de ~500 ms se siente un salto; mas de 2.5 s se siente colgado.
+  function abrirTarjeta() {
+    programar(quitarCargador, Math.max(0, 520 - (Date.now() - nace)));
+  }
+  if (document.readyState === "complete" || typeof window.addEventListener !== "function") {
+    abrirTarjeta();
+  } else {
+    window.addEventListener("load", abrirTarjeta);
+  }
+  programar(quitarCargador, 2600);
+
   function anunciarRol(rol) {
     const ficha = ROLES_ENTRADA[rol] || ROLES_ENTRADA.member;
     const linea = "Entras como " + ficha.titulo.toLowerCase() +
@@ -64,6 +91,7 @@
       quien.setAttribute("aria-label", linea);
       quien.innerHTML = (ficha.avatar && window.RAV ? RAV.svg(ficha.avatar) : "") +
         "<span>" + linea + "</span>";
+      if (quien.classList) quien.classList.add("is-lleno");
     }
     if (rol === "visitor" && rolesFieldset) rolesFieldset.hidden = true;
     if (ficha.avatar) {
@@ -84,6 +112,11 @@
     if (!status.classList) return;
     if (esError) status.classList.add("is-error");
     else status.classList.remove("is-error");
+    if (esError && status.classList.remove) status.classList.remove("is-exito");
+    // Reanimar el aviso para que el paso de un mensaje a otro se vea.
+    status.classList.remove("is-entra");
+    void status.offsetWidth;
+    if (text) status.classList.add("is-entra");
   }
 
   // Los errores del motor viajan como codigos cortos ("invite-usado"). Un
@@ -158,6 +191,11 @@
     return id;
   }
 
+  function soltar() {
+    button.disabled = false;
+    if (button.classList) button.classList.remove("is-cargando");
+  }
+
   form.addEventListener("submit", async function (event) {
     event.preventDefault();
     const name = (input.value || "").trim();
@@ -179,6 +217,7 @@
       return;
     }
     button.disabled = true;
+    if (button.classList) button.classList.add("is-cargando");
     mostrar("Entrando...");
     try {
       const res = await fetch("/api/project/claim", {
@@ -196,26 +235,27 @@
       const body = await res.json().catch(function () { return {}; });
       if (!res.ok) {
         mostrar(mensajeDe(body.error), true);
-        button.disabled = false;
+        soltar();
         return;
       }
       if (body.pending) {
         // La sesion todavia no sirve: el admin tiene que aprobar la solicitud.
         mostrar("Solicitud enviada. Tu usuario ya está creado; el admin del equipo lo aprueba y entras con tu nombre y clave.");
+        if (status.classList) status.classList.add("is-exito");
         const irLogin = document.getElementById("join-ir-login");
         const enlaceLogin = document.getElementById("join-ir-login-a");
         if (irLogin && enlaceLogin) {
           enlaceLogin.href = "login.html?project=" + encodeURIComponent(body.project || "main");
           irLogin.hidden = false;
         }
-        button.disabled = false;
+        soltar();
         return;
       }
       if (!body.session || !body.member) {
         // Sin sesion o sin miembro no hay a donde ir: mejor decirlo que
         // guardar "undefined" y romper la siguiente pantalla.
         mostrar("El servidor respondió sin sesión. Recarga e intenta de nuevo.", true);
-        button.disabled = false;
+        soltar();
         return;
       }
       const previous = localStorage.getItem("rally_project") || "main";
@@ -233,7 +273,7 @@
       location.replace("/?project=" + encodeURIComponent(body.project));
     } catch (error) {
       mostrar("No se pudo contactar al servidor. Revisa la conexión e intenta de nuevo.", true);
-      button.disabled = false;
+      soltar();
     }
   });
 })();
