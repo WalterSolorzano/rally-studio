@@ -399,8 +399,10 @@ def revisar_canal(raiz: pathlib.Path) -> str:
         return ""
     if str(SCRIPTS) not in sys.path:
         sys.path.insert(0, str(SCRIPTS))
-    import verificar_canal
-
+    try:
+        import verificar_canal
+    except ImportError:
+        return "canal/ existe pero falta scripts/verificar_canal.py: la fase no se puede auditar"
     brief = raiz / "brief.json"
     fallos = verificar_canal.verificar(carpeta, brief if brief.is_file() else None)
     if not fallos:

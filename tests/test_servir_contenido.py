@@ -39,5 +39,25 @@ def test_texto_limpio_pasa():
     ) == []
 
 
+def test_presupuesto_con_concept_sin_element_pasa():
+    """El puente de la ventana acepta concept; rechazarlo sería inventar una regla."""
+    assert revisar_contenido("budget", "costos", {"items": [
+        {"concept": "Tanque", "units": 1, "unit_cost": 300, "url": "https://x"},
+    ]}) == []
+
+
+def test_funciona_cuando_el_modulo_se_importa_como_paquete():
+    import subprocess
+    out = subprocess.run(
+        [sys.executable, "-c",
+         "import sys; sys.path.insert(0, '.'); "
+         "from scripts.content_store import revisar_contenido; "
+         "print(revisar_contenido('pautado', 'problema', {'text': 'texto limpio'}))"],
+        cwd=str(RAIZ), capture_output=True, text=True, encoding="utf-8", timeout=60,
+    )
+    assert out.returncode == 0, out.stderr
+    assert "[]" in out.stdout
+
+
 def test_payload_sin_texto_es_rechazado():
     assert revisar_contenido("pautado", "problema", {"value": 3}) == ["falta texto"]

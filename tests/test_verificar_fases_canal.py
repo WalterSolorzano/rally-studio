@@ -41,3 +41,14 @@ def test_canal_roto_devuelve_motivo(tmp_path):
 
 def test_verificar_canal_es_compuerta_registrada():
     assert "verificar_canal.py" in vf.COMPUERTAS
+
+
+def test_canal_sin_auditor_da_mensaje_no_traza(tmp_path, monkeypatch):
+    raiz = _canal(tmp_path, {"01-pautador.json": {
+        "rol": "pautador",
+        "orden": 1,
+        "hechos": {"modo": "latam"},
+    }})
+    monkeypatch.setitem(sys.modules, "verificar_canal", None)
+    motivo = vf.revisar_canal(raiz)
+    assert "verificar_canal" in motivo

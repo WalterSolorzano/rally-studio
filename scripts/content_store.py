@@ -83,9 +83,10 @@ def validate_envelope(env: dict) -> list[str]:
 
 
 def _raiz_en_path() -> None:
-    raiz = str(Path(__file__).resolve().parent.parent)
-    if raiz not in sys.path:
-        sys.path.insert(0, raiz)
+    aqui = Path(__file__).resolve().parent
+    for ruta in (aqui.parent, aqui):
+        if str(ruta) not in sys.path:
+            sys.path.insert(0, str(ruta))
 
 
 def revisar_contenido(tab: str, slot: str, payload: dict, evento: str = "latam") -> list[str]:
@@ -122,7 +123,11 @@ def revisar_contenido(tab: str, slot: str, payload: dict, evento: str = "latam")
                 problemas.append(f"fila {i}: no es un objeto")
                 continue
             for campo in ("element", "units", "unit_cost", "url"):
-                valor = fila.get(campo)
+                if campo == "element":
+                    # El puente de la ventana acepta element o concept (AGENTS.md).
+                    valor = fila.get("element") or fila.get("concept")
+                else:
+                    valor = fila.get(campo)
                 if valor is None or (isinstance(valor, str) and not valor.strip()):
                     problemas.append(f"fila {i}: falta {campo}")
         return problemas

@@ -1,7 +1,7 @@
 import pytest
 
 from tests.support import auth, bootstrap, call
-from scripts.publicar_seccion import Conflicto, publicar
+from scripts.publicar_seccion import Conflicto, main, publicar
 
 
 def test_publicar_escribe_y_lee_version(servidor):
@@ -21,3 +21,11 @@ def test_publicar_sin_base_actualizada_da_conflicto(servidor):
     with pytest.raises(Conflicto):
         publicar(base, "equipo01", "pautado.problema", {"text": "B"},
                  boot["admin_token"], base_version=0)
+
+
+def test_cli_exige_actor_id(monkeypatch):
+    """La escritura directa no firma como 'ia': el especialista o nada."""
+    monkeypatch.delenv("RALLY_ACTOR_ID", raising=False)
+    codigo = main(["--project", "equipo01", "--section", "pautado.problema",
+                   "--text", "Hola", "--token", "token-de-prueba"])
+    assert codigo == 5

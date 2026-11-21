@@ -152,6 +152,10 @@ def main(argv=None) -> int:
     if not args.token:
         print("Falta --token o RALLY_SESSION_TOKEN", file=sys.stderr)
         return 4
+    if str(args.actor_id).strip().lower() in ("", "ia"):
+        print("Falta --actor-id: la escritura directa firma al especialista, no 'ia'",
+              file=sys.stderr)
+        return 5
 
     try:
         body = publicar(args.server, args.project, args.section, data,
