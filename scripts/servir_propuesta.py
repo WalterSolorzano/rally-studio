@@ -6,7 +6,8 @@ Uso:
         --kind text --title "Propuesta de problema" --payload propuesta.json
 
 El archivo --payload es el `payload` del sobre (JSON). La propuesta aparece en
-la ventana (a) como aceptar/descartar; no se aplica sola.
+la ventana (a) como aceptar/descartar; no se aplica sola. Solo con `--directo`,
+token y sin `--simulated` escribe la sección en el servidor sin revisión humana.
 """
 
 from __future__ import annotations
@@ -73,6 +74,33 @@ def construir_sobre(args) -> dict:
     }
 
 
+BANDERAS_CON_VALOR = (
+    "--tab", "--slot", "--kind", "--title", "--payload", "--source",
+    "--confidence", "--token", "--server", "--project",
+)
+
+
+def _unir_valores(argv):
+    """Une `--bandera valor` en `--bandera=valor`.
+
+    argparse lee un valor que empieza por `-` como si fuera otra opcion y
+    aborta con «expected one argument». Los tokens salen de
+    `secrets.token_urlsafe`, que usa el alfabeto URL-safe: uno de cada sesenta
+    empieza por `-`, y el CLI rechazaba un token valido sin decir que servia.
+    """
+    salida = []
+    i = 0
+    while i < len(argv):
+        actual = argv[i]
+        if actual in BANDERAS_CON_VALOR and i + 1 < len(argv):
+            salida.append(f"{actual}={argv[i + 1]}")
+            i += 2
+            continue
+        salida.append(actual)
+        i += 1
+    return salida
+
+
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description="Servir una propuesta al buzón de Rally Studio")
     parser.add_argument("--tab", required=True, help=f"una de: {', '.join(ALLOWED_TABS)}")
@@ -87,8 +115,10 @@ def main(argv=None) -> int:
     parser.add_argument("--server", default=os.environ.get("RALLY_SERVER", "http://127.0.0.1:8000"))
     parser.add_argument("--project", default=os.environ.get("RALLY_PROJECT", "main"))
     parser.add_argument("--mailbox", action="store_true",
-                        help="forzar el buzón aunque haya token")
-    args = parser.parse_args(argv)
+                        help="obsoleto: el buzón es el default")
+    parser.add_argument("--directo", action="store_true",
+                        help="escribe en el servidor sin pasar por aceptar/descartar (opt-in)")
+    args = parser.parse_args(_unir_valores(sys.argv[1:] if argv is None else list(argv)))
 
     try:
         sobre = construir_sobre(args)
@@ -107,7 +137,7 @@ def main(argv=None) -> int:
         return 1
 
     seccion = seccion_destino(args.tab, args.slot)
-    if seccion and args.token and not args.simulated and not args.mailbox:
+    if seccion and args.token and args.directo and not args.simulated:
         try:
             body = publicar(
                 args.server, args.project, seccion,
