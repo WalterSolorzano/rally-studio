@@ -10,7 +10,13 @@
   <meta property="og:site_name" content="Rally Studio">
   <meta property="og:title" content="Te invitaron a un proyecto · Rally Studio">
   <meta property="og:description" content="Abre el enlace y crea tu usuario: nombre, clave y personaje. El enlace sirve una sola vez.">
-  <meta name="theme-color" content="#0e0e0f">
+  <meta property="og:image" content="assets/og_join.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Rally Studio · te invitaron a un proyecto">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="assets/og_join.png">
+  <meta name="theme-color" content="#0866F5">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -311,8 +317,62 @@
       .join-loader, .join-loader-mark, .join-loader-mark line, .join-loader-barra::after,
       .join-card, .join-card > *, .join-card form > *, .join-quien.is-lleno,
       #join-status.is-entra, .join-avatars input:checked + label .rav-avatar,
+      .join-espera-marca, .join-espera-marca line, .join-espera-barra::after,
       .join-card button.is-cargando::before { animation: none !important; }
-      .join-loader-mark line { stroke-dashoffset: 0; }
+      .join-loader-mark line, .join-espera-marca line { stroke-dashoffset: 0; }
+    }
+
+    /* --- Entrando: pantalla completa, no un renglon chiquito --- */
+    .join-espera {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: grid;
+      place-items: center;
+      background: rgba(248, 250, 253, .94);
+      backdrop-filter: blur(3px);
+      animation: join-entra .22s ease both;
+    }
+    .join-espera[hidden] { display: none; }
+    .join-espera-caja { display: grid; justify-items: center; gap: 14px; text-align: center; }
+    .join-espera-marca { width: 150px; height: 100px; }
+    .join-espera-marca line {
+      stroke: var(--color-primary);
+      stroke-width: 6;
+      stroke-linecap: round;
+      stroke-dasharray: 38;
+      stroke-dashoffset: 38;
+      animation: join-dibuja 1.7s ease-in-out infinite;
+    }
+    .join-espera-marca line:nth-child(2) { animation-delay: .18s; }
+    @keyframes join-dibuja {
+      0% { stroke-dashoffset: 38; }
+      45%, 70% { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: 38; }
+    }
+    .join-espera-txt {
+      font: 900 30px/1.1 var(--font-ui);
+      letter-spacing: -.01em;
+      color: var(--text-title);
+    }
+    .join-espera-sub { font: 600 15px/1.4 var(--font-ui); color: var(--text-muted); }
+    .join-espera-barra {
+      width: 240px;
+      height: 4px;
+      border-radius: 99px;
+      background: var(--border-light);
+      overflow: hidden;
+      position: relative;
+      margin-top: 6px;
+    }
+    .join-espera-barra::after {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 40%;
+      border-radius: inherit;
+      background: var(--color-primary);
+      animation: join-corre 1.2s ease-in-out infinite;
     }
   </style>
 </head>
@@ -324,6 +384,17 @@
     </svg>
     <span class="join-loader-word" aria-hidden="true"><b>RALLY</b> <i>STUDIO</i></span>
     <span class="join-loader-barra" aria-hidden="true"></span>
+  </div>
+  <div class="join-espera" id="join-entrando" hidden role="status" aria-live="assertive">
+    <div class="join-espera-caja">
+      <svg class="join-espera-marca" viewBox="0 0 60 40" fill="none" aria-hidden="true">
+        <line x1="14" y1="34" x2="26" y2="6"></line>
+        <line x1="30" y1="34" x2="42" y2="6"></line>
+      </svg>
+      <p class="join-espera-txt">Entrando…</p>
+      <p class="join-espera-sub">Creamos tu usuario y abrimos el tablero.</p>
+      <span class="join-espera-barra" aria-hidden="true"></span>
+    </div>
   </div>
   <main class="join-shell">
     <div class="join-layout">
@@ -374,6 +445,6 @@
     </div>
   </main>
   <script src="avatars.js?v=20261117_rev7" defer></script>
-  <script src="join.js?v=20261121_rev9" defer></script>
+  <script src="join.js?v=20261121_rev10" defer></script>
 </body>
 </html>

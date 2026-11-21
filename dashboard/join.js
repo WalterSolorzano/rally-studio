@@ -292,6 +292,14 @@
   function soltar() {
     button.disabled = false;
     if (button.classList) button.classList.remove("is-cargando");
+    espera(false);
+  }
+
+  function espera(encendida) {
+    const capa = document.getElementById("join-entrando");
+    if (!capa) return;
+    if (encendida) capa.removeAttribute("hidden");
+    else capa.setAttribute("hidden", "");
   }
 
   form.addEventListener("submit", async function (event) {
@@ -316,7 +324,8 @@
     }
     button.disabled = true;
     if (button.classList) button.classList.add("is-cargando");
-    mostrar("Entrando...");
+    espera(true);
+    mostrar("");
     try {
       const res = await fetch("/api/project/claim", {
         method: "POST",

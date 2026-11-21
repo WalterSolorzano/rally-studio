@@ -147,6 +147,7 @@ RUTAS_LIBRES = {
 # videos del proyecto sin sesion. Ahora solo lo que pinta la puerta de entrada.
 PREFIJOS_LIBRES = (
     "/assets/favicon.svg",
+    "/assets/og_join.png",
     "/assets/app-mark.svg",
     "/assets/app-mark-maskable.svg",
     "/assets/app-icon-192.png",
