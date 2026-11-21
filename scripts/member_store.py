@@ -222,7 +222,7 @@ class MemberStore(SqliteStore):
                 "SELECT * FROM members WHERE id = ? AND project_id = ? AND revoked = 0",
                 (actor_id, project_id),
             ).fetchone()
-            if actor is None or actor["role"] not in ("admin", "operator"):
+            if actor is None or actor["role"] not in ("admin", "operator", "mentor"):
                 raise ValueError("sin-permiso")
             token = secrets.token_urlsafe(24)
             now = time.time()

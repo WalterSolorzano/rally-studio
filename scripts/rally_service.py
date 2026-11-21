@@ -1678,7 +1678,7 @@ class RallyApiHandler(http.server.SimpleHTTPRequestHandler):
             self.send_json_response(403, {"ok": False, "error": "origen-no-permitido"}, cors=True)
             return
         project = self.project_id(url.query)
-        member = self.require_member(project, ("admin", "operator"))
+        member = self.require_member(project, ("admin", "operator", "mentor"))
         if member is None:
             return
         data = self.read_json_body()

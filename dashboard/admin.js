@@ -55,6 +55,11 @@
     return r === "admin" || r === "operator" || r === "mentor";
   }
 
+  function puedeInvitar() {
+    const r = role();
+    return r === "admin" || r === "operator" || r === "mentor";
+  }
+
   function puedeAprobar() {
     const r = role();
     return r === "admin" || r === "mentor";
@@ -158,9 +163,9 @@
       [squadEl, uniEl, cityEl, logoFile, certamenBtn].forEach(function (el) { el.disabled = true; });
       document.querySelectorAll('input[name="rally"]').forEach(function (el) { el.disabled = true; });
       document.getElementById("save-identity").disabled = true;
-      inviteBtn.disabled = true;
-      status("Solo lectura: definido por admin.");
+      status("Identidad del equipo: la edita admin u operador.");
     }
+    if (!puedeInvitar()) inviteBtn.disabled = true;
   }
 
   function seccionValor(key) {
@@ -399,7 +404,7 @@
   }
 
   async function crearInvitacion() {
-    if (!puedeEditar()) { status("Sin permiso."); return; }
+    if (!puedeInvitar()) { status("Sin permiso."); return; }
     inviteBtn.disabled = true;
     status("Creando enlace...");
     const ttl = Number(ttlSel && ttlSel.value) || 48;
