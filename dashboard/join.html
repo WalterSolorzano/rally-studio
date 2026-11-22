@@ -147,6 +147,26 @@
     .join-card button:disabled { opacity: .6; cursor: wait; }
     /* Dos hojas: datos y personaje. El boton fantasma no compite con el principal. */
     #join-paso-1[hidden], #join-paso-2[hidden] { display: none; }
+    #join-paso-2 { max-width: 720px; margin: 0 auto; }
+    #join-avatares-fieldset > legend {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+    .join-paso-titulo { display: grid; gap: 4px; margin: 0 0 var(--space-4); }
+    .join-paso-titulo[hidden] { display: none; }
+    .join-paso-titulo strong { font-size: 22px; font-weight: 900; letter-spacing: -.01em; color: var(--text-title); }
+    .join-paso-titulo span { font-size: 13px; color: var(--text-muted); }
+    body.join-personaje .join-layout { grid-template-columns: minmax(0, 1fr); width: min(760px, 100%); }
+    body.join-personaje .join-card { padding: clamp(20px, 3vw, 36px); }
+    body.join-personaje .join-aside,
+    body.join-personaje .join-card > h1,
+    body.join-personaje .join-card > p { display: none; }
     .join-pie { display: flex; gap: 10px; align-items: stretch; }
     .join-pie #join-submit { flex: 1 1 auto; }
     .join-card button.join-atras {
@@ -571,11 +591,15 @@
                       aria-label="Mostrar la clave" title="Mostrar la clave">Ver</button>
             </div>
             <p class="join-hint">Con nombre y clave puedes volver a entrar sin pedir otro enlace.</p>
-            <button class="join-siguiente" id="join-siguiente" type="button">Siguiente: tu personaje</button>
+            <button class="join-siguiente" id="join-siguiente" type="button">Siguiente</button>
           </div>
           <div id="join-paso-2" hidden>
+            <div class="join-paso-titulo">
+              <strong>Tu personaje</strong>
+              <span>Así te verá el equipo. Puedes cambiarlo cuando quieras en tu perfil.</span>
+            </div>
             <fieldset id="join-avatares-fieldset">
-              <legend>Tu personaje: la cara que verá el equipo</legend>
+              <legend class="estudio-rotulo">Tu personaje: la cara que verá el equipo</legend>
               <div class="estudio">
                 <div class="estudio-vista">
                   <span class="estudio-cara" id="join-cara" aria-hidden="true"></span>
@@ -599,7 +623,7 @@
             </fieldset>
             <div class="join-pie">
               <button class="join-atras" id="join-atras" type="button">Atrás</button>
-              <button id="join-submit" type="submit">Crear mi usuario y entrar</button>
+              <button id="join-submit" type="submit">Entrar al sistema</button>
             </div>
           </div>
         </div>

@@ -201,6 +201,8 @@
       if (dos) dos.hidden = false;
       if (retrato) retrato.hidden = true;
       if (atras) atras.hidden = true;
+      const titulo = dos && dos.querySelector ? dos.querySelector(".join-paso-titulo") : null;
+      if (titulo) titulo.hidden = true;
       const guia = document.getElementById("join-guia");
       if (guia) guia.textContent = "Entras como visitante: ves todo el tablero y no escribes nada.";
       button.textContent = "Entrar como visitante";
@@ -390,6 +392,11 @@
     const esDos = Number(numero) === 2;
     uno.hidden = esDos;
     dos.hidden = !esDos;
+    // La hoja del personaje es otra pantalla: sin el encabezado ni el panel
+    // lateral de la invitacion.
+    if (document.body && document.body.classList) {
+      document.body.classList.toggle("join-personaje", esDos);
+    }
     if (esDos) {
       if (vistaCara && vistaCara.scrollIntoView) vistaCara.scrollIntoView({ block: "center" });
       mostrar("");
