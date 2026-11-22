@@ -109,13 +109,13 @@
   }
 
   function ojos() {
-    // Ojo de dibujo amable: blanco con pupila, no un punto negro.
+    // Ojo de caricatura: ovalo lleno con dos brillos, sin aro. Se lee amable y
+    // no de muñeco tetrico.
     function uno(x, y) {
       return (
-        '<ellipse cx="' + x + '" cy="' + y + '" rx="4" ry="4.5" fill="' + BLANCO +
-        '" stroke="' + TINTA + '" stroke-width="1.8"/>' +
-        '<circle cx="' + x + '" cy="' + (y + 0.5) + '" r="2" fill="' + TINTA + '"/>' +
-        '<circle cx="' + (x - 0.9) + '" cy="' + (y - 1) + '" r="0.8" fill="' + BLANCO + '"/>'
+        '<ellipse cx="' + x + '" cy="' + y + '" rx="4.3" ry="5.1" fill="' + TINTA + '"/>' +
+        '<circle cx="' + (x - 1.5) + '" cy="' + (y - 1.9) + '" r="1.5" fill="' + BLANCO + '"/>' +
+        '<circle cx="' + (x + 1.4) + '" cy="' + (y + 1.7) + '" r="0.7" fill="' + BLANCO + '"/>'
       );
     }
     return uno(39, 41) + uno(57, 41);
@@ -333,7 +333,10 @@
     nodo_omega: "av_vigia"
   };
 
-  var POR_ROL = { admin: "av_admin", mentor: "av_mentor", visitor: "av_visitante" };
+  // Ningun rol tiene cara propia: el rol lo dice la etiqueta, el dibujo lo elige
+  // la persona. Todos parten del personaje basico.
+  var CARA_BASE = "av_profe";
+  var POR_ROL = { admin: CARA_BASE, mentor: CARA_BASE, visitor: CARA_BASE };
 
   var ROLES = [
     { id: "director", nombre: "Director" },

@@ -16,14 +16,13 @@
   /* Como entra el invitado lo decide el enlace, no el invitado: el motor
    * guarda el rol en la invitacion y aqui solo se anuncia. */
   const ROLES_ENTRADA = {
-    mentor: { titulo: "Mentor", detalle: "revisa y aprueba", avatar: "av_mentor" },
-    visitor: { titulo: "Visitante", detalle: "solo lectura", avatar: "av_visitante" },
-    member: { titulo: "Miembro", detalle: "", avatar: "" },
+    mentor: { titulo: "Mentor", detalle: "revisa y aprueba" },
+    visitor: { titulo: "Visitante", detalle: "solo lectura" },
+    member: { titulo: "Miembro", detalle: "" },
   };
 
-  /* El personaje se arma por capas: pelo, accesorio y camisa sobre una cara. No
-   * depende del rol ni del oficio: eso lo dice la etiqueta, no el dibujo. */
-  var BASE_POR_ROL = { mentor: "av_mentor", visitor: "av_visitante", member: "av_profe" };
+  /* El personaje se arma por capas: pelo, accesorio, camisa y color. No depende
+   * del rol ni del oficio: todos entran con la cara basica y la cambian. */
   var basePersonaje = "av_profe";
   var capas = { pelo: "p1", accesorio: "a0", camisa: "c1", tono: "t1" };
   var vistaCara = document.getElementById("join-cara");
@@ -182,7 +181,7 @@
         "Entras como " + ficha.titulo + (ficha.detalle ? " · " + ficha.detalle : "")
       );
       quien.innerHTML =
-        (ficha.avatar && window.RAV ? RAV.svg(ficha.avatar) : "") +
+        (ravOk() ? RAV.svg(RAV.espec(basePersonaje, capas)) : "") +
         "<span>" +
         '<i class="join-quien-kicker">Entras como</i>' +
         '<strong class="join-quien-rol">' + ficha.titulo + "</strong>" +
@@ -194,8 +193,14 @@
     // El visitante entra por un enlace que arma el admin: no pone nombre, no
     // marca roles y no elige personaje. Solo mira.
     if (rol === "visitor") {
-      const campos = document.getElementById("join-campos");
-      if (campos) campos.hidden = true;
+      const uno = document.getElementById("join-paso-1");
+      const dos = document.getElementById("join-paso-2");
+      const retrato = document.getElementById("join-avatares-fieldset");
+      const atras = document.getElementById("join-atras");
+      if (uno) uno.hidden = true;
+      if (dos) dos.hidden = false;
+      if (retrato) retrato.hidden = true;
+      if (atras) atras.hidden = true;
       const guia = document.getElementById("join-guia");
       if (guia) guia.textContent = "Entras como visitante: ves todo el tablero y no escribes nada.";
       button.textContent = "Entrar como visitante";
@@ -203,10 +208,7 @@
       contarTiempo(info && info.expires_at);
       return;
     }
-    if (ficha.avatar) {
-      basePersonaje = BASE_POR_ROL[rol] || "av_profe";
-      pintarPersonaje();
-    }
+    pintarPersonaje();
     if (rol === "mentor") cargarRoster();
   }
 
@@ -377,6 +379,41 @@
       clave.type = visible ? "text" : "password";
       clave.focus();
     });
+  }
+
+  // Dos hojas: primero quien eres (nombre, clave y roles), despues solo tu
+  // personaje. El nombre es lo unico obligatorio para pasar de hoja.
+  function mostrarPaso(numero) {
+    const uno = document.getElementById("join-paso-1");
+    const dos = document.getElementById("join-paso-2");
+    if (!uno || !dos) return;
+    const esDos = Number(numero) === 2;
+    uno.hidden = esDos;
+    dos.hidden = !esDos;
+    if (esDos) {
+      if (vistaCara && vistaCara.scrollIntoView) vistaCara.scrollIntoView({ block: "center" });
+      mostrar("");
+    } else {
+      if (input && input.focus) input.focus();
+      mostrar("");
+    }
+  }
+
+  const siguiente = document.getElementById("join-siguiente");
+  if (siguiente) {
+    siguiente.addEventListener("click", function () {
+      if (!input || !String(input.value || "").trim()) {
+        mostrar("Escribe tu nombre para seguir.", true);
+        if (input && input.focus) input.focus();
+        return;
+      }
+      mostrarPaso(2);
+    });
+  }
+
+  const atras = document.getElementById("join-atras");
+  if (atras) {
+    atras.addEventListener("click", function () { mostrarPaso(1); });
   }
 
   function deviceId() {
