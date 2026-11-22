@@ -37,6 +37,13 @@ def test_skill_is_short(nombre):
     assert len(Path(f"skills/{nombre}/SKILL.md").read_bytes()) <= 8_000
 
 
+def test_presupuesto_dice_donde_va_la_partida_sin_cotizacion():
+    """La regla 19 tiene que nombrar el destino: sin el, se deja la fila en cero."""
+    texto = Path("skills/presupuesto/SKILL.md").read_text(encoding="utf-8")
+    assert "desglose_pendiente" in texto
+    assert "no va en" in texto and "`partidas`" in texto
+
+
 # --- Ganadores: no volver a confundir certámenes -------------------------
 
 CORPUS = Path("brain/corpus")
@@ -204,3 +211,32 @@ def test_el_grafo_del_cerebro_tiene_relaciones_entre_archivos():
     ]
     assert len(cross) > 0
     assert all(l["relation"] == "references" for l in cross)
+
+
+# --- Skills limpias: sin notas de mantenimiento --------------------------
+
+MARCADORES_DE_TRABAJO = [
+    (r"\(arreglo de", "nota de arreglo"),
+    (r"\bH-\d\b", "id de hallazgo interno"),
+    (r"\(pendiente", "nota de pendiente"),
+    (r"\bFIXME\b", "FIXME"),
+    (r"\bXXX\b", "XXX"),
+    (r"\bharness\b", "jerga de herramienta"),
+]
+
+
+def test_skills_y_reglas_no_llevan_notas_de_mantenimiento():
+    # Una skill o regla la lee la IA al ejecutar: un "(arreglo de H-1)" o un
+    # "TODO" no es instruccion, es ruido, y ensena a la IA a describir su
+    # propio trabajo en vez de hacerlo.
+    import re
+
+    rutas = sorted(Path("skills").rglob("*.md")) + sorted(Path(".agents/rules").glob("*.md"))
+    sucias = []
+    for ruta in rutas:
+        texto = ruta.read_text(encoding="utf-8")
+        for patron, etiqueta in MARCADORES_DE_TRABAJO:
+            for m in re.finditer(patron, texto, re.IGNORECASE):
+                linea = texto[: m.start()].count("\n") + 1
+                sucias.append(f"{ruta}:{linea}: {etiqueta}")
+    assert not sucias, "fuera estas notas de mantenimiento:\n" + "\n".join(sucias)

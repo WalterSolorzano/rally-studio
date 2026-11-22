@@ -170,12 +170,16 @@ class NubeStore(SqliteStore):
                 " ORDER BY id ASC LIMIT ?",
                 (rally_id, int(since), limit),
             ).fetchall()
-            last = conn.execute(
-                "SELECT MAX(id) AS last_id FROM nube_changes WHERE rally_id = ?",
-                (rally_id,),
-            ).fetchone()
+            # El cursor es el ultimo cambio ENTREGADO, no MAX(id): si `limit`
+            # trunca la pagina, el cliente debe poder pedir el resto.
+            cursor = int(rows[-1]["id"]) if rows else int(since)
+            faltan = conn.execute(
+                "SELECT COUNT(*) FROM nube_changes WHERE rally_id = ? AND id > ?",
+                (rally_id, cursor),
+            ).fetchone()[0]
         return {
-            "cursor": int(last["last_id"] or 0),
+            "cursor": cursor,
+            "has_more": bool(faltan),
             "changes": [
                 {
                     "id": row["id"],

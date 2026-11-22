@@ -130,24 +130,48 @@
     if (!fuente) return null;
 
     // El estado del tablero guarda el costo canónico en USD. Si la propuesta
-    // declara córdobas, se convierte con la tasa BCN del estado.
+    // declara córdobas, se convierte con la tasa BCN del estado; si la
+    // propuesta trae su propia tasa (el agente cotizó con ella), vale como
+    // respaldo.
     var estado = leerEstado();
-    var tasa = Number(estado.exchange_rate_bcn) || 0;
+    var tasa = Number(estado.exchange_rate_bcn) || Number(payload && payload.exchange_rate_bcn) || 0;
     var moneda = String((payload && (payload.currency || payload.moneda)) || "").toUpperCase();
     var enCordobas = moneda === "NIO" || moneda === "C$" || moneda === "CORDOBAS" || moneda === "CÓRDOBAS";
+
+    function tiene(v) {
+      return v !== undefined && v !== null && v !== "" && isFinite(Number(v));
+    }
 
     var filas = [];
     for (var i = 0; i < fuente.length; i++) {
       var it = fuente[i] || {};
       var units = Number(it.units);
-      var unitCost = Number(it.unit_cost);
       if (!isFinite(units)) units = 1;
-      if (!isFinite(unitCost)) unitCost = 0;
+
+      // El costo puede venir con el nombre de la tabla (`unit_cost`, en USD) o
+      // con los que usa el archivo del presupuesto del rally (`unit_cost_usd`,
+      // `unit_cost_nio`). Antes solo se leía el primero, así que una propuesta
+      // del presupuesto real entraba con costo 0.
+      var unitCost = 0;
+      var costoEnCordobas = false;
+      if (tiene(it.unit_cost)) {
+        unitCost = Number(it.unit_cost);
+      } else if (tiene(it.unit_cost_usd)) {
+        unitCost = Number(it.unit_cost_usd);
+      } else if (tiene(it.unit_cost_nio)) {
+        unitCost = Number(it.unit_cost_nio);
+        costoEnCordobas = true;
+      }
+
       var itemMoneda = String(it.currency || it.moneda || "").toUpperCase();
       var itemEnCordobas = itemMoneda === "NIO" || itemMoneda === "C$" || itemMoneda === "CORDOBAS" || itemMoneda === "CÓRDOBAS";
-      if ((enCordobas || itemEnCordobas) && tasa > 0) {
-        unitCost = unitCost / tasa;
+      if (enCordobas || itemEnCordobas || costoEnCordobas) {
+        // Sin tasa no se inventa un dólar: 4 000 C$ no son 4 000 USD, y el
+        // tablero redondea por esto la banda de presupuesto.
+        if (tasa > 0) unitCost = unitCost / tasa;
+        else if (unitCost > 0) return null;
       }
+
       var texto = String(it.element || it.concept || it.name || it.description || "");
       var fila = {
         // La tabla y los exports de app.js leen `element`; el dossier lee
@@ -251,6 +275,10 @@
       if (filas && filas.length) {
         st.budget = filas;
         cambio = true;
+      } else if (filas === null && payload && typeof payload === "object" && (Array.isArray(payload.items) || Array.isArray(payload.budget))) {
+        // La propuesta llega en córdobas y no hay tasa BCN en el tablero ni en
+        // la propuesta: se avisa y no se toca el presupuesto.
+        avisar(env, "error");
       }
     } else if (tab === "timeline") {
       // La pestaña de cierre no tiene un campo de texto: sus avisos son del
@@ -398,11 +426,14 @@
       "box-shadow:0 4px 12px rgba(13,27,53,.10);color:var(--text-main,#111827)}" +
       "#" + DOCK_ID + " .rcc-head{display:flex;align-items:baseline;gap:8px;justify-content:space-between}" +
       "#" + DOCK_ID + " .rcc-title{font-size:13px;font-weight:700;line-height:1.3}" +
-      "#" + DOCK_ID + " .rcc-meta{font-size:11px;color:var(--text-muted,#5b6478);margin-top:4px;line-height:1.35}" +
+      "#" + DOCK_ID + " .rcc-meta{font-size:11px;color:var(--text-muted,#5b6478);margin-top:4px;line-height:1.35;" +
+      "max-height:64px;transition:opacity 140ms ease,max-height 160ms ease,margin-top 160ms ease}" +
       "#" + DOCK_ID + " .rcc-status{font-size:11px;color:var(--text-muted,#5b6478);background:var(--bg-subtle,#f6f7fb);" +
       "border:1px solid var(--border-light,#DCE7F5);border-radius:4px;padding:6px 8px;text-align:center}" +
-      "#" + DOCK_ID + " .rcc-note{font-size:11px;color:var(--text-muted,#7c4a03);margin-top:8px}" +
-      "#" + DOCK_ID + " .rcc-actions{display:flex;gap:8px;margin-top:10px}" +
+      "#" + DOCK_ID + " .rcc-note{font-size:11px;color:var(--text-muted,#7c4a03);margin-top:8px;" +
+      "max-height:72px;transition:opacity 140ms ease,max-height 160ms ease,margin-top 160ms ease}" +
+      "#" + DOCK_ID + " .rcc-actions{display:flex;gap:8px;margin-top:10px;" +
+      "max-height:60px;transition:opacity 140ms ease,max-height 160ms ease,margin-top 160ms ease}" +
       "#" + DOCK_ID + " button{font:inherit;font-size:11.5px;font-weight:600;cursor:pointer;" +
       "border-radius:6px;padding:6px 12px;border:1px solid var(--border-strong,#c7cede);" +
       "background:var(--bg-surface,#fff);color:var(--text-body,#1f2937)}" +
@@ -416,11 +447,36 @@
       "#" + DOCK_ID + " .dock-head-caret{font-size:10px;color:var(--text-muted,#5C7193)}" +
       "#" + DOCK_ID + ":not(.is-open){width:auto;max-width:min(240px,calc(100vw - 36px));background:none;overflow:visible}" +
       "#" + DOCK_ID + ":not(.is-open) .rally-content-card{display:none}" +
-      "#" + DOCK_ID + " .rally-content-card{cursor:pointer}" +
+      "#" + DOCK_ID + " .rally-content-card{cursor:pointer;" +
+      "animation:rccIn 180ms cubic-bezier(.16,1,.3,1) backwards;" +
+      "transition:border-color 140ms ease,box-shadow 140ms ease,transform 140ms ease}" +
+      "#" + DOCK_ID + " .rally-content-card:hover{border-color:var(--color-primary,#0866F5);" +
+      "box-shadow:0 8px 20px rgba(13,27,53,.16);transform:translateY(-1px)}" +
+      "@keyframes rccIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}" +
+      "#" + DOCK_ID + " .rally-content-card.is-leaving{" +
+      "animation:rccOut 180ms ease-in both;pointer-events:none}" +
+      "@keyframes rccOut{from{opacity:1;transform:none}to{opacity:0;transform:translateY(6px)}}" +
+      "#" + DOCK_ID + " .dock-head{transition:transform 140ms ease,box-shadow 140ms ease,color 140ms ease}" +
+      "#" + DOCK_ID + " .dock-head:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(13,27,53,.18)}" +
+      "#" + DOCK_ID + " .dock-head:active{transform:translateY(0)}" +
+      "#" + DOCK_ID + " .dock-head-caret{display:inline-block;transition:transform 160ms ease}" +
+      "#" + DOCK_ID + " .dock-head{animation:dockHeadIn 180ms cubic-bezier(.16,1,.3,1) backwards}" +
+      "#" + DOCK_ID + " .rcc-status{animation:rccStatusIn 200ms ease-out backwards}" +
+      "@keyframes dockHeadIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}" +
+      "@keyframes rccStatusIn{from{opacity:0}to{opacity:1}}" +
+      "#" + DOCK_ID + ":not(.is-open) .dock-head-caret{transform:translateY(-1px)}" +
+      "#" + DOCK_ID + " button{transition:background 120ms ease,border-color 120ms ease,color 120ms ease,transform 120ms ease}" +
+      "#" + DOCK_ID + " button:active:not([disabled]){transform:scale(.98)}" +
+      "@media (prefers-reduced-motion: reduce){" +
+      "#" + DOCK_ID + " .rally-content-card{" +
+      "animation:none;transition:none}" +
+      "#" + DOCK_ID + " .dock-head,#" + DOCK_ID + " button{transition:none}" +
+      "}" +
       "#" + DOCK_ID + " .rally-content-card.is-collapsed{padding:9px 12px}" +
       "#" + DOCK_ID + " .rally-content-card.is-collapsed .rcc-meta," +
       "#" + DOCK_ID + " .rally-content-card.is-collapsed .rcc-actions," +
-      "#" + DOCK_ID + " .rally-content-card.is-collapsed .rcc-note{display:none}" +
+      "#" + DOCK_ID + " .rally-content-card.is-collapsed .rcc-note{" +
+      "max-height:0;opacity:0;overflow:hidden;margin-top:0;pointer-events:none}" +
       "#" + DOCK_ID + " .rally-content-card.is-collapsed .rcc-title{" +
       "white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12px;font-weight:600}" +
       "@media (min-width:1100px){" +
@@ -530,8 +586,18 @@
   function quitarTarjeta(id) {
     delete rendered[id];
     var nodo = dock && dock.querySelector("[data-proposal-id='" + id + "']");
-    if (nodo && nodo.parentNode) nodo.parentNode.removeChild(nodo);
-    actualizarCabecera();
+    if (!nodo || !nodo.parentNode) { actualizarCabecera(); return; }
+    // Salida animada: la tarjeta se va, no desaparece de golpe.
+    nodo.classList.add("is-leaving");
+    var hecho = false;
+    function fin() {
+      if (hecho) return;
+      hecho = true;
+      if (nodo.parentNode) nodo.parentNode.removeChild(nodo);
+      actualizarCabecera();
+    }
+    nodo.addEventListener("animationend", fin);
+    setTimeout(fin, 260);
   }
 
   function render(items) {

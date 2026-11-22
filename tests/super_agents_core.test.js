@@ -17,8 +17,15 @@ const ls = {
   removeItem: (k) => { delete storage[k]; }
 };
 
-const ctx = { window: undefined, document: undefined, localStorage: ls, console };
+const ctx = {
+  window: {}, document: undefined, localStorage: ls, console,
+  location: { protocol: "http:", origin: "http://localhost:8000" }
+};
 vm.createContext(ctx);
+// En el navegador `window` es el global: super_agents.js lee window.RallyEsc.
+ctx.window = ctx;
+vm.runInContext(fs.readFileSync(path.join(__dirname, "..", "dashboard", "escape.js"), "utf8"),
+  ctx, { filename: "escape.js" });
 vm.runInContext(src, ctx, { filename: "super_agents.js" });
 const RSA = ctx.RSA;
 assert.ok(RSA, "RSA debe existir en el contexto VM");
@@ -29,7 +36,7 @@ vm.runInContext(fs.readFileSync(rubSrcPath, "utf8"), ctx, { filename: "super_age
 const RSA_RUBRICS = ctx.RSA_RUBRICS || (ctx.window && ctx.window.RSA_RUBRICS);
 assert.ok(RSA_RUBRICS, "RSA_RUBRICS debe existir en el contexto VM");
 
-const STATE_KEY = "rally_studio_production_state_2026_v3";
+const STATE_KEY = "rally_studio_production_state_2026_v4";
 const words = (n) => Array.from({ length: n }, (_, i) => "w" + i).join(" ");
 const hit = (p, re) => (re.test(String(p.title)) || re.test(String(p.evidence || "")));
 const CANVAS_KEYS = ["socios", "actividades", "propuesta", "relaciones", "segmentos", "recursos", "canales", "costes", "ingresos"];
@@ -306,6 +313,16 @@ const canvasItemized = {
   }
 };
 eq(RSA.canvasChecks(canvasItemized), {problems: []});
+// Regresión: los centavos no son ceros. "5,000.00" es cinco mil, no quinientos mil.
+const canvasDecimals = {
+  rally_type: "latam",
+  budget: [{element: "x", category: "S", units: 1, unit_cost: 5000, url: "u"}],
+  model_canvas: {
+    socios: "s", actividades: "a", propuesta: "p", relaciones: "r", segmentos: "g",
+    recursos: "rec", canales: "c", costes: "C$ 5,000.00", ingresos: "5.000,25 y 5,000"
+  }
+};
+eq(RSA.canvasChecks(canvasDecimals), {problems: []});
 const canvasWrong = {
   rally_type: "latam",
   budget: [{element: "x", category: "S", units: 1, unit_cost: 5000, url: "u"}],

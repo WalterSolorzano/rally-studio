@@ -196,10 +196,20 @@
 
   async function escribirSeccion(key, value) {
     const version = sections[key] ? Number(sections[key].version) || 0 : 0;
-    const res = await api("/api/sections/" + encodeURIComponent(key), {
+    const base = "/api/sections/" + encodeURIComponent(key);
+    // El servidor exige un candado vivo del actor para toda clave no local.
+    const lock = await api(base + "/lock", {
+      method: "POST",
+      body: JSON.stringify({ ttl_minutes: 15 }),
+    });
+    if (lock.status === 403) return { ok: false, msg: "Sin permiso." };
+    if (lock.status === 423) return { ok: false, msg: "Ocupado por otro: reintenta." };
+    if (!lock.ok) return { ok: false, msg: "No se pudo reservar la sección." };
+    const res = await api(base, {
       method: "POST",
       body: JSON.stringify({ data: value, base_version: version }),
     });
+    api(base + "/unlock", { method: "POST", body: "{}" }).catch(function () {});
     if (res.status === 403) return { ok: false, msg: "Sin permiso." };
     if (res.status === 409 || res.status === 423) return { ok: false, msg: "Ocupado por otro: reintenta." };
     if (!res.ok) return { ok: false, msg: "No se pudo guardar." };

@@ -141,6 +141,8 @@
       font-weight: 800;
       cursor: pointer;
       background: var(--color-primary);
+      transition: background-color 140ms ease, border-color 140ms ease,
+        box-shadow 140ms ease, transform 140ms ease;
       color: #fff;
     }
     .join-card button:hover { background: var(--color-primary-hover); }
@@ -364,6 +366,7 @@
       .join-loader, .join-loader-mark, .join-loader-mark line, .join-loader-barra::after,
       .join-card, .join-card > *, #join-paso-1 > *, #join-paso-2 > *, .join-quien.is-lleno,
       #join-status.is-entra, .join-avatars input:checked + label .rav-avatar,
+      .join-espera.is-sale, .join-anuncio.is-sale,
       .join-espera-marca, .join-espera-marca line, .join-espera-barra::after,
       .join-anuncio-lado, .join-anuncio-bien, .join-anuncio-linea, .join-anuncio-marca line,
       .join-card button.is-cargando::before { animation: none !important; }
@@ -382,6 +385,11 @@
       animation: join-entra .22s ease both;
     }
     .join-espera[hidden] { display: none; }
+    .join-espera.is-sale { animation: join-sale .2s ease both; }
+    @keyframes join-sale {
+      from { opacity: 1; transform: none; }
+      to { opacity: 0; transform: scale(.985); }
+    }
     .join-espera-caja { display: grid; justify-items: center; gap: 14px; text-align: center; }
     .join-espera-marca { width: 150px; height: 100px; }
     .join-espera-marca line {
@@ -436,6 +444,11 @@
       background: radial-gradient(circle at 50% 40%, #ffffff, var(--bg-app) 72%);
     }
     .join-anuncio[hidden] { display: none; }
+    .join-anuncio.is-sale { animation: join-anuncio-sale .24s ease both; }
+    @keyframes join-anuncio-sale {
+      from { opacity: 1; }
+      to { opacity: 0; visibility: hidden; }
+    }
     .join-anuncio-lado {
       display: grid;
       justify-items: center;
@@ -653,6 +666,6 @@
     </div>
   </main>
   <script src="avatars.js?v=20261122_rev10" defer></script>
-  <script src="join.js?v=20261122_rev13" defer></script>
+  <script src="join.js?v=20261122_rev14" defer></script>
 </body>
 </html>

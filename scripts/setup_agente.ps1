@@ -128,7 +128,16 @@ $cfgPath = "opencode.json"
 if (Test-Path $cfgPath) {
     $raw = Get-Content $cfgPath -Raw -Encoding UTF8
     if ($raw.Trim()) {
-        $cfg = $raw | ConvertFrom-Json
+        try {
+            $cfg = $raw | ConvertFrom-Json
+        } catch {
+            Anotar "ERROR: opencode.json no es JSON valido ($($_.Exception.Message)). Corregilo a mano, o borralo para que este instalador lo regenere, y volve a correr el script."
+            exit 1
+        }
+        if ($null -eq $cfg -or $cfg -isnot [System.Management.Automation.PSCustomObject]) {
+            Anotar "ERROR: opencode.json debe contener un objeto JSON en la raiz. Corregilo a mano o borralo para regenerarlo."
+            exit 1
+        }
     } else {
         $cfg = New-Object PSObject
     }
@@ -141,28 +150,75 @@ if (-not ($cfg.PSObject.Properties.Name -contains "mcp")) {
     $cfg | Add-Member -NotePropertyName "mcp" -NotePropertyValue (New-Object PSObject)
 }
 
-if ($cfg.mcp.PSObject.Properties.Name -contains "playwright") {
-    Anotar "OK MCP playwright ya declarado en opencode.json"
-} else {
-    $pw = New-Object PSObject
-    $pw | Add-Member -NotePropertyName "type" -NotePropertyValue "local"
-    $pw | Add-Member -NotePropertyName "command" -NotePropertyValue @("npx", "-y", "@playwright/mcp")
-    $pw | Add-Member -NotePropertyName "enabled" -NotePropertyValue $true
-    $cfg.mcp | Add-Member -NotePropertyName "playwright" -NotePropertyValue $pw
-    $cfg | ConvertTo-Json -Depth 10 | Set-Content -Path $cfgPath -Encoding UTF8
-    Anotar "OK MCP playwright agregado a opencode.json"
+# Un `"mcp": null` o un `mcp` que no es objeto es JSON valido, y hasta ahora
+# reventaba con una excepcion de Add-Member. Se reemplaza por un objeto vacio.
+if ($null -eq $cfg.mcp -or $cfg.mcp -isnot [System.Management.Automation.PSCustomObject]) {
+    $cfg | Add-Member -NotePropertyName "mcp" -NotePropertyValue (New-Object PSObject) -Force
+    Anotar "AVISO: la clave mcp de opencode.json no era un objeto; se reemplazo por uno vacio."
 }
 
-if ($cfg.mcp.PSObject.Properties.Name -contains "blender-mcp") {
-    Anotar "OK MCP blender-mcp ya declarado en opencode.json"
+# Declarar un MCP no es tenerlo: lo que decide es `enabled`. El servidor que
+# declara el agente tiene que quedar habilitado, y blender queda apagado hasta
+# autorizacion explicita (regla de la caja de herramientas).
+function AsegurarMcp($config, [string]$nombre, [string[]]$comando, [bool]$habilitado) {
+    $cambiado = $false
+    if (-not ($config.mcp.PSObject.Properties.Name -contains $nombre)) {
+        $nuevo = New-Object PSObject
+        $nuevo | Add-Member -NotePropertyName "type" -NotePropertyValue "local"
+        $nuevo | Add-Member -NotePropertyName "command" -NotePropertyValue $comando
+        $nuevo | Add-Member -NotePropertyName "enabled" -NotePropertyValue $habilitado
+        $config.mcp | Add-Member -NotePropertyName $nombre -NotePropertyValue $nuevo
+        return $true
+    }
+    $actual = $config.mcp.$nombre
+    if ($null -eq $actual -or $actual -isnot [System.Management.Automation.PSCustomObject]) {
+        $nuevo = New-Object PSObject
+        $nuevo | Add-Member -NotePropertyName "type" -NotePropertyValue "local"
+        $nuevo | Add-Member -NotePropertyName "command" -NotePropertyValue $comando
+        $nuevo | Add-Member -NotePropertyName "enabled" -NotePropertyValue $habilitado
+        $config.mcp | Add-Member -NotePropertyName $nombre -NotePropertyValue $nuevo -Force
+        return $true
+    }
+    if ($actual.enabled -ne $habilitado) {
+        $actual | Add-Member -NotePropertyName "enabled" -NotePropertyValue $habilitado -Force
+        $cambiado = $true
+    }
+    return $cambiado
+}
+
+$cambioMcp = $false
+if (AsegurarMcp $cfg "playwright" @("npx", "-y", "@playwright/mcp") $true) {
+    $cambioMcp = $true
+    Anotar "OK MCP playwright declarado y habilitado en opencode.json"
 } else {
-    $bm = New-Object PSObject
-    $bm | Add-Member -NotePropertyName "type" -NotePropertyValue "local"
-    $bm | Add-Member -NotePropertyName "command" -NotePropertyValue @("uvx", "blender-mcp")
-    $bm | Add-Member -NotePropertyName "enabled" -NotePropertyValue $false
-    $cfg.mcp | Add-Member -NotePropertyName "blender-mcp" -NotePropertyValue $bm
+    Anotar "OK MCP playwright ya declarado y habilitado en opencode.json"
+}
+
+if (AsegurarMcp $cfg "blender-mcp" @("uvx", "blender-mcp") $false) {
+    $cambioMcp = $true
+    Anotar "OK MCP blender-mcp declarado y desactivado (se activa solo con autorizacion)"
+} else {
+    Anotar "OK MCP blender-mcp ya declarado y desactivado"
+}
+
+if ($cambioMcp) {
     $cfg | ConvertTo-Json -Depth 10 | Set-Content -Path $cfgPath -Encoding UTF8
-    Anotar "OK MCP blender-mcp declarado (desactivado hasta autorizacion)"
+}
+
+# ---------------------------------------------------------------------------
+# 4b. Skills externas obligatorias (impeccable)
+# ---------------------------------------------------------------------------
+# impeccable es obligatoria: es la que exige preguntar antes de suponer en el
+# diseno de identidad. Sin red, la instalacion avisa y sigue: no aborta nada.
+if ($SinDependencias) {
+    Anotar "OMITIDO skills externas (pedido con -SinDependencias)"
+} else {
+    & python scripts/herramientas.py instalar impeccable --si
+    if ($LASTEXITCODE -eq 0) {
+        Anotar "OK impeccable instalada (obligatoria: pregunta antes de suponer)"
+    } else {
+        Anotar "AVISO: no se pudo instalar impeccable (sin red o sin npx). Reintentar: python scripts/herramientas.py instalar impeccable --si"
+    }
 }
 
 # ---------------------------------------------------------------------------

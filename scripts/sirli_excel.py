@@ -28,7 +28,7 @@ SOLUTION_HINTS = (
     "propuesta",
     "proyecto",
     "solucion",
-    "soluciÃ³n",
+    "solución",
     "permite",
     "desarrollamos",
     "creamos",
@@ -41,7 +41,7 @@ SOLUTION_HINTS = (
 )
 NOISE = (
     "suscribete",
-    "suscrÃ­bete",
+    "suscríbete",
     "dale like",
     "instagram",
     "facebook",
@@ -83,11 +83,11 @@ def solution_from_description(body: str) -> tuple[str, str]:
 def solution_from_title(title: str) -> tuple[str, str]:
     if not title:
         return "", ""
-    parts = [p.strip(" ._-|") for p in re.split(r"\s*[-|â€“]\s*|\s*#|_", title) if p.strip()]
+    parts = [p.strip(" ._-|") for p in re.split(r"\s*[-|–]\s*|\s*#|_", title) if p.strip()]
     keep = []
     for p in parts:
         low = p.lower()
-        if re.search(r"rally|sirli|latinoameric|latam|20\d\d|desaf[iÃ­]o|sede|universidad|equipo\s*\d", low):
+        if re.search(r"rally|sirli|latinoameric|latam|20\d\d|desaf[ií]o|sede|universidad|equipo\s*\d", low):
             continue
         if len(p) < 3:
             continue
@@ -102,18 +102,18 @@ def solution_from_title(title: str) -> tuple[str, str]:
 def heuristica_desafio(challenge: str) -> str:
     c = challenge.lower()
     tabla = [
-        (r"residuo|basura|recicl|plastico|plÃ¡stico", "Residuos y reciclaje"),
-        (r"agua|h[iÃ­]dric|potable|riego|lluvia", "Agua"),
-        (r"energ|solar|el[eÃ©]ctric", "EnergÃ­a"),
-        (r"aliment|nutric|hambre|cosecha|agro|caf[eÃ©]|cacao|suelo", "AlimentaciÃ³n y agro"),
-        (r"salud|medic|paciente|enfermedad|discapac", "Salud e inclusiÃ³n"),
-        (r"educ|escuela|estudiante|aprendizaje", "EducaciÃ³n"),
-        (r"mujer|g[eÃ©]nero|violencia", "GÃ©nero"),
-        (r"movilidad|transporte|tr[aÃ¡]fico|veh[iÃ­]culo", "Movilidad"),
-        (r"clima|inundaci|sequ[iÃ­]a|riesgo|hurac", "Clima y riesgo"),
+        (r"residuo|basura|recicl|plastico|plástico", "Residuos y reciclaje"),
+        (r"agua|h[ií]dric|potable|riego|lluvia", "Agua"),
+        (r"energ|solar|el[eé]ctric", "Energía"),
+        (r"aliment|nutric|hambre|cosecha|agro|caf[eé]|cacao|suelo", "Alimentación y agro"),
+        (r"salud|medic|paciente|enfermedad|discapac", "Salud e inclusión"),
+        (r"educ|escuela|estudiante|aprendizaje", "Educación"),
+        (r"mujer|g[eé]nero|violencia", "Género"),
+        (r"movilidad|transporte|tr[aá]fico|veh[ií]culo", "Movilidad"),
+        (r"clima|inundaci|sequ[ií]a|riesgo|hurac", "Clima y riesgo"),
         (r"vivienda|hogar|construcci", "Vivienda"),
         (r"turismo|cultura|patrimonio|artesan", "Turismo y cultura"),
-        (r"digital|app|software|sensor|inteligencia artificial|tecnolog", "TecnologÃ­a digital"),
+        (r"digital|app|software|sensor|inteligencia artificial|tecnolog", "Tecnología digital"),
         (r"emprend|pyme|mipyme|negocio|ingreso", "Emprendimiento"),
         (r"poliniz|abeja|biodivers|ecosistema|forest", "Biodiversidad"),
     ]
@@ -146,10 +146,10 @@ def main() -> int:
     ws = wb.active
     ws.title = "Ganadores"
     headers = [
-        "AÃ±o", "ColecciÃ³n", "Puesto", "Equipo", "PaÃ­s", "Sede", "CategorÃ­a",
-        "NÂ° desafÃ­o", "DesafÃ­o (problema)", "SoluciÃ³n (extraÃ­da)", "Fuente soluciÃ³n",
-        "Tema", "TÃ­tulo del video", "DescripciÃ³n completa del video", "DuraciÃ³n (s)",
-        "Vistas", "Me gusta", "Canal", "Publicado", "SubtÃ­tulos", "URL del video",
+        "Año", "Colección", "Puesto", "Equipo", "País", "Sede", "Categoría",
+        "N° desafío", "Desafío (problema)", "Solución (extraída)", "Fuente solución",
+        "Tema", "Título del video", "Descripción completa del video", "Duración (s)",
+        "Vistas", "Me gusta", "Canal", "Publicado", "Subtítulos", "URL del video",
         "Video ID", "Transcrito",
     ]
     ws.append(headers)
@@ -184,7 +184,7 @@ def main() -> int:
             m.get("view_count"), m.get("like_count"), m.get("channel") or "",
             (m.get("publish_date") or m.get("upload_date") or "")[:10],
             ", ".join(m.get("subtitle_langs") or []) or ("sin datos" if not m or m.get("failed") else "no"),
-            w["video_url"] or "", vid, "sÃ­" if vid in trans and trans[vid].get("text") else "",
+            w["video_url"] or "", vid, "sí" if vid in trans and trans[vid].get("text") else "",
         ])
 
     widths = [6, 14, 16, 30, 16, 26, 18, 6, 52, 70, 26, 20, 44, 80, 10, 10, 10, 24, 12, 14, 34, 14, 10]
@@ -198,9 +198,9 @@ def main() -> int:
 
     # ---------- hoja 2: resumen ----------
     rs = wb.create_sheet("Resumen")
-    rs.append(["Registros por aÃ±o y colecciÃ³n"])
+    rs.append(["Registros por año y colección"])
     rs["A1"].font = Font(bold=True, size=12)
-    rs.append(["AÃ±o", "Sede", "Nacional", "Internacional", "Total"])
+    rs.append(["Año", "Sede", "Nacional", "Internacional", "Total"])
     years = sorted({w["year"] for w in winners})
     cols = ["sede", "nacional", "internacional"]
     for y in years:
@@ -210,13 +210,13 @@ def main() -> int:
     rs.append(["TOTAL", *totals, sum(totals)])
 
     rs.append([])
-    rs.append(["Top 15 paÃ­ses (todas las colecciones)"])
+    rs.append(["Top 15 países (todas las colecciones)"])
     rs.cell(row=rs.max_row, column=1).font = Font(bold=True, size=12)
     for country, n in Counter(w["country"] for w in winners).most_common(15):
         rs.append([country, n])
 
     rs.append([])
-    rs.append(["Cobertura de soluciÃ³n extraÃ­da"])
+    rs.append(["Cobertura de solución extraída"])
     rs.cell(row=rs.max_row, column=1).font = Font(bold=True, size=12)
     fuentes = src_counter
     for k, v in fuentes.most_common():
@@ -226,14 +226,14 @@ def main() -> int:
         rs.column_dimensions[col].width = 12
 
     # ---------- hoja 3: desafios ----------
-    ds = wb.create_sheet("DesafÃ­os")
-    ds.append(["DesafÃ­o (texto completo)", "NÂ°", "Tema", "Equipos que lo trabajaron", "AÃ±os"])
+    ds = wb.create_sheet("Desafíos")
+    ds.append(["Desafío (texto completo)", "N°", "Tema", "Equipos que lo trabajaron", "Años"])
     for c in ds[1]:
         c.font = bold
         c.fill = fill
     agg: dict[str, dict] = {}
     for w in winners:
-        key = w["challenge_name"] or w["challenge"] or "(sin desafÃ­o)"
+        key = w["challenge_name"] or w["challenge"] or "(sin desafío)"
         item = agg.setdefault(key, {"n": 0, "num": w["challenge_number"] or "", "years": set()})
         item["n"] += 1
         item["years"].add(w["year"])
@@ -253,7 +253,7 @@ def main() -> int:
 
     # ---------- hoja 4: transcripciones ----------
     ts = wb.create_sheet("Transcripciones")
-    ts.append(["Video ID", "AÃ±o", "ColecciÃ³n", "Equipo", "PaÃ­s", "Puesto", "DuraciÃ³n s", "Palabras", "Fuente", "Texto (inicio)"])
+    ts.append(["Video ID", "Año", "Colección", "Equipo", "País", "Puesto", "Duración s", "Palabras", "Fuente", "Texto (inicio)"])
     for c in ts[1]:
         c.font = bold
         c.fill = fill
@@ -271,17 +271,17 @@ def main() -> int:
     ts.freeze_panes = "A2"
 
     # ---------- hoja 5: metodologia ----------
-    ms = wb.create_sheet("MetodologÃ­a")
+    ms = wb.create_sheet("Metodología")
     lines = [
-        ("Fuente", "sirli.org/ganadores â€” colecciones sede, nacional e internacional, 2017â€“2026"),
-        ("Registros", f"{len(winners)} premios; {len({w['video_id'] for w in winners if w['video_id']})} videos Ãºnicos"),
-        ("Campo DesafÃ­o", "Texto publicado por SIRLI: nÃºmero y enunciado del reto. Es el problema, no la soluciÃ³n."),
-        ("Campo SoluciÃ³n", "ExtraÃ­da automÃ¡ticamente de la descripciÃ³n pÃºblica del video en YouTube y, cuando existe, del nombre del proyecto en el tÃ­tulo."),
-        ("Campo Fuente soluciÃ³n", "Indica de dÃ³nde saliÃ³ el texto: descripcion, descripcion (debil), titulo (nombre del proyecto) o transcripcion."),
-        ("Transcripciones", f"{len(trans)} videos con subtÃ­tulos descargados (foco: internacional 2022â€“2026, nacional y sede de Nicaragua)."),
-        ("Tema", "ClasificaciÃ³n por palabras clave del enunciado del desafÃ­o. Es orientativa."),
-        ("LÃ­mite", "SIRLI no publica descripciÃ³n del proyecto en la ficha del ganador; la soluciÃ³n depende del material que subiÃ³ cada equipo a YouTube."),
-        ("CategorÃ­a", "La colecciÃ³n internacional no expone categorÃ­a en el sitio."),
+        ("Fuente", "sirli.org/ganadores — colecciones sede, nacional e internacional, 2017–2026"),
+        ("Registros", f"{len(winners)} premios; {len({w['video_id'] for w in winners if w['video_id']})} videos únicos"),
+        ("Campo Desafío", "Texto publicado por SIRLI: número y enunciado del reto. Es el problema, no la solución."),
+        ("Campo Solución", "Extraída automáticamente de la descripción pública del video en YouTube y, cuando existe, del nombre del proyecto en el título."),
+        ("Campo Fuente solución", "Indica de dónde salió el texto: descripcion, descripcion (debil), titulo (nombre del proyecto) o transcripcion."),
+        ("Transcripciones", f"{len(trans)} videos con subtítulos descargados (foco: internacional 2022–2026, nacional y sede de Nicaragua)."),
+        ("Tema", "Clasificación por palabras clave del enunciado del desafío. Es orientativa."),
+        ("Límite", "SIRLI no publica descripción del proyecto en la ficha del ganador; la solución depende del material que subió cada equipo a YouTube."),
+        ("Categoría", "La colección internacional no expone categoría en el sitio."),
     ]
     for k, v in lines:
         ms.append([k, v])
@@ -293,7 +293,7 @@ def main() -> int:
     wb.save(XLSX)
     print(f"excel: {XLSX}")
     print(f"filas ganadores: {ws.max_row - 1}")
-    print("fuentes de soluciÃ³n:", dict(fuentes))
+    print("fuentes de solución:", dict(fuentes))
     return 0
 
 

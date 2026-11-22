@@ -32,6 +32,11 @@ LIMITS: dict[str, int] = {
 # nacional nunca debe marcarse como excedido.
 LIMITES_POR_EVENTO: dict[str, dict[str, int]] = {"latam": LIMITS, "nacional": {}}
 
+# Piso de la rubrica: "Minimo 150 caracteres por seccion"
+# (knowledge/rubric_matrices.md, .agents/rules/pautado-y-guion.md §20).
+# Un titulo sin desarrollo cuenta como seccion vacia y no es entregable.
+MINIMO_CAMPO = 150
+
 
 def limites_para(evento: str | None = "latam") -> dict[str, int]:
     """Topes del evento pedido; vacio cuando el evento no fija topes."""
@@ -54,6 +59,15 @@ _CAMPO_RE = re.compile(
     re.IGNORECASE,
 )
 _MARCADOR_RE = re.compile(r"\{SEC_([A-Z_]+)\}(.*?)\{SEC_END\}", re.DOTALL | re.IGNORECASE)
+# Un encabezado es la etiqueta sola, con su tope entre parentesis y nada mas. Antes
+# bastaba que la linea empezara con el nombre del campo: "Impacto: 40 familias" se
+# tomaba como encabezado, el resto de la linea se perdia y lo que venia despues se
+# contaba en el campo equivocado.
+_ENCABEZADO_RE = re.compile(
+    r"^\s*(problema|soluci[oó]n|prefactibilidad|innovaci[oó]n|impacto)"
+    r"\s*(?:\([^)]*\))?\s*:?\s*$",
+    re.IGNORECASE,
+)
 
 
 def _normalizar(nombre: str) -> str:
@@ -114,9 +128,9 @@ def secciones_por_encabezado(texto: str) -> dict[str, str]:
             continue
         # El encabezado puede traer el tope entre parentesis: "PROBLEMA (Limite: 1250 ...)".
         # Sin quitarlo, la seccion no se reconocia y el conteo decia "campo no encontrado".
-        candidato = _normalizar(re.sub(r"\(.*?\)|\s*[:.].*$", "", limpia))
-        if candidato in LIMITS and len(limpia) <= 90:
-            actual = candidato
+        reconocido = _ENCABEZADO_RE.match(limpia)
+        if reconocido:
+            actual = _normalizar(reconocido.group(1))
             secciones.setdefault(actual, [])
             continue
         if actual:
@@ -136,7 +150,9 @@ def revisar(docx_path: pathlib.Path, plantilla: pathlib.Path | None = None,
     plantilla = plantilla or pathlib.Path("plantillas/pautado_template.docx")
     limites = limites_para(evento)
     if limites:
-        limites.update(limites_desde_plantilla(plantilla))
+        # La plantilla no puede relajar el tope oficial: solo ajustarlo hacia abajo.
+        for campo, declarado in limites_desde_plantilla(plantilla).items():
+            limites[campo] = min(declarado, limites[campo]) if campo in limites else declarado
     texto = texto_docx(docx_path)
     conteos = contar(texto)
     hallazgos: list[dict] = []
@@ -164,6 +180,14 @@ def revisar(docx_path: pathlib.Path, plantilla: pathlib.Path | None = None,
                 "que": f"{cuenta} / {limite} caracteres ({cuenta - limite} de exceso)",
                 "hacer": f"Recorta {cuenta - limite} caracteres de {campo}",
             })
+        elif cuenta < MINIMO_CAMPO:
+            hallazgos.append({
+                "gravedad": "critico",
+                "campo": campo,
+                "que": ("seccion vacia" if cuenta == 0 else f"{cuenta} caracteres")
+                        + f" < minimo {MINIMO_CAMPO}",
+                "hacer": f"Desarrolla {campo}: un titulo solo no cuenta como seccion",
+            })
     return hallazgos, conteos
 
 
@@ -188,7 +212,7 @@ def main(argv: list[str] | None = None) -> int:
         if cuenta is None:
             print(f"  {campo.upper():<16} {'--':>6} / {limite:<6}  ausente")
             continue
-        marca = "X" if cuenta > limite else "v"
+        marca = "X" if (cuenta > limite or cuenta < MINIMO_CAMPO) else "v"
         print(f"  [{marca}] {campo.upper():<13} {cuenta:>6} / {limite:<6}  {(cuenta / limite) * 100:5.1f}%")
     if hallazgos:
         print()

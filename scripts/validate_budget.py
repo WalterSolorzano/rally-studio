@@ -28,6 +28,12 @@ def main():
         print(f"ERROR: JSON corrupto en {BUDGET_JSON}: {e}")
         sys.exit(1)
 
+    # Un presupuesto sin filas no es un presupuesto: la validacion pasaba con
+    # "[]" y anunciaba exito sobre cero partidas.
+    if not isinstance(items, list) or not items:
+        print("ERROR: budget/budget.json debe ser una lista con al menos una partida.")
+        sys.exit(1)
+
     errors = []
     warnings = []
     total = 0.0
@@ -39,14 +45,27 @@ def main():
     if ctx["advertencia"]:
         warnings.append(ctx["advertencia"])
 
-    print("\n" + "â•" * 60)
+    print("\n" + "=" * 60)
     print("  AUDITORIA DE PRESUPUESTO (ALIBABA / FUENTES SUSTENTADAS)")
     print(f"  Moneda de presentacion: {ctx['etiqueta']}")
-    print("â•" * 60)
+    print("=" * 60)
 
     for i, it in enumerate(items, 1):
+        if not isinstance(it, dict):
+            errors.append(f"Fila {i}: no es un objeto con element/units/unit_cost/url.")
+            continue
         name = it.get("element", f"Item {i}")
-        units = float(it.get("units", 0))
+        # `units: 0` pasaba como partida valida y `units: -3` restaba del total sin
+        # avisar; un texto como "dos" reventaba con traceback. La cantidad entra al
+        # total, asi que se mide antes de sumar.
+        try:
+            units = float(it.get("units", 0))
+        except (TypeError, ValueError):
+            errors.append(f"Fila {i} ({name}): units no es un numero ('{it.get('units')}').")
+            continue
+        if units <= 0:
+            errors.append(f"Fila {i} ({name}): units debe ser mayor que cero (es {units:g}).")
+            continue
         unit_cost = costo_unitario(it, ctx)
         unit_cost_usd = costo_unitario_usd(it, ctx)
         if unit_cost is None or unit_cost_usd is None:

@@ -255,6 +255,7 @@ button {
   border-color: transparent;
   background: transparent;
   color: var(--muted);
+  transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease;
 }
 .btn-quiet:hover {
   background: var(--wash);
@@ -265,6 +266,7 @@ button {
   background: var(--blue);
   border-color: var(--blue);
   color: #fff;
+  transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease, box-shadow 140ms ease;
 }
 .btn-solid:hover {
   background: var(--blue-dark);
@@ -1226,6 +1228,7 @@ button {
 }
 .roster-row.is-mvp {
   background: var(--wash-2);
+  transition: background-color 140ms ease;
 }
 .roster-row.is-mvp:hover {
   background: #E6F0FF;

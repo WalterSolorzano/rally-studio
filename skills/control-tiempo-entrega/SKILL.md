@@ -14,10 +14,15 @@ description: Controla el cronómetro del certamen, avisa estado horario, congela
 
 | % Tiempo | Acción Requerida |
 |---|---|
-| **0% - 50%** | Definición de brief, retos, claims de investigación y arquitectura de solución. |
-| **50% - 75%** | Pautado cerrado, presupuesto con cotizaciones URL, guion aprobado y locución TTS. |
-| **75% (Alerta Roja)** | **Congelamiento total de assets.** Prohibido reescribir pautado. Solo render, ensamble web y subida. |
-| **90% - 100%** | Checklist final y envío a plataforma SIRLI. |
+| **0 % - 35 %** | Producir: brief, retos, claims de investigación y arquitectura de solución. |
+| **35 % - 55 %** | Revisar: pautado cerrado, presupuesto con cotizaciones URL, guion aprobado y locución TTS. |
+| **55 % - 75 %** | Integrar: canvas, web demo y shotlist; nada nuevo de fondo. |
+| **75 % (Alerta Roja)** | **Congelamiento de assets.** Prohibido reescribir pautado. Solo render, ensamble web y subida. |
+| **90 % - 100 %** | Checklist final y envío a plataforma SIRLI. |
+
+Las bandas son una sola: no hay otra tabla de porcentajes en esta skill ni en el
+prompt de abajo. El porcentaje se calcula con `hours_total` y `hours_remaining`
+de `brief.json`; nunca se escribe a mano.
 
 ## Auditoría Final Obligatoria
 Antes de cualquier confirmación de entrega o subida a SIRLI, ejecutar:
@@ -28,6 +33,19 @@ Verifica:
 1. Duración del video ≤ 120 segundos.
 2. Coherencia de montos entre guion y presupuesto.
 3. Caracteres dentro de límites por campo de pautado.
+4. Los tres validadores que SIRLI exige: brief, presupuesto y pautado.
+
+El cronómetro también es ejecutable; no se informa de memoria:
+
+```powershell
+python arsenal.py check-tiempo --restante 7   # aviso horario con fase y etapa pendiente
+python arsenal.py check-validadores           # brief, presupuesto y pautado
+```
+
+`check-tiempo` imprime tiempo transcurrido, restante, % alcanzado, fase, si se
+congelan assets y cuántas etapas faltan; con `--json` devuelve exactamente las
+claves del formato de salida de abajo. `check-validadores` se detiene con el
+motivo concreto cuando alguno de los tres está en rojo.
 
 ## Generación de prompts para llevar el estado de tiempo a otra IA
 

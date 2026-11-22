@@ -59,8 +59,10 @@
   }
 
   function normalizeOds(raw) {
+    // La lista llega como la escribe el comité: "ODS 4, 8 y 9". Partir solo por
+    // comas juntaba "8 y 9" en el 89, que no existe.
     return String(raw == null ? "" : raw)
-      .split(/[,;/]/)
+      .split(/[,;/]|\s+y\s+|\s+e\s+/i)
       .map(function (x) {
         var digits = String(x).replace(/[^\d]/g, "");
         return digits ? "ODS " + digits : "";

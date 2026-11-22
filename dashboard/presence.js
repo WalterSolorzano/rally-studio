@@ -138,6 +138,10 @@
         var cambios = data.changes || [];
         cambios.forEach(function (ch) {
           if (ch.id <= (seenCursor || 0)) return;
+          // Lo que yo mismo escribí no es noticia: el aviso llega al equipo,
+          // no a quien acaba de guardar. Sin este filtro, cada guardado propio
+          // dispara un aviso y un toast con mi propio nombre.
+          if (String(ch.actor || "") === myName) return;
           var que = humanPath(ch.path);
           if (typeof showToast === "function") {
             showToast(ch.actor + " actualizó " + que);

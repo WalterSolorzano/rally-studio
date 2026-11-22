@@ -71,7 +71,15 @@ self.addEventListener("fetch", function (evento) {
       })
       .catch(function () {
         return caches.match(pedido).then(function (guardado) {
-          return guardado || caches.match("./index.html");
+          if (guardado) return guardado;
+          // Sin copia y sin red: solo una navegación puede caer en el cascarón.
+          // Devolver index.html a un <script> le entrega HTML y el navegador lo
+          // intenta ejecutar: el módulo no arranca y el fallo se lee como error
+          // de sintaxis del propio archivo, no como "no hay red".
+          if (pedido.mode === "navigate" || pedido.destination === "document") {
+            return caches.match("./index.html");
+          }
+          throw new Error("sin-red-y-sin-copia");
         });
       })
   );

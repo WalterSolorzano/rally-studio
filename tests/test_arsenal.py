@@ -132,11 +132,12 @@ def test_coherencia_ignora_cifras_de_la_partida_del_presupuesto(monkeypatch):
     assert not [h for h in hallazgos if h["numero"] in ("2210", "25")]
 
 
-def _docx_con_marcadores(ruta: pathlib.Path, impacto_chars: int = 10):
+def _docx_con_marcadores(ruta: pathlib.Path, impacto_chars: int = 10,
+                         problema_chars: int = 200):
     import docx
 
     doc = docx.Document()
-    doc.add_paragraph("{SEC_PROBLEMA}Texto corto{SEC_END}")
+    doc.add_paragraph("{SEC_PROBLEMA}" + ("x" * problema_chars) + "{SEC_END}")
     doc.add_paragraph("{SEC_IMPACTO}" + ("x" * impacto_chars) + "{SEC_END}")
     doc.save(str(ruta))
 
@@ -145,15 +146,24 @@ def test_campo_cuenta_y_detecta_exceso(tmp_path):
     ruta = tmp_path / "pautado.docx"
     _docx_con_marcadores(ruta, impacto_chars=1600)
     hallazgos, conteos = campo_chars.revisar(ruta, tmp_path / "sin_plantilla.docx")
-    assert conteos["problema"] == len("Texto corto")
+    assert conteos["problema"] == 200
     assert any(h["campo"] == "impacto" and h["gravedad"] == "critico" for h in hallazgos)
 
 
 def test_campo_respeta_limite(tmp_path):
     ruta = tmp_path / "pautado.docx"
-    _docx_con_marcadores(ruta, impacto_chars=100)
+    _docx_con_marcadores(ruta, impacto_chars=160)
     hallazgos, _ = campo_chars.revisar(ruta, tmp_path / "sin_plantilla.docx")
     assert not [h for h in hallazgos if h["gravedad"] == "critico"]
+
+
+def test_campo_rechaza_seccion_vacia(tmp_path):
+    """Un titulo sin desarrollo no es entregable: la rubrica exige minimo 150."""
+    ruta = tmp_path / "pautado.docx"
+    _docx_con_marcadores(ruta, impacto_chars=160, problema_chars=0)
+    hallazgos, _ = campo_chars.revisar(ruta, tmp_path / "sin_plantilla.docx")
+    vacios = [h for h in hallazgos if h["campo"] == "problema" and h["gravedad"] == "critico"]
+    assert vacios and "vacia" in vacios[0]["que"]
 
 
 def test_limites_desde_plantilla(tmp_path):
@@ -166,7 +176,6 @@ def test_limites_desde_plantilla(tmp_path):
     doc.save(str(ruta))
     limites = campo_chars.limites_desde_plantilla(ruta)
     assert limites == {"problema": 1100, "impacto": 1400}
-
 
 def test_nacional_no_aplica_topes_de_latam(tmp_path):
     """El Rally Nacional no fija tope: un texto largo no puede salir excedido."""

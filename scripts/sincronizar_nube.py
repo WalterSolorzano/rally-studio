@@ -285,6 +285,8 @@ def do_pull(cfg, args) -> None:
     for ch in cambios:
         last_by_path[ch["path"]] = ch  # el feed va ASC: queda el ultimo de cada ruta
     aplicados, conflictos = 0, 0
+    corte = False
+    ultimo_ok = int(cursor)
     _, last_seen = _load_cursor(cfg["root"])
     # PASO 1: decisiones web primero -- si el mismo lote trae el delete del
     # sobre, la decision debe correr ANTES de limpiar el buzon local.
@@ -300,7 +302,7 @@ def do_pull(cfg, args) -> None:
         content = data.get("content") or ""
         if _aplicar_decision_local(cfg["data_dir"], content):
             last_seen[rel] = ch["sha256_new"]
-    for rel, ch in last_by_path.items():
+    for rel, ch in sorted(last_by_path.items(), key=lambda kv: kv[1]["id"]):
         if ch["change_type"] == "delete":
             last_seen.pop(rel, None)
             # un sobre pendiente retirado por la web: limpiar silenciosamente
@@ -314,8 +316,11 @@ def do_pull(cfg, args) -> None:
         codef, payload = _request(cfg["url"], "GET", "/api/sync/file", cfg["token"],
                                   params={"project": cfg["project"], "path": rel})
         if codef != 200:
-            print(f"  ERROR: no se pudo pedir {rel} ({codef})")
-            continue
+            # No se avanza el cursor sobre un cambio que no se pudo bajar.
+            print(f"  ERROR: no se pudo pedir {rel} ({codef}); se detiene el pull")
+            corte = True
+            break
+        ultimo_ok = int(ch["id"])
         data = payload.get("file") or {}
         content = data.get("content") or ""
         if rel.startswith("content_decisiones/"):
@@ -340,8 +345,11 @@ def do_pull(cfg, args) -> None:
             last_seen[rel] = ch["sha256_new"]
             aplicados += 1
             print(f"  bajado desde cero: {rel} (version {ch.get('version')} de {ch.get('actor')})")
-    _save_cursor(cfg["root"], int(feed.get("cursor") or cursor), last_seen)
-    print(f"pull: {aplicados} bajados, {conflictos} en conflicto, cursor en {feed.get('cursor')}.")
+    # El cursor solo avanza hasta el ultimo cambio aplicado: si una descarga
+    # fallo, ese cambio no se puede saltar.
+    avanzado = ultimo_ok if corte else int(feed.get("cursor") or cursor)
+    _save_cursor(cfg["root"], avanzado, last_seen)
+    print(f"pull: {aplicados} bajados, {conflictos} en conflicto, cursor en {avanzado}.")
 
 
 def _aplicar_decision_local(data_dir: pathlib.Path, content: str) -> bool:

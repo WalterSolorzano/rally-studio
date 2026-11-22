@@ -362,7 +362,13 @@
     primeraCarga = false;
     saveMeta();
     renderLocks();
-    setStatus("Sincronizado · equipo en vivo", "ok");
+    // No es lo mismo "el servidor no tiene nada" que "tu copia ya está en el
+    // servidor": sin permiso para sembrar, el texto vive solo en este equipo.
+    if (!serverHasContent && !canSeed()) {
+      setStatus("Modo local · el servidor aún no tiene este proyecto; pide a un administrador que lo importe", "local");
+    } else {
+      setStatus("Sincronizado · equipo en vivo", "ok");
+    }
 
     conflicts.forEach(function (c) { queueConflict(c.key, c.mine, c.current); });
     if (dirty.size && !conflicts.length) flushSoon(200);
@@ -417,6 +423,10 @@
       const antes = Number(versions[key] || 0);
       versions[key] = Number(item.version) || 0;
       locks[key] = item;
+      // Si el bloqueo ajeno ya se liberó, el cambio local puede volver a viajar.
+      if (blocked.has(key) && (!item.lock_owner_id || Number(item.lock_until || 0) * 1000 <= Date.now())) {
+        blocked.delete(key);
+      }
       renderLockBadge(key, item);
       if (item.data === null) {
         const localNull = getSection(state, key);
@@ -471,9 +481,25 @@
     flushTimer = setTimeout(flush, ms || FLUSH_MS);
   }
 
+  // Un bloqueo ajeno que ya venció no puede dejar el texto local atrapado: sin
+  // esto, un 423 una sola vez dejaba la sección bloqueada hasta recargar.
+  function liberarBloqueosVencidos() {
+    const ahora = Date.now();
+    Array.from(blocked).forEach(function (key) {
+      const bloqueo = locks[key];
+      const hasta = bloqueo && Number(bloqueo.lock_until || 0);
+      if (!bloqueo || !bloqueo.lock_owner_id || hasta * 1000 <= ahora) blocked.delete(key);
+    });
+  }
+
   async function flush() {
     if (!ready || syncing || !serverAvailable || applyingRemote || accessRevoked) return;
-    if (!canSeed() && !serverHasContent) return;
+    if (!canSeed() && !serverHasContent) {
+      // Silencio aquí era mentira: el barrido marcaba los cambios y nada salía.
+      setStatus("Sin servidor · tu texto queda en este equipo hasta que un administrador importe el proyecto", "local");
+      return;
+    }
+    liberarBloqueosVencidos();
     const keys = Array.from(dirty).filter(function (k) { return !blocked.has(k); });
     if (!keys.length) return;
     syncing = true;
@@ -482,13 +508,16 @@
     for (const key of keys) {
       const data = pending[key] !== undefined ? pending[key] : getSection(readState(), key);
       try {
-        const locked = NO_LOCK.has(key) ? { status: 200, body: {} } : await api(sectionPath(key) + "/lock", {
+        // El servidor exige candado vivo para toda clave no local: pedirlo
+        // siempre, aunque no se muestre como "esta editando" (NO_LOCK).
+        const locked = await api(sectionPath(key) + "/lock", {
           method: "POST",
           body: JSON.stringify({ actor: actor(), actor_id: actorId(), ttl_minutes: LOCK_TTL_MIN }),
         });
         if (accessRevoked) { failed = true; break; }
         if (locked.status === 423) {
           blocked.add(key);
+          locks[key] = (locked.body && locked.body.lock) || locks[key] || {};
           setStatus((locked.body.lock && locked.body.lock.lock_owner ? locked.body.lock.lock_owner : "Otra persona") + " está editando " + labelFor(key), "locked");
           continue;
         }
@@ -514,6 +543,11 @@
           continue;
         }
         if (!res.ok) {
+          // Soltar el candado: si no, la seccion queda bloqueada hasta el TTL.
+          api(sectionPath(key) + "/unlock", {
+            method: "POST",
+            body: JSON.stringify({ actor: actor(), actor_id: actorId() }),
+          }).catch(function () {});
           failed = true;
           continue;
         }
@@ -525,12 +559,10 @@
         blocked.delete(key);
         locks[key] = section;
         renderLockBadge(key, section);
-        if (!NO_LOCK.has(key)) {
-          api(sectionPath(key) + "/unlock", {
-            method: "POST",
-            body: JSON.stringify({ actor: actor(), actor_id: actorId() }),
-          }).catch(function () {});
-        }
+        api(sectionPath(key) + "/unlock", {
+          method: "POST",
+          body: JSON.stringify({ actor: actor(), actor_id: actorId() }),
+        }).catch(function () {});
       } catch (e) {
         failed = true;
         serverAvailable = false;

@@ -45,9 +45,10 @@ function elemento(id) {
 }
 
 const IDS = [
-  "puerta-form", "puerta-llave", "puerta-nombre", "puerta-persona", "puerta-clave",
-  "puerta-modo", "puerta-entrar", "puerta-ver", "puerta-estado", "puerta-nota",
-  "puerta-miembros",
+  "puerta-form", "puerta-form-llave", "puerta-panel-llave", "puerta-llave",
+  "puerta-nombre", "puerta-persona", "puerta-clave", "puerta-modo",
+  "puerta-entrar", "puerta-entrar-llave", "puerta-ver", "puerta-estado",
+  "puerta-nota", "puerta-miembros",
 ];
 
 function correr(escenario) {
@@ -138,16 +139,15 @@ function correr(escenario) {
     return Promise.resolve({ ok: false, escenario: escenario, error: String(error && error.message) });
   }
 
-  // La puerta abre en "nombre y clave"; la llave maestra queda a un clic y,
-  // si el proyecto aun no tiene gente, se elige sola. Primero se deja que el
-  // fetch de estado decida el modo, y solo despues se rellena y se envia.
+  // La puerta visible es nombre + clave; la llave vive plegada al pie.
+  // Primero se deja que el fetch de estado diga si el proyecto ya tiene gente,
+  // y solo despues se rellena la forma que corresponde y se envia.
   const esperar = (ms) => new Promise((listo) => setTimeout(listo, ms));
+  const conLlave = escenario === "llave-vacia" || escenario === "invitacion-pegada" ||
+    escenario === "estatico-sin-subtle";
 
   return esperar(20)
     .then(() => {
-      if (escenario === "llave-vacia" || escenario === "invitacion-pegada") {
-        nodos["puerta-modo"].fire("click"); // pasa a modo llave
-      }
       if (escenario === "clave-invalida" || escenario === "pendiente") {
         nodos["puerta-persona"].value = "Ana";
         nodos["puerta-clave"].value = "secreta";
@@ -162,7 +162,7 @@ function correr(escenario) {
         nodos["puerta-clave"].value = "secreta";
       }
 
-      nodos["puerta-form"].fire("submit");
+      nodos[conLlave ? "puerta-form-llave" : "puerta-form"].fire("submit");
       return esperar(60);
     })
     .then(() => ({

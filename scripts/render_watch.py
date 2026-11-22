@@ -2,15 +2,60 @@
 """
 render_watch.py -- Monitor de recursos (RAM y GPU) en tiempo real.
 Previene desbordamiento y congelamiento de la PC durante renders pesados (Blender / TTS / Video).
+Tambien da turno al GPU: un solo render a la vez (regla 8 de AGENTS.md).
 """
+import json
+import os
+import pathlib
+import tempfile
 import time
+
 import psutil
+
 from comun import utf8
+
 utf8()
 
 RAM_ALERT_THRESHOLD = 85.0  # 85% de RAM
 RAM_PANIC_THRESHOLD = 92.0  # 92% de RAM
 MAX_RENDER_MIN = 20.0       # si un render pasa de esto, no aporta: bajar calidad o cortar
+
+# Regla 8 de AGENTS.md: un proceso GPU a la vez. El candado vive fuera del repo
+# para que dos copias aisladas del workbench tambien compitan por el mismo GPU.
+LOCK_RENDER = pathlib.Path(tempfile.gettempdir()) / "rally_render.lock"
+
+
+def turno_de_render(etiqueta: str = "render") -> bool:
+    """Reserva el GPU. False si otro render vivo ya lo tiene.
+
+    Un candado con el pid de un proceso que ya murio no bloquea: se descarta y se
+    toma el turno, para que una corrida cancelada no deje el GPU prohibido para siempre.
+    """
+    if LOCK_RENDER.exists():
+        try:
+            datos = json.loads(LOCK_RENDER.read_text(encoding="utf-8"))
+            pid = int(datos.get("pid") or 0)
+        except (OSError, ValueError):
+            pid = 0
+        if pid and psutil.pid_exists(pid):
+            print(
+                f"\n[TURNO] Ya hay un render en curso (pid {pid}, "
+                f"{datos.get('etiqueta', '?')}). Espera a que termine."
+            )
+            return False
+        LOCK_RENDER.unlink(missing_ok=True)
+    try:
+        fd = os.open(str(LOCK_RENDER), os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+    except FileExistsError:
+        return False
+    with os.fdopen(fd, "w", encoding="utf-8") as f:
+        json.dump({"pid": os.getpid(), "etiqueta": etiqueta, "inicio": time.time()}, f)
+    return True
+
+
+def liberar_render() -> None:
+    """Suelta el turno del GPU."""
+    LOCK_RENDER.unlink(missing_ok=True)
 
 
 def presupuesto_excedido(inicio: float, max_min: float = MAX_RENDER_MIN) -> bool:

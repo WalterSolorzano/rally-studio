@@ -15,7 +15,8 @@ Lee un JSON de soluciones (el que produce `soluciones_motor.py`) y aplica:
 Cada opción que no pasa devuelve `RECHAZADA` con motivo concreto. La salida es:
   - Markdown con la traza por opción (para `docs/_build/compuerta_<certamen>.md`)
   - JSON con el resultado por opción (para integración con el motor)
-  - Código de salida 0 si todo PASS, 1 si hay RECHAZADAS.
+  - Código de salida 0 si todo PASS, 1 si hay RECHAZADAS, 2 si la entrada no
+    trae nada que auditar (una compuerta que no audita no está en verde).
 
 Uso:
     python scripts/check_anti_generico.py \\
@@ -54,6 +55,7 @@ Formato del JSON de entrada (mínimo esperado por solución):
 from __future__ import annotations
 
 import argparse
+import itertools
 import json
 import re
 import sys
@@ -118,9 +120,11 @@ FORBIDDEN_PATTERNS: list[tuple[str, str, str]] = [
     # 1.4 Talleres y servicios disfrazados
     (
         "1.4_taller_servicio",
-        r"\b(taller( (de|para|en))?|capacitacion|mesa de desarme|servicio de|jornada de|"
+        r"\b(taller(es)? (de|para|en) (capacitacion|formacion|sensibilizacion|concientizacion|"
+        r"emprendimiento|manualidades|reparacion|diseno)|taller(es)? (comunitario|participativo)s?|"
+        r"capacitacion|mesa de desarme|servicio de|jornada de|"
         r"campana de|voluntariado|programa de concientizacion|compromiso ciudadano)\b",
-        "Taller/servicio/campaña como núcleo",
+        "Taller de capacitación/servicio/campaña como núcleo (el taller físico de producción no cae aquí)",
     ),
     # 1.4b Reacondicionamiento, cambio de pieza, testeo (BANEOS NUEVOS)
     (
@@ -202,8 +206,130 @@ GENERIC_SMELL_PATTERNS: list[tuple[str, str, str]] = [
     ),
 ]
 
+# ---------------------------------------------------------------------------
+# SLOP_IA — huellas de texto escrito por IA (lista del humano, 2026-11-20).
+# Fuente única: si un prompt o una skill enumera prohibiciones, esta lista manda.
+# Se aplica a TODO texto que vea el usuario (pautado, dossier, guion, presupuesto,
+# interfaz). Se escribe sin acentos porque el texto se normaliza.
+# ---------------------------------------------------------------------------
+
+SLOP_IA_PATTERNS: list[tuple[str, str, str]] = [
+    # 2.1 Adjetivos de relleno
+    (
+        "2.1_adjetivo_relleno",
+        r"\b(fundamental(es)?|crucial(es)?|clave|esencial(es)?|vital(es)?|invaluable(s)?|"
+        r"imprescindible(s)?|robusto(s)?|sinergico(s)?|sinergica(s)?|estimulante(s)?|"
+        r"ejemplar(es)?|emocionante(s)?|transformador(a|es|as)?|vibrante(s)?|"
+        r"multifacetic(o|a|os|as)|meticulos(o|a|os|as))\b",
+        "Adjetivo de relleno: no aporta dato, solo énfasis",
+    ),
+    # 2.2 Sustantivos y metáforas gastadas
+    (
+        "2.2_sustantivo_gastado",
+        r"\b(paradigma(s)?|ecosistema(s)? de|paisaje de|tapiz|tapestry|crisol(es)?|"
+        r"catalizador(es)?|ambito(s)?|reino de|mosaico(s)?|nexo(s)?|pinaculo|"
+        r"trayectoria|esfera de|terreno de|zeitgeist)\b",
+        "Metáfora gastada que suena grande y no dice nada",
+    ),
+    # 2.3 Verbos corporativos / de IA
+    (
+        "2.3_verbo_corporativo",
+        r"\b(profundicemos|profundizar en|desglos(ar|emos)|aprovech(ar|emos) (el|la|los|las)|"
+        r"maximiz(ar|amos)|optimiz(ar|amos) (la|el|los|las)|desbloque(ar|amos)|"
+        r"empoder(ar|amos)|elev(ar|emos) (la|el|los|las)|embarc(ar|arse|arnos)|"
+        r"conceptualiz(ar|amos)|navegar (la|el) complejidad)\b",
+        "Verbo corporativo: promete acción sin decir cuál",
+    ),
+    # 2.4 Transiciones y conectores huecos
+    (
+        "2.4_conector_hueco",
+        r"\b(asimismo|cabe destacar( que)?|vale la pena (mencionar|senalar|considerar)|"
+        r"no se puede subestimar|dicho esto|dicho lo anterior|en este sentido|"
+        r"en ultima instancia|en el panorama actual|en un mundo cada vez mas|"
+        r"al final del dia|sin mas preambulos)\b",
+        "Conector hueco: ocupa línea y no enlaza nada",
+    ),
+    # 2.5 Palabras académicas sobreusadas
+    (
+        "2.5_palabra_academica",
+        r"\b(encapsula(r|n)?|subray(ar|a|emos)|escrutinio|interrelacion(es)?|"
+        r"testimonio de|legado de)\b",
+        "Palabra académica sobreusada por IA",
+    ),
+    # 2.7 Frases y muletillas completas
+    (
+        "2.7_muletilla",
+        r"(es importante (destacar|mencionar|senalar)|esto no es mas que|"
+        r"juega un papel (fundamental|crucial|clave)|marca un hito|"
+        r"momento decisivo|la parte mas interesante|lo mas llamativo|"
+        r"espero que esto te ayude|no dudes en preguntar|claro, aqui tienes|"
+        r"como modelo de lenguaje|no puedo (ayudar|opinar) con eso)",
+        "Muletilla de chatbot: el texto se delata solo",
+    ),
+    # 2.8 Paralelismo negativo y estructuras de remate
+    (
+        "2.8_negacion_contraste",
+        r"(no (es|solo|solamente) [^.;\n]{3,60}?,? (sino|es) [^.;\n]{3,60}|"
+        r"no es [a-z0-9 ]{3,40}\. no es [a-z0-9 ]{3,40}\.)",
+        "Paralelismo negativo ('no es X, es Y'): el tell más reconocido",
+    ),
+    # 2.8b Cierre ceremonioso
+    (
+        "2.8b_cierre_ceremonioso",
+        r"\b(en conclusion|en definitiva|en resumen|para concluir|para finalizar|"
+        r"a modo de cierre)\b",
+        "Cierre ceremonioso: repite lo ya dicho",
+    ),
+    # 2.8c Falso equilibrio
+    (
+        "2.8c_falso_equilibrio",
+        r"\b(por un lado[^.;\n]{0,80}por otro lado)\b",
+        "Falso equilibrio que no toma postura",
+    ),
+    # 2.9 Formato: emojis como viñeta, raya de remate, comillas curvas
+    (
+        "2.9_emoji_vineta",
+        r"(^|\n)\s*[\U0001F300-\U0001FAFF\u2705\u274C\u2728\u25CF\u25AA\u2022\u27A1]\s",
+        "Emoji como viñeta: estructura, no sentimiento",
+    ),
+    (
+        "2.9b_comilla_curva",
+        r"[\u201C\u201D\u2018\u2019]",
+        "Comilla curva: copiado de un chatbot sin pasar por el teclado",
+    ),
+    # 2.10 Tono
+    (
+        "2.10_tono_chatbot",
+        r"\b(excelente pregunta|que buena (observacion|pregunta)|"
+        r"muchos expertos coinciden|diversos estudios (demuestran|senalan)|"
+        r"esto plantea (importantes )?preguntas)\b",
+        "Tono de chatbot o prueba social sin nombre",
+    ),
+    # 2.11 Artefactos técnicos
+    (
+        "2.11_artefacto_tecnico",
+        r"(utm_source=chatgpt|turn\d+search\d+|oaicite|【\d+†|\\u200b|\\u00a0)",
+        "Artefacto de copiar y pegar desde un chatbot",
+    ),
+]
+
 # UTF-8 doble-codificado (Ã© → é): prohibido en cualquier campo del dossier.
 MOJIBAKE_RX = re.compile("[\u00c3\u00c2][\x80-\xff]")
+
+
+def chequear_slop_ia(texto: str) -> list[tuple[str, str, str]]:
+    """Huellas de texto de IA. Se aplica a cualquier texto que lea el usuario."""
+    texto_n = _normalizar(texto)
+    matches = []
+    for categoria, patron, desc in SLOP_IA_PATTERNS:
+        try:
+            rx = re.compile(patron, re.IGNORECASE | re.MULTILINE)
+        except re.error as e:
+            matches.append((categoria, f"<regex_error: {e}>", desc))
+            continue
+        for m in rx.finditer(texto_n):
+            matches.append((categoria, m.group(0).strip(), desc))
+    return matches
 
 # Nombre de ganador/marca ajena: solo permitido en el campo de precedente/analogía.
 NAME_DROPPING_RX = re.compile(r"tetra\s*pak", re.IGNORECASE)
@@ -420,6 +546,12 @@ def chequear_opcion(reto_id: str, enunciado: str, opcion: dict) -> Rechazo:
             f"[SMELL · {cat}] «{frase}» — {desc}"
         )
 
+    # 2b. SLOP_IA (huellas de texto escrito por IA)
+    for cat, frase, desc in chequear_slop_ia(texto):
+        rechazo.motivos.append(
+            f"[SLOP_IA · {cat}] «{frase}» — {desc}"
+        )
+
     # 3. Encaje literal (palabras clave del enunciado presentes en la solución)
     for m in chequear_encaje_literal(enunciado, opcion):
         rechazo.motivos.append(f"[ENCAJE_LITERAL] {m}")
@@ -507,23 +639,33 @@ def chequear_opcion(reto_id: str, enunciado: str, opcion: dict) -> Rechazo:
     return rechazo
 
 
+def _vocabulario(opcion: dict) -> set[str]:
+    return {
+        t for t in re.findall(r"\b[a-z]{5,}\b", _normalizar(opcion.get("que_es", "") or ""))
+    }
+
+
 def chequear_gemelas(opciones: list[dict]) -> list[str]:
-    """Dos opciones del mismo reto con el mismo objeto (que_es casi idéntico) = una idea."""
-    if len(opciones) < 2:
-        return []
-    a = {t for t in re.findall(r"\b[a-z]{5,}\b", _normalizar(opciones[0].get("que_es", "") or ""))}
-    b = {t for t in re.findall(r"\b[a-z]{5,}\b", _normalizar(opciones[1].get("que_es", "") or ""))}
-    if not a or not b:
-        return []
-    jaccard = len(a & b) / len(a | b)
-    if jaccard >= 0.5:
-        ids = f"{opciones[0].get('id', '?')} y {opciones[1].get('id', '?')}"
-        return [
-            f"[OPCIONES_GEMELAS] que_es de las opciones {ids} comparten "
-            f"{jaccard:.0%} del vocabulario: misma idea disfrazada de dos. "
-            f"Objeto Y mecanismo distintos."
-        ]
-    return []
+    """Dos opciones del mismo reto con el mismo objeto (que_es casi idéntico) = una idea.
+
+    Se comparan todos los pares: mirando solo la 1 contra la 2, una tercera opción
+    clonada de la primera pasaba como PASS (H-39).
+    """
+    motivos: list[str] = []
+    for i, j in itertools.combinations(range(len(opciones)), 2):
+        a = _vocabulario(opciones[i])
+        b = _vocabulario(opciones[j])
+        if not a or not b:
+            continue
+        jaccard = len(a & b) / len(a | b)
+        if jaccard >= 0.5:
+            ids = f"{opciones[i].get('id', '?')} y {opciones[j].get('id', '?')}"
+            motivos.append(
+                f"[OPCIONES_GEMELAS] que_es de las opciones {ids} comparten "
+                f"{jaccard:.0%} del vocabulario: misma idea disfrazada de dos. "
+                f"Objeto Y mecanismo distintos."
+            )
+    return motivos
 
 
 # ---------------------------------------------------------------------------
@@ -560,7 +702,10 @@ def render_markdown(rechazos: list[Rechazo], enunciados: dict[str, str]) -> str:
 
 def cargar_solutions(json_path: Path) -> list[dict]:
     """Carga fichas rápidas o la salida agrupada de soluciones_motor.py."""
-    data = json.loads(json_path.read_text(encoding="utf-8-sig"))
+    try:
+        data = json.loads(json_path.read_text(encoding="utf-8-sig"))
+    except (OSError, ValueError) as exc:
+        raise ValueError(f"no se puede leer como JSON ({exc})") from exc
     if isinstance(data, list):
         return data
     if isinstance(data, dict):
@@ -585,6 +730,9 @@ def normalizar_reto(reto: dict) -> tuple[str, str, list[dict]]:
     descripcion = meta.get("description", "")
     enunciado = " ".join(parte for parte in (titulo, descripcion) if parte)
     opciones = reto.get("opciones") or reto.get("soluciones") or []
+    if not opciones and {"id", "opcion_id", "titulo"} & set(reto):
+        # Una ficha suelta (una sola opción, sin envoltorio) también se audita.
+        opciones = [reto]
     return rid, enunciado, [normalizar_opcion(opcion) for opcion in opciones]
 
 
@@ -645,7 +793,18 @@ def main(argv: list[str] | None = None) -> int:
         print(f"ERROR: no existe {args.json}", file=sys.stderr)
         return 2
 
-    retos = cargar_solutions(args.json)
+    try:
+        retos = cargar_solutions(args.json)
+    except (OSError, ValueError) as exc:
+        print(f"ERROR: {args.json}: {exc}", file=sys.stderr)
+        return 2
+    if not retos:
+        print(
+            f"ERROR: {args.json} no trae retos que auditar (lista vacía). "
+            f"Una compuerta que no audita nada no puede declararse en verde.",
+            file=sys.stderr,
+        )
+        return 2
     rechazos: list[Rechazo] = []
     enunciados: dict[str, str] = {}
 
@@ -662,6 +821,14 @@ def main(argv: list[str] | None = None) -> int:
             if gemelas:
                 r.estado = "RECHAZADA"
             rechazos.append(r)
+
+    if not rechazos:
+        print(
+            f"ERROR: {args.json} no trae opciones auditables "
+            f"(se esperaba 'opciones', 'soluciones' o una ficha con 'id'/'titulo').",
+            file=sys.stderr,
+        )
+        return 2
 
     # Reporte markdown
     md = render_markdown(rechazos, enunciados)

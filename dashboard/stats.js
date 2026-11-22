@@ -13,10 +13,17 @@
 
   const esc = window.RallyEsc.esc;
 
-  const nf = (value, digits = 0) => Number(value || 0).toLocaleString("es-NI", {
-    minimumFractionDigits: digits,
-    maximumFractionDigits: digits
-  });
+  // Un dato que no es numero no se imprime como 0 ni como NaN: `0` inventa una
+  // cifra y `NaN` es una fuga del lenguaje. `—` dice la verdad. Un dato ausente
+  // si cuenta como 0, que es lo que el resumen ya prometia.
+  const nf = (value, digits = 0) => {
+    const num = value == null || value === "" ? 0 : Number(value);
+    if (!Number.isFinite(num)) return "—";
+    return num.toLocaleString("es-NI", {
+      minimumFractionDigits: digits,
+      maximumFractionDigits: digits
+    });
+  };
 
   const setText = (id, value) => {
     const el = document.getElementById(id);
@@ -204,20 +211,35 @@
       : "Sin integrantes registrados");
   }
 
+  function escaparRegex(texto) {
+    return String(texto || "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  }
+
+  /* Un nombre solo cuenta como palabra completa: «Ana» no esta dentro de «Anabel». */
+  function menciona(nota, nombre) {
+    const limpio = String(nombre || "").trim();
+    if (!limpio) return false;
+    return new RegExp(`(^|[^\\p{L}\\p{N}])${escaparRegex(limpio)}(?![\\p{L}\\p{N}])`, "u").test(nota);
+  }
+
   function peakSummary() {
     const rhythm = data.rhythm || {};
     const note = String(rhythm.peak_note || "");
-    const names = (data.people || [])
-      .filter((person) => note.includes(person.name))
+    const encontrados = (data.people || []).filter((person) => menciona(note, person.name));
+    /* Si la nota nombra a «José María», no se le carga tambien a «María». */
+    const names = encontrados
+      .filter((person) => !encontrados.some((otro) =>
+        otro !== person && otro.name.length > person.name.length && menciona(otro.name, person.name)))
       .map((person) => person.name.split(" ")[0]);
     let who = "";
     if (names.length === 1) who = names[0];
     else if (names.length === 2) who = `${names[0]} y ${names[1]}`;
     else if (names.length > 2) who = `${names.slice(0, -1).join(", ")} y ${names[names.length - 1]}`;
+    const frentes = Number(rhythm.peak_count) === 1 ? "frente" : "frentes";
     return {
       names,
       text: who
-        ? `${who} movieron ${nf(rhythm.peak_count)} frentes en esa hora.`
+        ? `${who} ${names.length === 1 ? "movió" : "movieron"} ${nf(rhythm.peak_count)} ${frentes} en esa hora.`
         : `${nf(rhythm.peak_count)} señales registradas en esa hora.`
     };
   }
@@ -545,21 +567,32 @@
     table.setAttribute("aria-colcount", "5");
   }
 
+  // El porcentaje de un tramo llega de stats.generated.js. Si falta o no es
+  // numero, el tramo se dibuja sin ancho y la leyenda dice «—»; antes se
+  // imprimia `NaN%` en la leyenda y en el `title` (H-67).
+  function pctDe(item) {
+    const valor = Number(item && item.pct);
+    if (!Number.isFinite(valor)) return null;
+    return Math.max(0, Math.min(100, valor));
+  }
+
   function renderSplit() {
     const stack = $("#stack-bar");
     const legend = $("#split-legend");
     const achievements = $("#achievements");
     if (!stack || !legend || !achievements) return;
-    const split = Array.isArray(data.time_split) ? data.time_split : [];
-    stack.setAttribute("aria-label", split.map((item) => `${item.label}: ${Number(item.pct)}%`).join(", "));
+    const split = (Array.isArray(data.time_split) ? data.time_split : [])
+      .map((item) => ({ ...item, pct: pctDe(item) }));
+    const pctTexto = (item) => (item.pct === null ? "—" : nf(item.pct));
+    stack.setAttribute("aria-label", split.map((item) => `${item.label}: ${pctTexto(item)}%`).join(", "));
     stack.innerHTML = split.map((item, index) => `
-      <span class="stack-seg" style="--w:${Number(item.pct)}%;background:${esc(item.color)};--i:${index}" title="${esc(item.label)}: ${Number(item.pct)}%"></span>
+      <span class="stack-seg" style="--w:${item.pct === null ? 0 : item.pct}%;background:${esc(item.color)};--i:${index}" title="${esc(item.label)}: ${pctTexto(item)}%"></span>
     `).join("");
     legend.innerHTML = split.map((item) => `
       <li>
         <span class="legend-swatch" style="background:${esc(item.color)}"></span>
         <span class="legend-label">${esc(item.label)}</span>
-        <span class="legend-pct">${Number(item.pct)}%</span>
+        <span class="legend-pct">${pctTexto(item)}%</span>
       </li>
     `).join("");
 

@@ -15,6 +15,7 @@ from pathlib import Path
 from scripts.check_anti_generico import (
     chequear_gemelas,
     chequear_opcion,
+    chequear_slop_ia,
     cargar_solutions,
     main,
     normalizar_reto,
@@ -264,3 +265,108 @@ def test_opciones_gemelas_rechazadas():
     b = _opcion_base(id="02", que_es="Tablero de prioridades que ordena las tareas del rescate en la comunidad.")
     motivos = chequear_gemelas([a, b])
     assert motivos, "opciones gemelas deben rechazarse"
+
+
+# --- SLOP_IA: huellas de texto escrito por IA (lista del humano, 2026-11-20) ---
+
+SLOP_TEXTO_IA = (
+    "En el mundo cada vez más competitivo, es importante destacar que nuestra plataforma "
+    "juega un papel fundamental: no es solo una app, es un ecosistema integral y robusto. "
+    "Además, cabe destacar que profundizamos en la sinergia del paradigma. En conclusión, "
+    "es fundamental aprovechar el potencial del reino digital. Juega un papel crucial. "
+    "Claro, aquí tienes!"
+)
+
+TEXTO_HUMANO = (
+    "El piloto cuesta C$ 24 300 y atiende 40 familias en Somoto. "
+    "La bomba se arma en el taller de la cooperativa con repuestos del mercado local. "
+    "Medimos litros por hora durante tres días: el pozo se seca tres meses al año."
+)
+
+
+def test_slop_ia_marca_texto_generado():
+    cats = {c for c, _m, _d in chequear_slop_ia(SLOP_TEXTO_IA)}
+    for esperada in (
+        "2.1_adjetivo_relleno",
+        "2.2_sustantivo_gastado",
+        "2.3_verbo_corporativo",
+        "2.4_conector_hueco",
+        "2.7_muletilla",
+        "2.8_negacion_contraste",
+        "2.8b_cierre_ceremonioso",
+    ):
+        assert esperada in cats, f"falta {esperada} en {cats}"
+
+
+def test_slop_ia_no_marca_texto_humano():
+    assert chequear_slop_ia(TEXTO_HUMANO) == []
+
+
+def test_slop_ia_llega_al_rechazo_de_opcion():
+    r = chequear_opcion(
+        "T_SLOP",
+        "agua de consumo en el barrio",
+        _opcion_base(que_es=SLOP_TEXTO_IA),
+    )
+    assert any("SLOP_IA" in m for m in r.motivos), r.motivos
+    assert r.estado == "RECHAZADA", r.estado
+
+
+def test_slop_ia_artefactos_de_chatbot():
+    cats = {c for c, _m, _d in chequear_slop_ia(
+        "Fuente: ejemplo.com/?utm_source=chatgpt.com y turn0search2 y 【1†fuente】"
+    )}
+    assert "2.11_artefacto_tecnico" in cats, cats
+
+
+# --- H-39: compuerta que no audita no está en verde -------------------------
+
+
+def test_gemelas_compara_todos_los_pares():
+    """Con solo [0] contra [1], una tercera opción clonada de la primera pasaba."""
+    idea = "Tablero de prioridades que ordena las tareas del rescate en la comunidad."
+    opciones = [
+        _opcion_base(id="01", que_es=idea),
+        _opcion_base(id="02", que_es="Filtro de zeolita en el desague que adsorbe el aceite antes del rio."),
+        _opcion_base(id="03", que_es=idea),
+    ]
+    motivos = chequear_gemelas(opciones)
+    assert len(motivos) == 1, motivos
+    assert "01 y 03" in motivos[0], motivos
+
+
+def test_gemelas_tres_iguales_reportan_tres_pares():
+    idea = "Tablero de prioridades que ordena las tareas del rescate en la comunidad."
+    motivos = chequear_gemelas([_opcion_base(id=i, que_es=idea) for i in ("01", "02", "03")])
+    assert len(motivos) == 3, motivos
+
+
+def test_ficha_suelta_se_audita_en_vez_de_saltarse(tmp_path):
+    ficha = _opcion_base(id="01", que_es="Reacondicionamiento de motores usados del taller.")
+    ficha["reto_id"] = "DESAFIO_01"
+    ruta = tmp_path / "ficha.json"
+    ruta.write_text(json.dumps(ficha), encoding="utf-8")
+    rid, _enunciado, opciones = normalizar_reto(cargar_solutions(ruta)[0])
+    assert rid == "DESAFIO_01"
+    assert len(opciones) == 1, "la ficha suelta debe entrar a la compuerta"
+
+
+def test_lista_vacia_no_se_declara_en_verde(tmp_path, capsys):
+    ruta = tmp_path / "vacio.json"
+    ruta.write_text("[]", encoding="utf-8")
+    assert main(["--json", str(ruta)]) == 2
+    assert "no trae retos que auditar" in capsys.readouterr().err
+
+
+def test_json_truncado_avisa_sin_traceback(tmp_path, capsys):
+    ruta = tmp_path / "roto.json"
+    ruta.write_text('{"reto_id": "DESAFIO_01", "opciones": [', encoding="utf-8")
+    assert main(["--json", str(ruta)]) == 2
+    assert "no se puede leer como JSON" in capsys.readouterr().err
+
+
+def test_json_sin_opciones_auditables_no_se_declara_en_verde(tmp_path, capsys):
+    ruta = tmp_path / "raro.json"
+    ruta.write_text(json.dumps({"reto_id": "DESAFIO_01", "otra_cosa": 1}), encoding="utf-8")
+    assert main(["--json", str(ruta)]) == 2
+    assert "no trae opciones auditables" in capsys.readouterr().err

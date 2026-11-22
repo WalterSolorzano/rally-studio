@@ -33,6 +33,63 @@ REQUIRED_KEYS = [
 VALID_RALLY_TYPES = {"nacional", "latam"}
 VALID_DELIVERABLE_TYPES = {"3d", "web", "both", "none"}
 
+# Un municipio de verdad tiene nombre propio. Estos son el pais, la region o el modo.
+MUNICIPIOS_GENERICOS = {
+    "", "nicaragua", "nacional", "latam", "latinoamerica", "latinoamérica",
+    "america latina", "américa latina", "centroamerica", "centroamérica",
+}
+
+# Siglas que un jurado internacional no tiene por que conocer.
+SIGLAS_LOCALES = ("INATEC", "MINJUVE", "TELCOR", "MEFCCA", "CNU", "SIRLI", "CONFEDI")
+
+
+def avisos_de_contexto(brief: dict) -> list[str]:
+    """Reglas de certamen que no invalidan el brief pero deben avisarse.
+
+    Item 397 del plan: el jurado Nacional exige municipio real y enlace con el Plan
+    Nacional 2022-2026. Item 398: en Latam el presupuesto va en USD y sin siglas
+    locales. Ninguna de las dos cosas se medía.
+    """
+    avisos: list[str] = []
+    modo = str(brief.get("rally_type") or "").strip().lower()
+    ciudad = str(brief.get("city") or "").strip()
+    axis = str(brief.get("national_plan_axis") or "").strip()
+
+    if modo == "nacional":
+        if ciudad.lower() in MUNICIPIOS_GENERICOS:
+            avisos.append(
+                f"city='{ciudad}' no es un municipio real. El jurado Nacional pide "
+                "anclaje territorial expreso (un municipio, no el pais)."
+            )
+        if not axis:
+            avisos.append(
+                "Falta 'national_plan_axis': el jurado Nacional exige enlazar con el "
+                "Plan Nacional de Lucha contra la Pobreza 2022-2026."
+            )
+
+    if modo == "latam":
+        if axis:
+            avisos.append(
+                "'national_plan_axis' declarado en un rally Latam: ese eje es del plan "
+                "nicaraguense y el jurado es internacional."
+            )
+        if brief.get("exchange_rate_bcn"):
+            avisos.append(
+                "'exchange_rate_bcn' declarado en un rally Latam: el presupuesto va en "
+                "USD, sin tasa local."
+            )
+        texto = json.dumps(
+            {k: brief.get(k) for k in ("project_name", "challenge_title", "description_one_line")},
+            ensure_ascii=False,
+        ).lower()
+        locales = [s for s in SIGLAS_LOCALES if s.lower() in texto]
+        if locales:
+            avisos.append(
+                f"Siglas locales en un rally Latam: {', '.join(locales)}. Un evaluador "
+                "extranjero no las conoce; nombra la institucion completa o quitala."
+            )
+    return avisos
+
 
 def main():
     if not BRIEF_PATH.exists():
@@ -75,6 +132,8 @@ def main():
     if not isinstance(ods, list) or len(ods) == 0:
         errors.append("ods_ids debe ser una lista con al menos un ODS (ej. ['ODS11'])")
 
+    avisos = avisos_de_contexto(brief)
+
     if errors:
         print("❌ brief.json incompleto o con errores:\n")
         for e in errors:
@@ -83,6 +142,8 @@ def main():
         sys.exit(1)
 
     print(f"✅ brief.json válido")
+    for aviso in avisos:
+        print(f"   ⚠️  {aviso}")
     print(f"   Proyecto : {brief['project_name']}")
     print(f"   Equipo   : {brief['team_name']}")
     print(f"   Rally    : {brief['rally_type'].upper()} — {brief['hours_total']}h")

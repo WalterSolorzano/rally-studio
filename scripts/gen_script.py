@@ -29,7 +29,8 @@ CLAIMS_PATH = pathlib.Path("research/claims.json")
 BUDGET_PATH = pathlib.Path("budget/budget.json")
 
 PALABRAS_MIN = 240
-PALABRAS_MAX = 270
+# 270 palabras a 130 ppm son 124,6 s: no caben en 120 s.
+PALABRAS_MAX = 260
 PALABRAS_OBJETIVO = 258
 
 # Palabras demasiado genericas: no sirven para decidir si un claim es del reto.

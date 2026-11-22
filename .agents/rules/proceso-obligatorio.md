@@ -149,6 +149,19 @@ con la que se aplica la identidad propia.
 6. **Cards genéricas, glassmorphism, degradados morado/magenta, radios >18 px, sombras difusas.**
 7. **Datos inventados.** Toda cifra sale de `research/claims.json` con URL, o se marca `[SIMULADO]`.
 8. **Escribir en `site/`, `script/` o entregables sin maqueta aprobada.**
+9. **Prosa con huellas de IA.** Todo texto que lea el usuario (pautado, dossier, guion,
+   presupuesto, interfaz, respuesta del agente) pasa por `chequear_slop_ia()` de
+   `scripts/check_anti_generico.py`. La fuente única es `SLOP_IA_PATTERNS`; si esta regla y la
+   lista discrepan, manda la lista. Se prohíben, sin excepción: adjetivos de relleno
+   («fundamental», «clave», «robusto», «transformador»…), metáforas gastadas («ecosistema»,
+   «paradigma», «sinergia»), verbos corporativos («profundizar», «aprovechar», «potenciar»,
+   «empoderar»), conectores huecos («asimismo», «cabe destacar», «en este sentido»),
+   muletillas («es importante destacar», «juega un papel crucial», «claro, aquí tienes»),
+   paralelismo negativo («no es solo X, es Y»), cierre ceremonioso («en conclusión»), falso
+   equilibrio («por un lado… por otro lado»), emoji como viñeta, comillas curvas, raya larga
+   como remate, y artefactos de copiar y pegar (`utm_source=chatgpt`, `turn0search`).
+   Un renglón con dato, cifra o nombre propio reemplaza al adjetivo; si no hay dato, se
+   escribe el hecho sin valoración.
 
 ## 4. Subagentes obligatorios
 
@@ -175,6 +188,72 @@ Estado verificado de las skills de diseño (17/11/2026, `Get-ChildItem` sobre `s
   `design-system` como respaldo); queda prohibido citarla como si se hubiera cargado.
 
 ## 5. Conexión entre fases
+
+### 5.0 Canal entre roles
+
+Un rol **no escribe su entregable antes de leer el contrato del rol anterior**. El canal es una
+carpeta por equipo: `canal/`, con un archivo por rol y orden:
+
+```
+canal/01-pautador.json
+canal/02-presupuestador.json
+canal/03-guionista.json
+```
+
+Cada contrato tiene, como mínimo:
+
+```json
+{
+  "rol": "presupuestador",
+  "orden": 2,
+  "lee_de": ["canal/01-pautador.json"],
+  "hechos": { "costo_piloto": "C$ 24300", "familias": 2 },
+  "preguntas_abiertas": ["cuánto paga cada familia"],
+  "preguntas_contestadas": ["nombre del barrio → Barrio El Centro"],
+  "entregable": "budget/budget.json"
+}
+```
+
+Reglas que un auditor puede verificar sin preguntar nada:
+
+1. **Sin `lee_de` no hay entregable.** Un archivo de rol sin `lee_de` se considera no entregado.
+2. **El número no se inventa dos veces.** Toda cifra que un rol usa y ya existe en un contrato
+   anterior se copia, no se recalcula. Si cambia, se anota el motivo en `hechos`.
+3. **Las preguntas no se quedan huérfanas.** Toda `preguntas_abiertas` del contrato anterior
+   aparece contestada en el siguiente (`preguntas_contestadas`) o escalada al mentor.
+4. **El mentor lee el canal, no la conversación.** Su traza cuenta intervenciones: si un equipo
+   necesita más de tres por fase, la skill no guía sola y se corrige la skill, no el equipo.
+5. **Un rol no lee el entregable final del otro para reescribirlo.** Lee el contrato.
+6. **Partida cerrada o desglose, nunca los dos.** Si una fila cubre el sistema completo instalado
+   y probado, las filas de sus componentes no suman aparte: el total sería doble y el cuadre solo
+   cerraría porque las filas del desglose valen cero. Más de la mitad de las filas en cero también
+   se rechaza: lo que falta es pregunta abierta, no fila vacía.
+7. **Armar no es operar.** Que un socio arme o instale el sistema no autoriza decir que lo opera
+   ni que lo administra. Quien opera y quién da mantenimiento se declara en `hechos.operador`; si
+   no se sabe, `[FALTA: responsable]`.
+8. **Base de cálculo declarada.** El presupuesto dice si es **por unidad**, **por lote** (con su
+   tamaño) o **por piloto**. Una sola base por tabla. Sin base, la cifra no se compara con nada.
+9. **Un corte no borra el trabajo.** Si el encargo se interrumpe (red, tiempo, error), el contrato
+   se guarda igual con `"estado": "parcial"`, `conservado` (lo que quedó hecho y se puede usar) y
+   `falta` (lo pendiente). El rol que reanuda declara `hechos.recuperado_de` con el archivo del
+   contrato cortado y sigue desde ahí, no desde cero. Un contrato sin `estado` se lee como
+   `completo`; no se marca parcial lo que está terminado.
+10. **Un rol, un archivo, un número.** Dos roles nunca comparten `NN-rol.json`: el segundo escribe
+    encima y el primero desaparece sin dejar rastro. Si dos personas tocan la misma área, van dos
+    contratos con números distintos y el mismo `lee_de`.
+11. **El modo del rally no se recuerda, se copia.** El primer contrato declara `hechos.modo`
+    (`nacional` | `latam`) tomado de `rally_type` en `brief.json`, y `hechos.horas_total` cuando
+    fije el reloj. Ningún contrato posterior lo contradice. Un equipo que trabaja un nacional de
+    24 h mientras el brief dice Latam de 28 h no tiene un error de redacción: cambia el jurado, la
+    moneda y el largo de la cola, y lo descubre el jurado, no el equipo.
+12. **Los contratos se escriben con `scripts/canal.py`.** `escribir(carpeta, nombre, datos)` valida
+    el nombre, escribe a temporal, confirma JSON válido y deja la versión anterior en `.bak` antes
+    de reemplazar. Nunca se sobrescribe un contrato con un write directo. `recuperar()` devuelve la
+    versión anterior cuando hace falta.
+
+Prueba de que el canal funciona: el rol siguiente cita en su contrato una cifra que **solo**
+estaba en el contrato anterior. Si la cita sin haber leído, la prueba falla por coincidencia y
+se repite con un dato que el rol siguiente no pudo adivinar.
 
 Cada fase **lee** el artefacto de la anterior y **escribe** en el buzón. Nada se escribe
 directo en el entregable final.

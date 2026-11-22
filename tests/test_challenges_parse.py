@@ -67,6 +67,28 @@ def test_comunicado_oficial_se_parsea_completo():
     assert retos[1]["ods"] == ["ODS 11", "ODS 13", "ODS 3"]
 
 
+@pytest.mark.parametrize(
+    "texto, esperado",
+    [
+        ("ODS 4, 8 y 9", ["ODS 4", "ODS 8", "ODS 9"]),
+        ("ODS 1 y 2", ["ODS 1", "ODS 2"]),
+        ("ODS 3, 4 y 17", ["ODS 3", "ODS 4", "ODS 17"]),
+        ("ODS 6; 13", ["ODS 6", "ODS 13"]),
+        ("ODS 6 e igualdad de género", ["ODS 6"]),
+    ],
+)
+def test_la_lista_de_ods_con_y_no_se_pega_en_un_numero(texto, esperado):
+    """«ODS 4, 8 y 9» daba ODS 89: el 89 no existe y el 8 y el 9 se perdían."""
+    assert correr("ods", {"texto": texto})["ods"] == esperado
+
+
+def test_ningun_ods_sale_fuera_del_1_al_17():
+    for texto in ("ODS 4, 8 y 9", "ODS 3, 4 y 17", "ODS 1 y 2"):
+        for ods in correr("ods", {"texto": texto})["ods"]:
+            numero = int(ods.split()[1])
+            assert 1 <= numero <= 17, f"{texto} produjo {ods}"
+
+
 def test_lista_numerada_sin_prefijo_tambien_entra():
     texto = "01. Reconversión de motores en desuso\n02. Sensores comunitarios de inundación"
     retos = correr("parse", {"texto": texto})["retos"]

@@ -243,3 +243,29 @@ def test_legacy_state_json_se_migra_sin_perder(servidor):
     status, body, _ = call("GET", base + "/api/state")
     assert status == 200
     assert body["state"]["pautado"]["solucion"] == "Otra sección"
+
+
+@pytest.mark.parametrize("valor", [None, "abc", {}, []])
+def test_base_version_ilegible_responde_400(servidor, valor):
+    base, _ = servidor
+    status, body, _ = call("POST", base + "/api/sections/team", {
+        "data": {"team_name": "Ana"}, "base_version": valor,
+        "actor": "Ana", "actor_id": "a",
+    })
+    assert status == 400, body
+    assert body["error"] == "base-version-invalida"
+
+
+def test_import_con_clave_invalida_responde_400_y_no_deja_nada(servidor):
+    base, _ = servidor
+    # La clave rota va al final del orden alfabetico: team_name ya se habia
+    # insertado cuando falla, asi que el 400 solo es honesto si hubo rollback.
+    status, body, _ = call("POST", base + "/api/sections/import", {
+        "state": {"team_name": "Ana", "zz/bad": 1},
+        "actor": "Ana", "actor_id": "a",
+    })
+    assert status == 400, body
+    assert body["error"] == "clave-de-seccion-invalida"
+    status, body, _ = call("GET", base + "/api/sections?since=0")
+    assert status == 200
+    assert body["sections"] == {}, "la importacion a medias no puede quedar escrita"

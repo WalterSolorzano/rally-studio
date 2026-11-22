@@ -51,10 +51,11 @@
     background:var(--bg-surface,#fff);border:1px solid var(--border-light,#DCE7F5);
     border-radius:var(--radius-lg,18px);box-shadow:var(--shadow-lg,0 12px 32px rgba(13,27,53,.22));
     font-family:var(--font-ui,"Plus Jakarta Sans",sans-serif);color:var(--text-body,#334155)}
-  #rchat[data-open="1"]{display:flex}
+  #rchat[data-open="1"]{display:flex;animation:rchat-in .2s cubic-bezier(.16,1,.3,1) both}
   /* Abrir en grande: ocupa casi toda la pantalla sin tapar el indicador de agentes. */
   #rchat[data-max="1"]{left:50%;right:auto;bottom:auto;top:50%;transform:translate(-50%,-50%);
-    width:min(980px,calc(100vw - 32px));height:min(880px,calc(100vh - 90px))}
+    width:min(980px,calc(100vw - 32px));height:min(880px,calc(100vh - 90px));
+    animation:rchat-zoom .18s ease-out both}
   #rchat .rchat-max{background:none;border:none;padding:4px;cursor:pointer;color:var(--text-faint,#6B7C97);
     display:grid;place-items:center;margin-left:auto}
   #rchat .rchat-max:hover{color:var(--text-title,#0D1B35)}
@@ -139,9 +140,15 @@
     border:1px solid var(--border-light,#DCE7F5);border-radius:999px;padding:3px 8px;cursor:pointer}
   #rchat .rchat-copiar[data-ok="1"]{color:var(--status-ok-text,#15803D);border-color:var(--status-ok-border,#BBF7D0);
     background:var(--status-ok-bg,#F0FDF4)}
-  #rchat .rchat-msg{position:relative}
+  #rchat .rchat-msg{position:relative;animation:rchat-msg-in .18s ease-out both}
   #rchat .rchat-msg > .rchat-copiar{position:absolute;top:6px;right:8px;opacity:0;transition:opacity .15s}
   #rchat .rchat-msg:hover > .rchat-copiar{opacity:1}
+  @keyframes rchat-in{from{opacity:0;transform:translateY(10px) scale(.985)}to{opacity:1;transform:none}}
+  @keyframes rchat-zoom{from{opacity:.5;transform:translate(-50%,-50%) scale(.97)}
+    to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+  @keyframes rchat-msg-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){
+    #rchat[data-open="1"],#rchat[data-max="1"],#rchat .rchat-msg{animation:none}}
   @media (max-width:560px){#rchat{right:0;left:0;bottom:0;width:100%;max-width:100%;height:82vh;border-radius:18px 18px 0 0}
     #rchat-fab{right:14px;bottom:14px}}
   `;
@@ -168,6 +175,16 @@
 
   function txt(v) { return String(v == null ? "" : v).trim(); }
 
+  // La solución del tablero no vive en `solution` (esa clave no existe): son
+  // tres campos del taller, y el que el equipo aprobó es `solution_approved`.
+  function solucionEscrita(st) {
+    return txt(st.solution_thesis) || txt(st.solution_simple) || txt(st.solution_raw_input);
+  }
+
+  // Los 9 cuadrantes del lienzo, con los mismos nombres que usa app.js.
+  const CANVAS_CLAVES = ["socios", "actividades", "propuesta", "relaciones", "segmentos",
+    "recursos", "canales", "costes", "ingresos"];
+
   function resumenEstado(st) {
     if (!st) return "LA VENTANA ESTÁ VACÍA: el usuario no ha escrito nada todavía (o el servicio no responde). No inventes su proyecto.";
     const l = [];
@@ -180,9 +197,11 @@
       " · " + (quien[2] || "(sin universidad)") + " · " + (quien[3] || "(sin ciudad)"));
     l.push("Reto: " + (txt(st.challenge_id) || "(sin elegir)") + " — " + (txt(st.challenge_title) || "(sin título)") +
       " · categoría: " + (txt(st.category) || "(sin categoría)"));
-    if (txt(st.solution) || txt(st.problem)) {
-      l.push("Solución escrita: " + (txt(st.solution) ? txt(st.solution).slice(0, 500) : "(vacía)"));
-      if (txt(st.problem)) l.push("Problema escrito: " + txt(st.problem).slice(0, 400));
+    const solucion = solucionEscrita(st);
+    if (solucion) {
+      l.push("Solución escrita: " + solucion.slice(0, 500) +
+        (st.solution_approved ? " (aprobada por el equipo)" : " (sin aprobar)"));
+      if (txt(st.solution_raw_input)) l.push("Problema escrito: " + txt(st.solution_raw_input).slice(0, 400));
     }
     // Pautado: 5 secciones con su longitud real.
     const pa = st.pautado || {};
@@ -199,8 +218,10 @@
       (filas.length ? " (la banda 4.000–6.000 USD es sugerencia, no ley)" : " — VACÍO"));
     // Canvas
     const cv = st.model_canvas || {};
-    const llenos = Object.keys(cv).filter(function (k) { return txt(cv[k]); });
-    l.push("Canvas: " + llenos.length + "/9 bloques con texto" + (llenos.length ? " (" + llenos.join(", ") + ")" : ""));
+    const llenos = CANVAS_CLAVES.filter(function (k) { return txt(cv[k]); });
+    l.push("Canvas: " + llenos.length + "/" + CANVAS_CLAVES.length + " cuadrantes con texto" +
+      (llenos.length ? " (" + llenos.join(", ") + ")" : "") +
+      (Object.keys(cv).length > llenos.length ? " · hay claves fuera del lienzo que no cuentan" : ""));
     // Guion
     const sc = st.script || {};
     const actos = [sc.acto1, sc.acto2, sc.acto3, sc.acto4].map(txt);
@@ -220,7 +241,8 @@
     if (!txt(st.project_name)) faltan.push("nombre del proyecto (fase 01)");
     if (!txt(st.team_name)) faltan.push("nombre del equipo (fase 01)");
     if (!txt(st.challenge_id)) faltan.push("reto elegido (fase 02)");
-    if (!txt(st.solution)) faltan.push("solución (fase 03)");
+    if (!solucionEscrita(st)) faltan.push("solución (fase 03)");
+    else if (!st.solution_approved) faltan.push("aprobar la solución (fase 03)");
     const pa = st.pautado || {};
     ["problema", "solucion", "impacto", "innovacion", "prefactibilidad"].forEach(function (k) {
       if (!txt(pa[k])) faltan.push("pautado: " + k + " (fase 06)");
@@ -228,7 +250,7 @@
     const filas = Array.isArray(st.budget) ? st.budget : [];
     if (!filas.length) faltan.push("presupuesto (fase 07)");
     else if (filas.some(function (r) { return !txt(r && r.url); })) faltan.push("URLs de respaldo en el presupuesto (fase 07)");
-    if (!Object.keys(st.model_canvas || {}).some(function (k) { return txt(st.model_canvas[k]); })) faltan.push("canvas (fase 09)");
+    if (!CANVAS_CLAVES.some(function (k) { return txt((st.model_canvas || {})[k]); })) faltan.push("canvas (fase 09)");
     const sc = st.script || {};
     if (![sc.acto1, sc.acto2, sc.acto3, sc.acto4].every(txt)) faltan.push("algún acto del guion (fase 10)");
     if (!(Array.isArray(st.shot_plan) && st.shot_plan.length)) faltan.push("plan de tomas (fase 10)");

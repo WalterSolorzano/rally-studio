@@ -206,6 +206,15 @@
       });
   }
 
+  // Un aviso sin id no puede compartir la clave vacía con todos los demás:
+  // el primero se marcaba como visto y los siguientes se descartaban para
+  // siempre. Cuando falta el id, la clave se arma con lo que el aviso dice.
+  function claveDe(detalle) {
+    var id = String(detalle.id || "").trim();
+    if (id) return id;
+    return "auto:" + [detalle.tipo, detalle.titulo, detalle.texto, detalle.slot].join("|");
+  }
+
   function alAviso(ev) {
     var detalle = (ev && ev.detail) || {};
     var p = prefs();
@@ -216,7 +225,7 @@
       guardar({ activo: false });
       return;
     }
-    if (!marcar(String(detalle.id || ""))) return;
+    if (!marcar(claveDe(detalle))) return;
     lanzar(detalle);
     insignia();
   }

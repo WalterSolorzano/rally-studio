@@ -8,6 +8,7 @@ Regla innegociable: si alguna seccion excede el maximo, devuelve codigo 1.
 """
 import json
 import pathlib
+import re
 import sys
 from comun import utf8
 utf8()
@@ -16,7 +17,13 @@ RAIZ = pathlib.Path(__file__).resolve().parent.parent
 if str(RAIZ) not in sys.path:
     sys.path.insert(0, str(RAIZ))
 
-from checks.campo_chars import limites_para, revisar  # noqa: E402
+from checks.campo_chars import (  # noqa: E402
+    limites_para,
+    revisar,
+    secciones_por_encabezado,
+    secciones_por_marcador,
+    texto_docx,
+)
 
 DRAFT_PATH = pathlib.Path("docs/pautado_draft.docx")
 # Un solo Word de plantilla: el de `plantillas/`. Los límites se leen de ahí.
@@ -32,18 +39,80 @@ def rally_actual() -> str:
     return (datos.get("rally_type") or "latam").strip().lower()
 
 
+def nombre_del_proyecto() -> str:
+    """Nombre aprobado en el brief. Vacio mientras el equipo no lo defina."""
+    try:
+        datos = json.loads(pathlib.Path("brief.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return ""
+    return str(datos.get("project_name") or "").strip()
+
+
+def secciones_con_nombre_repetido(texto: str, nombre: str) -> list[str]:
+    """Secciones donde el nombre aparece mas de una vez.
+
+    Regla 3 de AGENTS.md: una vez por seccion. Repetirlo en cada parrafo lo
+    convierte en ruido y gasta caracteres del tope. Con el nombre vacio no hay
+    nada que medir: el brief espera al equipo y eso no es un error del pautado.
+    """
+    if not nombre:
+        return []
+    secciones = secciones_por_marcador(texto)
+    if not secciones:
+        secciones = secciones_por_encabezado(texto)
+    patron = re.compile(re.escape(nombre), re.IGNORECASE)
+    return sorted(
+        campo for campo, cuerpo in secciones.items() if len(patron.findall(cuerpo)) > 1
+    )
+
+
 def main():
     if not DRAFT_PATH.exists():
         print("ERROR: docs/pautado_draft.docx no existe. Ejecuta python scripts/gen_pautado.py primero.")
         sys.exit(1)
 
     evento = rally_actual()
-    hallazgos, conteos = revisar(DRAFT_PATH, TEMPLATE_PATH, evento)
+    try:
+        hallazgos, conteos = revisar(DRAFT_PATH, TEMPLATE_PATH, evento)
+    except Exception as exc:
+        # Un docx truncado (Word cerrado a la fuerza, copia a medias) reventaba con
+        # PackageNotFoundError. El equipo necesita la frase, no la pila de llamadas.
+        print(f"ERROR: {DRAFT_PATH} no se puede abrir como Word ({exc}). "
+              "Regenera el documento con python scripts/gen_pautado.py.")
+        sys.exit(1)
     limites = limites_para(evento)
 
     print("\n" + "=" * 60)
     print("  AUDITORIA DE CARACTERES -- REPORTE PAUTADO (CON ESPACIOS)")
     print("=" * 60)
+
+    # Regla 3 de AGENTS.md, medida sobre el texto entregado y no sobre la nota.
+    nombre = nombre_del_proyecto()
+    try:
+        repetido = secciones_con_nombre_repetido(texto_docx(DRAFT_PATH), nombre)
+    except Exception:
+        repetido = []
+    if repetido:
+        print()
+        print(f"  [X] El nombre del proyecto ('{nombre}') se repite mas de una vez en:")
+        for campo in repetido:
+            print(f"      {campo.upper()}")
+        print("  -> Regla 3: una mencion por seccion como maximo. Repetirlo gasta")
+        print("     caracteres del tope y convierte el nombre en ruido. Dejalo en la")
+        print("     seccion donde presenta la solucion y quitalo del resto.")
+        sys.exit(1)
+
+    # Un pautado sin secciones reconocibles no se valida: antes, en modo Nacional
+    # (sin topes) salia «VALIDACION EXITOSA» sobre un documento vacio, porque el
+    # unico hallazgo critico vivia en `hallazgos` y ese bloque venia despues del
+    # `return` del rally sin topes.
+    criticos = [h for h in hallazgos if h["gravedad"] == "critico"]
+    if criticos:
+        print()
+        for hallazgo in criticos:
+            print(f"  [X] {hallazgo.get('campo', 'general')}: {hallazgo['que']}. {hallazgo['hacer']}")
+        print("\n  ERROR: Ajusta los textos antes de enviar a SIRLI.")
+        sys.exit(1)
 
     if not limites:
         print(f"  Evento '{evento}': este rally no fija tope por seccion.")
@@ -66,11 +135,10 @@ def main():
 
     # Marcadores internos a la vista son sintoma de documento sin rellenar:
     # `{SEC_PROBLEMA}` no es texto para el jurado, y contarlos como contenido
-    # hacia que un pautado vacio pasara la validacion.
+    # hacia que un pautado vacio pasara la validacion. Se lee el documento entero
+    # (parrafos y tablas): `[PENDIENTE]` dentro de una tabla tambien llega al jurado.
     try:
-        import docx as _docx
-
-        texto_doc = "\n".join(p.text for p in _docx.Document(str(DRAFT_PATH)).paragraphs)
+        texto_doc = texto_docx(DRAFT_PATH)
     except Exception:
         texto_doc = ""
     marcadores = sorted({t for t in ("{SEC_PROBLEMA}", "{SEC_SOLUCION}", "{SEC_IMPACTO}",

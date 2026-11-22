@@ -1809,13 +1809,21 @@ function initClock() {
 
 function showToast(msg) {
   if (typeof document === "undefined") return;
-  const existing = document.querySelector(".toast-notice");
-  if (existing) existing.remove();
+  // El aviso anterior sale con animación en vez de desaparecer de golpe.
+  document.querySelectorAll(".toast-notice").forEach((viejo) => {
+    viejo.classList.add("is-leaving");
+    viejo.addEventListener("animationend", () => viejo.remove(), { once: true });
+    setTimeout(() => { if (viejo.parentNode) viejo.remove(); }, 240);
+  });
   const el = document.createElement("div");
   el.className = "toast-notice";
   el.innerHTML = `${SVG.check} <span>${msg}</span>`;
   document.body.appendChild(el);
-  setTimeout(() => { if (el.parentNode) el.remove(); }, 3200);
+  setTimeout(() => {
+    el.classList.add("is-leaving");
+    el.addEventListener("animationend", () => { if (el.parentNode) el.remove(); }, { once: true });
+    setTimeout(() => { if (el.parentNode) el.remove(); }, 240);
+  }, 3200);
 }
 
 function copyToClipboardWithFeedback(text, successMsg) {
@@ -2206,12 +2214,25 @@ function toggleProjectMenu(event) {
   if (event) event.stopPropagation();
   const menu = document.getElementById("project-dropdown");
   if (!menu) return;
-  menu.style.display = menu.style.display === "none" ? "block" : "none";
+  if (menu.style.display !== "none" && menu.style.display !== "") { cerrarProjectMenu(); return; }
+  menu.classList.remove("is-cerrando");
+  menu.style.display = "block";
+}
+
+function cerrarProjectMenu() {
+  const menu = document.getElementById("project-dropdown");
+  if (!menu || menu.style.display === "none") return;
+  if (!menu.classList) { menu.style.display = "none"; return; }
+  // Se cierra desvaneciendose; el display se apaga cuando termina.
+  menu.classList.add("is-cerrando");
+  setTimeout(() => {
+    menu.style.display = "none";
+    menu.classList.remove("is-cerrando");
+  }, 140);
 }
 
 document.addEventListener("click", () => {
-  const menu = document.getElementById("project-dropdown");
-  if (menu) menu.style.display = "none";
+  cerrarProjectMenu();
 });
 
 // ── CALIBRACIÓN INTERACTIVA DE CRONÓMETRO ─────────────────────────────────────
@@ -2358,9 +2379,20 @@ function setTimerStartPreset(type) {
   updateTimerModalPreview();
 }
 
+// Un modal no debe desaparecer de golpe: se desvanece y luego se apaga.
+function cerrarModalSuave(modal) {
+  if (!modal || modal.style.display === "none") return;
+  if (!modal.classList) { modal.style.display = "none"; return; }
+  modal.classList.add("is-cerrando");
+  setTimeout(() => {
+    modal.style.display = "none";
+    modal.classList.remove("is-cerrando");
+  }, 140);
+}
+
 function closeTimerSettingsModal() {
   const modal = document.getElementById("timer-modal-overlay");
-  if (modal) modal.style.display = "none";
+  cerrarModalSuave(modal);
 }
 
 function setTimerPreset(hours) {
@@ -3908,10 +3940,6 @@ function renderViewCertamen() {
       </div>
 
       <h1 class="wizard-hero-title">¿Qué <span class="title-accent">Rally</span> es?</h1>
-      <p class="wizard-hero-desc">
-        Selecciona el certamen en el que participará tu equipo para calibrar automáticamente las reglas,
-        el régimen de horas y la estructura oficial del documento pautado.
-      </p>
 
       <div class="certamen-grid">
         <!-- Tarjeta 1: Rally Latinoamericano de Innovación -->
@@ -5033,12 +5061,12 @@ function openLightbox(src) {
     modal = document.createElement("div");
     modal.id = "img-lightbox-modal";
     modal.className = "modal-overlay";
-    modal.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
+    modal.onclick = (e) => { if (e.target === modal) cerrarModalSuave(modal); };
     document.body.appendChild(modal);
   }
   modal.innerHTML = `
     <div style="background:var(--color-navy); padding:16px; border-radius:10px; max-width:92vw; max-height:92vh; display:flex; flex-direction:column; align-items:center; position:relative;">
-      <button style="position:absolute; top:12px; right:12px; background:var(--text-body); color:var(--bg-surface); border:none; border-radius:6px; padding:6px 12px; cursor:pointer; font-weight:800;" onclick="document.getElementById('img-lightbox-modal').style.display='none'">Cerrar</button>
+      <button style="position:absolute; top:12px; right:12px; background:var(--text-body); color:var(--bg-surface); border:none; border-radius:6px; padding:6px 12px; cursor:pointer; font-weight:800;" onclick="cerrarModalSuave(document.getElementById('img-lightbox-modal'))">Cerrar</button>
       <img src="${src}" style="max-width:100%; max-height:85vh; object-fit:contain; border-radius:4px;">
     </div>
   `;
@@ -5123,7 +5151,7 @@ function saveEditedChallenge(chId) {
 
   saveState();
   const modal = document.getElementById("edit-challenge-modal");
-  if (modal) modal.style.display = "none";
+  cerrarModalSuave(modal);
   renderTab("challenges");
   renderNavigation();
 }
@@ -5874,7 +5902,7 @@ function applyAIThesis(chId, isFromEditModal = false) {
   }
 
   const modal = document.getElementById("ai-thesis-modal");
-  if (modal) modal.style.display = "none";
+  cerrarModalSuave(modal);
 
   renderTab("challenges");
   renderNavigation();
@@ -6434,7 +6462,14 @@ function toggleCustomChallengeInput() {
   const el = document.getElementById("custom-challenge-input-box");
   if (!el) return;
   if (el.style.display === "none") openChallengeImportBox();
-  else el.style.display = "none";
+  else {
+    // Cerrar de golpe se siente a error: se desvanece y luego se apaga.
+    el.classList.add("is-cerrando");
+    setTimeout(() => {
+      el.style.display = "none";
+      el.classList.remove("is-cerrando");
+    }, 130);
+  }
 }
 
 // Abre la caja de importación mostrando PRIMERO lo que ya está cargado: el
@@ -6639,15 +6674,15 @@ function openChallengeDetailModal(chId) {
       <div class="modal-header" style="margin-bottom:18px; padding-bottom:14px; border-bottom:1px solid var(--border-light);">
         <div style="display:flex; align-items:center; gap:10px;">
           <span class="tactical-status-pill">
-            Reto #${ch.id}
+            Reto #${escapeHtml(String(ch.id))}
           </span>
-          <span style="font-size:12px; font-weight:700; color:var(--text-muted);">${ch.category} · ${odsStr}</span>
+          <span style="font-size:12px; font-weight:700; color:var(--text-muted);">${escapeHtml(String(ch.category || ""))} · ${escapeHtml(String(odsStr))}</span>
         </div>
         <button class="btn-icon-discreet" onclick="closeChallengeDetailModal()" style="font-size:16px; line-height:1;">✕</button>
       </div>
 
       <h2 style="font-size:16px; font-weight:800; color:var(--text-title); line-height:1.3; margin-bottom:16px;">
-        ${ch.title}
+        ${escapeHtml(String(ch.title || ""))}
       </h2>
 
       <!-- Tarjeta 1: Propuesta Técnica de Vanguardia -->
@@ -6709,7 +6744,7 @@ function openChallengeDetailModal(chId) {
 
 function closeChallengeDetailModal() {
   const modal = document.getElementById("challenge-detail-modal-overlay");
-  if (modal) modal.style.display = "none";
+  cerrarModalSuave(modal);
 }
 
 // ═════════════════════════════════════════════════════════════════════════════
@@ -6943,7 +6978,7 @@ function abrirDetalleBooster(key, ev) {
 function cerrarDetalleBooster() {
   const modal = document.getElementById("booster-modal-overlay");
   if (!modal) return;
-  modal.style.display = "none";
+  cerrarModalSuave(modal);
   if (_boosterOpener && _boosterOpener.focus) {
     _boosterOpener.focus();
     _boosterOpener = null;
@@ -7854,7 +7889,7 @@ function openImpactDetailModal(type, key) {
 
 function closeImpactModal() {
   const modal = document.getElementById("impact-detail-modal");
-  if (modal) modal.style.display = "none";
+  cerrarModalSuave(modal);
 }
 
 // ═════════════════════════════════════════════════════════════════════════════
@@ -9271,19 +9306,18 @@ function updateInspector() {
   const hasBudgetItems = Array.isArray(state.budget) && state.budget.length > 0;
   const totalBudget = hasBudgetItems ? state.budget.reduce((a, b) => a + (Number(b.units || 0) * Number(b.unit_cost || 0)), 0) : 0;
 
-  panel.innerHTML = `
+  const tabId = rsPrevTabId || "resumen";
+  const label = String((NAV_TABS.find(t => t.id === tabId) || {}).label || "Esta fase").replace(/^\d+\s*/, "");
+  const items = panelPendingItems(tabId);
+  const faltan = items.filter(x => !x.ok).length;
+
+  const panelHtml = `
     <div class="drawer-header-mobile">
       <span>Preparación Oficial</span>
       <button class="btn-close-drawer" onclick="closeAllDrawers()" aria-label="Cerrar panel de auditoría">${SVG.close}</button>
     </div>
 
-    ${(() => {
-      const tabId = rsPrevTabId || "resumen";
-      const label = String((NAV_TABS.find(t => t.id === tabId) || {}).label || "Esta fase").replace(/^\d+\s*/, "");
-      const items = panelPendingItems(tabId);
-      if (!items.length) return "";
-      const faltan = items.filter(x => !x.ok).length;
-      return `
+    ${items.length ? `
         <div class="panel-todo-head">
           <span class="panel-todo-title">${escapeHtml(label)}</span>
           <span class="panel-todo-count">${faltan === 0 ? "completa" : faltan + " por cerrar"}</span>
@@ -9298,9 +9332,54 @@ function updateInspector() {
             </li>
           `).join("")}
         </ul>
-      `;
-    })()}
+      ` : ""}
   `;
+
+  const movil = panel.querySelector(".drawer-header-mobile");
+  const cabecera = panel.querySelector(".panel-todo-head");
+  const lista = panel.querySelector(".panel-todo");
+  const formaOk = movil && (items.length
+    ? cabecera && lista && panel.children.length === 3
+    : !cabecera && !lista && panel.children.length === 1);
+  // Otra vista pudo reescribir el panel: se levanta completo una vez.
+  if (!formaOk) {
+    panel.innerHTML = panelHtml;
+    return;
+  }
+  if (!items.length) return;
+
+  // Parche por nodo: reusar los <li> conserva el scroll y evita el parpadeo.
+  cabecera.querySelector(".panel-todo-title").textContent = label;
+  cabecera.querySelector(".panel-todo-count").textContent = faltan === 0 ? "completa" : faltan + " por cerrar";
+
+  const actuales = Array.from(lista.children);
+  items.forEach((it, i) => {
+    let li = actuales[i];
+    if (!li || li.dataset.key !== it.text) {
+      li = document.createElement("li");
+      li.className = "panel-todo-item";
+      li.dataset.key = it.text;
+      const btn = document.createElement("button");
+      btn.type = "button";
+      const dot = document.createElement("span");
+      dot.className = "panel-todo-dot";
+      dot.setAttribute("aria-hidden", "true");
+      const txt = document.createElement("span");
+      txt.className = "panel-todo-text";
+      txt.textContent = it.text;
+      btn.append(dot, txt);
+      li.appendChild(btn);
+      if (actuales[i] && actuales[i].parentNode === lista) lista.replaceChild(li, actuales[i]);
+      else lista.appendChild(li);
+    }
+    li.classList.toggle("is-done", !!it.ok);
+    const btn = li.querySelector("button");
+    if (btn) {
+      btn.title = it.ok ? "Listo" : "Ir a la fase";
+      btn.setAttribute("onclick", `switchTab('${it.tab}')`);
+    }
+  });
+  while (lista.children.length > items.length) lista.lastElementChild.remove();
 }
 
 function attachTabListeners(tabId) {}

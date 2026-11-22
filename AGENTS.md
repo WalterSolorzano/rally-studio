@@ -147,6 +147,7 @@ Tu contexto es: `brief.json` + este archivo. Nada más hasta que hayas leído am
 ## Modo de operación según rally_type
 
 ### Nacional (24h)
+- **Equipo: 5 integrantes contando al mentor (profesor)**; el mentor no produce entregables, pregunta, corrige y desbloquea. Una persona cubre varias áreas.
 - Categorías: Tecnológica / Social / Procesos u Organizacional
 - Jurado: CNU, MINJUVE, TELCOR, INATEC, MEFCCA
 - Anclar a **municipio real** de Nicaragua
@@ -156,6 +157,7 @@ Tu contexto es: `brief.json` + este archivo. Nada más hasta que hayas leído am
 - Presupuesto **siempre en córdobas (C$)** con la tasa del BCN declarada en `brief.json` (`exchange_rate_bcn`); el USD puede ir como referencia, nunca como moneda principal
 
 ### Latam (28h)
+- **Equipo: 10 integrantes contando al mentor (profesor)**; el mentor no produce entregables, pregunta, corrige y desbloquea. Hay margen para especialistas por área.
 - Categorías: Innovación / Impacto Social
 - Jurado: académicos internacionales (NO nicaragüenses)
 - El municipio es el **"laboratorio piloto"** — no el único destino

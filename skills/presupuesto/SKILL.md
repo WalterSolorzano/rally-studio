@@ -60,10 +60,9 @@ mezclan monedas en la misma tabla.
    NO se muestra en la tabla xlsx**.
 4. **Pagar por usar, casi nunca construir.** Alojamiento, mensajería, voz,
    hosting, transporte y maquila se contratan: es más barato, más rápido y más
-   creíble. Ahora bien, **construir no es gratis**: un prototipo de hardware
-   cuesta materiales, corte, impresión 3D, componentes y horas de taller; el
-   software propio cuesta sobre todo tiempo. El presupuesto debe reflejar el
-   costo real del tipo de proyecto, no asumir que "lo propio no cuesta".
+   creíble. Construir no es gratis: un prototipo de hardware cuesta materiales,
+   corte, impresión 3D, componentes y horas de taller. El presupuesto refleja
+   el costo real del tipo de proyecto.
 5. **Gastos recurrentes para lo digital.** Si es app o web, incluye el plan
    anual y el costo por uso, no solo el gasto del primer día.
 6. **Sin TIR, VAN ni ROI complejo.** Es un presupuesto de implementación
@@ -96,33 +95,32 @@ mezclan monedas en la misma tabla.
     plástico, tornillería), nunca como servicio de impresión de terceros:
     el diseño lo hace el equipo a partir del análisis de necesidades.
 13. **Costos de creación, no de ingeniería detallada.** La tabla lista lo
-    que se compra o contrata para **crear el prototipo**. No se desglosa
-    ingeniería fina; el desarrollo (software, horas de diseño del equipo)
-    va aparte, no en esta tabla.
+    que se compra o contrata para **crear el prototipo**. El desarrollo
+    (software, horas de diseño del equipo) va aparte, no en esta tabla.
 14. **Compatibilidad anotada.** Si se compran partes que deben trabajar
     juntas (batería, cargador, placa solar, sensores), la `nota` confirma
     que voltaje y corriente son compatibles.
-15. **Dos vistas: por producto y por proyecto.** Se entregan siempre dos
-    tablas:
-    - **Costo por producto** (`budget/budget_por_producto.json` + `.xlsx`):
-      `units = 1` en cada fila, con el precio de **una sola unidad**. Esta es
-      la cifra que se cita en pautado, video y canvas (el costo unitario del
-      prototipo). Si requiere ensamble, incluye la parte del contrato mensual
-      del técnico prorrateada por unidad (contrato ÷ unidades del piloto).
-    - **Proyecto completo** (`budget/budget.json` + `.xlsx`): la misma lista
-      multiplicada por las cantidades del piloto más los gastos compartidos
-      (estación, hosting, transporte). El total del proyecto
-      nunca contradice la suma de unidades × costo unitario de la vista
-      producto.
-16. **Agrupa en bloques, estilo ganador.** Como en el presupuesto de
-    Ollnari (Operación Titán, 1er lugar Nacional en Procesos), la tabla se
-    arma con **bloques funcionales**, no con el BOM pieza por pieza:
-    electrónica y comunicaciones, energía, estructura y protección,
-    estación de mando, personal, infraestructura digital, logística. Entre
-    **6 y 10 filas** por vista. Cada fila lleva `units = 1` (proyecto) y su
-    `unit_cost` es el total del bloque; los componentes, cantidades y
-    precios unitarios van explicados en `nota`. El jurado compra un bloque,
-    no 20 tornillos.
+15. **Dos vistas.** **Por producto** (`budget/budget_por_producto.json`,
+    `units = 1`, precio de una unidad: la cifra que va en pautado, video y
+    canvas) y **proyecto completo** (`budget/budget.json`, unidades del piloto
+    más gastos compartidos). La segunda nunca contradice la suma de la primera.
+16. **Bloques, no BOM.** Como el presupuesto de Ollnari (1er lugar Nacional en
+    Procesos): bloques funcionales (energía, estructura, personal, logística),
+    **6 a 10 filas** por vista, `units = 1`, total del bloque en `unit_cost` y
+    el detalle en `nota`. El jurado compra un bloque, no 20 tornillos.
+17. **Base declarada.** Cada tabla dice si es **por unidad** (una casa, un
+    nodo), **por lote** (con su tamaño) o **por piloto** (todo el municipio).
+    Una base por tabla: dos bases, dos tablas. Lote sin tamaño no se compara.
+    C$ 12 150 por casa no es C$ 121 500 por lote de 10 casas.
+18. **Cerrada o desglose, nunca los dos.** «Sistema completo instalado y
+    probado» ya contiene bomba, tanque, base y mano de obra: esos componentes
+    no suman aparte. Sumar ambos es doble conteo.
+19. **Cero no es fila, es pendiente.** Una partida sin cotización no va en
+    `partidas`: la tabla lleva solo filas con costo. Va a `desglose_pendiente`
+    con lo que se espera cotizar, y a preguntas abiertas. Fila en cero, en
+    `null` o «pendiente» son la misma tabla vacía.
+20. **Armar no es operar.** Que un socio arme o instale no autoriza decir que
+    opera o administra. El responsable se declara o queda `[FALTA: responsable]`.
 
 ## Detalle completo (leer antes de producir)
 

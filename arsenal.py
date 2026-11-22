@@ -6,7 +6,9 @@ Subcomandos:
   check-duracion [archivos...]   Regla oficial <= 120 s (ffprobe/ffmpeg).
   check-coherencia               Cruza cifras guion / narracion / pautado.
   check-campo [docx]             Caracteres por campo contra la plantilla.
+  check-validadores              validate_brief, validate_budget y validate_pautado.
   check-todo                     Los tres checks en orden de gravedad.
+  check-tiempo [--restante H]    Reloj del certamen: % alcanzado, fase y alerta roja.
   refresh [--write]              Actualiza versiones en arsenal.lock.yaml.
   status                         Resume el registro sin ejecutar checks.
 
@@ -17,6 +19,7 @@ from __future__ import annotations
 
 import argparse
 import importlib.util
+import json
 import pathlib
 import re
 import shutil
@@ -25,6 +28,7 @@ import sys
 
 RAIZ = pathlib.Path(__file__).resolve().parent
 LOCK = RAIZ / "arsenal.lock.yaml"
+BRIEF = RAIZ / "brief.json"
 
 # Permite `python arsenal.py` desde cualquier carpeta del repo.
 if str(RAIZ) not in sys.path:
@@ -228,8 +232,129 @@ def cmd_campo(args: argparse.Namespace) -> int:
     return 1 if any(h["gravedad"] == "critico" for h in hallazgos) else 0
 
 
+FASES_TIEMPO = (
+    (0.35, "producir"),
+    (0.55, "revisar"),
+    (0.75, "integrar"),
+    (0.90, "congelar assets y preparar exportacion"),
+    (1.01, "entregar y verificar"),
+)
+
+
+def fase_de_tiempo(porcentaje: float) -> str:
+    """Banda de la skill control-tiempo-entrega para un avance de 0.0 a 1.0."""
+    for tope, fase in FASES_TIEMPO:
+        if porcentaje < tope:
+            return fase
+    return FASES_TIEMPO[-1][1]
+
+
+def _etapas_pendientes(brief: dict) -> list[str]:
+    """Etapas que verificar_fases.py todavia no da por cerradas."""
+    if str(RAIZ / "scripts") not in sys.path:
+        sys.path.insert(0, str(RAIZ / "scripts"))
+    try:
+        import verificar_fases as vf
+    except Exception:
+        return []
+    try:
+        bitacora = vf.leer_bitacora()
+        return [
+            "%s %s" % (e["id"], e["nombre"])
+            for e in vf.ETAPAS
+            if not vf.existe(e, brief, bitacora)
+        ]
+    except Exception:
+        return []
+
+
+def estado_de_tiempo(brief: dict, pendientes: list[str] | None = None) -> dict:
+    """Reloj del certamen en el formato que pide la skill control-tiempo-entrega."""
+    total = float(brief.get("hours_total") or 0)
+    restante = float(brief.get("hours_remaining") or 0)
+    porcentaje = 0.0 if total <= 0 else max(0.0, min(1.0, 1.0 - restante / total))
+    if pendientes is None:
+        pendientes = _etapas_pendientes(brief)
+    return {
+        "rally_type": brief.get("rally_type") or "",
+        "hours_total": total,
+        "hours_remaining": restante,
+        "porcentaje_alcanzado": round(porcentaje * 100, 1),
+        "fase": fase_de_tiempo(porcentaje),
+        "entregables_pendientes": pendientes,
+        "congelar_assets": porcentaje >= 0.75,
+        "alerta_roja": porcentaje >= 0.75,
+    }
+
+
+def cmd_tiempo(args: argparse.Namespace) -> int:
+    ruta = pathlib.Path(getattr(args, "brief", BRIEF))
+    brief = json.loads(ruta.read_text(encoding="utf-8-sig")) if ruta.exists() else {}
+    if getattr(args, "restante", None) is not None:
+        brief["hours_remaining"] = args.restante
+    estado = estado_de_tiempo(brief)
+    if getattr(args, "json", False):
+        print(json.dumps(estado, ensure_ascii=False, indent=2))
+        return 0
+    transcurrido = estado["hours_total"] - estado["hours_remaining"]
+    print("AVISO HORARIO - %s de %g h" % (
+        (estado["rally_type"] or "sin certamen").upper(), estado["hours_total"]))
+    print("  transcurrido : %g h" % transcurrido)
+    print("  restante     : %g h" % estado["hours_remaining"])
+    print("  alcanzado    : %.1f%% -> %s" % (estado["porcentaje_alcanzado"], estado["fase"]))
+    if estado["alerta_roja"]:
+        print("  ALERTA ROJA  : assets congelados, el pautado ya no se reescribe.")
+    pendientes = estado["entregables_pendientes"]
+    if pendientes:
+        print("  faltan       : %s" % ", ".join(pendientes))
+    else:
+        print("  faltan       : nada, checklist cerrado.")
+    return 0
+
+
+VALIDADORES_SIRLI = ("validate_brief.py", "validate_budget.py", "validate_pautado.py")
+
+
+def ejecutar_validadores(scripts: pathlib.Path | None = None, timeout: int = 180) -> list[dict]:
+    """Corre los tres validadores que la regla 11 exige antes de SIRLI.
+
+    El rally no se envia si uno esta en rojo: se devuelve la ultima linea de cada
+    validador para que el error se lea, no solo el codigo de salida.
+    """
+    carpeta = pathlib.Path(scripts) if scripts else (RAIZ / "scripts")
+    resultados = []
+    for nombre in VALIDADORES_SIRLI:
+        ruta = carpeta / nombre
+        if not ruta.exists():
+            resultados.append({"nombre": nombre, "codigo": 127, "detalle": "no existe"})
+            continue
+        res = subprocess.run(
+            [sys.executable, str(ruta)], cwd=str(RAIZ),
+            capture_output=True, text=True, errors="replace", timeout=timeout,
+        )
+        salida = ((res.stdout or "") + (res.stderr or "")).splitlines()
+        lineas = [l.strip() for l in salida if l.strip()]
+        resultados.append({
+            "nombre": nombre,
+            "codigo": res.returncode,
+            "detalle": lineas[-1] if lineas else "",
+        })
+    return resultados
+
+
+def cmd_validadores(args: argparse.Namespace) -> int:
+    resultados = ejecutar_validadores(getattr(args, "scripts", None))
+    for r in resultados:
+        marca = "PASA" if r["codigo"] == 0 else "REVISAR"
+        print("  %-24s %-8s %s" % (r["nombre"], marca, r["detalle"]))
+    return 1 if any(r["codigo"] for r in resultados) else 0
+
+
 def cmd_todo(args: argparse.Namespace) -> int:
     resultados: dict[str, int] = {}
+    print("\n== 0. Validadores antes de SIRLI ==")
+    resultados["validadores"] = cmd_validadores(
+        argparse.Namespace(scripts=getattr(args, "scripts", None)))
     print("\n== 1. Duracion (regla oficial) ==")
     resultados["duracion"] = cmd_duracion(argparse.Namespace(archivos=args.archivos))
     print("\n== 2. Coherencia de cifras ==")
@@ -272,8 +397,13 @@ def construir_parser() -> argparse.ArgumentParser:
                    help="Latam aplica topes por seccion; Nacional no los fija.")
     p.set_defaults(func=cmd_campo)
 
+    p = sub.add_parser("check-validadores", help="validate_brief, budget y pautado antes de SIRLI")
+    p.add_argument("--scripts", default=None, help="Carpeta de validadores (por defecto scripts/)")
+    p.set_defaults(func=cmd_validadores)
+
     p = sub.add_parser("check-todo", help="Los tres checks antes de SIRLI")
     p.add_argument("archivos", nargs="*")
+    p.add_argument("--scripts", default=None)
     p.add_argument("--guion", default="script/script.md")
     p.add_argument("--narracion", default="script/narration.txt")
     p.add_argument("--pautado", default="docs/pautado_draft.docx")
@@ -282,6 +412,13 @@ def construir_parser() -> argparse.ArgumentParser:
     p.add_argument("--evento", choices=["latam", "nacional"], default="latam")
     p.add_argument("--ignorar", default="")
     p.set_defaults(func=cmd_todo)
+
+    p = sub.add_parser("check-tiempo", help="Reloj del certamen y aviso horario")
+    p.add_argument("--brief", default=str(BRIEF))
+    p.add_argument("--restante", type=float, default=None,
+                   help="Horas restantes; simula el reloj sin tocar brief.json")
+    p.add_argument("--json", action="store_true", help="Salida JSON del estado")
+    p.set_defaults(func=cmd_tiempo)
 
     p = sub.add_parser("refresh", help="Actualiza versiones en arsenal.lock.yaml")
     p.add_argument("--write", action="store_true")

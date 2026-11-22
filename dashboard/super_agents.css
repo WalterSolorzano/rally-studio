@@ -38,7 +38,54 @@
   z-index: 9500;
   font-family: var(--font-ui);
 }
-.rsa-overlay.is-open { display: flex; }
+.rsa-overlay.is-open { display: flex; animation: rsaOverlayIn 160ms ease-out both; }
+.rsa-overlay.is-open > .rsa-menu,
+.rsa-overlay.is-open > .rsa-panel {
+  animation: rsaSheetIn 200ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes rsaOverlayIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes rsaSheetIn {
+  from { opacity: 0; transform: translateY(10px) scale(0.985); }
+  to { opacity: 1; transform: none; }
+}
+/* Entrada escalonada del menú: el ojo sigue el orden de lectura. */
+.rsa-overlay.is-open .rsa-menu-item { animation: rsaItemIn 180ms cubic-bezier(0.16, 1, 0.3, 1) backwards; }
+.rsa-overlay.is-open .rsa-menu-item:nth-child(2) { animation-delay: 25ms; }
+.rsa-overlay.is-open .rsa-menu-item:nth-child(3) { animation-delay: 50ms; }
+.rsa-overlay.is-open .rsa-menu-item:nth-child(4) { animation-delay: 75ms; }
+.rsa-overlay.is-open .rsa-menu-item:nth-child(5) { animation-delay: 100ms; }
+.rsa-overlay.is-open .rsa-menu-item:nth-child(6) { animation-delay: 125ms; }
+.rsa-overlay.is-open .rsa-menu-item:nth-child(n+7) { animation-delay: 150ms; }
+@keyframes rsaItemIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rsa-overlay.is-open,
+  .rsa-overlay.is-open > .rsa-menu,
+  .rsa-overlay.is-open > .rsa-panel,
+  .rsa-overlay.is-open .rsa-menu-item { animation: none; }
+}
+/* Salida: mismo trayecto, más corto. Sin esto el cierre se siente duro. */
+.rsa-overlay.is-closing { animation: rsaOverlayOut 140ms ease-in both; pointer-events: none; }
+.rsa-overlay.is-closing > .rsa-menu,
+.rsa-overlay.is-closing > .rsa-panel { animation: rsaSheetOut 140ms ease-in both; }
+@keyframes rsaOverlayOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@keyframes rsaSheetOut {
+  from { opacity: 1; transform: none; }
+  to { opacity: 0; transform: translateY(6px) scale(0.99); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rsa-overlay.is-closing,
+  .rsa-overlay.is-closing > .rsa-menu,
+  .rsa-overlay.is-closing > .rsa-panel { animation: none; }
+}
 
 /* ── Menú de agentes ──────────────────────────────────────────────────── */
 .rsa-menu {
@@ -75,12 +122,14 @@
   cursor: pointer;
   color: var(--text-body);
   font-family: var(--font-ui);
-  transition: border-color 120ms ease, background 120ms ease;
+  transition: border-color 120ms ease, background 120ms ease, transform 120ms ease;
 }
 .rsa-menu-item:hover {
   border-color: var(--color-primary);
   background: var(--bg-secondary);
+  transform: translateY(-1px);
 }
+.rsa-menu-item:active { transform: translateY(0); }
 .rsa-menu-icon { color: var(--text-muted); display: inline-flex; }
 .rsa-menu-item:hover .rsa-menu-icon { color: var(--color-primary); }
 .rsa-menu-label {
@@ -210,7 +259,7 @@
   border-radius: 7px;
   padding: 7px 13px;
   cursor: pointer;
-  transition: background 120ms ease, border-color 120ms ease;
+  transition: background 120ms ease, border-color 120ms ease, color 120ms ease;
 }
 .rsa-btn:disabled { opacity: 0.45; cursor: not-allowed; }
 .rsa-btn-primary {

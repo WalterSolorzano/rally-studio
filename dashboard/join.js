@@ -287,7 +287,12 @@
       nombre.textContent = String(info.project).replace(/[-_]+/g, " ");
     }
     capa.hidden = false;
-    const quitar = function () { capa.hidden = true; };
+    const quitar = function () {
+      if (capa.hidden) return;
+      if (!capa.classList) { capa.hidden = true; return; }
+      capa.classList.add("is-sale");
+      programar(function () { capa.hidden = true; }, 240);
+    };
     programar(quitar, 2600);
     capa.addEventListener("click", quitar);
   }
@@ -456,8 +461,19 @@
   function espera(encendida) {
     const capa = document.getElementById("join-entrando");
     if (!capa) return;
-    if (encendida) capa.removeAttribute("hidden");
-    else capa.setAttribute("hidden", "");
+    if (encendida) {
+      if (capa.classList) capa.classList.remove("is-sale");
+      capa.removeAttribute("hidden");
+      return;
+    }
+    if (capa.hasAttribute("hidden")) return;
+    // La capa se va desvaneciendo: si desaparece de golpe se siente un corte.
+    if (!capa.classList) { capa.setAttribute("hidden", ""); return; }
+    capa.classList.add("is-sale");
+    programar(function () {
+      capa.setAttribute("hidden", "");
+      capa.classList.remove("is-sale");
+    }, 220);
   }
 
   form.addEventListener("submit", async function (event) {

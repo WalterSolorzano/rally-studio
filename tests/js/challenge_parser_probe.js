@@ -50,6 +50,11 @@ function main() {
     return;
   }
 
+  if (comando === "ods") {
+    salir({ ods: parser.normalizeOds(arg.texto || "") });
+    return;
+  }
+
   if (comando === "titulo") {
     salir({ valido: parser.isPlausibleTitle(arg.titulo || "") });
     return;

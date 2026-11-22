@@ -85,10 +85,22 @@
     const t = String(text || "");
     let m;
     while ((m = re.exec(t)) !== null) {
-      const n = parseFloat(m[0].replace(/[.,]/g, ""));
+      const n = aNumero(m[0]);
       if (n >= 1000) out.push(n);
     }
     return out;
+  }
+  // "5,000.00" y "5.000,25" son cinco mil con decimales, no quinientos mil:
+  // quitar todo separador convierte los centavos en ceros a la izquierda.
+  function aNumero(token) {
+    const t = String(token || "").replace(/[.,]+$/, "");
+    if (/^\d{1,3}(?:[.,]\d{3})+$/.test(t)) return parseFloat(t.replace(/[.,]/g, ""));
+    if (t.includes(",") && t.includes(".")) {
+      return parseFloat(t.lastIndexOf(",") > t.lastIndexOf(".")
+        ? t.replace(/\./g, "").replace(",", ".")
+        : t.replace(/,/g, ""));
+    }
+    return parseFloat(t.replace(",", "."));
   }
   // Primera frase literal (≥ minLen caracteres ya normalizados) compartida
   // entre dos textos. Matching exacto, nada difuso.
@@ -817,7 +829,19 @@
       // Cerrar el panel corta el análisis en curso (un job huérfano sigue
       // quemando cupo del proveedor y su resultado ya no tiene dónde ir).
       if (typeof RSA.cancelAnalysis === "function") RSA.cancelAnalysis();
-      if (overlay) { overlay.parentNode.removeChild(overlay); overlay = null; }
+      if (!overlay) return;
+      // Salida animada: el overlay se va, no desaparece de golpe.
+      const nodo = overlay;
+      overlay = null;
+      nodo.classList.add("is-closing");
+      let hecho = false;
+      const fin = function () {
+        if (hecho) return;
+        hecho = true;
+        if (nodo.parentNode) nodo.parentNode.removeChild(nodo);
+      };
+      nodo.addEventListener("animationend", fin);
+      setTimeout(fin, 220);
     }
     document.addEventListener("keydown", function (ev) {
       if (ev.key === "Escape") closeOverlays();
@@ -1310,5 +1334,11 @@
       rubricFor: rubricFor,
       ensureRubrics: ensureRubrics
     };
+    // app.js:2181 abre este menú con `RSA.openMenu()`; sin este alias el enlace
+    // del menú de proyecto se veía vivo y no hacía nada.
+    if (globalThis.RSA) {
+      RSA.openMenu = openMenu;
+      RSA.closeOverlays = closeOverlays;
+    }
   }
 })();

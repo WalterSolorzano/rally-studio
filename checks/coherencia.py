@@ -76,11 +76,14 @@ _POR_CIENTO_HABLADO = re.compile(
 
 def _cifras_habladas(texto: str) -> str:
     """Pasa a digitos las cifras dichas con letra, sin tocar el resto del texto."""
+    # Primero los porcentajes en digitos ("43 por ciento"): si se convierte
+    # "ciento" a 100 antes, la cifra se parte en 43 y 100 y pierde el %.
+    texto = _POR_CIENTO.sub(r"\1 %", texto)
     texto = _POR_CIENTO_HABLADO.sub(
         lambda m: " %d %%" % _HABLADO[m.group(1).lower()], texto
     )
     texto = _NUMERO_HABLADO.sub(lambda m: " %d " % _HABLADO[m.group(1).lower()], texto)
-    return _POR_CIENTO.sub(r"\1 %", texto)
+    return texto
 
 
 def _normalizar_token(token: str) -> str:

@@ -202,6 +202,9 @@
       fallar(res);
       botonActivo.disabled = false;
       espera(false);
+      // Devolver el foco al campo que hay que corregir.
+      if (botonActivo === botonLlave) llave.focus();
+      else clave.focus();
       return;
     }
     guardarSesion(res.body);
@@ -255,6 +258,7 @@
       .catch(function () {
         decir("No se pudo contactar al servidor.", "error");
         boton.disabled = false;
+        espera(false);
       });
   });
 
@@ -283,6 +287,7 @@
       .catch(function () {
         decir("No se pudo contactar al servidor.", "error");
         botonLlave.disabled = false;
+        espera(false);
       });
   });
 
@@ -299,8 +304,17 @@
 
   function espera(encendida) {
     if (!capaEspera || !capaEspera.classList) return;
-    if (encendida) capaEspera.removeAttribute("hidden");
-    else capaEspera.setAttribute("hidden", "");
+    if (encendida) {
+      capaEspera.removeAttribute("hidden");
+      void capaEspera.offsetWidth;
+      capaEspera.classList.add("is-on");
+      return;
+    }
+    // Salir tambien se anima: sin esto la capa desaparecia de golpe al fallar.
+    capaEspera.classList.remove("is-on");
+    setTimeout(function () {
+      if (!capaEspera.classList.contains("is-on")) capaEspera.setAttribute("hidden", "");
+    }, 420);
   }
 
   // Menos de medio segundo se siente un salto; mas de dos, se siente colgado.

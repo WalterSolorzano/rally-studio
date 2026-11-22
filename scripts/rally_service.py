@@ -154,6 +154,9 @@ PREFIJOS_LIBRES = (
     "/assets/app-icon-192.png",
     "/assets/app-icon-512.png",
     "/assets/app-icon-maskable-512.png",
+    # El puente de sincronizacion no tiene sesion de miembro: se autentica con
+    # X-Rally-Sync-Token y cada handler lo verifica con sync_authorized().
+    "/api/sync/",
 )
 
 
@@ -326,8 +329,10 @@ def sync_brief_from_state(state: dict) -> None:
             cargado = json.loads(ruta.read_text(encoding="utf-8"))
             if isinstance(cargado, dict):
                 actual = cargado
-    except (OSError, ValueError):
-        actual = {}
+    except (OSError, ValueError) as exc:
+        # Nunca reemplazar un brief ilegible con {}: se perderia el proyecto.
+        print(f"[brief] brief.json ilegible ({exc}); no se sincroniza para no borrarlo", flush=True)
+        return
     cambios = 0
     for campo in CAMPOS_BRIEF:
         valor = state.get(campo)
@@ -342,9 +347,12 @@ def sync_brief_from_state(state: dict) -> None:
     actual["_generated_at"] = time.strftime("%Y-%m-%dT%H:%M:%S")
     try:
         ruta.parent.mkdir(parents=True, exist_ok=True)
-        ruta.write_text(
+        # Escritura atomica: un corte a mitad no deja el brief truncado.
+        tmp = ruta.with_name(f".{ruta.name}.{os.getpid()}.tmp")
+        tmp.write_text(
             json.dumps(actual, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
         )
+        os.replace(tmp, ruta)
     except OSError as exc:
         print(f"[brief] no se pudo sincronizar brief.json: {exc}", flush=True)
 
@@ -4185,8 +4193,13 @@ class ThreadedTCPServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
         super().server_bind()
 
     def handle_error(self, request, client_address):
-        # Ignorar desconexiones abruptas del navegador
-        pass
+        # Una excepcion sin traza es un fallo invisible: se registra siempre.
+        # Las desconexiones abruptas del navegador no llegan hasta aqui.
+        import traceback
+
+        ip = client_address[0] if client_address else "?"
+        ruta = getattr(request, "path", "") if request is not None else ""
+        print(f"[error] {ip} {ruta}\n{traceback.format_exc()}", file=sys.stderr, flush=True)
 
 def _port_is_busy(port):
     """True si algun proceso ya escucha ese puerto (comprobacion SIN reuse)."""

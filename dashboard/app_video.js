@@ -1486,7 +1486,14 @@ El entregable oficial es \`assets/voice/narration.mp4\`: MP4 con audio AAC, sin 
 // en palabras, porque lo que califica el jurado es el audio final.
 const GUION_WPM = 135;
 const GUION_MIN_PALABRAS = 240;
-const GUION_MAX_PALABRAS = 280;
+// El techo sale del tiempo oficial, no de la costumbre: 120 s a 135 palabras por
+// minuto son 270. Con 280 el medidor decia «Entra en los 120 s» mientras la
+// aritmetica del propio aviso daba 124 s, y el video se pasaba del limite que
+// descalifica.
+const GUION_SEGUNDOS_MAX = 120;
+const GUION_MAX_PALABRAS = Math.floor((GUION_SEGUNDOS_MAX * GUION_WPM) / 60);
+// Por debajo de esto queda holgura para el redondeo del reproductor.
+const GUION_HOLGURA_S = 118;
 
 function scriptPalabrasDe(texto) {
   if (!texto) return 0;
@@ -1509,7 +1516,10 @@ function scriptMeterTexto() {
     return `${n} palabras ≈ ${s} s de voz. Faltan ${GUION_MIN_PALABRAS - n} para llenar los 120 s: alarga una historia o un dato, no repitas el nombre del lugar.`;
   }
   if (n > GUION_MAX_PALABRAS) {
-    return `${n} palabras ≈ ${s} s de voz. Sobran ${n - GUION_MAX_PALABRAS}: el corte se hace en lo que no sostiene la historia.`;
+    return `${n} palabras ≈ ${s} s de voz. Sobran ${n - GUION_MAX_PALABRAS} sobre el techo de ${GUION_MAX_PALABRAS} palabras (${GUION_SEGUNDOS_MAX} s): el corte se hace en lo que no sostiene la historia.`;
+  }
+  if (s >= GUION_HOLGURA_S) {
+    return `${n} palabras ≈ ${s} s de voz. Entra en los 120 s, pero justo: deja 1 o 2 s de holgura, que el reproductor redondea.`;
   }
   return `${n} palabras ≈ ${s} s de voz. Entra en los 120 s. Marca con / cada pausa y no repitas el lugar más de una vez.`;
 }

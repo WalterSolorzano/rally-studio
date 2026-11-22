@@ -2,8 +2,26 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const PORT = 8000;
+const PORT = Number(process.env.PORT || 8000);
+const HOST = process.env.HOST || '127.0.0.1';
 const ROOT = __dirname;
+
+// Servidor estatico de desarrollo: no publica el repositorio entero.
+// Solo el tablero y sus recursos; nunca .git, scripts, claves ni bases.
+const PRIVADOS = [
+  '/.git', '/scripts/', '/locks/', '/node_modules/', '/tmp/',
+  '/.env', '.key', '.token', '.db', '.ps1', '.bat'
+];
+const PUBLICOS = ['/dashboard/', '/assets/', '/brand/', '/research/', '/knowledge/'];
+const EXT_PERMITIDAS = ['.html', '.css', '.js', '.svg', '.png', '.jpg', '.jpeg',
+  '.webmanifest', '.woff2'];
+
+function permitido(reqPath) {
+  const ruta = reqPath.toLowerCase();
+  if (PRIVADOS.some((p) => ruta.includes(p))) return false;
+  if (PUBLICOS.some((p) => ruta.startsWith(p))) return true;
+  return EXT_PERMITIDAS.includes(path.extname(ruta));
+}
 
 const MIME = {
   '.html': 'text/html; charset=utf-8',
@@ -20,7 +38,14 @@ const MIME = {
 };
 
 const server = http.createServer((req, res) => {
-  let reqPath = req.url.split('?')[0];
+  let reqPath;
+  try {
+    reqPath = decodeURIComponent(req.url.split('?')[0]);
+  } catch (err) {
+    res.writeHead(400, { 'Content-Type': 'text/plain; charset=utf-8' });
+    res.end('400 Bad Request');
+    return;
+  }
 
   // Mock API telemetría para evitar errores 404
   if (reqPath === '/api/telemetry') {
@@ -44,7 +69,13 @@ const server = http.createServer((req, res) => {
   if (reqPath === '/app.js') reqPath = '/dashboard/app.js';
   if (reqPath === '/style.css') reqPath = '/dashboard/style.css';
 
-  const filePath = path.join(ROOT, decodeURIComponent(reqPath));
+  if (!permitido(reqPath)) {
+    res.writeHead(403, { 'Content-Type': 'text/plain; charset=utf-8' });
+    res.end('403 Forbidden');
+    return;
+  }
+
+  const filePath = path.join(ROOT, reqPath);
 
   if (!filePath.startsWith(ROOT)) {
     res.writeHead(403);
@@ -65,8 +96,7 @@ const server = http.createServer((req, res) => {
       'Content-Type': mime,
       'Cache-Control': 'no-cache, no-store, must-revalidate',
       'Pragma': 'no-cache',
-      'Expires': '0',
-      'Access-Control-Allow-Origin': '*'
+      'Expires': '0'
     });
     fs.createReadStream(filePath).pipe(res);
   });
@@ -76,6 +106,10 @@ server.on('error', (e) => {
   console.error('Server error:', e.message);
 });
 
-server.listen(PORT, '0.0.0.0', () => {
-  console.log(`Rally Studio server running at http://localhost:${PORT}/dashboard/`);
+server.on('clientError', (err, socket) => {
+  if (socket.writable) socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');
+});
+
+server.listen(PORT, HOST, () => {
+  console.log(`Rally Studio server running at http://${HOST}:${PORT}/dashboard/`);
 });

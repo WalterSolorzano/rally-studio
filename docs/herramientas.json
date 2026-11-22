@@ -258,10 +258,10 @@
       "tipo": "skill",
       "origen": "hub",
       "agente": "grafista2d",
-      "instalar": "npx skills add impeccable",
+      "instalar": "npx skills add pbakaus/impeccable -y",
       "se_usa_cuando": ["interfaz", "ui", "landing", "rediseno", "pulir pantalla"],
       "no_instalar_cuando": ["solo texto o datos sin interfaz"],
-      "nota": "Opcional para propuesta-identidad; no es requisito."
+      "nota": "Obligatoria: la instala scripts/setup_agente.ps1. Pregunta antes de suponer en el diseno de identidad."
     },
     {
       "id": "frontend-design",

@@ -366,6 +366,28 @@ body.sidebar-collapsed.panel-collapsed #panel {
   z-index: 110;
   overflow: hidden;
   padding: 4px 0;
+  animation: menuBoxIn 140ms cubic-bezier(.16, 1, .3, 1) both;
+}
+
+/* El menu se abre y se cierra con movimiento: display a secas se siente duro. */
+@keyframes menuBoxIn {
+  from { opacity: 0; transform: translateY(-6px) scale(.98); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes menuBoxOut {
+  from { opacity: 1; transform: none; }
+  to { opacity: 0; transform: translateY(-4px) scale(.99); }
+}
+
+.dropdown-menu-box.is-cerrando {
+  animation: menuBoxOut 130ms ease-in both;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dropdown-menu-box,
+  .dropdown-menu-box.is-cerrando { animation: none; }
 }
 
 .dropdown-menu-box a, .dropdown-menu-box label {
@@ -2237,6 +2259,18 @@ textarea {
   from { opacity: 0; transform: translateY(12px) scale(0.96); }
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
+/* Salida: el aviso se va, no se esfuma. */
+.toast-notice.is-leaving {
+  animation: toastOut 160ms ease-in forwards;
+  pointer-events: none;
+}
+@keyframes toastOut {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to { opacity: 0; transform: translateY(8px) scale(0.98); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .toast-notice.is-leaving { animation: none; opacity: 0; }
+}
 
 /* ── MODAL CALIBRACIÓN DE TIEMPO ──────────────────────────────────── */
 .modal-overlay {
@@ -2267,6 +2301,24 @@ textarea {
 @keyframes modalPop {
   from { opacity: 0; transform: scale(0.95) translateY(8px); }
   to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Salida del modal: sin esto la ventana desaparece de golpe. */
+.modal-overlay.is-cerrando { animation: modalFadeOut 130ms ease-in both; pointer-events: none; }
+.modal-overlay.is-cerrando .modal-card,
+.modal-overlay.is-cerrando .challenge-detail-modal-card { animation: modalPopOut 130ms ease-in both; }
+@keyframes modalFadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@keyframes modalPopOut {
+  from { opacity: 1; transform: scale(1) translateY(0); }
+  to { opacity: 0; transform: scale(0.97) translateY(4px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .modal-overlay.is-cerrando,
+  .modal-overlay.is-cerrando .modal-card,
+  .modal-overlay.is-cerrando .challenge-detail-modal-card { animation: none; }
 }
 .modal-header {
   display: flex;
@@ -7042,7 +7094,7 @@ body.rs-sheet-open { overflow: hidden; }
 
 /* El copiloto no compite con el texto: se lee como una opción, no como un botón más */
 .pa-section .ai-chat-mini { padding: 4px 9px 4px 6px; gap: 7px; border-color: transparent;
-  background: transparent; }
+  background: transparent; transition: background-color 140ms ease, border-color 140ms ease; }
 .pa-section .ai-chat-mini:hover { border-color: var(--border-strong); background: var(--bg-subtle); }
 .pa-section .ai-chat-mini-avatar { width: 16px; height: 16px; }
 .pa-section .ai-chat-mini strong { font-size: 11.5px; color: var(--text-muted); }
@@ -7176,7 +7228,9 @@ body.rs-sheet-open { overflow: hidden; }
 .logo-drop img { width: 100%; height: 100%; object-fit: contain; padding: 8px; }
 .identity-actions { grid-column: 1 / -1; }
 .ttl { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--text-muted); }
-.ttl select { min-height: 42px; padding: 0 10px; border: 1px solid var(--border-strong); border-radius: var(--radius-sm); font: inherit; background: var(--bg-app); color: var(--text-main); }
+.ttl > span { white-space: nowrap; }
+.ttl select { min-height: 42px; padding: 0 10px; border: 1px solid var(--border-strong); border-radius: var(--radius-sm); font: inherit; background: var(--bg-app); color: var(--text-main); transition: border-color 140ms ease, background-color 140ms ease; }
+.ttl select:hover { border-color: var(--border-focus); }
 #invite-url:empty { display: none; }
 #invite-url { display: block; margin-top: var(--space-3); padding: var(--space-3) var(--space-4); border: 1px dashed var(--border-strong); border-radius: var(--radius-sm); background: var(--bg-subtle); font: 12.5px/1.5 var(--font-mono); color: var(--text-body); word-break: break-all; }
 .invite-nota { margin: var(--space-2) 0 0; font-size: 12px; color: var(--text-muted); }
@@ -7354,4 +7408,190 @@ body.rs-sheet-open { overflow: hidden; }
   .estudio-cara { width: 96px; height: 96px; }
   .estudio-pieza label { width: 52px; height: 52px; }
   .estudio-pieza svg { width: 40px; height: 40px; }
+}
+/* -- MICRO-TRANSICIONES -----------------------------------------------
+   Nada debe cambiar de golpe al pasar el cursor: mismo criterio que el
+   resto del workbench (120-200 ms, ease). Solo propiedades de pintura. */
+.admin-back,
+.admin-actions button.primary,
+.admin-actions button.ghost,
+.admin-actions button.danger,
+.rank-chart-item text,
+.rank-chart-item rect,
+.ai-chat-mini,
+.btn-icon-del,
+.btn-select-card,
+.btn-toggle-sidebar,
+.budget-url,
+.budget-url-edit,
+.ch-drop,
+.copilot-paste-btn,
+.cr-remove,
+.cr-renew-btn,
+.data-table tr td,
+.deadline-pill,
+.di-fold > summary,
+.estudio-pieza label,
+.logo-dropzone,
+.nav-link.is-cfg,
+.ods-row-head,
+.ods-scope-btn,
+.panel-todo-item button,
+.rs-action-row,
+.rs-btn,
+.rs-closed-chip,
+.rs-deliv,
+.rs-filter,
+.rs-link,
+.rs-modal-close,
+.rs-person-x,
+.rs-phase,
+.rs-roster-pick-item,
+.rs-tile {
+  transition: background-color 140ms ease, border-color 140ms ease,
+    color 140ms ease, box-shadow 140ms ease, transform 140ms ease;
+}
+
+/* Pintura de SVG: el brillo y el relleno también siguen al cursor. */
+.admin-actions button.danger,
+.rank-chart-item text,
+.rank-chart-item rect {
+  transition: filter 140ms ease, fill 140ms ease, opacity 140ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-back,
+  .admin-actions button.primary,
+  .admin-actions button.ghost,
+  .admin-actions button.danger,
+  .ai-chat-mini,
+  .btn-icon-del,
+  .btn-select-card,
+  .btn-toggle-sidebar,
+  .budget-url,
+  .budget-url-edit,
+  .ch-drop,
+  .copilot-paste-btn,
+  .cr-remove,
+  .cr-renew-btn,
+  .data-table tr td,
+  .deadline-pill,
+  .di-fold > summary,
+  .estudio-pieza label,
+  .logo-dropzone,
+  .nav-link.is-cfg,
+  .ods-row-head,
+  .ods-scope-btn,
+  .panel-todo-item button,
+  .rs-action-row,
+  .rs-btn,
+  .rs-closed-chip,
+  .rs-deliv,
+  .rs-filter,
+  .rs-link,
+  .rs-modal-close,
+  .rs-person-x,
+  .rs-phase,
+  .rs-roster-pick-item,
+  .rs-tile {
+    transition: none;
+  }
+}
+.script-audio,
+.script-mode-btn,
+.shot-plan-row,
+.src-chip,
+.rs-tools-item,
+.rs-tools-danger {
+  transition: background-color 140ms ease, border-color 140ms ease,
+    color 140ms ease, box-shadow 140ms ease, transform 140ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .script-audio,
+  .script-mode-btn,
+  .shot-plan-row,
+  .src-chip,
+  .rs-tools-item,
+  .rs-tools-danger {
+    transition: none;
+  }
+}
+.certamen-card,
+.wd-chip,
+.ods-row-name,
+.panel-todo-text {
+  transition: background-color 140ms ease, border-color 140ms ease,
+    color 140ms ease, box-shadow 140ms ease, transform 140ms ease;
+}
+
+/* -- PANEL DE AUDITOR�A: la lista entra, no aparece de golpe ---------- */
+.panel-todo-item {
+  animation: panelTodoIn 180ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+.panel-todo-item:nth-child(2) { animation-delay: 30ms; }
+.panel-todo-item:nth-child(3) { animation-delay: 60ms; }
+.panel-todo-item:nth-child(4) { animation-delay: 90ms; }
+.panel-todo-item:nth-child(5) { animation-delay: 120ms; }
+.panel-todo-item:nth-child(6) { animation-delay: 150ms; }
+.panel-todo-item:nth-child(n+7) { animation-delay: 180ms; }
+@keyframes panelTodoIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .panel-todo-item { animation: none; }
+}
+
+/* --- Admin: nada aparece de golpe ---
+   La consola del admin carga tres paneles, una rejilla de miembros y el
+   resultado de la invitacion. Todo entra con un movimiento corto para que
+   la pantalla no se sienta dura. */
+@keyframes adminEntra {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+.admin-shell > .admin-panel { animation: adminEntra .34s cubic-bezier(.16,1,.3,1) both; }
+.admin-shell > .admin-panel:nth-of-type(1) { animation-delay: .04s; }
+.admin-shell > .admin-panel:nth-of-type(2) { animation-delay: .08s; }
+.admin-shell > .admin-panel:nth-of-type(3) { animation-delay: .12s; }
+.admin-shell > .admin-panel:nth-of-type(4) { animation-delay: .16s; }
+#members-list .member-row { animation: adminEntra .3s cubic-bezier(.16,1,.3,1) both; }
+#members-list .member-row:nth-child(2) { animation-delay: 40ms; }
+#members-list .member-row:nth-child(3) { animation-delay: 80ms; }
+#members-list .member-row:nth-child(4) { animation-delay: 120ms; }
+#members-list .member-row:nth-child(n+5) { animation-delay: 160ms; }
+#audit-list > * { animation: adminEntra .28s ease both; }
+#invite-url:not(:empty) { animation: adminEntra .28s ease both; }
+.choice-card {
+  transition: background-color 140ms ease, border-color 140ms ease,
+    box-shadow 140ms ease, transform 140ms ease;
+}
+.choice-card:hover { transform: translateY(-1px); }
+.choice-card:active { transform: scale(.99); }
+.choice-card .choice-check { transition: opacity 140ms ease, transform 140ms ease; }
+.choice-card:not(.is-on) .choice-check { opacity: 0; transform: scale(.7); }
+.logo-drop { transition: border-color 140ms ease, background-color 140ms ease; }
+.logo-drop:hover { border-color: var(--color-primary); }
+.admin-actions button.ghost:hover { background: var(--bg-subtle); }
+.admin-actions button.danger:hover { filter: brightness(.97); }
+@keyframes choicePop { 0% { transform: scale(.8); } 70% { transform: scale(1.12); } 100% { transform: scale(1); } }
+.choice-card.is-on .choice-check { animation: choicePop .24s ease; }
+@media (prefers-reduced-motion: reduce) {
+  .admin-shell > .admin-panel,
+  #members-list .member-row,
+  #audit-list > *,
+  #invite-url:not(:empty),
+  .choice-card.is-on .choice-check { animation: none !important; }
+}
+
+/* El cajón de importar retos y la barra movil se encienden y se apagan sin cortes. */
+#custom-challenge-input-box { animation: importBoxIn 170ms cubic-bezier(.16, 1, .3, 1) both; }
+#custom-challenge-input-box.is-cerrando { animation: importBoxOut 120ms ease-in both; pointer-events: none; }
+@keyframes importBoxIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: none; } }
+@keyframes importBoxOut { from { opacity: 1; } to { opacity: 0; } }
+#mobile-bottom-bar { animation: mobileBarIn 200ms cubic-bezier(.16, 1, .3, 1) both; }
+@keyframes mobileBarIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  #custom-challenge-input-box, #custom-challenge-input-box.is-cerrando, #mobile-bottom-bar { animation: none !important; }
 }

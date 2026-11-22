@@ -60,6 +60,14 @@ def validar_clave(key: str) -> str:
     return key
 
 
+def validar_version(valor: Any) -> int:
+    """Convierte base_version a entero; null o basura es 400, no error interno."""
+    try:
+        return int(valor)
+    except (TypeError, ValueError):
+        raise ValueError("base-version-invalida") from None
+
+
 def estado_a_secciones(state: dict[str, Any]) -> dict[str, Any]:
     """Divide el estado del dashboard en secciones independientes."""
     if not isinstance(state, dict):
@@ -186,6 +194,18 @@ class SQLiteSectionStore(SectionStore):
                     ON sections(project_id, seq);
                 CREATE INDEX IF NOT EXISTS idx_events_project
                     ON events(project_id, id);
+                CREATE TABLE IF NOT EXISTS section_history (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    project_id TEXT NOT NULL,
+                    key TEXT NOT NULL,
+                    version INTEGER NOT NULL,
+                    data TEXT NOT NULL,
+                    updated_by TEXT NOT NULL DEFAULT '',
+                    updated_by_id TEXT NOT NULL DEFAULT '',
+                    at REAL NOT NULL
+                );
+                CREATE INDEX IF NOT EXISTS idx_history_section
+                    ON section_history(project_id, key, version);
                 """
             )
 
@@ -300,8 +320,9 @@ class SQLiteSectionStore(SectionStore):
             conn.execute("BEGIN IMMEDIATE")
             current = self._current(conn, project_id, key)
             current_version = int(current["version"]) if current else 0
-            if int(base_version) != current_version:
-                raise SectionConflict(key, int(base_version), current)
+            base = validar_version(base_version)
+            if base != current_version:
+                raise SectionConflict(key, base, current)
             if self._lock_active(current) and (current or {}).get("lock_owner_id") != actor_id:
                 raise SectionLocked(key, current)
             if (key not in CLAVES_LOCALES
@@ -314,6 +335,8 @@ class SQLiteSectionStore(SectionStore):
             lock_until = current.get("lock_until") if current else 0
             if current and current.get("lock_owner_id") == actor_id:
                 lock_until = max(float(lock_until or 0), now + self._ttl(ttl_minutes) * 60)
+            if current is not None and current.get("data") is not None:
+                self._historial_guardar(conn, project_id, key, current, now)
             conn.execute(
                 "INSERT INTO sections(project_id,key,data,version,updated_by,updated_by_id,"
                 "updated_at,lock_owner,lock_owner_id,lock_until,seq) "
@@ -333,6 +356,44 @@ class SQLiteSectionStore(SectionStore):
             updated = self._current(conn, project_id, key)
             conn.commit()
             return updated or {}
+
+    def _historial_guardar(self, conn: sqlite3.Connection, project_id: str, key: str,
+                           current: dict, now: float) -> None:
+        """Guarda la version que se va a reemplazar. Escribir no borra."""
+        conn.execute(
+            "INSERT INTO section_history(project_id,key,version,data,updated_by,"
+            "updated_by_id,at) VALUES(?,?,?,?,?,?,?)",
+            (project_id, key, int(current.get("version") or 0),
+             json.dumps(current.get("data"), ensure_ascii=False),
+             str(current.get("updated_by") or ""),
+             str(current.get("updated_by_id") or ""), now),
+        )
+
+    def historial(self, project_id: str, key: str, limit: int = 20) -> list[dict]:
+        """Versiones anteriores de una seccion, la mas reciente primero."""
+        key = validar_clave(key)
+        tope = max(1, min(100, int(20 if limit is None else limit)))
+        with self._lock, self._connect() as conn:
+            filas = conn.execute(
+                "SELECT * FROM section_history WHERE project_id = ? AND key = ? "
+                "ORDER BY version DESC, id DESC LIMIT ?",
+                (project_id, key, tope),
+            ).fetchall()
+        salida = []
+        for fila in filas:
+            try:
+                dato = json.loads(fila["data"])
+            except (TypeError, ValueError):
+                dato = None
+            salida.append({
+                "key": fila["key"],
+                "data": dato,
+                "version": int(fila["version"]),
+                "updated_by": fila["updated_by"] or "",
+                "updated_by_id": fila["updated_by_id"] or "",
+                "at": float(fila["at"]),
+            })
+        return salida
 
     def lock(self, project_id: str, key: str, actor: str, actor_id: str,
              ttl_minutes: int = LOCK_DEFAULT_MINUTOS) -> dict:

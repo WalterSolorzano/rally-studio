@@ -193,6 +193,16 @@ def _reeescribir(recurso: str, datos: dict) -> bool:
         return False
 
 
+def _reescribir_si(recurso: str, esperados: list, datos: dict) -> bool:
+    """CAS best-effort: escribe solo si los holders en disco no cambiaron."""
+    actual = _leer(recurso)
+    if actual is None or actual.get("corrupto"):
+        return False
+    if json.dumps(actual.get("holders"), sort_keys=True) != json.dumps(esperados, sort_keys=True):
+        return False
+    return _reeescribir(recurso, datos)
+
+
 def _quitar(recurso: str) -> bool:
     """Robo atomico: renombrar fuera del camino (solo el que renombra gana)."""
     try:
@@ -298,7 +308,7 @@ def acquire(resources: list, owner: str, priority: str = "media",
                 if len(vivos) < datos["capacidad"]:
                     candidato = _titular_completo(owner, priority, child_pid)
                     datos["holders"] = vivos + [candidato]
-                    if _reeescribir(recurso, datos):
+                    if _reescribir_si(recurso, vivos, datos):
                         tomados[recurso] = candidato
                         pend.pop(recurso)
                     continue
@@ -309,7 +319,7 @@ def acquire(resources: list, owner: str, priority: str = "media",
                         victima = bajas[0]
                         datos["holders"] = [h for h in vivos if h is not victima] + [
                             _titular_completo(owner, priority, child_pid)]
-                        if _reeescribir(recurso, datos):
+                        if _reescribir_si(recurso, vivos, datos):
                             _rompeprint(recurso, f"ROBO por prioridad: '{owner}' (alta) sustituye a '{victima.get('owner')}' (baja)")
                             tomados[recurso] = datos["holders"][-1]
                             pend.pop(recurso)
@@ -414,17 +424,18 @@ def _run(args: argparse.Namespace, cmd: list, recursos: list) -> int:
     except Exception:  # noqa: BLE001
         registrar = None
 
-    hijo = subprocess.Popen(cmd)
-    print(f"[GPU-LOCK] Comando: {shlex.join(cmd)} (pid hijo={hijo.pid})")
+    # Primero el candado, despues el trabajo: si se lanza el hijo antes, un
+    # render corre sin guardia mientras se negocia el lock.
     inicio = time.time()
     ok = acquire(recursos, args.owner, args.priority,
-                 timeout_s=args.timeout, child_pid=hijo.pid)
+                 timeout_s=args.timeout, child_pid=0)
     if not ok:
-        hijo.kill()
         if registrar:
             registrar("bloqueo", comando=shlex.join(cmd), owner=args.owner,
                       segundos=round(time.time() - inicio, 1))
         return 3
+    hijo = subprocess.Popen(cmd)
+    print(f"[GPU-LOCK] Comando: {shlex.join(cmd)} (pid hijo={hijo.pid})")
     codigo = hijo.wait()
     release(args.owner, recursos)
     if registrar:

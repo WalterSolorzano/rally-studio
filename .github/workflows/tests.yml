@@ -30,3 +30,17 @@ jobs:
 
       - name: Correr las pruebas
         run: python -m pytest tests -q --tb=short
+
+  node:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Suites Node (motor IA y super agentes)
+        run: |
+          node tests/super_agents_core.test.js
+          node tests/test_ia_cliente.mjs
