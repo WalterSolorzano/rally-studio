@@ -39,18 +39,32 @@
     { id: "p5", nombre: "Raya al lado" }
   ];
 
-  /* --- Accesorios: casco de ingeniero en varios tonos --- */
+  /* --- Accesorios: el tono se elige aparte, para eso esta TONOS --- */
   var ACCESORIOS = [
     { id: "a0", nombre: "Sin accesorio" },
     { id: "a1", nombre: "Lentes" },
     { id: "a2", nombre: "Lentes de sol" },
-    { id: "a3", nombre: "Casco amarillo" },
-    { id: "a4", nombre: "Casco naranja" },
-    { id: "a7", nombre: "Casco blanco" },
-    { id: "a8", nombre: "Casco azul" },
+    { id: "a3", nombre: "Casco de ingeniero" },
     { id: "a5", nombre: "Gorra" },
     { id: "a6", nombre: "Audifonos" }
   ];
+
+  /* Tonos del accesorio: mismos colores del sistema, sin morados ni neones. */
+  var TONOS = [
+    { id: "t1", nombre: "Azul Rally", color: "#0866F5" },
+    { id: "t2", nombre: "Verde", color: "#35C46A" },
+    { id: "t3", nombre: "Ambar", color: "#F0B429" },
+    { id: "t4", nombre: "Turquesa", color: "#2AA7AD" },
+    { id: "t5", nombre: "Rojo", color: "#B3261E" },
+    { id: "t6", nombre: "Blanco", color: "#FFFFFF" },
+    { id: "t7", nombre: "Azul noche", color: "#22304A" },
+    { id: "t8", nombre: "Naranja", color: "#EF7A22" }
+  ];
+
+  var TONO_POR_ID = {};
+  TONOS.forEach(function (t) { TONO_POR_ID[t.id] = t; });
+
+  var TONO_DEFECTO = { a1: "t7", a2: "t7", a3: "t3", a5: "t1", a6: "t7", a0: "t1" };
 
   var CAMISA_POR_ID = {};
   CAMISAS.forEach(function (c) { CAMISA_POR_ID[c.id] = c; });
@@ -58,6 +72,11 @@
   PELOS.forEach(function (p) { PELO_POR_ID[p.id] = p; });
   var ACC_POR_ID = {};
   ACCESORIOS.forEach(function (a) { ACC_POR_ID[a.id] = a; });
+  /* Los cuatro cascos viejos son el mismo casco con distinto tono. */
+  ACC_POR_ID.a4 = ACC_POR_ID.a3;
+  ACC_POR_ID.a7 = ACC_POR_ID.a3;
+  ACC_POR_ID.a8 = ACC_POR_ID.a3;
+  var ACC_ALIAS = { a4: "t8", a7: "t6", a8: "t1" };
 
   /* ------------------------------ piezas ------------------------------ */
 
@@ -90,11 +109,13 @@
   }
 
   function ojos() {
-    // Ojo de dibujo: punto grande con brillo y parpado.
+    // Ojo de dibujo amable: blanco con pupila, no un punto negro.
     function uno(x, y) {
       return (
-        '<circle cx="' + x + '" cy="' + y + '" r="4" fill="' + TINTA + '"/>' +
-        '<circle cx="' + (x - 1.3) + '" cy="' + (y - 1.4) + '" r="1.3" fill="' + BLANCO + '"/>'
+        '<ellipse cx="' + x + '" cy="' + y + '" rx="4" ry="4.5" fill="' + BLANCO +
+        '" stroke="' + TINTA + '" stroke-width="1.8"/>' +
+        '<circle cx="' + x + '" cy="' + (y + 0.5) + '" r="2" fill="' + TINTA + '"/>' +
+        '<circle cx="' + (x - 0.9) + '" cy="' + (y - 1) + '" r="0.8" fill="' + BLANCO + '"/>'
       );
     }
     return uno(39, 41) + uno(57, 41);
@@ -102,16 +123,11 @@
 
   function cejas() {
     return (
-      '<path d="M33 32.5 C36 30 41 29.6 44 31.4" fill="none" stroke="' + TINTA +
-      '" stroke-width="2.6" stroke-linecap="round"/>' +
-      '<path d="M52 31.4 C55 29.6 60 30 63 32.5" fill="none" stroke="' + TINTA +
-      '" stroke-width="2.6" stroke-linecap="round"/>'
+      '<path d="M34 31.4 C37 29.8 41 29.7 44 31" fill="none" stroke="' + TINTA +
+      '" stroke-width="2.3" stroke-linecap="round"/>' +
+      '<path d="M52 31 C55 29.7 59 29.8 62 31.4" fill="none" stroke="' + TINTA +
+      '" stroke-width="2.3" stroke-linecap="round"/>'
     );
-  }
-
-  function nariz() {
-    return '<path d="M48 43 C50 46.6 50 48.4 47.6 49.2" fill="none" stroke="' + TINTA +
-      '" stroke-width="2.2" stroke-linecap="round"/>';
   }
 
   function boca() {
@@ -192,32 +208,28 @@
     );
   }
 
-  function accesorio(tipo, camisaColor) {
+  function accesorio(tipo, tono) {
     var trazo = ' stroke="' + TINTA + '" stroke-width="2.8"';
     if (tipo === "a1") {
-      // Los anteojos son solo el aro: los ojos de abajo se siguen viendo.
+      // Los anteojos son aro con el tono elegido: los ojos de abajo se siguen viendo.
       return (
-        '<circle cx="39" cy="41" r="7" fill="none"' + trazo + "/>" +
-        '<circle cx="57" cy="41" r="7" fill="none"' + trazo + "/>" +
-        '<path d="M46 41 h4" stroke="' + TINTA + '" stroke-width="2.6" stroke-linecap="round"/>' +
-        '<path d="M32 39.5 L27 38 M64 39.5 L69 38" stroke="' + TINTA +
+        '<circle cx="39" cy="41" r="7" fill="none" stroke="' + tono + '" stroke-width="2.8"/>' +
+        '<circle cx="57" cy="41" r="7" fill="none" stroke="' + tono + '" stroke-width="2.8"/>' +
+        '<path d="M46 41 h4" stroke="' + tono + '" stroke-width="2.6" stroke-linecap="round"/>' +
+        '<path d="M32 39.5 L27 38 M64 39.5 L69 38" stroke="' + tono +
         '" stroke-width="2.4" stroke-linecap="round"/>'
       );
     }
     if (tipo === "a2") {
       return (
-        '<rect x="29.5" y="33" width="18.5" height="16" rx="5.5" fill="#22304A" stroke="' + TINTA +
-        '" stroke-width="2.8"/>' +
-        '<rect x="48" y="33" width="18.5" height="16" rx="5.5" fill="#22304A" stroke="' + TINTA +
-        '" stroke-width="2.8"/>' +
+        '<rect x="29.5" y="33" width="18.5" height="16" rx="5.5" fill="' + tono + '"' + trazo + "/>" +
+        '<rect x="48" y="33" width="18.5" height="16" rx="5.5" fill="' + tono + '"' + trazo + "/>" +
         '<path d="M48 39 h0.5" stroke="' + TINTA + '" stroke-width="3" stroke-linecap="round"/>' +
-        '<path d="M34 37 L39 36" stroke="' + BLANCO + '" stroke-width="2" opacity=".5" stroke-linecap="round"/>'
+        '<path d="M34 37 L39 36" stroke="' + BLANCO + '" stroke-width="2" opacity=".55" stroke-linecap="round"/>'
       );
     }
-    // Casco de ingeniero: copa con cresta, ala ancha y cuatro tonos de la paleta.
-    var CASCOS = { a3: "#F0B429", a4: "#EF7A22", a7: "#FFFFFF", a8: "#0866F5" };
-    if (CASCOS[tipo]) {
-      var tono = CASCOS[tipo];
+    if (tipo === "a3") {
+      // Casco de ingeniero: copa con cresta, ala ancha y el tono que se elija.
       return (
         '<path d="M26 31 C26 8 70 8 70 31 Z" fill="' + tono + '" stroke="' + TINTA +
         '" stroke-width="' + G + '" stroke-linejoin="round"/>' +
@@ -231,9 +243,9 @@
     }
     if (tipo === "a5") {
       return (
-        '<path d="M25 32 C25 14 71 14 71 32 Z" fill="' + camisaColor + '" stroke="' + TINTA +
+        '<path d="M25 32 C25 14 71 14 71 32 Z" fill="' + tono + '" stroke="' + TINTA +
         '" stroke-width="' + G + '" stroke-linejoin="round"/>' +
-        '<path d="M70 31 q14 2 14 8 h-14 Z" fill="' + camisaColor + '" stroke="' + TINTA +
+        '<path d="M70 31 q14 2 14 8 h-14 Z" fill="' + tono + '" stroke="' + TINTA +
         '" stroke-width="' + G + '" stroke-linejoin="round"/>' +
         '<path d="M25 30 L25 34" stroke="' + TINTA + '" stroke-width="3" stroke-linecap="round"/>' +
         '<circle cx="48" cy="17" r="2.6" fill="' + BLANCO + '"/>'
@@ -243,9 +255,9 @@
       return (
         '<path d="M25 46 C25 11 71 11 71 46" fill="none" stroke="' + TINTA + '" stroke-width="' + G +
         '" stroke-linecap="round"/>' +
-        '<rect x="17.5" y="35" width="11" height="17" rx="5" fill="#22304A" stroke="' + TINTA +
+        '<rect x="17.5" y="35" width="11" height="17" rx="5" fill="' + tono + '" stroke="' + TINTA +
         '" stroke-width="2.6"/>' +
-        '<rect x="67.5" y="35" width="11" height="17" rx="5" fill="#22304A" stroke="' + TINTA +
+        '<rect x="67.5" y="35" width="11" height="17" rx="5" fill="' + tono + '" stroke="' + TINTA +
         '" stroke-width="2.6"/>'
       );
     }
@@ -256,6 +268,7 @@
 
   function pintar(partes) {
     var color = (CAMISA_POR_ID[partes.camisa] || CAMISAS[0]).color;
+    var tono = (TONO_POR_ID[partes.tono] || TONO_POR_ID[TONO_DEFECTO[partes.accesorio] || "t1"]).color;
     return (
       '<svg class="rav-avatar" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" ' +
       'aria-hidden="true" focusable="false">' +
@@ -265,9 +278,8 @@
       peloFrente(partes.pelo) +
       cejas() +
       ojos() +
-      nariz() +
       boca() +
-      accesorio(partes.accesorio, color) +
+      accesorio(partes.accesorio, tono) +
       "</svg>"
     );
   }
@@ -342,31 +354,39 @@
 
   /* ------------------------------ lectura de la eleccion ------------------------------ */
 
-  /* "av_profe~p1~a3~c2" -> {base, pelo, accesorio, camisa} */
+  /* "av_profe~p1~a3~c2~t5" -> {base, pelo, accesorio, camisa, tono} */
   function partes(id) {
     var texto = String(id || "").trim();
     var trozos = texto.split("~");
     var base = POR_ID[trozos[0]] ? trozos[0] : LEGADO[trozos[0]] || "";
     var preset = base ? POR_ID[base] : POR_DEFECTO;
-    var salida = {
+    var basePelo = PELO_POR_ID[trozos[1]] ? trozos[1] : preset.pelo;
+    var baseAcc = ACC_POR_ID[trozos[2]] ? canonicalAcc(trozos[2]) : preset.accesorio;
+    var baseCam = CAMISA_POR_ID[trozos[3]] ? trozos[3] : preset.camisa;
+    var tono = TONO_DEFECTO[baseAcc] || "t1";
+    if (ACC_ALIAS[preset.accesorio] && !trozos[4]) tono = ACC_ALIAS[preset.accesorio];
+    if (TONO_POR_ID[trozos[4]]) tono = trozos[4];
+    return {
       base: base || POR_DEFECTO.base,
-      pelo: preset.pelo,
-      accesorio: preset.accesorio,
-      camisa: preset.camisa
+      pelo: basePelo,
+      accesorio: baseAcc,
+      camisa: baseCam,
+      tono: tono
     };
-    if (PELO_POR_ID[trozos[1]]) salida.pelo = trozos[1];
-    if (ACC_POR_ID[trozos[2]]) salida.accesorio = trozos[2];
-    if (CAMISA_POR_ID[trozos[3]]) salida.camisa = trozos[3];
-    return salida;
+  }
+
+  function canonicalAcc(id) {
+    return id === "a4" || id === "a7" || id === "a8" ? "a3" : id;
   }
 
   function espec(base, eleccion) {
     var p = partes(base);
     var e = eleccion || {};
     if (PELO_POR_ID[e.pelo]) p.pelo = e.pelo;
-    if (ACC_POR_ID[e.accesorio]) p.accesorio = e.accesorio;
+    if (ACC_POR_ID[e.accesorio]) p.accesorio = canonicalAcc(e.accesorio);
     if (CAMISA_POR_ID[e.camisa]) p.camisa = e.camisa;
-    return p.base + "~" + p.pelo + "~" + p.accesorio + "~" + p.camisa;
+    if (TONO_POR_ID[e.tono]) p.tono = e.tono;
+    return p.base + "~" + p.pelo + "~" + p.accesorio + "~" + p.camisa + "~" + p.tono;
   }
 
   function etiqueta(eleccion) {
@@ -374,6 +394,7 @@
     var pelo = (PELO_POR_ID[eleccion && eleccion.pelo] || PELO_POR_ID[p.pelo]).nombre;
     var acc = (ACC_POR_ID[eleccion && eleccion.accesorio] || ACC_POR_ID[p.accesorio]).nombre;
     var cam = (CAMISA_POR_ID[eleccion && eleccion.camisa] || CAMISA_POR_ID[p.camisa]).nombre;
+    if (p.accesorio === "a0" || (eleccion && eleccion.accesorio === "a0")) return pelo + " · " + cam;
     return pelo + " · " + acc + " · " + cam;
   }
 
@@ -384,7 +405,7 @@
       return { id: a.id, nombre: a.rol, rol: a.rol, porque: a.porque };
     }),
     roles: ROLES,
-    capas: { pelos: PELOS, accesorios: ACCESORIOS, camisas: CAMISAS },
+    capas: { pelos: PELOS, accesorios: ACCESORIOS, camisas: CAMISAS, tonos: TONOS },
     partes: partes,
     espec: espec,
     etiqueta: etiqueta,

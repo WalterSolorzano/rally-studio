@@ -25,12 +25,14 @@
    * depende del rol ni del oficio: eso lo dice la etiqueta, no el dibujo. */
   var BASE_POR_ROL = { mentor: "av_mentor", visitor: "av_visitante", member: "av_profe" };
   var basePersonaje = "av_profe";
-  var capas = { pelo: "p1", accesorio: "a0", camisa: "c1" };
+  var capas = { pelo: "p1", accesorio: "a0", camisa: "c1", tono: "t1" };
   var vistaCara = document.getElementById("join-cara");
   var vistaNom = document.getElementById("join-cara-nom");
+  var pasoTono = document.getElementById("join-tono-paso");
   var filas = {
     pelo: document.getElementById("join-pelos"),
     accesorio: document.getElementById("join-accesorios"),
+    tono: document.getElementById("join-tonos"),
     camisa: document.getElementById("join-camisas"),
   };
 
@@ -48,26 +50,34 @@
     const spec = specActual();
     vistaCara.innerHTML = RAV.svg(spec);
     if (vistaNom && ravOk()) vistaNom.textContent = RAV.etiqueta(RAV.partes(spec));
+    if (pasoTono) pasoTono.hidden = capas.accesorio === "a0";
   }
 
-  function pintarCapa(nombre, opciones, esColor) {
+  function muestraDe(nombre, avatar) {
+    if (nombre === "camisa" || nombre === "tono") {
+      return '<span class="estudio-tono" style="background:' + avatar.color + '"></span>';
+    }
+    const elegido = {
+      pelo: nombre === "pelo" ? avatar.id : capas.pelo,
+      accesorio: nombre === "accesorio" ? avatar.id : capas.accesorio,
+      camisa: capas.camisa,
+      tono: capas.tono,
+    };
+    return RAV.svg(RAV.espec(basePersonaje, elegido));
+  }
+
+  function pintarCapa(nombre, opciones) {
     const caja = filas[nombre];
     if (!caja || !window.RAV) return;
     caja.innerHTML = opciones
       .map(function (avatar) {
         const id = nombre + "-" + avatar.id;
-        const muestra = esColor
-          ? '<span class="join-tono" style="background:' + avatar.color + '"></span>'
-          : RAV.svg(RAV.espec(basePersonaje, {
-              pelo: nombre === "pelo" ? avatar.id : capas.pelo,
-              accesorio: nombre === "accesorio" ? avatar.id : capas.accesorio,
-              camisa: capas.camisa,
-            }));
         return (
+          '<span class="estudio-pieza">' +
           '<input type="radio" id="' + id + '" name="' + nombre + '" value="' + avatar.id + '"' +
           (capas[nombre] === avatar.id ? " checked" : "") + ">" +
-          '<label for="' + id + '"' + (esColor ? ' class="is-tono" title="' + avatar.nombre + '"' : "") + ">" +
-          muestra + "<span>" + avatar.nombre + "</span></label>"
+          '<label for="' + id + '" title="' + avatar.nombre + '">' + muestraDe(nombre, avatar) +
+          '<span class="estudio-rotulo">' + avatar.nombre + "</span></label></span>"
         );
       })
       .join("");
@@ -76,24 +86,24 @@
   function pintarPersonaje() {
     if (!ravOk() || !filas.pelo) return;
     capas = RAV.partes(RAV.espec(basePersonaje, capas));
-    pintarCapa("pelo", RAV.capas.pelos, false);
-    pintarCapa("accesorio", RAV.capas.accesorios, false);
-    pintarCapa("camisa", RAV.capas.camisas, true);
+    pintarCapa("pelo", RAV.capas.pelos);
+    pintarCapa("accesorio", RAV.capas.accesorios);
+    pintarCapa("tono", RAV.capas.tonos || []);
+    pintarCapa("camisa", RAV.capas.camisas);
     pintarVista();
   }
 
   if (filas.pelo) {
-    filas.pelo.addEventListener("change", function (e) { cambioCapa("pelo", e); });
-    filas.accesorio.addEventListener("change", function (e) { cambioCapa("accesorio", e); });
-    filas.camisa.addEventListener("change", function (e) { cambioCapa("camisa", e); });
+    Object.keys(filas).forEach(function (nombre) {
+      if (!filas[nombre]) return;
+      filas[nombre].addEventListener("change", function (e) { cambioCapa(nombre, e); });
+    });
   }
 
   function cambioCapa(nombre, event) {
     const casilla = event.target;
     if (!casilla || !casilla.value || !ravOk()) return;
     capas[nombre] = casilla.value;
-    if (nombre === "camisa") pintarCapa("pelo", RAV.capas.pelos, false);
-    if (nombre === "camisa") pintarCapa("accesorio", RAV.capas.accesorios, false);
     pintarVista();
   }
 

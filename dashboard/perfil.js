@@ -11,10 +11,20 @@
   const claveInput = document.getElementById("perfil-clave");
   const claveForm = document.getElementById("clave-form");
   const quitarBtn = document.getElementById("clave-quitar");
-  const contenedor = document.getElementById("perfil-avatares");
+  const estudioCara = document.getElementById("perfil-cara");
+  const estudioNom = document.getElementById("perfil-cara-nom");
+  const pasoTono = document.getElementById("perfil-tono-paso");
   const rolesContenedor = document.getElementById("perfil-roles");
   const rolesEstado = document.getElementById("roles-estado");
-  let radios = [];
+  const filas = {
+    pelo: document.getElementById("perfil-pelos"),
+    accesorio: document.getElementById("perfil-accesorios"),
+    tono: document.getElementById("perfil-tonos"),
+    camisa: document.getElementById("perfil-camisas"),
+  };
+  let basePersonaje = "av_profe";
+  let capas = { pelo: "p1", accesorio: "a0", camisa: "c1", tono: "t1" };
+  let guardando = false;
   let casillasRoles = [];
 
   const TEXTOS = {
@@ -88,11 +98,12 @@
     quienEl.textContent = (member.name || "Sin nombre") +
       (member.has_password ? " · con clave" : " · solo con enlace");
     if (nombreInput) nombreInput.value = member.name || "";
-    const elegido = window.RAV ? RAV.normalizar(member.avatar) : (member.avatar || "");
-    radios.forEach(function (radio) {
-      radio.checked = radio.value === elegido;
-      radio.disabled = false;
-    });
+    if (window.RAV && typeof RAV.partes === "function") {
+      const p = RAV.partes(member.avatar);
+      basePersonaje = p.base;
+      capas = { pelo: p.pelo, accesorio: p.accesorio, camisa: p.camisa, tono: p.tono };
+      pintarPersonaje();
+    }
     const mios = member.roles || [];
     casillasRoles.forEach(function (casilla) {
       casilla.checked = mios.indexOf(casilla.value) >= 0;
@@ -125,40 +136,94 @@
     });
   }
 
-  function cambiarAvatar(radio) {
-    if (!radio.checked) return;
-    radios.forEach(function (otro) { otro.disabled = true; });
+  function specActual() {
+    if (!(window.RAV && typeof RAV.espec === "function")) return basePersonaje;
+    return RAV.espec(basePersonaje, capas);
+  }
+
+  function pintarVista() {
+    if (!estudioCara || !window.RAV) return;
+    const spec = specActual();
+    estudioCara.innerHTML = RAV.svg(spec);
+    if (estudioNom && typeof RAV.etiqueta === "function") {
+      estudioNom.textContent = RAV.etiqueta(RAV.partes(spec));
+    }
+    if (pasoTono) pasoTono.hidden = capas.accesorio === "a0";
+  }
+
+  function muestraDe(nombre, avatar) {
+    if (nombre === "camisa" || nombre === "tono") {
+      return '<span class="estudio-tono" style="background:' + avatar.color + '"></span>';
+    }
+    return RAV.svg(RAV.espec(basePersonaje, {
+      pelo: nombre === "pelo" ? avatar.id : capas.pelo,
+      accesorio: nombre === "accesorio" ? avatar.id : capas.accesorio,
+      camisa: capas.camisa,
+      tono: capas.tono,
+    }));
+  }
+
+  function pintarCapa(nombre, opciones) {
+    const caja = filas[nombre];
+    if (!caja || !window.RAV) return;
+    caja.innerHTML = opciones
+      .map(function (avatar) {
+        const id = nombre + "-" + avatar.id;
+        return (
+          '<span class="estudio-pieza">' +
+          '<input type="radio" id="' + id + '" name="' + nombre + '" value="' + avatar.id + '"' +
+          (capas[nombre] === avatar.id ? " checked" : "") + ">" +
+          '<label for="' + id + '" title="' + avatar.nombre + '">' + muestraDe(nombre, avatar) +
+          '<span class="estudio-rotulo">' + avatar.nombre + "</span></label></span>"
+        );
+      })
+      .join("");
+  }
+
+  function pintarPersonaje() {
+    if (!window.RAV || !filas.pelo) return;
+    if (window.RAV.lista && window.RAV.lista[0]) basePersonaje = basePersonaje || window.RAV.lista[0].id;
+    pintarCapa("pelo", RAV.capas.pelos);
+    pintarCapa("accesorio", RAV.capas.accesorios);
+    pintarCapa("tono", RAV.capas.tonos || []);
+    pintarCapa("camisa", RAV.capas.camisas);
+    pintarVista();
+  }
+
+  function cambiarAvatar() {
+    if (guardando) return;
+    guardando = true;
+    const spec = specActual();
     nota(avatarEstado, "Guardando…");
     return api("/api/member/avatar", {
       method: "POST",
-      body: JSON.stringify({ avatar: radio.value }),
+      body: JSON.stringify({ avatar: spec }),
     }).then(function (res) {
-      radios.forEach(function (otro) { otro.disabled = false; });
+      guardando = false;
       if (res.status === 401) { irAlLogin(); return; }
       if (!res.ok) {
         nota(avatarEstado, mensaje(res.body, res));
         return cargar();
       }
       nota(avatarEstado, "Personaje guardado.");
-      try { localStorage.setItem("rally_user_mascot_id", res.body.avatar || radio.value); } catch (e) {}
+      try { localStorage.setItem("rally_user_mascot_id", res.body.avatar || spec); } catch (e) {}
+    });
+  }
+
+  if (filas.pelo && window.RAV) {
+    Object.keys(filas).forEach(function (nombre) {
+      if (!filas[nombre]) return;
+      filas[nombre].addEventListener("change", function (event) {
+        if (!event.target || !event.target.value) return;
+        capas[nombre] = event.target.value;
+        pintarVista();
+        cambiarAvatar();
+      });
     });
   }
 
   function pintarAvatares() {
-    if (!contenedor || !window.RAV) return;
-    contenedor.innerHTML = RAV.lista
-      .map(function (avatar) {
-        return (
-          '<input type="radio" id="pf-' + avatar.id + '" name="avatar" value="' + avatar.id + '">' +
-          '<label for="pf-' + avatar.id + '">' + RAV.svg(avatar.id) +
-          "<span>" + avatar.nombre + "</span></label>"
-        );
-      })
-      .join("");
-    radios = Array.prototype.slice.call(contenedor.querySelectorAll('input[name="avatar"]'));
-    radios.forEach(function (radio) {
-      radio.addEventListener("change", function () { cambiarAvatar(radio); });
-    });
+    pintarPersonaje();
   }
 
   function pintarRoles() {
@@ -178,13 +243,11 @@
   }
 
   async function cargar() {
-    radios.forEach(function (radio) { radio.disabled = true; });
     const res = await api("/api/member/yo");
     if (res.status === 401) { irAlLogin(); return; }
     if (!res.ok || !res.body.member) {
       // Si la lectura falla, la página no puede quedarse congelada: los
       // controles vuelven a estar disponibles para reintentar.
-      radios.forEach(function (radio) { radio.disabled = false; });
       casillasRoles.forEach(function (casilla) { casilla.disabled = false; });
       status("No se pudo leer tu perfil. Recarga la página.");
       return;

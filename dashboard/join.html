@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261019_rev10">
+  <link rel="stylesheet" href="style.css?v=20261122_rev13">
   <style>
     body { display: block; margin: 0; }
     .join-shell {
@@ -120,7 +120,7 @@
       color: var(--text-title);
     }
     .join-card p { margin: 0 0 var(--space-5); color: var(--text-muted); line-height: 1.5; }
-    .join-card label { display: block; font-weight: 700; margin-bottom: var(--space-2); color: var(--text-main); }
+    #join-campos > label { display: block; font-weight: 700; margin-bottom: var(--space-2); color: var(--text-main); }
     .join-card input {
       width: 100%;
       padding: 12px 14px;
@@ -478,87 +478,12 @@
     .join-tiempo[hidden] { display: none; }
     .join-tiempo b { color: var(--color-primary); }
 
-    /* --- Personaje por capas: vista grande + tres filas de opciones --- */
-    .join-personaje {
-      display: grid;
-      grid-template-columns: 132px minmax(0, 1fr);
-      gap: var(--space-4, 16px);
-      align-items: start;
-    }
-    .join-personaje-vista {
-      display: grid;
-      justify-items: center;
-      gap: 6px;
-      padding: 10px 8px;
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-lg);
-      background: var(--bg-app);
-    }
-    .join-personaje-cara { display: block; line-height: 0; }
-    .join-personaje-cara svg { width: 96px; height: 96px; }
-    .join-personaje-nom {
-      font-size: 11px;
-      line-height: 1.3;
-      color: var(--text-faint);
-      text-align: center;
-    }
-    .join-capas { display: grid; gap: 6px; }
-    .join-capa-tit {
-      margin: 0;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--text-faint);
-    }
-    .join-capa { display: flex; flex-wrap: wrap; gap: 6px; }
-    .join-capa input { position: absolute; opacity: 0; width: 1px; height: 1px; }
-    .join-capa label {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 3px 9px 3px 4px;
-      border: 1px solid var(--border-light);
-      border-radius: 999px;
-      background: var(--bg-surface);
-      font-size: 11.5px;
-      color: var(--text-body);
-      cursor: pointer;
-      transition: border-color .2s ease, box-shadow .2s ease, transform .15s ease;
-    }
-    .join-capa label svg { width: 26px; height: 26px; flex: none; }
-    .join-capa label:active { transform: scale(.97); }
-    .join-capa input:checked + label {
-      border-color: var(--color-primary);
-      box-shadow: inset 0 0 0 1px var(--color-primary);
-      color: var(--text-title);
-    }
-    .join-capa input:focus-visible + label { outline: 2px solid var(--color-primary); outline-offset: 2px; }
-    .join-capa label.is-tono { padding: 3px; border-radius: 50%; }
-    .join-capa label.is-tono span:last-child {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-      clip-path: inset(50%);
-    }
-    .join-tono {
-      display: block;
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      border: 1px solid rgba(13, 27, 53, .18);
-    }
-
+    /* El editor de personaje vive en style.css (.estudio). */
     /* --- Telefono: el menu cabe en una pantalla sin scroll eterno --- */
     @media (max-width: 700px) {
       .join-anuncio { grid-template-columns: 1fr; justify-items: center; gap: 22px; }
       .join-anuncio-escudo { min-width: 92px; height: 92px; font-size: 19px; }
       .join-anuncio-marca { width: 104px; height: 70px; }
-      .join-personaje { grid-template-columns: 88px minmax(0, 1fr); gap: 10px; }
-      .join-personaje-cara svg { width: 64px; height: 64px; }
-      .join-personaje-nom { font-size: 10px; }
       .join-avatars {
         grid-template-columns: repeat(3, minmax(0, 1fr));
         max-height: 200px;
@@ -627,18 +552,24 @@
           </fieldset>
           <fieldset id="join-avatares-fieldset">
             <legend>Tu personaje: la cara que verá el equipo</legend>
-            <div class="join-personaje">
-              <div class="join-personaje-vista">
-                <span class="join-personaje-cara" id="join-cara" aria-hidden="true"></span>
-                <span class="join-personaje-nom" id="join-cara-nom"></span>
+            <div class="estudio">
+              <div class="estudio-vista">
+                <span class="estudio-cara" id="join-cara" aria-hidden="true"></span>
+                <span class="estudio-nombre" id="join-cara-nom"></span>
               </div>
-              <div class="join-capas">
-                <p class="join-capa-tit">Pelo</p>
-                <div class="join-capa" id="join-pelos" role="radiogroup" aria-label="Pelo"></div>
-                <p class="join-capa-tit">Accesorio</p>
-                <div class="join-capa" id="join-accesorios" role="radiogroup" aria-label="Accesorio"></div>
-                <p class="join-capa-tit">Camisa</p>
-                <div class="join-capa" id="join-camisas" role="radiogroup" aria-label="Camisa"></div>
+              <div class="estudio-pasos">
+                <div class="estudio-paso"><span>Pelo</span>
+                  <div class="estudio-tira" id="join-pelos" role="radiogroup" aria-label="Pelo"></div>
+                </div>
+                <div class="estudio-paso"><span>Accesorio</span>
+                  <div class="estudio-tira" id="join-accesorios" role="radiogroup" aria-label="Accesorio"></div>
+                </div>
+                <div class="estudio-paso" id="join-tono-paso"><span>Color del accesorio</span>
+                  <div class="estudio-tira" id="join-tonos" role="radiogroup" aria-label="Color del accesorio"></div>
+                </div>
+                <div class="estudio-paso"><span>Camisa</span>
+                  <div class="estudio-tira" id="join-camisas" role="radiogroup" aria-label="Camisa"></div>
+                </div>
               </div>
             </div>
           </fieldset>
@@ -677,6 +608,6 @@
     </div>
   </main>
   <script src="avatars.js?v=20261122_rev9" defer></script>
-  <script src="join.js?v=20261122_rev12" defer></script>
+  <script src="join.js?v=20261122_rev13" defer></script>
 </body>
 </html>
