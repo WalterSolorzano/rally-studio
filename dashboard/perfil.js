@@ -4,6 +4,25 @@
   const statusEl = document.getElementById("perfil-status");
   const quienEl = document.getElementById("quien-nombre");
   const avatarEstado = document.getElementById("avatar-estado");
+  const botonEditar = document.getElementById("perfil-editar");
+  const botonListo = document.getElementById("perfil-listo");
+
+  // El personaje se puede mirar a pantalla completa: se oculta el resto.
+  function modoPersonaje(encendido) {
+    if (document.body && document.body.classList) {
+      document.body.classList.toggle("perfil-personaje", !!encendido);
+    }
+    if (botonEditar) botonEditar.hidden = !!encendido;
+    if (botonListo) botonListo.hidden = !encendido;
+    if (encendido && window.scrollTo) window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  if (botonEditar) botonEditar.addEventListener("click", function () {
+    modoPersonaje(true);
+  });
+  if (botonListo) botonListo.addEventListener("click", function () {
+    modoPersonaje(false);
+  });
   const claveEstado = document.getElementById("clave-estado");
   const nombreForm = document.getElementById("nombre-form");
   const nombreInput = document.getElementById("perfil-nombre");
