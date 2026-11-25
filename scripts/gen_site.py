@@ -265,11 +265,10 @@ def construir(brief: dict, claims: list[dict], presupuesto) -> str:
 </head>
 <body>
 
-<header class="navbar">
-  <div class="logo-area">
-    <span class="brand-logo">{nombre}</span>
-    <span class="brand-divider"></span>
-    <span class="tactical-status-pill"><span class="status-dot"></span>piloto</span>
+<header class="site-header">
+  <div class="marca">
+    <span class="marca-nombre">{nombre}</span>
+    <span class="marca-nota">piloto</span>
   </div>
 </header>
 
@@ -360,6 +359,12 @@ def main(argv=None) -> int:
     html_final = construir(brief, claims, presupuesto)
     SALIDA.parent.mkdir(parents=True, exist_ok=True)
     SALIDA.write_text(html_final, encoding="utf-8")
+    # El sitio publicado no depende de brand/: la hoja importa "tokens.css" local.
+    origen_tokens = RAIZ / "brand" / "tokens.css"
+    if origen_tokens.exists():
+        (SALIDA.parent / "tokens.css").write_text(
+            origen_tokens.read_text(encoding="utf-8", errors="replace"), encoding="utf-8"
+        )
     try:
         ruta = SALIDA.relative_to(RAIZ)
     except ValueError:

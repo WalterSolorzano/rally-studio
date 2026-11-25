@@ -48,6 +48,39 @@ def test_tokens_no_llevan_familias_del_motor():
     assert "--font-ui: 'Public Sans'" in css
 
 
+def test_accent_decor_nunca_alcanza_contraste_de_texto():
+    pal = puente.mapear(IDENTIDAD)
+    css = gen_palette.tokens_css(pal)
+    assert "--color-accent-decor:" in css
+    assert gen_palette.contraste(pal["accent_decor"], pal["bg"]) < 3.0
+
+
+def test_escalas_y_movimiento_son_del_proyecto():
+    css = gen_palette.tokens_css(puente.mapear(IDENTIDAD))
+    for token in ("--radius-md", "--space-4", "--shadow-1", "--motion-fast", "--motion-ease"):
+        assert token in css
+
+
+def test_direccion_nocturna_deja_texto_claro_sobre_fondo_oscuro():
+    ruta = gen_palette.construir_ruta("A", 210, "nocturna")
+    assert gen_palette.contraste(ruta["text_main"], ruta["bg"]) >= 4.5
+    assert gen_palette.contraste(ruta["primary"], ruta["bg"]) >= 4.5
+    assert gen_palette.contraste(ruta["bg"], "#FFFFFF") > 10
+
+
+def test_direccion_calida_tine_el_fondo_del_sector():
+    clara = gen_palette.construir_ruta("A", 95, "clara")
+    calida = gen_palette.construir_ruta("A", 95, "calida")
+    assert clara["bg"] != calida["bg"]
+    assert gen_palette.contraste(calida["text_body"], calida["bg"]) >= 4.5
+
+
+def test_direccion_declarada_en_el_plan_manda():
+    brief = {"challenge_title": "Cacao", "producto": {"direccion": "nocturna"}}
+    assert gen_palette.direccion_visual(brief)["nombre"] == "nocturna"
+    assert gen_palette.direccion_visual({})["nombre"] == "clara"
+
+
 def test_texto_legible_tras_ajuste():
     pal = puente.mapear(IDENTIDAD)
     for clave in ("text_main", "text_body", "primary"):

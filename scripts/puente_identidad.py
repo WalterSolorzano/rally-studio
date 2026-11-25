@@ -137,6 +137,7 @@ def mapear(identidad: dict) -> dict:
         "primary": ac,
         "primary_hover": ajustar(mezclar(ac, "#000000", 0.15), bg),
         "accent": decor,
+        "accent_decor": gp.decorativo(decor, bg),
         "bg": bg,
         "bg_subtle": bg2,
         "bg_secondary": mezclar(bg2, bg, 0.5),

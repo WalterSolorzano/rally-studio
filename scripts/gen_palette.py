@@ -57,6 +57,40 @@ PARES_TIPOGRAFICOS = {
 PILA_UI = 'system-ui, -apple-system, "Segoe UI", sans-serif'
 PILA_MONO = "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
 
+# Direccion visual: sale del plan de producto o del texto del reto, nunca fija.
+DIRECCIONES = {
+    "clara": {
+        "bg_l": 0.985, "extra_s": 0.0, "tinta": "oscura",
+        "porque": "superficie clara: el jurado lee de cerca y la pagina se imprime",
+    },
+    "nocturna": {
+        "bg_l": 0.12, "extra_s": 0.10, "tinta": "clara",
+        "porque": "superficie oscura: el producto vive de noche o en pantalla fija",
+    },
+    "calida": {
+        "bg_l": 0.962, "extra_s": 0.24, "tinta": "oscura",
+        "porque": "superficie tenida: comida, agro o artesania piden color de fondo, no gris",
+    },
+}
+PISTAS_DIRECCION = (
+    ("nocturna", ("nocturn", "noche", "madrugada", "24/7", "vigilancia")),
+    ("calida", ("comida", "cocina", "cafe", "café", "cacao", "agro", "textil",
+                "artesan", "turismo", "gastronom")),
+)
+# (saturacion, claridad) por rol de tinta, segun el fondo sea claro u oscuro.
+_TINTA = {
+    "oscura": {
+        "title": (0.32, 0.13), "main": (0.24, 0.19), "body": (0.14, 0.30),
+        "muted": (0.18, 0.46), "faint": (0.14, 0.58),
+        "border_light": (0.30, 0.88), "border_strong": (0.20, 0.76),
+    },
+    "clara": {
+        "title": (0.10, 0.97), "main": (0.10, 0.90), "body": (0.12, 0.78),
+        "muted": (0.14, 0.62), "faint": (0.12, 0.50),
+        "border_light": (0.18, 0.26), "border_strong": (0.18, 0.38),
+    },
+}
+
 # Familia cromatica por sector. El reto manda; lo que no este aqui cae al hash.
 SECTOR_HUE = {
     "agua": 200, "sanit": 200, "hídric": 200, "hidric": 200,
@@ -153,14 +187,16 @@ def hue_del_reto(texto: str) -> tuple[int, str]:
 
 
 def asegurar_contraste(h: float, s: float, l: float, fondo: str, minimo: float = 4.5):
-    """Oscurece hasta que el par cumpla. Devuelve (hex, contraste, grado)."""
-    for _ in range(30):
-        color = hex_of(h, s, l)
-        ratio = contraste(color, fondo)
-        if ratio >= minimo:
-            return color, ratio, grado(ratio)
-        l = max(0.0, l - 0.02)
-    color = hex_of(h, s, max(l, 0.05))
+    """Mueve la claridad hasta que el par cumpla: primero oscurece, luego aclara."""
+    for sentido in (1, -1):
+        actual = l
+        for _ in range(50):
+            color = hex_of(h, s, min(max(actual, 0.0), 1.0))
+            ratio = contraste(color, fondo)
+            if ratio >= minimo:
+                return color, ratio, grado(ratio)
+            actual -= 0.02 * sentido
+    color = hex_of(h, s, 0.05)
     return color, contraste(color, fondo), grado(contraste(color, fondo))
 
 
@@ -195,25 +231,71 @@ def sin_morado(hue: int) -> int:
     return h
 
 
-def construir_ruta(nombre: str, hue: int, fondo_tono: float) -> dict:
+def _rgb(hexa: str) -> tuple[int, int, int]:
+    h = hexa.lstrip("#")
+    return int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16)
+
+
+def decorativo(acento: str, fondo: str) -> str:
+    """Version decorativa del acento: se acerca al fondo hasta quedar bajo 3:1.
+
+    Por eso nunca lleva texto: si se usa como color de letra, no se lee.
+    """
+    a, f = _rgb(acento), _rgb(fondo)
+    for peso in (0.55, 0.65, 0.75, 0.85):
+        mezcla = "#%02X%02X%02X" % tuple(
+            round(a[i] * peso + f[i] * (1 - peso)) for i in range(3)
+        )
+        if contraste(mezcla, fondo) < 3.0:
+            return mezcla
+    return fondo
+
+
+def direccion_visual(brief: dict) -> dict:
+    """Clara, nocturna o calida: la declara el plan de producto o la sugiere el reto."""
+    producto = brief.get("producto") or {}
+    declarada = str(
+        producto.get("direccion") or brief.get("direccion_visual") or ""
+    ).strip().lower()
+    if declarada in DIRECCIONES:
+        return {"nombre": declarada, "origen": "plan de producto",
+                "porque": DIRECCIONES[declarada]["porque"]}
+    piezas = (brief.get("challenge_title"), brief.get("solution"),
+              brief.get("sector"), producto.get("problema"),
+              producto.get("protagonista"))
+    texto = " ".join(p for p in piezas if isinstance(p, str)).lower()
+    for nombre, pistas in PISTAS_DIRECCION:
+        if any(pista in texto for pista in pistas):
+            return {"nombre": nombre, "origen": "texto del reto",
+                    "porque": DIRECCIONES[nombre]["porque"]}
+    return {"nombre": "clara", "origen": "defecto",
+            "porque": DIRECCIONES["clara"]["porque"]}
+
+
+def construir_ruta(nombre: str, hue: int, direccion: str = "clara") -> dict:
     # Cada ruta cambia tambien el ancla, no solo el acento: A sobria,
     # B saturada, C terrosa. Asi el humano elige de verdad entre tres.
     ancla = {
-        "A": {"h": 0, "s": 0.50, "l": 0.44, "bg_s": 0.10, "bg_l": 0.985},
-        "B": {"h": 0, "s": 0.74, "l": 0.36, "bg_s": 0.24, "bg_l": 0.975},
-        "C": {"h": 14, "s": 0.60, "l": 0.40, "bg_s": 0.34, "bg_l": 0.955},
+        "A": {"h": 0, "s": 0.50, "l": 0.44, "bg_s": 0.10},
+        "B": {"h": 0, "s": 0.74, "l": 0.36, "bg_s": 0.24},
+        "C": {"h": 14, "s": 0.60, "l": 0.40, "bg_s": 0.34},
     }[nombre]
+    tono = DIRECCIONES[direccion]
+    tinta = _TINTA[tono["tinta"]]
     h_base = hue + ancla["h"]
-    bg = hex_of(h_base, ancla["bg_s"], ancla["bg_l"])
-    bg_subtle = hex_of(h_base, min(ancla["bg_s"] + 0.04, 0.40), fondo_tono)
-    bg_secondary = hex_of(h_base, min(ancla["bg_s"] + 0.08, 0.44), fondo_tono - 0.02)
-    text_title = hex_of(h_base, 0.32, 0.13)
-    text_main = hex_of(h_base, 0.24, 0.19)
-    text_body = hex_of(h_base, 0.14, 0.30)
-    text_muted = hex_of(h_base, 0.18, 0.46)
-    text_faint = hex_of(h_base, 0.14, 0.58)
-    border_light = hex_of(h_base, 0.30, 0.88)
-    border_strong = hex_of(h_base, 0.20, 0.76)
+    bg_l = tono["bg_l"]
+    bg_s = min(ancla["bg_s"] + tono["extra_s"], 0.44)
+    signo = 1 if tono["tinta"] == "oscura" else -1
+    bg = hex_of(h_base, bg_s, bg_l)
+    bg_subtle = hex_of(h_base, min(bg_s + 0.04, 0.44), bg_l - 0.02 * signo)
+    bg_secondary = hex_of(h_base, min(bg_s + 0.08, 0.44), bg_l - 0.04 * signo)
+    text_title = hex_of(h_base, *tinta["title"])
+    text_main = hex_of(h_base, *tinta["main"])
+    text_body = hex_of(h_base, *tinta["body"])
+    text_muted = hex_of(h_base, *tinta["muted"])
+    text_faint = hex_of(h_base, *tinta["faint"])
+    border_light = hex_of(h_base, *tinta["border_light"])
+    border_strong = hex_of(h_base, *tinta["border_strong"])
 
     if nombre == "A":
         h_acento = h_base + 24
@@ -228,13 +310,16 @@ def construir_ruta(nombre: str, hue: int, fondo_tono: float) -> dict:
     acento, c_acen, g_acen = asegurar_contraste(h_acento, 0.55, 0.40, bg)
     c_texto = contraste(text_main, bg)
     par = par_tipografico(nombre) or {}
+    acento_decor = decorativo(acento, bg)
 
     return {
         "ruta": nombre,
         "descripcion": RUTAS[nombre],
+        "direccion": direccion,
         "primary": primary,
         "primary_hover": primary_hover,
         "accent": acento,
+        "accent_decor": acento_decor,
         "bg": bg,
         "bg_subtle": bg_subtle,
         "bg_secondary": bg_secondary,
@@ -245,11 +330,20 @@ def construir_ruta(nombre: str, hue: int, fondo_tono: float) -> dict:
         "text_faint": text_faint,
         "border_light": border_light,
         "border_strong": border_strong,
+        "_roles": {
+            "superficie": ["bg", "bg_subtle", "bg_secondary"],
+            "tinta": ["text_title", "text_main", "text_body", "text_muted", "text_faint"],
+            "borde": ["border_light", "border_strong"],
+            "accion": ["primary", "primary_hover"],
+            "acento": ["accent"],
+            "decorativo": ["accent_decor"],
+        },
         "_contraste_primary_bg": c_prim,
         "_grado_primary": g_prim,
         "_contraste_accent_bg": c_acen,
         "_grado_accent": g_acen,
         "_contraste_texto_bg": c_texto,
+        "_contraste_decor_bg": contraste(acento_decor, bg),
         "_fuentes": {k: par[k] for k in ("display", "ui", "mono")} if par else {},
         "_fuente_porque": par.get("porque", ""),
     }
@@ -258,10 +352,12 @@ def construir_ruta(nombre: str, hue: int, fondo_tono: float) -> dict:
 def proponer(brief: dict) -> dict:
     texto = texto_del_reto(brief)
     hue, origen = hue_del_reto(texto)
-    rutas = {n: construir_ruta(n, hue, 0.965) for n in ("A", "B", "C")}
+    direccion = direccion_visual(brief)
+    rutas = {n: construir_ruta(n, hue, direccion["nombre"]) for n in ("A", "B", "C")}
     return {
         "_status": "propuesta",
         "_origen_hue": origen,
+        "_direccion": direccion,
         "_reto": brief.get("challenge_title") or "(sin titulo)",
         "_regla": "3 rutas, una aprobada por el humano. Nada se aplica sin --ruta X --si.",
         "rutas": rutas,
@@ -270,8 +366,11 @@ def proponer(brief: dict) -> dict:
 
 def tokens_css(pal: dict) -> str:
     err, _, g_err = asegurar_contraste(0, 0.72, 0.42, pal["bg"])
+    decor = pal.get("accent_decor") or decorativo(pal["accent"], pal["bg"])
+    direccion = pal.get("direccion") or "sin declarar"
     return f"""/* brand/tokens.css -- generado por scripts/gen_palette.py (ruta {pal['ruta']}).
  * Capa proyecto. No editar a mano: se regenera.
+ * Direccion visual: {direccion}.
  * Planta 60-30-10. Contrastes: primary/bg {pal['_contraste_primary_bg']} ({pal['_grado_primary']}),
  * accent/bg {pal['_contraste_accent_bg']}, texto/bg {pal['_contraste_texto_bg']}.
  */
@@ -298,6 +397,9 @@ def tokens_css(pal: dict) -> str:
   --border-focus: {pal['primary']};
   --status-ok: {pal['primary']};
 
+  /* Decorativo: bajo 3:1 contra el fondo. Nunca lleva texto. */
+  --color-accent-decor: {decor};
+
   /* <1 % semantica: no es identidad, es error */
   --status-err: {err};
   --status-err-text: {err};
@@ -306,11 +408,21 @@ def tokens_css(pal: dict) -> str:
   --font-display: {pila(pal.get('_fuentes', {}).get('display'), PILA_UI)};
   --font-ui: {pila(pal.get('_fuentes', {}).get('ui'), PILA_UI)};
   --font-mono: {pila(pal.get('_fuentes', {}).get('mono'), PILA_MONO)};
+
+  /* Escalas del proyecto, no del motor */
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 18px;
   --space-1: 4px; --space-2: 8px; --space-3: 12px;
   --space-4: 16px; --space-5: 24px; --space-6: 32px; --space-7: 48px;
+  --shadow-1: 0 1px 2px rgb(0 0 0 / 0.06);
+  --shadow-2: 0 8px 24px -12px rgb(0 0 0 / 0.18);
+
+  /* Movimiento: una tabla, tres duraciones, una curva */
+  --motion-fast: 120ms;
+  --motion-base: 200ms;
+  --motion-slow: 320ms;
+  --motion-ease: cubic-bezier(0.2, 0, 0, 1);
 }}
 """
 
@@ -327,6 +439,9 @@ def main() -> int:
 
     print(f"reto    {propuesta['_reto']}")
     print(f"origen  {propuesta['_origen_hue']}")
+    print(f"direccion  {propuesta['_direccion']['nombre']} "
+          f"({propuesta['_direccion']['origen']})")
+    print(f"  {propuesta['_direccion']['porque']}")
     print()
     for nombre, r in propuesta["rutas"].items():
         print(f"  {nombre}  {r['primary']}  acento {r['accent']}  "
@@ -351,6 +466,7 @@ def main() -> int:
     elegida["_status"] = "aprobada"
     elegida["_generado_por"] = "scripts/gen_palette.py"
     elegida["_reto"] = propuesta["_reto"]
+    elegida["_direccion"] = propuesta["_direccion"]
     PALETTE.write_text(json.dumps(elegida, indent=2, ensure_ascii=False), encoding="utf-8")
     TOKENS.write_text(tokens_css(elegida), encoding="utf-8")
     print(f"OK: ruta {args.ruta} aprobada -> brand/palette.json")

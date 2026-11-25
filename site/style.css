@@ -1,10 +1,12 @@
 /* site/style.css — capa proyecto (sin identidad fija).
  *
- * Prohibido escribir un hex aquí. Los valores salen de brand/tokens.css,
- * que produce scripts/gen_palette.py cuando el humano aprueba una ruta A/B/C.
+ * Prohibido escribir un hex aquí. Los valores salen de tokens.css, copia local
+ * que escribe scripts/gen_site.py desde brand/tokens.css, el archivo que produce
+ * scripts/gen_palette.py cuando el humano aprueba una ruta A/B/C.
  * Si el sitio se ve sin color, es correcto: la identidad aún no se generó.
+ * Nada de componentes del workbench: esto es estructura neutra del proyecto.
  */
-@import url("../brand/tokens.css");
+@import url("tokens.css");
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -17,8 +19,8 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── Topbar (Cardless & Hairline) ── */
-.navbar {
+/* ── Cabecera de marca (neutra) ── */
+.site-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -27,49 +29,25 @@ body {
   margin-bottom: 24px;
 }
 
-.logo-area {
+.marca {
   display: flex;
-  align-items: center;
-  gap: 16px;
+  align-items: baseline;
+  gap: 12px;
 }
 
-.brand-logo {
+.marca-nombre {
+  font-family: var(--font-display);
   font-size: 16px;
   font-weight: 800;
   letter-spacing: -0.02em;
-  display: flex;
-  align-items: center;
+  color: var(--text-title);
 }
 
-.brand-divider {
-  width: 1px;
-  height: 20px;
-  background-color: var(--border-light);
-  margin: 0 12px;
-}
-
-/* Tactical Status Pill */
-.tactical-status-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-mono);
+.marca-nota {
   font-size: 12px;
-  font-weight: 600;
-  color: var(--text-body);
-  background: var(--bg-subtle);
-  border: 1px solid var(--border-light);
-  padding: 4px 10px;
-  border-radius: var(--radius-sm);
-  text-transform: lowercase;
-}
-
-.status-dot {
-  width: 6px;
-  height: 6px;
-  background: var(--color-primary);
-  border-radius: 50%;
-  flex-shrink: 0;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
 }
 
 .section-title {
@@ -287,18 +265,10 @@ span.fuente { color: var(--text-body); }
   .sitio { gap: 32px; }
   .hero { padding: 16px 0 0; }
   .metricas-grid { grid-template-columns: 1fr; }
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-  }
-  .logo-area {
+  .site-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
-  }
-  .brand-divider {
-    display: none;
   }
   .site-footer {
     flex-direction: column;
