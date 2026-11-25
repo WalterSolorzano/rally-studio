@@ -1,0 +1,84 @@
+/* pieza-3d · visor y ficha de la pieza. Solo var(): cero hex literal. */
+
+.maqueta {
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) minmax(260px, 340px);
+  align-items: start;
+  gap: var(--space-6, 48px);
+  padding: var(--space-6, 48px);
+  font-family: var(--font-ui);
+}
+
+.visor { display: grid; gap: var(--space-3, 16px); }
+
+.visor-marco {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg, 24px);
+  background:
+    linear-gradient(var(--border-light) 1px, transparent 1px) 0 0 / 100% 48px,
+    linear-gradient(90deg, var(--border-light) 1px, transparent 1px) 0 0 / 48px 100%,
+    var(--bg-subtle);
+}
+
+.visor-estado {
+  padding: var(--space-2, 8px) var(--space-4, 24px);
+  border-radius: var(--radius-sm, 8px);
+  background: var(--bg-app);
+  border: 1px solid var(--border-light);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.visor-pie { display: grid; gap: var(--space-1, 4px); }
+
+.visor-titulo { margin: 0; font-family: var(--font-display); font-size: 24px; color: var(--text-title); }
+
+.visor-nota { margin: 0; font-size: 14px; color: var(--text-body); }
+
+.visor-ruta { margin: 0; font-family: var(--font-mono); font-size: 12px; color: var(--text-faint); }
+
+.ficha {
+  display: grid;
+  gap: var(--space-3, 16px);
+  padding: var(--space-4, 24px);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md, 16px);
+  background: var(--bg-subtle);
+}
+
+.ficha-titulo { margin: 0; font-family: var(--font-display); font-size: 18px; color: var(--text-title); }
+
+.ficha-lista { display: grid; gap: var(--space-2, 8px); margin: 0; }
+
+.ficha-lista div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-2, 8px);
+  padding-bottom: var(--space-2, 8px);
+  border-bottom: 1px solid var(--border-light);
+  font-size: 13px;
+}
+
+.ficha-lista dt { color: var(--text-muted); }
+
+.ficha-lista dd {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-main);
+}
+
+.ficha-skill { margin: 0; font-size: 13px; line-height: 1.5; color: var(--text-body); }
+
+@media (max-width: 900px) {
+  .maqueta { grid-template-columns: 1fr; padding: var(--space-4, 24px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .visor-marco { transition: none; }
+}

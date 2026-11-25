@@ -6,8 +6,10 @@ Descarga los woff2 de la pareja aprobada desde Google Fonts y escribe un
 si no hay red, el generador cae a la pila del sistema y lo dice.
 
 Uso:
-    python scripts/bajar_fuentes.py --salida design/fonts
+    python scripts/bajar_fuentes.py --salida site/fonts
 Salidas: <salida>/<familia>.woff2 + <salida>/fonts.css
+Licencia: las familias se piden a Google Fonts bajo SIL Open Font License 1.1;
+registro en `arsenal.lock.yaml` (seccion `fuentes`) y sin CDN en el entregable.
 """
 from __future__ import annotations
 
@@ -81,7 +83,7 @@ def fonts_css(fuentes: dict[str, str], archivos: dict[str, list[str]]) -> str:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Baja las fuentes aprobadas a local.")
-    parser.add_argument("--salida", default="design/fonts")
+    parser.add_argument("--salida", default="site/fonts")
     args = parser.parse_args()
 
     if not PALETTE.exists():

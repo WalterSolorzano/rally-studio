@@ -125,6 +125,13 @@ Lo que encontró la prueba de novato y cómo se cerró:
   presupuesto avisa en pantalla que sin paleta aprobada el generador se niega a cotizar, y el
   validador explica en español qué significa cada valor de `deliverable_type`.
 
+- **El sitio dibuja cuatro tipos de pieza**: `gen_site.py --tipo` elige landing (los seis bloques
+  de siempre), app-móvil (bisel 390×844 y tablero de identidad), web-app (marco de navegador) o
+  pieza 3D (visor vacío hasta que exista el GLB). Las plantillas viven en `scripts/templates/`;
+  `site/mock_data.json` marca `[SIMULADO]` lo que el plan no declara y queda fuera del área de
+  captura. `publish_site.py` rechaza enlaces a `../brand` y a CDN de fuentes: los tokens y los
+  woff2 se copian dentro de `site/`, con la licencia OFL registrada en `arsenal.lock.yaml`.
+
 Regla de la revisión: la hace alguien distinto de quien construyó, y su veredicto puede ser
 FALLA. La del 18 de noviembre encontró un candado huérfano en `publicar_seccion.py` que
 dejaba la sección bloqueada quince minutos; se corrigió en el commit siguiente.

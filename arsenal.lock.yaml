@@ -93,6 +93,14 @@ diseno:
   licencia: verificar
   estado: no_instalado
   notas: Leer LICENSE antes de instalar. Un logo IA se nota si no se ajusta.
+fuentes:
+- nombre: google-fonts-woff2
+  rol: Bajar los woff2 de la pareja tipografica aprobada a site/fonts/
+  licencia: SIL Open Font License 1.1 (por familia; se registra al aprobarla)
+  version: ''
+  estado: cubierto
+  notas: Lo hace scripts/bajar_fuentes.py. El entregable sirve @font-face local, sin CDN,
+    y declara la pila sans del sistema como respaldo.
 datos:
 - nombre: python-docx
   rol: Leer plantilla y contar caracteres por campo

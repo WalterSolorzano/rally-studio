@@ -20,6 +20,10 @@ BRIEF = RAIZ / "brief.json"
 CLAIMS = RAIZ / "research" / "claims.json"
 BUDGET = RAIZ / "budget" / "budget.json"
 SALIDA = RAIZ / "site" / "index.html"
+PLANTILLAS = RAIZ / "scripts" / "templates"
+MOCK = RAIZ / "site" / "mock_data.json"
+TIPOS = ("landing", "app-movil", "web-app", "pieza-3d")
+PLANTILLA_LANDING = (PLANTILLAS / "landing" / "pagina.html").read_text(encoding="utf-8")
 
 CONECTORES = {
     "y", "e", "o", "u", "de", "del", "la", "el", "los", "las", "un", "una",
@@ -255,65 +259,7 @@ def construir(brief: dict, claims: list[dict], presupuesto) -> str:
         # Sin correo no hay acción: mejor cerrar en la prueba que inventar un botón.
         bloque_cierre = ""
 
-    return """<!doctype html>
-<html lang="es">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{nombre}</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<header class="site-header">
-  <div class="marca">
-    <span class="marca-nombre">{nombre}</span>
-    <span class="marca-nota">piloto</span>
-  </div>
-</header>
-
-<main class="sitio">
-
-  <section class="hero">
-    <h1 class="hero-titulo">{nombre}</h1>
-    <p class="hero-promesa">{promesa}</p>
-    <a class="cta" href="#prueba">{icono}<span>Ver la prueba</span></a>
-  </section>
-
-  <section class="problema">
-    <h2 class="section-title">Problema</h2>
-    <p class="problema-texto">{problema}</p>
-    {fuente_html}
-  </section>
-
-  <section class="como">
-    <h2 class="section-title">Cómo funciona</h2>
-    <ol class="pasos">{pasos}</ol>
-  </section>
-
-  <section class="metricas">
-    <h2 class="section-title">Métricas</h2>
-    <div class="metricas-grid">{metricas}</div>
-  </section>
-
-  <section class="prueba" id="prueba">
-    <h2 class="section-title">Prueba</h2>
-    {venta}
-    {tabla}
-    {enlaces}
-  </section>
-
-{cierre}
-</main>
-
-<footer class="site-footer">
-  <span>{pie}</span>
-  <span class="footer-nota">Cifras con fuente en cada bloque</span>
-</footer>
-
-</body>
-</html>
-""".format(
+    return PLANTILLA_LANDING.format(
         nombre=html.escape(nombre),
         promesa=html.escape(promesa),
         icono=ICONO_FLECHA,
@@ -329,6 +275,165 @@ def construir(brief: dict, claims: list[dict], presupuesto) -> str:
     )
 
 
+SIMULADO = "[SIMULADO]"
+
+MUESTRAS = (
+    ("m-bg-app", "--bg-app", "Superficie"),
+    ("m-bg-subtle", "--bg-subtle", "Superficie 2"),
+    ("m-text-title", "--text-title", "Tinta"),
+    ("m-text-muted", "--text-muted", "Tinta media"),
+    ("m-color-primary", "--color-primary", "Accion"),
+    ("m-color-accent", "--color-accent", "Acento"),
+)
+
+
+def datos_mock(brief: dict) -> dict:
+    """Datos de la maqueta desde el brief y el plan del producto.
+
+    Lo que no esta en el plan no se inventa: sale marcado [SIMULADO].
+    """
+    producto = brief.get("producto") or {}
+    pantallas = [p for p in (producto.get("pantallas") or []) if isinstance(p, dict)]
+    primera = next((p for p in pantallas if p.get("primero")), pantallas[0] if pantallas else {})
+    protagonista = (producto.get("protagonista") or "").strip()
+    if not protagonista:
+        protagonista = SIMULADO + " el plan no declara protagonista"
+    nombres = [str(p.get("nombre") or "").strip() for p in pantallas if p.get("nombre")]
+    return {
+        "_simulado": True,
+        "_nota": ("Datos de maqueta. No son cifras del proyecto: el plan vive en "
+                  "brief.json (bloque producto) y las cifras reales en research/claims.json."),
+        "proyecto": {
+            "nombre": (brief.get("project_name") or "").strip(),
+            "ciudad": (brief.get("city") or "").strip(),
+            "equipo": (brief.get("team_name") or "").strip(),
+        },
+        "producto": {
+            "tipo": (producto.get("tipo") or "app-movil").strip(),
+            "plataforma": (producto.get("plataforma") or "").strip(),
+            "protagonista": protagonista,
+            "metafora": (producto.get("metafora") or "").strip(),
+            "iconografia": (producto.get("iconografia") or "").strip(),
+            "marco": (producto.get("marco") or "").strip(),
+            "pantallas": nombres,
+            "primera": str(primera.get("nombre") or "").strip(),
+            "data_source": (producto.get("data_source") or "").strip(),
+        },
+    }
+
+
+def _nombre_de(mock: dict) -> str:
+    return mock["proyecto"]["nombre"] or "Proyecto sin nombre"
+
+
+def _nota_de(mock: dict, brief: dict) -> str:
+    falta = SIMULADO + " maqueta con datos de ejemplo; completa brief.json"
+    return falta if not mock["proyecto"]["nombre"] else "Maqueta del producto"
+
+
+def _pie(mock: dict) -> str:
+    partes = [p for p in (mock["proyecto"]["equipo"], mock["proyecto"]["ciudad"]) if p]
+    return " · ".join(partes) or SIMULADO + " equipo sin declarar"
+
+
+def construir_maqueta(tipo: str, brief: dict) -> tuple[str, str]:
+    """Devuelve (html, css) de la plantilla del tipo pedido."""
+    mock = datos_mock(brief)
+    producto = mock["producto"]
+    texto = (PLANTILLAS / tipo / "pagina.html").read_text(encoding="utf-8")
+    css = (PLANTILLAS / "_base.css").read_text(encoding="utf-8") + "\n" + (
+        PLANTILLAS / tipo / "pagina.css"
+    ).read_text(encoding="utf-8")
+    nombre = html.escape(_nombre_de(mock))
+    comun = dict(
+        nombre=nombre,
+        pie=html.escape(_pie(mock)),
+        nota=html.escape(_nota_de(mock, brief)),
+        protagonista=html.escape(producto["protagonista"]),
+        eyebrow=html.escape(producto["plataforma"] or "Producto"),
+        url="https://producto.local/" + (producto["tipo"] or "app").replace(" ", "-"),
+    )
+
+    if tipo == "app-movil":
+        filas = "".join(
+            '<li><span class="marca-fila"></span>%s</li>' % html.escape(p)
+            for p in (producto["pantallas"] or [SIMULADO + " pantalla unica"])
+        )
+        paleta = "".join(
+            '<div class="muestra"><span class="%s"></span><span>%s</span></div>'
+            % (clase, html.escape(rol))
+            for clase, _var, rol in MUESTRAS
+        )
+        tipografia = (
+            '<div><b>Display</b><p class="t-display">Titulos del producto</p></div>'
+            '<div><b>UI</b><p class="t-ui">Texto y controles</p></div>'
+            '<div><b>Mono</b><p class="t-mono">Cifras y datos</p></div>'
+        )
+        principios = "".join("<li>%s</li>" % html.escape(p) for p in (
+            producto["metafora"] or SIMULADO + " metafora sin declarar",
+            producto["iconografia"] or SIMULADO + " iconografia sin declarar",
+            producto["marco"] or SIMULADO + " marco de pantalla sin declarar",
+        ))
+        primera = producto["primera"] or (producto["pantallas"][0] if producto["pantallas"] else SIMULADO)
+        detalle = (
+            "<dl><div><dt>Datos</dt><dd>%s</dd></div>"
+            "<div><dt>Pantalla</dt><dd>%s</dd></div></dl>"
+            % (html.escape(producto["data_source"] or SIMULADO), html.escape(primera))
+        )
+        return texto.format(
+            **comun,
+            dato=html.escape(producto["marco"] or SIMULADO + " marco sin declarar"),
+            filas=filas,
+            detalle=detalle,
+            accion="Continuar",
+            paleta=paleta,
+            tipografia=tipografia,
+            principios=principios,
+        ), css
+
+    if tipo == "web-app":
+        nav = "".join(
+            '<li data-state="%s">%s</li>' % ("activo" if i == 0 else "normal", html.escape(p))
+            for i, p in enumerate(producto["pantallas"] or [SIMULADO + " inicio"])
+        )
+        tarjetas = "".join(
+            '<div class="tarjeta"><h2>%s</h2><p>%s</p></div>'
+            % (html.escape(titulo), html.escape(valor))
+            for titulo, valor in (
+                ("Datos", producto["data_source"] or SIMULADO),
+                ("Metafora", producto["metafora"] or SIMULADO),
+                ("Marco", producto["marco"] or SIMULADO),
+            )
+        )
+        acciones = (
+            '<span data-state="principal">Continuar</span><span data-state="normal">Ver detalle</span>'
+        )
+        return texto.format(
+            **comun,
+            dato=html.escape(producto["iconografia"] or SIMULADO + " iconografia sin declarar"),
+            nav=nav,
+            tarjetas=tarjetas,
+            acciones=acciones,
+        ), css
+
+    return texto.format(
+        **comun,
+        estado=SIMULADO + " visor vacio hasta que exista el GLB",
+        instruccion=("El modelo lo produce la skill modelo-3d-blender con ficha tecnica "
+                     "aprobada y gpu_lock; aqui solo se muestra."),
+        ruta=html.escape("site/assets/pieza.glb"),
+        ficha="".join(
+            "<div><dt>%s</dt><dd>%s</dd></div>" % (html.escape(etiqueta), html.escape(valor))
+            for etiqueta, valor in (
+                ("Tipo", producto["tipo"]),
+                ("Plataforma", producto["plataforma"] or SIMULADO),
+                ("Datos", producto["data_source"] or SIMULADO),
+            )
+        ),
+        skill="Siguiente paso: skills/modelo-3d-blender/SKILL.md",
+    ), css
+
+
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(
         description="Genera site/index.html desde el brief y la identidad aprobada."
@@ -338,9 +443,32 @@ def main(argv=None) -> int:
         action="store_true",
         help="escribe aunque falten project_name y challenge_title",
     )
+    parser.add_argument(
+        "--tipo",
+        choices=TIPOS,
+        default="landing",
+        help="pieza del sitio: landing (6 bloques), app-movil, web-app o pieza-3d",
+    )
     args = parser.parse_args(argv)
     utf8()
     brief = cargar(BRIEF, {}) or {}
+    if args.tipo != "landing":
+        MOCK.parent.mkdir(parents=True, exist_ok=True)
+        MOCK.write_text(
+            json.dumps(datos_mock(brief), ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+        )
+        html_final, css = construir_maqueta(args.tipo, brief)
+        SALIDA.parent.mkdir(parents=True, exist_ok=True)
+        SALIDA.write_text(html_final, encoding="utf-8")
+        (SALIDA.parent / "pagina.css").write_text(css, encoding="utf-8")
+        origen_tokens = RAIZ / "brand" / "tokens.css"
+        if origen_tokens.exists():
+            (SALIDA.parent / "tokens.css").write_text(
+                origen_tokens.read_text(encoding="utf-8", errors="replace"), encoding="utf-8"
+            )
+        print("OK: site/index.html con la pieza %s y site/pagina.css" % args.tipo)
+        print("OK: site/mock_data.json marcado [SIMULADO] fuera del area de captura")
+        return 0
     if not (brief.get("project_name") or brief.get("challenge_title")):
         campos = ("project_name, team_name, university, city, challenge_title, "
                   "challenge_description, solution (o pasos), sector, contact_email")
@@ -359,6 +487,9 @@ def main(argv=None) -> int:
     html_final = construir(brief, claims, presupuesto)
     SALIDA.parent.mkdir(parents=True, exist_ok=True)
     SALIDA.write_text(html_final, encoding="utf-8")
+    MOCK.write_text(
+        json.dumps(datos_mock(brief), ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
     # El sitio publicado no depende de brand/: la hoja importa "tokens.css" local.
     origen_tokens = RAIZ / "brand" / "tokens.css"
     if origen_tokens.exists():

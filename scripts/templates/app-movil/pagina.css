@@ -1,0 +1,194 @@
+/* app-movil · escena de telefono. Solo var(): cero hex literal. */
+
+.maqueta {
+  display: grid;
+  grid-template-columns: auto minmax(280px, 1fr);
+  align-items: start;
+  gap: var(--space-6, 48px);
+  padding: var(--space-6, 48px);
+}
+
+.escena { display: flex; justify-content: center; }
+
+.bisel {
+  position: relative;
+  width: 390px;
+  height: 844px;
+  padding: 12px;
+  border-radius: var(--radius-lg, 24px);
+  background: var(--text-title);
+  box-shadow: 0 24px 60px color-mix(in srgb, var(--text-title) 24%, transparent);
+}
+
+.bisel::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  width: 72px;
+  height: 4px;
+  transform: translateX(-50%);
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--bg-app) 30%, transparent);
+}
+
+.pantalla {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: var(--space-5, 32px) var(--space-4, 24px);
+  border-radius: var(--radius-md, 16px);
+  background: var(--bg-app);
+  color: var(--text-body);
+  font-family: var(--font-ui);
+}
+
+.pantalla-eyebrow {
+  margin: 0 0 var(--space-2, 8px);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.pantalla-titulo {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 28px;
+  line-height: 1.15;
+  color: var(--text-title);
+}
+
+.pantalla-dato {
+  margin: var(--space-2, 8px) 0 var(--space-5, 32px);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+
+.pantalla-lista {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pantalla-lista li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2, 8px);
+  padding: var(--space-3, 16px) 2px;
+  border-top: 1px solid var(--border-light);
+  font-size: 14px;
+  color: var(--text-body);
+}
+
+.pantalla-lista li:last-child { border-bottom: 1px solid var(--border-light); }
+
+.pantalla-lista .marca-fila {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.pantalla-detalle { margin-top: auto; }
+
+.pantalla-detalle div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3, 16px);
+  padding: var(--space-2, 8px) 2px;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 13px;
+}
+
+.pantalla-detalle dt { color: var(--text-muted); }
+
+.pantalla-detalle dd {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-main);
+}
+
+.pantalla-accion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: var(--space-4, 24px);
+  height: 46px;
+  border-radius: var(--radius-sm, 8px);
+  background: var(--color-primary);
+  color: var(--bg-app);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.tablero {
+  display: grid;
+  gap: var(--space-4, 24px);
+  padding: var(--space-5, 32px);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md, 16px);
+  background: var(--bg-subtle);
+  font-family: var(--font-ui);
+}
+
+.tablero-titulo {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--text-title);
+}
+
+.paleta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(64px, 1fr));
+  gap: var(--space-2, 8px);
+}
+
+.muestra { display: grid; gap: 4px; font-size: 11px; color: var(--text-muted); }
+
+.muestra span:first-child {
+  height: 44px;
+  border-radius: var(--radius-sm, 8px);
+  border: 1px solid var(--border-light);
+}
+
+.m-bg-app { background: var(--bg-app); }
+.m-bg-subtle { background: var(--bg-subtle); }
+.m-text-title { background: var(--text-title); }
+.m-text-muted { background: var(--text-muted); }
+.m-color-primary { background: var(--color-primary); }
+.m-color-accent { background: var(--color-accent); }
+
+.tipografia { display: grid; gap: var(--space-2, 8px); }
+.tipografia b { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); font-weight: 600; }
+.tipografia p { margin: 0; color: var(--text-main); }
+.t-display { font-family: var(--font-display); font-size: 18px; color: var(--text-title); }
+.t-ui { font-family: var(--font-ui); font-size: 14px; }
+.t-mono { font-family: var(--font-mono); font-size: 13px; font-variant-numeric: tabular-nums; }
+
+.principios {
+  display: grid;
+  gap: var(--space-2, 8px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 13px;
+  color: var(--text-body);
+}
+
+.principios li::before { content: "— "; color: var(--text-faint); }
+
+@media (max-width: 900px) {
+  .maqueta { grid-template-columns: 1fr; padding: var(--space-4, 24px); }
+  .bisel { width: 100%; max-width: 390px; height: 844px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pantalla-accion { transition: none; }
+}

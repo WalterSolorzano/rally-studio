@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{nombre} · pieza 3D</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="pagina.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="marca">
+    <span class="marca-nombre">{nombre}</span>
+    <span class="marca-nota">pieza 3D</span>
+  </div>
+</header>
+
+<main class="maqueta">
+
+  <section class="visor" aria-label="Visor de la pieza">
+    <div class="visor-marco">
+      <span class="visor-estado">{estado}</span>
+    </div>
+    <div class="visor-pie">
+      <h1 class="visor-titulo">{protagonista}</h1>
+      <p class="visor-nota">{instruccion}</p>
+      <p class="visor-ruta">{ruta}</p>
+    </div>
+  </section>
+
+  <aside class="ficha">
+    <h2 class="ficha-titulo">Ficha técnica</h2>
+    <dl class="ficha-lista">{ficha}</dl>
+    <p class="ficha-skill">{skill}</p>
+  </aside>
+
+</main>
+
+<footer class="site-footer">
+  <span>{pie}</span>
+  <span class="footer-nota">{nota}</span>
+</footer>
+
+</body>
+</html>

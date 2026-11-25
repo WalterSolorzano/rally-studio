@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{nombre} · maqueta</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="pagina.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="marca">
+    <span class="marca-nombre">{nombre}</span>
+    <span class="marca-nota">maqueta</span>
+  </div>
+</header>
+
+<main class="maqueta">
+
+  <section class="escena" aria-label="Pantalla del producto a 390 por 844">
+    <div class="bisel">
+      <div class="pantalla">
+        <p class="pantalla-eyebrow">{eyebrow}</p>
+        <h1 class="pantalla-titulo">{protagonista}</h1>
+        <p class="pantalla-dato">{dato}</p>
+        <ul class="pantalla-lista">{filas}</ul>
+        <div class="pantalla-detalle">{detalle}</div>
+        <span class="pantalla-accion">{accion}</span>
+      </div>
+    </div>
+  </section>
+
+  <aside class="tablero" aria-label="Tablero de identidad">
+    <h2 class="tablero-titulo">Identidad</h2>
+    <div class="paleta">{paleta}</div>
+    <div class="tipografia">{tipografia}</div>
+    <ul class="principios">{principios}</ul>
+  </aside>
+
+</main>
+
+<footer class="site-footer">
+  <span>{pie}</span>
+  <span class="footer-nota">{nota}</span>
+</footer>
+
+</body>
+</html>

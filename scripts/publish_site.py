@@ -11,10 +11,37 @@ utf8()
 
 SITE_DIR = pathlib.Path("site")
 
+# El sitio publicado no puede depender de brand/: tokens y fuentes viven dentro de site/.
+PROHIBIDO_EN_SITE = ("../brand", "brand/tokens.css", "fonts.googleapis.com", "fonts.gstatic.com")
+
+
+def autocontenido() -> list[str]:
+    """Devuelve los enlaces externos o hacia brand/ que rompen el sitio publicado."""
+    fallos: list[str] = []
+    for archivo in SITE_DIR.rglob("*"):
+        if archivo.suffix not in {".html", ".css"}:
+            continue
+        if "diseno" in archivo.parts:
+            continue  # kit del sistema: no se publica como pieza del proyecto
+        texto = archivo.read_text(encoding="utf-8", errors="replace")
+        for marca in PROHIBIDO_EN_SITE:
+            if marca in texto:
+                fallos.append(f"{archivo.as_posix()}: {marca}")
+    return fallos
+
+
 def main():
     if not (SITE_DIR / "index.html").exists():
         print("ERROR: site/index.html no existe.")
         sys.exit(1)
+
+    rotos = autocontenido()
+    if rotos:
+        print("ERROR: el sitio no es autocontenido; arregla antes de publicar:")
+        for roto in rotos:
+            print("  - " + roto)
+        sys.exit(1)
+    print("OK: site/ autocontenido (tokens y fuentes dentro, cero CDN)")
 
     print("\n" + "═" * 60)
     print("  RALLY STUDIO -- PUBLICACION DE LA WEB DEMO")

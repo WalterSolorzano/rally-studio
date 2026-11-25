@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{nombre}</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="marca">
+    <span class="marca-nombre">{nombre}</span>
+    <span class="marca-nota">piloto</span>
+  </div>
+</header>
+
+<main class="sitio">
+
+  <section class="hero">
+    <h1 class="hero-titulo">{nombre}</h1>
+    <p class="hero-promesa">{promesa}</p>
+    <a class="cta" href="#prueba">{icono}<span>Ver la prueba</span></a>
+  </section>
+
+  <section class="problema">
+    <h2 class="section-title">Problema</h2>
+    <p class="problema-texto">{problema}</p>
+    {fuente_html}
+  </section>
+
+  <section class="como">
+    <h2 class="section-title">Cómo funciona</h2>
+    <ol class="pasos">{pasos}</ol>
+  </section>
+
+  <section class="metricas">
+    <h2 class="section-title">Métricas</h2>
+    <div class="metricas-grid">{metricas}</div>
+  </section>
+
+  <section class="prueba" id="prueba">
+    <h2 class="section-title">Prueba</h2>
+    {venta}
+    {tabla}
+    {enlaces}
+  </section>
+
+{cierre}
+</main>
+
+<footer class="site-footer">
+  <span>{pie}</span>
+  <span class="footer-nota">Cifras con fuente en cada bloque</span>
+</footer>
+
+</body>
+</html>
