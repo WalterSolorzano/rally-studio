@@ -1,0 +1,26 @@
+/* esfera-volumetrica -- cuerpo redondo con luz, para un dato o un objeto.
+ *
+ * Uso: un solo elemento con clase; el tamano lo fija el contexto.
+ *   <span class="esfera" role="img" aria-label="..."></span>
+ *
+ * Reemplaza: circulos planos con degradado de tres colores y brillo de
+ * glassmorphism. Aqui la luz viene del token de tinta, no de un color nuevo.
+ * Si el dato necesita leerse, el texto va FUERA de la esfera.
+ */
+.esfera {
+  display: inline-block;
+  width: var(--space-7);
+  height: var(--space-7);
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle at 32% 28%,
+      color-mix(in srgb, var(--bg-app) 92%, transparent) 0%,
+      color-mix(in srgb, var(--color-primary) 78%, var(--bg-app)) 46%,
+      color-mix(in srgb, var(--text-title) 70%, var(--color-primary)) 100%
+    );
+  box-shadow:
+    inset calc(var(--space-1) * -1) calc(var(--space-1) * -1) var(--space-3)
+      color-mix(in srgb, var(--text-title) 42%, transparent),
+    var(--shadow-1);
+}

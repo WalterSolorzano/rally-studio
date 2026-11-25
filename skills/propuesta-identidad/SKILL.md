@@ -47,9 +47,8 @@ No la uses para el dossier de soluciones ni para contenido de retos: eso es
    escriben `brand/palette.json` (`_status: "aprobada"`) y `brand/tokens.css`.
 6. Verifica: `python scripts/verificar_identidad.py` debe imprimir `OK` (contraste >= 4.5,
    cero hex literal en `site/`, tokens completos).
-7. Esto no se hace en un solo paso ni en un minuto: sin tres rutas servidas y una aceptada,
-   escribir en `site/`, `script/` o `budget/` está prohibido. Ver
-   `.agents/rules/proceso-obligatorio.md`.
+7. Sin tres rutas servidas y una aceptada, escribir en `site/`, `script/` o `budget/` está
+   prohibido (`.agents/rules/proceso-obligatorio.md`).
 
 ## El módulo de diseño (`design/`)
 
@@ -104,9 +103,11 @@ Reglas que valen en las cuatro:
   con café por defecto: si aparece, es un acento secundario con su pareja declarada.
 - Las paletas del catálogo no usan morado. Ninguna familia fuera de `FONT_LIBRARY` se acepta.
 - Cada estilo declara su pareja tipográfica y el **porqué** (`PROJ_FONT_WHY`): el kit la imprime
-  bajo `Títulos: X · Cuerpo: Y` y muestra H1, H2, H3 y párrafo con esa pareja. Nada de serif
-  genérica tipo Times: `institucional` usa Fraunces + Inter, `comunitaria` Petrona + Public Sans
-  y `premium` Bodoni Moda + Jost.
+  bajo `Títulos: X · Cuerpo: Y` y muestra H1, H2, H3 y párrafo con esa pareja. La lista de
+  estilos y sus parejas vive en `design/kit.js` (`PROJ_STYLES`); no se copia aquí, porque una
+  copia se desactualiza y propone una pareja que el kit ya no usa. Nada de serif genérica tipo
+  Times. Vetada la pareja del proyecto de referencia: **Petrona + Bricolage Grotesque** no se
+  propone a otro equipo.
 - Los elementos gráficos se exportan como PNG **2048×2048 con fondo transparente** (mosaico o
   motivo, en color de marca o blanco) desde `descargarPatronPNG()`; el kit y el thumbnail se
   exportan como PNG y PDF reales, no como data URI sin extensión.

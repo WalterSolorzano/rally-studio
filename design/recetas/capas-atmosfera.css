@@ -1,0 +1,44 @@
+/* capas-atmosfera -- fondo por planos de color que se alejan.
+ *
+ * Uso: cabecera de una landing o de una escena, sobre la que va el contenido.
+ *   <header class="atmosfera">...</header>
+ *
+ * Reemplaza: el degradado violeta de plantilla y el glassmorphism. Los planos
+ * son el mismo color de superficie atenuado; el texto siempre va en --text-title
+ * sobre la franja mas clara, nunca sobre la mas oscura.
+ */
+.atmosfera {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--color-primary) 8%, var(--bg-app)) 0%,
+      var(--bg-app) 62%
+    );
+}
+
+.atmosfera::before,
+.atmosfera::after {
+  content: "";
+  position: absolute;
+  inset-inline: -10%;
+  z-index: -1;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.atmosfera::before {
+  top: 34%;
+  height: 46%;
+  background: color-mix(in srgb, var(--bg-subtle) 88%, var(--color-primary));
+  border-top: 1px solid var(--border-light);
+}
+
+.atmosfera::after {
+  top: 58%;
+  height: 52%;
+  background: color-mix(in srgb, var(--bg-subtle) 62%, var(--bg-app));
+  border-top: 1px solid var(--border-light);
+}

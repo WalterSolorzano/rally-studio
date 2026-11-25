@@ -14,7 +14,8 @@ aprobada (`brand/palette.json` con `_status: "aprobada"`). Si alguna falta, esta
 detiene y lo dice. La paleta no se inventa aquí: eso es `propuesta-identidad`.
 
 Salida: el bloque `producto` de `brief.json` (una sola fuente de verdad, no un archivo
-nuevo) y `design/plan_producto.md` con la ficha legible para el humano.
+nuevo: `design/plan_producto.md` no existe ni se crea). La ficha legible para el humano
+sale de ahí con `python scripts/verificar_producto.py`.
 
 ## Leyes del tramo
 

@@ -175,7 +175,9 @@ Reglas:
 ## Cómo sugerir elementos gráficos
 
 - Thumbnail y piezas de portada: prohibido resolver con cuadrados, rectángulos,
-  círculos o triángulos. Usa foto real, vector complejo o un modelo de Blender.
+  círculos o triángulos. Usa foto real, vector complejo o, si el volumen es el
+  argumento, una receta de `skills/_comun/recetas-visuales.md`. Blender solo para
+  pieza física con ficha aprobada.
 - La imagen del thumbnail muestra el reto ya resuelto y su impacto, no
   decoración.
 - Prioriza una foto real de la problemática y del reto (personas, oficio,
@@ -189,9 +191,10 @@ Reglas:
 
 ## Cómo crear modelos 3D (referencia)
 
-Cuando la identidad necesite un modelo 3D para el video, la skill
-`modelo-3d-blender` genera modelos o renders 3D con Blender, con ficha técnica
-previa justificada por la rúbrica. Ver `skills/modelo-3d-blender/SKILL.md`.
+Primero `skills/_comun/recetas-visuales.md`: si el volumen se resuelve con CSS y
+`var()`, no hay GPU. Blender es para la pieza física que aparece de verdad en el
+video, con ficha técnica previa justificada por la rúbrica. Detalle completo en
+`skills/modelo-3d-blender/SKILL.md`.
 
 - Nada de fuentes fuera de las declaradas en `brand/tokens.css` sin decirlo y justificarlo.
 - Propón; no cambies la identidad del usuario sin que la acepte.
@@ -200,32 +203,37 @@ previa justificada por la rúbrica. Ver `skills/modelo-3d-blender/SKILL.md`.
 
 ## Criterios de diseño de UI (obligatorios)
 
-Valen para cualquier app móvil, página web o prototipo de `site/`:
+Valen para cualquier app móvil, página web o prototipo de `site/`. El plan que los
+gobierna tiene dueña propia: `skills/propuesta-producto/SKILL.md` (compuertas G0→G5).
+Aquí solo quedan los criterios visuales; no se repiten sus números.
 
-1. **Plan antes de ejecutar.** No se escribe HTML ni CSS sin un plan aprobado de
-   una página: qué pantallas hay, qué muestra cada una, qué acción simula y qué
-   se ve primero. Sin plan aprobado no arranca el código.
+1. **Plan antes de ejecutar.** No se escribe HTML ni CSS sin el plan aprobado de
+   `propuesta-producto`: qué pantallas hay, qué muestra cada una, qué acción simula
+   y qué se ve primero. Compuerta: `python scripts/verificar_producto.py`.
 2. **Impeccable siempre.** Toda pregunta o decisión de diseño se resuelve con la
    skill `impeccable` cargada; si no está disponible, `ui-ux-pro-max` o
    `design-system`. Nunca se diseña de memoria.
 3. **Paleta primero.** Si `brand/palette.json` ya está aprobada, se usa; solo se
    propone paleta nueva si no existe o el usuario pide cambiarla.
-4. **Responsive obligatorio.** Se prueban tres anchos en el navegador: 375 px
-   (móvil), 768 px (tablet) y 1280 px (desktop), con captura de cada uno. Sin los
-   tres, no está entregado.
-5. **Espaciado estandarizado.** Solo la escala de `DESIGN.md` (`xs 4, sm 8,
-   md 12, lg 16, xl 24`). Sin márgenes inventados por elemento.
+4. **Responsive obligatorio y medido.** La compuerta es
+   `python scripts/probar_responsive.py --tipo <pieza>`: landing a 390 / 768 / 1440;
+   app-móvil a 1440 la escena y a 390 la pantalla dentro del bisel. Sin captura de
+   cada ancho en `audit/`, no está entregado.
+5. **Espaciado de la escala declarada.** Solo `--space-1..7` de `brand/tokens.css`
+   (4/8/12/16/24/32/48). Sin márgenes inventados por elemento.
 6. **Baneado lo genérico de IA:** cards como contenedor por defecto, morado
    #7c3aed, glassmorphism, degradados decorativos, emojis como íconos, sombras
    difusas y bordes redondeados en todo. La estructura se hace con jerarquía
-   tipográfica, filas y divisores hairline (doctrina cardless de `DESIGN.md`).
+   tipográfica, filas y divisores hairline. Compuerta:
+   `python scripts/probar_diseno.py --tipo <pieza>`.
 7. **Visual antes que mecánico.** Lo que se entrega es un **recorrido por la UI
    que simula cómo funciona**: el estado se ve en pantalla con datos de ejemplo
    del brief, no formularios vacíos que solo existen para verse.
 8. **Poco y claro.** Cada página muestra solo lo que el jurado necesita para
    entender el producto. Si un dato no ayuda, no va; nada de relleno.
-9. **Recursos.** Si falta imagen, ícono, modelo o patrón, se genera con
-   `modelo-3d-blender` o con un subagente y se sirve desde `assets/`.
+9. **Recursos.** Si falta volumen o efecto, primero
+   `skills/_comun/recetas-visuales.md` (solo `var()`). Blender, solo para pieza
+   física con ficha técnica aprobada y `gpu_lock`.
 
 ## Herramientas de diseño
 

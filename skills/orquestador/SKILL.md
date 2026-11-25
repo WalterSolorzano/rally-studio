@@ -118,6 +118,26 @@ guion PAS-V con `script/shotlist.csv` y presupuesto. Antes de eso, no arranca.
 - **rúbrica**: el criterio que la pieza sostiene. Quien evalúa no se nombra:
   la justificación siempre es la rúbrica del certamen activo.
 
+## Mapa de dueños (qué especialista cubre qué tema)
+
+Cada tema tiene **una dueña**. Al despachar, se nombra la skill dueña y no se le
+pide a un especialista que improvise lo que la dueña ya decidió. Si dos archivos
+dicen lo mismo con números distintos, gana la dueña.
+
+| Tema | Skill dueña | Compuerta antes de aceptar la pieza |
+|---|---|---|
+| Identidad de equipo y de proyecto | `skills/propuesta-identidad/SKILL.md` | `python scripts/verificar_identidad.py --tipo <pieza>` |
+| Producto y maqueta | `skills/propuesta-producto/SKILL.md` | `python scripts/verificar_producto.py` |
+| Publicar y capturar | `skills/publicar-sitio/SKILL.md` + `skills/_comun/capturas.md` | `python scripts/publish_site.py` |
+| 3D real (pieza física, GPU) | `skills/modelo-3d-blender/SKILL.md` | ficha aprobada + `gpu_lock` |
+| 3D-lite y efectos CSS/SVG | `skills/_comun/recetas-visuales.md` + `design/recetas/` | `python scripts/probar_diseno.py --tipo <pieza>` |
+| Auditar un entregable | `skills/auditar-entregable/SKILL.md` | `python arsenal.py check-todo` |
+| Textos: pautado, guion, claims | `.agents/rules/pautado-y-guion.md` | `python arsenal.py check-coherencia` |
+
+Antes de encender Blender por un efecto de fondo: la respuesta está en
+`recetas-visuales.md`. Antes de auditar: declarar la capa del objeto
+(proyecto, kit del sistema o motor), porque el criterio cambia.
+
 ## Reglas duras (cada una tiene respaldo en un archivo)
 
 1. **Precondición**: `brief.json` debe tener proyecto (nombre, equipo,

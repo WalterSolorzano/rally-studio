@@ -1,0 +1,38 @@
+/* bisel-dispositivo -- marco de telefono o de ventana para una maqueta.
+ *
+ * Uso: envuelve la pantalla del producto. El bisel es contexto, no producto:
+ * va en tinta oscura, la pantalla lleva el fondo claro del proyecto.
+ *   <div class="bisel"><div class="bisel-pantalla">...</div></div>
+ *
+ * Reemplaza: un telefono dibujado con tres rectangulos y un circulo, o un
+ * emoji de telefono. El volumen se hace con dos sombras, no con figuras.
+ */
+.bisel {
+  position: relative;
+  display: grid;
+  width: 390px;
+  height: 844px;
+  padding: 12px;
+  border-radius: 44px;
+  background: var(--text-title);
+  box-shadow: var(--shadow-2), inset 0 0 0 2px color-mix(in srgb, var(--bg-app) 18%, transparent);
+}
+
+.bisel::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  width: 96px;
+  height: 6px;
+  transform: translateX(-50%);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--bg-app) 24%, transparent);
+}
+
+.bisel-pantalla {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--bg-app);
+  color: var(--text-body);
+}

@@ -29,23 +29,34 @@ La auditoría visual se hace **con el navegador, no de memoria**.
 ## Procedimiento
 
 1. Fija el objeto de la auditoría: qué archivo o sección, y a qué certamen pertenece.
-2. Carga los criterios que aplican:
+2. Declara **la capa del objeto**, porque cambia el criterio (tabla completa en
+   `.agents/rules/frontera-contenido-motor.md` → «Identidad por capa»):
+   - **Proyecto** (`site/`, `brand/`, `design/` del proyecto, entregables): se juzga contra
+     `brand/palette.json` y `brand/tokens.css` del proyecto. Compuertas:
+     `verificar_identidad.py --tipo`, `probar_diseno.py --tipo`, `verificar_frontera.py`.
+   - **Kit del sistema** (`design/` de Rally Studio, `site/diseno/`): usa la marca del
+     workbench a propósito. No se le exige tokens de proyecto; se le exige calidad y
+     coherencia consigo mismo.
+   - **Motor** (`dashboard/`): no es entregable del rally. No se audita contra la rúbrica.
+   Auditar un archivo del kit con los criterios del proyecto (o al revés) produce hallazgos
+   falsos.
+3. Carga los criterios que aplican:
    - `.agents/rules/rubricas-y-puntajes.md` (pesos y qué mira cada criterio)
    - `.agents/rules/modos-rally.md` (exigencias propias de Nacional o Latam)
    - `.agents/rules/pautado-y-guion.md` si es pautado o guion
-3. Revisa en este orden, porque es el orden en que un jurado pierde puntos:
+4. Revisa en este orden, porque es el orden en que un jurado pierde puntos:
    1. **Incumplimiento de bases** (descalifica o resta fuerte): límites de caracteres,
       duración del video, coherencia de cifras, datos inventados.
    2. **Criterios de mayor peso** del certamen activo.
    3. **Criterios secundarios**.
    4. **Forma**: marca, paleta, tipografías, naming de assets.
-4. Devuelve **hallazgos**, no reescrituras:
+5. Devuelve **hallazgos**, no reescrituras:
    - `Gravedad` — `crítico` (pierde puntos o descalifica) / `importante` / `menor`
    - `Ubicación` — sección o línea
    - `Qué pasa` — una frase
    - `Qué hacer` — una frase accionable
-5. Ordena por gravedad. Máximo 10 hallazgos: si hay más, agrupa los menores.
-6. Cierra con **una** recomendación: lo único que cambiarías si solo hubiera tiempo para una
+6. Ordena por gravedad. Máximo 10 hallazgos: si hay más, agrupa los menores.
+7. Cierra con **una** recomendación: lo único que cambiarías si solo hubiera tiempo para una
    cosa.
 
 ## Reglas

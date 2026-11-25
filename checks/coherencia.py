@@ -280,6 +280,49 @@ def comparar(fuentes: dict[str, dict[str, dict]], ignorar: set[str] | None = Non
     return hallazgos
 
 
+SIMULADO = "[SIMULADO]"
+
+
+def _json(ruta: pathlib.Path) -> dict:
+    try:
+        return json.loads(ruta.read_text(encoding="utf-8-sig"))
+    except (OSError, ValueError):
+        return {}
+
+
+def _cadenas(dato, salida: list[str]) -> list[str]:
+    if isinstance(dato, dict):
+        for valor in dato.values():
+            _cadenas(valor, salida)
+    elif isinstance(dato, list):
+        for valor in dato:
+            _cadenas(valor, salida)
+    elif isinstance(dato, str) and SIMULADO not in dato:
+        salida.append(dato)
+    return salida
+
+
+def revisar_mock(mock: dict, brief: dict) -> tuple[dict[str, dict], list[dict]]:
+    """Cruza site/mock_data.json con brief.json: nombre y cifras.
+
+    Lo marcado [SIMULADO] no se juzga: es marcador, no dato. Lo que no lleva la
+    marca tiene que existir en el brief o en los demas entregables.
+    """
+    hallazgos: list[dict] = []
+    if not mock:
+        return {}, hallazgos
+    nombre = (mock.get("proyecto") or {}).get("nombre") or ""
+    esperado = brief.get("project_name") or ""
+    if nombre and esperado and nombre != esperado:
+        hallazgos.append({
+            "gravedad": "importante",
+            "que": f"la maqueta usa el nombre '{nombre}' y brief.json declara '{esperado}'",
+            "hacer": "regenera con gen_site.py: el nombre se lee de brief.json, no se escribe a mano",
+        })
+    datos = " ".join(_cadenas(mock, []))
+    return (desde_texto(datos) if datos else {}), hallazgos
+
+
 def main(argv: list[str] | None = None) -> int:
     argv = list(sys.argv[1:] if argv is None else argv)
     rutas = {
@@ -307,7 +350,13 @@ def main(argv: list[str] | None = None) -> int:
         print("  PENDIENTE: sin pautado no se puede cerrar la coherencia antes de SIRLI.")
         return 1
 
-    hallazgos = comparar(fuentes, ignorar)
+    cifras_mock, hallazgos_mock = revisar_mock(_json(pathlib.Path("site/mock_data.json")),
+                                               _json(pathlib.Path("brief.json")))
+    if cifras_mock:
+        fuentes["mock"] = cifras_mock
+        print(f"  mock: {len(cifras_mock)} cifras distintas en site/mock_data.json")
+
+    hallazgos = hallazgos_mock + comparar(fuentes, ignorar)
     if not hallazgos:
         print("  OK: las cifras coinciden entre los entregables comparados.")
         return 0

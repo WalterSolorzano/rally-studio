@@ -368,7 +368,8 @@ def cmd_todo(args: argparse.Namespace) -> int:
     print("\n== 4. Diseno y producto ==")
     for nombre, script in (("producto", "verificar_producto.py"),
                            ("identidad", "verificar_identidad.py"),
-                           ("frontera", "verificar_frontera.py")):
+                           ("frontera", "verificar_frontera.py"),
+                           ("diseno", "probar_diseno.py")):
         ruta = RAIZ / "scripts" / script
         codigo = subprocess.run([sys.executable, str(ruta)], cwd=str(RAIZ),
                                 capture_output=True, text=True).returncode

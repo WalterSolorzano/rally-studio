@@ -229,16 +229,45 @@ brand/tokens.css     → variables CSS derivadas de palette.json
 
 ---
 
-## Capacidades transversales de las skills (todas las 16)
+## Capacidades transversales de las skills
 
-Cada skill `skills/<nombre>/SKILL.md` incluye ahora estos bloques adicionales, para que el usuario pueda llevar el contenido a otra IA o reusar los criterios fuera de este repositorio:
+Los bloques de abajo los llevan las skills que **producen una pieza** (identidad, producto,
+publicar, guion, dossier, retos, presupuesto, 3D, auditar). Las que solo operan el flujo
+(`contexto-rally`, `guiar-usuario`, `control-tiempo-entrega`, `servir-a-ventana`,
+`sugerir-por-fase`, `orquestador`, `sharktank`) no los repiten: apuntan a la dueña. Antes de
+escribir una regla nueva en una skill, comprueba si ya vive en `skills/_comun/` o en la tabla
+«Mapa de dueños»; duplicarla con otro número es un error, no una mejora.
 
-- **Generación de prompts para otra IA:** cada skill trae una plantilla estructurada (rol, contexto, entrada, tarea, restricciones, formato de salida JSON, idioma español) lista para copiar y pegar en OpenAI, Claude, Gemini, OpenCode o Antigravity.
+Bloques, con su fuente única:
+
+- **Generación de prompts para otra IA:** plantilla estructurada (rol, contexto, entrada, tarea, restricciones, formato de salida JSON, idioma español) lista para copiar y pegar en OpenAI, Claude, Gemini, OpenCode o Antigravity.
 - **Nombrado de proyecto o producto:** patrones del banco SIRLI (inventado, objeto, compuesto, territorio+número, sufijo técnico, juego). Nunca hardcodear el nombre en scripts; leerlo siempre de `brief.json`. Nunca repetir el nombre más de una vez por sección. El nombre no va en los primeros 20 s del video.
 - **Enseñanza visual:** una distancia focal por secuencia, medir rótulos en coordenadas de pantalla (margen ≥6 %), contraste garantizado (texto claro sobre placa oscura), rótulos siempre con flecha, tipografía regular antes que bold, acentos reales en español, tamaño ≥2 % del cuadro, assets como `asset_<shotlist_id>_<descripcion>.<ext>`.
 - **Redacción de guiones (pronunciación y orden):** escribir para ser escuchado (sujeto-verbo-objeto, oraciones cortas), acentos reales en español, pausa o transición por cambio de idea, máximo 240-270 palabras (≈130-140 WPM) para ≤ 120 s, números dichos completos, coherencia con `budget/budget.json`, datos de `research/claims.json`.
-- **Creación de modelos 3D (Blender):** ver `skills/modelo-3d-blender/SKILL.md` — ficha técnica aprobada antes de GPU, modelo reproducible por script, dimensiones desde `budget/bom.csv`, auditoría geométrica, entrega en `dashboard/assets/` con nombrado `asset_<shotlist_id>_<descripcion>.<ext>`.
-- **Elementos gráficos:** thumbnail y portada sin figuras básicas (cuadrados, rectángulos, círculos, triángulos), foto real de la problemática sobre ilustración, sin texto/logos/marcas de agua en la imagen, PNG 2048×2048 fondo transparente, sin emojis, sin morado (#7c3aed), sin cards genéricas, sin glassmorphism, fuentes solo de `brand/tokens.css`.
+- **Creación de modelos 3D (Blender):** ver `skills/modelo-3d-blender/SKILL.md` — ficha técnica aprobada antes de GPU, modelo reproducible por script, dimensiones desde `budget/bom.csv`, auditoría geométrica, entrega en `dashboard/assets/` con nombrado `asset_<shotlist_id>_<descripcion>.<ext>`. Antes de encender Blender, `skills/_comun/recetas-visuales.md`: si el volumen se resuelve con CSS y `var()`, no hay GPU.
+- **Elementos gráficos:** thumbnail y portada sin figuras básicas (cuadrados, rectángulos, círculos, triángulos), foto real de la problemática sobre ilustración, sin texto/logos/marcas de agua en la imagen, PNG 2048×2048 fondo transparente, sin emojis, sin morado (#7c3aed), sin cards genéricas, sin glassmorphism, fuentes solo de `brand/tokens.css`. Recetas listas en `skills/_comun/recetas-visuales.md`.
+
+---
+
+## Mapa de dueños
+
+Cada tema tiene **una sola skill dueña**. Si dos archivos dicen lo mismo con números
+distintos, gana la dueña y la otra debe apuntar, no repetir.
+
+| Tema | Dueña | El resto apunta a ella |
+|---|---|---|
+| Identidad de equipo y de proyecto | `skills/propuesta-identidad/SKILL.md` | `design/`, `site/diseno/`, dossier |
+| Producto y maqueta (plan antes de dibujar) | `skills/propuesta-producto/SKILL.md` | `publicar-sitio`, `impeccable` |
+| Publicar y capturar | `skills/publicar-sitio/SKILL.md` + `skills/_comun/capturas.md` | checklist, video |
+| 3D real (pieza física, GPU) | `skills/modelo-3d-blender/SKILL.md` | `_comun/modelos-3d.md` |
+| 3D-lite y efectos en CSS/SVG | `skills/_comun/recetas-visuales.md` + `design/recetas/` | cualquier maqueta |
+| Auditar un entregable | `skills/auditar-entregable/SKILL.md` | cierre de fase |
+| Textos (pautado, guion, claims) | `.agents/rules/pautado-y-guion.md` | skills de contenido |
+
+Compuertas que vigilan el mapa: `verificar_identidad.py` (identidad),
+`verificar_producto.py` (plan de producto), `verificar_frontera.py` (capas),
+`probar_diseno.py` (anti-genérico). Una skill que repite la regla de otra con otro
+número está rota aunque el texto se lea bien.
 
 ---
 
@@ -261,7 +290,6 @@ Cada skill `skills/<nombre>/SKILL.md` incluye ahora estos bloques adicionales, p
 | Chatterbox / Kokoro | TTS para narración | gen_voice.py elige automáticamente |
 | Blender headless | Modelos 3D y renders | Solo con referencia visual previa |
 | Playwright | Captura de web demo | Después de que site/ esté completo |
-| Colormind API | Paleta desde logo | gen_palette.py |
 | ffmpeg | Edición y exportación de video | Última etapa |
 | `scripts/herramientas.py` | Caja de herramientas externa bajo demanda | Solo cuando la tarea dispara una |
 | `scripts/soluciones_motor.py` | Soluciones para los retos que da el usuario | Cuando ya existen retos y piden propuestas |
