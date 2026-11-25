@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>$titulo · maqueta</title>
+<link rel="stylesheet" href="../brand/tokens.css">
+$fuentes_link
+<link rel="stylesheet" href="mockup.css">
+</head>
+<body>
+<main class="escena">
+
+  <section class="telefono" aria-label="Aparato con la pantalla principal">
+    <header class="cabecera">
+      <strong>$titulo</strong>
+      <span>$pantalla_id</span>
+    </header>
+    <h1 class="pantalla-titulo">$lema</h1>
+$bajada
+    <div class="protagonista">
+      <div class="protagonista-texto">
+        <span class="protagonista-etiqueta"><span class="punto"></span>$protagonista</span>
+        <span class="protagonista-valor">$protagonista_valor</span>
+      </div>
+    </div>
+    <ul class="lista">
+$filas
+    </ul>
+$detalle
+    <a class="accion" href="#pantalla">$accion</a>
+  </section>
+
+  <section class="tablero" aria-label="Tablero de identidad">
+    <h2>$titulo</h2>
+    <p class="principio">$principio_uno</p>
+    <div>
+      <div class="muestra">$swatches</div>
+      <div class="rotulos">$rotulos</div>
+    </div>
+    <div class="specimen">
+      <div>
+        <span class="letra-display">Aa Bb 0123</span>
+        <span class="etiqueta">$fuente_display</span>
+      </div>
+      <div>
+        <span class="letra-ui">Texto de lectura a 15 px</span>
+        <span class="etiqueta">$fuente_ui</span>
+      </div>
+      <div>
+        <span class="letra-mono">1 234 · C$ 480 · 03/05</span>
+        <span class="etiqueta">$fuente_mono</span>
+      </div>
+    </div>
+    <p class="principio">$principio_dos</p>
+    <p class="principio">$principio_tres</p>
+    <p class="nota">$nota</p>
+  </section>
+
+</main>
+</body>
+</html>

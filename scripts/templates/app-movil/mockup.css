@@ -1,0 +1,375 @@
+/* site/mockup.css -- escena de maqueta generada por scripts/gen_mockup.py.
+ * Solo var(--…): la identidad viene de brand/tokens.css, no de aqui.
+ * Radios <=18px, dos sombras como maximo, transiciones de 120ms.
+ */
+* { box-sizing: border-box; }
+
+html, body { margin: 0; }
+
+body {
+  min-height: 100vh;
+  padding: clamp(24px, 5vw, 72px);
+  display: grid;
+  place-items: center;
+  background: var(--bg-subtle);
+  color: var(--text-main);
+  font-family: var(--font-ui);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+.escena {
+  width: 100%;
+  max-width: 1160px;
+  display: grid;
+  grid-template-columns: minmax(300px, 400px) minmax(280px, 1fr);
+  gap: clamp(32px, 5vw, 80px);
+  align-items: center;
+}
+
+/* ---------- aparato ---------- */
+
+.telefono {
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 390 / 844;
+  justify-self: center;
+  background: var(--bg-app);
+  border: 8px solid var(--text-title);
+  border-radius: 18px;
+  padding: 26px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 24px 48px -20px color-mix(in srgb, var(--text-title) 30%, transparent);
+}
+
+.telefono::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 92px;
+  height: 4px;
+  transform: translateX(-50%);
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--text-title) 22%, transparent);
+}
+
+.cabecera {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.cabecera strong {
+  font-weight: 500;
+  color: var(--text-title);
+  max-width: 62%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pantalla-titulo {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(30px, 3.6vw, 40px);
+  line-height: 0.96;
+  letter-spacing: -0.03em;
+  color: var(--text-title);
+  text-wrap: balance;
+}
+
+.pantalla-texto {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 13.5px;
+  max-width: 34ch;
+}
+
+.lista {
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.lista li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 2px;
+  border-top: 1px solid var(--border-light);
+  font-size: 13.5px;
+  color: var(--text-body);
+}
+
+.lista li:last-child { border-bottom: 1px solid var(--border-light); }
+
+.lista .marca {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--border-strong);
+  flex: none;
+}
+
+.lista .activa { color: var(--text-title); font-weight: 500; }
+.lista .activa .marca { background: var(--color-accent); }
+
+.lista .cifra {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+
+.detalle {
+  margin-top: auto;
+  border-top: 1px solid var(--border-light);
+}
+
+.detalle div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 2px;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 12.5px;
+  color: var(--text-body);
+}
+
+.detalle span:first-child { color: var(--text-muted); }
+
+.detalle span:last-child {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-title);
+  text-align: right;
+}
+
+.protagonista {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 14px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-light);
+}
+
+.forma {
+  width: 148px;
+  height: 148px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 26%, color-mix(in srgb, var(--bg-app) 92%, white) 0 10%, transparent 48%),
+    radial-gradient(circle at 62% 74%, color-mix(in srgb, var(--color-primary) 34%, var(--bg-subtle)), color-mix(in srgb, var(--color-primary) 58%, var(--bg-subtle)) 74%);
+  box-shadow: inset -8px -10px 22px color-mix(in srgb, var(--text-title) 12%, transparent);
+}
+
+.protagonista-texto {
+  display: grid;
+  gap: 8px;
+}
+
+.protagonista-etiqueta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.protagonista-valor {
+  font-family: var(--font-display);
+  font-size: 28px;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  color: var(--text-title);
+  text-wrap: balance;
+}
+
+.protagonista .punto {
+  width: 8px;
+  height: 8px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.accion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 16px;
+  height: 46px;
+  border-radius: 12px;
+  background: var(--color-primary);
+  color: var(--bg-app);
+  font-family: var(--font-ui);
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition: opacity 120ms ease-out;
+}
+
+.accion:hover { opacity: 0.88; }
+
+/* ---------- tablero ---------- */
+
+.tablero {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(22px, 3vw, 34px);
+  max-width: 520px;
+}
+
+.tablero h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.2vw, 42px);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  color: var(--text-title);
+  text-wrap: balance;
+}
+
+.tablero .principio {
+  margin: 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-light);
+  color: var(--text-muted);
+  font-size: 13px;
+  max-width: 46ch;
+}
+
+.muestra {
+  display: flex;
+  border: 1px solid var(--border-light);
+  height: 84px;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.muestra span { flex: 1; }
+.muestra span + span { border-left: 1px solid var(--border-light); }
+
+.muestra span:nth-child(1) { background: var(--bg-app); }
+.muestra span:nth-child(2) { background: var(--color-primary); }
+.muestra span:nth-child(3) { background: var(--text-title); }
+.muestra span:nth-child(4) { background: var(--color-accent); }
+.muestra span:nth-child(5) { background: var(--bg-subtle); }
+
+.rotulos {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.rotulos b {
+  display: block;
+  font-weight: 500;
+  color: var(--text-title);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rotulos i {
+  display: block;
+  font-style: normal;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-faint);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.specimen {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.specimen > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.specimen .letra-display {
+  font-family: var(--font-display);
+  font-size: 26px;
+  letter-spacing: -0.02em;
+  color: var(--text-title);
+}
+
+.specimen .letra-ui {
+  font-family: var(--font-ui);
+  font-size: 17px;
+  color: var(--text-main);
+}
+
+.specimen .letra-mono {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-body);
+}
+
+.specimen .etiqueta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  white-space: nowrap;
+}
+
+.nota {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+@media (max-width: 900px) {
+  .escena { grid-template-columns: 1fr; gap: 40px; }
+  .telefono { max-width: 340px; }
+  .tablero { max-width: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .accion { transition: none; }
+  .accion:hover { opacity: 1; }
+}

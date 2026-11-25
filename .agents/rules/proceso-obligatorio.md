@@ -65,7 +65,26 @@ El sitio tampoco se escribe a mano ni de golpe. Orden fijo, cada paso con su com
 5. **Auditar.** Subagente auditor distinto del constructor revisa las capturas contra §2 y §3.
 6. **Servir.** La página va al buzón como propuesta; el humano acepta o descarta.
 
-## 2. Estándares de calidad medibles
+## 1.6 Paso a paso de la pieza de producto (fase 11)
+
+La web demo o la app no se piden de un tiro. `skills/propuesta-producto/SKILL.md` las
+conduce en cinco compuertas, y cada una se cierra con el humano:
+
+1. **Alcance.** Tipo de pieza, plataforma, protagonista y módulos core / opcional /
+   descartable (con motivo). Máximo 10 preguntas, cada una con opciones y una recomendada.
+2. **Maqueta.** Un HTML estático con la identidad aprobada y datos `[SIMULADO]`, servido al
+   buzón y aprobado mirando una captura. Sin captura no hay aprobación.
+3. **Sistema.** Escala, radios, sombras, tabla de movimiento con salida `reduced`, estados
+   (`hover`, `focus`, `disabled`, `vacio`, `error`) e iconografía declarados antes de usar.
+4. **Pieza.** Solo `var(--…)`, solo las pantallas del plan. Pantalla nueva = volver a 1.
+5. **Verificación.** `verificar_producto.py` + `verificar_identidad.py` +
+   `probar_responsive.py` en verde y capturas en `audit/`.
+
+El plan vive en `brief.json` bajo `producto` (una sola fuente de verdad), no en un archivo
+aparte. `scripts/verificar_producto.py` lo comprueba; sin plan imprime PENDIENTE y no
+bloquea, porque `brief.json` vacío es un estado válido.
+
+
 
 Un entregable no está listo por verse bien. Debe cumplir, y se demuestra con comando:
 

@@ -180,7 +180,7 @@ COMPUERTAS_DE = {
     "08": ["verificar_identidad.py"],
     "09": ["validate_budget.py"],
     "10": ["validate_pautado.py"],
-    "11": ["verificar_identidad.py", "probar_responsive.py"],
+    "11": ["verificar_producto.py", "verificar_identidad.py", "probar_responsive.py"],
     "12": ["validate_brief.py", "validate_budget.py", "validate_pautado.py"],
 }
 for _etapa in ETAPAS:

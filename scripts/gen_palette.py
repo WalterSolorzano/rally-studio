@@ -21,6 +21,7 @@ import argparse
 import hashlib
 import json
 import pathlib
+import re
 import sys
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
@@ -28,6 +29,33 @@ BRIEF = RAIZ / "brief.json"
 PALETTE = RAIZ / "brand" / "palette.json"
 PROPUESTAS = RAIZ / "brand" / "palette.propuestas.json"
 TOKENS = RAIZ / "brand" / "tokens.css"
+FONTS_JS = RAIZ / "design" / "fonts.js"
+
+# La tipografia es decision del proyecto, no del motor. Cada ruta propone una
+# pareja con su porque y solo se aprueba si las tres familias existen en
+# FONT_LIBRARY (design/fonts.js). Nada de Plus Jakarta ni JetBrains por defecto.
+PARES_TIPOGRAFICOS = {
+    "A": {
+        "display": "Libre Franklin",
+        "ui": "Source Sans 3",
+        "mono": "IBM Plex Mono",
+        "porque": "Titular de peso institucional con lectura neutra; la mono solo para cifras.",
+    },
+    "B": {
+        "display": "Space Grotesk",
+        "ui": "Inter",
+        "mono": "IBM Plex Mono",
+        "porque": "Titular geometrico para una marca joven; cuerpo Inter por lectura en pantalla.",
+    },
+    "C": {
+        "display": "Fraunces",
+        "ui": "Public Sans",
+        "mono": "IBM Plex Mono",
+        "porque": "Titular serif de contraste alto para relato editorial; cuerpo neutro.",
+    },
+}
+PILA_UI = 'system-ui, -apple-system, "Segoe UI", sans-serif'
+PILA_MONO = "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
 
 # Familia cromatica por sector. El reto manda; lo que no este aqui cae al hash.
 SECTOR_HUE = {
@@ -136,6 +164,37 @@ def asegurar_contraste(h: float, s: float, l: float, fondo: str, minimo: float =
     return color, contraste(color, fondo), grado(contraste(color, fondo))
 
 
+def familias_disponibles() -> set[str]:
+    """Familias de design/fonts.js. Sin biblioteca no se propone tipografia."""
+    if not FONTS_JS.exists():
+        return set()
+    texto = FONTS_JS.read_text(encoding="utf-8", errors="replace")
+    return set(re.findall(r"family:\s*'([^']+)'", texto))
+
+
+def par_tipografico(nombre: str) -> dict | None:
+    """Pareja de la ruta validada contra FONT_LIBRARY; fuera de ella, None."""
+    par = PARES_TIPOGRAFICOS.get(nombre)
+    disponibles = familias_disponibles()
+    if not par or not disponibles:
+        return None
+    if not all(par[k] in disponibles for k in ("display", "ui", "mono")):
+        return None
+    return dict(par)
+
+
+def pila(familia: str | None, respaldo: str) -> str:
+    return f"'{familia}', {respaldo}" if familia else respaldo
+
+
+def sin_morado(hue: int) -> int:
+    """Aleja el tono del morado de IA (#7c3aed y vecinos 250-330) sin tocar el resto."""
+    h = hue % 360
+    while 250 <= h <= 330:
+        h = (h + 40) % 360
+    return h
+
+
 def construir_ruta(nombre: str, hue: int, fondo_tono: float) -> dict:
     # Cada ruta cambia tambien el ancla, no solo el acento: A sobria,
     # B saturada, C terrosa. Asi el humano elige de verdad entre tres.
@@ -162,11 +221,13 @@ def construir_ruta(nombre: str, hue: int, fondo_tono: float) -> dict:
         h_acento = h_base + 180
     else:
         h_acento = h_base + 150
+    h_acento = sin_morado(h_acento)
 
     primary, c_prim, g_prim = asegurar_contraste(h_base, ancla["s"], ancla["l"], bg)
     primary_hover, _, _ = asegurar_contraste(h_base, ancla["s"], ancla["l"] - 0.08, bg)
     acento, c_acen, g_acen = asegurar_contraste(h_acento, 0.55, 0.40, bg)
     c_texto = contraste(text_main, bg)
+    par = par_tipografico(nombre) or {}
 
     return {
         "ruta": nombre,
@@ -189,6 +250,8 @@ def construir_ruta(nombre: str, hue: int, fondo_tono: float) -> dict:
         "_contraste_accent_bg": c_acen,
         "_grado_accent": g_acen,
         "_contraste_texto_bg": c_texto,
+        "_fuentes": {k: par[k] for k in ("display", "ui", "mono")} if par else {},
+        "_fuente_porque": par.get("porque", ""),
     }
 
 
@@ -239,8 +302,10 @@ def tokens_css(pal: dict) -> str:
   --status-err: {err};
   --status-err-text: {err};
 
-  --font-ui: 'Plus Jakarta Sans', system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  /* Tipografia aprobada con la ruta, no la del motor */
+  --font-display: {pila(pal.get('_fuentes', {}).get('display'), PILA_UI)};
+  --font-ui: {pila(pal.get('_fuentes', {}).get('ui'), PILA_UI)};
+  --font-mono: {pila(pal.get('_fuentes', {}).get('mono'), PILA_MONO)};
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 18px;
@@ -267,6 +332,10 @@ def main() -> int:
         print(f"  {nombre}  {r['primary']}  acento {r['accent']}  "
               f"contraste {r['_contraste_primary_bg']}:1 ({r['_grado_primary']})")
         print(f"     {r['descripcion']}")
+        if r.get("_fuentes"):
+            f = r["_fuentes"]
+            print(f"     letra {f['display']} / {f['ui']} / {f['mono']}")
+            print(f"     por que: {r['_fuente_porque']}")
     print()
     try:
         ruta_visible = PROPUESTAS.relative_to(RAIZ)
