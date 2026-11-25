@@ -83,6 +83,7 @@ prueban el mecanismo antes de que exista un proyecto, y porque cada una dejó in
 | 2026-11-18 | Segunda pasada: marcas de ejemplo fuera del kit y teleprompter de muestra vacío | profe | profe (`rallysistem_lab/auditoria/detector_hardcodes.py`) | `rallysistem_lab/auditoria/` |
 | 2026-11-18 | Efectos latentes cerrados: coherencia sin ruido, guardas en la suite, orden paleta→presupuesto | profe | `pytest` (366) y `arsenal.py` sobre el fixture | `checks/coherencia.py`, `tests/` |
 | 2026-11-24 | Ley de identidad por capa: frontera motor→proyecto con `verificar_frontera.py`, alcance de `DESIGN.md` y `ui-minima.md`, pareja tipográfica por ruta y puente identidad | profe | `pytest` (939) + negativos inyectados en copia temporal | `scripts/verificar_frontera.py`, `scripts/puente_identidad.py`, `tests/test_verificar_frontera.py` |
+| 2026-11-24 | Decisión del dueño: `dashboard/entregables/teleprompter.html` es extensión del motor y usa su identidad a propósito; la compuerta lo exime por lista explícita, no por patrón, y otra entrega que importe tokens del proyecto sigue fallando | dueño | `pytest tests/test_verificar_frontera.py` (10) + caso negativo del storyboard | `scripts/verificar_frontera.py` (`EXTENSIONES_MOTOR`) |
 
 Lo que encontró la prueba de novato y cómo se cerró:
 

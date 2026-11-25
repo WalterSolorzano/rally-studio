@@ -115,3 +115,26 @@ def test_motor_importando_tokens_del_proyecto_falla(tmp_path, capsys):
     codigo, salida = _correr(raiz, capsys)
     assert codigo == 1
     assert "dashboard/style.css" in salida
+
+
+def test_extension_declarada_del_motor_usa_tokens_sin_fallar(tmp_path, capsys):
+    raiz = _preparar(tmp_path)
+    entrega = raiz / "dashboard" / "entregables"
+    entrega.mkdir()
+    (entrega / "teleprompter.html").write_text(
+        '@import url("../../brand/tokens.css");', encoding="utf-8"
+    )
+    codigo, _ = _correr(raiz, capsys)
+    assert codigo == 0
+
+
+def test_otra_entrega_del_motor_importando_tokens_falla(tmp_path, capsys):
+    raiz = _preparar(tmp_path)
+    entrega = raiz / "dashboard" / "entregables"
+    entrega.mkdir()
+    (entrega / "storyboard.html").write_text(
+        '@import url("../../brand/tokens.css");', encoding="utf-8"
+    )
+    codigo, salida = _correr(raiz, capsys)
+    assert codigo == 1
+    assert "entregables/storyboard.html" in salida

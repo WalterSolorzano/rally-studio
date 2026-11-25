@@ -33,6 +33,8 @@ MARCAS = ["// RALLY STUDIO", "RALLY STUDIO"]
 
 PROYECTO = ("site", "brand/tokens.css")
 MOTOR = ("dashboard",)
+# Extension declarada del motor: usa su identidad a proposito, no es capa proyecto.
+EXTENSIONES_MOTOR = ("dashboard/entregables/teleprompter.html",)
 
 
 def _colores(dato, salida: set[str]) -> set[str]:
@@ -114,11 +116,12 @@ def main(argv: list[str] | None = None) -> int:
         if not base.exists():
             continue
         for pagina in list(base.rglob("*.css")) + list(base.rglob("*.html")):
+            rel = pagina.relative_to(raiz).as_posix()
+            if rel in EXTENSIONES_MOTOR:
+                continue
             texto = pagina.read_text(encoding="utf-8", errors="replace")
             if "brand/tokens.css" in texto or "brand\\tokens.css" in texto:
-                fallos.append(
-                    f"{pagina.relative_to(raiz).as_posix()}: el motor importa tokens del proyecto"
-                )
+                fallos.append(f"{rel}: el motor importa tokens del proyecto")
 
     if fallos:
         for fallo in fallos:
