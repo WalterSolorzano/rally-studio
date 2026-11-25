@@ -251,6 +251,27 @@ def decorativo(acento: str, fondo: str) -> str:
     return fondo
 
 
+def empujar(color: str, fondos: list[str], minimo: float) -> str:
+    """Acerca un color al blanco o al negro hasta pasar el contraste minimo.
+
+    Se mide contra cada fondo declarado: el par mas exigente manda, porque la
+    pieza usa la misma tinta sobre --bg-app y --bg-subtle.
+    """
+    if all(contraste(color, f) >= minimo for f in fondos):
+        return color
+    r, g, b = _rgb(color)
+    promedio = sum(_rgb(fondos[0])) / 3
+    hacia = (0, 0, 0) if promedio > 127 else (255, 255, 255)
+    for paso in range(1, 41):
+        peso = paso / 40
+        mezcla = "#%02X%02X%02X" % tuple(
+            round(c * (1 - peso) + h * peso) for c, h in zip((r, g, b), hacia)
+        )
+        if all(contraste(mezcla, f) >= minimo for f in fondos):
+            return mezcla
+    return "#%02X%02X%02X" % hacia
+
+
 def direccion_visual(brief: dict) -> dict:
     """Clara, nocturna o calida: la declara el plan de producto o la sugiere el reto."""
     producto = brief.get("producto") or {}
@@ -292,10 +313,10 @@ def construir_ruta(nombre: str, hue: int, direccion: str = "clara") -> dict:
     text_title = hex_of(h_base, *tinta["title"])
     text_main = hex_of(h_base, *tinta["main"])
     text_body = hex_of(h_base, *tinta["body"])
-    text_muted = hex_of(h_base, *tinta["muted"])
-    text_faint = hex_of(h_base, *tinta["faint"])
+    text_muted = empujar(hex_of(h_base, *tinta["muted"]), [bg, bg_subtle], 4.5)
+    text_faint = empujar(hex_of(h_base, *tinta["faint"]), [bg, bg_subtle], 4.5)
     border_light = hex_of(h_base, *tinta["border_light"])
-    border_strong = hex_of(h_base, *tinta["border_strong"])
+    border_strong = empujar(hex_of(h_base, *tinta["border_strong"]), [bg], 3.0)
 
     if nombre == "A":
         h_acento = h_base + 24

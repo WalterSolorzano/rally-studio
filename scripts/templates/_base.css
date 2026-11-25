@@ -46,3 +46,17 @@ body {
 @media (max-width: 640px) {
   .site-header, .site-footer { padding-left: var(--space-4, 24px); padding-right: var(--space-4, 24px); }
 }
+
+/* Vocabulario de estados. El plan declara estados (hover, focus, disabled,
+   vacio, error); cada uno tiene su regla para que la pieza los demuestre. */
+[data-state="activo"] { border-color: var(--color-primary); color: var(--text-title); }
+
+a:hover, button:hover, [data-state="principal"]:hover { filter: brightness(0.94); }
+
+:focus-visible { outline: 2px solid var(--border-focus); outline-offset: 2px; }
+
+[data-state="disabled"], :disabled { opacity: 0.55; pointer-events: none; }
+
+.vacio, [data-state="vacio"] { color: var(--text-muted); }
+
+.error, [data-state="error"] { color: var(--status-err); }

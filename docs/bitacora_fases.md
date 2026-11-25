@@ -132,6 +132,16 @@ Lo que encontró la prueba de novato y cómo se cerró:
   captura. `publish_site.py` rechaza enlaces a `../brand` y a CDN de fuentes: los tokens y los
   woff2 se copian dentro de `site/`, con la licencia OFL registrada en `arsenal.lock.yaml`.
 
+- **Las compuertas de diseño juzgan la pieza, no el motor**: `verificar_identidad.py --tipo`
+  lee los valores del sistema propio (radios hasta la escala declarada, sombras por token,
+  motion por rol) y exige 4.5:1 a los cinco pares de texto —`text-faint` incluido— sobre las dos
+  superficies; el radio de 38 px del bisel pasa en app-móvil y falla en landing. `probar_diseno.py`
+  caza morado de IA, glassmorphism, emojis, rejillas de tarjetas clonadas, espaciado fuera de la
+  escala, protagonista ausente y estados declarados sin dibujar. `probar_responsive.py` mide la
+  pantalla dentro del bisel a 390×844 con táctil y la escena a 1440×900; las capturas van a
+  `audit/` por tipo. `gen_palette.py` empuja `text-muted`, `text-faint` y `border-strong` hasta
+  pasar el mínimo contra todas las superficies en las tres rutas y las tres direcciones.
+
 Regla de la revisión: la hace alguien distinto de quien construyó, y su veredicto puede ser
 FALLA. La del 18 de noviembre encontró un candado huérfano en `publicar_seccion.py` que
 dejaba la sección bloqueada quince minutos; se corrigió en el commit siguiente.

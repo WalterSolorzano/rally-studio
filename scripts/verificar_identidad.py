@@ -1,19 +1,25 @@
 #!/usr/bin/env python3
-"""verificar_identidad.py -- Compuerta G1 del plan.
+"""verificar_identidad.py -- Compuertas G1 y G3 del plan.
 
 Comprueba que la capa proyecto no arrastre identidad ajena y que, cuando
 exista identidad, sea la aprobada y cumpla contraste.
+
+G3 se mide contra el sistema propio: radios, sombras y motion salen de los
+roles declarados en brand/tokens.css; los pisos universales solo aplican
+cuando la identidad aun no existe. `--tipo` reconoce el bisel de una pieza
+de dispositivo, que no es un radio de tarjeta.
 
 Estados validos:
     base vacia   -> brand/palette.json pendiente, cero hex en site/, tokens sin hex  -> OK
     identidad    -> _status aprobada, tokens completos, contraste >= 4.5            -> OK
 
 Uso:
-    python scripts/verificar_identidad.py
+    python scripts/verificar_identidad.py [--tipo landing|app-movil|web-app|pieza-3d]
 Salida: lineas "OK/FAIL <chequeo>" y codigo 1 si algo falla.
 """
 from __future__ import annotations
 
+import argparse
 import json
 import os
 import pathlib
@@ -66,56 +72,86 @@ def leer_tokens() -> dict[str, str]:
     return dict(re.findall(r"(--[a-z0-9-]+):\s*(#[0-9a-fA-F]{6})", texto))
 
 
-RADIO_MAX = 18
-SOMBRAS_MAX = 2
+def leer_escalas() -> dict[str, str]:
+    """Todo token con su valor crudo: radios, sombras, motion y colores."""
+    texto = TOKENS.read_text(encoding="utf-8") if TOKENS.exists() else ""
+    return {k: v.strip() for k, v in re.findall(r"(--[a-z0-9-]+):\s*([^;\n}]+)", texto)}
 
 
-def verificar_gramatica() -> None:
-    """G3 -- la capa proyecto respeta la gramatica heredada de DESIGN.md (SS2.2)."""
+RADIO_MAX = 18           # piso universal cuando el plan no declara escala
+SOMBRAS_MAX = 2          # piso universal: fuera de eso, la pieza parece flotar
+TOPE_DISPOSITIVO = 44    # bisel de telefono o marco de ventana: plasma, no tarjeta
+SELECTORES_DISPOSITIVO = (".bisel", ".telefono", ".ventana", ".visor-marco")
+MOTION_PISO = {"120ms"}  # piso universal cuando el plan no declara motion
+NUMERICO = re.compile(r"\.(?:cifra|dato|detalle|tabla|precio|costo|lista)|var\(--font-mono\)")
+BLOQUE = re.compile(r"([^{}]+)\{([^{}]*)\}")
+
+
+def verificar_gramatica(tipo: str = "landing") -> None:
+    """G3 -- la pieza respeta el sistema que ella misma declara (SS2.2)."""
     hojas = [a for a in SITE.glob("*.css")]
     if not hojas:
         fail("site/ sin CSS: no hay capa visual que verificar")
         return
 
+    for pagina in SITE.glob("*.html"):
+        if "style=" in pagina.read_text(encoding="utf-8"):
+            fail(f"{pagina.name} con estilos inline: prohibido (SS2.2 regla 10)")
+
+    tokens = leer_escalas()
+    radios = {v for k, v in tokens.items() if k.startswith("--radius-")}
+    sombras = [v for k, v in tokens.items() if k.startswith("--shadow-")]
+    motion = {v for k, v in tokens.items() if k.startswith("--motion-")} or MOTION_PISO
+    tope_piso = max((int(v[:-2]) for v in radios if v.endswith("px")), default=RADIO_MAX)
+
     for hoja in hojas:
         texto = hoja.read_text(encoding="utf-8")
         nombre = hoja.name
+        malos: list[str] = []
+        sombra_mala: list[str] = []
+        duraciones: set[str] = set()
 
-        # Inline styles en el HTML publicado
-        for pagina in SITE.glob("*.html"):
-            if "style=" in pagina.read_text(encoding="utf-8"):
-                fail(f"{pagina.name} con estilos inline: prohibido (SS2.2 regla 10)")
+        for selector, cuerpo in BLOQUE.findall(texto):
+            tope = tope_piso
+            if tipo != "landing" and any(s in selector for s in SELECTORES_DISPOSITIVO):
+                tope = max(tope, TOPE_DISPOSITIVO)
+            for valor in re.findall(r"border-radius:\s*([^;}]+)", cuerpo):
+                for parte in valor.split():
+                    if parte.endswith("px") and float(parte[:-2]) > tope:
+                        malos.append(f"{selector.strip()}:{parte}")
+            for valor in re.findall(r"box-shadow:\s*([^;}]+)", cuerpo):
+                if valor.strip() not in {"none"} and "var(--" not in valor:
+                    sombra_mala.append(selector.strip())
+            for valor in re.findall(r"(?:transition|animation)(?:-duration)?:\s*([^;}]+)", cuerpo):
+                duraciones |= {d for d in re.findall(r"\d+m?s", valor) if d}
 
-        # Radios: solo px, 18 como techo; 50% se admite para puntos circulares
-        malos = []
-        for valor in re.findall(r"border-radius:\s*([^;}]+)", texto):
-            for parte in valor.split():
-                if not parte.endswith("px"):
-                    continue
-                if float(parte[:-2]) > RADIO_MAX:
-                    malos.append(parte)
         if malos:
-            fail(f"{nombre}: radio(s) {', '.join(sorted(set(malos)))} > {RADIO_MAX}px")
+            fail(f"{nombre}: radio(s) {', '.join(sorted(set(malos))[:4])} fuera de la escala")
         else:
-            ok(f"G3 {nombre}: radios dentro de {RADIO_MAX}px")
+            ok(f"G3 {nombre}: radios dentro de la escala ({tope_piso}px)")
 
-        # Profundidad plana
-        sombras = re.findall(r"box-shadow:\s*([^;}]+)", texto)
-        if len(sombras) > SOMBRAS_MAX:
-            fail(f"{nombre}: {len(sombras)} box-shadow (> {SOMBRAS_MAX} permitidas)")
+        if len(sombras) > SOMBRAS_MAX and not sombra_mala:
+            fail(f"{nombre}: {len(sombras)} roles de sombra (>{SOMBRAS_MAX})")
+        if sombra_mala:
+            fail(f"{nombre}: sombra(s) fuera de token en {', '.join(sorted(set(sombra_mala))[:3])}")
         else:
-            ok(f"G3 {nombre}: {len(sombras)} box-shadow (max {SOMBRAS_MAX})")
+            ok(f"G3 {nombre}: sombras derivadas de token")
 
-        # Respuesta tactil: toda duracion es 120ms
-        duraciones = {d for d in re.findall(r"transition:[^;]*?(\d+m?s)", texto) if d != "120ms"}
-        if duraciones:
-            fail(f"{nombre}: transiciones {', '.join(sorted(duraciones))} (regla: 120ms)")
+        fuera = {d for d in duraciones if d not in motion}
+        if fuera:
+            fail(f"{nombre}: motion {', '.join(sorted(fuera))} fuera de {', '.join(sorted(motion))}")
         else:
-            ok(f"G3 {nombre}: transiciones a 120ms")
+            ok(f"G3 {nombre}: motion dentro de los roles declarados")
 
-        # Cifras tabulares cuando hay mono en un bloque numerico
-        if "font-variant-numeric" not in texto:
-            fail(f"{nombre}: sin font-variant-numeric (SS2.2 regla 3)")
+        if NUMERICO.search(texto):
+            if "font-variant-numeric" not in texto:
+                fail(f"{nombre}: cifras alineadas sin tabular-nums (SS2.2 regla 3)")
+            else:
+                ok(f"G3 {nombre}: cifras tabulares donde hay columnas")
+        if "@keyframes" in texto and "prefers-reduced-motion" not in texto:
+            fail(f"{nombre}: @keyframes sin bloque prefers-reduced-motion")
+        if "@keyframes" in texto:
+            ok(f"G3 {nombre}: movimiento con respeto por reduced-motion")
 
 
 def _texto(valor) -> str:
@@ -195,7 +231,14 @@ def verificar_redaccion() -> None:
         print(f"AVISO G4 redaccion: {len(blandos)} palabra(s) de relleno -- {', '.join(blandos[:8])}")
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description="Identidad del proyecto por tipo de pieza.")
+    parser.add_argument(
+        "--tipo", default="landing",
+        choices=("landing", "app-movil", "web-app", "pieza-3d"),
+        help="pieza generada en site/; el bisel de dispositivo solo es legal fuera de la landing",
+    )
+    args = parser.parse_args(argv)
     verificar_redaccion()
 
     if not PALETTE.exists():
@@ -206,10 +249,13 @@ def main() -> int:
     estado = datos.get("_status")
     colores = {k: v for k, v in datos.items() if not k.startswith("_")}
 
-    # G1b -- cero hex en la capa publica del proyecto
+    # G1b -- cero hex en la capa publica del proyecto. tokens.css es la fuente
+    # de color copiada a site/ al generar: ahi el hex es el dato, no una huella.
     sucios = []
     for patron in ("*.css", "*.html"):
         for archivo in SITE.glob(patron):
+            if archivo.name == "tokens.css":
+                continue
             for num, linea in enumerate(archivo.read_text(encoding="utf-8").splitlines(), 1):
                 if HEX.search(linea):
                     try:
@@ -222,7 +268,7 @@ def main() -> int:
     else:
         ok("G1b cero hex literal en site/")
 
-    verificar_gramatica()
+    verificar_gramatica(args.tipo)
 
     tokens = leer_tokens()
 
@@ -246,7 +292,29 @@ def main() -> int:
     ok(f"tokens completos ({len(tokens)} variables)")
 
     bg = tokens["--bg-app"]
-    for nombre in ("--text-main", "--text-body", "--color-primary", "--color-primary-hover"):
+    suelo = tokens.get("--bg-subtle", bg)
+    # Todos los pares textuales, incluidos muted y faint, sobre las dos superficies.
+    for nombre in ("--text-title", "--text-main", "--text-body", "--text-muted", "--text-faint"):
+        if nombre not in tokens:
+            continue
+        for fondo_nombre, fondo in (("--bg-app", bg), ("--bg-subtle", suelo)):
+            ratio = contraste(tokens[nombre], fondo)
+            if ratio < 4.5:
+                fail(f"{nombre} sobre {fondo_nombre} = {ratio}:1 (< 4.5 AA)")
+            else:
+                ok(f"{nombre} sobre {fondo_nombre} = {ratio}:1")
+    # Elementos no textuales esenciales: borde fuerte y anillo de foco, 3:1.
+    for nombre in ("--border-strong", "--border-focus"):
+        if nombre not in tokens:
+            continue
+        ratio = contraste(tokens[nombre], bg)
+        if ratio < 3:
+            fail(f"{nombre} sobre --bg-app = {ratio}:1 (< 3:1 no textual)")
+        else:
+            ok(f"{nombre} sobre --bg-app = {ratio}:1 (>= 3:1)")
+    for nombre in ("--color-primary", "--color-primary-hover"):
+        if nombre not in tokens:
+            continue
         ratio = contraste(tokens[nombre], bg)
         if ratio < 4.5:
             fail(f"{nombre} sobre --bg-app = {ratio}:1 (< 4.5 AA)")
