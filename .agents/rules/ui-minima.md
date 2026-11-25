@@ -9,6 +9,12 @@ Aplica a **toda** interfaz del repositorio: `dashboard/`, `site/`, `dossier_prev
 `stats.html`, `graph.html`, `join.html`, `admin.html` y cualquier HTML que produzca una skill
 (`script/teleprompter.html`, `docs/storyboard_visual.html`, propuestas servidas a la ventana).
 
+**Alcance por superficie.** La ley rige el *chrome*: barra, navegación, controles, estados,
+paneles del workbench y de una app. Dos superficies tienen licencia de prosa breve y no se
+les aplica el punto 1: la **landing de pitch** (`site/`) —donde el jurado lee el problema y
+la promesa— y el **tablero de identidad** de una maqueta (`design/`). Ahí el límite es una
+frase por bloque, sin repetir cifra ni argumento; nunca un muro de texto.
+
 ## La ley
 
 1. **Ni un párrafo.** Una interfaz no explica, muestra. Si hace falta una frase para que se

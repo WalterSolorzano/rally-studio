@@ -75,6 +75,11 @@ components:
 
 # Design System: Rally Studio
 
+**Alcance.** Este sistema aplica a `dashboard/` (la cara del motor). La capa proyecto
+—`site/`, `brand/`, `design/`, entregables del rally— **no hereda** estos colores,
+familias ni componentes: su identidad se aprueba y se verifica contra sí misma
+(`scripts/verificar_frontera.py`). Lo que se hereda es la calidad medible, no el estilo.
+
 ## Overview
 
 **Creative North Star: "The Cardless Typographic Workbench"**

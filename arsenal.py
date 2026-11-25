@@ -365,6 +365,15 @@ def cmd_todo(args: argparse.Namespace) -> int:
     resultados["campo"] = cmd_campo(argparse.Namespace(
         docx=args.docx, plantilla=args.plantilla, evento=getattr(args, "evento", "latam"),
     ))
+    print("\n== 4. Diseno y producto ==")
+    for nombre, script in (("producto", "verificar_producto.py"),
+                           ("identidad", "verificar_identidad.py"),
+                           ("frontera", "verificar_frontera.py")):
+        ruta = RAIZ / "scripts" / script
+        codigo = subprocess.run([sys.executable, str(ruta)], cwd=str(RAIZ),
+                                capture_output=True, text=True).returncode
+        print(f"  {script}: {'PASA' if codigo == 0 else 'REVISAR'}")
+        resultados[nombre] = codigo
 
     print("\n== RESUMEN ==")
     for nombre, codigo in resultados.items():
