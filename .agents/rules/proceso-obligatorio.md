@@ -131,30 +131,46 @@ Estas reglas las aplica `scripts/gen_site.py` y son obligatorias en cualquier p�
 ### 2.2 Gramática heredada del producto (`DESIGN.md`, solo lectura)
 
 Rally Studio lleva años afinando su workbench y las IAs que trabajan en él producen buen
-diseño por esa gramática, no por suerte. `DESIGN.md` y `dashboard/style.css` **no se editan**:
-se copian sus reglas a la capa proyecto. Lo que se hereda:
+diseño por esa gramática, no por suerte. `DESIGN.md` y `dashboard/style.css` **no se editan**.
+De ahí no se copia el estilo: se copia la **disciplina**, que es lo que se puede medir en
+cualquier identidad. Desde el 2026-11-24 esta sección separa las dos cosas; lo que estaba
+escrito antes queda dicho, delimitado por capa.
 
-1. **Doctrina sin cards.** La jerarquía la dan tipografía, divisores `1px solid
-   var(--border-light)` y espacio negativo. Cero cajas flotantes, cero sombras difusas.
-2. **Acento ≤10 %.** El color de marca solo en acciones primarias, foco y marcadores
+**Se hereda: disciplina medible.** Vale para el workbench y para la capa proyecto, con la
+identidad de cada uno.
+
+1. **Acento ≤10 %.** El color de marca solo en acciones primarias, foco y marcadores
    activos. Datos y paneles quedan neutros.
-3. **Rigor tabular.** Toda cifra, precio, porcentaje o cronómetro en `--font-mono` con
-   `font-variant-numeric: tabular-nums`.
-4. **Ritmo de 4 px.** Solo `4 · 8 · 12 · 16 · 24 · 32 · 48`. Nada de 7 px ni 13 px de aire.
-5. **Radios funcionales.** `--radius-sm` para botones e inputs; `--radius-lg` (18 px) es el
-   techo. El radio no encierra páginas.
-6. **Profundidad plana.** Sin sombra en reposo; como máximo una sombra sutil en topbar fija
-   y otra en modal crítico. Nada más.
-7. **Respuesta táctil de 120 ms** en hover y foco. Ni 300 ms ni animaciones decorativas.
-8. **Píldora táctica.** Estado en `JetBrains Mono`, fondo `--bg-subtle`, borde hairline y
-   micro-dot de 6 px. Prohibida la píldora de juguete (celeste saturado, mayúsculas gritonas,
-   radio 9999 px).
-9. **Foco visible real.** `outline: 2px solid var(--border-focus)` con `outline-offset: 2px`
+2. **Ritmo de 4 px.** Solo `4 · 8 · 12 · 16 · 24 · 32 · 48`. Nada de 7 px ni 13 px de aire.
+3. **Rigor tabular.** Toda cifra, precio, porcentaje o cronómetro con
+   `font-variant-numeric: tabular-nums`; la familia mono la aprueba el proyecto.
+4. **Foco visible real.** `outline: 2px solid var(--border-focus)` con `outline-offset: 2px`
    sobre el color propio del proyecto, no el cobalto ajeno.
-10. **Cero estilos inline.** Todo estado y componente sale de una clase del sistema.
+5. **Cero estilos inline.** Todo estado y componente sale de una clase del sistema.
+6. **Escala declarada.** Radio, espacio, sombra y movimiento se declaran en `tokens.css` o
+   en el plan del proyecto; nada de números sueltos en el CSS.
+7. **Contraste medido.** Texto ≥4.5:1 contra su fondo; foco y borde ≥3:1.
+8. **Movimiento con salida.** Toda transición o animación declara su `prefers-reduced-motion`.
 
-La identidad cromática **no** se hereda (regla 3 de §3); lo que se hereda es la disciplina
-con la que se aplica la identidad propia.
+**No se hereda: estilo del motor.** Vive solo en `dashboard/`. Usarlo en la capa proyecto es
+una huella que `scripts/verificar_frontera.py` marca como fallo.
+
+1. **Doctrina sin cards obligatoria.** (era el punto 1) La jerarquía por tipografía, divisores
+   `1px` y espacio negativo es la gramática del workbench; el proyecto elige la suya.
+2. **Radios con techo de 18 px.** (era el punto 5) `--radius-lg` como máximo es decisión del
+   workbench; el proyecto declara sus radios en tokens.
+3. **Profundidad plana, ≤2 sombras.** (era el punto 6) El número es del motor, no una ley.
+4. **Respuesta táctil de 120 ms.** (era el punto 7) La duración es del motor; el proyecto usa
+   su tabla de movimiento (`--motion-fast/base/slow`).
+5. **Píldora táctica.** (era el punto 8) `JetBrains Mono`, `--bg-subtle`, micro-dot de 6 px y
+   las clases `.tactical-status-pill`, `.status-dot`, `.brand-divider` son identidad del
+   workbench: prohibidas fuera de `dashboard/`.
+6. **Familias del workbench.** Plus Jakarta Sans, JetBrains Mono y Caveat no son la tipografía
+   de ningún proyecto por defecto.
+7. **Colores del workbench.** El cobalto `#0866F5` y su escala no son la marca del proyecto.
+
+La identidad cromática y tipográfica del proyecto **no** se hereda (regla 3 de §3); lo que se
+hereda es la disciplina con la que se aplica la identidad propia.
 
 ## 3. Prohibiciones (baneadas, sin excepción)
 

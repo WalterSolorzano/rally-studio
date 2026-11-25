@@ -8,31 +8,60 @@
         "role": "primary",
         "displayName": "Cobalt Mission Blue",
         "canonical": "#0866F5",
-        "tonalRamp": ["#EFF6FF", "#BFDBFE", "#60A5FA", "#0866F5", "#0057E7", "#1D4ED8"]
+        "tonalRamp": [
+          "#EFF6FF",
+          "#BFDBFE",
+          "#60A5FA",
+          "#0866F5",
+          "#0057E7",
+          "#1D4ED8"
+        ]
       },
       "navy": {
         "role": "primary",
         "displayName": "Deep Academic Navy",
         "canonical": "#0D1B35",
-        "tonalRamp": ["#F1F5F9", "#94A3B8", "#334155", "#13213A", "#0D1B35", "#091E42"]
+        "tonalRamp": [
+          "#F1F5F9",
+          "#94A3B8",
+          "#334155",
+          "#13213A",
+          "#0D1B35",
+          "#091E42"
+        ]
       },
       "accent": {
         "role": "accent",
         "displayName": "Precision Cyan Accent",
         "canonical": "#0284C7",
-        "tonalRamp": ["#E0F2FE", "#7DD3FC", "#0284C7", "#0369A1"]
+        "tonalRamp": [
+          "#E0F2FE",
+          "#7DD3FC",
+          "#0284C7",
+          "#0369A1"
+        ]
       },
       "bg-app": {
         "role": "neutral",
         "displayName": "Crisp Daylight White",
         "canonical": "#FFFFFF",
-        "tonalRamp": ["#FFFFFF", "#F8FAFD", "#F0F6FF", "#F1F5F9"]
+        "tonalRamp": [
+          "#FFFFFF",
+          "#F8FAFD",
+          "#F0F6FF",
+          "#F1F5F9"
+        ]
       },
       "border-light": {
         "role": "neutral",
         "displayName": "Technical Slate Border",
         "canonical": "#DCE7F5",
-        "tonalRamp": ["#F1F5F9", "#DCE7F5", "#CBD5E1", "#94A3B8"]
+        "tonalRamp": [
+          "#F1F5F9",
+          "#DCE7F5",
+          "#CBD5E1",
+          "#94A3B8"
+        ]
       }
     },
     "typographyMeta": {
@@ -110,5 +139,7 @@
         "doctrine": "El acento primario se reserva para acciones clave y estados activos (≤ 10% de superficie)."
       }
     ]
-  }
+  },
+  "scope": "motor",
+  "scopeNote": "Contexto del workbench (dashboard/). No aplica a site/, brand/ ni design/."
 }
