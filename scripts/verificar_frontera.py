@@ -63,6 +63,17 @@ def aprobado(raiz: pathlib.Path) -> tuple[set[str], set[str]]:
     return colores, familias
 
 
+SISTEMA = ("design", "site/diseno")
+
+
+def capa(rel: str) -> str:
+    """Capa de un archivo: proyecto (deliverable), sistema (kit de Rally Studio) o motor."""
+    for prefijo in SISTEMA:
+        if rel == prefijo or rel.startswith(prefijo + "/"):
+            return "sistema"
+    return "proyecto"
+
+
 def archivos_de_proyecto(raiz: pathlib.Path) -> list[pathlib.Path]:
     salida: list[pathlib.Path] = []
     site = raiz / "site"
@@ -86,6 +97,7 @@ def main(argv: list[str] | None = None) -> int:
 
     colores_ok, familias_ok = aprobado(raiz)
     fallos: list[str] = []
+    avisos: list[str] = []
 
     for archivo in archivos_de_proyecto(raiz):
         try:
@@ -93,22 +105,25 @@ def main(argv: list[str] | None = None) -> int:
         except OSError:
             continue
         rel = archivo.relative_to(raiz).as_posix()
+        # El kit del sistema (design/, site/diseno/) viste la marca de Rally Studio:
+        # no es entregable del proyecto y no adopta tokens del proyecto. Se informa, no falla.
+        destino = avisos if capa(rel) == "sistema" else fallos
         for hexa in HEXES:
             if hexa.upper() in colores_ok:
                 continue
             if re.search(hexa, texto, re.IGNORECASE):
-                fallos.append(f"{rel}: color del motor {hexa} sin aprobar")
+                destino.append(f"{rel}: color del motor {hexa} sin aprobar")
         for familia in FAMILIAS:
             if familia in familias_ok:
                 continue
             if familia in texto:
-                fallos.append(f"{rel}: familia del motor {familia} sin aprobar")
+                destino.append(f"{rel}: familia del motor {familia} sin aprobar")
         for clase in CLASES:
             if re.search(rf"[\"'\s.]{clase}\b", texto):
-                fallos.append(f"{rel}: clase del motor .{clase}")
+                destino.append(f"{rel}: clase del motor .{clase}")
         for marca in MARCAS:
             if marca in texto:
-                fallos.append(f"{rel}: marca del workbench '{marca}'")
+                destino.append(f"{rel}: marca del workbench '{marca}'")
                 break
 
     for carpeta in MOTOR:
@@ -123,13 +138,17 @@ def main(argv: list[str] | None = None) -> int:
             if "brand/tokens.css" in texto or "brand\\tokens.css" in texto:
                 fallos.append(f"{rel}: el motor importa tokens del proyecto")
 
+    for aviso in avisos:
+        print(f"INFO {aviso}")
+
     if fallos:
         for fallo in fallos:
             print(f"FAIL {fallo}")
         print(f"FAIL frontera: {len(fallos)} huella(s) del motor en la capa proyecto")
         return 1
     print("OK   frontera: la capa proyecto no arrastra identidad del motor")
-    print(f"OK   frontera: {len(archivos_de_proyecto(raiz))} archivo(s) de proyecto limpios")
+    print(f"OK   frontera: {len(archivos_de_proyecto(raiz))} archivo(s) revisados, "
+          f"{len(avisos)} huella(s) informadas en el kit del sistema")
     print("OK   frontera: dashboard/ no importa brand/tokens.css")
     return 0
 

@@ -89,9 +89,9 @@ def test_color_aprobado_en_paleta_pasa(tmp_path, capsys):
     assert codigo == 0
 
 
-def test_clase_del_motor_en_export_falla(tmp_path, capsys):
+def test_clase_del_motor_en_site_falla(tmp_path, capsys):
     raiz = _preparar(tmp_path)
-    (raiz / "design" / "thumb.html").write_text(
+    (raiz / "site" / "index.html").write_text(
         '<span class="status-dot"></span>', encoding="utf-8"
     )
     codigo, salida = _correr(raiz, capsys)
@@ -99,9 +99,28 @@ def test_clase_del_motor_en_export_falla(tmp_path, capsys):
     assert "status-dot" in salida
 
 
-def test_marca_del_workbench_falla(tmp_path, capsys):
+def test_kit_del_sistema_con_marca_propia_informa_sin_fallar(tmp_path, capsys):
     raiz = _preparar(tmp_path)
-    (raiz / "design" / "impacto.html").write_text("<b>// RALLY STUDIO</b>", encoding="utf-8")
+    (raiz / "design" / "thumb.html").write_text(
+        '<span class="status-dot"></span><b>// RALLY STUDIO</b>', encoding="utf-8"
+    )
+    codigo, salida = _correr(raiz, capsys)
+    assert codigo == 0
+    assert "INFO design/thumb.html" in salida
+
+
+def test_copia_del_kit_publicada_en_site_tampoco_falla(tmp_path, capsys):
+    raiz = _preparar(tmp_path)
+    (raiz / "site" / "diseno").mkdir()
+    (raiz / "site" / "diseno" / "kit.css").write_text("a{color:#0866F5}", encoding="utf-8")
+    codigo, salida = _correr(raiz, capsys)
+    assert codigo == 0
+    assert "INFO site/diseno/kit.css" in salida
+
+
+def test_marca_del_workbench_en_site_falla(tmp_path, capsys):
+    raiz = _preparar(tmp_path)
+    (raiz / "site" / "index.html").write_text("<b>// RALLY STUDIO</b>", encoding="utf-8")
     codigo, salida = _correr(raiz, capsys)
     assert codigo == 1
     assert "RALLY STUDIO" in salida

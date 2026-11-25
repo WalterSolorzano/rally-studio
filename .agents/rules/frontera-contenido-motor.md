@@ -55,17 +55,22 @@ workbench en vez de pareciéndose a sí mismo.
    la marca `// RALLY STUDIO`.
 3. **Identidad del proyecto: se verifica contra sí misma.** Sale de `brand/palette.json`
    aprobado y de sus `tokens.css`; ni se compara ni se mezcla con la del motor.
+4. **Kit del sistema (`design/`, `site/diseno/`): es del sistema, no entregable.** Viste la
+   marca de Rally Studio a propósito y no adopta tokens del proyecto. La compuerta lo
+   informa, no lo falla. Forzarle identidad de proyecto es tan error como vestir el proyecto
+   de workbench.
 
-| Elemento | Capa proyecto (`site/`, `brand/`, `design/`) | Motor (`dashboard/`) |
-|---|---|---|
-| Contraste, escala, foco, reduced-motion | hereda la disciplina | la define |
-| Hexes del workbench | prohibidos | suyos |
-| Familias del workbench | prohibidas salvo elección aprobada en `_fuentes` | suyas |
-| Clases del workbench | prohibidas | suyas |
-| Cómo se importan los tokens | `site/tokens.css` local | no importa tokens del proyecto |
-| Prosa e identidad visual | se aprueban con el equipo | no aplica |
+| Elemento | Capa proyecto (`site/` sin `diseno/`, `brand/`) | Kit del sistema (`design/`, `site/diseno/`) | Motor (`dashboard/`) |
+|---|---|---|---|
+| Contraste, escala, foco, reduced-motion | hereda la disciplina | hereda la disciplina | la define |
+| Hexes del workbench | prohibidos | suyos | suyos |
+| Familias del workbench | prohibidas salvo elección aprobada en `_fuentes` | suyas | suyas |
+| Clases del workbench | prohibidas | suyas | suyas |
+| Cómo se importan los tokens | `site/tokens.css` local | no aplica | no importa tokens del proyecto |
+| Prosa e identidad visual | se aprueban con el equipo | sistema | no aplica |
 
 La compuerta es `python scripts/verificar_frontera.py`: caza hexes, familias, clases y marca
 del motor dentro de `site/`, `brand/tokens.css` y los exports de `design/`; perdona lo que
-conste aprobado en `brand/palette.json`; y falla si `dashboard/` importa
-`brand/tokens.css`. Se prueba en negativo como toda compuerta.
+conste aprobado en `brand/palette.json`; informa las huellas del kit del sistema en vez de
+fallarlas; y falla si `dashboard/` importa `brand/tokens.css`, salvo la extensión declarada en
+`EXTENSIONES_MOTOR`. Se prueba en negativo como toda compuerta.
